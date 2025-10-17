@@ -177,3 +177,9 @@ Figures/
 # System files
 .DS_Store
 Thumbs.db
+
+# raw data not for GitHub
+Data/raw/
+Data/html_raw/
+*.pdf
+*.html
