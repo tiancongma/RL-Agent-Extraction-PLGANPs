@@ -1,241 +1,172 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-gt_tool_v3.py
+r"""
+gt_tool_v3.py  — robust template maker for weak-labels (JSONL or TSV)
 
-Create a per-formulation Ground-Truth (GT) annotation template from
-weak_labels_v3.jsonl produced by auto_extract_weak_labels_v3.py.
+Minimal example (auto-detect input type):
+    python .\scripts\gt_tool_v3.py make-template ^
+      --weak data\cleaned\samples\weak_labels_v3.jsonl ^
+      --out  data\cleaned\samples\manual_labels_v3.tsv ^
+      --tiers all ^
+      --verbose
 
-Design goals:
-- Annotators correct ONLY the RAW predictions (do not hand-calculate).
-- DERIVED values are computed later by code; GT should not contain manual math.
-- Optional Tier-1 bin columns can be included for bin-only labeling.
-- A header note row reminds annotators not to compute by hand.
-- Default output is TSV (recommended for Excel to avoid time-format issues with "50:50").
-- Optional --excel-safe-ratios wraps pred.* ratio fields as ="50:50" to prevent Excel auto-formatting.
-
-Usage examples:
-  python gt_tool_v3.py make-template ^
-    --weak-jsonl data/cleaned/samples/weak_labels_v3.jsonl ^
-    --out data/cleaned/samples/manual_labels_v3.tsv ^
-    --include-bins ^
-    --tiers 1,2 ^
-    --excel-safe-ratios
+If your weak labels are TSV:
+    python .\scripts\gt_tool_v3.py make-template ^
+      --weak data\cleaned\samples\weak_labels_v3.tsv ^
+      --input-type tsv ^
+      --out  data\cleaned\samples\manual_labels_v3.tsv ^
+      --verbose
 """
 
 import argparse
-import csv
 import json
 from pathlib import Path
-from typing import Dict, List, Tuple, Any
+from typing import Dict, Iterable, List, Tuple
 
-# ----- Fields to annotate (RAW) -----
-T1_FIELDS = [
-    "emul_type",
-    "plga_mw_kDa",
-    "la_ga_ratio",
-    "emul_method",
-    "emul_time_s",
-    "emul_intensity",
-    "pva_conc_text",
-    "pva_conc_percent",
-    "organic_solvent",
-    "size_nm",
-    "pdi",
-    "zeta_mV",
+import pandas as pd
+
+PRED_COLS_CANDIDATES = [
+    "plga_mw", "la_ga_ratio", "w1_w2", "organic_solvent",
+    "emulsification_energy", "pva_conc", "polymer_mass_mg", "drug_feed_mg",
+    "particle_size_nm", "pdi", "zeta_mV", "drug_loading_pct",
+    "encapsulation_eff_pct", "release_temp_condition", "notes", "raw_json",
 ]
+REQUIRED_META = ["key"]
 
-T2_FIELDS = [
-    # RAW volumes & ratios
-    "w1_vol", "o_vol", "w2_vol",
-    "w1_vol_mL", "o_vol_mL", "w2_vol_mL",
-    "w1_o_ratio_text", "w1_o_ratio_norm",
-    "o_w2_ratio_text", "o_w2_ratio_norm",
-    "w1_o_w2_ratio_text", "w1_o_w2_ratio_norm",
-    "total_phase_vol_text", "total_phase_vol_mL",
-    # Mass/efficiency/context
-    "plga_mass_g", "drug_feed_amount_g",
-    "drug_polymer_ratio",
-    "encapsulation_efficiency_percent",
-    "drug_loading_percent",
-    "aux_materials",
-    "organic_solvent_vol_mL",
-    "release_profile_type",
-    "drug_name",
-    # Applicability mask (useful to lock semantics in GT)
-    "w1_vol_applicable","o_vol_applicable","w2_vol_applicable",
-]
-
-# Optional bins (Tier-1 only) for partial credit workflows
-T1_BINS = [
-    "plga_mw_kDa_bin",
-    "la_ga_ratio_bin",
-    "pva_conc_bin",
-    "emul_method_bin",
-    "emul_time_s_bin",
-    "size_nm_bin",
-    "pdi_bin",
-    "zeta_mV_bin",
-]
-
-HEADER_NOTE = (
-    "NOTE: Fill ONLY gt.* columns. Do NOT compute volumes by hand. "
-    "Leave blank for missing; use ND/NA/UNK where appropriate. "
-    "If ratios are given (e.g., '50:50'), record them in *_ratio_*; "
-    "the code will compute *_derived volumes deterministically."
-)
-
-# --------- Helpers ---------
-def parse_tiers(tiers_arg: str) -> List[int]:
-    if not tiers_arg:
-        return [1, 2, 3]
-    out = []
-    for t in tiers_arg.split(","):
-        t = t.strip()
-        if t in {"1","2","3"}:
-            out.append(int(t))
-    return sorted(set(out)) or [1, 2, 3]
-
-def pick_fields_by_tiers(tiers: List[int]) -> List[str]:
-    fields: List[str] = []
-    if 1 in tiers:
-        fields += T1_FIELDS
-    if 2 in tiers:
-        fields += T2_FIELDS
-    # T3 (context) generally not required for GT; omit unless you want to add later
-    return fields
-
-def read_jsonl(path: Path) -> List[Dict[str, Any]]:
-    rows: List[Dict[str, Any]] = []
+def read_jsonl(path: Path) -> List[Dict]:
+    rows = []
     with path.open("r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
+        for i, line in enumerate(f, 1):
+            s = line.strip()
+            if not s:
+                # blank line
                 continue
             try:
-                rows.append(json.loads(line))
-            except Exception:
-                # ignore malformed lines silently
-                continue
+                rows.append(json.loads(s))
+            except Exception as e:
+                print(f"[WARN] skip bad JSONL line {i}: {e}")
     return rows
 
-def infer_separator_and_encoding(out_path: Path) -> Tuple[str, str]:
-    """
-    If .tsv -> (tab, utf-8) ; if .csv -> (comma, utf-8-sig for Excel)
-    """
-    ext = out_path.suffix.lower()
-    if ext == ".tsv":
-        return ("\t", "utf-8")
-    return (",", "utf-8-sig")
+def sniff_is_tsv(path: Path, max_lines: int = 3) -> bool:
+    # Heuristic: a .jsonl file that actually contains tabs/headers
+    cnt = 0
+    with path.open("r", encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            cnt += 1
+            if "\t" in line:
+                return True
+            if cnt >= max_lines:
+                break
+    return False
 
-def as_excel_text(val: str) -> str:
-    """
-    Force Excel to treat a value as text when opening CSV/TSV:
-    ="value"
-    Useful to prevent '50:50' -> time conversion.
-    """
-    if val is None or val == "":
-        return ""
-    return f'="{val}"'
+def load_weak(path: Path, input_type: str) -> pd.DataFrame:
+    if input_type == "auto":
+        if path.suffix.lower() == ".tsv":
+            input_type = "tsv"
+        elif path.suffix.lower() in (".jsonl", ".json"):
+            # sniff if it's actually a TSV mislabeled as jsonl
+            input_type = "tsv" if sniff_is_tsv(path) else "jsonl"
+        else:
+            # default try jsonl first
+            input_type = "jsonl"
 
-def is_ratio_field(name: str) -> bool:
-    return name.endswith("_ratio_text") or name.endswith("_ratio_norm")
+    if input_type == "jsonl":
+        rows = read_jsonl(path)
+        if not rows:
+            raise SystemExit(f"[ERROR] No valid JSON rows loaded from {path}")
+        df = pd.DataFrame(rows)
+    elif input_type == "tsv":
+        df = pd.read_csv(path, sep="\t", dtype=str)
+    else:
+        raise SystemExit(f"[ERROR] Unknown input_type: {input_type}")
 
-# --------- Core: write template ---------
-def make_template(
-    weak_jsonl: Path,
-    out_path: Path,
-    include_bins: bool,
-    tiers: List[int],
-    excel_safe_ratios: bool,
-) -> None:
-    data = read_jsonl(weak_jsonl)
-    if not data:
-        raise SystemExit(f"No data found in: {weak_jsonl}")
+    # basic normalize
+    for col in ["key", "tier"]:
+        if col in df.columns:
+            df[col] = df[col].astype(str)
+    if "key" not in df.columns:
+        raise SystemExit("[ERROR] weak labels must contain 'key' column")
 
-    field_list = pick_fields_by_tiers(tiers)
+    # ensure tier exists (default '1')
+    if "tier" not in df.columns:
+        df["tier"] = "1"
 
-    # Column order
-    cols: List[str] = ["key", "title", "formulation_id", "note"]
-    for f in field_list:
-        cols += [f"pred.{f}", f"gt.{f}"]
-    if include_bins:
-        for b in T1_BINS:
-            cols += [f"pred.{b}", f"gt.{b}"]
+    return df
 
-    delim, enc = infer_separator_and_encoding(out_path)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with out_path.open("w", newline="", encoding=enc) as wf:
-        w = csv.writer(wf, delimiter=delim)
-        # header row
-        w.writerow(cols)
+def select_cols(df: pd.DataFrame) -> Tuple[List[str], List[str]]:
+    meta_cols = [c for c in REQUIRED_META if c in df.columns] + ["tier"]
+    pred_cols = [c for c in PRED_COLS_CANDIDATES if c in df.columns]
+    # always put raw_json at end if present
+    if "raw_json" in pred_cols:
+        pred_cols = [c for c in pred_cols if c != "raw_json"] + ["raw_json"]
+    return meta_cols, pred_cols
 
-        for paper in data:
-            key = paper.get("key","")
-            title = paper.get("title","")
-            # New extractor format: each line is a per-paper object with 'formulations'
-            formulations = paper.get("formulations", []) or []
+def make_template(df: pd.DataFrame, tiers: List[str]) -> pd.DataFrame:
+    if tiers and (tiers != ["all"]):
+        df = df[df["tier"].isin(tiers)].copy()
+        kept = len(df)
+        total = len(df.index)
+        print(f"[INFO] Tier filter {tiers}: kept {kept}/{total}")
+    else:
+        print(f"[INFO] Tier filter [all]: kept {len(df)}/{len(df)}")
 
-            for f in formulations:
-                fid = f.get("id","")
-                fields = (f.get("fields") or {})
-                bins = (f.get("bins") or {})
+    meta_cols, pred_cols = select_cols(df)
+    # Build output columns: meta + pred_* + gt_* (parallel)
+    out_cols = meta_cols + [f"pred_{c}" for c in pred_cols if c != "raw_json"] + [f"gt_{c}" for c in pred_cols if c != "raw_json"] + (["pred_raw_json"] if "raw_json" in pred_cols else [])
 
-                row: List[str] = [str(key), str(title), str(fid)]
-                # Put the note only for the first formulation of each paper; else empty
-                note_text = HEADER_NOTE if str(fid) in ("1","1.0") else ""
-                row.append(note_text)
+    rows = []
+    for _, r in df.iterrows():
+        row = {}
+        for m in meta_cols:
+            row[m] = r.get(m, "")
+        for c in pred_cols:
+            if c == "raw_json":
+                row["pred_raw_json"] = r.get("raw_json", "")
+            else:
+                row[f"pred_{c}"] = r.get(c, "")
+                row[f"gt_{c}"] = ""  # empty for manual fill
+        rows.append(row)
 
-                # pred / gt field pairs
-                for field in field_list:
-                    pred_val = fields.get(field, "")
-                    # Excel-safe option for ratios (pred side)
-                    if excel_safe_ratios and is_ratio_field(field):
-                        pred_val = as_excel_text(str(pred_val))
-                    row.append(pred_val)  # pred.field
-                    row.append("")        # gt.field (left blank for annotators)
+    out_df = pd.DataFrame(rows, columns=out_cols)
+    return out_df
 
-                if include_bins:
-                    for b in T1_BINS:
-                        pred_bin = bins.get(b, "")
-                        if excel_safe_ratios and is_ratio_field(b):
-                            # bins are not ratios, but keep symmetry in case of future fields
-                            pred_bin = as_excel_text(str(pred_bin))
-                        row.append(pred_bin)  # pred.bin
-                        row.append("")        # gt.bin (optional annotation)
-
-                w.writerow(row)
-
-    print(f"[OK] Wrote template -> {out_path} (columns: {len(cols)})")
-    print("Tips:")
-    print(" - Prefer TSV and import with Excel's 'Data -> From Text/CSV', set ratio columns to 'Text'.")
-    if excel_safe_ratios:
-        print(" - Pred ratio columns were written as =\"A:B\" to avoid Excel time conversion.")
-
-# --------- CLI ---------
 def main():
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description="Ground-truth tool (template maker).")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    mk = sub.add_parser("make-template", help="Create a per-formulation GT TSV/CSV from weak_labels_v3.jsonl.")
-    mk.add_argument("--weak-jsonl", required=True, help="Path to weak_labels_v3.jsonl")
-    mk.add_argument("--out", required=True, help="Output path (.tsv recommended)")
-    mk.add_argument("--include-bins", action="store_true", help="Include Tier-1 bin columns (pred/gt)")
-    mk.add_argument("--tiers", default="1,2", help="Which tiers to include in GT: '1', '1,2' (default), or '1,2,3'")
-    mk.add_argument("--excel-safe-ratios", action="store_true",
-                    help="Wrap pred.* ratio fields as =\"A:B\" to prevent Excel auto-formatting (use with CSV/TSV).")
+    mk = sub.add_parser("make-template", help="Create manual label template from weak labels")
+    mk.add_argument("--weak", required=True, help="Path to weak labels (JSONL or TSV)")
+    mk.add_argument("--input-type", choices=["auto", "jsonl", "tsv"], default="auto", help="Force input type (default auto-detect)")
+    mk.add_argument("--tiers", default="1,2", help="Comma-separated tiers to keep, or 'all'")
+    mk.add_argument("--out", required=True, help="Output TSV path for manual labels")
+    mk.add_argument("--verbose", action="store_true")
 
     args = ap.parse_args()
 
     if args.cmd == "make-template":
-        make_template(
-            Path(args.weak_jsonl),
-            Path(args.out),
-            args.include_bins,
-            parse_tiers(args.tiers),
-            args.excel_safe_ratios,
-        )
+        weak_path = Path(args.weak)
+        out_path  = Path(args.out)
+        tiers = [t.strip() for t in args.tiers.split(",")] if args.tiers.lower() != "all" else ["all"]
+
+        if args.verbose:
+            print(f"[INFO] Loading weak labels: {weak_path} (input_type={args.input_type})")
+
+        df = load_weak(weak_path, input_type=args.input_type)
+
+        if args.verbose:
+            print(f"[INFO] Loaded {len(df)} weak-label rows from {weak_path}")
+
+        tmpl = make_template(df, tiers)
+
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        tmpl.to_csv(out_path, sep="\t", index=False, encoding="utf-8")
+
+        meta_cols, pred_cols = select_cols(df)
+        print(f"[OK] Template written: {out_path}")
+        print(f"[INFO] Rows={len(tmpl)}, pred_cols={len([c for c in pred_cols if c!='raw_json'])}, meta_cols={len(meta_cols)}")
 
 if __name__ == "__main__":
     main()
