@@ -7,6 +7,7 @@ This workflow provides a scalable framework not just for validating initial prom
 
 The key value of this project is that it transforms prompt engineering from a manual, trial-and-error process into a systematic, data-driven, and automated workflow, significantly improving development efficiency and model performance.
 
+```mermaid
 flowchart TB
   subgraph L0[0) Pre-filtering & Relevance Classification]
     A1[Raw CSV export\n(Zotero / database)]
