@@ -150,8 +150,7 @@ Data/*.json
 Data/*.xlsx
 Data/*.log
 Data/*.tmp
-Data/Raw_Papers/
-Data/Text_Papers/
+Data/raw/
 Data/Extracted/
 Data/Cleaned/
 Data/results/
@@ -183,3 +182,7 @@ Data/raw/
 Data/html_raw/
 *.pdf
 *.html
+
+# logs
+logs/
+runs/**/logs*.txt
