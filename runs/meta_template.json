@@ -1,0 +1,29 @@
+{
+  "run_id": "",
+  "created_at_local": "",
+  "git": {
+    "commit": "",
+    "branch": ""
+  },
+  "inputs": {
+    "manifest_current": "data/cleaned/index/manifest_current.tsv",
+    "key2txt": "data/cleaned/index/key2txt.tsv",
+    "sample_definition": "data/cleaned/samples/<sample10-file>",
+    "source_notes": ""
+  },
+  "configs": {
+    "config_used_path": "configs/<name>.yaml",
+    "cli_args": ""
+  },
+  "commands": [],
+  "outputs": {
+    "results_dir": "data/results/<run_id>/",
+    "files_expected": []
+  },
+  "status": {
+    "started_at_local": "",
+    "finished_at_local": "",
+    "exit_code": "",
+    "notes": ""
+  }
+}

@@ -123,3 +123,4 @@ These scripts should not be used unless explicitly referenced in documentation.
 - If a script’s role is unclear, consult:
   - `project/PIPELINE_SCRIPT_MAP.md`
   - `project/4_DECISIONS_LOG.md`
+- convert_sample_manifest_to_tsv.py — schema adapter for key2txt generation (not part of main pipeline)

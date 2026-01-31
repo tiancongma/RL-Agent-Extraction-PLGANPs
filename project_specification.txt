@@ -1,0 +1,113 @@
+Project: RL-Agent-Extraction-PLGANPs  (PI: Tiancong Ma)
+
+## Default Environment
+
+OS: Windows 11
+Python env: ..venv\Scripts\python.exe
+Working directory: C:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs
+
+Default manifest (authoritative):
+.\data\cleaned\index\manifest_current.tsv
+Note: This file is the single authoritative manifest and may be promoted from versioned manifests such as manifest_html10.tsv. It is expected to be overwritten when a new “current” manifest is promoted.
+
+Output directory (cleaned root):
+.\data\cleaned
+
+Cleaned content layout (fixed and frozen):
+Text output: .\data\cleaned\content\text
+Sections output: .\data\cleaned\content\sections
+Tables output: .\data\cleaned\content\tables
+Index and small assets: .\data\cleaned\index\
+
+Default clean command:
+python .\src\stage1_cleaning\pdf2clean.py --manifest .\data\cleaned\index\manifest_current.tsv --out-dir .\data\cleaned --prefer html --overwrite --verbose
+
+LLM extraction inputs:
+LLM extraction uses key2txt.tsv and the text folder produced by pdf2clean.
+Key mapping file: .\data\cleaned\index\key2txt.tsv
+Primary text folder: .\data\cleaned\content\text
+Optional folders: .\data\cleaned\content\sections\ and .\data\cleaned\content\tables\
+
+Zotero connection:
+pyzotero, ZOTERO_LIBRARY_TYPE=user, ZOTERO_LIBRARY_ID=18477538, ZOTERO_API_KEY
+
+Typical Zotero tags:
+LLM-Relevant, PLGA, Extracted
+
+Preferred source:
+HTML > PDF (higher parse_quality)
+
+Fields tracked:
+source_type, parse_quality, table_detected, text_length, notes.
+
+LLM GEMINI API KEY:
+Stored in .env, GEMINI_API_KEY=XXXXXXX
+
+Development & Debug Policy (VS Code):
+I use VS Code for development and debugging.
+When adding or modifying a Python script (English only), I always create or update a launch.json entry first for small-batch debugging.
+
+## Development Philosophy
+
+This project follows a step-by-step debugging and verification workflow to ensure full reproducibility and transparency at every stage of the data extraction and processing pipeline.
+
+Key Principles:
+
+1. Incremental Debugging:
+   Each processing step (e.g., CSV → Manifest → Clean → Weak Label → Ground Truth Template) is developed, debugged, and validated individually before proceeding to the next stage.
+
+2. Standalone Executability:
+   Every Python script must be independently executable from the command line, with all required arguments defined in its own argparse section.
+   No script should rely on patch files, ad-hoc code snippets, or manual editing between runs.
+
+3. Direct Replace Policy:
+   When a bug is found, the preferred solution is to replace the entire file with a clean, fully corrected version, rather than applying small inline patches.
+   This guarantees that each saved .py file is a ready-to-run version reflecting the latest stable state.
+
+4. Minimal Reproduction Commands:
+   Each script includes at the top a short example command showing the minimal reproducible use case, designed for quick verification (e.g., processing 3–5 sample rows).
+
+5. Launch.json Integration:
+   For local debugging in VS Code, every new or modified script has a corresponding launch.json configuration, enabling one-click execution in an isolated, traceable environment.
+
+6. No One-Shot Full Runs:
+   Full-dataset execution is only performed after all intermediate steps have been individually validated. This saves time, tokens, and debugging overhead.
+   Explicit criteria for when to scale up from small-batch to full-dataset runs.
+
+## Typical Pipelines
+
+1. CSV → Manifest
+   python .\src\stage0_relevance\csv2clean_manifest.py --input data\raw\zotero_export.csv --outroot data --overwrite --verbose
+
+Expected outputs (key files):
+data\cleaned\index\manifest_current.tsv
+data\cleaned\index\key2txt.tsv
+
+2. Manifest → Clean
+   python .\src\stage1_cleaning\pdf2clean.py --manifest .\data\cleaned\index\manifest_current.tsv --out-dir .\data\cleaned --prefer html --overwrite --verbose
+
+Expected outputs (folders):
+data\cleaned\content\text
+data\cleaned\content\sections
+data\cleaned\content\tables\
+
+3. Clean → Label / Score
+   python .\src\stage2_sampling_labels\gt_tool.py --input data\cleaned\index\key2txt.tsv --labels data\labels\manual_labels.tsv
+
+## Error Recovery Rules
+
+SystemExit: 2
+→ Missing args; check manifest path.
+
+No HTML/PDF found
+→ Verify paths in manifest_current.tsv and confirm files exist on disk.
+
+No extractable text (scanned/encrypted?)
+→ Run OCR first or skip.
+
+Unrecognized arguments
+→ Legacy CLI call; switch to manifest mode or patch build_arg_parser.
+
+## Goal
+
+Maintain a clean, reproducible LLM extraction dataset for PLGA nanoparticle synthesis.

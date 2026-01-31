@@ -1,0 +1,1431 @@
+RL-Agent-Extraction-PLGANPs/
+├─ .git
+│  ├─ hooks
+│  │  ├─ applypatch-msg.sample
+│  │  ├─ commit-msg.sample
+│  │  ├─ fsmonitor-watchman.sample
+│  │  ├─ post-update.sample
+│  │  ├─ pre-applypatch.sample
+│  │  ├─ pre-commit.sample
+│  │  ├─ pre-merge-commit.sample
+│  │  ├─ pre-push.sample
+│  │  ├─ pre-rebase.sample
+│  │  ├─ pre-receive.sample
+│  │  ├─ prepare-commit-msg.sample
+│  │  ├─ push-to-checkout.sample
+│  │  ├─ sendemail-validate.sample
+│  │  └─ update.sample
+│  ├─ info
+│  │  └─ exclude
+│  ├─ logs
+│  │  ├─ refs
+│  │  │  ├─ heads
+│  │  │  │  └─ main
+│  │  │  └─ remotes
+│  │  │     └─ origin
+│  │  │        ├─ HEAD
+│  │  │        └─ main
+│  │  └─ HEAD
+│  ├─ objects
+│  │  ├─ 00
+│  │  │  └─ 3620e7efdc37ebf4e2ac1856b731b3ccb6f855
+│  │  ├─ 05
+│  │  │  └─ 34d8e24469aa220e3cff9fb0c63accef5dd4b4
+│  │  ├─ 06
+│  │  │  ├─ 1e4e1034fc06543f201bfc06fcbc1e2bc9dbbf
+│  │  │  ├─ 56af3687664c9d516542ea3052b655af360129
+│  │  │  └─ e1a13526002be84ae8385477f4a3b7e3aa5a46
+│  │  ├─ 0a
+│  │  │  ├─ 48ae3e696c0c1c0ca55e58f3f2a63d0df2eebd
+│  │  │  └─ 54a5825ccdc3e109b624867024eda69e4f6deb
+│  │  ├─ 0b
+│  │  │  └─ 7b5c93c8769705f982f9c775d8efe8eb63d35f
+│  │  ├─ 0d
+│  │  │  ├─ 5ee807e0ceec29f3d37fddf3b5b8ce6b5de9af
+│  │  │  └─ 8228c57f33332649e9299fbffdf5e433f9bbe5
+│  │  ├─ 0e
+│  │  │  ├─ 1db554d33d6990c5e03b5e485912fb0f148cd0
+│  │  │  └─ 35cdf8617b01c42da147021bcceaf795fb0605
+│  │  ├─ 11
+│  │  │  └─ a50177a2102d188ec5ad3a89e29e45829e75f0
+│  │  ├─ 12
+│  │  │  └─ 915532064540b14b1a11671b059c5786c0869a
+│  │  ├─ 13
+│  │  │  └─ d20e7be06791b976d921398bd9488c02292aa6
+│  │  ├─ 15
+│  │  │  └─ 57caace35f52b3cfda9cef4fa33c8460f488b2
+│  │  ├─ 19
+│  │  │  └─ ebd8a791d4c495f428c7cd3faf872a6d36c337
+│  │  ├─ 1b
+│  │  │  ├─ 80d1fa25b5dd16a5ed24957f39ea02299080b1
+│  │  │  └─ a387a6eba04bad6061e877812fdfca1661cad5
+│  │  ├─ 1e
+│  │  │  └─ 665c4636d86b3fbdeb7972db2548564eff9474
+│  │  ├─ 24
+│  │  │  └─ 1e4217d630c78902f7970ff32f6372609ba81d
+│  │  ├─ 25
+│  │  │  └─ cb2743eab1689619970af4f8ee8a28fc9a4276
+│  │  ├─ 27
+│  │  │  ├─ 480ef2cef4534195f02570c22bd45916ed54fc
+│  │  │  └─ 9fcc169e146ecd01f76b0e25f0bdda4db08c9a
+│  │  ├─ 29
+│  │  │  └─ c3d30cd40805e83258181e297ec80e591e20ec
+│  │  ├─ 2e
+│  │  │  └─ 89dc0060d040de4696183144055bda8270918e
+│  │  ├─ 30
+│  │  │  └─ a8f74cbcfe42e680f2ed2fc6cf0b07b5ff3a26
+│  │  ├─ 32
+│  │  │  └─ c237c93506f4e2e37a52610d2b97c021a01ee0
+│  │  ├─ 33
+│  │  │  └─ 46a262cbd9543a95566094f0514a9a921a7ad6
+│  │  ├─ 34
+│  │  │  └─ 7984eab35977776def8d663b4389181e532fef
+│  │  ├─ 38
+│  │  │  └─ 68720ecac9c5b5f4b9ec2bbd77f6672db18d74
+│  │  ├─ 39
+│  │  │  └─ 38520243056d24476a872a7fc554b2bf4195cd
+│  │  ├─ 3b
+│  │  │  └─ f463731e85bb95c49348673b64e2d5cceec1ea
+│  │  ├─ 40
+│  │  │  └─ facdb8c737df058fcaf321a57dde34b7356a5b
+│  │  ├─ 42
+│  │  │  └─ 743a31be386045603071286dec39bb83da3ecf
+│  │  ├─ 4c
+│  │  │  └─ ee68ca0d4be15dccfd912f270a6bc459dc123e
+│  │  ├─ 4d
+│  │  │  └─ 8bf355b36bd338855b8a0246d333e6436bcf6e
+│  │  └─ ... (56 more items omitted)
+│  ├─ refs
+│  │  ├─ heads
+│  │  │  └─ main
+│  │  ├─ remotes
+│  │  │  └─ origin
+│  │  │     ├─ HEAD
+│  │  │     └─ main
+│  │  └─ tags
+│  ├─ COMMIT_EDITMSG
+│  ├─ config
+│  ├─ description
+│  ├─ FETCH_HEAD
+│  ├─ HEAD
+│  ├─ index
+│  ├─ ORIG_HEAD
+│  └─ packed-refs
+├─ .venv
+│  ├─ Include
+│  ├─ Lib
+│  │  └─ site-packages
+│  │     ├─ __pycache__
+│  │     │  ├─ google_auth_httplib2.cpython-313.pyc
+│  │     │  ├─ sgmllib.cpython-313.pyc
+│  │     │  ├─ six.cpython-313.pyc
+│  │     │  └─ typing_extensions.cpython-313.pyc
+│  │     ├─ annotated_types
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  └─ test_cases.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ py.typed
+│  │     │  └─ test_cases.py
+│  │     ├─ annotated_types-0.7.0.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  └─ WHEEL
+│  │     ├─ anyio
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ from_thread.cpython-313.pyc
+│  │     │  │  ├─ lowlevel.cpython-313.pyc
+│  │     │  │  ├─ pytest_plugin.cpython-313.pyc
+│  │     │  │  ├─ to_interpreter.cpython-313.pyc
+│  │     │  │  ├─ to_process.cpython-313.pyc
+│  │     │  │  └─ to_thread.cpython-313.pyc
+│  │     │  ├─ _backends
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _asyncio.cpython-313.pyc
+│  │     │  │  │  └─ _trio.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _asyncio.py
+│  │     │  │  └─ _trio.py
+│  │     │  ├─ _core
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _asyncio_selector_thread.cpython-313.pyc
+│  │     │  │  │  ├─ _contextmanagers.cpython-313.pyc
+│  │     │  │  │  ├─ _eventloop.cpython-313.pyc
+│  │     │  │  │  ├─ _exceptions.cpython-313.pyc
+│  │     │  │  │  ├─ _fileio.cpython-313.pyc
+│  │     │  │  │  ├─ _resources.cpython-313.pyc
+│  │     │  │  │  ├─ _signals.cpython-313.pyc
+│  │     │  │  │  ├─ _sockets.cpython-313.pyc
+│  │     │  │  │  ├─ _streams.cpython-313.pyc
+│  │     │  │  │  ├─ _subprocesses.cpython-313.pyc
+│  │     │  │  │  ├─ _synchronization.cpython-313.pyc
+│  │     │  │  │  ├─ _tasks.cpython-313.pyc
+│  │     │  │  │  ├─ _tempfile.cpython-313.pyc
+│  │     │  │  │  ├─ _testing.cpython-313.pyc
+│  │     │  │  │  └─ _typedattr.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _asyncio_selector_thread.py
+│  │     │  │  ├─ _contextmanagers.py
+│  │     │  │  ├─ _eventloop.py
+│  │     │  │  ├─ _exceptions.py
+│  │     │  │  ├─ _fileio.py
+│  │     │  │  ├─ _resources.py
+│  │     │  │  ├─ _signals.py
+│  │     │  │  ├─ _sockets.py
+│  │     │  │  ├─ _streams.py
+│  │     │  │  ├─ _subprocesses.py
+│  │     │  │  ├─ _synchronization.py
+│  │     │  │  ├─ _tasks.py
+│  │     │  │  ├─ _tempfile.py
+│  │     │  │  ├─ _testing.py
+│  │     │  │  └─ _typedattr.py
+│  │     │  ├─ abc
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _eventloop.cpython-313.pyc
+│  │     │  │  │  ├─ _resources.cpython-313.pyc
+│  │     │  │  │  ├─ _sockets.cpython-313.pyc
+│  │     │  │  │  ├─ _streams.cpython-313.pyc
+│  │     │  │  │  ├─ _subprocesses.cpython-313.pyc
+│  │     │  │  │  ├─ _tasks.cpython-313.pyc
+│  │     │  │  │  └─ _testing.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _eventloop.py
+│  │     │  │  ├─ _resources.py
+│  │     │  │  ├─ _sockets.py
+│  │     │  │  ├─ _streams.py
+│  │     │  │  ├─ _subprocesses.py
+│  │     │  │  ├─ _tasks.py
+│  │     │  │  └─ _testing.py
+│  │     │  ├─ streams
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ buffered.cpython-313.pyc
+│  │     │  │  │  ├─ file.cpython-313.pyc
+│  │     │  │  │  ├─ memory.cpython-313.pyc
+│  │     │  │  │  ├─ stapled.cpython-313.pyc
+│  │     │  │  │  ├─ text.cpython-313.pyc
+│  │     │  │  │  └─ tls.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ buffered.py
+│  │     │  │  ├─ file.py
+│  │     │  │  ├─ memory.py
+│  │     │  │  ├─ stapled.py
+│  │     │  │  ├─ text.py
+│  │     │  │  └─ tls.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ from_thread.py
+│  │     │  ├─ lowlevel.py
+│  │     │  ├─ py.typed
+│  │     │  ├─ pytest_plugin.py
+│  │     │  ├─ to_interpreter.py
+│  │     │  ├─ to_process.py
+│  │     │  └─ to_thread.py
+│  │     ├─ anyio-4.11.0.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ apiclient
+│  │     │  ├─ __pycache__
+│  │     │  │  └─ __init__.cpython-313.pyc
+│  │     │  └─ __init__.py
+│  │     ├─ babel
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ core.cpython-313.pyc
+│  │     │  │  ├─ dates.cpython-313.pyc
+│  │     │  │  ├─ languages.cpython-313.pyc
+│  │     │  │  ├─ lists.cpython-313.pyc
+│  │     │  │  ├─ localedata.cpython-313.pyc
+│  │     │  │  ├─ numbers.cpython-313.pyc
+│  │     │  │  ├─ plural.cpython-313.pyc
+│  │     │  │  ├─ support.cpython-313.pyc
+│  │     │  │  ├─ units.cpython-313.pyc
+│  │     │  │  └─ util.cpython-313.pyc
+│  │     │  ├─ locale-data
+│  │     │  │  ├─ aa.dat
+│  │     │  │  ├─ aa_DJ.dat
+│  │     │  │  ├─ aa_ER.dat
+│  │     │  │  ├─ aa_ET.dat
+│  │     │  │  ├─ ab.dat
+│  │     │  │  ├─ ab_GE.dat
+│  │     │  │  ├─ af.dat
+│  │     │  │  ├─ af_NA.dat
+│  │     │  │  ├─ af_ZA.dat
+│  │     │  │  ├─ agq.dat
+│  │     │  │  ├─ agq_CM.dat
+│  │     │  │  ├─ ak.dat
+│  │     │  │  ├─ ak_GH.dat
+│  │     │  │  ├─ am.dat
+│  │     │  │  ├─ am_ET.dat
+│  │     │  │  ├─ an.dat
+│  │     │  │  ├─ an_ES.dat
+│  │     │  │  ├─ ann.dat
+│  │     │  │  ├─ ann_NG.dat
+│  │     │  │  ├─ apc.dat
+│  │     │  │  ├─ apc_SY.dat
+│  │     │  │  ├─ ar.dat
+│  │     │  │  ├─ ar_001.dat
+│  │     │  │  ├─ ar_AE.dat
+│  │     │  │  ├─ ar_BH.dat
+│  │     │  │  ├─ ar_DJ.dat
+│  │     │  │  ├─ ar_DZ.dat
+│  │     │  │  ├─ ar_EG.dat
+│  │     │  │  ├─ ar_EH.dat
+│  │     │  │  ├─ ar_ER.dat
+│  │     │  │  └─ ... (1038 more items omitted)
+│  │     │  ├─ localtime
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _fallback.cpython-313.pyc
+│  │     │  │  │  ├─ _helpers.cpython-313.pyc
+│  │     │  │  │  ├─ _unix.cpython-313.pyc
+│  │     │  │  │  └─ _win32.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _fallback.py
+│  │     │  │  ├─ _helpers.py
+│  │     │  │  ├─ _unix.py
+│  │     │  │  └─ _win32.py
+│  │     │  ├─ messages
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _compat.cpython-313.pyc
+│  │     │  │  │  ├─ catalog.cpython-313.pyc
+│  │     │  │  │  ├─ checkers.cpython-313.pyc
+│  │     │  │  │  ├─ extract.cpython-313.pyc
+│  │     │  │  │  ├─ frontend.cpython-313.pyc
+│  │     │  │  │  ├─ jslexer.cpython-313.pyc
+│  │     │  │  │  ├─ mofile.cpython-313.pyc
+│  │     │  │  │  ├─ plurals.cpython-313.pyc
+│  │     │  │  │  ├─ pofile.cpython-313.pyc
+│  │     │  │  │  └─ setuptools_frontend.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _compat.py
+│  │     │  │  ├─ catalog.py
+│  │     │  │  ├─ checkers.py
+│  │     │  │  ├─ extract.py
+│  │     │  │  ├─ frontend.py
+│  │     │  │  ├─ jslexer.py
+│  │     │  │  ├─ mofile.py
+│  │     │  │  ├─ plurals.py
+│  │     │  │  ├─ pofile.py
+│  │     │  │  └─ setuptools_frontend.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ core.py
+│  │     │  ├─ dates.py
+│  │     │  ├─ global.dat
+│  │     │  ├─ languages.py
+│  │     │  ├─ lists.py
+│  │     │  ├─ localedata.py
+│  │     │  ├─ numbers.py
+│  │     │  ├─ plural.py
+│  │     │  ├─ py.typed
+│  │     │  ├─ support.py
+│  │     │  ├─ units.py
+│  │     │  └─ util.py
+│  │     ├─ babel-2.17.0.dist-info
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ LICENSE
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ beautifulsoup4-4.14.2.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  ├─ AUTHORS
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ REQUESTED
+│  │     │  └─ WHEEL
+│  │     ├─ bibtexparser
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ bibdatabase.cpython-313.pyc
+│  │     │  │  ├─ bibtexexpression.cpython-313.pyc
+│  │     │  │  ├─ bparser.cpython-313.pyc
+│  │     │  │  ├─ bwriter.cpython-313.pyc
+│  │     │  │  ├─ customization.cpython-313.pyc
+│  │     │  │  └─ latexenc.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ bibdatabase.py
+│  │     │  ├─ bibtexexpression.py
+│  │     │  ├─ bparser.py
+│  │     │  ├─ bwriter.py
+│  │     │  ├─ customization.py
+│  │     │  └─ latexenc.py
+│  │     ├─ bibtexparser-1.4.3.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ COPYING
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ bs4
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ _deprecation.cpython-313.pyc
+│  │     │  │  ├─ _typing.cpython-313.pyc
+│  │     │  │  ├─ _warnings.cpython-313.pyc
+│  │     │  │  ├─ css.cpython-313.pyc
+│  │     │  │  ├─ dammit.cpython-313.pyc
+│  │     │  │  ├─ diagnose.cpython-313.pyc
+│  │     │  │  ├─ element.cpython-313.pyc
+│  │     │  │  ├─ exceptions.cpython-313.pyc
+│  │     │  │  ├─ filter.cpython-313.pyc
+│  │     │  │  └─ formatter.cpython-313.pyc
+│  │     │  ├─ builder
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _html5lib.cpython-313.pyc
+│  │     │  │  │  ├─ _htmlparser.cpython-313.pyc
+│  │     │  │  │  └─ _lxml.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _html5lib.py
+│  │     │  │  ├─ _htmlparser.py
+│  │     │  │  └─ _lxml.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ _deprecation.py
+│  │     │  ├─ _typing.py
+│  │     │  ├─ _warnings.py
+│  │     │  ├─ css.py
+│  │     │  ├─ dammit.py
+│  │     │  ├─ diagnose.py
+│  │     │  ├─ element.py
+│  │     │  ├─ exceptions.py
+│  │     │  ├─ filter.py
+│  │     │  ├─ formatter.py
+│  │     │  └─ py.typed
+│  │     ├─ cachetools
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ _cached.cpython-313.pyc
+│  │     │  │  ├─ _cachedmethod.cpython-313.pyc
+│  │     │  │  ├─ func.cpython-313.pyc
+│  │     │  │  └─ keys.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ _cached.py
+│  │     │  ├─ _cachedmethod.py
+│  │     │  ├─ func.py
+│  │     │  └─ keys.py
+│  │     ├─ cachetools-6.2.1.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ camelot
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ __main__.cpython-313.pyc
+│  │     │  │  ├─ cli.cpython-313.pyc
+│  │     │  │  ├─ core.cpython-313.pyc
+│  │     │  │  ├─ handlers.cpython-313.pyc
+│  │     │  │  ├─ image_processing.cpython-313.pyc
+│  │     │  │  ├─ io.cpython-313.pyc
+│  │     │  │  ├─ plotting.cpython-313.pyc
+│  │     │  │  └─ utils.cpython-313.pyc
+│  │     │  ├─ backends
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ base.cpython-313.pyc
+│  │     │  │  │  ├─ ghostscript_backend.cpython-313.pyc
+│  │     │  │  │  ├─ image_conversion.cpython-313.pyc
+│  │     │  │  │  ├─ pdfium_backend.cpython-313.pyc
+│  │     │  │  │  └─ poppler_backend.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ base.py
+│  │     │  │  ├─ ghostscript_backend.py
+│  │     │  │  ├─ image_conversion.py
+│  │     │  │  ├─ pdfium_backend.py
+│  │     │  │  └─ poppler_backend.py
+│  │     │  ├─ parsers
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ base.cpython-313.pyc
+│  │     │  │  │  ├─ hybrid.cpython-313.pyc
+│  │     │  │  │  ├─ lattice.cpython-313.pyc
+│  │     │  │  │  ├─ network.cpython-313.pyc
+│  │     │  │  │  └─ stream.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ base.py
+│  │     │  │  ├─ hybrid.py
+│  │     │  │  ├─ lattice.py
+│  │     │  │  ├─ network.py
+│  │     │  │  └─ stream.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ __main__.py
+│  │     │  ├─ cli.py
+│  │     │  ├─ core.py
+│  │     │  ├─ handlers.py
+│  │     │  ├─ image_processing.py
+│  │     │  ├─ io.py
+│  │     │  ├─ plotting.py
+│  │     │  ├─ py.typed
+│  │     │  └─ utils.py
+│  │     ├─ camelot_py-1.0.9.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ REQUESTED
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ certifi
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ __main__.cpython-313.pyc
+│  │     │  │  └─ core.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ __main__.py
+│  │     │  ├─ cacert.pem
+│  │     │  ├─ core.py
+│  │     │  └─ py.typed
+│  │     ├─ certifi-2025.10.5.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ cffi
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ _imp_emulation.cpython-313.pyc
+│  │     │  │  ├─ _shimmed_dist_utils.cpython-313.pyc
+│  │     │  │  ├─ api.cpython-313.pyc
+│  │     │  │  ├─ backend_ctypes.cpython-313.pyc
+│  │     │  │  ├─ cffi_opcode.cpython-313.pyc
+│  │     │  │  ├─ commontypes.cpython-313.pyc
+│  │     │  │  ├─ cparser.cpython-313.pyc
+│  │     │  │  ├─ error.cpython-313.pyc
+│  │     │  │  ├─ ffiplatform.cpython-313.pyc
+│  │     │  │  ├─ lock.cpython-313.pyc
+│  │     │  │  ├─ model.cpython-313.pyc
+│  │     │  │  ├─ pkgconfig.cpython-313.pyc
+│  │     │  │  ├─ recompiler.cpython-313.pyc
+│  │     │  │  ├─ setuptools_ext.cpython-313.pyc
+│  │     │  │  ├─ vengine_cpy.cpython-313.pyc
+│  │     │  │  ├─ vengine_gen.cpython-313.pyc
+│  │     │  │  └─ verifier.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ _cffi_errors.h
+│  │     │  ├─ _cffi_include.h
+│  │     │  ├─ _embedding.h
+│  │     │  ├─ _imp_emulation.py
+│  │     │  ├─ _shimmed_dist_utils.py
+│  │     │  ├─ api.py
+│  │     │  ├─ backend_ctypes.py
+│  │     │  ├─ cffi_opcode.py
+│  │     │  ├─ commontypes.py
+│  │     │  ├─ cparser.py
+│  │     │  ├─ error.py
+│  │     │  ├─ ffiplatform.py
+│  │     │  ├─ lock.py
+│  │     │  ├─ model.py
+│  │     │  ├─ parse_c_type.h
+│  │     │  ├─ pkgconfig.py
+│  │     │  ├─ recompiler.py
+│  │     │  ├─ setuptools_ext.py
+│  │     │  ├─ vengine_cpy.py
+│  │     │  ├─ vengine_gen.py
+│  │     │  └─ verifier.py
+│  │     ├─ cffi-2.0.0.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  ├─ AUTHORS
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ chardet
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ __main__.cpython-313.pyc
+│  │     │  │  ├─ big5freq.cpython-313.pyc
+│  │     │  │  ├─ big5prober.cpython-313.pyc
+│  │     │  │  ├─ chardistribution.cpython-313.pyc
+│  │     │  │  ├─ charsetgroupprober.cpython-313.pyc
+│  │     │  │  ├─ charsetprober.cpython-313.pyc
+│  │     │  │  ├─ codingstatemachine.cpython-313.pyc
+│  │     │  │  ├─ codingstatemachinedict.cpython-313.pyc
+│  │     │  │  ├─ cp949prober.cpython-313.pyc
+│  │     │  │  ├─ enums.cpython-313.pyc
+│  │     │  │  ├─ escprober.cpython-313.pyc
+│  │     │  │  ├─ escsm.cpython-313.pyc
+│  │     │  │  ├─ eucjpprober.cpython-313.pyc
+│  │     │  │  ├─ euckrfreq.cpython-313.pyc
+│  │     │  │  ├─ euckrprober.cpython-313.pyc
+│  │     │  │  ├─ euctwfreq.cpython-313.pyc
+│  │     │  │  ├─ euctwprober.cpython-313.pyc
+│  │     │  │  ├─ gb2312freq.cpython-313.pyc
+│  │     │  │  ├─ gb2312prober.cpython-313.pyc
+│  │     │  │  ├─ hebrewprober.cpython-313.pyc
+│  │     │  │  ├─ jisfreq.cpython-313.pyc
+│  │     │  │  ├─ johabfreq.cpython-313.pyc
+│  │     │  │  ├─ johabprober.cpython-313.pyc
+│  │     │  │  ├─ jpcntx.cpython-313.pyc
+│  │     │  │  ├─ langbulgarianmodel.cpython-313.pyc
+│  │     │  │  ├─ langgreekmodel.cpython-313.pyc
+│  │     │  │  ├─ langhebrewmodel.cpython-313.pyc
+│  │     │  │  ├─ langhungarianmodel.cpython-313.pyc
+│  │     │  │  ├─ langrussianmodel.cpython-313.pyc
+│  │     │  │  └─ ... (15 more items omitted)
+│  │     │  ├─ cli
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  └─ chardetect.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  └─ chardetect.py
+│  │     │  ├─ metadata
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  └─ languages.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  └─ languages.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ __main__.py
+│  │     │  ├─ big5freq.py
+│  │     │  ├─ big5prober.py
+│  │     │  ├─ chardistribution.py
+│  │     │  ├─ charsetgroupprober.py
+│  │     │  ├─ charsetprober.py
+│  │     │  ├─ codingstatemachine.py
+│  │     │  ├─ codingstatemachinedict.py
+│  │     │  ├─ cp949prober.py
+│  │     │  ├─ enums.py
+│  │     │  ├─ escprober.py
+│  │     │  ├─ escsm.py
+│  │     │  ├─ eucjpprober.py
+│  │     │  ├─ euckrfreq.py
+│  │     │  ├─ euckrprober.py
+│  │     │  ├─ euctwfreq.py
+│  │     │  ├─ euctwprober.py
+│  │     │  ├─ gb2312freq.py
+│  │     │  ├─ gb2312prober.py
+│  │     │  ├─ hebrewprober.py
+│  │     │  ├─ jisfreq.py
+│  │     │  ├─ johabfreq.py
+│  │     │  ├─ johabprober.py
+│  │     │  ├─ jpcntx.py
+│  │     │  ├─ langbulgarianmodel.py
+│  │     │  ├─ langgreekmodel.py
+│  │     │  └─ ... (19 more items omitted)
+│  │     ├─ chardet-5.2.0.dist-info
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ LICENSE
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ charset_normalizer
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ __main__.cpython-313.pyc
+│  │     │  │  ├─ api.cpython-313.pyc
+│  │     │  │  ├─ cd.cpython-313.pyc
+│  │     │  │  ├─ constant.cpython-313.pyc
+│  │     │  │  ├─ legacy.cpython-313.pyc
+│  │     │  │  ├─ md.cpython-313.pyc
+│  │     │  │  ├─ models.cpython-313.pyc
+│  │     │  │  ├─ utils.cpython-313.pyc
+│  │     │  │  └─ version.cpython-313.pyc
+│  │     │  ├─ cli
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  └─ __main__.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  └─ __main__.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ __main__.py
+│  │     │  ├─ api.py
+│  │     │  ├─ cd.py
+│  │     │  ├─ constant.py
+│  │     │  ├─ legacy.py
+│  │     │  ├─ md.cp313-win_amd64.pyd
+│  │     │  ├─ md.py
+│  │     │  ├─ md__mypyc.cp313-win_amd64.pyd
+│  │     │  ├─ models.py
+│  │     │  ├─ py.typed
+│  │     │  ├─ utils.py
+│  │     │  └─ version.py
+│  │     ├─ charset_normalizer-3.4.4.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     ├─ click
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ _compat.cpython-313.pyc
+│  │     │  │  ├─ _termui_impl.cpython-313.pyc
+│  │     │  │  ├─ _textwrap.cpython-313.pyc
+│  │     │  │  ├─ _utils.cpython-313.pyc
+│  │     │  │  ├─ _winconsole.cpython-313.pyc
+│  │     │  │  ├─ core.cpython-313.pyc
+│  │     │  │  ├─ decorators.cpython-313.pyc
+│  │     │  │  ├─ exceptions.cpython-313.pyc
+│  │     │  │  ├─ formatting.cpython-313.pyc
+│  │     │  │  ├─ globals.cpython-313.pyc
+│  │     │  │  ├─ parser.cpython-313.pyc
+│  │     │  │  ├─ shell_completion.cpython-313.pyc
+│  │     │  │  ├─ termui.cpython-313.pyc
+│  │     │  │  ├─ testing.cpython-313.pyc
+│  │     │  │  ├─ types.cpython-313.pyc
+│  │     │  │  └─ utils.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ _compat.py
+│  │     │  ├─ _termui_impl.py
+│  │     │  ├─ _textwrap.py
+│  │     │  ├─ _utils.py
+│  │     │  ├─ _winconsole.py
+│  │     │  ├─ core.py
+│  │     │  ├─ decorators.py
+│  │     │  ├─ exceptions.py
+│  │     │  ├─ formatting.py
+│  │     │  ├─ globals.py
+│  │     │  ├─ parser.py
+│  │     │  ├─ py.typed
+│  │     │  ├─ shell_completion.py
+│  │     │  ├─ termui.py
+│  │     │  ├─ testing.py
+│  │     │  ├─ types.py
+│  │     │  └─ utils.py
+│  │     ├─ click-8.3.0.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  └─ WHEEL
+│  │     ├─ colorama
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ ansi.cpython-313.pyc
+│  │     │  │  ├─ ansitowin32.cpython-313.pyc
+│  │     │  │  ├─ initialise.cpython-313.pyc
+│  │     │  │  ├─ win32.cpython-313.pyc
+│  │     │  │  └─ winterm.cpython-313.pyc
+│  │     │  ├─ tests
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ ansi_test.cpython-313.pyc
+│  │     │  │  │  ├─ ansitowin32_test.cpython-313.pyc
+│  │     │  │  │  ├─ initialise_test.cpython-313.pyc
+│  │     │  │  │  ├─ isatty_test.cpython-313.pyc
+│  │     │  │  │  ├─ utils.cpython-313.pyc
+│  │     │  │  │  └─ winterm_test.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ ansi_test.py
+│  │     │  │  ├─ ansitowin32_test.py
+│  │     │  │  ├─ initialise_test.py
+│  │     │  │  ├─ isatty_test.py
+│  │     │  │  ├─ utils.py
+│  │     │  │  └─ winterm_test.py
+│  │     │  ├─ __init__.py
+│  │     │  ├─ ansi.py
+│  │     │  ├─ ansitowin32.py
+│  │     │  ├─ initialise.py
+│  │     │  ├─ win32.py
+│  │     │  └─ winterm.py
+│  │     ├─ colorama-0.4.6.dist-info
+│  │     │  ├─ licenses
+│  │     │  │  └─ LICENSE.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  └─ WHEEL
+│  │     ├─ courlan
+│  │     │  ├─ __pycache__
+│  │     │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  ├─ clean.cpython-313.pyc
+│  │     │  │  ├─ cli.cpython-313.pyc
+│  │     │  │  ├─ core.cpython-313.pyc
+│  │     │  │  ├─ filters.cpython-313.pyc
+│  │     │  │  ├─ meta.cpython-313.pyc
+│  │     │  │  ├─ network.cpython-313.pyc
+│  │     │  │  ├─ sampling.cpython-313.pyc
+│  │     │  │  ├─ settings.cpython-313.pyc
+│  │     │  │  ├─ urlstore.cpython-313.pyc
+│  │     │  │  └─ urlutils.cpython-313.pyc
+│  │     │  ├─ __init__.py
+│  │     │  ├─ clean.py
+│  │     │  ├─ cli.py
+│  │     │  ├─ core.py
+│  │     │  ├─ filters.py
+│  │     │  ├─ meta.py
+│  │     │  ├─ network.py
+│  │     │  ├─ py.typed
+│  │     │  ├─ sampling.py
+│  │     │  ├─ settings.py
+│  │     │  ├─ urlstore.py
+│  │     │  └─ urlutils.py
+│  │     ├─ courlan-1.3.2.dist-info
+│  │     │  ├─ entry_points.txt
+│  │     │  ├─ INSTALLER
+│  │     │  ├─ LICENSE
+│  │     │  ├─ METADATA
+│  │     │  ├─ RECORD
+│  │     │  ├─ top_level.txt
+│  │     │  └─ WHEEL
+│  │     └─ ... (135 more items omitted)
+│  ├─ Scripts
+│  │  ├─ __pycache__
+│  │  │  ├─ dumppdf.cpython-313.pyc
+│  │  │  └─ pdf2txt.cpython-313.pyc
+│  │  ├─ activate
+│  │  ├─ activate.bat
+│  │  ├─ activate.fish
+│  │  ├─ Activate.ps1
+│  │  ├─ camelot.exe
+│  │  ├─ chardetect.exe
+│  │  ├─ courlan.exe
+│  │  ├─ dateparser-download.exe
+│  │  ├─ deactivate.bat
+│  │  ├─ distro.exe
+│  │  ├─ dotenv.exe
+│  │  ├─ dumppdf.py
+│  │  ├─ f2py.exe
+│  │  ├─ htmldate.exe
+│  │  ├─ httpx.exe
+│  │  ├─ normalizer.exe
+│  │  ├─ numpy-config.exe
+│  │  ├─ pdf2txt.py
+│  │  ├─ pip.exe
+│  │  ├─ pip3.13.exe
+│  │  ├─ pip3.exe
+│  │  ├─ pybabel.exe
+│  │  ├─ pymupdf.exe
+│  │  ├─ pypdfium2.exe
+│  │  ├─ pyrsa-decrypt.exe
+│  │  ├─ pyrsa-encrypt.exe
+│  │  ├─ pyrsa-keygen.exe
+│  │  ├─ pyrsa-priv2pub.exe
+│  │  ├─ pyrsa-sign.exe
+│  │  └─ ... (9 more items omitted)
+│  ├─ .gitignore
+│  └─ pyvenv.cfg
+├─ .vscode
+│  └─ launch.json
+├─ annotated_data
+│  ├─ .gitkeep
+│  └─ annotated_data.xlsx
+├─ configs
+│  └─ README_runs.md
+├─ data
+│  ├─ cleaned
+│  │  ├─ content
+│  │  │  ├─ legacy
+│  │  │  │  └─ text_html10
+│  │  │  │     ├─ adv.cleaned.txt
+│  │  │  │     ├─ Depot injectable biodegradable nanoparticles loaded with recombinant h _ DDDT.cleaned.txt
+│  │  │  │     ├─ Oral administration of recombinant outer membrane protein A-based nanovaccine affords protection against Aeromonas hydrophila in zebrafish ｜ W.cleaned.txt
+│  │  │  │     ├─ Rationally developed core–shell polymeric-lipid hybrid nanoparticles as a delivery vehicle for cromolyn sodium_ implications of lipid envelop .cleaned.txt
+│  │  │  │     ├─ S0022354915319237.cleaned.txt
+│  │  │  │     ├─ S0304885321002468.cleaned.txt
+│  │  │  │     ├─ S0378517312008009.cleaned.txt
+│  │  │  │     ├─ S1773224724001060.cleaned.txt
+│  │  │  │     ├─ S1871402109000423.cleaned.txt
+│  │  │  │     └─ Sustained release of calcium hydroxide from poly(dl-lactide-co-glycolide) acid microspheres for apexification _ Odontology.cleaned.txt
+│  │  │  ├─ sections
+│  │  │  │  ├─ 0104-6632-bjce-36-01-0239.sections.json
+│  │  │  │  ├─ 1-s2.0-S0014305724005469-ga1_lrg.jpg.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.sections.json
+│  │  │  │  ├─ 1-s2.0-S0928098711003460-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S0939641107000987-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S2212429221004594-ga1_lrg.jpg.sections.json
+│  │  │  │  ├─ 10.33808-clinexphealthsci.1015166-2048195.sections.json
+│  │  │  │  ├─ 104309.sections.json
+│  │  │  │  ├─ 1073431.sections.json
+│  │  │  │  ├─ 108394.sections.json
+│  │  │  │  ├─ 1142412.sections.json
+│  │  │  │  ├─ 12628.sections.json
+│  │  │  │  ├─ 1471-2334-9-198.sections.json
+│  │  │  │  ├─ 1477-3155-10-20.sections.json
+│  │  │  │  ├─ 1477-3155-10-38.sections.json
+│  │  │  │  ├─ 1572.1580.sections.json
+│  │  │  │  ├─ 18973.sections.json
+│  │  │  │  ├─ 2008-2231-21-68.sections.json
+│  │  │  │  ├─ 21581313.sections.json
+│  │  │  │  ├─ 2175-9790-bjps-54-04-e17228.sections.json
+│  │  │  │  ├─ 2175-9790-bjps-55-e17536.sections.json
+│  │  │  │  ├─ 2175-9790-bjps-55-e18736.sections.json
+│  │  │  │  ├─ 2203837.sections.json
+│  │  │  │  ├─ 233466.sections.json
+│  │  │  │  ├─ 27-Vol.-11-Issue-5-May-2020-IJPSR-RA-12597.sections.json
+│  │  │  │  ├─ 31311.sections.json
+│  │  │  │  ├─ 3364.sections.json
+│  │  │  │  └─ ... (338 more items omitted)
+│  │  │  ├─ tables
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_1.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_10.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_11.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_12.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_13.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_2.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_3.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_4.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_5.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_6.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_7.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_8.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_9.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_1.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_10.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_11.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_12.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_13.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_14.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_15.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_16.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_17.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_18.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_19.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_2.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_20.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_21.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_22.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_23.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_24.csv
+│  │  │  │  └─ ... (4142 more items omitted)
+│  │  │  ├─ text
+│  │  │  │  ├─ 0104-6632-bjce-36-01-0239.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0014305724005469-ga1_lrg.jpg.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0928098711003460-main.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S0939641107000987-main.cleaned.txt
+│  │  │  │  ├─ 1-s2.0-S2212429221004594-ga1_lrg.jpg.cleaned.txt
+│  │  │  │  ├─ 10.33808-clinexphealthsci.1015166-2048195.cleaned.txt
+│  │  │  │  ├─ 104309.cleaned.txt
+│  │  │  │  ├─ 1073431.cleaned.txt
+│  │  │  │  ├─ 108394.cleaned.txt
+│  │  │  │  ├─ 1142412.cleaned.txt
+│  │  │  │  ├─ 12628.cleaned.txt
+│  │  │  │  ├─ 1471-2334-9-198.cleaned.txt
+│  │  │  │  ├─ 1477-3155-10-20.cleaned.txt
+│  │  │  │  ├─ 1477-3155-10-38.cleaned.txt
+│  │  │  │  ├─ 1572.1580.cleaned.txt
+│  │  │  │  ├─ 18973.cleaned.txt
+│  │  │  │  ├─ 2008-2231-21-68.cleaned.txt
+│  │  │  │  ├─ 21581313.cleaned.txt
+│  │  │  │  ├─ 2175-9790-bjps-54-04-e17228.cleaned.txt
+│  │  │  │  ├─ 2175-9790-bjps-55-e17536.cleaned.txt
+│  │  │  │  ├─ 2175-9790-bjps-55-e18736.cleaned.txt
+│  │  │  │  ├─ 2203837.cleaned.txt
+│  │  │  │  ├─ 233466.cleaned.txt
+│  │  │  │  ├─ 26G9L78F.pdf.txt
+│  │  │  │  ├─ 27-Vol.-11-Issue-5-May-2020-IJPSR-RA-12597.cleaned.txt
+│  │  │  │  ├─ 2DXWXRD3.pdf.txt
+│  │  │  │  └─ ... (751 more items omitted)
+│  │  │  └─ key2txt.tsv
+│  │  ├─ debug
+│  │  │  ├─ logs
+│  │  │  │  ├─ raw_llm_v4
+│  │  │  │  │  ├─ 5838N7KH.txt
+│  │  │  │  │  ├─ 782JNNJL.txt
+│  │  │  │  │  ├─ CJVUF8PR.txt
+│  │  │  │  │  ├─ F6V3JL7S.txt
+│  │  │  │  │  ├─ GS456SXN.txt
+│  │  │  │  │  ├─ R5I7HSFK.txt
+│  │  │  │  │  ├─ RBUY36NL.txt
+│  │  │  │  │  └─ UWEERX56.txt
+│  │  │  │  ├─ weak_labels_v2_failures.json
+│  │  │  │  ├─ weak_labels_v3_failures.json
+│  │  │  │  └─ weak_labels_v4_failures.json
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.sections.keep.txt
+│  │  │  └─ ... (1126 more items omitted)
+│  │  ├─ index
+│  │  │  ├─ legacy
+│  │  │  │  ├─ key2txt_20251024.tsv
+│  │  │  │  ├─ key2txt_html10.tsv
+│  │  │  │  └─ manifest_html10_bad.tsv
+│  │  │  ├─ key2txt.tsv
+│  │  │  ├─ manifest_current.tsv
+│  │  │  └─ README.md
+│  │  ├─ labels
+│  │  │  ├─ manual
+│  │  │  │  ├─ manual_labels_v2.csv
+│  │  │  │  ├─ manual_labels_v3.tsv
+│  │  │  │  └─ manual_labels_v4.tsv
+│  │  │  └─ weak
+│  │  │     ├─ weak_labels_v2
+│  │  │     │  ├─ 6AT9RFVD.json
+│  │  │     │  ├─ 7APXCSSU.json
+│  │  │     │  ├─ 7IG3TLJ6.json
+│  │  │     │  ├─ 7QPZUKXY.json
+│  │  │     │  ├─ 8VHW6PYV.json
+│  │  │     │  ├─ A6Q63VV6.json
+│  │  │     │  ├─ B37LZXHL.json
+│  │  │     │  ├─ CJVUF8PR.json
+│  │  │     │  ├─ DUL53PJ7.json
+│  │  │     │  ├─ EHABVGGA.json
+│  │  │     │  ├─ HA8A6XKC.json
+│  │  │     │  ├─ JZ6ASZ3I.json
+│  │  │     │  ├─ KD7KM2VI.json
+│  │  │     │  ├─ KDWBWUH5.json
+│  │  │     │  ├─ L3E9PCFA.json
+│  │  │     │  ├─ MGSXYHKJ.json
+│  │  │     │  ├─ MMQT2RH3.json
+│  │  │     │  ├─ N4228A23.json
+│  │  │     │  ├─ NWX6NWQC.json
+│  │  │     │  ├─ QKZXTMTB.json
+│  │  │     │  ├─ RZUXD9J4.json
+│  │  │     │  ├─ SK8R6LEF.json
+│  │  │     │  ├─ SRM797KY.json
+│  │  │     │  ├─ UTRSZCFV.json
+│  │  │     │  ├─ Y4J8FBZ3.json
+│  │  │     │  └─ ZYNCDWLL.json
+│  │  │     ├─ weak_labels_v3
+│  │  │     │  ├─ 5838N7KH.json
+│  │  │     │  ├─ 6AT9RFVD.json
+│  │  │     │  ├─ 782JNNJL.json
+│  │  │     │  ├─ 7APXCSSU.json
+│  │  │     │  ├─ 7IG3TLJ6.json
+│  │  │     │  ├─ 7QPZUKXY.json
+│  │  │     │  ├─ 8VHW6PYV.json
+│  │  │     │  ├─ A6Q63VV6.json
+│  │  │     │  ├─ B37LZXHL.json
+│  │  │     │  ├─ CJVUF8PR.json
+│  │  │     │  ├─ DUL53PJ7.json
+│  │  │     │  ├─ EHABVGGA.json
+│  │  │     │  ├─ EU34MKDY.json
+│  │  │     │  ├─ F6V3JL7S.json
+│  │  │     │  ├─ GS456SXN.json
+│  │  │     │  ├─ HA8A6XKC.json
+│  │  │     │  ├─ JZ6ASZ3I.json
+│  │  │     │  ├─ KD7KM2VI.json
+│  │  │     │  ├─ KDWBWUH5.json
+│  │  │     │  ├─ L3E9PCFA.json
+│  │  │     │  ├─ MGSXYHKJ.json
+│  │  │     │  ├─ MMQT2RH3.json
+│  │  │     │  ├─ N4228A23.json
+│  │  │     │  ├─ NWX6NWQC.json
+│  │  │     │  ├─ QKZXTMTB.json
+│  │  │     │  ├─ R5I7HSFK.json
+│  │  │     │  ├─ RBUY36NL.json
+│  │  │     │  ├─ RZUXD9J4.json
+│  │  │     │  ├─ SK8R6LEF.json
+│  │  │     │  ├─ SRM797KY.json
+│  │  │     │  └─ ... (6 more items omitted)
+│  │  │     ├─ weak_labels_v4
+│  │  │     │  ├─ 782JNNJL.json
+│  │  │     │  ├─ CJVUF8PR.json
+│  │  │     │  ├─ GS456SXN.json
+│  │  │     │  └─ RBUY36NL.json
+│  │  │     ├─ weak_labels.tsv
+│  │  │     ├─ weak_labels.v4.expanded.tsv
+│  │  │     ├─ weak_labels.v4.jsonl
+│  │  │     ├─ weak_labels_v2.jsonl
+│  │  │     ├─ weak_labels_v2.tsv
+│  │  │     ├─ weak_labels_v3.jsonl
+│  │  │     ├─ weak_labels_v3.tsv
+│  │  │     ├─ weak_labels_v4.jsonl
+│  │  │     └─ weak_labels_v4.tsv
+│  │  └─ samples
+│  │     ├─ sample10_for_key2txt.tsv
+│  │     ├─ sample10_htmlfirst.jsonl
+│  │     ├─ sample10_htmlfirst.tsv
+│  │     ├─ sample10_htmlfirst_for_key2txt.jsonl
+│  │     └─ sample30.jsonl
+│  ├─ cleaned_backup_20260130
+│  │  ├─ content
+│  │  │  ├─ legacy
+│  │  │  │  └─ text_html10
+│  │  │  │     ├─ adv.cleaned.txt
+│  │  │  │     ├─ Depot injectable biodegradable nanoparticles loaded with recombinant h _ DDDT.cleaned.txt
+│  │  │  │     ├─ Oral administration of recombinant outer membrane protein A-based nanovaccine affords protection against Aeromonas hydrophila in zebrafish ｜ W.cleaned.txt
+│  │  │  │     ├─ Rationally developed core–shell polymeric-lipid hybrid nanoparticles as a delivery vehicle for cromolyn sodium_ implications of lipid envelop .cleaned.txt
+│  │  │  │     ├─ S0022354915319237.cleaned.txt
+│  │  │  │     ├─ S0304885321002468.cleaned.txt
+│  │  │  │     ├─ S0378517312008009.cleaned.txt
+│  │  │  │     ├─ S1773224724001060.cleaned.txt
+│  │  │  │     ├─ S1871402109000423.cleaned.txt
+│  │  │  │     └─ Sustained release of calcium hydroxide from poly(dl-lactide-co-glycolide) acid microspheres for apexification _ Odontology.cleaned.txt
+│  │  │  ├─ sections
+│  │  │  │  ├─ 0104-6632-bjce-36-01-0239.sections.json
+│  │  │  │  ├─ 1-s2.0-S0014305724005469-ga1_lrg.jpg.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.sections.json
+│  │  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.sections.json
+│  │  │  │  ├─ 1-s2.0-S0928098711003460-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S0939641107000987-main.sections.json
+│  │  │  │  ├─ 1-s2.0-S2212429221004594-ga1_lrg.jpg.sections.json
+│  │  │  │  ├─ 10.33808-clinexphealthsci.1015166-2048195.sections.json
+│  │  │  │  ├─ 104309.sections.json
+│  │  │  │  ├─ 1073431.sections.json
+│  │  │  │  ├─ 108394.sections.json
+│  │  │  │  ├─ 1142412.sections.json
+│  │  │  │  ├─ 12628.sections.json
+│  │  │  │  ├─ 1471-2334-9-198.sections.json
+│  │  │  │  ├─ 1477-3155-10-20.sections.json
+│  │  │  │  ├─ 1477-3155-10-38.sections.json
+│  │  │  │  ├─ 1572.1580.sections.json
+│  │  │  │  ├─ 18973.sections.json
+│  │  │  │  ├─ 2008-2231-21-68.sections.json
+│  │  │  │  ├─ 21581313.sections.json
+│  │  │  │  ├─ 2175-9790-bjps-54-04-e17228.sections.json
+│  │  │  │  ├─ 2175-9790-bjps-55-e17536.sections.json
+│  │  │  │  ├─ 2175-9790-bjps-55-e18736.sections.json
+│  │  │  │  ├─ 2203837.sections.json
+│  │  │  │  ├─ 233466.sections.json
+│  │  │  │  ├─ 27-Vol.-11-Issue-5-May-2020-IJPSR-RA-12597.sections.json
+│  │  │  │  ├─ 31311.sections.json
+│  │  │  │  ├─ 3364.sections.json
+│  │  │  │  └─ ... (338 more items omitted)
+│  │  │  ├─ tables
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_1.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_10.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_11.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_12.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_13.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_2.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_3.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_4.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_5.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_6.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_7.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_8.csv
+│  │  │  │  ├─ 1-s2.0-S0378517311001645-main_table_9.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_1.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_10.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_11.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_12.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_13.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_14.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_15.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_16.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_17.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_18.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_19.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_2.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_20.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_21.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_22.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_23.csv
+│  │  │  │  ├─ 1-s2.0-S0378517316300540-main_table_24.csv
+│  │  │  │  └─ ... (4142 more items omitted)
+│  │  │  └─ text
+│  │  │     ├─ 0104-6632-bjce-36-01-0239.cleaned.txt
+│  │  │     ├─ 0104-6632-bjce-36-01-0239.pdf.txt
+│  │  │     ├─ 1-s2.0-S0014305724005469-ga1_lrg.jpg.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0378517311001645-main.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0378517311001645-main.pdf.txt
+│  │  │     ├─ 1-s2.0-S0378517316300540-main.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0378517316300540-main.pdf.txt
+│  │  │     ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0928098711003460-main.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0928098711003460-main.pdf.txt
+│  │  │     ├─ 1-s2.0-S0939641107000987-main.cleaned.txt
+│  │  │     ├─ 1-s2.0-S0939641107000987-main.pdf.txt
+│  │  │     ├─ 1-s2.0-S2212429221004594-ga1_lrg.jpg.cleaned.txt
+│  │  │     ├─ 10.33808-clinexphealthsci.1015166-2048195.cleaned.txt
+│  │  │     ├─ 10.33808-clinexphealthsci.1015166-2048195.pdf.txt
+│  │  │     ├─ 104309.cleaned.txt
+│  │  │     ├─ 104309.pdf.txt
+│  │  │     ├─ 1073431.cleaned.txt
+│  │  │     ├─ 1073431.pdf.txt
+│  │  │     ├─ 108394.cleaned.txt
+│  │  │     ├─ 108394.pdf.txt
+│  │  │     ├─ 1142412.cleaned.txt
+│  │  │     ├─ 1142412.pdf.txt
+│  │  │     ├─ 12628.cleaned.txt
+│  │  │     ├─ 12628.pdf.txt
+│  │  │     ├─ 1471-2334-9-198.cleaned.txt
+│  │  │     ├─ 1471-2334-9-198.pdf.txt
+│  │  │     ├─ 1477-3155-10-20.cleaned.txt
+│  │  │     ├─ 1477-3155-10-20.pdf.txt
+│  │  │     └─ ... (653 more items omitted)
+│  │  ├─ debug
+│  │  │  ├─ logs
+│  │  │  │  ├─ raw_llm_v4
+│  │  │  │  │  ├─ 5838N7KH.txt
+│  │  │  │  │  ├─ 782JNNJL.txt
+│  │  │  │  │  ├─ CJVUF8PR.txt
+│  │  │  │  │  ├─ F6V3JL7S.txt
+│  │  │  │  │  ├─ GS456SXN.txt
+│  │  │  │  │  ├─ R5I7HSFK.txt
+│  │  │  │  │  ├─ RBUY36NL.txt
+│  │  │  │  │  └─ UWEERX56.txt
+│  │  │  │  ├─ weak_labels_v2_failures.json
+│  │  │  │  ├─ weak_labels_v3_failures.json
+│  │  │  │  └─ weak_labels_v4_failures.json
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517311001645-main.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517316300540-main.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517317310025-fx1_lrg.jpg.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.noheader.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.normalized.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0378517319304260-ga1_lrg.jpg.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.sections.keep.txt
+│  │  │  ├─ 1-s2.0-S0928098711003460-main.sections.preprune.json
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.noheader.txt
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.normalized.txt
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.raw_pages.txt
+│  │  │  ├─ 1-s2.0-S0939641107000987-main.sections.keep.txt
+│  │  │  └─ ... (1126 more items omitted)
+│  │  ├─ index
+│  │  │  ├─ legacy
+│  │  │  │  ├─ key2txt_20251024.tsv
+│  │  │  │  ├─ key2txt_html10.tsv
+│  │  │  │  └─ manifest_html10_bad.tsv
+│  │  │  ├─ key2txt.tsv
+│  │  │  ├─ manifest_current.tsv
+│  │  │  └─ README.md
+│  │  ├─ labels
+│  │  │  ├─ manual
+│  │  │  │  ├─ manual_labels_v2.csv
+│  │  │  │  ├─ manual_labels_v3.tsv
+│  │  │  │  └─ manual_labels_v4.tsv
+│  │  │  └─ weak
+│  │  │     ├─ weak_labels_v2
+│  │  │     │  ├─ 6AT9RFVD.json
+│  │  │     │  ├─ 7APXCSSU.json
+│  │  │     │  ├─ 7IG3TLJ6.json
+│  │  │     │  ├─ 7QPZUKXY.json
+│  │  │     │  ├─ 8VHW6PYV.json
+│  │  │     │  ├─ A6Q63VV6.json
+│  │  │     │  ├─ B37LZXHL.json
+│  │  │     │  ├─ CJVUF8PR.json
+│  │  │     │  ├─ DUL53PJ7.json
+│  │  │     │  ├─ EHABVGGA.json
+│  │  │     │  ├─ HA8A6XKC.json
+│  │  │     │  ├─ JZ6ASZ3I.json
+│  │  │     │  ├─ KD7KM2VI.json
+│  │  │     │  ├─ KDWBWUH5.json
+│  │  │     │  ├─ L3E9PCFA.json
+│  │  │     │  ├─ MGSXYHKJ.json
+│  │  │     │  ├─ MMQT2RH3.json
+│  │  │     │  ├─ N4228A23.json
+│  │  │     │  ├─ NWX6NWQC.json
+│  │  │     │  ├─ QKZXTMTB.json
+│  │  │     │  ├─ RZUXD9J4.json
+│  │  │     │  ├─ SK8R6LEF.json
+│  │  │     │  ├─ SRM797KY.json
+│  │  │     │  ├─ UTRSZCFV.json
+│  │  │     │  ├─ Y4J8FBZ3.json
+│  │  │     │  └─ ZYNCDWLL.json
+│  │  │     ├─ weak_labels_v3
+│  │  │     │  ├─ 5838N7KH.json
+│  │  │     │  ├─ 6AT9RFVD.json
+│  │  │     │  ├─ 782JNNJL.json
+│  │  │     │  ├─ 7APXCSSU.json
+│  │  │     │  ├─ 7IG3TLJ6.json
+│  │  │     │  ├─ 7QPZUKXY.json
+│  │  │     │  ├─ 8VHW6PYV.json
+│  │  │     │  ├─ A6Q63VV6.json
+│  │  │     │  ├─ B37LZXHL.json
+│  │  │     │  ├─ CJVUF8PR.json
+│  │  │     │  ├─ DUL53PJ7.json
+│  │  │     │  ├─ EHABVGGA.json
+│  │  │     │  ├─ EU34MKDY.json
+│  │  │     │  ├─ F6V3JL7S.json
+│  │  │     │  ├─ GS456SXN.json
+│  │  │     │  ├─ HA8A6XKC.json
+│  │  │     │  ├─ JZ6ASZ3I.json
+│  │  │     │  ├─ KD7KM2VI.json
+│  │  │     │  ├─ KDWBWUH5.json
+│  │  │     │  ├─ L3E9PCFA.json
+│  │  │     │  ├─ MGSXYHKJ.json
+│  │  │     │  ├─ MMQT2RH3.json
+│  │  │     │  ├─ N4228A23.json
+│  │  │     │  ├─ NWX6NWQC.json
+│  │  │     │  ├─ QKZXTMTB.json
+│  │  │     │  ├─ R5I7HSFK.json
+│  │  │     │  ├─ RBUY36NL.json
+│  │  │     │  ├─ RZUXD9J4.json
+│  │  │     │  ├─ SK8R6LEF.json
+│  │  │     │  ├─ SRM797KY.json
+│  │  │     │  └─ ... (6 more items omitted)
+│  │  │     ├─ weak_labels_v4
+│  │  │     │  ├─ 782JNNJL.json
+│  │  │     │  ├─ CJVUF8PR.json
+│  │  │     │  ├─ GS456SXN.json
+│  │  │     │  └─ RBUY36NL.json
+│  │  │     ├─ weak_labels.tsv
+│  │  │     ├─ weak_labels.v4.expanded.tsv
+│  │  │     ├─ weak_labels.v4.jsonl
+│  │  │     ├─ weak_labels_v2.jsonl
+│  │  │     ├─ weak_labels_v2.tsv
+│  │  │     ├─ weak_labels_v3.jsonl
+│  │  │     ├─ weak_labels_v3.tsv
+│  │  │     ├─ weak_labels_v4.jsonl
+│  │  │     └─ weak_labels_v4.tsv
+│  │  └─ samples
+│  │     ├─ sample10_for_key2txt.tsv
+│  │     ├─ sample10_htmlfirst.jsonl
+│  │     ├─ sample10_htmlfirst.tsv
+│  │     ├─ sample10_htmlfirst_for_key2txt.jsonl
+│  │     └─ sample30.jsonl
+│  ├─ raw
+│  │  ├─ zotero
+│  │  │  ├─ last_version.txt
+│  │  │  ├─ README.md
+│  │  │  ├─ zotero_llm_relevant.jsonl
+│  │  │  └─ zotero_selected_items.jsonl
+│  │  ├─ wos_all.csv
+│  │  ├─ wos_all_pdf.csv
+│  │  ├─ wos_llm_tagged.csv
+│  │  └─ wos_prefiltered.csv
+│  ├─ results
+│  │  ├─ run_20260130_0913_9436e6c_sample10
+│  │  ├─ extract_tier1_multi_model.jsonl
+│  │  ├─ extract_tier1_multi_model.tsv
+│  │  ├─ formulations_multi_model.jsonl
+│  │  ├─ formulations_multi_model.tsv
+│  │  ├─ formulations_tier2_merged_v2.tsv
+│  │  ├─ formulations_tier2_merged_v2_qc.tsv
+│  │  ├─ formulations_tier2_multi_model.jsonl
+│  │  └─ formulations_tier2_multi_model.tsv
+│  ├─ samples
+│  └─ annotation_cheatsheet.md
+├─ docs
+├─ project
+│  ├─ 0_PROJECT_CHARTER.md
+│  ├─ 1_REQUIREMENTS.md
+│  ├─ 2_ARCHITECTURE.md
+│  ├─ 3_STATE_MACHINE.md
+│  ├─ 4_DECISIONS_LOG.md
+│  ├─ 5_PARKING_LOT.md
+│  ├─ FILE_NAMING_AND_VERSIONING.md
+│  └─ PIPELINE_SCRIPT_MAP.md
+├─ runs
+│  ├─ run_20260130_0913_9436e6c_sample10
+│  │  ├─ meta.json
+│  │  └─ RUN.md
+│  ├─ BASELINE_RUN_CHECKLIST.md
+│  ├─ latest.txt
+│  ├─ meta_template.json
+│  └─ RUN_TEMPLATE.md
+├─ src
+│  ├─ legacy
+│  │  └─ 20260130
+│  │     ├─ csv2clean_manifest.py
+│  │     └─ pdf2clean.py
+│  ├─ stage0_relevance
+│  │  ├─ auto_tag_plga_gemini.py
+│  │  ├─ auto_tag_plga_openai.py
+│  │  ├─ classify_gemini_grouped.py
+│  │  ├─ fill_missing_snapshots.py
+│  │  ├─ prefilter_regex.py
+│  │  ├─ zotero_api_sync_selected.py
+│  │  ├─ zotero_fetch_llm_relevant_pdfs.py
+│  │  ├─ zotero_llm_relevant_interactive.py
+│  │  └─ zotero_tag_sync.py
+│  ├─ stage1_cleaning
+│  │  ├─ clean_manifest_to_text.py
+│  │  ├─ pdf2clean.py
+│  │  ├─ zotero_csv_to_manifest_tsv.py
+│  │  └─ zotero_raw_to_manifest.py
+│  ├─ stage2_sampling_labels
+│  │  ├─ auto_extract_weak_labels.py
+│  │  ├─ auto_extract_weak_labels_v3.py
+│  │  ├─ auto_extract_weak_labels_v4.py
+│  │  ├─ build_key2txt_from_sample_manifest.py
+│  │  ├─ sample10_from_zotero_manifest.py
+│  │  └─ sample_from_manifest_html_first.py
+│  ├─ stage3_gt
+│  │  ├─ gt_tool.py
+│  │  └─ gt_tool_v3.py
+│  ├─ stage4_eval
+│  │  ├─ auto_extract_multimodel.py
+│  │  ├─ multi_model_extract_tier1.py
+│  │  ├─ multi_model_extract_tier2.py
+│  │  └─ multi_model_merge_qc.py
+│  ├─ stage5_merge_publish
+│  │  └─ merge_results.py
+│  ├─ utils
+│  │  ├─ __pycache__
+│  │  │  └─ paths.cpython-313.pyc
+│  │  ├─ convert_sample_manifest.py
+│  │  ├─ convert_sample_manifest_to_tsv.py
+│  │  ├─ html_parser.py
+│  │  └─ paths.py
+│  └─ src_README.md
+├─ .env
+├─ .gitignore
+├─ LICENSE
+├─ print_tree.py
+├─ project_specification.txt
+├─ project_specification_UPDATED_20260130_v5.txt
+├─ project_structure.txt
+├─ README.md
+├─ requirements.txt
+└─ test_gemini.py
