@@ -21,3 +21,13 @@ Sampling treated as data-prep step, not run-scoped.
 Finalized stratified20 sampling using rule-based strata_tags.tsv with soft HTML preference (html-bias=0.7).
 Resulting sample: 20 papers (15 HTML, 5 PDF).
 Missing (*,*,text) strata reflect reporting-style distribution, not pipeline error.
+
+Input length cap during v5 weak-label extraction
+
+In the v5 version of auto_extract_weak_labels, the input text passed to LLMs is intentionally capped at 60,000 characters via a --max-chars parameter. This cap is applied before the LLM call, during section-based text assembly or full-text fallback, and is not a model-imposed context limit.
+
+The purpose of this cap is to stabilize cost, latency, and experimental conditions during early-stage validation of the evidence-aware extraction pipeline. As a result, all evidence spans are guaranteed to lie within the retained text window. Information appearing beyond this limit is intentionally excluded at this stage and may be addressed in future iterations through section-aware budgeting or table-first extraction strategies.
+
+This decision is treated as an explicit experimental parameter rather than a limitation of the underlying LLMs.
+
+Due to Gemini 2.5 Free Tier RPD limits, we switch to Gemini 3 Flash and Gemma 3 12B as the primary dual-model setup for batch weak-label extraction.

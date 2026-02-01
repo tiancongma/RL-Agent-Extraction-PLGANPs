@@ -1,0 +1,498 @@
+# Project Specification (Updated 2026-01-30, v5)
+
+This document is the **single authoritative specification** for how the pipeline is
+configured and executed end-to-end, from raw metadata to extraction, GT, evaluation,
+and publishable merged outputs.
+
+All defaults are resolved via `src/utils/paths.py`.
+No script may hard-code filesystem paths.
+
+======================================================================
+A. Default Environment (Authoritative)
+======================================================================
+
+OS:
+- Windows 11
+
+Python environment:
+- .venv\Scripts\python.exe
+
+Working directory (repo root):
+- C:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs
+
+======================================================================
+B. Authoritative Files and Directory Contracts
+======================================================================
+
+Authoritative manifest:
+- data/cleaned/index/manifest_current.tsv
+
+Notes:
+- This is the **single authoritative manifest**
+- It may be promoted from older/versioned manifests
+- It is expected to be overwritten when a new “current” manifest is built
+
+Cleaned root directory:
+- data/cleaned/
+
+Cleaned content layout (fixed and frozen):
+- Text output:      data/cleaned/content/text/
+- Sections output:  data/cleaned/content/sections/
+- Tables output:    data/cleaned/content/tables/
+- Index & metadata: data/cleaned/index/
+
+Authoritative mapping used by extraction:
+- data/cleaned/index/key2txt.tsv
+
+======================================================================
+C. Authoritative Pipeline (Mainline)
+======================================================================
+
+----------------------------------------------------------------------
+Step 0. Literature relevance tagging (completed upstream)
+----------------------------------------------------------------------
+
+Input:
+- data/raw/wos_all.csv
+
+Process:
+- Regex prefilter + LLM relevance tagging (stage0_relevance)
+
+Output:
+- data/raw/wos_llm_tagged.csv
+
+Script:
+
+src/stage0_relevance/zotero_api_sync_selected.py
+
+Purpose:
+
+Query Zotero API for items tagged with LLM:Relevant
+
+Resolve local PDF/HTML paths from Zotero storage
+
+Incrementally update the raw Zotero index
+
+python src/stage0_relevance/zotero_api_sync_selected.py --tag "LLM:Relevant" --verbose
+
+Expected outputs:
+
+data/raw/zotero/zotero_selected_items.jsonl
+
+data/raw/zotero/last_version.txt
+
+Notes:
+
+Local fulltext availability depends on whether PDFs/HTML snapshots have been downloaded in Zotero.
+
+Re-running this step after downloading more papers updates the raw list incrementally.
+----------------------------------------------------------------------
+Step 1. Zotero raw → Manifest (index construction only)
+----------------------------------------------------------------------
+
+Script:
+
+src/stage1_cleaning/zotero_raw_to_manifest.py
+
+Purpose:
+
+Convert Zotero raw JSONL into the authoritative manifest used by cleaning and extraction
+
+Prefer HTML when available, otherwise PDF
+
+Keep items without fulltext but mark them in notes
+
+python src/stage1_cleaning/zotero_raw_to_manifest.py --overwrite --verbose
+
+Expected outputs:
+
+data/cleaned/index/manifest_current.tsv
+
+Notes:
+
+with_pdf and with_html reflect the current local download coverage.
+
+This manifest is expected to be overwritten when new papers are downloaded.
+----------------------------------------------------------------------
+Step 2. Manifest → Clean (unified cleaner)
+----------------------------------------------------------------------
+
+Script:
+- src/stage1_cleaning/clean_manifest_to_text.py
+Purpose:
+
+Parse local PDF/HTML files listed in the manifest
+
+Generate cleaned text files and the authoritative key-to-text mapping
+Command:
+python src/stage1_cleaning/clean_manifest_to_text.py --prefer html --overwrite --verbose
+
+Expected outputs:
+
+Cleaned text directory: data/cleaned/content/text
+
+Authoritative mapping: data/cleaned/index/key2txt.tsv
+
+Notes:
+
+Only records successfully producing text appear in key2txt.tsv.
+
+Downstream sampling and extraction operate on this cleanable subset.
+----------------------------------------------------------------------
+Step 3. Clean → Sample (select a subset of papers)
+----------------------------------------------------------------------
+
+Purpose:
+- Create a small, reproducible subset (sample10, sample20, sample30, …)
+- This reduces cost for downstream weak-labeling and evaluation.
+
+Primary script (HTML-first sampling):
+- src/stage2_sampling_labels/sample_from_manifest_html_first.py
+
+Example command (sample10):
+```bash
+python src/stage2_sampling_labels/sample_from_manifest_html_first.py \
+  --manifest data/cleaned/index/manifest_current.tsv \
+  --out-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl \
+  --n 10 \
+  --seed 42 \
+  --verbose \
+  --overwrite
+```
+
+Expected outputs:
+- data/cleaned/samples/sample10_htmlfirst.jsonl
+- data/cleaned/samples/sample10_htmlfirst.tsv (if the script emits TSV)
+
+Notes:
+- Sampling can be repeated with a different seed or “incremental append” logic.
+- Keep sample artifacts under data/cleaned/samples/ only.
+
+----------------------------------------------------------------------
+Step 4. Sample → key2txt (optional helper for sample-local runs)
+----------------------------------------------------------------------
+
+Purpose:
+- Some stage2 extraction scripts operate on a sample jsonl and a key2txt mapping.
+- If you want a sample-specific key2txt (instead of full key2txt.tsv), build it.
+
+Script:
+- src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py
+
+Example:
+```bash
+python src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py \
+  --sample-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl \
+  --key2txt data/cleaned/index/key2txt.tsv \
+  --out data/cleaned/samples/sample10_for_key2txt.tsv \
+  --overwrite \
+  --verbose
+```
+
+Expected outputs:
+- data/cleaned/samples/sample10_for_key2txt.tsv
+
+----------------------------------------------------------------------
+Step 5. Clean/Sample → Weak labels (LLM extraction, weak supervision)
+----------------------------------------------------------------------
+
+Purpose:
+- Produce weak labels (JSON/TSV) from text, using LLM prompts.
+- Outputs are regeneratable and should be organized under data/cleaned/labels/weak/
+  or run-scoped directories under data/results/ and runs/<run_id>/.
+
+Scripts (active versions):
+- src/stage2_sampling_labels/auto_extract_weak_labels_v4.py
+
+Example (run on sample10):
+```bash
+python src/stage2_sampling_labels/auto_extract_weak_labels_v4.py \
+  --sample-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl \
+  --key2txt data/cleaned/index/key2txt.tsv \
+  --outdir data/results/run_YYYYMMDD_HHMM_<hash>_sample10 \
+  --verbose \
+  --overwrite
+```
+
+Expected outputs (typical):
+- data/results/<run_id>/... (model outputs)
+- data/cleaned/labels/weak/weak_labels_v4.tsv (if you promote/aggregate)
+
+Notes:
+- The exact filenames depend on the script arguments and your run_id naming.
+- Debug logs go to data/cleaned/debug/logs/ (do not treat as authoritative).
+
+----------------------------------------------------------------------
+Step 5b. Sample → Multi-model primary extraction (auditable baseline, optional)
+----------------------------------------------------------------------
+
+Purpose:
+- When enabled, treat multi-model extraction as the **primary extraction output** for the sample.
+- Reduce manual GT effort by:
+  - Prioritizing high-confidence, evidence-backed entries for direct inclusion
+  - Routing conflicts or weak-evidence entries to third-model judging or limited human audit
+
+Scripts (examples, stage4_eval):
+- src/stage4_eval/multi_model_extract_tier1.py
+- src/stage4_eval/multi_model_extract_tier2.py
+- src/stage4_eval/multi_model_merge_qc.py
+
+Example (conceptual, run on sample10):
+- Run tier extraction per model, then merge + QC:
+  - multi_model_extract_tier1.py / multi_model_extract_tier2.py
+  - multi_model_merge_qc.py
+
+Expected outputs (typical):
+- data/results/extract_tier1_multi_model.tsv
+- data/results/formulations_tier2_merged_v2_qc.tsv
+- data/results/formulations_multi_model.tsv
+
+Notes:
+- If Step 5b is executed, the merged multi-model output is considered the **primary weak-label dataset**
+  for downstream GT sampling and evaluation.
+- Step 5 (single-model weak labels) remains useful as a low-cost baseline for prompt iteration and debugging.
+
+
+----------------------------------------------------------------------
+Step 6. Weak labels → Manual GT labeling (ground truth tool)
+----------------------------------------------------------------------
+
+Purpose:
+- Human-in-the-loop review and correction of extracted formulations.
+- Output becomes your best-effort GT (not necessarily perfect, but consistent).
+
+Scripts:
+- src/stage3_gt/gt_tool.py
+- src/stage3_gt/gt_tool_v3.py (preferred if you are already on v3)
+
+Important correction:
+- GT tooling lives under **stage3_gt**, not stage2.
+- If you have an older note that says stage2/gt_tool.py, treat it as legacy.
+
+Example (using GT tool v3):
+```bash
+python src/stage3_gt/gt_tool_v3.py \
+  --input data/cleaned/index/key2txt.tsv \
+  --labels data/cleaned/labels/manual/manual_labels_v4.tsv
+```
+
+Expected outputs:
+- data/cleaned/labels/manual/manual_labels_v*.tsv (versioned manual labels)
+- Optionally, updated annotations or audit logs depending on tool behavior
+
+Notes:
+- Keep manual labels versioned (v2, v3, v4…). Do not overwrite silently.
+- If you need a single canonical pointer, add a small README under data/cleaned/labels/manual/.
+
+----------------------------------------------------------------------
+Step 7. Evaluation (weak vs GT, multi-model consensus)
+----------------------------------------------------------------------
+
+Purpose:
+- Evaluate extraction quality (accuracy, coverage, hallucination patterns).
+- Produce merged and QC-friendly tables for reporting and publication.
+
+Scripts (examples):
+- src/stage4_eval/multi_model_extract_tier1.py
+- src/stage4_eval/multi_model_extract_tier2.py
+- src/stage4_eval/multi_model_merge_qc.py
+
+Outputs (typical):
+- data/results/formulations_tier2_merged_v2_qc.tsv
+- data/results/extract_tier1_multi_model.tsv
+- data/results/formulations_multi_model.tsv
+
+Notes:
+- Exact output names depend on the script versions and CLI args.
+- Treat data/results as regeneratable; the authoritative “release” should be staged separately.
+- If Step 5b is enabled, Stage 4 outputs may be promoted as the **primary extraction baseline** for a given sample/run,
+  while GT is used for calibration, audit, and selective correction rather than exhaustive labeling.
+
+
+----------------------------------------------------------------------
+Step 8. Merge and publish (final aggregation)
+----------------------------------------------------------------------
+
+Purpose:
+- Merge run outputs into a publishable artifact set.
+
+Script:
+- src/stage5_merge_publish/merge_results.py
+
+Outputs:
+- A final merged TSV/JSONL set in data/results/ (or a dedicated publish folder if defined)
+
+======================================================================
+D. LLM Extraction Contract (What stage2+ must use)
+======================================================================
+
+LLM extraction must use:
+
+Key mapping:
+- data/cleaned/index/key2txt.tsv
+
+Primary text folder:
+- data/cleaned/content/text/
+
+Optional auxiliary folders:
+- data/cleaned/content/sections/
+- data/cleaned/content/tables/
+
+LLM extraction must not read:
+- legacy JSONL manifests as authoritative inputs
+- per-run temporary text folders
+- ad-hoc cleaned outputs outside data/cleaned/content/
+
+
+
+----------------------------------------------------------------------
+D2. Auditable Evidence Contract (required for primary extraction baselines)
+----------------------------------------------------------------------
+
+Goal:
+- Ensure every extracted field is traceable to deterministic, reproducible evidence from locally cleaned text.
+- Evidence must be suitable for:
+  - Third-model judging (arbiter)
+  - Lightweight human audit without rereading the full paper
+  - Hallucination detection and QC reporting
+
+Authoritative evidence sources (in priority order):
+1) data/cleaned/content/sections/  (section JSONL text, when available)
+2) data/cleaned/content/text/      (full cleaned text fallback)
+3) data/cleaned/content/tables/    (tables text, when available)
+
+Key principle:
+- The **canonical evidence span** must be derived from local text deterministically.
+- LLM-provided evidence text may be stored as a hint, but must not be the sole evidence used for audit.
+
+Required evidence fields (minimum):
+- evidence_section: section name, if available (e.g., materials_methods, results, abstract)
+- evidence_span_text: exact substring copied from local cleaned text
+- evidence_span_start: character start offset within the section text (or within full text if section not available)
+- evidence_span_end: character end offset within the section text (or within full text if section not available)
+- evidence_retrieval_method: one of {regex, keyword_window, fuzzy_match, table_match, llm_hint_assisted}
+
+Optional evidence fields (recommended):
+- evidence_keywords: short list of keywords used to retrieve the span
+- evidence_confidence: numeric 0 to 1 or ordinal label
+- llm_evidence_hint: short hint from the model that helped locate evidence
+- llm_evidence_text: model-proposed evidence snippet (non-canonical)
+
+Evidence routing by field type (recommended defaults):
+- Formulation composition and process parameters:
+  - Prefer materials_methods, then results
+- Particle properties (size, PDI, zeta potential, EE, loading, release):
+  - Prefer results, then abstract
+- General claims or qualitative statements:
+  - Prefer conclusion or discussion, but do not treat as numeric truth unless evidence span contains explicit values
+
+Evidence quality grading (for triage and workload reduction):
+- Grade A (strong): evidence span contains explicit value(s) and unit(s) or clear ratio and directly matches the field
+- Grade B (medium): evidence span contains value(s) but unit is missing or context is partially ambiguous
+- Grade C (weak): qualitative statement with no explicit numeric value supporting the field
+- Grade D (none): no valid evidence span found or evidence does not support the extracted value
+
+Decision policy for baseline datasets:
+- Include Grade A and selected Grade B entries by default.
+- Route Grade C or D entries to:
+  - Third-model judging, or
+  - Limited human audit, or
+  - Exclusion from the primary baseline, depending on study goals.
+
+Third-model judging (planned capability):
+- The third model is used as an **evidence judge** rather than a full extractor.
+- Inputs should include:
+  - Candidate values from Model A and Model B (and optionally Model C)
+  - Canonical evidence span(s)
+  - Field name and expected schema
+- Outputs should include:
+  - accept or reject per candidate
+  - uncertain when evidence is insufficient
+  - short reason category (unit mismatch, evidence missing, unsupported inference, schema mismatch)
+
+Implementation note:
+- If section JSONL is available, offsets are computed within section text.
+- If section JSONL is unavailable, offsets are computed within the full cleaned text.
+- Offsets must be deterministic and reproducible given the same cleaned text.
+
+======================================================================
+E. Zotero Integration (Corrected Role)
+======================================================================
+
+Zotero is used as:
+- A local attachment and snapshot provider (PDF and HTML)
+- A synchronization layer for PDFs and HTML snapshots
+
+Actual Zotero-related artifacts:
+- data/raw/zotero/zotero_llm_relevant.jsonl
+
+Libraries:
+- pyzotero
+
+Environment variables:
+- ZOTERO_LIBRARY_TYPE = user
+- ZOTERO_LIBRARY_ID   = 18477538
+- ZOTERO_API_KEY      = stored in .env
+
+Typical Zotero tags:
+- LLM-Relevant
+- PLGA
+- Extracted
+
+Preferred source order:
+- HTML > PDF (higher parse_quality)
+
+======================================================================
+F. Metadata Fields Tracked
+======================================================================
+
+Common tracked fields include:
+- source_type
+- parse_quality
+- table_detected
+- text_length
+- notes
+
+======================================================================
+G. LLM API Configuration
+======================================================================
+
+Gemini API:
+- GEMINI_API_KEY stored in .env
+- Not hard-coded in any script
+
+======================================================================
+H. Development & Debug Policy (VS Code)
+======================================================================
+
+- VS Code is the default development environment
+- Any new or modified Python script must:
+  - Be runnable standalone from CLI
+  - Have a corresponding entry in .vscode/launch.json
+  - Support small-batch debugging
+
+======================================================================
+I. Minimal Happy Path (End-to-end)
+======================================================================
+
+```bash
+# 1) Build authoritative manifest
+python src/stage1_cleaning/zotero_csv_to_manifest_tsv.py --input data/raw/wos_llm_tagged.csv --overwrite
+
+# 2) Clean texts
+python src/stage1_cleaning/clean_manifest_to_text.py --prefer html --overwrite
+
+# 3) Sample
+python src/stage2_sampling_labels/sample_from_manifest_html_first.py --manifest data/cleaned/index/manifest_current.tsv --out-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl --n 10 --seed 42 --overwrite
+
+# 4) Weak labels (example v4)
+python src/stage2_sampling_labels/auto_extract_weak_labels_v4.py --sample-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl --key2txt data/cleaned/index/key2txt.tsv --outdir data/results/run_<run_id> --overwrite --verbose
+
+
+# 4b) Optional: Multi-model primary extraction baseline (auditable)
+# Run stage4 multi-model extraction and merge QC, then treat merged output as primary baseline.
+# Ensure outputs include canonical evidence spans (see D2).
+# 5) Manual GT
+python src/stage3_gt/gt_tool_v3.py --input data/cleaned/index/key2txt.tsv --labels data/cleaned/labels/manual/manual_labels_v4.tsv
+```
+
