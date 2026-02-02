@@ -31,3 +31,44 @@ The purpose of this cap is to stabilize cost, latency, and experimental conditio
 This decision is treated as an explicit experimental parameter rather than a limitation of the underlying LLMs.
 
 Due to Gemini 2.5 Free Tier RPD limits, we switch to Gemini 3 Flash and Gemma 3 12B as the primary dual-model setup for batch weak-label extraction.
+
+## 2026-02-01
+
+Created run_20260201_0927_bb13267_sample20 as the first quota-aware, single-model split execution to validate engineering stability and merge/QC compatibility.
+This run is not considered a final extraction run for publication.
+
+## 2026-02-02 
+- Ground Truth Annotation Workflow
+
+**Decision**  
+Manual GT annotation shall not directly edit authoritative TSV files.  
+Instead, a two-step workflow is adopted:
+
+1. Export a read-only TSV into an annotation-friendly Excel view.
+2. Merge human annotations back into a new authoritative GT TSV via script.
+
+**Rationale**  
+Authoritative TSV files may contain multiline fields and quoted evidence text, making direct editing in Excel or IDE CSV editors unsafe. Separating human annotation (Excel UI) from machine-written TSV outputs ensures row integrity, reproducibility, and auditability.
+
+**GT Decision Schema**  
+`gt_decision ∈ {accept_model1, accept_model2, override, unclear}`  
+- `gt_value_text` must be provided iff `gt_decision = override`.
+
+**Scope**  
+This decision affects only Stage 3 (Manual Annotation) and does not modify upstream extraction or downstream evaluation logic.
+
+- Handling of `note` Field in GT
+
+**Decision**  
+The `note` field is not treated as a structured, extractable attribute in the current phase.
+
+**Rationale**  
+`note` content is highly free-form, lacks a stable textual unit for extraction,
+and does not support consistent ground truth adjudication.
+
+**Policy**  
+- All `note` entries are labeled as `unclear` during GT annotation.
+- The `note` field is excluded from quantitative evaluation and statistics.
+
+**Scope**  
+This decision applies to GT and evaluation only and does not affect other structured fields.

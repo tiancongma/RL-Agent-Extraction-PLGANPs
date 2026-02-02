@@ -1,0 +1,573 @@
+# Project Specification (Updated 2026-02-01, v7)
+
+This document is the **single authoritative specification** for how the pipeline is
+configured and executed end-to-end, from raw metadata to extraction, GT, evaluation,
+and publishable merged outputs.
+
+All defaults are resolved via `src/utils/paths.py`.
+No script may hard-code filesystem paths.
+
+======================================================================
+A. Default Environment (Authoritative)
+======================================================================
+
+OS:
+- Windows 11
+
+Python environment:
+- .venv\Scripts\python.exe
+
+Working directory (repo root):
+- C:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs
+
+======================================================================
+B. Authoritative Files and Directory Contracts
+======================================================================
+
+Authoritative manifest:
+- data/cleaned/index/manifest_current.tsv
+
+Notes:
+- This is the **single authoritative manifest**
+- It may be promoted from older/versioned manifests
+- It is expected to be overwritten when a new “current” manifest is built
+
+Cleaned root directory:
+- data/cleaned/
+
+Cleaned content layout (fixed and frozen):
+- Text output:      data/cleaned/content/text/
+- Sections output:  data/cleaned/content/sections/
+- Tables output:    data/cleaned/content/tables/
+- Index & metadata: data/cleaned/index/
+
+Authoritative mapping used by extraction:
+- data/cleaned/index/key2txt.tsv
+
+Run outputs (regeneratable):
+- data/results/<run_id>/...
+
+Manual labels (human-written, versioned):
+- data/cleaned/labels/manual/
+
+Project-level specs (human-written, versioned):
+- project/
+
+======================================================================
+C. Authoritative Pipeline (Mainline)
+======================================================================
+
+----------------------------------------------------------------------
+Step 0. Literature relevance tagging (completed upstream)
+----------------------------------------------------------------------
+
+Input:
+- data/raw/wos_all.csv
+
+Process:
+- Regex prefilter + LLM relevance tagging (stage0_relevance)
+
+Output:
+- data/raw/wos_llm_tagged.csv
+
+Script:
+- src/stage0_relevance/zotero_api_sync_selected.py
+
+Purpose:
+- Query Zotero API for items tagged with LLM:Relevant
+- Resolve local PDF/HTML paths from Zotero storage
+- Incrementally update the raw Zotero index
+
+Command:
+python src/stage0_relevance/zotero_api_sync_selected.py --tag "LLM:Relevant" --verbose
+
+Expected outputs:
+- data/raw/zotero/zotero_selected_items.jsonl
+- data/raw/zotero/last_version.txt
+
+Notes:
+- Local fulltext availability depends on whether PDFs/HTML snapshots have been downloaded in Zotero.
+- Re-running this step after downloading more papers updates the raw list incrementally.
+
+----------------------------------------------------------------------
+Step 1. Zotero raw → Manifest (index construction only)
+----------------------------------------------------------------------
+
+Script:
+- src/stage1_cleaning/zotero_raw_to_manifest.py
+
+Purpose:
+- Convert Zotero raw JSONL into the authoritative manifest used by cleaning and extraction
+- Prefer HTML when available, otherwise PDF
+- Keep items without fulltext but mark them in notes
+
+Command:
+python src/stage1_cleaning/zotero_raw_to_manifest.py --overwrite --verbose
+
+Expected outputs:
+- data/cleaned/index/manifest_current.tsv
+
+Notes:
+- with_pdf and with_html reflect the current local download coverage.
+- This manifest is expected to be overwritten when new papers are downloaded.
+
+----------------------------------------------------------------------
+Step 2. Manifest → Clean (unified cleaner)
+----------------------------------------------------------------------
+
+Script:
+- src/stage1_cleaning/clean_manifest_to_text.py
+
+Purpose:
+- Parse local PDF/HTML files listed in the manifest
+- Generate cleaned text files and the authoritative key-to-text mapping
+
+Command:
+python src/stage1_cleaning/clean_manifest_to_text.py --prefer html --overwrite --verbose
+
+Expected outputs:
+- data/cleaned/content/text
+- data/cleaned/content/sections
+- data/cleaned/content/tables
+- data/cleaned/index/key2txt.tsv
+
+Notes:
+- Only records successfully producing text appear in key2txt.tsv.
+- Downstream sampling and extraction operate on this cleanable subset.
+
+----------------------------------------------------------------------
+Step 3. Clean → Sample (select a subset of papers)
+----------------------------------------------------------------------
+
+Purpose:
+- Create a small, reproducible subset (sample10, sample20, sample30, …)
+- Reduce cost for downstream weak-labeling and evaluation.
+
+Primary script (HTML-first sampling):
+- src/stage2_sampling_labels/sample_from_manifest_html_first.py
+
+Example command (sample10):
+python src/stage2_sampling_labels/sample_from_manifest_html_first.py --manifest data/cleaned/index/manifest_current.tsv --out-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl --n 10 --seed 42 --verbose --overwrite
+
+Expected outputs:
+- data/cleaned/samples/sample10_htmlfirst.jsonl
+- data/cleaned/samples/sample10_htmlfirst.tsv (if the script emits TSV)
+
+Notes:
+- Keep sample artifacts under data/cleaned/samples/ only.
+
+----------------------------------------------------------------------
+Step 4. Sample → key2txt (optional helper for sample-local runs)
+----------------------------------------------------------------------
+
+Script:
+- src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py
+
+Purpose:
+- Optionally build a sample-specific key2txt mapping.
+
+Example:
+python src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py --sample-jsonl data/cleaned/samples/sample10_htmlfirst.jsonl --key2txt data/cleaned/index/key2txt.tsv --out data/cleaned/samples/sample10_for_key2txt.tsv --overwrite --verbose
+
+----------------------------------------------------------------------
+Step 5. Clean/Sample → Weak labels (LLM extraction, weak supervision)
+----------------------------------------------------------------------
+
+Purpose:
+- Produce weak labels (JSON/TSV) from text, using LLM prompts.
+- Outputs are regeneratable and should be organized under data/cleaned/labels/weak/
+  or run-scoped directories under data/results/ and runs/<run_id>/.
+
+Scripts (active versions):
+- src/stage2_sampling_labels/auto_extract_weak_labels_v4.py  (single-model baseline)
+- src/stage2_sampling_labels/auto_extract_weak_labels_v6.py  (single-model baseline, if you are on v6)
+
+Example (single-model, run on sample20):
+python src/stage2_sampling_labels/auto_extract_weak_labels_v6.py --sample-jsonl data/cleaned/samples/sample20_stratified.jsonl --key2txt data/cleaned/index/key2txt.tsv --sections-dir data/cleaned/content/sections --model <model_name> --max-chars 60000 --sleep 1.0 --out-tsv data/results/<run_id>/weak_labels__<model>.tsv --out-jsonl data/results/<run_id>/weak_labels__<model>.jsonl
+
+Notes:
+- Avoid unnecessary retries.
+- On hard quota errors (RPD / per-minute caps), stop immediately (no auto retry).
+- Prefer section-aware inputs over naive fulltext chunking when possible.
+
+----------------------------------------------------------------------
+Step 5b. Sample → Multi-model primary extraction baseline (auditable)
+----------------------------------------------------------------------
+
+Purpose:
+- Treat multi-model extraction as the **primary extraction output** for a sample/run.
+- Reduce manual GT effort by routing only cross-model disagreements to humans.
+
+Input (example):
+- data/results/<run_id>/weak_labels__<modelA>_<modelB>.tsv
+  (one row per key/formulation_id/model)
+
+Required minimal columns:
+- key, formulation_id, model
+- extraction fields
+- evidence fields (see D2)
+
+Notes:
+- This table is the authoritative multi-model extraction baseline for a run.
+- It is regeneratable.
+
+----------------------------------------------------------------------
+Step 5c. Multi-model consensus weak labels + conflict-only GT queue (NEW)
+----------------------------------------------------------------------
+
+Goal:
+- Build a conservative, auditable consensus weak-label dataset.
+- Produce a minimal human GT workload that focuses only on disagreements.
+
+Script:
+- src/stage4_eval/multi_model_consensus_vote.py
+
+Inputs (example run_id):
+- data/results/run_20260201_0927_bb13267_sample20/weak_labels__gemini_gemma.tsv
+
+Outputs (example run_id):
+- data/results/run_20260201_0927_bb13267_sample20/formulations_consensus_weak.tsv
+- data/results/run_20260201_0927_bb13267_sample20/formulations_conflict_queue.tsv
+- data/results/run_20260201_0927_bb13267_sample20/field_level_qc_summary.tsv
+
+Example command:
+python src/stage4_eval/multi_model_consensus_vote.py --input data/results/run_20260201_0927_bb13267_sample20/weak_labels__gemini_gemma.tsv --out-consensus data/results/run_20260201_0927_bb13267_sample20/formulations_consensus_weak.tsv --out-conflicts data/results/run_20260201_0927_bb13267_sample20/formulations_conflict_queue.tsv --out-qc data/results/run_20260201_0927_bb13267_sample20/field_level_qc_summary.tsv --preferred-model "gemini-2.5-flash"
+
+Operational note (current status):
+- For run_20260201_0927_bb13267_sample20, this produced:
+  - consensus rows = 196
+  - conflict rows  = 28
+  - field-level GT decisions generated later = 89 (see Step 6b)
+
+----------------------------------------------------------------------
+Step 6. Manual GT labeling (human-in-the-loop)
+----------------------------------------------------------------------
+
+Principle:
+- GT is **scientifically defensible** rather than “absolute truth”.
+- Do not force labels when evidence is insufficient.
+- For this project, GT is now defined at the **field-decision** level for conflicts,
+  not as exhaustive formulation-level truth tables.
+
+----------------------------------------------------------------------
+Step 6b. Conflict-only FIELD-LEVEL GT decisions (NEW, recommended mainline)
+----------------------------------------------------------------------
+
+Purpose:
+- Convert the conflict queue into a field-level decision template:
+  one row = one (key, formulation_id, field_name) decision task.
+- Humans label only disagreements; everything else stays as weak labels.
+
+Script:
+- src/stage3_gt/build_gt_template_from_conflict_queue.py
+
+Input (example run_id):
+- data/results/run_20260201_0927_bb13267_sample20/formulations_conflict_queue.tsv
+
+Output (example run_id):
+- data/cleaned/labels/manual/gt_field_decisions__run_20260201_0927_bb13267_sample20.tsv
+
+Example command:
+python src/stage3_gt/build_gt_template_from_conflict_queue.py --conflicts data/results/run_20260201_0927_bb13267_sample20/formulations_conflict_queue.tsv --out data/cleaned/labels/manual/gt_field_decisions__run_20260201_0927_bb13267_sample20.tsv
+
+Result (current status):
+- gt_field_decisions rows = 89
+- gt_decision allowed values:
+  - accept_model1
+  - accept_model2
+  - reject_both
+  - unclear
+
+Human fill policy:
+- For each row, read evidence_span_text_main first.
+- If one model is supported by evidence: accept_model1 / accept_model2.
+- If neither is supported: reject_both (optionally fill gt_value_text if evidence supports a corrected value).
+- If evidence is insufficient/ambiguous: unclear.
+
+Notes:
+- This is the mainline GT workflow for publishable multi-model consensus experiments.
+- It minimizes manual intervention and preserves auditability.
+
+Field-level GT Policy (Authoritative)
+
+Ground-truth (GT) annotation in this project is defined at the field-decision level rather than enforcing complete formulation-level truth tables.
+
+All extracted fields are categorized into three classes with distinct GT policies:
+
+Class A – Structured fields for rule discovery
+These fields represent core formulation parameters and particle properties used in downstream statistical analysis and rule discovery.
+GT decisions are made conservatively based strictly on explicit textual evidence. Domain knowledge or implicit inference is not permitted.
+
+For Class A fields, human annotators may assign:
+
+accept_model1
+
+accept_model2
+
+reject_both
+
+unclear
+
+Only values explicitly supported by canonical evidence spans are accepted.
+
+Class B – Weakly structured auxiliary fields
+These fields capture free-text or qualitative model outputs intended for contextual reference rather than structured analysis.
+GT annotation is optional and conservative. When evidence does not clearly support a candidate value, reject_both is assigned by default.
+Class B fields are excluded from quantitative performance metrics and rule discovery analyses.
+
+Class C – Non-GT metadata fields
+These fields provide identifiers, provenance, or evidence traceability and are not subject to GT annotation.
+
+This tiered GT policy minimizes manual intervention while preserving scientific defensibility and auditability in the presence of heterogeneous and inconsistently reported literature.
+
+Field semantics and GT policy for emulsification-related attributes
+
+This section defines the authoritative semantics for emulsification-related fields.
+These definitions override any ambiguous or legacy interpretations in earlier runs.
+
+emul_type (Emulsion architecture)
+
+Definition
+Describes the structural architecture of the emulsion system, independent of the physical operation or solvent-removal process.
+
+This field captures how phases are arranged (e.g., oil and water), not how energy is applied or how solvent is removed.
+
+Allowed values (examples)
+
+O/W
+W/O
+W/O/W
+O/W/O
+single emulsion
+double emulsion
+
+
+GT policy
+
+Values are accepted only when explicitly stated in the textual evidence.
+
+Hierarchical inference is not permitted. For example:
+
+“double emulsion” must not be inferred as “W/O/W” unless explicitly stated.
+
+When evidence provides only a generic description (e.g., “double emulsion”):
+
+Accept the generic value.
+
+Do not down-infer a more specific architecture.
+
+emul_method (Emulsification energy or operation)
+
+Definition
+Describes the physical operation or energy input used to form the emulsion droplets.
+
+This field captures how energy is applied, not the overall process name.
+
+Allowed values (examples)
+
+sonication
+probe sonication
+bath sonication
+magnetic stirring
+mechanical stirring
+high-pressure homogenization
+microfluidization
+
+
+GT policy
+
+Only accept values explicitly stated in the evidence.
+
+Process descriptors such as:
+
+“solvent evaporation”
+
+“solvent diffusion”
+
+“double emulsion solvent evaporation”
+are not valid values for emul_method.
+
+In such cases:
+
+emul_type may be accepted as “double emulsion”.
+
+emul_method must remain empty unless an energy operation (e.g., sonication, stirring) is explicitly stated.
+
+Notes on solvent-removal processes
+
+Terms such as “solvent evaporation” or “solvent diffusion” describe post-emulsification or concurrent solvent-removal mechanisms, not emulsion architecture or energy input.
+
+In the current pipeline:
+
+These terms are not assigned to emul_method.
+
+They may appear in free-text fields (e.g., notes) or be considered for future dedicated process-level fields.
+
+They are excluded from field-level GT and rule-discovery analyses.
+
+Rationale (Methodological)
+
+This separation ensures that:
+
+Each field corresponds to a single semantic dimension.
+
+Human GT decisions remain evidence-grounded and reproducible.
+
+Downstream statistical analysis and rule discovery are not confounded by mixed semantic levels.
+
+----------------------------------------------------------------------
+Step 6c. Legacy GT template maker (kept for backward compatibility)
+----------------------------------------------------------------------
+
+Script:
+- src/stage3_gt/gt_tool_v3.py
+
+Role:
+- Template maker for older “pred_* / gt_*” column style.
+- Not required for the conflict-only field-decision GT workflow (Step 6b).
+
+----------------------------------------------------------------------
+Step 7. Evaluation (weak vs GT, consensus quality)
+----------------------------------------------------------------------
+
+Purpose:
+- Evaluate extraction quality and disagreement patterns.
+- Report field-level agreement/conflict rates (from Step 5c QC summary).
+- Use GT field decisions (Step 6b) to quantify arbitration outcomes and error modes.
+
+Inputs:
+- formulations_consensus_weak.tsv
+- field_level_qc_summary.tsv
+- gt_field_decisions__run_<run_id>.tsv (filled by humans)
+
+Outputs:
+- Publishable tables/figures for agreement rates, conflict types, and evidence quality distributions.
+- Optional: adjudicated dataset produced by applying gt_decision to conflicts (planned capability).
+
+----------------------------------------------------------------------
+Step 8. Merge and publish (final aggregation)
+----------------------------------------------------------------------
+
+Script:
+- src/stage5_merge_publish/merge_results.py
+
+Purpose:
+- Merge run outputs into publishable artifact sets.
+
+======================================================================
+D. LLM Extraction Contract (What stage2+ must use)
+======================================================================
+
+LLM extraction must use:
+- data/cleaned/index/key2txt.tsv
+- data/cleaned/content/text/
+Optional:
+- data/cleaned/content/sections/
+- data/cleaned/content/tables/
+
+LLM extraction must not read:
+- legacy JSONL manifests as authoritative inputs
+- per-run temporary text folders
+- ad-hoc cleaned outputs outside data/cleaned/content/
+
+----------------------------------------------------------------------
+D2. Auditable Evidence Contract (required for primary extraction baselines)
+----------------------------------------------------------------------
+
+Goal:
+- Ensure every extracted field is traceable to deterministic, reproducible evidence from locally cleaned text.
+- Evidence must be suitable for:
+  - third-model judging
+  - lightweight human audit
+  - hallucination detection and QC reporting
+
+Authoritative evidence sources (priority):
+1) data/cleaned/content/sections/
+2) data/cleaned/content/text/
+3) data/cleaned/content/tables/
+
+Required evidence fields (minimum):
+- evidence_section
+- evidence_span_text
+- evidence_span_start
+- evidence_span_end
+- evidence_method (project enum for deterministic retrieval)
+- evidence_quality (A/B/C/D or equivalent)
+
+Implementation note:
+- Offsets must be deterministic given the same cleaned text.
+
+======================================================================
+E. Zotero Integration (Corrected Role)
+======================================================================
+
+Zotero is used as:
+- A local attachment and snapshot provider (PDF and HTML)
+- A synchronization layer for PDFs and HTML snapshots
+
+Artifacts:
+- data/raw/zotero/zotero_llm_relevant.jsonl (or selected items JSONL)
+- data/raw/zotero/zotero_selected_items.jsonl
+- data/raw/zotero/last_version.txt
+
+Environment variables:
+- ZOTERO_LIBRARY_TYPE = user
+- ZOTERO_LIBRARY_ID   = 18477538
+- ZOTERO_API_KEY      = stored in .env
+
+Typical tags:
+- LLM-Relevant
+- PLGA
+- Extracted
+
+Preferred source order:
+- HTML > PDF
+
+======================================================================
+F. LLM API Configuration
+======================================================================
+
+Gemini API:
+- GEMINI_API_KEY stored in .env
+- Not hard-coded in any script
+
+======================================================================
+G. Development & Debug Policy (VS Code)
+======================================================================
+
+- Any new or modified Python script must:
+  - be runnable from CLI
+  - have a corresponding entry in .vscode/launch.json
+  - support small-batch debugging before full runs
+
+======================================================================
+H. Minimal Happy Path (End-to-end, multi-model consensus + conflict-only GT)
+======================================================================
+
+1) Build manifest:
+python src/stage1_cleaning/zotero_raw_to_manifest.py --overwrite --verbose
+
+2) Clean texts:
+python src/stage1_cleaning/clean_manifest_to_text.py --prefer html --overwrite --verbose
+
+3) Sample:
+python src/stage2_sampling_labels/sample_from_manifest_html_first.py --manifest data/cleaned/index/manifest_current.tsv --out-jsonl data/cleaned/samples/sample20_stratified.jsonl --seed 42 --overwrite --verbose
+
+4) Single-model extraction (run per model):
+python src/stage2_sampling_labels/auto_extract_weak_labels_v6.py --sample-jsonl data/cleaned/samples/sample20_stratified.jsonl --key2txt data/cleaned/index/key2txt.tsv --sections-dir data/cleaned/content/sections --model gemini-2.5-flash --max-chars 60000 --sleep 1.0 --out-tsv data/results/<run_id>/weak_labels__gemini.tsv --out-jsonl data/results/<run_id>/weak_labels__gemini.jsonl
+
+python src/stage2_sampling_labels/auto_extract_weak_labels_v6.py --sample-jsonl data/cleaned/samples/sample20_stratified.jsonl --key2txt data/cleaned/index/key2txt.tsv --sections-dir data/cleaned/content/sections --model gemma-3-12b-it --max-chars 60000 --sleep 1.0 --out-tsv data/results/<run_id>/weak_labels__gemma.tsv --out-jsonl data/results/<run_id>/weak_labels__gemma.jsonl
+
+5) Build multi-model TSV (if needed):
+(If you already have weak_labels__modelA_modelB.tsv, skip.)
+Otherwise concatenate two single-model TSVs into a multi-model TSV with a 'model' column.
+
+6) Consensus + conflict queue:
+python src/stage4_eval/multi_model_consensus_vote.py --input data/results/<run_id>/weak_labels__gemini_gemma.tsv --out-consensus data/results/<run_id>/formulations_consensus_weak.tsv --out-conflicts data/results/<run_id>/formulations_conflict_queue.tsv --out-qc data/results/<run_id>/field_level_qc_summary.tsv --preferred-model "gemini-2.5-flash"
+
+7) Field-level GT template (conflict-only):
+python src/stage3_gt/build_gt_template_from_conflict_queue.py --conflicts data/results/<run_id>/formulations_conflict_queue.tsv --out data/cleaned/labels/manual/gt_field_decisions__run_<run_id>.tsv
+
+8) Human fill:
+Edit gt_field_decisions__run_<run_id>.tsv and fill gt_decision (+ optional gt_value_text, gt_notes).
+
