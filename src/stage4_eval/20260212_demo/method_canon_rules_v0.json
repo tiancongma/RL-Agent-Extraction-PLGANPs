@@ -1,0 +1,79 @@
+{
+  "version": "v0",
+  "scope": "demo_only",
+  "notes": "Canonicalization for demo stratification only. Does not modify original fields.",
+  "normalization": {
+    "lowercase": true,
+    "collapse_whitespace": true,
+    "strip": true
+  },
+  "fields": {
+    "emul_method_main": {
+      "output_col": "emul_method_canon_demo",
+      "default": "other",
+      "rules": [
+        { "canon": "sfee", "pattern": "\\bsfee\\b" },
+
+        { "canon": "high_pressure_homogenization", "pattern": "high\\s*pressure\\s*homogen" },
+
+        { "canon": "microfluidics", "pattern": "microfluidic" },
+
+        { "canon": "supercritical_extraction", "pattern": "supercritical\\s+emulsion\\s+extraction|\\bsee-[bc]\\b|\\bsupercritical\\b" },
+
+        { "canon": "rotor_stator_ultra_turrax", "pattern": "ultra\\s*-?\\s*turrax|\\but\\s*8000\\b|turrax" },
+
+        { "canon": "ultrasonication", "pattern": "ultra\\s*-?\\s*probe\\s*sonication|\\bultrasonication\\b|\\bultrasonic\\b|\\bsonication\\b|ultrasonic\\s+emulsification" },
+
+        { "canon": "double_emulsion_solvent_evaporation", "pattern": "double\\s+emulsion|w1\\s*/\\s*o\\s*/\\s*w2|double\\s+emulsion\\s*-?\\s*solvent\\s+evaporation" },
+
+        { "canon": "solvent_evaporation_family", "pattern": "solvent\\s+evaporation|emulsion\\s*-?\\s*solvent\\s+evaporation|\\bese\\b|\\bes\\s*se\\b|\\besse\\b|emulsification\\s*-?\\s*solvent\\s*-?\\s*surfactant\\s*-?\\s*evaporation" },
+
+        { "canon": "stirring", "pattern": "magnetic\\s+stirring|mechanical\\s+stirr?er|low/medium\\s+shear\\s+stirring|\\bstirring\\b|\\brpm\\b" },
+
+        { "canon": "batch", "pattern": "\\bbatch\\b" },
+
+        { "canon": "extraction_or_lee", "pattern": "conventional\\s+liquid\\s+extraction|\\(lee\\)|\\bliquid\\s+extraction\\b" }
+      ]
+    },
+
+    "organic_solvent_main": {
+      "output_col": "organic_solvent_canon_demo",
+      "default": "other",
+      "rules": [
+        { "canon": "dmf_dcm_blend", "pattern": "dmf\\s*-\\s*dcm" },
+        { "canon": "ea_dcm_blend", "pattern": "\\bea\\s*-\\s*dcm\\b" },
+
+        { "canon": "ace_mek_blend", "pattern": "ace\\s*-\\s*mek" },
+        { "canon": "thf_etac_blend", "pattern": "thf\\s*-\\s*etac" },
+        { "canon": "ace_etac_blend", "pattern": "ace\\s*-\\s*etac" },
+
+        { "canon": "miscible_blends_other", "pattern": "partially\\s+water\\s*-?\\s*miscible\\s+solvent\\s+blends" },
+
+        { "canon": "dcm", "pattern": "\\bdcm\\b|methylene\\s+chloride" },
+
+        { "canon": "chloroform", "pattern": "chloroform" },
+
+        { "canon": "ethyl_acetate", "pattern": "ethyl\\s+acetate" },
+
+        { "canon": "acetone", "pattern": "\\bacetone\\b" },
+
+        { "canon": "thf", "pattern": "\\bthf\\b" },
+
+        { "canon": "co2", "pattern": "carbon\\s+dioxide|\\bco2\\b" }
+      ]
+    },
+
+    "emul_type_main": {
+      "output_col": "emul_type_canon_demo",
+      "default": "other",
+      "rules": [
+        { "canon": "w_o_w", "pattern": "w\\s*/\\s*o\\s*/\\s*w|w1\\s*/\\s*o\\s*/\\s*w2" },
+        { "canon": "emulsification_diffusion_o_w", "pattern": "emulsification\\s*-\\s*diffusion.*o\\s*/\\s*w" },
+        { "canon": "o_w", "pattern": "o\\s*/\\s*w" },
+        { "canon": "nanoprecipitation", "pattern": "nanoprecipitation" },
+        { "canon": "pca_precipitation", "pattern": "compressed\\s+antisolvent|\\bpca\\b" },
+        { "canon": "inversion_process", "pattern": "inversion" }
+      ]
+    }
+  }
+}
