@@ -21,3 +21,6 @@ lxml>=5.3.0               # parser backend for bs4/trafilatura
 
 # --- LLM (keep your version) ---
 google-generativeai>=0.7.0
+
+# --- Figure generation ---
+matplotlib>=3.7

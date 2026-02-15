@@ -70,6 +70,7 @@
         { "canon": "w_o_w", "pattern": "w\\s*/\\s*o\\s*/\\s*w|w1\\s*/\\s*o\\s*/\\s*w2" },
         { "canon": "emulsification_diffusion_o_w", "pattern": "emulsification\\s*-\\s*diffusion.*o\\s*/\\s*w" },
         { "canon": "o_w", "pattern": "o\\s*/\\s*w" },
+        { "canon": "o_w", "pattern": "emulsification\\s+solvent\\s+evaporation" },
         { "canon": "nanoprecipitation", "pattern": "nanoprecipitation" },
         { "canon": "pca_precipitation", "pattern": "compressed\\s+antisolvent|\\bpca\\b" },
         { "canon": "inversion_process", "pattern": "inversion" }
