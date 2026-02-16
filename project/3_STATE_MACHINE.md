@@ -1,104 +1,170 @@
 # Project State Machine
 
-This document defines the **current lifecycle state of the project**, the allowed
-operations within each state, and the explicit criteria for transitioning to the
-next state.
+This document defines the current lifecycle state of the project, the allowed operations within each state, and the explicit criteria for transitioning to the next state.
 
-The goal is to prevent scope drift, accidental rework, and ambiguity about
-"where the project currently is."
+The goal is to prevent scope drift, accidental rework, and ambiguity about where the project currently is.
 
 ---
 
 ## STATE_0 — Scope Locked
 
 ### Description
+
 The overall project goal, scope, and non-goals are fixed.
 
 ### Allowed
-- Documentation updates
-- Minor refactoring without behavior change
+
+- Documentation updates  
+- Clarifying requirements  
+- Non-behavioral refactoring  
 
 ### Forbidden
-- Adding new objectives
-- Expanding problem scope
+
+- Adding new research objectives  
+- Expanding scientific scope  
+- Changing evaluation philosophy  
 
 ### Exit Criteria
-- `project/0_PROJECT_CHARTER.md` finalized
-- `project/1_REQUIREMENTS.md` finalized
+
+- `project/0_PROJECT_CHARTER.md` finalized  
+- `project/1_REQUIREMENTS.md` finalized  
 
 ---
 
 ## STATE_1 — Data Ready
 
 ### Description
-Raw and cleaned data pipelines are functional and stable.
+
+Raw ingestion and cleaned text generation pipelines are stable and reproducible.
 
 ### Allowed
-- Regenerating raw or cleaned data
-- Fixing data parsing bugs
+
+- Regenerating cleaned text  
+- Fixing parsing errors  
+- Manifest validation  
 
 ### Forbidden
-- Changing downstream evaluation logic
+
+- Modifying extraction schema  
+- Adding evaluation logic  
 
 ### Exit Criteria
-- `manifest_current.tsv` exists and is validated
-- `key2txt.tsv` exists and is validated
+
+- `manifest_current.tsv` validated  
+- `key2txt.tsv` validated  
+- Cleaned text reproducible across reruns  
 
 ---
 
-## STATE_2 — Pipeline Frozen (CURRENT)
+## STATE_2 — Architecture Revision (CURRENT)
 
 ### Description
-The extraction pipeline structure is frozen.
-Only stability and correctness are addressed.
+
+Controlled redesign of the extraction and evaluation architecture.
+
+This state allows structural changes to `stage4_eval` and `stage3_gt`,
+provided they remain within the original project scope.
+
+**Current focus:**  
+Transition from dual-model extraction to evidence-grounded verification.
 
 ### Allowed
-- Bug fixes
-- Prompt wording refinements (no new fields)
-- Logging and robustness improvements
+
+- Adding verifier layer  
+- Modifying extraction output schema to include evidence  
+- Introducing multi-span evidence contract  
+- Updating aggregation logic  
+- Updating state documentation  
 
 ### Forbidden
-- Adding new extraction fields
-- Changing data schemas
-- Adding new models
+
+- Expanding field list  
+- Adding new scientific tasks  
+- Introducing new external data sources  
+- Changing project scope defined in STATE_0  
 
 ### Exit Criteria
-- Sample20 fully processed
-- No schema changes across two consecutive runs
+
+- Evidence contract finalized  
+- Verifier script implemented  
+- Aggregator implemented  
+- Sample20 successfully processed under new architecture  
+- No schema change across two consecutive evidence-based runs  
 
 ---
 
-## STATE_3 — Results Stable
+## STATE_3 — Pipeline Frozen
 
 ### Description
+
+The evidence-grounded extraction pipeline structure is frozen.  
+Only stability, bug fixes, and prompt refinement are allowed.
+
+### Allowed
+
+- Prompt wording refinement (no schema change)  
+- Robustness improvements  
+- Logging enhancements  
+- Performance tuning  
+
+### Forbidden
+
+- Adding new extraction fields  
+- Changing evidence schema  
+- Changing verification logic  
+- Reintroducing independent second extractor  
+
+### Exit Criteria
+
+- Two consecutive stable runs  
+- Evidence-based GT workflow validated  
+- No structural change required for 2 weeks  
+
+---
+
+## STATE_4 — Results Stable
+
+### Description
+
 Extraction outputs and evaluation metrics are stable enough for reporting.
 
 ### Allowed
-- Figure/table generation
-- Result summarization
+
+- Figure and table generation  
+- Metric analysis  
+- Ablation comparisons (dual-model vs evidence-based)  
 
 ### Forbidden
-- Pipeline logic changes
-- Data regeneration
+
+- Architecture changes  
+- Data regeneration unless bug fix  
 
 ### Exit Criteria
-- Final tables generated
-- Metrics documented
+
+- Final tables generated  
+- Evaluation documented  
+- Reproducibility verified  
 
 ---
 
-## STATE_4 — Writing and Release
+## STATE_5 — Writing and Release
 
 ### Description
+
 Focus shifts to writing, sharing, and publication.
 
 ### Allowed
-- Documentation
-- Manuscript or arXiv preparation
+
+- Documentation updates  
+- Manuscript preparation  
+- arXiv or submission packaging  
 
 ### Forbidden
-- New experiments
-- Pipeline changes
+
+- New experiments  
+- Pipeline changes  
+- Schema modifications  
 
 ### Exit Criteria
-- arXiv v1 submitted or shared
+
+- arXiv v1 submitted or shared  

@@ -72,3 +72,18 @@ and does not support consistent ground truth adjudication.
 
 **Scope**  
 This decision applies to GT and evaluation only and does not affect other structured fields.
+
+[2026-02-16] Replace dual-model extraction with evidence-grounded verification pipeline.
+Reason:
+- Independent second model introduces hallucinated conflicts.
+- Evidence quality insufficient for formulation-level GT.
+Decision:
+- Extractor must emit multi-span evidence.
+- Verifier only sees evidence, not full text.
+- Aggregator only accepts supported fields.
+Impact:
+- Stage4_eval scripts will be extended.
+- Stage3_gt input schema will include evidence_spans.
+Status:
+- In implementation.
+

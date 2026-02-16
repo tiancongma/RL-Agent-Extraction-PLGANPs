@@ -175,3 +175,21 @@ project/3_STATE_MACHINE.md
 project/4_DECISIONS_LOG.md
 
 This architecture is intentionally minimal, explicit, and extensible.
+
+## 2026-02-16 Architecture Update: Evidence-Grounded Extraction
+
+- origin:
+Model1 ─┐
+        ├─ merge ─ QC ─ GT
+Model2 ─┘
+
+- now:
+Extractor
+  ↓
+Field-level Evidence (multi-span)
+  ↓
+Verifier
+  ↓
+Aggregator
+  ↓
+GT (only unresolved)
