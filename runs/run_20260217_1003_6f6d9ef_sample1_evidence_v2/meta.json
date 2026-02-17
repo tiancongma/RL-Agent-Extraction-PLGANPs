@@ -1,0 +1,17 @@
+{
+  "run_id": "run_20260217_1003_6f6d9ef_sample1_evidence_v2",
+  "date": "2026-02-17",
+  "branch": "feature/evidence-spans-v1",
+  "commit": "6f6d9ef",
+  "stage": "stage2_sampling_labels",
+  "script": "src/stage2_sampling_labels/auto_extract_weak_labels_v6.py",
+  "model": "gemini-2.5-flash",
+  "max_chars": 60000,
+  "sleep_seconds": 1.0,
+  "sample_source": "data/cleaned/samples/sample1_debug.jsonl",
+  "key2txt": "data/cleaned/index/key2txt.tsv",
+  "sections_dir": "data/cleaned/content/sections",
+  "feature_flag": "field_evidence_v2",
+  "description": "Field-level evidence prototype run on sample1_debug to validate evidence_spans per field.",
+  "notes": "Single-document evidence grounding. Do not overwrite existing sample20 runs."
+}

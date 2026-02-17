@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import os
 import re
@@ -277,6 +278,106 @@ _EVIDENCE_PATTERNS: List[Tuple[str, re.Pattern]] = [
     ("solvent", re.compile(r"\b(dichloromethane|methylene chloride|DCM|ethyl acetate|EA|chloroform|acetone)\b", re.IGNORECASE)),
     ("emulsion", re.compile(r"\b(W1\/O\/W2|W\/O\/W|O\/W|W\/O|double\s+emulsion|single\s+emulsion|solvent\s+evaporation)\b", re.IGNORECASE)),
 ]
+
+
+def _canonical_evidence_span(evidence: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    if not evidence.get("evidence_span_text"):
+        return None
+    return {
+        "section": evidence.get("evidence_section"),
+        "start": evidence.get("evidence_span_start"),
+        "end": evidence.get("evidence_span_end"),
+        "text": evidence.get("evidence_span_text"),
+        "method": evidence.get("evidence_method"),
+        "quality": evidence.get("evidence_quality"),
+    }
+
+
+def _field_value_candidates(value: Any) -> List[str]:
+    if value is None:
+        return []
+
+    candidates: List[str] = []
+    if isinstance(value, (int, float)):
+        s = str(value).strip()
+        if s:
+            candidates.append(s)
+        if isinstance(value, float):
+            s2 = f"{value:.6f}".rstrip("0").rstrip(".")
+            if s2 and s2 not in candidates:
+                candidates.append(s2)
+    else:
+        s = str(value).strip()
+        if s:
+            candidates.append(s)
+            short = s[:80].strip()
+            if short and short not in candidates:
+                candidates.append(short)
+    return candidates
+
+
+def _field_context_ok(field_name: str, context_text: str) -> bool:
+    f = (field_name or "").strip().lower()
+    ctx = (context_text or "").lower()
+    if f == "plga_mass_mg":
+        return ("mg" in ctx) and ("plga" in ctx)
+    if f == "pva_conc_percent":
+        return ("pva" in ctx) and (("%" in ctx) or ("w/v" in ctx))
+    if f == "organic_solvent":
+        solvents = ("dcm", "dichloromethane", "chloroform", "ethyl acetate", "acetone", "dmf")
+        return any(s in ctx for s in solvents)
+    if f == "size_nm":
+        return ("nm" in ctx) or ("size" in ctx) or ("diameter" in ctx)
+    return True
+
+
+def _value_in_text(value: Any, text: str) -> bool:
+    for cand in _field_value_candidates(value):
+        if cand and re.search(re.escape(cand), text or "", re.IGNORECASE):
+            return True
+    return False
+
+
+def _allow_canonical_fallback(field_name: str, field_value: Any, canonical_span: Optional[Dict[str, Any]]) -> bool:
+    if not canonical_span:
+        return False
+    f = (field_name or "").strip().lower()
+    if f in ("emul_type", "emul_method"):
+        return True
+    if f in ("size_nm", "pdi", "zeta_mv", "encapsulation_efficiency_percent", "loading_content_percent"):
+        return _value_in_text(field_value, str(canonical_span.get("text") or ""))
+    return False
+
+
+def _match_field_spans(prompt_text: str, field_name: str, value: Any, window: int = 300) -> List[Dict[str, Any]]:
+    if not prompt_text:
+        return []
+    for cand in _field_value_candidates(value):
+        if not cand:
+            continue
+        for m in re.finditer(re.escape(cand), prompt_text, re.IGNORECASE):
+            cst = max(0, m.start() - 150)
+            cen = min(len(prompt_text), m.end() + 150)
+            context_text = prompt_text[cst:cen]
+            # Guard against common bare-number false positives.
+            if re.fullmatch(r"-?\d+(\.\d+)?", cand):
+                if not _field_context_ok(field_name, context_text):
+                    continue
+            elif (field_name or "").strip().lower() in ("organic_solvent",):
+                if not _field_context_ok(field_name, context_text):
+                    continue
+
+            st = max(0, m.start() - window)
+            en = min(len(prompt_text), m.end() + window)
+            return [{
+                "section": "prompt_text",
+                "start": int(st),
+                "end": int(en),
+                "text": prompt_text[st:en].strip(),
+                "method": "value_match_window",
+                "quality": "C",
+            }]
+    return []
 
 
 def choose_canonical_evidence(sections: List[Dict[str, str]], prefer: Optional[List[str]] = None) -> Dict[str, Any]:
@@ -539,6 +640,8 @@ TSV_FIELDS = [
     "notes",
     "evidence_section","evidence_span_text","evidence_span_start","evidence_span_end",
     "evidence_method","evidence_quality",
+    "evidence_spans_json","text_sha256",
+    "field_evidence_json",
 ]
 
 
@@ -706,6 +809,12 @@ def main(argv: Optional[List[str]] = None) -> None:
 
             prompt_text = build_sectioned_prompt_text(sections, max_chars=args.max_chars) if sections else fulltxt[:args.max_chars]
             evidence = choose_canonical_evidence(sections if sections else [{"section_name": "fulltext", "text": fulltxt[:args.max_chars]}])
+            text_sha256 = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()
+            evidence_spans = []
+            canonical_span = _canonical_evidence_span(evidence)
+            if canonical_span:
+                evidence_spans.append(canonical_span)
+            evidence_spans_json = json.dumps(evidence_spans, ensure_ascii=False)
 
             for model in model_names:
                 prompt = LLM_PROMPT_TEMPLATE + "\nTEXT:\n" + prompt_text
@@ -745,13 +854,32 @@ def main(argv: Optional[List[str]] = None) -> None:
 
                 # write raw jsonl (one record per key/model)
                 if h.jsonl_file is not None:
+                    formulations_out = []
+                    for f in formulations:
+                        fields = f.get("fields") or {}
+                        if not isinstance(fields, dict):
+                            fields = {}
+                        field_evidence: Dict[str, Any] = {}
+                        for field_name, field_value in fields.items():
+                            spans = _match_field_spans(prompt_text, str(field_name), field_value)
+                            if not spans and _allow_canonical_fallback(str(field_name), field_value, canonical_span):
+                                spans = [dict(canonical_span)]
+                            field_evidence[str(field_name)] = {"spans": spans}
+                        formulations_out.append({
+                            "id": f.get("formulation_id"),
+                            "fields": fields,
+                            "notes": f.get("notes"),
+                            "field_evidence": field_evidence,
+                        })
                     raw_rec = {
                         "key": key,
                         "model": model,
-                        "formulations": [
-                            {"id": f.get("formulation_id"), "fields": f.get("fields", {}), "notes": f.get("notes")}
-                            for f in formulations
-                        ],
+                        "evidence": {
+                            "text_id": key,
+                            "text_sha256": text_sha256,
+                            "spans": evidence_spans,
+                        },
+                        "formulations": formulations_out,
                         "paper_notes": paper_notes,
                     }
                     h.jsonl_file.write(json.dumps(raw_rec, ensure_ascii=False) + "\n")
@@ -763,6 +891,13 @@ def main(argv: Optional[List[str]] = None) -> None:
                     fields = f.get("fields") or {}
                     if not isinstance(fields, dict):
                         fields = {}
+                    field_evidence: Dict[str, Any] = {}
+                    for field_name, field_value in fields.items():
+                        spans = _match_field_spans(prompt_text, str(field_name), field_value)
+                        if not spans and _allow_canonical_fallback(str(field_name), field_value, canonical_span):
+                            spans = [dict(canonical_span)]
+                        field_evidence[str(field_name)] = {"spans": spans}
+                    field_evidence_json = json.dumps(field_evidence, ensure_ascii=False)
 
                     row = {
                         "key": key,
@@ -783,6 +918,9 @@ def main(argv: Optional[List[str]] = None) -> None:
                         "encapsulation_efficiency_percent": fields.get("encapsulation_efficiency_percent"),
                         "loading_content_percent": fields.get("loading_content_percent"),
                         "notes": f.get("notes"),
+                        "evidence_spans_json": evidence_spans_json,
+                        "text_sha256": text_sha256,
+                        "field_evidence_json": field_evidence_json,
                         **evidence,
                     }
 
