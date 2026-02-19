@@ -1,0 +1,126 @@
+Schema Inspection Report: weak_labels__gemini
+
+[TSV] Column names
+- key
+- model
+- formulation_id
+- emul_type
+- emul_method
+- la_ga_ratio
+- plga_mw_kDa
+- plga_mass_mg
+- pva_conc_percent
+- organic_solvent
+- drug_name
+- drug_feed_amount_text
+- size_nm
+- pdi
+- zeta_mV
+- encapsulation_efficiency_percent
+- loading_content_percent
+- notes
+- evidence_section
+- evidence_span_text
+- evidence_span_start
+- evidence_span_end
+- evidence_method
+- evidence_quality
+- evidence_spans_json
+- text_sha256
+- field_evidence_json
+
+[TSV] Likely DOI/Reference field candidates
+- None
+
+[TSV] Likely formulation identifier candidates
+- formulation_id
+
+[JSONL] Parsed sample summary (sampled_lines=50, valid_json_objects=20, parse_errors=0)
+
+[JSONL] Top-level keys
+- evidence
+- formulations
+- key
+- model
+- paper_notes
+
+[JSONL] Nested key paths (depth <= 3)
+- evidence.spans
+- evidence.spans.end
+- evidence.spans.method
+- evidence.spans.quality
+- evidence.spans.section
+- evidence.spans.start
+- evidence.spans.text
+- evidence.text_id
+- evidence.text_sha256
+- formulations.field_evidence
+- formulations.field_evidence.drug_feed_amount_text
+- formulations.field_evidence.drug_name
+- formulations.field_evidence.emul_method
+- formulations.field_evidence.emul_type
+- formulations.field_evidence.encapsulation_efficiency_percent
+- formulations.field_evidence.la_ga_ratio
+- formulations.field_evidence.loading_content_percent
+- formulations.field_evidence.organic_solvent
+- formulations.field_evidence.pdi
+- formulations.field_evidence.plga_mass_mg
+- formulations.field_evidence.plga_mw_kDa
+- formulations.field_evidence.pva_conc_percent
+- formulations.field_evidence.size_nm
+- formulations.field_evidence.zeta_mV
+- formulations.fields
+- formulations.fields.drug_feed_amount_text
+- formulations.fields.drug_name
+- formulations.fields.emul_method
+- formulations.fields.emul_type
+- formulations.fields.encapsulation_efficiency_percent
+- formulations.fields.la_ga_ratio
+- formulations.fields.loading_content_percent
+- formulations.fields.organic_solvent
+- formulations.fields.pdi
+- formulations.fields.plga_mass_mg
+- formulations.fields.plga_mw_kDa
+- formulations.fields.pva_conc_percent
+- formulations.fields.size_nm
+- formulations.fields.zeta_mV
+- formulations.id
+- formulations.notes
+
+[JSONL] Likely DOI/Reference field candidates
+- None
+
+[JSONL] Likely formulation identifier candidates
+- formulations
+- formulations.field_evidence
+- formulations.field_evidence.drug_feed_amount_text
+- formulations.field_evidence.drug_name
+- formulations.field_evidence.emul_method
+- formulations.field_evidence.emul_type
+- formulations.field_evidence.encapsulation_efficiency_percent
+- formulations.field_evidence.la_ga_ratio
+- formulations.field_evidence.loading_content_percent
+- formulations.field_evidence.organic_solvent
+- formulations.field_evidence.pdi
+- formulations.field_evidence.plga_mass_mg
+- formulations.field_evidence.plga_mw_kDa
+- formulations.field_evidence.pva_conc_percent
+- formulations.field_evidence.size_nm
+- formulations.field_evidence.zeta_mV
+- formulations.fields
+- formulations.fields.drug_feed_amount_text
+- formulations.fields.drug_name
+- formulations.fields.emul_method
+- formulations.fields.emul_type
+- formulations.fields.encapsulation_efficiency_percent
+- formulations.fields.la_ga_ratio
+- formulations.fields.loading_content_percent
+- formulations.fields.organic_solvent
+- formulations.fields.pdi
+- formulations.fields.plga_mass_mg
+- formulations.fields.plga_mw_kDa
+- formulations.fields.pva_conc_percent
+- formulations.fields.size_nm
+- formulations.fields.zeta_mV
+- formulations.id
+- formulations.notes

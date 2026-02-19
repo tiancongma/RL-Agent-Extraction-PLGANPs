@@ -30,8 +30,10 @@ import csv
 import json
 import os
 import re
+import subprocess
 import sys
 import time
+from datetime import datetime
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -586,6 +588,43 @@ def _suffix_path(p: Path, suffix: str) -> Path:
     return p.with_name(p.name + suffix)
 
 
+def get_git_short_hash() -> str:
+    try:
+        out = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.STDOUT,
+            text=True,
+        ).strip()
+        if out:
+            return out
+    except Exception:
+        pass
+    die("Failed to resolve git short hash via `git rev-parse --short HEAD`.")
+    return ""
+
+
+def sanitize_label(s: str) -> str:
+    x = re.sub(r"[^A-Za-z0-9._-]+", "_", str(s).strip())
+    return re.sub(r"_+", "_", x).strip("_")
+
+
+def build_run_id(subset_label: str, stage_label: str, version_tag: str) -> str:
+    now = datetime.now()
+    ymd = now.strftime("%Y%m%d")
+    hm = now.strftime("%H%M")
+    git_hash = get_git_short_hash()
+    subset = sanitize_label(subset_label)
+    stage = sanitize_label(stage_label)
+    ver = sanitize_label(version_tag)
+    if not subset:
+        die("subset label is empty; provide --subset-label when auto run-id is used.")
+    if not stage:
+        die("stage label is empty; provide --stage-label.")
+    if not ver:
+        die("version tag is empty; provide --version-tag.")
+    return f"run_{ymd}_{hm}_{git_hash}_{subset}_{stage}_{ver}"
+
+
 # -----------------------------
 # Main
 # -----------------------------
@@ -605,6 +644,14 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
                    help="Write per-(key,model) raw JSONL output (optional).")
     p.add_argument("--out-tsv", default=defaults.get("out_tsv", None), required=False,
                    help="Write flattened TSV output (required unless you only want JSONL).")
+    p.add_argument("--subset-label", default="", required=False,
+                   help="Subset label for auto run-id generation (e.g., goren18).")
+    p.add_argument("--stage-label", default="weaklabels", required=False,
+                   help="Stage label for auto run-id generation (default: weaklabels).")
+    p.add_argument("--version-tag", default="v1", required=False,
+                   help="Version tag for auto run-id generation (default: v1).")
+    p.add_argument("--results-dir", default="data/results", required=False,
+                   help="Root results directory for auto run-id output (default: data/results).")
 
     # Model selection
     p.add_argument("--models", default=None,
@@ -644,8 +691,15 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     out_jsonl_base = Path(args.out_jsonl) if args.out_jsonl else None
     out_tsv_base = Path(args.out_tsv) if args.out_tsv else None
+    auto_run_dir: Optional[Path] = None
     if not out_tsv_base and not out_jsonl_base:
-        die("Provide --out-tsv and/or --out-jsonl.")
+        run_id = build_run_id(args.subset_label, args.stage_label, args.version_tag)
+        auto_run_dir = Path(args.results_dir) / run_id
+        auto_run_dir.mkdir(parents=True, exist_ok=True)
+        out_tsv_base = auto_run_dir / "weak_labels__gemini.tsv"
+        out_jsonl_base = auto_run_dir / "weak_labels__gemini.jsonl"
+        print(f"[INFO] auto_run_id={run_id}")
+        print(f"[INFO] auto_run_dir={auto_run_dir}")
 
     # Resolve model list
     model_names: List[str] = []
@@ -807,6 +861,8 @@ def main(argv: Optional[List[str]] = None) -> None:
     if hard_stop_reason:
         die("Stopped due to hard quota condition (see [STOP] line).", code=2)
 
+    if auto_run_dir is not None:
+        print(f"[OK] run_dir -> {auto_run_dir}")
     print("[DONE]")
 
 

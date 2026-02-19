@@ -1,0 +1,17 @@
+Goren Overlap Coverage Report
+
+n_goren_total	433
+n_goren_unique_doi	58
+n_manifest_total	891
+n_manifest_with_doi	855
+n_manifest_unique_doi	855
+n_overlap_unique_doi	1
+n_overlap_with_local_fulltext	0
+
+Top exclusion reasons
+- doi_not_in_goren: 854
+- missing_doi: 36
+- no_local_fulltext: 1
+
+Sample overlapping rows (up to 20)
+- zotero_key=RHRB425U | doi=10.1016/j.ejpb.2010.07.007 | pdf_available=False | html_available=False | title=Rivastigmine-loaded PLGA and PBCA nanoparticles: Preparation, optimization, characterization, in vitro and pharmacodynamic studies
