@@ -90,6 +90,25 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Optional limit on PDF pages to parse (0 = no limit).",
     )
 
+    ap.add_argument(
+        "--content-dir",
+        type=Path,
+        default=paths.DATA_CLEANED_CONTENT_DIR,
+        help="Output content base directory passed to pdf2clean (default via paths.py).",
+    )
+
+    ap.add_argument(
+        "--key2txt-out",
+        type=Path,
+        default=(paths.DATA_CLEANED_INDEX_DIR / "key2txt.tsv"),
+        help="Destination 2-column key2txt mapping path (default via paths.py).",
+    )
+    ap.add_argument(
+        "--allow-empty-key2txt",
+        action="store_true",
+        help="Allow writing an empty key2txt mapping when no cleaned text files were produced.",
+    )
+
     return ap
 
 
@@ -148,6 +167,7 @@ def promote_key2txt_mapping(
     content_dir: Path,
     dest_key2txt: Path,
     overwrite: bool,
+    allow_empty: bool,
 ) -> None:
     """
     Promote a normalized 2-column mapping into data/cleaned/index/key2txt.tsv.
@@ -193,7 +213,7 @@ def promote_key2txt_mapping(
                 out.write(f"{k}\t{to_repo_rel(full)}\n")
                 rows_written += 1
 
-    if rows_written == 0:
+    if rows_written == 0 and not allow_empty:
         raise RuntimeError(
             "Promoted key2txt mapping has 0 rows. "
             "This indicates txt_path values could not be resolved to existing files."
@@ -204,9 +224,7 @@ def main() -> None:
     ap = build_arg_parser()
     args = ap.parse_args()
 
-    # Align with frozen structure from paths.py:
-    # cleaned content under data/cleaned/content/
-    content_dir = paths.DATA_CLEANED_CONTENT_DIR
+    content_dir = args.content_dir
 
     produced_key2 = run_pdf2clean(
         manifest_path=args.manifest,
@@ -217,12 +235,13 @@ def main() -> None:
         max_pages=args.max_pages,
     )
 
-    dest_key2 = paths.DATA_CLEANED_INDEX_DIR / "key2txt.tsv"
+    dest_key2 = args.key2txt_out
     promote_key2txt_mapping(
         produced_key2txt=produced_key2,
         content_dir=content_dir,
         dest_key2txt=dest_key2,
         overwrite=True,
+        allow_empty=args.allow_empty_key2txt,
     )
 
     print(f"[OK] cleaned text dir: {content_dir / 'text'}")
