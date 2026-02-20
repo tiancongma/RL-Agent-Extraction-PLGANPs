@@ -417,6 +417,10 @@ LLM_PROMPT_TEMPLATE = (
     "- la_ga_ratio: string|null (e.g., '50:50')\n"
     "- plga_mw_kDa: number|null\n"
     "- plga_mass_mg: number|null\n"
+    "- surfactant_name: string|null (stabilizer/surfactant used in external phase W2)\n"
+    "- surfactant_concentration_text: string|null (raw text, e.g., '1.0% w/v', '0.5 mg/mL')\n"
+    "- surfactant_concentration_value: number|null\n"
+    "- surfactant_concentration_unit: string|null (e.g., '% w/v', 'mg/mL')\n"
     "- pva_conc_percent: number|null (w/v %)\n"
     "- organic_solvent: string|null\n"
     "- drug_name: string|null\n"
@@ -426,6 +430,13 @@ LLM_PROMPT_TEMPLATE = (
     "- zeta_mV: number|null\n"
     "- encapsulation_efficiency_percent: number|null\n"
     "- loading_content_percent: number|null\n\n"
+    "Core-field extraction requirements (do not change EE extraction behavior):\n"
+    "- Prioritize extracting these if present: plga_mw_kDa, la_ga_ratio, drug_feed_amount_text (for drug/polymer evidence), pva_conc_percent.\n"
+    "- Explicitly extract stabilizer/surfactant in external phase (W2) and its concentration when stated.\n"
+    "- For numeric core fields, capture numeric value and keep unit context in notes/text fields when available.\n"
+    "- If the value appears in parentheses, capture the parenthetical content (e.g., ratio/specifier) rather than dropping it.\n"
+    "- If values are defined by a table header, associate header-defined condition/value with each row-level formulation output.\n"
+    "- If multiple condition-specific values exist, emit separate formulation rows instead of collapsing.\n\n"
 )
 
 
@@ -534,6 +545,7 @@ def merge_llm_formulations(data: Dict[str, Any]) -> Tuple[List[Dict[str, Any]], 
 TSV_FIELDS = [
     "key","model","formulation_id",
     "emul_type","emul_method","la_ga_ratio","plga_mw_kDa","plga_mass_mg",
+    "surfactant_name","surfactant_concentration_text","surfactant_concentration_value","surfactant_concentration_unit",
     "pva_conc_percent","organic_solvent",
     "drug_name","drug_feed_amount_text",
     "size_nm","pdi","zeta_mV",
@@ -542,6 +554,29 @@ TSV_FIELDS = [
     "evidence_section","evidence_span_text","evidence_span_start","evidence_span_end",
     "evidence_method","evidence_quality",
 ]
+
+
+def _to_float_or_none(v: Any) -> Optional[float]:
+    if v is None:
+        return None
+    s = str(v).strip()
+    if not s:
+        return None
+    try:
+        return float(s)
+    except Exception:
+        return None
+
+
+def _is_pva_name(v: Any) -> bool:
+    s = str(v or "").strip().lower()
+    return s in {"pva", "polyvinyl alcohol", "poly(vinyl alcohol)"}
+
+
+def _is_percent_wv(unit: Any, txt: Any) -> bool:
+    u = str(unit or "").strip().lower()
+    t = str(txt or "").strip().lower()
+    return ("%" in u and "w/v" in u) or ("%" in t and "w/v" in t)
 
 
 @dataclass
@@ -673,7 +708,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
 
 def main(argv: Optional[List[str]] = None) -> None:
+    raw_argv = list(argv) if argv is not None else sys.argv[1:]
     args = parse_args(argv)
+
+    explicit_out_tsv = any(a == "--out-tsv" or a.startswith("--out-tsv=") for a in raw_argv)
+    explicit_out_jsonl = any(a == "--out-jsonl" or a.startswith("--out-jsonl=") for a in raw_argv)
 
     if not args.sample_jsonl or not args.key2txt:
         die("Must provide --sample-jsonl and --key2txt (or configure src/utils/paths.py defaults).")
@@ -689,8 +728,9 @@ def main(argv: Optional[List[str]] = None) -> None:
     if sections_dir and not sections_dir.exists():
         die(f"sections-dir does not exist: {sections_dir}")
 
-    out_jsonl_base = Path(args.out_jsonl) if args.out_jsonl else None
-    out_tsv_base = Path(args.out_tsv) if args.out_tsv else None
+    # Force run_id outputs by default unless user explicitly passed output flags on CLI.
+    out_jsonl_base = Path(args.out_jsonl) if (explicit_out_jsonl and args.out_jsonl) else None
+    out_tsv_base = Path(args.out_tsv) if (explicit_out_tsv and args.out_tsv) else None
     auto_run_dir: Optional[Path] = None
     if not out_tsv_base and not out_jsonl_base:
         run_id = build_run_id(args.subset_label, args.stage_label, args.version_tag)
@@ -698,8 +738,15 @@ def main(argv: Optional[List[str]] = None) -> None:
         auto_run_dir.mkdir(parents=True, exist_ok=True)
         out_tsv_base = auto_run_dir / "weak_labels__gemini.tsv"
         out_jsonl_base = auto_run_dir / "weak_labels__gemini.jsonl"
+        print("[INFO] output_mode=auto_run_id")
         print(f"[INFO] auto_run_id={run_id}")
         print(f"[INFO] auto_run_dir={auto_run_dir}")
+    else:
+        print("[INFO] output_mode=explicit_cli")
+        if out_tsv_base is not None:
+            print(f"[INFO] out_tsv={out_tsv_base}")
+        if out_jsonl_base is not None:
+            print(f"[INFO] out_jsonl={out_jsonl_base}")
 
     # Resolve model list
     model_names: List[str] = []
@@ -818,6 +865,18 @@ def main(argv: Optional[List[str]] = None) -> None:
                     if not isinstance(fields, dict):
                         fields = {}
 
+                    surf_name = fields.get("surfactant_name")
+                    surf_conc_text = fields.get("surfactant_concentration_text")
+                    surf_conc_value = fields.get("surfactant_concentration_value")
+                    surf_conc_unit = fields.get("surfactant_concentration_unit")
+
+                    # Backward compatibility: fill legacy pva_conc_percent only for PVA + % w/v.
+                    pva_out: Any = None
+                    parsed_surf_val = _to_float_or_none(surf_conc_value)
+                    legacy_pva = _to_float_or_none(fields.get("pva_conc_percent"))
+                    if _is_pva_name(surf_name) and _is_percent_wv(surf_conc_unit, surf_conc_text):
+                        pva_out = parsed_surf_val if parsed_surf_val is not None else legacy_pva
+
                     row = {
                         "key": key,
                         "model": model,
@@ -827,7 +886,11 @@ def main(argv: Optional[List[str]] = None) -> None:
                         "la_ga_ratio": fields.get("la_ga_ratio"),
                         "plga_mw_kDa": fields.get("plga_mw_kDa"),
                         "plga_mass_mg": fields.get("plga_mass_mg"),
-                        "pva_conc_percent": fields.get("pva_conc_percent"),
+                        "surfactant_name": surf_name,
+                        "surfactant_concentration_text": surf_conc_text,
+                        "surfactant_concentration_value": surf_conc_value,
+                        "surfactant_concentration_unit": surf_conc_unit,
+                        "pva_conc_percent": pva_out,
                         "organic_solvent": fields.get("organic_solvent"),
                         "drug_name": fields.get("drug_name"),
                         "drug_feed_amount_text": fields.get("drug_feed_amount_text"),

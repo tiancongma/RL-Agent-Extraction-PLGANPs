@@ -1,0 +1,28 @@
+{
+  "inputs": {
+    "extracted_formulation_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v1\\extracted_formulation_level_v1.tsv",
+    "curated_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\goren18_curated_overlap_subset.tsv",
+    "text_root": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\content_goren_2025\\text",
+    "key2txt_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\index\\key2txt_goren_2025.tsv",
+    "sample_jsonl": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\samples\\sample_goren18.jsonl",
+    "baseline_summary_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v1\\formulation_alignment_summary.tsv"
+  },
+  "counts": {
+    "doi_total_considered": 18,
+    "cue_window_hits": 17,
+    "methods_fallback_hits": 0,
+    "no_window_or_missing_text": 1,
+    "rows_extracted_input": 32,
+    "rows_extracted_output": 32,
+    "rows_changed_total": 20,
+    "fields_filled_total": 23
+  },
+  "outputs": {
+    "extracted_formulation_level__global_inherit_v1_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\global_inherit_v1\\extracted_formulation_level__global_inherit_v1.tsv",
+    "global_baseline_per_doi_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\global_inherit_v1\\global_baseline_per_doi.tsv",
+    "global_inherit_coverage_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\global_inherit_v1\\global_inherit_coverage.tsv",
+    "formulation_alignment__global_inherit_v1_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\global_inherit_v1\\formulation_alignment__global_inherit_v1.tsv",
+    "formulation_alignment_summary__global_inherit_v1_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\global_inherit_v1\\formulation_alignment_summary__global_inherit_v1.tsv",
+    "per_doi_recall__global_inherit_v1_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\global_inherit_v1\\per_doi_recall__global_inherit_v1.tsv"
+  }
+}

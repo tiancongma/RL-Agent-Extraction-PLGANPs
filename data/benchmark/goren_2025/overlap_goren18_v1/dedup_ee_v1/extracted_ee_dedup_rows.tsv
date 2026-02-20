@@ -1,0 +1,683 @@
+key	model	formulation_id	emul_type	emul_method	la_ga_ratio	plga_mw_kDa	plga_mass_mg	pva_conc_percent	organic_solvent	drug_name	drug_feed_amount_text	size_nm	pdi	zeta_mV	encapsulation_efficiency_percent	loading_content_percent	notes	evidence_section	evidence_span_text	evidence_span_start	evidence_span_end	evidence_method	evidence_quality	doi_norm	ee_value	_k_drug_name	_k_plga_mw_kDa	_k_organic_solvent
+5GIF3D8W	gemini-2.5-flash	1	nanoprecipitation	magnetic stirring	50:50	10	50		acetone	Etoposide	5 mg	91.8	0.13	-21.23	57.64	1.04	Optimized formulation for PLGA 50/50. Stabilizer: Pluronic F68 at 1.0% w/v.	fulltext	"aculty Division III, Birla Institute of Technology and Science (BITS), Pilani,
+Rajasthan, India
+Etoposide-loaded nanoparticles were prepared using nano-
+precipitation and emulsion solvent evaporation techniques using
+polylactide-co-glycolic acid and poly(ε-caprolactone) in presence
+of Pluronic F68, respectively. Effect of formulation variables like
+stabilizer concentration, amount of polymer, and drug was stud-
+ied."	1170	1589	pattern_window	B	10.1080/10717540802174662	57.64	etoposide	10	acetone
+5GIF3D8W	gemini-2.5-flash	2	nanoprecipitation	magnetic stirring	75:25	10	50		acetone	Etoposide	5 mg	103.7	0.14	-28.06	66.11	1.14	Optimized formulation for PLGA 75/25. Stabilizer: Pluronic F68 at 1.0% w/v.	fulltext	"aculty Division III, Birla Institute of Technology and Science (BITS), Pilani,
+Rajasthan, India
+Etoposide-loaded nanoparticles were prepared using nano-
+precipitation and emulsion solvent evaporation techniques using
+polylactide-co-glycolic acid and poly(ε-caprolactone) in presence
+of Pluronic F68, respectively. Effect of formulation variables like
+stabilizer concentration, amount of polymer, and drug was stud-
+ied."	1170	1589	pattern_window	B	10.1080/10717540802174662	66.11	etoposide	10	acetone
+5GIF3D8W	gemini-2.5-flash	3	nanoprecipitation	magnetic stirring	85:15	10	50		acetone	Etoposide	5 mg	105.1	0.11	-29.41	78.99	1.45	Optimized formulation for PLGA 85/15. Stabilizer: Pluronic F68 at 1.0% w/v.	fulltext	"aculty Division III, Birla Institute of Technology and Science (BITS), Pilani,
+Rajasthan, India
+Etoposide-loaded nanoparticles were prepared using nano-
+precipitation and emulsion solvent evaporation techniques using
+polylactide-co-glycolic acid and poly(ε-caprolactone) in presence
+of Pluronic F68, respectively. Effect of formulation variables like
+stabilizer concentration, amount of polymer, and drug was stud-
+ied."	1170	1589	pattern_window	B	10.1080/10717540802174662	78.99	etoposide	10	acetone
+5GIF3D8W	gemini-2.5-flash	4	emulsion solvent evaporation	magnetic stirring					dichloromethane	Etoposide	5 mg	257.2	0.1	-27.7	80.15	1.44	Optimized formulation for PCL. Polymer: PCL (molecular weight 40,000) at 50 mg. Stabilizer: Pluronic F68 at 1.0% w/v.	fulltext	"aculty Division III, Birla Institute of Technology and Science (BITS), Pilani,
+Rajasthan, India
+Etoposide-loaded nanoparticles were prepared using nano-
+precipitation and emulsion solvent evaporation techniques using
+polylactide-co-glycolic acid and poly(ε-caprolactone) in presence
+of Pluronic F68, respectively. Effect of formulation variables like
+stabilizer concentration, amount of polymer, and drug was stud-
+ied."	1170	1589	pattern_window	B	10.1080/10717540802174662	80.15	etoposide		dichloromethane
+5ZXYABSU	gemini-2.5-flash	NPR1	nanoprecipitation	nanoprecipitation	50:50		50	1	acetone	rhodamine	2.5 mg Rh	234.8			55.3	2.63		fulltext	"rticles were prepared. The best results corresponded to the formulation
+prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size
+(176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system
+to treat cerebral tuberculosis.
+Keywords: polysorbate 80, Labrafil, gatifloxacin, nanoparticles, targeting, blood–brain barrier,
+brain delivery
+Introduction
+Tuberc"	2620	3041	pattern_window	A	10.2147/ijn.s130908	55.3	rhodamine		acetone
+5ZXYABSU	gemini-2.5-flash	NPR2	nanoprecipitation	nanoprecipitation	50:50		50	0.5	acetone	rhodamine	2.5 mg Rh	194.9			51.3	2.42	0.5% polysorbate 80 in external phase	fulltext	"rticles were prepared. The best results corresponded to the formulation
+prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size
+(176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system
+to treat cerebral tuberculosis.
+Keywords: polysorbate 80, Labrafil, gatifloxacin, nanoparticles, targeting, blood–brain barrier,
+brain delivery
+Introduction
+Tuberc"	2620	3041	pattern_window	A	10.2147/ijn.s130908	51.3	rhodamine		acetone
+5ZXYABSU	gemini-2.5-flash	NPR3	nanoprecipitation	nanoprecipitation	50:50		50	1	acetone	rhodamine	2.5 mg Rh	237.8			60.9	2.72	3.5 mg Labrafil incorporated into inner phase	fulltext	"rticles were prepared. The best results corresponded to the formulation
+prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size
+(176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system
+to treat cerebral tuberculosis.
+Keywords: polysorbate 80, Labrafil, gatifloxacin, nanoparticles, targeting, blood–brain barrier,
+brain delivery
+Introduction
+Tuberc"	2620	3041	pattern_window	A	10.2147/ijn.s130908	60.9	rhodamine		acetone
+5ZXYABSU	gemini-2.5-flash	NPG1	nanoprecipitation	nanoprecipitation	50:50		50	1	acetone	gatifloxacin	5 mg Gat	176.6		-18.6	34.1			fulltext	"rticles were prepared. The best results corresponded to the formulation
+prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size
+(176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system
+to treat cerebral tuberculosis.
+Keywords: polysorbate 80, Labrafil, gatifloxacin, nanoparticles, targeting, blood–brain barrier,
+brain delivery
+Introduction
+Tuberc"	2620	3041	pattern_window	A	10.2147/ijn.s130908	34.1	gatifloxacin		acetone
+5ZXYABSU	gemini-2.5-flash	NPG2	nanoprecipitation	nanoprecipitation	50:50		50	0.5	acetone	gatifloxacin	5 mg Gat	176.5		-20.1	28.2		0.5% polysorbate 80 in external phase	fulltext	"rticles were prepared. The best results corresponded to the formulation
+prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size
+(176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system
+to treat cerebral tuberculosis.
+Keywords: polysorbate 80, Labrafil, gatifloxacin, nanoparticles, targeting, blood–brain barrier,
+brain delivery
+Introduction
+Tuberc"	2620	3041	pattern_window	A	10.2147/ijn.s130908	28.2	gatifloxacin		acetone
+5ZXYABSU	gemini-2.5-flash	NPG3	nanoprecipitation	nanoprecipitation	50:50		50	1	acetone	gatifloxacin	5 mg Gat	182.9		-19.3	10.4		3.5 mg Labrafil incorporated into inner phase	fulltext	"rticles were prepared. The best results corresponded to the formulation
+prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size
+(176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system
+to treat cerebral tuberculosis.
+Keywords: polysorbate 80, Labrafil, gatifloxacin, nanoparticles, targeting, blood–brain barrier,
+brain delivery
+Introduction
+Tuberc"	2620	3041	pattern_window	A	10.2147/ijn.s130908	10.4	gatifloxacin		acetone
+7ZS858NS	gemini-2.5-flash	1	nanoprecipitation	The organic phase, consisting of 2 mg of MF and 6 mg of PLGA in 1 mL of acetone, was rapidly poured into 2 mL of aqueous solution containing 0.1% (w/v) Solutol HS 15. The suspension was stirred at 900 rpm for 24 h to allow complete evaporation of the organic solvent, and the formulation volume was adjusted with water to 2 mL. Complete evaporation was confirmed by weighting the glass vial before addition of the organic phase and after the evaporation process. Then, the formulation was centrifuged for 1 min at 3000 rpm to discard debris. The supernatant was then transferred to a new tube for further investigation.	50:50		6		acetone	mometasone furoate	2 mg of MF	117	0.26	-32	90	22.4	Primary formulation before freeze-drying.	fulltext	"and sustained release
+properties and biocompatibility with biological tissues and
+cells.12
+Drug-loaded PLGA NPs are most commonly prepared by
+nanoprecipitation13,14 and single or double emulsion solvent
+evaporation, in which various stabilizers and organic solvents are
+used and have a critical eﬀect on physicochemical properties of
+NPs.15,16 Furthermore, PLGA molecular weights, drug/polymer
+ratios, and nanoprec"	6462	6877	pattern_window	B	10.1021/acsomega.0c00111	90.0	mometasone furoate		acetone
+BB3JUVW7	gemini-2.5-flash	1	O/W	solvent evaporation			75	0.5	Acetone	Artemether	5 mg Artemether	190.2	0.06	-8.0	78.5	4.9	Nanosphere formulation	fulltext	". Google Scholar
+Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation for simvastatin delivery Colloids Surfaces B Biointerfaces (2021), 10.1016/j.colsurfb.2021.111560 Google Scholar
+Zhao et al., 2011 Y. Zhao, X. Sun, G. Zhang, B.G. Trewyn, I.I. Slowing, V.S.Y. Lin Int"	15837	16252	pattern_window	B	10.1016/j.ijpharm.2021.120820	78.5	artemether		acetone
+BB3JUVW7	gemini-2.5-flash	2	O/W	solvent evaporation			75	1.0	Acetone	Artemether	5 mg Artemether	214.3	0.238	-1.8	80.0	5.0	Nanosphere formulation	fulltext	". Google Scholar
+Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation for simvastatin delivery Colloids Surfaces B Biointerfaces (2021), 10.1016/j.colsurfb.2021.111560 Google Scholar
+Zhao et al., 2011 Y. Zhao, X. Sun, G. Zhang, B.G. Trewyn, I.I. Slowing, V.S.Y. Lin Int"	15837	16252	pattern_window	B	10.1016/j.ijpharm.2021.120820	80.0	artemether		acetone
+BB3JUVW7	gemini-2.5-flash	3	O/W	solvent evaporation			75	1.0	Acetone	Artemether	10 mg Artemether	196.8	0.214	-2.2	78.3	9.2	Nanosphere formulation	fulltext	". Google Scholar
+Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation for simvastatin delivery Colloids Surfaces B Biointerfaces (2021), 10.1016/j.colsurfb.2021.111560 Google Scholar
+Zhao et al., 2011 Y. Zhao, X. Sun, G. Zhang, B.G. Trewyn, I.I. Slowing, V.S.Y. Lin Int"	15837	16252	pattern_window	B	10.1016/j.ijpharm.2021.120820	78.3	artemether		acetone
+BB3JUVW7	gemini-2.5-flash	4	O/W	solvent evaporation			75	0.5	Acetone	Artemether	10 mg Artemether	245.5	0.183	-3.2	80.6	9.5	Nanosphere formulation	fulltext	". Google Scholar
+Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation for simvastatin delivery Colloids Surfaces B Biointerfaces (2021), 10.1016/j.colsurfb.2021.111560 Google Scholar
+Zhao et al., 2011 Y. Zhao, X. Sun, G. Zhang, B.G. Trewyn, I.I. Slowing, V.S.Y. Lin Int"	15837	16252	pattern_window	B	10.1016/j.ijpharm.2021.120820	80.6	artemether		acetone
+BB3JUVW7	gemini-2.5-flash	5	O/W	solvent evaporation			75	0.5	Acetone	Artemether	10 mg Artemether	129.3	0.06	-7.4	86.9	10.2	Nanosphere formulation	fulltext	". Google Scholar
+Zhang et al., 2021 J. Zhang, J. Wang, F. Qiao, Y. Liu, Y. Zhou, M. Li, M. Ai, Y. Yang, L. Sui, Z. Zhou Polymeric non-spherical coarse microparticles fabricated by double emulsion-solvent evaporation for simvastatin delivery Colloids Surfaces B Biointerfaces (2021), 10.1016/j.colsurfb.2021.111560 Google Scholar
+Zhao et al., 2011 Y. Zhao, X. Sun, G. Zhang, B.G. Trewyn, I.I. Slowing, V.S.Y. Lin Int"	15837	16252	pattern_window	B	10.1016/j.ijpharm.2021.120820	86.9	artemether		acetone
+BXCV5XWB	gemini-2.5-flash	1	nanoprecipitation	PLGA (50 mg) was dissolved in ACN (10 mL) and added to 0.2% w/v PVA in water (100 mL) at 0.5 mL/min. Kartogenin (5 mg) was included in the polymer solution prior to precipitation. This solution was stirred at 60 °C for 4 h before collecting the nanoparticles by centrifugation [15,000 rpm, 20 min, room temperature (RT, 20 °C)] and washing three times with water.	1:1	15.1	50	0.2	ACN	Kartogenin	5 mg	167.3	0.141	-33.1	62	47		fulltext	a), N -hydroxysulfosuccinimide (sulfo-NHS), N , N ′-dicyclohexylcarbodiimide (DCC), N -(3-dimethylaminopropyl)- N ′-ethylcarbodiimide hydrochloride (EDC), diethyl ether, methanol, dichloromethane (DCM), acetonitrile (ACN), 2-( N -morpholino)ethanesulfonic acid (MES), fluorescein isothiocyanate (FITC), hexadecyltrimethylammonium bromide (CTAB), phosphate buffered saline (PBS), dimethyl sulfoxide (DMSO), dexametha	7426	7841	pattern_window	B	10.1007/s10439-019-02430-x	62.0	kartogenin	15.1	acn
+BXCV5XWB	gemini-2.5-flash	2	nanoprecipitation	The PLGA–PEG copolymer was synthesized as previously reported. All nanoparticles were prepared using nanoprecipitation. PLGA–PEG (50 mg) was dissolved in ACN (10 mL) and added to 0.2% w/v PVA in water (100 mL) at 0.5 mL/min. Kartogenin (5 mg) was included in the polymer solution prior to precipitation. This solution was stirred at 60 °C for 4 h before collecting the nanoparticles by centrifugation [15,000 rpm, 20 min, room temperature (RT, 20 °C)] and washing three times with water.	1:1	15.1		0.2	ACN	Kartogenin	5 mg	297.2	0.165	11.2	71	13	50 mg of PLGA-PEG copolymer was used for nanoprecipitation. The specific mass of the PLGA component within the copolymer is not stated.	fulltext	a), N -hydroxysulfosuccinimide (sulfo-NHS), N , N ′-dicyclohexylcarbodiimide (DCC), N -(3-dimethylaminopropyl)- N ′-ethylcarbodiimide hydrochloride (EDC), diethyl ether, methanol, dichloromethane (DCM), acetonitrile (ACN), 2-( N -morpholino)ethanesulfonic acid (MES), fluorescein isothiocyanate (FITC), hexadecyltrimethylammonium bromide (CTAB), phosphate buffered saline (PBS), dimethyl sulfoxide (DMSO), dexametha	7426	7841	pattern_window	B	10.1007/s10439-019-02430-x	71.0	kartogenin	15.1	acn
+BXCV5XWB	gemini-2.5-flash	3	nanoprecipitation	The PLGA–PEG copolymer was synthesized as previously reported. All nanoparticles were prepared using nanoprecipitation. PLGA–PEG (50 mg) was dissolved in ACN (10 mL) and added to 0.2% w/v PVA in water (100 mL) at 0.5 mL/min. Kartogenin (5 mg) was included in the polymer solution prior to precipitation. This solution was stirred at 60 °C for 4 h before collecting the nanoparticles by centrifugation [15,000 rpm, 20 min, room temperature (RT, 20 °C)] and washing three times with water. For PLGA–PEG–HA nanoparticles, HA was de-salted by dialyzing against 0.1 M HCl. De-salted HA was solubilized in 0.01 M MES buffer (5 mg/mL, pH 5.5) and activated using EDC and sulfo-NHS (1:5:5 molar ratio) for 2 h at RT under N2. Blank or KGN-loaded PLGA–PEG nanoparticles in MES buffer were added to the activated HA solution (3:1 w/w HA:nanoparticle), and stirred for 24 h at RT under N2. The nanoparticles were collected by centrifugation (15,000 rpm, 20 min, RT) and washed three times.	1:1	15.1		0.2	ACN	Kartogenin	5 mg	507.4	0.155	-28.5	55	16	PLGA-PEG-HA nanoparticles were formed by conjugating HA to pre-formed PLGA-PEG nanoparticles. The PLGA-PEG core was initially made using 50 mg of PLGA-PEG copolymer. The specific mass of the PLGA component within the copolymer is not stated. HA molecular weight was 39 kDa. PEG-bis-amine molecular weight was 2 kDa.	fulltext	a), N -hydroxysulfosuccinimide (sulfo-NHS), N , N ′-dicyclohexylcarbodiimide (DCC), N -(3-dimethylaminopropyl)- N ′-ethylcarbodiimide hydrochloride (EDC), diethyl ether, methanol, dichloromethane (DCM), acetonitrile (ACN), 2-( N -morpholino)ethanesulfonic acid (MES), fluorescein isothiocyanate (FITC), hexadecyltrimethylammonium bromide (CTAB), phosphate buffered saline (PBS), dimethyl sulfoxide (DMSO), dexametha	7426	7841	pattern_window	B	10.1007/s10439-019-02430-x	55.0	kartogenin	15.1	acn
+INMUTV7L	gemini-2.5-flash	1	nanoprecipitation	solvent displacement method			90	0.5	acetone	dexibuprofen	5 mg	234.1	0.081	-12.2	93.4		Polymer: PLGA (PLGA 503 H, no PEG). Surfactant: PVA (0.5%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	93.4	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	2	nanoprecipitation	solvent displacement method			90		acetone	dexibuprofen	5 mg	146.0	0.054	-25.2	87.5		Polymer: PLGA (PLGA 503 H, no PEG). Surfactant: Tween80® (0.3%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	87.5	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	3	nanoprecipitation	solvent displacement method			90		acetone	dexibuprofen	5 mg	159.5	0.058	-26.0	85.1		Polymer: PLGA (PLGA 503 H, no PEG). Surfactant: Lutrol F68 (1%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	85.1	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	4	nanoprecipitation	solvent displacement method			90	0.5	acetone	dexibuprofen	5 mg	167.1	0.08	-11.8	95.0		Polymer: PLGA-PEG 5%. Surfactant: PVA (0.5%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	95.0	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	5	nanoprecipitation	solvent displacement method			90		acetone	dexibuprofen	5 mg	138.4	0.072	-14.1	91.5		Polymer: PLGA-PEG 5%. Surfactant: Tween80® (0.3%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	91.5	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	6	nanoprecipitation	solvent displacement method			90		acetone	dexibuprofen	5 mg	154.2	0.063	-18.7	93.8		Polymer: PLGA-PEG 5%. Surfactant: Lutrol F68 (1%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	93.8	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	7	nanoprecipitation	solvent displacement method			90	0.5	acetone	dexibuprofen	5 mg	140.9	0.055	-16.7	99.0		Polymer: PLGA-PEG 10%. Surfactant: PVA (0.5%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	99.0	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	8	nanoprecipitation	solvent displacement method			90		acetone	dexibuprofen	5 mg	119.2	0.074	-21.2	99.2		Polymer: PLGA-PEG 10%. Surfactant: Tween80® (0.3%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	99.2	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	10	nanoprecipitation	solvent displacement method			90	0.5	acetone	dexibuprofen	5 mg	156.4	0.078	-16.2	92.2		Polymer: PLGA-PEG 15%. Surfactant: PVA (0.5%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	92.2	dexibuprofen		acetone
+INMUTV7L	gemini-2.5-flash	12	nanoprecipitation	solvent displacement method			90		acetone	dexibuprofen	5 mg	155.2	0.076	-22.5	94.0		Polymer: PLGA-PEG 15%. Surfactant: Lutrol F68 (1%).	fulltext	"y, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany)
+and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and
+dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous
+surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated
+under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween
+80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min
+in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but
+without dexibuprofen.
+2.2."	6583	7246	pattern_window	B	10.3390/nano10040720	94.0	dexibuprofen		acetone
+KBW3XWTT	gemini-2.5-flash	1b	nanoprecipitation	nanoprecipitation method	50:50	2.4	30		acetone	Rhodamine B	250 µg RhB	171.5	0.1	-25	47		PLGA 50:50, linear polymer. Stabilized with 0.1% (w/v) Pluronic F127 aqueous solution.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	47.0	rhodamine b	2.4	acetone
+KBW3XWTT	gemini-2.5-flash	1d	O/W	emulsification solvent evaporation method	50:50	2.4	30		ethyl acetate	Rhodamine B	150 µg RhB	91.2	0.16	-22	28		PLGA 50:50, linear polymer. Stabilized with 0.5% (w/v) Pluronic F127 aqueous solution. High energy sonication for 1 min at 80% power output was used.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	28.0	rhodamine b	2.4	ethyl acetate
+KBW3XWTT	gemini-2.5-flash	2b	nanoprecipitation	nanoprecipitation method	70:30	3.2	30		acetone	Rhodamine B	250 µg RhB	166.7	0.08	-29	56		PLGA 70:30, linear polymer. Stabilized with 0.1% (w/v) Pluronic F127 aqueous solution.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	56.0	rhodamine b	3.2	acetone
+KBW3XWTT	gemini-2.5-flash	2d	O/W	emulsification solvent evaporation method	70:30	3.2	30		ethyl acetate	Rhodamine B	150 µg RhB	81.1	0.07	-22	29		PLGA 70:30, linear polymer. Stabilized with 0.5% (w/v) Pluronic F127 aqueous solution. High energy sonication for 1 min at 80% power output was used.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	29.0	rhodamine b	3.2	ethyl acetate
+KBW3XWTT	gemini-2.5-flash	3b	nanoprecipitation	nanoprecipitation method	50:50	14.4	30		acetone	Rhodamine B	250 µg RhB	162.0	0.08	-33	61		Branched PLGA (2% polyacrylic acid, equimolar LA:GA). Stabilized with 0.1% (w/v) Pluronic F127 aqueous solution.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	61.0	rhodamine b	14.4	acetone
+KBW3XWTT	gemini-2.5-flash	3d	O/W	emulsification solvent evaporation method	50:50	14.4	30		ethyl acetate	Rhodamine B	150 µg RhB	89.3	0.08	-24	34		Branched PLGA (2% polyacrylic acid, equimolar LA:GA). Stabilized with 0.5% (w/v) Pluronic F127 aqueous solution. High energy sonication for 1 min at 80% power output was used.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	34.0	rhodamine b	14.4	ethyl acetate
+KBW3XWTT	gemini-2.5-flash	4b	nanoprecipitation	nanoprecipitation method	50:50	17.0	30		acetone	Rhodamine B	250 µg RhB	164.6	0.1	-24	18		Commercial PLGA (PURASORB® 5002, equimolar LA:GA). Stabilized with 0.1% (w/v) Pluronic F127 aqueous solution.	fulltext	"y, we have prepared several different poly(lactic-co-glycolic acid) (PLGA)
+polymer nanospheres for macrophage-targeted drug delivery using both nanoprecipitation and
+emulsiﬁcation solvent evaporation methods. Two experimental linear PLGA polymers with relatively
+low molar weight, one experimental branched PLGA with unique star-like molecular architecture,
+and a commercially available PLGA, were used for nanosphere f"	2553	2972	pattern_window	C	10.3390/nano11030749	18.0	rhodamine b	17.0	acetone
+L3H2RS2H	gemini-2.5-flash	2	nanospheres	solvent displacement technique	50:50		63		acetone	xanthone (XAN)	theoretical concentration 60 mg/mL in acetone (10 mL)	164	0.06	-38.9	33.0		XAN-loaded nanospheres. Surfactant used: Pluronic F-68 0.25% (w/v). Final drug concentration in dispersion was 20.0 mg/mL (mean).	fulltext	"etermined: particle size and morphology, zeta potential, incorporation efﬁciency, thermal behaviour, in vitro release proﬁles and physical
+stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative
+surface charge (zeta potential !K36 mV). Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of
+the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed a"	1270	1802	pattern_window	A	10.1016/j.ejpb.2004.09.002	33.0	xanthone (xan)		acetone
+L3H2RS2H	gemini-2.5-flash	3	nanospheres	solvent displacement technique	50:50		63		acetone	3-methoxyxanthone (3-MeOXAN)	theoretical concentration 60 mg/mL in acetone (10 mL)	164	0.06	-36.0	41.5		3-MeOXAN-loaded nanospheres. Surfactant used: Pluronic F-68 0.25% (w/v). Final drug concentration in dispersion was 24.9 mg/mL (mean).	fulltext	"etermined: particle size and morphology, zeta potential, incorporation efﬁciency, thermal behaviour, in vitro release proﬁles and physical
+stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative
+surface charge (zeta potential !K36 mV). Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of
+the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed a"	1270	1802	pattern_window	A	10.1016/j.ejpb.2004.09.002	41.5	3-methoxyxanthone (3-meoxan)		acetone
+L3H2RS2H	gemini-2.5-flash	5	nanocapsules	interfacial polymer deposition technique	50:50		50		acetone	xanthone (XAN)	theoretical concentration 1440 mg/mL in final 5 mL dispersion volume, with 0.6 mL Myritol 318 containing 1.2% (w/v) XAN	273	0.48	-36.4	82		XAN-loaded nanocapsules (optimized formulation, Table 5), prepared with 0.6 mL Myritol 318 oil and 100 mg soybean lecithin. Surfactant used: Pluronic F-68 0.5% (w/v). Final drug concentration in dispersion was 1173 mg/mL (mean).	fulltext	"etermined: particle size and morphology, zeta potential, incorporation efﬁciency, thermal behaviour, in vitro release proﬁles and physical
+stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative
+surface charge (zeta potential !K36 mV). Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of
+the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed a"	1270	1802	pattern_window	A	10.1016/j.ejpb.2004.09.002	82.0	xanthone (xan)		acetone
+L3H2RS2H	gemini-2.5-flash	6	nanocapsules	interfacial polymer deposition technique	50:50		50		acetone	3-methoxyxanthone (3-MeOXAN)	theoretical concentration 3360 mg/mL in final 5 mL dispersion volume, with 0.6 mL Myritol 318 containing 2.8% (w/v) 3-MeOXAN	271	0.43	-41.8	83		3-MeOXAN-loaded nanocapsules (optimized formulation, Table 5), prepared with 0.6 mL Myritol 318 oil and 100 mg soybean lecithin. Surfactant used: Pluronic F-68 0.5% (w/v). Final drug concentration in dispersion was 2780 mg/mL (mean).	fulltext	"etermined: particle size and morphology, zeta potential, incorporation efﬁciency, thermal behaviour, in vitro release proﬁles and physical
+stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative
+surface charge (zeta potential !K36 mV). Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of
+the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed a"	1270	1802	pattern_window	A	10.1016/j.ejpb.2004.09.002	83.0	3-methoxyxanthone (3-meoxan)		acetone
+L3H2RS2H	gemini-2.5-flash	7	nanocapsules	interfacial polymer deposition technique	50:50		50		acetone	xanthone (XAN)	theoretical concentration 600 mg/mL (in dispersion), with 0.5 mL Myritol 318 containing 1.2% (w/v) XAN	278	0.412	-39.1	88		XAN-loaded nanocapsules (initial formulation, Table 4), prepared with 0.5 mL Myritol 318 oil and 100 mg soybean lecithin. Surfactant used: Pluronic F-68 0.5% (w/v). Final drug concentration in dispersion was 529 mg/mL (mean).	fulltext	"etermined: particle size and morphology, zeta potential, incorporation efﬁciency, thermal behaviour, in vitro release proﬁles and physical
+stability at 4 8C. The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative
+surface charge (zeta potential !K36 mV). Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN. The presence of
+the xanthones did not affect the nanospheres size and zeta potential. DSC studies indicated that XAN and 3-MeOXAN were dispersed a"	1270	1802	pattern_window	A	10.1016/j.ejpb.2004.09.002	88.0	xanthone (xan)		acetone
+PA3SPZ28	gemini-2.5-flash	1	O/W	nanoprecipitation	50:50				acetone	Garcinol		90.21	0.212	-30	53.43	4.12	Drug:Polymer ratio 1:20. Emulsifier: vitamin E TPGS (0.03% w/v).	fulltext	"GAR-NPs. Nanoprecipitation technique yielded GAR-NPs with most nar-
+row size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a
+PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).
+The morphology size of the GAR-NPs were determined using field emission scanning electron micros-
+copy (FESEM), transmission electron microscopy (TEM) and atomic fo"	6783	7201	pattern_window	A	10.1038/s41598-017-00696-6	53.43	garcinol		acetone
+PA3SPZ28	gemini-2.5-flash	2	O/W	nanoprecipitation	50:50		50		acetone	Garcinol	5 mg Garcinol	88.05	0.17	-28.1	88.32	9.25	Drug:Polymer ratio 1:10. Emulsifier: vitamin E TPGS (0.03% w/v). This specific formulation (50 mg PLGA, 5 mg Garcinol) is detailed as an example in the preparation method section.	fulltext	"GAR-NPs. Nanoprecipitation technique yielded GAR-NPs with most nar-
+row size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a
+PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).
+The morphology size of the GAR-NPs were determined using field emission scanning electron micros-
+copy (FESEM), transmission electron microscopy (TEM) and atomic fo"	6783	7201	pattern_window	A	10.1038/s41598-017-00696-6	88.32	garcinol		acetone
+PA3SPZ28	gemini-2.5-flash	3	O/W	nanoprecipitation	50:50				acetone	Garcinol		95.45	0.237	-33	60.61	5.29	Drug:Polymer ratio 1:6.66. Emulsifier: vitamin E TPGS (0.03% w/v).	fulltext	"GAR-NPs. Nanoprecipitation technique yielded GAR-NPs with most nar-
+row size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a
+PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).
+The morphology size of the GAR-NPs were determined using field emission scanning electron micros-
+copy (FESEM), transmission electron microscopy (TEM) and atomic fo"	6783	7201	pattern_window	A	10.1038/s41598-017-00696-6	60.61	garcinol		acetone
+QLYKLPKT	gemini-2.5-flash	5	nanoprecipitation	solvent displacement and polymer deposition	50:50		50		acetone	itraconazole	10 mg ITZ (50 mg PLGA, 5:1 w/w PLGA:ITZ)	175	0.41	-17	61		PLGA:ITZ initial ratio: 5:1 w/w. Used optimal poloxamer 188 concentration of 3 mg/mL.	fulltext	"ox injection formulation using
+rats as the animal model. Noncompartmental pharmacokinetic parameters were obtained by
+WinNonlin® software.
+Results: Optimal PLGA-ITZ-NS had a mean particle size of about 200 nm with a high homo­
+geneity (polydispersity index ≈0.2), favorable zeta potential (approximately −20 to −30 mV)
+and encapsulation efficiency (72%). In addition, 2% w/v sucrose was selected as a lyoprotectant
+for NS freeze-drying. The newly developed LC-MS/MS assay was validated and found to be
+accurate and precise. The in vivo s"	2706	3244	pattern_window	A	10.2147/ijn.s54040	61.0	itraconazole		acetone
+QLYKLPKT	gemini-2.5-flash	6	nanoprecipitation	solvent displacement and polymer deposition	50:50		50		acetone	itraconazole	5 mg ITZ (50 mg PLGA, 10:1 w/w PLGA:ITZ)	178	0.19	-20	72		PLGA:ITZ initial ratio: 10:1 w/w. Selected as the optimal formulation. Used optimal poloxamer 188 concentration of 3 mg/mL.	fulltext	"ox injection formulation using
+rats as the animal model. Noncompartmental pharmacokinetic parameters were obtained by
+WinNonlin® software.
+Results: Optimal PLGA-ITZ-NS had a mean particle size of about 200 nm with a high homo­
+geneity (polydispersity index ≈0.2), favorable zeta potential (approximately −20 to −30 mV)
+and encapsulation efficiency (72%). In addition, 2% w/v sucrose was selected as a lyoprotectant
+for NS freeze-drying. The newly developed LC-MS/MS assay was validated and found to be
+accurate and precise. The in vivo s"	2706	3244	pattern_window	A	10.2147/ijn.s54040	72.0	itraconazole		acetone
+QLYKLPKT	gemini-2.5-flash	7	nanoprecipitation	solvent displacement and polymer deposition	50:50		50		acetone	itraconazole	3.33 mg ITZ (50 mg PLGA, 15:1 w/w PLGA:ITZ)	191	0.14	-30	73		PLGA:ITZ initial ratio: 15:1 w/w. Used optimal poloxamer 188 concentration of 3 mg/mL.	fulltext	"ox injection formulation using
+rats as the animal model. Noncompartmental pharmacokinetic parameters were obtained by
+WinNonlin® software.
+Results: Optimal PLGA-ITZ-NS had a mean particle size of about 200 nm with a high homo­
+geneity (polydispersity index ≈0.2), favorable zeta potential (approximately −20 to −30 mV)
+and encapsulation efficiency (72%). In addition, 2% w/v sucrose was selected as a lyoprotectant
+for NS freeze-drying. The newly developed LC-MS/MS assay was validated and found to be
+accurate and precise. The in vivo s"	2706	3244	pattern_window	A	10.2147/ijn.s54040	73.0	itraconazole		acetone
+RHMJWZX8	gemini-2.5-flash	1	O/W	solvent diffusion methodology	50:50	10	18		acetone	Acetylpuerarin	7 mg of AP	145.0	0.153	-14.81	90.51	17.07	Aqueous phase contained 1% polysorbate 80.	fulltext	"istributions and brain-protective effects of AP-PLGA-
+NPs were evaluated in animals.
+Key ﬁndings AP-PLGA-NPs were successfully prepared with a mean particle size
+of 145.0 nm and a zeta potential of −14.81 mV. The in-vitro release of AP from the
+PLGA-NPs showed a biphasic release proﬁle. AP was metabolized into PUE in
+rats. The AUC0−∞values of AP and PUE for AP-PLGA-NPs were 2.90- and 2.29-
+fold as great as those for AP solu"	1212	1639	pattern_window	A	10.1111/jphp.12481	90.51	acetylpuerarin	10	acetone
+UFXX9WXE	gemini-2.5-flash	F-1	O/W	nanoprecipitation	50:50				acetone	lorazepam		211	0.183		70		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 2 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 1 mg/mL. z-average SD: 0.11 d.nm. Drug entrapment SD: 1.3%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	70.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-2	O/W	nanoprecipitation	50:50				acetone	lorazepam		220	0.15		88.48		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 2 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 5 mg/mL. z-average SD: 0.8 d.nm. Drug entrapment SD: 0.8%. PDI SD: 0.003.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	88.48	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-3	O/W	nanoprecipitation	50:50				acetone	lorazepam		176	0.048		83		PLGA concentration: 10 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 10 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.5 d.nm. Drug entrapment SD: 0.5%. PDI SD: 0.001.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	83.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-4	O/W	nanoprecipitation	50:50				acetone	lorazepam		177	0.17		71		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 2 v/v. Drug concentration in organic phase: 1 mg/mL. z-average SD: 1.2 d.nm. Drug entrapment SD: 1.5%. PDI SD: 0.004.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	71.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-5	O/W	nanoprecipitation	50:50				acetone	lorazepam		205	0.315		81		PLGA concentration: 10 mg/mL. Poloxamer 407 concentration: 2 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.9 d.nm. Drug entrapment SD: 0.7%. PDI SD: 0.003.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	81.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-6	O/W	nanoprecipitation	50:50				acetone	lorazepam		177	0.11		83.5		PLGA concentration: 10 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 5 mg/mL. z-average SD: 1.6 d.nm. Drug entrapment SD: 0.5%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	83.5	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-7	O/W	nanoprecipitation	50:50				acetone	lorazepam		184	0.078		75		PLGA concentration: 10 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 2 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 1.5 d.nm. Drug entrapment SD: 0.35%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	75.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-8	O/W	nanoprecipitation	50:50				acetone	lorazepam		197	0.112		86.6		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.5 d.nm. Drug entrapment SD: 0.65%. PDI SD: 0.004.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	86.6	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-9	O/W	nanoprecipitation	50:50				acetone	lorazepam		271	0.24		76		PLGA concentration: 60 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 1 mg/mL. z-average SD: 0.8 d.nm. Drug entrapment SD: 0.22%. PDI SD: 0.001.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	76.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-10	O/W	nanoprecipitation	50:50				acetone	lorazepam		192	0.19	-16.6	84.3		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 15 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 5 mg/mL. z-average SD: 1.4 d.nm. Drug entrapment SD: 0.35%. PDI SD: 0.001. Zeta potential for F-10 is -16.6 mV as shown in Figure 1.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	84.3	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-11	O/W	nanoprecipitation	50:50				acetone	lorazepam		177	0.04		80		PLGA concentration: 10 mg/mL. Poloxamer 407 concentration: 15 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.6 d.nm. Drug entrapment SD: 2.1%. PDI SD: 0.003.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	80.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-12	O/W	nanoprecipitation	50:50				acetone	lorazepam		318	0.441		90.1		PLGA concentration: 60 mg/mL. Poloxamer 407 concentration: 2 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 1.2 d.nm. Drug entrapment SD: 0.8%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	90.1	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-14	O/W	nanoprecipitation	50:50				acetone	lorazepam		228	0.15		82		PLGA concentration: 60 mg/mL. Poloxamer 407 concentration: 15 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.5 d.nm. Drug entrapment SD: 0.4%. PDI SD: 0.001.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	82.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-15	O/W	nanoprecipitation	50:50				acetone	lorazepam		241	0.309		88		PLGA concentration: 60 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 2 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.4 d.nm. Drug entrapment SD: 0.85%. PDI SD: 0.005.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	88.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-16	O/W	nanoprecipitation	50:50				acetone	lorazepam		182.5	0.09		66.4		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 15 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 1 mg/mL. z-average SD: 0.5 d.nm. Drug entrapment SD: 0.2%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	66.4	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-17	O/W	nanoprecipitation	50:50				acetone	lorazepam		215	0.15		87.83		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 2 mg/mL. Aqueous/organic phase ratio: 2 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.7 d.nm. Drug entrapment SD: 0.1%. PDI SD: 0.005.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	87.83	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-18	O/W	nanoprecipitation	50:50				acetone	lorazepam		261	0.2		89		PLGA concentration: 60 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 5 mg/mL. z-average SD: 0.5 d.nm. Drug entrapment SD: 1.7%. PDI SD: 0.001.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	89.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-20	O/W	nanoprecipitation	50:50				acetone	lorazepam		167	0.21		65.5		PLGA concentration: 10 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 1 mg/mL. z-average SD: 0.8 d.nm. Drug entrapment SD: 1.1%. PDI SD: 0.005.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	65.5	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-21	O/W	nanoprecipitation	50:50				acetone	lorazepam		192	0.28		69		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 10 v/v. Drug concentration in organic phase: 1 mg/mL. z-average SD: 1.7 d.nm. Drug entrapment SD: 0.6%. PDI SD: 0.001.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	69.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-23	O/W	nanoprecipitation	50:50				acetone	lorazepam		202	0.19		87		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 10 v/v. Drug concentration in organic phase: 5 mg/mL. z-average SD: 1.2 d.nm. Drug entrapment SD: 1%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	87.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-24	O/W	nanoprecipitation	50:50				acetone	lorazepam		186	0.15		84		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 15 mg/mL. Aqueous/organic phase ratio: 2 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 1.5 d.nm. Drug entrapment SD: 0.8%. PDI SD: 0.002.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	84.0	lorazepam		acetone
+UFXX9WXE	gemini-2.5-flash	F-26	O/W	nanoprecipitation	50:50				acetone	lorazepam		193	0.102		85.12		PLGA concentration: 35 mg/mL. Poloxamer 407 concentration: 8.50 mg/mL. Aqueous/organic phase ratio: 6 v/v. Drug concentration in organic phase: 3 mg/mL. z-average SD: 0.5 d.nm. Drug entrapment SD: 0.7%. PDI SD: 0.004.	fulltext	"ndent responses, that is, 𝑧-average and % drug entrapment. Lzp-PLGA-
+NPs were successfully developed by nanoprecipitation method using PLGA as polymer, poloxamer as surfactant and acetone as
+organic phase. NPs were characterized for particle size, zeta potential, % drug entrapment, drug release behavior, TEM, and cell
+viability. Lzp-PLGA-NPs were characterized for drug polymer interaction using FTIR. The developed NPs showed nearly spherical
+shape with 𝑧-average 167–318 d⋅nm, PDI below 0.441, and −18.4 mV zeta potential with maximum % drug entrapment of 90.1%. In
+vitro drug release behavior followed Korsmeyer-Peppas model and showed initial burst release of 21.7 ± 1.3% with prolonged drug
+release of 69.5 ±"	1434	2150	pattern_window	A	10.1155/2014/156010	85.12	lorazepam		acetone
+V99GKZEI	gemini-2.5-flash	1	O/W	nanoprecipitation/solvent displacement method	50:50		20		acetone	Methylene Blue	0.5 mg	220	0.19		3.12	0.52	Prepared with nanoprecipitation/solvent displacement method using acetone as the organic phase. Tween 80 (0.5% w/v) was used as a surfactant.	fulltext	eous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH. This latter modulates the release profiles of MB from the nanospheres, producing a release sustained for five days. In vitr	934	1355	pattern_window	A	10.1039/c5ra27386b	3.12	methylene blue		acetone
+V99GKZEI	gemini-2.5-flash	2	W/O/W	W/O/W emulsion/solvent evaporation method	50:50		20		acetone/dichloromethane (1:1, v/v)	Methylene Blue	0.5 mg	266	0.4		6.75	1.13	Prepared with W/O/W emulsion/solvent evaporation method. Span 80 (0.5% w/v) and Pluronic F68 (3% w/v) were used as surfactants.	fulltext	eous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH. This latter modulates the release profiles of MB from the nanospheres, producing a release sustained for five days. In vitr	934	1355	pattern_window	A	10.1039/c5ra27386b	6.75	methylene blue		acetone/dichloromethane (1:1, v/v)
+V99GKZEI	gemini-2.5-flash	3	O/W	nanoprecipitation/solvent displacement method	50:50		20		acetone	Methylene Blue	0.5 mg	230	0.13		30.09	5.02	Prepared with nanoprecipitation/solvent displacement method using acetone as the organic phase. 10 mg of amphiphilic cyclodextrin (SC6OH) was added.	fulltext	eous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH. This latter modulates the release profiles of MB from the nanospheres, producing a release sustained for five days. In vitr	934	1355	pattern_window	A	10.1039/c5ra27386b	30.09	methylene blue		acetone
+V99GKZEI	gemini-2.5-flash	4	O/W	nanoprecipitation/solvent displacement method	50:50		20		acetone	Methylene Blue	0.5 mg	221	0.23		29.14	4.86	Prepared with nanoprecipitation/solvent displacement method using acetone as the organic phase. 20 mg of amphiphilic cyclodextrin (SC6OH) was added.	fulltext	eous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH. This latter modulates the release profiles of MB from the nanospheres, producing a release sustained for five days. In vitr	934	1355	pattern_window	A	10.1039/c5ra27386b	29.14	methylene blue		acetone
+V99GKZEI	gemini-2.5-flash	5	O/W	nanoprecipitation/solvent displacement method	50:50		20		acetone	Methylene Blue	0.5 mg	226	0.15		32.56	5.43	Prepared with nanoprecipitation/solvent displacement method using acetone as the organic phase. 30 mg of amphiphilic cyclodextrin (SC6OH) was added.	fulltext	eous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH. This latter modulates the release profiles of MB from the nanospheres, producing a release sustained for five days. In vitr	934	1355	pattern_window	A	10.1039/c5ra27386b	32.56	methylene blue		acetone
+V99GKZEI	gemini-2.5-flash	6	O/W	nanoprecipitation/solvent displacement method	50:50		20		acetone	Methylene Blue	0.5 mg	201	0.16		57.89	9.65	Prepared with nanoprecipitation/solvent displacement method using acetone as the organic phase. 40 mg of amphiphilic cyclodextrin (SC6OH) was added. This formulation was selected for further characterization and studies due to highest E.E.%.	fulltext	eous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH. This latter modulates the release profiles of MB from the nanospheres, producing a release sustained for five days. In vitr	934	1355	pattern_window	A	10.1039/c5ra27386b	57.89	methylene blue		acetone
+VHSU9G7W	gemini-2.5-flash	PLGA_Salbutamol_Nanoparticles	solvent displacement	Injection of organic phase (polymer + drug in acetone) into aqueous phase (double-distilled water, pH 7.0) under magnetic stirring (500 rpm) via syringe pump (10 mL/min), followed by solvent removal under reduced pressure for 3 hours.	50:50		47.5		acetone	salbutamol	2.5 mg	127.0	0.115	-36.5	25.2	1.3	PLGA used was Resomer RG 502 H. All characterization values (size, PDI, zeta-potential, encapsulation efficiency, drug loading) are mean values from Table 1, measured directly after nanoparticle preparation. Standard deviations are ±6.1 nm, ±0.013, ±2.6 mV, ±4.9%, and ±0.2% respectively.	fulltext	"and poly(vinyl sulfonate-co-vinyl alcohol)-
+graft-poly(D,L-lactide-co-glycolide) (VS(72)-10) nanoparticles were prepared by a modiﬁed solvent displace-
+ment technique with a mean particle size of approximately 120 nm and a polydispersity index below 0.150.
+VS(72)-10 nanoparticles showed a more negative z-potential of 54.2  3.3 mV compared to PLGA nanoparticles
+(36.5  2.6 mV). Salbutamol encapsulation efﬁciency was 25.2  4.9% and 63.4  3.5% for PLGA and VS(72)-10
+na"	1172	1648	pattern_window	A	10.1089/jamp.2009.0759	25.2	salbutamol		acetone
+VHSU9G7W	gemini-2.5-flash	VS72-10_Salbutamol_Nanoparticles	solvent displacement	Injection of organic phase (polymer + drug in acetone) into aqueous phase (double-distilled water, pH 7.0) under magnetic stirring (500 rpm) via syringe pump (10 mL/min), followed by solvent removal under reduced pressure for 3 hours.			47.5		acetone	salbutamol	2.5 mg	118.9	0.132	-54.2	63.4	3.2	Polymer used was VS(72)-10, a biocompatible, branched polyester: poly(vinyl sulfonate-co-vinyl alcohol)-graft-poly(D,L-lactide-co-glycolide). The '72' refers to the total average number of sulfonate functions on the PVA backbone, and '10' to the PLGA side-chain length. Increased negative zeta potential was observed compared to PLGA nanoparticles due to negatively charged functional groups in the polymer structure, promoting electrostatic interactions with salbutamol. All characterization values (size, PDI, zeta-potential, encapsulation efficiency, drug loading) are mean values from Table 1, measured directly after nanoparticle preparation. Standard deviations are ±9.6 nm, ±0.011, ±3.3 mV, ±3.5%, and ±0.2% respectively.	fulltext	"and poly(vinyl sulfonate-co-vinyl alcohol)-
+graft-poly(D,L-lactide-co-glycolide) (VS(72)-10) nanoparticles were prepared by a modiﬁed solvent displace-
+ment technique with a mean particle size of approximately 120 nm and a polydispersity index below 0.150.
+VS(72)-10 nanoparticles showed a more negative z-potential of 54.2  3.3 mV compared to PLGA nanoparticles
+(36.5  2.6 mV). Salbutamol encapsulation efﬁciency was 25.2  4.9% and 63.4  3.5% for PLGA and VS(72)-10
+na"	1172	1648	pattern_window	A	10.1089/jamp.2009.0759	63.4	salbutamol		acetone
+WFDTQ4VX	gemini-2.5-flash	1	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	5 mg	126.6			36.5		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	36.5	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	2	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	5 mg	131.3			29.4		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	29.4	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	3	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	5 mg	140.8			21.3		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	21.3	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	4	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	5 mg	127.3			50.9		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	50.9	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	5	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	5 mg	136.3			48.7		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	48.7	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	6	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	5 mg	139.7			38.2		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	38.2	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	7	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	5 mg	159.7			51.1		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	51.1	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	8	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	5 mg	163.5			57.3		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	57.3	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	9	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	5 mg	176.9			40.3		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	40.3	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	10	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	7.5 mg	144.1			61.6		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	61.6	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	11	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	7.5 mg	148.2			55.4		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	55.4	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	12	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	7.5 mg	152.6			47.4		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	47.4	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	13	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	7.5 mg	155.6			83.3		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	83.3	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	14	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	7.5 mg	159.6			73.2		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	73.2	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	15	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	7.5 mg	165.2			63.1		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	63.1	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	16	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	7.5 mg	162.6			91.4		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	91.4	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	17	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	7.5 mg	169.7			84.6		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	84.6	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	18	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	7.5 mg	173.8			77.5		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	77.5	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	19	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	10 mg	142.1		-27.2	93.3		Surfactant: 0.50% w/v Pluronic F68. This is the optimized formulation.	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	93.3	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	21	nanoprecipitation	solvent diffusion	50:50		25		acetone	lopinavir	10 mg	175.5			87.6		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	87.6	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	22	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	10 mg	214.8			95.7		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	95.7	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	24	nanoprecipitation	solvent diffusion	50:50		50		acetone	lopinavir	10 mg	233.6			75.3		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	75.3	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	25	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	10 mg	207.4			93.8		Surfactant: 0.50% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	93.8	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	26	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	10 mg	237.1			85.1		Surfactant: 0.75% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	85.1	lopinavir		acetone
+WFDTQ4VX	gemini-2.5-flash	27	nanoprecipitation	solvent diffusion	50:50		75		acetone	lopinavir	10 mg	236.1			71.1		Surfactant: 1.0% w/v Pluronic F68	fulltext	"acterized by TEM, DSC, FTIR studies and safety was assessed by MTT
+assay. In vivo pharmacokinetic studies were performed in rats. The NPs were discrete spherical
+structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%. There was
+absence of drug-polymer interaction. Confocal images revealed the penetration and absorption
+of coumarin-loaded NPs in Caco-2 cells and intestine after oral delivery. There was"	1856	2288	pattern_window	A	10.1080/10717544.2016.1199605	71.1	lopinavir		acetone
+WIVUCMYG	gemini-2.5-flash	F1						1.0		Pranoprofen	0.50 mg/mL	566.5	0.286	-8.28	87.69			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	87.69	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F2						1.0		Pranoprofen	1.50 mg/mL	597.6	0.335	-8.17	90.26			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	90.26	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F3						2.0		Pranoprofen	0.50 mg/mL	605.0	0.256	-6.0	82.57			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	82.57	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F4						2.0		Pranoprofen	1.50 mg/mL	611.2	0.368	-6.8	90.85			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	90.85	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F5						1.0		Pranoprofen	0.50 mg/mL	539.0	0.227	-9.27	85.14			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	85.14	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F6						1.0		Pranoprofen	1.50 mg/mL	532.1	0.231	-7.31	89.29			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	89.29	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F7						2.0		Pranoprofen	0.50 mg/mL	784.3	0.391	-5.91	89.93			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	89.93	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F8						2.0		Pranoprofen	1.50 mg/mL	641.5	0.363	-5.99	89.01			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	89.01	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F9						2.0		Pranoprofen	1.50 mg/mL	348.3	0.106	-7.5	66.5			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	66.5	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F10						2.0		Pranoprofen	0.50 mg/mL	280.1	0.098	-7.92	49.79			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	49.79	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F11						1.0		Pranoprofen	1.50 mg/mL	324.3	0.091	-7.41	80.02		Before freeze-drying	fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	80.02	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F12						1.0		Pranoprofen	0.50 mg/mL	265.4	0.073	-9.61	62.05			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	62.05	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F13						2.0		Pranoprofen	1.50 mg/mL	408.9	0.216	-6.68	45.54			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	45.54	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F14						2.0		Pranoprofen	0.50 mg/mL	318.4	0.207	-7.44	39.79			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	39.79	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F15						1.0		Pranoprofen	1.50 mg/mL	327.6	0.095	-7.22	69.51			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	69.51	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F16						1.0		Pranoprofen	0.50 mg/mL	269.9	0.096	-11.2	72.74			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	72.74	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F17						1.5		Pranoprofen	2.00 mg/mL	433.9	0.224	-6.97	77.23			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	77.23	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F18						1.5		Pranoprofen	0.00 mg/mL	326.7	0.013	-8.54	0.0			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	0.0	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F19						2.5		Pranoprofen	1.00 mg/mL	368.2	0.097	-6.25	80.29		Before freeze-drying	fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	80.29	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F20						0.5		Pranoprofen	1.00 mg/mL	343.8	0.085	-8.5	80.34		Before freeze-drying	fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	80.34	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F21						1.5		Pranoprofen	1.00 mg/mL	421.0	0.153	-7.63	77.15			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	77.15	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F22						1.5		Pranoprofen	1.00 mg/mL	340.4	0.118	-8.06	68.48			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	68.48	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F23						1.5		Pranoprofen	1.00 mg/mL	321.4	0.224	-12.92	58.7			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	58.7	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F24						1.5		Pranoprofen	1.00 mg/mL	611.8	0.301	-2.15	86.39			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	86.39	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F25						1.5		Pranoprofen	1.00 mg/mL	354.6	0.146	-6.9	62.01			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	62.01	pranoprofen		
+WIVUCMYG	gemini-2.5-flash	F26						1.5		Pranoprofen	1.00 mg/mL	357.8	0.147	-6.58	62.09			fulltext	"ref, P. Maincent, E. Dellacherie, M.J. Alonso, P. Labrude, C. Vigneron Influence of experimental parameters on the characteristics of poly(lactic acid) nanoparticles prepared by a double emulsion method J Control Release, 50 (1998), pp. 31-40 View PDF View article View in Scopus Google Scholar
+36. H. Murakami, M. Kobayashi, H. Takeuchi, Y. Kawashima Preparation of poly ( d,l -lactide-co-glycolide) nanoparticles"	11053	11468	pattern_window	B	10.1002/jps.24101	62.09	pranoprofen		
+XVWN2PDB	gemini-2.5-flash	1	modified solvent displacement	modified solvent displacement method using an electronically adjustable peristaltic pump at 6 mL min-1, with magnetic stirring (450 rpm initially, then 850 rpm for 4-5 hours to evaporate acetone)	50:50		15.0		acetone	Oxcarbazepine	0.75 mg	148.3	0.03	-50.0	69.79		PLGA nanoparticles loaded with Oxcarbazepine. Formulation uses 0% w/v α-tocopherol polyethylene glycol-1000-succinate (TPGS) as surfactant. PLGA has inherent viscosity 0.15–0.25 dL/g.	fulltext	"rain barrier (hCMEC/D3 cells) and human placental trophoblast
+cells (BeWo b30 cells). Oxcarbazepine-loaded nanoparticles with encapsulation efficiency above
+69% were prepared with sizes ranging from 140–170 nm, polydispersity indices below 0.3, and
+zeta potential values below -34 mV. Differential scanning calorimetry and X-ray diffraction
+studies confirmed the amorphous state of the nanoencapsulated drug. The apparent permeability
+(Pe) values of the free and nanoencapsulated oxcarbazepine were comp"	2322	2825	pattern_window	A	10.2147/ijn.s77498	69.79	oxcarbazepine		acetone
+XVWN2PDB	gemini-2.5-flash	2	modified solvent displacement	modified solvent displacement method using an electronically adjustable peristaltic pump at 6 mL min-1, with magnetic stirring (450 rpm initially, then 850 rpm for 4-5 hours to evaporate acetone)			20.0		acetone	Oxcarbazepine	1.0 mg	169.2	0.05	-37.5	69.48		Resomer® RGPd5055 (PEGylated PLGA) nanoparticles loaded with Oxcarbazepine. Formulation uses 0% w/v α-tocopherol polyethylene glycol-1000-succinate (TPGS) as surfactant. Resomer® RGPd5055 is a diblock PEGylated copolymer of PLGA containing 5% polyethylene glycol [PEG5000].	fulltext	"rain barrier (hCMEC/D3 cells) and human placental trophoblast
+cells (BeWo b30 cells). Oxcarbazepine-loaded nanoparticles with encapsulation efficiency above
+69% were prepared with sizes ranging from 140–170 nm, polydispersity indices below 0.3, and
+zeta potential values below -34 mV. Differential scanning calorimetry and X-ray diffraction
+studies confirmed the amorphous state of the nanoencapsulated drug. The apparent permeability
+(Pe) values of the free and nanoencapsulated oxcarbazepine were comp"	2322	2825	pattern_window	A	10.2147/ijn.s77498	69.48	oxcarbazepine		acetone
+XVWN2PDB	gemini-2.5-flash	3	modified solvent displacement	modified solvent displacement method using an electronically adjustable peristaltic pump at 6 mL min-1, with magnetic stirring (450 rpm initially, then 850 rpm for 4-5 hours to evaporate acetone)	50:50		20.0		acetone	Oxcarbazepine	1.0 mg	160.2	0.16	-46.3	72.13		PLGA nanoparticles loaded with Oxcarbazepine. Formulation uses 0.03% w/v α-tocopherol polyethylene glycol-1000-succinate (TPGS) as surfactant. PLGA has inherent viscosity 0.15–0.25 dL/g.	fulltext	"rain barrier (hCMEC/D3 cells) and human placental trophoblast
+cells (BeWo b30 cells). Oxcarbazepine-loaded nanoparticles with encapsulation efficiency above
+69% were prepared with sizes ranging from 140–170 nm, polydispersity indices below 0.3, and
+zeta potential values below -34 mV. Differential scanning calorimetry and X-ray diffraction
+studies confirmed the amorphous state of the nanoencapsulated drug. The apparent permeability
+(Pe) values of the free and nanoencapsulated oxcarbazepine were comp"	2322	2825	pattern_window	A	10.2147/ijn.s77498	72.13	oxcarbazepine		acetone
+YGA8VQKU	gemini-2.5-flash	F1								Flurbiprofen	0.50 mg/mL	240.0		-22.43	76.37		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 10.00 mg/mL, Aqueous phase pH: 3.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	76.37	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F2								Flurbiprofen	1.50 mg/mL	205.3		-24.6	97.75		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 10.00 mg/mL, Aqueous phase pH: 3.50. Produced with low viscosity PLGA (0.32–0.44 dL/g). This formulation's characteristics are also reported as 'Nanospheres produced with low viscosity PLGA' in Table 6.						D	10.1016/j.colsurfb.2009.03.028	97.75	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F3								Flurbiprofen	0.50 mg/mL	236.0		-23.9	77.36		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 20.00 mg/mL, Aqueous phase pH: 3.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	77.36	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F4								Flurbiprofen	1.50 mg/mL	186.0		-23.63	87.11		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 20.00 mg/mL, Aqueous phase pH: 3.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	87.11	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F5								Flurbiprofen	0.50 mg/mL	182.0		-27.4	52.68		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 10.00 mg/mL, Aqueous phase pH: 5.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	52.68	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F6								Flurbiprofen	1.50 mg/mL	203.3		-30.6	77.75		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 10.00 mg/mL, Aqueous phase pH: 5.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	77.75	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F7								Flurbiprofen	0.50 mg/mL	183.0		-27.46	59.54		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 20.00 mg/mL, Aqueous phase pH: 5.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	59.54	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F8								Flurbiprofen	1.50 mg/mL	175.7		-27.0	74.38		Formulation from factorial design (Table 2). Poloxamer 188 concentration: 20.00 mg/mL, Aqueous phase pH: 5.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	74.38	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F9								Flurbiprofen	1.84 mg/mL	179.3		-25.8	85.18		Formulation from factorial design (Table 2, axial point). Poloxamer 188 concentration: 15.00 mg/mL, Aqueous phase pH: 4.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	85.18	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F10								Flurbiprofen	0.16 mg/mL	203.3		-28.73	38.46		Formulation from factorial design (Table 2, axial point). Poloxamer 188 concentration: 15.00 mg/mL, Aqueous phase pH: 4.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	38.46	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F11								Flurbiprofen	1.00 mg/mL	166.0		-24.77	66.69		Formulation from factorial design (Table 2, axial point). Poloxamer 188 concentration: 23.40 mg/mL, Aqueous phase pH: 4.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	66.69	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F12								Flurbiprofen	1.00 mg/mL	183.0		-20.33	63.76		Formulation from factorial design (Table 2, axial point). Poloxamer 188 concentration: 6.60 mg/mL, Aqueous phase pH: 4.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	63.76	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F13								Flurbiprofen	1.00 mg/mL	185.0		-23.9	65.34		Formulation from factorial design (Table 2, axial point). Poloxamer 188 concentration: 15.00 mg/mL, Aqueous phase pH: 6.18. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	65.34	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F14								Flurbiprofen	1.00 mg/mL	201.7		-16.33	82.52		Formulation from factorial design (Table 2, axial point). Poloxamer 188 concentration: 15.00 mg/mL, Aqueous phase pH: 2.82. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	82.52	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F15								Flurbiprofen	1.00 mg/mL	182.3		-24.93	68.22		Formulation from factorial design (Table 2, center point). Poloxamer 188 concentration: 15.00 mg/mL, Aqueous phase pH: 4.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	68.22	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	F16								Flurbiprofen	1.00 mg/mL	179.0		-25.03	64.94		Formulation from factorial design (Table 2, center point). Poloxamer 188 concentration: 15.00 mg/mL, Aqueous phase pH: 4.50. Produced with low viscosity PLGA (0.32–0.44 dL/g).						D	10.1016/j.colsurfb.2009.03.028	64.94	flurbiprofen		
+YGA8VQKU	gemini-2.5-flash	High viscosity PLGA (Table 6, comparison)								Flurbiprofen		232.8		-25.79	94.6		Nanospheres produced with high viscosity PLGA (0.7–1.1 dL/g) for comparison, referenced from [24]. No other formulation details are provided in this paper.						D	10.1016/j.colsurfb.2009.03.028	94.6	flurbiprofen		

@@ -1,0 +1,50 @@
+{
+  "inputs": {
+    "extracted_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\dev18_surfactant_schema_v1\\weak_labels__gemini.tsv",
+    "curated_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\goren18_curated_overlap_subset.tsv",
+    "sample_jsonl": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\samples\\sample_goren18.jsonl",
+    "baseline_summary": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v2_corefields\\formulation_alignment_summary.tsv"
+  },
+  "normalization_rules": {
+    "drug_name": {
+      "lowercase": true,
+      "strip_parentheses_content": true,
+      "split_separators": [
+        "|",
+        ",",
+        ";",
+        "and"
+      ],
+      "tracer_whitelist": [
+        "coumarin 6",
+        "coumarin-6",
+        "dii",
+        "dir",
+        "fitc",
+        "nile red",
+        "rhodamine",
+        "rhodamine 123",
+        "rhodamine-123"
+      ],
+      "tracers_excluded_from_primary_set": true
+    }
+  },
+  "row_counts": {
+    "extracted_input_rows": 233,
+    "extracted_exploded_rows": 233,
+    "extracted_grouped_rows_v3": 93,
+    "curated_rows": 127,
+    "alignment_rows_v3": 127
+  },
+  "status_counts": {
+    "exact_match": 18
+  },
+  "outputs": {
+    "extracted_formulation_level_v3_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\extracted_formulation_level_v3.tsv",
+    "formulation_alignment_v3_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\formulation_alignment_v3.tsv",
+    "formulation_alignment_summary_v3_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\formulation_alignment_summary_v3.tsv",
+    "per_doi_recall_v3_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\per_doi_recall_v3.tsv",
+    "per_doi_failure_type_v3_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\per_doi_failure_type_v3.tsv",
+    "low_recall_action_cards_v3_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v3_surfactant_drugnorm\\low_recall_action_cards_v3.tsv"
+  }
+}

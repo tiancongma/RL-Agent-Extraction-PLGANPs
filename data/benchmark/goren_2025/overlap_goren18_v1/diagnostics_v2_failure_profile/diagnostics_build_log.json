@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "extracted_formulation_level_v1_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v1\\extracted_formulation_level_v1.tsv",
+    "curated_overlap_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\goren18_curated_overlap_subset.tsv",
+    "formulation_alignment_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\formulation_group_v1\\formulation_alignment.tsv",
+    "per_doi_diagnostic_v1_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v1\\per_doi_diagnostic_v1.tsv"
+  },
+  "outputs": {
+    "per_doi_extracted_missingness_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v2_failure_profile\\per_doi_extracted_missingness.tsv",
+    "per_doi_extracted_conflicts_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v2_failure_profile\\per_doi_extracted_conflicts.tsv",
+    "per_doi_alignment_failure_fields_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v2_failure_profile\\per_doi_alignment_failure_fields.tsv",
+    "per_doi_failure_type_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v2_failure_profile\\per_doi_failure_type.tsv",
+    "low_recall_action_cards_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\diagnostics_v2_failure_profile\\low_recall_action_cards.tsv"
+  },
+  "row_counts": {
+    "extracted_rows": 32,
+    "curated_rows": 127,
+    "alignment_rows": 127,
+    "diagnostic_rows": 18,
+    "missingness_rows": 180,
+    "conflicts_rows": 180,
+    "failure_field_rows": 180,
+    "failure_type_rows": 18,
+    "action_card_rows": 10
+  }
+}

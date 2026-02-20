@@ -1,0 +1,30 @@
+{
+  "n_doi_total": 18,
+  "n_doi_with_curated_ee": 18,
+  "n_doi_with_extracted_ee": 18,
+  "n_doi_with_both_ee": 18,
+  "ee_mean_abs_diff_stats": {
+    "min": 0.0,
+    "q25": 0.0,
+    "median": 0.2466666666666697,
+    "q75": 4.010624999999987,
+    "max": 31.16666666666667,
+    "mean": 4.907824074074075
+  },
+  "curated_rows_stats": {
+    "min": 1.0,
+    "q25": 1.25,
+    "median": 3.0,
+    "q75": 4.5,
+    "max": 27.0,
+    "mean": 7.055555555555555
+  },
+  "extracted_rows_stats": {
+    "min": 1.0,
+    "q25": 6.25,
+    "median": 9.5,
+    "q75": 17.0,
+    "max": 29.0,
+    "mean": 12.055555555555555
+  }
+}

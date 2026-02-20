@@ -1,0 +1,16 @@
+record_type	recall_bucket	doi_level_stable	metric	value	notes
+count_by_recall_bucket	high		n_doi	9.0	
+count_by_recall_bucket	medium		n_doi	4.0	
+count_by_recall_bucket	low		n_doi	5.0	
+count_by_stability		stable	n_doi	15.0	
+count_by_stability		unstable	n_doi	3.0	
+contingency_recall_x_stability	high	stable	n_doi	7.0	
+contingency_recall_x_stability	high	unstable	n_doi	2.0	
+contingency_recall_x_stability	medium	stable	n_doi	4.0	
+contingency_recall_x_stability	medium	unstable	n_doi	0.0	
+contingency_recall_x_stability	low	stable	n_doi	4.0	
+contingency_recall_x_stability	low	unstable	n_doi	1.0	
+recall_stats_by_stability		stable	per_doi_recall_mean	0.6097603485838781	
+recall_stats_by_stability		stable	per_doi_recall_median	0.6666666666666666	
+recall_stats_by_stability		unstable	per_doi_recall_mean	0.6666666666666666	
+recall_stats_by_stability		unstable	per_doi_recall_median	1.0	

@@ -1,0 +1,13 @@
+metric	value	notes
+overlap_doi_total	18.0	
+doi_with_curated_rows	18.0	
+doi_with_extracted_rows	18.0	
+curated_rows_total	127.0	
+extracted_rows_total	217.0	
+row_ratio_mean	3.2224112246988064	exclude curated_rows==0
+row_ratio_median	3.166666666666667	exclude curated_rows==0
+row_ratio_min	1.0	exclude curated_rows==0
+row_ratio_max	7.0	exclude curated_rows==0
+row_gap_abs_mean	5.0	
+row_gap_abs_median	5.5	
+row_gap_abs_max	15.0	No DOI has curated_rows==0.

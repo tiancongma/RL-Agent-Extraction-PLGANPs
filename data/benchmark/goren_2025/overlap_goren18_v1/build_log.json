@@ -1,0 +1,49 @@
+{
+  "cwd": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs",
+  "inputs": {
+    "sample_jsonl": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\samples\\sample_goren18.jsonl",
+    "key2txt_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\cleaned\\index\\key2txt_goren_2025.tsv",
+    "goren_csv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\NP_dataset_formulations.csv",
+    "weak_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\results\\run_20260219_1623_780eb83_goren18_weaklabels_v1\\weak_labels__gemini.tsv"
+  },
+  "detected_columns": {
+    "sample": {
+      "key_col": "key",
+      "doi_col": "doi"
+    },
+    "curated": {
+      "doi_col": "reference",
+      "ee_col": "EE"
+    },
+    "extracted": {
+      "key_col": "key",
+      "doi_col": null,
+      "ee_col": "encapsulation_efficiency_percent"
+    }
+  },
+  "counts": {
+    "sample_rows": 18,
+    "sample_unique_doi": 18,
+    "key2txt_rows": 18,
+    "curated_overlap_rows": 127,
+    "curated_overlap_unique_doi": 18,
+    "extracted_overlap_rows": 217,
+    "scaffold_rows": 18,
+    "scaffold_has_curated_rows": 18,
+    "scaffold_has_extracted_rows": 18,
+    "scaffold_has_curated_ee_values": 18,
+    "scaffold_has_extracted_ee_values": 18,
+    "doi_with_computable_ee_mean_abs_diff": 18,
+    "doi_with_computable_ee_median_abs_diff": 18,
+    "doi_ee_mean_abs_diff_le_5": 15,
+    "doi_ee_mean_abs_diff_le_10": 15
+  },
+  "outputs": {
+    "curated_subset_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\goren18_curated_overlap_subset.tsv",
+    "rows_per_doi_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\rows_per_doi.tsv",
+    "coverage_report_json": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\coverage_report.json",
+    "doi_level_ee_scaffold_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\doi_level_ee_scaffold.tsv",
+    "agreement_summary_json": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\agreement_summary.json",
+    "audit_priority_doi_tsv": "C:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs\\data\\benchmark\\goren_2025\\overlap_goren18_v1\\audit_priority__doi.tsv"
+  }
+}
