@@ -1,0 +1,68 @@
+{
+  "db_version": "db_v1",
+  "source_run_id": "run_20260219_1623_780eb83_goren18_weaklabels_v1",
+  "source_schema": "schema_v2",
+  "created_at": "2026-02-23T17:59:20.408363+00:00",
+  "git_short_hash": "d4898fa",
+  "row_counts": {
+    "formulation_core": 87,
+    "measurements": 693,
+    "factors": 598
+  },
+  "unique_dois_count": 18,
+  "condition_tag_distribution": {
+    "fresh": 663,
+    "postprocess": 30
+  },
+  "core_columns_exported": [
+    "formulation_core_id",
+    "reference_normalized_doi",
+    "core_signature",
+    "drug_name_normalized",
+    "la_fraction",
+    "ga_fraction",
+    "la_ga_ratio",
+    "polymer_mw_lower_kDa",
+    "polymer_mw_upper_kDa",
+    "polymer_mw_kDa",
+    "organic_solvent_normalized",
+    "surfactant_type_normalized",
+    "pva_conc_percent",
+    "surfactant_conc_percent",
+    "plga_conc",
+    "plga_mass_mg",
+    "aqueous_phase_pH",
+    "drug_to_polymer_mass_ratio",
+    "phase_ratio_w1_o",
+    "phase_ratio_total_water_o",
+    "example_group_keys",
+    "created_at",
+    "schema_version"
+  ],
+  "factor_names_emitted": [
+    "aqueous_phase_pH",
+    "cFB (mg/mL)",
+    "cP188 (mg/mL)",
+    "cPF (mg/mL)",
+    "cPLGA (mg/mL)",
+    "cPVA (mg/mL)",
+    "drug_to_polymer_mass_ratio",
+    "organic_solvent",
+    "pH",
+    "plga_mass_mg",
+    "pva_conc_percent",
+    "surfactant_conc",
+    "surfactant_type"
+  ],
+  "doe_decode_enabled": true,
+  "doe_decode_diagnostics_path": "data/results/run_20260219_1623_780eb83_goren18_weaklabels_v1/benchmark_goren_2025/derivation_v1/doe_decode_diagnostics.tsv",
+  "factor_kind_counts": {
+    "other": 306,
+    "coded": 146,
+    "decoded": 146
+  },
+  "note": "DOE factors derived via source re-read (html/txt) in derivation_v1, not directly from Stage2 spans",
+  "warnings": [
+    "missing drug_name_normalized rows: 15"
+  ]
+}

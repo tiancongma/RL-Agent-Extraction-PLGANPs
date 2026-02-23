@@ -1,0 +1,76 @@
+{
+  "version": "v1",
+  "immutable": true,
+  "scope": "goren_2025_benchmark_projection",
+  "output_policy": {
+    "projected_to_curated_tsv": "must contain exactly curated template columns and no audit columns",
+    "audit_outputs": ["projection_trace.tsv"]
+  },
+  "curated_column_mapping": [
+    {
+      "curated_column": "reference",
+      "source": "sample_manifest.doi_by_key",
+      "rule_id": "P_REFERENCE_FROM_MANIFEST_KEY"
+    },
+    {
+      "curated_column": "small_molecule_name",
+      "source": "derived.small_molecule_name",
+      "rule_id": "P_DIRECT_SMALL_MOLECULE"
+    },
+    {
+      "curated_column": "surfactant_name",
+      "source": "none_v1",
+      "rule_id": "P_NULL_SURFACTANT_NAME_V1"
+    },
+    {
+      "curated_column": "solvent",
+      "source": "derived.solvent",
+      "rule_id": "P_DIRECT_SOLVENT"
+    },
+    {
+      "curated_column": "polymer_MW",
+      "source": "derived.polymer_mw_lower_kDa + derived.polymer_mw_upper_kDa",
+      "rule_id": "P_POLYMER_MW_RANGE_TO_TEXT"
+    },
+    {
+      "curated_column": "LA/GA",
+      "source": "derived.LA/GA",
+      "rule_id": "P_DIRECT_LAGA"
+    },
+    {
+      "curated_column": "drug/polymer",
+      "source": "derived.drug/polymer",
+      "rule_id": "P_DIRECT_DRUG_POLYMER"
+    },
+    {
+      "curated_column": "surfactant_concentration",
+      "source": "derived.surfactant_concentration",
+      "rule_id": "P_DIRECT_SURFACTANT_CONCENTRATION"
+    },
+    {
+      "curated_column": "aqueous/organic",
+      "source": "derived.w1_over_o_ratio OR derived.w1w2_over_o_ratio (never mixed)",
+      "rule_id": "P_AQORG_SINGLE_DEFINITION_ONLY"
+    },
+    {
+      "curated_column": "pH",
+      "source": "none_v1",
+      "rule_id": "P_NULL_PH_V1"
+    },
+    {
+      "curated_column": "particle_size",
+      "source": "derived.particle_size",
+      "rule_id": "P_DIRECT_PARTICLE_SIZE"
+    },
+    {
+      "curated_column": "EE",
+      "source": "derived.EE",
+      "rule_id": "P_DIRECT_EE"
+    },
+    {
+      "curated_column": "LC",
+      "source": "derived.LC",
+      "rule_id": "P_DIRECT_LC"
+    }
+  ]
+}
