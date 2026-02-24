@@ -106,6 +106,26 @@ def parse_percent_like(value: str) -> str:
     return norm_num_token(m.group(1))
 
 
+def normalize_formulation_id_token(value: Any) -> str:
+    if value is None or pd.isna(value):
+        return ""
+    s = str(value).strip().upper()
+    if not s:
+        return ""
+    s = re.sub(r"[^A-Z0-9_-]+", "_", s)
+    s = re.sub(r"_+", "_", s)
+    s = re.sub(r"-+", "-", s)
+    return s.strip("_-")
+
+
+def has_explicit_formulation_id(value: Any) -> bool:
+    tok = normalize_formulation_id_token(value)
+    if not tok:
+        return False
+    # Require mixed alpha+numeric token to avoid treating plain numeric row indices as explicit IDs.
+    return bool(re.search(r"[A-Z]", tok) and re.search(r"\d", tok))
+
+
 def detect_surfactant_type(notes: str, evidence_excerpt: str) -> str:
     text = normalize_text(f"{notes} {evidence_excerpt}")
     patterns = [
@@ -183,6 +203,8 @@ def build_tables(
         gk_str = str(gk)
         key = str(gdf.iloc[0].get("key", ""))
         formulation_id = str(gdf.iloc[0].get("formulation_id", ""))
+        formulation_id_token = normalize_formulation_id_token(formulation_id)
+        explicit_formulation_id = has_explicit_formulation_id(formulation_id)
         ex = extracted_idx.loc[gk_str] if gk_str in extracted_idx.index else None
         if isinstance(ex, pd.DataFrame):
             ex = ex.iloc[0]
@@ -241,6 +263,8 @@ def build_tables(
             f"{field}={core_values_raw[field] if core_values_raw[field] else missing_token(field)}"
             for field in included_fields
         ]
+        if explicit_formulation_id:
+            signature_parts.append(f"explicit_formulation_id={formulation_id_token}")
         core_signature = stable_signature(signature_parts)
 
         condition_tag, matched_keywords = detect_condition(evidence_excerpt, excluded_keywords)
@@ -253,11 +277,18 @@ def build_tables(
                 "core_signature": core_signature,
                 "condition_tag": condition_tag,
                 "matched_keywords": matched_keywords,
+                "explicit_formulation_id": "1" if explicit_formulation_id else "0",
+                "explicit_formulation_id_token": formulation_id_token if explicit_formulation_id else "",
                 "included_field_values": "|".join(
                     [
                         f"{field}:{core_values_raw[field] if core_values_raw[field] else missing_token(field)}"
                         for field in included_fields
                     ]
+                    + (
+                        [f"explicit_formulation_id:{formulation_id_token}"]
+                        if explicit_formulation_id
+                        else []
+                    )
                 ),
                 "missing_fields": "|".join(missing_fields),
                 **core_values_raw,
