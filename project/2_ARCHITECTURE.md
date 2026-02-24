@@ -174,4 +174,37 @@ project/3_STATE_MACHINE.md
 - Architectural decisions are recorded in:
 project/4_DECISIONS_LOG.md
 
+- Agent run procedure: see
+project/6_AGENT_RUNBOOK.md
+
 This architecture is intentionally minimal, explicit, and extensible.
+
+---
+
+## Debug & Human Review Contract
+
+All debug artifacts intended for manual inspection MUST include DOI-level metadata.
+
+Invariant:
+Any Excel or TSV generated for human review must contain:
+
+- doc_key (Zotero key)
+- reference_normalized_doi (DOI)
+- doi_url (https://doi.org/<DOI>)
+- paper_title (if available)
+- publication_year (if available)
+
+Rationale:
+Manual verification requires immediate access to original publications.
+DOI is the canonical external identifier and must be included.
+
+Scope:
+Applies to:
+- benchmark debug matrices
+- patch_queue outputs
+- per-doc regression diagnostics
+- modeling-ready merged instance summaries
+- any file labeled debug, audit, review, or manual
+
+Non-negotiable:
+No debug artifact is considered complete if DOI is missing.

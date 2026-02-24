@@ -20,86 +20,148 @@ RL-Agent-Extraction-PLGANPs/
 │  ├─ logs
 │  │  ├─ refs
 │  │  │  ├─ heads
+│  │  │  │  ├─ demo
+│  │  │  │  │  ├─ 20260212_pva_canon
+│  │  │  │  │  └─ pva-method-canon
+│  │  │  │  ├─ feature
+│  │  │  │  │  ├─ ee-coverage-rl
+│  │  │  │  │  └─ evidence-spans-v1
 │  │  │  │  └─ main
 │  │  │  └─ remotes
 │  │  │     └─ origin
+│  │  │        ├─ demo
+│  │  │        │  └─ 20260212_pva_canon
+│  │  │        ├─ feature
+│  │  │        │  ├─ ee-coverage-rl
+│  │  │        │  └─ evidence-spans-v1
 │  │  │        ├─ HEAD
 │  │  │        └─ main
 │  │  └─ HEAD
 │  ├─ objects
 │  │  ├─ 00
-│  │  │  └─ 3620e7efdc37ebf4e2ac1856b731b3ccb6f855
+│  │  │  ├─ 3620e7efdc37ebf4e2ac1856b731b3ccb6f855
+│  │  │  ├─ 6259625eb937f4d3d8ead5ec43f049dce53782
+│  │  │  ├─ 70524da0a671a8abc18a3337f028d8ecdefd4c
+│  │  │  └─ 7751b794ed59880088ec05cef7b03fc5f8b1c1
+│  │  ├─ 02
+│  │  │  ├─ 0a71cb23d7c379c7c686a0e04d1ee0a45904a2
+│  │  │  └─ 1d6515e941c20934a4fb73d254583e26039572
+│  │  ├─ 03
+│  │  │  ├─ 2d2d2696ad6f5482a4ef51cefe26e286b858da
+│  │  │  ├─ 3582e76ac1eadf975e58123fb33868d88a4e1d
+│  │  │  └─ 7c0959c36c325f16f74fb6634517aed03eae77
+│  │  ├─ 04
+│  │  │  ├─ 15f18b3628026001c8e0912162a80452e5c69e
+│  │  │  └─ aedf96612a62d1b160c1386d4a53dd433873f0
 │  │  ├─ 05
-│  │  │  └─ 34d8e24469aa220e3cff9fb0c63accef5dd4b4
+│  │  │  ├─ 01983002f1b78be3f2013b08fff4d2b159423c
+│  │  │  ├─ 34d8e24469aa220e3cff9fb0c63accef5dd4b4
+│  │  │  └─ 3af4d4d9ced90f90f83ba68d70f7d599011072
 │  │  ├─ 06
 │  │  │  ├─ 1e4e1034fc06543f201bfc06fcbc1e2bc9dbbf
 │  │  │  ├─ 56af3687664c9d516542ea3052b655af360129
+│  │  │  ├─ 71f8f77565093b26f56df1bc91d3a7ad10ae67
+│  │  │  ├─ 7a348e6b5acd0b527ca5586a8f75a312fe6103
 │  │  │  └─ e1a13526002be84ae8385477f4a3b7e3aa5a46
+│  │  ├─ 07
+│  │  │  ├─ 96bc9e6e22f1b3a1970ffeb5dd59fd1d65bc7c
+│  │  │  └─ 9e513a78c3aced6569305b2625f80ccd25b288
+│  │  ├─ 08
+│  │  │  └─ e2ae8fcd66325e9eba9bc27841074afa9c2541
+│  │  ├─ 09
+│  │  │  └─ 88dda8c156a3e64801897bfeb0f1b227833dcb
 │  │  ├─ 0a
 │  │  │  ├─ 48ae3e696c0c1c0ca55e58f3f2a63d0df2eebd
 │  │  │  └─ 54a5825ccdc3e109b624867024eda69e4f6deb
 │  │  ├─ 0b
-│  │  │  └─ 7b5c93c8769705f982f9c775d8efe8eb63d35f
+│  │  │  ├─ 7b5c93c8769705f982f9c775d8efe8eb63d35f
+│  │  │  └─ bd42833eb574a301533a72465d31a1f9864600
+│  │  ├─ 0c
+│  │  │  ├─ 5399fa4dc4b7189cb5c33b3ee4d2b64b33f45c
+│  │  │  ├─ 64fc5e6fbe8bd7c9acf42d2bc0bae6e226e527
+│  │  │  └─ ac4d3a9e2185f73db05847c2d913c108fa3ef0
 │  │  ├─ 0d
+│  │  │  ├─ 3659b0f55cb630a127a31917e3d12c1c55e4de
 │  │  │  ├─ 5ee807e0ceec29f3d37fddf3b5b8ce6b5de9af
 │  │  │  └─ 8228c57f33332649e9299fbffdf5e433f9bbe5
 │  │  ├─ 0e
 │  │  │  ├─ 1db554d33d6990c5e03b5e485912fb0f148cd0
-│  │  │  └─ 35cdf8617b01c42da147021bcceaf795fb0605
+│  │  │  ├─ 35cdf8617b01c42da147021bcceaf795fb0605
+│  │  │  ├─ 4ab16cce22a0f72133190aa256120f55cea434
+│  │  │  └─ 9b85678be00fce65071a4ed8bcebed620278bd
+│  │  ├─ 0f
+│  │  │  └─ 931577265a99b8d00e21a5a1365d382f575562
+│  │  ├─ 10
+│  │  │  └─ 89c0378c574b635cda302a0497940b7dd376fd
 │  │  ├─ 11
+│  │  │  ├─ 355d92ea099398dd84be8b34e440ab3039648a
 │  │  │  └─ a50177a2102d188ec5ad3a89e29e45829e75f0
 │  │  ├─ 12
+│  │  │  ├─ 1080bf22a303401c636c60240b054dc38e74eb
+│  │  │  ├─ 6efa8706e586d24e2047b319adf353a3bf7773
 │  │  │  └─ 915532064540b14b1a11671b059c5786c0869a
 │  │  ├─ 13
+│  │  │  ├─ a724f3ebedc51cf730739674b29f97bfe7cda4
+│  │  │  ├─ b7b66635d36b2b8018b321f383d3c55576c88f
 │  │  │  └─ d20e7be06791b976d921398bd9488c02292aa6
+│  │  ├─ 14
+│  │  │  ├─ 1eded75274e5f3a9c00d1b0005709f642e65ca
+│  │  │  ├─ 2fd6dec947a38452459047270002d87b956f87
+│  │  │  └─ 7701d46128d4d3436e8ddfa8eb7b6371eda7e9
 │  │  ├─ 15
-│  │  │  └─ 57caace35f52b3cfda9cef4fa33c8460f488b2
+│  │  │  ├─ 57caace35f52b3cfda9cef4fa33c8460f488b2
+│  │  │  └─ 61a350f7eea9cee414f0ef65ec4b7b31a7afc5
+│  │  ├─ 16
+│  │  │  └─ 8123608e97589b80e433c40e6ba8b06af032e4
+│  │  ├─ 17
+│  │  │  ├─ 3a144bf1956bd954d39a65e04c148b80b40507
+│  │  │  └─ bb1f1df4158c9e4808304ade0e8004b712e2ca
+│  │  ├─ 18
+│  │  │  ├─ 4f9913f7020755456cb2188d712ea44e607c89
+│  │  │  └─ 9a97d7916527c8f62fca4bc684e6b89d72ab5c
 │  │  ├─ 19
+│  │  │  ├─ 2d564942d5282b8bdf1ad14482006a31bae3a1
+│  │  │  ├─ 7d753a72c90a85ac0b4c7f0ddcccd5dc0ea1b7
+│  │  │  ├─ e73a6145ac91028a7795eaf84455d7abed0b47
 │  │  │  └─ ebd8a791d4c495f428c7cd3faf872a6d36c337
+│  │  ├─ 1a
+│  │  │  └─ ff9c8f8c7034f06a6a6567538bcd52b6e36ced
 │  │  ├─ 1b
+│  │  │  ├─ 40ebcb597bb6b2a476139f2c37188abb205854
 │  │  │  ├─ 80d1fa25b5dd16a5ed24957f39ea02299080b1
-│  │  │  └─ a387a6eba04bad6061e877812fdfca1661cad5
+│  │  │  ├─ a387a6eba04bad6061e877812fdfca1661cad5
+│  │  │  ├─ a7103afcc61864e6f42b9a85efd0cd665908af
+│  │  │  ├─ cde624084c9cd06afaa08d49494ae8a4df7d28
+│  │  │  └─ d737ba708e68b6ff66dab0ca790ab6aaffc52b
+│  │  ├─ 1c
+│  │  │  └─ 14de8c2290998b7d5b3e788cf21cff7955db4f
 │  │  ├─ 1e
-│  │  │  └─ 665c4636d86b3fbdeb7972db2548564eff9474
-│  │  ├─ 24
-│  │  │  └─ 1e4217d630c78902f7970ff32f6372609ba81d
-│  │  ├─ 25
-│  │  │  └─ cb2743eab1689619970af4f8ee8a28fc9a4276
-│  │  ├─ 27
-│  │  │  ├─ 480ef2cef4534195f02570c22bd45916ed54fc
-│  │  │  └─ 9fcc169e146ecd01f76b0e25f0bdda4db08c9a
-│  │  ├─ 29
-│  │  │  └─ c3d30cd40805e83258181e297ec80e591e20ec
-│  │  ├─ 2e
-│  │  │  └─ 89dc0060d040de4696183144055bda8270918e
-│  │  ├─ 30
-│  │  │  └─ a8f74cbcfe42e680f2ed2fc6cf0b07b5ff3a26
-│  │  ├─ 32
-│  │  │  └─ c237c93506f4e2e37a52610d2b97c021a01ee0
-│  │  ├─ 33
-│  │  │  └─ 46a262cbd9543a95566094f0514a9a921a7ad6
-│  │  ├─ 34
-│  │  │  └─ 7984eab35977776def8d663b4389181e532fef
-│  │  ├─ 38
-│  │  │  └─ 68720ecac9c5b5f4b9ec2bbd77f6672db18d74
-│  │  ├─ 39
-│  │  │  └─ 38520243056d24476a872a7fc554b2bf4195cd
-│  │  ├─ 3b
-│  │  │  └─ f463731e85bb95c49348673b64e2d5cceec1ea
-│  │  ├─ 40
-│  │  │  └─ facdb8c737df058fcaf321a57dde34b7356a5b
-│  │  ├─ 42
-│  │  │  └─ 743a31be386045603071286dec39bb83da3ecf
-│  │  ├─ 4c
-│  │  │  └─ ee68ca0d4be15dccfd912f270a6bc459dc123e
-│  │  ├─ 4d
-│  │  │  └─ 8bf355b36bd338855b8a0246d333e6436bcf6e
-│  │  └─ ... (56 more items omitted)
+│  │  │  ├─ 31e72cf306c8e685e1dde00a81e3648a3b95d4
+│  │  │  ├─ 665c4636d86b3fbdeb7972db2548564eff9474
+│  │  │  ├─ 7ab67c28e7b8aaea4ff10180d6db6e3074d212
+│  │  │  ├─ 899529a8f0109b5b209b6c35afcb548d821cf5
+│  │  │  └─ f33c14cccef0e134729a09ce6106d312fb654a
+│  │  ├─ 1f
+│  │  │  ├─ 164e8d24e1f6b8b4fe211e192001e06cd91093
+│  │  │  ├─ abf1215f095529ae7c523ab8efa7a77bae5cbb
+│  │  │  └─ cefdd854fbb4c2809e5a42cbb8ca4bc673bf7d
+│  │  └─ ... (178 more items omitted)
 │  ├─ refs
 │  │  ├─ heads
+│  │  │  ├─ demo
+│  │  │  │  ├─ 20260212_pva_canon
+│  │  │  │  └─ pva-method-canon
+│  │  │  ├─ feature
+│  │  │  │  ├─ ee-coverage-rl
+│  │  │  │  └─ evidence-spans-v1
 │  │  │  └─ main
 │  │  ├─ remotes
 │  │  │  └─ origin
+│  │  │     ├─ demo
+│  │  │     │  └─ 20260212_pva_canon
+│  │  │     ├─ feature
+│  │  │     │  ├─ ee-coverage-rl
+│  │  │     │  └─ evidence-spans-v1
 │  │  │     ├─ HEAD
 │  │  │     └─ main
 │  │  └─ tags
@@ -117,6 +179,7 @@ RL-Agent-Extraction-PLGANPs/
 │  │  └─ site-packages
 │  │     ├─ __pycache__
 │  │     │  ├─ google_auth_httplib2.cpython-313.pyc
+│  │     │  ├─ pylab.cpython-313.pyc
 │  │     │  ├─ sgmllib.cpython-313.pyc
 │  │     │  ├─ six.cpython-313.pyc
 │  │     │  └─ typing_extensions.cpython-313.pyc
@@ -761,40 +824,55 @@ RL-Agent-Extraction-PLGANPs/
 │  │     │  ├─ METADATA
 │  │     │  ├─ RECORD
 │  │     │  └─ WHEEL
-│  │     ├─ courlan
+│  │     ├─ contourpy
 │  │     │  ├─ __pycache__
 │  │     │  │  ├─ __init__.cpython-313.pyc
-│  │     │  │  ├─ clean.cpython-313.pyc
-│  │     │  │  ├─ cli.cpython-313.pyc
-│  │     │  │  ├─ core.cpython-313.pyc
-│  │     │  │  ├─ filters.cpython-313.pyc
-│  │     │  │  ├─ meta.cpython-313.pyc
-│  │     │  │  ├─ network.cpython-313.pyc
-│  │     │  │  ├─ sampling.cpython-313.pyc
-│  │     │  │  ├─ settings.cpython-313.pyc
-│  │     │  │  ├─ urlstore.cpython-313.pyc
-│  │     │  │  └─ urlutils.cpython-313.pyc
+│  │     │  │  ├─ _version.cpython-313.pyc
+│  │     │  │  ├─ array.cpython-313.pyc
+│  │     │  │  ├─ chunk.cpython-313.pyc
+│  │     │  │  ├─ convert.cpython-313.pyc
+│  │     │  │  ├─ dechunk.cpython-313.pyc
+│  │     │  │  ├─ enum_util.cpython-313.pyc
+│  │     │  │  ├─ typecheck.cpython-313.pyc
+│  │     │  │  └─ types.cpython-313.pyc
+│  │     │  ├─ util
+│  │     │  │  ├─ __pycache__
+│  │     │  │  │  ├─ __init__.cpython-313.pyc
+│  │     │  │  │  ├─ _build_config.cpython-313.pyc
+│  │     │  │  │  ├─ bokeh_renderer.cpython-313.pyc
+│  │     │  │  │  ├─ bokeh_util.cpython-313.pyc
+│  │     │  │  │  ├─ data.cpython-313.pyc
+│  │     │  │  │  ├─ mpl_renderer.cpython-313.pyc
+│  │     │  │  │  ├─ mpl_util.cpython-313.pyc
+│  │     │  │  │  └─ renderer.cpython-313.pyc
+│  │     │  │  ├─ __init__.py
+│  │     │  │  ├─ _build_config.py
+│  │     │  │  ├─ bokeh_renderer.py
+│  │     │  │  ├─ bokeh_util.py
+│  │     │  │  ├─ data.py
+│  │     │  │  ├─ mpl_renderer.py
+│  │     │  │  ├─ mpl_util.py
+│  │     │  │  └─ renderer.py
 │  │     │  ├─ __init__.py
-│  │     │  ├─ clean.py
-│  │     │  ├─ cli.py
-│  │     │  ├─ core.py
-│  │     │  ├─ filters.py
-│  │     │  ├─ meta.py
-│  │     │  ├─ network.py
+│  │     │  ├─ _contourpy.cp313-win_amd64.lib
+│  │     │  ├─ _contourpy.cp313-win_amd64.pyd
+│  │     │  ├─ _contourpy.pyi
+│  │     │  ├─ _version.py
+│  │     │  ├─ array.py
+│  │     │  ├─ chunk.py
+│  │     │  ├─ convert.py
+│  │     │  ├─ dechunk.py
+│  │     │  ├─ enum_util.py
 │  │     │  ├─ py.typed
-│  │     │  ├─ sampling.py
-│  │     │  ├─ settings.py
-│  │     │  ├─ urlstore.py
-│  │     │  └─ urlutils.py
-│  │     ├─ courlan-1.3.2.dist-info
-│  │     │  ├─ entry_points.txt
+│  │     │  ├─ typecheck.py
+│  │     │  └─ types.py
+│  │     ├─ contourpy-1.3.3.dist-info
 │  │     │  ├─ INSTALLER
 │  │     │  ├─ LICENSE
 │  │     │  ├─ METADATA
 │  │     │  ├─ RECORD
-│  │     │  ├─ top_level.txt
 │  │     │  └─ WHEEL
-│  │     └─ ... (135 more items omitted)
+│  │     └─ ... (149 more items omitted)
 │  ├─ Scripts
 │  │  ├─ __pycache__
 │  │  │  ├─ dumppdf.cpython-313.pyc
@@ -812,6 +890,7 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ dotenv.exe
 │  │  ├─ dumppdf.py
 │  │  ├─ f2py.exe
+│  │  ├─ fonttools.exe
 │  │  ├─ htmldate.exe
 │  │  ├─ httpx.exe
 │  │  ├─ normalizer.exe
@@ -821,14 +900,17 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ pip3.13.exe
 │  │  ├─ pip3.exe
 │  │  ├─ pybabel.exe
+│  │  ├─ pyftmerge.exe
+│  │  ├─ pyftsubset.exe
 │  │  ├─ pymupdf.exe
 │  │  ├─ pypdfium2.exe
 │  │  ├─ pyrsa-decrypt.exe
 │  │  ├─ pyrsa-encrypt.exe
-│  │  ├─ pyrsa-keygen.exe
-│  │  ├─ pyrsa-priv2pub.exe
-│  │  ├─ pyrsa-sign.exe
-│  │  └─ ... (9 more items omitted)
+│  │  └─ ... (13 more items omitted)
+│  ├─ share
+│  │  └─ man
+│  │     └─ man1
+│  │        └─ ttx.1
 │  ├─ .gitignore
 │  └─ pyvenv.cfg
 ├─ .vscode
@@ -839,7 +921,113 @@ RL-Agent-Extraction-PLGANPs/
 ├─ configs
 │  └─ README_runs.md
 ├─ data
+│  ├─ benchmark
+│  │  └─ goren_2025
+│  │     ├─ overlap_eval
+│  │     │  ├─ doi_debug
+│  │     │  │  ├─ doi_overlap_report.txt
+│  │     │  │  ├─ goren_doi_samples.tsv
+│  │     │  │  └─ our_doi_samples.tsv
+│  │     │  ├─ goren_overlap_manifest
+│  │     │  │  ├─ attachment_local_check__goren_2025.tsv
+│  │     │  │  ├─ benchmark_keys.jsonl
+│  │     │  │  ├─ coverage_report.txt
+│  │     │  │  ├─ manifest_overlap.tsv
+│  │     │  │  └─ overlap_dois.tsv
+│  │     │  ├─ field_metrics.tsv
+│  │     │  ├─ matched_pairs.tsv
+│  │     │  ├─ mismatches.tsv
+│  │     │  ├─ overlap_summary.json
+│  │     │  └─ unmatched.tsv
+│  │     ├─ overlap_goren18_v1
+│  │     │  ├─ audit_top3_v1
+│  │     │  │  ├─ audit_10_1016_j_ejpb_2004_09_002.tsv
+│  │     │  │  ├─ audit_10_1039_c5ra27386b.tsv
+│  │     │  │  ├─ audit_10_1089_jamp_2009_0759.tsv
+│  │     │  │  ├─ audit_top3_hypotheses.tsv
+│  │     │  │  └─ audit_top3_summary.tsv
+│  │     │  ├─ dedup_ee_v1
+│  │     │  │  ├─ dedup_impact_summary.tsv
+│  │     │  │  ├─ doi_level_ee_scaffold__dedup.tsv
+│  │     │  │  └─ extracted_ee_dedup_rows.tsv
+│  │     │  ├─ diagnostics_v1
+│  │     │  │  ├─ audit_queue_by_recall_v1.tsv
+│  │     │  │  ├─ diagnostic_rollup_v1.tsv
+│  │     │  │  ├─ diagnostics_build_log.json
+│  │     │  │  └─ per_doi_diagnostic_v1.tsv
+│  │     │  ├─ diagnostics_v2_failure_profile
+│  │     │  │  ├─ diagnostics_build_log.json
+│  │     │  │  ├─ low_recall_action_cards.tsv
+│  │     │  │  ├─ per_doi_alignment_failure_fields.tsv
+│  │     │  │  ├─ per_doi_extracted_conflicts.tsv
+│  │     │  │  ├─ per_doi_extracted_missingness.tsv
+│  │     │  │  └─ per_doi_failure_type.tsv
+│  │     │  ├─ diagnostics_v3_drugname
+│  │     │  │  ├─ drugname_build_log.json
+│  │     │  │  ├─ per_doi_drugname_problem_cases.tsv
+│  │     │  │  └─ per_doi_drugname_sets.tsv
+│  │     │  ├─ formulation_group_v1
+│  │     │  │  ├─ alignment_sensitivity.tsv
+│  │     │  │  ├─ doi_level_ee_scaffold__formulation_grouped.tsv
+│  │     │  │  ├─ doi_level_set_match.tsv
+│  │     │  │  ├─ extracted_formulation_level_v1.tsv
+│  │     │  │  ├─ formulation_alignment.tsv
+│  │     │  │  ├─ formulation_alignment_summary.tsv
+│  │     │  │  ├─ formulation_group_impact_summary.tsv
+│  │     │  │  ├─ per_doi_recall.tsv
+│  │     │  │  └─ set_match_summary.tsv
+│  │     │  ├─ formulation_group_v2_corefields
+│  │     │  │  ├─ doi_level_ee_scaffold__formulation_grouped.tsv
+│  │     │  │  ├─ extracted_formulation_level_v1.tsv
+│  │     │  │  ├─ formulation_alignment.tsv
+│  │     │  │  ├─ formulation_alignment_summary.tsv
+│  │     │  │  ├─ formulation_group_impact_summary.tsv
+│  │     │  │  └─ per_doi_recall.tsv
+│  │     │  ├─ formulation_group_v3_surfactant_drugnorm
+│  │     │  │  ├─ build_log.json
+│  │     │  │  ├─ extracted_formulation_level_v3.tsv
+│  │     │  │  ├─ formulation_alignment_summary_v3.tsv
+│  │     │  │  ├─ formulation_alignment_v3.tsv
+│  │     │  │  ├─ low_recall_action_cards_v3.tsv
+│  │     │  │  ├─ per_doi_failure_type_v3.tsv
+│  │     │  │  └─ per_doi_recall_v3.tsv
+│  │     │  ├─ global_inherit_v1
+│  │     │  │  ├─ extracted_formulation_level__global_inherit_v1.tsv
+│  │     │  │  ├─ formulation_alignment__global_inherit_v1.tsv
+│  │     │  │  ├─ formulation_alignment_summary__global_inherit_v1.tsv
+│  │     │  │  ├─ global_baseline_per_doi.tsv
+│  │     │  │  ├─ global_inherit_coverage.tsv
+│  │     │  │  ├─ inheritance_build_log.json
+│  │     │  │  └─ per_doi_recall__global_inherit_v1.tsv
+│  │     │  ├─ metrics_tables_v1
+│  │     │  │  ├─ metrics_build_log.json
+│  │     │  │  ├─ table1_structure_coverage.tsv
+│  │     │  │  ├─ table2_ee_agreement.tsv
+│  │     │  │  ├─ table3_error_distribution.tsv
+│  │     │  │  └─ top_doi_for_audit.tsv
+│  │     │  ├─ precision_recovery_v1
+│  │     │  │  ├─ build_log.json
+│  │     │  │  ├─ diagnostics_row_completeness.tsv
+│  │     │  │  ├─ extracted_best_filter_consolidated.tsv
+│  │     │  │  └─ precision_recovery_sweep.tsv
+│  │     │  ├─ agreement_summary.json
+│  │     │  ├─ audit_priority__doi.tsv
+│  │     │  ├─ build_log.json
+│  │     │  ├─ coverage_report.json
+│  │     │  ├─ doi_level_ee_scaffold.tsv
+│  │     │  ├─ goren18_curated_overlap_subset.tsv
+│  │     │  └─ rows_per_doi.tsv
+│  │     ├─ rules
+│  │     │  ├─ derivation_rule_registry.v1.json
+│  │     │  ├─ formulation_core_signature_ruleset.v2.json
+│  │     │  └─ projection_ruleset.v1.json
+│  │     ├─ goren_58_dois.txt
+│  │     ├─ NP_dataset_formulations.csv
+│  │     └─ schema_report__weak_labels.txt
 │  ├─ cleaned
+│  │  ├─ analysis
+│  │  │  ├─ ee_coverage_summary.tsv
+│  │  │  └─ ee_hits_per_doc.tsv
 │  │  ├─ content
 │  │  │  ├─ legacy
 │  │  │  │  └─ text_html10
@@ -950,6 +1138,29 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  │  ├─ 2DXWXRD3.pdf.txt
 │  │  │  │  └─ ... (751 more items omitted)
 │  │  │  └─ key2txt.tsv
+│  │  ├─ content_goren_2025
+│  │  │  ├─ sections
+│  │  │  ├─ tables
+│  │  │  ├─ text
+│  │  │  │  ├─ 5GIF3D8W.pdf.txt
+│  │  │  │  ├─ 5ZXYABSU.pdf.txt
+│  │  │  │  ├─ 7ZS858NS.pdf.txt
+│  │  │  │  ├─ BB3JUVW7.html.txt
+│  │  │  │  ├─ BXCV5XWB.html.txt
+│  │  │  │  ├─ INMUTV7L.pdf.txt
+│  │  │  │  ├─ KBW3XWTT.pdf.txt
+│  │  │  │  ├─ L3H2RS2H.pdf.txt
+│  │  │  │  ├─ PA3SPZ28.pdf.txt
+│  │  │  │  ├─ QLYKLPKT.pdf.txt
+│  │  │  │  ├─ RHMJWZX8.pdf.txt
+│  │  │  │  ├─ UFXX9WXE.pdf.txt
+│  │  │  │  ├─ V99GKZEI.html.txt
+│  │  │  │  ├─ VHSU9G7W.pdf.txt
+│  │  │  │  ├─ WFDTQ4VX.pdf.txt
+│  │  │  │  ├─ WIVUCMYG.html.txt
+│  │  │  │  ├─ XVWN2PDB.pdf.txt
+│  │  │  │  └─ YGA8VQKU.html.txt
+│  │  │  └─ key2txt.tsv
 │  │  ├─ debug
 │  │  │  ├─ logs
 │  │  │  │  ├─ raw_llm_v4
@@ -994,99 +1205,58 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ 1-s2.0-S0939641107000987-main.raw_pages.txt
 │  │  │  ├─ 1-s2.0-S0939641107000987-main.sections.keep.txt
 │  │  │  └─ ... (1126 more items omitted)
+│  │  ├─ figures
+│  │  │  ├─ figure2
+│  │  │  │  ├─ fig2_parse_quality.opju
+│  │  │  │  ├─ fig2_text_length.opju
+│  │  │  │  ├─ Figure2.pdf
+│  │  │  │  ├─ Figure2_raw_tables.xlsx
+│  │  │  │  ├─ panelA_source_category__retrieval_pool.tsv
+│  │  │  │  ├─ panelA_source_type__sample.tsv
+│  │  │  │  ├─ panelB_text_length.tsv
+│  │  │  │  ├─ panelC_parse_quality.tsv
+│  │  │  │  └─ sample_heterogeneity__per_paper.tsv
+│  │  │  └─ figure3
+│  │  │     ├─ fig3_gt_decision_distribution.opju
+│  │  │     ├─ fig3_gt_decision_distribution.pdf
+│  │  │     ├─ fig3_gt_decision_distribution.png
+│  │  │     ├─ fig3_gt_decision_distribution.tsv
+│  │  │     └─ fig3_gt_decision_distribution.xlsx
 │  │  ├─ index
 │  │  │  ├─ legacy
 │  │  │  │  ├─ key2txt_20251024.tsv
 │  │  │  │  ├─ key2txt_html10.tsv
 │  │  │  │  └─ manifest_html10_bad.tsv
 │  │  │  ├─ key2txt.tsv
+│  │  │  ├─ key2txt_goren_2025.tsv
 │  │  │  ├─ manifest_current.tsv
-│  │  │  └─ README.md
+│  │  │  ├─ manifest_goren_2025.tsv
+│  │  │  ├─ README.md
+│  │  │  └─ strata_tags.tsv
 │  │  ├─ labels
-│  │  │  ├─ manual
-│  │  │  │  ├─ manual_labels_v2.csv
-│  │  │  │  ├─ manual_labels_v3.tsv
-│  │  │  │  └─ manual_labels_v4.tsv
-│  │  │  └─ weak
-│  │  │     ├─ weak_labels_v2
-│  │  │     │  ├─ 6AT9RFVD.json
-│  │  │     │  ├─ 7APXCSSU.json
-│  │  │     │  ├─ 7IG3TLJ6.json
-│  │  │     │  ├─ 7QPZUKXY.json
-│  │  │     │  ├─ 8VHW6PYV.json
-│  │  │     │  ├─ A6Q63VV6.json
-│  │  │     │  ├─ B37LZXHL.json
-│  │  │     │  ├─ CJVUF8PR.json
-│  │  │     │  ├─ DUL53PJ7.json
-│  │  │     │  ├─ EHABVGGA.json
-│  │  │     │  ├─ HA8A6XKC.json
-│  │  │     │  ├─ JZ6ASZ3I.json
-│  │  │     │  ├─ KD7KM2VI.json
-│  │  │     │  ├─ KDWBWUH5.json
-│  │  │     │  ├─ L3E9PCFA.json
-│  │  │     │  ├─ MGSXYHKJ.json
-│  │  │     │  ├─ MMQT2RH3.json
-│  │  │     │  ├─ N4228A23.json
-│  │  │     │  ├─ NWX6NWQC.json
-│  │  │     │  ├─ QKZXTMTB.json
-│  │  │     │  ├─ RZUXD9J4.json
-│  │  │     │  ├─ SK8R6LEF.json
-│  │  │     │  ├─ SRM797KY.json
-│  │  │     │  ├─ UTRSZCFV.json
-│  │  │     │  ├─ Y4J8FBZ3.json
-│  │  │     │  └─ ZYNCDWLL.json
-│  │  │     ├─ weak_labels_v3
-│  │  │     │  ├─ 5838N7KH.json
-│  │  │     │  ├─ 6AT9RFVD.json
-│  │  │     │  ├─ 782JNNJL.json
-│  │  │     │  ├─ 7APXCSSU.json
-│  │  │     │  ├─ 7IG3TLJ6.json
-│  │  │     │  ├─ 7QPZUKXY.json
-│  │  │     │  ├─ 8VHW6PYV.json
-│  │  │     │  ├─ A6Q63VV6.json
-│  │  │     │  ├─ B37LZXHL.json
-│  │  │     │  ├─ CJVUF8PR.json
-│  │  │     │  ├─ DUL53PJ7.json
-│  │  │     │  ├─ EHABVGGA.json
-│  │  │     │  ├─ EU34MKDY.json
-│  │  │     │  ├─ F6V3JL7S.json
-│  │  │     │  ├─ GS456SXN.json
-│  │  │     │  ├─ HA8A6XKC.json
-│  │  │     │  ├─ JZ6ASZ3I.json
-│  │  │     │  ├─ KD7KM2VI.json
-│  │  │     │  ├─ KDWBWUH5.json
-│  │  │     │  ├─ L3E9PCFA.json
-│  │  │     │  ├─ MGSXYHKJ.json
-│  │  │     │  ├─ MMQT2RH3.json
-│  │  │     │  ├─ N4228A23.json
-│  │  │     │  ├─ NWX6NWQC.json
-│  │  │     │  ├─ QKZXTMTB.json
-│  │  │     │  ├─ R5I7HSFK.json
-│  │  │     │  ├─ RBUY36NL.json
-│  │  │     │  ├─ RZUXD9J4.json
-│  │  │     │  ├─ SK8R6LEF.json
-│  │  │     │  ├─ SRM797KY.json
-│  │  │     │  └─ ... (6 more items omitted)
-│  │  │     ├─ weak_labels_v4
-│  │  │     │  ├─ 782JNNJL.json
-│  │  │     │  ├─ CJVUF8PR.json
-│  │  │     │  ├─ GS456SXN.json
-│  │  │     │  └─ RBUY36NL.json
-│  │  │     ├─ weak_labels.tsv
-│  │  │     ├─ weak_labels.v4.expanded.tsv
-│  │  │     ├─ weak_labels.v4.jsonl
-│  │  │     ├─ weak_labels_v2.jsonl
-│  │  │     ├─ weak_labels_v2.tsv
-│  │  │     ├─ weak_labels_v3.jsonl
-│  │  │     ├─ weak_labels_v3.tsv
-│  │  │     ├─ weak_labels_v4.jsonl
-│  │  │     └─ weak_labels_v4.tsv
+│  │  │  └─ manual
+│  │  │     ├─ gt_annotation_view__run_20260201_0927_bb13267_sample20.xlsx
+│  │  │     ├─ gt_audit__run_20260218_1334_4e58c55_sample20_evidence_v2.xlsx
+│  │  │     ├─ gt_audit__run_20260218_1334_4e58c55_sample20_evidence_v2_v2.xlsx
+│  │  │     ├─ gt_field_decisions__run_20260201_0927_bb13267_sample20.tsv
+│  │  │     ├─ gt_field_decisions__run_20260201_0927_bb13267_sample20__GT.tsv
+│  │  │     ├─ gt_random50__run_20260218_1334_4e58c55_sample20_evidence_v2.xlsx
+│  │  │     ├─ verifier_audit_decisions__run_20260217_1611_6f6d9ef_sample20_evidence_v2.xlsx
+│  │  │     └─ verifier_audit_decisions__run_20260218_1334_4e58c55_sample20_evidence_v2.xlsx
 │  │  └─ samples
+│  │     ├─ ee_only_manifest.debug.tsv
+│  │     ├─ ee_only_manifest.jsonl
 │  │     ├─ sample10_for_key2txt.tsv
 │  │     ├─ sample10_htmlfirst.jsonl
 │  │     ├─ sample10_htmlfirst.tsv
 │  │     ├─ sample10_htmlfirst_for_key2txt.jsonl
-│  │     └─ sample30.jsonl
+│  │     ├─ sample1_debug.jsonl
+│  │     ├─ sample20_stratified.jsonl
+│  │     ├─ sample20_stratified.tsv
+│  │     ├─ sample30.jsonl
+│  │     ├─ sample3_debug.jsonl
+│  │     ├─ sample_goren18.jsonl
+│  │     └─ sample_goren18.tsv
 │  ├─ cleaned_backup_20260130
 │  │  ├─ content
 │  │  │  ├─ legacy
@@ -1334,10 +1504,23 @@ RL-Agent-Extraction-PLGANPs/
 │  │     ├─ sample10_htmlfirst.tsv
 │  │     ├─ sample10_htmlfirst_for_key2txt.jsonl
 │  │     └─ sample30.jsonl
+│  ├─ db
+│  │  └─ db_v1
+│  │     ├─ factors.tsv
+│  │     ├─ formulation_core.tsv
+│  │     ├─ measurements.tsv
+│  │     └─ schema_manifest.json
 │  ├─ raw
 │  │  ├─ zotero
+│  │  │  ├─ difference
+│  │  │  │  ├─ compare_relevant_vs_zotero.py
+│  │  │  │  ├─ difference_summary.txt
+│  │  │  │  ├─ missing_by_doi.txt
+│  │  │  │  └─ missing_by_key.txt
 │  │  │  ├─ last_version.txt
+│  │  │  ├─ last_version__collection__goren_2025.txt
 │  │  │  ├─ README.md
+│  │  │  ├─ zotero_collection__goren_2025.jsonl
 │  │  │  ├─ zotero_llm_relevant.jsonl
 │  │  │  └─ zotero_selected_items.jsonl
 │  │  ├─ wos_all.csv
@@ -1345,7 +1528,193 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ wos_llm_tagged.csv
 │  │  └─ wos_prefiltered.csv
 │  ├─ results
-│  │  ├─ run_20260130_0913_9436e6c_sample10
+│  │  ├─ dev18_corefields_prompt_v1
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ dev18_force_explicit
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ dev18_surfactant_schema_v1
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260201_0927_bb13267_sample20
+│  │  │  ├─ demo_rules
+│  │  │  │  ├─ canon_unknown_values.tsv
+│  │  │  │  ├─ formulations_consensus_weak__canon_demo.tsv
+│  │  │  │  ├─ pva_vs_size__counts.tsv
+│  │  │  │  ├─ pva_vs_size__counts__2way.tsv
+│  │  │  │  ├─ pva_vs_size__overall_bins.tsv
+│  │  │  │  ├─ pva_vs_size__plot.pdf
+│  │  │  │  ├─ pva_vs_size__stratified__2way.tsv
+│  │  │  │  ├─ pva_vs_size__stratified__2way__topK.tsv
+│  │  │  │  ├─ pva_vs_size__stratified__2way_pairwise.tsv
+│  │  │  │  ├─ pva_vs_size__stratified__3way.tsv
+│  │  │  │  └─ pva_vs_size__stratified__3way__topK.tsv
+│  │  │  ├─ field_level_qc_summary.tsv
+│  │  │  ├─ formulations_conflict_queue.tsv
+│  │  │  ├─ formulations_consensus_weak.tsv
+│  │  │  ├─ gt_summary__run_20260201_0927_bb13267_sample20.tsv
+│  │  │  ├─ gt_summary_by_field__run_20260201_0927_bb13267_sample20.tsv
+│  │  │  ├─ meta.json
+│  │  │  ├─ RUN.md
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  ├─ weak_labels__gemini.tsv
+│  │  │  ├─ weak_labels__gemini_gemma.tsv
+│  │  │  ├─ weak_labels__gemma.jsonl
+│  │  │  └─ weak_labels__gemma.tsv
+│  │  ├─ run_20260216_1136_a7033ca_EEsample20
+│  │  ├─ run_20260216_1611_6f6d9ef_sample20_evidence_v1
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260217_1003_6f6d9ef_sample1_evidence_v2
+│  │  │  ├─ verifier_conflicts_v1.tsv
+│  │  │  ├─ verifier_gates_v1.jsonl
+│  │  │  ├─ verifier_requests_v1.jsonl
+│  │  │  ├─ verifier_summary_v1.tsv
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  ├─ weak_labels__gemini.tsv
+│  │  │  └─ weak_labels__gemini__verified.tsv
+│  │  ├─ run_20260217_1003_6f6d9ef_sample3_evidence_v2
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260217_1611_6f6d9ef_sample20_evidence_v2
+│  │  │  ├─ conflict_queue__hybrid_v1__flash_lite.tsv
+│  │  │  ├─ conflict_queue__hybrid_v1__gemma-3-12b-it.tsv
+│  │  │  ├─ verified__hybrid_v1__flash_lite.tsv
+│  │  │  ├─ verified__hybrid_v1__gemma-3-12b-it.tsv
+│  │  │  ├─ verifier_requests__hybrid_v1.jsonl
+│  │  │  ├─ verifier_responses__hybrid_v1__flash_lite.jsonl
+│  │  │  ├─ verifier_responses__hybrid_v1__gemma-3-12b-it.jsonl
+│  │  │  ├─ verifier_rule_gates__hybrid_v1.jsonl
+│  │  │  ├─ verifier_summary__hybrid_v1.tsv
+│  │  │  ├─ verifier_summary__hybrid_v1__flash_lite.tsv
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260218_1334_4e58c55_sample20_evidence_v2
+│  │  │  ├─ compare_verifier_summary__old_vs_new.tsv
+│  │  │  ├─ conflict_queue__hybrid_v1__flash_lite.tsv
+│  │  │  ├─ verified__hybrid_v1__flash_lite.tsv
+│  │  │  ├─ verifier_requests__hybrid_v1.jsonl
+│  │  │  ├─ verifier_responses__hybrid_v1__flash_lite.jsonl
+│  │  │  ├─ verifier_rule_gates__hybrid_v1.jsonl
+│  │  │  ├─ verifier_summary__hybrid_v1__flash_lite.tsv
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260219_1623_780eb83_goren18_weaklabels_v1
+│  │  │  ├─ benchmark_goren_2025
+│  │  │  │  ├─ alignment_eval_v3_v1
+│  │  │  │  │  ├─ schema_v2
+│  │  │  │  │  │  ├─ alignment_rows.tsv
+│  │  │  │  │  │  ├─ failure_types.tsv
+│  │  │  │  │  │  ├─ metrics_summary.json
+│  │  │  │  │  │  ├─ projected_to_curated__schema_v2.tsv
+│  │  │  │  │  │  └─ projection_trace__schema_v2.tsv
+│  │  │  │  │  ├─ schema_v3
+│  │  │  │  │  │  ├─ alignment_rows.tsv
+│  │  │  │  │  │  ├─ failure_types.tsv
+│  │  │  │  │  │  ├─ metrics_summary.json
+│  │  │  │  │  │  ├─ projected_to_curated__schema_v3.tsv
+│  │  │  │  │  │  └─ projection_trace__schema_v3.tsv
+│  │  │  │  │  ├─ _post_rerun_metrics_comparison.json
+│  │  │  │  │  ├─ _pre_rerun_metrics_snapshot.json
+│  │  │  │  │  ├─ metrics_summary.json
+│  │  │  │  │  ├─ metrics_summary.tsv
+│  │  │  │  │  ├─ per_doi_metrics.tsv
+│  │  │  │  │  ├─ per_doi_metrics_doe_enabled.tsv
+│  │  │  │  │  ├─ schema_v2__alignment_rows.tsv
+│  │  │  │  │  ├─ schema_v2__failure_types.tsv
+│  │  │  │  │  ├─ schema_v2__metrics_summary.json
+│  │  │  │  │  ├─ schema_v2_vs_v3_metrics_comparison.tsv
+│  │  │  │  │  ├─ schema_v3__alignment_rows.tsv
+│  │  │  │  │  ├─ schema_v3__failure_types.tsv
+│  │  │  │  │  └─ schema_v3__metrics_summary.json
+│  │  │  │  ├─ core_eval_v1
+│  │  │  │  │  ├─ alignment_rows.tsv
+│  │  │  │  │  ├─ core_alignment_rows.tsv
+│  │  │  │  │  ├─ core_failure_types.tsv
+│  │  │  │  │  ├─ core_metrics_summary.json
+│  │  │  │  │  ├─ core_projected_to_curated.tsv
+│  │  │  │  │  ├─ core_projection_trace.tsv
+│  │  │  │  │  ├─ core_row_membership_analysis.xlsx
+│  │  │  │  │  ├─ core_row_membership_rows.tsv
+│  │  │  │  │  ├─ core_row_membership_summary.json
+│  │  │  │  │  ├─ failure_types.tsv
+│  │  │  │  │  └─ metrics_summary.json
+│  │  │  │  ├─ derivation_v1
+│  │  │  │  │  ├─ doe_decode_diagnostics.tsv
+│  │  │  │  │  ├─ doe_dimension_report.tsv
+│  │  │  │  │  ├─ doe_factor_rows.tsv
+│  │  │  │  │  ├─ evidence_token_qc_checks.tsv
+│  │  │  │  │  ├─ evidence_token_qc_checks__realigned.tsv
+│  │  │  │  │  ├─ flagged_rows_for_review.tsv
+│  │  │  │  │  ├─ qc_report.tsv
+│  │  │  │  │  ├─ source_tableblock_coverage.tsv
+│  │  │  │  │  └─ weak_labels__gemini_high_confidence.tsv
+│  │  │  │  ├─ schema_v1
+│  │  │  │  │  ├─ core_assignment_trace.tsv
+│  │  │  │  │  ├─ formulation_core.tsv
+│  │  │  │  │  └─ measurements.tsv
+│  │  │  │  ├─ schema_v2
+│  │  │  │  │  ├─ core_assignment_trace.tsv
+│  │  │  │  │  ├─ formulation_core.tsv
+│  │  │  │  │  └─ measurements.tsv
+│  │  │  │  ├─ schema_v3
+│  │  │  │  │  ├─ core_assignment_trace.tsv
+│  │  │  │  │  ├─ doe_enabled_audit_pack.tsv
+│  │  │  │  │  ├─ doe_signature_trace__10_1002_jps_24101.tsv
+│  │  │  │  │  ├─ doe_signature_trace__10_1016_j_colsurfb_2009_03_028.tsv
+│  │  │  │  │  ├─ formulation_core.tsv
+│  │  │  │  │  ├─ measurements.tsv
+│  │  │  │  │  ├─ schema_v2_vs_v3_core_counts.tsv
+│  │  │  │  │  └─ schema_v3_summary.json
+│  │  │  │  ├─ alignment_rows.tsv
+│  │  │  │  ├─ audit_parsing_derivation_checklist.md
+│  │  │  │  ├─ audit_parsing_derivation_samples.tsv
+│  │  │  │  ├─ audit_parsing_derivation_samples.xlsx
+│  │  │  │  ├─ audit_parsing_derivation_sanity.json
+│  │  │  │  ├─ derivation_summary.json
+│  │  │  │  ├─ derived_values.tsv
+│  │  │  │  ├─ failure_types.tsv
+│  │  │  │  ├─ metrics_summary.json
+│  │  │  │  ├─ projected_to_curated.tsv
+│  │  │  │  ├─ projection_summary.json
+│  │  │  │  ├─ projection_trace.tsv
+│  │  │  │  ├─ row_membership_analysis.xlsx
+│  │  │  │  ├─ row_membership_rows.tsv
+│  │  │  │  └─ row_membership_summary.json
+│  │  │  ├─ debug
+│  │  │  │  ├─ benchmark18_manual_debug_matrix.xlsx
+│  │  │  │  ├─ confidence_tiers__formulation_level__step2_before_legacy.tsv
+│  │  │  │  ├─ ee_support_debug__WFDTQ4VX__after_table_block.tsv
+│  │  │  │  ├─ ee_support_debug__WFDTQ4VX__before_legacy.tsv
+│  │  │  │  ├─ ee_support_debug__WIVUCMYG__after_table_block.tsv
+│  │  │  │  ├─ ee_support_debug__WIVUCMYG__before_legacy.tsv
+│  │  │  │  ├─ evidence_token_qc_checks__step2_before_legacy.tsv
+│  │  │  │  ├─ per_doc_layer_counts__after_step2.tsv
+│  │  │  │  ├─ schema_v2_explicit_id_regression__UFXX9WXE.tsv
+│  │  │  │  ├─ step2_ee_fail_reason_distribution__before_after.tsv
+│  │  │  │  └─ step2_ee_support_summary__before_after.tsv
+│  │  │  ├─ benchmark18_debug_matrix.xlsx
+│  │  │  ├─ benchmark18_status_key_metrics.tsv
+│  │  │  ├─ confidence_tiers__formulation_level.tsv
+│  │  │  ├─ debug_overlap_ee_loading_polymer.tsv
+│  │  │  ├─ ee_branch_current_stats.tsv
+│  │  │  ├─ ee_branch_current_stats__realigned.tsv
+│  │  │  ├─ ee_branch_feature_group_stats_multispan.tsv
+│  │  │  ├─ ee_modeling_projection_prep_summary.tsv
+│  │  │  ├─ evidence_realign_log.tsv
+│  │  │  ├─ modeling_ready_on_merged_instances.tsv
+│  │  │  ├─ qc_field_evidence_gate_summary.tsv
+│  │  │  ├─ qc_field_evidence_gate_summary__realigned.tsv
+│  │  │  ├─ qc_gate_delta_summary.tsv
+│  │  │  ├─ qc_manual_failure_classification.tsv
+│  │  │  ├─ qc_manual_review.xlsx
+│  │  │  ├─ risk_flags__shared_spans.tsv
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260220_1413_a509fc2_dev18_force_default_weaklabels_v1
+│  │  │  ├─ weak_labels__gemini.jsonl
+│  │  │  └─ weak_labels__gemini.tsv
 │  │  ├─ extract_tier1_multi_model.jsonl
 │  │  ├─ extract_tier1_multi_model.tsv
 │  │  ├─ formulations_multi_model.jsonl
@@ -1353,10 +1722,28 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ formulations_tier2_merged_v2.tsv
 │  │  ├─ formulations_tier2_merged_v2_qc.tsv
 │  │  ├─ formulations_tier2_multi_model.jsonl
-│  │  └─ formulations_tier2_multi_model.tsv
+│  │  ├─ formulations_tier2_multi_model.tsv
+│  │  ├─ run_sample20_weak_labels_v5.tsv
+│  │  └─ run_sample20_weak_labels_v5_G3.tsv
 │  ├─ samples
 │  └─ annotation_cheatsheet.md
 ├─ docs
+│  ├─ benchmarks
+│  │  └─ benchmark_goren_2025_engineering_spec.md
+│  ├─ ee_coverage_rl
+│  │  ├─ ee_coverage_rl__benchmark18_status.md
+│  │  ├─ ee_coverage_rl__core_modeling_summary__run_20260219_1623_780eb83.md
+│  │  ├─ ee_coverage_rl__modeling_ready_diagnosis__run_20260219_1623_780eb83.md
+│  │  ├─ ee_coverage_rl__run_20260219_1623_780eb83__metrics_summary.md
+│  │  ├─ evidence_alignment_instancekey_inheritance_debug.md
+│  │  ├─ README.md
+│  │  ├─ regression_diagnosis__benchmark18_table_rich.md
+│  │  └─ step2_ee_table_support_regression.md
+│  ├─ methods
+│  │  └─ evidence_alignment_hardening_plan.md
+│  ├─ snapshots
+│  │  └─ snapshot_2026-02-20_goren_dev18_eval_and_opt.md
+│  └─ tool_index.md
 ├─ project
 │  ├─ 0_PROJECT_CHARTER.md
 │  ├─ 1_REQUIREMENTS.md
@@ -1364,10 +1751,19 @@ RL-Agent-Extraction-PLGANPs/
 │  ├─ 3_STATE_MACHINE.md
 │  ├─ 4_DECISIONS_LOG.md
 │  ├─ 5_PARKING_LOT.md
+│  ├─ FEATURE_EE_COVERAGE_RL_SCOPE.md
 │  ├─ FILE_NAMING_AND_VERSIONING.md
-│  └─ PIPELINE_SCRIPT_MAP.md
+│  ├─ PIPELINE_SCRIPT_MAP.md
+│  ├─ project_specification_UPDATED_20260130_v5.txt
+│  ├─ project_specification_UPDATED_20260131_v6.txt
+│  ├─ project_specification_UPDATED_20260201_v7.txt
+│  ├─ TSV_SPEC__consensus_weak_labels_v1.md
+│  └─ TSV_SPEC__gt_field_decisions_v1.md
 ├─ runs
 │  ├─ run_20260130_0913_9436e6c_sample10
+│  │  ├─ meta.json
+│  │  └─ RUN.md
+│  ├─ run_20260201_0927_bb13267_sample20
 │  │  ├─ meta.json
 │  │  └─ RUN.md
 │  ├─ BASELINE_RUN_CHECKLIST.md
@@ -1376,10 +1772,19 @@ RL-Agent-Extraction-PLGANPs/
 │  └─ RUN_TEMPLATE.md
 ├─ src
 │  ├─ legacy
-│  │  └─ 20260130
-│  │     ├─ csv2clean_manifest.py
-│  │     └─ pdf2clean.py
+│  │  ├─ 20260130
+│  │  │  ├─ csv2clean_manifest.py
+│  │  │  ├─ pdf2clean.py
+│  │  │  └─ zotero_csv_to_manifest_tsv.py
+│  │  ├─ 20260131
+│  │  │  ├─ clean_manifest_to_text.py
+│  │  │  └─ sample_from_manifest_html_first.py
+│  │  └─ 20260202
+│  │     ├─ gt_tool.py
+│  │     └─ gt_tool_v3.py
 │  ├─ stage0_relevance
+│  │  ├─ __pycache__
+│  │  │  └─ zotero_api_sync_selected.cpython-313.pyc
 │  │  ├─ auto_tag_plga_gemini.py
 │  │  ├─ auto_tag_plga_openai.py
 │  │  ├─ classify_gemini_grouped.py
@@ -1390,42 +1795,110 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ zotero_llm_relevant_interactive.py
 │  │  └─ zotero_tag_sync.py
 │  ├─ stage1_cleaning
+│  │  ├─ __pycache__
+│  │  │  └─ clean_manifest_to_text.cpython-313.pyc
 │  │  ├─ clean_manifest_to_text.py
 │  │  ├─ pdf2clean.py
-│  │  ├─ zotero_csv_to_manifest_tsv.py
 │  │  └─ zotero_raw_to_manifest.py
 │  ├─ stage2_sampling_labels
+│  │  ├─ __pycache__
+│  │  │  └─ auto_extract_weak_labels_v6.cpython-313.pyc
 │  │  ├─ auto_extract_weak_labels.py
 │  │  ├─ auto_extract_weak_labels_v3.py
 │  │  ├─ auto_extract_weak_labels_v4.py
+│  │  ├─ auto_extract_weak_labels_v5.py
+│  │  ├─ auto_extract_weak_labels_v5_G3.py
+│  │  ├─ auto_extract_weak_labels_v6.py
 │  │  ├─ build_key2txt_from_sample_manifest.py
+│  │  ├─ build_strata_tags_from_text.py
+│  │  ├─ PIPELINE_SPEC_sampling_update.md
 │  │  ├─ sample10_from_zotero_manifest.py
 │  │  └─ sample_from_manifest_html_first.py
 │  ├─ stage3_gt
-│  │  ├─ gt_tool.py
-│  │  └─ gt_tool_v3.py
+│  │  ├─ build_gt_template_from_conflict_queue.py
+│  │  ├─ export_gt_annotation_view.py
+│  │  ├─ gt_summary_report.py
+│  │  └─ merge_gt_from_annotation_view.py
 │  ├─ stage4_eval
+│  │  ├─ 20260212_demo
+│  │  │  └─ __pycache__
+│  │  │     ├─ apply_demo_canonicalization.cpython-313.pyc
+│  │  │     └─ demo_rule_pva_vs_size_stratified_2way.cpython-313.pyc
+│  │  ├─ __pycache__
+│  │  │  └─ rule_demo_pva_vs_size.cpython-313.pyc
+│  │  ├─ apply_extracted_ee_dedup_v1.py
+│  │  ├─ apply_formulation_grouping_v1.py
+│  │  ├─ apply_global_baseline_inheritance_and_rerun_alignment_v1.py
+│  │  ├─ audit_top3_doi_root_cause_v1.py
 │  │  ├─ auto_extract_multimodel.py
+│  │  ├─ build_failure_profile_v1.py
+│  │  ├─ build_goren_overlap_scaffold_v1.py
+│  │  ├─ build_per_doi_diagnostics_v1.py
+│  │  ├─ compare_drugname_sets_v1.py
+│  │  ├─ compute_alignment_sensitivity_v1.py
+│  │  ├─ compute_formulation_alignment_v1.py
+│  │  ├─ compute_goren_metrics_tables_v1.py
+│  │  ├─ compute_set_level_ee_match_v1.py
+│  │  ├─ multi_model_consensus_vote.py
 │  │  ├─ multi_model_extract_tier1.py
 │  │  ├─ multi_model_extract_tier2.py
-│  │  └─ multi_model_merge_qc.py
+│  │  ├─ multi_model_merge_qc.py
+│  │  ├─ precision_recovery_experiment_v1.py
+│  │  └─ run_alignment_v3_surfactant_drugnorm.py
+│  ├─ stage5_benchmark
+│  │  ├─ __pycache__
+│  │  │  ├─ build_two_table_schema_v3.cpython-313.pyc
+│  │  │  ├─ debug_doi_overlap.cpython-313.pyc
+│  │  │  ├─ derive_doe_coded_factors_v1.cpython-313.pyc
+│  │  │  ├─ run_evidence_realign_v1.cpython-313.pyc
+│  │  │  └─ run_evidence_token_qc_v1.cpython-313.pyc
+│  │  ├─ analyze_row_membership_core_v1.py
+│  │  ├─ analyze_row_membership_v1.py
+│  │  ├─ build_goren_overlap_manifest.py
+│  │  ├─ build_two_table_schema_v1.py
+│  │  ├─ build_two_table_schema_v2.py
+│  │  ├─ build_two_table_schema_v3.py
+│  │  ├─ check_explicit_formulation_id_core_split_v2.py
+│  │  ├─ copy_goren_dataset.py
+│  │  ├─ debug_doi_overlap.py
+│  │  ├─ derive_doe_coded_factors_v1.py
+│  │  ├─ evaluate_against_goren.py
+│  │  ├─ export_audit_to_excel_v1.py
+│  │  ├─ export_full_database_v1.py
+│  │  ├─ inspect_schemas.py
+│  │  ├─ make_audit_pack_v1.py
+│  │  ├─ report_schema_v2_v3_core_diff_v1.py
+│  │  ├─ run_alignment_eval_core_v1.py
+│  │  ├─ run_alignment_eval_schema_v3_v1.py
+│  │  ├─ run_alignment_eval_v1.py
+│  │  ├─ run_core_eval_pipeline_v1.py
+│  │  ├─ run_derivation_v1.py
+│  │  ├─ run_evidence_realign_v1.py
+│  │  ├─ run_evidence_token_qc_v1.py
+│  │  ├─ run_projection_core_to_curated_v1.py
+│  │  └─ run_projection_to_curated_v1.py
 │  ├─ stage5_merge_publish
 │  │  └─ merge_results.py
 │  ├─ utils
 │  │  ├─ __pycache__
-│  │  │  └─ paths.cpython-313.pyc
+│  │  │  ├─ figure_style.cpython-313.pyc
+│  │  │  ├─ paths.cpython-313.pyc
+│  │  │  └─ run_id.cpython-313.pyc
+│  │  ├─ build_ee_only_manifest.py
 │  │  ├─ convert_sample_manifest.py
 │  │  ├─ convert_sample_manifest_to_tsv.py
+│  │  ├─ gemini_models.py
 │  │  ├─ html_parser.py
-│  │  └─ paths.py
+│  │  ├─ paths.py
+│  │  ├─ run_id.py
+│  │  ├─ scan_ee_coverage.py
+│  │  └─ test_gemini.py
 │  └─ src_README.md
 ├─ .env
 ├─ .gitignore
 ├─ LICENSE
 ├─ print_tree.py
 ├─ project_specification.txt
-├─ project_specification_UPDATED_20260130_v5.txt
 ├─ project_structure.txt
 ├─ README.md
-├─ requirements.txt
-└─ test_gemini.py
+└─ requirements.txt
