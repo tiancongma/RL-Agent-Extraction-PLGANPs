@@ -30,16 +30,16 @@ import csv
 import json
 import os
 import re
-import subprocess
 import sys
 import time
-from datetime import datetime
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 from dotenv import load_dotenv
+from src.utils.run_id import is_valid_run_id
+from src.utils.run_latest import inputs_fingerprint, write_latest
 
 # Optional Gemini dependency
 HAS_GENAI = False
@@ -623,43 +623,6 @@ def _suffix_path(p: Path, suffix: str) -> Path:
     return p.with_name(p.name + suffix)
 
 
-def get_git_short_hash() -> str:
-    try:
-        out = subprocess.check_output(
-            ["git", "rev-parse", "--short", "HEAD"],
-            stderr=subprocess.STDOUT,
-            text=True,
-        ).strip()
-        if out:
-            return out
-    except Exception:
-        pass
-    die("Failed to resolve git short hash via `git rev-parse --short HEAD`.")
-    return ""
-
-
-def sanitize_label(s: str) -> str:
-    x = re.sub(r"[^A-Za-z0-9._-]+", "_", str(s).strip())
-    return re.sub(r"_+", "_", x).strip("_")
-
-
-def build_run_id(subset_label: str, stage_label: str, version_tag: str) -> str:
-    now = datetime.now()
-    ymd = now.strftime("%Y%m%d")
-    hm = now.strftime("%H%M")
-    git_hash = get_git_short_hash()
-    subset = sanitize_label(subset_label)
-    stage = sanitize_label(stage_label)
-    ver = sanitize_label(version_tag)
-    if not subset:
-        die("subset label is empty; provide --subset-label when auto run-id is used.")
-    if not stage:
-        die("stage label is empty; provide --stage-label.")
-    if not ver:
-        die("version tag is empty; provide --version-tag.")
-    return f"run_{ymd}_{hm}_{git_hash}_{subset}_{stage}_{ver}"
-
-
 # -----------------------------
 # Main
 # -----------------------------
@@ -685,8 +648,14 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
                    help="Stage label for auto run-id generation (default: weaklabels).")
     p.add_argument("--version-tag", default="v1", required=False,
                    help="Version tag for auto run-id generation (default: v1).")
+    p.add_argument("--run-id", default="", required=False,
+                   help="Required deterministic run_id from preflight.")
+    p.add_argument("--out-subdir", default="", required=False,
+                   help="Required subdirectory under data/results/<run_id>/ for this run variant.")
     p.add_argument("--results-dir", default="data/results", required=False,
                    help="Root results directory for auto run-id output (default: data/results).")
+    p.add_argument("--note", default="", required=False,
+                   help="Optional note written to runs/latest.txt metadata.")
 
     # Model selection
     p.add_argument("--models", default=None,
@@ -705,6 +674,18 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
     p.add_argument("--verbose", action="store_true")
     return p.parse_args(argv)
+
+
+def _sanitize_out_subdir(s: str) -> str:
+    v = str(s or "").strip().replace("\\", "/")
+    if not v:
+        die("ERROR: --out-subdir is required when reusing a run_id. Use a stage/variant folder name, e.g. stage2_validation or stage5_signature_iter001.")
+    if Path(v).is_absolute():
+        die("ERROR: --out-subdir must be a relative path.")
+    parts = [p for p in v.split("/") if p]
+    if not parts or any(p == ".." for p in parts):
+        die("ERROR: --out-subdir cannot contain path traversal ('..').")
+    return "/".join(parts)
 
 
 def main(argv: Optional[List[str]] = None) -> None:
@@ -731,10 +712,29 @@ def main(argv: Optional[List[str]] = None) -> None:
     # Force run_id outputs by default unless user explicitly passed output flags on CLI.
     out_jsonl_base = Path(args.out_jsonl) if (explicit_out_jsonl and args.out_jsonl) else None
     out_tsv_base = Path(args.out_tsv) if (explicit_out_tsv and args.out_tsv) else None
+    run_id = str(args.run_id).strip()
+    if not run_id:
+        die("ERROR: --run-id is required. Generate/reuse a run_id via: python -m src.utils.run_preflight ...")
+    out_subdir = _sanitize_out_subdir(args.out_subdir)
+    if not is_valid_run_id(run_id):
+        die(f"Resolved invalid run_id: {run_id}")
+
+    run_base = Path(args.results_dir) / run_id / out_subdir
+
+    write_latest(
+        run_id=run_id,
+        meta={
+            "subset": str(args.subset_label or "subset"),
+            "stage": str(args.stage_label or "weaklabels"),
+            "inputs_fingerprint": inputs_fingerprint([sample_jsonl, key2txt_tsv]),
+            "note": str(args.note or "auto_extract_weak_labels_v6"),
+        },
+    )
+
+    print(f"[INFO] run_id={run_id}")
     auto_run_dir: Optional[Path] = None
     if not out_tsv_base and not out_jsonl_base:
-        run_id = build_run_id(args.subset_label, args.stage_label, args.version_tag)
-        auto_run_dir = Path(args.results_dir) / run_id
+        auto_run_dir = run_base
         auto_run_dir.mkdir(parents=True, exist_ok=True)
         out_tsv_base = auto_run_dir / "weak_labels__gemini.tsv"
         out_jsonl_base = auto_run_dir / "weak_labels__gemini.jsonl"
@@ -742,6 +742,16 @@ def main(argv: Optional[List[str]] = None) -> None:
         print(f"[INFO] auto_run_id={run_id}")
         print(f"[INFO] auto_run_dir={auto_run_dir}")
     else:
+        if out_tsv_base is not None:
+            try:
+                out_tsv_base.resolve().relative_to(run_base.resolve())
+            except Exception:
+                die(f"ERROR: --out-tsv must be under data/results/<run_id>/<out-subdir>/. Got: {out_tsv_base}")
+        if out_jsonl_base is not None:
+            try:
+                out_jsonl_base.resolve().relative_to(run_base.resolve())
+            except Exception:
+                die(f"ERROR: --out-jsonl must be under data/results/<run_id>/<out-subdir>/. Got: {out_jsonl_base}")
         print("[INFO] output_mode=explicit_cli")
         if out_tsv_base is not None:
             print(f"[INFO] out_tsv={out_tsv_base}")

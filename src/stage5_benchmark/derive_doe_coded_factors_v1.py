@@ -5,10 +5,14 @@ import argparse
 import json
 import re
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from src.utils import paths
+from src.utils.run_id import is_valid_run_id
+from src.utils.run_latest import inputs_fingerprint, write_latest
 
 
 DEFAULT_RUN_ID = "run_20260219_1623_780eb83_goren18_weaklabels_v1"
@@ -31,18 +35,37 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Derive DOE coded/decoded factor rows by reading original HTML/TXT source tables."
     )
-    parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
+    parser.add_argument("--run-id", default="")
     parser.add_argument("--input-tsv", default="")
     parser.add_argument("--derived-tsv", default="")
     parser.add_argument("--sample-manifest", default="data/cleaned/samples/sample_goren18.tsv")
     parser.add_argument("--key2txt", default="data/cleaned/content_goren_2025/key2txt.tsv")
     parser.add_argument("--out-dir", default="")
+    parser.add_argument(
+        "--out-subdir",
+        default="",
+        help="Required subdirectory under data/results/<run_id>/ for this run variant.",
+    )
     parser.add_argument("--max-code-abs", type=float, default=DEFAULT_MAX_CODE_ABS)
     parser.add_argument("--max-code-unique", type=int, default=DEFAULT_MAX_CODE_UNIQUE)
     parser.add_argument("--code-match-tol", type=float, default=DEFAULT_CODE_MATCH_TOL)
     parser.add_argument("--min-decoded-rate", type=float, default=DEFAULT_MIN_DECODED_RATE)
     parser.add_argument("--overwrite", action="store_true")
     return parser.parse_args()
+
+
+def _sanitize_out_subdir(s: str) -> str:
+    v = str(s or "").strip().replace("\\", "/")
+    if not v:
+        raise ValueError(
+            "ERROR: --out-subdir is required when reusing a run_id. Use a stage/variant folder name, e.g. stage2_validation or stage5_signature_iter001."
+        )
+    if Path(v).is_absolute():
+        raise ValueError("ERROR: --out-subdir must be a relative path.")
+    parts = [p for p in v.split("/") if p]
+    if not parts or any(p == ".." for p in parts):
+        raise ValueError("ERROR: --out-subdir cannot contain path traversal ('..').")
+    return "/".join(parts)
 
 
 def normalize_doi(value: Any) -> str:
@@ -133,6 +156,38 @@ def parse_factor_label(label: str) -> tuple[str, str]:
     if m:
         unit = m.group(1).strip()
     return raw, unit
+
+
+def _is_codebook_table(tbl: TableBlock) -> bool:
+    headers = [str(c) for c in tbl.header]
+    # Include first-column row labels because factor names in codebook tables
+    # are often stored as row labels instead of column headers.
+    first_col_labels = [str(r[0]) for r in tbl.rows if r and str(r[0]).strip()]
+    header_text = " ".join(headers + first_col_labels).lower()
+    return any(
+        key in header_text
+        for key in [
+            "cpf",
+            "cpva",
+            "cplga",
+            "aqueous phase ph",
+            "factor",
+        ]
+    )
+
+
+def _is_runs_table(tbl: TableBlock) -> bool:
+    headers = [str(c) for c in tbl.header]
+    header_text = " ".join(headers).lower()
+    return any(
+        key in header_text
+        for key in [
+            "entrapment efficiency",
+            "polidispersity index",
+            "zeta potential",
+            "mean size",
+        ]
+    )
 
 
 def infer_doi_map(extracted: pd.DataFrame, sample_manifest_path: Path) -> dict[str, str]:
@@ -465,6 +520,25 @@ def derive_doe_coded_factors(
     diagnostics_rows: list[dict[str, Any]] = []
     doe_rows: list[dict[str, Any]] = []
 
+    def _select_semantic_tables_for_key(
+        *,
+        key: str,
+        tables: list[TableBlock],
+    ) -> tuple[TableBlock, TableBlock]:
+        ordered = sorted(tables, key=lambda t: t.table_index)
+        codebook_tbl = next((t for t in ordered if _is_codebook_table(t)), None)
+        runs_tbl = next((t for t in ordered if _is_runs_table(t)), None)
+        seen_headers = [f"T{t.table_index}:{' | '.join([str(c) for c in t.header])}" for t in ordered]
+        if codebook_tbl is None:
+            raise ValueError(
+                f"{key}: No codebook table detected via header rules. headers_seen={seen_headers}"
+            )
+        if runs_tbl is None:
+            raise ValueError(
+                f"{key}: No runs table detected via header rules. headers_seen={seen_headers}"
+            )
+        return codebook_tbl, runs_tbl
+
     for (doi, key), key_df in ex.groupby(["doi", "key"], sort=True):
         source_used, source_path = discover_source_for_key(
             key=key,
@@ -518,40 +592,30 @@ def derive_doe_coded_factors(
             emit_diag("failed", "no_tables_detected")
             continue
 
-        codebook_tbls = [
-            t
-            for t in tables
-            if classify_codebook_table(
-                t,
-                max_code_abs=max_code_abs,
-                max_code_unique=max_code_unique,
+        try:
+            codebook_tbl, runs_tbl = _select_semantic_tables_for_key(
+                key=str(key),
+                tables=tables,
             )
-        ]
-        runs_tbls = [
-            t
-            for t in tables
-            if classify_runs_table(
-                t,
-                max_code_abs=max_code_abs,
-                max_code_unique=max_code_unique,
-            )
-        ]
-        has_codebook_table = len(codebook_tbls) > 0
-        has_runs_table = len(runs_tbls) > 0
-
-        if not runs_tbls:
-            emit_diag("failed", "no_runs_table")
+        except ValueError as e:
+            msg = str(e)
+            if "No codebook table detected" in msg:
+                has_codebook_table = False
+                has_runs_table = any(_is_runs_table(t) for t in tables)
+            elif "No runs table detected" in msg:
+                has_codebook_table = any(_is_codebook_table(t) for t in tables)
+                has_runs_table = False
+            fail_reasons.append(msg)
+            emit_diag("failed", msg)
             continue
 
-        if not codebook_tbls:
-            fail_reasons.append("missing_codebook")
+        has_codebook_table = True
+        has_runs_table = True
 
-        codebook: dict[str, dict[str, dict[str, Any]]] = {}
-        if codebook_tbls:
-            codebook = build_codebook(codebook_tbls[0])
+        codebook: dict[str, dict[str, dict[str, Any]]] = build_codebook(codebook_tbl)
 
         runs, coded_names, _ = build_runs(
-            runs_tbls[0],
+            runs_tbl,
             max_code_abs=max_code_abs,
             max_code_unique=max_code_unique,
         )
@@ -582,7 +646,7 @@ def derive_doe_coded_factors(
                 "provenance_anchor": run["provenance_anchor"],
             }
             trace_pointer = json.dumps(trace_payload, ensure_ascii=False, sort_keys=True)
-            run_id_local = f"{key}::{runs_tbls[0].table_index}::{run['row_index']}"
+            run_id_local = f"{key}::{runs_tbl.table_index}::{run['row_index']}"
 
             for factor_name, code_obj in sorted(run["assignments"].items()):
                 factor_norm = normalize_factor_name(factor_name)
@@ -858,18 +922,33 @@ def derive_doe_coded_factors(
 
 def main() -> None:
     args = parse_args()
-    run_id = args.run_id
-    input_tsv = Path(args.input_tsv) if args.input_tsv else Path(f"data/results/{run_id}/weak_labels__gemini.tsv")
+    run_id = str(args.run_id).strip()
+    if not run_id:
+        raise ValueError(
+            "ERROR: --run-id is required. Generate/reuse a run_id via: python -m src.utils.run_preflight ..."
+        )
+    if not is_valid_run_id(run_id):
+        raise ValueError(f"Invalid --run-id (must match required regex): {run_id}")
+    out_subdir = _sanitize_out_subdir(args.out_subdir)
+    base_run_dir = paths.DATA_RESULTS_DIR / run_id / out_subdir
+    input_tsv = Path(args.input_tsv) if args.input_tsv else (base_run_dir / "weak_labels__gemini.tsv")
     derived_tsv = (
         Path(args.derived_tsv)
         if args.derived_tsv
-        else Path(f"data/results/{run_id}/benchmark_goren_2025/derived_values.tsv")
+        else (base_run_dir / "benchmark_goren_2025" / "derived_values.tsv")
     )
     out_dir = (
         Path(args.out_dir)
         if args.out_dir
-        else Path(f"data/results/{run_id}/benchmark_goren_2025/derivation_v1")
+        else (base_run_dir / "benchmark_goren_2025" / "derivation_v1")
     )
+    if args.out_dir:
+        try:
+            out_dir.resolve().relative_to(base_run_dir.resolve())
+        except Exception:
+            raise ValueError(
+                f"ERROR: --out-dir must be under data/results/<run_id>/<out-subdir>/. Got: {out_dir}"
+            )
     sample_manifest = Path(args.sample_manifest)
     key2txt = Path(args.key2txt)
 
@@ -877,6 +956,17 @@ def main() -> None:
     missing = [str(p) for p in required if not p.exists()]
     if missing:
         raise FileNotFoundError(f"Missing required input file(s): {missing}")
+
+    latest_path = write_latest(
+        run_id=run_id,
+        meta={
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "subset": "goren18",
+            "stage": "derivation_v1",
+            "inputs_fingerprint": inputs_fingerprint([input_tsv, derived_tsv]),
+            "note": "derive_doe_coded_factors_v1",
+        },
+    )
 
     if out_dir.exists() and not args.overwrite and (out_dir / "doe_decode_diagnostics.tsv").exists():
         raise FileExistsError(f"DOE outputs already exist at {out_dir}; use --overwrite")
@@ -896,6 +986,8 @@ def main() -> None:
         min_decoded_rate=args.min_decoded_rate,
     )
     result["derived_df"].to_csv(derived_tsv, sep="\t", index=False)
+    print(f"run_id={run_id}")
+    print(f"latest_pointer={latest_path}")
     print(json.dumps(result["summary"], indent=2))
 
 

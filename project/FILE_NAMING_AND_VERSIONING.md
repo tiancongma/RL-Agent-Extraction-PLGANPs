@@ -90,6 +90,8 @@ Version number reflects **generation logic**, not quality.
 
 ### Rule
 All results must be organized by run_id.
+Run IDs must be generated via `python -m src.utils.run_id ...` (or the same underlying function in code), never by manual string concatenation.
+Valid run_id regex: `^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$`.
 
 ### Structure
 ```
@@ -102,6 +104,14 @@ The only valid definition of "latest" is:
 ```
 runs/latest.txt
 ```
+Compatibility rule: first line must be exactly the run_id. Additional metadata lines must start with `# `.
+
+### Entry Script Discipline
+
+- All entry scripts that write to `data/results/` must require explicit `--run-id`.
+- Entry scripts must not generate run_id internally.
+- Reuse/new policy is determined only by `python -m src.utils.run_preflight ...`.
+- Reused work must specify `--out-subdir`; outputs must go under `data/results/<run_id>/<out-subdir>/...`.
 
 ---
 
