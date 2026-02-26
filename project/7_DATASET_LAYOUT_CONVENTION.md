@@ -96,3 +96,10 @@ Each extracted field should carry:
 Existing layouts such as `data/cleaned/content_goren_2025/...` are legacy structures.
 They are not migrated by this document. Future migration should map legacy content into
 `data/cleaned/<dataset_id>/` without changing extraction logic semantics.
+
+## Legacy Is Not Dataset Root
+
+- Legacy roots like `data/cleaned/content_goren_2025/` are not valid `dataset_id` roots.
+- `dataset_id` must be semantic-only (for example `goren_2025`), never asset-prefixed (`content_*`).
+- Recommended approach: create `data/cleaned/<dataset_id>/` and map/copy assets from legacy.
+- Do not expand legacy layouts with new outputs.
