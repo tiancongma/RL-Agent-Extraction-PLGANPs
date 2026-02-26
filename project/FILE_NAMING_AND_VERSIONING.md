@@ -49,6 +49,14 @@ data/cleaned/index/
 
 ---
 
+### Global vs Dataset Manifest Naming
+
+- Unique global index: `data/cleaned/index/manifest__zotero_all.tsv`
+- Dataset manifest path is fixed: `data/cleaned/<dataset_id>/index/manifest.tsv`
+- Run slices or run-scoped outputs must not be named `manifest*.tsv`
+
+---
+
 ## Sample Definitions
 
 ### Rules

@@ -123,6 +123,21 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--keys", default="", help="Comma-separated zotero keys.")
     p.add_argument("--keys-file", default="", help="Text file with one zotero key per line.")
     p.add_argument("--run-id", default=DEFAULT_RUN_ID, help=f"Run id for debug post-check (default: {DEFAULT_RUN_ID}).")
+    p.add_argument(
+        "--tables-root",
+        default=str(paths.DATA_CLEANED_DIR / "content_goren_2025" / "tables"),
+        help="Output tables root directory, usually data/cleaned/<dataset_id>/tables.",
+    )
+    p.add_argument(
+        "--tables-index-path",
+        default=str(paths.DATA_CLEANED_DIR / "content_goren_2025" / "tables_index.tsv"),
+        help="Path to consolidated tables index TSV.",
+    )
+    p.add_argument(
+        "--skip-post-check",
+        action="store_true",
+        help="Skip stage5 debug post-check invocation.",
+    )
     return p.parse_args()
 
 
@@ -556,8 +571,9 @@ def write_tables_for_key(
     pdf_reason: str,
     n_tables_html_extracted: int,
     n_tables_pdf_extracted: int,
+    tables_root: Path,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    out_dir = paths.DATA_CLEANED_DIR / "content_goren_2025" / "tables" / zotero_key
+    out_dir = tables_root / zotero_key
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Stable ordering for reproducibility.
@@ -658,8 +674,8 @@ def write_tables_for_key(
     return manifest_rows, index_rows
 
 
-def update_global_index(rows: list[dict[str, Any]]) -> Path:
-    p = paths.DATA_CLEANED_DIR / "content_goren_2025" / "tables_index.tsv"
+def update_global_index(rows: list[dict[str, Any]], tables_index_path: Path) -> Path:
+    p = tables_index_path
     new_df = pd.DataFrame(rows, columns=["zotero_key", "csv_path", "source_type", "extraction_method", "caption_or_title"])
     if p.exists():
         old = pd.read_csv(p, sep="\t", dtype=str).fillna("")
@@ -677,6 +693,10 @@ def main() -> None:
     keys = parse_keys(args.keys, args.keys_file)
     if not keys:
         raise RuntimeError("No keys provided. Use --keys or --keys-file.")
+    tables_root = Path(args.tables_root).resolve()
+    tables_index_path = Path(args.tables_index_path).resolve()
+    tables_root.mkdir(parents=True, exist_ok=True)
+    tables_index_path.parent.mkdir(parents=True, exist_ok=True)
 
     storage_root, tried_paths = resolve_zotero_storage_root()
     attachment_registry = load_zotero_attachment_registry()
@@ -711,6 +731,7 @@ def main() -> None:
             pdf_reason=pdf_reason,
             n_tables_html_extracted=len(html_tables),
             n_tables_pdf_extracted=len(pdf_tables),
+            tables_root=tables_root,
         )
         global_index_rows.extend(idx_rows)
 
@@ -729,43 +750,44 @@ def main() -> None:
         else:
             print(f"[key={k}] top_table (none)")
 
-    idx_path = update_global_index(global_index_rows)
+    idx_path = update_global_index(global_index_rows, tables_index_path=tables_index_path)
     print(f"tables_index_updated={idx_path}")
     print(f"total_keys_processed={total_keys}")
     print(f"total_tables_extracted={total_tables}")
 
-    # Mandatory post-check.
-    debug_script = paths.SRC_DIR / "stage5_benchmark" / "debug_paper_local_tables_registry_v1.py"
-    debug_cmd = [
-        sys.executable,
-        str(debug_script),
-        "--keys",
-        ",".join(keys_for_debug),
-        "--run-id",
-        args.run_id,
-    ]
-    print(f"post_check_cmd={' '.join(debug_cmd)}")
-    proc = subprocess.run(debug_cmd, capture_output=True, text=True)
-    print(proc.stdout.strip())
-    if proc.stderr.strip():
-        print(proc.stderr.strip())
-
-    debug_tsv = paths.DATA_RESULTS_DIR / args.run_id / "audit_pack" / "paper_local_tables_debug_v1.tsv"
-    if debug_tsv.exists():
-        dbg = pd.read_csv(debug_tsv, sep="\t", dtype=str).fillna("")
-        dbg = dbg[dbg["zotero_key"].isin(keys_for_debug)].copy()
-        bad = dbg[
-            (dbg["reason_if_zero"].astype(str) == "tables_dir_exists_but_no_csv")
-            | (dbg["total_n_csv_found"].astype(str) == "0")
+    if not args.skip_post_check:
+        # Mandatory post-check for legacy invocation path.
+        debug_script = paths.SRC_DIR / "stage5_benchmark" / "debug_paper_local_tables_registry_v1.py"
+        debug_cmd = [
+            sys.executable,
+            str(debug_script),
+            "--keys",
+            ",".join(keys_for_debug),
+            "--run-id",
+            args.run_id,
         ]
-        print("[post_check_for_selected_keys]")
-        if bad.empty:
-            print("PASS: all selected keys have total_n_csv_found > 0 and no tables_dir_exists_but_no_csv")
+        print(f"post_check_cmd={' '.join(debug_cmd)}")
+        proc = subprocess.run(debug_cmd, capture_output=True, text=True)
+        print(proc.stdout.strip())
+        if proc.stderr.strip():
+            print(proc.stderr.strip())
+
+        debug_tsv = paths.DATA_RESULTS_DIR / args.run_id / "audit_pack" / "paper_local_tables_debug_v1.tsv"
+        if debug_tsv.exists():
+            dbg = pd.read_csv(debug_tsv, sep="\t", dtype=str).fillna("")
+            dbg = dbg[dbg["zotero_key"].isin(keys_for_debug)].copy()
+            bad = dbg[
+                (dbg["reason_if_zero"].astype(str) == "tables_dir_exists_but_no_csv")
+                | (dbg["total_n_csv_found"].astype(str) == "0")
+            ]
+            print("[post_check_for_selected_keys]")
+            if bad.empty:
+                print("PASS: all selected keys have total_n_csv_found > 0 and no tables_dir_exists_but_no_csv")
+            else:
+                print("WARN: some selected keys still have zero paper-local csv candidates")
+                print(bad[["zotero_key", "total_n_csv_found", "reason_if_zero"]].to_string(index=False))
         else:
-            print("WARN: some selected keys still have zero paper-local csv candidates")
-            print(bad[["zotero_key", "total_n_csv_found", "reason_if_zero"]].to_string(index=False))
-    else:
-        print(f"WARN: debug TSV not found at {debug_tsv}")
+            print(f"WARN: debug TSV not found at {debug_tsv}")
 
 
 if __name__ == "__main__":

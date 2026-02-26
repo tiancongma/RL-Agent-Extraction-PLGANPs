@@ -8,6 +8,13 @@ This document is the source of truth for dataset-scoped cleaned assets and prove
 - Run outputs are run-scoped and must live under `data/results/<run_id>/...`.
 - Do not mix run outputs into `data/cleaned/`.
 
+## Single Global Index
+
+- Canonical Zotero-wide index path: `data/cleaned/index/manifest__zotero_all.tsv`.
+- Dataset manifests are derived from the global index.
+- Pipeline runs should consume dataset manifests (`data/cleaned/<dataset_id>/index/manifest.tsv`),
+  not the global index directly.
+
 ## Dataset ID
 
 `dataset_id` identifies one cleaned corpus layout, for example:

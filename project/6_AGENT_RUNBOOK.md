@@ -125,6 +125,8 @@ EE-specific logic must not be embedded into Stage1 or Stage2 scripts.
 - No hard-coded paths. Use canonical directory contracts.
 - Cleaned assets must be written only under `data/cleaned/<dataset_id>/...`.
 - Run outputs must be written only under `data/results/<run_id>/...`.
+- Scripts should default to dataset manifests (`data/cleaned/<dataset_id>/index/manifest.tsv`), not global index.
+- Only dataset-building scripts may read the global index (`data/cleaned/index/manifest__zotero_all.tsv`).
 - All run outputs must follow deterministic `run_id` naming.
 - `run_id` generation must use `python -m src.utils.run_id ...` (or the same underlying function), never manual string concatenation.
 - `run_id` must match: `^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$`.

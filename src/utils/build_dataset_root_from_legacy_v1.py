@@ -97,7 +97,18 @@ def main() -> int:
     ap.add_argument("--dataset-id", required=True)
     ap.add_argument("--legacy-root", required=True, help="Legacy root, e.g. data/cleaned/content_goren_2025")
     ap.add_argument("--out-cleaned-root", default="data/cleaned")
-    ap.add_argument("--manifest-tsv", required=True)
+    ap.add_argument("--manifest-tsv", default="")
+    ap.add_argument(
+        "--global-index",
+        default="data/cleaned/index/manifest__zotero_all.tsv",
+        help="Canonical global index used when --manifest-tsv is omitted.",
+    )
+    ap.add_argument(
+        "--filter-mode",
+        choices=("auto", "keylist_manifest"),
+        default="auto",
+        help="How to derive dataset manifest from global index when --manifest-tsv is omitted.",
+    )
     ap.add_argument("--mode", choices=("copy", "hardlink", "symlink"), default="copy")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
@@ -109,11 +120,37 @@ def main() -> int:
         raise ValueError("dataset-id must be semantic-only and must not use content_* prefix")
 
     legacy_root = Path(args.legacy_root)
-    manifest_src = Path(args.manifest_tsv)
     cleaned_root = Path(args.out_cleaned_root)
     dataset_root = cleaned_root / dataset_id
+    global_index = Path(args.global_index)
 
-    headers, rows = _read_tsv(manifest_src)
+    filter_rule_used = "explicit_manifest"
+    filter_rule_evidence = args.manifest_tsv.strip()
+    if args.manifest_tsv.strip():
+        manifest_src = Path(args.manifest_tsv)
+        headers, rows = _read_tsv(manifest_src)
+    else:
+        if not global_index.exists():
+            raise FileNotFoundError(
+                f"--manifest-tsv not provided and global index missing: {global_index}"
+            )
+        headers, rows = _read_tsv(global_index)
+        headers, rows, _ = _normalize_manifest(headers, rows)
+
+        keylist_path = cleaned_root / "index" / f"manifest_{dataset_id}.tsv"
+        if args.filter_mode in {"auto", "keylist_manifest"}:
+            if not keylist_path.exists():
+                raise FileNotFoundError(
+                    f"global-index mode requires key-list manifest: {keylist_path}"
+                )
+            kh, kr = _read_tsv(keylist_path)
+            kh, kr, _ = _normalize_manifest(kh, kr)
+            keyset = {r.get("zotero_key", "").strip() for r in kr if r.get("zotero_key", "").strip()}
+            rows = [r for r in rows if r.get("zotero_key", "").strip() in keyset]
+            filter_rule_used = "global_index_filtered_by_existing_manifest_keylist"
+            filter_rule_evidence = f"global={global_index};keylist={keylist_path};key_count={len(keyset)}"
+        manifest_src = global_index
+
     out_headers, out_rows, key_col = _normalize_manifest(headers, rows)
     keys = sorted({r.get(key_col, "").strip() for r in out_rows if r.get(key_col, "").strip()})
 
@@ -209,6 +246,9 @@ def main() -> int:
         "mode_used": args.mode,
         "legacy_root": str(legacy_root),
         "manifest_source_path": str(manifest_src),
+        "global_index_path": str(global_index),
+        "filter_rule_used": filter_rule_used,
+        "filter_rule_evidence": filter_rule_evidence,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "n_text_files_mapped": n_text_files_mapped,
         "n_sections_files_mapped": n_sections_files_mapped,
@@ -224,6 +264,8 @@ def main() -> int:
     print("build_dataset_root_from_legacy_v1")
     print(f"dataset_root\t{dataset_root}")
     print(f"manifest_source\t{manifest_src}")
+    print(f"filter_rule_used\t{filter_rule_used}")
+    print(f"filter_rule_evidence\t{filter_rule_evidence}")
     print(f"mode\t{args.mode}")
     print(f"dry_run\t{args.dry_run}")
     print(f"n_keys_total\t{report['n_keys_total']}")

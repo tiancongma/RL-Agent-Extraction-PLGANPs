@@ -38,9 +38,21 @@ def _validate_per_key_dirs(asset_root: Path, asset_name: str, rows: list[dict], 
             issues.append(f"{asset_name}: invalid key directory name: {d.name}")
 
 
-def validate_layout(dataset_root: Path, check_keys: bool) -> tuple[list[dict], list[str]]:
+def validate_layout(dataset_root: Path, check_keys: bool, strict_global: bool = False) -> tuple[list[dict], list[str]]:
     rows: list[dict] = []
     issues: list[str] = []
+    global_index = DATA_CLEANED_DIR / "index" / "manifest__zotero_all.tsv"
+    global_ok = global_index.exists() and global_index.is_file()
+    rows.append(
+        {
+            "check": "global_index_exists",
+            "path": str(global_index),
+            "status": "OK" if global_ok else "WARN",
+            "detail": "",
+        }
+    )
+    if strict_global and not global_ok:
+        issues.append(f"missing global index: {global_index}")
 
     rows.append(
         {
@@ -67,6 +79,18 @@ def validate_layout(dataset_root: Path, check_keys: bool) -> tuple[list[dict], l
         )
         if not ok:
             issues.append(f"missing required subdir: {name}")
+    dataset_manifest = dataset_root / "index" / "manifest.tsv"
+    manifest_ok = dataset_manifest.exists() and dataset_manifest.is_file()
+    rows.append(
+        {
+            "check": "dataset_manifest_exists",
+            "path": str(dataset_manifest),
+            "status": "OK" if manifest_ok else "ERROR",
+            "detail": "",
+        }
+    )
+    if not manifest_ok:
+        issues.append(f"missing dataset manifest: {dataset_manifest}")
 
     unexpected = [
         p for p in _iter_dirs(dataset_root) if p.name not in ALLOWED_TOPLEVEL
@@ -143,6 +167,11 @@ def main() -> int:
         help="Exit non-zero if any ERROR/WARN issues are found.",
     )
     ap.add_argument(
+        "--strict-global",
+        action="store_true",
+        help="Treat missing global index data/cleaned/index/manifest__zotero_all.tsv as an error.",
+    )
+    ap.add_argument(
         "--write-tsv",
         action="store_true",
         help="Write report TSV to data/cleaned/<dataset_id>/analysis/dataset_layout_validation.tsv",
@@ -161,7 +190,9 @@ def main() -> int:
         else cleaned_root / args.dataset_id
     )
 
-    rows, issues = validate_layout(dataset_root, check_keys=args.check_keys)
+    rows, issues = validate_layout(
+        dataset_root, check_keys=args.check_keys, strict_global=args.strict_global
+    )
 
     print("dataset_layout_validation_v1")
     print(f"dataset_root\t{dataset_root}")
