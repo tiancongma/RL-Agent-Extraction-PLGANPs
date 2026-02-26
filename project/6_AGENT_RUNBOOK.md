@@ -171,6 +171,10 @@ If HTML exists and HTML extraction fails:
    - Record it in `FEATURE_EE_COVERAGE_RL_SCOPE.md`
    - Do not merge automatically without explicit review.
 
+Before building splits or running test evaluation:
+- Read `project/8_EVAL_SPLITS_REGISTRY.md`.
+- Ensure TEST splits exclude all registered DEV keys.
+
 ---
 
 ## Formulation Core Signature v1 (Type B)

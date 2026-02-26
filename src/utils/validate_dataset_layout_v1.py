@@ -8,9 +8,19 @@ from pathlib import Path
 
 try:
     from src.utils.paths import DATA_CLEANED_DIR, dataset_cleaned_root
+    from src.utils.split_registry_v1 import (
+        REGISTRY_PATH,
+        load_registered_dev_keys,
+        load_registered_dev_keys_file,
+    )
 except ModuleNotFoundError:
     sys.path.append(str(Path(__file__).resolve().parents[2]))
     from src.utils.paths import DATA_CLEANED_DIR, dataset_cleaned_root
+    from src.utils.split_registry_v1 import (
+        REGISTRY_PATH,
+        load_registered_dev_keys,
+        load_registered_dev_keys_file,
+    )
 
 
 ALLOWED_TOPLEVEL = {"index", "content", "text", "sections", "tables", "analysis"}
@@ -44,6 +54,9 @@ def validate_layout(
     strict_global: bool = False,
     check_coverage_reasons: bool = False,
     coverage_tsv: Path | None = None,
+    check_split_registry: bool = False,
+    dataset_id: str = "",
+    registry_path: Path = REGISTRY_PATH,
 ) -> tuple[list[dict], list[str]]:
     rows: list[dict] = []
     issues: list[str] = []
@@ -172,6 +185,65 @@ def validate_layout(
             if bad > 0:
                 issues.append(f"coverage pdf_table_reason violations: {bad}")
 
+    if check_split_registry:
+        reg_exists = registry_path.exists() and registry_path.is_file()
+        rows.append(
+            {
+                "check": "split_registry_exists",
+                "path": str(registry_path),
+                "status": "OK" if reg_exists else "WARN",
+                "detail": "",
+            }
+        )
+        if not reg_exists:
+            issues.append(f"split registry missing: {registry_path}")
+        else:
+            try:
+                registry_keys = load_registered_dev_keys(dataset_id, registry_path=registry_path)
+                dev_keys_file = load_registered_dev_keys_file(dataset_id, registry_path=registry_path)
+                dev_path = Path(dev_keys_file)
+                rows.append(
+                    {
+                        "check": "split_registry_dev_keys_file_exists",
+                        "path": str(dev_path),
+                        "status": "OK" if dev_path.exists() and dev_path.is_file() else "WARN",
+                        "detail": "",
+                    }
+                )
+                if not (dev_path.exists() and dev_path.is_file()):
+                    issues.append(f"dev keys file missing from registry path: {dev_path}")
+                else:
+                    with dev_path.open("r", encoding="utf-8", newline="") as f:
+                        reader = csv.DictReader(f, delimiter="\t")
+                        file_keys = {
+                            str(r.get("zotero_key", "")).strip()
+                            for r in reader
+                            if str(r.get("zotero_key", "")).strip()
+                        }
+                    matched = registry_keys == file_keys
+                    rows.append(
+                        {
+                            "check": "split_registry_key_match",
+                            "path": str(dev_path),
+                            "status": "OK" if matched else "WARN",
+                            "detail": f"registry_n={len(registry_keys)} file_n={len(file_keys)}",
+                        }
+                    )
+                    if not matched:
+                        issues.append(
+                            f"split registry keys mismatch: registry_n={len(registry_keys)} file_n={len(file_keys)}"
+                        )
+            except Exception as e:
+                issues.append(f"split registry parse error: {type(e).__name__}: {e}")
+                rows.append(
+                    {
+                        "check": "split_registry_parse",
+                        "path": str(registry_path),
+                        "status": "WARN",
+                        "detail": f"{type(e).__name__}:{e}",
+                    }
+                )
+
     return rows, issues
 
 
@@ -229,6 +301,16 @@ def main() -> int:
         default="",
         help="Optional explicit coverage TSV path (default: data/cleaned/<dataset_id>/analysis/tables_extraction_coverage.tsv).",
     )
+    ap.add_argument(
+        "--check-split-registry",
+        action="store_true",
+        help="Verify split registry and dev key file consistency for dataset_id.",
+    )
+    ap.add_argument(
+        "--registry-path",
+        default=str(REGISTRY_PATH),
+        help="Path to split registry markdown file.",
+    )
     args = ap.parse_args()
 
     cleaned_root = Path(args.cleaned_root)
@@ -244,6 +326,9 @@ def main() -> int:
         strict_global=args.strict_global,
         check_coverage_reasons=args.check_coverage_reasons,
         coverage_tsv=Path(args.coverage_tsv) if args.coverage_tsv else None,
+        check_split_registry=args.check_split_registry,
+        dataset_id=args.dataset_id,
+        registry_path=Path(args.registry_path),
     )
 
     print("dataset_layout_validation_v1")
