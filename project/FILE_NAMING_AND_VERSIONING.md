@@ -93,6 +93,23 @@ All results must be organized by run_id.
 Run IDs must be generated via `python -m src.utils.run_id ...` (or the same underlying function in code), never by manual string concatenation.
 Valid run_id regex: `^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$`.
 
+## Cleaned Asset Layout (Dataset-Scoped)
+
+Canonical rule: cleaned assets are dataset-scoped and reusable across runs, under:
+
+`data/cleaned/<dataset_id>/...`
+
+Run outputs are run-scoped and must remain under:
+
+`data/results/<run_id>/...`
+
+Do not mix run outputs into cleaned assets.
+
+Do not create new top-level directories under `data/cleaned/<dataset_id>/` outside:
+`index`, `content`, `text`, `sections`, `tables`, `analysis`.
+
+Reference: `project/7_DATASET_LAYOUT_CONVENTION.md`.
+
 ### Structure
 ```
 data/results/

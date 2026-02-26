@@ -56,9 +56,10 @@ Before starting implementation work, read in this order:
 1. `README.md`
 2. `project/2_ARCHITECTURE.md`
 3. `project/FILE_NAMING_AND_VERSIONING.md`
-4. `project/FEATURE_EE_COVERAGE_RL_SCOPE.md` (when working on EE coverage branch tasks)
-5. `docs/tool_index.md`
-6. Relevant diagnostics under `docs/ee_coverage_rl/`
+4. `project/7_DATASET_LAYOUT_CONVENTION.md` (before writing cleaned-asset scripts)
+5. `project/FEATURE_EE_COVERAGE_RL_SCOPE.md` (when working on EE coverage branch tasks)
+6. `docs/tool_index.md`
+7. Relevant diagnostics under `docs/ee_coverage_rl/`
 
 ---
 
@@ -122,6 +123,8 @@ EE-specific logic must not be embedded into Stage1 or Stage2 scripts.
 - Require regression checks (before/after) for any behavior change.
 - Keep commits small and scoped.
 - No hard-coded paths. Use canonical directory contracts.
+- Cleaned assets must be written only under `data/cleaned/<dataset_id>/...`.
+- Run outputs must be written only under `data/results/<run_id>/...`.
 - All run outputs must follow deterministic `run_id` naming.
 - `run_id` generation must use `python -m src.utils.run_id ...` (or the same underlying function), never manual string concatenation.
 - `run_id` must match: `^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$`.

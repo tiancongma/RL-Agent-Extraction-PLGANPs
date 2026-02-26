@@ -63,6 +63,23 @@ DATA_LABELS_DIR = DATA_DIR / "labels"
 # Optional exports (non-authoritative)
 DATA_RESULTS_DIR = DATA_DIR / "results"
 
+def dataset_cleaned_root(dataset_id: str) -> Path:
+    """Return data/cleaned/<dataset_id>."""
+    ds = dataset_id.strip()
+    if not ds:
+        raise ValueError("dataset_id is empty")
+    return DATA_CLEANED_DIR / ds
+
+
+def dataset_tables_root(dataset_id: str) -> Path:
+    """Return data/cleaned/<dataset_id>/tables."""
+    return dataset_cleaned_root(dataset_id) / "tables"
+
+
+def dataset_text_root(dataset_id: str) -> Path:
+    """Return data/cleaned/<dataset_id>/text."""
+    return dataset_cleaned_root(dataset_id) / "text"
+
 
 # ---------------------------------------------------------------------
 # Runs: templates vs concrete run artifacts
