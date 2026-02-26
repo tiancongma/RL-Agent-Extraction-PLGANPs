@@ -52,9 +52,29 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--dataset-id", required=True)
     ap.add_argument("--manifest-tsv", default="")
     ap.add_argument("--tables-root", default="")
+    ap.add_argument("--keys-file", default="", help="Optional key list (one per line or TSV with zotero_key column).")
+    ap.add_argument("--coverage-out", default="", help="Optional output coverage TSV path.")
     ap.add_argument("--n", type=int, default=0, help="Optional limit on number of keys (0 = all).")
     ap.add_argument("--seed", type=int, default=42)
     return ap.parse_args()
+
+
+def _read_keys_file(path: Path) -> list[str]:
+    lines = [ln.strip() for ln in path.read_text(encoding="utf-8", errors="replace").splitlines() if ln.strip()]
+    if not lines:
+        return []
+    first = lines[0]
+    if "\t" in first and "zotero_key" in first.split("\t"):
+        idx = first.split("\t").index("zotero_key")
+        out: list[str] = []
+        for ln in lines[1:]:
+            parts = ln.split("\t")
+            if idx < len(parts):
+                k = parts[idx].strip()
+                if k:
+                    out.append(k)
+        return out
+    return lines
 
 
 def main() -> int:
@@ -83,6 +103,12 @@ def main() -> int:
         if k not in by_key:
             by_key[k] = r
     keys = sorted(by_key.keys())
+    if args.keys_file:
+        user_keys_path = Path(args.keys_file)
+        if not user_keys_path.exists():
+            raise FileNotFoundError(f"keys-file not found: {user_keys_path}")
+        wanted = sorted(dict.fromkeys(_read_keys_file(user_keys_path)))
+        keys = [k for k in wanted if k in by_key]
 
     if args.n > 0 and args.n < len(keys):
         rnd = random.Random(args.seed)
@@ -112,7 +138,7 @@ def main() -> int:
             print(proc.stderr.strip(), file=sys.stderr)
         raise RuntimeError(f"table extractor failed with return code {proc.returncode}")
 
-    coverage_path = analysis_dir / "tables_extraction_coverage.tsv"
+    coverage_path = Path(args.coverage_out) if args.coverage_out else analysis_dir / "tables_extraction_coverage.tsv"
     out_rows: list[dict[str, str]] = []
     for k in keys:
         row = by_key.get(k, {})
@@ -138,6 +164,8 @@ def main() -> int:
             chosen_source = str(obj.get("preferred_table_source", "none") or "none")
             html_found = "True" if bool(obj.get("html_found", False)) else "False"
             pdf_found = "True" if bool(obj.get("pdf_found", False)) else "False"
+        if pdf_found == "True" and n_pdf == 0 and not pdf_reason.strip():
+            pdf_reason = "no_tables_detected"
         out_rows.append(
             {
                 "zotero_key": k,

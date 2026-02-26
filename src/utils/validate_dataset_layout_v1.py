@@ -38,7 +38,13 @@ def _validate_per_key_dirs(asset_root: Path, asset_name: str, rows: list[dict], 
             issues.append(f"{asset_name}: invalid key directory name: {d.name}")
 
 
-def validate_layout(dataset_root: Path, check_keys: bool, strict_global: bool = False) -> tuple[list[dict], list[str]]:
+def validate_layout(
+    dataset_root: Path,
+    check_keys: bool,
+    strict_global: bool = False,
+    check_coverage_reasons: bool = False,
+    coverage_tsv: Path | None = None,
+) -> tuple[list[dict], list[str]]:
     rows: list[dict] = []
     issues: list[str] = []
     global_index = DATA_CLEANED_DIR / "index" / "manifest__zotero_all.tsv"
@@ -134,6 +140,38 @@ def validate_layout(dataset_root: Path, check_keys: bool, strict_global: bool = 
         if sections_root.exists() and sections_root.is_dir():
             _validate_per_key_dirs(sections_root, "sections", rows, issues)
 
+    if check_coverage_reasons:
+        cov = coverage_tsv if coverage_tsv is not None else dataset_root / "analysis" / "tables_extraction_coverage.tsv"
+        cov_exists = cov.exists() and cov.is_file()
+        rows.append(
+            {
+                "check": "coverage_tsv_exists",
+                "path": str(cov),
+                "status": "OK" if cov_exists else "WARN",
+                "detail": "",
+            }
+        )
+        if cov_exists:
+            bad = 0
+            with cov.open("r", encoding="utf-8", newline="") as f:
+                reader = csv.DictReader(f, delimiter="\t")
+                for rec in reader:
+                    pdf_found = str(rec.get("pdf_found", "")).strip().lower() in {"true", "1", "yes"}
+                    n_pdf = int(str(rec.get("n_tables_pdf_extracted", "0") or "0"))
+                    pdf_reason = str(rec.get("pdf_table_reason", "") or "").strip()
+                    if pdf_found and n_pdf == 0 and not pdf_reason:
+                        bad += 1
+            rows.append(
+                {
+                    "check": "coverage_pdf_reason_constraint",
+                    "path": str(cov),
+                    "status": "OK" if bad == 0 else "WARN",
+                    "detail": f"violations={bad}",
+                }
+            )
+            if bad > 0:
+                issues.append(f"coverage pdf_table_reason violations: {bad}")
+
     return rows, issues
 
 
@@ -181,6 +219,16 @@ def main() -> int:
         default="",
         help="Optional explicit TSV report path.",
     )
+    ap.add_argument(
+        "--check-coverage-reasons",
+        action="store_true",
+        help="Check coverage constraint: pdf_found=True and n_tables_pdf_extracted=0 requires non-empty pdf_table_reason.",
+    )
+    ap.add_argument(
+        "--coverage-tsv",
+        default="",
+        help="Optional explicit coverage TSV path (default: data/cleaned/<dataset_id>/analysis/tables_extraction_coverage.tsv).",
+    )
     args = ap.parse_args()
 
     cleaned_root = Path(args.cleaned_root)
@@ -191,7 +239,11 @@ def main() -> int:
     )
 
     rows, issues = validate_layout(
-        dataset_root, check_keys=args.check_keys, strict_global=args.strict_global
+        dataset_root,
+        check_keys=args.check_keys,
+        strict_global=args.strict_global,
+        check_coverage_reasons=args.check_coverage_reasons,
+        coverage_tsv=Path(args.coverage_tsv) if args.coverage_tsv else None,
     )
 
     print("dataset_layout_validation_v1")

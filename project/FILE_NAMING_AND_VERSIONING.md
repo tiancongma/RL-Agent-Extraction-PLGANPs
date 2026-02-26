@@ -55,6 +55,14 @@ data/cleaned/index/
 - Dataset manifest path is fixed: `data/cleaned/<dataset_id>/index/manifest.tsv`
 - Run slices or run-scoped outputs must not be named `manifest*.tsv`
 
+### Split Naming (Dataset Index)
+
+- Split files must live under: `data/cleaned/<dataset_id>/index/splits/`
+- Reserved DEV contract names:
+  - `dev_keys_v{N}.tsv`
+  - `dev_manifest_v{N}.tsv`
+- TEST split names must be distinct and must exclude keys in current DEV file.
+
 ---
 
 ## Sample Definitions

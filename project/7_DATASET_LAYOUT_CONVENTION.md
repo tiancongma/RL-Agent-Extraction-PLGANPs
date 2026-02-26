@@ -110,3 +110,13 @@ They are not migrated by this document. Future migration should map legacy conte
 - `dataset_id` must be semantic-only (for example `goren_2025`), never asset-prefixed (`content_*`).
 - Recommended approach: create `data/cleaned/<dataset_id>/` and map/copy assets from legacy.
 - Do not expand legacy layouts with new outputs.
+
+## DEV and TEST Split Policy
+
+- DEV splits are for iterative pipeline improvement.
+- TEST splits are for holdout validation and must exclude all DEV keys for that dataset.
+- Canonical DEV key file:
+  `data/cleaned/<dataset_id>/index/splits/dev_keys_v1.tsv`
+- Any TEST split builder must enforce:
+  `test_keys ∩ dev_keys_v1 = ∅`
+- Rationale: prevent data leakage from iterative development into final evaluation.

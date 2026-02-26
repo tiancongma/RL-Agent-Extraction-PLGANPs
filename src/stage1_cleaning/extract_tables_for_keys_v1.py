@@ -516,14 +516,14 @@ def extract_tables_from_pdf(pdf_path: Path) -> tuple[list[dict[str, Any]], str]:
     reason = ""
     try:
         import camelot  # type: ignore
-    except Exception:
-        return out, "camelot_not_available"
+    except Exception as e:
+        return out, f"camelot_error:{type(e).__name__}"
 
     for flavor in ["lattice", "stream"]:
         try:
             tables = camelot.read_pdf(str(pdf_path), pages="all", flavor=flavor)
-        except Exception:
-            reason = f"camelot_{flavor}_failed"
+        except Exception as e:
+            reason = f"camelot_error:{type(e).__name__}:{flavor}"
             continue
         for t in tables:
             df = t.df.fillna("").astype(str).apply(lambda col: col.map(clean_cell))
@@ -553,7 +553,16 @@ def extract_tables_from_pdf(pdf_path: Path) -> tuple[list[dict[str, Any]], str]:
         return out, ""
     if reason:
         return out, reason
-    return out, "no_pdf_tables_found"
+    return out, "no_tables_detected"
+
+
+def _normalize_pdf_reason(pdf_found: bool, n_tables_pdf_extracted: int, pdf_reason: str) -> str:
+    if not pdf_found:
+        return ""
+    if n_tables_pdf_extracted > 0:
+        return ""
+    reason = (pdf_reason or "").strip()
+    return reason if reason else "no_tables_detected"
 
 
 def rel_to_project(p: Path) -> str:
@@ -663,7 +672,11 @@ def write_tables_for_key(
         "n_tables_pdf_extracted": int(n_tables_pdf_extracted),
         "total_tables": int(len(manifest_rows)),
         "html_table_reason": html_reason if chosen.html_found and n_tables_html_extracted == 0 else "",
-        "pdf_table_reason": pdf_reason if chosen.pdf_found and n_tables_pdf_extracted == 0 else "",
+        "pdf_table_reason": _normalize_pdf_reason(
+            pdf_found=bool(chosen.pdf_found),
+            n_tables_pdf_extracted=int(n_tables_pdf_extracted),
+            pdf_reason=pdf_reason,
+        ),
         "preferred_table_source": preferred_table_source,
         "selected_table_files": selected_table_files,
         "fallback_table_files": fallback_table_files,
