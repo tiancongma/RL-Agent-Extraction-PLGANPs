@@ -14,7 +14,7 @@ Improvements over tier1:
   factorial design summary points, or dose groups as separate formulations.
 - Uses stronger model pair by default:
     gemini-2.5-flash (main reference)
-    gemini-2.0-flash-lite (cheap second opinion)
+    gemini-2.5-flash-lite (cheap second opinion)
 - High max_chars (default 100000) to avoid truncating important text.
 
 Usage (from project root):
@@ -23,7 +23,7 @@ Usage (from project root):
         --key2txt data\cleaned\samples\key2txt_html10.tsv ^
         --out-jsonl data\cleaned\samples\formulations_tier2_multi_model.jsonl ^
         --out-tsv  data\cleaned\samples\formulations_tier2_multi_model.tsv ^
-        --models gemini-2.5-flash,gemini-2.0-flash-lite ^
+        --models gemini-2.5-flash,gemini-2.5-flash-lite ^
         --max-chars 100000 ^
         --max-formulations 8
 """
@@ -37,6 +37,7 @@ from typing import List, Dict, Any
 import pandas as pd
 from dotenv import load_dotenv
 from google import generativeai as genai
+from src.utils.model_policy import PRIMARY_DEFAULT, SECONDARY_DEFAULT, validate_models_or_raise
 
 # ---- Project root & .env ----
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -87,8 +88,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--models",
         type=str,
-        default="gemini-2.5-flash,gemini-2.0-flash-lite",
-        help="Comma-separated Gemini model names. Default: gemini-2.5-flash,gemini-2.0-flash-lite",
+        default=f"{PRIMARY_DEFAULT},{SECONDARY_DEFAULT}",
+        help="Comma-separated Gemini model names. Default: gemini-2.5-flash,gemini-2.5-flash-lite",
     )
     p.add_argument(
         "--max-chars",
@@ -272,6 +273,10 @@ def main() -> None:
     model_names: List[str] = [m.strip() for m in args.models.split(",") if m.strip()]
     if not model_names:
         raise SystemExit("[ERROR] At least one model must be specified via --models")
+    try:
+        validate_models_or_raise(model_names, context="multi_model_extract_tier2 preflight")
+    except ValueError as e:
+        raise SystemExit(f"[ERROR] {e}")
 
     out_jsonl = args.out_jsonl
     out_jsonl.parent.mkdir(parents=True, exist_ok=True)
@@ -302,6 +307,10 @@ def main() -> None:
             print(f"[INFO] key={key}: text chars={len(txt)}")
 
             for model_name in model_names:
+                try:
+                    validate_models_or_raise([model_name], context="multi_model_extract_tier2 runtime")
+                except ValueError as e:
+                    raise SystemExit(f"[ERROR] {e}")
                 print(f"  [CALL] key={key}, model={model_name}")
                 try:
                     data = call_gemini(

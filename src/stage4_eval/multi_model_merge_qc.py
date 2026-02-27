@@ -71,6 +71,7 @@ import sys
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
+from src.utils.model_policy import PRIMARY_DEFAULT, SECONDARY_DEFAULT, validate_models_or_raise
 
 
 # ---------------------------
@@ -407,19 +408,19 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--model1",
-        default=None,
-        help="Name of first model (defaults to first distinct model in file).",
+        default=PRIMARY_DEFAULT,
+        help="Name of first model (default: gemini-2.5-flash).",
     )
     parser.add_argument(
         "--model2",
-        default=None,
-        help="Name of second model (defaults to second distinct model in file).",
+        default=SECONDARY_DEFAULT,
+        help="Name of second model (default: gemini-2.5-flash-lite).",
     )
     parser.add_argument(
         "--preferred-model",
-        default=None,
+        default=PRIMARY_DEFAULT,
         help="Model name preferred when two numeric values are close. "
-             "If not provided, defaults to model1.",
+             "Default: gemini-2.5-flash.",
     )
     return parser.parse_args(argv)
 
@@ -445,6 +446,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         )
 
     preferred_model = args.preferred_model or model1
+    validate_models_or_raise([model1, model2, preferred_model], context="multi_model_merge_qc preflight")
 
     print(f"[INFO] Using model1      = {model1}")
     print(f"[INFO] Using model2      = {model2}")

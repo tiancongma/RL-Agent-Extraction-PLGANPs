@@ -8,6 +8,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src.utils import paths
+from src.utils.model_policy import validate_models_or_raise
 from src.utils.run_id import build_run_id, is_valid_run_id
 from src.utils.run_latest import inputs_fingerprint, read_latest, write_latest
 
@@ -29,6 +30,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--stage", required=True)
     p.add_argument("--version", type=int, default=1)
     p.add_argument("--input-path", action="append", default=[], help="Repeatable input path for fingerprinting.")
+    p.add_argument("--model", action="append", default=[], help="Optional model name; repeatable.")
+    p.add_argument("--models", default="", help="Optional comma-separated model names.")
     p.add_argument("--run-id", default="")
     p.add_argument("--note", default="")
     return p.parse_args()
@@ -36,6 +39,13 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    models: list[str] = []
+    models.extend([str(m).strip() for m in args.model if str(m).strip()])
+    if str(args.models).strip():
+        models.extend([m.strip() for m in str(args.models).split(",") if m.strip()])
+    if models:
+        validate_models_or_raise(models, context="run_preflight model check")
+
     input_paths = [Path(x) for x in args.input_path]
     fp = inputs_fingerprint(input_paths)
 
@@ -99,4 +109,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

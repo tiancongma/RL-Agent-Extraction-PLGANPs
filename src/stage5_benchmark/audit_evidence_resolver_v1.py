@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -43,6 +43,9 @@ class TableEvidence:
     chosen_table_rejected: bool
     table_evidence_missing_reason: str
     table_first_policy_tag: str
+    matched_numeric_tokens: list[str] = field(default_factory=list)
+    match_kind: str = ""
+    match_explanation: str = ""
 
 
 def short_text(v: Any, limit: int) -> str:
@@ -722,6 +725,76 @@ class AuditEvidenceResolverV1:
                 return 1, "range"
         return 0, ""
 
+    def _extract_numeric_tokens_from_text(self, text: str) -> list[str]:
+        out: list[str] = []
+        seen: set[str] = set()
+        for m in re.finditer(r"[-+]?\d+(?:[.,]\d+)?", str(text or "")):
+            tok = m.group(0).replace(",", ".")
+            try:
+                n = float(tok)
+                norm = f"{n:.12f}".rstrip("0").rstrip(".")
+            except Exception:
+                continue
+            if norm and norm not in seen:
+                seen.add(norm)
+                out.append(norm)
+        return out
+
+    def _build_match_explanation(
+        self,
+        field_name: str,
+        v_num: float,
+        match_kind: str,
+        cell_text: str,
+    ) -> str:
+        nums = self._extract_numeric_tokens_from_text(cell_text)
+        if match_kind == "exact":
+            return f"field={field_name}; v={v_num:.6g}; exact token/cell match"
+        if match_kind == "tol":
+            if nums:
+                nearest = min(nums, key=lambda x: abs(float(x) - v_num))
+                return f"field={field_name}; v={v_num:.6g}; nearest={nearest}; within tolerance"
+            return f"field={field_name}; v={v_num:.6g}; tolerance match"
+        if match_kind == "rounded":
+            if nums:
+                nearest = min(nums, key=lambda x: abs(round(float(x), 1) - round(v_num, 1)))
+                return f"field={field_name}; v={v_num:.6g}; nearest={nearest}; rounded equivalence"
+            return f"field={field_name}; v={v_num:.6g}; rounded equivalence"
+        if match_kind == "range":
+            ranges = self._find_numeric_ranges(cell_text)
+            if ranges:
+                lo, hi = ranges[0]
+                return f"field={field_name}; v={v_num:.6g}; within [{lo:.6g}, {hi:.6g}]"
+            return f"field={field_name}; v={v_num:.6g}; range match"
+        return ""
+
+    def _ensure_auditable_cell_text(
+        self,
+        cell_text: str,
+        field_name: str,
+        v_num: float,
+        matched_numeric_tokens: list[str],
+        match_kind: str,
+    ) -> str:
+        ct = str(cell_text or "").strip()
+        v_tokens = self._generate_equivalent_numeric_strings(v_num=v_num, raw_value=str(v_num), field_name=field_name)
+        ct_compact = re.sub(r"\s+", "", ct.lower())
+        has_exact = False
+        for tok in v_tokens:
+            t = re.sub(r"\s+", "", str(tok).lower().strip())
+            if not t:
+                continue
+            if re.search(rf"(?<![0-9a-z]){re.escape(t)}(?![0-9a-z])", ct_compact):
+                has_exact = True
+                break
+        if has_exact:
+            return ct
+        mt = matched_numeric_tokens or self._extract_numeric_tokens_from_text(ct)
+        if not mt:
+            mt = [f"{v_num:.12f}".rstrip("0").rstrip(".")]
+        suffix = f" [matched_numeric_tokens:{','.join(mt)};match_kind:{match_kind}]"
+        return (ct + suffix).strip()
+
     def _pick_table_first_match(
         self,
         candidates: list[dict[str, Any]],
@@ -775,6 +848,14 @@ class AuditEvidenceResolverV1:
                             "field_name": str(spec["field_name"]),
                             "match_reason": f"table_first_{match_kind}_numeric_match",
                             "match_kind": match_kind,
+                            "matched_numeric_tokens": self._extract_numeric_tokens_from_text(cell),
+                            "match_explanation": self._build_match_explanation(
+                                field_name=str(spec["field_name"]),
+                                v_num=float(spec["value_num"]),
+                                match_kind=match_kind,
+                                cell_text=cell,
+                            ),
+                            "value_num": float(spec["value_num"]),
                             "doe_signature": short_text(self._extract_doe_signature_from_row(rr, cols), 200),
                         }
                         if best is None or float(candidate["score"]) > float(best["score"]):
@@ -916,7 +997,13 @@ class AuditEvidenceResolverV1:
                         table_title_or_caption=str(tf_match["caption"]),
                         table_match_score=round(float(tf_match["score"]), 4),
                         table_row_text=str(tf_match["row_text"]),
-                        table_cell_text=str(tf_match["cell_text"]),
+                        table_cell_text=self._ensure_auditable_cell_text(
+                            cell_text=str(tf_match["cell_text"]),
+                            field_name=str(tf_match["field_name"]),
+                            v_num=float(tf_match["value_num"]),
+                            matched_numeric_tokens=list(tf_match.get("matched_numeric_tokens", []) or []),
+                            match_kind=str(tf_match.get("match_kind", "")),
+                        ),
                         doe_signature=str(tf_match["doe_signature"]),
                         top5_candidates=[str(chosen_tf.name)],
                         top5_scores=[round(float(tf_match["score"]), 4)],
@@ -927,6 +1014,9 @@ class AuditEvidenceResolverV1:
                         chosen_table_rejected=False,
                         table_evidence_missing_reason="",
                         table_first_policy_tag="",
+                        matched_numeric_tokens=list(tf_match.get("matched_numeric_tokens", []) or []),
+                        match_kind=str(tf_match.get("match_kind", "")),
+                        match_explanation=str(tf_match.get("match_explanation", "")),
                     )
                 self._log_drop_nonlocal(zotero_key, chosen_tf, "table_first_selected_nonlocal")
 

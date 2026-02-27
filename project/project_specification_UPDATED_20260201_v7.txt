@@ -556,18 +556,17 @@ python src/stage2_sampling_labels/sample_from_manifest_html_first.py --manifest 
 4) Single-model extraction (run per model):
 python src/stage2_sampling_labels/auto_extract_weak_labels_v6.py --sample-jsonl data/cleaned/samples/sample20_stratified.jsonl --key2txt data/cleaned/index/key2txt.tsv --sections-dir data/cleaned/content/sections --model gemini-2.5-flash --max-chars 60000 --sleep 1.0 --out-tsv data/results/<run_id>/weak_labels__gemini.tsv --out-jsonl data/results/<run_id>/weak_labels__gemini.jsonl
 
-python src/stage2_sampling_labels/auto_extract_weak_labels_v6.py --sample-jsonl data/cleaned/samples/sample20_stratified.jsonl --key2txt data/cleaned/index/key2txt.tsv --sections-dir data/cleaned/content/sections --model gemma-3-12b-it --max-chars 60000 --sleep 1.0 --out-tsv data/results/<run_id>/weak_labels__gemma.tsv --out-jsonl data/results/<run_id>/weak_labels__gemma.jsonl
+python src/stage2_sampling_labels/auto_extract_weak_labels_v6.py --sample-jsonl data/cleaned/samples/sample20_stratified.jsonl --key2txt data/cleaned/index/key2txt.tsv --sections-dir data/cleaned/content/sections --model gemini-2.5-flash-lite --max-chars 60000 --sleep 1.0 --out-tsv data/results/<run_id>/weak_labels__flashlite.tsv --out-jsonl data/results/<run_id>/weak_labels__flashlite.jsonl
 
 5) Build multi-model TSV (if needed):
 (If you already have weak_labels__modelA_modelB.tsv, skip.)
 Otherwise concatenate two single-model TSVs into a multi-model TSV with a 'model' column.
 
 6) Consensus + conflict queue:
-python src/stage4_eval/multi_model_consensus_vote.py --input data/results/<run_id>/weak_labels__gemini_gemma.tsv --out-consensus data/results/<run_id>/formulations_consensus_weak.tsv --out-conflicts data/results/<run_id>/formulations_conflict_queue.tsv --out-qc data/results/<run_id>/field_level_qc_summary.tsv --preferred-model "gemini-2.5-flash"
+python src/stage4_eval/multi_model_consensus_vote.py --input data/results/<run_id>/weak_labels__gemini_flashlite.tsv --out-consensus data/results/<run_id>/formulations_consensus_weak.tsv --out-conflicts data/results/<run_id>/formulations_conflict_queue.tsv --out-qc data/results/<run_id>/field_level_qc_summary.tsv --preferred-model "gemini-2.5-flash"
 
 7) Field-level GT template (conflict-only):
 python src/stage3_gt/build_gt_template_from_conflict_queue.py --conflicts data/results/<run_id>/formulations_conflict_queue.tsv --out data/cleaned/labels/manual/gt_field_decisions__run_<run_id>.tsv
 
 8) Human fill:
 Edit gt_field_decisions__run_<run_id>.tsv and fill gt_decision (+ optional gt_value_text, gt_notes).
-

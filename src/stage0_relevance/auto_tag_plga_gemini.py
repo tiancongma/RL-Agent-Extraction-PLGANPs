@@ -13,7 +13,7 @@ Key features:
   - Writes tagged CSV + prints tag distribution.
 
 Usage:
-  python auto_tag_plga_gemini.py --in ../Data/wos_all.csv --out ../Data/wos_all_tagged_gemini.csv --model gemini-2.0-flash
+  python auto_tag_plga_gemini.py --in ../Data/wos_all.csv --out ../Data/wos_all_tagged_gemini.csv --model gemini-2.5-flash
 
 Requirements:
   pip install pandas python-dotenv google-generativeai>=0.7.0
@@ -27,8 +27,9 @@ from typing import Optional
 
 from dotenv import load_dotenv
 import google.generativeai as genai
+from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
 
-DEFAULT_MODEL = "gemini-2.0-flash"
+DEFAULT_MODEL = PRIMARY_DEFAULT
 ENV_VAR_NAME = "GEMINI_API_KEY"
 
 PROMPT_TEMPLATE = """You are screening literature for a dataset on PLGA emulsion-based nanoparticle formulations.
@@ -177,7 +178,12 @@ def parse_args():
     parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model (default: {DEFAULT_MODEL}).")
     parser.add_argument("--batch", type=int, default=100, help="Batch size for simple rate limiting.")
     parser.add_argument("--sleep", type=float, default=1.0, help="Seconds to sleep between batches.")
-    return parser.parse_args()
+    args = parser.parse_args()
+    try:
+        validate_models_or_raise([args.model], context="auto_tag_plga_gemini preflight")
+    except ValueError as e:
+        raise SystemExit(str(e))
+    return args
 
 if __name__ == "__main__":
     args = parse_args()

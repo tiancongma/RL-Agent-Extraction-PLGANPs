@@ -165,6 +165,160 @@ def make_trace_pointer(row: pd.Series, row_index: int) -> str:
     return json.dumps(payload, ensure_ascii=False)
 
 
+def is_paper_local_table_path(table_csv_path: Any, key: str) -> bool:
+    p = str(table_csv_path or "").strip()
+    k = str(key or "").strip()
+    if not p or not k:
+        return False
+    parts = [str(x).lower() for x in Path(p).resolve().parts]
+    if "tables" not in parts:
+        return False
+    idx = parts.index("tables")
+    if idx + 1 >= len(parts):
+        return False
+    return parts[idx + 1] == k.lower()
+
+
+def parse_row_text_pairs(table_row_text: Any) -> dict[str, str]:
+    text = str(table_row_text or "").strip()
+    out: dict[str, str] = {}
+    if not text:
+        return out
+    for part in text.split("|"):
+        seg = str(part).strip()
+        if not seg or ":" not in seg:
+            continue
+        k, v = seg.split(":", 1)
+        key = re.sub(r"\s+", " ", k).strip().lower()
+        val = re.sub(r"\s+", " ", v).strip()
+        if key:
+            out[key] = val
+    return out
+
+
+def is_before_freeze_header(col_name: Any) -> bool:
+    c = re.sub(r"\s+", " ", str(col_name or "").lower()).strip()
+    return bool(
+        re.search(r"\bbefore\b.*\bfreeze[- ]?dry(?:ing)?\b", c)
+        or re.search(r"\bfreeze[- ]?dry(?:ing)?\b.*\bbefore\b", c)
+    )
+
+
+def is_after_freeze_header(col_name: Any) -> bool:
+    c = re.sub(r"\s+", " ", str(col_name or "").lower()).strip()
+    return bool(
+        re.search(r"\bafter\b.*\bfreeze[- ]?dry(?:ing)?\b", c)
+        or re.search(r"\bfreeze[- ]?dry(?:ing)?\b.*\bafter\b", c)
+    )
+
+
+def find_target_row_index(df: pd.DataFrame, row: pd.Series) -> int | None:
+    row_index_raw = str(row.get("row_index", "")).strip()
+    if row_index_raw.isdigit():
+        idx = int(row_index_raw)
+        if 0 <= idx < len(df):
+            return idx
+
+    pointer = str(row.get("evidence_pointer_raw", "") or row.get("evidence_ref", "")).strip()
+    m = re.search(r"(?:row(?:_index)?|r)\s*[:=]\s*(\d+)", pointer, flags=re.IGNORECASE)
+    if m:
+        idx = int(m.group(1))
+        if 0 <= idx < len(df):
+            return idx
+
+    pairs = parse_row_text_pairs(row.get("table_row_text", ""))
+    if pairs:
+        best_idx = None
+        best_score = -1
+        for ridx in range(len(df)):
+            rr = df.iloc[ridx]
+            score = 0
+            for k, v in pairs.items():
+                if k not in [str(c).strip().lower() for c in df.columns]:
+                    continue
+                for c in df.columns:
+                    ck = str(c).strip().lower()
+                    if ck != k:
+                        continue
+                    cv = re.sub(r"\s+", " ", str(rr.get(c, "")).strip())
+                    if cv == v:
+                        score += 2
+                    elif v and v in cv:
+                        score += 1
+            if score > best_score:
+                best_score = score
+                best_idx = ridx
+        if best_idx is not None and best_score > 0:
+            return int(best_idx)
+    return None
+
+
+def derive_baseline_size_before_freeze_drying(row: pd.Series) -> tuple[float | None, str, str]:
+    key = str(row.get("key", "")).strip()
+    table_csv_path = str(row.get("table_csv_path", "")).strip()
+    if not is_paper_local_table_path(table_csv_path, key):
+        return (None, "", "")
+    table_path = Path(table_csv_path)
+    if not table_path.exists():
+        return (None, "", "")
+
+    try:
+        tdf = pd.read_csv(table_path, dtype=str).fillna("")
+    except Exception:
+        return (None, "", "")
+    if tdf.empty:
+        return (None, "", "")
+
+    before_cols = [str(c) for c in tdf.columns if is_before_freeze_header(c)]
+    after_cols = [str(c) for c in tdf.columns if is_after_freeze_header(c)]
+    if not before_cols or not after_cols:
+        return (None, "", "")
+
+    row_idx = find_target_row_index(tdf, row)
+    if row_idx is None:
+        valid_rows = []
+        for ridx in range(len(tdf)):
+            rr = tdf.iloc[ridx]
+            has_before = any(parse_float(rr.get(c, "")) is not None for c in before_cols)
+            has_after = any(parse_float(rr.get(c, "")) is not None for c in after_cols)
+            if has_before and has_after:
+                valid_rows.append(ridx)
+        if len(valid_rows) != 1:
+            return (None, "", "")
+        row_idx = int(valid_rows[0])
+
+    rr = tdf.iloc[row_idx]
+    before_col = ""
+    before_val = None
+    for c in before_cols:
+        v = parse_float(rr.get(c, ""))
+        if v is not None:
+            before_col = c
+            before_val = v
+            break
+    after_col = ""
+    after_val = None
+    for c in after_cols:
+        v = parse_float(rr.get(c, ""))
+        if v is not None:
+            after_col = c
+            after_val = v
+            break
+
+    if before_val is None or after_val is None:
+        return (None, "", "")
+
+    trace_payload = {
+        "table_csv_path": str(table_path),
+        "table_row_index": int(row_idx),
+        "before_col": before_col,
+        "before_cell_text": str(rr.get(before_col, "")),
+        "after_col": after_col,
+        "after_cell_text": str(rr.get(after_col, "")),
+    }
+    return (float(before_val), json.dumps(trace_payload, ensure_ascii=False), "table_cell_before_freeze_drying")
+
+
 def add_value(
     out_rows: list[dict[str, Any]],
     *,
@@ -243,6 +397,21 @@ def main() -> None:
             value_source="extracted_anchor",
             trace_pointer=trace_ptr,
         )
+        baseline_size, baseline_trace, baseline_source = derive_baseline_size_before_freeze_drying(row)
+        if baseline_size is not None:
+            add_value(
+                derived_rows,
+                run_id=run_id,
+                group_key=group_key,
+                key=key,
+                formulation_id=formulation_id,
+                field_name="size_nm__baseline_before_freeze_drying",
+                value=baseline_size,
+                rule_id="baseline_size_before_freeze_drying_v1",
+                derived_from="table_before_after_freeze_drying_columns",
+                value_source=baseline_source,
+                trace_pointer=baseline_trace,
+            )
         add_value(
             derived_rows,
             run_id=run_id,

@@ -155,6 +155,27 @@ def canonical_solvent(v: Any) -> Tuple[str, bool]:
     return s.upper().replace(" ", "_"), conflict
 
 
+def build_doc_solvent_consensus(df: pd.DataFrame) -> Dict[str, str]:
+    values_by_doc: Dict[str, set[str]] = {}
+    doc_has_conflict: Dict[str, bool] = {}
+    for _, row in df.iterrows():
+        doc_key = normalize_text(row.get("key", "") or row.get("zotero_key", ""))
+        if not doc_key:
+            continue
+        canon, conflict = canonical_solvent(row.get("organic_solvent", ""))
+        if conflict:
+            doc_has_conflict[doc_key] = True
+        if canon:
+            values_by_doc.setdefault(doc_key, set()).add(canon)
+    out: Dict[str, str] = {}
+    for doc_key, vals in values_by_doc.items():
+        if doc_has_conflict.get(doc_key, False):
+            continue
+        if len(vals) == 1:
+            out[doc_key] = sorted(vals)[0]
+    return out
+
+
 def canonical_surfactant(name: Any, notes: Any, evidence: Any, pva_conc_percent: Any) -> Tuple[str, bool]:
     raw = " ".join([normalize_text(name), normalize_text(notes), normalize_text(evidence)])
     if not raw and normalize_text(pva_conc_percent):
@@ -186,7 +207,15 @@ def canonical_polymer_type(v: Any, notes: Any, evidence: Any) -> str:
         return "PLGA"
     if re.search(r"plga[\s\-]*peg|peg[\s\-]*plga", raw):
         return "PLGA-PEG"
-    if "plga" in raw:
+    if re.search(
+        r"\bplga\b"
+        r"|poly\s*\(\s*d\s*,\s*l\s*-\s*lactide\s*-\s*co\s*-\s*glycolide\s*\)"
+        r"|poly\s*\(\s*dl\s*-\s*lactide\s*-\s*co\s*-\s*glycolide\s*\)"
+        r"|polylactide\s*-\s*co\s*-\s*glycolide"
+        r"|poly\s*\(\s*lactic\s*-\s*co\s*-\s*glycolic\s*acid\s*\)",
+        raw,
+        flags=re.IGNORECASE,
+    ):
         return "PLGA"
     return normalize_key_token(v).upper() if normalize_key_token(v) else ""
 
@@ -447,6 +476,7 @@ def build_formulation_core_signature_v1(
     if "formulation_id" not in dfx.columns:
         dfx["formulation_id"] = ""
     dfx["instance_id"] = [f"inst_{i+1:06d}" for i in range(len(dfx))]
+    doc_solvent_consensus = build_doc_solvent_consensus(dfx)
     doe_sig_map = _build_doe_signature_maps(derived_values_df=derived_values_df)
 
     prep_rows: List[Dict[str, Any]] = []
@@ -455,8 +485,15 @@ def build_formulation_core_signature_v1(
     for _, row in dfx.iterrows():
         notes = row.get("notes", "")
         evidence = row.get("evidence_span_text", "")
+        doc_key_norm = normalize_text(row.get("key", "") or row.get("zotero_key", ""))
         solvent_raw = row.get("organic_solvent", "")
         solvent_canon, solvent_conflict = canonical_solvent(solvent_raw)
+        solvent_inherited_from_doc = 0
+        if not solvent_canon and doc_key_norm:
+            inherited = doc_solvent_consensus.get(doc_key_norm, "")
+            if inherited:
+                solvent_canon = inherited
+                solvent_inherited_from_doc = 1
         if solvent_raw and solvent_canon and solvent_canon == normalize_text(solvent_raw).upper().replace(" ", "_"):
             unknown_solvents[solvent_canon] = unknown_solvents.get(solvent_canon, 0) + 1
 
@@ -558,6 +595,7 @@ def build_formulation_core_signature_v1(
                 "canonical_components_json": json.dumps(all_components, ensure_ascii=False, sort_keys=True),
                 "doe_signature_canon": doe_signature_canon,
                 "doe_signature_source": doe_signature_source,
+                "solvent_inherited_from_doc": int(solvent_inherited_from_doc),
                 **all_components,
                 **critical_missing,
             }

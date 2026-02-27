@@ -40,6 +40,11 @@ import pandas as pd
 from dotenv import load_dotenv
 from src.utils.run_id import is_valid_run_id
 from src.utils.run_latest import inputs_fingerprint, write_latest
+from src.utils.model_policy import (
+    PRIMARY_DEFAULT,
+    SECONDARY_DEFAULT,
+    validate_models_or_raise,
+)
 
 # Optional Gemini dependency
 HAS_GENAI = False
@@ -659,7 +664,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
     # Model selection
     p.add_argument("--models", default=None,
-                   help="Comma-separated model names. Example: gemini-2.5-flash,gemma-3-12b-it")
+                   help="Comma-separated model names. Example: gemini-2.5-flash,gemini-2.5-flash-lite")
     p.add_argument("--model", default=None,
                    help="Single model name. Overrides --models if provided.")
     p.add_argument("--split-by-model", action="store_true",
@@ -765,11 +770,14 @@ def main(argv: Optional[List[str]] = None) -> None:
     elif args.models and str(args.models).strip():
         model_names = [m.strip() for m in str(args.models).split(",") if m.strip()]
     else:
-        # Keep your original default if user did not specify
-        model_names = ["gemini-2.5-flash", "gemma-3-12b-it"]
+        model_names = [PRIMARY_DEFAULT, SECONDARY_DEFAULT]
 
     if len(model_names) < 1:
         die("No models specified.")
+    try:
+        validate_models_or_raise(model_names, context="auto_extract_weak_labels_v6 preflight")
+    except ValueError as e:
+        die(str(e))
 
     if not HAS_GENAI:
         die("google-generativeai is required for this script (install it in your env).")
@@ -819,6 +827,10 @@ def main(argv: Optional[List[str]] = None) -> None:
             evidence = choose_canonical_evidence(sections if sections else [{"section_name": "fulltext", "text": fulltxt[:args.max_chars]}])
 
             for model in model_names:
+                try:
+                    validate_models_or_raise([model], context="auto_extract_weak_labels_v6 runtime")
+                except ValueError as e:
+                    die(str(e))
                 prompt = LLM_PROMPT_TEMPLATE + "\nTEXT:\n" + prompt_text
                 if args.verbose:
                     print(f"[CALL] {key} model={model} chars={len(prompt_text)}")

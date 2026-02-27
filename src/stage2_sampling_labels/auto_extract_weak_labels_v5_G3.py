@@ -36,6 +36,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 from dotenv import load_dotenv
+from src.utils.model_policy import PRIMARY_DEFAULT, SECONDARY_DEFAULT, validate_models_or_raise
 
 # Optional Gemini dependency
 HAS_GENAI = False
@@ -508,7 +509,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     p.add_argument("--out-tsv", default=defaults.get("out_tsv", None), required=False,
                    help="Write flattened TSV output (required unless you only want JSONL).")
 
-    p.add_argument("--models", default="gemini-2.5-flash,gemma-3-12b-it",
+    p.add_argument("--models", default=f"{PRIMARY_DEFAULT},{SECONDARY_DEFAULT}",
                    help="Comma-separated model names.")
     p.add_argument("--max-chars", type=int, default=30000)
     p.add_argument("--max-items", type=int, default=0, help="0 means all in sample.")
@@ -543,6 +544,10 @@ def main(argv: Optional[List[str]] = None) -> None:
     model_names = [m.strip() for m in str(args.models).split(",") if m.strip()]
     if len(model_names) < 1:
         die("No models specified.")
+    try:
+        validate_models_or_raise(model_names, context="auto_extract_weak_labels_v5_G3 preflight")
+    except ValueError as e:
+        die(str(e))
     if HAS_GENAI:
         # init first model to validate API key
         ensure_genai(model_names[0])
@@ -605,6 +610,10 @@ def main(argv: Optional[List[str]] = None) -> None:
             evidence = choose_canonical_evidence(sections if sections else [{"section_name": "fulltext", "text": fulltxt[:args.max_chars]}])
 
             for model in model_names:
+                try:
+                    validate_models_or_raise([model], context="auto_extract_weak_labels_v5_G3 runtime")
+                except ValueError as e:
+                    die(str(e))
                 prompt = LLM_PROMPT_TEMPLATE + "\nTEXT:\n" + prompt_text
                 if args.verbose:
                     print(f"[CALL] {key} model={model} chars={len(prompt_text)}")

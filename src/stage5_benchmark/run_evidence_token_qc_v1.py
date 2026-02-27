@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import re
+from collections import defaultdict
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -148,6 +149,11 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=1800,
         help="Context window size around span start for EE table-context fallback.",
+    )
+    p.add_argument(
+        "--audit-pack-xlsx",
+        default="",
+        help="Optional audit workbook path. If set, QC can use table_cell_text/table_row_text for EE/size matching.",
     )
     return p.parse_args()
 
@@ -609,9 +615,46 @@ def numeric_anchor_pass_ee(main_numeric_token: str, evidence_text: str, rel_tol:
     return False
 
 
+def numeric_anchor_pass_size(main_numeric_token: str, evidence_text: str, rel_tol: float, abs_tol: float) -> bool:
+    # Size-specific tolerant anchoring:
+    # - accept integer/one-decimal rounding variants
+    # - accept +/- contexts by allowing practical nm tolerance
+    if not main_numeric_token:
+        return False
+    try:
+        main_num = float(main_numeric_token)
+    except ValueError:
+        return False
+    ev_norm = normalize_text(evidence_text)
+
+    direct_variants = {
+        main_numeric_token,
+        str(main_numeric_token).replace(".", ","),
+        f"{main_num:.12f}".rstrip("0").rstrip("."),
+        f"{main_num:.2f}".rstrip("0").rstrip("."),
+        f"{main_num:.1f}".rstrip("0").rstrip("."),
+        f"{round(main_num):d}",
+    }
+    if any(v and v in ev_norm for v in direct_variants):
+        return True
+
+    size_abs_tol = max(float(abs_tol), 1.0)
+    size_rel_tol = max(float(rel_tol), 0.02)
+    for n in parse_numbers(evidence_text):
+        if abs(n - main_num) <= max(size_abs_tol, abs(main_num) * size_rel_tol):
+            return True
+        if round(n) == round(main_num):
+            return True
+        if round(n, 1) == round(main_num, 1):
+            return True
+    return False
+
+
 def numeric_anchor_pass(field_name: str, main_numeric_token: str, evidence_text: str, rel_tol: float, abs_tol: float) -> bool:
     if field_name == "encapsulation_efficiency_percent":
         return numeric_anchor_pass_ee(main_numeric_token, evidence_text, rel_tol, abs_tol)
+    if field_name == "size_nm":
+        return numeric_anchor_pass_size(main_numeric_token, evidence_text, rel_tol, abs_tol)
     if not main_numeric_token:
         return False
     try:
@@ -632,6 +675,147 @@ def numeric_anchor_pass(field_name: str, main_numeric_token: str, evidence_text:
         if abs(n - main_num) <= max(abs_tol, abs(main_num) * rel_tol):
             return True
     return False
+
+
+def infer_evidence_source_type_for_field(row: pd.Series, field_name: str) -> str:
+    # Prefer explicit field-level provenance columns when present.
+    field_source_map = {
+        "encapsulation_efficiency_percent": "value_source_EE",
+        "size_nm": "value_source_size",
+        "drug_feed_amount_text": "value_source_drug_mass",
+        "plga_mass_mg": "value_source_polymer_mass",
+    }
+    value_source_col = field_source_map.get(field_name, "")
+    value_source = str(row.get(value_source_col, "")).strip().lower() if value_source_col else ""
+    if value_source == "table_csv_cell":
+        return "table"
+    if value_source in {"fulltext_span", "proxy_compose", "derived_rule", "derived_doe_decode"}:
+        return "text"
+
+    explicit = str(row.get("evidence_source_type", "")).strip().lower()
+    if explicit == "table":
+        return "table"
+    if explicit in {"fulltext", "text"}:
+        return "text"
+
+    method = str(row.get("evidence_method", "")).strip().lower()
+    if "table" in method or "csv" in method:
+        return "table"
+    return "text"
+
+
+def _normalize_value_for_join(v: Any) -> str:
+    s = str(v or "").strip()
+    if not s:
+        return ""
+    n = parse_first_number(s)
+    if n is None:
+        return normalize_value_token(s)
+    return f"{n:.6f}"
+
+
+def _field_to_audit_raw_col(field_name: str) -> str:
+    return {
+        "encapsulation_efficiency_percent": "EE_raw",
+        "size_nm": "size_raw",
+    }.get(field_name, "")
+
+
+def _load_audit_evidence_long(audit_pack_xlsx: Path) -> pd.DataFrame:
+    audit_df = pd.read_excel(audit_pack_xlsx, sheet_name="audit_cases", dtype=str).fillna("")
+    if "zotero_key" in audit_df.columns and "key" not in audit_df.columns:
+        audit_df["key"] = audit_df["zotero_key"].astype(str)
+    out_rows: list[dict[str, str]] = []
+    for _, r in audit_df.iterrows():
+        key = str(r.get("key", "")).strip()
+        if not key:
+            continue
+        for field_name in ("encapsulation_efficiency_percent", "size_nm"):
+            raw_col = _field_to_audit_raw_col(field_name)
+            raw_val = str(r.get(raw_col, "")).strip() if raw_col else ""
+            if not raw_val:
+                continue
+            out_rows.append(
+                {
+                    "key": key,
+                    "field_name": field_name,
+                    "evidence_span_id": str(r.get("evidence_span_id", "")).strip(),
+                    "evidence_span_start": str(r.get("evidence_span_start", "")).strip(),
+                    "evidence_span_end": str(r.get("evidence_span_end", "")).strip(),
+                    "extracted_value_raw": raw_val,
+                    "extracted_value_norm": _normalize_value_for_join(raw_val),
+                    "table_cell_text": str(r.get("table_cell_text", "")).strip(),
+                    "table_row_text": str(r.get("table_row_text", "")).strip(),
+                }
+            )
+    return pd.DataFrame(out_rows)
+
+
+def _build_audit_lookup(
+    audit_long: pd.DataFrame,
+) -> tuple[
+    dict[tuple[str, str], list[dict[str, str]]],
+    dict[tuple[str, str, str, str], list[dict[str, str]]],
+    dict[tuple[str, str, str], list[dict[str, str]]],
+]:
+    by_span_id: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
+    by_span: dict[tuple[str, str, str, str], list[dict[str, str]]] = defaultdict(list)
+    by_value: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
+    if audit_long.empty:
+        return by_span_id, by_span, by_value
+    for _, r in audit_long.iterrows():
+        rec = {k: str(v or "").strip() for k, v in r.to_dict().items()}
+        key = rec.get("key", "")
+        field = rec.get("field_name", "")
+        sid = rec.get("evidence_span_id", "")
+        ss = rec.get("evidence_span_start", "")
+        se = rec.get("evidence_span_end", "")
+        vnorm = rec.get("extracted_value_norm", "")
+        if key and sid:
+            by_span_id[(key, sid)].append(rec)
+        if key and field and ss and se:
+            by_span[(key, field, ss, se)].append(rec)
+        if key and field and vnorm:
+            by_value[(key, field, vnorm)].append(rec)
+    return by_span_id, by_span, by_value
+
+
+def _pick_audit_evidence_record(
+    row: pd.Series,
+    field_name: str,
+    field_value: str,
+    by_span_id: dict[tuple[str, str], list[dict[str, str]]],
+    by_span: dict[tuple[str, str, str, str], list[dict[str, str]]],
+    by_value: dict[tuple[str, str, str], list[dict[str, str]]],
+) -> dict[str, str] | None:
+    key = str(row.get("key", "")).strip()
+    if not key:
+        return None
+    sid = str(row.get("evidence_span_id", "")).strip()
+    if sid:
+        c1 = by_span_id.get((key, sid), [])
+        if c1:
+            c1f = [x for x in c1 if x.get("field_name", "") == field_name]
+            if c1f:
+                return c1f[0]
+    ss = str(row.get("evidence_span_start", "")).strip()
+    se = str(row.get("evidence_span_end", "")).strip()
+    if ss and se:
+        c2 = by_span.get((key, field_name, ss, se), [])
+        if len(c2) == 1:
+            return c2[0]
+        if len(c2) > 1:
+            val_norm = _normalize_value_for_join(field_value)
+            c2v = [x for x in c2 if x.get("extracted_value_norm", "") == val_norm]
+            if len(c2v) == 1:
+                return c2v[0]
+    val_norm = _normalize_value_for_join(field_value)
+    if not val_norm:
+        return None
+    c3 = by_value.get((key, field_name, val_norm), [])
+    if len(c3) == 1:
+        return c3[0]
+    return None
 
 
 def is_deprioritized_section(row: pd.Series, evidence_text: str) -> bool:
@@ -677,6 +861,9 @@ def run_qc(
     sample_manifest: pd.DataFrame,
     key2txt: pd.DataFrame,
     realign_index: dict[tuple[str, str, str], str],
+    audit_by_span_id: dict[tuple[str, str], list[dict[str, str]]] | None = None,
+    audit_by_span: dict[tuple[str, str, str, str], list[dict[str, str]]] | None = None,
+    audit_by_value: dict[tuple[str, str, str], list[dict[str, str]]] | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     doc_cache: dict[str, dict[str, Any]] = {}
 
@@ -701,8 +888,12 @@ def run_qc(
         return ctx
 
     rows: list[dict[str, Any]] = []
+    audit_by_span_id = audit_by_span_id or {}
+    audit_by_span = audit_by_span or {}
+    audit_by_value = audit_by_value or {}
     for idx, r in df.iterrows():
-        evidence = normalize_text(r.get("evidence_span_text", ""))
+        base_evidence_text = str(r.get("evidence_span_text", ""))
+        evidence = normalize_text(base_evidence_text)
         if not evidence.strip():
             continue
         key = str(r.get("key", "")).strip()
@@ -729,19 +920,41 @@ def run_qc(
 
             unit_tokens = build_required_unit_tokens(field_name, value_text)
             entity_tokens = build_required_entity_tokens(field_name, r)
+            field_evidence_text = base_evidence_text
+            evidence_used_source = "text"
+            if field_name in {"encapsulation_efficiency_percent", "size_nm"} and audit_by_span_id:
+                picked = _pick_audit_evidence_record(
+                    row=r,
+                    field_name=field_name,
+                    field_value=value_text,
+                    by_span_id=audit_by_span_id,
+                    by_span=audit_by_span,
+                    by_value=audit_by_value,
+                )
+                if picked is not None:
+                    table_cell = str(picked.get("table_cell_text", "")).strip()
+                    table_row = str(picked.get("table_row_text", "")).strip()
+                    if table_cell:
+                        field_evidence_text = table_cell
+                        evidence_used_source = "table_cell"
+                    elif table_row:
+                        field_evidence_text = table_row
+                        evidence_used_source = "table_row"
+
+            field_evidence_norm = normalize_text(field_evidence_text)
             has_numeric = numeric_anchor_pass(
                 field_name,
                 main_numeric,
-                str(r.get("evidence_span_text", "")),
+                field_evidence_text,
                 rel_tol=float(args.numeric_rel_tol),
                 abs_tol=float(args.numeric_abs_tol),
             )
-            unit_matches = contains_any(evidence, unit_tokens)
+            unit_matches = contains_any(field_evidence_norm, unit_tokens)
             # EE can appear without explicit '%' if the span is clearly in EE column/context.
             if field_name == "encapsulation_efficiency_percent" and has_numeric and unit_matches == 0:
-                if has_ee_column_context(str(r.get("evidence_span_text", ""))):
+                if has_ee_column_context(field_evidence_text):
                     unit_matches = 1
-            entity_matches = contains_any(evidence, entity_tokens)
+            entity_matches = contains_any(field_evidence_norm, entity_tokens)
 
             fail_numeric = not has_numeric
             fail_unit = bool(args.require_unit_token and unit_matches < int(args.unit_min_matches))
@@ -768,7 +981,7 @@ def run_qc(
             ee_table_context_pass = 0
             ee_window_snippet = ""
             if field_name == "encapsulation_efficiency_percent":
-                ev_txt = str(r.get("evidence_span_text", ""))
+                ev_txt = field_evidence_text
                 win = get_char_window(doc_ctx["source_text"], span_start, int(args.ee_window_chars))
                 line_win = get_line_window(doc_ctx["source_text"], span_start, half_lines=25)
                 ee_header_in_span = int(has_ee_header_hint(ev_txt))
@@ -808,7 +1021,7 @@ def run_qc(
                     "evidence_supported": int(not mismatch),
                     "field_span_start": span_start,
                     "anchor_id": anchor_id,
-                    "evidence_span_text": short_text(r.get("evidence_span_text", ""), 300),
+                    "evidence_span_text": short_text(field_evidence_text, 300),
                     "drug_name": str(r.get("drug_name", "")).strip(),
                     "ee_header_in_span": int(ee_header_in_span),
                     "ee_header_in_window": int(ee_header_in_window),
@@ -816,6 +1029,8 @@ def run_qc(
                     "ee_table_chunk_is_table_like": int(ee_table_chunk_is_table_like),
                     "ee_table_context_pass": int(ee_table_context_pass),
                     "ee_window_snippet": ee_window_snippet,
+                    "evidence_source_type": infer_evidence_source_type_for_field(r, field_name),
+                    "evidence_used_source": evidence_used_source,
                 }
             )
 
@@ -846,6 +1061,8 @@ def run_qc(
                 "anchor_id",
                 "evidence_span_text",
                 "drug_name",
+                "evidence_source_type",
+                "evidence_used_source",
             ]
         )
     flagged = checks[checks["evidence_mismatch"] == 1].copy()
@@ -1223,6 +1440,7 @@ def main() -> None:
     realign_log = Path(args.realign_log) if args.realign_log else run_dir / "evidence_realign_log.tsv"
     sample_manifest_path = Path(args.sample_manifest)
     key2txt_path = Path(args.key2txt)
+    audit_pack_xlsx = Path(args.audit_pack_xlsx) if args.audit_pack_xlsx else None
     out_dir.mkdir(parents=True, exist_ok=True)
     if not input_tsv.exists():
         raise FileNotFoundError(f"Missing input extraction TSV: {input_tsv}")
@@ -1235,14 +1453,33 @@ def main() -> None:
     sample_manifest = pd.read_csv(sample_manifest_path, sep="\t", dtype=str).fillna("")
     key2txt = pd.read_csv(key2txt_path, sep="\t", dtype=str).fillna("") if key2txt_path.exists() else pd.DataFrame()
     realign_index = build_realign_index(realign_log)
+    audit_by_span_id: dict[tuple[str, str], list[dict[str, str]]] = {}
+    audit_by_span: dict[tuple[str, str, str, str], list[dict[str, str]]] = {}
+    audit_by_value: dict[tuple[str, str, str], list[dict[str, str]]] = {}
+    if audit_pack_xlsx is not None:
+        if not audit_pack_xlsx.exists():
+            raise FileNotFoundError(f"Missing audit pack workbook: {audit_pack_xlsx}")
+        audit_long = _load_audit_evidence_long(audit_pack_xlsx)
+        audit_by_span_id, audit_by_span, audit_by_value = _build_audit_lookup(audit_long)
 
-    checks, report, flagged, high_conf, risk_flags, confidence = run_qc(df, args, sample_manifest, key2txt, realign_index)
+    checks, report, flagged, high_conf, risk_flags, confidence = run_qc(
+        df,
+        args,
+        sample_manifest,
+        key2txt,
+        realign_index,
+        audit_by_span_id=audit_by_span_id,
+        audit_by_span=audit_by_span,
+        audit_by_value=audit_by_value,
+    )
 
     p_report = out_dir / "qc_report.tsv"
     p_flagged = out_dir / "flagged_rows_for_review.tsv"
     p_high = out_dir / "weak_labels__gemini_high_confidence.tsv"
     p_checks = out_dir / "evidence_token_qc_checks.tsv"
     p_checks_realigned = out_dir / "evidence_token_qc_checks__realigned.tsv"
+    p_numeric_breakdown = out_dir / "numeric_token_mismatch_by_evidence_source_type.tsv"
+    p_numeric_used_source = out_dir / "numeric_token_mismatch_by_evidence_used_source.tsv"
     p_run_summary = run_dir / "qc_field_evidence_gate_summary__realigned.tsv"
     p_risk = run_dir / "risk_flags__shared_spans.tsv"
     p_conf = run_dir / "confidence_tiers__formulation_level.tsv"
@@ -1252,6 +1489,40 @@ def main() -> None:
     high_conf.to_csv(p_high, sep="\t", index=False)
     checks.to_csv(p_checks, sep="\t", index=False)
     checks.to_csv(p_checks_realigned, sep="\t", index=False)
+    if checks.empty:
+        pd.DataFrame(
+            columns=["field_name", "evidence_source_type", "numeric_token_mismatch_rows", "evaluated_rows"]
+        ).to_csv(p_numeric_breakdown, sep="\t", index=False)
+        pd.DataFrame(
+            columns=["field_name", "evidence_used_source", "numeric_token_mismatch_rows", "evaluated_rows"]
+        ).to_csv(p_numeric_used_source, sep="\t", index=False)
+    else:
+        mismatch_source = (
+            checks.groupby(["field_name", "evidence_source_type"], dropna=False)
+            .agg(
+                numeric_token_mismatch_rows=(
+                    "fail_numeric_token",
+                    lambda x: int((pd.to_numeric(x, errors="coerce").fillna(0).astype(int) == 1).sum()),
+                ),
+                evaluated_rows=("row_index", "count"),
+            )
+            .reset_index()
+            .sort_values(["numeric_token_mismatch_rows", "field_name", "evidence_source_type"], ascending=[False, True, True])
+        )
+        mismatch_source.to_csv(p_numeric_breakdown, sep="\t", index=False)
+        mismatch_used_source = (
+            checks.groupby(["field_name", "evidence_used_source"], dropna=False)
+            .agg(
+                numeric_token_mismatch_rows=(
+                    "fail_numeric_token",
+                    lambda x: int((pd.to_numeric(x, errors="coerce").fillna(0).astype(int) == 1).sum()),
+                ),
+                evaluated_rows=("row_index", "count"),
+            )
+            .reset_index()
+            .sort_values(["numeric_token_mismatch_rows", "field_name", "evidence_used_source"], ascending=[False, True, True])
+        )
+        mismatch_used_source.to_csv(p_numeric_used_source, sep="\t", index=False)
     report.rename(
         columns={
             "evaluated_rows": "total_extracted",
@@ -1287,6 +1558,8 @@ def main() -> None:
             "high_confidence_tsv": str(p_high),
             "checks_tsv": str(p_checks),
             "checks_realigned_tsv": str(p_checks_realigned),
+            "numeric_mismatch_by_source_tsv": str(p_numeric_breakdown),
+            "numeric_mismatch_by_evidence_used_source_tsv": str(p_numeric_used_source),
             "run_level_qc_summary_tsv": str(p_run_summary),
             "risk_flags_shared_spans_tsv": str(p_risk),
             "confidence_tiers_formulation_level_tsv": str(p_conf),
@@ -1302,6 +1575,7 @@ def main() -> None:
             "numeric_abs_tol": float(args.numeric_abs_tol),
             "ee_structured_mode": str(args.ee_structured_mode),
             "ee_window_chars": int(args.ee_window_chars),
+            "audit_pack_xlsx": str(audit_pack_xlsx) if audit_pack_xlsx is not None else "",
         },
     }
     print(json.dumps(summary, indent=2))
