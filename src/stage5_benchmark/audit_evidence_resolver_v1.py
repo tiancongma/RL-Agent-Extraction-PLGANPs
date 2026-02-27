@@ -42,6 +42,7 @@ class TableEvidence:
     ownership_check_reason: str
     chosen_table_rejected: bool
     table_evidence_missing_reason: str
+    table_first_policy_tag: str
 
 
 def short_text(v: Any, limit: int) -> str:
@@ -517,6 +518,153 @@ class AuditEvidenceResolverV1:
         t = str(text_blob or "").lower()
         return bool(re.search(r"factorial|box[- ]?behnken|coded|levels?", t))
 
+    def _parse_numeric(self, value: Any) -> float | None:
+        s = str(value or "").replace("\u2212", "-").replace("\u2013", "-").replace("\u2014", "-")
+        m = re.search(r"[-+]?\d+(?:[.,]\d+)?", s)
+        if not m:
+            return None
+        try:
+            return float(m.group(0).replace(",", "."))
+        except Exception:
+            return None
+
+    def _generate_equivalent_numeric_strings(self, v_num: float, raw_value: str, field_name: str) -> set[str]:
+        raw = str(raw_value or "").replace("\u2212", "-").strip()
+        out: set[str] = set()
+        if raw:
+            out.add(raw.lower())
+            out.add(re.sub(r"\s+", "", raw.lower()))
+
+        as_num = f"{v_num:.12f}".rstrip("0").rstrip(".")
+        out.add(as_num)
+        out.add(f"{v_num:.2f}".rstrip("0").rstrip("."))
+        out.add(f"{v_num:.1f}".rstrip("0").rstrip("."))
+        if abs(v_num - round(v_num)) < 1e-6:
+            out.add(str(int(round(v_num))))
+
+        out = {x for x in out if x}
+        with_units = set(out)
+        if field_name == "encapsulation_efficiency_percent":
+            with_units |= {f"{x}%" for x in out}
+        if field_name == "size_nm":
+            with_units |= {f"{x}nm" for x in out}
+            with_units |= {f"{x} nm" for x in out}
+        return with_units
+
+    def _find_numeric_ranges(self, text: str) -> list[tuple[float, float]]:
+        t = str(text or "").replace("\u2212", "-")
+        ranges: list[tuple[float, float]] = []
+        for m in re.finditer(r"([-+]?\d+(?:[.,]\d+)?)\s*(?:-|to)\s*([-+]?\d+(?:[.,]\d+)?)", t, flags=re.IGNORECASE):
+            try:
+                a = float(m.group(1).replace(",", "."))
+                b = float(m.group(2).replace(",", "."))
+            except Exception:
+                continue
+            lo, hi = (a, b) if a <= b else (b, a)
+            ranges.append((lo, hi))
+        return ranges
+
+    def _match_cell_numeric_level(
+        self,
+        cell_text: str,
+        field_name: str,
+        v_num: float,
+        v_tokens: set[str],
+    ) -> int:
+        ct = str(cell_text or "").replace("\u2212", "-").lower()
+        ct_compact = re.sub(r"\s+", "", ct)
+        for tok in v_tokens:
+            t = str(tok).lower().strip()
+            if not t:
+                continue
+            if t in ct or re.sub(r"\s+", "", t) in ct_compact:
+                return 3  # exact token match
+
+        nums = []
+        for m in re.finditer(r"[-+]?\d+(?:[.,]\d+)?", ct):
+            try:
+                nums.append(float(m.group(0).replace(",", ".")))
+            except Exception:
+                continue
+        if field_name == "encapsulation_efficiency_percent":
+            tol_abs = 0.5
+            tol_rel = 0.02
+        elif field_name == "size_nm":
+            tol_abs = 1.0
+            tol_rel = 0.02
+        else:
+            tol_abs = 1e-6
+            tol_rel = 1e-3
+        tol = max(tol_abs, abs(v_num) * tol_rel)
+        for n in nums:
+            if abs(n - v_num) <= tol:
+                return 2  # rounded/tolerant match
+
+        for lo, hi in self._find_numeric_ranges(ct):
+            if lo - tol <= v_num <= hi + tol:
+                return 1  # range match
+        return 0
+
+    def _pick_table_first_match(
+        self,
+        candidates: list[dict[str, Any]],
+        numeric_specs: list[dict[str, Any]],
+        preferred_fields: set[str],
+        max_table_row_chars: int,
+    ) -> dict[str, Any] | None:
+        best: dict[str, Any] | None = None
+        for cand in candidates:
+            p = Path(cand["path"]).resolve()
+            try:
+                df = pd.read_csv(p, dtype=str).fillna("")
+            except Exception:
+                continue
+            if df.empty:
+                continue
+            cols = [str(c) for c in df.columns]
+            caption = ""
+            meta_hit = [m for m in self.table_meta if str(m["path"]) == str(p)]
+            if meta_hit:
+                caption = str(meta_hit[0].get("caption", ""))
+            for ridx in range(len(df)):
+                rr = df.iloc[ridx]
+                row_text = " | ".join([f"{c}:{rr[c]}" for c in cols if str(rr[c]).strip()])
+                for col in cols:
+                    cell = str(rr.get(col, ""))
+                    if not cell.strip():
+                        continue
+                    for spec in numeric_specs:
+                        level = self._match_cell_numeric_level(
+                            cell_text=cell,
+                            field_name=str(spec["field_name"]),
+                            v_num=float(spec["value_num"]),
+                            v_tokens=set(spec["value_tokens"]),
+                        )
+                        if level <= 0:
+                            continue
+                        score = float(level) * 100.0
+                        if str(spec["field_name"]) in preferred_fields:
+                            score += 20.0
+                        score += min(len(row_text) / 200.0, 2.0)
+                        candidate = {
+                            "path": p,
+                            "row_idx": ridx,
+                            "row_text": short_text(row_text, max_table_row_chars),
+                            "cell_text": short_text(cell, max_table_row_chars),
+                            "caption": short_text(caption, 300),
+                            "score": score,
+                            "field_name": str(spec["field_name"]),
+                            "match_reason": (
+                                "table_first_exact_numeric_match"
+                                if level == 3
+                                else ("table_first_tolerant_numeric_match" if level == 2 else "table_first_range_numeric_match")
+                            ),
+                            "doe_signature": short_text(self._extract_doe_signature_from_row(rr, cols), 200),
+                        }
+                        if best is None or float(candidate["score"]) > float(best["score"]):
+                            best = candidate
+        return best
+
     def resolve_table_evidence(
         self,
         zotero_key: str,
@@ -526,12 +674,16 @@ class AuditEvidenceResolverV1:
         row_index: Any = "",
         col_name: str = "",
         target_values: dict[str, str] | None = None,
+        value_source_by_field: dict[str, str] | None = None,
+        current_table_csv_path: str = "",
+        current_table_cell_text: str = "",
         field_hint: str = "",
         target_field: str = "",
         notes_hint: str = "",
         max_table_row_chars: int = 800,
     ) -> TableEvidence:
         target_values = target_values or {}
+        value_source_by_field = value_source_by_field or {}
         csv_name = self._extract_table_csv_name(pointer_raw)
         direct_paths = self.table_file_index.get(csv_name.lower(), []) if csv_name else []
 
@@ -549,7 +701,139 @@ class AuditEvidenceResolverV1:
             if str(x["path"]) not in {str(c["path"]) for c in candidates}:
                 candidates.append(x)
 
+        # PSEUDOCODE (table-first numeric evidence binding policy):
+        # Given:
+        # - row-like inputs with zotero key K, field F, extracted value V
+        # - paper-local table candidates restricted to K
+        # - text candidates (handled by caller) and table candidates (here)
+        # - value source hints for F (value_source_EE/value_source_size)
+        #
+        # Step 1: Parse numeric value and build equivalent numeric strings.
+        # - v_num = parse_numeric(V)
+        # - v_strs = generate_equivalent_numeric_strings(v_num, V)
+        #   Includes exact/trimmed/rounded/integer variants, unicode-minus handling,
+        #   optional % (EE) and optional nm (size).
+        # - If v_num is None, keep existing non-numeric behavior.
+        #
+        # Step 2: Compute table_first_trigger.
+        # - Trigger if value source indicates table_csv_cell.
+        # - Else trigger if any paper-local table cell matches numeric tokens/tolerance.
+        # - Else trigger if row already contains a valid paper-local table path + cell text.
+        #
+        # Step 3: If table_first_trigger:
+        # - Bind table first using match priority:
+        #   exact numeric > tolerant rounded/+/- > range contains value.
+        # - If matched, return table evidence and stop (no text fallback).
+        # - If not matched:
+        #   - EE/size: set table_expected_but_not_found and block text fallback.
+        #   - Other numeric: keep existing fallback path and tag fallback_text_after_table_miss.
+        #
+        # Step 4: If not table_first_trigger:
+        # - Continue existing resolver logic.
+        target_value_map = {
+            "encapsulation_efficiency_percent": str(target_values.get("ee", "")).strip(),
+            "size_nm": str(target_values.get("size", "")).strip(),
+            "pdi": str(target_values.get("pdi", "")).strip(),
+            "drug_feed_amount_text": str(target_values.get("drug", "")).strip(),
+            "plga_mass_mg": str(target_values.get("polymer", "")).strip(),
+            "pva_conc_percent": str(target_values.get("surfactant", "")).strip(),
+        }
+        numeric_specs: list[dict[str, Any]] = []
+        for fname, raw in target_value_map.items():
+            if not raw:
+                continue
+            v_num = self._parse_numeric(raw)
+            if v_num is None:
+                continue
+            numeric_specs.append(
+                {
+                    "field_name": fname,
+                    "value_num": v_num,
+                    "value_tokens": self._generate_equivalent_numeric_strings(v_num=v_num, raw_value=raw, field_name=fname),
+                }
+            )
+        high_stakes_fields = {"encapsulation_efficiency_percent", "size_nm"}
+        high_stakes_specs = [s for s in numeric_specs if str(s["field_name"]) in high_stakes_fields]
+        value_source_table = any(
+            str(value_source_by_field.get(f, "")).strip().lower() == "table_csv_cell"
+            for f in high_stakes_fields
+        )
+        existing_table_hint = bool(
+            str(current_table_cell_text or "").strip()
+            and str(current_table_csv_path or "").strip()
+            and self._path_is_for_key(Path(str(current_table_csv_path)).resolve(), zotero_key)
+        )
+        table_value_present = False
+        if high_stakes_specs and candidates:
+            table_value_present = self._pick_table_first_match(
+                candidates=candidates,
+                numeric_specs=high_stakes_specs,
+                preferred_fields=high_stakes_fields,
+                max_table_row_chars=max_table_row_chars,
+            ) is not None
+        tf = str(target_field or "").lower()
+        fh = str(field_hint or "").lower()
+        preferred_fields: set[str] = set()
+        if ("encapsulation" in tf) or ("ee" in tf) or ("encapsulation" in fh) or ("ee" in fh):
+            preferred_fields.add("encapsulation_efficiency_percent")
+        if ("size" in tf) or ("particle" in tf) or ("size" in fh):
+            preferred_fields.add("size_nm")
+        if not preferred_fields:
+            preferred_fields = high_stakes_fields
+        table_first_trigger = bool(value_source_table or table_value_present or existing_table_hint)
+
+        if table_first_trigger and high_stakes_specs and candidates:
+            tf_match = self._pick_table_first_match(
+                candidates=candidates,
+                numeric_specs=high_stakes_specs,
+                preferred_fields=preferred_fields,
+                max_table_row_chars=max_table_row_chars,
+            )
+            if tf_match is not None:
+                chosen_tf = Path(tf_match["path"]).resolve()
+                if self._path_is_for_key(chosen_tf, zotero_key):
+                    return TableEvidence(
+                        table_csv_path=str(chosen_tf),
+                        table_filename=str(chosen_tf.name),
+                        rejected_table_filename="",
+                        table_title_or_caption=str(tf_match["caption"]),
+                        table_match_score=round(float(tf_match["score"]), 4),
+                        table_row_text=str(tf_match["row_text"]),
+                        table_cell_text=str(tf_match["cell_text"]),
+                        doe_signature=str(tf_match["doe_signature"]),
+                        top5_candidates=[str(chosen_tf.name)],
+                        top5_scores=[round(float(tf_match["score"]), 4)],
+                        match_reason=f"paper_local_match|{str(tf_match['match_reason'])}|field={str(tf_match['field_name'])}",
+                        paper_local_candidate_count=int(len(paper_local_registry)),
+                        ownership_check_passed=True,
+                        ownership_check_reason="paper_local_match",
+                        chosen_table_rejected=False,
+                        table_evidence_missing_reason="",
+                        table_first_policy_tag="",
+                    )
+                self._log_drop_nonlocal(zotero_key, chosen_tf, "table_first_selected_nonlocal")
+
         if not candidates:
+            if table_first_trigger and high_stakes_specs:
+                return TableEvidence(
+                    table_csv_path="",
+                    table_filename="",
+                    rejected_table_filename=csv_name,
+                    table_title_or_caption="",
+                    table_match_score=0.0,
+                    table_row_text="",
+                    table_cell_text="",
+                    doe_signature="",
+                    top5_candidates=[],
+                    top5_scores=[],
+                    match_reason="table_first_trigger_no_paper_local_candidate",
+                    paper_local_candidate_count=int(len(paper_local_registry)),
+                    ownership_check_passed=False,
+                    ownership_check_reason="no_paper_local_candidates",
+                    chosen_table_rejected=bool(csv_name),
+                    table_evidence_missing_reason="table_expected_but_not_found_high_stakes",
+                    table_first_policy_tag="table_expected_but_not_found",
+                )
             # Fulltext proxy fallback for DoE rows when the paper has zero extracted tables.
             notes = str(notes_hint or "")
             vals = {k: str(v).strip() for k, v in target_values.items() if str(v).strip()}
@@ -579,6 +863,7 @@ class AuditEvidenceResolverV1:
                     ownership_check_reason="no_paper_local_candidates_proxy_used",
                     chosen_table_rejected=bool(csv_name),
                     table_evidence_missing_reason="",
+                    table_first_policy_tag=("fallback_text_after_table_miss" if table_first_trigger else ""),
                 )
             return TableEvidence(
                 table_csv_path="",
@@ -597,6 +882,7 @@ class AuditEvidenceResolverV1:
                 ownership_check_reason="no_paper_local_candidates",
                 chosen_table_rejected=bool(csv_name),
                 table_evidence_missing_reason="no_paper_local_candidate_table_csv",
+                table_first_policy_tag=("fallback_text_after_table_miss" if table_first_trigger else ""),
             )
 
         best: dict[str, Any] = {
@@ -692,6 +978,26 @@ class AuditEvidenceResolverV1:
                 best["reason"] = "|".join(reason_parts)
 
         if best["path"] is None:
+            if table_first_trigger and high_stakes_specs:
+                return TableEvidence(
+                    table_csv_path="",
+                    table_filename="",
+                    rejected_table_filename=csv_name,
+                    table_title_or_caption="",
+                    table_match_score=0.0,
+                    table_row_text="",
+                    table_cell_text="",
+                    doe_signature="",
+                    top5_candidates=[],
+                    top5_scores=[],
+                    match_reason="table_first_trigger_no_table_cell_match",
+                    paper_local_candidate_count=int(len(paper_local_registry)),
+                    ownership_check_passed=False,
+                    ownership_check_reason="table_search_failed_within_paper_local_candidates",
+                    chosen_table_rejected=bool(csv_name),
+                    table_evidence_missing_reason="table_expected_but_not_found_high_stakes",
+                    table_first_policy_tag="table_expected_but_not_found",
+                )
             return TableEvidence(
                 table_csv_path="",
                 table_filename="",
@@ -709,6 +1015,7 @@ class AuditEvidenceResolverV1:
                 ownership_check_reason="table_search_failed_within_paper_local_candidates",
                 chosen_table_rejected=bool(csv_name),
                 table_evidence_missing_reason="table_search_failed",
+                table_first_policy_tag=("fallback_text_after_table_miss" if table_first_trigger else ""),
             )
         scored = sorted(scored, key=lambda x: x[1], reverse=True)[:5]
 
@@ -742,6 +1049,7 @@ class AuditEvidenceResolverV1:
                     ownership_check_reason=ownership_reason,
                     chosen_table_rejected=True,
                     table_evidence_missing_reason="",
+                    table_first_policy_tag=("fallback_text_after_table_miss" if table_first_trigger else ""),
                 )
             return TableEvidence(
                 table_csv_path="",
@@ -760,6 +1068,7 @@ class AuditEvidenceResolverV1:
                 ownership_check_reason=ownership_reason,
                 chosen_table_rejected=True,
                 table_evidence_missing_reason="ownership_check_failed",
+                table_first_policy_tag=("fallback_text_after_table_miss" if table_first_trigger else ""),
             )
 
         return TableEvidence(
@@ -779,4 +1088,5 @@ class AuditEvidenceResolverV1:
             ownership_check_reason=ownership_reason,
             chosen_table_rejected=False,
             table_evidence_missing_reason="",
+            table_first_policy_tag="",
         )

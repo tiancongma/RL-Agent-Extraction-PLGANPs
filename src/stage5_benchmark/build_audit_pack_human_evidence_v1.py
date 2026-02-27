@@ -531,6 +531,14 @@ def main() -> None:
                 row_index=r.get("row_index", ""),
                 col_name=str(r.get("derived_field_name", "")),
                 target_values=target_vals,
+                value_source_by_field={
+                    "encapsulation_efficiency_percent": str(r.get("value_source_EE", "")),
+                    "size_nm": str(r.get("value_source_size", "")),
+                    "drug_feed_amount_text": str(r.get("value_source_drug_mass", "")),
+                    "plga_mass_mg": str(r.get("value_source_polymer_mass", "")),
+                },
+                current_table_csv_path=str(r.get("table_csv_path", "")),
+                current_table_cell_text=str(r.get("table_cell_text", "")),
                 field_hint=target_field,
                 target_field=target_field,
                 notes_hint=str(r.get("notes", "")) + " " + str(r.get("evidence_span_text", "")),
@@ -579,11 +587,16 @@ def main() -> None:
                 table_selection_status = "proxy"
             else:
                 table_selection_status = "none"
+            block_text_binding = str(table_ev.table_first_policy_tag).strip() == "table_expected_but_not_found"
+            if block_text_binding:
+                table_selection_status = "table_expected_but_not_found"
             evidence_pointer_out = pointer_raw
             if table_evidence_kind == "table_csv_cell" and str(table_ev.table_filename).strip():
                 evidence_pointer_out = (
                     f"table|{str(table_ev.table_filename).strip()}|match:{str(table_ev.match_reason).strip()}"
                 )
+            if block_text_binding:
+                evidence_pointer_out = ""
             proxy_components: dict[str, str] = {}
             if table_evidence_kind == "proxy_compose":
                 proxy_components = {
@@ -671,14 +684,18 @@ def main() -> None:
                 "missing_surfactant": bool(r.get("missing_surfactant", False)),
                 "missing_feed_anchor": bool(r.get("missing_feed_anchor", False)),
                 "evidence_source_type": (
-                    "table"
-                    if table_evidence_kind == "table_csv_cell"
-                    else ("proxy_compose" if table_evidence_kind == "proxy_compose" else text_ev.evidence_source_type)
+                    "unknown"
+                    if block_text_binding
+                    else (
+                        "table"
+                        if table_evidence_kind == "table_csv_cell"
+                        else ("proxy_compose" if table_evidence_kind == "proxy_compose" else text_ev.evidence_source_type)
+                    )
                 ),
                 "evidence_pointer_raw": evidence_pointer_out,
-                "evidence_text": text_ev.evidence_text,
-                "evidence_context_before": text_ev.evidence_context_before,
-                "evidence_context_after": text_ev.evidence_context_after,
+                "evidence_text": ("" if block_text_binding else text_ev.evidence_text),
+                "evidence_context_before": ("" if block_text_binding else text_ev.evidence_context_before),
+                "evidence_context_after": ("" if block_text_binding else text_ev.evidence_context_after),
                 "table_csv_path": table_ev.table_csv_path,
                 "table_filename": table_ev.table_filename,
                 "rejected_table_filename": table_ev.rejected_table_filename,
@@ -688,6 +705,7 @@ def main() -> None:
                 "ownership_check_passed": bool(table_ev.ownership_check_passed),
                 "ownership_check_reason": str(table_ev.ownership_check_reason),
                 "table_selection_status": table_selection_status,
+                "resolver_policy_tag": str(table_ev.table_first_policy_tag or ""),
                 "table_row_text": table_ev.table_row_text,
                 "table_cell_text": table_ev.table_cell_text,
                 "proxy_components_json": json.dumps(proxy_components, ensure_ascii=False, sort_keys=True) if proxy_components else "",
@@ -708,7 +726,7 @@ def main() -> None:
                 "value_source_drug_mass": value_source_drug_mass if value_source_drug_mass in VALUE_SOURCES else "unknown",
                 "value_source_polymer_mass": value_source_polymer_mass if value_source_polymer_mass in VALUE_SOURCES else "unknown",
                 "value_source_doe_signature": value_source_doe_signature if value_source_doe_signature in VALUE_SOURCES else "unknown",
-                "human_review_tag": "",
+                "human_review_tag": ("table_expected_but_not_found" if block_text_binding else str(table_ev.table_first_policy_tag or "")),
                 "human_notes": "",
             }
             row_payload, _ = apply_provenance_hard_guards(row_payload)
@@ -803,6 +821,7 @@ def main() -> None:
         "table_filename",
         "table_csv_path",
         "table_selection_status",
+        "resolver_policy_tag",
         "ownership_check_passed",
         "ownership_check_reason",
         "human_review_tag",
