@@ -11,6 +11,7 @@ from typing import Any
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.styles import Alignment
+from openpyxl.worksheet.datavalidation import DataValidation
 
 
 def _bootstrap_import_paths() -> None:
@@ -161,6 +162,14 @@ def apply_provenance_hard_guards(row: dict[str, Any]) -> tuple[dict[str, Any], l
         if str(out.get("table_selection_status", "")).strip() != "rejected_cross_paper":
             out["table_selection_status"] = "evidence_mixed_source"
         out["human_review_tag"] = "cross_paper_or_mixed_evidence"
+
+    # Table evidence must remain auditable for human review.
+    cell_text = str(out.get("table_cell_text", "") or "")
+    has_cell_numeric = bool(re.search(r"[-+]?\d+(?:[.,]\d+)?", cell_text))
+    if str(out.get("evidence_source_type", "")).strip() == "table" and not has_cell_numeric:
+        violations.append("table_match_not_auditable")
+        out["human_review_tag"] = "table_match_not_auditable"
+        out["table_selection_status"] = "needs_review_non_auditable"
 
     return out, violations
 
@@ -461,6 +470,15 @@ def _text_contains_any_numeric_anchor(text: str, values: list[str]) -> bool:
 
 
 def write_xlsx(audit_df: pd.DataFrame, summary_df: pd.DataFrame, out_xlsx: Path) -> None:
+    required_reviewer_cols = [
+        "reviewer_true_source",
+        "reviewer_root_issue",
+        "suspected_layer",
+    ]
+    for c in required_reviewer_cols:
+        if c not in audit_df.columns:
+            audit_df[c] = ""
+
     wb = Workbook()
     ws = wb.active
     ws.title = "audit_cases"
@@ -469,14 +487,33 @@ def write_xlsx(audit_df: pd.DataFrame, summary_df: pd.DataFrame, out_xlsx: Path)
     for _, r in audit_df.iterrows():
         ws.append([r.get(c, "") for c in headers])
     ws.freeze_panes = "A2"
-    wrap_cols = {"signature_string", "signature_quality", "evidence_pointer_raw", "evidence_text", "evidence_context_before", "evidence_context_after", "table_row_text", "table_cell_text", "trace_pointer", "human_notes"}
-    widths = {"title": 40, "doi": 30, "signature_string": 55, "signature_quality": 45, "evidence_text": 70, "table_row_text": 70, "human_notes": 40}
+    wrap_cols = {"signature_string", "signature_quality", "evidence_pointer_raw", "evidence_text", "evidence_context_before", "evidence_context_after", "table_row_text", "table_cell_text", "matched_numeric_tokens", "match_explanation", "trace_pointer", "human_notes"}
+    widths = {"title": 40, "doi": 30, "signature_string": 55, "signature_quality": 45, "evidence_text": 70, "table_row_text": 70, "match_explanation": 48, "human_notes": 40}
     for i, h in enumerate(headers, start=1):
         col = ws.cell(row=1, column=i).column_letter
         ws.column_dimensions[col].width = widths.get(h, 18)
         if h in wrap_cols:
             for rr in range(2, ws.max_row + 1):
                 ws.cell(row=rr, column=i).alignment = Alignment(wrap_text=True, vertical="top")
+
+    # Reviewer dropdowns (find columns by exact header names).
+    header_to_col_idx: dict[str, int] = {}
+    for i, h in enumerate(headers, start=1):
+        header_to_col_idx[str(h)] = i
+    last_row = max(2, ws.max_row)
+    validations = {
+        "reviewer_true_source": "table,text,none_or_unknown",
+        "reviewer_root_issue": "wrong_value,wrong_anchor,wrong_source_binding,qc_too_strict,retrieval_insufficient,unknown",
+        "suspected_layer": "A_extraction,B_resolver_binding,B_qc_matcher,unknown",
+    }
+    for h, opts in validations.items():
+        col_idx = header_to_col_idx.get(h)
+        if not col_idx:
+            continue
+        col_letter = ws.cell(row=1, column=col_idx).column_letter
+        dv = DataValidation(type="list", formula1=f'"{opts}"', allow_blank=True)
+        ws.add_data_validation(dv)
+        dv.add(f"{col_letter}2:{col_letter}{last_row}")
 
     ws2 = wb.create_sheet("summary")
     ws2.append(list(summary_df.columns))
@@ -870,6 +907,9 @@ def main() -> None:
                     table_ev.table_row_text = ""
                     table_ev.table_cell_text = ""
                     table_ev.match_reason = "expected_text_source_override"
+                    table_ev.matched_numeric_tokens = []
+                    table_ev.match_kind = ""
+                    table_ev.match_explanation = ""
                     table_ev.ownership_check_passed = False
                     table_ev.ownership_check_reason = "expected_text_source_override"
                     table_ev.table_first_policy_tag = ""
@@ -1007,6 +1047,13 @@ def main() -> None:
                 "resolver_policy_tag": str(table_ev.table_first_policy_tag or ""),
                 "table_row_text": table_ev.table_row_text,
                 "table_cell_text": table_ev.table_cell_text,
+                "matched_numeric_tokens": (
+                    json.dumps(table_ev.matched_numeric_tokens, ensure_ascii=False)
+                    if table_ev.matched_numeric_tokens
+                    else ""
+                ),
+                "match_kind": str(table_ev.match_kind or ""),
+                "match_explanation": str(table_ev.match_explanation or ""),
                 "proxy_components_json": json.dumps(proxy_components, ensure_ascii=False, sort_keys=True) if proxy_components else "",
                 "evidence_block_id": text_ev.evidence_block_id,
                 "evidence_span_id": text_ev.evidence_span_id,
