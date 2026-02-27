@@ -579,6 +579,11 @@ def main() -> None:
                 table_selection_status = "proxy"
             else:
                 table_selection_status = "none"
+            evidence_pointer_out = pointer_raw
+            if table_evidence_kind == "table_csv_cell" and str(table_ev.table_filename).strip():
+                evidence_pointer_out = (
+                    f"table|{str(table_ev.table_filename).strip()}|match:{str(table_ev.match_reason).strip()}"
+                )
             proxy_components: dict[str, str] = {}
             if table_evidence_kind == "proxy_compose":
                 proxy_components = {
@@ -670,7 +675,7 @@ def main() -> None:
                     if table_evidence_kind == "table_csv_cell"
                     else ("proxy_compose" if table_evidence_kind == "proxy_compose" else text_ev.evidence_source_type)
                 ),
-                "evidence_pointer_raw": pointer_raw,
+                "evidence_pointer_raw": evidence_pointer_out,
                 "evidence_text": text_ev.evidence_text,
                 "evidence_context_before": text_ev.evidence_context_before,
                 "evidence_context_after": text_ev.evidence_context_after,

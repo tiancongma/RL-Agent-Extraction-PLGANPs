@@ -206,46 +206,126 @@ class AuditEvidenceResolverV1:
         s = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", s)
         return re.sub(r"[^a-z0-9]+", "", s)
 
+    def _path_is_for_key(self, p: Path, zotero_key: str) -> bool:
+        s = str(p.resolve()).replace("\\", "/").lower()
+        k = str(zotero_key or "").strip().lower()
+        return bool(k) and f"/tables/{k}/" in s
+
+    def _log_drop_nonlocal(self, zotero_key: str, p: Path, source: str) -> None:
+        print(
+            f"[resolver_drop_nonlocal] key={zotero_key} source={source} path={p}"
+        )
+
+    def _read_key_tables_manifest(self, key_dir: Path, zotero_key: str) -> list[Path]:
+        manifest = key_dir / "tables_manifest.json"
+        if not manifest.exists():
+            return []
+        out: list[Path] = []
+        try:
+            payload = json.loads(manifest.read_text(encoding="utf-8", errors="replace"))
+        except Exception:
+            return []
+
+        def _to_path(v: Any) -> Path | None:
+            s = str(v or "").strip()
+            if not s:
+                return None
+            p = Path(s)
+            if not p.is_absolute():
+                p = (self.project_root / p).resolve()
+            else:
+                p = p.resolve()
+            return p
+
+        if isinstance(payload, dict):
+            for x in payload.get("selected_table_files", []) if isinstance(payload.get("selected_table_files", []), list) else []:
+                p = _to_path(x)
+                if p is not None:
+                    out.append(p)
+            if not out:
+                for rec in payload.get("tables", []) if isinstance(payload.get("tables", []), list) else []:
+                    if not isinstance(rec, dict):
+                        continue
+                    p = _to_path(rec.get("csv_path", "") or rec.get("filename", ""))
+                    if p is not None:
+                        out.append(p)
+        elif isinstance(payload, list):
+            for rec in payload:
+                if isinstance(rec, dict):
+                    p = _to_path(rec.get("csv_path", "") or rec.get("filename", ""))
+                    if p is not None:
+                        out.append(p)
+        # Keep only existing CSVs under this key dir.
+        key_dir_resolved = key_dir.resolve()
+        filtered: list[Path] = []
+        for p in out:
+            try:
+                p.resolve().relative_to(key_dir_resolved)
+            except Exception:
+                continue
+            if p.exists() and p.suffix.lower() == ".csv":
+                filtered.append(p.resolve())
+        return sorted(set(filtered), key=lambda x: str(x))
+
     def _paper_local_tables(self, zotero_key: str, doi: str = "", title: str = "") -> list[dict[str, Any]]:
         k = str(zotero_key or "").strip()
         out: list[dict[str, Any]] = []
         seen: set[str] = set()
+        if not k:
+            return out
 
-        # (1) Explicit metadata mapping.
+        key_dir = (
+            self.project_root / "data" / "cleaned" / "content_goren_2025" / "tables" / k
+        ).resolve()
+        if not key_dir.exists():
+            return out
+
+        # (1) Prefer explicit per-key tables manifest when present.
+        manifest_paths = self._read_key_tables_manifest(key_dir=key_dir, zotero_key=k)
+        for p in manifest_paths:
+            if not self._path_is_for_key(p, k):
+                self._log_drop_nonlocal(k, p, "per_key_manifest")
+                continue
+            sp = str(p.resolve())
+            if sp in seen:
+                continue
+            seen.add(sp)
+            out.append({"path": p.resolve(), "source": "per_key_manifest"})
+
+        # (2) Fallback: only scan within this key directory.
+        if not out:
+            for p in key_dir.rglob("*.csv"):
+                rp = p.resolve()
+                if not self._path_is_for_key(rp, k):
+                    self._log_drop_nonlocal(k, rp, "per_key_glob")
+                    continue
+                sp = str(rp)
+                if sp in seen:
+                    continue
+                seen.add(sp)
+                out.append({"path": rp, "source": "per_key_glob"})
+
+        # (3) Optional metadata paths, but hard-restricted to this key folder.
         for p in self.table_paths_by_key.get(k, []):
-            sp = str(p)
+            rp = p.resolve()
+            if not self._path_is_for_key(rp, k):
+                self._log_drop_nonlocal(k, rp, "metadata_tables_csv")
+                continue
+            sp = str(rp)
             if sp in seen:
                 continue
             seen.add(sp)
-            out.append({"path": p, "source": "metadata_tables_csv"})
+            out.append({"path": rp, "source": "metadata_tables_csv"})
 
-        # (2) Sibling tables under content root for this paper.
-        tpath = self.resolve_text_path(k)
-        if tpath is not None:
-            parent = tpath.parent.parent
-            sibling_tables = parent / "tables"
-            if sibling_tables.exists():
-                for p in sibling_tables.rglob("*.csv"):
-                    sp = str(p.resolve())
-                    if sp in seen:
-                        continue
-                    seen.add(sp)
-                    out.append({"path": p.resolve(), "source": "sibling_tables_folder"})
-
-        # (3) Filename strict filter in known table dirs.
-        doi_tok = self._norm_doi_token(doi)
-        for m in self.table_meta:
-            name = m["name"]
-            doc_hit = bool(doi_tok and doi_tok in re.sub(r"[^a-z0-9]+", "", name))
-            key_hit = bool(k and k.lower() in name)
-            if not (doc_hit or key_hit):
+        # Unit-like self-check guard: never return cross-key table paths.
+        checked: list[dict[str, Any]] = []
+        for rec in out:
+            rp = Path(rec["path"]).resolve()
+            if not self._path_is_for_key(rp, k):
+                self._log_drop_nonlocal(k, rp, str(rec.get("source", "unknown")))
                 continue
-            sp = str(m["path"])
-            if sp in seen:
-                continue
-            seen.add(sp)
-            out.append({"path": m["path"], "source": "filename_key_or_docid"})
-        return out
+            checked.append(rec)
+        return checked
 
     def ownership_check_passed(
         self,
