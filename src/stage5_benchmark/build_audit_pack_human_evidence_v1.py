@@ -47,6 +47,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--max-span-chars", type=int, default=500)
     p.add_argument("--max-table-row-chars", type=int, default=800)
+    p.add_argument("--include-cases-tsv", default="", help="Optional case list TSV. If set, disable bucket sampling and include only matched cases.")
     return p.parse_args()
 
 
@@ -274,6 +275,161 @@ def choose_buckets(df: pd.DataFrame, n: int, seed: int) -> dict[str, pd.DataFram
     return {"A_unresolved": fill(a, 11), "B_strict_merge": fill(b, 12), "C_anchor_merge": fill(c, 13)}
 
 
+def _field_to_raw_col(field_name: str) -> str:
+    f = str(field_name or "").strip()
+    return {
+        "encapsulation_efficiency_percent": "encapsulation_efficiency_percent",
+        "size_nm": "size_nm",
+        "pdi": "pdi",
+        "drug_feed_amount_text": "drug_feed_amount_text",
+        "plga_mass_mg": "plga_mass_mg",
+        "pva_conc_percent": "pva_conc_percent",
+    }.get(f, "")
+
+
+def _select_include_cases(merged: pd.DataFrame, cases_tsv: Path) -> tuple[pd.DataFrame, dict[str, Any]]:
+    cases = pd.read_csv(cases_tsv, sep="\t", dtype=str).fillna("")
+    required = {"zotero_key", "field_name", "extracted_value_raw"}
+    missing = [c for c in required if c not in cases.columns]
+    if missing:
+        raise RuntimeError(f"include-cases TSV missing required columns: {missing}")
+
+    m = merged.copy()
+    for c in ["zotero_key", "field_name", "evidence_span_id", "evidence_span_start", "evidence_span_end"]:
+        if c not in m.columns:
+            m[c] = ""
+        m[c] = m[c].astype(str)
+    selected_rows: list[pd.Series] = []
+    selected_labels: list[str] = []
+    missing_cases: list[str] = []
+    ambiguous_cases: list[str] = []
+
+    cases = cases.sort_values(
+        ["zotero_key", "field_name", "extracted_value_raw"],
+        ascending=[True, True, True],
+        kind="mergesort",
+    ).reset_index(drop=True)
+    has_field_name_values = bool(m["field_name"].astype(str).str.strip().ne("").any()) if "field_name" in m.columns else False
+
+    def _sort_deterministic(df: pd.DataFrame) -> pd.DataFrame:
+        d = df.copy()
+        d["_sort"] = pd.to_numeric(d.get("evidence_span_start", ""), errors="coerce").fillna(10**12)
+        by = ["_sort"]
+        for c in ["trace_pointer", "evidence_ref", "group_key", "formulation_id"]:
+            if c in d.columns:
+                by.append(c)
+        return d.sort_values(by, kind="mergesort")
+
+    for _, r in cases.iterrows():
+        key = str(r.get("zotero_key", "")).strip()
+        field = str(r.get("field_name", "")).strip()
+        val = str(r.get("extracted_value_raw", "")).strip()
+        span_id = str(r.get("evidence_span_id", "")).strip()
+        span_start = str(r.get("evidence_span_start", "")).strip()
+        span_end = str(r.get("evidence_span_end", "")).strip()
+        label = f"{key}|{field}|{val}"
+        cand = m[m["zotero_key"] == key].copy()
+        if cand.empty:
+            missing_cases.append(label + "|no_key_match")
+            continue
+
+        # Priority 1: (zotero_key, evidence_span_id)
+        if span_id and "evidence_span_id" in cand.columns:
+            c1 = cand[cand["evidence_span_id"].astype(str) == span_id].copy()
+            if len(c1) == 1:
+                selected_rows.append(c1.iloc[0])
+                selected_labels.append(label)
+                continue
+            if len(c1) > 1:
+                c1 = _sort_deterministic(c1)
+                selected_rows.append(c1.iloc[0])
+                selected_labels.append(label)
+                continue
+
+        # Priority 2: (zotero_key, field_name, span_start, span_end)
+        if span_start and span_end:
+            c2 = cand[
+                (cand.get("evidence_span_start", "").astype(str) == span_start)
+                & (cand.get("evidence_span_end", "").astype(str) == span_end)
+            ].copy()
+            if has_field_name_values:
+                c2f = c2[c2.get("field_name", "").astype(str) == field].copy()
+                if not c2f.empty:
+                    c2 = c2f
+            if len(c2) == 1:
+                selected_rows.append(c2.iloc[0])
+                selected_labels.append(label)
+                continue
+            if len(c2) > 1:
+                c2 = _sort_deterministic(c2)
+                selected_rows.append(c2.iloc[0])
+                selected_labels.append(label)
+                continue
+
+        # Priority 3: (zotero_key, field_name, extracted_value_raw) unique required
+        col = _field_to_raw_col(field)
+        c3 = cand.copy()
+        if has_field_name_values:
+            c3f = c3[c3.get("field_name", "").astype(str) == field].copy()
+            if not c3f.empty:
+                c3 = c3f
+        if col and col in c3.columns:
+            c3 = c3[c3[col].astype(str) == val].copy()
+        if len(c3) == 1:
+            selected_rows.append(c3.iloc[0])
+            selected_labels.append(label)
+        elif len(c3) > 1:
+            ambiguous_cases.append(label + "|ambiguous_fallback_match")
+        else:
+            missing_cases.append(label + "|no_fallback_match")
+
+    out = pd.DataFrame(selected_rows).reset_index(drop=True) if selected_rows else pd.DataFrame(columns=m.columns)
+    report = {
+        "total_cases_requested": int(len(cases)),
+        "total_cases_matched": int(len(out)),
+        "missing_cases": missing_cases,
+        "ambiguous_cases": ambiguous_cases,
+        "matched_case_labels": selected_labels,
+    }
+    return out, report
+
+
+def _extract_first_number(v: Any) -> float | None:
+    s = str(v or "").replace("\u2212", "-")
+    m = re.search(r"[-+]?\d+(?:[.,]\d+)?", s)
+    if not m:
+        return None
+    try:
+        return float(m.group(0).replace(",", "."))
+    except Exception:
+        return None
+
+
+def _text_contains_any_numeric_anchor(text: str, values: list[str]) -> bool:
+    t = str(text or "").replace("\u2212", "-").lower()
+    if not t.strip():
+        return False
+    nums: list[float] = []
+    for tok in re.findall(r"[-+]?\d+(?:[.,]\d+)?", t):
+        try:
+            nums.append(float(tok.replace(",", ".")))
+        except Exception:
+            continue
+    for raw in values:
+        rv = str(raw or "").strip()
+        if not rv:
+            continue
+        if rv.lower() in t:
+            return True
+        n = _extract_first_number(rv)
+        if n is None:
+            continue
+        tol = max(0.5, 0.02 * abs(n))
+        if any(abs(x - n) <= tol for x in nums):
+            return True
+    return False
+
+
 def write_xlsx(audit_df: pd.DataFrame, summary_df: pd.DataFrame, out_xlsx: Path) -> None:
     wb = Workbook()
     ws = wb.active
@@ -490,8 +646,32 @@ def main() -> None:
     missing_expected = [c for c in ["key", "formulation_id", "drug_name", "la_ga_ratio", "plga_mw_kDa", "organic_solvent", "encapsulation_efficiency_percent", "size_nm", "pdi", "evidence_span_text"] if c not in merged.columns]
     if missing_expected:
         schema_mismatch["missing_expected_columns"] = missing_expected
+    if "field_name" not in merged.columns:
+        merged["field_name"] = merged["derived_field_name"].astype(str) if "derived_field_name" in merged.columns else ""
 
-    buckets = choose_buckets(merged, args.n_per_bucket, args.seed)
+    include_report: dict[str, Any] | None = None
+    if str(args.include_cases_tsv or "").strip():
+        include_cases_path = Path(args.include_cases_tsv).resolve()
+        if not include_cases_path.exists():
+            raise FileNotFoundError(f"--include-cases-tsv not found: {include_cases_path}")
+        selected_df, include_report = _select_include_cases(merged=merged, cases_tsv=include_cases_path)
+        include_report["include_cases_tsv"] = str(include_cases_path)
+        include_report_path = out_xlsx.parent / "include_cases_report__v1.json"
+        include_report_path.write_text(json.dumps(include_report, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"include_cases_report={include_report_path}")
+        print(f"total_cases_requested={include_report['total_cases_requested']}")
+        print(f"total_cases_matched={include_report['total_cases_matched']}")
+        if include_report.get("missing_cases") or include_report.get("ambiguous_cases"):
+            print("missing_cases:")
+            for x in include_report.get("missing_cases", []):
+                print(f"- {x}")
+            print("ambiguous_cases:")
+            for x in include_report.get("ambiguous_cases", []):
+                print(f"- {x}")
+            raise RuntimeError("include-cases selection failed (missing or ambiguous cases).")
+        buckets = {"include_cases": selected_df.reset_index(drop=True)}
+    else:
+        buckets = choose_buckets(merged, args.n_per_bucket, args.seed)
     resolver = AuditEvidenceResolverV1(project_root=paths.PROJECT_ROOT)
 
     audit_rows = []
@@ -577,6 +757,50 @@ def main() -> None:
                 table_filename=table_ev.table_filename,
                 table_row_text=table_ev.table_row_text,
             )
+            proxy_value_needs_evidence = False
+            high_stakes_numeric_values = [
+                str(r.get("encapsulation_efficiency_percent", "")),
+                str(r.get("size_nm", "")),
+            ]
+            high_stakes_present = any(str(x).strip() for x in high_stakes_numeric_values)
+            # For proxy_compose rows, force a second table-first evidence attempt for numeric fields.
+            if table_evidence_kind == "proxy_compose" and high_stakes_present:
+                table_ev_retry = resolver.resolve_table_evidence(
+                    zotero_key=str(r.get("zotero_key", "")),
+                    doi=str(r.get("doi", "")),
+                    title=str(r.get("title", "")),
+                    pointer_raw=pointer_raw,
+                    row_index=r.get("row_index", ""),
+                    col_name=str(r.get("derived_field_name", "")),
+                    target_values=target_vals,
+                    value_source_by_field={
+                        "encapsulation_efficiency_percent": str(r.get("value_source_EE", "")),
+                        "size_nm": str(r.get("value_source_size", "")),
+                        "drug_feed_amount_text": str(r.get("value_source_drug_mass", "")),
+                        "plga_mass_mg": str(r.get("value_source_polymer_mass", "")),
+                    },
+                    current_table_csv_path=str(r.get("table_csv_path", "")),
+                    current_table_cell_text=str(r.get("table_cell_text", "")),
+                    field_hint=target_field,
+                    target_field=target_field,
+                    notes_hint=str(r.get("notes", "")) + " " + str(r.get("evidence_span_text", "")),
+                    max_table_row_chars=args.max_table_row_chars,
+                    force_table_first_numeric=True,
+                )
+                retry_kind = detect_table_evidence_kind(
+                    table_csv_path=table_ev_retry.table_csv_path,
+                    table_filename=table_ev_retry.table_filename,
+                    table_row_text=table_ev_retry.table_row_text,
+                )
+                if retry_kind == "table_csv_cell" and bool(table_ev_retry.ownership_check_passed):
+                    table_ev = table_ev_retry
+                    table_evidence_kind = retry_kind
+                else:
+                    text_anchor_ok = _text_contains_any_numeric_anchor(
+                        text=text_ev.evidence_text,
+                        values=high_stakes_numeric_values,
+                    )
+                    proxy_value_needs_evidence = not text_anchor_ok
             if not bool(table_ev.ownership_check_passed) and table_evidence_kind == "table_csv_cell":
                 table_evidence_kind = "proxy_compose" if str(table_ev.table_row_text).strip() else "none"
             if table_evidence_kind == "table_csv_cell" and bool(table_ev.ownership_check_passed):
@@ -590,6 +814,7 @@ def main() -> None:
             block_text_binding = str(table_ev.table_first_policy_tag).strip() == "table_expected_but_not_found"
             if block_text_binding:
                 table_selection_status = "table_expected_but_not_found"
+            proxy_use_text_anchor = bool(table_evidence_kind == "proxy_compose" and not proxy_value_needs_evidence)
             evidence_pointer_out = pointer_raw
             if table_evidence_kind == "table_csv_cell" and str(table_ev.table_filename).strip():
                 evidence_pointer_out = (
@@ -689,7 +914,7 @@ def main() -> None:
                     else (
                         "table"
                         if table_evidence_kind == "table_csv_cell"
-                        else ("proxy_compose" if table_evidence_kind == "proxy_compose" else text_ev.evidence_source_type)
+                        else (text_ev.evidence_source_type if proxy_use_text_anchor else ("proxy_compose" if table_evidence_kind == "proxy_compose" else text_ev.evidence_source_type))
                     )
                 ),
                 "evidence_pointer_raw": evidence_pointer_out,
@@ -726,7 +951,11 @@ def main() -> None:
                 "value_source_drug_mass": value_source_drug_mass if value_source_drug_mass in VALUE_SOURCES else "unknown",
                 "value_source_polymer_mass": value_source_polymer_mass if value_source_polymer_mass in VALUE_SOURCES else "unknown",
                 "value_source_doe_signature": value_source_doe_signature if value_source_doe_signature in VALUE_SOURCES else "unknown",
-                "human_review_tag": ("table_expected_but_not_found" if block_text_binding else str(table_ev.table_first_policy_tag or "")),
+                "human_review_tag": (
+                    "table_expected_but_not_found"
+                    if block_text_binding
+                    else ("proxy_value_needs_evidence" if proxy_value_needs_evidence else str(table_ev.table_first_policy_tag or ""))
+                ),
                 "human_notes": "",
             }
             row_payload, _ = apply_provenance_hard_guards(row_payload)
@@ -891,6 +1120,7 @@ def main() -> None:
             ) if len(audit_df) else 0,
         },
         "table_evidence_missing": {"count": int(len(table_missing)), "examples": table_missing[:20]},
+        "include_cases_report": include_report if include_report is not None else {},
         "audit_pack_schema_mismatch": schema_mismatch,
         "params": {"n_per_bucket": int(args.n_per_bucket), "seed": int(args.seed), "max_span_chars": int(args.max_span_chars), "max_table_row_chars": int(args.max_table_row_chars)},
     }

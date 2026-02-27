@@ -681,6 +681,7 @@ class AuditEvidenceResolverV1:
         target_field: str = "",
         notes_hint: str = "",
         max_table_row_chars: int = 800,
+        force_table_first_numeric: bool = False,
     ) -> TableEvidence:
         target_values = target_values or {}
         value_source_by_field = value_source_by_field or {}
@@ -780,7 +781,7 @@ class AuditEvidenceResolverV1:
             preferred_fields.add("size_nm")
         if not preferred_fields:
             preferred_fields = high_stakes_fields
-        table_first_trigger = bool(value_source_table or table_value_present or existing_table_hint)
+        table_first_trigger = bool(value_source_table or table_value_present or existing_table_hint or force_table_first_numeric)
 
         if table_first_trigger and high_stakes_specs and candidates:
             tf_match = self._pick_table_first_match(
