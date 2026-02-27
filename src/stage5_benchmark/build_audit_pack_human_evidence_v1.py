@@ -118,6 +118,52 @@ def infer_value_source_numeric(
     return "unknown"
 
 
+def is_cross_paper_table_path(zotero_key: str, table_csv_path: str) -> bool:
+    p = str(table_csv_path or "").strip().replace("\\", "/")
+    k = str(zotero_key or "").strip()
+    if not p or not k:
+        return False
+    return f"/tables/{k}/" not in p
+
+
+def is_mixed_table_fulltext_pointer(evidence_source_type: str, evidence_pointer_raw: str) -> bool:
+    et = str(evidence_source_type or "").strip().lower()
+    ptr = str(evidence_pointer_raw or "").strip().lower()
+    if et != "table":
+        return False
+    return ptr.startswith("fulltext|") and "pattern_window" in ptr
+
+
+def apply_provenance_hard_guards(row: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:
+    out = dict(row)
+    violations: list[str] = []
+
+    evidence_source_type = str(out.get("evidence_source_type", "")).strip()
+    zotero_key = str(out.get("zotero_key", "")).strip()
+    table_csv_path = str(out.get("table_csv_path", "")).strip()
+    pointer_raw = str(out.get("evidence_pointer_raw", "")).strip()
+
+    if evidence_source_type == "table" and is_cross_paper_table_path(zotero_key, table_csv_path):
+        violations.append("cross_paper_table_path")
+        out["table_selection_status"] = "rejected_cross_paper"
+        out["ownership_check_passed"] = False
+        out["ownership_check_reason"] = "cross_paper_table_path_rejected"
+        out["table_csv_path"] = ""
+        out["table_filename"] = ""
+        out["table_row_text"] = ""
+        out["table_cell_text"] = ""
+        out["table_evidence_kind"] = "none"
+        out["evidence_source_type"] = "unknown"
+
+    if is_mixed_table_fulltext_pointer(evidence_source_type=evidence_source_type, evidence_pointer_raw=pointer_raw):
+        violations.append("mixed_table_fulltext_pointer")
+        if str(out.get("table_selection_status", "")).strip() != "rejected_cross_paper":
+            out["table_selection_status"] = "evidence_mixed_source"
+        out["human_review_tag"] = "cross_paper_or_mixed_evidence"
+
+    return out, violations
+
+
 def norm_doi(v: Any) -> str:
     s = str(v or "").strip().lower()
     s = re.sub(r"^doi\s*:\s*", "", s)
@@ -582,7 +628,7 @@ def main() -> None:
             if str(r.get("gate_used", "")) == "C" or "no_auto_merge" in str(r.get("merge_reason", "")):
                 why_no_merge = "core_incomplete_no_anchor" if bool(r.get("missing_polymer_identity", False)) else "anchor_missing_or_low_quality"
 
-            audit_rows.append({
+            row_payload = {
                 "bucket": bucket_name,
                 "zotero_key": str(r.get("zotero_key", "")),
                 "doi": str(r.get("doi", "")),
@@ -659,7 +705,9 @@ def main() -> None:
                 "value_source_doe_signature": value_source_doe_signature if value_source_doe_signature in VALUE_SOURCES else "unknown",
                 "human_review_tag": "",
                 "human_notes": "",
-            })
+            }
+            row_payload, _ = apply_provenance_hard_guards(row_payload)
+            audit_rows.append(row_payload)
 
     audit_df = pd.DataFrame(audit_rows)
     if audit_df.empty:
@@ -697,6 +745,76 @@ def main() -> None:
     ]
     summary_df = pd.DataFrame(summary_rows)
 
+    diag = audit_df.copy()
+    diag["diag_table_path_cross_key"] = diag.apply(
+        lambda x: (
+            str(x.get("evidence_source_type", "")).strip() == "table"
+            and is_cross_paper_table_path(str(x.get("zotero_key", "")), str(x.get("table_csv_path", "")))
+        ),
+        axis=1,
+    )
+    diag["diag_table_filename_cross_key"] = diag.apply(
+        lambda x: (
+            str(x.get("evidence_source_type", "")).strip() == "table"
+            and str(x.get("table_filename", "")).strip() != ""
+            and not str(x.get("table_filename", "")).strip().startswith(str(x.get("zotero_key", "")).strip())
+        ),
+        axis=1,
+    )
+    diag["diag_mixed_source_pointer"] = diag.apply(
+        lambda x: is_mixed_table_fulltext_pointer(
+            evidence_source_type=str(x.get("evidence_source_type", "")),
+            evidence_pointer_raw=str(x.get("evidence_pointer_raw", "")),
+        ),
+        axis=1,
+    )
+    diag["diag_value_source_conflict"] = diag.apply(
+        lambda x: (
+            str(x.get("evidence_pointer_raw", "")).strip().lower().startswith("fulltext|")
+            and any(
+                str(x.get(c, "")).strip() == "table_csv_cell"
+                for c in [
+                    "value_source_EE",
+                    "value_source_size",
+                    "value_source_drug_mass",
+                    "value_source_polymer_mass",
+                ]
+            )
+        ),
+        axis=1,
+    )
+    diag_filtered = diag[
+        diag["diag_table_path_cross_key"]
+        | diag["diag_table_filename_cross_key"]
+        | diag["diag_mixed_source_pointer"]
+        | diag["diag_value_source_conflict"]
+    ].copy()
+    diag_path = run_base / "step1_dev_provenance_binding_diagnostics.tsv"
+    diag_cols = [
+        "zotero_key",
+        "formulation_core_id",
+        "evidence_source_type",
+        "evidence_pointer_raw",
+        "table_filename",
+        "table_csv_path",
+        "table_selection_status",
+        "ownership_check_passed",
+        "ownership_check_reason",
+        "human_review_tag",
+        "value_source_EE",
+        "value_source_size",
+        "value_source_drug_mass",
+        "value_source_polymer_mass",
+        "diag_table_path_cross_key",
+        "diag_table_filename_cross_key",
+        "diag_mixed_source_pointer",
+        "diag_value_source_conflict",
+    ]
+    for c in diag_cols:
+        if c not in diag_filtered.columns:
+            diag_filtered[c] = ""
+    diag_filtered[diag_cols].to_csv(diag_path, sep="\t", index=False)
+
     write_xlsx(audit_df, summary_df, out_xlsx)
     table_trace_path = out_xlsx.parent / "table_match_trace_v1.tsv"
     pd.DataFrame(
@@ -721,8 +839,10 @@ def main() -> None:
         "input_tsv": str(input_tsv),
         "output_xlsx": str(out_xlsx),
         "table_match_trace_tsv": str(table_trace_path),
+        "step1_dev_provenance_diagnostics_tsv": str(diag_path),
         "source_files": sorted(set(source_files)),
         "n_rows_audit": int(len(audit_df)),
+        "n_rows_step1_dev_provenance_diagnostics": int(len(diag_filtered)),
         "bucket_counts": bucket_counts.to_dict(orient="records"),
         "table_row_text_non_empty_rate_percent": round(table_rate, 2),
         "evidence_text_non_empty_rate_percent": round(text_rate, 2),
@@ -762,6 +882,8 @@ def main() -> None:
     print(f"table_evidence_kind_table_csv_cell_percent={round(float(kind_pct.get('table_csv_cell', 0.0)), 2)}")
     print(f"table_evidence_kind_proxy_compose_percent={round(float(kind_pct.get('proxy_compose', 0.0)), 2)}")
     print(f"table_evidence_kind_none_percent={round(float(kind_pct.get('none', 0.0)), 2)}")
+    print(f"step1_dev_provenance_diagnostics_rows={len(diag_filtered)}")
+    print(f"step1_dev_provenance_diagnostics_tsv={diag_path}")
     print(f"excel_path={out_xlsx}")
 
     own_true_table = int(
