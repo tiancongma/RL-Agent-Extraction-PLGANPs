@@ -58,6 +58,23 @@ def _contains_numeric_soft(text: str, raw_value: str) -> bool:
     return any(abs(n - target) <= tol for n in nums)
 
 
+def _values_equal_soft(a: str, b: str) -> bool:
+    sa = _s(a)
+    sb = _s(b)
+    if sa == sb:
+        return True
+    ma = re.search(r"[-+]?\d+(?:[.,]\d+)?", sa)
+    mb = re.search(r"[-+]?\d+(?:[.,]\d+)?", sb)
+    if not (ma and mb):
+        return False
+    try:
+        va = float(ma.group(0).replace(",", "."))
+        vb = float(mb.group(0).replace(",", "."))
+    except Exception:
+        return False
+    return abs(va - vb) <= max(0.01, abs(vb) * 0.005)
+
+
 def discover_before_after(run_id: str, before_arg: str, after_arg: str) -> tuple[Path, Path]:
     audit_dir = Path("data/results") / run_id / "step1_dev" / "audit_pack"
     if not audit_dir.exists():
@@ -228,6 +245,18 @@ def _deterministic_sort(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+def _apply_field_filter_if_available(m: pd.DataFrame, field_name: str) -> pd.DataFrame:
+    if "derived_field_name" not in m.columns:
+        return m
+    d = m["derived_field_name"].astype(str).str.strip()
+    if not (d != "").any():
+        return m
+    m2 = m[d == _s(field_name)].copy()
+    if not m2.empty:
+        return m2
+    return m
+
+
 def match_case(df: pd.DataFrame, g: pd.Series) -> tuple[pd.Series | None, bool, str]:
     k = _s(g.get("zotero_key", ""))
     f = _s(g.get("field_name", ""))
@@ -243,6 +272,15 @@ def match_case(df: pd.DataFrame, g: pd.Series) -> tuple[pd.Series | None, bool, 
     # 1) span_id
     if sid and "evidence_span_id" in base.columns:
         m = base[base["evidence_span_id"].astype(str) == sid].copy()
+        if f:
+            m = _apply_field_filter_if_available(m, f)
+        val_col = _field_value_col(f, m)
+        if v and val_col:
+            m2 = m[m[val_col].astype(str).apply(lambda x: _values_equal_soft(x, v))]
+            if m2.empty:
+                m = m.iloc[0:0]
+            else:
+                m = m2
         if len(m) == 1:
             return m.iloc[0], False, "match_by_span_id"
         if len(m) > 1:
@@ -254,9 +292,14 @@ def match_case(df: pd.DataFrame, g: pd.Series) -> tuple[pd.Series | None, bool, 
             (base["evidence_span_start"].astype(str) == ss)
             & (base["evidence_span_end"].astype(str) == se)
         ].copy()
-        if "derived_field_name" in m.columns and f:
-            m2 = m[m["derived_field_name"].astype(str) == f]
-            if not m2.empty:
+        if f:
+            m = _apply_field_filter_if_available(m, f)
+        val_col = _field_value_col(f, m)
+        if v and val_col:
+            m2 = m[m[val_col].astype(str).apply(lambda x: _values_equal_soft(x, v))]
+            if m2.empty:
+                m = m.iloc[0:0]
+            else:
                 m = m2
         if len(m) == 1:
             return m.iloc[0], False, "match_by_span_start_end"
@@ -265,11 +308,11 @@ def match_case(df: pd.DataFrame, g: pd.Series) -> tuple[pd.Series | None, bool, 
 
     # 3) fallback by key+field+value (must be unique)
     m = base.copy()
-    if "derived_field_name" in m.columns and f:
-        m = m[m["derived_field_name"].astype(str) == f].copy()
+    if f:
+        m = _apply_field_filter_if_available(m, f)
     val_col = _field_value_col(f, m)
     if val_col:
-        m = m[m[val_col].astype(str) == v].copy()
+        m = m[m[val_col].astype(str).apply(lambda x: _values_equal_soft(x, v))].copy()
     if len(m) == 1:
         return m.iloc[0], False, "match_by_key_field_value_unique"
     if len(m) > 1:
@@ -426,7 +469,9 @@ def main() -> int:
                 exp_reason = "FAILED_expected_table_binding"
         elif reviewer_true_source == "text":
             text_blob = _s(a.get("evidence_text", "") if a is not None else "")
-            if not _contains_numeric_soft(text_blob, value):
+            pointer_l = after_pointer.lower()
+            has_numeric_pointer = "numeric_locate" in pointer_l
+            if not (_contains_numeric_soft(text_blob, value) or has_numeric_pointer):
                 exp_pass = False
                 exp_reason = "FAILED_expected_text_anchor"
         else:

@@ -102,6 +102,7 @@ class AuditEvidenceResolverV1:
     def _load_key2txt_maps(self) -> None:
         # Priority: goren content > general content > index
         candidates = [
+            self.project_root / "data" / "cleaned" / "goren_2025" / "key2txt.tsv",
             self.project_root / "data" / "cleaned" / "content_goren_2025" / "key2txt.tsv",
             self.project_root / "data" / "cleaned" / "content" / "key2txt.tsv",
             self.project_root / "data" / "cleaned" / "index" / "key2txt.tsv",
@@ -120,6 +121,7 @@ class AuditEvidenceResolverV1:
 
     def _build_table_index(self) -> None:
         table_roots = [
+            self.project_root / "data" / "cleaned" / "goren_2025" / "tables",
             self.project_root / "data" / "cleaned" / "content_goren_2025" / "tables",
             self.project_root / "data" / "cleaned" / "content" / "tables",
         ]
@@ -274,37 +276,40 @@ class AuditEvidenceResolverV1:
         seen: set[str] = set()
         if not k:
             return out
-
-        key_dir = (
-            self.project_root / "data" / "cleaned" / "content_goren_2025" / "tables" / k
-        ).resolve()
-        if not key_dir.exists():
+        key_dirs = [
+            (self.project_root / "data" / "cleaned" / "goren_2025" / "tables" / k).resolve(),
+            (self.project_root / "data" / "cleaned" / "content_goren_2025" / "tables" / k).resolve(),
+        ]
+        existing_key_dirs = [d for d in key_dirs if d.exists()]
+        if not existing_key_dirs:
             return out
 
-        # (1) Prefer explicit per-key tables manifest when present.
-        manifest_paths = self._read_key_tables_manifest(key_dir=key_dir, zotero_key=k)
-        for p in manifest_paths:
-            if not self._path_is_for_key(p, k):
-                self._log_drop_nonlocal(k, p, "per_key_manifest")
-                continue
-            sp = str(p.resolve())
-            if sp in seen:
-                continue
-            seen.add(sp)
-            out.append({"path": p.resolve(), "source": "per_key_manifest"})
-
-        # (2) Fallback: only scan within this key directory.
-        if not out:
-            for p in key_dir.rglob("*.csv"):
-                rp = p.resolve()
-                if not self._path_is_for_key(rp, k):
-                    self._log_drop_nonlocal(k, rp, "per_key_glob")
+        # (1) Prefer explicit per-key tables manifests when present.
+        for key_dir in existing_key_dirs:
+            manifest_paths = self._read_key_tables_manifest(key_dir=key_dir, zotero_key=k)
+            for p in manifest_paths:
+                if not self._path_is_for_key(p, k):
+                    self._log_drop_nonlocal(k, p, "per_key_manifest")
                     continue
-                sp = str(rp)
+                sp = str(p.resolve())
                 if sp in seen:
                     continue
                 seen.add(sp)
-                out.append({"path": rp, "source": "per_key_glob"})
+                out.append({"path": p.resolve(), "source": "per_key_manifest"})
+
+        # (2) Fallback: scan within per-key directories.
+        if not out:
+            for key_dir in existing_key_dirs:
+                for p in key_dir.rglob("*.csv"):
+                    rp = p.resolve()
+                    if not self._path_is_for_key(rp, k):
+                        self._log_drop_nonlocal(k, rp, "per_key_glob")
+                        continue
+                    sp = str(rp)
+                    if sp in seen:
+                        continue
+                    seen.add(sp)
+                    out.append({"path": rp, "source": "per_key_glob"})
 
         # (3) Optional metadata paths, but hard-restricted to this key folder.
         for p in self.table_paths_by_key.get(k, []):
@@ -357,6 +362,8 @@ class AuditEvidenceResolverV1:
             return self.key2txt_map[k]
 
         fallback_candidates = [
+            self.project_root / "data" / "cleaned" / "goren_2025" / "text" / f"{k}.pdf.txt",
+            self.project_root / "data" / "cleaned" / "goren_2025" / "text" / f"{k}.html.txt",
             self.project_root / "data" / "cleaned" / "content_goren_2025" / "text" / f"{k}.pdf.txt",
             self.project_root / "data" / "cleaned" / "content_goren_2025" / "text" / f"{k}.html.txt",
             self.project_root / "data" / "cleaned" / "content" / "text" / f"{k}.pdf.txt",
@@ -437,6 +444,103 @@ class AuditEvidenceResolverV1:
             evidence_span_start=start_s,
             evidence_span_end=end_s,
             evidence_section=sec,
+        )
+
+    def resolve_text_evidence_numeric_locate(
+        self,
+        zotero_key: str,
+        evidence_pointer_raw: str,
+        numeric_values: list[str],
+        max_span_chars: int,
+    ) -> TextEvidence:
+        text_path = self.resolve_text_path(zotero_key)
+        full = self._load_text(text_path)
+        if not full:
+            return TextEvidence(
+                evidence_source_type="unknown",
+                evidence_pointer_raw=evidence_pointer_raw,
+                evidence_text="",
+                evidence_context_before="",
+                evidence_context_after="",
+                evidence_block_id="",
+                evidence_span_id="",
+                evidence_span_start="",
+                evidence_span_end="",
+                evidence_section="",
+            )
+
+        def _variants(raw: str) -> list[str]:
+            s = str(raw or "").replace("\u2212", "-").strip()
+            out: list[str] = []
+            if not s:
+                return out
+            out.append(s)
+            m = re.search(r"[-+]?\d+(?:[.,]\d+)?", s)
+            if m:
+                try:
+                    n = float(m.group(0).replace(",", "."))
+                    out.extend(
+                        [
+                            f"{n:.12f}".rstrip("0").rstrip("."),
+                            f"{n:.1f}".rstrip("0").rstrip("."),
+                            str(int(round(n))) if abs(n - round(n)) < 1e-6 else "",
+                        ]
+                    )
+                except Exception:
+                    pass
+            out = [x for x in out if x]
+            ext = []
+            for x in out:
+                ext.extend([x, f"{x} nm", f"{x}nm"])
+            # preserve order, unique
+            uniq: list[str] = []
+            seen: set[str] = set()
+            for x in ext:
+                y = x.strip().lower()
+                if y and y not in seen:
+                    seen.add(y)
+                    uniq.append(y)
+            return uniq
+
+        candidates: list[tuple[int, int, str]] = []
+        lower = full.lower()
+        for raw in numeric_values:
+            for v in _variants(raw):
+                i = lower.find(v)
+                if i >= 0:
+                    candidates.append((i, i + len(v), v))
+                    break
+        if not candidates:
+            return TextEvidence(
+                evidence_source_type="unknown",
+                evidence_pointer_raw=evidence_pointer_raw,
+                evidence_text="",
+                evidence_context_before="",
+                evidence_context_after="",
+                evidence_block_id="",
+                evidence_span_id="",
+                evidence_span_start="",
+                evidence_span_end="",
+                evidence_section="",
+            )
+        s, e, _ = sorted(candidates, key=lambda x: x[0])[0]
+        ws = max(0, s - 250)
+        we = min(len(full), e + 250)
+        core = full[ws:we]
+        before = full[max(0, ws - 150):ws]
+        after = full[we:min(len(full), we + 150)]
+        pointer = f"fulltext|{ws}|{we}|numeric_locate"
+        return TextEvidence(
+            evidence_source_type="fulltext",
+            evidence_pointer_raw=pointer,
+            evidence_text=short_text(core, max_span_chars),
+            evidence_context_before=short_text(before, 150),
+            evidence_context_after=short_text(after, 150),
+            evidence_block_id="fulltext",
+            evidence_span_id=f"{ws}-{we}",
+            evidence_span_start=str(ws),
+            evidence_span_end=str(we),
+            evidence_section="fulltext",
         )
 
     def _extract_table_csv_name(self, pointer_raw: str) -> str:
@@ -570,15 +674,31 @@ class AuditEvidenceResolverV1:
         field_name: str,
         v_num: float,
         v_tokens: set[str],
-    ) -> int:
+    ) -> tuple[int, str]:
         ct = str(cell_text or "").replace("\u2212", "-").lower()
         ct_compact = re.sub(r"\s+", "", ct)
+        raw_num_tokens = re.findall(r"[-+]?\d+(?:[.,]\d+)?", ct)
+        norm_num_tokens: set[str] = set()
+        for tok in raw_num_tokens:
+            try:
+                n = float(tok.replace(",", "."))
+                norm_num_tokens.add(f"{n:.12f}".rstrip("0").rstrip("."))
+            except Exception:
+                continue
         for tok in v_tokens:
             t = str(tok).lower().strip()
             if not t:
                 continue
-            if t in ct or re.sub(r"\s+", "", t) in ct_compact:
-                return 3  # exact token match
+            tn = re.sub(r"\s+", "", t)
+            # numeric-only exact matching must be token-safe (avoid 90 matching 900)
+            if re.fullmatch(r"[-+]?\d+(?:\.\d+)?", tn):
+                if tn in norm_num_tokens:
+                    return 4, "exact"
+                continue
+            # token with units/symbols (e.g., 90%, 117nm) can use boundary-aware search.
+            pattern = rf"(?<![0-9a-z]){re.escape(tn)}(?![0-9a-z])"
+            if re.search(pattern, ct_compact):
+                return 4, "exact"
 
         nums = []
         for m in re.finditer(r"[-+]?\d+(?:[.,]\d+)?", ct):
@@ -586,24 +706,21 @@ class AuditEvidenceResolverV1:
                 nums.append(float(m.group(0).replace(",", ".")))
             except Exception:
                 continue
-        if field_name == "encapsulation_efficiency_percent":
-            tol_abs = 0.5
-            tol_rel = 0.02
-        elif field_name == "size_nm":
-            tol_abs = 1.0
-            tol_rel = 0.02
-        else:
-            tol_abs = 1e-6
-            tol_rel = 1e-3
+        tol_abs = 0.01 if abs(v_num) < 200 else 0.05
+        tol_rel = 0.005
         tol = max(tol_abs, abs(v_num) * tol_rel)
         for n in nums:
             if abs(n - v_num) <= tol:
-                return 2  # rounded/tolerant match
+                return 3, "tol"
+            if round(n, 1) == round(v_num, 1):
+                return 2, "rounded"
+            if abs(n - round(n)) < 0.05 and abs(v_num - round(v_num)) < 0.05 and int(round(n)) == int(round(v_num)):
+                return 2, "rounded"
 
         for lo, hi in self._find_numeric_ranges(ct):
             if lo - tol <= v_num <= hi + tol:
-                return 1  # range match
-        return 0
+                return 1, "range"
+        return 0, ""
 
     def _pick_table_first_match(
         self,
@@ -634,7 +751,9 @@ class AuditEvidenceResolverV1:
                     if not cell.strip():
                         continue
                     for spec in numeric_specs:
-                        level = self._match_cell_numeric_level(
+                        if preferred_fields and str(spec["field_name"]) not in preferred_fields:
+                            continue
+                        level, match_kind = self._match_cell_numeric_level(
                             cell_text=cell,
                             field_name=str(spec["field_name"]),
                             v_num=float(spec["value_num"]),
@@ -654,11 +773,8 @@ class AuditEvidenceResolverV1:
                             "caption": short_text(caption, 300),
                             "score": score,
                             "field_name": str(spec["field_name"]),
-                            "match_reason": (
-                                "table_first_exact_numeric_match"
-                                if level == 3
-                                else ("table_first_tolerant_numeric_match" if level == 2 else "table_first_range_numeric_match")
-                            ),
+                            "match_reason": f"table_first_{match_kind}_numeric_match",
+                            "match_kind": match_kind,
                             "doe_signature": short_text(self._extract_doe_signature_from_row(rr, cols), 200),
                         }
                         if best is None or float(candidate["score"]) > float(best["score"]):
