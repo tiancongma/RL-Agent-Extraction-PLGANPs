@@ -72,3 +72,36 @@ and does not support consistent ground truth adjudication.
 
 **Scope**  
 This decision applies to GT and evaluation only and does not affect other structured fields.
+
+## 2026-03-06
+
+### Decision: Clarify LLM semantic responsibilities, deterministic arbitration responsibilities, and audit boundary
+
+Decision
+- LLM extraction is responsible for semantic structure: instance boundaries, field-role assignment, and shared-vs-instance-specific interpretation.
+- Deterministic layers own numeric evidence binding, derivation, schema assembly/export, and QC gating.
+- Semantic repair rules in downstream stages must not grow indefinitely; they are tracked as candidates for future upstream schema redesign.
+- The PLGA-only database standard remains a database-layer filter and release contract, not an LLM-only decision.
+
+Reason
+- The pipeline responsibility audit shows that several downstream semantic-repair rule families are compensating for missing upstream structure.
+- Keeping semantic interpretation and deterministic arbitration distinct improves reproducibility, debuggability, and long-term maintainability.
+
+Impact
+- Immediate implementation remains layered: LLM extraction -> deterministic arbitration -> audit/release.
+- Downstream deterministic rule families remain active for release stability.
+- Semantic-repair heavy areas are now explicitly treated as redesign backlog for extraction schema evolution.
+
+### Decision: Set weak_labels_v7 as next target schema architecture step (not implemented)
+
+Decision
+- weak_labels_v7 is adopted as the next extraction schema target to strengthen LLM-side semantic structure and reduce downstream semantic repair.
+- This decision defines architecture direction only; runtime extraction scripts remain unchanged at this time.
+
+Reason
+- Current v6 schema lacks explicit semantic typing for scope, field membership confidence, and evidence region type.
+- Downstream semantic repair growth should be replaced by stronger upstream schema contracts where appropriate.
+
+Impact
+- Future implementation work should prioritize v7-compatible extraction outputs and staged downstream adoption.
+- Deterministic arbitration, derivation, export, and QC responsibilities remain unchanged.

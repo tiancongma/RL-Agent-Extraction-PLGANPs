@@ -64,6 +64,198 @@ def truncate_text(value: Any, limit: int = 200) -> str:
     return s[:limit]
 
 
+POLYMER_PLGA_PATTERNS = [
+    re.compile(r"\bplga\b", re.IGNORECASE),
+    re.compile(r"poly\s*\(\s*lactic\s*-\s*co\s*-\s*glycolic\s+acid\s*\)", re.IGNORECASE),
+    re.compile(r"poly\s*\(\s*d\s*,?\s*l\s*-\s*lactide\s*-\s*co\s*-\s*glycolide\s*\)", re.IGNORECASE),
+]
+
+
+def classify_polymer_text_to_identity(text: str) -> str:
+    s = str(text or "").strip()
+    if not s:
+        return ""
+    for pat in POLYMER_PLGA_PATTERNS:
+        if pat.search(s):
+            return "PLGA"
+    return "OTHER"
+
+
+def extract_polymer_identity_from_json_str(value: str) -> str:
+    s = str(value or "").strip()
+    if not s:
+        return ""
+    try:
+        obj = json.loads(s)
+    except Exception:
+        return ""
+    if not isinstance(obj, dict):
+        return ""
+    candidates = [
+        obj.get("polymer_identity", ""),
+        obj.get("polymer_family", ""),
+        obj.get("polymer_type_canon", ""),
+        obj.get("polymer_type", ""),
+    ]
+    for c in candidates:
+        out = str(c).strip()
+        if out:
+            return out
+    return ""
+
+
+def extract_polymer_identity_from_signature_string(value: str) -> str:
+    s = str(value or "")
+    if not s:
+        return ""
+    m = re.search(r"polymer_type_canon\s*=\s*([^|]+)", s, flags=re.IGNORECASE)
+    if m:
+        return str(m.group(1)).strip()
+    return ""
+
+
+def infer_polymer_identity_for_core(
+    core_df: pd.DataFrame,
+    trace_df: pd.DataFrame,
+    run_id: str,
+) -> tuple[pd.Series, dict[str, int], list[str]]:
+    n_rows = len(core_df)
+    if n_rows == 0:
+        return pd.Series([], dtype=str), {}, []
+
+    if "formulation_core_id" not in core_df.columns:
+        return pd.Series(["OTHER"] * n_rows), {"fallback_other_no_formulation_core_id": n_rows}, [
+            "polymer_identity defaulted to OTHER because formulation_core_id is missing in formulation_core"
+        ]
+
+    existing_identity_col = ""
+    for c in ["polymer_identity", "polymer_family", "polymer_type", "polymer_type_normalized"]:
+        if c in core_df.columns:
+            existing_identity_col = c
+            break
+    if existing_identity_col:
+        ids = core_df[existing_identity_col].astype(str).map(classify_polymer_text_to_identity)
+        ids = ids.replace("", "OTHER")
+        stats = {"direct_from_formulation_core": int((core_df[existing_identity_col].astype(str).str.strip() != "").sum())}
+        return ids, stats, [f"polymer_identity derived from existing formulation_core column: {existing_identity_col}"]
+
+    run_dir = Path(f"data/results/{run_id}")
+    ia_path = run_dir / "formulation_core_signature_v1" / "instance_assignment_v1.tsv"
+    weak_path = run_dir / "weak_labels__gemini.tsv"
+
+    direct_by_pair: dict[tuple[str, str], str] = {}
+    if ia_path.exists():
+        ia_df = read_tsv(ia_path)
+        if {"doc_key", "formulation_id"}.issubset(set(ia_df.columns)):
+            for _, row in ia_df.iterrows():
+                k = str(row.get("doc_key", "")).strip()
+                f = str(row.get("formulation_id", "")).strip()
+                if not k or not f:
+                    continue
+                direct_raw = ""
+                for c in ["polymer_identity", "polymer_family", "polymer_type", "polymer_type_canon"]:
+                    if c in ia_df.columns:
+                        direct_raw = str(row.get(c, "")).strip()
+                        if direct_raw:
+                            break
+                if not direct_raw:
+                    direct_raw = extract_polymer_identity_from_json_str(row.get("canonical_components_json", ""))
+                if not direct_raw:
+                    direct_raw = extract_polymer_identity_from_signature_string(row.get("signature_string", ""))
+                if direct_raw and (k, f) not in direct_by_pair:
+                    direct_by_pair[(k, f)] = direct_raw
+
+    text_by_pair: dict[tuple[str, str], str] = {}
+    if weak_path.exists():
+        weak_df = read_tsv(weak_path)
+        if {"key", "formulation_id"}.issubset(set(weak_df.columns)):
+            text_cols = [
+                c
+                for c in [
+                    "polymer_value_raw",
+                    "polymer_name",
+                    "polymer",
+                    "polymer_identity",
+                    "polymer_type",
+                    "polymer_family",
+                    "notes",
+                    "evidence_span_text",
+                    "plga_mw_kDa",
+                ]
+                if c in weak_df.columns
+            ]
+            if text_cols:
+                for _, row in weak_df.iterrows():
+                    k = str(row.get("key", "")).strip()
+                    f = str(row.get("formulation_id", "")).strip()
+                    if not k or not f:
+                        continue
+                    txt = " | ".join([str(row.get(c, "")) for c in text_cols]).strip()
+                    if not txt:
+                        continue
+                    prev = text_by_pair.get((k, f), "")
+                    text_by_pair[(k, f)] = f"{prev} | {txt}".strip(" |") if prev else txt
+
+    core_to_pairs: dict[str, list[tuple[str, str]]] = {}
+    if {"formulation_core_id", "group_key"}.issubset(set(trace_df.columns)):
+        for _, row in trace_df.iterrows():
+            core_id = str(row.get("formulation_core_id", "")).strip()
+            gk = str(row.get("group_key", "")).strip()
+            if not core_id or not gk or "::" not in gk:
+                continue
+            key, formulation_id = gk.split("::", 1)
+            key = key.strip()
+            formulation_id = formulation_id.strip()
+            if not key or not formulation_id:
+                continue
+            core_to_pairs.setdefault(core_id, []).append((key, formulation_id))
+
+    identity_values: list[str] = []
+    from_direct = 0
+    from_heuristic = 0
+    default_other = 0
+    unmatched_core = 0
+
+    for _, core_row in core_df.iterrows():
+        core_id = str(core_row.get("formulation_core_id", "")).strip()
+        pairs = core_to_pairs.get(core_id, [])
+        if not pairs:
+            unmatched_core += 1
+            identity_values.append("OTHER")
+            default_other += 1
+            continue
+
+        direct_texts = [direct_by_pair.get(p, "") for p in pairs if direct_by_pair.get(p, "")]
+        if direct_texts:
+            labels = [classify_polymer_text_to_identity(t) for t in direct_texts]
+            final = "PLGA" if any(lbl == "PLGA" for lbl in labels) else "OTHER"
+            identity_values.append(final)
+            from_direct += 1
+            continue
+
+        heuristic_texts = [text_by_pair.get(p, "") for p in pairs if text_by_pair.get(p, "")]
+        if heuristic_texts:
+            final = "PLGA" if any(classify_polymer_text_to_identity(t) == "PLGA" for t in heuristic_texts) else "OTHER"
+            identity_values.append(final)
+            from_heuristic += 1
+            continue
+
+        identity_values.append("OTHER")
+        default_other += 1
+
+    stats = {
+        "direct_from_signature_assignment": from_direct,
+        "heuristic_from_weak_labels_text": from_heuristic,
+        "default_other_no_polymer_text": default_other,
+        "cores_without_group_key_mapping": unmatched_core,
+    }
+    notes = [
+        "polymer_identity is deterministic: prefer signature-assignment polymer identity; fallback heuristic over weak-label polymer text",
+        "heuristic rule: PLGA if text contains 'PLGA' or 'poly(lactic-co-glycolic acid)' or 'poly(D,L-lactide-co-glycolide)', else OTHER",
+    ]
+    return pd.Series(identity_values, dtype=str), stats, notes
+
+
 def build_factor_candidates(core_df: pd.DataFrame) -> tuple[list[tuple[str, str]], list[str]]:
     allowlist_aliases: dict[str, list[str]] = {
         "pva_conc_percent": ["pva_conc_percent"],
@@ -94,6 +286,7 @@ def build_factor_candidates(core_df: pd.DataFrame) -> tuple[list[tuple[str, str]
         "formulation_core_id",
         "reference_normalized_doi",
         "core_signature",
+        "polymer_identity",
         "drug_name_normalized",
         "la_fraction",
         "ga_fraction",
@@ -274,6 +467,12 @@ def main() -> None:
     core_df = read_tsv(core_path)
     measurements_df = read_tsv(measurements_path)
     trace_df = read_tsv(trace_path)
+    polymer_identity, polymer_identity_stats, polymer_identity_notes = infer_polymer_identity_for_core(
+        core_df=core_df,
+        trace_df=trace_df,
+        run_id=run_id,
+    )
+    core_df["polymer_identity"] = polymer_identity
     factors_df, factor_names = build_factors(core_df, measurements_df, trace_df, run_id)
 
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -342,6 +541,8 @@ def main() -> None:
         "unique_dois_count": unique_dois_count,
         "condition_tag_distribution": condition_dist,
         "core_columns_exported": core_df.columns.tolist(),
+        "polymer_identity_stats": polymer_identity_stats,
+        "schema_note_polymer_identity": polymer_identity_notes,
         "factor_names_emitted": sorted(set(factor_names)),
         "doe_decode_enabled": True,
         "doe_decode_diagnostics_path": str(doe_diag_path).replace("\\", "/"),

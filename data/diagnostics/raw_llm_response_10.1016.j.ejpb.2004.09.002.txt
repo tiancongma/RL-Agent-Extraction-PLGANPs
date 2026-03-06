@@ -1,0 +1,596 @@
+```json
+{
+  "schema_version": "weak_labels_v7",
+  "paper_notes": "This research paper details the development and characterization of PLGA nanospheres and nanocapsules designed to encapsulate xanthone (XAN) or 3-methoxyxanthone (3-MeOXAN), which are poorly water-soluble compounds. Nanospheres were formulated using the solvent displacement technique, while nanocapsules were prepared via interfacial polymer deposition. Key characteristics like particle size, polydispersity index, zeta potential, and encapsulation efficiency were evaluated for both empty and drug-loaded formulations. The study also explored the influence of formulation parameters, such as drug feed concentration and oil core volume, on nanoparticle properties and stability.",
+  "formulations": [
+    {
+      "formulation_id": "NS-E-01",
+      "formulation_role": "baseline",
+      "instance_confidence": "high",
+      "fields": {
+        "emul_type": {
+          "value": "O/W",
+          "value_text": "Oil-in-water (inferred from organic solution poured into aqueous solution)",
+          "scope": "global_shared",
+          "membership_confidence": "medium",
+          "evidence_region_type": "methods_sentence"
+        },
+        "emul_method": {
+          "value": "solvent displacement",
+          "value_text": "solvent displacement technique described by Fessi et al. [18]",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "la_ga_ratio": {
+          "value": "50:50",
+          "value_text": "50:50",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mw_kDa": {
+          "value": null,
+          "value_text": "50-75 kDa",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mass_mg": {
+          "value": 63.0,
+          "value_text": "63 mg",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_name": {
+          "value": "Pluronic F-68",
+          "value_text": "Pluronic F-68",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_concentration_text": {
+          "value": null,
+          "value_text": "0.25% (w/v) Pluronic F-68",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "organic_solvent": {
+          "value": "acetone",
+          "value_text": "acetone",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "size_nm": {
+          "value": 154.0,
+          "value_text": "154 G 6 nm",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "pdi": {
+          "value": 0.06,
+          "value_text": "0.06 G 0.03",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "zeta_mV": {
+          "value": -36.2,
+          "value_text": "K36.2 G 5.2 mV",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        }
+      }
+    },
+    {
+      "formulation_id": "NS-XAN-01",
+      "formulation_role": "variant",
+      "instance_confidence": "high",
+      "fields": {
+        "emul_type": {
+          "value": "O/W",
+          "value_text": "Oil-in-water (inferred from organic solution poured into aqueous solution)",
+          "scope": "global_shared",
+          "membership_confidence": "medium",
+          "evidence_region_type": "methods_sentence"
+        },
+        "emul_method": {
+          "value": "solvent displacement",
+          "value_text": "solvent displacement technique described by Fessi et al. [18]",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "la_ga_ratio": {
+          "value": "50:50",
+          "value_text": "50:50",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mw_kDa": {
+          "value": null,
+          "value_text": "50-75 kDa",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mass_mg": {
+          "value": 63.0,
+          "value_text": "63 mg",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_name": {
+          "value": "Pluronic F-68",
+          "value_text": "Pluronic F-68",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_concentration_text": {
+          "value": null,
+          "value_text": "0.25% (w/v) Pluronic F-68",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "organic_solvent": {
+          "value": "acetone",
+          "value_text": "acetone",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_name": {
+          "value": "xanthone",
+          "value_text": "xanthone (XAN)",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_feed_amount_text": {
+          "value": null,
+          "value_text": "theoretical concentration of 60 mg/mL",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "size_nm": {
+          "value": 164.0,
+          "value_text": "164 G 8 nm",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "pdi": {
+          "value": 0.06,
+          "value_text": "0.06 G 0.03",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "zeta_mV": {
+          "value": -38.9,
+          "value_text": "K38.9 G 1.3 mV",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "encapsulation_efficiency_percent": {
+          "value": 33.0,
+          "value_text": "33.0 G 4.1%",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        }
+      }
+    },
+    {
+      "formulation_id": "NS-3MeOXAN-01",
+      "formulation_role": "variant",
+      "instance_confidence": "high",
+      "fields": {
+        "emul_type": {
+          "value": "O/W",
+          "value_text": "Oil-in-water (inferred from organic solution poured into aqueous solution)",
+          "scope": "global_shared",
+          "membership_confidence": "medium",
+          "evidence_region_type": "methods_sentence"
+        },
+        "emul_method": {
+          "value": "solvent displacement",
+          "value_text": "solvent displacement technique described by Fessi et al. [18]",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "la_ga_ratio": {
+          "value": "50:50",
+          "value_text": "50:50",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mw_kDa": {
+          "value": null,
+          "value_text": "50-75 kDa",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mass_mg": {
+          "value": 63.0,
+          "value_text": "63 mg",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_name": {
+          "value": "Pluronic F-68",
+          "value_text": "Pluronic F-68",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_concentration_text": {
+          "value": null,
+          "value_text": "0.25% (w/v) Pluronic F-68",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "organic_solvent": {
+          "value": "acetone",
+          "value_text": "acetone",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_name": {
+          "value": "3-methoxyxanthone",
+          "value_text": "3-methoxyxanthone (3-MeOXAN)",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_feed_amount_text": {
+          "value": null,
+          "value_text": "theoretical concentration of 60 mg/mL",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "size_nm": {
+          "value": 164.0,
+          "value_text": "164 G 9 nm",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "pdi": {
+          "value": 0.06,
+          "value_text": "0.06 G 0.01",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "zeta_mV": {
+          "value": -36.0,
+          "value_text": "K36.0 G 3.0 mV",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "encapsulation_efficiency_percent": {
+          "value": 41.5,
+          "value_text": "41.5 G 7.6%",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        }
+      }
+    },
+    {
+      "formulation_id": "NC-E-01",
+      "formulation_role": "baseline",
+      "instance_confidence": "high",
+      "fields": {
+        "emul_type": {
+          "value": "O/W",
+          "value_text": "Oil-in-water (inferred from organic solution poured into aqueous solution)",
+          "scope": "global_shared",
+          "membership_confidence": "medium",
+          "evidence_region_type": "methods_sentence"
+        },
+        "emul_method": {
+          "value": "interfacial polymer deposition",
+          "value_text": "interfacial polymer deposition technique described by Fessi et al. [19]",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "la_ga_ratio": {
+          "value": "50:50",
+          "value_text": "50:50",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mw_kDa": {
+          "value": null,
+          "value_text": "50-75 kDa",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mass_mg": {
+          "value": 50.0,
+          "value_text": "50 mg",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_name": {
+          "value": "Pluronic F-68, soybean lecithin",
+          "value_text": "Pluronic F-68, soybean lecithin",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_concentration_text": {
+          "value": null,
+          "value_text": "0.5% (w/v) Pluronic F-68, 100 mg soybean lecithin (in organic phase) with 0.6 mL Myritol 318 oil core",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "organic_solvent": {
+          "value": "acetone",
+          "value_text": "acetone",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "size_nm": {
+          "value": 261.0,
+          "value_text": "261 G 17 nm",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "pdi": {
+          "value": 0.48,
+          "value_text": "0.48 G 0.06",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "zeta_mV": {
+          "value": -36.3,
+          "value_text": "K36.3 G 4.3 mV",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        }
+      }
+    },
+    {
+      "formulation_id": "NC-XAN-01",
+      "formulation_role": "variant",
+      "instance_confidence": "high",
+      "fields": {
+        "emul_type": {
+          "value": "O/W",
+          "value_text": "Oil-in-water (inferred from organic solution poured into aqueous solution)",
+          "scope": "global_shared",
+          "membership_confidence": "medium",
+          "evidence_region_type": "methods_sentence"
+        },
+        "emul_method": {
+          "value": "interfacial polymer deposition",
+          "value_text": "interfacial polymer deposition technique described by Fessi et al. [19]",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "la_ga_ratio": {
+          "value": "50:50",
+          "value_text": "50:50",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mw_kDa": {
+          "value": null,
+          "value_text": "50-75 kDa",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mass_mg": {
+          "value": 50.0,
+          "value_text": "50 mg",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_name": {
+          "value": "Pluronic F-68, soybean lecithin",
+          "value_text": "Pluronic F-68, soybean lecithin",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_concentration_text": {
+          "value": null,
+          "value_text": "0.5% (w/v) Pluronic F-68, 100 mg soybean lecithin (in organic phase) with 0.6 mL Myritol 318 oil core",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "organic_solvent": {
+          "value": "acetone",
+          "value_text": "acetone",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_name": {
+          "value": "xanthone",
+          "value_text": "xanthone (XAN)",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_feed_amount_text": {
+          "value": null,
+          "value_text": "1.2% (w/v) XAN in 0.6 mL Myritol 318",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "results_sentence"
+        },
+        "size_nm": {
+          "value": 273.0,
+          "value_text": "273 G 18 nm",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "pdi": {
+          "value": 0.48,
+          "value_text": "0.48 G 0.05",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "zeta_mV": {
+          "value": -36.4,
+          "value_text": "K36.4 G 9.3 mV",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "encapsulation_efficiency_percent": {
+          "value": 82.0,
+          "value_text": "82 G 7%",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        }
+      }
+    },
+    {
+      "formulation_id": "NC-3MeOXAN-01",
+      "formulation_role": "variant",
+      "instance_confidence": "high",
+      "fields": {
+        "emul_type": {
+          "value": "O/W",
+          "value_text": "Oil-in-water (inferred from organic solution poured into aqueous solution)",
+          "scope": "global_shared",
+          "membership_confidence": "medium",
+          "evidence_region_type": "methods_sentence"
+        },
+        "emul_method": {
+          "value": "interfacial polymer deposition",
+          "value_text": "interfacial polymer deposition technique described by Fessi et al. [19]",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "la_ga_ratio": {
+          "value": "50:50",
+          "value_text": "50:50",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mw_kDa": {
+          "value": null,
+          "value_text": "50-75 kDa",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "plga_mass_mg": {
+          "value": 50.0,
+          "value_text": "50 mg",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_name": {
+          "value": "Pluronic F-68, soybean lecithin",
+          "value_text": "Pluronic F-68, soybean lecithin",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "surfactant_concentration_text": {
+          "value": null,
+          "value_text": "0.5% (w/v) Pluronic F-68, 100 mg soybean lecithin (in organic phase) with 0.6 mL Myritol 318 oil core",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "organic_solvent": {
+          "value": "acetone",
+          "value_text": "acetone",
+          "scope": "global_shared",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_name": {
+          "value": "3-methoxyxanthone",
+          "value_text": "3-methoxyxanthone (3-MeOXAN)",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "methods_sentence"
+        },
+        "drug_feed_amount_text": {
+          "value": null,
+          "value_text": "2.8% (w/v) 3-MeOXAN in 0.6 mL Myritol 318",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "results_sentence"
+        },
+        "size_nm": {
+          "value": 271.0,
+          "value_text": "271 G 16 nm",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "pdi": {
+          "value": 0.43,
+          "value_text": "0.43 G 0.03",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "zeta_mV": {
+          "value": -41.8,
+          "value_text": "K41.8 G 5.4 mV",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        },
+        "encapsulation_efficiency_percent": {
+          "value": 83.0,
+          "value_text": "83 G 7%",
+          "scope": "instance_specific",
+          "membership_confidence": "high",
+          "evidence_region_type": "table_cell"
+        }
+      }
+    }
+  ]
+}
+```

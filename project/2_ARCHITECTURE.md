@@ -208,3 +208,55 @@ Applies to:
 
 Non-negotiable:
 No debug artifact is considered complete if DOI is missing.
+
+---
+
+## LLM Extraction Layer, Deterministic Arbitration Layer, and Audit Boundary
+
+### Why the pipeline is layered
+The project separates semantic extraction, deterministic arbitration, and audit so that:
+- semantic interpretation is handled where language context is strongest (LLM stage),
+- reproducible rule behavior is handled where strict consistency is required (deterministic stage),
+- human and machine audit can verify both without mixing responsibilities.
+
+This prevents hidden logic drift where semantic decisions are silently embedded into late-stage scripts.
+
+### Layer 1: LLM extraction responsibilities
+The LLM extraction layer is responsible for:
+- identifying formulation instances and instance boundaries,
+- assigning field role semantics (what value belongs to which field),
+- distinguishing shared-vs-instance-specific meaning when reported in prose/tables,
+- emitting structured candidate rows with explicit missingness rather than silent omission.
+
+The LLM extraction layer is not responsible for final arbitration of conflicting evidence.
+
+### Layer 2: Deterministic arbitration responsibilities
+Deterministic scripts are responsible for:
+- numeric evidence binding and token-level support checks,
+- deterministic derivation and unit/ratio normalization,
+- schema assembly and export formatting,
+- stable filtering/gating for reproducible benchmarking and release outputs.
+
+These responsibilities must remain deterministic to preserve run-to-run reproducibility and auditability.
+
+### Layer 3: Audit boundary responsibilities
+Audit occurs at the boundary between extracted candidates and publishable database outputs.
+The audit boundary must expose:
+- evidence pointers and span traceability,
+- field-level and formulation-level QC outcomes,
+- explicit conflict/uncertainty artifacts for targeted human review.
+
+### Stable downstream rule families (intentionally deterministic core)
+The following rule families are considered stable deterministic core:
+- numeric evidence realignment and token QC gating,
+- derivation and normalized field computation,
+- schema table construction and database export,
+- deterministic multi-model merge/conflict reporting.
+
+### Downstream rule families considered upstream-redesign candidates
+The following rule families are currently tolerated but should be treated as future upstream LLM redesign targets:
+- semantic formulation grouping and regrouping,
+- global baseline inheritance for shared method conditions,
+- drug/surfactant semantic normalization used to recover membership,
+- condition-instance key inference and shared-vs-instance reconstruction,
+- repeated semantic repair logic that compensates for weak extraction schema structure.

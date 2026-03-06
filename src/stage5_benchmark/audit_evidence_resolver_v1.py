@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -57,6 +58,8 @@ def short_text(v: Any, limit: int) -> str:
 class AuditEvidenceResolverV1:
     def __init__(self, project_root: Path) -> None:
         self.project_root = project_root.resolve()
+        env_toggle = str(os.environ.get("USE_TABLE_FIRST_NUMERIC", "1")).strip().lower()
+        self.use_table_first_numeric = env_toggle not in {"0", "false", "no", "off"}
         self.key2txt_map: dict[str, Path] = {}
         self.text_cache: dict[str, str] = {}
         self.table_file_index: dict[str, list[Path]] = {}
@@ -978,7 +981,9 @@ class AuditEvidenceResolverV1:
             preferred_fields.add("size_nm")
         if not preferred_fields:
             preferred_fields = high_stakes_fields
-        table_first_trigger = bool(value_source_table or table_value_present or existing_table_hint or force_table_first_numeric)
+        table_first_trigger = self.use_table_first_numeric and bool(
+            value_source_table or table_value_present or existing_table_hint or force_table_first_numeric
+        )
 
         if table_first_trigger and high_stakes_specs and candidates:
             tf_match = self._pick_table_first_match(
