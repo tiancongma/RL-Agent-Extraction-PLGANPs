@@ -26,6 +26,7 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  │  ├─ feature
 │  │  │  │  │  ├─ ee-coverage-rl
 │  │  │  │  │  └─ evidence-spans-v1
+│  │  │  │  ├─ baseline_pre_tablefirst
 │  │  │  │  └─ main
 │  │  │  └─ remotes
 │  │  │     └─ origin
@@ -34,6 +35,7 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │        ├─ feature
 │  │  │        │  ├─ ee-coverage-rl
 │  │  │        │  └─ evidence-spans-v1
+│  │  │        ├─ baseline_pre_tablefirst
 │  │  │        ├─ HEAD
 │  │  │        └─ main
 │  │  └─ HEAD
@@ -43,9 +45,13 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ 6259625eb937f4d3d8ead5ec43f049dce53782
 │  │  │  ├─ 70524da0a671a8abc18a3337f028d8ecdefd4c
 │  │  │  └─ 7751b794ed59880088ec05cef7b03fc5f8b1c1
+│  │  ├─ 01
+│  │  │  └─ 331ff6563a4c97a440cb6aff84f94bc785cd58
 │  │  ├─ 02
 │  │  │  ├─ 0a71cb23d7c379c7c686a0e04d1ee0a45904a2
-│  │  │  └─ 1d6515e941c20934a4fb73d254583e26039572
+│  │  │  ├─ 1d6515e941c20934a4fb73d254583e26039572
+│  │  │  ├─ 86e43ec0ae6f86ff0341953b2e9440ca90cbb9
+│  │  │  └─ b8328dd528b1d9f1f19ed3db17dd23708cec4c
 │  │  ├─ 03
 │  │  │  ├─ 2d2d2696ad6f5482a4ef51cefe26e286b858da
 │  │  │  ├─ 3582e76ac1eadf975e58123fb33868d88a4e1d
@@ -56,17 +62,21 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ 05
 │  │  │  ├─ 01983002f1b78be3f2013b08fff4d2b159423c
 │  │  │  ├─ 34d8e24469aa220e3cff9fb0c63accef5dd4b4
-│  │  │  └─ 3af4d4d9ced90f90f83ba68d70f7d599011072
+│  │  │  ├─ 3af4d4d9ced90f90f83ba68d70f7d599011072
+│  │  │  └─ 88a22456d5417bc1e3480dc3c0cc801a991f6a
 │  │  ├─ 06
 │  │  │  ├─ 1e4e1034fc06543f201bfc06fcbc1e2bc9dbbf
 │  │  │  ├─ 56af3687664c9d516542ea3052b655af360129
 │  │  │  ├─ 71f8f77565093b26f56df1bc91d3a7ad10ae67
 │  │  │  ├─ 7a348e6b5acd0b527ca5586a8f75a312fe6103
-│  │  │  └─ e1a13526002be84ae8385477f4a3b7e3aa5a46
+│  │  │  ├─ e1a13526002be84ae8385477f4a3b7e3aa5a46
+│  │  │  └─ e322424290e22ab1752db034df78d942db2e64
 │  │  ├─ 07
 │  │  │  ├─ 96bc9e6e22f1b3a1970ffeb5dd59fd1d65bc7c
 │  │  │  └─ 9e513a78c3aced6569305b2625f80ccd25b288
 │  │  ├─ 08
+│  │  │  ├─ 00f344de1b876ee63f289199e1632888df056e
+│  │  │  ├─ e1118a71d8d0def8e46918d0bef77920b04056
 │  │  │  └─ e2ae8fcd66325e9eba9bc27841074afa9c2541
 │  │  ├─ 09
 │  │  │  └─ 88dda8c156a3e64801897bfeb0f1b227833dcb
@@ -74,14 +84,19 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ 48ae3e696c0c1c0ca55e58f3f2a63d0df2eebd
 │  │  │  └─ 54a5825ccdc3e109b624867024eda69e4f6deb
 │  │  ├─ 0b
+│  │  │  ├─ 50bd5da4a2b8aacc83fd0f97497d93aa42eb97
 │  │  │  ├─ 7b5c93c8769705f982f9c775d8efe8eb63d35f
 │  │  │  └─ bd42833eb574a301533a72465d31a1f9864600
 │  │  ├─ 0c
 │  │  │  ├─ 5399fa4dc4b7189cb5c33b3ee4d2b64b33f45c
 │  │  │  ├─ 64fc5e6fbe8bd7c9acf42d2bc0bae6e226e527
-│  │  │  └─ ac4d3a9e2185f73db05847c2d913c108fa3ef0
+│  │  │  ├─ ac4d3a9e2185f73db05847c2d913c108fa3ef0
+│  │  │  ├─ b57446ce5c43f57f3746258f2c05fc8f848742
+│  │  │  └─ dfc3d3b044bf4b09193c8f3350d737e25a08fe
 │  │  ├─ 0d
+│  │  │  ├─ 016b9d88a7cb1864de88e3bbe9c3a77e79255f
 │  │  │  ├─ 3659b0f55cb630a127a31917e3d12c1c55e4de
+│  │  │  ├─ 3b760a8846773507a51096267f1dd6d2261bd7
 │  │  │  ├─ 5ee807e0ceec29f3d37fddf3b5b8ce6b5de9af
 │  │  │  └─ 8228c57f33332649e9299fbffdf5e433f9bbe5
 │  │  ├─ 0e
@@ -90,6 +105,9 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ 4ab16cce22a0f72133190aa256120f55cea434
 │  │  │  └─ 9b85678be00fce65071a4ed8bcebed620278bd
 │  │  ├─ 0f
+│  │  │  ├─ 3a3021012b1dba6bf7274b198cdac0ca412d9e
+│  │  │  ├─ 59d72aef6ad9d3e0c95df156e7174ae8ce50de
+│  │  │  ├─ 6a2dfd377decfa2b62703d266dd686cd072862
 │  │  │  └─ 931577265a99b8d00e21a5a1365d382f575562
 │  │  ├─ 10
 │  │  │  └─ 89c0378c574b635cda302a0497940b7dd376fd
@@ -98,25 +116,36 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  └─ a50177a2102d188ec5ad3a89e29e45829e75f0
 │  │  ├─ 12
 │  │  │  ├─ 1080bf22a303401c636c60240b054dc38e74eb
+│  │  │  ├─ 14bd54ccff85266d5642a59b9dd075ee39bf6f
+│  │  │  ├─ 59466b8c2ea2fb3b2b7d858bf90aef74d1c03b
 │  │  │  ├─ 6efa8706e586d24e2047b319adf353a3bf7773
+│  │  │  ├─ 723533b2f8ac4fb21de695afc5bbdfa6a910f2
 │  │  │  └─ 915532064540b14b1a11671b059c5786c0869a
 │  │  ├─ 13
+│  │  │  ├─ 70fd70c6d9d5443537c8f8f39b1fd9829503a8
+│  │  │  ├─ 803471bd158114564bc3b05d6e215a760d496d
 │  │  │  ├─ a724f3ebedc51cf730739674b29f97bfe7cda4
 │  │  │  ├─ b7b66635d36b2b8018b321f383d3c55576c88f
-│  │  │  └─ d20e7be06791b976d921398bd9488c02292aa6
+│  │  │  ├─ d20e7be06791b976d921398bd9488c02292aa6
+│  │  │  └─ f60761dfe228c8aa76e3ae69c7b84eee08f1b9
 │  │  ├─ 14
 │  │  │  ├─ 1eded75274e5f3a9c00d1b0005709f642e65ca
 │  │  │  ├─ 2fd6dec947a38452459047270002d87b956f87
 │  │  │  └─ 7701d46128d4d3436e8ddfa8eb7b6371eda7e9
 │  │  ├─ 15
 │  │  │  ├─ 57caace35f52b3cfda9cef4fa33c8460f488b2
-│  │  │  └─ 61a350f7eea9cee414f0ef65ec4b7b31a7afc5
+│  │  │  ├─ 61a350f7eea9cee414f0ef65ec4b7b31a7afc5
+│  │  │  └─ d079026b0c4679ca1d1c142af51bc925f45c6f
 │  │  ├─ 16
+│  │  │  ├─ 3a8e5e4d1e667a1a5251ed7a56234cafe6b5c3
 │  │  │  └─ 8123608e97589b80e433c40e6ba8b06af032e4
 │  │  ├─ 17
+│  │  │  ├─ 1a7bccd1b5c16f7351778dde13e8beee2279c9
 │  │  │  ├─ 3a144bf1956bd954d39a65e04c148b80b40507
 │  │  │  └─ bb1f1df4158c9e4808304ade0e8004b712e2ca
 │  │  ├─ 18
+│  │  │  ├─ 184156b4b738c7bcf0a3537d7f398ccb622a0c
+│  │  │  ├─ 2b39423698ae7f9eedea0970e92d7544bf0815
 │  │  │  ├─ 4f9913f7020755456cb2188d712ea44e607c89
 │  │  │  └─ 9a97d7916527c8f62fca4bc684e6b89d72ab5c
 │  │  ├─ 19
@@ -141,11 +170,7 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ 7ab67c28e7b8aaea4ff10180d6db6e3074d212
 │  │  │  ├─ 899529a8f0109b5b209b6c35afcb548d821cf5
 │  │  │  └─ f33c14cccef0e134729a09ce6106d312fb654a
-│  │  ├─ 1f
-│  │  │  ├─ 164e8d24e1f6b8b4fe211e192001e06cd91093
-│  │  │  ├─ abf1215f095529ae7c523ab8efa7a77bae5cbb
-│  │  │  └─ cefdd854fbb4c2809e5a42cbb8ca4bc673bf7d
-│  │  └─ ... (178 more items omitted)
+│  │  └─ ... (207 more items omitted)
 │  ├─ refs
 │  │  ├─ heads
 │  │  │  ├─ demo
@@ -154,6 +179,7 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ feature
 │  │  │  │  ├─ ee-coverage-rl
 │  │  │  │  └─ evidence-spans-v1
+│  │  │  ├─ baseline_pre_tablefirst
 │  │  │  └─ main
 │  │  ├─ remotes
 │  │  │  └─ origin
@@ -162,9 +188,22 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │     ├─ feature
 │  │  │     │  ├─ ee-coverage-rl
 │  │  │     │  └─ evidence-spans-v1
+│  │  │     ├─ baseline_pre_tablefirst
 │  │  │     ├─ HEAD
 │  │  │     └─ main
 │  │  └─ tags
+│  │     └─ baseline_pre_tablefirst_local
+│  ├─ worktrees
+│  │  └─ RL-Agent-Extraction-PLGANPs_baseline_pre_tablefirst
+│  │     ├─ logs
+│  │     │  └─ HEAD
+│  │     ├─ refs
+│  │     ├─ commondir
+│  │     ├─ FETCH_HEAD
+│  │     ├─ gitdir
+│  │     ├─ HEAD
+│  │     ├─ index
+│  │     └─ ORIG_HEAD
 │  ├─ COMMIT_EDITMSG
 │  ├─ config
 │  ├─ description
@@ -919,7 +958,8 @@ RL-Agent-Extraction-PLGANPs/
 │  ├─ .gitkeep
 │  └─ annotated_data.xlsx
 ├─ configs
-│  └─ README_runs.md
+│  ├─ README_runs.md
+│  └─ run_step1_static_smoke_2keys.ps1
 ├─ data
 │  ├─ benchmark
 │  │  └─ goren_2025
@@ -1023,11 +1063,14 @@ RL-Agent-Extraction-PLGANPs/
 │  │     │  └─ projection_ruleset.v1.json
 │  │     ├─ goren_58_dois.txt
 │  │     ├─ NP_dataset_formulations.csv
+│  │     ├─ NP_dataset_formulations_TC.csv
 │  │     └─ schema_report__weak_labels.txt
 │  ├─ cleaned
 │  │  ├─ analysis
 │  │  │  ├─ ee_coverage_summary.tsv
-│  │  │  └─ ee_hits_per_doc.tsv
+│  │  │  ├─ ee_hits_per_doc.tsv
+│  │  │  ├─ keys_with_local_html__goren_2025.txt
+│  │  │  └─ tables_rerun_summary__goren_2025.tsv
 │  │  ├─ content
 │  │  │  ├─ legacy
 │  │  │  │  └─ text_html10
@@ -1139,8 +1182,220 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  │  └─ ... (751 more items omitted)
 │  │  │  └─ key2txt.tsv
 │  │  ├─ content_goren_2025
+│  │  │  ├─ analysis
+│  │  │  │  └─ dataset_layout_validation.tsv
 │  │  │  ├─ sections
 │  │  │  ├─ tables
+│  │  │  │  ├─ 4L3PHAZA
+│  │  │  │  │  ├─ 4L3PHAZA__table_01__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_02__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_03__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_04__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_05__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_06__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_07__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_08__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_09__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_10__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_11__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_12__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_13__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_14__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_15__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_16__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_17__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_18__pdf_table.csv
+│  │  │  │  │  ├─ 4L3PHAZA__table_19__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 5B4B2MS9
+│  │  │  │  │  ├─ 5B4B2MS9__table_01__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_01__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_02__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_02__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_03__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_03__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_04__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_04__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_05__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_05__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_06__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_06__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_07__html_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_07__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_08__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_09__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_10__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_11__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_12__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_13__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_14__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_15__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_16__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_17__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_18__pdf_table.csv
+│  │  │  │  │  ├─ 5B4B2MS9__table_19__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 5GIF3D8W
+│  │  │  │  │  ├─ 5GIF3D8W__table_01__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_02__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_03__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_04__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_05__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_06__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_07__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ BB3JUVW7
+│  │  │  │  │  ├─ BB3JUVW7__table_01__html_table.csv
+│  │  │  │  │  ├─ BB3JUVW7__table_02__html_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ BXCV5XWB
+│  │  │  │  │  ├─ BXCV5XWB__table_01__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_02__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_03__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_04__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_05__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_06__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_07__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_08__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_09__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_10__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_11__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_12__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_13__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_14__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_15__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_16__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ UFXX9WXE
+│  │  │  │  │  ├─ tables_manifest.json
+│  │  │  │  │  ├─ UFXX9WXE__table_01__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_02__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_03__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_04__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_05__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_06__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_07__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_08__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_09__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_10__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_11__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_12__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_13__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_14__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_15__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_16__pdf_table.csv
+│  │  │  │  │  ├─ UFXX9WXE__table_17__pdf_table.csv
+│  │  │  │  │  └─ UFXX9WXE__table_18__pdf_table.csv
+│  │  │  │  ├─ V99GKZEI
+│  │  │  │  │  ├─ tables_manifest.json
+│  │  │  │  │  └─ V99GKZEI__table_01__html_table.csv
+│  │  │  │  ├─ VPLMSH6V
+│  │  │  │  │  ├─ tables_manifest.json
+│  │  │  │  │  ├─ VPLMSH6V__table_01__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_01__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_02__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_02__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_03__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_03__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_04__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_04__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_05__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_05__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_06__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_06__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_07__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_07__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_08__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_08__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_09__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_09__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_10__html_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_10__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_11__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_12__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_13__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_14__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_15__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_16__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_17__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_18__pdf_table.csv
+│  │  │  │  │  ├─ VPLMSH6V__table_19__pdf_table.csv
+│  │  │  │  │  └─ ... (8 more items omitted)
+│  │  │  │  ├─ WFDTQ4VX
+│  │  │  │  │  ├─ tables_manifest.json
+│  │  │  │  │  ├─ WFDTQ4VX__table_01__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_02__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_03__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_04__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_05__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_06__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_07__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_08__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_09__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_10__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_11__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_12__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_13__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_14__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_15__pdf_table.csv
+│  │  │  │  │  ├─ WFDTQ4VX__table_16__pdf_table.csv
+│  │  │  │  │  └─ WFDTQ4VX__table_17__pdf_table.csv
+│  │  │  │  ├─ WIVUCMYG
+│  │  │  │  │  ├─ tables_manifest.json
+│  │  │  │  │  ├─ WIVUCMYG__table_01__html_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_01__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_02__html_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_02__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_03__html_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_03__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_04__html_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_04__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_05__html_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_05__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_06__html_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_06__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_07__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_08__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_09__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_10__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_11__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_12__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_13__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_14__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_15__pdf_table.csv
+│  │  │  │  │  ├─ WIVUCMYG__table_16__pdf_table.csv
+│  │  │  │  │  └─ WIVUCMYG__table_17__pdf_table.csv
+│  │  │  │  └─ YGA8VQKU
+│  │  │  │     ├─ tables_manifest.json
+│  │  │  │     ├─ YGA8VQKU__table_01__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_01__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_02__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_02__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_03__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_03__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_04__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_04__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_05__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_05__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_06__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_06__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_07__html_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_07__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_08__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_09__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_10__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_11__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_12__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_13__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_14__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_15__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_16__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_17__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_18__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_19__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_20__pdf_table.csv
+│  │  │  │     ├─ YGA8VQKU__table_21__pdf_table.csv
+│  │  │  │     └─ YGA8VQKU__table_22__pdf_table.csv
 │  │  │  ├─ text
 │  │  │  │  ├─ 5GIF3D8W.pdf.txt
 │  │  │  │  ├─ 5ZXYABSU.pdf.txt
@@ -1160,7 +1415,9 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  │  ├─ WIVUCMYG.html.txt
 │  │  │  │  ├─ XVWN2PDB.pdf.txt
 │  │  │  │  └─ YGA8VQKU.html.txt
-│  │  │  └─ key2txt.tsv
+│  │  │  ├─ html_table_candidates_v1.tsv
+│  │  │  ├─ key2txt.tsv
+│  │  │  └─ tables_index.tsv
 │  │  ├─ debug
 │  │  │  ├─ logs
 │  │  │  │  ├─ raw_llm_v4
@@ -1222,6 +1479,215 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │     ├─ fig3_gt_decision_distribution.png
 │  │  │     ├─ fig3_gt_decision_distribution.tsv
 │  │  │     └─ fig3_gt_decision_distribution.xlsx
+│  │  ├─ goren_2025
+│  │  │  ├─ analysis
+│  │  │  │  ├─ dataset_build_report.json
+│  │  │  │  ├─ dataset_layout_validation.tsv
+│  │  │  │  ├─ tables_extraction_coverage.tsv
+│  │  │  │  └─ tables_extraction_keys_v1.txt
+│  │  │  ├─ content
+│  │  │  ├─ index
+│  │  │  │  ├─ splits
+│  │  │  │  │  ├─ dev_keys_v1.tsv
+│  │  │  │  │  ├─ dev_manifest_v1.tsv
+│  │  │  │  │  ├─ dev_manifest_v7pilot3_2026-03-06.tsv
+│  │  │  │  │  ├─ dev_tables_extraction_coverage_v1.tsv
+│  │  │  │  │  └─ splits_readme.md
+│  │  │  │  └─ manifest.tsv
+│  │  │  ├─ sections
+│  │  │  │  └─ README.md
+│  │  │  ├─ tables
+│  │  │  │  ├─ 4D2J8HZD
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 4EAWFBZP
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 4MKS3TN8
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 584SQRJ9
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 5GIF3D8W
+│  │  │  │  │  ├─ 5GIF3D8W__table_01__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_02__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_03__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_04__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_05__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_06__pdf_table.csv
+│  │  │  │  │  ├─ 5GIF3D8W__table_07__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 5VVYUVTA
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 5ZXYABSU
+│  │  │  │  │  ├─ 5ZXYABSU__table_01__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_02__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_03__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_04__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_05__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_06__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_07__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_08__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_09__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_10__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_11__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_12__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_13__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_14__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_15__pdf_table.csv
+│  │  │  │  │  ├─ 5ZXYABSU__table_16__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 7UITQJUD
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 7ZS858NS
+│  │  │  │  │  ├─ 7ZS858NS__table_01__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_02__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_03__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_04__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_05__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_06__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_07__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_08__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_09__pdf_table.csv
+│  │  │  │  │  ├─ 7ZS858NS__table_10__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ 9V47QVTL
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ BB3JUVW7
+│  │  │  │  │  ├─ BB3JUVW7__table_01__html_table.csv
+│  │  │  │  │  ├─ BB3JUVW7__table_02__html_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ BXCV5XWB
+│  │  │  │  │  ├─ BXCV5XWB__table_01__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_02__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_03__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_04__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_05__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_06__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_07__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_08__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_09__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_10__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_11__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_12__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_13__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_14__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_15__pdf_table.csv
+│  │  │  │  │  ├─ BXCV5XWB__table_16__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ DABBT3Y9
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ DLJCMNAY
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ DPXMHZYA
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ FDP3PQVP
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ FH5LSQT7
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ GWR977IQ
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ H8JGQM6H
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ HLXMKQDN
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ HMCJMQHW
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ I7JVTB86
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ INMUTV7L
+│  │  │  │  │  ├─ INMUTV7L__table_01__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_02__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_03__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_04__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_05__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_06__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_07__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_08__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_09__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_10__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_11__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_12__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_13__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_14__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_15__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_16__pdf_table.csv
+│  │  │  │  │  ├─ INMUTV7L__table_17__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ JJNTEQAJ
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ KBW3XWTT
+│  │  │  │  │  ├─ KBW3XWTT__table_01__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_02__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_03__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_04__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_05__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_06__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_07__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_08__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_09__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_10__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_11__pdf_table.csv
+│  │  │  │  │  ├─ KBW3XWTT__table_12__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ KML6U59E
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ L3H2RS2H
+│  │  │  │  │  ├─ L3H2RS2H__table_01__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_02__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_03__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_04__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_05__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_06__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_07__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_08__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_09__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_10__pdf_table.csv
+│  │  │  │  │  ├─ L3H2RS2H__table_11__pdf_table.csv
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ LXK3ZME9
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ M2UUBKH5
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  ├─ MGRXQGFQ
+│  │  │  │  │  └─ tables_manifest.json
+│  │  │  │  └─ ... (28 more items omitted)
+│  │  │  ├─ text
+│  │  │  │  ├─ 5GIF3D8W
+│  │  │  │  │  └─ 5GIF3D8W.pdf.txt
+│  │  │  │  ├─ 5ZXYABSU
+│  │  │  │  │  └─ 5ZXYABSU.pdf.txt
+│  │  │  │  ├─ 7ZS858NS
+│  │  │  │  │  └─ 7ZS858NS.pdf.txt
+│  │  │  │  ├─ BB3JUVW7
+│  │  │  │  │  └─ BB3JUVW7.html.txt
+│  │  │  │  ├─ BXCV5XWB
+│  │  │  │  │  └─ BXCV5XWB.html.txt
+│  │  │  │  ├─ INMUTV7L
+│  │  │  │  │  └─ INMUTV7L.pdf.txt
+│  │  │  │  ├─ KBW3XWTT
+│  │  │  │  │  └─ KBW3XWTT.pdf.txt
+│  │  │  │  ├─ L3H2RS2H
+│  │  │  │  │  └─ L3H2RS2H.pdf.txt
+│  │  │  │  ├─ PA3SPZ28
+│  │  │  │  │  └─ PA3SPZ28.pdf.txt
+│  │  │  │  ├─ QLYKLPKT
+│  │  │  │  │  └─ QLYKLPKT.pdf.txt
+│  │  │  │  ├─ RHMJWZX8
+│  │  │  │  │  └─ RHMJWZX8.pdf.txt
+│  │  │  │  ├─ UFXX9WXE
+│  │  │  │  │  └─ UFXX9WXE.pdf.txt
+│  │  │  │  ├─ V99GKZEI
+│  │  │  │  │  └─ V99GKZEI.html.txt
+│  │  │  │  ├─ VHSU9G7W
+│  │  │  │  │  └─ VHSU9G7W.pdf.txt
+│  │  │  │  ├─ WFDTQ4VX
+│  │  │  │  │  └─ WFDTQ4VX.pdf.txt
+│  │  │  │  ├─ WIVUCMYG
+│  │  │  │  │  └─ WIVUCMYG.html.txt
+│  │  │  │  ├─ XVWN2PDB
+│  │  │  │  │  └─ XVWN2PDB.pdf.txt
+│  │  │  │  ├─ YGA8VQKU
+│  │  │  │  │  └─ YGA8VQKU.html.txt
+│  │  │  │  └─ README.md
+│  │  │  └─ tables_index.tsv
 │  │  ├─ index
 │  │  │  ├─ legacy
 │  │  │  │  ├─ key2txt_20251024.tsv
@@ -1229,12 +1695,24 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  │  └─ manifest_html10_bad.tsv
 │  │  │  ├─ key2txt.tsv
 │  │  │  ├─ key2txt_goren_2025.tsv
+│  │  │  ├─ manifest__zotero_all.tsv
 │  │  │  ├─ manifest_current.tsv
 │  │  │  ├─ manifest_goren_2025.tsv
 │  │  │  ├─ README.md
 │  │  │  └─ strata_tags.tsv
 │  │  ├─ labels
 │  │  │  └─ manual
+│  │  │     ├─ dev15_dashboard_counts.tsv
+│  │  │     ├─ dev15_extracted_formulation_view.xlsx
+│  │  │     ├─ dev15_highrisk_audit_pack.xlsx
+│  │  │     ├─ dev_v7pilot3_audit_pack.xlsx
+│  │  │     ├─ dev_v7pilot3_field_mapping_audit.xlsx
+│  │  │     ├─ dev_v7pilot3_field_mapping_audit_r3_fixflat.xlsx
+│  │  │     ├─ dev_v7pilot3_scope_comparison_r2.xlsx
+│  │  │     ├─ dev_v7pilot3_scope_comparison_r3.xlsx
+│  │  │     ├─ doi_10.1016.j.ejpb.2004.09.002_raw_field_mapping_audit.xlsx
+│  │  │     ├─ doi_10.1016_j.ejpb.2004.09.002_value_flow_audit.xlsx
+│  │  │     ├─ doi_10.1016_j.ejpb.2004.09.002_value_flow_audit_fixparse.xlsx
 │  │  │     ├─ gt_annotation_view__run_20260201_0927_bb13267_sample20.xlsx
 │  │  │     ├─ gt_audit__run_20260218_1334_4e58c55_sample20_evidence_v2.xlsx
 │  │  │     ├─ gt_audit__run_20260218_1334_4e58c55_sample20_evidence_v2_v2.xlsx
@@ -1510,6 +1988,8 @@ RL-Agent-Extraction-PLGANPs/
 │  │     ├─ formulation_core.tsv
 │  │     ├─ measurements.tsv
 │  │     └─ schema_manifest.json
+│  ├─ diagnostics
+│  │  └─ raw_llm_response_10.1016.j.ejpb.2004.09.002.txt
 │  ├─ raw
 │  │  ├─ zotero
 │  │  │  ├─ difference
@@ -1528,15 +2008,6 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ wos_llm_tagged.csv
 │  │  └─ wos_prefiltered.csv
 │  ├─ results
-│  │  ├─ dev18_corefields_prompt_v1
-│  │  │  ├─ weak_labels__gemini.jsonl
-│  │  │  └─ weak_labels__gemini.tsv
-│  │  ├─ dev18_force_explicit
-│  │  │  ├─ weak_labels__gemini.jsonl
-│  │  │  └─ weak_labels__gemini.tsv
-│  │  ├─ dev18_surfactant_schema_v1
-│  │  │  ├─ weak_labels__gemini.jsonl
-│  │  │  └─ weak_labels__gemini.tsv
 │  │  ├─ run_20260201_0927_bb13267_sample20
 │  │  │  ├─ demo_rules
 │  │  │  │  ├─ canon_unknown_values.tsv
@@ -1601,6 +2072,18 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  ├─ weak_labels__gemini.jsonl
 │  │  │  └─ weak_labels__gemini.tsv
 │  │  ├─ run_20260219_1623_780eb83_goren18_weaklabels_v1
+│  │  │  ├─ audit_pack
+│  │  │  │  ├─ audit_pack__human_evidence_v1.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__ownershipfix_v1.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__rerun.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__tablefix.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__tablefix_v2.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__tablefix_v3.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__tablefix_v4.xlsx
+│  │  │  │  ├─ audit_pack__human_evidence_v1__valuesource_v1.xlsx
+│  │  │  │  ├─ build_log.json
+│  │  │  │  ├─ paper_local_tables_debug_v1.tsv
+│  │  │  │  └─ table_match_trace_v1.tsv
 │  │  │  ├─ benchmark_goren_2025
 │  │  │  │  ├─ alignment_eval_v3_v1
 │  │  │  │  │  ├─ schema_v2
@@ -1694,6 +2177,13 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │  │  ├─ schema_v2_explicit_id_regression__UFXX9WXE.tsv
 │  │  │  │  ├─ step2_ee_fail_reason_distribution__before_after.tsv
 │  │  │  │  └─ step2_ee_support_summary__before_after.tsv
+│  │  │  ├─ formulation_core_signature_v1
+│  │  │  │  ├─ audit_pack__doe_signature_injection_v1.xlsx
+│  │  │  │  ├─ audit_pack__signature_v1.xlsx
+│  │  │  │  ├─ build_log.json
+│  │  │  │  ├─ formulation_core_v1.tsv
+│  │  │  │  ├─ instance_assignment_v1.tsv
+│  │  │  │  └─ signature_trace_v1.tsv
 │  │  │  ├─ benchmark18_debug_matrix.xlsx
 │  │  │  ├─ benchmark18_status_key_metrics.tsv
 │  │  │  ├─ confidence_tiers__formulation_level.tsv
@@ -1715,6 +2205,237 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ run_20260220_1413_a509fc2_dev18_force_default_weaklabels_v1
 │  │  │  ├─ weak_labels__gemini.jsonl
 │  │  │  └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260226_1507_5576d8b_goren2025_stage2_validation_v1
+│  │  │  ├─ stage2_validation_iter001
+│  │  │  │  ├─ stage2_validation
+│  │  │  │  │  ├─ evidence_bundles_v1.jsonl
+│  │  │  │  │  └─ evidence_bundles_v1_summary.tsv
+│  │  │  │  └─ keys_demo.txt
+│  │  │  └─ stage2_validation_iter002
+│  │  │     └─ stage2_validation
+│  │  │        ├─ evidence_bundles_v1.jsonl
+│  │  │        └─ evidence_bundles_v1_summary.tsv
+│  │  ├─ run_20260226_1514_5576d8b_goren2025_audit_pack_v1
+│  │  │  └─ registry_fix_iter001
+│  │  │     └─ audit_pack
+│  │  │        └─ paper_local_tables_debug_v1.tsv
+│  │  ├─ run_20260226_1519_5576d8b_goren2025_audit_pack_v1
+│  │  │  └─ ownershipfix_registry_fix_iter001
+│  │  │     ├─ audit_pack
+│  │  │     │  ├─ audit_pack__human_evidence_v1.xlsx
+│  │  │     │  ├─ build_log.json
+│  │  │     │  └─ table_match_trace_v1.tsv
+│  │  │     ├─ formulation_core_signature_v1
+│  │  │     │  ├─ build_log.json
+│  │  │     │  ├─ formulation_core_v1.tsv
+│  │  │     │  ├─ instance_assignment_v1.tsv
+│  │  │     │  └─ signature_trace_v1.tsv
+│  │  │     └─ weak_labels__gemini__with_gate_anchor.tsv
+│  │  ├─ run_20260227_1016_a8d884b_goren2025_step1dev_v1
+│  │  │  ├─ step1_dev
+│  │  │  │  ├─ audit_pack
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__case_5GIF3D8W_size2572__auditable_v2.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__guardcheck.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__static_rebuild.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__tablefirst_fullDEV_v1.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__tablefirst_fullDEV_v1__auditable_v2.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__tablefirst_fullDEV_v1__auditable_v2__dropdownfix_v1.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__tablefirst_v1.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__tablefirst_v1__audit10_included.xlsx
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__tablefirst_v1__audit10_included_v2.xlsx
+│  │  │  │  │  ├─ build_log.json
+│  │  │  │  │  ├─ dev_human_optimization_audit_10__numeric_mismatch_v1.xlsx
+│  │  │  │  │  ├─ include_cases_report__v1.json
+│  │  │  │  │  └─ table_match_trace_v1.tsv
+│  │  │  │  ├─ benchmark_goren_2025
+│  │  │  │  │  ├─ derivation_v1
+│  │  │  │  │  │  ├─ baseline_pre_tablefirst_fullDEV_eval
+│  │  │  │  │  │  │  ├─ evidence_token_qc_checks.tsv
+│  │  │  │  │  │  │  ├─ numeric_token_mismatch_by_evidence_source_type.tsv
+│  │  │  │  │  │  │  └─ qc_report.tsv
+│  │  │  │  │  │  ├─ dev_numeric_token_mismatch_by_source__ee_size_pdi.tsv
+│  │  │  │  │  │  ├─ evidence_token_qc_checks.tsv
+│  │  │  │  │  │  ├─ evidence_token_qc_checks__realigned.tsv
+│  │  │  │  │  │  ├─ flagged_rows_for_review.tsv
+│  │  │  │  │  │  ├─ numeric_token_mismatch_before_after__ee_size_pdi.tsv
+│  │  │  │  │  │  ├─ numeric_token_mismatch_by_evidence_source_type.tsv
+│  │  │  │  │  │  ├─ qc_report.tsv
+│  │  │  │  │  │  └─ weak_labels__gemini_high_confidence.tsv
+│  │  │  │  │  └─ derivation_v1_qc_with_auditpack_v1
+│  │  │  │  │     ├─ evidence_token_qc_checks.tsv
+│  │  │  │  │     ├─ evidence_token_qc_checks__realigned.tsv
+│  │  │  │  │     ├─ flagged_rows_for_review.tsv
+│  │  │  │  │     ├─ numeric_token_mismatch_by_evidence_source_type.tsv
+│  │  │  │  │     ├─ numeric_token_mismatch_by_evidence_used_source.tsv
+│  │  │  │  │     ├─ qc_report.tsv
+│  │  │  │  │     └─ weak_labels__gemini_high_confidence.tsv
+│  │  │  │  ├─ boundary_alignment_diagnostics_v1
+│  │  │  │  │  ├─ boundary_alignment_diagnostics_report.md
+│  │  │  │  │  ├─ extracted_core_signature_clusters_top.tsv
+│  │  │  │  │  ├─ field_availability_audit.tsv
+│  │  │  │  │  ├─ matching_ladder_summary.tsv
+│  │  │  │  │  └─ per_doi_counts.tsv
+│  │  │  │  ├─ formulation_core_signature_v1
+│  │  │  │  │  ├─ build_log.json
+│  │  │  │  │  ├─ formulation_core_v1.tsv
+│  │  │  │  │  ├─ instance_assignment_v1.tsv
+│  │  │  │  │  └─ signature_trace_v1.tsv
+│  │  │  │  ├─ tmp_derivation_check
+│  │  │  │  │  ├─ derivation_v1
+│  │  │  │  │  │  ├─ doe_decode_diagnostics.tsv
+│  │  │  │  │  │  └─ doe_factor_rows.tsv
+│  │  │  │  │  ├─ derivation_summary.json
+│  │  │  │  │  └─ derived_values.tsv
+│  │  │  │  ├─ audit10_expected_check__tablefirst_v1.tsv
+│  │  │  │  ├─ audit10_expected_summary__tablefirst_v1.md
+│  │  │  │  ├─ audit10_golden_expected.tsv
+│  │  │  │  ├─ audit10_regression_cases.tsv
+│  │  │  │  ├─ audit10_regression_comparison__tablefirst_v1.tsv
+│  │  │  │  ├─ audit10_regression_summary__tablefirst_v1.md
+│  │  │  │  ├─ confidence_tiers__formulation_level.tsv
+│  │  │  │  ├─ dev_audit_pack__step1.tsv
+│  │  │  │  ├─ dev_error_attribution_matrix.tsv
+│  │  │  │  ├─ DEV_IMPACT__evidence_binding_tablefirst_v1.md
+│  │  │  │  ├─ DEV_IMPACT__qc_using_auditpack_v1.md
+│  │  │  │  ├─ dev_key2txt_v1.tsv
+│  │  │  │  ├─ dev_manifest_v1.tsv
+│  │  │  │  ├─ dev_mismatch_stratified_audit_12_v1.xlsx
+│  │  │  │  ├─ dev_mismatch_stratified_audit_12_v2.xlsx
+│  │  │  │  ├─ dev_sample_keys_v1.jsonl
+│  │  │  │  ├─ dev_summary_report.md
+│  │  │  │  ├─ evidence_realign_log.tsv
+│  │  │  │  ├─ include_case__5GIF3D8W_size_257_2.tsv
+│  │  │  │  ├─ QC_EVIDENCE_INPUTS__diagnosis.md
+│  │  │  │  ├─ qc_field_evidence_gate_summary__realigned.tsv
+│  │  │  │  ├─ risk_flags__shared_spans.tsv
+│  │  │  │  ├─ step1_dev_provenance_binding_diagnostics.tsv
+│  │  │  │  ├─ step1_dev_provenance_binding_diagnostics__tablefirst_v1.tsv
+│  │  │  │  ├─ STEP1_FLOW__current.md
+│  │  │  │  └─ ... (12 more items omitted)
+│  │  │  ├─ step1_dev_smoke_2keys
+│  │  │  │  ├─ audit_pack
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__smoke2.xlsx
+│  │  │  │  │  ├─ build_log.json
+│  │  │  │  │  └─ table_match_trace_v1.tsv
+│  │  │  │  ├─ formulation_core_signature_v1
+│  │  │  │  │  ├─ build_log.json
+│  │  │  │  │  ├─ formulation_core_v1.tsv
+│  │  │  │  │  ├─ instance_assignment_v1.tsv
+│  │  │  │  │  └─ signature_trace_v1.tsv
+│  │  │  │  ├─ keys_2.txt
+│  │  │  │  ├─ step1_dev_provenance_binding_diagnostics.tsv
+│  │  │  │  ├─ step1_tables_extraction_coverage.tsv
+│  │  │  │  └─ weak_labels__gemini.tsv
+│  │  │  ├─ confidence_tiers__formulation_level.tsv
+│  │  │  ├─ qc_field_evidence_gate_summary__realigned.tsv
+│  │  │  └─ risk_flags__shared_spans.tsv
+│  │  ├─ run_20260227_1059_a8d884b_goren2025_step1dev_v2
+│  │  │  └─ step1_dev
+│  │  │     ├─ dev_key2txt_v1.tsv
+│  │  │     ├─ dev_manifest_v1.tsv
+│  │  │     ├─ dev_sample_keys_v1.jsonl
+│  │  │     ├─ step1_tables_extraction_coverage.tsv
+│  │  │     ├─ weak_labels__flashlite.jsonl
+│  │  │     ├─ weak_labels__flashlite.tsv
+│  │  │     ├─ weak_labels__gemini.jsonl
+│  │  │     ├─ weak_labels__gemini.tsv
+│  │  │     └─ weak_labels__gemini_flashlite.tsv
+│  │  ├─ run_20260227_1132_b6d5ca8_goren2025_step1dev_singlekey_v1
+│  │  │  └─ step1_dev_singlekey_5GIF3D8W
+│  │  │     ├─ audit_pack
+│  │  │     │  ├─ audit_pack__human_evidence_v1.xlsx
+│  │  │     │  ├─ build_log.json
+│  │  │     │  └─ table_match_trace_v1.tsv
+│  │  │     ├─ formulation_core_signature_v1
+│  │  │     │  ├─ build_log.json
+│  │  │     │  ├─ formulation_core_v1.tsv
+│  │  │     │  ├─ instance_assignment_v1.tsv
+│  │  │     │  └─ signature_trace_v1.tsv
+│  │  │     ├─ keys_1.txt
+│  │  │     ├─ step1_dev_provenance_binding_diagnostics.tsv
+│  │  │     ├─ step1_tables_extraction_coverage.tsv
+│  │  │     └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260227_1138_b6d5ca8_goren2025_step1dev_singlekey_rootfix_v1
+│  │  │  └─ step1_dev_singlekey_5GIF3D8W
+│  │  │     ├─ audit_pack
+│  │  │     │  ├─ audit_pack__human_evidence_v1.xlsx
+│  │  │     │  ├─ build_log.json
+│  │  │     │  └─ table_match_trace_v1.tsv
+│  │  │     ├─ formulation_core_signature_v1
+│  │  │     │  ├─ build_log.json
+│  │  │     │  ├─ formulation_core_v1.tsv
+│  │  │     │  ├─ instance_assignment_v1.tsv
+│  │  │     │  └─ signature_trace_v1.tsv
+│  │  │     ├─ keys_1.txt
+│  │  │     ├─ step1_dev_provenance_binding_diagnostics.tsv
+│  │  │     ├─ step1_tables_extraction_coverage.tsv
+│  │  │     └─ weak_labels__gemini.tsv
+│  │  ├─ run_20260228_1634_d37c1f3_goren2025_control_no_tablefirst_goren2025_step1dev_v1
+│  │  │  ├─ step1_dev
+│  │  │  │  ├─ audit_pack
+│  │  │  │  │  ├─ audit_pack__human_evidence_v1__control_notablefirst.xlsx
+│  │  │  │  │  ├─ build_log.json
+│  │  │  │  │  └─ table_match_trace_v1.tsv
+│  │  │  │  ├─ benchmark_goren_2025
+│  │  │  │  │  └─ derivation_v1
+│  │  │  │  │     ├─ evidence_token_qc_checks.tsv
+│  │  │  │  │     ├─ evidence_token_qc_checks__realigned.tsv
+│  │  │  │  │     ├─ flagged_rows_for_review.tsv
+│  │  │  │  │     ├─ numeric_token_mismatch_by_evidence_source_type.tsv
+│  │  │  │  │     ├─ numeric_token_mismatch_by_evidence_used_source.tsv
+│  │  │  │  │     ├─ qc_report.tsv
+│  │  │  │  │     └─ weak_labels__gemini_high_confidence.tsv
+│  │  │  │  ├─ formulation_core_signature_v1
+│  │  │  │  │  ├─ build_log.json
+│  │  │  │  │  ├─ formulation_core_v1.tsv
+│  │  │  │  │  ├─ instance_assignment_v1.tsv
+│  │  │  │  │  └─ signature_trace_v1.tsv
+│  │  │  │  ├─ dev_manifest_v1.tsv
+│  │  │  │  ├─ dev_sample_keys_v1.jsonl
+│  │  │  │  ├─ step1_dev_provenance_binding_diagnostics.tsv
+│  │  │  │  └─ weak_labels__gemini.tsv
+│  │  │  ├─ confidence_tiers__formulation_level.tsv
+│  │  │  ├─ qc_field_evidence_gate_summary__realigned.tsv
+│  │  │  └─ risk_flags__shared_spans.tsv
+│  │  ├─ run_20260306_1321_v7pilot3_dev
+│  │  │  └─ weak_labels_v7pilot
+│  │  │     ├─ pilot_summary.json
+│  │  │     ├─ weak_labels__v7pilot.jsonl
+│  │  │     └─ weak_labels__v7pilot.tsv
+│  │  ├─ run_20260306_1358_v7pilot3r2_dev
+│  │  │  └─ weak_labels_v7pilot_r2
+│  │  │     ├─ pilot_summary.json
+│  │  │     ├─ weak_labels__v7pilot_r2.jsonl
+│  │  │     └─ weak_labels__v7pilot_r2.tsv
+│  │  ├─ run_20260306_1513_v7pilot3r3_dev
+│  │  │  └─ weak_labels_v7pilot_r3
+│  │  │     ├─ pilot_summary.json
+│  │  │     ├─ weak_labels__v7pilot_r3.jsonl
+│  │  │     └─ weak_labels__v7pilot_r3.tsv
+│  │  ├─ run_20260306_1552_v7pilot3r3fixflat_dev
+│  │  │  └─ weak_labels_v7pilot_r3_fixflat
+│  │  │     ├─ pilot_summary.json
+│  │  │     ├─ weak_labels__v7pilot_r3_fixflat.jsonl
+│  │  │     └─ weak_labels__v7pilot_r3_fixflat.tsv
+│  │  ├─ run_20260306_1635_v7pilot3r3fixparse_dev
+│  │  │  └─ weak_labels_v7pilot_r3_fixparse
+│  │  │     ├─ raw_responses
+│  │  │     │  ├─ 01_5ZXYABSU_10.2147_ijn.s130908.txt
+│  │  │     │  ├─ 02_L3H2RS2H_10.1016_j.ejpb.2004.09.002.txt
+│  │  │     │  └─ 03_WIVUCMYG_10.1002_jps.24101.txt
+│  │  │     ├─ pilot_summary.json
+│  │  │     ├─ weak_labels__v7pilot_r3_fixparse.jsonl
+│  │  │     └─ weak_labels__v7pilot_r3_fixparse.tsv
+│  │  ├─ run_20260306_1640_v7pilot3r3fixparse_dev
+│  │  │  └─ weak_labels_v7pilot_r3_fixparse
+│  │  │     ├─ raw_responses
+│  │  │     │  ├─ 01_5ZXYABSU_10.2147_ijn.s130908.txt
+│  │  │     │  ├─ 02_L3H2RS2H_10.1016_j.ejpb.2004.09.002.txt
+│  │  │     │  └─ 03_WIVUCMYG_10.1002_jps.24101.txt
+│  │  │     ├─ pilot_summary.json
+│  │  │     ├─ weak_labels__v7pilot_r3_fixparse.jsonl
+│  │  │     └─ weak_labels__v7pilot_r3_fixparse.tsv
 │  │  ├─ extract_tier1_multi_model.jsonl
 │  │  ├─ extract_tier1_multi_model.tsv
 │  │  ├─ formulations_multi_model.jsonl
@@ -1722,15 +2443,15 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ formulations_tier2_merged_v2.tsv
 │  │  ├─ formulations_tier2_merged_v2_qc.tsv
 │  │  ├─ formulations_tier2_multi_model.jsonl
-│  │  ├─ formulations_tier2_multi_model.tsv
-│  │  ├─ run_sample20_weak_labels_v5.tsv
-│  │  └─ run_sample20_weak_labels_v5_G3.tsv
+│  │  └─ ... (3 more items omitted)
 │  ├─ samples
 │  └─ annotation_cheatsheet.md
 ├─ docs
 │  ├─ benchmarks
 │  │  └─ benchmark_goren_2025_engineering_spec.md
 │  ├─ ee_coverage_rl
+│  │  ├─ 2026-02-24_engineering_log.md
+│  │  ├─ 2026-02-26_stage1_html_first_tables_manifest.md
 │  │  ├─ ee_coverage_rl__benchmark18_status.md
 │  │  ├─ ee_coverage_rl__core_modeling_summary__run_20260219_1623_780eb83.md
 │  │  ├─ ee_coverage_rl__modeling_ready_diagnosis__run_20260219_1623_780eb83.md
@@ -1740,9 +2461,18 @@ RL-Agent-Extraction-PLGANPs/
 │  │  ├─ regression_diagnosis__benchmark18_table_rich.md
 │  │  └─ step2_ee_table_support_regression.md
 │  ├─ methods
-│  │  └─ evidence_alignment_hardening_plan.md
+│  │  ├─ evidence_alignment_hardening_plan.md
+│  │  ├─ llm_deterministic_responsibility_contract_2026-03-06.md
+│  │  ├─ weak_labels_v7_schema_design_2026-03-06.md
+│  │  ├─ weak_labels_v7pilot3_eval_2026-03-06.md
+│  │  ├─ weak_labels_v7pilot3_r2_eval_2026-03-06.md
+│  │  ├─ weak_labels_v7pilot3_r3_eval_2026-03-06.md
+│  │  ├─ weak_labels_v7pilot_r3_fixflat_note_2026-03-06.md
+│  │  └─ weak_labels_v7pilot_r3_fixparse_note_2026-03-06.md
 │  ├─ snapshots
-│  │  └─ snapshot_2026-02-20_goren_dev18_eval_and_opt.md
+│  │  ├─ snapshot_2026-02-20_goren_dev18_eval_and_opt.md
+│  │  ├─ snapshot_2026-03-06_llm_rule_audit_and_contract.md
+│  │  └─ snapshot_2026-03-06_weak_labels_v7_schema_target.md
 │  └─ tool_index.md
 ├─ project
 │  ├─ 0_PROJECT_CHARTER.md
@@ -1751,6 +2481,10 @@ RL-Agent-Extraction-PLGANPs/
 │  ├─ 3_STATE_MACHINE.md
 │  ├─ 4_DECISIONS_LOG.md
 │  ├─ 5_PARKING_LOT.md
+│  ├─ 6_AGENT_RUNBOOK.md
+│  ├─ 7_DATASET_LAYOUT_CONVENTION.md
+│  ├─ 8_EVAL_SPLITS_REGISTRY.md
+│  ├─ ARCHIVED_BASELINES.md
 │  ├─ FEATURE_EE_COVERAGE_RL_SCOPE.md
 │  ├─ FILE_NAMING_AND_VERSIONING.md
 │  ├─ PIPELINE_SCRIPT_MAP.md
@@ -1796,21 +2530,42 @@ RL-Agent-Extraction-PLGANPs/
 │  │  └─ zotero_tag_sync.py
 │  ├─ stage1_cleaning
 │  │  ├─ __pycache__
-│  │  │  └─ clean_manifest_to_text.cpython-313.pyc
+│  │  │  ├─ clean_manifest_to_text.cpython-313.pyc
+│  │  │  ├─ extract_tables_for_keys_v1.cpython-313.pyc
+│  │  │  └─ find_html_table_candidates_v1.cpython-313.pyc
 │  │  ├─ clean_manifest_to_text.py
+│  │  ├─ extract_tables_for_keys_v1.py
+│  │  ├─ find_html_table_candidates_v1.py
 │  │  ├─ pdf2clean.py
+│  │  ├─ run_tables_extraction_for_dataset_v1.py
 │  │  └─ zotero_raw_to_manifest.py
 │  ├─ stage2_sampling_labels
 │  │  ├─ __pycache__
-│  │  │  └─ auto_extract_weak_labels_v6.cpython-313.pyc
+│  │  │  ├─ auto_extract_weak_labels_v6.cpython-313.pyc
+│  │  │  ├─ auto_extract_weak_labels_v7pilot.cpython-313.pyc
+│  │  │  ├─ auto_extract_weak_labels_v7pilot_r2.cpython-313.pyc
+│  │  │  ├─ auto_extract_weak_labels_v7pilot_r3.cpython-313.pyc
+│  │  │  ├─ auto_extract_weak_labels_v7pilot_r3_fixflat.cpython-313.pyc
+│  │  │  ├─ auto_extract_weak_labels_v7pilot_r3_fixparse.cpython-313.pyc
+│  │  │  ├─ build_evidence_bundle_for_keys_v1.cpython-313.pyc
+│  │  │  ├─ build_key2txt_from_sample_manifest.cpython-313.pyc
+│  │  │  ├─ export_evidence_bundle_audit_xlsx_v1.cpython-313.pyc
+│  │  │  └─ sample_from_manifest_html_first.cpython-313.pyc
 │  │  ├─ auto_extract_weak_labels.py
 │  │  ├─ auto_extract_weak_labels_v3.py
 │  │  ├─ auto_extract_weak_labels_v4.py
 │  │  ├─ auto_extract_weak_labels_v5.py
 │  │  ├─ auto_extract_weak_labels_v5_G3.py
 │  │  ├─ auto_extract_weak_labels_v6.py
+│  │  ├─ auto_extract_weak_labels_v7pilot.py
+│  │  ├─ auto_extract_weak_labels_v7pilot_r2.py
+│  │  ├─ auto_extract_weak_labels_v7pilot_r3.py
+│  │  ├─ auto_extract_weak_labels_v7pilot_r3_fixflat.py
+│  │  ├─ auto_extract_weak_labels_v7pilot_r3_fixparse.py
+│  │  ├─ build_evidence_bundle_for_keys_v1.py
 │  │  ├─ build_key2txt_from_sample_manifest.py
 │  │  ├─ build_strata_tags_from_text.py
+│  │  ├─ export_evidence_bundle_audit_xlsx_v1.py
 │  │  ├─ PIPELINE_SPEC_sampling_update.md
 │  │  ├─ sample10_from_zotero_manifest.py
 │  │  └─ sample_from_manifest_html_first.py
@@ -1825,20 +2580,41 @@ RL-Agent-Extraction-PLGANPs/
 │  │  │     ├─ apply_demo_canonicalization.cpython-313.pyc
 │  │  │     └─ demo_rule_pva_vs_size_stratified_2way.cpython-313.pyc
 │  │  ├─ __pycache__
+│  │  │  ├─ auto_extract_multimodel.cpython-313.pyc
+│  │  │  ├─ build_doi_value_flow_audit_v7pilot.cpython-313.pyc
+│  │  │  ├─ build_v7pilot_field_mapping_audit.cpython-313.pyc
+│  │  │  ├─ compare_v7pilot_scope_r1_r2.cpython-313.pyc
+│  │  │  ├─ eval_weak_labels_v7pilot3.cpython-313.pyc
+│  │  │  ├─ export_dev15_dashboard_and_audit_pack_v1.cpython-313.pyc
+│  │  │  ├─ export_dev15_formulation_view_xlsx_v1.cpython-313.pyc
+│  │  │  ├─ inspect_formulation_view_inventory_v1.cpython-313.pyc
+│  │  │  ├─ multi_model_consensus_vote.cpython-313.pyc
+│  │  │  ├─ multi_model_extract_tier1.cpython-313.pyc
+│  │  │  ├─ multi_model_extract_tier2.cpython-313.pyc
+│  │  │  ├─ multi_model_merge_qc.cpython-313.pyc
 │  │  │  └─ rule_demo_pva_vs_size.cpython-313.pyc
 │  │  ├─ apply_extracted_ee_dedup_v1.py
 │  │  ├─ apply_formulation_grouping_v1.py
 │  │  ├─ apply_global_baseline_inheritance_and_rerun_alignment_v1.py
+│  │  ├─ audit_doi_raw_field_mapping_v7pilot.py
 │  │  ├─ audit_top3_doi_root_cause_v1.py
 │  │  ├─ auto_extract_multimodel.py
+│  │  ├─ build_boundary_alignment_diagnostics_pack_v1.py
+│  │  ├─ build_doi_value_flow_audit_v7pilot.py
 │  │  ├─ build_failure_profile_v1.py
 │  │  ├─ build_goren_overlap_scaffold_v1.py
 │  │  ├─ build_per_doi_diagnostics_v1.py
+│  │  ├─ build_v7pilot_field_mapping_audit.py
 │  │  ├─ compare_drugname_sets_v1.py
+│  │  ├─ compare_v7pilot_scope_r1_r2.py
 │  │  ├─ compute_alignment_sensitivity_v1.py
 │  │  ├─ compute_formulation_alignment_v1.py
 │  │  ├─ compute_goren_metrics_tables_v1.py
 │  │  ├─ compute_set_level_ee_match_v1.py
+│  │  ├─ eval_weak_labels_v7pilot3.py
+│  │  ├─ export_dev15_dashboard_and_audit_pack_v1.py
+│  │  ├─ export_dev15_formulation_view_xlsx_v1.py
+│  │  ├─ inspect_formulation_view_inventory_v1.py
 │  │  ├─ multi_model_consensus_vote.py
 │  │  ├─ multi_model_extract_tier1.py
 │  │  ├─ multi_model_extract_tier2.py
@@ -1847,52 +2623,81 @@ RL-Agent-Extraction-PLGANPs/
 │  │  └─ run_alignment_v3_surfactant_drugnorm.py
 │  ├─ stage5_benchmark
 │  │  ├─ __pycache__
+│  │  │  ├─ audit_evidence_resolver_v1.cpython-313.pyc
+│  │  │  ├─ build_audit_pack_human_evidence_v1.cpython-313.pyc
+│  │  │  ├─ build_doe_signature_injection_audit_pack_v1.cpython-313.pyc
+│  │  │  ├─ build_signature_v1_audit_pack.cpython-313.pyc
 │  │  │  ├─ build_two_table_schema_v3.cpython-313.pyc
+│  │  │  ├─ check_baseline_size_before_freeze_drying_v1.cpython-313.pyc
 │  │  │  ├─ debug_doi_overlap.cpython-313.pyc
+│  │  │  ├─ debug_paper_local_tables_registry_v1.cpython-313.pyc
 │  │  │  ├─ derive_doe_coded_factors_v1.cpython-313.pyc
+│  │  │  ├─ export_human_optimization_audit_10_v1.cpython-313.pyc
+│  │  │  ├─ formulation_core_signature_v1.cpython-313.pyc
+│  │  │  ├─ run_audit10_regression_check_v1.cpython-313.pyc
+│  │  │  ├─ run_derivation_v1.cpython-313.pyc
 │  │  │  ├─ run_evidence_realign_v1.cpython-313.pyc
-│  │  │  └─ run_evidence_token_qc_v1.cpython-313.pyc
+│  │  │  ├─ run_evidence_token_qc_v1.cpython-313.pyc
+│  │  │  └─ run_formulation_core_signature_v1.cpython-313.pyc
 │  │  ├─ analyze_row_membership_core_v1.py
 │  │  ├─ analyze_row_membership_v1.py
+│  │  ├─ audit_evidence_resolver_v1.py
+│  │  ├─ build_audit_pack_human_evidence_v1.py
+│  │  ├─ build_doe_signature_injection_audit_pack_v1.py
 │  │  ├─ build_goren_overlap_manifest.py
+│  │  ├─ build_signature_v1_audit_pack.py
 │  │  ├─ build_two_table_schema_v1.py
 │  │  ├─ build_two_table_schema_v2.py
 │  │  ├─ build_two_table_schema_v3.py
+│  │  ├─ check_baseline_size_before_freeze_drying_v1.py
 │  │  ├─ check_explicit_formulation_id_core_split_v2.py
 │  │  ├─ copy_goren_dataset.py
 │  │  ├─ debug_doi_overlap.py
+│  │  ├─ debug_paper_local_tables_registry_v1.py
 │  │  ├─ derive_doe_coded_factors_v1.py
 │  │  ├─ evaluate_against_goren.py
 │  │  ├─ export_audit_to_excel_v1.py
 │  │  ├─ export_full_database_v1.py
+│  │  ├─ export_human_optimization_audit_10_v1.py
+│  │  ├─ formulation_core_signature_v1.py
 │  │  ├─ inspect_schemas.py
 │  │  ├─ make_audit_pack_v1.py
 │  │  ├─ report_schema_v2_v3_core_diff_v1.py
 │  │  ├─ run_alignment_eval_core_v1.py
 │  │  ├─ run_alignment_eval_schema_v3_v1.py
 │  │  ├─ run_alignment_eval_v1.py
+│  │  ├─ run_audit10_regression_check_v1.py
 │  │  ├─ run_core_eval_pipeline_v1.py
-│  │  ├─ run_derivation_v1.py
-│  │  ├─ run_evidence_realign_v1.py
-│  │  ├─ run_evidence_token_qc_v1.py
-│  │  ├─ run_projection_core_to_curated_v1.py
-│  │  └─ run_projection_to_curated_v1.py
+│  │  └─ ... (6 more items omitted)
 │  ├─ stage5_merge_publish
 │  │  └─ merge_results.py
 │  ├─ utils
 │  │  ├─ __pycache__
 │  │  │  ├─ figure_style.cpython-313.pyc
+│  │  │  ├─ model_policy.cpython-313.pyc
 │  │  │  ├─ paths.cpython-313.pyc
-│  │  │  └─ run_id.cpython-313.pyc
+│  │  │  ├─ run_id.cpython-313.pyc
+│  │  │  ├─ run_latest.cpython-313.pyc
+│  │  │  ├─ run_preflight.cpython-313.pyc
+│  │  │  └─ split_registry_v1.cpython-313.pyc
+│  │  ├─ build_dataset_root_from_legacy_v1.py
+│  │  ├─ build_dataset_split_dev_v1.py
+│  │  ├─ build_dataset_split_test_v1.py
 │  │  ├─ build_ee_only_manifest.py
+│  │  ├─ build_global_zotero_index_v1.py
 │  │  ├─ convert_sample_manifest.py
 │  │  ├─ convert_sample_manifest_to_tsv.py
 │  │  ├─ gemini_models.py
 │  │  ├─ html_parser.py
+│  │  ├─ model_policy.py
 │  │  ├─ paths.py
 │  │  ├─ run_id.py
+│  │  ├─ run_latest.py
+│  │  ├─ run_preflight.py
 │  │  ├─ scan_ee_coverage.py
-│  │  └─ test_gemini.py
+│  │  ├─ split_registry_v1.py
+│  │  ├─ test_gemini.py
+│  │  └─ validate_dataset_layout_v1.py
 │  └─ src_README.md
 ├─ .env
 ├─ .gitignore

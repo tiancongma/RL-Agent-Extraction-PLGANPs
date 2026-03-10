@@ -16,7 +16,7 @@ Impact: From this date forward, all code and documentation must assume these pat
 
 ## 2026-01-31
 
-Added stratified sample20 (nano/micro × O/W/W/O/W × table/text) for arXiv methodology validation.
+Added stratified sample20 (nano/micro 脳 O/W/W/O/W 脳 table/text) for arXiv methodology validation.
 Sampling treated as data-prep step, not run-scoped.
 Finalized stratified20 sampling using rule-based strata_tags.tsv with soft HTML preference (html-bias=0.7).
 Resulting sample: 20 papers (15 HTML, 5 PDF).
@@ -51,7 +51,7 @@ Instead, a two-step workflow is adopted:
 Authoritative TSV files may contain multiline fields and quoted evidence text, making direct editing in Excel or IDE CSV editors unsafe. Separating human annotation (Excel UI) from machine-written TSV outputs ensures row integrity, reproducibility, and auditability.
 
 **GT Decision Schema**  
-`gt_decision ∈ {accept_model1, accept_model2, override, unclear}`  
+`gt_decision 鈭?{accept_model1, accept_model2, override, unclear}`  
 - `gt_value_text` must be provided iff `gt_decision = override`.
 
 **Scope**  
@@ -105,3 +105,69 @@ Reason
 Impact
 - Future implementation work should prioritize v7-compatible extraction outputs and staged downstream adoption.
 - Deterministic arbitration, derivation, export, and QC responsibilities remain unchanged.
+
+## 2026-03-08
+
+### Decision: Transition from field-first extraction to formulation-level extraction assembly
+
+Decision
+- Move formulation grouping earlier into the LLM stage as part of semantic extraction.
+- Let the LLM emit formulation hypotheses (instance-level candidate records) rather than extracting isolated fields first and assembling instances only in late deterministic grouping.
+- Keep deterministic stages focused on evidence binding, normalization, verification, and export.
+
+Problem discovered
+- In multi-formulation papers, field-first extraction followed by late grouping produces recurrent instance-boundary errors.
+- Shared procedural descriptions and cross-sentence references cause wrong field-to-instance assignment when grouping is deferred.
+
+Newly discovered issue
+- Inheritance-style reporting such as "F2 was prepared similarly to F1 except ..." cannot be handled reliably by purely rule-based late grouping.
+- Correct interpretation requires upstream semantic resolution of what is inherited vs what is overridden at the formulation level.
+
+Impact
+- The pipeline now explicitly models formulation assembly via a formulation hypothesis layer before deterministic verification.
+- Rule-based logic remains deterministic and auditable, but no longer carries primary responsibility for semantic instance reconstruction.
+- Final release artifacts remain tabular (one row per formulation), with richer intermediate structures retained for traceability and audit.
+
+### Decision: Retain stage directory names and align architecture via documentation (no directory renaming or code relocation)
+
+Decision
+- Stage directory names are retained for implementation stability.
+- Current architecture interpretation is maintained through documentation in project_specification.txt, project/2_ARCHITECTURE.md, and project/PIPELINE_SCRIPT_MAP.md.
+- No script relocation is performed at this stage because no move is clearly justified as both semantically necessary and low-risk across imports, CLI paths, launch profiles, and docs.
+
+Reason
+- Directory/path stability remains a hard reproducibility constraint.
+- Several utilities in src/stage4_eval/ and src/stage5_benchmark/ span audit/benchmark support boundaries; moving them now would create avoidable path churn with limited architectural benefit.
+
+Impact
+- Semantic stage alignment is enforced through script-map interpretation rather than folder renaming.
+- Existing stage folders and code locations remain unchanged in this decision.
+
+## 2026-03-10
+
+### Decision: Compress formulation-instance routing enums for pilot extraction and preserve formulation-centric routing
+
+Decision
+- The primary formulation-instance enum set is fixed to:
+  - `new_formulation`
+  - `variant_formulation`
+  - `candidate_non_formulation`
+  - `unclear`
+- The primary change-role enum set is fixed to:
+  - `synthesis_defining`
+  - `non_synthesis`
+  - `unclear`
+- Older larger routing enums such as `doe_run`, `parameter_sweep_variant`, `post_processing_variant`, `test_condition_variant`, `measurement_only`, `post_processing_change`, `test_condition_change`, and `measurement_context_change` are retired as primary routing values.
+- Optional auxiliary tags remain allowed through `instance_context_tags` and `change_context_tags` (for example `doe`, `sweep`, `post_processing`, `test_condition`, `measurement_context`, `optimized`, `control`), but these tags must not replace the primary enum sets.
+
+Reason
+- The formulation-instance layer needs a minimal operational ontology that keeps formulation identity decisions upstream in the extraction layer while avoiding taxonomy sprawl.
+- Post-processing/test/storage/measurement differences must be suppressible without reintroducing a scattered-field-first grouping architecture.
+
+Impact
+- Pilot extraction outputs now carry formulation-centric instance metadata with compressed enums, parent links, change descriptions, and evidence refs.
+- Distinct formulation rows continue to be defined by synthesis/design changes, including changes outside the initial core field list when the paper makes them identity-defining.
+- Controlled pilot comparison is frozen to the previously reused 3-paper DEV15 subset:
+  - `5ZXYABSU` / `10.2147/ijn.s130908`
+  - `L3H2RS2H` / `10.1016/j.ejpb.2004.09.002`
+  - `WIVUCMYG` / `10.1002/jps.24101`

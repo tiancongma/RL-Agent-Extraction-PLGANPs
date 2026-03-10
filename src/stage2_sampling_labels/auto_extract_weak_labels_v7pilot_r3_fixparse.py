@@ -57,6 +57,27 @@ CORE_FIELDS = [
     "loading_content_percent",
 ]
 
+INSTANCE_KIND_VALUES = {
+    "new_formulation",
+    "variant_formulation",
+    "candidate_non_formulation",
+    "unclear",
+}
+
+CHANGE_ROLE_VALUES = {
+    "synthesis_defining",
+    "non_synthesis",
+    "unclear",
+}
+
+NON_SYNTHESIS_TAGS = {
+    "post_processing",
+    "test_condition",
+    "measurement_context",
+    "storage",
+    "characterization",
+}
+
 # Observed fallback order when the model returns unnamed field objects as a list.
 # This keeps pilot flattening deterministic without changing schema/prompt contracts.
 UNNAMED_LIST_FALLBACK_ORDER = [
@@ -91,6 +112,18 @@ VALUE_ALIASES_BY_FIELD = {
     "la_ga_ratio": ["ratio", "la_ga", "la_ga_value", "ratio_value"],
     "plga_mw_kDa": ["mw_kda", "mw", "molecular_weight_kda", "plga_mw", "mw_value"],
 }
+
+
+@dataclass
+class EvidenceBlock:
+    block_id: str
+    block_type: str
+    priority: int
+    score: int
+    text: str
+    source_index: int
+    source_start: int = -1
+    source_end: int = -1
 
 
 def die(msg: str, code: int = 1) -> None:
@@ -153,6 +186,462 @@ def choose_instance_evidence(text: str) -> Dict[str, Any]:
     }
 
 
+def normalize_block_text(text: str) -> str:
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def looks_like_heading(line: str) -> bool:
+    s = line.strip()
+    if not s:
+        return False
+    if re.fullmatch(r"(abstract|keywords|introduction|materials and methods|results and discussion|conclusions|acknowledgments|references)", s, flags=re.I):
+        return True
+    if re.fullmatch(r"\d+(?:\.\d+)*\.?\s+[A-Z][A-Za-z0-9 ,()/-]{2,}", s):
+        return True
+    if len(s) <= 80 and s.isupper():
+        return True
+    return False
+
+
+def split_paragraph_blocks(text: str) -> List[str]:
+    text = normalize_block_text(text)
+    if not text:
+        return []
+
+    line_groups = [g.strip() for g in re.split(r"\n\s*\n", text) if g.strip()]
+    blocks: List[str] = []
+    for group in line_groups:
+        lines = [ln.strip() for ln in group.split("\n") if ln.strip()]
+        current: List[str] = []
+        for line in lines:
+            if current and looks_like_heading(line):
+                blocks.append(" ".join(current).strip())
+                current = [line]
+                continue
+            current.append(line)
+            joined = " ".join(current)
+            if len(joined) >= 1100:
+                blocks.append(joined.strip())
+                current = []
+        if current:
+            blocks.append(" ".join(current).strip())
+
+    out: List[str] = []
+    for block in blocks:
+        block = re.sub(r"\s+", " ", block).strip()
+        if not block:
+            continue
+        if len(block) > 1800:
+            parts = re.split(
+                r"(?=(?:Table\s+\d+\b|Figure\s+\d+\b|\d+(?:\.\d+)*\.?\s+[A-Z]|Abstract\b|INTRODUCTION\b|MATERIALS AND METHODS\b|Results and DISCUSSION\b|CONCLUSIONS\b))",
+                block,
+            )
+            for part in parts:
+                part = re.sub(r"\s+", " ", part).strip()
+                if part:
+                    out.append(part)
+        else:
+            out.append(block)
+    return out
+
+
+def extract_table_like_blocks(text: str) -> List[str]:
+    text = normalize_block_text(text)
+    if not text:
+        return []
+
+    pattern = re.compile(
+        r"(Table\s+\d+\b.*?)(?=(?:Table\s+\d+\b|Figure\s+\d+\b|\bReferences\b|\bACKNOWLEDGMENTS\b|\bCONCLUSIONS\b|$))",
+        flags=re.I | re.S,
+    )
+    blocks: List[str] = []
+    seen = set()
+    for m in pattern.finditer(text):
+        block = re.sub(r"\s+", " ", m.group(1)).strip()
+        if len(block) < 40:
+            continue
+        if block.lower() in seen:
+            continue
+        seen.add(block.lower())
+        blocks.append(block)
+    return blocks
+
+
+def select_best_table_anchor(block: str) -> str:
+    matches = list(re.finditer(r"Table\s+\d+\b", block, flags=re.I))
+    if not matches:
+        return block
+    for m in matches:
+        tail = block[m.end(): m.end() + 120]
+        if re.match(r"\s+[A-Z]", tail) and not re.match(r"\s*[,.)]", tail):
+            return block[m.start():].strip()
+    return block[matches[0].start():].strip()
+
+
+def strip_running_table_artifacts(text: str) -> str:
+    text = re.sub(
+        r"M\.\s*Teixeira\s+et\s+al\.\s*/\s*European Journal of Pharmaceutics and Biopharmaceutics\s+59\s*\(2005\)\s*491\S+\s*\d{3}",
+        " ",
+        text,
+        flags=re.I,
+    )
+    text = re.sub(r"\bEuropean Journal of Pharmaceutics and Biopharmaceutics\s+59\s*\(2005\)\s*491\S+\s*\d{3}\b", " ", text, flags=re.I)
+    text = re.sub(r"\b\d{3}\b(?=\s*$)", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def trim_table_at_spillover(text: str) -> str:
+    text = text.strip()
+    cutoff = len(text)
+
+    figure_match = re.search(r"\b(?:Fig\.|Figure)\s+\d+\.", text, flags=re.I)
+    if figure_match and figure_match.start() >= 180:
+        cutoff = min(cutoff, figure_match.start())
+
+    section_match = re.search(r"\b(?:\d+\.\d+(?:\.\d+)?\.?\s+[A-Z]|4\.)", text)
+    if section_match and section_match.start() >= 180:
+        cutoff = min(cutoff, section_match.start())
+
+    discussion_match = re.search(
+        r"\b(?:Thus, our results suggest|Furthermore, the results show|The second strategy adopted|As can be seen in Fig\.|According to different authors|In the present work, to study)\b",
+        text,
+        flags=re.I,
+    )
+    if discussion_match and discussion_match.start() >= 220:
+        cutoff = min(cutoff, discussion_match.start())
+
+    values_note = re.search(r"Values express.*?different batches\.", text, flags=re.I)
+    if values_note and values_note.end() < cutoff and (cutoff - values_note.end()) > 160:
+        cutoff = min(cutoff, values_note.end())
+
+    return text[:cutoff].strip(" .;,\n")
+
+
+def clean_table_block_text(block: str) -> str:
+    text = normalize_block_text(block)
+    text = select_best_table_anchor(text)
+    text = strip_running_table_artifacts(text)
+    text = trim_table_at_spillover(text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def extract_table_like_matches(text: str) -> List[tuple[str, int, int, int]]:
+    text = normalize_block_text(text)
+    if not text:
+        return []
+
+    pattern = re.compile(
+        r"(Table\s+\d+\b.*?)(?=(?:Table\s+\d+\b|Figure\s+\d+\b|\bReferences\b|\bACKNOWLEDGMENTS\b|\bCONCLUSIONS\b|$))",
+        flags=re.I | re.S,
+    )
+    matches: List[tuple[str, int, int, int]] = []
+    seen = set()
+    for ordinal, m in enumerate(pattern.finditer(text), start=1):
+        block = re.sub(r"\s+", " ", m.group(1)).strip()
+        if len(block) < 40:
+            continue
+        block = clean_table_block_text(block)
+        if len(block) < 80:
+            continue
+        if block.lower() in seen:
+            continue
+        seen.add(block.lower())
+        matches.append((block, m.start(), m.end(), ordinal))
+    return matches
+
+
+def split_table_caption_and_body(block: str) -> tuple[str, str]:
+    block = re.sub(r"\s+", " ", block).strip()
+    m = re.match(
+        r"^(Table\s+\d+\s*\.?\s*.*?)(?=(?:Values express|Download:|[A-Z][a-z]+ nanocapsules|[A-Z][a-z]+ nanospheres|Diameter \(|PI\b|z \(mV\)|XAN\b|3-MeOXAN\b|Empty\b|F\d+\b|Run\s*\d+\b|$))",
+        block,
+        flags=re.I,
+    )
+    if m:
+        caption = m.group(1).strip()
+        body = block[m.end():].strip()
+        return caption, body
+    if len(block) <= 260:
+        return block, ""
+    cut = block.find(" Values express")
+    if cut == -1:
+        cut = min(len(block), 260)
+    return block[:cut].strip(), block[cut:].strip()
+
+
+def score_table_block(text: str) -> int:
+    lower = text.lower()
+    score = 0
+    score += 6 * len(re.findall(r"\b(?:f|run|sample)\s*[-:]?\s*\d{1,3}\b", lower))
+    score += 5 * len(re.findall(r"\b(?:xan|3-meoxan|empty|blank|control|optimized)\b", lower))
+    score += 4 * len(re.findall(r"\b(?:theoretical concentration|final concentration|drug concentration|plga concentration|pva concentration|aqueous phase pH)\b", lower))
+    score += 3 * len(re.findall(r"\b\d+(?:\.\d+)?\s*(?:mg/ml|mg/mL|mg|%|mL|ml|nm|mV)\b", text, flags=re.I))
+    score += 3 * len(re.findall(r"\b(?:diameter|particle size|pdi|zeta|encapsulation|incorporation efficiency|loading)\b", lower))
+    if "table " in lower:
+        score += 10
+    score -= 25 * len(re.findall(r"\b(?:fig\.|figure)\s+\d+\.", lower))
+    score -= 20 * len(re.findall(r"\b(?:\d+\.\d+(?:\.\d+)?\.?\s+[A-Z]|4\.)", text))
+    score -= 15 * len(re.findall(r"M\.\s*Teixeira|European Journal of Pharmaceutics", text, flags=re.I))
+    if len(text) > 1800:
+        score -= min(120, (len(text) - 1800) // 15)
+    sentence_like = len(re.findall(r"[a-z][.!?]\s+[A-Z]", text))
+    if sentence_like >= 4:
+        score -= 12 * (sentence_like - 3)
+    return max(score, 0)
+
+
+def classify_paragraph_block(text: str) -> tuple[str, int, int]:
+    lower = text.lower()
+    score = 0
+
+    label_hits = len(re.findall(r"\b(?:f|run|sample|formulation)\s*[-:]?\s*\d{1,3}\b", lower))
+    inheritance_hits = len(re.findall(r"\b(?:prepared similarly|except|all other variables unchanged|same protocol|compared with|relative to)\b", lower))
+    sweep_hits = len(re.findall(r"\b(?:sweep|optimization|design matrix|doe|box-behnken|response surface|factorial|experimental runs|run order)\b", lower))
+    control_hits = len(re.findall(r"\b(?:optimized formulation|control|blank|empty nanocapsule|empty nanospheres|empty)\b", lower))
+    variable_hits = len(re.findall(r"\b(?:plga|pva|pluronic|lecithin|myritol|acetone|drug|theoretical concentration|final concentration|diameter|zeta|encapsulation)\b", lower))
+    table_hits = len(re.findall(r"\btable\s+\d+\b", lower))
+
+    score += 8 * label_hits
+    score += 8 * inheritance_hits
+    score += 7 * sweep_hits
+    score += 6 * control_hits
+    score += 2 * variable_hits
+    score += 3 * table_hits
+
+    prep_hits = len(
+        re.findall(
+            r"\b(?:prepared|preparation|formulations? were prepared|new formulations|strategy adopted|same method|same procedure|fixed amounts|varying|different concentrations|using fixed amounts of polymer|while maintaining|this led to|omitting the xanthones)\b",
+            lower,
+        )
+    )
+    entity_hits = len(re.findall(r"\b(?:nanospheres|nanocapsules|nanoparticles|polymer|surfactants|oil volume|myritol|pluronic|lecithin|drug concentration|polymer concentration)\b", lower))
+    negative_hits = len(
+        re.findall(
+            r"\b(?:dsc|in vitro release|release profiles|physical stability|storage|thermal behaviour|particle size analysis|zeta potential analysis|characterization|biological activity|ocular tolerance|statistics)\b",
+            lower,
+        )
+    )
+    reference_hits = len(re.findall(r"\[\d+\]", text))
+    journal_citation_hits = len(re.findall(r"\b(?:j\.|int\.|eur\.|pharm\.|biopharm\.|drug dev\.|thesis|patent)\b", lower))
+    is_reference_like = reference_hits >= 2 or journal_citation_hits >= 4
+    is_conclusion_like = lower.startswith("4. conclusions") or lower.startswith("conclusions")
+
+    priority = 5
+    block_type = "paragraph"
+
+    if (
+        (prep_hits >= 2 and entity_hits >= 2 and negative_hits <= 2)
+        or inheritance_hits >= 1
+        or re.search(r"\b(?:2\.2\.\s*Preparation|2\.4\.\s*Preparation|prepared according to the same procedure)\b", text, flags=re.I)
+    ) and not is_reference_like and not is_conclusion_like:
+        block_type = "synthesis_method"
+        priority = 1
+        score += 20 + (6 * prep_hits) + (4 * entity_hits)
+    elif label_hits or inheritance_hits or sweep_hits or control_hits:
+        priority = 4
+    elif variable_hits >= 5:
+        priority = 4
+    return block_type, priority, score
+
+
+def build_metadata_block(key: str, doi: str, title: str) -> str:
+    parts = ["[METADATA]"]
+    if key:
+        parts.append(f"key: {key}")
+    if doi:
+        parts.append(f"doi: {doi}")
+    if title:
+        parts.append(f"title: {title}")
+    return "\n".join(parts).strip()
+
+
+def format_evidence_block(block: EvidenceBlock) -> str:
+    label_map = {
+        "metadata": "METADATA",
+        "synthesis_method": "SYNTHESIS_METHOD_BLOCK",
+        "table": "TABLE_BLOCK",
+        "caption": "CAPTION_BLOCK",
+        "paragraph": "PARAGRAPH_BLOCK",
+    }
+    header = f"[{label_map.get(block.block_type, block.block_type.upper())}]"
+    return f"{header}\n{block.text.strip()}".strip()
+
+
+def count_source_line(text: str, offset: int) -> int:
+    if offset is None or offset < 0:
+        return -1
+    return text[:offset].count("\n") + 1
+
+
+def locate_block_start(text: str, block_text: str, start_at: int = 0) -> int:
+    if not block_text:
+        return -1
+    idx = text.find(block_text, max(0, start_at))
+    if idx >= 0:
+        return idx
+    compact_text = re.sub(r"\s+", " ", text)
+    compact_block = re.sub(r"\s+", " ", block_text).strip()
+    return compact_text.find(compact_block)
+
+
+def build_evidence_candidates(raw_text: str, key: str, doi: str, title: str) -> tuple[str, List[EvidenceBlock]]:
+    normalized = normalize_block_text(raw_text)
+    metadata = EvidenceBlock(
+        block_id="metadata",
+        block_type="metadata",
+        priority=0,
+        score=0,
+        text=build_metadata_block(key, doi, title),
+        source_index=-1,
+        source_start=-1,
+        source_end=-1,
+    )
+    if not normalized:
+        return normalized, [metadata]
+
+    candidates: List[EvidenceBlock] = []
+    seen_texts = set()
+
+    table_matches = extract_table_like_matches(normalized)
+    for idx, (table_block, block_start, block_end, ordinal) in enumerate(table_matches):
+        caption, body = split_table_caption_and_body(table_block)
+        table_score = score_table_block(table_block)
+        if body:
+            norm_body = body.lower()
+            if norm_body not in seen_texts:
+                seen_texts.add(norm_body)
+                body_start = block_start + max(0, table_block.find(body))
+                candidates.append(
+                    EvidenceBlock(
+                        block_id=f"table_{ordinal}",
+                        block_type="table",
+                        priority=2,
+                        score=table_score,
+                        text=body,
+                        source_index=idx,
+                        source_start=body_start,
+                        source_end=body_start + len(body),
+                    )
+                )
+        if caption:
+            norm_caption = caption.lower()
+            if norm_caption not in seen_texts:
+                seen_texts.add(norm_caption)
+                caption_start = block_start + max(0, table_block.find(caption))
+                candidates.append(
+                    EvidenceBlock(
+                        block_id=f"caption_{ordinal}",
+                        block_type="caption",
+                        priority=3,
+                        score=max(1, table_score // 2),
+                        text=caption,
+                        source_index=idx,
+                        source_start=caption_start,
+                        source_end=caption_start + len(caption),
+                    )
+                )
+
+    paragraphs = split_paragraph_blocks(normalized)
+    search_cursor = 0
+    for idx, para in enumerate(paragraphs):
+        norm_para = para.lower()
+        if norm_para in seen_texts:
+            continue
+        block_type, priority, score = classify_paragraph_block(para)
+        if score <= 0:
+            continue
+        seen_texts.add(norm_para)
+        para_start = locate_block_start(normalized, para, start_at=search_cursor)
+        if para_start >= 0:
+            search_cursor = para_start + len(para)
+        candidates.append(
+            EvidenceBlock(
+                block_id=f"paragraph_{idx+1}",
+                block_type=block_type,
+                priority=priority,
+                score=score,
+                text=para,
+                source_index=idx,
+                source_start=para_start,
+                source_end=(para_start + len(para)) if para_start >= 0 else -1,
+            )
+        )
+
+    candidates.sort(key=lambda b: (b.priority, -b.score, b.source_index, b.block_id))
+    return normalized, [metadata] + candidates
+
+
+def pack_evidence_blocks(candidates: List[EvidenceBlock], max_chars: int) -> Dict[str, Any]:
+    if not candidates:
+        return {"selected_blocks": [], "packed_text": ""}
+
+    blocks_out: List[str] = []
+    selected_blocks: List[Dict[str, Any]] = []
+    used_ids = set()
+    current_len = 0
+
+    for block in candidates:
+        if block.block_id in used_ids:
+            continue
+        formatted = format_evidence_block(block)
+        candidate_len = len(formatted) + (2 if blocks_out else 0)
+        remaining = max_chars - current_len if max_chars > 0 else None
+        if remaining is not None and remaining <= 0:
+            break
+        if remaining is None or candidate_len <= remaining:
+            if blocks_out:
+                blocks_out.append("")
+            blocks_out.append(formatted)
+            current_len += candidate_len
+            used_ids.add(block.block_id)
+            selected_blocks.append(
+                {
+                    "packing_rank": len(selected_blocks) + 1,
+                    "block": block,
+                    "char_len": len(formatted),
+                    "cumulative_char_count": current_len,
+                    "truncated": "no",
+                }
+            )
+            continue
+        if remaining is not None and remaining >= 420 and block.priority <= 2 and block.block_type != "metadata":
+            header = f"[{block.block_type.upper()}_BLOCK]"
+            body_budget = max(0, remaining - len(header) - len("\n[TRUNCATED]") - 4)
+            body = block.text[:body_budget].rstrip()
+            if body:
+                trimmed = f"{header}\n{body}\n[TRUNCATED]"
+                if blocks_out:
+                    blocks_out.append("")
+                blocks_out.append(trimmed)
+                current_len += len(trimmed) + (2 if len(blocks_out) > 1 else 0)
+                used_ids.add(block.block_id)
+                selected_blocks.append(
+                    {
+                        "packing_rank": len(selected_blocks) + 1,
+                        "block": block,
+                        "char_len": len(trimmed),
+                        "cumulative_char_count": current_len,
+                        "truncated": "yes",
+                    }
+                )
+                break
+
+    assembled = "\n".join(blocks_out).strip()
+    if max_chars > 0 and len(assembled) > max_chars:
+        assembled = assembled[:max_chars]
+    return {"selected_blocks": selected_blocks, "packed_text": assembled}
+
+
+def assemble_evidence_text(raw_text: str, key: str, doi: str, title: str, max_chars: int) -> str:
+    _, candidates = build_evidence_candidates(raw_text, key, doi, title)
+    packed = pack_evidence_blocks(candidates, max_chars=max_chars)
+    return str(packed["packed_text"])
+
+
 FEW_SHOT = r"""
 Few-shot guidance (compact examples):
 1) Shared method/header condition:
@@ -188,14 +677,32 @@ Few-shot guidance (compact examples):
 - Use:
   surfactant_name value "PVA" with scope = global_shared
   additional surfactant labels with scope = instance_specific
+
+6) Inheritance-style formulation variant:
+- Input text: "F2 was prepared similarly to F1 except that PLGA concentration increased from 10 to 20 mg/mL."
+- Use:
+  instance_kind = variant_formulation
+  parent_instance_id = "F1"
+  change_descriptions = ["PLGA concentration increased from 10 to 20 mg/mL"]
+  change_role = synthesis_defining
+
+7) Post-processing or test-only variation:
+- Input text: "F1 was freeze-dried with sucrose" or "particle size was measured after 30 days at 4 C".
+- Use:
+  instance_kind = candidate_non_formulation
+  change_role = non_synthesis
+  change_context_tags = ["post_processing"] or ["storage"] or ["measurement_context"]
+- Do NOT convert these into distinct formulation rows if synthesis-defining parameters are unchanged.
 """
 
 
 LLM_PROMPT_TEMPLATE = (
-    "You are extracting PLGA nanoparticle formulation data in weak_labels_v7 pilot format.\n"
+    "You are extracting PLGA nanoparticle formulation instances in weak_labels_v7 pilot format.\n"
     "Return ONLY valid JSON with keys: schema_version, paper_notes, formulations.\n"
     "Use schema_version='weak_labels_v7'.\n"
-    "Each formulation object must include: formulation_id, formulation_role, instance_confidence, fields.\n"
+    "Each formulation object must include: formulation_id, raw_formulation_label, instance_kind, parent_instance_id, change_descriptions, change_role, supporting_evidence_refs, instance_context_tags, change_context_tags, formulation_role, instance_confidence, fields.\n"
+    "Allowed instance_kind: new_formulation, variant_formulation, candidate_non_formulation, unclear.\n"
+    "Allowed change_role: synthesis_defining, non_synthesis, unclear.\n"
     "Allowed formulation_role: baseline, control, optimized, variant, comparative, characterization_only, unknown.\n"
     "Allowed instance_confidence: high, medium, low.\n"
     "For each core field below, output a field object (or omit if fully unknown):\n"
@@ -209,6 +716,16 @@ LLM_PROMPT_TEMPLATE = (
     "- evidence_region_type: table_cell | table_row | table_header | table_block | methods_sentence | results_sentence | unknown\n"
     "- missing_reason: optional string for unknown/ambiguous cases\n\n"
     "Rules:\n"
+    "- Final database remains tabular with one row per formulation.\n"
+    "- Treat formulation-instance recognition as primary; do not output scattered fields without an instance.\n"
+    "- Do not emit standalone 'global parameters', 'shared conditions', or family-header pseudo-formulations. Shared synthesis conditions should be attached to real formulation rows via global_shared field scope instead.\n"
+    "- Post-processing differences, test conditions, storage conditions, release-test conditions, and measurement contexts do NOT automatically define new formulation rows.\n"
+    "- If synthesis-defining parameters stay the same and only post-processing/test/storage/measurement changes, use instance_kind=candidate_non_formulation and change_role=non_synthesis.\n"
+    "- A failed or suboptimal synthesis row in a concentration sweep still counts as a formulation candidate if it is a distinct synthesis row. Do not use candidate_non_formulation only because a row shows precipitation, crystals, ND encapsulation, or partial characterization.\n"
+    "- If a formulation is defined relative to a parent/base formulation through 'prepared similarly', 'except', 'all other variables unchanged', or similar inheritance language, use instance_kind=variant_formulation and set parent_instance_id.\n"
+    "- If a true synthesis/design variable changes, including one outside the core field list, treat it as synthesis_defining and describe it in change_descriptions.\n"
+    "- DOE, Box-Behnken, response-surface, or parameter-sweep rows can still be formulation rows when the varied factor is synthesis-defining.\n"
+    "- Use instance_context_tags/change_context_tags only as auxiliary tags such as doe, sweep, post_processing, test_condition, measurement_context, optimized, control.\n"
     "- Do not hallucinate values; prefer unknown style values when uncertain.\n"
     "- Preserve units in value_text.\n"
     "- If table header defines shared conditions, mark scope=global_shared.\n"
@@ -221,6 +738,23 @@ LLM_PROMPT_TEMPLATE = (
     "- For ambiguous assignment, set scope=unknown and low membership_confidence.\n\n"
     + FEW_SHOT
     + "\nTEXT:\n"
+)
+
+
+ENUMERATION_HEAVY_TABLE_HINT = (
+    "\nADDITIONAL ENUMERATION RULES FOR TABLE-HEAVY PAPERS:\n"
+    "- For table-heavy or sweep-style formulation studies, treat each table row or run as a potential formulation instance.\n"
+    "- Enumerate formulation candidates row by row before any abstraction.\n"
+    "- Only after all candidate rows are enumerated may parent/variant relationships be assigned.\n"
+    "- If the paper contains a design matrix, sweep table, repeated concentration table, or repeated formulation rows, enumerate candidate formulations row by row before summarizing parent/variant relations.\n"
+    "- If a table lists multiple experimental runs or formulations, each row must be emitted as a separate formulation instance unless clear textual evidence states that rows are replicates or measurement-only variations.\n"
+    "- Do not collapse multiple table rows into one family-level formulation such as one generic 'XAN nanospheres' or one generic 'XAN nanocapsules' record when the table contains several row-level formulations.\n"
+    "- Each distinct table row with a different drug loading, theoretical concentration, oil-core amount, or other synthesis-setting change should become its own formulation candidate.\n"
+    "- Keep rows with crystallization, ND encapsulation, or partial characterization as distinct formulation candidates if the synthesis row itself is distinct.\n"
+    "- Empty/baseline rows should also be enumerated if they appear as explicit rows in the formulation tables.\n"
+    "- If one table block reports loaded variants and a neighboring table reports the corresponding empty baseline for the same preparation block, keep that empty baseline as its own formulation candidate for that block.\n"
+    "- Do not create extra pseudo-rows just to hold shared table parameters or method constants.\n"
+    "- If the table row has no explicit label, create a stable local id from the row content rather than merging it into a parent summary.\n"
 )
 
 
@@ -255,6 +789,59 @@ def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
         if attempt < retries:
             time.sleep(sleep_sec)
     raise last_err or RuntimeError("Gemini call failed")
+
+
+def build_prompt(text: str, detection_text: Optional[str] = None) -> str:
+    prompt = LLM_PROMPT_TEMPLATE
+    detector_blob = detection_text if detection_text is not None else text
+    if is_table_heavy_sweep_candidate(detector_blob):
+        prompt += ENUMERATION_HEAVY_TABLE_HINT
+    prompt += text
+    return prompt
+
+
+def is_table_heavy_sweep_candidate(text: str) -> bool:
+    lower = text.lower()
+
+    table_hits = len(re.findall(r"\btable\s+[1-9][0-9]?\b", lower))
+    formulation_label_hits = len(
+        re.findall(r"\b(?:f|run|sample|formulation)\s*[-:]?\s*\d{1,3}\b", lower)
+    )
+    repeated_conc_hits = len(
+        re.findall(
+            r"\b(?:theoretical concentration|final concentration|drug concentration|plga concentration|pva concentration|aqueous phase pH)\b",
+            lower,
+        )
+    )
+    repeated_value_patterns = len(
+        re.findall(
+            r"\b\d+(?:\.\d+)?\s*(?:mg/ml|mg/mL|mg|%|mL|ml|nm|mV|kda|kDa)\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+    sweep_keywords = len(
+        re.findall(
+            r"\b(?:sweep|design matrix|doe|box-behnken|response surface|factorial|experimental runs|run order)\b",
+            lower,
+        )
+    )
+
+    has_multi_table_signal = table_hits >= 3
+    has_run_label_signal = formulation_label_hits >= 4
+    has_repeated_parameter_signal = repeated_conc_hits >= 4
+    has_dense_table_value_signal = table_hits >= 2 and repeated_value_patterns >= 20
+    has_design_language_signal = sweep_keywords >= 1 and (formulation_label_hits >= 2 or table_hits >= 2)
+
+    return any(
+        [
+            has_multi_table_signal,
+            has_run_label_signal,
+            has_repeated_parameter_signal,
+            has_dense_table_value_signal,
+            has_design_language_signal,
+        ]
+    )
 
 
 def safe_json_load(s: str) -> Dict[str, Any]:
@@ -343,6 +930,105 @@ def sanitize_region(v: Any) -> str:
     }
     s = str(v or "unknown").strip().lower()
     return s if s in allowed else "unknown"
+
+
+def sanitize_instance_kind(v: Any) -> str:
+    s = str(v or "unclear").strip().lower()
+    return s if s in INSTANCE_KIND_VALUES else "unclear"
+
+
+def sanitize_change_role(v: Any) -> str:
+    s = str(v or "unclear").strip().lower()
+    return s if s in CHANGE_ROLE_VALUES else "unclear"
+
+
+def sanitize_string_list(v: Any) -> List[str]:
+    if isinstance(v, list):
+        out = [str(x).strip() for x in v if str(x).strip()]
+        return out
+    if v is None:
+        return []
+    s = str(v).strip()
+    if not s:
+        return []
+    parts = re.split(r"[|,;\n]+", s)
+    return [p.strip() for p in parts if p.strip()]
+
+
+def sanitize_tag_list(v: Any) -> List[str]:
+    tags: List[str] = []
+    for item in sanitize_string_list(v):
+        tag = re.sub(r"[^a-z0-9]+", "_", item.lower()).strip("_")
+        if tag:
+            tags.append(tag)
+    seen = set()
+    out: List[str] = []
+    for tag in tags:
+        if tag in seen:
+            continue
+        seen.add(tag)
+        out.append(tag)
+    return out
+
+
+def sanitize_supporting_evidence_refs(v: Any, instance_evidence: Dict[str, Any]) -> List[Dict[str, Any]]:
+    refs: List[Dict[str, Any]] = []
+    items = v if isinstance(v, list) else []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        ref = {
+            "region_type": sanitize_region(item.get("region_type") or item.get("evidence_region_type")),
+            "section": str(item.get("section") or item.get("evidence_section") or "").strip(),
+            "span_text": str(item.get("span_text") or item.get("evidence_span_text") or "").strip(),
+            "span_start": item.get("span_start") or item.get("evidence_span_start") or "",
+            "span_end": item.get("span_end") or item.get("evidence_span_end") or "",
+        }
+        if any(str(ref[k]).strip() for k in ["section", "span_text", "span_start", "span_end"]):
+            refs.append(ref)
+    if refs:
+        return refs
+    fallback = {
+        "region_type": sanitize_region(instance_evidence.get("evidence_region_type")),
+        "section": str(instance_evidence.get("evidence_section") or "").strip(),
+        "span_text": str(instance_evidence.get("evidence_span_text") or "").strip(),
+        "span_start": instance_evidence.get("evidence_span_start") or "",
+        "span_end": instance_evidence.get("evidence_span_end") or "",
+    }
+    if any(str(fallback[k]).strip() for k in ["section", "span_text", "span_start", "span_end"]):
+        return [fallback]
+    return []
+
+
+def infer_change_role(raw_change_role: Any, parent_instance_id: str, change_descriptions: List[str], tags: List[str]) -> str:
+    change_role = sanitize_change_role(raw_change_role)
+    if change_role != "unclear":
+        return change_role
+    if set(tags) & NON_SYNTHESIS_TAGS:
+        return "non_synthesis"
+    if parent_instance_id or change_descriptions:
+        return "synthesis_defining"
+    return "unclear"
+
+
+def infer_instance_kind(
+    raw_instance_kind: Any,
+    parent_instance_id: str,
+    change_role: str,
+    formulation_role: str,
+    tags: List[str],
+    has_fields: bool,
+) -> str:
+    instance_kind = sanitize_instance_kind(raw_instance_kind)
+    if instance_kind != "unclear":
+        return instance_kind
+    if change_role == "non_synthesis" or formulation_role == "characterization_only" or (set(tags) & NON_SYNTHESIS_TAGS):
+        return "candidate_non_formulation"
+    if parent_instance_id:
+        return "variant_formulation"
+    if has_fields:
+        return "new_formulation"
+    return "unclear"
 
 
 def _norm_text(v: Any) -> str:
@@ -494,7 +1180,54 @@ def canonicalize_formulations(data: Dict[str, Any]) -> List[Dict[str, Any]]:
                 obj["value_source"] = str(obj.get("value_source", "") or "llm_direct")
             obj["field_name"] = field_name
             canon_fields[field_name] = obj
+        parent_instance_id = str(
+            fm.get("parent_instance_id")
+            or fm.get("parent_formulation_id")
+            or fm.get("parent_id")
+            or ""
+        ).strip()
+        change_descriptions = sanitize_string_list(fm.get("change_descriptions") or fm.get("change_description"))
+        instance_context_tags = sanitize_tag_list(fm.get("instance_context_tags"))
+        change_context_tags = sanitize_tag_list(fm.get("change_context_tags"))
+        formulation_role = sanitize_role(fm.get("formulation_role"))
+        change_role = infer_change_role(
+            raw_change_role=fm.get("change_role"),
+            parent_instance_id=parent_instance_id,
+            change_descriptions=change_descriptions,
+            tags=instance_context_tags + change_context_tags,
+        )
+        instance_kind = infer_instance_kind(
+            raw_instance_kind=fm.get("instance_kind"),
+            parent_instance_id=parent_instance_id,
+            change_role=change_role,
+            formulation_role=formulation_role,
+            tags=instance_context_tags + change_context_tags,
+            has_fields=bool(canon_fields),
+        )
+        instance_evidence = fm.get("instance_evidence", {})
+        if not isinstance(instance_evidence, dict):
+            instance_evidence = {}
+        supporting_evidence_refs = sanitize_supporting_evidence_refs(
+            fm.get("supporting_evidence_refs"),
+            instance_evidence=instance_evidence,
+        )
         new_fm["fields"] = canon_fields
+        new_fm["raw_formulation_label"] = str(
+            fm.get("raw_formulation_label")
+            or fm.get("formulation_label_raw")
+            or fm.get("label")
+            or fm.get("formulation_id")
+            or ""
+        ).strip()
+        new_fm["parent_instance_id"] = parent_instance_id
+        new_fm["change_descriptions"] = change_descriptions
+        new_fm["change_role"] = change_role
+        new_fm["instance_context_tags"] = instance_context_tags
+        new_fm["change_context_tags"] = change_context_tags
+        new_fm["instance_kind"] = instance_kind
+        new_fm["formulation_role"] = formulation_role
+        new_fm["instance_confidence"] = sanitize_conf(fm.get("instance_confidence"))
+        new_fm["supporting_evidence_refs"] = supporting_evidence_refs
         out_forms.append(new_fm)
     return out_forms
 
@@ -542,11 +1275,43 @@ def flatten_row(
     form: Dict[str, Any],
     instance_evidence: Dict[str, Any],
 ) -> Dict[str, Any]:
+    parent_instance_id = str(form.get("parent_instance_id") or "").strip()
+    change_descriptions = sanitize_string_list(form.get("change_descriptions"))
+    instance_context_tags = sanitize_tag_list(form.get("instance_context_tags"))
+    change_context_tags = sanitize_tag_list(form.get("change_context_tags"))
+    formulation_role = sanitize_role(form.get("formulation_role"))
+    change_role = infer_change_role(
+        raw_change_role=form.get("change_role"),
+        parent_instance_id=parent_instance_id,
+        change_descriptions=change_descriptions,
+        tags=instance_context_tags + change_context_tags,
+    )
+    instance_kind = infer_instance_kind(
+        raw_instance_kind=form.get("instance_kind"),
+        parent_instance_id=parent_instance_id,
+        change_role=change_role,
+        formulation_role=formulation_role,
+        tags=instance_context_tags + change_context_tags,
+        has_fields=bool(coerce_fields_map(form.get("fields", {}))),
+    )
+    supporting_evidence_refs = sanitize_supporting_evidence_refs(
+        form.get("supporting_evidence_refs"),
+        instance_evidence=instance_evidence,
+    )
     out: Dict[str, Any] = {
         "key": key,
         "doi": doi,
         "model": model,
+        "local_instance_id": form.get("formulation_id"),
         "formulation_id": form.get("formulation_id"),
+        "raw_formulation_label": str(form.get("raw_formulation_label") or "").strip(),
+        "instance_kind": instance_kind,
+        "parent_instance_id": parent_instance_id,
+        "change_descriptions": json.dumps(change_descriptions, ensure_ascii=False),
+        "change_role": change_role,
+        "instance_context_tags": json.dumps(instance_context_tags, ensure_ascii=False),
+        "change_context_tags": json.dumps(change_context_tags, ensure_ascii=False),
+        "supporting_evidence_refs": json.dumps(supporting_evidence_refs, ensure_ascii=False),
         "formulation_role": sanitize_role(form.get("formulation_role")),
         "instance_confidence": sanitize_conf(form.get("instance_confidence")),
         "instance_evidence_region_type": sanitize_region(instance_evidence.get("evidence_region_type")),
@@ -572,7 +1337,16 @@ def build_output_columns() -> List[str]:
         "key",
         "doi",
         "model",
+        "local_instance_id",
         "formulation_id",
+        "raw_formulation_label",
+        "instance_kind",
+        "parent_instance_id",
+        "change_descriptions",
+        "change_role",
+        "instance_context_tags",
+        "change_context_tags",
+        "supporting_evidence_refs",
         "formulation_role",
         "instance_confidence",
         "instance_evidence_region_type",
@@ -596,7 +1370,9 @@ def build_output_columns() -> List[str]:
 
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Pilot weak_labels_v7 extractor r3_fixparse (parser + flatten bugfixes).")
+    p = argparse.ArgumentParser(
+        description="Pilot weak_labels_v7 extractor r3_fixparse (parser + flatten bugfixes + formulation-instance enums)."
+    )
     p.add_argument(
         "--manifest-tsv",
         default="data/cleaned/goren_2025/index/splits/dev_manifest_v7pilot3_2026-03-06.tsv",
@@ -640,10 +1416,15 @@ def main(argv: Optional[List[str]] = None) -> None:
             if not paper.text_path.exists():
                 print(f"[WARN] missing text path: {paper.text_path}")
                 continue
-            txt = paper.text_path.read_text(encoding="utf-8", errors="ignore")
-            if args.max_chars > 0 and len(txt) > args.max_chars:
-                txt = txt[: args.max_chars]
-            prompt = LLM_PROMPT_TEMPLATE + txt
+            raw_txt = paper.text_path.read_text(encoding="utf-8", errors="ignore")
+            packed_txt = assemble_evidence_text(
+                raw_text=raw_txt,
+                key=paper.key,
+                doi=paper.doi,
+                title=paper.title,
+                max_chars=args.max_chars,
+            )
+            prompt = build_prompt(packed_txt, detection_text=raw_txt)
 
             raw = call_gemini(args.model, prompt, args.retries, args.sleep)
             raw_fp = raw_dir / f"{i:02d}_{_safe_filename_part(paper.key)}_{_safe_filename_part(paper.doi)}.txt"
@@ -662,7 +1443,7 @@ def main(argv: Optional[List[str]] = None) -> None:
             }
             jf.write(json.dumps(line, ensure_ascii=False) + "\n")
 
-            instance_fallback = choose_instance_evidence(txt)
+            instance_fallback = choose_instance_evidence(packed_txt)
             for idx, f in enumerate(forms, start=1):
                 if not isinstance(f, dict):
                     continue
@@ -671,6 +1452,14 @@ def main(argv: Optional[List[str]] = None) -> None:
                 fields = f.get("fields", {})
                 row_form = {
                     "formulation_id": formulation_id,
+                    "raw_formulation_label": f.get("raw_formulation_label", ""),
+                    "instance_kind": f.get("instance_kind", "unclear"),
+                    "parent_instance_id": f.get("parent_instance_id", ""),
+                    "change_descriptions": f.get("change_descriptions", []),
+                    "change_role": f.get("change_role", "unclear"),
+                    "instance_context_tags": f.get("instance_context_tags", []),
+                    "change_context_tags": f.get("change_context_tags", []),
+                    "supporting_evidence_refs": f.get("supporting_evidence_refs", []),
                     "formulation_role": f.get("formulation_role", "unknown"),
                     "instance_confidence": f.get("instance_confidence", "low"),
                     "fields": fields,

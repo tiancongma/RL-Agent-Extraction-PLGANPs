@@ -260,3 +260,80 @@ The following rule families are currently tolerated but should be treated as fut
 - drug/surfactant semantic normalization used to recover membership,
 - condition-instance key inference and shared-vs-instance reconstruction,
 - repeated semantic repair logic that compensates for weak extraction schema structure.
+
+---
+
+## Formulation Extraction Pipeline Structure (Current)
+
+### System Goal
+Build an auditable PLGA nanoparticle formulation database for EE modeling.
+
+### Core Output Constraint
+The final project output must remain a tabular dataset with one row per formulation.
+
+### Why an intermediate representation is required
+Paper structure does not map directly to a final formulation row. Methods, tables, and results may mix shared conditions, inherited settings, and instance-specific values. Therefore the pipeline must assemble formulation records through intermediate representations before final flattening.
+
+### Current stage flow for formulation assembly
+
+#### 1) Document preprocessing
+Input documents (PDF/HTML) are normalized into cleaned text blocks, section artifacts, and extracted table artifacts. These artifacts establish deterministic anchors for downstream evidence tracing.
+
+#### 2) LLM semantic extraction
+The LLM layer performs semantic understanding: formulation instance detection, candidate field extraction, and inheritance interpretation (including shared-vs-instance-specific meaning).
+
+#### 3) Formulation hypothesis layer
+The system materializes candidate formulation records (hypotheses) prior to hard verification. These records may be incomplete, conflicting, or uncertain by design.
+
+#### 3a) Formulation-instance routing contract
+Formulation hypotheses must stay formulation-centric and instance-aware. The extraction layer should emit candidate formulation instances, not detached field fragments that are grouped only later.
+
+Primary instance routing enums are fixed to:
+- `new_formulation`
+- `variant_formulation`
+- `candidate_non_formulation`
+- `unclear`
+
+Primary change-role enums are fixed to:
+- `synthesis_defining`
+- `non_synthesis`
+- `unclear`
+
+Interpretation rules:
+- `new_formulation`: a distinct formulation row candidate that does not require parent-based inheritance to establish identity.
+- `variant_formulation`: a distinct formulation row candidate defined relative to a parent/base formulation through inheritance or explicit comparative change language.
+- `candidate_non_formulation`: a mentioned variant/condition/context that should not become a formulation row by default unless later evidence upgrades it.
+- `unclear`: evidence is insufficient for confident routing.
+
+Critical boundary rule:
+- Post-processing differences, test conditions, storage conditions, release-test conditions, and characterization/measurement contexts do not automatically define new formulation rows when synthesis-defining parameters are unchanged.
+
+Identity rule:
+- Formulation identity is not limited to a frozen core schema. Any true synthesis/design variable reported in the paper can be identity-defining even if it sits outside the current core field list.
+
+Auxiliary tags such as `doe`, `sweep`, `post_processing`, `test_condition`, `measurement_context`, `optimized`, and `control` may be stored in `instance_context_tags` / `change_context_tags`, but they are not primary routing enums.
+
+#### 4) Evidence binding
+Deterministic logic binds hypothesis fields to local evidence (document spans and/or table cells), with explicit evidence pointers and reproducible offsets.
+
+#### 5) Formulation-level audit
+Audit verifies that fields grouped under one formulation are mutually consistent and belong to the same instance boundary, exposing conflict and uncertainty artifacts for targeted review.
+
+#### 6) Final tabular export
+After verification and audit gates, formulation records are flattened into modeling-ready tabular outputs while preserving traceability fields needed for reproducibility.
+
+### Role separation (non-negotiable)
+
+#### LLM responsibilities
+- semantic understanding of scientific prose/tables
+- formulation instance detection and boundary interpretation
+- inheritance interpretation for shared vs instance-specific conditions
+
+#### Rule-based system responsibilities
+- evidence localization
+- numeric matching and support checks
+- normalization and deterministic derivation
+- verification, gating, and export assembly
+
+### Representation boundary
+Internal representations may contain richer structures (candidate hypotheses, evidence bundles, conflict queues, trace artifacts), but the released database remains tabular.

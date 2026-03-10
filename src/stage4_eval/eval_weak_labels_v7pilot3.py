@@ -5,26 +5,13 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import pandas as pd
-from openpyxl import load_workbook
-from openpyxl.styles import Alignment
-from openpyxl.utils import get_column_letter
 
 
-KEY_FIELDS = [
-    "drug_name",
-    "plga_mw_kDa",
-    "la_ga_ratio",
-    "drug_feed_amount_text",
-    "surfactant_name",
-    "surfactant_concentration_text",
-    "organic_solvent",
-    "size_nm",
-    "pdi",
-    "encapsulation_efficiency_percent",
-]
+FORMULATION_INSTANCE_KINDS = {"new_formulation", "variant_formulation"}
+NON_FORMULATION_KIND = "candidate_non_formulation"
 
 
 def normalize_doi(v: Any) -> str:
@@ -36,273 +23,237 @@ def normalize_doi(v: Any) -> str:
     return s.strip()
 
 
+def parse_json_list(v: Any) -> List[str]:
+    if v is None:
+        return []
+    if isinstance(v, list):
+        return [str(x).strip() for x in v if str(x).strip()]
+    s = str(v).strip()
+    if not s:
+        return []
+    try:
+        obj = json.loads(s)
+        if isinstance(obj, list):
+            return [str(x).strip() for x in obj if str(x).strip()]
+    except Exception:
+        pass
+    return [p.strip() for p in re.split(r"[|,;\n]+", s) if p.strip()]
+
+
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Evaluate weak_labels_v7 3-paper pilot and export audit workbook.")
-    p.add_argument(
-        "--pilot-tsv",
-        default="data/results/run_20260306_1321_v7pilot3_dev/weak_labels_v7pilot/weak_labels__v7pilot.tsv",
+    p = argparse.ArgumentParser(
+        description="Evaluate formulation-instance pilot outputs on the fixed 3-paper DEV15 subset."
     )
-    p.add_argument(
-        "--pilot-jsonl",
-        default="data/results/run_20260306_1321_v7pilot3_dev/weak_labels_v7pilot/weak_labels__v7pilot.jsonl",
-    )
+    p.add_argument("--pilot-tsv", required=True)
     p.add_argument(
         "--pilot-manifest",
         default="data/cleaned/goren_2025/index/splits/dev_manifest_v7pilot3_2026-03-06.tsv",
     )
     p.add_argument(
-        "--baseline-v6-tsv",
-        default="data/results/run_20260219_1623_780eb83_goren18_weaklabels_v1/weak_labels__gemini.tsv",
-    )
-    p.add_argument(
-        "--sample-manifest",
-        default="data/cleaned/samples/sample_goren18.tsv",
+        "--gt-xlsx",
+        default="data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx",
     )
     p.add_argument(
         "--summary-md",
-        default="docs/methods/weak_labels_v7pilot3_eval_2026-03-06.md",
+        default="docs/methods/formulation_instance_pilot3_eval_2026-03-10.md",
     )
     p.add_argument(
-        "--audit-xlsx",
-        default="data/cleaned/labels/manual/dev_v7pilot3_audit_pack.xlsx",
+        "--out-dir",
+        default="data/cleaned/labels/manual/formulation_instance_pilot3_eval_2026-03-10",
     )
     return p.parse_args()
 
 
-def format_sheet(ws) -> None:
-    ws.freeze_panes = "A2"
-    ws.auto_filter.ref = ws.dimensions
-    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
-        for c in row:
-            c.alignment = Alignment(wrap_text=True, vertical="top")
-    wide = {
-        "A": 24,
-        "B": 18,
-        "C": 16,
-        "D": 18,
-        "E": 22,
-        "F": 16,
-        "G": 12,
-        "H": 14,
-        "I": 16,
-        "J": 16,
-        "K": 18,
-        "L": 14,
-        "M": 10,
-        "N": 10,
-        "O": 10,
+def load_gt(gt_xlsx: Path, target_dois: set[str]) -> pd.DataFrame:
+    gt = pd.read_excel(gt_xlsx, sheet_name="review_formulations").fillna("")
+    gt["doi_norm"] = gt["doi"].map(normalize_doi)
+    gt = gt[gt["doi_norm"].isin(target_dois)].copy()
+    gt["is_gt_formulation"] = gt["formulation_exists_gt"].astype(str).str.strip().str.lower().eq("yes")
+    return gt
+
+
+def build_per_doi_summary(pred: pd.DataFrame, gt: pd.DataFrame, manifest: pd.DataFrame) -> pd.DataFrame:
+    rows: List[Dict[str, Any]] = []
+    for _, m in manifest.iterrows():
+        doi = normalize_doi(m["doi"])
+        pred_d = pred[pred["doi_norm"] == doi].copy()
+        gt_d = gt[gt["doi_norm"] == doi].copy()
+
+        pred_form = pred_d[pred_d["instance_kind"].isin(FORMULATION_INSTANCE_KINDS)].copy()
+        pred_non = pred_d[pred_d["instance_kind"] == NON_FORMULATION_KIND].copy()
+        pred_unclear = pred_d[pred_d["instance_kind"] == "unclear"].copy()
+        gt_form = gt_d[gt_d["is_gt_formulation"]].copy()
+        gt_non = gt_d[~gt_d["is_gt_formulation"]].copy()
+
+        has_parent_variant = pred_form[
+            pred_form["instance_kind"].eq("variant_formulation")
+            & pred_form["parent_instance_id"].astype(str).str.strip().ne("")
+        ]
+
+        over = len(pred_form) > len(gt_form)
+        under = len(pred_form) < len(gt_form)
+        if not over and not under and (len(gt_non) == 0 or len(pred_non) >= len(gt_non)):
+            boundary_status = "preserved"
+        elif abs(len(pred_form) - len(gt_form)) <= 1:
+            boundary_status = "mixed"
+        else:
+            boundary_status = "broken"
+
+        if len(gt_non) == 0:
+            non_form_status = "not_applicable"
+        elif len(pred_non) >= len(gt_non):
+            non_form_status = "yes"
+        elif len(pred_non) > 0:
+            non_form_status = "partial"
+        else:
+            non_form_status = "no"
+
+        if len(pred_form) <= 1:
+            inheritance_status = "not_observed"
+        elif len(has_parent_variant) > 0:
+            inheritance_status = "yes"
+        else:
+            inheritance_status = "no"
+
+        rows.append(
+            {
+                "doi_norm": doi,
+                "paper_key": m["key"],
+                "pilot_reason": m.get("pilot_reason", ""),
+                "gt_formulation_rows": int(len(gt_form)),
+                "gt_candidate_non_formulation_rows": int(len(gt_non)),
+                "pred_formulation_rows": int(len(pred_form)),
+                "pred_candidate_non_formulation_rows": int(len(pred_non)),
+                "pred_unclear_rows": int(len(pred_unclear)),
+                "pred_new_formulation_rows": int(pred_form["instance_kind"].eq("new_formulation").sum()),
+                "pred_variant_formulation_rows": int(pred_form["instance_kind"].eq("variant_formulation").sum()),
+                "pred_variant_with_parent_rows": int(len(has_parent_variant)),
+                "over_segmentation": "yes" if over else "no",
+                "under_segmentation": "yes" if under else "no",
+                "boundary_status": boundary_status,
+                "non_formulation_suppressed": non_form_status,
+                "inheritance_variant_separated": inheritance_status,
+            }
+        )
+    return pd.DataFrame(rows).sort_values("doi_norm").reset_index(drop=True)
+
+
+def build_predicted_instance_view(pred: pd.DataFrame, manifest: pd.DataFrame) -> pd.DataFrame:
+    keep_cols = [
+        "doi_norm",
+        "key",
+        "local_instance_id",
+        "raw_formulation_label",
+        "instance_kind",
+        "parent_instance_id",
+        "change_role",
+        "change_descriptions",
+        "instance_context_tags",
+        "change_context_tags",
+        "formulation_role",
+        "instance_confidence",
+        "supporting_evidence_refs",
+        "evidence_section",
+        "evidence_span_text",
+    ]
+    out = pred.copy()
+    out["counts_as_formulation_row"] = out["instance_kind"].isin(FORMULATION_INSTANCE_KINDS)
+    out["change_descriptions_list"] = out["change_descriptions"].map(parse_json_list)
+    out["instance_context_tags_list"] = out["instance_context_tags"].map(parse_json_list)
+    out["change_context_tags_list"] = out["change_context_tags"].map(parse_json_list)
+    out["short_change_note"] = out["change_descriptions_list"].map(lambda xs: " | ".join(xs[:3]))
+    out["short_instance_tags"] = out["instance_context_tags_list"].map(lambda xs: ",".join(xs))
+    out["short_change_tags"] = out["change_context_tags_list"].map(lambda xs: ",".join(xs))
+    out = out[keep_cols + ["counts_as_formulation_row", "short_change_note", "short_instance_tags", "short_change_tags"]]
+    out = out.merge(
+        manifest[["key", "pilot_reason"]].rename(columns={"key": "key"}),
+        on="key",
+        how="left",
+    )
+    return out.sort_values(["doi_norm", "local_instance_id"]).reset_index(drop=True)
+
+
+def build_terminal_summary(per_doi: pd.DataFrame, pilot_tsv: Path, out_dir: Path, summary_md: Path) -> Dict[str, Any]:
+    workable = (
+        per_doi["boundary_status"].eq("preserved").sum() >= 2
+        and per_doi["non_formulation_suppressed"].isin(["yes", "not_applicable"]).sum() >= 2
+    )
+    return {
+        "pilot_tsv": str(pilot_tsv.resolve()),
+        "summary_md": str(summary_md.resolve()),
+        "out_dir": str(out_dir.resolve()),
+        "fixed_3paper_set": per_doi[["paper_key", "doi_norm"]].to_dict(orient="records"),
+        "per_doi": per_doi.to_dict(orient="records"),
+        "compressed_enum_design_workable": "yes" if workable else "mixed",
     }
-    for col, w in wide.items():
-        ws.column_dimensions[col].width = w
-    for col in range(16, 80):
-        ws.column_dimensions[get_column_letter(col)].width = 14
 
 
 def main() -> None:
     args = parse_args()
     pilot_tsv = Path(args.pilot_tsv)
     pilot_manifest = Path(args.pilot_manifest)
+    gt_xlsx = Path(args.gt_xlsx)
     summary_md = Path(args.summary_md)
-    audit_xlsx = Path(args.audit_xlsx)
+    out_dir = Path(args.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    summary_md.parent.mkdir(parents=True, exist_ok=True)
 
-    df = pd.read_csv(pilot_tsv, sep="\t", dtype=str).fillna("")
+    pred = pd.read_csv(pilot_tsv, sep="\t", dtype=str).fillna("")
+    pred["doi_norm"] = pred["doi"].map(normalize_doi)
+    pred["instance_kind"] = pred["instance_kind"].astype(str).str.strip().str.lower().replace("", "unclear")
+    pred["parent_instance_id"] = pred["parent_instance_id"].astype(str)
+
     manifest = pd.read_csv(pilot_manifest, sep="\t", dtype=str).fillna("")
     manifest["doi_norm"] = manifest["doi"].map(normalize_doi)
+    target_dois = set(manifest["doi_norm"].tolist())
+    pred = pred[pred["doi_norm"].isin(target_dois)].copy()
 
-    per_doi_counts = (
-        df.groupby("doi", dropna=False)["formulation_id"].size().reset_index(name="n_formulations")
-        .sort_values("doi")
-    )
-    per_doi_counts["doi_norm"] = per_doi_counts["doi"].map(normalize_doi)
+    gt = load_gt(gt_xlsx, target_dois)
+    per_doi = build_per_doi_summary(pred=pred, gt=gt, manifest=manifest)
+    predicted_instances = build_predicted_instance_view(pred=pred, manifest=manifest)
 
-    scope_cols = [c for c in df.columns if c.endswith("_scope")]
-    scope_vals = pd.Series(dtype=str)
-    if scope_cols:
-        scope_vals = (
-            df[scope_cols]
-            .replace("", pd.NA)
-            .stack()
-            .astype(str)
-            .str.strip()
-            .str.lower()
-        )
-    scope_dist = scope_vals.value_counts().to_dict()
+    per_doi_path = out_dir / "per_doi_formulation_instance_summary.tsv"
+    predicted_path = out_dir / "predicted_instance_rows.tsv"
+    per_doi.to_csv(per_doi_path, sep="\t", index=False)
+    predicted_instances.to_csv(predicted_path, sep="\t", index=False)
 
-    mc_cols = [c for c in df.columns if c.endswith("_membership_confidence")]
-    mc_vals = pd.Series(dtype=str)
-    if mc_cols:
-        mc_vals = (
-            df[mc_cols]
-            .replace("", pd.NA)
-            .stack()
-            .astype(str)
-            .str.strip()
-            .str.lower()
-        )
-    mc_dist = mc_vals.value_counts().to_dict()
-
-    field_unknown_rows: List[Dict[str, Any]] = []
-    for f in KEY_FIELDS:
-        vcol = f"{f}_value"
-        scol = f"{f}_scope"
-        mcol = f"{f}_membership_confidence"
-        if vcol not in df.columns:
-            continue
-        total = len(df)
-        is_missing_value = df[vcol].astype(str).str.strip().eq("")
-        is_unknown_scope = df[scol].astype(str).str.strip().str.lower().eq("unknown") if scol in df.columns else True
-        is_uncertain = df[mcol].astype(str).str.strip().str.lower().eq("low") if mcol in df.columns else False
-        bad = (is_missing_value | is_unknown_scope | is_uncertain)
-        rate = float(bad.mean()) if total else 0.0
-        field_unknown_rows.append(
-            {
-                "field": f,
-                "total_rows": int(total),
-                "unknown_or_uncertain_rows": int(bad.sum()),
-                "unknown_or_uncertain_rate": rate,
-            }
-        )
-    unknown_df = pd.DataFrame(field_unknown_rows).sort_values("unknown_or_uncertain_rate", ascending=False)
-
-    # Optional v6 comparison for same DOIs.
-    v6_cmp = pd.DataFrame(columns=["doi_norm", "v6_count", "v7_count"])
-    v6_available = False
-    baseline = Path(args.baseline_v6_tsv)
-    if baseline.exists():
-        v6_available = True
-        v6 = pd.read_csv(baseline, sep="\t", dtype=str).fillna("")
-        sample = pd.read_csv(args.sample_manifest, sep="\t", dtype=str).fillna("")
-        k2d = dict(zip(sample["key"], sample["doi"].map(normalize_doi)))
-        if "doi" not in v6.columns:
-            v6["doi_norm"] = v6["key"].map(lambda k: k2d.get(str(k), ""))
-        else:
-            v6["doi_norm"] = v6["doi"].map(normalize_doi)
-        target = set(manifest["doi_norm"].tolist())
-        v6 = v6[v6["doi_norm"].isin(target)].copy()
-        v6_counts = v6.groupby("doi_norm", dropna=False).size().reset_index(name="v6_count")
-        v7_counts = per_doi_counts[["doi_norm", "n_formulations"]].rename(columns={"n_formulations": "v7_count"})
-        v6_cmp = v7_counts.merge(v6_counts, on="doi_norm", how="left").fillna(0)
-        v6_cmp["v6_count"] = v6_cmp["v6_count"].astype(int)
-        v6_cmp["count_delta_v7_minus_v6"] = v6_cmp["v7_count"] - v6_cmp["v6_count"]
-
-    # Recommendation heuristic.
-    scope_unknown_rate = float(scope_dist.get("unknown", 0) / max(1, sum(scope_dist.values())))
-    mc_low_rate = float(mc_dist.get("low", 0) / max(1, sum(mc_dist.values())))
-    if scope_unknown_rate <= 0.20 and mc_low_rate <= 0.20:
-        recommendation = "yes"
-        recommendation_note = "Semantic typing quality is stable enough for DEV-wide rollout."
-    elif scope_unknown_rate <= 0.45 and mc_low_rate <= 0.45:
-        recommendation = "yes with prompt tweaks"
-        recommendation_note = "Pilot is promising, but unknown/uncertain rates should be reduced before 15-paper rollout."
-    else:
-        recommendation = "no"
-        recommendation_note = "Unknown/uncertain rates are too high; adjust prompt/schema behavior first."
-
-    # Build audit workbook.
-    audit_xlsx.parent.mkdir(parents=True, exist_ok=True)
-    sheets: Dict[str, pd.DataFrame] = {}
-    for _, r in manifest.iterrows():
-        doi = str(r["doi"]).strip()
-        doi_norm = normalize_doi(doi)
-        sub = df[df["doi"].map(normalize_doi) == doi_norm].copy()
-        if sub.empty:
-            sub = df.iloc[0:0].copy()
-
-        out = pd.DataFrame(
-            {
-                "doi": sub["doi"],
-                "formulation_id": sub["formulation_id"],
-                "formulation_role": sub["formulation_role"],
-                "instance_confidence": sub["instance_confidence"],
-                "drug_name": sub.get("drug_name_value", ""),
-                "polymer_identity": sub.apply(
-                    lambda x: "PLGA"
-                    if str(x.get("plga_mw_kDa_value", "")).strip() or str(x.get("la_ga_ratio_value", "")).strip()
-                    else "",
-                    axis=1,
-                ),
-                "plga_mw": sub.get("plga_mw_kDa_value", ""),
-                "la_ga_ratio": sub.get("la_ga_ratio_value", ""),
-                "drug_polymer_ratio": sub.get("drug_feed_amount_text_value", ""),
-                "surfactant_type": sub.get("surfactant_name_value", ""),
-                "surfactant_conc": sub.get("surfactant_concentration_text_value", ""),
-                "organic_solvent": sub.get("organic_solvent_value", ""),
-                "size_nm": sub.get("size_nm_value", ""),
-                "pdi": sub.get("pdi_value", ""),
-                "ee_value": sub.get("encapsulation_efficiency_percent_value", ""),
-            }
-        )
-        for f in KEY_FIELDS:
-            out[f"{f}__scope"] = sub.get(f"{f}_scope", "")
-            out[f"{f}__membership_confidence"] = sub.get(f"{f}_membership_confidence", "")
-            out[f"{f}__evidence_region_type"] = sub.get(f"{f}_evidence_region_type", "")
-        sheet_name = f"doi_{doi_norm[:28]}".replace("/", "_").replace(".", "_")
-        sheets[sheet_name] = out
-
-    with pd.ExcelWriter(audit_xlsx, engine="openpyxl") as writer:
-        for name, sdf in sheets.items():
-            sdf.to_excel(writer, sheet_name=name, index=False)
-    wb = load_workbook(audit_xlsx)
-    for ws in wb.worksheets:
-        format_sheet(ws)
-    wb.save(audit_xlsx)
-
-    summary_md.parent.mkdir(parents=True, exist_ok=True)
     lines: List[str] = []
-    lines.append("# weak_labels_v7pilot3 Evaluation (2026-03-06)")
+    lines.append("# Formulation-Instance Pilot Evaluation (2026-03-10)")
     lines.append("")
-    lines.append("## Selected 3 papers")
-    for _, r in manifest.iterrows():
-        lines.append(f"- `{r['doi']}` | key `{r['key']}` | {r.get('pilot_reason', '')}")
+    lines.append("## Fixed 3-paper set reused")
+    for _, r in manifest.sort_values("doi_norm").iterrows():
+        lines.append(f"- `{normalize_doi(r['doi'])}` | key `{r['key']}` | {r.get('pilot_reason', '')}")
     lines.append("")
-    lines.append("## Number of extracted formulations per DOI")
-    for _, r in per_doi_counts.iterrows():
-        lines.append(f"- `{r['doi']}`: {int(r['n_formulations'])}")
-    lines.append("")
-    lines.append("## Distribution of field-level scope values")
-    for k, v in sorted(scope_dist.items(), key=lambda x: (-x[1], x[0])):
-        lines.append(f"- `{k}`: {int(v)}")
-    lines.append("")
-    lines.append("## Distribution of membership_confidence values")
-    for k, v in sorted(mc_dist.items(), key=lambda x: (-x[1], x[0])):
-        lines.append(f"- `{k}`: {int(v)}")
-    lines.append("")
-    lines.append("## Unknown/uncertain rate by field")
-    for _, r in unknown_df.iterrows():
+    lines.append("## Per-paper result summary")
+    for _, r in per_doi.iterrows():
         lines.append(
-            f"- `{r['field']}`: {r['unknown_or_uncertain_rows']}/{r['total_rows']} ({r['unknown_or_uncertain_rate']:.1%})"
+            "- "
+            f"`{r['doi_norm']}`: GT={int(r['gt_formulation_rows'])} formulation rows, "
+            f"pred={int(r['pred_formulation_rows'])}; "
+            f"over-seg={r['over_segmentation']}, under-seg={r['under_segmentation']}, "
+            f"boundary={r['boundary_status']}, non-form suppression={r['non_formulation_suppressed']}, "
+            f"inheritance separation={r['inheritance_variant_separated']}."
         )
     lines.append("")
-    lines.append("## v6 comparison (same 3 DOIs)")
-    if v6_available and not v6_cmp.empty:
-        for _, r in v6_cmp.iterrows():
-            lines.append(
-                f"- `{r['doi_norm']}`: v6={int(r['v6_count'])}, v7={int(r['v7_count'])}, delta={int(r['count_delta_v7_minus_v6'])}"
-            )
-        lines.append("- Shared-vs-instance ambiguity appears reduced where `scope=global_shared` is explicit, but unknown scope remains in sparse fields.")
+    lines.append("## Engineering readout")
+    total_gt = int(per_doi["gt_formulation_rows"].sum())
+    total_pred = int(per_doi["pred_formulation_rows"].sum())
+    total_non_gt = int(per_doi["gt_candidate_non_formulation_rows"].sum())
+    total_non_pred = int(per_doi["pred_candidate_non_formulation_rows"].sum())
+    lines.append(f"- Predicted formulation rows: {total_pred} vs GT {total_gt}.")
+    lines.append(f"- Predicted candidate_non_formulation rows: {total_non_pred} vs GT non-formulation rows {total_non_gt}.")
+    workable = build_terminal_summary(per_doi, pilot_tsv, out_dir, summary_md)["compressed_enum_design_workable"]
+    lines.append(f"- Compressed enum design appears workable: **{workable}**.")
+    if per_doi["under_segmentation"].eq("yes").any():
+        next_bottleneck = "instance boundary enumeration in dense table blocks"
+    elif per_doi["non_formulation_suppressed"].isin(["no", "partial"]).any():
+        next_bottleneck = "non-synthesis variant suppression and post-processing/test-condition classification"
     else:
-        lines.append("- Baseline v6 output not available for direct comparison.")
-    lines.append("")
-    lines.append("## Should we scale from 3 papers to all 15 DEV papers?")
-    lines.append(f"Recommendation: **{recommendation}**")
-    lines.append(f"- {recommendation_note}")
-    lines.append("")
-
+        next_bottleneck = "parent-link and synthesis-change attribution quality for variant rows"
+    lines.append(f"- Next bottleneck: {next_bottleneck}.")
     summary_md.write_text("\n".join(lines), encoding="utf-8")
 
-    # Print machine-friendly summary for terminal copy.
-    out = {
-        "pilot_tsv": str(pilot_tsv.resolve()),
-        "audit_xlsx": str(audit_xlsx.resolve()),
-        "summary_md": str(summary_md.resolve()),
-        "formulations_per_doi": per_doi_counts[["doi_norm", "n_formulations"]].to_dict(orient="records"),
-        "scope_distribution": scope_dist,
-        "membership_confidence_distribution": mc_dist,
-        "top_unknown_fields": unknown_df.head(5).to_dict(orient="records"),
-        "recommendation": recommendation,
-        "recommendation_note": recommendation_note,
-    }
-    print(json.dumps(out, indent=2))
+    print(json.dumps(build_terminal_summary(per_doi, pilot_tsv, out_dir, summary_md), indent=2))
 
 
 if __name__ == "__main__":

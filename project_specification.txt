@@ -94,6 +94,31 @@ data\cleaned\content\tables\
 3. Clean → Label / Score
    python .\src\stage2_sampling_labels\gt_tool.py --input data\cleaned\index\key2txt.tsv --labels data\labels\manual_labels.tsv
 
+## Formulation Reconstruction Pipeline
+
+The architecture after document cleaning extends beyond direct field filling and reconstructs full formulation records through staged processing:
+
+Document preprocessing
+-> semantic extraction (LLM)
+-> formulation hypothesis layer
+-> evidence binding
+-> formulation assembly
+-> formulation-level audit
+-> final tabular export
+
+Role separation:
+
+LLM responsibilities:
+- semantic understanding of scientific text
+- formulation instance detection
+- interpretation of inheritance or similarity descriptions
+
+Rule-based system responsibilities:
+- deterministic evidence binding
+- numeric/token matching
+- normalization
+- verification and audit preparation
+
 ## Error Recovery Rules
 
 SystemExit: 2
@@ -110,4 +135,29 @@ Unrecognized arguments
 
 ## Goal
 
-Maintain a clean, reproducible LLM extraction dataset for PLGA nanoparticle synthesis.
+Build a clean, auditable, and reproducible formulation database extracted from scientific literature.
+
+The final dataset is a tabular formulation dataset where each row represents a formulation and each column represents a structured parameter.
+
+The database is designed to support data-driven analysis of formulation design, including statistical analysis, predictive modeling, and discovery of empirical formulation patterns.
+
+The pipeline may use richer intermediate representations internally, but the final output always remains a tabular dataset suitable for downstream scientific analysis.
+
+## Internal Representation vs Final Output
+
+Scientific papers often describe formulations with distributed evidence across narrative text, tables, and captions. Because this evidence is fragmented, the pipeline reconstructs formulation records through intermediate stages instead of directly mapping local text spans to final table rows.
+
+Conceptual intermediate stages:
+- semantic extraction of formulation information
+- formulation hypothesis generation
+- evidence binding to document spans or table cells
+- formulation-level record assembly
+- formulation-level audit
+
+After verification and audit checks, reconstructed formulation records are flattened into the final tabular dataset for downstream analysis and modeling.
+
+## Architecture Summary
+
+The system evolved from a field-first extraction design to a formulation-level reconstruction pipeline.
+
+The pipeline reconstructs formulation records from distributed evidence before exporting them as a structured table.

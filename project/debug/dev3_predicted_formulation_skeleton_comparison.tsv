@@ -1,0 +1,4 @@
+paper_key	doi	GT_rows	predicted_rows	ratio	error_type	diagnosis_short
+7ZS858NS	10.1021/acsomega.0c00111	1	7	7.0	over-segmentation	Predicted freeze-dry/cryoprotectant variants as separate formulations; violates post-processing non-split decision.
+UFXX9WXE	10.1155/2014/156010	26	8	0.3076923076923077	under-segmentation	Only 8 F-runs retained vs GT 26; DOE-like design space under-enumerated, generic-variable identity not preserved.
+5ZXYABSU	10.2147/ijn.s130908	9	9	1.0	correct	9 predicted instances align with GT 9; table/label-driven grouping appears stable for this control case.
