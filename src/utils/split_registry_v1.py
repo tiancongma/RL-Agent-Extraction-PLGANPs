@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 
-REGISTRY_PATH = Path("project/8_EVAL_SPLITS_REGISTRY.md")
+REGISTRY_PATH = Path("project/ACTIVE_PIPELINE_FLOW.md")
 
 
 def _extract_tsv_blocks(text: str) -> list[str]:
@@ -89,7 +89,7 @@ def load_registered_dev_keys_file(dataset_id: str, registry_path: Path = REGISTR
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Print registered DEV keys from split registry.")
+    ap = argparse.ArgumentParser(description="Print registered DEV keys from the active pipeline flow registry section.")
     ap.add_argument("--dataset-id", required=True)
     ap.add_argument("--registry-path", default=str(REGISTRY_PATH))
     args = ap.parse_args()

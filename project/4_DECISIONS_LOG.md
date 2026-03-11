@@ -171,3 +171,46 @@ Impact
   - `5ZXYABSU` / `10.2147/ijn.s130908`
   - `L3H2RS2H` / `10.1016/j.ejpb.2004.09.002`
   - `WIVUCMYG` / `10.1002/jps.24101`
+
+### Decision: Reconcile DoE checkpoint / validation rows by factor-level coordinate signature, not table position
+
+Decision
+- For DoE-style papers, formulation-core identity must be determined primarily by factor-level coordinate signature, not by whether a row appears in a later checkpoint or validation table.
+- If a checkpoint / validation row matches an existing design-matrix coordinate, it must not create a new formulation core.
+- If a checkpoint / validation row introduces a new coordinate outside the original design matrix, it must create a new formulation core.
+- Predicted vs observed values belong to measurement-level representation and must not create separate formulation rows by themselves.
+
+Reason
+- Later checkpoint / validation tables can repeat existing experimental coordinates while adding new measured outcomes, which causes false formulation over-counting if row identity is inferred from table occurrence alone.
+- The correct identity boundary in DoE papers is the coordinate-defining factor combination, not the reporting location or whether the row is tagged as predicted / observed / validation.
+
+Consequence
+- Stage4 benchmark reconciliation must collapse repeated checkpoint rows onto an existing formulation core when the factor-level coordinate signature matches.
+- Stage5 core/schema projection should mirror the same coordinate-aware rule so benchmark-facing core counts and database-facing core counts stay consistent.
+- Predicted vs observed values should remain attached to measurement-level outputs, not split formulation-core outputs.
+
+Case reference
+- `WFDTQ4VX` / `10.1080/10717544.2016.1199605`
+
+Resolved interpretation
+- Correct formulation-core count = `29`.
+
+Implementation note
+- On `2026-03-10`, the validated `WFDTQ4VX` coordinate-signature merge was integrated into `src/stage4_eval/eval_weak_labels_v7pilot3.py` for Stage4 DEV counting.
+- The Stage4 summary now preserves both the raw predicted formulation row count and the reconciled formulation-core count for auditability.
+
+### GT correction example: PA3SPZ28 manual undercount, not a new pipeline rule category
+
+Interpretation
+- `PA3SPZ28` / `10.1038/s41598-017-00696-6` should be treated as a GT correction case, not as evidence for a new system-level reconciliation rule.
+- The system prediction of `5` formulations is likely structurally correct for this paper.
+- The earlier GT count of `3` was a manual annotation undercount.
+
+Why this is not a new rule family
+- This case does not show extraction bias.
+- This case does not show Stage4 suppression bias.
+- This case does not justify a new EE-centered pipeline rule.
+- It is an annotation reminder: independently prepared blank / FITC / control-style nanoparticle formulations may be real formulation instances even when the original manual count missed them.
+
+Resolved interpretation
+- Correct formulation-core count = `5`.

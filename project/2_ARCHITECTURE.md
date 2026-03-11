@@ -169,13 +169,16 @@ This is the **only authoritative definition of “latest”**.
 ## Relationship to Project Governance
 
 - Project scope and stage transitions are defined in:
-project/3_STATE_MACHINE.md
+this document
 
 - Architectural decisions are recorded in:
 project/4_DECISIONS_LOG.md
 
 - Agent run procedure: see
-project/6_AGENT_RUNBOOK.md
+project/ACTIVE_PIPELINE_RUNBOOK.md
+
+- Current active script registry and DEV execution path: see
+project/ACTIVE_PIPELINE_RUNBOOK.md
 
 This architecture is intentionally minimal, explicit, and extensible.
 
@@ -337,3 +340,56 @@ After verification and audit gates, formulation records are flattened into model
 
 ### Representation boundary
 Internal representations may contain richer structures (candidate hypotheses, evidence bundles, conflict queues, trace artifacts), but the released database remains tabular.
+
+---
+
+## Consolidated Project Lifecycle States
+
+This section consolidates the former state-machine governance content.
+
+### STATE_0: Scope Locked
+
+- Goal, scope, and non-goals are fixed.
+- Allowed: documentation updates and minor refactoring without behavior change.
+- Forbidden: adding new objectives or expanding problem scope.
+
+### STATE_1: Data Ready
+
+- Raw and cleaned data pipelines are functional and stable.
+- Allowed: regenerating raw or cleaned data and fixing parsing bugs.
+- Forbidden: changing downstream evaluation logic.
+
+### STATE_2: Pipeline Frozen
+
+- The extraction pipeline structure is frozen; work is limited to stability and correctness.
+- Allowed: bug fixes, robustness improvements, and prompt refinements without schema expansion.
+- Forbidden: adding new extraction fields, changing schemas, or introducing new models by default.
+
+### STATE_3: Results Stable
+
+- Outputs and evaluation metrics are stable enough for reporting.
+- Allowed: figure generation, table generation, and result summarization.
+- Forbidden: pipeline logic changes or data regeneration.
+
+### STATE_4: Writing and Release
+
+- Focus shifts to writing, sharing, and publication.
+- Allowed: release-oriented documentation and manuscript preparation.
+- Forbidden: new experiments and pipeline changes.
+
+---
+
+## Consolidated Historical Specification Contracts
+
+This section preserves durable architectural content from the historical
+`project_specification_UPDATED_*` files.
+
+### Stable Repository Interface
+
+- Repository directory structure is treated as a stable interface.
+- Additive growth is allowed; path-breaking relocation is not the default change mode.
+
+### Modular Governance Rule
+
+- Architecture, requirements, run discipline, and active execution path are governed by separate authoritative files.
+- No single monolithic specification file should override the modular governance stack.

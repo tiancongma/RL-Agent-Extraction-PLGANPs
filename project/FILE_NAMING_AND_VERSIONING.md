@@ -124,7 +124,7 @@ Do not mix run outputs into cleaned assets.
 Do not create new top-level directories under `data/cleaned/<dataset_id>/` outside:
 `index`, `content`, `text`, `sections`, `tables`, `analysis`.
 
-Reference: `project/7_DATASET_LAYOUT_CONVENTION.md`.
+Reference: consolidated dataset layout convention below.
 
 ### Structure
 ```
@@ -161,3 +161,42 @@ To try a new idea:
 
 If a file cannot be explained in one sentence,
 it must not exist in the repository.
+
+---
+
+## Consolidated Dataset Layout Convention
+
+This section consolidates the durable dataset layout policy.
+
+### Dataset-Scoped Cleaned Asset Rule
+
+- Cleaned assets are dataset-scoped and reusable across runs.
+- Dataset assets must live under `data/cleaned/<dataset_id>/...`.
+- Run outputs must live under `data/results/<run_id>/...`.
+
+### Allowed Dataset Roots
+
+Top-level dataset directories under `data/cleaned/<dataset_id>/` are limited to:
+
+- `index`
+- `content`
+- `text`
+- `sections`
+- `tables`
+- `analysis`
+
+### Provenance Requirements
+
+Manifest and artifact-level outputs must preserve:
+
+- document identifiers and DOI where available,
+- source format and source path,
+- generator identity,
+- generated timestamp,
+- artifact-level counts,
+- evidence locators needed for downstream audit.
+
+### Legacy Layout Rule
+
+- Legacy layouts such as `data/cleaned/content_goren_2025/...` are compatibility structures, not preferred dataset roots.
+- New outputs should not expand legacy layouts when a dataset-scoped root is available.

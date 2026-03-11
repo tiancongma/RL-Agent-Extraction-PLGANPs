@@ -69,6 +69,12 @@ Status legend:
 | export_dev15_formulation_view_xlsx_v1.py | Human-auditable formulation-level view export | ACTIVE |
 | export_evidence_bundle_audit_xlsx_v1.py | Evidence-bundle audit export for targeted review | ACTIVE |
 
+### Planned Stage4 Reconciliation Note
+
+- The next DoE checkpoint / validation reconciliation rule should be implemented first in `src/stage4_eval/eval_weak_labels_v7pilot3.py` because that script currently converts predicted instance rows directly into benchmark paper-level formulation counts.
+- Minimum matching key for this rule: factor-level coordinate signature (prefer decoded factor values; fallback to coded factor levels plus other coordinate-defining synthesis variables), not predicted-vs-observed measurement values.
+- Stage5 schema/core builders should later mirror the same logic so `formulation_core` outputs do not drift from Stage4 benchmark reconciliation on DoE papers.
+
 ### Supporting GT / Annotation Utilities
 
 | Script | Purpose | Status |
@@ -109,4 +115,16 @@ Stage directory names are retained for implementation stability; the current arc
 - GT/conflict annotation utilities are supporting tools for selected review scenarios, not architectural centerpieces of the default mainline path.
 - Multi-model extraction/consensus scripts remain in the repository as historical baselines or supporting utilities for selective verification and diagnostics.
 - Multi-model consensus is not the architectural center of the current mainline pipeline.
+
+---
+
+## Current DEV-15 Formulation-Instance Execution Clarification
+
+- For the current DEV-15 formulation-instance path, treat `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` as the Stage2 default extractor.
+- Treat `src/stage4_eval/eval_weak_labels_v7pilot3.py` as the current Stage4 DEV evaluator and count-reconciliation seam.
+- Treat `src/stage4_eval/build_dev15_review_workbook_v1.py` as a supporting reviewer-facing export, not as the evaluator itself.
+- The validated DoE coordinate reconciliation now lives in `src/stage4_eval/eval_weak_labels_v7pilot3.py`.
+- `src/stage4_eval/test_doe_coordinate_reconciliation_v1.py` remains an experimental validation script, not the default entrypoint.
+- The current full DEV-15 reconciled combined count view is the checked-in artifact `data/cleaned/labels/manual/formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv`.
+- There is not yet a dedicated checked-in canonical builder script for the full combined DEV-15 TSV; agents should not guess one from filename similarity.
 
