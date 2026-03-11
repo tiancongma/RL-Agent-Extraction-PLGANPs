@@ -3,7 +3,7 @@
 Validate DEV15 formulation skeleton review workbook.
 
 Example:
-python src/stage3_gt/validate_dev15_formulation_skeleton_review_v1.py --xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1.xlsx
+python src/archive_methods/dev15_skeleton_bootstrap/validate_dev15_formulation_skeleton_review_v1.py --xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1.xlsx
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Dict, List
 
 try:
-    from src.stage3_gt.formulation_skeleton_common import (
+    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import (
         BOUNDARY_CONFIDENCE_OPTIONS,
         FORMULATION_EXISTS_OPTIONS,
         REVIEW_STATUS_OPTIONS,
@@ -28,7 +28,7 @@ except ModuleNotFoundError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.stage3_gt.formulation_skeleton_common import (
+    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import (
         BOUNDARY_CONFIDENCE_OPTIONS,
         FORMULATION_EXISTS_OPTIONS,
         REVIEW_STATUS_OPTIONS,
@@ -223,3 +223,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+

@@ -157,10 +157,10 @@ Use it to answer:
 - `when_to_use`: when preparing reviewer-facing DEV-15 inspection material
 - `when_not_to_use`: not a counting or extraction entrypoint
 
-### `src/stage4_eval/test_doe_coordinate_reconciliation_v1.py`
+### `src/archive_methods/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py`
 
-- `script_path`: `src/stage4_eval/test_doe_coordinate_reconciliation_v1.py`
-- `status`: `EXPERIMENTAL`
+- `script_path`: `src/archive_methods/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py`
+- `status`: `ARCHIVAL`
 - `purpose`: isolated validation script for DoE coordinate-signature merge logic
 - `reads`: weak-label TSV for a target paper plus source text
 - `writes`: experiment TSV summaries under `data/results/doe_coordinate_reconciliation_v1/`
@@ -241,18 +241,18 @@ This is the current formulation-instance DEV-15 path. Use these files and this o
 Scripts not listed as `ACTIVE_MAINLINE` above must not be chosen as default entrypoints unless the task explicitly requires them.
 
 Default non-entrypoint families for current formulation-instance DEV work:
-- `src/stage2_sampling_labels/auto_extract_weak_labels.py`
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v3.py`
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v4.py`
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v5.py`
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v5_G3.py`
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v6.py`
-- `src/stage4_eval/auto_extract_multimodel.py`
-- `src/stage4_eval/multi_model_extract_tier1.py`
-- `src/stage4_eval/multi_model_extract_tier2.py`
-- `src/stage4_eval/multi_model_merge_qc.py`
-- `src/stage4_eval/apply_formulation_grouping_v1.py`
-- `src/stage4_eval/apply_global_baseline_inheritance_and_rerun_alignment_v1.py`
+- `src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels.py`
+- `src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v3.py`
+- `src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v4.py`
+- `src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v5.py`
+- `src/archive_methods/dual_model_extraction_comparison/auto_extract_weak_labels_v5_G3.py`
+- `src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v6.py`
+- `src/archive_methods/dual_model_extraction_comparison/auto_extract_multimodel.py`
+- `src/archive_methods/dual_model_extraction_comparison/multi_model_extract_tier1.py`
+- `src/archive_methods/dual_model_extraction_comparison/multi_model_extract_tier2.py`
+- `src/archive_methods/dual_model_extraction_comparison/multi_model_merge_qc.py`
+- `src/archive_methods/stage4_rule_heavy_formulation_reconstruction/apply_formulation_grouping_v1.py`
+- `src/archive_methods/stage4_rule_heavy_formulation_reconstruction/apply_global_baseline_inheritance_and_rerun_alignment_v1.py`
 
 If a task needs one of those scripts, treat it as explicit non-default work and state why.
 
@@ -299,3 +299,4 @@ Before changing pipeline behavior, read in this order:
 
 The former compatibility-pointer runbook existed only to preserve link stability.
 Its role is now fully absorbed into this runbook.
+

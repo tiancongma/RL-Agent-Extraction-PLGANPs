@@ -1,41 +1,127 @@
-# Repository Agent Entrypoint
+# AGENTS.md
 
-## Project Overview
+Agent execution contract for this repository.
 
-This repository builds a structured PLGA nanoparticle formulation dataset from scientific literature.
+This file defines how AI coding agents (Codex, Claude Code, etc.)
+should initialize context before modifying the repository.
+This repository enforces a strict governance layer.
+Agents must read this file before making any modification.
 
-The current workflow is formulation-instance-centered:
-- Stage2 extracts formulation candidates from cleaned paper text and tables.
-- Stage4 evaluates formulation counts and boundaries against the DEV-15 benchmark.
-- Reviewer-facing workbooks and audit artifacts are produced from the evaluated outputs.
+---
 
-## Agent Read Order
+# 1. Mandatory startup context
 
-Read these files before doing work:
+Before making any change, the agent MUST read the following files:
 
-1. `project/ACTIVE_PIPELINE_RUNBOOK.md`
-2. `project/ACTIVE_PIPELINE_RUNBOOK.md`
-3. `project/PIPELINE_SCRIPT_MAP.md`
-4. `project/4_DECISIONS_LOG.md`
-5. `docs/tool_index.md`
+project/0_PROJECT_CHARTER.md  
+project/1_REQUIREMENTS.md  
+project/2_ARCHITECTURE.md  
+project/PIPELINE_SCRIPT_MAP.md  
+project/ACTIVE_PIPELINE_FLOW.md  
+project/ACTIVE_PIPELINE_RUNBOOK.md  
+project/FILE_NAMING_AND_VERSIONING.md  
 
-## Current Active DEV-15 Path
+These files define:
 
-- Stage2 extractor:
-  - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
-- Stage4 evaluator:
-  - `src/stage4_eval/eval_weak_labels_v7pilot3.py`
-- Reviewer workbook builder:
-  - `src/stage4_eval/build_dev15_review_workbook_v1.py`
-- Experimental DoE reconciliation validator:
-  - `src/stage4_eval/test_doe_coordinate_reconciliation_v1.py`
-- Official DEV-15 reconciled artifact:
-  - `data/cleaned/labels/manual/formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv`
+- project goals
+- system architecture
+- active pipeline
+- execution runbook
+- repository conventions
 
-## Agent Rules
+Do not infer architecture without reading them.
 
-- Prefer `ACTIVE_MAINLINE` scripts listed in `project/ACTIVE_PIPELINE_RUNBOOK.md`.
-- Do not select scripts based only on filename similarity or suffix order.
-- Do not modify Stage2 extraction unless the task explicitly requests it.
-- Stage4 reconciliation rules must remain deterministic and auditable.
-- Treat scripts not listed as `ACTIVE_MAINLINE` as non-default entrypoints unless the task explicitly requires them.
+---
+
+# 2. Governance layer rule
+
+`project/` is a governance layer.
+
+It contains **only authoritative project definitions**.
+
+Agents MUST NOT create new files inside `project/`
+unless explicitly instructed by the user.
+
+Maximum governance files allowed: **9**
+
+---
+
+# 3. Repository structure
+
+The repository is organized as four layers:
+
+project/  
+→ governance documents
+
+src/  
+→ executable pipeline code
+
+data/  
+→ datasets and run artifacts
+
+docs/  
+→ explanations, benchmarks, historical material
+
+Agents must keep these layers separated.
+
+---
+
+# 4. File creation rules
+
+Default behavior:
+
+append to existing files.
+
+Creating new files requires explicit user instruction.
+
+Never create:
+
+- new governance documents
+- duplicate specifications
+- snapshot-style files
+
+---
+
+# 5. Pipeline authority
+
+The active pipeline definition lives in:
+
+project/ACTIVE_PIPELINE_FLOW.md
+
+The execution instructions live in:
+
+project/ACTIVE_PIPELINE_RUNBOOK.md
+
+Agents must not invent alternative pipelines.
+
+---
+
+# 6. Archive rule
+
+Historical documents must go under:
+
+docs/archive_project/
+
+They must not remain in `project/`.
+
+---
+
+# 7. Code safety rule
+
+Agents must not modify runtime behavior unless:
+
+- requested by the user
+- required to fix broken references
+- required to align with governance files
+
+---
+
+# 8. When uncertain
+
+If repository structure or authority is unclear:
+
+1. read `PIPELINE_SCRIPT_MAP.md`
+2. read `ACTIVE_PIPELINE_RUNBOOK.md`
+3. ask the user
+
+Never guess pipeline structure.

@@ -3,7 +3,7 @@
 Export reviewed DEV15 formulation skeleton workbook into clean TSV.
 
 Example:
-python src/stage3_gt/export_dev15_formulation_skeleton_gt_v1.py --xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1.xlsx
+python src/archive_methods/dev15_skeleton_bootstrap/export_dev15_formulation_skeleton_gt_v1.py --xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1.xlsx
 """
 
 from __future__ import annotations
@@ -13,12 +13,12 @@ from pathlib import Path
 from typing import Dict, List
 
 try:
-    from src.stage3_gt.formulation_skeleton_common import norm_text, read_review_sheet_rows, write_tsv
+    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import norm_text, read_review_sheet_rows, write_tsv
 except ModuleNotFoundError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.stage3_gt.formulation_skeleton_common import norm_text, read_review_sheet_rows, write_tsv
+    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import norm_text, read_review_sheet_rows, write_tsv
 
 
 def main() -> int:
@@ -102,3 +102,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+

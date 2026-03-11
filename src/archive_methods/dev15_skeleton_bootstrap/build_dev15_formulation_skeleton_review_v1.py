@@ -3,7 +3,7 @@
 Build DEV15 formulation skeleton candidate scaffold and review workbook.
 
 Example:
-python src/stage3_gt/build_dev15_formulation_skeleton_review_v1.py --overwrite
+python src/archive_methods/dev15_skeleton_bootstrap/build_dev15_formulation_skeleton_review_v1.py --overwrite
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.worksheet.datavalidation import DataValidation
 
 try:
-    from src.stage3_gt.formulation_skeleton_common import (
+    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import (
         BOUNDARY_CONFIDENCE_OPTIONS,
         CANDIDATE_COLUMNS,
         FORMULATION_EXISTS_OPTIONS,
@@ -40,7 +40,7 @@ except ModuleNotFoundError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.stage3_gt.formulation_skeleton_common import (
+    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import (
         BOUNDARY_CONFIDENCE_OPTIONS,
         CANDIDATE_COLUMNS,
         FORMULATION_EXISTS_OPTIONS,
@@ -314,3 +314,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+

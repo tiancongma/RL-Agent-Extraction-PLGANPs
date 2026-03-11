@@ -28,7 +28,7 @@ def main() -> None:
     cmds = [
         [sys.executable, "src/stage5_benchmark/run_projection_core_to_curated_v1.py", "--run-id", run_id],
         [sys.executable, "src/stage5_benchmark/run_alignment_eval_core_v1.py", "--run-id", run_id],
-        [sys.executable, "src/stage5_benchmark/analyze_row_membership_core_v1.py", "--run-id", run_id],
+        [sys.executable, "src/archive_methods/benchmark_specific_audit_report/analyze_row_membership_core_v1.py", "--run-id", run_id],
     ]
     for cmd in cmds:
         subprocess.run(cmd, check=True)
@@ -61,3 +61,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+

@@ -11,7 +11,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 
-from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixflat import (
+from src.archive_methods.older_weak_label_pilot_variants.auto_extract_weak_labels_v7pilot_r3_fixflat import (
     CORE_FIELDS,
     UNNAMED_LIST_FALLBACK_ORDER,
     _infer_field_name,
@@ -280,3 +280,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+

@@ -42,10 +42,10 @@ Status legend:
 | sample_from_manifest_html_first.py | Sample selection and reproducible subset definition | ACTIVE |
 | sample10_from_zotero_manifest.py | Historical sample10 generation utility | ACTIVE |
 | build_key2txt_from_sample_manifest.py | Build sample-local key2txt index | ACTIVE |
-| auto_extract_weak_labels.py | LLM extraction entry for semantic candidates | ACTIVE |
-| auto_extract_weak_labels_v6.py | Mainline semantic extraction baseline | ACTIVE |
-| auto_extract_weak_labels_v4.py | Older extraction baseline retained for comparison | ACTIVE |
-| auto_extract_weak_labels_v3.py | Weak label logic v3 | LEGACY |
+| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels.py | Historical extraction entry for semantic candidates | LEGACY |
+| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v6.py | Prior mainline semantic extraction baseline | LEGACY |
+| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v4.py | Older extraction baseline retained for comparison | LEGACY |
+| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v3.py | Weak label logic v3 | LEGACY |
 
 ---
 
@@ -54,8 +54,8 @@ Status legend:
 | Script | Purpose | Status |
 |------|--------|--------|
 | build_evidence_bundle_for_keys_v1.py | Build deterministic evidence packages from cleaned artifacts | ACTIVE |
-| apply_formulation_grouping_v1.py | Group semantic candidates into formulation hypotheses | ACTIVE |
-| apply_global_baseline_inheritance_and_rerun_alignment_v1.py | Resolve shared/inherited conditions during hypothesis consolidation | ACTIVE |
+| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/apply_formulation_grouping_v1.py | Historical grouping of semantic candidates into formulation hypotheses | LEGACY |
+| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/apply_global_baseline_inheritance_and_rerun_alignment_v1.py | Historical shared/inherited-condition consolidation path | LEGACY |
 
 ---
 
@@ -64,9 +64,9 @@ Status legend:
 | Script | Purpose | Status |
 |------|--------|--------|
 | compute_formulation_alignment_v1.py | Deterministic formulation-level alignment and assembly checks | ACTIVE |
-| run_alignment_v3_surfactant_drugnorm.py | Deterministic normalization/alignment pass for assembly stability | ACTIVE |
-| build_boundary_alignment_diagnostics_pack_v1.py | Boundary and grouping diagnostics for formulation-level audit | ACTIVE |
-| export_dev15_formulation_view_xlsx_v1.py | Human-auditable formulation-level view export | ACTIVE |
+| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/run_alignment_v3_surfactant_drugnorm.py | Historical normalization/alignment pass for assembly stability | LEGACY |
+| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/build_boundary_alignment_diagnostics_pack_v1.py | Historical boundary/grouping diagnostics pack | LEGACY |
+| src/archive_methods/benchmark_specific_audit_report/export_dev15_formulation_view_xlsx_v1.py | Historical formulation-view export for benchmark review | LEGACY |
 | export_evidence_bundle_audit_xlsx_v1.py | Evidence-bundle audit export for targeted review | ACTIVE |
 
 ### Planned Stage4 Reconciliation Note
@@ -79,12 +79,12 @@ Status legend:
 
 | Script | Purpose | Status |
 |------|--------|--------|
-| build_gt_template_from_conflict_queue.py | Build templates for selected conflict cases requiring targeted manual review | SUPPORTING |
-| export_gt_annotation_view.py | Export annotation views for targeted manual review and conflict arbitration | SUPPORTING |
-| merge_gt_from_annotation_view.py | Merge reviewed annotations for GT maintenance and benchmark support | SUPPORTING |
-| gt_summary_report.py | Summarize review decisions for benchmark maintenance and audit tracking | SUPPORTING |
-| gt_tool.py | Legacy manual GT annotation tool | LEGACY |
-| gt_tool_v3.py | Older GT tool | LEGACY |
+| src/archive_methods/old_gt_arbitration/build_gt_template_from_conflict_queue.py | Historical template builder for conflict-case review | LEGACY |
+| src/archive_methods/old_gt_arbitration/export_gt_annotation_view.py | Historical annotation-view export for conflict arbitration | LEGACY |
+| src/archive_methods/old_gt_arbitration/merge_gt_from_annotation_view.py | Historical merge-back tool for reviewed conflict annotations | LEGACY |
+| src/archive_methods/old_gt_arbitration/gt_summary_report.py | Historical review summary/report utility | LEGACY |
+| src/archive_methods/old_gt_arbitration/gt_tool.py | Legacy manual GT annotation tool | LEGACY |
+| src/archive_methods/old_gt_arbitration/gt_tool_v3.py | Older GT tool | LEGACY |
 
 These scripts support targeted manual review and benchmark maintenance, but they are not part of the default primary formulation-reconstruction path.
 
@@ -124,7 +124,7 @@ Stage directory names are retained for implementation stability; the current arc
 - Treat `src/stage4_eval/eval_weak_labels_v7pilot3.py` as the current Stage4 DEV evaluator and count-reconciliation seam.
 - Treat `src/stage4_eval/build_dev15_review_workbook_v1.py` as a supporting reviewer-facing export, not as the evaluator itself.
 - The validated DoE coordinate reconciliation now lives in `src/stage4_eval/eval_weak_labels_v7pilot3.py`.
-- `src/stage4_eval/test_doe_coordinate_reconciliation_v1.py` remains an experimental validation script, not the default entrypoint.
+- `src/archive_methods/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py` remains an archived experimental validation script, not the default entrypoint.
 - The current full DEV-15 reconciled combined count view is the checked-in artifact `data/cleaned/labels/manual/formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv`.
 - There is not yet a dedicated checked-in canonical builder script for the full combined DEV-15 TSV; agents should not guess one from filename similarity.
 

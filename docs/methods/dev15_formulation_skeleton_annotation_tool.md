@@ -62,20 +62,21 @@ Built-in review helpers:
 
 ## Commands
 ```bash
-python src/stage3_gt/build_dev15_formulation_skeleton_review_v1.py --overwrite
+python src/archive_methods/dev15_skeleton_bootstrap/build_dev15_formulation_skeleton_review_v1.py --overwrite
 
-python src/stage3_gt/validate_dev15_formulation_skeleton_review_v1.py \
+python src/archive_methods/dev15_skeleton_bootstrap/validate_dev15_formulation_skeleton_review_v1.py \
   --xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1.xlsx
 
-python src/stage3_gt/export_dev15_formulation_skeleton_gt_v1.py \
+python src/archive_methods/dev15_skeleton_bootstrap/export_dev15_formulation_skeleton_gt_v1.py \
   --xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1.xlsx
 ```
 
 Optional:
 ```bash
-python src/stage3_gt/build_dev15_formulation_skeleton_review_v1.py \
+python src/archive_methods/dev15_skeleton_bootstrap/build_dev15_formulation_skeleton_review_v1.py \
   --candidate-tsv <path_to_candidate_tsv> \
   --default-rows-per-paper 3 \
   --overwrite
 ```
+
 
