@@ -1,126 +1,88 @@
 # Source Code Overview
 
-This directory contains all executable scripts for the PLGA LLM-extraction pipeline.
-Scripts are organized by **pipeline stage**, not by implementation detail.
+`src/` contains only active engineering code and stable stage-local tools.
 
-If you are unsure which script to run, start from the **main entry scripts**
-listed under each stage.
+The active stage namespaces are exactly:
 
----
+- `src/stage0_relevance/`
+- `src/stage1_cleaning/`
+- `src/stage2_sampling_labels/`
+- `src/stage3_gt/`
+- `src/stage4_eval/`
+- `src/stage5_benchmark/`
+- `src/utils/`
 
-## Stage 0 — Relevance Filtering (Zotero / Metadata)
+Historical and retired methods do not live in `src/`. They live under
+`archive/`.
 
-Location: `src/stage0_relevance/`
-
-Purpose:
-Identify candidate papers relevant to PLGA nanoparticle formulation.
-
-Main entry scripts:
-- `prefilter_regex.py` — Regex-based pre-filtering on metadata
-- `classify_gemini_grouped.py` — LLM-based relevance classification
-- `zotero_fetch_llm_relevant_pdfs.py` — Fetch PDFs/HTML for relevant papers
-
-Supporting scripts:
-- `auto_tag_plga_gemini.py`
-- `auto_tag_plga_openai.py`
-- `zotero_tag_sync.py`
-- `zotero_llm_relevant_interactive.py`
-- `fill_missing_snapshots.py`
-
----
-
-## Stage 1 — Cleaning and Manifest Generation
-
-Location: `src/stage1_cleaning/`
+## Stage 0
 
 Purpose:
-Convert HTML/PDF documents into cleaned, structured text and generate manifests.
+Relevance filtering and raw Zotero-derived corpus intake.
 
-Main entry scripts:
-- `csv2clean_manifest.py` — Generate manifest and trigger cleaning
-- `pdf2clean.py` — PDF fallback cleaner
+Key entrypoints:
 
-Supporting scripts:
-- `html_parser.py` — Shared HTML parsing utilities
+- `zotero_api_sync_selected.py`
+- `zotero_fetch_llm_relevant_pdfs.py`
 
----
-
-## Stage 2 — Sampling and Weak Label Extraction
-
-Location: `src/stage2_sampling_labels/`
+## Stage 1
 
 Purpose:
-Define experimental samples and generate weak labels using LLMs.
+Manifest construction, cleaned text generation, and table extraction.
 
-Main entry scripts:
-- `sample_from_manifest_html_first.py` — Sample selection
-- `build_key2txt_from_sample_manifest.py` — Build key2txt index
-- `auto_extract_weak_labels.py` — Main weak label extraction entry (current)
+Key entrypoints:
 
-Versioned / alternative scripts:
-- `auto_extract_weak_labels_v3.py` (legacy)
-- `auto_extract_weak_labels_v4.py` (current generation logic)
+- `zotero_raw_to_manifest.py`
+- `clean_manifest_to_text.py`
+- `run_tables_extraction_for_dataset_v1.py`
 
----
-
-## Stage 3 — Manual Ground Truth Annotation
-
-Location: `src/stage3_gt/`
+## Stage 2
 
 Purpose:
-Create partial human-annotated ground truth labels.
+Candidate formulation-instance extraction from cleaned paper assets.
 
-Main entry script:
-- `gt_tool.py`
+Key entrypoint:
 
-Alternative versions:
-- `gt_tool_v3.py` (legacy)
+- `auto_extract_weak_labels_v7pilot_r3_fixparse.py`
 
----
-
-## Stage 4 — Multi-model Extraction and QC
-
-Location: `src/stage4_eval/`
+## Stage 3
 
 Purpose:
-Run multi-model extraction and merge/QC results.
+Checked manual benchmark assets.
 
-Main entry script:
-- `auto_extract_multimodel.py`
+Runtime note:
 
-Supporting scripts:
-- `multi_model_extract_tier1.py`
-- `multi_model_extract_tier2.py`
-- `multi_model_merge_qc.py`
+- no active routine stage-local Python script is required for ordinary runtime
+- the canonical completion artifacts live under `data/cleaned/labels/manual/`
 
----
-
-## Stage 5 — Merge and Publication
-
-Location: `src/stage5_merge_publish/`
+## Stage 4
 
 Purpose:
-Merge outputs and prepare publishable datasets.
+Candidate-instance diagnostics and reviewer-facing audit surfaces.
 
-Main entry script:
-- `merge_results.py`
+Key entrypoints:
 
----
+- `eval_weak_labels_v7pilot3.py`
+- `build_dev15_review_workbook_v1.py`
 
-## Legacy Scripts
-
-Location: `src/legacy/`
+## Stage 5
 
 Purpose:
-Preserve historical scripts that are no longer part of the active pipeline.
-These scripts should not be used unless explicitly referenced in documentation.
+Final formulation-table closure and final-table benchmark comparison.
 
----
+Key entrypoints:
 
-## Notes
+- `build_minimal_final_output_v1.py`
+- `compare_final_table_to_gt_v1.py`
 
-- Script versioning is handled by git commits and run_id, not file names.
-- If a script’s role is unclear, consult:
-  - `project/PIPELINE_SCRIPT_MAP.md`
-  - `project/4_DECISIONS_LOG.md`
-- convert_sample_manifest_to_tsv.py — schema adapter for key2txt generation (not part of main pipeline)
+Stage-local helper:
+
+- `run_minimal_final_output_v1.py`
+
+## Authoritative References
+
+If script role or execution order is unclear, use:
+
+- `project/ACTIVE_PIPELINE_FLOW.md`
+- `project/PIPELINE_SCRIPT_MAP.md`
+- `project/ACTIVE_PIPELINE_RUNBOOK.md`

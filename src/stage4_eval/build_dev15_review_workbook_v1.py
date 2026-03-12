@@ -29,7 +29,7 @@ COMBINED_EVAL_TSV = (
     DATA_CLEANED_DIR
     / "labels"
     / "manual"
-    / "formulation_instance_dev15_combined_eval_2026-03-10.tsv"
+    / "formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv"
 )
 REMAINING12_EVAL_TSV = (
     DATA_CLEANED_DIR

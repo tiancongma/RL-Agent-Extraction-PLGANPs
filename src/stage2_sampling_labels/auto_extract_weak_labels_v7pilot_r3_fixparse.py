@@ -22,7 +22,7 @@ import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -697,7 +697,7 @@ Few-shot guidance (compact examples):
 
 
 LLM_PROMPT_TEMPLATE = (
-    "You are extracting PLGA nanoparticle formulation instances in weak_labels_v7 pilot format.\n"
+    "You are extracting nanoparticle formulation instances in weak_labels_v7 pilot format.\n"
     "Return ONLY valid JSON with keys: schema_version, paper_notes, formulations.\n"
     "Use schema_version='weak_labels_v7'.\n"
     "Each formulation object must include: formulation_id, raw_formulation_label, instance_kind, parent_instance_id, change_descriptions, change_role, supporting_evidence_refs, instance_context_tags, change_context_tags, formulation_role, instance_confidence, fields.\n"
@@ -725,6 +725,7 @@ LLM_PROMPT_TEMPLATE = (
     "- If a formulation is defined relative to a parent/base formulation through 'prepared similarly', 'except', 'all other variables unchanged', or similar inheritance language, use instance_kind=variant_formulation and set parent_instance_id.\n"
     "- If a true synthesis/design variable changes, including one outside the core field list, treat it as synthesis_defining and describe it in change_descriptions.\n"
     "- DOE, Box-Behnken, response-surface, or parameter-sweep rows can still be formulation rows when the varied factor is synthesis-defining.\n"
+    "- Do not apply material filtering. If the paper reports formulation rows for polymers outside the current PLGA modeling scope (for example PCL), they must still be extracted as formulation instances.\n"
     "- Use instance_context_tags/change_context_tags only as auxiliary tags such as doe, sweep, post_processing, test_condition, measurement_context, optimized, control.\n"
     "- Do not hallucinate values; prefer unknown style values when uncertain.\n"
     "- Preserve units in value_text.\n"
@@ -1228,8 +1229,417 @@ def canonicalize_formulations(data: Dict[str, Any]) -> List[Dict[str, Any]]:
         new_fm["formulation_role"] = formulation_role
         new_fm["instance_confidence"] = sanitize_conf(fm.get("instance_confidence"))
         new_fm["supporting_evidence_refs"] = supporting_evidence_refs
+        new_fm["candidate_source"] = str(fm.get("candidate_source") or "llm_extracted").strip() or "llm_extracted"
+        polymer_identity, polymer_name_raw = infer_polymer_identity_fields(new_fm)
+        new_fm["polymer_identity"] = polymer_identity
+        new_fm["polymer_name_raw"] = polymer_name_raw
         out_forms.append(new_fm)
     return out_forms
+
+
+def _stringify_candidate_text(v: Any) -> str:
+    if v is None:
+        return ""
+    if isinstance(v, (list, tuple)):
+        return " ".join(_stringify_candidate_text(x) for x in v if _stringify_candidate_text(x))
+    if isinstance(v, dict):
+        return " ".join(
+            _stringify_candidate_text(x)
+            for x in [v.get("value_text"), v.get("value"), v.get("raw_value"), v.get("raw")]
+            if _stringify_candidate_text(x)
+        )
+    return str(v).strip()
+
+
+def _normalize_polymer_identity_label(v: str) -> str:
+    s = re.sub(r"\s+", "-", (v or "").strip().upper())
+    return s if s else "unknown"
+
+
+def infer_polymer_identity_fields(form: Dict[str, Any]) -> Tuple[str, str]:
+    fields = coerce_fields_map(form.get("fields", {}))
+    text_candidates: List[str] = [
+        _stringify_candidate_text(form.get("polymer_name_raw")),
+        _stringify_candidate_text(form.get("raw_formulation_label")),
+        _stringify_candidate_text(form.get("formulation_id")),
+        _stringify_candidate_text(fields.get("la_ga_ratio")),
+        _stringify_candidate_text(fields.get("plga_mw_kDa")),
+    ]
+    text_blob = " | ".join(x for x in text_candidates if x)
+    explicit_matchers = [
+        ("PEG-PLGA", r"\b(?:PEG[\s/-]*PLGA|PLGA[\s/-]*PEG|mPEG[\s/-]*PLGA|PLGA[\s/-]*mPEG)\b"),
+        ("PCL", r"\b(?:PCL|poly\(?\s*[εe]?-?\s*caprolactone\)?)\b"),
+        ("PLA", r"\b(?:PLA|polylactic acid|poly\(?lactic acid\)?)\b"),
+        ("PLGA", r"\b(?:PLGA|Resomer\b|LA\s*[:/-]\s*GA|lactide\s*/\s*glycolide)\b"),
+    ]
+    for identity, pattern in explicit_matchers:
+        m = re.search(pattern, text_blob, flags=re.I)
+        if m:
+            return _normalize_polymer_identity_label(identity), m.group(0).strip()
+    if fields.get("la_ga_ratio"):
+        ratio_text = _stringify_candidate_text(fields.get("la_ga_ratio"))
+        if re.search(r"\d+\s*[:/]\s*\d+", ratio_text):
+            return "PLGA", ratio_text
+    return "unknown", ""
+
+
+def _dedupe_preserve_order(items: List[str]) -> List[str]:
+    seen = set()
+    out: List[str] = []
+    for item in items:
+        s = str(item or "").strip()
+        if not s or s in seen:
+            continue
+        seen.add(s)
+        out.append(s)
+    return out
+
+
+def _normalize_for_match(text: str) -> str:
+    return re.sub(r"\s+", " ", text or "").strip()
+
+
+def _extract_numeric_levels(raw_fragment: str) -> List[str]:
+    fragment = _normalize_for_match(raw_fragment)
+    if not fragment:
+        return []
+    unit = ""
+    if re.search(r"%\s*w/?v", fragment, flags=re.I):
+        unit = "% w/v"
+    elif re.search(r"\bmg\b", fragment, flags=re.I):
+        unit = "mg"
+    values = re.findall(r"\d+(?:\.\d+)?", fragment)
+    out: List[str] = []
+    for value in values:
+        level = f"{value} {unit}".strip()
+        out.append(level)
+    return _dedupe_preserve_order(out)
+
+
+def _extract_declared_levels(raw_text: str, pattern: str) -> List[str]:
+    m = re.search(pattern, raw_text, flags=re.I | re.S)
+    if not m:
+        return []
+    return _extract_numeric_levels(m.group(1))
+
+
+def _find_first_heading_position(text: str, patterns: List[str]) -> Optional[re.Match[str]]:
+    for pattern in patterns:
+        m = re.search(pattern, text, flags=re.I)
+        if m:
+            return m
+    return None
+
+
+def _extract_section_window(
+    raw_text: str,
+    start_patterns: List[str],
+    end_patterns: List[str],
+    pre_context: int = 0,
+) -> Tuple[str, int, int]:
+    start_match = _find_first_heading_position(raw_text, start_patterns)
+    if not start_match:
+        return "", -1, -1
+    start = max(0, start_match.start() - pre_context)
+    end = len(raw_text)
+    tail = raw_text[start_match.end():]
+    rel_ends = []
+    for pattern in end_patterns:
+        m = re.search(pattern, tail, flags=re.I)
+        if m:
+            rel_ends.append(m.start())
+    if rel_ends:
+        end = start_match.end() + min(rel_ends)
+    return raw_text[start:end], start, end
+
+
+def _infer_polymer_identities(forms: List[Dict[str, Any]], raw_text: str) -> List[str]:
+    identities: List[str] = []
+    for form in forms:
+        label = str(form.get("raw_formulation_label") or "")
+        for ratio in re.findall(r"PLGA\s*\d+\s*/\s*\d+", label, flags=re.I):
+            identities.append(re.sub(r"\s+", " ", ratio.upper()).replace(" / ", "/"))
+        if re.search(r"\bPCL\b", label, flags=re.I):
+            identities.append("PCL")
+    for pattern in [r"PLGA\s*50\s*/\s*50", r"PLGA\s*75\s*/\s*25", r"PLGA\s*85\s*/\s*15"]:
+        if re.search(pattern, raw_text, flags=re.I):
+            identities.append(re.sub(r"\s+", " ", re.search(pattern, raw_text, flags=re.I).group(0).upper()).replace(" / ", "/"))
+    if re.search(r"\bPCL\b", raw_text, flags=re.I):
+        identities.append("PCL")
+    return _dedupe_preserve_order(identities)
+
+
+def _infer_section_identities(
+    section_text: str,
+    fallback: List[str],
+    axis_name: str = "",
+) -> List[str]:
+    plga_identities = [item for item in fallback if item.startswith("PLGA ")]
+    first_plga = plga_identities[0] if plga_identities else ""
+    identities: List[str] = []
+    explicit_plga_hits = re.findall(r"PLGA\s*\d+\s*/\s*\d+", section_text, flags=re.I)
+    if explicit_plga_hits:
+        normalized_hits = [
+            re.sub(r"\s+", " ", hit.upper()).replace(" / ", "/")
+            for hit in explicit_plga_hits
+        ]
+        for hit in normalized_hits:
+            if hit in plga_identities:
+                identities.append(hit)
+    elif re.search(r"\bPLGA(?:-copolymers| copolymers)?\b", section_text, flags=re.I):
+        # Keep drug-amount applicability narrow: generic PLGA-family wording alone
+        # is not enough to widen this axis beyond directly named identities.
+        if axis_name == "drug_feed_amount_text":
+            pass
+        # Keep the shared-section expansion conservative: only widen to all known
+        # PLGA identities when the text refers to PLGA-copolymer behavior broadly.
+        elif len(plga_identities) >= 2:
+            identities.extend(plga_identities)
+        elif first_plga:
+            identities.append(first_plga)
+    if re.search(r"\bPCL\b", section_text, flags=re.I):
+        identities.append("PCL")
+    resolved = _dedupe_preserve_order(identities)
+    if resolved:
+        return resolved
+    if axis_name == "drug_feed_amount_text":
+        return list(fallback) if len(fallback) <= 1 else []
+    return fallback
+
+
+def _infer_baseline_level(variable_key: str, section_text: str, declared_levels: List[str]) -> Optional[str]:
+    if not declared_levels:
+        return None
+    if variable_key == "surfactant_concentration_text":
+        if re.search(r"\b1(?:\.0+)?\s*%\s*w/?v\b.{0,120}\b(?:optimum|optimized)\b", section_text, flags=re.I | re.S):
+            return next((lvl for lvl in declared_levels if lvl.lower().startswith("1")), None)
+        return declared_levels[2] if len(declared_levels) >= 3 else declared_levels[-1]
+    if len(declared_levels) >= 2:
+        return declared_levels[1]
+    return declared_levels[0]
+
+
+def _build_sweep_field(field_name: str, level: str) -> Dict[str, Any]:
+    return {
+        "value": level,
+        "value_text": level,
+        "scope": "instance_specific",
+        "membership_confidence": "low",
+        "evidence_region_type": "results_sentence",
+        "missing_reason": "",
+        "value_source": "figure_variable_sweep",
+    }
+
+
+def _build_identity_fields(polymer_identity: str) -> Dict[str, Dict[str, Any]]:
+    fields: Dict[str, Dict[str, Any]] = {}
+    m = re.search(r"PLGA\s*(\d+\s*/\s*\d+)", polymer_identity, flags=re.I)
+    if m:
+        ratio = m.group(1).replace(" ", "")
+        fields["la_ga_ratio"] = {
+            "value": ratio,
+            "value_text": ratio,
+            "scope": "instance_specific",
+            "membership_confidence": "medium",
+            "evidence_region_type": "results_sentence",
+            "missing_reason": "",
+            "value_source": "figure_variable_sweep",
+        }
+    return fields
+
+
+def _normalize_signature_level(field_name: str, field_obj: Dict[str, Any]) -> str:
+    obj = normalize_field_obj(field_obj)
+    value_text = _norm_text(obj.get("value_text", ""))
+    value = _norm_text(obj.get("value", ""))
+    blob = value_text or value
+    if not blob:
+        return ""
+    if field_name == "surfactant_concentration_text":
+        m = re.search(r"(\d+(?:\.\d+)?)\s*%\s*w/?v", blob, flags=re.I)
+        if not m:
+            return ""
+        num = float(m.group(1))
+        return f"{num:g} % w/v"
+    if field_name in {"plga_mass_mg", "drug_feed_amount_text"}:
+        m = re.search(r"(\d+(?:\.\d+)?)\s*mg", blob, flags=re.I)
+        if not m:
+            return ""
+        num = float(m.group(1))
+        return f"{num:g} mg"
+    return ""
+
+
+def _build_polymer_group_signature(form: Dict[str, Any]) -> str:
+    polymer_identity, _ = infer_polymer_identity_fields(form)
+    fields = coerce_fields_map(form.get("fields", {}))
+    ratio_obj = normalize_field_obj(fields.get("la_ga_ratio"))
+    ratio_text = _norm_text(ratio_obj.get("value_text")) or _norm_text(ratio_obj.get("value"))
+    m = re.search(r"(\d+)\s*[:/]\s*(\d+)", ratio_text)
+    ratio = f"{m.group(1)}/{m.group(2)}" if m else ""
+    if polymer_identity == "PLGA" and ratio:
+        return f"PLGA {ratio}"
+    return polymer_identity or "unknown"
+
+
+def _build_sweep_overlap_signatures(form: Dict[str, Any]) -> List[Tuple[str, str, str]]:
+    fields = coerce_fields_map(form.get("fields", {}))
+    polymer_group = _build_polymer_group_signature(form)
+    signatures: List[Tuple[str, str, str]] = []
+    for field_name in ["surfactant_concentration_text", "plga_mass_mg", "drug_feed_amount_text"]:
+        level = _normalize_signature_level(field_name, fields.get(field_name))
+        if level:
+            signatures.append((polymer_group, field_name, level))
+    return signatures
+
+
+def dedupe_sweep_overlap_forms(forms: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    figure_signatures = {
+        sig
+        for form in forms
+        if str(form.get("candidate_source") or "").strip() == "figure_variable_sweep"
+        for sig in _build_sweep_overlap_signatures(form)
+    }
+    if not figure_signatures:
+        return forms
+
+    deduped: List[Dict[str, Any]] = []
+    for form in forms:
+        candidate_source = str(form.get("candidate_source") or "").strip()
+        formulation_role = sanitize_role(form.get("formulation_role"))
+        if candidate_source != "llm_extracted":
+            deduped.append(form)
+            continue
+        if formulation_role in {"baseline", "optimized", "control"}:
+            deduped.append(form)
+            continue
+        matches = [sig for sig in _build_sweep_overlap_signatures(form) if sig in figure_signatures]
+        # Only suppress rows that restate exactly one sweep axis already
+        # represented by a synthetic figure-variable row.
+        if len(matches) == 1:
+            continue
+        deduped.append(form)
+    return deduped
+
+
+def enumerate_figure_variable_sweep_candidates(
+    forms: List[Dict[str, Any]],
+    raw_text: str,
+    key: str,
+) -> List[Dict[str, Any]]:
+    all_identities = _infer_polymer_identities(forms, raw_text)
+    if not all_identities:
+        return []
+
+    specs = [
+        {
+            "field_name": "surfactant_concentration_text",
+            "field_label": "stabilizer concentration",
+            "decl_pattern": r"concentration of stabilizer\s*\((.*?)\)",
+            "start_patterns": [r"The effect of stabilizer concentration", r"Effect of stabilizer concentration"],
+            "end_patterns": [r"\bPolymer Content\b", r"\bAmount of Drug\b", r"\bIn Vitro Drug Release\b"],
+            "identities_mode": "all",
+            "section_name": "stabilizer concentration sweep",
+        },
+        {
+            "field_name": "plga_mass_mg",
+            "field_label": "polymer amount",
+            "decl_pattern": r"polymer amount\s*\((.*?)\)",
+            "start_patterns": [r"\bPolymer Content\b"],
+            "end_patterns": [r"\bAmount of Drug\b", r"\bIn Vitro Drug Release\b"],
+            "identities_mode": "section",
+            "section_name": "polymer content sweep",
+        },
+        {
+            "field_name": "drug_feed_amount_text",
+            "field_label": "etoposide amount",
+            "decl_pattern": r"etoposide amount\s*\((.*?)\)",
+            "start_patterns": [r"(?:^|\n)\s*Amount of Drug\b"],
+            "end_patterns": [r"\bIn Vitro Drug Release\b", r"\bFIG\.\s*4\b", r"\bFIG\.\s*5\b"],
+            "identities_mode": "section",
+            "section_name": "drug amount sweep",
+        },
+    ]
+
+    seen_labels = {
+        str(form.get("raw_formulation_label") or "").strip().lower()
+        for form in forms
+        if isinstance(form, dict)
+    }
+    out: List[Dict[str, Any]] = []
+
+    for spec in specs:
+        declared_levels = _extract_declared_levels(raw_text, spec["decl_pattern"])
+        if len(declared_levels) < 2:
+            continue
+        section_text, section_start, section_end = _extract_section_window(
+            raw_text,
+            start_patterns=spec["start_patterns"],
+            end_patterns=spec["end_patterns"],
+            pre_context=120,
+        )
+        if not section_text:
+            continue
+        baseline = _infer_baseline_level(spec["field_name"], section_text, declared_levels)
+        sweep_levels = [lvl for lvl in declared_levels if lvl != baseline]
+        if len(sweep_levels) < 2:
+            continue
+        identities = (
+            list(all_identities)
+            if spec["identities_mode"] == "all"
+            else _infer_section_identities(
+                section_text,
+                all_identities,
+                axis_name=spec["field_name"],
+            )
+        )
+        if not identities:
+            continue
+        evidence_span = _normalize_for_match(section_text)[:800]
+        for polymer_identity in identities:
+            for level in sweep_levels:
+                raw_label = f"{polymer_identity} [{spec['field_label']}={level}]"
+                label_key = raw_label.lower()
+                if label_key in seen_labels:
+                    continue
+                seen_labels.add(label_key)
+                fields = _build_identity_fields(polymer_identity)
+                fields[spec["field_name"]] = _build_sweep_field(spec["field_name"], level)
+                candidate_id = _safe_filename_part(f"{key}_{polymer_identity}_{spec['field_name']}_{level}")
+                out.append(
+                    {
+                        "formulation_id": candidate_id,
+                        "raw_formulation_label": raw_label,
+                        "instance_kind": "variant_formulation",
+                        "parent_instance_id": "",
+                        "change_descriptions": [f"{spec['field_label']} sweep level: {level}"],
+                        "change_role": "synthesis_defining",
+                        "instance_context_tags": ["sweep", "figure_variable_sweep"],
+                        "change_context_tags": [spec["field_name"], "figure_variable_sweep"],
+                        "supporting_evidence_refs": [
+                            {
+                                "ref_type": "text_span",
+                                "evidence_region_type": "results_sentence",
+                                "evidence_section": spec["section_name"],
+                                "evidence_span_text": evidence_span,
+                                "evidence_span_start": int(section_start),
+                                "evidence_span_end": int(section_end),
+                            }
+                        ],
+                        "formulation_role": "variant",
+                        "instance_confidence": "low",
+                        "candidate_source": "figure_variable_sweep",
+                        "instance_evidence": {
+                            "evidence_region_type": "results_sentence",
+                            "evidence_section": spec["section_name"],
+                            "evidence_span_text": evidence_span,
+                            "evidence_span_start": int(section_start),
+                            "evidence_span_end": int(section_end),
+                        },
+                        "fields": fields,
+                    }
+                )
+    return out
 
 
 def _safe_filename_part(v: str) -> str:
@@ -1275,6 +1685,7 @@ def flatten_row(
     form: Dict[str, Any],
     instance_evidence: Dict[str, Any],
 ) -> Dict[str, Any]:
+    polymer_identity, polymer_name_raw = infer_polymer_identity_fields(form)
     parent_instance_id = str(form.get("parent_instance_id") or "").strip()
     change_descriptions = sanitize_string_list(form.get("change_descriptions"))
     instance_context_tags = sanitize_tag_list(form.get("instance_context_tags"))
@@ -1305,6 +1716,8 @@ def flatten_row(
         "local_instance_id": form.get("formulation_id"),
         "formulation_id": form.get("formulation_id"),
         "raw_formulation_label": str(form.get("raw_formulation_label") or "").strip(),
+        "polymer_identity": polymer_identity,
+        "polymer_name_raw": polymer_name_raw,
         "instance_kind": instance_kind,
         "parent_instance_id": parent_instance_id,
         "change_descriptions": json.dumps(change_descriptions, ensure_ascii=False),
@@ -1314,6 +1727,7 @@ def flatten_row(
         "supporting_evidence_refs": json.dumps(supporting_evidence_refs, ensure_ascii=False),
         "formulation_role": sanitize_role(form.get("formulation_role")),
         "instance_confidence": sanitize_conf(form.get("instance_confidence")),
+        "candidate_source": str(form.get("candidate_source") or "llm_extracted").strip() or "llm_extracted",
         "instance_evidence_region_type": sanitize_region(instance_evidence.get("evidence_region_type")),
         "evidence_section": instance_evidence.get("evidence_section", ""),
         "evidence_span_text": instance_evidence.get("evidence_span_text", ""),
@@ -1340,6 +1754,8 @@ def build_output_columns() -> List[str]:
         "local_instance_id",
         "formulation_id",
         "raw_formulation_label",
+        "polymer_identity",
+        "polymer_name_raw",
         "instance_kind",
         "parent_instance_id",
         "change_descriptions",
@@ -1349,6 +1765,7 @@ def build_output_columns() -> List[str]:
         "supporting_evidence_refs",
         "formulation_role",
         "instance_confidence",
+        "candidate_source",
         "instance_evidence_region_type",
         "evidence_section",
         "evidence_span_text",
@@ -1431,6 +1848,8 @@ def main(argv: Optional[List[str]] = None) -> None:
             raw_fp.write_text(raw, encoding="utf-8")
             data = safe_json_load(raw)
             forms = canonicalize_formulations(data)
+            forms.extend(enumerate_figure_variable_sweep_candidates(forms, raw_txt, paper.key))
+            forms = dedupe_sweep_overlap_forms(forms)
 
             line = {
                 "key": paper.key,
@@ -1453,6 +1872,8 @@ def main(argv: Optional[List[str]] = None) -> None:
                 row_form = {
                     "formulation_id": formulation_id,
                     "raw_formulation_label": f.get("raw_formulation_label", ""),
+                    "polymer_identity": f.get("polymer_identity", "unknown"),
+                    "polymer_name_raw": f.get("polymer_name_raw", ""),
                     "instance_kind": f.get("instance_kind", "unclear"),
                     "parent_instance_id": f.get("parent_instance_id", ""),
                     "change_descriptions": f.get("change_descriptions", []),
@@ -1462,6 +1883,7 @@ def main(argv: Optional[List[str]] = None) -> None:
                     "supporting_evidence_refs": f.get("supporting_evidence_refs", []),
                     "formulation_role": f.get("formulation_role", "unknown"),
                     "instance_confidence": f.get("instance_confidence", "low"),
+                    "candidate_source": f.get("candidate_source", "llm_extracted"),
                     "fields": fields,
                 }
                 inst_ev = f.get("instance_evidence", {})

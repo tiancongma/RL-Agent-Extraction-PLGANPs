@@ -1,0 +1,81 @@
+script_path	has_clear_status	has_clear_layer	has_clear_function	has_clear_inputs	has_clear_outputs	has_clear_upstream_downstream	compliant	failure_reason	recommended_disposition
+src/stage0_relevance/auto_tag_plga_gemini.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/auto_tag_plga_openai.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/classify_gemini_grouped.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/fill_missing_snapshots.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/prefilter_regex.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/zotero_api_sync_selected.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/zotero_fetch_llm_relevant_pdfs.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/zotero_llm_relevant_interactive.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage0_relevance/zotero_tag_sync.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage1_cleaning/clean_manifest_to_text.py	true	true	true	true	true	true	true		keep_in_src
+src/stage1_cleaning/extract_tables_for_keys_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage1_cleaning/find_html_table_candidates_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage1_cleaning/pdf2clean.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage1_cleaning/zotero_raw_to_manifest.py	true	true	true	true	true	true	true		keep_in_src
+src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py	true	true	true	true	true	true	true		keep_in_src
+src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py	true	true	true	true	true	true	true		keep_in_src
+src/stage2_sampling_labels/build_strata_tags_from_text.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/stage2_sampling_labels/diagnose_5gif3d8w_axis_applicability_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage2_sampling_labels/diagnose_5gif3d8w_root_cause_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage2_sampling_labels/export_blockpack_audit_v7pilot_r3_fixparse.py	true	true	true	true	true	true	true		keep_but_mark_branch_only
+src/stage2_sampling_labels/export_evidence_bundle_audit_xlsx_v1.py	true	true	true	true	true	true	true		keep_but_mark_branch_only
+src/stage2_sampling_labels/run_targeted_stage2_regression_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage2_sampling_labels/sample10_from_zotero_manifest.py	true	true	true	true	true	true	true		keep_in_src
+src/stage2_sampling_labels/sample_from_manifest_html_first.py	true	true	true	true	true	true	true		keep_in_src
+src/stage4_eval/apply_extracted_ee_dedup_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/stage4_eval/audit_top3_doi_root_cause_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage4_eval/build_dev15_review_workbook_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage4_eval/compute_formulation_alignment_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage4_eval/compute_set_level_ee_match_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/stage4_eval/eval_weak_labels_v7pilot3.py	true	true	true	true	true	true	true		keep_in_src
+src/stage4_eval/inspect_formulation_view_inventory_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage4_eval/precision_recovery_experiment_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/audit_evidence_resolver_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/build_audit_pack_human_evidence_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/build_doe_signature_injection_audit_pack_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/build_signature_v1_audit_pack.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/build_two_table_schema_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/build_two_table_schema_v2.py	true	true	true	true	true	true	true		keep_but_mark_branch_only
+src/stage5_benchmark/build_two_table_schema_v3.py	true	true	true	true	true	true	true		keep_but_mark_branch_only
+src/stage5_benchmark/check_baseline_size_before_freeze_drying_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/check_explicit_formulation_id_core_split_v2.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/debug_paper_local_tables_registry_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/derive_doe_coded_factors_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/export_full_database_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/export_human_optimization_audit_10_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/formulation_core_signature_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage5_benchmark/inspect_schemas.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_alignment_eval_core_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_alignment_eval_schema_v3_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_alignment_eval_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_audit10_regression_check_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_core_eval_pipeline_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_derivation_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_evidence_realign_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_evidence_token_qc_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_formulation_core_signature_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_projection_core_to_curated_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/run_projection_to_curated_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_but_mark_branch_only
+src/stage5_benchmark/build_minimal_final_output_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage5_benchmark/run_minimal_final_output_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/stage5_benchmark/compare_final_table_to_gt_v1.py	true	true	true	true	true	true	true		keep_in_src
+src/utils/build_dataset_root_from_legacy_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/build_dataset_split_dev_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/build_dataset_split_test_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/build_ee_only_manifest.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/build_global_zotero_index_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/convert_sample_manifest.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/convert_sample_manifest_to_tsv.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/gemini_models.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/html_parser.py	true	true	true	true	true	true	true		keep_in_src
+src/utils/model_policy.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/paths.py	true	true	true	true	true	true	true		keep_in_src
+src/utils/run_id.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/run_latest.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/run_preflight.py	true	true	true	true	true	true	true		keep_in_src
+src/utils/scan_ee_coverage.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/split_registry_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src
+src/utils/validate_dataset_layout_v1.py	true	true	true	true	true	true	false	low_confidence_registry_evidence	keep_in_src

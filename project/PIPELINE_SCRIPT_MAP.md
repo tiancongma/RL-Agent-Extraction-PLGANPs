@@ -1,130 +1,169 @@
 # Pipeline Script Map
 
-This document maps **pipeline stages to executable scripts**, clarifying
-their purpose, inputs, outputs, and status.
+This document maps the canonical active pipeline to Stage 0 through Stage 5
+only.
 
-Status legend:
-- ACTIVE 鈥?part of current main pipeline
-- SUPPORTING 鈥?optional utility for targeted manual review, benchmark maintenance, or conflict arbitration; not part of the default mainline path
-- LEGACY 鈥?preserved for reference only
+It exists to answer four questions:
 
----
+1. which scripts are part of the canonical manual path
+2. which scripts are reusable stage-local tools
+3. which scripts are historical only
+4. which scripts are not allowed to stand in for hidden orchestration
 
-## Stage 0 鈥?Relevance Filtering
+The map distinguishes three things explicitly:
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| prefilter_regex.py | Regex-based metadata pre-filtering | ACTIVE |
-| classify_gemini_grouped.py | LLM relevance classification | ACTIVE |
-| auto_tag_plga_gemini.py | Auto-tagging using Gemini | ACTIVE |
-| auto_tag_plga_openai.py | Auto-tagging using OpenAI | ACTIVE |
-| zotero_tag_sync.py | Sync tags to Zotero | ACTIVE |
-| zotero_llm_relevant_interactive.py | Interactive relevance review | ACTIVE |
-| zotero_fetch_llm_relevant_pdfs.py | Fetch PDFs/HTML | ACTIVE |
-| fill_missing_snapshots.py | Fill missing HTML snapshots | ACTIVE |
+- the production path
+- the optional diagnostic / review path
+- the evaluation reference path
+- the comparison node
 
----
+Script classes used here are fixed:
 
-## Stage 1 鈥?Cleaning and Manifest
+- `ACTIVE_ENTRYPOINT`
+- `STABLE_TOOL`
+- `ARCHIVED_METHOD`
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| csv2clean_manifest.py | Generate manifest and trigger cleaning | ACTIVE |
-| pdf2clean.py | PDF text cleaner | ACTIVE |
-| html_parser.py | Shared HTML parsing utilities | ACTIVE |
+## Canonical Stage 0 To Stage 5 Entry Points
 
----
+| Stage | Stage name | Script path | Class | Purpose | Primary inputs | Primary outputs |
+|---|---|---|---|---|---|---|
+| Stage 0 | Relevance filtering and raw corpus intake | `src/stage0_relevance/zotero_api_sync_selected.py` | `ACTIVE_ENTRYPOINT` | Sync the selected Zotero item set into the raw JSONL artifact used by downstream stages. | Zotero library selection; local storage root | `data/raw/zotero/zotero_selected_items.jsonl` |
+| Stage 0 | Relevance filtering and raw corpus intake | `src/stage0_relevance/zotero_fetch_llm_relevant_pdfs.py` | `ACTIVE_ENTRYPOINT` | Fetch local PDF or HTML assets for the selected relevant records. | Zotero-tagged relevant items; DOI or attachment metadata | local source files referenced from the raw JSONL |
+| Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert the raw Zotero-derived JSONL into the authoritative manifest. | `data/raw/zotero/zotero_selected_items.jsonl` | `data/cleaned/index/manifest_current.tsv` |
+| Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
+| Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
+| Stage 2 | Candidate formulation-instance extraction | `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` | `ACTIVE_ENTRYPOINT` | Produce high-recall candidate formulation-instance rows from cleaned assets. | scope manifest TSV; cleaned text; optional tables; model access | run-scoped weak-label TSV and JSONL |
+| Stage 3 | Formulation consolidation / normalization layer | no dedicated standalone script currently checked in | `ACTIVE_ENTRYPOINT` | Formal production boundary that converts candidate formulation-instance rows into normalized formulation records suitable for Stage 5 closure. | Stage 2 candidate formulation-instance TSV | normalized or consolidated formulation record set |
+| Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts. | Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
+| Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
+| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from normalized or consolidated formulation records. | Stage 3 normalized or consolidated formulation record set | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
+| Stage 5 | Comparison node | `src/stage5_benchmark/compare_final_table_to_gt_v1.py` | `ACTIVE_ENTRYPOINT` | Compare only the Stage 5 final formulation table to the checked GT workbook. | final formulation table; scope manifest; fixed GT workbook | `final_table_vs_gt_counts.tsv`; `final_table_vs_gt_summary.md` |
 
-## Stage 2 — Semantic Extraction and Sampling (LLM)
+## Evaluation Reference Path
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| sample_from_manifest_html_first.py | Sample selection and reproducible subset definition | ACTIVE |
-| sample10_from_zotero_manifest.py | Historical sample10 generation utility | ACTIVE |
-| build_key2txt_from_sample_manifest.py | Build sample-local key2txt index | ACTIVE |
-| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels.py | Historical extraction entry for semantic candidates | LEGACY |
-| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v6.py | Prior mainline semantic extraction baseline | LEGACY |
-| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v4.py | Older extraction baseline retained for comparison | LEGACY |
-| src/archive_methods/older_weak_label_pilot_variants/auto_extract_weak_labels_v3.py | Weak label logic v3 | LEGACY |
+The manual GT assets are reference inputs, not internal production
+transformations.
 
----
+- primary current reference input:
+  - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
+- `src/stage3_gt/` currently has no active routine runtime entrypoint
+- historical GT-maintenance helpers are archived under `archive/code/`
+- the comparison node reads both:
+  - the production-path final formulation table
+  - the fixed manual GT workbook
 
-## Stage 3 — Formulation Hypothesis and Inheritance Resolution
+## Production Path Notes
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| build_evidence_bundle_for_keys_v1.py | Build deterministic evidence packages from cleaned artifacts | ACTIVE |
-| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/apply_formulation_grouping_v1.py | Historical grouping of semantic candidates into formulation hypotheses | LEGACY |
-| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/apply_global_baseline_inheritance_and_rerun_alignment_v1.py | Historical shared/inherited-condition consolidation path | LEGACY |
+- Canonical pipeline means explicit provenance from Zotero-selected inputs to
+  `final_formulation_table_v1.tsv`.
+- Stage 3 is part of the production path even though it is currently a formal
+  boundary contract rather than a dedicated checked-in runtime script.
+- Stage 4 remains a diagnostic branch off the production path, not the
+  production endpoint.
+- The comparison node is downstream of the production path and uses the fixed
+  GT workbook as a separate reference input.
 
----
+## Optional Diagnostic / Review Path
 
-## Stage 4 — Formulation Assembly and Formulation-level Audit
+- `src/stage4_eval/eval_weak_labels_v7pilot3.py`
+- `src/stage4_eval/build_dev15_review_workbook_v1.py`
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| compute_formulation_alignment_v1.py | Deterministic formulation-level alignment and assembly checks | ACTIVE |
-| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/run_alignment_v3_surfactant_drugnorm.py | Historical normalization/alignment pass for assembly stability | LEGACY |
-| src/archive_methods/stage4_rule_heavy_formulation_reconstruction/build_boundary_alignment_diagnostics_pack_v1.py | Historical boundary/grouping diagnostics pack | LEGACY |
-| src/archive_methods/benchmark_specific_audit_report/export_dev15_formulation_view_xlsx_v1.py | Historical formulation-view export for benchmark review | LEGACY |
-| export_evidence_bundle_audit_xlsx_v1.py | Evidence-bundle audit export for targeted review | ACTIVE |
+These scripts inspect candidate-instance behavior and support review. They do
+not define the production endpoint.
 
-### Planned Stage4 Reconciliation Note
+## Stage-Local Stable Tools
 
-- The next DoE checkpoint / validation reconciliation rule should be implemented first in `src/stage4_eval/eval_weak_labels_v7pilot3.py` because that script currently converts predicted instance rows directly into benchmark paper-level formulation counts.
-- Minimum matching key for this rule: factor-level coordinate signature (prefer decoded factor values; fallback to coded factor levels plus other coordinate-defining synthesis variables), not predicted-vs-observed measurement values.
-- Stage5 schema/core builders should later mirror the same logic so `formulation_core` outputs do not drift from Stage4 benchmark reconciliation on DoE papers.
+These scripts are active engineering assets but are not themselves canonical
+stage-completion entrypoints.
 
-### Supporting GT / Annotation Utilities
+### Stage 0
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| src/archive_methods/old_gt_arbitration/build_gt_template_from_conflict_queue.py | Historical template builder for conflict-case review | LEGACY |
-| src/archive_methods/old_gt_arbitration/export_gt_annotation_view.py | Historical annotation-view export for conflict arbitration | LEGACY |
-| src/archive_methods/old_gt_arbitration/merge_gt_from_annotation_view.py | Historical merge-back tool for reviewed conflict annotations | LEGACY |
-| src/archive_methods/old_gt_arbitration/gt_summary_report.py | Historical review summary/report utility | LEGACY |
-| src/archive_methods/old_gt_arbitration/gt_tool.py | Legacy manual GT annotation tool | LEGACY |
-| src/archive_methods/old_gt_arbitration/gt_tool_v3.py | Older GT tool | LEGACY |
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage0_relevance/prefilter_regex.py` | `STABLE_TOOL` | Cheap metadata prefilter before heavier relevance review. |
+| `src/stage0_relevance/classify_gemini_grouped.py` | `STABLE_TOOL` | Grouped LLM relevance screening over metadata. |
+| `src/stage0_relevance/auto_tag_plga_gemini.py` | `STABLE_TOOL` | Gemini-based Zotero tag helper. |
+| `src/stage0_relevance/auto_tag_plga_openai.py` | `STABLE_TOOL` | OpenAI-based Zotero tag helper. |
+| `src/stage0_relevance/zotero_tag_sync.py` | `STABLE_TOOL` | Sync local tagging state back to Zotero. |
+| `src/stage0_relevance/zotero_llm_relevant_interactive.py` | `STABLE_TOOL` | Interactive relevance review helper. |
+| `src/stage0_relevance/fill_missing_snapshots.py` | `STABLE_TOOL` | Fill missing HTML snapshot coverage. |
 
-These scripts support targeted manual review and benchmark maintenance, but they are not part of the default primary formulation-reconstruction path.
+### Stage 1
 
----
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage1_cleaning/find_html_table_candidates_v1.py` | `STABLE_TOOL` | Probe HTML content for table candidates before extraction. |
+| `src/stage1_cleaning/extract_tables_for_keys_v1.py` | `STABLE_TOOL` | Targeted table extraction for selected keys. |
+| `src/stage1_cleaning/pdf2clean.py` | `STABLE_TOOL` | Underlying PDF or HTML cleaner used by Stage 1 wrappers. |
+| `src/utils/html_parser.py` | `STABLE_TOOL` | Shared HTML parsing utilities. |
 
-## Stage 5 — Final Tabular Export
+### Stage 2
 
-| Script | Purpose | Status |
-|------|--------|--------|
-| merge_results.py | Merge verified formulation records into final tabular outputs | ACTIVE |
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage2_sampling_labels/sample_from_manifest_html_first.py` | `STABLE_TOOL` | Build reproducible split or sample manifests. |
+| `src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py` | `STABLE_TOOL` | Build sample-local key-to-text mappings. |
+| `src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py` | `STABLE_TOOL` | Build deterministic evidence packages for selected keys. |
+| `src/stage2_sampling_labels/export_blockpack_audit_v7pilot_r3_fixparse.py` | `STABLE_TOOL` | Export the Stage 2 evidence packing order for manual audit. |
+| `src/stage2_sampling_labels/export_evidence_bundle_audit_xlsx_v1.py` | `STABLE_TOOL` | Export evidence-bundle audit views. |
+| `src/stage2_sampling_labels/run_targeted_stage2_regression_v1.py` | `STABLE_TOOL` | Controlled Stage 2 regression runner for diagnostic-only work. |
+| `src/stage2_sampling_labels/diagnose_5gif3d8w_root_cause_v1.py` | `STABLE_TOOL` | Paper-specific diagnostic helper retained for regression analysis. |
+| `src/stage2_sampling_labels/diagnose_5gif3d8w_axis_applicability_v1.py` | `STABLE_TOOL` | Axis-applicability diagnostic helper retained for regression analysis. |
 
----
+### Stage 4
 
-## Maintenance Rules
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage4_eval/compute_formulation_alignment_v1.py` | `STABLE_TOOL` | Deterministic formulation alignment checks. |
+| `src/stage4_eval/inspect_formulation_view_inventory_v1.py` | `STABLE_TOOL` | Inspect reviewer-facing formulation view coverage. |
+| `src/stage4_eval/apply_extracted_ee_dedup_v1.py` | `STABLE_TOOL` | Targeted EE dedup utility for review or diagnostic work. |
+| `src/stage4_eval/audit_top3_doi_root_cause_v1.py` | `STABLE_TOOL` | Focused root-cause audit helper. |
+| `src/stage4_eval/compute_set_level_ee_match_v1.py` | `STABLE_TOOL` | Set-level EE comparison support. |
+| `src/stage4_eval/precision_recovery_experiment_v1.py` | `STABLE_TOOL` | Precision-recovery experiment helper; not a canonical stage endpoint. |
 
-- Only scripts marked ACTIVE may be used in the main pipeline.
-- LEGACY scripts must not be modified.
-- Any status change must be logged in `project/4_DECISIONS_LOG.md`.
+### Stage 5
 
----
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage5_benchmark/run_minimal_final_output_v1.py` | `STABLE_TOOL` | NON-CANONICAL, STAGE5_ONLY convenience wrapper for Stage 5A closure only. It is not a production-path entrypoint and it is not a hidden full-pipeline orchestrator. |
+| `src/stage5_benchmark/formulation_core_signature_v1.py` | `STABLE_TOOL` | Core-signature utility for downstream schema and database work. |
+| `src/stage5_benchmark/build_two_table_schema_v2.py` | `STABLE_TOOL` | Schema builder for downstream database-facing table work. |
+| `src/stage5_benchmark/build_two_table_schema_v3.py` | `STABLE_TOOL` | Newer schema builder for downstream database-facing table work. |
+| `src/stage5_benchmark/run_formulation_core_signature_v1.py` | `STABLE_TOOL` | Runner for explicit core-signature generation. |
+| `src/stage5_benchmark/run_derivation_v1.py` | `STABLE_TOOL` | Deterministic derivation helper for downstream tables. |
+| `src/stage5_benchmark/run_projection_to_curated_v1.py` | `STABLE_TOOL` | Projection helper into curated table forms. |
+| `src/stage5_benchmark/run_projection_core_to_curated_v1.py` | `STABLE_TOOL` | Projection helper from core signatures to curated exports. |
+| `src/stage5_benchmark/run_alignment_eval_v1.py` | `STABLE_TOOL` | Alignment-evaluation helper for Stage 5 assets. |
+| `src/stage5_benchmark/run_alignment_eval_core_v1.py` | `STABLE_TOOL` | Core-signature alignment evaluation helper. |
+| `src/stage5_benchmark/run_alignment_eval_schema_v3_v1.py` | `STABLE_TOOL` | Schema-v3 alignment evaluation helper. |
+| `src/stage5_benchmark/export_full_database_v1.py` | `STABLE_TOOL` | Final database export utility for downstream release work. |
 
-## Primary Path vs Historical/Baseline Path
-Stage directory names are retained for implementation stability; the current architectural interpretation is defined by this script map rather than by directory names alone.
+## Archived Historical Methods
 
+Historical methods live under `archive/code/` or
+`archive/delete_candidates_pending_confirmation/`.
 
-- Current primary path is formulation reconstruction:
-  document preprocessing -> semantic extraction (LLM) -> formulation hypothesis -> evidence binding -> formulation assembly -> formulation-level audit -> final tabular export.
-- GT/conflict annotation utilities are supporting tools for selected review scenarios, not architectural centerpieces of the default mainline path.
-- Multi-model extraction/consensus scripts remain in the repository as historical baselines or supporting utilities for selective verification and diagnostics.
-- Multi-model consensus is not the architectural center of the current mainline pipeline.
+They are not part of the canonical runtime path and must not be revived by
+default.
 
----
+Representative archived families:
 
-## Current DEV-15 Formulation-Instance Execution Clarification
+- `archive/code/dev15_skeleton_bootstrap/`
+- `archive/code/stage4_rule_heavy_formulation_reconstruction/`
+- `archive/code/older_weak_label_pilot_variants/`
+- `archive/code/dual_model_extraction_comparison/`
+- `archive/code/old_gt_arbitration/`
+- `archive/code/stage5_merge_publish/`
 
-- For the current DEV-15 formulation-instance path, treat `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` as the Stage2 default extractor.
-- Treat `src/stage4_eval/eval_weak_labels_v7pilot3.py` as the current Stage4 DEV evaluator and count-reconciliation seam.
-- Treat `src/stage4_eval/build_dev15_review_workbook_v1.py` as a supporting reviewer-facing export, not as the evaluator itself.
-- The validated DoE coordinate reconciliation now lives in `src/stage4_eval/eval_weak_labels_v7pilot3.py`.
-- `src/archive_methods/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py` remains an archived experimental validation script, not the default entrypoint.
-- The current full DEV-15 reconciled combined count view is the checked-in artifact `data/cleaned/labels/manual/formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv`.
-- There is not yet a dedicated checked-in canonical builder script for the full combined DEV-15 TSV; agents should not guess one from filename similarity.
+All scripts in those locations are `ARCHIVED_METHOD` unless a future decision
+explicitly promotes one back into an active stage namespace.
 
+## Boundary Rules
+
+- There is no active end-to-end orchestration Python script in the canonical
+  path.
+- Manual reproduction is defined only by `project/ACTIVE_PIPELINE_FLOW.md`.
+- `src/` contains only active stage code and stable stage-local tools.
+- Archived or delete-candidate code must remain outside `src/`.
+- The only benchmark-valid comparison artifact is produced by Stage 5 from the
+  final formulation table.

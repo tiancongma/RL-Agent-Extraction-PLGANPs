@@ -33,6 +33,8 @@ The pipeline is divided into conceptual stages.
 Each stage produces artifacts with well-defined semantics and lifecycle rules.
 
 Stages are **conceptual**, not tied 1:1 to scripts.
+The active implementation namespaces are restricted to `Stage 0` through
+`Stage 5` only.
 
 ---
 
@@ -128,15 +130,18 @@ prompts or parsers.
 
 ---
 
-## Stage 5 — Results and Publication
+## Stage 5 — Final Formulation Closure And Benchmark Comparison
 
 ### Purpose
-Aggregate extraction outputs into publishable datasets.
+Convert candidate formulation-instance outputs into final one-row-per-
+formulation records and compare only those final records to GT.
 
 ### Key Principle
-Results are organized by **run_id**, not by vague version names.
+Stage 5 is the only benchmark-valid reporting layer. Earlier stages may produce
+diagnostic comparisons, but they are not the official system result.
 
 ### Location
+src/stage5_benchmark/
 data/results/run_<run_id>/
 
 ---
@@ -277,6 +282,37 @@ The final project output must remain a tabular dataset with one row per formulat
 ### Why an intermediate representation is required
 Paper structure does not map directly to a final formulation row. Methods, tables, and results may mix shared conditions, inherited settings, and instance-specific values. Therefore the pipeline must assemble formulation records through intermediate representations before final flattening.
 
+### Current system interpretation
+The project should now be read as a formulation-instance-centered, literature-evidence-grounded, multi-layer system rather than as a pure field-extraction pipeline. The front of the system is optimized for candidate-instance recall and explicit evidence capture. The middle of the system evaluates candidate-instance behavior and exposes where instance boundaries are preserved, collapsed, or over-expanded. The back of the system is responsible for light guardrail filtering, normalization where explicitly adopted, and eventual production of one-row-per-formulation outputs for downstream modeling.
+
+This interpretation is important because the same paper can legitimately have more candidate-instance rows than final formulation-table rows. Baseline labels, optimized labels, parent/variant language, and sweep-style reporting are provenance about how the paper expresses identity. They are not by themselves a permanent contract that forbids later comparison or collapse by core formulation parameters when a downstream layer explicitly owns that work.
+
+### Eight-layer formulation-instance architecture
+
+#### 1) Corpus and document assets layer
+This layer owns stable corpus membership and document identity. It includes Zotero keys, DOI-linked manifests, dataset-scoped content roots, and fixed split definitions such as DEV subsets. Its job is to keep paper identity, subset membership, and reproducible inputs stable before any extraction occurs.
+
+#### 2) Document cleaning and structural normalization layer
+This layer converts PDF and HTML sources into cleaned text, sections, and table assets. The purpose is not final formulation reasoning; it is to preserve enough document structure that later evidence packing and traceability remain possible. Structural cleanup belongs here because later stages depend on stable section and table anchors rather than raw source files.
+
+#### 3) Evidence block construction and packing layer
+Before the LLM sees a paper, the system assembles a bounded evidence view from metadata, paragraphs, captions, and table-derived material. This layer controls ordering, inclusion, and emphasis, and therefore strongly influences whether candidate formulation instances are enumerated correctly. It is distinct from cleaning because it is model-facing assembly rather than source normalization.
+
+#### 4) LLM formulation-instance extraction layer
+This layer proposes candidate formulation instances with high recall. It emits instance-centric rows with routing semantics such as `new_formulation`, `variant_formulation`, `parent_instance_id`, `change_role`, and evidence references. It owns semantic interpretation of formulation boundaries and inherited-vs-overridden synthesis meaning, but it does not by itself guarantee final database closure.
+
+#### 5) Candidate formulation graph layer
+The natural intermediate representation after extraction is not just a flat table of fields; it is a candidate formulation graph. Candidate nodes may stand in parent/variant, baseline/optimized, shared-method, or sweep-style relationships. This is the layer where under-segmentation and over-segmentation become meaningful system behaviors rather than simple field errors.
+
+#### 6) Instance-level evaluation and diagnostic layer
+This layer compares candidate-instance behavior against benchmark expectations and review artifacts. Count difference, under-segmentation, over-segmentation, per-paper mismatch diagnostics, and reviewer workbooks all belong here. The layer evaluates candidate-instance structure, not only scalar field correctness.
+
+#### 7) Light guardrail and final formulation filtering layer
+This layer owns precision recovery before final export. It may remove obvious non-formulation rows, suppress clearly redundant rows, and collapse rows that differ only in non-core measurement dimensions when an explicit contract says to do so. It should remain lighter than the older rule-heavy reconstruction systems preserved in `archive/code/`, and it must not be confused with Stage2 candidate generation itself.
+
+#### 8) Final formulation table and modeling layer
+This is the database-facing layer: one row per final formulation with modeling-ready columns for EE, LC, size, and formulation parameters. The final modeling table is downstream of candidate extraction and downstream of any explicitly adopted guardrail or normalization logic. This layer is the place where release-oriented filtering decisions such as PLGA-only modeling subsets belong.
+
 ### Current stage flow for formulation assembly
 
 #### 1) Document preprocessing
@@ -340,6 +376,44 @@ After verification and audit gates, formulation records are flattened into model
 
 ### Representation boundary
 Internal representations may contain richer structures (candidate hypotheses, evidence bundles, conflict queues, trace artifacts), but the released database remains tabular.
+
+### Benchmark comparison and normalization contract
+- Stage2 formulation-instance outputs are candidate formulation rows, not generic formulation-core rows.
+- Generic collapse by core formulation parameters belongs to downstream normalization/schema layers when such a layer is explicitly part of the selected workflow.
+- The current active DEV-15 formulation-instance comparison path does not insert a generic normalization/core-signature layer between Stage2 extraction and Stage4 counting.
+- The fixed DEV15 formulation-skeleton workbook is a benchmark input artifact for that active path.
+- The script family that originally bootstrapped the skeleton workbook lives under `archive/code/dev15_skeleton_bootstrap/` and is historical benchmark-preparation tooling, not an active runtime normalization layer.
+- Any paper-specific reconciliation used in the active DEV-15 path must be explicit, documented, and localized in the active evaluator contract rather than assumed from historical Stage5 or archived rule-heavy paths.
+
+### Current ownership boundary
+Under the current documented system, candidate extraction, candidate-graph behavior, instance-level evaluation, light guardrail filtering, and final formulation-table semantics are separate concerns even when the active path only implements part of that stack. The current DEV-15 path implements candidate extraction and candidate-instance evaluation directly against the fixed skeleton benchmark, with only narrow documented reconciliation. It does not yet implement a generic light-normalization layer for final formulation closure. If the repository later chooses to compare predictions against final formulation-table targets instead of candidate-instance targets, that guardrail/normalization contract must be explicitly defined and wired into the active path rather than inferred from archived skeleton bootstrap scripts or Stage5 benchmark tooling.
+
+### Minimal final-output layer and benchmark-valid closure path
+The repository has a durable design contract for the minimal final-output layer
+at `project/design/MINIMAL_FINAL_OUTPUT_LAYER_DESIGN.md`. The active phase-1
+implementation now lives inside the single Stage 5 namespace under
+`src/stage5_benchmark/`. In the current active structure, Stage 5 owns both:
+
+- conservative final formulation-table closure from Stage 2 candidate rows
+- final-table-vs-GT comparison
+
+This does not create a hidden end-to-end orchestrator. The canonical full path
+remains the manual Stage 0 to Stage 5 sequence defined in
+`project/ACTIVE_PIPELINE_FLOW.md`.
+
+## Repository Benchmark Policy
+
+Formal GT comparison belongs only to the full pipeline final-output layer. This repository is multi-layer by design, so intermediate layers and final formulation-table outputs do not share identical semantics. Candidate-instance rows, candidate graphs, packing audits, and component-level regression artifacts may be inspected against GT for diagnosis, ablation, and failure localization, but those outputs are not benchmark-valid final results.
+
+This rule is non-optional. If a workflow intends to include downstream guardrail filtering, normalization, or final formulation collapse before release, those layers must be executed before official GT comparison is reported. Candidate-instance layer semantics and final formulation-table semantics must not be conflated. Baseline or optimized labels may remain useful provenance at intermediate layers, but they do not convert an intermediate artifact into a final benchmark output.
+
+The practical consequence is that direct Stage2-vs-GT or partial-path-vs-GT
+comparisons are diagnostic only unless the repository explicitly defines that
+partial path as the complete benchmark contract. In the current repository, the
+complete benchmark contract is the manual Stage 0 to Stage 5 path culminating
+in the Stage 5 final formulation table and its GT comparison outputs.
+Intermediate counts may still be examined, but they must be labeled as
+non-final and non-benchmark-valid.
 
 ---
 

@@ -214,3 +214,396 @@ Why this is not a new rule family
 
 Resolved interpretation
 - Correct formulation-core count = `5`.
+
+## 2026-03-11
+
+### Case decision: 5GIF3D8W / 10.1080/10717540802174662 remains an open Stage2 under-enumeration case
+
+Case reference
+- `5GIF3D8W` / `10.1080/10717540802174662`
+- Title: `Etoposide-Loaded PLGA and PCL Nanoparticles I: Preparation and Effect of Formulation Variables`
+
+Problem statement
+- Earlier formulation-skeleton enumeration for this paper was exact at `32` candidate rows against `32` GT rows.
+- The later active DEV-15 formulation-instance evaluation on `2026-03-10` reported `predicted_count = 6`, `GT_count = 32`, and under-segmentation of `26`.
+
+Diagnosis summary
+- Current repo evidence localizes the loss before Stage4 counting:
+  - `data/results/run_20260310_dev15_remaining12_synthmethod_merged/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv` contains only `6` rows for key `5GIF3D8W`.
+  - `data/cleaned/labels/manual/formulation_instance_remaining12_eval_2026-03-10/predicted_instance_rows.tsv` also contains the same `6` predicted instances, so Stage4 is reporting Stage2 output rather than collapsing a larger extracted set.
+- The surviving six rows are only the high-confidence PLGA variants (`PLGA 50/50`, `75/25`, `85/15`, empty/drug-loaded), while the earlier 32-row formulation-skeleton candidate file includes additional PCL and parameter-sweep formulations.
+- Table assets for `5GIF3D8W` exist under `data/cleaned/goren_2025/tables/5GIF3D8W/`, and prior audit artifacts show table-value matches for this DOI, so the current evidence does not support classifying this as a Stage4 regression or a missing-table parse failure.
+- Current best interpretation is an open Stage2 formulation-enumeration regression, most likely at the input-assembly / evidence-packing boundary: the current extractor still uses raw-text front-slice packing with prompt-side table-heavy hints only, so this paper's row-level sweep structure is still being abstracted away or not surfaced to the model.
+
+Decision
+- Treat this paper as an open diagnostic case, not a resolved rule case.
+- Repository interpretation: the correct benchmark target for this DOI remains `32` formulation rows, and the current `6`-row output is a known under-enumeration failure of the active Stage2 path.
+- This case is fix-ready only after a validated Stage2 change demonstrates recovery on this DOI without destabilizing the active DEV-15 path.
+
+Implementation status
+- No code change was merged for this DOI-specific case in the current repo state.
+- No new script was created for this case.
+- The currently documented Stage2 table-heavy row-enumeration prompt rule improved other papers but did not resolve `5GIF3D8W`.
+
+Consequence
+- The active pipeline did not change as a result of this case record.
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` remains the active Stage2 entrypoint and `src/stage4_eval/eval_weak_labels_v7pilot3.py` remains the active Stage4 evaluator.
+- Future similar cases should be classified the same way when weak-label TSV row loss is already present before evaluation: record them as Stage2 under-enumeration / evidence-packing diagnostics rather than as Stage4 reconciliation issues.
+
+## 2026-03-12
+
+### Formulation ontology and extraction scope rules
+
+Case reference
+- `5GIF3D8W` / `10.1080/10717540802174662`
+
+Rule 1
+- Formulation existence is defined by formulation-defining variables (`polymer identity`, `stabilizer concentration`, `drug/polymer ratio`, `phase ratio`, `solvent`, etc.), not by the current automatic extraction capability.
+
+Rule 2
+- Extraction scope must not apply material filtering.
+- Formulations containing polymers outside the current modeling scope (for example `PCL` in a PLGA-focused study) must still be extracted and labeled.
+
+Rule 3
+- Figure-derived formulation-variable sweeps represent real formulation instances when the sweep variable is a formulation parameter (for example `stabilizer concentration`).
+- These must be counted in the formulation target set even if current extraction cannot fully recover them.
+
+Decision
+- The correct formulation ontology for `5GIF3D8W` is `32` formulations:
+  - `8` table rows
+  - `24` figure-derived sweeps
+
+Implementation note
+- On `2026-03-12`, the active Stage2 extractor `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` was minimally extended to append low-confidence `candidate_source = "figure_variable_sweep"` candidates when a paper text explicitly declares multi-level formulation-variable sweeps.
+
+### Follow-up: 5GIF3D8W residual 2-row gap traced to PCL table-row omission and fixed in Stage2
+
+Case reference
+- `5GIF3D8W` / `10.1080/10717540802174662`
+
+Validated diagnosis
+- After the figure-sweep recovery, the remaining gap from `30` to `32` was the missing `PCL Empty` and `PCL Drug loaded` optimized Table 1 rows.
+- The loss occurred in the LLM extraction step, not in canonicalization, deduplication, or Stage4:
+  - the raw Stage2 response explicitly stated that only PLGA formulations were extracted,
+  - the cleaned full-text Table 1 segment still contained the PCL optimized rows and values.
+
+Decision
+- Stage2 extraction scope must not bias the model toward PLGA-only row enumeration when the paper reports explicit non-PLGA formulation rows.
+- The active extractor prompt was corrected to remove PLGA-only wording and to state the no-material-filtering rule explicitly.
+
+Validation
+- Re-running `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` for `5GIF3D8W` recovered the two missing PCL table rows.
+- Validated candidate counts after fix:
+  - total candidates = `32`
+  - `llm_extracted` / table-like = `8`
+  - `figure_variable_sweep` = `24`
+
+Consequence
+- No workflow change was introduced.
+- No Stage4 script changed.
+
+### Explicit polymer identity added as a general extraction-layer field
+
+Decision
+- Extraction scope must preserve polymer identity explicitly at the extraction layer.
+- Polymer filtering belongs to downstream modeling and release logic, not to Stage2 extraction.
+
+Implementation
+- The active Stage2 extractor now adds an explicit additive polymer field layer:
+  - `polymer_identity`
+  - `polymer_name_raw`
+- Existing PLGA-specific fields remain in place for compatibility:
+  - `la_ga_ratio_*`
+  - `plga_mw_kDa_*`
+  - `plga_mass_mg_*`
+
+Consequence
+- Mixed-polymer papers can retain non-PLGA rows without relying on implicit interpretation from PLGA-family fields.
+- Downstream steps may later filter to `polymer_identity = PLGA` when required, without changing the extraction-layer scope.
+
+### Decision: Apply a minimal Stage2 fix for the confirmed 5GIF3D8W sweep-structure seam
+
+Case reference
+- `5GIF3D8W` / `10.1080/10717540802174662`
+
+Confirmed seams
+- Duplicate seam:
+  - explicit `llm_extracted` semantic variant rows and `figure_variable_sweep` rows were being kept together because synthetic sweep dedup was label-driven (`seen_labels`) rather than condition-signature-driven.
+- Shared-section omission seam:
+  - `_infer_section_identities(...)` collapsed generic `PLGA-copolymers` sweep sections to the first PLGA identity, which omitted polymer-amount sweep rows for `PLGA 75/25` and `PLGA 85/15`.
+
+Adopted minimal fix strategy
+- Keep the active pipeline path unchanged and patch only the active Stage2 extractor.
+- Expand shared PLGA section inference conservatively so generic PLGA-copolymer sweep sections can enumerate all already-known PLGA identities for the paper.
+- Add a narrow post-generation overlap dedup after synthetic sweep rows are appended.
+- Preferred representation policy for overlapping sweep conditions:
+  - keep baseline optimized table rows,
+  - keep `figure_variable_sweep` rows for single-variable sweep conditions,
+  - suppress overlapping `llm_extracted` semantic variant rows when they only restate the same polymer-specific sweep axis and level.
+
+Validation outcome
+- Post-fix targeted regression rerun:
+  - previous run: `run_20260312_1031_455ac37_targeted5_stage2_regression_v1`
+  - new run: `run_20260312_1253_455ac37_targeted5_stage2_regression_v1`
+- `5GIF3D8W` changed from `38` rows to `44` rows.
+- The confirmed duplicate overlap groups were removed (`6 -> 0`).
+- The previously missing polymer-amount sweep rows for `PLGA 75/25` and `PLGA 85/15` were restored (`6 missing -> 0 missing`).
+- The paper still over-expands because drug-amount sweep rows now span all four polymer groups, so the full `32`-target structure is still not restored.
+
+Consequence
+- This fix is retained as a structural improvement because it removes the confirmed overlap seam and restores the confirmed missing polymer-amount conditions.
+- Full DEV15 rerun remains blocked until the remaining `5GIF3D8W` over-expansion seam is resolved.
+
+### Decision: Apply a narrow axis-scoping fix for the confirmed 5GIF3D8W drug-amount over-expansion seam
+
+Case reference
+- `5GIF3D8W` / `10.1080/10717540802174662`
+
+Confirmed issue
+- After the earlier overlap-dedup and shared-PLGA polymer-amount fix, `5GIF3D8W` still over-expanded from `38` to `44` rows.
+- Root-cause diagnostics confirmed that applicability differs by sweep axis for this paper:
+  - `stabilizer_concentration`: supported across `PLGA 50/50`, `PLGA 75/25`, `PLGA 85/15`, and `PCL`
+  - `polymer_amount`: supported across `PLGA 50/50`, `PLGA 75/25`, `PLGA 85/15`, and `PCL`
+  - `drug_amount`: directly supported only for `PLGA 50/50` and `PCL`
+- The unsupported rows were the six `drug_amount` sweep rows for `PLGA 75/25` and `PLGA 85/15`.
+
+Adopted minimal fix strategy
+- Keep the active Stage2 extractor as the only edited runtime component.
+- Tighten `drug_feed_amount_text` sweep generation by:
+  - anchoring the section window to the actual `Amount of Drug` heading,
+  - preventing generic PLGA-family wording alone from widening `drug_amount` applicability to all known PLGA identities.
+- Leave the shared-section widening logic for `stabilizer_concentration` and `polymer_amount` unchanged.
+
+Validation outcome
+- Targeted regression rerun:
+  - prior post-fix run: `run_20260312_1253_455ac37_targeted5_stage2_regression_v1`
+  - post-axis-scoping run: `run_20260312_1321_455ac37_targeted5_stage2_regression_v1`
+- `5GIF3D8W` changed from `44` rows to `38` rows.
+- The six unsupported `drug_amount` rows for `PLGA 75/25` and `PLGA 85/15` were removed.
+- Polymer-amount sweep completeness for `PLGA 75/25` and `PLGA 85/15` was preserved.
+- The earlier duplicate overlap seam did not return.
+
+Consequence
+- This axis-scoping fix is retained because it resolves the confirmed `drug_amount` applicability error without reintroducing the earlier seams.
+- Full DEV15 rerun remains blocked pending additional targeted stability work because `5GIF3D8W` still sits above the intended `32`-structure target and other targeted5 warnings remain.
+
+### Decision: Formalize the formulation-instance system architecture and current benchmark contract
+
+Decision
+- The repository is now formally documented as a formulation-instance reconstruction system rather than a pure field-extraction pipeline.
+- Stage2 owns candidate formulation-instance extraction with high recall and explicit evidence/provenance, not guaranteed final formulation-table closure.
+- Instance-level evaluation is a separate layer that measures candidate-graph behavior such as under-segmentation, over-segmentation, and benchmark count mismatch.
+- Final formulation-table semantics, precision recovery, and any generic collapse by core formulation parameters belong to downstream guardrail/normalization ownership, not implicitly to Stage2.
+
+Current active-path contract
+- The active DEV-15 comparison path currently compares Stage2 candidate formulation-instance rows directly against the fixed DEV15 skeleton workbook.
+- No generic normalization or formulation-core collapse layer is wired between the active Stage2 extractor and the active Stage4 evaluator.
+- Only explicitly documented reconciliation logic, such as the integrated `WFDTQ4VX` DoE rule, should alter that direct candidate-layer comparison.
+
+Historical-path clarification
+- The DEV15 skeleton bootstrap family under `archive/code/dev15_skeleton_bootstrap/` is a historical benchmark-preparation workflow.
+- It must not be described as if it were the active normalization layer for current DEV-15 evaluation.
+- Stage5 schema/core tools remain downstream/supporting families for modeling-oriented outputs and benchmark/schema analysis, not the default current DEV-15 counting seam.
+
+Consequence
+- Baseline / optimized wording and similar provenance labels should not be treated as permanent blockers to later comparison by core formulation parameters.
+- If the repository later intends to compare predictions against final formulation-table targets rather than candidate-instance targets, an explicit downstream guardrail/normalization contract must be defined and wired into the active path.
+
+### Decision: Forbid official GT benchmark reporting from partial or intermediate pipeline layers
+
+Decision
+- The repository now forbids treating single-layer or partial-path outputs as official final GT comparison results.
+- Formal GT comparison and benchmark reporting may be claimed only from the complete intended pipeline final-output layer.
+- Intermediate-layer outputs, including Stage2 candidate rows, candidate graphs, packed evidence views, and component-only evaluation artifacts, may be compared to GT only for debugging, regression localization, and ablation.
+
+Reason
+- Repeated direct comparison of partial-layer outputs against final GT created contract confusion and distorted iteration priorities.
+- Candidate-instance artifacts and final formulation-table artifacts do not have the same semantics, so reporting them under one benchmark label is misleading even when the counts are numerically comparable.
+
+Policy effect
+- If downstream guardrail, normalization, collapse, or final filtering layers are part of the intended system, they must be executed before benchmark-valid GT reporting is made.
+- If those layers are not yet wired, the correct label for partial-path GT comparison is `diagnostic-only, not benchmark-valid final output`.
+- Future work must not iterate indefinitely on one isolated layer while treating direct GT comparison as if it were the final benchmark contract.
+
+### Decision: Enforce explicit script registry ownership and reproducible run specifications
+
+Decision
+- Every `src/*.py` script must now have an explicit recorded identity and I/O contract.
+- The minimum recorded metadata is:
+  - script path
+  - status
+  - architecture layer
+  - function summary
+  - primary inputs
+  - primary outputs
+  - upstream dependencies
+  - downstream consumers
+  - current pipeline role
+- Scripts that cannot be classified clearly enough to record this metadata with defensible confidence are non-compliant and must be treated as archive/delete candidates rather than as active engineering assets.
+
+Run reproducibility rule
+- Every `data/results/run_*` directory must contain a reproducibility-grade run specification in the run root.
+- That specification must record run purpose, run type, starting inputs, script execution order, script paths used, intermediate artifacts, final outputs, and benchmark-valid versus diagnostic-only status.
+- A run directory lacking this specification is non-compliant.
+
+Reason
+- The repository had accumulated scripts whose role could not be inferred quickly enough from code or docs, and historical runs whose execution order was no longer reproducible by inspection.
+- That ambiguity is now treated as a governance failure because it blocks reuse, archive decisions, and reproducible benchmarking.
+
+Consequence
+- `docs/src_script_registry.tsv`, `docs/src_script_compliance_report.tsv`, and `docs/run_directory_compliance_report.tsv` are now part of the repository governance scaffolding.
+- `docs/run_spec_template.md` defines the minimum acceptable run-spec contract for future runs.
+
+### Decision: Cleanup wave 1 moved legacy scripts to archive and quarantined delete candidates
+
+Decision
+- Cleanup wave 1 is now executed as a conservative repository-noise reduction pass, not as a pipeline redesign.
+- Pre-reduction legacy scripts formerly under `src/legacy/` were moved into `archive/code/pre_reduction_legacy/`.
+- Scripts already classified as `delete_candidate_after_confirmation` were moved into `archive/delete_candidates_pending_confirmation/` so they no longer read as normal reusable assets.
+
+Run-history handling
+- Non-compliant `data/results/run_*` directories were not physically relocated in wave 1 because many investigations and historical notes still reference their current paths.
+- Instead, wave 1 added explicit top-level segregation indexes under `data/results/` to distinguish current engineering runs from historical non-compliant runs.
+
+Consequence
+- Wave 1 reduces active-repo ambiguity without breaking the documented active path.
+- Additional pruning, run-history compression, and final deletion decisions remain follow-up work for later cleanup waves.
+
+
+### Decision: Cleanup wave 2 physically removed archive-only code from `src/` and separated historical run noise
+
+Decision
+- Cleanup wave 2 is a stricter physical boundary pass, not a pipeline redesign.
+- Archive-only code was moved out of `src/` into `archive/code/`.
+- Delete candidates pending confirmation were moved out of `src/` into `archive/delete_candidates_pending_confirmation/`.
+- `src/` is now reserved for live mainline or branch-active engineering code only.
+
+Run-history handling
+- Historical non-compliant runs that were not still named directly in current authoritative docs were physically moved into `data/results/historical_non_compliant_runs/`.
+- The small set of non-compliant runs left in `data/results/` remains only because current authoritative docs still point to those exact paths.
+- The four current engineering runs were backfilled to reproducibility-grade run specs and now represent the only current engineering runs at the top level of `data/results/`.
+
+Consequence
+- The active engineering surface is materially smaller and easier to interpret before any final-output layer design work.
+- Remaining cleanup should focus on later pruning/compression, not on keeping archive-only code inside `src/`.
+
+### Decision: Define the minimal final-output layer contract before implementation
+
+Decision
+- The repository now formally defines a missing minimal final-output layer as the required downstream contract for future benchmark-valid runs.
+- The durable design record lives at `project/design/MINIMAL_FINAL_OUTPUT_LAYER_DESIGN.md`, with supporting contract tables in `project/design/`.
+- This layer is planned to consume candidate-instance outputs from the active Stage2 path, apply limited final non-formulation filtering plus narrow core-parameter-based collapse, and emit a benchmark-valid one-row-per-formulation table with decision-trace artifacts.
+
+Current-state clarification
+- The layer is not yet implemented in the active path.
+- Current Stage2 -> Stage4 DEV-15 runs remain candidate-instance diagnostic runs, not full-pipeline benchmark runs.
+- Historical Stage5 benchmark scripts and archived skeleton-bootstrap scripts remain reference assets only unless explicitly adapted into the future final-output implementation.
+
+Reason
+- The repository now forbids benchmark claims from partial layers, so the missing final-output contract can no longer remain implicit.
+- A durable written design is required before implementation so the next architectural step does not collapse into ad hoc script growth or historical-path confusion.
+
+Consequence
+- Future implementation work should follow the minimal contract first rather than reactivating broad rule-heavy reconstruction families.
+- The benchmark-valid run type remains reserved until this layer and its downstream benchmark comparison step are implemented.
+
+### Decision: Implement phase 1 of the minimal final-output layer with conservative closure rules
+
+Decision
+- Phase 1 of the minimal final-output layer is now implemented under:
+  - `src/stage6_final_output/build_minimal_final_output_v1.py`
+  - `src/stage6_final_output/run_minimal_final_output_v1.py`
+- Phase 1 is intentionally narrow. It:
+  - filters explicit non-formulation rows,
+  - computes a conservative core signature from current candidate-instance fields,
+  - collapses rows only when a clear mixed-source redundancy signal is present,
+  - emits `final_formulation_table_v1.tsv`, `final_output_decision_trace_v1.tsv`, and `final_output_summary_v1.md`.
+
+Implemented scope
+- The implemented filtering contract is conservative and explicit:
+  - `candidate_non_formulation`
+  - characterization-only post-processing rows
+- The implemented collapse contract is conservative and explicit:
+  - only rows with known polymer identity and loaded state,
+  - only rows without excluded tags such as `doe`, `checkpoint_validation`, `center_point`, or `post_processing`,
+  - only rows with sufficiently populated core fields,
+  - only rows with a clear mixed-source overlap signal (`llm_extracted` plus `figure_variable_sweep`) for the same signature.
+
+Deliberately not implemented
+- broad rule-heavy reconstruction
+- generalized DOE collapse
+- benchmark comparison over the final formulation table
+
+Validated run
+- `run_20260312_1636_455ac37_minimal_final_output_v1`
+- input candidate artifact:
+  - `data/results/run_20260312_1321_455ac37_targeted5_stage2_regression_v1/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
+- outcome:
+  - `127` input rows
+  - `124` final rows
+  - `3` filtered explicit non-formulation rows
+  - `0` collapsed rows under the conservative phase-1 rules
+
+Consequence
+- The repository now has a working first implementation of Layer 7 final-output closure.
+- This is still not a complete benchmark-valid path because the downstream GT comparison step over `final_formulation_table_v1.tsv` has not yet been implemented.
+
+### Decision: Implement the first complete full-pipeline benchmark path for the targeted5 controlled scope
+
+Decision
+- The repository now has one checked-in complete benchmark-valid path for the declared targeted5 controlled scope.
+- That path runs:
+  - Stage2 extraction with `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  - Stage6 final-output closure with `src/stage6_final_output/build_minimal_final_output_v1.py`
+  - final-table GT comparison with `src/stage7_full_pipeline/compare_final_table_to_gt_v1.py`
+  - orchestration through `src/stage7_full_pipeline/run_full_pipeline_benchmark_v1.py`
+
+Benchmark contract
+- Official GT reporting in this path is attached only to `final_formulation_table_v1.tsv`.
+- No Stage2 candidate-instance output is permitted to serve as the reported system result.
+- Any debugging loop must start from the final-table comparison artifacts and then trace backward into Stage6 or Stage2 only after a final-table mismatch is established.
+
+Scope and limitations
+- The implemented benchmark-valid scope is currently the controlled targeted5 engineering manifest.
+- The first complete comparison step currently supports per-paper final-formulation count comparison against the authoritative fixed DEV15 skeleton workbook.
+- Structured EE-subset benchmark comparison is still unsupported because the authoritative fixed workbook does not expose structured EE GT fields for this scope.
+
+Consequence
+- `full_pipeline_benchmark_run` is no longer a purely reserved label; it is now available when the declared targeted5 full runner is executed end to end.
+- Outside that declared complete path, partial-layer and candidate-instance runs remain diagnostic only.
+
+### Decision: Restore the canonical active path to manual Stage 0 to Stage 5 reproduction only
+
+Decision
+- The official active stage naming is restored to exactly `Stage 0`, `Stage 1`, `Stage 2`, `Stage 3`, `Stage 4`, and `Stage 5`.
+- There is only one active Stage 5 namespace:
+  - `src/stage5_benchmark/`
+- The phase-1 final-output builder and the final-table benchmark comparison step are retained, but they now live under the single Stage 5 namespace:
+  - `src/stage5_benchmark/build_minimal_final_output_v1.py`
+  - `src/stage5_benchmark/run_minimal_final_output_v1.py`
+  - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
+
+Repository cleanup
+- The one-click full rerun wrapper `src/stage7_full_pipeline/run_full_pipeline_benchmark_v1.py` is removed from the active repository surface.
+- The former duplicate active namespaces are retired from `src/`:
+  - `src/stage5_merge_publish/`
+  - `src/stage6_final_output/`
+  - `src/stage7_full_pipeline/`
+- Historical merge-only code is retained as archive reference under:
+  - `archive/code/stage5_merge_publish/merge_results.py`
+
+Canonical execution contract
+- The canonical pipeline is now defined only as the explicit manual Stage 0 to Stage 5 path documented in `project/ACTIVE_PIPELINE_FLOW.md`.
+- `project/ACTIVE_PIPELINE_FLOW.md` is the single authoritative manual reproduction document.
+- Complete pipeline means full traceable stage coverage from raw Zotero-derived inputs to the Stage 5 final formulation table and Stage 5 GT-comparison outputs.
+- Complete pipeline does not mean forced full recomputation.
+
+Forbidden path behavior
+- No hidden Python orchestrator defines the canonical path.
+- No intermediate-layer artifact may be reported as the system result against GT.
+- Stage 4 remains a diagnostic and reviewer-facing layer.
+- Benchmark-valid reporting remains attached only to the Stage 5 final formulation table and its Stage 5 comparison outputs.
+
+Consequence
+- Governance docs, script maps, and source-tree boundaries now describe one active Stage 0 to Stage 5 pipeline only.
+- Future debugging must follow the documented stage sequence and trace backward from Stage 5 mismatches rather than introducing new full-rerun wrappers.

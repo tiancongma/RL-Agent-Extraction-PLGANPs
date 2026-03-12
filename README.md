@@ -1,138 +1,102 @@
 # RL-Agent-Extraction-PLGANPs
 
-This project implements a **systematic, data-driven workflow for LLM-assisted extraction of nanoparticle formulation data** from scientific literature (PDF / HTML), with a focus on **weak supervision, multi-model consensus, and reproducibility**.
+This repository implements a governed, auditable pipeline for extracting
+nanoparticle formulation records from literature and converting them into final
+per-formulation structured outputs.
 
-Rather than treating prompt engineering as a manual trial-and-error process, this repository structures the task as a **multi-stage pipeline** with explicit data boundaries, versioned artifacts, and measurable performance metrics.
+The active system is not just a prompt collection and not just a field
+extraction stack. It is a Stage 0 to Stage 5 pipeline with explicit provenance:
 
----
+1. Zotero-derived raw corpus intake
+2. manifest and cleaned-content construction
+3. candidate formulation-instance extraction
+4. checked manual benchmark assets
+5. candidate-level diagnostics
+6. final formulation-table closure and final-table benchmark comparison
 
-## Project Scope and Goal
+The benchmark-valid system result is the Stage 5 final formulation table and its
+GT-comparison outputs. Intermediate artifacts may be used for diagnosis, but
+they are not official benchmark outputs.
 
-**Primary goal**
+## Canonical Pipeline
 
-- Build a reproducible pipeline to extract structured PLGA nanoparticle formulation data from unstructured literature using LLMs.
-- Support weak labels, partial ground truth, and rule-based grading to evaluate extraction quality.
+The authoritative manual reproduction document is:
 
-**Non-goals (current stage)**
+- [ACTIVE_PIPELINE_FLOW.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_PIPELINE_FLOW.md)
 
-- Industrial-scale deployment
-- Fully automated ground truth generation
-- End-to-end meta-analysis across all nanoparticle types
+That file defines the canonical Stage 0 to Stage 5 path, the exact stage
+completion artifacts, the active scripts for each stage, and the allowed
+incremental-reuse rules.
 
----
+## Active Stage Namespaces
 
-## Pipeline Overview (Conceptual Stages)
+The active stage directories are exactly:
 
-This project follows a staged workflow. The implementation is modular, but the **data flow and responsibilities of each stage are fixed**.
+- `src/stage0_relevance/`
+- `src/stage1_cleaning/`
+- `src/stage2_sampling_labels/`
+- `src/stage3_gt/`
+- `src/stage4_eval/`
+- `src/stage5_benchmark/`
 
-### Stage 0 — Relevance Filtering (Raw Metadata)
-- Input: Zotero / database CSV exports
-- Operations:
-  - Regex pre-filtering
-  - LLM-based relevance classification
-  - Optional Zotero tagging and snapshot fetching
-- Output:
-  - Candidate pool of *LLM-relevant papers*
-- Location:
-  - `data/raw/zotero/`
-- Notes:
-  - Outputs here are **re-runnable and non-binding**
-  - No downstream pipeline should depend on these files directly
+There is no active Stage 6 or Stage 7 namespace. Historical or retired methods
+live outside `src/` under `archive/`.
 
----
+## Repository Layout
 
-### Stage 1 — Text Cleaning and Manifest Generation (HTML-first)
-- Input:
-  - Relevant paper metadata
-  - Available HTML / PDF snapshots
-- Operations:
-  - HTML-first text extraction
-  - PDF fallback cleaning
-  - Section and table parsing
-- Outputs:
-  - Cleaned text content
-  - Sectioned representations
-  - A manifest linking papers to extracted content
-- Location:
-  - Cleaned content: `data/cleaned/content/`
-  - Index files: `data/cleaned/index/`
-- **Single source of truth**:
-  - `data/cleaned/index/manifest_current.tsv`
+- `project/`
+  Governance and authoritative pipeline definitions.
+- `src/`
+  Active engineering code and stable stage-local tools only.
+- `archive/`
+  Historical methods, retired code, and delete-candidate quarantine.
+- `data/`
+  Raw inputs, cleaned assets, manual labels, and run artifacts.
+- `docs/`
+  Supporting documentation, audits, registries, and governance support files.
 
----
+## Current Runtime Contract
 
-### Stage 2 — Sampling and Weak Label Extraction
-- Input:
-  - Cleaned manifest
-  - Sample definitions
-- Operations:
-  - Sample selection (e.g. sample10, sample20)
-  - Key-to-text index generation
-  - LLM-based weak label extraction
-- Outputs:
-  - Sample lists
-  - `key2txt.tsv`
-  - Versioned weak labels
-- Location:
-  - Samples: `data/cleaned/samples/`
-  - Index: `data/cleaned/index/key2txt.tsv`
-  - Weak labels: `data/cleaned/labels/weak/`
+The canonical path starts from Zotero-derived raw records under
+`data/raw/zotero/` and ends at:
 
----
+- `final_formulation_table_v1.tsv`
+- `final_table_vs_gt_counts.tsv`
+- `final_table_vs_gt_summary.md`
 
-### Stage 3 — Manual Annotation (Ground Truth)
-- Input:
-  - Weak labels
-  - Selected samples
-- Operations:
-  - Human annotation / correction
-- Outputs:
-  - Versioned manual labels
-- Location:
-  - `data/cleaned/labels/manual/`
-- Notes:
-  - Manual labels are **partial and intentionally imperfect**
-  - This project does not assume complete GT coverage
+Current active Stage 5 scripts:
 
----
+- `src/stage5_benchmark/build_minimal_final_output_v1.py`
+- `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
 
-### Stage 4 — Rule-based Evaluation and Iteration
-- Input:
-  - Weak labels
-  - Manual labels (when available)
-- Operations:
-  - Regex / rule-based grading
-  - Metric calculation (accuracy, hallucination, etc.)
-- Outputs:
-  - Evaluation reports
-- Notes:
-  - This stage supports iterative prompt/parser updates
-  - Optimization logic may be rule-based or RL-assisted
+Current active Stage 2 script:
 
----
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
 
-### Stage 5 — Merge and Publication
-- Input:
-  - Extraction outputs
-  - Labels
-  - Evaluation summaries
-- Outputs:
-  - Final structured dataset
-  - Aggregated statistics
-- Location:
-  - `data/results/`
-- Notes:
-  - Results are organized by **run_id**, not by vague version names
+Current active Stage 4 diagnostic script:
 
----
+- `src/stage4_eval/eval_weak_labels_v7pilot3.py`
 
-## Repository Structure (How to Navigate This Repo)
+## Governance
 
-```text
-project/        Project governance (scope, requirements, state machine)
-src/            Executable scripts (no results here)
-configs/        Run configurations and standard commands
-data/raw/       Raw, re-runnable inputs (Zotero, relevance filtering)
-data/cleaned/   Cleaned and indexed data used by the pipeline
-data/results/   Extraction outputs, organized by run_id
-runs/           Run metadata and pointers (latest.txt)
+Before changing code or pipeline documentation, read:
+
+- [AGENTS.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/AGENTS.md)
+- [2_ARCHITECTURE.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/2_ARCHITECTURE.md)
+- [PIPELINE_SCRIPT_MAP.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/PIPELINE_SCRIPT_MAP.md)
+- [ACTIVE_PIPELINE_FLOW.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_PIPELINE_FLOW.md)
+- [ACTIVE_PIPELINE_RUNBOOK.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_PIPELINE_RUNBOOK.md)
+
+## Reproducibility
+
+Every `data/results/run_*` directory must contain a reproducibility-grade
+`RUN_CONTEXT.md`.
+
+Accepted run types are:
+
+- `intermediate_diagnostic_run`
+- `component_regression_run`
+- `full_pipeline_benchmark_run`
+
+Only `full_pipeline_benchmark_run` may report official GT results, and only
+when the evaluation object is the Stage 5 final formulation table.
