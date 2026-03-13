@@ -33,10 +33,10 @@ Script classes used here are fixed:
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
 | Stage 2 | Candidate formulation-instance extraction | `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` | `ACTIVE_ENTRYPOINT` | Produce high-recall candidate formulation-instance rows from cleaned assets. | scope manifest TSV; cleaned text; optional tables; model access | run-scoped weak-label TSV and JSONL |
-| Stage 3 | Formulation consolidation / normalization layer | no dedicated standalone script currently checked in | `ACTIVE_ENTRYPOINT` | Formal production boundary that converts candidate formulation-instance rows into normalized formulation records suitable for Stage 5 closure. | Stage 2 candidate formulation-instance TSV | normalized or consolidated formulation record set |
+| Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts from Stage 2 weak labels without any LLM usage. | Stage 2 candidate formulation-instance TSV; optional Stage 2 JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv` |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts. | Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
-| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from normalized or consolidated formulation records. | Stage 3 normalized or consolidated formulation record set | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
+| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from Stage 2 candidate rows, with optional Stage 3 relation provenance attached to the retained final rows. | Stage 2 candidate formulation-instance TSV; optional Stage 3 relation-record TSV | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
 | Stage 5 | Comparison node | `src/stage5_benchmark/compare_final_table_to_gt_v1.py` | `ACTIVE_ENTRYPOINT` | Compare only the Stage 5 final formulation table to the checked GT workbook. | final formulation table; scope manifest; fixed GT workbook | `final_table_vs_gt_counts.tsv`; `final_table_vs_gt_summary.md` |
 
 ## Evaluation Reference Path
@@ -46,7 +46,8 @@ transformations.
 
 - primary current reference input:
   - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
-- `src/stage3_gt/` currently has no active routine runtime entrypoint
+- `src/stage3_relation/` is the active deterministic Stage 3 runtime namespace
+- `src/stage3_gt/` remains a reserved reference namespace with no active routine runtime entrypoint
 - historical GT-maintenance helpers are archived under `archive/code/`
 - the comparison node reads both:
   - the production-path final formulation table
@@ -56,8 +57,8 @@ transformations.
 
 - Canonical pipeline means explicit provenance from Zotero-selected inputs to
   `final_formulation_table_v1.tsv`.
-- Stage 3 is part of the production path even though it is currently a formal
-  boundary contract rather than a dedicated checked-in runtime script.
+- Stage 3 is part of the production path and now has a dedicated deterministic
+  runtime entrypoint for explicit relation materialization.
 - Stage 4 remains a diagnostic branch off the production path, not the
   production endpoint.
 - The comparison node is downstream of the production path and uses the fixed
@@ -104,11 +105,18 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/sample_from_manifest_html_first.py` | `STABLE_TOOL` | Build reproducible split or sample manifests. |
 | `src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py` | `STABLE_TOOL` | Build sample-local key-to-text mappings. |
 | `src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py` | `STABLE_TOOL` | Build deterministic evidence packages for selected keys. |
+| `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit numbered DOE formulation rows from Stage1 table assets and emit additive Stage2 candidate artifacts. |
 | `src/stage2_sampling_labels/export_blockpack_audit_v7pilot_r3_fixparse.py` | `STABLE_TOOL` | Export the Stage 2 evidence packing order for manual audit. |
 | `src/stage2_sampling_labels/export_evidence_bundle_audit_xlsx_v1.py` | `STABLE_TOOL` | Export evidence-bundle audit views. |
 | `src/stage2_sampling_labels/run_targeted_stage2_regression_v1.py` | `STABLE_TOOL` | Controlled Stage 2 regression runner for diagnostic-only work. |
 | `src/stage2_sampling_labels/diagnose_5gif3d8w_root_cause_v1.py` | `STABLE_TOOL` | Paper-specific diagnostic helper retained for regression analysis. |
 | `src/stage2_sampling_labels/diagnose_5gif3d8w_axis_applicability_v1.py` | `STABLE_TOOL` | Axis-applicability diagnostic helper retained for regression analysis. |
+
+### Stage 3
+
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage3_relation/run_formulation_relation_artifacts_v1.py` | `STABLE_TOOL` | Run the Stage 3 relation builder in a reproducible run-scoped results directory with explicit `RUN_CONTEXT.md`. |
 
 ### Stage 4
 
@@ -137,6 +145,12 @@ stage-completion entrypoints.
 | `src/stage5_benchmark/run_alignment_eval_core_v1.py` | `STABLE_TOOL` | Core-signature alignment evaluation helper. |
 | `src/stage5_benchmark/run_alignment_eval_schema_v3_v1.py` | `STABLE_TOOL` | Schema-v3 alignment evaluation helper. |
 | `src/stage5_benchmark/export_full_database_v1.py` | `STABLE_TOOL` | Final database export utility for downstream release work. |
+
+### Cross-cutting governance support
+
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/utils/audit_run_lineage_layout_v1.py` | `STABLE_TOOL` | Deterministically audit top-level `data/results/run_*` lineage sprawl and flag sibling runs that should likely be contained under one parent lineage. |
 
 ## Archived Historical Methods
 
@@ -167,3 +181,6 @@ explicitly promotes one back into an active stage namespace.
 - Archived or delete-candidate code must remain outside `src/`.
 - The only benchmark-valid comparison artifact is produced by Stage 5 from the
   final formulation table.
+- Top-level `data/results/run_*` directories are reserved for independent
+  lineages; same-lineage retries and repair steps belong under the parent
+  lineage directory.

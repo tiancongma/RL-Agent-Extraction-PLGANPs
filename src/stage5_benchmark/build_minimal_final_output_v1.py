@@ -15,6 +15,7 @@ from typing import Any
 DECISION_TRACE_NAME = "final_output_decision_trace_v1.tsv"
 FINAL_TABLE_NAME = "final_formulation_table_v1.tsv"
 SUMMARY_NAME = "final_output_summary_v1.md"
+RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 
 
 @dataclass(frozen=True)
@@ -296,6 +297,42 @@ def read_candidate_rows(path: Path) -> list[dict[str, str]]:
         return list(reader)
 
 
+def load_relation_metadata(
+    relation_records_tsv: Path | None,
+) -> dict[str, dict[str, Any]]:
+    if relation_records_tsv is None:
+        return {}
+    if not relation_records_tsv.exists():
+        raise FileNotFoundError(f"Relation records TSV not found: {relation_records_tsv}")
+
+    metadata: dict[str, dict[str, Any]] = defaultdict(
+        lambda: {
+            "relation_graph_ids": set(),
+            "relation_method_group_ids": set(),
+            "relation_parent_candidate_ids": set(),
+            "relation_row_count": 0,
+        }
+    )
+    with relation_records_tsv.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        for row in reader:
+            candidate = str(row.get("formulation_candidate_id", "") or "").strip()
+            if not candidate:
+                continue
+            item = metadata[candidate]
+            item["relation_row_count"] += 1
+            graph_id = str(row.get("relation_graph_id", "") or "").strip()
+            if graph_id:
+                item["relation_graph_ids"].add(graph_id)
+            method_group_id = str(row.get("method_group_id", "") or "").strip()
+            if method_group_id:
+                item["relation_method_group_ids"].add(method_group_id)
+            parent_id = str(row.get("parent_entity_id", "") or "").strip()
+            if parent_id:
+                item["relation_parent_candidate_ids"].add(parent_id)
+    return metadata
+
+
 def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter="\t")
@@ -309,6 +346,7 @@ def build_summary_markdown(
     final_rows: list[dict[str, str]],
     decision_rows: list[dict[str, str]],
     summary_path: Path,
+    relation_records_tsv: Path | None,
 ) -> None:
     decision_counts = defaultdict(int)
     for row in decision_rows:
@@ -328,6 +366,11 @@ def build_summary_markdown(
         "## Input",
         "",
         f"- candidate_input_tsv: `{input_path}`",
+        (
+            f"- relation_records_tsv: `{relation_records_tsv}`"
+            if relation_records_tsv is not None
+            else "- relation_records_tsv: `not provided`"
+        ),
         "",
         "## What phase 1 currently handles",
         "",
@@ -376,6 +419,7 @@ def build_summary_markdown(
             "- exact core-signature fields for broader collapse remain unresolved",
             "- baseline versus optimized provenance handling is still conservative",
             "- parent/variant collapse policy is still intentionally narrow",
+            "- relation artifacts are currently carried as provenance only and do not yet drive phase-1 collapse rules",
             "- DOE-aware closure still needs a later explicit contract",
             "- benchmark comparison still requires the separate Stage 5B comparison step",
         ]
@@ -386,11 +430,13 @@ def build_summary_markdown(
 def build_minimal_final_output(
     input_tsv: Path,
     out_dir: Path,
+    relation_records_tsv: Path | None = None,
 ) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = read_candidate_rows(input_tsv)
     if not rows:
         raise ValueError(f"No candidate rows found in {input_tsv}")
+    relation_metadata = load_relation_metadata(relation_records_tsv)
 
     original_fieldnames = list(rows[0].keys())
     core_by_id: dict[str, dict[str, str]] = {}
@@ -533,6 +579,36 @@ def build_minimal_final_output(
         source_labels = [row.get("raw_formulation_label", "") for row in source_group]
         source_sources = [row.get("candidate_source", "") for row in source_group]
         representative_core = core_by_id[row_source_key(representative)]
+        source_candidate_ids = [row["formulation_id"] for row in source_group]
+        relation_graph_ids = sorted(
+            {
+                graph_id
+                for source_candidate_id in source_candidate_ids
+                for graph_id in relation_metadata.get(source_candidate_id, {}).get("relation_graph_ids", set())
+            }
+        )
+        relation_method_group_ids = sorted(
+            {
+                method_group_id
+                for source_candidate_id in source_candidate_ids
+                for method_group_id in relation_metadata.get(source_candidate_id, {}).get(
+                    "relation_method_group_ids", set()
+                )
+            }
+        )
+        relation_parent_candidate_ids = sorted(
+            {
+                parent_id
+                for source_candidate_id in source_candidate_ids
+                for parent_id in relation_metadata.get(source_candidate_id, {}).get(
+                    "relation_parent_candidate_ids", set()
+                )
+            }
+        )
+        relation_row_count = sum(
+            int(relation_metadata.get(source_candidate_id, {}).get("relation_row_count", 0))
+            for source_candidate_id in source_candidate_ids
+        )
 
         final_row = {
             "final_formulation_id": target_final_formulation_id,
@@ -554,6 +630,12 @@ def build_minimal_final_output(
                 if len(source_group) > 1
                 else "kept_without_collapse"
             ),
+            "relation_graph_ids": json.dumps(relation_graph_ids, ensure_ascii=True),
+            "relation_method_group_ids": json.dumps(relation_method_group_ids, ensure_ascii=True),
+            "relation_parent_candidate_ids": json.dumps(
+                relation_parent_candidate_ids, ensure_ascii=True
+            ),
+            "relation_record_count": str(relation_row_count),
         }
         for field in original_fieldnames:
             final_row[field] = representative.get(field, "")
@@ -594,12 +676,22 @@ def build_minimal_final_output(
             "loaded_state_final",
             "polymer_identity_final",
             "final_output_rule",
+            "relation_graph_ids",
+            "relation_method_group_ids",
+            "relation_parent_candidate_ids",
+            "relation_record_count",
             *original_fieldnames,
         ],
         final_rows,
     )
 
-    build_summary_markdown(input_tsv, final_rows, decision_rows, summary_path)
+    build_summary_markdown(
+        input_tsv,
+        final_rows,
+        decision_rows,
+        summary_path,
+        relation_records_tsv,
+    )
 
     return {
         "input_rows": len(rows),
@@ -610,6 +702,7 @@ def build_minimal_final_output(
         "final_table_path": final_table_path,
         "decision_trace_path": decision_trace_path,
         "summary_path": summary_path,
+        "relation_records_tsv": relation_records_tsv,
     }
 
 
@@ -619,12 +712,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--input-tsv", required=True, type=Path)
     parser.add_argument("--out-dir", required=True, type=Path)
+    parser.add_argument("--relation-records-tsv", type=Path, default=None)
     return parser
 
 
 def main() -> None:
     args = build_arg_parser().parse_args()
-    stats = build_minimal_final_output(args.input_tsv, args.out_dir)
+    stats = build_minimal_final_output(
+        args.input_tsv,
+        args.out_dir,
+        relation_records_tsv=args.relation_records_tsv,
+    )
     print(
         json.dumps(
             {
@@ -633,6 +731,9 @@ def main() -> None:
                 "filtered_rows": stats["filtered_rows"],
                 "collapsed_rows": stats["collapsed_rows"],
                 "kept_rows": stats["kept_rows"],
+                "relation_records_tsv": (
+                    str(stats["relation_records_tsv"]) if stats["relation_records_tsv"] else ""
+                ),
                 "final_table_path": str(stats["final_table_path"]),
                 "decision_trace_path": str(stats["decision_trace_path"]),
                 "summary_path": str(stats["summary_path"]),

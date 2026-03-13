@@ -27,6 +27,12 @@ from typing import Any, Dict, List, Optional, Tuple
 import pandas as pd
 from dotenv import load_dotenv
 
+from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
+    ARTIFACT_NAME as NUMBERED_DOE_ARTIFACT_NAME,
+    SUMMARY_NAME as NUMBERED_DOE_SUMMARY_NAME,
+    enumerate_numbered_doe_candidates_for_paper,
+    write_candidate_artifacts,
+)
 from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
 
 HAS_GENAI = False
@@ -1522,6 +1528,34 @@ def dedupe_sweep_overlap_forms(forms: List[Dict[str, Any]]) -> List[Dict[str, An
     return deduped
 
 
+def _parse_numeric_formulation_label(form: Dict[str, Any]) -> str:
+    raw_label = str(form.get("raw_formulation_label") or "").strip()
+    match = re.fullmatch(r"(\d{1,3})\s*\.?", raw_label)
+    if not match:
+        return ""
+    return str(int(match.group(1)))
+
+
+def prefer_numbered_doe_forms_over_llm_numeric_rows(forms: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    doe_numbers = {
+        _parse_numeric_formulation_label(form)
+        for form in forms
+        if str(form.get("candidate_source") or "").strip() == "doe_numbered_table_row"
+    }
+    doe_numbers.discard("")
+    if not doe_numbers:
+        return forms
+
+    preferred: List[Dict[str, Any]] = []
+    for form in forms:
+        candidate_source = str(form.get("candidate_source") or "").strip()
+        numeric_label = _parse_numeric_formulation_label(form)
+        if candidate_source == "llm_extracted" and numeric_label in doe_numbers:
+            continue
+        preferred.append(form)
+    return preferred
+
+
 def enumerate_figure_variable_sweep_candidates(
     forms: List[Dict[str, Any]],
     raw_text: str,
@@ -1800,6 +1834,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     p.add_argument("--sleep", type=float, default=0.4)
     p.add_argument("--retries", type=int, default=1)
     p.add_argument("--out-dir", default="")
+    p.add_argument(
+        "--disable-numbered-doe-enumerator",
+        action="store_true",
+        help="Disable the deterministic numbered DOE table-row enumerator. The default is enabled.",
+    )
     p.add_argument("--verbose", action="store_true")
     return p.parse_args(argv)
 
@@ -1828,6 +1867,8 @@ def main(argv: Optional[List[str]] = None) -> None:
     tsv_w.writeheader()
 
     n_forms = 0
+    numbered_doe_artifact_rows: List[Dict[str, Any]] = []
+    numbered_doe_summary_rows: List[Dict[str, Any]] = []
     with out_jsonl.open("w", encoding="utf-8") as jf:
         for i, paper in enumerate(papers, start=1):
             if not paper.text_path.exists():
@@ -1850,6 +1891,18 @@ def main(argv: Optional[List[str]] = None) -> None:
             forms = canonicalize_formulations(data)
             forms.extend(enumerate_figure_variable_sweep_candidates(forms, raw_txt, paper.key))
             forms = dedupe_sweep_overlap_forms(forms)
+            if not args.disable_numbered_doe_enumerator:
+                doe_forms, doe_artifacts, doe_summary = enumerate_numbered_doe_candidates_for_paper(
+                    paper=paper,
+                    raw_text=raw_txt,
+                    existing_forms=forms,
+                    min_numbered_rows=8,
+                )
+                if doe_forms:
+                    forms.extend(doe_forms)
+                    forms = prefer_numbered_doe_forms_over_llm_numeric_rows(forms)
+                numbered_doe_artifact_rows.extend(doe_artifacts)
+                numbered_doe_summary_rows.append(doe_summary)
 
             line = {
                 "key": paper.key,
@@ -1899,15 +1952,32 @@ def main(argv: Optional[List[str]] = None) -> None:
                 print(f"[{i}/{len(papers)}] key={paper.key} doi={paper.doi} formulations={len(forms)}")
 
     tsv_f.close()
+    if not args.disable_numbered_doe_enumerator:
+        numbered_doe_stats = write_candidate_artifacts(
+            out_dir=out_dir,
+            artifact_rows=numbered_doe_artifact_rows,
+            summary_rows=numbered_doe_summary_rows,
+            expected_min_recovered=0,
+        )
+    else:
+        numbered_doe_stats = {
+            "artifact_path": out_dir / NUMBERED_DOE_ARTIFACT_NAME,
+            "summary_path": out_dir / NUMBERED_DOE_SUMMARY_NAME,
+            "candidate_count": 0,
+            "paper_count": 0,
+        }
     summary = {
         "manifest_tsv": str(Path(args.manifest_tsv).resolve()),
         "model": args.model,
         "n_papers": len(papers),
         "n_formulations": n_forms,
+        "n_numbered_doe_candidates": int(numbered_doe_stats["candidate_count"]),
         "out_dir": str(out_dir.resolve()),
         "out_jsonl": str(out_jsonl.resolve()),
         "out_tsv": str(out_tsv.resolve()),
         "raw_responses_dir": str(raw_dir.resolve()),
+        "numbered_doe_candidates_tsv": str(Path(numbered_doe_stats["artifact_path"]).resolve()),
+        "numbered_doe_summary_tsv": str(Path(numbered_doe_stats["summary_path"]).resolve()),
     }
     (out_dir / "pilot_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))

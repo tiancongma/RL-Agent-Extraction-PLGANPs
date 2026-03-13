@@ -26,12 +26,14 @@ Manually reconciled against the current post-reduction repository structure on 2
 | `stage0_relevance` | 9 | Relevance filtering and Zotero sync |
 | `stage1_cleaning` | 6 | Manifest, cleaned text, and table extraction |
 | `stage2_sampling_labels` | 11 | Sampling, weak-label extraction, diagnostics, and evidence-bundle support |
+| `stage3_relation` | 2 | Deterministic post-LLM relation materialization |
 | `stage3_gt` | 0 | Reserved stage directory; no active Python scripts |
 | `stage4_eval` | 8 | External benchmark evaluation and diagnostics |
 | `stage5_benchmark` | 29 | Final-output closure, benchmark comparison, schema evaluation, audit, and export utilities |
 | `utils` | 17 | Shared path, split, run, and dataset utilities |
 
 Note:
+- `src/stage3_relation/` is the active deterministic Stage 3 runtime namespace.
 - `src/stage3_gt/` is present but currently contains no active Python scripts.
 - GT-related utilities now live under `archive/code/old_gt_arbitration/` and `archive/code/dev15_skeleton_bootstrap/`.
 
@@ -213,6 +215,9 @@ Note:
 - `src/stage5_benchmark/run_evidence_token_qc_v1.py`
   - Class: Reusable evaluation/diagnostic tool
   - Role: Field-level evidence-token gating QC for extracted numeric values; emits mismatch report, flagged review rows, and high-confidence filtered extraction rows.
+- `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
+  - Class: Reusable evaluation/diagnostic tool
+  - Role: Postprocess an existing `final_formulation_table_v1.tsv` into a reviewer-facing audit TSV with explicit confidence tiers, review priority, and provenance pointers.
 
 ## Manual Additions (2026-03-11)
 
@@ -232,6 +237,10 @@ Note:
   - Stage: Stage2 Sampling and Labels
   - Status: ACTIVE_SUPPORTING
   - Purpose: Case-specific diagnostic helper for `5GIF3D8W`; audits axis-specific sweep applicability across pre-fix and post-fix runs, maps paper-local evidence by axis, and isolates likely over-expanded rows before any axis-scoping fix.
+- `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
+  - Stage: Stage2 Sampling and Labels
+  - Status: ACTIVE_MAINLINE
+  - Purpose: Deterministic Stage2-boundary numbered DOE table-row enumerator; recovers explicit numbered formulation rows from Stage1 table assets and emits additive candidate artifacts with regression-threshold support.
 - `src/stage4_eval/eval_weak_labels_v7pilot3.py`
   - Stage: Stage4 Evaluation
   - Status: ACTIVE_MAINLINE
@@ -259,6 +268,25 @@ Note:
   - Stage: Stage5 Benchmark
   - Status: ACTIVE_MAINLINE
   - Purpose: Compare only the Stage 5 final formulation table against the authoritative fixed skeleton GT workbook for a declared scope.
+
+## Manual Additions (2026-03-13)
+
+- `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
+  - Stage: Stage3 Relation
+  - Status: ACTIVE_MAINLINE
+  - Purpose: Materialize deterministic paper-level formulation relation artifacts from Stage 2 weak-label rows without any LLM usage.
+- `src/stage3_relation/run_formulation_relation_artifacts_v1.py`
+  - Stage: Stage3 Relation
+  - Status: ACTIVE_SUPPORTING
+  - Purpose: Reproducible stage-local wrapper for run-scoped Stage 3 relation-materialization runs with explicit `RUN_CONTEXT.md`.
+- `src/utils/audit_run_lineage_layout_v1.py`
+  - Stage: Cross-cutting utility
+  - Status: ACTIVE_SUPPORTING
+  - Purpose: Deterministic lineage-layout audit for top-level `data/results/run_*` directories; flags sibling-run sprawl so one benchmark lineage can remain contained under one parent directory.
+- `src/utils/audit_results_top_level_semantics_v1.py`
+  - Stage: Cross-cutting utility
+  - Status: ACTIVE_SUPPORTING
+  - Purpose: Deterministic immediate-child audit for `data/results/`; classifies top-level entries into governed roles and emits audit-only TSV/Markdown surfaces without moving anything.
 
 ## Post-Reduction Registry Additions (2026-03-11)
 

@@ -26,7 +26,7 @@ Current scope:
 - corpus intake and relevance filtering from Zotero-derived raw records
 - manifest and cleaned-content construction
 - Stage 2 candidate formulation-instance extraction
-- Stage 3 formulation consolidation / normalization layer
+- Stage 3 deterministic formulation relation materialization layer
 - Stage 4 candidate-instance diagnostics and review surfaces
 - Stage 5 final formulation-table closure
 - a separate Stage 5 comparison node that reads the final formulation table and
@@ -43,11 +43,12 @@ The system canonical production path is:
 2. Stage 1: convert raw records into the authoritative manifest, cleaned text,
    and table assets
 3. Stage 2: extract candidate formulation-instance rows from the cleaned corpus
-4. Stage 3: convert candidate formulation-instance rows into normalized or
-   consolidated formulation records
+4. Stage 3: materialize explicit paper-level formulation relation artifacts
+   from candidate formulation-instance rows
 5. Stage 4: optionally generate candidate-level diagnostic and reviewer-facing
    artifacts
-6. Stage 5: close normalized formulation records into final formulation rows
+6. Stage 5: close candidate rows into final formulation rows with optional
+   Stage 3 relation provenance
 
 The production-path completion artifact is:
 
@@ -70,9 +71,13 @@ The active stage namespaces are exactly:
 - `src/stage0_relevance/`
 - `src/stage1_cleaning/`
 - `src/stage2_sampling_labels/`
-- `src/stage3_gt/`
+- `src/stage3_relation/`
 - `src/stage4_eval/`
 - `src/stage5_benchmark/`
+
+Reserved reference namespace:
+
+- `src/stage3_gt/`
 
 There is no active Stage 6 and no active Stage 7. There is also no active
 second Stage 5 namespace.
@@ -156,7 +161,9 @@ Consumed by downstream stage:
 
 Purpose:
 Extract high-recall candidate formulation-instance rows from cleaned paper
-content and tables.
+content and tables. This stage now also includes additive deterministic
+recovery of explicit numbered DOE table rows from existing Stage1 table assets
+when those rows were not already emitted by the LLM extraction path.
 
 Exact input files or directories:
 
@@ -168,6 +175,8 @@ Exact script path(s) and script filename(s):
 
 - `src/stage2_sampling_labels/sample_from_manifest_html_first.py`
 - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+- supporting deterministic augmentation tool:
+  - `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
 
 Exact output files or directories:
 
@@ -175,6 +184,9 @@ Exact output files or directories:
 - canonical candidate artifact:
   - `weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
 - supporting JSONL alongside the TSV
+- additive deterministic augmentation artifacts when numbered DOE rows are found:
+  - `weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
+  - `weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
 
 Stage completion artifact:
 
@@ -183,39 +195,43 @@ Stage completion artifact:
 
 Consumed by downstream stage:
 
-- Stage 3 for production-boundary consolidation
+- Stage 3 for deterministic relation materialization
 - Stage 4 for diagnostics
 
-### Stage 3. Formulation Consolidation / Normalization Layer
+### Stage 3. Deterministic Formulation Relation Materialization
 
 Purpose:
-Convert candidate formulation-instance extraction outputs into normalized
-formulation records suitable for final table closure.
-
-This is a formal production boundary in the governance contract. The repository
-does not yet contain a dedicated standalone Stage 3 script, so Stage 3 is
-currently defined as a required production-layer contract rather than as a
-separate checked-in runtime entrypoint.
+Materialize explicit paper-level formulation relation structure from Stage 2
+candidate rows without any LLM usage. This stage exists to separate relation
+reasoning from later Stage 5 final-row closure and export.
 
 Exact input files or directories:
 
 - Stage 2 candidate formulation-instance TSV
+- optional Stage 2 candidate JSONL
+- optional scope manifest TSV for paper title and source-path enrichment
 
 Exact script path(s) and script filename(s):
 
-- no dedicated Stage 3 script currently exists
+- `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
+- optional reproducibility wrapper:
+  - `src/stage3_relation/run_formulation_relation_artifacts_v1.py`
 
 Exact output files or directories:
 
-- a normalized or consolidated formulation record set used by Stage 5
+- `formulation_relation_records_v1.tsv`
+- `formulation_logic_graph_v1.jsonl`
+- `formulation_relation_summary_v1.tsv`
 
 Stage completion artifact:
 
-- the normalized or consolidated formulation record set consumed by Stage 5
+- the relation-record table:
+  - `formulation_relation_records_v1.tsv`
 
 Consumed by downstream stage:
 
-- Stage 5
+- Stage 5 as optional deterministic relation provenance input
+- human audit and failure localization
 
 ### Stage 4. Candidate-Level Diagnostics And Review Surfaces
 
@@ -258,7 +274,8 @@ records.
 
 Exact input files or directories:
 
-- Stage 3 normalized or consolidated formulation record set
+- Stage 2 candidate formulation-instance TSV
+- optional Stage 3 relation-record TSV
 - scope manifest TSV for the declared benchmark scope
 
 Exact script path(s) and script filename(s):
@@ -327,7 +344,7 @@ The production chain is:
 1. raw Zotero-derived records under `data/raw/zotero/`
 2. authoritative manifest and cleaned text assets under `data/cleaned/`
 3. Stage 2 candidate formulation-instance TSV under `data/results/run_<run_id>/`
-4. Stage 3 normalized or consolidated formulation record set
+4. Stage 3 relation-record artifact set
 5. optional Stage 4 diagnostic artifacts under `data/results/`
 6. Stage 5 final formulation table under `data/results/run_<run_id>/`
 
@@ -381,15 +398,23 @@ $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
 python src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py --manifest-tsv <scope_manifest.tsv> --model gemini-2.5-flash --out-dir data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse --verbose
 ```
 
-### Step 3. Produce or declare the Stage 3 normalized/consolidated formulation record set
+The numbered DOE row enumerator is enabled by default inside the active Stage 2
+extractor. Disable it only for controlled ablation or regression-localization
+work:
 
-Current repository state:
+```powershell
+$env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
+python src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py --manifest-tsv <scope_manifest.tsv> --model gemini-2.5-flash --out-dir data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse --disable-numbered-doe-enumerator
+```
 
-- Stage 3 is a formal production boundary
-- no dedicated standalone Stage 3 script is yet checked in
-- current Stage 5 closure logic therefore consumes the normalized or
-  consolidated formulation semantics directly from the Stage 2 candidate TSV
-  under a conservative contract
+### Step 3. Build the Stage 3 deterministic relation artifacts
+
+The Stage 3 layer is deterministic and must not call any LLM or external API.
+
+```powershell
+$env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
+python src/stage3_relation/run_formulation_relation_artifacts_v1.py --run-id <stage3_run_id> --out-subdir formulation_relation_v1 --weak-labels-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --weak-labels-jsonl data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.jsonl --scope-manifest-tsv <scope_manifest.tsv>
+```
 
 ### Step 4. Generate candidate-level diagnostics if needed
 
@@ -406,6 +431,13 @@ python src/stage4_eval/eval_weak_labels_v7pilot3.py --pilot-tsv data/results/<st
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
 python src/stage5_benchmark/build_minimal_final_output_v1.py --input-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --out-dir data/results/<final_run_id>
+```
+
+If Stage 3 relation artifacts are available, pass them explicitly:
+
+```powershell
+$env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
+python src/stage5_benchmark/build_minimal_final_output_v1.py --input-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --relation-records-tsv data/results/<stage3_run_id>/formulation_relation_v1/formulation_relation_records_v1.tsv --out-dir data/results/<final_run_id>
 ```
 
 ### Step 5B. Run the comparison node against GT
@@ -427,11 +459,23 @@ Benchmark-valid reporting requires the separate Step 5B comparison node.
 - Caching is allowed.
 - Bypassing required stages is not allowed.
 
+## Run-Lineage Containment
+
+- One top-level `data/results/run_*` directory represents one declared lineage.
+- Retries, repair passes, partial reruns, deterministic refreshes, and stage-only
+  child executions for that same lineage must stay under the parent lineage
+  directory rather than creating more sibling top-level run directories.
+- Recommended child layout:
+  - `data/results/<parent_run_id>/lineage/children/<ordered_role>/<child_run_id>/`
+- The parent lineage directory must remain the authoritative entrypoint for
+  human inspection and must expose a child-step index or mapping when nested
+  child runs exist.
+
 Examples of valid reuse:
 
 - reuse a checked raw Zotero-derived JSONL instead of re-running Stage 0
 - reuse a checked manifest and cleaned text set instead of re-running Stage 1
-- reuse an unchanged Stage 2 candidate TSV while iterating only on Stage 5
+- reuse an unchanged Stage 2 candidate TSV while iterating on Stage 3 or Stage 5
 - reuse the fixed manual GT workbook as a declared reference input
 
 Examples of invalid reuse:
@@ -464,11 +508,13 @@ are:
 - reference GT workbook:
   - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
 
-## Ambiguity Boundary
+## Stage 3 Scope Boundary
 
-One ambiguity remains in the repository contents: the Stage 3 consolidation
-boundary is now explicit in governance, but there is still no dedicated
-standalone Stage 3 runtime script. The production contract is clear, but the
-current implementation still expresses Stage 3 consolidation semantics through
-the documented boundary and downstream Stage 5 closure logic rather than through
-a separate checked-in Stage 3 entrypoint.
+The Stage 3 relation layer is intentionally lightweight in phase 1.
+
+- It materializes explicit method-group, parent-link, shared-field, and
+  variation-axis relations from Stage 2 weak labels.
+- It does not call any LLM or perform final benchmark comparison.
+- It improves auditability and provides optional provenance to Stage 5.
+- The current Stage 5 closure logic does not yet fully drive keep/drop/collapse
+  decisions from the relation artifact itself; that remains a future extension.

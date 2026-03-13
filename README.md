@@ -10,7 +10,7 @@ extraction stack. It is a Stage 0 to Stage 5 pipeline with explicit provenance:
 1. Zotero-derived raw corpus intake
 2. manifest and cleaned-content construction
 3. candidate formulation-instance extraction
-4. checked manual benchmark assets
+4. deterministic formulation relation materialization
 5. candidate-level diagnostics
 6. final formulation-table closure and final-table benchmark comparison
 
@@ -30,14 +30,18 @@ incremental-reuse rules.
 
 ## Active Stage Namespaces
 
-The active stage directories are exactly:
+The active runtime stage directories are:
 
 - `src/stage0_relevance/`
 - `src/stage1_cleaning/`
 - `src/stage2_sampling_labels/`
-- `src/stage3_gt/`
+- `src/stage3_relation/`
 - `src/stage4_eval/`
 - `src/stage5_benchmark/`
+
+The reserved non-runtime reference namespace is:
+
+- `src/stage3_gt/`
 
 There is no active Stage 6 or Stage 7 namespace. Historical or retired methods
 live outside `src/` under `archive/`.
@@ -68,6 +72,10 @@ Current active Stage 5 scripts:
 
 - `src/stage5_benchmark/build_minimal_final_output_v1.py`
 - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
+
+Current active Stage 3 script:
+
+- `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
 
 Current active Stage 2 script:
 

@@ -58,6 +58,9 @@ The minimal final-output layer does not own:
 
 Those responsibilities belong upstream, downstream, or in historical reference code.
 
+The final-output layer may consume Stage 3 relation artifacts as deterministic
+provenance, but relation materialization itself belongs to Stage 3, not Stage 5.
+
 ## Input artifacts
 
 Minimum required input:
@@ -67,6 +70,7 @@ Minimum required input:
 Optional but useful supporting inputs:
 
 - the split manifest used for the run
+- Stage 3 relation records from `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
 - candidate-instance evaluation diagnostics from the active Stage4 evaluator
 - cleaned text/table assets only if a later narrow guardrail needs traceable evidence lookup
 
@@ -88,9 +92,10 @@ The final formulation table is the contract boundary for future benchmark-valid 
 Before a run may be called `full_pipeline_benchmark_run`, the following must be true:
 
 1. Candidate-instance extraction has completed.
-2. The minimal final-output layer has executed on those candidate rows.
-3. The benchmark comparison is performed on the final formulation table, not directly on candidate rows.
-4. The run specification explicitly records that the run is benchmark-valid and names the final-output artifact used for comparison.
+2. Deterministic Stage 3 relation materialization has completed for the declared scope.
+3. The minimal final-output layer has executed on those candidate rows.
+4. The benchmark comparison is performed on the final formulation table, not directly on candidate rows.
+5. The run specification explicitly records that the run is benchmark-valid and names the final-output artifact used for comparison.
 
 If any of those conditions is missing, the run remains diagnostic-only.
 
@@ -101,6 +106,7 @@ Current candidate-instance runs remain valid engineering assets. They are still 
 The current DEV-15 path should therefore be read as:
 
 - candidate extraction and candidate diagnostics are implemented
+- deterministic relation materialization is implemented as an explicit Stage 3 layer
 - final-output closure is implemented in phase 1
 - final-table comparison is implemented as a Stage 5 step and must be run manually as part of the complete path
 
@@ -116,10 +122,11 @@ A `full_pipeline_benchmark_run` must include, in order:
 
 1. corpus/split selection and cleaned-input confirmation
 2. Stage2 candidate-instance extraction
-3. optional candidate-instance diagnostic evaluation
-4. minimal final-output layer execution
-5. benchmark comparison against GT using the final formulation table
-6. run-scoped reproducibility documentation naming the final-output artifact
+3. deterministic Stage 3 relation materialization
+4. optional candidate-instance diagnostic evaluation
+5. minimal final-output layer execution
+6. benchmark comparison against GT using the final formulation table
+7. run-scoped reproducibility documentation naming the final-output artifact
 
 Without steps 4 and 5, the run is not benchmark-valid.
 
@@ -141,7 +148,7 @@ This phase is intentionally smaller than the historical rule-heavy reconstructio
 Possible later extensions, which are not part of the minimum contract:
 
 1. richer DoE-specific coordinate alignment
-2. stronger parent/variant inheritance resolution
+2. stronger Stage 3 relation-aware parent/variant inheritance resolution
 3. measurement-level separation beyond the benchmark table
 4. modeling-target-specific export variants
 5. broader schema harmonization with older Stage5 experiments

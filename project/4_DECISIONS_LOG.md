@@ -607,3 +607,252 @@ Forbidden path behavior
 Consequence
 - Governance docs, script maps, and source-tree boundaries now describe one active Stage 0 to Stage 5 pipeline only.
 - Future debugging must follow the documented stage sequence and trace backward from Stage 5 mismatches rather than introducing new full-rerun wrappers.
+
+## 2026-03-13
+
+### Decision: Add an explicit deterministic Stage 3 formulation relation layer
+
+Decision
+- The active pipeline now includes a checked-in deterministic Stage 3 runtime layer under:
+  - `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
+  - `src/stage3_relation/run_formulation_relation_artifacts_v1.py`
+- This layer sits after Stage 2 weak-label extraction and before Stage 5 final formulation closure.
+- It must not call any LLM or external API.
+- It materializes explicit paper-level relation artifacts:
+  - `formulation_relation_records_v1.tsv`
+  - `formulation_logic_graph_v1.jsonl`
+  - `formulation_relation_summary_v1.tsv`
+
+Reason
+- Stage 2 candidate rows already contain semantic formulation hypotheses, but their relation structure was implicit and hard to audit.
+- A deterministic intermediate layer is needed to make method grouping, shared fields, variation axes, parent-child links, and candidate membership explicit before final flattening.
+- This separates relation reasoning from benchmark-facing closure logic and reduces pressure to hide reconstruction semantics inside Stage 5.
+
+Impact
+- Stage 3 is no longer only a documented contract; it now has a dedicated active runtime entrypoint.
+- Stage 5 may consume Stage 3 relation records as explicit provenance input.
+- Stage 4 remains diagnostic only and manual GT remains a reference input surface rather than the meaning of Stage 3.
+
+### Decision: Keep Stage 5 closure conservative in phase 1 while exposing Stage 3 provenance
+
+Decision
+- The current phase-1 Stage 5 builder continues to use the Stage 2 candidate TSV as its primary closure input.
+- Stage 3 relation artifacts are accepted as optional deterministic provenance and are attached to retained final rows when supplied.
+- Stage 3 relation artifacts do not yet fully drive Stage 5 keep/drop/collapse decisions.
+
+Reason
+- The first implementation target is explicit auditability, not immediate replacement of all existing closure heuristics.
+- This preserves current benchmark behavior while creating a governed insertion point for later deterministic relation-aware closure work.
+
+Impact
+- The active pipeline now has a visible and reproducible intermediate relation layer.
+- Remaining work is clearly bounded: future iterations may promote Stage 3 relations from provenance support to stronger closure control without changing the stage layout again.
+
+### Decision: Record UFXX9WXE as a confirmed Stage2 DOE table under-enumeration failure
+
+Case reference
+- `UFXX9WXE` / `10.1155/2014/156010`
+- Paper type: DOE-style optimization paper with explicitly numbered formulation rows in a source-paper table
+
+Problem statement
+- Manual paper review now confirms that the source paper contains a table with `26` explicitly numbered formulations.
+- The current active DEV15 lineage extracted only about `5` Stage2 candidate formulations for this paper and produced `4` benchmark-facing Stage5 final rows.
+- The current GT row count for this paper remains `26`.
+
+Diagnosis summary
+- The failure is confirmed upstream of Stage3 and Stage5:
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_diagnostic_summary.tsv` records `stage2_candidate_count = 5`, `stage5_final_row_count = 4`, and `gt_row_count = 26` for `UFXX9WXE`.
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_audit_pack.md` records this paper as a DOE-style table case with only a small subset of numbered anchors extracted.
+- This is not primarily a Stage3 relation failure:
+  - Stage3 already forms one coherent method group and identifies shared parameters and variation axes from the rows that Stage2 did emit.
+  - Stage3 cannot infer or materialize formulation rows that were never enumerated by Stage2.
+- This is not primarily a Stage5 collapse failure:
+  - Stage5 can only retain, collapse, or filter candidate rows that exist upstream.
+  - When numbered DOE rows are absent from Stage2 weak labels, Stage5 cannot reconstruct them from relation structure alone.
+- The confirmed engineering interpretation is therefore: the active Stage2 path is under-enumerating numbered DOE table rows for this paper.
+
+Decision
+- Record `UFXX9WXE` as a confirmed Stage2 under-enumeration failure for numbered DOE-style table rows.
+- Repository interpretation: downstream relation inference and closure are not the primary root cause for this paper's `26 -> 5 -> 4` loss pattern.
+- Future runs and future Codex analysis must treat similar cases the same way when the source paper contains explicitly numbered DOE/design rows that are missing from Stage2 weak-label output.
+
+Implementation status
+- No pipeline behavior change is merged by this record.
+- No new Stage3 or Stage5 recovery rule is authorized from this case record alone.
+- Any future fix must target the upstream DOE row-enumeration gap rather than treating this as a downstream reconstruction problem.
+
+Consequence
+- `UFXX9WXE` is now a confirmed reference case for Stage2 DOE table under-enumeration.
+- Downstream layers remain diagnostic for this failure class; they may localize the loss, but they must not be described as capable of recovering rows that Stage2 never emitted.
+
+### Decision: Add deterministic numbered DOE row enumeration at the Stage2 boundary
+
+Case reference
+- Primary regression target: `UFXX9WXE` / `10.1155/2014/156010`
+
+Decision
+- The active Stage2 boundary now includes a deterministic numbered DOE table-row enumerator implemented in:
+  - `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
+- The active Stage2 extractor `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` now additively calls this enumerator by default after LLM extraction and before writing the final Stage2 weak-label artifact.
+- The enumerator reads existing Stage1 table assets and emits explicit augmentation artifacts:
+  - `numbered_doe_row_candidates_v1.tsv`
+  - `numbered_doe_row_candidates_summary_v1.tsv`
+
+Reason
+- `UFXX9WXE` confirmed that prompt-only DOE instructions are insufficient for explicit numbered design tables.
+- Stage3 and Stage5 cannot reconstruct formulation rows that never existed in Stage2.
+- Existing DOE-specific downstream logic is either paper-specific (`WFDTQ4VX`) or branch-active downstream derivation support; it does not solve the upstream enumeration gap in the current canonical path.
+
+Scope
+- This implementation is intentionally minimal.
+- It targets explicit numbered DOE or design-table rows preserved in Stage1 table CSV assets.
+- It preserves non-core varying factors in explicit JSON columns inside the augmentation artifact and in Stage2 `change_descriptions`.
+- It does not yet attempt generalized coded-level DOE decoding or broad design-matrix reconstruction from prose alone.
+
+Regression protection
+- The enumerator CLI supports `--expected-min-recovered` and exits nonzero if the expected recovery threshold is not met.
+- `UFXX9WXE` is the primary regression paper for this capability because the source table contains `26` explicitly numbered formulations while the prior active Stage2 path extracted only about `5` candidates.
+
+Consequence
+- Numbered DOE row recovery is now an explicit upstream deterministic responsibility at the Stage2 boundary.
+- This is not a downstream patch and does not alter Stage3 or Stage5 ownership boundaries.
+
+### Decision: Enforce single-parent run-lineage containment for same-lineage retries and repair steps
+
+Decision
+- One top-level `data/results/run_*` directory now represents one benchmark or experiment lineage.
+- Stage-local retries, partial reruns, completion merges, deterministic refreshes, and repair steps for that same lineage must be nested as child executions under the parent lineage directory instead of remaining as sibling top-level runs.
+- The recommended child location is:
+  - `data/results/<parent_run_id>/lineage/children/<ordered_role>/<child_run_id>/`
+
+Reason
+- The recent DEV15 DOE rebuild accumulated multiple sibling top-level runs that shared the same timestamp and git short hash but differed only by retry or stage suffix.
+- That pattern preserved provenance but created human-facing sprawl, weakened run containment, and made it harder to understand one benchmark lineage by opening a single directory.
+
+Policy effect
+- A new top-level run is allowed only when the objective, scope, or benchmark contract is independent enough to stand alone.
+- Internal retries or recovery steps must stay under the existing lineage parent.
+- If same-lineage runs are reorganized after creation, the parent lineage directory must record old-to-new path mapping and child-step roles explicitly.
+
+Implementation note
+- The DEV15 DOE rebuild lineage rooted at `run_20260313_1235_f4912f3_dev15_current_merged_benchmark_doe_v1` was reorganized under this policy.
+- The repo now includes `src/utils/audit_run_lineage_layout_v1.py` as a deterministic sprawl-detection utility for top-level run directories.
+
+### Decision: In strong numbered DOE tables, deterministic Stage2 enumeration is primary and the LLM acts as judge rather than row counter
+
+Case reference
+- `UFXX9WXE` / `10.1155/2014/156010`
+
+Confirmed repository evidence
+- The baseline miss was not caused by missing source data:
+  - `data/cleaned/goren_2025/tables/UFXX9WXE/tables_manifest.json` records `html_found = false`, `pdf_found = true`, `n_tables_pdf_extracted = 18`, and `preferred_table_source = pdf`.
+  - `data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_13__pdf_table.csv` preserves the explicit numbered DOE structure with rows `1.` through `26.`.
+- The critical numbered structure was already present before Stage2:
+  - `data/cleaned/goren_2025/text/UFXX9WXE/UFXX9WXE.pdf.txt` preserves the same numbered table content in cleaned text.
+- The primary baseline failure occurred at Stage2 interpretation time:
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/weak_labels_v7pilot_r3_fixparse/raw_responses/08_UFXX9WXE_10.1155_2014_156010.txt` shows the model describing only three specific design rows plus the optimized formulation from a truncated full-text window.
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_diagnostic_summary.tsv` records `stage2_candidate_count = 5` and `stage5_final_row_count = 4` against `gt_row_count = 26`.
+- DOE recovery succeeded by deterministic enumeration over the already-available Stage1 PDF table asset:
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/lineage/children/run_20260313_1157_f4912f3_ufxx9wxe_doe_row_recovery_v5/numbered_doe_row_candidates_v1/numbered_doe_row_candidates_summary_v1.tsv` records `numbered_rows_found = 26`, `existing_stage2_numeric_rows = 3`, and `new_candidates_emitted = 23`.
+
+Decision
+- In strong DOE-style numbered tables, deterministic row enumeration is the primary row-discovery mechanism at the Stage2 boundary.
+- The LLM must not be treated as the primary mechanism for row counting or row discovery when a structured Stage1 table asset already exposes stable numbered row anchors.
+- In these strong-structure cases, the LLM acts as judge, not counter.
+
+Stage2 gating strategy
+- `deterministic_enumeration`
+  - use when a structured Stage1 table asset exists
+  - use when the table exposes stable row anchors such as numbered rows
+  - use when the table shows row-wise formulation or design structure
+  - use only when safety guards do not indicate obvious misfire risk
+- `hybrid_enumeration_review`
+  - use when deterministic row anchors exist but the table has enough irregularity that enumerated rows should be emitted with explicit review-oriented provenance
+- `llm_discovery_only`
+  - use when no reliable structured table asset exists or the paper does not expose stable row-wise formulation structure suitable for deterministic enumeration
+
+LLM role in strong-structure cases
+- confirm that a detected table is actually a formulation or design table
+- validate whether enumerated rows are true formulation rows
+- map column semantics to Stage2 schema fields
+- identify exceptional rows such as optimized, control, summary, validation, or non-formulation rows
+
+Scope decision for next engineering work
+- The next justified optimization target is the Stage2 boundary for `UFXX9WXE`-class papers.
+- The immediate goal is not a broad DEV15-wide DOE rollout.
+- The priority is a bounded Stage2 fix and validation path for strong numbered DOE tables.
+- The current full DEV15 DOE rebuild is not baseline-ready because broader regressions remain outside the confirmed UFXX recovery case.
+
+Consequence
+- Similar future cases should be classified first by source sufficiency and row-anchor strength, not by defaulting to more prompt-side row discovery.
+- Broad benchmark rollout remains downstream of bounded Stage2 validation for strong numbered DOE tables.
+
+### Decision: Prefer deterministic numbered-table rows over overlapping LLM numeric rows in the active Stage2 merge path, validated on UFXX9WXE
+
+Case reference
+- `UFXX9WXE` / `10.1155/2014/156010`
+
+Patched code path
+- `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+
+Decision
+- When the deterministic numbered DOE enumerator emits a strong structured-table row whose numeric label overlaps an existing `llm_extracted` row, the structured-table row is preferred.
+- The overlapping `llm_extracted` numeric row is removed from the Stage2 candidate set instead of blocking deterministic emission.
+
+Reason
+- Before this patch, the active enumerator still suppressed deterministic rows `1`, `2`, and `3` for `UFXX9WXE` because the LLM had already emitted overlapping numeric labels from a `full_text_window` surface.
+- That behavior left the active path partially dependent on opaque LLM row counting even in a paper where a structured Stage1 PDF table already preserved the full numbered DOE design.
+
+Bounded validation
+- UFXX-only replay run:
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/lineage/children/run_20260313_1526_f4912f3_ufxx_only_stage2_doe_validation_v1`
+- Observed result:
+  - baseline Stage2 candidate count: `5`
+  - validation Stage2 candidate count: `28`
+  - deterministic numbered DOE candidates: `26`
+  - baseline final UFXX count: `4`
+  - validation final UFXX count: `28`
+  - GT count: `26`
+
+Interpretation
+- The bounded validation succeeded for the intended patch target.
+- The active Stage2 path now explicitly uses the structured Stage1 PDF table asset for the numbered DOE rows and replaces overlapping numeric `llm_extracted` rows with `doe_numbered_table_row` rows.
+- A residual `+2` remains at final output because two non-table LLM rows were still retained, so the patch is not yet a broad DOE rollout authorization.
+
+### Decision: Reuse existing raw LLM outputs for validation and replay whenever the LLM-facing input has not changed
+
+Decision
+- Validation or replay runs must reuse existing raw LLM outputs whenever the code change does not alter the LLM-facing input.
+- Fresh LLM calls are required only when the LLM-facing input changes in a way that can change model output.
+
+LLM-facing input definition
+- prompt text
+- source window or context selection
+- table/text evidence actually sent to the model
+- model name or version
+- sampling or generation configuration
+- any upstream logic that changes what is sent to the model, even if downstream schemas stay the same
+
+Reuse-eligible change classes
+- weak-label parsing only
+- deterministic candidate generation
+- merge, overlap, or dedup logic
+- relation or provenance processing
+- final table generation
+- audit export
+- confidence or review export
+
+Engineering rationale
+- preserve reproducibility by holding raw model outputs constant when the model-facing input is unchanged
+- control cost by avoiding unnecessary regeneration
+- keep baseline comparisons fair by separating downstream deterministic changes from new model behavior
+- accelerate bounded validation cycles by replaying from existing raw outputs where possible
+
+Naming guidance
+- Runs that reuse existing raw LLM outputs must be described as replay or reuse-LLM validation runs.
+- They must not be described as fresh full-regeneration runs.
+
+Conservative rule
+- If the repository cannot prove that the full LLM-facing input is unchanged because model/config or evidence-window provenance is missing, the run should be treated as `unproven for strict raw-output reuse equivalence`.
+- In that case, documentation may still describe a pragmatic replay, but it must not claim strict LLM-input identity without evidence.

@@ -44,6 +44,7 @@ def render_run_context(
     run_id: str,
     run_type: str,
     input_tsv: Path,
+    relation_records_tsv: Path | None,
     run_dir: Path,
     stats: dict[str, object],
 ) -> str:
@@ -66,6 +67,11 @@ def render_run_context(
             "## 4. Starting input artifact(s)",
             "",
             f"- candidate_input_tsv: `{input_tsv}`",
+            (
+                f"- relation_records_tsv: `{relation_records_tsv}`"
+                if relation_records_tsv is not None
+                else "- relation_records_tsv: `not provided`"
+            ),
             "",
             "## 5. Exact script execution order",
             "",
@@ -124,6 +130,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--input-tsv", required=True, type=Path)
+    parser.add_argument("--relation-records-tsv", type=Path, default=None)
     parser.add_argument(
         "--run-type",
         default="component_regression_run",
@@ -143,8 +150,19 @@ def main() -> None:
             "Stage 5A final-output-only runs must not be labeled full_pipeline_benchmark_run because they stop before the Stage 5B final-table GT comparison step."
         )
 
-    stats = build_minimal_final_output(args.input_tsv, run_dir)
-    run_context = render_run_context(run_id, args.run_type, args.input_tsv, run_dir, stats)
+    stats = build_minimal_final_output(
+        args.input_tsv,
+        run_dir,
+        relation_records_tsv=args.relation_records_tsv,
+    )
+    run_context = render_run_context(
+        run_id,
+        args.run_type,
+        args.input_tsv,
+        args.relation_records_tsv,
+        run_dir,
+        stats,
+    )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
 
     print(
@@ -153,6 +171,9 @@ def main() -> None:
                 "run_id": run_id,
                 "run_type": args.run_type,
                 "input_tsv": str(args.input_tsv),
+                "relation_records_tsv": (
+                    str(args.relation_records_tsv) if args.relation_records_tsv else ""
+                ),
                 "run_dir": str(run_dir),
                 "final_table_path": str(stats["final_table_path"]),
                 "decision_trace_path": str(stats["decision_trace_path"]),

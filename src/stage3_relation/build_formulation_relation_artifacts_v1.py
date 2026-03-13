@@ -1,0 +1,846 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+"""
+Build deterministic Stage 3 formulation relation artifacts from Stage 2 weak labels.
+
+Purpose:
+- Materialize an explicit, auditable paper-level formulation relation layer.
+- Separate relation reasoning from later Stage 5 final-row closure.
+- Expose method groups, shared fields, variation axes, parent links, and
+  candidate-level field membership without any LLM usage.
+
+Inputs:
+- A Stage 2 weak-label TSV produced by the active extractor.
+- An optional Stage 2 weak-label JSONL for paper-level notes or cross-checking.
+- An optional scope manifest TSV for paper title and source-path enrichment.
+
+Outputs:
+- `formulation_relation_records_v1.tsv`
+- `formulation_logic_graph_v1.jsonl`
+- `formulation_relation_summary_v1.tsv`
+
+Stage role:
+- Concrete implementation of the deterministic Stage 3 relation/materialization
+  boundary between candidate extraction and final formulation closure.
+
+This script does not:
+- call any LLM or external API,
+- perform benchmark comparison,
+- overwrite upstream Stage 2 outputs,
+- decide the final benchmark-valid formulation table by itself.
+"""
+
+import argparse
+import csv
+import hashlib
+import json
+import re
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+
+RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
+RELATION_GRAPH_JSONL_NAME = "formulation_logic_graph_v1.jsonl"
+RELATION_SUMMARY_NAME = "formulation_relation_summary_v1.tsv"
+
+BASE_ROW_COLUMNS = {
+    "key",
+    "doi",
+    "model",
+    "local_instance_id",
+    "formulation_id",
+    "raw_formulation_label",
+    "polymer_identity",
+    "polymer_name_raw",
+    "instance_kind",
+    "parent_instance_id",
+    "change_descriptions",
+    "change_role",
+    "instance_context_tags",
+    "change_context_tags",
+    "supporting_evidence_refs",
+    "formulation_role",
+    "instance_confidence",
+    "candidate_source",
+    "instance_evidence_region_type",
+    "evidence_section",
+    "evidence_span_text",
+    "evidence_span_start",
+    "evidence_span_end",
+}
+
+RELATION_FIELDNAMES = [
+    "relation_row_id",
+    "relation_graph_id",
+    "paper_key",
+    "doi",
+    "paper_title",
+    "method_group_id",
+    "variation_axis_id",
+    "formulation_candidate_id",
+    "candidate_label",
+    "parent_entity_id",
+    "related_entity_id",
+    "relation_type",
+    "field_name",
+    "field_value_raw",
+    "field_value_norm",
+    "field_scope",
+    "candidate_source",
+    "instance_kind",
+    "formulation_role",
+    "evidence_source_type",
+    "evidence_section",
+    "evidence_snippet",
+    "is_shared",
+    "variation_axis_indicator",
+    "source_weak_label_row_ref",
+    "deterministic_confidence",
+    "provenance_note",
+]
+
+SUMMARY_FIELDNAMES = [
+    "paper_key",
+    "doi",
+    "paper_title",
+    "relation_graph_id",
+    "candidate_count",
+    "method_group_count",
+    "shared_field_count",
+    "variation_axis_count",
+    "variation_membership_count",
+    "parent_link_count",
+    "relation_row_count",
+    "relation_type_counts_json",
+]
+
+METHOD_GROUP_SIGNATURE_FIELDS = [
+    "emul_method",
+    "emul_type",
+    "organic_solvent",
+    "surfactant_name",
+    "surfactant_concentration_text",
+    "pva_conc_percent",
+]
+
+VARIATION_AXIS_FIELDS = {
+    "polymer_identity",
+    "la_ga_ratio",
+    "plga_mw_kDa",
+    "plga_mass_mg",
+    "surfactant_name",
+    "surfactant_concentration_text",
+    "pva_conc_percent",
+    "organic_solvent",
+    "drug_name",
+    "drug_feed_amount_text",
+    "emul_type",
+    "emul_method",
+}
+
+
+def normalize_text(value: Any) -> str:
+    text = str(value or "").strip()
+    return re.sub(r"\s+", " ", text)
+
+
+def normalize_token(value: Any) -> str:
+    text = normalize_text(value).lower()
+    if not text:
+        return ""
+    text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
+    return re.sub(r"_+", "_", text).strip("_")
+
+
+def truncate_text(value: Any, max_len: int = 240) -> str:
+    text = normalize_text(value)
+    if len(text) <= max_len:
+        return text
+    return text[: max_len - 3].rstrip() + "..."
+
+
+def short_hash(text: str, length: int = 12) -> str:
+    return hashlib.sha1(text.encode("utf-8")).hexdigest()[:length]
+
+
+def read_tsv_rows(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle, delimiter="\t"))
+
+
+def read_jsonl_rows(path: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if line:
+                rows.append(json.loads(line))
+    return rows
+
+
+def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter="\t")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
+def extract_field_names(headers: list[str]) -> list[str]:
+    fields: list[str] = []
+    for header in headers:
+        if header.endswith("_value"):
+            name = header[: -len("_value")]
+            if name not in fields:
+                fields.append(name)
+    for extra in ["polymer_identity", "polymer_name_raw"]:
+        if extra in headers and extra not in fields:
+            fields.append(extra)
+    return fields
+
+
+def load_manifest_map(path: Path | None) -> dict[str, dict[str, str]]:
+    if path is None:
+        return {}
+    rows = read_tsv_rows(path)
+    out: dict[str, dict[str, str]] = {}
+    for row in rows:
+        key = normalize_text(row.get("key") or row.get("zotero_key") or row.get("paper_key"))
+        if key:
+            out[key] = row
+    return out
+
+
+def load_jsonl_notes(path: Path | None) -> dict[tuple[str, str], dict[str, Any]]:
+    if path is None:
+        return {}
+    out: dict[tuple[str, str], dict[str, Any]] = {}
+    for row in read_jsonl_rows(path):
+        key = normalize_text(row.get("key"))
+        formulation_id = normalize_text(row.get("formulation_id"))
+        if key and formulation_id:
+            out[(key, formulation_id)] = row
+    return out
+
+
+def candidate_id(row: dict[str, str]) -> str:
+    return normalize_text(row.get("local_instance_id") or row.get("formulation_id"))
+
+
+def weak_label_row_ref(row: dict[str, str], row_index: int) -> str:
+    return f"{normalize_text(row.get('key'))}::{candidate_id(row)}::row_{row_index}"
+
+
+def field_raw_value(row: dict[str, str], field_name: str) -> str:
+    if field_name in {"polymer_identity", "polymer_name_raw"}:
+        return normalize_text(row.get(field_name))
+    return normalize_text(row.get(f"{field_name}_value_text") or row.get(f"{field_name}_value"))
+
+
+def field_scope(row: dict[str, str], field_name: str) -> str:
+    if field_name in {"polymer_identity", "polymer_name_raw"}:
+        return "row_level"
+    return normalize_text(row.get(f"{field_name}_scope"))
+
+
+def field_evidence_source_type(row: dict[str, str], field_name: str) -> str:
+    if field_name in {"polymer_identity", "polymer_name_raw"}:
+        return normalize_text(row.get("instance_evidence_region_type")) or "row_level"
+    return normalize_text(row.get(f"{field_name}_evidence_region_type")) or normalize_text(
+        row.get("instance_evidence_region_type")
+    )
+
+
+def field_value_norm(row: dict[str, str], field_name: str) -> str:
+    raw = field_raw_value(row, field_name)
+    if field_name in {"polymer_identity", "polymer_name_raw"}:
+        return normalize_token(raw)
+    if not raw:
+        return ""
+    if field_name == "la_ga_ratio":
+        compact = raw.replace(" ", "")
+        match = re.search(r"(\d+)\s*[:/]\s*(\d+)", compact)
+        if match:
+            return f"{match.group(1)}:{match.group(2)}"
+    return normalize_token(raw)
+
+
+def method_group_signature(row: dict[str, str]) -> str:
+    parts: list[str] = []
+    for field_name in METHOD_GROUP_SIGNATURE_FIELDS:
+        raw = field_raw_value(row, field_name)
+        if not raw:
+            continue
+        scope = field_scope(row, field_name)
+        if scope and scope != "global_shared":
+            continue
+        parts.append(f"{field_name}={field_value_norm(row, field_name)}")
+    if not parts:
+        fallback = [
+            f"{field_name}={field_value_norm(row, field_name)}"
+            for field_name in ["emul_method", "emul_type", "organic_solvent"]
+            if field_value_norm(row, field_name)
+        ]
+        if fallback:
+            return "|".join(fallback)
+        return "paper_default_method_group"
+    return "|".join(parts)
+
+
+def method_group_id(paper_key: str, signature: str) -> str:
+    return f"{paper_key}__mg__{short_hash(signature)}"
+
+
+def relation_graph_id(paper_key: str, candidate_ids: list[str]) -> str:
+    payload = "|".join(sorted(candidate_ids))
+    return f"{paper_key}__logic__{short_hash(payload)}"
+
+
+def variation_axis_id(method_group: str, field_name: str) -> str:
+    return f"{method_group}__axis__{short_hash(field_name)}"
+
+
+def add_relation_row(
+    rows: list[dict[str, Any]],
+    *,
+    relation_graph: str,
+    paper_key: str,
+    doi: str,
+    paper_title: str,
+    method_group: str,
+    variation_axis: str,
+    candidate: str,
+    candidate_label: str,
+    parent_entity: str,
+    related_entity: str,
+    relation_type: str,
+    field_name: str,
+    field_value_raw: str,
+    field_value_norm: str,
+    field_scope_value: str,
+    candidate_source: str,
+    instance_kind: str,
+    formulation_role: str,
+    evidence_source_type: str,
+    evidence_section: str,
+    evidence_snippet: str,
+    is_shared: str,
+    variation_axis_indicator: str,
+    source_weak_label_row_ref: str,
+    deterministic_confidence: str,
+    provenance_note: str,
+    ) -> None:
+    payload = "|".join(
+        [
+            relation_graph,
+            paper_key,
+            method_group,
+            variation_axis,
+            candidate,
+            related_entity,
+            relation_type,
+            field_name,
+            field_value_norm,
+            source_weak_label_row_ref,
+        ]
+    )
+    rows.append(
+        {
+            "relation_row_id": f"rr__{short_hash(payload)}",
+            "relation_graph_id": relation_graph,
+            "paper_key": paper_key,
+            "doi": doi,
+            "paper_title": paper_title,
+            "method_group_id": method_group,
+            "variation_axis_id": variation_axis,
+            "formulation_candidate_id": candidate,
+            "candidate_label": candidate_label,
+            "parent_entity_id": parent_entity,
+            "related_entity_id": related_entity,
+            "relation_type": relation_type,
+            "field_name": field_name,
+            "field_value_raw": field_value_raw,
+            "field_value_norm": field_value_norm,
+            "field_scope": field_scope_value,
+            "candidate_source": candidate_source,
+            "instance_kind": instance_kind,
+            "formulation_role": formulation_role,
+            "evidence_source_type": evidence_source_type,
+            "evidence_section": evidence_section,
+            "evidence_snippet": evidence_snippet,
+            "is_shared": is_shared,
+            "variation_axis_indicator": variation_axis_indicator,
+            "source_weak_label_row_ref": source_weak_label_row_ref,
+            "deterministic_confidence": deterministic_confidence,
+            "provenance_note": provenance_note,
+        }
+    )
+
+
+def build_relation_artifacts(
+    weak_labels_tsv: Path,
+    out_dir: Path,
+    weak_labels_jsonl: Path | None = None,
+    scope_manifest_tsv: Path | None = None,
+) -> dict[str, Any]:
+    if not weak_labels_tsv.exists():
+        raise FileNotFoundError(f"weak-label TSV not found: {weak_labels_tsv}")
+    if weak_labels_jsonl is not None and not weak_labels_jsonl.exists():
+        raise FileNotFoundError(f"weak-label JSONL not found: {weak_labels_jsonl}")
+    if scope_manifest_tsv is not None and not scope_manifest_tsv.exists():
+        raise FileNotFoundError(f"scope manifest TSV not found: {scope_manifest_tsv}")
+
+    rows = read_tsv_rows(weak_labels_tsv)
+    if not rows:
+        raise ValueError(f"No rows found in weak-label TSV: {weak_labels_tsv}")
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    manifest_map = load_manifest_map(scope_manifest_tsv)
+    jsonl_map = load_jsonl_notes(weak_labels_jsonl)
+    field_names = extract_field_names(list(rows[0].keys()))
+
+    rows_by_key: dict[str, list[tuple[int, dict[str, str]]]] = defaultdict(list)
+    for idx, row in enumerate(rows, start=1):
+        paper_key = normalize_text(row.get("key"))
+        if not paper_key:
+            raise ValueError(f"Missing key on weak-label row {idx}")
+        rows_by_key[paper_key].append((idx, row))
+
+    relation_rows: list[dict[str, Any]] = []
+    paper_graph_rows: list[str] = []
+    summary_rows: list[dict[str, Any]] = []
+
+    for paper_key in sorted(rows_by_key):
+        indexed_rows = rows_by_key[paper_key]
+        first_row = indexed_rows[0][1]
+        doi = normalize_text(first_row.get("doi"))
+        manifest_row = manifest_map.get(paper_key, {})
+        paper_title = normalize_text(first_row.get("paper_title") or manifest_row.get("title"))
+        candidate_ids = [candidate_id(row) for _, row in indexed_rows]
+        graph_id = relation_graph_id(paper_key, candidate_ids)
+
+        method_groups: dict[str, dict[str, Any]] = {}
+        candidate_items: list[dict[str, Any]] = []
+        relation_type_counter: Counter[str] = Counter()
+        shared_field_count = 0
+        variation_axis_count = 0
+        variation_membership_count = 0
+        parent_link_count = 0
+
+        for row_index, row in indexed_rows:
+            cid = candidate_id(row)
+            mg_signature = method_group_signature(row)
+            mg_id = method_group_id(paper_key, mg_signature)
+            method_groups.setdefault(
+                mg_id,
+                {
+                    "method_group_id": mg_id,
+                    "signature": mg_signature,
+                    "member_candidate_ids": [],
+                    "shared_fields": [],
+                    "variation_axes": [],
+                },
+            )
+            method_groups[mg_id]["member_candidate_ids"].append(cid)
+
+            parent_id = normalize_text(row.get("parent_instance_id"))
+            weak_ref = weak_label_row_ref(row, row_index)
+            evidence_source = normalize_text(row.get("instance_evidence_region_type"))
+            evidence_section = normalize_text(row.get("evidence_section"))
+            evidence_snippet = truncate_text(row.get("evidence_span_text"))
+
+            add_relation_row(
+                relation_rows,
+                relation_graph=graph_id,
+                paper_key=paper_key,
+                doi=doi,
+                paper_title=paper_title,
+                method_group=mg_id,
+                variation_axis="",
+                candidate=cid,
+                candidate_label=normalize_text(row.get("raw_formulation_label")),
+                parent_entity=parent_id,
+                related_entity=mg_id,
+                relation_type="candidate_in_method_group",
+                field_name="method_group_signature",
+                field_value_raw=mg_signature,
+                field_value_norm=normalize_token(mg_signature),
+                field_scope_value="method_group",
+                candidate_source=normalize_text(row.get("candidate_source")),
+                instance_kind=normalize_text(row.get("instance_kind")),
+                formulation_role=normalize_text(row.get("formulation_role")),
+                evidence_source_type=evidence_source or "row_level",
+                evidence_section=evidence_section,
+                evidence_snippet=evidence_snippet,
+                is_shared="no",
+                variation_axis_indicator="no",
+                source_weak_label_row_ref=weak_ref,
+                deterministic_confidence="high",
+                provenance_note="Deterministic method-group assignment from synthesis-field signature.",
+            )
+            relation_type_counter["candidate_in_method_group"] += 1
+
+            if parent_id:
+                parent_confidence = "high" if parent_id in candidate_ids else "medium"
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=parent_id,
+                    related_entity=parent_id,
+                    relation_type="candidate_parent_link",
+                    field_name="parent_instance_id",
+                    field_value_raw=parent_id,
+                    field_value_norm=normalize_token(parent_id),
+                    field_scope_value="candidate_link",
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type=evidence_source or "row_level",
+                    evidence_section=evidence_section,
+                    evidence_snippet=evidence_snippet,
+                    is_shared="no",
+                    variation_axis_indicator="no",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence=parent_confidence,
+                    provenance_note="Parent link copied directly from Stage2 parent_instance_id.",
+                )
+                relation_type_counter["candidate_parent_link"] += 1
+                parent_link_count += 1
+
+            field_membership: list[dict[str, Any]] = []
+            for field_name in field_names:
+                raw_value = field_raw_value(row, field_name)
+                norm_value = field_value_norm(row, field_name)
+                if not raw_value:
+                    continue
+                specific_source = field_evidence_source_type(row, field_name)
+                scope_value = field_scope(row, field_name)
+                field_row = {
+                    "field_name": field_name,
+                    "field_value_raw": raw_value,
+                    "field_value_norm": norm_value,
+                    "field_scope": scope_value,
+                    "evidence_source_type": specific_source or evidence_source or "row_level",
+                    "evidence_section": evidence_section,
+                    "evidence_snippet": evidence_snippet,
+                    "weak_ref": weak_ref,
+                }
+                field_membership.append(field_row)
+                confidence = "high" if scope_value == "global_shared" else "medium"
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=parent_id,
+                    related_entity=cid,
+                    relation_type="candidate_field_membership",
+                    field_name=field_name,
+                    field_value_raw=raw_value,
+                    field_value_norm=norm_value,
+                    field_scope_value=scope_value,
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type=specific_source or evidence_source or "row_level",
+                    evidence_section=evidence_section,
+                    evidence_snippet=evidence_snippet,
+                    is_shared="yes" if scope_value == "global_shared" else "no",
+                    variation_axis_indicator="no",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence=confidence,
+                    provenance_note="Field membership copied directly from a populated Stage2 column.",
+                )
+                relation_type_counter["candidate_field_membership"] += 1
+
+            paper_notes = ""
+            jsonl_item = jsonl_map.get((paper_key, cid))
+            if jsonl_item:
+                paper_notes = truncate_text(jsonl_item.get("paper_notes"), max_len=320)
+            candidate_items.append(
+                {
+                    "formulation_candidate_id": cid,
+                    "candidate_label": normalize_text(row.get("raw_formulation_label")),
+                    "method_group_id": mg_id,
+                    "parent_candidate_id": parent_id,
+                    "candidate_source": normalize_text(row.get("candidate_source")),
+                    "instance_kind": normalize_text(row.get("instance_kind")),
+                    "formulation_role": normalize_text(row.get("formulation_role")),
+                    "instance_confidence": normalize_text(row.get("instance_confidence")),
+                    "source_weak_label_row_ref": weak_ref,
+                    "paper_notes": paper_notes,
+                    "field_membership": field_membership,
+                }
+            )
+
+        candidates_by_group: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for item in candidate_items:
+            candidates_by_group[item["method_group_id"]].append(item)
+
+        for mg_id, group in sorted(method_groups.items()):
+            members = candidates_by_group[mg_id]
+            candidate_labels = {
+                item["formulation_candidate_id"]: item["candidate_label"] for item in members
+            }
+            for field_name in field_names:
+                values = [
+                    member_field
+                    for member in members
+                    for member_field in member["field_membership"]
+                    if member_field["field_name"] == field_name and member_field["field_value_norm"]
+                ]
+                if not values:
+                    continue
+                value_counter = Counter(item["field_value_norm"] for item in values if item["field_value_norm"])
+                distinct_values = [value for value in value_counter if value]
+                if not distinct_values:
+                    continue
+
+                any_global_shared = any(item["field_scope"] == "global_shared" for item in values)
+                if any_global_shared or len(distinct_values) == 1 and len(values) >= 2:
+                    shared_field = values[0]
+                    group["shared_fields"].append(
+                        {
+                            "field_name": field_name,
+                            "field_value_norm": shared_field["field_value_norm"],
+                            "field_value_raw": shared_field["field_value_raw"],
+                        }
+                    )
+                    add_relation_row(
+                        relation_rows,
+                        relation_graph=graph_id,
+                        paper_key=paper_key,
+                        doi=doi,
+                        paper_title=paper_title,
+                        method_group=mg_id,
+                        variation_axis="",
+                        candidate="",
+                        candidate_label="",
+                        parent_entity="",
+                        related_entity=mg_id,
+                        relation_type="method_group_shared_field",
+                        field_name=field_name,
+                        field_value_raw=shared_field["field_value_raw"],
+                        field_value_norm=shared_field["field_value_norm"],
+                        field_scope_value="group_shared",
+                        candidate_source="",
+                        instance_kind="",
+                        formulation_role="",
+                        evidence_source_type=shared_field["evidence_source_type"],
+                        evidence_section=shared_field["evidence_section"],
+                        evidence_snippet=shared_field["evidence_snippet"],
+                        is_shared="yes",
+                        variation_axis_indicator="no",
+                        source_weak_label_row_ref=shared_field["weak_ref"],
+                        deterministic_confidence="high" if any_global_shared else "medium",
+                        provenance_note=(
+                            "Shared field inferred from explicit Stage2 global_shared scope."
+                            if any_global_shared
+                            else "Shared field inferred because all populated member values match within the method group."
+                        ),
+                    )
+                    relation_type_counter["method_group_shared_field"] += 1
+                    shared_field_count += 1
+
+                if field_name in VARIATION_AXIS_FIELDS and len(distinct_values) > 1:
+                    axis_id = variation_axis_id(mg_id, field_name)
+                    group["variation_axes"].append(
+                        {
+                            "variation_axis_id": axis_id,
+                            "field_name": field_name,
+                            "distinct_values": distinct_values,
+                        }
+                    )
+                    representative = values[0]
+                    add_relation_row(
+                        relation_rows,
+                        relation_graph=graph_id,
+                        paper_key=paper_key,
+                        doi=doi,
+                        paper_title=paper_title,
+                        method_group=mg_id,
+                        variation_axis=axis_id,
+                        candidate="",
+                        candidate_label="",
+                        parent_entity="",
+                        related_entity=mg_id,
+                        relation_type="method_group_variation_axis",
+                        field_name=field_name,
+                        field_value_raw=json.dumps(distinct_values, ensure_ascii=True),
+                        field_value_norm="|".join(sorted(distinct_values)),
+                        field_scope_value="variation_axis",
+                        candidate_source="",
+                        instance_kind="",
+                        formulation_role="",
+                        evidence_source_type=representative["evidence_source_type"],
+                        evidence_section=representative["evidence_section"],
+                        evidence_snippet=representative["evidence_snippet"],
+                        is_shared="no",
+                        variation_axis_indicator="yes",
+                        source_weak_label_row_ref=representative["weak_ref"],
+                        deterministic_confidence="high" if len(distinct_values) >= 3 else "medium",
+                        provenance_note="Variation axis inferred from multiple candidate values within one deterministic method group.",
+                    )
+                    relation_type_counter["method_group_variation_axis"] += 1
+                    variation_axis_count += 1
+
+                    for member in members:
+                        axis_field = next(
+                            (
+                                item
+                                for item in member["field_membership"]
+                                if item["field_name"] == field_name and item["field_value_norm"]
+                            ),
+                            None,
+                        )
+                        if axis_field is None:
+                            continue
+                        add_relation_row(
+                            relation_rows,
+                            relation_graph=graph_id,
+                            paper_key=paper_key,
+                            doi=doi,
+                            paper_title=paper_title,
+                            method_group=mg_id,
+                            variation_axis=axis_id,
+                            candidate=member["formulation_candidate_id"],
+                            candidate_label=candidate_labels[member["formulation_candidate_id"]],
+                            parent_entity=member["parent_candidate_id"],
+                            related_entity=axis_id,
+                            relation_type="candidate_variation_axis_membership",
+                            field_name=field_name,
+                            field_value_raw=axis_field["field_value_raw"],
+                            field_value_norm=axis_field["field_value_norm"],
+                            field_scope_value=axis_field["field_scope"],
+                            candidate_source=member["candidate_source"],
+                            instance_kind=member["instance_kind"],
+                            formulation_role=member["formulation_role"],
+                            evidence_source_type=axis_field["evidence_source_type"],
+                            evidence_section=axis_field["evidence_section"],
+                            evidence_snippet=axis_field["evidence_snippet"],
+                            is_shared="no",
+                            variation_axis_indicator="yes",
+                            source_weak_label_row_ref=axis_field["weak_ref"],
+                            deterministic_confidence="medium",
+                            provenance_note="Candidate mapped onto a deterministic variation axis using its populated field value.",
+                        )
+                        relation_type_counter["candidate_variation_axis_membership"] += 1
+                        variation_membership_count += 1
+
+        summary_rows.append(
+            {
+                "paper_key": paper_key,
+                "doi": doi,
+                "paper_title": paper_title,
+                "relation_graph_id": graph_id,
+                "candidate_count": len(candidate_items),
+                "method_group_count": len(method_groups),
+                "shared_field_count": shared_field_count,
+                "variation_axis_count": variation_axis_count,
+                "variation_membership_count": variation_membership_count,
+                "parent_link_count": parent_link_count,
+                "relation_row_count": sum(relation_type_counter.values()),
+                "relation_type_counts_json": json.dumps(
+                    dict(sorted(relation_type_counter.items())), ensure_ascii=True
+                ),
+            }
+        )
+
+        paper_graph_rows.append(
+            json.dumps(
+                {
+                    "relation_graph_id": graph_id,
+                    "paper_key": paper_key,
+                    "doi": doi,
+                    "paper_title": paper_title,
+                    "source_weak_labels_tsv": str(weak_labels_tsv),
+                    "candidate_count": len(candidate_items),
+                    "method_group_count": len(method_groups),
+                    "method_groups": [
+                        {
+                            "method_group_id": group["method_group_id"],
+                            "signature": group["signature"],
+                            "member_candidate_ids": sorted(set(group["member_candidate_ids"])),
+                            "shared_fields": group["shared_fields"],
+                            "variation_axes": group["variation_axes"],
+                        }
+                        for _, group in sorted(method_groups.items())
+                    ],
+                    "candidates": candidate_items,
+                },
+                ensure_ascii=True,
+            )
+        )
+
+    relation_records_path = out_dir / RELATION_RECORDS_NAME
+    relation_graph_jsonl_path = out_dir / RELATION_GRAPH_JSONL_NAME
+    relation_summary_path = out_dir / RELATION_SUMMARY_NAME
+
+    write_tsv(relation_records_path, RELATION_FIELDNAMES, relation_rows)
+    relation_graph_jsonl_path.write_text("\n".join(paper_graph_rows) + "\n", encoding="utf-8")
+    write_tsv(relation_summary_path, SUMMARY_FIELDNAMES, summary_rows)
+
+    return {
+        "weak_labels_tsv": weak_labels_tsv,
+        "weak_labels_jsonl": weak_labels_jsonl,
+        "scope_manifest_tsv": scope_manifest_tsv,
+        "relation_records_path": relation_records_path,
+        "relation_graph_jsonl_path": relation_graph_jsonl_path,
+        "relation_summary_path": relation_summary_path,
+        "paper_count": len(summary_rows),
+        "candidate_count": len(rows),
+        "relation_row_count": len(relation_rows),
+    }
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Build deterministic Stage 3 formulation relation artifacts from Stage 2 weak-label TSV output."
+    )
+    parser.add_argument("--weak-labels-tsv", required=True, type=Path)
+    parser.add_argument("--out-dir", required=True, type=Path)
+    parser.add_argument("--weak-labels-jsonl", type=Path, default=None)
+    parser.add_argument("--scope-manifest-tsv", type=Path, default=None)
+    return parser
+
+
+def main() -> None:
+    args = build_arg_parser().parse_args()
+    stats = build_relation_artifacts(
+        weak_labels_tsv=args.weak_labels_tsv,
+        out_dir=args.out_dir,
+        weak_labels_jsonl=args.weak_labels_jsonl,
+        scope_manifest_tsv=args.scope_manifest_tsv,
+    )
+    print(
+        json.dumps(
+            {
+                "paper_count": stats["paper_count"],
+                "candidate_count": stats["candidate_count"],
+                "relation_row_count": stats["relation_row_count"],
+                "relation_records_path": str(stats["relation_records_path"]),
+                "relation_graph_jsonl_path": str(stats["relation_graph_jsonl_path"]),
+                "relation_summary_path": str(stats["relation_summary_path"]),
+            },
+            indent=2,
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

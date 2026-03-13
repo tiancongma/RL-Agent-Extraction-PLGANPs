@@ -102,30 +102,55 @@ Core script:
 
 - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
 
+Supporting deterministic Stage2-boundary tool:
+
+- `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
+
 Completion artifact:
 
 - `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
 
+Additive Stage2 augmentation artifacts when numbered DOE tables are detected:
+
+- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
+- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
+
+Stage2 boundary rule:
+
+- explicit numbered DOE or design-table rows belong to the upstream extraction boundary
+- when such rows are present in Stage1 table assets, the deterministic enumerator may add missing candidates before Stage3 and Stage5
+- downstream stages must not be expected to reconstruct those rows if Stage2 omitted them
+
 ### Stage 3
 
-Stage 3 is the formulation consolidation / normalization boundary.
+Stage 3 is the deterministic formulation relation-materialization boundary.
 
 Runtime rule:
 
 - Stage 3 belongs to the production path
-- it converts Stage 2 candidate formulation-instance rows into normalized
-  formulation records suitable for Stage 5 closure
-- the repository does not yet contain a dedicated standalone Stage 3 script
-- until such a script exists, Stage 3 must still be recorded as an explicit
-  production-boundary contract in provenance and governance docs
+- it converts Stage 2 candidate formulation-instance rows into explicit
+  paper-level relation artifacts suitable for audit and downstream closure
+- it must not call any LLM or external API
+- it exists to separate relation reasoning from final flattening
 
 Current production-boundary input:
 
 - `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
+- optional Stage 2 JSONL and scope manifest TSV
 
 Current production-boundary output:
 
-- normalized or consolidated formulation records consumed by Stage 5
+- `formulation_relation_records_v1.tsv`
+- `formulation_logic_graph_v1.jsonl`
+- `formulation_relation_summary_v1.tsv`
+
+Core scripts:
+
+- `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
+
+Supporting stage-local wrapper:
+
+- `src/stage3_relation/run_formulation_relation_artifacts_v1.py`
 
 ### Stage 4
 
@@ -170,6 +195,15 @@ Completion artifacts:
 - `final_formulation_table_v1.tsv`
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
+
+Optional Stage 3 provenance input:
+
+- `formulation_relation_records_v1.tsv`
+
+Current limitation:
+
+- Stage 5 can attach Stage 3 relation provenance to final rows, but phase-1
+  closure rules are still conservative and primarily candidate-row driven.
 
 Production-path endpoint:
 
@@ -219,6 +253,37 @@ Corollary:
 - the fixed manual GT workbook is a reference input to the comparison node, not
   a production-stage transformation artifact
 
+## Run-Lineage Discipline
+
+Top-level `data/results/run_*` directories are reserved for independent
+benchmark or experiment lineages.
+
+Use a child execution under an existing lineage when the work is any of the
+following:
+
+- a retry for one or more failed papers
+- a partial rerun to complete an interrupted lineage
+- a deterministic repair or refresh step
+- a stage-only child execution such as Stage 3 materialization for the same
+  parent benchmark
+- a deterministic merge or completion step that still belongs to the same
+  declared lineage objective
+
+Recommended child placement:
+
+- `data/results/<parent_run_id>/lineage/children/<ordered_role>/<child_run_id>/`
+
+Required parent-lineage artifacts when child runs exist:
+
+- parent `RUN_CONTEXT.md`
+- child-step mapping or index under `lineage/`
+- explicit notes in the parent run flow when child paths were nested after the
+  original execution
+
+Do not create multiple sibling top-level run directories that differ only by
+retry, remaining, refresh, complete, or stage suffix when they belong to the
+same lineage.
+
 ## Optional Diagnostic / Review Path
 
 The optional diagnostic/review path consists of:
@@ -242,6 +307,7 @@ Typical valid reuse patterns:
 - reuse `data/raw/zotero/zotero_selected_items.jsonl`
 - reuse `data/cleaned/index/manifest_current.tsv`
 - reuse cleaned text or table assets
+- reuse a Stage 3 relation-record TSV while iterating only on Stage 5 closure
 - reuse a Stage 2 candidate TSV while iterating on Stage 5 closure logic
 - reuse the fixed manual GT workbook as a declared comparison input
 
