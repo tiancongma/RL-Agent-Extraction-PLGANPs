@@ -22,8 +22,19 @@ RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 class RowDecision:
     decision: str
     target_final_formulation_id: str
+    variant_class: str
+    variant_signal: str
+    equivalence_group_id: str
+    family_id: str
+    parent_core_row_id: str
+    variant_role: str
+    payload_state: str
+    benchmark_default_include: str
     decision_rule: str
     decision_reason: str
+    retention_reason: str
+    collapse_reason: str
+    review_needed: str
     key_fields_used: str
     confidence_or_rule_scope: str
     notes: str
@@ -85,6 +96,24 @@ def parse_json_list(value: Any) -> list[str]:
     if not isinstance(parsed, list):
         return []
     return [str(item).strip() for item in parsed if str(item).strip()]
+
+
+def extract_paper_local_row_anchor(row: dict[str, str]) -> str:
+    candidate_tokens = [
+        str(row.get("formulation_id", "") or "").strip(),
+        str(row.get("raw_formulation_label", "") or "").strip(),
+    ]
+    patterns = [
+        re.compile(r"doe_row_(\d+)$", re.IGNORECASE),
+        re.compile(r"^f[\s_-]*(\d+)\b", re.IGNORECASE),
+        re.compile(r"^(\d+)\.?\b"),
+    ]
+    for token in candidate_tokens:
+        for pattern in patterns:
+            match = pattern.search(token)
+            if match:
+                return str(int(match.group(1)))
+    return ""
 
 
 def infer_loaded_state(row: dict[str, str]) -> str:
@@ -151,12 +180,17 @@ def build_key_fields_used(core_fields: dict[str, str]) -> str:
 
 
 def has_context_tag(row: dict[str, str], target_tags: set[str]) -> bool:
+    observed = row_context_tags(row)
+    return not observed.isdisjoint(target_tags)
+
+
+def row_context_tags(row: dict[str, str]) -> set[str]:
     observed = {
         normalize_text(tag)
         for tag in parse_json_list(row.get("instance_context_tags", "[]"))
         + parse_json_list(row.get("change_context_tags", "[]"))
     }
-    return not observed.isdisjoint(target_tags)
+    return observed
 
 
 def should_filter_non_formulation(
@@ -184,7 +218,7 @@ def should_filter_non_formulation(
 
 
 def collapse_exclusion_reason(
-    row: dict[str, str], core_fields: dict[str, str]
+    row: dict[str, str], core_fields: dict[str, str], allow_context_tags: bool = False
 ) -> str:
     if normalize_text(row.get("instance_kind")) not in {
         "new_formulation",
@@ -195,7 +229,10 @@ def collapse_exclusion_reason(
         return "polymer_identity_unknown"
     if core_fields["loaded_state"] == "unknown":
         return "loaded_state_unknown"
-    if has_context_tag(row, {"doe", "checkpoint_validation", "center_point", "post_processing"}):
+    if (
+        not allow_context_tags
+        and has_context_tag(row, {"doe", "checkpoint_validation", "center_point", "post_processing"})
+    ):
         return "context_tag_excluded_in_phase1"
     completeness = sum(
         1
@@ -232,8 +269,103 @@ def build_collapse_signature(row: dict[str, str], core_fields: dict[str, str]) -
     return "|".join(signature_parts)
 
 
+def variant_signal_class(row: dict[str, str]) -> str:
+    tags = row_context_tags(row)
+    if "checkpoint_validation" in tags or "center_point" in tags:
+        return "checkpoint_or_validation_variant"
+    if (
+        "post_processing" in tags
+        or "measurement_context" in tags
+        or normalize_text(row.get("formulation_role")) == "characterization_only"
+    ):
+        return "post_processing_or_measurement_variant"
+    if "optimized" in tags:
+        return "optimized_variant"
+    return ""
+
+
+def is_parent_linked_family_variant(row: dict[str, str]) -> bool:
+    return normalize_text(row.get("formulation_role")) in {"characterization_only", "control"} and bool(
+        str(row.get("parent_instance_id", "") or "").strip()
+    )
+
+
+def infer_payload_state(row: dict[str, str], core_fields: dict[str, str]) -> str:
+    label = normalize_text(row.get("raw_formulation_label"))
+    drug_name = normalize_token(row.get("drug_name_value"))
+    if "blank" in label or core_fields["loaded_state"] in {"empty", "unknown"} and not drug_name:
+        return "blank_control"
+    if drug_name == "fitc":
+        return "fitc_assay_loaded"
+    if core_fields["loaded_state"] == "drug_loaded":
+        return "drug_loaded"
+    if core_fields["loaded_state"]:
+        return core_fields["loaded_state"]
+    return "unknown"
+
+
+def compute_family_labels(
+    row: dict[str, str],
+    core_fields: dict[str, str],
+) -> dict[str, str]:
+    key = str(row.get("key", "") or "").strip()
+    formulation_id = str(row.get("formulation_id", "") or "").strip()
+    parent_instance_id = str(row.get("parent_instance_id", "") or "").strip()
+    family_core_id = parent_instance_id if is_parent_linked_family_variant(row) else formulation_id
+    variant_role = "true_family_variant" if is_parent_linked_family_variant(row) else "family_core"
+    payload_state = infer_payload_state(row, core_fields)
+    benchmark_default_include = (
+        "yes"
+        if variant_role == "family_core" and payload_state == "drug_loaded"
+        else "no"
+    )
+    return {
+        "family_id": f"{key}::{family_core_id}" if key and family_core_id else "",
+        "parent_core_row_id": family_core_id,
+        "variant_role": variant_role,
+        "payload_state": payload_state,
+        "benchmark_default_include": benchmark_default_include,
+    }
+
+
+def is_non_doe_sweep_row(row: dict[str, str]) -> bool:
+    tags = row_context_tags(row)
+    return "doe" not in tags and "sweep" not in tags
+
+
 def populated_core_field_count(core_fields: dict[str, str]) -> int:
     return sum(1 for value in core_fields.values() if value and value != "unknown")
+
+
+def is_structured_duplicate_representation_row(
+    row: dict[str, str], core_fields: dict[str, str]
+) -> bool:
+    if normalize_text(row.get("candidate_source")) != "doe_numbered_table_row":
+        return False
+    if not has_context_tag(row, {"doe", "numbered_table_row"}):
+        return False
+    return (
+        core_fields["polymer_identity"] == "unknown"
+        or core_fields["loaded_state"] == "unknown"
+        or populated_core_field_count(core_fields) <= 3
+    )
+
+
+def can_receive_structured_duplicate_collapse(
+    row: dict[str, str], core_fields: dict[str, str]
+) -> bool:
+    if normalize_text(row.get("instance_kind")) not in {
+        "new_formulation",
+        "variant_formulation",
+    }:
+        return False
+    if normalize_text(row.get("candidate_source")) == "doe_numbered_table_row":
+        return False
+    return (
+        core_fields["polymer_identity"] != "unknown"
+        and core_fields["loaded_state"] != "unknown"
+        and populated_core_field_count(core_fields) >= 5
+    )
 
 
 def candidate_priority(row: dict[str, str]) -> int:
@@ -278,6 +410,141 @@ def group_has_clear_redundancy_signal(group_rows: list[dict[str, str]]) -> bool:
         normalize_text(row.get("candidate_source", "")) for row in group_rows if row.get("candidate_source")
     }
     return "figure_variable_sweep" in candidate_sources and "llm_extracted" in candidate_sources
+
+
+def build_structured_duplicate_representation_map(
+    rows: list[dict[str, str]],
+    core_by_source_id: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    targets_by_anchor: dict[tuple[str, str], list[str]] = defaultdict(list)
+    for row in rows:
+        source_key = row_source_key(row)
+        core_fields = core_by_source_id[source_key]
+        if not can_receive_structured_duplicate_collapse(row, core_fields):
+            continue
+        row_anchor = extract_paper_local_row_anchor(row)
+        if not row_anchor:
+            continue
+        targets_by_anchor[(row.get("key", "").strip(), row_anchor)].append(source_key)
+
+    alternate_map: dict[str, str] = {}
+    for row in rows:
+        source_key = row_source_key(row)
+        core_fields = core_by_source_id[source_key]
+        if not is_structured_duplicate_representation_row(row, core_fields):
+            continue
+        row_anchor = extract_paper_local_row_anchor(row)
+        if not row_anchor:
+            continue
+        targets = targets_by_anchor.get((row.get("key", "").strip(), row_anchor), [])
+        if len(targets) != 1:
+            continue
+        alternate_map[source_key] = targets[0]
+    return alternate_map
+
+
+def build_variant_governance_target_map(
+    rows: list[dict[str, str]],
+    core_by_source_id: dict[str, dict[str, str]],
+    signature_by_source_id: dict[str, str],
+) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]]]:
+    rows_by_key_signature: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        source_key = row_source_key(row)
+        signature = signature_by_source_id.get(source_key, "")
+        if not signature:
+            continue
+        rows_by_key_signature[(row.get("key", "").strip(), signature)].append(row)
+
+    collapse_map: dict[str, dict[str, str]] = {}
+    review_map: dict[str, dict[str, str]] = {}
+
+    for row in rows:
+        source_key = row_source_key(row)
+        if is_parent_linked_family_variant(row):
+            continue
+        signal = variant_signal_class(row)
+        if not signal:
+            continue
+        signature = signature_by_source_id.get(source_key, "")
+        tags = row_context_tags(row)
+        if not signature:
+            review_map[source_key] = {
+                "variant_class": "uncertain_variant",
+                "variant_signal": signal,
+                "decision_rule": "kept_uncertain_variant_no_signature",
+                "decision_reason": (
+                    "Potential variant signal detected, but the row lacks a complete conservative "
+                    "core signature needed for safe equivalence matching."
+                ),
+                "notes": f"variant_signal={signal}",
+            }
+            continue
+
+        candidate_targets: list[str] = []
+        for other in rows_by_key_signature[(row.get("key", "").strip(), signature)]:
+            target_source_key = row_source_key(other)
+            if target_source_key == source_key:
+                continue
+            if normalize_text(other.get("instance_kind")) not in {
+                "new_formulation",
+                "variant_formulation",
+            }:
+                continue
+            target_tags = row_context_tags(other)
+            if signal == "optimized_variant":
+                if "optimized" in target_tags:
+                    continue
+                if not (is_non_doe_sweep_row(row) and is_non_doe_sweep_row(other)):
+                    continue
+            elif signal == "checkpoint_or_validation_variant":
+                if "checkpoint_validation" in target_tags or "center_point" in target_tags:
+                    continue
+                if "doe" in tags or "doe" in target_tags:
+                    continue
+            elif signal == "post_processing_or_measurement_variant":
+                if "post_processing" in target_tags or "measurement_context" in target_tags:
+                    continue
+                if normalize_text(other.get("change_role")) == "non_synthesis":
+                    continue
+                if not is_non_doe_sweep_row(other):
+                    continue
+            else:
+                continue
+            if populated_core_field_count(core_by_source_id[target_source_key]) < populated_core_field_count(
+                core_by_source_id[source_key]
+            ):
+                continue
+            candidate_targets.append(target_source_key)
+
+        if len(candidate_targets) == 1:
+            collapse_map[source_key] = {
+                "target_source_key": candidate_targets[0],
+                "variant_class": signal,
+                "variant_signal": signal,
+                "decision_rule": f"{signal}_same_core_identity",
+                "decision_reason": (
+                    "Row is classified as a conservative same-core variant and matches exactly one "
+                    "stronger retained row in the same paper."
+                ),
+                "notes": f"collapse_signature={signature}",
+            }
+        else:
+            review_map[source_key] = {
+                "variant_class": "uncertain_variant",
+                "variant_signal": signal,
+                "decision_rule": "kept_uncertain_variant_review",
+                "decision_reason": (
+                    "Potential variant signal detected, but no unique same-core target was found "
+                    "with sufficient evidence for conservative collapse."
+                ),
+                "notes": (
+                    f"variant_signal={signal}; collapse_signature={signature}; "
+                    f"candidate_target_count={len(candidate_targets)}"
+                ),
+            }
+
+    return collapse_map, review_map
 
 
 def short_hash(value: str, length: int = 12) -> str:
@@ -349,8 +616,14 @@ def build_summary_markdown(
     relation_records_tsv: Path | None,
 ) -> None:
     decision_counts = defaultdict(int)
+    variant_class_counts = defaultdict(int)
+    review_needed_count = 0
     for row in decision_rows:
         decision_counts[row["decision"]] += 1
+        if row.get("variant_class"):
+            variant_class_counts[row["variant_class"]] += 1
+        if normalize_text(row.get("review_needed", "")) == "yes":
+            review_needed_count += 1
 
     per_key_final = defaultdict(int)
     for row in final_rows:
@@ -361,7 +634,7 @@ def build_summary_markdown(
         "",
         "## Scope",
         "",
-        "This summary describes phase 1 of the minimal final-output layer. It is intentionally conservative and only applies explicit non-formulation filtering plus narrow clear-signature collapse.",
+        "This summary describes the controlled Stage5 duplicate/variant governance layer. It remains conservative and only collapses rows when the same-identity case is explicit and auditable.",
         "",
         "## Input",
         "",
@@ -376,13 +649,15 @@ def build_summary_markdown(
         "",
         "- filters rows explicitly marked as non-formulation or characterization-only post-processing rows",
         "- computes a conservative core-parameter signature from current candidate-row fields",
-        "- collapses rows only when signature completeness is high and exclusion tags are absent",
-        "- preserves provenance by retaining representative-row metadata and a row-level decision trace",
+        "- classifies conservative variant signals into duplicate, optimized, checkpoint/validation, post-processing/measurement, or uncertain review-needed cases",
+        "- collapses rows only when signature completeness is high and a unique conservative target is available",
+        "- collapses structured DOE/table-derived alternate representations when they clearly duplicate an already richer retained row for the same paper-local row anchor",
+        "- preserves provenance by retaining representative-row metadata, collapsed-variant membership, and a row-level decision trace",
         "",
         "## What phase 1 intentionally does not handle",
         "",
         "- broad scientific reconstruction or inheritance repair",
-        "- generalized DOE collapse beyond conservative phase-1 exclusions",
+        "- generalized DOE coordinate reconciliation when Stage5 lacks a unique deterministic target",
         "- Stage 5B benchmark comparison against GT",
         "- modeling-target-specific filtering such as PLGA-only export subsets",
         "",
@@ -394,10 +669,11 @@ def build_summary_markdown(
         "## Collapse rules applied",
         "",
         "- collapse only if polymer identity and loaded state are known",
-        "- collapse only if the row is not tagged as `doe`, `checkpoint_validation`, `center_point`, or `post_processing`",
         "- collapse only if the conservative core signature has at least five populated components",
-        "- collapse only if a clear mixed-source redundancy signal is present, currently `llm_extracted` plus `figure_variable_sweep` for the same signature",
-        "- if uncertain, keep rows separate",
+        "- collapse duplicate representations only when a clear mixed-source redundancy signal or a unique same-row-anchor match is present",
+        "- collapse optimized, checkpoint/validation, or post-processing/measurement variants only when they resolve to exactly one stronger same-core target under the Stage5 policy",
+        "- collapse structured `doe_numbered_table_row` rows when they are weak alternate representations of an already richer same-paper row with the same numeric row anchor",
+        "- if uncertain, keep rows separate and mark them review-needed in the decision trace",
         "",
         "## Decision counts",
         "",
@@ -405,10 +681,20 @@ def build_summary_markdown(
         f"- filtered_non_formulation: `{decision_counts['filtered_non_formulation']}`",
         f"- collapsed_into_existing: `{decision_counts['collapsed_into_existing']}`",
         f"- final_rows: `{len(final_rows)}`",
+        f"- review_needed_rows: `{review_needed_count}`",
         "",
-        "## Final rows by paper",
+        "## Variant class counts",
         "",
     ]
+    for variant_class in sorted(variant_class_counts):
+        content.append(f"- `{variant_class}`: `{variant_class_counts[variant_class]}`")
+    content.extend(
+        [
+            "",
+            "## Final rows by paper",
+            "",
+        ]
+    )
     for key in sorted(per_key_final):
         content.append(f"- `{key}`: `{per_key_final[key]}`")
     content.extend(
@@ -418,9 +704,9 @@ def build_summary_markdown(
             "",
             "- exact core-signature fields for broader collapse remain unresolved",
             "- baseline versus optimized provenance handling is still conservative",
-            "- parent/variant collapse policy is still intentionally narrow",
+            "- parent/variant collapse policy is still intentionally narrow and unique-target-based",
             "- relation artifacts are currently carried as provenance only and do not yet drive phase-1 collapse rules",
-            "- DOE-aware closure still needs a later explicit contract",
+            "- DOE-aware coordinate closure still needs a later explicit contract when unique deterministic mapping is available",
             "- benchmark comparison still requires the separate Stage 5B comparison step",
         ]
     )
@@ -439,11 +725,13 @@ def build_minimal_final_output(
     relation_metadata = load_relation_metadata(relation_records_tsv)
 
     original_fieldnames = list(rows[0].keys())
+    row_by_source_key = {row_source_key(row): row for row in rows}
     core_by_id: dict[str, dict[str, str]] = {}
     filtered_ids: set[str] = set()
     filter_rules: dict[str, tuple[str, str]] = {}
     eligible_groups: dict[str, list[dict[str, str]]] = defaultdict(list)
     collapse_signature_by_id: dict[str, str] = {}
+    conservative_signature_by_id: dict[str, str] = {}
 
     for row in rows:
         source_id = row_source_key(row)
@@ -456,15 +744,24 @@ def build_minimal_final_output(
             continue
 
         exclusion = collapse_exclusion_reason(row, core_fields)
-        if exclusion:
-            continue
-        signature = build_collapse_signature(row, core_fields)
-        collapse_signature_by_id[source_id] = signature
-        eligible_groups[signature].append(row)
+        if not exclusion:
+            signature = build_collapse_signature(row, core_fields)
+            collapse_signature_by_id[source_id] = signature
+            eligible_groups[signature].append(row)
+
+        governance_exclusion = collapse_exclusion_reason(
+            row,
+            core_fields,
+            allow_context_tags=True,
+        )
+        if not governance_exclusion:
+            conservative_signature_by_id[source_id] = build_collapse_signature(row, core_fields)
 
     representative_by_signature: dict[str, dict[str, str]] = {}
     final_id_by_source_id: dict[str, str] = {}
     collapsed_ids: set[str] = set()
+    collapse_metadata_by_source_id: dict[str, dict[str, str]] = {}
+    review_metadata_by_source_id: dict[str, dict[str, str]] = {}
 
     for signature, group_rows in eligible_groups.items():
         if len(group_rows) < 2:
@@ -474,16 +771,107 @@ def build_minimal_final_output(
         representative = choose_representative(group_rows, core_by_id)
         representative_by_signature[signature] = representative
         final_formulation_id = make_final_formulation_id(representative, signature)
+        representative_source_key = row_source_key(representative)
         for row in group_rows:
             source_key = row_source_key(row)
             final_id_by_source_id[source_key] = final_formulation_id
-            if source_key != row_source_key(representative):
-                collapsed_ids.add(source_key)
+            if source_key == representative_source_key:
+                continue
+            collapsed_ids.add(source_key)
+            collapse_metadata_by_source_id[source_key] = {
+                "variant_class": "duplicate_representation",
+                "variant_signal": "duplicate_representation",
+                "decision_rule": "clear_core_signature_overlap",
+                "decision_reason": (
+                    "Row shares a conservative phase-1 core signature with a higher-priority representative row."
+                ),
+                "collapse_reason": (
+                    "Collapsed as a duplicate representation after a clear mixed-source overlap signal."
+                ),
+                "review_needed": "no",
+                "notes": f"collapse_signature={signature}",
+            }
 
+    structured_duplicate_targets = build_structured_duplicate_representation_map(
+        rows=rows,
+        core_by_source_id=core_by_id,
+    )
+    variant_governance_targets, variant_review_map = build_variant_governance_target_map(
+        rows=rows,
+        core_by_source_id=core_by_id,
+        signature_by_source_id=conservative_signature_by_id,
+    )
+    review_metadata_by_source_id.update(variant_review_map)
     representative_source_keys = {
         row_source_key(representative)
         for representative in representative_by_signature.values()
     }
+    for source_key, target_source_key in structured_duplicate_targets.items():
+        if source_key in collapsed_ids:
+            continue
+        target_row = row_by_source_key[target_source_key]
+        target_signature = (
+            collapse_signature_by_id.get(target_source_key)
+            if target_source_key in representative_source_keys
+            else None
+        )
+        target_final_formulation_id = final_id_by_source_id.get(
+            target_source_key,
+            make_final_formulation_id(target_row, target_signature),
+        )
+        final_id_by_source_id[source_key] = target_final_formulation_id
+        final_id_by_source_id[target_source_key] = target_final_formulation_id
+        collapsed_ids.add(source_key)
+        collapse_metadata_by_source_id[source_key] = {
+            "variant_class": "duplicate_representation",
+            "variant_signal": "duplicate_representation",
+            "decision_rule": "structured_duplicate_representation_same_row_anchor",
+            "decision_reason": (
+                "Structured DOE/table-derived row matches an already retained richer formulation "
+                "representation with the same paper-local row anchor and no additional core identity fields."
+            ),
+            "collapse_reason": (
+                "Collapsed as a duplicate representation because the numbered table row is only an alternate "
+                "surface of an already retained formulation."
+            ),
+            "review_needed": "no",
+            "notes": (
+                f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                f"matched_row_anchor={extract_paper_local_row_anchor(row_by_source_key[source_key])}"
+            ),
+        }
+
+    for source_key, payload in variant_governance_targets.items():
+        if source_key in collapsed_ids:
+            continue
+        target_source_key = payload["target_source_key"]
+        target_row = row_by_source_key[target_source_key]
+        target_signature = (
+            collapse_signature_by_id.get(target_source_key)
+            if target_source_key in representative_source_keys
+            else None
+        )
+        target_final_formulation_id = final_id_by_source_id.get(
+            target_source_key,
+            make_final_formulation_id(target_row, target_signature),
+        )
+        final_id_by_source_id[source_key] = target_final_formulation_id
+        final_id_by_source_id[target_source_key] = target_final_formulation_id
+        collapsed_ids.add(source_key)
+        collapse_metadata_by_source_id[source_key] = {
+            "variant_class": payload["variant_class"],
+            "variant_signal": payload["variant_signal"],
+            "decision_rule": payload["decision_rule"],
+            "decision_reason": payload["decision_reason"],
+            "collapse_reason": (
+                "Collapsed as a conservative same-core variant because exactly one stronger retained target was found."
+            ),
+            "review_needed": "no",
+            "notes": (
+                f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                f"{payload['notes']}"
+            ),
+        }
 
     final_rows: list[dict[str, str]] = []
     decision_rows: list[dict[str, str]] = []
@@ -494,28 +882,58 @@ def build_minimal_final_output(
         source_key = row_source_key(row)
         core_fields = core_by_id[source_key]
         key_fields_used = build_key_fields_used(core_fields)
+        family_labels = compute_family_labels(row, core_fields)
 
         if source_key in filtered_ids:
             rule, reason = filter_rules[source_key]
+            variant_signal = variant_signal_class(row)
+            variant_class = (
+                "post_processing_or_measurement_variant"
+                if rule == "characterization_only_post_processing"
+                else ""
+            )
             decision = RowDecision(
                 decision="filtered_non_formulation",
                 target_final_formulation_id="",
+                variant_class=variant_class,
+                variant_signal=variant_signal,
+                equivalence_group_id="",
+                family_id=family_labels["family_id"],
+                parent_core_row_id=family_labels["parent_core_row_id"],
+                variant_role=family_labels["variant_role"],
+                payload_state=family_labels["payload_state"],
+                benchmark_default_include=family_labels["benchmark_default_include"],
                 decision_rule=rule,
                 decision_reason=reason,
+                retention_reason="",
+                collapse_reason="Row is excluded from benchmark-facing final formulation closure.",
+                review_needed="no",
                 key_fields_used=key_fields_used,
                 confidence_or_rule_scope="phase1_conservative_filter",
                 notes="Row is excluded from final formulation closure.",
             )
         elif source_key in collapsed_ids:
+            payload = collapse_metadata_by_source_id[source_key]
             target_final_formulation_id = final_id_by_source_id[source_key]
             decision = RowDecision(
                 decision="collapsed_into_existing",
                 target_final_formulation_id=target_final_formulation_id,
-                decision_rule="clear_core_signature_overlap",
-                decision_reason="Row shares a conservative phase-1 core signature with a higher-priority representative row.",
+                variant_class=payload["variant_class"],
+                variant_signal=payload["variant_signal"],
+                equivalence_group_id=target_final_formulation_id,
+                family_id=family_labels["family_id"],
+                parent_core_row_id=family_labels["parent_core_row_id"],
+                variant_role="duplicate_representation",
+                payload_state=family_labels["payload_state"],
+                benchmark_default_include="no",
+                decision_rule=payload["decision_rule"],
+                decision_reason=payload["decision_reason"],
+                retention_reason="",
+                collapse_reason=payload["collapse_reason"],
+                review_needed=payload["review_needed"],
                 key_fields_used=key_fields_used,
-                confidence_or_rule_scope="phase1_conservative_collapse",
-                notes=f"collapse_signature={collapse_signature_by_id[source_key]}",
+                confidence_or_rule_scope="phase1_variant_governance",
+                notes=payload["notes"],
             )
         else:
             collapse_signature = (
@@ -528,22 +946,56 @@ def build_minimal_final_output(
                 make_final_formulation_id(row, collapse_signature),
             )
             final_id_by_source_id[source_key] = target_final_formulation_id
+            review_payload = review_metadata_by_source_id.get(source_key)
+            if source_key in representative_source_keys:
+                decision_rule = "kept_as_representative_after_collapse"
+                decision_reason = "Representative row retained for a clear overlap group."
+                retention_reason = "Retained as the benchmark-facing representative for a clear overlap group."
+                variant_class = "duplicate_representation"
+                variant_signal = "duplicate_representation"
+                review_needed = "no"
+                notes = (
+                    f"collapse_signature={collapse_signature}" if collapse_signature else "No collapse signature used."
+                )
+            elif review_payload:
+                decision_rule = review_payload["decision_rule"]
+                decision_reason = review_payload["decision_reason"]
+                retention_reason = (
+                    "Retained as a separate benchmark-facing row because Stage5 did not find a unique safe collapse target."
+                )
+                variant_class = review_payload["variant_class"]
+                variant_signal = review_payload["variant_signal"]
+                review_needed = "yes"
+                notes = review_payload["notes"]
+            else:
+                decision_rule = "kept_no_clear_phase1_overlap"
+                decision_reason = "No explicit non-formulation rule or clear conservative collapse rule applied."
+                retention_reason = "Retained because no conservative duplicate or variant-collapse rule fired."
+                variant_class = ""
+                variant_signal = variant_signal_class(row)
+                review_needed = "no"
+                notes = (
+                    f"collapse_signature={collapse_signature}" if collapse_signature else "No collapse signature used."
+                )
             decision = RowDecision(
                 decision="kept",
                 target_final_formulation_id=target_final_formulation_id,
-                decision_rule=(
-                    "kept_as_representative_after_collapse"
-                    if source_key in representative_source_keys
-                    else "kept_no_clear_phase1_overlap"
-                ),
-                decision_reason=(
-                    "Representative row retained for a clear overlap group."
-                    if source_key in representative_source_keys
-                    else "No explicit non-formulation rule or clear conservative collapse rule applied."
-                ),
+                variant_class=variant_class,
+                variant_signal=variant_signal,
+                equivalence_group_id=target_final_formulation_id,
+                family_id=family_labels["family_id"],
+                parent_core_row_id=family_labels["parent_core_row_id"],
+                variant_role=family_labels["variant_role"],
+                payload_state=family_labels["payload_state"],
+                benchmark_default_include=family_labels["benchmark_default_include"],
+                decision_rule=decision_rule,
+                decision_reason=decision_reason,
+                retention_reason=retention_reason,
+                collapse_reason="",
+                review_needed=review_needed,
                 key_fields_used=key_fields_used,
-                confidence_or_rule_scope="phase1_final_output",
-                notes=(f"collapse_signature={collapse_signature}" if collapse_signature else "No collapse signature used."),
+                confidence_or_rule_scope="phase1_variant_governance",
+                notes=notes,
             )
             source_rows_by_final_id[target_final_formulation_id].append(row)
 
@@ -554,13 +1006,45 @@ def build_minimal_final_output(
                 "source_raw_formulation_label": row.get("raw_formulation_label", ""),
                 "decision": decision.decision,
                 "target_final_formulation_id": decision.target_final_formulation_id,
+                "variant_class": decision.variant_class,
+                "variant_signal": decision.variant_signal,
+                "equivalence_group_id": decision.equivalence_group_id,
+                "family_id": decision.family_id,
+                "parent_core_row_id": decision.parent_core_row_id,
+                "variant_role": decision.variant_role,
+                "payload_state": decision.payload_state,
+                "benchmark_default_include": decision.benchmark_default_include,
                 "decision_rule": decision.decision_rule,
                 "decision_reason": decision.decision_reason,
+                "retention_reason": decision.retention_reason,
+                "collapse_reason": decision.collapse_reason,
+                "review_needed": decision.review_needed,
                 "key_fields_used": decision.key_fields_used,
                 "confidence_or_rule_scope": decision.confidence_or_rule_scope,
                 "notes": decision.notes,
             }
         )
+
+    collapsed_variant_members_by_final_id: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for source_key, target_final_formulation_id in final_id_by_source_id.items():
+        if source_key not in collapsed_ids:
+            continue
+        payload = collapse_metadata_by_source_id.get(source_key, {})
+        source_row = row_by_source_key[source_key]
+        collapsed_variant_members_by_final_id[target_final_formulation_id].append(
+            {
+                "formulation_id": source_row.get("formulation_id", ""),
+                "variant_class": payload.get("variant_class", ""),
+                "decision_rule": payload.get("decision_rule", ""),
+            }
+        )
+
+    review_needed_by_final_id: dict[str, bool] = defaultdict(bool)
+    for row in decision_rows:
+        if row["decision"] != "kept":
+            continue
+        if normalize_text(row.get("review_needed", "")) == "yes":
+            review_needed_by_final_id[row["target_final_formulation_id"]] = True
 
     for target_final_formulation_id, source_group in sorted(
         source_rows_by_final_id.items(), key=lambda item: item[0]
@@ -579,6 +1063,7 @@ def build_minimal_final_output(
         source_labels = [row.get("raw_formulation_label", "") for row in source_group]
         source_sources = [row.get("candidate_source", "") for row in source_group]
         representative_core = core_by_id[row_source_key(representative)]
+        representative_family_labels = compute_family_labels(representative, representative_core)
         source_candidate_ids = [row["formulation_id"] for row in source_group]
         relation_graph_ids = sorted(
             {
@@ -609,6 +1094,20 @@ def build_minimal_final_output(
             int(relation_metadata.get(source_candidate_id, {}).get("relation_row_count", 0))
             for source_candidate_id in source_candidate_ids
         )
+        collapsed_members = collapsed_variant_members_by_final_id.get(target_final_formulation_id, [])
+        collapsed_variant_ids = [item["formulation_id"] for item in collapsed_members]
+        collapsed_variant_classes = sorted(
+            {item["variant_class"] for item in collapsed_members if item["variant_class"]}
+        )
+        representative_trace = next(
+            (
+                decision_row
+                for decision_row in decision_rows
+                if decision_row["source_formulation_id"] == representative["formulation_id"]
+                and decision_row["target_final_formulation_id"] == target_final_formulation_id
+            ),
+            {},
+        )
 
         final_row = {
             "final_formulation_id": target_final_formulation_id,
@@ -620,6 +1119,16 @@ def build_minimal_final_output(
             "source_candidate_ids": json.dumps(source_ids, ensure_ascii=True),
             "source_candidate_labels": json.dumps(source_labels, ensure_ascii=True),
             "source_candidate_sources": json.dumps(source_sources, ensure_ascii=True),
+            "collapsed_variant_count": str(len(collapsed_members)),
+            "collapsed_variant_source_ids": json.dumps(collapsed_variant_ids, ensure_ascii=True),
+            "collapsed_variant_classes": json.dumps(collapsed_variant_classes, ensure_ascii=True),
+            "retention_reason": representative_trace.get("retention_reason", ""),
+            "review_needed": "yes" if review_needed_by_final_id.get(target_final_formulation_id, False) else "no",
+            "family_id": representative_family_labels["family_id"],
+            "parent_core_row_id": representative_family_labels["parent_core_row_id"],
+            "variant_role": representative_family_labels["variant_role"],
+            "payload_state": representative_family_labels["payload_state"],
+            "benchmark_default_include": representative_family_labels["benchmark_default_include"],
             "collapse_signature": collapse_signature_by_id.get(
                 row_source_key(representative), ""
             ),
@@ -627,7 +1136,7 @@ def build_minimal_final_output(
             "polymer_identity_final": representative_core["polymer_identity"],
             "final_output_rule": (
                 "representative_after_collapse"
-                if len(source_group) > 1
+                if len(source_group) > 1 or collapsed_members
                 else "kept_without_collapse"
             ),
             "relation_graph_ids": json.dumps(relation_graph_ids, ensure_ascii=True),
@@ -653,8 +1162,19 @@ def build_minimal_final_output(
             "source_raw_formulation_label",
             "decision",
             "target_final_formulation_id",
+            "variant_class",
+            "variant_signal",
+            "equivalence_group_id",
+            "family_id",
+            "parent_core_row_id",
+            "variant_role",
+            "payload_state",
+            "benchmark_default_include",
             "decision_rule",
             "decision_reason",
+            "retention_reason",
+            "collapse_reason",
+            "review_needed",
             "key_fields_used",
             "confidence_or_rule_scope",
             "notes",
@@ -672,6 +1192,16 @@ def build_minimal_final_output(
             "source_candidate_ids",
             "source_candidate_labels",
             "source_candidate_sources",
+            "collapsed_variant_count",
+            "collapsed_variant_source_ids",
+            "collapsed_variant_classes",
+            "retention_reason",
+            "review_needed",
+            "family_id",
+            "parent_core_row_id",
+            "variant_role",
+            "payload_state",
+            "benchmark_default_include",
             "collapse_signature",
             "loaded_state_final",
             "polymer_identity_final",

@@ -268,6 +268,9 @@ def build_provenance_pointer(
         decision_rule = normalize_text(decision_row.get("decision_rule"))
         if decision_rule:
             parts.append(f"decision_rule={decision_rule}")
+        parent_core_row_id = normalize_text(decision_row.get("parent_core_row_id"))
+        if parent_core_row_id:
+            parts.append(f"parent_core_row_id={parent_core_row_id}")
     return "; ".join(parts)
 
 
@@ -319,6 +322,14 @@ def build_export_rows(
                 "evidence_locator": build_evidence_locator(evidence_refs, evidence_source_type, table_id),
                 "provenance_pointer": build_provenance_pointer(row, decision_row, table_id),
                 "source_candidate_count": normalize_text(row.get("source_candidate_count")),
+                "collapsed_variant_count": normalize_text(row.get("collapsed_variant_count")),
+                "collapsed_variant_source_ids": normalize_text(row.get("collapsed_variant_source_ids")),
+                "collapsed_variant_classes": normalize_text(row.get("collapsed_variant_classes")),
+                "family_id": normalize_text(row.get("family_id")),
+                "parent_core_row_id": normalize_text(row.get("parent_core_row_id")),
+                "variant_role": normalize_text(row.get("variant_role")),
+                "payload_state": normalize_text(row.get("payload_state")),
+                "benchmark_default_include": normalize_text(row.get("benchmark_default_include")),
                 "final_output_rule": normalize_text(row.get("final_output_rule")),
                 "auditor_decision": "",
                 "auditor_note": "",
@@ -367,6 +378,14 @@ def main() -> None:
         "evidence_locator",
         "provenance_pointer",
         "source_candidate_count",
+        "collapsed_variant_count",
+        "collapsed_variant_source_ids",
+        "collapsed_variant_classes",
+        "family_id",
+        "parent_core_row_id",
+        "variant_role",
+        "payload_state",
+        "benchmark_default_include",
         "final_output_rule",
         "auditor_decision",
         "auditor_note",

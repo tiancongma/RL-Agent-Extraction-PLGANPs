@@ -856,3 +856,44 @@ Naming guidance
 Conservative rule
 - If the repository cannot prove that the full LLM-facing input is unchanged because model/config or evidence-window provenance is missing, the run should be treated as `unproven for strict raw-output reuse equivalence`.
 - In that case, documentation may still describe a pragmatic replay, but it must not claim strict LLM-input identity without evidence.
+
+### Decision: Upgrade the active Stage5 final-output path from narrow duplicate patches to a controlled duplicate / variant governance layer
+
+Decision
+- The active Stage5 final-output path in `src/stage5_benchmark/build_minimal_final_output_v1.py` is upgraded from narrow one-off duplicate-collapse patches to a controlled duplicate / variant governance layer.
+- Duplicate / variant governance now happens inside Stage5 final-output handling.
+- Provenance labels alone do not define final formulation identity.
+- Auto-collapse remains conservative and auditable and is allowed only when Stage5 finds one explicit safe target for the same formulation identity.
+
+Supported Stage5 variant classes
+- `duplicate_representation`
+- `optimized_variant`
+- `checkpoint_or_validation_variant`
+- `post_processing_or_measurement_variant`
+- `uncertain_variant`
+
+Traceability impact
+- The Stage5 decision trace now records:
+  - `variant_class`
+  - `variant_signal`
+  - `equivalence_group_id`
+  - `retention_reason`
+  - `collapse_reason`
+  - `review_needed`
+- Collapsed-variant membership is now carried into the final formulation table and downstream audit-ready export surface.
+
+Bounded replay validation
+- Validation run:
+  - `data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/lineage/children/04_stage5_variant_governance_replay/run_20260313_2002_c4eccc8_dev15_stage5_variant_governance_replay_v1`
+- Confirmed outcomes:
+  - `UFXX9WXE` remained `27` vs GT `26`, so the DOE recovery benefit was preserved.
+  - `INMUTV7L` remained corrected at `12` vs GT `12`.
+  - `BXCV5XWB` changed from `9` to `7` through two conservative `post_processing_or_measurement_variant` same-core collapses.
+  - No other papers changed relative to the previous replay.
+  - No fresh LLM calls were made.
+
+Current limits
+- `WFDTQ4VX` checkpoint / validation reconciliation is now classified in Stage5 but is not auto-collapsed without a unique deterministic target.
+- Optimized / baseline handling remains unique-target-only.
+- Parent / variant inheritance is still not relation-driven in Stage5.
+- Ambiguous cases remain `uncertain_variant` with `review_needed = yes`.
