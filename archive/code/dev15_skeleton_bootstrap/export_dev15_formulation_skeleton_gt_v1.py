@@ -17,8 +17,8 @@ try:
 except ModuleNotFoundError:
     import sys
 
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import norm_text, read_review_sheet_rows, write_tsv
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from formulation_skeleton_common import norm_text, read_review_sheet_rows, write_tsv
 
 
 def main() -> int:

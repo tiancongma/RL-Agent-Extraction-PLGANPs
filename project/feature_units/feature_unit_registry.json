@@ -1,0 +1,246 @@
+[
+  {
+    "feature_id": "numbered_doe_row_enumeration_priority",
+    "title": "Numbered DOE row enumeration priority",
+    "problem_class": "Stage2 under-enumeration for explicit numbered DOE or design-table formulations",
+    "status": "active_mainline_with_validation_history",
+    "primary_stage": "stage2_active",
+    "description": "When Stage1 table assets preserve explicit numbered DOE rows, deterministic table-derived rows should enter the active Stage2 candidate surface and take priority over overlapping generic numeric LLM rows.",
+    "expected_intervention_points": [
+      "Stage1 table assets expose an explicit numbered DOE or design table.",
+      "Stage2 deterministically enumerates numbered rows.",
+      "Stage2 merge prefers structured numbered DOE rows over overlapping llm_extracted numeric rows."
+    ],
+    "activation_signals": [
+      "weak_labels__v7pilot_r3_fixparse.tsv contains candidate_source=doe_numbered_table_row for a paper with a known numbered DOE table",
+      "numbered_doe_row_candidates_summary_v1.tsv reports numbered_rows_found for the same run",
+      "Overlapping numeric llm_extracted rows are absent or reduced after the Stage2 merge"
+    ],
+    "regression_checks": [
+      "numbered_doe_regression_guard",
+      "UFXX9WXE targeted Stage2 validation counts"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py",
+      "src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py"
+    ],
+    "related_docs": [
+      "project/4_DECISIONS_LOG.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "docs/methods/doe_logic_audit_ufxx9wxe_2026-03-13.md"
+    ],
+    "introduced_on": "2026-03-13",
+    "notes": "UFXX9WXE is the motivating benchmark case. The feature existed in later same-day child validation/support lineages but the benchmark-valid parent run still reused an older Stage2 artifact with only five UFXX rows."
+  },
+  {
+    "feature_id": "numbered_doe_regression_guard",
+    "title": "Numbered DOE regression guard",
+    "problem_class": "Silent shrinkage between deterministic numbered table rows and the active Stage2 candidate surface",
+    "status": "active_mainline_guard",
+    "primary_stage": "stage2_active",
+    "description": "Per-paper deterministic guard emitted by the active Stage2 extractor to record whether explicit numbered DOE table rows are actually preserved in the run's merged Stage2 candidate surface.",
+    "expected_intervention_points": [
+      "Active Stage2 run writes numbered_doe_regression_guard_v1.tsv",
+      "Guard compares numbered_table_row_count to the formulation-like Stage2 candidate count",
+      "Guard flags fail or warn when the active Stage2 candidate surface is smaller than the explicit numbered DOE table surface or still depends on overlapping numeric LLM rows"
+    ],
+    "activation_signals": [
+      "numbered_doe_regression_guard_v1.tsv exists in the run output",
+      "pilot_summary.json records numbered_doe_guard_tsv",
+      "Guard rows contain deterministic statuses pass, warn, or fail"
+    ],
+    "regression_checks": [
+      "numbered_doe_regression_guard_v1.tsv"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py"
+    ],
+    "related_docs": [
+      "data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/ufxx9wxe_numbered_doe_regression_fix_report.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This guard exists specifically to distinguish code presence from run activation after the UFXX9WXE lineage-reuse failure."
+  },
+  {
+    "feature_id": "table_first_evidence_binding",
+    "title": "Table-first evidence binding",
+    "problem_class": "Loss of structured table-row anchors when evidence is taken only from broad full-text windows",
+    "status": "active_supporting_capability",
+    "primary_stage": "stage2_active",
+    "description": "When structured table rows are available, table-derived formulation candidates should carry explicit table-row evidence anchors rather than relying only on broad full-text windows.",
+    "expected_intervention_points": [
+      "Stage1 table assets preserve usable row structure",
+      "Stage2 candidate rows carry table_row evidence with an explicit table identifier",
+      "Downstream final outputs retain those evidence anchors when rows survive closure"
+    ],
+    "activation_signals": [
+      "weak_labels__v7pilot_r3_fixparse.tsv contains instance_evidence_region_type=table_row",
+      "evidence_section records a numbered table identifier such as <paper_key>__numbered_doe_table_01",
+      "final_formulation_table_v1.tsv retains table-row evidence for surviving rows"
+    ],
+    "regression_checks": [
+      "Feature activation report evidence check on table_row anchors"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py",
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py",
+      "src/stage5_benchmark/build_minimal_final_output_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "docs/methods/doe_logic_audit_ufxx9wxe_2026-03-13.md",
+      "docs/methods/final_formulation_audit_ready_export_v1.md"
+    ],
+    "introduced_on": "2026-03-13",
+    "notes": "Current activation reporting can detect this feature only when run artifacts expose explicit table_row evidence anchors."
+  },
+  {
+    "feature_id": "variant_aware_gt_authority_switch",
+    "title": "Variant-aware GT authority switch",
+    "problem_class": "GT authority drift when benchmark comparison continues to use an older workbook after the benchmark object changes",
+    "status": "active_reference_input",
+    "primary_stage": "benchmark_compare",
+    "description": "The DEV15 benchmark compare node should explicitly point to the versioned variant-aware GT workbook and record that authority in run outputs.",
+    "expected_intervention_points": [
+      "compare_final_table_to_gt_v1.py reads the variant-aware GT workbook",
+      "benchmark outputs preserve the authority path in counts-by-doi artifacts",
+      "GT-authority-specific subdirectories or outputs distinguish the newer authority from preserved historical comparisons"
+    ],
+    "activation_signals": [
+      "final_table_vs_gt_counts_by_doi.tsv records gt_authority_file with dev15_formulation_skeleton_review_v2_variantaware.xlsx",
+      "Run artifacts live under a gt_authority_v2_variantaware subdirectory or otherwise preserve the v2 authority path"
+    ],
+    "regression_checks": [
+      "Feature activation report evidence check on compare outputs"
+    ],
+    "related_scripts": [
+      "src/stage5_benchmark/compare_final_table_to_gt_v1.py"
+    ],
+    "related_docs": [
+      "project/PIPELINE_SCRIPT_MAP.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/4_DECISIONS_LOG.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This feature is active only when the run artifacts prove the v2 variant-aware workbook was actually used. Preserving the old GT authority file is part of the provenance contract."
+  },
+  {
+    "feature_id": "family_variant_retention_governance",
+    "title": "Family and variant retention governance",
+    "problem_class": "Stage5 final-output undercount or over-collapse when duplicate handling ignores family or variant identity",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage5_final",
+    "description": "Controlled Stage5 governance layer that retains or collapses rows conservatively based on explicit family and variant evidence rather than broad ad hoc duplicate patches.",
+    "expected_intervention_points": [
+      "Stage5 final-output build evaluates duplicate and variant governance rules",
+      "final_output_decision_trace_v1.tsv records phase1_variant_governance when the layer intervenes",
+      "final_formulation_table_v1.tsv preserves family and variant labels when rows survive"
+    ],
+    "activation_signals": [
+      "final_output_decision_trace_v1.tsv contains confidence_or_rule_scope=phase1_variant_governance",
+      "final_formulation_table_v1.tsv includes family_core or variant labels tied to retained rows"
+    ],
+    "regression_checks": [
+      "Stage5 replay reports under the current merged benchmark lineage",
+      "Feature activation report evidence check on phase1_variant_governance"
+    ],
+    "related_scripts": [
+      "src/stage5_benchmark/build_minimal_final_output_v1.py"
+    ],
+    "related_docs": [
+      "project/4_DECISIONS_LOG.md",
+      "docs/methods/stage5_duplicate_variant_governance_v1.md"
+    ],
+    "introduced_on": "2026-03-13",
+    "notes": "This feature can exist in the repo while still being inactive in a specific run. Activation must come from Stage5 run artifacts, not from the presence of the Stage5 code path alone."
+  },
+  {
+    "feature_id": "feature_unit_governance_layer",
+    "title": "Feature-unit governance layer",
+    "problem_class": "Feature logic exists in code but is not explicitly registered, scoped, or checkable at run level",
+    "status": "active_project_support",
+    "primary_stage": "run_context",
+    "description": "Machine-readable registry and intervention matrix that define benchmark-relevant feature units, their intended intervention points, and their regression checks.",
+    "expected_intervention_points": [
+      "project/feature_units/feature_unit_registry.json exists and lists the run-relevant feature units",
+      "project/feature_units/feature_intervention_matrix.tsv exists and marks where each feature is required or optional",
+      "Run-level activation reporting consumes both files rather than inventing expectations ad hoc"
+    ],
+    "activation_signals": [
+      "feature_activation_report_v1.tsv exists for the run",
+      "The report was built from the registry and matrix under project/feature_units/"
+    ],
+    "regression_checks": [
+      "feature_activation_report_v1.tsv"
+    ],
+    "related_scripts": [
+      "src/utils/build_feature_activation_report_v1.py",
+      "src/utils/update_run_context_with_feature_activation_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "UFXX9WXE showed that code-level fixes alone are not enough when a later benchmark run silently reuses older artifacts."
+  },
+  {
+    "feature_id": "run_context_feature_activation_integration",
+    "title": "RUN_CONTEXT feature activation integration",
+    "problem_class": "A run can look reproducible at the script IO level while still hiding missing feature interventions",
+    "status": "active_project_support",
+    "primary_stage": "run_context",
+    "description": "Each benchmark-relevant run records its feature activation report path, required feature units, missing required feature units, activation gate, and compact activation table directly inside RUN_CONTEXT.md.",
+    "expected_intervention_points": [
+      "RUN_CONTEXT.md includes a generated Feature Unit Activation section",
+      "The section references the run-local feature activation report",
+      "The run activation gate is derived from artifact-based feature statuses"
+    ],
+    "activation_signals": [
+      "RUN_CONTEXT.md contains the heading ## Feature Unit Activation",
+      "RUN_CONTEXT.md records run_activation_gate and feature_activation_report_path"
+    ],
+    "regression_checks": [
+      "RUN_CONTEXT.md feature activation section refresh"
+    ],
+    "related_scripts": [
+      "src/utils/update_run_context_with_feature_activation_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This makes feature integration status part of authoritative run metadata instead of a detached analysis-only artifact."
+  },
+  {
+    "feature_id": "doi_level_gt_vs_pred_count_audit",
+    "title": "DOI-level GT versus prediction count audit",
+    "problem_class": "Per-paper benchmark mismatches are hard to localize when only aggregate summaries are reported",
+    "status": "active_benchmark_support",
+    "primary_stage": "benchmark_compare",
+    "description": "Benchmark compare writes a DOI-level table with GT count, predicted final count, delta, and count status so run-level mismatches are auditable paper by paper.",
+    "expected_intervention_points": [
+      "compare_final_table_to_gt_v1.py writes final_table_vs_gt_counts_by_doi.tsv",
+      "The run preserves the counts-by-doi artifact under the compare output root",
+      "RUN_CONTEXT.md or other run metadata can point to that compare artifact"
+    ],
+    "activation_signals": [
+      "final_table_vs_gt_counts_by_doi.tsv exists in the run",
+      "The TSV contains doi, gt_count, pred_count, delta_count, and count_status"
+    ],
+    "regression_checks": [
+      "final_table_vs_gt_counts_by_doi.tsv"
+    ],
+    "related_scripts": [
+      "src/stage5_benchmark/compare_final_table_to_gt_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-03-14",
+    "notes": "This is a benchmark-facing audit surface, not a substitute for the final formulation table itself."
+  }
+]

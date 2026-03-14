@@ -27,8 +27,8 @@ try:
 except ModuleNotFoundError:
     import sys
 
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.archive_methods.dev15_skeleton_bootstrap.formulation_skeleton_common import (
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from formulation_skeleton_common import (
         BOUNDARY_CONFIDENCE_OPTIONS,
         FORMULATION_EXISTS_OPTIONS,
         REVIEW_STATUS_OPTIONS,

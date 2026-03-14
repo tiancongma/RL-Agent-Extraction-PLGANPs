@@ -45,7 +45,7 @@ The manual GT assets are reference inputs, not internal production
 transformations.
 
 - primary current reference input:
-  - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
+  - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx`
 - `src/stage3_relation/` is the active deterministic Stage 3 runtime namespace
 - `src/stage3_gt/` remains a reserved reference namespace with no active routine runtime entrypoint
 - historical GT-maintenance helpers are archived under `archive/code/`
@@ -151,6 +151,8 @@ stage-completion entrypoints.
 | Script path | Class | Purpose |
 |---|---|---|
 | `src/utils/audit_run_lineage_layout_v1.py` | `STABLE_TOOL` | Deterministically audit top-level `data/results/run_*` lineage sprawl and flag sibling runs that should likely be contained under one parent lineage. |
+| `src/utils/build_feature_activation_report_v1.py` | `STABLE_TOOL` | Build a run-scoped feature activation report from deterministic artifact evidence so child-lineage validation can be distinguished from parent-run activation. |
+| `src/utils/update_run_context_with_feature_activation_v1.py` | `STABLE_TOOL` | Refresh a run's `RUN_CONTEXT.md` with feature-unit activation metadata and a deterministic activation gate. |
 
 ## Archived Historical Methods
 

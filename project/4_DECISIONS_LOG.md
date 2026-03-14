@@ -897,3 +897,25 @@ Current limits
 - Optimized / baseline handling remains unique-target-only.
 - Parent / variant inheritance is still not relation-driven in Stage5.
 - Ambiguous cases remain `uncertain_variant` with `review_needed = yes`.
+
+### Decision: version the DEV15 GT authority when benchmark object alignment changes, and preserve prior GT workbooks unchanged
+
+Decision
+- DEV15 GT authority updates must be versioned as new workbook artifacts rather than in-place overwrites.
+- The preserved prior authority for the original DEV15 skeleton count comparison remains:
+  - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
+- The variant-aware follow-on authority is:
+  - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx`
+
+Why this change was required
+- The current benchmark-valid object is the Stage5 retained final formulation table, which is variant-aware.
+- For `BXCV5XWB`, the retained Stage5 final output contains `9` benchmark-facing rows.
+- The older DEV15 skeleton workbook counted that paper as `3` family-like rows, which is no longer definitionally aligned with the active benchmark object.
+
+Authority-switch rule
+- Future DEV15 GT count comparisons that are intended to match the active Stage5 benchmark object must use:
+  - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx`
+- The preserved `v1_fixed` workbook remains part of project provenance and must not be silently replaced or deleted.
+
+Reproducibility note
+- The versioned GT update is produced by deterministic reuse of the existing Stage5 final formulation table and does not require any fresh Stage0-Stage5 upstream rerun.

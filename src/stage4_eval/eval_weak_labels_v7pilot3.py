@@ -312,7 +312,7 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument(
         "--gt-xlsx",
-        default="data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx",
+        default="data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx",
     )
     p.add_argument(
         "--summary-md",

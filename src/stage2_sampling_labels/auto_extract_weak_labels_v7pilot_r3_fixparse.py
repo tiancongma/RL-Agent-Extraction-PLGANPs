@@ -119,6 +119,8 @@ VALUE_ALIASES_BY_FIELD = {
     "plga_mw_kDa": ["mw_kda", "mw", "molecular_weight_kda", "plga_mw", "mw_value"],
 }
 
+NUMBERED_DOE_GUARD_NAME = "numbered_doe_regression_guard_v1.tsv"
+
 
 @dataclass
 class EvidenceBlock:
@@ -1556,6 +1558,95 @@ def prefer_numbered_doe_forms_over_llm_numeric_rows(forms: List[Dict[str, Any]])
     return preferred
 
 
+def build_numbered_doe_guard_row(
+    *,
+    paper: Dict[str, str],
+    forms: List[Dict[str, Any]],
+    doe_summary: Optional[Dict[str, Any]],
+) -> Dict[str, str]:
+    summary = doe_summary or {}
+    numbered_table_row_count = int(str(summary.get("numbered_rows_found", "0") or "0"))
+    formulation_candidate_count = sum(
+        1
+        for form in forms
+        if str(form.get("instance_kind") or "").strip() != "candidate_non_formulation"
+    )
+    numbered_doe_candidate_count = sum(
+        1
+        for form in forms
+        if str(form.get("candidate_source") or "").strip() == "doe_numbered_table_row"
+    )
+    overlapping_llm_numeric_rows = sum(
+        1
+        for form in forms
+        if str(form.get("candidate_source") or "").strip() == "llm_extracted"
+        and bool(_parse_numeric_formulation_label(form))
+    )
+    difference = formulation_candidate_count - numbered_table_row_count
+    if numbered_table_row_count <= 0:
+        guard_status = "pass"
+        guard_reason = "No explicit numbered DOE table rows were detected for this paper."
+    elif formulation_candidate_count < numbered_table_row_count:
+        guard_status = "fail"
+        guard_reason = (
+            "Active Stage2 formulation candidates are fewer than the explicit numbered DOE table rows."
+        )
+    elif numbered_doe_candidate_count < numbered_table_row_count:
+        guard_status = "warn"
+        guard_reason = (
+            "Stage2 count is not below the numbered DOE table, but deterministic DOE rows do not yet cover all numbered rows."
+        )
+    else:
+        guard_status = "pass"
+        guard_reason = "Deterministic numbered DOE rows are preserved in the active Stage2 candidate surface."
+    return {
+        "doi": str(paper.get("doi", "")),
+        "paper_key": str(paper.get("key", "")),
+        "numbered_table_row_count": str(numbered_table_row_count),
+        "stage2_candidate_count": str(formulation_candidate_count),
+        "difference": str(difference),
+        "guard_status": guard_status,
+        "guard_reason": guard_reason,
+        "stage2_total_row_count": str(len(forms)),
+        "numbered_doe_candidate_count": str(numbered_doe_candidate_count),
+        "overlapping_llm_numeric_rows": str(overlapping_llm_numeric_rows),
+        "selected_table_ids": str(summary.get("selected_table_ids", "")),
+    }
+
+
+def write_numbered_doe_guard_artifact(
+    out_dir: Path,
+    guard_rows: List[Dict[str, str]],
+) -> Dict[str, Any]:
+    guard_path = out_dir / NUMBERED_DOE_GUARD_NAME
+    columns = [
+        "doi",
+        "paper_key",
+        "numbered_table_row_count",
+        "stage2_candidate_count",
+        "difference",
+        "guard_status",
+        "guard_reason",
+        "stage2_total_row_count",
+        "numbered_doe_candidate_count",
+        "overlapping_llm_numeric_rows",
+        "selected_table_ids",
+    ]
+    with guard_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, delimiter="\t", extrasaction="ignore")
+        writer.writeheader()
+        for row in guard_rows:
+            writer.writerow(row)
+    fail_count = sum(1 for row in guard_rows if row.get("guard_status") == "fail")
+    warn_count = sum(1 for row in guard_rows if row.get("guard_status") == "warn")
+    return {
+        "guard_path": guard_path,
+        "paper_count": len(guard_rows),
+        "fail_count": fail_count,
+        "warn_count": warn_count,
+    }
+
+
 def enumerate_figure_variable_sweep_candidates(
     forms: List[Dict[str, Any]],
     raw_text: str,
@@ -1678,6 +1769,19 @@ def enumerate_figure_variable_sweep_candidates(
 
 def _safe_filename_part(v: str) -> str:
     return re.sub(r"[^a-zA-Z0-9._-]+", "_", str(v).strip())
+
+
+def find_replay_raw_response(replay_dir: Path, *, key: str, doi: str) -> Path:
+    key_part = _safe_filename_part(key)
+    doi_part = _safe_filename_part(doi)
+    pattern = f"*_{key_part}_{doi_part}.txt"
+    matches = sorted(replay_dir.glob(pattern), key=lambda p: (len(p.name), p.name.lower()))
+    if not matches:
+        die(
+            "Replay raw response not found for "
+            f"key={key} doi={doi} under {replay_dir} using pattern {pattern}"
+        )
+    return matches[0]
 
 
 @dataclass
@@ -1835,6 +1939,14 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     p.add_argument("--retries", type=int, default=1)
     p.add_argument("--out-dir", default="")
     p.add_argument(
+        "--replay-raw-responses-dir",
+        default="",
+        help=(
+            "Reuse existing raw response .txt files from a previous Stage2 run. "
+            "When set, the extractor parses those saved responses and does not make new LLM calls."
+        ),
+    )
+    p.add_argument(
         "--disable-numbered-doe-enumerator",
         action="store_true",
         help="Disable the deterministic numbered DOE table-row enumerator. The default is enabled.",
@@ -1845,8 +1957,13 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
 def main(argv: Optional[List[str]] = None) -> None:
     args = parse_args(argv)
-    validate_models_or_raise([args.model], context="v7pilot_r3_fixparse preflight")
-    ensure_genai(args.model)
+    replay_dir = Path(args.replay_raw_responses_dir).resolve() if args.replay_raw_responses_dir else None
+    if replay_dir is not None:
+        if not replay_dir.exists():
+            raise FileNotFoundError(f"Replay raw responses directory not found: {replay_dir}")
+    else:
+        validate_models_or_raise([args.model], context="v7pilot_r3_fixparse preflight")
+        ensure_genai(args.model)
 
     papers = load_manifest(Path(args.manifest_tsv), args.max_items)
     if len(papers) == 0:
@@ -1869,6 +1986,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     n_forms = 0
     numbered_doe_artifact_rows: List[Dict[str, Any]] = []
     numbered_doe_summary_rows: List[Dict[str, Any]] = []
+    numbered_doe_guard_rows: List[Dict[str, str]] = []
     with out_jsonl.open("w", encoding="utf-8") as jf:
         for i, paper in enumerate(papers, start=1):
             if not paper.text_path.exists():
@@ -1884,13 +2002,18 @@ def main(argv: Optional[List[str]] = None) -> None:
             )
             prompt = build_prompt(packed_txt, detection_text=raw_txt)
 
-            raw = call_gemini(args.model, prompt, args.retries, args.sleep)
             raw_fp = raw_dir / f"{i:02d}_{_safe_filename_part(paper.key)}_{_safe_filename_part(paper.doi)}.txt"
+            if replay_dir is not None:
+                source_raw_fp = find_replay_raw_response(replay_dir, key=paper.key, doi=paper.doi)
+                raw = source_raw_fp.read_text(encoding="utf-8")
+            else:
+                raw = call_gemini(args.model, prompt, args.retries, args.sleep)
             raw_fp.write_text(raw, encoding="utf-8")
             data = safe_json_load(raw)
             forms = canonicalize_formulations(data)
             forms.extend(enumerate_figure_variable_sweep_candidates(forms, raw_txt, paper.key))
             forms = dedupe_sweep_overlap_forms(forms)
+            doe_summary: Optional[Dict[str, Any]] = None
             if not args.disable_numbered_doe_enumerator:
                 doe_forms, doe_artifacts, doe_summary = enumerate_numbered_doe_candidates_for_paper(
                     paper=paper,
@@ -1903,6 +2026,13 @@ def main(argv: Optional[List[str]] = None) -> None:
                     forms = prefer_numbered_doe_forms_over_llm_numeric_rows(forms)
                 numbered_doe_artifact_rows.extend(doe_artifacts)
                 numbered_doe_summary_rows.append(doe_summary)
+            numbered_doe_guard_rows.append(
+                build_numbered_doe_guard_row(
+                    paper={"key": paper.key, "doi": paper.doi},
+                    forms=forms,
+                    doe_summary=doe_summary,
+                )
+            )
 
             line = {
                 "key": paper.key,
@@ -1966,9 +2096,12 @@ def main(argv: Optional[List[str]] = None) -> None:
             "candidate_count": 0,
             "paper_count": 0,
         }
+    guard_stats = write_numbered_doe_guard_artifact(out_dir, numbered_doe_guard_rows)
     summary = {
         "manifest_tsv": str(Path(args.manifest_tsv).resolve()),
         "model": args.model,
+        "replay_raw_responses_dir": str(replay_dir) if replay_dir is not None else "",
+        "fresh_llm_calls_made": replay_dir is None,
         "n_papers": len(papers),
         "n_formulations": n_forms,
         "n_numbered_doe_candidates": int(numbered_doe_stats["candidate_count"]),
@@ -1978,8 +2111,17 @@ def main(argv: Optional[List[str]] = None) -> None:
         "raw_responses_dir": str(raw_dir.resolve()),
         "numbered_doe_candidates_tsv": str(Path(numbered_doe_stats["artifact_path"]).resolve()),
         "numbered_doe_summary_tsv": str(Path(numbered_doe_stats["summary_path"]).resolve()),
+        "numbered_doe_guard_tsv": str(Path(guard_stats["guard_path"]).resolve()),
+        "numbered_doe_guard_fail_count": int(guard_stats["fail_count"]),
+        "numbered_doe_guard_warn_count": int(guard_stats["warn_count"]),
     }
     (out_dir / "pilot_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    if guard_stats["fail_count"] or guard_stats["warn_count"]:
+        print(
+            "[WARN] numbered DOE regression guard flagged "
+            f"{guard_stats['fail_count']} fail(s) and {guard_stats['warn_count']} warn(s).",
+            file=sys.stderr,
+        )
     print(json.dumps(summary, indent=2))
 
 

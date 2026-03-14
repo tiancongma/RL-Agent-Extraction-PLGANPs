@@ -14,6 +14,8 @@ from openpyxl import load_workbook
 COUNTS_NAME = "final_table_vs_gt_counts.tsv"
 SUMMARY_NAME = "final_table_vs_gt_summary.md"
 EE_SUBSET_NAME = "final_table_vs_gt_ee_subset.tsv"
+AUDIT_COUNTS_NAME = "final_table_vs_gt_counts_by_doi.tsv"
+AUDIT_SUMMARY_NAME = "final_table_vs_gt_count_audit.md"
 
 
 def normalize_text(value: Any) -> str:
@@ -118,6 +120,45 @@ def build_summary_markdown(
     summary_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def build_count_audit_markdown(
+    counts_rows: list[dict[str, str]],
+    gt_xlsx_path: Path,
+    final_table_path: Path,
+    audit_summary_path: Path,
+) -> None:
+    exact = sum(1 for row in counts_rows if row["count_status"] == "match")
+    plus = sum(1 for row in counts_rows if row["count_status"] == "pred_gt_plus")
+    minus = sum(1 for row in counts_rows if row["count_status"] == "pred_gt_minus")
+    mismatches = sorted(
+        [row for row in counts_rows if row["count_status"] != "match"],
+        key=lambda row: abs(int(row["delta_count"])),
+        reverse=True,
+    )
+    lines = [
+        "# DEV15 GT vs Pred Count Audit",
+        "",
+        f"- gt_authority_file: `{gt_xlsx_path}`",
+        f"- pred_source_file: `{final_table_path}`",
+        f"- total_doi_count: `{len(counts_rows)}`",
+        f"- exact_matches: `{exact}`",
+        f"- positive_deltas: `{plus}`",
+        f"- negative_deltas: `{minus}`",
+        "",
+        "## Top mismatches",
+        "",
+    ]
+    if not mismatches:
+        lines.append("- No DOI-level count mismatches.")
+    else:
+        for row in mismatches:
+            lines.append(
+                "- `{doi}` / `{paper_key}`: gt=`{gt_count}` pred=`{pred_count}` delta=`{delta_count}` status=`{count_status}`".format(
+                    **row
+                )
+            )
+    audit_summary_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def compare_final_table_to_gt(
     final_table_tsv: Path,
     gt_xlsx: Path,
@@ -148,6 +189,7 @@ def compare_final_table_to_gt(
     ee_supported = any("encapsulation" in normalize_text(column) for column in gt_header)
 
     counts_rows: list[dict[str, str]] = []
+    audit_rows: list[dict[str, str]] = []
     for key in sorted(scope_keys):
         manifest_row = scope_by_key[key]
         final_count = int(final_counts.get(key, 0))
@@ -159,6 +201,7 @@ def compare_final_table_to_gt(
             status = "over"
         else:
             status = "under"
+        count_status = "match" if diff == 0 else ("pred_gt_plus" if diff > 0 else "pred_gt_minus")
         counts_rows.append(
             {
                 "paper_key": key,
@@ -177,9 +220,26 @@ def compare_final_table_to_gt(
                 ),
             }
         )
+        audit_rows.append(
+            {
+                "doi": manifest_row.get("doi", ""),
+                "paper_key": key,
+                "gt_count": str(gt_count),
+                "pred_count": str(final_count),
+                "delta_count": str(diff),
+                "count_status": count_status,
+                "gt_authority_file": str(gt_xlsx),
+                "pred_source_file": str(final_table_tsv),
+                "matched_rows": "",
+                "missing_rows": "",
+                "spurious_rows": "",
+            }
+        )
 
     counts_path = out_dir / COUNTS_NAME
     summary_path = out_dir / SUMMARY_NAME
+    audit_counts_path = out_dir / AUDIT_COUNTS_NAME
+    audit_summary_path = out_dir / AUDIT_SUMMARY_NAME
     write_tsv(
         counts_path,
         [
@@ -196,6 +256,23 @@ def compare_final_table_to_gt(
         ],
         counts_rows,
     )
+    write_tsv(
+        audit_counts_path,
+        [
+            "doi",
+            "paper_key",
+            "gt_count",
+            "pred_count",
+            "delta_count",
+            "count_status",
+            "gt_authority_file",
+            "pred_source_file",
+            "matched_rows",
+            "missing_rows",
+            "spurious_rows",
+        ],
+        audit_rows,
+    )
     build_summary_markdown(
         scope_name=scope_name,
         manifest_path=scope_manifest_tsv,
@@ -205,6 +282,12 @@ def compare_final_table_to_gt(
         ee_supported=ee_supported,
         summary_path=summary_path,
     )
+    build_count_audit_markdown(
+        counts_rows=audit_rows,
+        gt_xlsx_path=gt_xlsx,
+        final_table_path=final_table_tsv,
+        audit_summary_path=audit_summary_path,
+    )
 
     result = {
         "scope_name": scope_name,
@@ -212,6 +295,8 @@ def compare_final_table_to_gt(
         "gt_xlsx_path": str(gt_xlsx),
         "counts_path": str(counts_path),
         "summary_path": str(summary_path),
+        "audit_counts_path": str(audit_counts_path),
+        "audit_summary_path": str(audit_summary_path),
         "ee_subset_path": "",
         "ee_subset_supported": ee_supported,
         "papers_in_scope": len(scope_keys),

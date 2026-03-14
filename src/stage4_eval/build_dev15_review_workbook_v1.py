@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -18,35 +19,35 @@ except ModuleNotFoundError:
     from src.utils.paths import DATA_CLEANED_DIR, DATA_RESULTS_DIR, DOCS_DIR
 
 
-GT_WORKBOOK = (
+DEFAULT_GT_WORKBOOK = (
     DATA_CLEANED_DIR
     / "labels"
     / "manual"
     / "dev15_formulation_skeleton"
-    / "dev15_formulation_skeleton_review_v1_fixed.xlsx"
+    / "dev15_formulation_skeleton_review_v2_variantaware.xlsx"
 )
-COMBINED_EVAL_TSV = (
+DEFAULT_COMBINED_EVAL_TSV = (
     DATA_CLEANED_DIR
     / "labels"
     / "manual"
     / "formulation_instance_dev15_combined_eval_2026-03-10_reconciled.tsv"
 )
-REMAINING12_EVAL_TSV = (
+DEFAULT_REMAINING12_EVAL_TSV = (
     DATA_CLEANED_DIR
     / "labels"
     / "manual"
     / "formulation_instance_remaining12_eval_2026-03-10"
     / "per_doi_formulation_instance_summary.tsv"
 )
-TUNED3_EVAL_TSV = (
+DEFAULT_TUNED3_EVAL_TSV = (
     DATA_CLEANED_DIR
     / "labels"
     / "manual"
     / "formulation_instance_pilot3_eval_synthmethod_2026-03-10"
     / "per_doi_formulation_instance_summary.tsv"
 )
-OUT_DIR = DATA_RESULTS_DIR / "dev15_review"
-OUT_XLSX = OUT_DIR / "dev15_instance_review_v1.xlsx"
+DEFAULT_OUT_DIR = DATA_RESULTS_DIR / "dev15_review"
+DEFAULT_OUT_XLSX = DEFAULT_OUT_DIR / "dev15_instance_review_v1.xlsx"
 
 
 PAPER_SUMMARY_COLUMNS = [
@@ -299,11 +300,25 @@ def print_preview(label: str, df: pd.DataFrame, rows: int = 5) -> None:
         print("\t".join(values))
 
 
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Build a DEV15 reviewer workbook from evaluation outputs and a selected GT workbook."
+    )
+    parser.add_argument("--gt-workbook", type=Path, default=DEFAULT_GT_WORKBOOK)
+    parser.add_argument("--combined-eval-tsv", type=Path, default=DEFAULT_COMBINED_EVAL_TSV)
+    parser.add_argument("--remaining12-eval-tsv", type=Path, default=DEFAULT_REMAINING12_EVAL_TSV)
+    parser.add_argument("--tuned3-eval-tsv", type=Path, default=DEFAULT_TUNED3_EVAL_TSV)
+    parser.add_argument("--out-xlsx", type=Path, default=DEFAULT_OUT_XLSX)
+    return parser
+
+
 def main() -> int:
-    gt_counts = read_gt_counts(GT_WORKBOOK)
-    combined_eval = read_tsv(COMBINED_EVAL_TSV)
-    remaining12_eval = read_tsv(REMAINING12_EVAL_TSV)
-    tuned3_eval = read_tsv(TUNED3_EVAL_TSV)
+    args = build_arg_parser().parse_args()
+
+    gt_counts = read_gt_counts(args.gt_workbook)
+    combined_eval = read_tsv(args.combined_eval_tsv)
+    remaining12_eval = read_tsv(args.remaining12_eval_tsv)
+    tuned3_eval = read_tsv(args.tuned3_eval_tsv)
 
     tuned3_keys = sorted(combined_eval.loc[combined_eval["source_group"] == "tuned_3paper", "paper_key"].map(norm_text).tolist())
     remaining12_keys = sorted(
@@ -316,8 +331,9 @@ def main() -> int:
     predicted_instances = build_predicted_instances([tuned3_weak_labels, remaining12_weak_labels], paper_summary)
     review_queue = build_review_queue(paper_summary)
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    with pd.ExcelWriter(OUT_XLSX, engine="openpyxl") as writer:
+    out_dir = args.out_xlsx.parent
+    out_dir.mkdir(parents=True, exist_ok=True)
+    with pd.ExcelWriter(args.out_xlsx, engine="openpyxl") as writer:
         paper_summary.to_excel(writer, sheet_name="paper_summary", index=False)
         predicted_instances.to_excel(writer, sheet_name="predicted_instances", index=False)
         review_queue.to_excel(writer, sheet_name="review_queue", index=False)
@@ -334,11 +350,11 @@ def main() -> int:
     print(f"exact={exact}")
     print(f"under_segmentation={under}")
     print(f"over_segmentation={over}")
-    print(f"generated_excel={OUT_XLSX}")
-    print(f"input_gt_workbook={GT_WORKBOOK}")
-    print(f"input_combined_eval={COMBINED_EVAL_TSV}")
-    print(f"input_remaining12_eval={REMAINING12_EVAL_TSV}")
-    print(f"input_tuned3_eval={TUNED3_EVAL_TSV}")
+    print(f"generated_excel={args.out_xlsx}")
+    print(f"input_gt_workbook={args.gt_workbook}")
+    print(f"input_combined_eval={args.combined_eval_tsv}")
+    print(f"input_remaining12_eval={args.remaining12_eval_tsv}")
+    print(f"input_tuned3_eval={args.tuned3_eval_tsv}")
     print(f"input_tuned3_weak_labels={tuned3_weak_labels}")
     print(f"input_remaining12_weak_labels={remaining12_weak_labels}")
 

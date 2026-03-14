@@ -9,7 +9,7 @@ This workbook is intended for manual inspection of instance-boundary errors, esp
 - contamination by predicted rows that are not valid formulation instances
 
 Input artifacts used:
-- `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
+- `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx`
 - `data/cleaned/labels/manual/formulation_instance_dev15_combined_eval_2026-03-10.tsv`
 - `data/cleaned/labels/manual/formulation_instance_remaining12_eval_2026-03-10/per_doi_formulation_instance_summary.tsv`
 - `data/cleaned/labels/manual/formulation_instance_pilot3_eval_synthmethod_2026-03-10/per_doi_formulation_instance_summary.tsv`

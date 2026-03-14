@@ -222,6 +222,8 @@ Manual GT belongs here, not in the production path.
 Reference inputs:
 
 - `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
+  - preserved prior authority: `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v1_fixed.xlsx`
+  - current authority: `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx`
 - other checked manual assets under `data/cleaned/labels/manual/` when needed
 
 Rule:
