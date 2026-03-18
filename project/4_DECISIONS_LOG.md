@@ -199,6 +199,22 @@ Implementation note
 - On `2026-03-10`, the validated `WFDTQ4VX` coordinate-signature merge was integrated into `src/stage4_eval/eval_weak_labels_v7pilot3.py` for Stage4 DEV counting.
 - The Stage4 summary now preserves both the raw predicted formulation row count and the reconciled formulation-core count for auditability.
 
+## 2026-03-18
+
+### Decision: Add deterministic `preparation_method` and `emulsion_structure` as schema-only enrichment fields
+
+Decision
+- Add two descriptive fields, `preparation_method` and `emulsion_structure`, as deterministic enrichment outputs derived only from existing structured values and stored evidence text.
+- Keep the enrichment downstream of formulation identity decisions so it does not participate in Stage2 candidate creation, Stage5 retention, Stage5 collapse, GT compare semantics, or reviewer GT authority.
+
+Reason
+- The active schema preserved emulsion-specific method fields but lacked a generalized preparation-method surface for non-emulsion routes such as nanoprecipitation and solvent displacement.
+- The enrichment is needed for better method representation without changing benchmark behavior.
+
+Impact
+- Stage2 TSV exports and Stage5 final-table exports can now carry a generalized preparation-method field pair.
+- DEV15 Layer 1 DOI counts and the reviewed-boundary Layer 2 comparison must remain unchanged; any count change is treated as a regression.
+
 ### GT correction example: PA3SPZ28 manual undercount, not a new pipeline rule category
 
 Interpretation
@@ -919,3 +935,129 @@ Authority-switch rule
 
 Reproducibility note
 - The versioned GT update is produced by deterministic reuse of the existing Stage5 final formulation table and does not require any fresh Stage0-Stage5 upstream rerun.
+
+## 2026-03-16
+
+### Decision: Add the first active Layer 2 boundary-GT review export surface
+
+Decision
+- Add `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py` as the first active engineering surface for Second-Layer GT.
+- The script exports a run-scoped XLSX workbook seeded from `final_formulation_table_v1.tsv`, with optional `final_output_decision_trace_v1.tsv`, optional `formulation_relation_records_v1.tsv`, and optional scope-manifest metadata as reference inputs.
+- Prediction-reference columns are locked and visually separated from reviewer-editable GT columns.
+- Core reviewer actions use dropdown-backed enums instead of free-text decisions where possible.
+- The workbook also includes manual-addition template rows so missing GT formulation instances can be added without changing the workbook schema.
+
+Reason
+- The repository already has a stable Layer 1 pattern for skeleton workbook generation and review, but no active Layer 2 boundary-GT review surface in `src/`.
+- The benchmark object is now the Stage 5 final formulation table, so the review seed should come from Stage 5 rather than from Stage 2 candidate rows.
+- Boundary GT needs a human-reviewable but machine-validatable surface before row-level alignment comparison can be implemented safely.
+
+Impact
+- The active repo now exposes a repository-native workbook export path for boundary GT review without reviving archived skeleton-bootstrap code as runtime authority.
+- This tool is a supporting review surface only; it does not change the canonical production endpoint or benchmark-valid reporting rule.
+- Future Layer 2 validation/export and alignment-compare work should build on this workbook schema rather than inventing a separate review format.
+
+### Decision: Correct the Layer 1 GT count for 5GIF3D8W to 26 and formalize design-vs-instance counting
+
+Decision
+- Revise the Layer 1 DEV15 GT authority for `5GIF3D8W` / `10.1080/10717540802174662` from `32` formulation rows to `26`.
+- The corrected count is:
+  - `8` baseline table rows
+  - `4` drug-amount sweep formulation instances
+  - `2` polymer-content sweep formulation instances
+  - `12` stabilizer-concentration sweep formulation instances
+- The previous `32`-row count incorrectly included design-only combinations that were mentioned in the sweep structure but were not supported as reported formulation instances with instance-level evidence.
+
+Reason
+- Layer 1 GT is a formulation-instance count, not a full design-space count.
+- A condition belongs in GT only when the paper presents it as a reported experimental instance, for example as a table row or a condition explicitly tied to results.
+- Conditions that appear only as possible combinations or implied sweep coordinates, without row-level or result-level evidence, must be excluded from GT even if they are part of the described experimental design.
+
+Instance-counting rule
+- Include a formulation in Layer 1 GT only if it is a reported experimental instance.
+- Include when:
+  - it appears as a table row
+  - it has explicit experimental conditions tied to results
+  - the paper clearly treats it as a realized batch or formulation instance
+- Exclude when:
+  - it is mentioned only as part of a methods design space or possible combination set
+  - it has no table row, no result, and no instance-level evidence
+  - it exists only as a variable-design description rather than a reported realized formulation
+
+Traceability
+- The authoritative workbook `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx` was updated so the excluded `5GIF3D8W` rows are marked non-GT with an explicit justification note.
+- The checked export `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_gt_v2_variantaware.tsv` was refreshed to the corrected `26`-row authority for this DOI.
+
+### Decision: Exclude assay-only derivative particles from Layer 1 GT unless independently reported
+
+Decision
+- Revise the Layer 1 DEV15 GT authority for `BXCV5XWB` / `10.1007/s10439-019-02430-x` from `9` rows to `3`.
+- Retain only the three drug-loaded benchmark formulation instances.
+- Exclude the three FITC-labeled particle rows and the three blank-particle rows from Layer 1 GT.
+
+Reason
+- Layer 1 GT counts benchmark formulation instances, not assay-only derivatives.
+- In this paper, the retained benchmark instances are the reported drug-loaded nanoparticle formulations with formulation-level characterization and benchmark-relevant results.
+- The FITC-labeled particles were used only for assay context and were not reported as independent formulation-level benchmark rows.
+- The blank particles were used as controls and were not reported as independent formulation-level benchmark rows with benchmark-relevant characterization/results.
+
+Assay-only derivative rule
+- Assay-only derivative particles, such as blank controls or FITC-labeled particles used only for imaging or cell experiments, are excluded from Layer 1 GT unless the paper reports them as independent formulation instances.
+- If a derivative particle is present only as a control, imaging aid, uptake probe, or assay-specific variant without independent formulation-level reporting, mark it non-GT in the review workbook rather than counting it as a benchmark formulation.
+
+Traceability
+- In `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx`, `BXCV5XWB_F04` through `BXCV5XWB_F09` were flipped from GT `yes` to `no` and annotated with the assay-only derivative exclusion note.
+- The checked export `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_gt_v2_variantaware.tsv` was refreshed so `BXCV5XWB` now contributes only the three retained drug-loaded rows.
+
+## 2026-03-18
+
+### Decision: Restrict Stage 2 sweep expansion to explicitly evidenced formulation instances for narrative-only sections
+
+Decision
+- Update the active Stage 2 deterministic sweep-expansion logic so narrative-only variable sweep sections do not emit one formulation row per declared design level unless the section contains explicit formulation-level identity support.
+- Keep figure-backed sweep expansion unchanged when the source section has series/axis support indicating reported per-level results.
+- For narrative-only sweep sections, emit rows only for identity-level pairs that are explicitly evidenced in the narrative text.
+
+Reason
+- Layer 1 and reviewed-boundary Layer 2 both count observable formulation instances, not the full planned design space.
+- The previous Stage 2 logic could over-expand methods-declared sweep levels into synthetic formulation rows even when the results text only reported trends or a smaller subset of realized levels.
+- `5GIF3D8W` exposed this failure mode: the paper reports stabilizer sweep results per level, but its polymer-content and drug-amount sections contain narrative support for only a subset of the described design levels.
+
+Impact
+- The active Stage 2 path now preserves figure-backed sweep coverage while avoiding narrative-only design-space inflation.
+- In the `5GIF3D8W` child regression run, Stage 2 and Stage 5 counts for that paper dropped from `38` to `26`, matching the reviewed-boundary authority for this DOI.
+- Non-target DEV15 papers preserved their Stage 2 and Stage 5 row counts in the regression run.
+
+Traceability
+- The deterministic implementation lives in `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`.
+- Regression evidence is recorded in:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/09_5gif3d8w_reported_formulation_filter/run_20260318_1324_ae5599d_dev15_5gif3d8w_reported_formulation_filter_no_llm_v1/RUN_CONTEXT.md`
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/09_5gif3d8w_reported_formulation_filter/run_20260318_1324_ae5599d_dev15_5gif3d8w_reported_formulation_filter_no_llm_v1/analysis/5gif3d8w_reported_formulation_filter_report.md`
+
+### Decision: Exclude external commercial comparator rows from benchmark-facing Stage 5 formulation closure
+
+Decision
+- Filter rows from Stage 5 final formulation closure when they are external commercial or marketed comparator references and they do not carry internal preparation identity.
+- Keep the Stage 2 extraction surface unchanged so those rows can still appear in candidate-level diagnostics and audit artifacts.
+
+Reason
+- The benchmark-facing Stage 5 final formulation table counts internally prepared formulation instances, not marketed reference products.
+- `QLYKLPKT` exposed this failure mode: Stage 2 already tagged `Sporanox®` as `formulation_role=comparative` with `commercial` context, but Stage 5 still retained it because the existing filter only excluded rows explicitly marked `candidate_non_formulation`.
+- External comparators may have numeric outcomes and still be non-benchmark rows when they are not internally prepared formulation instances.
+
+Rule
+- Exclude a row from final formulation closure when all of the following hold:
+  - `formulation_role` is `comparative`
+  - the row has a commercial or marketed-product signal
+  - the row lacks internal preparation identity such as polymer identity, formulation ratio, polymer amount, surfactant identity/concentration, or solvent identity
+
+Impact
+- Commercial comparator rows remain visible upstream for auditability but no longer inflate benchmark-facing final-row counts.
+- In the `QLYKLPKT` regression run, the commercial comparator row was filtered and the reviewed-boundary DEV15 comparison moved from `14/15` to `15/15`.
+- Non-target DEV15 papers preserved their Stage 2 and Stage 5 row counts.
+
+Traceability
+- The deterministic implementation lives in `src/stage5_benchmark/build_minimal_final_output_v1.py`.
+- Regression evidence is recorded in:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/10_qlyk_commercial_reference_filter/run_20260318_1347_ae5599d_dev15_qlyk_commercial_reference_filter_no_llm_v1/RUN_CONTEXT.md`
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/10_qlyk_commercial_reference_filter/run_20260318_1347_ae5599d_dev15_qlyk_commercial_reference_filter_no_llm_v1/analysis/qlyk_commercial_reference_filter_report.md`

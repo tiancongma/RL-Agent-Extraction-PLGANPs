@@ -182,6 +182,7 @@ Core scripts:
 Supporting stage-local helper:
 
 - `src/stage5_benchmark/run_minimal_final_output_v1.py`
+- `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
 
 Wrapper status:
 
@@ -199,6 +200,12 @@ Completion artifacts:
 Optional Stage 3 provenance input:
 
 - `formulation_relation_records_v1.tsv`
+
+Optional Layer 2 GT review export:
+
+- `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
+- This helper builds a run-scoped XLSX boundary-GT workbook from the Stage 5 final table and optional provenance artifacts.
+- It is a reviewer-facing support surface, not a production-path completion artifact.
 
 Current limitation:
 
@@ -292,6 +299,7 @@ The optional diagnostic/review path consists of:
 
 - `src/stage4_eval/eval_weak_labels_v7pilot3.py`
 - `src/stage4_eval/build_dev15_review_workbook_v1.py`
+- `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
 
 This path is downstream of Stage 2 candidate extraction and exists for mismatch
 analysis, review, and debugging. It is not the production endpoint.
@@ -340,3 +348,13 @@ the fixed GT workbook and declared scope manifest as separate inputs.
 - no duplicate active Stage 5 namespace
 - no reporting of Stage 2 or Stage 4 artifacts as final benchmark outputs
 - no undocumented shortcut from partial artifacts directly to benchmark claims
+
+## Layer 1 GT Counting Rule
+
+Layer 1 GT counts are formulation-instance counts, not full design-space
+counts.
+
+- Count a GT formulation only when the paper reports a realized experimental
+  instance with row-level or result-level evidence.
+- Do not count methods-only combinations or sweep conditions that were not
+  reported as concrete formulation instances.

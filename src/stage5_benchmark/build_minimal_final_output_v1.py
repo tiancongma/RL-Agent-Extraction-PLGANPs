@@ -11,6 +11,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from src.utils.preparation_method_fields_v1 import (
+    PREPARATION_METHOD_FIELDNAMES,
+    enrich_preparation_method_fields_v1,
+)
+
 
 DECISION_TRACE_NAME = "final_output_decision_trace_v1.tsv"
 FINAL_TABLE_NAME = "final_formulation_table_v1.tsv"
@@ -193,6 +198,52 @@ def row_context_tags(row: dict[str, str]) -> set[str]:
     return observed
 
 
+def has_commercial_reference_signal(row: dict[str, str]) -> bool:
+    tags = row_context_tags(row)
+    if "commercial" in tags:
+        return True
+    signal_blob = " ".join(
+        [
+            str(row.get("raw_formulation_label", "") or ""),
+            str(row.get("evidence_span_text", "") or ""),
+            str(row.get("supporting_evidence_refs", "") or ""),
+        ]
+    ).lower()
+    if any(
+        phrase in signal_blob
+        for phrase in [
+            "commercial product",
+            "commercial formulation",
+            "commercial intravenous formulation",
+            "marketed product",
+            "marketed formulation",
+            "marketed drug product",
+            "former commercial",
+        ]
+    ):
+        return True
+    for key, value in row.items():
+        if not key.endswith("_missing_reason"):
+            continue
+        if "commercial product" in normalize_text(value):
+            return True
+    return False
+
+
+def lacks_internal_preparation_identity(core_fields: dict[str, str]) -> bool:
+    if core_fields["polymer_identity"] != "unknown":
+        return False
+    internal_identity_fields = [
+        "la_ga_ratio",
+        "drug_feed_amount_mg",
+        "polymer_amount_mg",
+        "surfactant_name",
+        "surfactant_concentration",
+        "organic_solvent",
+    ]
+    return not any(core_fields[field_name] for field_name in internal_identity_fields)
+
+
 def should_filter_non_formulation(
     row: dict[str, str], core_fields: dict[str, str]
 ) -> tuple[bool, str, str]:
@@ -212,6 +263,17 @@ def should_filter_non_formulation(
             True,
             "characterization_only_post_processing",
             "Row is tagged as post-processing or measurement context only and does not describe a new formulation closure case.",
+        )
+
+    if (
+        normalize_text(row.get("formulation_role")) == "comparative"
+        and has_commercial_reference_signal(row)
+        and lacks_internal_preparation_identity(core_fields)
+    ):
+        return (
+            True,
+            "external_commercial_reference",
+            "Row is a commercial or marketed comparator reference without internal preparation identity and is excluded from benchmark-facing formulation closure.",
         )
 
     return False, "", ""
@@ -1148,6 +1210,7 @@ def build_minimal_final_output(
         }
         for field in original_fieldnames:
             final_row[field] = representative.get(field, "")
+        final_row = enrich_preparation_method_fields_v1(final_row)
         final_rows.append(final_row)
 
     decision_trace_path = out_dir / DECISION_TRACE_NAME
@@ -1211,6 +1274,7 @@ def build_minimal_final_output(
             "relation_parent_candidate_ids",
             "relation_record_count",
             *original_fieldnames,
+            *[name for name in PREPARATION_METHOD_FIELDNAMES if name not in original_fieldnames],
         ],
         final_rows,
     )

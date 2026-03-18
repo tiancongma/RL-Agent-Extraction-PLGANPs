@@ -33,6 +33,10 @@ from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
     enumerate_numbered_doe_candidates_for_paper,
     write_candidate_artifacts,
 )
+from src.utils.preparation_method_fields_v1 import (
+    PREPARATION_METHOD_FIELDNAMES,
+    enrich_preparation_method_fields_v1,
+)
 from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
 
 HAS_GENAI = False
@@ -1415,6 +1419,72 @@ def _infer_section_identities(
     return fallback
 
 
+def _infer_explicit_section_identities(section_text: str) -> List[str]:
+    identities: List[str] = []
+    explicit_plga_hits = re.findall(r"PLGA\s*\d+\s*/\s*\d+", section_text, flags=re.I)
+    identities.extend(
+        re.sub(r"\s+", " ", re.sub(r"^PLGA(?=\d)", "PLGA ", hit.upper())).replace(" / ", "/")
+        for hit in explicit_plga_hits
+    )
+    if re.search(r"\bPCL\b", section_text, flags=re.I):
+        identities.append("PCL")
+    return _dedupe_preserve_order(identities)
+
+
+def _section_has_axis_series_anchor(field_name: str, section_text: str) -> bool:
+    text = _normalize_for_match(section_text)
+    if field_name == "surfactant_concentration_text":
+        return bool(
+            re.search(r"\bfig\.\s*6\b", text, flags=re.I)
+            or re.search(r"\bfig\.\s*7\b", text, flags=re.I)
+            or re.search(r"effect of stabilizer concentration", text, flags=re.I)
+        )
+    if field_name == "plga_mass_mg":
+        return bool(
+            re.search(r"effect of polymer content", text, flags=re.I)
+            and re.search(r"\b(?:fig|table)\.", text, flags=re.I)
+        )
+    if field_name == "drug_feed_amount_text":
+        return bool(
+            re.search(r"effect of drug", text, flags=re.I)
+            and re.search(r"\b(?:fig|table)\.", text, flags=re.I)
+        )
+    return False
+
+
+def _extract_explicit_narrative_sweep_support(
+    field_name: str,
+    section_text: str,
+) -> Dict[str, List[str]]:
+    support: Dict[str, List[str]] = {}
+    text = _normalize_for_match(section_text)
+    if not text:
+        return support
+
+    if field_name == "plga_mass_mg":
+        for match in re.finditer(
+            r"for\s+(\d+(?:\.\d+)?)\s+and\s+(\d+(?:\.\d+)?)\s*mg,\s*respectively,(?:.{0,360}?)for\s*(PLGA\s*\d+\s*/\s*\d+|PCL)",
+            text,
+            flags=re.I | re.S,
+        ):
+            identity = re.sub(r"\s+", " ", re.sub(r"^PLGA(?=\d)", "PLGA ", match.group(3).upper())).replace(" / ", "/")
+            support.setdefault(identity, [])
+            support[identity].extend([f"{float(match.group(1)):g} mg", f"{float(match.group(2)):g} mg"])
+    elif field_name == "drug_feed_amount_text":
+        range_match = re.search(r"from\s+(\d+(?:\.\d+)?)\s+to\s+(\d+(?:\.\d+)?)\s*mg", text, flags=re.I)
+        if range_match and re.search(r"\b\d+(?:\.\d+)?\s*nm\b", text, flags=re.I):
+            levels = [f"{float(range_match.group(1)):g} mg", f"{float(range_match.group(2)):g} mg"]
+            for identity in _infer_explicit_section_identities(text):
+                support.setdefault(identity, [])
+                support[identity].extend(levels)
+
+    return {
+        identity: _dedupe_preserve_order(levels)
+        for identity, levels in support.items()
+        if _dedupe_preserve_order(levels)
+    }
+
+
 def _infer_baseline_level(variable_key: str, section_text: str, declared_levels: List[str]) -> Optional[str]:
     if not declared_levels:
         return None
@@ -1705,24 +1775,34 @@ def enumerate_figure_variable_sweep_candidates(
         )
         if not section_text:
             continue
-        baseline = _infer_baseline_level(spec["field_name"], section_text, declared_levels)
-        sweep_levels = [lvl for lvl in declared_levels if lvl != baseline]
-        if len(sweep_levels) < 2:
-            continue
-        identities = (
-            list(all_identities)
-            if spec["identities_mode"] == "all"
-            else _infer_section_identities(
-                section_text,
-                all_identities,
-                axis_name=spec["field_name"],
+        sweep_support: Dict[str, List[str]] = {}
+        if _section_has_axis_series_anchor(spec["field_name"], section_text):
+            baseline = _infer_baseline_level(spec["field_name"], section_text, declared_levels)
+            sweep_levels = [lvl for lvl in declared_levels if lvl != baseline]
+            if len(sweep_levels) < 2:
+                continue
+            identities = (
+                list(all_identities)
+                if spec["identities_mode"] == "all"
+                else _infer_section_identities(
+                    section_text,
+                    all_identities,
+                    axis_name=spec["field_name"],
+                )
             )
-        )
-        if not identities:
-            continue
+            if not identities:
+                continue
+            sweep_support = {identity: list(sweep_levels) for identity in identities}
+        else:
+            sweep_support = _extract_explicit_narrative_sweep_support(
+                spec["field_name"],
+                section_text,
+            )
+            if not sweep_support:
+                continue
         evidence_span = _normalize_for_match(section_text)[:800]
-        for polymer_identity in identities:
-            for level in sweep_levels:
+        for polymer_identity, supported_levels in sweep_support.items():
+            for level in supported_levels:
                 raw_label = f"{polymer_identity} [{spec['field_label']}={level}]"
                 label_key = raw_label.lower()
                 if label_key in seen_labels:
@@ -1881,7 +1961,7 @@ def flatten_row(
         out[f"{f}_membership_confidence"] = sanitize_conf(obj.get("membership_confidence"))
         out[f"{f}_evidence_region_type"] = sanitize_region(obj.get("evidence_region_type"))
         out[f"{f}_missing_reason"] = obj.get("missing_reason", "")
-    return out
+    return enrich_preparation_method_fields_v1(out)
 
 
 def build_output_columns() -> List[str]:
@@ -1921,6 +2001,7 @@ def build_output_columns() -> List[str]:
                 f"{f}_missing_reason",
             ]
         )
+    cols.extend(PREPARATION_METHOD_FIELDNAMES)
     return cols
 
 

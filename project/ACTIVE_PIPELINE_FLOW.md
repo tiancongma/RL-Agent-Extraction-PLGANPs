@@ -283,6 +283,8 @@ Exact script path(s) and script filename(s):
 - `src/stage5_benchmark/build_minimal_final_output_v1.py`
 - optional `NON-CANONICAL, STAGE5_ONLY` convenience helper:
   - `src/stage5_benchmark/run_minimal_final_output_v1.py`
+- optional Layer 2 GT review export helper:
+  - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
 
 Exact output files or directories:
 
@@ -336,6 +338,13 @@ Comparison outputs:
 
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
+
+Optional post-compare review surface:
+
+- `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
+  - consumes the Stage 5 final formulation table, optional decision trace, and optional relation records
+  - writes a run-scoped XLSX boundary-GT review workbook for manual Layer 2 curation
+  - is reviewer-facing and diagnostic, not a benchmark-valid endpoint by itself
 
 ## Full Chain From Raw Zotero Records To Final Outputs
 
@@ -518,3 +527,13 @@ The Stage 3 relation layer is intentionally lightweight in phase 1.
 - It improves auditability and provides optional provenance to Stage 5.
 - The current Stage 5 closure logic does not yet fully drive keep/drop/collapse
   decisions from the relation artifact itself; that remains a future extension.
+
+## Layer 1 GT Counting Rule
+
+Layer 1 GT counts are based on reported formulation instances, not on the full
+experimental design space.
+
+- Include a GT formulation only when the paper reports it as an experimental
+  instance, such as a table row or an explicit condition tied to results.
+- Exclude conditions that are described only as possible combinations, sweep
+  coordinates, or methods-level design space without instance-level evidence.

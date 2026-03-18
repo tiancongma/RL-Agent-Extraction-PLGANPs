@@ -218,6 +218,9 @@ Note:
 - `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
   - Class: Reusable evaluation/diagnostic tool
   - Role: Postprocess an existing `final_formulation_table_v1.tsv` into a reviewer-facing audit TSV with explicit confidence tiers, review priority, and provenance pointers.
+- `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
+  - Class: Reusable evaluation/diagnostic tool
+  - Role: Build a run-scoped XLSX boundary-GT review workbook from an existing `final_formulation_table_v1.tsv`, with optional decision-trace, relation-record, and scope-manifest reference surfaces for Layer 2 manual review.
 
 ## Manual Additions (2026-03-11)
 
