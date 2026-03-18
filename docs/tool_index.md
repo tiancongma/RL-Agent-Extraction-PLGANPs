@@ -16,8 +16,11 @@ Manually reconciled against the current post-reduction repository structure on 2
   - `docs/ee_coverage_rl/regression_diagnosis__benchmark18_table_rich.md`
 - Reusable methodology docs: `docs/methods/`
   - `docs/methods/evidence_alignment_hardening_plan.md`
+  - `docs/methods/layer3_field_gt_protocol_v1.md`
 - Benchmark engineering specs: `docs/benchmarks/`
   - `docs/benchmarks/benchmark_goren_2025_engineering_spec.md`
+- Stage and state freeze snapshots: `docs/snapshots/`
+  - `docs/snapshots/snapshot_2026-03-18_dev15_reviewed_boundary_gt_closed.md`
 
 ## Top-Level Pipeline Map
 
@@ -29,7 +32,7 @@ Manually reconciled against the current post-reduction repository structure on 2
 | `stage3_relation` | 2 | Deterministic post-LLM relation materialization |
 | `stage3_gt` | 0 | Reserved stage directory; no active Python scripts |
 | `stage4_eval` | 8 | External benchmark evaluation and diagnostics |
-| `stage5_benchmark` | 29 | Final-output closure, benchmark comparison, schema evaluation, audit, and export utilities |
+| `stage5_benchmark` | 30 | Final-output closure, benchmark comparison, schema evaluation, audit, and export utilities |
 | `utils` | 17 | Shared path, split, run, and dataset utilities |
 
 Note:
@@ -221,6 +224,9 @@ Note:
 - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
   - Class: Reusable evaluation/diagnostic tool
   - Role: Build a run-scoped XLSX boundary-GT review workbook from an existing `final_formulation_table_v1.tsv`, with optional decision-trace, relation-record, and scope-manifest reference surfaces for Layer 2 manual review.
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+  - Class: Reusable evaluation/diagnostic tool
+  - Role: Build a run-scoped XLSX field-GT review workbook from a frozen `final_formulation_table_v1.tsv`, expanding one row per `(formulation_id, field_name)` with compact reviewer columns, helper formulation labels, dropdown GT controls, and explicit evidence-support statuses for Layer 3 manual review.
 
 ## Manual Additions (2026-03-11)
 

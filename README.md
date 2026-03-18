@@ -73,6 +73,10 @@ Current active Stage 5 scripts:
 - `src/stage5_benchmark/build_minimal_final_output_v1.py`
 - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
 
+Stage 5 is a materialization layer. It must not perform semantic inference.
+Benchmark-valid Stage 5 closure now depends on both Stage 3 relation records and
+Stage 3 resolved relation fields.
+
 Current Stage 5 supporting review export:
 
 - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`

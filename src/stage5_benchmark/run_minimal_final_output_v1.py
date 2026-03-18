@@ -44,7 +44,8 @@ def render_run_context(
     run_id: str,
     run_type: str,
     input_tsv: Path,
-    relation_records_tsv: Path | None,
+    relation_records_tsv: Path,
+    resolved_relation_fields_tsv: Path,
     run_dir: Path,
     stats: dict[str, object],
 ) -> str:
@@ -67,11 +68,8 @@ def render_run_context(
             "## 4. Starting input artifact(s)",
             "",
             f"- candidate_input_tsv: `{input_tsv}`",
-            (
-                f"- relation_records_tsv: `{relation_records_tsv}`"
-                if relation_records_tsv is not None
-                else "- relation_records_tsv: `not provided`"
-            ),
+            f"- relation_records_tsv: `{relation_records_tsv}`",
+            f"- resolved_relation_fields_tsv: `{resolved_relation_fields_tsv}`",
             "",
             "## 5. Exact script execution order",
             "",
@@ -104,7 +102,8 @@ def render_run_context(
             "```powershell",
             "$env:PYTHONPATH='c:\\Users\\tianc\\Downloads\\GitHub\\RL-Agent-Extraction-PLGANPs'; "
             f"python src/stage5_benchmark/run_minimal_final_output_v1.py --run-id {run_id} "
-            f"--input-tsv {input_tsv.as_posix()} --run-type {run_type}",
+            f"--input-tsv {input_tsv.as_posix()} --relation-records-tsv {relation_records_tsv.as_posix()} "
+            f"--resolved-relation-fields-tsv {resolved_relation_fields_tsv.as_posix()} --run-type {run_type}",
             "```",
             "",
             "## 11. Environment assumptions",
@@ -130,7 +129,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--input-tsv", required=True, type=Path)
-    parser.add_argument("--relation-records-tsv", type=Path, default=None)
+    parser.add_argument("--relation-records-tsv", required=True, type=Path)
+    parser.add_argument("--resolved-relation-fields-tsv", required=True, type=Path)
     parser.add_argument(
         "--run-type",
         default="component_regression_run",
@@ -154,12 +154,14 @@ def main() -> None:
         args.input_tsv,
         run_dir,
         relation_records_tsv=args.relation_records_tsv,
+        resolved_relation_fields_tsv=args.resolved_relation_fields_tsv,
     )
     run_context = render_run_context(
         run_id,
         args.run_type,
         args.input_tsv,
         args.relation_records_tsv,
+        args.resolved_relation_fields_tsv,
         run_dir,
         stats,
     )
@@ -174,6 +176,7 @@ def main() -> None:
                 "relation_records_tsv": (
                     str(args.relation_records_tsv) if args.relation_records_tsv else ""
                 ),
+                "resolved_relation_fields_tsv": str(args.resolved_relation_fields_tsv),
                 "run_dir": str(run_dir),
                 "final_table_path": str(stats["final_table_path"]),
                 "decision_trace_path": str(stats["decision_trace_path"]),

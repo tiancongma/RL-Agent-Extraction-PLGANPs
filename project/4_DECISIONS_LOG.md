@@ -258,6 +258,32 @@ Decision
 
 Implementation status
 - No code change was merged for this DOI-specific case in the current repo state.
+
+## 2026-03-18
+
+### Decision: Restore relation-first Stage 3 -> Stage 5 materialization for descriptive synthesis fields
+
+Decision
+- Stage 3 now emits `resolved_relation_fields_v1.tsv` as an explicit deterministic contract for relation-backed descriptive synthesis field materialization.
+- The initial resolved field set is limited to:
+  - `plga_mw_kDa`
+  - `surfactant_name`
+  - `organic_solvent`
+  - `preparation_method`
+- Stage 5 must consume both:
+  - `formulation_relation_records_v1.tsv`
+  - `resolved_relation_fields_v1.tsv`
+- Stage 5 must fail fast if either artifact is missing.
+- Stage 5 is a materialization layer and must not perform semantic inheritance inference or same-paper donor search.
+
+Reason
+- Active DEV15 runs had drifted into a Stage 2 -> Stage 5 path with silent Stage 3 bypass and export-time donor-fill heuristics.
+- Relation and inheritance control must be governed by an explicit upstream contract rather than repaired during final export.
+
+Impact
+- Current relation logic remains deterministic and stage-local to Stage 3.
+- Stage 5 row identity, row counts, and conservative closure policy remain unchanged.
+- Proof-case validation for `5GIF3D8W` shows that sparse PLGA sweep rows can recover descriptive synthesis fields from relation-backed branch subgraph closure while measurement outputs remain blank.
 - No new script was created for this case.
 - The currently documented Stage2 table-heavy row-enumeration prompt rule improved other papers but did not resolve `5GIF3D8W`.
 
@@ -1061,3 +1087,174 @@ Traceability
 - Regression evidence is recorded in:
   - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/10_qlyk_commercial_reference_filter/run_20260318_1347_ae5599d_dev15_qlyk_commercial_reference_filter_no_llm_v1/RUN_CONTEXT.md`
   - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/10_qlyk_commercial_reference_filter/run_20260318_1347_ae5599d_dev15_qlyk_commercial_reference_filter_no_llm_v1/analysis/qlyk_commercial_reference_filter_report.md`
+
+### Decision: Freeze DEV15 Layer 2 at the reviewed-boundary benchmark and use frozen Stage 5 rows as the Layer 3 starting object
+
+Decision
+- Freeze the current DEV15 Layer 2 reviewed-boundary benchmark state after the `QLYKLPKT` commercial-comparator exclusion fix.
+- Treat the reviewed-boundary-accepted Stage 5 final formulation rows as the only valid starting object for the next GT layer.
+- Define the next GT layer as field-level correctness on frozen Layer 2 rows, not a restart of row-boundary review.
+
+Frozen Layer 2 state
+- reviewed-boundary GT total rows: `210`
+- reviewed-boundary Stage 5 compare result: `15/15` papers matching
+- closed benchmark-valid child run:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/10_qlyk_commercial_reference_filter/run_20260318_1347_ae5599d_dev15_qlyk_commercial_reference_filter_no_llm_v1`
+
+Layer 3 direction
+- Layer 3 evaluates field correctness only for retained Layer 2 formulation rows.
+- Layer 3 should reuse existing deterministic field-level infrastructure where possible:
+  - derivation
+  - projection
+  - alignment evaluation
+  - evidence-token QC
+  - audit-ready review export
+- Historical conflict-based field GT assets remain reference material only and are not the active authority surface.
+
+Traceability
+- Layer 2 freeze snapshot:
+  - `docs/snapshots/snapshot_2026-03-18_dev15_reviewed_boundary_gt_closed.md`
+- Layer 3 protocol and asset triage:
+  - `docs/methods/layer3_field_gt_protocol_v1.md`
+
+### Decision: Seed Layer 3 field GT with a compact run-scoped workbook built from the frozen Stage 5 final table
+
+Decision
+- Start Layer 3 review from the frozen reviewed-boundary Stage 5 final table
+  rather than from weak labels or archived field-conflict tooling.
+- Use a run-scoped XLSX workbook as the primary human-review surface, emitted
+  under the current lineage's `data/results/run_*/...` structure.
+- Keep the workbook compact: one row per `(formulation_id, field_name)` with
+  frozen identity columns, reviewer dropdowns, and row-local evidence text.
+
+Current active tool
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+
+Reason
+- Layer 3 authority must stay anchored to frozen Layer 2 formulation rows.
+- Existing repo patterns already use run-scoped workbook builders for human GT
+  review, especially `build_boundary_gt_review_workbook_v1.py`.
+- The field-review workbook needs reviewer usability first: limited columns,
+  frozen identity, compact evidence text, and controlled GT status dropdowns.
+
+Field-seed rule
+- Seed the workbook only from the frozen Stage 5 final table and deterministic
+  row-local enrichments.
+- Safe deterministic derivations are allowed only when they use explicit
+  final-table inputs from the same frozen formulation row.
+- The initial workbook includes `drug_polymer_ratio` only as a safe derived
+  seed from `drug_feed_amount_text_value` and `plga_mass_mg_value` when both are
+  present.
+- The initial workbook does not seed `phase_ratio` because the frozen final
+  table does not yet carry a safe explicit phase-ratio field.
+
+Traceability
+- Method spec:
+  - `docs/methods/layer3_field_gt_protocol_v1.md`
+- Script registry:
+  - `project/PIPELINE_SCRIPT_MAP.md`
+  - `docs/tool_index.md`
+
+### Decision: Enforce strict row-local table evidence or `unresolved_table` in the Layer 3 field review workbook
+
+Decision
+- Fix the Layer 3 field-review workbook so a field marked as table-derived no
+  longer reuses generic paragraph text.
+- Accept table evidence only when the frozen Stage 5 row already carries a
+  matching row-local `table_cell` or `table_row` evidence reference.
+- If no matching row-local table evidence exists, set
+  `evidence_source_type = unresolved_table` and leave `evidence_text` empty.
+
+Reason
+- The first Layer 3 workbook seed showed a systemic evidence-binding failure:
+  `evidence_source_type = table` was often paired with unrelated paragraph text.
+- Root cause: `build_field_gt_review_workbook_v1.py` labeled fields with
+  per-field evidence-region metadata but always populated `evidence_text` via
+  `resolve_text_evidence()`, causing paragraph reuse across many table rows.
+- For Layer 3 human GT work, correctness and auditability are more important
+  than evidence recall. Table-derived fields must not silently fall back to
+  generic text.
+
+Rule
+- For Layer 3 workbook export only:
+  - table-derived field -> matching row-local table evidence or `unresolved_table`
+  - no paragraph fallback for table-derived fields
+  - text-derived field -> prefer sentence-level text containing the extracted value
+
+Traceability
+- Updated workbook builder:
+  - `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- Authoritative rerun:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/13_layer3_field_gt_evidence_binding_fix_refresh/run_20260318_1457_22e713d_dev15_layer3_field_gt_evidence_binding_fix_refresh_no_llm_v1/RUN_CONTEXT.md`
+
+### Decision: Promote the Layer 3 field-review workbook to v2 for usability and explicit evidence-support status
+
+Decision
+- Keep the original Stage 5 `formulation_id` in the Layer 3 workbook, but add
+  two reviewer-facing helper identity columns:
+  - `formulation_label_stage5`
+  - `formulation_label_params`
+- Treat this as a material workbook-surface change and emit the refreshed human
+  review artifact as `v2`.
+- Keep the authoritative artifact inside lineage, but shorten the review path by
+  using a shorter child folder and review subdirectory rather than creating a
+  detached convenience copy.
+
+Reason
+- Reviewers need a readable formulation handle without losing the canonical
+  frozen Stage 5 identifier.
+- Blank extracted values must not retain inherited evidence text.
+- Unsupported extracted values should be flagged explicitly rather than paired
+  with misleading evidence spans.
+
+Rule
+- For Layer 3 workbook export:
+  - blank extracted value -> `evidence_source_type = blank_value` and blank
+    `evidence_text`
+  - extracted value with no valid text support -> `evidence_source_type = unsupported_text`
+  - extracted value with no valid row-local table support -> `evidence_source_type = unresolved_table`
+- The workbook remains review-surface-only and does not change benchmark-facing
+  Stage 5 rows.
+
+Traceability
+- Updated workbook builder:
+  - `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- Updated Layer 3 protocol:
+  - `docs/methods/layer3_field_gt_protocol_v1.md`
+- Authoritative v2 run:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/15_l3gtv2/run_20260318_1521_22e713d_dev15_l3gtv2_v1/RUN_CONTEXT.md`
+
+### Decision: Allow narrow Stage 5 descriptive-field inheritance for sparse same-paper sweep rows
+
+Decision
+- For Stage 5 final-row assembly, allow a narrow inheritance step for sparse
+  rows when a missing descriptive field can be filled from an unambiguous
+  compatible donor row elsewhere in the same paper.
+- Current inherited field bundles are limited to:
+  - `plga_mw_kDa`
+  - `surfactant_name`
+  - `organic_solvent`
+  - `emul_method`
+
+Reason
+- Some retained `figure_variable_sweep` rows carry only the varied axis plus
+  polymer identity while the same paper already contains richer non-sweep rows
+  with the shared polymer-branch metadata.
+- The active Stage 5 summary already states that broad scientific inheritance
+  repair is intentionally out of scope, so the fix must remain narrow,
+  deterministic, and unambiguous.
+
+Rule
+- Only fill a field bundle when:
+  - the target row is blank for that field bundle
+  - the donor is a richer non-sweep row from the same paper
+  - polymer branch compatibility is satisfied
+  - exactly one normalized donor value exists across the compatible donor set
+- Do not fill figure-only numeric outputs such as `size_nm` or
+  `encapsulation_efficiency_percent` from trend-only or unsupported evidence.
+
+Traceability
+- Updated Stage 5 script:
+  - `src/stage5_benchmark/build_minimal_final_output_v1.py`
+- Focused regression run:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/16_5gif_field_fill/run_20260318_1549_22e713d_5gif3d8w_stage5_field_fill_regression_no_llm_v1/RUN_CONTEXT.md`

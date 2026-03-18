@@ -108,6 +108,7 @@ def render_run_context(
             f"- `{out_dir / 'formulation_relation_records_v1.tsv'}`",
             f"- `{out_dir / 'formulation_logic_graph_v1.jsonl'}`",
             f"- `{out_dir / 'formulation_relation_summary_v1.tsv'}`",
+            f"- `{out_dir / 'resolved_relation_fields_v1.tsv'}`",
             f"- `{out_dir.parent / 'RUN_CONTEXT.md'}`",
             "",
             "## 9. Benchmark-valid vs diagnostic-only status",
@@ -128,6 +129,7 @@ def render_run_context(
             f"- paper_count: `{stats['paper_count']}`",
             f"- candidate_count: `{stats['candidate_count']}`",
             f"- relation_row_count: `{stats['relation_row_count']}`",
+            f"- resolved_relation_field_row_count: `{stats['resolved_relation_field_row_count']}`",
         ]
     ) + "\n"
 
@@ -198,9 +200,11 @@ def main() -> None:
                 "relation_records_path": str(stats["relation_records_path"]),
                 "relation_graph_jsonl_path": str(stats["relation_graph_jsonl_path"]),
                 "relation_summary_path": str(stats["relation_summary_path"]),
+                "resolved_relation_fields_path": str(stats["resolved_relation_fields_path"]),
                 "paper_count": stats["paper_count"],
                 "candidate_count": stats["candidate_count"],
                 "relation_row_count": stats["relation_row_count"],
+                "resolved_relation_field_row_count": stats["resolved_relation_field_row_count"],
             },
             indent=2,
         )

@@ -222,15 +222,17 @@ Exact output files or directories:
 - `formulation_relation_records_v1.tsv`
 - `formulation_logic_graph_v1.jsonl`
 - `formulation_relation_summary_v1.tsv`
+- `resolved_relation_fields_v1.tsv`
 
 Stage completion artifact:
 
-- the relation-record table:
+- the Stage 3 relation artifact set:
   - `formulation_relation_records_v1.tsv`
+  - `resolved_relation_fields_v1.tsv`
 
 Consumed by downstream stage:
 
-- Stage 5 as optional deterministic relation provenance input
+- Stage 5 as required deterministic relation input and required resolved-field materialization input
 - human audit and failure localization
 
 ### Stage 4. Candidate-Level Diagnostics And Review Surfaces
@@ -272,10 +274,14 @@ Purpose:
 Convert candidate formulation-instance rows into final one-row-per-formulation
 records.
 
+Stage 5 is a materialization layer. It must not perform semantic inference or
+same-paper donor search.
+
 Exact input files or directories:
 
 - Stage 2 candidate formulation-instance TSV
-- optional Stage 3 relation-record TSV
+- required Stage 3 relation-record TSV
+- required Stage 3 resolved relation-field TSV
 - scope manifest TSV for the declared benchmark scope
 
 Exact script path(s) and script filename(s):
@@ -439,15 +445,11 @@ python src/stage4_eval/eval_weak_labels_v7pilot3.py --pilot-tsv data/results/<st
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage5_benchmark/build_minimal_final_output_v1.py --input-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --out-dir data/results/<final_run_id>
+python -m src.stage5_benchmark.build_minimal_final_output_v1 --input-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --relation-records-tsv data/results/<stage3_run_id>/formulation_relation_v1/formulation_relation_records_v1.tsv --resolved-relation-fields-tsv data/results/<stage3_run_id>/formulation_relation_v1/resolved_relation_fields_v1.tsv --out-dir data/results/<final_run_id>
 ```
 
-If Stage 3 relation artifacts are available, pass them explicitly:
-
-```powershell
-$env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage5_benchmark/build_minimal_final_output_v1.py --input-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --relation-records-tsv data/results/<stage3_run_id>/formulation_relation_v1/formulation_relation_records_v1.tsv --out-dir data/results/<final_run_id>
-```
+Stage 5 must fail fast if either Stage 3 relation artifact is missing. Silent
+bypass of the relation layer is not allowed.
 
 ### Step 5B. Run the comparison node against GT
 

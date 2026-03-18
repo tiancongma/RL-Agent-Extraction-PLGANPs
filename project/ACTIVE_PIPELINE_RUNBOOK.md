@@ -143,6 +143,7 @@ Current production-boundary output:
 - `formulation_relation_records_v1.tsv`
 - `formulation_logic_graph_v1.jsonl`
 - `formulation_relation_summary_v1.tsv`
+- `resolved_relation_fields_v1.tsv`
 
 Core scripts:
 
@@ -197,9 +198,10 @@ Completion artifacts:
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
 
-Optional Stage 3 provenance input:
+Required Stage 3 inputs:
 
 - `formulation_relation_records_v1.tsv`
+- `resolved_relation_fields_v1.tsv`
 
 Optional Layer 2 GT review export:
 
@@ -207,10 +209,12 @@ Optional Layer 2 GT review export:
 - This helper builds a run-scoped XLSX boundary-GT workbook from the Stage 5 final table and optional provenance artifacts.
 - It is a reviewer-facing support surface, not a production-path completion artifact.
 
-Current limitation:
+Materialization rule:
 
-- Stage 5 can attach Stage 3 relation provenance to final rows, but phase-1
-  closure rules are still conservative and primarily candidate-row driven.
+- Stage 5 materializes direct extraction fields and explicit Stage 3 resolved
+  relation fields only.
+- Stage 5 must not perform semantic inference, donor search, or silent
+  relation-layer bypass.
 
 Production-path endpoint:
 

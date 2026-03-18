@@ -11,16 +11,20 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from src.utils.preparation_method_fields_v1 import (
-    PREPARATION_METHOD_FIELDNAMES,
-    enrich_preparation_method_fields_v1,
-)
+from src.utils.preparation_method_fields_v1 import PREPARATION_METHOD_FIELDNAMES
 
 
 DECISION_TRACE_NAME = "final_output_decision_trace_v1.tsv"
 FINAL_TABLE_NAME = "final_formulation_table_v1.tsv"
 SUMMARY_NAME = "final_output_summary_v1.md"
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
+RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
+RESOLVED_RELATION_FIELD_NAMES = {
+    "plga_mw_kDa",
+    "surfactant_name",
+    "organic_solvent",
+    "preparation_method",
+}
 
 
 @dataclass(frozen=True)
@@ -467,6 +471,86 @@ def choose_representative(
     return max(group_rows, key=sort_key)
 
 
+def field_bundle_value(row: dict[str, str], prefix: str) -> str:
+    if prefix == "preparation_method":
+        value = str(row.get("preparation_method", "") or "").strip()
+        return "" if normalize_token(value) in {"", "unknown"} else value
+    return str(
+        row.get(f"{prefix}_value", "")
+        or row.get(f"{prefix}_value_text", "")
+        or ""
+    ).strip()
+
+
+def load_resolved_relation_fields(
+    resolved_relation_fields_tsv: Path,
+) -> dict[str, dict[str, dict[str, str]]]:
+    if not resolved_relation_fields_tsv.exists():
+        raise FileNotFoundError(
+            f"Resolved relation fields TSV not found: {resolved_relation_fields_tsv}"
+        )
+    resolved_map: dict[str, dict[str, dict[str, str]]] = defaultdict(dict)
+    with resolved_relation_fields_tsv.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        for row in reader:
+            candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
+            field_name = str(row.get("field_name", "") or "").strip()
+            if not candidate_id or field_name not in RESOLVED_RELATION_FIELD_NAMES:
+                continue
+            resolved_map[candidate_id][field_name] = {
+                "field_value": str(row.get("field_value", "") or "").strip(),
+                "field_value_norm": str(row.get("field_value_norm", "") or "").strip(),
+                "scope_type": str(row.get("scope_type", "") or "").strip(),
+                "resolution_rule": str(row.get("resolution_rule", "") or "").strip(),
+                "source_relation_row_ids": str(row.get("source_relation_row_ids", "") or "").strip(),
+                "deterministic_confidence": str(row.get("deterministic_confidence", "") or "").strip(),
+            }
+    return resolved_map
+
+
+def apply_resolved_relation_fields(
+    *,
+    final_row: dict[str, str],
+    representative: dict[str, str],
+    resolved_field_map: dict[str, dict[str, dict[str, str]]],
+) -> tuple[dict[str, str], set[str]]:
+    materialized = dict(final_row)
+    applied_fields: set[str] = set()
+    candidate_id = str(representative.get("formulation_id", "") or "").strip()
+    candidate_resolved = resolved_field_map.get(candidate_id, {})
+    for field_name, payload in candidate_resolved.items():
+        field_value = str(payload.get("field_value", "") or "").strip()
+        if not field_value:
+            continue
+        if field_name == "preparation_method":
+            if field_bundle_value(materialized, field_name):
+                continue
+            materialized["preparation_method"] = field_value
+            applied_fields.add(field_name)
+            continue
+        if field_bundle_value(materialized, field_name):
+            continue
+        materialized[f"{field_name}_value"] = field_value
+        if f"{field_name}_value_text" in materialized:
+            materialized[f"{field_name}_value_text"] = field_value
+        if f"{field_name}_scope" in materialized:
+            materialized[f"{field_name}_scope"] = (
+                "instance_specific"
+                if str(payload.get("scope_type", "") or "").strip() == "formulation"
+                else "global_shared"
+            )
+        if f"{field_name}_membership_confidence" in materialized:
+            materialized[f"{field_name}_membership_confidence"] = str(
+                payload.get("deterministic_confidence", "") or "medium"
+            ).strip()
+        if f"{field_name}_evidence_region_type" in materialized:
+            materialized[f"{field_name}_evidence_region_type"] = "relation_resolved"
+        if f"{field_name}_missing_reason" in materialized:
+            materialized[f"{field_name}_missing_reason"] = ""
+        applied_fields.add(field_name)
+    return materialized, applied_fields
+
+
 def group_has_clear_redundancy_signal(group_rows: list[dict[str, str]]) -> bool:
     candidate_sources = {
         normalize_text(row.get("candidate_source", "")) for row in group_rows if row.get("candidate_source")
@@ -627,10 +711,8 @@ def read_candidate_rows(path: Path) -> list[dict[str, str]]:
 
 
 def load_relation_metadata(
-    relation_records_tsv: Path | None,
+    relation_records_tsv: Path,
 ) -> dict[str, dict[str, Any]]:
-    if relation_records_tsv is None:
-        return {}
     if not relation_records_tsv.exists():
         raise FileNotFoundError(f"Relation records TSV not found: {relation_records_tsv}")
 
@@ -676,6 +758,7 @@ def build_summary_markdown(
     decision_rows: list[dict[str, str]],
     summary_path: Path,
     relation_records_tsv: Path | None,
+    resolved_relation_fields_tsv: Path | None,
 ) -> None:
     decision_counts = defaultdict(int)
     variant_class_counts = defaultdict(int)
@@ -696,7 +779,7 @@ def build_summary_markdown(
         "",
         "## Scope",
         "",
-        "This summary describes the controlled Stage5 duplicate/variant governance layer. It remains conservative and only collapses rows when the same-identity case is explicit and auditable.",
+        "This summary describes the controlled Stage5 materialization and duplicate/variant governance layer. Stage5 materializes direct-extraction fields and explicit Stage3-resolved relation fields, then applies conservative closure rules.",
         "",
         "## Input",
         "",
@@ -706,10 +789,16 @@ def build_summary_markdown(
             if relation_records_tsv is not None
             else "- relation_records_tsv: `not provided`"
         ),
+        (
+            f"- resolved_relation_fields_tsv: `{resolved_relation_fields_tsv}`"
+            if resolved_relation_fields_tsv is not None
+            else "- resolved_relation_fields_tsv: `not provided`"
+        ),
         "",
         "## What phase 1 currently handles",
         "",
         "- filters rows explicitly marked as non-formulation or characterization-only post-processing rows",
+        "- materializes relation-backed descriptive synthesis fields from Stage3 resolved relation outputs",
         "- computes a conservative core-parameter signature from current candidate-row fields",
         "- classifies conservative variant signals into duplicate, optimized, checkpoint/validation, post-processing/measurement, or uncertain review-needed cases",
         "- collapses rows only when signature completeness is high and a unique conservative target is available",
@@ -718,7 +807,7 @@ def build_summary_markdown(
         "",
         "## What phase 1 intentionally does not handle",
         "",
-        "- broad scientific reconstruction or inheritance repair",
+        "- semantic inheritance inference beyond Stage3 resolved relation outputs",
         "- generalized DOE coordinate reconciliation when Stage5 lacks a unique deterministic target",
         "- Stage 5B benchmark comparison against GT",
         "- modeling-target-specific filtering such as PLGA-only export subsets",
@@ -767,7 +856,7 @@ def build_summary_markdown(
             "- exact core-signature fields for broader collapse remain unresolved",
             "- baseline versus optimized provenance handling is still conservative",
             "- parent/variant collapse policy is still intentionally narrow and unique-target-based",
-            "- relation artifacts are currently carried as provenance only and do not yet drive phase-1 collapse rules",
+            "- relation-driven field materialization is limited to explicit Stage3 resolved descriptive synthesis fields",
             "- DOE-aware coordinate closure still needs a later explicit contract when unique deterministic mapping is available",
             "- benchmark comparison still requires the separate Stage 5B comparison step",
         ]
@@ -778,13 +867,22 @@ def build_summary_markdown(
 def build_minimal_final_output(
     input_tsv: Path,
     out_dir: Path,
-    relation_records_tsv: Path | None = None,
+    relation_records_tsv: Path,
+    resolved_relation_fields_tsv: Path,
 ) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = read_candidate_rows(input_tsv)
     if not rows:
         raise ValueError(f"No candidate rows found in {input_tsv}")
+    if relation_records_tsv is None:
+        raise ValueError("Stage5 requires --relation-records-tsv; silent bypass is not allowed.")
+    if resolved_relation_fields_tsv is None:
+        raise ValueError("Stage5 requires --resolved-relation-fields-tsv; silent bypass is not allowed.")
     relation_metadata = load_relation_metadata(relation_records_tsv)
+    resolved_relation_field_map = load_resolved_relation_fields(resolved_relation_fields_tsv)
+    rows_by_paper: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        rows_by_paper[str(row.get("key", "") or "").strip()].append(row)
 
     original_fieldnames = list(rows[0].keys())
     row_by_source_key = {row_source_key(row): row for row in rows}
@@ -1170,6 +1268,7 @@ def build_minimal_final_output(
             ),
             {},
         )
+        field_source_type = "direct_extraction"
 
         final_row = {
             "final_formulation_id": target_final_formulation_id,
@@ -1207,15 +1306,39 @@ def build_minimal_final_output(
                 relation_parent_candidate_ids, ensure_ascii=True
             ),
             "relation_record_count": str(relation_row_count),
+            "field_source_type": field_source_type,
         }
         for field in original_fieldnames:
             final_row[field] = representative.get(field, "")
-        final_row = enrich_preparation_method_fields_v1(final_row)
+        final_row, applied_relation_fields = apply_resolved_relation_fields(
+            final_row=final_row,
+            representative=representative,
+            resolved_field_map=resolved_relation_field_map,
+        )
+        if applied_relation_fields:
+            final_row["field_source_type"] = "relation_resolved"
+        elif any(
+            not field_bundle_value(final_row, field_name)
+            for field_name in RESOLVED_RELATION_FIELD_NAMES
+        ):
+            final_row["field_source_type"] = "unresolved_blank"
         final_rows.append(final_row)
 
     decision_trace_path = out_dir / DECISION_TRACE_NAME
     final_table_path = out_dir / FINAL_TABLE_NAME
     summary_path = out_dir / SUMMARY_NAME
+
+    field_source_by_final_id = {
+        row["final_formulation_id"]: row.get("field_source_type", "unresolved_blank")
+        for row in final_rows
+    }
+    for row in decision_rows:
+        target_final_id = str(row.get("target_final_formulation_id", "") or "").strip()
+        row["field_source_type"] = (
+            field_source_by_final_id.get(target_final_id, "unresolved_blank")
+            if target_final_id
+            else "unresolved_blank"
+        )
 
     write_tsv(
         decision_trace_path,
@@ -1239,6 +1362,7 @@ def build_minimal_final_output(
             "collapse_reason",
             "review_needed",
             "key_fields_used",
+            "field_source_type",
             "confidence_or_rule_scope",
             "notes",
         ],
@@ -1273,6 +1397,7 @@ def build_minimal_final_output(
             "relation_method_group_ids",
             "relation_parent_candidate_ids",
             "relation_record_count",
+            "field_source_type",
             *original_fieldnames,
             *[name for name in PREPARATION_METHOD_FIELDNAMES if name not in original_fieldnames],
         ],
@@ -1285,6 +1410,7 @@ def build_minimal_final_output(
         decision_rows,
         summary_path,
         relation_records_tsv,
+        resolved_relation_fields_tsv,
     )
 
     return {
@@ -1297,6 +1423,7 @@ def build_minimal_final_output(
         "decision_trace_path": decision_trace_path,
         "summary_path": summary_path,
         "relation_records_tsv": relation_records_tsv,
+        "resolved_relation_fields_tsv": resolved_relation_fields_tsv,
     }
 
 
@@ -1306,7 +1433,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--input-tsv", required=True, type=Path)
     parser.add_argument("--out-dir", required=True, type=Path)
-    parser.add_argument("--relation-records-tsv", type=Path, default=None)
+    parser.add_argument("--relation-records-tsv", required=True, type=Path)
+    parser.add_argument("--resolved-relation-fields-tsv", required=True, type=Path)
     return parser
 
 
@@ -1316,6 +1444,7 @@ def main() -> None:
         args.input_tsv,
         args.out_dir,
         relation_records_tsv=args.relation_records_tsv,
+        resolved_relation_fields_tsv=args.resolved_relation_fields_tsv,
     )
     print(
         json.dumps(
@@ -1328,6 +1457,7 @@ def main() -> None:
                 "relation_records_tsv": (
                     str(stats["relation_records_tsv"]) if stats["relation_records_tsv"] else ""
                 ),
+                "resolved_relation_fields_tsv": str(stats["resolved_relation_fields_tsv"]),
                 "final_table_path": str(stats["final_table_path"]),
                 "decision_trace_path": str(stats["decision_trace_path"]),
                 "summary_path": str(stats["summary_path"]),

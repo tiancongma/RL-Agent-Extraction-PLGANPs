@@ -44,6 +44,7 @@ from typing import Any
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RELATION_GRAPH_JSONL_NAME = "formulation_logic_graph_v1.jsonl"
 RELATION_SUMMARY_NAME = "formulation_relation_summary_v1.tsv"
+RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
 
 BASE_ROW_COLUMNS = {
     "key",
@@ -116,6 +117,19 @@ SUMMARY_FIELDNAMES = [
     "relation_type_counts_json",
 ]
 
+RESOLVED_FIELDNAMES = [
+    "formulation_candidate_id",
+    "paper_key",
+    "method_group_id",
+    "scope_type",
+    "field_name",
+    "field_value",
+    "field_value_norm",
+    "resolution_rule",
+    "source_relation_row_ids",
+    "deterministic_confidence",
+]
+
 METHOD_GROUP_SIGNATURE_FIELDS = [
     "emul_method",
     "emul_type",
@@ -138,6 +152,13 @@ VARIATION_AXIS_FIELDS = {
     "drug_feed_amount_text",
     "emul_type",
     "emul_method",
+}
+
+RESOLVABLE_RELATION_FIELDS = {
+    "plga_mw_kDa",
+    "surfactant_name",
+    "organic_solvent",
+    "preparation_method",
 }
 
 
@@ -195,7 +216,7 @@ def extract_field_names(headers: list[str]) -> list[str]:
             name = header[: -len("_value")]
             if name not in fields:
                 fields.append(name)
-    for extra in ["polymer_identity", "polymer_name_raw"]:
+    for extra in ["polymer_identity", "polymer_name_raw", "preparation_method"]:
         if extra in headers and extra not in fields:
             fields.append(extra)
     return fields
@@ -236,18 +257,27 @@ def weak_label_row_ref(row: dict[str, str], row_index: int) -> str:
 def field_raw_value(row: dict[str, str], field_name: str) -> str:
     if field_name in {"polymer_identity", "polymer_name_raw"}:
         return normalize_text(row.get(field_name))
-    return normalize_text(row.get(f"{field_name}_value_text") or row.get(f"{field_name}_value"))
+    if field_name == "preparation_method":
+        value = str(row.get("preparation_method", "") or "").strip()
+        return "" if normalize_token(value) in {"", "unknown"} else value
+    return normalize_text(row.get(f"{field_name}_value") or row.get(f"{field_name}_value_text"))
 
 
 def field_scope(row: dict[str, str], field_name: str) -> str:
     if field_name in {"polymer_identity", "polymer_name_raw"}:
         return "row_level"
+    if field_name == "preparation_method":
+        return normalize_text(row.get("emul_method_scope")) or "unknown"
     return normalize_text(row.get(f"{field_name}_scope"))
 
 
 def field_evidence_source_type(row: dict[str, str], field_name: str) -> str:
     if field_name in {"polymer_identity", "polymer_name_raw"}:
         return normalize_text(row.get("instance_evidence_region_type")) or "row_level"
+    if field_name == "preparation_method":
+        return normalize_text(row.get("emul_method_evidence_region_type")) or normalize_text(
+            row.get("instance_evidence_region_type")
+        )
     return normalize_text(row.get(f"{field_name}_evidence_region_type")) or normalize_text(
         row.get("instance_evidence_region_type")
     )
@@ -265,6 +295,177 @@ def field_value_norm(row: dict[str, str], field_name: str) -> str:
         if match:
             return f"{match.group(1)}:{match.group(2)}"
     return normalize_token(raw)
+
+
+def branch_scope_key(candidate_item: dict[str, Any]) -> str:
+    field_map = {
+        item["field_name"]: item
+        for item in candidate_item.get("field_membership", [])
+        if item.get("field_value_norm")
+    }
+    polymer = str(field_map.get("polymer_identity", {}).get("field_value_norm", "") or "").strip()
+    if not polymer:
+        return ""
+    if polymer == "plga":
+        ratio = str(field_map.get("la_ga_ratio", {}).get("field_value_norm", "") or "").strip()
+        if ratio:
+            return f"{polymer}|{ratio}"
+    return polymer
+
+
+def build_resolved_relation_fields_for_paper(
+    *,
+    paper_key: str,
+    candidate_items: list[dict[str, Any]],
+    relation_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    candidate_field_rows: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    method_group_shared_rows: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    candidate_method_group: dict[str, str] = {}
+    candidate_branch_key: dict[str, str] = {}
+    branch_field_rows: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+
+    for item in candidate_items:
+        candidate_id = str(item.get("formulation_candidate_id", "") or "").strip()
+        if not candidate_id:
+            continue
+        candidate_method_group[candidate_id] = str(item.get("method_group_id", "") or "").strip()
+        branch_key = branch_scope_key(item)
+        if branch_key:
+            candidate_branch_key[candidate_id] = branch_key
+
+    for row in relation_rows:
+        relation_type = str(row.get("relation_type", "") or "").strip()
+        field_name = str(row.get("field_name", "") or "").strip()
+        if field_name not in RESOLVABLE_RELATION_FIELDS:
+            continue
+        if relation_type == "candidate_field_membership":
+            candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
+            if not candidate_id:
+                continue
+            candidate_field_rows[(candidate_id, field_name)].append(row)
+            branch_key = candidate_branch_key.get(candidate_id, "")
+            if branch_key:
+                branch_field_rows[(branch_key, field_name)].append(row)
+        elif relation_type == "method_group_shared_field":
+            method_group_id = str(row.get("method_group_id", "") or "").strip()
+            if method_group_id:
+                method_group_shared_rows[(method_group_id, field_name)].append(row)
+
+    resolved_rows: list[dict[str, Any]] = []
+    seen_keys: set[tuple[str, str]] = set()
+
+    def append_resolved(
+        *,
+        candidate_id: str,
+        method_group_id: str,
+        scope_type: str,
+        field_name: str,
+        field_value: str,
+        field_value_norm: str,
+        resolution_rule: str,
+        source_rows: list[dict[str, Any]],
+        deterministic_confidence: str,
+    ) -> None:
+        key = (candidate_id, field_name)
+        if key in seen_keys:
+            return
+        relation_row_ids = [
+            str(row.get("relation_row_id", "") or "").strip()
+            for row in source_rows
+            if str(row.get("relation_row_id", "") or "").strip()
+        ]
+        if not relation_row_ids or not field_value_norm:
+            return
+        seen_keys.add(key)
+        resolved_rows.append(
+            {
+                "formulation_candidate_id": candidate_id,
+                "paper_key": paper_key,
+                "method_group_id": method_group_id,
+                "scope_type": scope_type,
+                "field_name": field_name,
+                "field_value": field_value,
+                "field_value_norm": field_value_norm,
+                "resolution_rule": resolution_rule,
+                "source_relation_row_ids": json.dumps(sorted(set(relation_row_ids)), ensure_ascii=True),
+                "deterministic_confidence": deterministic_confidence,
+            }
+        )
+
+    for item in candidate_items:
+        candidate_id = str(item.get("formulation_candidate_id", "") or "").strip()
+        method_group_id = candidate_method_group.get(candidate_id, "")
+        branch_key = candidate_branch_key.get(candidate_id, "")
+        for field_name in sorted(RESOLVABLE_RELATION_FIELDS):
+            direct_rows = candidate_field_rows.get((candidate_id, field_name), [])
+            direct_values = {
+                str(row.get("field_value_norm", "") or "").strip(): row
+                for row in direct_rows
+                if str(row.get("field_value_norm", "") or "").strip()
+            }
+            if len(direct_values) == 1:
+                direct_row = next(iter(direct_values.values()))
+                append_resolved(
+                    candidate_id=candidate_id,
+                    method_group_id=method_group_id,
+                    scope_type="formulation",
+                    field_name=field_name,
+                    field_value=str(direct_row.get("field_value_raw", "") or "").strip(),
+                    field_value_norm=str(direct_row.get("field_value_norm", "") or "").strip(),
+                    resolution_rule="direct_candidate_field_membership",
+                    source_rows=direct_rows,
+                    deterministic_confidence=str(direct_row.get("deterministic_confidence", "") or "medium").strip(),
+                )
+                continue
+
+            shared_rows = method_group_shared_rows.get((method_group_id, field_name), [])
+            shared_values = {
+                str(row.get("field_value_norm", "") or "").strip(): row
+                for row in shared_rows
+                if str(row.get("field_value_norm", "") or "").strip()
+            }
+            if len(shared_values) == 1:
+                shared_row = next(iter(shared_values.values()))
+                append_resolved(
+                    candidate_id=candidate_id,
+                    method_group_id=method_group_id,
+                    scope_type="paper" if method_group_id == "paper_default_method_group" else "branch",
+                    field_name=field_name,
+                    field_value=str(shared_row.get("field_value_raw", "") or "").strip(),
+                    field_value_norm=str(shared_row.get("field_value_norm", "") or "").strip(),
+                    resolution_rule="method_group_shared_field",
+                    source_rows=shared_rows,
+                    deterministic_confidence=str(shared_row.get("deterministic_confidence", "") or "medium").strip(),
+                )
+                continue
+
+            if not branch_key:
+                continue
+            branch_rows = branch_field_rows.get((branch_key, field_name), [])
+            if len({str(row.get("formulation_candidate_id", "") or "").strip() for row in branch_rows}) < 2:
+                continue
+            branch_values = {
+                str(row.get("field_value_norm", "") or "").strip(): row
+                for row in branch_rows
+                if str(row.get("field_value_norm", "") or "").strip()
+            }
+            if len(branch_values) != 1:
+                continue
+            branch_row = next(iter(branch_values.values()))
+            append_resolved(
+                candidate_id=candidate_id,
+                method_group_id=method_group_id,
+                scope_type="branch",
+                field_name=field_name,
+                field_value=str(branch_row.get("field_value_raw", "") or "").strip(),
+                field_value_norm=str(branch_row.get("field_value_norm", "") or "").strip(),
+                resolution_rule="branch_subgraph_unanimous_field",
+                source_rows=branch_rows,
+                deterministic_confidence="medium",
+            )
+
+    return resolved_rows
 
 
 def method_group_signature(row: dict[str, str]) -> str:
@@ -412,8 +613,10 @@ def build_relation_artifacts(
     relation_rows: list[dict[str, Any]] = []
     paper_graph_rows: list[str] = []
     summary_rows: list[dict[str, Any]] = []
+    resolved_relation_rows: list[dict[str, Any]] = []
 
     for paper_key in sorted(rows_by_key):
+        paper_relation_start = len(relation_rows)
         indexed_rows = rows_by_key[paper_key]
         first_row = indexed_rows[0][1]
         doi = normalize_text(first_row.get("doi"))
@@ -787,13 +990,23 @@ def build_relation_artifacts(
             )
         )
 
+        resolved_relation_rows.extend(
+            build_resolved_relation_fields_for_paper(
+                paper_key=paper_key,
+                candidate_items=candidate_items,
+                relation_rows=relation_rows[paper_relation_start:],
+            )
+        )
+
     relation_records_path = out_dir / RELATION_RECORDS_NAME
     relation_graph_jsonl_path = out_dir / RELATION_GRAPH_JSONL_NAME
     relation_summary_path = out_dir / RELATION_SUMMARY_NAME
+    resolved_relation_fields_path = out_dir / RESOLVED_RELATION_FIELDS_NAME
 
     write_tsv(relation_records_path, RELATION_FIELDNAMES, relation_rows)
     relation_graph_jsonl_path.write_text("\n".join(paper_graph_rows) + "\n", encoding="utf-8")
     write_tsv(relation_summary_path, SUMMARY_FIELDNAMES, summary_rows)
+    write_tsv(resolved_relation_fields_path, RESOLVED_FIELDNAMES, resolved_relation_rows)
 
     return {
         "weak_labels_tsv": weak_labels_tsv,
@@ -802,9 +1015,11 @@ def build_relation_artifacts(
         "relation_records_path": relation_records_path,
         "relation_graph_jsonl_path": relation_graph_jsonl_path,
         "relation_summary_path": relation_summary_path,
+        "resolved_relation_fields_path": resolved_relation_fields_path,
         "paper_count": len(summary_rows),
         "candidate_count": len(rows),
         "relation_row_count": len(relation_rows),
+        "resolved_relation_field_row_count": len(resolved_relation_rows),
     }
 
 
@@ -833,9 +1048,11 @@ def main() -> None:
                 "paper_count": stats["paper_count"],
                 "candidate_count": stats["candidate_count"],
                 "relation_row_count": stats["relation_row_count"],
+                "resolved_relation_field_row_count": stats["resolved_relation_field_row_count"],
                 "relation_records_path": str(stats["relation_records_path"]),
                 "relation_graph_jsonl_path": str(stats["relation_graph_jsonl_path"]),
                 "relation_summary_path": str(stats["relation_summary_path"]),
+                "resolved_relation_fields_path": str(stats["resolved_relation_fields_path"]),
             },
             indent=2,
         )
