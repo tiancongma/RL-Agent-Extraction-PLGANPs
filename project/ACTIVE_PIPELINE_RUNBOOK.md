@@ -22,6 +22,27 @@ This runbook distinguishes:
 3. `project/4_DECISIONS_LOG.md`
 4. `docs/tool_index.md`
 
+## Recent Changes (2026-03-19)
+
+- Canonical polymer MW field:
+  - `polymer_mw_kDa` is now the canonical field name.
+  - `plga_mw_kDa` is retained only as a legacy read alias for compatibility with older artifacts.
+  - This is a naming correction only; the field meaning did not change.
+- Stage 2 evidence packing:
+  - Stage 2 now promotes a `materials_procurement` block type for shared/default procurement-style parameters.
+  - Effective packing order is:
+    - `metadata`
+    - `synthesis_method`
+    - `materials_procurement`
+    - `table`
+    - `caption`
+    - `paragraph`
+- Non-change reminder:
+  - Stage 5 remains materialization-only.
+  - The relation-first Stage 3 -> Stage 5 contract is unchanged.
+- Validation note:
+  - Stage 2 LLM input has changed; regression runs using fresh LLM calls are required to fully validate behavior.
+
 ## Operating Principle
 
 A complete pipeline run means the declared scope has passed through every

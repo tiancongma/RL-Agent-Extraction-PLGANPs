@@ -18,7 +18,7 @@ NUMERIC_FIELDS = [
     "encapsulation_efficiency_percent",
     "loading_content_percent",
     "size_nm",
-    "plga_mw_kDa",
+    "polymer_mw_kDa",
     "la_ga_ratio",
 ]
 
@@ -29,7 +29,7 @@ FIELD_UNITS = {
     "encapsulation_efficiency_percent": ["%", "percent"],
     "loading_content_percent": ["%", "percent"],
     "size_nm": ["nm", "nanometer", "nanometers"],
-    "plga_mw_kDa": ["kda", "da", "mw"],
+    "polymer_mw_kDa": ["kda", "da", "mw"],
     "la_ga_ratio": [":"],
 }
 

@@ -31,8 +31,8 @@ REMAINING12_REFERENCE = PROJECT_ROOT / "data" / "results" / "run_20260310_dev15_
 REQUIRED_PLGA_COLUMNS = [
     "la_ga_ratio_value",
     "la_ga_ratio_value_text",
-    "plga_mw_kDa_value",
-    "plga_mw_kDa_value_text",
+    "polymer_mw_kDa_value",
+    "polymer_mw_kDa_value_text",
     "plga_mass_mg_value",
     "plga_mass_mg_value_text",
 ]
@@ -459,7 +459,7 @@ def main() -> None:
         notes_lines.extend(
             [
                 "## Global field check",
-                "- Required PLGA-specific output columns remain present: `la_ga_ratio_*`, `plga_mw_kDa_*`, `plga_mass_mg_*`.",
+                "- Required polymer/shared output columns remain present: `la_ga_ratio_*`, `polymer_mw_kDa_*`, `plga_mass_mg_*`.",
                 "",
             ]
         )

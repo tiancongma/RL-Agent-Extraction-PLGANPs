@@ -111,6 +111,12 @@ SEED_COLUMNS = [
     "notes",
 ]
 
+LEGACY_COLUMN_ALIASES = {
+    "polymer_mw_kDa_value": ["plga_mw_kDa_value"],
+    "polymer_mw_kDa_value_text": ["plga_mw_kDa_value_text"],
+    "polymer_mw_kDa_evidence_region_type": ["plga_mw_kDa_evidence_region_type"],
+}
+
 
 @dataclass(frozen=True)
 class FieldSpec:
@@ -126,9 +132,9 @@ class FieldSpec:
 FIELD_SPECS = [
     FieldSpec(
         field_name="polymer_MW",
-        value_column="plga_mw_kDa_value",
-        value_text_column="plga_mw_kDa_value_text",
-        evidence_region_column="plga_mw_kDa_evidence_region_type",
+        value_column="polymer_mw_kDa_value",
+        value_text_column="polymer_mw_kDa_value_text",
+        evidence_region_column="polymer_mw_kDa_evidence_region_type",
         default_unit="kDa",
     ),
     FieldSpec(
@@ -191,6 +197,14 @@ def normalize_text(value: Any) -> str:
     text = str(value or "")
     text = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F]", " ", text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def get_row_value(row: dict[str, str], column_name: str) -> str:
+    for candidate in [column_name, *LEGACY_COLUMN_ALIASES.get(column_name, [])]:
+        value = normalize_text(row.get(candidate))
+        if value:
+            return value
+    return ""
 
 
 def sanitize_out_subdir(value: str) -> str:
@@ -505,7 +519,7 @@ def map_evidence_source_type(value: str) -> str:
 
 def is_table_derived_field(row: dict[str, str], spec: FieldSpec) -> bool:
     if spec.evidence_region_column:
-        region = normalize_text(row.get(spec.evidence_region_column))
+        region = get_row_value(row, spec.evidence_region_column)
         if region.lower().startswith("table"):
             return True
     return False
@@ -634,8 +648,8 @@ def choose_extracted_value(row: dict[str, str], spec: FieldSpec) -> tuple[str, s
         value, derivation_status, derivation_inputs = derive_drug_polymer_ratio(row)
         return value, spec.default_unit, derivation_status, derivation_inputs
 
-    primary_value = normalize_text(row.get(spec.value_column)) if spec.value_column else ""
-    fallback_text = normalize_text(row.get(spec.value_text_column)) if spec.value_text_column else ""
+    primary_value = get_row_value(row, spec.value_column) if spec.value_column else ""
+    fallback_text = get_row_value(row, spec.value_text_column) if spec.value_text_column else ""
     extracted_value = primary_value or fallback_text
     extracted_unit = spec.default_unit or infer_unit_from_text(primary_value or fallback_text)
     return extracted_value, extracted_unit, "none", ""

@@ -115,6 +115,32 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/diagnose_5gif3d8w_root_cause_v1.py` | `STABLE_TOOL` | Paper-specific diagnostic helper retained for regression analysis. |
 | `src/stage2_sampling_labels/diagnose_5gif3d8w_axis_applicability_v1.py` | `STABLE_TOOL` | Axis-applicability diagnostic helper retained for regression analysis. |
 
+Stage 2 evidence-packing note:
+
+- Evidence packing is priority-driven, not document-order-driven.
+- The active packer now promotes `materials_procurement` blocks so shared/default Materials-style parameters surface earlier in LLM input.
+- Effective textual priority is:
+  - `metadata`
+  - `synthesis_method`
+  - `materials_procurement`
+  - `table`
+  - `caption`
+  - `paragraph`
+- This adjustment is intended to improve capture of shared parameters such as polymer identity, polymer MW, polymer grade, and supplier-coded material defaults without changing Stage 5 semantics.
+
+Stage 2 instance-kind reconciliation note:
+
+- The active Stage 2 extractor now applies a conflict-aware reconciliation step
+  after canonicalization.
+- The reconciler is pattern-based, not paper-key-based.
+- It does not blindly trust raw explicit `instance_kind`, and it does not apply
+  a blanket downgrade from `non_synthesis` alone.
+- It may rescue GT-valid formulation-family members that carry strong identity
+  signals, and it may downgrade helper/comparative rows that carry weak
+  formulation identity.
+- Audit fields are preserved in the Stage 2 outputs so raw vs reconciled
+  instance-kind behavior can be inspected downstream.
+
 ### Stage 3
 
 | Script path | Class | Purpose |

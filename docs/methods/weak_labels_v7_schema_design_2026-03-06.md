@@ -62,7 +62,7 @@ v6 is a strong baseline for extraction completeness and deterministic downstream
     "evidence_section": "string or null"
   },
   "fields": {
-    "plga_mw_kDa": {
+    "polymer_mw_kDa": {
       "...": "see field object"
     }
   },
@@ -151,6 +151,12 @@ Deterministic numeric arbitration, derivation, and export remain required.
 - deterministic derivation math and unit normalization policies,
 - release-time schema composition and database export contracts,
 - PLGA-only publication filter at database/export layer.
+
+## Canonical polymer MW naming note
+
+- `polymer_mw_kDa` is the canonical general polymer molecular-weight field.
+- `plga_mw_kDa` is a legacy compatibility alias retained only for transition reading.
+- `la_ga_ratio` remains a separate conditional field relevant to PLGA-like polymers.
 
 ## Implementation Notes for Future Work
 - v7 is a target schema contract, not implemented in runtime scripts in this step.

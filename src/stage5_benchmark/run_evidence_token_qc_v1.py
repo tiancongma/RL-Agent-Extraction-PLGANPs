@@ -41,7 +41,7 @@ FIELD_SPECS: dict[str, dict[str, Any]] = {
         "unit_tokens": ["nm", "nanometer", "nanometers"],
         "entity_type": "",
     },
-    "plga_mw_kDa": {
+    "polymer_mw_kDa": {
         "unit_tokens": ["kda", "da", "mw"],
         "entity_type": "polymer",
     },
@@ -57,7 +57,7 @@ CORE_FIELDS = [
     "drug_feed_amount_text",
     "plga_mass_mg",
     "la_ga_ratio",
-    "plga_mw_kDa",
+    "polymer_mw_kDa",
     "size_nm",
     "pva_conc_percent",
 ]
@@ -66,13 +66,17 @@ FINGERPRINT_FIELDS = [
     "emul_type",
     "emul_method",
     "la_ga_ratio",
-    "plga_mw_kDa",
+    "polymer_mw_kDa",
     "plga_mass_mg",
     "pva_conc_percent",
     "organic_solvent",
     "drug_name",
     "drug_feed_amount_text",
 ]
+
+FIELD_ALIASES = {
+    "polymer_mw_kDa": ["polymer_mw_kDa", "plga_mw_kDa"],
+}
 
 DEPRIORITIZED_SECTION_HINTS = {
     "abstract",
@@ -208,6 +212,18 @@ def build_required_entity_tokens(field_name: str, row: pd.Series) -> list[str]:
     if et == "drug":
         return tokenize_name(str(row.get("drug_name", "")).strip())
     return []
+
+
+def canonicalize_input_columns(df: pd.DataFrame) -> pd.DataFrame:
+    out = df.copy()
+    for canonical_name, aliases in FIELD_ALIASES.items():
+        canonical_value = out[canonical_name] if canonical_name in out.columns else pd.Series([""] * len(out), index=out.index)
+        for alias in aliases:
+            if alias == canonical_name or alias not in out.columns:
+                continue
+            canonical_value = canonical_value.where(canonical_value.astype(str).str.strip().ne(""), out[alias])
+        out[canonical_name] = canonical_value
+    return out
 
 
 def contains_any(text: str, tokens: list[str]) -> int:
@@ -407,7 +423,7 @@ def choose_doc_polymer_donors(
     - donors[(key, field)] = {"value": normalized_value, "group_key": donor_group_key}
     - conflicts[(key, field)] = True when multiple distinct candidates exist.
     """
-    donor_fields = ["la_ga_ratio", "plga_mw_kDa"]
+    donor_fields = ["la_ga_ratio", "polymer_mw_kDa"]
     donors: dict[tuple[str, str], dict[str, str]] = {}
     conflicts: dict[tuple[str, str], bool] = {}
 
@@ -1254,7 +1270,7 @@ def build_formulation_confidence(
                 donor_by_field[field] = ""
             else:
                 b = None
-                if field in {"la_ga_ratio", "plga_mw_kDa"}:
+                if field in {"la_ga_ratio", "polymer_mw_kDa"}:
                     if not doc_polymer_conflicts.get((key, field), False):
                         d = doc_polymer_donors.get((key, field), {})
                         if d.get("value"):
@@ -1356,11 +1372,11 @@ def build_formulation_confidence(
         loading_proxy_support_path = "|".join(loading_paths) if loading_paths else "none"
 
         polymer_local = int(
-            ("la_ga_ratio" in local_supported_fields) or ("plga_mw_kDa" in local_supported_fields)
+            ("la_ga_ratio" in local_supported_fields) or ("polymer_mw_kDa" in local_supported_fields)
         )
         polymer_inherited = int(
             (source_by_field.get("la_ga_ratio", "local") == "inherited_base")
-            or (source_by_field.get("plga_mw_kDa", "local") == "inherited_base")
+            or (source_by_field.get("polymer_mw_kDa", "local") == "inherited_base")
         )
         polymer_identity_supported = int((polymer_local == 1) or (polymer_inherited == 1))
         if polymer_local == 1:
@@ -1447,7 +1463,7 @@ def main() -> None:
     if not sample_manifest_path.exists():
         raise FileNotFoundError(f"Missing sample manifest TSV: {sample_manifest_path}")
 
-    df = pd.read_csv(input_tsv, sep="\t", dtype=str).fillna("")
+    df = canonicalize_input_columns(pd.read_csv(input_tsv, sep="\t", dtype=str).fillna(""))
     if "evidence_span_text" not in df.columns:
         raise RuntimeError("Input TSV missing required column: evidence_span_text")
     sample_manifest = pd.read_csv(sample_manifest_path, sep="\t", dtype=str).fillna("")

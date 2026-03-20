@@ -130,6 +130,10 @@ RESOLVED_FIELDNAMES = [
     "deterministic_confidence",
 ]
 
+CANONICAL_FIELD_ALIASES = {
+    "plga_mw_kDa": "polymer_mw_kDa",
+}
+
 METHOD_GROUP_SIGNATURE_FIELDS = [
     "emul_method",
     "emul_type",
@@ -142,7 +146,7 @@ METHOD_GROUP_SIGNATURE_FIELDS = [
 VARIATION_AXIS_FIELDS = {
     "polymer_identity",
     "la_ga_ratio",
-    "plga_mw_kDa",
+    "polymer_mw_kDa",
     "plga_mass_mg",
     "surfactant_name",
     "surfactant_concentration_text",
@@ -155,7 +159,7 @@ VARIATION_AXIS_FIELDS = {
 }
 
 RESOLVABLE_RELATION_FIELDS = {
-    "plga_mw_kDa",
+    "polymer_mw_kDa",
     "surfactant_name",
     "organic_solvent",
     "preparation_method",
@@ -173,6 +177,10 @@ def normalize_token(value: Any) -> str:
         return ""
     text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
     return re.sub(r"_+", "_", text).strip("_")
+
+
+def canonical_field_name(field_name: Any) -> str:
+    return CANONICAL_FIELD_ALIASES.get(normalize_text(field_name), normalize_text(field_name))
 
 
 def truncate_text(value: Any, max_len: int = 240) -> str:
@@ -213,13 +221,21 @@ def extract_field_names(headers: list[str]) -> list[str]:
     fields: list[str] = []
     for header in headers:
         if header.endswith("_value"):
-            name = header[: -len("_value")]
+            name = canonical_field_name(header[: -len("_value")])
             if name not in fields:
                 fields.append(name)
     for extra in ["polymer_identity", "polymer_name_raw", "preparation_method"]:
         if extra in headers and extra not in fields:
             fields.append(extra)
     return fields
+
+
+def field_column_candidates(field_name: str, suffix: str = "") -> list[str]:
+    if field_name == "polymer_mw_kDa":
+        names = ["polymer_mw_kDa", "plga_mw_kDa"]
+    else:
+        names = [field_name]
+    return [f"{name}{suffix}" for name in names]
 
 
 def load_manifest_map(path: Path | None) -> dict[str, dict[str, str]]:
@@ -260,7 +276,11 @@ def field_raw_value(row: dict[str, str], field_name: str) -> str:
     if field_name == "preparation_method":
         value = str(row.get("preparation_method", "") or "").strip()
         return "" if normalize_token(value) in {"", "unknown"} else value
-    return normalize_text(row.get(f"{field_name}_value") or row.get(f"{field_name}_value_text"))
+    for column in field_column_candidates(field_name, "_value") + field_column_candidates(field_name, "_value_text"):
+        value = normalize_text(row.get(column))
+        if value:
+            return value
+    return ""
 
 
 def field_scope(row: dict[str, str], field_name: str) -> str:
@@ -268,7 +288,11 @@ def field_scope(row: dict[str, str], field_name: str) -> str:
         return "row_level"
     if field_name == "preparation_method":
         return normalize_text(row.get("emul_method_scope")) or "unknown"
-    return normalize_text(row.get(f"{field_name}_scope"))
+    for column in field_column_candidates(field_name, "_scope"):
+        value = normalize_text(row.get(column))
+        if value:
+            return value
+    return ""
 
 
 def field_evidence_source_type(row: dict[str, str], field_name: str) -> str:
@@ -278,9 +302,11 @@ def field_evidence_source_type(row: dict[str, str], field_name: str) -> str:
         return normalize_text(row.get("emul_method_evidence_region_type")) or normalize_text(
             row.get("instance_evidence_region_type")
         )
-    return normalize_text(row.get(f"{field_name}_evidence_region_type")) or normalize_text(
-        row.get("instance_evidence_region_type")
-    )
+    for column in field_column_candidates(field_name, "_evidence_region_type"):
+        value = normalize_text(row.get(column))
+        if value:
+            return value
+    return normalize_text(row.get("instance_evidence_region_type"))
 
 
 def field_value_norm(row: dict[str, str], field_name: str) -> str:

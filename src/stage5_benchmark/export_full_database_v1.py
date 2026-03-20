@@ -180,6 +180,7 @@ def infer_polymer_identity_for_core(
                     "polymer_family",
                     "notes",
                     "evidence_span_text",
+                    "polymer_mw_kDa",
                     "plga_mw_kDa",
                 ]
                 if c in weak_df.columns

@@ -234,6 +234,8 @@ def load_manifest_map() -> tuple[pd.DataFrame, str]:
 def add_missing_flags(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
     def col(name: str) -> pd.Series:
+        if name == "polymer_mw_kDa" and "polymer_mw_kDa" not in out.columns and "plga_mw_kDa" in out.columns:
+            return out["plga_mw_kDa"].astype(str)
         return out[name].astype(str) if name in out.columns else pd.Series([""] * len(out), index=out.index)
 
     if "critical_missing_json" in out.columns:
@@ -242,7 +244,7 @@ def add_missing_flags(df: pd.DataFrame) -> pd.DataFrame:
             out[f] = crit.map(lambda d: bool(d.get(f, False)))
     else:
         out["missing_drug"] = col("drug_name").str.strip().eq("")
-        poly_ok = col("la_ga_ratio").str.strip().ne("") | col("plga_mw_kDa").str.strip().ne("") | col("polymer_name").str.strip().ne("")
+        poly_ok = col("la_ga_ratio").str.strip().ne("") | col("polymer_mw_kDa").str.strip().ne("") | col("polymer_name").str.strip().ne("")
         out["missing_polymer_identity"] = ~poly_ok
         out["missing_solvent"] = col("organic_solvent").str.strip().eq("")
         out["missing_surfactant"] = ~(col("surfactant_name").str.strip().ne("") | col("notes").str.contains("pva|pluronic|tween|poloxamer", case=False, regex=True))
@@ -252,8 +254,10 @@ def add_missing_flags(df: pd.DataFrame) -> pd.DataFrame:
 
 def choose_buckets(df: pd.DataFrame, n: int, seed: int) -> dict[str, pd.DataFrame]:
     work = df.copy()
+    if "polymer_mw_kDa" not in work.columns and "plga_mw_kDa" in work.columns:
+        work["polymer_mw_kDa"] = work["plga_mw_kDa"]
     work["quality_score"] = 0
-    for c in ["drug_name", "la_ga_ratio", "plga_mw_kDa", "organic_solvent", "drug_feed_amount_text"]:
+    for c in ["drug_name", "la_ga_ratio", "polymer_mw_kDa", "organic_solvent", "drug_feed_amount_text"]:
         if c in work.columns:
             work["quality_score"] += work[c].astype(str).str.strip().ne("").astype(int)
 
@@ -710,7 +714,10 @@ def main() -> None:
                 merged.at[idx, "evidence_span_start"] = parts[1]
                 merged.at[idx, "evidence_span_end"] = parts[2]
 
-    missing_expected = [c for c in ["key", "formulation_id", "drug_name", "la_ga_ratio", "plga_mw_kDa", "organic_solvent", "encapsulation_efficiency_percent", "size_nm", "pdi", "evidence_span_text"] if c not in merged.columns]
+    if "polymer_mw_kDa" not in merged.columns and "plga_mw_kDa" in merged.columns:
+        merged["polymer_mw_kDa"] = merged["plga_mw_kDa"]
+
+    missing_expected = [c for c in ["key", "formulation_id", "drug_name", "la_ga_ratio", "polymer_mw_kDa", "organic_solvent", "encapsulation_efficiency_percent", "size_nm", "pdi", "evidence_span_text"] if c not in merged.columns]
     if missing_expected:
         schema_mismatch["missing_expected_columns"] = missing_expected
     if "field_name" not in merged.columns:
@@ -818,7 +825,7 @@ def main() -> None:
             )
 
             polymer_type = str(canon.get("polymer_type_canon", "")) or canonical_polymer_type(str(r.get("polymer_name", "")), str(r.get("notes", "")), str(r.get("evidence_span_text", "")))
-            mw_canon = str(canon.get("polymer_mw_kda_canon_or_iv", "")) or canonical_mw_or_iv(str(r.get("plga_mw_kDa", "")), str(r.get("notes", "")))
+            mw_canon = str(canon.get("polymer_mw_kda_canon_or_iv", "")) or canonical_mw_or_iv(str(r.get("polymer_mw_kDa", "") or r.get("plga_mw_kDa", "")), str(r.get("notes", "")))
             feed_anchor = str(canon.get("feed_anchor_canon", r.get("feed_anchor_canon", "")))
             if doe_signature:
                 feed_anchor = f"doe_signature:{doe_signature}"
@@ -1002,7 +1009,7 @@ def main() -> None:
                 "drug_name_raw": str(r.get("drug_name", "")),
                 "polymer_name_raw": str(r.get("polymer_name", "")),
                 "la_ga_ratio_raw": str(r.get("la_ga_ratio", "")),
-                "mw_raw": str(r.get("plga_mw_kDa", "")),
+                "mw_raw": str(r.get("polymer_mw_kDa", "") or r.get("plga_mw_kDa", "")),
                 "polymer_code_raw/vendor_code_raw": str(r.get("vendor_product_code", "")),
                 "solvent_raw": str(r.get("organic_solvent", "")),
                 "surfactant_raw": str(r.get("surfactant_name", "")),

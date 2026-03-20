@@ -20,10 +20,14 @@ SUMMARY_NAME = "final_output_summary_v1.md"
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
 RESOLVED_RELATION_FIELD_NAMES = {
-    "plga_mw_kDa",
+    "polymer_mw_kDa",
     "surfactant_name",
     "organic_solvent",
     "preparation_method",
+}
+
+LEGACY_FIELD_ALIASES = {
+    "plga_mw_kDa": "polymer_mw_kDa",
 }
 
 
@@ -66,6 +70,26 @@ def normalize_token(value: Any) -> str:
     text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
     text = re.sub(r"_+", "_", text).strip("_")
     return text
+
+
+def canonical_field_name(field_name: Any) -> str:
+    return LEGACY_FIELD_ALIASES.get(str(field_name or "").strip(), str(field_name or "").strip())
+
+
+def canonicalize_row_columns(row: dict[str, str]) -> dict[str, str]:
+    canonical: dict[str, str] = {}
+    for key, value in row.items():
+        target_key = str(key)
+        for legacy_name, canonical_name in LEGACY_FIELD_ALIASES.items():
+            if target_key == legacy_name:
+                target_key = canonical_name
+                break
+            if target_key.startswith(f"{legacy_name}_"):
+                target_key = f"{canonical_name}_{target_key[len(legacy_name) + 1:]}"
+                break
+        if target_key not in canonical or not str(canonical.get(target_key, "")).strip():
+            canonical[target_key] = value
+    return canonical
 
 
 def first_number_token(value: Any) -> str:
@@ -475,11 +499,19 @@ def field_bundle_value(row: dict[str, str], prefix: str) -> str:
     if prefix == "preparation_method":
         value = str(row.get("preparation_method", "") or "").strip()
         return "" if normalize_token(value) in {"", "unknown"} else value
-    return str(
-        row.get(f"{prefix}_value", "")
-        or row.get(f"{prefix}_value_text", "")
-        or ""
-    ).strip()
+    prefixes = [prefix]
+    legacy_prefix = next((legacy for legacy, canonical in LEGACY_FIELD_ALIASES.items() if canonical == prefix), "")
+    if legacy_prefix:
+        prefixes.append(legacy_prefix)
+    for candidate_prefix in prefixes:
+        value = str(
+            row.get(f"{candidate_prefix}_value", "")
+            or row.get(f"{candidate_prefix}_value_text", "")
+            or ""
+        ).strip()
+        if value:
+            return value
+    return ""
 
 
 def load_resolved_relation_fields(
@@ -494,7 +526,7 @@ def load_resolved_relation_fields(
         reader = csv.DictReader(handle, delimiter="\t")
         for row in reader:
             candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
-            field_name = str(row.get("field_name", "") or "").strip()
+            field_name = canonical_field_name(row.get("field_name", ""))
             if not candidate_id or field_name not in RESOLVED_RELATION_FIELD_NAMES:
                 continue
             resolved_map[candidate_id][field_name] = {
@@ -707,7 +739,7 @@ def make_final_formulation_id(
 def read_candidate_rows(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
-        return list(reader)
+        return [canonicalize_row_columns(row) for row in reader]
 
 
 def load_relation_metadata(

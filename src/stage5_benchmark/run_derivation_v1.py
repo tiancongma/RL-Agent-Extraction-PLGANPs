@@ -15,6 +15,10 @@ from derive_doe_coded_factors_v1 import derive_doe_coded_factors
 DEFAULT_RUN_ID = "run_20260219_1623_780eb83_goren18_weaklabels_v1"
 DEFAULT_RULE_REGISTRY = "data/benchmark/goren_2025/rules/derivation_rule_registry.v1.json"
 
+FIELD_ALIASES = {
+    "polymer_mw_kDa": ["polymer_mw_kDa", "plga_mw_kDa"],
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -122,6 +126,15 @@ def parse_mw_range(raw: Any) -> tuple[float | None, float | None]:
     if lo <= hi:
         return (lo, hi)
     return (hi, lo)
+
+
+def get_field_value(row: pd.Series, field_name: str) -> Any:
+    for candidate in FIELD_ALIASES.get(field_name, [field_name]):
+        if candidate in row.index:
+            value = row.get(candidate, "")
+            if str(value).strip():
+                return value
+    return row.get(field_name, "")
 
 
 def parse_aqueous_organic_from_span(raw: Any) -> tuple[float | None, float | None]:
@@ -375,7 +388,7 @@ def main() -> None:
         raise RuntimeError(f"Extraction TSV missing required columns: {missing}")
 
     derived_rows: list[dict[str, Any]] = []
-    anchors_for_ao = {"plga_mass_mg", "drug_feed_amount_text", "la_ga_ratio", "plga_mw_kDa"}
+    anchors_for_ao = {"plga_mass_mg", "drug_feed_amount_text", "la_ga_ratio", "polymer_mw_kDa"}
 
     for row_index, row in extracted.iterrows():
         key = str(row.get("key", "")).strip()
@@ -519,7 +532,7 @@ def main() -> None:
             trace_pointer=trace_ptr,
         )
 
-        mw_low, mw_high = parse_mw_range(row.get("plga_mw_kDa", ""))
+        mw_low, mw_high = parse_mw_range(get_field_value(row, "polymer_mw_kDa"))
         add_value(
             derived_rows,
             run_id=run_id,
@@ -529,7 +542,7 @@ def main() -> None:
             field_name="polymer_mw_lower_kDa",
             value=mw_low,
             rule_id="R_POLYMER_MW_RANGE_PARSE",
-            derived_from="plga_mw_kDa",
+            derived_from="polymer_mw_kDa",
             value_source="parsed_from_extracted",
             trace_pointer=trace_ptr,
         )
@@ -542,7 +555,7 @@ def main() -> None:
             field_name="polymer_mw_upper_kDa",
             value=mw_high,
             rule_id="R_POLYMER_MW_RANGE_PARSE",
-            derived_from="plga_mw_kDa",
+            derived_from="polymer_mw_kDa",
             value_source="parsed_from_extracted",
             trace_pointer=trace_ptr,
         )

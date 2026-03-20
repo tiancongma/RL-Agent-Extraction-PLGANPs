@@ -125,6 +125,15 @@ def normalize_mw_to_kda(v: Any) -> str:
     return format_num(num)
 
 
+def get_polymer_mw_raw(row: pd.Series) -> Any:
+    for column in ["polymer_mw_kDa", "plga_mw_kDa"]:
+        if column in row.index:
+            value = row.get(column, "")
+            if str(value).strip():
+                return value
+    return ""
+
+
 def extract_intrinsic_viscosity(v: Any) -> str:
     s = normalize_text(v)
     if not s:
@@ -505,7 +514,7 @@ def build_formulation_core_signature_v1(
 
         polymer_type_canon = canonical_polymer_type(row.get("polymer_type", ""), notes, evidence)
         la_ga_ratio_canon = normalize_la_ga_ratio(row.get("la_ga_ratio", ""))
-        mw_kda = normalize_mw_to_kda(row.get("plga_mw_kDa", ""))
+        mw_kda = normalize_mw_to_kda(get_polymer_mw_raw(row))
         iv = extract_intrinsic_viscosity(row.get("intrinsic_viscosity", ""))
         mw_or_iv = mw_kda if mw_kda else (f"IV:{iv}" if iv else "")
         vendor_code = normalize_key_token(row.get("vendor_product_code", "")).upper()
@@ -801,7 +810,7 @@ def _self_test() -> None:
             "key": "DOC1",
             "formulation_id": "F1",
             "la_ga_ratio": "50/50",
-            "plga_mw_kDa": "30 kDa",
+            "polymer_mw_kDa": "30 kDa",
             "organic_solvent": "dichloromethane",
             "drug_name": "Doxorubicin",
             "drug_feed_amount_text": "5 mg",
@@ -814,7 +823,7 @@ def _self_test() -> None:
             "key": "DOC1",
             "formulation_id": "F1",
             "la_ga_ratio": "50:50",
-            "plga_mw_kDa": "30000 Da",
+            "polymer_mw_kDa": "30000 Da",
             "organic_solvent": "DCM",
             "drug_name": "doxorubicin",
             "drug_feed_amount_text": "5mg",
@@ -827,7 +836,7 @@ def _self_test() -> None:
             "key": "DOC1",
             "formulation_id": "",
             "la_ga_ratio": "",
-            "plga_mw_kDa": "",
+            "polymer_mw_kDa": "",
             "organic_solvent": "",
             "drug_name": "",
             "notes": "",

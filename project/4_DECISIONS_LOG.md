@@ -1224,6 +1224,113 @@ Traceability
 - Authoritative v2 run:
   - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/15_l3gtv2/run_20260318_1521_22e713d_dev15_l3gtv2_v1/RUN_CONTEXT.md`
 
+## 2026-03-19
+
+### Decision: Use conflict-aware Stage 2 instance-kind reconciliation instead of blind trust or blanket downgrade
+
+Decision
+- Stage 2 now applies a narrow conflict-aware reconciliation step after basic
+  candidate canonicalization and before downstream materialization.
+- The reconciler uses existing Stage 2 signals only:
+  - raw `instance_kind`
+  - `change_role`
+  - `formulation_role`
+  - `instance_context_tags` / `change_context_tags`
+  - `parent_instance_id`
+  - populated formulation-identity fields
+  - polymer identity / polymer name
+- The reconciler supports both directions:
+  - rescue GT-valid family-member rows that were typed as
+    `candidate_non_formulation` despite strong formulation-family identity
+  - downgrade helper/comparative/non-synthesis rows that were typed as
+    formulation-facing rows despite weak formulation identity
+- No new paper-specific extraction rules are introduced by this decision.
+
+Reason
+- Recent reviewed-boundary diagnostics showed three recurring failure patterns:
+  - `BXCV5XWB` false exclusion of GT-valid blank / FITC family-member rows
+  - `QLYKLPKT` leakage of helper / comparative dosage rows into final output
+  - `UFXX9WXE` leakage of characterization/helper formulation rows into final
+    output
+- Blind trust in raw explicit `instance_kind` is too permissive for helper or
+  comparative rows.
+- Blanket downgrade based only on `non_synthesis` or
+  `characterization_only` would incorrectly suppress legitimate formulation
+  family members.
+
+Rule
+- Do not auto-demote a row only because it carries `non_synthesis`,
+  `characterization_only`, or helper-style tags.
+- Do not auto-keep a row only because the raw LLM emitted
+  `new_formulation` / `variant_formulation`.
+- Reconcile only when the evidence conflict is clear:
+  - rescue when strong formulation-family identity is present
+  - downgrade when helper/comparative signals are strong and formulation
+    identity is weak
+
+Auditability
+- Preserve lightweight audit fields in Stage 2 outputs:
+  - `instance_kind_raw`
+  - `instance_kind_inferred`
+  - `instance_kind_reconciliation_note`
+- Mark reconciled rows with the `instance_kind_reconciled` context tag rather
+  than redesigning the whole schema.
+
+Scope and limitations
+- This is a Stage 2-only typing/gating reconciliation step.
+- It does not change Stage 3 relation semantics or Stage 5 materialization
+  semantics.
+- It is intentionally narrow and pattern-based; duplicate alias rows and other
+  non-typing failure modes may still require separate work.
+
+### Decision: Canonical Polymer MW Field Migration and Materials-Priority Evidence Packing
+
+Decision
+- The canonical molecular-weight field is now `polymer_mw_kDa`.
+- `plga_mw_kDa` is retained as a legacy read alias only for transition compatibility.
+- This is a canonical naming correction only. The scientific meaning of the field did not change.
+- The relation-first architecture is unchanged:
+  - Stage 2 remains semantic extraction
+  - Stage 3 remains deterministic relation materialization
+  - Stage 5 remains materialization-only
+
+Reason
+- The active project logic already treats polymer identity as general and LA/GA ratio as conditional.
+- Keeping a PLGA-shaped canonical MW name creates avoidable schema and prompt bias for non-PLGA polymers such as PCL.
+- The canonical field identity must match the actual project semantics before more DEV15 relation-first review and Layer 3 audit work accumulates.
+
+Impact
+- New active outputs should prefer `polymer_mw_kDa` wherever the canonical field is written.
+- Old artifacts that still carry `plga_mw_kDa` must remain readable through explicit compatibility mapping.
+- No relation-first logic, boundary logic, or Stage 5 semantic behavior changed as part of this naming correction.
+
+### Evidence Packing Adjustment
+
+Decision
+- Add `materials_procurement` as an explicit Stage 2 evidence-pack block type.
+- The effective evidence-pack priority is now:
+  - `metadata`
+  - `synthesis_method`
+  - `materials_procurement`
+  - `table`
+  - `caption`
+  - `paragraph`
+
+Reason
+- Materials/procurement paragraphs often carry shared/global formulation parameters such as polymer identity, molecular weight, grade, and supplier-coded product names.
+- Those shared parameters should appear earlier in the LLM input than generic tables, captions, or body paragraphs.
+
+Impact
+- This change affects Stage 2 LLM input ordering only.
+- It does not change the extraction schema, formulation boundary semantics, relation-first contract, or Stage 5 behavior.
+
+### Explicit Non-Changes
+
+- No donor-fill reintroduction.
+- No Stage 5 inference.
+- No same-paper donor heuristics.
+- No formulation boundary logic changes.
+
 ### Decision: Allow narrow Stage 5 descriptive-field inheritance for sparse same-paper sweep rows
 
 Decision

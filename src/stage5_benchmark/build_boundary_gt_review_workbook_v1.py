@@ -103,6 +103,10 @@ REVIEW_COLUMNS = [
     "seed_pred_benchmark_default_include",
     "seed_pred_final_output_rule",
     "seed_pred_review_needed",
+    "seed_pred_field_source_type",
+    "seed_pred_row_priority",
+    "seed_pred_priority_reason",
+    "seed_pred_suspicious_case_flag",
     "seed_pred_boundary_source_type",
     "seed_pred_boundary_source_locator",
     "seed_pred_boundary_anchor_label",
@@ -223,12 +227,17 @@ def sanitize_out_subdir(value: str) -> str:
     return "/".join(parts)
 
 
-def default_input_path(run_id: str, filename: str) -> Path:
-    return DATA_RESULTS_DIR / run_id / filename
+def resolve_run_dir(run_id: str, explicit_run_dir: Path | None) -> Path:
+    if explicit_run_dir is not None:
+        return explicit_run_dir.resolve()
+    return (DATA_RESULTS_DIR / run_id).resolve()
 
 
-def discover_scope_manifest(run_id: str) -> Path | None:
-    run_dir = DATA_RESULTS_DIR / run_id
+def default_input_path(run_dir: Path, filename: str) -> Path:
+    return run_dir / filename
+
+
+def discover_scope_manifest(run_dir: Path) -> Path | None:
     preferred = [run_dir / "dev15_scope.tsv", run_dir / "scope.tsv", run_dir / "scope_manifest.tsv"]
     for path in preferred:
         if path.exists():
@@ -291,6 +300,73 @@ def load_relation_counts(path: Path | None) -> dict[tuple[str, str], dict[str, s
             "relation_row_count": str(bucket["relation_row_count"]),
         }
     return out
+
+
+def load_relation_fill_counts(
+    path: Path | None,
+) -> tuple[dict[str, int], dict[str, int]]:
+    if path is None or not path.exists():
+        return {}, {}
+    per_final_id: dict[str, int] = defaultdict(int)
+    per_paper: dict[str, int] = defaultdict(int)
+    for row in read_tsv_rows(path):
+        final_id = normalize_text(row.get("final_formulation_id"))
+        paper_key = normalize_text(row.get("paper_key"))
+        if final_id:
+            per_final_id[final_id] += 1
+        if paper_key:
+            per_paper[paper_key] += 1
+    return dict(per_final_id), dict(per_paper)
+
+
+def load_suspicious_case_maps(
+    path: Path | None,
+) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
+    if path is None or not path.exists():
+        return {}, {}
+    per_final_id: dict[str, list[str]] = defaultdict(list)
+    per_paper: dict[str, list[str]] = defaultdict(list)
+    for row in read_tsv_rows(path):
+        reason = normalize_text(row.get("reason"))
+        details = normalize_text(row.get("details"))
+        concern_rank = normalize_text(row.get("concern_rank"))
+        message = " | ".join(part for part in [concern_rank, reason, details] if part)
+        final_id = normalize_text(row.get("final_formulation_id"))
+        paper_key = normalize_text(row.get("paper_key"))
+        if final_id and message and message not in per_final_id[final_id]:
+            per_final_id[final_id].append(message)
+        if paper_key and message and message not in per_paper[paper_key]:
+            per_paper[paper_key].append(message)
+    return dict(per_final_id), dict(per_paper)
+
+
+def classify_row_priority(
+    row: dict[str, str],
+    relation_fill_count: int,
+    suspicious_messages: list[str],
+) -> tuple[str, str]:
+    reasons: list[str] = []
+    field_source_type = normalize_text(row.get("field_source_type"))
+    review_needed = normalize_text(row.get("review_needed")).lower()
+    polymer_identity = normalize_text(row.get("polymer_identity_final"))
+    if suspicious_messages:
+        reasons.append("suspicious_relation_case")
+    if field_source_type == "relation_resolved":
+        reasons.append("relation_resolved")
+    if relation_fill_count > 0:
+        reasons.append(f"relation_resolved_fills={relation_fill_count}")
+    if field_source_type == "unresolved_blank":
+        reasons.append("unresolved_blank")
+    if review_needed in {"yes", "true", "1"}:
+        reasons.append("review_needed")
+    if polymer_identity.lower() in {"", "unknown"}:
+        reasons.append("weak_or_unknown_branch_identity")
+
+    if suspicious_messages or field_source_type == "unresolved_blank":
+        return "high", "; ".join(reasons)
+    if field_source_type == "relation_resolved" or review_needed in {"yes", "true", "1"}:
+        return "medium", "; ".join(reasons)
+    return "normal", "; ".join(reasons)
 
 
 def extract_table_id(section: str) -> str:
@@ -377,7 +453,7 @@ def build_anchor_fields(row: dict[str, str]) -> dict[str, str]:
         "surfactant_anchor": normalize_text(row.get("surfactant_name_value")),
         "solvent_phase_anchor": normalize_text(row.get("organic_solvent_value")),
         "drug_polymer_ratio_anchor": normalize_text(row.get("drug_to_polymer_mass_ratio_value")),
-        "polymer_mw_anchor": normalize_text(row.get("plga_mw_kDa_value")),
+        "polymer_mw_anchor": normalize_text(row.get("polymer_mw_kDa_value") or row.get("plga_mw_kDa_value")),
         "la_ga_ratio_anchor": normalize_text(row.get("la_ga_ratio_value")),
         "variant_change_anchor": variant_change_anchor,
     }
@@ -407,6 +483,8 @@ def build_seed_and_reference_rows(
     manifest_map: dict[str, dict[str, str]],
     decision_map: dict[tuple[str, str], dict[str, str]],
     relation_map: dict[tuple[str, str], dict[str, str]],
+    relation_fill_counts_by_final_id: dict[str, int],
+    suspicious_messages_by_final_id: dict[str, list[str]],
     manual_template_rows_per_paper: int,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
     rows_by_key: dict[str, list[dict[str, str]]] = defaultdict(list)
@@ -473,6 +551,7 @@ def build_seed_and_reference_rows(
         for index, row in enumerate(paper_rows, start=1):
             source_id = normalize_text(row.get("representative_source_formulation_id"))
             decision_row = decision_map.get((paper_key, source_id), {})
+            final_formulation_id = normalize_text(row.get("final_formulation_id"))
             family_raw = normalize_text(row.get("family_id") or decision_row.get("family_id") or row.get("final_formulation_id"))
             predicted_family_label = family_label_map.get(family_raw, "")
             predicted_variant_role = normalize_text(row.get("variant_role") or decision_row.get("variant_role"))
@@ -481,6 +560,13 @@ def build_seed_and_reference_rows(
             suggested_gt_id = f"{paper_key}_G{index:03d}"
             suggested_parent_gt_id = family_core_gt_id.get(family_raw, suggested_gt_id)
             anchor_fields = build_anchor_fields(row)
+            relation_fill_count = relation_fill_counts_by_final_id.get(final_formulation_id, 0)
+            suspicious_messages = suspicious_messages_by_final_id.get(final_formulation_id, [])
+            row_priority, priority_reason = classify_row_priority(
+                row=row,
+                relation_fill_count=relation_fill_count,
+                suspicious_messages=suspicious_messages,
+            )
             review_row = {column: "" for column in REVIEW_COLUMNS}
             review_row.update(
                 {
@@ -490,7 +576,7 @@ def build_seed_and_reference_rows(
                     "paper_title": paper_title,
                     "publication_year": publication_year,
                     "seed_row_origin": "pred_seed",
-                    "seed_pred_final_formulation_id": normalize_text(row.get("final_formulation_id")),
+                    "seed_pred_final_formulation_id": final_formulation_id,
                     "seed_pred_representative_source_formulation_id": source_id,
                     "seed_pred_family_id": predicted_family_label or normalize_text(row.get("family_id") or decision_row.get("family_id")),
                     "seed_pred_parent_core_row_id": gt_id_map.get(predicted_parent_raw, predicted_parent_raw),
@@ -501,6 +587,10 @@ def build_seed_and_reference_rows(
                     ),
                     "seed_pred_final_output_rule": normalize_text(row.get("final_output_rule")),
                     "seed_pred_review_needed": normalize_text(row.get("review_needed") or decision_row.get("review_needed")),
+                    "seed_pred_field_source_type": normalize_text(row.get("field_source_type")),
+                    "seed_pred_row_priority": row_priority,
+                    "seed_pred_priority_reason": priority_reason,
+                    "seed_pred_suspicious_case_flag": "yes" if suspicious_messages else "no",
                     "seed_pred_boundary_source_type": anchor_fields["boundary_source_type"],
                     "seed_pred_boundary_source_locator": anchor_fields["boundary_source_locator"],
                     "seed_pred_boundary_anchor_label": anchor_fields["boundary_anchor_label"],
@@ -552,7 +642,9 @@ def build_seed_and_reference_rows(
                 {
                     "paper_key": paper_key,
                     "doi": doi,
+                    "doi_url": doi_url,
                     "paper_title": paper_title,
+                    "publication_year": publication_year,
                     "pred_final_formulation_id": normalize_text(row.get("final_formulation_id")),
                     "pred_representative_source_formulation_id": source_id,
                     "pred_raw_formulation_label": normalize_text(row.get("representative_source_raw_formulation_label")),
@@ -565,6 +657,19 @@ def build_seed_and_reference_rows(
                     ),
                     "pred_final_output_rule": normalize_text(row.get("final_output_rule")),
                     "pred_review_needed": normalize_text(row.get("review_needed")),
+                    "pred_field_source_type": normalize_text(row.get("field_source_type")),
+                    "pred_relation_resolved_fill_count": str(relation_fill_count),
+                    "pred_row_priority": row_priority,
+                    "pred_priority_reason": priority_reason,
+                    "pred_suspicious_case_flag": "yes" if suspicious_messages else "no",
+                    "pred_suspicious_case_notes": " || ".join(suspicious_messages),
+                    "pred_polymer_identity_final": normalize_text(row.get("polymer_identity_final")),
+                    "pred_drug_name_value": normalize_text(row.get("drug_name_value")),
+                    "pred_surfactant_name_value": normalize_text(row.get("surfactant_name_value")),
+                    "pred_organic_solvent_value": normalize_text(row.get("organic_solvent_value")),
+                    "pred_polymer_mw_kDa_value": normalize_text(row.get("polymer_mw_kDa_value") or row.get("plga_mw_kDa_value")),
+                    "pred_la_ga_ratio_value": normalize_text(row.get("la_ga_ratio_value")),
+                    "pred_preparation_method": normalize_text(row.get("preparation_method")),
                     "pred_source_candidate_count": normalize_text(row.get("source_candidate_count")),
                     "pred_source_candidate_ids": normalize_text(row.get("source_candidate_ids")),
                     "pred_source_candidate_labels": normalize_text(row.get("source_candidate_labels")),
@@ -654,6 +759,8 @@ def build_source_summary(
     review_rows: list[dict[str, str]],
     manual_rows: list[dict[str, str]],
     family_reference_rows: list[dict[str, str]],
+    relation_fill_counts_by_paper: dict[str, int],
+    suspicious_messages_by_paper: dict[str, list[str]],
 ) -> list[dict[str, str]]:
     per_key_seed = CounterMap("paper_key", review_rows)
     per_key_manual = CounterMap("paper_key", manual_rows)
@@ -666,6 +773,19 @@ def build_source_summary(
             sample = next((row for row in manual_rows if row["paper_key"] == key), None)
         if sample is None:
             continue
+        paper_review_rows = [row for row in review_rows if row["paper_key"] == key]
+        direct_rows = sum(1 for row in paper_review_rows if normalize_text(row.get("seed_pred_field_source_type")) == "direct_extraction")
+        relation_rows = sum(1 for row in paper_review_rows if normalize_text(row.get("seed_pred_field_source_type")) == "relation_resolved")
+        unresolved_rows = sum(1 for row in paper_review_rows if normalize_text(row.get("seed_pred_field_source_type")) == "unresolved_blank")
+        high_priority_rows = sum(1 for row in paper_review_rows if normalize_text(row.get("seed_pred_row_priority")) == "high")
+        medium_priority_rows = sum(1 for row in paper_review_rows if normalize_text(row.get("seed_pred_row_priority")) == "medium")
+        review_needed_rows = sum(
+            1
+            for row in paper_review_rows
+            if normalize_text(row.get("seed_pred_review_needed")).lower() in {"yes", "true", "1"}
+        )
+        paper_suspicious_messages = suspicious_messages_by_paper.get(key, [])
+        paper_priority_bucket = "high" if high_priority_rows > 0 else ("medium" if medium_priority_rows > 0 else "normal")
         rows.append(
             {
                 "paper_key": key,
@@ -676,6 +796,16 @@ def build_source_summary(
                 "seed_predicted_rows": str(per_key_seed.get(key, 0)),
                 "manual_addition_template_rows": str(per_key_manual.get(key, 0)),
                 "predicted_family_groups": str(per_key_family.get(key, 0)),
+                "relation_resolved_fill_events": str(relation_fill_counts_by_paper.get(key, 0)),
+                "rows_direct_extraction": str(direct_rows),
+                "rows_relation_resolved": str(relation_rows),
+                "rows_unresolved_blank": str(unresolved_rows),
+                "rows_review_needed": str(review_needed_rows),
+                "rows_high_priority": str(high_priority_rows),
+                "rows_medium_priority": str(medium_priority_rows),
+                "paper_has_suspicious_relation_case": "yes" if paper_suspicious_messages else "no",
+                "paper_priority_bucket": paper_priority_bucket,
+                "paper_priority_notes": " || ".join(paper_suspicious_messages[:3]),
             }
         )
     return rows
@@ -855,6 +985,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Relative output folder under data/results/<run_id>/ for this review surface.",
     )
     parser.add_argument(
+        "--run-dir",
+        type=Path,
+        default=None,
+        help="Optional explicit run directory. Use this for nested child-lineage runs.",
+    )
+    parser.add_argument(
         "--final-table-tsv",
         type=Path,
         default=None,
@@ -884,6 +1020,23 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=2,
         help="Blank manual-addition template rows to pre-seed per paper.",
     )
+    parser.add_argument(
+        "--workbook-name",
+        default=WORKBOOK_NAME,
+        help="Workbook filename to write inside the output subdirectory.",
+    )
+    parser.add_argument(
+        "--relation-fills-tsv",
+        type=Path,
+        default=None,
+        help="Optional relation_resolved_new_fills.tsv for review prioritization.",
+    )
+    parser.add_argument(
+        "--suspicious-cases-tsv",
+        type=Path,
+        default=None,
+        help="Optional suspicious_relation_resolved_cases.tsv for review prioritization.",
+    )
     return parser
 
 
@@ -892,15 +1045,18 @@ def main() -> None:
     run_id = normalize_text(args.run_id)
     if not is_valid_run_id(run_id):
         raise ValueError(f"Invalid run_id: {run_id}")
+    run_dir = resolve_run_dir(run_id, args.run_dir)
+    if not run_dir.exists():
+        raise FileNotFoundError(f"Run directory not found: {run_dir}")
     out_subdir = sanitize_out_subdir(args.out_subdir)
-    out_dir = DATA_RESULTS_DIR / run_id / out_subdir
+    out_dir = run_dir / out_subdir
 
-    final_table_tsv = args.final_table_tsv or default_input_path(run_id, "final_formulation_table_v1.tsv")
+    final_table_tsv = args.final_table_tsv or default_input_path(run_dir, "final_formulation_table_v1.tsv")
     decision_trace_tsv = args.decision_trace_tsv
     if decision_trace_tsv is None:
-        candidate = default_input_path(run_id, "final_output_decision_trace_v1.tsv")
+        candidate = default_input_path(run_dir, "final_output_decision_trace_v1.tsv")
         decision_trace_tsv = candidate if candidate.exists() else None
-    scope_manifest_tsv = args.scope_manifest_tsv or discover_scope_manifest(run_id)
+    scope_manifest_tsv = args.scope_manifest_tsv or discover_scope_manifest(run_dir)
 
     if not final_table_tsv.exists():
         raise FileNotFoundError(f"Final table TSV not found: {final_table_tsv}")
@@ -908,20 +1064,34 @@ def main() -> None:
         raise FileNotFoundError(f"Decision trace TSV not found: {decision_trace_tsv}")
     if args.relation_records_tsv is not None and not args.relation_records_tsv.exists():
         raise FileNotFoundError(f"Relation records TSV not found: {args.relation_records_tsv}")
+    if args.relation_fills_tsv is not None and not args.relation_fills_tsv.exists():
+        raise FileNotFoundError(f"Relation fills TSV not found: {args.relation_fills_tsv}")
+    if args.suspicious_cases_tsv is not None and not args.suspicious_cases_tsv.exists():
+        raise FileNotFoundError(f"Suspicious cases TSV not found: {args.suspicious_cases_tsv}")
 
     final_rows = read_tsv_rows(final_table_tsv)
     manifest_map = load_manifest_map(scope_manifest_tsv)
     decision_map = load_decision_trace_map(decision_trace_tsv)
     relation_map = load_relation_counts(args.relation_records_tsv)
+    relation_fill_counts_by_final_id, relation_fill_counts_by_paper = load_relation_fill_counts(args.relation_fills_tsv)
+    suspicious_messages_by_final_id, suspicious_messages_by_paper = load_suspicious_case_maps(args.suspicious_cases_tsv)
 
     review_rows, manual_rows, pred_reference_rows, family_reference_rows = build_seed_and_reference_rows(
         final_rows=final_rows,
         manifest_map=manifest_map,
         decision_map=decision_map,
         relation_map=relation_map,
+        relation_fill_counts_by_final_id=relation_fill_counts_by_final_id,
+        suspicious_messages_by_final_id=suspicious_messages_by_final_id,
         manual_template_rows_per_paper=max(0, int(args.manual_template_rows_per_paper)),
     )
-    source_summary_rows = build_source_summary(review_rows, manual_rows, family_reference_rows)
+    source_summary_rows = build_source_summary(
+        review_rows,
+        manual_rows,
+        family_reference_rows,
+        relation_fill_counts_by_paper=relation_fill_counts_by_paper,
+        suspicious_messages_by_paper=suspicious_messages_by_paper,
+    )
 
     write_tsv(out_dir / REVIEW_SEED_TSV_NAME, REVIEW_COLUMNS, review_rows)
     write_tsv(out_dir / MANUAL_TEMPLATE_TSV_NAME, REVIEW_COLUMNS, manual_rows)
@@ -932,7 +1102,7 @@ def main() -> None:
     if source_summary_rows:
         write_tsv(out_dir / SOURCE_SUMMARY_TSV_NAME, list(source_summary_rows[0].keys()), source_summary_rows)
 
-    workbook_path = out_dir / WORKBOOK_NAME
+    workbook_path = out_dir / normalize_text(args.workbook_name or WORKBOOK_NAME)
     build_workbook(
         workbook_path=workbook_path,
         review_rows=review_rows,
@@ -946,6 +1116,7 @@ def main() -> None:
         json.dumps(
             {
                 "run_id": run_id,
+                "run_dir": str(run_dir),
                 "out_dir": str(out_dir),
                 "final_table_tsv": str(final_table_tsv),
                 "decision_trace_tsv": str(decision_trace_tsv) if decision_trace_tsv else "",
