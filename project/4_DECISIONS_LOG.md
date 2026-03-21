@@ -858,6 +858,62 @@ Bounded validation
   - GT count: `26`
 
 Interpretation
+
+## 2026-03-21
+
+### Decision: Keep Stage2 frozen for the BXCV5XWB helper-descendant regression and tighten Stage5 helper-descendant governance
+
+Decision
+- Keep Stage2 frozen for the `BXCV5XWB` over-retention class.
+- Tighten Stage5 downstream governance in
+  `src/stage5_benchmark/build_minimal_final_output_v1.py` so parent-linked
+  helper/control/assay descendants are filtered when existing downstream
+  signals already show that they are not independent benchmark-facing
+  formulation identities.
+
+Reason
+- The raw Stage2 sufficiency audit for `BXCV5XWB` confirmed that raw extraction
+  already preserved enough identity-relevant content for the six extra helper
+  rows:
+  - blank/no-drug control semantics
+  - FITC model-drug substitution semantics
+  - parent linkage to the benchmark-facing KGN rows
+  - helper/control/characterization semantics in labels or descriptions
+- The drifted Stage2 shaping regressed some primary routing tags, but it did
+  not remove the downstream-recoverable helper semantics.
+- Under the current freeze rule, this does not justify reopening Stage2.
+
+Exact rule change
+- Stage5 previously filtered parent-linked descendants mainly when
+  `change_role == non_synthesis`.
+- Stage5 now also filters parent-linked helper descendants when a combination
+  of preserved downstream-visible signals indicates helper semantics, including:
+  - helper payload states such as blank-control or FITC assay substitution
+  - helper/control/model-drug-substitution context tags
+  - helper/control/substitution text in labels or change descriptions
+  - formulation-role evidence such as control/characterization-only
+
+Why the previous rule was too narrow
+- It depended too heavily on one upstream routing field and could miss rows
+  whose helper semantics were still clearly recoverable downstream.
+- This caused benchmark-facing over-retention of blank and assay/helper
+  descendants in papers such as `BXCV5XWB`.
+
+Intended behavior
+- Keep Stage2 frozen.
+- Use downstream governance to suppress clear helper descendants that do not
+  define independent synthesis identities.
+- Preserve legitimate synthesis variants and sweep-style benchmark-facing rows.
+
+Regression protection
+- Extended deterministic no-LLM checker:
+  `src/stage5_benchmark/validate_stage5_descendant_filter_regression_v1.py`
+- Coverage now asserts:
+  - `BB3JUVW7` still retains all 12 benchmark-facing rows
+  - `BXCV5XWB` retains only the 3 KGN benchmark-facing rows
+  - `RHMJWZX8` drops its parent-linked empty-control helper row
+  - blocker-material descendant rows remain filtered
+  - `WIVUCMYG` remains stable
 - The bounded validation succeeded for the intended patch target.
 - The active Stage2 path now explicitly uses the structured Stage1 PDF table asset for the numbered DOE rows and replaces overlapping numeric `llm_extracted` rows with `doe_numbered_table_row` rows.
 - A residual `+2` remains at final output because two non-table LLM rows were still retained, so the patch is not yet a broad DOE rollout authorization.

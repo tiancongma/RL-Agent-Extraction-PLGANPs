@@ -102,6 +102,24 @@ Conceptual definition:
 - the descendant row carries downstream usage or measurement context
 - the descendant is therefore excluded from final identity closure
 
+Additional helper-descendant safeguard:
+
+- Stage5 must also filter parent-linked helper descendants when existing
+  downstream-visible signals already show that the row is a control,
+  characterization, or assay/helper derivative even if Stage2 routing tags
+  regressed.
+- This safeguard intentionally keeps Stage2 frozen for the `BXCV5XWB`-class
+  failure. The rule uses existing preserved signals such as:
+  - `formulation_role`
+  - `payload_state`
+  - `instance_context_tags`
+  - parent linkage
+  - raw label text and change-description text that indicate blank/no-drug or
+    model-drug substitution behavior
+- The rule is not keyword-only and is not paper-specific. It requires a parent
+  link plus helper-descendant semantics that do not define an independent
+  synthesis identity.
+
 ### Constraint 2: Shared/comparative summaries are not independent identities
 
 When a row is unparented but is explicitly tagged as a shared-condition summary
@@ -169,8 +187,11 @@ Additional regression protection:
 - This deterministic checker reruns Stage5 against frozen artifact inputs and
   asserts both:
   - `BB3JUVW7` retains all `12` benchmark-facing final rows
+  - `BXCV5XWB` retains only the `3` KGN benchmark-facing rows
+  - `RHMJWZX8` drops its parent-linked empty-control helper row
   - known descendant/control rows from existing blocker material remain
     filtered
+  - `WIVUCMYG` remains stable at `26`
 
 ## Current Limits
 

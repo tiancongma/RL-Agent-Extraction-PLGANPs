@@ -476,6 +476,63 @@ def is_ambiguous_sweep_style_variant(row: dict[str, str]) -> bool:
     )
 
 
+def has_explicit_helper_descendant_signal(row: dict[str, str], core_fields: dict[str, str]) -> bool:
+    tags = row_context_tags(row)
+    payload_state = infer_payload_state(row, core_fields)
+    label_blob = " ".join(
+        [
+            normalize_text(row.get("raw_formulation_label")),
+            normalize_text(row.get("source_raw_formulation_label")),
+            normalize_text(row.get("formulation_id")),
+            normalize_text(row.get("source_formulation_id")),
+            normalize_text(row.get("drug_name_value")),
+        ]
+    )
+    change_blob = " ".join(
+        normalize_text(text)
+        for text in parse_json_list(row.get("change_descriptions"))
+    )
+
+    explicit_helper_payload = payload_state in {"blank_control", "fitc_assay_loaded"}
+    explicit_helper_tags = not tags.isdisjoint(
+        {
+            "control",
+            "characterization_only",
+            "model_drug_substitution",
+            "measurement_context",
+        }
+    )
+    explicit_helper_text = any(
+        phrase in label_blob or phrase in change_blob
+        for phrase in [
+            "blank",
+            "empty",
+            "without kgn",
+            "no drug",
+            "no drug loaded",
+            "replaced with fitc",
+            "fitc",
+            "control experiment",
+            "control experiments",
+            "flow cytometry",
+            "confocal",
+            "tem imaging",
+            "uptake studies",
+        ]
+    )
+
+    # Stage2 is intentionally frozen for this regression class. Some replayed
+    # artifacts still preserve enough helper-descendant semantics in labels,
+    # descriptions, payload, and context tags even when the primary routing tags
+    # regress from `candidate_non_formulation/non_synthesis` to
+    # `variant_formulation/synthesis_defining`. Stage5 must use those preserved
+    # downstream-visible signals to prevent benchmark-facing over-retention of
+    # helper descendants such as blank controls and assay-only model-drug
+    # substitutions. This is a general semantic safeguard, not a paper-specific
+    # exception.
+    return explicit_helper_payload or explicit_helper_tags or explicit_helper_text
+
+
 def should_filter_non_formulation(
     row: dict[str, str], core_fields: dict[str, str]
 ) -> tuple[bool, str, str]:
@@ -489,7 +546,6 @@ def should_filter_non_formulation(
     if (
         normalize_text(row.get("instance_kind")) == "variant_formulation"
         and bool(str(row.get("parent_instance_id", "") or "").strip())
-        and normalize_text(row.get("change_role")) == "non_synthesis"
     ):
         # Contract-level identity behavior for DEV15_v2:
         # parent-linked non-synthesis descendants in downstream/control/
@@ -497,19 +553,26 @@ def should_filter_non_formulation(
         # formulation identities.
         tags = row_context_tags(row)
         formulation_role = normalize_text(row.get("formulation_role"))
-        if formulation_role in {"control", "characterization_only"}:
+        helper_descendant_signals = has_explicit_helper_descendant_signal(row, core_fields)
+        non_synthesis_descendant = normalize_text(row.get("change_role")) == "non_synthesis"
+        helper_role_match = formulation_role in {"control", "characterization_only"}
+        helper_context_match = helper_descendant_signals and (
+            formulation_role == "comparative"
+            or not tags.isdisjoint({"control", "characterization_only", "model_drug_substitution"})
+        )
+        if (helper_role_match or helper_context_match) and (non_synthesis_descendant or helper_descendant_signals):
             return (
                 True,
                 "parent_linked_non_synthesis_descendant_variant",
                 "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
             )
-        if not tags.isdisjoint({"measurement_context", "in_vivo", "pharmacokinetics"}):
+        if non_synthesis_descendant and not tags.isdisjoint({"measurement_context", "in_vivo", "pharmacokinetics"}):
             return (
                 True,
                 "parent_linked_non_synthesis_descendant_variant",
                 "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
             )
-        if "post_processing" in tags and not is_ambiguous_sweep_style_variant(row):
+        if non_synthesis_descendant and "post_processing" in tags and not is_ambiguous_sweep_style_variant(row):
             return (
                 True,
                 "parent_linked_non_synthesis_descendant_variant",

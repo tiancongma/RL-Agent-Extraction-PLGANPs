@@ -113,22 +113,53 @@ def main() -> None:
             count_paper_rows(full_final_rows, "WIVUCMYG") == 26,
             f"WIVUCMYG final count expected 26, observed {count_paper_rows(full_final_rows, 'WIVUCMYG')}",
         )
+        assert_condition(
+            count_paper_rows(full_final_rows, "BXCV5XWB") == 3,
+            f"BXCV5XWB final count expected 3, observed {count_paper_rows(full_final_rows, 'BXCV5XWB')}",
+        )
+        assert_condition(
+            count_paper_rows(full_final_rows, "RHMJWZX8") == 1,
+            f"RHMJWZX8 final count expected 1, observed {count_paper_rows(full_final_rows, 'RHMJWZX8')}",
+        )
 
         blocker_expect_filtered = {
             ("BXCV5XWB", "F1_Blank"),
             ("BXCV5XWB", "F1_FITC"),
+            ("BXCV5XWB", "F2_Blank"),
+            ("BXCV5XWB", "F2_FITC"),
+            ("BXCV5XWB", "F3_Blank"),
+            ("BXCV5XWB", "F3_FITC"),
             ("QLYKLPKT", "T3_F1_Sucrose_2_percent"),
             ("QLYKLPKT", "T4_F1_OptimalPLGA_ITZ_NS_PK"),
+        }
+        full_expect_filtered = {
+            ("BXCV5XWB", "PLGA-NP-Blank-01"),
+            ("BXCV5XWB", "PLGA-NP-FITC-01"),
+            ("BXCV5XWB", "PLGA-PEG-NP-Blank-01"),
+            ("BXCV5XWB", "PLGA-PEG-NP-FITC-01"),
+            ("BXCV5XWB", "PLGA-PEG-HA-NP-Blank-01"),
+            ("BXCV5XWB", "PLGA-PEG-HA-NP-FITC-01"),
+            ("RHMJWZX8", "Formulation_2"),
         }
         filtered_pairs = {
             (row.get("zotero_key", "").strip(), row.get("source_formulation_id", "").strip())
             for row in blocker_decision_rows
             if row.get("decision_rule") == "parent_linked_non_synthesis_descendant_variant"
         }
+        full_filtered_pairs = {
+            (row.get("zotero_key", "").strip(), row.get("source_formulation_id", "").strip())
+            for row in full_decision_rows
+            if row.get("decision_rule") == "parent_linked_non_synthesis_descendant_variant"
+        }
         for pair in blocker_expect_filtered:
             assert_condition(
                 pair in filtered_pairs,
                 f"Expected descendant row to remain filtered: {pair[0]}::{pair[1]}",
+            )
+        for pair in full_expect_filtered:
+            assert_condition(
+                pair in full_filtered_pairs,
+                f"Expected helper descendant row to be filtered in full DEV15 replay: {pair[0]}::{pair[1]}",
             )
 
         print(
@@ -137,8 +168,13 @@ def main() -> None:
                     "status": "ok",
                     "bb3juvw7_final_count": len(bb_rows),
                     "bb3juvw7_restored_ids": sorted(expected_bb_ids),
+                    "bxcv5xwb_final_count": count_paper_rows(full_final_rows, "BXCV5XWB"),
+                    "rhmjwzx8_final_count": count_paper_rows(full_final_rows, "RHMJWZX8"),
                     "wivucmyg_final_count": count_paper_rows(full_final_rows, "WIVUCMYG"),
                     "negative_control_rows_still_filtered": sorted(f"{paper}::{fid}" for paper, fid in blocker_expect_filtered),
+                    "helper_descendant_rows_filtered_in_full_replay": sorted(
+                        f"{paper}::{fid}" for paper, fid in full_expect_filtered
+                    ),
                     "temp_root": str(temp_root),
                 },
                 ensure_ascii=False,
