@@ -44,6 +44,7 @@ from typing import Any
 import pandas as pd
 
 from src.utils.paths import DATA_CLEANED_DIR, DATA_RESULTS_DIR
+from src.utils.run_id import validate_artifact_subdir
 
 
 ARTIFACT_NAME = "numbered_doe_row_candidates_v1.tsv"
@@ -84,12 +85,7 @@ def validate_run_id(run_id: str) -> str:
 
 
 def validate_out_subdir(out_subdir: str) -> str:
-    token = str(out_subdir or "").strip().strip("/\\")
-    if not token:
-        raise ValueError("out_subdir must not be empty")
-    if re.search(r"[<>:\"|?*]", token):
-        raise ValueError(f"out_subdir contains invalid path characters: {token}")
-    return token.replace("\\", "/")
+    return validate_artifact_subdir(out_subdir, param_name="out_subdir")
 
 
 def load_manifest(manifest_tsv: Path, paper_keys: list[str]) -> list[PaperRecord]:

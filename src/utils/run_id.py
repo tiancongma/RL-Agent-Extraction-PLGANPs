@@ -10,10 +10,44 @@ from datetime import datetime
 from pathlib import Path
 
 RUN_ID_REGEX = r"^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$"
+RUN_TOKEN_FRAGMENT_REGEX = r"(?:^|_)run_\d{8}_\d{4}_[0-9a-f]{7}(?:_|$)"
+TIMESTAMP_HASH_FRAGMENT_REGEX = r"(?:^|_)\d{8}_\d{4}_[0-9a-f]{7}(?:_|$)"
 
 
 def is_valid_run_id(s: str) -> bool:
     return bool(re.fullmatch(RUN_ID_REGEX, str(s or "").strip()))
+
+
+def validate_artifact_subdir(subdir: str, *, param_name: str = "out-subdir") -> str:
+    """
+    Validate a run-scoped artifact subdirectory under data/results/<run_id>/.
+
+    Contract:
+    - run_id appears exactly once at the run root
+    - nested artifact directories must not repeat a run_id or timestamp/hash token
+    - nested directories describe functional layout only
+    """
+    value = str(subdir or "").strip().replace("\\", "/")
+    if not value:
+        raise ValueError(f"{param_name} is required.")
+    if Path(value).is_absolute():
+        raise ValueError(f"{param_name} must be a relative path.")
+    parts = [part.strip() for part in value.split("/") if part.strip()]
+    if not parts or any(part == ".." for part in parts):
+        raise ValueError(f"{param_name} cannot contain path traversal.")
+    for part in parts:
+        lowered = part.lower()
+        if is_valid_run_id(lowered):
+            raise ValueError(
+                f"{param_name} must not repeat a run_id below data/results/<run_id>/: {part}"
+            )
+        if re.search(RUN_TOKEN_FRAGMENT_REGEX, lowered) or re.search(TIMESTAMP_HASH_FRAGMENT_REGEX, lowered):
+            raise ValueError(
+                f"{param_name} must not embed timestamp/hash or nested run_id tokens: {part}"
+            )
+        if re.search(r'[<>:"|?*]', part):
+            raise ValueError(f"{param_name} contains invalid path characters: {part}")
+    return "/".join(parts)
 
 
 def sanitize_token(s: str) -> str:

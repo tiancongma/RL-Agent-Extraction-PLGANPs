@@ -109,6 +109,21 @@ All results must be organized by run_id.
 Run IDs must be generated via `python -m src.utils.run_id ...` (or the same underlying function in code), never by manual string concatenation.
 Valid run_id regex: `^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$`.
 
+Run-root uniqueness rule:
+
+- each run has exactly one run root directory named by `run_id`
+- artifact subdirectories under that run root must not repeat:
+  - the full `run_id`
+  - timestamp/hash fragments such as `20260320_1317_f54824a`
+- subdirectories under a run root must describe functional layout only, for
+  example:
+  - `analysis/`
+  - `outputs/`
+  - `audit/`
+  - `fgt_v3_dev15_v2/`
+- if an output unit needs its own independent rerun identity, it must be a
+  separate run with its own `run_id`, not a nested artifact folder
+
 ## Cleaned Asset Layout (Dataset-Scoped)
 
 Canonical rule: cleaned assets are dataset-scoped and reusable across runs, under:
@@ -145,6 +160,8 @@ Compatibility rule: first line must be exactly the run_id. Additional metadata l
 - Entry scripts must not generate run_id internally.
 - Reuse/new policy is determined only by `python -m src.utils.run_preflight ...`.
 - Reused work must specify `--out-subdir`; outputs must go under `data/results/<run_id>/<out-subdir>/...`.
+- `--out-subdir` is a functional artifact path only and must not encode a
+  nested run identifier or timestamp/hash token.
 
 ---
 

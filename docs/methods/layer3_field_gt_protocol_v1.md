@@ -68,6 +68,14 @@ The active Layer 3 review workbook currently uses these reviewer-facing rules:
 - keep the original `formulation_id` plus two helper identity columns:
   - `formulation_label_stage5`
   - `formulation_label_params`
+- keep article-native formulation identifiers visible as reviewer aids:
+  - `article_formulation_id`
+  - `article_formulation_label`
+- never replace the canonical system identity with article-native labels
+- keep Layer 2 paper-risk metadata visible on the review surface when
+  `analysis/paper_risk_assessment.tsv` is provided:
+  - `paper_risk_level`
+  - `layer3_inclusion_flag`
 - keep the review sheet narrow enough for manual review by freezing the
   identity block before `field_name`
 - if `extracted_value` is blank, leave `evidence_text` blank and mark
@@ -77,6 +85,123 @@ The active Layer 3 review workbook currently uses these reviewer-facing rules:
 - if a text-derived field cannot be supported by a value-matching sentence,
   mark `evidence_source_type=unsupported_text` and do not keep misleading
   paragraph text
+- preserve the closest available evidence anchor separately from direct support:
+  - `evidence_text` remains reserved for direct value support
+  - `evidence_anchor_text` may carry the closest reviewer-useful source anchor
+    when direct support is missing
+  - `evidence_anchor_text` must remain blank when the only available anchor is
+    a broad row-level span with no field-local relationship to the seeded field
+  - `evidence_status_detail` distinguishes:
+    - `supported`
+    - `unsupported_text`
+    - `unresolved_table`
+    - `derived_without_direct_text`
+    - `missing_evidence_anchor`
+- apply field-aware support checks for structured fields so `LA/GA` and
+  `polymer_MW` are not marked supported by unrelated numeric text
+- when a field is surfaced as `relation_resolved`, preserve the Stage 3
+  relation-resolution provenance in the seed/reference layer instead of
+  reusing representative row-level anchors as if they were direct support
+- do not surface polymer grade/product-code text as if it were a molecular-
+  weight value in the `polymer_MW` review row
+- mark raw-mass concentration rows with `normalization_pending` instead of
+  implying a safe normalized concentration
+- keep risk metadata review-only:
+  - risk labels may guide Layer 3 review priority
+  - risk labels must not change frozen formulation identity or benchmark counts
+
+### Layer 3 Evidence Handoff Contract
+
+#### Purpose
+
+The Layer 3 workbook must faithfully represent field-level values together with
+their evidence support status and provenance.
+
+It must not introduce weaker or misleading evidence representations than the
+stronger evidence/QC safeguards already present upstream in the repository.
+
+#### Scope
+
+This contract applies to reviewer-facing Layer 3 outputs, including:
+
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
+- any future Layer 3 audit/export builders that surface field-level evidence
+
+This contract does not modify:
+
+- Stage 2 extraction semantics
+- Stage 3 relation semantics
+- Stage 5 identity logic or final row membership
+- benchmark-valid outputs
+
+#### Required Behaviors
+
+Hard constraints:
+
+- field-local evidence must be preferred over row-level representative spans
+- if no field-local evidence exists:
+  - `evidence_anchor_text` must be empty
+  - `evidence_status_detail` must reflect `missing_evidence_anchor` or an
+    equally explicit no-anchor state
+- broad non-local text must not be surfaced as field evidence
+- structured fields must not be validated using generic numeric-token matching
+- field-aware matching must be used for:
+  - `LA/GA`
+  - `polymer_MW`
+  - other structured numeric fields added later
+- relation-resolved values must carry provenance such as:
+  - `relation_resolution_rule`
+  - `relation_resolution_confidence`
+  - `relation_resolution_source_ids`
+- reviewer-facing outputs must preserve:
+  - `extracted_value`
+  - `evidence_text` only when direct support exists
+  - `evidence_status_detail`
+  - provenance metadata
+
+#### Prohibited Behaviors
+
+- treating row-level `supporting_evidence_refs` as implicit field-level support
+- displaying unrelated or weak-context spans as `evidence_anchor_text`
+- marking structured fields as supported based only on shared numeric tokens
+- silently replacing stronger upstream evidence/QC classifications with weaker
+  local workbook heuristics
+
+#### Relationship To Upstream QC
+
+If stronger evidence/QC artifacts exist, such as
+`src/stage5_benchmark/run_evidence_token_qc_v1.py`, Layer 3 must:
+
+- either consume them directly
+- or avoid contradicting them
+
+Workbook-layer logic must not degrade upstream evidence classification or
+present weaker row-level heuristics as stronger field support.
+
+#### Golden Regression Cases
+
+The contract is regression-protected by:
+
+- golden case definitions:
+  - `docs/methods/layer3_evidence_handoff_golden_cases_v1.tsv`
+- lightweight validator:
+  - `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py`
+
+Minimum golden behaviors:
+
+- `5GIF3D8W`, `polymer_MW=10.0 kDa`
+  - extracted value present
+  - empty `evidence_anchor_text`
+  - `evidence_status_detail=missing_evidence_anchor`
+  - non-empty `relation_resolution_rule`
+- `5GIF3D8W`, `LA/GA=75/25`
+  - must not be supported by unrelated text containing `50 mg`
+- `5ZXYABSU`, polymer grade vs `polymer_MW`
+  - grade text must not surface as `polymer_MW`
+  - reviewer warning must stay explicit
+- broad row-level span only
+  - must not surface as `evidence_anchor_text`
 
 Best candidates to update and reuse for an active Layer 3 path:
 
@@ -433,3 +558,11 @@ The active Layer 3 workbook uses a strict evidence-binding policy:
 - do not fall back from a table-derived field to an arbitrary paragraph span
 - text-derived fields should prefer a sentence containing the extracted value
   rather than a generic full-span paragraph
+- structured fields such as `LA/GA` and `polymer_MW` must use field-aware
+  support checks rather than generic numeric-token-only matching
+- if a direct supporting anchor cannot be justified from existing frozen
+  artifacts, keep `evidence_anchor_text` blank and let
+  `evidence_status_detail` carry the downgrade
+- if a field was materialized as `relation_resolved`, carry Stage 3
+  relation-resolution metadata into the seed/reference export and do not treat
+  representative row-level spans as field-local direct support by default

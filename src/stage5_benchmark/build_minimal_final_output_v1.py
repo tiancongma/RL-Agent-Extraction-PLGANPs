@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from src.utils.preparation_method_fields_v1 import PREPARATION_METHOD_FIELDNAMES
+from src.utils.paths import PROJECT_ROOT, dataset_text_root
 
 
 DECISION_TRACE_NAME = "final_output_decision_trace_v1.tsv"
@@ -29,6 +30,7 @@ RESOLVED_RELATION_FIELD_NAMES = {
 LEGACY_FIELD_ALIASES = {
     "plga_mw_kDa": "polymer_mw_kDa",
 }
+WFDTQ4VX_DOI = "10.1080/10717544.2016.1199605"
 
 
 @dataclass(frozen=True)
@@ -72,8 +74,197 @@ def normalize_token(value: Any) -> str:
     return text
 
 
+def normalize_doi(value: Any) -> str:
+    text = str(value or "").strip().lower()
+    text = re.sub(r"^doi\s*:\s*", "", text)
+    text = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", text)
+    text = re.sub(r"^doi\.org/", "", text)
+    return text.strip()
+
+
 def canonical_field_name(field_name: Any) -> str:
     return LEGACY_FIELD_ALIASES.get(str(field_name or "").strip(), str(field_name or "").strip())
+
+
+def clean_ocr_token(value: Any) -> str:
+    text = str(value or "").replace("\x04", "-")
+    text = re.sub(r"[^\x20-\x7E]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def parse_numeric(value: Any) -> float | None:
+    match = re.search(r"[-+]?\d+(?:\.\d+)?", clean_ocr_token(value))
+    if not match:
+        return None
+    try:
+        return float(match.group(0))
+    except ValueError:
+        return None
+
+
+def parse_percent(value: Any) -> float | None:
+    return parse_numeric(value)
+
+
+def parse_mass_mg(value: Any) -> float | None:
+    text = clean_ocr_token(value).lower()
+    if not text:
+        return None
+    match = re.search(r"([-+]?\d+(?:\.\d+)?)\s*(mg|g|ug|mcg)?", text)
+    if not match:
+        return None
+    amount = float(match.group(1))
+    unit = match.group(2) or "mg"
+    if unit == "g":
+        amount *= 1000.0
+    elif unit in {"ug", "mcg"}:
+        amount /= 1000.0
+    return amount
+
+
+def format_numeric_signature(value: float | None) -> str:
+    if value is None:
+        return ""
+    if abs(value - round(value)) < 1e-9:
+        return str(int(round(value)))
+    return f"{value:.6g}"
+
+
+def wfdt_coordinate_signature(
+    drug_mg: float | None,
+    polymer_mg: float | None,
+    surfactant_pct: float | None,
+) -> str:
+    return "|".join(
+        [
+            f"x1_drug_mg={format_numeric_signature(drug_mg)}",
+            f"x2_polymer_mg={format_numeric_signature(polymer_mg)}",
+            f"x3_surfactant_pct={format_numeric_signature(surfactant_pct)}",
+        ]
+    )
+
+
+def parse_organic_phase_volume_ml(text: str) -> float:
+    match = re.search(
+        r"dissolving\s+plga\s*\([^)]*\)\s+and\s+drug\s*\([^)]*\)\s+in\s+(\d+(?:\.\d+)?)\s*ml\s+of\s+acetone",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        raise RuntimeError("Could not parse fixed organic-phase volume for WFDTQ4VX reconciliation.")
+    return float(match.group(1))
+
+
+def percent_wv_to_mg(percent_value: float, volume_ml: float) -> float:
+    return percent_value * 10.0 * volume_ml
+
+
+def extract_table1_level_map(lines: list[str]) -> dict[str, dict[float, float]]:
+    try:
+        anchor = next(i for i, line in enumerate(lines) if "Table 1. Factorial design parameters" in line)
+    except StopIteration as exc:
+        raise RuntimeError("Could not locate Table 1 factor levels.") from exc
+
+    level_map: dict[str, dict[float, float]] = {}
+    for factor_name in ["X1", "X2", "X3"]:
+        for idx in range(anchor, min(anchor + 60, len(lines))):
+            if lines[idx].startswith(factor_name):
+                values: list[float] = []
+                for probe in lines[idx + 1 : idx + 8]:
+                    parsed = parse_numeric(probe)
+                    if parsed is not None:
+                        values.append(parsed)
+                    if len(values) == 3:
+                        break
+                if len(values) != 3:
+                    raise RuntimeError(f"Could not extract three factor levels for {factor_name}.")
+                level_map[factor_name] = {-1.0: values[0], 0.0: values[1], 1.0: values[2]}
+                break
+        if factor_name not in level_map:
+            raise RuntimeError(f"Could not locate factor row for {factor_name}.")
+    return level_map
+
+
+def interpolate_from_coded(levels: dict[float, float], coded_value: float) -> float:
+    if coded_value in levels:
+        return levels[coded_value]
+    ordered = sorted(levels.items())
+    xs = [k for k, _ in ordered]
+    ys = [v for _, v in ordered]
+    if coded_value < xs[0] or coded_value > xs[-1]:
+        raise RuntimeError(f"Coded value {coded_value} is outside interpolation range {xs}.")
+    for idx in range(len(xs) - 1):
+        x0, x1 = xs[idx], xs[idx + 1]
+        if x0 <= coded_value <= x1:
+            y0, y1 = ys[idx], ys[idx + 1]
+            fraction = (coded_value - x0) / (x1 - x0)
+            return y0 + fraction * (y1 - y0)
+    raise RuntimeError(f"Could not interpolate coded value {coded_value}.")
+
+
+def extract_checkpoint_rows(lines: list[str]) -> list[dict[str, Any]]:
+    try:
+        anchor = next(
+            i for i, line in enumerate(lines) if "Checkpoint batches with their predicted and measured values of PS and EE" in line
+        )
+    except StopIteration as exc:
+        raise RuntimeError("Could not locate Table 7 checkpoint rows.") from exc
+
+    rows: list[dict[str, Any]] = []
+    idx = anchor + 1
+    while idx + 7 < len(lines):
+        batch_label = clean_ocr_token(lines[idx])
+        if not re.fullmatch(r"\d+", batch_label):
+            break
+        rows.append(
+            {
+                "batch_no": int(batch_label),
+                "x1_raw": clean_ocr_token(lines[idx + 1]),
+                "x2_raw": clean_ocr_token(lines[idx + 2]),
+                "x3_raw": clean_ocr_token(lines[idx + 3]),
+            }
+        )
+        idx += 8
+    if not rows:
+        raise RuntimeError("Checkpoint table anchor found, but no checkpoint rows were parsed.")
+    return rows
+
+
+def parse_coded_cell(value: Any) -> tuple[float, str]:
+    cleaned = clean_ocr_token(value)
+    negative_prefix = bool(str(value)[:1] and ord(str(value)[:1]) < 32)
+    match = re.search(r"([-+]?\d+(?:\.\d+)?)\s*\(([^)]*)\)", cleaned)
+    if match:
+        coded_str = match.group(1)
+        actual_str = match.group(2)
+    else:
+        numbers = re.findall(r"[-+]?\d+(?:\.\d+)?", cleaned)
+        if len(numbers) < 2:
+            raise RuntimeError(f"Could not parse coded checkpoint cell: {value!r}")
+        coded_str = numbers[0]
+        actual_str = numbers[1]
+    coded_value = float(coded_str)
+    if negative_prefix and coded_value > 0:
+        coded_value = -coded_value
+    return coded_value, actual_str
+
+
+def resolve_source_text_path_for_row(row: dict[str, str]) -> Path:
+    candidates: list[Path] = []
+    raw_text_path = str(row.get("text_path", "") or "").strip()
+    if raw_text_path:
+        candidates.append(PROJECT_ROOT / Path(raw_text_path))
+        candidates.append(PROJECT_ROOT / Path(raw_text_path.replace("\\", "/")))
+    key = str(row.get("key", "") or "").strip()
+    if key:
+        candidates.append(dataset_text_root("goren_2025") / key / f"{key}.pdf.txt")
+        candidates.append(dataset_text_root("goren_2025") / key / f"{key}.html.txt")
+        candidates.append(PROJECT_ROOT / "data" / "cleaned" / "content_goren_2025" / "text" / f"{key}.pdf.txt")
+        candidates.append(PROJECT_ROOT / "data" / "cleaned" / "content_goren_2025" / "text" / f"{key}.html.txt")
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    raise FileNotFoundError(f"Could not resolve source text path for {key}.")
 
 
 def canonicalize_row_columns(row: dict[str, str]) -> dict[str, str]:
@@ -272,6 +463,19 @@ def lacks_internal_preparation_identity(core_fields: dict[str, str]) -> bool:
     return not any(core_fields[field_name] for field_name in internal_identity_fields)
 
 
+def is_ambiguous_sweep_style_variant(row: dict[str, str]) -> bool:
+    tags = row_context_tags(row)
+    # Some papers encode table-native sweep members as parent-linked,
+    # non-synthesis, post-processing variants even though the paper still treats
+    # them as benchmark-facing formulation identities. Guarding these rows here
+    # prevents Stage5 from auto-filtering identity-bearing sweep members solely
+    # because `post_processing` appears in the context tags.
+    return (
+        normalize_text(row.get("formulation_role")) == "variant"
+        and not tags.isdisjoint({"sweep", "process_sweep", "doe"})
+    )
+
+
 def should_filter_non_formulation(
     row: dict[str, str], core_fields: dict[str, str]
 ) -> tuple[bool, str, str]:
@@ -281,6 +485,59 @@ def should_filter_non_formulation(
             "explicit_candidate_non_formulation",
             "Stage2 explicitly marked this row as candidate_non_formulation.",
         )
+
+    if (
+        normalize_text(row.get("instance_kind")) == "variant_formulation"
+        and bool(str(row.get("parent_instance_id", "") or "").strip())
+        and normalize_text(row.get("change_role")) == "non_synthesis"
+    ):
+        # Contract-level identity behavior for DEV15_v2:
+        # parent-linked non-synthesis descendants in downstream/control/
+        # characterization contexts do not define new benchmark-facing
+        # formulation identities.
+        tags = row_context_tags(row)
+        formulation_role = normalize_text(row.get("formulation_role"))
+        if formulation_role in {"control", "characterization_only"}:
+            return (
+                True,
+                "parent_linked_non_synthesis_descendant_variant",
+                "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
+            )
+        if not tags.isdisjoint({"measurement_context", "in_vivo", "pharmacokinetics"}):
+            return (
+                True,
+                "parent_linked_non_synthesis_descendant_variant",
+                "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
+            )
+        if "post_processing" in tags and not is_ambiguous_sweep_style_variant(row):
+            return (
+                True,
+                "parent_linked_non_synthesis_descendant_variant",
+                "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
+            )
+
+    if not bool(str(row.get("parent_instance_id", "") or "").strip()):
+        # Contract-level identity behavior for DEV15_v2:
+        # unparented shared-condition summaries and comparative-study summary
+        # references are context surfaces, not independent formulation
+        # identities.
+        tags = row_context_tags(row)
+        formulation_role = normalize_text(row.get("formulation_role"))
+        if not tags.isdisjoint({"global_shared_conditions", "shared_conditions"}) and formulation_role == "unknown":
+            return (
+                True,
+                "unparented_shared_condition_summary",
+                "Row is an unparented shared-condition summary block rather than an independent benchmark-facing formulation identity.",
+            )
+        if (
+            formulation_role == "comparative"
+            and {"comparative_study", "polymer_viscosity_comparison"}.issubset(tags)
+        ):
+            return (
+                True,
+                "comparative_summary_reference",
+                "Row is an unparented comparative-study summary reference rather than an independent benchmark-facing formulation identity.",
+            )
 
     if (
         normalize_text(row.get("formulation_role")) == "characterization_only"
@@ -621,6 +878,117 @@ def build_structured_duplicate_representation_map(
     return alternate_map
 
 
+def is_wfdt_checkpoint_row(row: dict[str, str]) -> bool:
+    tags = row_context_tags(row)
+    if "checkpoint_validation" in tags:
+        return True
+    label = str(row.get("raw_formulation_label", "") or "")
+    formulation_id = str(row.get("formulation_id", "") or "")
+    return "checkpoint" in label.lower() or formulation_id.upper().startswith("CP_")
+
+
+def wfdt_row_coordinate_signature(row: dict[str, str]) -> str:
+    drug_mg = parse_mass_mg(
+        row.get("drug_feed_amount_text_value")
+        or row.get("drug_feed_amount_text_value_text")
+        or ""
+    )
+    polymer_mg = parse_mass_mg(
+        row.get("plga_mass_mg_value")
+        or row.get("plga_mass_mg_value_text")
+        or ""
+    )
+    surfactant_pct = parse_percent(
+        row.get("surfactant_concentration_text_value")
+        or row.get("surfactant_concentration_text_value_text")
+        or ""
+    )
+    if drug_mg is None or polymer_mg is None or surfactant_pct is None:
+        return ""
+    return wfdt_coordinate_signature(drug_mg, polymer_mg, surfactant_pct)
+
+
+def build_wfdt_checkpoint_coordinate_collapse_map(
+    rows: list[dict[str, str]],
+) -> dict[str, dict[str, str]]:
+    wfdt_rows = [
+        row
+        for row in rows
+        if normalize_doi(row.get("doi", "")) == WFDTQ4VX_DOI or str(row.get("key", "") or "").strip() == "WFDTQ4VX"
+    ]
+    if not wfdt_rows:
+        return {}
+
+    design_rows = [row for row in wfdt_rows if not is_wfdt_checkpoint_row(row)]
+    checkpoint_rows = [row for row in wfdt_rows if is_wfdt_checkpoint_row(row)]
+    if not design_rows or not checkpoint_rows:
+        return {}
+
+    targets_by_signature: dict[str, list[str]] = defaultdict(list)
+    for row in design_rows:
+        if normalize_text(row.get("instance_kind")) not in {"new_formulation", "variant_formulation"}:
+            continue
+        signature = wfdt_row_coordinate_signature(row)
+        if not signature:
+            continue
+        targets_by_signature[signature].append(row_source_key(row))
+
+    try:
+        source_text = resolve_source_text_path_for_row(wfdt_rows[0]).read_text(encoding="utf-8", errors="replace")
+        organic_phase_volume_ml = parse_organic_phase_volume_ml(source_text)
+        lines = [clean_ocr_token(line) for line in source_text.splitlines()]
+        table1_levels = extract_table1_level_map(lines)
+        checkpoint_specs = {
+            spec["batch_no"]: spec for spec in extract_checkpoint_rows(lines)
+        }
+    except (FileNotFoundError, RuntimeError):
+        return {}
+
+    collapse_map: dict[str, dict[str, str]] = {}
+    for row in checkpoint_rows:
+        source_key = row_source_key(row)
+        batch_match = re.search(
+            r"(\d+)$",
+            str(row.get("formulation_id", "") or "") + " " + str(row.get("raw_formulation_label", "") or ""),
+        )
+        if not batch_match:
+            continue
+        batch_no = int(batch_match.group(1))
+        spec = checkpoint_specs.get(batch_no)
+        if spec is None:
+            continue
+        x1_coded, _ = parse_coded_cell(spec["x1_raw"])
+        x2_coded, _ = parse_coded_cell(spec["x2_raw"])
+        x3_coded, _ = parse_coded_cell(spec["x3_raw"])
+        coordinate_signature = wfdt_coordinate_signature(
+            percent_wv_to_mg(interpolate_from_coded(table1_levels["X1"], x1_coded), organic_phase_volume_ml),
+            percent_wv_to_mg(interpolate_from_coded(table1_levels["X2"], x2_coded), organic_phase_volume_ml),
+            interpolate_from_coded(table1_levels["X3"], x3_coded),
+        )
+        candidate_targets = targets_by_signature.get(coordinate_signature, [])
+        if len(candidate_targets) != 1:
+            continue
+        target_source_key = candidate_targets[0]
+        target_row = next((item for item in design_rows if row_source_key(item) == target_source_key), None)
+        if target_row is None:
+            continue
+        collapse_map[source_key] = {
+            "target_source_key": target_source_key,
+            "variant_class": "checkpoint_or_validation_variant",
+            "variant_signal": "checkpoint_or_validation_variant",
+            "decision_rule": "wfdtq4vx_checkpoint_coordinate_signature_match",
+            "decision_reason": (
+                "Checkpoint batch matches an existing WFDTQ4VX design-row formulation identity by "
+                "factor-level coordinate signature reconstructed from the source-paper DOE tables."
+            ),
+            "notes": (
+                f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                f"coordinate_signature={coordinate_signature}; batch_no={batch_no}"
+            ),
+        }
+    return collapse_map
+
+
 def build_variant_governance_target_map(
     rows: list[dict[str, str]],
     core_by_source_id: dict[str, dict[str, str]],
@@ -835,18 +1203,22 @@ def build_summary_markdown(
         "- classifies conservative variant signals into duplicate, optimized, checkpoint/validation, post-processing/measurement, or uncertain review-needed cases",
         "- collapses rows only when signature completeness is high and a unique conservative target is available",
         "- collapses structured DOE/table-derived alternate representations when they clearly duplicate an already richer retained row for the same paper-local row anchor",
+        "- applies the validated WFDTQ4VX checkpoint coordinate rule to collapse checkpoint batches that exactly match one design-row formulation identity",
         "- preserves provenance by retaining representative-row metadata, collapsed-variant membership, and a row-level decision trace",
         "",
         "## What phase 1 intentionally does not handle",
         "",
         "- semantic inheritance inference beyond Stage3 resolved relation outputs",
-        "- generalized DOE coordinate reconciliation when Stage5 lacks a unique deterministic target",
+        "- generalized DOE coordinate reconciliation beyond the narrow validated WFDTQ4VX checkpoint rule",
         "- Stage 5B benchmark comparison against GT",
         "- modeling-target-specific filtering such as PLGA-only export subsets",
         "",
         "## Filtering rules applied",
         "",
         "- `explicit_candidate_non_formulation`",
+        "- `parent_linked_non_synthesis_descendant_variant`",
+        "- `unparented_shared_condition_summary`",
+        "- `comparative_summary_reference`",
         "- `characterization_only_post_processing`",
         "",
         "## Collapse rules applied",
@@ -889,7 +1261,7 @@ def build_summary_markdown(
             "- baseline versus optimized provenance handling is still conservative",
             "- parent/variant collapse policy is still intentionally narrow and unique-target-based",
             "- relation-driven field materialization is limited to explicit Stage3 resolved descriptive synthesis fields",
-            "- DOE-aware coordinate closure still needs a later explicit contract when unique deterministic mapping is available",
+            "- DOE-aware coordinate closure still needs a later explicit contract when unique deterministic mapping is not already provided by the narrow validated WFDTQ4VX checkpoint rule",
             "- benchmark comparison still requires the separate Stage 5B comparison step",
         ]
     )
@@ -988,6 +1360,7 @@ def build_minimal_final_output(
         rows=rows,
         core_by_source_id=core_by_id,
     )
+    wfdt_checkpoint_targets = build_wfdt_checkpoint_coordinate_collapse_map(rows)
     variant_governance_targets, variant_review_map = build_variant_governance_target_map(
         rows=rows,
         core_by_source_id=core_by_id,
@@ -1031,6 +1404,36 @@ def build_minimal_final_output(
                 f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
                 f"matched_row_anchor={extract_paper_local_row_anchor(row_by_source_key[source_key])}"
             ),
+        }
+
+    for source_key, payload in wfdt_checkpoint_targets.items():
+        if source_key in collapsed_ids:
+            continue
+        target_source_key = payload["target_source_key"]
+        target_row = row_by_source_key[target_source_key]
+        target_signature = (
+            collapse_signature_by_id.get(target_source_key)
+            if target_source_key in representative_source_keys
+            else None
+        )
+        target_final_formulation_id = final_id_by_source_id.get(
+            target_source_key,
+            make_final_formulation_id(target_row, target_signature),
+        )
+        final_id_by_source_id[source_key] = target_final_formulation_id
+        final_id_by_source_id[target_source_key] = target_final_formulation_id
+        collapsed_ids.add(source_key)
+        collapse_metadata_by_source_id[source_key] = {
+            "variant_class": payload["variant_class"],
+            "variant_signal": payload["variant_signal"],
+            "decision_rule": payload["decision_rule"],
+            "decision_reason": payload["decision_reason"],
+            "collapse_reason": (
+                "Collapsed as a checkpoint/validation variant because the WFDTQ4VX checkpoint batch "
+                "matches exactly one design-row formulation identity under the validated coordinate rule."
+            ),
+            "review_needed": "no",
+            "notes": payload["notes"],
         }
 
     for source_key, payload in variant_governance_targets.items():
@@ -1079,11 +1482,12 @@ def build_minimal_final_output(
         if source_key in filtered_ids:
             rule, reason = filter_rules[source_key]
             variant_signal = variant_signal_class(row)
-            variant_class = (
-                "post_processing_or_measurement_variant"
-                if rule == "characterization_only_post_processing"
-                else ""
-            )
+            variant_class = ""
+            if rule in {
+                "characterization_only_post_processing",
+                "parent_linked_non_synthesis_descendant_variant",
+            }:
+                variant_class = variant_signal or "post_processing_or_measurement_variant"
             decision = RowDecision(
                 decision="filtered_non_formulation",
                 target_final_formulation_id="",

@@ -18,6 +18,10 @@ The benchmark-valid system result is the Stage 5 final formulation table and its
 GT-comparison outputs. Intermediate artifacts may be used for diagnosis, but
 they are not official benchmark outputs.
 
+The repository also supports a deterministic post-comparison Layer 2 risk
+stratification artifact for downstream Layer 3 audit planning. That risk layer
+is metadata only and does not alter benchmark-valid final outputs.
+
 ## Canonical Pipeline
 
 The authoritative manual reproduction document is:
@@ -80,6 +84,7 @@ Stage 3 resolved relation fields.
 Current Stage 5 supporting review export:
 
 - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
 
 Current active Stage 3 script:
 
@@ -92,6 +97,16 @@ Current active Stage 2 script:
 Current active Stage 4 diagnostic script:
 
 - `src/stage4_eval/eval_weak_labels_v7pilot3.py`
+
+Current Layer 3 field-audit support surfaces:
+
+- `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
+
+These are post-comparison review surfaces only. They do not alter frozen Stage
+2, Stage 3, or Stage 5 semantics, and they do not change benchmark-valid final
+outputs.
 
 ## Governance
 

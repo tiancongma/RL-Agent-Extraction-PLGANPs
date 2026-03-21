@@ -40,11 +40,11 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 try:
     from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
 
 
 WORKBOOK_NAME = "boundary_gt_review_workbook_v1.xlsx"
@@ -216,15 +216,7 @@ def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> 
 
 
 def sanitize_out_subdir(value: str) -> str:
-    text = normalize_text(value).replace("\\", "/")
-    if not text:
-        raise ValueError("--out-subdir is required.")
-    if Path(text).is_absolute():
-        raise ValueError("--out-subdir must be a relative path.")
-    parts = [part for part in text.split("/") if part]
-    if not parts or any(part == ".." for part in parts):
-        raise ValueError("--out-subdir cannot contain path traversal.")
-    return "/".join(parts)
+    return validate_artifact_subdir(value, param_name="--out-subdir")
 
 
 def resolve_run_dir(run_id: str, explicit_run_dir: Path | None) -> Path:

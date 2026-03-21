@@ -25,22 +25,17 @@ from src.stage5_benchmark.formulation_core_signature_v1 import (  # noqa: E402
     build_formulation_core_signature_v1,
 )
 from src.utils import paths  # noqa: E402
-from src.utils.run_id import is_valid_run_id  # noqa: E402
+from src.utils.run_id import is_valid_run_id, validate_artifact_subdir  # noqa: E402
 from src.utils.run_latest import inputs_fingerprint, write_latest  # noqa: E402
 
 
 def _sanitize_out_subdir(s: str) -> str:
-    v = str(s or "").strip().replace("\\", "/")
-    if not v:
+    try:
+        return validate_artifact_subdir(s, param_name="--out-subdir")
+    except ValueError as exc:
         raise ValueError(
-            "ERROR: --out-subdir is required when reusing a run_id. Use a stage/variant folder name, e.g. stage2_validation or stage5_signature_iter001."
-        )
-    if Path(v).is_absolute():
-        raise ValueError("ERROR: --out-subdir must be a relative path.")
-    parts = [p for p in v.split("/") if p]
-    if not parts or any(p == ".." for p in parts):
-        raise ValueError("ERROR: --out-subdir cannot contain path traversal ('..').")
-    return "/".join(parts)
+            "ERROR: --out-subdir is required when reusing a run_id and must be a functional artifact path under data/results/<run_id>/ without repeating a nested run_id or timestamp/hash token."
+        ) from exc
 
 
 def find_default_input_tsv() -> Path:

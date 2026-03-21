@@ -306,6 +306,12 @@ def build_export_rows(
                 "paper_id": normalize_text(row.get("key")),
                 "doi": normalize_text(row.get("doi")),
                 "formulation_id": normalize_text(row.get("final_formulation_id")),
+                "article_formulation_id": normalize_text(row.get("representative_source_formulation_id")),
+                "article_formulation_label": normalize_text(
+                    row.get("representative_source_raw_formulation_label")
+                    or row.get("raw_formulation_label")
+                    or row.get("representative_source_formulation_id")
+                ),
                 "representative_source_formulation_id": normalize_text(row.get("representative_source_formulation_id")),
                 "table_id": table_id,
                 "row_anchor": row_anchor,
@@ -365,6 +371,8 @@ def main() -> None:
         "paper_id",
         "doi",
         "formulation_id",
+        "article_formulation_id",
+        "article_formulation_label",
         "representative_source_formulation_id",
         "table_id",
         "row_anchor",

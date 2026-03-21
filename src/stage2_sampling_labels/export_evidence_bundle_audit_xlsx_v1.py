@@ -17,7 +17,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils import paths as P
-from src.utils.run_id import is_valid_run_id
+from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
 from src.utils.run_latest import inputs_fingerprint, write_latest
 
 
@@ -25,17 +25,12 @@ MAX_CELL_TEXT = 60000
 
 
 def _sanitize_out_subdir(s: str) -> str:
-    v = str(s or "").strip().replace("\\", "/")
-    if not v:
+    try:
+        return validate_artifact_subdir(s, param_name="--out-subdir")
+    except ValueError as exc:
         raise ValueError(
-            "ERROR: --out-subdir is required when reusing a run_id. Use a stage/variant folder name, e.g. stage2_validation or stage5_signature_iter001."
-        )
-    if Path(v).is_absolute():
-        raise ValueError("ERROR: --out-subdir must be a relative path.")
-    parts = [p for p in v.split("/") if p]
-    if not parts or any(p == ".." for p in parts):
-        raise ValueError("ERROR: --out-subdir cannot contain path traversal ('..').")
-    return "/".join(parts)
+            "ERROR: --out-subdir is required when reusing a run_id and must be a functional artifact path under data/results/<run_id>/ without repeating a nested run_id or timestamp/hash token."
+        ) from exc
 
 
 def _read_jsonl(path: Path) -> List[dict]:

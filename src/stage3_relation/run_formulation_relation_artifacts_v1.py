@@ -21,6 +21,7 @@ from src.stage3_relation.build_formulation_relation_artifacts_v1 import (
     build_relation_artifacts,
 )
 from src.utils.paths import DATA_RESULTS_DIR
+from src.utils.run_id import validate_artifact_subdir
 
 
 VALID_RUN_TYPES = {
@@ -38,12 +39,7 @@ def validate_run_id(run_id: str) -> str:
 
 
 def validate_out_subdir(out_subdir: str) -> str:
-    token = str(out_subdir or "").strip().strip("/\\")
-    if not token:
-        raise ValueError("out_subdir must not be empty")
-    if re.search(r"[<>:\"|?*]", token):
-        raise ValueError(f"out_subdir contains invalid path characters: {token}")
-    return token.replace("\\", "/")
+    return validate_artifact_subdir(out_subdir, param_name="out_subdir")
 
 
 def render_run_context(

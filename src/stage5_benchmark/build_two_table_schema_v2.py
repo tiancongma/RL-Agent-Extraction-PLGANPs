@@ -163,6 +163,93 @@ def stable_signature(parts: list[str]) -> str:
     return f"{joined}||sig={digest}"
 
 
+def first_nonempty(*values: Any) -> str:
+    for value in values:
+        if value is None or pd.isna(value):
+            continue
+        text = str(value).strip()
+        if text:
+            return text
+    return ""
+
+
+def build_collision_groups(core_base_df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    if core_base_df.empty:
+        return core_base_df.copy(), pd.DataFrame(
+            columns=[
+                "reference_normalized_doi",
+                "core_signature",
+                "collision_group_size",
+                "group_key",
+                "formulation_id",
+                "normalized_formulation_id",
+                "representative_source_formulation_id",
+                "instance_assignment_row_id",
+                "decision",
+            ]
+        )
+
+    grouped_rows: list[dict[str, Any]] = []
+    debug_rows: list[dict[str, str]] = []
+
+    for (_, _), group in core_base_df.groupby(["reference_normalized_doi", "core_signature"], dropna=False, sort=False):
+        group = group.copy().reset_index(drop=True)
+        group_size = len(group)
+        decision = "collapsed"
+
+        if group_size > 1:
+            nonempty_ids = sorted(
+                {
+                    str(v).strip()
+                    for v in group["normalized_formulation_id"].tolist()
+                    if str(v).strip()
+                }
+            )
+            distinct_rep_ids = sorted(
+                {
+                    str(v).strip()
+                    for v in group["representative_source_formulation_id"].tolist()
+                    if str(v).strip()
+                }
+            )
+            distinct_assignment_ids = sorted(
+                {
+                    str(v).strip()
+                    for v in group["instance_assignment_row_id"].tolist()
+                    if str(v).strip()
+                }
+            )
+            has_distinct_upstream_identity = len(distinct_rep_ids) >= 2 or len(distinct_assignment_ids) >= 2
+            if len(nonempty_ids) >= 2 and has_distinct_upstream_identity:
+                decision = "split_by_formulation_id"
+
+        for _, row in group.iterrows():
+            debug_rows.append(
+                {
+                    "reference_normalized_doi": str(row.get("reference_normalized_doi", "")),
+                    "core_signature": str(row.get("core_signature", "")),
+                    "collision_group_size": str(group_size),
+                    "group_key": str(row.get("group_key", "")),
+                    "formulation_id": str(row.get("formulation_id", "")),
+                    "normalized_formulation_id": str(row.get("normalized_formulation_id", "")),
+                    "representative_source_formulation_id": str(row.get("representative_source_formulation_id", "")),
+                    "instance_assignment_row_id": str(row.get("instance_assignment_row_id", "")),
+                    "decision": decision,
+                }
+            )
+
+        if decision == "split_by_formulation_id":
+            for formulation_id, sub in group.groupby("normalized_formulation_id", dropna=False, sort=False):
+                subgroup = sub.copy()
+                subgroup["collapse_group_key"] = subgroup["core_signature"] + "||split_formulation_id=" + str(formulation_id)
+                grouped_rows.extend(subgroup.to_dict(orient="records"))
+        else:
+            group["collapse_group_key"] = group["core_signature"]
+            grouped_rows.extend(group.to_dict(orient="records"))
+
+    return pd.DataFrame(grouped_rows), pd.DataFrame(debug_rows)
+
+
 def build_group_doi_map(
     projection_trace: pd.DataFrame,
     key_to_doi_map: dict[str, str],
@@ -191,7 +278,7 @@ def build_tables(
     projection_trace: pd.DataFrame,
     key_to_doi_map: dict[str, str],
     ruleset: dict[str, Any],
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, int], pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, int], pd.DataFrame, pd.DataFrame]:
     included_fields: list[str] = ruleset["signature_composition"]["ordered_fields"]
     excluded_keywords: list[str] = ruleset["excluded_keywords_postprocess"]
 
@@ -268,12 +355,28 @@ def build_tables(
         core_signature = stable_signature(signature_parts)
 
         condition_tag, matched_keywords = detect_condition(evidence_excerpt, excluded_keywords)
+        representative_source_formulation_id = first_nonempty(
+            gdf.iloc[0].get("representative_source_formulation_id", ""),
+            ex.get("representative_source_formulation_id", "") if ex is not None else "",
+            ex.get("source_formulation_id", "") if ex is not None else "",
+            ex.get("article_formulation_label", "") if ex is not None else "",
+        )
+        instance_assignment_row_id = first_nonempty(
+            gdf.iloc[0].get("instance_assignment_row_id", ""),
+            gdf.iloc[0].get("instance_id", ""),
+            ex.get("instance_assignment_row_id", "") if ex is not None else "",
+            ex.get("instance_id", "") if ex is not None else "",
+            gk_str,
+        )
 
         core_rows.append(
             {
                 "group_key": gk_str,
                 "key": key,
                 "formulation_id": formulation_id,
+                "normalized_formulation_id": formulation_id_token,
+                "representative_source_formulation_id": representative_source_formulation_id,
+                "instance_assignment_row_id": instance_assignment_row_id,
                 "core_signature": core_signature,
                 "condition_tag": condition_tag,
                 "matched_keywords": matched_keywords,
@@ -328,11 +431,15 @@ def build_tables(
             pd.DataFrame(),
             {"fresh": 0, "postprocess": 0},
             pd.DataFrame(),
+            pd.DataFrame(),
         )
 
+    collapse_base_df, collapse_debug_df = build_collision_groups(core_base_df)
+
     core_uni = (
-        core_base_df.groupby(["reference_normalized_doi", "core_signature"], dropna=False)
+        collapse_base_df.groupby(["reference_normalized_doi", "collapse_group_key"], dropna=False)
         .agg(
+            core_signature=("core_signature", "first"),
             drug_name_normalized=("drug_name_normalized", "first"),
             la_fraction=("la_fraction", "first"),
             ga_fraction=("ga_fraction", "first"),
@@ -387,10 +494,10 @@ def build_tables(
         ]
     ].copy()
 
-    core_key = core_uni[["reference_normalized_doi", "core_signature", "formulation_core_id"]].copy()
-    assign_df = core_base_df.merge(
+    core_key = core_uni[["reference_normalized_doi", "collapse_group_key", "formulation_core_id"]].copy()
+    assign_df = collapse_base_df.merge(
         core_key,
-        on=["reference_normalized_doi", "core_signature"],
+        on=["reference_normalized_doi", "collapse_group_key"],
         how="left",
     )
 
@@ -529,7 +636,7 @@ def build_tables(
             .sort_values("measurement_rows_per_core", ascending=False)
         )
 
-    return core_df, measurements_df, trace_df, condition_dist, doi_core_measure
+    return core_df, measurements_df, trace_df, condition_dist, doi_core_measure, collapse_debug_df
 
 
 def main() -> None:
@@ -579,7 +686,7 @@ def main() -> None:
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    core_df, measurements_df, trace_df, condition_dist, doi_core_measure = build_tables(
+    core_df, measurements_df, trace_df, condition_dist, doi_core_measure, collapse_debug_df = build_tables(
         derived=derived,
         extracted=extracted,
         projection_trace=projection_trace,
@@ -588,7 +695,7 @@ def main() -> None:
     )
 
     # Determinism check: re-run in-memory and compare signature counts.
-    core_df_2, _, _, _, _ = build_tables(
+    core_df_2, _, _, _, _, _ = build_tables(
         derived=derived,
         extracted=extracted,
         projection_trace=projection_trace,
@@ -602,9 +709,11 @@ def main() -> None:
     core_out = out_dir / "formulation_core.tsv"
     meas_out = out_dir / "measurements.tsv"
     trace_out = out_dir / "core_assignment_trace.tsv"
+    collapse_debug_out = out_dir / "schema_v2_collapse_debug.tsv"
     core_df.to_csv(core_out, sep="\t", index=False)
     measurements_df.to_csv(meas_out, sep="\t", index=False)
     trace_df.to_csv(trace_out, sep="\t", index=False)
+    collapse_debug_df.to_csv(collapse_debug_out, sep="\t", index=False)
 
     unique_dois_v2 = int(core_df["reference_normalized_doi"].replace("", pd.NA).dropna().nunique()) if not core_df.empty else 0
 
@@ -654,6 +763,7 @@ def main() -> None:
     print(f"output_formulation_core={core_out}")
     print(f"output_measurements={meas_out}")
     print(f"output_assignment_trace={trace_out}")
+    print(f"output_collapse_debug={collapse_debug_out}")
 
 
 if __name__ == "__main__":

@@ -79,6 +79,20 @@ Not allowed:
 - substitute undocumented files for canonical stage completion artifacts
 - report a partial-layer artifact as if it were the final system result
 
+Run layout rule:
+
+- a run root is the directory named by `run_id`
+- artifact folders under that run root must be functional only, such as:
+  - `analysis/`
+  - `outputs/`
+  - `audit/`
+  - stage-local functional folders like `formulation_relation_v1/`
+- artifact folders under a run root must not repeat:
+  - the full `run_id`
+  - timestamp/hash fragments
+- if a unit needs independent rerun or lineage identity, create a separate run
+  root with its own `run_id` instead of nesting another run-like directory
+
 ## Manual Stage-By-Stage Execution
 
 Follow the exact order in `project/ACTIVE_PIPELINE_FLOW.md`.
@@ -205,6 +219,9 @@ Supporting stage-local helper:
 
 - `src/stage5_benchmark/run_minimal_final_output_v1.py`
 - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
+- `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
+- `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
 
 Wrapper status:
 
@@ -230,6 +247,41 @@ Optional Layer 2 GT review export:
 - This helper builds a run-scoped XLSX boundary-GT workbook from the Stage 5 final table and optional provenance artifacts.
 - It is a reviewer-facing support surface, not a production-path completion artifact.
 
+Optional Layer 3 field GT review export:
+
+- `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py`
+- `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py`
+- These helpers build a run-scoped Layer 3 review pack from the frozen Stage 5
+  final table.
+- The workbook may optionally consume
+  `analysis/paper_risk_assessment.tsv` so Layer 2 paper-risk labels remain
+  visible during field-level audit.
+- The workbook may also surface article-native formulation labels, evidence-
+  anchor carry-through, and normalization-needed warnings as reviewer aids.
+- A separate formulation-level value GT annotation workbook may be built from
+  the frozen audit-ready TSV plus the Layer 3 field seed TSV when a faster
+  one-row-per-formulation numeric labeling surface is needed.
+- The workbook is not allowed to recompute weaker evidence logic than the
+  active Layer 3 Evidence Handoff Contract.
+- Changes to the Layer 3 workbook/export path must validate against the golden
+  evidence-handoff cases before being treated as compliant reviewer-surface
+  changes.
+- This review pack is downstream audit support only:
+  - it does not change Stage 2 extraction semantics
+  - it does not change Stage 3 relation semantics
+  - it does not change Stage 5 identity closure or final-table counts
+
+Path example:
+
+- preferred:
+  - `data/results/<run_id>/analysis/...`
+  - `data/results/<run_id>/fgt_v3_dev15_v2/...`
+- not allowed for new outputs:
+  - `data/results/<run_id>/run_20260320_1317_ab12cd3_dev15_compare/...`
+  - `data/results/<run_id>/compare_20260320_1317_ab12cd3/...`
+
 Materialization rule:
 
 - Stage 5 materializes direct extraction fields and explicit Stage 3 resolved
@@ -246,6 +298,42 @@ Comparison-node inputs:
 - `final_formulation_table_v1.tsv`
 - fixed manual GT workbook
 - declared scope manifest TSV
+
+Optional post-comparison audit-risk input:
+
+- `analysis/layer2_identity_comparison.tsv` when a checked Layer 2 diagnostic
+  compare surface exists for the same run scope
+
+Optional post-comparison audit-risk outputs:
+
+- `analysis/paper_risk_assessment.tsv`
+- `analysis/paper_risk_assessment_summary.md`
+
+Layer 2 Risk Stratification Contract:
+
+- Purpose:
+  - stratify downstream Layer 3 field-audit risk from an existing Layer 2
+    identity-comparison artifact
+- What it does:
+  - assign deterministic paper-level `LOW` / `MEDIUM` / `HIGH` risk labels
+  - assign deterministic `INCLUDE` / `REVIEW` / `HOLD` Layer 3 audit-use flags
+- What it does not do:
+  - it does not alter Stage 2 extraction
+  - it does not alter Stage 3 relation semantics
+  - it does not alter Stage 5 identity closure or benchmark-valid counts
+  - it does not reinterpret the final formulation table
+- Deterministic rules:
+  - `LOW`: `extra_count <= 1` and `missing_count == 0`
+  - `HIGH`: `extra_count > 3` or `missing_count >= 2`
+  - `MEDIUM`: every non-LOW and non-HIGH paper
+  - `INCLUDE` for `LOW`, `REVIEW` for `MEDIUM`, `HOLD` for `HIGH`
+- Usage:
+  - Layer 2 is no longer a zero-residual gate for downstream Layer 3 field
+    audit
+  - low-residual extra rows may be tolerated when there is no sign of
+    large-scale identity collapse
+  - large batch over-generation or meaningful missing identities must still be
+    marked high risk and held from routine Layer 3 progression
 
 ## Evaluation Reference Path
 

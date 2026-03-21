@@ -39,12 +39,12 @@ from openpyxl.worksheet.datavalidation import DataValidation
 try:
     from src.stage5_benchmark.audit_evidence_resolver_v1 import AuditEvidenceResolverV1
     from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage5_benchmark.audit_evidence_resolver_v1 import AuditEvidenceResolverV1
     from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
 
 
 GT_STATUS_OPTIONS = ["correct", "incorrect", "not_reported", "unclear"]
@@ -68,11 +68,19 @@ WORKBOOK_COLUMNS = [
     "formulation_id",
     "formulation_label_stage5",
     "formulation_label_params",
+    "article_formulation_id",
+    "article_formulation_label",
+    "paper_risk_level",
+    "layer3_inclusion_flag",
     "field_name",
     "extracted_value",
     "extracted_unit",
     "evidence_text",
+    "evidence_anchor_text",
     "evidence_source_type",
+    "evidence_status_detail",
+    "review_warning",
+    "normalization_status",
     "gt_status",
     "gt_value",
     "gt_unit",
@@ -86,10 +94,15 @@ SEED_COLUMNS = [
     "formulation_id",
     "formulation_label_stage5",
     "formulation_label_params",
+    "article_formulation_id",
+    "article_formulation_label",
     "family_id",
     "parent_core_row_id",
     "variant_role",
     "payload_state",
+    "paper_risk_level",
+    "risk_source",
+    "layer3_inclusion_flag",
     "field_name",
     "source_value_column",
     "source_value_text_column",
@@ -97,13 +110,20 @@ SEED_COLUMNS = [
     "extracted_value",
     "extracted_unit",
     "evidence_text",
+    "evidence_anchor_text",
     "evidence_source_type",
+    "evidence_status_detail",
     "evidence_section",
     "evidence_span_start",
     "evidence_span_end",
+    "relation_resolution_rule",
+    "relation_resolution_confidence",
+    "relation_resolution_source_ids",
     "derivation_status",
     "derivation_rule",
     "derivation_inputs",
+    "review_warning",
+    "normalization_status",
     "evidence_support_status",
     "gt_status",
     "gt_value",
@@ -208,15 +228,7 @@ def get_row_value(row: dict[str, str], column_name: str) -> str:
 
 
 def sanitize_out_subdir(value: str) -> str:
-    text = normalize_text(value).replace("\\", "/")
-    if not text:
-        raise ValueError("--out-subdir is required.")
-    if Path(text).is_absolute():
-        raise ValueError("--out-subdir must be a relative path.")
-    parts = [part for part in text.split("/") if part]
-    if not parts or any(part == ".." for part in parts):
-        raise ValueError("--out-subdir cannot contain path traversal.")
-    return "/".join(parts)
+    return validate_artifact_subdir(value, param_name="--out-subdir")
 
 
 def workbook_name_for_version(version: int) -> str:
@@ -276,6 +288,36 @@ def load_manifest_map(path: Path | None) -> dict[str, dict[str, str]]:
         key = normalize_text(row.get("key") or row.get("paper_key") or row.get("zotero_key"))
         if key:
             out[key] = row
+    return out
+
+
+def load_paper_risk_map(path: Path | None) -> dict[str, dict[str, str]]:
+    if path is None or not path.exists():
+        return {}
+    out: dict[str, dict[str, str]] = {}
+    for row in read_tsv_rows(path):
+        key = normalize_text(row.get("paper_key"))
+        if key:
+            out[key] = row
+    return out
+
+
+def discover_resolved_relation_fields(run_dir: Path) -> Path | None:
+    candidate = run_dir / "formulation_relation_v1" / "resolved_relation_fields_v1.tsv"
+    return candidate if candidate.exists() else None
+
+
+def load_resolved_relation_map(path: Path | None) -> dict[tuple[str, str, str], dict[str, str]]:
+    if path is None or not path.exists():
+        return {}
+    out: dict[tuple[str, str, str], dict[str, str]] = {}
+    for row in read_tsv_rows(path):
+        paper_key = normalize_text(row.get("paper_key") or row.get("key"))
+        formulation_candidate_id = normalize_text(row.get("formulation_candidate_id") or row.get("formulation_id"))
+        field_name = normalize_text(row.get("field_name"))
+        if not paper_key or not formulation_candidate_id or not field_name:
+            continue
+        out[(paper_key, formulation_candidate_id, field_name)] = row
     return out
 
 
@@ -362,15 +404,76 @@ def infer_unit_from_text(value: str) -> str:
     return ""
 
 
+def looks_like_polymer_grade_text(value: str) -> bool:
+    text = normalize_text(value).lower()
+    if not text:
+        return False
+    patterns = [
+        r"\bresomer\b",
+        r"\bpurasorb\b",
+        r"\bpolymer grade\b",
+        r"\bplga grade\b",
+        r"\brg\s*50[0-9]{1,2}\b",
+    ]
+    return any(re.search(pattern, text) for pattern in patterns)
+
+
+def build_article_formulation_identity(row: dict[str, str]) -> tuple[str, str]:
+    article_formulation_id = normalize_text(row.get("representative_source_formulation_id"))
+    article_formulation_label = normalize_text(
+        row.get("representative_source_raw_formulation_label")
+        or row.get("raw_formulation_label")
+        or article_formulation_id
+    )
+    return article_formulation_id, article_formulation_label
+
+
 def extract_numeric_tokens(text: str) -> list[str]:
     return re.findall(r"[-+]?\d+(?:[.,]\d+)?", normalize_text(text))
 
 
-def value_matches_text(extracted_value: str, candidate_text: str) -> bool:
+def normalize_ratio_token(value: str) -> str:
+    text = normalize_text(value).lower()
+    text = text.replace(":", "/").replace(" ", "")
+    return text
+
+
+def field_has_local_anchor_relationship(field_name: str, candidate_text: str) -> bool:
+    text = normalize_text(candidate_text).lower()
+    if not text:
+        return False
+    keyword_map = {
+        "polymer_MW": ["mw", "molecular weight", "kda", "plga", "polymer", "viscosity"],
+        "LA/GA": ["la/ga", "lactic", "glycolic", "lactide", "glycolide", "plga"],
+        "surfactant_concentration": ["surfactant", "stabilizer", "pva", "polysorbate", "labrafil", "poloxamer", "concentration"],
+        "surfactant_name": ["surfactant", "stabilizer", "pva", "polysorbate", "labrafil", "poloxamer", "pluronic"],
+        "solvent": ["solvent", "acetone", "dichloromethane", "ethyl acetate", "organic phase"],
+        "particle_size": ["size", "nm", "diameter", "particle"],
+        "EE": ["encapsulation efficiency", "ee", "entrapment efficiency"],
+        "LC": ["loading content", "drug loading", "lc", "dl"],
+        "drug_polymer_ratio": ["ratio", "drug/polymer", "drug to polymer", "feed"],
+    }
+    return any(token in text for token in keyword_map.get(field_name, []))
+
+
+def field_value_matches_text(field_name: str, extracted_value: str, candidate_text: str) -> bool:
     value = normalize_text(extracted_value)
     text = normalize_text(candidate_text)
     if not value or not text:
         return False
+    lowered = text.lower()
+    if field_name == "LA/GA":
+        ratio = normalize_ratio_token(value)
+        if not ratio or "/" not in ratio:
+            return False
+        compact_text = lowered.replace(" ", "").replace(":", "/")
+        return ratio in compact_text
+    if field_name == "polymer_MW":
+        value_nums = extract_numeric_tokens(value)
+        text_nums = set(extract_numeric_tokens(text))
+        if value_nums and not all(token in text_nums for token in value_nums):
+            return False
+        return any(token in lowered for token in ["kda", "da", "mw", "molecular weight", "viscosity"])
     value_nums = extract_numeric_tokens(value)
     if value_nums:
         text_nums = set(extract_numeric_tokens(text))
@@ -484,12 +587,12 @@ def split_sentences(text: str) -> list[str]:
     return [part.strip() for part in parts if part.strip()]
 
 
-def pick_relevant_sentence(text: str, extracted_value: str) -> str:
+def pick_relevant_sentence(field_name: str, text: str, extracted_value: str) -> str:
     sentences = split_sentences(text)
     if not sentences:
         return ""
     for sentence in sentences:
-        if value_matches_text(extracted_value, sentence):
+        if field_value_matches_text(field_name, extracted_value, sentence):
             return sentence
     return sentences[0]
 
@@ -539,7 +642,7 @@ def field_target_values(spec: FieldSpec, extracted_value: str) -> dict[str, str]
     return mapping.get(spec.field_name, {})
 
 
-def find_matching_table_ref(row: dict[str, str], extracted_value: str) -> dict[str, str] | None:
+def find_matching_table_ref(row: dict[str, str], field_name: str, extracted_value: str) -> dict[str, str] | None:
     refs = parse_json_object_list(row.get("supporting_evidence_refs"))
     preferred_region_order = ["table_cell", "table_row"] if extract_numeric_tokens(extracted_value) else ["table_cell"]
     for region_type in preferred_region_order:
@@ -547,24 +650,25 @@ def find_matching_table_ref(row: dict[str, str], extracted_value: str) -> dict[s
             if normalize_text(ref.get("region_type")).lower() != region_type:
                 continue
             span_text = normalize_text(ref.get("span_text"))
-            if value_matches_text(extracted_value, span_text):
+            if field_value_matches_text(field_name, extracted_value, span_text):
                 return ref
     return None
 
 
-def evidence_supports_value(extracted_value: str, evidence_text: str) -> bool:
+def evidence_supports_value(field_name: str, extracted_value: str, evidence_text: str) -> bool:
     value = normalize_text(extracted_value)
     evidence = normalize_text(evidence_text)
     if not value:
         return not evidence
     if not evidence:
         return False
-    return value_matches_text(value, evidence)
+    return field_value_matches_text(field_name, value, evidence)
 
 
 def resolve_text_field_evidence(
     resolver: AuditEvidenceResolverV1,
     row: dict[str, str],
+    spec: FieldSpec,
     extracted_value: str,
     max_span_chars: int,
 ) -> tuple[str, str]:
@@ -580,8 +684,8 @@ def resolve_text_field_evidence(
         )
         candidate = normalize_text(text_evidence.evidence_text)
         if candidate and not has_title_like_noise(candidate):
-            sentence = pick_relevant_sentence(candidate, extracted_value)
-            if sentence and evidence_supports_value(extracted_value, sentence):
+            sentence = pick_relevant_sentence(spec.field_name, candidate, extracted_value)
+            if sentence and evidence_supports_value(spec.field_name, extracted_value, sentence):
                 return sentence, "text"
     text_evidence = resolver.resolve_text_evidence(
         zotero_key=normalize_text(row.get("key")),
@@ -593,10 +697,10 @@ def resolve_text_field_evidence(
         fallback_hint_text=normalize_text(row.get("evidence_span_text")),
     )
     evidence_text = normalize_text(text_evidence.evidence_text) or normalize_text(row.get("evidence_span_text"))
-    evidence_text = pick_relevant_sentence(evidence_text, extracted_value) if evidence_text else ""
+    evidence_text = pick_relevant_sentence(spec.field_name, evidence_text, extracted_value) if evidence_text else ""
     if has_title_like_noise(evidence_text):
         evidence_text = ""
-    if evidence_supports_value(extracted_value, evidence_text):
+    if evidence_supports_value(spec.field_name, extracted_value, evidence_text):
         return evidence_text, "text"
     return "", "unsupported_text"
 
@@ -624,40 +728,129 @@ def resolve_field_evidence(
         return "", "blank_value"
 
     if is_table_derived_field(row, spec):
-        direct_ref = find_matching_table_ref(row, extracted_value)
+        direct_ref = find_matching_table_ref(row, spec.field_name, extracted_value)
         if direct_ref is not None:
             evidence_text = build_table_evidence_text(
                 table_cell_text=direct_ref.get("span_text", "") if normalize_text(direct_ref.get("region_type")).lower() == "table_cell" else "",
                 table_row_text=direct_ref.get("span_text", ""),
                 max_chars=max_span_chars,
             )
-            if evidence_text and evidence_supports_value(extracted_value, evidence_text):
+            if evidence_text and evidence_supports_value(spec.field_name, extracted_value, evidence_text):
                 return evidence_text, "table"
         return "", "unresolved_table"
 
     return resolve_text_field_evidence(
         resolver=resolver,
         row=row,
+        spec=spec,
         extracted_value=extracted_value,
         max_span_chars=max_span_chars,
     )
 
 
-def choose_extracted_value(row: dict[str, str], spec: FieldSpec) -> tuple[str, str, str, str]:
+def extract_evidence_anchor_text(
+    row: dict[str, str],
+    spec: FieldSpec,
+    extracted_value: str,
+    max_span_chars: int,
+) -> str:
+    def with_section(section: str, text: str) -> str:
+        clean_section = normalize_text(section)
+        clean_text = normalize_text(text)
+        if clean_section and clean_text:
+            return f"[{clean_section}] {clean_text}"[:max_span_chars]
+        return clean_text[:max_span_chars]
+
+    if normalize_text(get_row_value(row, spec.evidence_region_column)).lower() == "relation_resolved":
+        return ""
+
+    refs = parse_json_object_list(row.get("supporting_evidence_refs"))
+    for ref in refs:
+        span_text = normalize_text(ref.get("span_text"))
+        if span_text and field_value_matches_text(spec.field_name, extracted_value, span_text):
+            sentence = pick_relevant_sentence(spec.field_name, span_text[:max_span_chars], extracted_value)
+            preview = sentence if len(sentence) >= 20 else span_text[:max_span_chars]
+            return with_section(ref.get("section", ""), preview)
+    fallback = normalize_text(row.get("evidence_span_text"))
+    if fallback and not has_title_like_noise(fallback) and field_has_local_anchor_relationship(spec.field_name, fallback):
+        sentence = pick_relevant_sentence(spec.field_name, fallback[:max_span_chars], extracted_value)
+        if field_value_matches_text(spec.field_name, extracted_value, sentence):
+            preview = sentence if len(sentence) >= 20 else fallback[:max_span_chars]
+            return with_section(row.get("evidence_section", ""), preview)
+    return ""
+
+
+def classify_evidence_status_detail(
+    extracted_value: str,
+    evidence_text: str,
+    evidence_anchor_text: str,
+    evidence_source_type: str,
+    derivation_status: str,
+) -> str:
+    if not extracted_value:
+        return "blank_value"
+    if derivation_status and derivation_status != "none":
+        return "derived_without_direct_text"
+    if evidence_text:
+        return "supported"
+    if evidence_source_type == "unresolved_table":
+        return "unresolved_table"
+    if evidence_source_type == "unsupported_text":
+        return "unsupported_text" if evidence_anchor_text else "missing_evidence_anchor"
+    return "missing_evidence_anchor" if not evidence_anchor_text else normalize_text(evidence_source_type) or "unknown"
+
+
+def choose_extracted_value(
+    row: dict[str, str], spec: FieldSpec
+) -> tuple[str, str, str, str, str, str, str, str]:
     if spec.allow_derivation:
         value, derivation_status, derivation_inputs = derive_drug_polymer_ratio(row)
-        return value, spec.default_unit, derivation_status, derivation_inputs
+        return value, spec.default_unit, derivation_status, derivation_inputs, "", "", "", ""
 
     primary_value = get_row_value(row, spec.value_column) if spec.value_column else ""
     fallback_text = get_row_value(row, spec.value_text_column) if spec.value_text_column else ""
+    review_warning = ""
+    if spec.field_name == "polymer_MW" and not primary_value and looks_like_polymer_grade_text(fallback_text):
+        review_warning = "polymer_grade_recorded_not_mw"
+        return "", "", "none", "", primary_value, fallback_text, review_warning, ""
     extracted_value = primary_value or fallback_text
     extracted_unit = spec.default_unit or infer_unit_from_text(primary_value or fallback_text)
-    return extracted_value, extracted_unit, "none", ""
+    normalization_status = ""
+    if spec.field_name == "surfactant_concentration" and extracted_value:
+        if extracted_unit in {"mg", "g"}:
+            normalization_status = "normalization_pending"
+        elif extracted_unit in {"%", "% w/v", "% w/w", "mg/mL", "ug/mg"}:
+            normalization_status = "reported_as_concentration"
+    return extracted_value, extracted_unit, "none", "", primary_value, fallback_text, review_warning, normalization_status
+
+
+def workbook_field_to_relation_field(field_name: str) -> str:
+    mapping = {
+        "polymer_MW": "polymer_mw_kDa",
+        "LA/GA": "la_ga_ratio",
+        "surfactant_name": "surfactant_name",
+        "solvent": "organic_solvent",
+    }
+    return mapping.get(field_name, "")
+
+
+def lookup_relation_resolution(
+    resolved_relation_map: dict[tuple[str, str, str], dict[str, str]],
+    paper_key: str,
+    representative_source_formulation_id: str,
+    field_name: str,
+) -> dict[str, str]:
+    relation_field_name = workbook_field_to_relation_field(field_name)
+    if not relation_field_name:
+        return {}
+    return resolved_relation_map.get((paper_key, representative_source_formulation_id, relation_field_name), {})
 
 
 def build_seed_rows(
     final_rows: list[dict[str, str]],
     manifest_map: dict[str, dict[str, str]],
+    paper_risk_map: dict[str, dict[str, str]],
+    resolved_relation_map: dict[tuple[str, str, str], dict[str, str]],
     resolver: AuditEvidenceResolverV1,
     max_span_chars: int,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
@@ -679,14 +872,35 @@ def build_seed_rows(
     for row in final_rows:
         paper_key = normalize_text(row.get("key"))
         manifest_row = manifest_map.get(paper_key, {})
+        risk_row = paper_risk_map.get(paper_key, {})
         doi = normalize_text(manifest_row.get("doi") or row.get("doi"))
         paper_title = normalize_text(manifest_row.get("title") or manifest_row.get("paper_title"))
         formulation_id = normalize_text(row.get("final_formulation_id"))
+        representative_source_formulation_id = normalize_text(row.get("representative_source_formulation_id"))
+        article_formulation_id, article_formulation_label = build_article_formulation_identity(row)
+        paper_risk_level = normalize_text(risk_row.get("paper_risk_level"))
+        risk_source = normalize_text(risk_row.get("risk_source"))
+        layer3_inclusion_flag = normalize_text(risk_row.get("layer3_inclusion_flag"))
         family_index = family_index_map.get((paper_key, normalize_text(row.get("family_id"))))
         stage5_label = build_stage5_label(row, family_index)
         parameter_label = build_parameter_label(row)
         for spec in FIELD_SPECS:
-            extracted_value, extracted_unit, derivation_status, derivation_inputs = choose_extracted_value(row, spec)
+            (
+                extracted_value,
+                extracted_unit,
+                derivation_status,
+                derivation_inputs,
+                primary_value,
+                fallback_text,
+                review_warning,
+                normalization_status,
+            ) = choose_extracted_value(row, spec)
+            relation_resolution = lookup_relation_resolution(
+                resolved_relation_map=resolved_relation_map,
+                paper_key=paper_key,
+                representative_source_formulation_id=representative_source_formulation_id,
+                field_name=spec.field_name,
+            )
             evidence_text, evidence_source_type = resolve_field_evidence(
                 resolver=resolver,
                 row=row,
@@ -697,7 +911,8 @@ def build_seed_rows(
             )
             derivation_rule = ""
             field_evidence_text = evidence_text
-            evidence_support_status = "supported" if evidence_supports_value(extracted_value, field_evidence_text) else ""
+            evidence_anchor_text = ""
+            evidence_support_status = "supported" if evidence_supports_value(spec.field_name, extracted_value, field_evidence_text) else ""
             if spec.allow_derivation:
                 derivation_rule = "drug_feed_amount_text_value / plga_mass_mg_value"
                 if extracted_value:
@@ -715,14 +930,33 @@ def build_seed_rows(
                 field_evidence_text = ""
                 evidence_support_status = "blank_extracted_value"
             elif evidence_source_type in {"unresolved_table", "unsupported_text"}:
+                evidence_anchor_text = extract_evidence_anchor_text(
+                    row=row,
+                    spec=spec,
+                    extracted_value=primary_value or fallback_text or extracted_value,
+                    max_span_chars=max_span_chars,
+                )
                 field_evidence_text = ""
                 evidence_support_status = evidence_source_type
-            elif evidence_supports_value(extracted_value, field_evidence_text):
+            elif evidence_supports_value(spec.field_name, extracted_value, field_evidence_text):
                 evidence_support_status = "supported"
             else:
+                evidence_anchor_text = extract_evidence_anchor_text(
+                    row=row,
+                    spec=spec,
+                    extracted_value=primary_value or fallback_text or extracted_value,
+                    max_span_chars=max_span_chars,
+                )
                 field_evidence_text = ""
                 evidence_source_type = "unsupported_text"
                 evidence_support_status = "unsupported_text"
+            evidence_status_detail = classify_evidence_status_detail(
+                extracted_value=extracted_value,
+                evidence_text=field_evidence_text,
+                evidence_anchor_text=evidence_anchor_text,
+                evidence_source_type=evidence_source_type,
+                derivation_status=derivation_status,
+            )
 
             workbook_rows.append(
                 {
@@ -730,11 +964,19 @@ def build_seed_rows(
                     "formulation_id": formulation_id,
                     "formulation_label_stage5": stage5_label,
                     "formulation_label_params": parameter_label,
+                    "article_formulation_id": article_formulation_id,
+                    "article_formulation_label": article_formulation_label,
+                    "paper_risk_level": paper_risk_level,
+                    "layer3_inclusion_flag": layer3_inclusion_flag,
                     "field_name": spec.field_name,
                     "extracted_value": extracted_value,
                     "extracted_unit": extracted_unit,
                     "evidence_text": field_evidence_text,
+                    "evidence_anchor_text": evidence_anchor_text,
                     "evidence_source_type": evidence_source_type,
+                    "evidence_status_detail": evidence_status_detail,
+                    "review_warning": review_warning,
+                    "normalization_status": normalization_status,
                     "gt_status": "",
                     "gt_value": "",
                     "gt_unit": "",
@@ -749,10 +991,15 @@ def build_seed_rows(
                     "formulation_id": formulation_id,
                     "formulation_label_stage5": stage5_label,
                     "formulation_label_params": parameter_label,
+                    "article_formulation_id": article_formulation_id,
+                    "article_formulation_label": article_formulation_label,
                     "family_id": normalize_text(row.get("family_id")),
                     "parent_core_row_id": normalize_text(row.get("parent_core_row_id")),
                     "variant_role": normalize_text(row.get("variant_role")),
                     "payload_state": normalize_text(row.get("payload_state")),
+                    "paper_risk_level": paper_risk_level,
+                    "risk_source": risk_source,
+                    "layer3_inclusion_flag": layer3_inclusion_flag,
                     "field_name": spec.field_name,
                     "source_value_column": spec.value_column,
                     "source_value_text_column": spec.value_text_column,
@@ -760,13 +1007,20 @@ def build_seed_rows(
                     "extracted_value": extracted_value,
                     "extracted_unit": extracted_unit,
                     "evidence_text": field_evidence_text,
+                    "evidence_anchor_text": evidence_anchor_text,
                     "evidence_source_type": evidence_source_type,
+                    "evidence_status_detail": evidence_status_detail,
                     "evidence_section": normalize_text(row.get("evidence_section")),
                     "evidence_span_start": normalize_text(row.get("evidence_span_start")),
                     "evidence_span_end": normalize_text(row.get("evidence_span_end")),
+                    "relation_resolution_rule": normalize_text(relation_resolution.get("resolution_rule")),
+                    "relation_resolution_confidence": normalize_text(relation_resolution.get("deterministic_confidence")),
+                    "relation_resolution_source_ids": normalize_text(relation_resolution.get("source_relation_row_ids")),
                     "derivation_status": derivation_status,
                     "derivation_rule": derivation_rule,
                     "derivation_inputs": derivation_inputs,
+                    "review_warning": review_warning,
+                    "normalization_status": normalization_status,
                     "evidence_support_status": evidence_support_status,
                     "gt_status": "",
                     "gt_value": "",
@@ -787,6 +1041,9 @@ def build_source_summary(seed_rows: list[dict[str, str]]) -> list[dict[str, str]
                 "paper_key": paper_key,
                 "doi": row["doi"],
                 "paper_title": row["paper_title"],
+                "paper_risk_level": row.get("paper_risk_level", ""),
+                "risk_source": row.get("risk_source", ""),
+                "layer3_inclusion_flag": row.get("layer3_inclusion_flag", ""),
                 "formulation_count": set(),
                 "field_rows": 0,
             },
@@ -801,6 +1058,9 @@ def build_source_summary(seed_rows: list[dict[str, str]]) -> list[dict[str, str]
                 "paper_key": paper_key,
                 "doi": bucket["doi"],
                 "paper_title": bucket["paper_title"],
+                "paper_risk_level": bucket["paper_risk_level"],
+                "risk_source": bucket["risk_source"],
+                "layer3_inclusion_flag": bucket["layer3_inclusion_flag"],
                 "formulation_count": str(len(bucket["formulation_count"])),
                 "field_rows": str(bucket["field_rows"]),
             }
@@ -857,11 +1117,19 @@ def style_review_sheet(ws) -> None:
         "formulation_id": 1,
         "formulation_label_stage5": 1,
         "formulation_label_params": 1,
+        "article_formulation_id": 1,
+        "article_formulation_label": 1,
+        "paper_risk_level": 1,
+        "layer3_inclusion_flag": 1,
         "field_name": 1,
         "extracted_value": 2,
         "extracted_unit": 2,
         "evidence_text": 3,
+        "evidence_anchor_text": 3,
         "evidence_source_type": 3,
+        "evidence_status_detail": 3,
+        "review_warning": 3,
+        "normalization_status": 3,
         "gt_status": 4,
         "gt_value": 4,
         "gt_unit": 4,
@@ -869,7 +1137,7 @@ def style_review_sheet(ws) -> None:
     }
     editable_columns = {"gt_status", "gt_value", "gt_unit", "notes"}
     ws.auto_filter.ref = ws.dimensions
-    ws.freeze_panes = "F2"
+    ws.freeze_panes = "J2"
     for cell in ws[1]:
         header = normalize_text(cell.value)
         cell.font = Font(color="FFFFFF", bold=True)
@@ -892,15 +1160,23 @@ def style_review_sheet(ws) -> None:
         "B": 18,
         "C": 28,
         "D": 32,
-        "E": 16,
-        "F": 18,
+        "E": 20,
+        "F": 24,
         "G": 12,
-        "H": 60,
+        "H": 14,
         "I": 16,
-        "J": 14,
-        "K": 18,
-        "L": 12,
-        "M": 30,
+        "J": 18,
+        "K": 12,
+        "L": 56,
+        "M": 56,
+        "N": 18,
+        "O": 22,
+        "P": 22,
+        "Q": 22,
+        "R": 14,
+        "S": 18,
+        "T": 12,
+        "U": 30,
     }
     for column_letter, width in widths.items():
         ws.column_dimensions[column_letter].width = width
@@ -949,13 +1225,20 @@ def build_workbook(
     instructions = [
         "Layer 3 field GT starts from frozen Stage 5 formulation rows and does not change row identity.",
         "Each row is one `(formulation_id, field_name)` review item.",
-        "Columns A-E are frozen so paper, formulation identity, and helper labels stay visible while reviewing.",
+        "Columns A-I are frozen so paper, system identity, article-native labels, Layer 2 risk flags, and field_name stay visible while reviewing.",
         "Use gt_status dropdown values: correct, incorrect, not_reported, unclear.",
         "gt_unit provides common unit suggestions but allows free-text fallback when needed.",
-        "evidence_text is a compact reviewer aid and is kept blank when the extracted value is blank or unsupported.",
-        "Rows with unresolved_table or unsupported_text need manual paper lookup before GT completion.",
+        "formulation_id and formulation_label_stage5 remain the canonical system identity columns.",
+        "article_formulation_id and article_formulation_label are reviewer aids only and do not replace system identity.",
+        "evidence_text holds direct supporting evidence only when the extracted value is directly supported.",
+        "evidence_anchor_text may preserve the closest available source anchor for manual lookup even when direct support is missing.",
+        "Rows with unresolved_table, unsupported_text, derived_without_direct_text, or missing_evidence_anchor need manual paper lookup before GT completion.",
         "drug_polymer_ratio is a deterministic derived seed only when final-row drug and polymer masses are both present.",
+        "polymer_grade_recorded_not_mw flags product-grade text that was carried in polymer MW text fields upstream and is intentionally not surfaced as a molecular-weight value here.",
+        "normalization_pending marks concentration-like fields that are still reported as raw mass and need manual interpretation rather than silent normalization.",
         "This workbook does not yet seed phase-ratio review rows because the frozen final table does not carry a safe explicit phase-ratio field.",
+        "paper_risk_level and layer3_inclusion_flag come from the post-comparison Layer 2 risk stratification layer and help prioritize field review only.",
+        "Risk metadata does not change Stage 5 inclusion or benchmark-valid final rows.",
     ]
     ws_instr["A1"] = "Layer 3 Field GT Review Instructions"
     ws_instr["A1"].font = Font(bold=True)
@@ -995,6 +1278,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Optional scope manifest TSV for DOI/title enrichment.",
     )
     parser.add_argument(
+        "--paper-risk-tsv",
+        type=Path,
+        default=None,
+        help="Optional Layer 2 paper risk assessment TSV for Layer 3 review prioritization metadata.",
+    )
+    parser.add_argument(
+        "--resolved-relation-fields-tsv",
+        type=Path,
+        default=None,
+        help="Optional Stage 3 resolved_relation_fields_v1.tsv for relation-resolved field provenance carry-through.",
+    )
+    parser.add_argument(
         "--max-span-chars",
         type=int,
         default=320,
@@ -1020,15 +1315,21 @@ def main() -> None:
     artifact_version = max(1, int(args.artifact_version))
     final_table_tsv = args.final_table_tsv or run_dir / "final_formulation_table_v1.tsv"
     scope_manifest_tsv = args.scope_manifest_tsv or discover_scope_manifest(run_id)
+    paper_risk_tsv = args.paper_risk_tsv
+    resolved_relation_fields_tsv = args.resolved_relation_fields_tsv or discover_resolved_relation_fields(run_dir)
     if not final_table_tsv.exists():
         raise FileNotFoundError(f"Final table TSV not found: {final_table_tsv}")
 
     final_rows = read_tsv_rows(final_table_tsv)
     manifest_map = load_manifest_map(scope_manifest_tsv)
+    paper_risk_map = load_paper_risk_map(paper_risk_tsv)
+    resolved_relation_map = load_resolved_relation_map(resolved_relation_fields_tsv)
     resolver = AuditEvidenceResolverV1(project_root=Path(__file__).resolve().parents[2])
     workbook_rows, seed_rows = build_seed_rows(
         final_rows=final_rows,
         manifest_map=manifest_map,
+        paper_risk_map=paper_risk_map,
+        resolved_relation_map=resolved_relation_map,
         resolver=resolver,
         max_span_chars=max(120, int(args.max_span_chars)),
     )
@@ -1057,6 +1358,8 @@ def main() -> None:
                 "out_dir": str(out_dir),
                 "final_table_tsv": str(final_table_tsv),
                 "scope_manifest_tsv": str(scope_manifest_tsv) if scope_manifest_tsv else "",
+                "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
+                "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
                 "workbook_path": str(workbook_path),
                 "field_rows": len(workbook_rows),
                 "formulation_rows": len(final_rows),

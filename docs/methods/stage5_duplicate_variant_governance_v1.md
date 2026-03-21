@@ -61,6 +61,65 @@ Retention remains conservative.
 This means Stage5 now owns duplicate / variant governance for benchmark-facing
 final output, but it still avoids broad automatic merging.
 
+## Identity Constraints
+
+Stage5 also applies benchmark-facing identity constraints.
+
+A row is included in the final formulation table only when it represents an
+independently reported formulation instance. A row is excluded when it only
+references a parent formulation identity or only summarizes shared/comparative
+context without introducing a separate formulation instance.
+
+### Constraint 1: Parent-linked non-synthesis descendants are not independent identities
+
+When a row is parent-linked and explicitly marked as a non-synthesis
+descendant, Stage5 treats that row as a formulation-referencing variant rather
+than a new benchmark-facing formulation identity when the row is clearly in
+control, characterization, post-processing, or downstream evaluation context.
+
+Safeguard:
+
+- `post_processing` is not by itself a universal exclusion signal.
+- If a parent-linked row is still a sweep-style `variant_formulation` member,
+  Stage5 must not auto-filter it solely because `post_processing` appears in
+  the tags.
+- Those ambiguous rows must instead fall through to the conservative
+  duplicate/variant governance path, where they are kept unless a unique safe
+  collapse target exists.
+
+Why this safeguard exists:
+
+- Some papers encode table-native formulation members as parent-linked
+  non-synthesis variants with `post_processing` tags even though the paper and
+  Layer 2 benchmark authority still treat them as benchmark-facing formulation
+  identities.
+- `BB3JUVW7` is the validated regression anchor for this failure class, but the
+  safeguard is defined by row semantics rather than by paper key.
+
+Conceptual definition:
+
+- the parent row carries the benchmark-facing formulation identity
+- the descendant row carries downstream usage or measurement context
+- the descendant is therefore excluded from final identity closure
+
+### Constraint 2: Shared/comparative summaries are not independent identities
+
+When a row is unparented but is explicitly tagged as a shared-condition summary
+or as a comparative-study summary reference, Stage5 treats that row as context
+for formulation interpretation rather than as an independently reported
+formulation instance.
+
+Conceptual definition:
+
+- shared-condition blocks describe preparation context reused across multiple
+  formulations
+- comparative-study summary references describe a comparison surface, not a new
+  formulation identity
+- these rows are therefore excluded from final identity closure
+
+These constraints are part of the current `DEV15_v2` Stage5 identity contract.
+They are system behavior definitions, not paper-specific patches.
+
 ## Non-Goals
 
 This layer does not:
@@ -104,12 +163,24 @@ Confirmed replay outcomes:
 - No other papers changed relative to the previous replay.
 - No fresh LLM calls were made.
 
+Additional regression protection:
+
+- `src/stage5_benchmark/validate_stage5_descendant_filter_regression_v1.py`
+- This deterministic checker reruns Stage5 against frozen artifact inputs and
+  asserts both:
+  - `BB3JUVW7` retains all `12` benchmark-facing final rows
+  - known descendant/control rows from existing blocker material remain
+    filtered
+
 ## Current Limits
 
 The current governed layer remains deliberately narrow.
 
-- `WFDTQ4VX` checkpoint / validation cases are classified but are not
-  auto-collapsed in Stage5 without a unique deterministic target.
+- `WFDTQ4VX` checkpoint / validation cases now support one narrow
+  benchmark-valid collapse rule: checkpoint batches are collapsed when the
+  validated coordinate-signature mapping shows that the batch matches exactly
+  one existing design-row formulation identity.
+- Generalized DOE coordinate reconciliation is still not implemented in Stage5.
 - Optimized / baseline handling remains unique-target-only.
 - Parent / variant inheritance is still not relation-driven in Stage5.
 - Ambiguous cases remain `uncertain_variant` with `review_needed = yes`.

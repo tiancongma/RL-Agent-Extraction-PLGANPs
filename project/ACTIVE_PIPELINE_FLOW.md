@@ -65,6 +65,9 @@ The final comparison node is separate from production:
 - input B: fixed manual GT workbook
 - input C: declared scope manifest TSV
 - output: `final_table_vs_gt_counts.tsv` and `final_table_vs_gt_summary.md`
+- optional downstream comparison metadata:
+  - `analysis/paper_risk_assessment.tsv`
+  - `analysis/paper_risk_assessment_summary.md`
 
 The active stage namespaces are exactly:
 
@@ -277,6 +280,24 @@ records.
 Stage 5 is a materialization layer. It must not perform semantic inference or
 same-paper donor search.
 
+Stage 5 identity constraints layer:
+
+- exclude parent-linked non-synthesis descendants when they are explicitly
+  downstream/control/characterization references to an existing parent
+  formulation identity
+- exclude unparented shared-condition summaries and comparative summary
+  references when they do not define an independently reported formulation
+  instance
+
+Stage 5 post-comparison risk stratification layer:
+
+- build paper-level Layer 2 audit-risk labels from an existing Layer 2
+  identity-comparison artifact
+- do not change Stage 2 extraction, Stage 3 relation materialization, Stage 5
+  final-table closure, or benchmark-valid comparison counts
+- use the resulting risk labels only as downstream audit-use metadata for
+  Layer 3 field-level GT work
+
 Exact input files or directories:
 
 - Stage 2 candidate formulation-instance TSV
@@ -289,6 +310,8 @@ Exact script path(s) and script filename(s):
 - `src/stage5_benchmark/build_minimal_final_output_v1.py`
 - optional `NON-CANONICAL, STAGE5_ONLY` convenience helper:
   - `src/stage5_benchmark/run_minimal_final_output_v1.py`
+- optional post-comparison risk helper:
+  - `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
 - optional Layer 2 GT review export helper:
   - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
 
@@ -297,6 +320,15 @@ Exact output files or directories:
 - `final_formulation_table_v1.tsv`
 - `final_output_decision_trace_v1.tsv`
 - `final_output_summary_v1.md`
+- optional comparison-metadata outputs:
+  - `analysis/paper_risk_assessment.tsv`
+  - `analysis/paper_risk_assessment_summary.md`
+- optional downstream Layer 3 review-pack outputs built from the frozen final
+  table plus comparison metadata:
+  - `final_formulation_table_audit_ready_v1.tsv`
+  - `field_gt_review_seed_rows_v*.tsv`
+  - `field_gt_review_source_summary_v*.tsv`
+  - `field_gt_review_workbook_v*.xlsx`
 
 Stage completion artifact:
 

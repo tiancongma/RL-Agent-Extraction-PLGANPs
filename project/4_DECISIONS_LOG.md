@@ -940,6 +940,27 @@ Current limits
 - Parent / variant inheritance is still not relation-driven in Stage5.
 - Ambiguous cases remain `uncertain_variant` with `review_needed = yes`.
 
+### Decision: Mirror the validated WFDTQ4VX checkpoint coordinate rule into the benchmark-valid Stage5 path
+
+Decision
+- Integrate one narrow paper-specific collapse rule into `src/stage5_benchmark/build_minimal_final_output_v1.py` for `WFDTQ4VX` / `10.1080/10717544.2016.1199605`.
+- The rule collapses a checkpoint / validation row only when the validated coordinate-signature mapping shows that the checkpoint batch matches exactly one existing design-row formulation identity.
+- This mirrors the previously validated Stage4 diagnostic rule for the same paper.
+
+Reason
+- The repository already recorded that Stage5 benchmark-facing closure should mirror the validated `WFDTQ4VX` coordinate-aware identity rule.
+- Leaving that rule only in Stage4 would make blocker-gate evaluation depend on a knowingly incomplete mainline final-output path.
+
+Scope control
+- This change does not add generalized DOE closure.
+- This change does not alter Stage2 extraction semantics.
+- This change does not broaden optimization closure, family closure, or relation-driven inheritance logic.
+- If the paper-local source-text parse fails or the checkpoint row does not match exactly one design-row identity, Stage5 falls back to the prior conservative behavior.
+
+Consequence
+- `WFDTQ4VX` checkpoint / validation identity closure is now on the benchmark-valid mainline path.
+- Broader DOE coordinate closure remains future work and must not be inferred from this narrow integration.
+
 ### Decision: version the DEV15 GT authority when benchmark object alignment changes, and preserve prior GT workbooks unchanged
 
 Decision
@@ -1365,3 +1386,331 @@ Traceability
   - `src/stage5_benchmark/build_minimal_final_output_v1.py`
 - Focused regression run:
   - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/lineage/children/16_5gif_field_fill/run_20260318_1549_22e713d_5gif3d8w_stage5_field_fill_regression_no_llm_v1/RUN_CONTEXT.md`
+
+### Decision: Stage 5 Identity Contract (DEV15_v2)
+
+Decision
+- Stage 5 now applies an explicit identity-constraints layer as part of the
+  benchmark-facing `DEV15_v2` final formulation closure contract.
+- A benchmark-facing formulation identity is defined as an independently
+  reported formulation instance, not merely any row that references a
+  formulation family, a shared preparation block, or a comparative context.
+- Stage 5 may exclude rows that fail this identity definition when the
+  exclusion can be justified using existing deterministic lineage and context
+  signals from Stage 2.
+
+Identity definition
+- Include a row in the benchmark-facing final formulation table when it
+  represents an independently reported formulation instance with its own
+  synthesis-defining identity.
+- Exclude a row when it only references an already-defined formulation identity
+  or only summarizes shared/comparative context without introducing an
+  independent formulation instance.
+
+Rule 1: parent-linked non-synthesis descendant suppression
+- Exclude a row when all of the following are true:
+  - `parent_instance_id` is present
+  - `change_role = non_synthesis`
+  - `instance_kind = variant_formulation`
+  - and the row is explicitly in control, characterization, post-processing, or
+    downstream evaluation context
+- Conceptual meaning:
+  - a parent-linked non-synthesis descendant is a formulation-referencing
+    variant, not a new benchmark-facing formulation identity
+
+Rule 2: unparented shared/comparative summary suppression
+- Exclude a row when it is unparented and is explicitly marked as either:
+  - a shared-condition summary block
+  - or a comparative-study summary reference without independent formulation
+    identity
+- Conceptual meaning:
+  - shared preparation summaries and comparative summary references are
+    evidence/context surfaces, not independently reported formulation
+    instances
+
+Scope
+- These are Stage 5 identity constraints, not Stage 2 extraction changes.
+- They do not redesign DOE closure, family-boundary closure, or Stage 3
+  relation construction.
+- They are part of the benchmark-facing `DEV15_v2` contract and should be
+  treated as contract-level behavior rather than temporary experiment filters.
+
+## 2026-03-20
+
+### Decision: Layer 2 Risk Stratification Contract For DEV15_v2 GT Review
+
+Decision
+- The system now distinguishes benchmark-valid final-output comparison from
+  downstream audit-risk stratification.
+- A paper-level Layer 2 risk artifact is now part of the supported
+  post-comparison metadata layer:
+  - `analysis/paper_risk_assessment.tsv`
+  - `analysis/paper_risk_assessment_summary.md`
+- This risk layer is output-layer metadata only.
+- It must not change Stage 2 extraction semantics, Stage 3 relation semantics,
+  Stage 5 identity closure, or benchmark-valid final-table counts.
+
+Reason
+- Full DEV15_v2 comparison showed that Layer 2 does not need zero residual
+  mismatch to allow safe Layer 3 field-level GT audit.
+- Small residual differences such as isolated `+1` extra rows can be tolerable
+  when they do not imply large-scale identity failure.
+- Downstream Layer 3 review still needs a durable way to distinguish
+  low-residual papers from papers with likely batch over-generation or
+  meaningful missing identities.
+
+Contract
+- Risk labels are deterministic and paper-level.
+- Required fields include:
+  - paper key / DOI
+  - matched / extra / missing counts
+  - total mismatch
+  - mismatch ratio within paper
+  - `paper_risk_level`
+  - `risk_source`
+  - `layer3_inclusion_flag`
+  - short rationale
+- Initial deterministic policy:
+  - `LOW`: `extra_count <= 1` and `missing_count == 0`
+  - `HIGH`: `extra_count > 3` or `missing_count >= 2`
+  - `MEDIUM`: all remaining non-LOW and non-HIGH papers
+  - `INCLUDE` for `LOW`, `REVIEW` for `MEDIUM`, `HOLD` for `HIGH`
+
+Allowed `risk_source` values
+- `stage2_over_generation`
+- `stage2_under_generation`
+- `stage5_over_retention`
+- `mixed`
+- `unknown`
+
+Usage rule
+- This contract is for audit stratification only.
+- It must not be used to delete high-risk papers from benchmark outputs.
+- It exists so downstream Layer 3 field-level GT interpretation remains valid,
+  explainable, and reproducible while pipeline semantics remain frozen.
+
+### Decision: Layer 3 Field GT Workbook Contract Refresh For DEV15_v2
+
+Decision
+- The active Layer 3 workbook contract remains anchored to:
+  - `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
+  - `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- The workbook remains a downstream manual-audit surface built from frozen
+  Stage 5 final rows.
+- The workbook may now carry Layer 2 paper-risk metadata from
+  `analysis/paper_risk_assessment.tsv` so field-level review can distinguish
+  low-risk papers from papers that should be reviewed more cautiously.
+
+Reason
+- Full DEV15_v2 comparison established that Layer 2 is no longer a zero-
+  residual gate for Layer 3 field audit.
+- Reviewers still need a durable paper-level warning surface while inspecting
+  field-level values, inheritance, normalization, and derivations.
+- This metadata belongs in the review layer, not in Stage 2, Stage 3, or Stage
+  5 benchmark-valid semantics.
+
+Contract
+- The Layer 3 workbook is review support only.
+- It must not change formulation identity, row counts, benchmark scores, or
+  Stage 5 inclusion decisions.
+- Reviewer-facing workbook columns should stay compact and preserve:
+  - frozen formulation identity
+  - readable helper labels
+  - extracted value and evidence support
+  - manual GT decision columns
+  - optional paper-level risk metadata
+- Companion outputs remain:
+  - `final_formulation_table_audit_ready_v1.tsv`
+  - `field_gt_review_seed_rows_v*.tsv`
+  - `field_gt_review_source_summary_v*.tsv`
+  - `field_gt_review_workbook_v*.xlsx`
+
+### Decision: run_id Appears Only At Run Root For New Outputs
+
+Decision
+- For new outputs and future runs, `run_id` appears exactly once at the run
+  root directory.
+- Artifact subdirectories below that run root must be functional only and must
+  not repeat:
+  - the full `run_id`
+  - timestamp/hash fragments derived from the `run_id`
+
+Reason
+- Repeating run-like identifiers below the run root creates unnecessary path
+  inflation and makes artifact paths harder to read, compare, and audit.
+- Functional artifact names are sufficient once the enclosing run root already
+  provides uniqueness.
+
+Scope
+- This rule applies prospectively only.
+- Historical run directories and existing lineage layouts are not renamed by
+  this decision.
+- If a unit needs to be independently rerunnable or lineage-addressable, it
+  must be created as a separate run root with its own `run_id`, not as a
+  nested artifact folder inside an existing run.
+
+Examples
+- Preferred:
+  - `data/results/<run_id>/analysis/...`
+  - `data/results/<run_id>/audit/...`
+  - `data/results/<run_id>/fgt_v3_dev15_v2/...`
+- Not allowed for new outputs:
+  - `data/results/<run_id>/run_20260320_1317_ab12cd3_dev15_compare/...`
+  - `data/results/<run_id>/compare_20260320_1317_ab12cd3/...`
+
+### Decision: Layer 3 Workbook Usability Patch Preserves Frozen Semantics
+
+Decision
+- The active Layer 3 field-review workbook and audit-ready export may add
+  reviewer-facing usability metadata without changing any frozen Stage 2, Stage
+  3, or Stage 5 semantics.
+- The current usability patch adds:
+  - article-native formulation identifiers as additional reviewer columns
+  - separate evidence-anchor carry-through when direct support is missing
+  - explicit review warnings for polymer-grade text carried in molecular-weight
+    text fields
+  - explicit `normalization_pending` markers for raw-mass concentration rows
+
+Reason
+- Manual Layer 3 audit needs article-native labels, provenance anchors, and
+  normalization warnings to review fields efficiently.
+- These aids belong in the workbook/export surface only and must not be
+  confused with benchmark-valid identity or benchmark-valid value changes.
+
+Scope
+- Canonical system identity remains:
+  - `formulation_id`
+  - `formulation_label_stage5`
+- Article-native identifiers are additive reviewer aids only.
+- `evidence_text` remains reserved for direct supporting evidence.
+- `evidence_anchor_text`, `evidence_status_detail`, `review_warning`, and
+  `normalization_status` are downstream audit metadata only.
+- No Stage 5 row membership, Stage 5 identity constraints, benchmark-valid
+  counts, or benchmark-valid comparison artifacts change under this decision.
+
+### Decision: Repair the Layer 3 evidence handoff contract without changing frozen semantics
+
+Decision
+- The Layer 3 field-review workbook must continue to enforce the strict
+  direct-support policy, but it must no longer surface broad row-level
+  fallback spans as reviewer evidence anchors when no field-local relationship
+  exists.
+- Structured fields such as `LA/GA` and `polymer_MW` must use field-aware
+  support checks in the workbook/export surface so unrelated numeric text does
+  not count as direct support.
+- When a frozen final-row field is marked `relation_resolved`, the Layer 3
+  seed/reference export must carry the Stage 3 relation-resolution provenance
+  as reviewer metadata instead of reusing representative row-level spans as if
+  they were direct supporting evidence.
+
+Reason
+- The current frozen final table remains benchmark-valid, but the reviewer
+  workbook was recomputing evidence support locally from row-level evidence with
+  weaker logic than the prior numeric/evidence hardening path.
+- This produced two audit-surface failures:
+  - misleading `evidence_anchor_text` from broad row spans
+  - false support on structured numeric-like fields from unrelated numeric text
+
+Impact
+- Stage 2 extraction semantics are unchanged.
+- Stage 3 relation semantics are unchanged.
+- Stage 5 identity logic, final row membership, and benchmark-valid outputs are
+  unchanged.
+- The repair applies only to Layer 3 reviewer-facing workbook/export artifacts
+  and seed/reference metadata.
+
+### Decision: Promote the Layer 3 Evidence Handoff Contract to a first-class functional unit
+
+Decision
+- The Layer 3 Evidence Handoff Contract is now a first-class reviewer-surface
+  functional unit in the repository.
+- It is defined as a durable contract, not as an ad hoc workbook heuristic.
+- It must remain regression-protected so future workbook/export changes cannot
+  silently weaken evidence support behavior.
+
+Reason
+- Strong evidence-binding safeguards already existed in the repository, but the
+  active Layer 3 workbook path previously allowed weaker local heuristics and
+  broad row-level anchor carry-through to override that intent.
+- That mismatch was subtle and reviewer-facing, which made it vulnerable to
+  future silent degradation unless made explicit and testable.
+
+Contractual resolution
+- The contract is defined in:
+  - `docs/methods/layer3_field_gt_protocol_v1.md`
+- Golden regression cases live in:
+  - `docs/methods/layer3_evidence_handoff_golden_cases_v1.tsv`
+- Minimal validation mechanism:
+  - `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py`
+
+Hard rule
+- Layer 3 reviewer exports may add reviewer metadata, but they must not:
+  - downgrade stronger upstream evidence/QC behavior
+  - surface non-local row text as field evidence
+  - mark structured fields as supported using generic numeric-token overlap
+
+Impact
+- This adds durability and traceability only.
+- Stage 2 extraction semantics are unchanged.
+- Stage 3 relation semantics are unchanged.
+- Stage 5 identity logic, benchmark-valid outputs, and final table membership
+  are unchanged.
+- Future Layer 3 workbook/export changes must validate against the golden
+  cases before they should be considered contract-compliant.
+
+## 2026-03-21
+
+### Decision: Tighten the Stage5 descendant filter so ambiguous sweep-style variants are not auto-suppressed
+
+Decision
+- Keep the Stage5 `parent_linked_non_synthesis_descendant_variant` rule for
+  obvious non-benchmark descendants.
+- Narrow the rule so `post_processing` alone is not sufficient when a
+  parent-linked row is still a sweep-style `variant_formulation` carrying
+  paper-local formulation-member identity signals.
+- Those ambiguous rows must fall through to the existing conservative
+  variant-governance path, where they can still be retained as
+  `kept_uncertain_variant_no_signature` if no unique safe collapse target is
+  found.
+
+Regression being fixed
+- `BB3JUVW7` / `10.1016/j.ijpharm.2021.120820`
+- Valid benchmark-facing formulation identities `F2.2`, `F2.4`, `F2.5`,
+  `F2.6`, and `F2.7` were filtered in Stage5 after the early
+  `parent_linked_non_synthesis_descendant_variant` branch was added.
+
+Root cause
+- The early Stage5 descendant filter matched:
+  - `instance_kind = variant_formulation`
+  - non-empty `parent_instance_id`
+  - `change_role = non_synthesis`
+  - overlap with post-processing-style context tags
+- That rule ran before the older uncertain-variant fallback, so rows with
+  benchmark-facing sweep identity never reached conservative variant review.
+- The prior rule was too broad because `post_processing` was treated as a
+  universal exclusion signal even for table-native sweep members that the
+  paper still reports as distinct formulations.
+
+New intended behavior
+- Still filter parent-linked descendants when they are clearly:
+  - `control`
+  - `characterization_only`
+  - or downstream measurement / PK / in-vivo rows
+- Do not auto-filter parent-linked rows solely because `post_processing`
+  appears when the row remains a sweep-style `variant` formulation member.
+
+Regression coverage added
+- New deterministic regression checker:
+  - `src/stage5_benchmark/validate_stage5_descendant_filter_regression_v1.py`
+- Coverage includes:
+  - `BB3JUVW7` must retain `12` benchmark-facing final rows, including the five
+    restored `F2.x` rows
+  - known non-benchmark descendant rows in existing blocker material must still
+    be filtered
+  - `WIVUCMYG` must remain unchanged at the final-count level
+
+Impact
+- This is a minimal Stage5 logic repair only.
+- Stage2 extraction semantics are unchanged.
+- Stage3 relation semantics are unchanged.
+- Workbook, audit, and schema-v2 layers are unchanged.
