@@ -231,11 +231,44 @@ Additive Stage2 augmentation artifacts when numbered DOE tables are detected:
 - `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
 - `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
 
+Additive non-authoritative shadow artifacts:
+
+- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse_components_shadow.jsonl`
+- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse_components_shadow.tsv`
+
+Shadow-output rule:
+
+- these component-shadow artifacts are linked to the existing Stage2 formulation row id
+- they are additive only
+- Stage 3 and Stage 5 must continue consuming only the benchmark-facing Stage2 TSV unless a future explicit contract says otherwise
+
 Stage2 boundary rule:
 
 - explicit numbered DOE or design-table rows belong to the upstream extraction boundary
 - when such rows are present in Stage1 table assets, the deterministic enumerator may add missing candidates before Stage3 and Stage5
 - downstream stages must not be expected to reconstruct those rows if Stage2 omitted them
+
+Future Stage2.5 governance note:
+
+- Stage2.5 is documented as a planned non-authoritative side-path enrichment
+  layer
+- it is not an active runbook step yet
+- a diagnostic text-only Stage2.5A v0 builder now exists:
+  - `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py`
+- when implemented, it must read frozen Stage2 authority artifacts plus source
+  evidence assets, not mutable in-flight Stage2 state
+- it must emit shadow outputs only and must not feed Stage3 or Stage5 in the
+  current phase
+- the current v0 builder is text-only:
+  - exact-anchored sentence or method spans only
+  - no table binding yet
+  - no component extraction yet
+- its recommended internal rollout order is:
+  - Evidence Binding and Pack Builder
+  - Deterministic Pre-Splitter
+  - LLM-Assisted Resolver for unresolved cases only
+  - Component Assembly and Validation
+  - Review and Audit exports
 
 ### Stage 3
 

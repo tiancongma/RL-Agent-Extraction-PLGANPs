@@ -258,10 +258,98 @@ Why this is not a new rule family
 - This case does not show extraction bias.
 - This case does not show Stage4 suppression bias.
 - This case does not justify a new EE-centered pipeline rule.
+
+## 2026-03-24
+
+### Decision: Add an additive non-authoritative Stage2 component shadow sidecar keyed to the existing formulation row id
+
+Decision
+- The active Stage2 extractor may emit two additional shadow artifacts:
+  - `weak_labels__v7pilot_r3_fixparse_components_shadow.jsonl`
+  - `weak_labels__v7pilot_r3_fixparse_components_shadow.tsv`
+- The benchmark-facing Stage2 TSV and JSONL remain unchanged in schema and downstream contract.
+- The shadow artifacts are explicitly non-authoritative and must not be consumed by Stage3 or Stage5 unless a later contract adopts them.
+
+Reason
+- Current wide-row Stage2 outputs preserve key materials and amounts but do not represent multi-component formulation structure cleanly enough for component-aware audit or later extension work.
+- The additive sidecar allows component-aware inspection without redesigning the pipeline or broadening formulation identity rules.
+
+Impact
+- Stage2 runs now expose one linked shadow component surface per formulation row for audit and future schema work.
+- Stage3 and Stage5 behavior remain unchanged.
+- Any observed replay drift in the benchmark-facing Stage2 TSV must still be evaluated separately from the shadow sidecar because the sidecar is written after the TSV row is materialized.
+
+### Decision: Document Stage2.5 as a governed side-path enrichment layer rather than an inline Stage2 change
+
+Decision
+- Stage2.5 is approved as a future non-authoritative, read-only enrichment
+  layer.
+- Stage2.5 will operate on already frozen Stage2 formulation rows plus source
+  evidence assets.
+- Stage2.5 must not change Stage2 benchmark-facing outputs.
+- Stage2.5 must not participate in formulation identity decisions.
+- Stage2.5 must not feed Stage3 or Stage5 in the current phase.
+
+Reason
+- The recent Stage2 component shadow validation confirms two things at once:
+  - richer component-aware structure is useful and should be pursued
+  - flattened Stage2 fields alone are not sufficient authority for stable full
+    recovery
+- The same validation also recorded replay drift in benchmark-facing Stage2
+  outputs relative to the saved active artifact, which argues against embedding
+  additional component-recovery logic directly into Stage2 before a separate
+  architecture contract is in place.
+- A side-path design keeps benchmark stability, formulation identity, and
+  downstream deterministic contracts insulated while component-aware recovery is
+  developed incrementally.
+
+Impact
+- The active production-path mainline remains Stage2 -> Stage3 -> Stage5.
+- Stage2.5 is now the governed location for future component-aware evidence
+  binding, conservative splitting, difficult local structure resolution,
+  assembly, validation, and review surfaces.
+- Recommended rollout order is fixed intentionally:
+  - architecture contract only
+  - Evidence Binding and Pack Builder
+  - Deterministic Pre-Splitter
+  - LLM-Assisted Resolver for unresolved cases only
+  - Component Assembly and Validation
+  - Review and Audit exports
+- Downstream adoption remains deferred until Stage2.5 shadow outputs are proven
+  stable under their own contract.
 - It is an annotation reminder: independently prepared blank / FITC / control-style nanoparticle formulations may be real formulation instances even when the original manual count missed them.
 
 Resolved interpretation
 - Correct formulation-core count = `5`.
+
+---
+
+### Decision: Stage2.5A v0 is a text-only exact-anchor validation layer and remains shadow-only
+
+Decision
+- The first implemented Stage2.5A scope is a text-only Evidence Binding and
+  Pack Builder.
+- It must read frozen Stage2 rows plus cleaned text assets only.
+- It must emit exact-anchored shadow evidence packs with `strict`,
+  `supporting`, and `rejected` buckets.
+- It must not bind tables yet.
+- It must not perform component extraction, Stage2 prompt changes, or any
+  Stage3 or Stage5 integration.
+
+Reason
+- Current evidence-binding failures are dominated by broad paragraph carryover,
+  weak row binding, and non-auditable span reuse.
+- A text-only exact-anchor pass is the smallest governed implementation that
+  proves the evidence-pack contract without widening scope.
+- Deferring table binding keeps v0 focused on correctness and traceability
+  while preserving benchmark stability.
+
+Impact
+- `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py` is the
+  governed Stage2.5A v0 builder.
+- Its outputs are diagnostic-only, non-authoritative shadow artifacts.
+- Downstream adoption remains deferred until later Stage2.5 phases extend the
+  evidence-pack surface safely.
 
 ## 2026-03-11
 

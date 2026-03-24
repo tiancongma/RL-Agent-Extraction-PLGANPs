@@ -46,6 +46,13 @@ The canonical production path is:
 Manual GT assets are reference inputs to evaluation and comparison. They are
 not a production transformation stage.
 
+Architecture-planning note:
+
+- A governed Stage2.5 enrichment layer is now documented below as a future
+  non-authoritative side-path.
+- Stage2.5 is not part of the current active production implementation.
+- The active benchmark-valid mainline remains Stage2 -> Stage3 -> Stage5.
+
 ---
 
 ## Stage 0 - Raw Metadata and Relevance Filtering
@@ -109,6 +116,9 @@ numbered design or formulation table.
 - run-scoped weak-label TSVs
 - run-scoped weak-label JSONL records
 - run-scoped raw LLM responses
+- additive non-authoritative shadow component sidecars keyed to Stage2 formulation rows:
+  - `weak_labels__v7pilot_r3_fixparse_components_shadow.jsonl`
+  - `weak_labels__v7pilot_r3_fixparse_components_shadow.tsv`
 - additive deterministic Stage2 augmentation artifacts for numbered DOE tables:
   - `numbered_doe_row_candidates_v1.tsv`
   - `numbered_doe_row_candidates_summary_v1.tsv`
@@ -117,12 +127,123 @@ numbered design or formulation table.
 - this is the semantic extraction layer
 - instance boundaries and field-role interpretation are assigned here
 - outputs are intentionally high recall and may contain overlapping candidates
+- additive shadow artifacts may expose richer component-aware structure for audit or future adoption, but they are non-authoritative until an explicit downstream contract adopts them
 - deterministic numbered DOE row recovery is allowed here because downstream
   deterministic stages cannot reconstruct explicit numbered rows that the LLM
   never emitted
 
 ### Canonical Completion Artifact
 `data/results/run_<run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
+
+---
+
+## Stage 2.5 - Planned Non-Authoritative Component Enrichment Side-Path
+
+### Status
+Documented architecture with a limited v0 text-only Stage2.5A shadow builder.
+Stage2.5 is still not an active canonical pipeline stage.
+
+### Purpose
+Recover component-aware formulation structure on top of already materialized
+Stage2 formulation rows without changing Stage2 benchmark-facing outputs,
+without participating in formulation identity decisions, and without affecting
+Stage3 or Stage5.
+
+### Intervention Model
+- Stage2.5 is a side-path enrichment branch, not a replacement extraction
+  stage.
+- The active benchmark-valid mainline remains:
+  - Stage2 -> Stage3 -> Stage5
+- The planned enrichment branch is:
+  - frozen Stage2 authority artifacts + source evidence assets -> Stage2.5
+    shadow outputs
+- Stage2.5 outputs are shadow artifacts only in the current phase.
+- Stage2.5 does not feed Stage3 or Stage5 unless a future contract explicitly
+  adopts it.
+- The current v0 implementation scope is limited to text-only exact-anchored
+  evidence-pack construction over frozen Stage2 rows.
+
+### Architectural Principles
+- frozen-authority first:
+  - Stage2.5 must read already materialized Stage2 authority artifacts and raw
+    evidence assets
+  - it must not depend on mutable in-flight Stage2 state
+- evidence-first, not field-first:
+  - component recovery should be driven by validated formulation-bound
+    evidence units
+  - flattened Stage2 fields may be hints, not final authority
+- field-local anchoring:
+  - component fields should be supported by field-local evidence where
+    possible
+  - vague paragraph-level support is not the primary contract
+- conservative canonicalization:
+  - preserve raw author wording alongside normalized interpretations
+  - do not force ontology expansion prematurely
+- non-authoritative shadow until proven stable:
+  - Stage2.5 outputs remain shadow artifacts in the current phase
+- no formulation-identity reinterpretation:
+  - Stage2.5 operates only within already frozen formulation row boundaries
+  - it must not create, merge, split, or remove formulation identities
+
+### Responsibility Boundary
+- Stage2.5 Evidence Pack Builder is responsible for recovering usable local
+  evidence.
+- The deterministic pre-splitter is responsible for safe obvious splits.
+- The LLM-assisted resolver is responsible only for difficult local structure
+  cases left unresolved after deterministic handling.
+- The assembler and validator are responsible for constructing valid
+  one-component-one-object shadow records.
+- If raw evidence is not recoverable, Stage2.5 must preserve unresolved status
+  rather than hallucinate structure.
+
+Raw-evidence rule:
+
+- Flattened Stage2 benchmark-facing fields alone are not sufficient authority
+  for full component recovery.
+- Raw evidence remains the authority for Stage2.5 structure recovery.
+
+### Planned Logical Modules
+- Stage2.5A Evidence Binding and Pack Builder:
+  - build validated formulation-bound evidence packs
+  - exact substring anchoring
+  - table cell/header pairing
+  - local context packaging
+  - deduplication
+  - empty or irrelevant evidence filtering
+  - anchor validation
+- Stage2.5B Deterministic Pre-Splitter:
+  - perform high-precision low-risk splitting of obvious multi-component
+    expressions
+  - handle simple conjunctions, list-like structures, and clear table pairings
+    conservatively
+- Stage2.5C LLM-Assisted Component Resolver:
+  - resolve only the difficult local structure cases left unresolved by the
+    deterministic pre-splitter
+  - preserve ambiguity and map component fields to evidence units
+- Stage2.5D Component Assembly and Validation:
+  - merge component candidates into governed shadow objects
+  - enforce the one-component-one-object contract
+  - validate properties, amount kinds, phase fields, and evidence references
+- Stage2.5E Review and Audit Surface:
+  - produce reviewer-facing JSONL, TSV, workbook, or equivalent audit surfaces
+    for manual inspection and error localization
+
+### Recommended Implementation Phasing
+- Phase 1:
+  - architecture contract only
+- Phase 2:
+  - Stage2.5A Evidence Pack Builder
+- Phase 3:
+  - Stage2.5B Deterministic Pre-Splitter
+- Phase 4:
+  - Stage2.5C LLM-Assisted Resolver for unresolved cases only
+- Phase 5:
+  - Stage2.5D Assembly and Validation
+- Phase 6:
+  - Stage2.5E Review and Audit exports
+
+This staged rollout is intentional so component-structure recovery can be
+introduced incrementally without disturbing benchmark stability.
 
 ---
 

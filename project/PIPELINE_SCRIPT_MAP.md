@@ -32,7 +32,7 @@ Script classes used here are fixed:
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert the raw Zotero-derived JSONL into the authoritative manifest. | `data/raw/zotero/zotero_selected_items.jsonl` | `data/cleaned/index/manifest_current.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
-| Stage 2 | Candidate formulation-instance extraction | `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` | `ACTIVE_ENTRYPOINT` | Produce high-recall candidate formulation-instance rows from cleaned assets. | scope manifest TSV; cleaned text; optional tables; model access | run-scoped weak-label TSV and JSONL |
+| Stage 2 | Candidate formulation-instance extraction | `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` | `ACTIVE_ENTRYPOINT` | Produce high-recall candidate formulation-instance rows from cleaned assets while also emitting additive non-authoritative component shadow sidecars keyed to the existing formulation row id. | scope manifest TSV; cleaned text; optional tables; model access | run-scoped weak-label TSV and JSONL; additive component-shadow JSONL and TSV |
 | Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts and resolved relation-backed descriptive synthesis fields from Stage 2 weak labels without any LLM usage. | Stage 2 candidate formulation-instance TSV; optional Stage 2 JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv`; `resolved_relation_fields_v1.tsv` |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts. | Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
@@ -63,6 +63,13 @@ transformations.
   production endpoint.
 - The comparison node is downstream of the production path and uses the fixed
   GT workbook as a separate reference input.
+- A governed future Stage2.5 layer is documented as a side-path enrichment
+  branch only.
+- Stage2.5 is not yet an active script namespace or maintained execution
+  entrypoint.
+- When implemented, it must remain non-authoritative and must not replace the
+  Stage2 -> Stage3 -> Stage5 mainline unless a later decision explicitly
+  changes the contract.
 
 ## Optional Diagnostic / Review Path
 
@@ -140,6 +147,33 @@ Stage 2 instance-kind reconciliation note:
   formulation identity.
 - Audit fields are preserved in the Stage 2 outputs so raw vs reconciled
   instance-kind behavior can be inspected downstream.
+
+Stage 2.5 planning note:
+
+- Planned role:
+  - recover component-aware structure over frozen Stage2 formulation rows as a
+    side-path enrichment surface
+- Current implemented shadow tool:
+  - `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py`
+  - text-only exact-anchor validation builder for Stage2.5A
+- Planned authority:
+  - shadow only, non-authoritative
+- Planned boundary:
+  - must not reinterpret formulation identity
+  - must not feed Stage3 or Stage5 in the current phase
+  - must prefer validated evidence packs over flattened field-only recovery
+- Planned implementation order:
+  - Evidence Binding and Pack Builder
+  - Deterministic Pre-Splitter
+  - LLM-Assisted Resolver for unresolved local structure only
+  - Component Assembly and Validation
+  - Review and Audit Surface
+
+### Stage 2.5
+
+| Script path | Class | Purpose |
+|---|---|---|
+| `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py` | `STABLE_TOOL` | Build text-only exact-anchored shadow evidence packs for frozen Stage2 formulation rows, classifying units into strict, supporting, and rejected buckets without affecting Stage2, Stage3, or Stage5 behavior. |
 
 ### Stage 3
 

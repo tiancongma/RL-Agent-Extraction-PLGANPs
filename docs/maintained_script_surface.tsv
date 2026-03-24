@@ -1,4 +1,5 @@
 stage_or_workflow	script_path	role	status	must_use_active_data_source_contract	notes
+stage2_5_text_evidence_pack_v0	src/stage2_5_components_shadow/build_text_evidence_packs_v0.py	diagnostic shadow evidence-pack builder	maintained_entrypoint	yes	Default maintained Stage2.5A v0 text-only shadow evidence-pack builder over frozen Stage2 authority artifacts.
 stage5_final_compare	src/stage5_benchmark/compare_final_table_to_gt_v1.py	final benchmark comparison entrypoint	maintained_entrypoint	yes	Default maintained compare entrypoint for current GT benchmark reporting.
 stage5_boundary_gt_review	src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py	boundary GT workbook entrypoint	maintained_entrypoint	yes	Default maintained Layer 2 workbook export for current review workflows.
 stage5_field_gt_review	src/stage5_benchmark/build_field_gt_review_workbook_v1.py	field GT workbook entrypoint	maintained_entrypoint	yes	Default maintained Layer 3 field workbook export for current review workflows.
