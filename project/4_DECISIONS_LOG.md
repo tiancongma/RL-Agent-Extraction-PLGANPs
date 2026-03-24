@@ -222,6 +222,38 @@ Interpretation
 - The system prediction of `5` formulations is likely structurally correct for this paper.
 - The earlier GT count of `3` was a manual annotation undercount.
 
+## 2026-03-23
+
+### Decision: Formalize repository-wide active data-source authority for current data/results workflows
+
+Decision
+- Current benchmark, alignment, comparison, workbook-generation, and audit
+  workflows must not infer the active source from recency, lexical sort order,
+  modification time, parent fallback, or glob-first matching.
+- Source resolution must follow this authority order:
+  1. explicit CLI source such as `--run-dir`
+  2. repository pointer `data/results/ACTIVE_RUN.json`
+  3. otherwise hard error
+- Workbook and comparison outputs must record source-run and source-file
+  metadata in sidecar JSON.
+
+Reason
+- The active architecture now relies on parent lineage roots plus deep child
+  terminal artifacts under `data/results/run_*/lineage/children/...`.
+- Historical `runs/latest.txt` is no longer sufficient as the sole authority
+  for current `data/results` workflows.
+- Future agent sessions must be able to discover the active source rule from
+  repo instructions rather than conversation history.
+
+Impact
+- `project/ACTIVE_DATA_SOURCE_CONTRACT.md` becomes the governing source
+  contract for current `data/results` workflows.
+- `AGENTS.md`, `README.md`, `project/ACTIVE_PIPELINE_RUNBOOK.md`,
+  `project/FILE_NAMING_AND_VERSIONING.md`, and `project/2_ARCHITECTURE.md`
+  now surface the same rule for both agents and humans.
+- Active Stage5 review/comparison helpers are updated to use explicit
+  authority resolution and emit source metadata sidecars.
+
 Why this is not a new rule family
 - This case does not show extraction bias.
 - This case does not show Stage4 suppression bias.
@@ -1770,3 +1802,79 @@ Impact
 - Stage2 extraction semantics are unchanged.
 - Stage3 relation semantics are unchanged.
 - Workbook, audit, and schema-v2 layers are unchanged.
+
+---
+
+## Decision: Layer3 workbook presence must defer to canonical current Stage5 artifacts, not historical bridge status
+
+Date
+- 2026-03-21
+
+Context
+- A Layer3 value workbook regeneration reused the repaired post-fix Stage5
+  final table and the matching audit-ready export, both of which correctly
+  contained `BB3JUVW7` rows `F2.2`, `F2.4`, `F2.5`, `F2.6`, and `F2.7`.
+- Those same rows still appeared as `missing_in_system` in the Layer3 value
+  workbook because historical alignment-side inputs were treated as
+  authoritative:
+  - `alignment_decision != matched` in the alignment scaffold
+  - stale prior-workbook bridge rows carrying `missing_in_system`
+  - builder fallback logic that prevented canonical row loading after the
+    downgrade
+
+Decision
+- For Layer3 workbook generation, the latest Stage5 final table and
+  audit-ready export are the canonical source of truth for formulation
+  existence and identity resolution.
+- Historical alignment scaffolds, trusted prior annotation row files, and
+  previous workbook-derived bridge artifacts remain advisory only.
+- Advisory artifacts may help map a GT row to a system row, but they must not
+  downgrade a row to `missing_in_system` after the latest canonical Stage5
+  artifacts confirm a valid current-system row with a compatible identity
+  anchor.
+
+Impact
+- This is a Layer3 builder contract fix, not a Stage5 regression.
+- Human annotation carry-forward remains allowed, but only for preserving
+  reviewer-entered GT cells and provenance.
+- Current-system workbook population must prefer false negatives over false
+  positives when canonical identity remains unresolved or conflicting.
+
+---
+
+## Decision: Layer3 GT-skeleton alignment must prefer direct canonical article-ID matches before scaffold fallback
+
+Date
+- 2026-03-23
+
+Context
+- `5GIF3D8W` GT rows `F01-F08` were canonically present in the latest Stage5
+  final table and audit-ready export, including direct article-native IDs
+  `F1-F8`.
+- The Layer3 value workbook still mispaired those GT rows to sweep variants
+  because the builder accepted advisory scaffold links such as
+  `F01 -> PLGA 50/50 [stabilizer concentration=0.75 % w/v]` before checking
+  whether the canonical audit export already exposed a stronger one-to-one
+  article-native identity match.
+
+Decision
+- During GT-skeleton workbook generation, the builder must first look for a
+  unique direct canonical match in the latest audit-ready export using the
+  article-native identity surface.
+- For GT IDs following the common generated pattern `paper_key_F0N`, the
+  builder may derive article-ID candidates such as `FN` and prefer those
+  canonical rows when exactly one current-system row matches.
+- Advisory scaffold rows remain a fallback only after stronger canonical
+  article-ID matching is exhausted.
+- When a direct canonical match overrides scaffold fallback, the builder must
+  emit an audit TSV recording the scaffold row, the resolved row, and the rule
+  used.
+
+Impact
+- This change is restricted to the Layer3 GT-alignment and workbook-export
+  layer.
+- Stage2 extraction, Stage3 relation materialization, and Stage5 final-row
+  closure remain unchanged.
+- The new behavior prevents canonically present optimized/core rows from being
+  remapped onto sweep variants when the audit-ready export already exposes a
+  unique stronger identity match.

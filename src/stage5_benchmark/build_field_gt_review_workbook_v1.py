@@ -38,13 +38,23 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 try:
     from src.stage5_benchmark.audit_evidence_resolver_v1 import AuditEvidenceResolverV1
-    from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+    from src.utils.run_id import validate_artifact_subdir
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage5_benchmark.audit_evidence_resolver_v1 import AuditEvidenceResolverV1
-    from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id, validate_artifact_subdir
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+    from src.utils.run_id import validate_artifact_subdir
 
 
 GT_STATUS_OPTIONS = ["correct", "incorrect", "not_reported", "unclear"]
@@ -241,29 +251,6 @@ def seed_tsv_name_for_version(version: int) -> str:
 
 def summary_tsv_name_for_version(version: int) -> str:
     return f"field_gt_review_source_summary_v{int(version)}.tsv"
-
-
-def default_input_path(run_id: str, filename: str) -> Path:
-    return DATA_RESULTS_DIR / run_id / filename
-
-
-def discover_scope_manifest(run_id: str) -> Path | None:
-    run_dir = DATA_RESULTS_DIR / run_id
-    preferred = [run_dir / "dev15_scope.tsv", run_dir / "scope.tsv", run_dir / "scope_manifest.tsv"]
-    for path in preferred:
-        if path.exists():
-            return path
-    matches = sorted(run_dir.glob("*scope*.tsv"))
-    return matches[0] if len(matches) == 1 else None
-
-
-def resolve_run_dir(run_id: str, explicit_run_dir: Path | None) -> Path:
-    if explicit_run_dir is None:
-        return DATA_RESULTS_DIR / run_id
-    run_dir = explicit_run_dir.resolve()
-    if run_dir.name != run_id:
-        raise ValueError("--run-dir basename must match --run-id.")
-    return run_dir
 
 
 def read_tsv_rows(path: Path) -> list[dict[str, str]]:
@@ -1253,7 +1240,11 @@ def build_workbook(
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run-id", required=True, help="Existing output run_id for this Layer 3 review seed.")
+    parser.add_argument(
+        "--run-id",
+        default="",
+        help="Optional exact run_id compatibility alias. When omitted, the repository active source pointer is used.",
+    )
     parser.add_argument(
         "--out-subdir",
         required=True,
@@ -1306,19 +1297,54 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_arg_parser().parse_args()
-    run_id = normalize_text(args.run_id)
-    if not is_valid_run_id(run_id):
-        raise ValueError(f"Invalid run_id: {run_id}")
-    run_dir = resolve_run_dir(run_id, args.run_dir)
+    run_context = resolve_run_context(
+        explicit_run_dir=args.run_dir,
+        explicit_run_id=normalize_text(args.run_id),
+    )
+    run_id = str(run_context["run_id"])
+    run_dir = Path(run_context["run_dir"])
     out_subdir = sanitize_out_subdir(args.out_subdir)
     out_dir = run_dir / out_subdir
     artifact_version = max(1, int(args.artifact_version))
-    final_table_tsv = args.final_table_tsv or run_dir / "final_formulation_table_v1.tsv"
-    scope_manifest_tsv = args.scope_manifest_tsv or discover_scope_manifest(run_id)
+    final_table_tsv = resolve_artifact_path(
+        explicit_path=args.final_table_tsv,
+        run_context=run_context,
+        pointer_key="stage5_final_table_tsv",
+        canonical_relative="final_formulation_table_v1.tsv",
+    )
+    scope_manifest_tsv = resolve_artifact_path(
+        explicit_path=args.scope_manifest_tsv,
+        run_context=run_context,
+        pointer_key="scope_manifest_tsv",
+        preferred_run_local_names=["dev15_scope.tsv", "scope.tsv", "scope_manifest.tsv"],
+        required=False,
+    )
     paper_risk_tsv = args.paper_risk_tsv
-    resolved_relation_fields_tsv = args.resolved_relation_fields_tsv or discover_resolved_relation_fields(run_dir)
-    if not final_table_tsv.exists():
-        raise FileNotFoundError(f"Final table TSV not found: {final_table_tsv}")
+    resolved_relation_fields_tsv = resolve_artifact_path(
+        explicit_path=args.resolved_relation_fields_tsv,
+        run_context=run_context,
+        pointer_key="resolved_relation_fields_tsv",
+        canonical_relative="formulation_relation_v1/resolved_relation_fields_v1.tsv",
+        required=False,
+    )
+
+    print(
+        json.dumps(
+            {
+                "resolved_source_run_dir": str(run_dir),
+                "resolved_source_run_id": run_id,
+                "source_resolution": str(run_context["resolution_source"]),
+                "active_run_pointer_path": str(run_context.get("pointer_path") or ""),
+                "resolved_input_files": {
+                    "final_table_tsv": str(final_table_tsv),
+                    "scope_manifest_tsv": str(scope_manifest_tsv) if scope_manifest_tsv else "",
+                    "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
+                    "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
+                },
+            },
+            indent=2,
+        )
+    )
 
     final_rows = read_tsv_rows(final_table_tsv)
     manifest_map = load_manifest_map(scope_manifest_tsv)
@@ -1350,6 +1376,24 @@ def main() -> None:
         seed_rows=seed_rows,
         source_summary_rows=source_summary_rows,
     )
+    metadata_path = write_artifact_metadata_json(
+        workbook_path,
+        build_artifact_metadata(
+            source_run_context=run_context,
+            source_files={
+                "final_table_tsv": str(final_table_tsv),
+                "scope_manifest_tsv": str(scope_manifest_tsv) if scope_manifest_tsv else "",
+                "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
+                "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
+            },
+            generated_by="src/stage5_benchmark/build_field_gt_review_workbook_v1.py",
+            note="Layer3 field GT workbook authority metadata.",
+            extra={
+                "seed_rows_tsv": str(out_dir / seed_tsv_name),
+                "source_summary_tsv": str(out_dir / summary_tsv_name) if source_summary_rows else "",
+            },
+        ),
+    )
     print(
         json.dumps(
             {
@@ -1361,6 +1405,7 @@ def main() -> None:
                 "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
                 "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
                 "workbook_path": str(workbook_path),
+                "workbook_metadata_json": str(metadata_path),
                 "field_rows": len(workbook_rows),
                 "formulation_rows": len(final_rows),
                 "field_catalog": [spec.field_name for spec in FIELD_SPECS],

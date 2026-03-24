@@ -32,6 +32,25 @@ These files define:
 
 Agents must **not infer architecture without reading them first**.
 
+Before running any benchmark, alignment, comparison, workbook-generation, or
+audit workflow that consumes `data/results/` artifacts, the agent must also
+read:
+
+project/ACTIVE_DATA_SOURCE_CONTRACT.md
+
+Agents must resolve the authoritative source explicitly before execution.
+They must not assume latest by directory name, timestamp, parent fallback, glob
+matching, or modification time.
+If a workflow source is ambiguous, the agent must inspect the active data
+source contract and print the resolved run directory plus exact source file
+paths before execution.
+For execution-facing benchmark, alignment, comparison, workbook-generation, and
+audit workflows, agents must select only maintained entrypoint scripts listed
+in `project/ACTIVE_PIPELINE_RUNBOOK.md` and `docs/maintained_script_surface.tsv`.
+They must not choose scripts by name similarity, recency, or convenience, and
+they must not auto-select legacy, deprecated, wrapper-only, or diagnostic
+scripts unless the user explicitly requests them.
+
 ---
 
 # 2. Governance layer rule
@@ -170,6 +189,11 @@ Hard rule:
 
 Before reporting benchmark performance, the agent must verify whether all intended downstream guardrail, normalization, filtering, and final-output layers for that workflow have been executed.
 
+For Layer3 workbook generation and review surfaces:
+- the latest Stage5 final table and audit-ready export are the canonical source of truth for current-system formulation presence and identity resolution
+- historical alignment scaffolds, prior workbook bridge rows, and trusted annotation carry-forward files are advisory only
+- advisory artifacts may help map GT rows to system rows, but they must not downgrade a canonically present row to `missing_in_system`
+
 ---
 
 # 6. File creation rules
@@ -232,6 +256,29 @@ If repository structure or authority is unclear:
 4. ask the user
 
 Agents must **never guess pipeline structure**.
+
+---
+
+# 9a. Supporting memory layer
+
+Governed long-term memory is a **supporting layer**, not an active pipeline
+stage.
+
+Rules:
+
+- memory artifacts must stay under `data/mem/v1/`
+- memory files must remain flat row-based TSV or schema-manifest assets
+- for complex debugging, regression investigation, run comparison, pipeline
+  modification, GT mismatch analysis, or lineage tracing, agents should
+  identify the task type and query memory before reading local source files or
+  acting
+- preferred bootstrap pattern:
+  - `python src/utils/mem_bootstrap_v1.py --query "..."`
+  - or `python src/utils/query_mem_v1.py --query "..."`
+- rebuild memory when governed source documents or `RUN_CONTEXT.md` artifacts
+  change materially
+- use targeted memory updates only for small manual corrections or additions;
+  do not create alternative memory trees
 
 ---
 

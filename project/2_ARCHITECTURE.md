@@ -251,6 +251,25 @@ It must expose:
 - a lineage mapping artifact if child runs were moved or nested
 - an explicit child-step index when the lineage includes retries or repair work
 
+### Active data-source authority
+
+For current `data/results` workflows, the repository-level active source must
+be declared explicitly.
+
+Authority order:
+
+1. explicit CLI source such as `--run-dir`
+2. `data/results/ACTIVE_RUN.json`
+3. otherwise hard error
+
+The architecture forbids resolving the active source by:
+
+- lexical sort order
+- modification time
+- parent fallback
+- glob-first matching
+- unstated defaulting
+
 Independent top-level runs are allowed only when the declared objective, scope,
 or benchmark contract is materially separate from an existing lineage.
 

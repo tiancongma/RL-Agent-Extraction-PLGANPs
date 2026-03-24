@@ -31,6 +31,23 @@ import csv
 import json
 import re
 from pathlib import Path
+import sys
+
+try:
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
 
 
 OUTPUT_NAME = "final_formulation_table_audit_ready_v1.tsv"
@@ -40,8 +57,19 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--final-table-tsv",
-        required=True,
+        default="",
         help="Path to Stage 5 final_formulation_table_v1.tsv.",
+    )
+    parser.add_argument(
+        "--run-dir",
+        type=Path,
+        default=None,
+        help="Optional authoritative run directory. Overrides ACTIVE_RUN.json.",
+    )
+    parser.add_argument(
+        "--run-id",
+        default="",
+        help="Compatibility alias for selecting an explicit run root by run_id.",
     )
     parser.add_argument(
         "--out-tsv",
@@ -346,23 +374,64 @@ def build_export_rows(
 
 def main() -> None:
     args = parse_args()
-    final_table_path = Path(args.final_table_tsv).resolve()
+    run_context = resolve_run_context(
+        explicit_run_dir=args.run_dir,
+        explicit_run_id=args.run_id,
+    )
+    final_table_path = resolve_artifact_path(
+        explicit_path=Path(args.final_table_tsv) if args.final_table_tsv else None,
+        run_context=run_context,
+        pointer_key="stage5_final_table_tsv",
+        canonical_relative="final_formulation_table_v1.tsv",
+    )
+    source_weak_labels_path = resolve_artifact_path(
+        explicit_path=Path(args.source_weak_labels_tsv) if args.source_weak_labels_tsv else None,
+        run_context=run_context,
+        pointer_key="stage2_weak_labels_tsv",
+        canonical_relative="weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv",
+        required=False,
+    )
+    decision_trace_path = resolve_artifact_path(
+        explicit_path=Path(args.decision_trace_tsv) if args.decision_trace_tsv else None,
+        run_context=run_context,
+        pointer_key="stage5_decision_trace_tsv",
+        canonical_relative="final_output_decision_trace_v1.tsv",
+        required=False,
+    )
     out_path = (
         Path(args.out_tsv).resolve()
         if args.out_tsv
         else final_table_path.with_name(OUTPUT_NAME)
     )
 
+    print(
+        json.dumps(
+            {
+                "resolved_source_run_dir": str(run_context["run_dir"]),
+                "resolved_source_run_id": str(run_context["run_id"]),
+                "source_resolution": str(run_context["resolution_source"]),
+                "active_run_pointer_path": str(run_context.get("pointer_path") or ""),
+                "resolved_input_files": {
+                    "final_table_tsv": str(final_table_path),
+                    "source_weak_labels_tsv": str(source_weak_labels_path) if source_weak_labels_path else "",
+                    "decision_trace_tsv": str(decision_trace_path) if decision_trace_path else "",
+                },
+            },
+            ensure_ascii=True,
+            indent=2,
+        )
+    )
+
     final_rows = read_tsv(final_table_path)
 
     weak_label_rows: dict[str, dict[str, str]] = {}
-    if args.source_weak_labels_tsv:
-        for row in read_tsv(Path(args.source_weak_labels_tsv).resolve()):
+    if source_weak_labels_path is not None and source_weak_labels_path.exists():
+        for row in read_tsv(source_weak_labels_path):
             weak_label_rows[weak_label_key(row)] = row
 
     decision_rows: dict[str, dict[str, str]] = {}
-    if args.decision_trace_tsv:
-        for row in read_tsv(Path(args.decision_trace_tsv).resolve()):
+    if decision_trace_path is not None and decision_trace_path.exists():
+        for row in read_tsv(decision_trace_path):
             decision_rows[decision_trace_key(row)] = row
 
     export_rows = build_export_rows(final_rows, weak_label_rows, decision_rows)
@@ -405,7 +474,30 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(export_rows)
 
-    print(out_path)
+    metadata_path = write_artifact_metadata_json(
+        out_path,
+        build_artifact_metadata(
+            source_run_context=run_context,
+            source_files={
+                "final_table_tsv": str(final_table_path),
+                "source_weak_labels_tsv": str(source_weak_labels_path) if source_weak_labels_path else "",
+                "decision_trace_tsv": str(decision_trace_path) if decision_trace_path else "",
+            },
+            generated_by="src/stage5_benchmark/export_final_formulation_audit_ready_v1.py",
+            note="Audit-ready TSV export resolved through the active data-source contract.",
+        ),
+    )
+
+    print(
+        json.dumps(
+            {
+                "out_tsv": str(out_path),
+                "metadata_json": str(metadata_path),
+            },
+            ensure_ascii=True,
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

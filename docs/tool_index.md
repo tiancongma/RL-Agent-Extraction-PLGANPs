@@ -318,6 +318,19 @@ Note:
 - Delete-candidate quarantine path created in cleanup wave 1: `archive/delete_candidates_pending_confirmation/stage4_rule_heavy_formulation_reconstruction/build_boundary_alignment_diagnostics_pack_v1.py`
   - Role: historical boundary/grouping diagnostic pack.
 
+## Manual Additions (2026-03-24)
+
+- `src/utils/build_mem_v1.py`
+  - Role: build the governed `data/mem/v1/` registry from snapshots, methods docs, run contexts, and project markdown.
+- `src/utils/query_mem_v1.py`
+  - Role: query governed memory by text, type, stage, and run before deeper debugging work.
+- `src/utils/update_mem_v1.py`
+  - Role: append a targeted governed memory row without silent overwrite.
+- `src/utils/check_mem_v1.py`
+  - Role: validate schema headers, stable IDs, row references, and path constraints for `data/mem/v1/`.
+- `src/utils/mem_bootstrap_v1.py`
+  - Role: bootstrap complex-task memory lookup by task class and suggest the next governed files to read before deeper repository exploration.
+
 ## Full Python File Inventory
 
 | Path | Last Modified | Modified in 48h | Referenced By Others | Referencers (up to 5) | Classification |

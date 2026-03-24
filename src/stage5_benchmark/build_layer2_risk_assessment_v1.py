@@ -15,18 +15,17 @@ This helper does not modify Stage 2, Stage 3, or Stage 5 semantics.
 
 import argparse
 import csv
+import json
 from pathlib import Path
 from typing import Any
 
 try:
-    from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
 except ModuleNotFoundError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.utils.paths import DATA_RESULTS_DIR
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
 
 
 RISK_TSV_NAME = "paper_risk_assessment.tsv"
@@ -59,33 +58,26 @@ def normalize_text(value: Any) -> str:
     return str(value or "").strip().lower()
 
 
-def resolve_run_dir(run_id: str | None, explicit_run_dir: Path | None) -> Path | None:
-    if explicit_run_dir is not None:
-        return explicit_run_dir.resolve()
-    if run_id:
-        if not is_valid_run_id(run_id):
-            raise ValueError(f"Invalid run_id: {run_id}")
-        return (DATA_RESULTS_DIR / run_id).resolve()
-    return None
-
-
 def resolve_layer2_compare_path(
     layer2_compare_tsv: Path | None,
-    run_dir: Path | None,
+    run_context: dict[str, Any] | None,
 ) -> Path:
-    if layer2_compare_tsv is not None:
-        return layer2_compare_tsv.resolve()
-    if run_dir is None:
-        raise ValueError("Provide either --layer2-compare-tsv or --run-id/--run-dir.")
-    return (run_dir / "analysis" / DEFAULT_LAYER2_NAME).resolve()
+    if run_context is None and layer2_compare_tsv is None:
+        raise ValueError("Provide either --layer2-compare-tsv or an explicit/active source run.")
+    return resolve_artifact_path(
+        explicit_path=layer2_compare_tsv,
+        run_context=run_context or {},
+        pointer_key="layer2_identity_comparison_tsv",
+        canonical_relative=f"analysis/{DEFAULT_LAYER2_NAME}",
+    )
 
 
-def resolve_out_dir(out_dir: Path | None, run_dir: Path | None) -> Path:
+def resolve_out_dir(out_dir: Path | None, run_context: dict[str, Any] | None) -> Path:
     if out_dir is not None:
         return out_dir.resolve()
-    if run_dir is not None:
-        return (run_dir / "analysis").resolve()
-    raise ValueError("Provide either --out-dir or --run-id/--run-dir.")
+    if run_context is not None:
+        return (Path(run_context["run_dir"]) / "analysis").resolve()
+    raise ValueError("Provide either --out-dir or an explicit/active source run.")
 
 
 def classify_risk_level(extra_count: int, missing_count: int) -> str:
@@ -258,9 +250,31 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_arg_parser().parse_args()
-    run_dir = resolve_run_dir(args.run_id.strip(), args.run_dir)
-    layer2_path = resolve_layer2_compare_path(args.layer2_compare_tsv, run_dir)
-    out_dir = resolve_out_dir(args.out_dir, run_dir)
+    run_context = None
+    if args.run_dir is not None or str(args.run_id or "").strip():
+        run_context = resolve_run_context(
+            explicit_run_dir=args.run_dir,
+            explicit_run_id=str(args.run_id or "").strip(),
+        )
+    elif args.layer2_compare_tsv is None:
+        run_context = resolve_run_context(explicit_run_dir=None, explicit_run_id="")
+    layer2_path = resolve_layer2_compare_path(args.layer2_compare_tsv, run_context)
+    out_dir = resolve_out_dir(args.out_dir, run_context)
+    print(
+        json.dumps(
+            {
+                "resolved_source_run_dir": str(run_context["run_dir"]) if run_context else "",
+                "resolved_source_run_id": str(run_context["run_id"]) if run_context else "",
+                "source_resolution": str(run_context["resolution_source"]) if run_context else "explicit_artifact_only",
+                "active_run_pointer_path": str(run_context.get("pointer_path") or "") if run_context else "",
+                "resolved_input_files": {
+                    "layer2_compare_tsv": str(layer2_path),
+                },
+                "resolved_out_dir": str(out_dir),
+            },
+            indent=2,
+        )
+    )
 
     layer2_rows = read_tsv_rows(layer2_path)
     risk_rows = build_risk_rows(layer2_rows)

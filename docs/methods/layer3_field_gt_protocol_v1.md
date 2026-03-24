@@ -71,6 +71,9 @@ The active Layer 3 review workbook currently uses these reviewer-facing rules:
 - keep article-native formulation identifiers visible as reviewer aids:
   - `article_formulation_id`
   - `article_formulation_label`
+- when GT-skeleton mode is active, prefer a unique canonical article-native
+  match from the latest audit-ready export before accepting historical
+  scaffold fallback
 - never replace the canonical system identity with article-native labels
 - keep Layer 2 paper-risk metadata visible on the review surface when
   `analysis/paper_risk_assessment.tsv` is provided:
@@ -109,6 +112,8 @@ The active Layer 3 review workbook currently uses these reviewer-facing rules:
 - keep risk metadata review-only:
   - risk labels may guide Layer 3 review priority
   - risk labels must not change frozen formulation identity or benchmark counts
+- emit an alignment-resolution audit TSV whenever GT-skeleton rows are built so
+  direct canonical overrides versus scaffold fallback stay reviewer-auditable
 
 ### Layer 3 Evidence Handoff Contract
 

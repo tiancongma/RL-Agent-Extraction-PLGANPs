@@ -10,6 +10,24 @@ from typing import Any
 
 from openpyxl import load_workbook
 
+try:
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+except ModuleNotFoundError:
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
+
 
 COUNTS_NAME = "final_table_vs_gt_counts.tsv"
 SUMMARY_NAME = "final_table_vs_gt_summary.md"
@@ -312,23 +330,84 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Compare a final formulation table against the authoritative fixed skeleton GT workbook."
     )
-    parser.add_argument("--final-table-tsv", required=True, type=Path)
-    parser.add_argument("--gt-xlsx", required=True, type=Path)
-    parser.add_argument("--scope-manifest-tsv", required=True, type=Path)
-    parser.add_argument("--out-dir", required=True, type=Path)
+    parser.add_argument("--final-table-tsv", type=Path, default=None)
+    parser.add_argument("--gt-xlsx", type=Path, default=None)
+    parser.add_argument("--scope-manifest-tsv", type=Path, default=None)
+    parser.add_argument("--out-dir", type=Path, default=None)
+    parser.add_argument("--run-dir", type=Path, default=None)
+    parser.add_argument("--run-id", default="")
     parser.add_argument("--scope-name", default="controlled_scope")
     return parser
 
 
 def main() -> None:
     args = build_arg_parser().parse_args()
+    run_context = resolve_run_context(
+        explicit_run_dir=args.run_dir,
+        explicit_run_id=str(args.run_id or "").strip(),
+    )
+    final_table_tsv = resolve_artifact_path(
+        explicit_path=args.final_table_tsv,
+        run_context=run_context,
+        pointer_key="stage5_final_table_tsv",
+        canonical_relative="final_formulation_table_v1.tsv",
+    )
+    gt_xlsx = resolve_artifact_path(
+        explicit_path=args.gt_xlsx,
+        run_context=run_context,
+        pointer_key="gt_workbook_xlsx",
+    )
+    scope_manifest_tsv = resolve_artifact_path(
+        explicit_path=args.scope_manifest_tsv,
+        run_context=run_context,
+        pointer_key="scope_manifest_tsv",
+        preferred_run_local_names=["dev15_scope.tsv", "scope.tsv", "scope_manifest.tsv"],
+    )
+    out_dir = args.out_dir.resolve() if args.out_dir is not None else (Path(run_context["run_dir"]) / "gt_authority_v2_variantaware").resolve()
+    print(
+        json.dumps(
+            {
+                "resolved_source_run_dir": str(run_context["run_dir"]),
+                "resolved_source_run_id": str(run_context["run_id"]),
+                "source_resolution": str(run_context["resolution_source"]),
+                "active_run_pointer_path": str(run_context.get("pointer_path") or ""),
+                "resolved_input_files": {
+                    "final_table_tsv": str(final_table_tsv),
+                    "gt_xlsx": str(gt_xlsx),
+                    "scope_manifest_tsv": str(scope_manifest_tsv),
+                },
+                "resolved_out_dir": str(out_dir),
+            },
+            indent=2,
+        )
+    )
     result = compare_final_table_to_gt(
-        final_table_tsv=args.final_table_tsv,
-        gt_xlsx=args.gt_xlsx,
-        scope_manifest_tsv=args.scope_manifest_tsv,
-        out_dir=args.out_dir,
+        final_table_tsv=final_table_tsv,
+        gt_xlsx=gt_xlsx,
+        scope_manifest_tsv=scope_manifest_tsv,
+        out_dir=out_dir,
         scope_name=args.scope_name,
     )
+    metadata_path = write_artifact_metadata_json(
+        Path(result["counts_path"]),
+        build_artifact_metadata(
+            source_run_context=run_context,
+            source_files={
+                "final_table_tsv": str(final_table_tsv),
+                "gt_xlsx": str(gt_xlsx),
+                "scope_manifest_tsv": str(scope_manifest_tsv),
+            },
+            generated_by="src/stage5_benchmark/compare_final_table_to_gt_v1.py",
+            note="Stage5 final-table vs GT comparison authority metadata.",
+            extra={
+                "summary_path": str(result["summary_path"]),
+                "audit_counts_path": str(result["audit_counts_path"]),
+                "audit_summary_path": str(result["audit_summary_path"]),
+                "scope_name": args.scope_name,
+            },
+        ),
+    )
+    result["counts_metadata_json"] = str(metadata_path)
     print(json.dumps(result, indent=2))
 
 

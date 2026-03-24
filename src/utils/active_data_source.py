@@ -1,0 +1,182 @@
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+from src.utils.paths import ACTIVE_RUN_POINTER_FILE, DATA_RESULTS_DIR, PROJECT_ROOT
+from src.utils.run_id import is_valid_run_id
+
+
+REQUIRED_POINTER_KEYS = [
+    "active_run_id",
+    "active_run_dir",
+    "authoritative_terminal_files",
+    "lineage_policy",
+    "updated_at",
+    "note",
+]
+
+
+def _normalize_text(value: Any) -> str:
+    return str(value or "").strip()
+
+
+def _resolve_repo_path(value: str) -> Path:
+    path = Path(value)
+    if path.is_absolute():
+        return path.resolve()
+    return (PROJECT_ROOT / path).resolve()
+
+
+def read_active_run_pointer(pointer_path: Path | None = None) -> tuple[dict[str, Any], Path]:
+    path = (pointer_path or ACTIVE_RUN_POINTER_FILE).resolve()
+    if not path.exists():
+        raise FileNotFoundError(
+            "Active data-source pointer not found. Provide --run-dir explicitly or create "
+            f"{path}."
+        )
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    missing = [key for key in REQUIRED_POINTER_KEYS if key not in payload]
+    if missing:
+        raise ValueError(f"Active data-source pointer missing required keys: {missing}")
+    if not isinstance(payload.get("authoritative_terminal_files"), dict):
+        raise ValueError("ACTIVE_RUN.json field 'authoritative_terminal_files' must be an object.")
+    active_run_id = _normalize_text(payload.get("active_run_id"))
+    if not is_valid_run_id(active_run_id):
+        raise ValueError(f"ACTIVE_RUN.json contains invalid active_run_id: {active_run_id!r}")
+    active_run_dir = _resolve_repo_path(_normalize_text(payload.get("active_run_dir")))
+    if active_run_dir.name != active_run_id:
+        raise ValueError(
+            "ACTIVE_RUN.json active_run_dir basename must match active_run_id. "
+            f"Got run_id={active_run_id!r}, active_run_dir={active_run_dir}."
+        )
+    payload["_resolved_pointer_path"] = str(path)
+    payload["_resolved_active_run_dir"] = str(active_run_dir)
+    return payload, path
+
+
+def resolve_run_context(
+    *,
+    explicit_run_dir: Path | None = None,
+    explicit_run_id: str = "",
+    pointer_path: Path | None = None,
+) -> dict[str, Any]:
+    if explicit_run_dir is not None:
+        run_dir = explicit_run_dir.resolve()
+        if not run_dir.exists():
+            raise FileNotFoundError(f"Explicit --run-dir not found: {run_dir}")
+        run_id = run_dir.name
+        if not is_valid_run_id(run_id):
+            raise ValueError(f"Explicit --run-dir does not end in a valid run_id directory: {run_dir}")
+        if explicit_run_id and explicit_run_id != run_id:
+            raise ValueError(
+                f"Explicit --run-id {explicit_run_id!r} does not match explicit --run-dir basename {run_id!r}."
+            )
+        return {
+            "run_id": run_id,
+            "run_dir": run_dir,
+            "resolution_source": "explicit_run_dir",
+            "pointer_payload": None,
+            "pointer_path": "",
+        }
+
+    explicit_run_id = _normalize_text(explicit_run_id)
+    if explicit_run_id:
+        if not is_valid_run_id(explicit_run_id):
+            raise ValueError(f"Invalid explicit --run-id: {explicit_run_id}")
+        run_dir = (DATA_RESULTS_DIR / explicit_run_id).resolve()
+        if not run_dir.exists():
+            raise FileNotFoundError(f"Explicit --run-id resolved run directory not found: {run_dir}")
+        return {
+            "run_id": explicit_run_id,
+            "run_dir": run_dir,
+            "resolution_source": "explicit_run_id_compat",
+            "pointer_payload": None,
+            "pointer_path": "",
+        }
+
+    payload, resolved_pointer_path = read_active_run_pointer(pointer_path)
+    return {
+        "run_id": _normalize_text(payload["active_run_id"]),
+        "run_dir": _resolve_repo_path(_normalize_text(payload["active_run_dir"])),
+        "resolution_source": "active_run_pointer",
+        "pointer_payload": payload,
+        "pointer_path": str(resolved_pointer_path),
+    }
+
+
+def resolve_artifact_path(
+    *,
+    explicit_path: Path | None,
+    run_context: dict[str, Any],
+    pointer_key: str,
+    canonical_relative: str | None = None,
+    preferred_run_local_names: list[str] | None = None,
+    required: bool = True,
+) -> Path | None:
+    if explicit_path is not None:
+        resolved = explicit_path.resolve()
+        if required and not resolved.exists():
+            raise FileNotFoundError(f"Explicit artifact path not found: {resolved}")
+        return resolved
+
+    pointer_payload = run_context.get("pointer_payload") or {}
+    pointer_files = pointer_payload.get("authoritative_terminal_files") or {}
+    pointer_value = _normalize_text(pointer_files.get(pointer_key))
+    if pointer_value:
+        resolved = _resolve_repo_path(pointer_value)
+        if required and not resolved.exists():
+            raise FileNotFoundError(
+                f"ACTIVE_RUN.json pointer target for {pointer_key!r} not found: {resolved}"
+            )
+        return resolved
+
+    run_dir = Path(run_context["run_dir"])
+    if canonical_relative:
+        candidate = (run_dir / canonical_relative).resolve()
+        if candidate.exists() or not required:
+            return candidate
+    if preferred_run_local_names:
+        for name in preferred_run_local_names:
+            candidate = (run_dir / name).resolve()
+            if candidate.exists():
+                return candidate
+
+    if required:
+        raise FileNotFoundError(
+            f"Could not resolve required artifact {pointer_key!r}. Provide an explicit CLI path "
+            "or add the authoritative path to data/results/ACTIVE_RUN.json."
+        )
+    return None
+
+
+def build_artifact_metadata(
+    *,
+    source_run_context: dict[str, Any],
+    source_files: dict[str, str],
+    generated_by: str,
+    note: str = "",
+    extra: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "source_run_dir": str(source_run_context["run_dir"]),
+        "source_run_id": str(source_run_context["run_id"]),
+        "source_resolution": str(source_run_context["resolution_source"]),
+        "active_run_pointer_path": str(source_run_context.get("pointer_path") or ""),
+        "source_files": source_files,
+        "generated_by": generated_by,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "note": note,
+    }
+    if extra:
+        payload.update(extra)
+    return payload
+
+
+def write_artifact_metadata_json(artifact_path: Path, metadata: dict[str, Any]) -> Path:
+    target = artifact_path.with_name(artifact_path.name + ".metadata.json")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(metadata, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+    return target

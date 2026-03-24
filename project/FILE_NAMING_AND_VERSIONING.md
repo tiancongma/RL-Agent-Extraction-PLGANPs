@@ -154,6 +154,16 @@ runs/latest.txt
 ```
 Compatibility rule: first line must be exactly the run_id. Additional metadata lines must start with `# `.
 
+Current architecture note:
+
+- `runs/latest.txt` is legacy compatibility only.
+- It must not be treated as the sole authority for current
+  `data/results/run_*` benchmark, alignment, comparison, workbook, or audit
+  workflows.
+- Those workflows must use the active data-source contract in
+  `project/ACTIVE_DATA_SOURCE_CONTRACT.md` and the repository pointer
+  `data/results/ACTIVE_RUN.json`.
+
 ### Entry Script Discipline
 
 - All entry scripts that write to `data/results/` must require explicit `--run-id`.

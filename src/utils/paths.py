@@ -6,7 +6,7 @@ All scripts should import paths from here instead of hard-coding filesystem path
 
 Design goals:
 - Stable directory API (structure is frozen)
-- Minimal logic: small helpers allowed (read latest run_id)
+- Minimal logic: small helpers allowed (legacy latest pointer compatibility)
 - No side effects at import time (no filesystem I/O on import)
 
 Allowed:
@@ -62,6 +62,8 @@ DATA_LABELS_DIR = DATA_DIR / "labels"
 
 # Optional exports (non-authoritative)
 DATA_RESULTS_DIR = DATA_DIR / "results"
+DATA_MEM_DIR = DATA_DIR / "mem"
+DATA_MEM_V1_DIR = DATA_MEM_DIR / "v1"
 
 def dataset_cleaned_root(dataset_id: str) -> Path:
     """Return data/cleaned/<dataset_id>."""
@@ -85,8 +87,14 @@ def dataset_text_root(dataset_id: str) -> Path:
 # Runs: templates vs concrete run artifacts
 # ---------------------------------------------------------------------
 
-# Pointer to the latest run_id (single line)
+# Legacy pointer to the latest run_id (single line). This remains for
+# compatibility helpers only and is not the primary authority for current
+# data/results-based benchmark, alignment, comparison, or workbook workflows.
 RUNS_LATEST_FILE = RUNS_DIR / "latest.txt"
+
+# Repository-level active data-source authority pointer for current
+# data/results-based workflows.
+ACTIVE_RUN_POINTER_FILE = DATA_RESULTS_DIR / "ACTIVE_RUN.json"
 
 # Repository-level templates (blank templates, tracked in git)
 RUN_TEMPLATE_MD = RUNS_DIR / "RUN_TEMPLATE.md"

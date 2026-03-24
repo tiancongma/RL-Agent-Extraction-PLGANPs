@@ -21,6 +21,8 @@ This runbook distinguishes:
 2. `project/PIPELINE_SCRIPT_MAP.md`
 3. `project/4_DECISIONS_LOG.md`
 4. `docs/tool_index.md`
+5. `project/ACTIVE_DATA_SOURCE_CONTRACT.md` when resolving current
+   `data/results` workflow sources
 
 ## Recent Changes (2026-03-19)
 
@@ -92,6 +94,85 @@ Run layout rule:
   - timestamp/hash fragments
 - if a unit needs independent rerun or lineage identity, create a separate run
   root with its own `run_id` instead of nesting another run-like directory
+
+Active data-source rule:
+
+- Do not infer the current source run by sort order, modification time, parent
+  fallback, or glob matching.
+- Resolve source artifacts only from:
+  - explicit CLI source paths such as `--run-dir`
+  - or the repository authority pointer in `data/results/ACTIVE_RUN.json`
+- If neither is available, fail loudly.
+
+## Maintained Script Entrypoints
+
+Default execution-facing benchmark, alignment, comparison, workbook-generation,
+and audit workflows must use only the maintained entrypoints listed in:
+
+- `docs/maintained_script_surface.tsv`
+
+Selection rule:
+
+- do not choose scripts by filename similarity, recency, or convenience
+- do not auto-select wrapper-only, legacy, deprecated, or diagnostic scripts
+- if the registry marks `must_use_active_data_source_contract=yes`, the script
+  must resolve sources by:
+  - explicit `--run-dir`
+  - otherwise `data/results/ACTIVE_RUN.json`
+  - otherwise hard error
+
+## Supporting Memory Layer
+
+The governed long-term memory subsystem lives under:
+
+- `data/mem/v1/`
+
+Rules:
+
+- this memory surface is supporting only; it is not Stage 0, 1, 2, 3, 4, or 5
+- before complex debugging or repeated failure-localization work, identify the task class and query memory first
+- default bootstrap helper:
+  - `src/utils/mem_bootstrap_v1.py`
+- direct query tool:
+  - `src/utils/query_mem_v1.py`
+- standard order for complex tasks:
+  1. query memory
+  2. inspect top memory-linked files
+  3. read local source files and active artifacts
+  4. act
+- rebuild memory with `src/utils/build_mem_v1.py` when governed source markdown or `RUN_CONTEXT.md` artifacts change materially
+- use `src/utils/update_mem_v1.py` only for small manual additions or corrections that should append to the existing memory tables
+- validate the memory surface with `src/utils/check_mem_v1.py` after rebuilds or manual updates
+
+Recommended task-to-query pattern:
+
+- debugging:
+  - `collapse`
+  - paper key if known
+  - stage name if known
+- regression investigation:
+  - `regression`
+  - affected benchmark scope or run theme
+  - the specific failure phrase
+- run comparison:
+  - `run lineage`
+  - both run themes or run IDs
+- pipeline modification:
+  - intended behavior phrase such as `family variant` or `table-first`
+  - affected stage name
+- GT mismatch analysis:
+  - paper key or mismatch phrase such as `identity mismatch`
+- lineage tracing:
+  - `run lineage`
+  - parent or child run theme
+
+Maintained-surface update rule:
+
+- when a maintained execution entrypoint changes, update both this runbook and
+  `docs/maintained_script_surface.tsv` in the same change
+- if an older script remains in `src/` for historical, wrapper, or diagnostic
+  use, mark it as non-default in the maintained-surface registry instead of
+  leaving it ambiguous
 
 ## Manual Stage-By-Stage Execution
 

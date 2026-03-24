@@ -32,6 +32,20 @@ That file defines the canonical Stage 0 to Stage 5 path, the exact stage
 completion artifacts, the active scripts for each stage, and the allowed
 incremental-reuse rules.
 
+## Active Data Source Authority
+
+Current `data/results` workflows must resolve their source artifacts through the
+repository authority contract:
+
+- [ACTIVE_DATA_SOURCE_CONTRACT.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_DATA_SOURCE_CONTRACT.md)
+- machine-readable pointer:
+  - `data/results/ACTIVE_RUN.json`
+
+The repository must not determine the active source by directory recency,
+modification time, parent fallback, or glob-first matching. Use an explicit
+CLI source such as `--run-dir`, or the declared authority pointer, or fail
+loudly.
+
 ## Active Stage Namespaces
 
 The active runtime stage directories are:

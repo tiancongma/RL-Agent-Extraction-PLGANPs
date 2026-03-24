@@ -85,6 +85,11 @@ Reserved reference namespace:
 There is no active Stage 6 and no active Stage 7. There is also no active
 second Stage 5 namespace.
 
+For execution-facing benchmark, comparison, workbook, and audit workflows, use
+only the maintained entrypoints declared in
+`project/ACTIVE_PIPELINE_RUNBOOK.md` and `docs/maintained_script_surface.tsv`.
+Do not choose scripts by filename similarity or branch-era convenience.
+
 For canonical provenance, the pipeline starts from raw Zotero-derived records
 under `data/raw/zotero/`. In current repo practice, the checked Stage 0
 completion artifact is `data/raw/zotero/zotero_selected_items.jsonl`, whether it

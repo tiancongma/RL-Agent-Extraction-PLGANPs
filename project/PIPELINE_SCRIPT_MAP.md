@@ -180,7 +180,7 @@ Stage 2 instance-kind reconciliation note:
 | `src/stage5_benchmark/export_full_database_v1.py` | `STABLE_TOOL` | Final database export utility for downstream release work. |
 | `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for Layer 2 boundary GT from the Stage 5 final formulation table, with prediction-reference columns separated from GT-authoritative reviewer fields. |
 | `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for Layer 3 field GT from frozen Stage 5 final rows, with compact reviewer columns, helper formulation labels, Layer 2 paper-risk metadata, dropdown GT controls, and strict evidence/value support gating. |
-| `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value GT annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric GT labeling. |
+| `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value GT annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric GT labeling. The latest Stage5 final table plus audit-ready export are canonical for current-system presence; historical scaffold and prior-workbook bridge artifacts are advisory mapping aids only. |
 | `src/stage5_benchmark/build_layer2_risk_assessment_v1.py` | `STABLE_TOOL` | Build run-scoped Layer 2 paper-risk labels from an existing Layer 2 identity-comparison TSV for downstream Layer 3 audit prioritization, without changing benchmark-valid final outputs. |
 | `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py` | `STABLE_TOOL` | Validate Layer 3 reviewer-surface evidence handoff behavior against golden regression cases without changing benchmark-valid outputs. |
 | `src/stage5_benchmark/validate_stage5_descendant_filter_regression_v1.py` | `STABLE_TOOL` | Deterministically rerun Stage 5 on frozen artifact inputs to validate the descendant-filter safeguards: BB3JUVW7 sweep-style variants must be retained, BXCV5XWB helper descendants must be filtered, nearby helper-control regressions such as RHMJWZX8 stay suppressed, and stable controls such as WIVUCMYG remain unchanged. |
@@ -191,7 +191,17 @@ Stage 2 instance-kind reconciliation note:
 |---|---|---|
 | `src/utils/audit_run_lineage_layout_v1.py` | `STABLE_TOOL` | Deterministically audit top-level `data/results/run_*` lineage sprawl and flag sibling runs that should likely be contained under one parent lineage. |
 | `src/utils/build_feature_activation_report_v1.py` | `STABLE_TOOL` | Build a run-scoped feature activation report from deterministic artifact evidence so child-lineage validation can be distinguished from parent-run activation. |
+| `src/utils/build_mem_v1.py` | `STABLE_TOOL` | Build the governed `data/mem/v1/` memory registry from `docs/snapshots/`, `docs/methods/`, `data/results/**/RUN_CONTEXT.md`, and `project/*.md` without creating a new pipeline stage. |
+| `src/utils/query_mem_v1.py` | `STABLE_TOOL` | Query the governed `data/mem/v1/` registry by text, type, stage, or run before deeper debugging or failure-localization work. |
+| `src/utils/mem_bootstrap_v1.py` | `STABLE_TOOL` | Bootstrap complex-task memory lookup by classifying the task, surfacing relevant `mem_v1` hits, and suggesting the next governed files to read. |
+| `src/utils/update_mem_v1.py` | `STABLE_TOOL` | Append a targeted governed memory row to `data/mem/v1/` without silent overwrite of existing logical entries. |
+| `src/utils/check_mem_v1.py` | `STABLE_TOOL` | Validate `data/mem/v1/` schema, row references, ID prefixes, and path-length constraints. |
 | `src/utils/update_run_context_with_feature_activation_v1.py` | `STABLE_TOOL` | Refresh a run's `RUN_CONTEXT.md` with feature-unit activation metadata and a deterministic activation gate. |
+
+Supporting-memory rule:
+
+- `data/mem/v1/` is a supporting memory layer only and must not be treated as Stage 0-5 pipeline output.
+- for complex debugging, regression, run comparison, GT mismatch analysis, pipeline modification, or lineage tracing, query memory before deeper repository exploration
 
 ## Archived Historical Methods
 

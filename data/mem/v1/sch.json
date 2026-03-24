@@ -1,0 +1,95 @@
+{
+  "version": "mem_v1",
+  "root": "data/mem/v1",
+  "tables": {
+    "idx.tsv": {
+      "id_prefix": "MIDX",
+      "headers": [
+        "mem_id",
+        "mem_type",
+        "ref_id",
+        "stage",
+        "run_id",
+        "title",
+        "summary",
+        "tags",
+        "source_file",
+        "source_kind",
+        "status"
+      ]
+    },
+    "run.tsv": {
+      "id_prefix": "MRUN",
+      "headers": [
+        "run_mem_id",
+        "run_id",
+        "run_type",
+        "stage",
+        "parent_run",
+        "purpose",
+        "summary",
+        "source_file",
+        "source_kind",
+        "status"
+      ]
+    },
+    "lin.tsv": {
+      "id_prefix": "MLIN",
+      "headers": [
+        "lin_id",
+        "parent_run",
+        "child_run",
+        "relation",
+        "source_file",
+        "note"
+      ]
+    },
+    "dec.tsv": {
+      "id_prefix": "MDEC",
+      "headers": [
+        "dec_id",
+        "stage",
+        "run_id",
+        "title",
+        "decision",
+        "reason",
+        "impact",
+        "tags",
+        "source_file",
+        "source_kind",
+        "status"
+      ]
+    },
+    "err.tsv": {
+      "id_prefix": "MERR",
+      "headers": [
+        "err_id",
+        "stage",
+        "run_id",
+        "err_sig",
+        "symptom",
+        "cause",
+        "fix",
+        "tags",
+        "source_file",
+        "source_kind",
+        "status"
+      ]
+    },
+    "prm.tsv": {
+      "id_prefix": "MPRM",
+      "headers": [
+        "prm_id",
+        "stage",
+        "run_id",
+        "title",
+        "recipe",
+        "usage",
+        "tags",
+        "source_file",
+        "source_kind",
+        "status"
+      ]
+    }
+  }
+}
