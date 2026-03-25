@@ -10,6 +10,9 @@ Purpose:
 - Do not change stable mainline extraction scripts.
 """
 
+# Stage2 extractor restored to pre-Stage2.5 baseline.
+# Stage2.5 additive shadow outputs removed during redesign transition (2026-03-25).
+
 from __future__ import annotations
 
 import argparse
@@ -162,8 +165,6 @@ LEGACY_FIELD_NAME_ALIASES = {
 }
 
 NUMBERED_DOE_GUARD_NAME = "numbered_doe_regression_guard_v1.tsv"
-COMPONENTS_SHADOW_JSONL_NAME = "weak_labels__v7pilot_r3_fixparse_components_shadow.jsonl"
-COMPONENTS_SHADOW_TSV_NAME = "weak_labels__v7pilot_r3_fixparse_components_shadow.tsv"
 
 
 @dataclass
@@ -3082,156 +3083,6 @@ def add_or_update_component(
     component["context_text"] = append_context_text(component.get("context_text", ""), extra_context_text)
 
 
-def build_components_shadow_from_row(row: Dict[str, Any]) -> List[Dict[str, Any]]:
-    formulation_row_id = str(row.get("formulation_id") or row.get("local_instance_id") or "").strip()
-    if not formulation_row_id:
-        return []
-
-    components: Dict[str, Dict[str, Any]] = {}
-    ordered_keys: List[str] = []
-
-    polymer_name = str(row.get("polymer_name_raw") or row.get("polymer_identity") or "").strip()
-    add_or_update_component(
-        components,
-        ordered_keys,
-        formulation_row_id=formulation_row_id,
-        raw_name=polymer_name,
-        fallback_role="polymer",
-        source_field="polymer_identity",
-    )
-    if polymer_name and str(row.get("plga_mass_mg_value_text") or "").strip():
-        add_or_update_component(
-            components,
-            ordered_keys,
-            formulation_row_id=formulation_row_id,
-            raw_name=polymer_name,
-            fallback_role="polymer",
-            source_field="plga_mass_mg",
-            amount_expression_raw=str(row.get("plga_mass_mg_value_text") or "").strip(),
-            value_raw=str(row.get("plga_mass_mg_value") or "").strip(),
-            unit_raw="mg" if str(row.get("plga_mass_mg_value_text") or "").strip() else "",
-        )
-
-    drug_name = str(row.get("drug_name_value_text") or row.get("drug_name_value") or "").strip()
-    add_or_update_component(
-        components,
-        ordered_keys,
-        formulation_row_id=formulation_row_id,
-        raw_name=drug_name,
-        fallback_role="drug",
-        source_field="drug_name",
-    )
-    if drug_name and str(row.get("drug_feed_amount_text_value_text") or "").strip():
-        add_or_update_component(
-            components,
-            ordered_keys,
-            formulation_row_id=formulation_row_id,
-            raw_name=drug_name,
-            fallback_role="drug",
-            source_field="drug_feed_amount_text",
-            amount_expression_raw=str(row.get("drug_feed_amount_text_value_text") or "").strip(),
-            value_raw=str(row.get("drug_feed_amount_text_value") or "").strip(),
-            unit_raw="mg" if "mg" in str(row.get("drug_feed_amount_text_value_text") or "").lower() else "",
-        )
-
-    surfactant_names = top_level_split(str(row.get("surfactant_name_value_text") or "").strip(), (",", ";", " and "))
-    surfactant_amounts = top_level_split(str(row.get("surfactant_concentration_text_value_text") or "").strip(), (",", ";"))
-    for idx, raw_name in enumerate(surfactant_names):
-        amount_text = surfactant_amounts[idx] if idx < len(surfactant_amounts) else ""
-        add_or_update_component(
-            components,
-            ordered_keys,
-            formulation_row_id=formulation_row_id,
-            raw_name=raw_name,
-            fallback_role="surfactant",
-            source_field="surfactant_name",
-            amount_expression_raw=amount_text,
-            value_raw=amount_text,
-            unit_raw="% w/v" if "% w/v" in amount_text.lower() else "",
-        )
-        if len(surfactant_names) > 1:
-            component_key = choose_component_key(
-                normalize_component_name_and_role(raw_name, "surfactant")[0],
-                raw_name,
-                "surfactant",
-            )
-            if component_key in components:
-                components[component_key]["context_text"] = append_context_text(
-                    components[component_key].get("context_text", ""),
-                    str(row.get("surfactant_name_value_text") or "").strip(),
-                )
-
-    pva_amount = str(row.get("pva_conc_percent_value_text") or "").strip()
-    if pva_amount:
-        add_or_update_component(
-            components,
-            ordered_keys,
-            formulation_row_id=formulation_row_id,
-            raw_name="PVA",
-            fallback_role="surfactant",
-            source_field="pva_conc_percent",
-            amount_expression_raw=pva_amount,
-            value_raw=str(row.get("pva_conc_percent_value") or "").strip(),
-            unit_raw="% w/v" if "%" in pva_amount else "",
-            extra_context_text="Recovered from dedicated PVA concentration field.",
-        )
-
-    solvent_text = str(row.get("organic_solvent_value_text") or row.get("organic_solvent_value") or "").strip()
-    solvent_names = top_level_split(re.sub(r"\s+mixture.*$", "", solvent_text, flags=re.I).strip(), ("/", " and "))
-    for idx, raw_name in enumerate(solvent_names):
-        fallback_role = "solvent" if idx == 0 else "co_solvent"
-        add_or_update_component(
-            components,
-            ordered_keys,
-            formulation_row_id=formulation_row_id,
-            raw_name=raw_name,
-            fallback_role=fallback_role,
-            source_field="organic_solvent",
-            amount_expression_raw=solvent_text if "v/v" in solvent_text.lower() else "",
-            value_raw=solvent_text if "v/v" in solvent_text.lower() else "",
-            unit_raw="v/v" if "v/v" in solvent_text.lower() else "",
-            extra_context_text=solvent_text if len(solvent_names) > 1 else "",
-        )
-
-    components_out: List[Dict[str, Any]] = []
-    for index, component_key in enumerate(ordered_keys, start=1):
-        component = components[component_key]
-        phase_raw, phase_canonical, phase_confidence = infer_phase_context(
-            row,
-            source_field=str(component.get("_source_field") or ""),
-            component_role=str(component.get("component_role_normalized") or "unknown"),
-            component_name_raw=str(component.get("component_name_raw") or ""),
-        )
-        component["component_index"] = index
-        component["phase_context_raw"] = phase_raw
-        component["phase_context_canonical"] = phase_canonical
-        component["phase_confidence"] = phase_confidence
-        component["component_properties_json"] = json.dumps(
-            build_component_properties(
-                row,
-                component_role=str(component.get("component_role_normalized") or "unknown"),
-                component_name_raw=str(component.get("component_name_raw") or ""),
-            ),
-            ensure_ascii=False,
-        )
-        component.pop("_source_field", None)
-        components_out.append(component)
-    return components_out
-
-
-def build_components_shadow_tsv_columns() -> List[str]:
-    return [
-        "key",
-        "doi",
-        "formulation_row_id",
-        "raw_formulation_label",
-        "candidate_source",
-        "component_count",
-        "shadow_status",
-        "components_json",
-    ]
-
-
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description="Pilot weak_labels_v7 extractor r3_fixparse (parser + flatten bugfixes + formulation-instance enums)."
@@ -3283,26 +3134,19 @@ def main(argv: Optional[List[str]] = None) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_jsonl = out_dir / "weak_labels__v7pilot_r3_fixparse.jsonl"
     out_tsv = out_dir / "weak_labels__v7pilot_r3_fixparse.tsv"
-    out_components_shadow_jsonl = out_dir / COMPONENTS_SHADOW_JSONL_NAME
-    out_components_shadow_tsv = out_dir / COMPONENTS_SHADOW_TSV_NAME
     raw_dir = out_dir / "raw_responses"
     raw_dir.mkdir(parents=True, exist_ok=True)
 
     columns = build_output_columns()
-    shadow_columns = build_components_shadow_tsv_columns()
     tsv_f = out_tsv.open("w", encoding="utf-8", newline="")
     tsv_w = csv.DictWriter(tsv_f, fieldnames=columns, delimiter="\t", extrasaction="ignore")
     tsv_w.writeheader()
-    shadow_tsv_f = out_components_shadow_tsv.open("w", encoding="utf-8", newline="")
-    shadow_tsv_w = csv.DictWriter(shadow_tsv_f, fieldnames=shadow_columns, delimiter="\t", extrasaction="ignore")
-    shadow_tsv_w.writeheader()
 
     n_forms = 0
-    n_shadow_components = 0
     numbered_doe_artifact_rows: List[Dict[str, Any]] = []
     numbered_doe_summary_rows: List[Dict[str, Any]] = []
     numbered_doe_guard_rows: List[Dict[str, str]] = []
-    with out_jsonl.open("w", encoding="utf-8") as jf, out_components_shadow_jsonl.open("w", encoding="utf-8") as shadow_jf:
+    with out_jsonl.open("w", encoding="utf-8") as jf:
         for i, paper in enumerate(papers, start=1):
             if not paper.text_path.exists():
                 print(f"[WARN] missing text path: {paper.text_path}")
@@ -3395,37 +3239,12 @@ def main(argv: Optional[List[str]] = None) -> None:
                     inst_ev = instance_fallback
                 row = flatten_row(paper.key, paper.doi, args.model, row_form, inst_ev)
                 tsv_w.writerow(row)
-                shadow_components = build_components_shadow_from_row(row)
-                shadow_payload = {
-                    "key": paper.key,
-                    "doi": paper.doi,
-                    "formulation_row_id": row.get("formulation_id"),
-                    "raw_formulation_label": row.get("raw_formulation_label", ""),
-                    "candidate_source": row.get("candidate_source", ""),
-                    "shadow_status": "shadow_non_authoritative",
-                    "components": shadow_components,
-                }
-                shadow_jf.write(json.dumps(shadow_payload, ensure_ascii=False) + "\n")
-                shadow_tsv_w.writerow(
-                    {
-                        "key": paper.key,
-                        "doi": paper.doi,
-                        "formulation_row_id": row.get("formulation_id"),
-                        "raw_formulation_label": row.get("raw_formulation_label", ""),
-                        "candidate_source": row.get("candidate_source", ""),
-                        "component_count": len(shadow_components),
-                        "shadow_status": "shadow_non_authoritative",
-                        "components_json": json.dumps(shadow_components, ensure_ascii=False),
-                    }
-                )
                 n_forms += 1
-                n_shadow_components += len(shadow_components)
 
             if args.verbose:
                 print(f"[{i}/{len(papers)}] key={paper.key} doi={paper.doi} formulations={len(forms)}")
 
     tsv_f.close()
-    shadow_tsv_f.close()
     if not args.disable_numbered_doe_enumerator:
         numbered_doe_stats = write_candidate_artifacts(
             out_dir=out_dir,
@@ -3448,13 +3267,10 @@ def main(argv: Optional[List[str]] = None) -> None:
         "fresh_llm_calls_made": replay_dir is None,
         "n_papers": len(papers),
         "n_formulations": n_forms,
-        "n_shadow_components": n_shadow_components,
         "n_numbered_doe_candidates": int(numbered_doe_stats["candidate_count"]),
         "out_dir": str(out_dir.resolve()),
         "out_jsonl": str(out_jsonl.resolve()),
         "out_tsv": str(out_tsv.resolve()),
-        "components_shadow_jsonl": str(out_components_shadow_jsonl.resolve()),
-        "components_shadow_tsv": str(out_components_shadow_tsv.resolve()),
         "raw_responses_dir": str(raw_dir.resolve()),
         "numbered_doe_candidates_tsv": str(Path(numbered_doe_stats["artifact_path"]).resolve()),
         "numbered_doe_summary_tsv": str(Path(numbered_doe_stats["summary_path"]).resolve()),

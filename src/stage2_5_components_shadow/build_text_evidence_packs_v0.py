@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+# ARCHIVED: Stage2.5 exploratory component-shadow pipeline.
+# Not part of active mainline as of 2026-03-25.
+
 import argparse
 import csv
 import json

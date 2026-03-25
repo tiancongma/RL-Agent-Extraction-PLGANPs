@@ -1,0 +1,671 @@
+{
+  "db_version": "db_v2",
+  "schema_date": "2026-03-25",
+  "status": "design_draft",
+  "source_note": "Audit-first schema draft from the active Stage2 contract review. This file does not change the active pipeline contract by itself.",
+  "tables": [
+    {
+      "name": "document",
+      "description": "One row per source paper or source document.",
+      "primary_key": [
+        "document_id"
+      ],
+      "foreign_keys": [],
+      "fields": [
+        {
+          "name": "document_id",
+          "type": "string",
+          "description": "Stable internal document identifier."
+        },
+        {
+          "name": "zotero_key",
+          "type": "string",
+          "description": "Paper key used across the repository."
+        },
+        {
+          "name": "doi",
+          "type": "string",
+          "description": "Normalized DOI."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Paper title."
+        },
+        {
+          "name": "publication_year",
+          "type": "integer",
+          "description": "Publication year when available."
+        },
+        {
+          "name": "manifest_source_path",
+          "type": "string",
+          "description": "Manifest row source path or manifest identifier."
+        },
+        {
+          "name": "cleaned_text_path",
+          "type": "string",
+          "description": "Resolved Stage1 cleaned text asset path."
+        },
+        {
+          "name": "tables_dir_path",
+          "type": "string",
+          "description": "Resolved Stage1 tables directory path."
+        },
+        {
+          "name": "source_run_id",
+          "type": "string",
+          "description": "Run lineage that materialized the current database row."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw paper-level note carried from extraction or later audit."
+        }
+      ]
+    },
+    {
+      "name": "formulation_identity",
+      "description": "Authoritative formulation identity layer. One row per formulation candidate or benchmark-facing formulation identity.",
+      "primary_key": [
+        "formulation_id"
+      ],
+      "foreign_keys": [
+        {
+          "field": "document_id",
+          "references": "document.document_id"
+        },
+        {
+          "field": "parent_formulation_id",
+          "references": "formulation_identity.formulation_id"
+        }
+      ],
+      "fields": [
+        {
+          "name": "formulation_id",
+          "type": "string",
+          "description": "Stable internal formulation identifier."
+        },
+        {
+          "name": "document_id",
+          "type": "string",
+          "description": "Owning document identifier."
+        },
+        {
+          "name": "source_stage2_row_id",
+          "type": "string",
+          "description": "Original Stage2 row identifier when present."
+        },
+        {
+          "name": "article_formulation_label_raw",
+          "type": "string",
+          "description": "Raw paper-native formulation label."
+        },
+        {
+          "name": "article_parent_label_raw",
+          "type": "string",
+          "description": "Raw paper-native parent label when present."
+        },
+        {
+          "name": "parent_formulation_id",
+          "type": "string",
+          "description": "Normalized parent formulation identifier when resolved."
+        },
+        {
+          "name": "formulation_kind_raw",
+          "type": "string",
+          "description": "Raw Stage2 kind such as new_formulation or variant_formulation."
+        },
+        {
+          "name": "formulation_kind_normalized",
+          "type": "string",
+          "description": "Deterministic normalized formulation kind."
+        },
+        {
+          "name": "formulation_role_raw",
+          "type": "string",
+          "description": "Raw formulation role."
+        },
+        {
+          "name": "formulation_role_normalized",
+          "type": "string",
+          "description": "Deterministic normalized formulation role."
+        },
+        {
+          "name": "candidate_source",
+          "type": "string",
+          "description": "Source family such as llm_extracted or doe_numbered_table_row."
+        },
+        {
+          "name": "identity_confidence",
+          "type": "string",
+          "description": "Confidence that the row is a distinct formulation identity."
+        },
+        {
+          "name": "polymer_identity_raw",
+          "type": "string",
+          "description": "Raw high-level polymer identity."
+        },
+        {
+          "name": "polymer_identity_normalized",
+          "type": "string",
+          "description": "Deterministic normalized polymer identity."
+        },
+        {
+          "name": "polymer_name_raw",
+          "type": "string",
+          "description": "Raw polymer wording."
+        },
+        {
+          "name": "preparation_method_raw",
+          "type": "string",
+          "description": "Raw preparation-method wording."
+        },
+        {
+          "name": "preparation_method_normalized",
+          "type": "string",
+          "description": "Deterministic normalized preparation-method value."
+        },
+        {
+          "name": "emulsion_structure_raw",
+          "type": "string",
+          "description": "Raw emulsion-structure wording."
+        },
+        {
+          "name": "emulsion_structure_normalized",
+          "type": "string",
+          "description": "Deterministic normalized emulsion structure."
+        },
+        {
+          "name": "source_contract_version",
+          "type": "string",
+          "description": "Source extraction contract or adapter version."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw formulation-level semantic notes."
+        }
+      ]
+    },
+    {
+      "name": "formulation_phase",
+      "description": "Explicit phase records for phase-aware formulations such as W1/O/W2.",
+      "primary_key": [
+        "phase_id"
+      ],
+      "foreign_keys": [
+        {
+          "field": "formulation_id",
+          "references": "formulation_identity.formulation_id"
+        }
+      ],
+      "fields": [
+        {
+          "name": "phase_id",
+          "type": "string",
+          "description": "Stable internal phase identifier."
+        },
+        {
+          "name": "formulation_id",
+          "type": "string",
+          "description": "Owning formulation identifier."
+        },
+        {
+          "name": "phase_code_raw",
+          "type": "string",
+          "description": "Raw phase code or wording."
+        },
+        {
+          "name": "phase_code_normalized",
+          "type": "string",
+          "description": "Deterministic normalized phase code."
+        },
+        {
+          "name": "phase_order",
+          "type": "integer",
+          "description": "Phase order within the formulation."
+        },
+        {
+          "name": "phase_role",
+          "type": "string",
+          "description": "Normalized phase role such as internal_aqueous, organic, or external_aqueous."
+        },
+        {
+          "name": "phase_label_raw",
+          "type": "string",
+          "description": "Optional raw phase label."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw phase note."
+        }
+      ]
+    },
+    {
+      "name": "formulation_component",
+      "description": "One row per component within a formulation.",
+      "primary_key": [
+        "component_id"
+      ],
+      "foreign_keys": [
+        {
+          "field": "formulation_id",
+          "references": "formulation_identity.formulation_id"
+        },
+        {
+          "field": "phase_id",
+          "references": "formulation_phase.phase_id"
+        }
+      ],
+      "fields": [
+        {
+          "name": "component_id",
+          "type": "string",
+          "description": "Stable internal component identifier."
+        },
+        {
+          "name": "formulation_id",
+          "type": "string",
+          "description": "Owning formulation identifier."
+        },
+        {
+          "name": "phase_id",
+          "type": "string",
+          "description": "Owning phase identifier when phase assignment is known."
+        },
+        {
+          "name": "component_index",
+          "type": "integer",
+          "description": "Stable within-formulation component order."
+        },
+        {
+          "name": "component_role_raw",
+          "type": "string",
+          "description": "Raw component role."
+        },
+        {
+          "name": "component_role_normalized",
+          "type": "string",
+          "description": "Deterministic normalized component role."
+        },
+        {
+          "name": "component_name_raw",
+          "type": "string",
+          "description": "Raw component wording."
+        },
+        {
+          "name": "component_name_normalized",
+          "type": "string",
+          "description": "Deterministic normalized component name."
+        },
+        {
+          "name": "amount_expression_raw",
+          "type": "string",
+          "description": "Raw amount expression."
+        },
+        {
+          "name": "amount_kind_raw",
+          "type": "string",
+          "description": "Raw amount-kind classification."
+        },
+        {
+          "name": "amount_kind_normalized",
+          "type": "string",
+          "description": "Deterministic normalized amount kind."
+        },
+        {
+          "name": "amount_value_raw",
+          "type": "string",
+          "description": "Raw numeric value surface."
+        },
+        {
+          "name": "amount_unit_raw",
+          "type": "string",
+          "description": "Raw unit surface."
+        },
+        {
+          "name": "amount_value_normalized_num",
+          "type": "number",
+          "description": "Deterministic normalized numeric amount."
+        },
+        {
+          "name": "amount_unit_normalized",
+          "type": "string",
+          "description": "Deterministic normalized amount unit."
+        },
+        {
+          "name": "concentration_basis_normalized",
+          "type": "string",
+          "description": "Optional normalized basis such as percent_wv or mg_per_ml."
+        },
+        {
+          "name": "role_assignment_mode",
+          "type": "string",
+          "description": "How the component role was assigned."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw component note."
+        }
+      ]
+    },
+    {
+      "name": "formulation_process",
+      "description": "Process and process-parameter facts tied to a formulation.",
+      "primary_key": [
+        "process_id"
+      ],
+      "foreign_keys": [
+        {
+          "field": "formulation_id",
+          "references": "formulation_identity.formulation_id"
+        }
+      ],
+      "fields": [
+        {
+          "name": "process_id",
+          "type": "string",
+          "description": "Stable internal process identifier."
+        },
+        {
+          "name": "formulation_id",
+          "type": "string",
+          "description": "Owning formulation identifier."
+        },
+        {
+          "name": "process_step_order",
+          "type": "integer",
+          "description": "Step order when an ordered process is known."
+        },
+        {
+          "name": "process_step_name_raw",
+          "type": "string",
+          "description": "Raw process-step wording."
+        },
+        {
+          "name": "process_step_name_normalized",
+          "type": "string",
+          "description": "Deterministic normalized process-step name."
+        },
+        {
+          "name": "process_parameter_name",
+          "type": "string",
+          "description": "Process parameter name when the row stores a specific parameter fact."
+        },
+        {
+          "name": "process_parameter_value_raw",
+          "type": "string",
+          "description": "Raw process parameter value."
+        },
+        {
+          "name": "process_parameter_unit_raw",
+          "type": "string",
+          "description": "Raw process parameter unit."
+        },
+        {
+          "name": "process_parameter_value_normalized_num",
+          "type": "number",
+          "description": "Deterministic normalized process parameter value."
+        },
+        {
+          "name": "process_parameter_unit_normalized",
+          "type": "string",
+          "description": "Deterministic normalized process parameter unit."
+        },
+        {
+          "name": "process_scope",
+          "type": "string",
+          "description": "Whether the process fact is formulation-specific, shared-within-paper, or unresolved."
+        },
+        {
+          "name": "origin",
+          "type": "string",
+          "description": "Origin of the process fact such as llm, deterministic, or manual."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw process note."
+        }
+      ]
+    },
+    {
+      "name": "formulation_measurement",
+      "description": "One row per extracted outcome or measurement.",
+      "primary_key": [
+        "measurement_id"
+      ],
+      "foreign_keys": [
+        {
+          "field": "formulation_id",
+          "references": "formulation_identity.formulation_id"
+        }
+      ],
+      "fields": [
+        {
+          "name": "measurement_id",
+          "type": "string",
+          "description": "Stable internal measurement identifier."
+        },
+        {
+          "name": "formulation_id",
+          "type": "string",
+          "description": "Owning formulation identifier."
+        },
+        {
+          "name": "measurement_name_raw",
+          "type": "string",
+          "description": "Raw measurement name."
+        },
+        {
+          "name": "measurement_name_normalized",
+          "type": "string",
+          "description": "Deterministic normalized measurement name."
+        },
+        {
+          "name": "measurement_value_raw",
+          "type": "string",
+          "description": "Raw measurement value text."
+        },
+        {
+          "name": "measurement_unit_raw",
+          "type": "string",
+          "description": "Raw measurement unit."
+        },
+        {
+          "name": "measurement_value_normalized_num",
+          "type": "number",
+          "description": "Deterministic normalized numeric measurement value."
+        },
+        {
+          "name": "measurement_unit_normalized",
+          "type": "string",
+          "description": "Deterministic normalized measurement unit."
+        },
+        {
+          "name": "statistic_type",
+          "type": "string",
+          "description": "Statistic qualifier such as mean, mean_sd, or single_value."
+        },
+        {
+          "name": "measurement_condition_raw",
+          "type": "string",
+          "description": "Raw measurement condition or qualifier."
+        },
+        {
+          "name": "measurement_context_raw",
+          "type": "string",
+          "description": "Raw contextual note for the measurement."
+        },
+        {
+          "name": "is_identity_defining",
+          "type": "boolean",
+          "description": "Whether the measurement should participate in formulation identity. Default should usually be false."
+        },
+        {
+          "name": "derivation_status",
+          "type": "string",
+          "description": "Whether the value is raw, normalized, derived, or unresolved."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw measurement note."
+        }
+      ]
+    },
+    {
+      "name": "evidence_binding",
+      "description": "Auditable bindings from target fields to source evidence. Intended to be built deterministically or manually, not treated as an LLM-only ownership surface.",
+      "primary_key": [
+        "evidence_binding_id"
+      ],
+      "foreign_keys": [
+        {
+          "field": "document_id",
+          "references": "document.document_id"
+        }
+      ],
+      "fields": [
+        {
+          "name": "evidence_binding_id",
+          "type": "string",
+          "description": "Stable internal evidence-binding identifier."
+        },
+        {
+          "name": "document_id",
+          "type": "string",
+          "description": "Owning document identifier."
+        },
+        {
+          "name": "target_table",
+          "type": "string",
+          "description": "Target table name such as formulation_component or formulation_measurement."
+        },
+        {
+          "name": "target_record_id",
+          "type": "string",
+          "description": "Target record identifier inside the target table."
+        },
+        {
+          "name": "target_field_name",
+          "type": "string",
+          "description": "Target field bound to evidence."
+        },
+        {
+          "name": "binding_role",
+          "type": "string",
+          "description": "Binding role such as direct_support, supporting_context, or conflict_note."
+        },
+        {
+          "name": "source_artifact_type",
+          "type": "string",
+          "description": "Source surface such as fulltext, table_row, table_cell, caption, or raw_response."
+        },
+        {
+          "name": "source_locator",
+          "type": "string",
+          "description": "Primary locator string."
+        },
+        {
+          "name": "source_section",
+          "type": "string",
+          "description": "Section or block locator when available."
+        },
+        {
+          "name": "source_span_text",
+          "type": "text",
+          "description": "Short evidence excerpt."
+        },
+        {
+          "name": "source_char_start",
+          "type": "integer",
+          "description": "Character start in the source text when available."
+        },
+        {
+          "name": "source_char_end",
+          "type": "integer",
+          "description": "Character end in the source text when available."
+        },
+        {
+          "name": "source_table_id",
+          "type": "string",
+          "description": "Resolved table identifier when available."
+        },
+        {
+          "name": "source_row_label",
+          "type": "string",
+          "description": "Resolved table row label when available."
+        },
+        {
+          "name": "source_column_label",
+          "type": "string",
+          "description": "Resolved table column label when available."
+        },
+        {
+          "name": "binder_method",
+          "type": "string",
+          "description": "How the binding was produced such as llm_hint, deterministic, or manual."
+        },
+        {
+          "name": "binding_status",
+          "type": "string",
+          "description": "Binding status such as bound, coarse, unresolved, or conflicted."
+        },
+        {
+          "name": "confidence",
+          "type": "string",
+          "description": "Confidence in the binding."
+        },
+        {
+          "name": "source_run_id",
+          "type": "string",
+          "description": "Run lineage that produced the binding."
+        },
+        {
+          "name": "notes_raw",
+          "type": "text",
+          "description": "Optional raw note for audit."
+        }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "name": "modeling_view",
+      "description": "Optional deterministic projection for formulation-to-EE modeling.",
+      "depends_on": [
+        "document",
+        "formulation_identity",
+        "formulation_component",
+        "formulation_phase",
+        "formulation_measurement"
+      ],
+      "fields": [
+        "formulation_id",
+        "document_id",
+        "zotero_key",
+        "doi",
+        "article_formulation_label_raw",
+        "polymer_identity_normalized",
+        "polymer_mw_kDa_normalized",
+        "la_ga_ratio_normalized",
+        "drug_name_normalized",
+        "surfactant_name_normalized",
+        "surfactant_amount_normalized",
+        "organic_solvent_normalized",
+        "phase_schema_normalized",
+        "size_nm_normalized",
+        "pdi_normalized",
+        "zeta_mV_normalized",
+        "encapsulation_efficiency_percent_normalized",
+        "loading_content_percent_normalized",
+        "component_count",
+        "modeling_ready_flag"
+      ]
+    }
+  ]
+}

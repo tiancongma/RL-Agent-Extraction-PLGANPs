@@ -1966,3 +1966,242 @@ Impact
 - The new behavior prevents canonically present optimized/core rows from being
   remapped onto sweep variants when the audit-ready export already exposes a
   unique stronger identity match.
+
+## 2026-03-25
+
+### Decision: Record the Stage2 contract audit finding as design guidance only; do not treat it as an active pipeline contract change
+
+Decision
+- Record the current Stage2 contract audit result and proposed `db_v2` redesign
+  as design guidance only.
+- Do not treat this audit as an active pipeline contract change.
+- Do not change active Stage2, Stage3, or Stage5 runtime behavior from this
+  note alone.
+
+Directly observed facts
+- The active authoritative Stage2 TSV pinned by
+  `data/results/ACTIVE_RUN.json` currently exposes a 119-column wide-row
+  contract.
+- The current extractor code now exposes a wider 124-column contract with:
+  - `instance_kind_raw`
+  - `instance_kind_inferred`
+  - `instance_kind_reconciliation_note`
+  - canonical `polymer_mw_kDa_*` naming in code
+  - `preparation_method`
+  - `emulsion_structure`
+- The active authoritative Stage2 TSV still carries legacy
+  `plga_mw_kDa_*` naming and does not expose the newer reconciliation or
+  preparation-method enrichment columns.
+- Raw Stage2 responses and JSONL outputs show that the LLM is currently asked
+  to emit coarse evidence-oriented metadata such as:
+  - `supporting_evidence_refs`
+  - row-level evidence span fields
+  - field `scope`
+  - field `membership_confidence`
+  - field `evidence_region_type`
+  - conflict/arbitration narrative in `paper_notes`
+
+Inference
+- Current Stage2 behavior mixes semantic extraction with a meaningful amount of
+  coarse evidence-binding and conflict-arbitration work.
+- This is directionally misaligned with the governed architecture, which says
+  semantic extraction belongs in Stage2 while evidence binding, normalization,
+  derivation, and audit should remain deterministic.
+
+Recommendation
+- Future schema work should move exact evidence binding, normalization,
+  derivation, and audit-grade pointer assembly into deterministic post-
+  processing.
+- Future Stage2 cleanup should keep the LLM focused on:
+  - formulation identity
+  - parent/variant semantics
+  - components
+  - phases
+  - process semantics
+  - measurements
+  - coarse source hints only
+- The proposed landing zone for that redesign is the documented
+  `data/db/db_v2/schema_manifest.json` plus the method note:
+  - `docs/methods/stage2_llm_field_audit_and_db_redesign_2026-03-25.md`
+
+Non-change statement
+- No active pipeline code was changed in this audit.
+- No benchmark-valid pipeline contract is changed by this log entry alone.
+
+### Decision: Approve the true Stage2 replacement direction and initial semantic-contract scaffold without switching the active runtime
+
+Decision
+- Approve the Stage2 replacement direction as a semantic-object discovery layer
+  with deterministic compatibility projection.
+- Add a non-default scaffold that writes the replacement contract artifacts:
+  - `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py`
+  - `data/db/db_v2/schema_manifest_v2_replacement.json`
+  - `data/db/db_v2/stage2_replacement_output_contract.tsv`
+  - `data/db/db_v2/stage2_legacy_to_replacement_mapping.tsv`
+- Do not switch the active benchmark runtime in this step.
+
+Observed facts
+- Active Stage3 and Stage5 still consume the current wide-row Stage2 surface.
+- The Stage2 contract audit and schema redesign review show that the current
+  Stage2 surface is too fixed-slot and carries excess coarse evidence-oriented
+  burden for the long-term design target.
+- Stage2.5 has already been archived as non-mainline and is not the chosen
+  replacement path.
+
+Decision boundary
+- The replacement target object families are:
+  - `formulation_identity_candidate`
+  - `component_candidate`
+  - `phase_candidate`
+  - `process_step_candidate`
+  - `variable_or_factor_candidate`
+  - `measurement_candidate`
+  - `relation_cue`
+  - `evidence_handoff`
+- Deterministic post-processing remains responsible for:
+  - compatibility projection
+  - normalization
+  - derivation
+  - stronger evidence binding
+
+Transition status
+- This is an architecture-and-scaffolding decision, not an active runtime
+  contract switch.
+- Current benchmark-valid mainline remains Stage2 -> Stage3 -> Stage5 with the
+  maintained wide-row Stage2 extractor.
+
+Non-change statement
+- No historical results were modified by this decision entry itself.
+- Stage3 and Stage5 runtime behavior is unchanged by this decision entry alone.
+
+### Decision: Add a deterministic Stage2 replacement compatibility adapter without changing the active benchmark runtime
+
+Decision
+- Add a deterministic compatibility adapter that reads semantic-object Stage2
+  payloads and projects them into the current wide-row Stage2 surface for
+  downstream Stage3 and Stage5 compatibility during migration.
+- Record the adapter and its projection contract as transitional support
+  infrastructure, not as a new active runtime stage.
+
+Observed facts
+- Current Stage3 and Stage5 active scripts still consume the legacy Stage2
+  wide-row contract.
+- The approved Stage2 replacement target is semantic-object discovery rather
+  than continued fixed-slot expansion.
+- The new adapter can preserve the replacement boundary by keeping projection,
+  compression, and coarse evidence handoff deterministic.
+
+Artifacts
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+- `docs/methods/stage2_replacement_compatibility_adapter_2026-03-25.md`
+- `data/db/db_v2/stage2_replacement_compatibility_projection_contract.tsv`
+
+Decision boundary
+- Stage2 replacement remains object-oriented internally.
+- The adapter may derive or compress legacy fields only through explicit
+  deterministic rules.
+- The adapter must not reintroduce final normalization, exact evidence
+  ownership binding, or hidden LLM-style arbitration.
+
+Transition status
+- Active benchmark-valid mainline remains Stage2 -> Stage3 -> Stage5 using the
+  maintained wide-row Stage2 extractor.
+- The compatibility adapter exists to make the replacement architecture
+  operational during migration, not to redefine the active benchmark runtime by
+  itself.
+
+Non-change statement
+- No historical results under `data/results/` were modified by this entry.
+- No Stage3 or Stage5 runtime logic was changed by this entry alone.
+
+### Decision: Use a diagnostic legacy-to-semantic lift for initial three-paper replacement validation, without treating it as the replacement emitter
+
+Decision
+- Add a deterministic validation-only lift from legacy Stage2 wide-row rows to
+  semantic-object payloads so the replacement compatibility bridge can be
+  exercised end-to-end before a true paper-driven semantic emitter exists.
+- Keep this lift outside the active benchmark runtime and treat all resulting
+  replacement-path runs as diagnostic-only.
+
+Observed facts
+- The repository contains a replacement semantic contract scaffold and a
+  deterministic compatibility adapter, but no true paper-driven semantic
+  Stage2 emitter yet.
+- The authoritative active run already contains paper-driven Stage2 outputs and
+  raw responses for the requested DEV15 papers.
+- A three-paper replacement validation slice can therefore be executed honestly
+  by grounding semantic objects in deterministic lift from those existing
+  paper-driven Stage2 artifacts.
+
+Artifacts
+- `src/stage2_sampling_labels/lift_legacy_stage2_to_semantic_objects_v1.py`
+- `src/analysis/build_replacement_validation_report_v1.py`
+- `data/results/run_20260325_1415_3c1a9d2_dev15_3paper_replacement_validation_no_llm_v1/`
+
+Decision boundary
+- The lift may only perform direct mapping, deterministic splitting, coarse
+  evidence handoff, and explicit missing-value preservation.
+- The lift must not be represented as the long-term semantic emitter.
+- Stage3 and Stage5 remain unchanged in this validation path.
+
+Observed diagnostic outcome
+- The replacement-path validation ran end-to-end for `UFXX9WXE`, `BXCV5XWB`,
+  and `L3H2RS2H`.
+- Replacement and legacy-reference paths diverged at Stage3 relation
+  materialization on all three papers, but reconverged at Stage5 final-row
+  counts on this slice.
+- This supports continued adapter hardening and true semantic-emitter
+  implementation before wider replacement validation.
+
+Non-change statement
+- No active benchmark-valid mainline stage definition was changed by this
+  entry.
+- No historical `data/results/run_*` directory was modified or deleted.
+- No Stage3 or Stage5 runtime logic was changed by this entry.
+
+### Decision: Validate the true paper-driven semantic Stage2 emitter on the same three-paper replacement slice before broader rollout
+
+Decision
+- Add a deterministic paper-driven semantic-object emitter that reads cleaned
+  paper text and tables directly for the governed three-paper replacement
+  validation slice.
+- Keep the active benchmark-valid mainline unchanged, and continue to use the
+  deterministic compatibility adapter as the only bridge to unchanged Stage3
+  and Stage5.
+
+Observed facts
+- The lift-based replacement validation proved the adapter and downstream
+  harness could run end-to-end, but it did not test a true paper-driven
+  semantic emitter.
+- `UFXX9WXE` has a directly usable DOE table in cleaned table assets.
+- `BXCV5XWB` is recoverable from cleaned article text as a three-family
+  formulation case even though extracted table CSVs are low-value.
+- `L3H2RS2H` has usable governed table content under
+  `data/cleaned/goren_2025/tables/L3H2RS2H/`, including the independently
+  reported `XAN nanocapsules (Theoretical concentration 800 mg/mL)` row that
+  the earlier lift-based run failed to recover.
+
+Artifacts
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+- `src/analysis/compare_replacement_validation_runs_v1.py`
+- `data/results/run_20260325_1434_f17211_dev15_3paper_true_semantic_replacement_validation_no_llm_v1/`
+
+Observed diagnostic outcome
+- The paper-driven emitter path ran end-to-end for `UFXX9WXE`, `BXCV5XWB`, and
+  `L3H2RS2H`.
+- The replacement path matched GT final row counts on all three papers for this
+  diagnostic slice.
+- Relative to the earlier lift-based run, Layer1 improved on `UFXX9WXE` and
+  `L3H2RS2H`, including recovery of the missing `L3H2RS2H` nanocapsule row.
+- Stage3 relation divergence versus the legacy reference widened on all three
+  papers, which indicates hidden legacy-shape dependence remains in the
+  migration path even though Stage5-facing counts improved.
+
+Recommendation
+- Prioritize exposing and normalizing hidden Stage3 legacy dependencies before
+  expanding this replacement path to broader paper sets.
+
+Non-change statement
+- No Stage3 runtime logic was modified by this entry.
+- No Stage5 runtime logic was modified by this entry.
+- No historical `data/results/run_*` directory was modified or deleted.

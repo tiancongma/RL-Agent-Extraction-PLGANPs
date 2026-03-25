@@ -26,8 +26,6 @@ Current scope:
 - corpus intake and relevance filtering from Zotero-derived raw records
 - manifest and cleaned-content construction
 - Stage 2 candidate formulation-instance extraction
-- a documented but not yet active Stage2.5 side-path for component-aware
-  enrichment over frozen Stage2 rows
 - Stage 3 deterministic formulation relation materialization layer
 - Stage 4 candidate-instance diagnostics and review surfaces
 - Stage 5 final formulation-table closure
@@ -52,12 +50,10 @@ The system canonical production path is:
 6. Stage 5: close candidate rows into final formulation rows with optional
    Stage 3 relation provenance
 
-The governed future side-path is:
+Exploratory note:
 
-- frozen Stage2 authority artifacts + source evidence assets -> Stage2.5
-  shadow enrichment outputs
-
-Stage2.5 is not part of the current production-path completion contract.
+- Stage2.5 is an exploratory, non-authoritative side-path and is not part of
+  the active benchmark pipeline.
 
 The production-path completion artifact is:
 
@@ -201,9 +197,6 @@ Exact output files or directories:
 - canonical candidate artifact:
   - `weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
 - supporting JSONL alongside the TSV
-- additive shadow sidecars keyed by the existing Stage2 formulation row id:
-  - `weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse_components_shadow.jsonl`
-  - `weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse_components_shadow.tsv`
 - additive deterministic augmentation artifacts when numbered DOE rows are found:
   - `weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
   - `weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
@@ -217,61 +210,6 @@ Consumed by downstream stage:
 
 - Stage 3 for deterministic relation materialization
 - Stage 4 for diagnostics
-- component shadow sidecars are non-authoritative and are not consumed by Stage 3 or Stage 5 unless a future contract explicitly adopts them
-
-### Stage 2.5. Planned Non-Authoritative Component Enrichment Side-Path
-
-Purpose:
-Recover component-aware structure from already frozen Stage2 formulation rows
-using formulation-bound evidence units, without changing Stage2 benchmark-facing
-outputs and without participating in formulation identity decisions.
-
-Status:
-
-- architecture documented
-- a text-only Stage2.5A v0 shadow builder now exists for diagnostic validation
-- not yet an active execution step in the canonical path
-- downstream adoption deferred
-
-Intervention model:
-
-- Stage2.5 sits beside the mainline, not inside it
-- it consumes frozen Stage2 outputs and source evidence assets
-- it emits shadow component artifacts only
-- it does not alter Stage3 or Stage5 in the current phase
-
-Principles:
-
-- frozen-authority first
-- evidence-first, not field-first
-- field-local anchoring where possible
-- conservative canonicalization with raw wording preserved
-- non-authoritative shadow outputs until proven stable
-- no formulation-identity reinterpretation
-
-Planned logical modules:
-
-- Stage2.5A Evidence Binding and Pack Builder
-- Stage2.5B Deterministic Pre-Splitter
-- Stage2.5C LLM-Assisted Component Resolver
-- Stage2.5D Component Assembly and Validation
-- Stage2.5E Review and Audit Surface
-
-Current implemented scope note:
-
-- `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py` is a
-  text-only v0 implementation of Stage2.5A.
-- It is diagnostic-only and shadow-only.
-- It consumes frozen Stage2 rows plus cleaned text assets.
-- It does not bind tables yet.
-- It does not alter Stage2, Stage3, or Stage5 behavior.
-
-Responsibility rule:
-
-- flattened Stage2 benchmark-facing fields may assist routing, but raw evidence
-  remains the authority for difficult component recovery
-- if recoverable raw evidence is not available, Stage2.5 must preserve
-  unresolved status rather than hallucinate structure
 
 ### Stage 3. Deterministic Formulation Relation Materialization
 

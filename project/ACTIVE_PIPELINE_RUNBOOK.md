@@ -231,44 +231,33 @@ Additive Stage2 augmentation artifacts when numbered DOE tables are detected:
 - `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
 - `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
 
-Additive non-authoritative shadow artifacts:
-
-- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse_components_shadow.jsonl`
-- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse_components_shadow.tsv`
-
-Shadow-output rule:
-
-- these component-shadow artifacts are linked to the existing Stage2 formulation row id
-- they are additive only
-- Stage 3 and Stage 5 must continue consuming only the benchmark-facing Stage2 TSV unless a future explicit contract says otherwise
-
 Stage2 boundary rule:
 
 - explicit numbered DOE or design-table rows belong to the upstream extraction boundary
 - when such rows are present in Stage1 table assets, the deterministic enumerator may add missing candidates before Stage3 and Stage5
 - downstream stages must not be expected to reconstruct those rows if Stage2 omitted them
 
-Future Stage2.5 governance note:
+Exploratory note:
 
-- Stage2.5 is documented as a planned non-authoritative side-path enrichment
-  layer
-- it is not an active runbook step yet
-- a diagnostic text-only Stage2.5A v0 builder now exists:
-  - `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py`
-- when implemented, it must read frozen Stage2 authority artifacts plus source
-  evidence assets, not mutable in-flight Stage2 state
-- it must emit shadow outputs only and must not feed Stage3 or Stage5 in the
-  current phase
-- the current v0 builder is text-only:
-  - exact-anchored sentence or method spans only
-  - no table binding yet
-  - no component extraction yet
-- its recommended internal rollout order is:
-  - Evidence Binding and Pack Builder
-  - Deterministic Pre-Splitter
-  - LLM-Assisted Resolver for unresolved cases only
-  - Component Assembly and Validation
-  - Review and Audit exports
+- Stage2.5 is an exploratory, non-authoritative side-path and is not part of
+  the active benchmark pipeline.
+- Any retained Stage2.5 scripts or runs are historical design inputs only and
+  must not be selected as active runbook steps.
+
+Replacement transition note:
+
+- `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py` is a
+  non-default design scaffold for the true Stage2 replacement effort.
+- It writes replacement-contract artifacts only.
+- It is not a Stage2 completion artifact.
+- It is not a benchmark runtime entrypoint.
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
+  a non-default deterministic transition tool.
+- It projects semantic-object Stage2 outputs back into the legacy wide-row
+  Stage2 surface for unchanged Stage3 and Stage5 consumers.
+- It is supporting migration infrastructure, not a new active pipeline stage.
+- current benchmark runtime remains the maintained wide-row Stage2 extractor
+  until a deterministic compatibility projection is adopted.
 
 ### Stage 3
 

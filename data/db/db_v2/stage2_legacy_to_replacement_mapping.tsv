@@ -1,0 +1,40 @@
+legacy_field	replacement_object_type	replacement_field	mapping_kind	preserve_raw	deprecated	notes
+formulation_id	formulation_identity_candidate	formulation_candidate_id	rename	yes	no	Candidate-local id remains needed during transition.
+raw_formulation_label	formulation_identity_candidate	raw_formulation_label	direct	yes	no	Preserve author wording.
+parent_instance_id	formulation_identity_candidate	parent_candidate_id	rename	yes	no	Resolved parent ids happen later.
+instance_kind	formulation_identity_candidate	instance_kind	direct	yes	no	Keep compact routing enum.
+formulation_role	formulation_identity_candidate	formulation_role	direct	yes	no	Supports Stage5 later.
+change_descriptions	formulation_identity_candidate	change_descriptions	direct	yes	no	Stay concise.
+instance_context_tags	formulation_identity_candidate	instance_context_tags	direct	yes	no	Compact semantic tags.
+change_context_tags	formulation_identity_candidate	change_context_tags	direct	yes	no	Compact semantic tags.
+polymer_identity	component_candidate	component_role_raw=polymer + component_name_raw	split	yes	yes	Do not keep as a single fixed-slot field in the long term.
+polymer_name_raw	component_candidate	component_name_raw	direct	yes	yes	Belongs on polymer component records.
+la_ga_ratio_value_text	component_candidate	component_properties_raw.la_ga_ratio	move_to_component_property	yes	yes	Family-specific polymer property, not universal formulation field.
+plga_mw_kDa_value_text	component_candidate	component_properties_raw.molecular_weight	legacy_rename_and_move	yes	yes	Retire PLGA-specific naming; use generic polymer component property.
+polymer_mw_kDa_value_text	component_candidate	component_properties_raw.molecular_weight	move_to_component_property	yes	yes	Generic polymer MW belongs on the polymer component.
+plga_mass_mg_value_text	component_candidate	amount_expression_raw	move_to_component	yes	yes	Use polymer component amount expression, not a formulation-wide slot.
+surfactant_name_value_text	component_candidate	component_name_raw	move_to_component	yes	yes	Use one record per surfactant or stabilizer.
+surfactant_concentration_text_value_text	component_candidate	amount_expression_raw	move_to_component	yes	yes	Supports multiple stabilizers cleanly.
+pva_conc_percent_value_text	component_candidate	amount_expression_raw	demote_special_case	yes	yes	Retire dedicated PVA slot; represent as a component amount.
+organic_solvent_value_text	component_candidate	component_name_raw	move_to_component	yes	yes	Supports multiple solvents and co-solvents.
+drug_name_value_text	component_candidate	component_name_raw	move_to_component	yes	yes	Drug becomes a component record.
+drug_feed_amount_text_value_text	component_candidate	amount_expression_raw	move_to_component	yes	yes	Keep raw amount before deterministic conversion.
+emul_method_value_text	process_step_candidate	process_name_raw	move_to_process	yes	yes	Generalize beyond emulsion-specific naming.
+emul_type_value_text	process_step_candidate	process_name_raw or phase relation	split	yes	yes	Some values belong to process type, some to phase structure.
+preparation_method	process_step_candidate	process_name_raw	move_to_process	yes	no	Useful generalized process field.
+emulsion_structure	phase_candidate	phase_code_raw	move_to_phase	yes	no	Useful phase-aware field.
+size_nm_value_text	measurement_candidate	measurement_value_raw	move_to_measurement	yes	yes	Use measurement object with name=size_nm.
+pdi_value_text	measurement_candidate	measurement_value_raw	move_to_measurement	yes	yes	Use measurement object with name=pdi.
+zeta_mV_value_text	measurement_candidate	measurement_value_raw	move_to_measurement	yes	yes	Use measurement object with name=zeta_mV.
+encapsulation_efficiency_percent_value_text	measurement_candidate	measurement_value_raw	move_to_measurement	yes	yes	Primary outcome measurement.
+loading_content_percent_value_text	measurement_candidate	measurement_value_raw	move_to_measurement	yes	yes	Primary outcome measurement when present.
+*_scope	relation_cue	cue_type/shared_or_instance_specific	demote_to_relation_hint	optional	yes	Do not keep per-field ownership as the main Stage2 surface.
+*_membership_confidence	formulation_identity_candidate	identity_confidence	collapse_and_demote	optional	yes	Per-field confidence burden moves out of Stage2.
+*_evidence_region_type	evidence_handoff	source_region_type	collapse_and_demote	yes	yes	Keep only coarse evidence hints.
+*_missing_reason	measurement_candidate or component_candidate	notes_raw	optional_annotation	optional	yes	Useful for audit, not core contract.
+supporting_evidence_refs	evidence_handoff	source_locator_text/supporting_snippet	demote_to_coarse_handoff	yes	yes	Avoid mixed-bag evidence ownership logic in Stage2.
+instance_evidence_region_type	evidence_handoff	source_region_type	demote_to_coarse_handoff	yes	yes	Coarse handoff only.
+evidence_section	evidence_handoff	source_locator_text	demote_to_coarse_handoff	yes	yes	Keep only as a routing hint.
+evidence_span_text	evidence_handoff	supporting_snippet	demote_to_coarse_handoff	yes	yes	Not final binding authority.
+evidence_span_start/evidence_span_end	evidence_handoff	none	remove_from_llm_contract	no	yes	Exact anchoring should be deterministic.
+paper_notes	none	none	retire_required_output	optional	yes	Do not require arbitration narrative from the LLM.
