@@ -3,9 +3,10 @@
 This document defines the minimal final-output layer contract for the repository.
 It remains the durable design contract for the layer even after the first controlled implementation.
 
-Implementation status on `2026-03-12`:
+Implementation status on `2026-03-25`:
 - phase 1 runtime scripts exist under `src/stage5_benchmark/`
-- phase 1 final-output artifacts can be produced from current Stage2 candidate-instance TSVs
+- phase 1 final-output artifacts can be produced from the compatibility-projected
+  legacy wide-row surface emitted after semantic Stage2
 - the downstream benchmark comparison step now exists under `src/stage5_benchmark/`
 - the canonical full path is manual Stage 0 to Stage 5 reproduction defined in `project/ACTIVE_PIPELINE_FLOW.md`
 
@@ -17,7 +18,13 @@ The missing layer is therefore not optional housekeeping. It is the smallest dow
 
 ## Why current Stage2 -> Stage4 candidate comparison is not sufficient
 
-`src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` produces candidate formulation-instance rows with evidence, parent/variant semantics, and provenance-style labels. `src/stage4_eval/eval_weak_labels_v7pilot3.py` evaluates those rows as candidate-instance behavior. That comparison is intentionally useful for under-segmentation, over-segmentation, and paper-level debugging, but it does not own final formulation closure.
+The active semantic Stage2 emitter produces semantic objects, and the
+deterministic compatibility adapter projects those objects into the legacy
+candidate formulation-instance rows still consumed by unchanged Stage3, Stage4,
+and Stage5. `src/stage4_eval/eval_weak_labels_v7pilot3.py` evaluates those
+compatibility-projected rows as candidate-instance behavior. That comparison is
+intentionally useful for under-segmentation, over-segmentation, and paper-level
+debugging, but it does not own final formulation closure.
 
 Candidate-instance semantics and final formulation-table semantics are different. A paper may legitimately produce more candidate rows than final formulation rows. Provenance labels such as baseline, optimized, or sweep-derived are still valuable, but they do not by themselves define whether two rows should remain separate in a benchmark-valid final table.
 
@@ -65,7 +72,8 @@ provenance, but relation materialization itself belongs to Stage 3, not Stage 5.
 
 Minimum required input:
 
-- a run-scoped candidate-instance TSV produced by the active Stage2 extractor, currently `weak_labels__v7pilot_r3_fixparse.tsv`
+- a run-scoped candidate-instance TSV produced by the deterministic
+  compatibility adapter, currently `weak_labels__v7pilot_r3_fixparse.tsv`
 
 Optional but useful supporting inputs:
 
@@ -121,12 +129,13 @@ Historical skeleton bootstrap scripts under `archive/code/dev15_skeleton_bootstr
 A `full_pipeline_benchmark_run` must include, in order:
 
 1. corpus/split selection and cleaned-input confirmation
-2. Stage2 candidate-instance extraction
-3. deterministic Stage 3 relation materialization
-4. optional candidate-instance diagnostic evaluation
-5. minimal final-output layer execution
-6. benchmark comparison against GT using the final formulation table
-7. run-scoped reproducibility documentation naming the final-output artifact
+2. semantic Stage2 object generation
+3. deterministic compatibility projection into the legacy wide-row surface
+4. deterministic Stage 3 relation materialization
+5. optional candidate-instance diagnostic evaluation
+6. minimal final-output layer execution
+7. benchmark comparison against GT using the final formulation table
+8. run-scoped reproducibility documentation naming the final-output artifact
 
 Without steps 4 and 5, the run is not benchmark-valid.
 

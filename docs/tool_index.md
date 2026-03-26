@@ -158,7 +158,7 @@ Note:
 
 - Keep active-path authority in `project/ACTIVE_PIPELINE_RUNBOOK.md` and `project/PIPELINE_SCRIPT_MAP.md`; do not infer current entrypoints from historical suffix ordering.
 - Treat `archive/code/` and `archive/code/pre_reduction_legacy/` as non-default locations even when scripts remain useful for audit or reproduction.
-- The current canonical formulation-instance extractor is `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`; older weak-label variants remain archived or comparative.
+- The current authoritative Stage2 boundary is `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`, followed by the deterministic compatibility bridge `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`; older weak-label extractors remain legacy or comparative only.
 - Use this index as a registry and reduction-reconciliation aid, not as the source of truth for choosing the active mainline path.
 
 ## Manual Additions (2026-02-22)
@@ -230,14 +230,22 @@ Note:
 
 ## Manual Additions (2026-03-11)
 
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
   - Stage: Stage2 Sampling and Labels
   - Status: ACTIVE_MAINLINE
-  - Purpose: Primary formulation-instance DEV extractor with block-based evidence packing, compressed routing enums, and additive explicit polymer identity fields.
+  - Purpose: Primary paper-driven semantic Stage2 emitter that reads cleaned paper text and table assets and writes semantic-object payloads.
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+  - Stage: Stage2 Sampling and Labels
+  - Status: ACTIVE_MAINLINE
+  - Purpose: Deterministic compatibility bridge that projects semantic Stage2 objects into the legacy wide-row surface required by unchanged Stage3, Stage4 diagnostic, and Stage5 consumers.
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  - Stage: Stage2 Sampling and Labels
+  - Status: LEGACY_FALLBACK
+  - Purpose: Deprecated legacy wide-row extractor retained only for fallback or debug use outside the active mainline.
 - `src/stage2_sampling_labels/run_targeted_stage2_regression_v1.py`
   - Stage: Stage2 Sampling and Labels
   - Status: ACTIVE_SUPPORTING
-  - Purpose: Diagnostic 5-paper regression runner for the active Stage2 extractor; emits a self-documented run pack with manifest, context, per-paper summary, and prior-vs-current comparison files before a full DEV15 rerun.
+  - Purpose: Diagnostic regression runner for legacy Stage2 fallback work; emits a self-documented run pack with manifest, context, per-paper summary, and prior-vs-current comparison files.
 - `src/stage2_sampling_labels/diagnose_5gif3d8w_root_cause_v1.py`
   - Stage: Stage2 Sampling and Labels
   - Status: ACTIVE_SUPPORTING
@@ -248,8 +256,8 @@ Note:
   - Purpose: Case-specific diagnostic helper for `5GIF3D8W`; audits axis-specific sweep applicability across pre-fix and post-fix runs, maps paper-local evidence by axis, and isolates likely over-expanded rows before any axis-scoping fix.
 - `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
   - Stage: Stage2 Sampling and Labels
-  - Status: ACTIVE_MAINLINE
-  - Purpose: Deterministic Stage2-boundary numbered DOE table-row enumerator; recovers explicit numbered formulation rows from Stage1 table assets and emits additive candidate artifacts with regression-threshold support.
+  - Status: LEGACY_SUPPORTING
+  - Purpose: Deterministic legacy Stage2 DOE table-row enumerator retained for fallback or regression-localization work.
 - `src/stage4_eval/eval_weak_labels_v7pilot3.py`
   - Stage: Stage4 Evaluation
   - Status: ACTIVE_MAINLINE

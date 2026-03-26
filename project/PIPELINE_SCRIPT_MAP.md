@@ -32,11 +32,12 @@ Script classes used here are fixed:
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert the raw Zotero-derived JSONL into the authoritative manifest. | `data/raw/zotero/zotero_selected_items.jsonl` | `data/cleaned/index/manifest_current.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
-| Stage 2 | Candidate formulation-instance extraction | `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` | `ACTIVE_ENTRYPOINT` | Produce high-recall candidate formulation-instance rows from cleaned assets. | scope manifest TSV; cleaned text; optional tables; model access | run-scoped weak-label TSV and JSONL |
-| Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts and resolved relation-backed descriptive synthesis fields from Stage 2 weak labels without any LLM usage. | Stage 2 candidate formulation-instance TSV; optional Stage 2 JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv`; `resolved_relation_fields_v1.tsv` |
-| Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts. | Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
+| Stage 2 | Semantic-object discovery | `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py` | `ACTIVE_ENTRYPOINT` | Emit authoritative paper-driven semantic Stage2 objects from cleaned assets. | scope manifest TSV; cleaned text; cleaned or governed tables | semantic-object JSONL; semantic summary TSV; semantic manifest JSON |
+| Compatibility bridge | Deterministic legacy wide-row projection | `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `ACTIVE_ENTRYPOINT` | Deterministically project semantic Stage2 objects into the legacy wide-row surface required by unchanged Stage3, Stage4 diagnostic, and Stage5 consumers. | semantic-object JSONL and sidecars | compatibility-projected weak-label TSV/JSONL; projection trace TSV |
+| Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts and resolved relation-backed descriptive synthesis fields from the compatibility-projected legacy wide-row surface without any LLM usage. | compatibility-projected Stage 2 candidate formulation-instance TSV; optional compatibility-projected JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv`; `resolved_relation_fields_v1.tsv` |
+| Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts from the compatibility-projected legacy wide-row surface. | compatibility-projected Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
-| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from Stage 2 candidate rows by materializing direct extraction fields plus explicit Stage 3 resolved relation fields, while applying conservative benchmark-facing identity guardrails such as descendant filtering. Parent-linked non-synthesis descendants remain filterable, sweep-style `variant_formulation` members are not auto-filtered by `post_processing` alone, and parent-linked helper descendants with preserved blank/control/model-drug-substitution semantics are also filterable even when upstream routing tags regress. | Stage 2 candidate formulation-instance TSV; required Stage 3 relation-record TSV; required Stage 3 resolved-relation-field TSV | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
+| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from compatibility-projected Stage 2 candidate rows by materializing direct extraction fields plus explicit Stage 3 resolved relation fields, while applying conservative benchmark-facing identity guardrails such as descendant filtering. Parent-linked non-synthesis descendants remain filterable, sweep-style `variant_formulation` members are not auto-filtered by `post_processing` alone, and parent-linked helper descendants with preserved blank/control/model-drug-substitution semantics are also filterable even when upstream routing tags regress. | compatibility-projected Stage 2 candidate formulation-instance TSV; required Stage 3 relation-record TSV; required Stage 3 resolved-relation-field TSV | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
 | Stage 5 | Comparison node | `src/stage5_benchmark/compare_final_table_to_gt_v1.py` | `ACTIVE_ENTRYPOINT` | Compare only the Stage 5 final formulation table to the checked GT workbook. | final formulation table; scope manifest; fixed GT workbook | `final_table_vs_gt_counts.tsv`; `final_table_vs_gt_summary.md` |
 
 ## Evaluation Reference Path
@@ -63,10 +64,12 @@ transformations.
   production endpoint.
 - The comparison node is downstream of the production path and uses the fixed
   GT workbook as a separate reference input.
-- Stage2.5 is exploratory, non-authoritative, and not part of the active
-  benchmark pipeline.
-- Retained Stage2.5 scripts may remain in the repository as supporting design
-  inputs, but they must not replace the Stage2 -> Stage3 -> Stage5 mainline.
+- Stage2.5 is retired from the active mainline and remains archived only as
+  historical exploratory design input.
+- The active benchmark mainline is semantic Stage2 -> compatibility adapter ->
+  Stage3 -> Stage5.
+- The legacy wide-row extractor is deprecated and must not replace the active
+  semantic Stage2 -> adapter -> Stage3 -> Stage5 mainline.
 
 ## Optional Diagnostic / Review Path
 
@@ -112,6 +115,8 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py` | `STABLE_TOOL` | Build sample-local key-to-text mappings. |
 | `src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py` | `STABLE_TOOL` | Build deterministic evidence packages for selected keys. |
 | `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit numbered DOE formulation rows from Stage1 table assets and emit additive Stage2 candidate artifacts. |
+| `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py` | `STABLE_TOOL` | Authoritative semantic Stage2 emitter used by the active mainline. |
+| `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Deterministic compatibility bridge from semantic Stage2 objects to the legacy wide-row surface used by unchanged downstream consumers. |
 | `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py` | `STABLE_TOOL` | Write the non-default Stage2 replacement semantic-contract scaffold artifacts used for redesign planning and compatibility mapping. It is not a benchmark runtime entrypoint. |
 | `src/stage2_sampling_labels/enrich_preparation_method_fields_v1.py` | `STABLE_TOOL` | Deterministically append schema-only preparation-method enrichment fields to an existing Stage2-style TSV without changing row identity or counts. |
 | `src/stage2_sampling_labels/export_blockpack_audit_v7pilot_r3_fixparse.py` | `STABLE_TOOL` | Export the Stage 2 evidence packing order for manual audit. |
@@ -120,31 +125,13 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/diagnose_5gif3d8w_root_cause_v1.py` | `STABLE_TOOL` | Paper-specific diagnostic helper retained for regression analysis. |
 | `src/stage2_sampling_labels/diagnose_5gif3d8w_axis_applicability_v1.py` | `STABLE_TOOL` | Axis-applicability diagnostic helper retained for regression analysis. |
 
-Stage 2 evidence-packing note:
+Legacy extractor note:
 
-- Evidence packing is priority-driven, not document-order-driven.
-- The active packer now promotes `materials_procurement` blocks so shared/default Materials-style parameters surface earlier in LLM input.
-- Effective textual priority is:
-  - `metadata`
-  - `synthesis_method`
-  - `materials_procurement`
-  - `table`
-  - `caption`
-  - `paragraph`
-- This adjustment is intended to improve capture of shared parameters such as polymer identity, polymer MW, polymer grade, and supplier-coded material defaults without changing Stage 5 semantics.
-
-Stage 2 instance-kind reconciliation note:
-
-- The active Stage 2 extractor now applies a conflict-aware reconciliation step
-  after canonicalization.
-- The reconciler is pattern-based, not paper-key-based.
-- It does not blindly trust raw explicit `instance_kind`, and it does not apply
-  a blanket downgrade from `non_synthesis` alone.
-- It may rescue GT-valid formulation-family members that carry strong identity
-  signals, and it may downgrade helper/comparative rows that carry weak
-  formulation identity.
-- Audit fields are preserved in the Stage 2 outputs so raw vs reconciled
-  instance-kind behavior can be inspected downstream.
+- The deprecated wide-row fallback extractor carried historical evidence-packing
+  and instance-kind reconciliation behavior.
+- Those details remain relevant only for fallback or historical comparison work.
+- They are not the authoritative Stage2 contract for the active semantic
+  Stage2 -> adapter -> Stage3 -> Stage5 mainline.
 
 Stage 2.5 archival note:
 
@@ -152,24 +139,22 @@ Stage 2.5 archival note:
   retained as an archived exploratory Stage2.5A shadow evidence-pack builder.
 - It is non-authoritative and must not feed Stage3 or Stage5.
 
-Stage 2 replacement transition note:
+Stage 2 active contract note:
 
-- the approved replacement direction is a semantic-object Stage2 contract with
-  deterministic compatibility projection for current downstream consumers
-- `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py` is the
-  initial non-default scaffold for that work
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  is the authoritative Stage2 entrypoint.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
-  the transitional deterministic bridge from semantic-object Stage2 payloads
-  back to the maintained wide-row Stage2 surface
-- the active benchmark runtime remains the maintained wide-row Stage2 extractor
-  until later adoption
+  the deterministic bridge from semantic Stage2 objects to the legacy wide-row
+  surface used by unchanged downstream consumers.
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  is legacy and deprecated.
 
-### Stage 2.5
+### Archived Stage 2.5
 
 | Script path | Class | Purpose |
 |---|---|---|
 | `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py` | `STABLE_TOOL` | Archived exploratory Stage2.5A shadow evidence-pack builder retained for design reference only; not part of the active benchmark pipeline. |
-| `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Deterministically project semantic-object Stage2 outputs into the legacy wide-row Stage2 surface for migration support only; not a benchmark runtime entrypoint by itself. |
+| `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` | `ARCHIVED_METHOD` | Deprecated legacy wide-row extractor retained only for fallback or debug scenarios outside the active mainline. |
 
 ### Stage 3
 

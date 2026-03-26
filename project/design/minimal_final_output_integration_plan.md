@@ -6,11 +6,12 @@ The new layer should be inserted after candidate-instance extraction and before 
 
 Minimum future order:
 
-1. Stage2 candidate extraction
-2. optional Stage4 candidate-instance diagnostics
-3. minimal final-output layer
-4. final-output benchmark comparison
-5. review/export surfaces built from the final-output benchmark artifacts
+1. semantic Stage2 object generation
+2. deterministic compatibility projection into the legacy wide-row surface
+3. optional Stage4 candidate-instance diagnostics
+4. minimal final-output layer
+5. final-output benchmark comparison
+6. review/export surfaces built from the final-output benchmark artifacts
 
 This preserves the current diagnostic path while adding the missing benchmark-valid closure step.
 
@@ -23,8 +24,9 @@ Current implementation status:
 
 Primary upstream dependencies:
 
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
-- the run-scoped candidate TSV it produces
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+- the run-scoped compatibility-projected candidate TSV the adapter produces
 - the split manifest used for the run
 
 Optional upstream dependencies:
@@ -51,7 +53,7 @@ These assets may inform signature choice, schema shape, or export patterns. They
 
 The first implementation should do only four things:
 
-1. ingest candidate-instance rows from the active Stage2 contract
+1. ingest candidate-instance rows from the compatibility-projected legacy Stage2 surface
 2. remove explicit non-formulation rows
 3. apply narrow collapse logic for clearly redundant candidate rows using a decision trace
 4. emit a benchmark-valid final formulation table and its decision-trace artifacts

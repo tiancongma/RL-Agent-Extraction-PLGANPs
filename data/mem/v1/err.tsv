@@ -354,7 +354,6 @@ MERR532			fail	resolve the required source artifacts, the script must fail loudl
 MERR533	stage3		collapse_drop	The current Stage 5 closure logic does not yet fully drive keep/drop/collapse	Stage 3 Scope Boundary		project	project/ACTIVE_PIPELINE_FLOW.md	project	active
 MERR534	stage3		failure_fail	human audit and failure localization	Stage 3. Deterministic Formulation Relation Materialization		project	project/ACTIVE_PIPELINE_FLOW.md	project	active
 MERR535	stage5		missing_fail	Stage 5 must fail fast if either Stage 3 relation artifact is missing. Silent	Step 5A. Build the final formulation table		project	project/ACTIVE_PIPELINE_FLOW.md	project	active
-MERR536	stage2		regression	extractor. Disable it only for controlled ablation or regression-localization	Step 2. Produce the Stage 2 candidate formulation-instance TSV		project	project/ACTIVE_PIPELINE_FLOW.md	project	active
 MERR537	stage5		collapse	large-scale identity collapse	Stage 5		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
 MERR538			error	otherwise hard error	Maintained Script Entrypoints		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
 MERR539			fail	If neither is available, fail loudly.	Complete Pipeline vs Full Recomputation		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
@@ -364,7 +363,5 @@ MERR561			failure_fail	the specific failure phrase	Supporting Memory Layer		proj
 MERR541	stage2		mismatch	This path is downstream of Stage 2 candidate extraction and exists for mismatch	Optional Diagnostic / Review Path		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
 MERR562			mismatch	paper key or mismatch phrase such as `identity mismatch`	Supporting Memory Layer		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
 MERR544	stage5		missing	large batch over-generation or meaningful missing identities must still be	Stage 5		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
-MERR545	stage2		missing	when such rows are present in Stage1 table assets, the deterministic enumerator may add missing candidates before Stage3 and Stage5	Stage 2		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
-MERR546	stage2		regression	Stage 2 LLM input has changed; regression runs using fresh LLM calls are required to fully validate behavior.	Recent Changes (2026-03-19)		project	project/ACTIVE_PIPELINE_RUNBOOK.md	project	active
 MERR548			error	> File names must never encode time, emotion, or trial-and-error history.	Core Principle		project	project/FILE_NAMING_AND_VERSIONING.md	project	active
 MERR563			mismatch_regression	for complex debugging, regression, run comparison, GT mismatch analysis, pipeline modification, or lineage tracing, query memory before deeper repository exploration	Cross-cutting governance support		project	project/PIPELINE_SCRIPT_MAP.md	project	active

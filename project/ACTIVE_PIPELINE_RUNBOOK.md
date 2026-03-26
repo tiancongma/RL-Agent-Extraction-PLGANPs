@@ -30,20 +30,18 @@ This runbook distinguishes:
   - `polymer_mw_kDa` is now the canonical field name.
   - `plga_mw_kDa` is retained only as a legacy read alias for compatibility with older artifacts.
   - This is a naming correction only; the field meaning did not change.
-- Stage 2 evidence packing:
-  - Stage 2 now promotes a `materials_procurement` block type for shared/default procurement-style parameters.
-  - Effective packing order is:
-    - `metadata`
-    - `synthesis_method`
-    - `materials_procurement`
-    - `table`
-    - `caption`
-    - `paragraph`
+- Stage 2 contract:
+  - Stage 2 now refers to the paper-driven semantic-object emitter as the
+    authoritative semantic boundary.
+  - The deterministic compatibility adapter is the required bridge into the
+    legacy wide-row surface used by unchanged Stage3, Stage4 diagnostic, and
+    Stage5 runtime consumers.
 - Non-change reminder:
   - Stage 5 remains materialization-only.
   - The relation-first Stage 3 -> Stage 5 contract is unchanged.
-- Validation note:
-  - Stage 2 LLM input has changed; regression runs using fresh LLM calls are required to fully validate behavior.
+- Legacy note:
+  - The deprecated wide-row fallback extractor may still carry older evidence-
+    packing behavior, but that is no longer the active Stage2 mainline.
 
 ## Operating Principle
 
@@ -211,53 +209,49 @@ Completion artifacts:
 
 ### Stage 2
 
-Use Stage 2 to produce the candidate formulation-instance TSV for the declared
-scope.
+Use Stage 2 to produce the authoritative semantic-object payloads for the
+declared scope.
 
 Core script:
 
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
-
-Supporting deterministic Stage2-boundary tool:
-
-- `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
 
 Completion artifact:
 
-- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
-
-Additive Stage2 augmentation artifacts when numbered DOE tables are detected:
-
-- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
-- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
+- `data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
+- supporting semantic summary and manifest sidecars
 
 Stage2 boundary rule:
 
-- explicit numbered DOE or design-table rows belong to the upstream extraction boundary
-- when such rows are present in Stage1 table assets, the deterministic enumerator may add missing candidates before Stage3 and Stage5
-- downstream stages must not be expected to reconstruct those rows if Stage2 omitted them
+- Stage2 is the semantic discovery boundary.
+- Stage2 must preserve paper-reported structure and raw expressions.
+- Stage2 must not be documented as a wide-row TSV producer.
+- Stage2.5 is retired from the active mainline and retained only as archived
+  design history.
 
-Exploratory note:
+Authoritative Stage2 object families:
 
-- Stage2.5 is an exploratory, non-authoritative side-path and is not part of
-  the active benchmark pipeline.
-- Any retained Stage2.5 scripts or runs are historical design inputs only and
-  must not be selected as active runbook steps.
+- `formulation_identity_candidate`
+- `component_candidate`
+- `phase_candidate`
+- `process_step_candidate`
+- `variable_or_factor_candidate`
+- `measurement_candidate`
+- `relation_cue`
+- `evidence_handoff`
 
-Replacement transition note:
+Compatibility bridge:
 
-- `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py` is a
-  non-default design scaffold for the true Stage2 replacement effort.
-- It writes replacement-contract artifacts only.
-- It is not a Stage2 completion artifact.
-- It is not a benchmark runtime entrypoint.
-- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
-  a non-default deterministic transition tool.
-- It projects semantic-object Stage2 outputs back into the legacy wide-row
-  Stage2 surface for unchanged Stage3 and Stage5 consumers.
-- It is supporting migration infrastructure, not a new active pipeline stage.
-- current benchmark runtime remains the maintained wide-row Stage2 extractor
-  until a deterministic compatibility projection is adopted.
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+- this deterministic adapter converts semantic Stage2 outputs into the legacy
+  wide-row surface required by unchanged Stage3, Stage4 diagnostic, and Stage5
+  runtime consumers
+- the adapter is part of the active execution chain but is not a numbered
+  semantic stage
+- the adapter must not perform semantic inference
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  is deprecated and retained only for fallback or debug use outside the active
+  mainline
 
 ### Stage 3
 
@@ -273,8 +267,8 @@ Runtime rule:
 
 Current production-boundary input:
 
-- `data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
-- optional Stage 2 JSONL and scope manifest TSV
+- `data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+- optional compatibility-projected JSONL and scope manifest TSV
 
 Current production-boundary output:
 

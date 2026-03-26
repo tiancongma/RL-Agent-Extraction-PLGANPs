@@ -1,5 +1,11 @@
 ## 2026-01-28
 
+Historical note:
+- This log preserves dated decisions in their original architectural context.
+- Older entries may describe a previously active Stage2 contract.
+- Current pipeline authority always lives in `project/ACTIVE_PIPELINE_FLOW.md`,
+  `project/ACTIVE_PIPELINE_RUNBOOK.md`, and `project/2_ARCHITECTURE.md`.
+
 Decision: Promote `manifest_html10.tsv` as `manifest_current.tsv`  
 Reason: Stable HTML-first manifest used for sample10 baseline  
 Alternatives: `manifest_html10_bad.tsv` archived due to known path issues  
@@ -2200,6 +2206,51 @@ Observed diagnostic outcome
 Recommendation
 - Prioritize exposing and normalizing hidden Stage3 legacy dependencies before
   expanding this replacement path to broader paper sets.
+
+Non-change statement
+- No Stage3 runtime logic was modified by this entry.
+- No Stage5 runtime logic was modified by this entry.
+- No historical `data/results/run_*` directory was modified or deleted.
+
+### Decision: Stage2 authority migrated to the semantic-object emitter; Stage2.5 retired from the active mainline
+
+Decision
+- Make the paper-driven semantic-object emitter the authoritative Stage2
+  boundary for the active mainline.
+- Define the deterministic compatibility adapter as the required bridge from
+  semantic Stage2 outputs into the legacy wide-row surface used by unchanged
+  Stage3 and Stage5 consumers.
+- Retire Stage2.5 from the active mainline and keep it only as archived
+  exploratory history.
+- Reclassify the legacy wide-row extractor as deprecated fallback or debug
+  infrastructure rather than the active Stage2 authority.
+
+Rationale
+- Wide-row extraction proved fragile as the primary Stage2 contract because it
+  couples semantic discovery to fixed-slot projection too early.
+- Semantic objects are a more stable intermediate representation for
+  multi-component formulations, variable/factor discovery, and raw-expression
+  preservation.
+- A deterministic adapter preserves downstream reuse while Stage3 and Stage5
+  remain unchanged.
+
+Observed facts
+- A true paper-driven semantic Stage2 emitter now exists in
+  `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`.
+- A deterministic compatibility adapter now exists in
+  `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`.
+- Stage3 and Stage5 remain unchanged and still consume the legacy wide-row
+  compatibility surface.
+- Stage2.5 had already been archived earlier and is not the chosen long-term
+  replacement path.
+
+Decision boundary
+- Stage2 semantic objects are now the authoritative Stage2 output.
+- The legacy wide-row surface is a compatibility projection only.
+- The compatibility adapter is transitional infrastructure, not the desired
+  long-term semantic core.
+- Known hidden Stage3 legacy dependencies still exist and are not resolved by
+  this decision entry.
 
 Non-change statement
 - No Stage3 runtime logic was modified by this entry.

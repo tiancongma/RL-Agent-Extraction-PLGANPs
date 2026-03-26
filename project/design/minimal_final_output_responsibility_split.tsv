@@ -1,5 +1,5 @@
 system_layer	responsibility	owned_here	explicitly_not_owned_here	notes
-candidate extraction layer	high-recall proposal of candidate formulation-instance rows	no	yes	Owned by the active Stage2 extractor
+candidate extraction layer	high-recall proposal of candidate formulation-instance rows	no	yes	Owned by semantic Stage2 plus the deterministic compatibility bridge for downstream legacy-wide-row reuse
 candidate graph / instance structure layer	parent_instance_id, variant semantics, and provenance-style candidate relationships	no	yes	May be consumed, but not redefined wholesale here
 instance evaluation layer	candidate-row count diagnostics, under-segmentation, over-segmentation, and reviewer workbooks	no	yes	Owned by current Stage4 diagnostic tooling
 final-output layer	final non-formulation row filtering	yes	no	Required minimum responsibility

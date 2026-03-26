@@ -18,13 +18,14 @@ Out of scope for the current phase; recorded for future methodological refinemen
 ### Stage2 Contract Minimization And `db_v2` Adapter (2026-03-25)
 
 **Fact**
-- The current authoritative Stage2 artifact is a wide-row TSV that mixes:
+- The legacy compatibility surface is a wide-row TSV that mixes:
   - formulation identity
   - component-like material fields
   - measurement outputs
   - coarse evidence hints
-- Current code and authoritative artifact are not on the same emitted schema
-  version.
+- The authoritative Stage2 boundary is now semantic-object emission, with a
+  deterministic projection back into the legacy wide-row surface for unchanged
+  downstream consumers.
 
 **Inference**
 - The current wide-row contract is serviceable for benchmark continuity, but it

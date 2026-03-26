@@ -25,7 +25,8 @@ Current scope:
 
 - corpus intake and relevance filtering from Zotero-derived raw records
 - manifest and cleaned-content construction
-- Stage 2 candidate formulation-instance extraction
+- Stage 2 semantic-object generation
+- deterministic compatibility projection into the legacy wide-row surface
 - Stage 3 deterministic formulation relation materialization layer
 - Stage 4 candidate-instance diagnostics and review surfaces
 - Stage 5 final formulation-table closure
@@ -42,18 +43,25 @@ The system canonical production path is:
 1. Stage 0: build or refresh Zotero-derived raw records and local source assets
 2. Stage 1: convert raw records into the authoritative manifest, cleaned text,
    and table assets
-3. Stage 2: extract candidate formulation-instance rows from the cleaned corpus
-4. Stage 3: materialize explicit paper-level formulation relation artifacts
-   from candidate formulation-instance rows
-5. Stage 4: optionally generate candidate-level diagnostic and reviewer-facing
+3. Stage 2: emit semantic formulation objects from the cleaned corpus
+4. Compatibility bridge: deterministically project semantic Stage2 objects into
+   the legacy wide-row surface required by unchanged downstream consumers
+5. Stage 3: materialize explicit paper-level formulation relation artifacts
+   from the compatibility-projected legacy wide-row surface
+6. Stage 4: optionally generate candidate-level diagnostic and reviewer-facing
    artifacts
-6. Stage 5: close candidate rows into final formulation rows with optional
+7. Stage 5: close candidate rows into final formulation rows with optional
    Stage 3 relation provenance
 
-Exploratory note:
+Active-transition note:
 
-- Stage2.5 is an exploratory, non-authoritative side-path and is not part of
-  the active benchmark pipeline.
+- Stage2.5 is retired from the active mainline and remains archived only as a
+  historical exploratory side-path.
+- The semantic Stage2 emitter is the authoritative Stage2 boundary.
+- The deterministic compatibility adapter is part of the active mainline
+  execution chain but is not itself a numbered semantic stage.
+- The legacy wide-row Stage2 extractor is deprecated and retained only for
+  fallback or debug use.
 
 The production-path completion artifact is:
 
@@ -170,13 +178,12 @@ Consumed by downstream stage:
 
 - Stage 2
 
-### Stage 2. Candidate Formulation-Instance Extraction
+### Stage 2. Semantic Formulation Object Generation
 
 Purpose:
-Extract high-recall candidate formulation-instance rows from cleaned paper
-content and tables. This stage now also includes additive deterministic
-recovery of explicit numbered DOE table rows from existing Stage1 table assets
-when those rows were not already emitted by the LLM extraction path.
+Emit paper-driven semantic formulation objects from cleaned paper content and
+tables. Stage2 is the authoritative semantic discovery layer and no longer
+uses the legacy wide-row TSV as its primary output contract.
 
 Exact input files or directories:
 
@@ -187,29 +194,75 @@ Exact input files or directories:
 Exact script path(s) and script filename(s):
 
 - `src/stage2_sampling_labels/sample_from_manifest_html_first.py`
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
-- supporting deterministic augmentation tool:
-  - `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
 
 Exact output files or directories:
 
-- run-scoped weak-label outputs under `data/results/run_<run_id>/...`
-- canonical candidate artifact:
-  - `weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
-- supporting JSONL alongside the TSV
-- additive deterministic augmentation artifacts when numbered DOE rows are found:
-  - `weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_v1.tsv`
-  - `weak_labels_v7pilot_r3_fixparse/numbered_doe_row_candidates_summary_v1.tsv`
+- run-scoped semantic-object outputs under
+  `data/results/run_<run_id>/semantic_stage2_objects/`
+- canonical semantic-object artifacts:
+  - `semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
+  - `semantic_stage2_objects/semantic_stage2_object_summary_v1.tsv`
+  - `semantic_stage2_objects/semantic_stage2_object_manifest_v1.json`
+- object families emitted by the authoritative Stage2 boundary:
+  - `formulation_identity_candidate`
+  - `component_candidate`
+  - `phase_candidate`
+  - `process_step_candidate`
+  - `variable_or_factor_candidate`
+  - `measurement_candidate`
+  - `relation_cue`
+  - `evidence_handoff`
 
 Stage completion artifact:
 
-- run-scoped candidate TSV:
-  - `data/results/run_<run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
+- run-scoped semantic-object JSONL:
+  - `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
 
 Consumed by downstream stage:
 
-- Stage 3 for deterministic relation materialization
-- Stage 4 for diagnostics
+- deterministic compatibility bridge
+
+### Step 2.5. Compatibility Bridge (Not A Semantic Stage)
+
+Purpose:
+Deterministically project semantic Stage2 objects into the legacy wide-row
+surface required by unchanged Stage3, Stage4 diagnostic, and Stage5 runtime
+consumers during migration.
+
+Exact input files or directories:
+
+- Stage2 semantic-object JSONL
+- optional semantic summary and manifest sidecars
+
+Exact script path(s) and script filename(s):
+
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+
+Exact output files or directories:
+
+- compatibility-projected legacy wide-row artifacts under
+  `data/results/run_<run_id>/semantic_to_widerow_adapter/`
+- canonical bridge outputs:
+  - `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+  - `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl`
+  - `semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv`
+  - `semantic_to_widerow_adapter/compatibility_projection_summary_v1.json`
+
+Bridge boundary rules:
+
+- the adapter must remain deterministic
+- the adapter must not perform semantic inference
+- the adapter must not invent evidence ownership or normalization
+- the adapter exists to preserve downstream reuse while Stage3 and Stage5
+  remain unchanged
+
+Legacy note:
+
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  is deprecated and not part of the active pipeline
+- it may be used only for fallback or debug scenarios that are explicitly
+  declared as non-mainline
 
 ### Stage 3. Deterministic Formulation Relation Materialization
 
@@ -220,8 +273,8 @@ reasoning from later Stage 5 final-row closure and export.
 
 Exact input files or directories:
 
-- Stage 2 candidate formulation-instance TSV
-- optional Stage 2 candidate JSONL
+- compatibility-projected Stage 2 legacy wide-row TSV
+- optional compatibility-projected Stage 2 legacy wide-row JSONL
 - optional scope manifest TSV for paper title and source-path enrichment
 
 Exact script path(s) and script filename(s):
@@ -257,7 +310,7 @@ benchmark-valid endpoint.
 
 Exact input files or directories:
 
-- Stage 2 candidate TSV
+- compatibility-projected Stage 2 legacy wide-row TSV
 - fixed manual GT workbook for the declared scope
 - scope manifest TSV
 
@@ -310,7 +363,7 @@ Stage 5 post-comparison risk stratification layer:
 
 Exact input files or directories:
 
-- Stage 2 candidate formulation-instance TSV
+- compatibility-projected Stage 2 legacy wide-row TSV
 - required Stage 3 relation-record TSV
 - required Stage 3 resolved relation-field TSV
 - scope manifest TSV for the declared benchmark scope
@@ -400,10 +453,12 @@ The production chain is:
 
 1. raw Zotero-derived records under `data/raw/zotero/`
 2. authoritative manifest and cleaned text assets under `data/cleaned/`
-3. Stage 2 candidate formulation-instance TSV under `data/results/run_<run_id>/`
-4. Stage 3 relation-record artifact set
-5. optional Stage 4 diagnostic artifacts under `data/results/`
-6. Stage 5 final formulation table under `data/results/run_<run_id>/`
+3. Stage 2 semantic-object artifacts under `data/results/run_<run_id>/`
+4. compatibility-projected legacy wide-row artifacts under
+   `data/results/run_<run_id>/`
+5. Stage 3 relation-record artifact set
+6. optional Stage 4 diagnostic artifacts under `data/results/`
+7. Stage 5 final formulation table under `data/results/run_<run_id>/`
 
 The final deliverable of the production path is:
 
@@ -446,22 +501,24 @@ python src/stage1_cleaning/clean_manifest_to_text.py --overwrite --prefer html
 python src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py --dataset-id goren_2025 --manifest-tsv data/cleaned/goren_2025/index/manifest.tsv
 ```
 
-### Step 2. Produce the Stage 2 candidate formulation-instance TSV
+### Step 2. Produce semantic Stage2 objects
 
 Use a declared manifest or split manifest for the chosen scope.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py --manifest-tsv <scope_manifest.tsv> --model gemini-2.5-flash --out-dir data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse --verbose
+python src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py --manifest-tsv <scope_manifest.tsv> --out-dir data/results/<stage2_run_id>/semantic_stage2_objects --verbose
 ```
 
-The numbered DOE row enumerator is enabled by default inside the active Stage 2
-extractor. Disable it only for controlled ablation or regression-localization
-work:
+The authoritative Stage2 outputs are semantic objects, not a wide-row TSV.
+Stage2 should preserve paper-reported structure and raw expressions rather than
+forcing legacy projection decisions.
+
+### Step 2.5. Run the deterministic compatibility bridge
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py --manifest-tsv <scope_manifest.tsv> --model gemini-2.5-flash --out-dir data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse --disable-numbered-doe-enumerator
+python src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py --semantic-jsonl data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl --out-dir data/results/<stage2_run_id>/semantic_to_widerow_adapter
 ```
 
 ### Step 3. Build the Stage 3 deterministic relation artifacts
@@ -470,7 +527,7 @@ The Stage 3 layer is deterministic and must not call any LLM or external API.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage3_relation/run_formulation_relation_artifacts_v1.py --run-id <stage3_run_id> --out-subdir formulation_relation_v1 --weak-labels-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --weak-labels-jsonl data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.jsonl --scope-manifest-tsv <scope_manifest.tsv>
+python src/stage3_relation/run_formulation_relation_artifacts_v1.py --run-id <stage3_run_id> --out-subdir formulation_relation_v1 --weak-labels-tsv data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv --weak-labels-jsonl data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl --scope-manifest-tsv <scope_manifest.tsv>
 ```
 
 ### Step 4. Generate candidate-level diagnostics if needed
@@ -480,14 +537,14 @@ canonical debug surface.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage4_eval/eval_weak_labels_v7pilot3.py --pilot-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --pilot-manifest <scope_manifest.tsv> --out-dir data/results/<stage4_run_id>
+python src/stage4_eval/eval_weak_labels_v7pilot3.py --pilot-tsv data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv --pilot-manifest <scope_manifest.tsv> --out-dir data/results/<stage4_run_id>
 ```
 
 ### Step 5A. Build the final formulation table
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python -m src.stage5_benchmark.build_minimal_final_output_v1 --input-tsv data/results/<stage2_run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv --relation-records-tsv data/results/<stage3_run_id>/formulation_relation_v1/formulation_relation_records_v1.tsv --resolved-relation-fields-tsv data/results/<stage3_run_id>/formulation_relation_v1/resolved_relation_fields_v1.tsv --out-dir data/results/<final_run_id>
+python -m src.stage5_benchmark.build_minimal_final_output_v1 --input-tsv data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv --relation-records-tsv data/results/<stage3_run_id>/formulation_relation_v1/formulation_relation_records_v1.tsv --resolved-relation-fields-tsv data/results/<stage3_run_id>/formulation_relation_v1/resolved_relation_fields_v1.tsv --out-dir data/results/<final_run_id>
 ```
 
 Stage 5 must fail fast if either Stage 3 relation artifact is missing. Silent

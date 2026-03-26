@@ -9,10 +9,11 @@ extraction stack. It is a Stage 0 to Stage 5 pipeline with explicit provenance:
 
 1. Zotero-derived raw corpus intake
 2. manifest and cleaned-content construction
-3. candidate formulation-instance extraction
-4. deterministic formulation relation materialization
-5. candidate-level diagnostics
-6. final formulation-table closure and final-table benchmark comparison
+3. semantic Stage2 object generation
+4. deterministic compatibility projection into the legacy wide-row surface
+5. deterministic formulation relation materialization
+6. candidate-level diagnostics
+7. final formulation-table closure and final-table benchmark comparison
 
 The benchmark-valid system result is the Stage 5 final formulation table and its
 GT-comparison outputs. Intermediate artifacts may be used for diagnosis, but
@@ -106,11 +107,19 @@ Current active Stage 3 script:
 
 Current active Stage 2 script:
 
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+
+Current active compatibility bridge:
+
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
 
 Current active Stage 4 diagnostic script:
 
 - `src/stage4_eval/eval_weak_labels_v7pilot3.py`
+
+Deprecated legacy Stage 2 fallback:
+
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
 
 Current Layer 3 field-audit support surfaces:
 

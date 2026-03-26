@@ -38,19 +38,22 @@ The canonical production path is:
 
 1. Stage 0: raw metadata and relevance filtering
 2. Stage 1: cleaned content and manifest construction
-3. Stage 2: LLM candidate formulation-instance extraction
-4. Stage 3: deterministic formulation relation materialization
-5. Stage 4: evaluation and diagnostics
-6. Stage 5: final formulation closure and benchmark comparison
+3. Stage 2: paper-driven semantic-object discovery
+4. Compatibility bridge: deterministic projection from semantic objects into
+   the legacy wide-row surface required by unchanged downstream consumers
+5. Stage 3: deterministic formulation relation materialization
+6. Stage 4: evaluation and diagnostics
+7. Stage 5: final formulation closure and benchmark comparison
 
 Manual GT assets are reference inputs to evaluation and comparison. They are
 not a production transformation stage.
 
 Architecture note:
 
-- The active benchmark-valid mainline remains Stage2 -> Stage3 -> Stage5.
-- Stage2.5 is an exploratory, non-authoritative side-path and is not part of
-  the active benchmark pipeline.
+- The active benchmark-valid mainline is semantic Stage2 -> compatibility
+  adapter -> Stage3 -> Stage5.
+- Stage2.5 is retired from the active mainline and remains archived only as a
+  historical exploratory path.
 
 ---
 
@@ -103,36 +106,20 @@ establish a manifest linking papers to those assets.
 
 ---
 
-## Stage 2 - LLM Candidate Formulation-Instance Extraction
+## Stage 2 - Semantic-Object Discovery Layer
 
 ### Purpose
-Generate high-recall candidate formulation-instance rows from cleaned paper
-content using the active extraction schema, with additive deterministic recovery
-of explicit numbered DOE table rows when Stage1 table assets contain a
-numbered design or formulation table.
+Generate paper-driven semantic formulation objects from cleaned paper content
+and tables. Stage2 is the authoritative semantic discovery layer and its
+primary output is a semantic intermediate representation rather than a legacy
+wide-row TSV.
 
 ### Key Artifacts
-- run-scoped weak-label TSVs
-- run-scoped weak-label JSONL records
-- run-scoped raw LLM responses
-- additive deterministic Stage2 augmentation artifacts for numbered DOE tables:
-  - `numbered_doe_row_candidates_v1.tsv`
-  - `numbered_doe_row_candidates_summary_v1.tsv`
-
-### Characteristics
-- this is the semantic extraction layer
-- instance boundaries and field-role interpretation are assigned here
-- outputs are intentionally high recall and may contain overlapping candidates
-- deterministic numbered DOE row recovery is allowed here because downstream
-  deterministic stages cannot reconstruct explicit numbered rows that the LLM
-  never emitted
-
-### Transitional design note (2026-03-25)
-
-- active runtime remains the current wide-row Stage2 extractor
-- approved replacement direction is to redesign Stage2 as a semantic-object
-  discovery layer rather than a fixed-slot field-filling layer
-- the replacement target object families are:
+- run-scoped semantic-object JSONL payloads
+- run-scoped semantic-object summary TSVs
+- run-scoped semantic-object manifest JSON
+- paper-local evidence handoff references carried inside the semantic objects
+- object families:
   - `formulation_identity_candidate`
   - `component_candidate`
   - `phase_candidate`
@@ -141,25 +128,46 @@ numbered design or formulation table.
   - `measurement_candidate`
   - `relation_cue`
   - `evidence_handoff`
-- deterministic post-processing will remain responsible for compatibility
+
+### Characteristics
+- this is the semantic discovery layer
+- formulation identity discovery, component discovery, factor discovery, and
+  raw expression capture are owned here
+- outputs are object-oriented and may remain incomplete where the paper support
+  is incomplete
+- Stage2 must not be treated as the final fixed-slot modeling surface
+- deterministic post-processing remains responsible for compatibility
   projection, normalization, derivation, and stronger evidence binding
-- transitional compatibility support is now implemented in:
-  - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
-- that adapter reads semantic-object Stage2 payloads and deterministically
-  projects them back into the current wide-row Stage2 surface for unchanged
-  Stage3 and Stage5 consumers during migration
-- this note records architecture direction only; it does not switch the active
-  benchmark runtime by itself
 
 ### Canonical Completion Artifact
-`data/results/run_<run_id>/weak_labels_v7pilot_r3_fixparse/weak_labels__v7pilot_r3_fixparse.tsv`
+`data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
+
+## Compatibility Bridge - Deterministic Legacy Wide-Row Projection
+
+### Purpose
+Project semantic Stage2 objects into the legacy wide-row surface required by
+unchanged Stage3, Stage4 diagnostic, and Stage5 runtime consumers during the
+migration period.
+
+### Key Artifacts
+- compatibility-projected legacy wide-row TSV
+- compatibility-projected legacy wide-row JSONL
+- projection trace TSV
+- projection summary JSON
+
+### Characteristics
+- deterministic only
+- no semantic inference
+- no evidence-ownership invention
+- legacy wide-row is a compatibility surface only, not the authoritative Stage2
+  representation
 
 ---
 
 ## Stage 3 - Deterministic Formulation Relation Materialization
 
 ### Purpose
-Convert Stage 2 candidate formulation-instance rows into explicit paper-level
+Convert compatibility-projected Stage 2 candidate formulation-instance rows into explicit paper-level
 relation artifacts without any LLM usage.
 
 ### Why this stage exists
@@ -196,7 +204,7 @@ review.
 - reviewer-facing mismatch and alignment surfaces
 
 ### Characteristics
-- downstream of Stage 2 candidate extraction
+- downstream of the compatibility-projected legacy wide-row surface
 - diagnostic only
 - not the benchmark-valid system endpoint
 
@@ -230,8 +238,20 @@ formulation records and compare only those final records to GT.
 Stage 5 is the only benchmark-valid reporting layer. Earlier stages may produce
 diagnostic comparisons, but they are not the official system result.
 
+---
+
+## Separation Of Concerns
+
+- Stage2 owns semantic discovery from paper text and tables.
+- The compatibility adapter owns deterministic projection into the legacy
+  wide-row surface.
+- Stage3 owns relation resolution over the compatibility-projected rows.
+- Stage5 owns final materialization and benchmark-facing closure.
+- Stage5 must not absorb semantic inference that belongs to Stage2.
+
 ### Current Phase-1 Boundary
-- Stage 5 consumes the Stage 2 candidate TSV directly.
+- Stage 5 consumes the compatibility-projected legacy wide-row TSV produced by
+  the deterministic adapter.
 - It may also consume the Stage 3 relation-record TSV as deterministic
   provenance.
 - The relation artifact is not yet the sole driver of final keep/drop/collapse
