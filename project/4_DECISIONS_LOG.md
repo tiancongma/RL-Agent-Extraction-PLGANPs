@@ -1619,6 +1619,63 @@ Scope
 
 ## 2026-03-20
 
+### Decision: Treat the Layer 3 reviewer-facing outputs as a formulation-centered audit and governance layer, not only an evaluation helper
+
+Decision
+- The current Layer 3 GT effort is not only an evaluation artifact.
+- It is also part of the governed production audit and governance layer around
+  the frozen formulation database.
+- The benchmark-valid endpoint remains:
+  - `final_formulation_table_v1.tsv`
+- Reviewer-facing Layer 3 outputs remain downstream of the frozen final table
+  and must not mutate benchmark-valid outputs.
+
+Formulation-centered direction
+- The preferred reviewer entry object is one formulation row.
+- Human review is split into two linked layers:
+  - formulation existence and identity audit
+  - value credibility audit
+- These layers are strongly dependent, not parallel.
+- Many apparent value errors are projections of structure or identity errors.
+
+Current repo state
+- Audit capability is already partially present across governed surfaces:
+  - paper-level risk
+  - formulation-level audit-ready export
+  - field-level review workbook
+  - cell-level cross-audit report
+  - evidence handoff tooling
+- The current state is:
+  - partially present but not unified
+
+Functional-unit direction
+- The repo should treat the emerging reviewer-facing audit layer as a small set
+  of functional units:
+  - Formulation Index Builder
+  - Structure Review Builder
+  - Value Risk Builder
+  - Evidence Handoff Builder
+- Final UI container or submission format is not fixed yet.
+- Priority is to define the system contract and functional units first.
+
+Reason
+- Recent architecture review shows that the repo already has multiple governed
+  reviewer surfaces, but they are fragmented by review unit and stage-local
+  purpose.
+- Field-level and cell-level value review cannot be interpreted safely without
+  the upstream formulation existence and identity layer.
+- The design needs to acknowledge production audit and governance usage without
+  conflating these surfaces with benchmark-valid outputs.
+
+Impact
+- Architecture and method docs should describe Layer 3 as both:
+  - an evaluation-support surface
+  - a production-grade audit and governance surface
+- Future unification work should stay formulation-centered and preserve the
+  invariant that benchmark-valid output remains the frozen final formulation
+  table.
+- No active benchmark-valid pipeline behavior changes under this decision.
+
 ### Decision: Layer 2 Risk Stratification Contract For DEV15_v2 GT Review
 
 Decision

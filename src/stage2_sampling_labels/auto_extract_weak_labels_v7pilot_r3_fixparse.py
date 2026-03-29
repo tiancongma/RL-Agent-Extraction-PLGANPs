@@ -28,19 +28,34 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
+import requests
 from dotenv import load_dotenv
 
-from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
-    ARTIFACT_NAME as NUMBERED_DOE_ARTIFACT_NAME,
-    SUMMARY_NAME as NUMBERED_DOE_SUMMARY_NAME,
-    enumerate_numbered_doe_candidates_for_paper,
-    write_candidate_artifacts,
-)
-from src.utils.preparation_method_fields_v1 import (
-    PREPARATION_METHOD_FIELDNAMES,
-    enrich_preparation_method_fields_v1,
-)
-from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+try:
+    from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
+        ARTIFACT_NAME as NUMBERED_DOE_ARTIFACT_NAME,
+        SUMMARY_NAME as NUMBERED_DOE_SUMMARY_NAME,
+        enumerate_numbered_doe_candidates_for_paper,
+        write_candidate_artifacts,
+    )
+    from src.utils.preparation_method_fields_v1 import (
+        PREPARATION_METHOD_FIELDNAMES,
+        enrich_preparation_method_fields_v1,
+    )
+    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
+        ARTIFACT_NAME as NUMBERED_DOE_ARTIFACT_NAME,
+        SUMMARY_NAME as NUMBERED_DOE_SUMMARY_NAME,
+        enumerate_numbered_doe_candidates_for_paper,
+        write_candidate_artifacts,
+    )
+    from src.utils.preparation_method_fields_v1 import (
+        PREPARATION_METHOD_FIELDNAMES,
+        enrich_preparation_method_fields_v1,
+    )
+    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
 
 HAS_GENAI = False
 try:
@@ -165,6 +180,7 @@ LEGACY_FIELD_NAME_ALIASES = {
 }
 
 NUMBERED_DOE_GUARD_NAME = "numbered_doe_regression_guard_v1.tsv"
+NVIDIA_HOSTED_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 
 
 @dataclass
@@ -875,6 +891,16 @@ def ensure_genai(model: str) -> None:
     _ = genai.GenerativeModel(model)
 
 
+def infer_llm_backend(model: str, requested_backend: str) -> str:
+    backend = str(requested_backend or "auto").strip().lower()
+    if backend in {"gemini", "nvidia"}:
+        return backend
+    model_name = str(model or "").strip().lower()
+    if model_name.startswith("meta/") or "llama" in model_name or model_name.startswith("nvidia/"):
+        return "nvidia"
+    return "gemini"
+
+
 def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
     last_err: Optional[Exception] = None
     for attempt in range(retries + 1):
@@ -895,6 +921,94 @@ def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
         if attempt < retries:
             time.sleep(sleep_sec)
     raise last_err or RuntimeError("Gemini call failed")
+
+
+def ensure_nvidia_hosted_api(model: str) -> None:
+    load_dotenv()
+    api_key = os.getenv("NVIDIA_API_KEY")
+    if not api_key:
+        die("NVIDIA_API_KEY is missing in environment.")
+    # This diagnostic/full-pipeline path uses the NVIDIA hosted API Catalog endpoint.
+    # It must not assume a local NIM deployment such as http://localhost:8000/v1.
+    if "localhost" in NVIDIA_HOSTED_CHAT_COMPLETIONS_URL or "127.0.0.1" in NVIDIA_HOSTED_CHAT_COMPLETIONS_URL:
+        die("Hosted NVIDIA endpoint misconfigured: local NIM endpoints are not allowed here.")
+    if not str(model or "").strip():
+        die("NVIDIA model name is empty.")
+
+
+def call_nvidia_hosted(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
+    load_dotenv()
+    api_key = os.getenv("NVIDIA_API_KEY")
+    if not api_key:
+        raise RuntimeError("NVIDIA_API_KEY is missing in environment.")
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": model,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "Return only valid JSON that matches the extraction schema implied by the user prompt."
+                ),
+            },
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0,
+    }
+    last_err: Optional[Exception] = None
+    for attempt in range(retries + 1):
+        try:
+            response = requests.post(
+                NVIDIA_HOSTED_CHAT_COMPLETIONS_URL,
+                headers=headers,
+                json=payload,
+                timeout=180,
+            )
+            if response.status_code == 429:
+                retry_after = response.headers.get("Retry-After", "").strip()
+                if attempt < retries:
+                    wait_sec = max(sleep_sec, float(retry_after) if retry_after else sleep_sec * (attempt + 2))
+                    time.sleep(wait_sec)
+                    continue
+                response.raise_for_status()
+            response.raise_for_status()
+            body = response.json()
+            choices = body.get("choices") or []
+            if not choices:
+                raise RuntimeError(f"NVIDIA hosted response did not include choices: {body}")
+            message = choices[0].get("message") or {}
+            content = message.get("content")
+            if isinstance(content, str) and content.strip():
+                return content
+            raise RuntimeError(f"NVIDIA hosted response content was empty: {body}")
+        except Exception as e:
+            last_err = e
+        if attempt < retries:
+            time.sleep(sleep_sec * (attempt + 1))
+    raise last_err or RuntimeError("NVIDIA hosted API call failed")
+
+
+def ensure_llm_backend(model: str, backend: str) -> str:
+    resolved_backend = infer_llm_backend(model, backend)
+    if resolved_backend == "gemini":
+        ensure_genai(model)
+        return resolved_backend
+    if resolved_backend == "nvidia":
+        ensure_nvidia_hosted_api(model)
+        return resolved_backend
+    raise ValueError(f"Unsupported llm backend: {resolved_backend}")
+
+
+def call_llm(model: str, prompt: str, retries: int, sleep_sec: float, backend: str) -> str:
+    resolved_backend = infer_llm_backend(model, backend)
+    if resolved_backend == "gemini":
+        return call_gemini(model, prompt, retries, sleep_sec)
+    if resolved_backend == "nvidia":
+        return call_nvidia_hosted(model, prompt, retries, sleep_sec)
+    raise ValueError(f"Unsupported llm backend: {resolved_backend}")
 
 
 def build_prompt(text: str, detection_text: Optional[str] = None) -> str:
@@ -951,10 +1065,13 @@ def is_table_heavy_sweep_candidate(text: str) -> bool:
 
 
 def safe_json_load(s: str) -> Dict[str, Any]:
+    cleaned = s.strip()
+    cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.I)
+    cleaned = re.sub(r"\s*```$", "", cleaned)
     try:
-        return json.loads(s)
+        return json.loads(cleaned)
     except Exception:
-        m = re.search(r"\{.*\}", s, re.S)
+        m = re.search(r"\{.*\}", cleaned, re.S)
         if m:
             return json.loads(m.group(0))
     return {"schema_version": "weak_labels_v7", "paper_notes": None, "formulations": []}
@@ -3092,6 +3209,15 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         default="data/cleaned/goren_2025/index/splits/dev_manifest_v7pilot3_2026-03-06.tsv",
     )
     p.add_argument("--model", default=PRIMARY_DEFAULT)
+    p.add_argument(
+        "--llm-backend",
+        default="auto",
+        choices=["auto", "gemini", "nvidia"],
+        help=(
+            "Select the LLM transport backend. "
+            "'auto' keeps Gemini for Gemini models and uses the NVIDIA hosted API for models such as meta/llama-3.3-70b-instruct."
+        ),
+    )
     p.add_argument("--max-chars", type=int, default=50000)
     p.add_argument("--max-items", type=int, default=3)
     p.add_argument("--sleep", type=float, default=0.4)
@@ -3120,9 +3246,10 @@ def main(argv: Optional[List[str]] = None) -> None:
     if replay_dir is not None:
         if not replay_dir.exists():
             raise FileNotFoundError(f"Replay raw responses directory not found: {replay_dir}")
+        resolved_backend = "replay_only"
     else:
         validate_models_or_raise([args.model], context="v7pilot_r3_fixparse preflight")
-        ensure_genai(args.model)
+        resolved_backend = ensure_llm_backend(args.model, args.llm_backend)
 
     papers = load_manifest(Path(args.manifest_tsv), args.max_items)
     if len(papers) == 0:
@@ -3166,7 +3293,7 @@ def main(argv: Optional[List[str]] = None) -> None:
                 source_raw_fp = find_replay_raw_response(replay_dir, key=paper.key, doi=paper.doi)
                 raw = source_raw_fp.read_text(encoding="utf-8")
             else:
-                raw = call_gemini(args.model, prompt, args.retries, args.sleep)
+                raw = call_llm(args.model, prompt, args.retries, args.sleep, args.llm_backend)
             raw_fp.write_text(raw, encoding="utf-8")
             data = safe_json_load(raw)
             forms = canonicalize_formulations(data)
@@ -3263,6 +3390,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     summary = {
         "manifest_tsv": str(Path(args.manifest_tsv).resolve()),
         "model": args.model,
+        "llm_backend": resolved_backend,
         "replay_raw_responses_dir": str(replay_dir) if replay_dir is not None else "",
         "fresh_llm_calls_made": replay_dir is None,
         "n_papers": len(papers),

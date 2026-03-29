@@ -81,6 +81,17 @@ transformations.
 These scripts inspect candidate-instance behavior and support review. They do
 not define the production endpoint.
 
+Current interpretation:
+
+- the benchmark-valid production endpoint remains the Stage 5 final
+  formulation table
+- reviewer-facing Layer 2 and Layer 3 audit surfaces are still downstream of
+  that endpoint
+- however, these review surfaces are also part of the governed production
+  audit and governance layer for the formulation database
+- current repo capability is partially present but not yet unified into one
+  formulation-centered audit system contract
+
 ## Stage-Local Stable Tools
 
 These scripts are active engineering assets but are not themselves canonical
@@ -189,13 +200,14 @@ Stage 2 active contract note:
 | `src/stage5_benchmark/run_alignment_eval_core_v1.py` | `STABLE_TOOL` | Core-signature alignment evaluation helper. |
 | `src/stage5_benchmark/run_alignment_eval_schema_v3_v1.py` | `STABLE_TOOL` | Schema-v3 alignment evaluation helper. |
 | `src/stage5_benchmark/run_evidence_token_qc_v1.py` | `STABLE_TOOL` | Evidence-token QC helper for numeric field support and field-level review prioritization. |
-| `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py` | `STABLE_TOOL` | Postprocess the Stage 5 final table into a reviewer-facing audit surface without changing benchmark counts. |
+| `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py` | `STABLE_TOOL` | Postprocess the Stage 5 final table into a reviewer-facing formulation audit surface for the downstream audit/governance layer without changing benchmark counts. |
 | `src/stage5_benchmark/audit_evidence_resolver_v1.py` | `STABLE_TOOL` | Resolve paper-local text/table evidence pointers for downstream audit-pack and field-review tooling. |
 | `src/stage5_benchmark/build_audit_pack_human_evidence_v1.py` | `STABLE_TOOL` | Build a human-readable evidence workbook for review of extracted formulation fields and provenance. |
 | `src/stage5_benchmark/export_full_database_v1.py` | `STABLE_TOOL` | Final database export utility for downstream release work. |
 | `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for Layer 2 boundary GT from the Stage 5 final formulation table, with prediction-reference columns separated from GT-authoritative reviewer fields. |
-| `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for Layer 3 field GT from frozen Stage 5 final rows, with compact reviewer columns, helper formulation labels, Layer 2 paper-risk metadata, dropdown GT controls, and strict evidence/value support gating. |
-| `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value GT annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric GT labeling. The latest Stage5 final table plus audit-ready export are canonical for current-system presence; historical scaffold and prior-workbook bridge artifacts are advisory mapping aids only. |
+| `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for formulation-row value credibility audit from frozen Stage 5 final rows, with compact reviewer columns, helper formulation labels, Layer 2 paper-risk metadata, dropdown GT controls, and strict evidence/value support gating. |
+| `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric credibility review. The latest Stage5 final table plus audit-ready export are canonical for current-system presence; historical scaffold and prior-workbook bridge artifacts are advisory mapping aids only. |
+| `src/stage5_benchmark/run_layer3_cross_audit_v1.py` | `STABLE_TOOL` | Build a report-only Layer 3 cross-audit pack from the compact value workbook plus cleaned text/tables. It emits deterministic cell-risk flags, bounded Gemini/NVIDIA auditor execution or task exports, partial backend checkpoints, and a merged human-review TSV/markdown report for value-credibility audit without modifying workbook contents or benchmark-valid artifacts. |
 | `src/stage5_benchmark/build_layer2_risk_assessment_v1.py` | `STABLE_TOOL` | Build run-scoped Layer 2 paper-risk labels from an existing Layer 2 identity-comparison TSV for downstream Layer 3 audit prioritization, without changing benchmark-valid final outputs. |
 | `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py` | `STABLE_TOOL` | Validate Layer 3 reviewer-surface evidence handoff behavior against golden regression cases without changing benchmark-valid outputs. |
 | `src/stage5_benchmark/validate_stage5_descendant_filter_regression_v1.py` | `STABLE_TOOL` | Deterministically rerun Stage 5 on frozen artifact inputs to validate the descendant-filter safeguards: BB3JUVW7 sweep-style variants must be retained, BXCV5XWB helper descendants must be filtered, nearby helper-control regressions such as RHMJWZX8 stay suppressed, and stable controls such as WIVUCMYG remain unchanged. |

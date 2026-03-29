@@ -349,9 +349,13 @@ Optional Layer 3 field GT review export:
 - `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
 - `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
 - `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py`
+- `src/stage5_benchmark/run_layer3_cross_audit_v1.py`
 - `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py`
 - These helpers build a run-scoped Layer 3 review pack from the frozen Stage 5
   final table.
+- This Layer 3 pack is not only an evaluation helper.
+- It is also part of the governed reviewer-facing audit and governance layer
+  around the formulation database.
 - The workbook may optionally consume
   `analysis/paper_risk_assessment.tsv` so Layer 2 paper-risk labels remain
   visible during field-level audit.
@@ -360,8 +364,31 @@ Optional Layer 3 field GT review export:
 - A separate formulation-level value GT annotation workbook may be built from
   the frozen audit-ready TSV plus the Layer 3 field seed TSV when a faster
   one-row-per-formulation numeric labeling surface is needed.
-- The workbook is not allowed to recompute weaker evidence logic than the
-  active Layer 3 Evidence Handoff Contract.
+- A separate report-only Layer 3 cross-audit may be built from the compact
+  value workbook plus cleaned text/tables when manual review needs one row per
+  flagged cell rather than a workbook rewrite.
+- Current design direction is formulation-centered:
+  - reviewer entry should start from formulation rows
+  - structure and identity review should come before value-credibility review
+  - cell-level value-risk signals should drill down from the formulation layer
+- The cross-audit helper may export deterministic rule flags plus Gemini and
+  NVIDIA auditor task packs, and it may execute bounded live model audits when
+  explicitly requested.
+- For debugging or smoke tests, prefer bounded execution such as:
+  - `--rules-only`
+  - `--skip-gemini`
+  - `--skip-nvidia`
+  - `--max-candidates`
+  - `--max-gemini-calls`
+  - `--max-nvidia-calls`
+  - `--batch-size`
+  - `--request-timeout-seconds`
+  - `--max-retries`
+  - `--write-partial-every-batch`
+- Model outputs remain audit signals only and must not be treated as edits or
+  GT truth.
+  - The workbook is not allowed to recompute weaker evidence logic than the
+    active Layer 3 Evidence Handoff Contract.
 - Changes to the Layer 3 workbook/export path must validate against the golden
   evidence-handoff cases before being treated as compliant reviewer-surface
   changes.
@@ -369,6 +396,8 @@ Optional Layer 3 field GT review export:
   - it does not change Stage 2 extraction semantics
   - it does not change Stage 3 relation semantics
   - it does not change Stage 5 identity closure or final-table counts
+  - it does not change the benchmark-valid status of
+    `final_formulation_table_v1.tsv`
 
 Path example:
 

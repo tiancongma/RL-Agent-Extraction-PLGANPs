@@ -393,6 +393,23 @@ Exact output files or directories:
   - `field_gt_review_source_summary_v*.tsv`
   - `field_gt_review_workbook_v*.xlsx`
 
+Reviewer-facing audit-system interpretation:
+
+- these Layer 3 artifacts are not only evaluation aids
+- together they form part of the governed post-comparison audit and governance
+  layer around the frozen formulation database
+- the benchmark-valid production-path endpoint remains
+  `final_formulation_table_v1.tsv`
+- reviewer-facing audit outputs must remain downstream of the frozen final
+  table and must not mutate benchmark-valid outputs
+- current design is formulation-centered in intent, but still fragmented in
+  implementation across:
+  - paper-level risk
+  - formulation-level audit-ready export
+  - field-level review workbook
+  - cell-level cross-audit report
+  - evidence handoff tooling
+
 Stage completion artifact:
 
 - final formulation table:

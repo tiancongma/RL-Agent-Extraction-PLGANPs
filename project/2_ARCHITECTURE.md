@@ -428,6 +428,27 @@ database outputs. The audit boundary must expose:
 - field-level and formulation-level QC outcomes
 - explicit conflict and uncertainty artifacts for targeted human review
 
+Current governed interpretation:
+
+- Layer 3 is not only an evaluation helper.
+- It is also part of the production-grade audit and governance layer around the
+  formulation database.
+- The benchmark-valid endpoint remains the Stage 5 final formulation table.
+- Reviewer-facing Layer 3 audit outputs remain downstream support surfaces and
+  must not mutate benchmark-valid outputs.
+
+Formulation-centered audit direction:
+
+- the preferred reviewer entry object is one formulation row
+- human review is split into two linked layers:
+  - formulation existence and identity audit
+  - value credibility audit
+- these layers are not parallel:
+  - value credibility depends on structure and identity correctness
+  - many apparent value errors are projections of structure or identity errors
+- current repo capability is partially present but not yet unified into one
+  governed formulation-centered audit system contract
+
 ### Stable downstream deterministic rule families
 The following rule families are considered stable deterministic core:
 

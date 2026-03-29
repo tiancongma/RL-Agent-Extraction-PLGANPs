@@ -16,6 +16,27 @@ Primary goals:
 - support benchmarkable field-level comparison without changing formulation-row
   identity
 
+## Architectural Role
+
+Layer 3 is not only an evaluation artifact.
+
+It is also part of the governed production audit and governance layer around
+the frozen formulation database.
+
+Current interpretation:
+
+- the benchmark-valid endpoint remains `final_formulation_table_v1.tsv`
+- reviewer-facing Layer 3 outputs remain downstream audit surfaces and must not
+  mutate benchmark-valid outputs
+- the preferred reviewer entry object is a formulation row
+- value review is a formulation-row credibility audit, not an independent field
+  exercise detached from formulation identity
+- formulation existence and identity audit comes first
+- value credibility audit depends on structure correctness and often exposes
+  structure mistakes indirectly
+- current repo capability is partially present but not yet unified into one
+  formulation-centered audit system contract
+
 ## Why This Lives In `docs/methods/`
 
 Existing repo convention separates:
@@ -244,6 +265,13 @@ Layer 3 authority starts from frozen Layer 2 formulation rows.
 The primary row authority is:
 
 - reviewed-boundary-accepted Stage 5 final formulation instances
+
+Linked review-layer rule:
+
+- formulation existence and identity review is the upstream human-audit layer
+- value credibility review is the downstream human-audit layer
+- if a formulation row is structurally wrong, field-level value review on that
+  row is secondary and may be misleading
 
 Layer 3 must not:
 
