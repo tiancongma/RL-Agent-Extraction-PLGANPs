@@ -254,6 +254,13 @@ Bridge boundary rules:
 - the adapter must remain deterministic
 - the adapter must not perform semantic inference
 - the adapter must not invent evidence ownership or normalization
+- the adapter may add additive metadata columns when needed to preserve
+  Stage2-detected identity-bearing semantics for unchanged downstream
+  consumers
+- the current additive identity-preservation carrier is
+  `identity_variables_json`, which preserves normalized
+  `variable_or_factor_candidate` pairs with `identity_defining_signal=yes`
+  without replacing legacy field bundles
 - the adapter exists to preserve downstream reuse while Stage3 and Stage5
   remain unchanged
 
@@ -352,6 +359,22 @@ Stage 5 identity constraints layer:
   references when they do not define an independently reported formulation
   instance
 
+Identity freeze and attachment discipline:
+
+- once formulation identity is frozen by the reviewed Layer2-style boundary
+  authority, downstream stages must attach values, not reconstruct
+  formulations
+- formulation count and membership must remain invariant after identity freeze
+- downstream stages may add fields, resolve missing fields, and derive fields
+- downstream stages must not:
+  - split formulations implicitly
+  - merge formulations implicitly
+  - create new formulations from value similarity
+- only explicitly authorized identity-defining fields may justify a split
+- measurement fields such as size, PDI, zeta, EE, and LC must not trigger a
+  split by default
+- if uncertain, attach to the existing identity rather than split
+
 Stage 5 post-comparison risk stratification layer:
 
 - build paper-level Layer 2 audit-risk labels from an existing Layer 2
@@ -377,6 +400,8 @@ Exact script path(s) and script filename(s):
   - `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
 - optional Layer 2 GT review export helper:
   - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
+- optional identity-freeze guardrail helper:
+  - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
 
 Exact output files or directories:
 
@@ -386,6 +411,10 @@ Exact output files or directories:
 - optional comparison-metadata outputs:
   - `analysis/paper_risk_assessment.tsv`
   - `analysis/paper_risk_assessment_summary.md`
+- optional identity-freeze guardrail outputs:
+  - `identity_freeze_report_v1.tsv`
+  - `identity_freeze_summary_v1.tsv`
+  - `identity_freeze_summary_v1.md`
 - optional downstream Layer 3 review-pack outputs built from the frozen final
   table plus comparison metadata:
   - `final_formulation_table_audit_ready_v1.tsv`
@@ -417,7 +446,26 @@ Stage completion artifact:
 
 Consumed by downstream stage:
 
-- the Stage 5 comparison node
+- the mandatory identity freeze gate
+
+Mandatory post-Stage5 gate:
+
+- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+- required inputs:
+  - upstream identity scaffold surface
+  - `final_formulation_table_v1.tsv`
+- required behavior:
+  - fail the run on any:
+    - row count drift
+    - identity reassignment
+    - unresolved scaffold binding
+    - ambiguous scaffold binding
+- if the gate fails, the run is invalid for downstream value-level evaluation
+  and reviewer-facing export
+- only after the gate passes may the pipeline continue to:
+  - comparison
+  - audit-ready export
+  - Layer 3 review/evaluation surfaces
 
 ## Evaluation Reference Path
 
@@ -463,6 +511,11 @@ Optional post-compare review surface:
   - consumes the Stage 5 final formulation table, optional decision trace, and optional relation records
   - writes a run-scoped XLSX boundary-GT review workbook for manual Layer 2 curation
   - is reviewer-facing and diagnostic, not a benchmark-valid endpoint by itself
+- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+  - consumes an upstream identity scaffold surface plus the Stage 5 final
+    formulation table
+  - emits row-count drift, identity-reassignment, and violation diagnostics
+  - does not silently fix or mutate benchmark-valid outputs
 
 ## Full Chain From Raw Zotero Records To Final Outputs
 

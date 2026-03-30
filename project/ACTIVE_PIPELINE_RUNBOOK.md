@@ -344,6 +344,45 @@ Optional Layer 2 GT review export:
 - This helper builds a run-scoped XLSX boundary-GT workbook from the Stage 5 final table and optional provenance artifacts.
 - It is a reviewer-facing support surface, not a production-path completion artifact.
 
+Optional Layer 2 identity scaffold binding audit:
+
+- `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py`
+- This helper builds a diagnostic-only scaffold-binding surface from a
+  reviewed/frozen Layer2-style GT workbook plus selected Stage5 final tables.
+- It applies an article-native-first binding ladder, including normalized
+  namespaced-id recovery, before any strict identity-equivalent fallback.
+- It is intended for pre-Layer3 value-compare validation and must not mutate
+  benchmark-valid final tables or comparison outputs.
+- Coarse fallback remains manual-review only and is not part of this helper's
+  benchmark-grade binding surface.
+
+Identity Freeze Gate (Mandatory)
+
+- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+- This helper validates `IDENTITY_FREEZE_RULE_V1` at the Stage5
+  post-materialization boundary.
+- It runs after Stage5 final-table materialization and before any:
+  - value comparison
+  - audit-ready export
+  - Layer3 field GT evaluation
+- It checks:
+  - row count drift versus the upstream identity scaffold
+  - identity reassignment
+  - unresolved or ambiguous scaffold bindings
+- It emits diagnostics and must not silently fix benchmark-valid outputs.
+- Hard rule:
+  - after identity freeze, downstream stages may attach, resolve, and derive
+    fields only
+  - downstream stages must not implicitly split or merge formulations
+  - measurement fields such as size, PDI, zeta, EE, and LC must not trigger
+    identity split by default
+- Failure behavior:
+  - if identity freeze is violated, the run is invalid and must not proceed to
+    value-level evaluation
+- Default behavior is enforced invariant:
+  - any violation causes non-zero exit status
+  - use report-only mode only for bounded diagnostics
+
 Optional Layer 3 field GT review export:
 
 - `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`

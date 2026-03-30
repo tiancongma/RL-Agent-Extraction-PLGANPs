@@ -45,6 +45,7 @@ RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RELATION_GRAPH_JSONL_NAME = "formulation_logic_graph_v1.jsonl"
 RELATION_SUMMARY_NAME = "formulation_relation_summary_v1.tsv"
 RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
+IDENTITY_VARIABLES_FIELD = "identity_variables_json"
 
 BASE_ROW_COLUMNS = {
     "key",
@@ -156,6 +157,7 @@ VARIATION_AXIS_FIELDS = {
     "drug_feed_amount_text",
     "emul_type",
     "emul_method",
+    IDENTITY_VARIABLES_FIELD,
 }
 
 RESOLVABLE_RELATION_FIELDS = {
@@ -177,6 +179,46 @@ def normalize_token(value: Any) -> str:
         return ""
     text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
     return re.sub(r"_+", "_", text).strip("_")
+
+
+def normalize_identity_variable_name(value: Any) -> str:
+    text = normalize_text(value).lower()
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    return re.sub(r"_+", "_", text).strip("_")
+
+
+def normalize_identity_variable_value(value: Any) -> str:
+    return re.sub(r"\s+", " ", normalize_text(value).lower()).strip()
+
+
+def canonical_identity_variables_signature(value: Any) -> str:
+    text = normalize_text(value)
+    if not text:
+        return ""
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return normalize_token(text)
+    if not isinstance(parsed, list):
+        return normalize_token(text)
+    seen: set[tuple[str, str]] = set()
+    pairs: list[tuple[str, str]] = []
+    for item in parsed:
+        if not isinstance(item, dict):
+            continue
+        name = normalize_identity_variable_name(item.get("name") or item.get("name_raw"))
+        factor_value = normalize_identity_variable_value(item.get("value") or item.get("value_raw"))
+        if not name or not factor_value:
+            continue
+        key = (name, factor_value)
+        if key in seen:
+            continue
+        seen.add(key)
+        pairs.append(key)
+    if not pairs:
+        return ""
+    pairs.sort()
+    return "|".join(f"{name}={factor_value}" for name, factor_value in pairs)
 
 
 def canonical_field_name(field_name: Any) -> str:
@@ -224,7 +266,7 @@ def extract_field_names(headers: list[str]) -> list[str]:
             name = canonical_field_name(header[: -len("_value")])
             if name not in fields:
                 fields.append(name)
-    for extra in ["polymer_identity", "polymer_name_raw", "preparation_method"]:
+    for extra in ["polymer_identity", "polymer_name_raw", "preparation_method", IDENTITY_VARIABLES_FIELD]:
         if extra in headers and extra not in fields:
             fields.append(extra)
     return fields
@@ -273,6 +315,8 @@ def weak_label_row_ref(row: dict[str, str], row_index: int) -> str:
 def field_raw_value(row: dict[str, str], field_name: str) -> str:
     if field_name in {"polymer_identity", "polymer_name_raw"}:
         return normalize_text(row.get(field_name))
+    if field_name == IDENTITY_VARIABLES_FIELD:
+        return normalize_text(row.get(IDENTITY_VARIABLES_FIELD))
     if field_name == "preparation_method":
         value = str(row.get("preparation_method", "") or "").strip()
         return "" if normalize_token(value) in {"", "unknown"} else value
@@ -286,6 +330,8 @@ def field_raw_value(row: dict[str, str], field_name: str) -> str:
 def field_scope(row: dict[str, str], field_name: str) -> str:
     if field_name in {"polymer_identity", "polymer_name_raw"}:
         return "row_level"
+    if field_name == IDENTITY_VARIABLES_FIELD:
+        return "row_level"
     if field_name == "preparation_method":
         return normalize_text(row.get("emul_method_scope")) or "unknown"
     for column in field_column_candidates(field_name, "_scope"):
@@ -297,6 +343,8 @@ def field_scope(row: dict[str, str], field_name: str) -> str:
 
 def field_evidence_source_type(row: dict[str, str], field_name: str) -> str:
     if field_name in {"polymer_identity", "polymer_name_raw"}:
+        return normalize_text(row.get("instance_evidence_region_type")) or "row_level"
+    if field_name == IDENTITY_VARIABLES_FIELD:
         return normalize_text(row.get("instance_evidence_region_type")) or "row_level"
     if field_name == "preparation_method":
         return normalize_text(row.get("emul_method_evidence_region_type")) or normalize_text(
@@ -313,6 +361,8 @@ def field_value_norm(row: dict[str, str], field_name: str) -> str:
     raw = field_raw_value(row, field_name)
     if field_name in {"polymer_identity", "polymer_name_raw"}:
         return normalize_token(raw)
+    if field_name == IDENTITY_VARIABLES_FIELD:
+        return canonical_identity_variables_signature(raw)
     if not raw:
         return ""
     if field_name == "la_ga_ratio":

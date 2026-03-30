@@ -31,6 +31,7 @@ LEGACY_FIELD_ALIASES = {
     "plga_mw_kDa": "polymer_mw_kDa",
 }
 WFDTQ4VX_DOI = "10.1080/10717544.2016.1199605"
+IDENTITY_VARIABLES_FIELD = "identity_variables_json"
 
 
 @dataclass(frozen=True)
@@ -322,6 +323,46 @@ def parse_json_list(value: Any) -> list[str]:
     return [str(item).strip() for item in parsed if str(item).strip()]
 
 
+def normalize_identity_variable_name(value: Any) -> str:
+    text = normalize_text(value)
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    return re.sub(r"_+", "_", text).strip("_")
+
+
+def normalize_identity_variable_value(value: Any) -> str:
+    return re.sub(r"\s+", " ", normalize_text(value)).strip()
+
+
+def canonical_identity_variables_signature(value: Any) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return normalize_token(text)
+    if not isinstance(parsed, list):
+        return normalize_token(text)
+    seen: set[tuple[str, str]] = set()
+    items: list[tuple[str, str]] = []
+    for item in parsed:
+        if not isinstance(item, dict):
+            continue
+        name = normalize_identity_variable_name(item.get("name") or item.get("name_raw"))
+        factor_value = normalize_identity_variable_value(item.get("value") or item.get("value_raw"))
+        if not name or not factor_value:
+            continue
+        key = (name, factor_value)
+        if key in seen:
+            continue
+        seen.add(key)
+        items.append(key)
+    if not items:
+        return ""
+    items.sort()
+    return "|".join(f"{name}={factor_value}" for name, factor_value in items)
+
+
 def extract_paper_local_row_anchor(row: dict[str, str]) -> str:
     candidate_tokens = [
         str(row.get("formulation_id", "") or "").strip(),
@@ -396,6 +437,7 @@ def build_core_fields(row: dict[str, str]) -> dict[str, str]:
         "surfactant_name": normalize_token(row.get("surfactant_name_value")),
         "surfactant_concentration": normalize_surfactant_concentration(row),
         "organic_solvent": normalize_token(row.get("organic_solvent_value")),
+        "identity_variables": canonical_identity_variables_signature(row.get(IDENTITY_VARIABLES_FIELD, "")),
     }
 
 
@@ -675,6 +717,7 @@ def build_collapse_signature(row: dict[str, str], core_fields: dict[str, str]) -
         core_fields["surfactant_name"],
         core_fields["surfactant_concentration"],
         core_fields["organic_solvent"],
+        core_fields["identity_variables"],
     ]
     return "|".join(signature_parts)
 
@@ -744,7 +787,11 @@ def is_non_doe_sweep_row(row: dict[str, str]) -> bool:
 
 
 def populated_core_field_count(core_fields: dict[str, str]) -> int:
-    return sum(1 for value in core_fields.values() if value and value != "unknown")
+    return sum(
+        1
+        for key, value in core_fields.items()
+        if key != "identity_variables" and value and value != "unknown"
+    )
 
 
 def is_structured_duplicate_representation_row(

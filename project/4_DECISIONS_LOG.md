@@ -415,7 +415,7 @@ Impact
 
 Consequence
 - The active pipeline did not change as a result of this case record.
-- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` remains the active Stage2 entrypoint and `src/stage4_eval/eval_weak_labels_v7pilot3.py` remains the active Stage4 evaluator.
+- At that time, `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` remained the active Stage2 entrypoint and `src/stage4_eval/eval_weak_labels_v7pilot3.py` remained the active Stage4 evaluator.
 - Future similar cases should be classified the same way when weak-label TSV row loss is already present before evaluation: record them as Stage2 under-enumeration / evidence-packing diagnostics rather than as Stage4 reconciliation issues.
 
 ## 2026-03-12
@@ -442,7 +442,7 @@ Decision
   - `24` figure-derived sweeps
 
 Implementation note
-- On `2026-03-12`, the active Stage2 extractor `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` was minimally extended to append low-confidence `candidate_source = "figure_variable_sweep"` candidates when a paper text explicitly declares multi-level formulation-variable sweeps.
+- On `2026-03-12`, the then-active Stage2 extractor `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` was minimally extended to append low-confidence `candidate_source = "figure_variable_sweep"` candidates when a paper text explicitly declares multi-level formulation-variable sweeps.
 
 ### Follow-up: 5GIF3D8W residual 2-row gap traced to PCL table-row omission and fixed in Stage2
 
@@ -477,7 +477,7 @@ Decision
 - Polymer filtering belongs to downstream modeling and release logic, not to Stage2 extraction.
 
 Implementation
-- The active Stage2 extractor now adds an explicit additive polymer field layer:
+- The then-active Stage2 extractor was extended at that time to add an explicit additive polymer field layer:
   - `polymer_identity`
   - `polymer_name_raw`
 - Existing PLGA-specific fields remain in place for compatibility:
@@ -501,7 +501,7 @@ Confirmed seams
   - `_infer_section_identities(...)` collapsed generic `PLGA-copolymers` sweep sections to the first PLGA identity, which omitted polymer-amount sweep rows for `PLGA 75/25` and `PLGA 85/15`.
 
 Adopted minimal fix strategy
-- Keep the active pipeline path unchanged and patch only the active Stage2 extractor.
+- Keep the active pipeline path unchanged at that time and patch only the then-active Stage2 extractor.
 - Expand shared PLGA section inference conservatively so generic PLGA-copolymer sweep sections can enumerate all already-known PLGA identities for the paper.
 - Add a narrow post-generation overlap dedup after synthetic sweep rows are appended.
 - Preferred representation policy for overlapping sweep conditions:
@@ -536,7 +536,7 @@ Confirmed issue
 - The unsupported rows were the six `drug_amount` sweep rows for `PLGA 75/25` and `PLGA 85/15`.
 
 Adopted minimal fix strategy
-- Keep the active Stage2 extractor as the only edited runtime component.
+- Keep the then-active Stage2 extractor as the only edited runtime component.
 - Tighten `drug_feed_amount_text` sweep generation by:
   - anchoring the section window to the actual `Amount of Drug` heading,
   - preventing generic PLGA-family wording alone from widening `drug_amount` applicability to all known PLGA identities.
@@ -563,9 +563,9 @@ Decision
 - Instance-level evaluation is a separate layer that measures candidate-graph behavior such as under-segmentation, over-segmentation, and benchmark count mismatch.
 - Final formulation-table semantics, precision recovery, and any generic collapse by core formulation parameters belong to downstream guardrail/normalization ownership, not implicitly to Stage2.
 
-Current active-path contract
+Current active-path contract at that time
 - The active DEV-15 comparison path currently compares Stage2 candidate formulation-instance rows directly against the fixed DEV15 skeleton workbook.
-- No generic normalization or formulation-core collapse layer is wired between the active Stage2 extractor and the active Stage4 evaluator.
+- No generic normalization or formulation-core collapse layer was wired between the then-active Stage2 extractor and the then-active Stage4 evaluator.
 - Only explicitly documented reconciliation logic, such as the integrated `WFDTQ4VX` DoE rule, should alter that direct candidate-layer comparison.
 
 Historical-path clarification
@@ -859,9 +859,9 @@ Case reference
 - Primary regression target: `UFXX9WXE` / `10.1155/2014/156010`
 
 Decision
-- The active Stage2 boundary now includes a deterministic numbered DOE table-row enumerator implemented in:
+- The active Stage2 boundary at that time now includes a deterministic numbered DOE table-row enumerator implemented in:
   - `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py`
-- The active Stage2 extractor `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` now additively calls this enumerator by default after LLM extraction and before writing the final Stage2 weak-label artifact.
+- The then-active Stage2 extractor `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py` additively called this enumerator by default after LLM extraction and before writing the final Stage2 weak-label artifact.
 - The enumerator reads existing Stage1 table assets and emits explicit augmentation artifacts:
   - `numbered_doe_row_candidates_v1.tsv`
   - `numbered_doe_row_candidates_summary_v1.tsv`
@@ -2044,7 +2044,7 @@ Decision
 Directly observed facts
 - The active authoritative Stage2 TSV pinned by
   `data/results/ACTIVE_RUN.json` currently exposes a 119-column wide-row
-  contract.
+  contract at the time of this audit.
 - The current extractor code now exposes a wider 124-column contract with:
   - `instance_kind_raw`
   - `instance_kind_inferred`
@@ -2269,6 +2269,210 @@ Non-change statement
 - No Stage5 runtime logic was modified by this entry.
 - No historical `data/results/run_*` directory was modified or deleted.
 
+### Decision: Introduce Layer2 identity scaffold contract v1 for benchmark-safe downstream binding
+
+Decision
+- Add a diagnostic-only Layer2 identity scaffold contract for downstream
+  compare and audit workflows.
+- Freeze a stable identity anchor from the reviewed/frozen Layer2-style
+  boundary surface when available, rather than binding downstream work on
+  unstable final-row ids or namespaced presentation ids.
+- Use a strict binding ladder:
+  1. exact article-native formulation label match
+  2. normalized namespaced-label match
+  3. strict identity-equivalent binding
+  4. coarse fallback only for manual review, never for benchmark-grade compare
+- Validate the first pass only on safe normalization papers:
+  - `WIVUCMYG`
+  - `5ZXYABSU`
+
+Contract
+- The scaffold key is a downstream identity-binding surface, not a replacement
+  for Stage5 benchmark-valid final output.
+- Downstream stages may enrich an existing scaffolded identity node.
+- Downstream stages must not silently split identity unless the split is
+  explicitly authorized by identity-defining fields.
+- Measurement/outcome fields such as size, PDI, zeta, EE, and LC do not
+  redefine identity by default.
+
+Implementation scope
+- Introduce a narrow report-only utility:
+  - `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py`
+- The utility emits scaffold-binding diagnostic surfaces only.
+- It does not mutate Stage5 final tables, GT workbooks, or benchmark-valid
+  compare outputs in place.
+
+Rationale
+- Current final-row binding becomes unstable when benign namespacing drift such
+  as `WIVUCMYG_F23 -> F23` or `5ZXYABSU_NPB1 -> NPB1` breaks direct matching.
+- Once direct binding fails, DOE papers can fan out incorrectly under coarse
+  fallback even when the underlying scientific row set is unchanged.
+- A frozen identity scaffold lets later stages enrich rows without forcing
+  row-boundary redefinition.
+
+Status
+- Minimal v1 contract added.
+- Diagnostic validation only.
+- Not yet a broad-paper identity repair for the harder blocker set.
+
+Non-goals
+- No redesign of the active semantic Stage2 -> adapter -> Stage3 -> Stage5
+  pipeline.
+- No change to the benchmark-valid meaning of Stage5 final output.
+- No hidden value-level matching or semantic inference inside Stage5
+  materialization.
+
+### Decision: Identity Freeze Rule Introduced
+
+Status
+- ACTIVE
+
+Scope
+- DEV15 reviewed-boundary downstream compare and audit work now
+- future expansion work that reuses a frozen Layer2-style identity scaffold
+
+Decision
+- Introduce `IDENTITY_FREEZE_RULE_V1` as an explicit downstream engineering
+  contract.
+- After Layer2 identity, or an equivalent frozen boundary authority:
+  - formulation count must remain invariant
+  - formulation membership must remain invariant
+- Downstream stages may:
+  - add fields
+  - resolve missing fields
+  - derive fields
+- Downstream stages must not:
+  - split formulations implicitly
+  - merge formulations implicitly
+  - create new formulations from value similarity
+
+Split authorization policy
+- Classify downstream fields as:
+  - `identity_defining_fields`
+  - `non_identity_fields`
+  - `measurement_fields`
+- Only `identity_defining_fields` may justify a split.
+- Measurement fields such as size, PDI, zeta, EE, and LC must never trigger a
+  split by default.
+- If uncertain, attach the value to the existing identity rather than
+  reconstructing identity.
+
+Enforcement insertion point
+- Add a report-only guardrail at the Stage5 post-materialization boundary:
+  - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+- The guardrail compares:
+  - an upstream identity scaffold surface
+  - a Stage5 final table
+- It emits:
+  - row-count drift diagnostics
+  - identity-reassignment diagnostics
+  - violation flags
+- It does not silently fix benchmark-valid outputs.
+
+Rationale
+- Prevent row explosion when new variables appear downstream of a frozen
+  identity boundary.
+- Stabilize evaluation by preventing value-level signals from reshaping row
+  identity after the boundary is accepted.
+- Make explicit that downstream work should attach values to frozen identities,
+  not recompose formulations.
+
+Non-goals
+- Not changing Stage2 semantic discovery semantics.
+- Not redesigning identity discovery.
+- Not refactoring core Stage3 relation logic.
+- Not changing benchmark-valid Stage5 outputs in place.
+
+### Decision: Identity Freeze Rule Elevated to Hard Gate
+
+Status
+- ACTIVE
+
+Scope
+- DEV15 now
+- future expansion runs that depend on a frozen Layer2-style identity scaffold
+
+Previous state
+- `IDENTITY_FREEZE_RULE_V1` existed as a report-only guardrail at the Stage5
+  post-materialization boundary.
+
+New state
+- `IDENTITY_FREEZE_RULE_V1` is now an enforced invariant.
+- The identity-freeze check is a mandatory gate before any:
+  - value comparison
+  - audit-ready export
+  - Layer3 field GT evaluation
+- If the gate detects any of the following, it must fail non-zero and block
+  downstream progression:
+  - row count drift
+  - identity reassignment
+  - unresolved scaffold binding
+  - ambiguous binding
+
+Reason
+- prevent identity drift from being misread as value-level regression
+- prevent row explosion from propagating into evaluation surfaces
+- ensure downstream value-level work remains valid only after identity
+  invariance is confirmed
+
+Impact
+- invalid runs are now blocked early
+- downstream compare and reviewer-facing export workflows must treat a failed
+  identity-freeze gate as a hard stop
+
+Non-goals
+- Not changing Stage2 semantics.
+- Not changing core Stage3 relation logic.
+- Not altering benchmark-valid Stage5 final-table semantics.
+- Not introducing automatic fixes or silent fallback.
+
+## 2026-03-29
+
+### Decision: Add an additive identity-variable carrier through the active semantic Stage2 -> adapter -> Stage3 -> Stage5 DEV15 experiment path
+
+Decision
+- Add one additive compatibility-surface field, `identity_variables_json`, to
+  preserve Stage2-detected `variable_or_factor_candidate` pairs that carry
+  `identity_defining_signal=yes`.
+- Keep existing legacy field bundles unchanged.
+- Use the additive carrier only to preserve formulation-identity distinctions
+  through the active bridge, Stage3 variation-axis handling, and Stage5
+  collapse signature logic.
+- Do not change Stage2 semantic authority.
+- Do not expand this first pass into a broader schema redesign.
+
+Rationale
+- The active semantic Stage2 boundary can already detect identity-bearing
+  variables such as `pH`, but the current compatibility bridge drops generic
+  factors before downstream identity logic can see them.
+- This creates a formulation-identity integrity failure where rows that differ
+  only by an identity-bearing variable may collapse incorrectly.
+- One additive carrier is the smallest structurally correct fix for the open
+  problem frame recorded under the extraction-to-modeling transition notes.
+
+Decision boundary
+- The new carrier is additive metadata only.
+- Existing `CORE_FIELDS` bundles and legacy fixed-slot fields remain in place.
+- Stage3 uses the carrier conservatively as a variation-axis input in this
+  first pass.
+- Stage5 includes the normalized carrier in `build_core_fields()` and
+  `build_collapse_signature()` so rows that differ only by identity-bearing
+  variables no longer collapse together.
+
+Experiment scope
+- This change is introduced for a controlled DEV15 benchmark experiment only.
+- Benchmark comparison for this experiment must use the explicitly declared
+  manual workbook authority:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/value_gt_annotation_workbook_representation_repaired_v4.xlsx`
+
+Non-change statement
+- Stage2 semantic authority remains
+  `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  plus the deterministic compatibility bridge.
+- No legacy field bundle was removed or renamed by this decision entry.
+- This entry does not claim that the additive carrier is a full schema
+  redesign; it is a minimal identity-preservation unit only.
+
 ### Decision: Stage2 authority migrated to the semantic-object emitter; Stage2.5 retired from the active mainline
 
 Decision
@@ -2308,6 +2512,19 @@ Decision boundary
   long-term semantic core.
 - Known hidden Stage3 legacy dependencies still exist and are not resolved by
   this decision entry.
+
+Normalization note
+- Earlier `project/4_DECISIONS_LOG.md` entries that describe
+  `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  as the active Stage2 extractor reflect the pre-migration authority state at
+  the time those entries were written.
+- The current active Stage2 authority is
+  `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  plus the deterministic compatibility bridge
+  `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`.
+- `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  is now deprecated legacy fallback/debug infrastructure and is not the active
+  mainline Stage2 authority.
 
 Non-change statement
 - No Stage3 runtime logic was modified by this entry.

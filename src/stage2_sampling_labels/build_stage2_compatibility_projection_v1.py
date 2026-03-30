@@ -24,6 +24,7 @@ LEGACY_JSONL_NAME = "weak_labels__v7pilot_r3_fixparse.jsonl"
 TRACE_TSV_NAME = "compatibility_projection_trace_v1.tsv"
 SUMMARY_JSON_NAME = "compatibility_projection_summary_v1.json"
 CONTRACT_TSV_NAME = "stage2_replacement_compatibility_projection_contract.tsv"
+IDENTITY_VARIABLES_FIELD = "identity_variables_json"
 
 DIRECT = "direct"
 DERIVED = "derived"
@@ -118,6 +119,13 @@ def stringify_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True)
 
 
+def compatibility_output_columns() -> list[str]:
+    columns = list(build_output_columns())
+    if IDENTITY_VARIABLES_FIELD not in columns:
+        columns.append(IDENTITY_VARIABLES_FIELD)
+    return columns
+
+
 def choose_first(items: list[dict[str, Any]], *keys: str) -> str:
     for item in items:
         for key in keys:
@@ -130,6 +138,43 @@ def choose_first(items: list[dict[str, Any]], *keys: str) -> str:
 def first_number(text: str) -> str:
     match = re.search(r"[-+]?\d+(?:\.\d+)?", text)
     return match.group(0) if match else ""
+
+
+def normalize_variable_name(value: Any) -> str:
+    text = normalize_text(value).lower()
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    return re.sub(r"_+", "_", text).strip("_")
+
+
+def normalize_variable_value(value: Any) -> str:
+    return re.sub(r"\s+", " ", normalize_text(value).lower()).strip()
+
+
+def build_identity_variables_payload(factors: list[dict[str, Any]]) -> list[dict[str, str]]:
+    items: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for factor in factors:
+        if normalize_text(factor.get("identity_defining_signal")).lower() != "yes":
+            continue
+        name_raw = normalize_text(factor.get("factor_name_raw"))
+        value_raw = normalize_text(factor.get("factor_expression_raw"))
+        name = normalize_variable_name(name_raw)
+        value = normalize_variable_value(value_raw)
+        if not name or not value:
+            continue
+        key = (name, value)
+        if key in seen:
+            continue
+        seen.add(key)
+        items.append(
+            {
+                "name": name,
+                "value": value,
+                "name_raw": name_raw,
+                "value_raw": value_raw,
+            }
+        )
+    return sorted(items, key=lambda item: (item["name"], item["value"], item["name_raw"], item["value_raw"]))
 
 
 def infer_polymer_identity(name: str) -> str:
@@ -286,7 +331,7 @@ def project_choice(items: list[dict[str, Any]], value_getter, text_getter=None) 
 
 
 def base_row(identity: dict[str, Any], document_key: str, doi: str, model_name: str) -> dict[str, str]:
-    row = {column: "" for column in build_output_columns()}
+    row = {column: "" for column in compatibility_output_columns()}
     change_descriptions = parse_string_list(identity.get("change_descriptions"))
     instance_context_tags = parse_string_list(identity.get("instance_context_tags"))
     change_context_tags = parse_string_list(identity.get("change_context_tags"))
@@ -364,6 +409,18 @@ def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], li
                 }
                 for item in owned_handoffs
             ]
+        )
+        identity_variables_payload = build_identity_variables_payload(owned_factors)
+        row[IDENTITY_VARIABLES_FIELD] = stringify_json(identity_variables_payload)
+        add_trace(
+            traces,
+            document_key,
+            formulation_id,
+            IDENTITY_VARIABLES_FIELD,
+            [normalize_text(item.get("factor_id")) for item in owned_factors if normalize_text(item.get("factor_id"))],
+            DIRECT if identity_variables_payload else UNAVAILABLE,
+            DIRECT if identity_variables_payload else UNAVAILABLE,
+            "Preserved identity-bearing semantic variables as additive compatibility metadata.",
         )
 
         polymer_components = choose_components(owned_components, "polymer")
@@ -563,6 +620,7 @@ def build_projection_contract_rows() -> list[dict[str, str]]:
             {"legacy_field": "size_nm/pdi/zeta_mV/encapsulation_efficiency_percent/loading_content_percent", "replacement_object_type": "measurement_candidate", "replacement_field_or_rule": "measurement_name_raw + measurement_value_raw + measurement_unit_raw", "projection_status": "direct_or_compressed", "direct_or_derived": "mixed", "notes": "Measurements map by deterministic name matching."},
             {"legacy_field": "supporting_evidence_refs", "replacement_object_type": "evidence_handoff", "replacement_field_or_rule": "source_locator_text/supporting_snippet", "projection_status": "coarse_direct_or_unavailable", "direct_or_derived": "direct", "notes": "Coarse evidence handoff only."},
             {"legacy_field": "instance_evidence_region_type/evidence_section/evidence_span_text", "replacement_object_type": "evidence_handoff", "replacement_field_or_rule": "source_region_type/source_locator_text/supporting_snippet", "projection_status": "coarse_direct_or_unavailable", "direct_or_derived": "direct", "notes": "Not audit-grade ownership binding."},
+            {"legacy_field": "identity_variables_json", "replacement_object_type": "variable_or_factor_candidate", "replacement_field_or_rule": "preserve normalized factor_name_raw + factor_expression_raw for identity_defining_signal=yes only", "projection_status": "direct_or_unavailable", "direct_or_derived": "direct", "notes": "Additive metadata carrier for downstream identity preservation without changing legacy field bundles."},
             {"legacy_field": "*_scope", "replacement_object_type": "all projected row values", "replacement_field_or_rule": "derive per-document shared vs instance-specific status", "projection_status": "derived", "direct_or_derived": "derived", "notes": "Only a transitional compatibility hint."},
             {"legacy_field": "*_membership_confidence", "replacement_object_type": "projection engine", "replacement_field_or_rule": "projected_direct/projected_compressed/projected_derived", "projection_status": "derived", "direct_or_derived": "derived", "notes": "Does not reintroduce field-level LLM confidence."},
             {"legacy_field": "*_missing_reason", "replacement_object_type": "projection engine", "replacement_field_or_rule": "set when deterministic projection is unavailable", "projection_status": "derived", "direct_or_derived": "derived", "notes": "Audit-friendly transitional metadata."},
@@ -622,7 +680,7 @@ def main() -> None:
         all_jsonl_rows.extend(jsonl_rows)
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    write_tsv(output_dir / LEGACY_TSV_NAME, all_rows, build_output_columns())
+    write_tsv(output_dir / LEGACY_TSV_NAME, all_rows, compatibility_output_columns())
     with (output_dir / LEGACY_JSONL_NAME).open("w", encoding="utf-8") as handle:
         for row in all_jsonl_rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -646,7 +704,7 @@ def main() -> None:
         "documents": len(documents),
         "projected_rows": len(all_rows),
         "trace_rows": len(all_traces),
-        "legacy_surface_columns": len(build_output_columns()),
+        "legacy_surface_columns": len(compatibility_output_columns()),
         "output_files": [
             str(output_dir / LEGACY_TSV_NAME),
             str(output_dir / LEGACY_JSONL_NAME),

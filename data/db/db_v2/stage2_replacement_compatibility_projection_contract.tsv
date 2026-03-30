@@ -18,6 +18,7 @@ emulsion_structure	phase_candidate	phase_code_raw	direct_or_compressed	mixed	Pha
 size_nm/pdi/zeta_mV/encapsulation_efficiency_percent/loading_content_percent	measurement_candidate	measurement_name_raw + measurement_value_raw + measurement_unit_raw	direct_or_compressed	mixed	Measurements map by deterministic name matching.
 supporting_evidence_refs	evidence_handoff	source_locator_text/supporting_snippet	coarse_direct_or_unavailable	direct	Coarse evidence handoff only.
 instance_evidence_region_type/evidence_section/evidence_span_text	evidence_handoff	source_region_type/source_locator_text/supporting_snippet	coarse_direct_or_unavailable	direct	Not audit-grade ownership binding.
+identity_variables_json	variable_or_factor_candidate	preserve normalized factor_name_raw + factor_expression_raw for identity_defining_signal=yes only	direct_or_unavailable	direct	Additive metadata carrier for downstream identity preservation without changing legacy field bundles.
 *_scope	all projected row values	derive per-document shared vs instance-specific status	derived	derived	Only a transitional compatibility hint.
 *_membership_confidence	projection engine	projected_direct/projected_compressed/projected_derived	derived	derived	Does not reintroduce field-level LLM confidence.
 *_missing_reason	projection engine	set when deterministic projection is unavailable	derived	derived	Audit-friendly transitional metadata.
