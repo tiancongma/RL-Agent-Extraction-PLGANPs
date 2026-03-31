@@ -38,20 +38,26 @@ The canonical production path is:
 
 1. Stage 0: raw metadata and relevance filtering
 2. Stage 1: cleaned content and manifest construction
-3. Stage 2: paper-driven semantic-object discovery
-4. Compatibility bridge: deterministic projection from semantic objects into
-   the legacy wide-row surface required by unchanged downstream consumers
-5. Stage 3: deterministic formulation relation materialization
-6. Stage 4: evaluation and diagnostics
-7. Stage 5: final formulation closure and benchmark comparison
+3. Stage 2: composite semantic extraction and deterministic post-LLM completion
+4. Stage 3: deterministic formulation relation materialization
+5. Stage 4: evaluation and diagnostics
+6. Stage 5: final formulation closure and benchmark comparison
 
 Manual GT assets are reference inputs to evaluation and comparison. They are
 not a production transformation stage.
 
 Architecture note:
 
-- The active benchmark-valid mainline is semantic Stage2 -> compatibility
-  adapter -> Stage3 -> Stage5.
+- Frozen corrective contract after the 2026-03-30 Stage2 authority-transition
+  audit:
+  - Stage2 authority belongs to LLM semantic discovery, not deterministic
+    semantic reconstruction.
+  - Deterministic Stage2 semantic emitters or semantic lifts are fallback,
+    comparator, migration-support, or diagnostic infrastructure only.
+  - Future drift that re-promotes deterministic semantic Stage2 authority
+    should be treated as a contract violation.
+- The deterministic post-LLM completion step remains inside Stage2. It does not
+  own semantic discovery authority and it is not a separate numbered stage.
 - Stage2.5 is retired from the active mainline and remains archived only as a
   historical exploratory path.
 
@@ -106,20 +112,26 @@ establish a manifest linking papers to those assets.
 
 ---
 
-## Stage 2 - Semantic-Object Discovery Layer
+## Stage 2 - Composite Semantic Extraction Layer
 
 ### Purpose
-Generate paper-driven semantic formulation objects from cleaned paper content
-and tables. Stage2 is the authoritative semantic discovery layer and its
-primary output is a semantic intermediate representation rather than a legacy
-wide-row TSV.
+Run one composite Stage2 contract over cleaned paper content and structured
+assets:
+
+1. LLM semantic discovery
+2. deterministic post-LLM completion for downstream readiness
+
+Stage2 is the authoritative extraction stage. Raw LLM semantic objects are an
+internal Stage2 intermediate. The completed Stage2 artifact is the only valid
+Stage3 input and the only authoritative Stage2 evaluation target.
 
 ### Key Artifacts
-- run-scoped semantic-object JSONL payloads
-- run-scoped semantic-object summary TSVs
-- run-scoped semantic-object manifest JSON
-- paper-local evidence handoff references carried inside the semantic objects
-- object families:
+- Stage2 internal semantic-intermediate artifacts:
+  - run-scoped semantic-object JSONL payloads
+  - run-scoped semantic-object summary TSVs
+  - run-scoped raw response copies when replay or live LLM execution is used
+  - paper-local evidence handoff references carried inside the semantic objects
+  - object families:
   - `formulation_identity_candidate`
   - `component_candidate`
   - `phase_candidate`
@@ -128,47 +140,44 @@ wide-row TSV.
   - `measurement_candidate`
   - `relation_cue`
   - `evidence_handoff`
+- Stage2 completed downstream-ready artifacts:
+  - compatibility-projected legacy wide-row TSV
+  - compatibility-projected legacy wide-row JSONL
+  - projection trace TSV
+  - projection summary JSON
 
 ### Characteristics
-- this is the semantic discovery layer
+- Stage2 is one composite stage, not multiple numbered stages
+- open semantic discovery and formulation-boundary discovery are owned by the
+  LLM substep
+- deterministic post-LLM completion remains inside Stage2 and exists only to
+  make Stage2 outputs reconstructable and relation-ready for unchanged
+  downstream consumers
 - formulation identity discovery, component discovery, factor discovery, and
-  raw expression capture are owned here
-- outputs are object-oriented and may remain incomplete where the paper support
-  is incomplete
-- Stage2 must not be treated as the final fixed-slot modeling surface
-- deterministic post-processing remains responsible for compatibility
-  projection, normalization, derivation, and stronger evidence binding
+  raw expression capture are owned by the LLM substep
+- raw semantic objects may remain incomplete where the paper support is
+  incomplete
+- deterministic post-LLM completion must not be mistaken for Stage3 or Stage5
+- Stage2 final output must not be treated as final benchmark materialization
+- deterministic Stage2 semantic reconstruction paths are non-authoritative and
+  must not replace the LLM Stage2 boundary as active mainline authority
+- direct comparison of raw semantic objects to formulation-level GT is
+  diagnostic only when the deterministic completion substep has not been
+  applied
 
-### Canonical Completion Artifact
-`data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
+### Stage2 Internal Intermediate Artifact
+`data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
 
-## Compatibility Bridge - Deterministic Legacy Wide-Row Projection
-
-### Purpose
-Project semantic Stage2 objects into the legacy wide-row surface required by
-unchanged Stage3, Stage4 diagnostic, and Stage5 runtime consumers during the
-migration period.
-
-### Key Artifacts
-- compatibility-projected legacy wide-row TSV
-- compatibility-projected legacy wide-row JSONL
-- projection trace TSV
-- projection summary JSON
-
-### Characteristics
-- deterministic only
-- no semantic inference
-- no evidence-ownership invention
-- legacy wide-row is a compatibility surface only, not the authoritative Stage2
-  representation
+### Stage2 Authoritative Completion Artifact
+`data/results/run_<run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
 
 ---
 
 ## Stage 3 - Deterministic Formulation Relation Materialization
 
 ### Purpose
-Convert compatibility-projected Stage 2 candidate formulation-instance rows into explicit paper-level
-relation artifacts without any LLM usage.
+Convert the completed Stage2 candidate formulation-instance rows into explicit
+paper-level relation artifacts without any LLM usage.
 
 ### Why this stage exists
 The pipeline needs an auditable intermediate layer that makes relation
@@ -242,9 +251,8 @@ diagnostic comparisons, but they are not the official system result.
 
 ## Separation Of Concerns
 
-- Stage2 owns semantic discovery from paper text and tables.
-- The compatibility adapter owns deterministic projection into the legacy
-  wide-row surface.
+- Stage2 owns semantic discovery from paper text and tables plus the
+  deterministic post-LLM completion required for downstream readiness.
 - Stage3 owns relation resolution over the compatibility-projected rows.
 - Stage5 owns final materialization and benchmark-facing closure.
 - Stage5 must not absorb semantic inference that belongs to Stage2.
@@ -404,6 +412,8 @@ The LLM extraction layer is responsible for:
 - distinguishing shared-vs-instance-specific meaning in prose and tables
 - emitting structured candidate rows with explicit missingness rather than
   silent omission
+- emitting flexible semantic objects rather than relying on deterministic
+  semantic reconstruction as the active authority
 
 The LLM extraction layer is not responsible for final arbitration of
 conflicting evidence.
@@ -419,6 +429,15 @@ Deterministic scripts are responsible for:
 
 These responsibilities must remain deterministic to preserve run-to-run
 reproducibility and auditability.
+
+Stage2 enforcement note:
+
+- Deterministic semantic emitters, deterministic semantic lifts, and similar
+  rule-heavy Stage2 reconstruction paths may exist for fallback, comparator,
+  migration-support, or diagnostic work.
+- They must not be described or selected as active Stage2 mainline authority.
+- Promoting such paths as Stage2 authority is an architecture contract
+  violation.
 
 ### Layer 3: Audit boundary responsibilities
 Audit occurs at the boundary between extracted candidates and publishable

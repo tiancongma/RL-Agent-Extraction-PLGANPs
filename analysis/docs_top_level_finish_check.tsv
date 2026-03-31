@@ -1,0 +1,15 @@
+path	category	still_top_level	appropriate_location	notes
+docs/docs_cleanup_report_v1.md	audit_report	yes	yes	Top-level cleanup summary retained intentionally because it summarizes the docs normalization work itself.
+docs/maintained_script_surface.tsv	registry_reference	yes	yes	High-reference maintained script registry remains appropriate at docs top level.
+docs/mdec084_sync_note.md	transition_note	no	yes	Moved to docs/governance/ to reduce top-level noise without requiring project-doc edits.
+docs/mdec084_writer_contract_v1.md	governance_support	yes	no	Still top-level because project governance docs reference the current path directly.
+docs/project_governance_cleanup_report_v1.md	audit_report	no	yes	Moved to docs/governance/ as a governance-support cleanup report.
+docs/run_directory_compliance_report.tsv	registry_reference	yes	yes	Stable reference surface remains appropriate at docs top level.
+docs/run_spec_template.md	method_template	yes	no	Still top-level because project governance docs reference the current path directly.
+docs/SCRIPT_GOVERNANCE_POLICY.md	governance_support	yes	no	Still top-level because project governance docs reference the current path directly.
+docs/src_script_compliance_report.tsv	registry_reference	yes	yes	Stable registry/report surface remains appropriate at docs top level.
+docs/src_script_registry.tsv	registry_reference	yes	yes	Stable registry/report surface remains appropriate at docs top level.
+docs/tool_index.md	index_navigation	yes	yes	High-reference tool index remains intentionally top-level.
+docs/governance/mdec084_sync_note.md	transition_note	no	yes	New governance bucket location is coherent.
+docs/governance/project_governance_cleanup_report_v1.md	audit_report	no	yes	New governance bucket location is coherent.
+docs/ee_coverage_rl/README.md	index_navigation	no	yes	README now provides navigation and status guidance for the specialized diagnostics directory.

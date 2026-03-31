@@ -9,11 +9,12 @@ extraction stack. It is a Stage 0 to Stage 5 pipeline with explicit provenance:
 
 1. Zotero-derived raw corpus intake
 2. manifest and cleaned-content construction
-3. semantic Stage2 object generation
-4. deterministic compatibility projection into the legacy wide-row surface
-5. deterministic formulation relation materialization
-6. candidate-level diagnostics
-7. final formulation-table closure and final-table benchmark comparison
+3. composite Stage2 extraction:
+   - LLM semantic discovery
+   - deterministic post-LLM completion inside Stage2
+4. deterministic formulation relation materialization
+5. candidate-level diagnostics
+6. final formulation-table closure and final-table benchmark comparison
 
 The benchmark-valid system result is the Stage 5 final formulation table and its
 GT-comparison outputs. Intermediate artifacts may be used for diagnosis, but
@@ -41,6 +42,13 @@ repository authority contract:
 - [ACTIVE_DATA_SOURCE_CONTRACT.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_DATA_SOURCE_CONTRACT.md)
 - machine-readable pointer:
   - `data/results/ACTIVE_RUN.json`
+
+Current authority promotion note:
+
+- `ACTIVE_RUN.json` now points to the semantic Stage2 mainline lineage
+  `run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1`.
+- Historical legacy-extractor runs remain preserved under `data/results/` for
+  auditability, but they are no longer the active repository authority.
 
 The repository must not determine the active source by directory recency,
 modification time, parent fallback, or glob-first matching. Use an explicit
@@ -107,7 +115,21 @@ Current active Stage 3 script:
 
 Current active Stage 2 script:
 
-- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+
+Stage2 authority reminder:
+
+- After the 2026-03-30 architecture freeze, deterministic semantic emitters are
+  fallback, comparator, migration-support, or diagnostic infrastructure only.
+- Stage2 is a composite stage consisting of LLM semantic discovery followed by
+  deterministic post-LLM completion.
+- Only the completed Stage2 artifact is authoritative for downstream Stage3
+  consumption and Stage2 structural evaluation.
+- The governed three-paper comparison slice
+  `src/utils/run_threepaper_stage2_v2_comparison.py` is a Stage2-only
+  semantic-intermediate architecture-enforcement experiment for `WIVUCMYG`,
+  `UFXX9WXE`, and `5GIF3D8W`. It does not replace `ACTIVE_RUN` or promote a new
+  authority path.
 
 Current active compatibility bridge:
 

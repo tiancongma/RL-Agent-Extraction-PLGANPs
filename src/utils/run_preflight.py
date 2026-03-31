@@ -9,7 +9,11 @@ from pathlib import Path
 
 from src.utils import paths
 from src.utils.model_policy import validate_models_or_raise
-from src.utils.run_id import build_run_id, is_valid_run_id
+from src.utils.run_id import (
+    build_run_id,
+    classify_results_path,
+    is_valid_legacy_run_id,
+)
 from src.utils.run_latest import inputs_fingerprint, read_latest, write_latest
 
 
@@ -26,13 +30,18 @@ def _same_local_date(created_at_iso: str) -> bool:
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Deterministic run preflight with reuse/new policy.")
-    p.add_argument("--subset", required=True)
-    p.add_argument("--stage", required=True)
+    p.add_argument("--subset", default="")
+    p.add_argument("--stage", default="")
     p.add_argument("--version", type=int, default=1)
     p.add_argument("--input-path", action="append", default=[], help="Repeatable input path for fingerprinting.")
     p.add_argument("--model", action="append", default=[], help="Optional model name; repeatable.")
     p.add_argument("--models", default="", help="Optional comma-separated model names.")
     p.add_argument("--run-id", default="")
+    p.add_argument(
+        "--run-dir",
+        default="",
+        help="Explicit governed results directory to validate and use as-is. Supports legacy roots and future v2 bucket/child paths.",
+    )
     p.add_argument("--note", default="")
     return p.parse_args()
 
@@ -53,58 +62,92 @@ def main() -> None:
     latest_rid, latest_meta = read_latest(latest_path)
 
     chosen = ""
+    chosen_ref = ""
+    chosen_kind = ""
     reuse_reason = ""
     new_reason = ""
 
-    explicit = str(args.run_id).strip()
-    if explicit:
-        if not is_valid_run_id(explicit):
-            raise ValueError(f"Invalid --run-id (must match required regex): {explicit}")
-        chosen = explicit
-        reuse_reason = "explicit_run_id"
+    explicit_run_dir = str(args.run_dir).strip()
+    if explicit_run_dir:
+        run_dir = Path(explicit_run_dir).resolve()
+        if not run_dir.exists():
+            raise FileNotFoundError(f"Explicit --run-dir not found: {run_dir}")
+        classification = classify_results_path(run_dir, results_dir=paths.DATA_RESULTS_DIR)
+        chosen = run_dir.name
+        chosen_ref = str(run_dir)
+        chosen_kind = classification["path_kind"]
+        reuse_reason = "explicit_run_dir"
     else:
-        can_reuse = (
-            bool(latest_rid)
-            and is_valid_run_id(latest_rid)
-            and _same_local_date(latest_meta.get("created_at", ""))
-            and latest_meta.get("inputs_fingerprint", "") == fp
-        )
-        if can_reuse:
-            chosen = latest_rid
-            reuse_reason = "latest_same_local_date_and_same_inputs_fingerprint"
-        else:
-            chosen = build_run_id(subset=args.subset, stage=args.stage, version=int(args.version))
-            if not latest_rid:
-                new_reason = "no_latest_found"
-            elif not is_valid_run_id(latest_rid):
-                new_reason = "latest_invalid_run_id"
-            elif not _same_local_date(latest_meta.get("created_at", "")):
-                new_reason = "latest_not_today_local"
-            elif latest_meta.get("inputs_fingerprint", "") != fp:
-                new_reason = "inputs_fingerprint_changed"
-            else:
-                new_reason = "generated_new_run_id"
+        chosen_kind = "legacy_run_root"
 
-    latest_written = write_latest(
-        run_id=chosen,
-        meta={
-            "subset": str(args.subset).strip(),
-            "stage": str(args.stage).strip(),
+    explicit = str(args.run_id).strip()
+    if not chosen:
+        if explicit:
+            if not is_valid_legacy_run_id(explicit):
+                raise ValueError(f"Invalid --run-id (must match required legacy regex): {explicit}")
+            chosen = explicit
+            chosen_ref = str((paths.DATA_RESULTS_DIR / explicit).resolve())
+            reuse_reason = "explicit_run_id"
+        else:
+            if not str(args.subset).strip() or not str(args.stage).strip():
+                raise ValueError("--subset and --stage are required when generating or reusing a legacy run_id.")
+            can_reuse = (
+                bool(latest_rid)
+                and is_valid_legacy_run_id(latest_rid)
+                and _same_local_date(latest_meta.get("created_at", ""))
+                and latest_meta.get("inputs_fingerprint", "") == fp
+            )
+            if can_reuse:
+                chosen = latest_rid
+                chosen_ref = str((paths.DATA_RESULTS_DIR / latest_rid).resolve())
+                reuse_reason = "latest_same_local_date_and_same_inputs_fingerprint"
+            else:
+                chosen = build_run_id(subset=args.subset, stage=args.stage, version=int(args.version))
+                chosen_ref = str((paths.DATA_RESULTS_DIR / chosen).resolve())
+                if not latest_rid:
+                    new_reason = "no_latest_found"
+                elif not is_valid_legacy_run_id(latest_rid):
+                    new_reason = "latest_invalid_legacy_run_id"
+                elif not _same_local_date(latest_meta.get("created_at", "")):
+                    new_reason = "latest_not_today_local"
+                elif latest_meta.get("inputs_fingerprint", "") != fp:
+                    new_reason = "inputs_fingerprint_changed"
+                else:
+                    new_reason = "generated_new_run_id"
+
+    latest_written = None
+    if chosen_kind == "legacy_run_root":
+        latest_meta = {
             "inputs_fingerprint": fp,
             "note": str(args.note).strip(),
-        },
-    )
+        }
+        if str(args.subset).strip():
+            latest_meta["subset"] = str(args.subset).strip()
+        if str(args.stage).strip():
+            latest_meta["stage"] = str(args.stage).strip()
+        latest_written = write_latest(
+            run_id=chosen,
+            meta=latest_meta,
+        )
 
-    preview = latest_written.read_text(encoding="utf-8", errors="replace").splitlines()[:6]
+    preview: list[str] = []
+    if latest_written is not None:
+        preview = latest_written.read_text(encoding="utf-8", errors="replace").splitlines()[:6]
     print(f"chosen_run_id={chosen}")
-    print(f"regex_match={is_valid_run_id(chosen)}")
+    print(f"chosen_run_ref={chosen_ref}")
+    print(f"chosen_path_kind={chosen_kind}")
+    print(f"legacy_regex_match={is_valid_legacy_run_id(chosen)}")
     print(f"reuse_reason={reuse_reason}")
     print(f"new_reason={new_reason}")
     print(f"inputs_fingerprint={fp}")
-    print(f"latest_path={latest_written}")
-    print("latest_preview_first6=")
-    for ln in preview:
-        print(ln)
+    print(f"latest_path={latest_written or ''}")
+    if latest_written is not None:
+        print("latest_preview_first6=")
+        for ln in preview:
+            print(ln)
+    else:
+        print("latest_preview_first6=")
+        print("# skipped_for_non_legacy_explicit_run_dir")
 
 
 if __name__ == "__main__":

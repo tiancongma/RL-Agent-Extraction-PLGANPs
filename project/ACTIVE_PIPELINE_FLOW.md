@@ -25,13 +25,28 @@ Current scope:
 
 - corpus intake and relevance filtering from Zotero-derived raw records
 - manifest and cleaned-content construction
-- Stage 2 semantic-object generation
-- deterministic compatibility projection into the legacy wide-row surface
+- Stage 2 composite semantic extraction:
+  - LLM semantic discovery
+  - deterministic post-LLM completion into the downstream-ready Stage2 artifact
 - Stage 3 deterministic formulation relation materialization layer
 - Stage 4 candidate-instance diagnostics and review surfaces
 - Stage 5 final formulation-table closure
 - a separate Stage 5 comparison node that reads the final formulation table and
   fixed manual GT workbook as separate inputs
+
+Corrective architecture-freeze note (`2026-03-30`):
+
+- The Stage2 authority-transition audit confirmed that deterministic semantic
+  Stage2 authority was an architecture drift rather than a cleanly closed
+  replacement of the earlier LLM-centered Stage2 contract.
+- The frozen Stage2 authority contract is:
+  - LLM for open semantic discovery and formulation-boundary discovery
+  - deterministic post-LLM completion inside Stage2 for downstream readiness
+  - deterministic downstream logic in Stage3+ for relation resolution,
+    inheritance handling, normalization, filtering, audit, and materialization
+- Deterministic semantic emitters and semantic lifts remain available only for
+  fallback, comparator, migration-support, or diagnostic work.
+- They must not be treated as active Stage2 mainline authority.
 
 The canonical benchmark object is the Stage 5 final formulation table. No
 intermediate artifact may be reported as the system result against GT.
@@ -43,25 +58,33 @@ The system canonical production path is:
 1. Stage 0: build or refresh Zotero-derived raw records and local source assets
 2. Stage 1: convert raw records into the authoritative manifest, cleaned text,
    and table assets
-3. Stage 2: emit semantic formulation objects from the cleaned corpus
-4. Compatibility bridge: deterministically project semantic Stage2 objects into
-   the legacy wide-row surface required by unchanged downstream consumers
-5. Stage 3: materialize explicit paper-level formulation relation artifacts
-   from the compatibility-projected legacy wide-row surface
-6. Stage 4: optionally generate candidate-level diagnostic and reviewer-facing
+3. Stage 2: run the governed composite Stage2 graph:
+   - LLM semantic discovery from cleaned assets
+   - deterministic post-LLM completion into the downstream-ready Stage2 artifact
+4. Stage 3: materialize explicit paper-level formulation relation artifacts
+   from the completed Stage2 artifact
+5. Stage 4: optionally generate candidate-level diagnostic and reviewer-facing
    artifacts
-7. Stage 5: close candidate rows into final formulation rows with optional
+6. Stage 5: close candidate rows into final formulation rows with optional
    Stage 3 relation provenance
 
 Active-transition note:
 
 - Stage2.5 is retired from the active mainline and remains archived only as a
   historical exploratory side-path.
-- The semantic Stage2 emitter is the authoritative Stage2 boundary.
-- The deterministic compatibility adapter is part of the active mainline
-  execution chain but is not itself a numbered semantic stage.
-- The legacy wide-row Stage2 extractor is deprecated and retained only for
-  fallback or debug use.
+- The frozen architecture contract assigns Stage2 semantic authority to an LLM
+  semantic-discovery boundary.
+- The deterministic compatibility adapter is an internal Stage2 completion
+  substep; it does not own Stage2 semantic authority and it is not a separate
+  numbered stage.
+- The deterministic semantic emitter and the legacy wide-row extractor are both
+  retained only for fallback, comparator, migration-support, or debug use.
+- The governed three-paper Stage2 v2 comparison slice under
+  `src/utils/run_threepaper_stage2_v2_comparison.py` is a non-mainline
+  semantic-intermediate comparator path only. It may emit Stage2 semantic-
+  intermediate artifacts and comparison packs for `WIVUCMYG`, `UFXX9WXE`, and
+  `5GIF3D8W`, but it does not promote Stage2 authority, define Stage2 itself,
+  or alter the canonical Stage0-Stage5 path.
 
 The production-path completion artifact is:
 
@@ -178,12 +201,17 @@ Consumed by downstream stage:
 
 - Stage 2
 
-### Stage 2. Semantic Formulation Object Generation
+### Stage 2. Composite Semantic Extraction And Completion
 
 Purpose:
-Emit paper-driven semantic formulation objects from cleaned paper content and
-tables. Stage2 is the authoritative semantic discovery layer and no longer
-uses the legacy wide-row TSV as its primary output contract.
+Run the governed composite Stage2 path on cleaned paper content and tables.
+Stage2 contains both:
+
+1. LLM semantic discovery
+2. deterministic post-LLM completion into the downstream-ready Stage2 artifact
+
+The raw semantic-object payload is an internal Stage2 intermediate, not the
+authoritative Stage2 completion artifact.
 
 Exact input files or directories:
 
@@ -193,17 +221,31 @@ Exact input files or directories:
 
 Exact script path(s) and script filename(s):
 
-- `src/stage2_sampling_labels/sample_from_manifest_html_first.py`
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+
+Internal Stage2 scripts:
+
+- semantic extraction substep:
+  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+- deterministic post-LLM completion substep:
+  - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+
+Comparator / fallback note:
+
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  remains available only for fallback, comparator, migration-support, or
+  diagnostic runs and must not be treated as Stage2 authority.
+- `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py`
+  is a compatibility shim only and must not be treated as the Stage2 definition.
 
 Exact output files or directories:
 
 - run-scoped semantic-object outputs under
   `data/results/run_<run_id>/semantic_stage2_objects/`
 - canonical semantic-object artifacts:
-  - `semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
-  - `semantic_stage2_objects/semantic_stage2_object_summary_v1.tsv`
-  - `semantic_stage2_objects/semantic_stage2_object_manifest_v1.json`
+  - `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+  - `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+  - `semantic_stage2_objects/raw_responses/`
 - object families emitted by the authoritative Stage2 boundary:
   - `formulation_identity_candidate`
   - `component_candidate`
@@ -214,60 +256,24 @@ Exact output files or directories:
   - `relation_cue`
   - `evidence_handoff`
 
+Stage2 internal intermediate artifacts:
+
+- `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+- `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+
 Stage completion artifact:
 
-- run-scoped semantic-object JSONL:
-  - `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
+- completed Stage2 candidate surface:
+  - `data/results/run_<run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
 
 Consumed by downstream stage:
 
-- deterministic compatibility bridge
-
-### Step 2.5. Compatibility Bridge (Not A Semantic Stage)
-
-Purpose:
-Deterministically project semantic Stage2 objects into the legacy wide-row
-surface required by unchanged Stage3, Stage4 diagnostic, and Stage5 runtime
-consumers during migration.
-
-Exact input files or directories:
-
-- Stage2 semantic-object JSONL
-- optional semantic summary and manifest sidecars
-
-Exact script path(s) and script filename(s):
-
-- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
-
-Exact output files or directories:
-
-- compatibility-projected legacy wide-row artifacts under
-  `data/results/run_<run_id>/semantic_to_widerow_adapter/`
-- canonical bridge outputs:
-  - `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
-  - `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl`
-  - `semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv`
-  - `semantic_to_widerow_adapter/compatibility_projection_summary_v1.json`
-
-Bridge boundary rules:
-
-- the adapter must remain deterministic
-- the adapter must not perform semantic inference
-- the adapter must not invent evidence ownership or normalization
-- the adapter may add additive metadata columns when needed to preserve
-  Stage2-detected identity-bearing semantics for unchanged downstream
-  consumers
-- the current additive identity-preservation carrier is
-  `identity_variables_json`, which preserves normalized
-  `variable_or_factor_candidate` pairs with `identity_defining_signal=yes`
-  without replacing legacy field bundles
-- the adapter exists to preserve downstream reuse while Stage3 and Stage5
-  remain unchanged
+- Stage 3
 
 Legacy note:
 
 - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
-  is deprecated and not part of the active pipeline
+  is deprecated and not part of the active pipeline authority
 - it may be used only for fallback or debug scenarios that are explicitly
   declared as non-mainline
 
@@ -523,8 +529,8 @@ The production chain is:
 
 1. raw Zotero-derived records under `data/raw/zotero/`
 2. authoritative manifest and cleaned text assets under `data/cleaned/`
-3. Stage 2 semantic-object artifacts under `data/results/run_<run_id>/`
-4. compatibility-projected legacy wide-row artifacts under
+3. Stage 2 semantic-intermediate artifacts under `data/results/run_<run_id>/`
+4. Stage 2 completed downstream-ready artifacts under
    `data/results/run_<run_id>/`
 5. Stage 3 relation-record artifact set
 6. optional Stage 4 diagnostic artifacts under `data/results/`
@@ -571,25 +577,25 @@ python src/stage1_cleaning/clean_manifest_to_text.py --overwrite --prefer html
 python src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py --dataset-id goren_2025 --manifest-tsv data/cleaned/goren_2025/index/manifest.tsv
 ```
 
-### Step 2. Produce semantic Stage2 objects
+### Step 2. Run the composite Stage2 entrypoint
 
 Use a declared manifest or split manifest for the chosen scope.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py --manifest-tsv <scope_manifest.tsv> --out-dir data/results/<stage2_run_id>/semantic_stage2_objects --verbose
+python src/stage2_sampling_labels/run_stage2_composite_v1.py --run-id <stage2_run_id> --manifest-tsv <scope_manifest.tsv> --paper-key <paper_key_1> --paper-key <paper_key_2> --source-mode <live_llm_or_legacy_llm_replay> --llm-backend <gemini_or_nvidia> --model <model_name> --max-text-chars <max_chars>
 ```
 
-The authoritative Stage2 outputs are semantic objects, not a wide-row TSV.
-Stage2 should preserve paper-reported structure and raw expressions rather than
-forcing legacy projection decisions.
+Authority rule:
 
-### Step 2.5. Run the deterministic compatibility bridge
-
-```powershell
-$env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py --semantic-jsonl data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl --out-dir data/results/<stage2_run_id>/semantic_to_widerow_adapter
-```
+- The authoritative Stage2 contract is composite:
+  - internal LLM semantic discovery
+  - internal deterministic post-LLM completion
+- Stage2 evaluation for downstream readiness must target the completed Stage2
+  artifact after deterministic completion.
+- Direct comparison of raw LLM semantic objects to formulation-level GT is
+  diagnostic-only failure localization, not authoritative completed-Stage2
+  evaluation.
 
 ### Step 3. Build the Stage 3 deterministic relation artifacts
 

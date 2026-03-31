@@ -2269,6 +2269,97 @@ Non-change statement
 - No Stage5 runtime logic was modified by this entry.
 - No historical `data/results/run_*` directory was modified or deleted.
 
+## 2026-03-30
+
+### Decision: Freeze the Stage2 role split after the 2026-03-30 authority-transition audit and treat deterministic Stage2 semantic authority as architecture drift
+
+Decision:
+- Record the Stage2 authority transition audit dated
+  `docs/snapshots/snapshot_2026-03-30_stage2_authority_transition_audit.md`
+  as a governed architecture-correction input.
+- Freeze the original Stage2 role split as the active architecture contract:
+  - LLM owns open semantic discovery and formulation-boundary discovery in
+    Stage2.
+  - Deterministic layers own relation resolution, inheritance handling,
+    normalization, filtering, audit, and final materialization downstream of
+    Stage2.
+- Forbid deterministic Stage2 semantic replacement paths from being treated as
+  active mainline authority.
+- Allow deterministic Stage2 semantic emitters or semantic lifts only as
+  fallback, comparator, migration-support, or diagnostic infrastructure.
+- Treat future drift that re-promotes deterministic Stage2 semantic authority
+  as a contract violation that should trigger governance warnings or failing
+  validation checks rather than silent normalization.
+
+Directly observed facts:
+- The transition audit confirmed that the repo narrowed LLM vs deterministic
+  responsibilities on `2026-03-06`, introduced deterministic Stage2 practical
+  drift by `2026-03-13`, approved semantic replacement direction on
+  `2026-03-25` without switching active runtime, and then rewrote active
+  governance toward deterministic semantic-emitter authority in the
+  `2026-03-26` commit / `2026-03-29` decision layer.
+- The same audit found no explicit governed decision that removed the earlier
+  LLM-centered Stage2 architecture principle itself.
+- The repo therefore accumulated an authority drift rather than a cleanly
+  closed architecture replacement.
+
+Reason:
+- The project design intent remains that ambiguous formulation boundaries,
+  shared-vs-instance semantics, and open semantic candidate discovery belong
+  to an LLM-stage boundary rather than to paper-specific deterministic
+  reconstruction.
+- Allowing deterministic semantic replacement to stand as active Stage2
+  authority would silently redefine the architecture without the missing
+  design-level approval.
+
+Impact:
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  and
+  `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+  remain available in the repository, but only as non-authoritative fallback,
+  comparator, migration-support, or diagnostic infrastructure.
+- Future architecture, runbook, script-selection, and memory surfaces must not
+  describe deterministic semantic Stage2 replacement as the active mainline
+  authority.
+- If future enforcement tooling is extended, promoting deterministic semantic
+  Stage2 as mainline authority should warn or fail.
+
+### Decision: Promote the semantic Stage2 DEV15 identity-preservation lineage as the repository active authority pointer
+
+Decision:
+- Repoint `data/results/ACTIVE_RUN.json` from the March 14 legacy wide-row
+  extractor lineage to
+  `data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1`.
+- Treat the promoted run's semantic Stage2 objects, compatibility-projected
+  wide-row artifacts, Stage3 resolved relation fields, and Stage5 final table
+  as the current authoritative terminal surface for default
+  `data/results`-resolved workflows.
+- Keep
+  `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
+  present only as deprecated fallback/debug infrastructure outside the active
+  mainline.
+
+Reason:
+- Governed docs, code registries, and memory had already declared semantic
+  Stage2 authority, but `ACTIVE_RUN.json` still pointed to a March 14
+  legacy-extractor lineage.
+- The semantic-emitter replacement path had already been validated end-to-end
+  on DEV15 and then extended with the accepted additive
+  `identity_variables_json` preservation path in the March 29 full-pipeline
+  benchmark experiment.
+- Repointing the machine-readable authority removes the practical governance
+  mismatch without changing the architecture contract.
+
+Impact:
+- Default authority-resolved benchmark, alignment, workbook, and audit
+  workflows now start from a semantic Stage2 mainline lineage rather than a
+  legacy wide-row extractor lineage.
+- Historical March 14 and other legacy-extractor runs remain preserved for
+  auditability, chronology, and fallback/debug comparison, and their script
+  references may still appear in historical memory and run contexts.
+- This is a governance alignment and authority-promotion action only; it does
+  not introduce a new pipeline architecture or reactivate Stage2.5.
+
 ### Decision: Introduce Layer2 identity scaffold contract v1 for benchmark-safe downstream binding
 
 Decision
@@ -2530,3 +2621,149 @@ Non-change statement
 - No Stage3 runtime logic was modified by this entry.
 - No Stage5 runtime logic was modified by this entry.
 - No historical `data/results/run_*` directory was modified or deleted.
+## 2026-03-31
+
+### Decision: Normalize run naming and governance boundaries (MDEC084)
+
+Decision
+- Introduce a new future-run naming scheme:
+  - Top-level run bucket: `YYYYMMDD_<short_hash>`
+  - Child execution folders: `NN_<cue>` (e.g., `01_stage2`, `02_relation`)
+- Remove semantic meaning from folder names; require all rich context to live in `RUN_CONTEXT.md`.
+- Redefine lineage:
+  - No nested full `run_id` inside run directories.
+  - Execution identity is represented by ordinal child folders, not repeated run names.
+- Keep `data/results/ACTIVE_RUN.json` as the only authority for active runs.
+- Allow `ACTIVE_RUN.json` to reference arbitrary paths, not only old-style `run_*` IDs.
+- Freeze all historical runs:
+  - Do not rename or restructure existing `run_*` directories.
+- Enforce `project/` as governance-only:
+  - Only authoritative contracts allowed.
+  - Audit, diagnosis, parking-lot, and open-question files must not live under `project/`.
+
+Rationale
+- Current system encodes identity, lineage, and semantics in folder names, causing:
+  - excessive path depth
+  - naming inflation
+  - ambiguity in determining active runs
+- Existing governance rules are internally inconsistent:
+  - lineage structure requires nested run IDs
+  - naming rules forbid repeated run IDs
+- The repository already supports explicit authority via `ACTIVE_RUN.json`, making path-based identity viable.
+- Separating identity (path), meaning (RUN_CONTEXT), and authority (ACTIVE_RUN.json) is the minimal consistent model.
+
+Decision boundary
+- This change affects future runs only.
+- No historical benchmark artifact is modified.
+- Stage2–Stage5 semantic logic remains unchanged.
+- Accepted run types remain unchanged.
+
+Implementation constraints
+- Must update utilities before enabling new naming:
+  - `src/utils/run_id.py`
+  - `src/utils/run_latest.py`
+  - `src/utils/run_preflight.py`
+  - `src/utils/active_data_source.py`
+- Utilities must:
+  - stop enforcing old run-id regex as global constraint
+  - rely on explicit authority instead of name parsing
+  - maintain backward compatibility for legacy runs
+
+Non-change statement
+- No change to scientific extraction logic or pipeline stages.
+- No bulk migration of historical runs.
+- No change to benchmark comparison contracts.
+- This decision introduces a naming/governance normalization only.
+
+### Decision: Add governed three-paper Stage2 v2 comparison slice (MDEC085)
+
+Decision
+- Implement a governed, minimal three-paper Stage2 v2 comparison slice for:
+  - `WIVUCMYG`
+  - `UFXX9WXE`
+  - `5GIF3D8W`
+- Add:
+  - `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py`
+  - `src/analysis/build_stage2_v2_threepaper_comparison_pack.py`
+  - `src/utils/run_threepaper_stage2_v2_comparison.py`
+- The slice emits object-first Stage2 semantic artifacts only and a narrow
+  Stage2 comparison pack against:
+  - the current deterministic semantic active-run surface
+  - the current deterministic compatibility wide-row surface
+  - the maintained historical legacy wide-row comparator surface
+
+Rationale
+- The three selected papers stress:
+  - DOE factor preservation
+  - numbered-row multiplicity
+  - formulation-boundary drift and identity instability
+- A small governed slice provides architecture-enforcement evidence for the
+  frozen Stage2 role split without silently replacing the active benchmark
+  mainline.
+
+Decision boundary
+- This slice is comparator and architecture-enforcement infrastructure only.
+- No authority promotion is implied.
+- `data/results/ACTIVE_RUN.json` remains unchanged.
+- The deterministic semantic emitter remains non-authoritative fallback,
+  comparator, migration-support, or diagnostic infrastructure.
+- Any future promotion requires broader governed evidence beyond this
+  three-paper slice.
+
+Non-change statement
+- No Stage3 runtime behavior was changed.
+- No Stage5 runtime behavior was changed.
+- No active mainline run lineage was replaced.
+
+### Decision: Correct Stage2 to one governed composite stage and evaluate Stage2 on the completed artifact (MDEC086)
+
+Decision
+- Define Stage2 as one composite stage consisting of:
+  - LLM semantic discovery
+  - deterministic post-LLM completion inside Stage2
+- Keep the official numbered stage structure unchanged:
+  - Stage2 -> Stage3 -> Stage5
+- Make the completed Stage2 artifact, not the raw semantic intermediate, the
+  only authoritative Stage2 input to Stage3 and the only authoritative Stage2
+  structural evaluation target.
+- Introduce one governed Stage2 execution entrypoint:
+  - `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+- Require scope variation to be expressed only through manifest/config inputs
+  such as:
+  - manifest
+  - paper keys
+  - source mode
+  - backend
+  - model
+  - max text chars
+- Keep special comparison wrappers non-governed and non-promoting.
+
+Rationale
+- The previous repo wording drifted into treating the raw LLM semantic
+  intermediate as if it were the whole Stage2 evaluation object.
+- That is incorrect once Stage2 includes a deterministic completion substep.
+- The three-paper live Gemini slice tested only the semantic-discovery
+  intermediate because it skipped deterministic post-LLM completion in its
+  original interpretation.
+- Scope-specific wrapper scripts were also beginning to imply alternative
+  Stage2 definitions, which conflicts with the governance requirement for one
+  Stage2 entrypoint.
+
+Impact
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is now the one
+  governed Stage2 execution entrypoint.
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
+  internal LLM semantic-discovery substep.
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
+  the internal deterministic post-LLM completion substep.
+- `src/utils/run_threepaper_stage2_v2_comparison.py` remains comparison-only
+  and must not be treated as the Stage2 definition.
+- The recent three-paper live Gemini result remains usable as semantic-
+  intermediate diagnostic evidence only; it is not a final go/no-go judgment
+  on the completed Stage2 contract by itself.
+
+Non-change statement
+- No new numbered stage such as Stage2.8 was introduced.
+- No Stage3 runtime behavior was changed.
+- No Stage5 runtime behavior was changed.
+- `data/results/ACTIVE_RUN.json` was not changed by this decision entry.

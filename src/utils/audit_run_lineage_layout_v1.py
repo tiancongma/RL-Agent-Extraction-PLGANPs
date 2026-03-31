@@ -5,13 +5,15 @@ Audit top-level run-directory lineage layout under data/results.
 Purpose
 - Detect sibling top-level run directories that appear to belong to the same
   experiment lineage because they share the same timestamp and git short hash.
+- Accept future MDEC084 top-level v2 bucket roots without treating them as
+  malformed legacy runs.
 - Emit deterministic audit artifacts that help enforce the repository rule that
   one top-level run directory should represent one benchmark or experiment
   lineage, while retries and repair steps should live under that lineage as
   child executions.
 
 Inputs
-- --results-dir: directory containing top-level run_* result directories
+- --results-dir: directory containing top-level results entries
 - --out-tsv: output TSV listing grouped lineages and detected sibling runs
 - --out-md: optional Markdown summary of likely lineage sprawl
 - --min-group-size: minimum sibling count required before a lineage is flagged
@@ -34,23 +36,20 @@ from __future__ import annotations
 
 import argparse
 import csv
-import re
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
 from src.utils.paths import DATA_RESULTS_DIR
-
-
-RUN_ID_PATTERN = re.compile(r"^(run_\d{8}_\d{4}_[0-9a-f]{7})_(.+)$")
+from src.utils.run_id import classify_results_path
 
 
 @dataclass(frozen=True)
 class RunEntry:
-    run_name: str
+    entry_name: str
+    layout_kind: str
     lineage_prefix: str
-    suffix: str
     role_guess: str
     path: Path
 
@@ -86,8 +85,8 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def guess_role(suffix: str) -> str:
-    lowered = suffix.lower()
+def guess_legacy_role(suffix: str) -> str:
+    lowered = str(suffix).lower()
     if "benchmark" in lowered:
         return "benchmark_or_parent"
     if "stage3" in lowered:
@@ -113,17 +112,40 @@ def iter_run_entries(results_dir: Path) -> Iterable[RunEntry]:
     for path in sorted(results_dir.iterdir(), key=lambda p: p.name):
         if not path.is_dir():
             continue
-        match = RUN_ID_PATTERN.match(path.name)
-        if not match:
+        path_info = classify_results_path(path, results_dir=results_dir)
+        layout_kind = path_info["path_kind"]
+        if layout_kind == "legacy_run_root":
+            # Group legacy same-prefix siblings so historical lineage sprawl still audits cleanly.
+            parts = path.name.split("_", 4)
+            if len(parts) < 5:
+                continue
+            lineage_prefix = "_".join(parts[:4])
+            suffix = parts[4]
+            yield RunEntry(
+                entry_name=path.name,
+                layout_kind=layout_kind,
+                lineage_prefix=lineage_prefix,
+                role_guess=guess_legacy_role(suffix),
+                path=path,
+            )
             continue
-        lineage_prefix, suffix = match.groups()
-        yield RunEntry(
-            run_name=path.name,
-            lineage_prefix=lineage_prefix,
-            suffix=suffix,
-            role_guess=guess_role(suffix),
-            path=path,
-        )
+        if layout_kind == "v2_bucket_root":
+            yield RunEntry(
+                entry_name=path.name,
+                layout_kind=layout_kind,
+                lineage_prefix=path.name,
+                role_guess="v2_bucket_root",
+                path=path,
+            )
+            continue
+        if layout_kind == "v2_child_top_level_invalid":
+            yield RunEntry(
+                entry_name=path.name,
+                layout_kind=layout_kind,
+                lineage_prefix=path.name,
+                role_guess="misplaced_v2_child_top_level",
+                path=path,
+            )
 
 
 def build_groups(entries: Iterable[RunEntry]) -> dict[str, list[RunEntry]]:
@@ -131,15 +153,18 @@ def build_groups(entries: Iterable[RunEntry]) -> dict[str, list[RunEntry]]:
     for entry in entries:
         grouped[entry.lineage_prefix].append(entry)
     for lineage_prefix in grouped:
-        grouped[lineage_prefix] = sorted(grouped[lineage_prefix], key=lambda e: e.run_name)
+        grouped[lineage_prefix] = sorted(grouped[lineage_prefix], key=lambda e: e.entry_name)
     return dict(sorted(grouped.items()))
 
 
 def choose_parent_candidate(entries: list[RunEntry]) -> RunEntry:
-    benchmark_entries = [entry for entry in entries if "benchmark" in entry.run_name.lower()]
+    non_legacy = [entry for entry in entries if entry.layout_kind != "legacy_run_root"]
+    if non_legacy:
+        return entries[0]
+    benchmark_entries = [entry for entry in entries if "benchmark" in entry.entry_name.lower()]
     if benchmark_entries:
         return benchmark_entries[0]
-    complete_entries = [entry for entry in entries if "complete" in entry.run_name.lower()]
+    complete_entries = [entry for entry in entries if "complete" in entry.entry_name.lower()]
     if complete_entries:
         return complete_entries[0]
     return entries[0]
@@ -151,10 +176,11 @@ def write_tsv(out_tsv: Path, groups: dict[str, list[RunEntry]], min_group_size: 
         writer = csv.DictWriter(
             handle,
             fieldnames=[
+                "layout_kind",
                 "lineage_prefix",
                 "group_size",
                 "flagged_as_bloat",
-                "run_name",
+                "entry_name",
                 "role_guess",
                 "path",
                 "recommended_parent_candidate",
@@ -163,15 +189,19 @@ def write_tsv(out_tsv: Path, groups: dict[str, list[RunEntry]], min_group_size: 
         )
         writer.writeheader()
         for lineage_prefix, entries in groups.items():
-            flagged = len(entries) >= min_group_size
-            parent_candidate = choose_parent_candidate(entries).run_name
+            flagged = (
+                entries[0].layout_kind == "legacy_run_root"
+                and len(entries) >= min_group_size
+            )
+            parent_candidate = choose_parent_candidate(entries).entry_name
             for entry in entries:
                 writer.writerow(
                     {
+                        "layout_kind": entry.layout_kind,
                         "lineage_prefix": lineage_prefix,
                         "group_size": len(entries),
                         "flagged_as_bloat": "yes" if flagged else "no",
-                        "run_name": entry.run_name,
+                        "entry_name": entry.entry_name,
                         "role_guess": entry.role_guess,
                         "path": entry.path.as_posix(),
                         "recommended_parent_candidate": parent_candidate,
@@ -184,20 +214,23 @@ def write_markdown(out_md: Path, groups: dict[str, list[RunEntry]], min_group_si
     lines: list[str] = []
     lines.append("# Run Lineage Layout Audit")
     lines.append("")
-    lines.append("This report flags top-level `run_*` sibling groups that likely belong to one lineage.")
+    lines.append(
+        "This report flags likely legacy top-level lineage sprawl and also classifies future v2 bucket roots conservatively."
+    )
     lines.append("")
     for lineage_prefix, entries in groups.items():
-        if len(entries) < min_group_size:
+        if entries[0].layout_kind == "legacy_run_root" and len(entries) < min_group_size:
             continue
         parent_candidate = choose_parent_candidate(entries)
         lines.append(f"## {lineage_prefix}")
         lines.append("")
+        lines.append(f"- layout_kind: `{entries[0].layout_kind}`")
         lines.append(f"- sibling_count: `{len(entries)}`")
-        lines.append(f"- recommended_parent_candidate: `{parent_candidate.run_name}`")
-        lines.append("- sibling_runs:")
+        lines.append(f"- recommended_parent_candidate: `{parent_candidate.entry_name}`")
+        lines.append("- entries:")
         for entry in entries:
             lines.append(
-                f"  - `{entry.run_name}` ({entry.role_guess}) -> `{entry.path.as_posix()}`"
+                f"  - `{entry.entry_name}` ({entry.role_guess}) -> `{entry.path.as_posix()}`"
             )
         lines.append("")
     if len(lines) == 4:

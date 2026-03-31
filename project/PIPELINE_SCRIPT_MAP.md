@@ -32,8 +32,7 @@ Script classes used here are fixed:
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert the raw Zotero-derived JSONL into the authoritative manifest. | `data/raw/zotero/zotero_selected_items.jsonl` | `data/cleaned/index/manifest_current.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
-| Stage 2 | Semantic-object discovery | `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py` | `ACTIVE_ENTRYPOINT` | Emit authoritative paper-driven semantic Stage2 objects from cleaned assets. | scope manifest TSV; cleaned text; cleaned or governed tables | semantic-object JSONL; semantic summary TSV; semantic manifest JSON |
-| Compatibility bridge | Deterministic legacy wide-row projection | `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `ACTIVE_ENTRYPOINT` | Deterministically project semantic Stage2 objects into the legacy wide-row surface required by unchanged Stage3, Stage4 diagnostic, and Stage5 consumers. | semantic-object JSONL and sidecars | compatibility-projected weak-label TSV/JSONL; projection trace TSV |
+| Stage 2 | Composite semantic extraction and deterministic post-LLM completion | `src/stage2_sampling_labels/run_stage2_composite_v1.py` | `ACTIVE_ENTRYPOINT` | Run the governed composite Stage2 graph: LLM semantic discovery from cleaned assets followed by deterministic post-LLM completion into the only authoritative Stage2 artifact consumed by Stage3. | scope manifest TSV; cleaned text; cleaned or governed tables; paper-key subset; source_mode; llm_backend; model; max_text_chars | semantic-intermediate JSONL/summary under `semantic_stage2_objects/`; completed Stage2 weak-label TSV/JSONL under `semantic_to_widerow_adapter/`; `RUN_CONTEXT.md` |
 | Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts and resolved relation-backed descriptive synthesis fields from the compatibility-projected legacy wide-row surface without any LLM usage. | compatibility-projected Stage 2 candidate formulation-instance TSV; optional compatibility-projected JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv`; `resolved_relation_fields_v1.tsv` |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts from the compatibility-projected legacy wide-row surface. | compatibility-projected Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
@@ -66,10 +65,16 @@ transformations.
   GT workbook as a separate reference input.
 - Stage2.5 is retired from the active mainline and remains archived only as
   historical exploratory design input.
-- The active benchmark mainline is semantic Stage2 -> compatibility adapter ->
-  Stage3 -> Stage5.
-- The legacy wide-row extractor is deprecated and must not replace the active
-  semantic Stage2 -> adapter -> Stage3 -> Stage5 mainline.
+- Corrective architecture freeze (`2026-03-30`):
+  - LLM owns open semantic discovery and formulation-boundary discovery in
+    Stage2.
+  - Deterministic post-LLM completion remains inside Stage2.
+  - Deterministic logic in Stage3+ owns relation resolution, inheritance
+    handling, normalization, filtering, audit, and materialization.
+  - Deterministic semantic emitters and semantic lifts may exist only as
+    fallback, comparator, migration-support, or diagnostic infrastructure.
+  - The legacy wide-row extractor is deprecated and must not replace the
+    frozen LLM-centered Stage2 authority contract.
 
 ## Optional Diagnostic / Review Path
 
@@ -126,8 +131,10 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py` | `STABLE_TOOL` | Build sample-local key-to-text mappings. |
 | `src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py` | `STABLE_TOOL` | Build deterministic evidence packages for selected keys. |
 | `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit numbered DOE formulation rows from Stage1 table assets and emit additive Stage2 candidate artifacts. |
-| `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py` | `STABLE_TOOL` | Authoritative semantic Stage2 emitter used by the active mainline. |
-| `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Deterministic compatibility bridge from semantic Stage2 objects to the legacy wide-row surface used by unchanged downstream consumers, including additive identity-preservation metadata such as `identity_variables_json` when required. |
+| `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` | `STABLE_TOOL` | Internal LLM semantic-discovery substep used by the governed composite Stage2 entrypoint. Emits object-first semantic-intermediate artifacts for any declared manifest scope. |
+| `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Internal deterministic post-LLM completion substep used by the governed composite Stage2 entrypoint. Converts semantic intermediates into the completed Stage2 artifact required by unchanged downstream consumers. |
+| `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py` | `STABLE_TOOL` | Deterministic semantic Stage2 comparator or fallback retained for migration-support, comparator, or diagnostic work only; not the governed Stage2 authority. |
+| `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py` | `STABLE_TOOL` | Compatibility shim for the historical three-paper extractor name. Use the governed generic extractor instead; do not treat this filename as the Stage2 definition. |
 | `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py` | `STABLE_TOOL` | Write the non-default Stage2 replacement semantic-contract scaffold artifacts used for redesign planning and compatibility mapping. It is not a benchmark runtime entrypoint. |
 | `src/stage2_sampling_labels/enrich_preparation_method_fields_v1.py` | `STABLE_TOOL` | Deterministically append schema-only preparation-method enrichment fields to an existing Stage2-style TSV without changing row identity or counts. |
 | `src/stage2_sampling_labels/export_blockpack_audit_v7pilot_r3_fixparse.py` | `STABLE_TOOL` | Export the Stage 2 evidence packing order for manual audit. |
@@ -152,11 +159,17 @@ Stage 2.5 archival note:
 
 Stage 2 active contract note:
 
-- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
-  is the authoritative Stage2 entrypoint.
+- The frozen Stage2 authority contract is LLM semantic discovery, not
+  deterministic semantic reconstruction.
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the one governed
+  Stage2 execution entrypoint.
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
+  internal LLM semantic-discovery substep.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
-  the deterministic bridge from semantic Stage2 objects to the legacy wide-row
-  surface used by unchanged downstream consumers.
+  the internal deterministic post-LLM completion substep.
+- `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  is retained only for fallback, comparator, migration-support, or diagnostic
+  work and must not be treated as Stage2 authority.
 - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
   is legacy and deprecated.
 
@@ -183,6 +196,7 @@ Stage 2 active contract note:
 | `src/stage4_eval/audit_top3_doi_root_cause_v1.py` | `STABLE_TOOL` | Focused root-cause audit helper. |
 | `src/stage4_eval/compute_set_level_ee_match_v1.py` | `STABLE_TOOL` | Set-level EE comparison support. |
 | `src/stage4_eval/precision_recovery_experiment_v1.py` | `STABLE_TOOL` | Precision-recovery experiment helper; not a canonical stage endpoint. |
+| `src/analysis/build_stage2_v2_threepaper_comparison_pack.py` | `STABLE_TOOL` | Build a governed three-paper Stage2-only comparison pack contrasting the minimal LLM Stage2 v2 slice against current deterministic semantic and historical wide-row comparator surfaces. |
 
 ### Stage 5
 
@@ -220,6 +234,7 @@ Stage 2 active contract note:
 |---|---|---|
 | `src/utils/audit_run_lineage_layout_v1.py` | `STABLE_TOOL` | Deterministically audit top-level `data/results/run_*` lineage sprawl and flag sibling runs that should likely be contained under one parent lineage. |
 | `src/utils/build_feature_activation_report_v1.py` | `STABLE_TOOL` | Build a run-scoped feature activation report from deterministic artifact evidence so child-lineage validation can be distinguished from parent-run activation. |
+| `src/utils/run_threepaper_stage2_v2_comparison.py` | `STABLE_TOOL` | Non-default three-paper semantic-intermediate comparison wrapper. It calls the governed composite Stage2 entrypoint, then builds a comparison pack for `WIVUCMYG`, `UFXX9WXE`, and `5GIF3D8W` without defining Stage2 itself or modifying `ACTIVE_RUN.json`. |
 | `src/utils/build_mem_v1.py` | `STABLE_TOOL` | Build the governed `data/mem/v1/` memory registry from `docs/snapshots/`, `docs/methods/`, `data/results/**/RUN_CONTEXT.md`, and `project/*.md` without creating a new pipeline stage. |
 | `src/utils/query_mem_v1.py` | `STABLE_TOOL` | Query the governed `data/mem/v1/` registry by text, type, stage, or run before deeper debugging or failure-localization work. |
 | `src/utils/mem_bootstrap_v1.py` | `STABLE_TOOL` | Bootstrap complex-task memory lookup by classifying the task, surfacing relevant `mem_v1` hits, and suggesting the next governed files to read. |

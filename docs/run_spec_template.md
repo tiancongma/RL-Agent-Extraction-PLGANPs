@@ -1,12 +1,20 @@
 # RUN_SPEC Template
 
-Use this template in every `data/results/run_*` directory.
+Use this template in every future governed child execution directory under
+`data/results/<YYYYMMDD_<short_hash>>/<NN_<cue>>/`.
+
+Historical maintained `data/results/run_*` directories may also continue to
+use this template for legacy compatibility.
 
 The file may be named `RUN_CONTEXT.md` or `RUN_SPEC.md`, but the content must include all sections below.
 
 ## 1. Run ID
 
-- Exact run directory name
+- Exact governed execution identity.
+- For future naming, record:
+  - bucket path: `data/results/<YYYYMMDD_<short_hash>>/`
+  - child execution folder: `<NN_<cue>>` or `<NNN_<cue>>`
+- Do not create a repeated nested full `run_id` directory for future runs.
 
 ## 2. Run Type
 

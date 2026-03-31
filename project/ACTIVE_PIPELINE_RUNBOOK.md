@@ -31,17 +31,22 @@ This runbook distinguishes:
   - `plga_mw_kDa` is retained only as a legacy read alias for compatibility with older artifacts.
   - This is a naming correction only; the field meaning did not change.
 - Stage 2 contract:
-  - Stage 2 now refers to the paper-driven semantic-object emitter as the
-    authoritative semantic boundary.
-  - The deterministic compatibility adapter is the required bridge into the
-    legacy wide-row surface used by unchanged Stage3, Stage4 diagnostic, and
-    Stage5 runtime consumers.
+  - The 2026-03-30 corrective architecture freeze restores the original split:
+    - LLM owns open semantic discovery and formulation-boundary discovery in Stage2
+    - deterministic post-LLM completion remains inside Stage2 for downstream readiness
+    - deterministic logic in Stage3+ owns relation resolution, inheritance,
+      normalization, filtering, audit, and materialization
+  - Deterministic semantic emitters and semantic lifts are fallback,
+    comparator, migration-support, or diagnostic infrastructure only.
+  - The deterministic compatibility adapter remains deterministic downstream
+    infrastructure; it does not own Stage2 semantic authority.
 - Non-change reminder:
   - Stage 5 remains materialization-only.
   - The relation-first Stage 3 -> Stage 5 contract is unchanged.
 - Legacy note:
-  - The deprecated wide-row fallback extractor may still carry older evidence-
-    packing behavior, but that is no longer the active Stage2 mainline.
+  - The deprecated wide-row fallback extractor and the deterministic semantic
+    emitter may still carry useful fallback/comparator behavior, but neither is
+    the frozen Stage2 authority contract.
 
 ## Operating Principle
 
@@ -71,7 +76,7 @@ Allowed:
 
 - reuse unchanged Stage 0 raw records
 - reuse unchanged Stage 1 cleaned assets
-- reuse unchanged Stage 2 candidate TSVs
+- reuse unchanged completed Stage 2 artifacts
 
 Not allowed:
 
@@ -81,17 +86,21 @@ Not allowed:
 
 Run layout rule:
 
-- a run root is the directory named by `run_id`
-- artifact folders under that run root must be functional only, such as:
+- future governed lineage root:
+  - `data/results/<YYYYMMDD_<short_hash>>/`
+- future child execution root:
+  - `data/results/<YYYYMMDD_<short_hash>>/<NN_<cue>>/`
+- future child execution roots must carry rich execution meaning in
+  `RUN_CONTEXT.md`, not in long folder names
+- artifact folders under a child execution root must be functional only, such as:
   - `analysis/`
   - `outputs/`
   - `audit/`
   - stage-local functional folders like `formulation_relation_v1/`
-- artifact folders under a run root must not repeat:
-  - the full `run_id`
-  - timestamp/hash fragments
-- if a unit needs independent rerun or lineage identity, create a separate run
-  root with its own `run_id` instead of nesting another run-like directory
+- future lineage must not repeat a full nested `run_id` or timestamp/hash
+  fragment below the governed bucket root
+- historical `run_*` roots remain legacy compatibility surfaces until the
+  writer-utility migration is completed
 
 Active data-source rule:
 
@@ -209,23 +218,56 @@ Completion artifacts:
 
 ### Stage 2
 
-Use Stage 2 to produce the authoritative semantic-object payloads for the
+Use Stage 2 to produce the authoritative completed Stage2 payloads for the
 declared scope.
 
-Core script:
+Frozen authority contract:
 
+- Stage2 authority belongs to one composite stage:
+  - internal LLM semantic-object discovery
+  - internal deterministic post-LLM completion
+- Deterministic semantic reconstruction must not be selected as active mainline
+  authority outside that governed composite Stage2 path.
+
+Current implementation-status note:
+
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the one governed
+  Stage2 execution entrypoint.
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
+  internal LLM semantic-discovery substep used by the governed Stage2 entrypoint.
+- `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
+  the internal deterministic post-LLM completion substep used by the governed
+  Stage2 entrypoint.
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
+  remains available only for explicitly declared fallback, comparator,
+  migration-support, or diagnostic use and must not be treated as the governed
+  Stage2 path.
+- `src/utils/run_threepaper_stage2_v2_comparison.py` is a governed,
+  supporting-nondefault wrapper for a three-paper Stage2 semantic-intermediate
+  comparison slice. It is allowed for architecture-enforcement and same-scope
+  comparison only and must not be treated as a promotion of Stage2 authority or
+  as a replacement for the canonical Stage0-Stage5 runbook.
 
 Completion artifact:
 
-- `data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl`
-- supporting semantic summary and manifest sidecars
+- `data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+- supporting completed-Stage2 JSONL and projection trace sidecars
+
+Internal Stage2 intermediate:
+
+- `data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+- supporting semantic summary and raw-response sidecars
 
 Stage2 boundary rule:
 
-- Stage2 is the semantic discovery boundary.
+- Stage2 is a composite stage, not a new numbered stage family.
+- Stage2 owns semantic discovery and deterministic post-LLM completion.
 - Stage2 must preserve paper-reported structure and raw expressions.
-- Stage2 must not be documented as a wide-row TSV producer.
+- The raw LLM semantic-object payload is an internal intermediate.
+- The completed Stage2 artifact is the only valid Stage3 input and the only
+  authoritative Stage2 evaluation target.
+- Deterministic semantic emitters, deterministic semantic lifts, and similar
+  reconstruction paths are not allowed to stand in as Stage2 authority.
 - Stage2.5 is retired from the active mainline and retained only as archived
   design history.
 
@@ -240,14 +282,13 @@ Authoritative Stage2 object families:
 - `relation_cue`
 - `evidence_handoff`
 
-Compatibility bridge:
+Deterministic post-LLM completion:
 
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
-- this deterministic adapter converts semantic Stage2 outputs into the legacy
-  wide-row surface required by unchanged Stage3, Stage4 diagnostic, and Stage5
-  runtime consumers
-- the adapter is part of the active execution chain but is not a numbered
-  semantic stage
+- this deterministic adapter converts the Stage2 semantic intermediate into the
+  completed Stage2 artifact required by unchanged Stage3, Stage4 diagnostic,
+  and Stage5 runtime consumers
+- the adapter is part of the active execution chain and remains inside Stage2
 - the adapter must not perform semantic inference
 - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
   is deprecated and retained only for fallback or debug use outside the active
@@ -519,8 +560,12 @@ Rule:
 
 ## Run Discipline
 
-Every `data/results/run_*` directory must include a reproducibility-grade
-`RUN_CONTEXT.md`.
+Every future governed child execution directory under
+`data/results/<YYYYMMDD_<short_hash>>/<NN_<cue>>/` must include a
+reproducibility-grade `RUN_CONTEXT.md`.
+
+Historical maintained `data/results/run_*` directories remain legacy
+compatibility surfaces and should also continue to carry `RUN_CONTEXT.md`.
 
 Required run classification:
 
@@ -558,14 +603,16 @@ following:
 
 Recommended child placement:
 
-- `data/results/<parent_run_id>/lineage/children/<ordered_role>/<child_run_id>/`
+- future default:
+  - `data/results/<YYYYMMDD_<short_hash>>/<NN_<cue>>/`
+- historical legacy lineages may still appear under older nested `run_*`
+  paths until an explicit migration is approved
 
 Required parent-lineage artifacts when child runs exist:
 
-- parent `RUN_CONTEXT.md`
-- child-step mapping or index under `lineage/`
-- explicit notes in the parent run flow when child paths were nested after the
-  original execution
+- bucket-level lineage note or index describing the ordered child executions
+- child `RUN_CONTEXT.md` files for each governed execution folder
+- explicit notes when historical legacy nested paths are still being referenced
 
 Do not create multiple sibling top-level run directories that differ only by
 retry, remaining, refresh, complete, or stage suffix when they belong to the

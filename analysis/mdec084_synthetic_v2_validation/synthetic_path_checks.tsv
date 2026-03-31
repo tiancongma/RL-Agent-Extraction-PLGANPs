@@ -1,0 +1,11 @@
+check_name	input	expected	observed	status	notes
+build_v2_bucket_name	"dt=2026-03-31, git_hash=ab12cd3"	"20260331_ab12cd3"	"20260331_ab12cd3"	pass	"Future bucket naming helper matches the contract."
+build_v2_bucket_path	"root=analysis/mdec084_synthetic_v2_validation, bucket_name=20260331_ab12cd3"	"analysis/mdec084_synthetic_v2_validation/20260331_ab12cd3"	"analysis/mdec084_synthetic_v2_validation/20260331_ab12cd3"	pass	"Canonical synthetic bucket path resolved as expected."
+normalize_v2_cue	"Stage 5"	"stage_5"	"stage_5"	pass	"Cue normalization is lowercase and safe-token based."
+build_v2_child_name	"ordinal=3, cue=stage5"	"03_stage5"	"03_stage5"	pass	"Direct child-name helper matches the existing synthetic child."
+build_next_v2_child_path	"bucket=20260331_ab12cd3, cue=compare"	"analysis/mdec084_synthetic_v2_validation/20260331_ab12cd3/04_compare"	"analysis/mdec084_synthetic_v2_validation/20260331_ab12cd3/04_compare"	pass	"Allocator uses max-existing-ordinal plus one."
+validate_v2_bucket_dir	"analysis/.../20260331_ab12cd3"	"valid bucket path"	"valid bucket path"	pass	"Bucket validator accepts the synthetic bucket under its declared root."
+validate_v2_child_dir	"analysis/.../20260331_ab12cd3/02_relation"	"valid child path under valid bucket"	"valid child path under valid bucket"	pass	"Child validator accepts a child only when its parent bucket is valid."
+resolve_run_context_explicit_child	"explicit_run_dir=analysis/.../20260331_ab12cd3/02_relation"	"accepted explicit path"	"accepted explicit path; run_dir_kind=v2_child; resolution_source=explicit_run_dir"	pass	"Explicit child-path resolution works without touching ACTIVE_RUN.json. Because the synthetic root is outside data/results, the resolver reports basename-kind v2_child rather than production-root v2_child_execution."
+reject_top_level_child_without_bucket	"analysis/.../01_stage2"	"error"	"ValueError: Invalid v2 bucket name: 'mdec084_synthetic_v2_validation'"	pass	"Direct child validation fails when no valid parent bucket exists."
+reject_malformed_bucket	"analysis/.../bad_bucket"	"error"	"ValueError: Invalid v2 bucket name: 'bad_bucket'"	pass	"Malformed bucket names are rejected."

@@ -1,0 +1,17 @@
+original_path	new_path	category	reason_moved
+docs/cleanup_wave1_post_state_summary.md	docs/audits/cleanup_wave1_post_state_summary.md	audit	Cleanup state summary is a historical audit/report surface.
+docs/cleanup_wave1_run_actions.md	docs/audits/cleanup_wave1_run_actions.md	audit	Cleanup action log is a historical audit/report surface.
+docs/cleanup_wave1_script_actions.md	docs/audits/cleanup_wave1_script_actions.md	audit	Cleanup action log is a historical audit/report surface.
+docs/cleanup_wave2_code_moves.md	docs/audits/cleanup_wave2_code_moves.md	audit	Cleanup move log is a historical audit/report surface.
+docs/cleanup_wave2_run_moves.md	docs/audits/cleanup_wave2_run_moves.md	audit	Cleanup move log is a historical audit/report surface.
+docs/cleanup_wave2_script_state_summary.md	docs/audits/cleanup_wave2_script_state_summary.md	audit	Cleanup state summary is a historical audit/report surface.
+docs/current_engineering_runs_backfill_plan.md	docs/working/current_engineering_runs_backfill_plan.md	working_note	This is an execution/backfill plan and fits the working-notes bucket.
+docs/dev15_current_benchmark_audit_run_20260313_0950_f4912f3.md	docs/audits/dev15_current_benchmark_audit_run_20260313_0950_f4912f3.md	audit	Run audit note belongs under audits.
+docs/dev15_review_workbook_v1.md	docs/methods/dev15_review_workbook_v1.md	method	Workbook usage note is a reusable method/support document.
+docs/historical_script_triage_priority.tsv	docs/audits/historical_script_triage_priority.tsv	audit	Historical triage priority export is an audit artifact, not a stable top-level doc.
+docs/historical_script_triage_v1.tsv	docs/audits/historical_script_triage_v1.tsv	audit	Historical triage export is an audit artifact, not a stable top-level doc.
+docs/project_moved_files_index.md	docs/indexes/project_moved_files_index.md	index_navigation	Central moved-files index belongs in the normalized indexes bucket.
+docs/script_disposition_candidates.md	docs/working/script_disposition_candidates.md	working_note	Disposition candidate list is working material, not a stable top-level doc.
+docs/mdec084_sync_note.md	docs/governance/mdec084_sync_note.md	transition_note	MDEC084 sync note is governance-support material and fits the new governance bucket.
+docs/project_governance_cleanup_report_v1.md	docs/governance/project_governance_cleanup_report_v1.md	audit_report	Project cleanup report is governance-support documentation and no longer needs to stay at the docs top level.
+docs/SCRIPT_GOVERNANCE_POLICY.md	docs/governance/SCRIPT_GOVERNANCE_POLICY.md	governance_support	Script governance policy is a governance-support surface and can move cleanly because active project docs do not reference the top-level path.

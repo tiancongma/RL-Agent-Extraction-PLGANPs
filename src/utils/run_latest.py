@@ -9,16 +9,15 @@ from pathlib import Path
 from typing import Iterable
 
 from src.utils import paths
-from src.utils.run_id import get_git_short_hash, is_valid_run_id
+from src.utils.run_id import get_git_short_hash, is_valid_legacy_run_id, parse_legacy_run_id
 
 
 def _subset_stage_from_run_id(run_id: str) -> tuple[str, str]:
-    parts = str(run_id).split("_")
-    if len(parts) < 6:
+    try:
+        payload = parse_legacy_run_id(run_id)
+    except ValueError:
         return ("", "")
-    subset = parts[4]
-    stage = "_".join(parts[5:]) if len(parts) > 5 else ""
-    return (subset, stage)
+    return (payload.get("subset", ""), payload.get("stage", ""))
 
 
 def inputs_fingerprint(input_paths: Iterable[Path]) -> str:
@@ -58,8 +57,10 @@ def read_latest(latest_path: Path | None = None) -> tuple[str, dict[str, str]]:
 
 def write_latest(run_id: str, meta: dict, project_root: Path | None = None) -> Path:
     rid = str(run_id or "").strip()
-    if not is_valid_run_id(rid):
-        raise ValueError(f"Invalid run_id for latest pointer: {rid!r}")
+    if not is_valid_legacy_run_id(rid):
+        raise ValueError(
+            f"Invalid legacy run_id for runs/latest.txt compatibility pointer: {rid!r}"
+        )
 
     target = paths.RUNS_LATEST_FILE if project_root is None else (Path(project_root) / "runs" / "latest.txt")
     target.parent.mkdir(parents=True, exist_ok=True)

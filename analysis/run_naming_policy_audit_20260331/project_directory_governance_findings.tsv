@@ -1,0 +1,26 @@
+path	current_location_role	compliant_with_written_rule	issue_type	suggested_destination	notes
+project/0_PROJECT_CHARTER.md	governance	core_authority		keep_in_project	Named by `AGENTS.md` as mandatory startup context.
+project/1_REQUIREMENTS.md	governance	core_authority		keep_in_project	Named by `AGENTS.md` as mandatory startup context.
+project/2_ARCHITECTURE.md	governance	core_authority		keep_in_project	Named by `AGENTS.md` as mandatory startup context.
+project/4_DECISIONS_LOG.md	governance	core_authority		keep_in_project	Durable decision log is explicitly referenced by governance docs.
+project/ACTIVE_DATA_SOURCE_CONTRACT.md	governance	core_authority		keep_in_project	Authoritative for current `data/results` source resolution.
+project/ACTIVE_PIPELINE_FLOW.md	governance	core_authority		keep_in_project	Authoritative active pipeline definition.
+project/ACTIVE_PIPELINE_RUNBOOK.md	governance	core_authority		keep_in_project	Authoritative execution instructions.
+project/FILE_NAMING_AND_VERSIONING.md	governance	core_authority		keep_in_project	Authoritative naming contract.
+project/PIPELINE_SCRIPT_MAP.md	governance	core_authority		keep_in_project	Authoritative script identity map.
+project/feature_units/FEATURE_UNIT_GOVERNANCE.md	governance	supporting_authority		keep_in_project	Governed feature-unit contract tied to run activation.
+project/feature_units/feature_unit_registry.json	governance	supporting_authority		keep_in_project	Machine-readable governance registry.
+project/feature_units/feature_intervention_matrix.tsv	governance	supporting_authority		keep_in_project	Machine-readable governance matrix.
+project/design/identity_freeze_and_attachment_rule_v1.md	governance	supporting_authority		keep_in_project	Reads as an active engineering contract, not a transient note.
+project/design/layer2_identity_scaffold_contract_v1.md	governance	supporting_authority		keep_in_project	Name and surrounding governance references indicate contract status.
+project/design/MINIMAL_FINAL_OUTPUT_LAYER_DESIGN.md	governance	supporting_authority		keep_in_project	Reads as a durable design contract.
+project/design/minimal_final_output_io_contract.tsv	governance	supporting_authority		keep_in_project	Contract-form naming supports governance role.
+project/design/minimal_final_output_reference_assets.tsv	governance	supporting_authority		keep_in_project	Reference asset manifest tied to design contract.
+project/design/minimal_final_output_responsibility_split.tsv	governance	supporting_authority		keep_in_project	Responsibility split is design-governance support.
+project/5_PARKING_LOT.md	governance	no	parking_lot_note	docs/archive_project/ or docs/methods/	Content is explicitly deferred recommendations and non-change notes. Safe to move later for runtime; update doc links if any.
+project/blank_unloaded_drug_contamination_audit_2026-03-28.md	governance	no	audit_report	docs/repo_integrity_checks/ or docs/methods/	File is an audit of a workbook lineage and code-level diagnosis, not a stable contract. Safe to move later for runtime; references may need updates.
+project/layer3_cross_audit_runtime_diagnosis_2026-03-28.md	governance	no	runtime_diagnosis	docs/repo_integrity_checks/ or docs/methods/	File diagnoses an interrupted command and smoke-test behavior. Safe to move later for runtime; references may need updates.
+project/layer3_gt_cross_audit_report_v4.md	governance	no	audit_report	docs/methods/ or docs/repo_integrity_checks/	File is a dated report-only audit output, not a governance definition. Safe to move later for runtime; references may need updates.
+project/memory_maintenance_audit_2026-03-27.md	governance	no	maintenance_audit	docs/repo_integrity_checks/	Content is an evidence-based maintenance audit and update log, not an authoritative project definition. Safe to move later for runtime; references may need updates.
+project/design/minimal_final_output_open_questions.md	governance	no	open_questions	docs/methods/ or docs/archive_project/	File explicitly says it lists unresolved design issues only. Safe to move later for runtime; update any markdown references.
+project/design/minimal_final_output_integration_plan.md	governance	no	integration_plan	docs/methods/	File is an integration plan and implementation roadmap, not a stable authority contract. Safe to move later for runtime; update references if present.

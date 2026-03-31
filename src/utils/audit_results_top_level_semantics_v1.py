@@ -5,7 +5,8 @@ Audit immediate-child semantics under data/results.
 Purpose
 - Classify only the immediate children of data/results into governed top-level
   roles so the repository can distinguish canonical parent runs from frozen
-  historical exceptions, review surfaces, archive roots, and loose artifacts.
+  historical exceptions, future v2 bucket roots, review surfaces, archive
+  roots, and loose artifacts.
 - Emit deterministic audit artifacts for top-level results hygiene.
 
 Inputs
@@ -38,12 +39,11 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from src.utils.paths import DATA_RESULTS_DIR
-from src.utils.run_id import is_valid_run_id
+from src.utils.run_id import classify_results_path, is_valid_legacy_run_id
 
 
-LINEAGE_PREFIX_PATTERN = re.compile(r"^(run_\d{8}_\d{4}_[0-9a-f]{7})_(.+)$")
-RUN_NAME_PATTERN = re.compile(r"^run_.+")
 KNOWN_INDEX_OR_REGISTRY_FILES = {
+    "ACTIVE_RUN.json",
     "CURRENT_ENGINEERING_RUNS_INDEX.md",
     "HISTORICAL_NON_COMPLIANT_RUNS_INDEX.md",
     "results_top_level_registry_template.tsv",
@@ -102,10 +102,12 @@ def load_frozen_exception_names(results_dir: Path) -> set[str]:
 
 
 def lineage_prefix_for_name(name: str) -> str:
-    match = LINEAGE_PREFIX_PATTERN.match(name)
-    if not match:
+    if not is_valid_legacy_run_id(name):
         return ""
-    return match.group(1)
+    parts = name.split("_", 4)
+    if len(parts) < 4:
+        return ""
+    return "_".join(parts[:4])
 
 
 def choose_parent_candidate(run_names: list[str]) -> str:
@@ -124,7 +126,7 @@ def build_lineage_parent_map(results_dir: Path) -> dict[str, str]:
     for path in results_dir.iterdir():
         if not path.is_dir():
             continue
-        if not is_valid_run_id(path.name):
+        if not is_valid_legacy_run_id(path.name):
             continue
         prefix = lineage_prefix_for_name(path.name)
         if not prefix:
@@ -138,14 +140,17 @@ def build_lineage_parent_map(results_dir: Path) -> dict[str, str]:
 
 def classify_entry(
     path: Path,
+    results_dir: Path,
     frozen_exception_names: set[str],
     lineage_parent_map: dict[str, str],
 ) -> EntryRecord:
     name = path.name
     is_dir = path.is_dir()
     is_file = path.is_file()
-    is_run_dir = "yes" if is_dir and RUN_NAME_PATTERN.match(name) else "no"
-    run_id = name if is_valid_run_id(name) else ""
+    path_info = classify_results_path(path, results_dir=results_dir)
+    path_kind = path_info["path_kind"]
+    is_run_dir = "yes" if is_dir and path_kind in {"legacy_run_root", "v2_bucket_root"} else "no"
+    run_id = name if path_kind == "legacy_run_root" else ""
     lineage_prefix = lineage_prefix_for_name(name) if run_id else ""
 
     if is_dir and name == "historical_non_compliant_runs":
@@ -178,7 +183,7 @@ def classify_entry(
             governance_note="Named in HISTORICAL_NON_COMPLIANT_RUNS_INDEX.md as retained top-level.",
         )
 
-    if run_id:
+    if path_kind == "legacy_run_root":
         parent_candidate = lineage_parent_map.get(lineage_prefix, run_id)
         if parent_candidate != run_id:
             return EntryRecord(
@@ -206,6 +211,36 @@ def classify_entry(
             normalization_action="keep_top_level",
             reason_retained_top_level="independent or chosen parent run lineage entry point",
             governance_note="Top-level run parent is allowed when it is the authoritative lineage entry point.",
+        )
+
+    if is_dir and path_kind == "v2_bucket_root":
+        return EntryRecord(
+            entry_name=name,
+            entry_path=path,
+            entry_kind="directory",
+            is_run_dir=is_run_dir,
+            run_id="",
+            lineage_prefix="",
+            top_level_role="future_v2_bucket_root",
+            parent_run_id="",
+            normalization_action="keep_top_level",
+            reason_retained_top_level="future governed bucket root",
+            governance_note="Accepted MDEC084 future bucket root under data/results/.",
+        )
+
+    if is_dir and path_kind == "v2_child_top_level_invalid":
+        return EntryRecord(
+            entry_name=name,
+            entry_path=path,
+            entry_kind="directory",
+            is_run_dir=is_run_dir,
+            run_id="",
+            lineage_prefix="",
+            top_level_role="misplaced_v2_child_execution",
+            parent_run_id="",
+            normalization_action="review_required",
+            reason_retained_top_level="child execution folder pattern found at top level",
+            governance_note="MDEC084 child execution folders are valid only inside a v2 bucket root.",
         )
 
     if is_dir and any(keyword in name.lower() for keyword in REVIEW_SURFACE_KEYWORDS):
@@ -368,7 +403,7 @@ def main() -> None:
     lineage_parent_map = build_lineage_parent_map(results_dir)
 
     records = [
-        classify_entry(path, frozen_exception_names, lineage_parent_map)
+        classify_entry(path, results_dir, frozen_exception_names, lineage_parent_map)
         for path in sorted(results_dir.iterdir(), key=lambda child: child.name.lower())
     ]
     write_tsv(args.out_tsv.resolve(), records)
