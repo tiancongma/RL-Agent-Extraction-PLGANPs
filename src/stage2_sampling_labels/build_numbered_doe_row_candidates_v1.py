@@ -4,6 +4,13 @@ from __future__ import annotations
 """
 Deterministically enumerate explicit numbered DOE formulation rows from Stage1 table assets.
 
+DOE enumerator contract:
+- Definition: a deterministic row materializer for explicit DOE anchors already present in the table structure.
+- Input: Stage2 semantic output plus Stage1 table assets, but only the explicit row anchors in those assets are eligible for recovery.
+- Allowed anchors: explicit numbered rows, explicit row labels, and explicit design-matrix table rows.
+- Forbidden behavior: design-space expansion, inferred unseen combinations, or semantic invention of missing rows.
+- Output: additional formulation rows with traceable anchors and stable provenance fields.
+
 Stage role:
 - Stage2 boundary support tool.
 - Runs after Stage1 table extraction and before Stage3 relation materialization.

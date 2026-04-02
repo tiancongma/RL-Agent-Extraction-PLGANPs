@@ -583,8 +583,16 @@ Use a declared manifest or split manifest for the chosen scope.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage2_sampling_labels/run_stage2_composite_v1.py --run-id <stage2_run_id> --manifest-tsv <scope_manifest.tsv> --paper-key <paper_key_1> --paper-key <paper_key_2> --source-mode <live_llm_or_legacy_llm_replay> --llm-backend <gemini_or_nvidia> --model <model_name> --max-text-chars <max_chars>
+python src/stage2_sampling_labels/run_stage2_composite_v1.py --manifest-tsv <scope_manifest.tsv> --paper-key <paper_key_1> --paper-key <paper_key_2> --source-mode <live_llm_or_legacy_llm_replay> --llm-backend <gemini_or_nvidia> --model <model_name> --max-text-chars <max_chars>
 ```
+
+Default writer rule:
+
+- when no explicit output path is supplied, this maintained entrypoint now
+  allocates a future-facing MDEC084 child execution path under
+  `data/results/YYYYMMDD_<short_hash>/NN_stage2/`
+- explicit `--run-id run_...` remains legacy compatibility mode only
+- explicit `--run-dir <data/results/...>` remains allowed
 
 Authority rule:
 

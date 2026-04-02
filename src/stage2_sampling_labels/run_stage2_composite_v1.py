@@ -3,18 +3,21 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 try:
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import resolve_results_write_target
 
 
 SEMANTIC_SUBDIR = "semantic_stage2_objects"
@@ -53,7 +56,21 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run the governed composite Stage2 path: LLM semantic discovery followed by deterministic post-LLM completion."
     )
-    parser.add_argument("--run-id", required=True)
+    parser.add_argument(
+        "--run-id",
+        default="",
+        help="Explicit legacy compatibility run_id. New writes default to MDEC084 v2 bucket/child naming when omitted.",
+    )
+    parser.add_argument(
+        "--run-dir",
+        default="",
+        help="Explicit results run directory. Supports legacy roots and v2 child execution paths under data/results/.",
+    )
+    parser.add_argument(
+        "--execution-cue",
+        default="stage2",
+        help="Future-facing child cue used only when auto-allocating a new v2 child execution path.",
+    )
     parser.add_argument("--manifest-tsv", required=True)
     parser.add_argument("--paper-key", action="append", dest="paper_keys", default=[])
     parser.add_argument("--source-mode", choices=["live_llm", "legacy_llm_replay"], default="live_llm")
@@ -70,6 +87,9 @@ def build_run_context(
     *,
     run_id: str,
     run_dir: Path,
+    run_dir_kind: str,
+    run_selection_mode: str,
+    bucket_dir: Path,
     manifest_tsv: Path,
     selected_keys: list[str],
     source_mode: str,
@@ -82,10 +102,22 @@ def build_run_context(
 ) -> str:
     key_block = "\n".join(f"- `{key}`" for key in selected_keys) if selected_keys else "- `all manifest rows`"
     legacy_note = f"- legacy_raw_responses_dir: `{legacy_raw_responses_dir}`" if legacy_raw_responses_dir else "- legacy_raw_responses_dir: ``"
+    table_mode = os.getenv("STAGE2_TABLE_MODE", "full")
+    first_column_enhancement = os.getenv("STAGE2_TABLE_SUMMARY_FIRST_COLUMN_ENHANCEMENT", "")
+    input_packing_mode = os.getenv("STAGE2_INPUT_EVIDENCE_PACKING_MODE", "")
+    doe_recovery = os.getenv("STAGE2_ENABLE_NUMBERED_DOE_RECOVERY", "")
+    doe_mode = os.getenv("STAGE2_DOE_ENUMERATION_MODE", "")
+    doe_min_rows = os.getenv("STAGE2_NUMBERED_DOE_MIN_ROWS", "8")
     return f"""# RUN_CONTEXT
 
 ## 1. Run ID
 `{run_id}`
+
+## 1a. Run Path
+- run_dir: `{run_dir}`
+- run_dir_kind: `{run_dir_kind}`
+- run_selection_mode: `{run_selection_mode}`
+- bucket_dir: `{bucket_dir}`
 
 ## 2. Run Type
 `intermediate_diagnostic_run`
@@ -117,6 +149,12 @@ Benchmark reporting rule:
 - llm_backend: `{llm_backend}`
 - model: `{model}`
 - max_text_chars: `{max_text_chars}`
+- stage2_table_mode: `{table_mode}`
+- stage2_table_summary_first_column_enhancement: `{first_column_enhancement or '0'}`
+- stage2_input_evidence_packing_mode: `{input_packing_mode or 'off'}`
+- stage2_enable_numbered_doe_recovery: `{doe_recovery or '0'}`
+- stage2_doe_enumeration_mode: `{doe_mode or 'off'}`
+- stage2_numbered_doe_min_rows: `{doe_min_rows}`
 {legacy_note}
 
 ## 6. Exact script execution order
@@ -145,8 +183,8 @@ Benchmark reporting rule:
 
 def main() -> None:
     args = parse_args()
-    if not is_valid_run_id(args.run_id):
-        raise ValueError(f"Invalid --run-id: {args.run_id}")
+    # Load repo-local environment variables before any live Stage2 backend probe.
+    load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
 
     manifest_tsv = repo_path(args.manifest_tsv)
     if not manifest_tsv.exists():
@@ -164,9 +202,21 @@ def main() -> None:
         selected_rows = manifest_rows
         selected_keys = [str(row.get("key", "")).strip() for row in manifest_rows if str(row.get("key", "")).strip()]
 
-    run_dir = (DATA_RESULTS_DIR / args.run_id).resolve()
+    target = resolve_results_write_target(
+        results_root=DATA_RESULTS_DIR,
+        default_child_cue=args.execution_cue,
+        explicit_run_dir=repo_path(args.run_dir) if str(args.run_dir).strip() else None,
+        explicit_legacy_run_id=args.run_id,
+    )
+    run_dir = Path(target["run_dir"])
+    run_id = target["run_basename"]
+    run_dir_kind = target["path_kind"]
+    run_selection_mode = target["selection_mode"]
+    bucket_dir = Path(target["bucket_dir"])
     if run_dir.exists():
         raise FileExistsError(f"Run directory already exists: {run_dir}")
+    if run_dir_kind == "v2_child_execution":
+        bucket_dir.mkdir(parents=True, exist_ok=True)
     run_dir.mkdir(parents=True, exist_ok=False)
 
     selected_manifest_tsv = run_dir / "targeted_manifest.tsv"
@@ -225,7 +275,10 @@ def main() -> None:
     run_command(compat_cmd)
 
     run_context = build_run_context(
-        run_id=args.run_id,
+        run_id=run_id,
+        run_dir_kind=run_dir_kind,
+        run_selection_mode=run_selection_mode,
+        bucket_dir=bucket_dir,
         run_dir=run_dir,
         manifest_tsv=manifest_tsv,
         selected_keys=selected_keys,
@@ -238,7 +291,16 @@ def main() -> None:
         compat_dir=compat_dir,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
+    run_command(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "utils" / "update_run_context_with_feature_activation_v1.py"),
+            "--run-dir",
+            str(run_dir),
+        ]
+    )
 
+    print(f"run_id={run_id}")
     print(f"run_dir={run_dir}")
     print(f"semantic_dir={semantic_dir}")
     print(f"compat_dir={compat_dir}")

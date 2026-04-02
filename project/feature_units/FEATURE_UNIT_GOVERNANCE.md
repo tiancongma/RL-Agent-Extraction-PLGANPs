@@ -17,6 +17,7 @@ In this repository, a feature unit is not just "some code exists." A feature uni
    - whether a specific run's artifacts prove that the feature actually intervened
 4. run metadata section
    - whether the run's `RUN_CONTEXT.md` records the activation report path, required features, missing required features, and the activation gate
+   - for governed runs, this section is required rather than optional
 
 ## Why logs alone are insufficient
 
@@ -41,7 +42,27 @@ These are different states:
 - feature is active in a run
   - example: the run-local weak-label or compare artifacts prove that the feature actually intervened
 
+This governance layer also covers observability-only feature units. For example,
+`stage2_input_evidence_packing` is intended to make live Stage2 prompt assembly
+auditable through a run-local prompt preview artifact. That unit does not change
+Stage2 semantics; it records whether the governed input order was actually
+materialized in the run artifacts.
+
+The same governance layer can also describe execution feature units. In that
+case, the run-local prompt preview is still required for activation evidence, but
+the feature changes the Stage2 live input assembly path when the governed
+packing mode is enabled. The key distinction remains the same: code presence is
+not activation, and activation is only credited when run artifacts prove that
+the controlled order was actually used.
+
+`stage2_input_evidence_packing` is a formal member of this system. It is not a
+one-off prompt option: its governed activation is evidenced by the prompt
+preview artifact and the generated Feature Unit Activation section inside
+`RUN_CONTEXT.md`.
+
 The activation report is intentionally evidence-based. A feature must not be marked `active` only because code for it exists in the repository.
+
+For numbered DOE row activation specifically, governed recovery rows are accepted when they preserve the explicit numbered table-row anchor pattern and the run-level report can prove the same downstream evidence structure.
 
 ## Files
 
@@ -93,6 +114,14 @@ This does two things:
 1. refreshes `analysis/feature_activation_report_v1.tsv`
 2. injects or replaces the `## Feature Unit Activation` section inside the run's `RUN_CONTEXT.md`
 
+The governed Stage2, Stage 3, and Stage 5 run wrappers call this updater after
+their own `RUN_CONTEXT.md` write so the observability record is produced as part
+of normal mainline execution rather than as a detached follow-up step.
+
+The governed Stage 5 compare entrypoint and the supported full-pipeline
+comparison wrappers also refresh this section so feature activation lineage
+cannot disappear from benchmark-facing or diagnostic comparison runs.
+
 ## Activation gate
 
 Run-level feature activation uses a small gate vocabulary:
@@ -104,7 +133,9 @@ Run-level feature activation uses a small gate vocabulary:
 - `fail`
   - one or more required feature units are missing
 
-`RUN_CONTEXT.md` is now expected to record this gate alongside the feature activation report path and compact activation summary.
+`RUN_CONTEXT.md` must record this gate alongside the feature activation report path and compact activation summary.
+
+The gate is informational. It helps diagnose missing or unclear feature evidence in run artifacts, but it does not block mainline execution or change benchmark semantics.
 
 ## Why this helps
 

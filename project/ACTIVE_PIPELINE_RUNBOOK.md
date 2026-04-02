@@ -99,8 +99,11 @@ Run layout rule:
   - stage-local functional folders like `formulation_relation_v1/`
 - future lineage must not repeat a full nested `run_id` or timestamp/hash
   fragment below the governed bucket root
-- historical `run_*` roots remain legacy compatibility surfaces until the
-  writer-utility migration is completed
+- historical `run_*` roots remain legacy compatibility surfaces
+- maintained writers that create new run surfaces now default to the MDEC084
+  v2 bucket/child layout
+- explicit legacy `run_*` creation remains compatibility-only and must be
+  requested explicitly
 
 Active data-source rule:
 
@@ -233,8 +236,10 @@ Current implementation-status note:
 
 - `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the one governed
   Stage2 execution entrypoint.
+- The governed Stage2 wrapper refreshes run-level feature activation observability after writing `RUN_CONTEXT.md`.
 - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
   internal LLM semantic-discovery substep used by the governed Stage2 entrypoint.
+- Stage2 live input assembly can be switched to the governed ordered-evidence-pack mode by setting `STAGE2_INPUT_EVIDENCE_PACKING_MODE=ordered_blocks`; the default remains the current raw-prefix path.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
   the internal deterministic post-LLM completion substep used by the governed
   Stage2 entrypoint.
@@ -325,6 +330,7 @@ Core scripts:
 Supporting stage-local wrapper:
 
 - `src/stage3_relation/run_formulation_relation_artifacts_v1.py`
+- The Stage 3 wrapper also refreshes run-level feature activation observability after writing `RUN_CONTEXT.md`.
 
 ### Stage 4
 
@@ -353,6 +359,9 @@ Core scripts:
 - `src/stage5_benchmark/build_minimal_final_output_v1.py`
 - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
 
+The compare entrypoint also refreshes run-level feature activation observability
+after writing `RUN_CONTEXT.md`.
+
 Supporting stage-local helper:
 
 - `src/stage5_benchmark/run_minimal_final_output_v1.py`
@@ -367,6 +376,7 @@ Wrapper status:
   `NON-CANONICAL, STAGE5_ONLY`
 - keep it only as a convenience wrapper for Stage 5A closure
 - do not use it to imply hidden orchestration or complete-pipeline execution
+- The Stage 5 wrapper also refreshes run-level feature activation observability after writing `RUN_CONTEXT.md`.
 
 Completion artifacts:
 
@@ -562,7 +572,8 @@ Rule:
 
 Every future governed child execution directory under
 `data/results/<YYYYMMDD_<short_hash>>/<NN_<cue>>/` must include a
-reproducibility-grade `RUN_CONTEXT.md`.
+reproducibility-grade `RUN_CONTEXT.md` that records both script lineage and
+feature activation lineage.
 
 Historical maintained `data/results/run_*` directories remain legacy
 compatibility surfaces and should also continue to carry `RUN_CONTEXT.md`.
@@ -584,6 +595,8 @@ Corollary:
 - the reported system result must come from Stage 5 final-table comparison only
 - the fixed manual GT workbook is a reference input to the comparison node, not
   a production-stage transformation artifact
+- `RUN_CONTEXT.md` is incomplete for governed runs if it does not include the
+  generated `## Feature Unit Activation` section.
 
 ## Run-Lineage Discipline
 

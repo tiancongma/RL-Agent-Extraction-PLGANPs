@@ -11,6 +11,8 @@ from __future__ import annotations
 import argparse
 import csv
 import re
+import subprocess
+import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
@@ -21,13 +23,15 @@ from openpyxl import load_workbook
 
 try:
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
-    from src.utils.paths import DATA_RESULTS_DIR
+    from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
+    from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
-    from src.utils.paths import DATA_RESULTS_DIR
+    from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
+    from src.utils.run_id import resolve_results_write_target
 
 
 @dataclass
@@ -122,17 +126,11 @@ def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> 
             writer.writerow({field: row.get(field, "") for field in fieldnames})
 
 
-def make_run_dir() -> Path:
-    today = datetime.now().strftime("%Y-%m-%d")
-    candidate = DATA_RESULTS_DIR / f"run_{today}_dev15_nvidia_full_pipeline_gt_eval_v1"
-    if not candidate.exists():
-        return candidate
-    version = 2
-    while True:
-        candidate = DATA_RESULTS_DIR / f"run_{today}_dev15_nvidia_full_pipeline_gt_eval_v{version}"
-        if not candidate.exists():
-            return candidate
-        version += 1
+def make_run_target() -> dict[str, str]:
+    return resolve_results_write_target(
+        results_root=DATA_RESULTS_DIR,
+        default_child_cue="dev15_nvidia_full_pipeline_gt_eval",
+    )
 
 
 def require_exists(path: Path, label: str) -> None:
@@ -518,7 +516,13 @@ def main() -> int:
     if alignment_scaffold_tsv is not None:
         require_exists(alignment_scaffold_tsv, "alignment scaffold TSV")
 
-    run_dir = make_run_dir()
+    target = make_run_target()
+    run_dir = Path(target["run_dir"])
+    bucket_dir = Path(target["bucket_dir"])
+    if run_dir.exists():
+        raise FileExistsError(f"Run directory already exists: {run_dir}")
+    if target["path_kind"] == "v2_child_execution":
+        bucket_dir.mkdir(parents=True, exist_ok=True)
     run_dir.mkdir(parents=True, exist_ok=False)
 
     print(f"Resolved full pipeline run directory: {full_run_dir}")
@@ -712,6 +716,17 @@ def main() -> int:
             alignment_scaffold_tsv=alignment_scaffold_tsv,
         ),
         encoding="utf-8",
+    )
+    subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "utils" / "update_run_context_with_feature_activation_v1.py"),
+            "--run-dir",
+            str(run_dir),
+        ],
+        cwd=PROJECT_ROOT,
+        text=True,
+        check=True,
     )
 
     print(

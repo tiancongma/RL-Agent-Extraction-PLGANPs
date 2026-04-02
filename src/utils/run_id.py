@@ -206,22 +206,24 @@ def build_run_id(
     dt: datetime | None = None,
     git_hash: str | None = None,
 ) -> str:
-    """Build legacy run_id as run_<YYYYMMDD>_<HHMM>_<git_short_hash>_<subset>_<stage>_v<version>."""
-    now = dt or datetime.now()
-    ts = now.strftime("%Y%m%d_%H%M")
+    """Legacy run_id generation is disabled.
 
-    g = (str(git_hash).strip().lower() if git_hash is not None else get_git_short_hash()).strip()
-    if not re.fullmatch(r"[0-9a-f]{7}", g):
-        raise ValueError(f"Invalid git short hash for run_id: {g!r}")
+    Historical legacy ids remain parseable for reuse and audit, but new run roots
+    must use the future-facing YYYYMMDD_<shortcode> format.
+    """
+    raise RuntimeError(
+        "Legacy run_id generation is disabled. Use build_future_run_root_name() "
+        "or resolve_results_write_target() for new results roots."
+    )
 
-    subset_tok = sanitize_token(subset) or "subset"
-    stage_tok = sanitize_token(stage) or "stage"
-    ver = int(version)
 
-    rid = f"run_{ts}_{g}_{subset_tok}_{stage_tok}_v{ver}"
-    if not is_valid_legacy_run_id(rid):
-        raise ValueError(f"Generated invalid legacy run_id: {rid}")
-    return rid
+def build_future_run_root_name(
+    *,
+    dt: datetime | None = None,
+    git_hash: str | None = None,
+) -> str:
+    """Build the future-facing top-level results root name as YYYYMMDD_<short_hash>."""
+    return build_v2_bucket_name(dt=dt, git_hash=git_hash)
 
 
 def build_v2_bucket_name(
@@ -353,32 +355,97 @@ def validate_v2_child_dir(
     return candidate
 
 
+def is_within_directory(candidate: str | Path, root_dir: str | Path) -> bool:
+    candidate_path = Path(candidate).resolve(strict=False)
+    root_path = Path(root_dir).resolve(strict=False)
+    try:
+        candidate_path.relative_to(root_path)
+        return True
+    except ValueError:
+        return False
+
+
+def resolve_results_write_target(
+    *,
+    results_root: str | Path,
+    default_child_cue: str,
+    explicit_run_dir: str | Path | None = None,
+    explicit_legacy_run_id: str = "",
+    dt: datetime | None = None,
+    git_hash: str | None = None,
+) -> dict[str, str]:
+    """
+    Resolve the governed write target for a new or explicit results run surface.
+
+    Selection order:
+    1. explicit run directory
+    2. explicit legacy run_id compatibility mode
+    3. default future-facing v2 bucket + child allocation
+    """
+    results_root_path = Path(results_root).resolve(strict=False)
+
+    if explicit_run_dir is not None and str(explicit_run_dir).strip():
+        run_dir = Path(explicit_run_dir).resolve(strict=False)
+        if not is_within_directory(run_dir, results_root_path):
+            raise ValueError(
+                f"Explicit run directory must stay under results root {results_root_path}: {run_dir}"
+            )
+        classification = classify_results_path(run_dir, results_dir=results_root_path)
+        if classification["path_kind"] not in {"legacy_run_root", "v2_child_execution"}:
+            raise ValueError(
+                "Explicit run directory must be either a legacy run root or a v2 child execution path. "
+                f"Got {run_dir} classified as {classification['path_kind']}."
+            )
+        if classification["path_kind"] == "legacy_run_root" and not run_dir.exists():
+            raise ValueError(
+                "Creating new legacy run roots is disabled. Use a v2 bucket/child path instead: "
+                f"{run_dir}"
+            )
+        bucket_dir = run_dir.parent if classification["path_kind"] == "v2_child_execution" else run_dir
+        return {
+            "run_dir": str(run_dir),
+            "run_basename": run_dir.name,
+            "path_kind": classification["path_kind"],
+            "selection_mode": "explicit_run_dir",
+            "bucket_dir": str(bucket_dir),
+        }
+
+    legacy_run_id = str(explicit_legacy_run_id or "").strip()
+    if legacy_run_id:
+        raise ValueError(
+            "Legacy run_id write targets are disabled for new runs. Use --run-dir "
+            "for existing historical directories or let the governed v2 allocator "
+            "create a compliant root."
+        )
+
+    bucket_dir = build_v2_bucket_path(results_root_path, dt=dt, git_hash=git_hash)
+    child_dir = build_next_v2_child_path(bucket_dir, default_child_cue)
+    return {
+        "run_dir": str(child_dir),
+        "run_basename": child_dir.name,
+        "path_kind": "v2_child_execution",
+        "selection_mode": "default_v2_child",
+        "bucket_dir": str(bucket_dir),
+    }
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build governed legacy or future run identity tokens.")
+    parser = argparse.ArgumentParser(description="Build governed future run identity tokens.")
     parser.add_argument("--subset", default="")
     parser.add_argument("--stage", default="")
     parser.add_argument("--version", type=int, default=1)
     parser.add_argument("--note", default="", help="Optional note for caller metadata.")
     parser.add_argument(
         "--format",
-        choices=["legacy", "v2-bucket", "v2-child", "v2-bucket-path", "v2-next-child"],
-        default="legacy",
-        help="Identity format to generate. Legacy remains the default.",
+        choices=["v2-bucket", "v2-child", "v2-bucket-path", "v2-next-child"],
+        default="v2-bucket",
+        help="Identity format to generate. Legacy generation is disabled.",
     )
     parser.add_argument("--ordinal", type=int, default=0, help="Ordinal for --format v2-child.")
     parser.add_argument("--cue", default="", help="Cue token for --format v2-child.")
     parser.add_argument("--root-dir", default="", help="Root directory for --format v2-bucket-path.")
     parser.add_argument("--bucket-dir", default="", help="Bucket directory for --format v2-next-child.")
     args = parser.parse_args()
-
-    if args.format == "legacy":
-        if not str(args.subset).strip() or not str(args.stage).strip():
-            raise SystemExit("--subset and --stage are required for --format legacy.")
-        rid = build_run_id(subset=args.subset, stage=args.stage, version=args.version)
-        if not is_valid_legacy_run_id(rid):
-            raise SystemExit(f"Generated run_id does not match required legacy regex: {LEGACY_RUN_ID_REGEX}")
-        print(rid)
-        return
 
     if args.format == "v2-bucket":
         print(build_v2_bucket_name())

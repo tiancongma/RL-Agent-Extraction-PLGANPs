@@ -32,12 +32,12 @@ Script classes used here are fixed:
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert the raw Zotero-derived JSONL into the authoritative manifest. | `data/raw/zotero/zotero_selected_items.jsonl` | `data/cleaned/index/manifest_current.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
-| Stage 2 | Composite semantic extraction and deterministic post-LLM completion | `src/stage2_sampling_labels/run_stage2_composite_v1.py` | `ACTIVE_ENTRYPOINT` | Run the governed composite Stage2 graph: LLM semantic discovery from cleaned assets followed by deterministic post-LLM completion into the only authoritative Stage2 artifact consumed by Stage3. | scope manifest TSV; cleaned text; cleaned or governed tables; paper-key subset; source_mode; llm_backend; model; max_text_chars | semantic-intermediate JSONL/summary under `semantic_stage2_objects/`; completed Stage2 weak-label TSV/JSONL under `semantic_to_widerow_adapter/`; `RUN_CONTEXT.md` |
+| Stage 2 | Composite semantic extraction and deterministic post-LLM completion | `src/stage2_sampling_labels/run_stage2_composite_v1.py` | `ACTIVE_ENTRYPOINT` | Run the governed composite Stage2 graph: LLM semantic discovery from cleaned assets followed by deterministic post-LLM completion into the only authoritative Stage2 artifact consumed by Stage3, then refresh run-level feature-unit observability inside `RUN_CONTEXT.md`. Stage2 live input assembly can optionally use the governed ordered-evidence-pack mode when `STAGE2_INPUT_EVIDENCE_PACKING_MODE=ordered_blocks`. | scope manifest TSV; cleaned text; cleaned or governed tables; paper-key subset; source_mode; llm_backend; model; max_text_chars | semantic-intermediate JSONL/summary under `semantic_stage2_objects/`; completed Stage2 weak-label TSV/JSONL under `semantic_to_widerow_adapter/`; `RUN_CONTEXT.md` |
 | Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts and resolved relation-backed descriptive synthesis fields from the compatibility-projected legacy wide-row surface without any LLM usage. | compatibility-projected Stage 2 candidate formulation-instance TSV; optional compatibility-projected JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv`; `resolved_relation_fields_v1.tsv` |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts from the compatibility-projected legacy wide-row surface. | compatibility-projected Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
 | Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from compatibility-projected Stage 2 candidate rows by materializing direct extraction fields plus explicit Stage 3 resolved relation fields, while applying conservative benchmark-facing identity guardrails such as descendant filtering. Parent-linked non-synthesis descendants remain filterable, sweep-style `variant_formulation` members are not auto-filtered by `post_processing` alone, and parent-linked helper descendants with preserved blank/control/model-drug-substitution semantics are also filterable even when upstream routing tags regress. | compatibility-projected Stage 2 candidate formulation-instance TSV; required Stage 3 relation-record TSV; required Stage 3 resolved-relation-field TSV | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
-| Stage 5 | Comparison node | `src/stage5_benchmark/compare_final_table_to_gt_v1.py` | `ACTIVE_ENTRYPOINT` | Compare only the Stage 5 final formulation table to the checked GT workbook. | final formulation table; scope manifest; fixed GT workbook | `final_table_vs_gt_counts.tsv`; `final_table_vs_gt_summary.md` |
+| Stage 5 | Comparison node | `src/stage5_benchmark/compare_final_table_to_gt_v1.py` | `ACTIVE_ENTRYPOINT` | Compare only the Stage 5 final formulation table to the checked GT workbook and refresh run-level feature-unit observability inside `RUN_CONTEXT.md`. | final formulation table; scope manifest; fixed GT workbook | `final_table_vs_gt_counts.tsv`; `final_table_vs_gt_summary.md`; `RUN_CONTEXT.md` |
 
 ## Evaluation Reference Path
 
@@ -184,7 +184,7 @@ Stage 2 active contract note:
 
 | Script path | Class | Purpose |
 |---|---|---|
-| `src/stage3_relation/run_formulation_relation_artifacts_v1.py` | `STABLE_TOOL` | Run the Stage 3 relation builder in a reproducible run-scoped results directory with explicit `RUN_CONTEXT.md`, including `resolved_relation_fields_v1.tsv`. |
+| `src/stage3_relation/run_formulation_relation_artifacts_v1.py` | `STABLE_TOOL` | Run the Stage 3 relation builder in a reproducible run-scoped results directory with explicit `RUN_CONTEXT.md`, including `resolved_relation_fields_v1.tsv`, then refresh feature-unit observability metadata for the run. |
 
 ### Stage 4
 
@@ -202,7 +202,7 @@ Stage 2 active contract note:
 
 | Script path | Class | Purpose |
 |---|---|---|
-| `src/stage5_benchmark/run_minimal_final_output_v1.py` | `STABLE_TOOL` | NON-CANONICAL, STAGE5_ONLY convenience wrapper for Stage 5A closure only. It requires Stage 3 relation records plus resolved relation fields and is not a production-path entrypoint or hidden full-pipeline orchestrator. |
+| `src/stage5_benchmark/run_minimal_final_output_v1.py` | `STABLE_TOOL` | NON-CANONICAL, STAGE5_ONLY convenience wrapper for Stage 5A closure only. It requires Stage 3 relation records plus resolved relation fields, refreshes feature-unit observability metadata, and is not a production-path entrypoint or hidden full-pipeline orchestrator. |
 | `src/stage5_benchmark/formulation_core_signature_v1.py` | `STABLE_TOOL` | Core-signature utility for downstream schema and database work. |
 | `src/stage5_benchmark/build_two_table_schema_v2.py` | `STABLE_TOOL` | Schema builder for downstream database-facing table work. |
 | `src/stage5_benchmark/build_two_table_schema_v3.py` | `STABLE_TOOL` | Newer schema builder for downstream database-facing table work. |
@@ -233,14 +233,14 @@ Stage 2 active contract note:
 | Script path | Class | Purpose |
 |---|---|---|
 | `src/utils/audit_run_lineage_layout_v1.py` | `STABLE_TOOL` | Deterministically audit top-level `data/results/run_*` lineage sprawl and flag sibling runs that should likely be contained under one parent lineage. |
-| `src/utils/build_feature_activation_report_v1.py` | `STABLE_TOOL` | Build a run-scoped feature activation report from deterministic artifact evidence so child-lineage validation can be distinguished from parent-run activation. |
+| `src/utils/build_feature_activation_report_v1.py` | `STABLE_TOOL` | Build a run-scoped feature activation report from deterministic artifact evidence so child-lineage validation can be distinguished from parent-run activation and Stage2 ordered-input execution can be audited. |
 | `src/utils/run_threepaper_stage2_v2_comparison.py` | `STABLE_TOOL` | Non-default three-paper semantic-intermediate comparison wrapper. It calls the governed composite Stage2 entrypoint, then builds a comparison pack for `WIVUCMYG`, `UFXX9WXE`, and `5GIF3D8W` without defining Stage2 itself or modifying `ACTIVE_RUN.json`. |
 | `src/utils/build_mem_v1.py` | `STABLE_TOOL` | Build the governed `data/mem/v1/` memory registry from `docs/snapshots/`, `docs/methods/`, `data/results/**/RUN_CONTEXT.md`, and `project/*.md` without creating a new pipeline stage. |
 | `src/utils/query_mem_v1.py` | `STABLE_TOOL` | Query the governed `data/mem/v1/` registry by text, type, stage, or run before deeper debugging or failure-localization work. |
 | `src/utils/mem_bootstrap_v1.py` | `STABLE_TOOL` | Bootstrap complex-task memory lookup by classifying the task, surfacing relevant `mem_v1` hits, and suggesting the next governed files to read. |
 | `src/utils/update_mem_v1.py` | `STABLE_TOOL` | Append a targeted governed memory row to `data/mem/v1/` without silent overwrite of existing logical entries. |
 | `src/utils/check_mem_v1.py` | `STABLE_TOOL` | Validate `data/mem/v1/` schema, row references, ID prefixes, and path-length constraints. |
-| `src/utils/update_run_context_with_feature_activation_v1.py` | `STABLE_TOOL` | Refresh a run's `RUN_CONTEXT.md` with feature-unit activation metadata and a deterministic activation gate. |
+| `src/utils/update_run_context_with_feature_activation_v1.py` | `STABLE_TOOL` | Refresh a run's `RUN_CONTEXT.md` with feature-unit activation metadata, activation-state status, and a deterministic activation gate. |
 
 Supporting-memory rule:
 

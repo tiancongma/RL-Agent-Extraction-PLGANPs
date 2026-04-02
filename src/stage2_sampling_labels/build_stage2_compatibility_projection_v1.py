@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -16,6 +17,11 @@ if str(REPO_ROOT) not in sys.path:
 from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse import (
     CORE_FIELDS,
     build_output_columns,
+    flatten_row,
+)
+from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
+    PaperRecord,
+    enumerate_numbered_doe_candidates_for_paper,
 )
 
 
@@ -25,13 +31,30 @@ TRACE_TSV_NAME = "compatibility_projection_trace_v1.tsv"
 SUMMARY_JSON_NAME = "compatibility_projection_summary_v1.json"
 CONTRACT_TSV_NAME = "stage2_replacement_compatibility_projection_contract.tsv"
 IDENTITY_VARIABLES_FIELD = "identity_variables_json"
+NUMBERED_DOE_RECOVERY_ENV = "STAGE2_ENABLE_NUMBERED_DOE_RECOVERY"
+NUMBERED_DOE_RECOVERY_MIN_ROWS_ENV = "STAGE2_NUMBERED_DOE_MIN_ROWS"
+DOE_ENUMERATION_MODE_ENV = "STAGE2_DOE_ENUMERATION_MODE"
+
+# Stage2 internal handoff contract:
+# - The governed composite Stage2 runner writes semantic intermediates from
+#   `extract_semantic_stage2_objects_v2.py`.
+# - Those canonical semantic-intermediate payloads use object-family names such
+#   as `formulation_candidates`, `variable_candidates`, `relation_hints`, and
+#   `evidence_spans`.
+# - Older replacement-path and deterministic comparator surfaces may still use
+#   the earlier semantic-object names such as
+#   `formulation_identity_candidates`, `variable_or_factor_candidates`,
+#   `relation_cues`, and `evidence_handoffs`.
+# - This completion script accepts both explicitly, normalizes them into one
+#   compatibility-projection view, and then emits the only authoritative
+#   completed Stage2 artifacts consumed by Stage3.
 
 DIRECT = "direct"
 DERIVED = "derived"
 COMPRESSED = "compressed"
 UNAVAILABLE = "unavailable"
 
-OBJECT_KEYS = {
+LEGACY_OBJECT_KEYS = {
     "formulation_identity_candidate": "formulation_identity_candidates",
     "component_candidate": "component_candidates",
     "phase_candidate": "phase_candidates",
@@ -40,6 +63,17 @@ OBJECT_KEYS = {
     "measurement_candidate": "measurement_candidates",
     "relation_cue": "relation_cues",
     "evidence_handoff": "evidence_handoffs",
+}
+
+CANONICAL_STAGE2_V2_KEYS = {
+    "formulation_identity_candidate": "formulation_candidates",
+    "component_candidate": "component_candidates",
+    "phase_candidate": "phase_candidates",
+    "process_step_candidate": "process_step_candidates",
+    "variable_or_factor_candidate": "variable_candidates",
+    "measurement_candidate": "measurement_candidates",
+    "relation_cue": "relation_hints",
+    "evidence_handoff": "evidence_spans",
 }
 
 MEASUREMENT_ALIASES = {
@@ -68,6 +102,34 @@ SHARED_SCOPE_FIELDS = {
     "preparation_method",
     "emulsion_structure",
 }
+
+
+def env_flag(name: str, default: bool = False) -> bool:
+    value = normalize_text(os.getenv(name, "")).lower()
+    if not value:
+        return default
+    return value in {"1", "true", "yes", "on"}
+
+
+def numbered_doe_recovery_enabled() -> bool:
+    # Keep the old recovery toggle as a compatibility alias, but the governed
+    # control surface is the explicit mode flag below.
+    return doe_enumeration_mode() == "explicit_only" or env_flag(NUMBERED_DOE_RECOVERY_ENV, default=False)
+
+
+def doe_enumeration_mode() -> str:
+    value = normalize_text(os.getenv(DOE_ENUMERATION_MODE_ENV, "")).lower()
+    if value in {"off", "explicit_only"}:
+        return value
+    return "off"
+
+
+def numbered_doe_recovery_min_rows() -> int:
+    raw = normalize_text(os.getenv(NUMBERED_DOE_RECOVERY_MIN_ROWS_ENV, "8"))
+    try:
+        return max(1, int(raw))
+    except Exception:
+        return 8
 
 
 def normalize_text(value: Any) -> str:
@@ -124,6 +186,134 @@ def compatibility_output_columns() -> list[str]:
     if IDENTITY_VARIABLES_FIELD not in columns:
         columns.append(IDENTITY_VARIABLES_FIELD)
     return columns
+
+
+def resolve_document_text_path(document: dict[str, Any]) -> Path | None:
+    text_path = normalize_text(document.get("source_text_path"))
+    if not text_path:
+        return None
+    path = Path(text_path)
+    if not path.is_absolute():
+        path = (REPO_ROOT / path).resolve()
+    return path
+
+
+def build_existing_forms_for_recovery(document: dict[str, Any]) -> list[dict[str, Any]]:
+    existing_forms: list[dict[str, Any]] = []
+    for item in object_rows(document, "formulation_identity_candidate"):
+        if not isinstance(item, dict):
+            continue
+        raw_label = normalize_text(
+            item.get("raw_formulation_label")
+            or item.get("raw_label")
+            or item.get("candidate_id")
+            or item.get("formulation_candidate_id")
+        )
+        formulation_id = normalize_text(
+            item.get("formulation_candidate_id")
+            or item.get("candidate_id")
+            or raw_label
+        )
+        if not formulation_id and not raw_label:
+            continue
+        existing_forms.append(
+            {
+                "raw_formulation_label": raw_label,
+                "formulation_id": formulation_id or raw_label,
+                "candidate_source": normalize_text(item.get("candidate_source") or document.get("source_mode"))
+                or "stage2_v2_semantic_objects",
+            }
+        )
+    return existing_forms
+
+
+def recover_numbered_doe_rows(
+    *,
+    document: dict[str, Any],
+    model_name: str,
+) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any]]:
+    if doe_enumeration_mode() != "explicit_only" and not env_flag(NUMBERED_DOE_RECOVERY_ENV, default=False):
+        return [], [], [], {
+            "enabled": False,
+            "mode": doe_enumeration_mode(),
+            "candidate_count": 0,
+            "row_count": 0,
+            "table_count": 0,
+            "tables_dir": "",
+            "notes": "recovery_disabled",
+        }
+
+    text_path = resolve_document_text_path(document)
+    if text_path is None or not text_path.exists():
+        return [], [], [], {
+            "enabled": True,
+            "mode": doe_enumeration_mode(),
+            "candidate_count": 0,
+            "row_count": 0,
+            "table_count": 0,
+            "tables_dir": "",
+            "notes": "missing_source_text_path",
+        }
+
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    doi = normalize_text(document.get("doi"))
+    title = normalize_text(document.get("title"))
+    paper = PaperRecord(key=document_key, doi=doi, title=title, text_path=text_path)
+    raw_text = text_path.read_text(encoding="utf-8", errors="ignore")
+    emitted_forms, artifact_rows, summary = enumerate_numbered_doe_candidates_for_paper(
+        paper=paper,
+        raw_text=raw_text,
+        existing_forms=build_existing_forms_for_recovery(document),
+        min_numbered_rows=numbered_doe_recovery_min_rows(),
+    )
+
+    rows: list[dict[str, str]] = []
+    traces: list[dict[str, str]] = []
+    jsonl_rows: list[dict[str, Any]] = []
+    for candidate, artifact_row in zip(emitted_forms, artifact_rows):
+        instance_evidence = candidate.get("instance_evidence") if isinstance(candidate, dict) else {}
+        if not isinstance(instance_evidence, dict):
+            instance_evidence = {}
+        row_form = dict(candidate)
+        row_form["instance_kind_reconciliation_note"] = "deterministic_explicit_numbered_doe_row_recovery_v1"
+        row_form["candidate_source"] = "doe_numbered_table_row_recovery"
+        row = flatten_row(document_key, doi, model_name, row_form, instance_evidence)
+        rows.append(row)
+        traces.append(
+            {
+                "document_key": document_key,
+                "formulation_id": normalize_text(row.get("formulation_id")),
+                "legacy_field": "numbered_doe_row_recovery",
+                "source_replacement_objects": json.dumps(
+                    [
+                        {
+                            "table_id": normalize_text(artifact_row.get("table_id")),
+                            "table_csv_path": normalize_text(artifact_row.get("table_csv_path")),
+                            "formulation_label": normalize_text(artifact_row.get("formulation_label")),
+                            "evidence_snippet": normalize_text(artifact_row.get("evidence_snippet")),
+                        }
+                    ],
+                    ensure_ascii=False,
+                ),
+                "mapping_status": "direct",
+                "direct_or_derived": "direct",
+                "notes": "Recovered only from explicit numbered DOE table rows present in Stage1 table assets.",
+            }
+        )
+        jsonl_rows.append({"key": document_key, "doi": doi, "formulation_id": normalize_text(row.get("formulation_id")), "legacy_row": row})
+
+    recovery_summary = dict(summary)
+    recovery_summary.update(
+        {
+            "enabled": True,
+            "mode": doe_enumeration_mode(),
+            "candidate_count": len(rows),
+            "row_count": len(rows),
+            "table_count": int(recovery_summary.get("selected_table_count", 0) or 0),
+            "tables_dir": normalize_text(recovery_summary.get("tables_dir")),
+        }
+    )
+    return rows, traces, jsonl_rows, recovery_summary
 
 
 def choose_first(items: list[dict[str, Any]], *keys: str) -> str:
@@ -190,6 +380,234 @@ def infer_polymer_identity(name: str) -> str:
     return name.strip()
 
 
+def value_or_first_number(value: Any) -> str:
+    text = normalize_text(value)
+    return first_number(text) or text
+
+
+def build_target_object_ref(prefix: str, item_id: str, formulation_id: str) -> str:
+    if item_id:
+        return f"{prefix}:{item_id}"
+    if formulation_id:
+        return f"{prefix}:{formulation_id}"
+    return prefix
+
+
+def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[str, Any]:
+    """
+    Normalize the Stage2 semantic-intermediate payload into the legacy-shaped
+    semantic object families consumed by the deterministic completion step.
+
+    Canonical governed Stage2 v2 payloads come from
+    `extract_semantic_stage2_objects_v2.py` and use names like
+    `formulation_candidates` and `variable_candidates`.
+    Older replacement-path artifacts may already use the legacy-shaped semantic
+    families such as `formulation_identity_candidates`.
+    """
+
+    canonical_identity_key = CANONICAL_STAGE2_V2_KEYS["formulation_identity_candidate"]
+    legacy_identity_key = LEGACY_OBJECT_KEYS["formulation_identity_candidate"]
+    has_canonical = any(key in document for key in CANONICAL_STAGE2_V2_KEYS.values())
+    has_legacy = any(key in document for key in LEGACY_OBJECT_KEYS.values())
+    if not has_canonical and not has_legacy:
+        raise ValueError(
+            "Stage2 semantic document is missing recognized semantic-object families for compatibility projection."
+        )
+    if has_legacy and not has_canonical:
+        return document
+
+    normalized: dict[str, Any] = {
+        "document_key": normalize_text(document.get("document_key") or document.get("key")),
+        "doi": normalize_text(document.get("doi")),
+        "model_name": normalize_text(document.get("model_name") or document.get("source_mode")) or "stage2_v2_semantic_objects",
+        "source_mode": normalize_text(document.get("source_mode")),
+        # Preserve source-path metadata so bounded deterministic recovery can
+        # still resolve the explicit Stage1 table anchors from the semantic
+        # intermediate, even after the semantic payload is normalized into the
+        # legacy-shaped compatibility view.
+        "source_text_path": normalize_text(document.get("source_text_path")),
+        "source_raw_response_path": normalize_text(document.get("source_raw_response_path")),
+        "source_table_files": ensure_list(document.get("source_table_files")),
+        "title": normalize_text(document.get("title")),
+    }
+
+    evidence_spans = [
+        item
+        for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["evidence_handoff"]))
+        if isinstance(item, dict)
+    ]
+    evidence_by_id = {
+        normalize_text(item.get("span_id") or item.get("evidence_span_id")): item
+        for item in evidence_spans
+        if normalize_text(item.get("span_id") or item.get("evidence_span_id"))
+    }
+
+    formulation_candidates = [
+        item
+        for item in ensure_list(document.get(canonical_identity_key))
+        if isinstance(item, dict)
+    ]
+    normalized_identities: list[dict[str, Any]] = []
+    normalized_handoffs: list[dict[str, Any]] = []
+
+    for item in formulation_candidates:
+        formulation_id = normalize_text(item.get("formulation_candidate_id") or item.get("candidate_id"))
+        raw_label = normalize_text(item.get("raw_formulation_label") or item.get("raw_label") or formulation_id)
+        evidence_span_ids = [
+            normalize_text(span_id)
+            for span_id in ensure_list(item.get("evidence_span_ids"))
+            if normalize_text(span_id)
+        ]
+        normalized_identities.append(
+            {
+                "formulation_candidate_id": formulation_id,
+                "raw_formulation_label": raw_label,
+                "parent_candidate_id": normalize_text(item.get("parent_candidate_id")),
+                "instance_kind": normalize_text(item.get("instance_kind")) or "unclear",
+                "formulation_role": normalize_text(item.get("formulation_role")) or "unclear",
+                "identity_confidence": normalize_text(item.get("identity_confidence") or item.get("status")) or "reported",
+                "candidate_source": normalize_text(item.get("candidate_source") or document.get("source_mode")) or "stage2_v2_semantic_objects",
+                "change_descriptions": ensure_list(item.get("change_descriptions")),
+                "instance_context_tags": ensure_list(item.get("instance_context_tags")),
+                "change_context_tags": ensure_list(item.get("change_context_tags")),
+            }
+        )
+        for span_id in evidence_span_ids:
+            span = evidence_by_id.get(span_id)
+            if not span:
+                continue
+            normalized_handoffs.append(
+                {
+                    "source_region_type": normalize_text(span.get("source_region_type")),
+                    "source_locator_text": normalize_text(span.get("source_locator_text") or span.get("locator_raw")),
+                    "supporting_snippet": normalize_text(span.get("supporting_text") or span.get("span_text_raw")),
+                    "target_object_ref": build_target_object_ref("formulation_identity_candidate", formulation_id, formulation_id),
+                    "target_field_name": "formulation_identity",
+                }
+            )
+
+    normalized_components: list[dict[str, Any]] = []
+    for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["component_candidate"])):
+        if not isinstance(item, dict):
+            continue
+        expressions = [expr for expr in ensure_list(item.get("expressions")) if isinstance(expr, dict)]
+        expression_texts = [
+            normalize_text(
+                expr.get("expression_text_raw")
+                or expr.get("expression_text")
+                or " ".join(
+                    part
+                    for part in [
+                        normalize_text(expr.get("value_raw")),
+                        normalize_text(expr.get("unit_raw")),
+                    ]
+                    if part
+                )
+            )
+            for expr in expressions
+        ]
+        expression_texts = [text for text in expression_texts if text]
+        parsed_values = [
+            normalize_text(expr.get("value_raw")) or first_number(normalize_text(expr.get("expression_text_raw")))
+            for expr in expressions
+            if normalize_text(expr.get("value_raw")) or first_number(normalize_text(expr.get("expression_text_raw")))
+        ]
+        properties = [
+            {
+                "name": normalize_text(expr.get("expression_type")) or "expression",
+                "value": normalize_text(expr.get("expression_text_raw") or expr.get("expression_text")),
+                "raw_value": normalize_text(expr.get("qualifier_raw")),
+            }
+            for expr in expressions
+            if normalize_text(expr.get("expression_text_raw") or expr.get("expression_text"))
+        ]
+        amount_expression = " | ".join(expression_texts) if expression_texts else normalize_text(item.get("amount_text"))
+        parsed_value = " | ".join(parsed_values) if parsed_values else value_or_first_number(item.get("amount_text"))
+        normalized_components.append(
+            {
+                "component_id": normalize_text(item.get("component_id")),
+                "formulation_candidate_id": normalize_text(item.get("formulation_candidate_id")),
+                "component_name_raw": normalize_text(item.get("component_name_raw") or item.get("component_name") or item.get("name_raw")),
+                "component_role_raw": normalize_text(item.get("component_role_raw") or item.get("component_role")),
+                "amount_expression_raw": amount_expression,
+                "parsed_value_raw": parsed_value,
+                "component_properties_raw": properties,
+                "phase_hint_raw": normalize_text(item.get("phase_hint_raw") or item.get("phase_hint")),
+            }
+        )
+
+    normalized_factors: list[dict[str, Any]] = []
+    for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["variable_or_factor_candidate"])):
+        if not isinstance(item, dict):
+            continue
+        variable_role = normalize_text(item.get("variable_role"))
+        identity_signal = "yes" if variable_role in {"identity_signal", "doe_factor"} else "no"
+        normalized_factors.append(
+            {
+                "factor_id": normalize_text(item.get("factor_id") or item.get("variable_id")),
+                "formulation_candidate_id": normalize_text(item.get("formulation_candidate_id")),
+                "factor_name_raw": normalize_text(item.get("factor_name_raw") or item.get("variable_name")),
+                "factor_expression_raw": normalize_text(item.get("factor_expression_raw") or item.get("value_text")),
+                "factor_kind": variable_role,
+                "identity_defining_signal": identity_signal,
+            }
+        )
+
+    normalized_measurements: list[dict[str, Any]] = []
+    for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["measurement_candidate"])):
+        if not isinstance(item, dict):
+            continue
+        normalized_measurements.append(
+            {
+                "measurement_id": normalize_text(item.get("measurement_id")),
+                "formulation_candidate_id": normalize_text(item.get("formulation_candidate_id")),
+                "measurement_name_raw": normalize_text(item.get("measurement_name_raw") or item.get("measurement_name")),
+                "measurement_value_raw": normalize_text(item.get("measurement_value_raw") or item.get("value_text")),
+                "measurement_unit_raw": normalize_text(item.get("measurement_unit_raw") or item.get("unit_text")),
+            }
+        )
+
+    normalized_relation_cues: list[dict[str, Any]] = []
+    for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["relation_cue"])):
+        if not isinstance(item, dict):
+            continue
+        normalized_relation_cues.append(
+            {
+                "relation_id": normalize_text(item.get("relation_id")),
+                "source_object_ref": build_target_object_ref(
+                    "formulation_identity_candidate",
+                    normalize_text(item.get("source_candidate_id")),
+                    normalize_text(item.get("source_candidate_id")),
+                ),
+                "target_object_ref": build_target_object_ref(
+                    "formulation_identity_candidate",
+                    normalize_text(item.get("target_candidate_id")),
+                    normalize_text(item.get("target_candidate_id")),
+                ),
+                "relation_type_raw": normalize_text(item.get("relation_type")),
+                "relation_note_raw": normalize_text(item.get("note")),
+            }
+        )
+
+    normalized[legacy_identity_key] = normalized_identities
+    normalized[LEGACY_OBJECT_KEYS["component_candidate"]] = normalized_components
+    normalized[LEGACY_OBJECT_KEYS["phase_candidate"]] = [
+        item
+        for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["phase_candidate"]))
+        if isinstance(item, dict)
+    ]
+    normalized[LEGACY_OBJECT_KEYS["process_step_candidate"]] = [
+        item
+        for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["process_step_candidate"]))
+        if isinstance(item, dict)
+    ]
+    normalized[LEGACY_OBJECT_KEYS["variable_or_factor_candidate"]] = normalized_factors
+    normalized[LEGACY_OBJECT_KEYS["measurement_candidate"]] = normalized_measurements
+    normalized[LEGACY_OBJECT_KEYS["relation_cue"]] = normalized_relation_cues
+    normalized[LEGACY_OBJECT_KEYS["evidence_handoff"]] = normalized_handoffs
+    return normalized
+
+
 def load_jsonl_documents(path: Path) -> list[dict[str, Any]]:
     documents: list[dict[str, Any]] = []
     with path.open("r", encoding="utf-8") as handle:
@@ -197,12 +615,12 @@ def load_jsonl_documents(path: Path) -> list[dict[str, Any]]:
             line = line.strip()
             if not line:
                 continue
-            documents.append(json.loads(line))
+            documents.append(normalize_stage2_document_for_projection(json.loads(line)))
     return documents
 
 
 def object_rows(document: dict[str, Any], object_type: str) -> list[dict[str, Any]]:
-    value = document.get(OBJECT_KEYS[object_type], [])
+    value = document.get(LEGACY_OBJECT_KEYS[object_type], [])
     return [item for item in ensure_list(value) if isinstance(item, dict)]
 
 
@@ -579,6 +997,25 @@ def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], li
         rows.append(row)
         jsonl_rows.append({"key": document_key, "doi": doi, "formulation_id": formulation_id, "legacy_row": row})
 
+    recovered_rows, recovered_traces, recovered_jsonl_rows, recovery_summary = recover_numbered_doe_rows(
+        document=document,
+        model_name=model_name,
+    )
+    if recovered_rows:
+        rows.extend(recovered_rows)
+        traces.extend(recovered_traces)
+        jsonl_rows.extend(recovered_jsonl_rows)
+        add_trace(
+            traces,
+            document_key,
+            "__recovery__",
+            "numbered_doe_row_recovery",
+            [normalize_text(item.get("formulation_id")) for item in recovered_jsonl_rows if normalize_text(item.get("formulation_id"))],
+            DIRECT,
+            DIRECT,
+            f"Recovered {recovery_summary.get('candidate_count', 0)} explicit DOE rows from numbered table anchors.",
+        )
+
     for field in CORE_FIELDS:
         values = {normalize_text(row.get(f"{field}_value_text")) for row in rows if normalize_text(row.get(f"{field}_value_text"))}
         scope = "global_shared" if field in SHARED_SCOPE_FIELDS and len(values) == 1 and len(rows) > 1 else "instance_specific"
@@ -703,6 +1140,12 @@ def main() -> None:
         "status": "transitional_support",
         "documents": len(documents),
         "projected_rows": len(all_rows),
+        "numbered_doe_recovery_enabled": numbered_doe_recovery_enabled(),
+        "doe_enumeration_mode": doe_enumeration_mode(),
+        "numbered_doe_recovery_min_rows": numbered_doe_recovery_min_rows(),
+        "numbered_doe_recovered_rows": sum(
+            1 for row in all_rows if normalize_text(row.get("candidate_source")) == "doe_numbered_table_row_recovery"
+        ),
         "trace_rows": len(all_traces),
         "legacy_surface_columns": len(compatibility_output_columns()),
         "output_files": [

@@ -20,7 +20,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.utils.run_id import build_run_id, get_git_short_hash
+from src.utils.run_id import build_future_run_root_name, get_git_short_hash
 
 ACTIVE_EXTRACTOR = PROJECT_ROOT / "src" / "stage2_sampling_labels" / "auto_extract_weak_labels_v7pilot_r3_fixparse.py"
 PILOT3_MANIFEST = PROJECT_ROOT / "data" / "cleaned" / "goren_2025" / "index" / "splits" / "dev_manifest_v7pilot3_2026-03-06.tsv"
@@ -307,7 +307,7 @@ def main() -> None:
     args = parse_args()
     branch = git_branch()
     git_hash = get_git_short_hash(PROJECT_ROOT)
-    run_id = build_run_id(subset="targeted5", stage="stage2_regression", version=args.version, git_hash=git_hash)
+    run_id = build_future_run_root_name(dt=datetime.now(), git_hash=git_hash)
     run_dir = PROJECT_ROOT / "data" / "results" / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
     comparisons_dir = run_dir / "comparisons"
@@ -472,6 +472,17 @@ def main() -> None:
         ]
     )
     (run_dir / "regression_notes.md").write_text("\n".join(notes_lines), encoding="utf-8")
+    subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "utils" / "update_run_context_with_feature_activation_v1.py"),
+            "--run-dir",
+            str(run_dir),
+        ],
+        cwd=PROJECT_ROOT,
+        text=True,
+        check=True,
+    )
 
     print(f"RUN_CONTEXT={run_dir / 'RUN_CONTEXT.md'}")
     print(f"SUMMARY_TSV={summary_path}")

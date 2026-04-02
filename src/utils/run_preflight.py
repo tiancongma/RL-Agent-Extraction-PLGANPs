@@ -10,9 +10,9 @@ from pathlib import Path
 from src.utils import paths
 from src.utils.model_policy import validate_models_or_raise
 from src.utils.run_id import (
-    build_run_id,
     classify_results_path,
     is_valid_legacy_run_id,
+    resolve_results_write_target,
 )
 from src.utils.run_latest import inputs_fingerprint, read_latest, write_latest
 
@@ -40,7 +40,18 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--run-dir",
         default="",
-        help="Explicit governed results directory to validate and use as-is. Supports legacy roots and future v2 bucket/child paths.",
+        help="Explicit governed results directory to validate and use as-is. Existing legacy roots are reusable only; new writes must use v2 bucket/child paths.",
+    )
+    p.add_argument(
+        "--naming-mode",
+        choices=["v2", "legacy"],
+        default="v2",
+        help="Default write-target naming mode. v2 is the future-facing default; legacy is retained only for compatibility reporting and is rerouted to v2 for new writes.",
+    )
+    p.add_argument(
+        "--cue",
+        default="",
+        help="Optional v2 child cue. Defaults to --stage when omitted, otherwise 'run'.",
     )
     p.add_argument("--note", default="")
     return p.parse_args()
@@ -64,56 +75,56 @@ def main() -> None:
     chosen = ""
     chosen_ref = ""
     chosen_kind = ""
+    bucket_ref = ""
     reuse_reason = ""
     new_reason = ""
 
     explicit_run_dir = str(args.run_dir).strip()
     if explicit_run_dir:
         run_dir = Path(explicit_run_dir).resolve()
-        if not run_dir.exists():
-            raise FileNotFoundError(f"Explicit --run-dir not found: {run_dir}")
         classification = classify_results_path(run_dir, results_dir=paths.DATA_RESULTS_DIR)
+        if classification["path_kind"] not in {"legacy_run_root", "v2_child_execution"}:
+            raise ValueError(f"Explicit --run-dir is not a supported results path: {run_dir}")
+        if classification["path_kind"] == "legacy_run_root" and not run_dir.exists():
+            raise ValueError(
+                "Creating new legacy run roots is disabled. Use a v2 bucket/child path instead."
+            )
         chosen = run_dir.name
         chosen_ref = str(run_dir)
         chosen_kind = classification["path_kind"]
+        bucket_ref = str(run_dir.parent if classification["path_kind"] == "v2_child_execution" else run_dir)
         reuse_reason = "explicit_run_dir"
     else:
-        chosen_kind = "legacy_run_root"
+        chosen_kind = "v2_child_execution"
 
     explicit = str(args.run_id).strip()
     if not chosen:
         if explicit:
             if not is_valid_legacy_run_id(explicit):
                 raise ValueError(f"Invalid --run-id (must match required legacy regex): {explicit}")
+            chosen_ref_path = (paths.DATA_RESULTS_DIR / explicit).resolve()
+            if not chosen_ref_path.exists():
+                raise ValueError(
+                    "Creating new legacy run roots is disabled. Use --run-dir for an existing "
+                    "historical directory or let the v2 allocator create a compliant root."
+                )
             chosen = explicit
-            chosen_ref = str((paths.DATA_RESULTS_DIR / explicit).resolve())
-            reuse_reason = "explicit_run_id"
+            chosen_ref = str(chosen_ref_path)
+            reuse_reason = "explicit_run_id_reuse_only"
+            bucket_ref = chosen_ref
         else:
-            if not str(args.subset).strip() or not str(args.stage).strip():
-                raise ValueError("--subset and --stage are required when generating or reusing a legacy run_id.")
-            can_reuse = (
-                bool(latest_rid)
-                and is_valid_legacy_run_id(latest_rid)
-                and _same_local_date(latest_meta.get("created_at", ""))
-                and latest_meta.get("inputs_fingerprint", "") == fp
+            cue = str(args.cue).strip() or str(args.stage).strip() or "run"
+            target = resolve_results_write_target(
+                results_root=paths.DATA_RESULTS_DIR,
+                default_child_cue=cue,
             )
-            if can_reuse:
-                chosen = latest_rid
-                chosen_ref = str((paths.DATA_RESULTS_DIR / latest_rid).resolve())
-                reuse_reason = "latest_same_local_date_and_same_inputs_fingerprint"
-            else:
-                chosen = build_run_id(subset=args.subset, stage=args.stage, version=int(args.version))
-                chosen_ref = str((paths.DATA_RESULTS_DIR / chosen).resolve())
-                if not latest_rid:
-                    new_reason = "no_latest_found"
-                elif not is_valid_legacy_run_id(latest_rid):
-                    new_reason = "latest_invalid_legacy_run_id"
-                elif not _same_local_date(latest_meta.get("created_at", "")):
-                    new_reason = "latest_not_today_local"
-                elif latest_meta.get("inputs_fingerprint", "") != fp:
-                    new_reason = "inputs_fingerprint_changed"
-                else:
-                    new_reason = "generated_new_run_id"
+            chosen = target["run_basename"]
+            chosen_ref = target["run_dir"]
+            chosen_kind = target["path_kind"]
+            bucket_ref = target["bucket_dir"]
+            new_reason = target["selection_mode"]
+            if args.naming_mode == "legacy":
+                new_reason = "legacy_mode_rerouted_to_v2"
 
     latest_written = None
     if chosen_kind == "legacy_run_root":
@@ -136,6 +147,7 @@ def main() -> None:
     print(f"chosen_run_id={chosen}")
     print(f"chosen_run_ref={chosen_ref}")
     print(f"chosen_path_kind={chosen_kind}")
+    print(f"chosen_bucket_ref={bucket_ref}")
     print(f"legacy_regex_match={is_valid_legacy_run_id(chosen)}")
     print(f"reuse_reason={reuse_reason}")
     print(f"new_reason={new_reason}")

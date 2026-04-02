@@ -282,6 +282,8 @@ Run outputs live under:
 `data/results/run_<run_id>/`
 
 Every run directory must contain a reproducibility-grade `RUN_CONTEXT.md`.
+That run context must record both script lineage and feature activation lineage
+for governed runs.
 
 ### Lineage containment policy
 
@@ -338,6 +340,9 @@ or benchmark contract is materially separate from an existing lineage.
 - Files in `data/cleaned/index/` are pipeline-critical.
 - `manifest_current.tsv` and `key2txt.tsv` are unique active authorities.
 - No script may silently depend on legacy artifacts.
+- Code presence is not activation; feature activation must be proven by run
+  artifacts, including the generated Feature Unit Activation section inside
+  `RUN_CONTEXT.md`.
 - Experimental variation must be expressed via:
   - `run_id`
   - explicit configuration or CLI arguments

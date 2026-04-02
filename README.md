@@ -168,6 +168,14 @@ Before changing code or pipeline documentation, read:
 Every `data/results/run_*` directory must contain a reproducibility-grade
 `RUN_CONTEXT.md`.
 
+Future maintained writer default:
+
+- new maintained write surfaces under `data/results/` now default to the
+  MDEC084 v2 bucket/child layout:
+  - `data/results/YYYYMMDD_<short_hash>/NN_<cue>/`
+- explicit legacy `run_*` creation remains compatibility-only and must be
+  requested explicitly with a legacy `--run-id`
+
 Accepted run types are:
 
 - `intermediate_diagnostic_run`

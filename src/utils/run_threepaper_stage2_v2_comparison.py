@@ -11,12 +11,12 @@ from pathlib import Path
 try:
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
-    from src.utils.run_id import is_valid_run_id
+    from src.utils.run_id import resolve_results_write_target
 
 
 TARGET_PAPERS = ["WIVUCMYG", "UFXX9WXE", "5GIF3D8W"]
@@ -57,7 +57,16 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run the governed three-paper semantic-intermediate comparison wrapper on top of the composite Stage2 entrypoint."
     )
-    parser.add_argument("--run-id", required=True)
+    parser.add_argument(
+        "--run-id",
+        default="",
+        help="Explicit legacy compatibility run_id. New writes default to MDEC084 v2 bucket/child naming when omitted.",
+    )
+    parser.add_argument(
+        "--execution-cue",
+        default="threepaper_comparison",
+        help="Future-facing child cue used only when auto-allocating a new v2 child execution path.",
+    )
     parser.add_argument("--source-mode", choices=["legacy_llm_replay", "live_llm"], default="legacy_llm_replay")
     parser.add_argument("--model", default="gemini-2.5-flash")
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
@@ -65,6 +74,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--historical-raw-responses-dir", default=DEFAULT_HISTORICAL_RAW_RESPONSES_DIR)
     parser.add_argument("--historical-legacy-tsv", default=DEFAULT_HISTORICAL_LEGACY_TSV)
     parser.add_argument("--replay-v2-jsonl", default=DEFAULT_REPLAY_V2_JSONL)
+    parser.add_argument(
+        "--output-run-dir",
+        default="",
+        help="Explicit output results run directory. Supports legacy roots and v2 child execution paths under data/results/.",
+    )
     parser.add_argument("--run-dir", default="")
     parser.add_argument("--active-run-id", default="")
     return parser.parse_args()
@@ -74,6 +88,9 @@ def build_run_context(
     *,
     run_id: str,
     run_dir: Path,
+    run_dir_kind: str,
+    run_selection_mode: str,
+    bucket_dir: Path,
     source_run_context: dict[str, object],
     scope_manifest_tsv: Path,
     comparison_dir: Path,
@@ -99,6 +116,12 @@ def build_run_context(
 
 ## 1. Run ID
 `{run_id}`
+
+## 1a. Run Path
+- run_dir: `{run_dir}`
+- run_dir_kind: `{run_dir_kind}`
+- run_selection_mode: `{run_selection_mode}`
+- bucket_dir: `{bucket_dir}`
 
 ## 2. Run Type
 `component_regression_run`
@@ -165,8 +188,6 @@ Benchmark reporting rule:
 
 def main() -> None:
     args = parse_args()
-    if not is_valid_run_id(args.run_id):
-        raise ValueError(f"Invalid --run-id: {args.run_id}")
 
     source_run_context = resolve_run_context(
         explicit_run_dir=repo_path(args.run_dir) if str(args.run_dir).strip() else None,
@@ -214,11 +235,27 @@ def main() -> None:
     print(f"resolved_historical_legacy_tsv={historical_legacy_tsv}")
     print(f"resolved_replay_v2_jsonl={replay_v2_jsonl}")
 
+    target = resolve_results_write_target(
+        results_root=DATA_RESULTS_DIR,
+        default_child_cue=args.execution_cue,
+        explicit_run_dir=repo_path(args.output_run_dir) if str(args.output_run_dir).strip() else None,
+        explicit_legacy_run_id=args.run_id,
+    )
+    run_dir = Path(target["run_dir"])
+    run_id = target["run_basename"]
+    run_dir_kind = target["path_kind"]
+    run_selection_mode = target["selection_mode"]
+    bucket_dir = Path(target["bucket_dir"])
+    if run_dir.exists():
+        raise FileExistsError(f"Run directory already exists: {run_dir}")
+    if run_dir_kind == "v2_child_execution":
+        bucket_dir.mkdir(parents=True, exist_ok=True)
+
     stage2_cmd = [
         sys.executable,
         str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "run_stage2_composite_v1.py"),
-        "--run-id",
-        args.run_id,
+        "--run-dir",
+        str(run_dir),
         "--manifest-tsv",
         str(scope_manifest_tsv),
         "--source-mode",
@@ -236,7 +273,6 @@ def main() -> None:
         stage2_cmd.extend(["--legacy-raw-responses-dir", str(historical_raw_dir)])
     run_command(stage2_cmd)
 
-    run_dir = (DATA_RESULTS_DIR / args.run_id).resolve()
     comparison_dir = run_dir / "analysis" / "stage2_v2_threepaper_comparison"
     comparison_dir.mkdir(parents=True, exist_ok=True)
     stage2_semantic_jsonl = run_dir / "semantic_stage2_objects" / "semantic_stage2_v2_objects.jsonl"
@@ -276,7 +312,10 @@ def main() -> None:
     run_command(comparison_cmd)
 
     run_context = build_run_context(
-        run_id=args.run_id,
+        run_id=run_id,
+        run_dir_kind=run_dir_kind,
+        run_selection_mode=run_selection_mode,
+        bucket_dir=bucket_dir,
         run_dir=run_dir,
         source_run_context=source_run_context,
         scope_manifest_tsv=scope_manifest_tsv,
@@ -293,7 +332,19 @@ def main() -> None:
         gt_skeleton_tsv=gt_skeleton_tsv,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
+    subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "utils" / "update_run_context_with_feature_activation_v1.py"),
+            "--run-dir",
+            str(run_dir),
+        ],
+        cwd=PROJECT_ROOT,
+        text=True,
+        check=True,
+    )
 
+    print(f"run_id={run_id}")
     print(f"run_dir={run_dir}")
     print(f"comparison_dir={comparison_dir}")
     print(f"completed_at={datetime.now().isoformat(timespec='seconds')}")

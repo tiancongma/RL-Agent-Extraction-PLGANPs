@@ -9,13 +9,21 @@ from pathlib import Path
 from typing import Iterable
 
 from src.utils import paths
-from src.utils.run_id import get_git_short_hash, is_valid_legacy_run_id, parse_legacy_run_id
+from src.utils.run_id import (
+    get_git_short_hash,
+    is_valid_legacy_run_id,
+    is_valid_v2_bucket_name,
+    is_valid_v2_child_name,
+    parse_legacy_run_id,
+)
 
 
 def _subset_stage_from_run_id(run_id: str) -> tuple[str, str]:
     try:
         payload = parse_legacy_run_id(run_id)
     except ValueError:
+        if is_valid_v2_bucket_name(run_id) or is_valid_v2_child_name(run_id):
+            return ("", "")
         return ("", "")
     return (payload.get("subset", ""), payload.get("stage", ""))
 
@@ -57,9 +65,9 @@ def read_latest(latest_path: Path | None = None) -> tuple[str, dict[str, str]]:
 
 def write_latest(run_id: str, meta: dict, project_root: Path | None = None) -> Path:
     rid = str(run_id or "").strip()
-    if not is_valid_legacy_run_id(rid):
+    if not (is_valid_legacy_run_id(rid) or is_valid_v2_bucket_name(rid) or is_valid_v2_child_name(rid)):
         raise ValueError(
-            f"Invalid legacy run_id for runs/latest.txt compatibility pointer: {rid!r}"
+            f"Invalid run identity for runs/latest.txt compatibility pointer: {rid!r}"
         )
 
     target = paths.RUNS_LATEST_FILE if project_root is None else (Path(project_root) / "runs" / "latest.txt")

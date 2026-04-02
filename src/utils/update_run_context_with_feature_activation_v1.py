@@ -12,16 +12,28 @@ Workflow:
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
-from src.utils.build_feature_activation_report_v1 import (
-    build_report_rows,
-    compute_activation_gate,
-    load_matrix,
-    load_registry,
-    write_report_tsv,
-)
-from src.utils.paths import PROJECT_DIR
+try:
+    from src.utils.build_feature_activation_report_v1 import (
+        build_report_rows,
+        compute_activation_gate,
+        load_matrix,
+        load_registry,
+        write_report_tsv,
+    )
+    from src.utils.paths import PROJECT_DIR
+except ModuleNotFoundError:  # pragma: no cover
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.build_feature_activation_report_v1 import (
+        build_report_rows,
+        compute_activation_gate,
+        load_matrix,
+        load_registry,
+        write_report_tsv,
+    )
+    from src.utils.paths import PROJECT_DIR
 
 
 SECTION_HEADING = "## Feature Unit Activation"
@@ -71,13 +83,13 @@ def render_activation_section(
         f"- `missing_required_feature_units`: `{json.dumps(missing_units)}`",
         f"- `run_activation_gate`: `{gate['run_activation_gate']}`",
         "",
-        "| feature_id | expected_for_run | observed_activation | activation_status | evidence_path |",
-        "|---|---|---|---|---|",
+        "| feature_id | expected_for_run | observed_activation | activation_status | activation_state | evidence_path |",
+        "|---|---|---|---|---|---|",
     ]
     for row in rows:
         evidence_path = row["evidence_path"] or ""
         lines.append(
-            f"| `{row['feature_id']}` | `{row['expected_for_run']}` | `{row['observed_activation']}` | `{row['activation_status']}` | `{evidence_path}` |"
+            f"| `{row['feature_id']}` | `{row['expected_for_run']}` | `{row['observed_activation']}` | `{row['activation_status']}` | `{row.get('activation_state', '')}` | `{evidence_path}` |"
         )
     return "\n".join(lines).rstrip() + "\n"
 

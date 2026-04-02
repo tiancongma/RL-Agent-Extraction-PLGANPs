@@ -18,10 +18,15 @@ This utility is intentionally conservative:
 import argparse
 import csv
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
-from src.utils.paths import PROJECT_DIR
+try:
+    from src.utils.paths import PROJECT_DIR
+except ModuleNotFoundError:  # pragma: no cover
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.paths import PROJECT_DIR
 
 
 def parse_args() -> argparse.Namespace:
@@ -96,17 +101,27 @@ def looks_like_numeric_label(value: str) -> bool:
     return bool(digits) and text.replace(".", "").replace(" ", "").isdigit()
 
 
+def is_governed_numbered_doe_candidate_source(value: str) -> bool:
+    source = str(value or "").strip()
+    return source in {
+        "doe_numbered_table_row",
+        "doe_numbered_table_row_recovery",
+    }
+
+
 def detect_surfaces(run_dir: Path) -> dict[str, Any]:
     weak_labels_path = first_run_file(run_dir, "weak_labels__v7pilot_r3_fixparse.tsv")
     final_table_path = first_run_file(run_dir, "final_formulation_table_v1.tsv")
     decision_trace_path = first_run_file(run_dir, "final_output_decision_trace_v1.tsv")
     compare_counts_path = first_run_file(run_dir, "final_table_vs_gt_counts_by_doi.tsv")
+    prompt_preview_path = first_run_file(run_dir, "stage2_prompt_preview_v1.tsv")
     run_context_path = run_dir / "RUN_CONTEXT.md"
     surfaces = {
         "weak_labels_path": weak_labels_path,
         "final_table_path": final_table_path,
         "decision_trace_path": decision_trace_path,
         "compare_counts_path": compare_counts_path,
+        "prompt_preview_path": prompt_preview_path,
         "run_context_path": run_context_path if run_context_path.exists() else None,
         "stage2_active": weak_labels_path is not None,
         "stage2_child_validation": "validation" in run_dir.name.lower(),
@@ -122,10 +137,36 @@ def detect_surfaces(run_dir: Path) -> dict[str, Any]:
         surfaces["contains_ufxx"] = any(row.get("key") == "UFXX9WXE" for row in weak_rows)
     else:
         surfaces["contains_ufxx"] = False
+    if prompt_preview_path is not None:
+        preview_rows = read_tsv(prompt_preview_path)
+        first_preview = preview_rows[0] if preview_rows else {}
+        surfaces["stage2_input_packing_mode"] = first_preview.get("input_packing_mode", "")
+        surfaces["stage2_prompt_layout_class"] = first_preview.get("prompt_layout_class", "")
+        surfaces["stage2_ordered_block_order"] = first_preview.get("ordered_block_order", "")
+    else:
+        surfaces["stage2_input_packing_mode"] = ""
+        surfaces["stage2_prompt_layout_class"] = ""
+        surfaces["stage2_ordered_block_order"] = ""
     return surfaces
 
 
+def derive_activation_state(expected_for_run: str, observed_activation: str, activation_status: str) -> str:
+    if activation_status == "active":
+        return "active"
+    if activation_status == "unclear":
+        return "processing_error"
+    if expected_for_run == "yes":
+        return "evidence_missing" if observed_activation == "missing" else "not_invoked"
+    if activation_status == "not_expected" or observed_activation == "not_expected":
+        return "not_invoked"
+    return "not_invoked"
+
+
 def expected_for_run(feature_id: str, matrix_row: dict[str, str], surfaces: dict[str, Any]) -> str:
+    if feature_id == "stage2_input_evidence_packing":
+        if surfaces.get("stage2_input_packing_mode") == "ordered_blocks":
+            return "yes"
+        return "no"
     if feature_id in {
         "numbered_doe_row_enumeration_priority",
         "numbered_doe_regression_guard",
@@ -229,7 +270,7 @@ def observe_numbered_doe_row_enumeration_priority(run_dir: Path, surfaces: dict[
             "evidence_detail": "UFXX9WXE is not present in this run's Stage2 weak labels.",
             "notes": "Current activation logic for this feature is grounded on UFXX9WXE-class detectable papers.",
         }
-    doe_count = sum(1 for row in rows if row.get("candidate_source") == "doe_numbered_table_row")
+    doe_count = sum(1 for row in rows if is_governed_numbered_doe_candidate_source(row.get("candidate_source", "")))
     llm_numeric_count = sum(
         1 for row in rows
         if row.get("candidate_source") == "llm_extracted" and looks_like_numeric_label(row.get("raw_formulation_label", ""))
@@ -239,15 +280,15 @@ def observe_numbered_doe_row_enumeration_priority(run_dir: Path, surfaces: dict[
             "observed_activation": "active",
             "activation_status": "active",
             "evidence_path": to_repo_rel(weak_labels_path),
-            "evidence_detail": f"UFXX9WXE doe_numbered_table_row={doe_count} llm_numeric_rows={llm_numeric_count}",
-            "notes": "Active because structured DOE rows reached the run-local Stage2 candidate surface.",
+            "evidence_detail": f"UFXX9WXE governed_numbered_doe_rows={doe_count} llm_numeric_rows={llm_numeric_count}",
+            "notes": "Active because governed structured DOE rows reached the run-local Stage2 candidate surface.",
         }
     return {
         "observed_activation": "missing",
         "activation_status": "missing",
         "evidence_path": to_repo_rel(weak_labels_path),
-        "evidence_detail": f"UFXX9WXE rows={len(rows)} doe_numbered_table_row=0 llm_numeric_rows={llm_numeric_count}",
-        "notes": "UFXX9WXE is in scope, but the run-local Stage2 artifact does not carry deterministic numbered DOE rows.",
+        "evidence_detail": f"UFXX9WXE rows={len(rows)} governed_numbered_doe_rows=0 llm_numeric_rows={llm_numeric_count}",
+        "notes": "UFXX9WXE is in scope, but the run-local Stage2 artifact does not carry governed deterministic numbered DOE rows.",
     }
 
 
@@ -264,7 +305,7 @@ def observe_table_first_evidence_binding(run_dir: Path, surfaces: dict[str, Any]
     rows = [row for row in read_tsv(weak_labels_path) if row.get("key") == "UFXX9WXE"]
     table_rows = [
         row for row in rows
-        if row.get("candidate_source") == "doe_numbered_table_row"
+        if is_governed_numbered_doe_candidate_source(row.get("candidate_source", ""))
         and row.get("instance_evidence_region_type") == "table_row"
         and "numbered_doe_table" in row.get("evidence_section", "")
     ]
@@ -290,6 +331,54 @@ def observe_table_first_evidence_binding(run_dir: Path, surfaces: dict[str, Any]
         "evidence_path": to_repo_rel(weak_labels_path),
         "evidence_detail": "UFXX9WXE is not present in this run's Stage2 weak labels.",
         "notes": "Current detection for this feature is grounded on UFXX9WXE-class structured DOE papers.",
+    }
+
+
+def observe_stage2_input_evidence_packing(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    prompt_preview_path = surfaces.get("prompt_preview_path")
+    if prompt_preview_path is None:
+        if surfaces.get("stage2_active"):
+            return {
+                "observed_activation": "missing",
+                "activation_status": "missing",
+                "evidence_path": "",
+                "evidence_detail": "No stage2_prompt_preview_v1.tsv found in the run-local Stage2 artifacts.",
+                "notes": "The live Stage2 run did not emit an input-assembly preview artifact.",
+            }
+        return {
+            "observed_activation": "not_expected",
+            "activation_status": "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "Stage2 prompt preview is not expected because this run does not include active Stage2 extraction artifacts.",
+            "notes": "This feature is only relevant to Stage2 live prompt assembly.",
+        }
+    rows = read_tsv(prompt_preview_path)
+    if not rows:
+        return {
+            "observed_activation": "unclear",
+            "activation_status": "unclear",
+            "evidence_path": to_repo_rel(prompt_preview_path),
+            "evidence_detail": "Prompt preview file exists but contains no rows.",
+            "notes": "Treat empty prompt previews conservatively as a processing error.",
+        }
+    row = rows[0]
+    layout_class = row.get("prompt_layout_class", "")
+    input_mode = row.get("input_packing_mode", "")
+    block_order = row.get("ordered_block_order", "")
+    if input_mode != "ordered_blocks":
+        return {
+            "observed_activation": "not_expected",
+            "activation_status": "not_expected",
+            "evidence_path": to_repo_rel(prompt_preview_path),
+            "evidence_detail": f"rows={len(rows)} prompt_layout_class={layout_class or 'unknown'} input_packing_mode={input_mode or 'off'}",
+            "notes": "The run emitted prompt preview evidence, but the governed controlled-order execution path was not enabled.",
+        }
+    return {
+        "observed_activation": "active",
+        "activation_status": "active",
+        "evidence_path": to_repo_rel(prompt_preview_path),
+        "evidence_detail": f"rows={len(rows)} prompt_layout_class={layout_class or 'unknown'} input_packing_mode={input_mode or 'unknown'} block_order={block_order or 'unknown'}",
+        "notes": "Active because the run emitted a prompt-preview artifact and the controlled ordering mode was enabled in the live Stage2 path.",
     }
 
 
@@ -408,6 +497,7 @@ OBSERVERS = {
     "variant_aware_gt_authority_switch": observe_variant_aware_gt_authority_switch,
     "numbered_doe_row_enumeration_priority": observe_numbered_doe_row_enumeration_priority,
     "table_first_evidence_binding": observe_table_first_evidence_binding,
+    "stage2_input_evidence_packing": observe_stage2_input_evidence_packing,
     "family_variant_retention_governance": observe_family_variant_retention_governance,
     "feature_unit_governance_layer": observe_feature_unit_governance_layer,
     "run_context_feature_activation_integration": observe_run_context_feature_activation_integration,
@@ -447,6 +537,9 @@ def build_report_rows(
                 "expected_for_run": expected,
                 "observed_activation": observed["observed_activation"],
                 "activation_status": observed["activation_status"],
+                "activation_state": derive_activation_state(
+                    expected, observed["observed_activation"], observed["activation_status"]
+                ),
                 "evidence_path": observed["evidence_path"],
                 "evidence_detail": observed["evidence_detail"],
                 "notes": observed["notes"],
@@ -462,6 +555,7 @@ def write_report_tsv(output_path: Path, rows: list[dict[str, str]]) -> None:
         "expected_for_run",
         "observed_activation",
         "activation_status",
+        "activation_state",
         "evidence_path",
         "evidence_detail",
         "notes",

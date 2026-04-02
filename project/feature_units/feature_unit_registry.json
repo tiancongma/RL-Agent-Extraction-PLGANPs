@@ -12,7 +12,7 @@
       "Stage2 merge prefers structured numbered DOE rows over overlapping llm_extracted numeric rows."
     ],
     "activation_signals": [
-      "weak_labels__v7pilot_r3_fixparse.tsv contains candidate_source=doe_numbered_table_row for a paper with a known numbered DOE table",
+      "weak_labels__v7pilot_r3_fixparse.tsv contains candidate_source=doe_numbered_table_row or candidate_source=doe_numbered_table_row_recovery for a paper with a known numbered DOE table",
       "numbered_doe_row_candidates_summary_v1.tsv reports numbered_rows_found for the same run",
       "Overlapping numeric llm_extracted rows are absent or reduced after the Stage2 merge"
     ],
@@ -31,7 +31,7 @@
       "docs/methods/doe_logic_audit_ufxx9wxe_2026-03-13.md"
     ],
     "introduced_on": "2026-03-13",
-    "notes": "UFXX9WXE is the motivating benchmark case. The feature existed in later same-day child validation/support lineages but the benchmark-valid parent run still reused an older Stage2 artifact with only five UFXX rows."
+    "notes": "UFXX9WXE is the motivating benchmark case. The feature existed in later same-day child validation/support lineages but the benchmark-valid parent run still reused an older Stage2 artifact with only five UFXX rows. The reporting contract now treats the explicit deterministic recovery label as a governed synonym for activation credit."
   },
   {
     "feature_id": "numbered_doe_regression_guard",
@@ -93,7 +93,41 @@
       "docs/methods/final_formulation_audit_ready_export_v1.md"
     ],
     "introduced_on": "2026-03-13",
-    "notes": "Current activation reporting can detect this feature only when run artifacts expose explicit table_row evidence anchors."
+    "notes": "Current activation reporting can detect this feature only when run artifacts expose explicit table_row evidence anchors. Governed numbered DOE recovery rows are accepted when they carry the same table-row anchor structure."
+  },
+  {
+    "feature_id": "stage2_input_evidence_packing",
+    "title": "Stage 2 ordered input evidence packing",
+    "problem_class": "Stage2 live prompt assembly can over-weight raw-prefix text when a governed ordered evidence pack would ground the model better",
+    "status": "active_mainline_with_validation_history",
+    "primary_stage": "stage2_active",
+    "description": "Governed Stage2 live prompt assembly may switch from raw-prefix text to an ordered evidence pack that prioritizes synthesis/preparation, materials/procurement, table evidence, and narrative fallback for stronger semantic grounding.",
+    "expected_intervention_points": [
+      "Stage2 live execution can emit an ordered evidence pack instead of a raw-prefix paper-text blob.",
+      "The prompt preview records the prompt layout class, the packing mode, and the ordered block sequence.",
+      "Run metadata and activation reporting can point to the prompt preview artifact for audit purposes."
+    ],
+    "activation_signals": [
+      "stage2_prompt_preview_v1.tsv exists in the run-local analysis directory",
+      "Prompt preview rows record input_packing_mode=ordered_blocks, prompt_layout_class=ordered_controlled_evidence_pack, and a controlled block order",
+      "The run-local feature activation report marks the feature active only when the controlled ordering mode is actually used"
+    ],
+    "regression_checks": [
+      "Stage2 prompt preview artifact presence",
+      "Feature activation report evidence check on ordered Stage2 input packing output"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-01",
+    "notes": "This is an execution feature unit with run-level observability. It does not gate runs; it records whether the governed ordered evidence pack was actually used."
   },
   {
     "feature_id": "variant_aware_gt_authority_switch",

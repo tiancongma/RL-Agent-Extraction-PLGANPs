@@ -30,6 +30,7 @@ try:
     from src.stage5_benchmark.compare_final_table_to_gt_v1 import compare_final_table_to_gt
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
+    from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage3_relation.build_formulation_relation_artifacts_v1 import build_relation_artifacts
@@ -37,6 +38,7 @@ except ModuleNotFoundError:
     from src.stage5_benchmark.compare_final_table_to_gt_v1 import compare_final_table_to_gt
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
+    from src.utils.run_id import resolve_results_write_target
 
 
 NVIDIA_HOSTED_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions"
@@ -44,18 +46,11 @@ DEFAULT_MODEL = "meta/llama-3.3-70b-instruct"
 DEFAULT_SCOPE_NAME = "dev15_nvidia_full_pipeline_diagnostic"
 
 
-def make_run_dir() -> Path:
-    today = datetime.now().strftime("%Y-%m-%d")
-    base_name = f"run_{today}_dev15_nvidia_full_pipeline_v1"
-    candidate = DATA_RESULTS_DIR / base_name
-    if not candidate.exists():
-        return candidate
-    version = 2
-    while True:
-        candidate = DATA_RESULTS_DIR / f"run_{today}_dev15_nvidia_full_pipeline_v{version}"
-        if not candidate.exists():
-            return candidate
-        version += 1
+def make_run_target() -> dict[str, str]:
+    return resolve_results_write_target(
+        results_root=DATA_RESULTS_DIR,
+        default_child_cue="dev15_nvidia_full_pipeline",
+    )
 
 
 def require_exists(path: Path, label: str) -> None:
@@ -212,7 +207,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    load_dotenv()
+    load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
     if not os.getenv("NVIDIA_API_KEY"):
         raise RuntimeError("NVIDIA_API_KEY is missing. Set it in the environment or .env before running.")
 
@@ -240,7 +235,13 @@ def main() -> int:
     require_exists(scope_manifest_tsv, "scope manifest TSV")
     require_exists(gt_workbook_xlsx, "GT workbook XLSX")
 
-    run_dir = make_run_dir()
+    target = make_run_target()
+    run_dir = Path(target["run_dir"])
+    bucket_dir = Path(target["bucket_dir"])
+    if run_dir.exists():
+        raise FileExistsError(f"Run directory already exists: {run_dir}")
+    if target["path_kind"] == "v2_child_execution":
+        bucket_dir.mkdir(parents=True, exist_ok=True)
     run_dir.mkdir(parents=True, exist_ok=False)
     stage2_out_dir = run_dir / "weak_labels_v7pilot_r3_fixparse"
     stage2_out_dir.mkdir(parents=True, exist_ok=False)
@@ -327,6 +328,17 @@ def main() -> int:
         compare_stats=compare_stats,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
+    subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "utils" / "update_run_context_with_feature_activation_v1.py"),
+            "--run-dir",
+            str(run_dir),
+        ],
+        cwd=PROJECT_ROOT,
+        text=True,
+        check=True,
+    )
 
     print("Full pipeline run completed successfully.")
     print(f"Run directory: {run_dir}")

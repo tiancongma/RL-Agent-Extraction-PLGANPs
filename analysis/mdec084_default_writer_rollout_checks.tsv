@@ -1,0 +1,11 @@
+check_name	target	expected	observed	status	notes
+active_authority_pointer	data/results/ACTIVE_RUN.json	unchanged	active_run_id still points to run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1	pass	No authority switch was made in this rollout.
+historical_legacy_surface_readability	src/utils/active_data_source.py + existing run_* roots	historical run_* surfaces remain readable	legacy run resolution code path unchanged	pass	Explicit run-dir and explicit legacy run-id compatibility remain in place.
+stage2_default_writer	src/stage2_sampling_labels/run_stage2_composite_v1.py	default new writes use v2 bucket/child	help and code now support default v2 allocation plus explicit legacy --run-id	pass	Writer now allocates under data/results/YYYYMMDD_<short_hash>/NN_stage2/ when no explicit path is given.
+threepaper_wrapper_default_writer	src/utils/run_threepaper_stage2_v2_comparison.py	default new writes use v2 bucket/child	help and code now support default v2 allocation plus explicit legacy --run-id	pass	Wrapper passes explicit run-dir into the governed Stage2 entrypoint.
+stage5_wrapper_default_writer	src/stage5_benchmark/run_minimal_final_output_v1.py	default new writes use v2 bucket/child	help and code now support default v2 allocation plus explicit legacy --run-id	pass	Wrapper remains non-canonical but no longer defaults to legacy run_* creation.
+run_preflight_default	src/utils/run_preflight.py	default planning output is v2	run_preflight default naming-mode is v2	pass	Legacy planning remains explicit only.
+explicit_legacy_mode	src/utils/run_preflight.py and maintained writers	legacy write still possible intentionally	explicit legacy --run-id compatibility retained	pass	Legacy mode is no longer the default.
+results_writer_guardrail	src/utils/run_id.py	new writes must not silently fall back to legacy	resolve_results_write_target defaults to v2 and requires explicit legacy opt-in	pass	Shared helper centralizes the default.
+file_naming_contract_alignment	project/FILE_NAMING_AND_VERSIONING.md	writer behavior matches MDEC084 future default	code and docs now align with future bucket/child default	pass	Historical run_* note remains preserved.
+pilot_v2_run_creation	data/results/	no ambiguous pilot required	no pilot created	pass	Skipped intentionally to avoid unnecessary non-authoritative churn.

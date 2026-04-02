@@ -1526,6 +1526,7 @@ Reason
 Impact
 - This change affects Stage 2 LLM input ordering only.
 - It does not change the extraction schema, formulation boundary semantics, relation-first contract, or Stage 5 behavior.
+- The governed ordered-pack path is now exposed as a run-level execution feature unit rather than a one-off prompt tweak.
 
 ### Explicit Non-Changes
 
@@ -2767,3 +2768,27 @@ Non-change statement
 - No Stage3 runtime behavior was changed.
 - No Stage5 runtime behavior was changed.
 - `data/results/ACTIVE_RUN.json` was not changed by this decision entry.
+
+## 2026-04-01
+
+### Decision: Make feature activation lineage mandatory in governed run contexts (MDEC086)
+
+Decision
+- Governed run-producing entrypoints must refresh the run-local Feature Unit Activation section in `RUN_CONTEXT.md` as part of normal execution.
+- Reproducibility-grade run documentation is incomplete if it records script lineage without feature activation lineage.
+- The compare node and other governed wrappers should surface feature activation as a first-class artifact, not a detached follow-up note.
+
+Rationale
+- The feature-unit governance system already existed, but the run contract still allowed feature visibility to drift out of the active run surface.
+- `stage2_input_evidence_packing` and similar governed feature units must remain visible through run artifacts even when future wrappers or comparison nodes change.
+- Recording feature activation inside `RUN_CONTEXT.md` makes code presence, run activation, and provenance distinct and auditable.
+
+Impact
+- `src/stage5_benchmark/compare_final_table_to_gt_v1.py` now refreshes the feature activation section after writing `RUN_CONTEXT.md`.
+- The active mainline Stage2, Stage3, Stage5, and compare surfaces now treat the feature activation section as required observability.
+- The repository guidance now states that governed runs are not fully documented unless both script lineage and feature activation lineage are present.
+
+Non-change statement
+- No execution gate was introduced.
+- No benchmark semantics were changed.
+- No historical run directory was renamed or rewritten.

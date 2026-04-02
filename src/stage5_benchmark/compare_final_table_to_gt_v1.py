@@ -4,7 +4,10 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import subprocess
+import sys
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +20,7 @@ try:
         resolve_run_context,
         write_artifact_metadata_json,
     )
+    from src.utils.paths import PROJECT_ROOT
 except ModuleNotFoundError:
     import sys
 
@@ -27,6 +31,7 @@ except ModuleNotFoundError:
         resolve_run_context,
         write_artifact_metadata_json,
     )
+    from src.utils.paths import PROJECT_ROOT
 
 
 COUNTS_NAME = "final_table_vs_gt_counts.tsv"
@@ -177,12 +182,78 @@ def build_count_audit_markdown(
     audit_summary_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def build_run_context(
+    *,
+    run_dir: Path,
+    source_run_context: dict[str, Any],
+    final_table_tsv: Path,
+    gt_xlsx: Path,
+    scope_manifest_tsv: Path,
+    out_dir: Path,
+    scope_name: str,
+    result: dict[str, Any],
+) -> str:
+    generated_at = datetime.now().isoformat(timespec="seconds")
+    return "\n".join(
+        [
+            "# RUN_CONTEXT",
+            "",
+            "## 1. Run Type",
+            "",
+            "- `diagnostic-only`",
+            "",
+            "## 2. Purpose",
+            "",
+            "- Compare the completed Stage 5 final table against the authoritative GT workbook for the declared scope.",
+            "- Emit benchmark comparison evidence without modifying the final table or GT authority.",
+            "",
+            "## 3. Source Authority Resolution",
+            "",
+            f"- source_resolution: `{source_run_context['resolution_source']}`",
+            f"- source_run_id: `{source_run_context['run_id']}`",
+            f"- source_run_dir: `{source_run_context['run_dir']}`",
+            f"- active_run_pointer_path: `{source_run_context.get('pointer_path') or ''}`",
+            f"- scope_manifest_tsv: `{scope_manifest_tsv}`",
+            f"- final_table_tsv: `{final_table_tsv}`",
+            f"- gt_workbook_xlsx: `{gt_xlsx}`",
+            "",
+            "## 4. Exact Script Execution Order",
+            "",
+            "1. Run `src/stage5_benchmark/compare_final_table_to_gt_v1.py` on the completed Stage 5 final table.",
+            "2. Refresh `RUN_CONTEXT.md` via `src/utils/update_run_context_with_feature_activation_v1.py` so feature activation lineage is recorded in the compare run.",
+            "",
+            "## 5. Outputs",
+            "",
+            f"- `{out_dir / COUNTS_NAME}`",
+            f"- `{out_dir / SUMMARY_NAME}`",
+            f"- `{out_dir / AUDIT_COUNTS_NAME}`",
+            f"- `{out_dir / AUDIT_SUMMARY_NAME}`",
+            f"- `{out_dir / 'RUN_CONTEXT.md'}`",
+            "",
+            "## 6. Benchmark Status",
+            "",
+            "- `diagnostic-only, not benchmark-valid final output`",
+            "- Reason: this node compares the final table to GT; it does not alter Stage 2, Stage 3, or Stage 5 semantics.",
+            "",
+            "## 7. Reproduction Metadata",
+            "",
+            f"- generated_at: `{generated_at}`",
+            f"- scope_name: `{scope_name}`",
+            f"- final_table_rows: `{result['total_final_table_rows']}`",
+            f"- gt_rows: `{result['total_gt_rows']}`",
+            f"- matched_papers: `{result['papers_matching']}`",
+            f"- mismatched_papers: `{result['papers_mismatching']}`",
+        ]
+    ) + "\n"
+
+
 def compare_final_table_to_gt(
     final_table_tsv: Path,
     gt_xlsx: Path,
     scope_manifest_tsv: Path,
     out_dir: Path,
     scope_name: str,
+    source_run_context: dict[str, Any],
 ) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -323,6 +394,30 @@ def compare_final_table_to_gt(
         "total_final_table_rows": sum(int(row["final_table_count"]) for row in counts_rows),
         "total_gt_rows": sum(int(row["gt_count"]) for row in counts_rows),
     }
+    (out_dir / "RUN_CONTEXT.md").write_text(
+        build_run_context(
+            run_dir=out_dir,
+            source_run_context=source_run_context,
+            final_table_tsv=final_table_tsv,
+            gt_xlsx=gt_xlsx,
+            scope_manifest_tsv=scope_manifest_tsv,
+            out_dir=out_dir,
+            scope_name=scope_name,
+            result=result,
+        ),
+        encoding="utf-8",
+    )
+    subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "utils" / "update_run_context_with_feature_activation_v1.py"),
+            "--run-dir",
+            str(out_dir),
+        ],
+        cwd=PROJECT_ROOT,
+        text=True,
+        check=True,
+    )
     return result
 
 
@@ -387,6 +482,7 @@ def main() -> None:
         scope_manifest_tsv=scope_manifest_tsv,
         out_dir=out_dir,
         scope_name=args.scope_name,
+        source_run_context=run_context,
     )
     metadata_path = write_artifact_metadata_json(
         Path(result["counts_path"]),

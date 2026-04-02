@@ -1,0 +1,7 @@
+path	entrypoint_or_function	writes_data_results	current_default_naming	can_switch_to_v2_default	blocker	notes
+src/stage2_sampling_labels/run_stage2_composite_v1.py	main	yes	v2_bucket_child_default	yes		The governed Stage2 writer now defaults to MDEC084 v2 bucket/child allocation when no explicit output path is supplied. Explicit legacy --run-id remains compatibility-only.
+src/utils/run_threepaper_stage2_v2_comparison.py	main	yes	v2_bucket_child_default	yes		Maintained wrapper-nondefault writer now defaults to v2 and passes an explicit output run-dir into the governed Stage2 entrypoint. Explicit legacy --run-id remains compatibility-only.
+src/stage5_benchmark/run_minimal_final_output_v1.py	main	yes	v2_bucket_child_default	yes		Maintained wrapper-nondefault Stage5 writer now defaults to v2. Script remains non-canonical for pipeline authority.
+src/utils/run_preflight.py	main	no	v2_target_planning_default	yes		Default planning output now resolves to a future-facing v2 child path. Explicit legacy mode remains available through --naming-mode legacy or explicit --run-id.
+src/utils/run_id.py	resolve_results_write_target	no	v2_target_resolution_default	yes		Shared writer helper now resolves explicit legacy compatibility writes or default v2 bucket/child targets without changing read compatibility.
+src/utils/run_latest.py	write_latest	no	legacy_compatibility_only	not_applicable	Legacy compatibility pointer by design; it does not create data/results run surfaces and is retained only for legacy helper workflows.
