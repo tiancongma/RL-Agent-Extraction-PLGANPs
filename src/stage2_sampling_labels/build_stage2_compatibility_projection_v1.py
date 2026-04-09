@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import os
 import re
 import sys
 from pathlib import Path
@@ -17,11 +16,40 @@ if str(REPO_ROOT) not in sys.path:
 from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse import (
     CORE_FIELDS,
     build_output_columns,
-    flatten_row,
 )
-from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
-    PaperRecord,
-    enumerate_numbered_doe_candidates_for_paper,
+from src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1 import (
+    FUNCTION_UNIT_ID,
+    build_governed_numbered_doe_guard_row,
+    doe_enumeration_mode,
+    is_governed_doe_recovery_candidate_source,
+    numbered_doe_recovery_enabled,
+    numbered_doe_recovery_min_rows,
+    prefer_governed_doe_rows_over_llm_numeric_rows,
+    resolve_llm_declared_doe_scope,
+    run_doe_row_expansion_function_unit,
+    write_numbered_doe_guard_artifact,
+)
+from src.stage2_sampling_labels.function_units.sequential_optimization_interpreter_v1 import (
+    FUNCTION_UNIT_ID as SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
+    RECOVERY_CANDIDATE_SOURCE as SEQUENTIAL_OPTIMIZATION_CANDIDATE_SOURCE,
+    prefer_resolved_sequential_rows,
+    run_sequential_optimization_interpreter,
+)
+from src.stage2_sampling_labels.table_row_expansion_v1 import (
+    BOUNDARY_MARKER_FIELD,
+    execution_ready_markers,
+    INHERITANCE_MARKER_FIELD,
+    METHOD_GROUP_SIGNATURE_HINT_FIELD,
+    PREPARATION_INHERITANCE_FIELD,
+    SELECTION_MARKER_FIELD,
+    TABLE_ASSIGNMENTS_FIELD,
+    TABLE_ID_FIELD,
+    TABLE_ROW_ID_FIELD,
+    TABLE_SCOPE_FIELD,
+    TABLE_VARIABLE_ROLE_FIELD,
+    augment_document_with_table_markers,
+    mark_llm_summary_rows_as_helpers,
+    run_table_row_expansion,
 )
 
 
@@ -31,9 +59,9 @@ TRACE_TSV_NAME = "compatibility_projection_trace_v1.tsv"
 SUMMARY_JSON_NAME = "compatibility_projection_summary_v1.json"
 CONTRACT_TSV_NAME = "stage2_replacement_compatibility_projection_contract.tsv"
 IDENTITY_VARIABLES_FIELD = "identity_variables_json"
-NUMBERED_DOE_RECOVERY_ENV = "STAGE2_ENABLE_NUMBERED_DOE_RECOVERY"
-NUMBERED_DOE_RECOVERY_MIN_ROWS_ENV = "STAGE2_NUMBERED_DOE_MIN_ROWS"
-DOE_ENUMERATION_MODE_ENV = "STAGE2_DOE_ENUMERATION_MODE"
+LLM_FIRST_COMPOSITE_MODE = "llm_first_composite"
+FALLBACK_SEMANTIC_SOURCE_MODE = "governed_fallback_semantic_source"
+DIAGNOSTIC_COMPARATOR_MODE = "diagnostic_comparator"
 
 # Stage2 internal handoff contract:
 # - The governed composite Stage2 runner writes semantic intermediates from
@@ -104,34 +132,6 @@ SHARED_SCOPE_FIELDS = {
 }
 
 
-def env_flag(name: str, default: bool = False) -> bool:
-    value = normalize_text(os.getenv(name, "")).lower()
-    if not value:
-        return default
-    return value in {"1", "true", "yes", "on"}
-
-
-def numbered_doe_recovery_enabled() -> bool:
-    # Keep the old recovery toggle as a compatibility alias, but the governed
-    # control surface is the explicit mode flag below.
-    return doe_enumeration_mode() == "explicit_only" or env_flag(NUMBERED_DOE_RECOVERY_ENV, default=False)
-
-
-def doe_enumeration_mode() -> str:
-    value = normalize_text(os.getenv(DOE_ENUMERATION_MODE_ENV, "")).lower()
-    if value in {"off", "explicit_only"}:
-        return value
-    return "off"
-
-
-def numbered_doe_recovery_min_rows() -> int:
-    raw = normalize_text(os.getenv(NUMBERED_DOE_RECOVERY_MIN_ROWS_ENV, "8"))
-    try:
-        return max(1, int(raw))
-    except Exception:
-        return 8
-
-
 def normalize_text(value: Any) -> str:
     return "" if value is None else str(value).strip()
 
@@ -185,135 +185,33 @@ def compatibility_output_columns() -> list[str]:
     columns = list(build_output_columns())
     if IDENTITY_VARIABLES_FIELD not in columns:
         columns.append(IDENTITY_VARIABLES_FIELD)
+    for field in [
+        METHOD_GROUP_SIGNATURE_HINT_FIELD,
+        TABLE_ID_FIELD,
+        TABLE_ROW_ID_FIELD,
+        TABLE_ASSIGNMENTS_FIELD,
+        TABLE_SCOPE_FIELD,
+        TABLE_VARIABLE_ROLE_FIELD,
+        SELECTION_MARKER_FIELD,
+        INHERITANCE_MARKER_FIELD,
+        BOUNDARY_MARKER_FIELD,
+        PREPARATION_INHERITANCE_FIELD,
+    ]:
+        if field not in columns:
+            columns.append(field)
     return columns
 
 
-def resolve_document_text_path(document: dict[str, Any]) -> Path | None:
-    text_path = normalize_text(document.get("source_text_path"))
-    if not text_path:
-        return None
-    path = Path(text_path)
-    if not path.is_absolute():
-        path = (REPO_ROOT / path).resolve()
-    return path
+def stage2_semantic_source_mode(document: dict[str, Any]) -> str:
+    return normalize_text(document.get("stage2_semantic_source_mode")) or LLM_FIRST_COMPOSITE_MODE
 
 
-def build_existing_forms_for_recovery(document: dict[str, Any]) -> list[dict[str, Any]]:
-    existing_forms: list[dict[str, Any]] = []
-    for item in object_rows(document, "formulation_identity_candidate"):
-        if not isinstance(item, dict):
-            continue
-        raw_label = normalize_text(
-            item.get("raw_formulation_label")
-            or item.get("raw_label")
-            or item.get("candidate_id")
-            or item.get("formulation_candidate_id")
-        )
-        formulation_id = normalize_text(
-            item.get("formulation_candidate_id")
-            or item.get("candidate_id")
-            or raw_label
-        )
-        if not formulation_id and not raw_label:
-            continue
-        existing_forms.append(
-            {
-                "raw_formulation_label": raw_label,
-                "formulation_id": formulation_id or raw_label,
-                "candidate_source": normalize_text(item.get("candidate_source") or document.get("source_mode"))
-                or "stage2_v2_semantic_objects",
-            }
-        )
-    return existing_forms
-
-
-def recover_numbered_doe_rows(
-    *,
-    document: dict[str, Any],
-    model_name: str,
-) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any]]:
-    if doe_enumeration_mode() != "explicit_only" and not env_flag(NUMBERED_DOE_RECOVERY_ENV, default=False):
-        return [], [], [], {
-            "enabled": False,
-            "mode": doe_enumeration_mode(),
-            "candidate_count": 0,
-            "row_count": 0,
-            "table_count": 0,
-            "tables_dir": "",
-            "notes": "recovery_disabled",
-        }
-
-    text_path = resolve_document_text_path(document)
-    if text_path is None or not text_path.exists():
-        return [], [], [], {
-            "enabled": True,
-            "mode": doe_enumeration_mode(),
-            "candidate_count": 0,
-            "row_count": 0,
-            "table_count": 0,
-            "tables_dir": "",
-            "notes": "missing_source_text_path",
-        }
-
+def default_semantic_scope_ref(identity: dict[str, Any], document: dict[str, Any]) -> str:
+    if stage2_semantic_source_mode(document) == FALLBACK_SEMANTIC_SOURCE_MODE:
+        return f"governed_fallback_document_scope:{normalize_text(document.get('document_key') or document.get('key'))}"
+    formulation_id = normalize_text(identity.get("formulation_candidate_id") or identity.get("candidate_id"))
     document_key = normalize_text(document.get("document_key") or document.get("key"))
-    doi = normalize_text(document.get("doi"))
-    title = normalize_text(document.get("title"))
-    paper = PaperRecord(key=document_key, doi=doi, title=title, text_path=text_path)
-    raw_text = text_path.read_text(encoding="utf-8", errors="ignore")
-    emitted_forms, artifact_rows, summary = enumerate_numbered_doe_candidates_for_paper(
-        paper=paper,
-        raw_text=raw_text,
-        existing_forms=build_existing_forms_for_recovery(document),
-        min_numbered_rows=numbered_doe_recovery_min_rows(),
-    )
-
-    rows: list[dict[str, str]] = []
-    traces: list[dict[str, str]] = []
-    jsonl_rows: list[dict[str, Any]] = []
-    for candidate, artifact_row in zip(emitted_forms, artifact_rows):
-        instance_evidence = candidate.get("instance_evidence") if isinstance(candidate, dict) else {}
-        if not isinstance(instance_evidence, dict):
-            instance_evidence = {}
-        row_form = dict(candidate)
-        row_form["instance_kind_reconciliation_note"] = "deterministic_explicit_numbered_doe_row_recovery_v1"
-        row_form["candidate_source"] = "doe_numbered_table_row_recovery"
-        row = flatten_row(document_key, doi, model_name, row_form, instance_evidence)
-        rows.append(row)
-        traces.append(
-            {
-                "document_key": document_key,
-                "formulation_id": normalize_text(row.get("formulation_id")),
-                "legacy_field": "numbered_doe_row_recovery",
-                "source_replacement_objects": json.dumps(
-                    [
-                        {
-                            "table_id": normalize_text(artifact_row.get("table_id")),
-                            "table_csv_path": normalize_text(artifact_row.get("table_csv_path")),
-                            "formulation_label": normalize_text(artifact_row.get("formulation_label")),
-                            "evidence_snippet": normalize_text(artifact_row.get("evidence_snippet")),
-                        }
-                    ],
-                    ensure_ascii=False,
-                ),
-                "mapping_status": "direct",
-                "direct_or_derived": "direct",
-                "notes": "Recovered only from explicit numbered DOE table rows present in Stage1 table assets.",
-            }
-        )
-        jsonl_rows.append({"key": document_key, "doi": doi, "formulation_id": normalize_text(row.get("formulation_id")), "legacy_row": row})
-
-    recovery_summary = dict(summary)
-    recovery_summary.update(
-        {
-            "enabled": True,
-            "mode": doe_enumeration_mode(),
-            "candidate_count": len(rows),
-            "row_count": len(rows),
-            "table_count": int(recovery_summary.get("selected_table_count", 0) or 0),
-            "tables_dir": normalize_text(recovery_summary.get("tables_dir")),
-        }
-    )
-    return rows, traces, jsonl_rows, recovery_summary
+    return f"{document_key}__llm_document_scope__01|candidate:{formulation_id}" if formulation_id else f"{document_key}__llm_document_scope__01"
 
 
 def choose_first(items: list[dict[str, Any]], *keys: str) -> str:
@@ -409,11 +307,13 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
     legacy_identity_key = LEGACY_OBJECT_KEYS["formulation_identity_candidate"]
     has_canonical = any(key in document for key in CANONICAL_STAGE2_V2_KEYS.values())
     has_legacy = any(key in document for key in LEGACY_OBJECT_KEYS.values())
+    has_canonical_identity = canonical_identity_key in document
+    has_legacy_identity = legacy_identity_key in document
     if not has_canonical and not has_legacy:
         raise ValueError(
             "Stage2 semantic document is missing recognized semantic-object families for compatibility projection."
         )
-    if has_legacy and not has_canonical:
+    if has_legacy_identity and not has_canonical_identity:
         return document
 
     normalized: dict[str, Any] = {
@@ -421,6 +321,14 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
         "doi": normalize_text(document.get("doi")),
         "model_name": normalize_text(document.get("model_name") or document.get("source_mode")) or "stage2_v2_semantic_objects",
         "source_mode": normalize_text(document.get("source_mode")),
+        "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+        "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+        "semantic_scope_declarations": ensure_list(document.get("semantic_scope_declarations")),
+        "table_formulation_scopes": ensure_list(document.get("table_formulation_scopes")),
+        "table_variable_roles": ensure_list(document.get("table_variable_roles")),
+        "selection_markers": ensure_list(document.get("selection_markers")),
+        "inheritance_markers": ensure_list(document.get("inheritance_markers")),
+        "boundary_markers": ensure_list(document.get("boundary_markers")),
         # Preserve source-path metadata so bounded deterministic recovery can
         # still resolve the explicit Stage1 table anchors from the semantic
         # intermediate, even after the semantic payload is normalized into the
@@ -467,6 +375,11 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
                 "formulation_role": normalize_text(item.get("formulation_role")) or "unclear",
                 "identity_confidence": normalize_text(item.get("identity_confidence") or item.get("status")) or "reported",
                 "candidate_source": normalize_text(item.get("candidate_source") or document.get("source_mode")) or "stage2_v2_semantic_objects",
+                "stage2_semantic_source_mode": normalize_text(item.get("stage2_semantic_source_mode") or document.get("stage2_semantic_source_mode")),
+                "semantic_universe_authority": normalize_text(item.get("semantic_universe_authority") or document.get("semantic_universe_authority")),
+                "row_materialization_mode": normalize_text(item.get("row_materialization_mode")),
+                "semantic_scope_authority": normalize_text(item.get("semantic_scope_authority")),
+                "semantic_scope_ref": normalize_text(item.get("semantic_scope_ref")),
                 "change_descriptions": ensure_list(item.get("change_descriptions")),
                 "instance_context_tags": ensure_list(item.get("instance_context_tags")),
                 "change_context_tags": ensure_list(item.get("change_context_tags")),
@@ -773,15 +686,24 @@ def base_row(identity: dict[str, Any], document_key: str, doi: str, model_name: 
             "formulation_role": normalize_text(identity.get("formulation_role")),
             "instance_confidence": normalize_text(identity.get("identity_confidence")) or "projected",
             "candidate_source": normalize_text(identity.get("candidate_source")) or "compatibility_projection",
+            "stage2_semantic_source_mode": normalize_text(identity.get("stage2_semantic_source_mode")),
+            "semantic_universe_authority": normalize_text(identity.get("semantic_universe_authority")),
+            "row_materialization_mode": normalize_text(identity.get("row_materialization_mode")),
+            "semantic_scope_authority": normalize_text(identity.get("semantic_scope_authority")),
+            "semantic_scope_ref": normalize_text(identity.get("semantic_scope_ref")),
         }
     )
     return row
 
 
-def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]]]:
+def project_document(
+    document: dict[str, Any],
+) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any], dict[str, str] | None]:
+    augment_document_with_table_markers(document)
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     doi = normalize_text(document.get("doi"))
     model_name = normalize_text(document.get("model_name")) or "stage2_replacement_compatibility_projection_v1"
+    source_mode = stage2_semantic_source_mode(document)
     identities = sorted(
         object_rows(document, "formulation_identity_candidate"),
         key=lambda item: normalize_text(item.get("formulation_candidate_id")),
@@ -806,6 +728,17 @@ def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], li
     for identity in identities:
         formulation_id = normalize_text(identity.get("formulation_candidate_id"))
         row = base_row(identity, document_key, doi, model_name)
+        row["stage2_semantic_source_mode"] = row.get("stage2_semantic_source_mode") or source_mode
+        row["semantic_universe_authority"] = row.get("semantic_universe_authority") or (
+            "governed_fallback_semantic_source" if source_mode == FALLBACK_SEMANTIC_SOURCE_MODE else "llm_semantic_discovery"
+        )
+        row["row_materialization_mode"] = row.get("row_materialization_mode") or (
+            "governed_fallback_semantic_source" if source_mode == FALLBACK_SEMANTIC_SOURCE_MODE else "llm_semantic_discovery"
+        )
+        row["semantic_scope_authority"] = row.get("semantic_scope_authority") or (
+            "governed_fallback_semantic_source" if source_mode == FALLBACK_SEMANTIC_SOURCE_MODE else "llm_declared_scope"
+        )
+        row["semantic_scope_ref"] = row.get("semantic_scope_ref") or default_semantic_scope_ref(identity, document)
         owned_components = [item for item in components if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
         owned_phases = [item for item in phases if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
         owned_processes = [item for item in processes if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
@@ -828,6 +761,19 @@ def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], li
                 for item in owned_handoffs
             ]
         )
+        row[TABLE_SCOPE_FIELD] = stringify_json(document.get("table_formulation_scopes"))
+        row[TABLE_VARIABLE_ROLE_FIELD] = stringify_json(document.get("table_variable_roles"))
+        row[SELECTION_MARKER_FIELD] = stringify_json(
+            execution_ready_markers(
+                [item for item in ensure_list(document.get("selection_markers")) if isinstance(item, dict)]
+            )
+        )
+        row[INHERITANCE_MARKER_FIELD] = stringify_json(
+            execution_ready_markers(
+                [item for item in ensure_list(document.get("inheritance_markers")) if isinstance(item, dict)]
+            )
+        )
+        row[BOUNDARY_MARKER_FIELD] = stringify_json(document.get("boundary_markers"))
         identity_variables_payload = build_identity_variables_payload(owned_factors)
         row[IDENTITY_VARIABLES_FIELD] = stringify_json(identity_variables_payload)
         add_trace(
@@ -997,9 +943,11 @@ def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], li
         rows.append(row)
         jsonl_rows.append({"key": document_key, "doi": doi, "formulation_id": formulation_id, "legacy_row": row})
 
-    recovered_rows, recovered_traces, recovered_jsonl_rows, recovery_summary = recover_numbered_doe_rows(
+    semantic_scope = resolve_llm_declared_doe_scope(document)
+    recovered_rows, recovered_traces, recovered_jsonl_rows, recovery_summary = run_doe_row_expansion_function_unit(
         document=document,
         model_name=model_name,
+        semantic_scope=semantic_scope,
     )
     if recovered_rows:
         rows.extend(recovered_rows)
@@ -1016,13 +964,101 @@ def project_document(document: dict[str, Any]) -> tuple[list[dict[str, str]], li
             f"Recovered {recovery_summary.get('candidate_count', 0)} explicit DOE rows from numbered table anchors.",
         )
 
+    table_rows, table_traces, table_jsonl_rows, table_summary = run_table_row_expansion(
+        document=document,
+        compatibility_columns=compatibility_output_columns(),
+    )
+    if table_rows:
+        rows.extend(table_rows)
+        traces.extend(table_traces)
+        jsonl_rows.extend(table_jsonl_rows)
+        group_hint = normalize_text(table_summary.get("group_hint"))
+        if group_hint:
+            mark_llm_summary_rows_as_helpers(rows, jsonl_rows, group_hint)
+
+    sequential_summary = {
+        "function_unit": SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
+        "document_key": document_key,
+        "status": "skipped_due_to_table_row_expansion" if table_rows else "not_invoked",
+        "replaced_row_count": 0,
+    }
+    if not table_rows:
+        sequential_rows, sequential_traces, sequential_jsonl_rows, sequential_summary = run_sequential_optimization_interpreter(
+            document=document,
+            existing_rows=rows,
+        )
+        if sequential_rows:
+            rows.extend(sequential_rows)
+            traces.extend(sequential_traces)
+            jsonl_rows.extend(sequential_jsonl_rows)
+            rows, suppressed_rows = prefer_resolved_sequential_rows(rows)
+            if suppressed_rows:
+                suppressed_ids = [
+                    normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+                    for row in suppressed_rows
+                    if normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+                ]
+                add_trace(
+                    traces,
+                    document_key,
+                    "__recovery__",
+                    "sequential_optimization_overlap_suppression",
+                    suppressed_ids,
+                    DIRECT,
+                    DIRECT,
+                    f"Suppressed {len(suppressed_ids)} overlapping LLM rows in favor of governed sequential optimization resolution.",
+                )
+                kept = {normalize_text(row.get("formulation_id")) for row in rows if normalize_text(row.get("formulation_id"))}
+                jsonl_rows = [
+                    item
+                    for item in jsonl_rows
+                    if normalize_text(item.get("formulation_id")) in kept
+                ]
+
+    rows, suppressed_rows = prefer_governed_doe_rows_over_llm_numeric_rows(rows)
+    if suppressed_rows:
+        suppressed_ids = [
+            normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+            for row in suppressed_rows
+            if normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+        ]
+        add_trace(
+            traces,
+            document_key,
+            "__recovery__",
+            "numbered_doe_numeric_overlap_suppression",
+            suppressed_ids,
+            DIRECT,
+            DIRECT,
+            f"Suppressed {len(suppressed_ids)} overlapping numeric LLM rows in favor of governed DOE recovery rows.",
+        )
+        kept = {normalize_text(row.get("formulation_id")) for row in rows if normalize_text(row.get("formulation_id"))}
+        jsonl_rows = [
+            item
+            for item in jsonl_rows
+            if normalize_text(item.get("formulation_id")) in kept
+        ]
+
+    guard_row = None
+    if recovery_summary.get("enabled"):
+        guard_row = build_governed_numbered_doe_guard_row(
+            document=document,
+            rows=rows,
+            recovery_summary=recovery_summary,
+        )
+
     for field in CORE_FIELDS:
         values = {normalize_text(row.get(f"{field}_value_text")) for row in rows if normalize_text(row.get(f"{field}_value_text"))}
         scope = "global_shared" if field in SHARED_SCOPE_FIELDS and len(values) == 1 and len(rows) > 1 else "instance_specific"
         for row in rows:
             row[f"{field}_scope"] = scope if normalize_text(row.get(f"{field}_value_text")) else ""
 
-    return rows, traces, jsonl_rows
+    summary = {
+        "doe_recovery_summary": recovery_summary,
+        "sequential_optimization_summary": sequential_summary,
+        "table_row_expansion_summary": table_summary,
+    }
+    return rows, traces, jsonl_rows, summary, guard_row
 
 
 def write_tsv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
@@ -1110,11 +1146,16 @@ def main() -> None:
     all_rows: list[dict[str, str]] = []
     all_traces: list[dict[str, str]] = []
     all_jsonl_rows: list[dict[str, Any]] = []
+    projection_summaries: list[dict[str, Any]] = []
+    guard_rows: list[dict[str, str]] = []
     for document in documents:
-        rows, traces, jsonl_rows = project_document(document)
+        rows, traces, jsonl_rows, projection_summary, guard_row = project_document(document)
         all_rows.extend(rows)
         all_traces.extend(traces)
         all_jsonl_rows.extend(jsonl_rows)
+        projection_summaries.append(projection_summary)
+        if guard_row is not None:
+            guard_rows.append(guard_row)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     write_tsv(output_dir / LEGACY_TSV_NAME, all_rows, compatibility_output_columns())
@@ -1135,23 +1176,44 @@ def main() -> None:
         ],
     )
     write_projection_contract(contract_path)
+    guard_stats = write_numbered_doe_guard_artifact(output_dir, guard_rows)
     summary = {
         "schema": "stage2_replacement_compatibility_projection_v1",
         "status": "transitional_support",
         "documents": len(documents),
         "projected_rows": len(all_rows),
+        "stage2_semantic_source_modes": sorted(
+            {
+                stage2_semantic_source_mode(document)
+                for document in documents
+            }
+        ),
         "numbered_doe_recovery_enabled": numbered_doe_recovery_enabled(),
         "doe_enumeration_mode": doe_enumeration_mode(),
         "numbered_doe_recovery_min_rows": numbered_doe_recovery_min_rows(),
         "numbered_doe_recovered_rows": sum(
-            1 for row in all_rows if normalize_text(row.get("candidate_source")) == "doe_numbered_table_row_recovery"
+            1 for row in all_rows if is_governed_doe_recovery_candidate_source(normalize_text(row.get("candidate_source")))
         ),
+        "numbered_doe_function_unit": FUNCTION_UNIT_ID,
+        "sequential_optimization_resolved_rows": sum(
+            1 for row in all_rows if normalize_text(row.get("candidate_source")) == SEQUENTIAL_OPTIMIZATION_CANDIDATE_SOURCE
+        ),
+        "sequential_optimization_function_unit": SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
+        "table_row_expansion_rows": sum(
+            1 for row in all_rows if normalize_text(row.get("candidate_source")) == "table_row_expansion_v1"
+        ),
+        "table_row_expansion_function_unit": "table_row_expansion_v1",
+        "numbered_doe_guard_tsv": str(Path(guard_stats["guard_path"]).resolve()),
+        "numbered_doe_guard_fail_count": int(guard_stats["fail_count"]),
+        "numbered_doe_guard_warn_count": int(guard_stats["warn_count"]),
+        "projection_summaries": projection_summaries,
         "trace_rows": len(all_traces),
         "legacy_surface_columns": len(compatibility_output_columns()),
         "output_files": [
             str(output_dir / LEGACY_TSV_NAME),
             str(output_dir / LEGACY_JSONL_NAME),
             str(output_dir / TRACE_TSV_NAME),
+            str(Path(guard_stats["guard_path"]).resolve()),
             str(contract_path),
         ],
     }

@@ -48,8 +48,55 @@ Corrective architecture-freeze note (`2026-03-30`):
   fallback, comparator, migration-support, or diagnostic work.
 - They must not be treated as active Stage2 mainline authority.
 
+Current clarification (`2026-04-08`):
+
+- The architecture correction successfully restored semantic authority.
+- The remaining failure mode is not a return to deterministic semantic
+  overreach.
+- The remaining failure mode is semantic contract overload inside the current
+  Stage2 semantic substep:
+  - the LLM is still pressured toward candidate-universe construction and
+    partially execution-ready structure emission earlier than preferred
+  - strict marker requirements can suppress governed marker families when the
+    paper-level semantic pattern is understood but exact execution-level
+    grounding is incomplete
+- This clarification does not change the active runtime contract yet.
+- It records the preferred future direction for contract redesign:
+  - reduce LLM output burden
+  - allow governed partial semantic markers where appropriate
+  - keep deterministic execution strictness downstream
+
 The canonical benchmark object is the Stage 5 final formulation table. No
 intermediate artifact may be reported as the system result against GT.
+
+Boundary classes used by the current maintained pipeline:
+
+- `internal_intermediate`
+  - a stage-local artifact that supports execution but is not itself a resume
+    boundary
+- `diagnostic_boundary`
+  - a replay or audit artifact that can be inspected for debugging but does
+    not by itself authorize mainline continuation
+- `mainline_resume_boundary`
+  - a contract-complete upstream artifact that the maintained downstream stage
+    may legally consume without boundary drift
+- `benchmark_terminal_boundary`
+  - the final governed benchmark surface for the active pipeline
+
+Boundary rule:
+
+- raw Stage2 semantic objects and raw freeze baselines are diagnostic
+  boundaries unless they also preserve the completed Stage2 authority surface
+  required by Stage3
+- a frozen current live-v2 raw-response set may be converted into the
+  authoritative completed Stage2 surface only by replaying it through the
+  maintained composite Stage2 entrypoint and its maintained internal Stage2
+  completion step; the raw freeze itself does not become a mainline resume
+  boundary until that completion artifact is produced
+- the completed Stage2 weak-label TSV is the lawful downstream resume boundary
+  for Stage3
+- the Stage5 final formulation table and comparison outputs are the benchmark
+  terminal boundary
 
 ## Canonical Path Definition
 
@@ -213,6 +260,43 @@ Stage2 contains both:
 The raw semantic-object payload is an internal Stage2 intermediate, not the
 authoritative Stage2 completion artifact.
 
+Current design-direction clarification:
+
+- Stage2 has already restored the rule that LLM semantic discovery is the
+  semantic authority.
+- The remaining bottleneck is that the current semantic contract can still ask
+  the LLM for more execution-like structure than is ideal.
+- The preferred future Stage2 contract direction is for the LLM to emit
+  reusable semantic cues and governed intermediate markers, not final
+  executable formulation structures.
+- This does not authorize uncontrolled vague text and does not authorize
+  deterministic semantic inference.
+- It means that when the paper supports a governed semantic cue but not full
+  execution-ready grounding, the future contract direction should prefer
+  governed intermediate expression over silent suppression where governance can
+  keep the downstream behavior auditable.
+
+Current maintained contract note:
+
+- the maintained Stage2 prompt and validator now allow governed
+  `partial_semantic` markers for:
+  - `selection_marker`
+  - `inheritance_marker`
+- this relaxation is limited to the currently identified non-execution-
+  critical grounding fields:
+  - `selection_marker.source_table_id`
+  - `selection_marker.selected_variable`
+  - `selection_marker.selected_value`
+  - `inheritance_marker.from_table`
+  - `inheritance_marker.to_table`
+- strict execution-critical fields remain unchanged in the active runtime,
+  especially:
+  - `inheritance_marker.inherit_type`
+  - `inheritance_marker.variable`
+  - `inheritance_marker.value`
+- partial markers are preserved in the Stage2 semantic-intermediate artifact
+  but do not by themselves authorize current deterministic execution
+
 Exact input files or directories:
 
 - cleaned manifest or split manifest TSVs
@@ -235,8 +319,49 @@ Comparator / fallback note:
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
   remains available only for fallback, comparator, migration-support, or
   diagnostic runs and must not be treated as Stage2 authority.
+- Governed Stage2 runs must declare exactly one semantic-source mode:
+  - `llm_first_composite`
+  - `governed_fallback_semantic_source`
+  - `diagnostic_comparator`
+- In `llm_first_composite` mode, deterministic DOE row enumeration may
+  materialize row-level candidates only within LLM-declared DOE scope.
+- In `llm_first_composite` mode, deterministic non-DOE table row enumeration
+  may materialize row-level candidates only when the LLM declares a
+  formulation-bearing non-DOE table through the table authorization contract.
 - `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py`
   is a compatibility shim only and must not be treated as the Stage2 definition.
+
+Stage2 -> deterministic -> Stage3 handshake:
+
+- the LLM substep may declare table-level semantic markers only:
+  - `table_formulation_scope`
+  - `variable_roles`
+  - `selection_marker`
+  - `inheritance_marker`
+  - `boundary_marker`
+- the deterministic completion substep may then choose one of two governed row
+  expansion paths:
+  - DOE enumerator for `is_doe == true`
+  - table row expansion for `is_formulation_table == true` and `is_doe == false`
+- both expansion paths must emit compatible candidate-row schemas for Stage3
+  relation binding.
+
+Handshake clarification:
+
+- the current maintained pipeline still uses some candidate-ready semantic
+  structures inside the Stage2 semantic intermediate
+- the current maintained pipeline now also distinguishes marker readiness:
+  - `execution_ready`
+  - `partial_semantic`
+- only `execution_ready` markers are handed to the current deterministic
+  execution path through the completed Stage2 row surface
+- future contract evolution should move this handshake toward governed
+  intermediate semantic protocol behavior where:
+  - the LLM contributes semantic cues and authorization markers
+  - deterministic function units perform more of the execution-level
+    completion
+- this is a future-facing contract direction only and must not be described as
+  already implemented runtime behavior
 
 Exact output files or directories:
 
@@ -261,10 +386,25 @@ Stage2 internal intermediate artifacts:
 - `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
 - `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
 
+Boundary status:
+
+- `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+  - `internal_intermediate`
+- `semantic_stage2_objects/raw_responses/`
+  - `diagnostic_boundary`
+  - replayable only through the maintained composite Stage2 replay path
+  - does not become a lawful Stage3 upstream boundary until that replay path
+    re-emits the completed Stage2 artifact
+
 Stage completion artifact:
 
 - completed Stage2 candidate surface:
   - `data/results/run_<run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+
+Boundary status:
+
+- `weak_labels__v7pilot_r3_fixparse.tsv`
+  - `mainline_resume_boundary`
 
 Consumed by downstream stage:
 
@@ -283,6 +423,15 @@ Purpose:
 Materialize explicit paper-level formulation relation structure from Stage 2
 candidate rows without any LLM usage. This stage exists to separate relation
 reasoning from later Stage 5 final-row closure and export.
+
+Stage3 relation-binding extension:
+
+- consume deterministic DOE rows and deterministic non-DOE table rows from the
+  same completed Stage2 boundary
+- propagate selected-condition inheritance from parent tables into child-table
+  rows when authorized by Stage2 markers
+- attach preparation-context shared fields only as deterministic inheritance,
+  never as cross-table Cartesian reconstruction
 
 Exact input files or directories:
 

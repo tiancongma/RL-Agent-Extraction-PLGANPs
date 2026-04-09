@@ -60,6 +60,19 @@ one-off prompt option: its governed activation is evidenced by the prompt
 preview artifact and the generated Feature Unit Activation section inside
 `RUN_CONTEXT.md`.
 
+The same governance layer also tracks post-raw-output parse-repair units for
+diagnostic evaluation:
+
+- `stage2_json_sanitation_path1`
+  - syntax-first sanitation before strict parse
+  - no semantic reconstruction
+- `stage2_legacy_fixparse_fallback_path2`
+  - historical wide-row fixparse fallback basis
+  - diagnostic-only fallback, not mainline authority
+
+These parse-repair units are audited through dedicated parse-repair comparison
+artifacts rather than by reusing the mainline Stage2 prompt-preview contract.
+
 The activation report is intentionally evidence-based. A feature must not be marked `active` only because code for it exists in the repository.
 
 For numbered DOE row activation specifically, governed recovery rows are accepted when they preserve the explicit numbered table-row anchor pattern and the run-level report can prove the same downstream evidence structure.

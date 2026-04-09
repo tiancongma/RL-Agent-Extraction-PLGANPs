@@ -10,6 +10,7 @@ import re
 import shutil
 import sys
 import time
+from threading import Event, Thread
 from pathlib import Path
 from typing import Any
 
@@ -24,15 +25,29 @@ except Exception:  # pragma: no cover
 try:
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
     from src.utils.paths import PROJECT_ROOT
+    from src.stage2_sampling_labels.table_row_expansion_v1 import (
+        EXECUTION_READY_MARKER,
+        PARTIAL_SEMANTIC_MARKER,
+        SCOPE_KIND as TABLE_FORMULATION_SCOPE_KIND,
+        augment_document_with_table_markers,
+    )
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
     from src.utils.paths import PROJECT_ROOT
+    from src.stage2_sampling_labels.table_row_expansion_v1 import (
+        EXECUTION_READY_MARKER,
+        PARTIAL_SEMANTIC_MARKER,
+        SCOPE_KIND as TABLE_FORMULATION_SCOPE_KIND,
+        augment_document_with_table_markers,
+    )
 
 
 OUTPUT_JSONL_NAME = "semantic_stage2_v2_objects.jsonl"
 OUTPUT_SUMMARY_NAME = "semantic_stage2_v2_summary.tsv"
 PROMPT_PREVIEW_NAME = "stage2_prompt_preview_v1.tsv"
+TABLE_SELECTION_DEBUG_NAME = "table_selection_debug_v1.json"
+MARKER_CLEANUP_AUDIT_SUFFIX = "__marker_cleanup_audit.json"
 NVIDIA_HOSTED_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 LEGACY_FIELD_ALIASES = {"plga_mw_kDa": "polymer_mw_kDa"}
 SUMMARY_FIRST_COLUMN_ENHANCEMENT_ENV = "STAGE2_TABLE_SUMMARY_FIRST_COLUMN_ENHANCEMENT"
@@ -74,6 +89,13 @@ DOE_TOKENS = {
     "cpva",
     "ph",
 }
+STAGE2_SEMANTIC_SOURCE_MODE = "llm_first_composite"
+LLM_SEMANTIC_DISCOVERY = "llm_semantic_discovery"
+LLM_DECLARED_SCOPE = "llm_declared_scope"
+LLM_EXPLICIT = "llm_explicit"
+LLM_PARSED = "llm_parsed"
+DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
+DOCUMENT_SCOPE_KIND = "document_semantic_scope"
 
 
 def normalize_text(value: Any) -> str:
@@ -86,22 +108,228 @@ def normalize_token(value: Any) -> str:
     return re.sub(r"_+", "_", text).strip("_")
 
 
+def ensure_list(value: Any) -> list[Any]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    return [value]
+
+
+def normalize_marker_list(value: Any, *, default_provenance: str = LLM_EXPLICIT) -> list[dict[str, Any]]:
+    markers: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        marker = dict(item)
+        provenance = normalize_text(marker.get("marker_provenance")) or default_provenance
+        if provenance not in {LLM_EXPLICIT, LLM_PARSED}:
+            provenance = default_provenance
+        marker["marker_provenance"] = provenance
+        markers.append(marker)
+    return markers
+
+
+def inheritance_marker_contract_issues(marker: dict[str, Any]) -> list[str]:
+    issues: list[str] = []
+    readiness = normalize_text(marker.get("marker_readiness")) or EXECUTION_READY_MARKER
+    if readiness not in {EXECUTION_READY_MARKER, PARTIAL_SEMANTIC_MARKER}:
+        issues.append("invalid_marker_readiness")
+        return issues
+    for field in ["inherit_type", "variable", "value"]:
+        if not normalize_text(marker.get(field)):
+            issues.append(f"missing_{field}")
+    if readiness == EXECUTION_READY_MARKER:
+        if normalize_text(marker.get("risk_label")) or normalize_text(marker.get("risk_reason")):
+            issues.append("execution_ready_carries_risk_fields")
+    else:
+        if normalize_text(marker.get("risk_label")) != "review":
+            issues.append("partial_missing_review_risk_label")
+        if normalize_text(marker.get("risk_reason")) not in {
+            "missing_source_table",
+            "missing_target_table",
+            "cross_table_link_unresolved",
+        }:
+            issues.append("partial_invalid_risk_reason")
+    return issues
+
+
+def write_marker_cleanup_audit(raw_response_path: Path, audit: dict[str, Any]) -> None:
+    audit_path = raw_response_path.with_name(raw_response_path.stem + MARKER_CLEANUP_AUDIT_SUFFIX)
+    audit_path.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def prune_invalid_live_inheritance_markers(parsed: dict[str, Any], raw_response_path: Path) -> dict[str, Any]:
+    cleaned = dict(parsed)
+    kept: list[dict[str, Any]] = []
+    dropped: list[dict[str, Any]] = []
+    for idx, item in enumerate(ensure_list(parsed.get("inheritance_markers")), start=1):
+        if not isinstance(item, dict):
+            dropped.append({"index": idx, "reason": ["non_dict_marker"], "marker": item})
+            continue
+        issues = inheritance_marker_contract_issues(item)
+        if issues:
+            dropped.append({"index": idx, "reason": issues, "marker": item})
+            continue
+        kept.append(item)
+    cleaned["inheritance_markers"] = kept
+    if dropped:
+        write_marker_cleanup_audit(
+            raw_response_path,
+            {
+                "artifact_version": "v1",
+                "source_raw_response_path": str(raw_response_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+                "cleanup_scope": "inheritance_markers",
+                "dropped_marker_count": len(dropped),
+                "dropped_markers": dropped,
+            },
+        )
+    return cleaned
+
+
 def canonical_field_name(field_name: str) -> str:
     return LEGACY_FIELD_ALIASES.get(field_name, field_name)
 
 
-def safe_json_load(text: str) -> dict[str, Any]:
-    cleaned = normalize_text(text.replace("\r\n", "\n").replace("\r", "\n"))
-    cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r"\s*```$", "", cleaned)
-    cleaned = cleaned.replace("\t", " ")
+def _mechanically_sanitize_json_text(text: str) -> tuple[str, dict[str, Any]]:
+    """
+    Apply only low-risk mechanical cleanup before strict JSON parsing.
+
+    The goal is to preserve the model's semantic content while removing
+    formatting wrappers and, when needed, clipping a truncated tail at the last
+    complete JSON boundary.
+    """
+
+    original_text = str(text or "")
+    cleaned = normalize_text(original_text.replace("\r\n", "\n").replace("\r", "\n"))
+    audit: dict[str, Any] = {
+        "original_length": len(original_text),
+        "cleaned_length": len(cleaned),
+        "removed_leading_chars": 0,
+        "removed_code_fence": False,
+        "removed_trailing_code_fence": False,
+        "balanced_close_applied": False,
+        "balanced_close_cut": None,
+        "balanced_close_remaining_stack": "",
+    }
+
+    leading_fence_match = re.match(r"^```(?:json)?\s*", cleaned, flags=re.IGNORECASE)
+    if leading_fence_match:
+        cleaned = cleaned[leading_fence_match.end() :]
+        audit["removed_code_fence"] = True
+
+    trailing_fence_match = re.search(r"\s*```$", cleaned)
+    if trailing_fence_match:
+        cleaned = cleaned[: trailing_fence_match.start()]
+        audit["removed_trailing_code_fence"] = True
+
+    start_candidates = [idx for idx in (cleaned.find("{"), cleaned.find("[")) if idx != -1]
+    if start_candidates:
+        start_index = min(start_candidates)
+        if start_index > 0:
+            audit["removed_leading_chars"] = start_index
+            cleaned = cleaned[start_index:]
+
+    audit["cleaned_length"] = len(cleaned)
+    return cleaned, audit
+
+
+def _repair_truncated_json_text(cleaned: str) -> tuple[str | None, dict[str, Any]]:
+    """
+    Attempt a narrow, auditable repair for a JSON document that was truncated
+    after a complete nested object or array boundary.
+
+    This is intentionally conservative:
+    - only closing-delimiter balancing is attempted
+    - no semantic fields are invented
+    - no token-level reconstruction is performed
+    """
+
+    stack: list[str] = []
+    in_string = False
+    escaped = False
+    candidates: list[tuple[int, list[str]]] = []
+
+    for index, char in enumerate(cleaned):
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            continue
+
+        if char == '"':
+            in_string = True
+        elif char in "{[":
+            stack.append(char)
+        elif char in "}]":
+            if not stack:
+                continue
+            open_char = stack[-1]
+            if (open_char == "{" and char == "}") or (open_char == "[" and char == "]"):
+                stack.pop()
+                candidates.append((index + 1, stack.copy()))
+
+    for cut_index, remaining_stack in reversed(candidates):
+        repaired = cleaned[:cut_index] + "".join("}" if char == "{" else "]" for char in reversed(remaining_stack))
+        try:
+            json.loads(repaired)
+            return repaired, {
+                "balanced_close_applied": True,
+                "balanced_close_cut": cut_index,
+                "balanced_close_remaining_stack": "".join(remaining_stack),
+            }
+        except Exception:
+            continue
+
+    return None, {
+        "balanced_close_applied": False,
+        "balanced_close_cut": None,
+        "balanced_close_remaining_stack": "",
+    }
+
+
+def sanitize_stage2_json_text(text: str) -> tuple[str, dict[str, Any]]:
+    cleaned, audit = _mechanically_sanitize_json_text(text)
+    audit["parse_stage"] = "direct"
     try:
-        return json.loads(cleaned)
-    except Exception:
-        match = re.search(r"\{.*\}", cleaned, flags=re.DOTALL)
-        if match:
-            return json.loads(match.group(0))
-    raise ValueError("Could not parse JSON response.")
+        json.loads(cleaned)
+        return cleaned, audit
+    except Exception as exc:
+        audit["direct_parse_error"] = f"{type(exc).__name__}: {exc}"
+
+    repaired, repair_audit = _repair_truncated_json_text(cleaned)
+    audit.update(repair_audit)
+    if repaired is not None:
+        audit["parse_stage"] = "balanced_close"
+        return repaired, audit
+
+    audit["parse_stage"] = "failed"
+    return cleaned, audit
+
+
+def safe_json_load(text: str) -> dict[str, Any]:
+    sanitized_text, _ = sanitize_stage2_json_text(text)
+    return json.loads(sanitized_text)
+
+
+def write_json_sanitization_audit(raw_response_path: Path, audit: dict[str, Any]) -> None:
+    if not audit:
+        return
+    audit_path = raw_response_path.with_suffix(".sanitization.json")
+    audit_path.write_text(json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def json_sanitization_applied(audit: dict[str, Any]) -> bool:
+    return bool(
+        audit.get("removed_leading_chars")
+        or audit.get("removed_code_fence")
+        or audit.get("removed_trailing_code_fence")
+        or audit.get("balanced_close_applied")
+        or audit.get("parse_stage") != "direct"
+    )
 
 
 def parse_json_list(value: Any) -> list[Any]:
@@ -141,7 +369,7 @@ def ensure_genai(model: str) -> None:
         raise RuntimeError("Gemini model name is empty.")
 
 
-def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
+def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float, *, progress_label: str = "") -> str:
     ensure_genai(model)
     last_err: Exception | None = None
     for attempt in range(retries + 1):
@@ -165,11 +393,16 @@ def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
         except Exception as exc:  # pragma: no cover
             last_err = exc
         if attempt < retries:
+            if progress_label:
+                print(
+                    f"{progress_label} retrying attempt={attempt + 2}/{retries + 1}",
+                    flush=True,
+                )
             time.sleep(sleep_sec)
     raise last_err or RuntimeError("Gemini call failed.")
 
 
-def call_nvidia_hosted(model: str, prompt: str, retries: int, sleep_sec: float) -> str:
+def call_nvidia_hosted(model: str, prompt: str, retries: int, sleep_sec: float, *, progress_label: str = "") -> str:
     load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
     api_key = os.getenv("NVIDIA_API_KEY")
     if not api_key:
@@ -206,8 +439,78 @@ def call_nvidia_hosted(model: str, prompt: str, retries: int, sleep_sec: float) 
         except Exception as exc:  # pragma: no cover
             last_err = exc
         if attempt < retries:
+            if progress_label:
+                print(
+                    f"{progress_label} retrying attempt={attempt + 2}/{retries + 1}",
+                    flush=True,
+                )
             time.sleep(sleep_sec * (attempt + 1))
     raise last_err or RuntimeError("NVIDIA hosted API call failed.")
+
+
+class Stage2ProgressReporter:
+    def __init__(self, total_tasks: int, heartbeat_sec: float = 30.0) -> None:
+        self.total_tasks = max(0, total_tasks)
+        self.completed = 0
+        self.failed = 0
+        self.current_index = 0
+        self.current_key = ""
+        self.current_started_at = 0.0
+        self._heartbeat_sec = max(0.0, heartbeat_sec)
+        self._stop_event = Event()
+        self._thread: Thread | None = None
+
+    def start(self) -> None:
+        if self._heartbeat_sec <= 0:
+            return
+        self._thread = Thread(target=self._heartbeat_loop, daemon=True)
+        self._thread.start()
+
+    def stop(self) -> None:
+        self._stop_event.set()
+        if self._thread is not None:
+            self._thread.join(timeout=1.0)
+
+    def begin_task(self, index: int, key: str) -> str:
+        self.current_index = index
+        self.current_key = key
+        self.current_started_at = time.monotonic()
+        print(self._format_message("running"), flush=True)
+        return self.task_prefix()
+
+    def complete_task(self) -> None:
+        self.completed += 1
+        print(self._format_message("completed"), flush=True)
+
+    def fail_task(self, error: Exception) -> None:
+        self.failed += 1
+        print(self._format_message(f"failed error={type(error).__name__}: {error}"), flush=True)
+
+    def finish(self) -> None:
+        print(
+            f"stage2_progress finished success={self.completed} failed={self.failed} total={self.total_tasks}",
+            flush=True,
+        )
+
+    def task_prefix(self) -> str:
+        return f"stage2_progress [{self.current_index}/{self.total_tasks}] paper={self.current_key}"
+
+    def _format_message(self, status: str) -> str:
+        return (
+            f"{self.task_prefix()} {status} "
+            f"completed={self.completed} failed={self.failed} total={self.total_tasks}"
+        ).strip()
+
+    def _heartbeat_loop(self) -> None:
+        while not self._stop_event.wait(self._heartbeat_sec):
+            if not self.current_index or not self.current_key:
+                continue
+            elapsed_sec = int(time.monotonic() - self.current_started_at)
+            print(
+                f"{self.task_prefix()} heartbeat completed={self.completed} failed={self.failed} "
+                f"elapsed_sec={elapsed_sec}",
+                flush=True,
+            )
 
 
 def resolve_tables_dir(text_path: Path, key: str) -> Path | None:
@@ -275,6 +578,21 @@ def summarize_row_anchor_preview(row_ids: list[str], limit: int = 12) -> str:
     return ", ".join(str(value) for value in numeric_ids[:limit]) + f", ... ({len(numeric_ids)} rows)"
 
 
+def build_summary_table_signal_text(
+    rows: list[list[str]],
+    meta: dict[str, Any],
+    header_parts: list[str],
+) -> str:
+    parts: list[str] = []
+    parts.extend(header_parts)
+    parts.extend(normalize_text(item) for item in (meta.get("header_keywords_hit") or []))
+    parts.append(normalize_text(meta.get("caption_or_title")))
+    parts.append(normalize_text(meta.get("footnotes") or meta.get("notes")))
+    for row in rows:
+        parts.extend(normalize_text(cell) for cell in row if normalize_text(cell))
+    return " ".join(part for part in parts if part).lower()
+
+
 def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any]) -> tuple[int, str]:
     header_row = rows[0] if rows else []
     data_rows = rows[1:] if len(rows) > 1 else []
@@ -287,6 +605,7 @@ def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any])
     role_hint = infer_table_role_hint(header_parts, meta)
     numeric_rows = sum(1 for value in row_ids if parse_numeric_row_label(value) is not None)
     numeric_ratio = numeric_rows / max(len(data_rows), 1)
+    signal_text = build_summary_table_signal_text(rows, meta, header_parts)
     score = 0
     if row_pattern in {"numeric runs", "F-numbered rows"}:
         score += 100
@@ -300,16 +619,48 @@ def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any])
         score += 10
     if any(token in " ".join(header_parts).lower() for token in ["design", "factor", "doe", "optimization", "formulation"]):
         score += 15
+    if "selected" in signal_text:
+        score += 35
+    if "optimal" in signal_text:
+        score += 25
+    if "note:" in signal_text:
+        score += 30
+    if "chosen" in signal_text:
+        score += 20
+    if "remaining studies" in signal_text:
+        score += 35
+    if "whole study" in signal_text:
+        score += 25
+    if "mg/ml" in signal_text:
+        score += 25
+    if "ratio" in signal_text:
+        score += 15
+    if "concentration" in signal_text:
+        score += 12
+    if "formulation" in signal_text:
+        score += 10
+    if "poloxamer 188" in signal_text:
+        score += 20
+    if "plga:itz" in signal_text:
+        score += 15
+    if any(token in signal_text for token in ["et al", "dovepress", "references", "submit your manuscript", "international journal of nanomedicine"]):
+        score -= 60
+    if any(token in signal_text for token in ["purpose:", "abstract", "correspondence:", "college of pharmacy", "department of"]):
+        score -= 80
+    if any(token in signal_text for token in ["pharmacokinetic", "lc-ms/ms", "hplc", "chromatogram", "calibration curve", "assay"]):
+        score -= 20
+    prose_like_rows = sum(
+        1
+        for row in data_rows[:20]
+        if sum(len(normalize_text(cell)) for cell in row if normalize_text(cell)) >= 60
+    )
+    if len(header_parts) <= 2 and numeric_ratio < 0.15 and prose_like_rows >= 5:
+        score -= 45
     score += min(10, len(header_parts))
     return score, row_pattern
 
 
-def select_summary_tables(
-    table_dir: Path,
-    *,
-    max_tables: int,
-    enhancement_enabled: bool,
-) -> list[dict[str, Any]]:
+def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
     manifest = load_table_manifest(table_dir)
     table_paths = sorted(table_dir.glob("*.csv"))
     entries: list[dict[str, Any]] = []
@@ -334,16 +685,61 @@ def select_summary_tables(
                 "row_pattern": row_pattern,
             }
         )
-    if enhancement_enabled:
-        entries.sort(
-            key=lambda item: (
-                -int(item["score"]),
-                str(item["path"].name).lower(),
-            )
+    entries.sort(
+        key=lambda item: (
+            -int(item["score"]),
+            str(item["path"].name).lower(),
         )
-    else:
-        entries.sort(key=lambda item: str(item["path"].name).lower())
-    return entries[:max_tables]
+    )
+    return entries
+
+
+def select_summary_tables(
+    table_dir: Path,
+    *,
+    max_tables: int,
+) -> list[dict[str, Any]]:
+    return collect_summary_table_candidates(table_dir)[:max_tables]
+
+
+def build_table_selection_debug_payload(
+    *,
+    document_key: str,
+    table_dir: Path | None,
+    max_tables: int,
+    summary_enhanced: bool,
+) -> dict[str, Any] | None:
+    if table_dir is None or not table_dir.exists():
+        return None
+    candidates = collect_summary_table_candidates(table_dir)
+    selected_names = {item["path"].name for item in candidates[:max_tables]}
+    payload_candidates: list[dict[str, Any]] = []
+    for item in candidates:
+        rows = item["rows"]
+        first_data_row = rows[1] if len(rows) > 1 else rows[0]
+        payload_candidates.append(
+            {
+                "file": item["path"].name,
+                "score": item["score"],
+                "selected": item["path"].name in selected_names,
+                "row_pattern": item["row_pattern"],
+                "page_number": normalize_text(item["meta"].get("page_number")),
+                "n_rows": item["meta"].get("n_rows", len(rows)),
+                "n_cols": item["meta"].get("n_cols", max((len(r) for r in rows), default=0)),
+                "caption_or_title": normalize_text(item["meta"].get("caption_or_title")),
+                "header_keywords_hit": item["meta"].get("header_keywords_hit") or [],
+                "first_data_row_preview": " | ".join(cell for cell in first_data_row if cell),
+            }
+        )
+    return {
+        "document_key": document_key,
+        "table_mode": table_mode(),
+        "selection_ranking_mode": "score_ranked_top_k",
+        "summary_first_column_enhancement": "yes" if summary_enhanced else "no",
+        "max_tables": max_tables,
+        "selected_tables": [item["path"].name for item in candidates[:max_tables]],
+        "candidates": payload_candidates,
+    }
 
 
 def load_table_manifest(table_dir: Path | None) -> dict[str, dict[str, Any]]:
@@ -428,7 +824,34 @@ def infer_table_role_hint(headers: list[str], meta: dict[str, Any]) -> str:
 def select_sample_rows(rows: list[list[str]]) -> list[list[str]]:
     if not rows:
         return []
-    picks = [0]
+    scored_picks: list[tuple[int, int]] = []
+    for idx, row in enumerate(rows):
+        row_text = " ".join(normalize_text(cell) for cell in row if normalize_text(cell)).lower()
+        score = 0
+        if "note:" in row_text:
+            score += 60
+        if "selected" in row_text:
+            score += 50
+        if "optimal" in row_text:
+            score += 40
+        if "chosen" in row_text:
+            score += 30
+        if "remaining studies" in row_text or "whole study" in row_text:
+            score += 30
+        if "mg/ml" in row_text:
+            score += 25
+        if "ratio" in row_text:
+            score += 20
+        if "concentration" in row_text:
+            score += 15
+        if "poloxamer 188" in row_text:
+            score += 20
+        if score > 0:
+            scored_picks.append((score, idx))
+    scored_picks.sort(key=lambda item: (-item[0], item[1]))
+    picks = [idx for _, idx in scored_picks[:2]]
+    if 0 not in picks:
+        picks.append(0)
     if len(rows) >= 3:
         picks.append(len(rows) // 2)
     if len(rows) >= 2:
@@ -440,6 +863,8 @@ def select_sample_rows(rows: list[list[str]]) -> list[list[str]]:
             continue
         seen.add(idx)
         selected.append(rows[idx])
+        if len(selected) >= 3:
+            break
     return selected
 
 
@@ -450,7 +875,6 @@ def render_table_summary_text(table_dir: Path | None, max_tables: int = 4) -> st
     selected_tables = select_summary_tables(
         table_dir,
         max_tables=max_tables,
-        enhancement_enabled=enhancement_enabled,
     )
     blocks: list[str] = []
     for item in selected_tables:
@@ -771,6 +1195,57 @@ def build_live_prompt(record: dict[str, str], text_path: Path, table_dir: Path |
                 "evidence_span_ids": ["span ids"],
             }
         ],
+        "table_formulation_scopes": [
+            {
+                "table_id": "string",
+                "is_formulation_table": True,
+                "table_type": "full_formulation|partial_formulation|sequential_child|doe_table|non_formulation",
+                "confidence": "high|medium|low",
+                "evidence_span": "string",
+            }
+        ],
+        "table_variable_roles": [
+            {
+                "table_id": "string",
+                "varying_variables": ["variable names"],
+                "constant_variables": ["variable names"],
+                "new_variables_introduced": ["variable names"],
+            }
+        ],
+        "selection_markers": [
+            {
+                "marker_readiness": "execution_ready|partial_semantic",
+                "source_table_id": "string",
+                "selected_variable": "string",
+                "selected_value": "string",
+                "explicit": True,
+                "evidence_span": "string",
+            }
+        ],
+        "inheritance_markers": [
+            {
+                "marker_readiness": "execution_ready|partial_semantic",
+                "from_table": "string",
+                "to_table": "string",
+                "inherit_type": "selected_condition",
+                "variable": "string",
+                "value": "string",
+                "evidence_span": "string",
+            }
+        ],
+        "preparation_inheritance_markers": [
+            {
+                "table_id": "string",
+                "inherits_from_preparation": True,
+                "evidence_span": "string",
+            }
+        ],
+        "boundary_markers": [
+            {
+                "table_id": "string",
+                "is_doe": False,
+            }
+        ],
     }
     table_mode_note = ""
     if current_table_mode == "summary":
@@ -808,6 +1283,48 @@ def build_live_prompt(record: dict[str, str], text_path: Path, table_dir: Path |
         "- Emit object-first outputs only.\n"
         "- Do not perform relation resolution, inheritance closure, or final-row materialization.\n"
         "- Do not force DOE rows if the paper only reports factors but not clear formulation boundaries.\n"
+        "- Do not enumerate table rows.\n"
+        "- Every top-level key in the schema is required; if a family is absent, return an empty list for that family.\n"
+        "- Emit table-level markers when a table is formulation-bearing, including sweep tables whose rows represent explicit formulation variants under fixed context.\n"
+        "- Use literal paper table labels such as 'Table 1' or 'Table 2' for every marker table_id field; do not use file names or asset names.\n"
+        "- Prefer true paper caption lines and nearby narrative references over noisy PDF extractor fragments when deciding which paper table a marker belongs to.\n"
+        "- Do not mark a table as non_formulation just because some extracted PDF table fragments contain abstract text, references, or assay traces; use the paper's caption and surrounding formulation narrative to identify the real formulation tables.\n"
+        "- Mark a later sweep table as sequential_child when it is performed under a selected condition from an earlier table.\n"
+        "- Emit selection_markers and inheritance_markers only from explicit text or explicit table notes/captions; do not guess beyond the paper evidence.\n"
+        f"- Use marker_readiness='{EXECUTION_READY_MARKER}' only when the marker is fully grounded for current execution use.\n"
+        f"- Use marker_readiness='{PARTIAL_SEMANTIC_MARKER}' when the paper clearly supports the semantic cue but some non-execution-critical grounding is still incomplete.\n"
+        "- For selection_markers, source_table_id, selected_variable, and selected_value may remain empty only when marker_readiness is partial_semantic, except for the explicit sequential-optimization literal-value pattern described below.\n"
+        "- For inheritance_markers, from_table and to_table may remain empty only when marker_readiness is partial_semantic, except for the explicit sequential-optimization literal-value pattern described below.\n"
+        "- For inheritance_markers, inherit_type, variable, and value remain strict and must stay concrete whenever you emit the marker.\n"
+        "- When the paper gives a concrete selected value such as '3 mg/mL' or '10:1', selected_value must be that literal value, not a placeholder such as 'optimal concentration' or 'optimal ratio'.\n"
+        "- Mandatory sequential-optimization literal-value rule: when a variable is explicitly explored over multiple concrete values, the paper explicitly states that one concrete value was selected or chosen as optimal, and nearby later text explicitly says that this chosen optimal setting was reused or carried forward in following experiments, you MUST extract that literal chosen value and keep it literal.\n"
+        "- For that rule, you MUST emit an execution_ready selection_marker with the literal selected_value and an execution_ready inheritance_marker with inherit_type='selected_condition' and the same literal value.\n"
+        "- For that rule, the selection sentence and the reuse sentence may appear in the same paragraph, the adjacent paragraph, or the nearby discussion immediately following the relevant optimization table.\n"
+        "- For that rule, the optimal value MUST be explicitly stated as a concrete literal such as '3 mg/mL' or '10:1', and reuse MUST be explicitly stated with wording such as 'selected', 'chosen', 'used for the remaining studies', or 'after ... had been determined'.\n"
+        "- For that explicit sequential-optimization literal-value rule only, selection_markers may be execution_ready with empty source_table_id if selected_variable and literal selected_value are explicit, and inheritance_markers may be execution_ready with empty from_table and to_table if inherit_type, variable, and literal value are explicit.\n"
+        "- Anti-placeholder rule: you MUST NOT output abstract placeholders such as 'optimal concentration', 'optimal ratio', or 'optimal formulation' when a concrete literal value is explicitly stated in that nearby local evidence window. If a nearby explicit literal value exists, using the abstract placeholder instead of that literal is incorrect.\n"
+        "- If no explicit literal value is present in that nearby local evidence window, abstract wording alone must stay partial_semantic and must NOT become execution_ready.\n"
+        "- Do not guess values and do not infer them from unrelated tables, distant sections, or full-document fallback.\n"
+        "- For partial markers, keep every grounded field that the paper supports and leave only the still-unresolved non-critical fields empty.\n"
+        "- Do not use vague placeholders to simulate grounding.\n"
+        "- Emit preparation_inheritance_markers only when the paper makes clear that a formulation-bearing table inherits the shared preparation context.\n"
+        "- boundary_markers must explicitly label each marked table as DOE or non-DOE.\n"
+        "- Example sequential-optimization pattern: if Table 1 varies one formulation variable across explicit levels and the paper says one level was selected as optimal, and Table 2 then varies a different formulation variable under that selected condition, emit both Table 1 and Table 2 in table_formulation_scopes, emit the Table 1 selection in selection_markers, and emit a Table 1 -> Table 2 selected_condition inheritance marker.\n"
+        "- Minimal example for that pattern:\n"
+        "  table_formulation_scopes = [{\"table_id\": \"Table 1\", \"is_formulation_table\": true, \"table_type\": \"partial_formulation\", \"confidence\": \"high\", \"evidence_span\": \"...\"}, {\"table_id\": \"Table 2\", \"is_formulation_table\": true, \"table_type\": \"sequential_child\", \"confidence\": \"high\", \"evidence_span\": \"...\"}]\n"
+        f"  selection_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"source_table_id\": \"Table 1\", \"selected_variable\": \"poloxamer 188 concentration\", \"selected_value\": \"3 mg/mL\", \"explicit\": true, \"evidence_span\": \"...selected as optimal...\"}}]\n"
+        f"  inheritance_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"from_table\": \"Table 1\", \"to_table\": \"Table 2\", \"inherit_type\": \"selected_condition\", \"variable\": \"poloxamer 188 concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"...after the optimal surfactant concentration had been determined...\"}}]\n"
+        "- Positive example for the mandatory sequential-optimization literal-value rule:\n"
+        "  nearby evidence = 'Poloxamer 188 concentration was studied at 2.5, 3, 4, and 10 mg/mL. 3 mg/mL was selected as the optimal surfactant concentration. After the optimal surfactant concentration had been determined, the remaining studies used that condition.'\n"
+        f"  selection_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"poloxamer 188 concentration\", \"selected_value\": \"3 mg/mL\", \"explicit\": true, \"evidence_span\": \"3 mg/mL was selected as the optimal surfactant concentration.\"}}]\n"
+        f"  inheritance_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"from_table\": \"\", \"to_table\": \"\", \"inherit_type\": \"selected_condition\", \"variable\": \"poloxamer 188 concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"After the optimal surfactant concentration had been determined, the remaining studies used that condition.\"}}]\n"
+        "- Negative example for the same rule:\n"
+        "  nearby evidence = 'After the optimal surfactant concentration had been determined, the remaining studies used that condition.'\n"
+        f"  selection_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"surfactant concentration\", \"selected_value\": \"\", \"explicit\": true, \"evidence_span\": \"After the optimal surfactant concentration had been determined, the remaining studies used that condition.\"}}]\n"
+        f"  inheritance_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"from_table\": \"\", \"to_table\": \"\", \"inherit_type\": \"selected_condition\", \"variable\": \"surfactant concentration\", \"value\": \"\", \"evidence_span\": \"After the optimal surfactant concentration had been determined, the remaining studies used that condition.\"}}]\n"
+        "- Partial example when the semantic cue is explicit but grounding is incomplete:\n"
+        f"  selection_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"surfactant concentration\", \"selected_value\": \"\", \"explicit\": true, \"evidence_span\": \"...the optimal surfactant concentration was then used...\"}}]\n"
+        f"  inheritance_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"from_table\": \"\", \"to_table\": \"\", \"inherit_type\": \"selected_condition\", \"variable\": \"surfactant concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"...after the optimal surfactant concentration had been determined...\"}}]\n"
         "- Return valid JSON only.\n\n"
         f"Table mode: {current_table_mode}\n"
         f"{table_mode_note}\n"
@@ -832,6 +1349,23 @@ def find_legacy_raw_response(raw_dir: Path, key: str) -> Path:
     if not matches:
         raise FileNotFoundError(f"Legacy raw response not found for {key} under {raw_dir}")
     return matches[0]
+
+
+def is_live_v2_raw_response_shape(parsed: Any) -> bool:
+    if not isinstance(parsed, dict):
+        return False
+    return any(
+        key in parsed
+        for key in [
+            "formulation_candidates",
+            "component_candidates",
+            "variable_candidates",
+            "measurement_candidates",
+            "relation_hints",
+            "evidence_spans",
+            "unassigned_observations",
+        ]
+    )
 
 
 def field_object(formulation: dict[str, Any], field_name: str) -> dict[str, Any]:
@@ -1000,7 +1534,12 @@ def convert_legacy_raw_response_to_v2(
     raw_response_path: Path,
     raw_response_text: str,
 ) -> dict[str, Any]:
-    parsed = safe_json_load(raw_response_text)
+    sanitized_text, sanitization_audit = sanitize_stage2_json_text(raw_response_text)
+    if json_sanitization_applied(sanitization_audit):
+        write_json_sanitization_audit(raw_response_path, sanitization_audit)
+    parsed = json.loads(sanitized_text)
+    if is_live_v2_raw_response_shape(parsed):
+        return normalize_replayed_live_document(record, parsed, raw_response_path)
     formulations = parsed.get("formulations") or []
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
@@ -1100,7 +1639,8 @@ def convert_legacy_raw_response_to_v2(
     source_table_files = []
     if table_dir and table_dir.exists():
         source_table_files = [str(path.relative_to(PROJECT_ROOT)).replace("\\", "/") for path in sorted(table_dir.glob("*.csv"))]
-    return {
+    return finalize_llm_first_document(
+        {
         "document_key": record["key"],
         "doi": record["doi"],
         "title": record["title"],
@@ -1115,10 +1655,39 @@ def convert_legacy_raw_response_to_v2(
         "relation_hints": relation_hints,
         "evidence_spans": evidence_spans,
         "unassigned_observations": unassigned_observations,
-    }
+        }
+    )
 
 
 def normalize_live_document(record: dict[str, str], parsed: dict[str, Any], raw_response_path: Path) -> dict[str, Any]:
+    return build_live_v2_document(
+        record=record,
+        parsed=parsed,
+        raw_response_path=raw_response_path,
+        source_mode="live_llm_stage2_v2",
+        replay_mode="none",
+    )
+
+
+def normalize_replayed_live_document(record: dict[str, str], parsed: dict[str, Any], raw_response_path: Path) -> dict[str, Any]:
+    return build_live_v2_document(
+        record=record,
+        parsed=parsed,
+        raw_response_path=raw_response_path,
+        source_mode="saved_raw_live_v2_replay_to_stage2_v2",
+        replay_mode="saved_raw_response_replay",
+    )
+
+
+def build_live_v2_document(
+    *,
+    record: dict[str, str],
+    parsed: dict[str, Any],
+    raw_response_path: Path,
+    source_mode: str,
+    replay_mode: str,
+) -> dict[str, Any]:
+    parsed = prune_invalid_live_inheritance_markers(parsed, raw_response_path)
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
         text_path = (PROJECT_ROOT / text_path).resolve()
@@ -1126,11 +1695,14 @@ def normalize_live_document(record: dict[str, str], parsed: dict[str, Any], raw_
     source_table_files = []
     if table_dir and table_dir.exists():
         source_table_files = [str(path.relative_to(PROJECT_ROOT)).replace("\\", "/") for path in sorted(table_dir.glob("*.csv"))]
-    return {
+    return finalize_llm_first_document(
+        {
         "document_key": record["key"],
         "doi": record["doi"],
         "title": record["title"],
-        "source_mode": "live_llm_stage2_v2",
+        "source_mode": source_mode,
+        "replay_mode": replay_mode,
+        "source_raw_response_schema": "stage2_live_v2_raw_response",
         "source_raw_response_path": str(raw_response_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
         "source_text_path": str(text_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
         "source_table_files": source_table_files,
@@ -1141,7 +1713,198 @@ def normalize_live_document(record: dict[str, str], parsed: dict[str, Any], raw_
         "relation_hints": parsed.get("relation_hints") or [],
         "evidence_spans": parsed.get("evidence_spans") or [],
         "unassigned_observations": parsed.get("unassigned_observations") or [],
+        "table_formulation_scopes": normalize_marker_list(parsed.get("table_formulation_scopes")),
+        "table_variable_roles": normalize_marker_list(parsed.get("table_variable_roles")),
+        "selection_markers": normalize_marker_list(parsed.get("selection_markers")),
+        "inheritance_markers": normalize_marker_list(parsed.get("inheritance_markers")),
+        "preparation_inheritance_markers": normalize_marker_list(parsed.get("preparation_inheritance_markers")),
+        "boundary_markers": normalize_marker_list(parsed.get("boundary_markers")),
+        }
+    )
+
+
+def infer_semantic_scope_declarations(document: dict[str, Any]) -> list[dict[str, Any]]:
+    augment_document_with_table_markers(document)
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    declarations: list[dict[str, Any]] = [
+        {
+            "scope_id": f"{document_key}__llm_document_scope__01",
+            "scope_kind": DOCUMENT_SCOPE_KIND,
+            "declared_by": LLM_PARSED,
+            "authorizes_row_materialization_modes": [LLM_SEMANTIC_DISCOVERY],
+            "row_enumeration_required": "no",
+            "table_scope_refs": [],
+            "declaration_basis": "default_llm_semantic_document_scope",
+        }
+    ]
+    variable_candidates = [
+        item for item in document.get("variable_candidates", []) if isinstance(item, dict)
+    ]
+    evidence_spans = [item for item in document.get("evidence_spans", []) if isinstance(item, dict)]
+    unassigned_observations = [
+        item for item in document.get("unassigned_observations", []) if isinstance(item, dict)
+    ]
+    doe_factor_names = {
+        normalize_token(item.get("variable_name"))
+        for item in variable_candidates
+        if normalize_text(item.get("variable_role")) == "doe_factor"
     }
+    evidence_by_id = {
+        normalize_text(item.get("span_id") or item.get("evidence_span_id")): item
+        for item in evidence_spans
+        if normalize_text(item.get("span_id") or item.get("evidence_span_id"))
+    }
+    scope_text = " ".join(
+        normalize_text(item.get("supporting_text") or item.get("note"))
+        for item in [*evidence_spans, *unassigned_observations]
+    ).lower()
+    strong_doe_language = any(
+        token in scope_text
+        for token in [
+            "box-behnken",
+            "response surface",
+            "factorial",
+            "experimental design",
+            "design matrix",
+            "design expert",
+            "run order",
+            " doe ",
+        ]
+    )
+    if "doe" in scope_text:
+        strong_doe_language = True
+    numbered_formulation_count = sum(
+        1
+        for item in ensure_list(document.get("formulation_candidates"))
+        if isinstance(item, dict)
+        and re.fullmatch(r"(?:F[- ]?\d{1,3}|\d{1,3}\.?)", normalize_text(item.get("raw_label") or item.get("raw_formulation_label")))
+    )
+    table_scope_refs: list[str] = []
+    seen_table_refs: set[str] = set()
+    for variable in variable_candidates:
+        if normalize_text(variable.get("variable_role")) != "doe_factor":
+            continue
+        for span_id in ensure_list(variable.get("evidence_span_ids")):
+            span = evidence_by_id.get(normalize_text(span_id))
+            if not span:
+                continue
+            region = normalize_text(span.get("source_region_type")).lower()
+            locator = normalize_text(span.get("source_locator_text"))
+            if not (region.startswith("table") or "table" in locator.lower()):
+                continue
+            ref = locator or normalize_text(span.get("supporting_text"))
+            if not ref or ref in seen_table_refs:
+                continue
+            seen_table_refs.add(ref)
+            table_scope_refs.append(ref)
+    if not table_scope_refs and strong_doe_language:
+        for span in evidence_spans:
+            region = normalize_text(span.get("source_region_type")).lower()
+            locator = normalize_text(span.get("source_locator_text"))
+            supporting_text = normalize_text(span.get("supporting_text")).lower()
+            if not (region.startswith("table") or "table" in locator.lower()):
+                continue
+            if not any(
+                token in supporting_text or token in locator.lower()
+                for token in [
+                    "box-behnken",
+                    "experimental design",
+                    "independent variable",
+                    "dependent variable",
+                    "effect of independent",
+                    "design",
+                    "level",
+                ]
+            ):
+                continue
+            ref = locator or normalize_text(span.get("supporting_text"))
+            if not ref or ref in seen_table_refs:
+                continue
+            seen_table_refs.add(ref)
+            table_scope_refs.append(ref)
+    if doe_factor_names and table_scope_refs and (strong_doe_language or numbered_formulation_count >= 8):
+        declarations.append(
+            {
+                "scope_id": f"{document_key}__llm_declared_doe_scope__01",
+                "scope_kind": DOE_SCOPE_KIND,
+                "declared_by": LLM_PARSED,
+                "authorizes_row_materialization_modes": [
+                    LLM_SEMANTIC_DISCOVERY,
+                    "deterministic_row_expansion_within_llm_scope",
+                ],
+                "row_enumeration_required": "yes",
+                "table_scope_refs": table_scope_refs,
+                "declared_doe_factors": sorted(doe_factor_names),
+                "declaration_basis": (
+                    "llm_detected_strong_doe_language_plus_doe_factor_candidates_plus_table_scopes"
+                    if strong_doe_language
+                    else "llm_detected_numbered_formulation_sweep_plus_doe_factor_candidates_plus_table_scopes"
+                ),
+            }
+        )
+    for table_scope in [
+        item
+        for item in ensure_list(document.get("table_formulation_scopes"))
+        if isinstance(item, dict) and bool(item.get("is_formulation_table")) and not bool(
+            next(
+                (
+                    boundary.get("is_doe")
+                    for boundary in ensure_list(document.get("boundary_markers"))
+                    if isinstance(boundary, dict) and normalize_text(boundary.get("table_id")) == normalize_text(item.get("table_id"))
+                ),
+                False,
+            )
+        )
+    ]:
+        scope_id = normalize_text(table_scope.get("scope_id"))
+        if not scope_id:
+            continue
+        declarations.append(
+            {
+                "scope_id": scope_id,
+                "scope_kind": TABLE_FORMULATION_SCOPE_KIND,
+                "declared_by": normalize_text(table_scope.get("marker_provenance")) or LLM_EXPLICIT,
+                "authorizes_row_materialization_modes": [
+                    LLM_SEMANTIC_DISCOVERY,
+                    "table_row_expansion_v1",
+                ],
+                "row_enumeration_required": "yes",
+                "table_scope_refs": [normalize_text(table_scope.get("table_id"))],
+                "declaration_basis": f"llm_explicit_formulation_bearing_table::{normalize_text(table_scope.get('table_type'))}",
+            }
+        )
+    return declarations
+
+
+def default_llm_scope_ref(document: dict[str, Any], candidate_id: str) -> str:
+    declarations = infer_semantic_scope_declarations(document)
+    default_scope = next(
+        (
+            normalize_text(item.get("scope_id"))
+            for item in declarations
+            if normalize_text(item.get("scope_kind")) == DOCUMENT_SCOPE_KIND
+        ),
+        "",
+    )
+    return f"{default_scope}|candidate:{candidate_id}" if candidate_id else default_scope
+
+
+def finalize_llm_first_document(document: dict[str, Any]) -> dict[str, Any]:
+    augment_document_with_table_markers(document)
+    document["stage2_semantic_source_mode"] = STAGE2_SEMANTIC_SOURCE_MODE
+    document["semantic_universe_authority"] = LLM_SEMANTIC_DISCOVERY
+    declarations = infer_semantic_scope_declarations(document)
+    document["semantic_scope_declarations"] = declarations
+    for item in document.get("formulation_candidates", []):
+        if not isinstance(item, dict):
+            continue
+        candidate_id = normalize_text(item.get("candidate_id"))
+        item["stage2_semantic_source_mode"] = normalize_text(item.get("stage2_semantic_source_mode")) or STAGE2_SEMANTIC_SOURCE_MODE
+        item["semantic_universe_authority"] = normalize_text(item.get("semantic_universe_authority")) or LLM_SEMANTIC_DISCOVERY
+        item["row_materialization_mode"] = normalize_text(item.get("row_materialization_mode")) or LLM_SEMANTIC_DISCOVERY
+        item["semantic_scope_authority"] = normalize_text(item.get("semantic_scope_authority")) or LLM_DECLARED_SCOPE
+        item["semantic_scope_ref"] = normalize_text(item.get("semantic_scope_ref")) or default_llm_scope_ref(document, candidate_id)
+    return document
 
 
 def summary_row(document: dict[str, Any]) -> dict[str, Any]:
@@ -1174,11 +1937,10 @@ def summary_row(document: dict[str, Any]) -> dict[str, Any]:
         table_dir = resolve_tables_dir(text_path, str(document.get("document_key") or document.get("key") or ""))
     enhancement_enabled = summary_first_column_enhancement_enabled()
     row_anchor_preview = ""
-    table_selection_strategy = "alphabetical_first_4"
+    table_selection_strategy = "score_ranked_top_4"
     if enhancement_enabled and table_dir is not None and table_dir.exists():
-        table_selection_strategy = "doe_priority_first_4"
         row_anchor_preview_parts: list[str] = []
-        for item in select_summary_tables(table_dir, max_tables=4, enhancement_enabled=True):
+        for item in select_summary_tables(table_dir, max_tables=4):
             row_ids = [row[0] for row in item["rows"][1:] if row and normalize_text(row[0])]
             preview = summarize_row_anchor_preview(row_ids)
             if preview:
@@ -1189,6 +1951,7 @@ def summary_row(document: dict[str, Any]) -> dict[str, Any]:
         "document_key": document["document_key"],
         "doi": document["doi"],
         "source_mode": document["source_mode"],
+        "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")) or STAGE2_SEMANTIC_SOURCE_MODE,
         "summary_table_mode": table_mode(),
         "summary_first_column_enhancement": "yes" if enhancement_enabled else "no",
         "summary_table_selection_strategy": table_selection_strategy,
@@ -1202,6 +1965,13 @@ def summary_row(document: dict[str, Any]) -> dict[str, Any]:
         "unassigned_observation_count": len(document.get("unassigned_observations", [])),
         "ph_variable_count": sum(1 for name in variable_names if name in PH_TOKENS),
         "doe_factor_count": sum(1 for name in variable_names if name in DOE_TOKENS),
+        "doe_scope_declared": "yes"
+        if any(
+            normalize_text(item.get("scope_kind")) == DOE_SCOPE_KIND
+            for item in document.get("semantic_scope_declarations", [])
+            if isinstance(item, dict)
+        )
+        else "no",
         "pdi_measurement_present": "yes" if "pdi" in measurement_names else "no",
         "zeta_measurement_present": "yes" if "zeta_potential" in measurement_names or "zeta_mv" in measurement_names else "no",
         "multi_component_formulation_count": multi_component_count,
@@ -1219,12 +1989,12 @@ def parse_args() -> argparse.Namespace:
         "--source-mode",
         choices=["legacy_llm_replay", "live_llm"],
         default="legacy_llm_replay",
-        help="Use saved historical raw responses or call a live model.",
+        help="Use saved raw responses for replay/rehydration or call a live model.",
     )
     parser.add_argument(
         "--legacy-raw-responses-dir",
         default="",
-        help="Directory containing saved historical raw responses for replay mode.",
+        help="Directory containing saved raw responses for replay/rehydration mode.",
     )
     parser.add_argument("--model", default=PRIMARY_DEFAULT)
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
@@ -1268,64 +2038,112 @@ def main() -> None:
     jsonl_path = out_dir / OUTPUT_JSONL_NAME
     summary_path = out_dir / OUTPUT_SUMMARY_NAME
     prompt_preview_rows: list[dict[str, Any]] = []
+    table_selection_debug_rows: list[dict[str, Any]] = []
     prompt_preview_path = out_dir.parent / "analysis" / PROMPT_PREVIEW_NAME
+    table_selection_debug_path = out_dir.parent / "analysis" / TABLE_SELECTION_DEBUG_NAME
     current_table_mode = table_mode()
     summary_enhanced = summary_first_column_enhancement_enabled()
     current_input_packing_mode = input_packing_mode()
     ordered_block_order = "metadata > synthesis_method > materials_procurement > table > paragraph" if ordered_input_packing_enabled() else "raw_prefix"
     summary_rows: list[dict[str, Any]] = []
+    progress = Stage2ProgressReporter(total_tasks=len(records))
+    print(
+        f"stage2_progress total={progress.total_tasks} source_mode={args.source_mode} llm_backend={args.llm_backend}",
+        flush=True,
+    )
+    progress.start()
 
-    with jsonl_path.open("w", encoding="utf-8") as handle:
-        for record in records:
-            key = normalize_text(record.get("key"))
-            if not key:
-                continue
-            if "text_path" not in record or not normalize_text(record.get("text_path")):
-                raise ValueError(f"Manifest row for {key} is missing text_path.")
+    try:
+        with jsonl_path.open("w", encoding="utf-8") as handle:
+            for index, record in enumerate(records, start=1):
+                key = normalize_text(record.get("key"))
+                if not key:
+                    continue
+                if "text_path" not in record or not normalize_text(record.get("text_path")):
+                    raise ValueError(f"Manifest row for {key} is missing text_path.")
 
-            if args.source_mode == "legacy_llm_replay":
-                assert legacy_raw_dir is not None
-                legacy_raw_path = find_legacy_raw_response(legacy_raw_dir, key)
-                raw_copy_path = raw_dir / legacy_raw_path.name
-                shutil.copy2(legacy_raw_path, raw_copy_path)
-                document = convert_legacy_raw_response_to_v2(
-                    record=record,
-                    raw_response_path=raw_copy_path,
-                    raw_response_text=raw_copy_path.read_text(encoding="utf-8", errors="replace"),
-                )
-            else:
-                text_path = Path(record["text_path"])
-                if not text_path.is_absolute():
-                    text_path = (PROJECT_ROOT / text_path).resolve()
-                if not text_path.exists():
-                    raise FileNotFoundError(f"Missing paper text for {key}: {text_path}")
-                table_dir = resolve_tables_dir(text_path, key)
-                prompt = build_live_prompt(record, text_path, table_dir, args.max_text_chars)
-                prompt_preview_rows.append(
-                    build_prompt_preview_row(
-                        document={
-                            "document_key": key,
-                            "doi": record["doi"],
-                            "source_mode": "live_llm_stage2_v2",
-                        },
-                        prompt_text=prompt,
-                        table_mode_value=current_table_mode,
-                        summary_enhanced=summary_enhanced,
-                        input_packing_mode_value=current_input_packing_mode,
-                        ordered_block_order=ordered_block_order,
-                    )
-                )
-                if args.llm_backend == "gemini":
-                    raw_text = call_gemini(args.model, prompt, args.request_retries, args.retry_sleep_sec)
-                else:
-                    raw_text = call_nvidia_hosted(args.model, prompt, args.request_retries, args.retry_sleep_sec)
-                raw_copy_path = raw_dir / f"{key}__stage2_v2_raw_response.json"
-                raw_copy_path.write_text(raw_text, encoding="utf-8")
-                parsed = safe_json_load(raw_text)
-                document = normalize_live_document(record, parsed, raw_copy_path)
+                progress_label = progress.begin_task(index, key)
+                try:
+                    if args.source_mode == "legacy_llm_replay":
+                        assert legacy_raw_dir is not None
+                        legacy_raw_path = find_legacy_raw_response(legacy_raw_dir, key)
+                        raw_copy_path = raw_dir / legacy_raw_path.name
+                        shutil.copy2(legacy_raw_path, raw_copy_path)
+                        document = convert_legacy_raw_response_to_v2(
+                            record=record,
+                            raw_response_path=raw_copy_path,
+                            raw_response_text=raw_copy_path.read_text(encoding="utf-8", errors="replace"),
+                        )
+                    else:
+                        text_path = Path(record["text_path"])
+                        if not text_path.is_absolute():
+                            text_path = (PROJECT_ROOT / text_path).resolve()
+                        if not text_path.exists():
+                            raise FileNotFoundError(f"Missing paper text for {key}: {text_path}")
+                        table_dir = resolve_tables_dir(text_path, key)
+                        prompt = build_live_prompt(record, text_path, table_dir, args.max_text_chars)
+                        prompt_preview_rows.append(
+                            build_prompt_preview_row(
+                                document={
+                                    "document_key": key,
+                                    "doi": record["doi"],
+                                    "source_mode": "live_llm_stage2_v2",
+                                },
+                                prompt_text=prompt,
+                                table_mode_value=current_table_mode,
+                                summary_enhanced=summary_enhanced,
+                                input_packing_mode_value=current_input_packing_mode,
+                                ordered_block_order=ordered_block_order,
+                            )
+                        )
+                        if current_table_mode == "summary":
+                            debug_payload = build_table_selection_debug_payload(
+                                document_key=key,
+                                table_dir=table_dir,
+                                max_tables=4,
+                                summary_enhanced=summary_enhanced,
+                            )
+                            if debug_payload is not None:
+                                table_selection_debug_rows.append(debug_payload)
+                        if args.llm_backend == "gemini":
+                            raw_text = call_gemini(
+                                args.model,
+                                prompt,
+                                args.request_retries,
+                                args.retry_sleep_sec,
+                                progress_label=progress_label,
+                            )
+                        else:
+                            raw_text = call_nvidia_hosted(
+                                args.model,
+                                prompt,
+                                args.request_retries,
+                                args.retry_sleep_sec,
+                                progress_label=progress_label,
+                        )
+                        raw_copy_path = raw_dir / f"{key}__stage2_v2_raw_response.json"
+                        raw_copy_path.write_text(raw_text, encoding="utf-8")
+                        sanitized_text, sanitization_audit = sanitize_stage2_json_text(raw_text)
+                        if json_sanitization_applied(sanitization_audit):
+                            write_json_sanitization_audit(raw_copy_path, sanitization_audit)
+                            print(
+                                f"{progress_label} sanitized_json parse_stage={sanitization_audit.get('parse_stage')} "
+                                f"balanced_close={sanitization_audit.get('balanced_close_applied')} "
+                                f"cut={sanitization_audit.get('balanced_close_cut')}",
+                                flush=True,
+                            )
+                        parsed = json.loads(sanitized_text)
+                        document = normalize_live_document(record, parsed, raw_copy_path)
 
-            handle.write(json.dumps(document, ensure_ascii=False) + "\n")
-            summary_rows.append(summary_row(document))
+                    handle.write(json.dumps(document, ensure_ascii=False) + "\n")
+                    summary_rows.append(summary_row(document))
+                    progress.complete_task()
+                except Exception as exc:
+                    progress.fail_task(exc)
+                    raise
+    finally:
+        progress.stop()
+        progress.finish()
 
     write_tsv(
         summary_path,
@@ -1334,6 +2152,7 @@ def main() -> None:
             "document_key",
             "doi",
             "source_mode",
+            "stage2_semantic_source_mode",
             "formulation_count",
             "component_count",
             "variable_count",
@@ -1343,6 +2162,7 @@ def main() -> None:
             "unassigned_observation_count",
             "ph_variable_count",
             "doe_factor_count",
+            "doe_scope_declared",
             "pdi_measurement_present",
             "zeta_measurement_present",
             "multi_component_formulation_count",
@@ -1369,10 +2189,17 @@ def main() -> None:
                 "prompt_tail_preview",
             ],
         )
+    if table_selection_debug_rows:
+        table_selection_debug_path.write_text(
+            json.dumps(table_selection_debug_rows, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
     print(f"wrote_jsonl={jsonl_path}")
     print(f"wrote_summary={summary_path}")
     if prompt_preview_rows:
         print(f"wrote_prompt_preview={prompt_preview_path}")
+    if table_selection_debug_rows:
+        print(f"wrote_table_selection_debug={table_selection_debug_path}")
     print(f"wrote_raw_responses_dir={raw_dir}")
 
 

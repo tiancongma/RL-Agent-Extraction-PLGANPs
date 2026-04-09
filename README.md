@@ -55,6 +55,25 @@ modification time, parent fallback, or glob-first matching. Use an explicit
 CLI source such as `--run-dir`, or the declared authority pointer, or fail
 loudly.
 
+## Boundary Governance
+
+Pipeline debugging may pause, branch, and replay only at explicit boundary
+classes described in the active pipeline flow and runbook.
+
+The current governed classes are:
+
+- `internal_intermediate`
+- `diagnostic_boundary`
+- `mainline_resume_boundary`
+- `benchmark_terminal_boundary`
+
+Raw Stage2 freeze baselines remain diagnostic boundaries unless they also
+preserve the authoritative completed Stage2 artifact required by Stage3.
+Current maintained replay support allows the governed composite Stage2
+entrypoint to rehydrate a frozen current live-v2 raw-response set into the
+authoritative completed Stage2 artifact without making new LLM calls, but the
+raw-response freeze by itself remains diagnostic-only.
+
 ## Active Stage Namespaces
 
 The active runtime stage directories are:
@@ -123,6 +142,11 @@ Stage2 authority reminder:
   fallback, comparator, migration-support, or diagnostic infrastructure only.
 - Stage2 is a composite stage consisting of LLM semantic discovery followed by
   deterministic post-LLM completion.
+- No formulation candidate may enter authoritative Stage2 output unless it is
+  traceable to `llm_semantic_discovery` or to an explicitly declared governed
+  fallback semantic source.
+- Deterministic DOE row expansion is preserved, but in normal
+  `llm_first_composite` mode it is lawful only within LLM-declared DOE scope.
 - Only the completed Stage2 artifact is authoritative for downstream Stage3
   consumption and Stage2 structural evaluation.
 - The governed three-paper comparison slice

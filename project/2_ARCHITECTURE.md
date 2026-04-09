@@ -153,6 +153,16 @@ Stage3 input and the only authoritative Stage2 evaluation target.
 - deterministic post-LLM completion remains inside Stage2 and exists only to
   make Stage2 outputs reconstructable and relation-ready for unchanged
   downstream consumers
+- Stage2 may emit governed table-authorization markers that declare a table as
+  formulation-bearing without enumerating its rows in the LLM substep
+- deterministic row expansion remains inside the Stage2 completion step and may
+  enumerate explicit row-level candidates only from:
+  - LLM-declared DOE scope through the existing DOE enumerator
+  - LLM-declared non-DOE formulation-table scope through the table-row
+    expansion contract
+- no formulation candidate may enter authoritative Stage2 output unless it is
+  traceable to `llm_semantic_discovery` or an explicitly declared governed
+  fallback semantic source
 - formulation identity discovery, component discovery, factor discovery, and
   raw expression capture are owned by the LLM substep
 - raw semantic objects may remain incomplete where the paper support is
@@ -161,9 +171,87 @@ Stage3 input and the only authoritative Stage2 evaluation target.
 - Stage2 final output must not be treated as final benchmark materialization
 - deterministic Stage2 semantic reconstruction paths are non-authoritative and
   must not replace the LLM Stage2 boundary as active mainline authority
+- deterministic DOE row enumeration is allowed only as row-level expansion
+  within LLM-declared DOE scope unless an explicitly declared governed fallback
+  mode is active
+- deterministic non-DOE table row enumeration is allowed only when the LLM
+  declares the table formulation-bearing and non-DOE through the table
+  authorization contract
 - direct comparison of raw semantic objects to formulation-level GT is
   diagnostic only when the deterministic completion substep has not been
   applied
+
+### Current Clarification On Stage2 Contract Pressure
+
+Observed facts from the maintained Stage2 contract audit:
+
+- the recent authority correction restored the intended semantic-authority
+  split:
+  - deterministic semantic overreach is no longer the active mainline
+    architecture
+  - marker provenance is preserved
+  - deterministic execution is marker-authorized only
+  - the maintained validator is enforcing the governed contract
+- however, the current live Stage2 semantic contract still places substantial
+  burden on the LLM before deterministic completion begins
+- the remaining bottleneck is therefore not only model quality
+- the remaining bottleneck also includes:
+  - semantic contract rigidity
+  - LLM role overload
+  - suppression of governed markers under execution-level uncertainty
+
+Locked interpretation:
+
+- this is not a rollback of the restored LLM semantic-authority boundary
+- this is not permission for deterministic semantic inference
+- this is not permission for vague uncontrolled free-text outputs
+- it is a clarification that semantic understanding is not the same thing as
+  executable structure
+
+Future-facing design direction:
+
+- the preferred Stage2 contract direction is for the LLM to emit reusable
+  semantic cues and governed intermediate markers
+- the preferred Stage2 contract direction is not for the LLM to emit
+  execution-ready formulation structures earlier than needed
+- when governance permits, partial semantic markers may be preferable to hard
+  suppression if the paper-level semantic signal is present but some
+  execution-level grounding remains incomplete
+- stricter execution completion, row expansion, decomposition, relation
+  binding, normalization, and validation should remain downstream deterministic
+  responsibilities
+
+Current implemented clarification:
+
+- the maintained Stage2 contract now permits governed partial semantic markers
+  for the suppression-prone `selection_marker` and `inheritance_marker`
+  families
+- these partial markers are allowed only for non-execution-critical grounding
+  gaps:
+  - `selection_marker.source_table_id`
+  - `selection_marker.selected_variable`
+  - `selection_marker.selected_value`
+  - `inheritance_marker.from_table`
+  - `inheritance_marker.to_table`
+- execution-critical fields remain strict in the active runtime:
+  - `inheritance_marker.inherit_type`
+  - `inheritance_marker.variable`
+  - `inheritance_marker.value`
+- the maintained contract now distinguishes:
+  - `execution_ready`
+  - `partial_semantic`
+- only `execution_ready` markers continue into the current deterministic
+  Stage2-to-Stage3 handshake
+- `partial_semantic` markers are preserved in the Stage2 semantic-intermediate
+  artifact for auditability and future governed completion work, but they do
+  not authorize current row expansion or current Stage3 inheritance
+  materialization
+
+Non-change statement:
+
+- the active runtime remains the current composite Stage2 contract
+- no new pipeline stage is introduced by this clarification
+- no deterministic fallback path is promoted by this clarification
 
 ### Stage2 Internal Intermediate Artifact
 `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
@@ -253,7 +341,19 @@ diagnostic comparisons, but they are not the official system result.
 
 - Stage2 owns semantic discovery from paper text and tables plus the
   deterministic post-LLM completion required for downstream readiness.
+- Stage2 does not let the LLM enumerate table rows.
+- Stage2 may let the LLM declare:
+  - `table_formulation_scope`
+  - `variable_roles`
+  - `selection_marker`
+  - `inheritance_marker`
+  - `boundary_marker`
+- those markers authorize deterministic row expansion but do not themselves
+  create formulation rows.
 - Stage3 owns relation resolution over the compatibility-projected rows.
+- Stage3 consumes deterministic DOE rows and deterministic non-DOE table rows
+  through one compatible candidate-row surface, then applies inheritance and
+  shared-context binding without Cartesian reconstruction.
 - Stage5 owns final materialization and benchmark-facing closure.
 - Stage5 must not absorb semantic inference that belongs to Stage2.
 
@@ -423,6 +523,42 @@ The LLM extraction layer is responsible for:
 The LLM extraction layer is not responsible for final arbitration of
 conflicting evidence.
 
+Current clarification:
+
+- the LLM's primary responsibility is full-document semantic understanding,
+  formulation scope detection, structural signal detection, and governed
+  marker-level authorization
+- structural signal detection includes governed motifs such as:
+  - DOE structure
+  - selection signals
+  - inheritance signals
+  - sequential optimization signals
+  - other governed formulation-boundary patterns
+- the preferred future contract is for the LLM to emit reusable semantic cues
+  and intermediate markers even when execution-level completion is deferred
+- the preferred future contract is not to force the LLM to resolve every cue
+  into candidate-level or execution-like structure before deterministic
+  function units can act
+- in complex papers, semantic understanding may be present even when exact
+  execution-level grounding is incomplete
+- hard suppression of markers under such uncertainty can create downstream
+  execution starvation:
+  - no marker family
+  - no governed expansion
+  - no downstream formulation rows
+- the maintained runtime now preserves selected partial semantic markers for:
+  - `selection_marker`
+  - `inheritance_marker`
+  while keeping current downstream execution restricted to `execution_ready`
+  markers only
+
+Inference from the maintained audit:
+
+- the remaining failure mode is better described as semantic-contract overload
+  than as restored architectural impurity
+- future contract work should reduce LLM output burden rather than simply
+  tightening prompts for more execution-ready certainty
+
 ### Layer 2: Deterministic arbitration responsibilities
 Deterministic scripts are responsible for:
 
@@ -443,6 +579,16 @@ Stage2 enforcement note:
 - They must not be described or selected as active Stage2 mainline authority.
 - Promoting such paths as Stage2 authority is an architecture contract
   violation.
+
+Clarification on deterministic scope:
+
+- deterministic layers should perform execution-level completion only within
+  governed semantic scope
+- deterministic layers should not synthesize new semantics outside that
+  governed scope
+- the preferred future contract direction is to move execution strictness
+  downstream into governed function units and validators rather than forcing
+  the LLM to emit prematurely executable structures
 
 ### Layer 3: Audit boundary responsibilities
 Audit occurs at the boundary between extracted candidates and publishable

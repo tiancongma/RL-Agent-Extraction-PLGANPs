@@ -2792,3 +2792,326 @@ Non-change statement
 - No execution gate was introduced.
 - No benchmark semantics were changed.
 - No historical run directory was renamed or rewritten.
+
+## 2026-04-02
+
+### Decision: Formalize governed pipeline-boundary classes and lawful resume boundaries
+
+Decision
+- Define four explicit boundary classes for the maintained pipeline:
+  - `internal_intermediate`
+  - `diagnostic_boundary`
+  - `mainline_resume_boundary`
+  - `benchmark_terminal_boundary`
+- Raw Stage2 freeze baselines are diagnostic boundaries unless they also
+  preserve the authoritative completed Stage2 artifact required by Stage3.
+- The completed Stage2 weak-label artifact is the lawful Stage3 resume
+  boundary.
+- The Stage5 final formulation table plus comparison outputs remain the
+  benchmark terminal boundary.
+
+Reason
+- Debugging needs explicit pause, branch, and replay boundaries, but the
+  active pipeline must keep its authority split intact.
+- Raw responses alone do not preserve the completed Stage2 authority surface.
+- Benchmark claims must remain attached to the Stage5 final layer.
+
+Impact
+- Pipeline documentation can now distinguish internal intermediates from
+  diagnostic boundaries and lawful resume boundaries.
+- Future run contexts should record the boundary class and resume legality for
+  reproducibility and safe return to mainline.
+
+### Decision: Emit boundary-governance fields automatically in maintained run contexts
+
+Decision
+- The shared maintained RUN_CONTEXT refresher
+  `src/utils/update_run_context_with_feature_activation_v1.py` now injects a
+  deterministic `## Boundary Governance` section alongside the existing
+  feature-activation section.
+- New run folders created through maintained wrappers that already refresh
+  `RUN_CONTEXT.md` now record:
+  - `boundary_class`
+  - `authoritative_for_downstream`
+  - `lawful_resume_boundary`
+  - `resume_entrypoint`
+  - `schema_contract`
+  - `upstream_authority_source`
+  - `replay_mode`
+  - supporting provenance fields used by the boundary contract
+
+Reason
+- The boundary-governance framework is only fully useful if new runs emit the
+  boundary metadata automatically at write time.
+- The existing shared RUN_CONTEXT refresher was the narrowest maintained-safe
+  implementation point because it already hardens governed run metadata
+  without changing pipeline semantics.
+
+Impact
+- Maintained Stage2, Stage3, and compare surfaces that refresh RUN_CONTEXT now
+  automatically declare their boundary class and resume legality.
+- This is run-metadata hardening only; no stage authority, pipeline semantics,
+  or benchmark behavior changed.
+
+### Decision: Add maintained schema-aware Stage2 raw-response rehydration to the composite replay path
+
+Decision
+- The maintained composite Stage2 replay mode now accepts both:
+  - historical legacy raw-response payloads
+  - current live-v2 raw-response payloads containing
+    `formulation_candidates` and the rest of the Stage2 v2 object families
+- Rehydration remains inside the maintained composite Stage2 path:
+  - `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+  - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
+- The raw-response freeze remains diagnostic-only by itself.
+- The lawful resumed Stage3 upstream boundary is the completed Stage2 artifact
+  re-emitted by that maintained replay path.
+
+Reason
+- The boundary-governance audit identified the missing lawful resume link as:
+  raw Stage2 freeze -> completed Stage2 authority.
+- The prior maintained replay branch was legacy-schema oriented and produced
+  zero formulations when given current live-v2 raw responses.
+- The narrowest maintained-safe fix was to make the maintained extractor's
+  replay branch schema-aware for current live-v2 raw-response payloads without
+  changing live execution semantics.
+
+Impact
+- Current frozen live-v2 raw-response baselines can now be rehydrated into
+  nonzero authoritative completed Stage2 artifacts without new LLM calls.
+- The resulting completed Stage2 outputs remain contract-valid upstream inputs
+  for Stage3.
+- No new shadow pipeline was created, and no live Stage2 semantics changed.
+
+## 2026-04-03
+
+### Decision: Lock Stage2 semantic authority to LLM-first composite mode and require explicit provenance for deterministic expansion
+
+Decision
+- Freeze the maintained Stage2 contract as:
+  - `llm_first_composite` by default for governed mainline Stage2 runs
+  - deterministic completion allowed only within an authorized semantic scope
+  - deterministic semantic emitters retained only as explicitly labeled
+    `governed_fallback_semantic_source` or `diagnostic_comparator`
+- Require additive provenance on authoritative completed Stage2 rows so each
+  row can answer:
+  - who declared the candidate universe
+  - who materialized the row
+  - what semantic scope authorized the row to exist
+- Require governed Stage2 runs to declare exactly one semantic-source mode in
+  run metadata and `RUN_CONTEXT.md`.
+- Preserve DOE capability under the frozen contract:
+  - LLM semantic discovery must declare DOE scope
+  - deterministic numbered-row recovery may materialize row-level candidates
+    only within that declared scope during `llm_first_composite` runs
+  - deterministic fallback semantic emitters remain available only under
+    explicit governed fallback declaration
+- Add a maintained Stage2 contract validator that fails when:
+  - semantic-source mode is missing or mixed
+  - authoritative rows lack semantic provenance
+  - deterministic DOE rows appear without LLM-declared DOE scope in
+    `llm_first_composite` mode
+
+Reason
+- The repository had already frozen the architecture principle that LLM owns
+  Stage2 semantic discovery, but the practical run history still showed
+  authority drift into deterministic semantic-source generation.
+- Prior DOE success must be preserved, but only as deterministic expansion
+  within LLM-declared semantic scope unless an explicitly governed fallback
+  mode is used.
+
+Impact
+- Maintained composite Stage2 runs now fail loudly instead of silently
+  accepting semantic-authority drift.
+- DOE row recovery remains available without allowing deterministic logic to
+  become the default Stage2 semantic authority.
+- Historical deterministic capabilities remain in the repository, but they are
+  now explicitly labeled as fallback/comparator authority modes rather than
+  ambiguous mainline behavior.
+
+### Decision: Record the operative Layer2 boundary decision workbook and distinguish it from the downstream value workbook
+
+Decision
+- For the `run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1`
+  lineage, the operative human-reviewed Layer2 boundary decision workbook is:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/boundary_gt_review_v1/boundary_gt_review_workbook_v1.xlsx`
+- This workbook is the correct practical base for future manual
+  rehydration-vs-GT boundary comparison work in that lineage.
+- It must be described precisely as:
+  - a run-scoped human-reviewed Layer2 boundary review surface
+  - seeded from Stage5 final formulation rows
+  - not the repository-wide ultimate raw GT origin
+- The downstream field-level workbook:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/value_gt_annotation_workbook_representation_repaired_v4_with_pH.xlsx`
+  is not the correct base for new boundary comparison work.
+- The field-level workbook inherits the accepted formulation universe from the
+  reviewed `include_gt` subset of the boundary workbook and remains a
+  downstream value-annotation surface only.
+
+Reason
+- Future agent sessions were re-deriving the workbook-role relationship from
+  workbook contents, lineage docs, and overlap analysis.
+- The repeated confusion point was treating the downstream value workbook as if
+  it were the Layer2 boundary authority, or treating the reviewed boundary
+  workbook as if it were an independently originated raw GT workbook.
+
+Impact
+- Future agents can now cite one explicit governed conclusion when selecting
+  the correct base workbook for:
+  - Layer2 boundary review
+  - rehydration-vs-GT boundary comparison
+  - downstream field/value annotation
+- The repo now explicitly distinguishes the mother boundary workbook from the
+  downstream value workbook without changing any pipeline behavior or benchmark
+  semantics.
+
+## 2026-04-08
+
+### Decision: Preserve governed partial Stage2 selection and inheritance markers without broadening downstream execution
+
+Decision
+- The maintained Stage2 contract now distinguishes marker readiness for the
+  suppression-prone marker families:
+  - `execution_ready`
+  - `partial_semantic`
+- This readiness distinction currently applies to:
+  - `selection_marker`
+  - `inheritance_marker`
+- The maintained prompt, normalization path, and validator now allow:
+  - partial `selection_marker` preservation when the paper supports the
+    selection cue but one or more of:
+    - `source_table_id`
+    - `selected_variable`
+    - `selected_value`
+    remain incompletely grounded
+  - partial `inheritance_marker` preservation when the paper supports the
+    inheritance cue but:
+    - `from_table`
+    - `to_table`
+    remain incompletely grounded
+- Execution-critical strictness is intentionally unchanged in this first-phase
+  implementation:
+  - `inheritance_marker.inherit_type`
+  - `inheritance_marker.variable`
+  - `inheritance_marker.value`
+  remain required whenever an inheritance marker is emitted
+- The maintained Stage2-to-downstream handshake now keeps current execution
+  narrow:
+  - `partial_semantic` markers are preserved in the Stage2 semantic-
+    intermediate artifact
+  - only `execution_ready` markers are carried into the execution-facing row
+    handshake consumed by unchanged downstream runtime behavior
+
+Reason
+- The field-level contract audit localized a small set of suppression-prone
+  fields that were prompt-forced but not current execution-critical
+  requirements.
+- The narrowest safe first-phase change was therefore:
+  - keep execution gates strict
+  - preserve partial semantic understanding where governance permits
+  - avoid broadening current deterministic execution authority
+
+Impact
+- Stage2 can now preserve some explicit semantic understanding that would
+  previously have been dropped entirely by all-or-nothing marker suppression.
+- Current deterministic row expansion and current Stage3 inheritance
+  materialization remain restricted to execution-ready markers only.
+- This is a maintained contract adjustment inside the existing Stage2
+  architecture, not a new pipeline stage and not a rollback of semantic-
+  authority restoration.
+
+### Decision: LLM Role Boundary Clarification and Semantic Contract Relaxation Direction
+
+Background
+- The recent corrective architecture work already restored the intended Stage2
+  authority split.
+- The maintained Stage2 contract now correctly preserves LLM semantic
+  authority, marker provenance, marker-authorized execution boundaries, and
+  validator enforcement against deterministic semantic overreach.
+
+What has already been fixed
+- The system has already recovered the intended `LLM is the semantic
+  authority` boundary.
+- Deterministic semantic emitters and semantic lifts are not the active
+  Stage2 mainline authority.
+- Deterministic Stage2 execution remains lawful only within governed semantic
+  scope.
+
+What remains broken
+- The remaining bottleneck is not architectural impurity alone and not model
+  quality alone.
+- The remaining bottleneck also includes:
+  - semantic contract rigidity
+  - LLM role overload
+  - suppression of markers under uncertainty
+- In practice, the current Stage2 semantic substep can still pressure the LLM
+  toward candidate-universe construction and partially execution-ready
+  structure emission earlier than preferred.
+
+Observed facts
+- The active maintained contract still expects the LLM to emit substantial
+  candidate-level semantic structure before deterministic completion begins.
+- In difficult structures such as sequential optimization papers, semantic
+  understanding may exist even when `selected_value`, exact table label, or
+  exact inheritance target cannot yet be fully grounded to the stricter live
+  marker schema.
+- When the live contract suppresses those marker families entirely, governed
+  downstream execution can starve:
+  - no marker family
+  - no row expansion
+  - no downstream formulation rows
+
+Inference
+- The remaining failure mode is better described as semantic-contract overload
+  than as failure to restore semantic authority.
+- Semantic understanding is not the same thing as executable structure.
+
+New locked principle
+- LLM outputs should preferentially be treated as reusable semantic cues and
+  governed intermediate markers, not as execution-ready formulation structures.
+
+Architectural implications
+- The preferred future Stage2 role boundary is:
+  - LLM for full-document semantic understanding
+  - LLM for formulation-scope detection
+  - LLM for structural signal detection, including DOE, selection,
+    inheritance, sequential optimization, and other governed motifs
+  - LLM for marker-level authorization, including partial or incomplete
+    semantic cues when governance permits
+- Deterministic downstream layers should remain responsible for:
+  - row expansion
+  - variable decomposition
+  - relation binding
+  - execution-level completion
+  - stricter normalization and validation
+- The preferred next direction is to evolve the semantic contract from final
+  executable structure toward a governed intermediate semantic protocol.
+
+Scope limits / what this does not mean
+- This is not a rollback of semantic authority restoration.
+- This is not permission for deterministic semantic inference.
+- This is not a claim that the LLM should emit vague uncontrolled text.
+- This is not a claim that the redesign is already implemented in the active
+  runtime.
+- This decision does not introduce a new numbered pipeline stage.
+
+Next design direction
+- The next architecture direction is not simply to make the LLM more precise
+  by prompt tightening alone.
+- The next architecture direction is to:
+  - reduce LLM output burden
+  - allow governed partial semantic markers where governance permits
+  - move execution strictness downstream into governed function units and
+    validators
+  - preserve the restored semantic-authority boundary while redesigning the
+    semantic contract
+
+Case-localization note
+- `QLYKLPKT` is currently treated as a localized example of this failure
+  mechanism:
+  - the paper may support the semantic pattern
+  - the current contract may still suppress the marker family when
+    execution-level grounding remains incomplete
+- This note records the generalized architecture conclusion, not a paper-only
+  workaround and not an implemented runtime exception.

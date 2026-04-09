@@ -132,7 +132,9 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py` | `STABLE_TOOL` | Build deterministic evidence packages for selected keys. |
 | `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit numbered DOE formulation rows from Stage1 table assets and emit additive Stage2 candidate artifacts. |
 | `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` | `STABLE_TOOL` | Internal LLM semantic-discovery substep used by the governed composite Stage2 entrypoint. Emits object-first semantic-intermediate artifacts for any declared manifest scope. |
-| `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Internal deterministic post-LLM completion substep used by the governed composite Stage2 entrypoint. Converts semantic intermediates into the completed Stage2 artifact required by unchanged downstream consumers. |
+| `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Internal deterministic post-LLM completion substep used by the governed composite Stage2 entrypoint. Converts semantic intermediates into the completed Stage2 artifact required by unchanged downstream consumers, including governed DOE row expansion and governed non-DOE table row expansion when authorized by Stage2 semantic markers. |
+| `src/stage2_sampling_labels/table_row_expansion_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit non-DOE formulation-table rows from Stage1 table assets when the LLM has declared a formulation-bearing non-DOE table through the Stage2 table authorization contract. |
+| `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py` | `STABLE_TOOL` | Maintained Stage2 contract validator that checks semantic-source mode declaration, candidate provenance, and DOE expansion legality before a composite Stage2 output can stand as governed authority. |
 | `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py` | `STABLE_TOOL` | Deterministic semantic Stage2 comparator or fallback retained for migration-support, comparator, or diagnostic work only; not the governed Stage2 authority. |
 | `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py` | `STABLE_TOOL` | Compatibility shim for the historical three-paper extractor name. Use the governed generic extractor instead; do not treat this filename as the Stage2 definition. |
 | `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py` | `STABLE_TOOL` | Write the non-default Stage2 replacement semantic-contract scaffold artifacts used for redesign planning and compatibility mapping. It is not a benchmark runtime entrypoint. |
@@ -167,6 +169,15 @@ Stage 2 active contract note:
   internal LLM semantic-discovery substep.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
   the internal deterministic post-LLM completion substep.
+- `src/stage2_sampling_labels/table_row_expansion_v1.py` is a governed
+  deterministic Stage2 helper that expands non-DOE formulation tables only
+  after the LLM has declared table-level authorization markers.
+- `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py`
+  is the maintained contract guard that fails if semantic-source mode is
+  undeclared, if deterministic expansion lacks authorized scope, or if DOE rows
+  appear without LLM-declared DOE scope in llm-first mode. The same guard also
+  requires non-DOE table-expanded rows to reference an LLM-declared table
+  formulation authorization scope.
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
   is retained only for fallback, comparator, migration-support, or diagnostic
   work and must not be treated as Stage2 authority.
@@ -234,6 +245,7 @@ Stage 2 active contract note:
 |---|---|---|
 | `src/utils/audit_run_lineage_layout_v1.py` | `STABLE_TOOL` | Deterministically audit top-level `data/results/run_*` lineage sprawl and flag sibling runs that should likely be contained under one parent lineage. |
 | `src/utils/build_feature_activation_report_v1.py` | `STABLE_TOOL` | Build a run-scoped feature activation report from deterministic artifact evidence so child-lineage validation can be distinguished from parent-run activation and Stage2 ordered-input execution can be audited. |
+| `src/utils/build_feature_execution_ledger_v1.py` | `STABLE_TOOL` | Build a full per-run feature execution ledger from the recovered feature inventory plus governed run artifacts so expected-vs-actual activation, upstream-applied processing, replay-hidden visibility limits, and resume-boundary scope can be checked before semantic debugging. |
 | `src/utils/run_threepaper_stage2_v2_comparison.py` | `STABLE_TOOL` | Non-default three-paper semantic-intermediate comparison wrapper. It calls the governed composite Stage2 entrypoint, then builds a comparison pack for `WIVUCMYG`, `UFXX9WXE`, and `5GIF3D8W` without defining Stage2 itself or modifying `ACTIVE_RUN.json`. |
 | `src/utils/build_mem_v1.py` | `STABLE_TOOL` | Build the governed `data/mem/v1/` memory registry from `docs/snapshots/`, `docs/methods/`, `data/results/**/RUN_CONTEXT.md`, and `project/*.md` without creating a new pipeline stage. |
 | `src/utils/query_mem_v1.py` | `STABLE_TOOL` | Query the governed `data/mem/v1/` registry by text, type, stage, or run before deeper debugging or failure-localization work. |

@@ -130,6 +130,8 @@ RESOLVED_FIELDNAMES = [
     "source_relation_row_ids",
     "deterministic_confidence",
 ]
+METHOD_GROUP_SIGNATURE_HINT_FIELD = "method_group_signature_hint"
+INHERITANCE_MARKER_FIELD = "inheritance_markers_json"
 
 CANONICAL_FIELD_ALIASES = {
     "plga_mw_kDa": "polymer_mw_kDa",
@@ -162,9 +164,53 @@ VARIATION_AXIS_FIELDS = {
 
 RESOLVABLE_RELATION_FIELDS = {
     "polymer_mw_kDa",
+    "plga_mass_mg",
     "surfactant_name",
+    "surfactant_concentration_text",
+    "pva_conc_percent",
     "organic_solvent",
     "preparation_method",
+    "drug_feed_amount_text",
+    "la_ga_ratio",
+}
+
+INHERITED_FIELD_ALIAS_RULES = {
+    "surfactant_concentration_text": [
+        "surfactant concentration",
+        "stabilizer concentration",
+        "poloxamer concentration",
+        "poloxamer 188 concentration",
+        "pluronic concentration",
+        "f68 concentration",
+    ],
+    "pva_conc_percent": [
+        "pva concentration",
+        "polyvinyl alcohol concentration",
+    ],
+    "plga_mass_mg": [
+        "polymer amount",
+        "polymer concentration",
+        "plga concentration",
+        "plga amount",
+    ],
+    "drug_feed_amount_text": [
+        "drug amount",
+        "drug concentration",
+        "itraconazole amount",
+        "api amount",
+        "payload amount",
+    ],
+    "la_ga_ratio": [
+        "la ga ratio",
+        "la/ga ratio",
+        "lactic glycolic ratio",
+        "plga ratio",
+    ],
+    "organic_solvent": [
+        "organic solvent",
+        "solvent",
+        "solvent type",
+    ],
 }
 
 
@@ -249,6 +295,26 @@ def read_jsonl_rows(path: Path) -> list[dict[str, Any]]:
             if line:
                 rows.append(json.loads(line))
     return rows
+
+
+def parse_json_maybe(value: Any) -> Any:
+    if isinstance(value, (dict, list)):
+        return value
+    text = normalize_text(value)
+    if not text:
+        return None
+    try:
+        return json.loads(text)
+    except Exception:
+        return text
+
+
+def ensure_list(value: Any) -> list[Any]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    return [value]
 
 
 def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
@@ -415,7 +481,7 @@ def build_resolved_relation_fields_for_paper(
         field_name = str(row.get("field_name", "") or "").strip()
         if field_name not in RESOLVABLE_RELATION_FIELDS:
             continue
-        if relation_type == "candidate_field_membership":
+        if relation_type in {"candidate_field_membership", "candidate_inherited_field"}:
             candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
             if not candidate_id:
                 continue
@@ -545,6 +611,9 @@ def build_resolved_relation_fields_for_paper(
 
 
 def method_group_signature(row: dict[str, str]) -> str:
+    hint = normalize_text(row.get(METHOD_GROUP_SIGNATURE_HINT_FIELD))
+    if hint:
+        return hint
     parts: list[str] = []
     for field_name in METHOD_GROUP_SIGNATURE_FIELDS:
         raw = field_raw_value(row, field_name)
@@ -564,6 +633,17 @@ def method_group_signature(row: dict[str, str]) -> str:
             return "|".join(fallback)
         return "paper_default_method_group"
     return "|".join(parts)
+
+
+def inherited_field_name(variable_name: str) -> str:
+    token_text = normalize_token(variable_name).replace("_", " ")
+    if not token_text:
+        return ""
+    for field_name, aliases in INHERITED_FIELD_ALIAS_RULES.items():
+        for alias in aliases:
+            if alias in token_text:
+                return field_name
+    return ""
 
 
 def method_group_id(paper_key: str, signature: str) -> str:
@@ -846,6 +926,60 @@ def build_relation_artifacts(
                     provenance_note="Field membership copied directly from a populated Stage2 column.",
                 )
                 relation_type_counter["candidate_field_membership"] += 1
+
+            inheritance_markers = [
+                item
+                for item in ensure_list(parse_json_maybe(row.get(INHERITANCE_MARKER_FIELD)))
+                if isinstance(item, dict)
+            ]
+            for marker in inheritance_markers:
+                if normalize_text(marker.get("inherit_type")) != "selected_condition":
+                    continue
+                inherited_field = inherited_field_name(normalize_text(marker.get("variable")))
+                inherited_value = normalize_text(marker.get("value"))
+                if not inherited_field or not inherited_value:
+                    continue
+                inherited_row = {
+                    "field_name": inherited_field,
+                    "field_value_raw": inherited_value,
+                    "field_value_norm": normalize_token(inherited_value),
+                    "field_scope": "inherited_selected_condition",
+                    "evidence_source_type": "text_span",
+                    "evidence_section": normalize_text(marker.get("from_table")) or evidence_section,
+                    "evidence_snippet": truncate_text(marker.get("evidence_span"), max_len=240) or evidence_snippet,
+                    "weak_ref": weak_ref,
+                }
+                field_membership.append(inherited_row)
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=parent_id,
+                    related_entity=normalize_text(marker.get("from_table")),
+                    relation_type="candidate_inherited_field",
+                    field_name=inherited_field,
+                    field_value_raw=inherited_value,
+                    field_value_norm=normalize_token(inherited_value),
+                    field_scope_value="inherited_selected_condition",
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type="text_span",
+                    evidence_section=normalize_text(marker.get("from_table")) or evidence_section,
+                    evidence_snippet=truncate_text(marker.get("evidence_span"), max_len=240) or evidence_snippet,
+                    is_shared="no",
+                    variation_axis_indicator="no",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence="medium",
+                    provenance_note="Inherited selected condition applied from Stage2 table authorization markers.",
+                )
+                relation_type_counter["candidate_inherited_field"] += 1
 
             paper_notes = ""
             jsonl_item = jsonl_map.get((paper_key, cid))

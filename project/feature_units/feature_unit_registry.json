@@ -130,6 +130,81 @@
     "notes": "This is an execution feature unit with run-level observability. It does not gate runs; it records whether the governed ordered evidence pack was actually used."
   },
   {
+    "feature_id": "stage2_json_sanitation_path1",
+    "title": "Stage2 JSON sanitation Path 1",
+    "problem_class": "Malformed or truncated raw LLM JSON at the Stage2 parse boundary",
+    "status": "active_supporting_capability",
+    "primary_stage": "stage2_active",
+    "governance_class": "managed_feature_unit",
+    "scope": "Post-raw-output parse repair inside the current Stage2 boundary; frozen raw baseline diagnostics; no downstream stage mutation",
+    "forbidden_behavior": "No semantic reconstruction, no inferred fields, no tolerant fallback parser, no downstream identity reinterpretation",
+    "output_artifact_contract": "Produces per-paper parsed JSON artifacts plus path1_parse_audit.tsv, path1_failure_subset.tsv, and path1_vs_path2_comparison.tsv; preserves the original raw response artifact unchanged",
+    "description": "Conservative syntax-first sanitation before strict parse. Applies low-risk mechanical cleanup only: code-fence trimming, leading-junk trimming before the first JSON start, and narrow balanced-close repair when the document is clearly truncated at the tail.",
+    "expected_intervention_points": [
+      "A raw Stage2 response is already saved and is passed through sanitize_stage2_json_text before strict json.loads",
+      "The sanitizer can remove formatting wrappers or perform narrow balanced-close repair without inventing content",
+      "The diagnostic comparison artifacts prove whether Path 1 modified text or parsed directly"
+    ],
+    "activation_signals": [
+      "path1_parse_audit.tsv exists for the diagnostic baseline",
+      "path1_parse_audit.tsv records parse_stage values of direct, sanitized, or balanced_close",
+      "path1_vs_path2_comparison.tsv records Path 1 as the preferred path when Path 2 is unnecessary or riskier"
+    ],
+    "regression_checks": [
+      "path1_parse_audit.tsv",
+      "path1_failure_subset.tsv",
+      "path1_vs_path2_comparison.tsv"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md",
+      "docs/methods/stage2_replacement_compatibility_adapter_2026-03-25.md"
+    ],
+    "introduced_on": "2026-04-02",
+    "notes": "This is the current conservative parse-repair path. It is syntax-first and auditable, and it is suitable for managed governance because it does not reconstruct semantics."
+  },
+  {
+    "feature_id": "stage2_legacy_fixparse_fallback_path2",
+    "title": "Stage2 legacy fixparse fallback Path 2",
+    "problem_class": "Historical broad fallback parse repair for raw Stage2 responses that fail the current conservative sanitizer",
+    "status": "active_supporting_capability",
+    "primary_stage": "stage2_active",
+    "governance_class": "diagnostic_only_fallback",
+    "scope": "Historical fixparse comparison only; Path 1 failures on frozen raw baselines; diagnostic evaluation without promotion to mainline authority",
+    "forbidden_behavior": "No use as active mainline Stage2 authority, no silent semantic reconstruction, no hidden replacement of the current conservative sanitizer",
+    "output_artifact_contract": "Produces path2_parse_audit.tsv only for Path 1 failures; any rescued paper must be traceable to the original raw response and the repair stage used",
+    "description": "Historical fixparse basis derived from the legacy wide-row extractor. It strips code fences, then attempts a broad brace-window recovery before falling back to a default empty schema object. This is diagnostic-only and broader than syntax-only repair.",
+    "expected_intervention_points": [
+      "Path 1 has already failed on a frozen raw response",
+      "The historical fixparse fallback is used only for diagnostic comparison, not mainline processing",
+      "A Path 2 audit row records the exact repair stage and any risk classification"
+    ],
+    "activation_signals": [
+      "path2_parse_audit.tsv exists and has rows for a Path 1 failure subset",
+      "path1_vs_path2_comparison.tsv records a Path 2 attempt only for Path 1 failures",
+      "The diagnostic summary records whether any rescue required possible_semantic_rewrite or mixed_or_unclear classification"
+    ],
+    "regression_checks": [
+      "path2_parse_audit.tsv",
+      "path1_vs_path2_comparison.tsv",
+      "summary.md"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py",
+      "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py"
+    ],
+    "related_docs": [
+      "project/feature_units/FEATURE_UNIT_GOVERNANCE.md",
+      "docs/methods/stage2_replacement_compatibility_adapter_2026-03-25.md",
+      "docs/methods/v7pilot_r3_fixparse_input_assembly_audit_2026-03-10.md"
+    ],
+    "introduced_on": "2026-04-02",
+    "notes": "This is a diagnostic-only fallback basis. It remains historical context unless future evidence proves it can be governed without semantic-riskful repair."
+  },
+  {
     "feature_id": "variant_aware_gt_authority_switch",
     "title": "Variant-aware GT authority switch",
     "problem_class": "GT authority drift when benchmark comparison continues to use an older workbook after the benchmark object changes",

@@ -36,10 +36,17 @@ This runbook distinguishes:
     - deterministic post-LLM completion remains inside Stage2 for downstream readiness
     - deterministic logic in Stage3+ owns relation resolution, inheritance,
       normalization, filtering, audit, and materialization
-  - Deterministic semantic emitters and semantic lifts are fallback,
-    comparator, migration-support, or diagnostic infrastructure only.
-  - The deterministic compatibility adapter remains deterministic downstream
-    infrastructure; it does not own Stage2 semantic authority.
+- Deterministic semantic emitters and semantic lifts are fallback,
+  comparator, migration-support, or diagnostic infrastructure only.
+- The deterministic compatibility adapter remains deterministic downstream
+  infrastructure; it does not own Stage2 semantic authority.
+- Current direction note:
+  - the restored semantic-authority boundary remains correct and in force
+  - the remaining bottleneck is semantic contract overload, not permission to
+    re-promote deterministic semantic authority
+  - future contract work should reduce LLM output burden and shift more
+    execution-level strictness into governed downstream function units and
+    validators where that can be done without losing semantic authority
 - Non-change reminder:
   - Stage 5 remains materialization-only.
   - The relation-first Stage 3 -> Stage 5 contract is unchanged.
@@ -231,6 +238,34 @@ Frozen authority contract:
   - internal deterministic post-LLM completion
 - Deterministic semantic reconstruction must not be selected as active mainline
   authority outside that governed composite Stage2 path.
+- No formulation candidate may enter the authoritative completed Stage2 artifact
+  unless it is traceable to:
+  - `llm_semantic_discovery`
+  - or an explicitly declared governed fallback mode
+- Deterministic completion may expand, enumerate rows, normalize, repair,
+  project, and bridge only within the authorized semantic scope for the run.
+- In `llm_first_composite` mode, deterministic DOE row expansion is lawful only
+  within an LLM-declared DOE scope.
+
+Current clarification on remaining Stage2 pressure:
+
+- The current maintained Stage2 contract is considered healthy on authority:
+  - no deterministic semantic overreach is restored
+  - marker provenance remains governed
+  - deterministic execution remains scope-authorized
+  - the maintained validator remains part of the guardrail surface
+- The remaining issue is that the live semantic contract may still push the
+  LLM toward candidate-level or partially execution-ready structure too early.
+- Future contract redesign should therefore target governed intermediate
+  semantic markers and reusable semantic cues rather than simply tightening the
+  current prompt for more execution-ready certainty.
+- The maintained runtime now includes one narrow contract relaxation:
+  - `selection_marker` and `inheritance_marker` may be preserved as governed
+    `partial_semantic` markers when only the currently identified
+    non-execution-critical grounding fields are incomplete
+  - downstream deterministic execution remains restricted to
+    `execution_ready` markers
+- This does not authorize deterministic semantic inference.
 
 Current implementation-status note:
 
@@ -239,10 +274,18 @@ Current implementation-status note:
 - The governed Stage2 wrapper refreshes run-level feature activation observability after writing `RUN_CONTEXT.md`.
 - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
   internal LLM semantic-discovery substep used by the governed Stage2 entrypoint.
+- The same maintained Stage2 path may replay saved raw responses without new
+  LLM calls and rehydrate current live-v2 raw-response freezes back into the
+  authoritative completed Stage2 artifact.
 - Stage2 live input assembly can be switched to the governed ordered-evidence-pack mode by setting `STAGE2_INPUT_EVIDENCE_PACKING_MODE=ordered_blocks`; the default remains the current raw-prefix path.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
   the internal deterministic post-LLM completion substep used by the governed
   Stage2 entrypoint.
+- `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py`
+  is the maintained contract check invoked by the governed Stage2 entrypoint.
+  It fails when semantic-source mode is mixed or undeclared, when row
+  provenance is missing, or when deterministic DOE expansion appears without
+  LLM-declared DOE scope in `llm_first_composite` mode.
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
   remains available only for explicitly declared fallback, comparator,
   migration-support, or diagnostic use and must not be treated as the governed
@@ -253,10 +296,39 @@ Current implementation-status note:
   comparison only and must not be treated as a promotion of Stage2 authority or
   as a replacement for the canonical Stage0-Stage5 runbook.
 
+Boundary legality note:
+
+- The active pipeline distinguishes `internal_intermediate`,
+  `diagnostic_boundary`, `mainline_resume_boundary`, and
+  `benchmark_terminal_boundary`.
+- A replayable artifact is not automatically a lawful resume boundary; it must
+  preserve the authoritative downstream-ready contract for the next stage.
+- Raw Stage2 freeze baselines are diagnostic boundaries unless they contain the
+  completed Stage2 weak-label artifact required by Stage3.
+- A frozen current live-v2 raw-response set may be rehydrated into that lawful
+  Stage2 boundary only by replaying it through the maintained composite Stage2
+  entrypoint and maintained internal completion step.
+- The completed Stage2 weak-label TSV is the lawful resume boundary into
+  Stage3.
+- The Stage5 final formulation table plus comparison outputs are the benchmark
+  terminal boundary.
+
 Completion artifact:
 
 - `data/results/<stage2_run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
 - supporting completed-Stage2 JSONL and projection trace sidecars
+
+Maintained replay/rehydration rule:
+
+- When `run_stage2_composite_v1.py` is invoked with `--source-mode
+  legacy_llm_replay`, the maintained extractor may consume:
+  - historical legacy raw-response payloads
+  - current live-v2 raw-response payloads already saved under
+    `semantic_stage2_objects/raw_responses/`
+- Replay mode remains inside Stage2.
+- The replayable raw-response directory is not itself authoritative; the
+  authoritative downstream boundary is still the completed Stage2 artifact
+  emitted by the same maintained composite Stage2 path.
 
 Internal Stage2 intermediate:
 
@@ -273,8 +345,34 @@ Stage2 boundary rule:
   authoritative Stage2 evaluation target.
 - Deterministic semantic emitters, deterministic semantic lifts, and similar
   reconstruction paths are not allowed to stand in as Stage2 authority.
+- Maintained Stage2 runs must declare exactly one semantic-source mode:
+  - `llm_first_composite`
+  - `governed_fallback_semantic_source`
+  - `diagnostic_comparator`
+- Completed Stage2 rows must preserve additive provenance fields that answer:
+  - who declared the candidate universe
+  - who materialized the row
+  - what semantic scope authorized the row to exist
 - Stage2.5 is retired from the active mainline and retained only as archived
   design history.
+
+Required boundary fields for governed resume-capable runs:
+
+- `boundary_class`
+- `authoritative_for_downstream`
+- `lawful_resume_boundary`
+- `resume_entrypoint`
+- `schema_contract`
+- `upstream_authority_source`
+- `replay_mode`
+
+These fields are additive run-context metadata only. They do not change stage
+authority or promote diagnostic boundaries into mainline resume boundaries by
+themselves.
+The maintained RUN_CONTEXT refresher
+`src/utils/update_run_context_with_feature_activation_v1.py` now injects these
+boundary-governance fields automatically for run-producing maintained wrappers
+that call it after their primary `RUN_CONTEXT.md` write.
 
 Authoritative Stage2 object families:
 
@@ -295,6 +393,9 @@ Deterministic post-LLM completion:
   and Stage5 runtime consumers
 - the adapter is part of the active execution chain and remains inside Stage2
 - the adapter must not perform semantic inference
+- the adapter now filters governed partial semantic selection/inheritance
+  markers out of the execution-facing row handshake so unchanged downstream
+  consumers continue to see only execution-ready markers
 - `src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py`
   is deprecated and retained only for fallback or debug use outside the active
   mainline
@@ -394,6 +495,11 @@ Optional Layer 2 GT review export:
 - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
 - This helper builds a run-scoped XLSX boundary-GT workbook from the Stage 5 final table and optional provenance artifacts.
 - It is a reviewer-facing support surface, not a production-path completion artifact.
+- Confirmed lineage-specific workbook-role note:
+  - in `run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1`, the operative human-reviewed Layer2 boundary decision workbook is
+    `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/boundary_gt_review_v1/boundary_gt_review_workbook_v1.xlsx`
+  - use that workbook as the practical base for future manual rehydration-vs-GT boundary comparison work in that lineage
+  - describe it as a run-scoped reviewed boundary surface seeded from Stage5 final rows, not as the repository-wide ultimate raw GT origin
 
 Optional Layer 2 identity scaffold binding audit:
 
@@ -454,6 +560,13 @@ Optional Layer 3 field GT review export:
 - A separate formulation-level value GT annotation workbook may be built from
   the frozen audit-ready TSV plus the Layer 3 field seed TSV when a faster
   one-row-per-formulation numeric labeling surface is needed.
+- Confirmed lineage-specific workbook-role note:
+  - `data/results/run_20260314_1206_076995e_dev15_deterministic_refresh_no_llm_v1/value_gt_annotation_workbook_representation_repaired_v4_with_pH.xlsx`
+    is a downstream field/value annotation workbook
+  - it inherits the accepted formulation universe from the reviewed
+    `include_gt` subset of the boundary workbook above
+  - do not use it as the base for new Layer2 boundary comparison or
+    rehydration-vs-GT diff work
 - A separate report-only Layer 3 cross-audit may be built from the compact
   value workbook plus cleaned text/tables when manual review needs one row per
   flagged cell rather than a workbook rewrite.

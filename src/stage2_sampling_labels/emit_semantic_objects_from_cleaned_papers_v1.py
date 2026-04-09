@@ -13,6 +13,8 @@ SUMMARY_TSV_NAME = "semantic_stage2_object_summary_v1.tsv"
 MANIFEST_JSON_NAME = "semantic_stage2_object_manifest_v1.json"
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+FALLBACK_SEMANTIC_SOURCE_MODE = "governed_fallback_semantic_source"
+FALLBACK_PROVENANCE = "governed_fallback_semantic_source"
 
 
 def normalize_text(value: Any) -> str:
@@ -81,6 +83,11 @@ def make_identity(
         "formulation_role": formulation_role,
         "identity_confidence": "high",
         "candidate_source": "paper_driven_deterministic_semantic_emitter_v1",
+        "stage2_semantic_source_mode": FALLBACK_SEMANTIC_SOURCE_MODE,
+        "semantic_universe_authority": FALLBACK_PROVENANCE,
+        "row_materialization_mode": FALLBACK_PROVENANCE,
+        "semantic_scope_authority": FALLBACK_PROVENANCE,
+        "semantic_scope_ref": f"governed_fallback_document_scope:{key}",
         "change_descriptions": change_descriptions or [],
         "instance_context_tags": instance_context_tags or [],
         "change_context_tags": change_context_tags or [],
@@ -1916,10 +1923,29 @@ def build_document(record: dict[str, str]) -> dict[str, Any]:
     raise ValueError(f"Unsupported paper key for this governed emitter: {key}")
 
 
+def finalize_fallback_document(document: dict[str, Any]) -> dict[str, Any]:
+    document_key = normalize_text(document.get("document_key"))
+    document["stage2_semantic_source_mode"] = FALLBACK_SEMANTIC_SOURCE_MODE
+    document["semantic_universe_authority"] = FALLBACK_PROVENANCE
+    document["semantic_scope_declarations"] = [
+        {
+            "scope_id": f"{document_key}__governed_fallback_document_scope__01",
+            "scope_kind": "governed_fallback_document_scope",
+            "declared_by": FALLBACK_PROVENANCE,
+            "authorizes_row_materialization_modes": [FALLBACK_PROVENANCE],
+            "row_enumeration_required": "paper_specific_fallback",
+            "table_scope_refs": list(document.get("source_table_files") or []),
+            "declaration_basis": "explicit_governed_fallback_semantic_source_mode",
+        }
+    ]
+    return document
+
+
 def summary_row(document: dict[str, Any]) -> dict[str, Any]:
     return {
         "document_key": document["document_key"],
         "doi": document["doi"],
+        "stage2_semantic_source_mode": document.get("stage2_semantic_source_mode", FALLBACK_SEMANTIC_SOURCE_MODE),
         "legacy_row_count": "",
         "identity_count": len(document["formulation_identity_candidates"]),
         "component_count": len(document["component_candidates"]),
@@ -1950,7 +1976,7 @@ def main() -> None:
         missing = sorted(wanted - found)
         raise ValueError(f"Manifest missing requested paper keys: {missing}")
 
-    documents = [build_document(row) for row in selected]
+    documents = [finalize_fallback_document(build_document(row)) for row in selected]
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
     jsonl_path = args.out_dir / SEMANTIC_JSONL_NAME
@@ -1965,6 +1991,7 @@ def main() -> None:
         [
             "document_key",
             "doi",
+            "stage2_semantic_source_mode",
             "legacy_row_count",
             "identity_count",
             "component_count",
@@ -1983,10 +2010,12 @@ def main() -> None:
         "output_summary_tsv": str((out_dir_resolved / SUMMARY_TSV_NAME).relative_to(REPO_ROOT)).replace("\\", "/"),
         "paper_keys": [document["document_key"] for document in documents],
         "source_mode": "paper_driven_deterministic_semantic_emitter",
+        "stage2_semantic_source_mode": FALLBACK_SEMANTIC_SOURCE_MODE,
         "replacement_emitter_status": "true_paper_driven_semantic_emitter_present__diagnostic_scope",
         "notes": [
             "Diagnostic-only DEV15 replacement validation emitter.",
             "No legacy Stage2 row content was used to generate semantic objects.",
+            "This emitter is an explicitly governed fallback semantic source and must not be confused with llm_first_composite Stage2 authority.",
         ],
     }
     (args.out_dir / MANIFEST_JSON_NAME).write_text(json.dumps(manifest, indent=2), encoding="utf-8")

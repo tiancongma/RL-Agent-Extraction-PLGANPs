@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import os
 import subprocess
 import sys
@@ -26,6 +27,9 @@ SEMANTIC_JSONL = "semantic_stage2_v2_objects.jsonl"
 SEMANTIC_SUMMARY = "semantic_stage2_v2_summary.tsv"
 FINAL_STAGE2_TSV = "weak_labels__v7pilot_r3_fixparse.tsv"
 FINAL_STAGE2_JSONL = "weak_labels__v7pilot_r3_fixparse.jsonl"
+STAGE2_RUN_METADATA_JSON = "stage2_run_metadata_v1.json"
+STAGE2_CONTRACT_REPORT_JSON = "stage2_semantic_authority_contract_report_v1.json"
+STAGE2_SEMANTIC_SOURCE_MODE = "llm_first_composite"
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -73,7 +77,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--manifest-tsv", required=True)
     parser.add_argument("--paper-key", action="append", dest="paper_keys", default=[])
-    parser.add_argument("--source-mode", choices=["live_llm", "legacy_llm_replay"], default="live_llm")
+    parser.add_argument(
+        "--source-mode",
+        choices=["live_llm", "legacy_llm_replay"],
+        default="live_llm",
+        help="Run live Stage2 extraction or replay saved raw responses through the maintained Stage2 completion path.",
+    )
     parser.add_argument("--legacy-raw-responses-dir", default="")
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
     parser.add_argument("--model", default="gemini-2.5-flash")
@@ -135,17 +144,35 @@ Benchmark reporting rule:
 - Produce the only authoritative Stage2 output contract consumed by Stage3.
 
 ## 4. Stage2 composite contract
+- stage2_semantic_source_mode: `{STAGE2_SEMANTIC_SOURCE_MODE}`
 - Stage2 internal intermediate:
   - LLM semantic discovery objects under `{semantic_dir}`
 - Stage2 authoritative final output:
   - deterministic post-LLM completion under `{compat_dir}`
 - Stage3 must consume only the completed Stage2 artifact, not raw LLM semantic objects alone.
+- No formulation candidate may enter the authoritative Stage2 artifact unless it
+  is traceable to:
+  - `llm_semantic_discovery`
+  - or an explicitly declared governed fallback mode
+- Deterministic Stage2 completion may expand, normalize, resolve, or bridge
+  rows, but it must not silently become the semantic source of the formulation
+  universe in this run mode.
+- DOE row expansion is allowed only within LLM-declared DOE scope in this run
+  mode.
+- Governed DOE deterministic expansion is isolated inside:
+  - `src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py`
+- Sequential optimization resolution is allowed only within LLM-declared
+  document scope when explicit stagewise selection evidence exists and no DOE
+  scope is declared.
+- Governed sequential optimization resolution is isolated inside:
+  - `src/stage2_sampling_labels/function_units/sequential_optimization_interpreter_v1.py`
 
 ## 5. Scope and inputs
 - manifest_tsv: `{manifest_tsv}`
 - selected_paper_keys:
 {key_block}
 - source_mode: `{source_mode}`
+- source_mode_note: `{('saved_raw_response_replay' if source_mode == 'legacy_llm_replay' else 'live_llm_execution')}`
 - llm_backend: `{llm_backend}`
 - model: `{model}`
 - max_text_chars: `{max_text_chars}`
@@ -173,6 +200,10 @@ Benchmark reporting rule:
   - `{compat_dir / 'compatibility_projection_summary_v1.json'}`
 - run context:
   - `{run_dir / 'RUN_CONTEXT.md'}`
+- machine-readable run metadata:
+  - `{run_dir / STAGE2_RUN_METADATA_JSON}`
+- contract-validation report:
+  - `{run_dir / 'analysis' / STAGE2_CONTRACT_REPORT_JSON}`
 
 ## 8. Evaluation guardrail
 - Raw LLM semantic objects are an internal Stage2 intermediate only.
@@ -274,6 +305,20 @@ def main() -> None:
     ]
     run_command(compat_cmd)
 
+    contract_report_path = run_dir / "analysis" / STAGE2_CONTRACT_REPORT_JSON
+    run_command(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "validate_stage2_semantic_authority_contract_v1.py"),
+            "--semantic-jsonl",
+            str(semantic_dir / SEMANTIC_JSONL),
+            "--stage2-tsv",
+            str(compat_dir / FINAL_STAGE2_TSV),
+            "--report-out",
+            str(contract_report_path),
+        ]
+    )
+
     run_context = build_run_context(
         run_id=run_id,
         run_dir_kind=run_dir_kind,
@@ -291,6 +336,26 @@ def main() -> None:
         compat_dir=compat_dir,
     )
     (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
+    run_metadata = {
+        "schema": "stage2_run_metadata_v1",
+        "run_id": run_id,
+        "run_dir": str(run_dir),
+        "stage2_semantic_source_mode": STAGE2_SEMANTIC_SOURCE_MODE,
+        "stage2_entrypoint": "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+        "stage2_internal_semantic_extractor": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+        "stage2_internal_completion": "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py",
+        "stage2_internal_doe_function_unit": "src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py",
+        "stage2_internal_sequential_optimization_function_unit": "src/stage2_sampling_labels/function_units/sequential_optimization_interpreter_v1.py",
+        "stage2_contract_validation_report": str(contract_report_path),
+        "source_mode": args.source_mode,
+        "llm_backend": args.llm_backend,
+        "model": args.model,
+        "legacy_raw_responses_dir": str(legacy_raw_responses_dir) if legacy_raw_responses_dir is not None else "",
+    }
+    (run_dir / STAGE2_RUN_METADATA_JSON).write_text(
+        json.dumps(run_metadata, indent=2),
+        encoding="utf-8",
+    )
     run_command(
         [
             sys.executable,

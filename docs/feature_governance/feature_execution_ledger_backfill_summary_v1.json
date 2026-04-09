@@ -1,0 +1,22 @@
+{
+  "runs": [
+    {
+      "run_id": "21_qlyk_table_selection_fix_validation_v3",
+      "run_dir": "data/results/20260407_ab12cd3/21_qlyk_table_selection_fix_validation_v3",
+      "entrypoint_scope": "stage2_live",
+      "source_mode": "live_llm",
+      "resume_boundary": "mainline_resume_boundary",
+      "ledger_rows": 45,
+      "active_observed": 17,
+      "active_inferred_from_upstream": 0,
+      "expected_but_not_observed": 4,
+      "intentionally_disabled": 1,
+      "replay_hidden": 0,
+      "not_reachable_due_to_resume_boundary": 0,
+      "not_applicable_for_run_scope": 16,
+      "unknown_needs_review": 7,
+      "mismatch_rows": 4,
+      "highest_severity": "high"
+    }
+  ]
+}
