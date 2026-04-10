@@ -60,6 +60,50 @@ one-off prompt option: its governed activation is evidenced by the prompt
 preview artifact and the generated Feature Unit Activation section inside
 `RUN_CONTEXT.md`.
 
+The maintained S2-2 contract extends that same governance layer:
+
+- `s2_candidate_section_aware_split`
+  - the maintained Stage2 path must persist `candidate_blocks_v1.json` before
+    role-aware selection resolves the canonical evidence package
+  - this candidate surface exists to make structure recovery inspectable before
+    selector prioritization, not to create a second pipeline
+- `s2_candidate_table_isolation`
+  - the maintained candidate layer must expose isolated table candidates before
+    selector scoring, with any quality warnings recorded at candidate level
+  - downstream table-selection debug stays derived observability only
+- `s2_candidate_noise_filtering`
+  - obvious publisher or page-furniture noise should be filtered at candidate
+    generation time using conservative high-confidence rules
+  - candidate-level debug output must make that filtering visible without
+    conflating it with selector role assignment
+- `s2_2_evidence_artifact_contract`
+  - the maintained Stage2 path must persist `evidence_blocks_v1.json`
+  - this is the canonical pre-LLM evidence surface, not a debug sidecar
+- `s2_2_design_success_split`
+  - the same artifact must distinguish `technical_status` from
+    `design_status`
+  - artifact generation alone does not imply the intended input contract was
+    satisfied
+- `s2_2_prompt_preview_derived_from_evidence_artifact`
+  - `stage2_prompt_preview_v1.tsv` remains useful, but only as derived
+    observability
+  - the prompt preview must point back to the canonical evidence artifact and
+    must not become a second primary truth surface
+- `s2_2_role_aware_evidence_selection`
+  - the maintained selector must assign explicit evidence roles before prompt
+    assembly rather than relying on pure global top-K ranking
+  - the canonical evidence artifact must record role assignments,
+    `selector_profile`, and any weak or missing roles
+- `s2_2_doe_overlay_selection`
+  - DOE or optimization papers may activate a deterministic overlay on top of
+    the general selector profile
+  - overlay activation must be evidenced in the canonical artifact rather than
+    inferred from repository code alone
+- `s2_2_duplicate_table_suppression`
+  - duplicate table suppression is governed only when a run-local evidence
+    artifact records an actual suppression event
+  - support in code is not enough; activation is run-evidence based
+
 The same governance layer also tracks post-raw-output parse-repair units for
 diagnostic evaluation:
 

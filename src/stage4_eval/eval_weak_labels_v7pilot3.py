@@ -11,9 +11,11 @@ from typing import Any, Dict, List, Tuple
 import pandas as pd
 
 try:
+    from src.utils.active_data_source import read_active_run_pointer
     from src.utils.paths import PROJECT_ROOT, dataset_text_root
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.active_data_source import read_active_run_pointer
     from src.utils.paths import PROJECT_ROOT, dataset_text_root
 
 
@@ -457,6 +459,15 @@ def build_terminal_summary(per_doi: pd.DataFrame, pilot_tsv: Path, out_dir: Path
 
 def main() -> None:
     args = parse_args()
+    try:
+        active_pointer, _ = read_active_run_pointer()
+    except Exception:
+        active_pointer = {}
+    if active_pointer.get("gt_authority_lock"):
+        raise ValueError(
+            "GT authority lock is enabled. eval_weak_labels_v7pilot3.py relies on legacy workbook-style "
+            "GT inputs and is blocked for DEV15 until it is migrated to the frozen GT authority layer."
+        )
     pilot_tsv = Path(args.pilot_tsv)
     pilot_manifest = Path(args.pilot_manifest)
     gt_xlsx = Path(args.gt_xlsx)

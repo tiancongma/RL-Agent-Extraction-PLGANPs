@@ -11,8 +11,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from openpyxl import load_workbook
-
 try:
     from src.utils.active_data_source import (
         build_artifact_metadata,
@@ -55,20 +53,16 @@ def read_final_table_rows(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
-def read_gt_rows_from_workbook(path: Path) -> tuple[list[dict[str, str]], list[str]]:
-    workbook = load_workbook(path, read_only=True, data_only=True)
-    worksheet = workbook["review_formulations"]
-    raw_rows = worksheet.iter_rows(values_only=True)
-    header = [str(value) if value is not None else "" for value in next(raw_rows)]
-    rows: list[dict[str, str]] = []
-    for values in raw_rows:
-        rows.append(
-            {
-                header[idx]: "" if idx >= len(values) or values[idx] is None else str(values[idx])
-                for idx in range(len(header))
-            }
-        )
-    return rows, header
+def read_gt_counts_from_tsv(path: Path) -> dict[str, int]:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+    counts: dict[str, int] = {}
+    for row in rows:
+        paper_key = str(row.get("paper_key", "")).strip()
+        if not paper_key:
+            continue
+        counts[paper_key] = int(str(row.get("gt_count", "0")).strip() or "0")
+    return counts
 
 
 def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
@@ -83,7 +77,7 @@ def build_summary_markdown(
     scope_name: str,
     manifest_path: Path,
     final_table_path: Path,
-    gt_xlsx_path: Path,
+    gt_counts_tsv_path: Path,
     counts_rows: list[dict[str, str]],
     ee_supported: bool,
     summary_path: Path,
@@ -102,7 +96,7 @@ def build_summary_markdown(
         f"- scope_name: `{scope_name}`",
         f"- scope_manifest_tsv: `{manifest_path}`",
         f"- final_formulation_table_tsv: `{final_table_path}`",
-        f"- gt_workbook: `{gt_xlsx_path}`",
+        f"- gt_counts_tsv: `{gt_counts_tsv_path}`",
         "",
         "## Benchmark-validity statement",
         "",
@@ -145,7 +139,7 @@ def build_summary_markdown(
 
 def build_count_audit_markdown(
     counts_rows: list[dict[str, str]],
-    gt_xlsx_path: Path,
+    gt_counts_tsv_path: Path,
     final_table_path: Path,
     audit_summary_path: Path,
 ) -> None:
@@ -160,7 +154,7 @@ def build_count_audit_markdown(
     lines = [
         "# DEV15 GT vs Pred Count Audit",
         "",
-        f"- gt_authority_file: `{gt_xlsx_path}`",
+        f"- gt_authority_file: `{gt_counts_tsv_path}`",
         f"- pred_source_file: `{final_table_path}`",
         f"- total_doi_count: `{len(counts_rows)}`",
         f"- exact_matches: `{exact}`",
@@ -187,7 +181,7 @@ def build_run_context(
     run_dir: Path,
     source_run_context: dict[str, Any],
     final_table_tsv: Path,
-    gt_xlsx: Path,
+    gt_counts_tsv: Path,
     scope_manifest_tsv: Path,
     out_dir: Path,
     scope_name: str,
@@ -204,7 +198,7 @@ def build_run_context(
             "",
             "## 2. Purpose",
             "",
-            "- Compare the completed Stage 5 final table against the authoritative GT workbook for the declared scope.",
+            "- Compare the completed Stage 5 final table against the authoritative frozen Layer1 GT counts TSV for the declared scope.",
             "- Emit benchmark comparison evidence without modifying the final table or GT authority.",
             "",
             "## 3. Source Authority Resolution",
@@ -215,7 +209,7 @@ def build_run_context(
             f"- active_run_pointer_path: `{source_run_context.get('pointer_path') or ''}`",
             f"- scope_manifest_tsv: `{scope_manifest_tsv}`",
             f"- final_table_tsv: `{final_table_tsv}`",
-            f"- gt_workbook_xlsx: `{gt_xlsx}`",
+            f"- layer1_gt_counts_tsv: `{gt_counts_tsv}`",
             "",
             "## 4. Exact Script Execution Order",
             "",
@@ -249,7 +243,7 @@ def build_run_context(
 
 def compare_final_table_to_gt(
     final_table_tsv: Path,
-    gt_xlsx: Path,
+    gt_counts_tsv: Path,
     scope_manifest_tsv: Path,
     out_dir: Path,
     scope_name: str,
@@ -264,18 +258,10 @@ def compare_final_table_to_gt(
     final_rows = [
         row for row in read_final_table_rows(final_table_tsv) if row.get("key", "") in scope_keys
     ]
-    gt_rows, gt_header = read_gt_rows_from_workbook(gt_xlsx)
-    gt_rows = [
-        row
-        for row in gt_rows
-        if row.get("paper_key", "") in scope_keys
-        and normalize_text(row.get("formulation_exists_gt")) == "yes"
-    ]
-
     final_counts = Counter(row["key"] for row in final_rows)
-    gt_counts = Counter(row["paper_key"] for row in gt_rows)
-
-    ee_supported = any("encapsulation" in normalize_text(column) for column in gt_header)
+    gt_counts_all = read_gt_counts_from_tsv(gt_counts_tsv)
+    gt_counts = Counter({key: gt_counts_all.get(key, 0) for key in scope_keys})
+    ee_supported = False
 
     counts_rows: list[dict[str, str]] = []
     audit_rows: list[dict[str, str]] = []
@@ -301,7 +287,7 @@ def compare_final_table_to_gt(
                 "count_diff": str(diff),
                 "comparison_status": status,
                 "final_table_artifact": str(final_table_tsv),
-                "gt_artifact": str(gt_xlsx),
+                "gt_artifact": str(gt_counts_tsv),
                 "notes": (
                     "count_match"
                     if status == "match"
@@ -317,7 +303,7 @@ def compare_final_table_to_gt(
                 "pred_count": str(final_count),
                 "delta_count": str(diff),
                 "count_status": count_status,
-                "gt_authority_file": str(gt_xlsx),
+                "gt_authority_file": str(gt_counts_tsv),
                 "pred_source_file": str(final_table_tsv),
                 "matched_rows": "",
                 "missing_rows": "",
@@ -366,14 +352,14 @@ def compare_final_table_to_gt(
         scope_name=scope_name,
         manifest_path=scope_manifest_tsv,
         final_table_path=final_table_tsv,
-        gt_xlsx_path=gt_xlsx,
+        gt_counts_tsv_path=gt_counts_tsv,
         counts_rows=counts_rows,
         ee_supported=ee_supported,
         summary_path=summary_path,
     )
     build_count_audit_markdown(
         counts_rows=audit_rows,
-        gt_xlsx_path=gt_xlsx,
+        gt_counts_tsv_path=gt_counts_tsv,
         final_table_path=final_table_tsv,
         audit_summary_path=audit_summary_path,
     )
@@ -381,7 +367,7 @@ def compare_final_table_to_gt(
     result = {
         "scope_name": scope_name,
         "final_table_path": str(final_table_tsv),
-        "gt_xlsx_path": str(gt_xlsx),
+        "gt_counts_tsv_path": str(gt_counts_tsv),
         "counts_path": str(counts_path),
         "summary_path": str(summary_path),
         "audit_counts_path": str(audit_counts_path),
@@ -399,7 +385,7 @@ def compare_final_table_to_gt(
             run_dir=out_dir,
             source_run_context=source_run_context,
             final_table_tsv=final_table_tsv,
-            gt_xlsx=gt_xlsx,
+            gt_counts_tsv=gt_counts_tsv,
             scope_manifest_tsv=scope_manifest_tsv,
             out_dir=out_dir,
             scope_name=scope_name,
@@ -423,10 +409,11 @@ def compare_final_table_to_gt(
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Compare a final formulation table against the authoritative fixed skeleton GT workbook."
+        description="Compare a final formulation table against the authoritative frozen Layer1 GT counts TSV."
     )
     parser.add_argument("--final-table-tsv", type=Path, default=None)
-    parser.add_argument("--gt-xlsx", type=Path, default=None)
+    parser.add_argument("--gt-counts-tsv", type=Path, default=None)
+    parser.add_argument("--gt-xlsx", type=Path, default=None, help="Deprecated legacy compare input; blocked when GT authority lock is enabled.")
     parser.add_argument("--scope-manifest-tsv", type=Path, default=None)
     parser.add_argument("--out-dir", type=Path, default=None)
     parser.add_argument("--run-dir", type=Path, default=None)
@@ -447,11 +434,16 @@ def main() -> None:
         pointer_key="stage5_final_table_tsv",
         canonical_relative="final_formulation_table_v1.tsv",
     )
-    gt_xlsx = resolve_artifact_path(
-        explicit_path=args.gt_xlsx,
+    gt_counts_tsv = resolve_artifact_path(
+        explicit_path=args.gt_counts_tsv,
         run_context=run_context,
-        pointer_key="gt_workbook_xlsx",
+        pointer_key="layer1_gt_path",
     )
+    if args.gt_xlsx is not None:
+        raise ValueError(
+            "--gt-xlsx is no longer the authoritative Layer1 compare input. "
+            "Use --gt-counts-tsv or rely on ACTIVE_RUN.json layer1_gt_path."
+        )
     scope_manifest_tsv = resolve_artifact_path(
         explicit_path=args.scope_manifest_tsv,
         run_context=run_context,
@@ -468,7 +460,7 @@ def main() -> None:
                 "active_run_pointer_path": str(run_context.get("pointer_path") or ""),
                 "resolved_input_files": {
                     "final_table_tsv": str(final_table_tsv),
-                    "gt_xlsx": str(gt_xlsx),
+                    "gt_counts_tsv": str(gt_counts_tsv),
                     "scope_manifest_tsv": str(scope_manifest_tsv),
                 },
                 "resolved_out_dir": str(out_dir),
@@ -478,7 +470,7 @@ def main() -> None:
     )
     result = compare_final_table_to_gt(
         final_table_tsv=final_table_tsv,
-        gt_xlsx=gt_xlsx,
+        gt_counts_tsv=gt_counts_tsv,
         scope_manifest_tsv=scope_manifest_tsv,
         out_dir=out_dir,
         scope_name=args.scope_name,
@@ -490,7 +482,7 @@ def main() -> None:
             source_run_context=run_context,
             source_files={
                 "final_table_tsv": str(final_table_tsv),
-                "gt_xlsx": str(gt_xlsx),
+                "gt_counts_tsv": str(gt_counts_tsv),
                 "scope_manifest_tsv": str(scope_manifest_tsv),
             },
             generated_by="src/stage5_benchmark/compare_final_table_to_gt_v1.py",

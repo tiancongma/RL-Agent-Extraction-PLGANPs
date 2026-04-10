@@ -145,7 +145,7 @@ The evaluation reference path is separate:
 The final comparison node is separate from production:
 
 - input A: `final_formulation_table_v1.tsv`
-- input B: fixed manual GT workbook
+- input B: frozen Layer1 GT counts TSV derived from the locked DEV15 GT authority
 - input C: declared scope manifest TSV
 - output: `final_table_vs_gt_counts.tsv` and `final_table_vs_gt_summary.md`
 - optional downstream comparison metadata:
@@ -367,10 +367,19 @@ Exact output files or directories:
 
 - run-scoped semantic-object outputs under
   `data/results/run_<run_id>/semantic_stage2_objects/`
+- canonical S2 internal candidate-segmentation artifacts under
+  `data/results/run_<run_id>/semantic_stage2_objects/candidate_blocks/<paper_key>/`
+- canonical S2-2 pre-LLM evidence artifacts under
+  `data/results/run_<run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/`
 - canonical semantic-object artifacts:
+  - `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+  - `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
   - `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
   - `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
   - `semantic_stage2_objects/raw_responses/`
+  - `analysis/candidate_segmentation_debug_v1.tsv`
+  - `analysis/stage2_prompt_preview_v1.tsv`
+  - `analysis/table_selection_debug_v1.json` when summary-table mode is used
 - object families emitted by the authoritative Stage2 boundary:
   - `formulation_identity_candidate`
   - `component_candidate`
@@ -383,8 +392,52 @@ Exact output files or directories:
 
 Stage2 internal intermediate artifacts:
 
+- `data/results/run_<run_id>/semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+- `data/results/run_<run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 - `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
 - `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+
+S2-2 contract note:
+
+- the maintained Stage2 path now formalizes S2-2:
+  - clean text -> governed evidence package
+- the maintained Stage2 path now also formalizes an explicit internal boundary
+  inside S2-2:
+  - clean text / extracted tables -> candidate segmentation -> role-aware
+    selector -> governed evidence package
+- `candidate_blocks_v1.json` is the maintained pre-selector truth surface for
+  candidate segmentation, table isolation, and conservative noise filtering
+- `evidence_blocks_v1.json` is the canonical pre-LLM truth surface for evidence
+  selection, ordering, and packing
+- candidate segmentation is responsible only for structure recovery and
+  candidate generation; selector semantics remain downstream
+- the maintained S2-2 selector is deterministic and role-aware:
+  - default profile: `PREPARATION_METHOD`, `MATERIALS`,
+    `FORMULATION_TABLE`, `FORMULATION_RESULT`, `OPTIMIZATION_RESULT`,
+    `CONTEXT_FALLBACK`
+  - DOE overlay: `PREPARATION_METHOD`, `MATERIALS`,
+    `EXPERIMENTAL_DESIGN`, `VARIABLE_TABLE`, `FORMULATION_TABLE`,
+    `OPTIMIZATION_RESULT`, `CONTEXT_FALLBACK`
+  - no second LLM is used for this pre-LLM selection boundary
+- candidate-level observability is maintained through
+  `analysis/candidate_segmentation_debug_v1.tsv`
+- selection is role-constrained rather than pure global top-K, and duplicate
+  near-identical tables may be suppressed to preserve role coverage
+- prompt assembly must consume the persisted S2-2 artifact rather than
+  silently recomputing evidence from clean text
+- `analysis/stage2_prompt_preview_v1.tsv` remains maintained observability, but
+  it is derived from the same evidence artifact and is not the canonical source
+- the S2-2 artifact records:
+  - the resolved input contract
+  - `selector_profile` and `archetype_overlay`
+  - role assignments, role priorities, and role score breakdowns
+  - `required_roles`, `selected_roles`, and `missing_or_weak_roles`
+  - coverage summary
+  - feature activation snapshot
+  - `technical_status`
+  - `design_status`
+- downstream prompt assembly is normal only when the artifact is technically
+  complete and the design-status evaluation is explicitly recorded
 
 Boundary status:
 
@@ -642,8 +695,8 @@ Runtime rule:
 ## Comparison Node
 
 Purpose:
-Compare the Stage 5 final formulation table against the fixed manual GT workbook
-for the declared scope.
+Compare the Stage 5 final formulation table against the frozen Layer1 GT counts
+TSV for the declared scope.
 
 Exact script path and filename:
 
@@ -652,7 +705,7 @@ Exact script path and filename:
 Comparison inputs:
 
 - `final_formulation_table_v1.tsv`
-- fixed manual GT workbook
+- frozen Layer1 GT counts TSV
 - declared scope manifest TSV
 
 Comparison outputs:
@@ -787,7 +840,7 @@ bypass of the relation layer is not allowed.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage5_benchmark/compare_final_table_to_gt_v1.py --final-table-tsv data/results/<final_run_id>/final_formulation_table_v1.tsv --gt-xlsx data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx --scope-manifest-tsv <scope_manifest.tsv> --out-dir data/results/<final_run_id> --scope-name <declared_scope_name>
+python src/stage5_benchmark/compare_final_table_to_gt_v1.py --final-table-tsv data/results/<final_run_id>/final_formulation_table_v1.tsv --gt-counts-tsv data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv --scope-manifest-tsv <scope_manifest.tsv> --out-dir data/results/<final_run_id> --scope-name <declared_scope_name>
 ```
 
 The production path ends at Step 5A.

@@ -18,6 +18,14 @@ REQUIRED_POINTER_KEYS = [
     "note",
 ]
 
+GLOBAL_AUTHORITY_POINTER_KEYS = {
+    "layer1_gt_path",
+    "layer2_gt_path",
+    "layer3_gt_path",
+    "gt_skeleton_tsv",
+    "alignment_scaffold_tsv",
+}
+
 
 def _normalize_text(value: Any) -> str:
     return str(value or "").strip()
@@ -28,6 +36,70 @@ def _resolve_repo_path(value: str) -> Path:
     if path.is_absolute():
         return path.resolve()
     return (PROJECT_ROOT / path).resolve()
+
+
+def gt_authority_lock_enabled(pointer_payload: dict[str, Any] | None) -> bool:
+    if not pointer_payload:
+        return False
+    return bool(pointer_payload.get("gt_authority_lock"))
+
+
+def resolve_pointer_artifact_path(
+    *,
+    run_context: dict[str, Any],
+    pointer_key: str,
+    required: bool = True,
+) -> Path | None:
+    pointer_payload = run_context.get("pointer_payload") or {}
+    pointer_files = pointer_payload.get("authoritative_terminal_files") or {}
+    pointer_value = _normalize_text(pointer_files.get(pointer_key))
+    if not pointer_value:
+        if required:
+            raise FileNotFoundError(
+                f"ACTIVE_RUN.json does not define authoritative_terminal_files[{pointer_key!r}]."
+            )
+        return None
+    resolved = _resolve_repo_path(pointer_value)
+    if required and not resolved.exists():
+        raise FileNotFoundError(
+            f"ACTIVE_RUN.json pointer target for {pointer_key!r} not found: {resolved}"
+        )
+    return resolved
+
+
+def enforce_gt_authority_lock_for_explicit_path(
+    *,
+    explicit_path: Path | None,
+    run_context: dict[str, Any],
+    pointer_key: str,
+) -> None:
+    if explicit_path is None:
+        return
+    pointer_payload = run_context.get("pointer_payload") or {}
+    if not pointer_payload:
+        try:
+            pointer_payload, _ = read_active_run_pointer()
+        except Exception:
+            pointer_payload = {}
+    if not gt_authority_lock_enabled(pointer_payload):
+        return
+    pointer_files = pointer_payload.get("authoritative_terminal_files") or {}
+    pointer_value = _normalize_text(pointer_files.get(pointer_key))
+    if not pointer_value:
+        raise FileNotFoundError(
+            f"GT authority lock is enabled, but ACTIVE_RUN.json does not define {pointer_key!r}."
+        )
+    contracted_path = _resolve_repo_path(pointer_value)
+    if not contracted_path.exists():
+        raise FileNotFoundError(
+            f"GT authority lock contracted path for {pointer_key!r} not found: {contracted_path}"
+        )
+    resolved_explicit = explicit_path.resolve()
+    if resolved_explicit != contracted_path:
+        raise ValueError(
+            "GT authority lock violation: explicit path does not match the contracted "
+            f"{pointer_key!r} path. explicit={resolved_explicit} contracted={contracted_path}"
+        )
 
 
 def read_active_run_pointer(pointer_path: Path | None = None) -> tuple[dict[str, Any], Path]:
@@ -128,20 +200,35 @@ def resolve_artifact_path(
     required: bool = True,
 ) -> Path | None:
     if explicit_path is not None:
+        enforce_gt_authority_lock_for_explicit_path(
+            explicit_path=explicit_path,
+            run_context=run_context,
+            pointer_key=pointer_key,
+        )
         resolved = explicit_path.resolve()
         if required and not resolved.exists():
             raise FileNotFoundError(f"Explicit artifact path not found: {resolved}")
         return resolved
 
-    pointer_payload = run_context.get("pointer_payload") or {}
-    pointer_files = pointer_payload.get("authoritative_terminal_files") or {}
-    pointer_value = _normalize_text(pointer_files.get(pointer_key))
-    if pointer_value:
-        resolved = _resolve_repo_path(pointer_value)
-        if required and not resolved.exists():
-            raise FileNotFoundError(
-                f"ACTIVE_RUN.json pointer target for {pointer_key!r} not found: {resolved}"
-            )
+    resolved = resolve_pointer_artifact_path(
+        run_context=run_context,
+        pointer_key=pointer_key,
+        required=False,
+    )
+    if resolved is None and pointer_key in GLOBAL_AUTHORITY_POINTER_KEYS:
+        try:
+            active_payload, _ = read_active_run_pointer()
+        except Exception:
+            active_payload = {}
+        pointer_files = active_payload.get("authoritative_terminal_files") or {}
+        pointer_value = _normalize_text(pointer_files.get(pointer_key))
+        if pointer_value:
+            resolved = _resolve_repo_path(pointer_value)
+            if required and not resolved.exists():
+                raise FileNotFoundError(
+                    f"ACTIVE_RUN.json pointer target for {pointer_key!r} not found: {resolved}"
+                )
+    if resolved is not None:
         return resolved
 
     run_dir = Path(run_context["run_dir"])

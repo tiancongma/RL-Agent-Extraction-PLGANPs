@@ -13,19 +13,23 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 try:
-    from src.utils.paths import DATA_CLEANED_DIR, DATA_RESULTS_DIR, DOCS_DIR
+    from src.utils.paths import (
+        DATA_CLEANED_DIR,
+        DATA_RESULTS_DIR,
+        DEV15_LAYER1_GT_COUNTS_TSV,
+        DOCS_DIR,
+    )
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.utils.paths import DATA_CLEANED_DIR, DATA_RESULTS_DIR, DOCS_DIR
+    from src.utils.paths import (
+        DATA_CLEANED_DIR,
+        DATA_RESULTS_DIR,
+        DEV15_LAYER1_GT_COUNTS_TSV,
+        DOCS_DIR,
+    )
 
 
-DEFAULT_GT_WORKBOOK = (
-    DATA_CLEANED_DIR
-    / "labels"
-    / "manual"
-    / "dev15_formulation_skeleton"
-    / "dev15_formulation_skeleton_review_v2_variantaware.xlsx"
-)
+DEFAULT_GT_COUNTS_TSV = DEV15_LAYER1_GT_COUNTS_TSV
 DEFAULT_COMBINED_EVAL_TSV = (
     DATA_CLEANED_DIR
     / "labels"
@@ -97,16 +101,11 @@ def read_tsv(path: Path) -> pd.DataFrame:
     return pd.read_csv(path, sep="\t", dtype=str).fillna("")
 
 
-def read_gt_counts(gt_workbook: Path) -> pd.DataFrame:
-    source_summary = pd.read_excel(
-        gt_workbook,
-        sheet_name="source_summary",
-        dtype=str,
-        engine="openpyxl",
-    ).fillna("")
+def read_gt_counts(gt_counts_tsv: Path) -> pd.DataFrame:
+    source_summary = read_tsv(gt_counts_tsv)
     source_summary["paper_key"] = source_summary["paper_key"].map(norm_text)
     source_summary["doi"] = source_summary["doi"].map(norm_doi)
-    source_summary["GT_count"] = pd.to_numeric(source_summary["GT_rows"], errors="coerce").fillna(0).astype(int)
+    source_summary["GT_count"] = pd.to_numeric(source_summary["gt_count"], errors="coerce").fillna(0).astype(int)
     return source_summary[["paper_key", "doi", "paper_title", "GT_count"]].copy()
 
 
@@ -302,9 +301,9 @@ def print_preview(label: str, df: pd.DataFrame, rows: int = 5) -> None:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Build a DEV15 reviewer workbook from evaluation outputs and a selected GT workbook."
+        description="Build a DEV15 reviewer workbook from evaluation outputs and the frozen Layer1 GT counts TSV."
     )
-    parser.add_argument("--gt-workbook", type=Path, default=DEFAULT_GT_WORKBOOK)
+    parser.add_argument("--gt-counts-tsv", type=Path, default=DEFAULT_GT_COUNTS_TSV)
     parser.add_argument("--combined-eval-tsv", type=Path, default=DEFAULT_COMBINED_EVAL_TSV)
     parser.add_argument("--remaining12-eval-tsv", type=Path, default=DEFAULT_REMAINING12_EVAL_TSV)
     parser.add_argument("--tuned3-eval-tsv", type=Path, default=DEFAULT_TUNED3_EVAL_TSV)
@@ -315,7 +314,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
 def main() -> int:
     args = build_arg_parser().parse_args()
 
-    gt_counts = read_gt_counts(args.gt_workbook)
+    gt_counts_path = args.gt_counts_tsv.resolve()
+    if gt_counts_path != DEFAULT_GT_COUNTS_TSV.resolve():
+        raise ValueError(
+            "GT authority lock violation: build_dev15_review_workbook_v1.py must use "
+            f"{DEFAULT_GT_COUNTS_TSV.resolve()}, not {gt_counts_path}."
+        )
+
+    gt_counts = read_gt_counts(gt_counts_path)
     combined_eval = read_tsv(args.combined_eval_tsv)
     remaining12_eval = read_tsv(args.remaining12_eval_tsv)
     tuned3_eval = read_tsv(args.tuned3_eval_tsv)
@@ -351,7 +357,7 @@ def main() -> int:
     print(f"under_segmentation={under}")
     print(f"over_segmentation={over}")
     print(f"generated_excel={args.out_xlsx}")
-    print(f"input_gt_workbook={args.gt_workbook}")
+    print(f"input_gt_counts_tsv={gt_counts_path}")
     print(f"input_combined_eval={args.combined_eval_tsv}")
     print(f"input_remaining12_eval={args.remaining12_eval_tsv}")
     print(f"input_tuned3_eval={args.tuned3_eval_tsv}")

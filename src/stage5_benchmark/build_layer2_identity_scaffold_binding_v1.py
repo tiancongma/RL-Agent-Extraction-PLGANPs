@@ -22,10 +22,15 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from openpyxl import load_workbook
+try:
+    from src.utils.paths import DEV15_LAYER2_IDENTITY_TSV
+except ModuleNotFoundError:
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.paths import DEV15_LAYER2_IDENTITY_TSV
 
 
-GT_DEFAULT_SHEET = "value_gt_annotation"
 SCAFFOLD_ROWS_NAME = "layer2_identity_scaffold_rows_v1.tsv"
 SUMMARY_NAME = "layer2_identity_scaffold_summary_v1.tsv"
 REPORT_NAME = "layer2_identity_scaffold_validation_v1.md"
@@ -64,35 +69,6 @@ def scaffold_key_for_row(row: dict[str, str]) -> str:
         return f"{paper_key}::native::{normalize_label_token(native_label)}"
     gt_formulation_id = normalize_text(row.get("gt_formulation_id"))
     return f"{paper_key}::gt::{normalize_label_token(gt_formulation_id)}"
-
-
-def detect_gt_sheet(workbook_path: Path, requested: str) -> str:
-    workbook = load_workbook(workbook_path, read_only=True, data_only=True)
-    try:
-        if requested and requested in workbook.sheetnames:
-            return requested
-        if GT_DEFAULT_SHEET in workbook.sheetnames:
-            return GT_DEFAULT_SHEET
-        return workbook.sheetnames[0]
-    finally:
-        workbook.close()
-
-
-def load_workbook_rows(workbook_path: Path, sheet_name: str) -> list[dict[str, str]]:
-    workbook = load_workbook(workbook_path, read_only=True, data_only=True)
-    try:
-        sheet = workbook[sheet_name]
-        iterator = sheet.iter_rows(values_only=True)
-        header = [normalize_text(value) for value in next(iterator)]
-        rows: list[dict[str, str]] = []
-        for values in iterator:
-            row = {}
-            for index, column in enumerate(header):
-                row[column] = normalize_text(values[index] if index < len(values) else "")
-            rows.append(row)
-        return rows
-    finally:
-        workbook.close()
 
 
 def read_tsv_rows(path: Path) -> list[dict[str, str]]:
@@ -292,8 +268,7 @@ def markdown_table(rows: list[dict[str, str]], columns: list[str]) -> str:
 
 def build_report(
     *,
-    gt_workbook_path: Path,
-    gt_sheet_name: str,
+    gt_identity_tsv_path: Path,
     baseline_path: Path,
     new_path: Path,
     paper_keys: list[str],
@@ -306,8 +281,7 @@ def build_report(
         "Diagnostic-only, benchmark-safe binding audit.",
         "",
         "## Frozen Identity Source",
-        f"- GT workbook: `{gt_workbook_path}`",
-        f"- GT sheet: `{gt_sheet_name}`",
+        f"- GT identity TSV: `{gt_identity_tsv_path}`",
         "- Frozen identity anchor field: `seed_pred_representative_source_formulation_id` when present, otherwise `formulation_label`, otherwise `gt_formulation_id`.",
         "",
         "## Input Prediction Surfaces",
@@ -367,27 +341,30 @@ def build_report(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build diagnostic Layer2 identity scaffold binding surfaces.")
-    parser.add_argument("--gt-workbook-xlsx", type=Path, required=True)
+    parser.add_argument("--gt-identity-tsv", type=Path, default=DEV15_LAYER2_IDENTITY_TSV)
     parser.add_argument("--baseline-final-tsv", type=Path, required=True)
     parser.add_argument("--new-final-tsv", type=Path, required=True)
     parser.add_argument("--paper-key", action="append", required=True, help="Repeatable paper key filter.")
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--sheet-name", default=GT_DEFAULT_SHEET)
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    gt_workbook_path = args.gt_workbook_xlsx.resolve()
+    gt_identity_tsv_path = args.gt_identity_tsv.resolve()
+    if gt_identity_tsv_path != DEV15_LAYER2_IDENTITY_TSV.resolve():
+        raise ValueError(
+            "GT authority lock violation: build_layer2_identity_scaffold_binding_v1.py must use "
+            f"{DEV15_LAYER2_IDENTITY_TSV.resolve()}, not {gt_identity_tsv_path}."
+        )
     baseline_path = args.baseline_final_tsv.resolve()
     new_path = args.new_final_tsv.resolve()
     out_dir = args.out_dir.resolve()
     paper_keys = [normalize_text(value) for value in args.paper_key if normalize_text(value)]
-    gt_sheet_name = detect_gt_sheet(gt_workbook_path, args.sheet_name)
 
     gt_rows = [
         row
-        for row in load_workbook_rows(gt_workbook_path, gt_sheet_name)
+        for row in read_tsv_rows(gt_identity_tsv_path)
         if normalize_text(row.get("paper_key")) in set(paper_keys) and normalize_text(row.get("gt_formulation_id"))
     ]
     baseline_rows = [
@@ -450,8 +427,7 @@ def main() -> int:
     )
     (out_dir / REPORT_NAME).write_text(
         build_report(
-            gt_workbook_path=gt_workbook_path,
-            gt_sheet_name=gt_sheet_name,
+            gt_identity_tsv_path=gt_identity_tsv_path,
             baseline_path=baseline_path,
             new_path=new_path,
             paper_keys=paper_keys,
@@ -462,8 +438,7 @@ def main() -> int:
     )
 
     diagnostics = {
-        "gt_workbook_path": str(gt_workbook_path),
-        "gt_sheet_name": gt_sheet_name,
+        "gt_identity_tsv": str(gt_identity_tsv_path),
         "baseline_final_tsv": str(baseline_path),
         "new_final_tsv": str(new_path),
         "paper_keys": paper_keys,

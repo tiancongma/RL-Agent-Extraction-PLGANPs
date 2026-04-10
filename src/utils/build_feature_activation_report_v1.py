@@ -86,6 +86,10 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
+def read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def to_repo_rel(path: Path) -> str:
     try:
         return str(path.relative_to(PROJECT_DIR.parent)).replace("\\", "/")
@@ -115,6 +119,9 @@ def detect_surfaces(run_dir: Path) -> dict[str, Any]:
     decision_trace_path = first_run_file(run_dir, "final_output_decision_trace_v1.tsv")
     compare_counts_path = first_run_file(run_dir, "final_table_vs_gt_counts_by_doi.tsv")
     prompt_preview_path = first_run_file(run_dir, "stage2_prompt_preview_v1.tsv")
+    candidate_segmentation_debug_path = first_run_file(run_dir, "candidate_segmentation_debug_v1.tsv")
+    candidate_blocks_paths = find_run_files(run_dir, "candidate_blocks_v1.json")
+    evidence_blocks_paths = find_run_files(run_dir, "evidence_blocks_v1.json")
     run_context_path = run_dir / "RUN_CONTEXT.md"
     surfaces = {
         "weak_labels_path": weak_labels_path,
@@ -122,6 +129,9 @@ def detect_surfaces(run_dir: Path) -> dict[str, Any]:
         "decision_trace_path": decision_trace_path,
         "compare_counts_path": compare_counts_path,
         "prompt_preview_path": prompt_preview_path,
+        "candidate_segmentation_debug_path": candidate_segmentation_debug_path,
+        "candidate_blocks_paths": candidate_blocks_paths,
+        "evidence_blocks_paths": evidence_blocks_paths,
         "run_context_path": run_context_path if run_context_path.exists() else None,
         "stage2_active": weak_labels_path is not None,
         "stage2_child_validation": "validation" in run_dir.name.lower(),
@@ -143,10 +153,16 @@ def detect_surfaces(run_dir: Path) -> dict[str, Any]:
         surfaces["stage2_input_packing_mode"] = first_preview.get("input_packing_mode", "")
         surfaces["stage2_prompt_layout_class"] = first_preview.get("prompt_layout_class", "")
         surfaces["stage2_ordered_block_order"] = first_preview.get("ordered_block_order", "")
+        surfaces["stage2_prompt_preview_evidence_artifact_path"] = first_preview.get("evidence_artifact_path", "")
+        surfaces["stage2_prompt_preview_technical_status"] = first_preview.get("technical_status_overall", "")
+        surfaces["stage2_prompt_preview_design_status"] = first_preview.get("design_status_overall", "")
     else:
         surfaces["stage2_input_packing_mode"] = ""
         surfaces["stage2_prompt_layout_class"] = ""
         surfaces["stage2_ordered_block_order"] = ""
+        surfaces["stage2_prompt_preview_evidence_artifact_path"] = ""
+        surfaces["stage2_prompt_preview_technical_status"] = ""
+        surfaces["stage2_prompt_preview_design_status"] = ""
     return surfaces
 
 
@@ -166,6 +182,41 @@ def expected_for_run(feature_id: str, matrix_row: dict[str, str], surfaces: dict
     if feature_id == "stage2_input_evidence_packing":
         if surfaces.get("stage2_input_packing_mode") == "ordered_blocks":
             return "yes"
+        return "no"
+    if feature_id in {
+        "s2_2_evidence_artifact_contract",
+        "s2_2_design_success_split",
+        "s2_2_prompt_preview_derived_from_evidence_artifact",
+        "s2_2_role_aware_evidence_selection",
+        "s2_2_duplicate_table_suppression",
+    }:
+        return "yes" if surfaces.get("stage2_active") else "no"
+    if feature_id in {"s2_candidate_section_aware_split", "s2_candidate_noise_filtering"}:
+        return "yes" if surfaces.get("stage2_active") else "no"
+    if feature_id == "s2_candidate_table_isolation":
+        if not surfaces.get("stage2_active"):
+            return "no"
+        for path in surfaces.get("candidate_blocks_paths") or []:
+            try:
+                payload = read_json(path)
+            except Exception:
+                continue
+            if not isinstance(payload, dict):
+                continue
+            blocks = payload.get("candidate_blocks") or []
+            if any(isinstance(block, dict) and block.get("candidate_type") == "table" for block in blocks):
+                return "yes"
+        return "no"
+    if feature_id == "s2_2_doe_overlay_selection":
+        if not surfaces.get("stage2_active"):
+            return "no"
+        for path in surfaces.get("evidence_blocks_paths") or []:
+            try:
+                payload = read_json(path)
+            except Exception:
+                continue
+            if isinstance(payload, dict) and payload.get("feature_activation_snapshot", {}).get("doe_pre_llm_detection"):
+                return "yes"
         return "no"
     if feature_id in {
         "numbered_doe_row_enumeration_priority",
@@ -382,6 +433,461 @@ def observe_stage2_input_evidence_packing(run_dir: Path, surfaces: dict[str, Any
     }
 
 
+def observe_s2_2_evidence_artifact_contract(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    evidence_paths = surfaces.get("evidence_blocks_paths") or []
+    if not evidence_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found in the run-local Stage2 outputs.",
+            "notes": "The maintained S2-2 contract requires persisted evidence blocks before live prompt assembly.",
+        }
+    required_top_level = {
+        "paper_key",
+        "source_clean_text_path",
+        "source_manifest_path",
+        "input_contract",
+        "producer_script",
+        "contract_version",
+        "evidence_blocks",
+        "coverage_summary",
+        "feature_activation_snapshot",
+        "technical_status",
+        "design_status",
+    }
+    required_block_fields = {
+        "block_id",
+        "block_type",
+        "source_type",
+        "origin_locator",
+        "selection_reason",
+        "selection_feature",
+        "rank_score",
+        "order_index",
+        "text_content",
+    }
+    valid_count = 0
+    for path in evidence_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        if not required_top_level.issubset(payload.keys()):
+            continue
+        blocks = payload.get("evidence_blocks")
+        if not isinstance(blocks, list) or not blocks:
+            continue
+        if not all(isinstance(block, dict) and required_block_fields.issubset(block.keys()) for block in blocks):
+            continue
+        valid_count += 1
+    if valid_count == len(evidence_paths):
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(evidence_paths[0]),
+            "evidence_detail": f"evidence_artifacts={len(evidence_paths)} valid_contract_artifacts={valid_count}",
+            "notes": "Active because the run-local Stage2 path persisted canonical S2-2 evidence artifacts with the required contract fields.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(evidence_paths[0]),
+        "evidence_detail": f"evidence_artifacts={len(evidence_paths)} valid_contract_artifacts={valid_count}",
+        "notes": "Some evidence artifacts exist, but at least one did not expose the full governed S2-2 contract.",
+    }
+
+
+def observe_s2_candidate_section_aware_split(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    candidate_paths = surfaces.get("candidate_blocks_paths") or []
+    if not candidate_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No candidate_blocks_v1.json artifacts found for segmentation inspection.",
+            "notes": "The explicit candidate-segmentation boundary is only auditable when the maintained Stage2 path persists candidate artifacts.",
+        }
+    valid_count = 0
+    for path in candidate_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        if payload.get("segmentation_profile") != "section_aware_candidate_segmentation_v1":
+            continue
+        blocks = payload.get("candidate_blocks") or []
+        if not isinstance(blocks, list) or not blocks:
+            continue
+        prose_with_structure = [
+            block
+            for block in blocks
+            if isinstance(block, dict)
+            and block.get("candidate_type") == "prose"
+            and "segmentation_method" in block
+            and "section_kind" in block
+        ]
+        if prose_with_structure:
+            valid_count += 1
+    if valid_count == len(candidate_paths):
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(candidate_paths[0]),
+            "evidence_detail": f"candidate_artifacts={len(candidate_paths)} section_aware_artifacts={valid_count}",
+            "notes": "Active because the run-local candidate artifacts record the maintained section-aware prose segmentation boundary.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(candidate_paths[0]),
+        "evidence_detail": f"candidate_artifacts={len(candidate_paths)} section_aware_artifacts={valid_count}",
+        "notes": "Candidate artifacts exist, but at least one does not expose the maintained section-aware segmentation fields cleanly.",
+    }
+
+
+def observe_s2_candidate_table_isolation(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    candidate_paths = surfaces.get("candidate_blocks_paths") or []
+    if not candidate_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No candidate_blocks_v1.json artifacts found for table-isolation inspection.",
+            "notes": "Table-isolation activation is only auditable when the maintained candidate artifact exists.",
+        }
+    readable_count = 0
+    isolated_count = 0
+    for path in candidate_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        readable_count += 1
+        snapshot = payload.get("feature_activation_snapshot", {})
+        blocks = payload.get("candidate_blocks") or []
+        table_blocks = [block for block in blocks if isinstance(block, dict) and block.get("candidate_type") == "table"]
+        if snapshot.get("table_isolation") and table_blocks:
+            isolated_count += 1
+    if readable_count == 0:
+        return {
+            "observed_activation": "unclear",
+            "activation_status": "unclear",
+            "evidence_path": "",
+            "evidence_detail": "No readable candidate artifacts found for table-isolation inspection.",
+            "notes": "Could not inspect the candidate table-isolation surface.",
+        }
+    if isolated_count > 0:
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(candidate_paths[0]),
+            "evidence_detail": f"candidate_artifacts_with_table_isolation={isolated_count} readable_candidate_artifacts={readable_count}",
+            "notes": "Active because the maintained candidate artifacts record isolated table candidates before selector prioritization.",
+        }
+    return {
+        "observed_activation": "missing",
+        "activation_status": "missing",
+        "evidence_path": to_repo_rel(candidate_paths[0]),
+        "evidence_detail": f"candidate_artifacts_with_table_isolation={isolated_count} readable_candidate_artifacts={readable_count}",
+        "notes": "The maintained candidate artifacts were readable, but none recorded isolated table candidates.",
+    }
+
+
+def observe_s2_candidate_noise_filtering(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    candidate_paths = surfaces.get("candidate_blocks_paths") or []
+    debug_path = surfaces.get("candidate_segmentation_debug_path")
+    if not candidate_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No candidate_blocks_v1.json artifacts found for noise-filter inspection.",
+            "notes": "The candidate noise-filtering feature is only auditable when the maintained candidate artifact exists.",
+        }
+    valid_count = 0
+    for path in candidate_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        snapshot = payload.get("feature_activation_snapshot", {})
+        if not snapshot.get("noise_filtering"):
+            continue
+        blocks = payload.get("candidate_blocks") or []
+        if not isinstance(blocks, list) or not blocks:
+            continue
+        valid_count += 1
+    if valid_count == len(candidate_paths):
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(debug_path) if debug_path is not None else to_repo_rel(candidate_paths[0]),
+            "evidence_detail": f"candidate_artifacts={len(candidate_paths)} noise_filtered_artifacts={valid_count} debug_surface={'yes' if debug_path is not None else 'no'}",
+            "notes": "Active because the maintained candidate artifacts record conservative noise filtering and the run may expose candidate-level debug rows.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(candidate_paths[0]),
+        "evidence_detail": f"candidate_artifacts={len(candidate_paths)} noise_filtered_artifacts={valid_count} debug_surface={'yes' if debug_path is not None else 'no'}",
+        "notes": "Candidate artifacts exist, but at least one did not record conservative noise-filtering activation cleanly.",
+    }
+
+
+def observe_s2_2_design_success_split(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    evidence_paths = surfaces.get("evidence_blocks_paths") or []
+    if not evidence_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found for technical/design status inspection.",
+            "notes": "The S2-2 status split is only auditable when the canonical evidence artifact exists.",
+        }
+    valid_count = 0
+    for path in evidence_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        technical_status = payload.get("technical_status")
+        design_status = payload.get("design_status")
+        if not isinstance(technical_status, dict) or not isinstance(design_status, dict):
+            continue
+        if not {"artifact_readable", "required_top_level_fields_present", "required_block_fields_present", "non_empty_evidence_blocks", "overall"}.issubset(technical_status.keys()):
+            continue
+        if not {"input_contract_satisfied", "required_features_active", "overall"}.issubset(design_status.keys()):
+            continue
+        valid_count += 1
+    if valid_count == len(evidence_paths):
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(evidence_paths[0]),
+            "evidence_detail": f"evidence_artifacts={len(evidence_paths)} with_status_split={valid_count}",
+            "notes": "Active because the canonical evidence artifacts distinguish technical completeness from design conformance.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(evidence_paths[0]),
+        "evidence_detail": f"evidence_artifacts={len(evidence_paths)} with_status_split={valid_count}",
+        "notes": "At least one artifact exists without the required technical/design status split.",
+    }
+
+
+def observe_s2_2_prompt_preview_derived_from_evidence_artifact(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    prompt_preview_path = surfaces.get("prompt_preview_path")
+    if prompt_preview_path is None:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No stage2_prompt_preview_v1.tsv found in the run-local analysis directory.",
+            "notes": "The derived observability contract requires the prompt preview to point back to canonical evidence artifacts.",
+        }
+    rows = read_tsv(prompt_preview_path)
+    if not rows:
+        return {
+            "observed_activation": "unclear",
+            "activation_status": "unclear",
+            "evidence_path": to_repo_rel(prompt_preview_path),
+            "evidence_detail": "Prompt preview file exists but contains no rows.",
+            "notes": "Treat empty prompt previews conservatively as a processing error.",
+        }
+    linked_rows = 0
+    for row in rows:
+        rel = row.get("evidence_artifact_path", "").strip()
+        if not rel:
+            continue
+        artifact_path = PROJECT_DIR.parent / rel
+        if not artifact_path.exists():
+            continue
+        try:
+            payload = read_json(artifact_path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        if row.get("technical_status_overall", "").strip() != str(payload.get("technical_status", {}).get("overall", "")).strip():
+            continue
+        if row.get("design_status_overall", "").strip() != str(payload.get("design_status", {}).get("overall", "")).strip():
+            continue
+        linked_rows += 1
+    if linked_rows == len(rows):
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(prompt_preview_path),
+            "evidence_detail": f"prompt_preview_rows={len(rows)} linked_rows={linked_rows}",
+            "notes": "Active because every prompt-preview row resolves to a canonical S2-2 evidence artifact with matching status summaries.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(prompt_preview_path),
+        "evidence_detail": f"prompt_preview_rows={len(rows)} linked_rows={linked_rows}",
+        "notes": "Prompt preview rows exist, but at least one row does not cleanly resolve back to the canonical evidence artifact.",
+    }
+
+
+def observe_s2_2_role_aware_evidence_selection(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    evidence_paths = surfaces.get("evidence_blocks_paths") or []
+    if not evidence_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found for role-aware selector inspection.",
+            "notes": "Role-aware S2-2 activation is only auditable when the canonical evidence artifact exists.",
+        }
+    valid_count = 0
+    for path in evidence_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        if not payload.get("selector_profile"):
+            continue
+        blocks = payload.get("evidence_blocks") or []
+        if not isinstance(blocks, list) or not blocks:
+            continue
+        if not any(isinstance(block, dict) and block.get("role_assignment") for block in blocks):
+            continue
+        if not {"required_roles", "selected_roles", "missing_or_weak_roles"}.issubset(payload.keys()):
+            continue
+        valid_count += 1
+    if valid_count == len(evidence_paths):
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(evidence_paths[0]),
+            "evidence_detail": f"evidence_artifacts={len(evidence_paths)} role_aware_contracts={valid_count}",
+            "notes": "Active because the canonical evidence artifacts record selector profile, role assignments, and role-level coverage summaries.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(evidence_paths[0]),
+        "evidence_detail": f"evidence_artifacts={len(evidence_paths)} role_aware_contracts={valid_count}",
+        "notes": "At least one evidence artifact exists without the required role-aware selector fields.",
+    }
+
+
+def observe_s2_2_doe_overlay_selection(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    evidence_paths = surfaces.get("evidence_blocks_paths") or []
+    if not evidence_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found for DOE overlay inspection.",
+            "notes": "DOE overlay activation is only auditable when the canonical evidence artifact exists.",
+        }
+    doe_candidates = 0
+    doe_active = 0
+    evidence_path = to_repo_rel(evidence_paths[0])
+    for path in evidence_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        snapshot = payload.get("feature_activation_snapshot", {})
+        if snapshot.get("doe_pre_llm_detection"):
+            doe_candidates += 1
+            if payload.get("archetype_overlay") == "doe_optimization_v1":
+                doe_active += 1
+                evidence_path = to_repo_rel(path)
+    if doe_candidates == 0:
+        return {
+            "observed_activation": "not_expected",
+            "activation_status": "not_expected",
+            "evidence_path": evidence_path,
+            "evidence_detail": "No DOE-like papers were detected in this run's S2-2 evidence artifacts.",
+            "notes": "The DOE overlay is only expected when the maintained pre-LLM signals indicate a DOE or optimization paper.",
+        }
+    if doe_active == doe_candidates:
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": evidence_path,
+            "evidence_detail": f"doe_detected_artifacts={doe_candidates} doe_overlay_artifacts={doe_active}",
+            "notes": "Active because every DOE-detected evidence artifact records the DOE optimization overlay.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": evidence_path,
+        "evidence_detail": f"doe_detected_artifacts={doe_candidates} doe_overlay_artifacts={doe_active}",
+        "notes": "At least one DOE-detected artifact did not record the DOE optimization overlay cleanly.",
+    }
+
+
+def observe_s2_2_duplicate_table_suppression(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    evidence_paths = surfaces.get("evidence_blocks_paths") or []
+    if not evidence_paths:
+        return {
+            "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
+            "evidence_path": "",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found for duplicate-table suppression inspection.",
+            "notes": "Duplicate-table suppression is only auditable when the canonical evidence artifact exists.",
+        }
+    active_count = 0
+    candidate_count = 0
+    evidence_path = to_repo_rel(evidence_paths[0])
+    for path in evidence_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        candidate_count += 1
+        events = payload.get("duplicate_table_suppression_events") or []
+        if isinstance(events, list) and events:
+            active_count += 1
+            evidence_path = to_repo_rel(path)
+    if candidate_count == 0:
+        return {
+            "observed_activation": "unclear",
+            "activation_status": "unclear",
+            "evidence_path": "",
+            "evidence_detail": "No readable evidence artifacts found for duplicate-table suppression inspection.",
+            "notes": "Could not inspect the duplicate-table suppression surface.",
+        }
+    if active_count > 0:
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": evidence_path,
+            "evidence_detail": f"artifacts_with_duplicate_suppression={active_count} readable_artifacts={candidate_count}",
+            "notes": "Active because at least one canonical evidence artifact recorded suppressed duplicate tables.",
+        }
+    return {
+        "observed_activation": "missing",
+        "activation_status": "missing",
+        "evidence_path": to_repo_rel(evidence_paths[0]),
+        "evidence_detail": f"artifacts_with_duplicate_suppression={active_count} readable_artifacts={candidate_count}",
+        "notes": "Role-aware selection was inspected, but this run did not record any duplicate-table suppression events.",
+    }
+
+
 def observe_family_variant_retention_governance(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
     trace_path = surfaces.get("decision_trace_path")
     if trace_path is None:
@@ -498,6 +1004,15 @@ OBSERVERS = {
     "numbered_doe_row_enumeration_priority": observe_numbered_doe_row_enumeration_priority,
     "table_first_evidence_binding": observe_table_first_evidence_binding,
     "stage2_input_evidence_packing": observe_stage2_input_evidence_packing,
+    "s2_candidate_section_aware_split": observe_s2_candidate_section_aware_split,
+    "s2_candidate_table_isolation": observe_s2_candidate_table_isolation,
+    "s2_candidate_noise_filtering": observe_s2_candidate_noise_filtering,
+    "s2_2_evidence_artifact_contract": observe_s2_2_evidence_artifact_contract,
+    "s2_2_design_success_split": observe_s2_2_design_success_split,
+    "s2_2_prompt_preview_derived_from_evidence_artifact": observe_s2_2_prompt_preview_derived_from_evidence_artifact,
+    "s2_2_role_aware_evidence_selection": observe_s2_2_role_aware_evidence_selection,
+    "s2_2_doe_overlay_selection": observe_s2_2_doe_overlay_selection,
+    "s2_2_duplicate_table_suppression": observe_s2_2_duplicate_table_suppression,
     "family_variant_retention_governance": observe_family_variant_retention_governance,
     "feature_unit_governance_layer": observe_feature_unit_governance_layer,
     "run_context_feature_activation_integration": observe_run_context_feature_activation_integration,

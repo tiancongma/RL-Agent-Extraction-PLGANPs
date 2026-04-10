@@ -143,13 +143,32 @@ Benchmark reporting rule:
   2. deterministic post-LLM completion for downstream readiness
 - Produce the only authoritative Stage2 output contract consumed by Stage3.
 
-## 4. Stage2 composite contract
-- stage2_semantic_source_mode: `{STAGE2_SEMANTIC_SOURCE_MODE}`
-- Stage2 internal intermediate:
-  - LLM semantic discovery objects under `{semantic_dir}`
-- Stage2 authoritative final output:
-  - deterministic post-LLM completion under `{compat_dir}`
-- Stage3 must consume only the completed Stage2 artifact, not raw LLM semantic objects alone.
+  ## 4. Stage2 composite contract
+  - stage2_semantic_source_mode: `{STAGE2_SEMANTIC_SOURCE_MODE}`
+  - formal S2-2 boundary:
+    - `clean text -> governed evidence package (pre-LLM)`
+  - explicit internal candidate-segmentation boundary inside S2-2:
+    - `clean text / extracted tables -> candidate segmentation -> role-aware selector -> governed evidence package`
+  - canonical candidate-segmentation artifact:
+    - `{semantic_dir / 'candidate_blocks'} / <paper_key> / candidate_blocks_v1.json`
+  - canonical S2-2 artifact:
+    - `{semantic_dir / 'evidence_blocks'} / <paper_key> / evidence_blocks_v1.json`
+  - maintained candidate-segmentation profile:
+    - `section_aware_candidate_segmentation_v1`
+    - section-aware prose splitting active
+    - table isolation active when table assets exist
+    - conservative candidate-level noise filtering active
+  - maintained S2-2 selector:
+    - deterministic role-aware evidence selection
+    - default profile plus DOE optimization overlay when pre-LLM signals justify it
+    - no second LLM at this boundary
+  - Stage2 internal intermediate:
+    - LLM semantic discovery objects under `{semantic_dir}`
+  - S2-2 prompt observability is derived from the canonical evidence artifact:
+    - `{run_dir / 'analysis' / 'stage2_prompt_preview_v1.tsv'}`
+  - Stage2 authoritative final output:
+    - deterministic post-LLM completion under `{compat_dir}`
+  - Stage3 must consume only the completed Stage2 artifact, not raw LLM semantic objects alone.
 - No formulation candidate may enter the authoritative Stage2 artifact unless it
   is traceable to:
   - `llm_semantic_discovery`
@@ -189,12 +208,20 @@ Benchmark reporting rule:
 2. `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
 3. `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`
 
-## 7. Outputs
-- intermediate semantic objects:
-  - `{semantic_dir / SEMANTIC_JSONL}`
-  - `{semantic_dir / SEMANTIC_SUMMARY}`
-- final Stage2 completion artifacts:
-  - `{compat_dir / FINAL_STAGE2_TSV}`
+  ## 7. Outputs
+  - formal S2 internal candidate-segmentation artifacts:
+    - `{semantic_dir / 'candidate_blocks'} / <paper_key> / candidate_blocks_v1.json`
+  - formal S2-2 evidence artifacts:
+    - `{semantic_dir / 'evidence_blocks'} / <paper_key> / evidence_blocks_v1.json`
+  - intermediate semantic objects:
+    - `{semantic_dir / SEMANTIC_JSONL}`
+    - `{semantic_dir / SEMANTIC_SUMMARY}`
+  - derived S2-2 observability artifacts:
+    - `{run_dir / 'analysis' / 'candidate_segmentation_debug_v1.tsv'}`
+    - `{run_dir / 'analysis' / 'stage2_prompt_preview_v1.tsv'}`
+    - `{run_dir / 'analysis' / 'table_selection_debug_v1.json'}`
+  - final Stage2 completion artifacts:
+    - `{compat_dir / FINAL_STAGE2_TSV}`
   - `{compat_dir / FINAL_STAGE2_JSONL}`
   - `{compat_dir / 'compatibility_projection_trace_v1.tsv'}`
   - `{compat_dir / 'compatibility_projection_summary_v1.json'}`
@@ -343,6 +370,16 @@ def main() -> None:
         "stage2_semantic_source_mode": STAGE2_SEMANTIC_SOURCE_MODE,
         "stage2_entrypoint": "src/stage2_sampling_labels/run_stage2_composite_v1.py",
         "stage2_internal_semantic_extractor": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+        "stage2_internal_pre_llm_boundary": "s2_2_clean_text_to_governed_evidence_package",
+        "stage2_internal_candidate_segmentation_boundary": "clean_text_and_extracted_tables_to_candidate_blocks",
+        "stage2_internal_candidate_artifact_pattern": "semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json",
+        "stage2_internal_candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+        "stage2_internal_candidate_table_isolation": "active_when_table_assets_exist",
+        "stage2_internal_candidate_noise_filtering": "conservative_high_confidence",
+        "stage2_internal_pre_llm_evidence_artifact_pattern": "semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json",
+        "stage2_internal_pre_llm_selector_profile": "role_aware_general_v1",
+        "stage2_internal_pre_llm_selector_overlay": "doe_optimization_v1_when_signaled",
+        "stage2_prompt_preview_relationship": "derived_from_evidence_blocks_v1_json",
         "stage2_internal_completion": "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py",
         "stage2_internal_doe_function_unit": "src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py",
         "stage2_internal_sequential_optimization_function_unit": "src/stage2_sampling_labels/function_units/sequential_optimization_interpreter_v1.py",

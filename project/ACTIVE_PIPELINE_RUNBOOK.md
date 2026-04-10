@@ -66,7 +66,7 @@ Benchmark-valid reporting then additionally requires the comparison node, which
 reads:
 
 - the final formulation table
-- the fixed manual GT workbook
+- the frozen Layer1 GT counts TSV
 - the declared scope manifest
 
 Complete pipeline does not mean forced full recomputation.
@@ -277,6 +277,45 @@ Current implementation-status note:
 - The same maintained Stage2 path may replay saved raw responses without new
   LLM calls and rehydrate current live-v2 raw-response freezes back into the
   authoritative completed Stage2 artifact.
+- The maintained Stage2 path now formalizes an internal S2-2 boundary:
+  - clean text -> governed evidence package
+  - explicit internal sub-boundary:
+    `clean text / extracted tables -> candidate segmentation -> role-aware selector -> governed evidence package`
+  - candidate artifact:
+    `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+  - canonical artifact:
+    `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+  - producer:
+    `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+  - consumer:
+    the same maintained extractor's role-aware selector consumes candidate
+    blocks and its prompt-assembly path consumes the canonical evidence
+    artifact
+  - candidate segmentation is responsible for structure recovery,
+    conservative section-aware splitting, table isolation, and conservative
+    noise filtering only
+  - `analysis/stage2_prompt_preview_v1.tsv` remains maintained observability,
+    but it is derived from the canonical evidence artifact and is not the
+    primary truth surface
+  - `analysis/candidate_segmentation_debug_v1.tsv` is the maintained
+    candidate-level observability surface before selector prioritization
+  - the maintained selector for this boundary is deterministic and role-aware:
+    - default general profile:
+      `PREPARATION_METHOD`, `MATERIALS`, `FORMULATION_TABLE`,
+      `FORMULATION_RESULT`, `OPTIMIZATION_RESULT`, `CONTEXT_FALLBACK`
+    - DOE optimization overlay:
+      `PREPARATION_METHOD`, `MATERIALS`, `EXPERIMENTAL_DESIGN`,
+      `VARIABLE_TABLE`, `FORMULATION_TABLE`, `OPTIMIZATION_RESULT`,
+      `CONTEXT_FALLBACK`
+    - no second LLM is used for pre-LLM evidence selection
+  - role selection is constrained by role coverage rather than pure global
+    top-K ranking, and duplicate near-identical tables may be suppressed
+  - the canonical artifact records `selector_profile`,
+    `archetype_overlay`, per-block role fields, and any weak or missing roles
+  - the artifact records separate `technical_status` and `design_status`
+  - if the artifact is readable but the intended input-contract path was not
+    satisfied, that must remain visible as design nonconformance rather than
+    silent success
 - Stage2 live input assembly can be switched to the governed ordered-evidence-pack mode by setting `STAGE2_INPUT_EVIDENCE_PACKING_MODE=ordered_blocks`; the default remains the current raw-prefix path.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
   the internal deterministic post-LLM completion substep used by the governed
@@ -332,6 +371,7 @@ Maintained replay/rehydration rule:
 
 Internal Stage2 intermediate:
 
+- `data/results/<stage2_run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 - `data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
 - supporting semantic summary and raw-response sidecars
 
@@ -625,7 +665,7 @@ Production-path endpoint:
 Comparison-node inputs:
 
 - `final_formulation_table_v1.tsv`
-- fixed manual GT workbook
+- frozen Layer1 GT counts TSV
 - declared scope manifest TSV
 
 Optional post-comparison audit-risk input:
@@ -791,7 +831,7 @@ Comparison-node outputs:
 
 The production path yields the final formulation table. The benchmark-valid
 result is obtained only when the comparison node reads that table together with
-the fixed GT workbook and declared scope manifest as separate inputs.
+the frozen Layer1 GT counts TSV and declared scope manifest as separate inputs.
 
 ## What This Runbook Does Not Allow
 

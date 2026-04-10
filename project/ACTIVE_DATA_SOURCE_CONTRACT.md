@@ -132,3 +132,30 @@ Historical `runs/latest.txt` remains legacy-only:
 If neither an explicit CLI source nor `data/results/ACTIVE_RUN.json` can
 resolve the required source artifacts, the script must fail loudly with a clear
 message.
+
+## GT Authority Lock
+
+DEV15 GT authority may be frozen separately from the active run outputs.
+
+When `data/results/ACTIVE_RUN.json` sets:
+
+- `gt_authority_lock: true`
+
+then GT-consuming workflows must resolve only the contract-pinned GT artifacts
+from `authoritative_terminal_files`, including:
+
+- `layer1_gt_path`
+- `layer2_gt_path`
+- `layer3_gt_path`
+
+Hard rules under GT authority lock:
+
+- explicit CLI GT paths must exactly match the contracted path for that layer
+- scripts must not scan directories for alternative GT workbooks or TSVs
+- scripts must not fall back by recency, sort order, filename similarity, or
+  historical memory
+- if an explicit GT path differs from the contracted path, the script must fail
+
+DEV15 frozen GT authority v1 currently lives under:
+
+- `data/cleaned/gt_authority/v1/`

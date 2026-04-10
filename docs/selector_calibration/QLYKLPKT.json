@@ -1,0 +1,151 @@
+{
+  "paper_key": "QLYKLPKT",
+  "archetype": "sequential_optimization",
+  "selector_calibration_version": "v1",
+  "paper_notes": "Optimization is sequential rather than formal DOE. Variable exploration and optimization are distributed across tables and result paragraphs.",
+  "roles": {
+    "PREPARATION_METHOD": {
+      "priority_tier": "frontload",
+      "selection_intent": "Frontload the base nanoprecipitation procedure reused across the sequential optimization steps.",
+      "expected_sources": [
+        {
+          "section_label": null,
+          "section_title": "Preparation of PLGA-ITZ-NS",
+          "source_type": "section",
+          "raw_text_excerpt": "synthesized by nanoprecipitation... dissolving PLGA in acetone... added to aqueous phase... evaporation... filtered... centrifuged"
+        }
+      ],
+      "semantic_signals": ["synthesized by nanoprecipitation", "dissolving", "added to aqueous phase", "stirring", "evaporation", "filtered", "centrifuged"],
+      "negative_signals": ["background discussion", "no procedural sequence", "result interpretation without process"],
+      "inclusion_notes": "This should stay near the top because all optimization steps reuse the same base process.",
+      "exclusion_notes": "Do not replace with commercial comparator descriptions.",
+      "notes": "No numeric subsection labels, so lexical procedural cues dominate."
+    },
+    "MATERIALS": {
+      "priority_tier": "frontload",
+      "selection_intent": "Frontload the core formulation components and relevant comparators.",
+      "expected_sources": [
+        {
+          "section_label": null,
+          "section_title": "Materials",
+          "source_type": "section",
+          "raw_text_excerpt": "PLGA... poloxamer 188... ITZ... solvents... purchased from Sigma-Aldrich"
+        }
+      ],
+      "semantic_signals": ["purchased from", "supplier names", "chemical names", "molecular weight", "solvent listing"],
+      "negative_signals": ["procedural steps", "optimization discussion", "experimental results"],
+      "inclusion_notes": "This should appear early, but comparator-only material lists can stay lower priority.",
+      "exclusion_notes": "Do not let problem-background sentences dominate this role.",
+      "notes": "Clean inventory with some comparator context."
+    },
+    "EXPERIMENTAL_DESIGN": {
+      "priority_tier": "retain_supporting",
+      "selection_intent": "Retain evidence that optimization proceeds through two sequential variable screens even without formal DOE language.",
+      "expected_sources": [
+        {
+          "section_label": null,
+          "section_title": null,
+          "source_type": "paragraph",
+          "raw_text_excerpt": "PLGA concentration was kept constant... four different poloxamer 188 concentrations were used"
+        },
+        {
+          "section_label": null,
+          "section_title": null,
+          "source_type": "paragraph",
+          "raw_text_excerpt": "various amounts of ITZ were dissolved... to obtain PLGA:ITZ ratios of 5:1, 10:1, and 15:1"
+        }
+      ],
+      "semantic_signals": ["kept constant", "different concentrations", "different ratios", "screening variables", "comparison across conditions"],
+      "negative_signals": ["formal DOE keywords only", "pure synthesis steps", "final conclusion only"],
+      "inclusion_notes": "Helpful, but less important than the actual tables and optimization result paragraphs.",
+      "exclusion_notes": "Do not force a formal DOE interpretation.",
+      "notes": "Implicit design evidence."
+    },
+    "VARIABLE_TABLE": {
+      "priority_tier": "frontload",
+      "selection_intent": "Frontload the varying conditions explored across the two optimization steps.",
+      "expected_sources": [
+        {
+          "section_label": "Table 1",
+          "section_title": "Physicochemical properties of unloaded PLGA nanoparticles stabilized by different concentrations of poloxamer 188",
+          "source_type": "table",
+          "raw_text_excerpt": "different concentrations of poloxamer 188"
+        },
+        {
+          "section_label": "Table 2",
+          "section_title": "Physicochemical properties of PLGA-ITZ-NS with different PLGA:ITZ initial ratios",
+          "source_type": "table",
+          "raw_text_excerpt": "different PLGA:ITZ ratios"
+        }
+      ],
+      "semantic_signals": ["different concentrations", "different ratios", "controlled variable comparison"],
+      "negative_signals": ["single formulation output only"],
+      "inclusion_notes": "Needed because variable definitions are embedded inside result tables.",
+      "exclusion_notes": "Do not expect pure factor-only tables.",
+      "notes": "Variable and outcome information are merged."
+    },
+    "FORMULATION_TABLE": {
+      "priority_tier": "frontload",
+      "selection_intent": "Frontload measured outcomes across the screened formulations.",
+      "expected_sources": [
+        {
+          "section_label": "Table 1",
+          "section_title": "Physicochemical properties of unloaded PLGA nanoparticles stabilized by different concentrations of poloxamer 188",
+          "source_type": "table",
+          "raw_text_excerpt": "particle size, PDI, zeta potential across different concentrations"
+        },
+        {
+          "section_label": "Table 2",
+          "section_title": "Physicochemical properties of PLGA-ITZ-NS with different PLGA:ITZ initial ratios",
+          "source_type": "table",
+          "raw_text_excerpt": "particle size, PDI, zeta potential, EE across different PLGA:ITZ ratios"
+        }
+      ],
+      "semantic_signals": ["particle size", "PDI", "zeta potential", "EE", "multiple formulations"],
+      "negative_signals": ["composition-only listing without outputs"],
+      "inclusion_notes": "This is core evidence for sequential optimization reasoning.",
+      "exclusion_notes": "Do not split away from variable context if tables are inherently fused.",
+      "notes": "Outcome tables also carry variable context."
+    },
+    "OPTIMIZATION_RESULT": {
+      "priority_tier": "frontload",
+      "selection_intent": "Frontload the two optimization conclusions that identify the final working conditions.",
+      "expected_sources": [
+        {
+          "section_label": null,
+          "section_title": null,
+          "source_type": "paragraph",
+          "raw_text_excerpt": "3 mg/mL of poloxamer 188 was chosen for the preparation of PLGA-ITZ-NS during the whole study"
+        },
+        {
+          "section_label": null,
+          "section_title": null,
+          "source_type": "paragraph",
+          "raw_text_excerpt": "PLGA:ITZ prepared with an initial ratio of 10:1 was chosen as the optimal formulation"
+        }
+      ],
+      "semantic_signals": ["chosen for the whole study", "optimal formulation", "best performance", "comparison across conditions"],
+      "negative_signals": ["initial variable setup", "raw table data without conclusion", "pure method description"],
+      "inclusion_notes": "This should be retained in full because optimization closure is split across more than one paragraph.",
+      "exclusion_notes": "Do not keep only one of the two optimization decisions.",
+      "notes": "Distributed optimization closure."
+    },
+    "CONTEXT_FALLBACK": {
+      "priority_tier": "retain_supporting",
+      "selection_intent": "Retain limited supporting narrative only when it helps connect the variable screens to the final selected formulation.",
+      "expected_sources": [
+        {
+          "section_label": null,
+          "section_title": null,
+          "source_type": "paragraph",
+          "raw_text_excerpt": "narrative comparison of screened conditions leading into the selected PLGA:ITZ formulation"
+        }
+      ],
+      "semantic_signals": ["comparison across conditions", "selected for further study", "supporting interpretation"],
+      "negative_signals": ["background only", "pure procedural repetition", "broad discussion without formulation choice"],
+      "inclusion_notes": "Fallback context should remain secondary to variable tables, formulation tables, and explicit optimization conclusions.",
+      "exclusion_notes": "Do not use fallback to replace missing primary optimization evidence.",
+      "notes": "Supporting context is useful because the optimization story is distributed rather than expressed in one closed section."
+    }
+  }
+}

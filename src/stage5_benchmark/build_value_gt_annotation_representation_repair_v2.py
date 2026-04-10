@@ -26,6 +26,14 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 
+try:
+    from src.utils.paths import DEV15_LAYER2_IDENTITY_TSV, DEV15_LAYER2_SOURCE_WORKBOOK_XLSX
+except ModuleNotFoundError:
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.paths import DEV15_LAYER2_IDENTITY_TSV, DEV15_LAYER2_SOURCE_WORKBOOK_XLSX
+
 
 LEGACY_MAIN_SHEET = "value_gt_annotation"
 ALLOWED_PRESERVATION_STATUSES = {
@@ -898,6 +906,17 @@ def main() -> None:
     boundary_workbook_xlsx = Path(args.boundary_workbook_xlsx)
     gt_skeleton_tsv = Path(args.gt_skeleton_tsv)
     text_dir = Path(args.text_dir)
+
+    if boundary_workbook_xlsx.resolve() != DEV15_LAYER2_SOURCE_WORKBOOK_XLSX.resolve():
+        raise ValueError(
+            "GT authority lock violation: boundary workbook must match the contracted Layer2 source workbook. "
+            f"expected={DEV15_LAYER2_SOURCE_WORKBOOK_XLSX.resolve()} got={boundary_workbook_xlsx.resolve()}"
+        )
+    if gt_skeleton_tsv.resolve() != DEV15_LAYER2_IDENTITY_TSV.resolve():
+        raise ValueError(
+            "GT authority lock violation: gt_skeleton_tsv must match the contracted Layer2 identity TSV. "
+            f"expected={DEV15_LAYER2_IDENTITY_TSV.resolve()} got={gt_skeleton_tsv.resolve()}"
+        )
 
     output_workbook_xlsx = run_dir / "value_gt_annotation_workbook_representation_repaired_v2.xlsx"
     output_tsv = run_dir / "value_gt_annotation_workbook_representation_repaired_v2.tsv"

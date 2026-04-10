@@ -45,14 +45,20 @@ except ModuleNotFoundError:  # pragma: no cover
 
 OUTPUT_JSONL_NAME = "semantic_stage2_v2_objects.jsonl"
 OUTPUT_SUMMARY_NAME = "semantic_stage2_v2_summary.tsv"
+EVIDENCE_BLOCKS_FILENAME = "evidence_blocks_v1.json"
+EVIDENCE_BLOCKS_SUBDIR = "evidence_blocks"
+CANDIDATE_BLOCKS_FILENAME = "candidate_blocks_v1.json"
+CANDIDATE_BLOCKS_SUBDIR = "candidate_blocks"
 PROMPT_PREVIEW_NAME = "stage2_prompt_preview_v1.tsv"
 TABLE_SELECTION_DEBUG_NAME = "table_selection_debug_v1.json"
+CANDIDATE_SEGMENTATION_DEBUG_NAME = "candidate_segmentation_debug_v1.tsv"
 MARKER_CLEANUP_AUDIT_SUFFIX = "__marker_cleanup_audit.json"
 NVIDIA_HOSTED_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 LEGACY_FIELD_ALIASES = {"plga_mw_kDa": "polymer_mw_kDa"}
 SUMMARY_FIRST_COLUMN_ENHANCEMENT_ENV = "STAGE2_TABLE_SUMMARY_FIRST_COLUMN_ENHANCEMENT"
 INPUT_PACKING_MODE_ENV = "STAGE2_INPUT_EVIDENCE_PACKING_MODE"
 ORDERED_INPUT_PACKING_MODE = "ordered_blocks"
+SEGMENTATION_PROFILE = "section_aware_candidate_segmentation_v1"
 COMPONENT_FIELD_SPECS = [
     ("polymer", "polymer_identity", "plga_mass_mg"),
     ("polymer", "polymer_name_raw", "plga_mass_mg"),
@@ -96,6 +102,182 @@ LLM_EXPLICIT = "llm_explicit"
 LLM_PARSED = "llm_parsed"
 DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
 DOCUMENT_SCOPE_KIND = "document_semantic_scope"
+GENERAL_SELECTOR_PROFILE = "role_aware_general_v1"
+DOE_SELECTOR_OVERLAY = "doe_optimization_v1"
+GENERAL_REQUIRED_ROLES = [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "FORMULATION_TABLE",
+    "FORMULATION_RESULT",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+]
+DOE_REQUIRED_ROLES = [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+]
+SECONDARY_ELIGIBLE_ROLES = {"PREPARATION_METHOD", "FORMULATION_TABLE"}
+ROLE_THRESHOLD_BY_ROLE = {
+    "PREPARATION_METHOD": 6.0,
+    "MATERIALS": 6.0,
+    "EXPERIMENTAL_DESIGN": 5.0,
+    "VARIABLE_TABLE": 5.0,
+    "FORMULATION_TABLE": 5.0,
+    "FORMULATION_RESULT": 4.0,
+    "OPTIMIZATION_RESULT": 4.0,
+    "CONTEXT_FALLBACK": 1.0,
+}
+ROLE_HEADING_CUES = {
+    "PREPARATION_METHOD": [
+        "preparation",
+        "nanoparticles preparation",
+        "formulation",
+        "method",
+        "synthesis",
+        "nanoprecipitation",
+        "emulsion solvent evaporation",
+    ],
+    "MATERIALS": [
+        "materials",
+        "chemicals",
+        "reagents",
+        "materials and methods",
+    ],
+    "EXPERIMENTAL_DESIGN": [
+        "experimental design",
+        "box-behnken",
+        "response surface",
+        "rsm",
+        "design expert",
+    ],
+    "FORMULATION_RESULT": [
+        "results and discussion",
+        "effect of independent variables",
+        "characterization",
+    ],
+    "OPTIMIZATION_RESULT": [
+        "optimized formulation",
+        "optimization",
+        "point prediction",
+        "validity of model",
+    ],
+}
+ROLE_LEXICAL_CUES = {
+    "PREPARATION_METHOD": [
+        "dissolved",
+        "organic phase",
+        "aqueous phase",
+        "added dropwise",
+        "stirring",
+        "stirred",
+        "evaporation",
+        "evaporated",
+        "centrifuged",
+        "washed",
+        "redispersed",
+        "nanoprecipitation",
+        "emulsion solvent evaporation",
+        "prepared by",
+        "formulations were prepared",
+    ],
+    "MATERIALS": [
+        "purchased from",
+        "obtained from",
+        "sigma",
+        "aldrich",
+        "fisher",
+        "hplc grade",
+        "molecular weight",
+        "plga",
+        "poloxamer",
+        "acetone",
+        "water",
+        "resomer",
+    ],
+    "EXPERIMENTAL_DESIGN": [
+        "experimental design",
+        "box-behnken",
+        "response surface",
+        "rsm",
+        "design expert",
+        "polynomial model",
+        "independent variables",
+        "dependent variables",
+        "coded value",
+        "desirability",
+    ],
+    "VARIABLE_TABLE": [
+        "independent variables",
+        "dependent variables",
+        "levels",
+        "factors",
+        "responses",
+        "coded levels",
+        "box-behnken",
+        "design",
+    ],
+    "FORMULATION_TABLE": [
+        "formulation",
+        "runs",
+        "process variables",
+        "dependent variable",
+        "particle size",
+        "entrapment",
+        "pdi",
+        "zeta potential",
+        "drug entrapment",
+    ],
+    "FORMULATION_RESULT": [
+        "particle size",
+        "zeta potential",
+        "drug entrapment",
+        "formulation",
+        "results and discussion",
+    ],
+    "OPTIMIZATION_RESULT": [
+        "optimized formulation",
+        "optimization",
+        "point prediction",
+        "desirability",
+        "predicted values",
+        "experimental values",
+        "validity of model",
+        "drug loading",
+        "selected by applying constraints",
+    ],
+    "CONTEXT_FALLBACK": [
+        "nanoparticles",
+        "plga",
+        "formulation",
+        "drug entrapment",
+        "particle size",
+    ],
+}
+PREPARATION_NEGATIVE_CUES = [
+    "cell viability",
+    "biodistribution",
+    "radiolabeling",
+    "imaging",
+    "pharmacoscintigraphy",
+    "ex vivo release",
+    "stability study",
+]
+MATERIALS_NEGATIVE_CUES = [
+    "prepared by",
+    "stirred",
+    "centrifuged",
+    "dropwise",
+]
+TABLE_ROW_ID_PATTERNS = [
+    r"\bf[-\s]?\d{1,3}\b",
+    r"\brun\s*\d{1,3}\b",
+    r"\b\d{1,3}\.?\b",
+]
 
 
 def normalize_text(value: Any) -> str:
@@ -357,6 +539,23 @@ def write_tsv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
             writer.writerow({field: row.get(field, "") for field in fieldnames})
 
 
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def to_repo_rel(path: Path) -> str:
+    return str(path.resolve().relative_to(PROJECT_ROOT)).replace("\\", "/")
+
+
+def evidence_blocks_path(out_dir: Path, key: str) -> Path:
+    return out_dir / EVIDENCE_BLOCKS_SUBDIR / key / EVIDENCE_BLOCKS_FILENAME
+
+
+def candidate_blocks_path(out_dir: Path, key: str) -> Path:
+    return out_dir / CANDIDATE_BLOCKS_SUBDIR / key / CANDIDATE_BLOCKS_FILENAME
+
+
 def ensure_genai(model: str) -> None:
     if genai is None:
         raise RuntimeError("google.generativeai is not installed.")
@@ -525,6 +724,129 @@ def resolve_tables_dir(text_path: Path, key: str) -> Path | None:
     return None
 
 
+NOISE_LINE_PATTERNS = [
+    r"\bdownloaded from\b",
+    r"\bwiley online library\b",
+    r"\bdovepress\b",
+    r"\bsubmit your manuscript\b",
+    r"\btcpdf\b",
+    r"\binternational journal of nanomedicine\b",
+    r"\bpage \d+\b",
+    r"\bopen access\b",
+    r"\bpublished online\b",
+    r"\bunauthenticated\b",
+]
+
+
+def is_obvious_noise_line(text: str) -> bool:
+    compact = normalize_text(text).lower()
+    if not compact:
+        return True
+    if any(re.search(pattern, compact) for pattern in NOISE_LINE_PATTERNS):
+        return True
+    if compact in {"article", "original article", "research article"}:
+        return True
+    if re.fullmatch(r"\d+\s*(?:of\s*\d+)?", compact):
+        return True
+    return False
+
+
+def clean_candidate_text(text: str) -> tuple[str, list[str]]:
+    kept_lines: list[str] = []
+    noise_flags: list[str] = []
+    for raw_line in str(text or "").splitlines():
+        compact = normalize_text(raw_line)
+        if not compact:
+            continue
+        if is_obvious_noise_line(compact):
+            if "noise_line_removed" not in noise_flags:
+                noise_flags.append("noise_line_removed")
+            continue
+        kept_lines.append(compact)
+    return normalize_text("\n".join(kept_lines)), noise_flags
+
+
+def extract_section_label(text: str) -> str:
+    compact = normalize_text(text)
+    if not compact:
+        return ""
+    numbered = re.match(r"^(\d+(?:\.\d+)+\.?\s+[A-Z][^.]{0,120})", compact)
+    if numbered:
+        return normalize_text(numbered.group(1))
+    heading_like = re.match(
+        r"^((?:materials(?: and methods)?|preparation(?: of [a-z0-9\-]+)?|experimental design|optimization|results(?: and discussion)?|discussion|conclusion)[^.]*)",
+        compact,
+        flags=re.I,
+    )
+    if heading_like:
+        return normalize_text(heading_like.group(1))
+    return ""
+
+
+def infer_section_kind(text: str, section_label: str = "") -> str:
+    combined = f"{section_label} {normalize_text(text)}".lower()
+    if any(token in combined for token in ["materials", "chemicals", "reagents", "purchased from", "obtained from"]):
+        return "materials"
+    if any(token in combined for token in ["preparation", "synthesis", "nanoprecipitation", "emulsion solvent evaporation", "dissolved", "added dropwise"]):
+        return "preparation"
+    if any(token in combined for token in ["experimental design", "box-behnken", "response surface", "design expert", "coded levels"]):
+        return "experimental_design"
+    if any(token in combined for token in ["optimized", "optimization", "desirability", "predicted values", "experimental values"]):
+        return "optimization"
+    if any(token in combined for token in ["table ", "runs", "particle size", "entrapment", "pdi", "zeta potential"]):
+        return "table_related"
+    if any(token in combined for token in ["cell viability", "biodistribution", "radiolabeling", "imaging", "release study", "pharmacokinetic", "sem "]):
+        return "downstream_assay"
+    return "context"
+
+
+def build_candidate_quality_flags(text: str, section_kind: str) -> list[str]:
+    lower = normalize_text(text).lower()
+    flags: list[str] = []
+    if extract_section_label(text):
+        flags.append("heading_scoped")
+    if any(token in lower for token in ["cell viability", "biodistribution", "pharmacokinetic", "release study", "stability study", "sem "]):
+        flags.append("downstream_assay_terms")
+    if section_kind in {"preparation", "materials"} and any(token in lower for token in ["results and discussion", "discussion", "optimized formulation", "entrapment efficiency"]):
+        flags.append("possible_mixed_role_content")
+    if any(token in lower for token in ["copyright", "journal", "downloaded from", "tcpdf"]):
+        flags.append("residual_noise")
+    return flags
+
+
+def split_paragraph_entries(text: str) -> list[dict[str, Any]]:
+    entries: list[dict[str, Any]] = []
+    for index, part in enumerate(re.split(r"\n\s*\n+", text or "")):
+        cleaned, noise_flags = clean_candidate_text(part)
+        if not cleaned:
+            continue
+        entries.append({"paragraph_index": index, "text": cleaned, "noise_flags": noise_flags})
+    return entries
+
+
+def split_section_scoped_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    section_pattern = re.compile(r"(?=(?:\d+(?:\.\d+)+\.?\s*[A-Z]))")
+    expanded: list[dict[str, Any]] = []
+    for entry in entries:
+        text = normalize_text(entry.get("text"))
+        if not text:
+            continue
+        parts = [normalize_text(part) for part in section_pattern.split(text) if normalize_text(part)]
+        if len(parts) <= 1:
+            expanded.append(dict(entry))
+            continue
+        for segment_index, part in enumerate(parts):
+            expanded.append(
+                {
+                    "paragraph_index": entry["paragraph_index"],
+                    "segment_index": segment_index,
+                    "text": part,
+                    "noise_flags": list(entry.get("noise_flags") or []),
+                }
+            )
+    return expanded
+
+
 def render_table_text(table_dir: Path | None, max_tables: int = 4, max_lines_per_table: int = 24) -> str:
     if table_dir is None or not table_dir.exists():
         return ""
@@ -541,6 +863,19 @@ def render_table_text(table_dir: Path | None, max_tables: int = 4, max_lines_per
             rel = path.resolve().relative_to(PROJECT_ROOT).as_posix()
             blocks.append(f"[TABLE {rel}]\n" + "\n".join(lines))
     return "\n\n".join(blocks)
+
+
+def render_full_table_block(path: Path, *, max_lines_per_table: int = 24) -> str:
+    lines: list[str] = []
+    with path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
+        reader = csv.reader(handle)
+        for idx, row in enumerate(reader):
+            if idx >= max_lines_per_table:
+                break
+            lines.append(" | ".join(normalize_text(cell) for cell in row if normalize_text(cell)))
+    if not lines:
+        return ""
+    return f"[TABLE {to_repo_rel(path)}]\n" + "\n".join(lines)
 
 
 def table_mode() -> str:
@@ -660,6 +995,26 @@ def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any])
     return score, row_pattern
 
 
+def clean_table_rows(rows: list[list[str]]) -> tuple[list[list[str]], list[str], int]:
+    cleaned_rows: list[list[str]] = []
+    quality_flags: list[str] = []
+    filtered_noise_rows = 0
+    for row in rows:
+        cleaned_row = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not cleaned_row:
+            continue
+        row_text = " ".join(cleaned_row)
+        if is_obvious_noise_line(row_text):
+            filtered_noise_rows += 1
+            continue
+        cleaned_rows.append(cleaned_row)
+    if filtered_noise_rows:
+        quality_flags.append("noise_rows_filtered")
+    if len(cleaned_rows) < 2:
+        quality_flags.append("corrupted_or_sparse_table")
+    return cleaned_rows, quality_flags, filtered_noise_rows
+
+
 def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
     manifest = load_table_manifest(table_dir)
     table_paths = sorted(table_dir.glob("*.csv"))
@@ -674,6 +1029,9 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                     rows.append(cleaned_row)
         if not rows:
             continue
+        rows, quality_flags, filtered_noise_rows = clean_table_rows(rows)
+        if not rows:
+            continue
         meta = manifest.get(path.name, {})
         score, row_pattern = score_summary_table(path, rows, meta)
         entries.append(
@@ -683,6 +1041,8 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                 "meta": meta,
                 "score": score,
                 "row_pattern": row_pattern,
+                "quality_flags": quality_flags,
+                "filtered_noise_rows": filtered_noise_rows,
             }
         )
     entries.sort(
@@ -723,6 +1083,7 @@ def build_table_selection_debug_payload(
                 "score": item["score"],
                 "selected": item["path"].name in selected_names,
                 "row_pattern": item["row_pattern"],
+                "quality_flags": item.get("quality_flags") or [],
                 "page_number": normalize_text(item["meta"].get("page_number")),
                 "n_rows": item["meta"].get("n_rows", len(rows)),
                 "n_cols": item["meta"].get("n_cols", max((len(r) for r in rows), default=0)),
@@ -919,6 +1280,549 @@ def render_table_summary_text(table_dir: Path | None, max_tables: int = 4) -> st
     return "\n\n".join(blocks)
 
 
+def render_summary_table_block(item: dict[str, Any], *, enhancement_enabled: bool) -> str:
+    path = item["path"]
+    rows = item["rows"]
+    meta = item["meta"]
+    header_row = rows[0]
+    data_rows = rows[1:] if len(rows) > 1 else []
+    header_parts: list[str] = []
+    for cell in header_row:
+        header_parts.extend(parse_header_cell(cell))
+    header_parts = [part for part in header_parts if part]
+    units = infer_units_from_headers(header_parts)
+    row_ids = [row[0] for row in data_rows if row and normalize_text(row[0])]
+    samples = select_sample_rows(data_rows)
+    sample_lines = []
+    for idx, row in enumerate(samples, start=1):
+        sample_lines.append(f"- sample_row_{idx}: " + " | ".join(cell for cell in row if cell))
+    table_match = re.search(r"__table_(\d+)__", path.name)
+    table_id = f"Table {int(table_match.group(1))}" if table_match else path.stem
+    caption = normalize_text(meta.get("caption_or_title"))
+    footnotes = normalize_text(meta.get("footnotes") or meta.get("notes"))
+    row_anchor_preview = summarize_row_anchor_preview(row_ids) if enhancement_enabled else ""
+    block_lines = [
+        f"[TABLE_SUMMARY {to_repo_rel(path)}]",
+        f"- table_id: {table_id}",
+        f"- title_or_caption: {caption or '(not available)'}",
+        f"- column_headers: {' || '.join(header_parts) if header_parts else '(not available)'}",
+        f"- header_units: {', '.join(units) if units else '(none inferred)'}",
+        f"- row_identifier_pattern: {infer_row_pattern(row_ids)}",
+        f"- table_role_hint: {infer_table_role_hint(header_parts, meta)}",
+        f"- table_shape_hint: rows={meta.get('n_rows', len(rows))}, cols={meta.get('n_cols', max((len(r) for r in rows), default=0))}",
+    ]
+    if enhancement_enabled and row_anchor_preview:
+        block_lines.append(f"- first_column_row_labels_preview: {row_anchor_preview}")
+    if sample_lines:
+        block_lines.append("- sample_rows:")
+        block_lines.extend(sample_lines)
+    block_lines.append(f"- footnotes_or_notes: {footnotes or '(not available)'}")
+    return "\n".join(block_lines)
+
+
+def resolved_selector_strategy(current_table_mode: str) -> str:
+    if current_table_mode == "summary":
+        return "score_ranked_top_k"
+    return "sorted_csv_first_4"
+
+
+def detect_pre_llm_signals(raw_text: str, table_candidates: list[dict[str, Any]]) -> dict[str, bool]:
+    combined = normalize_text(raw_text).lower()
+    if table_candidates:
+        table_blob_parts: list[str] = []
+        for item in table_candidates:
+            path = item["path"]
+            meta = item["meta"]
+            table_blob_parts.append(path.name.lower())
+            table_blob_parts.append(normalize_text(meta.get("caption_or_title")).lower())
+            table_blob_parts.extend(normalize_text(value).lower() for value in (meta.get("header_keywords_hit") or []))
+            table_blob_parts.extend(
+                normalize_text(cell).lower()
+                for row in item["rows"][:6]
+                for cell in row
+                if normalize_text(cell)
+            )
+        combined = f"{combined} {' '.join(part for part in table_blob_parts if part)}"
+    has_doe_signal = any(
+        token in combined
+        for token in [
+            "doe",
+            "design matrix",
+            "response surface",
+            "box-behnken",
+            "factorial",
+            "experimental runs",
+            "run order",
+        ]
+    )
+    has_sequential_signal = any(
+        token in combined
+        for token in [
+            "selected as optimal",
+            "chosen as optimal",
+            "remaining studies",
+            "remaining experiments",
+            "used that condition",
+            "used for the remaining studies",
+            "carried forward",
+            "subsequent experiments",
+            "remaining optimization",
+        ]
+    )
+    has_optimization_signal = has_sequential_signal or any(
+        token in combined
+        for token in [
+            "optimal",
+            "optimized",
+            "optimization",
+            "selected condition",
+            "chosen condition",
+        ]
+    )
+    return {
+        "has_doe_signal": has_doe_signal,
+        "has_sequential_signal": has_sequential_signal,
+        "has_optimization_signal": has_optimization_signal,
+    }
+
+
+def count_cue_hits(text: str, cues: list[str]) -> int:
+    lower = normalize_text(text).lower()
+    return sum(1 for cue in cues if cue in lower)
+
+
+def document_position_score(index: int, total: int) -> float:
+    if total <= 1:
+        return 1.0
+    ratio = index / max(total - 1, 1)
+    if ratio <= 0.2:
+        return 2.0
+    if ratio <= 0.5:
+        return 1.0
+    return 0.0
+
+
+def looks_like_section_heading(text: str, role: str) -> bool:
+    compact = normalize_text(text).lower()
+    if role == "PREPARATION_METHOD":
+        return bool(
+            re.search(r"\b\d+(?:\.\d+)*\.?\s*(nanoparticles preparation|preparation|formulation|method|synthesis)\b", compact)
+            or compact.startswith("materials and methods")
+        )
+    if role == "MATERIALS":
+        return bool(re.search(r"\b\d+(?:\.\d+)*\.?\s*materials\b", compact) or compact.startswith("materials"))
+    if role == "EXPERIMENTAL_DESIGN":
+        return bool(re.search(r"\bexperimental design\b|\bbox-behnken\b|\bdesign expert\b", compact))
+    if role == "OPTIMIZATION_RESULT":
+        return bool(re.search(r"\boptimized formulation\b|\boptimization\b", compact))
+    return False
+
+
+def paragraph_role_score(entry: dict[str, Any], role: str, *, total_paragraphs: int) -> dict[str, Any]:
+    text = entry["text"]
+    lower = normalize_text(text).lower()
+    heading_score = 4.0 if looks_like_section_heading(text, role) else float(count_cue_hits(lower, ROLE_HEADING_CUES.get(role, [])))
+    cue_score = float(count_cue_hits(lower, ROLE_LEXICAL_CUES.get(role, [])))
+    structure_score = document_position_score(int(entry.get("paragraph_index", 0)), total_paragraphs)
+    penalty_score = 0.0
+    if role == "PREPARATION_METHOD":
+        penalty_score -= 2.0 * count_cue_hits(lower, PREPARATION_NEGATIVE_CUES)
+    if role == "MATERIALS":
+        penalty_score -= 1.5 * count_cue_hits(lower, MATERIALS_NEGATIVE_CUES)
+    if "references" in lower or "copyright" in lower or "correspondence" in lower:
+        penalty_score -= 4.0
+    if role == "FORMULATION_RESULT" and "results and discussion" in lower:
+        structure_score += 1.0
+    if role == "EXPERIMENTAL_DESIGN":
+        if "results and discussion" in lower or "zeta potential analysis" in lower:
+            penalty_score -= 2.0
+    if role == "OPTIMIZATION_RESULT":
+        if "optimized" in lower or "desirability" in lower:
+            structure_score += 2.0
+        if "predicted" in lower and "experimental" in lower:
+            cue_score += 1.0
+    if role == "CONTEXT_FALLBACK":
+        cue_score = max(cue_score, 1.0 if len(lower.split()) >= 40 else 0.0)
+        if "references" in lower or "journal of" in lower or re.search(r"\[\d+\]", text):
+            penalty_score -= 6.0
+    final_score = heading_score + cue_score + structure_score + penalty_score
+    return {
+        "heading_score": heading_score,
+        "cue_score": cue_score,
+        "structure_score": structure_score,
+        "penalty_score": penalty_score,
+        "final_score": final_score,
+    }
+
+
+def table_blob(item: dict[str, Any]) -> str:
+    meta = item.get("meta", {})
+    rows = item.get("rows", [])
+    row_blob = " ".join(
+        normalize_text(cell)
+        for row in rows[:8]
+        for cell in row[:8]
+        if normalize_text(cell)
+    )
+    return " ".join(
+        part
+        for part in [
+            normalize_text(meta.get("caption_or_title")),
+            " ".join(normalize_text(value) for value in (meta.get("header_keywords_hit") or [])),
+            row_blob,
+        ]
+        if part
+    ).lower()
+
+
+def table_row_label_preview(item: dict[str, Any], *, limit: int = 6) -> list[str]:
+    rows = item.get("rows", [])
+    labels: list[str] = []
+    for row in rows[1:]:
+        if not row:
+            continue
+        label = normalize_text(row[0])
+        if label:
+            labels.append(label.lower())
+        if len(labels) >= limit:
+            break
+    return labels
+
+
+def table_duplicate_signature(item: dict[str, Any]) -> str:
+    rows = item.get("rows", [])
+    shape = f"{len(rows)}x{max((len(row) for row in rows), default=0)}"
+    labels = "|".join(table_row_label_preview(item))
+    sampled = "|".join(
+        normalize_text(cell).lower()
+        for row in select_sample_rows(rows[1:] if len(rows) > 1 else rows)
+        for cell in row[:4]
+        if normalize_text(cell)
+    )
+    return f"{shape}::{labels}::{sampled}"
+
+
+def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
+    meta = item.get("meta", {})
+    rows = item.get("rows", [])
+    blob = table_blob(item)
+    heading_score = float(count_cue_hits(blob, ROLE_HEADING_CUES.get(role, [])))
+    cue_score = float(count_cue_hits(blob, ROLE_LEXICAL_CUES.get(role, [])))
+    structure_score = 0.0
+    penalty_score = 0.0
+    row_labels = table_row_label_preview(item, limit=12)
+    if role == "VARIABLE_TABLE":
+        if any("levels" in label or "independent variables" in label for label in row_labels):
+            structure_score += 3.0
+        if any("dependent variables" in blob for _ in [0]):
+            structure_score += 2.0
+    if role == "FORMULATION_TABLE":
+        row_id_hits = sum(1 for label in row_labels if any(re.search(pattern, label, flags=re.I) for pattern in TABLE_ROW_ID_PATTERNS))
+        structure_score += min(4.0, float(row_id_hits))
+        if infer_row_pattern([label for label in row_labels if label]) in {"numeric runs", "F-numbered rows"}:
+            structure_score += 2.0
+    if role == "OPTIMIZATION_RESULT" and ("optimized" in blob or "desirability" in blob):
+        structure_score += 2.0
+    if role == "FORMULATION_TABLE" and meta.get("fraction_numeric_cells", 0) and float(meta.get("fraction_numeric_cells", 0)) < 0.03:
+        penalty_score -= 2.0
+    if role == "VARIABLE_TABLE" and len(rows) < 6:
+        penalty_score -= 1.0
+    final_score = heading_score + cue_score + structure_score + penalty_score + (float(item.get("score", 0)) / 25.0)
+    return {
+        "heading_score": heading_score,
+        "cue_score": cue_score,
+        "structure_score": structure_score,
+        "penalty_score": penalty_score,
+        "final_score": final_score,
+    }
+
+
+def choose_required_roles(signals: dict[str, bool]) -> tuple[str, str | None, list[str]]:
+    if signals.get("has_doe_signal"):
+        return GENERAL_SELECTOR_PROFILE, DOE_SELECTOR_OVERLAY, list(DOE_REQUIRED_ROLES)
+    return GENERAL_SELECTOR_PROFILE, None, list(GENERAL_REQUIRED_ROLES)
+
+
+def build_candidate_segmentation_artifact(
+    *,
+    record: dict[str, str],
+    manifest_path: Path,
+    text_path: Path,
+    table_dir: Path | None,
+    producer_script: str,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    raw_text = text_path.read_text(encoding="utf-8", errors="replace")
+    paragraph_entries = split_section_scoped_entries(split_paragraph_entries(raw_text))
+    summary_candidates = collect_summary_table_candidates(table_dir) if table_dir is not None and table_dir.exists() else []
+    signals = detect_pre_llm_signals(raw_text, summary_candidates)
+    candidates: list[dict[str, Any]] = []
+    selector_candidates: list[dict[str, Any]] = []
+
+    for idx, entry in enumerate(paragraph_entries, start=1):
+        text_content = normalize_text(entry.get("text"))
+        if not text_content:
+            continue
+        section_label = extract_section_label(text_content)
+        section_kind = infer_section_kind(text_content, section_label)
+        quality_flags = build_candidate_quality_flags(text_content, section_kind)
+        noise_flags = list(entry.get("noise_flags") or [])
+        candidate_id = f"{record['key']}__candidate_paragraph__{idx:02d}"
+        origin_locator = f"{to_repo_rel(text_path)}#paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}"
+        candidate_payload = {
+            "candidate_id": candidate_id,
+            "candidate_type": "prose",
+            "source_type": "clean_text_paragraph",
+            "origin_locator": origin_locator,
+            "paragraph_index": int(entry.get("paragraph_index", 0)),
+            "segment_index": int(entry.get("segment_index", 0)),
+            "section_label": section_label,
+            "section_kind": section_kind,
+            "segmentation_method": "double_newline_then_section_heading_split",
+            "noise_flags": noise_flags,
+            "quality_flags": quality_flags,
+            "text_content": text_content,
+            "text_preview": normalize_text(text_content[:220]),
+        }
+        candidates.append(candidate_payload)
+        selector_candidates.append(
+            {
+                "candidate_id": candidate_id,
+                "candidate_kind": "paragraph",
+                "source_type": "clean_text_paragraph",
+                "origin_key": f"paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}",
+                "origin_locator": origin_locator,
+                "text_content": text_content,
+                "paragraph_index": int(entry.get("paragraph_index", 0)),
+                "segment_index": int(entry.get("segment_index", 0)),
+                "section_label": section_label,
+                "section_kind": section_kind,
+                "noise_flags": noise_flags,
+                "quality_flags": quality_flags,
+            }
+        )
+
+    for idx, item in enumerate(summary_candidates, start=1):
+        text_content = render_summary_table_block(item, enhancement_enabled=summary_first_column_enhancement_enabled())
+        if not normalize_text(text_content):
+            continue
+        meta = item.get("meta", {})
+        section_label = normalize_text(meta.get("caption_or_title"))
+        section_kind = infer_section_kind(text_content, section_label)
+        quality_flags = list(item.get("quality_flags") or [])
+        if item.get("filtered_noise_rows"):
+            quality_flags.append(f"filtered_noise_rows:{item['filtered_noise_rows']}")
+        candidate_id = f"{record['key']}__candidate_table__{idx:02d}"
+        candidate_payload = {
+            "candidate_id": candidate_id,
+            "candidate_type": "table",
+            "source_type": "table_summary",
+            "origin_locator": to_repo_rel(item["path"]),
+            "section_label": section_label,
+            "section_kind": section_kind,
+            "segmentation_method": "manifest_aware_table_summary_isolation",
+            "noise_flags": [],
+            "quality_flags": quality_flags,
+            "table_role_hint": infer_table_role_hint(
+                [part for cell in (item.get("rows", [])[0] if item.get("rows") else []) for part in parse_header_cell(cell)],
+                meta,
+            ),
+            "table_row_pattern": item.get("row_pattern", ""),
+            "table_score": item.get("score"),
+            "text_content": text_content,
+            "text_preview": normalize_text(text_content[:220]),
+        }
+        candidates.append(candidate_payload)
+        selector_candidates.append(
+            {
+                "candidate_id": candidate_id,
+                "candidate_kind": "table",
+                "source_type": "table_summary",
+                "origin_key": to_repo_rel(item["path"]),
+                "origin_locator": to_repo_rel(item["path"]),
+                "text_content": text_content,
+                "item": item,
+                "section_label": section_label,
+                "section_kind": section_kind,
+                "noise_flags": [],
+                "quality_flags": quality_flags,
+            }
+        )
+
+    artifact = {
+        "paper_key": record["key"],
+        "source_clean_text_path": to_repo_rel(text_path),
+        "source_manifest_path": to_repo_rel(manifest_path),
+        "producer_script": producer_script,
+        "contract_version": "s2_candidate_blocks_v1",
+        "segmentation_profile": SEGMENTATION_PROFILE,
+        "selector_boundary": "candidate_segmentation_only",
+        "feature_activation_snapshot": {
+            "section_aware_split": True,
+            "table_isolation": table_dir is not None and table_dir.exists(),
+            "noise_filtering": True,
+        },
+        "coverage_summary": {
+            "total_candidates": len(candidates),
+            "prose_candidates": sum(1 for item in candidates if item["candidate_type"] == "prose"),
+            "table_candidates": sum(1 for item in candidates if item["candidate_type"] == "table"),
+            "candidates_with_noise_flags": sum(1 for item in candidates if item.get("noise_flags")),
+            "candidates_with_quality_flags": sum(1 for item in candidates if item.get("quality_flags")),
+            "has_doe_signal": signals["has_doe_signal"],
+            "has_sequential_signal": signals["has_sequential_signal"],
+            "has_optimization_signal": signals["has_optimization_signal"],
+        },
+        "candidate_blocks": candidates,
+    }
+    return artifact, {"selector_candidates": selector_candidates, "signals": signals}
+
+
+def build_role_aware_selection(
+    *,
+    segmented_candidates: list[dict[str, Any]],
+    signals: dict[str, bool],
+) -> dict[str, Any]:
+    selector_profile, archetype_overlay, required_roles = choose_required_roles(signals)
+    paragraph_roles = ["PREPARATION_METHOD", "MATERIALS", "EXPERIMENTAL_DESIGN", "FORMULATION_RESULT", "OPTIMIZATION_RESULT", "CONTEXT_FALLBACK"]
+    table_roles = ["VARIABLE_TABLE", "FORMULATION_TABLE", "OPTIMIZATION_RESULT"]
+    candidates_by_role: dict[str, list[dict[str, Any]]] = {role: [] for role in set(required_roles + paragraph_roles + table_roles)}
+    all_candidates: list[dict[str, Any]] = []
+    paragraph_candidates = [item for item in segmented_candidates if item["candidate_kind"] == "paragraph"]
+    total_paragraphs = max(1, len(paragraph_candidates))
+
+    for candidate in paragraph_candidates:
+        entry = {
+            "text": candidate["text_content"],
+            "paragraph_index": candidate.get("paragraph_index", 0),
+            "segment_index": candidate.get("segment_index", 0),
+        }
+        for role in paragraph_roles:
+            score = paragraph_role_score(entry, role, total_paragraphs=total_paragraphs)
+            candidates_by_role.setdefault(role, []).append(
+                {
+                    "candidate_kind": candidate["candidate_kind"],
+                    "candidate_id": candidate["candidate_id"],
+                    "role": role,
+                    "origin_key": candidate["origin_key"],
+                    "source_type": candidate["source_type"],
+                    "origin_locator": candidate["origin_locator"],
+                    "entry": entry,
+                    "score_breakdown": score,
+                    "text_content": candidate["text_content"],
+                    "duplicate_signature": "",
+                    "section_label": candidate.get("section_label", ""),
+                    "section_kind": candidate.get("section_kind", ""),
+                    "noise_flags": list(candidate.get("noise_flags") or []),
+                    "quality_flags": list(candidate.get("quality_flags") or []),
+                }
+            )
+
+    for candidate in [item for item in segmented_candidates if item["candidate_kind"] == "table"]:
+        item = candidate["item"]
+        signature = table_duplicate_signature(item)
+        for role in table_roles:
+            score = table_role_score(item, role)
+            candidates_by_role.setdefault(role, []).append(
+                {
+                    "candidate_kind": candidate["candidate_kind"],
+                    "candidate_id": candidate["candidate_id"],
+                    "role": role,
+                    "origin_key": candidate["origin_key"],
+                    "source_type": candidate["source_type"],
+                    "origin_locator": candidate["origin_locator"],
+                    "item": item,
+                    "score_breakdown": score,
+                    "text_content": candidate["text_content"],
+                    "duplicate_signature": signature,
+                    "section_label": candidate.get("section_label", ""),
+                    "section_kind": candidate.get("section_kind", ""),
+                    "noise_flags": list(candidate.get("noise_flags") or []),
+                    "quality_flags": list(candidate.get("quality_flags") or []),
+                }
+            )
+
+    for role, items in candidates_by_role.items():
+        items.sort(
+            key=lambda item: (
+                -float(item["score_breakdown"]["final_score"]),
+                item["origin_key"],
+            )
+        )
+        all_candidates.extend(items)
+
+    selected: list[dict[str, Any]] = []
+    used_origins: set[str] = set()
+    used_table_signatures: set[str] = set()
+    missing_or_weak_roles: list[str] = []
+    duplicate_suppression_events: list[dict[str, str]] = []
+
+    def maybe_add_candidate(candidate: dict[str, Any], priority: str) -> bool:
+        origin_key = candidate["origin_key"]
+        signature = candidate.get("duplicate_signature") or ""
+        if origin_key in used_origins:
+            return False
+        if candidate["candidate_kind"] == "table" and signature and signature in used_table_signatures:
+            duplicate_suppression_events.append(
+                {
+                    "role": candidate["role"],
+                    "origin_locator": candidate["origin_locator"],
+                    "reason": "duplicate_table_signature",
+                }
+            )
+            return False
+        used_origins.add(origin_key)
+        if candidate["candidate_kind"] == "table" and signature:
+            used_table_signatures.add(signature)
+        chosen = dict(candidate)
+        chosen["role_priority"] = priority
+        selected.append(chosen)
+        return True
+
+    for role in required_roles:
+        role_candidates = candidates_by_role.get(role, [])
+        threshold = ROLE_THRESHOLD_BY_ROLE.get(role, 1.0)
+        chosen = None
+        for candidate in role_candidates:
+            if float(candidate["score_breakdown"]["final_score"]) < threshold:
+                continue
+            if maybe_add_candidate(candidate, "primary"):
+                chosen = candidate
+                break
+        if chosen is None:
+            missing_or_weak_roles.append(role)
+
+    for role in SECONDARY_ELIGIBLE_ROLES:
+        role_candidates = candidates_by_role.get(role, [])
+        threshold = ROLE_THRESHOLD_BY_ROLE.get(role, 1.0) + 1.0
+        for candidate in role_candidates:
+            if float(candidate["score_breakdown"]["final_score"]) < threshold:
+                continue
+            if maybe_add_candidate(candidate, "secondary"):
+                break
+
+    if "CONTEXT_FALLBACK" not in {item["role"] for item in selected}:
+        for candidate in candidates_by_role.get("CONTEXT_FALLBACK", []):
+            if maybe_add_candidate(candidate, "fallback"):
+                break
+
+    selected.sort(
+        key=lambda item: (
+            {"primary": 0, "secondary": 1, "fallback": 2}.get(item["role_priority"], 3),
+            required_roles.index(item["role"]) if item["role"] in required_roles else 99,
+            item["origin_key"],
+        )
+    )
+    return {
+        "selector_profile": selector_profile,
+        "archetype_overlay": archetype_overlay,
+        "required_roles": required_roles,
+        "selected_roles": [item["role"] for item in selected],
+        "missing_or_weak_roles": missing_or_weak_roles,
+        "selected_candidates": selected,
+        "duplicate_suppression_events": duplicate_suppression_events,
+        "duplicate_table_suppression_active": bool(duplicate_suppression_events),
+    }
+
+
 def build_metadata_block(key: str, doi: str, title: str) -> str:
     parts = ["[METADATA]"]
     if key:
@@ -940,8 +1844,7 @@ def ordered_input_packing_enabled() -> bool:
 
 
 def split_paragraph_blocks(text: str) -> list[str]:
-    parts = [normalize_text(part) for part in re.split(r"\n\s*\n+", text or "") if normalize_text(part)]
-    return parts
+    return [entry["text"] for entry in split_paragraph_entries(text)]
 
 
 def classify_ordered_paragraph_block(text: str) -> tuple[str, int, int]:
@@ -1003,33 +1906,49 @@ def classify_ordered_paragraph_block(text: str) -> tuple[str, int, int]:
     return "paragraph", 5, score
 
 
-def select_ordered_packing_paragraphs(raw_text: str, *, limit_per_kind: int = 1) -> dict[str, list[str]]:
+def select_ordered_packing_paragraph_entries(raw_text: str, *, limit_per_kind: int = 1) -> dict[str, list[dict[str, Any]]]:
     # This reuses the historical block-ranking idea from the earlier v7pilot packer:
     # synthesis/preparation and materials/procurement are surfaced before residual narrative.
-    synthesis_blocks: list[str] = []
-    materials_blocks: list[str] = []
-    fallback_blocks: list[str] = []
+    synthesis_blocks: list[dict[str, Any]] = []
+    materials_blocks: list[dict[str, Any]] = []
+    fallback_blocks: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for paragraph in split_paragraph_blocks(raw_text):
+    for entry in split_paragraph_entries(raw_text):
+        paragraph = entry["text"]
         normalized = normalize_text(paragraph).lower()
         if not normalized or normalized in seen:
             continue
         block_type, _, score = classify_ordered_paragraph_block(paragraph)
+        enriched = {
+            "paragraph_index": entry["paragraph_index"],
+            "text": paragraph,
+            "block_type": block_type,
+            "rank_score": score,
+        }
         if block_type == "synthesis_method" and len(synthesis_blocks) < limit_per_kind and score > 0:
-            synthesis_blocks.append(paragraph)
+            synthesis_blocks.append(enriched)
             seen.add(normalized)
             continue
         if block_type == "materials_procurement" and len(materials_blocks) < limit_per_kind and score > 0:
-            materials_blocks.append(paragraph)
+            materials_blocks.append(enriched)
             seen.add(normalized)
             continue
         if len(fallback_blocks) < limit_per_kind and score > 0:
-            fallback_blocks.append(paragraph)
+            fallback_blocks.append(enriched)
             seen.add(normalized)
     return {
         "synthesis_blocks": synthesis_blocks,
         "materials_blocks": materials_blocks,
         "fallback_blocks": fallback_blocks,
+    }
+
+
+def select_ordered_packing_paragraphs(raw_text: str, *, limit_per_kind: int = 1) -> dict[str, list[str]]:
+    selected = select_ordered_packing_paragraph_entries(raw_text, limit_per_kind=limit_per_kind)
+    return {
+        "synthesis_blocks": [entry["text"] for entry in selected["synthesis_blocks"]],
+        "materials_blocks": [entry["text"] for entry in selected["materials_blocks"]],
+        "fallback_blocks": [entry["text"] for entry in selected["fallback_blocks"]],
     }
 
 
@@ -1062,6 +1981,356 @@ def build_controlled_evidence_pack(
     return packed, block_order
 
 
+def build_evidence_blocks_artifact(
+    *,
+    record: dict[str, str],
+    manifest_path: Path,
+    text_path: Path,
+    table_dir: Path | None,
+    max_chars: int,
+    producer_script: str,
+    candidate_artifact_path: Path,
+    segmentation_bundle: dict[str, Any],
+) -> tuple[dict[str, Any], dict[str, Any] | None]:
+    current_table_mode = table_mode()
+    summary_enhanced = summary_first_column_enhancement_enabled()
+    current_input_packing_mode = input_packing_mode()
+    raw_text = text_path.read_text(encoding="utf-8", errors="replace")
+    summary_candidates = collect_summary_table_candidates(table_dir) if table_dir is not None and table_dir.exists() else []
+    signals = dict(segmentation_bundle.get("signals") or detect_pre_llm_signals(raw_text, summary_candidates if current_table_mode == "summary" else []))
+    role_selection = build_role_aware_selection(
+        segmented_candidates=list(segmentation_bundle.get("selector_candidates") or []),
+        signals=signals,
+    )
+    evidence_blocks: list[dict[str, Any]] = []
+    order_tokens: list[str] = []
+
+    def append_block(
+        *,
+        block_id: str,
+        block_type: str,
+        source_type: str,
+        origin_locator: str,
+        selection_reason: str,
+        selection_feature: str,
+        rank_score: int | None,
+        text_content: str,
+        is_synthesis: bool | None,
+        is_table_derived: bool | None,
+        is_candidate_critical: bool | None,
+        role_assignment: str | None,
+        role_priority: str | None,
+        role_score_breakdown: dict[str, Any] | None,
+    ) -> None:
+        if not normalize_text(text_content):
+            return
+        evidence_blocks.append(
+            {
+                "block_id": block_id,
+                "block_type": block_type,
+                "source_type": source_type,
+                "origin_locator": origin_locator,
+                "selection_reason": selection_reason,
+                "selection_feature": selection_feature,
+                "rank_score": rank_score,
+                "order_index": len(evidence_blocks),
+                "text_content": text_content,
+                "is_synthesis": is_synthesis,
+                "is_table_derived": is_table_derived,
+                "is_candidate_critical": is_candidate_critical,
+                "role_assignment": role_assignment,
+                "role_priority": role_priority,
+                "role_score_breakdown": role_score_breakdown,
+            }
+        )
+        order_tokens.append(block_type)
+
+    append_block(
+        block_id=f"{record['key']}__metadata__01",
+        block_type="metadata",
+        source_type="document_metadata",
+        origin_locator=to_repo_rel(manifest_path),
+        selection_reason="document_identity_context",
+        selection_feature="build_metadata_block",
+        rank_score=None,
+        text_content=build_metadata_block(record["key"], record["doi"], record["title"]),
+        is_synthesis=False,
+        is_table_derived=False,
+        is_candidate_critical=None,
+        role_assignment=None,
+        role_priority="primary",
+        role_score_breakdown=None,
+    )
+
+    if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE:
+        role_counts: dict[str, int] = {}
+        for candidate in role_selection["selected_candidates"]:
+            role = str(candidate["role"])
+            role_counts[role] = role_counts.get(role, 0) + 1
+            block_suffix = role_counts[role]
+            block_type = {
+                "PREPARATION_METHOD": "synthesis_method",
+                "MATERIALS": "materials_procurement",
+                "EXPERIMENTAL_DESIGN": "experimental_design",
+                "VARIABLE_TABLE": "table",
+                "FORMULATION_TABLE": "table",
+                "FORMULATION_RESULT": "paragraph",
+                "OPTIMIZATION_RESULT": "table" if candidate["candidate_kind"] == "table" else "paragraph",
+                "CONTEXT_FALLBACK": "paragraph",
+            }.get(role, "paragraph")
+            prefix = {
+                "PREPARATION_METHOD": "[SYNTHESIS_METHOD_BLOCK]\n",
+                "MATERIALS": "[MATERIALS_PROCUREMENT_BLOCK]\n",
+                "EXPERIMENTAL_DESIGN": "[EXPERIMENTAL_DESIGN_BLOCK]\n",
+                "FORMULATION_RESULT": "[FORMULATION_RESULT_BLOCK]\n",
+                "OPTIMIZATION_RESULT": "[OPTIMIZATION_RESULT_BLOCK]\n" if candidate["candidate_kind"] == "paragraph" else "",
+                "CONTEXT_FALLBACK": "[PARAGRAPH_BLOCK]\n",
+            }.get(role, "")
+            append_block(
+                block_id=f"{record['key']}__{normalize_token(role.lower())}__{block_suffix:02d}",
+                block_type=block_type,
+                source_type=str(candidate["source_type"]),
+                origin_locator=str(candidate["origin_locator"]),
+                selection_reason=f"role_constrained_{normalize_token(role.lower())}_{candidate['role_priority']}",
+                selection_feature="role_aware_selector_v1",
+                rank_score=int(round(float(candidate["score_breakdown"]["final_score"]))) if candidate["score_breakdown"]["final_score"] is not None else None,
+                text_content=(prefix + candidate["text_content"]) if prefix else candidate["text_content"],
+                is_synthesis=role == "PREPARATION_METHOD",
+                is_table_derived=candidate["candidate_kind"] == "table",
+                is_candidate_critical=candidate["role_priority"] == "primary",
+                role_assignment=role,
+                role_priority=str(candidate["role_priority"]),
+                role_score_breakdown=candidate["score_breakdown"],
+            )
+    else:
+        raw_prefix_text = raw_text[:max_chars] if max_chars > 0 else raw_text
+        append_block(
+            block_id=f"{record['key']}__raw_prefix__01",
+            block_type="raw_prefix",
+            source_type="clean_text",
+            origin_locator=f"{to_repo_rel(text_path)}#chars:0:{len(raw_prefix_text)}",
+            selection_reason="default_raw_prefix_fallback",
+            selection_feature="max_text_chars_prefix",
+            rank_score=None,
+            text_content=raw_prefix_text,
+            is_synthesis=None,
+            is_table_derived=False,
+            is_candidate_critical=None,
+            role_assignment="CONTEXT_FALLBACK",
+            role_priority="fallback",
+            role_score_breakdown=None,
+        )
+        if current_table_mode == "summary":
+            for idx, item in enumerate(summary_candidates[:4], start=1):
+                append_block(
+                    block_id=f"{record['key']}__table_summary__{idx:02d}",
+                    block_type="table",
+                    source_type="table_summary",
+                    origin_locator=to_repo_rel(item["path"]),
+                    selection_reason="summary_mode_selected_table",
+                    selection_feature="score_summary_table",
+                    rank_score=int(item["score"]),
+                    text_content=render_summary_table_block(item, enhancement_enabled=summary_enhanced),
+                    is_synthesis=False,
+                    is_table_derived=True,
+                    is_candidate_critical=None,
+                    role_assignment="FORMULATION_TABLE",
+                    role_priority="fallback",
+                    role_score_breakdown=table_role_score(item, "FORMULATION_TABLE"),
+                )
+        elif table_dir is not None and table_dir.exists():
+            for idx, path in enumerate(sorted(table_dir.glob("*.csv"))[:4], start=1):
+                append_block(
+                    block_id=f"{record['key']}__table_excerpt__{idx:02d}",
+                    block_type="table",
+                    source_type="table_excerpt",
+                    origin_locator=to_repo_rel(path),
+                    selection_reason="full_mode_first_four_sorted_csv",
+                    selection_feature="sorted_csv_first_4",
+                    rank_score=None,
+                    text_content=render_full_table_block(path),
+                    is_synthesis=False,
+                    is_table_derived=True,
+                    is_candidate_critical=None,
+                    role_assignment="FORMULATION_TABLE",
+                    role_priority="fallback",
+                    role_score_breakdown=None,
+                )
+
+    feature_activation_snapshot = {
+        "ordered_evidence_packing": current_input_packing_mode == ORDERED_INPUT_PACKING_MODE,
+        "summary_table_mode": current_table_mode == "summary",
+        "table_selection_scoring": current_table_mode == "summary" and bool(summary_candidates),
+        "selector_debug_available": current_table_mode == "summary" and table_dir is not None and table_dir.exists(),
+        "candidate_segmentation_profile": SEGMENTATION_PROFILE,
+        "section_aware_candidate_split": True,
+        "candidate_table_isolation": table_dir is not None and table_dir.exists(),
+        "candidate_noise_filtering": True,
+        "doe_pre_llm_detection": signals["has_doe_signal"],
+        "sequential_optimization_detection": signals["has_sequential_signal"],
+        "role_aware_evidence_selection": current_input_packing_mode == ORDERED_INPUT_PACKING_MODE,
+        "doe_overlay_selection": role_selection["archetype_overlay"] == DOE_SELECTOR_OVERLAY,
+        "duplicate_table_suppression": role_selection["duplicate_table_suppression_active"],
+    }
+    coverage_summary = {
+        "total_blocks": len(evidence_blocks),
+        "synthesis_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "synthesis_method"),
+        "table_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "table"),
+        "caption_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "caption"),
+        "paragraph_blocks": sum(1 for block in evidence_blocks if block["block_type"] in {"paragraph", "raw_prefix", "experimental_design", "materials_procurement"}),
+        "has_optimization_signal": signals["has_optimization_signal"],
+        "has_doe_signal": signals["has_doe_signal"],
+        "has_sequential_signal": signals["has_sequential_signal"],
+    }
+    required_top_level_fields_present = all(
+        [
+            record.get("key"),
+            to_repo_rel(text_path),
+            to_repo_rel(manifest_path),
+            producer_script,
+            evidence_blocks,
+        ]
+    )
+    required_block_fields_present = all(
+        all(
+            field in block
+            for field in [
+                "block_id",
+                "block_type",
+                "source_type",
+                "origin_locator",
+                "selection_reason",
+                "selection_feature",
+                "rank_score",
+                "order_index",
+                "text_content",
+                "role_assignment",
+                "role_priority",
+                "role_score_breakdown",
+            ]
+        )
+        for block in evidence_blocks
+    )
+    technical_status = {
+        "artifact_readable": True,
+        "required_top_level_fields_present": required_top_level_fields_present,
+        "required_block_fields_present": required_block_fields_present,
+        "non_empty_evidence_blocks": bool(evidence_blocks),
+        "overall": "pass"
+        if required_top_level_fields_present and required_block_fields_present and bool(evidence_blocks)
+        else "fail",
+    }
+    input_contract_satisfied = (
+        current_input_packing_mode == ORDERED_INPUT_PACKING_MODE
+        and current_table_mode == "summary"
+        and feature_activation_snapshot["table_selection_scoring"]
+        and feature_activation_snapshot["selector_debug_available"]
+        and feature_activation_snapshot["role_aware_evidence_selection"]
+    )
+    required_roles_present = sorted({role for role in role_selection["required_roles"] if role in role_selection["selected_roles"]})
+    required_features_active = input_contract_satisfied and not role_selection["missing_or_weak_roles"]
+    design_status = {
+        "input_contract_satisfied": input_contract_satisfied,
+        "required_features_active": required_features_active,
+        "required_roles_present": required_roles_present,
+        "missing_or_weak_roles": list(role_selection["missing_or_weak_roles"]),
+        "overall": "pass" if input_contract_satisfied and required_features_active else "fail",
+        "nonconformance_reasons": [
+            reason
+            for reason, active in [
+                ("ordered_evidence_packing_inactive", feature_activation_snapshot["ordered_evidence_packing"]),
+                ("summary_table_mode_inactive", feature_activation_snapshot["summary_table_mode"]),
+                ("table_selection_scoring_inactive", feature_activation_snapshot["table_selection_scoring"]),
+                ("selector_debug_unavailable", feature_activation_snapshot["selector_debug_available"]),
+                ("role_aware_selector_inactive", feature_activation_snapshot["role_aware_evidence_selection"]),
+            ]
+            if not active
+        ]
+        + [f"missing_or_weak_role:{role}" for role in role_selection["missing_or_weak_roles"]],
+    }
+    ordered_block_order = order_tokens if order_tokens else ["none"]
+    artifact = {
+        "paper_key": record["key"],
+        "source_clean_text_path": to_repo_rel(text_path),
+        "source_manifest_path": to_repo_rel(manifest_path),
+        "source_scope_manifest_path": to_repo_rel(manifest_path),
+        "source_candidate_artifact_path": to_repo_rel(candidate_artifact_path),
+        "input_contract": {
+            "input_packing_mode": current_input_packing_mode,
+            "table_mode": current_table_mode,
+            "summary_first_column_enhancement": summary_enhanced,
+            "ordered_block_order": ordered_block_order,
+            "selector_strategy": "role_aware_selector_v1" if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else resolved_selector_strategy(current_table_mode),
+        },
+        "producer_script": producer_script,
+        "contract_version": "s2_2_evidence_blocks_v1",
+        "segmentation_profile": SEGMENTATION_PROFILE,
+        "selector_profile": role_selection["selector_profile"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else None,
+        "archetype_overlay": role_selection["archetype_overlay"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else None,
+        "evidence_blocks": evidence_blocks,
+        "coverage_summary": coverage_summary,
+        "required_roles": role_selection["required_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
+        "selected_roles": role_selection["selected_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
+        "missing_or_weak_roles": role_selection["missing_or_weak_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
+        "duplicate_table_suppression_events": role_selection["duplicate_suppression_events"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
+        "feature_activation_snapshot": feature_activation_snapshot,
+        "technical_status": technical_status,
+        "design_status": design_status,
+    }
+    debug_payload = None
+    if current_table_mode == "summary" and table_dir is not None and table_dir.exists():
+        selected_summary_names = {
+            Path(candidate["origin_locator"]).name
+            for candidate in role_selection["selected_candidates"]
+            if candidate["candidate_kind"] == "table"
+        }
+        payload_candidates: list[dict[str, Any]] = []
+        for item in summary_candidates:
+            rows = item["rows"]
+            first_data_row = rows[1] if len(rows) > 1 else rows[0]
+            selected_candidate = next(
+                (
+                    candidate
+                    for candidate in role_selection["selected_candidates"]
+                    if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
+                ),
+                None,
+            )
+            payload_candidates.append(
+                {
+                    "file": item["path"].name,
+                    "score": item["score"],
+                    "selected": item["path"].name in selected_summary_names,
+                    "selected_role": selected_candidate["role"] if selected_candidate is not None else "",
+                    "selected_role_priority": selected_candidate["role_priority"] if selected_candidate is not None else "",
+                    "row_pattern": item["row_pattern"],
+                    "quality_flags": item.get("quality_flags") or [],
+                    "page_number": normalize_text(item["meta"].get("page_number")),
+                    "n_rows": item["meta"].get("n_rows", len(rows)),
+                    "n_cols": item["meta"].get("n_cols", max((len(r) for r in rows), default=0)),
+                    "caption_or_title": normalize_text(item["meta"].get("caption_or_title")),
+                    "header_keywords_hit": item["meta"].get("header_keywords_hit") or [],
+                    "first_data_row_preview": " | ".join(cell for cell in first_data_row if cell),
+                }
+            )
+        debug_payload = {
+            "document_key": record["key"],
+            "table_mode": current_table_mode,
+            "selection_ranking_mode": "role_aware_selector_v1" if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else resolved_selector_strategy(current_table_mode),
+            "summary_first_column_enhancement": "yes" if summary_enhanced else "no",
+            "candidate_artifact_path": to_repo_rel(candidate_artifact_path),
+            "max_tables": 4,
+            "selector_profile": artifact.get("selector_profile") or "",
+            "archetype_overlay": artifact.get("archetype_overlay") or "",
+            "required_roles": artifact.get("required_roles") or [],
+            "missing_or_weak_roles": artifact.get("missing_or_weak_roles") or [],
+            "selected_tables": sorted(selected_summary_names),
+            "duplicate_table_suppression_events": artifact.get("duplicate_table_suppression_events") or [],
+            "candidates": payload_candidates,
+        }
+    return artifact, debug_payload
+
+
 def build_prompt_preview_row(
     *,
     document: dict[str, str],
@@ -1070,6 +2339,9 @@ def build_prompt_preview_row(
     summary_enhanced: bool,
     input_packing_mode_value: str,
     ordered_block_order: str,
+    evidence_artifact_path: str,
+    technical_status_overall: str,
+    design_status_overall: str,
 ) -> dict[str, Any]:
     paper_text_index = prompt_text.find("Paper text:\n")
     evidence_pack_index = prompt_text.find("Evidence pack:\n")
@@ -1096,28 +2368,66 @@ def build_prompt_preview_row(
         "evidence_pack_marker_index": evidence_pack_index,
         "table_excerpts_marker_index": table_excerpts_index,
         "ordered_block_order": ordered_block_order,
+        "evidence_artifact_path": evidence_artifact_path,
+        "technical_status_overall": technical_status_overall,
+        "design_status_overall": design_status_overall,
         "prompt_length": len(prompt_text),
         "prompt_head_preview": prompt_head_preview,
         "prompt_tail_preview": prompt_tail_preview,
     }
 
 
-def build_live_prompt(record: dict[str, str], text_path: Path, table_dir: Path | None, max_chars: int) -> str:
-    current_table_mode = table_mode()
-    summary_enhanced = summary_first_column_enhancement_enabled()
-    current_input_packing_mode = input_packing_mode()
-    raw_text = text_path.read_text(encoding="utf-8", errors="replace")
-    table_text = render_table_text(table_dir) if current_table_mode == "full" else render_table_summary_text(table_dir)
-    if ordered_input_packing_enabled():
-        paper_text, ordered_block_order = build_controlled_evidence_pack(
-            record=record,
-            raw_text=raw_text,
-            table_text=table_text,
-            max_chars=max_chars,
+def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], candidate_artifact_path: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for candidate in ensure_list(candidate_artifact.get("candidate_blocks")):
+        if not isinstance(candidate, dict):
+            continue
+        rows.append(
+            {
+                "document_key": normalize_text(candidate_artifact.get("paper_key")),
+                "candidate_artifact_path": to_repo_rel(candidate_artifact_path),
+                "segmentation_profile": normalize_text(candidate_artifact.get("segmentation_profile")),
+                "candidate_id": normalize_text(candidate.get("candidate_id")),
+                "candidate_type": normalize_text(candidate.get("candidate_type")),
+                "source_type": normalize_text(candidate.get("source_type")),
+                "origin_locator": normalize_text(candidate.get("origin_locator")),
+                "section_label": normalize_text(candidate.get("section_label")),
+                "section_kind": normalize_text(candidate.get("section_kind")),
+                "segmentation_method": normalize_text(candidate.get("segmentation_method")),
+                "noise_flags": "|".join(str(item) for item in ensure_list(candidate.get("noise_flags")) if str(item).strip()),
+                "quality_flags": "|".join(str(item) for item in ensure_list(candidate.get("quality_flags")) if str(item).strip()),
+                "text_preview": normalize_text(candidate.get("text_preview") or candidate.get("text_content"))[:260],
+            }
         )
-    else:
-        paper_text = raw_text[:max_chars]
-        ordered_block_order = "raw_prefix"
+    return rows
+
+
+def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any]) -> str:
+    input_contract = evidence_artifact.get("input_contract", {})
+    current_table_mode = normalize_text(input_contract.get("table_mode")).lower() or table_mode()
+    summary_enhanced = bool(input_contract.get("summary_first_column_enhancement"))
+    current_input_packing_mode = normalize_text(input_contract.get("input_packing_mode")).lower() or input_packing_mode()
+    ordered_block_order = [str(value) for value in ensure_list(input_contract.get("ordered_block_order")) if str(value).strip()]
+    ordered_input_enabled = current_input_packing_mode == ORDERED_INPUT_PACKING_MODE
+    ordered_blocks = [
+        block.get("text_content", "")
+        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
+        if isinstance(block, dict) and normalize_text(block.get("text_content"))
+    ]
+    paper_text = "\n\n".join(
+        block.get("text_content", "")
+        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
+        if isinstance(block, dict)
+        and normalize_text(block.get("block_type")) not in {"metadata", "table"}
+        and normalize_text(block.get("text_content"))
+    ).strip()
+    table_text = "\n\n".join(
+        block.get("text_content", "")
+        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
+        if isinstance(block, dict)
+        and normalize_text(block.get("block_type")) == "table"
+        and normalize_text(block.get("text_content"))
+    ).strip()
     schema = {
         "document_key": record["key"],
         "doi": record["doi"],
@@ -1266,14 +2576,21 @@ def build_live_prompt(record: dict[str, str], text_path: Path, table_dir: Path |
             + "- Do not expand every table row into separate objects unless the paper text itself clearly defines stable formulation boundaries.\n"
         )
     controlled_input_note = ""
-    if ordered_input_packing_enabled():
+    if ordered_input_enabled:
+        resolved_order_note = (
+            f"- Resolved evidence block order: {' > '.join(ordered_block_order)}.\n"
+            if ordered_block_order
+            else ""
+        )
         controlled_input_note = (
             "- Controlled evidence packing is enabled.\n"
             "- Prompt order prioritizes synthesis/preparation blocks, then materials/procurement blocks, then table evidence, then narrative fallback.\n"
-            "- Treat the evidence pack as the governed live input ordering for this run.\n"
+            + resolved_order_note
+            + "- Treat the evidence pack as the governed live input ordering for this run.\n"
         )
-    if ordered_input_packing_enabled():
-        input_block = "Evidence pack:\n" + f"{paper_text}\n"
+    if ordered_input_enabled:
+        evidence_text = "\n\n".join(ordered_blocks).strip()
+        input_block = "Evidence pack:\n" + f"{evidence_text}\n"
     else:
         input_block = "Paper text:\n" + f"{paper_text}\n\nTable excerpts:\n{table_text}\n"
     return (
@@ -2039,8 +3356,10 @@ def main() -> None:
     summary_path = out_dir / OUTPUT_SUMMARY_NAME
     prompt_preview_rows: list[dict[str, Any]] = []
     table_selection_debug_rows: list[dict[str, Any]] = []
+    candidate_segmentation_debug_rows: list[dict[str, Any]] = []
     prompt_preview_path = out_dir.parent / "analysis" / PROMPT_PREVIEW_NAME
     table_selection_debug_path = out_dir.parent / "analysis" / TABLE_SELECTION_DEBUG_NAME
+    candidate_segmentation_debug_path = out_dir.parent / "analysis" / CANDIDATE_SEGMENTATION_DEBUG_NAME
     current_table_mode = table_mode()
     summary_enhanced = summary_first_column_enhancement_enabled()
     current_input_packing_mode = input_packing_mode()
@@ -2064,6 +3383,61 @@ def main() -> None:
 
                 progress_label = progress.begin_task(index, key)
                 try:
+                    text_path = Path(record["text_path"])
+                    if not text_path.is_absolute():
+                        text_path = (PROJECT_ROOT / text_path).resolve()
+                    if not text_path.exists():
+                        raise FileNotFoundError(f"Missing paper text for {key}: {text_path}")
+                    table_dir = resolve_tables_dir(text_path, key)
+                    candidate_artifact_path = candidate_blocks_path(out_dir, key)
+                    candidate_artifact, segmentation_bundle = build_candidate_segmentation_artifact(
+                        record=record,
+                        manifest_path=manifest_path,
+                        text_path=text_path,
+                        table_dir=table_dir,
+                        producer_script="src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+                    )
+                    write_json(candidate_artifact_path, candidate_artifact)
+                    candidate_segmentation_debug_rows.extend(
+                        build_candidate_segmentation_debug_rows(candidate_artifact, candidate_artifact_path)
+                    )
+                    artifact_path = evidence_blocks_path(out_dir, key)
+                    evidence_artifact, debug_payload = build_evidence_blocks_artifact(
+                        record=record,
+                        manifest_path=manifest_path,
+                        text_path=text_path,
+                        table_dir=table_dir,
+                        max_chars=args.max_text_chars,
+                        producer_script="src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+                        candidate_artifact_path=candidate_artifact_path,
+                        segmentation_bundle=segmentation_bundle,
+                    )
+                    write_json(artifact_path, evidence_artifact)
+                    prompt = build_live_prompt(record, evidence_artifact)
+                    prompt_preview_rows.append(
+                        build_prompt_preview_row(
+                            document={
+                                "document_key": key,
+                                "doi": record["doi"],
+                                "source_mode": "live_llm_stage2_v2" if args.source_mode == "live_llm" else "legacy_llm_replay",
+                            },
+                            prompt_text=prompt,
+                            table_mode_value=current_table_mode,
+                            summary_enhanced=summary_enhanced,
+                            input_packing_mode_value=current_input_packing_mode,
+                            ordered_block_order=" > ".join(
+                                str(value)
+                                for value in ensure_list(evidence_artifact.get("input_contract", {}).get("ordered_block_order"))
+                                if str(value).strip()
+                            ),
+                            evidence_artifact_path=to_repo_rel(artifact_path),
+                            technical_status_overall=normalize_text(evidence_artifact.get("technical_status", {}).get("overall")),
+                            design_status_overall=normalize_text(evidence_artifact.get("design_status", {}).get("overall")),
+                        )
+                    )
+                    if debug_payload is not None:
+                        debug_payload["evidence_artifact_path"] = to_repo_rel(artifact_path)
+                        table_selection_debug_rows.append(debug_payload)
                     if args.source_mode == "legacy_llm_replay":
                         assert legacy_raw_dir is not None
                         legacy_raw_path = find_legacy_raw_response(legacy_raw_dir, key)
@@ -2075,36 +3449,6 @@ def main() -> None:
                             raw_response_text=raw_copy_path.read_text(encoding="utf-8", errors="replace"),
                         )
                     else:
-                        text_path = Path(record["text_path"])
-                        if not text_path.is_absolute():
-                            text_path = (PROJECT_ROOT / text_path).resolve()
-                        if not text_path.exists():
-                            raise FileNotFoundError(f"Missing paper text for {key}: {text_path}")
-                        table_dir = resolve_tables_dir(text_path, key)
-                        prompt = build_live_prompt(record, text_path, table_dir, args.max_text_chars)
-                        prompt_preview_rows.append(
-                            build_prompt_preview_row(
-                                document={
-                                    "document_key": key,
-                                    "doi": record["doi"],
-                                    "source_mode": "live_llm_stage2_v2",
-                                },
-                                prompt_text=prompt,
-                                table_mode_value=current_table_mode,
-                                summary_enhanced=summary_enhanced,
-                                input_packing_mode_value=current_input_packing_mode,
-                                ordered_block_order=ordered_block_order,
-                            )
-                        )
-                        if current_table_mode == "summary":
-                            debug_payload = build_table_selection_debug_payload(
-                                document_key=key,
-                                table_dir=table_dir,
-                                max_tables=4,
-                                summary_enhanced=summary_enhanced,
-                            )
-                            if debug_payload is not None:
-                                table_selection_debug_rows.append(debug_payload)
                         if args.llm_backend == "gemini":
                             raw_text = call_gemini(
                                 args.model,
@@ -2184,6 +3528,9 @@ def main() -> None:
                 "evidence_pack_marker_index",
                 "table_excerpts_marker_index",
                 "ordered_block_order",
+                "evidence_artifact_path",
+                "technical_status_overall",
+                "design_status_overall",
                 "prompt_length",
                 "prompt_head_preview",
                 "prompt_tail_preview",
@@ -2194,12 +3541,36 @@ def main() -> None:
             json.dumps(table_selection_debug_rows, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
+    if candidate_segmentation_debug_rows:
+        write_tsv(
+            candidate_segmentation_debug_path,
+            candidate_segmentation_debug_rows,
+            [
+                "document_key",
+                "candidate_artifact_path",
+                "segmentation_profile",
+                "candidate_id",
+                "candidate_type",
+                "source_type",
+                "origin_locator",
+                "section_label",
+                "section_kind",
+                "segmentation_method",
+                "noise_flags",
+                "quality_flags",
+                "text_preview",
+            ],
+        )
     print(f"wrote_jsonl={jsonl_path}")
     print(f"wrote_summary={summary_path}")
+    print(f"wrote_candidate_blocks_dir={out_dir / CANDIDATE_BLOCKS_SUBDIR}")
+    print(f"wrote_evidence_blocks_dir={out_dir / EVIDENCE_BLOCKS_SUBDIR}")
     if prompt_preview_rows:
         print(f"wrote_prompt_preview={prompt_preview_path}")
     if table_selection_debug_rows:
         print(f"wrote_table_selection_debug={table_selection_debug_path}")
+    if candidate_segmentation_debug_rows:
+        print(f"wrote_candidate_segmentation_debug={candidate_segmentation_debug_path}")
     print(f"wrote_raw_responses_dir={raw_dir}")
 
 

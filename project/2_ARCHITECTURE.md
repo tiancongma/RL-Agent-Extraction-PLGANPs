@@ -125,8 +125,51 @@ Stage2 is the authoritative extraction stage. Raw LLM semantic objects are an
 internal Stage2 intermediate. The completed Stage2 artifact is the only valid
 Stage3 input and the only authoritative Stage2 evaluation target.
 
+The maintained Stage2 path now also includes one formal internal pre-LLM
+boundary:
+
+- S2-2: clean text -> governed evidence package
+- explicit internal sub-boundary inside S2-2:
+  - clean text / extracted tables -> candidate segmentation -> role-aware
+    selector -> governed evidence package
+- candidate-segmentation artifact:
+  `data/results/run_<run_id>/semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+- canonical artifact:
+  `data/results/run_<run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+- producer:
+  `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+- consumer:
+  the same maintained extractor's role-aware selector consumes the persisted
+  candidate surface and then the prompt-assembly path consumes the canonical
+  evidence artifact before live LLM calls or replay normalization
+- candidate responsibility rule:
+  candidate segmentation performs structure recovery, candidate generation,
+  conservative table isolation, and conservative high-confidence noise
+  filtering only
+- selector responsibility rule:
+  selector prioritizes and retains evidence from candidate blocks; it does not
+  own structure recovery anymore
+- observability rule:
+  `analysis/stage2_prompt_preview_v1.tsv` is derived from the canonical S2-2
+  artifact and is not the primary truth surface
+- candidate observability rule:
+  `analysis/candidate_segmentation_debug_v1.tsv` is the maintained run-level
+  surface for inspecting candidates before selector prioritization
+- selector rule:
+  the maintained S2-2 path now uses deterministic role-aware evidence
+  selection with a general selector profile plus a DOE optimization overlay
+  when pre-LLM signals indicate a DOE paper
+- selection policy rule:
+  the selector is role-constrained rather than pure global top-K and the
+  canonical artifact records role assignments, role score breakdowns, and weak
+  or missing roles
+- success rule:
+  the S2-2 artifact must distinguish `technical_status` from `design_status`
+  so artifact emission is not mistaken for input-contract conformance
+
 ### Key Artifacts
 - Stage2 internal semantic-intermediate artifacts:
+  - canonical S2-2 evidence-block JSON artifacts
   - run-scoped semantic-object JSONL payloads
   - run-scoped semantic-object summary TSVs
   - run-scoped raw response copies when replay or live LLM execution is used
@@ -255,6 +298,9 @@ Non-change statement:
 
 ### Stage2 Internal Intermediate Artifact
 `data/results/run_<run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+
+### Stage2 Internal Pre-LLM Evidence Artifact
+`data/results/run_<run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 
 ### Stage2 Authoritative Completion Artifact
 `data/results/run_<run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
