@@ -61,6 +61,86 @@ Architecture note:
 - Stage2.5 is retired from the active mainline and remains archived only as a
   historical exploratory path.
 
+## Fine-Grained Internal Hierarchy
+
+The active runtime remains Stage 0 through Stage 5 plus the separate benchmark
+comparison node. The following fine-grained hierarchy is a governance mapping
+inside those coarse stages; it does not introduce new runtime namespaces.
+
+### Stage0 / Stage1
+
+- `S1-1 Raw ingestion`
+  - Zotero-derived raw corpus intake and attachment availability.
+- `S1-2 Clean text`
+  - cleaned content and table-asset construction from the declared raw inputs.
+- `S1-3 Scope manifest`
+  - authoritative manifest and scope-ready indexing surfaces consumed by
+    downstream extraction.
+
+### Stage2
+
+- `S2-1 Scope resolution`
+  - resolve the declared manifest scope, cleaned assets, and table assets for
+    the current Stage2 execution.
+- `S2-2 Evidence construction`
+  - the first engineering freeze point in Stage2.
+  - output:
+    `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+  - this boundary may include candidate segmentation and selector work inside
+    S2-2, but prompt assembly must consume the persisted evidence artifact
+    rather than rereading clean text.
+- `S2-3 Prompt assembly`
+  - assemble prompt inputs from `evidence_blocks_v1.json` only.
+  - must not reread clean text, rescore candidates, or perform new selection or
+    ranking.
+- `S2-4 LLM call`
+  - the only nondeterministic Stage2 substep.
+  - output: raw LLM response payloads under the run-scoped raw-response
+    surface.
+- `S2-5 Semantic parsing`
+  - parse raw LLM responses into semantic-intermediate object artifacts.
+- `S2-6 Contract validation`
+  - validate Stage2 authority and provenance contracts.
+  - this is a guardrail and legality check, not selector logic.
+- `S2-7 Compatibility projection`
+  - deterministic Stage2 handoff into the downstream-ready compatibility
+    surface consumed by Stage3.
+  - this is compatibility projection and Stage3 handoff, not evidence
+    construction.
+
+### Stage3
+
+- `S3-1 Relation materialization`
+  - construct explicit paper-level relation artifacts from the completed Stage2
+    candidate surface.
+- `S3-2 Relation resolution`
+  - resolve inherited or shared relation-backed fields for downstream
+    materialization.
+
+### Stage5
+
+- `S5-1 Final candidate materialization`
+  - materialize final formulation-row candidates from Stage2 plus Stage3
+    outputs.
+- `S5-2 Filtering / normalization`
+  - apply deterministic benchmark-facing filtering, normalization, and identity
+    guardrails.
+- `S5-3 Final table`
+  - emit the final formulation table and its decision trace.
+
+### Benchmark
+
+- `B-1 GT compare`
+  - compare only the Stage5 final table to the frozen GT reference inputs.
+
+### Cross-cutting Layers
+
+- Feature governance layer
+  - run-scoped feature activation, execution-ledger, and governance observability.
+- Memory layer
+  - the governed supporting memory surface under `data/mem/v1/`.
+  - it is not a numbered pipeline stage.
+
 ---
 
 ## Stage 0 - Raw Metadata and Relevance Filtering
@@ -166,6 +246,27 @@ boundary:
 - success rule:
   the S2-2 artifact must distinguish `technical_status` from `design_status`
   so artifact emission is not mistaken for input-contract conformance
+- segmentation closure freeze rule:
+  after a governed segmentation-closure decision is recorded for the current
+  cycle, S2-2a candidate segmentation is frozen by default
+- segmentation closure non-regression rule:
+  selector and evidence-prioritization work must not modify segmentation logic
+  unless a concrete regression is demonstrated against the frozen closure state
+- selector-phase focus rule:
+  after segmentation closure, remaining S2-2 design failures are treated as
+  selector-evidence or table-extraction-quality investigations first, not as
+  justification for segmentation redesign
+- S2-2b stage-local debugging rule:
+  S2-2b is strict stage-local selector debugging on frozen S2-2a inputs only
+- S2-2b auditing uses a frozen human reference passage set sourced from docs/selector_calibration/.
+- selector non-discovery rule:
+  selector must not introduce new candidate discovery behavior and operates
+  strictly on existing `candidate_blocks_v1.json`
+- S2-2b forbidden closure inputs:
+  no use of S2-3 through S2-7 behavior, no use of downstream Stage3, Stage4,
+  or Stage5 outputs, and no use of GT comparison for closure
+- S2-2b non-benchmark rule:
+  this is a stage-local freeze only, not downstream system validation
 
 ### Key Artifacts
 - Stage2 internal semantic-intermediate artifacts:

@@ -3115,3 +3115,63 @@ Case-localization note
     execution-level grounding remains incomplete
 - This note records the generalized architecture conclusion, not a paper-only
   workaround and not an implemented runtime exception.
+
+## 2026-04-11
+
+### Decision: Close and freeze Stage2 segmentation (S2-2a) for the current cycle (MDEC087)
+
+Decision
+- Record Stage2 segmentation closure for the current cycle.
+- Freeze S2-2a candidate-segmentation logic by default after the DEV15
+  segmentation-closure diagnostic pass.
+- Treat subsequent remaining S2-2 closure failures as selector-evidence or
+  table-extraction-quality work unless a concrete segmentation regression is
+  demonstrated.
+
+Reason
+- The current-cycle DEV15 segmentation-closure pass reached governed closure
+  status for the targeted segmentation blocker set.
+- Continuing to modify segmentation without regression evidence would blur the
+  S2-2a versus S2-2b boundary and reduce auditability of the selector phase.
+
+Impact
+- Stage2 segmentation is now frozen for the current cycle unless a proven
+  regression reopens it.
+- Immediate follow-on investigation should focus on S2-2b selector/evidence
+  prioritization and table-extraction-quality diagnosis rather than
+  segmentation redesign.
+- This is a documentation, governance, and memory freeze only; it does not
+  modify pipeline runtime behavior.
+
+### Decision: Close and freeze Stage2 selector upgrade (S2-2b) for the current cycle (MDEC088)
+
+Decision
+- Record Stage2 selector closure for the current cycle.
+- Freeze S2-2b selector behavior after the coverage-bounded selector upgrade
+  validated on `QLYKLPKT`, with `5ZXYABSU` and `UFXX9WXE` retained as
+  no-regression guards.
+- Treat the maintained selector as upgraded from single-block ranking to
+  coverage-aware bounded block set selection.
+
+Reason
+- S2-2a table representation repair is complete and frozen for the current
+  cycle.
+- The remaining S2-2 failure family was `multi_surface_coverage_failure`,
+  which is now resolved at the selector layer without reopening candidate
+  generation.
+- The maintained selector now preserves information by using ordered role
+  block sets with bounded expansion rather than forcing one block per role.
+
+Impact
+- Selector behavior is now explicitly:
+  - role -> ordered block set, not role -> single block
+  - coverage-first, ranking-second
+  - bounded expansion only, with no unbounded growth
+  - MATERIALS completion supported
+  - multi-block OPTIMIZATION_RESULT supported
+  - PREPARATION_METHOD prefers procedure evidence over assay/comparator
+    evidence
+- `candidate_blocks_v1.json` is frozen.
+- Selector logic is frozen.
+- `evidence_blocks_v1.json` is now the canonical S2-3 input.
+- No further modification to S2-2 is allowed in downstream work.

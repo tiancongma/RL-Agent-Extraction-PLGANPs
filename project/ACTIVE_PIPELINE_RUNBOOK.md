@@ -277,6 +277,15 @@ Current implementation-status note:
 - The same maintained Stage2 path may replay saved raw responses without new
   LLM calls and rehydrate current live-v2 raw-response freezes back into the
   authoritative completed Stage2 artifact.
+- The maintained Stage2 path should be read through the following internal
+  governance mapping:
+  - `S2-1 Scope resolution`
+  - `S2-2 Evidence construction`
+  - `S2-3 Prompt assembly`
+  - `S2-4 LLM call`
+  - `S2-5 Semantic parsing`
+  - `S2-6 Contract validation`
+  - `S2-7 Compatibility projection`
 - The maintained Stage2 path now formalizes an internal S2-2 boundary:
   - clean text -> governed evidence package
   - explicit internal sub-boundary:
@@ -285,6 +294,7 @@ Current implementation-status note:
     `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
   - canonical artifact:
     `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+  - S2-2 is the first engineering freeze point in Stage2
   - producer:
     `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
   - consumer:
@@ -316,15 +326,104 @@ Current implementation-status note:
   - if the artifact is readable but the intended input-contract path was not
     satisfied, that must remain visible as design nonconformance rather than
     silent success
+- S2-3 prompt assembly may consume `evidence_blocks_v1.json` only:
+  - it must not reread clean text
+  - it must not perform new selection or ranking
+- S2-4 is the only nondeterministic Stage2 substep and emits raw LLM response
+  payloads for live or replay-backed processing
+- S2-5 parses raw LLM responses into Stage2 semantic-object artifacts
+- Stage2 segmentation closure freeze rule:
+  once S2-2a segmentation closure is declared for the current cycle,
+  candidate-segmentation logic is frozen by default
+- post-closure operating rule:
+  remaining S2-2 closure work should target selector/evidence prioritization
+  or table-extraction-quality diagnosis first, and segmentation changes require
+  concrete regression evidence against the frozen closure state
+- S2-2b strict stage-local debugging rule:
+  - optimize one stage and freeze one stage
+  - judge S2-2b only inside the S2-2 boundary on frozen S2-2a inputs
+  - selector must not introduce new candidate discovery behavior and operates
+    strictly on existing `candidate_blocks_v1.json`
+  - do not use S2-3 prompt assembly, S2-4 LLM call, S2-5 semantic parsing,
+    S2-6 contract validation, or S2-7 compatibility projection to decide
+    selector closure
+  - do not use any Stage3, Stage4, Stage5, or GT-comparison signal for S2-2b
+    debugging or closure
+  - allowed audit surfaces only:
+    - `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+    - `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+    - `analysis/table_selection_debug_v1.json`
+    - `analysis/candidate_segmentation_debug_v1.tsv`
+    - stage-local selector audit against human reference passages
+  - allowed labels only:
+    - `selector_miss`
+    - `evidence_ranking_miss`
+    - `wrong_table_choice`
+    - `selected_table_unusable_as_non_target`
+  - explicit audit loop:
+    - build a paper-level audit on the frozen S2-2a inputs
+    - classify each paper with one allowed S2-2b label
+    - implement the smallest selector-only fix
+    - rerun on the same frozen inputs
+    - repeat until closure or until remaining issues are non-target
+  - execution discipline:
+    - each micro-step must be independently auditable from the allowed S2-2
+      artifacts
+    - no cross-stage reasoning is allowed in the S2-2b audit
+    - no downstream signal may be used to upgrade or downgrade a selector
+      judgment
+  - closure means acceptable selector behavior on frozen S2-2a inputs
+    relative to the human reference within S2-2
+  - closure criteria:
+    - no major `selector_miss` remains in the target set
+    - no major `wrong_table_choice` remains in the target set
+    - `evidence_ranking_miss` is no longer the dominant residual failure mode
+    - remaining residuals are mostly
+      `selected_table_unusable_as_non_target`
+    - selector behavior is acceptable relative to the human reference passages
+      at the S2-2 boundary
+    - the result is reproducible across at least one repeated S2-2-local run
+      under the same configuration
+    - closure must be recorded explicitly as stage-local selector freeze only
+  - this is a stage-local selector freeze only, not downstream system
+    validation
+## S2-2b Human Reference Passages (Audit Anchor)
+  S2-2b human reference passages are sourced from:
+
+  ```text
+  docs/selector_calibration/
+  ```
+
+  This directory is treated as a **frozen, authoritative audit anchor** for S2-2b selector evaluation.
+
+  Rules:
+
+  * These passages represent the intended formulation-relevant evidence as determined by human calibration.
+  * They are used ONLY for stage-local selector auditing.
+  * They MUST NOT be modified during S2-2b iterations.
+  * They MUST NOT be regenerated or extended based on selector behavior.
+  * They MUST NOT be used for downstream stages (Stage3/Stage4/Stage5).
+  * They MUST NOT be treated as GT or benchmark targets.
+
+  If multiple files exist in the directory:
+
+  * treat the entire directory as a fixed reference set
+  * do NOT perform file selection heuristics
+  * assume all content is relevant to the calibration scope
 - Stage2 live input assembly can be switched to the governed ordered-evidence-pack mode by setting `STAGE2_INPUT_EVIDENCE_PACKING_MODE=ordered_blocks`; the default remains the current raw-prefix path.
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
   the internal deterministic post-LLM completion substep used by the governed
   Stage2 entrypoint.
+- That projection step is S2-7:
+  - compatibility projection and Stage3 handoff
+  - not evidence construction
 - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py`
   is the maintained contract check invoked by the governed Stage2 entrypoint.
   It fails when semantic-source mode is mixed or undeclared, when row
   provenance is missing, or when deterministic DOE expansion appears without
   LLM-declared DOE scope in `llm_first_composite` mode.
+- That validator is S2-6:
+  - contract validation, not selector logic
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
   remains available only for explicitly declared fallback, comparator,
   migration-support, or diagnostic use and must not be treated as the governed
@@ -334,6 +433,10 @@ Current implementation-status note:
   comparison slice. It is allowed for architecture-enforcement and same-scope
   comparison only and must not be treated as a promotion of Stage2 authority or
   as a replacement for the canonical Stage0-Stage5 runbook.
+- Downstream validation note:
+  runs that traverse later Stage2 substeps under the maintained entrypoint are
+  separate later tasks and must not be used for S2-2b debugging or closure
+  judgment.
 
 Boundary legality note:
 

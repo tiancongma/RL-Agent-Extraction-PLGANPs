@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import ast
 import csv
 import json
@@ -121,7 +122,7 @@ DOE_REQUIRED_ROLES = [
     "OPTIMIZATION_RESULT",
     "CONTEXT_FALLBACK",
 ]
-SECONDARY_ELIGIBLE_ROLES = {"PREPARATION_METHOD", "FORMULATION_TABLE"}
+SECONDARY_ELIGIBLE_ROLES: set[str] = set()
 ROLE_THRESHOLD_BY_ROLE = {
     "PREPARATION_METHOD": 6.0,
     "MATERIALS": 6.0,
@@ -132,6 +133,54 @@ ROLE_THRESHOLD_BY_ROLE = {
     "OPTIMIZATION_RESULT": 4.0,
     "CONTEXT_FALLBACK": 1.0,
 }
+SECONDARY_THRESHOLD_BONUS_BY_ROLE = {
+    "FORMULATION_TABLE": 4.0,
+}
+PROCUREMENT_CUES = [
+    "purchased from",
+    "obtained from",
+    "supplied by",
+    "procured",
+    "analytical grade",
+    "hplc grade",
+]
+PREPARATION_PROCEDURE_CUES = [
+    "nanoprecipitation",
+    "dissolved",
+    "acetone",
+    "organic phase",
+    "aqueous phase",
+    "added",
+    "added dropwise",
+    "stirring",
+    "evaporation",
+    "under vacuum",
+    "filtered",
+    "centrifuged",
+    "washed",
+]
+ASSAY_COMPARATOR_CUES = [
+    "lc-ms",
+    "lc-ms/ms",
+    "hplc",
+    "pharmacokinetic",
+    "pharmacokinetics",
+    "rat plasma",
+    "bioequivalent",
+    "sporanox",
+    "mean residence time",
+    "clearance",
+    "auc",
+    "jugular",
+]
+OPTIMIZATION_DECISION_CUES = [
+    "chosen for the preparation",
+    "chosen as the optimal formulation",
+    "chosen as optimal",
+    "during the whole study",
+    "utilized for the formulation of all the following studies",
+    "selected as optimal",
+]
 ROLE_HEADING_CUES = {
     "PREPARATION_METHOD": [
         "preparation",
@@ -220,6 +269,10 @@ ROLE_LEXICAL_CUES = {
         "coded levels",
         "box-behnken",
         "design",
+        "different concentrations",
+        "different ratio",
+        "different ratios",
+        "initial ratios",
     ],
     "FORMULATION_TABLE": [
         "formulation",
@@ -276,7 +329,7 @@ MATERIALS_NEGATIVE_CUES = [
 TABLE_ROW_ID_PATTERNS = [
     r"\bf[-\s]?\d{1,3}\b",
     r"\brun\s*\d{1,3}\b",
-    r"\b\d{1,3}\.?\b",
+    r"\bnp[a-z]{1,3}\d{1,3}\b",
 ]
 
 
@@ -724,6 +777,19 @@ def resolve_tables_dir(text_path: Path, key: str) -> Path | None:
     return None
 
 
+def load_table_manifest_payload(table_dir: Path | None) -> dict[str, Any]:
+    if table_dir is None or not table_dir.exists():
+        return {}
+    manifest_path = table_dir / "tables_manifest.json"
+    if not manifest_path.exists():
+        return {}
+    try:
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
 NOISE_LINE_PATTERNS = [
     r"\bdownloaded from\b",
     r"\bwiley online library\b",
@@ -735,6 +801,174 @@ NOISE_LINE_PATTERNS = [
     r"\bopen access\b",
     r"\bpublished online\b",
     r"\bunauthenticated\b",
+]
+
+SEGMENT_MATERIALS_CUES = [
+    "purchased from",
+    "obtained from",
+    "supplied by",
+    "sigma",
+    "aldrich",
+    "fisher",
+    "molecular weight",
+    "resomer",
+    "plga",
+    "poloxamer",
+    "labrafil",
+    "polysorbate",
+]
+SEGMENT_METHOD_CUES = [
+    "prepared by",
+    "prepared using",
+    "nanoprecipitation",
+    "emulsion solvent evaporation",
+    "dissolved",
+    "added dropwise",
+    "aqueous phase",
+    "organic phase",
+    "stirring",
+    "centrifuged",
+    "washed",
+    "freeze-dried",
+]
+SEGMENT_RESULT_CUES = [
+    "particle size",
+    "pdi",
+    "zeta potential",
+    "encapsulation efficiency",
+    "entrapment efficiency",
+    "incorporation efficiency",
+    "loading capacity",
+    "maximum loading capacity",
+    "mean values",
+    "lower particle sizes",
+    "higher ee",
+    "as shown in table",
+]
+SEGMENT_EXPERIMENTAL_DESIGN_CUES = [
+    "fixed amounts of polymer",
+    "fixed amounts of surfactant",
+    "fixed amounts of polymer and surfactant",
+    "fixed amounts of polymer and surfactants",
+    "fixed amounts of polymer (plga)",
+    "variable quantities",
+    "increasing theoretical concentrations",
+    "different volumes",
+    "concentrations ranging",
+    "prepared using fixed amounts",
+]
+SEGMENT_OPTIMIZATION_CUES = [
+    "selected as optimal",
+    "chosen as optimal",
+    "optimized formulation",
+    "desirability",
+    "remaining studies",
+    "best results",
+    "highest",
+    "maximum",
+    "increased",
+    "decreased",
+    "efficiency",
+    "loading",
+    "saturation",
+    "optimal surfactant concentration",
+    "maximum loading capacity",
+    "higher concentrations",
+    "crystals could be observed",
+    "increase the oil volume",
+    "increasing the volume",
+    "close to 90%",
+    "close to 80%",
+]
+SEGMENT_DOWNSTREAM_CUES = [
+    "cell viability",
+    "biodistribution",
+    "pharmacokinetic",
+    "gamma scintigraphy",
+    "radiolabeling",
+    "sem",
+    "scanning electron microscopy",
+    "in vitro release",
+    "release profiles",
+    "microscopy",
+    "lc-ms/ms",
+]
+SEGMENT_VARIANT_CUES = [
+    "same procedure",
+    "same protocol",
+    "same method",
+    "incorporating",
+    "with polysorbate 80",
+    "with labrafil",
+    "blank nps were prepared",
+]
+SEGMENT_ABSTRACT_CUES = [
+    "abstract:",
+    "purpose:",
+    "materials and methods:",
+    "results:",
+    "conclusion:",
+    "keywords:",
+]
+SEGMENT_PROSE_CARRYOVER_CUES = [
+    "the morphology of",
+    "pharmacokinetics study",
+    "intravenous formulation",
+    "biodistribution of",
+    "mean concentrations of",
+]
+TABLE_FORMULATION_PRIORITY_CUES = [
+    "formulation number",
+    "drug:polymer ratio",
+    "polymer used",
+    "surfactant",
+    "theoretical concentration",
+    "final concentration",
+    "drug loading",
+    "loading capacity",
+    "encapsulation efficiency",
+    "entrapment efficiency",
+    "ee",
+    "dl",
+    "ratio",
+]
+TABLE_CHARACTERIZATION_DEMOTION_CUES = [
+    "ftir",
+    "spectrum",
+    "spectra",
+    "microscopy",
+    "tem",
+    "sem",
+    "fesem",
+    "afm",
+    "dsc",
+    "thermogram",
+    "thermograms",
+    "xrd",
+    "micrograph",
+    "micrographs",
+    "particle size distribution pattern",
+    "zeta potential distribution profile",
+    "image",
+    "images",
+]
+REFERENCE_TAIL_CUES = [
+    "crossref",
+    "pubmed",
+    "author information",
+    "article recommendations",
+    "corresponding author",
+]
+FRONT_MATTER_CUES = [
+    "www.nature.com",
+    "scientific reports",
+    "home annals of biomedical engineering",
+    "annals of biomedical engineering",
+    "nanomaterials 2020",
+    "int j ophthalmol",
+    "doi:",
+    "academic editor",
+    "correspondence:",
 ]
 
 
@@ -763,13 +997,299 @@ def clean_candidate_text(text: str) -> tuple[str, list[str]]:
                 noise_flags.append("noise_line_removed")
             continue
         kept_lines.append(compact)
-    return normalize_text("\n".join(kept_lines)), noise_flags
+    return "\n".join(kept_lines).strip(), noise_flags
+
+
+def count_segmentation_cues(text: str, cues: list[str]) -> int:
+    lower = normalize_text(text).lower()
+    return sum(1 for cue in cues if cue in lower)
+
+
+def is_reference_like_text(text: str) -> bool:
+    normalized = normalize_text(text)
+    lower = normalized.lower()
+    reference_hits = len(re.findall(r"\[\d+\]|\(\d+\)", normalized))
+    journal_citation_hits = len(
+        re.findall(
+            r"\b(?:j\.|int\.|eur\.|pharm\.|biopharm\.|drug dev\.|expert opin\.|acs omega|small|nanomed|polymer|ann\.|doi:)\b",
+            lower,
+        )
+    )
+    ref_tail_hits = count_segmentation_cues(lower, REFERENCE_TAIL_CUES)
+    et_al_hits = lower.count(" et al")
+    return (
+        reference_hits >= 2
+        or journal_citation_hits >= 4
+        or ref_tail_hits >= 1
+        or (journal_citation_hits >= 2 and et_al_hits >= 2)
+    )
+
+
+def is_front_matter_like_text(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    if not lower:
+        return False
+    if any(token in lower for token in FRONT_MATTER_CUES):
+        return True
+    return bool(
+        re.match(r"^(?:home\s+|www\.|https?://)", lower)
+        or re.match(r"^(?:scientific reports|nanomaterials\s+\d{4}|int j ophthalmol|annals of biomedical engineering)\b", lower)
+    )
+
+
+def has_optimization_text_signal(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    if not lower or is_reference_like_text(lower):
+        return False
+    comparator_hits = count_segmentation_cues(
+        lower,
+        [
+            "best results",
+            "highest",
+            "maximum",
+            "increased",
+            "decreased",
+            "optimal",
+            "optimized",
+            "saturation",
+        ],
+    )
+    metric_hits = count_segmentation_cues(
+        lower,
+        [
+            "efficiency",
+            "loading",
+            "encapsulation",
+            "entrapment",
+            "particle size",
+            "zeta potential",
+            "pdi",
+            "drug loading",
+        ],
+    )
+    return (
+        count_segmentation_cues(lower, SEGMENT_OPTIMIZATION_CUES) > 0
+        or (comparator_hits >= 1 and metric_hits >= 1)
+    )
+
+
+def has_experimental_design_text_signal(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    if not lower or is_reference_like_text(lower):
+        return False
+    if has_variable_sweep_design_signal(lower):
+        return True
+    if re.search(r"\bcryoprotectants?.{0,120}\bconcentrations?\b", lower):
+        return True
+    if re.search(r"\bat\s+\w+\s+di\S*erent concentrations\b", lower):
+        return True
+    direct_phrases = [
+        "varying concentration",
+        "varying concentrations",
+        "various optimized concentrations",
+        "different amounts",
+        "multiple batches",
+        "cryoprotectant concentrations",
+        "different concentrations",
+        "different volumes",
+        "different surfactants",
+        "different peg",
+        "polymer used",
+        "formulation number",
+    ]
+    if any(token in lower for token in direct_phrases):
+        return True
+    if re.search(r"\branging from\s+\d", lower):
+        return True
+    return False
+
+
+def is_characterization_only_table_signal(signal_text: str) -> bool:
+    lower = normalize_text(signal_text).lower()
+    if ("fig." in lower or "figure " in lower) and any(
+        token in lower for token in ["dsc", "thermogram", "micrograph", "microscopy", "image"]
+    ):
+        return True
+    return count_segmentation_cues(lower, TABLE_CHARACTERIZATION_DEMOTION_CUES) >= 2
+
+
+def has_strong_formulation_table_signal(signal_text: str) -> bool:
+    lower = normalize_text(signal_text).lower()
+    if not lower or is_front_matter_like_text(lower) or is_reference_like_text(lower):
+        return False
+    strong_cues = [
+        "formulation characters",
+        "formulation number",
+        "drug:polymer ratio",
+        "polymer used",
+        "theoretical concentration",
+        "final concentration",
+        "drug loading",
+        "loading capacity",
+        "encapsulation efficiency",
+        "entrapment efficiency",
+    ]
+    if any(token in lower for token in strong_cues):
+        return True
+    return (
+        "formulation" in lower
+        and any(
+            token in lower
+            for token in [
+                "drug loaded",
+                "empty",
+                "nanospheres",
+                "nanocapsules",
+                "surfactant",
+                "ratio",
+                "concentration",
+            ]
+        )
+    )
+
+
+def is_obvious_figure_or_front_matter_table(signal_text: str) -> bool:
+    lower = normalize_text(signal_text).lower()
+    if is_front_matter_like_text(lower) or is_reference_like_text(lower):
+        return True
+    return ("fig." in lower or "figure " in lower) and any(
+        token in lower
+        for token in ["dsc", "thermogram", "micrograph", "microscopy", "image", "profile", "concentration-time"]
+    )
+
+
+def paragraph_formulation_table_score(candidate: dict[str, Any]) -> dict[str, Any]:
+    text = normalize_text(candidate.get("text_content"))
+    lower = text.lower()
+    split_trigger = normalize_text(candidate.get("split_trigger")).lower()
+    quality_flags = {normalize_text(flag).lower() for flag in ensure_list(candidate.get("quality_flags"))}
+    cue_score = 0.0
+    structure_score = 0.0
+    penalty_score = 0.0
+    if "table " in lower:
+        structure_score += 2.0
+    if split_trigger in {"table_inline_split", "post_table_split", "inline_table_recovery"}:
+        structure_score += 2.0
+    if has_strong_formulation_table_signal(lower):
+        cue_score += 5.0
+    if "inline_formulation_table_recovered" in quality_flags:
+        structure_score += 4.0
+    if is_obvious_figure_or_front_matter_table(lower):
+        penalty_score -= 6.0
+    final_score = cue_score + structure_score + penalty_score
+    return {
+        "heading_score": 0.0,
+        "cue_score": cue_score,
+        "structure_score": structure_score,
+        "penalty_score": penalty_score,
+        "final_score": final_score,
+    }
+
+
+def looks_like_short_heading(line: str) -> bool:
+    compact = normalize_text(line)
+    if not compact or len(compact) > 100 or compact.endswith("."):
+        return False
+    words = compact.split()
+    if not 2 <= len(words) <= 12:
+        return False
+    alpha_words = [word for word in words if re.search(r"[A-Za-z]", word)]
+    if not alpha_words:
+        return False
+    titleish = 0
+    for word in alpha_words:
+        if word[:1].isupper() or word.upper() == word or re.search(r"[A-Z].*[-/]", word):
+            titleish += 1
+        elif word.lower() in {"and", "of", "for", "in", "to", "with", "by", "on", "the"}:
+            titleish += 1
+    return titleish / max(len(alpha_words), 1) >= 0.8
+
+
+def classify_heading_line(line: str) -> str | None:
+    compact = normalize_text(line)
+    lower = compact.lower()
+    if not compact:
+        return None
+    if re.match(r"^table\s+\d+\b", lower):
+        return "table_inline"
+    if re.match(r"^(abstract|purpose|materials and methods|results|conclusion|keywords|introduction)\s*:", lower):
+        return "abstract_label"
+    if re.match(r"^\d+(?:\.\d+)+\.?\s+[A-Z]", compact):
+        return "numbered_heading"
+    if re.match(
+        r"^(materials(?: and methods)?|preparation(?: and characterization of nps)?|experimental design|results(?: and discussion)?|discussion|conclusion|introduction|morphology and size of nps|process yield and encapsulation efficiency|gatifloxacin-loaded plga nps|rhodamine-loaded plga nps|lyophilization|analytical methods|assay|pharmacokinetic study|process variables|data analysis and optimization)\b",
+        lower,
+    ):
+        return "heading"
+    return None
+
+
+def split_sentences_for_segmentation(text: str) -> list[str]:
+    compact = normalize_text(text)
+    if not compact:
+        return []
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", compact)
+    return [normalize_text(part) for part in parts if normalize_text(part)]
+
+
+def sentence_profile(text: str) -> str:
+    lower = normalize_text(text).lower()
+    if not lower:
+        return "context"
+    if is_reference_like_text(lower):
+        return "context"
+    if count_segmentation_cues(lower, SEGMENT_ABSTRACT_CUES) > 0:
+        return "abstract_summary"
+    if count_segmentation_cues(lower, SEGMENT_VARIANT_CUES) > 0 and count_segmentation_cues(lower, SEGMENT_METHOD_CUES) > 0:
+        return "variant"
+    if has_experimental_design_text_signal(lower):
+        return "experimental_design"
+    if has_optimization_text_signal(lower):
+        return "optimization"
+    scores = {
+        "materials": count_segmentation_cues(lower, SEGMENT_MATERIALS_CUES),
+        "preparation": count_segmentation_cues(lower, SEGMENT_METHOD_CUES),
+        "result": count_segmentation_cues(lower, SEGMENT_RESULT_CUES),
+        "optimization": count_segmentation_cues(lower, SEGMENT_OPTIMIZATION_CUES),
+        "downstream_assay": count_segmentation_cues(lower, SEGMENT_DOWNSTREAM_CUES),
+    }
+    best_kind, best_score = max(scores.items(), key=lambda item: item[1])
+    if best_score <= 0:
+        return "context"
+    if best_kind == "downstream_assay" and best_score >= scores["preparation"] and best_score >= scores["result"]:
+        return "downstream_assay"
+    return best_kind
+
+
+def should_drop_segment(text: str, section_kind: str, section_label: str) -> bool:
+    lower = normalize_text(text).lower()
+    if is_reference_like_text(lower):
+        return True
+    if is_front_matter_like_text(lower):
+        return True
+    if section_kind == "front_matter":
+        return True
+    if section_kind == "abstract_summary":
+        return True
+    if section_kind == "downstream_assay" and section_label and any(
+        token in section_label.lower()
+        for token in ["cell viability", "biodistribution", "gamma scintigraphy", "radiolabeling", "pharmacokinetic"]
+    ):
+        return True
+    if any(token in lower for token in ["creative commons attribution", "submit your manuscript", "powered by tcpdf"]):
+        return True
+    if not section_label and any(token in lower for token in ["correspondence:", "department of", "faculty of", "college of", "school of pharmacy", "academic editor"]):
+        return True
+    return False
 
 
 def extract_section_label(text: str) -> str:
     compact = normalize_text(text)
     if not compact:
         return ""
+    structured_abstract = re.match(r"^((?:abstract|purpose|materials and methods|results|conclusion|keywords)\s*:)", compact, flags=re.I)
+    if structured_abstract:
+        return normalize_text(structured_abstract.group(1))
     numbered = re.match(r"^(\d+(?:\.\d+)+\.?\s+[A-Z][^.]{0,120})", compact)
     if numbered:
         return normalize_text(numbered.group(1))
@@ -785,30 +1305,86 @@ def extract_section_label(text: str) -> str:
 
 def infer_section_kind(text: str, section_label: str = "") -> str:
     combined = f"{section_label} {normalize_text(text)}".lower()
-    if any(token in combined for token in ["materials", "chemicals", "reagents", "purchased from", "obtained from"]):
+    text_only = normalize_text(text).lower()
+    section_label_lower = normalize_text(section_label).lower()
+    if is_front_matter_like_text(combined):
+        return "front_matter"
+    if is_reference_like_text(combined):
+        return "front_matter"
+    if any(token in combined for token in ["creative commons attribution", "submit your manuscript", "powered by tcpdf", "dovepress", "wiley online library"]):
+        return "front_matter"
+    if any(token in combined for token in ["correspondence:", "department of", "faculty of", "college of", "school of pharmacy", "academic editor"]):
+        if count_segmentation_cues(combined, SEGMENT_METHOD_CUES + SEGMENT_MATERIALS_CUES + SEGMENT_RESULT_CUES + SEGMENT_OPTIMIZATION_CUES) == 0:
+            return "front_matter"
+    if re.match(r"^(abstract|purpose|conclusion|keywords)\s*:", text_only):
+        return "abstract_summary"
+    if text_only.startswith("materials and methods:"):
+        if any(token in text_only for token in ["experimental design", "box-behnken", "response surface", "ratio", "optimized by modifying"]):
+            return "experimental_design"
+        return "preparation"
+    if text_only.startswith("results:"):
+        if count_segmentation_cues(text_only, SEGMENT_OPTIMIZATION_CUES) > 0:
+            return "optimization"
+        if count_segmentation_cues(text_only, SEGMENT_RESULT_CUES) > 0:
+            return "table_related"
+        return "context"
+    if count_segmentation_cues(combined, SEGMENT_ABSTRACT_CUES) > 0:
+        return "context"
+    if count_segmentation_cues(combined, SEGMENT_VARIANT_CUES) > 0 and count_segmentation_cues(combined, SEGMENT_METHOD_CUES) > 0:
+        return "variant_preparation"
+    if has_experimental_design_text_signal(combined):
+        return "experimental_design"
+    if has_optimization_text_signal(combined):
+        return "optimization"
+    if section_label_lower.startswith("3.1.") or section_label_lower.startswith("3.2."):
+        if has_optimization_text_signal(combined):
+            return "optimization"
+        if count_segmentation_cues(combined, SEGMENT_RESULT_CUES) > 0:
+            return "result"
+    if section_label_lower.startswith("materials") or " materials" in section_label_lower:
+        return "materials"
+    if any(token in combined for token in ["purchased from", "obtained from", "supplied by", "gifted by", "analytical grade", "hplc grade", "molecular weight", "resomer", "purasorb"]):
         return "materials"
     if any(token in combined for token in ["preparation", "synthesis", "nanoprecipitation", "emulsion solvent evaporation", "dissolved", "added dropwise"]):
         return "preparation"
-    if any(token in combined for token in ["experimental design", "box-behnken", "response surface", "design expert", "coded levels"]):
+    if has_experimental_design_text_signal(combined):
         return "experimental_design"
-    if any(token in combined for token in ["optimized", "optimization", "desirability", "predicted values", "experimental values"]):
+    if has_optimization_text_signal(combined):
         return "optimization"
+    if any(token in combined for token in ["incorporation efficiency", "loading capacity", "maximum loading capacity", "crystals could be observed"]):
+        return "optimization"
+    if any(token in combined for token in ["table ", "formulation", "table 1", "table 2"]) and any(token in combined for token in ["particle size", "entrapment", "pdi", "zeta potential", "levels", "independent variables"]):
+        return "table_related"
+    if count_segmentation_cues(combined, SEGMENT_DOWNSTREAM_CUES) > 0:
+        return "downstream_assay"
     if any(token in combined for token in ["table ", "runs", "particle size", "entrapment", "pdi", "zeta potential"]):
         return "table_related"
-    if any(token in combined for token in ["cell viability", "biodistribution", "radiolabeling", "imaging", "release study", "pharmacokinetic", "sem "]):
-        return "downstream_assay"
     return "context"
 
 
-def build_candidate_quality_flags(text: str, section_kind: str) -> list[str]:
+def build_candidate_quality_flags(text: str, section_kind: str, split_trigger: str = "") -> list[str]:
     lower = normalize_text(text).lower()
     flags: list[str] = []
     if extract_section_label(text):
         flags.append("heading_scoped")
+    if split_trigger:
+        flags.append(f"split_trigger:{split_trigger}")
     if any(token in lower for token in ["cell viability", "biodistribution", "pharmacokinetic", "release study", "stability study", "sem "]):
         flags.append("downstream_assay_terms")
     if section_kind in {"preparation", "materials"} and any(token in lower for token in ["results and discussion", "discussion", "optimized formulation", "entrapment efficiency"]):
         flags.append("possible_mixed_role_content")
+    if section_kind == "variant_preparation":
+        flags.append("variant_supporting_candidate")
+    if has_experimental_design_text_signal(lower):
+        flags.append("variable_sweep_design")
+    if section_kind == "optimization":
+        flags.append("optimization_candidate")
+    if section_kind == "experimental_design":
+        flags.append("experimental_design_candidate")
+    if section_kind in {"abstract_summary", "front_matter"}:
+        flags.append("suppressible_noncanonical_context")
+    if is_reference_like_text(lower):
+        flags.append("reference_like_content")
     if any(token in lower for token in ["copyright", "journal", "downloaded from", "tcpdf"]):
         flags.append("residual_noise")
     return flags
@@ -818,9 +1394,16 @@ def split_paragraph_entries(text: str) -> list[dict[str, Any]]:
     entries: list[dict[str, Any]] = []
     for index, part in enumerate(re.split(r"\n\s*\n+", text or "")):
         cleaned, noise_flags = clean_candidate_text(part)
-        if not cleaned:
+        if not normalize_text(cleaned):
             continue
-        entries.append({"paragraph_index": index, "text": cleaned, "noise_flags": noise_flags})
+        entries.append(
+            {
+                "paragraph_index": index,
+                "text": cleaned,
+                "noise_flags": noise_flags,
+                "split_trigger": "paragraph_boundary",
+            }
+        )
     return entries
 
 
@@ -828,7 +1411,8 @@ def split_section_scoped_entries(entries: list[dict[str, Any]]) -> list[dict[str
     section_pattern = re.compile(r"(?=(?:\d+(?:\.\d+)+\.?\s*[A-Z]))")
     expanded: list[dict[str, Any]] = []
     for entry in entries:
-        text = normalize_text(entry.get("text"))
+        raw_text = str(entry.get("text") or "")
+        text = normalize_text(raw_text)
         if not text:
             continue
         parts = [normalize_text(part) for part in section_pattern.split(text) if normalize_text(part)]
@@ -842,9 +1426,358 @@ def split_section_scoped_entries(entries: list[dict[str, Any]]) -> list[dict[str
                     "segment_index": segment_index,
                     "text": part,
                     "noise_flags": list(entry.get("noise_flags") or []),
+                    "split_trigger": "numbered_heading_split",
                 }
             )
     return expanded
+
+
+def split_inline_heading_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    expanded: list[dict[str, Any]] = []
+    for entry in entries:
+        text = str(entry.get("text") or "")
+        if not normalize_text(text):
+            continue
+        lines = [normalize_text(line) for line in text.splitlines() if normalize_text(line)]
+        if len(lines) <= 1:
+            expanded.append(dict(entry))
+            continue
+        current_lines: list[str] = []
+        current_trigger = str(entry.get("split_trigger") or "paragraph_boundary")
+        split_count = 0
+        for line in lines:
+            heading_type = classify_heading_line(line)
+            if heading_type is not None and current_lines:
+                expanded.append(
+                    {
+                        "paragraph_index": entry["paragraph_index"],
+                        "segment_index": split_count,
+                        "text": "\n".join(current_lines),
+                        "noise_flags": list(entry.get("noise_flags") or []),
+                        "split_trigger": current_trigger,
+                    }
+                )
+                split_count += 1
+                current_lines = [line]
+                current_trigger = heading_type
+            else:
+                current_lines.append(line)
+                if heading_type is not None:
+                    current_trigger = heading_type
+        if current_lines:
+            expanded.append(
+                {
+                    "paragraph_index": entry["paragraph_index"],
+                    "segment_index": split_count,
+                    "text": "\n".join(current_lines),
+                    "noise_flags": list(entry.get("noise_flags") or []),
+                    "split_trigger": current_trigger,
+                }
+            )
+    return expanded
+
+
+def split_transition_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    expanded: list[dict[str, Any]] = []
+    for entry in entries:
+        text = normalize_text(entry.get("text"))
+        if not text:
+            continue
+        sentences = split_sentences_for_segmentation(text)
+        if len(sentences) <= 1:
+            expanded.append(dict(entry))
+            continue
+        current_sentences: list[str] = [sentences[0]]
+        current_profile = sentence_profile(sentences[0])
+        current_trigger = str(entry.get("split_trigger") or "paragraph_boundary")
+        split_count = 0
+        for sentence in sentences[1:]:
+            next_profile = sentence_profile(sentence)
+            transition = False
+            transition_trigger = ""
+            if "table " in sentence.lower() and len(" ".join(current_sentences)) >= 120:
+                transition = True
+                transition_trigger = "table_inline_split"
+            elif current_profile == "experimental_design" and next_profile in {"result", "optimization", "downstream_assay"} and len(" ".join(current_sentences)) >= 140:
+                transition = True
+                transition_trigger = f"cue_transition_experimental_design_to_{next_profile}"
+            elif current_profile in {"result", "optimization"} and next_profile == "experimental_design" and len(" ".join(current_sentences)) >= 120:
+                transition = True
+                transition_trigger = f"cue_transition_{current_profile}_to_experimental_design"
+            elif next_profile == "variant" and current_profile in {"preparation", "variant"} and len(" ".join(current_sentences)) >= 180:
+                transition = True
+                transition_trigger = "variant_split"
+            elif current_profile in {"preparation", "variant"} and next_profile in {"result", "optimization", "downstream_assay"} and len(" ".join(current_sentences)) >= 180:
+                transition = True
+                transition_trigger = f"cue_transition_{current_profile}_to_{next_profile}"
+            elif current_profile == "materials" and next_profile in {"context", "downstream_assay"} and len(" ".join(current_sentences)) >= 140:
+                transition = True
+                transition_trigger = f"cue_transition_materials_to_{next_profile}"
+            elif current_profile in {"result", "optimization"} and next_profile == "downstream_assay" and len(" ".join(current_sentences)) >= 140:
+                transition = True
+                transition_trigger = f"cue_transition_{current_profile}_to_downstream"
+            if transition:
+                expanded.append(
+                    {
+                        "paragraph_index": entry["paragraph_index"],
+                        "segment_index": split_count,
+                        "text": " ".join(current_sentences),
+                        "noise_flags": list(entry.get("noise_flags") or []),
+                        "split_trigger": current_trigger,
+                    }
+                )
+                split_count += 1
+                current_sentences = [sentence]
+                current_profile = next_profile
+                current_trigger = transition_trigger
+            else:
+                current_sentences.append(sentence)
+                if current_profile == "context" and next_profile != "context":
+                    current_profile = next_profile
+        if current_sentences:
+            expanded.append(
+                {
+                    "paragraph_index": entry["paragraph_index"],
+                    "segment_index": split_count,
+                    "text": " ".join(current_sentences),
+                    "noise_flags": list(entry.get("noise_flags") or []),
+                    "split_trigger": current_trigger,
+                }
+            )
+    return expanded
+
+
+def split_embedded_design_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    expanded: list[dict[str, Any]] = []
+    for entry in entries:
+        text = normalize_text(entry.get("text"))
+        if not text:
+            continue
+        lower = text.lower()
+        if not lower.startswith("materials and methods:") or "optimized by modifying" not in lower:
+            expanded.append(dict(entry))
+            continue
+        prefix = "Materials and methods:"
+        body = normalize_text(text[len(prefix) :])
+        first_sentence_match = re.match(r"^(.*?\.)\s*(.*)$", body)
+        if not first_sentence_match:
+            expanded.append(dict(entry))
+            continue
+        first_sentence = normalize_text(first_sentence_match.group(1))
+        remainder = normalize_text(first_sentence_match.group(2))
+        split_phrase = " and optimized by modifying "
+        split_idx = first_sentence.lower().find(split_phrase)
+        if split_idx < 0:
+            expanded.append(dict(entry))
+            continue
+        prep_clause = normalize_text(first_sentence[:split_idx]).rstrip(". ")
+        design_clause = normalize_text(first_sentence[split_idx + len(" and ") :]).rstrip(". ")
+        prep_text = normalize_text(f"{prefix} {prep_clause}. {remainder}")
+        design_text = normalize_text(f"Experimental design: {design_clause}.")
+        if not prep_text or not design_text:
+            expanded.append(dict(entry))
+            continue
+        base_entry = dict(entry)
+        expanded.append(
+            {
+                **base_entry,
+                "segment_index": int(base_entry.get("segment_index", 0)) * 10,
+                "text": prep_text,
+                "split_trigger": "embedded_design_split",
+            }
+        )
+        expanded.append(
+            {
+                **base_entry,
+                "segment_index": int(base_entry.get("segment_index", 0)) * 10 + 1,
+                "text": design_text,
+                "split_trigger": "embedded_design_split",
+            }
+        )
+    return expanded
+
+
+def split_inline_table_result_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    expanded: list[dict[str, Any]] = []
+    for entry in entries:
+        text = normalize_text(entry.get("text"))
+        if not text:
+            continue
+        sentences = split_sentences_for_segmentation(text)
+        table_sentence_indexes = [
+            idx
+            for idx, sentence in enumerate(sentences)
+            if re.search(r"\btable\s+\d+\b", sentence, flags=re.I)
+        ]
+        if len(sentences) <= 1 or not table_sentence_indexes:
+            expanded.append(dict(entry))
+            continue
+        chunks: list[tuple[str, str]] = []
+        current: list[str] = []
+        current_trigger = str(entry.get("split_trigger") or "paragraph_boundary")
+        for idx, sentence in enumerate(sentences):
+            if idx in table_sentence_indexes:
+                if current:
+                    chunks.append((" ".join(current), current_trigger))
+                    current = []
+                chunks.append((sentence, "table_inline_split"))
+                current_trigger = "post_table_split"
+                continue
+            current.append(sentence)
+        if current:
+            chunks.append((" ".join(current), current_trigger))
+        if len(chunks) <= 1:
+            expanded.append(dict(entry))
+            continue
+        for segment_index, (chunk_text, chunk_trigger) in enumerate(chunks):
+            cleaned_chunk = normalize_text(chunk_text)
+            if not cleaned_chunk:
+                continue
+            expanded.append(
+                {
+                    **dict(entry),
+                    "segment_index": int(entry.get("segment_index", 0)) * 10 + segment_index,
+                    "text": cleaned_chunk,
+                    "split_trigger": chunk_trigger,
+                }
+            )
+    return expanded
+
+
+def build_segmented_paragraph_entries(text: str) -> list[dict[str, Any]]:
+    entries = split_paragraph_entries(text)
+    entries = split_section_scoped_entries(entries)
+    entries = split_inline_heading_entries(entries)
+    entries = split_transition_entries(entries)
+    entries = split_embedded_design_entries(entries)
+    entries = split_inline_table_result_entries(entries)
+    filtered: list[dict[str, Any]] = []
+    for entry in entries:
+        cleaned = normalize_text(entry.get("text"))
+        if not cleaned:
+            continue
+        section_label = extract_section_label(cleaned)
+        section_kind = infer_section_kind(cleaned, section_label)
+        if should_drop_segment(cleaned, section_kind, section_label):
+            continue
+        filtered.append(
+            {
+                "paragraph_index": entry.get("paragraph_index", 0),
+                "segment_index": entry.get("segment_index", 0),
+                "text": cleaned,
+                "noise_flags": list(entry.get("noise_flags") or []),
+                "split_trigger": str(entry.get("split_trigger") or "paragraph_boundary"),
+            }
+        )
+    return filtered
+
+
+def has_variable_sweep_design_signal(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    if any(token in lower for token in ["experimental design", "box-behnken", "response surface", "design expert", "coded levels"]):
+        return True
+    fixed_patterns = [
+        r"\b\w*xed amounts of polymer\b",
+        r"\b\w*xed amounts of surfactant[s]?\b",
+        r"\b\w*xed amounts of polymer and surfactant[s]?\b",
+        r"\bprepared using \w*xed amounts\b",
+    ]
+    varying_patterns = [
+        r"\bvariable quantities\b",
+        r"\bincreasing theoretical concentrations\b",
+        r"\bdifferent volumes\b",
+        r"\bdifferent amounts\b",
+        r"\bmultiple batches\b",
+        r"\bcryoprotectant concentrations\b",
+        r"\bvarying concentrations?\b",
+        r"\bconcentrations ranging\b",
+        r"\bincreasing the volume\b",
+        r"\branging from\s+\d",
+    ]
+    has_fixed = any(re.search(pattern, lower) for pattern in fixed_patterns)
+    has_varying = any(re.search(pattern, lower) for pattern in varying_patterns)
+    return has_fixed and has_varying
+
+
+def build_inline_formulation_table_item(
+    text_content: str,
+    *,
+    text_path: Path,
+    paragraph_index: int,
+    segment_index: int,
+) -> dict[str, Any] | None:
+    lower = normalize_text(text_content).lower()
+    if "table " not in lower:
+        return None
+    header_patterns = [
+        (r"\bsample\b", "Sample"),
+        (r"\btheoretical(?:\s+concen(?:tration)?)?\b", "Theoretical concentration"),
+        (r"\bfinal\s+concen(?:tration)?\b", "Final concentration"),
+        (r"\bformulation\b", "Formulation"),
+        (r"\bformulation number\b", "Formulation Number"),
+        (r"\bdrug:polymer ratio\b", "Drug:Polymer ratio"),
+        (r"\bpolymer used\b", "Polymer Used"),
+        (r"\bsurfactant\b", "Surfactant"),
+        (r"\brhodamine\b", "Rhodamine"),
+        (r"\bgatifloxacin\b", "Gatifloxacin"),
+        (r"\bpolysorbate\s*80\b", "Polysorbate 80"),
+        (r"\blabrafil\b", "Labrafil"),
+        (r"\bparticle size\b", "Particle size"),
+        (r"\bpdi\b", "PDI"),
+        (r"\bzeta(?:\s|-)?potential\b", "Zeta potential"),
+        (r"\bencapsulation efficiency\b", "Encapsulation efficiency"),
+        (r"\bincorporation efficiency\b", "Incorporation efficiency"),
+        (r"\bloading capacity\b", "Loading capacity"),
+        (r"\bdrug loading\b", "Drug loading"),
+        (r"\bdl\b", "DL"),
+        (r"\bee\b", "EE"),
+        (r"\bentrapment\b", "Entrapment"),
+    ]
+    header_labels: list[str] = []
+    for pattern, label in header_patterns:
+        if re.search(pattern, text_content, flags=re.I) and label.lower() not in {item.lower() for item in header_labels}:
+            header_labels.append(label)
+    row_labels = list(
+        dict.fromkeys(
+            match.group(0)
+            for match in re.finditer(r"\b(?:NP[BRG]?\d{1,2}|NPR\d{1,2}|NPB\d{1,2}|NPG\d{1,2}|F\d{1,3})\b", text_content)
+        )
+    )
+    numeric_row_labels = list(
+        dict.fromkeys(
+            match.group(1)
+            for match in re.finditer(r"(?:^|\s)(\d{2,4}(?:\.\d+)?)\s+(?:\d{1,4}(?:\.\d+)?G\d{1,4}(?:\.\d+)?|\d{1,4}(?:\.\d+)?%)", text_content)
+        )
+    )
+    numeric_token_count = len(re.findall(r"\b\d{1,4}(?:\.\d+)?(?:G\d{1,4}(?:\.\d+)?)?%?\b", text_content))
+    if len(row_labels) < 2 and len(numeric_row_labels) >= 2:
+        row_labels = [f"run_{label}" for label in numeric_row_labels[:12]]
+    if len(row_labels) < 2:
+        if not (len(header_labels) >= 3 and numeric_token_count >= 8):
+            return None
+        row_labels = [f"row_{idx:02d}" for idx in range(1, min(6, max(3, numeric_token_count // 4)) + 1)]
+    if len(header_labels) < 3:
+        return None
+    caption_match = re.search(r"(Table\s+\d+[^.]{0,160})", text_content, flags=re.I)
+    caption = normalize_text(caption_match.group(1)) if caption_match else "Inline formulation table"
+    rows = [header_labels] + [[label] + [""] * (len(header_labels) - 1) for label in row_labels[:12]]
+    return {
+        "path": text_path,
+        "rows": rows,
+        "meta": {
+            "caption_or_title": caption,
+            "header_keywords_hit": ["table", "inline_recovered"] + header_labels,
+            "n_rows": len(rows),
+            "n_cols": len(header_labels),
+            "page_number": "",
+            "fraction_numeric_cells": 0.08,
+        },
+        "score": 90 + min(24, len(row_labels) * 3),
+        "row_pattern": infer_row_pattern(row_labels),
+        "quality_flags": ["inline_formulation_table_recovered"],
+        "filtered_noise_rows": 0,
+        "origin_locator": f"{to_repo_rel(text_path)}#paragraph:{paragraph_index}#segment:{segment_index}",
+    }
 
 
 def render_table_text(table_dir: Path | None, max_tables: int = 4, max_lines_per_table: int = 24) -> str:
@@ -928,24 +1861,48 @@ def build_summary_table_signal_text(
     return " ".join(part for part in parts if part).lower()
 
 
+def extract_informative_header_parts(rows: list[list[str]]) -> list[str]:
+    header_parts: list[str] = []
+    for row in rows[:6]:
+        row_text = " ".join(normalize_text(cell) for cell in row if normalize_text(cell))
+        if not row_text:
+            continue
+        if is_reference_like_text(row_text) or is_front_matter_like_text(row_text):
+            continue
+        for cell in row:
+            header_parts.extend(parse_header_cell(cell))
+        if re.search(r"\b(?:\d+|f\d+|run\s+\d+)\b", row_text.lower()) and header_parts:
+            break
+    return [part for part in header_parts if part]
+
+
 def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any]) -> tuple[int, str]:
     header_row = rows[0] if rows else []
     data_rows = rows[1:] if len(rows) > 1 else []
-    header_parts: list[str] = []
-    for cell in header_row:
-        header_parts.extend(parse_header_cell(cell))
-    header_parts = [part for part in header_parts if part]
+    header_parts = extract_informative_header_parts(rows)
+    if not header_parts and header_row:
+        for cell in header_row:
+            header_parts.extend(parse_header_cell(cell))
+        header_parts = [part for part in header_parts if part]
     row_ids = [row[0] for row in data_rows if row and normalize_text(row[0])]
     row_pattern = infer_row_pattern(row_ids)
     role_hint = infer_table_role_hint(header_parts, meta)
     numeric_rows = sum(1 for value in row_ids if parse_numeric_row_label(value) is not None)
     numeric_ratio = numeric_rows / max(len(data_rows), 1)
     signal_text = build_summary_table_signal_text(rows, meta, header_parts)
+    formulation_schema_hit = has_strong_formulation_table_signal(signal_text)
+    figure_carryover_hit = is_obvious_figure_or_front_matter_table(signal_text)
     score = 0
     if row_pattern in {"numeric runs", "F-numbered rows"}:
         score += 100
     if role_hint == "design matrix":
         score += 80
+    if role_hint == "formulation":
+        score += 95
+    if role_hint == "optimization":
+        score += 50
+    if role_hint == "characterization_only":
+        score -= 90
     if numeric_ratio >= 0.5:
         score += 60
     if len(data_rows) >= 8:
@@ -974,10 +1931,20 @@ def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any])
         score += 12
     if "formulation" in signal_text:
         score += 10
+    if formulation_schema_hit:
+        score += 35
+    if formulation_schema_hit and any(
+        token in signal_text for token in ["theoretical concentration", "final concentration", "formulation characters"]
+    ):
+        score += 45
     if "poloxamer 188" in signal_text:
         score += 20
     if "plga:itz" in signal_text:
         score += 15
+    if is_characterization_only_table_signal(signal_text):
+        score -= 100
+    if figure_carryover_hit:
+        score -= 140
     if any(token in signal_text for token in ["et al", "dovepress", "references", "submit your manuscript", "international journal of nanomedicine"]):
         score -= 60
     if any(token in signal_text for token in ["purpose:", "abstract", "correspondence:", "college of pharmacy", "department of"]):
@@ -995,17 +1962,45 @@ def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any])
     return score, row_pattern
 
 
-def clean_table_rows(rows: list[list[str]]) -> tuple[list[list[str]], list[str], int]:
+def clean_table_rows(rows: list[list[str]], meta: dict[str, Any] | None = None) -> tuple[list[list[str]], list[str], int]:
     cleaned_rows: list[list[str]] = []
     quality_flags: list[str] = []
     filtered_noise_rows = 0
+    meta = meta or {}
+    caption = normalize_text(meta.get("caption_or_title")).lower()
+    if caption.startswith("figure "):
+        quality_flags.append("figure_like_caption")
     for row in rows:
         cleaned_row = [normalize_text(cell) for cell in row if normalize_text(cell)]
         if not cleaned_row:
             continue
         row_text = " ".join(cleaned_row)
+        lower = row_text.lower()
+        alpha_count = sum(ch.isalpha() for ch in row_text)
+        cid_count = row_text.count("(cid:")
+        prose_like = len(lower.split()) >= 18 and not lower.startswith("note:")
         if is_obvious_noise_line(row_text):
             filtered_noise_rows += 1
+            continue
+        if is_reference_like_text(row_text):
+            filtered_noise_rows += 1
+            if "reference_rows_filtered" not in quality_flags:
+                quality_flags.append("reference_rows_filtered")
+            continue
+        if cid_count >= 2:
+            filtered_noise_rows += 1
+            if "encoding_artifact_rows_filtered" not in quality_flags:
+                quality_flags.append("encoding_artifact_rows_filtered")
+            continue
+        if any(token in lower for token in ["figure ", "plasma concentration-time profiles", "publish your work", "submit your manuscript", "dovepress", "biomed research international", "powered by tcpdf"]):
+            filtered_noise_rows += 1
+            if "noise_rows_filtered" not in quality_flags:
+                quality_flags.append("noise_rows_filtered")
+            continue
+        if prose_like and any(token in lower for token in SEGMENT_PROSE_CARRYOVER_CUES) and alpha_count >= 80:
+            filtered_noise_rows += 1
+            if "prose_carryover_filtered" not in quality_flags:
+                quality_flags.append("prose_carryover_filtered")
             continue
         cleaned_rows.append(cleaned_row)
     if filtered_noise_rows:
@@ -1015,9 +2010,150 @@ def clean_table_rows(rows: list[list[str]]) -> tuple[list[list[str]], list[str],
     return cleaned_rows, quality_flags, filtered_noise_rows
 
 
+def table_manifest_path(table_dir: Path | None) -> str:
+    if table_dir is None:
+        return ""
+    manifest_path = table_dir / "tables_manifest.json"
+    return to_repo_rel(manifest_path) if manifest_path.exists() else ""
+
+
+def selected_table_files(table_dir: Path | None) -> set[str]:
+    payload = load_table_manifest_payload(table_dir)
+    selected = {
+        normalize_text(value)
+        for value in ensure_list(payload.get("selected_table_files"))
+        if normalize_text(value)
+    }
+    return selected
+
+
+def candidate_surface_preview(rows: list[list[str]], *, max_rows: int = 4, max_cells: int = 5) -> str:
+    lines: list[str] = []
+    for row in rows[:max_rows]:
+        compact = [normalize_text(cell) for cell in row[:max_cells] if normalize_text(cell)]
+        if compact:
+            lines.append(" | ".join(compact))
+    return normalize_text(" || ".join(lines))
+
+
+def looks_like_header_row(row: list[str]) -> bool:
+    compact = [normalize_text(cell) for cell in row if normalize_text(cell)]
+    if not compact:
+        return False
+    lower = " ".join(compact).lower()
+    if any(token in lower for token in ["formulation", "ratio", "polymer", "surfactant", "particle size", "pdi", "zeta", "entrapment", "loading", "run"]):
+        return True
+    alpha_cells = sum(1 for cell in compact if re.search(r"[A-Za-z]", cell))
+    numeric_cells = sum(1 for cell in compact if re.search(r"\d", cell))
+    return alpha_cells >= max(2, numeric_cells)
+
+
+def recover_caption_from_rows(rows: list[list[str]]) -> tuple[str, int]:
+    for idx, row in enumerate(rows[:3]):
+        row_text = normalize_text(" ".join(cell for cell in row if normalize_text(cell)))
+        if re.match(r"^table\s+\d+\b", row_text, flags=re.I):
+            return row_text, idx
+    return "", -1
+
+
+def repair_table_representation(
+    *,
+    path: Path,
+    rows: list[list[str]],
+    meta: dict[str, Any],
+    quality_flags: list[str],
+    filtered_noise_rows: int,
+    table_dir: Path | None,
+) -> dict[str, Any]:
+    repair_actions: list[str] = []
+    repair_warnings: list[str] = []
+    repaired_meta = dict(meta)
+    repaired_rows = [list(row) for row in rows]
+    raw_preview = candidate_surface_preview(rows)
+    repair_primary_source = "candidate_surface_fallback"
+    selected_files = selected_table_files(table_dir)
+    manifest_rel = table_manifest_path(table_dir)
+    if not selected_files or path.name in selected_files:
+        repair_primary_source = "stage1_selected_table_asset"
+    else:
+        repair_warnings.append("not_in_selected_table_files")
+
+    caption = normalize_text(repaired_meta.get("caption_or_title"))
+    if not caption:
+        recovered_caption, caption_row_index = recover_caption_from_rows(repaired_rows)
+        if recovered_caption:
+            repaired_meta["caption_or_title"] = recovered_caption
+            repair_actions.append("caption_recovery")
+            if caption_row_index == 0 and len(repaired_rows) > 1:
+                repaired_rows = repaired_rows[1:]
+
+    if repaired_rows and not looks_like_header_row(repaired_rows[0]) and len(repaired_rows) > 1 and looks_like_header_row(repaired_rows[1]):
+        repaired_rows = [repaired_rows[1]] + repaired_rows[:1] + repaired_rows[2:]
+        repair_actions.append("header_repair")
+
+    if len(repaired_rows) >= 2:
+        first_column_values = [normalize_text(row[0]) for row in repaired_rows[1:] if row and normalize_text(row[0])]
+        if first_column_values:
+            repair_actions.append("first_column_preservation")
+    if filtered_noise_rows:
+        repair_actions.append("spillover_trim")
+    if "corrupted_or_sparse_table" in {normalize_text(flag) for flag in quality_flags} and len(repaired_rows) >= 2:
+        repair_actions.append("sparse_table_rescue")
+
+    repaired_preview = candidate_surface_preview(repaired_rows)
+    material_difference = repaired_preview != raw_preview
+    role_hint = infer_table_role_hint(extract_informative_header_parts(repaired_rows), {**repaired_meta, "_signal_text": build_summary_table_signal_text(repaired_rows[:6], repaired_meta, extract_informative_header_parts(repaired_rows))})
+    unresolved_reason = ""
+    if len(repaired_rows) < 2:
+        unresolved_reason = "insufficient_rows_after_repair"
+        repair_warnings.append(unresolved_reason)
+    elif role_hint == "unknown" and not repaired_preview:
+        unresolved_reason = "empty_repaired_preview"
+        repair_warnings.append(unresolved_reason)
+    elif role_hint == "unknown":
+        unresolved_reason = "role_legibility_still_weak"
+
+    representation_status = "repaired_summary" if repair_actions else "raw_summary"
+    if unresolved_reason:
+        representation_status = "unrepaired_corrupted" if not repair_actions else "repair_insufficient"
+    selector_readiness = "ready" if repair_primary_source == "stage1_selected_table_asset" and repaired_preview and not unresolved_reason else "weak"
+    if unresolved_reason and len(repaired_rows) < 2:
+        selector_readiness = "unresolved"
+    repair_confidence = 0.9 if selector_readiness == "ready" and repair_primary_source == "stage1_selected_table_asset" else 0.45
+
+    return {
+        "path": path,
+        "rows": repaired_rows,
+        "meta": repaired_meta,
+        "quality_flags": quality_flags,
+        "filtered_noise_rows": filtered_noise_rows,
+        "raw_table_preview": raw_preview,
+        "repaired_table_preview": repaired_preview or raw_preview,
+        "representation_status": representation_status,
+        "repair_actions": list(dict.fromkeys(repair_actions)),
+        "repair_warnings": list(dict.fromkeys(repair_warnings)),
+        "repair_confidence": repair_confidence,
+        "material_difference_from_raw": material_difference,
+        "repair_primary_source": repair_primary_source,
+        "repair_source_csv_path": to_repo_rel(path),
+        "repair_source_manifest_path": manifest_rel,
+        "repair_source_candidate_id": "",
+        "candidate_variant_role": "raw",
+        "same_source_table_asset": True,
+        "derived_from_candidate_id": "",
+        "selector_readiness_label": selector_readiness,
+        "unresolved_reason": unresolved_reason,
+    }
+
+
 def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
     manifest = load_table_manifest(table_dir)
-    table_paths = sorted(table_dir.glob("*.csv"))
+    selected_files = selected_table_files(table_dir)
+    table_paths = sorted(
+        path
+        for path in table_dir.glob("*.csv")
+        if not selected_files or path.name in selected_files
+    )
     entries: list[dict[str, Any]] = []
     for path in table_paths:
         rows: list[list[str]] = []
@@ -1029,10 +2165,31 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                     rows.append(cleaned_row)
         if not rows:
             continue
-        rows, quality_flags, filtered_noise_rows = clean_table_rows(rows)
+        meta = manifest.get(path.name, {})
+        rows, quality_flags, filtered_noise_rows = clean_table_rows(rows, meta)
         if not rows:
             continue
-        meta = manifest.get(path.name, {})
+        repaired = repair_table_representation(
+            path=path,
+            rows=rows,
+            meta=meta,
+            quality_flags=quality_flags,
+            filtered_noise_rows=filtered_noise_rows,
+            table_dir=table_dir,
+        )
+        rows = repaired["rows"]
+        meta = repaired["meta"]
+        header_parts = extract_informative_header_parts(rows)
+        signal_text = build_summary_table_signal_text(rows[:6], meta, header_parts)
+        role_hint = infer_table_role_hint(header_parts, {**meta, "_signal_text": signal_text})
+        if role_hint == "design matrix":
+            meta = {**meta, "caption_or_title": f"Experimental design variable table. {normalize_text(meta.get('caption_or_title'))}".strip()}
+        elif role_hint == "formulation":
+            meta = {**meta, "caption_or_title": f"Formulation table with drug/polymer/loading variables. {normalize_text(meta.get('caption_or_title'))}".strip()}
+        elif role_hint == "optimization":
+            meta = {**meta, "caption_or_title": f"Optimization result table. {normalize_text(meta.get('caption_or_title'))}".strip()}
+        elif role_hint == "characterization_only":
+            meta = {**meta, "caption_or_title": f"Characterization-only table. {normalize_text(meta.get('caption_or_title'))}".strip()}
         score, row_pattern = score_summary_table(path, rows, meta)
         entries.append(
             {
@@ -1043,6 +2200,22 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                 "row_pattern": row_pattern,
                 "quality_flags": quality_flags,
                 "filtered_noise_rows": filtered_noise_rows,
+                "representation_status": repaired["representation_status"],
+                "repair_actions": repaired["repair_actions"],
+                "repair_warnings": repaired["repair_warnings"],
+                "repair_confidence": repaired["repair_confidence"],
+                "raw_table_preview": repaired["raw_table_preview"],
+                "repaired_table_preview": repaired["repaired_table_preview"],
+                "material_difference_from_raw": repaired["material_difference_from_raw"],
+                "repair_primary_source": repaired["repair_primary_source"],
+                "repair_source_csv_path": repaired["repair_source_csv_path"],
+                "repair_source_manifest_path": repaired["repair_source_manifest_path"],
+                "repair_source_candidate_id": repaired["repair_source_candidate_id"],
+                "candidate_variant_role": repaired["candidate_variant_role"],
+                "same_source_table_asset": repaired["same_source_table_asset"],
+                "derived_from_candidate_id": repaired["derived_from_candidate_id"],
+                "selector_readiness_label": repaired["selector_readiness_label"],
+                "unresolved_reason": repaired["unresolved_reason"],
             }
         )
     entries.sort(
@@ -1090,6 +2263,11 @@ def build_table_selection_debug_payload(
                 "caption_or_title": normalize_text(item["meta"].get("caption_or_title")),
                 "header_keywords_hit": item["meta"].get("header_keywords_hit") or [],
                 "first_data_row_preview": " | ".join(cell for cell in first_data_row if cell),
+                "representation_status": normalize_text(item.get("representation_status")),
+                "repair_actions": item.get("repair_actions") or [],
+                "repair_primary_source": normalize_text(item.get("repair_primary_source")),
+                "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
+                "unresolved_reason": normalize_text(item.get("unresolved_reason")),
             }
         )
     return {
@@ -1104,19 +2282,9 @@ def build_table_selection_debug_payload(
 
 
 def load_table_manifest(table_dir: Path | None) -> dict[str, dict[str, Any]]:
-    if table_dir is None or not table_dir.exists():
-        return {}
-    manifest_path = table_dir / "tables_manifest.json"
-    if not manifest_path.exists():
-        return {}
-    try:
-        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
+    payload = load_table_manifest_payload(table_dir)
     if isinstance(payload, dict):
         tables = payload.get("tables") or []
-    elif isinstance(payload, list):
-        tables = payload
     else:
         tables = []
     manifest: dict[str, dict[str, Any]] = {}
@@ -1172,9 +2340,23 @@ def infer_row_pattern(row_ids: list[str]) -> str:
 
 
 def infer_table_role_hint(headers: list[str], meta: dict[str, Any]) -> str:
-    signals = " ".join(headers + [normalize_text(item) for item in (meta.get("header_keywords_hit") or [])]).lower()
+    signals = " ".join(
+        headers
+        + [normalize_text(item) for item in (meta.get("header_keywords_hit") or [])]
+        + [normalize_text(meta.get("caption_or_title")), normalize_text(meta.get("_signal_text"))]
+    ).lower()
+    if is_characterization_only_table_signal(signals):
+        return "characterization_only"
+    if any(token in signals for token in ["independent variables", "dependent variables", "factors", "levels"]):
+        return "design matrix"
+    if any(token in signals for token in ["cryoprotectant", "concentration (%", "concentration %", "different concentrations", "ranging from"]):
+        return "design matrix"
     if any(token in signals for token in ["factorial", "coded", "design", "run", "doe", "cpf", "cpva", "cplga"]):
         return "design matrix"
+    if has_strong_formulation_table_signal(signals):
+        return "formulation"
+    if any(token in signals for token in ["selected", "optimal", "optimized", "desirability"]):
+        return "optimization"
     if any(token in signals for token in ["size", "pdi", "zeta", "entrapment", "efficiency", "loading"]):
         return "characterization"
     if any(token in signals for token in ["release", "stability", "yield", "response"]):
@@ -1313,6 +2495,18 @@ def render_summary_table_block(item: dict[str, Any], *, enhancement_enabled: boo
     ]
     if enhancement_enabled and row_anchor_preview:
         block_lines.append(f"- first_column_row_labels_preview: {row_anchor_preview}")
+    representation_status = normalize_text(item.get("representation_status"))
+    if representation_status:
+        block_lines.append(f"- representation_status: {representation_status}")
+    repair_primary_source = normalize_text(item.get("repair_primary_source"))
+    if repair_primary_source:
+        block_lines.append(f"- repair_primary_source: {repair_primary_source}")
+    repair_actions = [normalize_text(value) for value in ensure_list(item.get("repair_actions")) if normalize_text(value)]
+    if repair_actions:
+        block_lines.append(f"- repair_actions: {', '.join(repair_actions)}")
+    selector_readiness = normalize_text(item.get("selector_readiness_label"))
+    if selector_readiness:
+        block_lines.append(f"- selector_readiness: {selector_readiness}")
     if sample_lines:
         block_lines.append("- sample_rows:")
         block_lines.extend(sample_lines)
@@ -1418,6 +2612,52 @@ def looks_like_section_heading(text: str, role: str) -> bool:
     return False
 
 
+def count_any_cues(text: str, cues: list[str]) -> int:
+    lower = normalize_text(text).lower()
+    return sum(1 for cue in cues if cue in lower)
+
+
+def is_materials_inventory_candidate(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    if not lower:
+        return False
+    procurement_hits = count_any_cues(lower, PROCUREMENT_CUES)
+    chemical_hits = count_any_cues(
+        lower,
+        ["plga", "poloxamer", "itz", "acetone", "acetonitrile", "sucrose", "mannitol", "hp-", "phosphate buffered saline"],
+    )
+    return ("materials" in lower and procurement_hits >= 1) or (procurement_hits >= 1 and chemical_hits >= 2)
+
+
+def procedure_signal_count(text: str) -> int:
+    return count_any_cues(text, PREPARATION_PROCEDURE_CUES)
+
+
+def assay_comparator_signal_count(text: str) -> int:
+    return count_any_cues(text, ASSAY_COMPARATOR_CUES)
+
+
+def is_assay_comparator_dominated(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    return assay_comparator_signal_count(lower) >= 2 and procedure_signal_count(lower) <= 2
+
+
+def has_preparation_procedure_signal(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    return "nanoprecipitation" in lower or procedure_signal_count(lower) >= 4
+
+
+def optimization_decision_signature(text: str) -> str:
+    lower = normalize_text(text).lower()
+    if "during the whole study" in lower or "chosen for the preparation" in lower:
+        return "selected_condition"
+    if "chosen as the optimal formulation" in lower or "utilized for the formulation of all the following studies" in lower:
+        return "optimal_formulation"
+    if "selected as optimal" in lower or "optimal lyoprotectant" in lower:
+        return "selected_auxiliary_condition"
+    return ""
+
+
 def paragraph_role_score(entry: dict[str, Any], role: str, *, total_paragraphs: int) -> dict[str, Any]:
     text = entry["text"]
     lower = normalize_text(text).lower()
@@ -1427,8 +2667,17 @@ def paragraph_role_score(entry: dict[str, Any], role: str, *, total_paragraphs: 
     penalty_score = 0.0
     if role == "PREPARATION_METHOD":
         penalty_score -= 2.0 * count_cue_hits(lower, PREPARATION_NEGATIVE_CUES)
+        cue_score += 1.5 * procedure_signal_count(lower)
+        if has_preparation_procedure_signal(lower):
+            structure_score += 4.0
+        penalty_score -= 2.5 * assay_comparator_signal_count(lower)
+        if is_assay_comparator_dominated(lower):
+            penalty_score -= 8.0
     if role == "MATERIALS":
         penalty_score -= 1.5 * count_cue_hits(lower, MATERIALS_NEGATIVE_CUES)
+        cue_score += 2.0 * count_any_cues(lower, PROCUREMENT_CUES)
+        if is_materials_inventory_candidate(lower):
+            structure_score += 4.0
     if "references" in lower or "copyright" in lower or "correspondence" in lower:
         penalty_score -= 4.0
     if role == "FORMULATION_RESULT" and "results and discussion" in lower:
@@ -1441,6 +2690,9 @@ def paragraph_role_score(entry: dict[str, Any], role: str, *, total_paragraphs: 
             structure_score += 2.0
         if "predicted" in lower and "experimental" in lower:
             cue_score += 1.0
+        if optimization_decision_signature(lower):
+            structure_score += 4.0
+        cue_score += 1.0 * count_any_cues(lower, OPTIMIZATION_DECISION_CUES)
     if role == "CONTEXT_FALLBACK":
         cue_score = max(cue_score, 1.0 if len(lower.split()) >= 40 else 0.0)
         if "references" in lower or "journal of" in lower or re.search(r"\[\d+\]", text):
@@ -1502,32 +2754,82 @@ def table_duplicate_signature(item: dict[str, Any]) -> str:
     return f"{shape}::{labels}::{sampled}"
 
 
+def table_preview_labels_from_text(text: str, *, limit: int = 12) -> list[str]:
+    match = re.search(r"first_column_row_labels_preview:\s*(.+?)(?:\s+- sample_rows:|\s+- footnotes_or_notes:|$)", text, flags=re.I)
+    if not match:
+        return []
+    values = [normalize_text(part) for part in re.split(r"\s*,\s*", match.group(1)) if normalize_text(part)]
+    return values[:limit]
+
+
+def selector_table_context(candidate_or_item: dict[str, Any]) -> tuple[dict[str, Any], list[list[str]], str, set[str], list[str], str, float]:
+    item = candidate_or_item.get("item") if isinstance(candidate_or_item.get("item"), dict) else candidate_or_item
+    meta = item.get("meta", {}) if isinstance(item, dict) else {}
+    rows = item.get("rows", []) if isinstance(item, dict) else []
+    blob = table_blob(item) if isinstance(item, dict) and item.get("rows") is not None else normalize_text(candidate_or_item.get("text_content"))
+    quality_flags = {
+        normalize_text(flag).lower()
+        for flag in ensure_list(candidate_or_item.get("quality_flags") or item.get("quality_flags"))
+    }
+    row_labels = table_row_label_preview(item, limit=12) if rows else table_preview_labels_from_text(blob, limit=12)
+    section_kind = normalize_text(candidate_or_item.get("section_kind"))
+    raw_score = float(candidate_or_item.get("table_score", item.get("score", 0)) or 0.0)
+    return meta, rows, blob, quality_flags, row_labels, section_kind, raw_score
+
+
 def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
-    meta = item.get("meta", {})
-    rows = item.get("rows", [])
-    blob = table_blob(item)
+    meta, rows, blob, quality_flags, row_labels, section_kind, raw_score = selector_table_context(item)
     heading_score = float(count_cue_hits(blob, ROLE_HEADING_CUES.get(role, [])))
     cue_score = float(count_cue_hits(blob, ROLE_LEXICAL_CUES.get(role, [])))
     structure_score = 0.0
     penalty_score = 0.0
-    row_labels = table_row_label_preview(item, limit=12)
+    preview_starts_figure = "first_column_row_labels_preview: figure " in blob.lower()
     if role == "VARIABLE_TABLE":
         if any("levels" in label or "independent variables" in label for label in row_labels):
             structure_score += 3.0
         if any("dependent variables" in blob for _ in [0]):
             structure_score += 2.0
+        if any(token in blob for token in ["different concentrations", "different ratios", "initial ratios"]):
+            structure_score += 3.0
+        if "noise_rows_filtered" in quality_flags and cue_score + structure_score < 5.0:
+            penalty_score -= 2.0
     if role == "FORMULATION_TABLE":
         row_id_hits = sum(1 for label in row_labels if any(re.search(pattern, label, flags=re.I) for pattern in TABLE_ROW_ID_PATTERNS))
         structure_score += min(4.0, float(row_id_hits))
         if infer_row_pattern([label for label in row_labels if label]) in {"numeric runs", "F-numbered rows"}:
             structure_score += 2.0
+        if "inline_formulation_table_recovered" in quality_flags:
+            structure_score += 4.0
+        if has_strong_formulation_table_signal(blob):
+            structure_score += 2.0
+        if any(token in blob for token in ["theoretical concentration", "final concentration", "formulation characters"]):
+            structure_score += 3.0
+        if "noise_rows_filtered" in quality_flags and cue_score + structure_score < 6.0:
+            penalty_score -= 2.0
+        if section_kind == "optimization" and cue_score < 3.0:
+            penalty_score -= 2.0
     if role == "OPTIMIZATION_RESULT" and ("optimized" in blob or "desirability" in blob):
         structure_score += 2.0
     if role == "FORMULATION_TABLE" and meta.get("fraction_numeric_cells", 0) and float(meta.get("fraction_numeric_cells", 0)) < 0.03:
         penalty_score -= 2.0
+    if role == "FORMULATION_TABLE" and (
+        "figure_like_caption" in quality_flags
+        or (preview_starts_figure and row_id_hits == 0)
+        or (
+            is_obvious_figure_or_front_matter_table(blob)
+            and row_id_hits == 0
+            and "table " not in blob.lower()
+        )
+    ):
+        penalty_score -= 8.0
     if role == "VARIABLE_TABLE" and len(rows) < 6:
         penalty_score -= 1.0
-    final_score = heading_score + cue_score + structure_score + penalty_score + (float(item.get("score", 0)) / 25.0)
+    raw_score_component = raw_score / 25.0
+    if role == "VARIABLE_TABLE" and cue_score + structure_score < 5.0:
+        raw_score_component = min(raw_score_component, 1.0)
+    if role == "FORMULATION_TABLE" and cue_score + structure_score < 4.0:
+        raw_score_component = min(raw_score_component, 4.0)
+    final_score = heading_score + cue_score + structure_score + penalty_score + raw_score_component
     return {
         "heading_score": heading_score,
         "cue_score": cue_score,
@@ -1537,10 +2839,69 @@ def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
     }
 
 
+def selector_candidates_from_candidate_artifact(candidate_artifact: dict[str, Any]) -> list[dict[str, Any]]:
+    selector_candidates: list[dict[str, Any]] = []
+    for candidate in ensure_list(candidate_artifact.get("candidate_blocks")):
+        candidate_type = normalize_text(candidate.get("candidate_type")).lower()
+        candidate_kind = "table" if candidate_type == "table" else "paragraph"
+        origin_locator = normalize_text(candidate.get("origin_locator"))
+        selector_candidate = {
+            "candidate_id": normalize_text(candidate.get("candidate_id")),
+            "candidate_kind": candidate_kind,
+            "source_type": normalize_text(candidate.get("source_type")),
+            "origin_key": origin_locator or normalize_text(candidate.get("candidate_id")),
+            "origin_locator": origin_locator,
+            "text_content": normalize_text(candidate.get("text_content")),
+            "paragraph_index": int(candidate.get("paragraph_index", 0) or 0),
+            "segment_index": int(candidate.get("segment_index", 0) or 0),
+            "section_label": normalize_text(candidate.get("section_label")),
+            "section_kind": normalize_text(candidate.get("section_kind")),
+            "split_trigger": "artifact_replay",
+            "noise_flags": list(candidate.get("noise_flags") or []),
+            "quality_flags": list(candidate.get("quality_flags") or []),
+        }
+        if candidate_kind == "table":
+            selector_candidate["table_role_hint"] = normalize_text(candidate.get("table_role_hint"))
+            selector_candidate["table_row_pattern"] = normalize_text(candidate.get("table_row_pattern"))
+            selector_candidate["table_score"] = float(candidate.get("table_score", 0) or 0.0)
+        selector_candidates.append(selector_candidate)
+    return selector_candidates
+
+
 def choose_required_roles(signals: dict[str, bool]) -> tuple[str, str | None, list[str]]:
     if signals.get("has_doe_signal"):
         return GENERAL_SELECTOR_PROFILE, DOE_SELECTOR_OVERLAY, list(DOE_REQUIRED_ROLES)
     return GENERAL_SELECTOR_PROFILE, None, list(GENERAL_REQUIRED_ROLES)
+
+
+def build_selector_surface_text(
+    text_content: str,
+    *,
+    section_kind: str,
+    role_candidate: str | None,
+    split_trigger: str,
+    table_role_hint: str | None = None,
+) -> str:
+    prefixes: list[str] = []
+    if role_candidate == "PREPARATION_METHOD" or section_kind in {"preparation", "variant_preparation"}:
+        prefixes.append("Preparation method:")
+    if role_candidate == "MATERIALS" or section_kind == "materials":
+        prefixes.append("Materials:")
+    if section_kind == "experimental_design":
+        prefixes.append("Experimental design: varying concentrations or batches.")
+    if section_kind == "optimization":
+        prefixes.append("Optimization result: best/highest/efficiency/loading outcome.")
+    if table_role_hint == "design matrix":
+        prefixes.append("Variable table: formulation factors and concentrations.")
+    elif table_role_hint == "formulation":
+        prefixes.append("Formulation table: drug/polymer ratio, loading, EE, DL.")
+    elif table_role_hint == "optimization":
+        prefixes.append("Optimization result table.")
+    if split_trigger in {"table_inline_split", "post_table_split"} and "table " in text_content.lower():
+        prefixes.append("Inline table/result split candidate.")
+    if not prefixes:
+        return text_content
+    return " ".join(prefixes + [text_content]).strip()
 
 
 def build_candidate_segmentation_artifact(
@@ -1552,7 +2913,7 @@ def build_candidate_segmentation_artifact(
     producer_script: str,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     raw_text = text_path.read_text(encoding="utf-8", errors="replace")
-    paragraph_entries = split_section_scoped_entries(split_paragraph_entries(raw_text))
+    paragraph_entries = build_segmented_paragraph_entries(raw_text)
     summary_candidates = collect_summary_table_candidates(table_dir) if table_dir is not None and table_dir.exists() else []
     signals = detect_pre_llm_signals(raw_text, summary_candidates)
     candidates: list[dict[str, Any]] = []
@@ -1564,42 +2925,95 @@ def build_candidate_segmentation_artifact(
             continue
         section_label = extract_section_label(text_content)
         section_kind = infer_section_kind(text_content, section_label)
-        quality_flags = build_candidate_quality_flags(text_content, section_kind)
+        split_trigger = str(entry.get("split_trigger") or "paragraph_boundary")
+        quality_flags = build_candidate_quality_flags(text_content, section_kind, split_trigger)
         noise_flags = list(entry.get("noise_flags") or [])
+        inline_table_item = build_inline_formulation_table_item(
+            text_content,
+            text_path=text_path,
+            paragraph_index=int(entry.get("paragraph_index", 0)),
+            segment_index=int(entry.get("segment_index", 0)),
+        )
+        is_inline_table_candidate = inline_table_item is not None and split_trigger == "table_inline_split"
+        table_role_hint = "formulation" if is_inline_table_candidate else None
+        block_type = "table" if is_inline_table_candidate else "paragraph"
+        role_candidate = None
+        method_cue_count = count_segmentation_cues(text_content, SEGMENT_METHOD_CUES)
+        explicit_preparation_label = "preparation" in normalize_text(section_label).lower()
+        classified_block_type, _, _ = classify_ordered_paragraph_block(text_content)
+        if is_inline_table_candidate:
+            role_candidate = "FORMULATION_TABLE"
+        elif section_kind in {"preparation", "variant_preparation"} and (
+            explicit_preparation_label
+            or text_content.lower().startswith("empty nanospheres were prepared")
+            or text_content.lower().startswith("empty nanocapsules were prepared")
+            or (method_cue_count >= 2 and classified_block_type == "synthesis_method")
+        ):
+            block_type = "synthesis_method"
+            role_candidate = "PREPARATION_METHOD"
+        elif section_kind == "materials":
+            block_type = "materials_procurement"
+            role_candidate = "MATERIALS"
         candidate_id = f"{record['key']}__candidate_paragraph__{idx:02d}"
         origin_locator = f"{to_repo_rel(text_path)}#paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}"
+        selector_text_content = build_selector_surface_text(
+            text_content,
+            section_kind="table_related" if is_inline_table_candidate else section_kind,
+            role_candidate=role_candidate,
+            split_trigger="inline_table_recovery" if is_inline_table_candidate else split_trigger,
+            table_role_hint=table_role_hint,
+        )
         candidate_payload = {
             "candidate_id": candidate_id,
-            "candidate_type": "prose",
-            "source_type": "clean_text_paragraph",
+            "candidate_type": "table" if is_inline_table_candidate else "prose",
+            "block_type": block_type,
+            "role_candidate": role_candidate,
+            "is_table_derived": is_inline_table_candidate,
+            "source_type": "inline_table_text" if is_inline_table_candidate else "clean_text_paragraph",
             "origin_locator": origin_locator,
             "paragraph_index": int(entry.get("paragraph_index", 0)),
             "segment_index": int(entry.get("segment_index", 0)),
             "section_label": section_label,
-            "section_kind": section_kind,
-            "segmentation_method": "double_newline_then_section_heading_split",
+            "section_kind": "table_related" if is_inline_table_candidate else section_kind,
+            "segmentation_method": "inline_text_table_recovery" if is_inline_table_candidate else "double_newline_then_section_heading_split",
+            "split_trigger": "inline_table_recovery" if is_inline_table_candidate else split_trigger,
             "noise_flags": noise_flags,
-            "quality_flags": quality_flags,
+            "quality_flags": (
+                quality_flags + list(inline_table_item.get("quality_flags") or [])
+                if is_inline_table_candidate
+                else quality_flags
+            ),
             "text_content": text_content,
             "text_preview": normalize_text(text_content[:220]),
         }
+        if is_inline_table_candidate:
+            candidate_payload["table_role_hint"] = table_role_hint
+            candidate_payload["table_row_pattern"] = inline_table_item.get("row_pattern", "")
+            candidate_payload["table_score"] = inline_table_item.get("score")
         candidates.append(candidate_payload)
         selector_candidates.append(
             {
                 "candidate_id": candidate_id,
-                "candidate_kind": "paragraph",
-                "source_type": "clean_text_paragraph",
+                "candidate_kind": "table" if is_inline_table_candidate else "paragraph",
+                "source_type": "inline_table_text" if is_inline_table_candidate else "clean_text_paragraph",
                 "origin_key": f"paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}",
                 "origin_locator": origin_locator,
-                "text_content": text_content,
+                "text_content": selector_text_content,
                 "paragraph_index": int(entry.get("paragraph_index", 0)),
                 "segment_index": int(entry.get("segment_index", 0)),
                 "section_label": section_label,
-                "section_kind": section_kind,
+                "section_kind": "table_related" if is_inline_table_candidate else section_kind,
+                "split_trigger": "inline_table_recovery" if is_inline_table_candidate else split_trigger,
                 "noise_flags": noise_flags,
-                "quality_flags": quality_flags,
+                "quality_flags": (
+                    quality_flags + list(inline_table_item.get("quality_flags") or [])
+                    if is_inline_table_candidate
+                    else quality_flags
+                ),
             }
         )
+        if is_inline_table_candidate:
+            selector_candidates[-1]["item"] = inline_table_item
 
     for idx, item in enumerate(summary_candidates, start=1):
         text_content = render_summary_table_block(item, enhancement_enabled=summary_first_column_enhancement_enabled())
@@ -1611,25 +3025,44 @@ def build_candidate_segmentation_artifact(
         quality_flags = list(item.get("quality_flags") or [])
         if item.get("filtered_noise_rows"):
             quality_flags.append(f"filtered_noise_rows:{item['filtered_noise_rows']}")
+        header_parts = extract_informative_header_parts(item.get("rows") or [])
+        table_role_hint = infer_table_role_hint(header_parts, {**meta, "_signal_text": build_summary_table_signal_text((item.get("rows") or [])[:6], meta, header_parts)})
         candidate_id = f"{record['key']}__candidate_table__{idx:02d}"
         candidate_payload = {
             "candidate_id": candidate_id,
             "candidate_type": "table",
+            "block_type": "table",
+            "role_candidate": "FORMULATION_TABLE",
+            "is_table_derived": True,
             "source_type": "table_summary",
             "origin_locator": to_repo_rel(item["path"]),
             "section_label": section_label,
             "section_kind": section_kind,
             "segmentation_method": "manifest_aware_table_summary_isolation",
+            "split_trigger": "table_isolation",
             "noise_flags": [],
             "quality_flags": quality_flags,
-            "table_role_hint": infer_table_role_hint(
-                [part for cell in (item.get("rows", [])[0] if item.get("rows") else []) for part in parse_header_cell(cell)],
-                meta,
-            ),
+            "table_role_hint": table_role_hint,
             "table_row_pattern": item.get("row_pattern", ""),
             "table_score": item.get("score"),
             "text_content": text_content,
             "text_preview": normalize_text(text_content[:220]),
+            "representation_status": normalize_text(item.get("representation_status")) or "raw_summary",
+            "repair_actions": item.get("repair_actions") or [],
+            "repair_warnings": item.get("repair_warnings") or [],
+            "repair_confidence": item.get("repair_confidence"),
+            "raw_table_preview": normalize_text(item.get("raw_table_preview")),
+            "repaired_table_preview": normalize_text(item.get("repaired_table_preview")),
+            "material_difference_from_raw": bool(item.get("material_difference_from_raw")),
+            "repair_primary_source": normalize_text(item.get("repair_primary_source")),
+            "repair_source_csv_path": normalize_text(item.get("repair_source_csv_path")) or to_repo_rel(item["path"]),
+            "repair_source_manifest_path": normalize_text(item.get("repair_source_manifest_path")),
+            "repair_source_candidate_id": candidate_id,
+            "candidate_variant_role": normalize_text(item.get("candidate_variant_role")) or "raw",
+            "same_source_table_asset": bool(item.get("same_source_table_asset", True)),
+            "derived_from_candidate_id": normalize_text(item.get("derived_from_candidate_id")),
+            "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
+            "unresolved_reason": normalize_text(item.get("unresolved_reason")),
         }
         candidates.append(candidate_payload)
         selector_candidates.append(
@@ -1639,12 +3072,26 @@ def build_candidate_segmentation_artifact(
                 "source_type": "table_summary",
                 "origin_key": to_repo_rel(item["path"]),
                 "origin_locator": to_repo_rel(item["path"]),
-                "text_content": text_content,
+                "text_content": build_selector_surface_text(
+                    text_content,
+                    section_kind=section_kind,
+                    role_candidate="FORMULATION_TABLE",
+                    split_trigger="table_isolation",
+                    table_role_hint=table_role_hint,
+                ),
                 "item": item,
                 "section_label": section_label,
                 "section_kind": section_kind,
+                "split_trigger": "table_isolation",
                 "noise_flags": [],
                 "quality_flags": quality_flags,
+                "table_role_hint": table_role_hint,
+                "table_row_pattern": item.get("row_pattern", ""),
+                "table_score": item.get("score"),
+                "representation_status": normalize_text(item.get("representation_status")) or "raw_summary",
+                "repair_primary_source": normalize_text(item.get("repair_primary_source")),
+                "repair_actions": item.get("repair_actions") or [],
+                "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
             }
         )
 
@@ -1659,12 +3106,15 @@ def build_candidate_segmentation_artifact(
         "feature_activation_snapshot": {
             "section_aware_split": True,
             "table_isolation": table_dir is not None and table_dir.exists(),
+            "table_representation_repair": table_dir is not None and table_dir.exists(),
             "noise_filtering": True,
         },
         "coverage_summary": {
             "total_candidates": len(candidates),
             "prose_candidates": sum(1 for item in candidates if item["candidate_type"] == "prose"),
             "table_candidates": sum(1 for item in candidates if item["candidate_type"] == "table"),
+            "repaired_table_candidates": sum(1 for item in candidates if normalize_text(item.get("representation_status")) in {"repaired_summary", "repair_insufficient"}),
+            "authoritative_stage1_table_repairs": sum(1 for item in candidates if normalize_text(item.get("repair_primary_source")) == "stage1_selected_table_asset"),
             "candidates_with_noise_flags": sum(1 for item in candidates if item.get("noise_flags")),
             "candidates_with_quality_flags": sum(1 for item in candidates if item.get("quality_flags")),
             "has_doe_signal": signals["has_doe_signal"],
@@ -1715,12 +3165,32 @@ def build_role_aware_selection(
                     "quality_flags": list(candidate.get("quality_flags") or []),
                 }
             )
+        formulation_table_score = paragraph_formulation_table_score(candidate)
+        if float(formulation_table_score["final_score"]) > 0:
+            candidates_by_role.setdefault("FORMULATION_TABLE", []).append(
+                {
+                    "candidate_kind": candidate["candidate_kind"],
+                    "candidate_id": candidate["candidate_id"],
+                    "role": "FORMULATION_TABLE",
+                    "origin_key": candidate["origin_key"],
+                    "source_type": candidate["source_type"],
+                    "origin_locator": candidate["origin_locator"],
+                    "entry": entry,
+                    "score_breakdown": formulation_table_score,
+                    "text_content": candidate["text_content"],
+                    "duplicate_signature": "",
+                    "section_label": candidate.get("section_label", ""),
+                    "section_kind": candidate.get("section_kind", ""),
+                    "noise_flags": list(candidate.get("noise_flags") or []),
+                    "quality_flags": list(candidate.get("quality_flags") or []),
+                }
+            )
 
     for candidate in [item for item in segmented_candidates if item["candidate_kind"] == "table"]:
-        item = candidate["item"]
-        signature = table_duplicate_signature(item)
+        item = candidate.get("item")
+        signature = table_duplicate_signature(item) if isinstance(item, dict) else normalize_text(candidate.get("origin_locator"))
         for role in table_roles:
-            score = table_role_score(item, role)
+            score = table_role_score(candidate, role)
             candidates_by_role.setdefault(role, []).append(
                 {
                     "candidate_kind": candidate["candidate_kind"],
@@ -1754,6 +3224,7 @@ def build_role_aware_selection(
     used_table_signatures: set[str] = set()
     missing_or_weak_roles: list[str] = []
     duplicate_suppression_events: list[dict[str, str]] = []
+    selected_by_role: dict[str, list[dict[str, Any]]] = {}
 
     def maybe_add_candidate(candidate: dict[str, Any], priority: str) -> bool:
         origin_key = candidate["origin_key"]
@@ -1775,7 +3246,96 @@ def build_role_aware_selection(
         chosen = dict(candidate)
         chosen["role_priority"] = priority
         selected.append(chosen)
+        selected_by_role.setdefault(str(candidate["role"]), []).append(chosen)
         return True
+
+    def remove_selected_candidate(candidate_id: str) -> None:
+        nonlocal selected
+        removed = [item for item in selected if normalize_text(item.get("candidate_id")) == candidate_id]
+        if not removed:
+            return
+        selected = [item for item in selected if normalize_text(item.get("candidate_id")) != candidate_id]
+        used_origins.clear()
+        used_table_signatures.clear()
+        selected_by_role.clear()
+        for item in selected:
+            used_origins.add(item["origin_key"])
+            signature = item.get("duplicate_signature") or ""
+            if item["candidate_kind"] == "table" and signature:
+                used_table_signatures.add(signature)
+            selected_by_role.setdefault(str(item["role"]), []).append(item)
+
+    def materials_candidate_complete(candidate: dict[str, Any]) -> bool:
+        return is_materials_inventory_candidate(candidate.get("text_content", ""))
+
+    def preparation_candidate_complete(candidate: dict[str, Any]) -> bool:
+        text = candidate.get("text_content", "")
+        return has_preparation_procedure_signal(text) and not is_assay_comparator_dominated(text)
+
+    def optimization_candidate_complete(candidate: dict[str, Any]) -> bool:
+        return bool(optimization_decision_signature(candidate.get("text_content", "")))
+
+    def add_best_materials_complement() -> bool:
+        for candidate in candidates_by_role.get("MATERIALS", []):
+            if materials_candidate_complete(candidate) and maybe_add_candidate(candidate, "coverage"):
+                return True
+        return False
+
+    def correct_preparation_selection() -> bool:
+        current = selected_by_role.get("PREPARATION_METHOD", [])
+        current_primary = current[0] if current else None
+        if current_primary and preparation_candidate_complete(current_primary):
+            return False
+        replacement = None
+        for candidate in candidates_by_role.get("PREPARATION_METHOD", []):
+            if preparation_candidate_complete(candidate):
+                replacement = candidate
+                break
+        if replacement is None:
+            return False
+        if current_primary is not None:
+            remove_selected_candidate(normalize_text(current_primary.get("candidate_id")))
+        return maybe_add_candidate(replacement, "primary")
+
+    def add_preparation_complement() -> bool:
+        current = selected_by_role.get("PREPARATION_METHOD", [])
+        if not current:
+            return False
+        combined_text = " ".join(item.get("text_content", "") for item in current)
+        if all(token in normalize_text(combined_text).lower() for token in ["added", "evaporation", "centrifuged"]):
+            return False
+        for candidate in candidates_by_role.get("PREPARATION_METHOD", []):
+            if normalize_text(candidate.get("candidate_id")) in {
+                normalize_text(item.get("candidate_id")) for item in current
+            }:
+                continue
+            text = candidate.get("text_content", "")
+            if not preparation_candidate_complete(candidate):
+                continue
+            if not any(token in normalize_text(text).lower() for token in ["evaporation", "filtered", "centrifuged"]):
+                continue
+            if maybe_add_candidate(candidate, "coverage"):
+                return True
+        return False
+
+    def add_optimization_complements() -> int:
+        required_signatures = {"selected_condition", "optimal_formulation"}
+        decision_signatures = {
+            optimization_decision_signature(item.get("text_content", ""))
+            for item in selected_by_role.get("OPTIMIZATION_RESULT", [])
+            if optimization_decision_signature(item.get("text_content", "")) in required_signatures
+        }
+        added = 0
+        for candidate in candidates_by_role.get("OPTIMIZATION_RESULT", []):
+            signature = optimization_decision_signature(candidate.get("text_content", ""))
+            if signature not in required_signatures or signature in decision_signatures:
+                continue
+            if maybe_add_candidate(candidate, "coverage"):
+                decision_signatures.add(signature)
+                added += 1
+            if added >= 1:
+                break
+        return added
 
     for role in required_roles:
         role_candidates = candidates_by_role.get(role, [])
@@ -1792,7 +3352,7 @@ def build_role_aware_selection(
 
     for role in SECONDARY_ELIGIBLE_ROLES:
         role_candidates = candidates_by_role.get(role, [])
-        threshold = ROLE_THRESHOLD_BY_ROLE.get(role, 1.0) + 1.0
+        threshold = ROLE_THRESHOLD_BY_ROLE.get(role, 1.0) + SECONDARY_THRESHOLD_BONUS_BY_ROLE.get(role, 1.0)
         for candidate in role_candidates:
             if float(candidate["score_breakdown"]["final_score"]) < threshold:
                 continue
@@ -1804,9 +3364,18 @@ def build_role_aware_selection(
             if maybe_add_candidate(candidate, "fallback"):
                 break
 
+    if "MATERIALS" in missing_or_weak_roles and add_best_materials_complement():
+        missing_or_weak_roles = [role for role in missing_or_weak_roles if role != "MATERIALS"]
+
+    correct_preparation_selection()
+    add_preparation_complement()
+
+    if signals.get("has_sequential_signal") or signals.get("has_optimization_signal"):
+        add_optimization_complements()
+
     selected.sort(
         key=lambda item: (
-            {"primary": 0, "secondary": 1, "fallback": 2}.get(item["role_priority"], 3),
+            {"primary": 0, "secondary": 1, "coverage": 2, "fallback": 3}.get(item["role_priority"], 4),
             required_roles.index(item["role"]) if item["role"] in required_roles else 99,
             item["origin_key"],
         )
@@ -2010,6 +3579,7 @@ def build_evidence_blocks_artifact(
         block_id: str,
         block_type: str,
         source_type: str,
+        candidate_id: str | None,
         origin_locator: str,
         selection_reason: str,
         selection_feature: str,
@@ -2029,6 +3599,7 @@ def build_evidence_blocks_artifact(
                 "block_id": block_id,
                 "block_type": block_type,
                 "source_type": source_type,
+                "candidate_id": candidate_id,
                 "origin_locator": origin_locator,
                 "selection_reason": selection_reason,
                 "selection_feature": selection_feature,
@@ -2049,6 +3620,7 @@ def build_evidence_blocks_artifact(
         block_id=f"{record['key']}__metadata__01",
         block_type="metadata",
         source_type="document_metadata",
+        candidate_id=None,
         origin_locator=to_repo_rel(manifest_path),
         selection_reason="document_identity_context",
         selection_feature="build_metadata_block",
@@ -2090,6 +3662,7 @@ def build_evidence_blocks_artifact(
                 block_id=f"{record['key']}__{normalize_token(role.lower())}__{block_suffix:02d}",
                 block_type=block_type,
                 source_type=str(candidate["source_type"]),
+                candidate_id=str(candidate["candidate_id"]),
                 origin_locator=str(candidate["origin_locator"]),
                 selection_reason=f"role_constrained_{normalize_token(role.lower())}_{candidate['role_priority']}",
                 selection_feature="role_aware_selector_v1",
@@ -2108,6 +3681,7 @@ def build_evidence_blocks_artifact(
             block_id=f"{record['key']}__raw_prefix__01",
             block_type="raw_prefix",
             source_type="clean_text",
+            candidate_id=None,
             origin_locator=f"{to_repo_rel(text_path)}#chars:0:{len(raw_prefix_text)}",
             selection_reason="default_raw_prefix_fallback",
             selection_feature="max_text_chars_prefix",
@@ -2126,6 +3700,7 @@ def build_evidence_blocks_artifact(
                     block_id=f"{record['key']}__table_summary__{idx:02d}",
                     block_type="table",
                     source_type="table_summary",
+                    candidate_id=None,
                     origin_locator=to_repo_rel(item["path"]),
                     selection_reason="summary_mode_selected_table",
                     selection_feature="score_summary_table",
@@ -2144,6 +3719,7 @@ def build_evidence_blocks_artifact(
                     block_id=f"{record['key']}__table_excerpt__{idx:02d}",
                     block_type="table",
                     source_type="table_excerpt",
+                    candidate_id=None,
                     origin_locator=to_repo_rel(path),
                     selection_reason="full_mode_first_four_sorted_csv",
                     selection_feature="sorted_csv_first_4",
@@ -2198,6 +3774,7 @@ def build_evidence_blocks_artifact(
                 "block_id",
                 "block_type",
                 "source_type",
+                "candidate_id",
                 "origin_locator",
                 "selection_reason",
                 "selection_feature",
@@ -2340,12 +3917,40 @@ def build_prompt_preview_row(
     input_packing_mode_value: str,
     ordered_block_order: str,
     evidence_artifact_path: str,
+    evidence_artifact: dict[str, Any],
     technical_status_overall: str,
     design_status_overall: str,
 ) -> dict[str, Any]:
     paper_text_index = prompt_text.find("Paper text:\n")
     evidence_pack_index = prompt_text.find("Evidence pack:\n")
     table_excerpts_index = prompt_text.find("Table excerpts:\n")
+    evidence_blocks = [
+        block
+        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
+        if isinstance(block, dict) and normalize_text(block.get("text_content"))
+    ]
+    normalized_prompt_text = normalize_text(prompt_text)
+    exact_payload_counts = Counter(normalize_text(block.get("text_content")) for block in evidence_blocks)
+    exact_duplicate_block_count = sum(count - 1 for count in exact_payload_counts.values() if count > 1)
+    all_selected_blocks_included = all(
+        normalize_text(block.get("text_content")) in normalized_prompt_text for block in evidence_blocks
+    )
+    uses_evidence_pack_only = (
+        evidence_pack_index >= 0
+        and paper_text_index < 0
+        and table_excerpts_index < 0
+    )
+    truncation_detected = not all_selected_blocks_included
+    readiness_reasons: list[str] = []
+    if not normalize_text(prompt_text):
+        readiness_reasons.append("empty_prompt")
+    if not uses_evidence_pack_only:
+        readiness_reasons.append("unexpected_prompt_layout")
+    if truncation_detected:
+        readiness_reasons.append("selected_block_missing_from_prompt")
+    if exact_duplicate_block_count > 0:
+        readiness_reasons.append("exact_duplicate_evidence_block_payloads")
+    s2_3_ready_overall = "pass" if not readiness_reasons else "fail"
     layout_class = "unknown"
     if evidence_pack_index >= 0:
         layout_class = "ordered_controlled_evidence_pack"
@@ -2371,6 +3976,13 @@ def build_prompt_preview_row(
         "evidence_artifact_path": evidence_artifact_path,
         "technical_status_overall": technical_status_overall,
         "design_status_overall": design_status_overall,
+        "s2_3_ready_overall": s2_3_ready_overall,
+        "s2_3_readiness_reasons": "|".join(readiness_reasons),
+        "selected_evidence_block_count": len(evidence_blocks),
+        "all_selected_blocks_included": "yes" if all_selected_blocks_included else "no",
+        "uses_evidence_pack_only": "yes" if uses_evidence_pack_only else "no",
+        "truncation_detected": "yes" if truncation_detected else "no",
+        "exact_duplicate_block_count": exact_duplicate_block_count,
         "prompt_length": len(prompt_text),
         "prompt_head_preview": prompt_head_preview,
         "prompt_tail_preview": prompt_tail_preview,
@@ -2394,8 +4006,17 @@ def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], 
                 "section_label": normalize_text(candidate.get("section_label")),
                 "section_kind": normalize_text(candidate.get("section_kind")),
                 "segmentation_method": normalize_text(candidate.get("segmentation_method")),
+                "split_trigger": normalize_text(candidate.get("split_trigger")),
                 "noise_flags": "|".join(str(item) for item in ensure_list(candidate.get("noise_flags")) if str(item).strip()),
                 "quality_flags": "|".join(str(item) for item in ensure_list(candidate.get("quality_flags")) if str(item).strip()),
+                "representation_status": normalize_text(candidate.get("representation_status")),
+                "repair_primary_source": normalize_text(candidate.get("repair_primary_source")),
+                "repair_actions": "|".join(str(item) for item in ensure_list(candidate.get("repair_actions")) if str(item).strip()),
+                "material_difference_from_raw": str(bool(candidate.get("material_difference_from_raw"))).lower() if candidate.get("candidate_type") == "table" else "",
+                "selector_readiness_label": normalize_text(candidate.get("selector_readiness_label")),
+                "unresolved_reason": normalize_text(candidate.get("unresolved_reason")),
+                "raw_table_preview": normalize_text(candidate.get("raw_table_preview"))[:260],
+                "repaired_table_preview": normalize_text(candidate.get("repaired_table_preview"))[:260],
                 "text_preview": normalize_text(candidate.get("text_preview") or candidate.get("text_content"))[:260],
             }
         )
@@ -3431,6 +5052,7 @@ def main() -> None:
                                 if str(value).strip()
                             ),
                             evidence_artifact_path=to_repo_rel(artifact_path),
+                            evidence_artifact=evidence_artifact,
                             technical_status_overall=normalize_text(evidence_artifact.get("technical_status", {}).get("overall")),
                             design_status_overall=normalize_text(evidence_artifact.get("design_status", {}).get("overall")),
                         )
@@ -3531,6 +5153,13 @@ def main() -> None:
                 "evidence_artifact_path",
                 "technical_status_overall",
                 "design_status_overall",
+                "s2_3_ready_overall",
+                "s2_3_readiness_reasons",
+                "selected_evidence_block_count",
+                "all_selected_blocks_included",
+                "uses_evidence_pack_only",
+                "truncation_detected",
+                "exact_duplicate_block_count",
                 "prompt_length",
                 "prompt_head_preview",
                 "prompt_tail_preview",
@@ -3556,8 +5185,17 @@ def main() -> None:
                 "section_label",
                 "section_kind",
                 "segmentation_method",
+                "split_trigger",
                 "noise_flags",
                 "quality_flags",
+                "representation_status",
+                "repair_primary_source",
+                "repair_actions",
+                "material_difference_from_raw",
+                "selector_readiness_label",
+                "unresolved_reason",
+                "raw_table_preview",
+                "repaired_table_preview",
                 "text_preview",
             ],
         )

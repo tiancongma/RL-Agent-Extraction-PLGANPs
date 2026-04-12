@@ -69,6 +69,36 @@ Current clarification (`2026-04-08`):
 The canonical benchmark object is the Stage 5 final formulation table. No
 intermediate artifact may be reported as the system result against GT.
 
+Fine-grained governance mapping:
+
+- Stage0 / Stage1:
+  - `S1-1 Raw ingestion`
+  - `S1-2 Clean text`
+  - `S1-3 Scope manifest`
+- Stage2:
+  - `S2-1 Scope resolution`
+  - `S2-2 Evidence construction`
+  - `S2-3 Prompt assembly`
+  - `S2-4 LLM call`
+  - `S2-5 Semantic parsing`
+  - `S2-6 Contract validation`
+  - `S2-7 Compatibility projection`
+- Stage3:
+  - `S3-1 Relation materialization`
+  - `S3-2 Relation resolution`
+- Stage5:
+  - `S5-1 Final candidate materialization`
+  - `S5-2 Filtering / normalization`
+  - `S5-3 Final table`
+- Benchmark:
+  - `B-1 GT compare`
+- Cross-cutting layers:
+  - Feature governance layer
+  - Memory layer
+
+This mapping is internal governance only. It does not create new coarse
+runtime stages or new runtime namespaces.
+
 Boundary classes used by the current maintained pipeline:
 
 - `internal_intermediate`
@@ -401,6 +431,8 @@ S2-2 contract note:
 
 - the maintained Stage2 path now formalizes S2-2:
   - clean text -> governed evidence package
+- S2-2 is the first engineering freeze point in Stage2 and emits:
+  - `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 - the maintained Stage2 path now also formalizes an explicit internal boundary
   inside S2-2:
   - clean text / extracted tables -> candidate segmentation -> role-aware
@@ -425,6 +457,18 @@ S2-2 contract note:
   near-identical tables may be suppressed to preserve role coverage
 - prompt assembly must consume the persisted S2-2 artifact rather than
   silently recomputing evidence from clean text
+- this prompt-assembly boundary is S2-3:
+  - it may assemble prompts from `evidence_blocks_v1.json` only
+  - it must not reread clean text or perform new evidence selection or ranking
+- S2-4 is the LLM call boundary:
+  - it is the only nondeterministic Stage2 substep
+  - it emits run-scoped raw LLM response payloads
+- S2-5 is semantic parsing of those raw responses into Stage2 semantic objects
+- S2-6 is contract validation:
+  - it is a legality and provenance gate, not selector logic
+- S2-7 is compatibility projection:
+  - it is the deterministic Stage3 handoff surface
+  - it is not evidence construction
 - `analysis/stage2_prompt_preview_v1.tsv` remains maintained observability, but
   it is derived from the same evidence artifact and is not the canonical source
 - the S2-2 artifact records:
@@ -438,6 +482,22 @@ S2-2 contract note:
   - `design_status`
 - downstream prompt assembly is normal only when the artifact is technically
   complete and the design-status evaluation is explicitly recorded
+- segmentation closure freeze rule:
+  once S2-2a segmentation closure is declared for the current cycle, candidate
+  segmentation is frozen by default and follow-on closure work should target
+  S2-2b selector/evidence prioritization unless a concrete segmentation
+  regression is proven
+- S2-2b strict stage-local debugging rule:
+  - after S2-2a freeze, S2-2b proceeds as a stage-local loop:
+    audit -> minimal selector-only fix -> rerun on the same frozen inputs
+  - Audit is performed against frozen S2-2 artifacts and a fixed human reference passage set (`docs/selector_calibration/`), independent of downstream validation.
+  - selector works only on existing `candidate_blocks_v1.json`; it must not
+    introduce new candidate discovery behavior
+  - the audit uses stage-local S2-2 artifacts only
+  - closure means stage-local selector freeze only
+- downstream validation note:
+  live Stage2 runs that traverse S2-3 through S2-7 are separate later tasks
+  and must not be used for S2-2b debugging or closure judgment
 
 Boundary status:
 
