@@ -1,0 +1,1674 @@
+{
+  "paper_key": "PA3SPZ28",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 70,
+    "prose_candidates": 60,
+    "table_candidates": 10,
+    "candidates_with_noise_flags": 59,
+    "candidates_with_quality_flags": 64,
+    "has_doe_signal": false,
+    "has_sequential_signal": false,
+    "has_optimization_signal": true
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "preparation, physicochemical characterization, in vitro and in vivo studies Raghuvir H",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading",
+        "optimization_candidate"
+      ],
+      "text_content": "preparation, physicochemical characterization, in vitro and in vivo studies Raghuvir H. Gaonkar1, Soumya Ganguly1, Saikat Dewanjee2, Samarendu Sinha3, Amit Gupta3, Shantanu Ganguly3, Dipankar Chattopadhyay4 & Mita Chatterjee Debnath1 Garcinol (GAR) is a naturally occurring polyisoprenylated phenolic compound. It has been recently investigated for its biological activities such as antioxidant, anti-inflammatory, anti ulcer, and antiproliferative effect on a wide range of human cancer cell lines. Though the outcomes are very promising, its extreme insolubility in water remains the main obstacle for its clinical application. Herein we report the formulation of GAR entrapped PLGA nanoparticles by nanoprecipitation method using vitamin E TPGS as an emulsifier. The nanoparticles were characterized for size, surface morphology, surface charge, encapsulation efficiency and in vitro drug release kinetics.",
+      "text_preview": "preparation, physicochemical characterization, in vitro and in vivo studies Raghuvir H. Gaonkar1, Soumya Ganguly1, Saikat Dewanjee2, Samarendu Sinha3, Amit Gupta3, Shantanu Ganguly3, Dipankar Chattopadhyay4 & Mita Chatte"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "downstream_assay_terms",
+        "optimization_candidate"
+      ],
+      "text_content": "The MTT assay depicted a high amount of cytotoxicity of GAR-NPs in B16F10, HepG2 and KB cells. A considerable amount of cell apoptosis was observed in B16f10 and KB cell lines. In vivo cellular uptake of fluorescent NPs on B16F10 cells was also investigated. Finally the GAR loaded NPs were radiolabeled with technetium-99m with >95% labeling efficiency and administered to B16F10 melanoma tumor bearing mice to investigate the in vivo deposition at the tumor site by biodistribution and scintigraphic imaging study. In vitro cellular uptake studies and biological evaluation confirm the efficacy of the formulation for cancer treatment. In recent years a great deal of attention has been given to identify novel pharmacophores from natural resources that can be used to suppress cancers as well as reduce the risk of cancer development1. Garcinol (GAR) is a poly- isoprenylated benzophenone derivative isolated from the fruit rind of Garcinia indica known as Kokum. Like tur- meric, this plant is also used as a garnish in cooking and has been extensively used to treat gastric disorders and skin irritation2. Studies by different groups have revealed the potential antioxidant, antiinflammatory and anti- cancer effects of GAR. The anti oxidative property is due to its polyphenolic structure3. In vivo studies in animal models have shown its efficacy in suppressing azoxymethane induced colon cancer4, 4-nitroquinoline-1-oxide induced tongue cancer5, and nicotine-induced human breast cancer6. In vitro studies in different cancer cell lines reveal the efficacy of the compound in modulating cell signaling pathways involved in apoptosis and cancer devel- opment7.",
+      "text_preview": "The MTT assay depicted a high amount of cytotoxicity of GAR-NPs in B16F10, HepG2 and KB cells. A considerable amount of cell apoptosis was observed in B16f10 and KB cell lines. In vivo cellular uptake of fluorescent NPs"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_optimization_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_optimization_to_downstream",
+        "downstream_assay_terms",
+        "optimization_candidate"
+      ],
+      "text_content": "Most importantly GAR loaded nanoparticles (GAR-NPs) were radiolabe- led with technetium-99m to ascertain the biodistribution and tumor accumulation (scintigraphic imaging) in B16F10 tumor bearing mice model. The results are discussed in the following sections. Results GAR encapsulated nanoparticles were developed to achieve maximum solubility and bioavailability of entrapped GAR. Blank and GAR-loaded PLGA NPs were prepared through a nanoprecipitation technique using vitamin E TPGS as an emulsifier.",
+      "text_preview": "Most importantly GAR loaded nanoparticles (GAR-NPs) were radiolabe- led with technetium-99m to ascertain the biodistribution and tumor accumulation (scintigraphic imaging) in B16F10 tumor bearing mice model. The results"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:20",
+      "paragraph_index": 1,
+      "segment_index": 20,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 1 summarizes average size (Fig.",
+      "text_preview": "Table 1 summarizes average size (Fig."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:21",
+      "paragraph_index": 1,
+      "segment_index": 21,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "1a), zeta potential (Fig. 1b), drug loading, and encapsulation efficiency of blank and GAR-NPs. Nanoprecipitation technique yielded GAR-NPs with most nar- row size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).",
+      "text_preview": "1a), zeta potential (Fig. 1b), drug loading, and encapsulation efficiency of blank and GAR-NPs. Nanoprecipitation technique yielded GAR-NPs with most nar- row size distribution (average diameter 88.05 ± 2.7 nm) as determ"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:3",
+      "paragraph_index": 1,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_result_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_result_to_downstream",
+        "downstream_assay_terms"
+      ],
+      "text_content": "The morphology size of the GAR-NPs were determined using field emission scanning electron micros- copy (FESEM), transmission electron microscopy (TEM) and atomic force microscopy (AFM). FESEM images (Fig. 1c) showed that particles were spherical with a smooth exterior. AFM studies (Fig. 1e and f) confirmed the smooth and spherical surface of the NPs along with the absence of aggregation or adhesion among NPs, three dimensional images revealed smooth spherical topography with homogeneous size distribution whereas TEM images (Fig. 1d) showed a discrete spherical outline and monodispersed size distribution of NPs. The average diameter of the NPs as obtained from FESEM (81.6 to 190 nm), TEM (87.84 to 119.13 nm) and AFM (75.46 to 125.24 nm) analyses were corroborated with the data obtained from DLS (around 88.05 nm). The free flowing powder of GAR-NPs obtained after lyophilisation was stored at 4 °C for 3 months for particle size measurement.",
+      "text_preview": "The morphology size of the GAR-NPs were determined using field emission scanning electron micros- copy (FESEM), transmission electron microscopy (TEM) and atomic force microscopy (AFM). FESEM images (Fig. 1c) showed that"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:40",
+      "paragraph_index": 1,
+      "segment_index": 40,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "optimization_candidate"
+      ],
+      "text_content": "The particle size was slightly increased (Table 1 around 100 nm) with a moderate change in PDI value, whereas zeta potential showed the least variation; this suggested the satisfactory stability of GAR-NPs during storage.",
+      "text_preview": "The particle size was slightly increased (Table 1 around 100 nm) with a moderate change in PDI value, whereas zeta potential showed the least variation; this suggested the satisfactory stability of GAR-NPs during storage"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:41",
+      "paragraph_index": 1,
+      "segment_index": 41,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "Determination of drug loading and encapsulation efficiency. The amount of GAR encapsulated in the nanoparticles was determined in triplicate by spectroscopic measurements. Drug loading amounts and encapsulation efficiencies of various GAR loaded nanoparticle formulations prepared by varying the amount of GAR and PLGA were measured. The highest drug loading content of GAR in GAR loaded PLGA-NPs was detected as 9.25 ± 2.8%.",
+      "text_preview": "Determination of drug loading and encapsulation efficiency. The amount of GAR encapsulated in the nanoparticles was determined in triplicate by spectroscopic measurements. Drug loading amounts and encapsulation efficienc"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:50",
+      "paragraph_index": 1,
+      "segment_index": 50,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "optimization_candidate"
+      ],
+      "text_content": "Encapsulation efficiency was more than 88 ± 3.3% (Table 1).",
+      "text_preview": "Encapsulation efficiency was more than 88 ± 3.3% (Table 1)."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:51",
+      "paragraph_index": 1,
+      "segment_index": 51,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "GAR was encapsulated into vitamin E TPGS emulsified PLGA-NPs with a relatively high drug loading capacity and encapsulation efficiency, which might be due to the strong interaction between GAR and polymer. Physicochemical characterization of GAR-NPs. FTIR spectroscopic analysis. FTIR studies provide information about the stability of the GAR in the formulation, as well as the interaction between GAR and the excipients in the formulation. In this study, FTIR spectra (Fig. 2a) were recorded for GAR, PLGA, TPGS, a phys- ical mixture of GAR, PLGA and TPGS, blank-NPs (without GAR) and GAR-NPs. As was reported earlier, the Parameters Nanoprecipitation method After storage at 4 °C for 3 months Drug:Polymer ratio 1:20 1:10 1:6.66 1:10 PLGA grade 50:50 50:50 50:50 50:50 Size (nm) 90.21 ± 2.2 88.05 ± 2.7 95.45 ± 2.4 100 ±",
+      "text_preview": "GAR was encapsulated into vitamin E TPGS emulsified PLGA-NPs with a relatively high drug loading capacity and encapsulation efficiency, which might be due to the strong interaction between GAR and polymer. Physicochemica"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "4.2 PDI 0",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.2 PDI 0.212 ± 0.07 0.170 ± 0.05 0.237 ± 0.09 0.295 ±",
+      "text_preview": "4.2 PDI 0.212 ± 0.07 0.170 ± 0.05 0.237 ± 0.09 0.295 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:2",
+      "paragraph_index": 1,
+      "segment_index": 2,
+      "section_label": "0.08 Zeta potential (mV) −30 ± 2",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.08 Zeta potential (mV) −30 ± 2.2 −28.1 ± 2.1 −33 ± 2.4 −27.2 ±",
+      "text_preview": "0.08 Zeta potential (mV) −30 ± 2.2 −28.1 ± 2.1 −33 ± 2.4 −27.2 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:3",
+      "paragraph_index": 1,
+      "segment_index": 3,
+      "section_label": "2.2 Drug loading (DL, %) 4",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "2.2 Drug loading (DL, %) 4.12 ± 1.9 9.25 ± 2.8 5.29 ±",
+      "text_preview": "2.2 Drug loading (DL, %) 4.12 ± 1.9 9.25 ± 2.8 5.29 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:4",
+      "paragraph_index": 1,
+      "segment_index": 4,
+      "section_label": "2.1 Encapsulation efficiency (EE, %) 53",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "2.1 Encapsulation efficiency (EE, %) 53.43 ± 2.8 88.32 ± 3.3 60.61 ±",
+      "text_preview": "2.1 Encapsulation efficiency (EE, %) 53.43 ± 2.8 88.32 ± 3.3 60.61 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "3.5 Table1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.5 Table1. Characterizaton of GAR-NPs.",
+      "text_preview": "3.5 Table1. Characterizaton of GAR-NPs."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "In the FTIR spectrum of TPGS, the peak observed at 3424.26 cm−1 is attributed to the presence of terminal hydroxyl function while those at 2871.26 cm−1 and 1742.75 cm−1 indicate the –CH and carbonyl function stretching. Most of the charac- teristic peaks of GAR, PLGA and TPGS appeared in the FTIR spectrum of the physical mixture with only minor shifts.",
+      "text_preview": "In the FTIR spectrum of TPGS, the peak observed at 3424.26 cm−1 is attributed to the presence of terminal hydroxyl function while those at 2871.26 cm−1 and 1742.75 cm−1 indicate the –CH and carbonyl function stretching."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:2",
+      "paragraph_index": 2,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The physical interactions like hydrogen bond formation or dipole-dipole interaction existing between the functional groups of GAR and excipients resulted in the minor shifting of the peaks. The presence of the char- acteristic peaks of the GAR and exicipients indicates the presence of GAR in native form without any chemical interaction with the polymer and emulsifier. DSC and XRD analysis. The DSC thermograms of GAR, PLGA, TPGS, their physical mixture, and GAR-NPs are shown in Fig.",
+      "text_preview": "The physical interactions like hydrogen bond formation or dipole-dipole interaction existing between the functional groups of GAR and excipients resulted in the minor shifting of the peaks. The presence of the char- acte"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:3",
+      "paragraph_index": 2,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "2b. Free GAR and PLGA showed sharp endothermic peaks at 132 °C and 46 °C respectively. In the physical mixture the thermal behaviour of GAR and PLGA remained unchanged as evident from the DSC thermogram.",
+      "text_preview": "2b. Free GAR and PLGA showed sharp endothermic peaks at 132 °C and 46 °C respectively. In the physical mixture the thermal behaviour of GAR and PLGA remained unchanged as evident from the DSC thermogram."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:4",
+      "paragraph_index": 2,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "This indicates that there was no reaction between the drug and the polymer. The absence of charac- teristic melting peak of GAR in the DSC thermogram of GAR-NPs may be due to the conversion of GAR from the crystalline state to the amorphous state or disordered crystalline state during nanoformulation which inhibited crystal growth thereby leading to enhanced stability of the formulation. The findings from X-ray powder diffractometry study agree with the results obtained from DSC analysis.",
+      "text_preview": "This indicates that there was no reaction between the drug and the polymer. The absence of charac- teristic melting peak of GAR in the DSC thermogram of GAR-NPs may be due to the conversion of GAR from the crystalline st"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:5",
+      "paragraph_index": 2,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Figure 2c depicts the XRD pattern of free GAR showing distinct peaks due to its crystalline nature. The absence of peaks in the XRD pattern for PLGA confirmed its amorphous nature. The physical mixture of GAR, PLGA and TPGS exhibited a number of distinct peaks; however the positions of the peaks were somewhat different from those in GAR suggesting that minor interactions occurred between GAR molecules and the polymer matrix and emulsifier.",
+      "text_preview": "Figure 2c depicts the XRD pattern of free GAR showing distinct peaks due to its crystalline nature. The absence of peaks in the XRD pattern for PLGA confirmed its amorphous nature. The physical mixture of GAR, PLGA and T"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:2#segment:6",
+      "paragraph_index": 2,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "downstream_assay_terms"
+      ],
+      "text_content": "The disappearance of distinct peaks in GAR-NPs suggested the conversion of crystalline state to amor- phous state during nanoparticulate formulation. In vitro drug release study of GAR-NPs. Figure 2d depicts the drug release profile of GAR encapsulated NPs. Initial rapid release (around 39 ± 2.5%) was observed within the first 4 h. The release was moderate up to 12 h; this was followed by a slower sustained release. Around 86 ± 3.9% of GAR was released from nanopar- ticulated formulation over the period of 6 days. The initial burst release may be due to GAR loosely associated with the surface or embedded in the surface layer of the polymer, whereas sustained release occurred due to the Figure 1. Particle size distribution, zeta potential measurement profile and microscopic imaging of GAR-NPs. (a) Particle size distribution pattern, (b) zeta potential distribution profile, (c) FESEM image, (d) TEM image, (e) AFM image and (f) three dimensional view of AFM image.",
+      "text_preview": "The disappearance of distinct peaks in GAR-NPs suggested the conversion of crystalline state to amor- phous state during nanoparticulate formulation. In vitro drug release study of GAR-NPs. Figure 2d depicts the drug rel"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:4#segment:0",
+      "paragraph_index": 4,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:heading",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Pharmacokinetic study. In vivo pharmacokinetic analysis of GAR encapsulated nanoparticles were per- formed in adult Sprague-Dawley (SD) rats and compared with that of the suspension of free GAR following oral administration (Fig. 5d).",
+      "text_preview": "Pharmacokinetic study. In vivo pharmacokinetic analysis of GAR encapsulated nanoparticles were per- formed in adult Sprague-Dawley (SD) rats and compared with that of the suspension of free GAR following oral administrat"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:4#segment:1",
+      "paragraph_index": 4,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Different pharmacokinetic parameters including Cmax, Tmax and AUC0−∞ are depicted in Supplementary Table S4. GAR-NPs exhibited sustained release of GAR over 36 h whereas aqueous suspension of free GAR exhibited rapid clearance from plasma.",
+      "text_preview": "Different pharmacokinetic parameters including Cmax, Tmax and AUC0−∞ are depicted in Supplementary Table S4. GAR-NPs exhibited sustained release of GAR over 36 h whereas aqueous suspension of free GAR exhibited rapid cle"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:4#segment:2",
+      "paragraph_index": 4,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The presence of GAR in plasma was not detectable after 8 h fol- lowing oral administration of aqueous suspension of free GAR. Oral administration of suspension containing free GAR exhibits sharp Cmax within half an hour, whereas slow increase and sustained plasma concentration of GAR for a longer duration accompanied with significantly, delayed Cmax occurring at 2 h was observed following oral administration of GAR-NPs suggesting an obvious sustained release of GAR from the nanoparticulated formu- lation. There was a marked difference in the AUC0−∞ between two aforementioned formulations. The AUC0−∞ for GAR was higher in the animals treated with GAR-NPs with a relative bioavailability of 28 as compared to an aqueous suspension of free GAR indicating improved bioavailability of GAR as a nanoparticulate suspension. 99mTc labeling, in vitro cell binding and biological evaluation. In the field of nanomedicine, 99mTc-radiolabeling plays an important role. 99mTc can be attached to the surface of the nanoparticles and helps in understanding the in vivo behavior of the nanoparticulated formulation. The direct labeling approach using stannous chloride is the ideal method. Hence GAR loaded NPs were radiolabeled at neutral pH with aqueous Figure 3. Fluorescence microscope images showing (a) time dependent uptake of FITC labeled NPs, cell nuclei are stained in blue while green dots represent fluorescently labeled NPs, (b) flow cytometric distribution of FITC labeled NPs at different time points. (c) In vitro cell binding and internalization of 99mTc labeled GAR-NPs in B16F10 melanoma cells at different time intervals.",
+      "text_preview": "The presence of GAR in plasma was not detectable after 8 h fol- lowing oral administration of aqueous suspension of free GAR. Oral administration of suspension containing free GAR exhibits sharp Cmax within half an hour,"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:5#segment:1",
+      "paragraph_index": 5,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "optimization_candidate"
+      ],
+      "text_content": "99mTc labeled GAR-NPs remained sufficiently stable (≥95%) for 6 h during incubation at 37 °C with normal saline and freshly collected rat serum. A maximum of 10% of degradation occurred after 24 h of incubation showing substantially high in vitro stability of the nanoformula- tion. The level of free pertechnetate generated was about 6% following 8 h incubation with excess histidine, the value increasing to about 12% at 24 h indicating sufficient stability of the radiolabeled nanoformulation towards transchelation. From these stability studies (Fig. 5b) it could be concluded that the radiolabeled nanoformulation Figure 4. (a) Dose dependent cytotoxicity study results of GAR, blank-NPS and GAR-NPs against different cancer cell lines, (b) IC50 values of GAR and GAR-NPs obtained during MTT assay at 24 h and 48 h. Flow cytometer analysis of cell apoptosis using annexinV-FITC and PI staining in (c) B16F10 melanoma cells and (e) KB cells. DAPI staining showing bright fluorescence due to condensed chromatin (apoptotic condition) in (d) B16F10 melanoma and (e) KB cells.",
+      "text_preview": "99mTc labeled GAR-NPs remained sufficiently stable (≥95%) for 6 h during incubation at 37 °C with normal saline and freshly collected rat serum. A maximum of 10% of degradation occurred after 24 h of incubation showing s"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_optimization_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_optimization_to_downstream",
+        "downstream_assay_terms"
+      ],
+      "text_content": "This moderately high binding and transport into the cell confirmed the findings of cellular uptake and internalization observed with unlabeled GAR-NPs during confocal microscopy studies. Figure 5c shows the blood clearance kinetics of 99mTc-labeled GAR-NPs in rat. The radiolabeled nanofor- mulation cleared from blood circulation in somewhat biphasic manner. The first phase exhibited comparatively rapid clearance due to biodistribution and accumulation in RES organs, whereas slow and steady clearance was observed in the second phase due to the small size of the formulation which was perhaps not readily taken up by the RES. The evaluation of labeled and unlabeled GAR-NPs with B16F10 melanoma cells depicted the considerable amount of cellular uptake, internalization, cytotoxicity, and apoptosis. These results encouraged us to perform biodistribution studies in B16F10 melanoma tumor bearing mice to ascertain tumor localization of the nanofor- mulation.",
+      "text_preview": "This moderately high binding and transport into the cell confirmed the findings of cellular uptake and internalization observed with unlabeled GAR-NPs during confocal microscopy studies. Figure 5c shows the blood clearan"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:6#segment:20",
+      "paragraph_index": 6,
+      "segment_index": 20,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Table 2 summarizes the results of biodistribution studies at 2, 4, 6 and 8 h post injection of 99mTc-labeled GAR-NPs.",
+      "text_preview": "Table 2 summarizes the results of biodistribution studies at 2, 4, 6 and 8 h post injection of 99mTc-labeled GAR-NPs."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:6#segment:21",
+      "paragraph_index": 6,
+      "segment_index": 21,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "downstream_assay_terms",
+        "optimization_candidate"
+      ],
+      "text_content": "The results demonstrated rapid and efficient clearance from blood, around 0.48 ± 0.09% ID/g remain- ing at 8 h post injection. The accumulation of radioactivity in the liver was possibly due to the uptake of nanofor- mulation by RES organs. Lung accumulation was moderate. The radiolabeled nanoformulation excreted mainly through hepatobiliary route, whereas some urinary clearance was also observed. Tumor accumulation of the nanoformulation gradually increased with time. Tumor-to-muscle ratio was found to be significantly high between the studied time intervals (3.94 at 2 h becoming 10.54 at 8 h). The tumor-to-blood ratio was not very high initially (0.31 at 2 h) but improved with time (1.58 at 8 h). The uptake in other organs was also low. The radioactivity accumulation in the stomach was not very significant advocating sufficient in vivo stability of the labeled formulation. The rapid blood clearance and substantially high tumor-muscle ratio helped to delineate the tumor from the rest of the normal muscle during whole body tumor scintigraphy study (Fig. 6b). Intratumoral distribution of fluorescent labeled NPs (Fig. 6a) was also detected by fluorescent microscopy study indicating selective uptake of the nanoformulation in the tumor region. Figure 5. (a) Hemolytic activity of GAR-NPs; (b) stability study parameters of 99mTc labelled GAR-NPs in saline, serum and histidine; (c) blood clearance profile of 99mTc labeled GAR-NPs in rat following intravenous injection and (d) Comparative in vivo plasma concentration Vs. time profiles of GAR and GAR-NPs.",
+      "text_preview": "The results demonstrated rapid and efficient clearance from blood, around 0.48 ± 0.09% ID/g remain- ing at 8 h post injection. The accumulation of radioactivity in the liver was possibly due to the uptake of nanofor- mul"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:1",
+      "paragraph_index": 7,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "The physical Organ/Tissue 99mTc Radiolabeled GAR-NPs 2 h 4 h 6 h 8 h Heart 0.221 ± 0.066 0.199 ± 0.032 0.159 ± 0.066 0.145 ±",
+      "text_preview": "The physical Organ/Tissue 99mTc Radiolabeled GAR-NPs 2 h 4 h 6 h 8 h Heart 0.221 ± 0.066 0.199 ± 0.032 0.159 ± 0.066 0.145 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:1",
+      "paragraph_index": 7,
+      "segment_index": 1,
+      "section_label": "0.019 Blood* 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.019 Blood* 0.710 ± 0.091 0.689 ± 0.078 0.520 ± 0.012 0.480 ±",
+      "text_preview": "0.019 Blood* 0.710 ± 0.091 0.689 ± 0.078 0.520 ± 0.012 0.480 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:2",
+      "paragraph_index": 7,
+      "segment_index": 2,
+      "section_label": "0.091 Liver 31",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.091 Liver 31.310 ± 1.017 47.526 ± 0.868 48.675 ± 1.543 48.152 ±",
+      "text_preview": "0.091 Liver 31.310 ± 1.017 47.526 ± 0.868 48.675 ± 1.543 48.152 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:3",
+      "paragraph_index": 7,
+      "segment_index": 3,
+      "section_label": "1.261 Lung 1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.261 Lung 1.563 ± 0.182 2.561 ± 0.338 3.124 ± 0.156 4.111 ±",
+      "text_preview": "1.261 Lung 1.563 ± 0.182 2.561 ± 0.338 3.124 ± 0.156 4.111 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:4",
+      "paragraph_index": 7,
+      "segment_index": 4,
+      "section_label": "0.165 Spleen 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.165 Spleen 0.210 ± 0.039 0.351 ± 0.039 0.421 ± 0.123 0.512 ±",
+      "text_preview": "0.165 Spleen 0.210 ± 0.039 0.351 ± 0.039 0.421 ± 0.123 0.512 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:5",
+      "paragraph_index": 7,
+      "segment_index": 5,
+      "section_label": "0.129 Kidney 2",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.129 Kidney 2.360 ± 0.121 3.580 ± 0.589 1.960 ± 0.173 1.560 ±",
+      "text_preview": "0.129 Kidney 2.360 ± 0.121 3.580 ± 0.589 1.960 ± 0.173 1.560 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:6",
+      "paragraph_index": 7,
+      "segment_index": 6,
+      "section_label": "0.192 Intestine 3",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.192 Intestine 3.272 ± 0.673 7.693 ± 0.635 9.653 ± 0.820 10.918 ±",
+      "text_preview": "0.192 Intestine 3.272 ± 0.673 7.693 ± 0.635 9.653 ± 0.820 10.918 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:7",
+      "paragraph_index": 7,
+      "segment_index": 7,
+      "section_label": "1.962 Stomach 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.962 Stomach 0.185 ± 0.030 0.190 ± 0.030 0.185 ± 0.036 0.199 ±",
+      "text_preview": "1.962 Stomach 0.185 ± 0.030 0.190 ± 0.030 0.185 ± 0.036 0.199 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:8",
+      "paragraph_index": 7,
+      "segment_index": 8,
+      "section_label": "0.046 Urine 19",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.046 Urine 19.193 ± 0.193 26.233 ± 1.047 22.912 ± 2.103 18.123 ±",
+      "text_preview": "0.046 Urine 19.193 ± 0.193 26.233 ± 1.047 22.912 ± 2.103 18.123 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:9",
+      "paragraph_index": 7,
+      "segment_index": 9,
+      "section_label": "1.126 Muscle* 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.126 Muscle* 0.056 ± 0.006 0.077 ± 0.002 0.076 ± 0.004 0.072 ±",
+      "text_preview": "1.126 Muscle* 0.056 ± 0.006 0.077 ± 0.002 0.076 ± 0.004 0.072 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__39",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:10",
+      "paragraph_index": 7,
+      "segment_index": 10,
+      "section_label": "0.003 Tumor* 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.003 Tumor* 0.221 ± 0.023 0.645 ± 0.006 0.649 ± 0.051 0.759 ±",
+      "text_preview": "0.003 Tumor* 0.221 ± 0.023 0.645 ± 0.006 0.649 ± 0.051 0.759 ±"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__40",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:11",
+      "paragraph_index": 7,
+      "segment_index": 11,
+      "section_label": "0.063 Tumor/muscle 3",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.063 Tumor/muscle 3.946 8.376 8.539",
+      "text_preview": "0.063 Tumor/muscle 3.946 8.376 8.539"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__41",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:12",
+      "paragraph_index": 7,
+      "segment_index": 12,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__42",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:13",
+      "paragraph_index": 7,
+      "segment_index": 13,
+      "section_label": "0.541 Tumor/blood 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.541 Tumor/blood 0.311 0.936 1.248",
+      "text_preview": "0.541 Tumor/blood 0.311 0.936 1.248"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__43",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "1.581 Table 2",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "1.581 Table 2.",
+      "text_preview": "1.581 Table 2."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__44",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:0",
+      "paragraph_index": 8,
+      "segment_index": 0,
+      "section_label": "results revealed the inhibition of cancer cells proliferation through an apoptotic pathway",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading",
+        "downstream_assay_terms",
+        "optimization_candidate"
+      ],
+      "text_content": "results revealed the inhibition of cancer cells proliferation through an apoptotic pathway. The pharmacokinetic studies revealed sustained release of GAR over a period of 36 h following oral administration of nanoparticulated suspension whereas plasma levels of GAR were not detectable beyond 8 h after administration of suspension containing free GAR. The significant increase in AUC value of the nanoparticulated formulation in comparison to free GAR suspension also indicates improved bioavailability of the nanosuspension. Finally the tumor uptake of GAR-NPs in B16F10 melanoma tumor bearing mice was evaluated follow- ing technetium-99m radiolabeling of nanoformulation. Biodistribution and nuclear scintigraphic studies of 99mTc-labeled GAR-NPs revealed moderate accumulation in tumor region. Accumulation in the tumor appeared at 2 h post injection time period and gradually increased up to 8 h. Tumor to muscle and tumor to blood ratios gradually increased with time throughout the period of study. Results obtained were further corroborated by scintigraphic imaging studies under a gamma camera. The tumor region was clearly visualized at 4 and 8 h post injection time period. The images also showed high-level of background activity in kidney, liver, GI-tract and uri- nary bladder (Fig. 6b). In vivo tumor uptake of FITC-labeled NPs were also verified by fluorescence microscopy study (Fig. 6a). This finding correlates well with the results obtained from the scintigraphic imaging study. 99mTc labeled GAR-NPs also exhibited substantially high cell binding (B16F10 melanoma cells) and internal- ization (Fig. 3c and d). Remarkably good percentage of cell associated activity was internalized throughout the period of study. This result was also confirmed by biodistribution studies in mice bearing B16F10 melanoma tumor. The results obtained from various in vitro and biological studies focused potential antitumor effect of GAR-NPs and support the use of nanosystem for GAR delivery. However this technique can be further modified to develop targeted nanoparticles which will enhance bioavailability and therapeutic efficacy through passive diffusion and active targeting to the tumor.",
+      "text_preview": "results revealed the inhibition of cancer cells proliferation through an apoptotic pathway. The pharmacokinetic studies revealed sustained release of GAR over a period of 36 h following oral administration of nanoparticu"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__45",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:2",
+      "paragraph_index": 8,
+      "segment_index": 2,
+      "section_label": "Materials and Methods",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "Materials and Methods",
+      "text_preview": "Materials and Methods"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__46",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:0",
+      "paragraph_index": 8,
+      "segment_index": 0,
+      "section_label": "Materials",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading"
+      ],
+      "text_content": "Materials. PLGA 50:50 (PURASORB PDLG 5010) was obtained as a gift from Purac Biomaterials. FITC and 4′,6-diamidino-2-phenylindole (DAPI) were purchased from Sigma-Aldrich.",
+      "text_preview": "Materials. PLGA 50:50 (PURASORB PDLG 5010) was obtained as a gift from Purac Biomaterials. FITC and 4′,6-diamidino-2-phenylindole (DAPI) were purchased from Sigma-Aldrich."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__47",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:1",
+      "paragraph_index": 8,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Vitamin E TPGS NF Grade was gifted by Antares Health Products. HPLC grade acetone was purchased from Spectrochem (Mumbai, India). All other solvents and chemicals were of analytical grade and procured from Merck, India. 99MoO4 − was purchased from Bhabha Atomic Research Centre (Mumbai, India) and 99mTcO4 − was extracted from a 5 N NaOH solution of 99MoO4 − by butan-2-one. ECIL gamma counter (Model LV 4755) obtained from ECIL was used for measuring tissue and organ radioactivities.",
+      "text_preview": "Vitamin E TPGS NF Grade was gifted by Antares Health Products. HPLC grade acetone was purchased from Spectrochem (Mumbai, India). All other solvents and chemicals were of analytical grade and procured from Merck, India."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__48",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:2",
+      "paragraph_index": 8,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Scintigraphic imaging studies of animals were done in GE Infina Gamma camera equipped with Xeleris work station. Extraction and isolation of GAR. The dried fruits (1 kg) of Garcinia indica were extracted with hexane17 at room temperature for 48 h. The extract was filtered and then concentrated under reduced pressure at 45 °C. The above step was repeated four times to yield the crude hexane extract (200 g), which was subjected to silica gel column chromatography (12 cm × 180 cm). Elution with petroleum ether-ethyl acetate (100:0, 95:5, 90:10, 85:15, 80:20, 75:25, 70:30, 60:40) yielded eight major fractions. Based on TLC, fraction 5 (80:20) was subjected to repetitive column chromatography over a bed of silica gel (100–200 mesh size, Merck India). Elution was done with petroleum ether-ethyl acetate (80:20) to yield pure GAR (5.5 g) as indicated by a single peak in HPLC (Supplementary Figure 1).",
+      "text_preview": "Scintigraphic imaging studies of animals were done in GE Infina Gamma camera equipped with Xeleris work station. Extraction and isolation of GAR. The dried fruits (1 kg) of Garcinia indica were extracted with hexane17 at"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__49",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:3",
+      "paragraph_index": 8,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The material was further characterized by ESI-MS, which showed a peak at m/z 625.56 attributable to M+Na+; (Supplementary Figure 2) the 1H data were also in agreement with those reported in the literature19 (Supplementary Figure 3).",
+      "text_preview": "The material was further characterized by ESI-MS, which showed a peak at m/z 625.56 attributable to M+Na+; (Supplementary Figure 2) the 1H data were also in agreement with those reported in the literature19 (Supplementar"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__50",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:0",
+      "paragraph_index": 8,
+      "segment_index": 0,
+      "section_label": "Preparation of GAR-loaded nanoparticles (GAR-NPs)",
+      "section_kind": "variant_preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:heading",
+        "variant_supporting_candidate"
+      ],
+      "text_content": "Preparation of GAR-loaded nanoparticles (GAR-NPs). Nanoparticles were prepared by the nanopre- cipitation method20. Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature. The solvent was allowed to evaporate overnight. The suspension obtained was filtered (Whatman filter paper 1) to remove any precipitate and centrifuged at 18,000 rpm at 4 °C (Sorvall RC 5 Plus). The supernatant containing the free drug was discarded; the pellet obtained was washed 2–3 times with distilled water and lyophilised (VirTis, USA) for 48 h to get a free flowing powder. Drug free nanoparticles were prepared according to the same procedure. Fluorescent nanoparticles were pre- pared by replacing GAR with FITC (5 mg).",
+      "text_preview": "Preparation of GAR-loaded nanoparticles (GAR-NPs). Nanoparticles were prepared by the nanopre- cipitation method20. Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous v"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__51",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:8#segment:1",
+      "paragraph_index": 8,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_preparation_to_optimization",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_preparation_to_optimization",
+        "optimization_candidate"
+      ],
+      "text_content": "Characterisation of nanoparticles Nanoparticle yield, drug loading (DL) and encapsulation efficiency (EE). DL and EE of the pre- pared nanoparticles were quantified by measuring the absorbance at 356 nm using a SHIMADZU UV-1700 UV-Vis spectrophotometer. The freeze-dried nanoparticle samples (3 mg) were dissolved in ethyl acetate (10 ml)",
+      "text_preview": "Characterisation of nanoparticles Nanoparticle yield, drug loading (DL) and encapsulation efficiency (EE). DL and EE of the pre- pared nanoparticles were quantified by measuring the absorbance at 356 nm using a SHIMADZU"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__52",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:9#segment:1",
+      "paragraph_index": 9,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_experimental_design_to_optimization",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_experimental_design_to_optimization",
+        "optimization_candidate"
+      ],
+      "text_content": "Nanoparticle yield, drug loading and encapsulation efficiency were calculated from following three equations. = × Nanoparticle yield(%) Weight of nanoparticles Weight of polymer and drug fed initially = × Drug loading(%) Weight of the drug in nanoparticles Weight of nanoparticles = × Encapsulation efficiency(%) Weight of the drug in nanoparticles Weight of drug fed initially Particle size distribution and zeta potential (ζ) measurements. Particle size distribution (mean diameter and polydispersity index) was determined using a Malvern Zetasizer Nano ZS (Malvern Instruments, Worcestershire, United Kingdom). Briefly, 1 mg/ml of GAR-NPs suspension was prepared in MilliQ water by son- ication for 30 s. The above suspension (10 µl) was diluted to 1 ml with MilliQ water and analysis was performed. For each sample, the mean diameter of three determinations was calculated. Properly diluted samples from the above suspension were also used for the measurement of zeta potential at 25 °C using the same instrument. Values reported are the mean ± standard deviation of at least three different batches of nanoparticles.",
+      "text_preview": "Nanoparticle yield, drug loading and encapsulation efficiency were calculated from following three equations. = × Nanoparticle yield(%) Weight of nanoparticles Weight of polymer and drug fed initially = × Drug loading(%)"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__53",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:9#segment:2",
+      "paragraph_index": 9,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_optimization_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_optimization_to_downstream",
+        "downstream_assay_terms"
+      ],
+      "text_content": "Field emission scanning electron microscopy (FE-SEM). The surface morphology of GAR-NPs was observed using field emission scanning electron microscope (Jeol JSM-7600 F, Tokyo, Japan). The lyophilised samples were sputter-coated (QUORUM Q 150T ES) with platinum (4–5 nm) at a current intensity of 40 mA for 40 s. The images were captured keeping the accelerating voltage between 1–5 kV. Atomic force microscopy (AFM). The shape of GAR-NPs was further characterized by AFM (5500 Agilent Technologies, Santa Clara, CA, USA). A drop (10 µl) of GAR-NPs suspension (1 mg/ml) was placed on a mica sheet. The drop was allowed to air dry for 5–10 min. The sample was further mounted on the microscope scanner. The shape was observed and imaged in ACAFM mode with frequency 166.6 kHz and scan speed 0.502 µm/s. Transmission electron microscopy (TEM). The internal structure of GAR-NPs was determined by TEM (FEI, Tecnai G2 SPIRIT Bio Twin, Czech Republic). A drop (10 µl) of GAR-NPs suspension (1 mg/ml) was placed carefully on a 300 mesh carbon coated copper TEM grid. The excess solution on the grid was removed using a fine piece of filter paper and the samples were air-dried for 10 h. The dried sample was then examined at 120 kV under a microscope. Fourier transform infrared (FTIR) spectroscopy. In the FTIR spectroscopic study, GAR, PLGA, TPGS, the physical mixture of GAR with the excipients, and the nanoparticulated formulation with or without drug were scanned over a wavenumber range of 4000–400 cm−1 in an inert atmosphere in an FTIR spectrophotometer (Bruker, FTIR Tensor- 27) to understand the possible chemical interactions occurring between the drug and the polymer matrix. Differential scanning calorimetric (DSC) study. The physicochemical compatibility between GAR and the polymers was evaluated using a differential scanning calorimeter (Pyris Diamond TG/DTA, Perkin Elmer, Singapore). Accurately weighed samples (10 mg) of GAR, PLGA, TPGS, phy-mix, blank-NPs and GAR-NPs were sealed separately in a standard aluminium pan heated over a temperature range from 0 to 400 °C at a constantly increasing rate of 12 °C/min in an atmosphere of nitrogen gas at a flow rate of 150 ml/min. X-ray diffraction study. X-ray powder diffraction patterns of pure GAR, polymer and GAR-NPs were measured in an X-ray powder diffractometer (XRD-2000, Rigaku, Tokyo, Japan). The measurements were per- formed in the 2–50° 2θ range using CuKα radiation (45 kV, 40 mA) as the X-ray source and the rate of scanning was 1° min−1. In vitro release kinetics. To determine the in vitro release of GAR at various time intervals, accurately weighed samples of GAR-NPs (50 mg) were suspended in 5 ml of phosphate buffered saline (pH 7.4) and stirred on a magnetic stirrer (100 rpm) at 37 °C. At preselected time intervals, 1 ml of the release media was taken out and centrifuged (Spinwin MC-02, Tarson, INDIA); the supernatant was collected for analysis. To the pellet containing nanoparticles with unreleased GAR, an equal volume of fresh release media was added. The mixture was trans- ferred to the original lot and the process continued. The collected supernatants containing released GAR were then analysed by UV-vis spectroscopy to determine the percentage of released GAR from the nanoparticles. The process was repeated thrice for each time point and the mean value was calculated. The drug release data were plotted as cumulative percentage drug release against time. Long term stability study. For assessing the long term stability of GAR-NPs prepared by nanoprecipita- tion method, these were stored at RT, 4 ± 2 °C and −20 °C for three months as per ICH guidelines. After these",
+      "text_preview": "Field emission scanning electron microscopy (FE-SEM). The surface morphology of GAR-NPs was observed using field emission scanning electron microscope (Jeol JSM-7600 F, Tokyo, Japan). The lyophilised samples were sputter"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__54",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:10#segment:1",
+      "paragraph_index": 10,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_result_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_result_to_downstream",
+        "downstream_assay_terms",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "The cellular uptake of NPs was evaluated using flow cytometry and confocal laser scanning microscopy as per reported methods21, 22. For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish. After overnight incubation, the culture medium was replaced with fresh medium, FITC loaded NPs (50 µg/ml) were added, and incubated for 2 h, 4 h or 8 h. After incubation for specified time periods, the cells were washed thrice with cold PBS to remove unbound NPs if present, trypsinised, and centrifuged at 1500 rpm for 2 min at 4 °C. Finally cells were resuspended in 500 µl of PBS and analysed using a flow cytometer (FACS Canto II™ cell sorter, BD Biosciences) using FACS Diva software (BD Biosciences). The increase of fluorescence in the cells treated with NPs relative to that in the untreated control cells was expressed as mean fluorescence intensity relative to control. The cellular internalization of FITC loaded nanoparticles was measured by confocal laser scanning micros- copy. B16F10 cells (3.5 × 105) were seeded (DMEM medium) on a cover slip placed inside a 35 mm dish and incubated for 24 h at 37 °C in humidified air containing 5% CO2. Following 80% confluency in each dish, the medium was removed and replaced with FITC-loaded NPs (200 µg/ml) and incubated for 2 h, 4 h or 8 h. After incubation the medium was removed and 1 ml of 70% chilled ethanol was added to each of the dishes which were kept at −20 °C for 15 min to fix the cells. The ethanolic solution was removed, washed three times with PBS, and the nuclei stained with DAPI solution for 5 min. The cells were viewed and imaged under a confocal laser scan- ning microscope (Leica DFC420C, Germany). The images were processed using Leica application suite software. In vitro cytotoxicity of GAR-NPs to different cancer cell lines. The cytotoxic effects of free GAR and GAR-NPs to B16F10, Hela, MDA-MB-231, HCT-116 and HepG2 cell lines were analysed by the MTT assay23. Briefly, B16F10, Hela, MDA-MB-231 and HCT-116 cell lines were maintained in DMEM (high glucose), whereas HepG2 was maintained in MEM medium. All cells were plated at a density of 1 × 104 cells per well in 96-well plates and cultivated at 37 °C in humidified air containing 5% CO2 (HealForce HF-90, JAPAN). After 24 h, the respective media were removed and replaced with 200 µl of fresh media containing different concentrations of free GAR (5–100 µM for 24 h and 1–55 µM for 48 h) dissolved in minimum amount of DMSO and GAR-NPs (1–55 µM of GAR for 24 h and 1–40 µM of GAR for 48 h). After specified incubation period, media containing free GAR and GAR-NPs were removed, 200 µl of MTT solution (1 mg/ml) added to each well, and incubation carried out for another 4 h at 37 °C in darkness. After withdrawing the culture medium, 150 µl of DMSO was added to each well to dissolve the intracellular formazan crystals and absorbance was measured at 550 nm using a microplate reader (GENios, USA). Cell viability was determined as per the equation given below, where Abstest cells represents the amount of formazan determined for cells treated either with free GAR or GAR-NPs and Abscontrol cells stands for the amount of intracellular formazan present in non-treated cells. = × Cell viability(%) (Abs /Abs ) test cells control cells Cell Apoptosis. B16F10 melanoma cells (1 × 106) were cultured in 60 mm tissue culture dishes to reach 80% confluency. The cells were treated separately with different concentrations (10, 12 and 15 µM) of free GAR and GAR-NPs (containing an equivalent amount of GAR as mentioned) and allowed to incubate for 24 h at 37 °C, 5% CO2. Then the cells were washed with PBS and trypsinised. The detached cells were collected by centrifugation at 1000 × g, resuspended in 0.5 ml 1X cold binding buffer, treated with annexin V-FITC (1.25 µl), and incubated for 15 min at room temperature in the dark. The cells were then centrifuged (1000 × g) at room temperature for 5 min. The supernatant was removed and the cell pellet was resuspended in 0.5 ml cold 1X binding buffer. A solution (10 µl) of propidium iodide was added to the cell suspensions. Apoptotic/necrotic and living cells were detected by a flow cytometer (BD FACS) and data were analysed using FACSDiva Version 6.2 software. DAPI staining. This study was done to understand the apoptotic effect of blank NPs, free GAR and GAR-NPs on cell morphology24. B16F10 and KB cells were grown separately on cover slips placed in 35 mm dish for 24 h at 37 °C in humidified air containing 5% CO2. The cells were treated with blank NPs (100 µM), free GAR (15 µM) and GAR-NPs (containing 15 µM GAR) for another 24 h under the same condition as mentioned above. Then they were washed twice with PBS and fixed in 70% ethanol at −20 °C for 15 min. After washing thrice with PBS, cells were treated with DAPI solution (4 µg/ml) for 5 min at room temperature and imaged under confocal laser scanning microscope (Leica, DFC 420C, Germany). The images were processed using Leica application suite software. Hemolysis study. Freshly collected blood samples from male Sprague-Dawley rats were taken in heparinised tubes and centrifuged (5 min at 1000 g) at 4 °C. The supernatant was discarded and erythrocytes were washed three times with PBS (pH 7.4). The suspension (2%) thus obtained was used for hemolysis study. In order to examine the hemolytic effect, 190 µl of the suspension was added to each well of a 96-well plate and treated with 10 µl of GAR-NPs (containing an increasing concentration of GAR, e.g. 0.5, 1, 2.5, 10, 15, 30, 50, 75, 100 µM). The negative control was prepared by adding 10 µl of PBS to 190 µl of erythrocyte suspension, whereas 10 µl of TritonX-100 (10%) was added to the erythrocyte suspension in the positive control. Following incubation at 37 °C for 1 h with gentle stirring, the unlysed erythrocytes were separated by centrifugation at 10,000 g for 5 min and the optical density (OD) of the supernatant was measured at 570 nm. The value was compared with the OD of the supernatant (positive control) where full lysis occurred and the % lysis was calculated. The experiments were performed in triplicate to obtain the average value.",
+      "text_preview": "The cellular uptake of NPs was evaluated using flow cytometry and confocal laser scanning microscopy as per reported methods21, 22. For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__55",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:11#segment:0",
+      "paragraph_index": 11,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "heading",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:heading",
+        "downstream_assay_terms",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "Pharmacokinetic study. In vivo pharmacokinetic studies of GAR-NPs and aqueous suspension contain- ing free GAR were done in male Sprague-Dawley (SD) rats (weight ~250 g). The animals were divided into two groups (n = 5). Animals in group-1 and group-2 were administered with aqueous suspension of free GAR and GAR-NPs respectively at a dose of 25 mg GAR/Kg body weight by oral gavage. The blood samples were collected from the retro-orbital plexus at predetermined time points (0.25, 0.5, 1, 2, 4, 8, 24 and 36 h post administration) in heparinized tubes, centrifuged (10,000 rpm for 10 mins at 4 °C) to separate plasma. To each plasma sample (0.1 ml) methanol (1 ml) was added and vortexed, the clear supernatant collected after centrifugation was filtered was filtered by passing through 0.22 µm syringe filter. Finally the samples were analysed by HPLC using X-bridge Tm C18 column (4.6 × 250 mm, 5 µm particle size) eluted with acetonitrile:water (80:20 v/v) at a flow rate of 1.0 ml/ min. Detection of the drug content was carried out with waters 2489 UV/Visible detector. All the pharmacoki- netic parameters were determined using Kinetica 5.1 software (Thermo Fischer Scientific). The area under the curve (AUC) was calculated using the Trapezoidal method. 99mTc radiolabeling of GAR-NPs. GAR-NPs were radiolabeled with 99mTc (technetium-99m) by direct labeling method using stannous chloride dihydrate as a reductant. Briefly, 200 µl of aqueous sodium pertechn- etate (99mTcO4 −; 185–300 MBq/ml) was added to 200 µl of GAR-NPs suspension (equivalent to 0.224 mg GAR) followed by the addition of 25 µl of freshly prepared stannous chloride dihydrate (20 mg in 10 ml nitrogen purged water containing 100 µl of 6 N HCl) and incubation for 15 min at room temperature. The radiolabeled solution was stored at room temperature in shielded vials for subsequent studies. The radiolabeling efficiency was deter- mined by ascending instant thin layer chromatography (ITLC) using 2.5 × 10 cm silica gel coated aluminium sheet as the stationary phase and acetone as a mobile phase as per the previously reported procedure25. In vitro stability studies of radiolabeled GAR-NPs. The stability of 99mTc-labeled nanoformulation was ascertained in vitro as per the previously reported method25. Briefly, the radiolabeled nanoformulation (0.1 ml) was added separately to 0.9 ml of (a) normal saline, (b) serum, and (c) histidine solution (10−2 M). The resulting mixtures were incubated at 37 °C for 24 h. Samples were withdrawn from the mixture at various time intervals (0, 1, 2, 4, 6, 8 and 24 h) and analysed by ITLC (described above) to check for any dissociation of the radiolabeled formulation. In vitro cell-binding and internalization of 99mTc-labeled GAR-NPs. The cell-binding and internal- ization of 99mTc-labeled GAR-NPs into B16F10 mouse melanoma cell lines was studied according to the method described previously with some modifications26. Briefly, 1 × 106 cells were cultured in a 35 mm dish with DMEM medium at 37 °C for 24 h. After the addition of about 37 kBq of 99mTc-labeled GAR-NPs to the medium, the cells were incubated at 37 °C in 5% CO2 for different time intervals (0.5, 1, 2, 4, 6 and 8 h). After desired time interval the medium was removed to stop cellular internalization and cells were washed with ice-cold phosphate-buffered saline (pH 7.2). The radioactivities in cell pellet (total bound) and the supernatant (unbound) were measured in a gamma counter (Electronic Corporation of India, Model LV4755, Hyderabad). Cell surface-bound radioligand was removed by washing the cells with ice cold acidic buffer (0.05 mol/l glycine solution, pH adjusted to 2.8 with 1N HCl) for 5 min at 0 °C. The cell-associated radioactivity that was not removed by this procedure was taken as the internalized radioactivity. Finally, cells were treated with 1N NaOH at 37 °C for 10 min to detach them from plates and centrifuged. The supernatant was collected and the radioactivity was measured. The percent of inter- nalized radioactivity was calculated according to the method described previously. All experiments were repeated thrice and the results were expressed as the mean ± standard deviation. In vivo evaluation of 99mTc-labeled GAR-NPs Blood clearance study in rats. Blood clearance of 99mTc-labeled GAR-NPs was studied in healthy male Sprague-Dawley rats weighing around 250–300 g (n = 3). To anesthetized and well-hydrated animals, 99mTc-la- beled nanoformulation was injected through one femoral vein. At preset time intervals (ranging from 2 min to 8 h) blood samples (0.5 ml) were collected from the other femoral vein, weighed accurately and analysed in a gamma counter to measure the radioactivity in the sample. The percentage of injected dose/g of the blood sample (% ID/g) was calculated and plotted against respective time interval to generate the blood disappearance curve. Biodistribution in mice. In vivo biodistribution studies were performed in B16F10 tumor bearing Balb/c mice (body wt 25 ± 1.5 g) as per the previously reported method25. Freshly collected B16F10 cells (2 × 107 cells) suspended in saline were injected intramuscularly to the thigh of the right hind leg of each mouse. After two weeks a palpable tumor (volume 1 ± 0.1 cm3) developed and the animals were used for biodistribution studies. To each of the well hydrated animals 99mTc-labeled GAR-NPs (0.03 ml, 8–12 MBq/kg) were injected through the tail vein. At 2, 4, 8 and 24 h post injection, the animals (n = 4) were euthanized and blood sample was collected by car- diac puncture. Urine along with urinary bladder as well as other organs was also collected. All the samples were collected in pre-weighed scintillation vials and radioactive counts were measured in a gamma counter. Organ uptake was expressed as a percentage of the injected dose per gram of tissue (% ID/g) or per organ. All animal care and experiments were carried out as per guidelines laid down by the CSIR-IICB Animal Ethics Committee (IICB-AEC; Registration Number: 147/1999/CPCSEA) registered under Committee for the Purpose of Control and Supervision of Experiments on Animals (CPCSEA). Government of India, New Delhi. All animal studies and experimental protocols were approved by IICB-AEC (Ref.: IICB/AEC-APP/August-Meeting/2013). In a separate experiment, B16F10 tumor bearing mice were injected with FITC labeled NPs suspended in PBS at a concentration of 40 mg/kg body wt via tail vein27. Animals were sacrificed at 2, 4 and 8 h post injection (p.i.) time period. Tumors were dissected out washed thrice with PBS and stored in 10% formaldehyde at room temperature for 24 h. The tumor tissue was embedded in paraffin and cut into 5-µM-thick sections, and the nuclei",
+      "text_preview": "Pharmacokinetic study. In vivo pharmacokinetic studies of GAR-NPs and aqueous suspension contain- ing free GAR were done in male Sprague-Dawley (SD) rats (weight ~250 g). The animals were divided into two groups (n = 5)."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__56",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:12#segment:0",
+      "paragraph_index": 12,
+      "segment_index": 0,
+      "section_label": "3.7 MBq) was administered through the tail vein, placed under GE Infinia Gamma Camera equipped with Xeleris Work Station, and",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.7 MBq) was administered through the tail vein, placed under GE Infinia Gamma Camera equipped with Xeleris Work Station, and static images were acquired at 2, 4, and 8 h post-injection. Statistical analysis. All experiments were repeated for at least three times, each time on a different day. All mean values of animal experiments are expressed as %ID per g of tissues or organs ± SD. Statistical analysis was performed by one-way ANOVA. Graphs were prepared using GraphPad Prism 5 and ORIGIN",
+      "text_preview": "3.7 MBq) was administered through the tail vein, placed under GE Infinia Gamma Camera equipped with Xeleris Work Station, and static images were acquired at 2, 4, and 8 h post-injection. Statistical analysis. All experim"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__57",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:12#segment:2",
+      "paragraph_index": 12,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "RSC Adv. 6, 74254–74268 (2016). 15. Zhu, H. et al. Co-delivery of chemotherapeutic drugs with vitamin E TPGS by porous PLGA nanoparticles for enhanced chemotherapy against multi-drug resistance.",
+      "text_preview": "RSC Adv. 6, 74254–74268 (2016). 15. Zhu, H. et al. Co-delivery of chemotherapeutic drugs with vitamin E TPGS by porous PLGA nanoparticles for enhanced chemotherapy against multi-drug resistance."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__58",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:12#segment:3",
+      "paragraph_index": 12,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Biomaterials. 35, 2391–400 (2014). 16. Saadati, R. & Dadashzadeh, S. Marked effects of combined TPGS and PVA emulsifiers in the fabrication of etoposide-loaded PLGA- PEG nanoparticles: in vitro and in vivo evaluation.",
+      "text_preview": "Biomaterials. 35, 2391–400 (2014). 16. Saadati, R. & Dadashzadeh, S. Marked effects of combined TPGS and PVA emulsifiers in the fabrication of etoposide-loaded PLGA- PEG nanoparticles: in vitro and in vivo evaluation."
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__59",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:13#segment:0",
+      "paragraph_index": 13,
+      "segment_index": 0,
+      "section_label": "4.0 International License",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "4.0 International License. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in the credit line; if the material is not included under the Creative Commons license, users will need to obtain permission from the license holder to reproduce the material. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/",
+      "text_preview": "4.0 International License. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in the credit line; if the material is not included u"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_paragraph__60",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/PA3SPZ28.pdf.txt#paragraph:14#segment:0",
+      "paragraph_index": 14,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "© The Author(s) 2017",
+      "text_preview": "© The Author(s) 2017"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 70,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=11, cols=5\n- first_column_row_labels_preview: After storage at 4 °C, Parameters, Drug:Polymer ratio, PLGA grade, Size (nm), PDI, Zeta potential (mV), Drug loading (DL, %), Encapsulation efficiency, 53.43 ± 2.8, (EE, %)\n- sample_rows:\n- sample_row_1: Drug:Polymer ratio | 1:20 | 1:10 | 1:6.66 | 1:10\n- sample_row_2: After storage at 4 °C\n- sample_row_3: PDI | 0.212 ± 0.07 | 0.170 ± 0.05 | 0.237 ± 0.09 | 0.295 ± 0.08\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_08__pdf_table.csv] - table_id: Table 8 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 || 3"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_01__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 69,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_01__pdf_table.csv]\n- table_id: Table 1\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=8, cols=5\n- first_column_row_labels_preview: Parameters, Drug:Polymer ratio, PLGA grade, Size (nm), PDI, Zeta potential (mV), Drug loading (DL, %), Encapsulation efficiency (EE, %)\n- sample_rows:\n- sample_row_1: Drug:Polymer ratio | 1:20 | 1:10 | 1:6.66 | 1:10\n- sample_row_2: Parameters | Nanoprecipitation method | After storage at 4 °C for 3 months\n- sample_row_3: PDI | 0.212 ± 0.07 | 0.170 ± 0.05 | 0.237 ± 0.09 | 0.295 ± 0.08\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_01__pdf_table.csv] - table_id: Table 1 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 || 3"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__03",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_04__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 47,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_04__pdf_table.csv]\n- table_id: Table 4\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=15, cols=5\n- first_column_row_labels_preview: Organ/Tissue, 2 h, Heart, Blood*, Liver, Lung, Spleen, Kidney, Intestine, Stomach, Urine, Muscle* ...\n- sample_rows:\n- sample_row_1: Organ/Tissue | 99mTc Radiolabeled GAR-NPs\n- sample_row_2: Kidney | 2.360 ± 0.121 | 3.580 ± 0.589 | 1.960 ± 0.173 | 1.560 ± 0.192\n- sample_row_3: Tumor/blood | 0.311 | 0.936 | 1.248 | 1.581\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_04__pdf_table.csv] - table_id: Table 4 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 - header_units: (none inferred) -"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__04",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_10__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 47,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=15, cols=5\n- first_column_row_labels_preview: Organ/Tissue, 2 h, Heart, Blood*, Liver, Lung, Spleen, Kidney, Intestine, Stomach, Urine, Muscle* ...\n- sample_rows:\n- sample_row_1: Organ/Tissue | 99mTc Radiolabeled GAR-NPs\n- sample_row_2: Kidney | 2.360 ± 0.121 | 3.580 ± 0.589 | 1.960 ± 0.173 | 1.560 ± 0.192\n- sample_row_3: Tumor/blood | 0.311 | 0.936 | 1.248 | 1.581\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_10__pdf_table.csv] - table_id: Table 10 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 - header_units: (none inferred) -"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__05",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_02__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 5,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_02__pdf_table.csv]\n- table_id: Table 2\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=8, cols=5\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_02__pdf_table.csv] - table_id: Table 2 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 - header_units: (none inferred) -"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__06",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_03__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 2,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_03__pdf_table.csv]\n- table_id: Table 3\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=3, cols=2\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_03__pdf_table.csv] - table_id: Table 3 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__07",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_05__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -17,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_05__pdf_table.csv]\n- table_id: Table 5\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=44, cols=3\n- first_column_row_labels_preview: OPEN, Garcinol loaded vitamin E TPGS, emulsified PLGA nanoparticles:, preparation, physicochemical, Received: 29 November 2016 Accepted: 8 March 2017, Published: xx xx xxxx, Raghuvir H. Gaonkar1, Soumya Ganguly1, Saikat Dewanjee2, Samarendu Sinha3, Amit Gupta3,, Shantanu Ganguly3, Dipankar Chattopadhyay4 & Mita Chatterjee Debnath1, Garcinol (GAR) is a naturally occurring polyisoprenylated phenolic compound. It has been recently, investigated for its biological activities such as antioxidant, anti-inflammatory, anti ulcer, and, antiproliferative effect on a wide range of human cancer cell lines. Though the outcomes are very, promising, its extreme insolubility in water remains the main obstacle for its clinical application. Herein ...\n- sample_rows:\n- sample_row_1: preparation, physicochemical\n- sample_row_2: claimed that oral administration of 285.71 mg/kg GAR in a mouse model bearing MDA-MB-231 did not result in\n- sample_row_3: OPEN\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_05__pdf_table.csv] - table_id: Table 5 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 || 2 - hea"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__08",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_07__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -83,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=56, cols=2\n- first_column_row_labels_preview: Drug loading (DL, %) 4.12 ± 1.9 9.25 ± 2.8 5.29 ± 2.1, Encapsulation efficiency, 53.43 ± 2.8 88.32 ± 3.3 60.61 ± 3.5, (EE, %), Table1. Characterizaton of GAR-NPs., So far no studies have been reported regarding encapsulation of GAR in polymeric nanoparticles to improve, its bioavailability and anticancer potency. The choice for an ideal polymer for nanoencapsulation is vital as it, regulates the essential properties such as solubility, stability, drug loading capacity and drug release profile8., Poly(lactic-co-glycolic acid) or PLGA is one of the most successfully developed biodegradable and biocompatible, polymer approved by Food and Drug administration (FDA) and European Medical Association for parenteral, administration9. PLGA nanoparticles are internalized in cells through pinocytosis and endocytosis10., Nanoparticle therapeutics has attracted increasing attention in recent years as an emerging treatment modal- ...\n- sample_rows:\n- sample_row_1: polymer approved by Food and Drug administration (FDA) and European Medical Association for parenteral\n- sample_row_2: administration9. PLGA nanoparticles are internalized in cells through pinocytosis and endocytosis10.\n- sample_row_3: Drug loading (DL, %) 4.12 ± 1.9 9.25 ± 2.8 5.29 ± 2.1\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_07__pdf_table.csv] - table_id: Table 7 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__09",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_09__pdf_table.csv",
+      "section_label": "Characterization-only table.",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "characterization_only",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -83,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: Characterization-only table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=34, cols=2\n- first_column_row_labels_preview: (a) Particle size distribution pattern, (b) zeta potential distribution profile, (c) FESEM image, (d) TEM image,, (e) AFM image and (f) three dimensional view of AFM image., spectra revealed the characteristics peaks of GAR at 1732.62 cm−1 due to the presence of saturated carbonyl, group, another two peaks at 1631.64 and 1607.09 cm−1 accounting for the presence of α,β-unsaturated carbonyl, groups, and a broad band at 3246.74 cm−1 depicting the presence of hydroxyl function as was reported earlier17., The FTIR spectrum of PLGA revealed the characteristic peaks at 3490.87 cm−1 for hydroxyl function, 3000.68–, 2958.65 cm−1 for C-H stretching bands, and 1757.71 cm−1 for C-O stretching band of ester. In the FTIR spectrum, of TPGS, the peak observed at 3424.26 cm−1 is attributed to the presence of terminal hydroxyl function while, those at 2871.26 cm−1 and 1742.75 cm−1 indicate the –CH and carbonyl function stretching. Most of the charac-, teristic peaks of GAR, PLGA and TPGS appeared in the FTIR spectrum of the physical mixture with only minor, shifts. The physical interactions like hydrogen bond formation or dipole-dipole interaction existing between the, functional groups of GAR and excipients resulted in the minor shifting of the peaks. The presence of the char- ...\n- sample_rows:\n- sample_row_1: (a) Particle size distribution pattern, (b) zeta potential distribution profile, (c) FESEM image, (d) TEM image,\n- sample_row_2: are shown in Fig. 2b. Free GAR and PLGA showed sharp endothermic peaks at 132 °C and 46 °C respectively. In\n- sample_row_3: with the surface or embedded in the surface layer of the polymer, whereas sustained release occurred due to the\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_09__pdf_table.csv] - table_id: Table 9 - title_or_caption: Characterization-only table. - column_headers: 0 || 1 - header_units: (none inferred) - ro"
+    },
+    {
+      "candidate_id": "PA3SPZ28__candidate_table__10",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_06__pdf_table.csv",
+      "section_label": "Characterization-only table.",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "prose_carryover_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "characterization_only",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -143,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_06__pdf_table.csv]\n- table_id: Table 6\n- title_or_caption: Characterization-only table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=73, cols=2\n- first_column_row_labels_preview: were stained using DAPI. The intratumoral distribution of FITC labeled nanoformulation was imaged using flu-, orescence microscope (Leica, DFC420C, Germany)., Gamma scintigraphy. The tumor bearing mice were anaesthetized (intramuscular ketamine injection),, 99mTc-labeled nanoformulation (100 µl, 3.7 MBq) was administered through the tail vein, placed under GE, Infinia Gamma Camera equipped with Xeleris Work Station, and static images were acquired at 2, 4, and 8 h, post-injection., Statistical analysis., mean values of animal experiments are expressed as %ID per g of tissues or organs ± SD. Statistical analysis was, performed by one-way ANOVA. Graphs were prepared using GraphPad Prism 5 and ORIGIN 8.0., References, 1. Mehta, R. G., Murillo, G., Naithani, R. & Peng, X. Cancer chemoprevention by natural products: how far have we come? Pharm Res., 27, 950–61 (2010). ...\n- sample_rows:\n- sample_row_1: 6. Chen, C. S. et al. Nicotine-induced human breast cancer cell proliferation attenuated by garcinol through down-regulation of the\n- sample_row_2: 18. Mittal, G., Sahana, D. K., Bhardwaj, V. & Ravi Kumar, M. N. Estradiol loaded PLGA nanoparticles for oral administration: effect of\n- sample_row_3: were stained using DAPI. The intratumoral distribution of FITC labeled nanoformulation was imaged using flu-\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_06__pdf_table.csv] - table_id: Table 6 - title_or_caption: Characterization-only table. - column_headers: 0 || 1 - header_units: (none inferred) - ro"
+    }
+  ]
+}

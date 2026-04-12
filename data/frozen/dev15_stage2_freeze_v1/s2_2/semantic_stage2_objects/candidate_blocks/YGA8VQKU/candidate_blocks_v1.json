@@ -1,0 +1,2565 @@
+{
+  "paper_key": "YGA8VQKU",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 112,
+    "prose_candidates": 83,
+    "table_candidates": 29,
+    "candidates_with_noise_flags": 50,
+    "candidates_with_quality_flags": 99,
+    "has_doe_signal": true,
+    "has_sequential_signal": false,
+    "has_optimization_signal": true
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "Journals & Books Help Search View PDF Download full issue Outline Abstract Keywords 1. Introduction 2. Experimental 3. Results and discussion 4.",
+      "text_preview": "Journals & Books Help Search View PDF Download full issue Outline Abstract Keywords 1. Introduction 2. Experimental 3. Results and discussion 4."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Introduction 2. Experimental",
+      "text_preview": "Introduction 2. Experimental"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.1. Materials",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.1. Materials",
+      "text_preview": "2.1. Materials"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.2. Methods",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.2. Methods",
+      "text_preview": "2.2. Methods"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:3",
+      "paragraph_index": 0,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.1. Production of PLGA nanospheres",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.1. Production of PLGA nanospheres",
+      "text_preview": "2.1. Production of PLGA nanospheres"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:5",
+      "paragraph_index": 0,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.2.",
+      "text_preview": "2.2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "Experimental design Table 1",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:table_inline_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "Experimental design Table 1 .",
+      "text_preview": "Experimental design Table 1 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Initial 2 3 full factorial design, providing the upper (+1) and lower (−1) level values for each evaluated factor. cFB, concentration of flurbiprofen (mg/mL); cP188, concentration of poloxamer 188 (mg/mL).",
+      "text_preview": "Initial 2 3 full factorial design, providing the upper (+1) and lower (−1) level values for each evaluated factor. cFB, concentration of flurbiprofen (mg/mL); cP188, concentration of poloxamer 188 (mg/mL)."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 2 .",
+      "text_preview": "Table 2 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Coded level and measured responses of the evaluated factors: FB concentration (cFB), P188 concentration (cP188) and pH of the aqueous phase (pH).",
+      "text_preview": "Coded level and measured responses of the evaluated factors: FB concentration (cFB), P188 concentration (cP188) and pH of the aqueous phase (pH)."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:7",
+      "paragraph_index": 0,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "2.3. Physicochemical characterization",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.3. Physicochemical characterization",
+      "text_preview": "2.3. Physicochemical characterization"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:9",
+      "paragraph_index": 0,
+      "segment_index": 9,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.1. Mean particle size and zeta potential analysis",
+      "section_kind": "result",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.1. Mean particle size and zeta potential analysis",
+      "text_preview": "3.1. Mean particle size and zeta potential analysis"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:12",
+      "paragraph_index": 0,
+      "segment_index": 12,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:13",
+      "paragraph_index": 0,
+      "segment_index": 13,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.2. Transmission electron microscopy",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.2. Transmission electron microscopy",
+      "text_preview": "3.2. Transmission electron microscopy"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:15",
+      "paragraph_index": 0,
+      "segment_index": 15,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:16",
+      "paragraph_index": 0,
+      "segment_index": 16,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.3. Entrapment efficiency",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "3.3. Entrapment efficiency",
+      "text_preview": "3.3. Entrapment efficiency"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:18",
+      "paragraph_index": 0,
+      "segment_index": 18,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:19",
+      "paragraph_index": 0,
+      "segment_index": 19,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.4. In vitro flurbiprofen release",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.4. In vitro flurbiprofen release",
+      "text_preview": "3.4. In vitro flurbiprofen release"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:21",
+      "paragraph_index": 0,
+      "segment_index": 21,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:22",
+      "paragraph_index": 0,
+      "segment_index": 22,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.5. Long-term stability assays",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.5. Long-term stability assays",
+      "text_preview": "3.5. Long-term stability assays"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:24",
+      "paragraph_index": 0,
+      "segment_index": 24,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:25",
+      "paragraph_index": 0,
+      "segment_index": 25,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.6. Ocular tolerance 3",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.6. Ocular tolerance 3. Results and discussion",
+      "text_preview": "3.6. Ocular tolerance 3. Results and discussion"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.1. Characterization and optimization of PLGA nanospheres Download: Download full-size image Fig",
+      "section_kind": "result",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.1. Characterization and optimization of PLGA nanospheres Download: Download full-size image Fig. 1 . Evaluation of the standardized effects of pH values, flurbiprofen concentration (cFB) and poloxamer 118 concentration (cP188) and their interactions on the mean particle size of PLGA nanospheres. *Statistically significant for p -value <",
+      "text_preview": "3.1. Characterization and optimization of PLGA nanospheres Download: Download full-size image Fig. 1 . Evaluation of the standardized effects of pH values, flurbiprofen concentration (cFB) and poloxamer 118 concentration"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.05.",
+      "text_preview": "0.05."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 3 .",
+      "text_preview": "Table 3 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "ANOVA statistical analysis of the mean particle size.",
+      "text_preview": "ANOVA statistical analysis of the mean particle size."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:3",
+      "paragraph_index": 0,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 4 .",
+      "text_preview": "Table 4 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:4",
+      "paragraph_index": 0,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "Values for each estimated effect and interactions, with the correspondent measurement errors based on a total error with 6 degrees of freedom in the mean particle size and entrapment efficiency. Download: Download full-size image Fig. 2 .",
+      "text_preview": "Values for each estimated effect and interactions, with the correspondent measurement errors based on a total error with 6 degrees of freedom in the mean particle size and entrapment efficiency. Download: Download full-s"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__39",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_result_to_experimental_design",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_result_to_experimental_design",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "Response surface plot of the effect of the interaction between FB concentration and pH (cFB:pH) on the mean particle size (cP188 = 15 mg/mL; cPLGA = 9 mg/mL), mean size (nm) = 545.57 − 107.04 pH − 184.84 cFB + 7.91 pH 2 + 28.54 cFB 2 + 24.75 pH:cFB. Download: Download full-size image Fig. 3 .",
+      "text_preview": "Response surface plot of the effect of the interaction between FB concentration and pH (cFB:pH) on the mean particle size (cP188 = 15 mg/mL; cPLGA = 9 mg/mL), mean size (nm) = 545.57 − 107.04 pH − 184.84 cFB + 7.91 pH 2"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__40",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_experimental_design_to_optimization",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_experimental_design_to_optimization",
+        "optimization_candidate"
+      ],
+      "text_content": "Evaluation of the standardized effects of pH values, flurbiprofen concentration (cFB) and poloxamer 118 concentration (cP188), and their interactions on the entrapment efficiency of FB in PLGA nanospheres. *Statistically significant for p -value <",
+      "text_preview": "Evaluation of the standardized effects of pH values, flurbiprofen concentration (cFB) and poloxamer 118 concentration (cP188), and their interactions on the entrapment efficiency of FB in PLGA nanospheres. *Statistically"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__41",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.05.",
+      "text_preview": "0.05."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__42",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 5 .",
+      "text_preview": "Table 5 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__43",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "ANOVA statistical analysis of the entrapment efficiency. Download: Download full-size image Fig. 4 . Response surface plot of the effect of the interaction between FB concentration and pH (cFB:pH) on the entrapment efficiency (cP188 = 15 mg/mL; cPLGA = 9 mg/mL), EE (%) = 181.39 − 50.84 pH + 9.39 cFB + 4.56 pH 2 + 1.11 cFB 2 + 2.31 pH:cFB.",
+      "text_preview": "ANOVA statistical analysis of the entrapment efficiency. Download: Download full-size image Fig. 4 . Response surface plot of the effect of the interaction between FB concentration and pH (cFB:pH) on the entrapment effic"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__44",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 6 .",
+      "text_preview": "Table 6 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__45",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "Mean particle size, zeta potential and entrapment efficiency of FB-loaded nanospheres produced with low viscosity PLGA in comparison to nanospheres produced with high viscosity PLGA [24] .",
+      "text_preview": "Mean particle size, zeta potential and entrapment efficiency of FB-loaded nanospheres produced with low viscosity PLGA in comparison to nanospheres produced with high viscosity PLGA [24] ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__46",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.2. Transmission electron microscopy Download: Download full-size image Fig",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.2. Transmission electron microscopy Download: Download full-size image Fig. 5 . Transmission electron microscopy analysis of nanospheres produced with PLGA of low viscosity.",
+      "text_preview": "3.2. Transmission electron microscopy Download: Download full-size image Fig. 5 . Transmission electron microscopy analysis of nanospheres produced with PLGA of low viscosity."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__47",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "3.3. In vitro release assay Download: Download full-size image Fig",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.3. In vitro release assay Download: Download full-size image Fig. 6 . In vitro release profiles of FB from nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), in comparison to a control solution of FB in PBS (Free FB) ( n = 3).",
+      "text_preview": "3.3. In vitro release assay Download: Download full-size image Fig. 6 . In vitro release profiles of FB from nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), in comparison to a co"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__48",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.4.",
+      "text_preview": "3.4."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__49",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Long-term physical stability Table 7 .",
+      "text_preview": "Long-term physical stability Table 7 ."
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__50",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Mean particle size and zeta potential of nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), monitored for 75 days. Download: Download full-size image Fig. 7 . Transmission (T) and back scattering (BS) profiles of nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), as a function of time (upper: 0–24 h) and of sample height (lower: 0–65 mm).",
+      "text_preview": "Mean particle size and zeta potential of nanospheres produced with PLGA of low (0.32–0.44 dL/g) and high viscosity (0.7–1.1 dL/g), monitored for 75 days. Download: Download full-size image Fig. 7 . Transmission (T) and b"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__51",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "=== TABLE 1 (TSV) === Evaluated factors −1.68 −1 0 +1 1.68 cFB (mg/mL) 0.16 0.50 1.00 1.50 1.84 cP188 (mg/mL) 6.60 10.00 15.00 20.00 23.40 pH of water phase 2.82 3.50 4.50 5.50 6.18",
+      "text_preview": "=== TABLE 1 (TSV) === Evaluated factors −1.68 −1 0 +1 1.68 cFB (mg/mL) 0.16 0.50 1.00 1.50 1.84 cP188 (mg/mL) 6.60 10.00 15.00 20.00 23.40 pH of water phase 2.82 3.50 4.50 5.50 6.18"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__52",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "=== TABLE 2 (TSV) === Coded levels of factors Measured responses Empty Cell cFB (mg/mL) cP188 (mg/mL) pH Mean size (nm) ± SD EE (%) ± SD Zeta potential (mV) ± SD Factorial points F1 −1 −1 −1 240.00 ± 15.90 76.37 ± 0.46 −22.43 ±",
+      "text_preview": "=== TABLE 2 (TSV) === Coded levels of factors Measured responses Empty Cell cFB (mg/mL) cP188 (mg/mL) pH Mean size (nm) ± SD EE (%) ± SD Zeta potential (mV) ± SD Factorial points F1 −1 −1 −1 240.00 ± 15.90 76.37 ± 0.46 −"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__53",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "0.40 F2 1 −1 −1 205",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.40 F2 1 −1 −1 205.30 ± 2.52 97.75 ± 0.01 −24.60 ±",
+      "text_preview": "0.40 F2 1 −1 −1 205.30 ± 2.52 97.75 ± 0.01 −24.60 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__54",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:2",
+      "paragraph_index": 2,
+      "segment_index": 2,
+      "section_label": "0.95 F3 −1 1 −1 236",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.95 F3 −1 1 −1 236.00 ± 3.46 77.36 ± 0.05 −23.90 ±",
+      "text_preview": "0.95 F3 −1 1 −1 236.00 ± 3.46 77.36 ± 0.05 −23.90 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__55",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:3",
+      "paragraph_index": 2,
+      "segment_index": 3,
+      "section_label": "0.30 F4 1 1 −1 186",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.30 F4 1 1 −1 186.00 ± 3.61 87.11 ± 0.31 −23.63 ±",
+      "text_preview": "0.30 F4 1 1 −1 186.00 ± 3.61 87.11 ± 0.31 −23.63 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__56",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:4",
+      "paragraph_index": 2,
+      "segment_index": 4,
+      "section_label": "0.81 F5 −1 −1 1 182",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.81 F5 −1 −1 1 182.00 ± 1.00 52.68 ± 0.66 −27.40 ±",
+      "text_preview": "0.81 F5 −1 −1 1 182.00 ± 1.00 52.68 ± 0.66 −27.40 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__57",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:5",
+      "paragraph_index": 2,
+      "segment_index": 5,
+      "section_label": "0.75 F6 1 −1 1 203",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.75 F6 1 −1 1 203.30 ± 4.51 77.75 ± 0.07 −30.60 ±",
+      "text_preview": "0.75 F6 1 −1 1 203.30 ± 4.51 77.75 ± 0.07 −30.60 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__58",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:6",
+      "paragraph_index": 2,
+      "segment_index": 6,
+      "section_label": "0.75 F7 −1 1 1 183",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.75 F7 −1 1 1 183.00 ± 1.00 59.54 ± 0.42 −27.46 ±",
+      "text_preview": "0.75 F7 −1 1 1 183.00 ± 1.00 59.54 ± 0.42 −27.46 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__59",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:2#segment:7",
+      "paragraph_index": 2,
+      "segment_index": 7,
+      "section_label": "0.61 F8 1 1 1 175",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.61 F8 1 1 1 175.70 ± 1.53 74.38 ± 0.25 −27.00 ± 0.60",
+      "text_preview": "0.61 F8 1 1 1 175.70 ± 1.53 74.38 ± 0.25 −27.00 ± 0.60"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__60",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Axial points F9 1.68 0 0 179.30 ± 2.31 85.18 ± 0.05 −25.80 ±",
+      "text_preview": "Axial points F9 1.68 0 0 179.30 ± 2.31 85.18 ± 0.05 −25.80 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__61",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:3#segment:1",
+      "paragraph_index": 3,
+      "segment_index": 1,
+      "section_label": "0.44 F10 −1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.44 F10 −1.68 0 0 203.30 ± 4.51 38.46 ± 0.01 −28.73 ±",
+      "text_preview": "0.44 F10 −1.68 0 0 203.30 ± 4.51 38.46 ± 0.01 −28.73 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__62",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:3#segment:2",
+      "paragraph_index": 3,
+      "segment_index": 2,
+      "section_label": "0.80 F11 0 1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.80 F11 0 1.68 0 166.00 ± 1.73 66.69 ± 0.47 −24.77 ±",
+      "text_preview": "0.80 F11 0 1.68 0 166.00 ± 1.73 66.69 ± 0.47 −24.77 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__63",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:3#segment:3",
+      "paragraph_index": 3,
+      "segment_index": 3,
+      "section_label": "0.42 F12 0 −1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.42 F12 0 −1.68 0 183.00 ± 1.00 63.76 ± 0.39 −20.33 ±",
+      "text_preview": "0.42 F12 0 −1.68 0 183.00 ± 1.00 63.76 ± 0.39 −20.33 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__64",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:3#segment:4",
+      "paragraph_index": 3,
+      "segment_index": 4,
+      "section_label": "3.79 F13 0 0 1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "3.79 F13 0 0 1.68 185.00 ± 1.73 65.34 ± 0.28 −23.90 ±",
+      "text_preview": "3.79 F13 0 0 1.68 185.00 ± 1.73 65.34 ± 0.28 −23.90 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__65",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:3#segment:5",
+      "paragraph_index": 3,
+      "segment_index": 5,
+      "section_label": "0.79 F14 0 0 −1",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.79 F14 0 0 −1.68 201.70 ± 2.52 82.52 ± 0.02 −16.33 ± 0.55",
+      "text_preview": "0.79 F14 0 0 −1.68 201.70 ± 2.52 82.52 ± 0.02 −16.33 ± 0.55"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__66",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:4#segment:0",
+      "paragraph_index": 4,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Centre points F15 0 0 0 182.30 ± 1.15 68.22 ± 0.27 −24.93 ±",
+      "text_preview": "Centre points F15 0 0 0 182.30 ± 1.15 68.22 ± 0.27 −24.93 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__67",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:4#segment:1",
+      "paragraph_index": 4,
+      "segment_index": 1,
+      "section_label": "0.06 F16 0 0 0 179",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.06 F16 0 0 0 179.00 ± 0.00 64.94 ± 0.23 −25.03 ± 0.57",
+      "text_preview": "0.06 F16 0 0 0 179.00 ± 0.00 64.94 ± 0.23 −25.03 ± 0.57"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__68",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "=== TABLE 3 (TSV) === Evaluated factors and their interactions Sum of squares Degrees of freedom Mean square F -value p -Value cFB 916.35 1 916.35 5.05 0.07 cP188 447.67 1 447.67 2.47 0.17 pH 1671.47 1 1671.47 9.22 0.02 * cFB:cP188 237.62 1 237.62 1.31 0.30 cFB:pH 1225.13 1 1225.13 6.75 0.04 * cP188:pH 1.62 1 1.62 0.01 0.93",
+      "text_preview": "=== TABLE 3 (TSV) === Evaluated factors and their interactions Sum of squares Degrees of freedom Mean square F -value p -Value cFB 916.35 1 916.35 5.05 0.07 cP188 447.67 1 447.67 2.47 0.17 pH 1671.47 1 1671.47 9.22 0.02"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__69",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:6#segment:0",
+      "paragraph_index": 6,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Error 1088.20 6",
+      "text_preview": "Error 1088.20 6"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__70",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__71",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:6#segment:2",
+      "paragraph_index": 6,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8",
+      "text_preview": "8"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__72",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:6#segment:3",
+      "paragraph_index": 6,
+      "segment_index": 3,
+      "section_label": "1.37 Total 6458",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.37 Total 6458.32 15",
+      "text_preview": "1.37 Total 6458.32 15"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__73",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:7#segment:0",
+      "paragraph_index": 7,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary",
+        "optimization_candidate"
+      ],
+      "text_content": "=== TABLE 4 (TSV) === Evaluated factors and their interactions Mean particle size (nm) ± SD Entrapment efficiency (%) ± SD cFB −16.31 ± 7.26 25.07 ± 5.06 cP188 −11.36 ± 7.26 −3.20 ± 5.06 pH −22.20 ± 7.26 −11.95 ± 5.06 cFB:cFB −14.27 ± 8.81 1.78 ± 6.14 cFB:cP188 −10.75 ± 9.48 −10.63 ± 6.61 cFB:pH 24.75 ± 9.48 7.58 ± 6.61 cP188:cP188 2.60 ± 8.81 4.19 ± 6.14 cP188:pH −0.75 ± 9.48 −1.88 ± 6.61 pH:pH 16.04 ± 8.81 10.34 ± 6.14",
+      "text_preview": "=== TABLE 4 (TSV) === Evaluated factors and their interactions Mean particle size (nm) ± SD Entrapment efficiency (%) ± SD cFB −16.31 ± 7.26 25.07 ± 5.06 cP188 −11.36 ± 7.26 −3.20 ± 5.06 pH −22.20 ± 7.26 −11.95 ± 5.06 cF"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__74",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:8#segment:0",
+      "paragraph_index": 8,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "=== TABLE 5 (TSV) === Evaluated factors and their interactions Sum of squares Degrees of freedom Mean square F -value p -Value cFB 1648.92 1 1648.92 26.28 0.00 * cP188 0.04 1 0.04 0.00 0.98 pH 772.06 1 772.06 12.31 0.01 * cFB:cP188 57.30 1 57.30 0.91 0.38 cFB:pH 10.65 1 10.65 0.17 0.69 cP188:pH 23.09 1 23.09 0.37 0.57",
+      "text_preview": "=== TABLE 5 (TSV) === Evaluated factors and their interactions Sum of squares Degrees of freedom Mean square F -value p -Value cFB 1648.92 1 1648.92 26.28 0.00 * cP188 0.04 1 0.04 0.00 0.98 pH 772.06 1 772.06 12.31 0.01"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__75",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:9#segment:0",
+      "paragraph_index": 9,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Error 376.44 6",
+      "text_preview": "Error 376.44 6"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__76",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:9#segment:1",
+      "paragraph_index": 9,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "6",
+      "text_preview": "6"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__77",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:9#segment:2",
+      "paragraph_index": 9,
+      "segment_index": 2,
+      "section_label": "2.74 Total 3111",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.74 Total 3111.29 15",
+      "text_preview": "2.74 Total 3111.29 15"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__78",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:10#segment:0",
+      "paragraph_index": 10,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "=== TABLE 6 (TSV) === Empty Cell Mean size (nm) ± SD Zeta potential (mV) ± SD Entrapment efficiency (%) ± SD Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g) 205.30 ± 2.52 −24.60 ± 0.95 97.75 ±",
+      "text_preview": "=== TABLE 6 (TSV) === Empty Cell Mean size (nm) ± SD Zeta potential (mV) ± SD Entrapment efficiency (%) ± SD Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g) 205.30 ± 2.52 −24.60 ± 0.95 97.75 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__79",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:10#segment:1",
+      "paragraph_index": 10,
+      "segment_index": 1,
+      "section_label": "0.01 Nanospheres produced with high viscosity PLGA (PLGA 0",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.01 Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g) 232.80 ± 1.93 −25.79 ± 1.17 94.60 ± 0.42",
+      "text_preview": "0.01 Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g) 232.80 ± 1.93 −25.79 ± 1.17 94.60 ± 0.42"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__80",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:11#segment:0",
+      "paragraph_index": 11,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "=== TABLE 7 (TSV) === Storage time Mean size (nm) ± SD Zeta potential (mV) ± SD Empty Cell Low viscosity (0.32–0.44 dL/g) High viscosity (0.7–1.1 dL/g) Low viscosity (0.32–0.44 dL/g) High viscosity (0.7–1.1 dL/g) Day 1 207.00 ± 1.00 203.30 ± 3.21 −27.50 ± 0.56 −26.40 ±",
+      "text_preview": "=== TABLE 7 (TSV) === Storage time Mean size (nm) ± SD Zeta potential (mV) ± SD Empty Cell Low viscosity (0.32–0.44 dL/g) High viscosity (0.7–1.1 dL/g) Low viscosity (0.32–0.44 dL/g) High viscosity (0.7–1.1 dL/g) Day 1 2"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__81",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:11#segment:1",
+      "paragraph_index": 11,
+      "segment_index": 1,
+      "section_label": "1.48 Day 7 202",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1.48 Day 7 202.00 ± 1.00 199.00 ± 1.00 −28.60 ± 0.62 −28.90 ±",
+      "text_preview": "1.48 Day 7 202.00 ± 1.00 199.00 ± 1.00 −28.60 ± 0.62 −28.90 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__82",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:11#segment:2",
+      "paragraph_index": 11,
+      "segment_index": 2,
+      "section_label": "0.47 Day 15 208",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.47 Day 15 208.30 ± 0.58 198.00 ± 1.00 −28.70 ± 0.72 −28.50 ±",
+      "text_preview": "0.47 Day 15 208.30 ± 0.58 198.00 ± 1.00 −28.70 ± 0.72 −28.50 ±"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_paragraph__83",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/YGA8VQKU.html.txt#paragraph:11#segment:3",
+      "paragraph_index": 11,
+      "segment_index": 3,
+      "section_label": "0.20 Day 75 193",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.20 Day 75 193.67 ± 2.08 217.33 ± 2.52 −29.50 ± 0.31 −33.20 ± 1.91",
+      "text_preview": "0.20 Day 75 193.67 ± 2.08 217.33 ± 2.52 −29.50 ± 0.31 −33.20 ± 1.91"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__html_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 184,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__html_table.csv]\n- table_id: Table 1\n- title_or_caption: Experimental design variable table.\n- column_headers: Coded levels of factors || Empty Cell || Coded levels of factors || cFB (mg/mL) || Coded levels of factors || cP188 (mg/mL) || Coded levels of factors || pH || Measured responses || Mean size (nm) ± SD || Measured responses || EE (%) ± SD || Measured responses || Zeta potential (mV) ± SD\n- header_units: mg/mL, nm, %, mV\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=21, cols=7\n- first_column_row_labels_preview: Factorial points, F1, F2, F3, F4, F5, F6, F7, F8, Axial points, F9, F10 ...\n- sample_rows:\n- sample_row_1: Factorial points | Factorial points | Factorial points | Factorial points | Factorial points | Factorial points | Factorial points\n- sample_row_2: Axial points | Axial points | Axial points | Axial points | Axial points | Axial points | Axial points\n- sample_row_3: F16 | 0 | 0 | 0 | 179.00 ± 0.00 | 64.94 ± 0.23 | −25.03 ± 0.57\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__html_table.csv] - table_id: Table 1 - title_or_caption: Experimental design variable table. - column_headers: Coded levels of factors ||"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_06__html_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 160,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_06__html_table.csv]\n- table_id: Table 6\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: Storage time || Empty Cell || Mean size (nm) ± SD || Low viscosity (0.32–0.44 dL/g) || Mean size (nm) ± SD || High viscosity (0.7–1.1 dL/g) || Zeta potential (mV) ± SD || Low viscosity (0.32–0.44 dL/g) || Zeta potential (mV) ± SD || High viscosity (0.7–1.1 dL/g)\n- header_units: nm, 0.32–0.44 dL/g, 0.7–1.1 dL/g, mV\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: formulation\n- table_shape_hint: rows=4, cols=5\n- first_column_row_labels_preview: Day 1, Day 7, Day 15, Day 75\n- sample_rows:\n- sample_row_1: Day 1 | 207.00 ± 1.00 | 203.30 ± 3.21 | −27.50 ± 0.56 | −26.40 ± 1.48\n- sample_row_2: Day 15 | 208.30 ± 0.58 | 198.00 ± 1.00 | −28.70 ± 0.72 | −28.50 ± 0.20\n- sample_row_3: Day 75 | 193.67 ± 2.08 | 217.33 ± 2.52 | −29.50 ± 0.31 | −33.20 ± 1.91\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_06__html_table.csv] - table_id: Table 6 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: Storage"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__03",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__html_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "repeated categorical identifiers",
+      "table_score": 158,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__html_table.csv]\n- table_id: Table 7\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: Empty Cell || Mean size (nm) ± SD || Zeta potential (mV) ± SD || Entrapment efficiency (%) ± SD\n- header_units: nm, mV, %\n- row_identifier_pattern: repeated categorical identifiers\n- table_role_hint: formulation\n- table_shape_hint: rows=2, cols=4\n- first_column_row_labels_preview: Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g), Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g)\n- sample_rows:\n- sample_row_1: Nanospheres produced with low viscosity PLGA (0.32–0.44 dL/g) | 205.30 ± 2.52 | −24.60 ± 0.95 | 97.75 ± 0.01\n- sample_row_2: Nanospheres produced with high viscosity PLGA (PLGA 0.7–1.1 dL/g) | 232.80 ± 1.93 | −25.79 ± 1.17 | 94.60 ± 0.42\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__html_table.csv] - table_id: Table 7 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: Empty Ce"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__04",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_02__html_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 154,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_02__html_table.csv]\n- table_id: Table 2\n- title_or_caption: Experimental design variable table.\n- column_headers: Evaluated factors and their interactions || Sum of squares || Degrees of freedom || Mean square || F-value || p-Value\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=9, cols=6\n- first_column_row_labels_preview: cFB, cP188, pH, cFB:cP188, cFB:pH, cP188:pH, Error, Total\n- sample_rows:\n- sample_row_1: cFB | 916.35 | 1.0 | 916.35 | 5.05 | 0.07\n- sample_row_2: cFB:pH | 1225.13 | 1.0 | 1225.13 | 6.75 | 0.04*\n- sample_row_3: Total | 6458.32 | 15.0\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_02__html_table.csv] - table_id: Table 2 - title_or_caption: Experimental design variable table. - column_headers: Evaluated factors and their"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__05",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_03__html_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 154,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_03__html_table.csv]\n- table_id: Table 3\n- title_or_caption: Experimental design variable table.\n- column_headers: Evaluated factors and their interactions || Sum of squares || Degrees of freedom || Mean square || F-value || p-Value\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=9, cols=6\n- first_column_row_labels_preview: cFB, cP188, pH, cFB:cP188, cFB:pH, cP188:pH, Error, Total\n- sample_rows:\n- sample_row_1: cFB | 1648.92 | 1.0 | 1648.92 | 26.28 | 0.00*\n- sample_row_2: cFB:pH | 10.65 | 1.0 | 10.65 | 0.17 | 0.69\n- sample_row_3: Total | 3111.29 | 15.0\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_03__html_table.csv] - table_id: Table 3 - title_or_caption: Experimental design variable table. - column_headers: Evaluated factors and their"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__06",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__html_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 150,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__html_table.csv]\n- table_id: Table 4\n- title_or_caption: Experimental design variable table.\n- column_headers: Evaluated factors and their interactions || Mean particle size (nm) ± SD || Entrapment efficiency (%) ± SD\n- header_units: nm, %\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=9, cols=3\n- first_column_row_labels_preview: cFB, cP188, pH, cFB:cFB, cFB:cP188, cFB:pH, cP188:cP188, cP188:pH, pH:pH\n- sample_rows:\n- sample_row_1: cFB | −16.31 ± 7.26 | 25.07 ± 5.06\n- sample_row_2: cFB:cP188 | −10.75 ± 9.48 | −10.63 ± 6.61\n- sample_row_3: pH:pH | 16.04 ± 8.81 | 10.34 ± 6.14\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__html_table.csv] - table_id: Table 4 - title_or_caption: Experimental design variable table. - column_headers: Evaluated factors and their"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__07",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_05__html_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "repeated categorical identifiers",
+      "table_score": 126,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_05__html_table.csv]\n- table_id: Table 5\n- title_or_caption: Experimental design variable table.\n- column_headers: Evaluated factors || −1.68 || −1 || 0 || +1 || 1.68\n- header_units: (none inferred)\n- row_identifier_pattern: repeated categorical identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=3, cols=6\n- first_column_row_labels_preview: cFB (mg/mL), cP188 (mg/mL), pH of water phase\n- sample_rows:\n- sample_row_1: cFB (mg/mL) | 0.16 | 0.5 | 1.0 | 1.5 | 1.84\n- sample_row_2: cP188 (mg/mL) | 6.6 | 10.0 | 15.0 | 20.0 | 23.4\n- sample_row_3: pH of water phase | 2.82 | 3.5 | 4.5 | 5.5 | 6.18\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_05__html_table.csv] - table_id: Table 5 - title_or_caption: Experimental design variable table. - column_headers: Evaluated factors || −1.68"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__08",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 88,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__pdf_table.csv]\n- table_id: Table 1\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=27, cols=3\n- first_column_row_labels_preview: endocytosis, ■ INTRODUCTION, Increased suffering from various eye diseases is a major, barrier function. The stratified epithelial layer itself, concern for ophthalmologists and ocular drug-delivery, scientists.1 While topically applied ophthalmic formulations, are popular and makeup the majority of marketed products,2,3, they suffer from low bioavailability due to a short residence, time on the surface of the eye and poor penetration into ocular, entry of topical formulations into the eye include the tear film, and cornea.4,5, increase the drug bioavailability by improving solubility ...\n- sample_rows:\n- sample_row_1: Its barrier concentration down toward the epithelial tissue.6\n- sample_row_2: time on the surface of the eye and poor penetration into ocular | Efforts to enhance bioavailability of topical | formulations\n- sample_row_3: endocytosis\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_01__pdf_table.csv] - table_id: Table 1 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 - header_units: (none inferred) - ro"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__09",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_08__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 88,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=30, cols=3\n- first_column_row_labels_preview: endocytosis, ■ INTRODUCTION, Increased suffering from various eye diseases is a major, barrier function. The stratified epithelial layer itself, concern for ophthalmologists and ocular drug-delivery, scientists.1 While topically applied ophthalmic formulations, are popular and makeup the majority of marketed products,2,3, they suffer from low bioavailability due to a short residence, time on the surface of the eye and poor penetration into ocular, entry of topical formulations into the eye include the tear film, and cornea.4,5, increase the drug bioavailability by improving solubility ...\n- sample_rows:\n- sample_row_1: Its barrier concentration down toward the epithelial tissue.6\n- sample_row_2: time on the surface of the eye and poor penetration into ocular | Efforts to enhance bioavailability of topical | formulations\n- sample_row_3: endocytosis\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_08__pdf_table.csv] - table_id: Table 8 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 - header_units: (none inferred) - ro"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__10",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_03__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 87,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_03__pdf_table.csv]\n- table_id: Table 3\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=12, cols=2\n- first_column_row_labels_preview: different sizes (A) and surface-modified PLGA NPs (B). Figures in the bottom are the results of nanoparticles' uptake mechanism in the presence, of single inhibitor for different sizes of bare PLGA NPs (C) and NPs with different surface properties (D)., that PEG-PLGA-150 NPs, with 170 nm size and nearly 0 mV, zeta potential, showed nearly the same uptake level as 100 nm, bare PLGA NPs and twice the uptake level of 200 nm bare, PLGA NPs. This suggests that surface charge is also an, important determining factor, in addition to size, for the, cellular uptake of nanoparticles. It should also be noted that, among all groups of nanoparticles, PEGylated nanoparticles, https://doi.org/10.1021/acsbiomaterials.3c01144 438, ACS Biomater. Sci. Eng. 2024, 10, 429−441\n- sample_rows:\n- sample_row_1: different sizes (A) and surface-modified PLGA NPs (B). Figures in the bottom are the results of nanoparticles' uptake mechanism in the presence\n- sample_row_2: PLGA NPs. This suggests that surface charge is also an | while multiple pathways are involved in cellular uptake,\n- sample_row_3: ACS Biomater. Sci. Eng. 2024, 10, 429−441\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_03__pdf_table.csv] - table_id: Table 3 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (none"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__11",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_10__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 87,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=12, cols=2\n- first_column_row_labels_preview: different sizes (A) and surface-modified PLGA NPs (B). Figures in the bottom are the results of nanoparticles' uptake mechanism in the presence, of single inhibitor for different sizes of bare PLGA NPs (C) and NPs with different surface properties (D)., that PEG-PLGA-150 NPs, with 170 nm size and nearly 0 mV, zeta potential, showed nearly the same uptake level as 100 nm, bare PLGA NPs and twice the uptake level of 200 nm bare, PLGA NPs. This suggests that surface charge is also an, important determining factor, in addition to size, for the, cellular uptake of nanoparticles. It should also be noted that, among all groups of nanoparticles, PEGylated nanoparticles, https://doi.org/10.1021/acsbiomaterials.3c01144 438, ACS Biomater. Sci. Eng. 2024, 10, 429−441\n- sample_rows:\n- sample_row_1: different sizes (A) and surface-modified PLGA NPs (B). Figures in the bottom are the results of nanoparticles' uptake mechanism in the presence\n- sample_row_2: PLGA NPs. This suggests that surface charge is also an | while multiple pathways are involved in cellular uptake,\n- sample_row_3: ACS Biomater. Sci. Eng. 2024, 10, 429−441\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_10__pdf_table.csv] - table_id: Table 10 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (non"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__12",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_21__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 74,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_21__pdf_table.csv]\n- table_id: Table 21\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=102, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, specific endocytosis pathways. It has been reported that, blocking one uptake pathway can result in activation of other, endocytic mechanisms which can yield misleading outcomes.60, Therefore, to ensure experimental accuracy, inhibitors were, used in combination to better understand the contribution of, each pathway. A series of toxicity experiments were first, conducted to find a balance between sufficient inhibitory, concentrations/exposure time and minimal effects on cell, viability. The cells were exposed to inhibitors for a total period, of 30 min (10 min preincubation with inhibitors followed by, 20 min of incubation with NPs). In this study, 15 different ...\n- sample_rows:\n- sample_row_1: decreased the uptake level to 6.0 ± 3.1, 9.8 ± 1.5, 7.9 ± 3.2, | that the optimal size for increased uptake by human corneal\n- sample_row_2: concentrations/exposure time and minimal effects on cell | responsible for the uptake of NPs as treatment with dynasore\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_21__pdf_table.csv] - table_id: Table 21 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__13",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_02__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 60,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_02__pdf_table.csv]\n- table_id: Table 2\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=12, cols=3\n- first_column_row_labels_preview: bromide (MTT) assay indicated that incubating cells with nanoparticles for 24 h, at concentrations up to 100 μg/mL caused only mild toxicity (70−100% cell, viability). Cellular uptake studies were conducted using an in vitro model, developed with a monolayer of HCECs integrated with simulated mucosal, solution. Evaluation of nanoparticle uptake revealed that energy-dependent, endocytosis is the primary uptake mechanism. Among the different nanoparticles studied, 100 nm PLGA NPs and PEG-PLGA-150, NPs showed the highest levels of uptake by HCECs. Additionally, uptake studies in the presence of various inhibitors suggested that, macropinocytosis and caveolae-mediated endocytosis are the dominant pathways. While clathrin-mediated endocytosis was found to, also be partially responsible for nanoparticle uptake, phagocytosis did not play a role within the studied ranges of size and surface, chemistries. These important findings could lead to improved nanoparticle-based formulations, ocular diseases.\n- sample_rows:\n- sample_row_1: at concentrations up to 100 μg/mL caused only mild toxicity (70−100% cell\n- sample_row_2: bromide (MTT) assay indicated that incubating cells with nanoparticles for 24 h\n- sample_row_3: endocytosis is the primary uptake mechanism. Among the different nanoparticles studied, 100 nm PLGA NPs and PEG-PLGA-150\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_02__pdf_table.csv] - table_id: Table 2 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 ||"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__14",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_09__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 60,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=11, cols=3\n- first_column_row_labels_preview: bromide (MTT) assay indicated that incubating cells with nanoparticles for 24 h, at concentrations up to 100 μg/mL caused only mild toxicity (70−100% cell, viability). Cellular uptake studies were conducted using an in vitro model, developed with a monolayer of HCECs integrated with simulated mucosal, solution. Evaluation of nanoparticle uptake revealed that energy-dependent, endocytosis is the primary uptake mechanism. Among the different nanoparticles studied, 100 nm PLGA NPs and PEG-PLGA-150, NPs showed the highest levels of uptake by HCECs. Additionally, uptake studies in the presence of various inhibitors suggested that, macropinocytosis and caveolae-mediated endocytosis are the dominant pathways. While clathrin-mediated endocytosis was found to, also be partially responsible for nanoparticle uptake, phagocytosis did not play a role within the studied ranges of size and surface, chemistries. These important findings could lead to improved nanoparticle-based formulations, ocular diseases.\n- sample_rows:\n- sample_row_1: at concentrations up to 100 μg/mL caused only mild toxicity (70−100% cell\n- sample_row_2: bromide (MTT) assay indicated that incubating cells with nanoparticles for 24 h\n- sample_row_3: endocytosis is the primary uptake mechanism. Among the different nanoparticles studied, 100 nm PLGA NPs and PEG-PLGA-150\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_09__pdf_table.csv] - table_id: Table 9 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 ||"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__15",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_18__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 47,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_18__pdf_table.csv]\n- table_id: Table 18\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=8, cols=2\n- first_column_row_labels_preview: pubs.acs.org/journal/abseba ACS Biomaterials Science & Engineering, and (B) surface-modified nanoparticles., 20 min (A), uptake values for various nanoparticles at 20 min (B), and uptake values for different nanoparticles as a function of nanoparticle zeta, potential (C)., 434, ACS Biomater. Sci. Eng. 2024, 10, 429−441\n- sample_rows:\n- sample_row_1: pubs.acs.org/journal/abseba ACS Biomaterials Science & Engineering | Article\n- sample_row_2: potential (C).\n- sample_row_3: ACS Biomater. Sci. Eng. 2024, 10, 429−441\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_18__pdf_table.csv] - table_id: Table 18 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__16",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_15__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 42,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_15__pdf_table.csv]\n- table_id: Table 15\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=66, cols=2\n- first_column_row_labels_preview: cause ocular irritation, inflammation, blurred vision, and, systemic complications.19,20 Nanoparticle drug-delivery sys-, tems have shown the ability to overcome ocular barriers by, prolonging retention time on the ocular surface, improving ocular penetration, sustaining drug release, enhancing target-, Materials. All materials were purchased from commercial suppliers, ing, lowering ocular irritation, reducing degradation of unstable, and used with no further modification unless noted otherwise., drugs, and improving bioavailability.21−23 Over the past, decades, various types of polymeric nanoparticles have, attracted interest for ocular drug-delivery applications24 with, (PVA; MW 30−70 kDa; viscosity in water 4−6 cps), Chitosan (CHS;, polylactic-co-glycolic acid (PLGA) nanoparticles among the ...\n- sample_rows:\n- sample_row_1: mg/mL, human recombinant, zinc solution) was purchased from\n- sample_row_2: prolonging retention time on the ocular surface, improving ocular penetration, sustaining drug release, enhancing target- | ■ MATERIALS AND METHODS\n- sample_row_3: cause ocular irritation, inflammation, blurred vision, and | addition, pharmacological endocytosis inhibitors were applied\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_15__pdf_table.csv] - table_id: Table 15 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__17",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:4"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 37,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=82, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, 6287−6305., (44) Georgiev, G. A.; Eftimov, P.; Yokoi, N. Contribution of Mucins, towards the Physical Properties of the Tear Film: A Modern Update., International Journal of Molecular Sciences. 2019, 20 (24), 6132., Nanoparticles Depends on Multiple Molecular and Physicochemical, Mechanisms. International Journal of Molecular Sciences. 2017, 18 (12),, 2702., (46) Cho, M.; Cho, W. S.; Choi, M.; Kim, S. J.; Han, B. S.; Kim, S., Fate. Current Pharmaceutical Biotechnology. 2022, 23 (5), 679−706., H.; Kim, H. O.; Sheen, Y. Y.; Jeong, J. The Impact of Size on Tissue, (64) Jaumouillé, V.; Waterman, C. M. Physical Constraints and ...\n- sample_rows:\n- sample_row_1: penetration following the instillation of ophthalmic formulations\n- sample_row_2: is responsible for skin penetration of formulations based on a\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_07__pdf_table.csv] - table_id: Table 7 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__18",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_14__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:4"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 37,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_14__pdf_table.csv]\n- table_id: Table 14\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=85, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, 6287−6305., (44) Georgiev, G. A.; Eftimov, P.; Yokoi, N. Contribution of Mucins, towards the Physical Properties of the Tear Film: A Modern Update., International Journal of Molecular Sciences. 2019, 20 (24), 6132., Nanoparticles Depends on Multiple Molecular and Physicochemical, Mechanisms. International Journal of Molecular Sciences. 2017, 18 (12),, 2702., (46) Cho, M.; Cho, W. S.; Choi, M.; Kim, S. J.; Han, B. S.; Kim, S., Fate. Current Pharmaceutical Biotechnology. 2022, 23 (5), 679−706., H.; Kim, H. O.; Sheen, Y. Y.; Jeong, J. The Impact of Size on Tissue, (64) Jaumouillé, V.; Waterman, C. M. Physical Constraints and ...\n- sample_rows:\n- sample_row_1: penetration following the instillation of ophthalmic formulations\n- sample_row_2: is responsible for skin penetration of formulations based on a\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_14__pdf_table.csv] - table_id: Table 14 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__19",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_20__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 21,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_20__pdf_table.csv]\n- table_id: Table 20\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=10, cols=2\n- first_column_row_labels_preview: the uptake of NPs was strongly inhibited at lower temperatures, for all particle types. For bare PLGA NPs, the uptake decreased, by an average of 57.2 ± 6.9% at 20 °C and by an average of, 74.7 ± 5.7% at 4 °C. A similar pattern was observed for, surface-modified NPs which showed uptake decreasing by an, average of 36.7 ± 2.8%. and 54.6 ± 11.1% for 20 and 4 °C,, respectively., This temperature dependency of NP uptake confirms that, HCECs utilize an active process, which requires cellular\n- sample_rows:\n- sample_row_1: surface-modified NPs which showed uptake decreasing by an | is responsible for transcorneal penetration of nanoparticles.59\n- sample_row_2: the uptake of NPs was strongly inhibited at lower temperatures | energy, to take up these particles. It should also be noted,\n- sample_row_3: HCECs utilize an active process, which requires cellular | pharmacological inhibitors were employed to block or suppress\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_20__pdf_table.csv] - table_id: Table 20 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__20",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 10,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__pdf_table.csv]\n- table_id: Table 4\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=36, cols=3\n- first_column_row_labels_preview: PHG phagocytosis, Notes, The authors declare no competing financial interest., ■ ACKNOWLEDGMENTS, (1) Ackland, P.; Resnikoff,, The authors would like to thank Lynthera Corporation which, Visual Impairment: Despite Many Successes, the Problem Is Growing., financially supported M.A. with a fellowship. Additionally, it, should be noted that A.E.D. serves as a member of Lynthera’s, Scientific Advisory Board., delivery to the posterior segment of, ■ NOMENCLATURE ...\n- sample_rows:\n- sample_row_1: The authors would like to thank Lynthera Corporation which\n- sample_row_2: PHG phagocytosis\n- sample_row_3: CHS chitosan | Khalilullah, H.; Afzal, O.; Altamimi, A. S.; Najib Ullah, S. N.; Ojha, A.;\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_04__pdf_table.csv] - table_id: Table 4 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 - header_units: (none inferred) - ro"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__21",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_11__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 10,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_11__pdf_table.csv]\n- table_id: Table 11\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=37, cols=3\n- first_column_row_labels_preview: PHG phagocytosis, Notes, The authors declare no competing financial interest., ■ ACKNOWLEDGMENTS, (1) Ackland, P.; Resnikoff,, The authors would like to thank Lynthera Corporation which, Visual Impairment: Despite Many Successes, the Problem Is Growing., financially supported M.A. with a fellowship. Additionally, it, should be noted that A.E.D. serves as a member of Lynthera’s, Scientific Advisory Board., delivery to the posterior segment of, ■ NOMENCLATURE ...\n- sample_rows:\n- sample_row_1: The authors would like to thank Lynthera Corporation which\n- sample_row_2: PHG phagocytosis\n- sample_row_3: CHS chitosan | Khalilullah, H.; Afzal, O.; Altamimi, A. S.; Najib Ullah, S. N.; Ojha, A.;\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_11__pdf_table.csv] - table_id: Table 11 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 - header_units: (none inferred) - r"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__22",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_22__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -15,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_22__pdf_table.csv]\n- table_id: Table 22\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=39, cols=2\n- first_column_row_labels_preview: respectively, compared to the control groups. Although the, Table 3. Different Groups of Endocytosis Inhibitors and, Their Respective Blocked Pathwaysa, uptake level after treatment with DYN is also statistically, group blocked pathway, significant (p-value <0.05). Treatment of the cells with, control (no inhibitor), cytochalasin D (CYT) showed no decrease in uptake,, NYS CVME, indicating that phagocytosis (PHG) does not play a role in, DYN CME, the uptake of nanoparticles within the range of physicochem- ...\n- sample_rows:\n- sample_row_1: respectively, compared to the control groups. Although the\n- sample_row_2: NYS/CYT CVME/PHG\n- sample_row_3: aAbbreviations: NYS, nystatin; DYN, dynasore; ROT, rottlerin; CYT, | To understand the effect of surface charge on uptake\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_22__pdf_table.csv] - table_id: Table 22 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_id"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__23",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_17__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -36,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_17__pdf_table.csv]\n- table_id: Table 17\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=103, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, fixed with 200 μL of 4% formaldehyde for 15 min and then washed, three times with PBS. For cell staining, nuclear staining was first, Zeta Potential of Nanoparticle Formulations, applied with 200 μL of 300 nM DAPI staining solution for 10 min, under dark condition. Following the treatment, cells were washed, three times with PBS and the cells' cytoplasmic membranes were then, stained for 15 min, under dark conditions, with 200 μL of DiD, PLGA-100 100 ± 6 0.09 ± 0.05 −8 ± 1.5, fluorescent dye solution diluted with PBS (10:1000 v/v). Following, PLGA-150 150 ± 10 0.08 ± 0.05 −13.6 ± 2.9, the treatment, cells were washed three times with PBS and the wells ...\n- sample_rows:\n- sample_row_1: selected for surface modification of bare PLGA NPs to create a\n- sample_row_2: preincubated with optimized concentrations of nystatin (324 μM), | potential range was to fabricate nanoparticles with phys-\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_17__pdf_table.csv] - table_id: Table 17 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__24",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_16__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -46,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_16__pdf_table.csv]\n- table_id: Table 16\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=71, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, VA). CellBrite cytoplasmic membrane dye (DiD) was purchased from, Biotium Inc. (Fremont, CA). Deionized water used throughout the, study was obtained from a Milli-Q Purelab Flex 2 water purification, system (ELGA, LLC, Woodridge, Illinois, IL)., Preparation of PLGA Nanoparticles. Various sizes of, Coumarin-6 loaded PLGA nanoparticles (NP) were synthesized, using the oil-in-water emulsion-solvent evaporation method.34 To, prepare the oil phase, predetermined amounts of PLGA were, dissolved in 0.5 mL of organic solvent containing 5 μg of C6 per 1, mg of PLGA polymer. This oil solution was then added to an aqueous, PVA solution (the surfactant) and sonicated with a probe tip ...\n- sample_rows:\n- sample_row_1: solution of mPEG-NH2 at a concentration of 1 mg/mL for 1 h. NPs | incubation period, the culture media was removed from each well, and\n- sample_row_2: evaporation of the organic solvent and hardening of PLGA | recombinant EGF (rEGF), 0.05 mg/mL bovine pituitary extract\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_16__pdf_table.csv] - table_id: Table 16 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__25",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_19__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:7"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -51,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_19__pdf_table.csv]\n- table_id: Table 19\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=91, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, that smaller nanoparticles are better able to enter cells, and, their higher specific surface area interacts more with cellular, components, causing greater cellular damage.44 Others have, found that smaller nanoparticles are more biocompatible41 or, cause more pathological changes,45 but these outcomes were, based on different nanomaterials and various cell lines.46 One, possible source of toxicity in this study is the presence of trace, organic solvents remaining in the larger nanoparticles due to, 2 a z, 2 2 2 B, incomplete solvent evaporation during synthesis. However, a ...\n- sample_rows:\n- sample_row_1: showed greater than 70% viability at NP concentrations up to\n- sample_row_2: 100 μg/mL, this concentration was used for further NP uptake\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_19__pdf_table.csv] - table_id: Table 19 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__26",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_06__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "prose_carryover_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:10"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -63,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_06__pdf_table.csv]\n- table_id: Table 6\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=101, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, Macrorheology of Mucus. Adv. Drug Delivery Rev. 2009, 61 (2), 86−, 100., Overcome the Mucus Barrier for Drug Delivery: Design, Evaluation, and State-of-the-Art. Medicine in Drug Discovery. 2021, 12,, No. 100110., Ocular Drug Delivery. In Ocular Transporters in Ophthalmic Diseases, and Drug Delivery: Ophthalmology Research; 2008; pp 399−413,, DOI: 10.1007/978-1-59745-375-2-21., (12) Bachu, R. D.; Chowdhury, P.; Al-Saedi, Z. H.; Karla, P. K.;, Boddu, S. H. Ocular Drug Delivery Barriers-Role of Nanocarriers in, Pharmaceutics 2021, 13 (5), 687. ...\n- sample_rows:\n- sample_row_1: Ocular Delivery of Loteprednol Etabonate: A Corneal Penetration\n- sample_row_2: in Collagen Particles: Corneal Penetration and Suppression of\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_06__pdf_table.csv] - table_id: Table 6 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (none"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__27",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_13__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "prose_carryover_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:10"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -63,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_13__pdf_table.csv]\n- table_id: Table 13\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=110, cols=2\n- first_column_row_labels_preview: ACS Biomaterials Science & Engineering, Macrorheology of Mucus. Adv. Drug Delivery Rev. 2009, 61 (2), 86−, 100., Overcome the Mucus Barrier for Drug Delivery: Design, Evaluation, and State-of-the-Art. Medicine in Drug Discovery. 2021, 12,, No. 100110., Ocular Drug Delivery. In Ocular Transporters in Ophthalmic Diseases, and Drug Delivery: Ophthalmology Research; 2008; pp 399−413,, DOI: 10.1007/978-1-59745-375-2-21., (12) Bachu, R. D.; Chowdhury, P.; Al-Saedi, Z. H.; Karla, P. K.;, Boddu, S. H. Ocular Drug Delivery Barriers-Role of Nanocarriers in, Pharmaceutics 2021, 13 (5), 687. ...\n- sample_rows:\n- sample_row_1: Ocular Delivery of Loteprednol Etabonate: A Corneal Penetration\n- sample_row_2: in Collagen Particles: Corneal Penetration and Suppression of\n- sample_row_3: ACS Biomaterials Science & Engineering | pubs.acs.org/journal/abseba Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_13__pdf_table.csv] - table_id: Table 13 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (non"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__28",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_05__pdf_table.csv",
+      "section_label": "Characterization-only table.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "characterization_only",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -118,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_05__pdf_table.csv]\n- table_id: Table 5\n- title_or_caption: Characterization-only table.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=24, cols=6\n- first_column_row_labels_preview: groups of nanoparticles. These, deeper understanding, HCECs, which, development of nanoformulations for ophthalmic applications., SEM, HCECs, Allan E. David − Department of Chemical Engineering,, MTT, Auburn University, Auburn, Alabama 36849, United States;, lium bromide, orcid.org/0000-0002-5145-4075; Email: aedavid@, NYS ...\n- sample_rows:\n- sample_row_1: groups of nanoparticles. These | important findings provide a | DLS | dynamic light scattering\n- sample_row_2: NYS | nystatin\n- sample_row_3: Notes\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_05__pdf_table.csv] - table_id: Table 5 - title_or_caption: Characterization-only table. - column_headers: 0 || 1 || 2 || 3 || 4 || 5 - header"
+    },
+    {
+      "candidate_id": "YGA8VQKU__candidate_table__29",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_12__pdf_table.csv",
+      "section_label": "Characterization-only table.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "characterization_only",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -118,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_12__pdf_table.csv]\n- table_id: Table 12\n- title_or_caption: Characterization-only table.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=27, cols=6\n- first_column_row_labels_preview: groups of nanoparticles. These, deeper understanding, HCECs, which, development of nanoformulations for ophthalmic applications., SEM, HCECs, Allan E. David − Department of Chemical Engineering,, MTT, Auburn University, Auburn, Alabama 36849, United States;, lium bromide, orcid.org/0000-0002-5145-4075; Email: aedavid@, NYS ...\n- sample_rows:\n- sample_row_1: groups of nanoparticles. These | important findings provide a | DLS | dynamic light scattering\n- sample_row_2: NYS | nystatin\n- sample_row_3: Notes\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/YGA8VQKU/YGA8VQKU__table_12__pdf_table.csv] - table_id: Table 12 - title_or_caption: Characterization-only table. - column_headers: 0 || 1 || 2 || 3 || 4 || 5 - heade"
+    }
+  ]
+}

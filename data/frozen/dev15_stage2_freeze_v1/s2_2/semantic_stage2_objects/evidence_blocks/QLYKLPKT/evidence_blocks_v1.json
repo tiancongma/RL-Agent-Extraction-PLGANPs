@@ -1,0 +1,306 @@
+{
+  "paper_key": "QLYKLPKT",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/QLYKLPKT.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_scope_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_candidate_artifact_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/semantic_stage2_objects/candidate_blocks/QLYKLPKT/candidate_blocks_v1.json",
+  "input_contract": {
+    "input_packing_mode": "ordered_blocks",
+    "table_mode": "summary",
+    "summary_first_column_enhancement": true,
+    "ordered_block_order": [
+      "metadata",
+      "synthesis_method",
+      "experimental_design",
+      "table",
+      "table",
+      "paragraph",
+      "paragraph",
+      "synthesis_method",
+      "table"
+    ],
+    "selector_strategy": "role_aware_selector_v1"
+  },
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_2_evidence_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_profile": "role_aware_general_v1",
+  "archetype_overlay": "doe_optimization_v1",
+  "evidence_blocks": [
+    {
+      "block_id": "QLYKLPKT__metadata__01",
+      "block_type": "metadata",
+      "source_type": "document_metadata",
+      "origin_locator": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+      "selection_reason": "document_identity_context",
+      "selection_feature": "build_metadata_block",
+      "rank_score": null,
+      "order_index": 0,
+      "text_content": "[METADATA]\nkey: QLYKLPKT\ndoi: 10.2147/IJN.S54040\ntitle: Development of PLGA-based itraconazole injectable nanospheres for sustained release",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": null,
+      "role_assignment": null,
+      "role_priority": "primary",
+      "role_score_breakdown": null
+    },
+    {
+      "block_id": "QLYKLPKT__preparation_method__01",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/QLYKLPKT.pdf.txt#paragraph:1#segment:2",
+      "selection_reason": "role_constrained_preparation_method_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 1,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nMaterials: A liquid chromatography-tandem mass spectrometry (LC-MS/ MS) assay was developed and validated to analyze the ITZ concentration in rat plasma. The obtained pharmacokinetic parameters indicated that our formulation was bioequivalent to Sporanox, but it provided a successful sustained release of ITZ .100 ng/mL for up to 24 hours. This newly developed PLGA-ITZ-NS could be a better alternative to Sporanox for intravenous injection of ITZ. Materials and methods Materials PLGA (polylactic-glycolic acid, ratio: 50:50, molecular weight 30,000–60,000 Da), poloxamer 188 (Pluronic® F-68), ITZ, Dulbecco’s phosphate buffered saline (Life Technologies, Carlsbad, CA, USA), dextrose, sucrose, man­ nitol, acetone, acetonitrile, and HP-β-CD were all purchased from Sigma-Aldrich (St Louis, MO, USA). Sporanox was purchased from Walgreens (Deerfield, IL, USA). Deion­ ized water (Thermo Fisher Scientific, Waltham, MA, USA) was used throughout the study to prepare the solution and mobile phase. Preparation of PLGA-ITZ-NS The unloaded PLGA nanoparticles and the PLGA-ITZ- NS were synthesized by a nanoprecipitation method.16 In addition, a 1% (w/v) PLGA solution was prepared by dissolving the PLGA (50:50) in acetone. To get an optimal concentration of the surfactant used to prepare PLGA",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 2.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__experimental_design__01",
+      "block_type": "experimental_design",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/QLYKLPKT.pdf.txt#paragraph:0#segment:0",
+      "selection_reason": "role_constrained_experimental_design_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 7,
+      "order_index": 2,
+      "text_content": "[EXPERIMENTAL_DESIGN_BLOCK]\nExperimental design: varying concentrations or batches. Materials and methods: PLGA-ITZ-NS were prepared by a nanoprecipitation method. Their physicochemical properties, including size, zeta potential, external morphology and encap­ sulation efficiency, were characterized by dynamic light scattering (DLS), scanning electron microscopy (SEM) and high performance liquid chromatography (HPLC). The effect of the different selected lyoprotectants with various concentrations on NS particles size and surface charge were also assessed. Rapid and sensitive HPLC and liquid chromatography-tandem mass spectrometry (LC-MS/MS) methods were developed to determine ITZ concentrations in formulation and in rat plasma, respectively. Pharmacokinetics of the optimum PLGA-ITZ-NS formulation was compared with the former commercial Sporanox injection formulation using rats as the animal model. Noncompartmental pharmacokinetic parameters were obtained by WinNonlin® software.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "EXPERIMENTAL_DESIGN",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.0
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__variable_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_08__pdf_table.csv",
+      "selection_reason": "role_constrained_variable_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 14,
+      "order_index": 3,
+      "text_content": "Experimental design: varying concentrations or batches. Variable table: formulation factors and concentrations. [TABLE_SUMMARY data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=89, cols=2\n- first_column_row_labels_preview: the known concentrations of ITZ. The limit of detection, and the limit of quantification were evaluated, based on a, signal-to-noise ratio of 6. The accuracy and precision of the, intraday and the interday assay were determined by analyzing, samples (n=6) with three different concentrations (16, 150,, and 1,600 ng/mL), using a calibration curve constructed, on the same day or three sequential days. The acceptable, reproducibility concentration was within ±15%. The matrix, Results, effect and protein extraction recovery (%) were performed at, Ns formulation, optimization,, concentrations of 10, 150, and 1,600 ng/mL, according to the ...\n- sample_rows:\n- sample_row_1: between the PLGA-ITZ-NS group and the Sporanox group. | Note: 3 mg/ml was selected as optimal surfactant concentration to prepare Plga-\n- sample_row_2: concentration was 3 mg/mL, the optimal PLGA-ITZ-NS\n- sample_row_3: the known concentrations of ITZ. The limit of detection | separately for each rat via WinNonlin® 3.0 (Certara, St Louis,\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "VARIABLE_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 1.0,
+        "structure_score": 0.0,
+        "penalty_score": 0.0,
+        "final_score": 13.96
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__formulation_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_09__pdf_table.csv",
+      "selection_reason": "role_constrained_formulation_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 14,
+      "order_index": 4,
+      "text_content": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=64, cols=2\n- first_column_row_labels_preview: Table 2 Physicochemical properties of Plga-ITZ-Ns with, different Plga:ITZ initial ratios, PLGA:ITZ Particle size PDI Zeta potential EE%, (w/w) (nm) (mV), also be noted that these particles were fairly uniform in size,, 5:1 175±5 0.41±0.03 −17±1 61±4, and the average particle size was consistent with what was, 10:1 178±6 0.19±0.03 −20±1 72±1, 15:1 191±2 0.14±0.02 −30±1 73±1, Note: ratio of 10:1 was then selected to prepare Plga-ITZ-Ns for the remaining, studies., Plga-ITZ-Ns, itraconazole-loaded poly(lactic-co-glycolic Abbreviations: ...\n- sample_rows:\n- sample_row_1: Note: 2% sucrose was then selected as optimal lyoprotectant and concentration for Ns freeze-drying.\n- sample_row_2: Note: ratio of 10:1 was then selected to prepare Plga-ITZ-Ns for the remaining\n- sample_row_3: Table 2 Physicochemical properties of Plga-ITZ-Ns with | The morphology of lyophilized PLGA-ITZ-NS was\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 4.0,
+        "structure_score": 4.0,
+        "penalty_score": -2.0,
+        "final_score": 13.559999999999999
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__optimization_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/QLYKLPKT.pdf.txt#paragraph:10#segment:0",
+      "selection_reason": "role_constrained_optimization_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 9,
+      "order_index": 5,
+      "text_content": "[OPTIMIZATION_RESULT_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. Conclusion In this study, ITZ was successfully incorporated into PLGA nanoparticles by the nanoprecipitation method. The physi­ cochemical properties were systematically evaluated and optimized to obtain desired PLGA-ITZ-NS around 200 nm with a narrow size distribution, stable surface charge, and high encapsulation efficiency.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "OPTIMIZATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 9.0
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__context_fallback__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/QLYKLPKT.pdf.txt#paragraph:8#segment:0",
+      "selection_reason": "role_constrained_context_fallback_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 6,
+      "order_index": 6,
+      "text_content": "[PARAGRAPH_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. 0.706 Notes: P-value was obtained using a Student’s t-test. aNormalized to 1 mg/kg dose. Abbreviations: ITZ, itraconazole; PLGA-ITZ-NS, itraconazole-loaded poly(lactic- co-glycolic acid) nanospheres; n, number of rats used; T½, terminal biological half- life; AUC, total area under the plasma concentration versus time curve; MRT, mean residence time; Vss, volume of distribution at steady state; CL, clearance. contain large particles or aggregates. Unequal particle size can cause pharmacokinetic parameters to be irregular and can affect the therapeutic efficiency of a drug ­formulation. zeta potential indicates the amount of charges on the surface of nanoparticles. Müller et al demonstrated that a high zeta potential value can ensure a high energy barrier to stabilize nanosuspensions.29 Formulation with a high drug encapsula­ tion efficiency can improve its bioavailability, thus making better therapeutic efficacy.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "CONTEXT_FALLBACK",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 6.0
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__preparation_method__02",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/QLYKLPKT.pdf.txt#paragraph:6#segment:11",
+      "selection_reason": "role_constrained_preparation_method_secondary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 7,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: There are no significant ­differences on the dose-normalized area under the plasma drug concen­ tration–time curve and clearance between PLGA-ITZ-NS and Sporanox, suggesting a bioequivalence of the two formulations. The difference shown in Vss could be due to the special elimination process of the nanoparticles by mac­ rophage phagocytosis. The terminal elimination half-lives were similar between the two formulations, indicating that the plasma samplings were appropriate to catch the terminal elimination phase. It is worth noting that PLGA-ITZ-NS had a significantly longer mean residence time than that of the Sporanox formulation, which is consistent with the observed sustained plasma ITZ level by PLGA-ITZ-NS formulation. Discussion In the past several years, some new ITZ delivery systems have been developed, such as nanosuspension,13 microemulsion,21 liposomes,22 polymeric micelles,23 and nanoparticles,5,6 to improve ITZ’s solubility and bioavailability, thus obtaining better intravenous formulations. Despite those efforts, a sustained release of ITZ has not been completely ­successful. PLGA, as a biocompatible and biodegradable polymer approved by the FDA, has been widely used for the sustained release of different lipophilic drugs.24 Therefore, in this study, we applied PLGA as a drug carrier to obtain a new ITZ intravenous formulation. ­Several methods are currently employed to formulate PLGA nanoparticles, such as emulsion evaporation, salting out, ­nanoprecipitation, 10,000 1,000 Size (diameter, nm) B A Size distribution by intensity",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": false,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "secondary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 2.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    },
+    {
+      "block_id": "QLYKLPKT__formulation_table__02",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_10__pdf_table.csv",
+      "selection_reason": "role_constrained_formulation_table_secondary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 13,
+      "order_index": 8,
+      "text_content": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=16, cols=7\n- first_column_row_labels_preview: the pharmacokinetics study., Table 3 Physicochemical properties of freeze-dried Plga-ITZ-Ns with various types and concentrations of lyoprotectants, Lyoprotectant, sucrose, 5%, 10%, Mannitol, 5%, 10%, Dextrose, 5%, 10% ...\n- sample_rows:\n- sample_row_1: Note: 2% sucrose was then selected as optimal lyoprotectant and concentration for Ns freeze-drying.\n- sample_row_2: Table 3 Physicochemical properties of freeze-dried Plga-ITZ-Ns with various types and concentrations of lyoprotectants\n- sample_row_3: the pharmacokinetics study. | 250 ng/mL and 5 ng/mL, respectively. These results indicated\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": false,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "secondary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 3.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 13.280000000000001
+      }
+    }
+  ],
+  "coverage_summary": {
+    "total_blocks": 9,
+    "synthesis_blocks": 2,
+    "table_blocks": 3,
+    "caption_blocks": 0,
+    "paragraph_blocks": 3,
+    "has_optimization_signal": true,
+    "has_doe_signal": true,
+    "has_sequential_signal": true
+  },
+  "required_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "selected_roles": [
+    "PREPARATION_METHOD",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+    "PREPARATION_METHOD",
+    "FORMULATION_TABLE"
+  ],
+  "missing_or_weak_roles": [
+    "MATERIALS"
+  ],
+  "duplicate_table_suppression_events": [],
+  "feature_activation_snapshot": {
+    "ordered_evidence_packing": true,
+    "summary_table_mode": true,
+    "table_selection_scoring": true,
+    "selector_debug_available": true,
+    "candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+    "section_aware_candidate_split": true,
+    "candidate_table_isolation": true,
+    "candidate_noise_filtering": true,
+    "doe_pre_llm_detection": true,
+    "sequential_optimization_detection": true,
+    "role_aware_evidence_selection": true,
+    "doe_overlay_selection": true,
+    "duplicate_table_suppression": false
+  },
+  "technical_status": {
+    "artifact_readable": true,
+    "required_top_level_fields_present": true,
+    "required_block_fields_present": true,
+    "non_empty_evidence_blocks": true,
+    "overall": "pass"
+  },
+  "design_status": {
+    "input_contract_satisfied": true,
+    "required_features_active": false,
+    "required_roles_present": [
+      "CONTEXT_FALLBACK",
+      "EXPERIMENTAL_DESIGN",
+      "FORMULATION_TABLE",
+      "OPTIMIZATION_RESULT",
+      "PREPARATION_METHOD",
+      "VARIABLE_TABLE"
+    ],
+    "missing_or_weak_roles": [
+      "MATERIALS"
+    ],
+    "overall": "fail",
+    "nonconformance_reasons": [
+      "missing_or_weak_role:MATERIALS"
+    ]
+  }
+}

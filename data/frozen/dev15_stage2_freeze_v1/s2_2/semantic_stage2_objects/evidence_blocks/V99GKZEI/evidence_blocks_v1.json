@@ -1,0 +1,235 @@
+{
+  "paper_key": "V99GKZEI",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/V99GKZEI.html.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_scope_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_candidate_artifact_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/semantic_stage2_objects/candidate_blocks/V99GKZEI/candidate_blocks_v1.json",
+  "input_contract": {
+    "input_packing_mode": "ordered_blocks",
+    "table_mode": "summary",
+    "summary_first_column_enhancement": true,
+    "ordered_block_order": [
+      "metadata",
+      "synthesis_method",
+      "experimental_design",
+      "paragraph",
+      "paragraph",
+      "synthesis_method"
+    ],
+    "selector_strategy": "role_aware_selector_v1"
+  },
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_2_evidence_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_profile": "role_aware_general_v1",
+  "archetype_overlay": "doe_optimization_v1",
+  "evidence_blocks": [
+    {
+      "block_id": "V99GKZEI__metadata__01",
+      "block_type": "metadata",
+      "source_type": "document_metadata",
+      "origin_locator": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+      "selection_reason": "document_identity_context",
+      "selection_feature": "build_metadata_block",
+      "rank_score": null,
+      "order_index": 0,
+      "text_content": "[METADATA]\nkey: V99GKZEI\ndoi: 10.1039/C5RA27386B\ntitle: Nanospheres based on PLGA/amphiphilic cyclodextrin assemblies as potential enhancers of Methylene Blue neuroprotective effect",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": null,
+      "role_assignment": null,
+      "role_priority": "primary",
+      "role_score_breakdown": null
+    },
+    {
+      "block_id": "V99GKZEI__preparation_method__01",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/V99GKZEI.html.txt#paragraph:0#segment:0",
+      "selection_reason": "role_constrained_preparation_method_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 14,
+      "order_index": 1,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: 2.3 Preparation of NPs MB loaded-PLGA/SC6OH NPs were prepared by the nanoprecipitation/solvent displacement method. Briefly, MB (0.5 mg), PLGA (20 mg) and different amounts of SC6OH (10, 20, 30 and 40 mg) were dissolved in acetone (6 ml). The organic phase was poured into 20 ml of aqueous solution under magnetic stirring, thus forming a milky colloidal suspension. The suspensions were left to stir overnight to eliminate the organic solvent. 37 NPs were then purified by centrifugation at 5000 rpm for 15 min, collecting and centrifuging again the supernatants at 18 000 rpm for 30 min with a Beckman Optima™ XL-100K centrifuge. The supernatants were eliminated. The pellets were re-suspended in 1 ml of water, and then freeze-dried (VirtTis Benchtop K Instrument, SP 127 Scientific, USA) after addition of trehalose (5% w/v) as a lyoprotectant agent. MB loaded-PLGA NPs were prepared dissolving MB (0.5 mg), PLGA (20 mg) and Tween 80® (0.5% w/v) in acetone (6 ml) and adopting the previous procedure. Additional MB loaded-PLGA NPs were obtained by the W/O/W emulsion/solvent evaporation method by dissolution of MB (0.5 mg) in 1 ml of water. This solution was added dropwise to 5 ml of an acetone/dichloromethane mixture (1 : 1, v/v) containing PLGA (20 mg) and Span® 80 (0.5%, w/v), under sonication over an ice bath for 2 min. This first emulsion was added dropwise to 50 ml of an aqueous solution containing Pluronic® F68 (3%, w/v) under sonication for 1 min. 38 The colloidal suspension was stirred overnight to eliminate the organic solvent, and then was subjected to the same procedure described above (purification by centrifugation and lyophilization in presence of trehalose).",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 8.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 14.0
+      }
+    },
+    {
+      "block_id": "V99GKZEI__experimental_design__01",
+      "block_type": "experimental_design",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/V99GKZEI.html.txt#paragraph:0#segment:2",
+      "selection_reason": "role_constrained_experimental_design_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 7,
+      "order_index": 2,
+      "text_content": "[EXPERIMENTAL_DESIGN_BLOCK]\nExperimental design: varying concentrations or batches. In the presence of different amounts of ACyD, a large increase of E.E.% was observed with respect to the NPs prepared both with the nanoprecipitation/solvent displacement method (E.E.% of about 3%, w/w) and with the W/O/W double emulsion method (E.E.% of about 7%, w/w) but without SC6OH. Due to the higher affinity of hydrophilic MB for water, rather than for the organic solvent (log P value in octanol : PBS at pH 7 is −0.9), 50 it interacts poorlywith the hydrophobic PLGA, leading plausibly, when the PLGA NPs were prepared in the absence of SC6OH, to drug diffusion from the organic phase containing PLGA to the external aqueous environment. 18 On the other hand, the amphiphilic characteristics of SC6OH can help the interaction both with hydrophobic PLGA, by means of SC6OH hydrophobic chains, and with hydrophilic MB which interacts with hydrophilic surface rich of oligo-ethylene groups. It is probable that SC6OH is able to keep MB into the organic phase, along with PLGA, thus reducing MB diffusion. ACyD plays a key-role in the entrapment of MB, as it is evidenced by MB E.E.% in PLGA/SC6OH NPs which have been obtained by nanoprecipitation. By using this technique, MB E.E.% values are higher than those obtained using W/O/W emulsion/solvent evaporation, although this latter method is generally utilized to entrap hydrophilic drugs within PLGA.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "EXPERIMENTAL_DESIGN",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.0
+      }
+    },
+    {
+      "block_id": "V99GKZEI__optimization_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/V99GKZEI.html.txt#paragraph:0#segment:1",
+      "selection_reason": "role_constrained_optimization_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 7,
+      "order_index": 3,
+      "text_content": "[OPTIMIZATION_RESULT_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. Intravenous administration of MB could be difficult because of its poor cooperation with patients, thus entrapment in a carrier system could improve compliance. PLGA nanospheres have been proposed as a delivery system for MB, but they suffer from low encapsulation efficiency and rapid release of their cargo. Here, we design nanospheres with high affinity for hydrophilic MB based on PLGA and a non-ionic amphiphilic cyclodextrin (SC6OH) as an additional component. Interaction between MB and SC6OH was firstly investigated by UV-vis spectroscopy and steady-state emission fluorescence in aqueous solution. PLGA/SC6OH nanospheres loaded with MB were prepared by a nanoprecipitation/solvent displacement method and characterized by STEM and FTIR-ATR analysis. They display sizes of about 200 nm, and a higher encapsulation efficiency with respect to PLGA nanospheres prepared without SC6OH.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "OPTIMIZATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 7.0
+      }
+    },
+    {
+      "block_id": "V99GKZEI__context_fallback__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/V99GKZEI.html.txt#paragraph:0#segment:10",
+      "selection_reason": "role_constrained_context_fallback_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 3,
+      "order_index": 4,
+      "text_content": "[PARAGRAPH_BLOCK]\nOptimization result: best/highest/efficiency/loading outcome. Inline table/result split candidate. Table 1 Overall properties of NPs (sizes), polydispersity index (P.I.), yield percentage and encapsulation efficiency percentage (E.E.%) of MB loaded-PLGA NPs prepared in the presence and in the absence of SC6OH.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "CONTEXT_FALLBACK",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 1.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 3.0
+      }
+    },
+    {
+      "block_id": "V99GKZEI__preparation_method__02",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/V99GKZEI.html.txt#paragraph:1#segment:0",
+      "selection_reason": "role_constrained_preparation_method_secondary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 8,
+      "order_index": 5,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: 3.65 MB loaded-PLGA/SC6OH 40 b 201 ± 2 0.16 ± 0.08 40.85 ± 4.01 9.65 ± 0.31 57.89 ± 1.86 a The amounts of MB and PLGA were always maintained at 0.5 mg and 20 mg, respectively. The amount of SC6OH was changed from 10 to 40 mg. b NPs were prepared with the nanoprecipitation/solvent displacement method using acetone as the organic phase. c NPs were prepared with the W/O/W emulsion/solvent evaporation method using a mixture of acetone/dichloromethane (1 : 1, v/v) as the organic phase; Tween 80 and Pluronic F68® were used as surfactants.",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": false,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "secondary",
+      "role_score_breakdown": {
+        "heading_score": 3.0,
+        "cue_score": 3.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 8.0
+      }
+    }
+  ],
+  "coverage_summary": {
+    "total_blocks": 6,
+    "synthesis_blocks": 2,
+    "table_blocks": 0,
+    "caption_blocks": 0,
+    "paragraph_blocks": 3,
+    "has_optimization_signal": false,
+    "has_doe_signal": true,
+    "has_sequential_signal": false
+  },
+  "required_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "selected_roles": [
+    "PREPARATION_METHOD",
+    "EXPERIMENTAL_DESIGN",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+    "PREPARATION_METHOD"
+  ],
+  "missing_or_weak_roles": [
+    "MATERIALS",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE"
+  ],
+  "duplicate_table_suppression_events": [],
+  "feature_activation_snapshot": {
+    "ordered_evidence_packing": true,
+    "summary_table_mode": true,
+    "table_selection_scoring": true,
+    "selector_debug_available": true,
+    "candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+    "section_aware_candidate_split": true,
+    "candidate_table_isolation": true,
+    "candidate_noise_filtering": true,
+    "doe_pre_llm_detection": true,
+    "sequential_optimization_detection": false,
+    "role_aware_evidence_selection": true,
+    "doe_overlay_selection": true,
+    "duplicate_table_suppression": false
+  },
+  "technical_status": {
+    "artifact_readable": true,
+    "required_top_level_fields_present": true,
+    "required_block_fields_present": true,
+    "non_empty_evidence_blocks": true,
+    "overall": "pass"
+  },
+  "design_status": {
+    "input_contract_satisfied": true,
+    "required_features_active": false,
+    "required_roles_present": [
+      "CONTEXT_FALLBACK",
+      "EXPERIMENTAL_DESIGN",
+      "OPTIMIZATION_RESULT",
+      "PREPARATION_METHOD"
+    ],
+    "missing_or_weak_roles": [
+      "MATERIALS",
+      "VARIABLE_TABLE",
+      "FORMULATION_TABLE"
+    ],
+    "overall": "fail",
+    "nonconformance_reasons": [
+      "missing_or_weak_role:MATERIALS",
+      "missing_or_weak_role:VARIABLE_TABLE",
+      "missing_or_weak_role:FORMULATION_TABLE"
+    ]
+  }
+}

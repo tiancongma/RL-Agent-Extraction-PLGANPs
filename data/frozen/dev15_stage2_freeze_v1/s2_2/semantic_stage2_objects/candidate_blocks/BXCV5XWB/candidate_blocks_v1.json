@@ -1,0 +1,1464 @@
+{
+  "paper_key": "BXCV5XWB",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 62,
+    "prose_candidates": 46,
+    "table_candidates": 16,
+    "candidates_with_noise_flags": 46,
+    "candidates_with_quality_flags": 60,
+    "has_doe_signal": true,
+    "has_sequential_signal": false,
+    "has_optimization_signal": false
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Over short times (~ 7 days), MSCs incubated with all KGN-loaded formulations exhibited a similar increase in sulfated glycosaminoglycans, characteristic of chondrogenic differentiation, compared with non-KGN loaded formulations. Similar content being viewed by others Enhancing the function of PLGA-collagen scaffold by incorporating TGF-β1-loaded PLGA-PEG-PLGA nanoparticles for cartilage tissue engineering using human dental pulp stem cells The role of three-dimensional scaffolds based on polyglycerol sebacate/ polycaprolactone/ gelatin in the presence of Nanohydroxyapatite in promoting chondrogenic differentiation of human adipose-derived mesenchymal stem cells Evaluation of the Effect of Polylactic-co-Glycolic Acid Nanoparticles on the Characteristics of Stem Cells Derived from Primary Teeth Explore related subjects Biomethanol Biomaterials-Cells Nanomaterial Nanomedicine and Nanotoxicology Nanoparticles Cell-nanoparticle Interaction Chondrogenesis and Cartilage Regeneration Strategies Introduction Osteoarthritis (OA), a degenerative joint disorder characterized by the degradation of articular cartilage, a decrease in joint function, and severe pain, 1 , 4 affects 10–15% of adults over the age of 60.",
+      "text_preview": "Over short times (~ 7 days), MSCs incubated with all KGN-loaded formulations exhibited a similar increase in sulfated glycosaminoglycans, characteristic of chondrogenic differentiation, compared with non-KGN loaded formu"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:2",
+      "paragraph_index": 0,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "35 Mesenchymal stem cells (MSCs) have recently garnered significant interest for OA therapy. Intra-articular injection of MSCs into the osteoarthritic joint has been shown to decrease OA-related pain, 20 promote collagen regeneration in full-thickness defects, 19 , 33 and inhibit OA progression through host tissue engraftment and release of bioactive molecules. 1 , 6 However, there are limitations to MSC use. For example, current MSC therapies for OA often result in the formation of fibrocartilage as opposed to hyaline cartilage. 13 , 20 , 31 MSC plasticity can also result in heterogeneous populations of cells, which is not always therapeutically desirable. 27 Kartogenin (KGN), a recently discovered synthetic small molecule, has the potential to improve chondrogenic differentiation of MSCs for OA treatments. KGN has both a chondrogenic and a chondroprotective effect on MSCs, 14 driving differentiation to chondrocytes and preventing dedifferentiation, which is often observed in mature chondrocytes in vitro . 14 It acts by binding intracellularly to filamin A and freeing core-binding factor subunit β (CBFβ), resulting in CBFβ nuclear localization where it can regulate runt-related transcription factor (RUNX) associated transcription and induce chondrogenesis. 14 KGN overcomes many of the limitations of transforming growth factor beta 1 (TGF-β1), which is one of the most common in vitro chondrogenic supplements, including a longer half-life, less osteophyte formation, and less downstream osteogenesis. 21 However, KGN is extremely hydrophobic, requiring solubilization in cytotoxic organic solvents. 3 By delivering KGN through a nanoparticle formulation, cell death resulting from exposure to these organic solvents can be avoided and delivery can potentially be localized to cells of interest. Polymeric nanoparticles with hydrophobic regions can encapsulate hydrophobic molecules, improving their solubility and stability.",
+      "text_preview": "35 Mesenchymal stem cells (MSCs) have recently garnered significant interest for OA therapy. Intra-articular injection of MSCs into the osteoarthritic joint has been shown to decrease OA-related pain, 20 promote collagen"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:30",
+      "paragraph_index": 0,
+      "segment_index": 30,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "34 Various KGN nanoparticle formulations have been reported recently (Table 1 ).",
+      "text_preview": "34 Various KGN nanoparticle formulations have been reported recently (Table 1 )."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:31",
+      "paragraph_index": 0,
+      "segment_index": 31,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "5 , 12 , 15 , 16 , 17 , 18 , 22 , 30 , 37 , 39 We highlighted the main properties credited with affecting KGN release in these studies, noting that the properties affecting release are largely varied. Although promising in vivo data has been obtained using some of these formulations, 5 , 15 , 16 , 17 , 30 a detailed analysis of the effect of nanoparticle physical and chemical properties on factors such as KGN release has not yet been reported. Thorough characterization can enable the design of nanoparticles with desired KGN loading and release properties, as well as effects on MSC uptake, viability, and differentiation, potentially leading to improved therapeutic outcomes.",
+      "text_preview": "5 , 12 , 15 , 16 , 17 , 18 , 22 , 30 , 37 , 39 We highlighted the main properties credited with affecting KGN release in these studies, noting that the properties affecting release are largely varied. Although promising"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:40",
+      "paragraph_index": 0,
+      "segment_index": 40,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 1 Summary of reported kartogenin containing nanoparticle formulations.",
+      "text_preview": "Table 1 Summary of reported kartogenin containing nanoparticle formulations."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:41",
+      "paragraph_index": 0,
+      "segment_index": 41,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Here, we report three KGN-loaded nanoparticles formulations fabricated using nanoprecipitation based on poly(lactic-co-glycolic acid) (PLGA) with varied surface modifications. PLGA was selected as a nanoparticle polymer commonly used in delivery of hydrophobic drugs, including KGN. 2 , 23 , 28 , 30 Specifically, we developed KGN-loaded PLGA, PLGA–poly(ethylene glycol) (PLGA–PEG), and PLGA–PEG–hyaluronic acid (PLGA–PEG–HA) nanoparticles. We sought to vary surface properties from hydrophobic (i.e., PLGA) to hydrophilic (i.e., PLGA–PEG and PLGA–PEG–HA) and surface charge from negative (i.e., PLGA–PEG–HA and PLGA) to positive (i.e., PLGA–PEG).",
+      "text_preview": "Here, we report three KGN-loaded nanoparticles formulations fabricated using nanoprecipitation based on poly(lactic-co-glycolic acid) (PLGA) with varied surface modifications. PLGA was selected as a nanoparticle polymer"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:5",
+      "paragraph_index": 0,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "HA was selected as a potential targeting moiety for human (hMSCs) through the CD44 cell surface glycoprotein. 9 , 40 We demonstrated that changing nanoparticle properties had distinct effects on nanoparticle physicochemical properties, suspension stability, and KGN release. Interestingly, all KGN-loaded nanoparticle formulations appeared to exhibit similar overall levels of hMSC interaction, with varying uptake vs. cell-surface association. Finally, we observed that over a short incubation time of 7 days, all KGN-loaded particles began producing proteins indicative of chondrogenic differentiation. Materials and Methods Materials KGN was purchased from Abcam (Cambridge, MA). HA sodium salt (molecular weight (MW) 39 kDa) was obtained from Lifecore Biomedical (Chaska, MN). PLGA (1:1 d , l -lactic to glycolic acid, MW 15.1 kDa), PEG-bis-amine (PEG-bis-NH 2 MW 2 kDa), poly(vinyl alcohol) (PVA, MW 89–98 kDa), N -hydroxysulfosuccinimide (sulfo-NHS), N , N ′-dicyclohexylcarbodiimide (DCC), N -(3-dimethylaminopropyl)- N ′-ethylcarbodiimide hydrochloride (EDC), diethyl ether, methanol, dichloromethane (DCM), acetonitrile (ACN), 2-( N -morpholino)ethanesulfonic acid (MES), fluorescein isothiocyanate (FITC), hexadecyltrimethylammonium bromide (CTAB), phosphate buffered saline (PBS), dimethyl sulfoxide (DMSO), dexamethasone, l -proline, ascorbate-2-phosphate, alcian blue, sodium acetate, ethylenediaminetetraacetic acid disodium salt (EDTA), l -cysteine hydrochloric acid (HCl), trifluoroacetic acid (TFA), papain, disodium phosphate, and a Kaiser test kit were obtained from Sigma-Aldrich (St.",
+      "text_preview": "HA was selected as a potential targeting moiety for human (hMSCs) through the CD44 cell surface glycoprotein. 9 , 40 We demonstrated that changing nanoparticle properties had distinct effects on nanoparticle physicochemi"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:6",
+      "paragraph_index": 0,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Louis, MO). Deuterated chloroform was purchased from Cambridge Isotope Laboratories, Inc. (Andover, MA). UranyLess stain solution was purchased from Electron Microscopy Sciences (Hatfield, PA). Cell Counting Kit-8 (CCK-8) was purchased from Dojindo Molecular Technologies (Tokyo, Japan). High and low-glucose Dulbecco’s modified Eagle’s medium (DMEM) and fetal bovine serum (FBS) were purchased from Gibco-BRL (Grand Island, NY). Penicillin–streptomycin and trypsin–EDTA were purchased by Caisson Labs (Smithfield, UT). l -Glutamine, sodium pyruvate, TGF-β1 recombinant human protein, Quant-iT™ PicoGreen™ dsDNA assay kit and insulin/transferrin/selenium (ITS+) premix were purchased from Fisher Scientific (Hampton, NH). A Blyscan sulfated glycosaminoglycan (sGAG) assay was purchased from Biocolor Ltd (Carrickfergus, UK). Bone marrow-derived hMSCs (33 year old female) were purchased from Lonza (Hopkinton, MA).",
+      "text_preview": "Louis, MO). Deuterated chloroform was purchased from Cambridge Isotope Laboratories, Inc. (Andover, MA). UranyLess stain solution was purchased from Electron Microscopy Sciences (Hatfield, PA). Cell Counting Kit-8 (CCK-8"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:7",
+      "paragraph_index": 0,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "All chemicals were of analytical reagent quality or high performance liquid chromatography (HPLC) grade. Ultrapure water (",
+      "text_preview": "All chemicals were of analytical reagent quality or high performance liquid chromatography (HPLC) grade. Ultrapure water ("
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "8.2 MΩ cm Milli-Q, Millipore Sigma, Billerica, MA) was utilized in all experiments requiring water",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8.2 MΩ cm Milli-Q, Millipore Sigma, Billerica, MA) was utilized in all experiments requiring water. Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles The PLGA–PEG copolymer was synthesized as previously reported. 38 All nanoparticles were prepared using nanoprecipitation. PLGA or PLGA–PEG (50 mg) was dissolved in ACN (10 mL) and added to 0.2% w/v PVA in water (100 mL) at 0.5 mL/min.",
+      "text_preview": "8.2 MΩ cm Milli-Q, Millipore Sigma, Billerica, MA) was utilized in all experiments requiring water. Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles The PLGA–PEG copolymer was synthesized as previously report"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "KGN or FITC (5 mg) were included in the polymer solution prior to precipitation for KGN- or FITC-loaded formulations. This solution was stirred at 60 °C for 4 h before collecting the nanoparticles by centrifugation [15,000 rpm, 20 min, room temperature (RT, 20 °C)] and washing three times with water. For PLGA–PEG–HA nanoparticles, HA was de-salted by dialyzing against",
+      "text_preview": "KGN or FITC (5 mg) were included in the polymer solution prior to precipitation for KGN- or FITC-loaded formulations. This solution was stirred at 60 °C for 4 h before collecting the nanoparticles by centrifugation [15,0"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "0.1 M HCl",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.1 M HCl. De-salted HA was solubilized in",
+      "text_preview": "0.1 M HCl. De-salted HA was solubilized in"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "0.01 M MES buffer (5 mg/mL, pH 5",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "0.01 M MES buffer (5 mg/mL, pH 5.5) and activated using EDC and sulfo-NHS (1:5:5 molar ratio) for 2 h at RT under N 2 . Blank or KGN-loaded PLGA–PEG nanoparticles in MES buffer were added to the activated HA solution (3:1 w/w HA:nanoparticle), and stirred for 24 h at RT under N 2 . The nanoparticles were collected by centrifugation (15,000 rpm, 20 min, RT) and washed three times. Nanoparticle Characterization Characterization of Nanoparticle Size and Charge Hydrodynamic diameter, polydispersity index (PDI), and ζ potential were measured at 25 °C at a scattering angle of 90° using dynamic light scattering (DLS) (Zetasizer Nano ZS90, Malvern Instruments, UK). Transmission electron microscope (TEM) (JEOL 2100F, 200 kV) samples were prepared by dropping aqueous nanoparticle suspensions onto carbon-coated copper grids and then staining with UranyLess stain solution. Quantification of HA Content on PLGA–PEG–HA Nanoparticles A CTAB turbidity assay was used to determine the amount of HA conjugated on PLGA–PEG–HA nanoparticles.",
+      "text_preview": "0.01 M MES buffer (5 mg/mL, pH 5.5) and activated using EDC and sulfo-NHS (1:5:5 molar ratio) for 2 h at RT under N 2 . Blank or KGN-loaded PLGA–PEG nanoparticles in MES buffer were added to the activated HA solution (3:"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:1",
+      "paragraph_index": 0,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "25 Briefly, 50 μ L of sodium acetate buffer (",
+      "text_preview": "25 Briefly, 50 μ L of sodium acetate buffer ("
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "0.2 M, pH 5",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "0.2 M, pH 5.5) was added to 50 μ L of HA standards or nanoparticle wash samples (described in “ Materials and Methods ”) and incubated at 37 °C for 10 min. Pre-warmed CTAB solution (100 μ L, 25 mg/mL in 0.2% v/v NaOH at 37 °C) was then added to each sample, and absorbance was read at 570 nm within 10 min. The HA content was calculated using Eq. ( 1 ). Quantification of KGN Loading in Nanoparticles Encapsulation efficiency (EE%) and drug loading (DL) of KGN was determined using a 1260 Infinity II HPLC (Agilent, CA). Wash samples (described in “ Materials and Methods ”) and KGN standards were analyzed with a C18 column with a mobile phase of ACN:water with 0.1% TFA (10:90–100:0 v/v in 10 min followed by 100% ACN for 10 min). Absorbance was monitored at 274 nm at the KGN retention time of 7.232 min. EE% and DL were calculated using Eqs. ( 2 ) and ( 3 ). Assessing KGN Release and Suspension Stability In Vitro To determine KGN release in vitro , KGN-loaded nanoparticle formulations were suspended in PBS (~ 40 mg/mL) and incubated at 37 °C with shaking. Every 3 days for 21 days, the nanoparticle suspensions were centrifuged (14,000 rpm, 10 min) to collect the supernatant, and an equal volume of fresh PBS was added. KGN concentration in the supernatant was quantified using HPLC. The suspension stability of nanoparticle suspensions (1 mg/mL) at these conditions was examined by measuring the hydrodynamic diameter and PDI by DLS. Daily suspension stability was also examined via DLS for these particles incubated at 37 or 4 °C without solution replacement. Assessing Nanoparticle Interactions with hMSCs Cell Culture hMSCs (passage 4–5) were expanded in low-glucose (1000 mg/L) DMEM supplemented with 10% v/v FBS, 1% v/v penicillin–streptomycin, and 4 mM l -glutamine at 37 °C in 5% CO 2 . Chondrogenic differentiation media was composed of high-glucose (4500 mg/L) DMEM supplemented with 100 mM sodium pyruvate, 100 mM l -proline, 0.2 mg/mL dexamethasone, 1% v/v penicillin–streptomycin, 1% ITS + premix, and",
+      "text_preview": "0.2 M, pH 5.5) was added to 50 μ L of HA standards or nanoparticle wash samples (described in “ Materials and Methods ”) and incubated at 37 °C for 10 min. Pre-warmed CTAB solution (100 μ L, 25 mg/mL in 0.2% v/v NaOH at"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:0",
+      "paragraph_index": 0,
+      "segment_index": 0,
+      "section_label": "0.02 M ascorbate-2-phosphate",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "downstream_assay_terms",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "0.02 M ascorbate-2-phosphate. Cytocompatibility hMSCs (passage 6) were plated at 10,000 cells/cm 2 into a 96-well plate and then treated with growth media only or growth media supplemented with 0.5 mg/mL of nanoparticles with and without KGN loaded. Following a 24-h incubation, CCK-8 solution was added for 2 h at 37 °C and absorbance of the wells was measured at 450 nm using a Cytation3 Plate Reader (BioTek, Winooski, VT). Normalized cell viability was calculated using Eq. ( 4 ). Positive controls of cells with no treatment and negative controls with no cells or nanoparticles were included. Nanoparticle Interactions with hMSCs hMSCs (passage 6) were plated at 10,000 cells/cm 2 into 6-well plates. Following equilibration in serum-free media for 1 h, FITC-loaded nanoparticles were added to the cells at 0.1 mg/mL and incubated for varying time or incubated for 4 h at varying concentration. Following incubation, the cells were passaged, fixed, and measured using a 488 nm (FITC) laser on a 4-laser, 19-parameter BD FACSAria Illu flow cytometer (Franklin Lakes, NJ). For confocal imaging, FITC-loaded nanoparticles in serum-free media were added to the cells at 0.1 mg/mL for 2 h, fixed, and stained for nuclei (2 µ M DAPI, 5 min at RT) and F-actin (alexa-fluor 594-phalloidin 1:100 in 1 × PBS, 30 min at RT). hMSC Differentiation A free-floating MSC pellet was formed by first centrifuging (500× g , 5 min) 250,000 cells to form a pellet in a 15 mL canonical tube. Following overnight incubation, the cells formed a free-floating pellet in the tube, which was allowed to mature for 3 days prior to inducing differentiation. The following conditions were examined (all supplemented in chondrogenic media): chondrogenic media only, KGN only, DMSO only, TGF-β1 only, KGN and TGF-β1, water only, blank nanoparticle formulations, KGN-loaded nanoparticle formulations, or KGN-loaded nanoparticle formulations with TGF-β1. Pellets were fed every 3 days with fresh nanoparticles and TGF-β1 (3 ng/mL) where indicated. Nanoparticle concentration was adjusted for each formulation based on drug loading and the known nanoparticle concentration after nanoprecipitation to ensure cumulative release of 100 nM KGN over 3 days (i.e., 42.4, 18.4, and 11.28 µ g/mL for PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles supplemented within the media, respectively). The sGAG content, indicative of chondrogenesis, was assessed using a Blyscan sGAG assay kit. Briefly, pellets were digested using papain extraction reagent and mixed with Blyscan dye. The dye-sGAG complex was pelleted, dissociated, and solubilized prior to measuring absorbance at 656 nm against chondroitin sulfate standards. The sGAG content was normalized against total wet weight of the pellets. Total DNA was quantified using a PicoGreen assay. Briefly, extract containing DNA was added to 1× Tris–EDTA buffer. Quant-iT PicoGreen reagent was added and allowed to incubate for ~ 3 min prior to measuring at an excitation/emission of 480 nm/525 nm against a standard curve of λ dsDNA. Statistical Analysis All measurements were performed in triplicate and data is presented as mean ± standard deviation unless otherwise stated. Statistical analysis was conducted using one-way or two-way analysis of variance (ANOVA) with Tukey–Kramer post hoc analysis using GraphPad Prism. Data was considered statistically significant for p < 0.05 (note: * p < 0.05, ** p < 0.01, *** p < 0.001). Results Characterizing Nanoparticle Physicochemical Properties We synthesized three KGN-loaded nanoparticle formulations: PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles (Scheme 1 ). We first confirmed successful conjugation of the PLGA–PEG copolymer (Fig. S1).",
+      "text_preview": "0.02 M ascorbate-2-phosphate. Cytocompatibility hMSCs (passage 6) were plated at 10,000 cells/cm 2 into a 96-well plate and then treated with growth media only or growth media supplemented with 0.5 mg/mL of nanoparticles"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Next, we investigated differences in nanoparticle size, PDI, and ζ potential (Table 2 ).",
+      "text_preview": "Next, we investigated differences in nanoparticle size, PDI, and ζ potential (Table 2 )."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Functionalizing the PLGA nanoparticle surface with hydrophilic PEG and HA resulted in a significant increase in the hydrodynamic diameter. Particle diameters obtained from TEM images (Fig.",
+      "text_preview": "Functionalizing the PLGA nanoparticle surface with hydrophilic PEG and HA resulted in a significant increase in the hydrodynamic diameter. Particle diameters obtained from TEM images (Fig."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:20",
+      "paragraph_index": 0,
+      "segment_index": 20,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "1 ) were significantly lower than the hydrodynamic diameters obtained via DLS (Table 2 ), as expected.",
+      "text_preview": "1 ) were significantly lower than the hydrodynamic diameters obtained via DLS (Table 2 ), as expected."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:21",
+      "paragraph_index": 0,
+      "segment_index": 21,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "The largest difference in TEM vs. DLS diameter (64% smaller) was noted for the PLGA–PEG–HA particles.",
+      "text_preview": "The largest difference in TEM vs. DLS diameter (64% smaller) was noted for the PLGA–PEG–HA particles."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:3",
+      "paragraph_index": 0,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "There was no significant difference in PDI between formulations, suggesting that all formulations were stable and monodisperse in aqueous conditions. PLGA and PLGA–PEG–HA nanoparticles exhibited negative ζ potentials, indicative of a negative surface charge, as both HA and PLGA are anionic. 10 , 31 , 36 , 40 PLGA–PEG nanoparticles exhibited positive ζ potential, due to the presence of free amines at the surface. 11 Scheme 1 KGN-loaded nanoparticle fabrication. In step one, PLGA is activated and conjugated to PEG-bis-NH 2 to form a PLGA–PEG copolymer. In step two, KGN is mixed with either PLGA or PLGA–PEG to form KGN-loaded PLGA nanoparticles or KGN-loaded PLGA–PEG nanoparticles. In step three, HA is activated and mixed with KGN-loaded PLGA–PEG nanoparticles to form KGN-loaded PLGA–PEG–HA nanoparticles.",
+      "text_preview": "There was no significant difference in PDI between formulations, suggesting that all formulations were stable and monodisperse in aqueous conditions. PLGA and PLGA–PEG–HA nanoparticles exhibited negative ζ potentials, in"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:40",
+      "paragraph_index": 0,
+      "segment_index": 40,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 2 KGN-loaded nanoparticle properties.",
+      "text_preview": "Table 2 KGN-loaded nanoparticle properties."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:41",
+      "paragraph_index": 0,
+      "segment_index": 41,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "Figure 1 TEM micrographs of nanoparticle formulations. (a) Blank and (b) KGN-loaded nanoparticles. Scale = 200 nm. The encapsulation efficiencies of KGN-loaded PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles were ~ 62, 71, and 55%, respectively. The hydrophobic PLGA particles had the highest drug loading, with approximately 47% of the particle mass attributed to KGN while the hydrophilic formulations exhibited similar KGN loading of approximately 13–16% of particle mass. An HA content of ~ 36% of particle mass was observed for PLGA–PEG–HA particles.",
+      "text_preview": "Figure 1 TEM micrographs of nanoparticle formulations. (a) Blank and (b) KGN-loaded nanoparticles. Scale = 200 nm. The encapsulation efficiencies of KGN-loaded PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles were ~ 62, 71,"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:5",
+      "paragraph_index": 0,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Effects of Surface Functionalization on KGN Release and Nanoparticle Suspension Stability The release of KGN from these particles was investigated in vitro in PBS at 37 °C. In the first 3 days, PLGA nanoparticles released ≤ 1% of the loaded KGN.",
+      "text_preview": "Effects of Surface Functionalization on KGN Release and Nanoparticle Suspension Stability The release of KGN from these particles was investigated in vitro in PBS at 37 °C. In the first 3 days, PLGA nanoparticles release"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:6",
+      "paragraph_index": 0,
+      "segment_index": 6,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Following 3 days, KGN release was below the instrument detection limit (~ 1 µ g/mL). PLGA–PEG and PLGA–PEG–HA nanoparticle formulations both released significantly greater KGN than PLGA particles.",
+      "text_preview": "Following 3 days, KGN release was below the instrument detection limit (~ 1 µ g/mL). PLGA–PEG and PLGA–PEG–HA nanoparticle formulations both released significantly greater KGN than PLGA particles."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:7",
+      "paragraph_index": 0,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_downstream_assay",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_downstream_assay",
+        "downstream_assay_terms",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "Cumulative KGN release profiles are shown in Fig. 2 to demonstrate the variability we observed in KGN release from different nanoparticle batches. In general, PLGA–PEG–HA particles released more of their loaded KGN over 21 days compared with PLGA–PEG nanoparticles (15–27% vs. 2–19%, respectively). Additionally, both PLGA–PEG and PLGA–PEG–HA particles exhibited a burst release ranging from 5 to 15% of the total KGN released over the first 3 days. Following 21 days, any KGN release from these particles was below the instrument detection limit. Figure 2 KGN percent cumulative release normalized to total KGN loaded from PLGA–PEG and PLGA–PEG–HA nanoparticles over 21 days in 1× PBS at 37 °C. Release from four distinct nanoparticle batches per formulation type are shown indicating variability in KGN release from these particles at the release conditions examined. The significant heterogeneity in KGN release suggests potential nanoparticle aggregation at the release conditions. Thus, we examined KGN-loaded nanoparticle suspension stability by DLS in conditions mimicking the KGN release study (Fig. 3 ). The diameter of all nanoparticle formulations generally increased to over 1 µ m over the 21-day release period, suggesting significant particle aggregation. PDI also increased during this time with PLGA particles exhibiting the largest PDI at the end of the 21-day release (~ 0.7). We also examined whether changes in particle size and PDI occurred when particles were stored at 37 or 4 °C in PBS without centrifugation and resuspension over 7 days. Figure S2 shows that there was no significant change in the hydrodynamic diameter and PDI of PLGA and PLGA–PEG–HA nanoparticles over 7 days at both 4 and 37 °C. However, PLGA–PEG nanoparticles showed a large increase in the hydrodynamic diameter (a maximum of 2–3 µ m) and PDI (a maximum ~ 0.5) at these conditions. Interestingly, despite maintaining a consistent hydrodynamic diameter over 7 days, PLGA–PEG–HA particles at 37 °C experienced an increase in PDI, also reaching a maximum of ~ 0.5 following 1 day of incubation. Figure 3 Nanoparticle suspension stability over time in 1× PBS at 37 °C. Changes in (a) hydrodynamic diameter and (b) PDI of KGN-loaded PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles were analyzed. Samples were centrifuged and resuspended in fresh 1× PBS at 37 °C every 3 days prior to taking measurements. Statistical significance (* p < 0.05) between time points is indicated using two-way ANOVA with Tukey’s post hoc analysis. Nanoparticle Cytocompatibility and Interaction with hMSCs We examined hMSC viability in the presence of nanoparticles at concentrations above the equivalent KGN half maximal effective concentration (EC 50 ) of 100 nM. 14 Cells exposed to each of the nanoparticle formulations exhibited viability similar to the non-treated controls ( p > 0.05) (Fig. S3). Next, we investigated nanoparticle interactions with hMSCs by loading FITC during nanoparticle fabrication. Flow cytometry results (Fig. S4) showed an increase in hMSC fluorescence with increasing FITC-loaded nanoparticle concentration and increasing incubation time, suggesting nanoparticle association and/or uptake by hMSCs. Figure 4 a shows the effect of incubation of FITC-loaded nanoparticles with hMSCs at an intermediate concentration (0.1 mg/mL) for varying time. An increase in fluorescence signal was observed with increasing incubation time; however, there was no discernable difference in the fluorescence signal between different nanoparticle formulations. Figure 4 b shows confocal microscopy images of hMSCs incubated with these nanoparticles. From these images, the hydrophobic PLGA nanoparticles resulted in a more globular localization to the cell surface, compared with a more evenly distributed fluorescence signal throughout the cell volume, suggesting uptake, seen for the hydrophilic PLGA–PEG and PLGA–PEG–HA nanoparticles. Figure 4 Nanoparticle interaction with hMSCs. (a) Flow cytometry histograms of hMSCs incubated with FITC-loaded nanoparticles at 0.1 mg/mL for 15, 30, or 60 min. hMSC + FITC condition represents a control in which free FITC was added to the MSC incubation media. (b) Maximum intensity projection confocal images of 0.1 mg/mL FITC-loaded nanoparticles incubated with hMSCs for 2 h. Blue represents nuclei stained via DAPI, red is F-actin, and green is FITC. Both xy (top) and xz (bottom) image are shown. Scale = 100 µ m and applies to all images. KGN-Loaded Nanoparticle Mediated hMSC Chondrogenesis The effect of nanoparticle formulations on hMSC chondrogenesis was examined over 7 days in pellet culture. Nanoparticle concentrations were selected for each formulation by calculating the amount of nanoparticles necessary to ensure release 100 nM KGN over 3 days based on the in vitro release data. Control conditions (including media, solvents, and supplements) were also examined (Fig. S5). Total DNA (Fig. S6) and sGAG content per pellet wet weight (w/w) (Fig. 5 ) were quantified. DNA content varied over a narrow range for hMSCs incubated with different formulations, indicating a relatively consistent number of cells in each pellet. Examining sGAG content as an indication of hMSC chondrogenesis, we first noted that all KGN-loaded nanoparticles enhanced sGAG production compared with non KGN-loaded nanoparticles. Interestingly, the addition of TGF-β1 in the media during pellet culture for non-nanoparticle incubated controls (Fig. S5) did not increase sGAG, and in the case of KGN-loaded PLGA and PLGA–PEG nanoparticles (Fig. 5 ), addition of TGF-β1 actually led to a decrease in sGAG. Figure 5 sGAG content per pellet weight for hMSCs incubated with nanoparticle formulations over 7 days in chondrogenic media. Statistical significance (*** p < 0.001) between time points is indicated using one-way ANOVA with Tukey’s post hoc analysis. Discussion In this work, we sought to investigate the effects of surface chemistry on KGN-loaded nanoparticle properties and interactions with hMSCs by comparing KGN-loaded PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles.",
+      "text_preview": "Cumulative KGN release profiles are shown in Fig. 2 to demonstrate the variability we observed in KGN release from different nanoparticle batches. In general, PLGA–PEG–HA particles released more of their loaded KGN over"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:80",
+      "paragraph_index": 0,
+      "segment_index": 80,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "First, we studied how varying nanoparticle formulation affects nanoparticle physicochemical properties, including diameter, charge, and KGN EE% and DL (Table 2 ).",
+      "text_preview": "First, we studied how varying nanoparticle formulation affects nanoparticle physicochemical properties, including diameter, charge, and KGN EE% and DL (Table 2 )."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:81",
+      "paragraph_index": 0,
+      "segment_index": 81,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "We noted that PLGA formed the smallest nanoparticles, followed by PLGA–PEG, and finally PLGA–PEG–HA, with more dramatic differences noted for hydrodynamic diameters than dry diameters measured via TEM, likely due to the highly hydrophilic nature and large MW of HA. Despite a smaller diameter, PLGA nanoparticles had the greatest drug loading of all formulations, which we suggest is due to hydrophobic–hydrophobic interactions between KGN and PLGA. Some interesting differences were noted between the KGN-loaded PLGA nanoparticles formulated here using nanoprecipitation and the only other previously reported KGN-loaded PLGA nanoparticles. 30 First, our average particle size was ~ 37% smaller (~ 170 nm vs.",
+      "text_preview": "We noted that PLGA formed the smallest nanoparticles, followed by PLGA–PEG, and finally PLGA–PEG–HA, with more dramatic differences noted for hydrodynamic diameters than dry diameters measured via TEM, likely due to the"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:9",
+      "paragraph_index": 0,
+      "segment_index": 9,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "270 nm diameter). 30 This difference in size may be attributed to the different fabrication methods and also our use of a lower MW PLGA (15.1 kDa vs. 40–75 kDa), 30 given the known MW influence on nanoparticle size.",
+      "text_preview": "270 nm diameter). 30 This difference in size may be attributed to the different fabrication methods and also our use of a lower MW PLGA (15.1 kDa vs. 40–75 kDa), 30 given the known MW influence on nanoparticle size."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "downstream_assay_terms"
+      ],
+      "text_content": "24 However, despite the difference in diameter, the EE% of our nanoparticles was similar to this previously reported formulation (62% compared to 67%). 30 Release properties from our PLGA nanoparticles (< 1% release of loaded KGN) differed dramatically from these previously reported KGN-loaded PLGA particles, which exhibited ~ 60% release over the first 20 days in vitro using similar release conditions. 30 These differences in release may be attributed to various factors including nanoparticle size variations, as well as potential differences in pore size arising from differences in polymer MW and/or fabrication method utilized. The PLGA–PEG and PLGA–PEG–HA nanoparticles released greater amounts of KGN than the PLGA nanoparticles (Fig. 2 ), suggesting greater KGN interaction with hydrophobic PLGA compared with the hydrophilic PEG or HA at the nanoparticle surface and potentially larger pore sizes of the larger PLGA–PEG and PLGA–PEG–HA particles (the latter being the largest particles with the greatest release of loaded KGN). The large variation in release profiles between nanoparticle batches and our studies of particle size and PDI confirmed that centrifugation and resuspension of the nanoparticles during the release study causes aggregation of these particles (Fig.",
+      "text_preview": "24 However, despite the difference in diameter, the EE% of our nanoparticles was similar to this previously reported formulation (62% compared to 67%). 30 Release properties from our PLGA nanoparticles (< 1% release of l"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "3 ), which does not occur at all or to this extent for samples stored at the same conditions without these centrifugation and resuspension steps (Fig. S2). A particularly interesting observation of nanoparticle formulations incubated over time in PBS at 37 °C without these centrifugation steps (Fig. S2), was the finding that PLGA–PEG nanoparticles exhibited an increase in hydrodynamic diameter over time, while PLGA and PLGA–PEG–HA nanoparticles did not, suggesting that stability was not dictated by hydrophilicity of the particle surface alone.",
+      "text_preview": "3 ), which does not occur at all or to this extent for samples stored at the same conditions without these centrifugation and resuspension steps (Fig. S2). A particularly interesting observation of nanoparticle formulati"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:12",
+      "paragraph_index": 0,
+      "segment_index": 12,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "We hypothesize that suspension stability is more impacted by surface charge. Aqueous colloidal suspensions with ζ potential between ~ ± 30 mV are often unstable due to the lack of electrostatic repulsion between particles, whereas suspensions exhibiting ζ potential ≥ ~ | ± 30| mV are stable. 8 , 26 KGN-loaded PLGA formulations exhibited ζ potential (~ − 33.1 mV) within the region of stability. The KGN-loaded PLGA–PEG nanoparticles exhibited ζ potential clearly within the instability regime (~ 11.2 mV), which can explain the increase in diameter over time.",
+      "text_preview": "We hypothesize that suspension stability is more impacted by surface charge. Aqueous colloidal suspensions with ζ potential between ~ ± 30 mV are often unstable due to the lack of electrostatic repulsion between particle"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:13",
+      "paragraph_index": 0,
+      "segment_index": 13,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "For PLGA–PEG–HA nanoparticles at 37 °C, an increase in PDI but not diameter was observed. ζ potential of these KGN-loaded PLGA–PEG–HA nanoparticles (~ − 28.5 mV) is close to the approximate cut off for stable suspensions but not as definitive, potentially contributing to this observation.",
+      "text_preview": "For PLGA–PEG–HA nanoparticles at 37 °C, an increase in PDI but not diameter was observed. ζ potential of these KGN-loaded PLGA–PEG–HA nanoparticles (~ − 28.5 mV) is close to the approximate cut off for stable suspensions"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:14",
+      "paragraph_index": 0,
+      "segment_index": 14,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Next we investigated the interaction of these formulations with hMSCs. This interaction may include cell surface association and/or particle internalization. Many factors can influence these mechanisms including size and charge. Smaller nanoparticles often demonstrate the greatest uptake by cells. 29 If only size is considered, we would hypothesize the greatest uptake for PLGA nanoparticles.",
+      "text_preview": "Next we investigated the interaction of these formulations with hMSCs. This interaction may include cell surface association and/or particle internalization. Many factors can influence these mechanisms including size and"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:15",
+      "paragraph_index": 0,
+      "segment_index": 15,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Positively charged nanoparticles often more favorably interact with and are taken up by cells compared with negatively charged particles, due to the negative charge of cell membranes. 7 Considering charge, we would predict PLGA–PEG formulations to exhibit the most interaction.",
+      "text_preview": "Positively charged nanoparticles often more favorably interact with and are taken up by cells compared with negatively charged particles, due to the negative charge of cell membranes. 7 Considering charge, we would predi"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:16",
+      "paragraph_index": 0,
+      "segment_index": 16,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "However, flow cytometry indicated no discernable differences between hMSCs incubated with different FITC-loaded nanoparticle formulations at a set nanoparticle concentration and incubation time (Figs. 4 a and S4), suggesting similar levels of interaction for all nanoparticle formulations with these cells. Confocal imaging indicated that although overall interaction may be similar between formulations, differences in uptake vs. surface-association occur, with the more hydrophilic PLGA–PEG and PLGA–PEG–HA particles exhibiting greater internalization (Fig.",
+      "text_preview": "However, flow cytometry indicated no discernable differences between hMSCs incubated with different FITC-loaded nanoparticle formulations at a set nanoparticle concentration and incubation time (Figs. 4 a and S4), sugges"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:17",
+      "paragraph_index": 0,
+      "segment_index": 17,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "4 b). We were also interested in exploring the contribution of HA-CD44 interactions to the overall interaction of PLGA–PEG–HA nanoparticles with hMSCs. To do so, we first incubated cells with free HA to act as a competitive inhibitor of PLGA–PEG–HA nanoparticles as previously reported 32 before nanoparticle incubation with hMSCs (Fig.",
+      "text_preview": "4 b). We were also interested in exploring the contribution of HA-CD44 interactions to the overall interaction of PLGA–PEG–HA nanoparticles with hMSCs. To do so, we first incubated cells with free HA to act as a competit"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__39",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:18",
+      "paragraph_index": 0,
+      "segment_index": 18,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "S7). No inhibition of nanoparticle interaction with hMSCs was observed with this HA pre-incubation using flow cytometry (Fig. S7). These results suggest that HA-CD44 interactions are not the primary mechanism of interaction of these particles with hMSCs, but we cannot entirely discount the possibility of HA-CD44 interactions contributing to PLGA–PEG–HA nanoparticle-hMSC interaction.",
+      "text_preview": "S7). No inhibition of nanoparticle interaction with hMSCs was observed with this HA pre-incubation using flow cytometry (Fig. S7). These results suggest that HA-CD44 interactions are not the primary mechanism of interact"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__40",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:19",
+      "paragraph_index": 0,
+      "segment_index": 19,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "It is possible that these interactions may be observed with greater HA functionalization of the nanoparticle surface. However, it should be noted that HA-CD44 interactions have previously been inhibited using these methods for PLGA–PEG–HA nanoparticles (albeit with different cell types), at lesser nanoparticle HA functionalization (0.116 mg HA/mg NP compared to 0.357 mg HA/mg NP in our study).",
+      "text_preview": "It is possible that these interactions may be observed with greater HA functionalization of the nanoparticle surface. However, it should be noted that HA-CD44 interactions have previously been inhibited using these metho"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__41",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:20",
+      "paragraph_index": 0,
+      "segment_index": 20,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "32 Finally, the potential influence of nanoparticle formulations on hMSC chondrogenic differentiation was examined by incubating these formulations with hMSCs for a 7-day period. At this time, we examined sGAG content of each hMSC pellet for every condition tested. The sGAG content is a representative cartilage-specific matrix component. This quantity (sGAG mass per pellet mass) is a common metric used to assess chondrogenesis. 21 As expected, all KGN-loaded formulations exhibited a greater sGAG content compared with non KGN-loaded formulations (Fig. 5 ). At 7 days, there were no dramatic differences observed in sGAG content between cells incubated with different KGN-loaded nanoparticle formulations (Fig. 5 ). This result is not surprising considering that nanoparticle mass was adjusted to provide the same KGN dosing from all formulations and that overall nanoparticle interaction with hMSCs was observed not to vary between formulations. Additionally, sGAG content was examined after 7 days; more variation between cells incubated with different formulations may be observed and can be examined in future studies over lengthier incubation times. 16 , 17 In conclusion, we demonstrated that nanoparticle surface functionalization influences nanoparticle physicochemical properties, drug release behavior, and suspension stability. All KGN-loaded formulations interacted with hMSCs with differences in surface-association vs. internalization observed between hydrophobic and hydrophilic nanoparticle surface properties. All KGN-loaded nanoparticles improved hMSC chondrogenesis compared with non KGN-loaded formulations over a short timescale. These nanoparticle formulations have the potential to be used to impact hMSC chondrogenesis for OA therapies.",
+      "text_preview": "32 Finally, the potential influence of nanoparticle formulations on hMSC chondrogenic differentiation was examined by incubating these formulations with hMSCs for a 7-day period. At this time, we examined sGAG content of"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__42",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:7",
+      "paragraph_index": 0,
+      "segment_index": 7,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "1",
+      "text_preview": "1"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__43",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:8",
+      "paragraph_index": 0,
+      "segment_index": 8,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2",
+      "text_preview": "2"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__44",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:9",
+      "paragraph_index": 0,
+      "segment_index": 9,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "9.",
+      "text_preview": "9."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__45",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:10",
+      "paragraph_index": 0,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.",
+      "text_preview": "2."
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_paragraph__46",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/BXCV5XWB.html.txt#paragraph:0#segment:11",
+      "paragraph_index": 0,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "8",
+      "text_preview": "8"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_12__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:4"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 86,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_12__pdf_table.csv]\n- table_id: Table 12\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=32, cols=2\n- first_column_row_labels_preview: RPE: Retinal pigment epithelial cells., 1.50±0.06 at 1d, F=273.24, P<0.001; 0.57±0.02, 1.51±0.05,, 1.44±0.07 at 3d, F=316.42, P<0.001; 0.75±0.03, 1.28±0.02,, DISCUSSION, Specifically targeting HIF transcription factors have been, an attractive strategy for co-regulating many downstream, angiogenic factors. In our previous study, we developed, intravitreal administered HIF-1α short hairpin RNA loaded in, siRNA nanoparticles on HIF-1α mRNA expression in RPEs under, PLGA NPs which can inhibit the formation of experimental, hypoxia model eP<0.001 vs RPE group, n=3. PLGA: Poly(lactic-co-, CNV[12]. However, there are still surgical risks in intravitreal ...\n- sample_rows:\n- sample_row_1: RPE: Retinal pigment epithelial cells.\n- sample_row_2: pigment epithelial cells.\n- sample_row_3: capacity of MSCs as well as limit their diffusional clearance[12]. | degradation time of PLGA could be varied from days to\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_12__pdf_table.csv] - table_id: Table 12 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (non"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_09__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 64,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=52, cols=2\n- first_column_row_labels_preview: Int J Ophthalmol, Vol. 15, No. 11, Nov.18, 2022 www.ijo.cn, Tel: 8629-82245172 8629-82210956 Email: ijopress@163.com, high speed agitator (24 000 rpm, 6min). The double emulsion, was added into 30 mL 1% PVA solution and stirred it in the, fume hood overnight. After centrifugation for 20min (4‐,, 13 000 rpm), the precipitates were collected and washed with, deionized water for three times to remove free genes and PVA., The freeze-dried nanoparticles were stored at 4‐., Characterization of Nanoparticles For size measurement,, the nanoparticles were resuspended in purified deionized, water. The microscopic morphology was observed by scanning, electron microscopy; the particle size and Zeta potential were ...\n- sample_rows:\n- sample_row_1: in PBS at 4‐. Then the samples were covered with 50% | migrated cells were counted in six randomly selected fields.\n- sample_row_2: encapsulating siRNA. The siRNA concentration was constant | 8-μm sized pores (Corning Costar, Cambridge, UK). RPE cells\n- sample_row_3: Int J Ophthalmol, Vol. 15, No. 11, Nov.18, 2022 www.ijo.cn\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_09__pdf_table.csv] - table_id: Table 9 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__03",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_10__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:13"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 37,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=55, cols=2\n- first_column_row_labels_preview: A Trojan horse biomimetic delivery system on RPE cells, surface markers showed: CD29+, CD34-, CD45-. The above, Uptake of PLGA Nanoparticles Loaded-HIF siRNA After, 48h of transfection, GFP green fluorescence could be seen, siRNA (nanoparticles diameter 302.4 nm) PLGA: Poly(lactic-co-, glycolic acid); HIF-1α: Hypoxia-inducible factor-1α., control group (without any treatment), lentivirus group, (transfected with lentivirus with HIF-1α siRNA), nude, plasmid group (transfected with empty plasmid), blank PLGA, group (transfected with empty PLGA nanoparticles), and, PLGA+siRNA group (transfected with nanoparticles loaded, with HIF-1α siRNA). The expression of HIF-1α mRNA in ...\n- sample_rows:\n- sample_row_1: siRNA Nanoparticles on Proliferation, Migration, and\n- sample_row_2: The CCK-8 test results revealed that the proliferation increased\n- sample_row_3: A Trojan horse biomimetic delivery system on RPE cells\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_10__pdf_table.csv] - table_id: Table 10 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__04",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_16__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 37,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_16__pdf_table.csv]\n- table_id: Table 16\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=8, cols=2\n- first_column_row_labels_preview: Int J Ophthalmol, Vol. 15, No. 11, Nov.18, 2022 www.ijo.cn, Tel: 8629-82245172 8629-82210956 Email: ijopress@163.com, 26 Adijanto J, Naash MI. Nanoparticle-based technologies for retinal gene, therapy. Eur J Pharm Biopharm 2015;95:353-367., 27 Tsiapalis D, O’Driscoll L. Mesenchymal stem cell derived extracellular, vesicles for tissue engineering and regenerative medicine applications., Cells 2020;9(4):991.\n- sample_rows:\n- sample_row_1: Int J Ophthalmol, Vol. 15, No. 11, Nov.18, 2022 www.ijo.cn\n- sample_row_2: therapy. Eur J Pharm Biopharm 2015;95:353-367. | Mesenchymal stem cells-derived exosomes ameliorate blue light\n- sample_row_3: Cells 2020;9(4):991. | 559-566.\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_16__pdf_table.csv] - table_id: Table 16 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_id"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__05",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_15__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 22,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_15__pdf_table.csv]\n- table_id: Table 15\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=11, cols=2\n- first_column_row_labels_preview: for regenerative medicine-challenges and perspectives. World J Stem, Cells 2018;10(5):43-56., 10 Hou HY, Liang HL, Wang YS, Zhang ZX, Wang BR, Shi YY, Dong X,, Cai Y. A therapeutic strategy for choroidal neovascularization based, on recruitment of mesenchymal stem cells to the sites of lesions. Mol, Ther 2010;18(10):1837-1845., 11 Qiu F, Meng T, Chen Q, Zhou K, Shao Y, Matlock G, Ma X, Wu W, Du, Y , Wang X, Deng G, Ma JX, Xu Q. Fenofibrate-loaded biodegradable, nanoparticles for the treatment of experimental diabetic retinopathy, and neovascular age-related macular degeneration. Mol Pharm\n- sample_rows:\n- sample_row_1: and neovascular age-related macular degeneration. Mol Pharm | delivery systems for photothermal therapy. J Mater Chem B\n- sample_row_2: for regenerative medicine-challenges and perspectives. World J Stem | for glioma-targeting therapy. Int J Nanomedicine 2018;13:5231-5248.\n- sample_row_3: Ther 2010;18(10):1837-1845. | mesenchymal stem cells increase therapeutic efficacy of anticancer\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_15__pdf_table.csv] - table_id: Table 15 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__06",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_08__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 17,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=52, cols=2\n- first_column_row_labels_preview: A Trojan horse biomimetic delivery system on RPE cells, on retinal pigment epithelial cells under hypoxia environment. Int J, Ophthalmol 2022;15(11):1743-1751, to CNV region by a so-called Trojan horse strategy[13]., INTRODUCTION, Ethical Approval This research was approved by Xi’an, C horoidal neovascularization (CNV) is a significant, endothelial growth factor (VEGF) drug can effectively treat, neovascularization in most, but not all patients and there, are safety concerns about its’ intrinsic defect and long‐term, effects[1]. Therefore, better therapeutic agents are needed to, study for the effective treatment of this vision‐threatening ...\n- sample_rows:\n- sample_row_1: neovascularization in most, but not all patients and there | tenets of the Declaration of Helsinki.\n- sample_row_2: shown that the hypoxic preconditioning increases the migration | either for gene transfection or for further culture and passage\n- sample_row_3: A Trojan horse biomimetic delivery system on RPE cells\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_08__pdf_table.csv] - table_id: Table 8 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_ide"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__07",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_01__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 7,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_01__pdf_table.csv]\n- table_id: Table 1\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=2, cols=7\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_01__pdf_table.csv] - table_id: Table 1 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 - header_units:"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__08",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_02__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 3,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_02__pdf_table.csv]\n- table_id: Table 2\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=4, cols=3\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_02__pdf_table.csv] - table_id: Table 2 - title_or_caption: (not available) - column_headers: 0 || 1 || 2 - header_units: (none inferred) - ro"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__09",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_03__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 2,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_03__pdf_table.csv]\n- table_id: Table 3\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=3, cols=2\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_03__pdf_table.csv] - table_id: Table 3 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_ide"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__10",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_04__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 2,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_04__pdf_table.csv]\n- table_id: Table 4\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=3, cols=2\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_04__pdf_table.csv] - table_id: Table 4 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_ide"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__11",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_05__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 2,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_05__pdf_table.csv]\n- table_id: Table 5\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=3, cols=2\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_05__pdf_table.csv] - table_id: Table 5 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_ide"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__12",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_06__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "corrupted_or_sparse_table"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "unknown",
+      "table_score": 2,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_06__pdf_table.csv]\n- table_id: Table 6\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: unknown\n- table_role_hint: unknown\n- table_shape_hint: rows=2, cols=2\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_06__pdf_table.csv] - table_id: Table 6 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_ide"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__13",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_14__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -23,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_14__pdf_table.csv]\n- table_id: Table 14\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=51, cols=2\n- first_column_row_labels_preview: A Trojan horse biomimetic delivery system on RPE cells, Funding for the Young and Middle-aged Ophthalmologists, (No.BJ-LM2021011J); Xi’an Science and Technology Project, [No.20YXYJ0008(3)]; Research Incubation Fund of Xi’an, People’s Hospital (Xi’an Fourth Hospital) (No.ZD-5, ZD-7,, and ZD-8)., Conflicts of Interest: Zhang L, None; Yan JJ, None; Wang, HY, None; Li MQ, None; Wang XX, None; Fan L, None;, Wang YS, None., REFERENCES, 1 Feng L, Ju M, Lee KYV, Mackey A, Evangelista M, Iwata D, Adamson, P, Lashkari K, Foxton R, Shima D, Ng YS. A proinflammatory function ...\n- sample_rows:\n- sample_row_1: 1 Feng L, Ju M, Lee KYV, Mackey A, Evangelista M, Iwata D, Adamson | 14 Kimbrel EA, Lanza R. Next-generation stem cells—ushering\n- sample_row_2: 5 Zhang P, Zhou YD, Tan Y, Gao L. Protective effects of piperine on the | doxorubicin for age-related macular degeneration. Drug Dev Ind\n- sample_row_3: A Trojan horse biomimetic delivery system on RPE cells\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_14__pdf_table.csv] - table_id: Table 14 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__14",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_11__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -38,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_11__pdf_table.csv]\n- table_id: Table 11\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=12, cols=2\n- first_column_row_labels_preview: pigment epithelial cells aP<0.05 vs control group; cP<0.05, dP<0.001, vs lentivirus group; n=3. PLGA: Poly(lactic-co-glycolic acid); HIF-1α:, Hypoxia-inducible factor-1α., PLGA nanoparticles n=5. PLGA: Poly(lactic-co-glycolic acid);, HIF-1α: Hypoxia-inducible factor-1α., of Retinal Pigment Epithelial Cells in Hypoxia Model The, expression of HIF-1α mRNA in RPE cells was detected at 24h,, 3, and 7d. The results showed that the expression of HIF-1α mRNA, siRNA NPs was significantly lower than that in RPE group, and co-culture group at each time point (0.61±0.01, 1.49±0.07,\n- sample_rows:\n- sample_row_1: pigment epithelial cells aP<0.05 vs control group; cP<0.05, dP<0.001\n- sample_row_2: of Retinal Pigment Epithelial Cells in Hypoxia Model The\n- sample_row_3: and co-culture group at each time point (0.61±0.01, 1.49±0.07, | RPE: Retinal pigment epithelial cells.\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_11__pdf_table.csv] - table_id: Table 11 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_id"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__15",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_07__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -53,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=48, cols=2\n- first_column_row_labels_preview: Tel: 8629-82245172 8629-82210956 Email: ijopress@163.com, ·Basic Research·, A Trojan horse biomimetic delivery system using, mesenchymal stem cells for HIF-1α siRNA-loaded, nanoparticles on retinal pigment epithelial cells under, hypoxia environment, Lei Zhang1, Jie-Jing Yan2,3, Hai-Yan Wang1, Mu-Qiong Li4, Xi-Xi Wang5, Li Fan4, Yu-Sheng Wang2, 1Shaanxi Eye Hospital, Xi’an People’s Hospital (Xi’an Fourth, Hospital), Xi’an 710004, Shaanxi Province, China, 2Department of Ophthalmology, Xijing Hospital, Xi’an, 710032, Shaanxi Province, China, 3Ophthalmology Department, Xi’an No.1 Hospital, the First ...\n- sample_rows:\n- sample_row_1: 710032, Shaanxi Province, China | proliferation, apoptosis, and migration of RPE cells were\n- sample_row_2: 710004, Shaanxi Province, China. whyeye@126.com; Yu- | abilities of proliferation (2.34±0.17, 2.40±0.28, 2.47±0.24\n- sample_row_3: Tel: 8629-82245172 8629-82210956 Email: ijopress@163.com\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_07__pdf_table.csv] - table_id: Table 7 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_ide"
+    },
+    {
+      "candidate_id": "BXCV5XWB__candidate_table__16",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_13__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -111,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_13__pdf_table.csv]\n- table_id: Table 13\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=52, cols=2\n- first_column_row_labels_preview: Int J Ophthalmol, Vol. 15, No. 11, Nov.18, 2022 www.ijo.cn, Tel: 8629-82245172 8629-82210956 Email: ijopress@163.com, years by regulating the molecular weight and the ratio of its, monomers. Cun et al[17] incorporated the siRNA in PLGA NPs, by using a double emulsion solvent evaporation method, and, optimized the formulations of PLGA by varying the siRNA, and PLGA ratio which achieved the encapsulation efficiency, of more than 70%. In many studies, the size of PLGA NPs, prepared by the same method was about 200 nm, and the, surface charge was negative[18-19]. In this study, the average, diameter of PLGA NPs loaded-HIF siRNA was 314.1 nm but, with a rather narrow size distribution, and zeta potential was ...\n- sample_rows:\n- sample_row_1: diameter of PLGA NPs loaded-HIF siRNA was 314.1 nm but | concentration NPs to tissues[26].\n- sample_row_2: both concentration and time dependent uptake of NPs, with | mass in vivo. Layek et al [24] found intravenous injection\n- sample_row_3: Int J Ophthalmol, Vol. 15, No. 11, Nov.18, 2022 www.ijo.cn\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/BXCV5XWB/BXCV5XWB__table_13__pdf_table.csv] - table_id: Table 13 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 -"
+    }
+  ]
+}

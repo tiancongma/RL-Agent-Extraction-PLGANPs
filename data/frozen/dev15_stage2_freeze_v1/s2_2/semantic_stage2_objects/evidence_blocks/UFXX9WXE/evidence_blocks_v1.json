@@ -1,0 +1,307 @@
+{
+  "paper_key": "UFXX9WXE",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/UFXX9WXE.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_scope_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "source_candidate_artifact_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/semantic_stage2_objects/candidate_blocks/UFXX9WXE/candidate_blocks_v1.json",
+  "input_contract": {
+    "input_packing_mode": "ordered_blocks",
+    "table_mode": "summary",
+    "summary_first_column_enhancement": true,
+    "ordered_block_order": [
+      "metadata",
+      "synthesis_method",
+      "materials_procurement",
+      "experimental_design",
+      "table",
+      "table",
+      "paragraph",
+      "paragraph",
+      "table"
+    ],
+    "selector_strategy": "role_aware_selector_v1"
+  },
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_2_evidence_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_profile": "role_aware_general_v1",
+  "archetype_overlay": "doe_optimization_v1",
+  "evidence_blocks": [
+    {
+      "block_id": "UFXX9WXE__metadata__01",
+      "block_type": "metadata",
+      "source_type": "document_metadata",
+      "origin_locator": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+      "selection_reason": "document_identity_context",
+      "selection_feature": "build_metadata_block",
+      "rank_score": null,
+      "order_index": 0,
+      "text_content": "[METADATA]\nkey: UFXX9WXE\ndoi: 10.1155/2014/156010\ntitle: Formulation and Optimization of Polymeric Nanoparticles for Intranasal Delivery of Lorazepam Using Box-Behnken Design: <i>In Vitro</i> and <i>In Vivo</i> Evaluation",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": null,
+      "role_assignment": null,
+      "role_priority": "primary",
+      "role_score_breakdown": null
+    },
+    {
+      "block_id": "UFXX9WXE__preparation_method__01",
+      "block_type": "synthesis_method",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/UFXX9WXE.pdf.txt#paragraph:2#segment:0",
+      "selection_reason": "role_constrained_preparation_method_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 14,
+      "order_index": 1,
+      "text_content": "[SYNTHESIS_METHOD_BLOCK]\nPreparation method: 2.3. Nanoparticles Preparation. Lzp-PLGA-NPs were pre- pared using emulsion solvent evaporation (nanoprecipita- tion) method. During the process, the organic phase was pre- pared by dissolving accurately weighed PLGA and lorazepam in acetone as organic solvent. The organic phase was then added drop wise at the rate of 1ml/min into an aqueous phase containing surfactant (poloxamer 407) dissolved in water as aqueous solvent. The nanoparticles suspension was kept under continuous stirring at 300 rpm (RPM preoptimized, data not shown) for 3 h at 30∘C to allow the complete evapo- ration of acetone, leaving behind the colloidal suspension of Lzp-PLGA-NPs in aqueous phase. The colloidal nanosuspension was centrifuged at 12,000 rpm (Remi, Mumbai, India) for 30 min at 4∘C to get the final nanoparticulate containing pellet as encapsulated lorazepam. The pellet was washed with deionized water twice to remove unentrapped drug from the surface of NPs.",
+      "is_synthesis": true,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "PREPARATION_METHOD",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 8.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 14.0
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__materials__01",
+      "block_type": "materials_procurement",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/UFXX9WXE.pdf.txt#paragraph:1#segment:0",
+      "selection_reason": "role_constrained_materials_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 12,
+      "order_index": 2,
+      "text_content": "[MATERIALS_PROCUREMENT_BLOCK]\nMaterials: 2.1. Materials. Poly (D, L-lactide-co-glycolic acid) (PLGA) 50 : 50 (molecular weight 30,000–60,000) and poloxamer 407 were purchased from Sigma-Aldrich, St.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "MATERIALS",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 6.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 12.0
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__experimental_design__01",
+      "block_type": "experimental_design",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/UFXX9WXE.pdf.txt#paragraph:1#segment:11",
+      "selection_reason": "role_constrained_experimental_design_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 10,
+      "order_index": 3,
+      "text_content": "[EXPERIMENTAL_DESIGN_BLOCK]\nExperimental design: varying concentrations or batches. The polynomial equation generated by the experimental design is as follows: 𝑌= 𝐴0 + 𝐴1𝑋1 + 𝐴2𝑋2 + 𝐴3𝑋3 + 𝐴4𝑋4 + 𝐴5𝑋1𝑋2 + 𝐴6𝑋1𝑋3 + 𝐴7𝑋1𝑋4 + 𝐴8𝑋2𝑋3 + 𝐴9𝑋2𝑋4 + 𝐴10𝑋3𝑋4 + 𝐴11𝑋1 2 + 𝐴12𝑋2 2 + 𝐴13𝑋3 2 + 𝐴14𝑋4 2, (1) where, 𝑌is the measured response of the dependent variables, 𝐴0 is the intercept, 𝐴1 to 𝐴14 are the regression coefficients computed from the observed experimental values of 𝑌. 𝑋1, 𝑋2, 𝑋3, and 𝑋4 are the coded value of the independent variables. 𝑋𝑎𝑋𝑏(𝑎, 𝑏 = 1, 2, 3, 4) and 𝑋2 𝑖(𝑖 = 1, 2, 3, 4) represent the interaction and quadratic terms, respectively.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "EXPERIMENTAL_DESIGN",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 10.0
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__variable_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_10__pdf_table.csv",
+      "selection_reason": "role_constrained_variable_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 15,
+      "order_index": 4,
+      "text_content": "Experimental design: varying concentrations or batches. Variable table: formulation factors and concentrations. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=22, cols=9\n- first_column_row_labels_preview: Table 1: Independent, Behnken design., Levels, Encapsulation efficiency (%), −1, Independent variables, = (, 𝑋1 = polymer concentration (w/v), total drug, 𝑋2 = surfactant concentration (w/v), × 100, 𝑋3 = aqueous/organic phase ratio (v/v) ...\n- sample_rows:\n- sample_row_1: 𝑋1 = polymer concentration (w/v) | 10 | 35 | 60\n- sample_row_2: 𝑋2 = surfactant concentration (w/v) | 2 | 8.50 | 15\n- sample_row_3: Table 1: Independent | and | dependent | variables | levels | in Box- | drug entrapment and drug loading [34] of nanoparticles was\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "VARIABLE_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 4.0,
+        "structure_score": 5.0,
+        "penalty_score": 0.0,
+        "final_score": 15.440000000000001
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__formulation_table__01",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_13__pdf_table.csv",
+      "selection_reason": "role_constrained_formulation_table_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 16,
+      "order_index": 5,
+      "text_content": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_13__pdf_table.csv]\n- table_id: Table 13\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5 || 6 || 7\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=32, cols=8\n- first_column_row_labels_preview: Table 2: Effect of independent process variables on dependent variable., % Drug, PLGA, Formulation, mg/mL, (±SD), 1., 2., 3., 4., 5., 6. ...\n- sample_rows:\n- sample_row_1: mg/mL | mg/mL | volume ratio | Mg/mL | (±SD) | (±SD)\n- sample_row_2: Table 2: Effect of independent process variables on dependent variable.\n- sample_row_3: 11. | 10 | 15 | 6 | 3 | 177 ± 0.6 | 80 ± 2.1 | 0.04 ± 0.003\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": true,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 5.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 15.76
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__optimization_result__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/UFXX9WXE.pdf.txt#paragraph:7#segment:2",
+      "selection_reason": "role_constrained_optimization_result_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 14,
+      "order_index": 6,
+      "text_content": "[OPTIMIZATION_RESULT_BLOCK]\nExperimental design: varying concentrations or batches. Point prediction of the Design Expert software was used to determine the optimized NPs on the basis of closeness of desirability factor close to 1, which predicted the optimized process parameters to be 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL with predicted values of responses 𝑌1 170.5 d⋅nm and 𝑌2 86.81%. The optimized formulation was developed and characterized for 𝑧-average and % drug entrapment. The experimental value for responses 𝑌1 168.2 d⋅nm with PDI 0.08 and 𝑌2 83.8% of optimized formulation was found in good agreement with the predicted values generated by the RSM and the result assures the validity of RSM model. The percentage drug loading of optimized Lzp-PLGA- NPs was calculated using (3) and it was found to be 8.7%.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "OPTIMIZATION_RESULT",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 4.0,
+        "cue_score": 6.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 14.0
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__context_fallback__01",
+      "block_type": "paragraph",
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/UFXX9WXE.pdf.txt#paragraph:11#segment:0",
+      "selection_reason": "role_constrained_context_fallback_primary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 6,
+      "order_index": 7,
+      "text_content": "[PARAGRAPH_BLOCK]\nExperimental design: varying concentrations or batches. BioMed Research International 4. Summary and Conclusion Lorazepam loaded polymeric nanoparticles using PLGA as release controlling polymer showed potential outcome which were optimized using 4-factor, 2-level Box-Behnken design. The dependent responses, that is, percentage drug entrapment and 𝑧-average, for different combinations of independent variables, that is, polymer, surfactant, w/o phase ratio, and drug concentration, were obtained experimentally and the results were found to fit the quadratic design model. Quantitative effect of independent variables at dif- ferent levels on the dependent response was investigated by using polynomial equations generated by the model. On the basis of desirable constraints, point predication technique of Box-Behnken design proposed optimized formulation with combination of 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL. It can be concluded that Lzp-PLGA-NPs were successfully optimized and developed using Box-Behnken design. The Lzp-PLGA-NPs showed biphasic release pattern with initial burst release followed by sustained release.",
+      "is_synthesis": false,
+      "is_table_derived": false,
+      "is_candidate_critical": true,
+      "role_assignment": "CONTEXT_FALLBACK",
+      "role_priority": "primary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 4.0,
+        "structure_score": 2.0,
+        "penalty_score": 0.0,
+        "final_score": 6.0
+      }
+    },
+    {
+      "block_id": "UFXX9WXE__formulation_table__02",
+      "block_type": "table",
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_16__pdf_table.csv",
+      "selection_reason": "role_constrained_formulation_table_secondary",
+      "selection_feature": "role_aware_selector_v1",
+      "rank_score": 9,
+      "order_index": 8,
+      "text_content": "[TABLE_SUMMARY data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_16__pdf_table.csv]\n- table_id: Table 16\n- title_or_caption: (not available)\n- column_headers: 0 || 1 || 2\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=85, cols=3\n- first_column_row_labels_preview: 330, 290, 85.5, z-average, 60.00 15.00, 60.00 15.00, 47.50 11.75, 11.75 47.50, 35.00 8.50, 8.50 35.00, B : 22.50 GA, B : 22.50 5.25 GA ...\n- sample_rows:\n- sample_row_1: and poloxamer concentration (X2) on 𝑧-average (Y 1).\n- sample_row_2: ratio (X3) and drug concentration (X4) on % drug entrapment.\n- sample_row_3: 330 | 92\n- footnotes_or_notes: (not available)",
+      "is_synthesis": false,
+      "is_table_derived": true,
+      "is_candidate_critical": false,
+      "role_assignment": "FORMULATION_TABLE",
+      "role_priority": "secondary",
+      "role_score_breakdown": {
+        "heading_score": 0.0,
+        "cue_score": 2.0,
+        "structure_score": 4.0,
+        "penalty_score": 0.0,
+        "final_score": 9.4
+      }
+    }
+  ],
+  "coverage_summary": {
+    "total_blocks": 9,
+    "synthesis_blocks": 1,
+    "table_blocks": 3,
+    "caption_blocks": 0,
+    "paragraph_blocks": 4,
+    "has_optimization_signal": true,
+    "has_doe_signal": true,
+    "has_sequential_signal": false
+  },
+  "required_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK"
+  ],
+  "selected_roles": [
+    "PREPARATION_METHOD",
+    "MATERIALS",
+    "EXPERIMENTAL_DESIGN",
+    "VARIABLE_TABLE",
+    "FORMULATION_TABLE",
+    "OPTIMIZATION_RESULT",
+    "CONTEXT_FALLBACK",
+    "FORMULATION_TABLE"
+  ],
+  "missing_or_weak_roles": [],
+  "duplicate_table_suppression_events": [
+    {
+      "role": "FORMULATION_TABLE",
+      "origin_locator": "data/cleaned/content_goren_2025/tables/UFXX9WXE/UFXX9WXE__table_14__pdf_table.csv",
+      "reason": "duplicate_table_signature"
+    }
+  ],
+  "feature_activation_snapshot": {
+    "ordered_evidence_packing": true,
+    "summary_table_mode": true,
+    "table_selection_scoring": true,
+    "selector_debug_available": true,
+    "candidate_segmentation_profile": "section_aware_candidate_segmentation_v1",
+    "section_aware_candidate_split": true,
+    "candidate_table_isolation": true,
+    "candidate_noise_filtering": true,
+    "doe_pre_llm_detection": true,
+    "sequential_optimization_detection": false,
+    "role_aware_evidence_selection": true,
+    "doe_overlay_selection": true,
+    "duplicate_table_suppression": true
+  },
+  "technical_status": {
+    "artifact_readable": true,
+    "required_top_level_fields_present": true,
+    "required_block_fields_present": true,
+    "non_empty_evidence_blocks": true,
+    "overall": "pass"
+  },
+  "design_status": {
+    "input_contract_satisfied": true,
+    "required_features_active": true,
+    "required_roles_present": [
+      "CONTEXT_FALLBACK",
+      "EXPERIMENTAL_DESIGN",
+      "FORMULATION_TABLE",
+      "MATERIALS",
+      "OPTIMIZATION_RESULT",
+      "PREPARATION_METHOD",
+      "VARIABLE_TABLE"
+    ],
+    "missing_or_weak_roles": [],
+    "overall": "pass",
+    "nonconformance_reasons": []
+  }
+}

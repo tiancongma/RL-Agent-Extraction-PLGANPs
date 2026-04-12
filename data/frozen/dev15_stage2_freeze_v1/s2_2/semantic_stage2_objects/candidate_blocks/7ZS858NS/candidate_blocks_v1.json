@@ -1,0 +1,1164 @@
+{
+  "paper_key": "7ZS858NS",
+  "source_clean_text_path": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt",
+  "source_manifest_path": "data/results/20260411_312d44b/12_FINAL_segmentation_closure/targeted_manifest.tsv",
+  "producer_script": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+  "contract_version": "s2_candidate_blocks_v1",
+  "segmentation_profile": "section_aware_candidate_segmentation_v1",
+  "selector_boundary": "candidate_segmentation_only",
+  "feature_activation_snapshot": {
+    "section_aware_split": true,
+    "table_isolation": true,
+    "noise_filtering": true
+  },
+  "coverage_summary": {
+    "total_candidates": 48,
+    "prose_candidates": 38,
+    "table_candidates": 10,
+    "candidates_with_noise_flags": 38,
+    "candidates_with_quality_flags": 47,
+    "has_doe_signal": true,
+    "has_sequential_signal": false,
+    "has_optimization_signal": true
+  },
+  "candidate_blocks": [
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__01",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "excipients to increase solubility, including surfactants, cosol- vents, micellar solutions, complexing agents, and lipid formulations.9 Unfortunately, the increased number of ingre- dients required to formulate the poorly water-soluble molecules may raise the potential for adverse eﬀects. Nanotechnology-based drug delivery can overcome certain anatomical, physiological, chemical, and clinical barriers associated with conventional dosage forms. Nanoparticles (NPs) are submicrometer particulate dispersions, or solid particles, that can deliver a variety of important therapeutic agents such as nucleic acids, peptides, and small hydrophobic and hydrophilic molecules to diﬀerent biological systems. The potential advantages of NPs include improved drug solubility and stability, increased bioavailability at the targeted area, and prolonged duration of action by controlling the release rate. This can result in minimal adverse eﬀects and a more convenient route of administration, leading to improved patient compliance and enhanced therapeutic outcome. Many types of nano- therapeutics have been designed and evaluated over the years (for example, based on liposomes, polymers, and micelles as carrier materials).10 Among the carrier materials, the copolymer poly(lactic-co-glycolic acid) (PLGA) has a long history of use as a biomaterial due to its exceptional biocompatibility and biodegradability. The properties of molecular weight and biodegradation rate can be controlled over a wide range of values.11 The hydrolyzed monomers are easily metabolized in the body via the Krebs cycle and eliminated as carbon dioxide and water. PLGA has been approved by the FDA for use in drug delivery systems due to its controlled and sustained release properties and biocompatibility with biological tissues and cells.12 Drug-loaded PLGA NPs are most commonly prepared by nanoprecipitation13,14 and single or double emulsion solvent evaporation, in which various stabilizers and organic solvents are used and have a critical eﬀect on physicochemical properties of NPs.15,16 Furthermore, PLGA molecular weights, drug/polymer ratios, and nanoprecipitation conditions all aﬀect the ﬁnal properties of the NPs.17−19 Solutol HS15 is a biocompatible nonionic surfactant with high stability and excellent solubiliza- tion ability of hydrophobic drugs. It is also characterized by increased mucosal permeability and altered drug pharmacoki- netics.20 The only preparation of MF-loaded PLGA NPs found by the authors was conjugated with wheat germ agglutinin (WGA), reported by Surti et al. The preparation was carried out by an emulsion−solvent evaporation technique using polyvinyl alcohol (PVA) as a stabilizer.21 Interestingly, there are no reports about the preparation and optimization of PLGA nanoparticles containing MF through the nanoprecipitation method using Solutol HS15 as a stabilizer. The aim of this study is to design and characterize PLGA NPs encapsulating MF for sustained drug release using nanoprecipitation. This may lead to improved therapeutic outcome and patient compliance. 2. EXPERIMENTAL SECTION",
+      "text_preview": "excipients to increase solubility, including surfactants, cosol- vents, micellar solutions, complexing agents, and lipid formulations.9 Unfortunately, the increased number of ingre- dients required to formulate the poorl"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__02",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:1#segment:0",
+      "paragraph_index": 1,
+      "segment_index": 0,
+      "section_label": "2.1. Materials",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.1. Materials. Mometasone furoate (MF) was purchased from Acros Organics (New Jersey, USA). PLGA-Purasorb PDLG 5010 (50:50) with an inherent viscosity midpoint of 1 dL/g was kindly donated by Corbion Purac (Gorinchem, the Netherlands). Solutol HS 15 (Macrogol 15 hydroxystearate) was kindly supplied by BASF (Ludwigshafen, Germany). Sodium dodecyl sulfate (SDS) was purchased from Biological Industries (Beit HaEmek, Israel). Acetone and methanol were purchased from Sigma-Aldrich (Rehovot, Israel). Spectra/Por Biotech 1.1 dialysis membranes with a molecular weight cutoﬀ (MWCO) of 8000 Da were purchased from Spectrum Medical Industries (Houston, Texas, USA).",
+      "text_preview": "2.1. Materials. Mometasone furoate (MF) was purchased from Acros Organics (New Jersey, USA). PLGA-Purasorb PDLG 5010 (50:50) with an inherent viscosity midpoint of 1 dL/g was kindly donated by Corbion Purac (Gorinchem, t"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__03",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:1#segment:1",
+      "paragraph_index": 1,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "Figure 1. Chemical structure of mometasone furoate. Figure 2. Schematic illustration of the preparation of MF NPs using the nanoprecipitation method. ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439",
+      "text_preview": "Figure 1. Chemical structure of mometasone furoate. Figure 2. Schematic illustration of the preparation of MF NPs using the nanoprecipitation method. ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.102"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__04",
+      "candidate_type": "prose",
+      "block_type": "synthesis_method",
+      "role_candidate": "PREPARATION_METHOD",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.2. Preparation of MF NPs",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.2. Preparation of MF NPs. MF-loaded nanoparticles were prepared using the nanoprecipitation method13 with modiﬁcation. The organic phase, consisting of 2 mg of MF and 6 mg of PLGA in 1 mL of acetone, was rapidly poured into 2 mL of aqueous solution containing 0.1% (w/v) Solutol HS 15. The suspension was stirred at 900 rpm for 24 h to allow complete evaporation of the organic solvent, and the formulation volume was adjusted with water to 2 mL (Figure 2). Complete evaporation was conﬁrmed by weighting the glass vial before addition of the organic phase and after the evaporation process. Then, the formulation was centrifuged for 1 min at 3000 rpm to discard debris. The supernatant was then transferred to a new tube for further investigation.",
+      "text_preview": "2.2. Preparation of MF NPs. MF-loaded nanoparticles were prepared using the nanoprecipitation method13 with modiﬁcation. The organic phase, consisting of 2 mg of MF and 6 mg of PLGA in 1 mL of acetone, was rapidly poured"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__05",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.3. Physicochemical Characterization of MF NPs",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.3. Physicochemical Characterization of MF NPs. Particle size distribution, polydispersity index (PDI), and zeta potential of NPs were characterized by dynamic light scattering (DLS) using Malvern’s Zetasizer (Nano series, Nanos-ZS, U.K.) at 25 °C using water as a diluent.",
+      "text_preview": "2.3. Physicochemical Characterization of MF NPs. Particle size distribution, polydispersity index (PDI), and zeta potential of NPs were characterized by dynamic light scattering (DLS) using Malvern’s Zetasizer (Nano seri"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__06",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.4. Determination of Drug Encapsulation Eﬃciency",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.4. Determination of Drug Encapsulation Eﬃciency. MF NPs were centrifuged for 30 min at 13,600 rpm to precipitate the NPs. The supernatant was discarded, and the sediment was dissolved in acetone. Methanol was then added to precipitate the polymer, followed by vortex and centrifugation for 1 min at 2000 rpm. Afterward, the supernatant containing the drug and organic solvents was transferred and evaporated. Methanol was then added to the residue, and the MF concentration was determined using a Biochrom UV−Vis spectrophotometer at a wavelength of 248 nm. The concen- trations of the calibration curve ranged from 0 to 16 μg/mL (Figure S1).",
+      "text_preview": "2.4. Determination of Drug Encapsulation Eﬃciency. MF NPs were centrifuged for 30 min at 13,600 rpm to precipitate the NPs. The supernatant was discarded, and the sediment was dissolved in acetone. Methanol was then adde"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__07",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.5. Morphological Evaluation of MF NPs",
+      "section_kind": "downstream_assay",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "downstream_assay_terms"
+      ],
+      "text_content": "2.5. Morphological Evaluation of MF NPs. Morpho- logical evaluation of MF NPs was carried out using scanning electron microscopy (SEM) and scanning transmission electron microscopy (STEM) by an extreme high-resolution scanning electron microscope (XHR SEM) (model Magellan 400L, FEI, Germany). The samples were diluted with water and ﬁxed on an SEM stub.",
+      "text_preview": "2.5. Morphological Evaluation of MF NPs. Morpho- logical evaluation of MF NPs was carried out using scanning electron microscopy (SEM) and scanning transmission electron microscopy (STEM) by an extreme high-resolution sc"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__08",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.6. In Vitro Drug Release Studies",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.6. In Vitro Drug Release Studies. MF NPs containing 225 μg of MF were placed in dialysis bags with a molecular cut- oﬀof 8000 Da. The dialysis bags were suspended in 50 mL of phosphate-buﬀered saline (PBS) containing 1% SDS (pH 7.4 and pH 6.4) and maintained at 37 °C (150 rpm). At predetermined time intervals, 1 mL of the release medium was discarded and replaced by an equal volume of fresh medium to maintain sink conditions. The concentration of MF was determined using UV−Vis at a wavelength of 248 nm. The concentrations of the calibration curves in PBS containing 1% SDS ranged from 0 to 17.5 μg/mL (Figure S2).",
+      "text_preview": "2.6. In Vitro Drug Release Studies. MF NPs containing 225 μg of MF were placed in dialysis bags with a molecular cut- oﬀof 8000 Da. The dialysis bags were suspended in 50 mL of phosphate-buﬀered saline (PBS) containing 1"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__09",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:0",
+      "paragraph_index": 2,
+      "segment_index": 0,
+      "section_label": "2.7. Kinetics of Drug Release",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "2.7. Kinetics of Drug Release.",
+      "text_preview": "2.7. Kinetics of Drug Release."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__10",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The data obtained from release studies were analyzed by diﬀerent mathematical models to study the kinetics of the drug release from the prepared nanoparticles: Higuchi’s model (cumulative percent of drug released vs (time)1/2), zero order (cumulative percent drug released vs time), ﬁrst order (log cumulative percent of drug retained vs time), and the ﬁrst 60% drug release ﬁt in Table 1.",
+      "text_preview": "The data obtained from release studies were analyzed by diﬀerent mathematical models to study the kinetics of the drug release from the prepared nanoparticles: Higuchi’s model (cumulative percent of drug released vs (tim"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__11",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:2",
+      "paragraph_index": 2,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "Physicochemical Properties, Encapsulation Eﬃciency, and Drug Loading Content of MF NPs (n = 3, mean ± s.d.) formulation mean diameter (nm) polydispersity index (PDI) zeta potential (mV) encapsulation eﬃciency (%)a drug loading content (%)b MF NPs 117 ± 13 0.26 ± 0.02 −32 ± 1.2 90 ± 2.1 22.4 ± 0.5 aEncapsulation eﬃciency (%) = (amount of drug in nanoparticles/amount of drug fed initially) × 100. bDrug loading content (%) = [amount of drug/(amount of drug + amount of polymer)] × 100.",
+      "text_preview": "Physicochemical Properties, Encapsulation Eﬃciency, and Drug Loading Content of MF NPs (n = 3, mean ± s.d.) formulation mean diameter (nm) polydispersity index (PDI) zeta potential (mV) encapsulation eﬃciency (%)a drug l"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__12",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:2#segment:1",
+      "paragraph_index": 2,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "Figure 3. Representative DLS measurements for the (A) size and (B) zeta potential distribution of MF NPs. ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439",
+      "text_preview": "Figure 3. Representative DLS measurements for the (A) size and (B) zeta potential distribution of MF NPs. ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__13",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "Korsmeyer−Peppas model (log of cumulative percent of drug released vs log of time).22",
+      "text_preview": "Korsmeyer−Peppas model (log of cumulative percent of drug released vs log of time).22"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__14",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:0",
+      "paragraph_index": 3,
+      "segment_index": 0,
+      "section_label": "2.8. Freeze-Drying of MF NPs",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "2.8. Freeze-Drying of MF NPs. The MF NPs were lyophilized in the presence of two cryoprotectants, mannitol and sucrose, at three diﬀerent concentrations: 4, 6, and 8% (w/ v). After cryoprotectant dissolution in nanosuspension, samples were kept at −80 °C for at least 24 h prior to lyophilization. The lyophilized MF NPs were then reconstituted to the initial volume, and their physicochemical properties were evaluated. 3. RESULTS AND DISCUSSION Topical steroids constitute ﬁrst-line therapy in the medical management of CRS, a persistent inﬂammatory condition characterized by the accumulation of highly viscoelastic mucus in the sinuses. However, the clinical outcome of topical steroids is often limited, mainly due to the poor distribution to the nose and sinuses.23 Localized drug delivery using NPs may facilitate consistent delivery to targeted sites, prolonged contact time, local elevated drug concentrations, reduced systemic adverse eﬀects, and improved therapeutic outcome.",
+      "text_preview": "2.8. Freeze-Drying of MF NPs. The MF NPs were lyophilized in the presence of two cryoprotectants, mannitol and sucrose, at three diﬀerent concentrations: 4, 6, and 8% (w/ v). After cryoprotectant dissolution in nanosuspe"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__15",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:1",
+      "paragraph_index": 3,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "NPs have been used in the respiratory system as drug vehicles capable of minimizing mucociliary clearance and avoiding phagocytosis by macro- phages, consequently enhancing the drug absorption.24 Lai et al. reported that the estimated average pore size of CRS mucus was at least 150 ± 50 nm, and polymeric nanoparticles up to 200 nm in diameter were capable of readily penetrating highly viscoelastic CRS mucus.25 Huang and Donovan found that amine-modiﬁed polystyrene nanoparticles that were smaller than 200 nm were transported across rabbit nasal respiratory epithelium by both paracellular and transcellular routes.26 In this study, MF-loaded PLGA NPs were successfully prepared using the nanoprecipitation method with a mean particle size of 117 nm and a satisfactory polydispersity index (PDI) of 0.26 (Table 1 and Figure 3A) such that they should be able to easily penetrate the CRS mucus.",
+      "text_preview": "NPs have been used in the respiratory system as drug vehicles capable of minimizing mucociliary clearance and avoiding phagocytosis by macro- phages, consequently enhancing the drug absorption.24 Lai et al. reported that"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__16",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:2",
+      "paragraph_index": 3,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_preparation_to_result",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_preparation_to_result"
+      ],
+      "text_content": "Zeta potential analysis is routinely used to determine the surface charge and stability of NPs. The zeta potential is an important parameter to evaluate colloidal dispersions.",
+      "text_preview": "Zeta potential analysis is routinely used to determine the surface charge and stability of NPs. The zeta potential is an important parameter to evaluate colloidal dispersions."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__17",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:3",
+      "paragraph_index": 3,
+      "segment_index": 3,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Values between −30 and + 30 mV indicate a tendency toward instability, aggregation, coagulation, or ﬂocculation.27 Negative zeta potential values of approximately −32 mV were obtained for MF NPs, indicating the stability of particles (Table 1 and Figure 3B).",
+      "text_preview": "Values between −30 and + 30 mV indicate a tendency toward instability, aggregation, coagulation, or ﬂocculation.27 Negative zeta potential values of approximately −32 mV were obtained for MF NPs, indicating the stability"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__18",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:40",
+      "paragraph_index": 3,
+      "segment_index": 40,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The zeta potential inﬂuences the ability of NPs to penetrate the mucosal layer where negative charges may facilitate penetration into the mucus layer.28,29 The drug encapsulation eﬃciency was 90 ± 2.1%, as determined by UV spectroscopy (Table 1).",
+      "text_preview": "The zeta potential inﬂuences the ability of NPs to penetrate the mucosal layer where negative charges may facilitate penetration into the mucus layer.28,29 The drug encapsulation eﬃciency was 90 ± 2.1%, as determined by"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__19",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:41",
+      "paragraph_index": 3,
+      "segment_index": 41,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "optimization_candidate"
+      ],
+      "text_content": "In a previous study, the MF encapsulation eﬃciency in PLGA NPs and WGA- conjugated PLGA NPs using an emulsion−solvent evaporation technique was 78 ± 5.5 and 60 ± 2.5%, respectively.21 Moreover, the drug loading content was 22.4 ± 0.5% (w/w), where most of the existing nanomedicines usually do not reach values higher than 10% drug loading content.30 The morphology of MF NPs was investigated.",
+      "text_preview": "In a previous study, the MF encapsulation eﬃciency in PLGA NPs and WGA- conjugated PLGA NPs using an emulsion−solvent evaporation technique was 78 ± 5.5 and 60 ± 2.5%, respectively.21 Moreover, the drug loading content w"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__20",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:3#segment:5",
+      "paragraph_index": 3,
+      "segment_index": 5,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_result_to_downstream",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_result_to_downstream",
+        "downstream_assay_terms",
+        "residual_noise"
+      ],
+      "text_content": "Figure 4 shows the SEM and STEM images of the obtained NPs. The morphology of the nanocarriers was almost spherical for all the tested samples. The mean size of NPs was in agreement with that measured using DLS within experimental errors. Moreover, a size distribution was observed and could be explained by the polydispersity value found by DLS. To evaluate the potential application of MF NPs for nasal delivery, the in vitro release of MF from PLGA NPs was examined in PBS (pH 6.4 and pH 7.4) containing 1% SDS to mimic the nasal mucosal microenvironment pH and physio- logical pH, respectively, at 37 °C for 7 days. The cumulative release curve of MF exhibited burst release initially followed by a sustained release phase, and the release was higher at lower pH, as expected31 (Figure 5). The initial burst release of the drug can occur if an appreciable amount is weakly bound or adsorbed to the relatively large surface of the NPs.32 Similar ﬁndings were also reported by Gaonkar et al. using the exact polymer with a hydrophobic compound.33 Mathematical models are commonly used to determine the kinetics of drug release from drug delivery systems. The data obtained from in vitro release studies were ﬁt to several models Figure 4. (A) SEM and (B) STEM images of the obtained MF NPs. The inset shows an ampliﬁed image of one nanoparticle. Figure 5. In vitro drug release of MF from MF NPs in PBS with 1% SDS (pH 7.4 and pH 6.4, 37 °C) at diﬀerent time intervals. The inset shows the drug release proﬁle over the initial 24 h. Values are the mean ± s.d. of three experiments. ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439",
+      "text_preview": "Figure 4 shows the SEM and STEM images of the obtained NPs. The morphology of the nanocarriers was almost spherical for all the tested samples. The mean size of NPs was in agreement with that measured using DLS within ex"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__21",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:4#segment:0",
+      "paragraph_index": 4,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary"
+      ],
+      "text_content": "to determine the mechanism of drug release from the prepared NPs (Figures 6 and 7). Higher R2 values were observed in the ﬁrst-order model relative to the zero-order model, revealing a concentration-dependent release. Under both pH conditions, MF NPs were found to have higher R2 values for Higuchi’s model, indicating that the release of MF from PLGA NPs is Figure 6. MF release from PLGA NPs at pH 7.4 ﬁt to kinetic models. (A) Korsmeyer−Peppas, (B) Higuchi, (C) zero-order, and (D) ﬁrst-order models.",
+      "text_preview": "to determine the mechanism of drug release from the prepared NPs (Figures 6 and 7). Higher R2 values were observed in the ﬁrst-order model relative to the zero-order model, revealing a concentration-dependent release. Un"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__22",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:4#segment:1",
+      "paragraph_index": 4,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Figure 7. MF release from PLGA NPs at pH 6.4 ﬁt to kinetic models. (A) Korsmeyer−Peppas, (B) Higuchi, (C) zero-order, and (D) ﬁrst-order models.",
+      "text_preview": "Figure 7. MF release from PLGA NPs at pH 6.4 ﬁt to kinetic models. (A) Korsmeyer−Peppas, (B) Higuchi, (C) zero-order, and (D) ﬁrst-order models."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__23",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:4#segment:2",
+      "paragraph_index": 4,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context",
+        "residual_noise"
+      ],
+      "text_content": "ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439",
+      "text_preview": "ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__24",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:numbered_heading_split"
+      ],
+      "text_content": "controlled by diﬀusion. However, Higuchi’s model does not take into account the inﬂuence of swelling of the matrix upon hydration or erosion of the matrix.34 However, high R2 values were obtained for the Korsmeyer−Peppas model, in which the ﬁrst 60% drug release data were ﬁt. In this model, the value of the release exponent “n” characterizes the release mechanism of drug from the matrix system. Under both pH conditions, the obtained release exponents were 0.45 < n < 0.89, suggesting that the release followed anomalous non-Fickian transport due to a combination of drug diﬀusion through the polymer, polymeric erosion, swelling, and degradation.22,35 Since PLGA degradation is usually slow, the release of MF from PLGA NPs would depend chieﬂy on drug diﬀusion kinetics and the matrix swelling and erosion, as described by other works using hydrophobic drugs.36,37 The timescale over which our delivery system was studied is shorter than the time during which PLGA undergoes degradation.38−41 Freeze-drying is a reliable method to maintain the stability of pharmaceutical products and to facilitate handling and storage.42 As this process is highly stressful for NPs, cryoprotectants must be added before freezing to protect the NPs. The most favorable cryoprotectants for freeze-dried NPs are sugar derivatives.43 Particle size analysis with the mean diameter ratio of NPs after and before freeze-drying (Sf/Si) is the key determinant of formulation success.",
+      "text_preview": "controlled by diﬀusion. However, Higuchi’s model does not take into account the inﬂuence of swelling of the matrix upon hydration or erosion of the matrix.34 However, high R2 values were obtained for the Korsmeyer−Peppas"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__25",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:10",
+      "paragraph_index": 5,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "The NPs are assumed to be stable throughout the freeze-drying process if the ratio Sf/Si is close to 1, with an upper limit of 2.44−46 In the present study, sucrose and mannitol were used as cryoprotectants at diﬀerent concentrations, and the physicochemical properties of MF NPs were measured by DLS after freeze-drying (Table 2).",
+      "text_preview": "The NPs are assumed to be stable throughout the freeze-drying process if the ratio Sf/Si is close to 1, with an upper limit of 2.44−46 In the present study, sucrose and mannitol were used as cryoprotectants at diﬀerent c"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__26",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:11",
+      "paragraph_index": 5,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Sf/Si ratios for MF NPs using diﬀerent concentrations of sucrose and mannitol ranged from 1.25 to 1.78, with the exception of mannitol 6%, in which the Sf/Si ratio was",
+      "text_preview": "Sf/Si ratios for MF NPs using diﬀerent concentrations of sucrose and mannitol ranged from 1.25 to 1.78, with the exception of mannitol 6%, in which the Sf/Si ratio was"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__27",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:0",
+      "paragraph_index": 5,
+      "segment_index": 0,
+      "section_label": "2.18. The change in particle size distribution may result from the cryoprotectants’ behavior during freeze-drying and their ads",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "optimization_candidate"
+      ],
+      "text_content": "2.18. The change in particle size distribution may result from the cryoprotectants’ behavior during freeze-drying and their adsorption on the NP surface.47 Additionally, the zeta potential values were in the range of −30.4 to −39.1 mV, indicating good stability of MF NPs after the freeze-drying process using 4−8% cryoprotectants. The eﬀect of cryoprotectants on MF release after the freeze- drying process was investigated on the system with 8% (w/v) cryoprotectant because it had the lowest Sf/Si ratio observed. Figure 8 shows drug release rates under both pH conditions with cryoprotectants, where the extent of initial burst release decreased for all freeze-dried formulations and the release proﬁles were modiﬁed. At pH 7.4, NPs with sucrose and mannitol cryoprotectants showed a slight decrease in the release rate and cumulative percentage of MF released, in addition to the reduction in burst release. At pH 6.4, while a lower percentage of MF was initially released when sucrose and mannitol were added used, a signiﬁcantly higher cumulative percentage of MF was obtained for sucrose within the tested time period absolutely and in comparison to mannitol and MF NPs without a cryoprotectant. The NPs with mannitol cryoprotectant show a similar release proﬁle at both pH values as without the cryoprotectant after the decrease in initial burst release.",
+      "text_preview": "2.18. The change in particle size distribution may result from the cryoprotectants’ behavior during freeze-drying and their adsorption on the NP surface.47 Additionally, the zeta potential values were in the range of −30"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__28",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:10",
+      "paragraph_index": 5,
+      "segment_index": 10,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The data obtained from in vitro release studies were ﬁt by several models to determine the mechanism of drug release from the freeze-dried NPs (Table 3 and Figures S3−S6).",
+      "text_preview": "The data obtained from in vitro release studies were ﬁt by several models to determine the mechanism of drug release from the freeze-dried NPs (Table 3 and Figures S3−S6)."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__29",
+      "candidate_type": "prose",
+      "block_type": "materials_procurement",
+      "role_candidate": "MATERIALS",
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:11",
+      "paragraph_index": 5,
+      "segment_index": 11,
+      "section_label": "",
+      "section_kind": "materials",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "The release kinetics of MF from NPs after freeze-drying showed the best ﬁt for ﬁrst-order kinetics, and the release exponents obtained from Korsmeyer−Peppas model were 0.45 < n < 0.89, suggesting that the release followed anomalous non-Fickian transport.",
+      "text_preview": "The release kinetics of MF from NPs after freeze-drying showed the best ﬁt for ﬁrst-order kinetics, and the release exponents obtained from Korsmeyer−Peppas model were 0.45 < n < 0.89, suggesting that the release followe"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__30",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:2",
+      "paragraph_index": 5,
+      "segment_index": 2,
+      "section_label": "",
+      "section_kind": "preparation",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "4. CONCLUSIONS To the best of our knowledge, this is the ﬁrst report of a preparation of PLGA NPs containing MF using the nano- precipitation method.",
+      "text_preview": "4. CONCLUSIONS To the best of our knowledge, this is the ﬁrst report of a preparation of PLGA NPs containing MF using the nano- precipitation method."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__31",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:30",
+      "paragraph_index": 5,
+      "segment_index": 30,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "MF-loaded PLGA NPs were successfully prepared and exhibited adequate physicochemical properties as Table 2.",
+      "text_preview": "MF-loaded PLGA NPs were successfully prepared and exhibited adequate physicochemical properties as Table 2."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__32",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:31",
+      "paragraph_index": 5,
+      "segment_index": 31,
+      "section_label": "",
+      "section_kind": "experimental_design",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split",
+        "variable_sweep_design",
+        "experimental_design_candidate"
+      ],
+      "text_content": "Physicochemical Properties of MF NPs after Freeze-Drying Using Cryoprotectants at Diﬀerent Concentrations (n = 3, mean ± s.d.) cryoprotectant concentration (% w/v) mean diameter (nm) PDI zeta potential (mV) Sf/Sia sucrose 4% 162 ± 12 0.44 ± 0.06 −32 ± 1 1.38 6% 206 ± 7.6 0.45 ± 0.02 −39 ± 4 1.75 8% 146 ± 17 0.43 ± 0.02 −30.4 ± 0.7 1.25 mannitol 4% 210 ± 31 0.39 ± 0.01 −32.3 ± 2.6 1.78 6% 256 ± 2.2 0.42 ± 0.01 −36.5 ± 0.5 2.18 8% 206 ± 4.5 0.36 ± 0.02 −31.3 ± 0.4 1.75 aSf/Si is the ratio of particle size after freeze-drying to particle size and before freeze-drying.",
+      "text_preview": "Physicochemical Properties of MF NPs after Freeze-Drying Using Cryoprotectants at Diﬀerent Concentrations (n = 3, mean ± s.d.) cryoprotectant concentration (% w/v) mean diameter (nm) PDI zeta potential (mV) Sf/Sia sucros"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__33",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:4",
+      "paragraph_index": 5,
+      "segment_index": 4,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "cue_transition_materials_to_context",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:cue_transition_materials_to_context"
+      ],
+      "text_content": "Figure 8. In vitro drug release of MF from MF NPs after freeze-drying using 8% (w/v) sucrose and mannitol in PBS with 1% SDS (pH 7.4 and pH 6.4, 37 °C) at diﬀerent time intervals. The inset shows the drug release proﬁle over the initial 24 h. Values are the mean ± s.d. of three experiments.",
+      "text_preview": "Figure 8. In vitro drug release of MF from MF NPs after freeze-drying using 8% (w/v) sucrose and mannitol in PBS with 1% SDS (pH 7.4 and pH 6.4, 37 °C) at diﬀerent time intervals. The inset shows the drug release proﬁle"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__34",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:50",
+      "paragraph_index": 5,
+      "segment_index": 50,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "Table 3.",
+      "text_preview": "Table 3."
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__35",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:51",
+      "paragraph_index": 5,
+      "segment_index": 51,
+      "section_label": "",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "post_table_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:post_table_split"
+      ],
+      "text_content": "Correlation Coeﬃcient (R2) Values of Various Release Kinetic Models in 1% SDS Buﬀers (pH 7.4 and pH 6.4) for Freeze-Dried MF NPs zero order ﬁrst order Higuchi model Korsmeyer− Peppas model cryoprotectant [8% (w/v)] R2 R2 R2 n R2 sucrose pH 7.4 0.907 0.955 0.984 0.57 0.934 sucrose pH 6.4 0.971 0.975 0.952 0.66 0.985 mannitol pH 7.4 0.975 0.988 0.950 0.46 0.953 mannitol pH 6.4 0.954 0.976 0.940 0.63",
+      "text_preview": "Correlation Coeﬃcient (R2) Values of Various Release Kinetic Models in 1% SDS Buﬀers (pH 7.4 and pH 6.4) for Freeze-Dried MF NPs zero order ﬁrst order Higuchi model Korsmeyer− Peppas model cryoprotectant [8% (w/v)] R2 R2"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__36",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:5#segment:2",
+      "paragraph_index": 5,
+      "segment_index": 2,
+      "section_label": "0.980 ACS Omega http://pubs",
+      "section_kind": "context",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "numbered_heading_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "heading_scoped",
+        "split_trigger:numbered_heading_split",
+        "residual_noise"
+      ],
+      "text_content": "0.980 ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439",
+      "text_preview": "0.980 ACS Omega http://pubs.acs.org/journal/acsodf https://dx.doi.org/10.1021/acsomega.0c00111 ACS Omega 2020, 5, 7432−7439"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__37",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:6#segment:0",
+      "paragraph_index": 6,
+      "segment_index": 0,
+      "section_label": "",
+      "section_kind": "optimization",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "paragraph_boundary",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:paragraph_boundary",
+        "optimization_candidate"
+      ],
+      "text_content": "well as high drug encapsulation eﬃciency and loading content. The in vitro MF release from PLGA NPs under pH conditions mimicking the nasal mucosal microenvironment showed initial burst release followed by a sustained release phase.",
+      "text_preview": "well as high drug encapsulation eﬃciency and loading content. The in vitro MF release from PLGA NPs under pH conditions mimicking the nasal mucosal microenvironment showed initial burst release followed by a sustained re"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_paragraph__38",
+      "candidate_type": "prose",
+      "block_type": "paragraph",
+      "role_candidate": null,
+      "is_table_derived": false,
+      "source_type": "clean_text_paragraph",
+      "origin_locator": "data/cleaned/content_goren_2025/text/7ZS858NS.pdf.txt#paragraph:6#segment:1",
+      "paragraph_index": 6,
+      "segment_index": 1,
+      "section_label": "",
+      "section_kind": "table_related",
+      "segmentation_method": "double_newline_then_section_heading_split",
+      "split_trigger": "table_inline_split",
+      "noise_flags": [
+        "noise_line_removed"
+      ],
+      "quality_flags": [
+        "split_trigger:table_inline_split"
+      ],
+      "text_content": "The kinetics of drug release followed anomalous non-Fickian transport, and the NPs could be lyophilized to give stable NPs with reduced initial burst release that could be advantageous for a ﬁnal formulation. Local treatment of CRS with nasal MF NPs can be beneﬁcial in decreasing the overall required dosage, in minimizing side eﬀects, and in enhancing patient compliance. In conclusion, we expect that controlled release of MF using PLGA NPs will be a promising approach for improving the local treatment of CRS; hence, their potential for nasal delivery applications warrants further in vitro and in vivo investigations. ■ASSOCIATED CONTENT * sı Supporting Information The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acsomega.0c00111.",
+      "text_preview": "The kinetics of drug release followed anomalous non-Fickian transport, and the NPs could be lyophilized to give stable NPs with reduced initial burst release that could be advantageous for a ﬁnal formulation. Local treat"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__01",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_07__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 153,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_07__pdf_table.csv]\n- table_id: Table 7\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1 || 2 || 3 || 4 || 5\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=11, cols=6\n- first_column_row_labels_preview: Table 2. Physicochemical Properties of MF NPs after Freeze-Drying Using Cryoprotectants at Diﬀerent Concentrations (n = 3,, mean ± s.d.), a, cryoprotectant, sucrose, 6%, 8%, mannitol, 6%, 8%, is the ratio of particle size after\n- sample_rows:\n- sample_row_1: Table 2. Physicochemical Properties of MF NPs after Freeze-Drying Using Cryoprotectants at Diﬀerent Concentrations (n = 3,\n- sample_row_2: cryoprotectant | concentration (% w/v) | mean diameter (nm) | PDI | zeta potential (mV) | Sf/Si\n- sample_row_3: 6% | 206 ± 7.6 | 0.45 ± 0.02 | −39 ± 4 | 1.75\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_07__pdf_table.csv] - table_id: Table 7 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 || 2 || 3 || 4 || 5 - header_"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__02",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_06__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 129,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_06__pdf_table.csv]\n- table_id: Table 6\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=70, cols=2\n- first_column_row_labels_preview: mannitol 4% 210 ± 31, 6% 256 ± 2.2, 8% 206 ± 4.5, is the ratio of particle size after freeze-drying to particle size and before freeze-drying. aSf/Si, controlled by diﬀusion. However, Higuchi’s model does not take, into account the inﬂuence of swelling of the matrix upon, hydration or erosion of the matrix.34 However, high R2 values, were obtained for the Korsmeyer−Peppas model, in which the, ﬁrst 60% drug release data were ﬁt. In this model, the value of the, release exponent “n” characterizes the release mechanism of, drug from the matrix system. Under both pH conditions, the, obtained release exponents were 0.45 < n < 0.89, suggesting that ...\n- sample_rows:\n- sample_row_1: concentrations, and the physicochemical properties of MF\n- sample_row_2: ratios for MF NPs using diﬀerent concentrations of sucrose and | 6.4) for Freeze-Dried MF NPs\n- sample_row_3: mannitol 4% 210 ± 31 | 0.39 ± 0.01 −32.3 ± 2.6 1.78\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_06__pdf_table.csv] - table_id: Table 6 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (none inferre"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__03",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_05__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 78,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_05__pdf_table.csv]\n- table_id: Table 5\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=10, cols=2\n- first_column_row_labels_preview: ACS Omega, models., models., to determine the mechanism of drug release from the prepared, NPs (Figures 6 and 7). Higher R2 values were observed in the, ﬁrst-order model relative to the zero-order model,, https://dx.doi.org/10.1021/acsomega.0c00111 7436, ACS Omega 2020, 5, 7432−7439\n- sample_rows:\n- sample_row_1: to determine the mechanism of drug release from the prepared | concentration-dependent release. Under both pH conditions,\n- sample_row_2: ACS Omega | http://pubs.acs.org/journal/acsodf Article\n- sample_row_3: NPs (Figures 6 and 7). Higher R2 values were observed in the | MF NPs were found to have higher R2 values for Higuchi’s\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_05__pdf_table.csv] - table_id: Table 5 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__04",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_04__pdf_table.csv",
+      "section_label": "Experimental design variable table.",
+      "section_kind": "experimental_design",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:3"
+      ],
+      "table_role_hint": "design matrix",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": 14,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_04__pdf_table.csv]\n- table_id: Table 4\n- title_or_caption: Experimental design variable table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: design matrix\n- table_shape_hint: rows=33, cols=2\n- first_column_row_labels_preview: Korsmeyer−Peppas model (log of cumulative percent of drug, released vs log of time).22, 2.8. Freeze-Drying of MF NPs. The MF NPs were, lyophilized in the presence of two cryoprotectants, mannitol, and sucrose, at three diﬀerent concentrations: 4, 6, and 8% (w/, v). After cryoprotectant dissolution in nanosuspension, samples, lyophilized MF NPs were then reconstituted to the initial, volume, and their physicochemical properties were evaluated., the tested samples. The mean size of NPs was in agreement with, that measured using DLS within experimental errors. Moreover,, 3. RESULTS AND DISCUSSION, a size distribution was observed and could be explained by the ...\n- sample_rows:\n- sample_row_1: and sucrose, at three diﬀerent concentrations: 4, 6, and 8% (w/ | where most of the existing nanomedicines usually do not reach\n- sample_row_2: local elevated drug concentrations, reduced systemic adverse\n- sample_row_3: Korsmeyer−Peppas model (log of cumulative percent of drug | study, the MF encapsulation eﬃciency in PLGA NPs and WGA-\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_04__pdf_table.csv] - table_id: Table 4 - title_or_caption: Experimental design variable table. - column_headers: 0 || 1 - header_units: (none inferre"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__05",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_01__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "optimization",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -13,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_01__pdf_table.csv]\n- table_id: Table 1\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=37, cols=2\n- first_column_row_labels_preview: time, these NPs urge the need, for additional investigations to demonstrate their therapeutic potential, 1. INTRODUCTION, the drug while minimizing systemic exposure.4 Mometasone, Chronic rhinosinusitis (CRS) is a prevalent inﬂammatory, furoate (MF) has been demonstrated to be eﬀective in treating, disease aﬀecting the nasal cavity and the paranasal sinuses,, inﬂammatory disorders.5,6, which can signiﬁcantly aﬀect a person’s daily functioning and, quality of life. It is generally characterized by nasal congestion, and discharge lasting at least 12 weeks.1 The therapeutic, approach for patients with CRS involves complex combinations ...\n- sample_rows:\n- sample_row_1: 1. INTRODUCTION | modality of CRS therapy, providing high local concentrations of\n- sample_row_2: intranasal administration via various nasal sprays is very\n- sample_row_3: time, these NPs urge the need\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_01__pdf_table.csv] - table_id: Table 1 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__06",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_03__pdf_table.csv",
+      "section_label": "Characterization-only table.",
+      "section_kind": "preparation",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:4"
+      ],
+      "table_role_hint": "characterization_only",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -71,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_03__pdf_table.csv]\n- table_id: Table 3\n- title_or_caption: Characterization-only table.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=45, cols=2\n- first_column_row_labels_preview: 2.2. Preparation of MF NPs. MF-loaded nanoparticles, modiﬁcation. The organic phase, consisting of 2 mg of MF and 6, mg of PLGA in 1 mL of acetone, was rapidly poured into 2 mL of, aqueous solution containing 0.1% (w/v) Solutol HS 15. The, suspension was stirred at 900 rpm for 24 h to allow complete, evaporation of the organic solvent, and the formulation volume, electron microscope (XHR SEM) (model Magellan 400L, FEI,, Germany). The samples were diluted with water and ﬁxed on an, evaporation was conﬁrmed by weighting the glass vial before, SEM stub., addition of the organic phase and after the evaporation process., 2.6. In Vitro Drug Release Studies. MF NPs containing ...\n- sample_rows:\n- sample_row_1: maintain sink conditions. The concentration of MF was\n- sample_row_2: concentrations of the calibration curves in PBS containing 1%\n- sample_row_3: 2.2. Preparation of MF NPs. MF-loaded nanoparticles | trations of the calibration curve ranged from 0 to 16 μg/mL\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_03__pdf_table.csv] - table_id: Table 3 - title_or_caption: Characterization-only table. - column_headers: 0 || 1 - header_units: (none inferred) - ro"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__07",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_10__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -83,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_10__pdf_table.csv]\n- table_id: Table 10\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=83, cols=2\n- first_column_row_labels_preview: ACS Omega, Modeling on Drug Release from Controlled Drug Delivery Systems., Acta Pol. Pharm. 2010, 67, 217−223., Revolution for Efficient Therapeutics Delivery. Drug Delivery 2016, 23,, 671−683., (24) Ghadiri, M.; Young, P. M.; Traini, D. Strategies to Enhance Drug, Absorption via Nasal and Pulmonary Routes. Pharmaceutics 2019, 11,, 113., (25) Lai, S. K.; Suk, J. S.; Pace, A.; Wang, Y.-Y.; Yang, M.; Mert, O.;, Vitro Evaluation, Pharmacokinetic and Biodistribution in Rats. Drug, Chen, J.; Kim, J.; Hanes, J. Drug Carrier Nanoparticles That Penetrate, Delivery 2016, 23, 1453−1468. ...\n- sample_rows:\n- sample_row_1: on the Preparation Variables and Characterization Methods. Mater. Sci.\n- sample_row_2: Loaded Vitamin E TPGS Emulsified PLGA Nanoparticles: Preparation,\n- sample_row_3: ACS Omega | http://pubs.acs.org/journal/acsodf Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_10__pdf_table.csv] - table_id: Table 10 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__08",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_09__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "unknown",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -119,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_09__pdf_table.csv]\n- table_id: Table 9\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=32, cols=2\n- first_column_row_labels_preview: Swamy, M. K.; Sharma, S.; et al. Nano Based Drug Delivery Systems:, 16, 71., (11) Sun, X.; Xu, C.; Wu, G.; Ye, Q.; Wang, C. Poly(Lactic-Co-, Glycolic Acid): Applications and Future Prospects for Periodontal, Aiman Abu Ammar − Department of Pharmaceutical, Tissue Regeneration. Polymer 2017, 9, 189., Engineering, Azrieli College of Engineering Jerusalem, Jerusalem, (12) Swider, E.; Koshkina, O.; Tel, J.; Cruz, L. J.; de Vries, I. J. M.;, orcid.org/0000-0002-2556-3120; 9103501, Israel;, Srinivas, M. Customizing Poly(Lactic-Co-Glycolic Acid) Particles for, Email: aimanab@jce.ac.il, +972-2-6591835, (13) Abu Ammar, A.; Nasereddin, A.; Ereqat, S.; Dan-Goor, M.; Jaffe, ...\n- sample_rows:\n- sample_row_1: Tissue Regeneration. Polymer 2017, 9, 189.\n- sample_row_2: Solvent Evaporation Techniques Used for Drug Encapsulation. Int. J.\n- sample_row_3: Swamy, M. K.; Sharma, S.; et al. Nano Based Drug Delivery Systems:\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_09__pdf_table.csv] - table_id: Table 9 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__09",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_02__pdf_table.csv",
+      "section_label": "Formulation table with drug/polymer/loading variables.",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "noise_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:1"
+      ],
+      "table_role_hint": "formulation",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -123,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_02__pdf_table.csv]\n- table_id: Table 2\n- title_or_caption: Formulation table with drug/polymer/loading variables.\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: characterization\n- table_shape_hint: rows=49, cols=2\n- first_column_row_labels_preview: ACS Omega, values.11 The hydrolyzed monomers are easily metabolized in, the body via the Krebs cycle and eliminated as carbon dioxide, and water. PLGA has been approved by the FDA for use in drug, delivery systems due to its controlled and sustained release, properties and biocompatibility with biological tissues and, cells.12, Drug-loaded PLGA NPs are most commonly prepared by, nanoprecipitation13,14 and single or double emulsion solvent, evaporation, in which various stabilizers and organic solvents are, used and have a critical eﬀect on physicochemical properties of, NPs.15,16 Furthermore, PLGA molecular weights, drug/polymer ...\n- sample_rows:\n- sample_row_1: evaporation, in which various stabilizers and organic solvents are\n- sample_row_2: ratios, and nanoprecipitation conditions all aﬀect the ﬁnal\n- sample_row_3: ACS Omega | http://pubs.acs.org/journal/acsodf Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_02__pdf_table.csv] - table_id: Table 2 - title_or_caption: Formulation table with drug/polymer/loading variables. - column_headers: 0 || 1 - header_u"
+    },
+    {
+      "candidate_id": "7ZS858NS__candidate_table__10",
+      "candidate_type": "table",
+      "block_type": "table",
+      "role_candidate": "FORMULATION_TABLE",
+      "is_table_derived": true,
+      "source_type": "table_summary",
+      "origin_locator": "data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_08__pdf_table.csv",
+      "section_label": "",
+      "section_kind": "front_matter",
+      "segmentation_method": "manifest_aware_table_summary_isolation",
+      "split_trigger": "table_isolation",
+      "noise_flags": [],
+      "quality_flags": [
+        "reference_rows_filtered",
+        "noise_rows_filtered",
+        "filtered_noise_rows:2"
+      ],
+      "table_role_hint": "characterization",
+      "table_row_pattern": "mixed identifiers",
+      "table_score": -123,
+      "text_content": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_08__pdf_table.csv]\n- table_id: Table 8\n- title_or_caption: (not available)\n- column_headers: 0 || 1\n- header_units: (none inferred)\n- row_identifier_pattern: mixed identifiers\n- table_role_hint: unknown\n- table_shape_hint: rows=97, cols=2\n- first_column_row_labels_preview: ACS Omega, well as high drug encapsulation eﬃciency and loading content., The in vitro MF release from PLGA NPs under pH conditions, Am. 2010, 43, 753−768., mimicking the nasal mucosal microenvironment showed initial, (4) Varshney, R.; Lee, J. T. Current Trends in Topical Therapies for, burst release followed by a sustained release phase. The kinetics, Chronic Rhinosinusitis: Update and Literature Review. Expert Opin., of drug release followed anomalous non-Fickian transport, and, Drug Delivery 2017, 14, 257−271., the NPs could be lyophilized to give stable NPs with reduced, (5) Passali, D.; Spinosi, M. C.; Crisanti, A.; Bellussi, L. M. ...\n- sample_rows:\n- sample_row_1: Calibration curves of MF in methanol and 1% SDS PBS\n- sample_row_2: Tissue Regeneration. Polymer 2017, 9, 189.\n- sample_row_3: ACS Omega | http://pubs.acs.org/journal/acsodf Article\n- footnotes_or_notes: (not available)",
+      "text_preview": "[TABLE_SUMMARY data/cleaned/goren_2025/tables/7ZS858NS/7ZS858NS__table_08__pdf_table.csv] - table_id: Table 8 - title_or_caption: (not available) - column_headers: 0 || 1 - header_units: (none inferred) - row_identifier_"
+    }
+  ]
+}
