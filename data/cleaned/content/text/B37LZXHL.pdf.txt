@@ -1,0 +1,1031 @@
+1. Introduction
+icant product quality criteria, e.g., low harmful substance, uniform
+for text and data mining, AI training, and similar technologies.
+Advanced Powder Technology 36 (2025) 104893
+Contents lists available at ScienceDirect
+Advanced Powder Technology
+journal homepage: www.elsevier.com/locate/apt
+Original Research Paper
+Preparation of hydrophobic drug microcapsules via an intensiﬁed
+supercritical extraction of emulsion method: Phase behavior
+investigation and emulsion formula regulation
+Fengxia Liu,
+College of Chemical Engineering, Dalian University of Technology, Dalian 116024, China
+Renqing Su, Yufei Li, Yawen Ji ⁎
+a  r  t  i  c  l  e  i n f o
+Article history:
+Received 1 January 2025
+Received in revised form 5 April 2025
+Accepted 8 April 2025
+Available online 18 April 2025
+Keywords:
+Supercritical ﬂuid
+Emulsion extraction
+Microcapsule
+Phase behavior
+a  b  s  t  r  a  c  t
+Some hydrophobic natural drugs with high added values are promising in clinical applications, while
+their poor water-solubility becomes a major restriction for the bioavailability. To overcome this problem,
+the size-reducing strategy is a favorable approach. Herein, model paclitaxel (PTX)@poly (lactide-co-
+glycolic acid) (PLGA) microcapsules are fabricated by an intensiﬁed supercritical extraction of emulsion
+(SFEE) method. The phase behaviors of carbon dioxide (CO2)/emulsion system during extraction are
+investigated to interpret the effects of operation parameters on the extraction. Besides, the emulsion for-
+mulas on microcapsule properties are examined experimentally as well. The results indicate that super-
+critical parameters above the mixture critical point (> 8 MPa at 313 K, for example) enables the great
+phase mixing of oil phase and CO2, thus the effectiveness of emulsion extraction can be guaranteed.
+Besides, the PLGA mass concentration (cPLGA) and water/oil ratio variations are also proved to favorably
+adjust the size, encapsulation efﬁciency, and drug loading of microcapsules.
+© 2025 The Society of Powder Technology Japan. Published by Elsevier B.V. and The Society of Powder
+Technology Japan. All rights are reserved, including those for text and data mining, AI training, and
+similar technologies.
+Due to the great inhibition of cancer cell proliferation, paclitaxel
+(PTX), a diterpenoid alkaloid, has commonly recognized as a
+promising agent for anti-cancer activities [1]. However, the clinic
+application of PTX is still severely restricted by the low bioavail-
+ability caused by its poor water-solubility [2]. To overcome this
+challenge, considerable efforts have been made by researches con-
+tinuously. Among these endeavors, size-reducing is internationally
+recognized as one of the most effective strategies to increase
+bioavailability and efﬁcacy of water-insoluble drugs [3–5]. Besides,
+encapsulating drugs with biodegradable polymers to obtain micro-
+capsules is another commended method to promote the bioavail-
+ability
+[6],
+facilitating
+uniform
+and
+continuous
+release
+temperament to the incorporated drug and guaranteeing the
+physicochemical stability.
+Emulsions are prefect soft templates to fabricate these drug
+microcapsules with great convenience and technical applicability.
+However, the microcapsule preparation should satisfy some signif-
+⁎ Corresponding author.
+E-mail address: jiyw123@mail.dlut.edu.cn (Y. Ji).
+https://doi.org/10.1016/j.apt.2025.104893
+0921-8831/© 2025 The Society of Powder Technology Japan. Published by Elsevier B.V. and The Society of Powder Technology Japan. All rights are reserved, including those
+size distribution, and great activity maintenance of drugs. Super-
+critical extraction of emulsion (SFEE) technology manifests favor-
+able adaptability in processing poorly water-soluble substances
+as well as encapsulating microcapsules [7–10], and has undergone
+a rapid development in recent years. The SFEE process includes the
+preparation of the oil-in-water emulsion and oil phase extraction
+from emulsions by supercritical carbon dioxide (SCCO2). During
+the extraction stage, the oil droplets stabilized by surfactants can
+be considered as gas antisolvent precipitators, where the dissolved
+substance can be quickly precipitated [9]. Traditional methods to
+obtain microcapsules (solvent evaporation, spray drying, in-situ
+chemical synthesis, and so on) may suffer from some technical
+obstacles, such as high-temperature, poor environmental friendli-
+ness, complicated operations, difﬁculty in dispersion and size con-
+trol of microcapsules. By contrast, the SFEE can present the unique
+advantages. Firstly, the SCCO2 possesses no-toxicity and excellent
+miscibility with most organic solvents, thus the SFEE process is
+capable in fabricating various kinds of microcapsules with low
+residual solvents, and the extracted solvents can be recycled.
+Besides, the microcapsules obtained by SFEE can exhibit great dis-
+persion and size uniformity, ascribed to the isolation effect of
+aqueous phase on the oil droplets and uniform SCCO2 extraction
+ﬁeld. The emulsion formulas can be ﬂexibly designed to adjust
+
+the size and structure of microcapsules. Finally, the extraction tem-
+perature of SCCO2 is moderate (usually lower than 50 ℃), the dam-
+age to active ingredients contained in drugs can be minimized as
+well.
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Despite this, there are still technical modiﬁcations desired for
+conventional SFEE processes. The creaming of static emulsions
+can occur as there is the density difference between oil and aque-
+ous phases. The SCCO2 dissolution into the oil phase can exacerbate
+the creaming, ascribed to the swelling and rapid density decrease
+of the oil phase. Hence the guarantee of emulsion stability during
+SFEE processing is important. Second, the mass transfer between
+CO2 and emulsion is always limited by the low solubility and diffu-
+sion of CO2 in the aqueous phase, for which the intensiﬁcation is
+necessary for SFEE process. Pleasantly, extraction on ﬂowing emul-
+sions and enlargement of contacting surface area between CO2 and
+emulsion bulk phase are feasible strategies to settle the above
+problems. For instance, the microﬂuidic technology assisted SFEE
+method was successfully conducted to obtain PVA and chitosan
+particle suspensions by Murakami et al. [11,12] and Luther et al.
+[13], the emulsions contact with SCCO2 inside micro-channels in
+the form of slug-ﬂow in their experiments. Campardelli et al.
+[14] conducted the SFEE process in a packed column and obtained
+the lipid particles with low organic residues.
+Inspired by the above discussions, a novel SFEE method is pro-
+posed to fabricate the model PTX@poly (lactide-co-glycolic acid)
+(PLGA) microcapsules in ethyl acetate (EA)/water emulsion. The
+PLGA is selected as the polymer matrix, since it is biodegradable
+and non-toxic, and has high safety proﬁle [15,16]. These features
+make PLGA a more promising candidate as a carrier for encapsu-
+lated drugs. The emulsion injection and SCCO2 aeration are con-
+ducted in the SFEE method, aiming to intensify the mass transfer
+between SCCO2 and oil phase. The emulsion injection enables the
+bulk emulsion fragmentation into droplets in the ﬁrst-stage extrac-
+tion, the SCCO2 can rapidly diffuses into the oil phase, leading to
+the microcapsule precipitation. For the second-stage extraction,
+the SCCO2 aeration can further remove the residual EA in emul-
+sions. The phase behaviors of emulsion/CO2 system are experimen-
+tally observed, and the thermodynamic phase equilibrium results
+are also presented to interpret the observations and assist in opti-
+mizing supercritical parameters. Besides, the emulsion formulas in
+terms of mass concentrations of PLGA (cPLGA) and water/oil ratios
+on microcapsule properties are also examined. This study conﬁrms
+that the intensiﬁed SFEE method can present favorable technical
+applicability and controllability in the preparation of hydrophobic
+drug microcapsules.
+2. Experiments
+2.1. Materials
+PTX (purity > 99 %) is supplied by Nanjing Duly Biotech Co., Ltd.
+China. PLGA (Mw = 70,000 g/mol) is purchased from Shenzhen Esun
+Industrial Co., Ltd. China. Polysorbate 80 is provided by Sinopharm
+Chemical Reagent Co., Ltd. China. Deionized water and carbon
+dioxide (CO2, 99.5 % purity) are kindly provided by School of Chem-
+ical Engineering, Dalian University of Technology. Ethyl acetate
+(EA, 99.5 % purity) is supplied by TianDa Chemical Reagent Co.,
+Ltd. China. All materials are used as received.
+2.2. Formation of EA-in-water emulsions
+Under the condition of heating (60 ℃) and stirring, PTX (bioac-
+tive compound) and PLGA (encapsulation material) are dissolved
+into EA to obtain the oil phase of emulsions, the concentration of
+PTX in the oil phase is ﬁxed at 0.01 w/v%, while that of the PLGA
+is adjustable (from 1 to 10 wt%). The aqueous phase composed of
+deionized water and polysorbate 80 (concentration of 1 wt%) is
+prepared concurrently. The aqueous phase should be dissolved to
+saturation with EA in advance for EA has a certain solubility in
+water. Finally, the oil and aqueous phases are mixed and emulsi-
+ﬁed with various volume ratios (from 1 to 5) by a high-speed shear
+homogenizer (10,000 rpm for 3 min) to obtain emulsions.
+2
+2.3. SFEE processing
+Schematic diagram for experimental setups is presented in
+Fig. 1, there are ﬁrst-stage and second-stage extractions for the
+emulsion in the proposed SFEE process. The CO2 is pressurized by
+a high-pressure diaphragm compressor (constant ﬂow rate of 15/
+min) and pre-heated in a thermostat water bath, it is then intro-
+duced into the high-pressure vessel (inner volume of 500 mL) via
+an aeration dispenser at the bottom of vessel cavity. For the ﬁrst-
+stage emulsion extraction, the vessel is already ﬁlled with SCCO2
+with desired temperature and pressure, and then the prepared
+fresh emulsion is fed by a constant ﬂux pump at the ﬂow rate of
+10 mL/min, it is then introduced in the vessel by a customized noz-
+zle, which is installed at upper part of vessel cavity and has an
+aperture of 0.5 mm. The emulsion is then fragmentated to form
+droplets, and the SCCO2 rapidly diffuses into the oil phase, causing
+that the dissolved PTX and PLGA can be precipitated. For the
+second-stage emulsion extraction, the pre-extracted emulsion is
+accumulated at the bottom of vessel cavity, the SCCO2 aeration
+generates numerous bubbles to establish a uniform extraction
+ﬁeld, and the residual solvent in the emulsion can be further
+removed. To guarantee the sustained ﬂow of emulsions, the mag-
+netic stirring is equipped for the vessel, and the stirring speed is
+set to 600 rpm. As the aimed pressure and temperature are
+reached, the exhaust valve opening is regulated to maintain the
+pressure dynamic stability in the vessel.
+As EA is continuously extracted and removed from emulsions
+by SCCO2, the PTX@PLGA microcapsules are solidiﬁed and then
+suspended in the aqueous phase. The whole procedure for all
+experiment runs is lasted for 30 min. The PTX@PLGA microcap-
+sules are separated from the obtained suspension and dried over-
+night, the suspensions and dried solid samples are retained to be
+further characterized.
+2.4. Characterizations
+In the visualization experiments, the phase behaviors are inves-
+tigated via the quartz glass window (diameter of 8 cm) of the ves-
+sel, and two strip windows on both sides of the vessel are
+equipped, through which the lights offer illumination, the detailed
+conﬁgurations of these windows are presented in Fig. S1. Scanning
+electron microscopy (SEM, NOVA NanoSEM 450) at an accelerating
+voltage of 5 kV is employed to investigate the morphology of sam-
+ples. The chemical structures of samples are analyzed with Fourier
+transform infrared (FTIR, IS50 FTIR) spectra (determination range
+of 500–4000 cm−1 and resolution of 4 cm−1 , ATR mode). The aver-
+age size and size distribution of microcapsules are determined by a
+laser particle size analyzer (BT-9300ST). The residual EA contents
+in suspensions are measured with the headspace gas chromatogra-
+phy (chromatographic column: Agilent 19091 s-433), a vial con-
+taining 2 mL of the suspension is stabilized for 25 min at 353 K.
+Subsequently, 0.5 mL of the vapor phase inside the vial is collected
+with a gas tight syringe and injected manually into Agilent
+6890/5973 GCMS System. The conditions for gas chromatograph
+analyses are as follows: the oven temperature is increased from
+373 K to 553 K at a speed of 288 K/min and maintained for 5
+min. The injection temperature is set to 353 K. The external
+
+standard method with Eqn. (1) is conducted to determine the
+residual EA contents:
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Fig. 1. (a) Schematic representation of SFEE setups, (b) Illustration of the microcapsule formation with SFEE process.
+Wi
+Ai Wi s
+Ai s
+1
+where Wi and Ai are the mass and peak area of component i con-
+tained in the sample solution, while (Wi)s and (Ai)s are the mass
+and peak area of component i contained in the control solution,
+respectively.
+The PTX/EA standard solutions with different PTX concentra-
+tions (0.1–0.5 mg/mL) are prepared, of which the absorbances at
+234 nm wavelength are further measured with an ultraviolet spec-
+trophotometer, and the standard curve of PTX in EA can be ﬁtted
+with data of PTX concentrations and absorbances, as shown in
+Fig. S2. Based on this standard curve, the encapsulation efﬁciency
+and drug loading of PTX@PLGA microcapsules can be determined
+with Eqn. (2) and (3):
+Encapsulation efficiency
+WPTX real
+WPTX ideal
+100%
+2
+Drug loading %
+WPTX real
+WPTX
+PLGA
+100%
+3
+where WPTX, real, WPTX, ideal, and WPTX+PLGA represent the determined
+and ideal weights of PTX, and the total weight of microcapsules.
+The release performances of microcapsules in the phosphate
+buffered saline solution (PBS) containing 20 % ethanol (pH of solu-
+tion = 7.4) are examined. The solution (50 mL) is placed in a capped
+centrifuge tube, then the microcapsule samples (10 mg) are dis-
+persed in the solution. The tube is further placed in a shaking incu-
+bator (100 cycles/min) at 37 ℃. At predetermined times, the
+absorbance of the release solution sample (2 mL) is examined,
+and 2 mL of PBS solution is supplemented. The absorbances of
+PTX/PBS/ethanol standard solutions with different PTX concentra-
+tions (5–13 mg/mL) at 234 nm wavelength are also measured, and
+the standard curve of PTX in PBS/ethanol solution can be ﬁtted as
+well, as shown in Fig. S3. Based on this standard curve and Eqn. (4),
+the cumulative release of PTX in microcapsules can be deﬁned:
+3
+Cumulative release %
+Wt
+Wtotal
+100%
+4
+where Wt and Wtotal are the real time PTX release weight and total
+PTX weight in microcapsules.
+3. Results and discussion
+3.1. Phase behavior investigation in regards to SFEE
+The phase behavior evolutions of EA jet in CO2 are investigated
+in Fig. 2. The pressure variations can present the signiﬁcant impact
+on the jet morphology and phase behavior of EA in CO2 environ-
+ment. For pressures below the critical one of CO2 (7.4 MPa), the
+jet morphology of EA in CO2 is similar to that in the atmosphere,
+i.e., the jet column is broken to form small droplets. The difference
+is that the jet morphology transformation in the atmosphere is
+mainly regulated by the jet velocity, rather than the pressure. As
+the pressure reaches 8 MPa, the core jet length of EA decreases
+apparently, ascribed to that the interfacial tension between EA dro-
+plets and SCCO2 are much decreased, while the solubility of CO2 in
+EA is promoted greatly. Besides, the EA droplets formed by the
+fragmentation of jet column becomes more dispersed, and their
+descending speed is obviously reduced as well.
+Compared with the gaseous CO2, the density and viscosity of
+SCCO2 beyond the critical pressure are rapidly increased, thereby
+strengthening the buoyancy force and viscous resistance experi-
+enced by the EA jet. As the pressure continues to rise to 10 MPa
+and 12 MPa, the mixing of EA and SCCO2 becomes remarkable.
+Despite the area near the nozzle, there is no obvious phase inter-
+face between EA droplets and SCCO2 continuous phase. The surface
+tension and latent heat of vaporization can vanish above the mix-
+ing critical point of CO2 and EA system, thus the liquid fragmenta-
+tion and atomization phenomena observed under subcritical
+conditions will disappear as well. The jet morphology and phase
+behavior of EA in CO2 can be also inﬂuenced by temperature, of
+which the improvement leads to the density and viscosity decrease
+of CO2, the buoyancy force and viscous resistance experienced by
+descending EA droplets are reduced. As a result, the whole
+
+evolution process of phase behavior of EA/CO2 system can lag
+behind with increasing temperature.
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Fig. 2. Observation on EA jet formation in CO2.
+Fig. 3 shows the phase behavior evolutions of emulsion jet in
+CO2. The bulk emulsion can be fragmentated into numerous small
+droplets, and the mass transfer between CO2 and emulsion dro-
+plets can be greatly accelerated. The phase behavior evolution of
+emulsion jet in CO2 is similar to that of EA jet, which is also mainly
+dominated by the surface tension and CO2 solubility. It is notable
+that the size of emulsion droplets obtained above 8 MPa becomes
+pretty limited, the emulsion jet has transformed into complete
+atomization, implying the appropriate operation conditions to con-
+duct the SFEE process.
+The phase behavior evolutions of CO2 aeration in emulsion are
+investigated in Fig. 4. As the pressure increases in 0–––6 MPa,
+the oil droplets of EA in the emulsion are gradually dissolved and
+swelled with CO2, thus the emulsion volume is enlarged. At
+8 MPa (the pressure above the critical one of CO2, 7.38 MPa), the
+CO2 undergoes the phase transform from subcritical state to super-
+critical state, the solubility of CO2 in EA is signiﬁcantly increased,
+when there are obvious three phase layers observed in the visual
+ﬁeld, i.e., the transparent SCCO2 layer at the top, the middle EA
+layer, and the emulsion bulk phase at the bottom. The middle EA
+layer is formed due to the signiﬁcant dissolution and swelling of
+SCCO2, which causes a substantial reduction in the EA density. This
+phase separation highlights the strong antisolvent effect of SCCO2,
+where the presence of CO2 disrupts the stability of the emulsion,
+leading to the segregation of its components. As the pressure fur-
+ther increases above 10 MPa, the phase interface between SCCO2
+and EA layer is vanished, indicating that the EA/CO2 system has
+reached a miscible state. In this state, the SCCO2 and EA are fully
+mixed, and no distinct three-layer structure is visible. This phase
+behavior transition suggests that at higher pressures, the solubility
+of CO2 in EA increases continuously, but the interface tension
+between them is remarkably reduced, resulting in a homogeneous
+mixture. This phenomenon is crucial for understanding the phase
+dynamics in SFEE applications, where the supercritical conditions
+can be adjusted to achieve desired SCCO2 extraction mode for
+emulsions. Besides, it seems that the characteristics of phase
+behavior transform earlier at the case of 50 ℃ than those at 40 ℃.
+Fig. 3. Observation on emulsion jet formation in CO2.
+4
+Besides, the phase behavior evolutions of emulsion/CO2 system
+during pressure relief are recorded in Fig. 5. There are no obvious
+phenomena before the pressure of 8 MPa, the system stays in a
+dynamically stable state. After 8 MPa, there are numerous CO2
+bubbles generated in the liquid, attributed to the reduced CO2
+
+dissolution. As the pressure further decreases and the CO2 contin-
+uously escapes from the liquid, a lot of foams appears with the
+effect of surfactant incorporation at CO2/water interfaces. It should
+be considered that the pressure relief after a speciﬁc pressure (for
+example, 8 MPa at 40 ℃ and 50 ℃) has to be slowed down. Finally,
+the blank emulsions that are without the PLGA and PTX addition
+are prepared and then extracted by SCCO2, the photos of them
+before and after SCCO2 extraction are presented in Fig. S4, showing
+the actual solvent removal effect of SFEE.
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Fig. 4. Observation on phase behavior evolutions of CO2 aeration in emulsion.
+Fig. 5. Observation results of phase behavior evolutions of emulsion/CO2 system during pressure relief.
+The phase behaviors of emulsion/CO2 system can be explained
+upon the high-pressure phase equilibrium relationships [17,18].
+The pressure enhancement can signiﬁcantly improve the solubili-
+ties of CO2 in EA, while the temperature exhibits much weaker reg-
+ulation effects. As the supercritical conditions stay beyond the
+mixture critical points (MCP) of EA/CO2 system, the EA and CO2
+can achieve the miscibility theoretically, i.e., the extraction effect
+of SCCO2 on the oil phase of emulsion is optimized. The valves of
+MCP of EA/CO2 system at 313 K and 323 K are ∼ 8 MPa and
+8.3 MPa. Besides, the diffusivity of solvent in CO2 phase can be
+strengthened along with the increasing temperature or descending
+pressure [19], when the dissolution of CO2 and EA can be acceler-
+ated. The above discussions are capable to interpret the results of
+aforementioned phase behavior evolutions.
+3.2. PTX@PLGA microcapsule preparation by SFEE
+The preparation feasibility of PTX@PLGA microcapsules with
+the proposed SFEE method is examined. Fig. 6 shows the SEM
+images of raw PTX, PLGA microspheres and PTX@PLGA microcap-
+sules obtained by SFEE. To prepare the PLGA microspheres and
+PTX@PLGA microcapsules, the supercritical conditions and emul-
+sion formulas are ﬁxed: temperature is 313 K, pressure is 9 MPa,
+extraction time is 30 min, PLGA mass concentration is 7.5 wt% in
+the oil phase, water/oil ratio is 5, and PTX concentration is 0 and
+0.01 w/v% in the oil phase, respectively. As shown in Fig. 6, the
+raw PTX presents the irregular stick-like shapes and wide size dis-
+tribution (Fig. 6a), while the PLGA microspheres exhibit the general
+sphericity and little agglomeration (Fig. 6b), ascribed to the great
+templating effect of emulsions and isolation effect of aqueous
+phase on the oil droplets. For the PTX@PLGA microcapsules
+(Fig. 6c), the morphology shows no obvious difference to that of
+pure PLGA microspheres, indicating an excellent PLGA encapsula-
+tion on the precipitated PTX. The average sizes of the PLGA micro-
+sphere and PTX@PLGA microcapsule are presented in Fig. S5, and
+the stability of PTX@PLGA microcapsule stored at various temper-
+atures is further examined in Fig. S6.
+5
+Fig. 7 presents the XRD patterns of PTX, PLGA microspheres, and
+PTX@PLGA microcapsules, corresponding to samples in Fig. 6. The
+XRD pattern of PTX shows the typical intense peaks at 2h=5.6°, 9.9°
+and 12.7°, while that of the PLGA microspheres only presents a
+broad peak. The XRD pattern of PTX@PLGA microcapsule is in close
+proximity to that of the PLGA microspheres, while some weak
+peaks related to PTX can be noticed, though their intensities are
+very low, ascribed to that the PTX content in PLGA encapsulation
+is limited, the determined drug loading is about 0.38 %. Besides,
+the PTX would be either molecularly dispersed in the PLGA matrix
+
+or distributed in an amorphous state or crystalline with very small
+size [20].
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Fig. 6. SEM images of (a) PTX, (b) PLGA microspheres, and (c) PTX@PLGA microcapsules.
+Fig. 7. XRD patterns of PTX, PLGA microspheres, and PTX@PLGA microcapsules.
+To prove the superiority of SFEE in the encapsulation and chem-
+ical structure protection of microcapsules, the FTIR determinations
+are conducted. The FTIR spectrum of raw PTX shown in Fig. 8a
+exhibits the characteristic peaks at 3482 cm−1 , 1721 cm−1 ,
+1645 cm−1 , 1247 cm−1 , 1075 cm−1 , and 708 cm−1 , attributed to
+functional groups of OH–, C=O, C–C, C-N, C-O, and C–H [21]. The
+FTIR spectra of PTX samples processed by SFEE method with differ-
+ent temperatures show the almost unchanged peak positions and
+intensities, compared to that of raw PTX. This result indicates that
+the SFEE processing can present little impacts on the chemical
+structures of PTX, thus the activity of PTX is greatly maintained.
+Similar
+FTIR
+examinations
+are
+further
+conducted
+for
+PLGA
+(Fig. 8b), proving the mildness of SFEE as well. In Fig. 8c, the FTIR
+spectrum of microcapsules shows no apparent characteristic peaks
+of PTX but the ones of PLGA, conﬁrming the complete PLGA encap-
+sulation on PTX ingredient.
+Fig. 8. FTIR spectra of (a) raw PTX and PTX processed by SFEE, (b) raw PLGA and PLGA processed by SFEE, and (c) PLGA, PTX, and PTX@PLGA microcapsules.
+6
+3.3. Effects of SFEE operations and emulsion formulas on microcapsule
+properties
+For the SFEE process, the experiment setups of supercritical
+conditions (temperature (T) and pressure (P)) and emulsion formu-
+las (PLGA mass concentrations (cPLGA) in the oil phase and water/oil
+ratios (W/O)) are shown in Table 1, the main examined properties
+of microcapsules include average size (D.), encapsulation efﬁciency
+(E.E.) and drug loading (D.L.).
+As presented in Fig. 9, the temperature and pressure are not
+capable enough to regulate the size of microcapsules, their impacts
+are signiﬁcantly reﬂected in the residual solvent concentrations,
+related to the mass transfer in SFEE process. As the temperature
+increasing (Fig. 9a), the residual solvent concentration is monoton-
+ically reduced from 3.5 mg/L (313 K) to 0.005 mg/L (333 K). The
+temperature enhancement can not only improve the diffusivity
+of solvent in CO2 phase but also accelerate EA evaporation from
+CO2/aqueous phase interfaces. In Fig. 9b, the residual solvent con-
+centration shows a trend of ﬁrst descending and then increasing
+with the pressure improving, of which the minimum value is
+3.5 mg/L at 9 MPa. The CO2 undergoes phase state evolutions from
+gas state, subcritical state, and supercritical state as the pressure
+varies from 3 MPa to 6 MPa and 9 MPa, and its dissolution and
+extraction abilities to EA are strengthened as well. The EA and
+CO2 are miscible with the pressure above the MCP (∼8 MPa at
+313 K), the solubility between the two phases is no longer a limit-
+ing factor. However, the diffusivity reduction of EA/CO2 system and
+viscosity increase of CO2 caused by higher pressures (≥ 9 MP a) can
+perform negative impacts on the extraction, leading to the slight
+increase of residual solvent concentration.
+In Fig. 10, both the temperature and pressure increase can
+slightly reduce the encapsulation efﬁciency and drug loading, indi-
+cating the poorer PLGA encapsulation and more PTX loss from the
+oil phase of emulsions. This PTX loss can be attributed to two ways:
+First, SCCO2 can perform weak extraction capacity on PTX, which
+
+has not been encapsulated by PLGA matrix, it can be leaked into
+the aqueous phase during the PLGA solidiﬁcation process, ascribed
+to that the surfactants can increase the solubility of hydrophobic
+drugs in aqueous phase by forming micelle structures [25].
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Table 1
+Effects of supercritical parameters and emulsion formulas on the microcapsule properties.
+Run
+P
+(MPa)
+T
+(K)
+cPLGA
+(wt.%)
+W/O
+D. ± S.D.
+(lm)
+E.E. ± S.D.
+(%)
+D.L. ± S.D.
+(%)
+1
+9
+318
+7.5
+5
+1.9 ± 0.2
+34.8 ± 2.2
+0.39 ± 0.04
+2
+9
+323
+7.5
+5
+2.0 ± 0.1
+34.1 ± 1.1
+0.38 ± 0.03
+3
+9
+328
+7.5
+5
+1.9 ± 0.1
+33.7 ± 2.4
+0.36 ± 0.03
+4
+9
+333
+7.5
+5
+2.5 ± 0.2
+33.5 ± 1.8
+0.35 ± 0.02
+5
+3
+313
+7.5
+5
+1.9 ± 0.1
+40.4 ± 2.2
+0.42 ± 0.05
+6
+6
+313
+7.5
+5
+2.7 ± 0.1
+36.6 ± 1.3
+0.39 ± 0.02
+7
+12
+313
+7.5
+5
+2.8 ± 0.1
+33.2 ± 1.7
+0.32 ± 0.04
+8
+15
+313
+7.5
+5
+2.7 ± 0.2
+32.3 ± 1.4
+0.28 ± 0.03
+9
+9
+313
+1
+5
+1.1 ± 0.1
+14.4 ± 2.1
+0.80 ± 0.06
+10
+9
+313
+2.5
+5
+1.2 ± 0.1
+23.1 ± 4.2
+0.39 ± 0.03
+11
+9
+313
+5
+5
+1.5 ± 0.1
+26.2 ± 3.2
+0.37 ± 0.02
+12
+9
+313
+7.5
+5
+2.5 ± 0.2
+35.0 ± 2.2
+0.38 ± 0.02
+13
+9
+313
+10
+5
+3.1 ± 0.2
+40.9 ± 3.3
+0.37 ± 0.05
+14
+9
+313
+7.5
+1
+3.2 ± 0.1
+89.7 ± 3.3
+0.81 ± 0.05
+15
+9
+313
+7.5
+2
+2.9 ± 0.1
+86.2 ± 3.9
+0.79 ± 0.04
+16
+9
+313
+7.5
+3
+2.8 ± 0.2
+81.3 ± 3.2
+0.71 ± 0.03
+17
+9
+313
+7.5
+4
+2.6 ± 0.2
+45.3 ± 4.2
+0.49 ± 0.02
+Fig. 9. The effects of (a) temperature (at 9 MPa) and (b) pressure (at 313 K) on the residual solvent and average size of microcapsules.
+Fig. 10. The effects of (a) temperature (at 9 MPa) and (b) pressure (at 313 K) on the encapsulation efﬁciency and drug loading.
+can be also inﬂuenced by the temperature or pressure variations.
+For example, the solubility (mole fraction) of PTX in CO2 is
+1.10 × 10-6 at about 311 K and 14 MPa, while that is 2.06 × 10-6
+(311 K, 21 MPa) and 3.57 × 10-6 (322 K, 14 MPa) [22]. Hence, the
+temperature or pressure increase can cause more PTX dissolution
+into the CO2 phase, the similar result was also found by Aguiar
+et al. [23] and Lima Reis et al. [24]. Second, the temperature or
+pressure increase enables the more favorable emulsion jet forma-
+tion, as well as the enhanced mass transfer between CO2 and oil
+phase of emulsions, leading to the faster reduction of residual sol-
+vent, which further causes the faster precipitation of PTX than
+PLGA, due to their differences in crystallinity. For the PTX that
+7
+Upon the above discussions, the favorable supercritical condi-
+tions (temperature and pressure) of our proposed SFEE method
+should be as low as possible on the premise of ensuring effective
+solubility between oil phase and SCCO2, i.e., those slightly above
+the MCP of EA/CO2 system.
+The effects of PLGA mass concentrations (cPLGA) and water/oil
+ratios (W/O) on the average size (D.), encapsulation efﬁciency
+(E.E.) and drug loading (D.L.) of microcapsules are systematically
+
+investigated, as shown in Table 1. The supercritical conditions are
+maintained unchanged as well, i.e., temperature is 313 K, pressure
+is 9 MPa.
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+The detailed regulation mechanism of cPLGA and water/oil ratios
+on the microcapsule is further analyzed. The effects of cPLGA on the
+morphology and size distribution of microcapsules are investi-
+gated, and the results are presented in Fig. 11. These microcapsules
+possess satisfactory sphericity and dispersion. In the size distribu-
+tion images, the y-coordinate indicates the volume proportion of
+microcapsules within various size ranges, it is seen that the size
+shows an obvious ascending trend with the cPLGA increasing.
+Higher cPLGA indicates the higher viscosity and density of oil phase
+for emulsions, improving the difﬁculty of oil phase breaking into
+droplets during emulsiﬁcation. As a result, the oil phase droplets
+with high cPLGA will perform the wide size distribution, leading to
+the formation of microcapsules with wide size distribution as well.
+In Fig. 12a, the average size of microcapsules increases from ∼ 1.
+1 lm  (cPLGA of 1 wt%) to 3.1 lm  (cPLGA of 10 wt%). In Fig. 12b, the
+encapsulation efﬁciency of PTX in microcapsules also shows an
+improving trend with cPLGA increases from 1 wt% to 10 wt%, i.e.,
+14.4 % to 40.9 %, while the drug loading is decreased from 0.8 %
+to 0.37 %. As cPLGA increases, the viscosity of the oil phase is
+improved, which is not conducive to the PTX mass transfer from
+the oil phase to aqueous phase. It is worth noting that there is a
+critical overlapping concentration (C*) for polymer solutions. In
+dilute polymer solutions, polymer strands are separated from each
+other, and the distribution of chain segments in the solution is
+uneven. As the actual concentration is higher than C*, the polymer
+strands interweave and overlap with each other, hindering the
+molecular diffusion of PTX. The C* deﬁnition can be obtained
+through empirical correlation equation [26].
+The in vitro release proﬁles of PTX@PLGA microcapsules with
+different mass concentrations of PLGA are illustrated in Fig. 13,
+these release proﬁles present an initial burst of 35 % ∼ 40 % in
+the ﬁrst 10 h. This initial burst can be contributed to the tremen-
+dous concentration gradient of PTX between the microcapsule
+interior and external buffers. In the following hours, the PTX
+release rate tends to be stable and the release presents a sustained
+manner, the cumulative release percent is increased beyond 50 %.
+Besides, the release rate of microcapsules obtained with higher
+cPLGA is much slower, attributed to the large size of the capsules
+and thick outer encapsulation of PLGA enlarging the resistance of
+PTX outward diffusion. The release characteristics greatly coincide
+with the Weibull distribution [27], which is representative in
+investigating the kinetics of drug release and can be described as
+follows:
+Fig. 11. Morphology and size distribution of microcapsules obtained with different cPLGA: (a, d) 1 wt%, (b, e) 5 wt%, and (c, f) 10 wt%. (Run 9, 11, 13 in Table 1).
+8
+Q
+1
+exp
+atb
+5
+Where Q is the percentage of cumulative drug release in the solu-
+tion, a is the scale parameter that represents the process rate con-
+stant, while b describes the shape of the dissolution curve
+progression. For these PTX@PLGA microcapsules, the values of b
+from the Weibull ﬁtting results are below 0.75, proving that the
+PTX release follows the Fickian diffusion [28].
+The effects of water/oil ratios on the morphology and size distri-
+bution of microcapsules are investigated in Fig. 14. As can be seen,
+the average size of these microcapsules presents no apparent dif-
+ference, while the size distribution seems to be more concentrative
+as the water/oil ratio increasing. Actually, higher water/oil ratio
+means the lower distribution concentration of discrete oil droplets
+in the continuous aqueous phase, the probability of contact
+between different oil droplets is signiﬁcantly reduced, and the
+extents of droplet coalescence and accumulation are decreased as
+well. Consequently, the microcapsules obtained with the high
+water/oil ratio can show the more uniform size distribution.
+In Fig. 15a, the average size of microcapsules varies in the range
+of ∼ 2.5 lm  to  ∼ 3 lm. In Fig. 15b, both the encapsulation efﬁ-
+ciency and drug loading of PTX in microcapsules present the
+descending trends with the water/oil ratio increases from 1 to 5.
+At high water/oil ratios, the surfactant concentration in the exter-
+nal aqueous phase stays much higher than the critical micelle con-
+centration (CMC), the micelle presence can greatly improve the
+solubility of hydrophobic drugs in the aqueous phase. Promoted
+by the concentration gradient, PTX molecules diffuse from the oil
+
+phase droplets to the aqueous phase until the chemical potential of
+PTX in both phases reaches the equilibrium, or until the PLGA
+solidiﬁcation, hindering further diffusion of PTX molecules. As
+the water/oil ratio increases, the rate at which PTX molecules reach
+the thermodynamic equilibrium in the aqueous and oil phases
+slows down, resulting in more PTX being lost to the outer aqueous
+phase, and the encapsulation efﬁciency and drug loading are
+decreased. Besides, the in vitro release proﬁles of PTX@PLGA
+microcapsules with various water/oil ratios are illustrated in
+Fig. 16. As can be seen, these proﬁles also present the typical char-
+acteristic of initial burst and then slow release. Attributed to the
+similar sizes of microcapsules, the cumulative releases at 50 h
+exhibit no signiﬁcant difference, which reaches about 55 %,
+respectively.
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Fig. 12. The effects of PLGA mass concentrations on the (a) average size, and (b) encapsulation efﬁciency and drug loading.
+Fig. 13. Cumulative release curves of microcapsules obtained with different mass concentrations of PLGA: (a) 1 wt%, (b) 5 wt%, and (c) 10 wt%. (Run 9, 11, 13 in Table 1).
+Fig. 14. Morphology and size distribution of microcapsules obtained with different water/oil ratios: (a, d) 1, (b, e) 3, and (c, f) 5. (Run 14, 16, 12 in Table 1).
+9
+Finally, the comparation between our proposed SFEE method
+with other intensiﬁed SFEE processes is conducted, and the results
+
+are shown in Table 2. As can been seen, the SFEE method in this
+study enables the high removal efﬁciency of EA from emulsions
+in a relatively short period of time, proving that the combination
+of emulsion jet and SCCO2 aeration applied in this SFEE method
+can signiﬁcantly strengthen the mass transfer during extraction.
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Fig. 15. The effects of water/oil ratios on the (a) average size, and (b) encapsulation efﬁciency and drug loading.
+Fig. 16. Cumulative release curves of microcapsules obtained with different water/oil ratios: (a) 1, (b) 3, and (c) 5. (Run 14, 16, 12 in Table 1).
+Table 2
+Comparation between various intensiﬁed SFEE methods using EA in water emulsions.
+SFEE conﬁguration
+Operation conditions
+Residual EA
+(mg/L)
+Extraction time
+(h)
+Ref.
+Bubble column
+P: 8.5–15 MPa
+T: 38–40 ℃
+<  50
+−
+[29]
+Spray column
+P: 9–13 MPa
+T: 40 ℃
+SCCO2 FR = 16.7 g/min
+< 460
+1.5
+[30]
+Countercurrent column
+P: 8 MPa
+T: 37 ℃
+SCCO2 FR = 23.3 g/min
+50–100
+−
+[31]
+Emulsion jet and SCCO2 aeration
+P: 8–15 MPa
+T: 40 ℃
+SCCO2 FR = 28.5 g/min
+< 30
+0.5
+This work
+4. Conclusions
+Model PTX@PLGA microcapsules are successfully produced
+with the intensiﬁed SFEE method, in which the emulsion injection
+and SCCO2 aeration are applied to intensify the mass transfer
+between SCCO2 and oil phase (EA) of emulsions. Combined with
+phase equilibrium data, the phase behavior investigations prove
+that the pressure enhancement can signiﬁcantly improve the solu-
+bilities between CO2 and oil phase, and operation conditions above
+MCP of CO2/oil system (∼8 MPa and 8.3 MPa at 313 K and 323 K,
+respectively) are conducive to conducting the proposed SFEE pro-
+cess, when the obtained microcapsules can present stable size dis-
+tribution, while further pressure or temperature increase would
+not make obvious impact. Besides, the residual EA concentration
+decreases rapidly with pressures or temperatures above MCP, the
+obtained ﬁnal concentration is as low as 3.5 mg/L. For emulsion
+formula regulations, the increase of PLGA mass concentration can
+increase the average size and encapsulation efﬁciency of microcap-
+sules, but decrease the drug loading. Besides, the increase of water/
+oil ratio can reduce the encapsulation efﬁciency and drug loading
+of microcapsules, but show little inﬂuence on the average size.
+The cumulative release characteristics of microcapsules are mainly
+related to the average size, which coincide with the Weibull distri-
+bution, indicating that the PTX release follows the Fickian
+diffusion.
+10
+CRediT authorship contribution statement
+Fengxia Liu: Writing – original draft, Methodology, Investiga-
+tion, Funding acquisition. Renqing Su: Formal analysis. Yufei Li:
+Data curation. Yawen Ji: Writing – review & editing, Investigation,
+Conceptualization.
+Declaration of competing interest
+The authors declare that they have no known competing ﬁnan-
+cial interests or personal relationships that could have appeared
+to inﬂuence the work reported in this paper.
+
+F. Liu, R. Su, Y. Li et al.
+Advanced Powder Technology 36 (2025) 104893
+Acknowledgements
+This work was supported by the National Natural Science Foun-
+dation of China (No. 21606037).
+Appendix A. Supplementary material
+Supplementary data to this article can be found online at
+https://doi.org/10.1016/j.apt.2025.104893.
+References
+[1] L. Wang, X. Wang, L. Shen, et al., Paclitaxel and naringenin-loaded solid lipid
+nanoparticles surface modiﬁed with cyclic peptides with improved tumor
+targeting ability in glioblastoma multiforme, Biomed. Pharmacother. 138
+(2021) 111461. https://doi.org/10.1016/j.biopha.2021.111461.
+[2] C. Deng, C. Liu, Y. Zhou, et al., Engineering of dendritic mesoporous silica
+nanoparticles for efﬁcient delivery of water-insoluble paclitaxel in cancer
+therapy, J. Colloid Interface Sci. 593 (2021) 424–433. https://doi.org/10.1016/j.
+jcis.2021.02.098.
+[3] N. Schafroth, C. Arpagaus, U. Jadhav, et al., Nano and microparticle engineering
+of water insoluble drugs using a novel spray-drying process, Colloids Surf. B 90
+(2012) 8–15. https://doi.org/10.1016/j.colsurfb.2011.09.038.
+[4] S. Abuzar, S. Hyun, J. Kim, et al., Enhancing the solubility and bioavailability of
+poorly water-soluble drugs using supercritical antisolvent (SAS) process, Int. J.
+Pharm. 538 (2018) 1–13. https://doi.org/10.1016/j.ijpharm.2017.12.041.
+[5] R. Thapa, K. Sai, D. Saha, et al., Synthesis and characterization of a
+nanoemulsion system for solubility enhancement of poorly water soluble
+non-steroidal anti-inﬂammatory drugs, J. Mol. Liq. 334 (2021) 115998. https://
+doi.org/10.1016/j.molliq.2021.115998.
+[6] C. He, W. Zeng, Y. Su, et al., Microﬂuidic-based fabrication and characterization
+of drug-loaded PLGA magnetic microspheres with tunable shell thickness,
+Drug
+Deliv.
+28
+(2021)
+692–699.
+https://doi.org/10.1080/
+10717544.2021.1905739.
+[7] G. Lévai, M. Ángel, E. Paz, et al., Production of stabilized quercetin aqueous
+suspensions by supercritical ﬂuid extraction of emulsions, J. Supercritical
+Fluids 100 (2015) 34–45. https://doi.org/10.1016/j.supﬂu.2015.02.019.
+[8] J. Reátegui, F. Fernanders, P. Santos, et al., Production of copaiba (Copaifera
+ofﬁcinalis) oleoresin particles by supercritical ﬂuid extraction of emulsions, J.
+Supercritical
+Fluids
+140
+(2018)
+364–371.
+https://doi.org/10.1016/
+j.supﬂu.2018.07.021.
+[9] C. Dong, Z. Li, F. Liu, et al., Effects of supercritical ﬂuid parameters and
+emulsion formulation on the production of quercetin nanocapsules by
+supercritical ﬂuid extraction of emulsion, Chem. Eng. Sci. 205 (2019) 190–
+200. https://doi.org/10.1016/j.ces.2019.03.042.
+[10] P. Ida, R. Marialuigia, D. Giovanna, et al., Encapsulation of health monitoring
+agent
+in
+poly-methyl-methacrylate
+microcapsules
+using
+supercritical
+emulsion extraction, J. Ind. Eng. Chem. 90 (2020) 287–299. https://doi.org/
+10.1016/j.jiec.2020.07.026.
+[11] Y.
+Murakami,
+Y.
+Shimoyama,
+Supercritical
+extraction
+of
+emulsion
+in
+microﬂuidic slug-ﬂow for production of nanoparticle suspension in aqueous
+solution, J. Supercritical Fluids 118 (2016) 178–184. https://doi.org/10.1016/
+j.supﬂu.2016.08.009.
+[12] Y. Murakami, Y. Shimoyama, Production of nanosuspension functionalized by
+chitosan using supercritical ﬂuid extraction of emulsion, J. Supercritical Fluids
+128 (2017) 121–127. https://doi.org/10.1016/j.supﬂu.2017.05.014.
+[13] S.K. Luther, A. Braeuer, High-pressure microﬂuidics for the investigation into
+multi-phase systems using the supercritical ﬂuid extraction of emulsions
+(SFEE), J. Supercritical Fluids 65 (2012) 78–86. https://doi.org/10.1016/
+j.supﬂu.2012.02.029.
+11
+[14] R. Campardelli, M. Cherainb, C. Perfetti, et al., Lipid nanoparticles production
+by supercritical ﬂuid assisted emulsion-diffusion, J. Supercritical Fluids 82
+(2013) 34–40. https://doi.org/10.1016/j.supﬂu.2013.05.020.
+[15] S.
+Yan,
+S.
+Rao,
+J.
+Zhu,
+et
+al.,
+Nanoporous
+multilayer
+poly(l-glutamic
+acid)/chitosan microcapsules for drug delivery, Int. J. Pharm. 427 (2012)
+443–451. https://doi.org/10.1016/j.ijpharm.2012.01.025.
+[16] R. Huang, H. Zhang, L. Lv, et al., Design of geﬁtinib-loaded PLGA microspheres
+via microﬂuidics for lung cancer, Mater. Des. 234 (2023) 112336. https://doi.
+org/10.1016/j.matdes.2023.112336.
+[17] H. Byun, M. Choi, J. Lim, High-pressure phase behavior and modeling of binary
+mixtures for alkyl acetate in supercritical carbon dioxide, J Supercrit Fluids 37
+(2006) 323–332. https://doi.org/10.1016/j.supﬂu.2005.10.007.
+[18] S. Sima, V. Feroiu, D. Geana, New high pressure vapor-liquid equilibrium data
+and density predictions for carbon dioxide + ethyl acetate system, Fluid Phase
+Equilib 325 (2012) 45–52. https://doi.org/10.1016/j.ﬂuid.2012.03.028.
+[19] Y. de Diego, F. Wubbolts, P. Jansens, Modelling mass transfer in the PCA
+process using the Maxwell-Stefan approach, J Supercrit Fluids 37 (2006) 53–
+62. https://doi.org/10.1016/j.supﬂu.2005.07.002.
+[20] C. Huang, C. Chen, Y. Lee, Synthesis of high loading and encapsulation efﬁcient
+paclitaxel-loaded poly(n-butyl cyanoacrylate) nanoparticles via miniemulsion,
+Int.
+J.
+Pharm.
+338
+(2007)
+267–275.
+https://doi.org/10.1016/j.
+ijpharm.2007.01.052.
+[21] K. Hasanbegloo, S. Banihashem, B. Dizaji, et al., Paclitaxel-loaded liposome-
+incorporated chitosan (core)/poly (e-caprolactone)/chitosan (shell) nanoﬁbers
+for the treatment of breast cancer, Int. J. Biol. Macromol. 230 (2023) 123380.
+https://doi.org/10.1016/j.ijbiomac.2023.123380.
+[22] V. Vandana, A.S. Teja, The solubility of paclitaxel in supercritical CO2 and N2O,
+Fluid Phase Equilib. 135 (1997) 83–87. https://doi.org/10.1016/S0378-3812
+(97)00056-3.
+[23] A.C. De Aguiar, L.P.S. Silva, C. Alves De Rezende, et al., Encapsulation of pepper
+oleoresin by supercritical ﬂuid extraction of emulsions, J. Supercrit. Fluids 112
+(2016) 37–43. https://doi.org/10.1016/j.supﬂu.2016.02.009.
+[24] P.M.C. Lima Reis, N. Mezzomo, G.P.S. Aguiar, et al., Formation, stability and
+antimicrobial activity of laurel leaves essential oil (Laurus nobilis L.) particles
+in suspension obtained by SFEE, J. Supercrit. Fluids 166 (2020) 105032. https://
+doi.org/10.1016/j.supﬂu.2020.105032.
+[25] C.O. Rangel-Yagui, A. Pessoa, L.C. Tavares, Micellar solubilization of drugs, J
+Pharm Pharmaceut Sci 8 (2005) 147–163.
+[26] A. Skelland, X. Meng, A New Solution to Emulsion Liquid Membrane Problems
+by Non-Newtonian Conversion, AIChE. 42 (1996) 548–556. https://doi.org/
+10.1002/aic.690420224.
+[27] V. Papadopoulou, K. Kosmidis, Marilena Vlachou, et al, On the use of the
+Weibull function for the discernment of drug release mechanisms, Int. J.
+Pharm. 309 (2006) 44–50. https://doi.org/10.1016/j.ijpharm.2005.10.044.
+[28] Y.P. Aher, A. Torris, B. Adhikari, et al., Double encapsulation of liquid active
+compounds using nanoclay reinforced polyurea microcapsules, Colloids Surf.,
+A 679 (2023) 132547. https://doi.org/10.1016/j.colsurfa.2023.132547.
+[29] D. Tirado, A. Latini, L. Calvo, The encapsulation of hydroxytyrosol-rich
+olive
+oil
+in
+Eudraguard®
+protect
+via
+supercritical
+ﬂuid
+extraction
+of
+emulsions,
+J.
+Food
+Eng.
+290
+(2021)
+110215.
+https://doi.org/10.1016/j.
+jfoodeng.2020.110215.
+[30] P. Cruz, P. Reis, S. Ferreira, et al., Encapsulation of yacon (Smallanthus
+sonchifolius) leaf extract by supercritical ﬂuid extraction of emulsions, J.
+Supercrit.
+Fluids
+160
+(2020)
+104815.
+https://doi.org/10.1016/
+j.supﬂu.2020.104815.
+[31] C. Gimenez-Rota, I. Palazzo, M. Scognamiglio, et al., b-Carotene, a-tocoferol
+and
+rosmarinic
+acid
+encapsulated
+within
+PLA/PLGA
+microcarriers
+by
+supercritical emulsion extraction: Encapsulation efﬁciency, drugs shelf-life
+and antioxidant activity, J. Supercrit. Fluids 146 (2019) 199–207. https://doi.
+org/10.1016/j.supﬂu.2019.01.019.

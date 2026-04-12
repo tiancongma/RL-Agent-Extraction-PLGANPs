@@ -1,0 +1,794 @@
+Morphological and release characterization of nanoparticles
+formulated with poly (DL-lactide-co-glycolide) (PLGA) and lupeol:
+In vitro permeability and modulator effect on NF-kB in Caco-2 cell
+system stimulated with TNF-a
+M.H. Chairez-Ramírez a, J.A. Sanchez-Burgos a, C. Gomes b, M.R. Moreno-Jimenez a,
+R.F. Gonzalez-Laredo a, M.J. Bernad-Bernad c, L. Medina-Torres c, M.V. Ramírez-Mares d,
+J.A. Gallegos-Infante a, *, N.E. Rocha-Guzman a, **
+a Instituto Tecnologico de Durango, Departamento de Ingenierías Química y Bioquímica, Blvd. Felipe Pescador 1830 Ote, Col Nueva Vizcaya, 34080 Durango,
+Dgo, Mexico
+b Texas A&M, Dept. of Biological and Agriculture Engineering, 201 Scoates Hall I 2117 TAMU, College Station, TX 77843, USA
+c Facultad de Química, Departamento de Ingeniería Química, Conjunto E, Universidad Nacional Autonoma de Mexico, CU, 04510 Mexico, DF, Mexico
+d Instituto Tecnologico de Morelia, Departamento de Ingenierías Química y Bioquímica, Ave. Tecnologico 1500, Col. Lomas de Santiaguito, 58120 Morelia
+Mich, Mexico
+a r t i c l e
+i n f o
+Article history:
+Received 29 May 2015
+Received in revised form
+23 July 2015
+Accepted 2 August 2015
+Available online 8 August 2015
+Keywords:
+Anti-inﬂammation
+Lupeol
+Nanoparticles
+NF-kB
+Transport
+a b s t r a c t
+Lupeol exhibits anti-inﬂammatory effects; unfortunately it shows low water solubility. An alternative to
+overcome this is the development of nanomaterials. Several methods for nanomaterial production are
+available. One of them is emulsiﬁcation/solvent-evaporation. The objective of the present work was to
+evaluate physical properties, transport and in vitro modulator effects on NF-kB of poly (lactide-co-gly-
+colide) (PLGA) nanoparticles loaded with lupeol. Nanonutraceuticals were prepared with 16% (w/v) of
+lupeol. Size distribution and morphology were measured by particle size analyzer and TEM. In vitro
+release of lupeol was studied by three different models: Higuchi, Siepmann & Peppas, and Power law.
+Transport of nanonutraceutical was studied in a Caco-2 cell model and by GCeMS. Modulator effect on
+NK-kB was studied by western blot analysis. Nanonutraceuticals were 10% larger than the nanoparticles
+without lupeol (372 vs 337 nm) and presented a broader size distribution (0.28 vs 0.22). TEM results
+displayed spherical structures with a broader size distribution. Entrapment efﬁciency of lupeol was
+64.54% and it in vitro release data ﬁtted well to the Power law and Higuchi equation (R > 0.84e0.84).
+Strong regulation of NF-kB of nanonutraceutical was observed. It was not observed any transport across
+the Caco-2 cell model at the different experimental conditions.
+© 2015 Elsevier Ltd. All rights reserved.
+1. Introduction
+Several natural compounds show biological effects, as the pen-
+tacyclic triterpenes. They are based on a 30-carbon skeleton
+comprising 5 six-membered rings (ursanes and lanostanes) or 4
+six-membered rings and 1 ﬁve-membered ring (lupanes and
+hopanes) (Wal et al., 2011). They can be found in the balsam, and
+plant resins (Mufﬂer et al., 2011); and usually in the diet, where a
+consumption of 250 mg per day is estimated for this compound
+(Saleem, 2009). One of them is lupeol, a lupane-type pentacyclic
+triterpene present in diverse plants such as Japanese pear, aloe leaf,
+mango pulp extract, ginseng oil, etc. (Siddique and Saleem, 2011).
+Regarding to its anti-inﬂammatory effect, lupeol has shown
+inhibitory activities on pro-inﬂammatory cytokines such as IL-2,
+IFN-g and TNF-a (Bani et al., 2006; Ahmad et al., 2010), IL-4, IL-5,
+eosinophils reduction (Vasconcelos et al., 2008) and effect against
+pro-inﬂammatory enzymes like iNOS and COX-2 (Saleem et al.,
+2004; Sanchez-Burgos et al., 2013).
+* Corresponding author. Laboratory of Natural Products Instituto Tecnologico de
+Durango, Unidad de Posgrado, Investigacion y Desarrollo Tecnologico (UPIDET),
+Blvd. Felipe Pescador 1830 Ote., 34080 Durango, Dgo, Mexico.
+** Corresponding author. Laboratory of Functional Foods and Nutraceuticals
+Instituto Tecnologico de Durango, Unidad de Posgrado, Investigacion y Desarrollo
+Tecnologico (UPIDET), Blvd. Felipe Pescador 1830 Ote., 34080 Durango, Dgo,
+Mexico.
+E-mail addresses: agallegos@itdurango.edu.mx (J.A. Gallegos-Infante), nrocha@
+itdurango.edu.mx, nrochaguzman@gmail.com (N.E. Rocha-Guzman).
+Contents lists available at ScienceDirect
+Food and Chemical Toxicology
+journal homepage: www.elsevier.com/locate/foodchemtox
+http://dx.doi.org/10.1016/j.fct.2015.08.003
+0278-6915/© 2015 Elsevier Ltd. All rights reserved.
+Food and Chemical Toxicology 85 (2015) 2e9
+
+Unfortunately, lupeol as all triterpenes shows very low water
+solubility (0.02 mg/mL) at 20 C (Jager et al., 2007). This fact is a
+problem when the compound is orally delivered. An alternative to
+overcome low oral bioavailability is by the use of nanotechnology.
+Nanotechnology is a multidisciplinary discipline that uses physical
+and chemical processes to investigate and develop materials with
+speciﬁc functions and new properties. Thus, nanonutraceutical is
+considered as the use of nanotechnology in the nutraceutical sci-
+ences as a fundamental tool in the development of nano-
+nutraceuticals that can be used to enhance the bioavailability of
+lipophilic compounds, control the kinetics release, change bio-
+distribution, provide stability and minimize side effects (Huang
+et al., 2010; Kuang et al., 2010; Sensoy, 2014).
+Few reports about nanoencapsulation of lupeol have been
+published, from our best knowledge only one (Redes et al., 2011),
+attempted the ﬁrst effort to nanoencapsulate lupeol by the use of
+interfacial polycondensation and spontaneous emulsiﬁcation pro-
+cesses, obtaining particles sizes over 600 nm. Unfortunately, large
+size nanoparticles are stuck in the liver and may not reach the
+desired target site (Singh et al., 2008). However, there are several
+methods to obtain small size nanoparticles; the most common is
+the emulsion solvent-evaporation, which is commonly used to
+formulate
+nanoparticles
+with
+polymers
+and
+an
+emulsiﬁer
+commonly PVA. The formulated nanomaterials using PVA are
+usually uniform in size and are easy to disperse in an aqueous
+medium. Typically, the oil phase is an organic solvent containing a
+polymer and the bioactive principle of interest, which are emulsi-
+ﬁed in an aqueous phase containing PVA to form an oil-in-water (o/
+w) emulsion (Bhave et al., 2011).
+The most used polymer for the emulsion solvent-evaporation
+method is the poly (D,L e lactide) (PLA) alone or with copolymers
+as glycolide that has been widely used for low water solubility
+payload particles, and reported as very useful for increasing the
+release rate (Wang et al., 2003). PLGA nanoparticles has been
+widely used because they are biodegradables, did not show toxic
+effects, and their degradation products are the innocous lactic and
+glycolic acid (Panyam et al., 2002; Kim et al., 2006), reason why FDA
+has approved it for clinical trials. The knowledge about the active
+release of bioactive compounds from nanoparticles can be very
+useful to decide if the material can be suited for short or long term
+applications (Gupta et al., 2012). There are three main rate con-
+trolling mechanisms in the active release: i) Diffusion, ii) swelling,
+and iii) erosion (Langer and Peppas, 1983). PLGA can generally be
+regarded
+as
+bulk
+eroding
+dosage
+forms
+(Burkersroda
+and
+Goepferich, 1998). However, Faisant et al. (2002), indicates that
+most often polymer erosion is not the only process that contributes
+to the drug release. After water imbibition into PLGA particles
+active compound dissolution and cleavage of unstable ester bonds
+occurs. Simultaneously active compound diffuses out due to con-
+centration gradients (Faisant et al., 2002). Most of the models used
+for describing the controlled release of substances have been based
+on solutions of the Fick diffusion equation (Siepmann and Peppas,
+2001) or the empirical Power law. From our best knowledge,
+there are no reports about release of lupeol from nanoparticles.
+The aim of this study was to prepare and evaluate physical
+properties, transport and modulator effects on NK-kB of lupeol and
+nanoparticles loaded with lupeol (nanonutraceuticals).
+2. Materials and methods
+2.1. Chemicals
+Poly (lactide-co-glycolide) (PLGA), with a copolymer ratio of DL-
+lactide to glycolide of 65:35 (MW 40,000e75,000 g/mol), PVA was
+used as the surfactant for the emulsiﬁcation (98%e99% hydrolysis
+degree and average MW 30,000e50,000 g/mol, SigmaeAldrich, St.
+Louis, Mo, USA). Lupeol, N,O-Bis(trimethylsilyl)triﬂuoroacetamide
+(BSTFA), dimethyl sulfoxide (DMSO), Minimal essential medium
+(MEM),
+(3-(4,5-Dimethylthiazol-2-yl)-2,5-diphenyltetrazolium
+bromide (MTT), penicillin,
+streptomycin,
+5-bromo-4-chloro-3-
+indoly phosphate (BCIP®), nitro blue tetrazolium (NBT) and ethyl-
+enediaminetetraacetic acid (EDTA) were obtained from Sigma
+Chemical (St. Louis, MO, USA). Fetal bovine serum (FBS, Biowest,
+Nuaille, France) and D(þ) trehalose, 98% was obtained from VWR
+International (West Chester, PA., USA). Nanopure water was ob-
+tained from Nanopure Diamond (Barnsted Intl., Dubuque, IA, USA).
+2.2. Biological material
+Caco-2 (colorectal adenocarcinoma) cells were obtained from
+the American Type Culture Collection (ATCC number HTB-39™)
+(Rockville, MD, USA).
+2.3. Synthesis of unloaded nanoparticles and nanonutraceuticals
+with entrapped lupeol (PLGL)
+Nanoparticles were made following the method of solvent
+evaporation proposed by Gomes et al. (2011). Nanonutraceutical
+was developed with 50 mg of PLGA (65:35) added to 2 mL of
+dichloromethane in a ﬂask, and then adding lupeol (16% w/v; rate
+PLGA:lupeol was 14.28:1). The aqueous phase comprised 20 mL of
+PVA (0.5%) solution, which was homogenized by an Ultra-turrax®
+disperser (13,000 RPM) and the organic phase added drop to drop.
+The emulsion was sonicated for 20 min at 2 C (70 W). Organic
+solvent was separated by rotaevaporation. The residue was ultra-
+ﬁltered (membrane of 50 kDa, 40 psi in and 10 psi output pres-
+sures). After ultraﬁltration, nanoparticles and nanonutraceuticals
+were kept for 2 h at 80 C and freeze-dried at 50 C under
+5 mtorr (9.67  105 psi) vacuum for 48 h in a Labconco freeze-
+dryer 5 (Labconco, Kansas City, Mo., USA). D(þ) trehalose was
+added (1:1) (w/w) relative to the amount of nanoparticles or
+nanonutraceuticals. Finally, the lyophilized samples were stored in
+a desiccator and placed in the freezer (20 C) until further use
+(Astete and Sabliov, 2006). Unloaded nanoparticles (PLGA) were
+also prepared and used as control.
+2.4. Particle size and size distribution
+The size distribution of nanonutraceuticals was determined in
+nanopure water at 25 C, using a particle size analyzer (90 Plus
+particle size analyzer, Brookhaven Instruments Co., Holtsville, NY.,
+USA). For the measurements, 200 mL of the nanonutraceutical
+suspension were dispersed in 2 mL of water. The water was pre-
+viously ﬁltered using a 0.02 mm ﬁlter (Anotop 10, Whatman, Pis-
+cataway, NJ, USA). The analysis was performed at a scattering angle
+of 90, refractive index of 1.590, and 25 C. A standard of 100 nm
+(nanosphere size standards, Duke Scientiﬁc Co., Palo Alto, CA, USA)
+of a polymer microsphere in water (polymer density of 1.05 g/cm3,
+refractive index of 1.590 at 589 nm) was used to verify equipment
+calibration. Measurements of size and polydispersity index were
+made for freshly synthesized nanonutraceuticals (prior ultraﬁltra-
+tion), ultra-ﬁltered nanonutraceuticals, and re-suspended nano-
+nutraceuticals (after freeze-drying). For each sample, the mean
+diameter and the standard deviation of 9 determinations were
+calculated.
+2.5. Nanonutraceuticals morphology characterization
+The morphology of nanonutraceuticals was examined by
+transmission electron microscopy (TEM) using a JEOL 1200 EX TEM
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+3
+
+(JEOL USA Inc., Peabody, MA, USA). A droplet of the aqueous phase
+containing nanonutraceuticals was placed on a copper grid of
+400 mesh with carbon ﬁlm. The sample excess was removed with
+ﬁlter paper. Uranium acetate 2% was used as a stain; the excess of
+uranium acetate was removed after 1 min with ﬁlter paper. The
+sample was dried before analysis by TEM. Observations were per-
+formed at 60 kV (Gomes et al., 2011).
+2.6. In vitro lupeol delivery and entrapment efﬁciency
+A sample (10 mg) of lyophilized nanonutraceuticals was dis-
+solved in 10 mL of phosphate buffer (PBS, 0.15 M, pH 7.4). Then, it
+was divided into ten vials (1 mL per vial) set at 37 C and 100 RPM.
+The samples were read at 0.25, 0.5, 1, 2, 4, 6, 8, 12, 24, 48 and 72 h.
+Each sample was ﬁltered and dissolved in 2 mL of methanol (95%).
+The sample was read at 207.5 nm. The lupeol concentration was
+calculated by the use of a calibration curve in the range of 0.1, 0.075,
+0.05, 0.0375, 0.025 and 0.0125 mg/mL of lupeol. The efﬁciency of
+entrapment was obtained by using the ratio of amount of lupeol
+used/amount of lupeol into the nanonutraceutical and expressed in
+percentage. To understand the mode of drug release from these
+capsules, the data were ﬁtted to three different equations:
+By the Higuchi equation:
+Mt
+A ¼
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+2CiniDCst
+p
+(1)
+where, Mt ¼ Cumulative amount of compound released at the time
+t
+t ¼ time
+Cini ¼ initial drug concentration
+Cs ¼ drug solubility
+D ¼ diffusivity constant
+By the use of simpliﬁed form:
+Mt ¼ k
+ﬃﬃ
+t
+p
+(2)
+where, k ¼ constant
+By the modiﬁed expression of Siepmann and Peppas (Siepmann
+and Peppas, 2001), adapted by Gomes et al. (2011).
+Mt
+M0
+¼ b1*expð  k1t Þ þ b2*expð  k2tÞ
+(3)
+where,b1, b2, k1, and k2 are constants of the model.
+And by the Power law equation:
+Mt
+M∞
+¼ ktn
+(4)
+where, Mt and M∞are the absolute cumulative amounts of active
+compound released at time t and an inﬁnite time, respectively; k is
+the release constant; the exponent n describes the kinetic and the
+release mechanism, which depends on the geometry of the system.
+2.7. Cell viability assay and transport of nanonutraceutical across a
+Caco-2 culture
+Prior to the identiﬁcation of nanonutraceutical transport, au-
+thors aimed to investigate the intrinsic cytotoxicity of PLGA nano-
+nutraceuticals and lupeol on the cell viability by the MTT assay
+(Youm et al., 2014).
+Caco-2 cells were grown in MEM supplemented with 10% FBS,
+2.2 g/L of sodium bicarbonate, 100 U/mL penicillin and 100 mg/mL
+streptomycin at a ﬁnal pH 7.2e7.4 and maintained at 37 C under a
+5% CO2 and 95% air atmosphere at constant humidity. Cells were
+seeded at a density of 5  104 cells/cm2 on a 6 transwell plate of
+0.4 mm pore size (Transwell® Permeable Supports, CORNING Inc,
+NY, USA), and the medium was changed every 3 d along 21 d to
+obtain conﬂuent, differentiated cell monolayers. Before the Caco-2
+uptake experiment, the growth medium was removed from each
+culture well and the monolayer was washed twice with Hank's
+balanced salt solution (HBSS). The treatments at equivalent con-
+centration of lupeol (20 mM) were then diluted with MEM. The
+apical side of the cell monolayers received 1.5 mL of the treatment
+and the basolateral side, 2.6 mL of FBS-free MEM. The media from
+the apical and basolateral sides was collected and stored in an ultra-
+low temperature freezer until use.
+Samples were re-suspended in 200 mL of methanol and
+shaken mechanically. The samples were then dried using N2 before
+derivatization
+with
+50
+mL
+of
+N,O-Bis(trimethylsilyl)
+triﬂuoroacetamide (BSTFA, SigmaeAldrich, St. Louis, MO, USA).
+GCeMS analysis was performed on a CG Agilent Serie 7890A
+(Agilent Technologies, Wilmington, DE, USA), equipped with a
+column HP-5MS (30m  0.5mm  0.25 mm) and a lineal inert
+injector Split/splitless (2 mm i.d.). Detection was done with a single
+quadrupole mass detector 5975C (Agilent technologies). Control of
+CG-MS and data process was done with Chem-Station software
+(Agilent Technologies, Wilmington, DE, USA). The Injector tem-
+perature was 250 C with a Helium ﬂow of 1 mL/min. Sample was
+injected and the following temperature gradient applied: 0e1 min:
+100 C, 1e21 min: 20 C/min, 21e28 min: 10 C/min maintained for
+1.23 min, 29e31 min: 40 C/min maintained for 7.5 min. The col-
+umn outlet was inserted directly into the electron ionization source
+block, operating at 70 eV. The scanned mass range was 50e700 m/
+Z. MS detector was calibrated before the experiment with per-
+ﬂuorotributylamine (PFTBA) m/z 69 and 219.
+2.8. Modulator effect on NF-kB in Caco-2 cell system stimulated
+with TNF-a
+Caco-2 cells were seeded at 2.4  106 cells/plate on a 100 mm
+plate and treated on day 3 after seeding as follows: DMSO control,
+TNF-a control, all treatments were carried with co-incubation with
+10 ng/mL of TNF-a during 24 h except DMSO control for model of
+inﬂammation. Concentrations of 5, 10, and 20 mM of lupeol, and
+PLGA nanoparticles or nanonutraceuticals were used; DMSO was
+used as vehicle in all treatments.
+Cells were washed with PBS 1X and EDTA-Trypsin 0.25% was
+added; then cells were re-suspended in PBS 1X, centrifuged at
+3000 rpm (4 C, 5 min), and the supernatant, discarded. The cells
+were re-suspended in PBS (pH 7.8 with a 0.01% protease inhibitor
+cocktail) (SigmaeAldrich, St. Louis, MO, USA). Cells were homoge-
+nized and centrifuged at 8500 rpm during 15 min at 4 C. The su-
+pernatant was collected and stored at 80 C until use.
+Cytosolic and nuclear extracts were prepared by lysing the cells
+using a cytoplasmic extraction buffer (HMKEE) containing 20 mM
+Hepes (pH 7.9), 10 mM KCl, 1.5 mM MgCl2, 1 mM EDTA, 1 mM EGTA,
+1 mM DDT, 250 mM sucrose and the protease inhibitor cocktail.
+Cells were homogenized by ultraturrax during 10e15 s at slow
+motion and centrifuged at 900 g (5 min, 4 C). The supernatant was
+collected, representing the cytosolic fraction. The pellet was added
+with lysis buffer containing 25 mM TriseHCl (pH 7.6),150 mM NaCl,
+2% Triton X-100 and 0.1% SDS.
+It was used 60 mg of protein extracted mixed with protein
+loading buffer. Equal protein amounts were separated by 12% SDS-
+PAGE under reducing conditions and electroblotted onto nitrocel-
+lulose membranes. The membranes were blocked in 5% non-fat
+milk for 4 h, overnight incubated with the appropriate primary
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+4
+
+antibodies (NF-kB, p65), followed by incubation for 2 h with an
+alkaline phosphatase-conjugated mouse anti-goat (1:2000) or
+mouse anti-rabbit (1:2000) secondary antibodies (Santa Cruz
+Biotechnology, Santa Cruz, CA, USA). To ensure equal protein
+loading, the membranes were stripped using GAPDH antibody. The
+bands were visualized using an AP Conjugate Substrate kit (Bio-
+Rad, USA) according to the manufacturer's instructions.
+2.9. Statistical analysis
+Data were expressed as mean ± SE and analyzed by analysis of
+variance (ANOVA). Tukey's test was used to test for differences
+among means for which ANOVA indicated a signiﬁcant value
+(P < 0.05). All experiments were done by triplicate. The experi-
+mental data (controlled release experiment) were ﬁtted to the
+different proposed models using Statistica software for Windows,
+version 7.0 (Stat Soft, Tulsa, OK).
+3. Results and discussion
+3.1. Particle size and size distribution
+Results of particle size and size distribution of nanoparticles
+(337.03
+±
+15.02
+nm;
+0.22
+±
+0.01)
+and
+nanonutraceuticals
+(372.03 ± 8.01 nm; 0.28 ± 0.01) indicates that the mean hydrody-
+namic diameter is slightly higher (P < 0.05) for nanonutraceuticals
+in comparison to the nanoparticles (without lupeol). The presence
+of lupeol made particles less soluble than the ones formulated with
+PLGA and PVA. Also, the particles with lupeol yielded a more
+viscous dispersed phase, making difﬁcult the mutual dispersion of
+phases and therefore resulting in larger particles. Also, in the pre-
+sent work, polydispersity was higher than 0.1 but lower than 0.3,
+which indicates a low dispersion size (Derakhshandeh et al., 2011).
+Similar results about polydispersity index were obtained previ-
+ously (Gomes et al., 2011).
+3.2. Morphology
+In order to investigate detailed structure of the particles, TEM
+images of nanoparticles (unloaded particles) (Fig. 1a) and loaded
+PLGL (nanonutraceuticals) (Fig. 1b) particles were obtained and
+shown in Fig. 1. The diameter of nanoparticles (unloaded) and
+nanonutraceuticals loaded (not in solution) ranged from 25 to
+150 nm, the spherical structure and smooth surfaces showed a
+broad size distribution and a tendency to form clusters. The ag-
+gregation between particles could be related to insufﬁcient steric
+stabilization by the PVA, which is a non-ionic surfactant. The PVA
+chain is formed from alternating hydrophilic and hydrophobic
+segments. The poly (vinyl acetate) portion of the PVA molecule
+anchors at the oil/water interface during emulsiﬁcation and in-
+tegrates with the polymer matrix once the organic solvent evapo-
+rates. Therefore, a residual PVA remains associated with the
+particles, even after the repeated washing with water (Bhave et al.,
+2011). This arrangement lead to the formation of the PVA “sun
+brightside” observed by TEM (Derakhshandeh et al., 2011), called
+“corona” (Gomes et al., 2011).
+3.3. Entrapment efﬁciency
+The entrapment efﬁciency for lupeol was 64.54 ± 0.02%. This
+value was lower than other encapsulated hydrophobic components
+in PLGA obtained by the emulsiﬁcation/evaporation method
+(Zigoneanu et al., 2008). However, several reports about encapsu-
+lation of highly hydrophobic/non-polar compounds and PLGA show
+efﬁciencies around 50e80% (Were et al., 2003; Cortesi et al., 2002;
+Jain et al., 2010), values, which are in agreement with the ones
+found in the present work.
+3.4. In-vitro release lupeol behavior
+The release of bioactive compounds is related to several factors
+such as wall materials, physicochemical properties, morphology,
+interactions between the particle components, etc. (Huang and
+Brazel, 2001). There are only three possible ways for bioactive
+molecules to be released from a PLGA system: (1) by transport
+through water-ﬁlled pores, (2) transport through the polymer, and
+(3) transport due to dissolution of the encapsulated polymer
+(which does not require bioactive transport) (Fredenberg et al.,
+2011). The system used in the present work was lupeol and PLGA.
+The lupeol is a hydrophobic compound with a relatively low mo-
+lecular weight, thus the transport may occur through the polymer
+(Pahl, 1999). However, the bioactive compound must enter the
+water phase, either at the surface or into the nanoparticles pores,
+before being released (Fredenberg et al., 2011). Also, in this sense
+lupeol is prone to be localized in the hydrophobic core formed by
+polylactide-co-glicolide (PLGA) or in the interface between PVA and
+PLGA. Results about modeling release of lupeol employing Equa-
+tions (2) and (4) yield same results in terms of R (Higuchi model,
+Fig. 1. Micrographs of unloaded particles and loaded nanonutraceuticals with lupeol.
+a) Control PLGA. b) PLGL.
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+5
+
+0.83 and Power law 0.84). Equation (3) shows lacks of ﬁt. While t1/2
+time dependence (n ¼ 0.5) is expected for the release by Fickian
+diffusion from a matrix type thin ﬁlm or 0.43 for spheres (Siepmann
+and Siepmann, 2012), the ﬁrst 60% of the fractional release are
+effectively described by a diffusional exponent (n ¼ 0.43). The n
+values found in the present work were 0.51 ± 0.08 (Power law),
+indicating that the release of lupeol is governed mainly by the
+Fickian diffusion, similar results were observed by Faisant et al.
+(2002), that claim that drug release from PLGA particles is mainly
+controlled by diffusion with contribution of the polymer degrada-
+tion process. So, there is proportionality between cumulative
+amount of drug release and the square root of time is commonly
+regarded as an indicator of diffusion-controlled drug release
+(Siepmann and Siepmann, 2008). However, an apparent square
+root of time release kinetics can result from superposition of
+various effects and not only based in diffusion-control (Siepmann
+and Peppas, 2001). Also, from Fig. 2a, is clear that only a minor
+presence of lupeol is on the surface, because the ﬁrst phase of
+lupeol release (lower than 200 min) was only about 13.5% of the
+total load (low level of burst release). On the other hand, the second
+phase (200e3000 min) released the rest of lupeol. A high disper-
+sion is observed in the phase 1, which could be related to the re-
+sidual PVA present in the surface. The proposed model to
+nanoparticle formed is shown in Fig. 2b.
+3.5. Results of cell viability determination by MTT assay
+MTT assay did not show an abrupt reduction on cell viability
+even at the highest dose of lupeol (Table 1). This result allowed us
+to safely choose concentrations between 5 and 20 mM for further
+Fig. 2. Lupeol release from nanonutraceutical formulation in mglupeol/mgnanoparticle. a) Controlled release behavior of lupeol entrapment in PLGA and b) Proposed model of the
+nanonutraceutical obtained.
+Table 1
+Effect of treatments on viability of Caco-2 cells and modulator effect on NF-kB in CaCo-2 cell system stimulated with TNF-a (Western blots included).
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+6
+
+experiments. Treatments of lupeol and PLGL exhibited differences,
+the lupeol treatment showed the most reduced viability, followed
+by the PLGL nanoparticles. All treatments showed signiﬁcant dif-
+ferences between them, but concentration was not as important as
+the compound type in reducing cell viability (P < 0.05), despite the
+fact that this cell viability was not considerable reduced. It is
+concluded that tested concentrations of PLGL nanoparticles have
+not cytotoxic effect at tested doses and are highly biocompatible.
+3.6. Effects of lupeol and nanonutraceutical treatments on the
+modulation of expression of NF-kB
+It is well known that NF-kB pathway is the most important route
+in the development, progress and support of many chronic dis-
+eases. NF-kB controls the expression of a large number of genes
+involved in the physiological response associated with immune-
+inﬂammatory aspects, oxidative stress, cell adhesion, differentia-
+tion and apoptosis (Pahl, 1999). Multiple evidences indicate that
+NF-kB is related to the progress of inﬂammation and cancer, making
+it an important target for the control of multiple pathologies
+This research explored the effects of nanonutraceutical devel-
+opment in the modulation of NF-kB, compared against lupeol
+(Table 1). Lupeol keeps NF-kB at cytosol and prevents its trans-
+location to the nucleus, while interestingly the nanonutraceutical
+shows the opposite behavior because NF-kB level at cytosol is
+decreased and NF-kB at the nucleus is increased as the dose of
+treatment is higher. Our best results with nanonutraceuticals were
+obtained at the lowest dose (5 mM). These results suggest that
+biological effects of nanonutraceuticals should be taken carefully
+and equivalent doses of the active compound and the lupeol in the
+nanonutraceuticals could lead to enhanced effects (Danhier et al.,
+2009).
+Multiple evidences indicate that NF-kB is related to the pro-
+gression of inﬂammation and cancer, making it an important target
+for the control of multiple pathologies. Treatment with lupeol in
+cells has shown to reduce in a signiﬁcant way the expression of
+oncogenic proteins such as Ras. Thus, it modulates the expression
+of several molecules involved in signaling pathways of protein ki-
+nase C alpha/ornithine decarboxylase gene expression (PKCa)/ODC,
+PI3K/Akt and therefore reducing activation of the NF-kB pathway
+(Saleem et al., 2005). This effect has also been found in animals as
+CD-1 mice treated with 12-O-tetradecanoyl-phorbol-13-acetate
+(TPA), produces an activation of NF-kB and PI3K/Akt; lupeol topi-
+cally applied (1e2 mg/mouse) causes a decrease in NF-KB activa-
+tion and IKKa, phosphorylation and degradation of IkBa (Saleem
+et al., 2004). These results are consistent with a good anti-
+inﬂammatory activity by this compound. Overall, the results
+show that the best anti-inﬂammatory effects are obtained at higher
+dose of pure lupeol and at lower doses with the nanonutraceutical,
+this possibly caused by an increased bioavailability in the cell
+interior. Thus the nanonutraceutical may be an alternative for the
+treatment of inﬂammatory bowel disease (IBD), However, more
+research is required to provide a broader overview of its real
+potential.
+3.7. Results of GC/MS to estimate in vitro transport of lupeol and
+nanonutraceuticals treatments
+Retention time of lupeol was found to be 38.2 min (Fig. 3). Major
+ions peaks obtained from lupeol were 129, 189, 218, 369, 393, 498.
+The ion fragment at m/z 189 is characteristic for lupane-type tri-
+terpenes having a hydroxyl in position 3 (Branco et al., 2004). The
+fragmentation of lupeol starts by breaking the C-14-C-27 and
+subsequent removal of a CH3 group (De Carvalho et al., 2010). From
+different reports, wherein the derivatization is carried out with
+trimethylsilyl sample, the lupeol fragmentation patterns were
+similar to those found in the samples analyzed from the culture
+medium (Li et al., 2007; Hovaneissian et al., 2008).
+Time (min)
+38.0
+38.2
+38.4
+38.6
+38.8
+Time (min)
+38.0
+38.2
+38.4
+38.6
+38.8
+e
+c
+n
+a
+d
+n
+u
+b
+A
+0.0
+5.0e+4
+1.0e+5
+1.5e+5
+2.0e+5
+Time (min)
+38.0
+38.2
+38.4
+38.6
+38.8
+Time (min)
+38.0
+38.2
+38.4
+38.6
+38.8
+e
+c
+n
+a
+d
+n
+u
+b
+A
+0.0
+5.0e+4
+1.0e+5
+1.5e+5
+2.0e+5
+Time (min)
+38.0
+38.2
+38.4
+38.6
+38.8
+Lupeol
+traces
+Time (min)
+38.0
+38.2
+38.4
+38.6
+38.8
+Control (-)
+Lupeol
+PLGL
+Apical Side
+Basolateral Side
+Fig. 3. Permeability test of Lupeol and nanoparticles with loaded lupeol at 8 h incubation.
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+7
+
+From the results of transport at 8 h of incubation (Fig. 3), only a
+small fraction of lupeol (traces) was able to transport through the
+apical to the basolateral side. This result may be beneﬁcial in order
+to demonstrate that encapsulation can improve the stability of
+lupeol in an aqueous solution such as the culture medium. Several
+reports indicate that endocytosis of PLGA nanoparticles by Caco-2 is
+clathrin-mediated (Reix et al., 2012). In this sense, it has also been
+found that the intracellular fate of the nanoparticles is generally
+lysosomes, where the rupture and release of the active principle
+from nanoparticles occurs. This causes that transcytosis be small
+and therefore having poor signiﬁcance (He et al., 2013). Addition-
+ally, the absence of a lupeol signal in PLGL treatments at the apical
+and basolateral sides could be explained by the fact that nano-
+particles have a higher stability in aqueous environments even at
+longer times, protecting the bioactive components and providing
+stability (Wang et al., 2009).
+4. Conclusion
+The release of lupeol from nanoparticles was well described by
+power law and Higuchi equation. It was not observed transport
+across Caco-2 cell model at different experimental times. Best anti-
+inﬂammatory effects were observed at highest dose of pure lupeol
+and lowest dose of nanonutraceutical compound, this different
+behavior could be related to an increased bioavailability of encap-
+sulated lupeol in the cell interior.
+Acknowledgments
+Authors M.H.C.R. and J.A.S.B. acknowledges graduate scholar-
+ships from CONACYT (National Council of Science & Technology).
+Authors also acknowledge support from the Department of Bio-
+logical and Agriculture Engineering (Texas A&M) where part of the
+experimental work was developed. The present work was partially
+ﬁnanced by DGEST, FOMIXeDGOeCONACyT, and PROMEP.
+Transparency document
+Transparency document related to this article can be found
+online at http://dx.doi.org/10.1016/j.fct.2015.08.003.
+References
+Ahmad,
+S.F.,
+Pandey,
+A.,
+Kour,
+K.,
+Bani,
+S.,
+2010.
+Downregulation
+of
+pro-
+inﬂammatory cytokines by lupeol measured using cytometric bead array
+immunoassay. Phytother. Res. 24, 9e13.
+Astete, C.E., Sabliov, C.M., 2006. Synthesis and characterization of PLGA nano-
+particles. J. Biomater. Sci. Polym. Educ. 17, 247e289.
+Bani, S., Kaul, A., Khan, B., Ahmad, S.F., Suri, K.A., Gupta, B.D., 2006. Suppression of T-
+lymphocyte activity by lupeol isolated from Crataeva religiosa. Phytother. Res.
+20, 279e287.
+Bhave, R., Peetla, C., Labhasetwar, V., 2011. The effect of residual poly(vinyl alcohol)
+on biophysical interaction of nanoparticles with endothelial cell model mem-
+brane. Int. J. Nanosci. 10, 539e545.
+Branco, A., Pinto, A.C., Filho, R.B., 2004. Chemicals constituents from Vellozia gra-
+minifolia (Velloziaceae). An. Acad. Bras. Ciencias 76, 505e518.
+Burkersroda, F.V., Goepferich, A.M., 1998. An approach to classify degradable
+polymers. In: MRS Proceedings, vol. 550. Cambridge University Press, p. 17.
+Cortesi, R., Esposito, E., Luca, G., Nastruzzi, C., 2002. Production of lipospheres as
+carriers for bioactive compounds. Biomaterials 23, 2283e2294.
+Danhier, F., Lecouturier, N., Vroman, B., Jer^ome, C., Marchand-Brynaert, J., Feron, O.,
+Preat, V., 2009. Paclitaxel-loaded PEGylated PLGA-based nanoparticles: in vitro
+and in vivo evaluation. J. Control. Release 133, 11e17.
+De Carvalho, T.C., Polizeli, A.M., Turatti, I.C.C., Severiano, M.E., de Carvalho, C.E.,
+Ambrosio, S.R., Crotti, A.E.M., de Figueiredo, U.S., Vieira, P.C., Furtado, N.A.J.C.,
+2010. Screening of ﬁlamentous fungi to identify biocatalysts for lupeol
+biotransformation. Molecules 15, 6140e6151.
+Derakhshandeh, K., Hochhaus, G., Dadashzadeh, S., 2011. In-vitro celular uptake and
+transport study of 9-nitrocamptothecin PLGA nanoparticles across Caco-2 cell
+monolayer model. Iran. J. Pharm. Res. 10, 425e434.
+Faisant, N., Siepmann, J., Benoit, J.P., 2002. PLGA-based microparticles: elucidation
+of mechanisms and a new, simple mathematical model quantifying drug
+release. Eur. J. Pharm. Sci. 15 (4), 355e366.
+Fredenberg, S., Wahlgren, M., Reslow, M., Axelsson, A., 2011. The mechanisms of
+drug release in poly(lactic-co-glycolic acid)- based drug delivery systems e a
+review. Int. J. Pharm. 415, 34e52.
+Gomes, C., Moreira, R.G., Castell-Perez, E., 2011. Poly (DL-lactide-co-glycolide)
+(PLGA) nanoparticles with entrapped trans-cinnamaldehyde and eugenol for
+antimicrobial delivery applications. J. Food Sci. 76, N16eN24.
+Gupta, R.C., Bansal, S.S., Aqil, F., Jeyabalan, J., Cao, P., Kausar, H., Vadhanam, M.V.,
+2012. Controlled-release systemic delivery-a new concept in cancer chemo-
+prevention. Carcinogenesis 33, 1608.
+He, B., Lin, P., Jia, Z., Du, W., Qu, W., Yuan, L., Dai, W., Zhang, H., Wang, X., Wang, J.,
+Zhang, X., Zhang, Q., 2013. The transport mechanisms of polymer nanoparticles
+in CaCo-2 epithelial cells. Biomaterials 34, 6082e6098.
+Hovaneissian, M., Archier, P., Mathe, C., Culioli, G., Vieillescazes, C., 2008. Analytical
+investigation of styrax and benzoin balsams by HPLC-PAD-ﬂuorimetry and GC-
+MS. Phytochem. Anal. 19, 301e310.
+Huang, X., Brazel, C.S., 2001. On the importance and mechanisms of burst release in
+matrix-controlled drug delivery systems. J. Control Release 73, 121e136.
+Huang, Q.R., Yu, H.L., Ru, Q.M., 2010. Bioavailability and delivery of nutraceuticals
+using nanotechnology. J. Food Sci. 75, R50eR57.
+Jager, S., Winkler, K., Pfüller, U., Schefﬂer, A., 2007. Solubility studies of oleanolic
+acid and betulinic acid in aqueous solutions and plant extracts of Viscum album
+L. Planta Medica 73, 157e162.
+Jain, S., Mittal, A., Jain, K., Mahajan, R., Rahul, K., Singh, D., 2010. Cyclosporina loaded
+PLGA nanoparticle: preparation, optimization, in-vitro characterization and
+stability studies. Curr. Nanosci. 6, 422e431.
+Kim, S.S., Park, M.S., Jeon, O., Choi, C.Y., Kim, B.S., 2006. Poly (lactide-co-glycolide)/
+hydroxyapatite composite scaffolds for bone tissue engineering. Biomaterials
+27, 1399e1409.
+Kuang, S.S., Oliveira, J.C., Crean, A.M., 2010. Microencapsulation as a tool for
+incorporating bioactive ingredients into food. Crit. Rev. Food Sci. Nutr. 50,
+951e968.
+Langer, R., Peppas, N.A., 1983. Chemical and physical structure of polymers as car-
+riers for controlled release of bioactive agents: a review. Rev. Macromol. Chem.
+Phys. C23, 61e126.
+Li, T.S.C., Beveridge, T.H.J., Drover, J.C.G., 2007. Phytosterol content of sea buckthorn
+(Hippophae rhamnoides L.) seed oil: extraction and identiﬁcation. Food Chem.
+101, 1633e1639.
+Mufﬂer, K., Leipolda, D., Schellera, M.C., Haasb, C., Steingroewerb, J., Bleyb, T.,
+Neuhaus, H.E., Mirata, M.A., Schrader, J., Ulber, R., 2011. Biotransformation of
+triterpenes. Process Biochem. 46, 1e15.
+Pahl, H.L., 1999. Activators and target genes of Rel/NF-kappaB transcription factors.
+Oncogene 18, 6853e6866.
+Panyam, J., Zhou, W.Z., Prabha, S., Sahoo, S.K., Labhasetwar, V., 2002. Rapid endo-
+lysosomal escape of poly (DL-lactide-coglycolide) nanoparticles: implications
+for drug and gene delivery. FASEB J. 16, 1217e1226.
+Redes (Craciun), L.M., Borcan, F., Ionescu, D., Ambrus, R., Galuscan, A., Popovici, I.,
+2011. Synthesis and characterization of a polyurethane transdermal carrier for
+lupeol. J. Agroaliment. Process. Technol. 17, 321e325.
+Reix, N., Parat, A., Seyfritz, E., Van der Werf, R., Epure, V., Ebel, N., Danicher, L.,
+Marchioni, E., Jeandidier, N., Pinget, M., Frere, Y., Sigrist, S., 2012. In vitro uptake
+evaluation in CaCo-2 cells and In vivo results in diabetic rats of insulin-loaded
+PLGA nanoparticles. Int. J. Pharm. 437, 213e220.
+Saleem, M., Afaq, F., Adhami, V.M., Mukhtar, H., 2004. Lupeol modulates NF-kB and
+PI3K/Akt pathways and inhibits skin cancer in CD-1 mice. Oncogene 23,
+5203e5214.
+Saleem, M., Kaury, S., Kweon, M., Adhami, V.M., Afaq, F., Mukhtar, H., 2005. Lupeol, a
+fruit and vegetable based triterpene, induces apoptotic death of human
+pancreatic adenocarcinoma cells via inhibition of Ras signaling pathway.
+Carcinogenesis 26, 1956e1964.
+Saleem, M., 2009. Lupeol, a novel anti-inﬂammatory and anti-cancer dietary tri-
+terpene. Cancer Lett. 285, 109e115.
+Sanchez-Burgos, J.A., Ramírez-Mares, M.V., Larrosa, M.M., Gallegos-Infante, J.A.,
+Gonzalez-Laredo, R.F., Medina-Torres, L., Rocha-Guzman, N.E., 2013. Antioxi-
+dant, antimicrobial, antitopoisomerase and gastroprotective effect of herbal
+infusions from four Quercus species. Ind. Crops Prod. 42, 57e62.
+Sensoy, I., 2014. A review on the relationship between food structure, processing
+and bioavailability. Crit. Rev. Food Sci. Nutr. 54, 902e909.
+Siepmann, J., Peppas, N.A., 2001. Modeling of drug release from delivery systems
+based on hydroxypropylmethylcellulose (HPMC). Adv. Drug Deliv. Rev. 48,
+139e157.
+Siepmann, J., Siepmann, F., 2008. Mathematical modeling of drug delivery. Int. J.
+Pharm. 364, 328e343.
+Siepmann, J., Siepmann, F., 2012. Modeling of diffusion controlled drug delivery.
+J. Control Release 161, 351e362.
+Siddique, H.R., Saleem, M., 2011. Beneﬁcial health effects of lupeol triterpene: a
+review of preclinical studies. Life Sci. 88, 285e293.
+Singh, R., Singh, S., Lillard, J.W., 2008. Past, present, and future technologies for oral
+delivery of therapeutic proteins. J. Pharm. Sci. 97, 2497e2523.
+Vasconcelos, J.F., Teixeira, M.M., Barbosa-Filho, J.M., Lúcio, A.S., Almeida, J.R., de
+Queiroz, L.P., Ribeiro-Dos-Santos, R., Soares, M.B., 2008. The triterpenoid lupeol
+attenuates allergic airway inﬂammation in a murine model. Int. Immuno-
+pharmacol. 8, 1216e1221.
+Wal, P., Wal, A., Sharma, G., Rai, A.K., 2011. Biological activities of lupeol. Syst. Rev.
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+8
+
+Pharm. 2, 96e103.
+Wang, J., Ng, C.W., Win, K.Y., Shoemakers, P., Lee, T.K., Feng, S.S., Wang, C.H., 2003.
+Release of paclitaxel from polylactide-co-glycolide (PLGA) microparticles and
+discs under irradiation. J. Microencapsul. 20, 317e327.
+Wang, X., Wang, Y., Huang, Q., 2009. Enhancing stability and oral bioavailability of
+Polyphenols using nanoemulsions. In: Huang, Q., Given, P., Qian, M. (Eds.),
+Micro/Nanoencapsulation of Active Food Ingredients. ACS Symposium Series,
+pp. 198e212.
+Were, L.W., Bruce, B.D., Davidson, P.M., Weiss, J., 2003. Size, stability, and
+entrapment efﬁciency of phospholipid nanocapsules containing polypeptide
+antimicrobials. J. Agric. Food Chem. 51, 8073e8079.
+Youm, I., Bazzil, J.D., Otto, J.W., Caruso, A.N., Murowchick, J.B., Youan, B.B.C., 2014.
+Inﬂuence of surface chemistry on cytotoxicity and cellular uptake of nano-
+capsules in breast cancer and phagocytic cells. AAPS J. 16, 550e567.
+Zigoneanu, I.G., Astete, C.E., Sabliov, C.M., 2008. Nanoparticles with entrapped a-
+tocopherol: synthesis, characterization, and controlled release. Nanotechnology
+19, 1e8.
+M.H. Chairez-Ramírez et al. / Food and Chemical Toxicology 85 (2015) 2e9
+9

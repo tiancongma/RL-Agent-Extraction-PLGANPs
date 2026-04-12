@@ -1,0 +1,663 @@
+Received: 18 March 2023
+Accepted: 1 October 2023
+DOI: 10.1002/bab.2522
+O R I G I NA L A RT I C L E
+Evaluation of the effect of designed PLGA-arctiin
+nanoparticles modified with folic acid and chitosan on
+colon cancer cells
+Mohammed Hussein Ajel Alhadidi1
+Masoud Homayouni Tabrizi2
+Maryam Ghobeh1
+1Department of Biology, Science and
+Research Branch, Islamic Azad
+University, Tehran, Iran
+2Department of Biology, Mashhad Branch,
+Islamic Azad University, Mashhad, Iran
+Correspondence
+Masoud Homayouni Tabrizi, Department
+of Biology, Mashhad Branch, Islamic
+Azad University, Mashhad, Iran.
+Email: mhomayouni6@gmail.com
+Funding information
+Islamic Azad University, Tehran, Iran,
+and thus is appreciated by the author
+Abstract
+In this study, we designed nanoparticles (NPs) based on polylactic acid
+glycolic acid modified with chitosan and folic acid to optimize the anti-
+cancer, anti-inflammatory, and antioxidant effects of arctiin (ARC), and we
+measured its effects on cancer cells, including colon cancer. NPs were syn-
+thesized using the W1/O/W2 double-emulsion solvent evaporation method.
+Physicochemical characteristics of synthesized NPs (ARC-PCF-NPs), including
+average particle size, dispersity index (PDI), zeta potential (ZP), field emis-
+sion scanning electron microscope figures, and encapsulation efficiency (EE),
+were evaluated. 2,2′-Azino-bis(3-ethylbenzothiazoline-6-sulfonic acid) (ABTS),
+2,2-diphenyl-1-picrylhydrazyl (DPPH), and ferric reducing antioxidant power
+(FRAP) methods were carried out to determine the antioxidant properties of NPs.
+3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyl-2H-tetrazolium bromide assay was per-
+formed to investigate cytotoxicity effects on cancer cells and normal fibroblasts.
+Quantitative polymerase chain reaction was also performed on inflammatory
+and antioxidant genes. The obtained results indicated that the synthesized
+NPs have a size of 100 nm, a DPI of 0.36, a ZP of 26.30 mV, and EE was
+calculated at about 87.5%. The antioxidant influence of ARC-PCF-NPs was
+confirmed by inhibiting ABTS and DPPH free radicals and ferrous reduction
+in the FRAP method. Moreover, the reduction of inflammatory and antiox-
+idant genes confirmed the anti-inflammatory and antioxidant properties of
+NPs. These results indicate the modification of the surface of NPs in order to
+increase the bioavailability, stability, and effectiveness of medicinal compounds
+in therapeutic applications.
+Abbreviations: ABTS, 2,2′-azino-bis(3-ethylbenzothiazoline-6-sulfonic acid); ARC, arctiin; CAT, catalase; CS, chitosan; DLS, dynamic light
+scattering; DPPH, 2,2-diphenyl-1-picrylhydrazyl; EDC, 1-ethyl-3-[3-dimethylaminopropyl]carbodiimide hydrochloride; EE, encapsulation efficiency;
+FA, folic acid; FESEM, field emission scanning electron microscope; FRAP, ferric reducing antioxidant power; FTIR, Fourier transform infrared
+spectroscopy; MTT, 3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyl-2H-tetrazolium bromide; NHS, N-hydroxysuccinimide; PDI, dispersity index; PLGA,
+polylactic acid glycolic acid; PVA, polyvinyl alcohol; SOD, superoxide dismutase; ZP, zeta potential.
+© 2023 International Union of Biochemistry and Molecular Biology, Inc.
+72
+wileyonlinelibrary.com/journal/bab
+Biotechnol Appl Biochem. 2024;71:72–80.
+
+ALHADIDI et al.
+73
+K E Y WO R D S
+anti-inflammatory, arctiin, chitosan, colon cancer, PLGA nanoparticle
+1
+INTRODUCTION
+Colon cancer is recognized as one of the most common
+cancers in the world, affecting many people every year.
+Despite the therapeutic advances in the field of cancer ther-
+apy, colon cancer has caused many deaths due to drug
+resistance and metastasis.1 Toward this end, the attention
+of researchers has been drawn to discovering new and
+effective medicinal compounds for the treatment and pre-
+vention of colon cancer. In line with this, the identification
+of effective compounds from biological and natural sources
+in the treatment of various cancers with low side effects
+and drug resistance has been prioritized.2
+Arctigenin (AR) is a natural compound derived from
+Arctium lappa, which is used as a medicinal supple-
+ment against many infectious diseases such as influenza.3
+The glycoside compound arctiin (ARC) is known as the
+main and active compound of the dried ripe fruit of A.
+lappa. It has been found that these secondary metabolites
+are effective in treating many diseases, including cancer,
+with anti-cancer, antioxidant, and antimicrobial effects.4–6
+However, the lack of solubility of AR in water is one
+of the limitations of using this compound as an antitu-
+mor drug in new therapeutic approaches.3 Therefore, the
+design of nanoparticles (NPs) containing ARC can improve
+its pharmacogenetic properties.
+In line with this, polylactic acid glycolic acid (PLGA)
+copolymer is one of the most common compounds used
+in the design of NPs to improve the drug delivery sys-
+tem by increasing the stability of various drugs, reducing
+side effects, and optimizing the release of drugs, which
+has also been approved by the FDA.7,8 However, thanks to
+modifying PLGA-based NPs with other compounds such
+as chitosan (CS), researchers have overcome the limita-
+tions of PLGA, such as rapid processing and lack of direct
+interaction with cells or proteins.2,9 Furthermore, target
+therapy is one of the effective methods for optimizing the
+drug delivery system, especially in the treatment of solid
+tumors. In this regard, folate receptors with a high expres-
+sion on the surface of tumor cells are a suitable option for
+targeted therapy.2,10 According to the points, we designed
+PLGA-based NPs modified with CS–folic acid (FA) con-
+taining ARC compound and investigated its mechanism of
+action against tumor cells, especially colon cancer cells.
+2
+METHODS AND MATERIALS
+2.1
+Synthesis of ARC nanoparticles
+based on PLGA modified with
+chitosan–folate
+To load ARC (Golexir) on PLGA NPs, the W1/O/W2
+double-emulsion solvent evaporation method was used.11
+Briefly, first, 50 mg of polylactic co-glycolic acid (PLGA,
+Merck) was dissolved in 12 mL of dichloromethane
+(Merck), and then, ARC was added to the organic phase
+at a concentration of 10 mg/mL. Thereafter, polyvinyl alco-
+hol (PVA) 2% (Merck) was added to the mentioned solution
+and sonicated for 3 min. Next, 10 mL of PVA (0.1%) was
+also added to obtain the W1/O/W2 double-emulsion sol-
+vent. After the evaporation of the solvent, the obtained
+mixture was centrifuged, and the supernatant was sepa-
+rated to evaluate the entrapment rate of ARC . In the next
+step, 6 mg of FA (Merck) was dissolved in DMSO, and 1-
+ethyl-3-[3-dimethylaminopropyl]carbodiimide hydrochlo-
+ride (Merck) and N-hydroxysuccinimide (Merck) were
+added to the solution. Thereafter, FA was added dropwise
+to dissolved CS in 0.1% acetic acid and stirred for 24 h in
+order to bind FA to CS (Sigma-Aldrich). After the centrifu-
+gation of the resulting solution, the FA–CS precipitate was
+prepared to determine the amount of FA binding. In order
+to modify PLGA NPs with FA–CS, PLGA NPs and FA–CS
+sediment were dissolved separately in deionized water, and
+then, FA–CS solution was added dropwise to PLGA NPs.
+After 2 h of incubation, the final mixture was centrifuged
+and then lyophilized.
+2.2
+Characterization of ARC-PCF-NPs
+To determine the physicochemical characteristics of NPs,
+dynamic light scattering (DLS) and Zetasizer methods
+were used to investigate the dispersity index (PDI) and
+surface potential of NPs, respectively. Besides, field emis-
+sion scanning electron microscope (FESEM) and Fourier
+transform infrared spectroscopy (FTIR) were also used to
+examine the morphology and evaluate the interaction of
+the functional groups of NPs.12
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+74
+ALHADIDI et al.
+2.3
+Evaluation of drug encapsulation in
+ARC-PCF-NPs
+The percentage of drug encapsulation in NPs was eval-
+uated using the spectrophotometer absorption method
+and indirect method.13 Different concentrations of ARC
+were prepared, and their absorbance was measured at a
+wavelength of 226 nm, and a standard graph was drawn.
+Finally, the encapsulation efficiency (%EE) was calculated
+as described previously.12
+2.4
+Investigating the antioxidant
+capacity of ARC-PCF-NPs
+2.4.1
+DPPH assay
+2,2-Diphenyl-1-picrylhydrazyl (DPPH) colorimetric test
+was performed to check the ability of prepared NPs to
+donate electrons (antioxidant property).12 Briefly, 500 μL
+of various concentrations of ARC-PLGA chitosan foli-
+cacid (PCF)-NPs were added to 500 μL of prepared DPPH
+solution with ethanol. After 30 min of incubation, the
+absorbance of the sample was evaluated with a plate reader
+at a wavelength of 517 nm, and the percentage of free rad-
+ical inhibition of ARC-PCF-NPs was measured with the
+following formula:
+Inhibition of DPPH radical%
+=
+(
+𝐴𝐶𝑜𝑛𝑡𝑟𝑜𝑙−𝐴𝑆𝑎𝑚𝑝𝑙𝑒∕𝐴𝐶𝑜𝑛𝑡𝑟𝑜𝑙
+)
+× 100
+2.4.2
+ABTS assay
+The amount of free radical inhibition by ARC-PCF-NPs
+was also evaluated by performing the 2,2′-azino-bis(3-
+ethylbenzothiazoline-6-sulfonic acid) (ABTS) test.14 As
+previously reported, 500 μL of different concentrations of
+ARC-PCF-NPs were mixed with 500 μL of dissolved ABTS
+in potassium persulfate and deionized distilled water. After
+1 h of incubation, the absorbance of the samples was read
+at 734 nm, and the amount of free radical inhibition was
+calculated through the following formula12:
+Inhibition of ABTS radical%
+=
+(
+𝐴𝐶𝑜𝑛𝑡𝑟𝑜𝑙−𝐴𝑆𝑎𝑚𝑝𝑙𝑒∕𝐴𝐶𝑜𝑛𝑡𝑟𝑜𝑙
+)
+× 100
+2.4.3
+FRAP assay
+Additionally, the antioxidant capacity of ARC-PCF-NPs
+was measured by evaluating the iron reduction power
+using the ferric reducing antioxidant power (FRAP)
+reagent. The buffer reagent was prepared according to
+the established protocol described previously. After com-
+bining different concentrations of ARC-PCF-NPs with the
+prepared buffer, it was incubated for 5 min in a dark
+atmosphere.12 Finally, the absorbance of the samples was
+read at a wavelength of 539 nm. It is worth noting that
+FeSo4 was used as the standard and drawing the standard
+curve.15
+2.5
+Cell culture
+In this study, the required cells (MCF-7, HT-29, fibrob-
+last [HFF], and PANC) were prepared from the Pasteur
+Institute (Tehran, Iran) and kept in appropriate conditions
+(Incubation at 37◦C and containing 5% CO2) and a related
+culture medium (Gibco-BRL, Life Technology) containing
+heat-inactivated fetal bovine serum (Gibco-BRL, Life Tech-
+nology) and 1% penicillin-streptomycin (Gibco-BRL, Life
+Technology).
+2.5.1
+Examining the cytotoxic effect of
+ARC-PCF-NPs by MTT assay
+The
+3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyl-2H-
+tetrazolium bromide (MTT) method was conducted
+to assess the toxicity of NPs on cells based on the reduction
+rate of tetrazolium salt to purple formazan crystals. After
+24 h of exposing the cells to various concentrations of NPs
+(7.80, 15.60, 32.25, 62.5, 125, 250, and 500 μg/mL), we added
+100 μL of MTT solution to each well and incubated the
+plate for 4 h at 37◦C. After incubation, we removed the
+MTT solution and added 100 μL of DMSO. The formation
+of purple color is an indicator of living cells, and the
+intensity of the produced color was measured at the
+wavelength of 570 nm.
+2.5.2
+Quantitative real‑time PCR (qRT‑RTnt
+Quantitative real‑time polymerase chain reaction method
+was conducted to investigate the expression changes of
+studied genes (catalase, superoxide dismutase, IL-1, IL-6)
+due to ARC-PCF-NPs treatment. After 48 h of cell treat-
+ment with ARC-PCF-NPs, the total mRNA of the cells was
+obtained using the RNA extraction kit (Biofact) accord-
+ing to the kit manuscript. Next, the RNA concentration
+was calculated using the nanodrop method. RNA extracted
+by a cDNA synthesis kit (Pars Tous biotechnology) was
+reverse transcribed based on the manufacturer’s protocol.
+Finally, the cycle threshold of the samples was evaluated
+by a real-time thermal cycler (Biorad) and analyzed by the
+2ΔΔCt method. Glyceraldehyde 3 phosphatedehydrogenase
+(GAPDH) was used as a control gene in this method.2
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+ALHADIDI et al.
+75
+2.5.3
+Experimental data analysis
+Obtained data were analyzed by SPSS statistical software.
+The comparison of the results was done using one-way
+ANOVA and Tukey’s test. p < 0.05 was considered a
+significant criterion.
+3
+RESULTS
+3.1
+ARC-PCF-NP characterization
+The results of the physicochemical characteristics of ARC-
+PCF-NPs implied that the particle size was 100 nm, the
+average hydrodynamic diameter was 291.45, the PDI index
+was 0.36 nm, and the zeta potential (ZP) was 26.30 mV.
+By examining the morphology of NPs by FESEM, we
+found that the ARC-PCF-NPs are dispersed with spheri-
+cal shapes, and the size of the particles is in accordance
+with the data of DLS. The FTIR spectrum indicated a peak
+at 2930 cm−1 representing N–H stretching vibration and
+a peak at 1730 cm−1 for the C=O stretching vibration of
+carbonyl group. In addition, the peaks in the range of 1040–
+1046 cm−1 indicated the stretching vibrations caused by
+N–O and C–O bonds, respectively (Figure 1).16,17
+3.2
+The amount of drug encapsulation
+By comparing the amount of absorption of the supernatant
+from the synthesis of ARC-PCF-NPs with the obtained
+standard graph from different concentrations of ARC, we
+found that the %EE of ARC in NPs is about 87.5% (Figure 2).
+3.3
+Antioxidant capacity of
+ARC-PDF-NPs
+3.3.1
+Inhibiting of free radicals
+Investigating the inhibitory influence of RC-PCF-NPs on
+free radicals in DPPH and ABTS tests showed that the
+inhibitory effects of RC-PCF-NPs are dependent on the
+concentration of NPs. In this regard, the rate of inhibi-
+tion of free radicals has a significantly positive relation-
+ship with an increase in concentrations of RC-PCF-NPs.
+According to the figures, the IC50 for inhibiting ABTS and
+DPPH free radicals was calculated to be about 125 and
+150 μg/mL, respectively (Figure 3a,b). Moreover, the results
+of examining the power of RC-PCF-NPs in ferrous reduc-
+tion with the FRAP method also confirmed the antioxidant
+effect of RC-PCF-NPs (Figure 1c).
+3.4
+Cytotoxic effect of ARC-PCF-NPs
+Related data indicated that the toxicity effect of ARC-PCF-
+NPs against breast cancer cells (MCF-7), colon cancer cells
+(HT-29), and pancreatic cancer cells (PANC-1) was inves-
+tigated in different concentrations. According to Figure 4,
+the viability of MCF-7 and HT-29 cell lines decreased in
+a concentration-dependent manner. The IC50 values of
+ARC-PCF-NPs for MCF-7 and HT-29 cells are about 163
+and 14.47 μg/mL, respectively (Figure 4a,b). However, the
+results of investigating the cytotoxic effect of ARC-PCF-
+NPs on PANC-1 do not show serious dependence on the
+concentration, and the IC50 was calculated to be about
+462 μg/mL (Figure 4c). In addition, the toxicity effect of
+ARC-PCF-NPs against normal HFF cells was investigated.
+The results implied the negligible toxicity of ARC-PCF-
+NPs against normal cells. Therefore, we observed that
+500 μg/mL of ARC-PCF-NPs reduced about 30% viability of
+HFF cells (Figure 4d). Due to the high sensitivity of colon
+cancer cells to ARC-PCF-NPs, further tests were performed
+on colon cancer cells (HT-29).
+3.5
+Catalase and superoxide dismutase
+gene expression
+To investigate the antioxidant influence of ARC-PCF-
+NPs on HT-29 cell lines, we investigated the expression
+of superoxide dismutase (SOD) and catalase (CAT) after
+48 h of treating the cells with ARC-PCF-NPs. Antioxidant
+enzymes SOD and CAT are able to neutralize superox-
+ide and convert H2O and O2. Changes in the antioxidant
+capacity of cancer cells, including changes in SOD and
+CAT gene levels, have been reported in the progression of
+different cancer cells.18,19 The analyzed data implied that
+increasing the concentration of ARC-PCF-NPs leads to a
+decrease in the gene expression of mentioned enzymes in
+colon cancer cells (Figure 5).
+3.6
+Pro-inflammatory gene expression
+We evaluated the expression of two pro-inflammatory
+genes (IL-6 and IL-1) to clarify the anti-inflammatory
+properties of ARC-PCF-NPs on HT-29 cells. As illustrated
+in Figure 6, IL-6 gene expression was dose-dependently
+decreased due to treatment with ARC-PCF-NPs. In addi-
+tion, increasing the concentration of ARC-PCF-NPs has led
+to a decrease in IL-1 gene expression. However, doses of 15
+and 30 had a significant reduction in IL-1 gene expression
+compared to the untreated group (Figure 6).
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+76
+ALHADIDI et al.
+F I G U R E 1
+Physicochemical characteristics of arctiin (ARC)-PCF-nanoparticles (NPs). (A) Average size and dispersity index (PDI). (B)
+Zeta potential (ZP) of ARC-PCF-NPs. (C) Scanning electron microscope (SEM) micrograph of ARC-PCF-NPs. (D) Fourier transform infrared
+spectroscopy (FTIR) spectra of ARC-PCF-NPs.
+F I G U R E 2
+The percentage of encapsulation efficiency (EE%)
+of arctiin (ARC)-PCF-nanoparticles (NPs).
+4
+DISCUSSION
+In the current study, NPs based on PLGA modified
+with CS–folate containing ARC were synthesized by the
+W1/O/W2 method. Analysis of the physicochemical char-
+acteristics of ARC-PCF-NPs implied that the ARC-PCF-
+NPs have an average size of 100 nm, PDI of 0.36, a ZP of
+26.30 mV, and EE of 87.5%. Recently, polymer NPs, includ-
+ing NPs synthesized based on PLGA, have attracted the
+attention of many researchers in the field of pharmaceu-
+ticals due to their high biocompatibility, high solubility,
+and low toxicity.20,21 The W1/O/W2 method was conducted
+for the synthesis of PLGA-based actin-containing NPs. In
+line with this, evidence has been reported that the syn-
+thesis of NPs by the W1/O/W2 double-emulsion solvent
+evaporation method leads to an increase in high drug
+loading.12 However, it has been reported that PLGA-based
+NPs have limitations, such as a lack of proper drug release,
+lack of interaction with body cells and proteins, and rapid
+decomposition.22 Given these points, researchers are try-
+ing to adjust the limitations of PLGA-based NPs. Research
+to date suggested CS to improve the efficiency of PLGA-
+based NPs.9,23 Studies have known that the use of CS to
+coat the PLGA NPs surfaces is effective in improving drug
+release and increasing uptake by cells.9,24,25 Moreover,
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+ALHADIDI et al.
+77
+F I G U R E 3
+Investigating the antioxidant influence of arctiin (ARC)-PCF-nanoparticles (NPs) by inhibition of
+2,2′-azino-bis(3-ethylbenzothiazoline-6-sulfonic acid) (ABTS) (A) and 2,2-diphenyl-1-picrylhydrazyl (DPPH) (B) free radicals and ferrous
+reduction in ferric reducing antioxidant power (FRAP) assay (C) after exposing to different concentrations of ARC-PCF-NPs.
+using the combination of FA to target the drug deliv-
+ery of PLGA-based NPs is effective in cancer treatment.25
+Besides, various pieces of evidence mentioned the posi-
+tive effects of FA–CS for the modification of PLGA-based
+NPs in various solid cancers.24,25 Therefore, synthesized
+PLGA NPs in this study were optimized with CS and FA
+compounds. Furthermore, the optimization of NPs in the
+treatment of several diseases, including cancers, depends
+on the physicochemical characteristics of NPs.26 For exam-
+ple, the design of NPs with sizes between 10 and 300 nm
+is suitable for penetrating solid tumors.27,28 Moreover, the
+stable dispersion and non-agglomeration of NPs depend on
+their surface charge, and the ZP of less than 30 mV and
+more than 30 mV was reported to be stable.2
+It has been found that ARC as a secondary metabolite
+derived from AR in A. lappa L. has various biological activ-
+ities, such as anti-cancer, antioxidant, and antimicrobial.3
+Additionally, it has been found that AR leads to the reduc-
+tion of oxidant markers such as nitric oxide and inflamma-
+tory interleukins such as IL-6 and tumor necrosis factor-α
+(TNF-α) in the tumor microenvironment.6 According to
+these points, AR as an antitumor compound is effective in
+modulating many processes, including tumor angiogene-
+sis, metastasis, programmed death, and necrosis of tumor
+cells. However, the lacking solubility of AR in water is one
+of the limitations of using this compound as an antitu-
+mor drug in new therapeutic approaches.3 Therefore, the
+design of NPs containing ARC can improve its pharmaco-
+genetic properties. Toward this end, after confirming the
+quality of synthesized ARC-PCF-NPs, we evaluated their
+toxicity effect on breast cancer, colon cancer, pancreatic
+cancer, and skin HFF cells. The results of MTT indicated
+that ARC-PCF-NPs have the most inhibitory effect against
+HT-29 cells with an IC50 of 14.47 μg/mL, whereas it has no
+toxicity effect against HFF cells at similar concentrations.
+The most resistant tumor cells to ARC-PCF-NPs were
+PANC-1. Therefore, subsequent experiments were con-
+ducted regarding investigating the inhibitory mechanisms
+of ARC-PCF-NPs on colon cancer cells. The ARC-PCF-NPs
+are capable of inhibiting ABTS and DPPH free radicals
+with an IC50 of about 125 and 150 μg/mL, respectively, as
+well as reduction of ferrous in the FRAP test. Moreover, the
+anti-inflammatory and antioxidant effects of ARC-PCF-
+NPs were confirmed by examining the mRNA expression
+of pro-inflammatory cytokines (IL-1 and IL-6) and antiox-
+idant enzymes (CAT and SOD). Moreover, the results
+showed that ARC-PCF-NPs have a remarkable inhibitory
+effect on Gram-positive bacteria. Similarly, a study with
+the synthesis of PLGA NPs coated with CS and FA contain-
+ing Peganum harmala smoke extract found that these NPs
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+78
+ALHADIDI et al.
+F I G U R E 4
+Evaluation of the cytotoxic effect of arctiin (ARC)-PCF-nanoparticles (NPs) on MCF-7 (A), HT-29 (B), PANC (C), and HFF
+(D) cell lines (*** p < 0.001 vs. control). The test was performed in triplicate.
+F I G U R E 5
+Investigating the antioxidant influence of arctiin (ARC)-PCF-nanoparticles (NPs) by detecting the gene expression of
+catalase (A) and superoxide dismutase (B) (* p < 0.05 vs. control). The text was performed in triplicate.
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+ALHADIDI et al.
+79
+F I G U R E 6
+Investigating the anti-inflammatory influence of arctiin (ARC)-PCF-nanoparticles (NPs) by detecting the gene expression of
+IL-6 (A) and IL-1 (B) (* p < 0.05 vs. control; ** p < 0.01 vs. control; *** p < 0.001 vs. control). The test was performed in triplicate.
+scavenge ABTS and DPPH free radicals, decrease ferrous in
+FRAP test, increase intracellular reactive oxygen species,
+and decrease the expression of SOD gene in breast cancer
+cells.29 In addition, Alirezaei et al. used PLGA-based NPs
+modified with CS–FA in order to optimize the antitumor
+effects of Dermina vulgaris essential oil. They found that
+these NPs increase apoptosis and inhibit the angiogene-
+sis of HT-29 cancer cells.30 It is worth mentioning that the
+reduction of inflammation through the inhibition of pro-
+inflammatory factors, such as TNF-α, IL-6, and IL-1β, in
+the tumor microenvironment can be effective in the man-
+agement of cancer treatment.31 The analyzed data of the
+gene expression of pro-inflammatory cytokines (IL-6 and
+IL-1) after treating the cells with ARC-PCF-NPs confirmed
+the anti-inflammatory properties of ARC-PCF-NPs.
+5
+CONCLUSION
+In the current study, NPs based on PLGA modified with
+CS–folate containing ARC were synthesized with the
+aim of optimizing drug delivery against tumor cells. Our
+results indicated the significant cytotoxic effects of NPs on
+colon cancer cell lines. In addition, the anti-inflammatory,
+antioxidant, and antimicrobial properties of NPs were
+shown by different methods. However, the conducted stud-
+ies in the field of drug delivery of ARC have been very
+limited. Toward this end, it is suggested to design different
+NPs containing ARC and investigate the mechanism of its
+effect on different tumor cells, as well as in vivo studies.
+AU T H O R C O N T R I B U T I O N
+Mohammed Hussein Ajel Alhadidi: Methodology;
+investigation; formal analysis; software; writing—original
+draft.
+Masoud
+Homayouni
+Tabrizi:
+Supervi-
+sion;
+data
+curation;
+conceptualization;
+validation;
+writing—reviewing
+and
+editing.
+Maryam
+Ghobeh:
+Supervision; data curation; conceptualization; validation;
+writing—reviewing and editing.
+6 AC K N OW L E D G M E N T S
+This work was supported by, Islamic Azad University,
+Tehran, Iran, and thus is appreciated by the author.
+C O N F L I C T O F I N T E R E S T S TAT E M E N T
+The authors declare no conflicts of interest.
+DATA AVA I L A B I L I T Y S TAT E M E N T
+The data that support the findings of this study are
+available upon reasonable request from the authors.
+O RC I D
+Masoud Homayouni Tabrizi
+https://orcid.org/0000-
+0002-5078-9973
+R E F E R E N C E S
+1. AL CdSLO, de Araújo Júnior RF, de Carvalho TG, Chan AB,
+Schomann T, Tamburini F, et al. Effect of oxaliplatin-loaded
+poly(d,l-lactide-co-glycolic acid) (PLGA) nanoparticles com-
+bined with retinoic acid and cholesterol on apoptosis, drug
+resistance, and metastasis factors of colorectal cancer. Pharma-
+ceutics. 2020;12(2):193.
+2. Rahmati A, Homayouni Tabrizi M, Karimi E, Zarei B. Fabrica-
+tion and assessment of folic acid conjugated-chitosan modified
+PLGA nanoparticle for delivery of alpha terpineol in colon
+cancer. J Biomater Sci, Polym Ed. 2022;33(10):1289–307.
+3. Shabgah AG, Suksatan W, Achmad MH, Bokov DO, Abdelbasset
+WK, Ezzatifar F, et al. Arctigenin, an anti-tumor agent; a cutting-
+edge topic and up-to-the-minute approach in cancer treatment.
+Eur J Pharmacol. 2021;909:174419.
+4. Tsai WJ, Chang CT, Wang GJ, Lee TH, Chang SF, Lu SC, et al.
+Arctigenin from Arctium lappa inhibits interleukin-2 and inter-
+feron gene expression in primary human T lymphocytes. Chin
+Med. 2011;6(1):12.
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+80
+ALHADIDI et al.
+5. Awale S, Lu J, Kalauni SK, Kurashima Y, Tezuka Y, Kadota S,
+et al. Identification of arctigenin as an antitumor agent having
+the ability to eliminate the tolerance of cancer cells to nutrient
+starvation. Cancer Res. 2006;66(3):1751–57.
+6. Kou X, Qi S, Dai W, Luo L, Yin Z. Arctigenin inhibits
+lipopolysaccharide-induced iNOS expression in RAW264.7
+cells through suppressing JAK-STAT signal pathway. Int
+Immunopharmacol. 2011;11(8):1095–102.
+7. Masloub SM, Elmalahy MH, Sabry D, Mohamed WS, Ahmed SH.
+Comparative evaluation of PLGA nanoparticle delivery system
+for 5-fluorouracil and curcumin on squamous cell carcinoma.
+Arch Oral Biol. 2016;64:1–10.
+8. Suri R, Neupane YR, Mehra N, Nematullah M, Khan F, Alam
+O, et al. Sirolimus loaded chitosan functionalized poly (lactic-
+co-glycolic acid) (PLGA) nanoparticles for potential treatment
+of age-related macular degeneration. Int J Biol Macromol.
+2021;191:548–59.
+9. Chen H, Xie LQ, Qin J, Jia Y, Cai X, Nan W, et al. Surface mod-
+ification of PLGA nanoparticles with biotinylated chitosan for
+the sustained in vitro release and the enhanced cytotoxicity of
+epirubicin. Colloids Surf B Biointerfaces. 2016;138:1–9.
+10. Dhas NL, Ige PP, Kudarha RR. Design, optimization and in-vitro
+study of folic acid conjugated-chitosan functionalized PLGA
+nanoparticle for delivery of bicalutamide in prostate cancer.
+Powder Technol. 2015;283:234–45.
+11. Zarei B, Tabrizi MH, Rahmati A. PEGylated lecithin-chitosan
+nanoparticle-encapsulated alphα-terpineol for in vitro anti-
+cancer effects. AAPS PharmSciTech. 2022;23(4):94.
+12. Mokhtareeizadeh Z, Homayouni Tabrizi M. Optimisation of
+Ferula assa-foetida-loaded PLGA nanoparticles synthesised and
+evaluation of putative mechanism for anticancer properties.
+Mater Technol. 2022;37(11):1954–67.
+13. Yang C, Wu H, Wang J. Formulation and evaluation of
+controlled-release of steroidal saponins-loaded collagen micro-
+spheres. Mater Technol. 2019;34(9):534–39.
+14. Soltani M, Etminan A, Rahmati A, Behjati Moghadam M,
+Ghaderi Segonbad G, Homayouni Tabrizi M. Incorporation
+of Boswellia sacra essential oil into chitosan/TPP nanoparti-
+cles towards improved therapeutic efficiency. Mater Technol.
+2022;37(11):1703–15.
+15. Almnhawy M, Jebur M, Alhajamee M, Marai K, Tabrizi MH.
+PLGA-based nano-encapsulation of trachyspermum ammi seed
+essential oil (TSEO-PNP) as a safe, natural, efficient, anticancer
+compound in human HT-29 colon cancer cell line. Nutr Cancer.
+2021;73(11–12):2808–20.
+16. Jafari-Moghaddam F, Beyramabadi SA, Khashi M, Morsali A.
+Three VO2+ complexes of the pyridoxal-derived Schiff bases:
+synthesis, experimental and theoretical characterizations, and
+catalytic activity in a cyclocondensation reaction. J Mol Struct.
+2018;1153:149–56.
+17. Raouf H, Beyramabadi SA, Allameh S, Morsali A. Synthesis,
+experimental and theoretical characterizations of a 1, 2, 4-
+triazole Schiff base and its nickel(II) complex. J Mol Struct.
+2019;1179:779–86.
+18. Glorieux C, Calderon PB. Catalase, a remarkable enzyme: target-
+ing the oldest antioxidant enzyme to find a new cancer treatment
+approach. Biol Chem. 2017;398(10):1095–108.
+19. Shah MH, Liu GS, Thompson EW, Dusting GJ, Peshavariya HM.
+Differential effects of superoxide dismutase and superoxide dis-
+mutase/catalase mimetics on human breast cancer cells. Breast
+Cancer Res Treat. 2015;150(3):523–34.
+20. Abdul Rahim R, Jayusman PA, Muhammad N, Ahmad F,
+Mokhtar N, Naina Mohamed I, et al. Recent advances in nanoen-
+capsulation systems using PLGA of bioactive phenolics for
+protection against chronic diseases. Int J Environ Res Public
+Health. 2019;16(24):4962.
+21. Naderi Alizadeh M, Rashidi M, Muhammadnejad A, Moeini
+Zanjani T, Ziai SA. Antitumor effects of Umbelliprenin in
+a mouse model of colorectal cancer. Iran J Pharm Res.
+2018;17(3):976–85.
+22. Cohen-Sela E, Teitlboim S, Chorny M, Koroukhov N, Danenberg
+HD, Gao J, et al. Single and double emulsion manufactur-
+ing techniques of an amphiphilic drug in PLGA nanoparticles:
+formulations of mithramycin and bioactivity. J Pharm Sci.
+2009;98(4):1452–62.
+23. Wang F, Yuan J, Zhang Q, Yang S, Jiang S, Huang C. PTX-
+loaded three-layer PLGA/CS/ALG nanoparticle based on layer-
+by-layer method for cancer therapy. J Biomater Sci, Polym Ed.
+2018;29(13):1566–78.
+24. Lu B, Lv X, Le Y. Chitosan-modified PLGA nanoparticles for
+control-released drug delivery. Polymers. 2019;11(2):304.
+25. Alibolandi M, Amel Farzad S, Mohammadi M, Abnous K,
+Taghdisi SM, Kalalinia F, et al. Tetrac-decorated chitosan-coated
+PLGA nanoparticles as a new platform for targeted delivery of
+SN38. Artif Cells Nanomed Biotechnol. 2018;46(sup2):1003–14.
+26. Kesente M, Kavetsou E, Roussaki M, Blidi S, Loupassaki S,
+Chanioti S, et al. Encapsulation of olive leaves extracts in
+biodegradable PLA nanoparticles for use in cosmetic formula-
+tion. Bioengineering (Basel). 2017;4(3):75.
+27. Kobayashi H, Watanabe R, Choyke PL. Improving conventional
+enhanced permeability and retention (EPR) effects; what is the
+appropriate target? Theranostics. 2013;4(1):81–89.
+28. Mattheolabakis G, Rigas B, Constantinides PP. Nanodeliv-
+ery strategies in cancer chemotherapy: biological rationale
+and
+pharmaceutical
+perspectives.
+Nanomedicine
+(Lond).
+2012;7(10):1577–90.
+29. Homayouni Tabrizi M. Fabrication of folic acid-conjugated
+chitosan-coated PLGA nanoparticles for targeted delivery of
+Peganum harmala smoke extract to breast cancer cells. Nan-
+otechnology. 2022;33(49):495101.
+30. Alirezaei M, Ghobeh M, Es-haghi A. Poly(lactic-co-glycolic
+acid)(PLGA)-based nanoparticles modified with chitosan-folic
+acid to delivery of Artemisia vulgaris L. essential oil to HT-29
+cancer cells. Process Biochem. 2022;121:207–15.
+31. Tyavambiza C, Elbagory AM, Madiehe AM, Meyer M, Meyer
+S. The antimicrobial and anti-inflammatory effects of silver
+nanoparticles synthesised from Cotyledon orbiculata aqueous
+extract. Nanomaterials (Basel). 2021;11(5):1343.
+How to cite this article: Alhadidi MHA, Tabrizi
+MH, Ghobeh M. Evaluation of the effect of
+designed PLGA-arctiin nanoparticles modified with
+folic acid and chitosan on colon cancer cells.
+Biotechnol Appl Biochem. 2024;71:72–80.
+https://doi.org/10.1002/bab.2522
+ 14708744, 2024, 1, Downloaded from https://iubmb.onlinelibrary.wiley.com/doi/10.1002/bab.2522 by University Of Maryland, Wiley Online Library on [21/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

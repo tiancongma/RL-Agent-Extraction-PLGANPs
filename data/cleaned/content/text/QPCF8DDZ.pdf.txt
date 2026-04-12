@@ -1,0 +1,842 @@
+International Journal of Pharmaceutics 653 (2024) 123901
+Available online 16 February 2024
+0378-5173/© 2024 Elsevier B.V. All rights reserved.
+Preparation and characterization of pickering emulsion stabilized by
+lovastatin nanoparticles for vaccine adjuvants
+Yue Zhang a,b,1, Zuchen Song a,b,1, Zhimin Zhang a,b,1, Tao Zhang c, Pengfei Gu a,b, Zian Feng a,b,
+Shuwen Xu a,b, Yang Yang a,b, Deyun Wang a,b, Zhenguang Liu a,b,*
+a Institute of Traditional Chinese Veterinary Medicine, College of Veterinary Medicine
+b MOE Joint International Research Laboratory of Animal Health and Food Safety, College of Veterinary Medicine, Nanjing Agricultural University, Nanjing 210095, PR
+China
+c Beijing Key Laboratory of Traditional Chinese Veterinary Medicine, Beijing University of Agriculture, Beijing 102206, PR China
+A R T I C L E  I N F O
+Keywords:
+Lovastatin
+Pickering emulsion
+Adjuvant
+A B S T R A C T
+While research on mevalonate inhibitors as vaccine adjuvants has made great progress to enhance the effec­
+tiveness of the vaccine, co delivery of lovastatin and antigens (OVA) remains an enormous challenge. Here, we
+encapsulated lovastatin into PLGA nanoparticles. PLGA loading lovastatin was further emulsified with squalene
+to prepare Pickering emulsion. The emulsification conditions of Pickering emulsion were optimized, and the
+optimal preparation conditions were obtained. After loading lovastatin and OVA, the size and zeta potential of
+LS-PPAS/OVA was 1043.33 nm and –22.07 mv, the adsorption rate of OVA was 63.34 %. The adsorbing of LS-
+PLGA nanoparticles on the surface of squalene in Pickering emulsions was demonstrated by Fluorescent confocal
+microscopy. After immunization, LS-PPAS enhanced the activation of dendritic cells in lymph nodes, further
+study found LS-PPAS not only elicited elevated levels of OVA-specific IgG and its subtypes, but also promoted the
+secretion of TNF-α, IFN-γ, and IL-6 in serum as a marker of cellular immunity. Importantly, LS-PPAS showed
+sufficient security through monitoring levels of biochemical parameters in serum and pathological observation of
+organ following vaccinations. LS-PPAS may act as a promising vaccine carrier to produce strong humoral and
+cellular immunity with acceptable safety.
+1. Introduction
+Vaccines play an important role in preventing and controlling in­
+fectious diseases and treating tumors. adjuvants have the capacity to
+augment the magnitude, scope, and longevity of the immune response
+(Pulendran et al., 2021; APOST´oLICO et al., 2016; Boyle et al., 2007).
+Treatment with antigens alone can be subjected to low immunogenicity,
+especially subunit vaccines and inactivated vaccines, therefore, an
+adjuvant is necessary to boost the immune response to the antigen (Reed
+et al., 2013). In the past twenty years, studies on the perception of
+microorganisms by the innate immune system have provided enormous
+opportunities for understanding the design and development of adju­
+vants (Borriello et al., 2022). Alum is currently the widely used adjuvant
+in infectious disease vaccination efforts. With the discovery of more
+proprietary drug targets and the development of delivery systems, some
+new molecular type adjuvants and carriers have also been applied in
+vaccine adjuvants (Wang et al., 2022; Cao et al., 2020).
+Lovastatin, composed of secondary metabolites produced by fila­
+mentous fungi, is a new type of vaccine adjuvant due to the fact that
+lovastatin is a competitive inhibitor of HMG-CoA reductase that is a key
+Abbreviations: OVA, ovalbumin; PLGA, poly (lactic-co-glycolic acid); LS-PPAS, lovastatin PLGA-stabilized Pickering emulsion; LS-PLGA, PLGA nanoparticles
+loading lovastatin; IFN-γ, interferon-γ; TNF-α, tumor necrosis factor-α; IL-6, interleukin-6; HMG-CoA, 3-hydroxy-3-methylglutarylcoenzyme A; MVA, mevalonate;
+GGPP, geranylgeranyl diphosphate; APC, antigen presenting cells; PDI, poly dispersity index; IgG, immunoglobulin G; PBS, phosphate buffered saline; DCs, dendritic
+cells; ELISA, enzyme-linked immunosorbent assay; AST, aspartate aminotransferase; ALP, alkaline phosphatase; ALT, alanine aminotransferase; BUN, blood urea
+nitrogen; LDH, Lactic dehydrogenase.
+* Correspondence and reprint requests: Institute of Traditional Chinese Veterinary Medicine, College of Veterinary Medicine, Nanjing Agricultural University,
+Nanjing, 210095, PR China.
+E-mail address: lzg199011@163.com (Z. Liu).
+1 These authors contributed equally to this work.
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+https://doi.org/10.1016/j.ijpharm.2024.123901
+Received 25 October 2023; Received in revised form 11 January 2024; Accepted 8 February 2024
+i
+An update to this article is included at the end
+
+International Journal of Pharmaceutics 653 (2024) 123901
+2
+enzyme in the mevalonate(MVA) pathway (Tobert, 2003). The meval­
+onate pathway is a critical pathway for metabolize and immune
+including antigen degradation and presentation, protein post-
+translational prenylation and cholesterol biosynthesis (VRANOV´a
+et al., 2013; Liao et al., 2016). Inhibiting enzyme activity of HMG-CoA
+could downstream metabolite geranylgeranyl diphosphate(GGPP)
+which is necessary for geranylgeranylation of Rab5 in dendritic cells.
+Abnormal distribution of rab5 results in blocking endosomal matura­
+tion, slowing down antigen degradation and promoting antigen pre­
+sentation in dendritic cells (Xia et al., 2018). However, as an inhibitor of
+HMG-CoA, hydrophilic statins cannot exert adjuvant activity and only
+lipophilic statins can work, because of rapidly clearing from muscle of
+Fig. 1. The size, PDI values and the released oil volume from 1 mL emulsions after centrifugation for 10 min at 3000 rpm with different emulsions prepared with
+various oil volume fraction (A), various PLGA concentration (B), various ultrasonic powers (C), and different ultrasonic time (D). Data are presented as the mean ±
+SEM, n = 3.
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+3
+the polar (hydrophilic) statin. Lovastatin, as a lipophilic statin, can
+induce a wide range of strong humoral and cellular immune responses.
+Although lovastatin shows exciting potential to be effective tools in
+vaccine adjuvants, many hurdles remain before these therapies are
+appropriate for the clinic due to its insolubility in water. Drug delivery
+systems are a promising solution for enhancing drug water solubility and
+improving convenience (Jiang et al., 2022; Park, 2014; Bai et al., 2019).
+Herein, we assume that the water solubility of lovastatin can be
+improved through a drug delivery system, thus providing possibilities
+for its application.
+In recent decades, due to the development of nanoparticles synthesis
+technology and breakthroughs in colloid theory, the applications of
+Pickering emulsions have received increasing attention (Pang et al.,
+2021). Pickering emulsions are usually synthesized by emulsification of
+oil and solid particles and this special structure provides more possi­
+bilities for delivering hydrophilic and lipophilic drugs. Owing to the
+nature of poly (lactic-co-glycolic acid) (PLGA), Pickering emulsions
+based on PLGA nanoparticles have been demonstrate to enhance the
+recruitment of immune cells in lymph nodes, antigen migration and
+maturation of APCs, potently inducing both humoral and cellular
+adaptive responses, while displaying high biosafety and antigen-
+adsorbing capabilities (Du et al., 2022). Pickering emulsions can be
+easily obtained by one-step sonification using squalene and PLGA
+nanoparticles that can load lipophilic small molecule adjuvants
+Table 1
+The average size, zeta potential, Poly dispersity index, and antigen loading efficiency of nanoparticles and Pickering emulsions. (mean ± SEM, n = 3).
+Name
+Size(nm)
+Poly dispersity index
+Zeta potential(mV)
+Encapsulation efficiency (%)
+Antigen loading efficiency (%)
+PLGAa
+264.87 ± 9.73
+0.185 ± 0.025
+–23.27 ± 0.42
+/
+/
+LS-PLGAb
+253.56 ± 2.33
+0.122 ± 0.052
+−21.53 ± 0.17
+80.21 ± 0.22
+/
+PPASc
+993.29 ± 15.02
+0.181 ± 0.068
+–22.17 ± 0.29
+/
+/
+LS-PPASd
+1096.30 ± 50.40
+0.161 ± 0.031
+−20.80 ± 1.04
+77.89 ± 0.42
+/
+PPAS/OVAe
+1010.53 ± 14.85
+0.220 ± 0.014
+−20.97 ± 0.43
+/
+65.12 ± 0.24
+LS-PPAS/OVAf
+1043.33 ± 17.40
+0.175 ± 0.019
+–22.07 ± 0.20
+78.63 ± 0.23
+63.34 ± 1.01
+a PLGA: poly(lactic-co-glycolic acid). bLS-PLGA: PLGA encapsulated with lovastatin. cPPAS: PLGA stabilized Pickering emulsion adjuvant system. dLS-PPAS: PPAS
+encapsulated with lovastatin. ePPAS/OVA: PPAS loaded with OVA antigen. fLS-PPAS/OVA: LS-PPAS loaded with OVA antigen.
+Fig. 2. The size (A), zeta potential (B), and polydispersity index (C) of Pickering emulsions. (D) The Cryo-scanning electron micrograph of LS-PPAS. Scale bar = 500
+nm. (E) The CLSM image of LS-PPAS. The squalene was labeled Nile Red. Scale bar = 1 μm. (F-H) The CLSM image of LS-PPAS (The squalene was labeled as pink by
+Cy5, the LS-PLGA nanoparticles was labeled green by FITC). Scale bar = 500 nm. Data are presented as the mean ± SEM, n = 3.
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+4
+(Chereddy et al., 2018). We anticipate that Pickering emulsions may
+serve as a safe, accessible, and efficient lovastatin and antigen delivery
+system.
+Therefore, a Pickering-emulsion-based PLGA loading lovastatin was
+prepared and OVA antigens were adsorbed on the surface. After im­
+munization, the emulsions were expected to efficiently recruit more
+APCs and up taken by the APCs for higher lovastatin and antigens. As a
+“attraction and cut off” delivery system consisting of lovastatin, squa­
+lene, and antigens, Pickering emulsions might contribute to co-delivery
+of MVA inhibitors and antigens for vaccine adjuvants.
+2. Materials and methods
+2.1. Reagents and materials
+Lovastatin (98 %, C10016511) and squalene were bought from
+Shanghai Macklin Biochemical Co., Ltd, PLGA (75:25), MW = 15 kDa)
+was ordered by Jinan Daigang Biomaterical Co.,Ltd (Shandong, China).
+Pluronic F-68 (F68) was ordered from Yuanye Biomaterical Co.,Ltd
+(Shanghai, China). Alum was provided from Thermo Biomaterical Co.,
+Ltd (USA). OVA was bought from Sigma- Aldrich (St Louis, USA).
+2.2. Preparation of lovastatin PLGA nanoparticles
+PLGA nanoparticles loading lovastatin (LS-PLGA) were synthesized
+by the modified methods as previous reports (Luo et al., 2016; Zhang
+et al., 2020). Briefly, the 5 mg lovastatin and the 50 mg PLGA were
+dissolved in 1 mL acetone solution, after complete dissolution, 100 μL of
+ultrapure water was added to the mixture while sonicating it at 10 %
+power for 1 min. Ultrapure water was added to the PLGA and statin
+mixture while sonicating at 10 % power for 1 min. Then 0.7 % wt F68
+ultrapure water was added with 10 mL and the mixture was sonicated at
+20 % power for 2 min to obtain the emulsion. Then the emulsion was
+stirred for 3 h to remove organic reagents. Subsequently, the emulsion
+was centrifuged (12,000 rpm for 30 min), washed three times with ul­
+trapure water and then lyophilized to obtain lovastatin PLGA nano­
+particles (LS-PLGA). The LS-PLGA nanoparticles were stored at 4 ℃.
+Then blank nanoparticles (PLGA) without lovastatin were prepared
+using the same approach.
+The characterization (size, zeta potential) of LS-PLGA were analyzed
+by Zeta-sizer Nano Instruments (Malvern, UK). The transmission elec­
+tron microscopy (TEM) (Tecnai 12, Philips, Holland) was employed for
+observing the morphology of LS-PLGA nanoparticles.
+In order to determine the encapsulation efficiency of lovastatin in LS-
+PLGA nanoparticles, the supernatant was harvested prior to washing
+with ultrapure water and the absorbance number was obtained by
+measurement of a UV–Vis (238 nm). The 1 mL LS-PLGA emulsion was
+added to a volumetric flask and fixed to 10 mL with methanol. The
+emulsion was subjected to centrifugation (12000 rpm for 30 min) and
+the supernatant was separated and collected. The free lovastatin was in
+the supernatant. The concentration of lovastatin in the uncentrifuged
+emulsion is the total concentration of lovastatin. The encapsulation ef­
+ficiency of lovastatin is calculated according to the following formula:
+2.3. Preparation of the Pickering emulsion
+LS-PPAS was formulated by a modified method in previous reports
+(Zhang et al., 2022; Xia et al., 2018). In brief, the LSP nanoparticles were
+firstly dispersed in the ultrapure water and vortexed for 30 s. Then the
+Fig. 3. The size, zeta potential, and DPI (A) and the visual appearance of LS-PPAS at 4 ℃ during 60 days. (C)The release profile of lovastatin from LS-PPAS emulsion
+in vitro. (D) The release profile of OVA from LS-PPAS/OVA in vitro. Data are presented as the mean ± SEM, n = 3.
+Lovastatin encapsulation efficiency(%) = (Total concentration −Supernatant concentration)/Total concentration × 100%
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+5
+oil phase of squalene emulsified with the LSP nanoparticles suspension
+under ultrasonic to obtain the Pickering emulsion of LS-PPAS.
+To optimize the preparation process of LS-PPAS, the Pickering
+emulsion was produced using various oil volume fraction (Φ = 0.1, 0.2,
+0.3, 0.5, 0.7, 0.9), PLGA concentration (1 mg/mL, 3 mg/mL, 5 mg/mL,
+10 mg/mL, 15 mg/mL, 20 mg/mL), ultrasonic powers (5 %, 10 %, 30 %,
+40 %, 50 %), and ultrasonic times (0.5 min, 1 min, 2 min, 3 min). Then 1
+mL Pickering emulsions prepared at different conditions were centri­
+fuged at 3000 rpm for 10 min to observe the stratification of the
+emulsion. The volume of released oil in the upper layer was collected
+Fig. 4. (A) Viability of BMDCs cells after incubation with different concentration LS-PPAS, PPAS, and LS for 24 h. (B&C) Flow cytometry images of antigen uptake by
+BMDCs. (D) Representative image of cellular uptake by DCs after treatment with various formulations for 6 h. Data shown as mean ± SEM, n = 3. (***p < 0.001, **p
+< 0.01, *p < 0.05).
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+6
+and measured. In addition, the size and Poly dispersity index (PDI) of
+Pickering emulsions were analyzed to optimize the preparation condi­
+tions. The blank PLGA-stabilized Pickering emulsion (PPAS) was ob­
+tained by the optimal preparation process and conditions.
+2.4. Characterization of the LS-PPAS
+After preparing LS-PPAS according to the optimal conditions, the
+size, PDI and zeta-potential were determined by Nano Zeta Sizer. The LS-
+PPAS was diluted and the morphology was observed by Cryo-scanning
+electron microscope (Hitachi SU8010) and confocal laser microscope
+(Nikon). LS-PLGA nanoparticles were labelled with FITC (green) and
+squalene (pink) was labelled by CY5. Subsequently, the squalene was
+labelled with Nile red and the type of PPAS was determined through
+confocal laser microscope (CLSM).
+2.5. Stability test of LS-PPAS
+The freshly prepared LS-PPAS was stored at 4 ℃ during 60 days. the
+particle size, zeta potential, and PDI values and visual appearance were
+measured on day 0, day 30, day 60.
+2.6. Antigen adsorption of LS-PPAS
+To create an OVA-absorbing LS-PPAS (LS-PPAS/OVA), the LS-PPAS
+and OVA were dissolved and mixed by vortex at low speed for 5 min
+at the same volume. Then the solution mixed by shaking at 4 ◦C for 2 h
+(LS: 250 μg/mL, OVA: 250 μg/mL). The size, zeta potential, PDI values
+were measured.
+Antigen loading efficiency of LS-PPAS/OVA was measured by
+Bicinchoninic acid (BCA) assay. Firstly, to remove the free OVA antigen,
+LS-PPAS/OVA was rinsed with running water for 12 h in a dialysis bag
+(50,000 D). Then 1 mL NaCl solution (2 M) was added into 1 mL dia­
+lyzed emulsion of LS-PPAS/OVA. After placing for 24 h, the emulsion
+was centrifuged (12000 rpm, 30 min) to separate the oil and water
+phases. The concentration of OVA antigen in the aqueous phase was
+determined by a BCA protein assay kit.
+2.7. Release profile of lovastatin and OVA in vitro
+For in vitro drug and antigen release profiles of LS-PPAS, OVA loaded
+LS-PPAS was transferred to a dialysis bag (50000 D) and placed in PBS
+buffer (pH = 7.4) with shaking (37 ◦C, 100 rpm). The 1 mL sample in the
+dialysis bag was replaced by 1 mL fresh PBS buffer during the pre­
+determined periods (3, 5, 10, 12, 24 h, and 1, 3, 5, 7, 14, 21 days). 1 mL
+of NaCl salt solution (2 M) was added to the removed emulsion and left
+for 24 h. Following centrifugation at 12000 rpm for 30 min, the con­
+centrations of lovastatin and OVA in the aqueous phase were quantified.
+2.8. Preparation of bone marrow-derived dendritic cells
+Briefly, the tibias and fibulas were isolated from BALB/c mice (6
+weeks, female) under aseptic conditions. The bone marrow lumen was
+then rinsed with PBS, the rinsed fluid was collected through a 70 μm cell
+sieve, treated with the red blood cell lysis for 2–3 min. Bone marrow-
+derived dendritic cells (BMDCs) were counted (5 × 105/mL) and inoc­
+ulated in culture dishes. BMDCs were cultured in RMPI media with 10 %
+fetal bovine serum, 3 % penicillin–streptomycin, GM-CSF (40 ng/mL),
+and IL-4 (40 ng/mL) stimulating factors. The media was replaced with
+half fresh media on days 2, 4, and 6. On day 7, the suspended cells were
+collected, which serve as immature marrow-derived dendritic cells for
+subsequent experiments.
+2.9. Cytotoxicity assay in vitro
+Firstly, 100 μL of BMDCs were added to 96-well plates. Then LS,
+PPAS, and LS-PPAS were cultured for 24 h (0 ~ 250 μg/mL). The effect
+of different concentrations of drugs on cell activity was determined by
+MTT method (Liu et al., 2015).
+Fig. 5. (A) Examination of the intracellular trafficking of FITC-OVA in DCs. (B&C) Evaluation of the expression levels of surface molecular markers MHC I after
+treatment with various formulations (B) and its representative flow cytometry plot (C). Data shown as mean ± SEM, n = 3. (***p < 0.001, **p < 0.01, *p < 0.05).
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+7
+2.10. Antigen uptake assay in vitro
+To evaluate the antigen uptake by BMDCs, the formulations loaded
+with FITC-OVA were prepared. Firstly, 10 μL of FITC-OVA was added to
+LS-PPAS, PPAS and LS, respectively (32.5 μg/mL). The solutions were
+mixed by vortex for 5 min and then shaken for 2 h to allow sufficient
+loading of antigen into the emulsion. Cells were then added to 24-well
+plates and incubated with FITC-OVA-loaded formulations for 12 h.
+Finally, the cells were stained with CD11c-PE Cyanine7 for 30 min and
+measured by flow cytometry. The measurements were repeated three
+times.
+The CLSM was applied to further observe the antigen uptake by
+BMDCs. Cells were added to confocal culture dishes and then incubated
+with LS-PPAS, PPAS and LS (32.5 μg/mL) loaded with FITC-OVA antigen
+for 12 h. Cells were washed three times with PBS and fixed with 4 %
+paraformaldehyde. After washing, DAPI staining solution was added to
+label the nuclei and observed by CLSM.
+2.11. Detection of antigen transport within DCs
+For the evaluation of antigen transport within DCs, DCs were
+cultured in CLSM-specific Petri dish. After different treatment for 12 h,
+lysosomes were stained with Lysotracker for 30 min, followed by DAPI
+staining. The process of antigen transport within DCs was visualized
+through CLSM.
+2.12. Detection of the level of OVA cross-presentation
+DCs were cocultured with OVA, LS/OVA, PPAS/OVA or LS-PPAS/
+OVA for 12 h and 24 h. Following various treatments, DCs were then
+stained with CD11c-PE Cyanine7 and MHCI-PE to evaluate the level of
+OVA cross-presentation.
+2.13. In vivo immunization studies
+To prepare formulations loaded with OVA antigen, LS-PPAS, PPAS,
+LS, Alum, and OVA antigen solutions were mixed by vortex at the same
+volume for 5 min and then incubated for 2 h. The concentration of both
+LS and OVA antigen was ultimately set at 250 μg/mL.
+ICR mice (6 weeks old) were immunized by subcutaneous injection
+of 200 μL LS-PPAS, PPAS, LS, Alum, OVA, and PBS on days 0 and 14. The
+Alum adjuvant group was served as a positive control group while PBS
+group was used as a negative control group. On days 21, 28, 35, 42,
+blood samples were collected and the serum was separated and stored.
+All animal experiments were carried out in accordance with IACUC
+guidelines of Nanjing Agricultural University.
+2.14. Assay of DCs activation in lymph nodes
+The effect of OVA formulations containing various adjuvants on
+dendritic cells (DCs) in lymph nodes was evaluated. The inguinal and
+popliteal lymph nodes of mice were collected and milled with a PBS
+Fig. 6. The percentage of CD40+CD11C+ and CD86+CD11C+ cells within lymph nodes were measured by flow cytometry after vaccination for 48 h. Data are shown
+as mean ± SEM, n = 3. (***p < 0.001, **p < 0.01, *p < 0.05).
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+8
+buffer containing 2 % bovine serum after vaccination for 48 h. The so­
+lution was then passed through a 70 μm cell sieve and centrifuged to
+remove large pieces of tissue. After washing, CD11c-PE Cyanine7, CD86-
+PE and CD40-APC antibodies were added and stained for 30 min, and
+then the percentage of CD86+ and CD40+in CD11c+ cells were deter­
+mined by flow cytometry.
+2.15. Antibody responses
+On days 21, 28, 35, and 42 after primary immunization, the levels of
+anti-OVA IgG and IgG subtypes (IgG1 and IgG2a) antibodies in serum
+were measured by ELISA method (Gu et al., 2019).
+2.16. Cytokine expression in serum
+The cytokines concentration of TNF-α, IFN-γ, and IL-6 were
+measured by ELISA Kits on day 35 following the manufacture
+instruction.
+2.17. Evaluation of safety in vivo
+To analyze the safety of LS-PPAS, blood samples were collected from
+Fig. 7. Schematic illustration of the vaccination protocol (A). The levels of IgG (B), IgG1 (C), IgG2a (D) in serum were detected by ELISA on days 21, 28, 35, 42 after
+vaccination. Data are shown as mean ± SEM, n = 3. (***p < 0.001, **p < 0.01, *p < 0.05).
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+9
+mice and serum was isolated on day 42 after immunization. The
+important indicators (AST: aspartate transaminase, ALT: alanine
+aminotransferase, ALP: alkaline phosphatase, LDH: lactate dehydroge­
+nase, BUN: blood urea nitrogen) in the serum were measured by a
+biochemical autoanalyzer. The primary organs of heart, liver, spleen,
+lung, and kidney were obtained from each group of mice at 42 days after
+vaccination. The organs were stained with H&E and observed by
+microscopy.
+2.18. Statistical analysis
+All data were shown as the mean ± standard error of the mean
+(SEM). One-way ANOVA and two- way ANOVA were used to analyze the
+statistical differences between different groups by GraphPad Prism 9.
+Statistical significance was defined as P values less than 0.05.
+3. Results and discussion
+3.1. Preparation of Pickering emulsion stabilized by LS-PLGA
+nanoparticles
+Pickering emulsion are formed by an oil phase, a particle stabilizer,
+and a water phase. In order to have a stable lovastatin PLGA-stabilized
+Pickering emulsion (LS-PPAS) with optimal condition, the oil volume
+fraction (Φ), the concentration of PLGA, ultrasonic power and time were
+investigated.
+To detect the effect of different oil volume fraction on the stability of
+LS-PPAS, the emulsions were prepared through sonication using various
+oil volume fraction (Φ = 0.1, 0.2, 0.3, 0.5, 0.7, 0.9). No significant
+change in the particle size of the emulsions was observed at Φ values of
+0.1, 0.2 and 0.3. When the Φ value was 0.5, the particle size and PDI
+value of the emulsion increased. After centrifugation, more oil released
+in upper layer indicates less stable emulsion (Kalashnikova et al., 2013;
+Qi et al., 2014; Bao et al., 2019). As the increase of Φ values of the oil
+volume from the upper layer was increased. Emulsions were not ob­
+tained at the Φ value of 0.7 and 0.9. The emulsion prepared by the
+condition of Φ = 0.1, no oil release in the upper layer, suggesting that it
+possessed the greatest stability (Fig. 1A and Fig. S1). Therefore, the Φ
+value of 0.1 was chosen for subsequent experiments.
+At Φ value of 0.1, emulsions stabilized by various PLGA concentra­
+tion (1, 3, 5, 10, 15, 20 mg/mL were prepared as shown in Fig. 1B and
+Fig. S2. Obviously, the emulsion showed a big size about 2166 nm, a
+high PDI value about 0.348, and more oil release from the emulsion at 1
+mg/mL. The size was gradually decreased at PLGA concentration above
+1 mg/mL, which may due to increasing number of particles used to
+stabilize the emulsion and the presence of a large amount pf nano­
+particles at the oil–water interface. Above 1 mg/mL PDI values were less
+than 0.3, indicating relatively stable emulsion were prepared. In
+addition, above 3 mg/mL, no release oil was measured from the emul­
+sion. Therefore, the PLGA concentration of 5 mg/mL was chosen to
+make the emulsion. Because the sufficiently particle concentration in the
+emulsion could provide high particle coverage of droplets, limiting the
+extent of film drainage between droplets, and preventing the aggrega­
+tion of particles (Binks et al., 2005).
+At Φ value of 0.1 and PLGA concentration of 5 mg/mL, various the
+ultrasonic powers (5 %, 10 %, 30 %, 40 %, 50 %) was chosen to prepare
+the emulsion as shown in Fig. 1C and Fig. S3. When the ultrasonic power
+was greater than 10 %, the particle size of the emulsion showed no
+significant changes about 1000 nm and no oil was released from the
+emulsion. The PDI value of the emulsion were always less than 0.3 at
+different ultrasonic powers. Thus, the ultrasonic powers of 30 % was
+chosen to make the emulsion.
+When the Φ value, PLGA concentration and ultrasonic powers was
+set at 0.1, 5 mg/mL and 30 % respectively, the different ultrasonic times
+(0.5, 1, 2, 3 min) was used to obtained the emulsion as illustrated in
+Fig. 1D and Fig. S4. At 0.5 min, the emulsion has a very small particle
+size and a large volume of oil is released at the same time. This may be
+due to the ultrasonic time was too short and the emulsion failed to
+emulsify caused by small particle size. At these sonication times, the PDI
+values of the emulsions were consistently less than 0.3. The ultrasonic
+time of 2 min was used to prepared the emulsion. Finally, the condition
+of 0.1 oil volume fraction, 5 mg/mL PLGA, 30 % ultrasonic powers, 2
+min ultrasonic time were chosen for preparing Pickering emulsion sta­
+bilized by Lovastatin PLGA nanoparticles (LS-PLGA).
+LS-PLGA nanoparticles were synthesized, yielding nanoparticles
+with a consistent size of 253.56 ± 2.33 nm, PDI values of 0.122 ± 0.052,
+and a zeta potential of −21.53 ± 0.17 mV. The lovastatin encapsulation
+efficiency in LS-PLGA nanoparticles was determined to be 80.21 ± 0.22
+% (Table 1).
+3.2. Characterization of LS-PPAS
+Pickering emulsions, bolstered by particles, exhibit a hierarchical,
+adaptable, and dynamic quality, establishing them as a potent platform
+for vaccine delivery (Xia et al., 2018). These particles are adsorbed
+within an intermediate oil core, providing a substantial specific surface
+area that aids in the recognition of target molecules and receptors by
+antigen-delivering cells. Concurrently, the emulsion droplets display
+deformable characteristics, enabling them to adhere to cell membrane
+surfaces, thus enhancing their contact area and facilitating antigen
+cross-presentation (Staats and Burkhart, 2018). Accordingly, the char­
+acterization of Pickering emulsion often has a significant impact on the
+activity of vaccine adjuvants. The typical LS-PPAS loaded with lova­
+statin had an average diameter of 1096.30 nm, Zeta potential of −20.80
+mV and PDI of 0.161.
+Furthermore, Cryo-scanning electron microscope was used to study
+Fig. 8. The cytokines concentration of TNF-α, IFN-γ, and IL-6 in serum on day 35 after primary vaccination. Data represent mean ± SEM, n = 3. (***p < 0.001, **p
+< 0.01, *p < 0.05).
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+10
+the morphology of the LS-PPAS. The Cryo-scanning electron micrograph
+of the LS-PPAS presents a regular spherical shape with regular pro­
+trusions on the surface, which may attribute to the uniform absorption of
+PLGA nanoparticles on the surface of squalene. Overall, the micrograph
+was similar to the Pickering emulsion we reported in previous study.
+Upon the successful loading of FITC-OVA by thorough vortexing and
+stirring to combine LS-PPAS with FITC-OVA, FITC and Cy5 were utilized
+as markers for LS-PLGA/OVA nanoparticles and squalene, respectively.
+The outcomes of fluorescent confocal microscopy imaging convincingly
+confirmed the successful loading of LS-PLGA nanoparticles onto the
+squalene surface (Fig. 2F–H). In addition, LS-PPAS was observed
+through Confocal laser scanning microscope (CLSM), the result showed
+LS-PPAS appears as a regular circle.
+In order to load OVA on LS-PPAS, the LS-PPAS and OVA were mixed
+through a simple one-step approach with vortex and shaking. As shown
+in Table 1, LS-PPAS/OVA (1043.33 nm) showed a similar size to LS-
+PPAS (1096.30 nm), which indicated that the adsorption of OVA did
+not affect the particle size of LS-PPAS. The zeta potential of LS-PPAS/
+OVA and PPAS/OVA was around –22.07 mV and −20.97 mV respec­
+tively, while LS-PPAS were about −20.80 mV. High zeta potential often
+leads to a strong effect between particles, helping to maintain the sta­
+bility of emulsion. In addition, the PDI of all particles was less than 0.3,
+indicating that these particles showed uniform characteristics.
+Fig. 9. The biosafety of LS-PPAS in vivo on day 42 after first immunization. (A) (B) The AST, ALT, ALP, LDH, and BUN levels in serum. H&E staining images of
+primary organs (heart, liver, spleen, lung, and kidney).
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+11
+3.3. The stability and release profile of LS-PPAS
+The stability of vaccine has a significant impact on the effect of im­
+mune. The unique structure of Pickering emulsion often shows superior
+stability. In order to test the stability of LS-PPAS, particle size, zeta
+potential and PDI were tested at different time points. As shown in
+Fig. 3A, after 30 days of storage at 4℃, the particle size and zeta po­
+tential of LS-PPAS did not change significantly, and the PDI was lower
+than 0.3, which showed that it was still stable after 30 days of storage.
+However, after 60 days of storage at 4℃, the particle size and PDI have
+significantly increased compared with the original emulsion, but there is
+no obvious change by observing the appearance of LS-PPAS. The release
+of encapsulated lovastatin within LS-PPAS plays a pivotal role in
+enabling its metabolic regulatory efficacy. To investigate the drug
+release profiles of lovastatin in a pH 7.4 PBS solution, we observed a
+sustained-release pattern with LS-PPAS. Over the course of 7 days, the
+cumulative release reached approximately 70 %. This sustained release
+profile is of paramount significance for lovastatin’s adjuvant activity.
+Pickering emulsion is synthesized by PLGA and squalene emulsifi­
+cation, and the granular structure on its surface has the ability to adsorb
+antigens, so the antigen release profiles of the OVA in PBS (pH 7.4) was
+investigated. The result showed LS-PPAS/OVA exhibited a sustained-
+release pattern and the cumulative release percentage reached approx­
+imately 80 % at 14 days.
+3.4. Antigen uptake by BMDCs
+Dendritic cells (DCs) hold a pivotal position as antigen-presenting
+cells (APCs) in the immune system, assuming a critical role in the
+orchestration of immune responses. DCs serve as the instigators of im­
+mune reactions by efficiently internalizing and processing antigens,
+subsequently presenting these antigens to T cells (Macri et al., 2023).
+Consequently, the process of antigen uptake by APCs stands as a
+linchpin, influencing the initiation and duration of immune responses.
+Firstly, the security of LS-PPAS was analyzed on the DCs, as shown in
+Fig. 4A, LS-PPAS did not have a significant effect on cell viability of DCs
+compared to PPAS, indicating that the addition of lovastatin did not
+alter the safety of PPAS. Previous studies had found that lovastatin could
+affect the retention time of antigen in DCs, and Pickering emulsion could
+increase cellular uptake of antigen by interacting with DCs. Upon
+treatment of DCs for 12 h, flow cytometry analysis revealed LS-PPAS
+showed high level of FITC+DCs, likely because lovastatin and Picker­
+ing emulsion play a dual role in promoting antigen uptake. Further,
+confocal microscopy revealed the FITC fluorescence signal of LS-PPAS
+inside the DCs was higher compared to LS and PPAS. Consistently, LS-
+PPAS can enhance intracellular uptake of antigens effectively, which
+will enhance DCs’ ability to process antigens and further enhance im­
+mune effects.
+3.5. LS-PPAS boosted antigen cross-presentation
+Lysosomal escape of antigen is an important pathway for antigen
+cross-presentation, which is significant in promoting the immune
+response. There is substantial evidence that LS has the potential to
+prolong antigen presentation to dendritic cells (Xia et al., 2018; Yang
+et al., 2022), and that PLGA also exhibited endosomal escape effects
+(Silva et al., 2016; Xia et al., 2018). After co-culturing DCs with OVA,
+LS/OVA, PPAS/OVA or LS-PPAS/OVA for 12 h, the intracellular FITC-
+OVA antigen transport of DCs was observed by CLSM. Our results
+showed that the OVA antigen in the control group was highly co-
+localized with the lysosome, whereas the OVA antigen in the LS, PPAS
+and LS-PPAS group was partially not co-localized with the lysosome
+(Fig. 5), which was a phenomenon of “lysosomal escape”. This phe­
+nomenon was more significant in the LS-PPAS group than other controls.
+The transfer of antigen to the cytoplasm via lysosomal escape helps to
+activate the antigen processing and presentation of the MHCI pathway,
+triggering a robust immune response. We examined the expression of the
+dendritic cell surface molecule MHCI by flow cytometry. After 24 h of
+stimulation with OVA, the expression level of MHCI molecules in the LS
+group was 1.92 times higher than that in the OVA group, and in addi­
+tion, the expression level of MHCI molecules in the LS-PPAS group was
+significantly higher than that in the LS group and other controls. These
+compelling findings strongly suggest that LS-PPAS has the ability to
+boost antigen cross-presentation and trigger a robust immune response.
+3.6. Activation of DCs in lymph nodes
+After the vaccine was injected into the body, antigen was uptake by
+DCs in the tissue and transported to the lymph nodes. T and B cells is
+activated in lymph nodes by interacting with DCs to generate humoral
+and cellular immunity. Considering that LS-PPAS can improve antigen
+uptake of DCs and the correlation between antigen processing and DCs
+maturation. The effect of LS-PPAS on DCs maturation was measured and
+analyzed in lymph node. In this study, we utilized flow cytometry to
+evaluate the expression of surface molecules on dendritic cells (specif­
+ically, CD40 and CD86) within lymph nodes. This assessment was con­
+ducted 48 h post-vaccination to gauge the activation and maturation
+status of dendritic cells. As shown in Fig. 6, compared to OVA group, LS
+and PPAS produced higher proportion of CD40+CD11c+
+and
+CD86+CD11c+. After loading LS into PPAS, LS-PPAS significantly pro­
+moted the expression of CD40 and CD86 compared to LS and PPAS
+group. These results showed that new Pickering emulsion offered a
+potentially more effective way to promote the maturation and activation
+of DCs in lymph nodes after LS loaded into PPAS, indicating LS-PPAS
+had a great potential as a vaccine adjuvant.
+3.7. LS-PPAS induced enhanced humoral immune responses
+To systemically evaluate the enhancement of the adaptive immunity,
+6-week female ICR mice were inoculated with PBS, OVA, Alum, LS,
+PPAS, and LS-PPAS by intramuscular injection, 14 days later for another
+administration (Fig. 7A). LS-PPAS induced significantly higher levels of
+OVA-specific IgG, showing the robust capability to elicit humoral im­
+mune responses. The OD450 of lgG antibodies from LS-PPAS-adjuvanted
+mice reached 1.16 at 35 days after immunization, which were 1.43 and
+1.40 folds higher than that of mice immunized with LS and PPAS,
+respectively. In addition, the level of IgG1 showed the similar trend,
+with higher level in LS-PPAS than that of LS and PPAS immunized mice,
+which was considered as relevant indicators of Th2 response. The level
+of IgG2a showed a similar trend and LS-PPAS was higher than LS and
+PPAS group at 21, 28, 35, and 42 days after immunization. As an indi­
+cator of Th1 immunity, IgG2a plays an important role in the cellular
+immunity of vaccines. On the whole, we found that LS-PPAS was more
+potent at generating OVA-specific IgG, IgG1 and IgG2a, which declares
+that LS-PPAS triggers a systemicTh1/Th2 immune response.
+These findings are exciting as they demonstrate that it is an excellent
+strategy to load statin through Pickering emulsions, which has con­
+structed a new type of vaccine adjuvant. This will allow for more
+effective in the construction of such vaccine adjuvant than statin adju­
+vants alone.
+3.8. Cytokines secretion
+To assess cytokine concentrations, we meticulously determined the
+levels of Th1 cytokines (TNF-α and IFN-γ) and Th2 cytokines (IL-6) in the
+serum of mice on day 35 post-primary vaccination. As illustrated in
+Fig. 8, the LS-PPSA group exhibited a substantial increase in the secre­
+tion of TNF-α and IFN-γ (p < 0.05), aligning with previous observations
+of IgG2a levels. Additionally, the LS-PPSA group displayed a significant
+rise in IL-6 levels (p < 0.05).
+Cytokines are important signaling molecules that regulate the dif­
+ferentiation and function of T cells. IFN-γ can enhance the activity of
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+12
+macrophages and promote cytotoxic immune responses (Conlon et al.,
+2019). TNF-α can bind to tumor necrosis factor receptor 1, activate and
+recruit immune cells, which plays an important role in proliferative
+inflammation of immune cells. IL-6, secreted by Th2 cells, plays a key
+role in the maturation of B cells into IgG-secreting cells (Opal and
+Depalo, 2000). In this experiment, LS-PPSA significantly increased the
+levels of IFN-γ, TNF-α, and IL-6 in serum, suggesting that LS-PPSA can
+act as an immune booster and enhance the immune function by regu­
+lating serum cytokines. Overall, results of the cytokines indicated that
+LS-PPSA induced potent Th1- and Th2-mediated immune responses.
+3.9. Biosafety of LS-PPAS in vivo
+A promising vaccine adjuvant candidate should possess a high safety
+profile. Herein, the systemic safety of LS-PPSA was investigated. In this
+study, we preliminarily evaluated safety properties of LS-PPSA by
+monitoring levels of various serum biochemical parameters and patho­
+logical observation of organ on day 42 after first immunization. In
+general, LS-PPSA vaccinated mice were well-tolerated and these pa­
+rameters remained stable after vaccination. First, the serum of mice was
+collected and measured for the following biochemical indicators on day
+42 after first immunization: glutamic oxaloacetic transaminase (AST),
+glutamic pyruvic transaminase (ALT), alkaline phosphatase (ALP),
+lactate dehydrogenase (LDH) and urea nitrogen (BUN). As depicted in
+Fig. 9 A and B, the levels of AST, ALT, ALP, LDH, and BUN in LS-PPSA
+group exhibited no significant compared other groups and fell within
+the normal range. Further, by observing and analyzing H&E staining
+image including heart, liver, spleen, lung, and kidney, there was no
+obvious pathological change in these organs. Moreover, Given the use of
+LS in conditions such as coronary artery disease and hypercholester­
+olemia, we evaluated whether LS/PPAS would lead to elevated serum
+cholesterol levels and transient liver injury. Serum was collected from
+mice 12 h after the administration and analyzed by blood biochemistry
+for serum total cholesterol (TC) as well as markers of hepatic function.
+Our results showed that total cholesterol in serum was not significantly
+reduced in the LS/PPAS group of mice compared with the control group,
+and all liver function-related indices were within the physiological range
+(Figure S5). Collectively, our data indicated a high-level safety property
+of LS-PPSA.
+4. Conclusions
+In this study, we engineered a Pickering emulsion stabilized by
+lovastatin nanoparticles. The optimized formulation parameters for LS-
+PPAS were meticulously established: a 0.1 oil volume fraction, a PLGA
+concentration of 5 mg/ml, and ultrasonication at 30 % power for 2 min.
+LS-PPAS, when loaded with lovastatin, exhibited an average diameter of
+1043.33 nm, a zeta potential of –22.07 mV, a PDI of 0.175, and a regular
+spherical shape with distinct surface protrusions. LS-PPAS demonstrated
+exceptional stability and efficiently accommodated OVA antigen
+loading. Furthermore, LS-PPAS demonstrated a remarkable capacity to
+induce dendritic cell (DC) maturation and activation within the lymph
+nodes. Most notably, when employed as an adjuvant in immunization,
+LS-PPAS elicited a robust and antigen-specific immune response, char­
+acterized by heightened antibody levels and augmented secretion of pro-
+inflammatory cytokines. Additionally, comprehensive safety assess­
+ments in mice underscored the excellent safety profile of LS-PPAS.
+In summary, this investigation unveils novel applications for lova­
+statin and Pickering emulsion. LS-PPAS emerges as a promising vaccine
+carrier with the potential to serve as an effective delivery system for
+enhancing immune responses. These findings present exciting prospects
+for the field of vaccine development.
+CRediT authorship contribution statement
+Yue Zhang: Conceptualization, Writing – original draft. Zuchen
+Song: Validation, Writing – review & editing. Zhimin Zhang: Meth­
+odology, Software. Tao Zhang: Supervision. Pengfei Gu: Formal anal­
+ysis, Investigation. Zian Feng: Data curation. Shuwen Xu:
+Visualization. Yang Yang: Supervision, Project administration. Deyun
+Wang: Resources, Software. Zhenguang Liu: Project administration,
+Resources, Supervision.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Data availability
+No data was used for the research described in the article.
+Acknowledgements
+The project was supported by the National Natural Science Foun­
+dation of China (Grant No. 32273048, 31902312), the Fundamental
+Research Funds for the Central Universities (No. KYT2023004), the
+Open Project Program of Beijing Key Laboratory of Veterinary Medicine
+at Beijing University of Agriculture (No. kf2020031), the Young Elite
+Scientists Sponsorship Program by CAST (2022QNRC001). The authors
+would also like to thank all other staff in the Institute of Traditional
+Chinese Veterinary Medicine of Nanjing Agricultural University for their
+help in this study. We are appreciative to all of the other staff individuals
+at the Institute of Traditional Chinese Veterinary Medicine of Nanjing
+Agricultural University for their contributions to this work.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.ijpharm.2024.123901.
+References
+APOST´oLICO, J.D.S., LUNARDELLI, V.A.S., COIRADA, F.C., et al., 2016. Adjuvants:
+classification modus operandi, and licensing [j]. J. Immunol. Res. 1–16.
+Bai, Y., Liu, C.P., Xie, F.Y., et al., 2019. Construction of beta-cyclodextrin-based
+supramolecular hyperbranched polymers self-assemblies using AB(2)-type
+macromonomer and their application in the drug delivery field [J]. Carbohydr
+Polym. 213, 411–418.
+Bao, Y., Zhang, Y., Liu, P., et al., 2019. Novel fabrication of stable Pickering emulsion and
+latex by hollow silica nanoparticles [J]. J. Colloid Interface Sci. 553, 83–90.
+Binks, B.P., Clint, J.H., Whitby, C.P., 2005. Rheological behavior of water-in-oil
+emulsions stabilized by hydrophobic bentonite particles [J]. Langmuir. 21 (12),
+5307–5316.
+Borriello, F., Poli, V., Shrock, E., et al., 2022. An adjuvant strategy enabled by
+modulation of the physical properties of microbial ligands expands antigen
+immunogenicity [J]. Cell. 185 (4), 614–29 e21.
+Boyle, J., Eastman, D., Millar, C., et al., 2007. The utility of ISCOMATRIX adjuvant for
+dose reduction of antigen for vaccines requiring antibody responses [J]. Vaccine. 25
+(14), 2541–2544.
+Cao, W., He, L., Cao, W., et al., 2020. Recent progress of graphene oxide as a potential
+vaccine carrier and adjuvant [J]. Acta Biomater. 112, 14–28.
+Chereddy, K.K., Payen, V.L., Preat, V., 2018. PLGA: From a classic drug carrier to a novel
+therapeutic activity contributor [J]. J Control Release. 289, 10–13.
+Conlon, K.C., Miljkovic, M.D., Waldmann, T.A., 2019. Cytokines in the treatment of
+cancer [J]. J Interferon Cytokine Res. 39 (1), 6–21.
+Du, Y., Song, T., Wu, J., et al., 2022. Engineering mannosylated pickering emulsions for
+the targeted delivery of multicomponent vaccines [J]. Biomater. 280, 121313.
+Gu, P., Wusiman, A., Zhang, Y., et al., 2019. Rational design of PLGA nanoparticle
+vaccine delivery systems to improve immune responses [J]. Mol Pharm. 16 (12),
+5000–5012.
+Jiang, Z., Zhang, W., Zhang, J., et al., 2022. Nanomaterial-based drug delivery systems: a
+new weapon for cancer immunotherapy [J]. Int J Nanomedicine. 17, 4677–4696.
+Kalashnikova, I., Bizot, H., Bertoncini, P., et al., 2013. Cellulosic nanorods of various
+aspect ratios for oil in water pickering emulsions [J]. Soft Matter. 9 (3), 952–959.
+Liao, P., Hemmerlin, A., Bach, T.J., et al., 2016. The potential of the mevalonate pathway
+for enhanced isoprenoid production [J]. Biotechnol. Adv. 34 (5), 697–713.
+Y. Zhang et al.
+
+International Journal of Pharmaceutics 653 (2024) 123901
+13
+Liu, Z., Ma, X., Deng, B., et al., 2015. Development of liposomal ganoderma lucidum
+polysaccharide: formulation optimization and evaluation of its immunological
+activity [J]. Carbohydr Polym. 117, 510–517.
+Luo, L., Zheng, S., Huang, Y., et al., 2016. Preparation and characterization of Chinese
+yam polysaccharide PLGA nanoparticles and their immunological activity [J]. Int J
+Pharm. 511 (1), 140–150.
+Macri, C., Jenika, D., Ouslinis, C., et al., 2023. Targeting dendritic cells to advance cross-
+presentation and vaccination outcomes [J]. Semin. Immunol. 68.
+Opal, S.M., Depalo, V.A., 2000. Anti-inflammatory cytokines [J]. Chest. 117 (4),
+1162–1172.
+Pang, B., Liu, H., Zhang, K., 2021. Recent progress on Pickering emulsions stabilized by
+polysaccharides-based micro/nanoparticles [J]. Adv Colloid Interface Sci. 296,
+102522.
+Park, K., 2014. Controlled drug delivery systems: past forward and future back [J].
+J Control Release. 190, 3–8.
+Pulendran, B., Arunachalam, P.S., o’hagan, D.T., 2021. Emerging concepts in the science
+of vaccine adjuvants [J]. Nat Rev Drug Discov. 20 (6), 454–475.
+Qi, F., Wu, J., Sun, G., et al., 2014. Systematic studies of Pickering emulsions stabilized
+by uniform-sized PLGA particles: preparation and stabilization mechanism [J].
+J Mater Chem B. 2 (43), 7605–7611.
+Reed, S.G., Orr, M.T., Fox, C.B., 2013. Key roles of adjuvants in modern vaccines [J]. Nat.
+Med. 19 (12), 1597–1608.
+Silva, A.L., Soema, P.C., SLüTTER, B., et al., 2016. PLGA particulate delivery systems for
+subunit vaccines: linking particle properties to immunogenicity [J]. Hum Vaccin
+Immunother. 12 (4), 1056–1069.
+Staats, H.F., Burkhart, D.J., 2018. Softness makes it better [J]. Nat. Mater. 17 (2),
+113–114.
+Tobert, J.A., 2003. Lovastatin and beyond: the history of the HMG-CoA reductase
+inhibitors [J]. Nat. Rev. Drug Discov. 2 (7), 517–526.
+VRANOV´a, E., COMAN, D., GRUISSEM, W., 2013. Network analysis of the MVA and MEP
+pathways for isoprenoid synthesis [J]. Annu. Rev. Plant Biol. 64, 665–700.
+Wang, D., Zou, Y., Wang, N., et al., 2022. Chitosan hydrochloride salt stabilized emulsion
+as vaccine adjuvant [J]. Carbohydr Polym. 296, 119879.
+Xia, Y., Wu, J., Wei, W., et al., 2018. Exploiting the pliability and lateral mobility of
+pickering emulsion for enhanced vaccination [J]. Nat. Mater. 17 (2), 187–194.
+Xia, Y., Xie, Y., Yu, Z., et al., 2018. The mevalonate pathway is a druggable target for
+vaccine adjuvant discovery [J]. Cell. 175 (4), 1059–73 e21.
+Yang, J., Pan, X., Zhang, J., et al., 2022. Reprogramming dysfunctional dendritic cells by
+a versatile metabolism nano-intervenor for enhancing cancer combinatorial
+immunotherapy [J]. Nano Today. 46, 101618.
+Zhang, Y., Gu, P., Wusiman, A., et al., 2020. The immunoenhancement effects of
+polyethylenimine-modified Chinese Yam polysaccharide-encapsulated PLGA
+nanoparticles as an adjuvant [J]. Int J Nanomedicine. 15, 5527–5543.
+Zhang, Y., Jiao, L., Wu, Z., et al., 2022. Fabrication and characterization of Chinese yam
+polysaccharides PLGA nanoparticles stabilized Pickering emulsion as an efficient
+adjuvant [J]. Int. J. Biol. Macromol. 209, 513–524.
+Y. Zhang et al.
+
+Update
+International Journal of Pharmaceutics
+Volume 656, Issue , 10 May 2024, Page
+ https://doi.org/10.1016/j.ijpharm.2024.124101
+DOI:
+
+International Journal of Pharmaceutics 656 (2024) 124101
+Available online 13 April 2024
+0378-5173/© 2024 Elsevier B.V. All rights reserved.
+Corrigendum
+Corrigendum to “Preparation and characterization of Pickering emulsion
+stabilized by lovastatin nanoparticles for vaccine adjuvants” [Int. J. Pharm.
+653 (2024) 123901]
+Yue Zhang a,b,1, Zuchen Song a,b,1, Zhimin Zhang a,b,1, Tao Zhang c, Pengfei Gu a,b, Zian Feng a,b,
+Shuwen Xu a,b, Yang Yang a,b, Deyun Wang a,b, Zhenguang Liu a,b,*
+a Institute of Traditional Chinese Veterinary Medicine, College of Veterinary Medicine, Nanjing Agricultural University, Nanjing 210095, PR China
+b MOE Joint International Research Laboratory of Animal Health and Food Safety, College of Veterinary Medicine, Nanjing Agricultural University, Nanjing 210095, PR
+China
+c Beijing Key Laboratory of Traditional Chinese Veterinary Medicine, Beijing University of Agriculture, Beijing 102206, PR China
+The authors regret an error in Fig. 1 and an incomplete affiliation.
+Fig. 1 should be replaced by the following:
+DOI of original article: https://doi.org/10.1016/j.ijpharm.2024.123901.
+* Corresponding author at: Institute of Traditional Chinese Veterinary Medicine, College of Veterinary Medicine, Nanjing Agricultural University, Nanjing, 210095,
+PR China.
+E-mail address: lzg199011@163.com (Z. Liu).
+1 These authors contributed equally to this work.
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+https://doi.org/10.1016/j.ijpharm.2024.124101
+
+International Journal of Pharmaceutics 656 (2024) 124101
+2
+Fig 1. The size, PDI values and the released oil volume from 1mL
+emulsions after centrifugation for 10 min at 3000 rpm with different
+emulsions prepared with various oil volume fraction (A), various PLGA
+concentration (B), various ultrasonic powers (C), and different ultra­
+sonic time (D). Data are presented as the mean ± SEM, n = 3.
+Affiliation “a” should read as follows: “Institute of Traditional Chi­
+nese Veterinary Medicine, College of Veterinary Medicine, Nanjing
+Agricultural University, Nanjing 210095, PR China”.
+These corrections do not change the discussion and conclusions.
+The authors would like to apologise for any inconvenience caused.
+Y. Zhang et al.

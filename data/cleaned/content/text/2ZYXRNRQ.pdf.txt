@@ -1,0 +1,1344 @@
+Pharmaceutical nanotechnology
+Surface decorated nanoparticles as surrogate carriers for improved
+transport and absorption of epirubicin across the gastrointestinal tract:
+Pharmacokinetic and pharmacodynamic investigations
+Mohammad Tariqa, Md. Aftab Alamb, Anu T. Singhc, Amulya K. Pandad,
+Sushama Talegaonkara,*
+a Department of Pharmaceutics, Faculty of Pharmacy, Jamia Hamdard, New Delhi 110062, India
+b Department Pharmacy, Galgotia University, Greater Noida, India
+c Dabur Research Foundation, 22, Site IV, Sahibabad, Ghaziabad, Uttar Pradesh, India
+d National Institute of Immunology, Aruna Asaf Ali Road, New Delhi, India
+A R T I C L E
+I N F O
+Article history:
+Received 6 November 2015
+Received in revised form 20 January 2016
+Accepted 21 January 2016
+Available online 23 January 2016
+PubChem CIDs:
+Epirubicin hydrochloride (PubChem CID:
+65348)
+1 - (3 - Dimethylaminopropyl) - 3 -
+ethylcarbodiimide hydrochloride (PubChem
+CID: 2723939)
+Poly(DL - lactic - co - glycolic acid)
+(PubChem CID: 23111554)
+3 - (4,5 - dimeth ylthiazol - 2 - yl) - 2, 5 -
+diphenyl tetrazolium bromide (PubChem
+CID: 64965)
+Mannosamine hydrochloride (PubChem
+CID: 9964480)
+Coumarin 6 (PubChem CID: 100334)
+Sodium Azide (PubChem CID: 33557)
+Chlorpromazine Hydrochloride
+(PubChemCID: 6240)
+Polyvinyl alcohol (Pubchem CID: 11199)
+Methoxypolyethylene glycol amine
+(PubChem SID: 24845958)
+Keywords:
+Oral delivery
+Pegylated NPs
+Mannosylated NPs
+Oral bioavailability
+EAT induced tumor
+Anti tumor activity
+A B S T R A C T
+Epirubicin (EPI) is a P-gp substrate antracycline analogue which elicits poor oral bioavailability. In the
+present work, EPI loaded poly-lactide-co-glycolic acid nanoparticles (PLGA-NPs) were prepared by
+double emulsion approach and superﬁcially decorated with polyethylene glycol (EPI-PNPs) and
+mannosamine (EPI-MNPs). Average hydrodynamic particle size of EPI-PNPs and EPI-MNPs was found
+248.63  12.36 and 254.23  15.16 nm, respectively. Cytotoxicity studies were performed against human
+breast adenocarcinoma cell lines (MCF-7) conﬁrmed the superiority of EPI-PNPs and EPI-MNPs over free
+epirubicin solution (EPI-S). Further, confocal laser scanning microscopy (CLSM) and ﬂow cytometric
+analysis (FACS) demonstrated enhanced drug uptake through EPI-PNPs and EPI-MNPs and elucidated
+dominance of caveolae mediated endocytosis for NPs uptake. Cellular transport conducted on human
+colon adenocarcinoma cell line (Caco-2) showed 2.45 and 3.17 folds higher permeability of EPI through
+EPI-PNPs and EPI-MNPs when compared with EPI-S (p < 0.001) while permeability of EPI was found
+5.23 and 5.67 folds higher across rat ileum, respectively. Furthermore, pharmacokinetic studies
+demonstrated 4.7 and 5.57 folds higher oral bioavailability through EPI-PNPs and EPI-MNPs when
+compared with EPI-S. In addition, both, EPI-PNPs and EMNPs showed tumor suppression comparable to
+indicated route (i.v. injection). EPI-MNPs showed 1.18 folds higher bioavailability and better tumor
+suppression than EPI-PNPs.
+ã 2016 Elsevier B.V. All rights reserved.
+1. Introduction
+Oral administration is considered the most accepted and
+preferred route for delivering drugs by virtue of being safe, non-
+invasive,
+painless,
+cost
+effective,
+obviate
+the
+need
+of
+* Corresponding author.
+E-mail addresses: stalegaonkar@gmail.com, stalegaonkar@ac.in,
+jamaiahamdard@ac.in (S. Talegaonkar).
+http://dx.doi.org/10.1016/j.ijpharm.2016.01.054
+0378-5173/ã 2016 Elsevier B.V. All rights reserved.
+International Journal of Pharmaceutics 501 (2016) 18–31
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journa l home page : www.e lsevier.com/loca te/ijpharm
+
+hospitalization and nursing care thus offers better patient comfort
+and conformity (Peltier et al., 2006). However, there are number of
+issues of oral drug delivery like poor solubility, poor permeability,
+ﬁrst pass metabolism and instability of drugs in GI milieu which
+encircles the applicability of route. In last few decades, nano-
+particulate systems have been extensively investigated as a
+versatile tool for wide range of biomedical application as well as
+for improved oral delivery of challenging molecules (Etheridge
+et al., 2013). Increasing proclivity can be validated with the
+following reports on the oral delivery of anticancer drugs; SEDDS
+for etoposide (Negi et al., 2013) SLN for doxorubicin (Yang et al.,
+1999; Yuan et al., 2013), polymeric micelles for paclitaxel (Yao
+et al., 2011), Dendrimer for doxorubicin (Ke et al., 2008),
+layersomes for doxorubicin (Jain et al., 2012) polymeric NPs for
+etoposide and epirubicin respectively (Fatma et al., 2014; Tariq
+et al., 2015). Moreover, a number of researchers demonstrated
+superior pharmacokinetic, pharmacodynamic and safety proﬁle
+for orally administered drugs by encapsulating them into nano-
+particulate systems as NPs are able to evade P-gp mediated efﬂux
+and CPY-450 mediated metabolism of drugs. In addition NPs are
+taken up by enterocytes and Peyer’s patches which provide
+additional drug transport pathway (Faderl et al., 1999; Florence,
+1997; Gershanik and Benita, 2000; Hussain et al., 2001; Joshi et al.,
+2014). Improved oral PK proﬁle of gemcitabine was demonstrated
+by using PLGA NPs over plain solution (Joshi et al., 2014). Similarly,
+better pharmacodynamic proﬁle was reported for doxorubicin and
+paclitaxel by exploiting PLGA NPs (Bhardwaj et al., 2009; Jain et al.,
+2011a). We have also demonstrated signiﬁcantly higher transport
+of epirubicin across caco-2 cell line and rat ileum through PLGA
+NPs which resulted into 4.0 fold enhanced oral bioavailability
+(Tariq et al., 2015). In spite of being studied extensively,
+nanoparticulate systems suffer from drawbacks; being trapped
+within the thick and viscoelastic mucus gel layer and cleared out
+rapidly by mucus clearance (Cone, 2009). In addition, non
+speciﬁcity of nano-particulate systems limits their uptake via
+enterocytes and M cells of payer’s patches (Florence, 1997).
+Recently, manipulation of surface attributes of conventional NPs
+are being investigated for further improving the delivery of drugs.
+PEG decorated nanoparticles reported to have high diffusivity
+and high penetration in thick mucosal layer which facilitate their
+entry closer proximity to epithelial layer (Wang et al., 2008; Yuan
+et al., 2013). In addition, a few researchers reported its bio-
+adhesive property (Huang et al., 2000; Yoncheva et al., 2007), these
+attributes were hold responsible for higher oral bioavailability
+through Pegylated particles when compared with non-pegylated
+one (Yuan et al., 2013; Zhang et al., 2014). Similarly, mannosylated
+nanoparticulate systems demonstrated higher cellular accessibili-
+ty and consequently higher uptake, higher permeation and higher
+bioavailability in comparison to its conventional counterpart
+(Ahire et al., 2013; Witoonsaridsilp et al., 2012). Mannosylated
+nanoparticles have been proposed as a system with speciﬁc
+distribution proﬁle in gut epithelium (Salman et al., 2006) as
+mannose residue has high speciﬁc binding afﬁnity to lectin
+presents on the cell surfaces (Jiang et al., 2010) which are widely
+distributed in lymphoid and non-lymphoid organs i.e. enterocytes
+as well as M cells of Peyer’s patches (Wagner et al., 2003).
+In the present report, an attempt was made to study the effect of
+surface decoration on pharmacokinetic and pharmacodynamic
+proﬁle. Therefore, mannosylated and pegylated PLGA NPs were
+developed and evaluated comparatively for the establishment of
+their effectiveness in oral delivery of epirubicin. Epirubicin elicits
+poor oral bioavailability due to which available commercially in
+injectable form for clinical applications therefore chosen for
+present investigations. Epirubicin loaded pegylated (EPI-PNPs) and
+mannosylated PLGA NPs (EPI-MNPs) were subjected to various in
+vitro cell line parameters, pharmacokinetic and pharmacodynamic
+evaluation.
+2. Experimental
+2.1. Materials
+Epirubicin hydrochloride and PLGA (50:50, Resomer 503 H)
+were provided ex gratia by Fresenius Kabi Pvt., Ltd., Gurgaon,
+Haryana, India and Evonik Degussa, India, Pvt. Ltd., Mumbai, India,
+respectively. Polyvinyl alcohol (PVA, MW-25,000), sodium azide,
+ﬂippin, chlorpromazine (CPZ), Trypsin-EDTA, penicillin strepto-
+mycin Amphotericin B mixture (PSA), and 3-(4,5-dimethylthiazol-
+2-yl)-2,5-diphenyl tetrazolium bromide (MTT), methoxypolyethy-
+lene glycol amine (Molecular weight: 750 D) were purchased from
+Sigma–Aldrich, Inc. (St. Louis, MO, USA). Mannosamine hydro-
+chloride was obtained from Santa Cruz Biotechnology, Inc. (Dallas,
+Texas, USA). 1-(3-Dimethylaminopropyl)-3-ethylcarbodiimide hy-
+drochloride (EDC) was purchased from Thermo Scientiﬁc. Dul-
+becco’s Modiﬁed Eagle Medium (DMEM) and Fetal Calf Serum
+(FCS) were procured from Invitrogen (Carlsbad, CA). All solvents
+like Dimethyl sulfoxide (DMSO) Dichloromethane, acetonitrile,
+methanol,
+o-phosphoric
+acid
+were
+of
+HPLC
+grade.
+Sodium
+dihydrogen phosphate dihydrate, potassium dihydrogen phos-
+phate and sodium hydroxide were purchased from SD ﬁne
+chemical, Mumbai, India. Water used throughout the experiment
+was obtained from Milli-Q water puriﬁcation system (Millipore,
+MA, USA). Ehrlich’s Ascites cell line (EAT) was provided by Dr. B.S.
+Dwarakanath, Institute of nuclear medicine and allied sciences,
+New Delhi, India. Coumarin-6 was purchased from Sigma Aldrich
+(Saint Louis, MO, USA). The animal experimentation protocols
+(Protocol Nos. 947, 2013 and 1051, 2014) were approved by
+Institutional Animal Ethics Committee of Jamia Hamdard. Animals
+were kept under standard laboratory conditions (temperature
+25  2 C and relative humidity 55  5%) with free accessibility to
+standard laboratory diet (Lipton feed, Mumbai, India) and water ad
+libitum.
+2.2. Preparation of epirubicin loaded mannosylated (EPI-MNPs) and
+pegylated PLGA NPs (EPI-PNPs)
+2.2.1. Preparation of epirubicin loaded conventional PLGA NPs (EPI-
+NPs)
+Conventional EPI-NPs were prepared by double emulsion
+methods as reported previously (Tariq et al., 2015). In brief,
+10 mg of EPI was dissolved in PVA solution (0.5% w/v, pH adjusted
+to 3) and emulsiﬁed into dichloromethane containing PLGA
+(100 mg/2 mL) over an ice bath under sonication for 60 s (25 W,
+40% duty cycles, Sonopuls, Bandelin, Germany). Resulting 1
+emulsion was further emulsiﬁed into PVA containing external
+aqueous phase under sonication over an ice bath at 25 W and 40%
+duty cycles for 2 min followed by solvent evaporation under
+magnetic stirring (400 rpm) at room temperature. Obtained nano-
+dispersion was centrifuged at 18,000 rpm for 20 min. Pellet was
+washed and re-dispersed in water and lyophilized at 50 C and
+0.015 millibar pressure for 24 h (Lab Conco., LPYH, Lock 6, USA
+freeze dryer).
+2.2.2. Mannosylation of EPI-NPs
+For the surface decoration, 20 mg of EPI-NPs was dispersed into
+0.1 M MES buffer followed by addition of 1 mL of mannosamine
+solution (3 mg/mL in 0.1 M MES buffer) subsequently 0.5 mL EDC
+solution (10 mg/mL in 0.1 M MES buffer). Resulting mixture was
+allowed
+to
+react
+approximately
+for
+80 min.
+Formulation
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+19
+
+parameters were optimized by central composite design (data not
+shown).
+Resulting suspension was centrifuged (18,000 rpm for 20 min),
+the pellet was washed, dispersed and lyophilized for 24 h at 50 C
+and 0.015 mbar pressure. Coating of the particles with mannos-
+amine was evaluated in terms of change in zeta potential.
+2.3. Pegylation of EPI-NPs
+Similar to mannosylation, formulation parameters for pegyla-
+tion of EPI-NPs were also optimized by central composite design
+(data not shown). Here, 9.5 mg/mL m-PEG solution was used for
+pegylation of the NPs.
+2.4. Preparation of coumarin 6 (CM6) loaded mannosylated (CM6-
+MNPs) and pegylated NPs (CM-6PNPs)
+CM6-MNPs and CM6-PNPs were prepared as described in
+previous section by using coumarin-6 (ﬂuorescent probe) in place
+of drug.
+2.5. HPLC analysis
+Quantitative estimation of epirubicin was done by an in house
+developed and validated HPLC method. Separation module,
+e2695HPLC system equipped with PDA detector (Waters, India
+Pvt., Ltd.) was used for the analysis of samples. Separation was
+achieved with mobile phase consisting of aqueous phase (0.16% o-
+phosphoric acid solution, 60% v/v) and organic phase (80:20 v/v
+mixture of acetonitrile and methanol, 40% v/v) using C18 analytical
+column (4.6  250 mm, 5 mm, Purosphere, Merck) at the ﬂow rate
+of 1 mL/min and column temperature 30 C. Analysis was carried
+out at 233.5 nm.
+2.6. Fluorescence analysis
+Quantitative estimation of coumarin-6 (CM6) was conducted by
+using spectroﬂuorometer at lex (440 nm) and lem (500 nm)
+wavelength (Cary Eclipse ﬂuorescence spectrophotometer, Varian,
+CA, USA).
+2.7. Nanoparticles size, size distribution, zeta potential
+The particle size, size distribution (polydispersity index, PDI)
+and zeta potential analyses of EPI-PNPs and EPI-MNPs was done by
+using dynamic light scattering technique (DLS) equipped with
+computerized inspection system (Malvern Zetasizer, Nano-ZS,
+Malvern, UK) and ‘DTS nano’ software.
+2.8. Shape and surface morphological analysis
+Shape
+and
+surface morphological
+analyses of
+developed
+systems were carried out by electron microscopy using Transmit-
+tance and scanning electron microscope. For TEM analysis,
+300 meshes copper grid was soaked with a drop of nanoparticles
+suspension followed by negative staining with a 1% aqueous
+solution of phosphorous tungstic acid and subsequently air dried.
+Sample was viewed under Transmittance electron microscope
+(TOPCON 002B, Tokyo, Japan) operated at 200 kV. Images were
+processed by Digital micrograph and soft imaging viewer software.
+SEM analysis was carried by using EVO LS 10 (Carl Zeiss,
+Brighton, Germany) scanning electron microscope operated at an
+accelerating voltage of 1.0 kV and at high vacuum. For the purpose,
+freeze dried samples evenly distributed on aluminium stubs using
+both side adhesive carbon tape followed by covering with glass slip
+and viewed under the microscope. Image processing was carried
+out by using Smart SEM software program.
+2.9. Drug loading
+Freeze dried nanoparticles (2 mg) were dissolved in dimethyl
+sulfoxide (HPLC, grade), ﬁltered through 0.2 mm syringe ﬁlter and
+quantiﬁed by HPLC. Drug loading was expressed as drug amount
+per mg of formulation.
+For the quantiﬁcation of CM6 into respective NPs, samples were
+processed as described above and analyzed by spectroﬂuorometer
+at lex (440 nm) and lem (500 nm) wavelength (Cary Eclipse
+ﬂuorescence spectrophotometer, Varian, CA, USA).
+2.10. In vitro release study
+Dialysis bag method was employed for the assessment of in
+vitro release proﬁle of developed formulation. Brieﬂy, EPI-MNPs
+and EPI-PNPs (equivalent to 2 mg of EPI) were added separately
+into 5 mL of dissolution media and placed into dialysis bag (MW
+cut off of 8–10 kDa, Spectra/Por1 Spectrum Laboratories, Inc.,
+Rancho Dominguez, CA). The dialysis bag was then immersed in
+100 ml glass beaker containing 50 mL of pre-warmed (37  0.5 C)
+dissolution media. In vitro release study was carried out in
+incubator shaker (SI6R, Shel Lab, Sheldon Mfg. Inc., Ave., Cornelius,
+OR) at a speed of 100 rpm and at 37  0.5 C to maintain
+temperature.
+Initially,
+dissolution
+study
+was
+performed
+in
+simulated gastric ﬂuid (pH 1.2) for ﬁrst 2 h followed by in
+simulated intestinal ﬂuid (pH 6.5) for till further 48 h. Samples
+were withdrawn at regular time intervals and analyzed by HPLC.
+2.11. In vitro cell lines studies
+In vitro cell line studies were conducted to evaluate cytotoxic
+potential, cellular uptake, to elucidate uptake mechanism as well
+as cellular transport.
+2.11.1. Human breast adenocarcinoma cell line (MCF-7) culture
+MCF-7 cell line (American Type Culture Collection, Manassas,
+VA) was cultured into DMEM media supplemented with 10% FCS
+and 1%
+antibiotic solution (10,000 UI/mL of penicillin, and
+10,000 mg/mL streptomycin and 25 mg/mL, amphotericin B) in T-
+75 culture ﬂask at 37 C in 5% CO2 atmosphere. Cells harvesting was
+done at 80% conﬂuence by using sterile 0.25% Trypsin-EDTA
+solution.
+2.11.2. Human colon adenocarcinoma cell line (Caco-2) culture
+Caco-2 cell line (American Type Culture Collection, Manassas,
+VA) was cultured into DMEM media supplemented with 12% (v/v)
+FBS, 1% (v/v) non-essential amino acids, 1% (v/v) sodium pyruvate,
+and 1% antibiotic solution (10,000 UI/mL of penicillin, 10,000 mg/
+mL of streptomycin, 25 mg/mL of amphotericin B) in T-75 culture
+ﬂask at 37C in 5% CO2 atmosphere. Cells harvesting was done at
+80% conﬂuence by using sterile 0.25% Trypsin-EDTA solution.
+2.11.3. Cytotoxicity study
+Cytotoxicity potential of EPI-MNPs and EPI-PNPs was evaluated
+against MCF-7 cell line by 3-(4,5-dimethylthiazol-2-yl)-2,5-diphe-
+nyltetrazolium bromide (MTT) colorimetric assay. Harvested MCF-
+7 cells (5000 cells/well) were seeded into 96-well ﬂat-bottom
+plates (Falcon Plate, Corning Costar, USA) for 24 h followed by
+removal of culture media, and subsequently 200 mL of culture
+media containing different concentration of EPI-MNPs and EPI-
+PNPs were added into respective wells. Treated cells were
+subjected to 48 h of incubation then MTT solution (5 mg/mL in
+PBS diluted to 10 times with media) was added to each well
+20
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+
+(100 mL) and incubated again for 4 h. Finally, culture media was
+removed with care and 100 mL of DMSO was added into each well
+to dissolve formazan crystal. Analysis was carried out at 570 nm
+using a microplate reader (LMR-340 M, Labexim International,
+Austria). Graph Pad/Prism5 software was used to process data and
+to calculate the IC50 values for EPI-MNPs and EPI-PNPs (Gao et al.,
+2010).
+2.11.4. Cellular uptake by FACS
+Cellular uptake study was investigated in Caco-2 cell line at two
+different concentrations; 2.5 mM and 10 mM. Cells (1 105) were
+grown into 12 well ﬂat-bottom plates (Falcon Plate, Corning Costar,
+USA). Differentiated cells were inoculated separately with serum
+free DMEM media (control), EPI-MNPs and EPI-PNPs suspension
+and incubated for 4 h at 37 C and 5% CO2 atmosphere. Treated cell
+were washed, trypsinized, neutralized, centrifuged and followed
+by re-suspension in PBS. Cell suspension was transferred to
+ﬂuorescence activated cell sorter (FACS) tubes (VWR) and analyzed
+by FACS using BD FACSCantoTM (lex 488 and lem 560) and
+processed
+by
+BD
+FACS
+DivaTM
+software,
+version
+6.1.2
+(BD
+Biosciences, San Jose, CA, USA). Experimentation was done in
+triplicate and a total of 10,000 cells per sample were analyzed
+(Tariq et al., 2015).
+2.11.5. Cellular uptake by confocal laser scanning microscopy
+Caco-2 cells (1 105/well) were grown on already placed cover
+slip into a six well ﬂat bottom plate (Falcon Plate, Corning Costar,
+USA). Before the uptake study, culture media was removed and
+serum free culture media was added into each well followed by
+inoculation with 10 mM EPI-S, EPI-MNPs and EPI-PNPs solution/
+suspension (100 mL) and incubated for 4 hr at 37 C. Treated cells
+monolayer was washed
+thrice with PBS and
+ﬁxed by 4%
+paraformaldehyde solution (100 ml) and kept at 4 C for 20 min.
+This was subsequently washed twice with BSA solution (1% w/v in
+PBS) and then permeabilized with 0.1% Triton X at 4 C for 5 min
+(1 mL). After permeabilization, cells were again washed twice with
+PBS followed by counter staining of nucleus with 40,6-diamidino-2-
+phenylindol (DAPI, 0.8–1 mM solution, 100 mL) and kept in dark at
+4 C for 30 min. Finally, cells were rinsed three times with PBS,
+cover slip was taken out and mounted on glass slide and images
+were captured by confocal laser scanning microscope Leica DMRE
+equipped with a confocal head TCS SPE and a 63 water immersion
+objective (Leica, Wetzlar, Germany) at lex 488 nm lem 560 nm (red
+ﬂuorescence for EPI) and lex, 350 nm lem 470 nm (blue ﬂuores-
+cence of DAPI). Images were processed by LASAF software (Leica,
+Wetzlar, Germany).
+2.11.6. Mechanism of cellular uptake of EPI-MNPs and EPI-PNPs
+In order to elucidate endocytic uptake pathway of EPI-MNPs and
+EPI-PNPs, study was carried in the presence/absence of endocytic
+inhibitors (Roger et al., 2009). Caco-2 cells (1 105) were grown
+separately in 12 well ﬂat-bottom plates (Falcon Plate, Corning Costar,
+USA) and marked as four different groups. Group 1 was kept as
+control i.e. inoculated with EPI-MNPs however no prior treatment
+with any agent was given and their uptake was assumed 100% (Xu
+et al., 2013; Yuan et al., 2013), second group 2 was pre-treated with
+25 mM sodium azide for 1 h at 37 C then with EPI-MNPs (Zhang
+et al., 2011), prior treatmentwith 1 mg/mL ﬂippinwas given to group
+3 followed by treatment with EPI-MNPs (Orlandi and Fishman,
+1998; Roger et al., 2009), group 4 was pre-treated with 10 mg/mL
+chlorpromazine followed by inoculation with EIP-MNPs (Wang
+et al.,1993) and incubation for 4 h to carry out cellular uptake study.
+Samples were subjected to FACS analysis according tothe procedure
+described in Section 2.11.4. Similar procedure was followed to
+elucidate the uptake mechanism of EPI-PNPs.
+2.11.7. Cellular transport study
+Cellular transport studies were carried out in Caco-2 cell
+monolayer model (apical to basal direction) as described in
+previous reports (Lo, 2003; Tariq et al., 2015). In succinct, cells
+(1 105) were inoculated on polycarbonate membrane ﬁlters
+(Transwell1 cell culture chambers, 0.4 mm pore size, 1.12 cm2
+growth area, Corning Costar, Cambridge, MA) and allowed to grow
+for 3 weeks. For the ﬁrst 14 days, media was changed every two
+days followed by daily thereafter (0.5 mL per insert and 1.5 mL per
+well). Before carrying out transport study, cell monolayer was
+sluiced twice with PBS and subjected to transepithelial electrical
+resistance (TEER) measurement by using a Millicell1-ER system
+(Millipore Corporation, Bedford, MA). The cell monolayer showing
+TEER values 300 V cm2 were taken into consideration for the
+study. To perform the study, 1.5 mL serum free media was added to
+basolateral side while 0.5 mL (10 mM) of EPI-MNPs, and EPI-PNPs
+suspension were added separately to apical side. At regular time
+intervals (up to 180 min), samples (200 mL) were withdrawn from
+basolateral side and analyzed by HPLC. Apparent permeability
+coefﬁcient, apical to basal direction (Papp(AB)) was determined by
+following equation (Artursson and Karlsson, 1991);
+Papp AB
+ð
+Þ ¼ dq
+dt  1
+AC0
+where dq=dt represents the rate of drug appearance towards
+basolateral side, C0 denotes the initial concentration at apical side
+and A represents surface area of monolayer in cm2.
+2.12. In situ intestinal transport study
+Permeation study was carried out using rat ileum (Ruan et al.,
+2006). Animals were subjected to overnight fasting but water ad
+libitum before experimentation and then sacriﬁced by cervical
+dislocation under excessive ether anaesthesia. Ileum tissue was
+excised out and rinsed gently with Tyrode’s solution. One end of
+tissue was tied with thread while other end was mounted on
+sampling port of in house developed assembly. Ileum sac was ﬁlled
+with 1 mL of EPI-MNPs/EPI-PNPs suspension (equivalent to 100 mg
+EPI) then immersed into pre-warmed (37  0.5 C) and pre-
+oxygenated Tyrode’s buffer (10 mL). At regular time interval,
+samples were withdrawn from basolateral side and analyzed by
+HPLC. Apparent permeability coefﬁcient apical to basal direction
+(Papp (AB)) was determined by following equation (Artursson and
+Karlsson, 1991);
+Papp AB
+ð
+Þ ¼ dq
+dt  1
+AC0
+where dq=dt represents the rate of drug appearance towards
+basolateral side, C0 denotes the initial concentration at apical side
+and A represents surface area of monolayer in cm2.
+2.13. Pharmacokinetic (PK) study
+Rats were divided into three groups (n = 6) and each group was
+treated as following; 1st group was administered with EPI-S
+intravenously, 2nd and 3rd were subjected to EPI-MNPs and EPI-
+PNPs orally. The dose of EPI in each case was taken as 10 mg/kg. At
+regular time interval up-to 48 h, blood (200 mL) was withdrawn
+from retro orbital choroid plexus under mild anesthesia and
+collected into EDTA coated blood sampling tubes. Immediately,
+blood samples were centrifuged at 5000 rpm for 10 min to separate
+plasma, and the separated plasma was stored at 20 C till further
+analysis. Quantitative estimation of samples was done by using
+already validated HPLC method with slight modiﬁcation (Shin
+et al., 2013).
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+21
+
+2.14. In vivo biodistribution of CM6-MNPs and CM6-PNPs after oral
+administration
+Albino wistar Rats (weight 200–220 g) were randomly divided
+into eleven groups (each containing 3 animals) starved for
+overnight with free access to water before experimentation. One
+group was administered with PBS (control), other 5 groups were
+treated with CM6-MNPs and the remaining ﬁve groups were
+subjected to CM6-PNPs, 4 mg/ml. At scheduled time (1, 2, 4, 8, 24 h
+of post dosing), blood was collected from retro orbital choroid
+plexus and animals were scariﬁed by cervical dislocation under
+excessive anaesthesia. The body organs like stomach, jejunum,
+ileum, colon, spleen, liver, kidney, heart and lung were excised out
+immediately, gastrointestinal tissue were cut open and rinsed with
+PBS to remove out any residual contents and nanoparticles at the
+luminal surface. All the patted dried tissues were wrapped in
+aluminium foil and stored in dark at 20 C till analysis. Blood was
+allowed to clot and serum was stored at 20 C till analysis (Zhao
+et al., 2007).
+For the quantitative estimation of NPs, tissues were homoge-
+nized in equivalent amount of distilled water then extracted into
+acetonitrile under dark for 18 h at 25 C (Zhao et al., 2007).
+Extracted homogenate was centrifuged at 10,000 rpm for 10 min
+and supernatant was analyzed at lex 440 nm and lem 500 nm by
+using ﬂuorescence spectrophotometer (Cary Eclipse ﬂuorescence
+spectrophotometer, Varian, CA, USA). Similar treatment was given
+to serum and analyzed in similar way as described above. Auto-
+ﬂuorescence of tissues was estimated by giving similar treatment
+to the tissues of control group animals which was deducted from
+the ﬂuorescence of test samples to determine nanoparticles
+generated ﬂuorescence.
+2.15. In vivo antitumor efﬁcacy study
+Solid tumor was induced in Balb/c mice (weight, 20–25 g, age,
+6–8 weeks) by injecting EAT cells suspension (100 ml, 1 106)
+subcutaneously into the hind right ﬂank region of mice. When
+tumor size reached to 500–600 mm3, animals were randomized
+and divided into ﬁve groups (n = 6). Group I was orally adminis-
+tered with PBS, Group II was treated with intravenously with EPI-S
+(8.5 mg/kg), while EPI-S, EPI-MNPs and EPI-PNPs (8.5 mg/kg) were
+given orally to group III, IV and V, respectively. Four doses were
+given to each group on alternate day. The day on which animals
+were subjected to treatment was considered as a day zero and
+study was terminated on 21st day. Tumor volume and weight of
+animals were determined on alternate day. Digital calliper was
+used for tumor size measurement and volume was calculated as
+following;
+Tumor volume TV
+ð
+Þ ¼ 0:5  length lð Þ  width w
+ð
+Þ2
+2
+2.16. Statistical analysis
+All the data was expressed as mean  standard deviation.
+Statistical analysis was performed with GraphPad Prism version 5
+(GraphPad Software, Inc. Fay Avenue, CA, USA) using one-way
+analysis of variance (one-way ANOVA) followed by Tukey test:
+compare all pairs of column. The p-value <0.05 was considered as
+statistically signiﬁcant.
+3. Results and discussion
+3.1. Preparation and surface decoration of nanoparticles
+Two steps procedure was
+followed
+for
+the
+formulation
+development
+i.e.
+preparation
+of
+conventional
+nanoparticles
+followed by its surface decoration. In a ﬁrst step, conventional
+nanoparticles were prepared by double emulsion solvent evapo-
+ration technique as it is widely acceptable for water soluble drugs
+(Kalaria et al., 2009; Khuroo et al., 2014). EPI being a basic drug
+demonstrated higher solubility in acidic media therefore pH of
+internal aqueous phase was adjusted to 3 to improve retention of
+EPI within the core of particles. In addition, 0.5% w/v PVA was
+incorporated into internal aqueous phase to enhance the viscosity
+thus further enhancement of drug retention within the core and
+consequently improved encapsulation. Particles were decorated
+with mannosamine and methoxypolyethylene glycol amine using
+EDC coupling reaction according to Manufacturer’s speciﬁcation.
+EDC is a carboxyl and amine-reactive zero-length cross linking
+agent which activate the carboxyl group by generating an amine-
+reactive o-acylisourea intermediate that reacts very rapidly with
+Fig. 1. Nanoparticles size, size distribution, zeta potential and morphological analysis; (a) intensity weighted size distribution curve of EPI-PNPs; (b) TEM micrograph of EPI-
+PNPs; (c) SEM micrograph of EPI-PNPs; (d) Zeta potential curve of EPI-PNPs; (e) intensity weighted size distribution curve of EPI-MNPs; (f) TEM micrograph of EPI-MNPs;
+(g) SEM micrograph of EPI-MNPs; (h) zeta potential curve of EPI-MNPs.
+22
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+
+an amino group to form an amide bond. Therefore, it was used for
+surface decoration. Moreover, EDC being a hydrophilic molecule
+excess amount can easily be removed out.
+3.2. Size and surface morphological analysis
+Size and surface attributes of any particulate system are the key
+factors which play pivotal roles in their fate i.e. their interaction
+with cell membranes, their uptake and their distribution within
+the body. Average hydrodynamic particle size of EPI-MNPs and EPI-
+PNPs were found to be 248.63  12.36 nm and 254.23  15.16.
+Moreover,
+they
+demonstrated
+narrow
+polydispersity
+index,
+0.09  0.01 and 0.15  0.014, respectively (Fig. 1a and e). Particles
+size determined by dynamic light scattering method further
+supported by TEM and SEM analyses which revealed the particles
+size in the range of 200–300 nm (Fig. 1b, c, f and g). These
+techniques demonstrated spherical shape and smooth surfaces of
+EPI-MNPs and EPI-PNPs. Size of developed formulations were
+found increase slightly when compared with conventional nano-
+particles, 235.3  15.12 nm as reported in our previous work (Tariq
+et al., 2015) indicated that attachment of small molecule at the
+surface of particulate system did not affect the particles size
+signiﬁcantly (Lai et al., 2007). Particles size in the range of 50–
+500 nm are considered most apposite for cellular uptake via
+endocytosis, developed formulations are within the range thus
+seems to be appropriate for uptake and oral bioavailability
+enhancement (Kou et al., 2013; Liu and Reineke, 2005; Woitiski
+et al., 2008). Zeta potential of EPI-MNPs and EPI-PNPs were found
+9.73  0.67 and 14.87  0.86, respectively (Fig. 1d and h) which
+were less negative when compared with zeta potential of plain
+nanoparticles, 27.5  0.7 (Tariq et al., 2015). This can be attributed
+to blockage of free carboxylic group of PLGA owing to amide bond
+formation between carboxylic groups and amine groups of
+mannosamine and methoxypolyethylene glycol amine, respective-
+ly. Change in zeta potential further conﬁrmed the attachment of
+decorating molecules (Lai et al., 2007). It was also conﬁrmed by
+FTIR (data not shown). Drug content of the EPI-MNPs and EPI-PNPs
+were found to be 33.16  1.98 mg/mg and 33.62 1.79 mg/mg,
+respectively which can be considered reasonable for highly
+hydrophilic molecules (Kalaria et al., 2009).
+3.3. In-vitro release study
+Comparative in-vitro release proﬁle of EPI-MNPs and EPI-PNPs
+were studied. EPI-MNPs and EPI-PNPs demonstrated 83.01 6.3%
+and 84.07 4.37%, respectively in 48 h. Both the surface decorated
+nanoparticles showed biphasic release pattern i.e. initial burst
+release followed by sustained effect as observed for conventional
+EPI-NPs in our previous work (Tariq et al., 2015). Initial burst effect
+can be explained by rapid diffusion of EPI molecules present at the
+surface while sustained release can be attribute to hydrophobic
+polymer which probably limited penetrability of aqueous media
+thus slow diffusion of drug molecules present within the core of
+polymer matrix. In addition, longer diffusion path for those
+molecules which were present at the core of NPs could be another
+plausible reason. Initial burst effect would be advantageous to
+achieve therapeutic concentration immediately while sustained
+release proﬁle would favour therapeutic effect for an extended
+period of time.
+Release kinetic was further analyzed by ﬁtting release data into
+different kinetic models; zero order, ﬁrst order, Higuchi model,
+Korsmeyer–Peppas. Higuchi model was found to be best to explain
+the mechanism of release proﬁle r2, 0.962 and 0.956 for EPI-MNPs
+and EPI-PNPs, respectively. The release kinetic was further
+conﬁrmed by semi empirical model “Korsmeyer–Peppas model”
+which revealed the value of exponent ‘n’ at the linear portion of
+curve which was found to be 0.45 suggesting Fickian diffusion
+release proﬁle (Peppas, 1985) (Fig. 2).
+3.4. Cytotoxicity study
+In-vitro cytotoxicity of EPI through EPI-MNPs and EPI-PNPs
+were assessed with respect to cell survival after 48 h cytotoxic
+treatment. The IC50 values of EPI-MNPs and EPI-PNPs were found
+to be 648  36.3 nM and 929  68.3 nM, respectively (Fig. 3). IC50
+values for EPI-MNPs and EPI-PNPs were found to be signiﬁcantly
+lower (p < 0.01) when compared with the IC50 of EPI-S as reported
+in our previous work (Tariq et al., 2015). Signiﬁcant reduction in
+IC50 value can be explained by intracellular trafﬁcking behaviour of
+NPs via endocytosis which facilitated the retention of drug for
+extended period of time in the cellular milieu, especially at the
+nuclear region can be clearly seen by Fig. 5 (Gao et al., 2010; Jain
+et al., 2011a; Zhang et al., 2009). Furthermore, on comparing EPI-
+MNPs with EPI-PNPs, the former showed signiﬁcantly lower IC50
+than later (p < 0.01). Lower IC50 value of EPI-MNPs can be
+attributed to high binding afﬁnity of surfacial mannose molecules
+to lectin presents on the cell surfaces resulting into relatively
+higher uptake of EPI-MNPs (Jiang et al., 2010) while higher IC50 of
+EPI-PNPs can be attributed to relatively lower uptake of particles
+owing to its hydrophilic surface. Observations are in agreement
+with previously reported results (Ahire et al., 2013; Behrens et al.,
+2002; Yuan et al., 2013).
+Fig. 2. In-vitro release proﬁle of EPI-PNPs and EPI-MNPs performed by using
+dialysis bag method, revealing sustained release pattern of both EPI-PNPs and EPI-
+MNPs (mean  SD, n = 3).
+Fig. 3. Cell cytotoxicity potential of EPI-PNPs and EPI-MNPs against MCF-7 cell lines
+measured by MTT assay after 48 h incubation. Values were expressed as mean  SD
+(n = 3). EPI-MNPs showed signiﬁcantly lower IC50 when compared with EPI-PNPs
+(p < 0.01).
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+23
+
+3.5. Cellular uptake by FACS
+Intracellular uptake of nanoparticulate systems plays a pivotal
+role in improved absorption of drug. In order to elucidate the
+potential of the developed system, a comparative cellular uptake
+study of EPI through EPI-MNPs and EPI-PNPs was carried out by
+using FACS (Fig. 4). Since the work principally focuses on the oral
+bioavailability enhancement, hence Caco-2 cell line was used as in
+vitro intestinal model. Table 1 summarizes the intracellular uptake
+of EPI through EPI-MNPs and EPI-PNPs. Both EPI-MNPs and EPI-
+PNPs demonstrated higher ﬂuorescence within the cells at both the
+selected concentrations when compared with EPI-S (p < 0.0001)
+which can be attributed to endocytic uptake of nanoparticles
+resulting into enhanced concentration of EPI within the cells (Gao
+et al., 2010; Jain et al., 2011a). Further, on comparison between
+nanoformulations, EPI-MNPs demonstrated signiﬁcantly high
+cellular uptake at both the concentration (p < 0.001) when
+compared with EPI-PNPs. High uptake of EPI through EPI-MNPs
+can be attributed to high avidity of mannose residue to lectins
+present on lymphoid and non-lymphoid cells resulting into
+increased interaction with cell surface and consequently additional
+endocytic uptake (Jiang et al., 2010; Wagner et al., 2003). Relatively
+lower EPI-uptake through EPI-PNPs can be explained by pegylation
+of particles leading to hydrophilic surface which results into
+reduced interaction with biological membrane consequently lower
+uptake (Behrens et al., 2002; Soenen et al., 2014; Yuan et al., 2013).
+Cellular uptake of EPI through EPI-S, EPI-MNPs and EPI-PNPs
+was further conﬁrmed by visual assessment through confocal
+microscopy (Fig. 5). Cells treated with EPI-S showed a poor red
+ﬂuorescence within the cells (Fig. 5a) which indicated the poor
+uptake of EPI due to its hydrophilic nature as well as being a P-gp
+substrate it would have been expelled out by P-gp efﬂux
+transporter. EPI-PNPs and EPI-MNPs showed an intense red
+ﬂuorescence spots at the peri-nuclear regions which can be
+attributed to intracellular trafﬁcking of particles via endocytosis
+(Fig. 5b and c). However, cells treated with EPI-MNPs demonstrat-
+ed more dense and intense ﬂuorescence within the cell in
+comparison to cells treated EPI-PNPs. Results are in corroboration
+with observations of FACS studies and also in agreement with
+previous reports (Ahire et al., 2013; Behrens et al., 2002; Soenen
+et al., 2014; Yuan et al., 2013). Thus, it can be concluded that
+absorption of a molecule could be improved by encapsulating it
+into a nanoparticulate system as NPs have different characteristics
+from free drug molecules and have a potential to be endocytosed
+leading to improved absorption.
+Fig. 4. Comparative cellular uptake study conducted on Caco-2 cell line model at two different concentration of EPI-PNPs and EPI-MNPs and the data is presented through
+FACS histogram; (a) control (untreated cell); (b) 2.5 mM EPI-PNPs; (c) 2.5 mM EPI-MNPs; (d) 10 mM EPI-PNPs; (e) 10 mM EPI-MNPs.
+Table 1
+Summary of cellular uptake of EPI by Caco-2 cell line subjected to different
+treatments (n = 3).
+Systems
+% Fluorescence
+2.5 mM
+10 mM
+EPI-Se
+10.63  0.6%e
+26.36  0.5%e
+EPI-PNPs
+20.1  0.83a,d
+68.32  1.58a,d
+EPI-MNPs
+31.36  0.93a,d,b,c
+98.8  2.69a,d,b,c
+When compared with EPI-PNPs, a when compared with EPI-S, b when compared
+with EPI-PNPs.
+a When compared with EPI-S.
+b When compared with EPI-PNPs.
+c p < 0.01.
+d p < 0.001.
+e Values taken from previous report (Tariq et al., 2015).
+24
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+
+3.6. Mechanism of cellular uptake
+In order to elucidate uptake mechanism of EPI-PNPs and EPI-
+MNPs, cellular uptake study was conducted in the presence of
+different endocytic inhibitors as they block a speciﬁc endocytic
+pathway. Fig. 6 summarizes the effect of inhibitors on the uptake of
+EPI-MNPs and EPI-PNPs. Uptake of Both EPI-MNPs and EPI-PNPs
+was decreased to 25.81 1.32% and 28.4  3.2%, respectively
+(p < 0.001) in the presence of sodium azide. Sodium azide
+efﬁciently blocks the energy dependent processes thus conﬁrmed
+Fig. 6. Effect of endocytic inhibitors on intracellular uptake of EPI-PNPs and EPI-MNPs conducted against Caco-2 cell line after 4 h of incubation (mean  SD, n = 3), the value of
+control group was considered as 100%, signiﬁcant reduction in uptake of EPI-PNPs and EPI-MNPs was observed in the presence of inhibitors (p < 0.01).
+Fig. 5. CLSM micrograph obtained after the treatment with EPI-S, EPI-PNPs, and EPI-MNPs (n = 3).
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+25
+
+that the uptake of particles is an energy dependent process (Yuan
+et al., 2013; Zhang et al., 2011). Cellular uptake of EPI-PNPs was
+reduced to 77.74  6.6% (relative reduction 23%) and 55.43  5.6%
+(relative reduction 45.5%) in the presence of chlorpromazine
+(clathrin blocker) and ﬂippin (caveolae blocker), respectively.
+Observations reﬂected that both pathways were involved in uptake
+of EPI-PNPs however caveolae mediated mechanism was found
+dominant. It is worthy to note that EPI-PNPs followed the similar
+uptake pattern as observed in our previous report for conventional
+EPI-NPs (Tariq et al., 2015). It can be further validated with report
+of Soenen et al. who demonstrated that that pegylation do not
+affect the uptake mechanism. Intracellular uptake of EPI-MNPs
+was also found to be reduced to 71.39  6.21% (relative reduction
+29%) and 64.36  5.36% (relative reduction 36%). If comparison
+is made with respect to clathrin mediated pathways, i.e. EPI-PNPs
+versus EPI-MNPs (23% versus 29%) and caveolae mediated path-
+ways (45% versus 36%) indicated that mannosamine shifted the
+uptake towards clathrin mediated pathways. In conclusion, overall
+study showed the dominance of caveolae mediated pathway which
+can be attributed to particles size. Rejman et al. (2004) also
+reported the dominance of caveolae mediated endocytosis for
+particles larger than 200 nm and clathrin mediated endocytosis for
+smaller particles, 200 nm. The results are very well corroborated
+with the previous report as all the nanoformulation greater than
+200 nm.
+3.7. In vitro cellular transport study
+Caco-2 cell line model has been widely used for the prediction
+of absorption of drug molecules across the human intestine to
+explore the prospective of nanoparticulate systems for drugs
+which elicit poor oral bioavailability (Jain et al., 2011b; Joshi et al.,
+2014; Wang et al., 2014). In the present report, Caco-2 cell line was
+used to explore the potential of surface decorated particles in
+absorption enhancement of EPI. Both EPI-MNPs and EPI-PNPs
+demonstrated signiﬁcantly high EPI transport (p < 0.001) when
+compared with EPI-S as reported in our previous work (Tariq et al.,
+2015). The apparent permeability coefﬁcients of EPI-MNPs and EPI-
+PNPs were found to be 3.17 folds (2.018  0.12  106 cm/s) and
+2.45 fold higher (1.557  0.083 106 cm/s), respectively in com-
+parison to EPI-S as reported in our previous work, 0.636  0.068
+ 106 cm/s (Tariq et al., 2015). These observations can be
+supported with intracellular trafﬁcking behaviour of nanosystems
+as well as encapsulation of drug evades the recognition by cellular
+P-gp and CYP-450 (He et al., 2012; Joshi et al., 2014; Wang et al.,
+2014). Moreover, EPI-MNPs and EPI-PNPs were compared with
+Fig. 7. Transepithelial ﬂux of EPI at 37C from EPI-PNPs and EPI-MNPs; (a) across caco-2 cells monolayer, apical to basolateral direction (mean  SD, n = 3), signiﬁcantly high
+ﬂux of EPI through EPI-MNPs than EPI-PNPs, p < 0.001; (b) across rat ileum, apical to basolateral direction (mean  SD, n = 3), signiﬁcantly high ﬂux of EPI through EPI-MNPs
+than EPI-PNPs, p < 0.05.
+26
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+
+each other, former showed signiﬁcantly higher transport in
+comparison to later (p < 0.001), approximately 1.3 folds higher
+(Fig. 7a). Higher transport through EPI-MNPs can be attributed to
+mannose residue which binds avidly with surface lectins thus
+improved interaction and enhanced intracellular trafﬁcking, and
+hence subsequently improved transport. Results are in corrobora-
+tion with
+previous
+research.
+(Witoonsaridsilp
+et
+al.,
+2012;
+Yingsukwattana et al., 2015). Lower transport of EPI through
+EPI-PNPs can be explained by reduced interaction of EPI-PNPs with
+lipophilic biological membrane owing to relatively hydrophilic
+surface of EPI-PNPs which in turn into reduced intracellular
+trafﬁcking and thus decreased transport. Similar observations
+were reported in recent reports (Graves et al., 2015; Li et al., 2013).
+3.8. In situ intestinal transport study
+Caco-2 cell line monolayer is a well established in vitro model
+for the prediction of drug absorption across human intestine. Even
+then, intestinal gut sac method has been used widely to simulate in
+vivo settings more appropriately; hence in-situ intestinal drug
+transport across rat ileum was carried out. It can be conducted by
+the following two ways; everted and non-everted gut sac method.
+In the current report, non-everted technique was adopted as it has
+been successfully validated on 11 marketed compounds establish-
+ing a correlation between permeability of model drugs and fraction
+absorbed in human (Ruan et al., 2006). As observed in caco-2 cell
+line model, both the formulations, EPI-MNPs (Papp, 3.67  0.194
+ 106) and EPI-PNPs (Papp, 3.24  0.164 106) showed signiﬁ-
+cantly higher (p < 0.0001) transport across rat ileum, 5.93 and
+5.23 folds higher respectively, when compared with previously
+reported value for EPI-S, 0.619  106 cm/s (Tariq et al., 2015).
+Results are in corroboration with previous work (He et al., 2012;
+Yao et al., 2011). It may also be noted that Papp of EPI through the
+EPI-MNPs and EPI-PNPs were found to be 2.78 and 2.76 fold higher
+when compared with Papp obtained by using Caco-2 cell line
+model
+(Fig.
+7b).
+Observations
+can
+be
+supported
+with
+the
+availability of M cells of Payer’s patches in ileum which probably
+imparted additional role in uptake of nanoparticles. It is worthy to
+note that the difference between improved transport of EPI
+through EPI-MNPs and EPI-PNPs was found signiﬁcant (p < 0.05)
+across rat ileum while this difference was observed extremely
+signiﬁcant in Caco-2 cell line model (p < 0.001) can be clearly seen
+by Fig. 7. The difference in the improved transport in two different
+models can explained in the light of mucus penetration property of
+PEG which may results into higher penetration of EPI-PNPs across
+the mucosal layer of ileum thus enabling their closer proximity to
+epithelial layer. This can be supported by previous reports. Yuan
+et al. reported greater uptake of pegylated SLN than non pegylated
+counterparts
+in
+a
+mucus
+secreting
+cell
+line
+(HT29)
+while
+demonstrating opposite behaviour in Caco-2 cell line (Yuan
+et al., 2013). Similar observation was reported by Behrens et al.
+for polystyrene and pegylated particles in caco-2 and HT29-MTX-
+E12 (mucus secreting) cell lines (Behrens et al., 2002). In addition,
+Yang et al. also demonstrated high diffusivity of pegylated particles
+in comparison to hydrophobic particles thus more rapidly
+penetrating the mucus gel (Yang et al., 2011).
+3.9. Pharmacokinetic studies
+Encouraging ﬁndings of in vitro and in situ studies were further
+strengthened by in vivo pharmacokinetic studies (PK studies). PK
+parameters were determined by non-compartmental (model
+independent) method after single dose administration of EPI-S
+(intravenous), EPI-MNPs (oral) and EPI-PNPs (oral) and their
+comparative plasma drug concentration versus time proﬁle are
+presented in Fig. 8. Cmax and Tmax were determined directly from
+plasma drug concentration proﬁle, while trapezoidal method was
+used to determine area under the plasma concentration-time
+curve (AUC). Table 2 summarizes the PK parameters.
+As evident from Fig. 8, EPI-S administered intravenously
+demonstrated
+highest
+Cmax
+(3133.3  256.23 ng/mL)
+however
+showed fast decay in plasma drug concentration which indicated
+rapid clearance of EPI. Oral administration of EPI-S showed a poor
+absorption reported in our previous work (Tariq et al., 2015). EPI-
+MNPs and EPI-PNPs demonstrated signiﬁcantly high Cmax (p
+< 0.001), Tmax (p < 0.001) as well as signiﬁcantly high area under
+the plasma drug concentration time curve, AUC01 (p < 0.001)
+when compared with EPI-S administer orally. High Tmax are in
+corroboration with sustained in vitro release proﬁle. Further, it can
+be explained by endocytic uptake of particles via enterocytes and
+Fig. 8. Plasma drug concentrations verses time proﬁles of EPI in male wistar rats after 10 mg/kg single dose of EPI-S (intravenous), EPI-PNPs (oral) and EPI-MNPs (oral).
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+27
+
+M cells and subsequently reach to lymphatic site followed by entry
+into blood after a certain time course (Jain et al., 2012; Joshi et al.,
+2014). High Cmax and AUC01 of all the nanoformulations can be
+attributed to improved absorption owing to the following reasons;
+(1) encapsulation of EPI shielding it from hostile GI milieu, (2)
+evading recognition by cellular P-gp and CYP-450, (3) direct uptake
+of nanoparticles via endocytosis through enterocytes and M cells of
+payer’s patches. The cumulative effect resulted in improved oral
+bioavailability (Jain et al., 2012; Joshi et al., 2014; Kalaria et al.,
+2009; Ke et al., 2008).
+Surface modiﬁcation led to further improvement in PK proﬁle of
+EPI. EPI-PNPs demonstrated signiﬁcantly high oral bioavailability
+(AUC01, signiﬁcantly high p < 0.05) when compared with plain
+EPI-NPs, reported in previous work (Tariq et al., 2015), EPI-MNPs
+also showed higher oral bioavailability however difference was
+extremely signiﬁcant (p < 0.001). High oral bioavailability of EPI
+through EPI-PNPs than demonstrated by plain EPI-NPs can be
+supported with the mucus penetration ability of PEG, thus high
+diffusivity of nanoparticles in mucus gel layer of intestine hence
+reaching closer proximity to absorptive epithelial layer resulting in
+more absorption. Results are in agreement with previous reports
+(Agueros et al., 2010; John, 1979; Yuan et al., 2013; Zhang et al.,
+2014). Similarly, high oral bioavailability of EPI through EPI-MNPs
+than conventional EPI-NPs (reported in previous work) can be
+attributed to high afﬁnity of mannose residue to lectins existing on
+lymphoid and non-lymphoid tissues (Wagner et al., 2003). Thus
+mannosylated particles binds with biological membrane with high
+avidity resulting into more efﬁcient uptake by enterocytes and M
+cells of Payer’s patches via endocytosis. Witoonsaridsilp et al.
+(2012) also demonstrated 2.5 fold high oral bioavailability through
+mannosylated
+liposomes
+than
+plain
+liposome.
+Greater
+oral
+bioavailability of EPI through EPI-MNPs in comparison to EPI-
+PNPs can be attributed to speciﬁc afﬁnity of surfacial mannose
+molecules to lectins which are thoroughly distributed in enter-
+ocytes and Payer’s patches of intestine (Wagner et al., 2003). Thus,
+developed system can be used potential carrier for oral bioavail-
+ability enhancement.
+3.10. In vivo biodistribution of CM6-MNPs and CM6-PNPs after oral
+administration
+To elucidate in vivo fate of NPs after oral administration,
+CM6 loaded ﬂuorescent NPs were used rather than EPI loaded since
+CM6 is highly hydrophobic in nature, possess high afﬁnity to
+polymer matrix of NPs and do not leach out (Kulkarni and Feng,
+2011). We also observed similar ﬁndings (data not shown) thus
+CM6-MNPs and CM6-PNPs were exploited to assess the fate of NPs
+itself after oral administration.
+Biodistribution of CM6-MNPs and CM6-PNPs at 1, 2, 4, 8, and
+24 h of post administration was demonstrated in Fig. 9. After, one
+hour of post dosing both the systems distributed prevalently in
+stomach and intestine followed by other body tissues blood >
+liver > colon > kidney > heart > spleen > lungs.
+Amount
+of
+CM6-
+MNPs and CM6-PNPs were found reduced in stomach and intestine
+with time course while increased in other organs. Similar pattern
+was
+observed
+for
+plain
+NPs
+(CM6-NPs,
+data
+not
+shown).
+Interestingly, the amount of CM6-MNPs and CM6-PNPs was found
+to increase continuously till 4 h and then reduce while an
+increment in spleen and kidney was observed till 8 h. Reduced
+level of CM6-MNPs and CM6-PNPs in stomach and intestine at each
+time point can be supported with rapid uptake of particles by
+enterocytes and M cell of Peyer’s via endocytosis. It can be further
+strengthen by increased level of particles in liver, blood other body
+organs (Araujo et al., 1999; Lalatsa et al., 2012; Yin et al., 2007). A
+major difference between the CM6-PNPs and CM6-MNPs was
+observed with respect to their distribution in blood and liver; CM6-
+MNPs showed relatively higher amount in liver at each time point
+while high concentration of CM6-PNPs was observed in blood and
+vice versa. Relatively greater amount of CM6-PNPs in blood can be
+attributed to improved circulation time owing to its hydrophilic
+surface which reduces their uptake by liver macrophages (Semete
+et al., 2012; Semete et al., 2010) while the accumulation of CM6-
+MNPs in liver can be explained by their phagocytic uptake via liver
+macrophages (Zhu et al., 2013). Furthermore, increased ﬂuores-
+cence in blood and other body organs indicated the probability of
+translocation of intact particles across the intestine which could
+offer the opportunity of tumor targeting.
+3.11. In vivo antitumor efﬁcacy study
+The in vivo antitumor efﬁcacy of EPI-PNPs and EPI-MNPs was
+evaluated against EAT cell line induced tumor bearing Balb/c mice
+and observation have been summarized in Fig. 10. Each group was
+subjected to four doses of EPI on alternate day (8.5 mg/kg) when
+they gained tumor volume 500–600 mm3. Control group (treated
+orally with PBS) demonstrated a continuous growth. Moreover,
+Table 2
+Summary of PK parameter after single dose administration (oral/intravenous) of EPI-S, EPI-NPs, EPI-PNPs and EPIMNPs (n = 6).
+Parameters
+EPI-S IV
+EPI-S orala
+EPI-PNPs oral
+EPI-MNPs oral
+Cmax (ng/mL)
+3133.3  256.23
+132.52  12.66a
+174.62  18.32
+194.87  21.32
+Tmax (h)
+1.16  0.4
+3.833  0.4 ha
+4.33  0.86
+4.33  0.86
+AUC0t (ng h/mL)
+2956.08  300.64
+512.16  56.32a
+2258.57  154.08
+2722.93  192.85
+AUC01 (ng h/mL)
+3094.24  312.45
+551.5  64.05a
+2592.1  180.3
+3072.74  340.21
+a Values taken from previous report (Tariq et al., 2015).
+Fig. 9. In vivo biodistribution of CM6-PNPs and CM6-MNPs in different body organs of albino wistar rat after a single dose oral administration. The amount of ﬂuorescent
+nanoparticles in each tissue was presented as percentage (mean  SD, n = 3) relative to total dose (100%).
+28
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+
+animals treated orally with EPI-S followed a similar pattern and
+insigniﬁcant difference in tumor volume was noted (p > 0.05).
+However, a substantial tumor suppression was observed in animals
+treated with EPI-S (intravenous), EPI-MNPs (oral) and EPI-PNPs
+(oral) and were found signiﬁcantly lower when compared with
+control group and group treated with EPI-S oral (p < 0.0001). The
+highest tumor suppression was observed in animals treated with
+EPI-S intravenous (volume reduced to 225.32  27.12 mm3). The
+tumor
+volumes
+were
+found
+to
+be
+260.06  23.4 mm3
+and
+290.41  26.1 mm3 in animals treated with EPI-MNPs and EPI-
+PNPs, respectively. Thus, tumor suppression through oral admin-
+istration of EPI-MNPs and EPI-PNPs was lesser but comparable to
+EPI-S intravenous treatment.
+The poor oral absorption of EPI can be hold responsible for
+continuous tumor growth in animal treated with EPI-S orally while
+signiﬁcant reduction in tumor volume in animals treated with EPI-
+PNPs and EPI-MNPs can be attributed to improved oral bioavail-
+ability, 4.7 and 5.57 fold, respectively. In addition, high plasma drug
+concentration for extended period of time and translocation of
+intact particles across the intestine into blood and other body
+organs probably in tumor also (via EPR effect) might have further
+added the value (Bhardwaj et al., 2009; Jain et al., 2011a; Maeda,
+1992). Animals treated with EPI-S intravenously demonstrated
+maximum tumor reduction in the following way; initial rapid
+suppression, followed by static subsequently mild increment
+which can be explained by initial high EPI concentration at tumor
+vicinity followed by a rapid clearance due to fast reduction in
+plasma drug concentration as well as expulsion of EPI through P-gp
+transporter (Jain et al., 2011a; Jain et al., 2012). Higher tumor
+suppression by EPI-MNPs in comparison to EPI-PNPs can be
+attributed to signiﬁcantly high oral bioavailability and probable
+accumulation of translocated EPI-MNPs into tumor vicinity via
+phagocytic uptake by tumor associated macrophages (Zhu et al.,
+2013).
+Weigh of each group was monitored intermittently. Animals
+subjected to intravenous treatment (EPI-S) showed a signiﬁcant
+weight reduction with respect to their own weight (p < 0.05) while
+animals subjected to other treatment showed increment in weight
+(p < 0.05). Weight reduction in animals treated with intravenous
+EPI-S can be attributed to toxicity of EPI. Similar observations were
+reported in previous study (Yao et al., 2011). The improved efﬁcacy
+and safety proﬁle of EPI- through oral nanoformulations can be
+attributed to low but effective plasma drug concentration for
+extended period of time.
+4. Conclusion
+EPI-MNPs and EPI-PNPs were successfully developed and
+evaluated for their potential in oral delivery. They demonstrated
+superior in-vitro and in-vivo activities over EPI-S (oral). In addition,
+they also showed high oral bioavailability and antitumor activity
+when compared with their conventional counterpart. Both, EPI-
+MNPs and EPI-PNPs exhibited antitumor activity comparable to
+intravenous administration thus both are potential candidate for
+improving oral delivery of challenging molecules. Interestingly,
+EPI-MNPs illustrated better pharmacokinetic and pharmacody-
+namic proﬁle when compared with EPI-PNPs which might be due
+to speciﬁc binding of mannose residue with lectins present on
+lymphoid and non-lymphoid organs. It can also be exploited for
+targeting via tumor assisted macrophages. Conclusively, EPI-MNPs
+showed best potential amongst EPI-S (oral) and EPI-PNPs (oral),
+and can be investigated more extensively for future development.
+Acknowledgments
+Authors are indebted to Jamia Hamdard and Department of
+Biotechnology (DBT) for providing infrastructure and ﬁnancial
+support, respectively. We are also grateful to Fresenius Kabi and
+Evonik Degussa Pvt., Ltd., for providing epirubicin as ex gratia.
+Moreover, we acknowledge the contribution of Jamia Millia
+Islamia, and SAIF (AIIMS), New Delhi India for SEM and TEM
+analysis. Assistance rendered by animal house staff (Dr. A K Tiwari
+and Mr. Mohammad Ibrahim) is admirable.
+Fig. 10. In vivo antitumor activity against Ehrlich Ascites induced tumor bearing balb/c mice, after oral administration of EPI-S, EPI-PNPs and EPI-MNPs.
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+29
+
+References
+Agueros, M., Zabaleta, V., Espuelas, S., Campanero, M.A., Irache, J.M., 2010. Increased
+oral bioavailability of paclitaxel by its encapsulation through complex
+formation with cyclodextrins in poly(anhydride) nanoparticles. J. Control.
+Release 145, 2–8.
+Ahire, J.H., Chambrier, I., Mueller, A., Bao, Y., Chao, Y., 2013. Synthesis of D-mannose
+capped silicon nanoparticles and their interactions with MCF-7 human breast
+cancerous cells. ACS Appl. Mater. Interfaces 5, 7384–7391.
+Araujo, L., Sheppard, M., Löbenberg, R., Kreuter, J., 1999. Uptake of PMMA
+nanoparticles from the gastrointestinal tract after oral administration to rats:
+modiﬁcation of the body distribution after suspension in surfactant solutions
+and in oil vehicles. Int. J. Pharm. 176, 209–224.
+Artursson, P., Karlsson, J., 1991. Correlation between oral drug absorption in humans
+and apparent drug permeability coefﬁcients in human intestinal epithelial
+(Caco-2) cells. Biochem. Biophys. Res. Commun. 175, 880–885.
+Behrens, I., Pena, A.I., Alonso, M.J., Kissel, T., 2002. Comparative uptake studies of
+bioadhesive and non-bioadhesive nanoparticles in human intestinal cell lines
+and rats: the effect of mucus on particle adsorption and transport. Pharm. Res.
+19, 1185–1193.
+Bhardwaj, V., Ankola, D.D., Gupta, S.C., Schneider, M., Lehr, C.M., Kumar, M.N., 2009.
+PLGA nanoparticles stabilized with cationic surfactant: safety studies and
+application in oral delivery of paclitaxel to treat chemical-induced breast cancer
+in rat. Pharm. Res. 26, 2495–2503.
+Cone, R.A., 2009. Barrier properties of mucus. Adv. Drug Deliv. Rev. 61, 75–85.
+Etheridge, M.L., Campbell, S.A., Erdman, A.G., Haynes, C.L., Wolf, S.M., McCullough, J.,
+2013. The big picture on nanomedicine: the state of investigational and
+approved nanomedicine products. Nanomedicine 9, 1–14.
+Faderl, S., Talpaz, M., Estrov, Z., O’Brien, S., Kurzrock, R., Kantarjian, H.M., 1999. The
+biology of chronic myeloid leukemia. N. Engl. J. Med. 341, 164–172.
+Fatma, S., Talegaonkar, S., Iqbal, Z., Panda, A.K., Negi, L.M., Goswami, D.G., Tariq, M.,
+2014. Novel ﬂavonoid-based biodegradable nanoparticles for effective oral
+delivery of etoposide by P-glycoprotein modulation: an in vitro, ex vivo and in
+vivo investigations. Drug Deliv. 1–12.
+Florence, A.T., 1997. The oral absorption of micro- and nanoparticulates: neither
+exceptional nor unusual. Pharm. Res. 14, 259–266.
+Gao, F., Li, L., Zhang, H., Yang, W., Chen, H., Zhou, J., Zhou, Z., Wang, Y., Cai, Y., Li, X.,
+Liu, L., Zhang, Q., 2010. Deoxycholic acid modiﬁed-carboxymethyl curdlan
+conjugate as a novel carrier of epirubicin: in vitro and in vivo studies. Int. J.
+Pharm. 392, 254–260.
+Gershanik, T., Benita, S., 2000. Self-dispersing lipid formulations for improving oral
+absorption of lipophilic drugs. Eur. J. Pharm. Biopharm. 50, 179–188.
+Graves, R.A., Ledet, G.A., Glotser, E.Y., Mitchner, D.M., Bostanian, L.A., Mandal, T.K.,
+2015. Formulation and evaluation of biodegradable nanoparticles for the oral
+delivery of fenretinide. Eur. J. Pharm. Sci. 76, 1–9.
+He, C., Yin, L., Tang, C., Yin, C., 2012. Size-dependent absorption mechanism of
+polymeric nanoparticles for oral delivery of protein drugs. Biomaterials 33,
+8569–8578.
+Huang, Y., Leobandung, W., Foss, A., Peppas, N.A., 2000. Molecular aspects of muco-
+and bioadhesion: tethered structures and site-speciﬁc surfaces. J. Control.
+Release 63–71.
+Hussain, N., Jaitley, V., Florence, A.T., 2001. Recent advances in the understanding of
+uptake of microparticulates across the gastrointestinal lymphatics. Adv. Drug
+Deliv. Rev. 50, 107–142.
+Jain, A.K., Swarnakar, N.K., Das, M., Godugu, C., Singh, R.P., Rao, P.R., Jain, S., 2011a.
+Augmented anticancer efﬁcacy of doxorubicin-loaded polymeric nanoparticles
+after oral administration in a breast cancer induced animal model. Mol. Pharm.
+8, 1140–1151.
+Jain, A.K., Swarnakar, N.K., Godugu, C., Singh, R.P., Jain, S., 2011b. The effect of the oral
+administration of polymeric nanoparticles on the efﬁcacy and toxicity of
+tamoxifen. Biomaterials 32, 503–515.
+Jain, S., Patil, S.R., Swarnakar, N.K., Agrawal, A.K., 2012. Oral delivery of doxorubicin
+using novel polyelectrolyte-stabilized liposomes (layersomes). Mol. Pharm. 9,
+2626–2635.
+Jiang, X., Housni, A., Gody, G., Boullanger, P., Charreyre, M.T., Delair, T., Narain, R.,
+2010. Synthesis of biotinylated alpha-D-mannoside or N-acetyl beta-D-
+glucosaminoside decorated gold nanoparticles: study of their biomolecular
+recognition with Con A and WGA Lectins. Bioconjug Chem. 21, 521–530.
+John, V.J.W.E., A.M.S.U, 1979. Polymer emulsiﬁcation process. US4,177,177.
+Joshi, G., Kumar, A., Sawant, K., 2014. Enhanced bioavailability and intestinal uptake
+of gemcitabine HCl loaded PLGA nanoparticles after oral delivery. Eur. J. Pharm.
+Sci. 60, 80–89.
+Kalaria, D.R., Sharma, G., Beniwal, V., Ravi Kumar, M.N., 2009. Design of
+biodegradable nanoparticles for oral delivery of doxorubicin: in vivo
+pharmacokinetics and toxicity studies in rats. Pharm. Res. 26, 492–501.
+Ke, W., Zhao, Y., Huang, R., Jiang, C., Pei, Y., 2008. Enhanced oral bioavailability
+of doxorubicin in a dendrimer drug delivery system. J. Pharm. Sci. 97,
+2208–
+2216.
+Khuroo, T., Verma, D., Talegaonkar, S., Padhi, S., Panda, A.K., Iqbal, Z., 2014.
+Topotecan-tamoxifen duple PLGA polymeric nanoparticles: investigation of in
+vitro, in vivo and cellular uptake potential. Int. J. Pharm. 473, 384–394.
+Kou, L., Sun, J., Zhai, Y., He, Z., 2013. The endocytosis and intracellular fate of
+nanomedicines: implication for rational design. Asian J. Pharm. Sci. 8, 1–10.
+Kulkarni, S.A., Feng, S.S., 2011. Effects of surface modiﬁcation on delivery efﬁciency
+of biodegradable nanoparticles across the blood–brain barrier. Nanomedicine
+(London, England) 6, 377–394.
+Lai, S.K., O’Hanlon, D.E., Harrold, S., Man, S.T., Wang, Y.-Y., Cone, R., Hanes, J., 2007.
+Rapid transport of large polymeric nanoparticles in fresh undiluted human
+mucus. Proc. Natl. Acad. Sci. U. S. A. 104, 1482–1487.
+Lalatsa, A., Garrett, N.L., Ferrarelli, T., Moger, J., Schatzlein, A.G., Uchegbu, I.F., 2012.
+Delivery of peptides to the blood and brain after oral uptake of quaternary
+ammonium palmitoyl glycol chitosan nanoparticles. Mol. Pharm. 9, 1764–1774.
+Li, G., Lin, D.-H., Xie, X.-X., Qin, L.-F., Wang, J.-T., Liu, K., 2013. Uptake and transport of
+furanodiene in Caco-2 cell monolayers: a comparison study between
+furanodiene and furanodiene loaded PLGA nanoparticles. Chin. J. Nat. Med. 11,
+49–55.
+Liu, Y., Reineke, T.M., 2005. Hydroxyl stereochemistry and amine number within
+poly(glycoamidoamine)s affect intracellular DNA delivery. J. Am. Chem. Soc.127,
+3004–3015.
+Lo, Y.L., 2003. Relationships between the hydrophilic-lipophilic balance values of
+pharmaceutical excipients and their multidrug resistance modulating effect in
+Caco-2 cells and rat intestines. J. Control. Release 90, 37–48.
+Maeda, H., 1992. The tumor blood vessel as an ideal target for macromolecular
+anticancer agents. J. Control. Release 19, 315–324.
+Negi, L.M., Tariq, M., Talegaonkar, S., 2013. Nano scale self-emulsifying oil based
+carrier system for improved oral bioavailability of camptothecin derivative by P-
+glycoprotein modulation. Colloids Surf. B Biointerfaces 111, 346–353.
+Orlandi, P.A., Fishman, P.H., 1998. Filipin-dependent inhibition of cholera toxin:
+evidence for toxin internalization and activation through caveolae-like
+domains. J. Cell Biol. 141, 905–915.
+Peltier, S., Oger, J.M., Lagarce, F., Couet, W., Benoit, J.P., 2006. Enhanced oral
+paclitaxel bioavailability after administration of paclitaxel-loaded lipid
+nanocapsules. Pharm. Res. 23, 1243–1250.
+Peppas, N.A., 1985. Analysis of Fickian and non-Fickian drug release from polymers.
+Pharm. Acta Helv. 60, 110–111.
+Rejman, J., Oberle, V., Zuhorn, I.S., Hoekstra, D., 2004. Size-dependent
+internalization of particles via the pathways of clathrin- and caveolae-mediated
+endocytosis. Biochem. J. 377, 159–169.
+Roger, E., Lagarce, F., Garcion, E., Benoit, J.P., 2009. Lipid nanocarriers improve
+paclitaxel transport throughout human intestinal epithelial cells by using
+vesicle-mediated transcytosis. J. Control. Release 140, 174–181.
+Ruan, L.P., Chen, S., Yu, B.Y., Zhu, D.N., Cordell, G.A., Qiu, S.X., 2006. Prediction of
+human absorption of natural compounds by the non-everted rat intestinal sac
+model. Eur. J. Med. Chem. 41, 605–610.
+Salman, H.H., Gamazo, C., Campanero, M.A., Irache, J.M., 2006. Bioadhesive
+mannosylated nanoparticles for oral drug delivery. J. Nanosci. Nanotechnol. 6,
+3203–3209.
+Semete, B., Booysen, L., Kalombo, L., Ramalapa, B., Hayeshi, R., Swai, H.S., 2012.
+Effects of protein binding on the biodistribution of PEGylated PLGA
+nanoparticles post oral administration. Int. J. Pharm. 424, 115–120.
+Semete, B., Booysen, L., Lemmer, Y., Kalombo, L., Katata, L., Verschoor, J., Swai, H.S.,
+2010. In vivo evaluation of the biodistribution and safety of PLGA nanoparticles
+as drug delivery systems. Nanomedicine 6, 662–671.
+Shin, D., Park, S., Kwon, O.-S., Park, C.-W., Han, K., Chung, Y., 2013. Validation of high-
+performance liqid chromatography method to determine epirubicin and its
+pharmacokinetics after intravenous bolus administration in rats. J. Pharm.
+Invest. 43, 243–249.
+Soenen, S.J., Manshian, B.B., Abdelmonem, A.M., Montenegro, J.-M., Tan, S., Balcaen,
+L., Vanhaecke, F., Brisson, A.R., Parak, W.J., De Smedt, S.C., Braeckmans, K., 2014.
+The cellular interactions of PEGylated gold nanoparticles: effect of PEGylation
+on cellular uptake and cytotoxicity. Part. Part. Syst. Charact. 31, 794–800.
+Tariq, M., Alam, M.A., Singh, A.T., Iqbal, Z., Panda, A.K., Talegaonkar, S., 2015.
+Biodegradable polymeric nanoparticles for oral delivery of epirubicin: in vitro,
+ex vivo, and in vivo investigations. Colloids Surf. B Biointerfaces 128, 448–456.
+Wagner, S., Lynch, N.J., Walter, W., Schwaeble, W.J., Loos, M., 2003. Differential
+expression of the murine mannose-binding lectins A and C in lymphoid and
+nonlymphoid organs and tissues. J. Immunol. (Baltimore, Md.: 1950) 170,
+1462–1465.
+Wang, L., Li, L., Sun, Y., Ding, J., Li, J., Duan, X., Li, Y., Junyaprasert, V.B., Mao, S., 2014. In
+vitro and in vivo evaluation of chitosan graft glyceryl monooleate as peroral
+delivery carrier of enoxaparin. Int. J. Pharm. 471, 391–399.
+Wang, L.H., Rothberg, K.G., Anderson, R.G.,1993. Mis-assembly of clathrin lattices on
+endosomes reveals a regulatory switch for coated pit formation. J. Cell Biol. 123,
+1107–1117.
+Wang, Y.Y., Lai, S.K., Suk, J.S., Pace, A., Cone, R., Hanes, J., 2008. Addressing the PEG
+mucoadhesivity paradox to engineer nanoparticles that slip through the human
+mucus barrier. Angew. Chem. 47, 9726–9729 (Int. Ed. English).
+Witoonsaridsilp, W., Paeratakul, O., Panyarachun, B., Sarisuta, N., 2012.
+Development of mannosylated liposomes using synthesized N-octadecyl-D-
+mannopyranosylamine to enhance gastrointestinal permeability for protein
+delivery. AAPS Pharm. Sci. Technol. 13, 699–706.
+Woitiski, C.B., Carvalho, R.A., Ribeiro, A.J., Neufeld, R.J., Veiga, F., 2008. Strategies
+toward the improved oral delivery of insulin nanoparticles via gastrointestinal
+uptake and translocation. BioDrugs 22, 223–237.
+Xu, W., Ling, P., Zhang, T., 2013. Polymeric micelles, a promising drug delivery
+system to enhance bioavailability of poorly water-soluble drugs. J. Drug Deliv.
+340315.
+30
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+
+Yang, M., Lai, S.K., Wang, Y.Y., Zhong, W., Happe, C., Zhang, M., Fu, J., Hanes, J., 2011.
+Biodegradable nanoparticles composed entirely of safe materials that rapidly
+penetrate human mucus. Angew. Chem. 50, 2597–2600 (Int. Ed. English).
+Yang, S., Zhu, J., Lu, Y., Liang, B., Yang, C., 1999. Body distribution of camptothecin
+solid lipid nanoparticles after oral administration. Pharm. Res. 16,
+751–757.
+Yao, H.J., Ju, R.J., Wang, X.X., Zhang, Y., Li, R.J., Yu, Y., Zhang, L., Lu, W.L., 2011. The
+antitumor efﬁcacy of functional paclitaxel nanomicelles in treating resistant
+breast cancers by oral delivery. Biomaterials 32, 3285–3302.
+Yin, Y., Chen, D., Qiao, M., Wei, X., Hu, H., 2007. Lectin-conjugated PLGA
+nanoparticles loaded with thymopentin: ex vivo bioadhesion and in vivo
+biodistribution. J. Control. Release 123, 27–38.
+Yingsukwattana, K., Puttipipatkhachorn, S., Ruktanonchai, U., Sarisuta, N., 2015.
+Enhanced permeability across Caco-2 cell monolayers by speciﬁc
+mannosylating ligand of buserelin acetate proliposomes. J. Liposome Res.
+1–11.
+Yoncheva, K., Guembe, L., Campanero, M.A., Irache, J.M., 2007. Evaluation of
+bioadhesive potential and intestinal transport of pegylated poly(anhydride)
+nanoparticles. Int. J. Pharm. 334, 156–165.
+Yuan, H., Chen, C.Y., Chai, G.H., Du, Y.Z., Hu, F.Q., 2013. Improved transport and
+absorption through gastrointestinal tract by PEGylated solid lipid nanoparticles.
+Mol. Pharm. 10, 1865–1873.
+Zhang, H.Z., Gao, F.P., Liu, L.R., Li, X.M., Zhou, Z.M., Yang, X.D., Zhang, Q.Q., 2009.
+Pullulan acetate nanoparticles prepared by solvent diffusion method for
+epirubicin chemotherapy. Colloids Surf. B Biointerfaces 71, 19–26.
+Zhang, P., Ling, G., Sun, J., Zhang, T., Yuan, Y., Sun, Y., Wang, Z., He, Z., 2011.
+Multifunctional nanoassemblies for vincristine sulfate delivery to overcome
+multidrug resistance by escaping P-glycoprotein mediated efﬂux. Biomaterials
+32, 5524–5533.
+Zhang, X., Chen, G., Zhang, T., Ma, Z., Wu, B., 2014. Effects of PEGylated lipid
+nanoparticles on the oral absorption of one BCS II drug: a mechanistic
+investigation. Int. J. Nanomed. 9, 5503–5514.
+Zhao, J., Liu, C.S., Yuan, Y., Tao, X.Y., Shan, X.Q., Sheng, Y., Wu, F., 2007. Preparation of
+hemoglobin-loaded nano-sized particles with porous structure as oxygen
+carriers. Biomaterials 28, 1414–1422.
+Zhu, S., Niu, M., O’Mary, H., Cui, Z., 2013. Targeting of tumor-associated macrophages
+made possible by PEG-sheddable, mannose-modiﬁed nanoparticles. Mol.
+Pharm. 10, 3525–3530.
+M. Tariq et al. / International Journal of Pharmaceutics 501 (2016) 18–31
+31

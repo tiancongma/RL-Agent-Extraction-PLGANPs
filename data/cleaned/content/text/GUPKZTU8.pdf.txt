@@ -1,0 +1,5179 @@
+J. of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+Contents
+ lists
+ available
+ at
+ SciVerse
+ ScienceDirect
+The
+ Journal
+ of
+ Supercritical
+ Fluids
+jou
+ rn
+ al
+ h
+ om
+ epage:
+ www.elsevier.com/locate/supflu
+Monodisperse
+ biopolymer
+ nanoparticles
+ by
+ Continuous
+ Supercritical
+Emulsion
+ Extraction
+G.  Della
+ Porta a,b,∗,  R.
+ Campardelli a,  E.  Reverchon a,b
+a Department
+ of
+ Industrial
+ Engineering,
+ University
+ of
+ Salerno,
+ Via
+ Ponte
+ don
+ Melillo,
+ Fisciano
+ 84084
+ (SA),
+ Italy
+b Research
+ Centre
+ for
+ Nanomaterials
+ and
+ nanoTechnology
+ (NANOMATES),
+ Salerno
+ University,
+ Italy
+a  r  t  i c  l  e
+i  n
+ f  o
+Article
+ history:
+Received
+ 9
+ August
+ 2012
+Received
+ in
+ revised
+ form
+ 18
+ January
+ 2013
+Accepted
+ 21
+ January
+ 2013
+Keywords:
+Biopolymers
+Monodisperse
+ nanoparticles
+Emulsions
+Countercurrent
+ packed
+ tower
+a
+ b  s  t  r  a  c  t
+In  this  work  Continuous
+ Supercritical
+ Emulsions
+ Extraction
+ (SEE-C)
+ has  been
+ tested  to  produce
+ monodis-
+perse
+ biopolymer
+ nanoparticles.
+ The  SEE-C  technology
+ allows
+ an  improved  control
+ of  particle
+ size
+distribution
+ by  reducing
+ the emulsion
+ processing
+ times
+ and  preventing
+ any  droplet/particle
+ aggrega-
+tion.
+ Biopolymers
+ as,  poly-lactic
+ acid  (PLA),  poly-caprolactone
+ (PCL)  and  poly-lactic-co-glycolic
+ acid (PLGA)
+in
+ different
+ emulsion
+ formulations
+ were
+ tested
+ using
+ acetone
+ as  oily-phase
+ solvent.
+ Emulsion  formulation
+parameters,
+ such  as  surfactant
+ and/or  polymer
+ concentration
+ and  emulsiﬁcation
+ techniques
+ (ultrasound
+or
+ high
+ speed
+ emulsiﬁcation)
+ were
+ analyzed
+ in  connection
+ to SEE-C,  to produce
+ monodisperse
+ nanoparti-
+cles.
+ Operating
+ at 38 ◦C  and  80  bar,  with  an  L/G  ratio  of 0.1,  particles
+ of  PLA,  PCL  and  PLGA  with
+ mean
+ size  of
+233
+ nm,  342
+ nm  and  212  nm,  respectively,
+ were  produced.
+ Poly-dispersity
+ indexes  lower  to 0.1  nm  were
+also
+ obtained,
+ conﬁrming
+ the  possibility
+ to obtain  sharp
+ distributions
+ with  monodisperse
+ characteristics.
+Solvent
+ residues
+ as  low  as 500  ppm  were
+ also  observed.
+© 2013 Elsevier B.V. All rights reserved.
+1.
+ Introduction
+Biodegradable
+ micro
+ and
+ nanoparticulate
+ systems
+ are
+ required
+for
+ controlled
+ drug
+ release
+ formulations
+ [1],  drug
+ targeting
+ [2]
+and
+ to
+ obtain
+ speciﬁc
+ matrices
+ for
+ injectable
+ scaffolds
+ formulation
+[3].
+ The
+ most
+ used
+ biopolymers
+ in
+ these
+ ﬁelds
+ are
+ poly-lactic
+ acid
+(PLA)
+ [4],  poly-lactic-co-glycolic
+ acid
+ (PLGA)
+ and
+ poly-ε-caprolactone
+(PCL)
+ [5–7].
+ For
+ example,
+ PLA
+ microdevices
+ have
+ been
+ charged
+with
+ metallic
+ nanoparticles
+ (gold,
+ magnetite,
+ etc.)
+ for
+ diagnostic
+and
+ theragnostic
+ applications
+ [8,9];
+ PLGA
+ is
+ injectable
+ for
+ drug
+conjugation
+ or
+ encapsulation,
+ to
+ reduce
+ undesirable
+ side
+ effects
+of
+ therapeutic
+ agents
+ [10]. The
+ advantages
+ of
+ PCL
+ include
+ its
+ high
+permeability
+ to
+ small
+ drug
+ molecules,
+ degradation
+ without
+ forma-
+tion
+ of
+ acid
+ residues,
+ an
+ exceptional
+ ability
+ to
+ form
+ blends
+ with
+other
+ polymers
+ and
+ slower
+ degradation
+ rates
+ with
+ respect
+ to
+ PLGA
+[11].
+In
+ biomedical
+ and
+ pharmaceutical
+ ﬁeld,
+ particles
+ with
+ mean
+diameters
+ ranging
+ between
+ 100
+ and
+ 500
+ nm
+ are
+ generally
+ indi-
+cated
+ as
+ nanoparticles,
+ though
+ more
+ restrictive
+ deﬁnitions
+ assume
+smaller
+ dimensions
+ as
+ the
+ limit
+ for
+ nanoparticles
+ production
+ [12].
+The
+ development
+ of
+ such
+ microdevices
+ often
+ poses
+ a
+ serious
+challenge,
+ due
+ to
+ the
+ lack
+ of
+ robust
+ manufacturing
+ techniques,
+∗Corresponding
+ author
+ at:
+ Department
+ of
+ Industrial
+ Engineering,
+ University
+ of
+Salerno,
+ Via
+ Ponte
+ don
+ Melillo,
+ Fisciano
+ 84084
+ (SA),
+ Italy.
+ Tel.:
+ +39
+ 3207979003.
+E-mail
+ address:
+ gdellaporta@unisa.it (G.
+ Della
+ Porta).
+which
+ can
+ provide
+ particles
+ with
+ predictable
+ and
+ controllable
+ size
+distribution,
+ composition
+ and
+ structure.
+ They
+ also
+ need
+ strictly
+requirements
+ of
+ product
+ consistency
+ and
+ purity,
+ as
+ well
+ as,
+ pro-
+duction
+ scalability.
+ The
+ industrial
+ manufacturing
+ of
+ submicro
+ or
+nanoparticles
+ also
+ requires
+ products
+ with
+ narrow
+ particle
+ size
+ dis-
+tributions
+ (PSD)
+ since,
+ in
+ that
+ case,
+ ﬂuid
+ dynamic
+ and
+ therapeutic
+behavior
+ of
+ all
+ the
+ particles
+ would
+ be
+ similar
+ to
+ those
+ having
+ the
+mean
+ diameter
+ and
+ an
+ ideal
+ performance
+ will
+ be
+ obtained.
+ The
+polydispersity
+ index
+ (PDI)
+ is
+ a
+ parameter
+ that
+ measures
+ the
+ dis-
+persion
+ of
+ the
+ particles
+ around
+ the
+ mean
+ diameter
+ and
+ it
+ is
+ deﬁned
+as
+ the
+ ratio
+ between
+ the
+ standard
+ deviation
+ (SD)
+ and
+ the
+ mean
+diameter
+ (MD)
+ of
+ the
+ distribution
+ of
+ particles;
+ the
+ lower
+ is
+ the
+ PDI,
+the
+ sharper
+ is
+ the
+ distribution.
+ An
+ optimum
+ condition
+ is
+ reached
+when
+ PDI
+ is
+ lower
+ or
+ equal
+ to
+ 0.1;
+ in
+ this
+ case
+ the
+ system
+ is
+ deﬁned
+as
+ monodisperse
+ and
+ all
+ the
+ particulate
+ system
+ can
+ be
+ treated
+ as
+formed
+ by
+ particles
+ of
+ the
+ same
+ dimensions
+ [13].
+Different
+ conventional
+ methods
+ have
+ been
+ reported
+ for
+ the
+preparation
+ of
+ micro
+ and
+ nanoparticles
+ such
+ as,
+ dispersion
+ poly-
+merization
+ [14],
+ nanoprecipitation
+ [15], solvent
+ evaporation
+ of
+emulsions
+ [16]
+ and
+ spray
+ drying
+ [17].
+ These
+ techniques
+ show
+ some
+drawbacks,
+ such
+ as
+ the
+ complete
+ removal
+ of
+ toxic
+ solvents
+ [18]
+and
+ low
+ encapsulation
+ efﬁciency
+ [19].
+ Dispersion
+ polymerization
+cannot
+ be
+ used
+ to
+ produce
+ drug/protein
+ delivery
+ devices
+ since
+ the
+solvents
+ used
+ for
+ the
+ monomers
+ are
+ frequently
+ not
+ compatible
+ with
+drugs
+ or
+ peptides
+ [20]. Conventional
+ solvent
+ evaporation
+ usually
+proceeds
+ at
+ a
+ slow
+ rate
+ and
+ may
+ also
+ require
+ high
+ temperatures
+ or
+reduced
+ pressures;
+ solvent
+ extraction
+ requires
+ a
+ large
+ amount
+ of
+0896-8446/$
+ –
+ see
+ front
+ matter ©
+
+ 2013 Elsevier B.V. All rights reserved.
+http://dx.doi.org/10.1016/j.supﬂu.2013.01.009
+
+68
+G.
+ Della
+ Porta
+ et
+ al.
+ /
+ J.
+ of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+an
+ antisolvent
+ phase
+ to
+ extract
+ the
+ solvent
+ [21].
+ Both
+ technologies
+also
+ use
+ a
+ batch
+ setup
+ that
+ is
+ difﬁcult
+ to
+ scale
+ up
+ for
+ the
+ production
+of
+ large
+ amounts
+ of
+ product
+ in
+ a
+ robust
+ and
+ reproducible
+ manner.
+The
+ long
+ processing
+ times
+ (several
+ hours)
+ may
+ also
+ generate
+ aggre-
+gation
+ phenomena
+ between
+ droplets
+ or
+ particles
+ producing
+ larger
+poly-dispersity
+ which
+ generate
+ different
+ drug
+ release
+ rates
+ [22,23].
+Supercritical
+ ﬂuid
+ based
+ processes
+ have
+ been
+ largely
+ proposed
+in
+ the
+ literature
+ to
+ produce
+ microparticulate
+ systems
+ They
+ were
+generally
+ successful
+ even
+ if
+ monodisperse
+ particles
+ at
+ micro
+ and
+nanoscale
+ were
+ not
+ often
+ reported
+ due
+ to
+ their
+ intrinsic
+ tendency
+to
+ produce
+ polydisperse
+ particles,
+ as
+ a
+ result
+ of
+ ﬂuid
+ dynamic
+ and
+mass
+ transfer
+ controlled
+ processes
+ [24–26].
+A
+ different
+ approach
+ to
+ microparticle
+ production,
+ was
+ recently
+proposed
+ using
+ Super
+ Critical-Carbon
+ Dioxide
+ (SC-CO2) as
+ the
+extracting
+ agent
+ of
+ the
+ oily
+ phase
+ of
+ emulsions
+ to
+ produce
+ solvent-
+free
+ micro
+ or
+ nanoparticles
+ [22,27,28].  The
+ enhanced
+ mass
+ transfer
+of
+ the
+ supercritical
+ extracting
+ agent
+ produces
+ a
+ very
+ fast
+ extraction
+avoiding
+ aggregation
+ phenomena.
+ This
+ technology,
+ named
+ Super-
+critical
+ Emulsion
+ Extraction
+ (SEE),
+ has
+ also
+ been
+ developed
+ in
+ a
+continuous
+ layout
+ (SEE-C)
+ using
+ a
+ high-pressure
+ packed
+ tower
+ for
+the
+ emulsion/SC-CO2 contact
+ in
+ counter-current
+ mode
+ allowing
+ a
+robust
+ and
+ reproducible
+ technology
+ for
+ microparticles
+ production
+[29,30].
+However,
+ monodisperse
+ nanoparticles
+ for
+ pharmaceutical
+ for-
+mulations
+ have
+ not
+ been
+ produced
+ until
+ now
+ by
+ SEE-C.
+ Therefore,
+the
+ aim
+ of
+ this
+ work
+ is
+ to
+ demonstrate
+ that
+ SEE-C
+ technology
+can
+ produce
+ very
+ sharp
+ or
+ even
+ monodisperse
+ biopolymer
+ sub-
+micro
+ or
+ nanoparticles.
+ To
+ obtain
+ this
+ result,
+ different
+ emulsion
+formulation
+ parameters
+ (such
+ as,
+ surfactant
+ concentration
+ and
+biopolymer
+ percentage
+ in
+ the
+ oily
+ phase)
+ and
+ different
+ emulsiﬁ-
+cation
+ techniques
+ (ultrasound
+ or
+ high
+ speed
+ emulsiﬁcation)
+ and
+their
+ interactions
+ with
+ SEE-C
+ processing
+ are
+ studied
+ to
+ obtain
+ small
+droplets
+ dimensions
+ from
+ the
+ microsize
+ to
+ the
+ nanosize
+ range.
+Poly-lactic-co-glycolic
+ acid
+ (PLGA),
+ poly-lactic
+ acid
+ (PLA)
+ and
+ poly-
+caprolactone
+ (PCL)
+ are
+ the
+ polymers
+ tested
+ to
+ produce
+ these
+ micro
+and
+ nano
+ devices.
+ SEE-C
+ operative
+ conditions
+ are
+ optimized
+ to
+ con-
+trol
+ the
+ micro
+ and
+ nano
+ device
+ sizes
+ and
+ distributions,
+ as
+ well
+ as,
+the
+ solvent
+ residue.
+ The
+ produced
+ particles
+ are
+ characterized
+ by
+morphology,
+ size
+ and
+ poly-dispersity
+ index.
+2.
+ Materials
+ and
+ methods
+2.1.
+ Materials
+CO2 (99.9%,
+ SON,
+ Naples,
+ Italy),
+ polyvinyl
+ alcohol
+ (PVA,
+ MW.:
+30,000–55,000),
+ acetone
+ (Ac,
+ purity
+ 99.9%),
+ glycerol
+ (GLY,
+ purity
+99%)
+ and
+ poly-caprolactone
+ (PCL,
+ MW:
+ 14,000),
+ were
+ purchased
+from
+ Aldrich
+ Chemical
+ Co.
+ Poly-lactic
+ acid
+ (PLA,
+ MW:
+ 28,000,
+Resomer
+ R
+ 203H),
+ PLGA
+ (PLGA,
+ 75:25
+ MW:
+ 20,000,
+ Resomer
+RG
+ 752S)
+ were
+ provided
+ by
+ Boehringer
+ and
+ used
+ as
+ received.
+Bovine
+ pancreas
+ albumin
+ (BSA,
+ purity
+ 99.9%)
+ was
+ obtained
+ by
+Sigma–Aldrich
+ Co.
+ (Milan,
+ Italy).
+2.2.
+ Emulsion
+ preparation
+To
+ obtain
+ a
+ stable
+ oil-in-water
+ emulsion
+ using
+ acetone
+ as
+ the
+ oily
+phase,
+ glycerol
+ was
+ added
+ in
+ the
+ external
+ water
+ phase.
+ Indeed,
+ it
+ is
+known
+ from
+ the
+ literature
+ that
+ when
+ acetone,
+ water,
+ and
+ glycerol
+are
+ mixed,
+ two
+ phases
+ can
+ be
+ formed
+ due
+ to
+ phase
+ separation
+ in
+an
+ appropriate
+ (and
+ relatively
+ narrow)
+ composition
+ range;
+ for
+ an
+emulsion
+ formulation,
+ the
+ ternary
+ mixture
+ composition
+ should
+ lie
+in
+ this
+ region.
+ In
+ a
+ previous
+ work
+ [30]
+ we
+ veriﬁed
+ that
+ the
+ opti-
+mal
+ oil–water
+ emulsion
+ composition
+ ratio
+ was
+ of
+ 20:80
+ with
+ the
+water
+ phase
+ formed
+ by
+ a
+ solution
+ of
+ aqueous
+ glycerol
+ (20:80
+ of
+water:glycerol);
+ this
+ emulsion
+ ratio
+ was
+ used
+ also
+ in
+ this
+ work.
+ A
+Fig.
+ 1.
+ Representation
+ of
+ the
+ SEE-C
+ apparatus
+ layout
+ and
+ emulsion
+ processing.
+known
+ amount
+ of
+ polymer
+ (from
+ 1
+ to
+ 10%
+ weight/weight,
+ w/w)
+ was
+dissolved
+ into
+ 20
+ g
+ of
+ acetone
+ to
+ form
+ an
+ organic
+ solution.
+ Then,
+ the
+solution
+ was
+ added
+ into
+ 80
+ g
+ of
+ aqueous
+ glycerol
+ (20/80
+ w/w)
+ PVA
+solution
+ to
+ form
+ an
+ emulsion
+ using
+ a
+ high-speed
+ stirrer
+ at
+ 6000
+ rpm
+for
+ 6
+ min
+ (mod.
+ L4RT,
+ Silverson
+ Machines
+ Ltd.,
+ Waterside,
+ Chesham
+Bucks,
+ UK);
+ in
+ some
+ experiments
+ the
+ emulsion
+ obtained
+ by
+ stirring
+was
+ also
+ ultrasonicated
+ to
+ reduce
+ the
+ droplet
+ sizes
+ (Digital
+ Soniﬁer
+Branson
+ mod.
+ 450,
+ ½′′diameter
+ micro-tip,
+ 20
+ kHz,
+ nominal
+ power
+400
+ Watt).
+2.3.
+ SEE-C
+ apparatus
+ description
+A
+ detailed
+ scheme
+ of
+ the
+ SEE-C
+ apparatus
+ is
+ reported
+ in
+ Fig.
+ 1.
+ It
+consisted
+ of
+ a
+ column
+ of
+ 100
+ cm
+ with
+ an
+ internal
+ diameter
+ of
+ 1.3
+ cm.
+The
+ high
+ pressure
+ column
+ was
+ formed
+ by
+ three
+ stages
+ of
+ stainless
+steel
+ cylindrical
+ elements
+ of
+ 30
+ cm
+ height,
+ connected
+ by
+ four
+ way
+cross-unions
+ and
+ packed
+ with
+ stainless
+ steel
+ packing
+ (1889
+ m−1
+speciﬁc
+ surface;
+ 0.94
+ of
+ voidage;
+ ProPak,
+ Scientiﬁc
+ Development
+Company,
+ State
+ College,
+ Pennsylvania).
+ The
+ apparatus
+ was
+ ther-
+mally
+ insulated
+ by
+ ceramic
+ cloths
+ and
+ its
+ temperature
+ proﬁle
+ was
+controlled
+ by
+ six
+ temperature
+ controllers.
+ SC-CO2 was
+ fed
+ at
+ the
+bottom
+ of
+ the
+ column
+ by
+ a
+ high-pressure
+ diaphragm
+ pump
+ (model
+Milroyal
+ B;
+ Milton
+ Roy,
+ Pont
+ Saint-Pierre,
+ France)
+ at
+ a
+ constant
+ ﬂow
+rate.
+ The
+ emulsion
+ was
+ taken
+ from
+ a
+ reservoir
+ and
+ fed
+ to
+ the
+ col-
+umn
+ by
+ a
+ high
+ pressure
+ piston
+ pump
+ (model
+ 305;
+ Gilson,
+ Villiers
+le
+ Bel,
+ France)
+ near
+ the
+ top
+ of
+ the
+ column
+ at
+ a
+ constant
+ ﬂow
+ rate.
+A
+ separator,
+ located
+ downstream
+ the
+ top
+ of
+ the
+ column,
+ was
+ used
+to
+ recover
+ the
+ extracted
+ oily
+ phase.
+ Particles
+ suspension
+ was
+ con-
+tinuously
+ collected
+ at
+ the
+ bottom
+ of
+ the
+ column
+ by
+ decompression
+using
+ a
+ needle
+ valve.
+ Particles
+ were
+ recovered
+ from
+ the
+ suspension
+by
+ centrifugation
+ at
+ 6500
+ rpm
+ for
+ 45
+ min
+ and
+ washed
+ with
+ distilled
+water.
+ They
+ were
+ then
+ recovered
+ by
+ membrane
+ ﬁltration
+ (porosity:
+0.1
+ or
+ 0.4
+ m).
+Conventional
+ Liquid
+ Emulsion
+ Extraction
+ (LEE)
+ of
+ the
+ oily
+solvent
+ was
+ performed
+ for
+ comparison
+ purposes.
+ Tipically,
+ 20
+ g
+of
+ emulsion
+ was
+ charged
+ in
+ a
+ beaker
+ and
+ the
+ solvent
+ was
+extracted
+ adding
+ dropwise
+ 60
+ g of
+ aqueous-glycerol
+ (ratio
+ 50:50
+water/glycerol),
+ the
+ resulting
+ solution
+ was
+ stirred
+ for
+ 80
+ min
+ at
+400
+ rpm;
+ subsequently,
+ 40
+ g
+ of
+ pure
+ water
+ were
+ added
+ dropwise
+and
+ the
+ extraction
+ was
+ performed
+ at
+ the
+ same
+ stirring
+ conditions
+for
+ other
+ 100
+ min.
+
+G.
+ Della
+ Porta
+ et
+ al.
+ / J.
+ of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+69
+2.4.
+ Analytical
+ methods
+The
+ morphology
+ of
+ the
+ produced
+ particles
+ was
+ studied
+ using
+ a
+Field
+ Emission-Scanning
+ Electron
+ Microscope
+ (FE-SEM
+ mod.
+ LEO
+1525;
+ Carl
+ Zeiss
+ SMT
+ AG,
+ Oberkochen,
+ Germany).
+ A
+ sample
+ of
+ pow-
+der
+ was
+ dispersed
+ on
+ a
+ carbon
+ tab
+ previously
+ stuck
+ to
+ an
+ aluminum
+stub.
+ Samples
+ were
+ coated
+ with
+ gold
+ (layer
+ thickness
+ 250 ˚A)
+ using
+a
+ sputter
+ coater
+ (mod.108
+ A,
+ Agar
+ Scientiﬁc,
+ Stansted,
+ UK).
+ Particles
+size
+ distributions
+ (PSD)
+ were
+ measured
+ by
+ dynamic
+ light
+ scatter-
+ing
+ by
+ using
+ a
+ Malver
+ Zeta
+ Sizer
+ instrument
+ (mod.
+ Zetasizer
+ Nano
+S,
+ Worcestershire,
+ UK).
+ 1
+ mL
+ of
+ the
+ produced
+ suspension
+ was
+ used
+for
+ each
+ test
+ without
+ any
+ further
+ dilution
+ step.
+Acetone
+ residues
+ in
+ the
+ suspensions
+ were
+ measured
+ to
+ deter-
+mine
+ the
+ efﬁciency
+ of
+ the
+ SEE
+ process
+ in
+ solvent
+ removal.
+ Solvent
+residues
+ were
+ measured
+ using
+ a
+ head
+ space
+ sampler
+ (mod.
+ 50
+Scan,
+ Hewlett
+ &
+ Packard)
+ coupled
+ to
+ a
+ gas
+ chromatograph
+ inter-
+faced
+ with
+ a
+ ﬂame
+ ionization
+ detector
+ (GC-FID,
+ mod.
+ 6890
+ Agilent
+Series,
+ Agilent
+ Technologies
+ Inc).
+ The
+ solvent
+ was
+ separated
+ using
+ a
+fused-silica
+ capillary
+ column
+ 30
+ m
+ length,
+ 0.55
+ mm  internal
+ diam-
+eter,
+ 0.1
+ m
+ ﬁlm
+ thickness
+ (mod.
+ DB-WAX).
+ Oven
+ temperature
+ in
+the
+ GC
+ was
+ set
+ to
+ 45 ◦C
+ for
+ 10
+ min,
+ then
+ 15 ◦C/min
+ until
+ 150 ◦C.
+The
+ inlet
+ temperature
+ was
+ set
+ at
+ 250 ◦C,
+ detector
+ at
+ 270 ◦C.
+ Helium
+was
+ used
+ as
+ carrier
+ gas
+ (5
+ mL/min),
+ split
+ mode
+ ratio
+ 1:10.
+ Head
+space
+ conditions
+ were:
+ vial
+ temperature
+ 95 ◦C,
+ loop
+ temperature
+95 ◦C,
+ transfer
+ line
+ temperature
+ 105 ◦C.
+ Head
+ space
+ samples
+ were
+prepared
+ in
+ 10
+ mL  vials
+ ﬁlled
+ with
+ 1
+ mL  of
+ suspension.
+ All
+ measure-
+ments
+ were
+ performed
+ in
+ triplicates.
+3.
+ Results
+ and
+ discussion
+3.1.
+ Deﬁnition
+ of
+ SEE-C
+ operative
+ conditions
+SEE-C
+ operating
+ conditions
+ of
+ pressure
+ and
+ temperature
+ were
+chosen
+ to
+ allow
+ the
+ selective
+ extraction
+ of
+ acetone
+ from
+ the
+ oily
+phase
+ of
+ the
+ emulsion.
+ Considering
+ the
+ high
+ pressure
+ vapor-liquid
+equilibrium
+ diagram
+ (VLE)
+ of
+ the
+ system
+ acetone/CO2 [31],
+ that
+reports
+ the
+ equilibrium
+ pressure/composition
+ values
+ at
+ given
+ tem-
+perature,
+ the
+ operating
+ point
+ was
+ selected
+ above
+ the
+ mixture
+critical
+ point
+ (MCP);
+ i.e.,
+ at
+ a
+ pressure
+ of
+ 80
+ bar
+ for
+ a
+ temperature
+ of
+38 ◦C.
+ At
+ these
+ operative
+ conditions
+ the
+ solubility
+ of
+ the
+ glycerol-
+water
+ external
+ phase
+ in
+ SC-CO2 is
+ extremely
+ small
+ and
+ a
+ selective
+extraction
+ of
+ the
+ oily
+ phase
+ of
+ the
+ emulsions
+ can
+ be
+ obtained
+ [32].
+ At
+38 ◦C
+ and
+ at
+ 80
+ bar,
+ a
+ large
+ difference
+ in
+ density
+ between
+ the
+ emul-
+sion
+ and
+ SC-CO2 is
+ also
+ obtained
+ (densities
+ are
+ about
+ 1
+ g/cm3 and
+0.31
+ g/cm3, respectively);
+ therefore,
+ an
+ effective
+ countercurrent
+ﬂow
+ was
+ obtained
+ inside
+ the
+ column
+ [33,34]. Another
+ important
+operating
+ parameter,
+ to
+ be
+ taken
+ into
+ account
+ when
+ operating
+ with
+a
+ continuous
+ extraction
+ tower,
+ is
+ the
+ liquid
+ to
+ gas
+ ratio
+ (L/G)
+ [33].
+ In
+our
+ case,
+ L/G
+ ratio
+ was
+ ﬁxed
+ at
+ 0.1,
+ as
+ a
+ consequence
+ of
+ a
+ previous
+optimization
+ of
+ the
+ tower
+ ﬂuidodynamics
+ [29]. The
+ SEE-C
+ process
+performance
+ evaluations
+ were
+ always
+ performed
+ after
+ reaching
+the
+ steady
+ state
+ conditions;
+ indeed,
+ an
+ initial
+ phase
+ of
+ the
+ pro-
+cess
+ was
+ always
+ requested
+ to
+ wet
+ the
+ column
+ packing
+ with
+ the
+surfactant
+ and
+ to
+ favor
+ particles
+ slipping
+ on
+ the
+ packing
+ surface.
+Indeed,
+ the
+ use
+ of
+ packed
+ towers
+ is
+ commonly
+ not
+ suggested
+ for
+processes
+ involving
+ the
+ presence
+ of
+ a
+ solid
+ phase
+ that
+ could
+ cover
+the
+ packing
+ surface,
+ reduce
+ the
+ mass
+ transfer
+ and
+ block
+ the
+ col-
+umn.
+ However,
+ due
+ to
+ the
+ presence
+ of
+ the
+ surfactant,
+ the
+ nano
+ and
+microparticles
+ produced
+ remained
+ suspended
+ in
+ the
+ falling
+ liquid
+ﬁlm
+ inside
+ the
+ column
+ avoiding
+ the
+ process
+ failure
+ [33]. The
+ steady
+state
+ operation
+ procedure
+ also
+ assured
+ a
+ very
+ low
+ solvent
+ residues
+(less
+ than
+ 500
+ ppm)
+ in
+ the
+ recovered
+ suspension,
+ that
+ are
+ signif-
+icantly
+ lower
+ than
+ those
+ that
+ can
+ be
+ found
+ after
+ the
+ conventional
+liquid
+ emulsion
+ extraction
+ (LEE)
+ [30]. Since
+ the
+ scope
+ of
+ this
+ work
+ is
+to
+ produce
+ nanoparticles
+ of
+ controlled
+ size
+ and
+ distribution,
+ some
+different
+ emulsiﬁcation
+ procedures
+ were
+ also
+ tested
+ such
+ as,
+ high
+speed
+ emulsiﬁcation
+ coupled
+ to
+ ultrasonication
+ steps,
+ as
+ well
+ as,
+different
+ emulsion
+ formulations
+ as
+ surfactant
+ concentrations
+ and
+biopolymer
+ content
+ in
+ the
+ oily
+ phase.
+3.2.
+ PCL
+ nanoparticles
+ production:
+ effect
+ of
+ ultrasonication
+ step
+coupled
+ to
+ SEE-C
+ processing
+An
+ oil-in-water
+ emulsion
+ was
+ prepared
+ ﬁxing
+ the
+ PCL
+ concen-
+tration
+ in
+ the
+ oily
+ phase
+ at
+ 1%
+ (w/w)
+ and
+ the
+ PVA
+ percentage
+ in
+the
+ external
+ water
+ phase
+ at
+ 1%
+ (w/w),
+ other
+ emulsion
+ formula-
+tion
+ parameters
+ were
+ described
+ in
+ the
+ methods
+ section.
+ When
+ the
+emulsion
+ obtained
+ without
+ sonication
+ step
+ was
+ processed
+ by
+ SEE-
+C,
+ near
+ monodisperse
+ PCL
+ particles
+ were
+ produced
+ with
+ a
+ MD  of
+619
+ nm
+ and
+ a
+ PDI
+ of
+ 0.1
+ nm;
+ however,
+ particle
+ mean
+ size
+ was
+ con-
+sidered
+ too
+ large
+ for
+ the
+ target
+ of
+ this
+ study;
+ therefore,
+ different
+sonication
+ amplitudes
+ and
+ durations
+ steps
+ on
+ emulsion
+ prepara-
+tion
+ were
+ explored.
+ The
+ results
+ obtained
+ in
+ term
+ of
+ MDs
+ and
+ PDIs
+of
+ the
+ nanoparticles
+ produced
+ are
+ listed
+ in
+ Table
+ 1.
+ Operating
+ at
+amplitude
+ of
+ 30%
+ for
+ 1
+ min,
+ the
+ MD  of
+ the
+ PCL
+ nanoparticles
+ was
+rapidly
+ reduced
+ to
+ 342
+ nm
+ but
+ an
+ increase
+ of
+ the
+ PDI
+ to
+ 0.16
+ nm
+was
+ observed.
+ A
+ possible
+ explanation
+ is
+ that
+ the
+ mechanical
+ energy
+dissipated
+ in
+ the
+ oil-in-water
+ system
+ contributed
+ to
+ the
+ larger
+breakage
+ of
+ the
+ droplets
+ (i.e.,
+ the
+ nanoparticles
+ mean
+ diameter
+ was
+reduced
+ from
+ 619
+ to
+ 342
+ nm),
+ but
+ it
+ gave
+ also
+ a
+ contribution
+ to
+ the
+Table
+ 1
+Mean
+ diameters
+ (MDs)
+ and
+ poly-dispersity
+ indexs
+ (PDIs)
+ of
+ various
+ biopolymers.
+ Oil-in-water
+ emulsion
+ ratio
+ 20:80;
+ oily
+ phase:
+ Acetone;
+ water
+ phase:
+ PVA
+ solution
+ in
+water/glycerol
+ (mix
+ ratio
+ 20/80).
+ Results
+ obtained
+ after
+ SEE-C
+ and
+ by
+ LEE
+ processing
+ of
+ the
+ emulsions
+ are
+ also
+ reported,
+ for
+ comparison.
+Biopolymer
+ in
+ the
+oily
+ phase
+ (%,
+ w/w)
+PVA
+ in
+ the
+ water
+phase
+ (%,
+ w/w)
+Sonication
+amplitude
+ %
+Duration
+ of
+sonication
+ (min)
+MD
+ (nm)
+
+PDI
+SEE
+
+PCL
+
+1
+
+1
+
+–
+
+–
+
+619
+
+0.10
+1
+
+1
+
+30
+
+1
+
+342
+
+0.16
+1
+
+1
+
+30
+
+2
+
+332
+
+0.11
+1
+
+1
+
+60
+
+1
+
+328
+
+0.10
+5
+
+1
+
+30
+
+1
+
+342
+
+0.19
+10
+
+1
+
+30
+
+1
+
+761
+
+0.25
+1
+
+0.6
+
+30
+
+1
+
+864
+
+0.15
+1
+
+1
+
+30
+
+1
+
+360
+
+0.16
+1
+
+2
+
+30
+
+1
+
+263
+
+0.12
+1
+3
+
+30
+
+1
+
+292
+
+0.10
+1
+
+4
+
+30
+
+1
+
+294
+
+0.12
+PLGA
+
+1
+
+1
+
+30
+
+1
+
+212
+
+0.10
+5
+1
+
+30
+
+1
+
+761
+
+0.25
+PLA
+
+1
+
+1
+
+30
+
+1
+
+233
+
+0.07
+5
+1
+
+30
+
+1
+
+241
+
+0.07
+LEE
+PCL
+
+1
+
+1
+
+30
+
+1
+
+710
+
+0.30
+
+70
+G.
+ Della
+ Porta
+ et
+ al.
+ /
+ J.
+ of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+Fig.
+ 2.
+ Particle
+ size
+ distributions
+ of
+ PCL
+ nanoparticles
+ obtained
+ by
+ SEE-C
+ and
+ by
+ LEE.
+Emulsion
+ data:
+ oil-in-water
+ emulsion;
+ PCL
+ 1%
+ (w/w)
+ and
+ PVA
+ 1%
+ (w/w);
+ ultrasounds
+operating
+ at
+ amplitude
+ of
+ 30%
+ for
+ 1
+ min.
+entropy
+ of
+ the
+ system
+ that
+ was
+ not
+ counter
+ balanced
+ by
+ a
+ larger
+stability
+ of
+ the
+ surfactant
+ layer
+ on
+ the
+ surface
+ of
+ the
+ droplets:
+ as
+a
+ consequence,
+ the
+ PDI
+ increases.
+ Increasing
+ the
+ sonication
+ ampli-
+tude
+ from
+ 30
+ to
+ 60%
+ for
+ 1
+ min
+ or
+ increasing
+ the
+ sonication
+ duration
+to
+ 2
+ min
+ at
+ 30%,
+ the
+ mean
+ size
+ of
+ the
+ resulting
+ particles
+ was
+ main-
+tained
+ at
+ 330
+ nm,
+ but
+ the
+ PDI
+ successfully
+ decreased
+ to
+ 0.10
+ and
+to
+ 0.11,
+ respectively.
+ It
+ means
+ that
+ the
+ length
+ of
+ the
+ emulsiﬁcation
+and
+ the
+ larger
+ quantity
+ of
+ energy
+ used,
+ did
+ not
+ give
+ a
+ further
+ con-
+tribution
+ to
+ droplet
+ diameters
+ reduction,
+ but
+ contribute
+ instead
+ to
+surfactant
+ layer
+ stabilization.
+The
+ emulsion
+ with
+ PCL
+ concentration
+ in
+ the
+ oily
+ phase
+ of
+ 1%
+(w/w),
+ PVA
+ percentage
+ in
+ the
+ external
+ water
+ phase
+ of
+ 1%
+ (w/w)
+and
+ produced
+ using
+ sonication
+ amplitude
+ of
+ 30%
+ for
+ 1
+ min
+ was
+formed
+ by
+ droplets
+ with
+ mean
+ size
+ of
+ 460
+ nm
+ (PDI
+ of
+ 0.18
+ nm).
+ It
+was
+ then
+ processed
+ by
+ SEE-C
+ and
+ by
+ conventional
+ liquid
+ extraction
+(LEE);
+ the
+ comparison
+ between
+ the
+ overall
+ PSD
+ curves
+ of
+ the
+nanoparticles
+ produced
+ by
+ SEE-C
+ and
+ by
+ LEE
+ is
+ illustrated
+ in
+ Fig.
+ 2,
+where
+ is
+ evident
+ that
+ even
+ if
+ the
+ same
+ emulsion
+ is
+ processed,
+ the
+distributions
+ curve
+ obtainable
+ by
+ LEE
+ moves
+ to
+ larger
+ particles
+ size
+distribution,
+ when
+ compared
+ to
+ the
+ corresponding
+ one
+ obtained
+ by
+SEE-C.
+ Indeed,
+ particles
+ with
+ a
+ MD  of
+ 710
+ nm
+ (PDI
+ of
+ 0.30
+ nm)
+ were
+obtained
+ by
+ LEE;
+ whereas,
+ particles
+ with
+ a
+ MD  of
+ 342
+ nm
+ (PDI
+ of
+0.16
+ nm)
+ were
+ produced
+ by
+ SEE-C.
+ The
+ observed
+ phenomenon
+ was
+probably
+ due
+ to
+ a
+ droplets/particles
+ aggregation
+ occurred
+ during
+the
+ liquid
+ extraction
+ process.
+ The
+ absence
+ of
+ these
+ phenomena
+during
+ the
+ fast
+ SEE-C
+ processing
+ of
+ the
+ emulsion
+ allowed
+ the
+recovery
+ of
+ more
+ engineered
+ and
+ reliable
+ product.
+3.3.
+ PCL
+ nanoparticles
+ production:
+ effect
+ of
+ polymer
+ percentage
+in
+ oily
+ phase
+Another
+
+parameter
+
+that
+
+can
+
+inﬂuence
+
+the
+
+size
+
+of
+
+the
+droplet/particle
+ dimensions
+ of
+ an
+ emulsion
+ is
+ the
+ content
+ of
+ poly-
+mer
+ in
+ the
+ oily
+ phase.
+ Therefore,
+ different
+ emulsion
+ formulations
+were
+ prepared
+ and
+ processed
+ by
+ SEE-C
+ ﬁxing
+ the
+ PVA
+ concen-
+tration
+ percentage
+ at
+ 1%
+ in
+ the
+ external
+ water
+ phase
+ and
+ the
+sonication
+ amplitude
+ at
+ 30%
+ for
+ 1
+ min;
+ the
+ percentage
+ of
+ PCL
+ was
+increased
+ from
+ 1
+ to
+ 10%
+ (w/w).
+ Examples
+ of
+ the
+ results
+ obtained
+are
+ reported
+ in
+ Fig.
+ 3a
+ and
+ b,
+ where
+ SEM
+ images
+ of
+ PCL
+ micro-
+particles
+ obtained
+ with
+ a
+ PCL
+ concentration
+ of
+ 1
+ and
+ 10%
+ (w/w)
+are
+ compared,
+ respectively.
+ In
+ both
+ cases,
+ non
+ coalescing
+ spherical
+particles
+ were
+ obtained
+ but
+ nanoparticles
+ with
+ a
+ MD
+ of
+ 761
+ nm
+ and
+PDI
+ of
+ 0.25
+ were
+ collected,
+ at
+ higher
+ polymer
+ concentration
+ in
+ the
+oily
+ phase,
+ conﬁrming
+ that
+ the
+ increase
+ of
+ PCL
+ percentage
+ in
+ the
+oily
+ phase
+ adversely
+ affect
+ either
+ the
+ diameter,
+ either
+ the
+ PDI
+ of
+the
+ produced
+ particles.
+3.4.
+ PCL
+ nanoparticles
+ production:
+ effect
+ of
+ surfactant
+concentration
+Different
+ emulsion
+ formulations
+ were
+ prepared
+ and
+ processed
+by
+ SEE-C
+ ﬁxing
+ the
+ PCL
+ concentration
+ percentage
+ at
+ 1%
+ in
+ the
+ oily
+phase
+ and
+ the
+ sonication
+ amplitude
+ at
+ 30%
+ for
+ 1
+ min;
+ the
+ percent-
+age
+ of
+ PVA
+ was
+ varied
+ from
+ 0.6
+ to
+ 4%
+ (w/w)
+ in
+ the
+ external
+ water
+phase.
+ The
+ results
+ obtained
+ in
+ terms
+ of
+ MDs
+ and
+ PDIs
+ are
+ sum-
+marized
+ Table
+ 1.
+ By
+ varying
+ the
+ PVA
+ concentration
+ from
+ 0.6
+ to
+2%
+ (w/w)
+ a
+ largely
+ reduction
+ of
+ the
+ nanoparticles
+ mean
+ size
+ was
+observed
+ from
+ 864
+ to
+ 263
+ nm
+ with
+ a
+ PDIs
+ of
+ 0.15
+ and
+ 0.12
+ nm
+respectively;
+ moreover,
+ up
+ to
+ 2%
+ (w/w)
+ of
+ PVA
+ an
+ asymptotic
+ value
+for
+ both
+ MD  and
+ PDI
+ is
+ observed.
+ These
+ results
+ are
+ clearly
+ illus-
+trated
+ Fig.
+ 4
+ that
+ shows
+ the
+ distribution
+ curves
+ of
+ the
+ nanoparticles
+obtained;
+ whereas,
+ a
+ comparison
+ of
+ the
+ MDs
+ against
+ the
+ PVA%
+ in
+water
+ is
+ reported
+ in
+ Fig.
+ 5.
+ From
+ Fig.
+ 5
+ is
+ also
+ evident
+ the
+ asymp-
+totic
+ behavior
+ of
+ the
+ nanoparticles
+ MDs
+ at
+ the
+ PVA
+ concentration
+of
+ 2
+ and
+ 4%
+ (w/w).
+ Moreover,
+ the
+ PDI
+ values
+ in
+ presence
+ of
+ larger
+PVA
+ concentrations,
+ remains
+ near
+ the
+ borderline
+ of
+ monodisper-
+sity
+ (PDI
+ ≈
+ 0.1);
+ i.e.,
+ the
+ increase
+ of
+ PVA
+ content
+ does
+ not
+ induce
+a
+ larger/uniform
+ stabilization
+ of
+ the
+ emulsion
+ droplets
+ around
+ the
+mean
+ value
+ of
+ the
+ distribution.
+ This
+ effect
+ is
+ somewhat
+ unexpected
+since
+ it
+ should
+ be
+ attended
+ that
+ larger
+ amount
+ of
+ surfactant
+ could
+allow
+ the
+ disperse
+ phase
+ to
+ organize
+ more
+ uniformly,
+ because
+ the
+larger
+ availability
+ of
+ surfactant
+ molecules
+ should
+ produce
+ very
+Fig.
+ 3.
+ SEM
+ images
+ of
+ PCL
+ nanoparticles
+ obtained
+ at
+ different
+ polymer
+ concentrations
+ in
+ the
+ oily
+ phase
+ by
+ SEE-C:
+ (a)
+ PCL
+ in
+ oily
+ phase
+ of
+ 1%
+ (w/w)
+ (b)
+ PCL
+ in
+ oily
+ phase
+ of
+10%
+ (w/w).
+ Other
+ emulsion
+ data:
+ oil-in-water
+ emulsion,
+ PVA
+ 1%
+ (w/w);
+ ultrasounds
+ operating
+ at
+ amplitude
+ of
+ 30%
+ for
+ 1
+ min.
+
+G.
+ Della
+ Porta
+ et
+ al.
+ / J.
+ of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+71
+Fig.
+ 4.
+ Particle
+ size
+ distribution
+ curves
+ of
+ PCL
+ nanoparticles
+ obtained
+ by
+ SEE-C
+ at
+different
+ PVA
+ concentrations
+ in
+ water
+ phase
+ of
+ 0.6,
+ 1
+ and
+ 2%
+ (w/w).
+ Other
+ emulsion
+data:
+ oil-in-water
+ emulsion,
+ PCL
+ 1%
+ (w/w);
+ ultrasounds
+ operating
+ at
+ amplitude
+ of
+30%
+ for
+ 1
+ min.
+Fig.
+ 5.
+ Mean
+ Diameters
+ of
+ PCL
+ nanoparticles
+ obtained
+ by
+ SEE-C
+ at
+ different
+ PVA
+concentrations
+ in
+ water
+ phase
+ (%,
+ w/w).
+ Other
+ emulsion
+ data:
+ oil-in-water
+ emulsion,
+PCL
+ 1%
+ (w/w);
+ ultrasounds
+ operating
+ at
+ amplitude
+ of
+ 30%
+ for
+ 1
+ min.
+similar
+ droplets,
+ characterized
+ by
+ the
+ same
+ number
+ of
+ surfactant
+molecules
+ around
+ them.
+3.5.
+ PLGA
+ and
+ PLA
+ nanoparticles
+ production
+PLGA
+ and
+ PLA
+ nanoparticles
+ were
+ also
+ prepared.
+ Different
+ emul-
+sion
+ formulations
+ were
+ tested
+ and
+ processed
+ by
+ SEE-C
+ ﬁxing
+ the
+biopolymer
+ concentrations
+ percentage
+ at
+ 1
+ and
+ 5%
+ (w/w),
+ in
+ oily
+phase,
+ respectively
+ and
+ the
+ PVA
+ concentration
+ in
+ the
+ external
+ water
+phase
+ at
+ 1%
+ (w/w);
+ the
+ sonication
+ amplitude
+ used
+ was
+ of
+ 30%
+ for
+1
+ min.
+ The
+ results
+ of
+ this
+ part
+ of
+ the
+ study
+ are
+ also
+ summarized
+in
+ Table
+ 1,
+ in
+ terms
+ of
+ MDs
+ and
+ PDIs
+ of
+ the
+ produced
+ nanoparti-
+cles.
+ PLGA
+ showed
+ a
+ very
+ large
+ increase
+ of
+ MD  and
+ PDI,
+ with
+ a
+ MD
+variation
+ from
+ 212
+ nm
+ (PDI
+ 0.10
+ nm)
+ to
+ 761
+ nm
+ (PDI
+ of
+ 0.25
+ nm)
+varying
+ the
+ PLGA
+ content
+ from
+ 1
+ to
+ 5%
+ (w/w),
+ respectively.
+ On
+ the
+contrary,
+ PLA
+ was
+ practically
+ insensitive
+ to
+ this
+ parameter,
+ in
+ the
+same
+ range
+ explored.
+ Indeed,
+ PLA
+ particles
+ with
+ mean
+ diameters
+of
+ 240
+ nm
+ and
+ PDI
+ of
+ 0.07
+ nm
+ were
+ produced
+ in
+ both
+ cases.
+ This
+behavior
+ can
+ be
+ evidenced
+ in
+ Figs
+ 6a,
+ b
+ and
+ 7a,
+ b where,
+ SEM
+ images
+of
+ the
+ PLGA
+ and
+ PLA,
+ nanoparticles
+ are
+ reported,
+ respectively,
+ with
+the
+ same
+ enlargement.
+ From
+ Fig.
+ 6a
+ and
+ b,
+ it
+ is
+ possible
+ a
+ qualita-
+tive
+ evaluation
+ of
+ the
+ increase
+ of
+ the
+ MD  and
+ PDI,
+ when
+ the
+ PLGA
+concentration
+ was
+ varied
+ from
+ 1
+ to
+ 5%
+ (w/w);
+ whereas,
+ the
+ two
+images
+ reported
+ in
+ Fig.
+ 7a
+ and
+ b
+ conﬁrmed
+ the
+ absence
+ of
+ an
+ evi-
+dent
+ size
+ difference
+ between
+ the
+ PLA
+ nanoparticles,
+ produced
+ at
+different
+ polymer
+ concentration.
+ A
+ comparison
+ between
+ the
+ par-
+ticle
+ size
+ distribution
+ curves
+ of
+ the
+ PLGA
+ and
+ PLA
+ nanoparticles
+produced
+ at
+ the
+ same
+ biopolymer
+ concentration
+ (1%,
+ w/w)
+ in
+ the
+oily
+ phase
+ is
+ also
+ illustrated
+ in
+ Fig.
+ 8.
+ PLA
+ nanoparticles
+ showed
+ a
+monodisperse
+ distribution
+ curve.
+Moreover,
+ as
+ described
+ above,
+ in
+ the
+ case
+ of
+ PDI
+ values
+ of
+ 0.07
+was
+ always
+ obtained,
+ despite
+ to
+ the
+ different
+ polymer
+ concentra-
+tion
+ in
+ the
+ oily
+ phase
+ (see
+ Table
+ 1).
+ Why
+ PLGA
+ and
+ PLA
+ based
+emulsions
+ shown
+ this
+ different
+ behavior
+ with
+ the
+ polymer
+ per-
+centage
+ variation
+ and,
+ particularly,
+ why
+ PLA
+ was
+ insensitive
+ to
+ this
+parameter?
+ An
+ effect
+ of
+ the
+ molecular
+ weight
+ of
+ the
+ two
+ polymers
+have
+ to
+ be
+ excluded
+ because
+ the
+ polymer
+ weights
+ used
+ are
+ similar
+(see
+ Section
+ 2).
+ A
+ possible
+ explanation
+ can
+ be
+ the
+ different
+ (equi-
+librium)
+ solubility
+ of
+ the
+ two
+ polymers
+ in
+ acetone;
+ therefore,
+ if
+ PLA
+is
+ largely
+ more
+ soluble
+ than
+ PLGA
+ (and
+ PCL),
+ its
+ percentage
+ vari-
+ation
+ used
+ in
+ the
+ present
+ work
+ could
+ not
+ inﬂuence
+ the
+ droplet
+formation
+ and
+ could
+ justify
+ also
+ the
+ smallest
+ PDI
+ observed.
+ As
+ a
+consequence,
+ we
+ may
+ also
+ conclude
+ that,
+ ﬁxed
+ the
+ others
+ parame-
+ters
+ of
+ emulsion
+ formulation,
+ when
+ the
+ oily
+ phase
+ is
+ prepared
+ as
+ a
+diluted
+ system,
+ the
+ polymer
+ concentration
+ will
+ not
+ more
+ inﬂuence
+the
+ droplet
+ dimension
+ and
+ monodispersed
+ nanoparticles
+ can
+ easily
+be
+ obtained.
+Fig.
+ 6.
+ SEM
+ images
+ of
+ PLGA
+ nanoparticles
+ obtained
+ at
+ different
+ polymer
+ concentrations
+ in
+ the
+ oily
+ phase
+ by
+ SEE-C:
+ (a)
+ PLGA
+ in
+ oily
+ phase
+ of
+ 1%
+ (w/w)
+ (b)
+ PLGA
+ in
+ oily
+ phase
+of
+ 5%
+ (w/w).
+ Other
+ emulsion
+ data:
+ oil-in-water
+ emulsion,
+ PVA
+ 1%
+ (w/w);
+ ultrasounds
+ operating
+ at
+ amplitude
+ of
+ 30%
+ for
+ 1
+ min.
+
+72
+G.
+ Della
+ Porta
+ et
+ al.
+ /
+ J.
+ of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+Fig.
+ 7.
+ SEM
+ images
+ of
+ PLA
+ nanoparticles
+ obtained
+ at
+ different
+ polymer
+ concentrations
+ in
+ the
+ oily
+ phase
+ by
+ SEE-C:
+ (a)
+ PLA
+ in
+ oily
+ phase
+ of
+ 1%
+ (w/w)
+ (b)
+ PLA
+ in
+ oily
+ phase
+ of
+5%
+ (w/w).
+ Other
+ emulsion
+ data:
+ oil-in-water
+ emulsion,
+ PVA
+ 1%
+ (w/w);
+ ultrasounds
+ operating
+ at
+ amplitude
+ of
+ 30%
+ for
+ 1
+ min.
+Fig.
+ 8.
+ Comparison
+ between
+ the
+ particle
+ size
+ distribution
+ curves
+ of
+ the
+ PLGA
+ and
+ PLA
+ nanoparticles
+ produced
+ at
+ the
+ same
+ biopolymer
+ concentration
+ of
+ 1%
+ (w/w)
+ in
+ the
+ oily
+phase.
+ PLA
+ nanoparticles
+ showed
+ a
+ monodisperse
+ distribution
+ curve.
+4.
+ Conclusions
+In
+ this
+ work,
+ SEE-C
+ technology
+ conﬁrmed
+ the
+ possibility
+ of
+ the
+continuous
+ fast
+ processing
+ of
+ emulsions,
+ eliminating
+ the
+ problems
+of
+ droplets
+ coalescence
+ and
+ solvent
+ residues.
+ The
+ nanoparticles
+obtained
+ showed
+ diameters
+ and
+ distributions
+ very
+ near
+ to
+ that
+ of
+the
+ corresponding
+ droplets
+ in
+ emulsion
+ and
+ it
+ was
+ possible
+ to
+ work
+directly
+ to
+ the
+ optimization
+ of
+ the
+ droplets
+ size
+ and
+ distribution
+ to
+produce
+ nanoparticles
+ with
+ a
+ strictly
+ control
+ of
+ their
+ PDI.
+ This
+ tar-
+get
+ was
+ not
+ simple
+ to
+ be
+ obtained
+ and
+ only
+ the
+ optimization
+ of
+several
+ emulsion
+ processing
+ parameters
+ together
+ with
+ SEE-C
+ oper-
+ative
+ conditions
+ allowed
+ the
+ production
+ of
+ monodisperse
+ or
+ near
+monodisperse
+ nanoparticles
+ of
+ the
+ various
+ polymers
+ processed.
+Different
+ polymers
+ also
+ shown
+ different
+ behaviors
+ to
+ the
+ emulsion
+formulation
+ parameters;
+ indeed,
+ different
+ PLGA
+ concentrations
+ in
+the
+ oil
+ phase
+ generated
+ very
+ different
+ MDs
+ and
+ PDIs
+ of
+ the
+ particle;
+whereas,
+ in
+ the
+ case
+ of
+ PLA
+ processing,
+ the
+ size
+ of
+ the
+ nanoparticles
+obtained
+ was
+ not
+ really
+ sensitive
+ to
+ this
+ parameter.
+ The
+ observed
+phenomenon
+ could
+ be
+ only
+ slightly
+ related
+ to
+ the
+ polymers
+ molec-
+ular
+ weight
+ (that
+ were
+ almost
+ similar),
+ but
+ could
+ be
+ connected
+ to
+the
+ different
+ polymer
+ solubility
+ in
+ the
+ oily
+ phase.
+References
+[1]
+ S.
+ Freiberg,
+ X.X.
+ Zhu,
+ Polymer
+ microspheres
+ for
+ controlled
+ drug
+ release,
+ Inter-
+national
+ Journal
+ of
+ Pharmaceutics
+ 282
+ (2001)
+ 1–18.
+[2] L.
+ Brannon-Peppas,
+ J.O.
+ Blanchette,
+ Nanoparticle
+ and
+ targeted
+ systems
+ for
+ can-
+cer
+ therapy,
+ Advanced
+ Drug
+ Delivery
+ Reviews
+ 56
+ (2004)
+ 1649–
+ 1656.
+[3] A.
+ Jaklenec,
+ A.
+ Hinckfuss,
+ B.
+ Bilgen,
+ D.
+ Ciombor,
+ R.
+ Aaron,
+ E.
+ Mathiowitz,
+ Sequen-
+tial
+ release
+ of
+ bioactive
+ IGF-I
+ and
+ TGF-beta
+ 1
+ from
+ PLGA
+ microsphere-based
+scaffolds,
+ Biomaterials
+ 29
+ (2008)
+ 1518–1525.
+[4]
+ V.
+ Lassalle,
+ M.
+ Ferreira,
+ P.L.A
+ Nano-,
+ Microparticles
+ for
+ drug
+ delivery:
+ an
+overview
+ of
+ the
+ methods
+ of
+ preparation,
+ Macromolecular
+ Bioscience
+ 7
+ (2007)
+767–785.
+[5]
+ O.
+ Benny,
+ L.G.
+ Menon,
+ G.
+ Ariel,
+ E.
+ Goren,
+ S.
+ Kim,
+ C.
+ Stewman,
+ P.M.
+ Black,
+ R.S.
+Carroll,
+ M.
+ Machluf,
+ Local
+ delivery
+ of
+ poly
+ lactic-co-glycolic
+ acid
+ microspheres
+containing
+ imatinib
+ mesylate
+ inhibits
+ intracranial
+ xenograft
+ glioma
+ growth,
+Clinical
+ Cancer
+ Research
+ 15
+ (2009)
+ 1222–1231.
+[6] S.K.
+ Sahoo,
+ V.
+ Labhasetwar,
+ Nanotech
+ approaches
+ to
+ drug
+ delivery
+ and
+ imaging,
+Drug Discovery
+ Today.
+ 8
+ (24)
+ (2003)
+ 1112–1120.
+[7]
+ S.K.
+ Sahoo,
+ F.
+ Dilnawaz,
+ S.
+ Krishnakumar,
+ Nanotechnology
+ in
+ ocular
+ drug
+ deliv-
+ery,
+ Drug
+ Discovery
+ Today
+ 13-3
+ (2008)
+ 144–151.
+[8] D.
+ Bechet,
+ P.
+ Couleaud,
+ C.
+ Frochot,
+ M.L.
+ Viriot,
+ F.
+ Guillemin,
+ M.
+ Barberi-Heyob,
+Nanoparticles
+ as
+ vehicles
+ for
+ delivery
+ of
+ photodynamic
+ therapy
+ agents,
+ Trends
+in  Biotechnology
+ 26
+ (2008)
+ 612–621.
+[9] S.M.
+ Janib,
+ A.S.
+ Moses,
+ J.A.
+ MacKay,
+ Imaging
+ and
+ drug
+ delivery
+ using
+ theranostic
+nanoparticles,
+ Advanced
+ Drug
+ Delivery
+ Reviews
+ 62
+ (2010)
+ 1052–1063.
+[10] A.
+ Kumari,
+ S.K.
+ Yadav,
+ S.C.
+ Yadav,
+ Biodegradable
+ polymeric
+ nanoparticles
+ based
+drug
+ delivery
+ systems,
+ Colloids
+ Surfaces
+ Part
+ B
+ Biointerfaces
+ 75
+ (2009)
+ 1–18.
+
+G.
+ Della
+ Porta
+ et
+ al.
+ / J.
+ of
+ Supercritical
+ Fluids
+ 76 (2013) 67–
+ 73
+73
+[11]  V.R.
+ Sinha,
+ K.
+ Bansal,
+ R.
+ Kaushik,
+ R.
+ Kumria,
+ A.
+ Trehan,
+ Poly--caprolactone
+microspheres
+ and
+ nanospheres:
+ an
+ overview,
+ International
+ Journal
+ of
+ Phar-
+maceutics
+ 278
+ (2004)
+ 1–23.
+[12]
+ W.H.
+ De
+ Jong,
+ P.J.A.
+ Borm,
+ Drug
+ delivery
+ and
+ nanoparticles:
+ applications
+ and
+hazards,
+ International
+ Journal
+ of
+ Nanomedicine
+ 3
+ (2008)
+ 133–149.
+[13]
+ T.
+ Sugimoto
+ Monodispersed
+ Particles,
+ Eds
+ Elsevier
+ New
+ York
+ 2001,
+ pp.
+ 123–127.
+[14]
+ X.
+ Zhang,
+ S.
+ Shen,
+ L.
+ Fan,
+ Uniform
+ polystyrene
+ particles
+ by
+ dispersion
+ polymer-
+ization
+ in
+ different
+ dispersion
+ medium,
+ Polymer
+ Bullettin
+ 61
+ (2008)
+ 19–26.
+[15]
+ J.M.
+ Barichello,
+ M.
+ Morishita,
+ K.
+ Takayama,
+ T.
+ Nagai,
+ Encapsulation
+ of
+hydrophilic
+ and
+ lipophilic
+ drugs
+ in
+ PLGA
+ nanoparticles
+ by
+ the
+ nanoprecipita-
+tion method,
+ Drug
+ Development
+ and
+ Industrial
+ Pharmacy
+ 25
+ (1999)
+ 471–476.
+[16] S.
+ Feng,
+ G.
+ Huang,
+ Effects
+ of
+ emulsiﬁers
+ on
+ the
+ controlled
+ release
+ of
+ paclitaxel
+(Taxol)
+ from
+ nanospheres
+ of
+ biodegradable
+ polymers,
+ Journal
+ of
+ Controlled
+Release
+ 71
+ (2001)
+ 53–69.
+[17]
+ R.
+ Vehring,
+ Pharmaceutical
+ particle
+ engineering
+ via
+ spray
+ drying,
+ Pharmaceu-
+tical Research
+ Journal
+ 25
+ (2008)
+ 999–1022.
+[18]
+ S.
+ Freitas,
+ H.P.
+ Merkle,
+ B.
+ Gander,
+ Microencapsulation
+ by
+ solvent
+ extrac-
+tion/evaporation:
+ reviewing
+ the
+ state
+ of
+ the
+ art
+ of
+ microsphere
+ preparation
+process
+ technology,
+ Journal
+ of
+ Controlled
+ Release
+ 102
+ (2005)
+ 313–332.
+[19] M.
+ Li,
+ O.
+ Rouaud,
+ D.
+ Poncelet,
+ Microencapsulation
+ by
+ solvent
+ evaporation:
+ state
+of
+ the
+ art
+ for
+ process
+ engineering
+ approaches,
+ International
+ Journal
+ of
+ Pharma-
+ceutics
+ 363
+ (2008)
+ 26–39.
+[20]
+ J.W.
+ Kim,
+ K.D.
+ Suh,
+ Highly
+ monodisperse
+ crosslinked
+ polymethylmethacrylate
+microparticles
+ by
+ dispersion
+ polymerization,
+ Colloid
+ and
+ Polymer
+ Science
+ 277
+(1999)
+ 66–72.
+[21]
+ A.
+ Matsumoto,
+ T.
+ Kitazawa,
+ J.
+ Murata,
+ Y.
+ Horikiri,
+ H.
+ Yamahara,
+ A
+ novel
+ prepa-
+ration
+ method
+ for
+ PLGA
+ microspheres
+ using
+ non-halogenated
+ solvent,
+ Journal
+of Controlled
+ Release
+ 129
+ (2008)
+ 223–227.
+[22]
+ G.
+ Della
+ Porta,
+ E.
+ Reverchon,
+ Nanostructured
+ microspheres
+ produced
+ by
+ Super-
+critical
+ Fluid
+ Extraction
+ of
+ Emulsions,
+ Biotechnology
+ and
+ Bioengineering
+ 100
+(2008)
+ 1020–1033.
+[23] F.
+ Ito,
+ K.
+ Makino,
+ Preparation
+ and
+ properties
+ of
+ monodispersed
+ rifampicin-
+loaded
+ poly(lactide-co-glycolide)
+ microspheres,
+ Colloids
+ Surfaces
+ Part
+ B
+Biointerfaces
+ 39
+ (2004)
+ 17–25.
+[24]
+ E.
+ Reverchon,
+ G.
+ Della
+ Porta,
+ P.
+ Pallado,
+ Supercritical
+ antisolvent
+ pre-
+cipitationof
+ salbutanol
+ microparticles,
+ Powder
+ Technoloygy
+ 114
+ (2001)
+17–22.
+[25]
+ E.
+ Reverchon,
+ G.
+ Della
+ Porta,
+ Terbutaline
+ microparticles
+ suitable
+ for
+ aerosol
+delivery
+ produced
+ by
+ supercritical
+ assisted
+ atomization,
+ International
+ Journal
+of Pharmaceutics
+ 1
+ (2003)
+ 1–9.
+[26]
+ G.
+ Della
+ Porta,
+ S.F.
+ Ercolino,
+ L.
+ Parente,
+ E.
+ Reverchon,
+ Corticosteriod
+ micro-
+particles
+ produced
+ by
+ supercritical
+ assisted
+ atomization:
+ process
+ optimization,
+product
+ characterization
+ and
+ in
+ vitro
+ performance,
+ Journal
+ of
+ Pharmaceutical
+Science
+ 95-9
+ (2006)
+ 2062–2077.
+[27]
+ B.Y.
+ Shekunov,
+ P.
+ Chattopadhyay,
+ J.
+ Seitzinger,
+ R.
+ Huff,
+ Nanoparticles
+ of
+ poorly
+water-soluble
+ drugs
+ prepared
+ by
+ Supercritical
+ Fluid
+ Extraction
+ of
+ Emulsions,
+Pharmaceutical
+ Research
+ Journal
+ 23-1
+ (23)
+ (2006)
+ 196–200.
+[28] M.
+ Furlana,
+ J.
+ Kluge,
+ M.
+ Mazzotti,
+ M.
+ Lattuada,
+ Preparation
+ of
+ biocompatible
+magnetite–PLGA
+ composite
+ nanoparticles
+ using
+ Supercritical
+ Fluid
+ Extraction
+of Emulsions,
+ Journal
+ of
+ Supercritical
+ Fluids
+ 54
+ (2010)
+ 348–354.
+[29]
+ G.
+ Della
+ Porta,
+ N.
+ Falco,
+ E.
+ Reverchon,
+ Continuous
+ Supercritical
+ Emulsions
+Extraction:
+ a
+ new
+ technology
+ for
+ biopolymer
+ microparticles
+ production,
+Biotechnology
+ and
+ Bioengineering
+ 108
+ (2011)
+ 676–686.
+[30] G.
+ Della
+ Porta,
+ R.
+ Campardelli,
+ N.
+ Falco,
+ E.
+ Reverchon,
+ PLGA
+ microdevices
+ for
+retinoids
+ sustained
+ release
+ produced
+ by
+ Supercritical
+ Emulsion
+ Extraction:
+continuous
+ versus
+ batch
+ operation
+ layouts,
+ Journal
+ of
+ Pharmaceutical
+ Science
+100  (2011)
+ 4357–4367.
+[31]
+ Y.
+ Sato,
+ N.
+ Hosaka,
+ K.
+ Yamamoto,
+ H.
+ Inomata,
+ Compact
+ apparatus
+ for
+ rapid
+ mea-
+surement
+ of
+ high-pressure
+ phase
+ equilibria
+ of
+ carbon
+ dioxide
+ expanded
+ liquids,
+Fluid
+ Phase
+ Equilibria
+ 296
+ (2010)
+ 25–29.
+[32]
+ A.N.
+ Sabirzyanov,
+ A.P.I.I’in,
+ A.R.
+ Akhunov,
+ F.M.
+ Gumerov,
+ Solubility
+ of
+ water
+ in
+supercritical
+ carbon
+ dioxide,
+ High
+ Temperature
+ 40
+ (2002)
+ 203–206.
+[33]
+ G.
+ Brunner,
+ Counter-current
+ separations,
+ Journal
+ of
+ Supercritical
+ Fluids
+ 47
+(2009)
+ 574–582.
+[34]
+ N.
+ Falco,
+ E.
+ Reverchon,
+ G.
+ Della
+ Porta,
+ Continuous
+ Supercritical
+ Emulsions
+Extraction:
+ packed
+ tower
+ characterization
+ and
+ application
+ to
+ PLGA
+ + insulin
+microspheres
+ production,
+ Industrial
+ Engineering
+ and
+ Chemistry
+ Research
+ 51
+(2012)
+ 8616–8623.

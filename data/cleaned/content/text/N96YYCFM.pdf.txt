@@ -1,0 +1,1661 @@
+RESEARCH PAPER
+Synthesis and Statistical Optimization of Poly (Lactic-Co-Glycolic
+Acid) Nanoparticles Encapsulating GLP1 Analog Designed
+for Oral Delivery
+Ruba Ismail1 & Tamás Sovány1 & Attila Gácsi1 & Rita Ambrus1 & Gábor Katona1 & Norbert Imre2 & Ildikó Csóka1
+# The Author(s) 2019
+ABSTRACT
+Purpose To design and stabilize Liraglutide loaded poly (lac-
+tic-co-glycolic acid) nanoparticles (PLGA NPs) proper for oral
+administration.
+Methods PLGA NPs were prepared by means of double
+emulsion solvent evaporation method and optimized by ap-
+plying 7-factor 2-level Plackett-Burman screening design.
+Results Spherical shaped NPs with homogeneous distribu-
+tion, 188.95 nm particle size and 51.81% encapsulation effi-
+ciency were obtained. Liraglutide was successfully entrapped
+in the NPs while maintaining its native amorphous nature,
+and its structural integrity as well.
+Conclusion Lira-PLGA NPs with the required Critical Quality
+Attributes (CQAs) were successfully designed by implementing a
+7-factor 8-run Plackett Burman design into the extended
+Quality by Design (QbD) model, to elucidate the effect of for-
+mulation and process variables on the particle size, size-distribu-
+tion, encapsulation efficiency and surface charge. As the devel-
+oped nanoparticles maintained the native structure of the active
+pharmaceutical ingredient (API), they are promising composi-
+tions for the further development for the oral delivery of Lira.
+KEY WORDS liraglutide . oral delivery . plackett Burman
+design . PLGA nanoparticles . quality by design
+INTRODUCTION
+A current scenario in pharmaceutical development is inclined
+towards employing rational Quality by Design (QbD) strategy
+(1,2) which has been adopted by the pharmaceutical industry
+to guarantee the quality of drug products (3). One of the key
+elements of QbD is to identify and thoroughly understand
+formulation and process variables and their effects on the crit-
+ical quality attributes (CQAs), followed by the optimization of
+these variables by applying an appropriate statistical design of
+experiment (DOE) which enables the researcher to minimize
+the number of runs and helps in identifying the most influen-
+tial parameters namely; critical process parameters (CPPs)
+and critical material attributes (CMAs) which may highly im-
+pact the quality of the product. In addition to that,
+DOE helps in identifying the optimum level of each
+factor that assures the desired CQAs values, to comply
+with the desired Quality Target Product Profile (QTPP)
+(4). One of the important questions when implementing
+DoE methodology is the selection of adequate experi-
+mental design.that matches the experimental objective.
+When estimating the main effects of large number of
+factors are of interest to be investigated, screening de-
+signs such as 2- level Plackett-Burman (PB) is applied.
+The main advantage of applying such screening designs
+is the minimum number of observations needed to cal-
+culate the effect of several variables. If providing further
+information on direct and pairwise-interaction effects
+and curvilinear variable effects is desired, second order
+designs: central composite designs (CCD) and Box
+Behncken designs (BBD) are the most widely applied
+ones (5,6). CCD provides better prediction capability than
+BBD, while the latter requires fewer runs in case of 3 or 4
+variables and is applied when combined factor extremes
+should be avoided.
+Liraglutide (Lira) or NN2211 is a recombinant palmityl-
+acylated derivative of glucagon like peptide −1 (GLP1), which
+Electronic supplementary material The online version of this article
+(https://doi.org/10.1007/s11095-019-2620-9) contains supplementary
+material, which is available to authorized users.
+* Ildikó Csóka
+csoka@pharm.u-szeged.hu
+1
+University of Szeged, Faculty of Pharmacy, Institute of Pharmaceutical
+Technology and Regulatory Affairs, Eötvös u. 6, Szeged H-6720, Hungary
+2
+University of Szeged, Faculty of Pharmacy, Institute of Pharmaceutical
+Analysis, Somogyi u. 4, Szeged H-6720, Hungary
+https://doi.org/10.1007/s11095-019-2620-9
+Pharm Res (2019) 36: 99
+Received: 17 January 2019 /Accepted: 1 April 2019 /Published online: 13 May 2019
+
+was approved for the treatment of T2DM (6) in addition to
+chronic weight management (7). Lira is currently administered
+once daily through subcutaneous injection which is an invasive
+route known to be limited by insufficient patient adherence to
+the therapy in addition to the fact that this therapeutic route is
+not strictly mimicking the physiological secretion route
+of GLP1 (8). The oral route should be regarded as the
+most desirable choice for the delivery of Lira (9), and
+realizing the dream of administering a GLP1 analog
+such as Lira orally is still an elusive goal despite all advances
+in peptide delivery systems.
+Based on our careful evaluation of literature regarding the
+emerging developments in oral delivery of antidiabetic pep-
+tides (10,11), we found out that PLGA nanoparticles showed
+promising results in improving the stability of peptides
+through the GIT in addition to other merits of nanocarrier
+systems, which can all lead to enhancing the oral bioavailabil-
+ity of these peptides (12). Among the applied techniques for
+preparing PLGA NPs, the double emulsion solvent
+evaporation method was found to be the most prefera-
+ble one, which has been efficiently used for encapsulat-
+ing peptides and proteins (13–15). Nevertheless, the
+physicochemical properties of nanoparticles may be af-
+fected by various formulation and process parameters, which
+influence the product quality.
+To the best of our knowledge, there is no previously report-
+ed work considering the application of DOE as a part of the
+QbD strategy for the development of PLGA NPs encap-
+sulating GLP-1 analog. Here we focus on the optimiza-
+tion of the size and EE of the NPs as a crucial demand
+along with the polydisperisity index (PDI) and surface
+charge. The design space (DS) was established to opti-
+mize the level of each of the examined factors, then
+surface morphology, compatibility studies as well as
+structural and conformational stability tests of Lira en-
+capsulated in the optimized formula were conducted on
+the optimized formula.
+MATERIALS AND METHODS
+Materials
+Liraglutide was purchased from Xi’an Health Biochem
+Technology Co., Ltd. (China), Poly(lactide-co-glycolide)
+(PLGA 50:50, Mw = 30,000–60,000 Da), PVA (MOWIOL
+4–98, MW~27,000 Da) which is a soluble polymer, and
+D-(+)-Trehalose dihydrate (MW = 378.33 g/mol) were
+purchased from Sigma Aldrich (Germany). D-(−)-
+Mannitol was purchased from Molar Chemicals Ltd.
+(Hungary). Sodium acetate anhydrous was purchased
+from Scharlau Chemie S.A. (Spain). Ethyl acetate used
+for dissoloving PLGA was from REANAL Labor
+(Hungary). All other chemicals in the study were of analytical
+reagent grade.
+Methods
+Preparation of Liraglutide Loaded PLGA NPs Using Double
+Emulsion Solvent Evaporation Method
+The preparation of Liraglutide loaded PLGA nanoparticles
+was carried out by means of the double emulsion W1/O/W2-
+solvent evaporation method, which is the most commonly
+used technique for the encapsulation of peptide drugs within
+PLGA NPs due to its simplicity and high encapsulation effi-
+ciency (15,16). The amount of PLGA (30 or 60 mg) was dis-
+solved in ethyl acetate at room temperature to form the or-
+ganic phase. Ethyl acetate was the organic solvent of choice
+here as it was reported to increase the rate of encapsulation of
+hydrophilic molecules (16). The inner aqueous phase of 0.5–
+5 mg liraglutide was dissolved in 0.5 ml of 1% sodium acetate
+aqueous solution, it was slowly added to the organic phase,
+then water/oil primary emulsion was formed upon sonication
+at the power of 90 W for 30 s using a probe sonicator in ice
+bath. The obtained emulsion was re-emulsified with external
+aqueous phase containing 0.5–2% PVA as stabilizer by soni-
+cation in ice bath at the power of 90 W for 0.5–2 min using the
+probe sonicator. The obtained water-in-oil-in-water (W1/O/
+W2) double emulsion was subjected to magnetic stirring at
+room temperature over the night to allow the complete evap-
+oration of ethyl acetate. The nanoparticles were then
+collected by centrifugation for 15 min at 16500 rpm,
+washed three times with distilled water, and resuspend-
+ed in deionized water.
+For the lyophilization process, 1.5 ml of each nanoparticles
+suspension was poured into semi-stoppered glass vials
+with slotted rubber closures and freeze-dried at −40°C
+for 72 h. 5–10% mannitol or trehalose was added as
+lyoprotectants. The chamber pressure was maintained at
+0.01 mbar, and the process was controlled by (Scanlaf
+CTS16a02) software.
+Design of Experiment Study Using Plackett Burman Design
+PB design is the most widely used method among the various
+screening designs used for the determination of the most in-
+fluential factors affecting the pharmaceutical development as
+it has many advantages: it screens a large number of variables
+and identifies the highly influential ones with relatively few
+runs, while assuring a good degree of accuracy. PB design with
+a total of 8 runs involving 7 independent variables was carried
+out using STATISTICA 13 software, and analysis of variance
+(ANOVA) was applied to determine the statistical significance
+of each model coefficient, which was significant at 95% level
+(P < 0.05).
+99
+Page 2 of 16
+Pharm Res (2019) 36: 99
+
+The linear equation of this model is:
+Y ¼ b0 þ b1X1 þ b2X2 þ b3X3 þ b4X4 þ b5X5 þ b6X6
+þ b7X7
+where Y is the response, b0 is the constant and b1, b2…b7 are
+the coefficient of factors X1, X2…X7. It is known that a pos-
+itive value of the regression coefficient is an indicator of a
+positive effect of the factor (X) on the response (Y), while a
+negative value refers to an inverse relation between the exam-
+ined variable and the response (17).
+Depending on our previous risk assessment-based investi-
+gation (18–20), the selected independent formulation and pro-
+cess variables were: PLGA amount (X1), liraglutide amount
+(X2), 2nd sonication time (X3), PVA concentration (X4),
+lyoprotectant type (X5), lyoprotectant concentration (X6)
+and external aqueous phase to organic phase w2/o ratio
+(X7). Particle size (Y1), PDI (Y2), EE (Y3) and zeta potential
+(Y4) were selected as dependent variables. The examined low-
+er and upper levels of the independent factors X1-X7
+(Table 1) were also determined depending on preliminary
+experiments and literature survey.. The design was val-
+idated by 3 extra center checkpoint formulations and
+the bias (%) between predicted and observed values of
+response was calculated. The optimized formulation was
+prepared within design space (DS) and compared with pre-
+dicted results of the responses.
+Characterization of the Prepared Liraglutide Loaded PLGA NPs
+Particle Size, Size Distribution and Surface Charge
+Measurements. Approximately 5 mg of the prepared
+freezedried NPs was dispersed in 5 ml of double distilled water
+and sonicated to minimize the possible inter-particle interac-
+tions. The hydrodynamic diameter (Z-average), PDI and zeta
+potential of reconstituted NPs were measured in folded capil-
+lary cell by using Malvern Nano ZS Zetasizer (Malvern
+Instruments Ltd. UK) equipped with He-Ne laser(633 nm).
+The instrument allows the particle size measurement in the
+range of 0.3 nm-10.0 μm using patented NIBS (Non-Invasive
+Back Scatter) technology, with high accuracy of ± 2%. The
+samples were measured at 25°C, the refractive index
+was 1.445, and the number of scans was 17. All the
+measurements were conducted in triplicate and the average
+value of each was used.
+Encapsulation Efficiency (EE). The encapsulation efficiency of
+liraglutide encapsulated in PLGA NPs was determined direct-
+ly using the centrifugation method. In this method, 20 mg
+from each NPs formulation was dissolved in 2 ml of DCM,
+then liraglutide was extracted into 4 ml of PBS (pH = 8.1),
+soaked for 30 min and then centrifuged at 16500 rpm at
+4οC for 15 min. The supernatant was then collected and the
+amount of encapsulated liraglutide in the supernatant was
+measured using the RP-HPLC method. Samples were run
+in triplicate.
+The percentage of EE was calculated using the following
+equations:
+EE% ¼ encapsulated amount of liraglutide=
+total amount of liraglutide added* 100:
+Chromatographic Equipment and Conditions. Reversed phase
+HPLC (Shimadzu Corporation, NEXERA X2, Tokyo,
+Japan) method was developed in our lab to analyze liraglutide.
+A Kinetex ® C18 column with dimensions of (5 μm,
+150*4.6 mm, (Phenomenex, USA) was used as a stationary
+phase. The flow rate of 1.5 ml/min was set over 15 min with a
+mobile phase comprised of 0.02 M aqueous KH2PO4 solu-
+tion (pH = 7.0, solvent A) and acetonitrile (solvent B). The
+mobile phase was pumped in a gradient mode as it was
+changed from 80:20 (A:B, v/v) to 30:70 (A:B, v/v) in 12 min
+then going back to 80:20 (v/v) between 12.1–15 min. The
+column temperature was set to 40°C, and the sample tray
+temperature was set to 15°C. Fifty microliters of sample vol-
+ume was injected. The wavelength of UV detection was
+214 nm.. The retention time of liraglutide is 8.65 min.
+In our HPLC method, some chromatographic parame-
+ters have been calculated. The limit of detection (LOD)
+value of the liraglutide is 0.175 ppm, the limit of quan-
+tification (LOQ) value is 0,530 ppm, respectively.
+Capacity factor (k’) for liraglutide is 5.20, the asymme-
+try factor of the peak of liraglutide showed 1.40 value,
+respectively. The theoretical plate (N) value is 146,620,
+calculated by the Ph.Eur. guideline. The regression of
+the linearity (R2) of the liraglutide calibration curve was
+0.996, respectively.
+Scanning Electron Microscopy Measurements (SEM). To inves-
+tigate the surface morphology, sphericity, and discreteness of
+the freeze dried NPs containing lira, scanning electron
+Table 1
+Levels of the Selected Critical Factors
+Critical factor
+Low level
+High level
+PLGA amount (mg)
+X1
+30
+60
+Liraglutide amount (mg)
+X2
+0.5
+5
+2nd sonication time (min)
+X3
+0.5
+2
+PVA (%)
+X4
+0.5
+2
+Lyoprotectant type
+X5
+Mannitol
+Trehalose
+Lyoprotectant (%)
+X6
+5
+10
+W2/O ratio
+X7
+2
+5
+Pharm Res (2019) 36: 99
+Page 3 of 16
+99
+
+microscopy (SEM) (Hitachi S4700, Hitachi Scientific Ltd.,
+Tokyo, Japan) at 10 kV was used. The samples were coated
+with gold-palladium (90 s) with a sputter coater (Bio-Rad SC
+502, VG Microtech, Uckfield, UK) using an electric potential
+of 2.0 kV at 10 mA for 10 min. The air pressure was 1.3–
+13.0 mPa. 3 repetitions of the optimized formula were tested
+by SEM technique and images were captured from different
+surface regions of each sample and at two different magnifi-
+cations (×15,000, ×45,000).
+Compatibility Studies
+To investigate the physicochemical compatibility between the
+drug and the polymer in the prepared PLGA NPs, FTIR,
+DSC and XRD analysis were conducted.
+Fourier Transform Infrared Spectroscopy (FTIR). The FT-IR
+spectra of pure Lira, PLGA, Lira free/loaded PLGA
+NPs were recorded using FT-IR spectrometer (Thermo
+Nicolet AVATAR; LabX Midland, ON, Canada) in the
+range of 4000 and 400 cm−1 with an optical resolution
+of 4 cm−1. The sample was mixed with 150 mg of dry
+KBr and compressed to prepare the pellet.
+Differential Scanning Calorimetry (DSC). To define the physical
+state of the peptide drug in the nanoparticles and assess
+any possible intermolecular interaction between the drug
+and the polymer in the nanoparticles, DSC studies of
+pure Lira, PLGA, Lira free/loaded PLGA NPs were
+performed using (Mettler Toledo TG 821e DSC
+Mettler Inc., Schwerzenbach, Switzerland). Accurately
+weighed samples (3–5 mg) were sealed in an aluminum
+pan and an empty pan was used as a reference. The
+samples were analyzed at a scanning temperature from
+25 to 300°C at a heating rate of 10°C/min under ni-
+trogen purge. Data analysis was performed using the STARe
+software (Mettler Toledo Mettler Inc., Schwerzenbach,
+Switzerland).
+X-Ray Diffraction Study (XRD). XRD is a useful technique ap-
+plied herein to characterize the physical state of liraglutide
+entrapped in PLGA NPs and further to confirm the
+stability attributed to polymer-drug interaction. Powder
+X-ray diffraction (XRD) patterns of pure Lira, PLGA,
+Lira free/loaded PLGA NPs were obtained using an X-
+ray powder diffraction (XRPD) BRUKER D8 Advance
+X-ray diffractometer (Bruker AXS GmbH, Karlsruhe,
+Germany), supplied with a Cu K λ1 radiation source
+(λ = 1.54056 A°), with a voltage of 40 kV and a current of
+40 mA, in flat plate θ/2θ geometry, over the 2θ ranges 3–40°,
+with a scan time of 0.1 s at step size of 0.007°. The sample was
+placed on a quartz holder and measured at ambient temper-
+ature and humidity.
+Stability of Lira Encapsulated in PLGA NPs
+Electrospray Ionization Mass Spectrometry. Electrospray
+Ionization Mass Spectrometry (ESI-MS) is a valuable tool to
+be used to provide information about the molecular weight of
+native Lira and compare it to Lira loaded in NPs. Lira was
+characterized by an Agilent 1100 LC-MSD trap mass spec-
+trometer equipped with an electrospray ion source.
+Circular Dichroism. CD was performed to evaluate the confor-
+mational stability of Lira loaded into the prepared polymeric
+NPs. CD spectra were obtained with a Jasco J-1100 spectro-
+polarimeter (Tokyo, Japan). Aliquot of each of PBS (pH =
+8.1), native Lira in PBS and Lira extracted from NPs in PBS
+was placed in a 10 mm pathway Far-UV quartz cuvette and
+the Far-UV CD spectra were collected by an PM-539 CD
+spectrometer. Spectra were collected at room temperature
+over the wavelength range of 260 nm to 195 nm with
+0.2 nm interval. Ellipticity was recorded at scanning speed of
+100 nm/min and 1.00 nm band with 5 accumulations. PBS
+solution subtraction, noise reduction and data analysis were
+performed using standard analysis and temperature/
+wavelength analysis programs (Jasco).
+RESULTS AND DISCUSSION
+Placket Burman Design: Risk Analysis
+The QTPP that encompasses the desired CQAs was defined
+in our previous paper as following: stable, homogeneous and
+spherical shaped freeze dried NPs with particle size of 100-
+300 nm and maximum EE. Risk assessment was also conduct-
+ed (using LEAN-QbD software) for ranking and prioritizing
+CMAs and CPPs likely to have an impact on the quality of
+Lira loaded PLGA NPs (20) and the highly influential param-
+eters were prioritized and subjected to subsequent screening
+using a seven-factor, two-level, eight-run PB screening design
+(Table 2) in order to minimize their risk to a low level by
+controlling these variables in a specific accepted range.
+Herein, the possible effects of these formulation and pro-
+cess parameters on four responses namely: mean particle size,
+PDI, EE and zeta potential were investigated by applying the
+PB screening design where the experimental data were vali-
+dated by ANOVA for each factor. ANOVA parameters for
+predicting mean particle size (Y1), PDI (Y2), EE (Y3) and Zeta
+potential (Y4) are presented in Supplemental Table 1.Surface
+response plots are also useful diagrammatic representation of
+the values of the response, to project the significance of effects
+for each variable and can explain the relationship between
+tested independent factors and dependent responses. A
+color-scale object along with the surface plot serves as a leg-
+end, and the value of the response is dependent on the gradual
+99
+Page 4 of 16
+Pharm Res (2019) 36: 99
+
+color. Based on this color gradient, these plots can present the
+change in response value with different levels of the indepen-
+dent variable.
+Influence of Investigated Parameters on the Z-Average
+Size, PDI, EE and Zeta Potential
+Depending on the selected parameters levels, the Z-average
+ranged between 160.1 ± 5.6 nm and 235. ± 5.3 (Table 3). The
+corresponding coefficients are summarized in Supplemental
+Table 2, where the factors a P value<0.05 are regarded as
+highly significant, while the ones having nonsignificant
+response coefficients with a P value>0.05 are least con-
+tributing in the prediction of mean particle size. The
+polynomial equation obtained for the fitted full model
+explaining the effect of formulation and process variables on
+the mean particle size is:
+Y1¼197:8021þ9:5079X1 þ 1:5304X2 þ 7:7638X3
+−16:9754X4−5:4712X5−3:5429X6−7:0791X7
+with R2 ¼ 0:9745; adjusted R2 ¼ 0:9609;
+and Mean square MS
+ð
+Þ ¼ 22:3978
+According to this polynominal equation and the Pareto
+chart (Fig. 1), the most influential factors in terms of particle
+size are the PVA concentration, PLGA amount followed by
+sonication time and W2/O ratio at almost the same level of
+significance. Then the next important variables include
+lyoprotectant type and concentration. The tested levels of
+Lira amount were observed to have a non-statistically signifi-
+cant effect on the mean particle size.
+In all prepared formulations, NPs exhibited a practically
+monodisperse or narrow distribution (21) as PDI was ranged
+from 0.1 ± 0.003 in PBD-F6 to 0.22 ± 0.01 in PBD-F3
+(Table 3) evidencing that the obtained NPs are homogeneous
+and stable with no aggregation. Figure S1 shows an example
+of PDI = 0.07 with Z-average = 157.1 nm obtained for PBD-
+F1. The polynomial equation obtained for the full model
+describing the effect of formulation and process variables on
+the PDI value is:
+Y2 ¼ 0:1568−0:0061X1 þ 0:0312X2 þ 0:0005X3
+−0:0013X4−0:0032X5−0:0031X6 þ 0:0291X7
+with R2 ¼ 0:9235; adjusted R2 ¼ 0:8828;
+and Mean square MS
+ð
+Þ ¼ 0:0003
+Y2 ¼ 0:1568−0:0061X1 þ 0:0312X2−0:0032X5
+−0:0031X6 þ 0:0291X 7………Redcuced model
+ð
+Þ
+with R2 ¼ 0:92256; adjusted R2 ¼ 0:89522; and
+Mean square MS
+ð
+Þ ¼ 0:0002:
+The statistical analysis (Table 3S) along with the Pareto
+chart (Fig. 3) revealed that only two of the examined CMAs
+namely Lira amount and W2/O ratio were observed to have a
+significant effect on the PDI value.
+Depending on the tested two levels of each factor, the re-
+sults showed that EE varied between 20.1 ± 1.7 in formulation
+PBD-F1 and 43.5 ± 3.3in PBD-F4 (Table 3).The polynomial
+equation obtained for the fitted full model showing the impact
+of the seven examined variables on EE is:
+Table 3
+Experimental Responses Results in PBD
+Run code
+Z-AVE
+(nm)
+PDI
+EE%
+Z-potential
+(mV)
+PBD-F1
+160.1 ± 5.6
+0.10 ± 0.03
+20.1 ± 1.7
+−30.6 ± 1.8
+PBD-F2
+209.8 ± 8.01
+0.15 ± 0.01
+36 ± 1.25
+−25 ± 1.6
+PBD-F3
+190.0 ± 2.8
+0.23 ± 0.01
+41 ± 2.46
+−27.3 ± 0.7
+PBD-F4
+200.2 ± 3.5
+0.16 ± 0.03
+43.5 ± 3.34
+−31.2 ± 1.2
+PBD-F5
+179.5 ± 3.8
+0.17 ± 0.01
+32 ± 4.03
+−23.8 ± 1
+PBD-F6
+235.7 ± 5.3
+0.10 ± 0.003
+28.9 ± 2.05
+−29.2 ± 0.4
+PBD-F7
+223.6 ± 3.7
+0.17 ± 0.02
+22.2 ± 2.12
+−30.4 ± 0.
+PBD-F8
+183.5 ± 3.03
+0.20 ± 0.01
+21 ± 1.51
+−26 ± 0.2
+Table 2
+The Input Factor Levels in 7 Factor, 2 Level, 8 Run PBD
+Run code
+PLGA (mg)
+Lira (mg)
+2nd sonication time (min)
+PVA (%)
+Lyoprotectant type
+Lyoprotectant (%)
+W2/O ratio
+PBD-F1
+30
+0.5
+0.5
+2
+Trehalose
+10
+2
+PBD-F2
+60
+0.5
+0.5
+0.5
+Mannitol
+10
+5
+PBD-F3
+30
+5
+0.5
+0.5
+Trehalose
+5
+5
+PBD-F4
+60
+5
+0.5
+2
+Mannitol
+5
+2
+PBD-F5
+30
+0.5
+2
+2
+Mannitol
+5
+5
+PBD-F6
+60
+0.5
+2
+0.5
+Trehalose
+5
+2
+PBD-F7
+30
+5
+2
+0.5
+Mannitol
+10
+2
+PBD-F8
+60
+5
+2
+2
+Trehalose
+10
+5
+Pharm Res (2019) 36: 99
+Page 5 of 16
+99
+
+Y3 ¼ 30:548 þ 1:7683 X1 þ 1:3458X2−4:5825X3
+−1:4458X4−2:8408X5−5:7483X6 þ 1:915X7
+with R2¼0:9471; adjusted R2 ¼ 0:9189;
+and Mean square MS
+ð
+Þ ¼ 6:5021:
+This equation along with the Pareto chart (Fig. 1) and
+statistical analysis (Table 4S) show that the lyoprotectant %,
+2nd sonication time and lyoprotectant type are the most high-
+ly risky factors in terms of EE. This is followed by other factors
+which all show a significant impact on the amount of Lira
+encapsulated in the PLGA NPs.
+The zeta potential was also monitored during the optimi-
+zation steps and its values ranged from-31.2 ± 1.2 mV in
+PBD-F4 to −23.8 ± 0.95 mV in PBD-F5 (Table 3), and these
+expected negative values are attributed to the presence of
+carboxyl group end on PLGA. Figure S2 depicts the result
+of zeta potential obtained for formulation PBD-F1 as an ex-
+ample. The full model describing the effect of formulation and
+process variables on the zeta potential is:
+Y4¼−28:0596−0:0154X1−0:9071X2 þ 0:4496X3
+−0:0646X4−0:4679X5−0:1663X6 þ 2:2846X7
+with R2 ¼ 0:9001; adjusted R2 ¼ 0:8468;
+and Mean square MS
+ð
+Þ ¼ 1:1599
+Y4 ¼ −28:0596−0:9071X2 þ 0:4496X3−0:4679X5
+−0:1663X6 þ 2:2846X7…………Reduced model
+ð
+Þ
+with R2 ¼ 0:89946; adjusted R2 ¼ 0:86397;
+and Mean square MS
+ð
+Þ ¼ 1:0:297:
+It is obvious from the statistical analysis (Table 5S) and the
+Pareto chart (Fig. 1) that only the W2/O ratio and the
+lira amount had a significant impact (P < 0.05) on the
+surface charge of PLGA NPs. Other examined variables
+were observed to have only a non-significant effect on
+surface charge.
+The effect of the above-explained variables on Y1,Y2,Y3
+and Y4 is discussed point by point in the following:
+Pareto Chart of Standardized Effects; Variable: SIZE
+-1.123
+1.59
+-3.67
+-5.66
+-7.35
+8.04
+9.84
+-17.5
+p=.05
+Standardized Effect Estimate (Absolute Value)
+(1)Replicat
+(3)Lira amount
+(7)Lyoprotectant conc.
+(6)Lyoprotectant type
+(8)W2/O
+(4)Sonication time
+(2)PLGA amount
+(5)PVA %
+Pareto Chart of Standardized Effects; Variable: PDI
+.15
+-.41
+-.95
+-.97
+1.76
+-2.12
+8.94
+9.57
+p=.05
+Standardized Effect Estimate (Absolute Value)
+(4)Sonication time
+(5)PVA %
+(7)Lyoprotectant conc.
+(6)Lyoprotectant type
+(1)Replicat
+(2)PLGA amount
+(8)W2/O
+(3)Lira amount
+Pareto Chart of Standardized Effects; Variable: EE
+-.13
+2.59
+-2.78
+3.4
+3.68
+-5.46
+-8.80
+-11.04
+p=.05
+Standardized Effect Estimate (Absolute Value)
+(1)Replicat
+(3)Lira amount
+(5)PVA %
+(2)PLGA amount
+(8)W2/O
+(6)Lyoprotectant type
+(4)Sonication time
+(7)Lyoprotectant conc.
+Pareto Chart of Standardized Effects; Variable: ZETA POTENTIAL
+-.07
+-.29
+-.76
+.84
+2.05
+-2.13
+-4.13
+10.4
+p=.05
+Standardized Effect Estimate (Absolute Value)
+(2)PLGA amount
+(5)PVA %
+(7)Lyoprotectant conc.
+(1)Replicat
+(4)Sonication time
+(6)Lyoprotectant type
+(3)Lira amount
+(8)W2/O
+Fig. 1 Pareto charts of the effects of the examined independent variables on Z-average size (Y1), PDI (Y2), EE (Y3), zeta potential (Y4). Replicate refers to
+number of repetitions for each formula which was 3.
+99
+Page 6 of 16
+Pharm Res (2019) 36: 99
+
+Effect of Polymer Amount
+It is apparent from Fig. 2 that when the PLGA amount was
+increased, the Z-average increased correspondingly, as sup-
+ported by many earlier published papers (22,23) That could
+be explained by increasing the viscosity of the organic phase
+which leads to a reduction in the net shear stress (24), in ad-
+dition to a reduction in the evaporation rate; i.e. the dispersion
+rate of the organic phase toward the external aqueous phase
+will be slower, thus that incites the formation of larger particles
+(25,26). The formation of a more viscous organic phase was
+reported to push up the frequency of collisions between par-
+ticles during the emulsification and droplet solidification step,
+which may lead to the aggregation of the semisolid particles
+(5). Regarding the PDI value, it was also observed that size
+distribution was slightly decreased by increasing the PLGA
+amount which means that a greater level of PLGA would
+promote the formation of much more homogeneous NPs.
+The positive effect that the PLGA amount has on EE
+(Fig. 4) could be again due to the fact of increasing the viscosity
+of the organic phase with a higher amount of polymer, which
+can retard drug diffusion into the external aqueous phase and
+thus increase the amount of drug entrapped inside the NPs
+(27,28). It is also known that larger nanoparticles obtained
+with a higher PLGA level can provide sufficient surface for
+entrapping the peptide drug. Furthermore, higher PLGA
+levels give rise to more rapid polymer deposition as ethyl
+acetate is removed from the NPs, which is expected to
+hinder any undesirable Lira diffusion into the external
+phase (29).
+Effect of Liraglutide Amount
+The positive effect that Lira has on the 2nd emulsification and
+both final particle size (Fig. 2) and size distribution as a result
+(Fig. 3) would be explained by the influence of the drug on the
+droplet size of the inner aqueous phase within the organic
+phase in the first water-in-oil (w1/o) emulsion, which may
+modify its ability for dispersion in the outer aqueous phase.
+However, this effect was only limited and not significant in the
+case of particle size, while Lira theoretical loading amount was
+a significant influential parameter affecting the PDI and zeta
+potential values (Fig. 1, Fig. 3, Fig. 5). The Lira level was also
+shown to have a significant positive effect on EE; when loading
+higher amount of Lira, EE was even higher (Fig. 4). This
+positive trend was previously reported with other peptide
+drugs as insulin, and it is explained due to higher amount
+of peptide that is associated with the surface of nanopar-
+ticles and is electrooptically linked to a greater extent (30),
+thus resulting in a higher EE value. However, the studied
+levels of the Lira amount in our work were shown to be
+the least risky factor affecting EE as presented in the
+Pareto chart (Fig. 1).
+ > 220
+ < 220
+ < 210
+ < 200
+ < 190
+ < 180
+ < 170
+ > 210
+ < 210
+ < 200
+ < 190
+ < 180
+ > 210
+ < 206
+ < 196
+ < 186
+Fig. 2 Surface plots showing the effect of the significant examined variables
+on the Z-average size (Y1).
+Pharm Res (2019) 36: 99
+Page 7 of 16
+99
+
+Effect of PVA Concentration
+PVA has previously proved to be a good choice as a surfactant
+used to prepare stable PLGA NPs with a small size and a
+narrow PDI due to its ability of minimizing the surface tension
+of the continuous phase which is an aqueous phase in our
+work. The statistical analysis of the results showed that increas-
+ing PVA level played a crucial role in decreasing particle size
+ > 0.22
+ < 0.21
+ < 0.19
+ < 0.17
+ < 0.15
+ < 0.13
+ < 0.11
+ < 0.09
+Fig. 3 Surface plot showing the
+effect of lira amount and W2/O ratio
+on PDI (Y2).
+ > 30
+ < 27
+ > 35
+ < 32
+ < 27
+ < 22
+ > 35
+ < 34
+ < 29
+ < 24
+ > 35
+ < 32
+ < 27
+ < 22
+Fig. 4 Surface plot showing the effect of examined variables on EE (Y3).
+99
+Page 8 of 16
+Pharm Res (2019) 36: 99
+
+(Fig. 2), and it was the leading factor impacting the size of NPs
+as can be seen in the Pareto chart (Fig. 1) which is in agree-
+ment with previous reports (31,32) .This result can be expect-
+ed from the stabilizing function of PVA molecules that tend to
+align themselves at the droplet surface lowering the free
+energy at the interface between two phases and avoiding co-
+alescence between nanodroplets, thus stabilizing the smaller
+droplets and preventing coalescence into a larger one (33,34).
+Hence, at a low PVA concentration, a larger particle size was
+obtained due to insufficient reduction in interfacial tension. It
+Table 4
+The Observed and the Predicted Values of the Response Values of the Center Checkpoints
+Experimental
+response
+Predicted
+value
+Observed value
+(F1)
+Bias%
+Observed value
+(F2)
+Bias%
+Observed value
+(F3)
+Bias%
+Intermediate
+precision (%)
+Z-average
+(nm)
+197.8
+195.8±2.5
+1.0
+202.7±5.8
+2.5
+196.4±4.1
+0.7
+3.8
+EE%
+30.5
+29.5±1.8
+3.3
+31.2±2.2
+2.3
+33.1±3.3
+8.5
+1.8
+PDI
+0.20
+0.19±0.01
+5.0
+0.19±0.01
+5.0
+0.18±0.003
+10.0
+0.01
+Zeta
+potential
+(mV)
+-28.1
+-28.1±1.1
+0
+-28.8±1
+2.5
+-27.7±1.3
+1.4
+0.6
+ > -25
+ < -25
+ < -26
+ < -27
+ < -28
+ < -29
+ < -30
+ < -31
+Fig. 5 Surface plot showing the
+effect of lira amount and W2/O ratio
+on zeta potential (Y3).
+Pharm Res (2019) 36: 99
+Page 9 of 16
+99
+
+was also reported that a fraction of PVA remains associated
+with the surface of nanoparticles even after the washing of
+nanoparticles (33). Thus, the presence of the PVA layer on
+the surface of nanoparticles may also improve their stability
+during the freeze-drying process.
+It is also clear that as PVA level increased from 0.5% to
+2%, EE decreased (Fig. 4). A possible explanation of this neg-
+ative impact was discussed in a preceding published work, as it
+was proved that the breakdown of the inner aqueous droplets
+containing Lira took place along with the fragmentation of the
+organic phase because of the cavitation occurs in the complex
+system of three phases, the higher level of PVA in the external
+aqueous phase is attributed to enhancing the breakdown of
+inner aqueous droplets and a higher amount of Lira can es-
+cape to the external phase as a result (34). This is sup-
+ported by a previous paper in which increasing the
+emulsifier concentration had led to lower entrapment
+of the protein drug in PLGA NPs, which was explained as a
+result of increasing the partitioning of the drug from the inner
+to the outer phase (35).
+Effect of 2nd Sonication Time
+The results revealed that larger and less homogeneous parti-
+cles were yielded when increasing 2nd sonication time from
+30 s to 2 min (Fig. 1, Fig. 2). This could be explained as
+follows: at the beginning, increasing the sonication time led
+to the formation of smaller droplets due to the production of
+higher energy and higher shearing rates, which are more effi-
+cient in breaking large droplets into smaller ones (36).
+However, a further elevation in this sonication period resulted
+in the re-aggregation of these particles. This trend is in accor-
+dance with results obtained by others where they observed the
+formation of larger droplets as an outcome of longer sonica-
+tion or homogenization time (37). Besides, the longer the 2nd
+sonication time, the higher the shear energy input, thus the
+higher the leached amount of peptide from W1/O to
+the external aqueous phase i.e. the lower the EE. The
+Pareto chart (Fig. 1) demonstrates that the prolonged 2nd
+sonication time was the 2nd highest risky factor regarding
+the influence on EE.
+Effect of Lyoprotectant Type and Concentration
+Lyoprotectant are commonly used to stabilize the particles
+and protect them from degradation during freeze-drying
+and storage (38). Regarding the type of lyoprotectant used in
+this study, these significant changes in particle size may be
+related with the behavior of each lyoprotectant during
+freeze-drying, and the adsorption of lyoprotectant on the sur-
+face of nanoparticles. It is clear that trehalose is more effective
+in obtaining smaller nanoparticles (Fig. 1, Fig. 2).This is in
+accordance with previous papers that confirmed that trehalose
+which is a non-reducing sugar could be the most preferable
+lyoprotectant of choice because of its merits over the other
+sugars; including a very low chemical reactivity, a higher glass
+transition temperature Tg, less hygroscopicity, in addition to
+the absence of internal hydrogen bounds, allowing a more
+flexible formation of hydrogen bonds with nanoparticles dur-
+ing the freeze-drying process (39). However, mannitol
+was proved to be more effective in obtaining a higher
+EE value according to our experimental work.
+Trehalose was investigated before regarding its effect
+on the secondary structure of insulin, and the results
+showed that it highly affected the conformational stabil-
+ity of the peptide; so it might not be the best choice to
+encapsulate peptide drugs (40). In addition to that; man-
+nitol is able to form crystal morphology (which is confirmed
+later in this paper by DSC and XRD) and this might be
+attributed to the stability of peptide.
+When it comes to the lyoprotectant level, results revealed
+that increasing this level up to 10% significantly reduced the
+Z-average and slightly minimized the PDI of the obtained NPs
+(Fig. 1,Fig. 2), which means that at this level the used
+lyoprotectants are more efficient in preventing the aggrega-
+tion and stabilizing the PLGA NPs the use of an excess
+amount of lyoprotectant might eventually make it reach the
+limit of its stabilization ability and thus the agglomeration of
+NPs is likely to increase (41). It is also apparent from the
+statistical analysis presented in the Pareto chart and surface
+plot (Fig. 1, Fig. 4) that the lyoprotectant level was the most
+influential formulation variable impacting EE. When the level
+of lyoprotectant continued increasing, the amount of
+entrapped Lira significantly decreased, which could be
+the result of smaller NPs obtained with a higher
+lyoprotectant level, and thus less sufficient surface area
+for entrapping the drug.
+Effect of W2/O Ratio
+As the volume ratio of external aqueous phase to organic
+phase W2/O went on increasing, which was achieved by in-
+creasing the volume of the external aqueous phase, the aver-
+age particle size was significantly decreased as can be seen
+from the Pareto chart and surface plot (Fig. 1, Fig. 2). This
+formation of smaller droplets may be due to the higher
+amount of stabilizer present as compared to the non-
+sufficient amount of stabilizer when using a lower amount of
+this phase. It was also recently reported that increasing the
+continuous phase volume:organic phase ratio had led to par-
+ticle size reduction (27).
+Regarding PDI values, a significant increase in size distri-
+bution was observed when the volume of the external aqueous
+phase was higher, as shown by the Pareto chart and surface
+plot (Fig. 1, Fig. 3). This observation might be attributed to a
+reduction of shear stress during the homogenization process
+99
+Page 10 of 16
+Pharm Res (2019) 36: 99
+
+(42). Besides, the phase ratio was the highly influential factor
+affecting the surface charge as increasing the external aqueous
+phase volume led to a significant increase in the zeta potential
+value (Fig. 5).
+The EE exhibited a significant upward trend when increas-
+ing the volume of the external aqueous phase, as presented in
+the Pareto chart and surface plot (Fig. 1,Fig. 4). The impact of
+the external aqueous phase/organic phase is controversial, as
+X1
+X2
+X3
+X4
+X5
+X6
+X7
+Fig. 6 The desirability plots and graphical design space representing the optimum levels of factors required to prepare the optimized formula.
+Pharm Res (2019) 36: 99
+Page 11 of 16
+99
+
+many papers reported that increasing the W2/O ratio can
+lead to minimizing the amount of the encapsulated drug
+(31,42). However, other published papers assumed that a rel-
+atively higher volume ratio of the external aqueous phase was
+beneficial for maximizing the drug encapsulated in the NPs as
+a higher outer aqueous phase volume can speed up the solid-
+ification time (evaporation of ethyl acetate and formation of
+NPs), while the smaller the volume of this outer aqueous
+phase, the longer the time required for solidification, thus over
+this time Lira may leak to the outer phase due to its hydrophi-
+licity (43).
+Placket Burman Design: Model Validation
+The three replications of center checkpoint formulations were
+prepared and evaluated for the particle size, EE, PDI and zeta
+potential to evaluate the reproducibility of the generated
+models and estimate the experimental error. Table 4 presents
+the percentage of bias between predicted and observed
+values for each response was calculated by means of the
+following equation .
+Bias %
+ð
+Þ ¼ Predicted value−observed value
+ð
+Þ=Predicted value*100
+The minor differences between the predicted values and
+the average of experimental values confirm the validity of this
+design in providing a good prediction of the four tested
+responses.
+In addition to that, the calculated relative standard devia-
+tion RSD% values that are presented in Table 4 prove the
+repeatability and intermediate precision regarding the 4 re-
+sponses that further confirms high analytical process
+variability.
+Placket Burman Design: Design Space
+and Optimization
+After establishing the polynomial equations describing the re-
+lationship between the CPPs, CMAs and the examined re-
+sponses namely; particle size, EE, PDI and zeta potential,
+the optimization process was conducted. Among the four re-
+sponses, size and EE were the highly critical quality attributes
+of nanoparticles being significantly affected by almost all the
+tested variables which is in accordance with the estimated
+severity scores of CQAs that was calculated previously at the
+initial risk assessment process. Therefore, the deign space (DS)
+was optimized (Fig. 6) targeting the following criteria: the par-
+ticle size was minimized, encapsulation efficiency was maxi-
+mized while PDI and Zeta potential were excluded. Thanks to
+the knowledge obtained via the DS, the optimum levels of the
+formulation factors were determined: 60 mg of PLGA, 5 mg
+of Lira, 0.5 min 2nd sonication time, 1.48% of PVA, 5% of
+mannitol and W2/O ratio of 5.As shown in Table 5, the
+observed values were comparable to the predicted ones, pre-
+senting another confirmation of the validity of the generated
+Table 5 The Observed and the
+Predicted Values of the response
+values of the Optimum Lira
+Nanoparticle
+Experimental response
+Predicted value
+Observed value
+Residual
+Bias (%)
+Z-average (nm)
+197.9
+189 ± 4.99
+8.95
+4.5
+EE%
+48.3
+51.8 ± 2.39
+3.5
+7.2
+PDI
+0.21
+0.19 ± 0.012
+0.034
+7.8
+Zeta potential (mV)
+−26.5
+−27.1 ± 1.33
+0.58
+2.2
+Fig. 7 SEM images of liraglutide loaded PLGA NPs.
+99
+Page 12 of 16
+Pharm Res (2019) 36: 99
+
+models and indicating that the optimized formulation is
+reliable.
+Scanning Electron Microscopy (SEM)
+Figure 7 depicts the shape and surface morphology of the
+optimized Lira loaded PLGA NPs visualized by SEM. Since
+the optimized formula was homogeneous (in accordance with
+low PDI) we selected two images as representative for the
+sample. The results revealed that Lira loaded PLGA NPs were
+spherical with quite a smooth surface and they had homoge-
+neous distribution which is in agreement with the above-
+mentioned results that demonstrated low PDI values for all
+formulations.
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+m/z
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+55
+60
+65
+70
+75
+80
+85
+90
+95
+100
+1251.52
+938.91
+1876.75
+751.48
+331.14
+1353.79
+626.24
+1185.12
+1128.47
+387.25
+956.81
+790.13
+924.55
+1902.55
+567.00
+1554.48
+683.29
+1461.71
+474.40
+1792.48
+1609.88 1709.00
+e
+c
+n
+a
+d
+n
+u
+b
+A
+e
+vit
+ale
+R
+m/z
+Nave Lira
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+55
+60
+65
+70
+75
+80
+85
+90
+95
+100
+1251.62
+939.00
+1876.72
+331.08
+295.16
+751.41
+952.10
+353.35
+1268.66
+1063.98
+1184.96
+1901.80
+699.38
+921.41
+1488.96
+1389.81
+425.28
+1832.33
+524.51
+831.96
+1701.76
+1627.39
+626.17
+m/z
+e
+c
+n
+a
+d
+n
+u
+b
+A
+e
+vit
+ale
+R
+Extracted
+Lira
+Fig. 8 Mass spectra of lira extracted from PLGA NPs compared to native lira.
+Pharm Res (2019) 36: 99
+Page 13 of 16
+99
+
+Compatibility Studies
+Fourier Transform Infrared Spectroscopy (FTIR)
+Figure S3. represents the FTIR spectra of pure Lira, pure
+PLGA and Lira free/loaded PLGA NPs.
+The amide I region (1710–1590 cm−1) is the most represen-
+tative region of the spectra to assess peptide or protein based drug
+secondary structure (44). In the FTIR of pure Lira, the amide I
+band was located at 1655 cm−1 and was assigned to C=O
+stretching, while the amide II band was observed at 1541 cm−1
+(in-plane N–H bending component and C–N stretching bands of
+the amide bond). Besides, the typical peak at 2928 cm−1 was
+ascribed to C-H stretching of CH3, and the peak at 1396 cm−1
+is attributed to amide III. When analyzing the FTIR spectra of
+Lira loaded PLGA NPs, it was found that the major peaks of
+pure Lira assigned to amide I and II and III were masked by the
+PLGA bands, and this seems to be a logical result since the
+amount of PLGA was much higher than the Lira amount in
+these NPs. There were no clear differences between the spectra
+of the blank NPs and Lira loaded NPs which is also expected as
+the drug loading is very small when compared to the polymer
+amount. These observations suggest that Lira was successfully
+loaded into the PLGA NPs.
+Differential Scanning Calorimetry (DSC)
+Figure S4 represents the DSC thermograms for pure Lira,
+PLGA, liraglutide free/loaded PLGA NPs. For the temperature
+range examined, the PLGA thermogram exhibited a glass tran-
+sition point at 49.22°C and no melting endothermic peak was
+observed, as PLGA appears amorphous in nature. The DSC
+thermogram of pure Lira revealed a peak at 275.46°C, which
+is attributed to the thermal degradation of this peptide drug, and
+no endothermic peak of melting was shown, which proved the
+amorphous nature of the drug. Since the thermogram of Lira
+loaded PLGA NPs did not display any extra endo/exothermic
+peaks compared to the blank NPs, this is an indicator of the
+presence of Lira in the amorphous phase and this drug is suc-
+cessfully encapsulated into the PLGA matrix.
+X-Ray Diffraction Study (XRD)
+XRD studies further verified the amorphous nature of both
+PLGA and pure Lira as they showed no characteristic peaks in
+their diffractograms which is in accordance with the results of
+DSC thermograms (Fig. S4). As depicted in Fig. S5, mannitol
+remained in crystalline state after freeze drying which is due to
+the property of mannitol to recrystallize at low cooling rates
+rather than rapid cooling. The crystallization of this lyoprotectant
+could have a negative effect on the stability of NPs as it is able to
+limit the formation of these hydrogen bonds (30), and this can
+explain why trehalose was more efficient than mannitol at
+preventing the aggregation of NPs and thus minimizing the Z-
+average. There was no difference between the diffractograms of
+the loaded and blank PLGA NPs which is explained in literature
+as a result of the successful encapsulation of the peptide drug
+inside the polymeric nanoparticles without change in its physical
+state (45), and this is in accordance with the DSC results.
+Structural Stability
+ESI-MS
+MS was used to compare the molecular weight MW of lira
+standard (native) to lira extracted from PLGA NPs. As the spec-
+tra in Fig. 8 depicts, the measured MW of native Lira and Lira
+loaded in NPs are almost equal, and the spectra confirmed
+the presence of Lira with a molar mass of 3751 Da which is
+an evidence of the integrity of Lira loaded in PLGA NPs
+prepared using the optimized formulation and process
+parameters.
+-100000
+-50000
+0
+50000
+100000
+150000
+200000
+250000
+300000
+350000
+400000
+450000
+260
+257.6
+255.2
+252.8
+250.4
+248
+245.6
+243.2
+240.8
+238.4
+236
+233.6
+231.2
+228.8
+226.4
+224
+221.6
+219.2
+216.8
+214.4
+212
+209.6
+207.2
+204.8
+202.4
+200
+197.6
+195.2
+Extracted Lira
+Nave Lira
+Fig. 9 CD spectra of lira extracted
+from PLGA NPs compared to
+native lira.
+99
+Page 14 of 16
+Pharm Res (2019) 36: 99
+
+CD
+Since the preservation of the secondary structural integrity of
+a peptide drug in the nanocarrier is critical for its biological
+efficacy, the secondary structure of Lira extracted from NPs
+was compared to that of native Lira. The CD spectra of native
+Lira (Fig. 9) showed two minima at 208.8 nm and 218.4 nm
+indicating the presence of alpha helix elements in the struc-
+ture, which is in consistent with previous studies on the typical
+structure of the glucagon-like peptide-1 family. No significant
+conformational change was recorded for Lira extracted from
+PLGA NPs (in PBS, pH = 8.1) as the far UV CD spectra for it
+showed two minima at 209.4 nm and 219.2 nm, and almost
+entirely overlapped with the CD spectrum for the standard.
+CONCLUSION AND FUTURE PERSPECTIVES
+The present study is the first published work that substantiated
+the application of rational QbD-based methodology for the
+optimization of a GLP-1 analog loaded nanocarrier system.
+This work demonstrated the importance of implementing
+DOE within QbD philosophy in the early stage of
+Liraglutide containing NPs development due to the complex-
+ity of this system.
+After establishing the design space, with the minimum par-
+ticle size and maximum EE, the optimized formula was suc-
+cessfully prepared meeting the targeted CQAs. This opti-
+mized Lira loaded PLGA NPs formula was also successful in
+maintaining the native structure of Lira and could be prom-
+ising for the oral delivery. Thus, in vitro release kinetics, cyto-
+toxicity, intestinal permeability and in vivo studies will be fur-
+ther conducted on this formula.
+ACKNOWLEDGEMENTS
+This research was supported by the EU-funded Hungarian
+grant EFOP-3.6.1-16-2016-00008.
+FUNDING
+Open access funding provided by University of Szeged (SZTE).
+Open Access This article is distributed under the terms of the
+Creative Commons Attribution 4.0 International License
+(http://creativecommons.org/licenses/by/4.0/), which per-
+mits unrestricted use, distribution, and reproduction in any
+medium, provided you give appropriate credit to the original
+author(s) and the source, provide a link to the Creative
+Commons license, and indicate if changes were made.
+REFERENCES
+1.
+Pallagi E, Ambrus R, Szabó-Révész P, Csóka I. Adaptation of the
+quality by design concept in early pharmaceutical development of
+an intranasal nanosized formulation. Int J Pharm. 2015;491(1–2):
+384–92.
+2.
+Beg S, Jain S, Kushwah V, Bhatti GK, Sandhu PS, Katare O, et al.
+Novel surface-engineered solid lipid nanoparticles of rosuvastatin
+calcium for low-density lipoprotein-receptor targeting: a quality by
+design-driven perspective. Nanomedicine. 2017;12:333–56.
+3.
+Csoka I, . Pallagi E, Paal TL . Extension of quality-by-design con-
+cept to the early development phase of pharmaceutical R&D
+processe. Drug Discov Today 2018;23, 1340, 1343.
+4.
+Mofrad AE, Moheb A, Masigol M, Sadeghi M, Radmanesh F. An
+investigation into electrochemical properties of poly (ether sulfone)/
+poly (vinyl pyrrolidone) heterogeneous cation-exchange mem-
+branes by using design of experiment method. J Colloid Interface
+Sci. 2018 Dec;532:546–56.
+5.
+Rahman Z, Zidan AS, Habib MJ, Khan MA. Understanding the
+quality of protein loaded PLGA nanoparticles variability by
+Plackett-Burman design. Int J Pharm. 2010;389(1–2):186–94.
+6.
+Rakić T, Kasagić-Vujanović I, Jovanović M, Jančić-Stojanović B,
+Ivanović D. Comparison of full factorial design, central composite
+design, and box-Behnken Design in Chromatographic Method
+Development for the determination of fluconazole and its impuri-
+ties. Anal Lett. 2014;47:1334–47.
+7.
+Mehta A, Marso SP, Neeland IJ. Liraglutide for weight manage-
+ment: a critical review of the evidence. Obes Sci Pract [Internet.
+2017;3(1):3–14. Available from. https://doi.org/10.1002/osp4.84.
+8.
+Lin Y, Krogh-Andersen K, Pelletier J, Marcotte H, Östenson CG,
+Hammarström L. Oral delivery of pentameric glucagon-like pep-
+tide-1 by recombinant lactobacillus in diabetic rats. PLoS One.
+2016;11(9).
+9.
+Shamekhi F, Tamjid E, Khajeh K. Development of chitosan coated
+calcium-alginate nanocapsules for oral delivery of liraglutide to di-
+abetic patients. Int J Biol Macromol. 2018;120:460–7.
+10.
+Ismail R, Csóka I. Novel strategies in the oral delivery of antidia-
+betic peptide drugs- insulin, GLP 1 and its analogs. Eur J Pharm
+Biophar. 2017;115:257–67.
+11.
+Ismail R, Csóka I. Up to date advances in nano-carrier systems for
+oral delivery of antidiabetic peptides. In J Nanomed Nanotechnol.
+2017:63 Available from: https://www.omicsonline.org/
+conference-proceedings/2157-7439-C1-049-007.pdf.
+12.
+Reix N, Parat A, Seyfritz E, Van Der Werf R, Epure V, Ebel N,
+et al. In vitro uptake evaluation in Caco-2 cells and in vivo results in
+diabetic rats of insulin-loaded PLGA nanoparticles. Int J Pharm.
+2012;437(1–2):213–20.
+13.
+Haggag YA, Faheem AM, Tambuwala MM, Osman MA, El-
+Gizawy SA, O???Hagan B, et al. Effect of poly (ethylene glycol)
+content and formulation parameters on particulate properties and
+intraperitoneal delivery of insulin from PLGA nanoparticles pre-
+pared using the double-emulsion evaporation procedure. Pharm
+Dev Technol. 2017;1–12.
+14.
+Park MH, Baek JS, Lee CA, Cho CW. Effect of chitosan on phys-
+icochemical properties of exenatide-loaded PLGA nanoparticles. J
+Pharm Investig. 2013;43(6):489–97.
+15.
+Araújo F, Shrestha N, Gomes MJ, Herranz-Blanco B, Liu D,
+Hirvonen JJ, et al. In vivo dual-delivery of glucagon like peptide-1
+(GLP-1) and dipeptidyl peptidase-4 (DPP4) inhibitor through com-
+posites prepared by microfluidics for diabetes therapy. Nanoscale.
+2016;8(20):10706–13.
+16.
+Cohen-Sela E, Chorny M, Koroukhov N, Danenberg HD,
+Golomb G. A new double emulsion solvent diffusion technique
+Pharm Res (2019) 36: 99
+Page 15 of 16
+99
+
+for encapsulating hydrophilic molecules in PLGA nanoparticles. J
+Control Release. 2009;133(2):90–5.
+17.
+Tefas LR, Tomuţă I, Achim M, Vlase L. Development and opti-
+mization of quercetin-loaded PLGA nanoparticles by experimental
+design. Clujul Med. 2015;88(2):214.
+18.
+Ismail R, Csóka I. Quality by design (QbD) oriented study for
+designing new oral Liraglutide loaded polymeric nanoparticles.
+In: 11th world meeting on pharmaceutics, biopharmaceutics and
+pharmaceutical technology, Granada, Spain. 2018. p. 50.
+19.
+Ismail R, Csóka I. Evaluation of techniques and possibilities for oral
+delivery of antidiabetic peptide drug - liraglutide - in a novel deliv-
+ery system. In: Acta pharmaceutica Hungarica. 2017. p. 132–3.
+20.
+Pallagi E, Ismail R, Paal TL, Csoka I. Initial risk assessment as part
+of the quality by design in peptide drug containing formulation
+development. Eur J Pharm Sci. 2018 Sep;122:160–9.
+21.
+Fernández EF, Santos-Carballal B, de Santi C, Ramsey JM,
+MacLoughlin R, Cryan SA, et al. Biopolymer-based nanoparticles
+for cystic fibrosis lung gene therapy studies. Materials (Basel).
+2018;11(1).
+22.
+Poddar A, Sawant KK. Optimization of Galantamine loaded bo-
+vine serum albumin nanoparticles by quality by design and its pre-
+liminary characterizations. J Nanomed Nanotechnol [Internet].
+2017;8(5):459. Available from:. https://doi.org/10.4172/2157-
+7439.1000459%0A.
+23.
+Akl MA, Kartal-Hodzic A, Oksanen T, Ismael HR, Afouna MM,
+Yliperttula M, et al. Factorial design formulation optimization and
+in vitro characterization of curcumin-loaded PLGA nanoparticles
+for colon delivery. J Drug Deliv Sci Technol. 2016;32:10–20.
+24.
+Taghipour B, Yakhchali M, Haririan I, Tamaddon AM, Samani
+SM. The effects of technical and compositional variables on the size
+and release profile of bovine serum albumin from PLGA based
+particulate systems. Res Pharm Sci. 2014;9(6):407–20.
+25.
+Mainardes RM, Evangelista RC. PLGA nanoparticles containing
+praziquantel: effect of formulation variables on size distribution. Int
+J Pharm. 2005;290(1–2):137–44.
+26.
+Zhang L, He Y, Ma G, Song C, Sun H. Paclitaxel-loaded polymer-
+ic micelles based on poly(ε-caprolactone)-poly (ethylene glycol)-
+poly(ε-caprolactone) triblock copolymers: in vitro and in vivo eval-
+uation. Nanomed Nanotechnol. Biol Med. 2012;8(6):925–34.
+27.
+Dewangan HK, Pandey T, Maurya L. S. S. Rational design and
+evaluation of HBsAg polymeric nanoparticles as antigen delivery
+carriers. Int J Biol Macromol. 2018;111:804–12.
+28.
+Abdelkader DH, El-Gizawy SA, Faheem AM, McCarron PA,
+Osman MA. Effect of process variables on formulation, in-vitro
+characterisation and subcutaneous delivery of insulin PLGA nano-
+particles: an optimisation study. J Drug Deliv Sci Technol. 2018;43:
+160–71.
+29.
+Haggag Y, Abdel-Wahab Y, Ojo O, Osman M, El-Gizawy S, El-
+Tanani M, et al. Preparation and in vivo evaluation of insulin-
+loaded biodegradable nanoparticles prepared from diblock copol-
+ymers of PLGA and PEG. Int J Pharm. 2016;499(1–2):236–46.
+30.
+Fonte P, Soares S, Costa A, Andrade JC, Seabra V, Reis S, et al.
+Effect of cryoprotectants on the porosity and stability of insulin-
+loaded PLGA nanoparticles after freeze-drying. Biomatter.
+2012;2(4):329–39.
+31.
+Halayqa M, Domańska U. PLGA biodegradable nanoparticles
+containing perphenazine or chlorpromazine hydrochloride: effect
+of formulation and release. Int J Mol Sci. 2014;15(12):23909–23.
+32.
+Francisca A, Shrestha N, Gomes MJ, Herranz-Blanco B, Liu D,
+Hirvonen J, et al. In vivo dual-delivery of glucagon like peptide −1
+(GLP-1) and dipeptidyl peptidase-4 (DPP4) inhibitor through com-
+posites prepared by microfluidics for diabetes therapy. Nanoscale ,
+2016,8, 10706-10713.
+33.
+Rescignano N, Fortunati E, Armentano I, Hernandez R, Mijangos
+C, Pasquino R, et al. Use of alginate, chitosan and cellulose
+nanocrystals as emulsion stabilizers in the synthesis of biodegrad-
+able polymeric nanoparticles. J Colloid Interface Sci. 2015
+May;445:31–9.
+34.
+Feczkó T, Tóth J, Dósa G, Gyenis J. Optimization of protein en-
+capsulation in PLGA nanoparticles. Chem Eng Process Process
+Intensif. 2011;50:757–65.
+35.
+Rahman Z, Zidan AS, Habib MJ, Khan MA. Understanding the
+quality of protein loaded PLGA nanoparticles variability by
+Plackett-Burman design. Int J Pharm. 2010;389:186–94.
+36.
+Jain A, Jain SK. Formulation and optimization of temozolomide
+nanoparticles by 3 factor 2 level factorial design. Biomatter.
+2013;3(2).
+37.
+Narayanan K, Subrahmanyam VM, Venkata Rao J. A fractional
+factorial design to study the effect of process variables on the prep-
+aration of hyaluronidase loaded PLGA nanoparticles. Enzyme Res.
+2014;2014:1–10.
+38.
+Almalik A, Alradwan I, Kalam MA, Alshamsan A. Effect of
+cryoprotection on particle size stability and preservation of chitosan
+nanoparticles with and without hyaluronate or alginate coating.
+Saudi Pharm J. 2017;25(6):861–7.
+39.
+Mali N, Wavikar P, Vavia P. Serratiopeptidase loaded chitosan
+nanoparticles by polyelectrolyte complexation: in vitro and in vivo
+evaluation. AAPS PharmSciTech. 2015 Feb;16(1):59–66.
+40.
+Fonte P, Soares S, Sousa F, Costa A, Seabra V, Reis S, et al.
+Stability study perspective of the effect of freeze-drying using cryo-
+protectants on the structure of insulin loaded into PLGA nanopar-
+ticles. Biomacromolecules. 2014;15(10):3753–65.
+41.
+Abdelwahed W, Degobert G, Stainmesse S, Fessi H. Freeze-drying
+of nanoparticles: formulation, process and storage considerations.
+Adv Drug Deliv Rev. 2006;58:1688–713.
+42.
+Ding Y, Zheng J, Xia X, Ren T, Kan J. Box-Behnken design for the
+optimization of nanoscale retrograded starch formation by high-
+power ultrasonication. LWT Food Sci Technol. 2016;67:206–13.
+43.
+Wang Y, Li P, Kong L, Peng Z, Luo Y. Formulation optimization
+for high drug loading colonic drug delivery carrier. IEEE. 2010:
+1686–9.
+44.
+Fonte P, Andrade F, Azevedo C, Pinto J, Seabra V, van de Weert
+M, et al. Effect of the freezing step in the stability and bioactivity of
+protein-loaded PLGA nanoparticles upon Lyophilization. Pharm
+Res. 2016;33(11):2777–93.
+45.
+Park MH, Jun HS, Jeon JW, Park JK, Lee BJ, Suh GH, et al.
+Preparation and characterization of bee venom-loaded PLGA par-
+ticles for sustained release. Pharm Dev Technol. 2016:1–8.
+Publisher’s Note Springer Nature remains neutral with regard to juris-
+dictional claims in published maps and institutional affiliations.
+99
+Page 16 of 16
+Pharm Res (2019) 36: 99

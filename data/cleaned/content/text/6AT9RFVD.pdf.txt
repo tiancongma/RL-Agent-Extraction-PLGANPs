@@ -1,0 +1,1069 @@
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 1 / 11
+Brazilian Journal of
+Pharmaceutical Sciences
+http://dx.doi.org/10.1590/s2175-97902019000118736
+Original
+Article
+*Correspondence: G. Srikar. College of Pharmaceutical Sciences, Acharya
+Nagarjuna University, Nagarjuna Nagar, Guntur – 522510, Andhra Pradesh,
+India. Phone: +919491335467. E-mail: srikar.grandhi@gmail.com
+Study on influence of polymer and surfactant on in vitro
+performance of biodegradable aqueous-core nanocapsules of
+tenofovirdisoproxil fumarate by response surface methodology
+Grandhi Srikar*1,2, Avula Prameela Rani2
+1School of Pharmacy, Jawaharlal Nehru Technological University Kakinada, Kakinada, India, 2College of Pharmaceutical
+Sciences, Acharya Nagarjuna University, Guntur, India
+The major objective of this study was to investigate the effect of biodegradable polymer type and
+surfactant concentration on various characteristics viz. particle size, entrapment efficiency and drug
+release rate constant of aqueous core nanocapsules (ACNs) containing tenofovirdisoproxil fumarate. In
+this study, the nanocapsules were prepared by modified multiple emulsion technique with biodegradable
+polymers viz. poly(lactide-co-glycolide) of two different grades (PLGA RG502H and PLGA RG503H)
+and poly lactic acid (PLA R203H); and the surfactant employed was span 80. The experiments were
+designed under response surface methodology by employing the Design Expert software. Entrapment
+efficiency, particle size and drug release rate constant were taken as response variables. The prepared
+nanocapsules were subjected to characterization studies and the obtained results were statistically analyzed
+by Analysis of Variance (ANOVA) for response surface 2-Factorial Interaction model. ANOVA studies
+showed that the influence of both factors on all the response variables were significant at p<0.05. The
+optimized formulation was found to have the entrapment efficiency of 71.58%, particle size of 252.41
+nm and the drug release rate constant of 0.045 h-1; thus, indicating that the ACNs were obtained with
+finest characteristics. SEM studies showed that the particles were spherical.
+Keywords: Aqueous core nanocapsules. Type of polymer. Surfactant concentration. Response surface
+methodology.
+INTRODUCTION
+Carrier mediated drug delivery systems have
+received a growing significant interest in the recent years
+due to its ability of being utilized as carriers for the drug
+delivery for various causes such as targeted delivery (Li et
+al., 2008), improving bioavailability (Jia, 2005), crossing
+blood brain barrier (Dufes, 2011) and overcoming the
+inhibitory actions of glycoprotein-P (P-gP) for permeation
+of drugs into the cells (Brigger, Dubernet, Couvreur,
+2002). Furthermore, due to the stability and suitability
+of incorporating wide variety of drugs,the biological,
+polymeric nanoparticles have gained a major share of
+attention among various nanocarriers viz. liposomes,
+niosomesand solid lipid nanoparticles (Baratt, 2000).
+Nanoparticles can be manufactured from a wide variety
+of natural and synthetic polymers which may or may not
+be biodegradable. The use of biodegradable polymers is
+advantageous because they are not deposited in the body
+and pose no toxicity risk, as they degrade into soluble and
+easily excretable form. These biodegradable polymeric
+nanoparticles can be effectively given through intravenous
+route in order to control the spatial and temporal delivery
+of the incorporated drugs. Due to their submicron size
+and wide possibility of modifying their surface, these
+can be employed to deliver drugs at varied target sites
+(Doppalapudi et al., 2016).
+Poly (lactide-co-glycolide) (PLGA) and poly
+lactic acid (PLA) are the most used among various
+biodegradable polymers because their hydrolysis results
+into the simple monomers viz. lactic acid and glycolic
+acid which are endogenous to the body and hence have
+little or no toxicity. PLGA and PLA polymers can be
+obtained to have carboxylic acid functions as end groups
+so that these can have higher negative zeta potential
+iD
+
+G. Srikar, A. P. Rani
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 2 / 11
+(Nicolete, Santos, Faccioli, 2011; Maharana, Mohanty,
+Negi, 2010). Nanoparticles prepared with these polymers
+can have high negative zeta potential such that they can
+be readily engulfed by macrophages and deliver them into
+the reticuloendothelial system rich organs like spleen and
+liver (Honary, Zahir, 2013). Hence, nanoparticles prepared
+with polymers can be used as passive targeting carriers
+for delivering drugs into the liver in cases of the drugs
+used to treat diseases like hepatitis B. Tenofovirdisoproxil
+fumarate (TDF) is a prodrug that converts intracellularly
+into tenofovir monophosphate and tenofovirdiphospahte.
+It is an antiviral drug used in the treatment of HIV and
+chronic hepatitis B. It has a poor bioavailability of 25%
+after oral administration. TDF is a substrate for P-gP and
+breast cancer resistance protein (BCRP) which efflux
+transporters that limit its availability inside the cells
+(Neumanova et al., 2014). These drawbacks make TDF a
+most desirable candidate to be developed into polymeric
+nanoparticulate systems which improve the bioavailability
+as well as avoid the effects of P-gP and BCRP.
+Polymeric nanoparticles are prepared by various
+techniques such as nanoprecipitation, emulsion solvent
+evaporation, salting-out, polymerization etc. (Rao,
+Geckeler, 2011). Moreover, the encapsulation efficiency
+of these methods in case of water soluble drugs like TDF
+is always a concern, as these drugs tend to leach out
+easily. Aqueous core nanocapsules (ACNs) is one of the
+few techniques reported to improve the encapsulation
+efficiency of these drugs (Vrignaud et al., 2013). High
+encapsulation efficiency of ACNs is due to their unique
+liquid core which is optimized to have high solubility
+for the hydrophilic drugs and require less amount of
+polymer in comparison with polymer nanospheres. In
+vivo performance of the nanoparticles largely depends
+on major physicochemical characteristics like particle
+size, zeta potential, drug content and drug release rate
+constant (Crucho, Barros, 2017). Hence, it is important
+to investigate the influence of formulation and process
+variables on these characteristics of nanoparticles in
+order to improve their in vivo performance. Extensive
+literature studies revealed that numerous studies
+have been reported in this regard covering mainly
+the influence of polymer concentration, nature and
+composition of solvents, temperature, speed of rotation
+etc. But, only very few studies were reported regarding
+the influence of type of polymer, molecular weight of
+polymer and surfactant concentration on performance
+of nanoparticles. Budhian, Siegel and Winey (2005)
+studied the influence of ratio of lactic acid to glycolic
+acid in PLGA polymer. Sharma, Madan and Lin (2016)
+studied the effect of co-surfactant on the characteristics
+of nanoparticles. So, there is a large scope in studying
+the influence of these formulation parameters in order
+to add new data to the already existing data that might
+result in the development of nanoparticles with improved
+performance. Therefore, in this study, we aimed to
+prepare ACNs of TDF by modified multiple emulsion
+technique and explore the influence of type of polymer,
+molecular weight of polymer and the concentration
+of surfactant in the primary emulsion on entrapment
+efficiency, particle size and drug release rate constant.
+In this study, the polymers taken were PLGA of two
+different molecular weight grades viz. PLGA RG502H
+and PLGA RG503H, and PLA R203H; and the surfactant
+taken was span-80. The experiments for this purpose
+were designed according to response surface one factorial
+design that was repeated for every categorical factor and
+the obtained results were statistically analyzed using Stat
+Ease Design Expert software.
+MATERIAL AND METHODS
+Materials
+TDF was obtained from Hetero Drugs Ltd
+(Hyderabad, India). Poly (D,L lactic acid) (RESOMER
+R203H/PLA R203H) and Poly (D,L lactide-co-glycolide)
+(RESOMER RG503H/ PLGA RG503H and RESOMER
+RG502H/PLGA RG502H) were obtained from Sigma-
+Aldrich (Mumbai, India). Poly vinyl alcohol was obtained
+from MecrkSpecialitiesPvt Ltd (Mumbai, India). Pluronic
+F-68, Span 80 and Chloroform were obtained from S.D
+Fine Chemicals (Mumbai, India). All other chemicals used
+were of reagent grade.
+Methods
+Fourier transform infrared spectroscopy
+The physicochemical compatibility of TDF with
+PLA R203H, PLGA RG503H and PLGA RG502H
+used in this work were carried out by subjecting it to
+IR spectral studies using Fourier Transform Infrared
+(FT-IR) Spectrophotometer. The samples were prepared
+by mixing the 100 mg of TDF with 100 mg of each
+polymer and prepared as pellets with KBr using the
+hydraulic press. These pellets were scanned under diffuse
+reflectance mode and spectra were recorded in wave
+length region between 4000 cm-1 to 400 cm-1. Every
+spectrum was taken as mean of 16 scans per sample
+(Mohamed et al., 2017). The obtained spectrum of pure
+drug was compared with those of the physical mixtures
+of the drug and polymers.
+
+Study on influence of polymer and surfactant on in vitro performance of biodegradable aqueous-core nanocapsules
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 3 / 11
+Preparation of TDF Aqueous Core Nanocapsules
+(TDF-ACNs)
+• Experimental design
+In this study, the concentration of surfactant in
+primary emulsion (w/o) and type of polymer were taken
+as two factors. Here, concentration of span 80 was the
+only numeric factor as the type of polymer is a categorical
+factor. So, a one factorial design was considered for
+the experiment. A linear model with three levels of the
+numeric factor (A, surfactant in primary emulsion – 0%,
+0.25% and 0.5% v/v) was considered and this design was
+repeated for every combination with categorical factor (B),
+which is also at three levels i.e. three types of polymers
+viz. PLGA RG503H, PLGA RG502H and PLA R203H.
+The experimental runs including combinations of factors
+at various levels were given in Table I. The response
+variables selected were entrapment efficiency, particle size
+and drug release rate constant.
+• Preparation of TDF-ACNs
+Nanocapsules of TDF were prepared by multiple
+emulsification method, which resulted after making
+modifications to the method reported by Yadav and
+Sawant (2010). A total of 100 mg of TDF was dissolved
+in 5 mL of aqueous phase consisting of distilled water
+and co-solvent (Methanol) in the ratio of 4:1 with 1%
+polyvinyl alcohol as stabilizer. Approximately 100 mg of
+polymer was dissolved in 10 mL of chloroform containing
+span80 at a concentration of 0.0%/ 0.25%/0.5% v/v,
+respectively. The aqueous phase was then added in drops
+to the organic phase while r stirring at 12,000 rpm for
+30 min to form primary emulsion of w/o type. Thereafter,
+the above primary emulsion was added drop wise to
+20 mL of 50 %v/v aqueous glycerol as external phase
+containing 0.4% v/v of Pluronic F-68 under continuous
+stirring until the chloroform was evaporated. The
+obtained suspension of nanocapsules was stored in the
+refrigerator. Nanocapsules were then recovered from the
+nanodispersion by centrifugation (Thermo Scientific) for
+30 min at 8,000 rpm and 4 °C, washed two times with
+distilled water to remove unentrapped drug and the pellet
+was collected. The supernatant was then used to estimate
+the unentrapped drug so as to determine the entrapment
+efficiency. The dispersion was finally lyophilized for 24h
+to yield freeze-dried nanocapsules which were stored in
+air tight containers until further use.
+Characterization of TDF-ACNs
+Differential Scanning Calorimetry (DSC)
+The physical state of TDF and polymers PLGA
+RG503H and PLA R203H inside the prepared nanocapsules
+were characterized by plotting DSC thermographs
+TABLE I - Combinations of the selected factors according to the design and the obtained results of TDF-ACNs
+S. No.
+Formulation
+code
+Run
+order
+Concentration
+of span 80
+(%v/v)
+Type of polymer
+Entrapment
+efficiency
+(%)
+Loading
+efficiency
+(%)
+Particle
+size
+(nm)
+Zeta
+potential
+(mV)
+Release
+rate
+constant
+(h-1)
+1
+F1
+1
+0
+PLGA RG503H
+64.08
+27.11
+274.3
+-27.6
+0.055
+2
+F1­R
+9
+0
+PLGA RG503H
+65.49
+27.70
+271.7
+-25.8
+0.054
+3
+F2
+4
+0.25
+PLGA RG503H
+69.17
+29.26
+265.3
+-26.9
+0.051
+4
+F3
+3
+0.5
+PLGA RG503H
+74.25
+31.41
+258.6
+-28.1
+0.047
+5
+F3­R
+5
+0.5
+PLGA RG503H
+73.86
+31.24
+255.1
+-29.3
+0.046
+6
+F4
+12
+0
+PLGA RG502H
+58.21
+24.62
+250.6
+-23.4
+0.085
+7
+F4­R
+15
+0
+PLGA RG502H
+57.49
+24.32
+249.8
+-21.9
+0.083
+8
+F5
+10
+0.25
+PLGA RG502H
+66.15
+27.98
+244.3
+-22.7
+0.069
+9
+F6
+6
+0.5
+PLGA RG502H
+68.83
+29.12
+242.5
+-24.2
+0.057
+10
+F6­R
+11
+0.5
+PLGA RG502H
+70.58
+29.86
+238.9
+-22.8
+0.058
+11
+F7
+2
+0
+PLA R203H
+60.13
+25.44
+271.2
+-18.3
+0.052
+12
+F7­R
+7
+0
+PLA R203H
+62.27
+26.34
+269.7
+-20.1
+0.054
+13
+F8
+14
+0.25
+PLA R203H
+65.96
+27.90
+258.1
+-18.9
+0.049
+14
+F9
+8
+0.5
+PLA R203H
+70.35
+29.76
+249.3
+-21.5
+0.046
+15
+F9­R
+13
+0.5
+PLA R203H
+71.52
+30.25
+250.4
+-19.5
+0.045
+
+G. Srikar, A. P. Rani
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 4 / 11
+(Mainardes, Gremião, Evangelista, 2006). The sample
+was weighed, crimped into an aluminum pan and analyzed
+at a scanning temperature range from 20 to 250 °C at the
+heating rate of 10 °C/min in nitrogen atmosphere. The
+thermographs of pure TDF, PLGA RG503H and PLA
+R203H were compared with those of TDF nanocapsules
+with PLGA RG503H as well as PLA R203H.
+Particle size and zeta potential
+The particle size and zeta potential of the
+prepared TDF-ACNs were determined by dynamic light
+scattering (DLS) technique using ZetaSizer Nano-ZS90
+(Malvern Instruments, UK) (Asasutjaritet al., 2013).
+The measurements were carried out at an equilibrated
+temperature of 25 °C and at a fixed scattering angle of 90°.
+The samples were tolerably diluted with distilled water
+before measurement, and measurements were made in
+triplicate for every sample.
+Scanning Electron Microscopy (SEM)
+The shape and surface characterization of
+nanocapsules were observed under Scanning Electron
+Microscope (ZEOL JSM–5610). The dispersion of
+nanocapsules was sufficiently diluted and a small drop was
+mounted directly on the SEM sample stub, using double-
+sided sticking tape, and coated with gold film (thickness
+200 nm) under reduced pressure (0.001 Torr) and it was
+thereafter photographed.
+Entrapment efficiency and drug loading
+Colloidal suspension of TDF-ACNs was centrifuged
+for 30 min at 8,000 rpm and 40C. The solid pellet was
+washed twice with water to remove the unentrapped
+drug. Then, the supernatant was collected and subjected
+to analysis by UV-Visible Spectrophotometer at λmax of
+260 nm to determine the amount of drug unentrapped,
+from which the amount of drug entrapped was calculated
+(Soma et al., 2017). The entrapment efficiency and drug
+loading were calculated using the following formula
+In vitro drug release studies
+In vitro release studies were carried out by
+dialysis bag method using dialysis membrane (Dialysis
+Membrane-110; HiMedia Lab. Pvt. Ltd., Mumbai) (Gupta
+et al., 2013; Bohrey, Chourasiya, Pandey, 2016). The
+TDF-ACNs were suspended in a small quantity of water;
+placed in the Gelatin bag that was sealed at both ends and
+suspended on receptor compartment containing 100 ml
+buffer solution (0.1N HCl) in a beaker. The medium in the
+receptor was agitated continuously using a magnetic stirrer
+at 100 rpm and temperature was maintained at 37±0.5 °C.
+A total of 2mL of samples of receptor compartment were
+taken at various time intervals over a period of 24h and at
+each time, fresh buffer of same volume was added. The
+samples were analyzed spectrophotometrically at 260 nm
+after suitable dilutions to determine the amount of drug
+released.
+Drug release kinetics and mechanism
+The data obtained from the drug release studies
+were subjected to zero – order and first – order kinetic
+models for determining the drug release kinetics and also
+subjected to Higuchi’s and Korsemeyer – Peppas models
+for identifying the mechanism of drug release.
+Design of Experiments validation and ANOVA
+The concentration of surfactant was the only numeric
+factor as the type of polymer was a categorical factor. So,
+one factorial design linear model with one center point
+under response surface methodology was selected as the
+model which was repeated for all the three categorical
+factors, these resulted in a total of 15 runs. The TDF‑ACNs
+for the 15 runs were prepared and characterized. Obtained
+results of the response variables were analyzed by
+response surface polynomial 2-Factorial Interaction (2FI)
+model without need of any transformation. The design was
+validated for its suitability into the selected 2FI model
+by plot of predicted versus actual results of the response
+variables; and also by the ANOVA of classical sum of
+squares – Type III 2FI model.
+RESULTS AND DISCUSSION
+FT – IR Studies
+Compatibility studies of drug and polymer were
+conducted by employing I.R spectral studies. IR spectra
+of pure Tenofovir DF and the physical mixtures of drug
+and polymers were showed in Figure 1. The bands
+for characteristic groups of the pure Tenofovir DF
+were observed at 1622.93 cm-1 due to N-H bending;
+1675.44 cm-1 due to stretching of imine (R2-C=NR1)
+group; 1263.23 cm-1 because of theprimary aromatic
+amine stretching; 1755.23 cm-1 due to carbonyl (C=O)
+stretching; 1184.24 cm-1 due to P=O stretching and at
+
+Study on influence of polymer and surfactant on in vitro performance of biodegradable aqueous-core nanocapsules
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 5 / 11
+3223.48 cm-1 accounting for O-H stretching (Gomes et
+al., 2015; Silverstein, Webster, Kiemle, 2005). These
+bands accounting for the characteristic groups of TDF
+were also observed at the similar positions in the spectra
+of individual physical mixtures of TDF with the polymers
+viz. PLGA RG503H, PLGA RG502H and PLA R203H.
+These results showed that there was no interaction between
+TDF and the polymers as the characteristic bands were
+observed at the identical positions in the spectrum of pure
+drug and also in the spectra of physical mixtures.
+Preparation of TDF-ACNs
+TDF-ACNs were prepared through W/O/W
+emulsion by modified multiple emulsification method.
+The aqueous solution of TDF was emulsified in the
+chloroform solution of polymer to get W/O emulsion.
+When this emulsion was further dispersed in aqueous
+phase to get W/O/W emulsion and subjected to continuous
+stirring, chloroform got evaporated leaving the polymer
+to deposit on the internal aqueous phase globules. Once
+the chloroform got removed completely, the polymer was
+rigidized leaving discrete nano-sized particles with small
+aqueous droplets containing the drug as core and the
+rigid polymer as coat, so that they were called Aqueous
+Core Nanocapsules. The SEM studies indicated that the
+obtained nanocapsules were almost spherical in shape
+as shown in Figure 2. Here, two surfactants span 80 and
+Pluronic F-68 were taken as emulsion stabilizers in the
+primary and secondary emulsions respectively. All the
+selected polymers in this study viz. PLGA RG503H,
+PLGA RG502H and PLA R203H were predominantly
+hydrophobic (Kohn, Langer, 2004; Hines, Kaplan,
+2013),such that the nanocapsules obtained from these
+polymers have relatively hydrophobic surface which
+make them attacked by opsonins, that leads them to be
+phagocitized easily by Reticuloendothelial system (RES)
+rich organs, such as liver and spleen. Nanocapsules with
+these characteristics are better for passive targeting of
+drugs into liver in the treatment of liver diseases like TDF
+and for the treatment of hepatitis B.
+Experimental design
+In this work, one numeric (surfactant concentration,
+A) and one categorical (type of polymer, B) factor were
+taken, so a one factorial design repeated for every categoric
+factor was employed. Experiments were done according
+to the combinations of the factor levels suggested by
+the software. The obtained results were analyzed by
+polynomial 2FI model. The equations for the responses
+were obtained as
+Final Equation in Terms of Coded Factors:
+EE = +66.56 + 5.14*A + 2.81*B[1] - 2.30*B[2] -
+0.51*AB[1] + 0.78*AB[2]
+FIGURE 1 - FT – IR spectra of (a) Pure TDF; (b) Physical mixture of TDF and PLGA RG503H; (c) Physical mixture of TDF and
+PLGA RG502H; (d) Physical mixture of TDF and PLA R203H
+
+G. Srikar, A. P. Rani
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 6 / 11
+Particle size = +256.65 - 7.71*A + 8.35*B[1] - 11.43*B[2]
+- 0.37*AB[1] + 2.96*AB[2]
+k = +0.057 – 0.007*A – 0.006*B[1] + 0.014*B[2] +
+0.003*AB[1] – 0.006*AB[2]
+where, EE = Entrapment efficiency; k = drug release rate
+constant; A = surfactant concentration; B[1] and B[2] are
+coefficients of multi-level categorical factor.
+Differential Scanning Calorimetry (DSC)
+DSC analysis was performed to investigate the
+physical state of drug in the prepared ACNs. For this
+purpose, DSC spectra were taken for pure TDF; pure
+polymers PLA R203H and PLGA RG503H; ACNs of
+TDF with PLA as well as with PLGA. The spectra were
+shown in Figure 3. The spectra of pure drug showed a
+sharp endothermic peak at 118.1 °C corresponding to its
+melting point temperature which is around 115 °C. But this
+endothermic peak was found to be absent in the spectra of
+TDF ACNs with either of the polymers, which indicated
+that the drug was in no more crystalline state in the ACNs,
+instead it might be in either molecular dispersion or
+amorphous form (Shailender et al., 2017). This might be
+attributed to the mode of incorporation of drug i.e. in its
+aqueous solution form into the nanocapsules during their
+preparation.
+In case of the polymer PLA R203H, its pure spectra
+showed an endothermic peak at 55.4 °C corresponding to
+its glass transition temperature (Tg).Then, an exothermic
+peak at 104.8 °C which corresponds to the re-crystallization
+of PLA and this was followed by another endothermic peak
+at 156.3 °C, which indicated melting of the PLA (Tabi et
+al., 2010). In the spectra of TDF ACNs with PLA, the Tg of
+PLA was increased and observed at 59.3 °C which might
+be because of its rapid solidification during the process.
+The absence of further peaks of re-crystallization and its
+melting might be attributed to the solidification of PLA
+into amorphous form. The increase in Tg was also found
+in case of PLGA as the endotherm in its pure spectra was
+observed at 48.1 °C and in the spectra of ACNs with PLGA
+at 51.2 °C (Yang et al., 2016).
+FIGURE 2 - SEM images of TDF-ACNs prepared with PLGA RG503H of formulation F3.
+FIGURE 3 - DSC spectra of
+(a) Pure TDF; (b) Pure PLA
+R203H; (c) TDF-PLA R203H ACNs; (d) Pure PLGA RG503H;
+(e) TDF-PLGA RG503H ACNs.
+
+Study on influence of polymer and surfactant on in vitro performance of biodegradable aqueous-core nanocapsules
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 7 / 11
+Particle size
+TDF-ACNs in the size range of 242.5 to 274.3 nm
+were obtained (refer to Table I). Influence of the factors
+are shown in Figure 4(a). The particle size was found to
+decrease upon increase in the surfactant concentration.
+This might be attributed to the ability of surfactant to
+reduce the interfacial tension and hence the interfacial
+free energy, so that higher amount of surfactant results to
+an emulsion with high interfacial area, that means smaller
+particle size with good stability (Sinko, 2017). The results
+were in agreement with those reported by Rehfeld in case
+of benzene-in-water emulsions (Rehfeld, 1967); and also
+with those reported by Gupta et al.(2015) in case of solid
+lipid nanoparticles (Gupta et al., 2015). The particle size
+was found to be influenced by the type of polymer as
+bigger size particles were observed with PLGA RG503H
+followed by PLA R203H and smaller size particles were
+observed with PLGA RG502H. This might be attributed
+to the molecular weight of the polymers. The molecular
+weights of PLGA RG503H, PLGA RG502H and PLA
+R203H are 24000 – 38000; 7000-17000 and 18000 –
+28000, respectively. The viscosity of the polymeric
+solution is directly proportional to its molecular weight.
+Under similar experimental conditions, a low viscosity
+polymer solution could better be dispersed in external
+aqueous medium with fine globule size than could a high
+viscous polymer solution, such that the size was reduced
+in the case of PLGA RG502H and increased in the order
+of increasing molecular weight (Ravi et al, 2008). The
+differences in particle size of formulations with different
+concentrations of surfactants and different polymers
+was statistically significant at p<0.05 (as shown in
+Table II).
+Zeta potential
+The zeta potential values of prepared TDF-ACNs
+were found to be in the range of -18.3 to -27.6 mV as
+shown in Table I. The average zeta potential of TDF-
+ACNs was found to be -27.54 mV in the case of PLGA
+RG503H; -23.00 mV in the case of PLGA RG502H;
+and -19.66 mV in the case of PLA R203H. The negative
+zeta potentials were attributed to the presence of free
+carboxylic acid as end groups on all the three selected
+polymers (Nicolete, dos Santos, Faccioli, 2011;
+Maharana, Mohanty, Negi, 2010). These results indicated
+that there was no influence of concentration of surfactant,
+but the type of polymer had influence as the zeta potential
+might be solely dependent on the nature of polymer that
+forms the mantle of the nanocapsules. The high negative
+zeta potential was also responsible for good physical
+stability in suspension form.
+Entrapment efficiency
+The entrapment efficiency of TDF-ACNs was found
+to be in the range of 58.21 – 73.86% (refer to Table I).
+Influence of the factors in this stage on entrapment
+efficiency areshown in Figure 4(b). The entrapment
+efficiency was found to be more in nanocapsules made
+of PLGA RG503H and decreased in the order of PLA
+R203H and PLGA RG502H. These results indicated
+that the entrapment efficiency was directly proportional
+to the molecular weight of the polymer. The polymer
+with high molecular weight would have restricted the
+escape of the drug encapsulated in it because of its
+high viscosity, resulting in high entrapment efficiency
+(Krishnamachari, Madan, Lin, 2007). The less particle
+FIGURE 4 - Interaction plots showing the influence of surfactant concentration in primary emulsion and type of polymer on (a)
+particle size; (b) entrapment efficiency; (c) drug release rate constant.
+
+G. Srikar, A. P. Rani
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 8 / 11
+size in case of low molecular weight polymer would
+also be responsible for low entrapment efficiency, as the
+small particles could have high surface area to give more
+opportunity for drug escape from the nanocapsules (Yeo,
+Park, 2004). Hydrophobicity of the polymer can also
+influence the entrapment efficiency,such that the higher
+the hydrophobicity of polymer, the greater the resistance
+for escape of encapsulated drug into the outer aqueous
+medium. An interesting finding was observed in this
+work that though PLA is more hydrophobic than PLGA,
+high entrapment efficiency in case of PLGA RG503H
+demonstrated that the effect of molecular weight of the
+polymer might dominate the effect of hydrophobicity.
+The amount of Span 80, a hydrophobic surfactant, in the
+primary emulsion (W/O) also influenced the entrapment
+efficiency, such that the increase in the concentration of
+Span 80 led to an increase in entrapment efficiency. As
+the Span 80 was employed in primary emulsion (W/O),
+it could be deposited over the surface of the aqueous
+globules along with the polymer. So, upon increase in
+the concentration of Span 80, the nanocapsules became
+more hydrophobic such that the leakage of TDF into the
+outer aqueous medium would be minimized, resulting in
+increased entrapment efficiency. The influence of all the
+factors on entrapment efficiency was significant at p < 0.05
+(as shown in Table II).
+The maximum entrapment efficiency observed
+was 73.86%. Few studies have been reported on the
+improvement of entrapment efficiency of hydrophilic
+drugs. Dordelmann et al.(2014) reported that
+encapsulation efficiency of nucleic acids into poly(D,L-
+lactide-co-glycolide acid) (PLGA) nanocapsules
+prepared by W/O/W emulsion solvent evaporation
+technique was improved upto 52% by employing calcium
+phosphate in the primary inner phase (Dordelmann et
+al., 2014). Kashi et al. worked on solid/oil/water ion
+pairing method to encapsulate minocycline into PLGA
+nanoparticles and reported a maximum entrapment
+efficiency of 29.9% (Kashi et al., 2012). Peltonen et al
+reported an increase in entrapment efficiency of sodium
+chromoglycate into polylactide nanoparticles upto 70%
+by modified nanoprecipitation method (Peltonen et al.,
+2004). Hence, it was inferred that ACNs prepared in this
+study by modified multiple emulsion technique was an
+alternative to improving the entrapment of hydrophilic
+drugs into nanoparticles.
+TABLE II - Results of ANOVA for response surface 2-factorial interaction model for the responses
+S. No.
+Response
+Source
+SSa
+Dfb
+MSSc
+F value
+p-Value
+Inferenced
+1
+Particle size
+(nm)
+Model
+1825.01
+5
+365.00
+145.56
+<0.0001
+Significant
+Ae
+713.02
+1
+713.02
+284.36
+<0.0001
+Significant
+Bf
+1049.58
+2
+524.79
+209.29
+<0.0001
+Significant
+AB
+62.41
+2
+31.21
+12.44
+0.0026
+Significant
+Residual
+22.57
+9
+2.51
+Lack of Fit
+4.53
+3
+1.51
+0.50
+0.6943
+Not significant
+2
+EEg (%)
+Model
+388.68
+5
+77.74
+67.13
+<0.0001
+Significant
+A
+317.47
+1
+317.47
+274.15
+<0.0001
+Significant
+B
+67.43
+2
+33.71
+29.11
+0.0001
+Significant
+AB
+3.78
+2
+1.89
+1.63
+0.2482
+Not significant
+Residual
+10.42
+9
+1.16
+Lack of Fit
+4.56
+3
+1.52
+1.56
+0.2941
+Not significant
+3
+kh (h-1)
+Model
+2.23x10-3
+5
+4.46x10-4
+461.01
+<0.0001
+Significant
+A
+5.88x10-4
+1
+5.88x10-4
+608.28
+<0.0001
+Significant
+B
+1.41x10-3
+2
+7.03x10-4
+727.10
+<0.0001
+Significant
+AB
+2.34x10-4
+2
+1.17x10-4
+121.29
+<0.0001
+Significant
+Residual
+8.70x10-6
+9
+9.67x10-7
+Lack of Fit
+2.70x10-6
+3
+9.00x10-7
+0.900
+0.4941
+Not significant
+Note: a Sum of Squares; b Degrees of Freedom; c Mean Sum of Squares; d p-Value less than 0.05 indicates model terms are
+significant; e Polymer concentration (%w/w); e Surfactant concentration (%v/v); f Type of polymer; g Entrapment Efficiency; h
+Release rate constant.
+
+Study on influence of polymer and surfactant on in vitro performance of biodegradable aqueous-core nanocapsules
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 9 / 11
+Drug release studies
+The release rate constant of TDF from ACNs was
+found to be in the range of 0.045 – 0.058 h-1 (refer to
+Table I). Influence of both factors on drug release rate
+constant is shown in Figure 4(c). The release rate constant
+from nanocapsules with polymer PLGA RG502H was
+found to be more and this might be because of low
+molecular weight of this polymer among the three. The
+PLA or PLGA with low molecular weight could degrade
+or erode rapidly and release the drug encapsulated in it
+at high rate (Feng et al., 2015). Though, the molecular
+weight of PLA R203H is slightly lower than PLGA
+RG503H, the release rate constant was found to be less
+in TDF-ACNs with the former polymer. This might be
+attributed to the greater hydrophobicity of the PLA that
+could hinder the aqueous medium from having contact
+with the nanocapsules surface, thereby, resulting in
+decreased drug release rate constant (Ravi et al, 2008).
+Upon increase in the amount of Span 80 in the primary
+W/O emulsion, the release rate constant was found to
+be decreased. As the surfactant concentration increased,
+the stability of the emulsion could be increased (Maa,
+Hsu, 1997), which might result in tight adherence of the
+polymer in the outer organic phase onto the surface of the
+internal aqueous phase globules upon evaporation of the
+organic solvent. So, the ACNs with high amount of Span
+80 controlled the release of TDF to a greater extent. The
+influence of both factors on drug release rate constant was
+significant at p < 0.05 (shown in Table II). Drug release
+from all the formulations was found to follow first – order
+kinetics and mechanism of drug release was found to be
+non – Fickian diffusion.
+DoE Validation and ANOVA
+The plot of predicted versus actual results of the
+response variables were shown in Figure 5. The close
+agreement between the predicted values by the design
+with the actual obtained values from the experiments
+indicated that the selected response surface 2FI model was
+suitable for the design employed in this study. This was
+also further justified by the results of ANOVA (shown in
+Tables II) that the model F value and insignificant lack-of-
+fit values in case of each response showed that the model
+was significant and suitable for the design employed in
+this study.
+CONCLUSION
+The major objective of this work was to study
+the influence of concentration of surfactant in primary
+emulsion and type of polymer on in vitro performance
+of ACNs of TDF that were prepared by multiple
+emulsion technique such that nanocapsules with superior
+characteristics could be developed. The findings of this
+work inferred that type of polymer and concentration of
+surfactant were found to have a significant influence on
+entrapment efficiency, particle size and drug release, such
+that these formulation variables could be successfully
+changed in order to obtain the ACNs with desired
+characteristics. In conclusion, the entrapment efficiency
+of hydrophilic drugs into nanoparticles could be improved
+by the aqueous-core nanocapsules technique.
+ACKNOWLEDGEMENT
+The authors are acknowledged to the authorities
+FIGURE 5 - Predicted versus actual plots for the responses (a) particle size; (b) entrapment efficiency; (c) drug release rate constant.
+
+G. Srikar, A. P. Rani
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 10 / 11
+of Jawaharlal Nehru Technological University Kakinada
+(JNTUK), Kakinada and Acharya Nagarjuna University,
+Guntur for their constant support throughout the work.
+REFERENCES
+Asasutjarit R, Sorrachaitawatwong C, Tipchuwong N, Pouthai
+S. Effect of formulation compositions on particle size and zeta
+potential of diclofenac sodium-loaded chitosan nanoparticles.
+Int J Med Health Pharmaceut Biomed Eng. 2013;7(9):568-70.
+Barratt GM. Therapeutic applications of colloidal drug carriers.
+Pharm Sci Technol Today. 2000;3(5):163-71.
+Bohrey S, Chourasiya V, Pandey A. Polymeric nanoparticles
+containing diazepam: preparation, optimization, characterization,
+in-vitro drug release and release kinetic study. Nano Converg.
+2016;3(1):3.
+Brigger I, Dubernet C, Couvreur P. Nanoparticles in cancer
+therapy and diagnosis. Adv Drug Deliv Rev. 2002;54(5):631-51.
+Budhian A, Siegel SJ, Winey KI. Production of haloperidol-
+loaded PLGA nanoparticles for extended controlled drug release
+of haloperidol. J Microencapsul. 2005;22(7):773-85.
+Crucho CI, Barros MT. Polymeric nanoparticles: A study on the
+preparation variables and characterization methods. Mater Sci
+Eng C. 2017;80:771-84.
+Doppalapudi S, Jain A, Domb AJ, Khan W. Biodegradable
+polymers for targeted delivery of anti-cancer drugs. Expert Opin
+Drug Deliv. 2016;13(6):891-909.
+Dördelmann G, Kozlova D, Karczewski S, Lizio R, Knauer
+S, Epple M. Calcium phosphate increases the encapsulation
+efficiency of hydrophilic drugs (proteins, nucleic acids) into poly
+(d, l-lactide-co-glycolide acid) nanoparticles for intracellular
+delivery. J Mater Chem B. 2014;2(41):7250-9.
+Dufès C. Brain Delivery of Peptides and Proteins. In: Chris Van
+Der Walle, editor. Peptide and Protein Delivery. Academic Press:
+Glasgow; 2011. p. 105-22.
+Feng S, Nie L, Zou P, Suo J. Effects of drug and polymer
+molecular weight on drug release from PLGA‐m PEG
+microspheres. J Appl Polym Sci. 2015;132(6).
+Gomes EC, Mussel WN, Resende JM, Fialho SL, Barbosa
+J, Carignani E, Geppi M, Yoshida MI. Characterization of
+tenofovir disoproxil fumarate and its behavior under heating.
+Cryst Growth Des. 2015;15(4):1915-22.
+Gupta B, Poudel BK, Pathak S, Tak JW, Lee HH, Jeong JH, Choi
+HG, Yong CS, Kim JO. Effects of formulation variables on the
+particle size and drug encapsulation of imatinib-loaded solid
+lipid nanoparticles. AAPS PharmSciTech. 2015;17(3):652-62.
+Gupta N, Rajera R, Nagpal M, Arora S. Primaquine loaded
+chitosan nanoparticles for liver targeting. Pharm Nanotechnol.
+2013;1(1):35-43.
+Hines DJ, Kaplan DL. Poly (lactic-co-glycolic) acid-controlled-
+release systems: experimental and modeling insights. Crit Rev
+Ther Drug Carrier Syst. 2013;30(3):257-76.
+Honary S, Zahir F. Effect of zeta potential on the properties of
+nano-drug delivery systems-a review (Part 1). Trop J Pharm
+Res. 2013;12(2):255-64.
+Jia L. Nanoparticle formulation increases oral bioavailability of
+poorly soluble drugs: approaches, experimental evidences and
+theory. Curr Nanosci. 2005;1(3):237-43.
+Kashi TS, Eskandarion S, Esfandyari-Manesh M, Marashi
+SM, Samadi N, Fatemi SM, et al. Improved drug loading
+and antibacterial activity of minocycline-loaded PLGA
+nanoparticles prepared by solid/oil/water ion pairing method.
+Int J Nanomedicine. 2012;7:221-34.
+Kohn J, Langer R. Bioresorbable and bioerodible materials.
+In: Ratner BD, Hoffman AS, Schoen FJ, Lemons JE, editors.
+Biomaterials science: an introduction to materials in medicine,
+2nd ed. London: Elsevier Academic Press; 2004. p. 64-72.
+Krishnamachari Y, Madan P, Lin S. Development of pH-and
+time-dependent oral microparticles to optimize budesonide
+delivery to ileum and colon. Int. J. Pharm. 2007;338(1-2):238-
+47.
+Li X, Wu Q, Chen Z, Gong X, Lin X. Preparation, characterization
+and controlled release of liver-targeting nanoparticles from the
+amphiphilic random copolymer. Polymer. 2008;49(22):4769-75.
+Maa YF, Hsu CC. Effect of primary emulsions on microsphere
+size and protein-loading in the double emulsion process. J
+Microencapsul. 1997;14(2):225-41.
+
+Study on influence of polymer and surfactant on in vitro performance of biodegradable aqueous-core nanocapsules
+Braz. J. Pharm. Sci. 2019;55:e18736
+Page 11 / 11
+Maharana T, Mohanty B, Negi YS. Preparation of poly (lactic
+acid) nanoparticles and optimization of the particle size. Int J
+Green Nanotechnol: Phys Chem. 2010;2(2):P100-9.
+Mainardes RM, Gremião MP, Evangelista RC. Thermoanalytical
+study of praziquantel-loaded PLGA nanoparticles. Braz J Pharm
+Sci. 2006;42(4):523-30.
+Mohamed AI, Abd-Motagaly AM, Ahmed OA, Amin S,
+Mohamed Ali AI. Investigation of drug–polymer compatibility
+using chemometric-assisted UV-spectrophotometry.
+Pharmaceutics. 2017;9(1):pii:7.
+Neumanova Z, Cerveny L, Ceckova M, Staud F. Interactions
+of tenofovir and tenofovir disoproxil fumarate with drug efflux
+transporters ABCB1, ABCG2, and ABCC2; role in transport
+across the placenta. Aids. 2014;28(1):9-17.
+Nicolete R, dos Santos DF, Faccioli LH. The uptake of PLGA
+micro or nanoparticles by macrophages provokes distinct
+in vitro inflammatory response. Int Immunopharmacol.
+2011;11(10):1557-63.
+Peltonen L, Aitta J, Hyvönen S, Karjalainen M, Hirvonen J.
+Improved entrapment efficiency of hydrophilic drug substance
+during nanoprecipitation of poly (I) lactide nanoparticles. AAPS
+PharmSciTech. 2004;5(1):115.
+Rao JP, Geckeler KE. Polymer nanoparticles: preparation
+techniques and size-control parameters. Prog Polym Sci.
+2011;36(7):887-913.
+Ravi S, Peh KK, Darwis Y, Murthy BK, Singh TR, Mallikarjun
+C. Development and characterization of polymeric microspheres
+for controlled release protein loaded drug delivery system.
+Indian J Pharm Sci. 2008;70(3):303-9.
+Rehfeld SJ. The effects of initial surfactant concentration and
+emulsification time upon the particle size and distribution
+of benzene-in-water emulsions. J Colloid Interface Sci.
+1967;24(3):358-65.
+Shailender J, Ravi PR, Saha P, Dalvi A, Myneni S. Tenofovir
+disoproxil fumarate loaded PLGA nanoparticles for enhanced
+oral absorption: Effect of experimental variables and in vitro,
+ex vivo and in vivo evaluation. Colloids Surf B Biointerfaces.
+2017;158:610-9.
+Sharma N, Madan P, Lin S. Effect of process and formulation
+variables on the preparation of parenteral paclitaxel-loaded
+biodegradable polymeric nanoparticles: A co-surfactant study.
+Asian J Pharm Sci. 2016;11(3):404-16.
+Silverstein RM, Webster FX, Kiemle DJ. Spectrophotometric
+identification of compounds. 7th ed. New Jersey: John Wiley
+and Sons; 2005.
+Sinko PJ. Martin’s physical pharmacy and pharmaceutical
+sciences. 7th ed. New Delhi: Wolter Kluwers; 2017. p.377-8.
+Soma D, Attari Z, Reddy MS, Damodaram A, Koteshwara
+KB. Solid lipid nanoparticles of irbesartan: preparation,
+characterization, optimization and pharmacokinetic studies.
+Braz J Pharm Sci. 2017;53(1):1-10.
+Tabi T, Sajó IE, Szabó F, Luyt AS, Kovács JG. Crystalline
+structure of annealed polylactic acid and its relation to
+processing. Express Polym Lett. 2010;4(10):659-68.
+Vrignaud S, Anton N, Passirani C, Benoit JP, Saulnier P. Aqueous
+core nanocapsules: a new solution for encapsulating doxorubicin
+hydrochloride. Drug Dev Ind Pharm. 2013;39(11):1706-11.
+Yadav KS, Sawant KK. Modified nanoprecipitation method for
+preparation of cytarabine-loaded PLGA nanoparticles. AAPS
+PharmSciTech. 2010;11(3):1456-65.
+Yang X, Trinh HM, Agrahari V, Sheng Y, Pal D, Mitra AK.
+Nanoparticle-based topical ophthalmic gel formulation
+for sustained release of hydrocortisone butyrate. AAPS
+PharmSciTech. 2016;17(2):294-306.
+Yeo Y, Park K. Control of encapsulation efficiency and initial
+burst in polymeric microparticle systems. Arch Pharm Res.
+2004;27(1):1-12.
+Received for publication on 11th September 2018
+Accepted for publication on 06th December 2018
+This is an open-access article distributed under the terms of the Creative Commons Attribution License.

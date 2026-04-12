@@ -1,0 +1,933 @@
+Journal of Orthopaedic Research®
+RESEARCH ARTICLE
+In Vitro Characterization and In Vivo Performance of
+Vancomycin‐Loaded PLGA Microspheres Prepared by
+Using Microfluidics for the Management of Orthopedic
+Infections
+Dinesh Dhamecha1,2 | Mehmet D. Asik1,2
+| Cecilia Nepple1
+| Yingfang Fan1,2
+| Amita Sekar1,2 | Keita Fujino1 |
+Fawaz Malick1 | Madeline McCanne1 | Ebru Oral1,2
+| Orhun Muratoglu1,2
+1Harris Orthopaedic Laboratory, Massachusetts General Hospital, Boston, Massachusetts, USA | 2Department of Orthopaedic Surgery, Harvard Medical
+School, Harvard University, Boston, Massachusetts, USA
+Correspondence: Orhun Muratoglu (omuratoglu@mgb.org)
+Received: 3 January 2025 | Revised: 19 February 2025 | Accepted: 2 March 2025
+Funding: This study was supported by the Muratoglu‐Harris Endowment.
+Keywords: Controlled antibiotic release | Microfluidics | Periprosthetic joint infection | PLGA microparticles | Vancomycin hydrochloride
+ABSTRACT
+Periprosthetic joint infection (PJI) is a severe complication of total joint arthroplasty (TJA), leading to high rates of revision
+surgeries, long‐term morbidity, and mortality. Conventional antibiotic treatments often suffer from limited bioavailability and
+systemic toxicity. This study explores a novel approach using vancomycin‐loaded poly(lactic‐co‐glycolic) acid (PLGA) micro-
+particles (VMP) formulated via a microfluidic double emulsion method for controlled, localized drug delivery for managing PJI.
+The PLGA microparticles were synthesized to achieve high loading capacity and sustained vancomycin release, aiming to
+maintain therapeutic intra‐articular concentrations. In vitro characterization demonstrated optimal loading capacity (up to 28%
+w/w), morphology with a homogeneous particle size distribution (49–65 µm), and sustained release profiles over 8 weeks. In
+vivo efficacy was evaluated using a rat joint infection model, showing significant reductions in bacterial viability and enhanced
+bone healing compared to controls. Weight‐bearing recovery assessments showed that VMP‐treated rats regained functionality
+significantly earlier than controls (p < 0.05). Radiographic, histological, and immunofluorescent analyses confirmed reduced
+inflammation and improved bone integrity with VMP treatment. These findings suggest that microfluidic‐synthesized
+PLGA microparticles provide a promising strategy for localized, controlled release of antibiotics, potentially helping the
+management of PJI and improving postsurgical outcomes. Future research should explore the long‐term effects and
+scalability of clinical applications. This study lays the foundation for advancing controlled release systems in orthopedic
+postoperative care.
+1
+|
+Introduction
+Periprosthetic joint infection (PJI) can be a severe complication
+of total joint arthroplasty (TJA) [1, 2]. The acute condition is
+characterized by pain, swelling, and tenderness in the affected
+area. Although PJI occurs in only 1%–2% of TJA cases performed
+at tertiary healthcare facilities, it is more common in community
+hospitals and is currently the leading cause of arthroplasty fail-
+ure. With a recurrence rate of about 16%, the consequences of PJI
+can be severe and may require multiple resection arthroplasties,
+arthrodesis, or even amputation [3, 4]. The mortality rate is also
+high, partly due to the need for multiple revision surgeries [1, 2].
+© 2025 Orthopaedic Research Society.
+1191 of 1211
+Journal of Orthopaedic Research®, 2025; 43:1191–1202
+https://doi.org/10.1002/jor.26070
+
+The glycopeptide vancomycin hydrochloride (vancomycin) is
+among the antibiotics that are commonly administered intra-
+venously and locally to treat these infections, especially those
+caused by methicillin‐resistant Staphylococcus aureus. Its bio-
+availability at the infection site is limited, especially in bone
+tissue, and increased dosing can lead to serious systemic tox-
+icity, such as ototoxicity or nephrotoxicity [5]. Localized bone
+cement applications of antibiotics reduce systemic toxicity.
+However, the release of antibiotics from the spacers is often
+insufficient to treat the infections effectively [6, 7]. Controlled
+localized delivery of vancomycin from poly(lactic‐co‐glycolic)
+acid (PLGA) microparticles encapsulating vancomycin could
+positively impact infection treatment outcomes by increasing
+the local drug concentration, improving the drug's pharmaco-
+kinetics, and reducing toxicity [8]. PLGA, a co‐polymer of
+human metabolites glycolic and lactic acid monomers, has been
+in medical use for decades and demonstrated clinical success in
+long‐acting therapies for oncology, ophthalmology, and pain
+management. On the other hand, achieving the desired
+microparticle loading capacity and release rates for hydrophilic
+drugs is challenging due to PLGA's hydrophobic structure.
+Several commercial grades of PLGA, with varying ratios of lactic to
+glycolic acid monomers, molecular weights, and terminal groups,
+allow tuning of biodegradability and extended drug release rates [9].
+Many complex PLGA‐based injectables have been cleared by the
+FDA to extend the release duration of therapeutics in different
+indications [10]. For example, Zilretta (Pacira, FL, USA), a PLGA
+microparticle formulation encapsulating the hydrophobic cortico-
+steroid triamcinolone acetonide, releases its cargo for up to 6
+months. The intra‐articular injection of Zilretta in arthritic patients
+has been shown to provide sustained pain relief for 3–4 months
+[11]. PLGA microparticles are typically formulated using emulsion
+and solvent evaporation methods, which enable the encapsulation
+of drugs in the polymeric matrix formed by using single and double
+emulsion techniques. However, the conventional homogenization
+method used in emulsion‐based microparticle synthesis has limi-
+tations, such as poor drug loading capacity and nonhomogeneous
+particle size distribution, particularly for hydrophilic drug molecules
+[12]. In contrast, encapsulation using microfluidic devices offers
+better control over particle size distribution, higher drug loading
+capacity, and greater scalability [13].
+In this study, we present a new vancomycin‐encapsulating
+PLGA microparticle prepared with a microfluidics‐based double
+emulsion method. We hypothesize that these microparticles can
+maintain vancomycin release to achieve intra‐articular vanco-
+mycin concentrations sufficient to prevent or treat PJI caused
+by S. aureus.
+2
+|
+Materials and Methods
+Vancomycin hydrochloride was purchased from Hospira Inc.
+(Lake Forest, IL). PLGA grades used were Resomer RG 503 H
+(molecular weight [MW] = 24,000–38,000 g/mol) and Resomer
+RG 504 (MW = 38,000‐54,000 g/mol) were obtained from Evonik
+(Piscataway, NJ). Polyvinyl alcohol (PVA), Tween 20, and sodium
+chloride were purchased from Sigma (St. Louis, MO). Purasorb
+PDLG 5004 (MW = 43,000 g/mol), another PLGA grade used, was
+obtained from Corbion (Gorinchem, Netherlands). Chloroform
+and ethyl acetate were purchased from Fisher Scientific (Fair
+Lawn, NJ). All chemicals used were of analytical grade.
+2.1
+|
+Formulation of Microspheres
+PLGA
+microparticles
+containing
+vancomycin
+hydrochloride
+(VMP) were fabricated using the “dilution microfluidic cartridge”
+(DMC) on the NanoAssemblr Ignite microfluidic platform (Pre-
+cision NanoSystems, Vancouver, Canada). Respective syringes
+were filled with the first water solution (W1), organic solution (O),
+and second water solution (W2) and connected to the DMC
+(Figure S1). Solutions with varying concentrations (Table S1) were
+used to prepare PLGA microparticles. The emulsions formed in
+the DMC were collected from the outlet in a 50 mL plastic tube
+containing 5–10 mL of W2 solution. The contents of the plastic
+tube were poured into a beaker and placed on a shaker under the
+hood for 12–16 h at 250 rpm at ambient temperature to evaporate
+ethyl acetate and water. The resulting dispersion was centrifuged
+at 3000 rpm and washed with DI water three times to remove any
+residual vancomycin. PLGA microparticles were then dispersed in
+5 mL water and subjected to freezing at −80°C for 12 h. The fro-
+zen pellets were lyophilized for 48 h on a BenchTop Pro Lyophi-
+lizer (VirTis, SP Scientific, Warminster, PA) and stored at −20°C
+until further characterization.
+2.2
+|
+Particle Characterization
+Particle morphology was investigated using optical and scan-
+ning electron microscopy (SEM). An aliquot of 30 μL of VMP
+suspended in water was placed on a glass slide for imaging
+using an SZX12 Optical Microscope/DP11 Digital Camera from
+Olympus Life Sciences (USA). An SEC‐SEM‐12 Zeiss Gemini
+360 FE‐SEM SEC operated at 3 kV was used for SEM imaging.
+VMP (50 μL) was fixed onto SEM stubs with double‐sided car-
+bon adhesive tape and gold sputter‐coated (20 nm) and imaged.
+Loading capacity and particle size distribution experiments
+(for details, see the Supporting Information) were performed
+with imaged particles. Selected formulations were tested for in
+vitro release, and a pharmacokinetic model was applied to the
+release result to predict the in vitro vancomycin concentrations
+(for details, see Supporting Information).
+2.3
+|
+In Vivo Efficacy in a Rat Joint Infection
+Model
+This study was approved by the Institutional Care and Use
+Committee of Massachusetts General Hospital (Approval No.
+2022N000013).
+Twelve
+adult
+male
+Sprague–Dawley
+rats
+(350–400 g) from Charles River Laboratories were used. Rats
+were randomly divided into control (n = 6) and VMP (n = 6)
+groups, with ad libitum access to chow and water [7, 14]. Fol-
+lowing a 3‐day acclimation, baseline measurements were taken
+preoperatively. Postoperative assessments, including weight
+monitoring, X‐rays, blood collection, gait analysis, and static
+weight bearing, were conducted on POD 1, 3, 7, 14, 21, and 28
+(Figure S2). At Day 28, ex vivo bacterial culture, micro‐CT
+imaging, and histology were performed.
+1192 of 1211
+Journal of Orthopaedic Research®, 2025
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Rats were anesthetized with 1%–3% isoflurane in 1 L O2/min, and
+buprenorphine (0.05 mg/kg IP) was given 30 min presurgery. A
+3–4 cm skin incision was made on the right femur, exposing the
+femoral condyle. A 3 mm hole was drilled for a 3 × 3 mm poly-
+ethylene plug implantation. An intercondylar canal was drilled
+in the tibia, followed by a 10 µL injection of 2 × 107 S. aureus
+(ATCC 12600, Manassas, VA) and the implantation of a titanium
+screw. An additional 40 µL of 8 × 107 S. aureus was injected into
+the joint space (Figure 3a). In the VMP group, a 25 µL aliquot
+containing
+10 mg
+(equivalent
+to
+2.5 mg
+vancomycin)
+of
+vancomycin‐loaded PLGA microparticles was prepared. An 18‐
+gauge needle was used to puncture the lateral condyle, and the
+microparticle suspension was administered into the knee joint
+using a pipette (Figure 3b). The wound was closed with 5‐0 Vi-
+cryl sutures. The control group did not receive treatment. Post-
+operatively, buprenorphine was given every 12 h for 72 h.
+Euthanasia was performed using pentobarbital (100 mg/kg IP),
+and knee tissues, tibial screws, and PE plugs were collected
+aseptically for bacterial count measurement.
+2.4
+|
+Determination of Bacterial Viability
+On postoperative Day 28, femoral and tibial tissues surrounding
+the implants were harvested and homogenized in 1 mL sterile
+PBS using a TissueRuptor II (QIAGEN, Germany) for 1–2 min.
+The tissue lysate was serially diluted, plated on tryptic soy agar,
+and incubated for 16–20 h at 35°C. Viable bacteria counts were
+normalized to tissue weight. Implant materials (titanium screws
+and polyethylene plugs) were also harvested, sonicated in 1 mL
+PBS for 40 min, and the sonicate fluid was processed similarly.
+The colony‐forming units (CFU) from both tissues and implants
+were compared to the initial S. aureus inoculum (ATCC 12600;
+108 CFU) to determine the effect of vancomycin eluting PLGA
+particles. Greater than three log reduction in the observed
+bacterial count was determined as eradication.
+2.5
+|
+Microcomputed Tomography and X‐Ray
+Microcomputed tomography (micro‐CT) was used to assess
+bone mass and quality in the proximal tibia. Each rat's proximal
+tibia was scanned using a high‐resolution desktop micro‐CT
+system (micro‐CT40, Scanco Medical AG, Brüttisellen, Switz-
+erland) with a 36 µm3 isotropic voxel size, 70 kVp peak X‐ray
+tube potential, 114 mAmps tube current, and 240 ms integration
+time. Volumetric and mineral density analyses were performed
+in a region starting 720 µm distal to the proximal growth plate
+and extending 9 mm into the diaphysis (Figure S4). Manual
+contouring allowed for cortex and endocortical region analysis
+within transverse slices. Bone segmentation used a fixed min-
+eral density of 350 mgHA/cm3, and the Scanco Evaluation
+Program measured bone volume (BV, mm3), total volume (TV,
+mm3), bone volume fraction (BV/TV, %), and bone mineral
+density (BMD, mgHA/cm3). X‐ray imaging (lateral) was per-
+formed on POD 1, 10, 14, and 28 to monitor implant migration.
+The rats were anesthetized using 1%–3% isoflurane in oxygen
+and placed on a high‐resolution digital X‐ray plate. The X‐ray
+machine was set to a voltage of 54 kVp and an exposure time of
+0.075 s. All radiographs were assessed by two blinded observers.
+2.6
+|
+Static Weight‐Bearing
+For weight‐bearing analysis, we used a custom‐designed plat-
+form with total internal reflection (TIR) technology to measure
+hind‐limb weight distribution in rats [15]. Rats were placed on
+an elevated plexiglass platform, and their movements were
+recorded and analyzed using MATLAB software to quantify
+weight exerted by each hind limb. Detailed methods are pro-
+vided in the Supporting Information.
+2.7
+|
+Toe Spread
+To assess recovery progression, we performed toe spread ratio
+analysis of the right (surgical) versus left (nonsurgical) hind paws.
+High‐speed gait videos [16] were captured at 400 frames per sec-
+ond using the PROMON U750 camera, and baseline measure-
+ments were taken before surgery. Gait videos were analyzed with
+ImageJ software, identifying frames with complete paw contact.
+Toe spreads between the 1st and 5th toes and between the 2nd
+and 4th toes were measured, and the ratio of these measurements
+between the surgical and control paws was calculated. Detailed
+methods are provided in the Supporting Information.
+2.8
+|
+Histology and Immunofluorescent Staining
+To assess structural changes and the local inflammatory
+response in tibial bone posttreatment, Hematoxylin and Eosin
+(H&E) and immunofluorescent staining were performed on
+tibial bone sections at POD 28. Following euthanasia with
+pentobarbital, tibia samples were fixed in 4% formaldehyde,
+decalcified in Versenate EDTA solution, processed histologi-
+cally, and embedded in paraffin wax. H&E staining was used for
+general tissue structure visualization, and sections were scan-
+ned for analysis. Immunofluorescent staining identified TNF‐α
+and IL‐6 to evaluate the inflammatory response, using specific
+antibodies and fluorescently labeled secondary antibodies. De-
+tailed methods are provided in the Supporting Information.
+2.9
+|
+Statistical Analyses
+Paired t‐tests were performed between and within control and
+experimental groups on weight bearing asymmetry, toe spread
+results that were collected throughout the study to compare any
+changes between days. Significant differences were determined
+as p‐values less than 0.05.
+3
+|
+Results
+3.1
+|
+Microparticle Formulation and In Vitro
+Characterization
+3.1.1
+|
+Loading Capacity
+The loading capacity of vancomycin in VMP ranged from 3.5%
+to 28% w/w (Table 1). Switching the organic phase solvent from
+acetonitrile to ethyl acetate more than doubled the loading
+1193 of 1211
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+capacity (F01 and F02). Increasing PVA concentration in the
+dilution fluid increased the loading capacity (F02–F04 and
+F08–F09). Increasing PLGA concentration in the organic phase
+did not affect the loading capacity (see formulations F04–F07 in
+Table 1). Increasing the molecular weight of PLGA from
+24,000–38,000 g/mol (F07) to 43,000 g/mol (F08) and simulta-
+neously changing the terminal group from acid to ester
+increased the loading capacity. Using a molecular weight of
+43,000 g/mol (F09) and changing the terminal group from acid
+(F04) to ester resulted in a relatively high loading capacity.
+Maximized loading capacity (25–28 w/v%) was obtained using
+this highest molecular weight (43,000 g/mol), high PVA con-
+centration and a lower concentration of PLGA in the organic
+phase (40 mg/mL) (F10–F12).
+3.1.2
+|
+Particle Size Measurements
+The diameter of VMP was in the range of 49–65 µm (Table 1).
+Changes to the organic solvent used in F01 (acetonitrile) and
+F02 (ethyl acetate), PVA concentration (F02–F04), and PLGA
+molecular weight (F07–F08) resulted in relatively minor varia-
+tions in SPAN values. Increasing PLGA solution concentration
+(F04‐F06) increased the SPAN value. The batch F10 with
+maximum loading capacity showed a SPAN value of 0.95, which
+indicates a relatively homogeneous size distribution.
+3.1.3
+|
+Particle Morphology
+Light and electron microscopy images revealed spherical mor-
+phology for VMP (Figures 1 and 2). SEM analysis of F01 showed
+a smooth, spherical morphology, while that of F02 revealed a
+porous appearance on the surface of the particles. SEM images
+of F03 and F04 showed malformed particles with visible
+grooves. The remaining batches exhibited smooth, spherical
+particles with relatively narrow size distributions (Figure 2),
+also supported by the SPAN values from the particle size
+analysis (Table 1).
+3.1.4
+|
+In Vitro Characterization of Vancomycin
+Release
+The elution profile of the tested formulations (F08–F12) ex-
+hibited an S‐curve with an initial burst release of vancomycin
+followed by a steady, low‐rate release and a second burst
+starting around 6 weeks (Figure 3a). The fractional release
+reached equilibrium around 8 weeks. The first burst release, the
+release rate in the steady phase, and the cumulative fractional
+release were the highest for F10.
+PK modeling for the vancomycin release assumed that clearance
+from the synovial liquid equals serum clearance. The estimation
+for 160 mg VMP injection into the human knee (4 mL) resulted
+in a Cmax of 6.98 mg/mL and a tmax of 1.28 h (Figure 3b). Simi-
+larly, the vancomycin concentration in the rat knee (0.1 mL) was
+estimated to remain over 1 × MIC (1 µg/mL) for the 76 days of
+release duration after 10 mg VPM injection (Figure 3c) with a
+Cmax of 0.43 mg/mL and a tmax of 1.20 h. The maximum local
+drug concentration was reached quickly for both human and rat
+models due to the burst release, followed by a sustained release.
+3.2
+|
+In Vivo Efficacy
+3.2.1
+|
+Bacterial Viability
+The bacterial viability from the peri‐implant tissue and implant
+materials at POD28 are shown in Figure 4. Compared to the
+initial infection inoculum, more than 3 log reduction in bacterial
+viability was observed for both peri‐implant tissue and implant
+materials obtained from the VMP group (p value ≤0.01).
+3.2.2
+|
+X‐Ray Analysis of Implant Stability in Rat Models
+The X‐rays taken with individual rats are shown in Figure 5a,b.
+Notable observations included signs of septic loosening, such as
+periosteal reaction (indicated by red arrows) and implant
+TABLE 1
+|
+Loading capacity, average particle size (PS), D90, D50, D10, and Span for the VMP formulations investigated.
+Batch
+Loading capacity (%w/w)
+PS (µm)
+D90 (µm)
+D50 (µm)
+D10 (µm)
+Span
+F1
+3.55 ± 0.25
+49.8 ± 15.1
+70.2
+46.9
+33.0
+0.79
+F2
+8.3 ± 0.17
+57.9 ± 22.9
+84.5
+52.9
+35.5
+0.92
+F3
+15.2 ± 0.55
+58.6 ± 16.5
+81
+54.2
+42.3
+0.71
+F4
+16.71 ± 0.4
+64.5 ± 24.9
+99.8
+60.5
+34.9
+1.07
+F5
+16.4 ± 0.03
+60.5 ± 25.0
+96.4
+54.6
+33.9
+1.14
+F6
+16.9 ± 0.23
+63.5 ± 29.3
+107.6
+54.9
+33.5
+1.34
+F7
+18.4 ± 1.36
+62.9 ± 23.1
+95.6
+59.4
+35.4
+1.01
+F8
+21.8 ± 1.05
+58.2 ± 22.3
+90.4
+53.1
+33.3
+1.07
+F9
+23.6 ± 0.76
+53.9 ± 22.4
+87.8
+46.9
+31.5
+1.19
+F10
+28.6 ± 1.04
+64.6 ± 22.6
+95.7
+62.3
+36.2
+0.95
+F11
+25.4 ± 0.04
+51.56 ± 19.37
+79.1
+45.5
+32.4
+0.89
+F12
+24.5 ± 0.41
+49.64 ± 16.3
+73
+45.7
+32.3
+1.02
+Note: PS: particle diameter (µm) – average particle diameter for 3 scans. D10, D50, and D90 indicated that 10%, 50%, and 90% of the microparticles had particle diameters
+smaller than those indicated by this value. Span: The span is the difference between D90 and D10 divided by D50.
+1194 of 1211
+Journal of Orthopaedic Research®, 2025
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+migration (marked by asterisks). The VMP group demonstrated
+no periosteal reaction. Peri‐implant radiolucency, noted by ar-
+rowheads, was observed in 50% of the VMP rats by POD 10
+(Figure 5a). By POD 28, a moderate screw migration is evident
+in some cases. The quantification is presented in the accom-
+panying table, providing a visual score for each rat on POD 1,
+10, 14, and 28. The control group exhibited increasing X‐ray
+scores over time (Figure 5b).
+3.2.3
+|
+Quantitative Assessment of Bone Integrity by
+Micro‐CT
+In the endocortical region, there was no difference between the
+control and VMP groups in bone volume fraction (BV/TV) or bone
+mineral density (BMD) on POD 28 (Figure 5c). In the cortex, a
+marked increase in both BV/TV and BMD was observed in the
+VMP group compared to that for the control (p < 0.05).
+3.2.4
+|
+Weight‐Bearing Function
+At POD 1, there was a notable decrease in weight bearing in
+both groups, but particularly in the control group (Figure 6a).
+The weight‐bearing ratio gradually improved in the VMP group,
+with statistically significant improvements by POD 7, which
+were sustained and more pronounced by POD 28, as denoted
+by the asterisks representing varying levels of significance
+(*p < 0.05, **p < 0.01, ***p < 0.001).
+3.3
+|
+Locomotor Recovery Posttreatment
+Both the VMP group and control group demonstrate an initial
+decrease in toe spread ratio following surgery, with gradual
+improvements over time (Figures 6b,c). The VMP group showed
+a consistently higher toe spread ratio across both measurements
+(1–5 and 2–4 toe spread) after POD 14. For the 1–5 toe spread
+FIGURE 1
+|
+Light microscopy images of 12 VMP formulations, labeled F01 through F12. Each image is scaled to provide a clear visualization of
+the particle morphology and size distribution within each formulation. All images feature a scale bar of 50 µm to facilitate comparison of particle
+sizes across most formulations except for F01 and F08, which are 20 µm.
+1195 of 1211
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+FIGURE 2
+|
+Scanning electron microscopy (SEM) images of 12 vesicular microparticle (VMP) formulations, identified as F01 through F12. Each
+image features a uniform scale bar of 100 µm to facilitate direct comparison of particle size and surface morphology across the formulations. This
+series of images highlights the detailed structural characteristics of the microparticles, including surface texture, porosity, and shape uniformity.
+FIGURE 3
+|
+Fractional release profiles from VMP formulations over the elution period. This figure quantitatively depicts the controlled release
+behavior of vancomycin from the microparticles, illustrating how each formulation gradually releases loaded vancomycin under experimental
+conditions (a). Predicted in vivo concentrations of vancomycin over time, calculated using a single‐compartment PK model. This model incorporates
+fractional release data from VMP formulations and knee volume for rats (b) and humans (c).
+1196 of 1211
+Journal of Orthopaedic Research®, 2025
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+ratio, the VMP group had a marked and statistically significant
+improvement on POD28 (p < 0.01), compared with the control
+group. In the 2–4 toe spread ratio, significant improvements in
+the VMP group were evident from POD 21 and sustained
+through POD 28.
+3.4
+|
+Histological Evaluation of Tibial Bone
+Structure
+The tibia bone tissue from the VMP group exhibited a well‐
+organized bone structure with clear, defined marrow spaces,
+and minimal disruption in the cortical bone (Figure 7a). In
+contrast, the tibia bone tissue from the control group showed a
+substantial degree of structural disorganization, with more
+pronounced marrow space disruption and irregularities in the
+cortical bone. There was also a notable presence of bone mar-
+row abscesses (dark stained regions indicated by black arrow) in
+the control sample, accompanied by increased cellularity at the
+screw insertion site.
+3.5
+|
+Inflammatory Marker Expression in Tibial
+Tissue
+The tibia tissue from the VMP group, exhibited a markedly
+reduced red and yellow fluorescence, suggesting lower expres-
+sion of both TNF‐α and IL‐6 (Figure 7b,c). In contrast, the tibia
+FIGURE 4
+|
+Bacterial viability from animal studies. Bar plot indicating the viable bacteria count determined from (a) peri‐implant femoral and
+tibial tissue and (b) titanium screws and polyethylene plugs at POD28. The dotted red line represents the 3‐log reduction compared to the initial
+inoculum. The dotted black line represents the limit of detection for the plate count method. *p value ≤0.01.
+FIGURE 5
+|
+Evaluation of implant placement and migration by X‐ray, bone volumes, and mineral density by Micro‐CT analysis. (a) Radiographs
+for infected rats show features of septic loosening including periosteal reaction (red arrows), peri‐implant radiolucency (arrowheads), and implant
+migration (asterisks). Radiographs of the VMP group showed no periosteal reaction. (b) X‐ray score is the sum of 4 measurements. 50% of rats showed
+slight peri‐implant radiolucency (arrowheads) and implant migration (asterisks) on POD 10 and 14. Moderate screw migration occurred on POD 28.
+(c) Micro‐CT analysis was performed in a 250 slice (9 mm) long region in the proximal metaphysis of the tibia. (BV/TV: Bone volume fraction, BMD:
+Bone mineral density, TMD: Tissue mineral density, BV: Bone volume, TV: Total volume, control group vs. VMP group *p < 0.05).
+1197 of 1211
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+tissue from the control group showed areas of red and yellow
+fluorescence, particularly highlighted by arrows in Figure 7c,
+which points to elevated levels of IL‐6. In Figure 7b, the control
+group also displayed significantly stronger red fluorescence
+compared to the VMP group.
+4
+|
+Discussion
+Microfluidics technology was used for encapsulating vanco-
+mycin in biodegradable PLGA microparticles in this study. The
+primary emulsion was formed by mixing of W1 and O phases
+inside the chip, while the second emulsion was formed where
+the W2 phase interfaced with the primary emulsion (Figure S1).
+In a microfluidics system, the concentration of solutions plays a
+significant role in the morphology of the resultant particles [17,
+18]. We found that if the solutions were too concentrated, they
+either clogged the narrow microfluidic passages in the chip or
+generated fibers through the coalescence of multiple micro-
+particles. The ratio of the flow rates and composition of the
+formulation phases was also expected to influence the rate of
+formation of the initial skin or shell layer of the particles, which
+can affect the subsequent solvent removal rate as well as the
+quality of the shell layer in terms of its mechanical strength,
+porosity, and density. Ultimately, this can have an impact on
+the drug loading and encapsulation efficiency of the micro-
+particles. The precise control of the mixing process using
+microfluidics and the organic (O) – water (W) phase miscibility
+were crucial in the production of high‐quality PLGA micro-
+particles [19–21].
+In the formulation space of the study, the factors that led to
+more uniform particles with high loading capacity were the use
+of ethyl acetate as the organic solvent, increased PVA concen-
+tration and high PLGA molecular weight (with reduced con-
+centration). The solvent choice for the O phase (ethyl acetate or
+acetonitrile) significantly impacted the characteristics of the
+microparticles formed; the acetonitrile (F01) batch had more
+fibers compared to the ethyl acetate batch (F02). The loading
+capacity of F01 was found to be lower than that of F02, which
+can be attributed to the higher miscibility of acetonitrile with
+the aqueous phase, presumably leading to faster evaporation of
+the solvent and the formation of filaments and fibers. Non-
+spherical precipitation has been shown to occur when the sol-
+ubility of a solvent in water is greater than 15% (w/w) [22].
+Thus, the improved formation of spherical particles when using
+ethyl acetate as the solvent in the O phase is attributed to its
+lower miscibility with the W phase (approx. 8.3%) [22]. PVA is
+added to the dilution fluid to increase emulsion stability [22, 23]
+as the PVA molecules can reduce the surface tension through
+hydrogen bonding between the primary emulsion and the W2
+phase of the emulsified PLGA microparticles. The increase in
+loading capacity with increasing PVA concentration in the
+dilution fluid is likely due to increased stability, minimized
+FIGURE 6
+|
+Functional outcome. (a) Weight‐bearing ratio of right and left hind limbs. Pre‐operatively, the weight‐bearing ratio was 1.2 ± 0.3.
+(b) Toe spread hind paw right:left (surgical:nonsurgical) ratio. *Indicates a significant difference between designated POD and POD 0 values, and #
+between the two groups (*p < 0.05, **p < 0.01, ***p < 0.001, #p < 0.05, ##p < 0.01).
+1198 of 1211
+Journal of Orthopaedic Research®, 2025
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+FIGURE 7
+|
+Comparative histological analysis at POD 28 using H&E and immunofluorescent Staining. (a) The images depict the histological
+differences in tibia bone sections between the VMP and the control group. Notable darker stained regions, as indicated by the black arrow in the
+control sample, suggest increased cellularity which could be indicative of an inflammatory reaction. (b, c) Immunofluorescent staining of tibia bone
+at POD 28. (b) TNF‐α, (c) IL‐6. Red fluorescence indicates TNF‐α at 647 nm, and yellow fluorescence represents IL‐6 at 568 nm. The arrows mark
+areas with particularly strong staining. Scale bar = 1 mm, 2.5 mm; 250 µm.
+1199 of 1211
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+agglomeration, and reduced drug leakage [22]. Finally, the
+increased loading capacity of vancomycin in the microparticles
+with higher molecular weight PLGA was likely due to the for-
+mation of more stable and compact microspheres due to
+increased chain entanglement of the polymer. The increase in
+loading capacity with higher molecular weight has been shown
+for plasmid DNA encapsulation in the same range of molecular
+weight [24].
+PLGA microparticle release profiles are typically tri‐phasic: an
+initial burst release, followed by a period with an about constant
+drug release rate, and a final rapid drug release phase leading to
+complete drug exhaustion [25]. While optimizing the formula-
+tions in the present investigation from F01‐ F08, the focus was
+to improve the loading capacity. After achieving the desired
+loading capacity, we focused on the release rate, initial burst,
+and sustained release duration. The optimized batch F10
+demonstrated a limited initial burst, sustained release, and a
+final accelerated release during the release experiments.
+While in‐vitro release profiles are commonly used to evaluate
+release mechanisms and optimize formulation parameters, esti-
+mation of local concentrations is necessary to evaluate possible in
+vivo efficacy of the drug delivery system. The pharmacokinetic
+model of F10 estimated that the vancomycin concentration
+would be over 1 × MIC for 2 months, which is clinically relevant.
+There are no standard guidelines for local (sustained) delivery of
+antibiotics; here, we used the exposure time to the antibiotic
+concentration above MIC. Systemic antibiotics are commonly
+administered for 4–6 weeks during the treatment period between
+the first and second stage of the revision surgeries for PJI [26],
+and the local release profile here is aligned with this period.
+Our previously published infection rat model [7, 14] has been
+instrumental in simulating postsurgical joint infections, offering
+an ideal platform for assessing the therapeutic potential of local
+drug delivery systems in a clinically relevant setting. Our
+comprehensive analysis in this model, encompassing bacterial
+viability, radiographic, histological, and immunofluorescent
+analyses, provide strong support for efficient in vivo release of
+vancomycin and preliminary feasibility of the VMP in mana-
+ging infections.
+The complexity and outcome of PJI is often dictated by bacterial
+biofilm formation as the efficient eradication of biofilm requires
+rigorous treatment strategies, including mechanical debride-
+ment [27]. Prevention of bacterial adhesion and colonization of
+implants in the early stages of implantation can prevent recal-
+citrant post‐arthroplasty infections caused by biofilm [28]. Thus,
+it is desirable to increase the available tools that can sustain the
+delivery of appropriate antibiotics in the local tissue, especially
+at the time of surgical intervention. The bacterial viability
+studies evidently demonstrated the antibacterial activity (> 3 log
+reduction, Figure 4) exerted by vancomycin microparticles
+showcasing the retained stability and functionality of the en-
+capsulated drug. X‐ray imaging of the periprosthetic area
+(Figure 5a,b), μ‐CT and histological analysis of bone loss and
+bone quality (Figures 5c and 7a) were primary indicators that
+the eluted drug from the microparticles significantly hindered
+bacterial colonization of the implant materials and peri‐implant
+tissues, emphasizing their potential for prophylactic use.
+Functional assessments, as depicted by the weight‐bearing and
+toe spread ratios (Figure 6), supported these findings, indicating
+significant enhancements in motor function and weight‐bearing
+capacity, indicative of successful recovery trajectories. These
+improvements likely result from the direct antibacterial action
+of vancomycin and the mitigation of inflammation‐mediated
+tissue damage, as indicated by the suppressed TNF‐α and IL‐6
+levels in immunofluorescent assays (Figure 7b,c). The anti‐
+inflammatory effect observed might also be attributed to the
+direct pharmacological actions of vancomycin beyond its anti-
+bacterial properties [29]. By modulating the immune response
+at the local level, vancomycin may further contribute to the
+downregulation of pro‐inflammatory cytokines and chemo-
+kines, promoting a shift toward a more regenerative, less
+inflammatory microenvironment. This shift is supportive of the
+restoration of bone integrity, as excessive inflammation can
+impede bone remodeling processes and delay healing [30].
+Microfluidics technology can significantly enhance drug delivery
+system development by enabling the precise manipulation of the
+physicochemical properties of the microparticles [31]. In this
+study, we were able to formulate a high loading capacity for
+vancomycin using the optimization of microfluidics technology,
+overcoming the challenges of traditional particle technology for
+loading hydrophilic drug molecules into this polymer matrix [32].
+In addition, we showed stability of the particles for in‐vivo
+application, showing feasibility for scalability. Appropriate release
+profiles were obtained for the prophylactic use of these micro-
+particles to prevent the progression of postsurgical infections. Our
+findings highlight the potential of microfluidics‐engineered PLGA
+microparticles for controlled intra‐articular drug delivery.
+Our study has some limitations. In rat models of infection, it is
+necessary to use a high inoculum for bacteria to establish and
+maintain an infection [7, 14]. The number of contaminating
+bacteria is not relevant clinically and the dosing required to
+eradicate this higher level of bacteria is also higher (along with
+other differences in metabolism which may change the phar-
+macodynamics/pharmacokinetics profiles of the drug). How-
+ever, in studies where in‐vitro antibacterial efficacy has been
+correlated with in vivo treatment success, it has been shown
+that a log reduction of 1.5 in vitro could be sufficient for
+increased efficacy in vivo [33]. The results of this study can be
+interpreted as we have outlined as a preliminary confirmation
+that the vancomycin release was sufficient to significantly
+hinder infection progression. Further, this animal model was
+limited to a 28‐day timeframe; longer‐term studies are needed
+to evaluate the sustained effects of microparticle exposure on
+bone remodeling and implant integration. The study also fo-
+cused on a single antibiotic and bone injury model, which may
+not represent the variety of clinical scenarios in orthopedic
+surgery. While microfluidics offers precision in particle for-
+mulation, future studies should assess the cost‐effectiveness and
+regulatory compliance of this technology to facilitate its tran-
+sition from laboratory to clinical settings.
+Author Contributions
+Dinesh Dhamecha, Cecilia Nepple, Mehmet D. Asik, Yingfang Fan,
+Amita Sekar, Keita Fujino, Fawaz Malick, and Madeline McCanne
+1200 of 1211
+Journal of Orthopaedic Research®, 2025
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+contributed substantially to the research design or the acquisition,
+analysis, or interpretation of data. Dinesh Dhamecha, Mehmet D. Asik,
+Ebru Oral, and Orhun Muratoglu drafted the paper or revised it criti-
+cally. Mehmet D. Asik, Ebru Oral, and Orhun Muratoglu approved the
+submitted and final versions.
+Acknowledgments
+This
+study
+was
+funded
+by
+Muratoglu‐Harris
+Endowment.
+We
+acknowledge the Wellman Center Photopathology Core for performing
+immunofluorescence and the Center for Skeletal Research Cores (CSR)
+for the H&E staining. The CSR is supported by funding from the NIH.
+Dinesh Dhamecha, Mehmet D. Asik, Ebru Oral, and Orhun Muratoglu
+have a pending patent for polymeric microparticles encapsulated with
+active pharmaceutical ingredients and related methods of use and
+manufacture (PCT/US2024/010874).
+Data Availability Statement
+The data that support the findings of this study are available from the
+corresponding author, Orhun Muratoglu, upon reasonable request.
+References
+1. B. H. Kapadia, R. A. Berg, J. A. Daley, J. Fritz, A. Bhave, and
+M. A. Mont, “Periprosthetic Joint Infection,” Lancet 387, no. 10016
+(2016): 386–394.
+2. C. J. Wang, M. C. Hsieh, T. W. Huang, J. W. Wang, H. S. Chen, and
+C. Y. Liu, “Clinical Outcome and Patient Satisfaction in Aseptic and
+Septic Revision Total Knee Arthroplasty,” Knee 11, no. 1 (2004): 45–49.
+3. G. Grammatopoulos, A. Alvand, H. Martin, D. Whitwell, A. Taylor,
+and C. L. M. H. Gibbons, “Five‐Year Outcome of Proximal Femoral
+Endoprosthetic Arthroplasty for Non‐Tumour Indications,” Bone &
+Joint Journal 98–B, no. 11 (2016): 1463–1470.
+4. B. Zmistowski, J. A. Karam, J. B. Durinka, D. S. Casper, and J. Parvizi,
+“Periprosthetic Joint Infection Increases the Risk of One‐Year Mortal-
+ity,” Journal of Bone & Joint Surgery 95, no. 24 (2013): 2177–2184.
+5. A. Forouzesh, P. A. Moise, and G. Sakoulas, “Vancomycin Oto-
+toxicity: A Reevaluation in an Era of Increasing Doses,” Antimicrobial
+Agents and Chemotherapy 53, no. 2 (2009): 483–486.
+6. M. D. Aşık, M. Kaplan, M. Yalınay, E. Ö Güven, and M. Bozkurt,
+“Development of a Sequential Antibiotic Releasing System for Two‐
+Stage
+Total
+Joint
+Replacement
+Surgery,”
+Journal
+of
+Biomedical
+Nanotechnology 15, no. 11 (2019): 2193–2201.
+7. Y. Fan, M. McCanne, J. Yuh, et al., “The Efficacy of Antibiotic‐
+Eluting Material in a Two‐Stage Model of Periprosthetic Joint Infec-
+tion,” Journal of Orthopaedic Research 42, no. 2 (2024): 460–473.
+8. E. Nouruzi, S. M. Hosseini, B. Asghari, et al., “Effect of Poly (Lactic‐
+co‐Glycolic Acid) Polymer Nanoparticles Loaded With Vancomycin
+Against Staphylococcus aureus Biofilm,” BMC Biotechnology 23, no. 1
+(2023): 39.
+9. Y. Xu, C. S. Kim, D. M. Saylor, and D. Koo, “Polymer Degradation
+and Drug Delivery in PLGA‐Based Drug‐Polymer Applications: A
+Review of Experiments and Theories,” Journal of Biomedical Materials
+Research, Part B: Applied Biomaterials 105, no. 6 (2017): 1692–1716.
+10. B. Wan, Q. Bao, and D. Burgess, “Long‐Acting PLGA Microspheres:
+Advances in Excipient and Product Analysis Toward Improved Product
+Understanding,” Advanced Drug Delivery Reviews 198 (2023): 114857.
+11. J. Paik, S. T. Duggan, and S. J. Keam, “Triamcinolone Acetonide
+Extended‐Release: A Review in Osteoarthritis Pain of the Knee,” Drugs
+79, no. 4 (2019): 455–462.
+12. X. Li, Z. Zhang, A. Harris, and L. Yang, “Bridging the Gap Between
+Fundamental Research and Product Development of Long Acting
+Injectable PLGA Microspheres,” Expert Opinion on Drug Delivery 19,
+no. 10 (2022): 1247–1264.
+13. A. Otte and K. Park, “Transitioning From a Lab‐Scale PLGA
+Microparticle Formulation to Pilot‐Scale Manufacturing,” Journal of
+Controlled Release 348 (2022): 841–848.
+14. Y. Fan, Y. Xiao, W. A. Sabuhi, et al., “Longitudinal Model of Peri-
+prosthetic Joint Infection in the Rat,” Journal of Orthopaedic Research
+38, no. 5 (2020): 1101–1112.
+15. Y. Fan, J. Yuh, S. Lekkala, et al., “The Efficacy of Vitamin E in
+Preventing Arthrofibrosis After Joint Replacement,” Animal Models and
+Experimental Medicine 7, no. 2 (2024): 145–155.
+16. B. Y. Jacobs, E. H. Lakes, A. J. Reiter, et al., “The Open Source
+GAITOR Suite for Rodent Gait Analysis,” Scientific Reports 8, no. 1
+(2018): 9797.
+17. M. D. Aşık, M. Kaplan, B. Çetin, and N. Sağlam, “Synthesis of Iron
+Oxide Core Chitosan Nanoparticles in a 3D Printed Microfluidic
+Device,” Journal of Nanoparticle Research 23, no. 3 (2021): 62.
+18. B. Cetin, M. D. Asik, and S. Taze, “Design and Fabrication of a
+Microfluidic Device for Synthesis of Chitosan Nanoparticles,” Journal of
+Nanotechnology in Engineering and Medicine 4, no. 3 (2013): 031004.
+19. F. Giorgiutti‐Dauphine and L. Pauchard, “Drying Drops: Drying
+Drops Containing Solutes: From Hydrodynamical to Mechanical In-
+stabilities,” European Physical Journal E, Soft Matter 41, no. 3 (2018): 32.
+20. F. J. Wang and C. H. Wang, “Sustained Release of Etanidazole From
+Spray Dried Microspheres Prepared by Non‐Halogenated Solvents,”
+Journal of Controlled Release 81, no. 3 (2002): 263–280.
+21. F. Sharifi, A. Otte, G. Yoon, and K. Park, “Continuous In‐Line
+Homogenization Process for Scale‐Up Production of Naltrexone‐Loaded
+PLGA Microparticles,” Journal of Controlled Release 325 (2020):
+347–358.
+22. K. Park, A. Otte, F. Sharifi, et al., “Formulation Composition,
+Manufacturing
+Process,
+and
+Characterization
+of
+Poly(Lactide‐co‐
+Glycolide) Microparticles,” Journal of Controlled Release 329 (2021):
+1150–1161.
+23. S. Mao, Y. Shi, L. Li, J. Xu, A. Schaper, and T. Kissel, “Effects of
+Process and Formulation Parameters on Characteristics and Internal
+Morphology of Poly(D,L‐Lactide‐co‐Glycolide) Microspheres Formed by
+the Solvent Evaporation Method,” European Journal of Pharmaceutics
+and Biopharmaceutics 68, no. 2 (2008): 214–223.
+24. S. Díez and C. Tros de Ilarduya, “Versatility of Biodegradable Poly
+(D,L‐Lactic‐co‐Glycolic Acid) Microspheres for Plasmid DNA Delivery,”
+European Journal of Pharmaceutics and Biopharmaceutics 63, no. 2
+(2006): 188–197.
+25. H. Wang, G. Zhang, X. Ma, et al., “Enhanced Encapsulation and
+Bioavailability of Breviscapine in PLGA Microparticles by Nanocrystal
+and Water‐Soluble Polymer Template Techniques,” European Journal of
+Pharmaceutics and Biopharmaceutics 115 (2017): 177–185.
+26. X. Fang, Q. Wang, X. Yang, et al., “What Is the Appropriate Ex-
+tended Duration of Antibiotic Prophylaxis After Two‐Stage Revision for
+Chronic PJI?,” Bone & Joint Research 10, no. 12 (2021): 790–796.
+27. N. N. Tran, T. Morrisette, S. C. J. Jorgensen, J. M. Orench‐
+Benvenutti, and R. Kebriaei, “Current Therapies and Challenges for the
+Treatment
+of
+Staphylococcus
+aureus
+Biofilm‐Related
+Infections,”
+Pharmacotherapy: The Journal of Human Pharmacology and Drug
+Therapy 43, no. 8 (2023): 816–832.
+28. S. Tarabichi and J. Parvizi, “Prevention of Surgical Site Infection: A
+Ten‐Step Approach,” Arthroplasty 5, no. 1 (2023): 21.
+29. D. N. Abarbanel, S. M. Seki, Y. Davies, et al., “Immunomodulatory
+Effect of Vancomycin on Treg in Pediatric Inflammatory Bowel Disease
+and Primary Sclerosing Cholangitis,” Journal of Clinical Immunology
+33, no. 2 (2013): 397–406.
+1201 of 1211
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+30. M. Maruyama, C. Rhee, T. Utsunomiya, et al., “Modulation of the
+Inflammatory Response and Bone Healing,” Frontiers in Endocrinology
+(Lausanne) 11 (2020): 386.
+31. S. Damiati, U. B. Kompella, S. A. Damiati, and R. Kodzius,
+“Microfluidic Devices for Drug Delivery Systems and Drug Screening,”
+Genes 9, no. 2 (2018): 103.
+32. T. C. Ezike, U. S. Okpala, U. L. Onoja, et al., “Advances in Drug
+Delivery Systems, Challenges and Future Directions,” Heliyon 9, no. 6
+(2023): e17488.
+33. J. A. Jennings, J. J. Arts, E. Abuhussein, et al., “2023 International
+Consensus Meeting on Musculoskeletal Infection: Summary From the
+Treatment Workgroup and Consensus on Treatment in Preclinical
+Models,” Journal of Orthopaedic Research 42, no. 3 (2024): 500–511.
+Supporting Information
+Additional supporting information can be found online in the
+Supporting Information section.
+1202 of 1211
+Journal of Orthopaedic Research®, 2025
+ 1554527x, 2025, 6, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jor.26070 by University Of Maryland, Wiley Online Library on [22/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

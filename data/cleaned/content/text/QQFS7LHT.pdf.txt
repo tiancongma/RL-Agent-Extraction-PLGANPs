@@ -1,0 +1,676 @@
+O R I G I N A L  R E S E A R C H
+Preparation and Evaluation of Chitosan Coated
+PLGA Nanoparticles Encapsulating Ivosidenib with
+Enhanced Cytotoxicity Against Human Liver
+Cancer Cells
+Bader B Alsulays
+, Alhussain H Aodah, Mohammad Muqtader Ahmed, Md Khalid Anwer
+Department of Pharmaceutics, College of Pharmacy, Prince Sattam Bin Abdulaziz University, Al-Kharj, 11942, Saudi Arabia
+Correspondence: Bader B Alsulays, Department of Pharmaceutics, College of Pharmacy, Prince Sattam Bin Abdulaziz University, P.O. Box 173, Al-Kharj, Saudi
+Arabia, Tel +966-554112830, Email b.alsulays@psau.edu.sa
+Purpose: Ivosidenib (IVO), an isocitrate dehydrogenase-1 (IDH1) used for treatment of acute myeloid leukemia (AML) and
+cholangiocarcinoma. However, poor solubility, low bioavailability, high dose and side effects limit clinical application of IVO.
+Methods: Ivosidenib-loaded PLGA nanoparticles (IVO-PLGA-NPs) and Ivosidenib-loaded chitosan coated PLGA nanoparticles
+(IVO-CS-PLGA-NPs) were prepared using emulsification and solvent evaporation method for the treatment of liver cancer.
+Results: The developed IVO-PLGA-NPs were evaluated for their particle size (171.7±4.9 nm), PDI (0.333), ZP (−23.0±5.8 mV), EE
+(96.3±4.3%), and DL (9.66±1.1%); similarly, the IVO-CS-PLGA-NPs were evaluated for their particle size (177.3±5.2 nm), PDI
+(0.311), ZP +25.9±5.7 mV, EE (90.8±5.7%), and DL (9.42±0.7%). The chitosan coating of IVO-PLGA-NPs was evidenced by an
+increase in mean particle size and positive ZP value. Because of the chitosan coating, the IVO-CS-PLGA-NPs showed a more stable
+and prolonged release of IVO than IVO-PLGA-NPs. In comparison to pure-IVO, the IVO-PLGA-NPs and IVO-CS-PLGA-NPs were
+found to be more effective against HepG2 cells, with IC50 values for the MTT assay being approximately half of those of pure-IVO. In
+HepG2 cells, the expressions of caspase-3, caspase-9, and p53 were significantly (p < 0.05) elevated.
+Conclusion: Overall, these findings suggest that chitosan coating of IVO-PLGA-NPs improves the delivery and efficacy of ivosidenib
+in liver cancer treatment.
+Keywords: polymers, characterization, bioavailability, sustained release, caspase
+Introduction
+Liver cancer is one of the most common cancers globally, and one of the highest cause of the cancers related death. Most
+of the liver cancer cases were in the form of Hepatocellular carcinoma (HCC). Lack of effective treatment is the main
+reason of high mortality rate. The classical chemotherapy is insufficient and there is a significant chemoresistance of
+HCCs.1–3 Ivosidenib, is a newly FDA approved drug for the treatment of adults with relapsed or refractory acute myeloid
+leukemia. It is an inhibitor of mutated cytosolic isocitrate dehydrogenase 1 (IDH1). Cholangiocarcinoma, solid tumor and
+other tumors are other indications of Ivosidenib, which are now undergoing clinical development worldwide.4–6 It is
+classified as BCS class II drug with poor solubility and high permeability.7 The poor aqueous solubility will further affect
+the bioavailability of the drug and limit its clinical effect. In order to improve the solubility of poorly soluble drug, many
+techniques, such as solid dispersion, salt formation, complexation, and nanoparticle were employed. Among these
+techniques, nanoparticle has gained considerable attention and extensively investigated in the pharmaceutical industry.
+Due to its advantages in improving drug solubility, bioavailability, stability and high encapsulation efficiency, polymeric
+nanoparticles were frequently used in drug development.8,9 Nanostructures offer a promising solution to the challenges
+faced in the treatment of liver cancer, particularly in combating drug resistance. The ability of nanostructures to deliver
+International Journal of Nanomedicine 2024:19 3461–3473
+3461
+© 2024 Alsulays et al. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.
+php and incorporate the Creative Commons Attribution – Non Commercial (unported, v3.0) License (http://creativecommons.org/licenses/by-nc/3.0/). By accessing the
+work you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For
+permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+International Journal of Nanomedicine
+Dovepress
+open access to scientific and medical research
+Open Access Full Text Article
+Received: 2 December 2023
+Accepted: 27 March 2024
+Published: 9 April 2024
+International Journal of Nanomedicine downloaded from https://www.dovepress.com/
+For personal use only.
+
+drugs directly to cancer cells can help overcome issues such as limited drug penetration and efficacy, as well as reduce
+systemic toxicity.10
+Biodegradable polymers which used in polymeric nanoparticle formulation have some benefits of being less toxic and
+its role in improving the physiochemical properties of poorly soluble drugs. PLGA, short for poly(lactic-co-glycolic
+acid), is a remarkable polymer that has gained considerable recognition in the realm of biomedical research and
+pharmaceutical development. It is US-FDA approved copolymer, making it a highly trusted choice for the preparation
+of various polymeric nanoparticle-based formulations. Many applications of this polymer including enhancing the
+solubility, bioavailability, and stability have been reported. PLGA polymers play a crucial role in delivering anticancer
+drugs directly to tumor sites, maximizing treatment efficacy while minimizing side effects. The ability of PLGA to
+encapsulate and release drugs in a controlled manner enhances the therapeutic outcomes of cancer treatments.11,12
+Although, many advantages of PLGA NPs, it impart negative surface potential, which decrease the mucoadhesive
+properties as well as the bioavailability.13–15
+In order to overcome this problem, surface modification of PLGA NP using different polymers was beneficial.
+Chitosan is one of the biodegradable polymer with good mucoadhesive properties, can be used for this purpose. Due to
+its positive surface charge, coating the PLGA NP with chitosan can enhance the cellular absorption and mucoadhesion.8
+Chitosan coating holds great potential in optimizing nanoparticle-based drug delivery systems. Its unique properties offer
+improved stability, controlled release mechanisms and targeted delivery capabilities.16–18 Chitosan nanoparticles have
+shown great potential in improving the bioavailability and targeted delivery of anti-cancer drugs. Their small size and
+biocompatibility allow for efficient penetration into tumor tissues while minimizing systemic toxicity.19–21 The current
+work is novel because it is the first to be cited in the literature on the repurposing of ivosidenib and its developed
+polymeric nanoparticles for enhanced anticancer activity against liver cancer cells. This is a novel idea that needs more
+investigation since it has great potential to treat liver cancer, which is driving up healthcare expenditures worldwide.
+In this study, we prepared IVO-PLGA-NP and IVO-CS-PLGA-NP by emulsification and solvent evaporation
+technique using an ultrasonic probe. The developed formulations were assessed in terms of drug encapsulation, ZP,
+PDI, and particle size. The DSC and FTIR studies were carried out to check compatibility between drugs and polymers.
+Studies on drug release in vitro, storage stability, and in vitro cytotoxicity were conducted on HepG2 cells.
+Materials and Methods
+Materials
+Ivosidenib (IVO) was procured from “Beijing Mesochem Technology Co. Ltd (Beijing China)”. Poly (lactic-co-glycolic
+acid) (PLGA, 50:50), kolliphor-188, dichloromethane (DCM), and methanol were bought from “Sigma-Aldrich
+(St. Louis, USA)”. The Merck MilliQ Millipore ultrapure water purification system was used to prepare MilliQ water on-
+site. “Dulbecco’s Modified Eagle Medium (DMEM)” was bought from “Life Technologies Ltd. (Paisley, UK)”.
+Preparation of IVO-PLGA-NPs and IVO-CS-PLGA-NPs
+The process of emulsification and solvent evaporation was utilized to prepare NPs loaded with IVO.22 Briefly, PLGA
+(25 mg/mL) polymeric solution in dichloromethane was prepared, and IVO (10 mg) was dissolved in it to obtain the
+organic phase. Conversely, a separate aqueous phase containing 1% w/v of kolliphor-188 was prepared (Table 1), then
+under probe sonication “(Fisher scientific; United States)” for 6 minutes at 65% W voltage efficiency for 5 minutes, the
+aqueous phase was added to the organic phase using a syringe at a rate of 0.5 mL/min to emulsify it. The organic solvent
+Table 1 Formulation Composition of IVO-PLGA-NPs and IVO-CS-PLGA-NPs
+Formulations
+IVO (mg)
+PLGA (mg)
+Chitosan (mg)
+P-188 (%w/v)
+Blank PLGA-NPs
+-
+50
+-
+1
+IVO-PLGA-NPs
+10
+50
+-
+1
+IVO-CS-PLGA-NPs
+10
+50
+50
+1
+https://doi.org/10.2147/IJN.S452989
+DovePress
+International Journal of Nanomedicine 2024:19
+3462
+Alsulays et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+was evaporated under magnetic stirrer for 4 hours. The nanoparticles (IVO-PLGA-NPs) were collected after centrifuga­
+tion at 16,000 rpm for 10 minutes. The obtained sediment was washed three times with distilled water, then lyophilized
+(Millrock Technology, Kingston, NY, USA). The chitosan-coated PLGA-NPs was prepared by addition of previously
+prepared IVO-PLGA-NPs in chitosan solution (0.5% w/v in glacial acetic acid) with continuous stirring at 400 rpm for
+12 hours.
+Measurement of Mean Particle Size, Polydispersity Index (PDI), and Zeta Potential
+The IVO-PLGA-NPs, IVO-CS-PLGA NPs, and blank-PLGA NPs were measured for particle size and PDI using
+“Zetasizer™ NanoZS (Malvern Instrument Ltd., Malvern, UK)” instrument. The nanoparticles were dispersed in deionized
+water as dispersion medium prior to analysis, and equilibrated for 3 min at 25 °C. The measurements were carried out at
+a 173° detection angle using a non-invasive backscatter technique.23 Every measurement was performed in triplicate, and
+the mean and standard deviation were noted. The software’s built-in Smoluchowski approximation was used to calculate the
+nanoparticles zeta potential, which allowed the instrument to automatically adjust its settings for 25 °C.
+Drug Loading (DL) and Entrapment Efficiency (EE) Measurements
+Drug entrapment efficiency (%EE) refers to the amount of drug that is successfully encapsulated within the nanoparticles,
+while drug loading refers to the ratio of the amount of drug encapsulated to the total weight of nanoparticles. These
+factors directly impact the efficiency and dosage accuracy of delivering drugs to target sites in the body. To measure the
+%EE and %DL of IVO in IVO-PLGA-NPs and IVO-CS-PLGA-NPs, colloidal solutions were centrifuged at 6000 rpm
+for 10 minutes to separate the supernatant and free drug in supernatant was analyzed by UV-Vis spectrophotometer at 284
+nm. The equations 1 and 2, respectively, were used to calculate the %EE and %DL.
+DSC Studies
+DSC (Differential Scanning Calorimetry) has emerged as a valuable tool for evaluating the encapsulation of drugs in
+polymers. This technique allows to gain insight into the thermal behavior and interactions between the drug and polymer.
+DSC spectra of studies of free-IVO, blank-NPs, IVO-PLGA-NPs and IVO-CS-PLGA-NPs were recorded using DSC
+instrument “(Shimadzu DSC-60, Shimadzu Corporation, Tokyo, Japan)”. The samples under investigation (5 mg) were
+compressed in aluminium pan, kept in a sample holder against an empty reference pan and heated at a rate of 20°
+C per minute between 50°C and 250°C. The generated spectra were recorded and analyzed by software.
+Fourier Transforms Infra-Red (FTIR) Spectral Studies
+The pure-IVO, blank-NPs, IVO-PLGA-NPs, and IVO-CS-PLGA-NPs FTIR spectra were taken using instrument “FTIR
+spectrometer (Jasco FTIR Spectrophotometer, Japan)”. The samples transparent pellets were prepared by KBr technique
+and FTIR spectra were recorded in the range of wavenumber 400–4000 cm−1.
+In-Vitro Release of IVO from Nanoparticles
+The in-vitro drug release studies of nanoparticles were conducted using phosphate buffer (pH 6.8) 0.5% SLS as
+dissolution media. Accurately weighed amount of IVO-PLGA-NPs and IVO-CS-PLGA-NPs (equivalent to 5 mg of
+IVO) were suspended in PB (25 mL). After that, the solution was divided into several centrifuge tubes and maintained at
+37 °C with 100 rpm of agitation on a biological shaker.24 At every time interval, a centrifuge tube was taken out and
+centrifuged for 5 minutes at 6000 rpm. The supernatant was then examined for drug release using a UV/Vis spectro­
+photometer set to 284 nm.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S452989
+DovePress
+3463
+Dovepress
+Alsulays et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Furthermore, release data of IVO-CS-PLGA-NPs were fitted using a variety of kinetic models, including the zero-
+order, first-order, Higuchi, and Korsmeyer-Peppas models, in order to obtain a better understanding of the drug release
+process.25,26 These models served as valuable tools in analyzing and predicting the release mechanism of the drug over
+time. To select the most appropriate model for the drug release, careful consideration was given to the coefficient of
+correlation (R2) values obtained from each model. The model with the highest R2 value was chosen, indicating its
+superior fit to the release data.
+Storage Stability Studies
+The storage stability tests at different temperatures play a crucial role in understanding the behavior of nanoparticles over
+time. For three months, the lyophilized IVO-PLGA-NPs and IVO-CS-PLGA-NPs powders were kept at 25 °C and 37 °C
+in an amber-colored vial. Samples were taken every 0, 30, 60 and 90 days, and their size, PDI, and ZP were examined.27
+In-Vitro Cytotoxicity Studies
+HepG2 Cells Growth and Maintenance
+The HepG2 cells were procured from the American Type Culture Collection (Manassas, VA, USA). “Dulbecco’s
+Modified Eagle Medium (DMEM) (UFC Biotech, Riyadh, KSA)” was used to cultivate cells in 50 cm2 tissue culture
+flasks at 37 °C in an incubator with 5% CO2 humidity. The supplementation of the media included 10% fetal bovine
+serum ‘(Alpha Chemika, Mumbai, India)’, 1% of a combination of Penicillin (100 units/mL) and Streptomycin (100 µg/
+mL) from ‘ThermoFischer Scientific, Massachusetts, USA’, Amphotericin-B (250 ng/mL) from Gibco® (New York,
+USA), and 1% of L-glutamine ‘(BioWest, MO, USA)’. The MTT was bought from ‘Sigma in Aldrich, Missouri, in the
+United States’. DMEM was used to seed the cells in the culture plates.
+MTT Assay Against HepG2 Cell Lines
+IVO has emerged as a highly effective treatment option for leukemia and bile duct cancers. Its remarkable potential in
+targeting and inhibiting specific mutations has revolutionized the field of cancer treatment. In the present research work,
+repurposing IVO for liver cancer intervention was investigated to decipher its therapeutic prospect, which has not been
+explored to date. The MTT assay was performed on HepG2 liver cells lines to determine whether IVO-PLGA-NPs and
+IVO-CS-PLGA-NPs have any potential anticancer effects in comparison to free-IVO and blank-NPs. Therefore, the MTT
+assay was performed on HepG2 cells to check the potential anticancer efficacy of the free-IVO, IVO-PLGA-NPs and
+IVO-CS-PLGA-NPs as compared to the free-IVO and blank-NPs. The MTT assay was used to determine the viability of
+the treated cells in order to evaluate the anticancer activity of free-IVO, IVO-PLGA-NPs, and IVO-CS-PLGA-NPs
+against HepG2 cells. This assay’s primary technique for determining the quantity of viable cells is mitochondria-
+mediated apoptosis. This section’s assay involves enzymatic reduction of 3-(4, 5-dimethylthiazol-2-yl)-2, 5-diphenylte­
+trazolium bromide (MTT), a water-soluble dye. This reduction process leads to the formation of an insoluble formazan
+compound. The quantitation of formazan is used as a measure of cell viability.28,29 In this particular case, the cells were
+carefully seeded in a 96-well microplate with 100 μL of medium. This allows for optimal growth conditions and
+facilitates the subsequent steps of the assay. The suspension of free-IVO, IVO-PLGA-NPs, and IVO-CS-PLGA-NPs,
+with an IVO concentration ranging from 0.39 to 200 µg/mL were prepared using media as a diluents.30 After the medium
+was removed, the cells were exposed to IVO-PLGA-NPs and IVO-CS-PLGA-NPs for 48 hours. The cells in the control
+group were only exposed to the medium. The drug-exposed cells were then given 100 µL of MTT solution (5 mg/mL) in
+PBS after a 48-hour period. After treating the cells with 20 μL of MTT, the grown cells were again incubated for four
+hours at 37 °C, but their media was replaced with new media without any drug. The subculture fluids were then
+discarded, and the MTT crystals were dissolved in a mixture of DMSO, acetic acid, and sodium dodecyl sulfate
+(99.4 mL, 0.6 mL, and 10 g) for 15 minutes at room temperature. Optical density (OD) was determined using
+a spectrophotometric microplate reader “(Synergy HT, BioTek gadgets, VT, USA)” at 570 nm. Using Eq. 3, the cell
+viability (%) was determined. The results were plotted as cell viability (%) versus log concentration of IVO (µg/mL) and
+normalized relative to that obtained for viable control cells, which were regarded as 100%. Using GraphPad Prism V-5.1,
+the IC50 values were computed as log (inhibitor) versus normalized response on variable slopes.
+https://doi.org/10.2147/IJN.S452989
+DovePress
+International Journal of Nanomedicine 2024:19
+3464
+Alsulays et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+Activities of p53, Caspase-3, and Caspase-9 by ELISA
+The p53, Caspase-3, and Caspase-9 activities were measured using ELISA kits in compliance with published works and
+manufacturer’s instructions.31,32 In 96-well plates, 5×104 HepG2 cells per well were seeded. The seeded cells had been
+dealt with the AqS of pure-IVO, IVO-PLGA-NPs and IVO-CS-PLGA-NPs. The concentration of IVO was kept 20 µg/
+mL, which was approximately near to the IC50 value of the pure IVO (19.74 µg/mL) ie 1 x IC50 of pure drug. The control
+group consisted of the untreated cells. After allowing each treated cell to come to room temperature, 100 µL of the p53,
+Caspase-3, and Caspase-9 reagents were added to each well in the plate that held 100 µL of culture media. The plates
+were correctly covered, agitated at 500 rpm for one to two minutes, and then allowed to incubate at room temperature.
+After an hour of incubation, the optical density (OD) was determined using a microplate reader at a wavelength of
+405 nm.
+Evaluation of Morphological Changes in HepG2 Treated Cells
+Morphological studies play a vital role in understanding the physical structure and characteristics of biological cells. In
+particular, phase contrast microscopy has emerged as a valuable tool for observing cellular morphology. To initiate the
+study, HepG2 cells were carefully seeded in 6-well plates at a density of 1×105 cells per well containing DMEM
+“(Dulbecco’s Modified Eagle Medium)” and were incubated for 24 hours at 37 °C in 5% CO2. Thereafter, HepG2 cells
+were treated with the control, free-IVO, blank PLGA-NPs, IVO-PLGA-NPs and IVO-CS-PLGA-NPs, and were
+incubated for 24 hours. After that, cells were examined for alterations in cell structure or apoptosis using phase contrast
+microscopes “(Olympus CLX 41, Olympus Corporation, Tokyo, Japan)”, and images were recorded.
+Statistical Data Evaluation
+All data were provided as mean ± standard deviation (SD). Statistical significance was determined using one-way
+analysis of variance (ANOVA) followed by a Bonferroni’s multiple comparison test, depending on the number of groups
+being compared. The level of significance was set at P < 0.05.
+Results and Discussion
+Mean Particle Size, Polydispersity Index (PDI) and Zeta Potential
+Table 2 lists the size, PDI, and ZP of the developed NPs. The size of the particles has a significant impact on how anti-
+cancer medications target tumors through circulation, biodistribution, accumulation, and penetration mechanisms.33 The
+mean diameter of blank PLGA-NPs, IVO-loaded PLGA NPs and IVO-loaded CS-PLGA NPs was measured as 169.8 nm,
+171.7 nm and 177.3 nm, respectively. However, the particle size of IVO-loaded CS-PLGA NPs increased from 171.7 nm
+to 177.3 nm upon chitosan coating, as measured by DLS method (Figure 1). Improved permeability and retention (EPR)
+effect-based accumulation in mature solid tumors has been shown to be best achieved with the use of nanoparticles
+whose average sizes fall between 100 and 400 nm.34 The values obtained for the PDI of the prepared NPs, ranging from
+0.304 to 0.333, provide clear evidence of the formation of monodispersed nanoparticles, size distribution of the particles
+is relatively narrow and uniform, with minimal variation in particle size. ZP refers to the surface charge that exists on
+nanoparticles, which influences their stability and interactions with other particles or surfaces. ZP values for blank-PLGA
+Table 2 Characterization of Nanoparticles
+Formulations
+Particle Size (nm)
+PDI
+ZP (mV)
+%EE
+%DL
+Blank-PLGA-NPs
+169.8±6.2
+0.304±0.001
+−24.0±5.2
+-
+-
+IVO-PLGA-NPs
+171.7±4.9
+0.333±0.002
+−23.0±5.8
+96.3±4.3
+9.66±1.1
+IVO-CS-PLGA-NPs
+177.3±5.2
+0.311±0.002
++25.9±5.7
+90.8±5.7
+9.42±0.7
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S452989
+DovePress
+3465
+Dovepress
+Alsulays et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+-NPs and IVO-loaded PLGA NPs were −24.0 mV and −23.0 mV, respectively. The negative values are caused by the
+presence of a carboxylic group on the PLGA polymer’s surface.16 Post coating with chitosan, ZP of IVO-loaded CS-
+PLGA NPs was shifted to positive value, +25.9 mV, due to protonation of nanoparticle surface. The electrostatic stability
+of colloidal suspensions can be predicted and regulated using the zeta potential, which is a crucial surface charge
+indicator. Coating with CS polymer caused the zeta potential to rise to a constant level. Because of its polycationic
+properties of CS, It is bioadhesive and water soluble, easily adhering to negatively charged surfaces of mucosal
+membranes. Consequently, it strengthens the mucosa’s adherence, lengthening the time of contact for penetration of
+drug molecule through it.35,36
+Drug Loading (DL) and Entrapment Efficiency (EE) Measurements
+The encapsulation of drugs within a polymeric matrix hinges on the crucial factors of affinities and compatibility. When
+a drug exhibits higher compatibility and affinity for the polymers, its encapsulation efficiency is significantly enhanced.
+The %EE and %DL of IVO in IVO-PLGA-NPs were measured as 96.3±4.3% and 9.66±1.1%, respectively. However, %
+EE and %DL of IVO in IVO-CS-PLGA-NPs were found as 90.8±5.7% and 9.42±0.7%, respectively (Table 2).
+DSC Studies
+A comparative DSC spectra of free-IVO, blank-NPs, IVO-PLGA-NPs and IVO-CS-PLGA-NPs are shown in Figure 2.
+A sharp endothermic peak of free-IVO could be seen at the temperature 157 °C, which is characteristics of pure drug.37
+However, the absence of IVO peak in the DSC curve of IVO-loaded nanoparticles represented that the drug in the
+nanoparticles was converted to amorphous phase during nanoparticle preparation. In other words, encapsulation process
+disrupted the IVO crystals, indicating that the encapsulation process was appreciable.38 The broad endothermic peak
+could be seen in DSC spectra of IVO-PLGA-NPs and IVO-CS-PLGA-NPs, probably due to the presence of polymers or
+surfactants.
+FTIR Studies
+The FTIR spectra of pure-IVO, IVO-PLGA-NPs and IVO-CS-PLGA-NPs are depicted in Figure 3. The pure-IVO
+demonstrated with typical characteristic peaks at 3205 cm-1 (-NH- str), 3072 cm−1 (-CH- str), 2239 cm−1 (-C≡N str),
+1730 cm−1 (-C=O- str), 1651 cm−1 (-C=C- str), 889 cm−1 (-CF2- str) and 703 cm−1 (-CCl- str). The results showed an
+interesting trend in the absorption peaks observed in the fingerprint region (1600–400 cm−1). In both FTIR spectra of
+IVO-PLGA-NPs, and IVO-CS-PLGA-NPs, these peaks either disappeared or weakened significantly compared to pure-
+IVO. FTIR spectra of blank-NPs clearly evidenced non-overlapping of IVO peaks in drug loaded nanoparticles. This
+suggests that there was a successful entrapment of the drug inside the polymeric matrix. This finding highlights the
+Figure 1 Dynamic Scattering Light (DLS) particle size and zeta potential measurements of Blank-PLGA-NPs, IVO-PLGA-NPs and IVO-CS-PLGA-NPs.
+https://doi.org/10.2147/IJN.S452989
+DovePress
+International Journal of Nanomedicine 2024:19
+3466
+Alsulays et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+efficient encapsulation capability of both PLGA-NPs and chitosan-coated PLGA nanoparticles. The disappearance or
+weakening of absorption peaks indicates that the drug molecules were effectively incorporated within the polymeric
+structure, preventing their direct interaction with infrared radiation during FTIR analysis.
+Figure 2 DSC spectra of pure-IVO and their nanoparticles.
+Figure 3 FTIR spectra of pure-IVO and nanoparticles.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S452989
+DovePress
+3467
+Dovepress
+Alsulays et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+In-Vitro Release of IVO from Nanoparticles
+The in vitro release studies of IVO from IVO-PLGA-NPs and IVO-CS-PLGA-NPs were performed at pH 6.8 containing
+0.5% w/v SLS and compared with free-IVO (Figure 4). A biphasic pattern was observed, consisting of a rapid drug release
+phase during the first five hours, succeeded by a gradual release phase lasting for the remaining 72 hours. For IVO-PLGA-
+NPs and IVO-CS-PLGA-NPs, the magnitude of the burst release in the first four hours was approximately 46.53% and
+38.77%, respectively. The initial burst release of the drug could have been caused by the drug being adsorbed on the surface
+of excess IVO-containing nanoparticles that quickly dissolved into the media from the matrix.39,40 The IVO-PLGA-NPs and
+IVO-CS-PLGA-NPs released 98.73% and 92.06±2.06% in 72 hours, respectively. The IVO-PLGA-NPs demonstrated
+complete release by the 72 hour, suggesting an effective sustained release.41 Chitosan-coated PLGA NPs (IVO-CS-PLGA-
+NPs) indicated a controlled and sustained release, slightly slower than IVO-PLGA-NPs, this could be due to the chitosan
+which get swelled by time and retards the drug diffusion. The release profile data of IVO-CS-PLGA-NPs were fitted to the
+zero, first orders, Higuchi and Korsmeyer-Peppas models in order to find out the release mechanism, best fit was selected
+based on the R2 values of each drug release kinetics. The calculated R2 of zero, first, Higuchi and Korsmeyer-Peppas models
+were found as 0.7141, 0.8783, 0.8061, and 0.9723, respectively. The release behavior, suggesting a potential dominance of
+this Korsmeyer-Peppas model in postulating the IVO release. The “n” value of 0.312 further supports the Korsmeyer-Peppas
+model, indicating a release mechanism involving both diffusion and polymer relaxation, aligning with anomalous transport
+characteristics. The low “n” value (0.312) of IVO-CS-PLGA-NPs aligns with a non-Fickian diffusion or anomalous
+transport, where both diffusion and polymer relaxation significantly contribute to IVO release.
+Storage Stability Studies
+After being stored at 25 ± 1 °C and 37 ± 1 °C for a period of time, the IVO-PLGA-NPs and IVO-CS-PLGA-NPs were
+examined for particle size, PDI, and ZP at various intervals (0, 30, 60 and 90 days). Table 3 presents the tabulated results. At
+either storage temperature, no significant changes were found in the particle size, PDI, and ZP. Therefore, without appreciably
+losing their physical properties, the developed nanoparticles can be stored at 25 ± 1 °C and 37 ± 1 °C for up to three months.
+MTT Assay Against HepG2 Cell Lines
+The cytotoxicity potential of pure-IVO, IVO-loaded PLGA and IVO-loaded CS-coated PLGA NPs against HepG2 cells
+(percent cell viability at different concentrations), as well as log drug concentration vs percent cell viability were depicted
+Figure 4 In-vitro release profile of IVO from IVO-PLGA-NPs and IVO-CS-PLGA-NPs at pH 6.8.
+https://doi.org/10.2147/IJN.S452989
+DovePress
+International Journal of Nanomedicine 2024:19
+3468
+Alsulays et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+in Figure 5. The concentration-dependent decrease in percent cell viability was confirmed by the IVO concentrations.
+The IC50 values of pure-IVO, IVO-loaded PLGA NPs and IVO-loaded CS-coated PLGA NPs against HepG2 cells were
+19.74 µg/mL (R2 = 0.9841), 10.90 µg/mL (R2 = 0.9908) and 6.43 µg/mL (R2 = 0.9855), respectively. The data of MTT
+assay against HepG2 cells in the present investigation, revealed a significant (p < 0.05) enhancement in the cytotoxic
+effect of IVO-loaded PLGA NPs and IVO-loaded CS-coated PLGA NPs in comparison to pure-IVO. The enhanced
+cytotoxicity of IVO-loaded PLGA NPs and IVO-loaded CS-coated PLGA NPs relative to free-IVO could be attributed to
+the carrier’s nanoscale size, enhanced encapsulation and cellular uptake. Therefore, developed IVO-loaded PLGA NPs
+and IVO-loaded CS-coated PLGA NPs could be a potential alternative to the conventional formulation of IVO against
+liver cancer.
+p53, Caspase-3 and Caspase-9 Activities by ELISA
+Understanding the activities of these key players, such as p53 (a tumor suppressor protein), along with caspase-3 and-9,
+is vital for comprehending the intricate mechanisms underlying cellular apoptosis. By studying their activities, it can gain
+valuable insights into diseases related to aberrant cell death regulation like cancer and neurodegenerative disorders.42 In
+the present investigation, an intriguing finding was observed regarding the expression of the p53 protein. The study
+revealed a significant increase (p < 0.05) in p53 expression in the free-IVO, IVO-PLGA-NPs and IVO-CS-PLGA-NPs
+groups, compared to the control (untreated group) (Table 4). The p53 expression were 3.79, 4.26 and 4.56 folds higher
+when the cells were treated with free-IVO, IVO-PLGA-NPs and IVO-CS-PLGA-NPs groups, compared to the control
+(untreated group). This notable increase suggests a highly efficient apoptotic activity of IVO-CS-PLGA-NPs > free-IVO
+Table 3 Particle Characterization of After Storage at Different Temperature (25 °C & 37 °C)
+Time (days)
+Conditions
+IVO-PLGA-NPs
+IVO-CS-PLGA-NPs
+Size (nm)
+PDI
+ZP (mV)
+Size (nm)
+PDI
+ZP (mV)
+0
+-
+171.7±4.9
+0.333±0.002
+−23.0±5.8
+177.3±5.2
+0.311±0.002
++25.9±5.7
+30
+25 °C
+179.3±5.0
+0.338±0.001
+−22.5±4.5
+184.5±4.7
+0.318±0.001
++25.5±2.5
+60
+184.2±5.2
+0.339±0.002
+−21.7±3.1
+189.3±6.3
+0.323±0.002
++24.8±2.8
+90
+194.6±3.8
+0.373±0.013
+−19.8±1.8
+199.4±4.3
+0.336±0.011
++24.7±2.4
+30
+37 °C
+179.7±5.1
+0.383±0.011
+−22.1±3.3
+179.5±4.0
+0.325±0.012
++25.2±1.9
+60
+187.3±7.2
+0.410±0.016
+−20.4±3.5
+188.4±6.6
+0.338±0.010
++24.1±3.6
+90
+201.3±6.1
+0.413±0.015
+−17.2±3.2
+200.9±7.4
+0.431±0.002
++23.8±4.4
+Figure 5 Cell viability tests and IC50 values after 48 hours of pure-IVO, IVO-loaded PLGA and IVO-loaded CS-coated PLGA NPs against HepG2 cells.
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S452989
+DovePress
+3469
+Dovepress
+Alsulays et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+against HepG2 cells. The upregulation of p53 protein expressions further supports the effectiveness of these treatments in
+inducing programmed cell death in cancer cells. The expression levels of Caspase-3 and Caspase-9 in IVO-PLGA-NPs
+and IVO-CS-PLGA-NPs treated groups (Table 1) showed a noteworthy increase compared to the untreated control group.
+When the HepG2 cells were treated with IVO-PLGA-NPs and IVO-CS-PLGA-NPs, ap-proximately 4.1-folds and
+6.1-folds increased activities of Caspase-3; 1.4-folds and 1.9-folds increased expression of Caspase-9, respectively, were
+noted as compared to the untreated (control) cells. The elevated expression levels of Caspase-3 and Caspase-9 indicate
+that both IVO-PLGA-NPs and IVO-CS-PLGA-NPs have significant apoptotic activities in HepG2 cells.
+Evaluation of Morphological Changes in HepG2 Treated Cells
+Figure 6 depicts the morphological changes of HepG2 cells after treatment control, free-IVO, blank PLGA-NPs, IVO-
+PLGA-NPs and IVO-CS-PLGA-NPs. Moderate decrease in HepG2 cell numbers was observed following treatment with
+Table 4 Activities of p53, Caspase-3 and Caspase-9 of HepG2 Treated Cells
+Codes
+P53
+Caspase 3
+Caspase 9
+Conc (pg/mL)
+Fold Change
+Conc (pg/mL)
+Fold Change
+Conc (pg/mL)
+Fold Change
+Control (Untreated)
+285.67±49.28
+1.00±0.17
+46.31±10.22
+1.00±0.22
+8.47±0.42
+1.00±0.05
+Blank PLGA-NPs
+334.00±49.00
+1.17±0.17
+69.91±15.33
+1.51±0.33
+9.37±0.38
+1.11±0.05
+Free-IVO
+1084.00±74.93
+3.79±0.26
+128.91±20.44
+2.78±0.44
+11.98±0.61
+1.41±0.07
+IVO-PLGA-NPs
+1217.33±101.52
+4.26±0.36
+190.86±13.52
+4.12±0.29
+12.16±0.27
+1.44±0.31
+IVO-CS-PLGA-NPs
+1302.33±69.12
+4.56±0.24
+285.25±22.27
+6.16±0.48
+16.22±0.82
+1.91±0.09
+Figure 6 Morphological changes of HepG2 cells after treatment with control, free-IVO, blank PLGA-NPs, IVO-PLGA-NPs.
+https://doi.org/10.2147/IJN.S452989
+DovePress
+International Journal of Nanomedicine 2024:19
+3470
+Alsulays et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+IVO-PLGA-NPs and IVO-CS-PLGA-NPs compared to the blank PLGA-NPs and control. The HepG2 cells treated with
+IVO-PLGA-NPs and IVO-CS-PLGA-NPs exhibited shrinkage and reduction in adherent viable cells and an increase in
+floating dead cells, shapes also change to irregular and most of them are dead.43 The MTT assay data are consistent with
+these results.
+Conclusion
+We successfully developed and evaluated IVO-loaded-PLGA-NPs and IVO-loaded-CS-PLGA-NPs. The prepared
+nanoparticles exhibited an acceptable particle, PDI, zeta potential, high drug encapsulation and sustained drug
+release. The enhanced cytotoxicity and lower IC50 values for IVO-loaded-PLGA-NPs and IVO-loaded-CS-PLGA-
+NPs indicate that they outperform free IVO. Compared to free-IVO and blank-PLGA-NPs, the IVO-loaded-PLGA-
+NPs and IVO-loaded-CS-PLGA-NPs showed higher cytotoxic, p53, caspase-3 and caspase-9 activities against
+HepG2 cell lines. The chitosan coated nanoparticles (IVO-CS-PLGA-NPs) exhibited superior efficacy than IVO-
+PLGA-NPs. Based on the promising findings, it is suggested that repurposing ivosidenib and encapsulating it into
+chitosan-coated PLGA-NPs could be a compelling approach to effectively treat liver cancer. These chitosan-coated
+PLGA-NPs can be given by oral route. This will further reduce the toxic effects associated with IVO by decreasing
+the frequency and reducing the dose.
+Acknowledgments
+The authors extend their appreciation to the Deputyship for Research & Innovation, Ministry of Education in Saudi
+Arabia for funding this research through the project number (IF2/PSAU-2022/03/22082).
+Funding
+The authors extend their appreciation to the Deputyship for Research & Innovation, Ministry of Education in Saudi
+Arabia for funding this research through the project number (IF2/PSAU-2022/03/22082).
+Disclosure
+The authors report no conflicts of interest in this work.
+References
+1. Man S, Luo C, Yan M, Zhao G, Ma L, Gao W. Treatment for liver cancer: from sorafenib to natural products. Eur J Med Chem. 2021;224:113690.
+doi:10.1016/j.ejmech.2021.113690
+2. Calderaro J, Ziol M, Paradis V, Zucman-Rossi J. Molecular and histological correlations in liver cancer. J Hepatol. 2019;71(3):616–630.
+doi:10.1016/j.jhep.2019.06.001
+3. Sell S, Leffert HL. Liver cancer stem cells. J Clin Oncol. 2008;26(17):2800–2805. doi:10.1200/JCO.2007.15.5945
+4. Dhillon S. Ivosidenib: first global approval. Drugs. 2018;78(14):1509–1516. doi:10.1007/s40265-018-0978-3
+5. Norsworthy KJ, Luo L, Hsu V, et al. FDA approval summary: ivosidenib for relapsed or refractory acute myeloid leukemia with an isocitrate
+Dehydrogenase-1 mutation. Clin Cancer Res. 2019;25(11):3205–3209. doi:10.1158/1078-0432.CCR-18-3749
+6. Casak SJ, Pradhan S, Fashoyin-Aje L, et al. FDA approval summary: ivosidenib for the treatment of patients with advanced unresectable or
+metastatic, chemotherapy refractory cholangiocarcinoma with an IDH1 mutation. Clin Cancer Res. 2022;28(13):2733–2737. doi:10.1158/1078-
+0432.CCR-21-4462
+7. Center for drug evaluation and research application number 211192Orig1s000 multi-discipline review. Available from: https://www.accessdata.fda.
+gov/drugsatfda_docs/nda/2018/211192Orig1s000MultidisciplineR.pdf. Accessed December 17, 2018.
+8. Bhalani DV, Nutan B, Kumar A, Singh Chandel AK. Bioavailability enhancement techniques for poorly aqueous soluble drugs and therapeutics.
+Biomedicines. 2022;10(9):2055. doi:10.3390/biomedicines10092055
+9. Kumari L, Choudhari Y, Patel P, et al. Advancement in solubilization approaches: a step towards bioavailability enhancement of poorly soluble
+drugs. Life. 2023;13(5):1099. doi:10.3390/life13051099
+10. Tang X, Chen L, Li A, et al. Anti-GPC3 antibody-modified sorafenib-loaded nanoparticles significantly inhibited HepG2 hepatocellular carcinoma.
+Drug Deliv. 2018;25(1):1484–1494. doi:10.1080/10717544.2018.1477859
+11. Dinarvand R, Sepehri N, Manoochehri S, Rouhani H, Atyabi F. Polylactide-co-glycolide nanoparticles for controlled delivery of anticancer agents.
+Int J Nanomed. 2011;6:877–895. doi:10.2147/IJN.S18905
+12. Alvi M, Yaqoob A, Rehman K, et al. PLGA-based nanoparticles for the treatment of cancer: current strategies and perspectives. AAPS Open.
+2022;8(1):12. doi:10.1186/s41120-022-00060-7
+13. Makadia HK, Siegel SJ. Poly Lactic-co-Glycolic Acid (PLGA) as biodegradable controlled drug delivery carrier. Polymers. 2011;3(3):1377–1397.
+doi:10.3390/polym3031377
+International Journal of Nanomedicine 2024:19
+https://doi.org/10.2147/IJN.S452989
+DovePress
+3471
+Dovepress
+Alsulays et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+14. Gentile P, Chiono V, Carmagnola I, Hatton PV. An overview of poly(lactic-co-glycolic) acid (PLGA)-based biomaterials for bone tissue
+engineering. Int J Mol Sci. 2014;15(3):3640–3659. doi:10.3390/ijms15033640
+15. Kapoor DN, Bhatia A, Kaur R, et al. PLGA: a unique polymer for drug delivery. Therap Deliv. 2015;6(1):41–58. doi:10.4155/tde.14.91
+16. Alshetaili AS. Gefitinib loaded PLGA and chitosan coated PLGA nanoparticles with magnified cytotoxicity against A549 lung cancer cell lines.
+Saudi J Biol Sci. 2021;28(9):5065–5073. doi:10.1016/j.sjbs.2021.05.025
+17. Mikušová V, Mikuš P. Advances in chitosan-based nanoparticles for drug delivery. Int J Mol Sci. 2021;22(17):9652. doi:10.3390/ijms22179652
+18. Abd El Hady WE, Mohamed EA, Soliman OAE, El-Sabbagh HM. In vitro-in vivo evaluation of chitosan-PLGA nanoparticles for potentiated
+gastric retention and anti-ulcer activity of diosmin. Int J Nanomed. 2019;14:7191–7213. doi:10.2147/IJN.S213836
+19. Li T, Ashrafizadeh M, Shang Y, Nuri Ertas Y, Orive G. Chitosan-functionalized bioplatforms and hydrogels in breast cancer: immunotherapy,
+phototherapy and clinical perspectives. Drug Discov Today. 2024;29(1):103851. doi:10.1016/j.drudis.2023.103851
+20. Ashrafizadeh M, Hushmandi K, Mirzaei S, et al. Chitosan-based nanoscale systems for doxorubicin delivery: exploring biomedical application in
+cancer therapy. Bioeng Transl Med. 2022;8(1):e10325. doi:10.1002/btm2.10325
+21. Ashrafizadeh M, Delfi M, Hashemi F, et al. Biomedical application of chitosan-based nanoscale delivery systems: potential usefulness in siRNA
+delivery for cancer therapy. Carbohydr Polym. 2021;260:117809. doi:10.1016/j.carbpol.2021.117809
+22. Anwer MK, Ali EA, Iqbal M, et al. Development of chitosan-coated PLGA-based nanoparticles for improved oral olaparib delivery: in vitro
+characterization, and in vivo pharmacokinetic studies. Processes. 2022;10(7):1329. doi:10.3390/pr10071329
+23. Ahmed MM, Anwer MK, Fatima F, et al. Boosting the anticancer activity of sunitinib malate in breast cancer through lipid polymer hybrid
+nanoparticles approach. Polymers. 2022;14(12):2459. doi:10.3390/polym14122459
+24. Fong SS, Foo YY, Saw WS, et al. Chi-tosan-coated-PLGA nanoparticles enhance the antitumor and antimigration activity of stattic – a STAT3
+dimerization blocker. Int J Nanomed. 2022;17:137–150. doi:10.2147/IJN.S337093
+25. Ritger PL, Peppas NA. A simple equation for description of solute release II. Fickian and anomalous release from swellable devices. J Control
+Release. 1987;5(1):37–42. doi:10.1016/0168-3659(87)90035-6
+26. Kalam MA, Iqbal M, Alshememry A, Alkholief M, Alshamsan A. Development and evaluation of chitosan nanoparticles for ocular delivery of
+tedizolid phosphate. Molecules. 2022;27(7):2326. doi:10.3390/molecules27072326
+27. Aljuffali IA, Anwer MK, Ahmed MM, et al. Development of gefitinib-loaded solid lipid nanoparticles for the treatment of breast cancer:
+physicochemical evaluation, stability, and anticancer activity in breast cancer (MCF-7) cells. Pharmaceuticals. 2023;16(11):1549. doi:10.3390/
+ph16111549
+28. Alshetaili AS, Ali R, Qamar W, et al. Preparation, optimization, and characterization of chrysin-loaded TPGS-b-PCL micelles and
+assessment of their cytotoxic potential in human liver cancer (Hep G2) cell lines. Int J Biol Macromol. 2023;246:125679. doi:10.1016/j.
+ijbiomac.2023.125679
+29. Ibrahim S, Baig B, Hisaindee S, et al. Development and evaluation of crocetin-functionalized pegylated magnetite nanoparticles for hepatocellular
+carcinoma. Molecules. 2023;28(7):2882. doi:10.3390/molecules28072882
+30. Fu L, Wang S, Wang X, et al. Crystal structure-based discovery of a novel synthesized PARP1 inhibitor (OL-1) with apoptosis-inducing
+mechanisms in triple-negative breast cancer. Sci Rep. 2016;6(1):3. doi:10.1038/s41598-016-0007-2
+31. Devarajan E, Sahin AA, Chen JS, et al. Down-regulation of caspase 3 in breast cancer: a possible mechanism for chemoresistance. Oncogene.
+2002;21(57):8843–8851. doi:10.1038/sj.onc.1206044
+32. Md S, Alhakamy NA, Alharbi WS, et al. Development and evaluation of repurposed etoricoxib loaded nanoemulsion for improving anticancer
+activities against lung cancer cells. Int J Mol Sci. 2021;22(24):13284. doi:10.3390/ijms222413284
+33. Yu W, Liu R, Zhou Y, Gao H. Size-tunable strategies for a tumor targeted drug delivery system. ACS Cent Sci. 2020;6(2):100–116. doi:10.1021/
+acscentsci.9b01139
+34. Bawa R Bio-nanotechnology: a revolution in food, biomedical and health science. Wiley-Blackwell; 2013.
+35. de Oliveira DG, Pimentel GA, Andrade GFS. Chitosan stabilization and control over hot spot formation of gold nanospheres and SERS
+performance evaluation. Vib Spectrosc. 2020;110:103119. doi:10.1016/j.vibspec.2020.103119
+36. Phan TTV, Phan DT, Cao XT, et al. Roles of chitosan in green synthesis of metal nanoparticles for biomedical applications. Nanomaterials. 2021;11
+(2):273. doi:10.3390/nano11020273
+37. Gu C-H, Sizemore JP, Zhang S Ivosidenib forms and pharmaceutical compositions. US patent No. WO2020010058A1; 2020.
+38. Amjadi I, Rabiee M, Hosseini MS. Anticancer activity of nanoparticles based on PLGA and its co-polymer: in-vitro evaluation. Iran J Pharm Res.
+2013;12(4):623–634.
+39. Lemoine D, Francois C, Kedzierewicz F, et al. Stability study of nanoparticles of poly (ε-caprolactone), poly (D,L-lactide) and poly(D,L-lactide-co-
+glycolide). Biomaterials. 1996;17(22):2191–2197. doi:10.1016/0142-9612(96)00049-X
+40. Lamprecht A, Ubrich N, Perez H, et al. Influences of process parameters on nanoparticle preparation performed by a double emulsion pressure
+homogenization technique. Int J Pharm. 2000;196(2):177–182. doi:10.1016/S0378-5173(99)00422-6
+41. Malhotra M, Majumdar DK. Permeation through cornea. Indian J Exp Biol. 2001;39:11–24.
+42. Jan R, Chaudhry GE. Understanding apoptosis and apoptotic pathways targeted cancer therapeutics. Adv Pharm Bull. 2019;9(2):205–218.
+doi:10.15171/apb.2019.024
+43. Sun SJ, Deng P, Peng CE, et al. Selenium-modified chitosan induces HepG2 cell apoptosis and differential protein analysis. Cancer Manag Res.
+2022;14:3335–3345. doi:10.2147/CMAR.S382546
+https://doi.org/10.2147/IJN.S452989
+DovePress
+International Journal of Nanomedicine 2024:19
+3472
+Alsulays et al
+Dovepress
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)
+
+International Journal of Nanomedicine
+Dovepress
+Publish your work in this journal
+The International Journal of Nanomedicine is an international, peer-reviewed journal focusing on the application of nanotechnology in diagnostics,
+therapeutics, and drug delivery systems throughout the biomedical field. This journal is indexed on PubMed Central, MedLine, CAS, SciSearch®,
+Current Contents®/Clinical Medicine, Journal Citation Reports/Science Edition, EMBase, Scopus and the Elsevier Bibliographic databases. The
+manuscript management system is completely online and includes a very quick and fair peer-review system, which is all easy to use. Visit http://
+www.dovepress.com/testimonials.php to read real quotes from published authors.
+Submit your manuscript here: https://www.dovepress.com/international-journal-of-nanomedicine-journal
+International Journal of Nanomedicine 2024:19
+DovePress
+3473
+Dovepress
+Alsulays et al
+Powered by TCPDF (www.tcpdf.org)
+Powered by TCPDF (www.tcpdf.org)

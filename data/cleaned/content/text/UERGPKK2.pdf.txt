@@ -1,0 +1,619 @@
+Current Nanoscience
+19B?;0A9;?
+19C?B0=?C=
+
+
+
+
+
+Send Orders for Reprints to reprints@benthamscience.ae
+448
+
+Current Nanoscience, 2018, 14, 448-453
+
+RESEARCH ARTICLE
+Suggested Procedures for the Reproducible Synthesis of Poly(d,l-lactide-
+co-glycolide) Nanoparticles Using the Emulsification Solvent Diffusion
+Platform
+
+© 2018 Bentham Science Publishers
+Shadabul Haque1,2, Ben J. Boyd1,2, Michelle P. McIntosh1, Colin W. Pouton1, Lisa M. Kamin-
+skas1,3,* and Michael Whittaker1,2,*
+1Drug Delivery Disposition and Dynamics, Monash Institute of Pharmaceutical Sciences, Monash University, 381 Royal
+Pde, Parkville VIC, 3052, Australia; 2ARC Centre of Excellence in Convergent Bio-Nano Science and Technology, Mel-
+bourne, VIC, 3052, Australia; 3School of Biomedical Sciences, University of Queensland, St Lucia QLD, 4072, Australia
+
+A R T I C L E  H I S T O R Y
+
+Received: November 21, 2017
+Revised: February 16, 2018
+Accepted: March 7, 2018
+
+DOI:
+10.2174/1573413714666180313130235
+Abstract: Background: Poly(d,l-lactide-co-glycolide) (PLGA) based biodegradable nanoparticles
+are of key interest for the development of controlled release drug delivery systems and for other
+biomedical applications. It has been reported that PLGA polymers can be converted into colloidal
+nanoparticulate systems by various techniques, such as emulsification-diffusion, emulsification-
+evaporation, interfacial deposition, salting out, dialysis and nanoprecipitation. Emulsification-
+evaporation with water immiscible solvents including dichloromethane and chloroform has been the
+preferred method for the synthesis of PLGA nanoparticles due to the low boiling point and limited
+water solubility of these solvents. We and others, however, have found that when water-immiscible
+solvents are used for the synthesis of PLGA nanoparticles, particle aggregation, non-uniform particle
+size and multimodal size distribution are commonly encountered problems. This suggests that the
+synthesis of PLGA nanoparticles using water immiscible solvents is highly sensitive to small proce-
+dural variations that affect overall reproducibility.
+Objective: This study presents a simple and robust procedure for the preparation of PLGA nanoparti-
+cles with very small batch to batch variability (<5% variability in size (z-average) as determined by
+dynamic light scattering).
+Results: The results showed that the emulsification solvent diffusion method teamed with partially
+water-miscible solvents, such as ethyl acetate, is a versatile approach for the preparation of PLGA
+nanoparticles with highly reproducible sizes (between 50 and 400 nm) and zeta potentials (between -
+30 and +30 mV), with relatively narrow polydispersity.
+Conclusion: Emulsification-diffusion with ethyl acetate is, therefore, a more reliable alternative to
+several existing procedures for the reproducible and refined synthesis of PLGA nanoparticles.
+Keywords: PLGA, nanoparticles, drug delivery, ethyl acetate, emulsion, solvent diffusion.
+1. INTRODUCTION
+Over the last two decades, research efforts in pharmaceu-
+tical technology have been directed towards the use of bio-
+compatible and biodegradable polymers for drug delivery
+applications. Among these polymers, poly(lactide-co-
+glycolide) (PLGA) has gained a lot of attention, in part be-
+cause these materials have been approved by various
+
+*Address correspondence to these authors at the ARC Centre of Excellence
+in Convergent Bio-Nano Science and Technology, Monash Institute of
+Pharmaceutical Sciences, 381 Royal Pde, Parkville, VIC, 3052, Australia;
+Tel: +61 3 990 39266; Fax: +61 3 990 39582;
+E-mail: michael.whittaker@monash.edu
+School of Biomedical Sciences, University of Queensland, St Lucia QLD,
+4072, Australia; Tel: +61 7 3365 3124; Fax: +61 7 3365 1766;
+E-mail: l.kaminskas@uq.edu.au
+regulatory agencies for human use [1, 2]. PLGA degrades in
+the body by the hydrolytic cleavage of the ester bond to form
+the biological by-products of respiration, lactic acid and gly-
+colic acid [1-3]. Critically the rate of this degradation can
+easily be tuned via the copolymer composition [4, 5]. Lactic
+acid is produced endogenously and is easily metabolized by
+the Kreb cycle, while glycolic acid is a product of plant pho-
+tosynthesis [1, 2]. Translation of PLGA copolymers into
+useful colloidal drug delivery systems is usually achieved
+from pre-formed PLGA copolymer using top-down tech-
+niques such as emulsification–diffusion, emulsification–
+evaporation, interfacial deposition, salting out, dialysis and
+nanoprecipitation with or without the use of stabilizers [2, 3].
+Of these, the emulsification based methods have been
+most widely used for the preparation of PLGA nanoparticles
+[2, 6-9]. Depending upon the solvent used they are sub-
+ 1875-6786/18 $58.00+.00
+
+Preparation and Characterization of PLGA Nanoparticles
+Current Nanoscience, 2018, Vol. 14, No. 5    449
+classified into emulsification–diffusion and emulsification–
+evaporation [6, 10]. The distinction between these two meth-
+ods is a result of the choice of solvent. In the emulsification
+evaporation approach, PLGA is dissolved in a water-
+immiscible and volatile solvent, such as dichloromethane
+(DCM) or chloroform [2, 10]. In contrast, partially water-
+miscible solvents such as Ethyl Acetate (EA), benzyl alco-
+hol, propylene carbonate (PC) and methyl acetate are used in
+the emulsification-diffusion technique [2, 10]. The basic
+steps of the two methods are the same (i) emulsification of a
+PLGA dispersed phase in an emulsifier-containing aqueous
+phase  by exposure to a high-energy source, such as an ultra-
+sonic device or homogenizer, (ii) solvent evaporation or sol-
+vent diffusion from emulsion droplets into the aqueous
+phase, and (iii) solidification of emulsion droplets into the
+PLGA nanoparticles [10]. However, the bulk of the literature
+suggests that DCM, which has a low boiling point (39.8°C)
+and negligible water solubility, is the preferred solvent of
+choice for the preparation of PLGA nanoparticles [3, 6, 10].
+We and others though, have found that when DCM was used
+as the organic phase solvent for the synthesis of PLGA
+nanoparticles, a significant proportion of the batches pre-
+pared were compromised by particle aggregation, non-
+uniform particle sizes and multimodal size distribution [9,
+11-13]. Further, we also found that the average particle size
+of each batch was consistently higher than reported literature
+values. These observations suggested that reproducible syn-
+thesis of PLGA nanoparticles by emulsification evaporation
+using DCM is only possible under very specific optimized
+conditions. Furthermore, this method is very sensitive to
+changes in process variables, such as the grade of the PLGA
+used (co-polymer ratio/ molecular mass), polymer concentra-
+tion, concentration of the stabilizers, stirring speed of the
+homogenizer/ power settings of the sonicator, phase volume
+ratio and geometry of the mixing vessel.
+To overcome this barrier, we optimized the emulsifica-
+tion solvent diffusion method for the preparation of PLGA
+nanoparticles exhibiting a wide range of sizes and charges.
+We found that the emulsification solvent diffusion approach
+(with EA as solvent) is a versatile platform for the prepara-
+tion of PLGA nanoparticles over a size range of 50 to 400
+nm, and charge range of -30 to +30 mV that exhibit a narrow
+polydispersity index (PDI) and are able to be prepared with
+high batch to batch reproducibility.
+2. MATERIALS AND METHOD
+2.1. Materials and Reagents
+PLGA [50:50 L:G, Mw 24,000- 38,000 (Resomer
+RG503H) and 75:25 L:G, Mw 76,000-115,000, (Resomer
+RG756)], Polyvinyl alcohol (PVA, 87-90% hydrolyzed, av-
+erage
+mol
+wt
+30,000-70,000)
+and
+Mowiol®
+4-88
+(Mw~31,000) were purchased from Sigma Aldrich, Austra-
+lia. Ultrapure chitosan chloride (CS, Protasan® UP CL113,
+75%-90% deacetylation, molecular weight 50–150 kDa) was
+purchased from NovaMatrix (FMC BioPolymer, Drammen,
+Norway). Poloxamer 188 (commercially named Pluronic
+F68 (PF68), Mw 9000-10000) was obtained from Croda In-
+ternational (Snaith, UK). All the solvents used were of AR
+grade supplied from Merck.
+2.2. Instrumental Techniques
+The particle size analysis, size distribution and zeta po-
+tential were determined in MiiliQ water using Zetasizer
+(model: Nano ZS, Malvern Instruments, UK) employing the
+supplied DTS software. The particle size and morphology of
+the PLGA nanoparticles were also determined by transmis-
+sion electron microscopy (TEM) (model: Technai, FEI
+Company, Germany). Briefly, a drop of nanoparticles was
+placed on the copper grid and allowed to dry at room tem-
+perature. After drying and removal of excess fluid, the cop-
+per grids were examined by TEM.
+3. EXPERIMENTAL
+3.1. Preparation of PLGA Nanoparticles
+PLGA nanoparticles of size range 50-400 nm and charge
+range -30 to +30 mV were prepared by emulsification sol-
+vent diffusion method with ethyl acetate as solvent and
+PF68, PVA and chitosan as stabilizers (Fig. 1). The follow-
+ing describes the method used to prepare the nanoparticle
+library: PLGA was first dissolved in EA and then this solu-
+tion was added dropwise to surfactant solution under mild to
+vigorous magnetic stirring.  The pre-emulsion was then ei-
+ther homogenized using a T18 ULTRA-TURRAX homo-
+genizer with S18N-19G Dispersing element (IKA, China) or
+via short sonication using a VibraCell sonicator (IKA,
+China). Following the pre-emulsification, water was added
+to the emulsion to promote diffusion of EA into the external
+phase, leading to the formation of PLGA nanoparticle.
+Finally, the organic phase was evaporated with continuous
+magnetic stirring for 10-12 hr. The reproducibility of all
+synthetic methods was tested by preparing several batches of
+each type of nanoparticles.
+4. RESULTS AND DISCUSSION
+The nanoparticles described in this study (Fig. 1, Scheme
+I), were composed of PLGA (50:50 L:G, Mw 24,000-
+38,000) and PF68. To prepare these nanoparticles, 50 mg of
+PLGA was dissolved in 7.5 mL of EA and added dropwise
+(100 drops/min, 23 gauge needle) to PF68 solution (1% w/v,
+10 mL) under vigorous magnetic stirring (900-1000 rpm).
+The pre-emulsion was vortexed for 60 sec and then
+homogenized with a T18 ULTRA-TURRAX homogenizer
+with S18N-19G Dispersing element (IKA, China) at 12000
+rpm for 5 min at room temperature (23-25oC). Following
+homogenization, water (20 mL) was added to the emulsion
+to promote diffu-sion of EA into the external phase, leading
+to nanoparticle formation. Finally, the organic phase was
+evaporated at room temperature (23-25oC) with continuous
+magnetic stirring (800 rpm) for 10-12 hr. The average size
+(z-average) and zeta potential of these systems [determined
+via dynamic light scattering (DLS)] was ~160 nm and ~ -30
+mV, respectively (Table 1). The TEM images also suggested
+that the average size of these systems was less than 200 nm
+(Fig. 2a).  In another variant, (Fig. 1, Scheme II), the pre-
+emulsion after vortexing (as described above) was sonicated
+using a VibraCell sonicator (IKA, China) at 30% power us-
+ing ¼” tip for 25 sec on ice. The average size was lower (~
+140 nm) but the reproducibility of the method in terms of
+size, PDI and zeta-potential was similar to Fig. (1, Scheme I)
+& Table 1.
+
+450    Current Nanoscience, 2018, Vol. 14, No. 5
+Haque et al.
+
+Fig. 1.  Schematic representation of the synthesis of various types of PLGA nanoparticles by the emulsification solvent diffusion method.
+Step 1) PLGA was dissolved in ethyl acetate (scheme I-VI). Step 2) PLGA dissolved in ethyl acetate was added drop wise to aqueous
+surfactant solution under continuous magnetic stirring (scheme I-VI). Step 3) The pre-emulsion was vortexed for 60 sec (scheme II-IV & VI),
+exception scheme V. Step 4) The pre-emulsion was sonicated using a VibraCell sonicator using a ¼” tip (scheme II-VI) on ice or
+homogenised with a T18 ULTRA-TURRAX homogeniser with S18N-19G dispersing element at room temperature (23-25oC) (scheme I &
+V), step 3 for scheme V.  Step 5) Following homogenisation or sonication, distilled water was added to the emulsion to promote diffusion of
+ethyl acetate into the external phase and the organic phase was allowed to evaporate at room temperature (23-25oC) with continuous magnetic
+stirring to form different types of the nanoparticles (scheme I & V) , step 4 for scheme V . Step 6) The nanoparticles were centrifuged at
+11000-12000 rpm for 30-45 min to get 50 nm PLGA nanoparticles (only scheme VI).
+
+Table 1. Physicochemical characteristics and batch to batch variability of PLGA nanoparticles prepared using the optimized proce-
+dure (represented as mean ± sd, n=5 batches prepared on different days).
+Nanoparticles
+PLGA (Amount and Con-
+centration in EA)
+Surfactant (Amount and
+Concentration in DW)
+Mean Particle Size (z-
+Average)
+(nm) ± S.D.
+Mean PDI ± S.D.
+Mean Zeta
+Potential
+(mV) ± S.D.
+Anionic
+Scheme I
+50 mg
+(6.66 mg/mL)
+100 mg (PF68)
+(10 mg/mL)
+164.1 ± 8.5
+0.09 ± 0.00
+-28.1 ± 1.8
+Anionic
+Scheme II
+100 mg
+(10 mg/mL)
+200 mg (PF68)
+(10 mg/mL)
+140.0 ± 7.5
+0.11 ± 0.04
+-31.0 ± 3.0
+Uncharged
+Scheme III
+30 mg
+(3.33 mg/mL)
+250 mg (PVA)
+(25 mg/mL)
+169.7 ± 7.5
+0.10 ± 0.02
+-1.3 ± 0.8
+Cationic
+Scheme IV
+30 mg
+(3.33 mg/mL)
+10 mg (CS)
+(1 mg/mL)
+184.2 ± 7.6
+0.17 ± 0.03
++30.2 ± 6.0
+Anionic
+Scheme V
+175 mg
+(29 mg/mL)
+1000 mg (PF68)
+ (100 mg/mL)
+393.3 ± 28.9
+0.22 ± 0.06
+-18.0 ± 2.0
+Anionic
+Scheme VI
+100 mg
+(10 mg/mL)
+200 mg (PF68)
+(10 mg/mL)
+58.3 ± 1.9
+0.13 ± 0.03
+-26.5 ± 2.3
+PF68 - Poloxamer 188, PVA - Polyvinyl alcohol, CS- Chitosan, EA- Ethylacetate, DW- Distilled water. Dynamic light scattering measurements were performed using a Malvern
+Zetasizer Nano Series running DTS software and operating a 4 mW He-Ne laser at 633 nm. Analysis was performed at an angle of 173° and a constant temperature of 25°C. The z-
+average particle size (d.nm) and polydispersity index (PDI) are reported. The PDI was used to describe the width of the particle size distribution. It was calculated from a Cumulants
+analysis of the DLS measured intensity autocorrelation function and is related to the standard deviation of the hypothetical Gaussian distribution (i.e., PSD = σ2/ZD2, where σ is the
+standard deviation and ZD is the Z average mean size).
+
+Preparation and Characterization of PLGA Nanoparticles
+Current Nanoscience, 2018, Vol. 14, No. 5    451
+The reproducibility of all synthetic methods was tested
+by preparing at least 5 batches on different days (Table 1).
+Following the optimization and characterization of these
+anionic PLGA nanoparticles, the platform was further
+validated for uncharged and cationic nanoparticles of similar
+size (~ 160nm) using different stabilizers. PVA (87-90%
+hydrolyzed, average mol wt 30,000-70,000) and a mixture of
+chitosan [Protasan® UP CL113, 75-90% deacetylation, 50-
+150 kDa] and Mowiol (Mw ~31 kDa,) were used as
+stabilizers for the respective synthesis of uncharged and
+positively charged nanoparticles. For the preparation of these
+PLGA nanoparticles, 30 mg of PLGA (Mw 24,000-38,000)
+was dissolved in 9 mL of EA and added dropwise (50
+drops/min, 23 gauge needle) into 10 mL of a 2.5% (w/v)
+aqueous solution of PVA (Fig. 1, Scheme III) to prepare
+uncharged nanoparticles, or a 10 mL solution containing
+0.1% (w/v) chitosan and 1% (w/v) Mowiol (Fig. 1, Scheme
+IV) to prepare cationic nanoparticles under vigorous
+magnetic stirring (1000 rpm). The pre-emulsion was
+vortexed for one minute and then sonicated using a
+VibraCell sonicator using ¼” tip at 55% power for 150 secs
+or 60% power for 100 secs on ice, respectively. The size of
+both systems was between 160 and 180 nm, each with a
+narrow PDI (< 0.2) [determined by DLS and TEM (Table 1,
+Figs. 2b & 2c)], consistent with the anionic nanoparticles
+described above. The zeta potential was either -1.8 mV or
++24.1 mV depending upon the stabilizer used (Table 1).
+Chitosan was unable to stabilize the PLGA nanoparticles in
+the absence of PVA as reported earlier by others [14].
+To determine whether emulsification solvent diffusion
+with EA can also be used for the preparation of smaller and
+larger PLGA nanoparticles, anionic large (~ 400 nm) and
+small (~ 50 nm) PLGA nanoparticles were prepared using
+PF68 as a stabilizer. For the preparation of large particles,
+175 mg of PLGA (Mw 24,000-38,000) was dissolved in 6
+mL of EA and added dropwise (180 drops/min, 18-gauge
+needle) to 10 mL of a 10% (w/v) aqueous solution of PF68
+under slow magnetic stirring (500-600 rpm) (Fig. 1, Scheme
+V). The pre-emulsion was sonicated using a VibraCell soni-
+cator at 20% power using a ¼” tip for 8 sec, or homogenized
+with a T18 ULTRA-TURRAX with S18N-19G dispersing
+element (IKA, China) at 5000 rpm for 5 min at room
+temperature (23-25oC). The organic phase was allowed to
+evaporate following the addition of water (10 mL) to the
+emulsion with constant magnetic stirring (500-600 rpm). The
+size of the optimized batch was ~ 400 nm with a negative
+zeta potential (Table 1, Fig. 2d). The smaller ~50 nm PLGA
+nanoparticles were obtained in two steps (Fig. 1, Scheme
+VI). In step 1, 100 mg of PLGA (Mw 24,000-38,000) was
+dissolved in 10 mL of EA and added dropwise (60
+drops/min, 23-gauge needle) to 20 mL of a 1% (w/v) aque-
+ous solution of PF68 under vigorous magnetic stirring. The
+pre-emulsion was vortexed for one minute and then soni-
+cated using a VibraCell sonicator at 60% power using a ¼”
+tip for 1 min and 10 secs on ice.  In the next step, the ~100
+nm PLGA nanoparticle suspension was centrifuged at
+13000-13500 x g for 30-45 min to pellet large particles. The
+average size of the nanoparticles remaining in suspension
+was ~50 nm (Table 1, Fig. 2e).
+These results show that PLGA nanoparticles of various
+size and charge can be prepared by emulsification solvent
+diffusion using EA as a solvent. The independent process
+variables such as the PLGA/ stabilizer concentration, stirring
+speed and power setting of the sonicator, and speed of the
+homogenizer were optimized by their systematic variation
+separately for the different nanoparticles. The batch to batch
+variability in particle size was <5% for Fig. (1, Schemes I-
+IV & VI), but slightly higher (7.3%) for Fig. (1, Scheme V)
+(large anionic nanoparticles). Polydispersity was generally
+<0.2 with the exception of the large anionic particles (Fig. 1,
+Scheme V, 0.22) and variability in PDI was 1 to 36%. The
+variability in zeta potential was 6 to 20% for charged
+nanoparticles and 61% (0.3-2.28 mV) for the uncharged
+nanoparticle. These results suggest that the optimized
+method described here results in batch to batch variability
+that is considerably lower than other reported procedures.
+For example, McCall and Sirrianni reported a batch to batch
+variation of over 32% in particle size across 6-7 batches of
+PLGA nanoparticles prepared by emulsion evaporation using
+DCM as a solvent [11]. The authors did not report the zeta
+potential or PDI however based on particle size variation
+disclosed, these batches had broad size distribution [11].
+Others reports have similarly indicated lack of uniformity
+and batch-to-batch size variability in PLGA nanoparticles
+synthesized using DCM [9, 12, 15, 16].
+The reproducibility of the optimized procedures was also
+tested by changing the grade of PLGA or replacing a fraction
+of PLGA with fluorescently labeled PLGA. PLGA nanopar-
+ticles of almost similar size [n= 2 (Fig. 1, Scheme I - 188
+nm, < 15% variability), (Fig. 1, Scheme II – 147 nm, < 5%
+variability)] and PDI [n=2 (Fig. 1, Scheme I – 0.08, 11.4%
+variability), (Fig. 1, Scheme II – 0.09, 23% variability)]
+were obtained using an alternative grade of PLGA [75:25,
+Mw -76000-115000, (Sigma Aldrich, Australia)] by Fig. (1,
+Schemes I and II). Likewise, the variation in the amount of
+PLGA and stabilizer by ± 25 wt % in Fig. (1, Scheme II)
+was not found to have any substantial impact on size (n=2,
+164 nm, 17% variability) or  PDI ( n=2, 0.06, 44% variabil-
+ity) of nanoparticles. Similarly, the substitution of a fraction
+of PLGA polymer (~ 5 wt %) with a fluorescently labelled
+PLGA of slightly lower molecular weight (Fig. 1, Schemes
+1-VI) did not result in significant changes in the size of
+nanoparticles (Fig. 1, Scheme I - 159 nm, 3% variability;
+Fig. 1, Scheme III – 186 nm, 9% variability; Fig. 1, Scheme
+IV - 159 nm, 13% variability; and Fig. 1, Scheme VI – 60
+nm, 3% variability).
+These observations are in agreement with previous
+reports which have shown that partially water-soluble sol-
+vents favour the formation of small monodisperse PLGA
+nanoparticles, whereas large polydisperse nanoparticles are
+obtained with water-immiscible solvents (e.g., DCM) [9, 12,
+15, 16]. This is due to differences in the mechanism of for-
+mation of PLGA nanoparticles by the two solvents. In the
+formation of nanoparticles by the emulsification solvent dif-
+fusion method, the dispersed phase (i.e., EA) containing
+PLGA and continuous aqueous stabilizer phase is in a state
+in which the EA is partitioned between a polymer rich phase
+and a water-rich phase [15]. The addition of water post
+emulsification alters the partitioning of the EA and facilitates
+the diffusion of EA into the aqueous phase which leads to
+
+452    Current Nanoscience, 2018, Vol. 14, No. 5
+Haque et al.
+the formation of a local region of supersaturation at the liq-
+uid-liquid interface (diffusion-stranding), provoking phase
+transformation and PLGA aggregation in the form of solid
+colloidal nanoparticles [15]. The mechanism by which diffu-
+sion of EA induces PLGA aggregation and nanoparticle for-
+mation has been attributed to the formation of new smaller
+nanosized globules and globule size reduction, likely due to
+interfacial turbulence generated during rapid diffusion of EA
+from the internal to the external aqueous phase, but the exact
+mechanism remains unclear [7, 8, 15].  It has been reported
+that when partially miscible solvents like EA are used, the
+solvent water exchange is bidirectional due to the mutual
+diffusion of the solvent phase into the water phase, and the
+water phase into the solvent phase (the ‘exchange ratio’) [8,
+15]. A small exchange ratio has been found to produce a
+diminutive local supersaturation region near the interface to
+form smaller and more uniformly sized PLGA nanoparticles
+[8, 15]. In comparison, a large exchange ratio leads to an
+exponential increase in particle size [8, 15]. EA has the low-
+est exchange ratio (even amongst different partially water-
+miscible solvents) and therefore it plays an important role in
+explaining the high reproducibility and size uniformity of the
+PLGA nanoparticles [8, 15].
+Organic solvents of low water solubility (e.g., DCM,
+chloroform) lead to a slow precipitation of emulsion droplets
+[8, 15]. In addition, due to the lack of interfacial turbulence,
+no globule size reduction occurs and therefore nanoparticles
+of different sizes are formed after DCM evaporation from
+the surface of the emulsion droplets [7, 8]. Due to these rea-
+sons, solvent evaporation is more sensitive to changes in
+process variables. Further, a high solvent-polymer affinity
+(e.g., chloroform and PLGA) has been found to produce a
+large supersaturation region at the liquid-liquid interface to
+form larger and non-uniformly sized nanoparticles [7, 8, 15].
+Thus, the choice of the solvent is a key factor in determining
+the size & PDI of nanoparticles and the batch to batch repro-
+ducibility [15]. Finally, the interaction between the stabili-
+zers and organic solvents also plays a major role in determin-
+ing the physiochemical properties of PLGA nanoparticles [8,
+12]. During the synthesis of PLGA nanoparticles, the
+stabilizers are adsorbed on the interfacial area (liquid-liquid
+interface) in between the diffusion and/or evaporation of
+solvents from emulsion droplets [8, 12]. Due to the high in-
+terfacial tension of DCM (28.3 dyn/cm), the stabilisers (irre-
+spective of the concentration) are unable to prevent the coa-
+lescence of emulsion droplets leading to variations in their
+particles size and multimodal size distribution [8, 12, 14,
+16]. In contrast, the combined impact of low interfacial ten-
+sion of EA (1.7 dyne/cm) with the aqueous phase and the
+protective effect of the stabilizers produces stable emulsion
+droplets to form small and uniformly sized PLGA nanoparti-
+cles [8, 12, 16].
+CONCLUSION
+In this study, a range of PLGA nanoparticles (50 to 400
+nm and -30 to +30 mV) was prepared and characterized us-
+ing the emulsification solvent diffusion method with ethyl
+acetate as solvent and PF68, PVA and chitosan as stabilizers.
+The results highlighted that irrespective of the stabilizer
+used, the emulsification-diffusion method with ethyl acetate
+can be used for the synthesis of different types of PLGA
+nanoparticles with narrow size distribution and minimum
+batch to batch variation in physiochemical parameters,
+namely particle size and zeta potential. The results further
+showed that the optimized methods described above are suf-
+ficiently robust to withstand minor changes in process vari-
+ables without altering the size, size uniformity and zeta po-
+tential of nanoparticles. Emulsification-diffusion with ethyl
+
+Fig. 2. TEM image of the a) PLGA PF68 nanoparticles (scheme I & II), b) PLGA PVA nanoparticles (Scheme III), c) PLGA CS nanoparti-
+cles (Scheme IV), d) anionic PLGA PF68 nanoparticles (scheme V), and e) anionic PLGA PF68 nanoparticles (scheme VI).
+
+Preparation and Characterization of PLGA Nanoparticles
+Current Nanoscience, 2018, Vol. 14, No. 5    453
+acetate is, therefore, a more reliable alternative to several
+existing procedures for the reproducible and refined synthe-
+sis of PLGA nanoparticles.
+LIST OF ABBREVIATIONS
+CS
+=
+Chitosan
+DCM
+=
+Dichloromethane
+DLS
+=
+Dynamic Light Scattering
+EA
+=
+Ethyl Acetate
+PDI
+=
+Polydispersibility Index
+PF68
+=
+Poloxamer 188
+PLGA =
+Poly(d,l-lactide-co-glycolide)
+PVA
+=
+Polyvinyl Alcohol
+ETHICS APPROVAL AND CONSENT TO PARTICI-
+PATE
+
+Not applicable.
+HUMAN AND ANIMAL RIGHTS
+
+No Animals/Humans were used for studies that are the
+basis of this research.
+CONSENT FOR PUBLICATION
+
+Not applicable.
+CONFLICT OF INTEREST
+
+The authors declare no conflict of interest, financial or
+otherwise.
+ACKNOWLEDGEMENTS
+Shadabul Haque is supported by a VIDS postgraduate
+scholarship. Lisa M. Kaminskas is supported by an NHMRC
+Career Development fellowship.
+REFERENCES
+[1]
+Danhier, F.; Ansorena, E.; Silva, J.M.; Coco, R.; Le Breton, A.;
+Préat, V. PLGA-based nanoparticles: An overview of biomedical
+applications. J. Control. Release, 2012, 161, 505-522.
+[2]
+Dinarvand, R.; Sepehri, N.; Manoochehri, S.; Rouhani, H.; Atyabi,
+F. Polylactide-co-glycolide nanoparticles for controlled delivery of
+anticancer agents. Int. J. Nanomedicine, 2011, 6, 877-895.
+[3]
+Bala, I.; Hariharan, S.; Kumar, M.R. PLGA nanoparticles in drug
+delivery: The state of the art. Crit. Rev. Ther. Drug Carrier Syst.,
+2004, 21(5), 387-422.
+[4]
+Wu, X.S.; Wang, N. Synthesis, characterization, biodegradation,
+and drug delivery application of biodegradable lactic/glycolic acid
+polymers. Part II: Biodegradation. J. Biomater. Sci. Polym. Ed.,
+2001, 12, 21-34.
+[5]
+Park, T.G. Degradation of poly (D, L-lactic acid) microspheres:
+Effect of molecular weight. J. Control. Release, 1994, 30, 161-173.
+[6]
+Jain, R.A. The manufacturing techniques of various drug loaded
+biodegradable poly (lactide-co-glycolide)(PLGA) devices. Bioma-
+terials, 2000, 21, 2475-2490.
+[7]
+Quintanar-Guerrero, D.; Allémann, E.; Doelker, E.; Fessi, H. A
+mechanistic study of the formation of polymer nanoparticles by the
+emulsification-diffusion technique. Colloid Polym. Sci., 1997, 275,
+640-647.
+[8]
+Quintanar-Guerrero, D.; Fessi, H.; Allémann, E.; Doelker, E. Influ-
+ence of stabilizing agents and preparative variables on the forma-
+tion of poly (D, L-lactic acid) nanoparticles by an emulsification-
+diffusion technique. Int. J. Pharm., 1996, 143, 133-141.
+[9]
+Sahana, D.; Mittal, G.; Bhardwaj, V.; Kumar, M. PLGA nanoparti-
+cles for oral delivery of hydrophobic drugs: Influence of organic
+solvent on nanoparticle formation and release behavior in vitro and
+in vivo using estradiol as a model drug. J. Pharm. Sci., 2008, 97,
+1530-1542.
+[10]
+Sah, E.; Sah, H. Recent trends in preparation of poly (lactide-co-
+glycolide) nanoparticles by mixing polymeric organic solution with
+antisolvent. J. Nanomater., 2015, 2015, Article ID 794601.
+[11]
+McCall, R. L.; Sirianni, R. W. PLGA nanoparticles formed by
+single-or double-emulsion with vitamin E-TPGS. J. Vis. Exp.,
+2013, (82), 51015.
+[12]
+Song, K.C.; Lee, H.S.; Choung, I.Y.; Cho, K.I.; Ahn, Y.; Choi, E.J.
+The effect of type of organic phase solvents on the particle size of
+poly (d, l-lactide-co-glycolide) nanoparticles. Colloids Surf. A.
+Physicochem. Eng. Asp., 2006, 276, 162-167.
+[13]
+Italia, J.; Bhatt, D.; Bhardwaj, V.; Tikoo, K.; Kumar, M.R. PLGA
+nanoparticles for oral delivery of cyclosporine: Nephrotoxicity and
+pharmacokinetic studies in comparison to Sandimmune Neoral®. J.
+Control. Release, 2007, 119, 197-206.
+[14]
+Guo, C.; Gemeinhart, R.A. Understanding the adsorption mecha-
+nism of chitosan onto poly (lactide-co-glycolide) particles. Eur. J.
+Pharm. Biopharm., 2008, 70, 597-604.
+[15]
+Choi, S.-W.; Kwon, H.-Y.; Kim, W.-S.; Kim, J.-H. Thermody-
+namic parameters on poly (d, l-lactide-co-glycolide) particle size in
+emulsification–diffusion process. Colloids Surf. A. Physicochem.
+Eng. Asp., 2002, 201, 283-289.
+[16]
+Vineeth, P.; Vadaparthi, P.; Kumar, K.; Babu, B.D.J.; Rao, A.;
+Babu, K.S. Influence of organic solvents on nanoparticle formation
+and surfactants on release behaviour in-vitro using costunolide as
+model anticancer agent. Int. J. Pharm. Pharm. Sci., 2014, 6, 638-
+645.

@@ -1,0 +1,23 @@
+{
+  "active_run_id": "run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1",
+  "active_run_dir": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1",
+  "authoritative_terminal_files": {
+    "scope_manifest_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv",
+    "stage2_semantic_objects_jsonl": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl",
+    "stage2_compatibility_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "stage2_compatibility_jsonl": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
+    "stage5_final_table_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_formulation_table_v1.tsv",
+    "stage5_decision_trace_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_output_decision_trace_v1.tsv",
+    "resolved_relation_fields_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/formulation_relation_v1/resolved_relation_fields_v1.tsv",
+    "gt_workbook_xlsx": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx",
+    "layer1_gt_path": "data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv",
+    "layer2_gt_path": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
+    "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values.tsv",
+    "gt_skeleton_tsv": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
+    "alignment_scaffold_tsv": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_variant_alignment_scaffold_v1.tsv"
+  },
+  "gt_authority_lock": true,
+  "lineage_policy": "The parent lineage run is the human-facing entrypoint. Child terminal artifacts must be pinned explicitly here and must not be inferred by recency, sort order, or parent fallback.",
+  "updated_at": "2026-04-09T00:00:00Z",
+  "note": "Authority promotion: the active DEV15 lineage now points to the semantic Stage2 emitter -> compatibility adapter -> Stage3 -> Stage5 run validated on 2026-03-29. DEV15 GT authority is now frozen under data/cleaned/gt_authority/v1 with hard contract locking for Layer1 counts, Layer2 identity rows, and Layer3 value rows."
+}

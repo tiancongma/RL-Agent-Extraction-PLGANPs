@@ -1,0 +1,1127 @@
+Effects of combined CBGA and cannabis-derived terpene nanoformulations
+on TRPV1 activation: Implications for enhanced pain management
+Mazen M. El-Hammadi a,*, Andrea L. Small-Howard b, Mercedes Fern´andez-Ar´evalo a,
+Helen Turner c, Lucía Martín-Banderas a,d,*
+a Departamento de Farmacia y Tecnología Farmac´eutica, Facultad de Farmacia, Universidad de Sevilla, c/Prof. García Gonz´alez, n◦2, 41012 Sevilla, Spain
+b GB Sciences, Inc. (OTCQB:GBLX), 9205 W. Russell Road, Suite 240 Las Vegas, Nevada 89148, United States
+c Laboratory of Pharmacology and Analytics, School of Natural Sciences and Mathematics, Chaminade University of Honolulu, Honolulu, HI, United States
+d Instituto de Biomedicina de Sevilla (IBiS), Hospital Universitario Virgen del Rocio/CSIC/Universidad de Sevilla, Seville, Spain
+A R T I C L E  I N F O
+Keywords:
+Cannabigerolic acid
+Cannabis-based terpenes
+PLGA polymeric nanoparticles
+Beta-myrcene
+Nerolidol
+Beta-caryophyllene
+Nanomedicine
+Chronic pain
+A B S T R A C T
+Cannabinoids and terpenes, key bioactive components of cannabis, are increasingly studied for their individual
+and combined contributions to the therapeutic potential of cannabis-based treatments, with ongoing research
+exploring their distinct and interactive effects. This study aimed to encapsulate cannabigerolic acid (CBGA) in
+poly(ethylene glycol)-poly(lactic-co-glycolic acid) nanoparticles (PEG-PLGA NPs) and investigate the effects of
+combining CBGA NPs with cannabis-derived terpene-loaded NPs (myrcene [MC], nerolidol [NL], and car­
+yophyllene [CPh]) for potential applications in pain management. CBGA NPs (152 nm) and terpene-loaded NPs
+(233–297 nm) were prepared via nanoprecipitation and emulsion-solvent evaporation, respectively, exhibiting a
+polydispersity index < 0.3 and negative zeta potentials (−23 to −26 mV). Encapsulation efficiency was 98.6 %
+for CBGA and 13–33 % for terpenes. CBGA release followed a biphasic profile, with ~ 20 % released within 4 h
+and sustained release over 72 h. In vitro evaluation used HEK293 cells expressing the nociceptive transient re­
+ceptor potential vanilloid-1 (TRPV1) channel, a key mediator of pain perception. TRPV1 activation was assessed
+via calcium influx kinetics (Fluo-4 indicator). The EC50 values were 23.8 µg/mL (CBGA NPs), 8.0 µg/mL (MC
+NPs), 6.7 µg/mL (NL NPs), and 13.3 µg/mL (CPh NPs). Combinatorial treatments of CBGA NPs with terpene NPs
+at their respective EC50 concentrations revealed significantly enhanced calcium influx compared to individual
+NPs, with the strongest interaction observed for CBGA/NL and moderate effects for CBGA/MC. Fluorescence
+imaging further corroborated these findings. These results suggest that combining CBGA NPs with terpene-
+loaded NPs could potentiate pain-relief efficacy, offering a promising strategy for advanced therapeutic
+formulations.
+1. Introduction
+Cannabis sativa has long been valued for its diverse medicinal prop­
+erties. This versatile plant produces more than 500 bioactive com­
+pounds, including cannabinoids, terpenes, flavonoids, and other
+phytochemicals, which collectively shape its complex pharmacological
+profile. Modern research increasingly highlights its therapeutic poten­
+tial for managing chronic pain, inflammation, anxiety, and neurological
+disorders (Russo and Marcu, 2017). The plant’s broad range of bioactive
+compounds offers a multi-faceted approach to treatment by targeting
+various pathways and mechanisms within the body (Bridgeman and
+Abazia, 2017). However, clinical utilization of Cannabis sativa faces
+challenges, including standardization of formulations, consistency in
+dosing, and gaps in understanding long-term effects. Further research is
+critical to harness its full potential for developing safe, effective, and
+targeted therapies derived from this ancient plant.
+Cannabinoids, a pharmacologically active class of compounds in
+Cannabis sativa, modulate calcium signaling through interactions with
+transient receptor potential (TRP) channels, such as TRPV1 (Jansen
+et al., 2019; Starkus et al., 2019; De Petrocellis et al., 2011; Muller et al.,
+2018; Storozhuk and Zholos, 2018), and calcium release-activated cal­
+cium (CRAC) channels (Faouzi et al., 2022). The TRPV1 channel, a
+* Corresponding authors at: Departamento de Farmacia y Tecnología Farmac´eutica, Facultad de Farmacia, Universidad de Sevilla, c/Prof. García Gonz´alez, n◦2,
+41012 Sevilla, Spain.
+E-mail addresses: mazenhammadi@us.es (M.M. El-Hammadi), luciamartin@us.es (L. Martín-Banderas).
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+https://doi.org/10.1016/j.ijpharm.2025.125766
+Received 5 March 2025; Received in revised form 22 May 2025; Accepted 23 May 2025
+International Journal of Pharmaceutics 679 (2025) 125766
+Available online 24 May 2025
+0378-5173/© 2025 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ).
+
+major pain modulation target, is expressed in nociceptive neurons and
+other cell types, where it acts as a sensor for noxious stimuli (e.g., heat,
+acidic pH) (Storozhuk et al., 2019). Cannabinoid-TRPV1 interactions
+trigger calcium influx, a key mechanism in pain signal modulation (De
+Petrocellis et al., 2013).
+Cannabigerolic acid (CBGA) (Fig. 1E), a non-psychoactive “mother
+cannabinoid,” serves as the biosynthetic precursor to major cannabi­
+noids such as tetrahydrocannabinolic acid (THCA), cannabidiolic acid
+(CBDA), and cannabichromenic acid (CBCA) (Anderson et al., 2021).
+Produced in the cannabis plant via enzymatic condensation of geranyl
+pyrophosphate and olivetolic acid, CBGA is the central intermediate in
+cannabinoid biosynthesis (ElSohly, 2017). Emerging evidence un­
+derscores CBGA’s therapeutic potential, particularly for pain and in­
+flammatory management (Calapai et al., 2022; Ruhaak et al., 2011).
+Mechanistically, CBGA inhibits store-operated calcium entry (SOCE),
+downregulates IL-2 production in T cells, and attenuates kidney
+inflammation (Faouzi et al., 2022; Suzuki et al., 2023).
+However, the therapeutic potential of CBGA is limited by its poor
+solubility, stability, and bioavailability (Zirpel et al., 2015). Nano­
+particle encapsulation has emerged as a promising strategy to address
+these limitations, by enhancing CBGA’s pharmacokinetic profile while
+improving its stability and enabling targeted delivery (Stella et al., 2021;
+Lazzarotto Rebelatto et al., 2023). In addition, CBGA has been identified
+as the most potent cannabinoid for suppressing TRPM7 activity, sug­
+gesting therapeutic potential for TRPM7-mediated pathologies
+including cancer, stroke, and kidney disease (Suzuki et al., 2024).
+The plant’s terpene profile significantly influences cannabinoid ac­
+tivity through the “entourage effect”—a synergistic relationship be­
+tween cannabinoids and terpenes that potentiates therapeutic efficacy
+(Anand et al., 2021). Specific terpenes such as β-myrcene (MC), β-car­
+yophyllene (CPh), and nerolidol (NL) (Fig. 1A-A-D) have been shown to
+enhance analgesic, anti-inflammatory, and anxiolytic effects when
+combined with cannabinoids, surpassing the effects of individual com­
+pounds (Russo, 2011; Ferber et al., 2020; Christensen et al., 2023). For
+example, Jansen et al. demonstrated that a Cannabis sativa-derived
+terpene mixture potentiated intracellular calcium influx in TRPV1-
+expressing HEK cells, with MC showing the strongest activity and NL
+exhibiting moderate effects. Notably, MC-induced calcium influx was
+TRPV1-dependent, as evidenced by complete inhibition with the TRPV1
+antagonist capsazepine. Molecular docking studies suggested MC binds
+TRPV1 via hydrophobic, non-covalent interactions (Jansen et al., 2019).
+Our research group recently developed nanofomulations of MC, CPh,
+and NL encapsulated in poly(ethylene glycol)-poly(lactic-co-glycolic
+acid) nanoparticles (PEG-PLGA NPs) and evaluated their efficacy in
+HEK TRPV1 cells. An in-depth study was conducted on the activity of
+free and encapsulated terpenes, assessing both individual and combi­
+national effects. Through calcium influx assays (Fluo-4 indicator, 1-hour
+observation), we demonstrated that the terpene-loaded NPs and their
+combinations significantly enhanced fluorescence intensity compared to
+free terpenes, confirming NP-mediated improvement in cellular uptake
+and bioactivity (Small-Howard et al., 2020; El-Hammadi et al., 2021; El-
+Hammadi et al., 2022). These PLGA-based nanosystems provide distinct
+advantages for drug delivery, including FDA-approved biocompatibility,
+tunable biodegradability, and sustained release kinetics (El-Hammadi
+et al., 2015; El-Hammadi and Arias, 2022; Kumar et al., 2024).
+The synergistic effects (entourage effect) observed between canna­
+binoids and terpenes highlight the potential for optimized therapeutic
+formulations. By exploiting the entourage effect, new treatments can be
+developed to enhance efficacy while reducing adverse effects (Ferber
+et al., 2020), offering new opportunities for managing complex condi­
+tions including chronic pain, epilepsy, and mental health disorders
+(Petzke et al., 2022; Leinen et al., 2023; Hoch et al., 2024). Based on this
+premise, our study evaluated the therapeutic potential of CBGA-loaded
+PLGA-PEG NPs in combined with terpene-loaded NPs for pain man­
+agement using in vitro experiments. Three key cannabis-based terpenes
+were utilized in this work, namely β–myrcene, β–caryophyllene, and
+nerolidol (Fig. 1).
+2. Materials and methods
+2.1. Materials
+MC (ref. W276200), PEG-PLGA (PEG average Mn 2,000, PLGA
+average Mn 11,500; lactide:glycolide 50:50], Pluronic® F-68, Span® 60,
+and trehalose were purchased from Sigma-Merck (Germany). CPh (≥80
+% purity, food grade) and NL (a mixture of cis- and trans-isomers, ≥97 %
+purity) were provided by GB Sciences (NV, USA). Polyvinyl alcohol
+(PVA) 72,000 g/mol (polymerization grade 1600) and HPLC-grade
+solvents (ethyl acetate, and dichloromethane) were obtained from
+Panreac Química (Spain). All other chemicals were analytical-grade and
+sourced from Merck (Germany). Ultrapure water was prepared using a
+Milli-Q Advantage A10 system (Millipore, Spain).
+2.2. Preparation of nanoparticles
+2.2.1. Preparation CBGA-loaded nanoparticles
+CBGA-loaded NPs were prepared using a nanoprecipitation tech­
+nique following our established protocol (Duran-Lobato et al., 2014;
+Berrocoso et al., 2017). Briefly, CBGA (3.75 mg), PLGA (22.5 mg) and
+Span® 60 (7.5 mg) were dissolved in 1.5 mL of acetone. The organic
+phase was then slowly introduced dropwise into 4.5 mL of an aqueous
+Pluronic® F-68 solution (0.5 % w/v) using a syringe pump at a
+controlled rate of 5 mL/h under continuous stirring (500 rpm). Acetone
+was subsequently evaporated over 1 h in a chemical hood at room
+Fig. 1. Chemical structures of (A) β–myrcene, (B) β–caryophyllene, (C) trans-nerolidol, (D) cis-nerolidol, and (E) cannabigerolic acid (CBGA).
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+2
+
+temperature. The concentrations of Span® 60 and Pluronic® F-68 were
+selected based on previously optimized conditions developed by our
+group for cannabinoid nanoencapsulation, ensuring consistent particle
+size, stability, and encapsulation efficiency across batches (Duran-
+Lobato et al., 2014; Berrocoso et al., 2017; Alvarez-Fuentes et al., 2012;
+Martin-Banderas et al., 2014). Process parameters for nanoprecipitation,
+including stirring speed, solvent-to-nonsolvent ratio, and injection rate.
+were chosen based on prior optimizations to achieve minimal poly­
+dispersity index (PDI) and consistent particle size. To eliminate unen­
+capsulated compounds and excess surfactant, the resulting suspension
+was transferred to an Amicon® tube and spun at 4,000 × g at 12 ◦C. For
+lyophilization, trehalose (1:5 w/w PLGA-PEG/trehalose) was added to
+the concentrated NPs, followed by freeze-drying (48 h, −80.0 ± 0.5 ◦C
+and 0.057 mbar; Cryodos freeze-drier, Telstar Industrial S.L., Spain).
+Post-lyophilization stability was assessed by DLS analysis of recon­
+stituted NPs for size and zeta potential, with measurements performed
+under identical conditions to pre-lyophilization characterization.
+2.2.2. Terpene-loaded nanoparticles
+Terpene-loaded PEG-PLGA NPs were prepared via emulsion-solvent
+evaporation (Small-Howard et al., 2020; El-Hammadi et al., 2021).
+Briefly, 10 mg of terpene (MC, CPh, or NL) and 40 mg of PEG-PLGA were
+dissolved in 1 mL of ethyl acetate t(organic phase), which was then
+added dropwise to 5 mL of a 0.5 % (w/v) PVA aqueous solution under
+high-speed homogenization (Polytron® PT 2500 E, Kinematica AG,
+Switzerland) for 1 min. The 1:5 organic-to-aqueous phase ratio pro­
+moted optimal nanoparticle characteristics by ensuring rapid solvent
+diffusion and stable emulsion formation (El-Hammadi et al., 2021).
+Following solvent removal (rotary evaporation), NPs were purified via
+ultrafiltration (Amicon® tubes with Ultracel-100 kDa regenerated cel­
+lulose membranes, 15 mL capacity) at 4,000 × g and 12 ◦C. The resulting
+NPs were resuspended in a trehalose solution (1:5; PLGA-PEG/
+trehalose), and lyophilized (−80 ◦C, <0.100 mbar; Cryodos freeze-
+drier, Telstar Industrial S.L., Spain) to obtain a white, cotton-like
+powder.
+2.3. Nanoparticle characterization
+Particle size distribution and zeta potential were determined by dy­
+namic light scattering (DLS) and laser Doppler electrophoresis, respec­
+tively, using a Zetasizer Nano ZS (Malvern Instruments Ltd., UK). For
+morphological analysis, nanoparticle suspensions were applied to
+carbon-coated copper grids, stained with 2 % uranyl acetate, and air-
+dried prior to imaging by transmission electron microscopy (TEM;
+Zeiss Libra 120, Carl Zeiss Microscopy, Germany).
+2.4. Measurement of CBGA load capacity
+CBGA loading into the PLGA-PEG NPs was determined using a
+reverse phase-high performance liquid chromatography (RP-HPLC)
+method, as previously described for cannabinoids with some modifica­
+tions (Alvarez-Fuentes et al., 2012). The RP-HPLC analysis was per­
+formed using a Hitachi LaChrom Elite® HPLC System, equipped with a
+quaternary pump L-2130, a diode array detector L-2455, and an auto­
+matic injector L-2200. A C18 Waters Atlantis T3 column (3 µm, 4.6 ×
+100 mm) maintained at 25.0 ± 0.1 ◦C (L-2350 column oven, Elite
+LaChrom1) was used in this analysis. The mobile phase was methanol:
+acetonitrile:water (52:30:18 v/v) at pH 4.5. The mobile phase was
+maintained at 1.8 mL/min flow rate. The detection wavelength was 227
+nm and the injection volume was 20 µL. CBGA standard solutions
+(33.75–500 µg/mL in methanol) yielded a sharp, symmetric peak
+(retention time: 3.7 ± 0.1 min) within an 8-min run time. For analysis,
+NPs were dissolved in acetonitrile, and data were processed using
+EZChrom Elite Software.
+Encapsulation efficiency (EE%) and drug loading (DL%) were
+calculated using Eqs. (1) and (2):
+EE(%) = massofincorporatedCBGA(mg)
+initialmassofCBGA(mg)
+× 100
+(1)
+DL(%) = massofincorporatedCBGA(mg)
+massofnanocarrier(mg)
+× 100
+(2)
+2.5. Measurement of terpene load capacity
+The terpene content in nanoparticles was quantified by gas
+chromatography-mass spectrometry (GC–MS) using a TRACE GC system
+coupled with a DELTA V™ mass spectrometer (Thermo Scientific, USA)
+following established methods (El-Hammadi et al., 2021; El-Hammadi
+et al., 2022). Lyophilized NPs were dissolved in dichloromethane
+(DCM) and analyzed using an SPB-1 capillary column (30 m × 0.25 mm
+× 1.5 µm) with a 15-minute run time, showing retention times of 6.92
+min (MC), 5.73 min (CPh), 6.77 min (cis-NL), and 7.16 min (trans-NL).
+The mass spectrometer operated in electron impact (EI) mode (70 eV)
+with full scan acquisition (m/z 20–300) and an ion source temperature
+of 250 ◦C. Quantification employed selected ion monitoring (SIM) of
+characteristic fragment ions at m/z 69 (MC), 93 (CPh), and 133 (NL).
+Data were processed using Xcalibur 2.0.7 software (Thermo Scientific,
+USA), and terpene content was calculated as encapsulation efficiency
+(EE%) and drug loading (DL%) according to Eqs. (3) and (4).
+EE(%) = massofterpeneincoporated(mg)
+initialmassofterpene(mg)
+× 100
+(3)
+DL(%) = massofterpeneincoporated(mg)
+massofnanoparticles(mg)
+× 100
+(4)
+2.6. In vitro release of CBGA from nanoparticles
+The in vitro release profile of CBGA from nanoparticles was evaluated
+using a dialysis method under sink conditions. CBGA-loaded NPs (1 mL,
+1.6 mg/mL CBGA equivalent) were placed in Visking dialysis tubing
+(12–14 kDa MWCO, Medicell International, UK) and immersed in 4 mL
+of PBS (pH 7.4 ± 0.1) containing 0.5 % (w/v%) Tween 80. The system
+was incubated at 37.0 ± 0.5 ◦C in a thermostatic shaker (500 rpm;
+Titramax 1000, Heidolph, Germany), with free (non-encapsulated)
+CBGA solution, treated under the same conditions as the nanoparticle
+formulations, serving as control. Aliquots (350 µL) were collected at
+predetermined intervals (0.5–80 h) and immediately replaced with fresh
+buffer to maintain constant volume. CBGA concentration in the release
+medium was quantified by HPLC, with results expressed as cumulative
+drug release percentage over time.
+% Cumulative drug release = amount of drug loaded in NPs [mg] −amount of drug remained in NPs [mg]
+amount of drug loaded in NPs [mg]
+× 100
+(5)
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+3
+
+2.7. In vitro experiments
+2.7.1. Cell maintenance
+HEK293 cells stably expressing TRPV1 channels (kindly provided by
+Dr. Helen Turner, Chaminade University of Honolulu) were cultured in
+Minimum Essential Medium (MEM; Corning, NY, USA) supplemented
+with 10 % fetal bovine serum (FBS), 50 U/mL penicillin, 50 µg/mL
+streptomycin (Sigma-Aldrich), and 0.6 mg/mL geneticin (Gibco,
+Switzerland). Cells were maintained at 37 ◦C with 5 % CO2 humidified
+atmosphere.
+2.7.2. Reconstitution and preparation of nanoparticles for in vitro assays
+For biological testing, lyophilized NPs were aseptically reconstituted
+in sterile phosphate-buffered saline (PBS) to their original volume using
+a laminar flow hood. The resulting nanoparticle suspensions were then
+diluted in either assay buffer or complete culture medium to achieve the
+desired treatment concentrations immediately prior to experimentation.
+2.7.3. Determination of EC50 of CBGA- and terpene-loaded nanoparticles
+The half-maximal effective concentration (EC50), defined as the
+concentration needed to achieve 50 % of the maximum effect, was
+determined for each NP formulation by evaluating calcium influx in
+HEK-TRPV1 cells. Cells were exposed to serial dilutions of CBGA-, MC-,
+NL-, or CPh-loaded NPs for 60 min while monitoring intracellular cal­
+cium levels using fluorescence. Parallel cytotoxicity assessments were
+conducted under identical exposure conditions to ensure the selected
+concentration ranges maintained cell viability > 80 %.
+2.7.3.1. Calcium signaling assay. The calcium signaling assay can be
+used to measure the cytosolic concentration of calcium ions. In this
+method, the non-fluorescent Fluo-4 acetoxymethyl ester (Fluo-4 AM;
+Thermo Fisher Scientific) is cleaved by intracellular esterases to release
+the free, fluorescent calcium indicator Fluo-4. Upon binding to calcium
+ions, Fluo-4 emits a strong green fluorescence when excited by light at a
+wavelength of 488 nm, allowing for the detection and visualization of
+calcium levels within the cell.
+2.7.3.1.1. Assay procedure. HEK TRPV1 cells were harvested using
+trypsin, followed by deactivation with media and centrifugation at
+1,000 rpm for 5 min at room temperature. The cells were then counted,
+washed twice with 1 mM calcium assay buffer (composed of Na Ringer’s
+solution [140 mM NaCl, 2.8 mM KCl, 2 mM MgCl2, 11 mM glucose, 10
+mM HEPES], 2 mM probenecid, 1 mM CaCl2; pH 7.4), and collected by
+centrifugation under the same conditions. The cells were resuspended in
+a 1 μM Fluo-4 AM solution (prepared by mixing 1 μL of 5 mM Fluo-4 AM
+with 1 μL of 20 % Pluronic F-127 in DMSO and the addition of 5 mL of 1
+mM calcium assay buffer, followed by incubation for 10 min at 37 ◦C in
+the dark). The suspended cells were then further incubated for 30 min at
+37 ◦C in the dark. Following incubation, the cells were washed twice
+with the calcium assay buffer, resuspended in the buffer, and seeded into
+opaque-walled 96-well plates at a density of 15 × 104 cells per 180 μL/
+well. Fluorescence was measured using a plate reader (Synergy HTX,
+BioTek, USA) with excitation and emission wavelengths of 485 nm and
+528 nm, respectively. After establishing a baseline (three measure­
+ments), 20 μL of the stimulant solution/suspension (free CBGA, CBGA-
+loaded NPs, terpene-loaded NPs, or controls) was added to each well,
+and measurements continued for 1 h at a rate of one read every 26 sec.
+Control responses were subtracted, and the resulting data were averaged
+to generate calcium signal profiles. The area under the curve (AUC) for
+each concentration of CBGA/terpene NPs was also calculated for further
+analysis.
+2.7.3.1.2. Preparation of stimulant dispersions. All NP dispersions
+were prepared in 1 mM Ca Assay Buffer immediately prior to experi­
+mentation. The NPs were diluted directly using the assay buffer, and
+blank NPs were also prepared at equivalent concentrations. CBGA- and
+terpene-loaded NPs were prepared at concentrations of 10, 40, 100, 200,
+400, and 1000 μg/mL, yielding final well concentrations of 1, 4, 10, 20,
+40, and 100 μg/mL after 1:10 dilution in cell suspensions. Ionomycin (4
+μM), a calcium ionophore that increases the intracellular concentration
+of Ca2+, was used as a positive control. All nanoparticle suspensions
+were vortexed (30 sec) and sonicated (5 min, 37 ◦C) immediately before
+use to ensure monodispersion.
+2.7.3.2. In vitro cytotoxicity. To determine the effective and non-toxic
+concentrations of the NPs, the cytotoxicity of the CBGA and terpene-
+loaded NPs was assessed using the MTT assay (3-(4,5-dimethylthiazol-
+2-yl)-3,5-diphenyl tetrazolium bromide) after a short 60 min incubation
+period. As demonstrated in our prior work (El-Hammadi et al., 2022),
+blank NPs showed no cytotoxicity (cell viability > 95 % at all tested
+concentrations) and were consequently excluded from this assay. Cells
+were seeded in 96-well plates at a density of 45 × 103 cells per well and
+cultured for 48 h at 37 ◦C in a 5 % CO2 atmosphere. The cells were then
+treated with various concentrations of CBGA- or terpene-loaded NPs (1,
+4, 10, 20, 40, 100 µg/mL; corresponding to the concentration of
+encapsulated compound) in culture medium. After 60 min of incubation
+at 37.0 ± 0.5 ◦C, the medium was removed and replaced with 200 μL of
+MTT solution (0.5 mg/mL in culture medium). Following a 4-hour in­
+cubation at the same temperature, the medium was discarded, and 200
+μL of DMSO was added to each well to solubilize the formazan crystals.
+Untreated cells and cells treated with 1 % Triton X-100 were used as
+controls. The optical density (OD) at 570 nm was measured using a
+microplate reader (Synergy HT, BioTek Instruments, Inc., Vermont,
+USA). Relative cell viability (%) was computed using the following
+formula:
+Relative cell viability(%) =
+OD treated cells
+OD control (untreated) cells × 100
+(6)
+Concentrations resulting in a viability decrease below 80 % were
+considered cytotoxic adhering to ISO 10993-5:2009 standards.
+2.7.3.3. Calculation of EC50. The EC50 for CBGA and terpene-loaded
+NPs were determined based on the AUC values, calculated from fluo­
+rescence responses measured over 60 min in HEK cells incubated with
+various concentrations of the NPs under investigation. EC50 values were
+derived from nonlinear regression of log-transformed concen­
+tration–response data (GraphPad Prism 8), with curve fits constrained to
+baseline (0 %) and maximal response (100 % ionomycin control).
+2.7.4. Investigating combined effects of CBGA NPs with terpene NPs
+To evaluate the combined effects of CBGA NPs and terpene NPs on
+calcium influx in HEK TRPV1 cells, a calcium signaling assay was con­
+ducted, followed by fluorescence imaging and analysis 30 min after
+treatment.
+2.7.4.1. Calcium signaling assay. This calcium signaling assay was
+employed to investigate the impact of combining CBGA NPs with
+terpene NPs on the calcium influx in HEK TRPV1 cells.
+2.7.4.1.1. Assay procedure. The procedure outlined in Section
+2.7.3.1.1 was followed, with the AUC calculated for each plot corre­
+sponding to the specific treatments.
+2.7.4.1.2. Preparation of stimulant dispersions. CBGA, MC, NL, and
+CPh NPs, along with combinations of CBGA NPs with either MC, NL, or
+CPh NPs, were dispersed in 1 mM calcium assay buffer. Nanoparticle
+dispersions were prepared at 10 times their EC50 concentration to
+achieve the desired EC50 concentration upon addition to the cells. In
+combination formulations, the final concentrations of both CBGA NPs
+and terpene NPs were adjusted to match their respective EC50 values.
+Additionally, blank NPs were prepared at corresponding concentrations.
+A four μM ionomycin solution was used as a positive control.
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+4
+
+2.7.4.2. Fluorescence imaging – Image acquiring and analysis
+2.7.4.2.1. Assay procedure. The ability of the nanoformulations to
+modulate calcium influx in HEK TRPV1 cells was further assessed by
+measuring intercellular fluorescence intensity using Fluo-4 AM under a
+fluorescence microscope. In this set of experiments, HEK TRPV1 cells
+were seeded in 96-well cell culture plates a density of 3 × 104 per well in
+200 µL of cell suspension. The plates were incubated for 48 h at 37 ◦C a
+humidified atmosphere with 5 % CO2. On the day of treatment, the cells
+were washed twice with 1 mM Ca Assay Buffer. Fluo-4 AM (1 μM) was
+added to each well (100 μL per well), and the plates were incubated for
+30 min at 37 ◦C in the dark. After incubation, the cells were washed
+twice with 1 mM Ca Assay Buffer, followed by the addition of 180 μL of
+1 mM Ca Assay Buffer per well prior to treatment.
+2.7.4.2.2. Preparation of stimulant solutions/dispersions. Stimulant
+dispersions were prepared following the same procedure described in
+Section 2.7.3.1.2.
+2.7.4.2.3. Treatment and imaging. A volume of 20 μL of the previ­
+ously prepared stimulants or controls was added to each well, bringing
+the total volume to 200 μL per well (20 μL stimulant/control + 180 μL
+buffer). The final concentrations of CBGA and terpene-loaded NPs, both
+individually and in combination, were adjusted to match the EC50
+values of each respective nanoparticle formulation. For example, in the
+CBGA/MC combination, CBGA NPs and MC NPs were applied at their
+respective EC50 concentrations during incubation with the cells.
+The intensity of intracellular green fluorescence was observed using
+Nikon inverted microscope Eclipse Ti (Japan). Live-cell images were
+captured 30 min post-treatment with the following exposure settings: 1-
+second exposure time, 7.6 × gain, and 470 nm emission wavelength,
+using a FITC filter.
+2.7.4.2.4. Image analysis. The acquired images were analyzed using
+ImageJ software (Version 1.52r; NIH, USA). The fluorescence intensity
+was calculated using the following equation:
+cellfluoresence =
+IT −(AT × IB
+AB )
+N
+(7)
+where: IT, total intensity of the image; AT: total area of the image; IB,
+background intensity; AB, background area; and N, number of cells.
+Subsequently, the relative fluorescence intensity was expressed as a
+percentage using the following equation:
+I% = ITreat −INegC
+IIono −INegC
+× 100
+(8)
+where: I%, relative intensity percentage; ITreat, fluorescence intensity of
+treated cells; IIono, fluorescence intensity of cells treated with ionomycin;
+and INeg C, fluorescence intensity of the negative control.
+2.8. Statistical analysis
+All data are presented as the mean ± standard deviation (SD). All
+experiments were conducted in at least three independent assays. Group
+comparisons were performed using one-way ANOVA with LSD post hoc
+testing. Data analysis was conducted using SPSS Statistics version 26.
+Statistical significance was set at p < 0.05 for all analyses.
+3. Results
+3.1. Nanoparticle characterization
+The physicochemical characterization of nanoparticles revealed
+well-defined formulations suitable for biological evaluation (Table 1).
+CBGA-loaded NPs displayed a mean hydrodynamic diameter of 152 nm,
+while terpene-loaded NPs (MC, NL, CPh) showed slightly larger sizes of
+233 nm, 279 nm, and 297 nm, respectively. All formulations exhibited
+excellent monodispersity (PdI < 0.3) and negative zeta potentials
+ranging from −23 to −25 mV, indicating stable colloidal suspensions.
+Encapsulation efficiency was markedly higher for CBGA (98.6 ± 0.9 %)
+compared to terpenes (13.2 ± 1.2 % for MC, 28.4 ± 2.2 % for NL, and
+32.9 ± 2.3 % for CPh). Following lyophilization and reconstitution, NPs
+maintained their original characteristics with less than 10 % variation in
+size, PdI, and zeta potential, confirming the stability of the formulations
+under processing conditions. Transmission electron microscopy further
+verified the absence of particle aggregation post-lyophilization (Fig. 2).
+3.2. CBGA release kinetics
+The in vitro release of CBGA from the PLGA-PEG NPs was assessed in
+PBS (pH 7.4 ± 0.1) containing 0.5 % (w/v%) Tween® 80 at 37.0 ±
+0.5 ◦C. The CBGA NPs exhibited biphasic release kinetics, characterized
+by an initial burst release phase (~20 % cumulative release within 4 h)
+followed by sustained drug release over 72 h (Fig. 3). In contrast, free
+CBGA (control) rapidly diffused through the dialysis membrane,
+reaching equilibrium within 2 h.
+Finally, in vitro release profile was analyzed using KinetDS software
+Table 1
+Characteristics of CBGA-, MC-, NL- and CPh-loaded nanoparticles (values are the mean ± SD).
+Formula
+Preparation method
+Mean diameter
+(nm)
+PdI
+Zeta potential
+(mV)
+EE%
+DL%
+CBGA NPs
+Nanoprecipitation
+152.0 ± 8.3
+0.262 ± 0.018
+−25.6 ± 1.5
+98.6 ± 0.9
+12.1 ± 0.3
+MC NPs
+Emulsion-solvent evaporation
+233.4 ± 6.4
+0.238 ± 0.007
+−24.2 ± 1.1
+13.2 ± 1.2
+3.4 ± 0.3
+NL NPs
+Emulsion-solvent evaporation
+279.3 ± 10.9
+0.242 ± 0.021
+−24.9 ± 2.2
+28.1 ± 2.2
+7.0 ± 0.5
+CPh NPs
+Emulsion-solvent evaporation
+296.9 ± 9.7
+0.224 ± 0.027
+−23.4 ± 0.9
+32.9 ± 2.3
+7.8 ± 0.5
+Fig. 2. TEM images of CBGA-loaded PEG-PLGA NPs. Scale bar: 100 nm.
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+5
+
+to identify the dominant release mechanisms. The best linear correlation
+was obtained when percentage of released drug was fitted to traditional
+methods, such as the Korsmeyer-Peppas (K-P) and Weibull models, both
+widely used to describe in vitro drug release kinetics from PLGA-based
+systems (Table 2).
+The K–P model describes drug release using a power-law equation,
+while the Weibull model is often preferred for its greater flexibility in
+capturing both Fickian and non-Fickian diffusion behaviors. In the
+present study, the best fit was achieved with the Weibull model (R2 =
+0.984), highlighting its suitability for characterizing the release profile
+of CBGA from PLGA-based nanoparticles. In contrast, the K–P model
+showed a lower correlation (R2 = 0.861), reflecting its more limited
+applicability in complex, biphasic release systems. The superior fit of the
+Weibull model supports the biphasic release behavior observed experi­
+mentally, characterized by an initial burst followed by sustained release.
+3.3. Determination of EC50 values
+The EC50 values for CBGA, MC, NL, and CPh NPs were determined
+by evaluating a range of NP concentrations and monitoring the calcium
+signaling/fluorescence response in TRPV1 HEK cells (Fig. 4). The
+effective concentration range was established by comparing the AUC
+values of the fluorescence response plots (Fig. 5A). In addition, the MTT
+cytotoxicity assay was performed to identify the non-cytotoxic concen­
+tration range of the developed NPs (Fig. 5B). As a result, the maximum
+effective concentrations (i.e., concentrations beyond which no statisti­
+cally significant increase in effect was observed) were determined to be
+40 µg/mL for CBGA NPs, 20 µg/mL for MC NPs, 10 µg/mL for NL NPs,
+and 20 µg/mL for CPh NPs.
+Next, the EC50 for each NP formulation was calculated from the
+concentration–response curves generated by plotting normalized AUC
+values of calcium flux against log-transformed NP concentrations
+(Fig. 6). The AUCs of the fluorescence response of cells treated with NPs
+were normalized against the AUC of the ionomycin fluorescence
+response. The resulting EC50 values are presented in Table 3.
+3.4. Investigating the combined effects of CBGA NPs with terpene NPs
+The calcium responses of HEK TRPV1 cells to co-treatment with
+CBGA NPs with MC, NL, and CPh NPs were investigated (Fig. 7). Overall,
+all combinations resulted in a significant increase in calcium influx
+compared to the effects of the cannabinoid or individual terpenes alone
+(Fig. 7B).
+Fig. 7C presents a comparison between the calculated and experi­
+mental AUC values of calcium response plots for cells treated with
+Fig. 3. Cumulative release profile of CBGA from PLGA-PEG NPs. The nano­
+particles were enclosed in a dialysis bag, and the release was monitored in
+phosphate-buffered saline (PBS, pH 7.4) containing 0.5 % (w/v) Tween 80 at
+37 ◦C. Free CBGA, subjected to the same conditions, was used as a reference
+for comparison.
+Table 2
+Correlation coefficients (R2), rate constants (K) and release exponent (A) ob­
+tained from fitting release data to Weibull and Korsmeyer-Peppas models.
+Model
+Mathematicla equation
+R2
+A
+K
+Weibull
+y = 100
+⎛
+⎜
+⎝1 −e−(t−lag
+k
+)A
+⎞
+⎟
+⎠
+0.984
+0.831
+10.407
+Korsmeyer-
+Peppas
+ln(y) = a × ln(x) + b; Which is
+equal to y = K × xa
+0.861
+0.998
+3.052
+Fig. 4. Relative fluorescence units (RFU) measured using a calcium signaling assay. HEK TRPV1 cells (15 × 104 cells/well, 180 μl) were pre-treated with 1 μM Fluo-4
+AM and suspended in 1 mM Ca Assay Buffer prior to the addition of stimulants (CBGA NPs or terpene-loaded NPs) at various concentrations. Ionomycin (4 μM) was
+used as a positive control. Fluorescence was measured over a 1-hour period, with readings taken every 26 s at an excitation/emission wavelengths of 485/528 nm.
+(A) Calcium responses induced by free and encapsulated CBGA and (B) corresponding AUCs (p < 0.05); (C) calcium responses by CBGA NPs; (D) calcium responses
+induced by MC NPs; (E) calcium responses induced by NL NPs; and (F) calcium responses induced by CPh NPs. The experiment was conducted in triplicate (n = 3),
+and the calcium response results are presented as the mean values.
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+6
+
+combinations of CBGA NPs and terpene NPs. The calculated values were
+obtained by summing the individual AUCs of CBGA NPs and terpene NPs
+presented in Fig. 6B. The combination of CBGA/NL NPs demonstrated a
+significantly higher experimental value compared to the calculated
+value, whereas no statistically significant differences were observed for
+the CBGA/MC and CBGA/NL combinational formulations.
+3.5. Fluorescence imaging – Image acquisition and analysis
+Fig. 8 shows fluorescence images of HEK TRPV1 cells acquired 30
+min after treatment with (Fig. 8A) assay buffer, (Fig. 8B) blank NPs,
+(Fig. 8C) ionomycin, terpene-loaded NPs (Fig. 8D-F), CBGA NPs
+(Fig. 8G), and combinations of CBGA NPs with terpene-loaded NPs
+(Fig. 8H-J). Fluorescence intensity from these images was quantified and
+expressed as a relative percentage by comparing the fluorescence of cells
+treated with NPs to that of cells treated with the positive control, ion­
+omycin (Equation (8)).
+Overall, at the tested concentrations (EC50), all combinations of
+CBGA NPs with terpene-loaded NPs showed significantly higher fluo­
+rescence intensity compared to individual NPs (p < 0.05; Fig. 8K).
+Furthermore, the experimental relative fluorescence intensities (RFI) of
+CBGA/terpene combinations were generally higher than calculated
+values, with statistically significant differences observed for CBGA/NL
+and CBGA/CPh combinational nanoformulations (p < 0.05; Fig. 8L).
+4. Discussion
+This study highlights the potential of nanoparticle-based delivery
+systems to enhance the bioactivity of cannabinoids and terpenes for
+targeted therapeutic applications. PEG–PLGA NPs encapsulating CBGA
+and three cannabis-derived terpenes, including MC, NL, and CPh were
+successfully formulated and characterized, and their effects were sub­
+sequently evaluated in HEK cells overexpressing the TRPV1 receptor.
+To ensure reproducibility and consistency in nanoparticle formula­
+tion, we employed standardized and validated preparation protocols for
+both CBGA- and terpene-loaded NPs, resulting in minimal batch-to-
+batch variability (<10 %) in size and zeta potential. Consistent drug
+loading and encapsulation efficiencies were confirmed using HPLC and
+GC–MS, ensuring accurate dosing across experiments. The lower
+encapsulation efficiency observed for terpenes, compared to CBGA, is
+likely attributable to their volatile and liquid nature, which makes them
+more susceptible to diffusion losses during formulation (El-Hammadi
+et al., 2021); unlike the more stable, solid-state CBGA. In addition,
+TRPV1 activation assays were conducted using EC50 concentrations
+derived from independently validated dose–response curves, enabling
+Fig. 5. Determination of non-cytotoxic and effective concentrations of CBGA- and terpene-loaded NPs. (A) In vitro viability of HEK TRPV1 after a 1-hour exposure to
+various concentrations of nanoparticles. Untreated cells served as the control for calculating relative cell viability (%). (B) Areas under the curve (AUCs) of fluo­
+rescence intensity for HEK TRPV1 cells incubated with different concentrations of NPs, measured over a 1-hour period (corresponding to the plots in Fig. 3). Data are
+represented as means ± SD from triplicate cultures (n = 6).
+Fig. 6. Area under the curve (AUC) of fluorescence responses in HEK cells
+when incubated with varying concentrations of CBGA- and terpene-loaded NPs
+for 1 h. Results were normalized to the fluorescence responses of cells treated
+with ionomycin. Data are presented as means ± SD from triplicate experiments.
+Table 3
+Half-maximal effective concentration (EC50) values calculated for CBGA, MC,
+NL, and CPh NPs. Data are represented as means ± SD from triplicate cultures.
+Formula
+EC50
+Corresponding response
+(%AUC normalized to ionomycin)
+µg/mL
+µM
+CBGA NPs
+23.8 ± 2.4
+65.9 ± 6.5
+45.8 ± 2.0
+MC NPs
+8.0 ± 0.6
+61.5 ± 4.1
+14.1 ± 1.6
+NL NPs
+6.7 ± 0.9
+29.9 ± 4.2
+21.9 ± 5.4
+CPh NPs
+13.3 ± 0.5
+65.3 ± 2.4
+3.3 ± 0.7
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+7
+
+Fig. 7. Fluorescence changes measured using a calcium signaling assay. HEK TRPV1 cells (15 × 104 cells/well; 180 μL) were pre-treated with 1 μM Fluo-4 AM and
+suspended in 1 mM Ca Assay Buffer before the addition of stimulants (CBGA NPs, terpene-loaded NPs, or their combination) at a final concentration corresponding to
+the EC50 for each type of nanoparticle. Ionomycin (4 μM) was used as a positive control. Fluorescence was monitored over 1 h, with readings taken every 40 s at an
+excitation/emission wavelength of 485/528 nm. (A) Calcium response plots; (B) corresponding AUCs, and (C) comparisons of calculated and experimental AUC
+values corresponding to combinations of CBGA NPs and terpene NPs. The experiment was conducted in triplicate (n = 3). Calcium responses and AUC results are
+presented as mean values and mean ± SD, respectively. Statistically significant differences are indicated as follows: * for combination formula vs. CBGA NPs (p <
+0.05); † for combination formula vs. respective terpene NPs (p < 0.05); # for experimental combination formula vs. calculated combination formula (p < 0.05).
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+8
+
+biologically relevant and consistent comparisons. While large-scale
+production and long-term stability require further development, our
+current methodology offers a robust and reproducible platform for
+preclinical applications.
+The physicochemical properties of the nanoformulations (such as
+size, surface charge, and composition) play a key role in modulating
+biological interactions. All NPs exhibited uniform particle sizes within
+the optimal sub-300 range with a narrow size distribution (PdI < 0.3),
+which are generally favorable for cellular uptake and interaction with
+membrane-localized receptors like TRPV1. Although uptake is typically
+more efficient for particles under 200 nm, several studies have demon­
+strated that nanoparticles approaching 300 nm can also be internalized
+by cells through alternative endocytic pathways, depending on their
+surface properties and the cell type involved (L´opez-Viota et al., 2023;
+Gratton et al., 2008; Petithory et al., 2021). Nevertheless, significant
+differences were observed between CBGA and terpene-loaded NPs in
+Fig. 8. Fluorescence images of HEK TRPV1 cells, pre-incubated with Fluo-4, captured 30 min after the addition of: (A) buffer, (B) blank NPs, (C) ionomycin, (D) CPh
+NPs, (E) MC NPs, (F) NL NPs, (G) CBGA NPs, (H) CBGA NPs/CPh NPs, (I) CBGA NPs/MC NPs, and (J) CBGA NPs/NL NPs. The concentrations of CBGA- and terpene-
+loaded NPs in both individual and combination formulations were set at the EC50 for each respective nanoparticle. The images shown are representative of three
+independent experiments. Scale bar: 50 μm. (K) corresponding Relative fluorescence intensity (RFI) of cell images, and (L) comparisons of calculated and experi­
+mental RFI values corresponding to combinations of CBGA NPs and terpene NPs. The experiment was conducted in triplicate (n = 3). RFI values are presented as
+mean ± SD, respectively. Statistically significant differences are indicated as follows: * for combination formula vs. CBGA NPs (p < 0.05); † for combination formula
+vs. respective terpene NPs (p < 0.05); # for experimental combination formula vs. calculated combination formula (p < 0.05).
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+9
+
+terms of size and encapsulation efficiency. CBGA NPs exhibited the
+smallest diameter, whereas MC, NL and CPh NPs were substantially
+larger, showing approximately 50 %, 80 % and 100 % increases in size,
+respectively. This disparity likely stems from the volatile and liquid
+nature of terpenes, which introduces challenges during NP preparation.
+In the emulsion-solvent evaporation method, the high volatility of ter­
+penes can destabilize emulsion droplets by altering interfacial tension or
+causing unpredictable phase partitioning. These effects may lead to
+droplet coalescence or solvent-induced shrinkage, ultimately resulting
+in larger particle sizes.
+Moreover, a clear correlation for terpene-loaded NPs could be
+established between the increase in particle size and the encapsulation
+efficiency, where the highest EE% was achieved by CPh NPs (60.3 %)
+followed by NL (51.3 %) and MC (18.5 %) particles. This data empha­
+sizes the effect of terpene properties on loading capacity, since signifi­
+cantly higher loading capacities were achieved with CPh and NL, which
+have higher molecular weight and lower volatility compared to MC (El-
+Hammadi et al., 2022).
+Despite their negative zeta potential, surface PEGylation enhances
+colloidal stability and reduces nonspecific interactions, contributing to
+the overall stability of the formulations. In our case, the PEG corona
+likely promotes stealth characteristics and minimizes premature clear­
+ance and protein adsorption. While it is important to note that PEG
+coatings can reduce cellular internalization by introducing a steric
+barrier that limits interactions with the cell membrane, several studies
+have reported that PLGA–PEG nanoparticles can still be effectively
+internalized by cells (Pamujula et al., 2012; Fernandes et al., 2018;
+Lopez-Mitjavila et al., 2025). The hydrophilic surface of PEG–PLGA NPs
+may also contribute to a more favorable cytotoxicity profile. PEGylation
+is known to reduce the likelihood of membrane disruption and protein
+adsorption, both of which are associated with NP-induced toxicity. This
+steric barrier, imparted by PEGylation, minimizes nonspecific cellular
+interactions and has been associated with improved biocompatibility
+(El-Hammadi and Arias, 2022; Suk et al., 2016).
+In vitro testing using TRPV1-overexpressing HEK293 cells demon­
+strated that NP encapsulation significantly enhanced calcium influx
+compared to the corresponding free compounds. These findings build
+upon prior work from our group, which showed that PLGA-based NPs
+loaded with MC, NL, and CPh produced stronger TRPV1 activation than
+their respective free terpenes (Small-Howard et al., 2020; El-Hammadi
+et al., 2021; El-Hammadi et al., 2022). Similarly, in this study, CBGA-
+loaded NPs outperformed free CBGA, eliciting a significantly higher
+calcium influx response. This enhanced efficacy is likely due to
+improved solubilization and stabilization of the lipophilic compounds
+within the nanoparticle matrix, promoting more efficient interaction
+with TRPV1 channels. While PLGA-based systems are known for their
+sustained release properties in lipophilic drug delivery (Rafiei and
+Haddadi, 2017; Samkange et al., 2019), we acknowledge that the fluo­
+rescence signal in our study was measured over a relatively short
+exposure period. Therefore, the observed effects are more plausibly
+explained by initial burst release and rapid membrane-level in­
+teractions, rather than sustained release alone. Future time-course
+studies will be needed to fully evaluate the contribution of prolonged
+release to TRPV1 modulation.
+Based on the calcium signaling assay, EC50 values were determined
+for CBGA, MC, NL, and CPh NPs. Among these, CBGA NPs demonstrated
+the highest efficacy; despite exhibiting the highest EC50, they produced
+the strongest calcium influx response. In addition, while NL NPs did not
+reach the same level of effectiveness as GBCA NPs, they displayed
+greater potency at lower concentrations compared to the other studied
+nanoformulations (Fig. 5). These results are in line with known TRPV1
+ligands such as capsaicin, whose efficacy and potency vary widely based
+on structural properties and delivery method (Hernandez-Morales et al.,
+2020; Jancso et al., 2008; Balemans et al., 2017). Importantly, our re­
+sults support the view that both ligand characteristics and the mode of
+delivery are critical determinants of biological activity (Hernandez-
+Morales et al., 2020; Li et al., 2023). Importantly, our results support the
+view that both ligand characteristics and the mode of delivery are crit­
+ical determinants of biological activity (Hernandez-Morales et al., 2020;
+Li et al., 2023). The observed differences in EC50 values and the
+enhanced TRPV1 activation in combinational treatments imply that
+specific terpenes, particularly nerolidol and myrcene, may act as co-
+activators or sensitizers. This effect may result from direct interactions
+with TRPV1 or from modulation of the membrane microenvironment,
+thereby enhancing CBGA activity and supporting the therapeutic po­
+tential of cannabinoid-terpene nanoformulations.
+A key objective of this study was to evaluate the impact of combining
+CBGA NPs with MC, NL, or CPh NPs on calcium signaling. Our findings
+contribute to the ongoing debate surrounding the entourage effect,
+which describes the interplay between cannabinoids and terpenes in
+enhancing therapeutic efficacy. Some studies have supported this
+interaction in specific biological contexts (Baron et al., 2018; LaVigne
+et al., 2021; Lewis et al., 2018), while others have questioned its rele­
+vance at the level of cannabinoid receptor binding (Santiago et al., 2019;
+Finlay et al., 2020). However, the present data suggest that TRPV1 may
+represent an alternative molecular target through which cannabinoids
+and terpenes can collectively modulate biological responses (Zagzoog
+et al., 2022; Al-Khazaleh et al., 2024; Tomko et al., 2022; McDougall and
+McKenna, 2022).
+The observed enhancement may be due to multiple mechanisms.
+Terpenes such as nerolidol have been shown to increase membrane
+fluidity by disrupting lipid packing, thereby facilitating improved
+nanoparticle–cell interactions and compound uptake (Utsumi et al.,
+2016; Alonso et al., 2019). In this context, the terpene may act as a
+biophysical modulator of membrane properties, enhancing CBGA’s ac­
+cess to TRPV1 channels. Additionally, certain terpenes may function as
+co-agonists or allosteric modulators of TRPV1, further potentiating the
+receptor response.
+Our results are further supported by prior work from Jansen et al.
+(Jansen et al., 2019), who demonstrated that cannabis-derived terpenes,
+especially myrcene, can activate TRPV1 comparably to capsaicin in the
+same HEK293-TRPV1 model. While our nanoformulations differ in
+pharmacokinetic behavior, these findings reinforce the potential of
+terpene-mediated TRPV1 modulation. Unlike capsaicin, which induces
+receptor desensitization and acute irritation, our combinational CBGA-
+terpene nanoformulations may offer prolonged and less irritating
+TRPV1 activation through sustained release; an advantage that warrants
+future side-by-side studies.
+All combinational experiments in the current study were conducted
+using fixed CBGA-to-terpene ratios derived from the EC50 values of
+individual compounds. Although this approach enabled standardized
+comparisons, it is conceivable that varying these ratios could yield
+different activation profiles. Previous reports have demonstrated that
+the relative concentrations of cannabinoids and terpenes critically in­
+fluence pharmacodynamic outcomes (Russo, 2011). Therefore, future
+investigations should systematically evaluate a range of CBGA-to-
+terpene ratios to better optimize efficacy and clarify the relationship
+between formulation composition and biological response. In addition,
+while the PEG–PLGA platform exhibited good formulation reproduc­
+ibility and colloidal stability in vitro, large-scale production, long-term
+storage, and in vivo performance require further validation. In partic­
+ular, evaluation under physiological pH, ionic strength, and serum
+protein conditions will be crucial to confirm translational relevance.
+Ultimately, preclinical in vivo studies should be prioritized to assess
+biodistribution, pharmacokinetics, and therapeutic efficacy in models
+relevant to TRPV1-mediated conditions such as pain, inflammation, and
+neurodegenerative diseases.
+5. Conclusion
+Our findings demonstrate that combining CBGA-loaded NPs with
+terpene-loaded NPs leads to a marked enhancement in fluorescence
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+10
+
+intensity, attributed to increased intracellular calcium ion influx,
+compared to the effects of each component individually. This
+enhancement is linked to TRPV1 channel activation, indicating the po­
+tential of these nanoformulations for pain management applications.
+Among the tested combinations, CBGA with NL exhibited the most
+pronounced effect, suggesting strong therapeutic promise. Although the
+CBGA/MC combination did not show a statistically significant
+enhancement compared to calculated additive values, it still produced
+elevated responses and should be further explored, given the known
+analgesic properties of myrcene. A key advantage of these combinations
+is the ability to achieve therapeutic efficacy with lower nanoparticle
+doses, which may reduce potential side effects. Further in vivo studies in
+animal models are necessary to validate these findings and confirm their
+translational potential in pain-related conditions.
+CRediT authorship contribution statement
+Mazen M. El-Hammadi: Writing – original draft, Visualization,
+Software, Methodology, Investigation, Formal analysis, Data curation,
+Conceptualization. Andrea L. Small-Howard: Writing – review &
+editing, Resources, Project administration, Methodology, Funding
+acquisition, Conceptualization. Mercedes Fern´andez-Ar´evalo: Writing
+– review & editing, Resources, Project administration, Conceptualiza­
+tion. Helen Turner: Writing – review & editing, Validation, Resources,
+Conceptualization. Lucía Martín-Banderas: Writing – original draft,
+Supervision, Software, Resources, Project administration, Methodology,
+Investigation, Funding acquisition, Formal analysis, Data curation,
+Conceptualization.
+Funding
+LMB thanks the financial support from VIIPPI-US-2024-2025. CIT­
+IUS-I.3. HT was supported by National Institutes of Health (NIH R15
+DA051749-01; NIH INBRE P20 GM103466).
+Declaration of competing interest
+The authors declare the following financial interests/personal re­
+lationships which may be considered as potential competing interests:
+Authors ALSH, LMB, MME, MFA hold a patent (Therapeutic nano­
+particles
+encapsulating
+terpenoids
+and/or
+cannabinoids;
+US2020155469A1; WO2020094908A1) related to this work. The
+remaining authors declare no competing interests.
+Acknowledgement
+The authors especially thank Biology, Microscopy and Spectropho­
+tometry Services from Centro de Investigations, Tecnología e Innovaci´on
+(CITIUS, Universidad de Seville) for their technical assistance.
+Data availability
+Data will be made available on request.
+References
+Russo, E.B., Marcu, J., 2017. Cannabis Pharmacology: The Usual Suspects and a Few
+Promising Leads. Adv Pharmacol 80, 67–134. https://doi.org/10.1016/bs.
+apha.2017.03.004.
+Bridgeman, M.B., Abazia, D.T., 2017. Medicinal Cannabis: History, Pharmacology, and
+Implications for the Acute Care Setting. P T 42 (3), 180–188.
+Jansen, C., Shimoda, L.M.N., Kawakami, J.K., et al., 2019. Myrcene and terpene
+regulation of TRPV1. Channels (austin) 13 (1), 344–366. https://doi.org/10.1080/
+19336950.2019.1654347.
+Starkus, J., Jansen, C., Shimoda, L.M.N., Stokes, A.J., Small-Howard, A.L., Turner, H.,
+2019. Diverse TRPV1 responses to cannabinoids. Channels (austin) 13 (1), 172–191.
+https://doi.org/10.1080/19336950.2019.1619436.
+De Petrocellis, L., Ligresti, A., Moriello, A.S., et al., 2011. Effects of cannabinoids and
+cannabinoid-enriched Cannabis extracts on TRP channels and endocannabinoid
+metabolic enzymes. Br J Pharmacol 163 (7), 1479–1494 https://doi.org/10.1111/
+j.1476-5381.2010.01166.x.
+Muller, C., Morales, P., Reggio, P.H., 2018. Cannabinoid Ligands Targeting TRP
+Channels. Front Mol Neurosci 11, 487. https://doi.org/10.3389/fnmol.2018.00487.
+Storozhuk, M.V., Zholos, A.V., 2018. TRP Channels as Novel Targets for Endogenous
+Ligands: Focus on Endocannabinoids and Nociceptive Signalling. Curr
+Neuropharmacol 16 (2), 137–150. https://doi.org/10.2174/
+1570159X15666170424120802.
+Faouzi, M., Wakano, C., Monteilh-Zoller, M.K., et al., 2022. Acidic Cannabinoids
+Suppress Proinflammatory Cytokine Release by Blocking Store-operated Calcium
+Entry. Function (oxf) 3 (4), zqac033. https://doi.org/10.1093/function/zqac033.
+Storozhuk, M.V., Moroz, O.F., Zholos, A.V., 2019. Multifunctional TRPV1 Ion Channels
+in Physiology and Pathology with Focus on the Brain. Vasculature, and Some
+Visceral Systems, Biomed Res Int 2019, 5806321. https://doi.org/10.1155/2019/
+5806321.
+De Petrocellis, L., Ligresti, A., Schiano Moriello, A., et al., 2013. Non-THC cannabinoids
+inhibit prostate carcinoma growth in vitro and in vivo: pro-apoptotic effects and
+underlying mechanisms. Br J Pharmacol 168 (1), 79–102 https://doi.org/10.1111/
+j.1476-5381.2012.02027.x.
+Anderson, L.L., Heblinski, M., Absalom, N.L., et al., 2021. Cannabigerolic acid, a major
+biosynthetic precursor molecule in cannabis, exhibits divergent effects on seizures in
+mouse models of epilepsy. Br J Pharmacol 178 (24), 4826–4841. https://doi.org/
+10.1111/bph.15661.
+M.A. ElSohly; M.M. Radwan; W. Gul; S. Chandra; A. Galal. Phytochemistry of Cannabis
+sativa L. In Phytocannabinoids: Unraveling the Complex Chemistry and Pharmacology of
+Cannabis sativa, Kinghorn, A.D., Falk, H., Gibbons, S., Kobayashi, J.i., Eds.; Springer
+International Publishing: Cham, 2017; pp. 1-36.
+Calapai, F., Cardia, L., Esposito, E., et al., 2022. Pharmacological Aspects and Biological
+Effects of Cannabigerol and Its Synthetic Derivatives. Evid Based Complement
+Alternat Med 2022, 3336516. https://doi.org/10.1155/2022/3336516.
+Ruhaak, L.R., Felth, J., Karlsson, P.C., Rafter, J.J., Verpoorte, R., Bohlin, L., 2011.
+Evaluation of the cyclooxygenase inhibiting effects of six major cannabinoids
+isolated from Cannabis sativa. Biol Pharm Bull 34 (5), 774–778. https://doi.org/
+10.1248/bpb.34.774.
+Suzuki, S., Fleig, A., Penner, R., 2023. CBGA ameliorates inflammation and fibrosis in
+nephropathy. Sci Rep 13 (1), 6341. https://doi.org/10.1038/s41598-023-33507-2.
+Zirpel, B., Stehle, F., Kayser, O., 2015. Production of Delta9-tetrahydrocannabinolic acid
+from cannabigerolic acid by whole cells of Pichia (Komagataella) pastoris expressing
+Delta9-tetrahydrocannabinolic acid synthase from Cannabis sativa L. Biotechnol Lett
+37 (9), 1869–1875. https://doi.org/10.1007/s10529-015-1853-x.
+Stella, B., Baratta, F., Della Pepa, C., Arpicco, S., Gastaldi, D., Dosio, F., 2021.
+Cannabinoid Formulations and Delivery Systems: Current and Future Options to
+Treat Pain. Drugs 81, 1513–1557 https://doi.org/10.1007/s40265-021-01579-x.
+Lazzarotto Rebelatto, E.R., Rauber, G.S., Caon, T., 2023. An update of nano-based drug
+delivery systems for cannabinoids: Biopharmaceutical aspects & therapeutic
+applications. Int J Pharm 635, 122727. https://doi.org/10.1016/j.
+ijpharm.2023.122727.
+Suzuki, S., Wakano, C., Monteilh-Zoller, M.K., Cullen, A.J., Fleig, A., Penner, R., 2024.
+Cannabigerolic Acid (CBGA) Inhibits the TRPM7 Ion Channel Through its Kinase
+Domain. Function (oxf) 5 (1), zqad069. https://doi.org/10.1093/function/zqad069.
+Anand, U., Pacchetti, B., Anand, P., Sodergren, M.H., 2021. Cannabis-based medicines
+and pain: a review of potential synergistic and entourage effects. Pain Manag 11 (4),
+395–403. https://doi.org/10.2217/pmt-2020-0110.
+Russo, E.B., 2011. Taming THC: potential cannabis synergy and phytocannabinoid-
+terpenoid entourage effects. Br J Pharmacol 163 (7), 1344–1364 https://doi.org/
+10.1111/j.1476-5381.2011.01238.x.
+Ferber, S.G., Namdar, D., Hen-Shoval, D., et al., 2020. The “Entourage Effect”: Terpenes
+Coupled with Cannabinoids for the Treatment of Mood Disorders and Anxiety
+Disorders. Curr Neuropharmacol 18 (2), 87–96. https://doi.org/10.2174/
+1570159X17666190903103923.
+Christensen, C., Rose, M., Cornett, C., Alleso, M., 2023. Decoding the Postulated
+Entourage Effect of Medicinal Cannabis: What It Is and What It Isn’t. Biomedicines
+11 (8). https://doi.org/10.3390/biomedicines11082323.
+Small-Howard, A., Martin-Banderas, L.M., El-Hammadi, M.M., Fernandez-Arevalo, M.F.,
+2020. Therapeutic nanoparticles encapsulating terpenoids and/or cannabinoids.
+WO2020094908A1.
+El-Hammadi, M.M., Small-Howard, A.L., Fern´andez-Ar´evalo, M., Martín-Banderas, L.,
+2021. Development of enhanced drug delivery vehicles for three cannabis-based
+terpenes using poly(lactic-co-glycolic acid) based nanoparticles. Industrial Crops and
+Products 164, 113345. https://doi.org/10.1016/j.indcrop.2021.113345.
+El-Hammadi, M.M., Small-Howard, A.L., Jansen, C., Fernandez-Arevalo, M., Turner, H.,
+Martin-Banderas, L., 2022. Potential use for chronic pain: Poly(Ethylene Glycol)-
+Poly(Lactic-Co-Glycolic Acid) nanoparticles enhance the effects of Cannabis-Based
+terpenes on calcium influx in TRPV1-Expressing cells. Int J Pharm 616, 121524.
+https://doi.org/10.1016/j.ijpharm.2022.121524.
+El-Hammadi, M., Arias, J.L., 2015. Advanced engineering approaches in the
+development of PLGA-based nanomedicines. In: Aliofkhazraei, M. (Ed.), Handbook of
+Nanoparticles. Springer International Publishing, Switzerland, pp. 1009–1039.
+El-Hammadi, M.M., Arias, J.L., 2022. Recent Advances in the Surface Functionalization
+of PLGA-Based Nanomedicines. Nanomaterials (Basel) 12 (3), 354. https://doi.org/
+10.3390/nano12030354.
+S. Kumar; S. Singh; S.S. Quadir; et al. Chapter 13 - Polymeric (PLGA-based)
+nanocomposites for application in drug delivery: Current state of the art and
+forthcoming perspectives. In Bioresorbable Polymers and their Composites, Verma, D.,
+Okhawilai, M., Goh, K.L., Ramakrishna, S., Pasbakhsh, P., Sharma, M., Eds.;
+Woodhead Publishing: 2024; pp. 277-324.
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+11
+
+Petzke, F., Tolle, T., Fitzcharles, M.A., Hauser, W., 2022. Cannabis-Based Medicines and
+Medical Cannabis for Chronic Neuropathic Pain. CNS Drugs 36 (1), 31–44. https://
+doi.org/10.1007/s40263-021-00879-w.
+Leinen, Z.J., Mohan, R., Premadasa, L.S., Acharya, A., Mohan, M., Byrareddy, S.N., 2023.
+Therapeutic Potential of Cannabis: A Comprehensive Review of Current and Future
+Applications. Biomedicines 11 (10). https://doi.org/10.3390/
+biomedicines11102630.
+Hoch, E., Volkow, N.D., Friemel, C.M., Lorenzetti, V., Freeman, T.P., Hall, W., 2024.
+Cannabis, cannabinoids and health: a review of evidence on risks and medical
+benefits. Eur Arch Psychiatry Clin Neurosci. https://doi.org/10.1007/s00406-024-
+01880-2.
+Duran-Lobato, M., Munoz-Rubio, I., Holgado, M.A., Alvarez-Fuentes, J., Fernandez-
+Arevalo, M., Martin-Banderas, L., 2014. Enhanced cellular uptake and
+biodistribution of a synthetic cannabinoid loaded in surface-modified poly(lactic-co-
+glycolic acid) nanoparticles. J Biomed Nanotechnol 10 (6), 1068–1079. https://doi.
+org/10.1166/jbn.2014.1806.
+Berrocoso, E., Rey-Brea, R., Fernandez-Arevalo, M., Mico, J.A., Martin-Banderas, L.,
+2017. Single oral dose of cannabinoid derivate loaded PLGA nanocarriers relieves
+neuropathic pain for eleven days. Nanomedicine 13 (8), 2623–2632. https://doi.
+org/10.1016/j.nano.2017.07.010.
+Alvarez-Fuentes, J., Martin-Banderas, L., Munoz-Rubio, I., Holgado, M.A., Fernandez-
+Arevalo, M., 2012. Development and validation of an RP-HPLC method for CB13
+evaluation in several PLGA nanoparticle systems. ScientificWorldJournal 2012,
+737526. https://doi.org/10.1100/2012/737526.
+Martin-Banderas, L., Munoz-Rubio, I., Alvarez-Fuentes, J., et al., 2014. Engineering of
+Delta9-tetrahydrocannabinol delivery systems based on surface modified-PLGA
+nanoplatforms. Colloids Surf B Biointerfaces 123, 114–122. https://doi.org/
+10.1016/j.colsurfb.2014.09.002.
+Rafiei, P., Haddadi, A., 2017. Docetaxel-loaded PLGA and PLGA-PEG nanoparticles for
+intravenous application: pharmacokinetics and biodistribution profile. Int J
+Nanomedicine 12, 935–947. https://doi.org/10.2147/IJN.S121881.
+Samkange, T., D’Souza, S., Obikeze, K., Dube, A., 2019. Influence of PEGylation on PLGA
+nanoparticle properties, hydrophobic drug release and interactions with human
+serum albumin. J Pharm Pharmacol 71 (10), 1497–1507. https://doi.org/10.1111/
+jphp.13147.
+L´opez-Viota, M., Martín-Pozo, L., Parera, B., et al., 2023. Varying coat properties of
+chitosan-surface modified polya (lactic-co-glycolic acid) nanoparticles for controlled
+delivery of 5-fluorouracil. Journal of Drug Delivery Science and Technology 89,
+104982. https://doi.org/10.1016/j.jddst.2023.104982.
+Gratton, S.E., Ropp, P.A., Pohlhaus, P.D., et al., 2008. The effect of particle design on
+cellular internalization pathways. Proc Natl Acad Sci U S A 105 (33), 11613–11618.
+https://doi.org/10.1073/pnas.0801763105.
+Petithory, T., Pieuchot, L., Josien, L., Ponche, A., Anselme, K., Vonna, L., 2021. Size-
+Dependent Internalization Efficiency of Macrophages from Adsorbed Nanoparticle-
+Based Monolayers. Nanomaterials (basel) 11 (8). https://doi.org/10.3390/
+nano11081963.
+Pamujula, S., Hazari, S., Bolden, G., et al., 2012. Cellular delivery of PEGylated PLGA
+nanoparticles. J Pharm Pharmacol 64 (1), 61–67. https://doi.org/10.1111/j.2042-
+7158.2011.01376.x.
+Fernandes, C., Martins, C., Fonseca, A., et al., 2018. PEGylated PLGA Nanoparticles As a
+Smart Carrier to Increase the Cellular Uptake of a Coumarin-Based Monoamine
+Oxidase B Inhibitor. ACS Appl Mater Interfaces 10 (46), 39557–39569. https://doi.
+org/10.1021/acsami.8b17224.
+Lopez-Mitjavila, J.J., Palma-Florez, S., Lagunas, A., et al., 2025. PEGylated PLGA
+Nanoparticles Prepared from Nano-Emulsion Templates as Versatile Platforms to
+Cross Blood-Brain Barrier Models. Journal of Drug Delivery Science and Technology
+107057. https://doi.org/10.1016/j.jddst.2025.107057.
+Suk, J.S., Xu, Q., Kim, N., Hanes, J., Ensign, L.M., 2016. PEGylation as a strategy for
+improving nanoparticle-based drug and gene delivery. Adv Drug Deliv Rev 99 (Pt A),
+28–51. https://doi.org/10.1016/j.addr.2015.09.012.
+Hernandez-Morales, M., Shang, T., Chen, J., Han, V., Liu, C., 2020. Lipid Oxidation
+Induced by RF Waves and Mediated by Ferritin Iron Causes Activation of Ferritin-
+Tagged Ion Channels. Cell Rep 30 (10), 3250–3260. https://doi.org/10.1016/j.
+celrep.2020.02.070 e3257.
+Jancso, G., Dux, M., Oszlacs, O., Santha, P., 2008. Activation of the transient receptor
+potential vanilloid-1 (TRPV1) channel opens the gate for pain relief. Br J Pharmacol
+155 (8), 1139–1141. https://doi.org/10.1038/bjp.2008.375.
+Balemans, D., Boeckxstaens, G.E., Talavera, K., Wouters, M.M., 2017. Transient receptor
+potential ion channel function in sensory transduction and cellular signaling
+cascades underlying visceral hypersensitivity. Am J Physiol Gastrointest Liver
+Physiol 312 (6), G635–G648. https://doi.org/10.1152/ajpgi.00401.2016.
+Li, T., Jiang, S., Zhang, Y., et al., 2023. Nanoparticle-mediated TRPV1 channel blockade
+amplifies cancer thermo-immunotherapy via heat shock factor 1 modulation. Nat
+Commun 14 (1), 2498. https://doi.org/10.1038/s41467-023-38128-x.
+Utsumi, S., Nakamura, T., Obata, Y., Ohta, N., Takayama, K., 2016. Effect of Nerolidol
+and/or Levulinic Acid on the Thermotropic Behavior of Lipid Lamellar Structures in
+the Stratum Corneum. Chem Pharm Bull (tokyo) 64 (12), 1692–1697. https://doi.
+org/10.1248/cpb.c16-00515.
+Alonso, L., Fernandes, K.S., Mendanha, S.A., et al., 2019. In vitro antileishmanial and
+cytotoxic activities of nerolidol are associated with changes in plasma membrane
+dynamics. Biochim Biophys Acta Biomembr 1861 (6), 1049–1056. https://doi.org/
+10.1016/j.bbamem.2019.03.006.
+Baron, E.P., Lucas, P., Eades, J., Hogue, O., 2018. Patterns of medicinal cannabis use,
+strain analysis, and substitution effect among patients with migraine, headache,
+arthritis, and chronic pain in a medicinal cannabis cohort. J Headache Pain 19 (1),
+37. https://doi.org/10.1186/s10194-018-0862-2.
+LaVigne, J.E., Hecksel, R., Keresztes, A., Streicher, J.M., 2021. Cannabis sativa terpenes
+are cannabimimetic and selectively enhance cannabinoid activity. Sci Rep 11 (1),
+8232. https://doi.org/10.1038/s41598-021-87740-8.
+Lewis, M.A., Russo, E.B., Smith, K.M., 2018. Pharmacological Foundations of Cannabis
+Chemovars. Planta Med 84 (4), 225–233. https://doi.org/10.1055/s-0043-122240.
+Santiago, M., Sachdev, S., Arnold, J.C., McGregor, I.S., Connor, M., 2019. Absence of
+Entourage: Terpenoids Commonly Found in Cannabis sativa Do Not Modulate the
+Functional Activity of Delta(9)-THC at Human CB(1) and CB(2) Receptors. Cannabis
+Cannabinoid Res 4 (3), 165–176. https://doi.org/10.1089/can.2019.0016.
+Finlay, D.B., Sircombe, K.J., Nimick, M., Jones, C., Glass, M., 2020. Terpenoids From
+Cannabis Do Not Mediate an Entourage Effect by Acting at Cannabinoid Receptors.
+Front Pharmacol 11, 359. https://doi.org/10.3389/fphar.2020.00359.
+Zagzoog, A., Cabecinha, A., Abramovici, H., Laprairie, R.B., 2022. Modulation of type 1
+cannabinoid receptor activity by cannabinoid by-products from Cannabis sativa and
+non-cannabis phytomolecules. Front Pharmacol 13, 956030. https://doi.org/
+10.3389/fphar.2022.956030.
+Al-Khazaleh, A.K., Zhou, X., Bhuyan, D.J., et al., 2024. The Neurotherapeutic Arsenal in
+Cannabis sativa: Insights into Anti-Neuroinflammatory and Neuroprotective Activity
+and Potential Entourage Effects. Molecules 29 (2). https://doi.org/10.3390/
+molecules29020410.
+Tomko, A.M., Whynot, E.G., O’Leary, L.F., Dupre, D.J., 2022. Anti-cancer potential of
+cannabis terpenes in a Taxol-resistant model of breast cancer. Can J Physiol
+Pharmacol 100 (8), 806–817. https://doi.org/10.1139/cjpp-2021-0792.
+McDougall, J.J., McKenna, M.K., 2022. Anti-Inflammatory and Analgesic Properties of
+the Cannabis Terpene Myrcene in Rat Adjuvant Monoarthritis. Int J Mol Sci 23 (14).
+https://doi.org/10.3390/ijms23147891.
+M.M. El-Hammadi et al.
+International Journal of Pharmaceutics 679 (2025) 125766
+12

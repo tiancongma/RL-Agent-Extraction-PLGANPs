@@ -1,0 +1,1187 @@
+International Journal of Pharmaceutics 636 (2023) 122802
+Available online 8 March 2023
+0378-5173/© 2023 Published by Elsevier B.V.
+A multiple controlled-release hydrophilicity minocycline hydrochloride
+delivery system for the efficient treatment of periodontitis
+Jiansong Zhao a,1, Ying Wei a,1, Jian Xiong a, Hongbing Liu a, Gaoshuai Lv a, Jingyi Zhao a,
+Haibing He a, Jingxin Gou a, Tian Yin b, Xing Tang a, Yu Zhang a,*
+a Department of Pharmaceutics, School of Pharmacy, Shenyang Pharmaceutical University, Shenyang 110016, Liaoning, China
+b School of Functional Food and Wine, Shenyang Pharmaceutical University, Shenyang 110016, Liaoning, China
+A R T I C L E  I N F O
+Keywords:
+Periodontitis
+Minocycline hydrochloride
+Nanoparticles
+Controlled release
+Thermosensitive gels
+A B S T R A C T
+The complexity of periodontitis, including the complex formation mechanisms and the complex periodontium
+physiological environment, as well as the complex association with multiple complications, often results in poor
+therapy effects. Herein, we aimed to design a nanosystem with a controlled release of minocycline hydrochloride
+(MH) and good retention to effectively treat periodontitis by inhibiting inflammation and repairing the alveolar
+bone. Firstly, insoluble ion-pairing (IIP) complexes were constructed to improve the encapsulation efficiency of
+hydrophilic MH in PLGA nanoparticles. Then, a nanogenerator was constructed and combined with a double
+emulsion method to encapsulate the complexes into PLGA nanoparticles (MH-NPs). The average particle size of
+MH-NPs was about 100 nm as observed by AFM and TEM, and the drug loading and encapsulation efficiency
+were 9.59% and 95.58%, respectively. Finally, a multifunctional system (MH-NPs-in-gels) was prepared by
+dispersing MH-NPs into thermosensitive gels, which could continue to release drug for 21 days in vitro. And the
+release mechanism showed that this controlled release behavior for MH was influenced by the insoluble ion-
+pairing complex, PLGA nanoparticles, and gels. In addition, the periodontitis rat model was established to
+investigate the pharmacodynamic effects. After 4 weeks of treatment, changes in the alveolar bone were assessed
+by Micro-CT (BV/TV: 70.88%; BMD: 0.97 g/cm3; TB.Th: 0.14 mm; Tb.N: 6.39 mm−1; Tb.Sp: 0.07 mm). The
+mechanism of MH-NPs-in-gels in vivo was clarified by the analysis of pharmacodynamic results, which showed
+that insoluble ion-pairing complexes with the aid of PLGA nanoparticles and gels achieved significant anti-
+inflammatory effects and bone repair capabilities. In conclusion, the multiple controlled-release hydrophilicity
+MH delivery system would have good prospects for the effective treatment of periodontitis.
+1. Introduction
+Periodontitis is a common chronic oral disease caused by complex
+interplays between plaque biofilm and the immune host response,
+leading to complex symptoms such as the destruction of periodontal
+collagen, the formation of periodontal pockets, as well as the progressive
+loss of periodontal ligaments and alveolar bone. (Greenstein, 2006;
+Munasur et al., 2020; Tonetti et al., 2018) It can affect up to 90% of the
+population worldwide (Nasra et al., 2017) and also may be associated
+with the risk of some systemic diseases such as heart attacks, strokes,
+diabetes, respiratory disorders, and poor pregnancy outcomes. (Hajish­
+engallis, 2015; Offenbacher and Beck, 2014) Currently, scaling and root
+planing (SRP) to mechanically remove bacterial biofilms and combined
+application of local drug delivery systems (LDDS) is the standard ther­
+apy for periodontitis. (Apatzidou and Kinane, 2010; Jhinger et al., 2015)
+However, the complex physiological environment of the oral cavity
+causes the majority of drugs in LDDS to be swallowed with food or
+washed away by saliva (Liu et al., 2020) after administration into the
+narrow, wet, and dynamic gingival sulcus and periodontal pockets.
+Therefore, frequent dosing is often required to maintain effective drug
+concentrations in periodontal pockets. But this may further irritate
+periodontal tissue, exacerbate the condition, lead to greater toxicities
+and reduce patient compliance. In addition, the complex pathogenesis of
+periodontitis causes considerable variation in disease phenotype and
+treatment response between patients. (Guan et al., 2020) The extensive
+complexity of periodontitis often leads to a severe reduction in the
+* Corresponding author.
+E-mail address: zhangyu@syphu.edu.cn (Y. Zhang).
+1 These authors made equal contributions to this work.
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+https://doi.org/10.1016/j.ijpharm.2023.122802
+Received 29 November 2022; Received in revised form 4 February 2023; Accepted 2 March 2023
+
+International Journal of Pharmaceutics 636 (2023) 122802
+2
+therapeutic effects of LDDS that is widely used in clinical, accompanied
+by the continued development of periodontitis and even tooth loss.
+(Grover et al., 2016).
+Considering the complexity of periodontitis, we hypothesize that
+effective LDDS for periodontitis requires the following characteristics:
+firstly, both anti-inflammation and bone regeneration should be ach­
+ieved to deal with the complex disease phenotype of periodontitis.
+Secondly, a controlled release system should be available to meet the
+treatment needs of patients with different disease phenotypes. Finally, it
+should also be easy to administer and had good retention to reduce drug
+dose and dosing frequency in the complex physiological environment of
+the periodontium.
+Minocycline hydrochloride (MH) is considered a favorable drug for
+the treatment of periodontitis due to its anti-collagenase properties and
+its ability to reduce soft tissue destruction and bone resorption. (Heitz-
+Mayfield, 2009; Pinon-Segundo et al., 2005) Polymeric nanoparticles
+have been introduced into periodontal therapy, which could apply
+active therapeutic agents to the periodontal pocket areas below the gum
+line where other delivery systems may not reach owing to their small
+size. (Kong et al., 2006) Therefore, MH-loaded polymer nanoparticles
+may be effective in combating the complexities of periodontitis to ach­
+ieve efficient treatment of periodontitis. Minocycline loaded polymer
+nanoparticles were shown that they could continuously release mino­
+cycline for 12 days in vitro and significantly decrease symptoms of
+periodontitis by penetrating through the junctional epithelium. (Yao
+et al., 2014b).
+PLGA is one of the most biocompatible and biodegradable polymers,
+which can be designed to give a sustained release over days or even
+weeks after administration. It has been widely studied for preparing
+drug-loaded nanoparticles. (Dinarvand et al., 2011; Yousefpour et al.,
+2011) Nevertheless, it is a great challenge to prepare the MH-loaded
+PLGA nanoparticles due to the high hydrophilicity of MH and its rapid
+partitioning to the aqueous phase. (Zhang et al., 2015) Some studies
+increase the hydrophobicity of MH thereby improving entrapment effi­
+ciency in polymeric formulations by insoluble ion-pairing (IIP)
+complexation, which involves the stoichiometric replacement of MH
+polar counter ions with ionic detergents of similar charge and formation
+of a reversible complex. (Vaishya et al., 2015) However, it is difficult to
+control the complexation process of these ion-pair complexes, leading to
+the formation of micron or even larger particles. (Wu et al., 2018; Zhang
+et al., 2015) Some ion-pairing materials may result in complexes that are
+still highly hydrophilic, which limits their application in the periodon­
+titis treatment. More importantly, no IIP complex of minocycline has
+been designed for pharmacodynamic purposes, and there is no proof of
+their efficacy in treating periodontitis. (Holmkvist et al., 2016; Wu et al.,
+2018; Zhang et al., 2015).
+In this study, we decreased the hydrophilicity of MH with an IIP
+complex of MH, calcium ions (Ca2+), and dextran sulfate (DS). Notably,
+a ‘nanogenerator’ was constructed and combined with the double
+emulsion method to control the complexation process of the IIP complex
+Fig. 1. (A) Schematic representation for the preparation process of MH-NPs (B) Schematic representation for the preparation process of MH-NPs-in-gels (C)
+Schematic representation for the process of MH-NPs-in-gels treatment in rats with periodontitis.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+3
+for efficiently encapsulating the complex in PLGA nanoparticles (MH-
+NPs). Subsequently, MH-NPs were mixed into a thermosensitive gel,
+which was obtained by the temperature-sensitive mixture of PLGA-PEG-
+PLGA and PCLA-PEG-PCLA, to prepare MH-NPs-in-gels for good peri­
+odontal pockets retention. This LDDS was designed to overcome the
+complexity of periodontitis, thereby achieving effective therapy. We
+investigated the key factors for controlling the entrapment efficiency
+and the particle size of the MH-NPs and the in vitro release and in vivo
+mechanism of MH-NPs-in-gels, as well as their anti-inflammatory and
+bone repair capacity in periodontitis rats to examine their potential for
+efficient periodontitis therapy. (Fig. 1).
+2. Materials and methods
+2.1. Materials
+Minocycline hydrochloride and sodium cholate were purchased from
+Saen Chemical Technology Co., Ltd. (Shanghai, China), CaCl2 was pur­
+chased from Tianjin Yongda Chemical Reagent Co., Ltd. (Tianjin,
+China), PLGA (50:50, 10 kDa) was purchased from Jinan Daigang
+Biomaterial Co., Ltd. (Shandong, China), Sodium dextran sulfate salt
+was purchased from Macklin Biochemical Technology Co., Ltd.
+(Shanghai, China), PLGA-PEG-PLGA (75:25, 1800–1500-1800) and
+PCLA-PEG-PCLA (50:50, 1800–1500-1800) were purchased from Lyon
+Chemical Technology Co., Ltd. (Shanghai, China). Dichloromethane,
+methanol, and acetonitrile were purchased from Concord Technology
+Co., Ltd., which were of chromatographic purity (Tianjin, China), and all
+other reagents were of analytical purity.
+2.2. Preparation and in vitro evaluation of MH-NPs and MH-NPs-in-gels
+2.2.1. Preparation of MH-NPs
+Approximately 12.0 mg MH was dissolved in 1.0 mL distilled water
+as aqueous phase I. Then, 15.0 mg sodium dextran sulfate (DS) and 5.0
+mg CaCl2 were dissolved in 1 mL distilled water as aqueous phase II.
+Next, 60.0 mg PLGA (GA:LA = 50:50, 10 kDa) was dissolved in 4.0 mL
+dichloromethane and was equally divided into two parts to obtain two
+oil phases. Aqueous phases I and II were respectively dropped into two
+oil phases in an ice-water bath to obtain two W/O primary emulsions by
+the ultrasonic probe (SCIENTZ-IID, Scientz Biotechnology Co., Ltd,
+Ningbo, China) at 285 w for 2 min. Two W/O primary emulsions were
+mixed and sonicated with an ultrasonic probe at 285 w for 2 min to
+obtain an ultimate emulsion, which was then dropped into 20.0 mL of
+1% sodium cholate solution and sonicated with an ultrasonic probe at
+285 w for 5 min to prepare the W/O/W double emulsion. Finally, The
+MH-NPs were obtained after removing the organic solvent in double
+emulsion by rotational evaporation (EYELA-N-1300S, Tokyo Rikakikai
+Co., Ltd, Japan). The MH-NPs powders were obtained by freeze-drying
+after mixing MH-NPs with sucrose and lactose.
+2.2.2. Characterization of MH-NPs
+2.2.2.1. Physical characterization of MH-NPs. Zeta potential (ZP) anal­
+ysis, particle size (PS), and polydispersity index (PDI) of the MH-NPs
+were determined by dynamic light scattering (DLS) technique using a
+Malvern Particle Size Analyzer (ZEN 3600, Zetasizer Nano ZS 90, Mal­
+vern, UK) at 25 ◦C. The samples for measurement were prepared by
+diluting MH-NPs in deionized water and tested using a standard pro­
+cedure by the manual guidelines provided using Malvern Instruments,
+UK. Three determinations were carried out for each sample.
+2.2.2.2. Morphological features of MH-NPs. The MH-NPs and their
+freeze-dried powders were respectively covered on the copper mesh and
+stained with 1% phosphotungstic acid for 1 min. After drying
+completely, the morphology of the MH-NPs was observed by TEM
+(JEM1200EX, Jeol, Japan). Furthermore, the MH-NPs powders were
+covered on the mica sheet and the surface morphology was observed in
+tapping mode with AFM (Cypher ES, Asylum Research, UK).
+2.2.2.3. Determination of drug loading and entrapment efficiency of MH-
+NPs. Centrifugal ultrafiltration was used to determine the drug loading
+(DL) and entrapment efficiency (EE) of MH-NPs. (1) Determination of
+the total drugs concentration: approximately 20.0 mg of MH-NPs were
+dispersed in 1.0 mL of distilled water, and then they were dissolved to
+25 mL by acetonitrile and centrifuged at 15000 rpm for 10 min. The
+supernatants were analyzed at a wavelength of 350 nm using a UV–Vis
+spectrophotometer. (2) Determination of the free MH concentration:
+approximately 20.0 mg of MH-NPs were dispersed in 1.0 mL of distilled
+water and centrifuged at 3000 rpm for 10 min in a 100 kDa ultrafiltra­
+tion tube, and the obtained filtrates were dissolved to 25 mL by aceto­
+nitrile and further centrifuged at 15000 rpm for 10 min, the
+supernatants were analyzed at a wavelength of 350 nm using a UV–Vis
+spectrophotometer. Standard solution of MH was prepared in acetoni­
+trile ranging from 4.0 to 30.0 μg/mL (A = 0.029C-0.0152 (R2 = 0.999)).
+The total weight of MH in the MH-NPs and free wight of MH was then
+calculated by the formula above. All experiments were performed in
+triplicate. The EE and DL of MH were calculated using the following
+equations, respectively.
+DL (%) = (total weight of MH in the MH −NPs/total weight of MH −NPs)
+× 100%
+(1)
+EE (%) = ((1 −free weight of MH)/total weight of MH in the MH −NPs)
+× 100%
+(2)
+2.2.3. Preparation and characterization of MH-NPs-in-gels
+PLGA-PEG-PLGA and PCLA-PEG-PCLA were dissolved in deionized
+water and stirred at 4 ◦C until the polymers were dissolved completely
+and then the blank hydrogels were obtained. The MH-in-gels and MH-
+NPs-in-gels were prepared by adding MH and MH-NPs powders into
+the blank hydrogel, respectively. The ratio of PLGA-PEG-PLGA and
+PCLA-PEG-PCLA in Gel-1–Gel-4 was 100:0, 80:20, 50:50, and 40:60 (w/
+w), respectively. The rheological properties of MH-NPs-in-gels,
+including storage and loss moduli (G′ and G′′), were studied by a
+rheometer (TA Instruments, Asse, Belgium) with the temperature sweep
+protocol from 25 ◦C to 45 ◦C. The strain% was fixed at 1% and the
+frequency was set at 1 Hz at a constant heating rate of 1 ◦C/ min. The sol
+−
+gel transition temperature (Tgel) was determined by the crossover
+point of G′ and G′′ in a modulus versus temperature plot. The gel win­
+dows were measured using the tube inversion method with temperature
+increments of 2 ◦C per step. (Lin et al., 2013) After equilibration at 4 ◦C
+for 24 h, the vials with different concentrations of samples were
+immersed in a water bath at a constant designated temperature for 15
+min. The gelation temperature was characterized by the formation of a
+firm gel that remained intact when the tube was inverted by 45◦. As the
+temperature increased, the solution underwent a sol–gel-precipitate
+transition. The blank gel and MH-NPs-in-gels were then recorded with
+TEM to observe the internal structure.
+2.2.4. In vitro MH release from MH-NPs, MH-in-gels, and MH-NPs-in-gels
+The release of MH from MH-NPs, MH-in-gels, and MH-NPs-in-gels
+was investigated by the dialysis method (Yao et al., 2014b; Yao et al.,
+2015). Firstly, 1.0 mL of MH-NPs, MH-in-gels, and MH-NPs-in-gels were
+respectively placed into a dialysis bag (molecular weight cut off 14000
+Da). Bags were then suspended in 5.0 mL of phosphate buffer solution
+(0.01 M, pH 7.4, preheated at 37 ◦C ± 0.5 ◦C) in a shaking water bath at
+37 ◦C ± 0.5 ◦C and 100 ± 5 rpm. At predetermined time intervals, the
+whole of the release medium was taken and then replaced with 5.0 mL of
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+4
+fresh phosphate buffer solution. The concentration of MH in the dialy­
+sate was determined spectrophotometrically at λmax 350 nm. All ex­
+periments were done in triplicate. The cumulative percentage of drug
+release was calculated using the following equations:
+the cumulative amount of drug release(%) = V ×
+∑n
+m=1Cm
+/
+W × 100%
+(3)
+In which: Cm was the concentration of drug in supernatant for each
+determination (mg/mL).
+V was the volume of each withdrawal sample (mL).
+W was the total amount of MH additions (mg).
+To investigate the drug release mechanism, the release data were
+fitted to different release kinetics models. In addition, we further
+investigated the release mechanism of MH-NPs-in-gels by observing
+their morphology at different release time points by TEM. Specifically, 1
+mL of MH-NPs-in-gels was first added to the bottom of a 20 mL EP tube.
+After gelation had occurred, 5 mL of release medium was directly added
+onto the surface of gels at a constant temperature of 37 ◦C without
+shaking. On 2 and 4 days of release, the entire release medium was
+removed and replenished with an equal volume of fresh release medium.
+The release medium was observed using TEM.
+2.2.5. Release kinetics
+The release of MH from MH-NPs, MH-in-gels, and MH-NPs-in-gels
+were fitted with the zero-order kinetic model (Equation (4)), first-
+order kinetic model (Equation (5)), Higuchi kinetic model (Equation
+(6)), and Ritger-Peppas kinetic model (Equation (7)). Origin 2021 soft­
+ware (OriginLab, Massachusetts, USA) was used for data analysis.
+C = K0t
+(4)
+Log C = Log C0 −K1t/2.303
+(5)
+C = KHt1/2
+(6)
+Mt/M = Kmtn
+(7)
+Where: C is the % cumulative MH released at time “t”, C0 is the initial
+concentration of drug, K0 is zero order release constant, K1 is the first
+order release constant, KH is the Higuchi constant, Mt is the mass of MH
+released at time t, M is the total mass of MH in dosage form, Km is the
+Korsmeyer-Peppas constant and n is release exponent. The Peppas model
+has been widely used in many studies for the analysis of the drug release
+kinetics in polymeric systems. n ≤0.43 corresponds to a Fickian diffu­
+sion mechanism, 0.43 < n < 0.89 corresponds to non-Fickian transport,
+n = 0.89 corresponds to Case II (zero-order release) transport, and n
+greater than 0.89 corresponds to super case II transport. (Siepmann and
+Siepmann, 2008; Siepmann et al., 2006).
+2.2.6. Cell culture and cell viability
+RAW 264.7 cells, a mouse monocyte/macrophage cell line, were
+bought from Suzhou Meilun Biotechnology Co., Ltd. (Suzhou, China),
+which were cultured in DMEM containing 10% fetal bovine serum as
+well as 1% penicillin and streptomycin under a humidified atmosphere
+of 5% CO2 at 37 ◦C. The cytotoxicity of MH, PLGA, and MH-Ms was
+assessed by cell counting kit-8 (CCK-8) on RAW 264.7. Briefly, cells were
+seeded into a 96-well plate at a density of 1 × 104 cells per well for 24 h,
+and then the cell culture medium was replaced with 100 μL of culture
+medium containing MH solution, PLGA, and MH-NPs at various con­
+centrations (1–500 μg/mL) and blank culture medium as the control.
+The cells were cultured for 24 h at 37 ◦C with 5% CO2, then 10 μL of
+CCK-8 solution was added to each well and incubated for an additional
+4 h. Subsequently, the absorbance in each well was measured at 450 nm
+with a microplate reader (LabServ® K3, USA) after shaking. Cell
+viability was calculated with the equation below:
+cell viability (%) = (As −Ab/Ac −Ab) × 100%
+(8)
+Where: As is the absorbance value of the sample well, Ac is the
+absorbance value of the control well and Ab is the absorbance value of
+the blank well.
+2.3. In vivo pharmacodynamics studies
+2.3.1. Animals
+Forty male Sprague Dawley (SD) rats (6–8 weeks old, 190 ± 10 g)
+were used in the experiments, which were provided by Liaoning
+Changsheng Biotech Co., Ltd. (Benxi, China). All animal experiments
+followed the Guiding Principles of Shenyang Pharmaceutical University
+and were approved by the ethical committee of Shenyang Pharmaceu­
+tical University. (Ethical No.: CSE20201113).
+2.3.2. Experimental design
+High glucose feeding (Keyes and Jordan, 1964) and silk ligation of
+animal teeth (Srivastava et al., 2016) were used to induce periodontitis
+in this study. All SD rats were kept for one week for adjustable feeding
+before the experiment and had free access to food and water. Forty SD
+rats were randomly divided into five groups (n = 8): A (healthy), B
+(control), C (MH-in-gels), D (MH-NPs), and E (MH-NPs-in-gels). Except
+for group A, the remaining 4 groups of 32 SD rats were used to construct
+periodontitis models. The 2% inhaled isoflurane was used to anesthetize
+the experimental rats and ventilated using a rodent mechanical venti­
+lator, and then a 0.2-mm-diameter orthodontic steel wire was ligated
+around the left maxillary first molar for 4 weeks. During this period, the
+32 rats were fed with high glucose feeding, and the ligatures were
+checked daily after the application. If the ligature disappears, a new
+ligature will be placed. On the 4th week, the 100 μL of MH-in-gels, MH-
+NPs, and MH-NPs-in-gels (containing 1.0 mg MH) were injected into the
+periodontal pockets of the SD rats in groups C–E once a week for 4
+weeks, respectively. The severity of periodontal disease was evaluated
+by the following parameters once a week: gingival index (GI), peri­
+odontal pocket depth (PPD), tooth mobility (TM), and weight. Values of
+PPD were measured using a round-ended probe with a tip of 0.3 mm in
+diameter. The scoring criteria of GI and TM were shown in S 1. All SD
+rats in groups A–E were executed by deep anesthesia at week 8 to obtain
+maxillary periodontal tissues.
+2.3.3. Immunological assessment
+The TNF-α and IL-10 levels correlated with the degree of inflam­
+mation. The left maxillary periodontal tissues of 3 rats randomly
+selected from each group were taken, which were ground in the presence
+of normal saline, then the grinding mixture was centrifuged at
+3000–4000 rpm for 10 min, and the TNF-α and IL-10 levels were
+examined by the enzyme-linked immune sorbent assay (ELISA).
+2.3.4. Microcomputed tomography (micro-CT) analysis of alveolar bone
+The left maxillary periodontal tissues of another 3 rats randomly
+selected from each group were collected and fixed in 4% para­
+formaldehyde for micro-CT scanning. The distance from the alveolar
+bone crest (ABC) to the cementoenamel junction (CEJ) was recorded to
+figure out the alveolar bone resorption. The 3-dimensional region of
+interest (ROI) was defined as the root bifurcation region of the first
+molar alveolar bone crest in the left maxillary. The bone volume/tissue
+volume (BV/TV), trabecular thickness (Tb. Th), trabecular number (Tb.
+N), trabecular separation (Tb. Sp), and bone mineral density (BMD)
+parameters were assessed in the 3-D region of interest (ROI) by the
+molding and analysis software.
+2.3.5. H&E staining
+The left maxillary periodontal tissues of one rat randomly selected
+from each group were fixed with 4% paraformaldehyde for 24 h. After
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+5
+decalcifying with 15% of Ethylene Diamine Tetra-acetic Acid (EDTA),
+all samples were dehydrated, embedded in paraffin, cut into 5-μm-thick
+tooth-periodontal sections along the mesiodistal direction of the tooth.
+The sections were finally stained with hematoxylin and eosin (H&E) to
+examine the pathological conditions of the periodontal tissues.
+2.4. Statistical analysis
+Data are presented as mean ± SD. Statistical comparisons were
+conducted using Student’s t-test and the threshold of significance was set
+at P < 0.05. Statistical analyses were carried out with Origin 2021
+software.
+3. Results and discussions
+3.1. Preparation and characterization of MH-NPs
+3.1.1. Formation of MH-Ca2+-DS complex and MH-NPs
+In our study, the insoluble complex was constructed by MH, Ca2+,
+and DS to achieve efficient encapsulation of MH. The selected three
+substances (DS, MH, and CaCl2) might have interaction forces with each
+other. The positively charged ammonium group in MH could form
+electrostatic interaction with the negatively charged sulfate group in DS.
+The hydroxyl group in DS could potentially form hydrogen bonding with
+the hydroxyl, carbonyl, and amide groups in MH. (Zhang et al., 2015) In
+addition, Ca2+ could chelate with MH (Soliman et al., 2010), and also
+had electrostatic interaction with oppositely charged DS. However, no
+insoluble complex was formed when any two of the three substances
+(DS, MH, and CaCl2) were mixed, suggesting that DS or CaCl2 alone was
+unable to form an insoluble complex with MH. Whereas the mixture
+solution containing DS and CaCl2 in the reaction container immediately
+became insoluble after adding MH solution, which indicated that the ion
+pairing agents composed of CaCl2 and DS could form insoluble IIP
+complexes with MH. Typically, one MH molecule had two metal ion
+binding sites. (Zhang et al., 2015) Therefore, as shown in Fig. 1A, after
+the CaCl2 was bound to DS via electrostatic interaction, every MH
+molecule was linked to two Ca2+ by ionic interaction. This caused the
+hydrophilic hydrochloride in MH was replaced by the ion pairing agent,
+thus forming the insoluble complex.
+Then the optimal mass ratio of MH, CaCl2, and DS forming MH-NPs
+was investigated to control the drug loading and encapsulation effi­
+ciency of MH-NPs. As shown in Table 1, the average particle size range
+of MH-NPs was 100–120 nm measured by DLS, which were prepared
+with different MH, CaCl2 and DS mass ratios. The optimum amounts of
+MH, CaCl2 and DS were 12.0 mg, 5.0 mg, and 15.0 mg respectively, with
+the highest drug loading (9.59%), the lowest PDI (0.136), and the
+encapsulation efficiency of 95.58%. Any further increase or decrease in
+amounts of MH, CaCl2, or DS resulted in a decrease in drug loading,
+indicating that as the amount of three substances changes, the interac­
+tion within the complex gradually achieved equilibrium and drug
+loading reached the highest level. Any increase or decrease in the
+amounts of the three substances would break this equilibrium and
+reduce the drug loading. More importantly, the MH was efficiently
+encapsulated in the PLGA nanoparticles by insoluble complexes
+construction.
+3.1.2. Construction of nanogenerator
+The control of particle size was also a key step in nanoparticle
+preparation. A nanogenerator was built and combined with the double
+emulsion method to control the particle size of PLGA nanoparticles. As
+shown in Fig. 1A, three substances (DS, MH, and CaCl2) were prepared
+into two W/O primary emulsions, and then two primary emulsions were
+mixed and ultrasonicated to prepare the ultimate emulsion. Subse­
+quently, the ultimate emulsion was made into a double emulsion, and
+the MH-NPs were obtained after removing the organic solvent. After
+mixing of the two primary emulsions, three substances in the internal
+aqueous phase contacted and complexation reaction occurred. After
+sonication, the MH, Ca2+, and DS in the water phase were dispersed into
+small droplets within the ultimate emulsion. This led to a low content of
+MH, Ca2+ and DS in each droplet, followed by a rapid end of the
+complexation reaction to form complexes with small particle size. The
+small complexes were finally encapsulated by PLGA to obtain MH-NPs at
+the nano level. Therefore, the droplets of the ultimate emulsion that
+control the final formation of the complexes were also regarded as
+nanogenerators, which was a critical factor in controlling MH-NPs par­
+ticle size.
+Furthermore, the particle size of MH-NPs kept increasing with longer
+mixing time. (Table 2) This was because that without sonication, the
+complexation reaction would continue until one of MH, calcium ion, and
+DS was completely consumed, and then the resulted complexes were
+difficult to be disrupted by sonication. The earlier the sonication began
+after mixing was, the lower extent of complexation reaction was. This
+resulted in a smaller particle size of the internal droplets in ultimate
+emulsion and decreased the amount of complex encapsulated in each
+droplet. It further caused the smaller particle size of the complexes at the
+end of complexation within the ultimate emulsion, so the MH-NPs with
+smaller particle sizes were obtained.
+The MH-NPs obtained under optimal conditions had the appearance
+of a yellow suspension (Fig. 2A) and were evenly dispersed and non-
+adherent to each other, and also had a smooth and full surface
+without holes, as revealed by the TEM and AFM images. (Fig. 2A and C).
+Meanwhile, the particle size of MH-NPs were 109.2 ± 47.25 nm and
+138.7 ± 77.58 nm measured by DLS before and after freeze-drying
+(Fig. 3A and B). Before freeze-drying, the particle size shown in the
+TEM and AFM was smaller than that in the DLS. This was because DLS
+indicated the overall size of the particle and the surrounding diffuse
+layer of the particle in the aqueous media, however, TEM and AFM
+analysis were attributed to the particle size alone under dry conditions.
+(Yan et al., 2020a; Yan et al., 2020b) In contrast, after freeze-drying, the
+particle size of MH-NPs observed by AFM and TEM (Fig. 2B and D) were
+larger than that observed by DLS. This was because some aggregation
+occurred between the freeze-dried nanoparticles, and the freeze-dried
+protectant covered the surface of the nanoparticles after freeze-drying.
+This resulted in larger particle size shown by TEM and AFM with
+direct observation of the powder after freeze-drying. (Fu and Zhang,
+2017) After re-dispersion, the freeze-dried protectant dissolved and
+most of aggregates were re-dispersed between nanoparticles, so that
+although the DLS results were smaller than those of the TEM and AFM
+after freeze-drying.
+Table 1
+The effect of the ratio of MH, CaCl2 and DS on the preparation of MH-NPs.
+MH: CaCl2: DS
+Particle size (nm)
+PDI
+Zeta Potential (mV)
+DL (%)
+12: 5: 12
+112.2 ± 75.27
+0.227
+−41.1 ± 7.52
+8.14
+12: 5: 15
+109.2 ± 47.25
+0.136
+−44.0 ± 7.98
+9.59
+12: 5: 18
+114.3 ± 62.54
+0.251
+−48.5 ± 5.96
+9.08
+12: 3: 15
+102.9 ± 49.03
+0.154
+−46.3 ± 11.9
+7.62
+12: 7: 15
+118.8 ± 71.77
+0.229
+−39.7 ± 8.06
+8.94
+9: 5: 15
+108.4 ± 58.75
+0.198
+−42.1 ± 7.11
+8.77
+15: 5: 15
+113.5 ± 60.88
+0.267
+−48.1 ± 6.42
+8.48
+Table 2
+The effect of mixed way of primary emulsion on the characterization of
+nanoparticles.
+Samples
+Particle size (nm)
+PDI
+Dropwise 10 min -ultrasonic 2 min
+264.8 ± 172.9
+0.387
+Dropwise 5 min -ultrasonic 2 min
+233.2 ± 95.61
+0.403
+Dropwise 2 min -ultrasonic 2 min
+216.9 ± 122.3
+0.403
+Direct mixing -ultrasonic 2 min
+109.2 ± 47.25
+0.136
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+6
+Fig. 2. Characterization of MH-NPs (A and B) The appearance and TEM images of MH-NPs before and after freeze-drying. Scale bars: 200 nm. (C and D) AFM images
+of MH-NPs before and after freeze-drying. Scale bars: 400 nm and 1 μm.
+Fig. 3. (A and B) DLS size of MH-NPs before and after freeze-drying, (C and D) Zeta potential of MH-NPs before and after freeze-drying.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+7
+3.2. Preparation and characterization of MH-NPs-in-gels
+The thermosensitive gel could provide good periodontal pocket
+retention. To achieve efficient treatment of periodontitis, the MH-NPs
+were mixed into the thermosensitive gels to obtain MH-NPs-in-gels
+(1%). Before mixing, the MH-NPs were freeze-dried to ensure the drug
+loading of the MH-NPs-in-gels. The particle size (Fig. 3A and B) and zeta
+potential (Fig. 3C and D) were almost unchanged before and after
+freeze-drying, indicating that freeze-drying didn’t affect the physical
+stability of MH-NPs.
+The blank hydrogel and MH-NPs-in-gels were liquid below room
+temperature which allowed for a good syringe ability and underwent
+solution–gel transitions with increasing temperature (Fig. 4A). Storage
+modulus (G′) represents the elastic contribution to the material
+response, loss modulus (G′′) represents the viscous contribution to the
+material response. At low or room temperature, the loss modulus (G′′)
+was greater than the storage modulus (G′), reflecting a solution phase.
+An abrupt increase in modulus was observed along with the formation of
+physical hydrogels as the temperature increased. The sol–gel transition
+temperature (Tgel) was represented by the crossover point of G′′ and G′.
+As the temperature increased further, the gel structure would be broken
+and precipitate was observed. (Cui et al., 2019) For the MH-NPs-in-gels,
+Tgel decreased with the change of PCLA-PEG-PCLA: PLGA-PEG-PLGA
+ratio from 0:100 to 60:40, and also decreased with the total concen­
+tration of PCLA-PEG-PCLA and PLGA-PEG-PLGA increased from 10% to
+30% (Fig. 4B–E). When the total concentration was 25% with a 50:50
+ratio, the gelation temperature was 31.5 ◦C and MH-NPs-in-gels had a
+large gelation window (Fig. 4F), which covered oral temperature. This
+indicated that the MH-NPs-in-gels with 25% of PCLA-PEG-PCLA and
+PLGA-PEG-PLGA (50:50, w/w) were suitable for biomedical applica­
+tions. As shown in Fig. 5A, the reticular structure formed by the cross-
+linking of PLGA-PEG-PLGA and PCLA-PEG-PCLA could be clearly
+Fig. 4. (A) The appearance of blank gel and MH-NPs-in-gels before and after gelatinization. (B–E) Sol–gel transition of the Gel-1–4 at 25% total concentrations of
+PLGA-PEG-PLGA and PCLA-PEG-PCLA. (F) Gelation windows for Gel-2 and Gel-3 within concentrations from 12% to 30%.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+8
+observed in the TEM image of the blank gels. (Fig. 5A) In addition, the
+reticular structure of the gels did not change after mixing with the MH-
+NPs, and the nanoparticles were uniformly dispersed without aggrega­
+tion. (Fig. 5B).
+3.3. In vitro release of MH-NPs, MH-in-gels, and MH-NPs-in-gels
+The pH of the gingival fluid in periodontitis was reported to be
+mainly mildly acidic to moderately alkaline and was increased with the
+progression of periodontitis. (Kobayashi et al., 1998; Leblebicioglu et al.,
+1996) Therefore, there were currently no clear standards or well-defined
+criteria for the pH of the release medium used in researches related to
+the treatment of periodontitis. In our study, the gingival fluid pH in rats
+with periodontitis model measured with pH paper was in the range of
+7.0–8.0. which was in line with the findings of Borden et al. and Bickel
+et al. (Bickel and Cimasoni, 1985; Borden et al., 1977) Furthermore,
+several periodontitis - related literatures had reported on the use of pH
+7.4 release medium for in vitro release studies.(Yang et al., 2018; Yao
+et al., 2014a) Based on the above research and findings, the phosphate
+buffer solution (0.01 M, pH 7.4) was chosen as in vitro release medium
+in our study.
+The cumulative release profiles of MH from MH-in-gels, MH-NPs,
+and MH-NPs-in-gels at 37 ◦C were illustrated in Fig. 5C. In MH-in-gels,
+35.54% of MH was released within 1 h and almost all of the MH was
+released in 48 h. While the cumulative release rates of MH from the MH-
+NPs were respectively 7.67% and 52.25% within 1 h and 1 day, and
+approximately 90% in 10 days, indicating that the MH-loaded PLGA
+nanoparticles could control the release of MH to some extent. More
+excitingly, MH-NPs-in-gels released only 5.05% in 1 h, 17.98% in 1 day,
+and 92.61% continuously for 21 days. Compared with the MH-NPs, the
+Fig. 5. The TEM images of (A) blank gels and (B) MH-NPs-in-gels. (C) The profiles of in vitro release of MH-NPs, MH-in-gels, and MH-NPs-in-gels. (D) TEM images of
+the MH-NPs-in-gels release medium on day 2 and day 4.(E) In vitro cell viability test results of MH, PLGA, Gels and MH-NPs. Data are presented as mean ± S.D. with
+n = 5.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+9
+MH-NPs-in-gels reduced initial burst release. This might be because gels
+provided a diffusion barrier and formed a depot with MH-NPs, which
+enabled a slow and continuous water absorption, swelling and drug
+diffusion. (Patel et al., 2014a; Patel et al., 2014b; Tamboli et al., 2013).
+3.4. Release kinetics
+To gain insight into the reasons for the different release behavior of
+formulations, the release kinetics of MH from the MH-in-gels, MH-NPs,
+and MH-NPs-in-gel were investigated to predict the possible mechanism
+of release. A regression coefficient value (r2) close to 1 indicated a better
+fit with the model. Table 3 summarized the r2 and associated parameters
+for all the models.
+3.4.1. The release kinetics of MH-in-gels
+The release of MH from MH-in-gels followed the first-order kinetics
+(r2 = 0.9606), indicating that it was controlled by concentration gra­
+dients (Lisik and Musial, 2019). Therefore, the MH diffusion through the
+system was greater than the hydrogel bulk erosion, and drug molecules
+were mainly released by diffusing through the hydrophilic channels of
+the hydrogel. (Khodaverdi et al., 2012) This also led to difficulties in
+controlling the release behavior of hydrophilic MH through hydrogels
+alone.
+3.4.2. The release kinetics of MH-NPs
+The best fit was observed for the Ritger-Peppas model based on the r2
+value (0.9910) for MH-NPs within 1 day. The n-value was 0.57 (0.43 <
+n < 0.89), suggesting that the release of MH was a synergistic effect of
+skeleton erosion and drug diffusion. (Vaishya et al., 2015) At the initial
+stage, the water penetrated into the matrix and immediate desorption of
+MH located at or near the surface of MH-NPs caused initial burst release.
+Due to their high encapsulation efficiency, MH-NPs exhibited a low
+burst release. Then polymer relaxation was caused by polymer degra­
+dation with penetration of more and more water, which created more
+void to induce drug dissolution and release (Lao et al., 2008). The best-
+fitting kinetic model was the Higuchi model (r2 = 0.9544) (Sun et al.,
+2020) over 1–8 days, which indicated that MH release from MH-NPs
+followed the diffusion mechanism during this stage. As the polymer
+degradation continued, lots of interconnected pores were formed and
+accessible (water-filled) in a short time. The MH was diffused from
+insoluble MH-Ca2+-DS complexes to the surrounding medium by the
+water-filled pores. As a result, it could be seen that the release of hy­
+drophilic MH was controlled by the construction of water-insoluble
+complexes and polymeric nanoparticles, which was better controlled
+than the dispersion of MH directly in the hydrogel.
+3.4.3. The release kinetics of MH-NPs-in-gels
+In MH-NPs-in-gels, MH-NPs and gels formed a depot system. The
+release of MH from MH-NPs-in-gels was divided into three consecutive
+stages: stage I (0–2 days), stage II (2–18 days), and stage III (18–21
+days). The release kinetics at the stage I fitted well with the Ritger-
+Peppas equation with a Fickian release exponent (n = 0.40 < 0.43).
+This suggested that the release of MH from MH-NPs-in-gels occurred
+primarily through diffusion(Yao et al., 2014b). After water penetrated
+the gel, the MH located at or near the surface of MH-NPs was released
+and diffused through the gels. This caused the burst release of MH-NPs-
+in-gels, but this was much smaller than that of MH-NPs due to the barrier
+effect of the gels. The release mechanism followed zero-order kinetics at
+the stage II (r2 = 0.9985). The TEM image of the release medium on day
+2 (Fig. 5D) showed that small amounts of MH-NPs with large particle
+size and some holes were released, indicating that MH-NPs had suffered
+from the process of water penetration and swelling. On day 4 (Fig. 5D),
+more MH-NPs with smaller particle size were released with the erosion
+of gel, and complexes were more visible in the core because the erosion
+of MH-NPs made the shell become thinner than that on day 2. This also
+indicated that before the ′release′ of MH-NPs from the gels, some of MH
+had been released from the MH-NPs and diffused through the gel matrix.
+(Siepmann and Siepmann, 2008) Therefore, different from the MH-NPs,
+there were not only the release of MH from MH-NPs outside of the gels
+but also the ′release′ of MH-NPs and the release of MH from gels at this
+stage. This multiple controlled-release behavior achieved a stable zero-
+order release of MH-NPs-in-gels, which lasted for up to 16 days. The
+fittest kinetic model was the first-order model (r2 = 0.9611) at the stage
+III, which followed the Fickian diffusion mechanism. At the final stage,
+the gel was almost completely degraded and the release behavior
+approached the final release stage of MH-NPs.
+It could be seen that the high encapsulation efficiency of MH-NPs
+resulted in a low burst release of MH-NPs, which was further reduced
+after mixing with gels. The PLGA nanoparticles and insoluble complexes
+prolonged the release of MH, while the mixture of gels further achieved
+the sustained and stable release of MH in vitro through multiple
+controlled release mechanisms.
+3.5. Cell biocompatibility
+After studying the in vitro release behavior and release mechanism of
+microspheres, we further investigated the cytotoxicity of MH, PLGA,
+MH-Ms, and temperature sensitive gels by CCK-8 assay. As shown in
+Fig. 5E, only approximately 56% and 57% of the cells could respectively
+survive for 1 day in 500 μg/mL of MH solution and MH-NPs, which was
+caused by the too high MH concentration, while the cell viabilities of
+MH, PLGA, Gels and MH-NPs at a concentration of 1– 200 μg/mL were
+greater than 97%. This indicated that the MH, PLGA, Gels and the MH-
+NPs were all low toxicity and biocompatible.
+3.6. In vivo pharmacodynamic study
+Since in vitro studies had clearly demonstrated the potential of MH-
+NPs-in-gels for the treatment of periodontitis, a periodontitis model was
+established in SD rats by ligation combined with a high sugar diet to
+further evaluate the therapeutic effects of MH-NPs-in-gels in vivo.
+Considering that part of the medication in the periodontal pocket was
+constantly removed along with food or gingival crevicular fluid, the
+actual efficacy duration of MH-NPs-in-gels in vivo might be much
+shorter than 21 days. Therefore, weekly dosing was chosen (Fig. 6A) and
+general condition and indicators (GI, PPD, TM, and weight) were
+monitored after modeling and treatment. (Gui et al., 2021).
+3.6.1. The monitoring of periodontal disease parameters
+At the beginning of modeling (0 weeks), the average weight of
+modeling rats was comparable to that of healthy rats, but it was
+increased slowly compared to that of healthy rats during the progress of
+modeling (0–4 weeks). (Fig. 6B) During the period of treatment (4–8
+weeks), the average weight of rats in each treatment group increased
+compared with that of rats in the control group, and it increased most in
+Table 3
+The correlation coefficient of different release models to MH-in-gels, MH-NPs,
+and MH-NPs-in-gels.
+Release models
+Zero-
+order
+First-
+order
+Higuchi
+Ritger-
+Peppas
+Correlation
+coefficient
+(r2)
+MH-
+in-gels
+0–2 d
+0.4224
+0.9606
+0.7033
+0.9249
+MH-
+NPs
+0–1 d
+0.9026
+0.9909
+0.9908
+0.9910
+(n =
+0.5680)
+1–8 d
+0.8685
+0.8650
+0.9544
+MH-
+NPs-
+in-gels
+0–2 d
+0.8267
+0.9183
+0.9855
+0.9978
+(n =
+0.4028)
+2–18 d
+0.9985
+0.9830
+0.9870
+18–21
+d
+0.9277
+0.9611
+0.9346
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+10
+the MH-NPs-in-gels group (Fig. 6C). At the end of modeling (4 weeks),
+the normal gingiva, physiological tooth mobility, and 0 mm of pocket
+probing depth were observed in healthy rats. In contrast, it was char­
+acterized by extreme redness and edema, ulceration, spontaneous
+bleeding, severe tooth mobility, and around 2.5 mm of probing depth in
+modeling rats. (Fig. 6D and E) Over the treatment period (4–8 weeks),
+GI, TM, and PDD values only slightly reduced in the MH-in-gels and MH-
+NPs groups. Whereas they quickly decreased in the MH-NPs-in-gels and
+approached to those of the healthy group. (Fig. 6F–H). These results
+indicated that MH-NPs-in-gels significantly inhibited the inflammation
+and promoted the recovery of periodontitis - affected teeth and tissues
+compared to the control, MH-NPs, and MH-in-gels groups.
+3.6.2. Immunological assessment
+With the occurrence of periodontitis, pro-inflammatory factors (such
+as TNF-α) were generated by M1 macrophage, whose overexpression led
+Fig. 6. (A) The process of the periodontitis modeling and treatment. (B and C) Weight fluctuation of SD rats during modeling and the therapy. (*** P < 0.01) (D and
+E) Representative diagram of periodontitis modeling in SD rats by silk ligature technique four weeks later. (F–H) The changes of clinical periodontitis indices after
+local administration of different treatment groups, including Gingival index, Periodontal pocket depth, and Tooth mobility. (I and J) Effect of different treatment
+groups on IL-10 and TNF-α. (* P < 0.05, ** P < 0.01 vs Control, & P < 0.05, && P < 0.01 vs Healthy).
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+11
+to the development of inflammation, thereby inducing M2 macrophages
+to secrete anti-inflammatory factors (such as IL-10). IL-10 exerted its
+anti-inflammatory effects by inhibiting the synthesis of pro-
+inflammatory cytokines (Graves, 1999). In general, the higher the
+levels of inflammation, the higher the levels of IL-10 induced by
+inflammation. Thus, the levels of anti-inflammatory factors reflected the
+practical levels of inflammation and the levels of pro-inflammatory
+factors reflected the trend of inflammation. To further evaluate the
+anti-inflammatory levels of all treatment groups. The TNF-α and IL-10
+levels in the gingival tissues of the rats were investigated. As shown in
+Fig. 6I and J, TNF-α and IL-10 levels were both highest in the control
+group and lowest in the healthy group, while they were both close to
+healthy levels after the treatment of MH-NPs-in-gels. This indicated that
+inflammation levels in the MH-NPs-in-gels group were almost restored
+to healthy levels. In MH-in-gels and MH-NPs groups, the TNF-α levels
+were both close to healthy group. However, the IL-10 levels were much
+higher than healthy level, which suggested both groups still had higher
+levels of inflammation. Our results demonstrated that MH-NPs-in-gels
+significantly inhibited TNF-α and IL-10 expression in the periodontal
+tissue destroyed by periodontitis, exhibiting potent anti-inflammatory
+activities.
+3.6.3. Micro-computed tomography (micro-CT) analysis
+In addition to eliminating inflammation, repairing bone defects was
+also a major challenge for comprehensive periodontitis therapy. Oste­
+oblast and osteoclast were the two main cells participating in this
+progress.(Matsuo and Irie, 2008) Notably, the osteogenic potential of
+osteoblasts would be significantly reduced in the inflammatory site.
+Therefore, bone repair might need to be carried out at a lower level of
+inflammation. (Liu et al., 2020) MH had been proven to promote new
+bone formation. It was demonstrated that 1–10 μg/ml of MH signifi­
+cantly improved the proliferation of human bone marrow osteoblastic
+cells without altering their specific phenotype and functional activity.
+(Gomes and Fernandes, 2007) Furthermore, 1 μg/ml of MH could
+upregulate the expression levels of Runt-related transcription factor 2
+(Runx2), alkaline phosphatase (ALP), and osteopontin (OPN) in osteo­
+blasts and increase the differentiation and mineralization of the osteo­
+blasts of SD rats (Zhang et al., 2021). Qi et al. reported the number of
+osteoblasts in rats bone tissue decreased with increasing serum TNF-α
+concentration, while the number of osteoclasts increased. (Qi et al.,
+2021) IL-10 could also promote osteoblast differentiation while inhib­
+iting osteoclast formation (Hotchkiss et al., 2016; Yang and Wan, 2019).
+However, it was concentration-dependent and had a dual role in
+Fig. 7. Evaluation of periodontitis model in rats after 8 weeks. (A) Three-dimensional reconstruction model of left maxillary bone in rats as indicated by Micro-CT.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+12
+osteogenesis. Low physiological concentrations of IL-10, such as 0.01
+ng/ml, could promote osteogenesis in BMSCs while inhibiting osteo­
+clastic differentiation of BMDM. But at higher concentrations of IL-10
+(such as 10 ng/mL), its ability to promote osteogenesis was inhibited.
+The osteogenic peak of IL-10 appeared around 0.1 ng/ml demonstrated
+by Chen et al. (Chen et al., 2018) To further evaluate the bone repair
+effect and therapeutic mechanism of MH-NPs-in-gels, we analyzed the
+alveolar bone by microcomputed tomography (micro-CT), as well as
+examined the histopathological changes.
+Micro-CT scans (Fig. 7) demonstrated that control rats had severe
+alveolar bone destruction and longer CEJ–ABC distances compared to
+healthy rats. The quantitative data were shown in Table 4 and Fig. 8A.
+Only a few alveolar bones were formed in the MH-in-gels and MH-NPs
+groups after 4 weeks of treatment. In contrast, significant restoration
+of the alveolar bone was observed in the MH-NPs-in-gels group which
+almost recovered to healthy levels. This was in line with the results of
+the IL-10 levels. The IL-10 concentrations in all treatment groups were in
+the range of 0.01–0.15 ng/mL, which could promote osteoblast differ­
+entiation while inhibiting osteoclast formation. (Chen et al., 2018) The
+alveolar bone in MH-NPs-in-gels group was almost recovered to healthy
+levels, which had low IL-10 levels that are close to healthy levels.
+However, the MH-in-gels and MH-NPs groups had IL-10 levels closer to
+the control group, exhibiting high levels of inflammation, which resul­
+ted in reduced osteoblast differentiation potential and inhibited bone
+repair. The MH-NPs group had slightly lower IL-10 levels and showed
+slightly better bone repair effect than the MH-in-gels group. This sug­
+gested that lowering IL-10 levels to close to healthy levels could promote
+bone repair.
+Furthermore, BMD reflected bone strength to some extent, while BV/
+TV, Tb. Th, Tb. N and Tb. Sp were important parameters to describe the
+microstructure of bone trabeculae. They were important indicators to
+evaluate the bone defects. In the MH-NPs-in-gels group, quantitative
+analysis results (BV/TV 70.88%, BMD 0.97 g/cm3, TB. Th 0.14 mm, Tb.
+N 6.39 mm−1, Tb. Sp 0.07 mm) were close to the healthy group (BV/TV
+76.38%, BMD 0.99 g/cm3, TB. Th 0.14 mm, Tb. N 7.55 mm−1, Tb. Sp
+0.07 mm) (Fig. 8B–F), which indicated that bone metabolism was almost
+recovered to healthy levels. Meanwhile, the BMD, BV/TV, Tb. Th, Tb. N
+and Tb. Sp results also showed the bone trabeculae changed from rod-
+like to plate-like structures after MH-in-gels and MH-NPs treatment.
+These indicated that although bone repair was not evident in the MH-in-
+gels and MH-NPs groups, bone defects were inhibited, which might have
+been influenced by reduced TNF-α. The poor inflammatory recovery and
+bone repair effect of MH-NPs might be caused by their poor retention
+capacity, resulting in some of the MH were removed before it could play
+the therapeutic effect in the dynamic periodontal environments. In
+addition, MH-NPs showed slightly better bone resorption inhibition and
+bone repair capacity than MH-in-gels. This was because that the MH
+were difficult to be consistently delivered deep into the periodontal
+tissues by MH-in-gels with poor controlled release, while MH-NPs did a
+bit better than MH-in-gels.
+3.6.4. H&E staining
+The anti-inflammatory properties and periodontal tissue regenera­
+tion were further examined by H&E staining. Fig. 8G showed that
+compared with the healthy group, the gingival sulcus epithelium of the
+rats in the control group showed erosion or ulceration, separation of the
+bound epithelium from the tooth surface, and proliferation of the
+epithelium toward the root, forming periodontal pockets. The gingival
+sulcus epithelium and the connective tissue beneath the bound gingival
+sulcus epithelium were degenerated and destroyed. The local inflam­
+matory infiltration and periodontal pockets were found in the MH-in-
+gels and MH-NPs groups, while no significant cells inflamed or struc­
+tural damage were observed in the MH-NPs-in-gels group.
+Taken together, we proposed the mechanism of treating periodontitis
+by MH-NPs-in-gels (Fig. 9). When MH-NPs-in-gels were administered
+into the periodontal pocket, gels were formed to retain in situ. The MH
+located at or near the surface of MH-NPs were firstly released into gels
+with the penetration of gingival fluid, and then diffused from network
+structure of gels to periodontitis tissues. Meanwhile, both the gels and
+MH-NPs were slowly degraded by gingival fluid, which further resulted
+in the release of MH from MH-NPs into the gels, along with the
+continuous ‘release’ of MH-NPs and MH from gels to periodontitis tis­
+sues. In addition, the slimming MH-NPs could penetrate deep into the
+periodontal tissues and release MH for the treatment. The MH reduced
+the levels of inflammatory cytokines (such as TNF-α and IL-10) close to
+healthy level and effectively suppressed inflammation while inhibiting
+the differentiation of osteoclasts, thereby reducing the further genera­
+tion of bone defects. After reducing inflammation to a certain level, the
+MH could effectively promote osteoblast differentiation and new bone
+formation.
+All the above results confirmed that although MH-in-gels had good
+retention capacity, its poor controlled release effect made it difficult for
+MH to be consistently delivered deep into periodontal tissues. MH-NPs
+with good penetration ability could penetrate deep into periodontal
+tissues, but their limited controlled release ability and poor retention did
+not allow the MH to be continuously released into the periodontal tis­
+sues. As a result, both MH-in-gels and MH-NPs were poorly effective in
+the inhibition of inflammation and restoration of the alveolar bone. In
+contrast, MH-NPs-in-gels combined with good periodontal pocket
+retention, good periodontal tissues penetration and multiple controlled
+release of MH could be delivered deep into the narrow spaces of the
+periodontal pockets. What′s more, MH was continuously and deeply
+delivered to the periodontal tissue, thereby inhibiting inflammation and
+repairing bone defects in a short period of time for efficient treatment of
+periodontitis.
+4. Conclusion
+In summary, insoluble complexes composed of Ca2+, MH, and DS
+were constructed to achieve efficient encapsulation of hydrophilic MH
+in PLGA and a nanogenerator was combined with double emulsion
+method to control the particle size of MH-NPs. By integrating MH-NPs
+into temperature-sensitive gels, the obtained MH-NPs-in-gels not only
+presented good retention and penetration, but also achieved multiple
+controlled release of MH. This allowed MH to be consistently and deeply
+delivered into the periodontal tissue, facilitating the treatment of peri­
+odontitis. It was further verified in periodontitis modelling rats that MH-
+NPs-in-gels were highly effective in anti-inflammatory and bone repair
+of periodontitis rats in a short period of time, which provided an efficient
+treatment to complex periodontitis. This treatment strategy based on our
+study not only allowed for the efficient treatment of periodontitis but
+also might have good prospects for application in the field of other
+complex disease treatment.
+CRediT authorship contribution statement
+Jiansong Zhao: Data curation, Formal analysis, Investigation,
+Writing – original draft, Writing – review & editing. Ying Wei: Formal
+analysis, Investigation, Visualization. Jian Xiong: Data curation,
+Writing – review & editing. Hongbing Liu: Data curation, Formal
+analysis, Investigation. Gaoshuai Lv: Formal analysis, Investigation.
+Table 4
+The average CEJ–ABC distance of rats for each group. (n
+= 3).
+Group
+Distance (mm)
+Healthy
+1.05
+Control
+1.40
+MH-in-gels
+1.41
+MH-NPs
+1.38
+MH-NPs-in-gels
+1.15
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+13
+Jingyi Zhao: Data curation, Investigation. Haibing He: Writing – re­
+view & editing. Jingxin Gou: Writing – review & editing. Tian Yin:
+Writing – review & editing, Visualization. Xing Tang: Writing – review
+& editing, Visualization. Yu Zhang: Conceptualization, Project admin­
+istration, Supervision, Writing – review & editing.
+Declaration of Competing Interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Fig. 8. (A) Effect of different treatment groups on alveolar bone absorption. (* P < 0.05, ** P < 0.01 vs Control group, & P < 0.05, && P < 0.01 vs Healthy group)
+(B–F) Comparison of microstructural parameters of alveolar bone in the maxilla of SD rats in different treatment groups. (** P < 0.01, *** P < 0.001 vs Control group,
+& P < 0.05, && P < 0.01, &&& P < 0.001 vs Healthy group). (G) H&E staining result of the maxilla on one side of one rat from each group. Scale bar = 500 μm.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+14
+Data availability
+Data will be made available on request.
+Acknowledgments
+This work was supported by National Natural Science Foundation of
+China
+[82172086],
+National
+Key
+R&D
+Program
+of
+China
+[2020YFE0201700],
+Liaoning
+Revitalization
+Talents
+Program
+[XLYC1907111, XLYC1908031], Liaoning Province Doctoral Start-up
+Fund Program [2019-BS-226], Liaoning BaiQianWan Talents Program
+[(2020)78], Shenyang Science and Technology Talent Support Program
+[RC210447], Career Development Program for Young and Middle-aged
+Teachers of Shenyang Pharmaceutical University [ZQN2019004] and
+‘Dual Service’ Program of University in Shenyang.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.ijpharm.2023.122802.
+References
+Apatzidou, D.A., Kinane, D.F., 2010. Nonsurgical mechanical treatment strategies for
+periodontal disease. Dent Clin North Am 54, 1–12.
+Bickel, M., Cimasoni, G., 1985. The pH of human crevicular fluid measured by a new
+microanalytical technique. J Periodontal Res 20, 35–40.
+Borden, S.M., Golub, L.M., Kleinberg, I., 1977. The effect of age and sex on the
+relationship between crevicular fluid flow and gingival inflammation in humans.
+J Periodontal Res 12, 160–165.
+Chen, E., Liu, G., Zhou, X., Zhang, W., Wang, C., Hu, D., Xue, D., Pan, Z., 2018.
+Concentration-dependent, dual roles of IL-10 in the osteogenesis of human BMSCs
+via P38/MAPK and NF-kappaB signaling pathways. FASEB J 32, 4917–4929.
+Cui, S., Yu, L., Ding, J., 2019. Thermogelling of Amphiphilic Block Copolymers in Water:
+ABA Type versus AB or BAB Type. Macromolecules 52, 3697–3715.
+Dinarvand, R., Sepehri, N., Manoochehri, S., Rouhani, H., Atyabi, F., 2011. Polylactide-
+co-glycolide nanoparticles for controlled delivery of anticancer agents. Int J
+Nanomedicine 6, 877–895.
+Fu, W., Zhang, W., 2017. Hybrid AFM for Nanoscale Physicochemical Characterization:
+Recent Development and Emerging Applications. Small 13.
+Gomes, P.S., Fernandes, M.H., 2007. Effect of therapeutic levels of doxycycline and
+minocycline in the proliferation and differentiation of human bone marrow
+osteoblastic cells. Arch Oral Biol 52, 251–259.
+Graves, D.T., 1999. The potential role of chemokines and inflammatory cytokines in
+periodontal disease progression. Clin Infect Dis 28, 482–490.
+Greenstein, G., 2006. Local drug delivery in the treatment of periodontal diseases:
+assessing the clinical significance of the results. J Periodontol 77, 565–578.
+Grover, V., Jain, A., Kapoor, A., Malhotra, R., Chahal, G.S., 2016. The Gender Bender
+effect in Periodontal Immune Response. Endocr Metab Immune Disord Drug Targets
+16, 12–20.
+Guan, Q., Reich, B.J., Laber, E.B., Bandyopadhyay, D., 2020. Bayesian Nonparametric
+Policy Search with Application to Periodontal Recall Intervals. J Am Stat Assoc 115,
+1066–1078.
+Gui, Q., Lyons, D.J., Deeb, J.G., Belvin, B.R., Hoffman, P.S., Lewis, J.P., 2021. Non-
+human Primate Macaca mulatta as an Animal Model for Testing Efficacy of Amixicile
+as a Targeted Anti-periodontitis Therapy. Front Oral Health 2, 752929.
+Hajishengallis, G., 2015. Periodontitis: from microbial immune subversion to systemic
+inflammation. Nat Rev Immunol 15, 30–44.
+Heitz-Mayfield, L.J., 2009. Systemic antibiotics in periodontal therapy. Aust Dent J 54
+(Suppl 1), S96–S.
+Holmkvist, A.D., Friberg, A., Nilsson, U.J., Schouenborg, J., 2016. Hydrophobic ion
+pairing of a minocycline/Ca(2+)/AOT complex for preparation of drug-loaded PLGA
+nanoparticles with improved sustained release. Int J Pharmaceut 499, 351–357.
+Hotchkiss, K.M., Reddy, G.B., Hyzy, S.L., Schwartz, Z., Boyan, B.D., Olivares-
+Navarrete, R., 2016. Titanium surface characteristics, including topography and
+wettability, alter macrophage activation. Acta Biomater 31, 425–434.
+Jhinger, N., Kapoor, D., Jain, R., 2015. Comparison of Periochip (chlorhexidine
+gluconate 2.5 mg) and Arestin (Minocycline hydrochloride 1 mg) in the management
+of chronic periodontitis. Indian J Dent 6, 20–26.
+Keyes, P.H., Jordan, H.V., 1964. Periodontal lesions in the Syrian hamster—III. Archives
+of Oral Biology 9, 377-IN376.
+Khodaverdi, E., Tekie, F.S., Mohajeri, S.A., Ganji, F., Zohuri, G., Hadizadeh, F., 2012.
+Preparation and investigation of sustained drug delivery systems using an injectable,
+thermosensitive, in situ forming hydrogel composed of PLGA-PEG-PLGA. AAPS
+PharmSciTech 13, 590–600.
+Kobayashi, K., Kobayashi, K., Soeda, W., Watanabe, T., 1998. Gingival crevicular pH in
+experimental gingivitis and occlusal trauma in man. J Periodontol 69, 1036–1043.
+Kong, L.X., Peng, Z., Li, S.D., Bartold, P.M., 2006. Nanotechnology and its role in the
+management of periodontal diseases. Periodontol 2000 (40), 184–196.
+Lao, L.L., Venkatraman, S.S., Peppas, N.A., 2008. Modeling of drug release from
+biodegradable polymer blends. Eur J Pharm Biopharm 70, 796–803.
+Leblebicioglu, B., Lim, J.S., Cario, A.C., Beck, F.M., Walters, J.D., 1996. pH changes
+observed in the inflamed gingival crevice modulate human polymorphonuclear
+leukocyte activation in vitro. J Periodontol 67, 472–477.
+Lin, G., Cosimbescu, L., Karin, N.J., Gutowska, A., Tarasevich, B.J., 2013. Injectable and
+thermogelling hydrogels of PCL-g-PEG: mechanisms, rheological and enzymatic
+degradation properties. J Mater Chem B 1, 1249–1255.
+Lisik, A., Musial, W., 2019. Conductomeric Evaluation of the Release Kinetics of Active
+Substances from Pharmaceutical Preparations Containing Iron Ions. Materials (Basel)
+12.
+Liu, X., Zhang, W., Wang, Y., Chen, Y., Xie, J., Su, J., Huang, C., 2020. One-step
+treatment of periodontitis based on a core-shell micelle-in-nanofiber membrane with
+time-programmed drug release. J Control Release 320, 201–213.
+Matsuo, K., Irie, N., 2008. Osteoclast-osteoblast communication. Arch Biochem Biophys
+473, 201–209.
+Munasur, S.L., Turawa, E.B., Chikte, U.M.E., Musekiwa, A., 2020. Mechanical
+Debridement with Antibiotics in the Treatment of Chronic Periodontitis: Effect on
+Systemic Biomarkers-A Systematic Review. Int J Environ Res Public Health 17.
+Nasra, M.M., Khiri, H.M., Hazzah, H.A., Abdallah, O.Y., 2017. Formulation, in-vitro
+characterization and clinical evaluation of curcumin in-situ gel for treatment of
+periodontitis. Drug Deliv 24, 133–142.
+Offenbacher, S., Beck, J.D., 2014. Commentary: changing paradigms in the oral disease-
+systemic disease relationship. J Periodontol 85, 761–764.
+Patel, S.P., Vaishya, R., Mishra, G.P., Tamboli, V., Pal, D., Mitra, A.K., 2014a. Tailor-
+made pentablock copolymer based formulation for sustained ocular delivery of
+protein therapeutics. J Drug Deliv 2014, 401747.
+Patel, S.P., Vaishya, R., Yang, X., Pal, D., Mitra, A.K., 2014b. Novel thermosensitive
+pentablock copolymers for sustained delivery of proteins in the treatment of
+posterior segment diseases. Protein Pept Lett 21, 1185–1200.
+Pinon-Segundo, E., Ganem-Quintanar, A., Alonso-Perez, V., Quintanar-Guerrero, D.,
+2005. Preparation and characterization of triclosan nanoparticles for periodontal
+treatment. Int J Pharm 294, 217–232.
+Qi, S.S., Shao, M.L., Sun, Z., Chen, S.M., Hu, Y.J., Li, X.S., Chen, J., Zheng, H.X., Yue, T.
+L., 2021. Chondroitin Sulfate Alleviates Diabetic Osteoporosis and Repairs Bone
+Microstructure via Anti-Oxidation, Anti-Inflammation, and Regulating Bone
+Metabolism. Front Endocrinol (Lausanne) 12, 759843.
+Siepmann, J., Siepmann, F., 2008. Mathematical modeling of drug delivery. Int J Pharm
+364, 328–343.
+Siepmann, J., Siepmann, F., Florence, A.T., 2006. Local controlled drug delivery to the
+brain: mathematical modeling of the underlying mass transport mechanisms. Int J
+Pharm 314, 101–119.
+Fig. 9. The mechanism of MH-NPs-in-gels against periodontitis.
+J. Zhao et al.
+
+International Journal of Pharmaceutics 636 (2023) 122802
+15
+Soliman, G.M., Choi, A.O., Maysinger, D., Winnik, F.M., 2010. Minocycline Block
+Copolymer Micelles and their Anti-Inflammatory Effects on Microglia. Macromol
+Biosci 10, 278–288.
+Srivastava, M., Neupane, Y.R., Kumar, P., Kohli, K., 2016. Nanoemulgel (NEG) of
+Ketoprofen with eugenol as oil phase for the treatment of ligature-induced
+experimental periodontitis in Wistar rats. Drug Deliv 23, 2228–2234.
+Sun, Y., Li, L., Xie, H., Wang, Y., Gao, S., Zhang, L., Bo, F., Yang, S., Feng, A., 2020.
+Primary Studies on Construction and Evaluation of Ion-Sensitive in situ Gel Loaded
+with Paeonol-Solid Lipid Nanoparticles for Intranasal Drug Delivery. Int J
+Nanomedicine 15, 3137–3160.
+Tamboli, V., Mishra, G.P., Mitra, A.K., 2013. Novel pentablock copolymer (PLA-PCL-
+PEG-PCL-PLA) based nanoparticles for controlled drug delivery: Effect of copolymer
+compositions on the crystallinity of copolymers and in vitro drug release profile from
+nanoparticles. Colloid Polym Sci 291, 1235–1245.
+Tonetti, M.S., Greenwell, H., Kornman, K.S., 2018. Staging and grading of periodontitis:
+Framework and proposal of a new classification and case definition. J Periodontol 89
+(Suppl 1), S159.
+Vaishya, R.D., Mandal, A., Gokulgandhi, M., Patel, S., Mitra, A.K., 2015. Reversible
+hydrophobic ion-paring complex strategy to minimize acylation of octreotide during
+long-term delivery from PLGA microparticles. Int J Pharmaceut 489, 237–245.
+Wu, L., Chen, W., Li, F., Morrow, B.R., Garcia-Godoy, F., Hong, L., 2018. Sustained
+Release of Minocycline From Minocycline-Calcium-Dextran Sulfate Complex
+Microparticles for Periodontitis Treatment. J Pharm Sci 107, 3134–3142.
+Yan, J., Liu, C., Wu, Q., Zhou, J., Xu, X., Zhang, L., Wang, D., Yang, F., Zhang, H., 2020a.
+Mineralization of pH-Sensitive Doxorubicin Prodrug in ZIF-8 to Enable Targeted
+Delivery to Solid Tumors. Anal Chem 92, 11453–11461.
+Yan, J., Xu, X., Zhou, J., Liu, C., Zhang, L., Wang, D., Yang, F., Zhang, H., 2020b.
+Fabrication of a pH/Redox-Triggered Mesoporous Silica-Based Nanoparticle with
+Microfluidics for Anticancer Drugs Doxorubicin and Paclitaxel Codelivery. ACS Appl
+Bio Mater 3, 1216–1225.
+Yang, Z., Liang, X., Jiang, X., Guo, J., Tao, Y., Wang, S., Cao, Y., Gui, S., 2018.
+Development and Evaluation of Minocycline Hydrochloride-Loaded In Situ Cubic
+Liquid Crystal for Intra-Periodontal Pocket Administration. Molecules 23.
+Yang, D., Wan, Y., 2019. Molecular determinants for the polarization of macrophage and
+osteoclast. Semin Immunopathol 41, 551–563.
+Yao, W., Xu, P., Pang, Z., Zhao, J., Chai, Z., Li, X., Li, H., Jiang, M., Cheng, H., Zhang, B.,
+Cheng, N., 2014. Local delivery of minocycline-loaded PEG-PLA nanoparticles for
+the enhanced treatment of periodontitis in dogs. Int J Nanomedicine 9, 3963–3970.
+Yao, W., Xu, P., Zhao, J., Ling, L., Li, X., Zhang, B., Cheng, N., Pang, Z., 2015. RGD
+functionalized polymeric nanoparticles targeting periodontitis epithelial cells for the
+enhanced treatment of periodontitis in dogs. J Colloid Interface Sci 458, 14–21.
+Yousefpour, P., Atyabi, F., Vasheghani-Farahani, E., Movahedi, A.A., Dinarvand, R.,
+2011. Targeted delivery of doxorubicin-utilizing chitosan nanoparticles surface-
+functionalized with anti-Her2 trastuzumab. Int J Nanomedicine 6, 1977–1990.
+Zhang, T., Qiu, Y., Song, J., Zhou, P., Liao, H., Cheng, Y., Wu, X., 2021. Electrosprayed
+minocycline hydrochloride-loaded microsphere/SAIB hybrid depot for periodontitis
+treatment. Drug Deliv 28, 620–633.
+Zhang, Z., Wang, Z., Nong, J., Nix, C.A., Ji, H.F., Zhong, Y., 2015. Metal ion-assisted self-
+assembly of complexes for controlled and sustained release of minocycline for
+biomedical applications. Biofabrication 7, 015006.
+J. Zhao et al.

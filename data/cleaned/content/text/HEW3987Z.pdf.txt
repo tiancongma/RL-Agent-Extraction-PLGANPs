@@ -1,0 +1,862 @@
+Journal of
+Clinical Medicine
+Article
+Nano-Encapsulation of Mithramycin in Transfersomes and
+Polymeric Micelles for the Treatment of Sarcomas
+Óscar Estupiñán 1,2,3,4, Claudia Rendueles 4, Paula Suárez 4, Verónica Rey 1,2, Dzohara Murillo 1, Francisco Morís 5,
+Gemma Gutiérrez 4,6
+, María del Carmen Blanco-López 6,7
+, María Matos 4,6,*
+and René Rodríguez 1,2,3,*
+
+
+Citation: Estupiñán, Ó.; Rendueles,
+C.; Suárez, P.; Rey, V.; Murillo, D.;
+Morís, F.; Gutiérrez, G.; Blanco-López,
+M.d.C.; Matos, M.; Rodríguez, R.
+Nano-Encapsulation of Mithramycin
+in Transfersomes and Polymeric
+Micelles for the Treatment of Sarcomas.
+J. Clin. Med. 2021, 10, 1358. https://
+doi.org/10.3390/jcm10071358
+Academic Editor: David Creytens
+Received: 25 February 2021
+Accepted: 22 March 2021
+Published: 25 March 2021
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright: © 2021 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+1
+Instituto de Investigación Sanitaria del Principado de Asturias (ISPA)—Hospital Universitario Central de
+Asturias, 33011 Oviedo, Spain; o_r_e_s_@hotmail.com (Ó.E.); reyvazquezvero@gmail.com (V.R.);
+UO278873@uniovi.es (D.M.)
+2
+Instituto Universitario de Oncología del Principado de Asturias, 33006 Oviedo, Spain
+3
+CIBER en Oncología (CIBERONC), 28029 Madrid, Spain
+4
+Department of Chemical and Environmental Engineering, University of Oviedo, 33006 Oviedo, Spain;
+UO251642@uniovi.es (C.R.); UO251076@uniovi.es (P.S.); gutierrezgemma@uniovi.es (G.G.)
+5
+EntreChem SL, 33011 Oviedo, Spain; fmv@entrechem.com
+6
+Asturias University Institute of Biotechnology, University of Oviedo, 33006 Oviedo, Spain; cblanco@uniovi.es
+7
+Department of Physical and Analytical Chemistry, University of Oviedo, 33006 Oviedo, Spain
+*
+Correspondence: matosmaria@uniovi.es (M.M.); rene.rodriguez@ispasturias.es (R.R.)
+Abstract: Sarcomas are aggressive tumors which often show a poor response to current treatments.
+As a promising therapeutic alternative, we focused on mithramycin (MTM), a natural antibiotic with
+a promising anti-tumor activity but also a relevant systemic toxicity. Therefore, the encapsulation
+of MTM in nano-delivery systems may represent a way to increase its therapeutic window. Here,
+we designed novel transfersomes and PLGA polymeric micelles by combining different membrane
+components (phosphatidylcholine, Span 60, Tween 20 and cholesterol) to optimize the nanoparticle
+size, polydispersity index (PDI) and encapsulation efﬁciency (EE). Using both thin ﬁlm hydration
+and the ethanol injection methods we obtained MTM-loaded transferosomes displaying an optimal
+hydrodynamic diameter of 100–130 nm and EE values higher than 50%. Additionally, we used
+the emulsion/solvent evaporation method to synthesize polymeric micelles with a mean size of
+228 nm and a narrow PDI, capable of encapsulating MTM with EE values up to 87%. These MTM
+nano-delivery systems mimicked the potent anti-tumor activity of free MTM, both in adherent and
+cancer stem cell-enriched tumorsphere cultures of myxoid liposarcoma and chondrosarcoma models.
+Similarly to free MTM, nanocarrier-delivered MTM efﬁciently inhibits the signaling mediated by the
+pro-oncogenic factor SP1. In summary, we provide new formulations for the efﬁcient encapsulation
+of MTM which may constitute a safer delivering alternative to be explored in future clinical uses.
+Keywords: mithramycin; sarcoma; liposarcoma; chondrosarcoma; encapsulation; transfersomes;
+nanovesicles; PLGA; micelles
+1. Introduction
+Sarcomas comprise a heterogeneous group of malignant neoplasms that arise from
+mesenchymal stem/progenitor cells (MSCs) and therefore affect mesodermal tissues such
+as bones, muscles, cartilage or fat. Although these tumors involve only 1% of global cancer
+diagnoses, this value rises to 12%–15% in terms of pediatric malignancies [1]. In general
+terms, the treatment of localized sarcomas involves the surgical resection of tumor mass
+supported by radiotherapy or neoadjuvant chemotherapy [2,3]. In the case of advanced
+disease or if surgery is not feasible, current treatments still rely on protocols using different
+cytotoxic drugs. As a result, the overall survival of these patients has remained unchanged
+for the last 30 years and below 20% in the case of metastatic osteosarcomas and soft tissue
+sarcomas [2,3], thus highlighting the need for more efﬁcient therapies.
+J. Clin. Med. 2021, 10, 1358. https://doi.org/10.3390/jcm10071358
+https://www.mdpi.com/journal/jcm
+
+J. Clin. Med. 2021, 10, 1358
+2 of 15
+In recent years, several compounds with anti-tumor activity in sarcomas have been
+reported. Among them, mithramycin A (MTM), also known as Plicamycin, is a natural
+aureolic acid-type polyketide that was originally isolated from Streptomyces agrillaceus [4].
+MTM is able to bind to the DNA minor groove in areas with high GC density, thus inhibit-
+ing pivotal transcription factors, such as SP1 and SP3, known to control key oncogenic
+pathways in cancer [5]. MTM has been used in the past as a therapeutic agent to treat
+several cancer types, including Ewing sarcoma, in which MTM was able to inhibit its char-
+acteristic EWS-FLI1 transcription factor [6]. However, despite its promising efﬁcacy, MTM’s
+severe side effects have precluded its clinical use at doses which are required to achieve
+therapeutic responses [7,8]. Nevertheless, new ﬁndings describing speciﬁc mechanisms of
+action and drug combinations with synergistic activity in different types of tumors have
+triggered renewed interest in MTM [6,9–11]. In addition, the anti-tumor effects of MTM
+and related compounds also include strong potential to inhibit the stemness properties in
+several types of tumors [12–17].
+Drug delivery using nanocarriers is an interesting option to improve the therapeutic,
+pharmacological and safety properties of anti-tumor drugs [18]. Thus, the use of nanocarrier
+systems offers a wide range of possibilities to overcome the multiple physiological barriers
+that anti-tumor agents must cross, as well as to increase their absorption, distribution and
+stability in the blood [19,20]. The preferential accumulation of drug-loaded nanocarriers
+in the tumor is favored by the EPR (enhanced permeability and retention) effect [21],
+and it may also be actively achieved through the functionalization of the nanoparticles
+with peptides, aptamers or antibodies, to recognize speciﬁc structures in cancer cells [22].
+Therefore, some therapeutic nanoparticles (e.g., Doxil®, nal-IRI) have received clinical
+approval for cancer treatment, including sarcomas [23,24].
+The use of nanocarriers is especially relevant for drugs like MTM, which show a
+strong anti-tumoral activity, but a narrow therapeutic window. However, MTM is highly
+hydrophilic, which makes it more difﬁcult to entrap it using nanocolloids. MTM has been
+encapsulated before using poly (lactic-co-glycolic acid) (PLGA) [25,26] and other types
+of polymeric micelles [27] and liposomes [28] as nanocarriers. Interestingly, MTM–PGLA
+nanoparticles demonstrated a higher anti-tumor activity than free MTM in pancreatic
+cancer models [26]. PLGA nanoparticles are composed of innocuous and biodegradable
+polymers formed from co-polymerization of glycolic acid and lactic acid [20]. In addition
+to polymeric nanoparticles, liposomes and their derivatives are also commonly used for
+the encapsulation of drugs [29]. Among them, transfersomes are especially ﬂexible and
+deformable nanovesicles (NVs) with membranes containing a combination of phospho-
+lipids (membrane stability), and single chain surfactants (membrane ﬂexibility) [30]. In this
+work, we designed novel transfersomes and PLGA polymeric micelles able to encapsulate
+MTM with high efﬁciency. These drug-delivery systems displayed an optimal average
+hydrodynamic diameter of 100–200 nm and narrow polydispersity index. In addition, we
+conﬁrmed the anti-tumor potential of encapsulated MTM in different sarcoma models.
+2. Materials and Methods
+2.1. Materials
+Phosphatidylcholine (PC) (predominant species: C42H80NO8P, MW= 775.04 g/mol)
+from soybean (Phospholipon 90G) was a kind gift from Lipoid (Germany). Poly (lactic-
+co-glycolic acid) (PLGA) (LG 50:50, Mw 24–38 kDa), Sorbitan monostearate (Span 60,
+S60) (C24H46O6, MW = 430.62 g/mol), Polisorbate 20 (Tween®20, T20) (C58H114O26,
+MM = 1227 g/mol) and Cholesterol (Cho) (C27H46O, MW = 386.65 g/mol) were purchased
+from Sigma Aldrich (USA). All membrane components were dissolved in absolute ethanol
+(Sigma Aldrich, St Louis, MO, USA). For the encapsulation experiments 1,2-dioleoyl-sn-
+glycero-3-phosphocholine-N-(Cyanine 5) supplied by Avanti Polar Lipids, Inc. (Alabaster,
+AL, USA) was used as ﬂuorescent marker in order to observe under confocal microscopy
+the nanocolloids and cell interactions. Methanol, acetonitrile, 2-propanol, and the acetic
+
+J. Clin. Med. 2021, 10, 1358
+3 of 15
+acid of HPLC-grade were supplied by Sigma-Aldrich (USA). A sterile phosphate buffer
+saline solution (PBS) was used in all experiments as the aqueous phase.
+2.2. Synthesis of PLGA Polymeric Micelles
+In the ﬁrst set of experiments, several formulations were prepared in order to achieve
+the proper size, polydispersity index (PDI) and encapsulation efﬁciency (EE) required
+to later perform cell tests. These polymeric micelles were prepared by the emulsion
+solvent evaporation method. An organic phase was prepared with 12.5% (v/v) methanol
+in chloroform. PLGA (10 mg/mL) was dissolved in this organic phase. The aqueous
+phase was prepared with polyvinyl alcohol 1% (w/v) and membrane compounds. These
+compounds were S60, PC and Cho, using different molar ratios (for a total of 8.7 mg in
+25 mL).
+For encapsulation studies, MTM was added on the organic phase. Two milliliters
+(2 mL) of organic phase were mixed with 6 mL of the aqueous phase and this was sonicated
+at 2 min (50%) until an emulsion was formed. This emulsion was left under stirring
+overnight to eliminate the organic phase.
+2.3. Synthesis of Transfersomes
+For the optimization of the size, PDI and EE of these NVs, four different formulations
+were studied and two different methods of synthesis were used: thin ﬁlm hydration (TFH)
+and ethanol injection method (EIM).
+Thin ﬁlm hydration (TFH): Transfersomes were prepared by weighing and dissolving
+in absolute ethanol PC, S60, T20 and Cho in 1:0.5:0.5:0.5 (TFS1); 1:1.5:1.5:1 (TFS2); 3:3:3:1
+(TFS3) and 1.5:1:0.5:1 (TFS4) weight ratios to a concentration of 40 g/L. Then, 100 µL of the
+organic solution was added to a test tube and the organic solvent was removed using a
+ﬂow of nitrogen to form a lipid ﬁlm. The ﬁlm was rehydrated by adding 2 mL PBS solution,
+so the ﬁnal concentration of membrane components was 2 g/L. The resulting vesicular
+systems were further sonicated for 2 min using an amplitude of 55%.
+Ethanol injection method (EIM): Transfersomes were prepared by dissolving the
+appropriate amount of PC, S60, T20 and Cho in 5 mL of absolute ethanol, for a concentration
+of 20 g/L. The organic phase was injected, with a syringe pump (KD Scientiﬁc, Holliston,
+MA) at a ﬂow rate of 120 mL/h, into Milli-Q water that was kept at 60 ◦C and stirred at
+500 rpm, so the ﬁnal concentration of membrane components in aqueous phase was 2 g/L.
+Then, the ethanol was removed at 40 ◦C under low pressure (65 mbar) using a rotary vapor.
+Finally, the vesicular systems were sonicated for 2 min at 55% of amplitude.
+For MTM-loaded transfersomes, the same procedure was applied and MTM was
+added to the organic solution to obtain a ﬁnal concentration of 1 mg/mL in the aqueous
+phase (PBS).
+2.4. Nanocolloids Characterization
+2.4.1. Nanocolloids Size
+Mean Z-average size and PDI of vesicles were determined via Dynamic Light Scatter-
+ing (DSL) using a Zetasizer Nano ZS (Malvern Instruments Ltd., UK). Three independent
+samples were taken from each formulation, and measurements were carried out three times
+at room temperature without dilution.
+2.4.2. Nanocolloids Morphology
+The morphological analysis of nanocolloids was carried out by negative staining
+transmission electron microscopy (NS-TEM), using a JEOL-2000 Ex II TEM (Japan). A
+sample drop was placed on a carbon-coated copper grid and the sample excess was
+removed using ﬁlter paper.
+For the NVs’ characterization, a drop of 2% (w/v) phosphotungstic acid solution (PTA)
+was applied to the carbon grid and left to stand for 1 min. Once the excess staining agent
+
+J. Clin. Med. 2021, 10, 1358
+4 of 15
+was removed with ﬁlter paper, the sample was air-dried and the thin ﬁlm of stained and
+ﬁxed NVs was observed with the transmission electron microscope.
+2.4.3. Encapsulation Efﬁciency (EE)
+EE also gives useful information related to the stability of the vesicle membrane.
+Hydrophilic compounds are commonly entrapped in the aqueous core surrounded by the
+lipidic bilayer, while lipophilic components are preferentially located within the surfactant
+or lipid bilayer [31]. MTM was analyzed by reverse-phase high-performance liquid chro-
+matography (RP-HPLC) (HP series 1100 chromatograph, Hewlett Packard, USA). Before
+performing these analyses, non-encapsulated MTM was removed by using centrifugal ﬁlter
+units (EMD MilliporeTM AmiconTM Ultra-0.5 centrifugal ﬁlter units). Centrifugation was
+carried out for 20 min at 14600 rpm. Nanocolloids retained in the ﬁlter were resuspended
+in 500 µL sterile PBS solution.
+The RP-HPLC system was equipped with a UV/VIS absorbance detector HP G1315A
+and a ﬂuorescence detector 1260 Inﬁnity A (Agilent Technologies, Santa Clara, CA, USA).
+The column was a Zorbax Eclipse Plus C18 of 5 µm particle size, 4.6 mm × 150 mm (Agilent
+Technologies, USA). The mobile phase consisted of a mixture of (A) 100% milliQ-water;
+and (B) 100% methanol with gradient elution at 0.8 mL/min. The step gradient started
+with a mobile phase of 80%: (A) running 100% mobile phase; (B) in minute 5 for 10 min.
+The mobile phase (B) was fed for 2 min after each injection to prepare the column for the
+next sample. The analysis was carried out at 30 ◦C. The wavelength used for UV/VIS
+detector was 280 nm.
+2.5. Cell Culture, Drugs and Ethics Statement
+The myxoid liposarcoma model cell line MSC-5H-FC was generated by the sequential
+transformation of human bone marrow-derived mesenchymal stem/stromal cells (hBM-
+MSCs) with up to six oncogenic hits, including the fusion oncogene FUS-CHOP (FC), as
+previously reported and characterized [32,33]. The related cell line T-5H-FC#1 was derived
+from a xenograft tumor generated by MSC-5H-FC cells [33,34]. T-CDS17#4 is a cell line
+derived from a xenograft generated by the chrondrosarcoma primary cell line CDS17,
+which were fully described in a preceding work [35]. Healthy human BM-MSCs were
+obtained from Inbiobank (San Sebastian, Spain) and were functionally and phenotypically
+characterized in a previous work [32]. The identity of these cell lines has been authenticated
+by a short tandem repeats analysis during the last 5 months. All the cell lines were
+tested monthly for mycoplasma using the LONZA MycoAlert Mycoplasma Detection
+Kit (LONZA, Rockland CE) and cultured as previously described [33,35]. MTM was
+synthesized by EntreChem SL (Oviedo, Spain) as previously described [36]. Stocks of MTM
+were prepared as 10 mM solutions in DMSO, maintained at −20 ◦C, and diluted in culture
+medium to the ﬁnal concentration just before use. All experimental protocols have been
+performed in accordance with institutional review board guidelines and were approved by
+the Institutional Ethics Committee of the Principado de Asturias (ref. 255/19).
+2.6. Cell Viability Assays
+Cell viability of cell lines after the treatment with increasing concentrations of free
+MTM or MTM encapsulated in different nanocarriers was assayed using the Cell Pro-
+liferation reagent WST-1 (Roche, Mannheim, Germany) as described before [37]. The
+concentration of the half-maximal inhibition of viability (IC50) for each condition was
+calculated by nonlinear regression using the GraphPad Prism software (La Jolla, CA, USA).
+
+J. Clin. Med. 2021, 10, 1358
+5 of 15
+2.7. Tumorsphere Culture
+Cells were plated at a density of 5000 cells per well in 6-well low-attachment plates
+(Sigma, St Louis, MO, USA) and cultured in serum-free sphere medium containing DMEM-
+F12 (GE Healthcare, Pittsburg, PA, USA) supplemented with Glutamax (1:100; Life Tech-
+nologies, Carlsbad, CA, USA), B-27 Supplement (1:50; Life Technologies), Heparin (1:1000;
+Sigma), the growth factors human EGF (20 ng/mL) and human bFGF (10 ng/ ml; Pe-
+proTech, London, UK). Fresh aliquots of EGF and bFGF were added every three days.
+To analyze the effects of drugs, the tumorspheres formed after 10 days of culture were
+incubated in sphere medium containing different concentrations of the drugs for 3 days.
+After the treatments, tumorspheres were scored and cell viability was determined using
+the Cell Proliferation reagent WST-1. [38].
+2.8. Western Blotting
+The preparation of protein extracts and the protocol for Western blotting analysis were
+previously reported [39]. The following primary antibodies were used at the indicated
+dilutions: anti-SP1 [(9389), 1:1000 dilution] from Cell Signaling (Danvers, MA, USA); anti-c-
+MYC [(sc-40), 1:100], anti-VEGF [(sc-57496), 1:100], and anti-IGF1-R [(sc-81464, 1:100] from
+Santa Cruz Biotechnology (Dallas, TX, USA); and anti-β-Actin [(A5441), 1:10,000] from
+Sigma. IRDye Infrared Fluorescent secondary antibodies IRDye 800CW and IRDye-680RD
+(LI-COR Biosciences, Lincoln, NE, USA) were used for signal detection using an Odyssey
+Fc imaging system and the software Image Studio (LICOR). Uncropped images of the
+Western blots are shown in Figure S1.
+2.9. Nanocolloids/MTM Confocal Imaging
+Synthesized nanocolloids were tagged by adding 1% (v/v) of headgroup Cy5 labelled
+PC (850483C, Avanti Polar Lipids, Alabaster, Alabama, USA) to the membrane component
+mixture. After an in vitro treatment, MTM and labelled PLGA polymeric micelles were
+observed by confocal microscopy using Leica TCS-SP8X microscope (Photon Microscopy
+and Image Processing Unit, University of Oviedo). MTM detection was performed at
+395/535 nm excitation/emission pair and Cy5 tagged nanoparticles at 649/666 nm.
+3. Results
+3.1. Nanocolloids Characterization
+Table 1 summarizes mean sizes, PDI and EE values of both PLGA polymeric micelles
+and transferosome NVs. The sizes obtained by DLS were in the range of 210–267 nm
+for the PLGA polymeric micelles, which is an indication that all formulations present
+an appropriate size with a narrow PDI between 0.083 and 0.137. It is important to point
+out that the size measured by DLS corresponds to the hydrodynamic diameter which is
+normally larger than the one observed under TEM due to the double layer of ions and
+counterions that surround the nanocolloids in solution. TEM micrographs (Figure 1A)
+revealed sizes in the range of 100–150 nm. It was also observed that EE was higher in
+PLGA1 (S60:Cho) polymeric micelles (87%), formulated using cholesterol and without PC.
+This is in line with previous studies showing that cholesterol at low concentrations can
+increase EE [40].
+Transfersomes include the presence of both phospholipids and surfactants, sharing
+the properties of both types of systems. For the TFS formulations, the amount of membrane
+compounds added to the organic phase was optimized using PC, Span®60, Tween®20
+and Cho membrane components. This formulation was used since it is one of the most
+common formulations studied in previous works [41–43]. Cho is commonly used as a
+membrane stabilizer for NV preparation to improve stability, membrane elasticity and EE.
+However, cholesterol slightly increases vesicle size. It has also been reported that Cho
+plays an important role in niosome formulation when hydrophilic surfactants (as is the
+case of Tween®20) are used as the main membrane compounds [41]. The sizes obtained by
+DLS were in the range of 97–133 nm, with similar sizes observed in TFS–TFH and TFS–EIM
+
+J. Clin. Med. 2021, 10, 1358
+6 of 15
+nanoparticles. PDI values were relatively low for TFS–EIM formulations while TFS–TFH
+particles showed a broader size distribution (PDI values between 0.37 and 0.40), which
+is consistent with the literature when this method is used [44]. TEM micrographs were
+in good agreement with the sizes reported by DLS for all TFS formulations (Figure 1B).
+EE values were similar for both methods of transferosome preparation and varied from
+50% to 58%. Interestingly, MTM accumulated in the membrane bilayer of the TFS2–TFH
+nanoparticles, thus indicating that MTM has been entrapped in the lipophilic region of
+these NVs. (Figure 1B). This ﬁnding was in good agreement with the previous results
+reporting that hydrophilic molecules could interact with the hydrophilic portion of the
+membrane compounds at the NVs/water interface of encapsulating NVs when they were
+prepared by the TFH method [44].
+Table 1. Polymeric micelles and transfersomes size (nm) in terms of Z average, intensity and number,
+polydispersity index (PDI), encapsulation efﬁciency (EE).
+Formulation
+Z-Average
+Size (nm)
+PDI
+EE
+(%)
+PLGA polymeric
+micelles
+PLGA1
+S60:Cho (1:0.5)
+216 ± 26
+0.101 ± 0.039
+87 ± 15
+PLGA2
+S60
+267 ± 57
+0.137 ± 0.02
+82.5 ± 4.0
+PLGA3
+PC
+210 ± 5
+0.084 ± 0.02
+63.8 ± 12.3
+PLGA4
+S60:PC (1:1)
+221 ± 2
+0.083 ± 0.02
+76.4 ± 14.5
+TFS–EIM
+TFS1–EIM
+PC:S60:20:Cho
+(1:0.5:0.5:0.5)
+115 ± 9
+0.240 ± 0.018
+58 ± 15
+TFS2–EIM
+PC:S60:20:Cho
+(1:1.5:1.5:1)
+126 ± 4
+0.246 ± 0.004
+52 ± 18
+TFS3–EIM
+PC:S60:T20:Cho
+(3:3:3:1)
+117 ± 5
+0.235 ± 0.021
+51 ± 10
+TFS4–EIM
+PC:S60:T20:Cho
+(1.5:1:0.5:1)
+126 ± 3
+0.244 ± 0.005
+50 ± 11
+TFS–TFH
+TFS1–TFH
+PC:S60:20:Cho
+(1:0.5:0.5:0.5)
+107 ± 4
+0.400 ± 0.008
+52 ± 14
+TFS2–TFH
+PC:S60:20:Cho
+(1:1,5:1,5:1)
+127 ± 29
+0.382 ± 0.074
+50 ± 16
+TFS3–TFH
+PC:S60:T20:Cho
+(3:3:3:1)
+97 ± 7
+0.388 ± 0.053
+56 ± 4
+TFS4–TFH
+PC:S60:20:Cho
+(1.5:1:0.5:1)
+133 ± 39
+0.366 ± 0.074
+52 ± 11
+
+J. Clin. Med. 2021, 10, 1358
+7 of 15
+Figure 1. TEM micrographs of PLGA polymeric micelles and transfersomes containing mithramycin (MTM): (A) PLGA
+polymeric micelles prepared with Span60:Cholesterol (1:0.5)(PLGA1) by the solvent evaporation method containing MTM;
+(B) transfersomes formulated with PC:S60:20:Cho (1:1.5:1.5:1) prepared by the TFH method (TFS2-TFH) containing MTM.
+Red arrows indicate the presence of MTM in the membrane bilayer of transfersomes. Scale bar: 100 nm.
+For the subsequent testing of the cytotoxic activity of encapsulated MTM in sarcoma
+cells, we chose PLGA1 formulation, since it represents the polymeric micelles with the
+highest EE percentage and an adequate size. Regarding transferosome particles, given the
+similarity of sizes and EE obtained by both methods, TFS2-TFH and TFS4-TFH formulations
+were selected for further testing due to the great advantage this method offers, since it
+allows the preparation of a rather smaller volume of samples compared to the EIM one. The
+MTM concentration achieved in nanoparticles ranged from 443 to 547 µg/mL for PLGA1,
+from 365 to 463 µg/mL for TFS2–TFH, and from 433 to 579 µg/mL for TFS4–TFH. These
+concentrations allow the treatment of pre-clinical models with doses above the maximum
+tolerated dose described for MTM (2 mg/Kg).
+3.2. Free and Encapsulated MTM Shows Similar Cytotoxic Effect in Sarcoma Cells
+To study the ability of encapsulated MTM to target sarcoma cells, we ﬁrst prepared
+MTM-loaded PLGA1 polymeric micelles including the headgroup Cy5 labelled PC and de-
+tected both MTM- (535 nm) and Cy5-emitted ﬂuorescence (666 nm) by confocal microscopy.
+After the two-hour treatment of the liposarcoma model, T-5H-FC#1 cells with MTM-loaded
+PLGA nanoparticles we observed both types of ﬂuorescence in most cells, thus indicating
+that nanoparticles can efﬁciently enter and release MTM inside sarcoma cells (Figure 2A).
+Then, we compared the cytotoxic effect induced by free MTM and MTM loaded in
+PLGA1 (PLGA1–MTM), TFS2–TFH (TFS2–MTM), and TFS4–TFH (TFS4–MTM) nanoparti-
+cles in sarcomas cells. In these experiments, we found that MTM encapsulation does not
+affect its anti-tumor activity. Thus, T-5H-FC#1 liposarcoma cells (IC50 ≈18–32 nM) and
+T-CDS17#4 chondrosarcoma cells (IC50 ≈40–81 nM) were both sensitive to the nanomolar
+concentrations of all assayed MTM formulations (Figure 2B,C).
+The anti-proliferative activity of free MTM in the primary cultures of non-transformed
+human BM-MSCs (IC50 = 350 nM) is 10–20 lower than that observed in T-5H-FC#1 cells,
+originally derived from transformed BM-MSCs. Interestingly, MTM encapsulation in
+any of the assayed nano-formulations was able to reduce two times the anti-proliferative
+activity of free MTM in healthy BM-MSCs (IC50 ≈745–790 nM) (Figure 2D). In all cases,
+empty nanoparticles do not show any cytotoxic effect in both neoplastic or healthy cells at
+equivalent concentrations of MTM-loaded nanoparticles (Figure 2B–D).
+
+J. Clin. Med. 2021, 10, 1358
+8 of 15
+Figure 2. Anti-proliferative effect of the free MTM and nano-encapsulated MTM in sarcoma cells and hBM-MSCs: (A)
+confocal microscopy detection of ﬂuorescence emitted by MTM (green ﬂuorescence; left panels) and Cy5 (red ﬂuorescence;
+middle panels) in T-5H-FC#1 cells treated with DMSO (control) or 1 µM MTM loaded in Cy5-labelled NVs-C for 2 h. Bright
+ﬁeld images merged with green and red ﬂuorescence emissions are also shown (right panels). Bar scale = 57.9 µm. (B–D) Cell
+viability (WST1 assay) measured after the treatment of the mixoid liposarcoma model T-5H-FC#1 (B); the patient-derived
+chondrosarcoma cell line T-CDS17#4; (C) or a culture of non-transformed hBM-MSCs (D) with increasing concentrations
+of MTM for 72 h. The effect of equivalent amounts of empty nanoparticles are shown. IC50 values for each treatment are
+indicated. Error bars represent the standard deviation of three independent experiments.
+3.3. Nano-Encapsulated MTM Targets Cancer Stem Cells (CSCs) Subpopulations in Sarcoma.
+Cancer stem cell (CSC) subpopulations are thought to be responsible for tumor main-
+tenance, being directly associated with invasion and metastatic dissemination [45]. Rele-
+vantly, MTM has demonstrated its potential to eliminate CSC subpopulations in different
+types of cancer [12,14,15,17]. CSC-enriched cell culture can be obtained by growing cells
+as ﬂoating 3D tumorspheres [34]. Therefore, we tested the ability of the different MTM
+formulations to target CSCs by analyzing their anti-proliferative effect in tumorsphere
+cultures.
+Using this 3D model, we ﬁnd that both free MTM and all assayed MTM nano-delivery
+systems are equally able to decrease the number and the size of T-5H-FC#1 tumorspheres
+(Figure 3A,B). Furthermore, empty nanoparticles do not induce any cytotoxic effect against
+CSC-enriched cultures (Figure 3C).
+
+J. Clin. Med. 2021, 10, 1358
+9 of 15
+Figure 3. Effect of free and nano-encapsulated MTM in CSC-enriched 3D sarcoma cell cultures. (A) Cells were plated
+at low density in tumorsphere medium and left to form tumorspheres for 10 days before treating them for 72 h with
+increasing concentrations of MTM. Treatments with an amount of empty nanoparticles corresponding to 10 µM (Ce) were
+also included. Scale bars = 250 µm. (B,C) Quantiﬁcation of the spheres (represented as % of control) remaining after the
+treatment with MTM-loaded nanoparticles; (B) or with empty nanoparticles (C). Error bars represent the standard deviation
+of three independent experiments.
+3.4. Free and MTM-Loaded Nanoparticles Inhibit SP1 Pathway Similarly
+The anti-tumor activity of MTM relies on its capacity to bind GC-rich DNA regions
+and thus inhibit the gene expression mediated by pro-oncogenic transcription factors such
+as SP1 [5,46,47]. Therefore, we characterized the ability of the different MTM formulations
+to repress at the protein level the expression of SP1 and a panel SP1 downstream targets,
+such as C-MYC, IGF1-R and VEGF [48]. We ﬁnd that both free and encapsulated MTM
+induce an efﬁcient dose–response-dependent repression of all analyzed targets in T-5H-
+FC#1 cells (Figure 4). An MTM concentration of 1 µM was able to almost completely inhibit
+the expression of all targets after 24 h of treatment. Moreover, no effect was observed after
+the treatment with empty nanoparticles (Figure 4).
+These results conﬁrmed that MTM encapsulated in polymeric nanoparticles and
+transfersomes mimic the ability of free MTM to inhibit the expression of important pro-
+tumor factors in sarcoma cells.
+
+J. Clin. Med. 2021, 10, 1358
+10 of 15
+Figure 4. Inhibition of SP1 signaling by free and nano-encapsulated MTM. Western blotting analyses of SP1 and several SP1
+downstream targets in T-5H-FC#1 cells treated with the indicated concentrations of the different MTM formulations for 24 h.
+A treatment with empty nanoparticles (Ce) at a concentration equivalent to the higher encapsulated MTM dosage was also
+included. The expression of β-actin was used as the loading control.
+4. Discussion
+MTM is a natural antibiotic approved by the FDA for the treatment of hypercal-
+cemia [49]. This drug was also evaluated in the past for the treatment of several leukemias
+and solid tumors. Indeed, MTM demonstrated good anti-tumor responses in patients with
+testicular carcinoma, glioblastoma or Ewing sarcoma [6,50,51]. However, the appearance of
+severe systemic toxicities, in combination with the development of other successful and less
+toxic treatment regimens has limited the clinical use of MTM [7,8,50,52]. More recently, the
+discovery of new ﬁndings regarding the ability of MTM to block the signaling mediated by
+pro-oncogenic factors, such as SP1, EWS-FLI1, or SMARCB1-deﬁcient SWI/SNF chromatin
+remodeling complexes, has renewed interest in this drug [5,6,9,46,47,53].
+To clinically exploit these interesting anti-tumor properties of mithramycin while man-
+aging its adverse effects, different strategies have been developed. First, the development
+of second-generation mithramycin analogs, such as EC-8042, which show a similar efﬁcacy
+in inhibiting SP1-mediated transcription activity and anti-stemness potential but much less
+toxicity, open the possibility of using these compounds in the clinic [16,54]. Additionally,
+according to newly described mechanisms of action of MTM, drug combinations with
+synergistic activity in different tumor types have been reported. Thus, recent studies have
+found that the combination of MTM with CDK9 inhibitors or the semisynthetic taxane
+cabazitaxel resulted in improved anti-tumor activity and/or limited MTM-toxicity in Ew-
+ing sarcoma [10] and B-cell acute lymphoblastic leukemia [11], respectively. Finally, MTM
+encapsulation in different delivery systems is being evaluated as a way to improve its clini-
+cal utility. A few studies previously reported protocols to encapsulate MTM in Ca2+-loaded
+large unilamellar vesicles (LUVs) [28], in PLGA nanoparticles through single-emulsion
+solvent evaporation or nanoprecipitation techniques [25,26], and other types of polymeric
+micelles using microﬂuidic technology [27]. In addition, several MTM analogues have
+also been formulated in cross-linked micelles [55]. Here, we used new reﬁned methods to
+synthesize controlled size PLGA polymeric micelles and transfersomes that allow the direct
+encapsulation of MTM. For the synthesis of PLGA micelles, we tested different nanoparticle
+formulations by modifying the main amphiphilic component of the micelle, i.e., using
+both non-ionic surfactant, phospholipid, or a combination of both. In addition, we also
+studied the effect of adding a membrane stabilizer (cholesterol) following the method
+(emulsion/solvent evaporation) reported by Wang et al. to encapsulate doxorubicin [56].
+This could affect the interactions between the polar heads or hydrophobic chains with the
+PLGA and MTM and therefore affect the ﬁnal colloidal stability, size, PDI and EE. The
+ability of our PLGA micelles to entrap MTM (up to 87%) were higher than that reported
+
+J. Clin. Med. 2021, 10, 1358
+11 of 15
+by Wang et al. for doxorubicin encapsulation (44%) using the same method with soybean
+lecithin as the main micelle component [56]. This method was also used by Liu et al. to
+encapsulate MTM in poly-ethylene glycol-coated PLGA nanoparticles [26]. The formu-
+lations used by these authors yielded smaller nanoparticles (25 nm) with a lower EE of
+29.5%. In addition, MTM was encapsulated in by Cohen-Sela et al. in PLGA nanoparticles
+using different approaches. These authors show that a modiﬁed emulsion/solvent method
+formed nanoparticles of 110 nm with EE values of 41%, while a double emulsion solvent
+diffusion method or a nanoprecipitation technique produced particles of 130–160 nm and
+a higher EE of 80%, similar to that measured in our PLGA micelles [25]. Capretto et al.
+demonstrated that MTM can be efﬁciently encapsulated in polymeric micelles based on
+Pluronic® block copolymers by a new microﬂuidic approach. In this case, the sizes obtained
+were smaller, as expected regarding the microﬂuidic method used, being in the range of
+60–90 nm, with a percentage of drug incorporated in the polymeric micelles ranging from
+55% to 92% but with a total concentration of MTM encapsulated from 0.5 to 40 µg/mL [27].
+Similar to polymeric nanoparticles, the size of lipidic NVs is also governed by their
+composition and preparation method. Previous studies by our group aimed at optimizing
+the encapsulation of compounds of various natures in different types of NVs (niosomes,
+liposomes and transfersomes) showed that both EIM and TFH methods were capable
+of producing transfersomes with a favorable size range (100–200 nm) and high EE val-
+ues [41,57]. Notably, TFH has demonstrated its potential to efﬁciently entrap difﬁcult-to-
+encapsulate hydrophilic drugs, as is the case with MTM [44]. The only previous attempt
+to encapsulate MTM in lipid nanoparticles was reported in 1997 by Frézard et al. These
+authors showed that MTM can be indirectly encapsulated within LUVs, made from di-
+palmitoylphosphatidylcholine and cholesterol, only when the liposomes containing Ca2+
+and were resuspended in a Ca2+-free medium. Using this formulation, MTM and Ca2+
+formed a high afﬁnity complex inside the inner aqueous core of the liposomes, leading to
+reach EE values up to 60% [28]. In our study, we produced transfersomes presenting similar
+EE values and also with the advantage that the preparation methods used here, both EIM
+and TFH, which allows direct encapsulation, thus facilitating subsequent applications as
+nanocarriers for cancer cell treatment.
+Here, we used our MTM nano-delivery systems to assay its potential to target sarcoma
+cells. We showed that all assayed MTM nano-formulations retain the efﬁcient anti-tumor
+activity of free MTM, both in a cell-of-origin model of sarcoma-initiating cells and a patient-
+derived model of chondrosarcoma. Interestingly, MTM-nanoparticles resulted as less toxic
+than free MTM to normal BM-MSCs. Therefore, it may be speculated that these nanocarriers
+have the potential to increase the therapeutic window of MTM. The exact mechanism by
+which nano-encapsulated MTMs show a safer proﬁle in healthy cells in vitro is yet to be
+clariﬁed, but it may be due to the differential effect of the sustained drug release in tumoral
+and non-tumoral cells, as suggested for other drugs such as doxorubicin [58]. In any case,
+future in vivo analyses should be performed to conﬁrm that MTM encapsulation is able
+to reduce the systemic toxicity of this drug, making possible the safe administration of
+concentrations capable of inhibiting tumor growth in vivo.
+The cytotoxic effect of nanocarrier-delivered MTM is accompanied by an efﬁcient
+ability to inhibit the expression of SP1 and other well-known SP1 downstream targets.
+This transcription factor has been reported to control tumor growth and promote drug
+resistance both in soft tissue sarcoma [59,60] and bone sarcomas [61]. Relevantly, we previ-
+ously showed that the inhibition of SP1 with the mithramycin analog EC-8042 was able to
+efﬁciently inhibit the growth of our myxoid liposarcoma model [13,16]. Among the SP1
+downstream targets, that we found to be efﬁciently downregulated by MTM, there are
+some of the genes most commonly ampliﬁed/upregulated in sarcomas, such as C-MYC,
+VEGF or IGF1R [62–65]. Several targeted therapies against most of these factors have been
+investigated and used for sarcoma treatment in recent years. For instance, anti-VEGF treat-
+ments, such as apatinib or pazopanib, have been used for the treatment of leiomyosarcoma
+and other soft tissue sarcomas [1,66]. However, some improvements have been found
+
+J. Clin. Med. 2021, 10, 1358
+12 of 15
+in speciﬁc cases, where these targeted therapies directed to a particular target have not
+demonstrated a higher efﬁcacy as ﬁrst-line treatments than standard chemotherapy in most
+cases of sarcoma. We speculate that treatments such as nano-delivered MTM, which are
+able to simultaneously inhibit several well-known driver oncogenes in sarcoma, may have
+a higher impact on the patient’s outcome.
+Another recently reported interesting property of MTM and MTM analogues is their
+ability to target the tumorigenic and invasive CSC subpopulations in different tumor types.
+Thus, MTM was able to downregulate the expression of genes associated with the CSC
+phenotype and target CSC subpopulations in glioblastoma [15], medulloblastoma [17],
+lung cancer [12] and colon cancer [14]. In a similar way, we showed that EC-8042 was able
+to inhibit the expression of a panel of CSC markers and demonstrated a higher ability to
+target CSCs in vivo than other chemotherapeutics drugs in sarcoma cells [13,16]. Here,
+we show that nano-encapsulated MTM is able to reduce the viability of CSC-enriched
+tumorspheres, hence conﬁrming that these formulations keep the anti-stemness potential
+of free MTM and MTM analogues.
+5. Conclusions
+Overall, we provide new formulations for the efﬁcient nano-encapsulation of MTM.
+These MTM-delivery systems retain the anti-tumor and anti-stemness potential of free
+MTM in sarcoma cells, therefore suggesting that they may constitute a safer MTM-delivering
+alternative to be explored for future clinical uses.
+Supplementary Materials: The following are available online at https://www.mdpi.com/article/10
+.3390/jcm10071358/s1, Figure S1: Whole Western blotting images from Figure 4.
+Author Contributions: Conceptualization, R.R., M.M., M.d.C.B.-L. and G.G.; methodology, Ó.E.,
+P.S., C.R., V.R. and D.M.; formal analysis, Ó.E., G.G., M.d.C.B.-L., M.M., and R.R.; investigation,
+Ó.E., P.S., C.R., V.R. and D.M.; resources; F.M.; data curation, Ó.E., G.G., M.d.C.B.-L., M.M., and
+R.R.; writing—original draft preparation, M.M. and R.R.; writing—review and editing, R.R., M.M.,
+M.d.C.B.-L., G.G. and F.M.; supervision, R.R., M.M., M.d.C.B.-L. and G.G.; funding acquisition, R.R.
+and M.d.C.B.-L. All authors have read and agreed to the published version of the manuscript.
+Funding: This work was funded by the Agencia Estatal de Investigación (AEI)/Fondo Europeo de
+Desarrollo Regional (FEDER) [Ministerio de Ciencia e Innovación (MICINN, Spain) under Grants
+MAT2017-84959-C2-1-R to MCBL and PID2019-106666RB-I00 and SAF2016-75286-R to R.R. and
+Instituto de Salud Carlos III (ISCIII, Spain) through the Consorcio CIBERONC (CB16/12/00390)].
+This study was also ﬁnanced by the Consejería de Economía y Empleo del Principado de Asturias
+(Plan de Ciencia, Tecnología e Innovación 2013–2017), under the Grants IDI/2018/000185 and
+IDI/2018/155 and the Severo Ochoa predoctoral fellowship (BP-17-108) to O.E. Support from the
+European Regional Development Fund (ERDF) is gratefully acknowledged. This study was also
+funded by Europa Investigación (ref: EUIN2019-103338).
+Institutional Review Board Statement: The study was conducted according to the guidelines of the
+Declaration of Helsinki, and approved by the Institutional Ethics Committee of the Principado de
+Asturias (protocol code 46/16 approved on 8 April 2016 and protocol code 255/19 approved on 28
+February 2020).
+Informed Consent Statement: Not applicable.
+Data Availability Statement: Data presented in this study are available in Supplementary Figure S1.
+Conﬂicts of Interest: F.M. is an employee and reports ownership of stock of EntreChem SL. All
+other authors declare they have no competing interests. The funders had no role in the design of the
+study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the
+decision to publish the results.
+
+J. Clin. Med. 2021, 10, 1358
+13 of 15
+References
+1.
+Grunewald, T.G.; Alonso, M.; Avnet, S.; Banito, A.; Burdach, S.; Cidre-Aranaz, F.; Di Pompo, G.; Distel, M.; Dorado-Garcia, H.;
+Garcia-Castro, J.; et al. Sarcoma treatment in the era of molecular medicine. EMBO Mol. Med. 2020, 12, e11131. [CrossRef]
+2.
+Casali, P.G.; Abecassis, N.; Aro, H.T.; Bauer, S.; Biagini, R.; Bielack, S.; Bonvalot, S.; Boukovinas, I.; Bovee, J.; Brodowicz, T.; et al.
+Soft tissue and visceral sarcomas: ESMO-EURACAN Clinical Practice Guidelines for diagnosis, treatment and follow-up. Ann.
+Oncol. 2018, 29, iv51–iv67. [CrossRef] [PubMed]
+3.
+Casali, P.G.; Bielack, S.; Abecassis, N.; Aro, H.T.; Bauer, S.; Biagini, R.; Bonvalot, S.; Boukovinas, I.; Bovee, J.; Brennan, B.; et al.
+Bone sarcomas: ESMO-PaedCan-EURACAN Clinical Practice Guidelines for diagnosis, treatment and follow-up. Ann. Oncol.
+2018, 29, iv79–iv95. [CrossRef]
+4.
+Lombó, F.; Menéndez, N.; Salas, J.A.; Méndez, C. The aureolic acid family of antitumor compounds: Structure, mode of action,
+biosynthesis, and novel derivatives. Appl. Microbiol. Biotechnol. 2006, 73, 1–14. [CrossRef]
+5.
+Miller, D.M.; Polansky, D.A.; Thomas, S.D.; Ray, R.; Campbell, V.W.; Sanchez, J.; Koller, C.A. Mithramycin selectively inhibits
+transcription of G-C containing DNA. Am. J. Med. Sci. 1987, 294, 388–394. [CrossRef] [PubMed]
+6.
+Grohar, P.J.; Woldemichael, G.M.; Grifﬁn, L.B.; Mendoza, A.; Chen, Q.R.; Yeung, C.; Currier, D.G.; Davis, S.; Khanna, C.; Khan, J.;
+et al. Identiﬁcation of an inhibitor of the EWS-FLI1 oncogenic transcription factor by high-throughput screening. J. Natl. Cancer
+Inst. 2011, 103, 962–978. [CrossRef]
+7.
+Green, L.; Donehower, R.C. Hepatic toxicity of low doses of mithramycin in hypercalcemia. Cancer Treat. Rep. 1984, 68, 1379–1381.
+[PubMed]
+8.
+Monto, R.W.; Talley, R.W.; Caldwell, M.J.; Levin, W.C.; Guest, M.M. Observations on the mechanism of hemorrhagic toxicity in
+mithramycin (NSC 24559) therapy. Cancer Res. 1969, 29, 697–704. [PubMed]
+9.
+Bailey, K.; Cost, C.; Davis, I.; Glade-Bender, J.; Grohar, P.; Houghton, P.; Isakoff, M.; Stewart, E.; Laack, N.; Yustein, J.; et al.
+Emerging novel agents for patients with advanced Ewing sarcoma: A report from the Children’s Oncology Group (COG) New
+Agents for Ewing Sarcoma Task Force. F1000Research 2019, 8. [CrossRef] [PubMed]
+10.
+Flores, G.; Everett, J.H.; Boguslawski, E.A.; Oswald, B.M.; Madaj, Z.B.; Beddows, I.; Dikalov, S.; Adams, M.; Klumpp-Thomas,
+C.A.; Kitchen-Goosen, S.M.; et al. CDK9 Blockade Exploits Context-dependent Transcriptional Changes to Improve Activity and
+Limit Toxicity of Mithramycin for Ewing Sarcoma. Mol. Cancer Ther. 2020, 19, 1183–1196. [CrossRef]
+11.
+Nair, R.R.; Piktel, D.; Geldenhuys, W.J.; Gibson, L.F. Combination of cabazitaxel and plicamycin induces cell death in drug
+resistant B-cell acute lymphoblastic leukemia. Leuk Res. 2018, 72, 59–66. [CrossRef]
+12.
+Dong, P.; Xiong, Y.; Hanley, S.J.B.; Yue, J.; Watari, H. Musashi-2, a novel oncoprotein promoting cervical cancer cell growth
+and invasion, is negatively regulated by p53-induced miR-143 and miR-107 activation. J. Exp. Clin. Cancer Res. 2017, 36, 150.
+[CrossRef] [PubMed]
+13.
+Menendez, S.T.; Rey, V.; Martinez-Cruzado, L.; Gonzalez, M.V.; Morales-Molina, A.; Santos, L.; Blanco, V.; Alvarez, C.; Estupinan,
+O.; Allonca, E.; et al. SOX2 Expression and Transcriptional Activity Identiﬁes a Subpopulation of Cancer Stem Cells in Sarcoma
+with Prognostic Implications. Cancers 2020, 12, 964. [CrossRef]
+14.
+Quarni, W.; Dutta, R.; Green, R.; Katiri, S.; Patel, B.; Mohapatra, S.S.; Mohapatra, S. Mithramycin A Inhibits Colorectal Cancer
+Growth by Targeting Cancer Stem Cells. Sci. Rep. 2019, 9, 15202. [CrossRef] [PubMed]
+15.
+Singh, D.K.; Kollipara, R.K.; Vemireddy, V.; Yang, X.L.; Sun, Y.; Regmi, N.; Klingler, S.; Hatanpaa, K.J.; Raisanen, J.; Cho, S.K.; et al.
+Oncogenes Activate an Autonomous Transcriptional Regulatory Circuit That Drives Glioblastoma. Cell Rep. 2017, 18, 961–976.
+[CrossRef]
+16.
+Tornin, J.; Martinez-Cruzado, L.; Santos, L.; Rodriguez, A.; Nunez, L.E.; Oro, P.; Hermosilla, M.A.; Allonca, E.; Fernandez-Garcia,
+M.T.; Astudillo, A.; et al. Inhibition of SP1 by the mithramycin analog EC-8042 efﬁciently targets tumor initiating cells in sarcoma.
+Oncotarget 2016, 7, 30935–30950. [CrossRef] [PubMed]
+17.
+Vanner, R.J.; Remke, M.; Gallo, M.; Selvadurai, H.J.; Coutinho, F.; Lee, L.; Kushida, M.; Head, R.; Morrissy, S.; Zhu, X.; et al.
+Quiescent sox2(+) cells drive hierarchical growth and relapse in sonic hedgehog subgroup medulloblastoma. Cancer Cell 2014,
+26, 33–47. [CrossRef]
+18.
+Banik, B.L.; Fattahi, P.; Brown, J.L. Polymeric nanoparticles: The future of nanomedicine. Wiley Interdiscip Rev. Nanomed.
+Nanobiotechnol. 2016, 8, 271–299. [CrossRef]
+19.
+Awasthi, R.; Roseblade, A.; Hansbro, P.M.; Rathbone, M.J.; Dua, K.; Bebawy, M. Nanoparticles in Cancer Treatment: Opportunities
+and Obstacles. Curr. Drug Targets 2018, 19, 1696–1709. [CrossRef] [PubMed]
+20.
+Bahrami, B.; Hojjat-Farsangi, M.; Mohammadi, H.; Anvari, E.; Ghalamfarsa, G.; Youseﬁ, M.; Jadidi-Niaragh, F. Nanoparticles and
+targeted drug delivery in cancer therapy. Immunol. Lett. 2017, 190, 64–83. [CrossRef] [PubMed]
+21.
+Golombek, S.K.; May, J.N.; Theek, B.; Appold, L.; Drude, N.; Kiessling, F.; Lammers, T. Tumor targeting via EPR: Strategies to
+enhance patient responses. Adv. Drug Deliv. Rev. 2018, 130, 17–38. [CrossRef] [PubMed]
+22.
+Asghari, F.; Khademi, R.; Esmaeili Ranjbar, F.; Veisi Malekshahi, Z.; Faridi Majidi, R. Application of Nanotechnology in Targeting
+of Cancer Stem Cells: A Review. Int. J. stem. Cells 2019, 12, 227–239. [CrossRef] [PubMed]
+23.
+Kang, M.H.; Wang, J.; Makena, M.R.; Lee, J.S.; Paz, N.; Hall, C.P.; Song, M.M.; Calderon, R.I.; Cruz, R.E.; Hindle, A.; et al. Activity
+of MM-398, nanoliposomal irinotecan (nal-IRI), in Ewing’s family tumor xenografts is associated with high exposure of tumor to
+drug and high SLFN11 expression. Clin. Cancer Res. 2015, 21, 1139–1150. [CrossRef]
+24.
+Porche, D.J. Liposomal doxorubicin (Doxil). J. Assoc. Nurses AIDS Care 1996, 7, 55–59. [CrossRef]
+
+J. Clin. Med. 2021, 10, 1358
+14 of 15
+25.
+Cohen-Sela, E.; Teitlboim, S.; Chorny, M.; Koroukhov, N.; Danenberg, H.D.; Gao, J.; Golomb, G. Single and double emulsion
+manufacturing techniques of an amphiphilic drug in PLGA nanoparticles: Formulations of mithramycin and bioactivity. J. Pharm.
+Sci. 2009, 98, 1452–1462. [CrossRef]
+26.
+Liu, X.J.; Li, L.; Liu, X.J.; Li, Y.; Zhao, C.Y.; Wang, R.Q.; Zhen, Y.S. Mithramycin-loaded mPEG-PLGA nanoparticles exert potent
+antitumor efﬁcacy against pancreatic carcinoma. Int. J. Nanomed. 2017, 12, 5255–5269. [CrossRef] [PubMed]
+27.
+Capretto, L.; Mazzitelli, S.; Brognara, E.; Lampronti, I.; Carugo, D.; Hill, M.; Zhang, X.; Gambari, R.; Nastruzzi, C. Mithramycin
+encapsulated in polymeric micelles by microﬂuidic technology as novel therapeutic protocol for beta-thalassemia. Int. J. Nanomed.
+2012, 7, 307–324. [CrossRef]
+28.
+Frézard, F.; Garnier-Suillerot, A.; Demicheli, C. Encapsulation of Mithramycin in Liposomes in Response to a Transmembrane
+Gradient of Calcium Ions. J. Incl. Phenom. Mol. Recognit. Chem. 1997, 28, 51–62. [CrossRef]
+29.
+El-Hammadi, M.M.; Arias, J.L. An update on liposomes in drug delivery: A patent review (2014–2018). Expert. Opin. Ther. Pat.
+2019, 29, 891–907. [CrossRef] [PubMed]
+30.
+Garg, V.; Singh, H.; Bimbrawh, S.; Singh, S.K.; Gulati, M.; Vaidya, Y.; Kaur, P. Ethosomes and Transfersomes: Principles,
+Perspectives and Practices. Curr. Drug Deliv. 2017, 14, 613–633. [CrossRef] [PubMed]
+31.
+Devaraj, G.N.; Parakh, S.R.; Devraj, R.; Apte, S.S.; Rao, B.R.; Rambhau, D. Release Studies on Niosomes Containing Fatty Alcohols
+as Bilayer Stabilizers Instead of Cholesterol. J. Colloid Interface Sci. 2002, 251, 360–365. [CrossRef] [PubMed]
+32.
+Rodriguez, R.; Rosu-Myles, M.; Aráuzo-Bravo, M.; Horrillo, A.; Pan, Q.; Gonzalez-Rey, E.; Delgado, M.; Menendez, P. Human
+bone marrow stromal cells lose immunosuppressive and anti-inﬂammatory properties upon oncogenic transformation. Stem. Cell
+Reports 2014, 3, 606–619. [CrossRef]
+33.
+Rodriguez, R.; Tornin, J.; Suarez, C.; Astudillo, A.; Rubio, R.; Yauk, C.; Williams, A.; Rosu-Myles, M.; Funes, J.M.; Boshoff, C.;
+et al. Expression of FUS-CHOP fusion protein in immortalized/transformed human mesenchymal stem cells drives mixoid
+liposarcoma formation. Stem. Cells 2013, 31, 2061–2072. [CrossRef]
+34.
+Martinez-Cruzado, L.; Tornin, J.; Santos, L.; Rodriguez, A.; Garcia-Castro, J.; Moris, F.; Rodriguez, R. Aldh1 Expression and
+Activity Increase During Tumor Evolution in Sarcoma Cancer Stem Cell Populations. Sci. Rep. 2016, 6, 27878. [CrossRef]
+[PubMed]
+35.
+Rey, V.; Menendez, S.T.; Estupinan, O.; Rodriguez, A.; Santos, L.; Tornin, J.; Martinez-Cruzado, L.; Castillo, D.; Ordonez, G.R.;
+Costilla, S.; et al. New Chondrosarcoma Cell Lines with Preserved Stem Cell Properties to Study the Genomic Drift During In
+Vitro/In Vivo Growth. J. Clin. Med. 2019, 8, 455. [CrossRef] [PubMed]
+36.
+Novakova, R.; Nunez, L.E.; Homerova, D.; Knirschova, R.; Feckova, L.; Rezuchova, B.; Sevcikova, B.; Menendez, N.; Moris, F.;
+Cortes, J.; et al. Increased heterologous production of the antitumoral polyketide mithramycin A by engineered Streptomyces
+lividans TK24 strains. Appl. Microbiol. Biotechnol. 2018, 102, 857–869. [CrossRef]
+37.
+Tornin, J.; Hermida-Prado, F.; Padda, R.S.; Gonzalez, M.V.; Alvarez-Fernandez, C.; Rey, V.; Martinez-Cruzado, L.; Es-
+tupinan, O.; Menendez, S.T.; Fernandez-Nevado, L.; et al. FUS-CHOP Promotes Invasion in Myxoid Liposarcoma through a
+SRC/FAK/RHO/ROCK-Dependent Pathway. Neoplasia 2018, 20, 44–56. [CrossRef] [PubMed]
+38.
+Martinez-Cruzado, L.; Tornin, J.; Rodriguez, A.; Santos, L.; Allonca, E.; Fernandez-Garcia, M.T.; Astudillo, A.; Garcia-Pedrero,
+J.M.; Rodriguez, R. Trabectedin and Campthotecin Synergistically Eliminate Cancer Stem Cells in Cell-of-Origin Sarcoma Models.
+Neoplasia 2017, 19, 460–470. [CrossRef]
+39.
+Zuazua-Villar, P.; Rodriguez, R.; Gagou, M.E.; Eyers, P.A.; Meuth, M. DNA replication stress in CHK1-depleted tumour cells
+triggers premature (S-phase) mitosis through inappropriate activation of Aurora kinase B. Cell Death Dis. 2014, 5, e1253. [CrossRef]
+[PubMed]
+40.
+Mali, N.; Darandale, S.; Vavia, P. Niosomes as a vesicular carrier for topical administration of minoxidil: Formulation and in vitro
+assessment. Drug Deliv. Transl. Res. 2013, 3, 587–592. [CrossRef] [PubMed]
+41.
+Estupiñan, O.R.; Garcia-Manrique, P.; Blanco-Lopez, M.d.C.; Matos, M.; Gutiérrez, G. Vitamin D3 Loaded Niosomes and
+Transfersomes Produced by Ethanol Injection Method: Identiﬁcation of the Critical Preparation Step for Size Control. Foods 2020,
+9, 1367. [CrossRef]
+42.
+Garcia-Manrique, P.; Gutierrez, G.; Matos, M.; Cristaldi, A.; Mosayyebi, A.; Carugo, D.; Zhang, X.; Blanco-Lopez, M.C. Continuous
+ﬂow production of size-controllable niosomes using a thermostatic microreactor. Colloids Surf. B Biointerfaces 2019, 182, 110378.
+[CrossRef]
+43.
+Pando, D.; Matos, M.; Gutierrez, G.; Pazos, C. Formulation of resveratrol entrapped niosomes for topical use. Colloids Surf. B
+Biointerfaces 2015, 128, 398–404. [CrossRef]
+44.
+García-Manrique, P.; Machado, N.D.; Fernández, M.A.; Blanco-López, M.C.; Matos, M.; Gutiérrez, G. Effect of drug molecular
+weight on niosomes size and encapsulation efﬁciency. Colloids Surf. B Biointerfaces 2020, 186, 110711. [CrossRef]
+45.
+Abarrategi, A.; Tornin, J.; Martinez-Cruzado, L.; Hamilton, A.; Martinez-Campos, E.; Rodrigo, J.P.; Gonzalez, M.V.; Baldini, N.;
+Garcia-Castro, J.; Rodriguez, R. Osteosarcoma: Cells-of-Origin, Cancer Stem Cells, and Targeted Therapies. Stem. Cells Int. 2016,
+2016, 3631764. [CrossRef] [PubMed]
+46.
+Choi, E.S.; Nam, J.S.; Jung, J.Y.; Cho, N.P.; Cho, S.D. Modulation of speciﬁcity protein 1 by mithramycin A as a novel therapeutic
+strategy for cervical cancer. Sci. Rep. 2014, 4, 7162. [CrossRef] [PubMed]
+47.
+Vizcaino, C.; Mansilla, S.; Portugal, J. Sp1 transcription factor: A long-standing target in cancer chemotherapy. Pharmacol. Ther.
+2015, 152, 111–124. [CrossRef]
+
+J. Clin. Med. 2021, 10, 1358
+15 of 15
+48.
+Beishline, K.; Azizkhan-Clifford, J. Sp1 and the ‘hallmarks of cancer’. FEBS J. 2015, 282, 224–258. [CrossRef] [PubMed]
+49.
+Perlia, C.P.; Gubisch, N.J.; Wolter, J.; Edelberg, D.; Dederick, M.M.; Taylor, S.G., 3rd. Mithramycin treatment of hypercalcemia.
+Cancer 1970, 25, 389–394. [CrossRef]
+50.
+Kennedy, B.J.; Torkelson, J.L. Long-term follow-up of stage III testicular carcinoma treated with mithramycin (plicamycin). Med.
+Pediatr. Oncol. 1995, 24, 327–328. [CrossRef]
+51.
+Kofman, S.; Perlia, C.P.; Economou, S.G. Mithramycin in the treatment of metastatic Ewing’s sarcoma. Cancer 1973, 31, 889–893.
+[CrossRef]
+52.
+Grohar, P.J.; Glod, J.; Peer, C.J.; Sissung, T.M.; Arnaldez, F.I.; Long, L.; Figg, W.D.; Whitcomb, P.; Helman, L.J.; Widemann, B.C. A
+phase I/II trial and pharmacokinetic study of mithramycin in children and adults with refractory Ewing sarcoma and EWS-FLI1
+fusion transcript. Cancer Chemother. Pharmacol. 2017, 80, 645–652. [CrossRef] [PubMed]
+53.
+Chasse, M.H.; Johnson, B.K.; Boguslawski, E.A.; Sorensen, K.M.; Rosien, J.E.; Kang, M.H.; Reynolds, C.P.; Heo, L.; Madaj, Z.B.;
+Beddows, I.; et al. Mithramycin induces promoter reprogramming and differentiation of rhabdoid tumor. EMBO Mol. Med.
+2020, e12640. [CrossRef]
+54.
+Osgood, C.L.; Maloney, N.; Kidd, C.G.; Kitchen-Goosen, S.; Segars, L.; Gebregiorgis, M.; Woldemichael, G.M.; He, M.; Sankar, S.;
+Lessnick, S.L.; et al. Identiﬁcation of Mithramycin Analogues with Improved Targeting of the EWS-FLI1 Transcription Factor.
+Clin. Cancer Res. 2016, 22, 4105–4118. [CrossRef] [PubMed]
+55.
+Scott, D.; Rohr, J.; Bae, Y. Nanoparticulate formulations of mithramycin analogs for enhanced cytotoxicity. Int. J. Nanomed. 2011,
+6, 2757–2767. [CrossRef] [PubMed]
+56.
+Wang, S.; Zhao, C.; Liu, P.; Wang, Z.; Ding, J.; Zhou, W. Facile construction of dual-targeting delivery system by using lipid
+capped polymer nanoparticles for anti-glioma therapy. RSC Adv. 2018, 8, 444–453. [CrossRef]
+57.
+García-Manrique, P.; Matos, M.; Gutiérrez, G.; Estupiñán, O.R.; Blanco-López, M.C.; Pazos, C. Using Factorial Experimental
+Design To Prepare Size-Tuned Nanovesicles. Ind. Eng. Chem. Res. 2016, 55, 9164–9175. [CrossRef]
+58.
+Niza, E.; Castro-Osma, J.A.; Posadas, I.; Alonso-Moreno, C.; Bravo, I.; Garzon, A.; Canales-Vazquez, J.; Cena, V.; Lara-Sanchez, A.;
+Albaladejo, J.; et al. Assessment of doxorubicin delivery devices based on tailored bare polycaprolactone against glioblastoma.
+Int. J. Pharm. 2019, 558, 110–119. [CrossRef]
+59.
+Chadalapaka, G.; Jutooru, I.; Sreevalsan, S.; Pathi, S.; Kim, K.; Chen, C.; Crose, L.; Linardic, C.; Safe, S. Inhibition of rhab-
+domyosarcoma cell and tumor growth by targeting speciﬁcity protein (Sp) transcription factors. Int. J. Cancer 2013, 132, 795–806.
+[CrossRef]
+60.
+Lou, Z.; O’Reilly, S.; Liang, H.; Maher, V.M.; Sleight, S.D.; McCormick, J.J. Down-regulation of overexpressed sp1 protein in
+human ﬁbrosarcoma cell lines inhibits tumor formation. Cancer Res. 2005, 65, 1007–1017.
+61.
+Meng, Y.; Hao, D.; Huang, Y.; Jia, S.; Zhang, J.; He, X.; Sun, L.; Liu, D. Positive feedback loop SP1/MIR17HG/miR-130a-3p
+promotes osteosarcoma proliferation and cisplatin resistance. Biochem. Biophys. Res. Commun. 2020, 521, 739–745. [CrossRef]
+[PubMed]
+62.
+Alfranca, A.; Martinez-Cruzado, L.; Tornin, J.; Abarrategi, A.; Amaral, T.; de Alava, E.; Menendez, P.; Garcia-Castro, J.; Rodriguez,
+R. Bone microenvironment signals in osteosarcoma development. Cell Mol. Life Sci. 2015, 72, 3097–3113. [CrossRef] [PubMed]
+63.
+Cancer Genome Atlas Research Network. Electronic address, e.d.s.c.; Cancer Genome Atlas Research, N. Comprehensive and
+Integrated Genomic Characterization of Adult Soft Tissue Sarcomas. Cell 2017, 171, 950–965. [CrossRef] [PubMed]
+64.
+Kovac, M.; Blattmann, C.; Ribi, S.; Smida, J.; Mueller, N.S.; Engert, F.; Castro-Giner, F.; Weischenfeldt, J.; Kovacova, M.; Krieg,
+A.; et al. Exome sequencing of osteosarcoma reveals mutation signatures reminiscent of BRCA deﬁciency. Nat. Commun. 2015,
+6, 8940. [CrossRef]
+65.
+Sayles, L.C.; Breese, M.R.; Koehne, A.L.; Leung, S.G.; Lee, A.G.; Liu, H.Y.; Spillinger, A.; Shah, A.T.; Tanasa, B.; Straessler, K.; et al.
+Genome-Informed Targeted Therapy for Osteosarcoma. Cancer Discov. 2019, 9, 46–63. [CrossRef] [PubMed]
+66.
+Harwood, J.L.; Alexander, J.H.; Mayerson, J.L.; Scharschmidt, T.J. Targeted Chemotherapy in Bone and Soft-Tissue Sarcoma.
+Orthop. Clin. N. Am. 2015, 46, 587–608. [CrossRef] [PubMed]

@@ -1,0 +1,1669 @@
+Unveiling the therapeutic
+potential of cabozantinib-loaded
+poly D,L-lactic-co-glycolic acid
+and polysarcosine nanoparticles
+in inducing apoptosis and
+cytotoxicity in human HepG2
+hepatocellular carcinoma cell
+lines and in vivo anti-tumor
+activity in SCID female mice
+Sankha Bhattacharya
+1*†, Vipan Kumar Parihar 2
+and Bhupendra G. Prajapati 3
+1Department of Pharmaceutics, School of Pharmacy & Technology Management, SVKM’S NMIMS
+Deemed-to-be University, Shirpur, Maharashtra, India, 2Department of Regulatory Toxicology, National
+Institute of Pharmaceutical Education and Research (NIPER), Industrial Area, Hajipur, Bihar, India,
+3Department of Pharmaceutical Technology, Shree S.K. Patel College of Pharmaceutical Education &
+Research Ganpat University, Mehsana, Gujarat, India
+Introduction: The study aimed to develop a nano-based drug delivery system for
+the treatment of hepatocellular carcinoma (HCC), a type of liver cancer that
+accounts for 90% of all liver malignancies. The study focused on the use of
+cabozantinib (CNB), a potent multikinase inhibitor that targets the VEGF receptor
+2, as the chemotherapeutic drug. We developed CNB-loaded nanoparticles made
+from Poly D, L-lactic-co-glycolic acid, and Polysarcosine (CNB-PLGA-PSar-NPs)
+for use in human HepG2 cell lines.
+Methods: By O/W solvent evaporation method, the polymeric nanoparticles were
+prepared. The various techniques, such as photon correlation spectroscopy,
+scanning electron microscopy, and transmission electron microscopy were
+used, to determine the formulation's particle size, zeta potential, and
+morphology. SYBR Green/ROX qPCR Master Mix and RT-PCR equipment used
+to measure liver cancer cell line and tissue mRNA expression and MTT assay to test
+HepG2 cell cytotoxicity. Cell cycle arrest analysis, annexin V assay, and ZE5 Cell
+Analyzer apoptosis assay were also performed.
+Results: The results of the study showed that the particle diameters were 192.0 ±
+3.67 nm with 0.128 PDI and -24.18 ± 3.34 mV zeta potential. The antiproliferative
+and proapoptotic effects of CNB-PLGA-PSar-NPs were evaluated using MTT and
+ﬂow cytometry (FCM). The IC50 value of CNB-PLGA-PSar-NPs was 45.67 µg/mL,
+34.73 µg/mL, and 21.56 µg/mL for 24, 48, and 72 h, respectively. The study also
+Frontiers in Oncology
+frontiersin.org
+01
+OPEN ACCESS
+EDITED BY
+Zhigang Ren,
+First Afﬁliated Hospital of Zhengzhou
+University, China
+REVIEWED BY
+Xingang Guan,
+Taizhou University, China
+Weifeng Ding,
+Nantong University, China
+Liang He,
+University of California, San Francisco, CA,
+United States
+*CORRESPONDENCE
+Sankha Bhattacharya
+sankhabhatt@gmail.com
+†PRESENT ADDRESS
+Sankha Bhattacharya,
+School of Pharmacy &Technology
+Management Shirpur, SVKM’S NMIMS
+Deemed-to-be University, Shirpur,
+Maharashtra, India
+SPECIALTY SECTION
+This article was submitted to
+Pharmacology of Anti-Cancer Drugs,
+a section of the journal
+Frontiers in Oncology
+RECEIVED 22 December 2022
+ACCEPTED 31 January 2023
+PUBLISHED 15 February 2023
+CITATION
+Bhattacharya S, Parihar VK and Prajapati BG
+(2023) Unveiling the therapeutic potential
+of cabozantinib-loaded poly D,L-lactic-co-
+glycolic acid and polysarcosine
+nanoparticles in inducing apoptosis and
+cytotoxicity in human HepG2
+hepatocellular carcinoma cell lines and in
+vivo anti-tumor activity in SCID
+female mice.
+Front. Oncol. 13:1125857.
+doi: 10.3389/fonc.2023.1125857
+COPYRIGHT
+© 2023 Bhattacharya, Parihar and Prajapati.
+This is an open-access article distributed
+under the terms of the Creative Commons
+Attribution License (CC BY). The use,
+distribution or reproduction in other
+forums is permitted, provided the original
+author(s) and the copyright owner(s) are
+credited and that the original publication in
+this journal is cited, in accordance with
+accepted academic practice. No use,
+distribution or reproduction is permitted
+which does not comply with these terms.
+TYPE Original Research
+PUBLISHED 15 February 2023
+DOI 10.3389/fonc.2023.1125857
+
+found that 11.20% and 36.77% of CNB-PLGA-PSar-NPs-treated cells were
+apoptotic at 60 µg/mL and 80 µg/mL, respectively, suggesting that the
+nanoparticles were effective in inducing apoptosis in the cancer cells. It can also
+conclude that, CNB-PLGA-PSar-NPs inhibit human HepG2 hepatocellular
+carcinoma cells and kill them by upregulating the tumour suppressor genes
+MT1F, MT1X, and downregulating MTTP, APOA4. Further in vivo antitumor
+activity was well reported in SCID female mice.
+Discussion: Overall, this study suggests that the CNB-PLGA-PSar-NPs are a
+promising drug delivery system for the treatment of HCC, and further research is
+needed to investigate their potential in clinical treatment.
+KEYWORDS
+cabozantinib, polysarcosine, HepG2, ﬂow cytometry, annexin V staining,
+apoptosis analysis
+GRAPHICAL ABSTRACT
+1 Introduction
+It was often seen that when the same kind of chemotherapeutic
+drugs (like cytarabine, imatinib, Taxol derivatives, etc.) was used over
+and over again, their effectiveness was limited, and they caused some
+unwanted side effects in cancer patients (1–3). To solve this problem,
+individuals need to work with a different set of molecules. On January
+14, 2019, the Food and Drug Administration (FDA) of the United
+States gave its approval for Cabozantinib to treat hepatocellular
+carcinoma (HCC) (4, 5). Cabozantinib is a tyrosine kinase inhibitor
+(RTK); which is often seen overexpressed in the outer layer of the
+cancerous tissues. From recent studies, it was conﬁrmed that
+Cabozantinib speciﬁcally targets endothelial growth factor receptor
+types 1 (VEGFR-1) (6), endothelial growth factor receptor types 2
+(VEGFR-2) (7), FMS-like tyrosine kinase 3 (FLT-3) (8); which
+ultimately results in the demotion of angiogenesis and proliferation
+of malignant tumour (9, 10). As far as liver cancer is concerned (11), it
+is the sixth most frequently recognized cancer and the fourth leading
+cause of cancer mortality across the globe (12, 13). As per the WHO
+report, nearly 782,000 deaths have been recorded due to liver cancer,
+and surprisingly, liver cancer is more common in men than in women.
+The most commonly available treatment for liver cancer is surgery and
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+02
+
+chemotherapy (14). But due to a lack of higher toxicity and lower
+efﬁcacy, the speciﬁc chemotherapeutic drug cannot be administered as
+such. Therefore, a strong and controlled drug delivery is required to
+reduce all the associated problems related to chemotherapeutic
+medicaments (15, 16). The possible ameliorate approach could be the
+drug-encapsulated polymeric nanoparticular approach (17); which
+could improve the effectiveness of encapsulation, the drug’s
+sustainability, and enhance intercellular penetration.
+In this study, a new type of non-ionic hydrophilic polypeptide
+called poly (n-methylated glycine) (18, 19) or Polysarcosine (PSar) was
+used in the delivery of chemotherapeutic drugs by polymeric
+nanoparticles; which is the best alternative to corona-forming
+polymer, poly (ethylene glycol) (PEG) (20). Apart from PSar, the
+Poly D, L-lactic-co-glycolic acid (PLGA) (21) was also used; due to
+its excellent biodegradability and biocompatibility properties it is an
+excellent choice for drug delivery. Therefore, an attempt was made to
+combine PLGA-PSar nanoparticles encapsulated with Cabozantinib
+(22, 23) (CNB) with a particle size of<200nm; which ultimately helps in
+to overcome reticuloendothelial opsonization. In my previous study,
+“Authors (2021)”; it was observed that Docetaxel loaded Psar-PLGA-
+NPs could be effective against various human cancer cell lines (U-87
+MG, HeLa. C2BBe1, HCT-116, NCI–N87, NCI–H929-Luc-mCh-Puro)
+and subsequently enhances the blood circulation time (24, 25). As per
+Blerina Shkodra et al. (26) studies, PLGA-DY-635 (BIM-I)
+nanoparticles (20-70nm) were prepared; which was comprising with
+Protein Kinase C Inhibitor; Bisindolylmaleimide (26). The prepared
+nanoparticles have an effective role in selective liver cancer due to their
+higher cellular uptake and excellent internalization. Surprisingly, no
+research has been done on the development of polymer PLGA-PSar-
+NPs even though the antitumor activities of CNB are increasingly being
+observed through pharmacological means. In this article, we postulate
+by ﬁndings that modiﬁed CNB polymeric nanoparticles might be used
+as a novel drug delivery system for cancer therapy. Another goal of this
+research is to use a ﬂow cytometry assay to measure the apoptosis of the
+HepG2 cell line after it has been treated with nanoparticles. Further,
+reverse transcriptase polymerase chain reaction (RT-PCR) was done to
+check for certain gene changes and ﬁnd a small number of cancerous
+cells.Nevertheless, lactate dehydrogenase assay, pharmacokinetic
+studies, tissue distribution studies, in vivo cancer activity in SCID
+female mice, and immunohistochemistry were performed to conﬁrm
+the biocompatibility, biodistribution, and anti-tumor activity of the
+prepared CNB-PLGA-PSar-NPs nanoparticles. Therefore, CNB-
+PLGA-PSar-NPs nanoparticles were formed and tested for the ﬁrst
+time in this study against the human HepG2 liver cancer cell line and
+SCID female mice.
+2 Materials and methods
+2.1 Materials
+Cabozantinib was a gift sample obtained from Neon Laboratories
+Ltd, Mumbai, India. Poly D, L-lactide, glycolide, polysarcosine, 2-ethyl
+hexanoate, methylene chloride, and diethyl ether was purchased from
+Sigma-Aldrich, Bengaluru, India. Dichloromethane, methanol,
+polyvinyl alcohol, and d-trehalose was purchased from Sd Fine-
+Chem Limited, Mumbai, India. Spectra Por S/P 2 Dialysis Membrane
+was a gift sample from Cole-Parmer®, Mumbai, India. From National
+Centre For Cell Science, Pune, India hepatocellular carcinoma cell line
+(HepG2) was obtained. Further, Dulbecco’s Modiﬁed Eagle Medium
+(DMEM), Hepatocyte Culture Medium (HHCM), Fetal bovine serum
+(FBS), tetrazolium salt and propidium iodide (PI), tetrazolium salt (3-
+(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide (MTT), 4’,
+6 diamidino-2-phenylindole (DAPI), Dimethyl sulfoxide (DMSO), was
+purchased from HiMedia Laboratories Pvt Ltd, Mumbai, India.
+2.2 Synthesis of PLGA-PSar
+While performing the synthesis of Poly D, L-lactic-co-glycolic
+acid (PLGA), and Polysarcosine (PSar), the ring-opening reaction was
+considered (27). At 10 mmHg vacuum pressure and at 160°C, the
+PSar was dried in at stainless steel container. To enhance the synthesis
+process, 1.34 g of poly D, L-lactide, and 0.110 g of glycolide were
+added to PSar (1.25g). In vacuumed condition, the drying process was
+extended up to 45min, maintaining 160°C. To enhance the reaction,
+0.10 g of 2-ethyl hexanoate was added as a catalyst, and further, the
+reaction was extended up to 6 hours. The resultant copolymer was
+dissolved in methylene chloride solution, and the solution was ice
+cold in diethyl ether. The gained product was dried using IKA RV3 V-
+C Rotary Evaporator; USA.
+2.3 Preparations of PLGA-PSar-encapsulated
+cabozantinib nanoparticles
+By O/W solvent evaporation method, the polymeric nanoparticles
+were prepared. In this process, 20 mg of Cabozantinib and 200 mg of
+PLGA-PSar copolymers were dissolved in a binary mixture of
+dichloromethane-methanol (8:2). The mixture was further added
+into ice-cool water containing 1% polyvinyl alcohol (PVA), the
+resultant mixture was probe sonicated using AI001-Probe Sonicator
+650W (Quick lab, India) for 60 seconds for eight times at 50%
+amplitude, which ultimately results in the formation of O/W
+emulsion. To remove unentrapped drug, the colloidal
+nanoemulsion was further centrifuged at 12,000 rpm for 20 min
+and washed three times with double distilled water. After
+lyophilization (28) of the resultant dried nanoparticles using 2.5%
+w/w D-Trehalose at -85°C, the polymeric nanoparticles (CNB-PLGA-
+PSar-NPs) were stored at -20°C for further use.
+2.4 Size distribution and zeta potential study
+The prepared nanoparticles (CNB-PLGA-PSar-NPs) were
+measured using DelsaNano C (Beckman Coulter, USA) for particle
+size, polydispersity index (PDI), and zeta potential (29–31). Photon
+correlation spectroscopy is the name of the fundamental concept
+behind this instrument. When an electric ﬁeld is applied, particles or
+colloidal solutions emit laser light, which can be measured using this
+instrument. DelsaNano C can measure particles up to 7 m in diameter
+and even tiny molecules as small as 267 D in concentrations ranging
+from 0.001% to 40%. This experiment set the laser weave length to
+658 nm at 30 mW. The DelsaNano C can detect zeta potentials
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+03
+
+between -100mV and +100mV for the sample. The emulsion of the
+nanoparticles was diluted with 0.50 mL of double distilled water and
+0.50 mL of pH 7.4 phosphate buffer solution separately and vortexed
+for 2 minutes to prevent bubbling. The particle size, zeta potential and
+PDI were measured at 25°C.
+2.5 NPs morphology
+To determine the morphology of the prepared polymeric
+nanoparticles, scanning electron microscopy (Hitachi High
+Technology, SU9000, Japan) was performed (32). With greater
+stability and instrument resolution at 0.4 nm and 30kV to 1.4 nm
+and 1kV, 100μL of CNB-PLGA-PSar-NPs were diluted with double-
+distilled water, and the resulting minuscule quantity was put onto cover
+slide and dried at room temperature. Using a glass sputter coater, the
+resultant ﬁlm was coated with gold under speciﬁc vacuumed conditions
+and scanned under SEM (Carl Zeiss Evo 10 Scanning Electron
+Microscope). To get proper magniﬁcent images, transmission
+electron microscopy (TEM) (33) was performed under TEM (Hitachi
+7500, Japan). Before performing TEM, the nanoparticles were coated
+with carbon and placed in Phosphotungstic acid (1%) stained copper
+grid. The software-generated digital micrograph interprets the evolved
+images from TEM studies. Atomic force microscopes (AFM) help us
+learn more about the shape of the CNB-PLGA-PSar-surface (34). The
+AFM study (AFM5300E, Hitachi) was performed in semiconductor
+mode and elevated vacuumed condition. During the AFM operation,
+the AFM prob mobilized in width and lengthwise. The AFM can detect
+samples within the range of -120°C to 800°C. While operating AFM
+studies, CNB-PLGA-PSar-NPs suspension was placed in a microscopic
+slide until the ﬁlm formed. The kurtosis, average roughness, and
+average height were calculated for the nanoparticles, and 3D & 2D
+images were generated for further analysis.
+2.6 Physical characterization
+To determine speciﬁc functional groups in Cabozantinib (CAB),
+free copolymer (PLGA-PSar), and CNB-PLGA-PSar-NPs, the FTIR
+spectroscopy (Perkin-Elmer, USA) (35) were performed in the
+frequency range of 400-4000cm-1. In order to detect the physical
+nature of the drug after encapsulation within nanoparticles,
+differential scanning calorimetry (DSC) studies were performed
+using DSC 4000 System, 100-240V/50-60Hz (Perkin-Elmer, USA).
+The samples were scanned, maintaining the temperature range at 25-
+400°C at a ﬂow rate of 10°C/min. To determine Cabozantinib (CAB),
+free copolymer (PLGA-PSar), and CNB-PLGA-PSar-NPs thermal
+stability, Thermogravimetric analysis (TGA) (TA SDT Q600) (36)
+was performed. At an inert nitrogen environment at 30-500°C and
+15°C/min heating rate, the TGA analysis was performed. In respect of
+temperature, the percentage weight loss has been calculated. To
+determine the structure of crystalline materials and chemical
+composition information, XRD studies were performed using
+Bruker D8 Advance diffractometer at CuKa monochromatic
+radiation and X-ray source of 40kv and 40mA. With the increment
+of 0.02°and 2s at each step, at 2q, the diffractograms were recorded
+between 20° to 70°.
+2.7 Encapsulation efﬁciency
+The nanoparticles suspension was placed in a centrifuge and run
+for 25 min at 10,000 rpm. The obtained nanoparticles were placed in
+5mL ethanol for 3h. From the calibration curve, the amount of
+encapsulated Cabozantinib (CAB) was determined by LAMBDA
+XLS+ Spectrometer (PerkinElmer Fremont, CA, USA) at 245nm.
+Percentage drug loading and percentage encapsulation efﬁciency (%)
+were calculated from the following equation:
+Encapsulation efficiency( % )
+= The amount of CAB in encapsulated CAB −PLGA −PSar −NPs
+ Intial amount of CAB used 
+   100
+(1)
+Drug loading( % )
+=
+The   amount   of   total   loaded   CAB  
+The total amount of CAB encapsulated nanoparticles (CAB −PLGA −PSar −NPs) X   100
+(2)
+After performing three individual experiments, the mean value
+was calculated (Mean ± SD)
+2.8 In vitro drug release studies and drug
+deposition studies in dialysis membrane
+For In vitro drug release studies, Spectra Por S/P 2 Dialysis
+Membrane (37), 12,000-14,000Dalton 25mm was used. The
+overnight soaked dialysis membrane in pH 7.4 phosphate buffer
+solution was tied on dialysis tubes and ﬁlled with CNB-PLGA-
+PSar-NPs suspension comprising 10 mg of Cabozantinib (CAB).
+After being tied on two sides, the dialysis membrane was placed in
+200mL pH 7.4 phosphate buffer solution and kept in sink condition,
+maintaining the temperature at 37 ± 2°C and 50rpm rotation speed.
+At speciﬁc time intervals, aliquots of the solution have been
+withdrawn from the donner compartment and replaced with the
+same amount of fresh pH 7.4 phosphate buffer solution. By compact
+UV-2600/2700 UV-Visible spectrophotometer, Shimadzu at 245nm,
+the samples were analyzed. Experiments were performed three times.
+The same additional process was carried out once more for the
+evaluation using a pH 5.0 phosphate buffer solution.
+Further, various kinetics studies, i.e., zero order, ﬁrst order,
+Higuchi, Korsmeyer Peppas model, were performed and concluded
+that CNB-PLGA-PSar-NPs follow zero-order kinetics. For drug
+deposition studies in the dialysis membrane, after drug release and
+diffusion studies, the dialysis membrane was carefully removed and
+carefully swabbed using pH 7.4 phosphate buffer; three times, the
+procedure was repeated to ensure no trace of residual particles left
+onto the diffusion membrane. Further, the dialysis membrane was
+chopped and entreated in methanol for 48 hr, and the resultant
+mixture was centrifuged at 50,0000 rpm using Sorvall WX 80
+Ultracentrifuge (Thermo Fisher Scientiﬁc). The obtained
+supernatant was analyzed using a compact UV-2600/2700 UV-
+Visible spectrophotometer, Shimadzu, at 245nm. A standard
+calibration curve estimated the amount of deposited drug within
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+04
+
+the dialysis membrane. The purpose of this study was to mimic
+human epithelial tissue layers.
+2.9 In vitro cytotoxicity assays
+For performing in vitro cytotoxicity studies, a hepatocellular
+carcinoma cell line (HepG2) (38, 39) was used. In the presence of a
+5% CO2 atmosphere, 100 mg/mL streptomycin, and 100 units/mL
+penicillin, the cells were cultured in a DMEM medium in the presence
+of a 10% phosphate buffer solution (40). The resultant cells were
+seeded in 96-well plates in the presence of 100 mL culture medium and
+kept for 24 hr. Further, the cells were treated with native Cabozantinib
+(CAB) and CNB-PLGA-PSar-NPs for 24, 48, and 72hr. The culture
+media was further replaced with Human Hepatocyte Culture Medium
+(HHCM) (100 mL), which was included with 2% Fetal bovine serum
+(FBS) and 0.5 mg/mL of yellow tetrazolium salt (3-(4,5-
+dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide, or MTT
+reagent (41). The temperature was maintained around 37°C during
+4hr of incubation. After incubation, the resultant supernatant was
+replaced with Dimethyl sulfoxide (DMSO). By using a Bio-Rad model
+680 microplate reader, absorbance was recorded at 570nm after
+30min. The assay was performed in triplicate form.
+2.10 Apoptotic nuclei measurement using
+DAPI staining
+To investigate internalization and to check changes of nuclei
+apoptosis, DAPI staining and ﬂuorescence microscopy was
+performed (42). The selective cell line (HepG2) (1.1 × 104 cells/
+well) were cultured in 6 well plates and the ﬁxing process extended up
+to 24hrs.Further HepG2 cells were treated with Cabozantinib (CAB)
+and CNB-PLGA-PSar-NPs for 24h. Using formaldehyde (4%) and 2%
+phosphate buffer solution, the cells were washed and ﬁxed. By
+utilizing Triton-X (0.2%) and 4′,6-diamidino-2-phenylindole
+(DAPI) (3mg/mL in 2% phosphate buffer solution), the
+permeabilization and straining of cells were achieved.
+2.11 Cell cycle arrest analysis
+For cell cycle analysis, propidium iodide (PI) (43) staining was
+used to analyze DNA content in a different phase of the cell cycle. In
+the presence of 10% phosphate buffer solution, penicillin-
+streptomycin (1%), the HepG2 cells (5 ×104 cells) were seeded in
+12 well plates ﬁlled with Roswell Park Memorial Institute (RPMI)
+1640 medium and 15% Fetal bovine serum (FBS) albumin. After 24hr
+of incubation, the cells were treated with Cabozantinib (CAB) and
+CNB-PLGA-PSar-NPs. The addition of trypsin solution and 70%
+ethanol would help in trypsinization and the ﬁxation of cells. After 72
+hrs, the ﬁxed cells were injected with propidium iodide (PI)and
+ribonuclease A for 45 min. The cells were further analyzed using a
+ZE5 Cell Analyzer and 5 lasers (BIO-RAD, USA). The cell fractions of
+different cell phases were analyzed at 6 ×104 events. All the
+experiments were performed in triplicate.
+2.12 Annexin V staining apoptosis analysis
+To determine apoptotic and necrotic cells, annexin V assay was
+used (44). At speciﬁc IC50 value of free Cabozantinib (CAB) and
+CNB-PLGA-PSar-NPs, the cells were treated (3×105 cells/well) in 6-
+well plates. After 48hr, the cells were washed and re-suspended in
+1000μL of phosphate buffer solution. In this cell-suspended solution,
+annexin V-FITC (10 mL) and PI staining solution (10 mL) were added
+at 25°C and in a dark environment, the incubation process was
+continued for 10 min; the ﬂow cytometric analysis was performed by
+considering Annexin V-FITC Apoptosis Staining/Detection Kit
+(ab14085). The data was entreated by BD Accuri C6 Plus Software.
+2.13 Real-time reverse transcription
+PCR assay
+RT-PCR (real-time-reverse transcriptase polymerase chain
+reaction) is a laboratory technique used to detect and quantify
+speciﬁc genes or gene expression in a sample (45). Cabozantinib is
+a small molecule inhibitor of tyrosine kinases, including MET and
+VEGFR2. It has been shown to have anti-tumor activity in various
+cancer types, including renal cell carcinoma and liver cancer (46). The
+mechanism of action in RT-PCR experiments is likely related to its
+inhibition of these kinases, leading to decreased tumor cell
+proliferation and angiogenesis. Additionally, cabozantinib has been
+shown to have a direct effect on the tumor microenvironment
+through the inhibition of ﬁbroblast activation and collagen
+production, which can also contribute to its anti-tumor activity. In
+RT-PCR experiments on HepG2 cells (a human liver cancer cell line),
+when treated with Cabozantinib, it is likely that researchers would
+observe decreased expression of genes associated with tumor cell
+proliferation and angiogenesis, such as VEGFR2 and MET. The
+inhibition of these kinases is the primary mechanism of action for
+Cabozantinib in cancer cells.When Cabozantinib is encapsulated in
+poly lactic co glycolic acid (PLGA) and polysarcosin nanoparticles,
+the drug is delivered in a targeted manner to the cancer cells, resulting
+in increased efﬁcacy and reduced toxicity (47). The exact mechanism
+of cabozantinib in respect of RT-PCR is not well understood, but it is
+likely that the drug works by inhibiting the activity of the kinases that
+are involved in the regulation of gene expression and cell
+proliferation. Researchers may observe an improved therapeutic
+effect of Cabozantinib on HepG2 cells when delivered via PLGA
+and polysarcosin nanoparticles, as compared to non-encapsulated
+Cabozantinib. The HepG2 cells were seeded at 5×105cells/well and
+further incubated for 24hr at 37°C and in the presence of 5% CO2. In
+the next step, Cabozantinib (CAB) and CNB-PLGA-PSar-NPs in
+varying concentrations were introduced in the media. After 24hr of
+incubation, the enthusiast cells were collected, and RNA was
+separated by Trizol reagent. The RNA was extracted using
+NanoDrop (45) spectrophotometer at 280nm. For the extraction of
+RNA, agarose gel (2%) in TBE buffer (1X) was required. A nucleic
+acid stain called SYBR Safe (Wilmington, De, USA) was utilized for
+proper visualization of the cells. The SuperScript First-Strand
+Synthesis System was utilized to synthesize the process of cDNA.
+The process has been investigated by Real-Time PCR (qPCR) kit
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+05
+
+(Thermo Fisher Scientiﬁc, USA) with 1μg RNA. By instrumenting
+SYBR Green/ROX qPCR Master Mix (48, 49), the mRNA expression
+was evaluated. The row data were normalized according to 2-delta Ct in
+the presence of b-actin; a housekeeping gene.
+2.14 Evaluation of erythrocyte membrane
+integrity by lactate dehydrogenase
+Erythrocytes produce lactate dehydrogenase (LDH), which may
+be measured photometrically using the LDH test kit/Lactate
+Dehydrogenase Assay Kit (Colorimetric) (ab102526) (50). For the
+LDH investigation, blood was obtained from the neighbouring blood
+bank. The erythrocyte suspension was made according to the
+methodology described in our earlier research. In 1mL of
+erythrocyte solution was treated with speciﬁc amount of
+Cabozantinib (CNB), PLGA-PSar-encapsulated Cabozantinib
+nanoparticles (CNB-PLGA-PSar-NPs), and placebo (PLGA-PSar-
+NPs) (51). Positive control sample was created by diluting
+erythrocyte suspension with 1% Triton-X-100, whereas negative
+control sample was created by diluting erythrocyte suspension with
+normal saline solution. LDH was generated spontaneously by
+incubating 150/UL Lactate dehydrogenase (LDH) with erythrocyte
+suspension at 37°C. During speciﬁc time intervals, such as 2h, 4h, and
+8h after suspension, 400μL samples were taken and centrifuged for 20
+minutes at 1345xg. LDH was detected at 500nm after a ready-to-use
+LDH solution was added to the supernatant. The total of LDH was
+calculated using the following formula.
+Lactate dehydrogenase (U=L Þ  ¼ Asample−A   negative   control
+A   standard  
+150
+Where, A
+sample stands for Cabozantinib, PLGA-PSar-
+encapsulated Cabozantinib nanoparticles (CNB-PLGA-PSar-NPs)
+incubated erythrocytes absorbance, A
+negative control indicates,
+erythrocytes absorbance of sample, which was pre-treated with
+normal saline solution. The A standard indicates the absorbance of
+erythrocytes sustention, which were pre-treated with 150/UL Lactate
+dehydrogenase (LDH) enzyme. The experiment was conducted in
+triplicate, and the results are presented as mean standard deviation
+(n=3). The RBC survival rate after nanoparticle injection is dependent
+on the erythrocyte membrane integrity test. Yuanyuan Guo et al. (52)
+created poly(d,l-lactide-co-glycolide) (PLGA) nanoplatforms for
+cancer immunotherapy with erythrocyte membrane encapsulation.
+With these formulations, cellular absorption in vitro was reportedly
+enhanced (52).
+2.15 In-Vivo anti-tumour efﬁcacy study
+The SCID female mice of 8–10 weeks old were used in the in vivo
+effectiveness study (53). SCID stands for severe combined
+immunodeﬁciency disorder. Mice were housed in individually
+ventilated cages with pelleted food, a 12-hour/12-hour dark-light
+cycle, and unrestricted access to water (supplied ad libitum) in a
+climate-controlled setting with a temperature range of 25°C ± 3°C.
+The National Institutes of Health’s guidelines for the care and use of
+animals were followed when conducting all animal experiments,
+which included those at Animal House of SPTM, NMIMS, Shirpur,
+Maharashtra, India. These facilities also complied with CPCSEA
+(Committee for the Purpose of Control and Supervision of
+Experiments on Animals) regulations. Mice were subcutaneously
+injected with cultured HePG2 cells (5x106 cells) in 200μL of RPMI
+1640 with 33% Corning Matrigel Basement Membrane Matrix
+(Sigma-Aldrich, India). When xenograft tumour volumes reached
+150mm3 (group mean), as instructed by the experimental protocols,
+the following treatments were given to mice in four groups (n=6):
+saline, Cabozantinib (CNB) (20 mg/kg), CNB-PLGA-PSar-NPs (20
+mg/kg) once weekly (QW) through lateral tailvein. A digital electronic
+calliper was used to measure the tumor’s size twice a week. To assess
+toxicity, body weight was monitored twice weekly. Tumour volume
+was calculated as (width2 length/2).
+2.15.1 Scariﬁcation and tumour bulb
+of liver dissection
+The SCID female mice were given thiopental anaesthesia prior to
+being killed by cervical dislocation. Before being implanted in parafﬁn
+wax, liver tissues and tumour bulbs from the descending liver were
+collected and preserved overnight in 10% formalin (CH2O) with a pH
+7.4 phosphate buffer solution.
+All the animal experiments were performed in Deshpande
+Laboratory, Bhopal, India, after approval by the Committee for the
+Purpose of Control and Supervision of Experiments on Animals
+(CPCSEA) (approval number: 14010/c/11/CPCSEA).
+2.16 Tissue distribution studies
+Tissue distribution studies in mice with SCID are required in anti-
+liver cancer activity to determine the distribution and concentration
+of a drug within the body after administration (54). This information
+is important for understanding how the drug is metabolized and
+cleared by the body, as well as for determining appropriate dosing
+regimens. Additionally, tissue distribution studies can help to identify
+any potential toxicities or side effects associated with the drug in
+speciﬁc organs or tissues. In the case of anti-liver cancer activity,
+knowing the distribution of the drug in the liver would be particularly
+important to ensure the drug is reaching its target site and effectively
+inhibiting the growth of cancer cells. The tissue distribution of a bolus
+dosage of 20 mg/kg i.v. Cabozantinib (CNB), CNB-PLGA-PSar-NPs
+was documented. The greatest concentration of CNB was found in
+liver parenchymal hepatocyte tissue. The presence of CNB in the
+tissues of other essential organs, such as the heart and kidney, suggests
+that CNB distribution is indirectly dependent on the blood ﬂow and
+perfusion rate of the organs. The increased afﬁnity of CNB in the liver
+and pancreas enables the medication molecule to effectively treat liver
+cancer. However, limited expression of CNB in brain endothelial cells
+suggests that polymeric nanoparticles are unable to traverse the
+blood-brain barrier without difﬁculty.
+2.17 Pharmacokinetic study
+06 Male Albino Wister rats (200 to 250 g) are separated into two
+groups (n=3) for the purpose of conducting pharmacokinetic studies
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+06
+
+(55). For up to 72 hours, a comparative plasma concentration-time
+proﬁle of Cabozantinib (CNB), CNB-PLGA-PSar-NPs was analysed.
+The ﬁrst group was administered 20 mg/kg CNB via intravenous
+bolus with 0.9% w/v sodium chloride and 10% Methanol (for
+improving solubility). The second group received an intravenous
+bolus dose of 20 mg/kg CNB-PLGA-PSar-NPs with 0.9%w/v
+sodium chloride and 10% methanol (for improving solubility).
+Using the tail vein of rats, 500μL of blood samples were collected at
+0, 0.5, 1, 2, 4, 8, 16, 24, 48, and 72 hours from three animals in each
+group. Blood samples were stored in a microcentrifuge tube and
+centrifuged at 7,500 rpm for 30 minutes at 25°C to separate
+supernatant plasma. The collected samples were analysed using the
+RP-HPLC system and stored at -80°C (1290 Inﬁnity II LC System,
+Agilent, USA). Using kinetica 5.0 pharmacokinetics software, the
+obtained RP-HPLC variables were interpreted in terms of their
+pharmacokinetics (Thermo Fisher Scientiﬁc, Yokohama)
+2.18 Immunohistochemistry
+Parafﬁn 10μm thick sections of xenograft HePG2 cancer cell tissues
+embedded in liver parenchyma blocks. The blocks were imaged in a 10
+mM citrate buffer solution and autoclaved for 20 minutes to extract
+antigens. After heating the section slide blocks, they were allowed to
+cool for 1.5 hours at room temperature. The sectioned slides were then
+incubated overnight at 4°C with a primary antibody against Hepatocyte
+speciﬁc antigen (Hep Par 1) (91091816- SK-HEP-1, Sigma-Aldrich,
+Bengaluru, India). Further, section slides were incubated with enzyme-
+linked immunosorbent assay (ELISA) horseradish peroxidase (HRP)
+conjugated Goat anti-Rabbit IgG (H+L) secondary antibody (Thermo
+Fisher Scientiﬁc, Vadodara, Gujarat) for 1hr followed by treatment with
+120μL 30-3-diaminobenzide (Dako). For analysing the results of
+Immunohistochemistry, ﬁve square zones (400 m x 400 m) were
+measured and averaged for the number of stained cells in each
+sectioned slide. Using GraphPad Prism 9 (San Diego, California) and
+student t-test statistical analyses were performed.
+2.19 Statistical evaluation
+The statistical calculation and interpretations were performed by
+GraphPad Prism 9.0.0.121 (GraphPad Software, San Diego, CA
+92108). The experiments were performed thrice and deﬁned as the
+mean ± standard deviation (SD). For comparison between two
+groups, student t-test and for multiple groups, ANOVA was
+applied. The p<0.05 was recognized as statistically signiﬁcant.
+3 Results and discussion
+3.1 Preparations of PLGA-PSar-encapsulated
+cabozantinib nanoparticles
+To improvise local therapeutic effects, biodegradable depots in
+nanosized polymeric particle forms could be the best non-invasive
+approach for drug delivery applications. Biodegradable synthetic
+polymers such as, lactic-co-glycolic acid (PLGA) & Poly-Sarcosine
+(PSar) were used in this experiment for synthesizing polymeric
+nanoparticles. The polymers are made up of single monomers (56);
+therefore, the excretion from the body would be effective, and hence,
+they possess low toxicity (57). These nanosized polymeric
+nanoparticles could play a fundamental role while delivering a drug
+to the targeted tissues or oranges. According to Mohadese Alirezaei
+et al. (58) Vulgaris oil-containing PLGA-chitosan-folic acid
+nanoparticles (AVEO-PCF-NPs) exhibit excellent anticancer
+properties against the HT-29 cell line (58). Furthermore, Chinese
+yam polysaccharides PLGA nanoparticles stabilized Pickering
+emulsion can be prepared by using 5 mg/mL of PLGA. Due to the
+presence of PLGA, CYP-PPAS emulsion exhibits outstanding stability
+at 4°C and 37°C for 28 days, according to Yue Zhang et al. (59). It is
+clear from both research ﬁndings that PLGA exhibits excellent
+stability and can be a suitable polymer for anticancer drug delivery.
+The intrinsic characteristics of polymers are investigated during the
+selection of any biological macromolecules. These biocompatible
+polymers help to encapsulate biodegradable particles. For targeting
+tissues and cells, these agents act as a depot. These kinds of delivery
+possessed higher non-toxic effects, durability, sustainability and
+controlled release quality in blood. Most importantly, polymeric
+nanoparticles enhance the hydrophilicity as well as zeta potential.
+Polymers become water-soluble when they contain polar or charged
+functional groups (60). Water or other polar substances can interact with
+polymers or dissolve them. Further, the presence of PVA in the
+nanoparticles could inﬂuence the zeta potential of the nanoparticles (61).
+Nevertheless, polymeric nanoparticles improvise bioadhesive
+properties and release the nature of the formulations. Therefore, in this
+experiment, biocompatible PLGA-PSar copolymers are used for the
+encapsulation. The temperature-sensitive PLGA-PSar copolymers
+remain in a solution state between 0°C to 20°C and shift to a gel state
+between 37°C to 77°C. The copolymer is comprised of hydrophilic PSar
+and a hydrophobic moiety; As a result, the copolymers might function as
+amphiphilic copolymers. The preparation of oil/water emulsion can
+instantly be formed when the organic phase is incorporated into the
+aqueous phase in the presence of prob sonication. The polymeric
+nanoparticle’s reaction rate can be enhanced due to the presence of
+Gibbs-Marangoni effects (62). The solidiﬁcation process of nanoparticle
+preparation helps to build condensed nanoparticles. It was observed
+during initial analysis to prevent nanoparticle aggregation that emulsiﬁers
+within the water in oil interphase restrict nanoparticle aggregation. The
+amphiphilic copolymer and stabilizer, PVA, has been added as an
+emulsiﬁer during nanoparticle formulation. The hydrophobic portion
+(undissociated vinyl acetate portion) of PVA diffused into the organic
+phase and was eventually trapped inside the nanoparticles. The
+hydrophilic portion of PVA remains active in the surroundings of
+hydrophilic segments of nanoparticles, and stability persists due to
+steric hindrance. PVA contains many hydroxyl groups, forming
+hydrogen bonds with the water molecules and making it highly soluble
+in water. The molecular weight and degree of hydrolysis of PVA
+determine its solubility (63).
+3.2 Particle size and morphological studies
+The in-vitro drug release proﬁle is very signiﬁcant; the in-vitro
+biodistribution and cellular absorption of the prepared nanoparticles
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+07
+
+display a characteristic and optimum behavior. The CNB-PLGA-
+PSar-NPs particle size, PDI, and zeta potential could therefore play a
+crucial role in the stability and all distinctive & optimum behavior of
+the nanoparticles. From Figures 1A, B, the average particle diameters
+of CNB-PLGA-PSar-NPs were found to be 192.0 ± 3.67 nm with a
+PDI of 0.128. The zeta potential was found to be -24.18 ± 3.34 mV in
+double distilled water; however, in pH 7.4 phosphate buffer solution,
+the zeta potential of the nanoparticles was found to be -23.89 ± 1.07
+mV. From the particle size distribution curve, it can conclude that the
+exact binomial distribution or Gaussian distribution had been
+recorded. Rifampicin-loaded PLGA nanoparticles (RIF-NPs) can be
+formed using the nanoprecipitation method, according to Eva
+Snejdrova et al. (64), to treat musculoskeletal infections (64). The
+obtained nanoparticles range in size from 200 to 380 nm and have a
+negative zeta potential. Paclitaxel and Lapatinib dual-loaded chitosan-
+coated PLGA nanoparticles with a particle size range of 157.4 ± 9.2 to
+263.5 ± 13.5 nm were created, according to Subrahmanyam Pitchika
+et al. (65). These two studies suggest that PLGA can be used to create
+nanoparticles with sizes between 180 and 400 nm; the results are
+consistent with our recent studies. During nanoparticles size
+measurement, it was observed that after encapsulation of
+Cabozantinib inside of the polymeric nanoparticles, the core
+diameter increases for the nanoparticles, and hence Cabozantinib
+encapsulated nanoparticles are more signiﬁcant in size than blank
+nanoparticles. Due to the higher negative zeta potential of the
+formulation, the formulation could have a longer circulation half-
+life. Due to the deportation of H+ ions from the carboxylic group of
+PLGA, the negative zeta potential has emerged. Since zeta podetial is a
+surface phenomenon, it was observed that zeta potential and particle
+size are inversely proportional; which means increasing PLGA-PSar
+concentration on the outer surface of the nanoparticles would lead to
+a decrease in zeta potential. Hence, higher negative zeta potential
+could lead to the formation of smaller particle sizes and, thus, higher
+migration capacity observed in nanoparticles, which ultimately
+provides good stability in colloidal dispersion. The drug loading
+capacity of CNB-PLGA-PSar-NPs was found to be 14.67 ± 3.86%,
+and encapsulation efﬁcacy was found to be 76.35 ± 2.76%. The
+monodispersed nature of the polymeric nanoparticles was further
+investigated using a scanning electron microscope (SEM). The SEM
+results suggest that there is a persistent similarity of particle size
+results obtained from the particle size analyzer with SEM results. The
+homogeneity of the nanoparticles with core structure was observed in
+SEM images with the highest diameter of 228.8 nm. It measured the
+lowest diameter at 124.3nm (Figure 1C). The average particle size
+obtained by Delsa Nano C instruments (Beckman Coulter, USA) was
+found relatively more signiﬁcant than the results obtained from SEM
+(Carl Zeiss Evo 10 Scanning Electron Microscope) analysis; which is
+due to the presence of dehydration environment during the time of
+the SEM experiment. Figure 1D represents the TEM analysis of CNB-
+PLGA-PSar-NPs, which indicates perfect spherical-shaped drug-
+loaded nanoparticles (<200nm). From scanning force microscopy
+or atomic force microscopy, the non-destructive surface of
+nanomaterials, kurtosis (0.712), skewness (0.264), and roughness
+(4.134), can be measured using NOVA software. From Figures 1E,
+F the average height of the nanoparticles was found to be 198.67 ±
+0.32 nm; the obtained particles’ average height had signiﬁcant
+similarity with the results obtained from SEM, TEM, and DLS
+studies, indicating the vital signiﬁcance of the particles in different
+measurement conditions. The AFM report suggests the spherical and
+symmetrical nature of the prepared CNB-PLGA-PSar-NPs surface.
+3.3 Fourier transform infrared spectroscopy
+The main intention of FTIR spectroscopy was to identify the
+complete loading capacity of the drug into the carrier. The FTIR
+FIGURE 1
+Physical characterization of the CNB-PLGA-PSar-NPs: (A) Size of the NPs. (B1) Zeta potential of the NPs in water; (B2) Zeta potential of the NPs in
+Phosphate buffer solution (pH 7.4).(C) Field emission scanning electron microscopy (FE-SEM) images of the NPs. (D) Transmission electron microscopy
+(TEM) of the NPs (E) Atomic force microscopy image of NPs in 3D (F) Atomic force microscopy image of NPs in 2D.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+08
+
+spectroscopy of Cabozantinib (CNB), PLGA, PSar, PLGA-PSar-NPs
+(without drug), and CNB-PLGA-PSar-NPs (with drug) were
+displayed in Figure 2A. In Cabozantinib (CNB) spectra, at 1221.904
+cm-1 N-O aromatic stretch was observed, C=O stretch was observed
+at 1646.66 cm-1, at 3411.42 cm-1 aromatic O-H stretch was observed.
+poly D, L-lactic-co-glycolic acid (PLGA) shows characteristic peak at
+1606.61 cm-1, 1742.85 cm-1 & 2977.14 cm-1 indicating the presence of
+carboxylic acid C=O stretch, ester C=O stretch and carboxylic acid
+dimer O-H stretch respectively. The polysarcosine (PSar) also shows a
+characteristic peak at 1723.80 cm-1, 3305.71 cm-1, which indicates the
+presence of aldehyde C=O stretch & O-H stretch. The placebo
+formulation (PLGA-PSar-NPs) showed strong C=O stretch at
+1733.33 cm-1; however, no signiﬁcant characteristic peak was
+observed between 2750 cm-1 to 4000 cm-1, indicating the complete
+encapsulation of PSar and PLGA within the placebo nanoparticles.
+The ﬁnal CNB-PLGA-PSar-NPs shows a characteristic peak at
+1761.90 cm-1, 2939.04 cm-1, 3315.23 cm-1 indicating the presence of
+monomeric C=O stretching, carboxylic acid dimer OH stretch, and
+alkynes C-H stretch. The appearance of CNB-PLGA-PSar-NPs FTIR
+spectra indicates the interactions of Cabozantinib (CNB), PLGA,
+and PSar.
+3.4 In vitro release kinetics of cabozantinib
+For the Hepatocellular carcinoma (HCC) treatment, it is essential
+to have prolonged and consistent release of Cabozantinib (CNB) from
+CNB-PLGA-PSar-NPs. The release of Cabozantinib (CNB) from the
+polymeric nanoparticles was estimated in pH 5.0 and pH 7.4 at 37°C.
+It was palpable from the release proﬁle; the drug has shown an initial
+bust affect up to 4th hour of drug release. This burst release signiﬁes
+the presence of drug content onto the surface of polymeric
+nanoparticles, which elevates initial drug release. After 5th hr a
+steady state concentration was reached at both the pH and hence
+prolonged release drug proﬁling was witnessed at 140hr. It was
+observed that at pH 7.4, the drug release from CNB-PLGA-PSar-
+NPs was found to be much more profound as compared to drug
+release at pH 5.0. At 140th hours in pH 7.4 the Cabozantinib shows
+they release up to 84.25 ± 7.89% whereas else, at pH 5.0, Cabozantinib
+from the nanoparticles was found to be 96.56 ± 7.89%. It was observed
+that during the time of cellular internalization at pH 5.0,
+Cabozantinib (CNB) shows higher releases as compared to pH 7.4;
+which may be due to the acidic nature and pH-sensitive behavior of
+the cancerous cell surface (Figure 2B). The pinocytosis and
+endocytosis are responsible for cellular internalization of
+nanoparticles. The prolongation in drug release in the tumour site
+could enhance the effectiveness of chemotherapeutic drugs near to the
+cancerous cells. Further, the nanoparticular approach incepted in this
+research could enhance the selectivity proﬁling of the medicaments,
+and in lower dosage regimes, it can effectively target cancerous cells
+omitting healthy cells. The prolonged-release proﬁling of the
+nanoparticles could enhance the delivery of drug in constant
+manner into the cancerous cells, which ultimately leads to an
+increase the cytotoxicity effects.
+3.5 In vitro cytotoxicity
+The 3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyl tetrazolium
+bromide (MTT) (66) assay helps to determine the cytotoxicity
+effects of free Cabozantinib (CNB) and CNB-PLGA-PSar-NPs
+against hepatocellular carcinoma cell line (HepG2). The IC50 value
+of Cabozantinib (CNB) loaded polymeric nanoparticles (CNB-PLGA-
+PSar-NPs) was found to be 45.67 mg/mL, 34.73 mg/mL, and 21.56 mg/
+mL respectively, when exposed at 24hr, 48hr and 72hr. Figure 3
+suggests that in time and dose-dependent manner, the free
+FIGURE 2
+(A) FTIR data of Cabozantinib (CNB), PLGA, PSar, PLGA-PSar-NPs, CNB-PLGA-PSar-NPs. (B) In vitro release kinetics of CNB from CNB-PLGA-PSar-NPs in
+PBS at pH 5.0 and 7.4 and data are presented as mean ± SD (n= 3).
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+09
+
+Cabozantinib (CNB) and Cabozantinib (CNB) loaded polymeric
+nanoparticles (CNB-PLGA-PSar-NPs) show anticancer effects
+against hepatocellular carcinoma cell line (HepG2) (67, 68). Due to
+the control and slow-release properties of the drug from the
+polymeric nanoparticles, it exhibits a higher cytotoxicity proﬁle as
+compared to free Cabozantinib (CNB). Therefore, polymeric
+nanoformulations could be the best formulation approach to deliver
+anticancer drugs in targeted site. As per Gao Feng Liang et al. (69)
+research, the suppression effects of the miRNA can be enhanced when
+PLGA-based gene delivery is performed for HePG2 cells. The PLGA
+nanoparticles could be the best possible vector carriers for miRNA
+with signiﬁcant transfection efﬁciency (69). These nanoparticles show
+good serum stability against commercially available liposomes.
+Cabozantinib is a tyrosine kinase inhibitor that tends to block both
+the MET and VEGF pathways from functioning, as Qiuhong Yang
+et al. (70) study conﬁrmed (70). The cabozantinib-loaded micelles
+outperformed the free cabozantinib solution in terms of intracellular
+accumulation and cytotoxicity in human glioblastoma cancer cells
+and non-small lung cancer cells. These ﬁndings imply that the
+micellar form of cabozantinib may be an effective nanocarrier for
+cancer therapies. As per Xiaoling Nie et al. (71) research by using the
+nanoprecipitation method, SP94 peptide surface grafted poly
+(ethylene glycol)-poly (lactic-co-glycolic acid) biodegradable
+polymeric nanoparticles were prepared for the delivery of
+cryptotanshinone (71). The SP94 peptide surface grafted polymeric
+nanoparticles signiﬁcantly increase cellular apoptosis and cytotoxicity
+against hepatocellular carcinoma cell line (HepG2). As per Xiaobo
+Yang et al. (72), Cabozantinib has a signiﬁcant effect against
+Hepatocellular Carcinoma (72). However, no studies have been
+reported so far which emphasized lactic-co-glycolic acid (PLGA) &
+Poly-Sarcosine (PSar) encapsulated Cabozantinib (CNB)
+nanoparticles’ In vitro cytotoxicity effects against hepatocellular
+carcinoma cell line (HepG2). The controlled release pattern of
+CNB-PLGA-PSar-NPs enhances the therapeutics effects due to its
+speciﬁc pathways and maintaining higher intercellular concentration.
+3.6 DAPI staining
+To investigate the cell viability of hepatocellular carcinoma cell
+line (HepG2) accurately after administration of free Cabozantinib
+(CNB), and Cabozantinib loaded polymeric nanoparticles (CNB-
+PLGA-PSar-NPs), the treated cells were stained with 4′,6-
+diamidino-2-phenylindole, (DAPI) reagent and visualized under
+ﬂuorescence microscopy to check resultant morphology. The
+section shows circular-shaped cells without any shattering
+(Figures 4A, B). The ﬂuorescence intensity of particle uptake was
+measured and reported in Figures 4C, D. However, small
+hemispherical nuclei were observed when cells were treated with
+free Cabozantinib (CNB) and CNB-PLGA-PSar-NPs. The higher
+FIGURE 3
+Effect of different concentrations of CNB-loaded CNB-PLGA-PSar-NPs and free CNB on the viability of hepatocellular carcinoma cell line (HepG2) cells after 24, 48,
+and 72 h incubation. The ﬁgure shows that CNB-loaded CNB-PLGA-PSar-NPs are more anti-proliferative when compared with CNB (*p < 0.05). The cell viability
+was determined by MTT assay. These experiments are performed thrice mean ± SD; n= 3, *p < 0.05, **p < 0.01, where CNB group is considered as control.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+10
+
+dose of free drugs and nanoparticles shows a signiﬁcant increase of
+apoptosis. The CNB-PLGA-PSar-NPs treated cells show dramatical
+apoptosis against HepG2 cells as compared to free Cabozantinib
+(CNB). Altogether, the viability of the HepG2 cells decreases when
+treated with higher concentrations of CNB-PLGA-PSar-NPs due to
+the persistent DNA damage.
+3.7 Cell cycle arrest analysis
+It is essential to measure Cabozantinib (CNB) and CNB-PLGA-
+PSar-NPs mediated growth inhibition and to identify its speciﬁc
+molecular mechanism by cell cycle arrest studies. In this study, the
+speciﬁc DNA content of HepG2 cells was analyzed. The study was
+designed for 48 hr, where 60 and 80 μg/mL Cabozantinib (CNB) and
+CNB-PLGA-PSar-NPs were exposed in HepG2 cells. The dose-
+depending cell cycle arrest can be witnessed for Cabozantinib
+(CNB) and CNB-PLGA-PSar-NPs (Figures 5A–D). The drug and
+the formulation have DNA synthesis inhibitor properties, as cycle
+arrest data suggest that the mitotic division was passed by the cells but
+arrest can be witnessed in S phase. The percentage of the S phase was
+elevated from 10.55% to 24.80% for Cabozantinib (CNB) and 11.20%
+36.77% for CNB-PLGA-PSar-NPs. The greater DNA damage causes
+the cell cycle arrest in G1, S and G2/M phase. Varying with this
+research, Yang Liu et al. (73) witnessed calycosin could induce cell
+cycle arrest in G0/G1 when treated for hepatocellular carcinoma
+(HCC) cells (73). It follows AKT signaling pathway. In our current
+research, S phase arrest is possible due to the inhibition of cell cycle
+progression which is due to the ant-proliferative effects of
+Cabozantinib (CNB) and control and target-based release proﬁling
+of CNB-PLGA-PSar-NPs. According to Shamim Akhtar Suﬁa et al.
+(74), curcumin and indole-curcumin analog-loaded polysorbate 80-
+stabilized PLGA nanoparticles have a great anticancer effect on
+SW480 colon cell lines (74). The size of the NPs that were made
+ranged from 50 to 150 nm. When nanoparticles were used to treat the
+SW480 cancer cell line, nuclear fragmentation, blocking of the cell
+cycle, stopping apoptosis, and metastatic biomarkers happened. The
+effects of Anti-EGFR conjugated Docetaxel loaded PLGA
+nanoparticles on the human lung carcinoma A549 cell line were
+studied by Jitendrakumar Patel et al. (75). They discovered that the
+cell cycle slowed down in the S phase with more cells in the G2/M
+phase and stopped in the G2/M phase. A549 cell lines, on the other
+hand, experienced a growth arrest in the G2/M phase when using the
+DTX-NPs system (75).
+3.8 Flow cytometry
+Flow cytometry was used to do an apoptosis assay to ﬁnd out how
+signiﬁcant the effects of the cell responses were (76). This study
+explains how cells respond to the given treatment. A paramount
+percentage of apoptosis was observed in Cabozantinib (CNB), and
+CNB-PLGA-PSar-NPs loaded group as compared to the untreated
+control group. The apoptosis percentage was found to be high for
+CNB-PLGA-PSar-NPs loaded group as compared to the free drug.
+Almost 20% apoptosis was recorded in the early stage, and 25%
+apoptosis was recorded in the late stage. Nearly 35% apoptosis was
+recorded in the late apoptosis chamber. Therefore CNB-PLGA-PSar-
+NPs possessed a higher therapeutic index and optimum anticancer
+effects (Figure 6). As per Salih Abdul Mahdi et al. (77), 5-FU loaded
+biocompatible polymeric magnetic nanoparticles and FA-DEX-
+SPION NPs exert synergistic effects for targeting intracellular
+delivery of 5-FU, apoptosis induction, and gene expression
+stimulation (77)
+A
+B
+D
+C
+FIGURE 4
+Carbozanitib (CNB)-induced apoptosis and DNA damage in hepatocellular carcinoma cell line (HepG2) cells as examined by DAPI staining. HepG2 cells
+exposed to different concentrations of CNB-loaded CNB-PLGA-PSar-NPs and free CNB for 48 h and apoptosis was determined by DAPI staining by
+ﬂuorescence microscopy. (A) represented the control (untreated), CNB 60 mg/mL, and CNB 80 mg/mL, respectively. (B) represented the control
+(untreated), CNB-PLGA-PSar-NPs 60 mg/mL, and CNB-PLGA-PSar-NPs 80 mg/mL, respectively. (C) Mean ﬂuorescence intensity of HepG2 cells at 48hr
+when treated with 60 and 80 mg/mL of CNB. (D) Mean ﬂuorescence intensity of HepG2 cells at 48hr when treated with 60 and 80 mg/mL of CNB-PLGA-
+PSar-NPs. Data are presented as mean ± SD. The graph represents data from two independent experiments. p<0.05, student t-test.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+11
+
+3.9 Real-time PCR analysis
+In this study, we investigated the effects of different
+concentrations of free Cabozantinib (CNB), CNB-PLGA-PSar-NPs,
+or a combination of the two on the genes in the human hepatoma
+HepG2 cell line (78). Affymetrix Human Genome 1.0 S. T arrays were
+utilized in the study to conduct a microarray analysis. The microarray
+results were validated using real-time RT-PCR and semi-quantitative
+RT-PCR. In HepG2 cells exposed for 24 hours to free Cabozantinib
+(CNB), CNB-PLGA-PSar-NPs at concentrations of 0, 25, and 55 μg/
+mL. The real-time PCR was used to examine the mRNA levels of
+MT1F, MT1X, GSTA1, and APOA4. According to the current
+ﬁndings, CNB-PLGA-PSar-NPs change the mRNA expression of
+the genes listed above much more than free CNB. In other words,
+when free Cabozantinib (CNB), CNB-PLGA-PSar-NPs-treated cells
+were compared to control cells, the expression of MT1F, MT1X, and
+APOA4 was signiﬁcantly upregulated while the levels of MT1X and
+MTTP were decreased. The well-known metallothionein MT1F is
+essential for the stability of the genome, the cell cycle, and apoptosis.
+It has many different targets. In the presence of glutathione S-
+transferases, an apoptogenic factor, GST02 as an initiator and
+GSTA2 as an effector, it has been shown that most polymeric NPs
+promote penetrability transition, which in turn promotes apoptosis.
+In a previous study, the main proteins that control mitochondrial-
+mediated apoptosis were found to be from the MT1X family. The
+proapoptotic and antiapoptotic activities of MT1X and GSTA1 have
+been found. Cysteine proteases were successfully conserved by the
+family of cytoplasmic proteases known as caspases, which is essential
+in the apoptotic signaling pathway. The most important member of
+the family, MT1X, is essential for the induction of apoptosis.
+Microsomal triglyceride transfer protein (MTTP) overexpression in
+the liver is required for the hepatic secretion of lipoproteins
+containing apoprotein B (apoB). Inhibition of MTTP results in a
+decrease in plasma levels of apoB and hepatic triglyceride secretion
+(Figure 7). Overexpression, which is present in more than 45% of
+human hepatocellular carcinoma cells, causes hepatic cancer in
+transgenic mice. In this study, we demonstrated that upregulation
+of the tumour suppressor genes MT1F, MT1X, and APOA4 and
+downregulation of the genes MT1X and MTTP are the mechanisms
+by which free Cabozantinib (CNB) and CNB-PLGA-PSar-NPs kill
+HepG2 cells. However, it is essential to assess the novel therapeutic
+effects of prepared NPs based on CNB. Dorota Katarzyska-Banasik
+et al. (79) carried out a similar experiment and chose eight genes for
+validation: HPRT, HMBS, VIM, SDHA, TBP, RPL13, GAPDH, and
+18S rRNA. The ideal combination of reference genes, according to
+geNorm, is TPP and SDHA (79). P53, P21, Caspase-9, and AKT-1
+expressions were upregulated in FA-VNC-DEX-SPION Tera-1-
+treated cells, during RT-PCR studies, according to Sharafaldin Al-
+Musawi et al. (80). As per Shuang Liu et al. (81) ﬁndings, C-terminal
+binding protein 1 (CTBP1) was the most stable reference gene among
+6 candidates evaluated by genorm and normalﬁnder in RT-qPCR
+analysis of tumor tissues from male hepatocellular carcinoma patients
+with hepatitis B infection and cirrhosis. The stability values for
+CTBP1 were 0.08 and 0.044 for genorm and normﬁnder,
+respectively. The authors recommend using CTBP1 as the best
+candidate reference gene for RT-qPCR in studies of HCC related to
+HBV infection.In our current research also MT1X and MTTP were
+downlreguated.Alltogather the study investigated the effects of
+different concentrations of free Cabozantinib (CNB) and CNB-
+PLGA-PSar-NPs on genes in the human hepatoma HepG2 cell line.
+A
+B
+D
+C
+FIGURE 5
+Flow cytometry was used to analyse cell cycle distribution and DNA content in HepG2 cells treated by CNB-loaded CNB-PLGA-PSar-NPs and free CNB
+for 48 h (A, B) The cells were stained with PI and the cell cycle stage was deﬁned by DNA content. (C, D) The percentages of cell populations in the G0/
+G1, S, and G2/M phases was determined by gating during the ﬂow cytometry experiment for control, free CNB and CNB-loaded CNB-PLGA-PSar-NPs at
+60 µg/mL & 80 µg/mL concentration. These experiments are performed thrice mean ± SD; n= 3, **p <0.05, where untreated group is considered as
+control.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+12
+
+The study used microarray analysis, real-time RT-PCR and semi-
+quantitative RT-PCR. The results showed that CNB-PLGA-PSar-NPs
+change the mRNA expression of certain genes more than free CNB.
+These changes led to the promotion of apoptosis, and the inhibition of
+MTTP which results in a decrease in plasma levels of Apolipoprotein
+B and hepatic triglyceride secretion. The study suggests that the
+upregulation of tumour suppressor genes and downregulation of
+certain genes are the mechanisms by which free Cabozantinib
+(CNB) and CNB-PLGA-PSar-NPs kill HepG2 cells.
+3.10 Erythrocyte membrane integrity
+In this investigation, centrifugation was employed to separate
+plasma and white blood cells from blood, leaving only erythrocytes
+ﬂoating in normal saline solution. Researchers were able to determine
+membrane integrity by measuring LDH enzyme concentrations. A
+defect in the erythrocyte membrane integrity produces an increase in
+LDH release. The amount of LDH released after treating 1 mL of
+erythrocyte suspension with phosphate buffer solution, Cabozantinib
+(CNB), PLGA-PSar-encapsulated Cabozantinib nanoparticles (CNB-
+PLGA-PSar-NPs) (Equivalent to 10, 50, and 100 μg/mL of
+Cabozantinib), and placebo (PLGA-PSar-NPs) nanoparticles equal
+to the volume of molecular weights of PLGA nanoparticles of
+Cabozantinib (CNB) were mentioned respectively. Surprisingly,
+after 8 hours of incubation, placebo formulations did not
+demonstrate a signiﬁcant rise in LDH compared to phosphate
+buffer-treated samples. At these concentrations of test samples,
+erythrocytes are not harmed, according to the optional ﬁndings.
+Triton X 100, on the other hand, exhibits exceptionally signiﬁcant
+LDH release, suggesting entire erythrocyte destruction. As a
+consequence, Cabozantinib (CNB) would not alter the integrity of
+erythrocyte membranes; thus, produced nanoparticles containing
+Cabozantinib (CNB) would be safe for intravenous administration
+from the perspective of erythrocyte safety (Figures 8A, B).
+3.11 In-vivo anti-tumour efﬁcacy study
+For the anticancer study, mice with severe combined
+immunodeﬁciency disorder (SCID) were given lateral tail vein
+injections of Cabozantinib (CNB) (20 mg/kg), CNB-PLGA-PSar-
+NPs (20 mg/kg). In animals with established HePG2 tumours,
+Cabozantinib (CNB) 20 mg/kg. i.v. which is a standard-of-care
+FIGURE 6
+Flow cytometry analysis of HepG2 cells treated with different concentrations of CNB loaded CNB-PLGA-PSar-NPs and free CNB for 48 h, followed by
+staining with Annexin V-FITC and propidium iodide (PI). Results are representative of three independent experiments.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+13
+
+chemotherapy agent for liver cancer, decreased the size of the
+tumours by a large amount compared to the normal vehicle
+control. Compared to the vehicle control group, treatment with
+CNB reduced the size of tumours by 60.3% at 21 days (Figure 9A).
+Compared to the vehicle control, the lyophilized dose of CNB-PLGA-
+PSar-NPs (20 mg/kg. i.v.) showed an 85.67% reduction in the size of
+the tumour (Figure 9B). So, we can say that CNB-PLGA-PSar-NPs
+works better against tumours in biological systems. Surprisingly,
+when CNB-PLGA-PSar-NPs was injected into the animals, they lost
+weight and had great anti-tumour effects for a long time. This is a
+strong sign that the drug is targeting tumour tissues. So, polymeric
+nanoparticle systems of CNB made with PLGA and PSar have the
+A
+B
+FIGURE 8
+(A). Amount of LDH release after treating with different concentration (10 µg/mL,50 µg/mL,100µg/mL) of Cabozantinib (CNB), PLGA-PSar-encapsulated
+Cabozantinib nanoparticles (CNB-PLGA-PSar-NPs), and placebo (PLGA-PSar-NPs) nanoparticles against PBS (posative control) Triton X 100(negative
+control) at 8th hour. (B). Microsopic images of human erytocytic membrane after incorporation of CNB, PLGA-PSar-NPs, CNB-PLGA-PSar-NPs in the
+presence of posative and negative control.
+FIGURE 7
+The expression levels of MT1F, MT1X, APOA4, MT1X, MTTP genes in relative to the reference gene; Glyceraldehyde 3-phosphate dehydrogenase
+(GAPDH) in HepG2 cancer cell line treated with the CNB-loaded CNB-PLGA-PSar-NPs and free CNB. *P< 0.05, **P< 0.01 and ***P< 0.001 vs. control
+was considered signiﬁcant.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+14
+
+beneﬁt of reducing the higher dose-dependent toxicity of anticancer
+drugs while at the same time making the drugs work better against
+cancer. Shu Li et al. (2019 injected SKOV-3 cells into nude mice to
+induce ovarian cancer while developing folate-modiﬁed PLGA-based
+nanoparticles for the treatment of ovarian cancer. Compare to other
+groups, higher sensitivity against ovarian cancer is demonstrated by
+FA-PEG2000-PLGADTX/GEM NPs. Anti-Erb-BTNB-PCL-NPs
+demonstrated maximum in vivo anti-tumor efﬁcacy in a similar
+pattern during our experiment.
+3.12 Tissue distribution studies
+The tissue distribution was studied by separating 18 SCID mice
+into three groups (each group had six mice). The drug and its Nano
+formulations were administered intravenously (i.v.) at a bolus dose of
+20 mg/kg. Groups of mice were given a dosage and then killed eight
+hours later. The organs such as the liver, heart, colon, small intestine,
+stomach, brain, rectum muscle, and kidneys were harvested for study.
+Intact brain endothelial cells were isolated using a stereotaxic device
+(New Standard TM Stereotaxic Instrument (Model No.: 51500),
+USA). Tissue samples were washed in 0.9% sodium chloride
+solution, patted dry, then homogenised in cold physiological
+solution and ﬁltered. The samples were analysed using RP-UHPLC
+(Dionex Ultimate, 3000). Bonferroni’s multiple comparisons test
+showed that CNB had a very signiﬁcant distribution in liver, heart,
+stomach, and rectum tissues (p<0.05), suggesting that the nano-
+formulation (CNB-PLGA-PSar-NPs) would have a wider blood
+distribution and an appropriately high stomach resistance.
+Moreover, nanoparticles were found in a much more widespread
+fashion in the small intestine (p<0.05), indicating sufﬁcient resistance
+in a basic environment. This also led to a signiﬁcantly increased
+concentration of Nano formulations in the rectum. Nano-
+formulations don’t accumulate in the kidney, as shown by a p>0.05,
+lending credence to the hypothesis of rapid elimination. There is a
+signiﬁcant decrease in drug accumulation in the brain, which is
+indicative of decreased drug absorption by Nanoformulations
+across the Blood-Brain Barrier (BBB) and, thus, decreased
+neurotoxicity. Bio-distribution results showed that CNB and CNB-
+PLGA-PSar-NPs were more widely distributed in the parenchymal
+hepatocyte tissue of mice. Which suggests that the Nanoformulations
+(CNB-PLGA-PSar-NPs) might be a useful tool for delivering CNB to
+the liver, which could be a promising approach to treating liver
+cancer (Figure 9C).
+3.13 Pharmacokinetic study
+Cabozantinib (CNB), a BCS class-II drug, has limited anticancer
+activity due to its low water solubility and poor bioavailability, despite
+its anti-proliferative effects against solid tumours. In order to increase
+the systemic bioavailability of Cabozantinib (CNB) and stop the
+spread of liver cancer, we developed CNB-PLGA-PSar-NPs, which
+are polymeric nanoparticles encapsulating Cabozantinib (CNB). The
+relevant pharmacokinetic parameters C0, Cmax, Vd, t1/2, CL, AUC, and
+MRT are summarised in Table 1. Due to increased tissue bindings of
+A
+B
+C
+FIGURE 9
+(A) Tumor regression study in HePG2 cells Xenograft model showing changes in relative tumour volume with time (days) of different groups of SCID
+(severe combined immunodeﬁciency disorder) mice (n=6) treated with Cabozantinib (CNB), CNB-PLGA-PSar-NPs. equivalent concentration 20 mg/kg,
+I.V.) (B) Isolation of tumours after 21 days of studies (C) Comparative in vivo biodistribution of Cabozantinib (CNB), CNB-PLGA-PSar-NPs in rectum, heart,
+colon, small intestine, stomach, brain endothelium, liver, and kidney after i.v. administration of 20 mg/kg. i.v. bolus dose; values are represented as
+mean± SD (n=6) (****) highly signiﬁcance; p<0.00001, (***) moderately signiﬁcance<0.0001, (**)partial signiﬁcance; p<0.001, (*) less signiﬁcance< 0.05,
+(#) statistically non-signiﬁcance difference from CNB (p>0.05; all the formulations were compared against controlled group(CNB).
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+15
+
+Cabozantinib (CNB) encapsulated polymeric nanoparticles
+after intravenous bolus administration, as indicated by the
+pharmacokinetic proﬁle of the drug and drug-encapsulated
+polymeric nanoparticles, the clearance (CL) value gradually
+decreased. Indicating that CNB-PLGA-PSar-NPs inhibited opsonin
+protein adhesion, the mean residence time (MRT) of CNB-PLGA-
+PSar-NPs was 50.0867 ± 3.78h, which was signiﬁcantly longer than
+the MRT of Cabozantinib (CNB). This might be because
+nanoparticles are sneaky, allowing them to bypass the
+reticuloendothelial system and prolong systemic circulation. The
+statistically signiﬁcant differences between free Cabozantinib (CNB)
+and CNB contained polymeric nanoparticles (CNB-PLGA-PSar-NPs)
+were compared using Dunnett’s student t-test. CNB-PLGA-PSar-NPs
+had signiﬁcantly higher maximum plasma drug concentrations
+(C max), total clearance (CL), and area under the curve (AUC) than
+free CNB (p<0.001). Based on Figure, it was found that the plasma
+concentration of CNB-PLGA-PSar-NPs, which are polymeric
+nanoparticles coated with polylactic-co-glycolic acid (PLGA) and
+polysarcosine (PSar), was signiﬁcantly higher than that of free CNB.
+Additionally, the surface ﬁnish of nanoparticles inﬂuences how well
+they circulate. The corona coating of PLGA and PSar over
+nanoparticles prevents plasma protein adsorption, prolongs the
+time that blood circulates through the body. Therefore, CNB-
+PLGA-PSar-NPs and all CNB-encapsulated polymeric nanoparticles
+could function as a potential Cabozantinib (CNB) delivery system to
+liver cancer (Figure 10).
+3.14 In vivo immunohistochemical study
+Tumour sections were immunohistochemically (IHC) stained for
+Hep Par 1 expression. This was done so that the proliferative ability of
+cancer cells could be evaluated in vivo. Hep Par 1 is a cell marker that
+can be found during all of the active phases of the cell cycle, including
+G1, S, G2, and M. It is widely used for the purpose of determining the
+rate of cell proliferation. A suboptimal response to chemotherapy is
+associated with high levels of expression of Hep Par 1, which is also
+linked to aggressive tumour behaviour, vascular invasion, and
+metastasis of tumours. IHC investigations for Hep Par 1 using
+parafﬁn-embedded xenograft cancer tissue blocks from mice with
+(A) control (PBS-treated) group, (B) CNB -treated group, and (C)
+CNB-PLGA-PSar-NPs -treated group are depicted in Figure. For the
+purpose of evaluating the IHC data, ﬁve random 400 μm × 400 μm
+square zones were placed on each sectioned slide. As can be seen in
+Figure, tumours that were treated with CNB-PLGA-PSar-NPs had a
+signiﬁcantly lower Hep Par 1 labelling index (3.14 ± 1.71) than those
+that were treated with free CNB (9.22 ± 1.67) or the control group
+(15.26 ± 1.88), indicating that CNB-PLGA-PSar-NPs are effective in
+inhibiting the growth of tumours. This is supported by the fact that
+the control group had a signiﬁcantly higher index. Based on these
+ﬁndings, it appears that CNB-PLGA-PSar-NPs play a signiﬁcant part
+in the process of increasing the inhibition of tumour cell growth,
+causing the death of tumour cells, and demonstrating the ability to
+assist in the suppression of tumours (Figures 11A–D).
+4 Discussion
+The fabrication of nanoparticles composed of Poly D, L-lactic-co-
+glycolic acid (PLGA) and Polysarcosine (PSar) over Cabozantinib
+(CNB) has been studied for its potential in inducing apoptosis and
+cytotoxicity in human HepG2 hepatocellular carcinoma cell lines and
+in SCID female mice model. CNB is a tyrosine kinase inhibitor that is
+known to have anti-tumor activity, and the addition of PLGA and
+PSar to the CNB nanoparticles may enhance this activity.In the study,
+the CNB nanoparticles were fabricated using a double emulsion
+solvent evaporation method. The PLGA and PSar were then added
+to the nanoparticles as coating materials. The resulting nanoparticles
+were characterized for their size, shape, and surface charge. The
+nanoparticles were further evaluated for cytotoxicity and apoptosis-
+inducing ability of the CNB-PLGA-PSar-NPs nanoparticles in human
+HepG2 hepatocellular carcinoma cells. The results showed that the
+CNB-PLGA-PSar-NPs nanoparticles were more effective in inducing
+apoptosis and cytotoxicity in the cancer cells than CNB alone.
+Additionally, the study also found that the CNB-PLGA-PSar-NPs
+nanoparticles caused a signiﬁcant downregulation of the expression of
+genes related to cell proliferation, migration and invasion.
+Polysarcosine (PSar) and PLGA nanoparticles are advantageous as a
+delivery system for cabozantinib (CNB) due to their ability to protect
+the drug from degradation and improve its solubility. Additionally,
+these nanoparticles can target speciﬁc cells or tissues, leading to
+increased drug efﬁcacy and reduced toxicity. Furthermore,
+polysarcosine (PSar) and PLGA nanoparticles have been shown to
+have improved stability, which increases the shelf life of the drug and
+TABLE 1 Pharmacokinetic parameters Cabozantinib (CNB), CNB-PLGA-PSar-NPs after intravenous administration of 20 mg/kg dose.
+Parameters
+CNB
+CNB-PLGA-PSar-NPs
+C0(ng/mL)
+215.148 ± 16.32
+713.032 ± 23.37
+C max (ng/mL)
+241.313 ± 34.21
+668.25 ± 56.62*
+Vd (ml)
+1522.30 ± 1.54
+22342 ± 40.420
+t1/2(hr-1)
+05.21 ± 0.18
+37.433 ± 2.25
+CL (mL/hr)
+124.51 ± 1.13
+32.536 ± 8.49*
+AUC (ng*mL/hr)
+1956.73 ± 111.39
+29926.234 ± 653.89*
+MRT (h)
+7.445 ± 0.24
+43.0661 ± 10.58
+Data are presented as mean ± SD (n=3) (*) statistically signiﬁcantly different from ECF.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+16
+
+reduces the need for frequent dosing. The study of Poly D, L-lactic-
+co-glycolic acid, and Polysarcosine over Cabozantinib nanoparticles
+(CNB-PLGA-PSar-NPs) has been further conﬁrmed for its excellent
+bio-compatibility and liver disposition using various techniques such
+as lactate dehydrogenase (LDH) assay, pharmacokinetics, tissue
+distribution, immune-histochemistry and in-vivo anticancer effects
+in SCID female mice. The LDH assay was used to evaluate the
+cytotoxicity of CNB-PLGA-PSar-NPs on normal human blood
+erythrocytes and the results showed that the CNB-PLGA-PSar-NPs
+treated erythrocytes generate less Lactate dehydrogenase in compared
+to CNB treated erythrocytes. Pharmacokinetic studies were
+conducted to evaluate the pharmacokinetics and tissue distribution
+of CNB-PLGA-PSar-NPs in male albino wister rats. The results
+showed that CNB-PLGA-PSar-NPs had a prolonged circulation
+time and were preferentially distributed to the liver, which is
+consistent with the excellent liver disposition of the nanoparticles.
+Immune-histochemistry was performed to evaluate the anticancer
+effects of CNB-PLGA-PSar-NPs on HepG2 hepatocellular carcinoma
+cells; signifying, CNB-PLGA-PSar-NPs play a noteworthy part in the
+process of increasing the inhibition of tumour cell growth, causing the
+death of tumour cells. The in-vivo anti cancer results showed that
+CNB-PLGA-PSar-NPs pointedly reduced the tumor volume and
+induced cancer cell death. Overall, these results conﬁrm the
+excellent bio-compatibility, liver disposition and anticancer effects
+of CNB-PLGA-PSar-NPs in SCID female mice. These ﬁndings
+suggest that CNB-PLGA-PSar-NPs may be a promising therapeutic
+strategy for the treatment of hepatocellular carcinoma. Further
+studies are needed to fully understand the mechanisms of action of
+these nanoparticles and to optimize their design for in vivo use.
+5 Conclusion
+We created a nanocarrier system based on CNB-PLGA-PSar-NPs
+that were loaded with Cabozantinib (CNB), and we assessed it using
+SEM, TEM, AFM, FTIR, in-vitro drug release, and HepG2 cancer cells
+to determine its anticancer effect. We made nanosized, spherical
+CNB-PLGA-PSar-NPs particles with a small variety of sizes. The
+CNB-loaded CNB-PLGA-PSar-NPs had a robust cytotoxic effect on
+the HepG2 cancer cells. The fact that CNB-loaded CNB-PLGA-PSar-
+FIGURE 10
+Concentration-time proﬁles in plasma of Cabozantinib (CNB) after i.v. bolus administration of CNB suspension and CNB loaded polymeric nanoparticles
+(CNB-PLGA-PSar-NPs) at 20 mg/kg to 6 male albino Wister rats (200–250 g) (n=3). The reverse phase HPLC method was used to ﬁgure out how much
+CNB was in the plasma. Put in an HPLC chromatogram showing the amount of CNB in the plasma. The CNB concentration in plasma was determined
+using reverse phase HPLC. Incorporate the plasma CNB concentration as an HPLC chromatogram.
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+17
+
+NPs have a more signiﬁcant HepG2 cancer cell-killing effect than free
+CNB may be attributed to their sustained and prolonged drug release
+characteristics, high cellular internalization, and tumour targeting
+efﬁcacy. Furthermore, it has been shown that the HepG2 cell lines
+were considerably affected by the CNB nanoformulation’s strong
+induction of apoptosis. Finally, it has been shown that CNB-loaded
+CNB-PLGA-PSar-NPs can trigger cell death since cancer cells treated
+with them have increased tumour suppressor and apoptotic gene
+activity compared to the free CNB group. The study prepared and
+tested CNB-PLGA-PSar-NPs nanoparticles for the ﬁrst time for
+biocompatibility, biodistribution, and anti-tumor activity against
+the human HepG2 liver cancer cell line and SCID female mice. We
+performed lactate dehydrogenase assay, pharmacokinetic studies,
+tissue distribution studies, in vivo cancer activity in SCID female
+mice, and immunohistochemistry to conﬁrm the biocompatibility,
+biodistribution, and anti-tumor activity of the prepared CNB-PLGA-
+PSar-NPs nanoparticles.Thus, our results demonstrate the potential
+of innovative CNB-loaded CNB-PLGA-PSar-NPs as a novel strategy
+for treating hepatocellular carcinoma and the potential of CNB-
+PLGA-PSar-NPs as a promising carrier in a CNB delivery system.
+Data availability statement
+The raw data supporting the conclusions of this article will be
+made available by the authors, without undue reservation.
+Author contributions
+Data curation, SB and VP. Funding acquisition, BP. Investigation,
+VP and BP. Methodology, SB. Resources, BP. Supervision, BP.
+Validation, VP. Writing – original draft, SB. Writing – review and
+editing, BP. All the authors have reviewed and approved the ﬁnal
+manuscript. SB communicated to the journal.
+Conﬂict of interest
+The authors declare that the research was conducted in the
+absence of any commercial or ﬁnancial relationships that could be
+construed as a potential conﬂict of interest.
+FIGURE 11
+Immunohistochemical study for the Hep Par 1 expression by (A) control (PBS buffer treated), (B) free CNB, and (C) CNB-PLGA-PSar-NPs treated
+tumours. (D) The quantitative analysis of IHC results. Statistical comparisons were made using t-test; * partial signiﬁcance; p < 0.001; ** moderately
+signiﬁcance < 0.000. The treatment was compared with control (PBS buffer treated).
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+18
+
+Publisher’s note
+All claims expressed in this article are solely those of the authors
+and do not necessarily represent those of their afﬁliated
+organizations, or those of the publisher, the editors and the
+reviewers. Any product that may be evaluated in this article, or
+claim that may be made by its manufacturer, is not guaranteed or
+endorsed by the publisher.
+References
+1. Armandeh M, Bameri B, Samadi M, Heidari S, Foroumadi R, Abdollahi M. A
+systematic review of nonclinical studies on the effect of curcumin in chemotherapy-
+induced cardiotoxicity. Curr Pharm Design (2022) 28(22):1843–53. doi: 10.2174/
+1381612828666220513125312
+2. Salari N, Mansouri K, Valipour E, Abam F, Jaymand M, Rasoulpoor S, et al.
+Hyaluronic acid-based drug nanocarriers as a novel drug delivery system for cancer
+chemotherapy: A systematic review. DARU J Pharm Sci (2021) 29(2):439–47. doi:
+10.1007/s40199-021-00416-6
+3. Hosseini M, Baghaei K, Amani D, Ebtekar M. Tumor-derived exosomes
+encapsulating miR-34a promote apoptosis and inhibit migration and tumor
+progression of colorectal cancer cells under in vitro condition. DARU J Pharm Sci
+(2021) 29(2):267–78. doi: 10.1007/s40199-021-00400-0
+4. D’Angelo A, Sobhani N, Bagby S, Casadei-Gardini A, Roviello G. Cabozantinib as a
+second-line treatment option in hepatocellular carcinoma. Expert Rev Clin Pharmacol
+(2020) 13(6):623–9. doi: 10.1080/17512433.2020.1767591
+5. Personeni N, Rimassa L, Pressiani T, Smiroldo V, Santoro A. Cabozantinib for the
+treatment of hepatocellular carcinoma. Expert Rev Anticancer Ther (2019) 19(10):847–55.
+doi: 10.1080/14737140.2019.1674141
+6. Yang F, Jin C, Jiang Y-j, Li J, Di Y, Fu D-L. Potential role of soluble VEGFR-1 in
+antiangiogenesis therapy for cancer. Expert Rev Anticancer Ther (2011) 11(4):541–9. doi:
+10.1586/era.10.171
+7. Modi SJ, Kulkarni VM. Exploration of structural requirements for the inhibition of
+VEGFR-2 tyrosine kinase: Binding site analysis of type II. ‘DFG-out’ inhibitors J Biomol
+Structure Dynamics (2022) 40(12):5712–27. doi: 10.1080/07391102.2021.1872417
+8. Wang H, Sun S, Zhang Y, Wang J, Zhang S, Yao X, et al. Improved drug targeting to
+liver tumor by sorafenib-loaded folate-decorated bovine serum albumin nanoparticles.
+Drug Delivery (2019) 26(1):89–97. doi: 10.1080/10717544.2018.1561766
+9. IndolﬁL, Edelman ER, Langer RS, Clark JW, Ting DT, Ferrone CRA, et al. Local
+drug delivery devices and methods for treating cancer. Google Patents (2021).
+10. Soares A, Monteiro FSM, Maluf FC, Bastos DA, Jardim DL, Sasse AD, et al.
+Advanced renal cell carcinoma (RCC) management: an expert panel recommendation
+from the Latin American cooperative oncology group (LACOG) and the Latin American
+renal cancer group (LARCG). J Cancer Res Clin Oncol (2020) 146(7):1829–45. doi:
+10.1007/s00432-020-03236-4
+11. Zobeiri M, Parvizi F, Kalhori MR, Majnooni MB, Farzaei MH, Abdollahi M. Targeting
+miRNA by natural products: A novel therapeutic approach for nonalcoholic fatty liver.
+Evidence-Based Complement Altern Med (2021) 2021:6641031. doi: 10.1155/2021/6641031
+12. Ma J, Wang B, Shao H, Zhang S, Chen X, Li F, et al. Hydrogels for localized
+chemotherapy of liver cancer: a possible strategy for improved and safe liver cancer
+treatment. Drug Delivery (2022) 29(1):1457–76. doi: 10.1080/10717544.2022.2070299
+13. Hou L, Du J, Wang J, Liu Y, Sun W, Zheng Y, et al. Expression of IL-13Ra2 in liver
+cancer cells and its effect on targeted therapy of liver cancer. J Cancer Res Clin Oncol
+(2010) 136(6):839–46. doi: 10.1007/s00432-009-0724-z
+14. Li G, Zhao M, Zhao L. Lysine-mediated hydroxyethyl starch-10-hydroxy
+camptothecin micelles for the treatment of liver cancer. Drug Delivery (2020) 27
+(1):519–29. doi: 10.1080/10717544.2020.1745329
+15. Bansal D, Yadav K, Pandey V, Ganeshpurkar A, Agnihotri A, Dubey N.
+Lactobionic acid coupled liposomes: an innovative strategy for targeting hepatocellular
+carcinoma. Drug Delivery (2016) 23(1):140–6. doi: 10.3109/10717544.2014.907373
+16. Wang M, Wang L, Feng H, Jiang H, Zhou J, Wang X. Precise therapeutic effect of
+self-assembling gold nanocluster–PTEN complexes on an orthotropic model of liver
+cancer. J Cancer Res Clin Oncol (2020) 146(4):875–82. doi: 10.1007/s00432-020-03163-4
+17. Bhattacharya S, Anjum MM, Patel KK. Gemcitabine cationic polymeric
+nanoparticles against ovarian cancer: formulation, characterization, and targeted drug
+delivery. Drug Delivery (2022) 29(1):1060–74. doi: 10.1080/10717544.2022.2058645
+18. Muhl C, Zengerling L, Groß J, Eckhardt P, Opatz T, Besenius P, et al. Insight into
+the synthesis of n-methylated polypeptides11Electronic supplementary information
+(ESI). Polymer Chem (2020) 11(43):6919–27. doi: 10.1039/d0py01055c. CCDC 1976455
+and 1976456. For ESI and crystallographic data in CIF or other electronic format.
+19. Zhai G, Liu Q, Ji J, Wu Y, Geng J, Hu X. Recyclable polymerized Lewis acid poly-
+BPh(C6F5)2 catalyzed selective n-formylation and n-methylation of amines with carbon
+dioxide and phenylsilanes. J CO2 Utilization (2022) 61:102052. doi: 10.1016/
+j.jcou.2022.102052
+20. Tan J, Zhang Y-F. Synthesis and micellization of cationic trisiloxane surfactants
+with poly(ethylene glycol). Colloids Surfaces A: Physicochem Eng Aspects (2022)
+634:127946. doi: 10.1016/j.colsurfa.2021.127946
+21. Liu Z, Peng Y, Yang L, Zhang G. Poly (lactic-co-glycolic acid)-Chitosan–gelatin
+composite nanomaterials for the treatment of diabetic foot ulcer wound infection.
+nanotechnology (2021) 21(2):1070–8. doi: 10.1166/jnn.2021.18675
+22. Ishiguchi H, Uchida M, Okamura T, Kobayashi S, Yano M. Acute heart failure
+following the initiation of cabozantinib, a multikinase inhibitor: A case report. J Cardiol
+cases (2022) 26(3):217–20. doi: 10.1016/j.jccase.2022.04.012
+23. Casadei-Gardini A, Rimassa L, Rimini M, Yoo C, Ryoo B-Y, Lonardi S, et al.
+Regorafenib versus cabozantinb as second-line treatment after sorafenib for unresectable
+hepatocellular carcinoma: matching-adjusted indirect comparison analysis. J Cancer Res
+Clin Oncol (2021) 147(12):3665–71. doi: 10.1007/s00432-021-03602-w
+24. Bhattacharya S. Fabrication of poly(sarcosine), poly (ethylene glycol), and poly
+(lactic-co-glycolic acid) polymeric nanoparticles for cancer drug delivery. J Drug Delivery
+Sci Technol (2021) 61:102194. doi: 10.1016/j.jddst.2020.102194
+25. Willers C, Svitina H, Rossouw MJ, Swanepoel RA, Hamman JH, Gouws C. Models
+used to screen for the treatment of multidrug resistant cancer facilitated by transporter-
+based efﬂux. J Cancer Res Clin Oncol (2019) 145(8):1949–76. doi: 10.1007/s00432-019-
+02973-5
+26. Shkodra B, Press AT, Vollrath A, Nischang I, Schubert S, Hoeppener S, et al.
+Formulation of liver-speciﬁc PLGA-DY-635 nanoparticles loaded with the protein kinase
+c inhibitor bisindolylmaleimide I. Pharmaceutics (2020) 12(11):1110. doi: 10.3390/
+pharmaceutics12111110
+27. Senthilkumar M, Mishra P, Jain NK. Long circulating PEGylated poly(D,L-lactide-
+co-glycolide) nanoparticulate delivery of docetaxel to solid tumors. J Drug Targeting
+(2008) 16(5):424–35. doi: 10.1080/10611860802088598
+28. Yu Y, Chen D, Li Y, Yang W, Tu J, Shen Y. Improving the topical ocular
+pharmacokinetics of lyophilized cyclosporine a-loaded micelles: formulation, in vitro
+and in vivo studies. Drug Delivery (2018) 25(1):888–99. doi: 10.1080/
+10717544.2018.1458923
+29. Fereig SA, El-Zaafarany GM, Arafa MG, Abdel-Mottaleb MMA. Boosting the anti-
+inﬂammatory effect of self-assembled hybrid lecithin–chitosan nanoparticles via
+hybridization with gold nanoparticles for the treatment of psoriasis: elemental mapping
+and in vivo modeling. Drug Delivery (2022) 29(1):1726–42. doi: 10.1080/
+10717544.2022.2081383
+30. Adjou N, Yahia A, Oudjit MN, Dupuis M. Inﬂuence of HRWR molecular weight
+and polydispersity on rheology and compressive strength of high-performance cement
+paste. Construction Building Materials (2022) 327:126980. doi: 10.1016/
+j.conbuildmat.2022.126980
+31. Al-Bazali T. On the stability of shale: the role of zeta potential (z) and debye hückel
+length (k–1) on shale swelling. Petroleum Sci Technol (2021) 39(21-22):1008–26. doi:
+10.1080/10916466.2021.1981380
+32. Yamamoto T, Takahashi S, Hasegawa T, Hongo H, Amizuka N. Morphological
+variety of capillary ends invading the epiphyseal plate in rat femora using scanning
+electron microscopy with osmium maceration. J Oral Biosci (2022). doi: 10.1016/
+j.job.2022.04.006
+33. Mugerli S, Zupančič D, Rok R, Lučovnik M. Transmission electron microscopy
+demonstration of reduced endothelial glycocalyx in severe preeclampsia. Placenta (2022)
+126:64–9. doi: 10.1016/j.placenta.2022.06.010
+34. Yang Z, Liu Z, Zhu J, Xu J, Pu Y, Bao Y. Green synthesis and characterization of
+gold nanoparticles from pholiota adiposa and their anticancer effects on hepatic
+carcinoma. Drug Delivery (2022) 29(1):997–1006. doi: 10.1080/10717544.2022.2056664
+35. Li Y, Wang C, Wang J, Chu T, Zhao L, Zhao L. Permeation-enhancing effects and
+mechanisms of O-acylterpineol on isosorbide dinitrate: mechanistic insights based on
+ATR-FTIR spectroscopy, molecular modeling, and CLSM images. Drug Delivery (2019)
+26(1):107–19. doi: 10.1080/10717544.2018.1561764
+36. Rami JM, Patel CD, Patel CM, Patel MV. Thermogravimetric analysis (TGA) of
+some synthesized metal oxide nanoparticles. Materials Today: Proc (2021) 43:655–9.
+37. Bhattacharya S. Methotrexate-loaded polymeric lipid hybrid nanoparticles
+(PLHNPs): a reliable drug delivery system for the treatment of glioblastoma. J Exp
+Nanoscience (2021) 16(1):344–67. doi: 10.1080/17458080.2021.1983172
+38. Kisoon N, Ariatti M, Moodley T. A novel cationic cholesterol derivative, its
+formulation into liposomes, and the efﬁcient transfection of the transformed human cell
+lines HepG2 and HeLa. Drug Delivery (2002) 9(3):161–7. doi: 10.1080/
+15227950290097598
+39. Navaeian M, Ahmadpour-Yazdi H, Asadian S, Gheibi N. The effect of ANGPTL8
+protein on proliferation and apoptosis in HepG2 hepatocellular carcinoma cell line. Gene
+Rep (2021) 25:101306. doi: 10.1016/j.genrep.2021.101306
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+19
+
+40. Yan W, Wang T, Zhao L, Sun C. Modiﬁed DMEM xenic culture medium for
+propagation, isolation and maintenance of balantioides coli. Acta Tropica (2021)
+214:105762. doi: 10.1016/j.actatropica.2020.105762
+41. Al-Rabia MW, Alhakamy NA, Rizg WY, Alghaith AF, Ahmed OAA, Fahmy UA.
+Boosting curcumin activity against human prostatic cancer PC3 cells by utilizing scorpion
+venom conjugated phytosomes as promising functionalized nanovesicles. Drug Delivery
+(2022) 29(1):807–20. doi: 10.1080/10717544.2022.2048133
+42. Liu T, Zhang J, Cao J, Zheng H, Zhan C, Liu H, et al. Identiﬁcation of coexistence of
+biological and non-biological aerosol particles with DAPI (4′,6-diamidino-2-
+phenylindole) stain. Particuology (2023) 72:49–57. doi: 10.1016/j.partic.2022.02.009
+43. Niu J, Li C, Wu H, Feng X, Su Q, Li S, et al. Propidium iodide (PI) stains nissl
+bodies and may serve as a quick marker for total neuronal cell count. Acta Histochemica
+(2015) 117(2):182–7. doi: 10.1016/j.acthis.2014.12.001
+44. Muratori C, Silkuniene G, Mollica PA, Pakhomov AG, Pakhomova ON. The role
+of ESCRT-III and annexin V in the repair of cell membrane permeabilization by the
+nanosecond pulsed electric ﬁeld. Bioelectrochemistry (2021) 140:107837. doi: 10.1016/
+j.bioelechem.2021.107837
+45. Prerana S, Ashwini P, Anupama KP, Prajna VS, Prithvisagar KS, Nayak A, et al.
+Evaluation of reverse transcriptase-polymerase spiral reaction assay for rapid and
+sensitive detection of severe acute respiratory syndrome coronavirus 2. Clinica Chimica
+Acta (2023) 539:144–50. doi: 10.1016/j.cca.2022.12.009
+46. Lv G, Shi Q, Zhang T, Li J, Long Y, Zhang W, et al. Integrating a phenotypic
+screening with a structural simpliﬁcation strategy to identify 4-phenoxy-quinoline
+derivatives to potently disrupt the mitotic localization of aurora kinase b. Bioorganic
+Medicinal Chem (2023) 8:117173. doi: 10.1016/j.bmc.2023.117173
+47. Zhu H, Yu J, Ye J, Wu Y, Pan J, Li Y, et al. Nanoparticle-mediated corneal
+neovascularization treatments: Toward new generation of drug delivery systems. Chin
+Chem Lett (2023) 34(3):107648. doi: 10.1016/j.cclet.2022.06.071
+48. Cong Y, Sun Y, Deng X, Yu H, Lian X, Cong Y. A SYBR green-based real-time RT-
+PCR assay to differentiate the H1N1 inﬂuenza virus lineages. J Virological Methods (2022)
+300:114387. doi: 10.1016/j.jviromet.2021.114387
+49. Zhen Z, Wei L, Zhi-fen T, Ying L, Jin-xia A, Xiao-han Y, et al. SYBR® green qPCR
+screening methods for detection of anti-herbicide genes in genetically modiﬁed processed
+products. J Northeast Agric Univ (English Edition) (2016) 23(1):57–64. doi: 10.1016/
+S1006-8104(16)30033-2
+50. Caimi G, Presti RL, Mancuso S, Siragusa S, Carlisi M. Erythrocyte deformability
+proﬁle evaluated by laser diffractometry in patients with multiple myeloma: Re-
+examination of our cases. Microvascular Res (2023) 146:104473. doi: 10.1016/
+j.mvr.2022.104473
+51. Nwizugbo KC, Ogwu MC, Eriyamremu GE, Ahana CM. Alterations in energy
+metabolism, total protein, uric and nucleic acids in African sharptooth catﬁsh (Clarias
+gariepinus burchell) exposed to crude oil and fractions. Chemosphere (2023) 316:137778.
+doi: 10.1016/j.chemosphere.2023.137778
+52. Guo Y, Zhang P, Zhao Q, Wang K, Luan Y. Reduction-sensitive polymeric micelles
+based on docetaxel-polymer conjugates Via disulﬁde linker for efﬁcient cancer therapy.
+Macromol bioscience (2016) 16(3):420–31. doi: 10.1002/mabi.201500317
+53. Buijs JT, Ünlü B, Laghmani EH, Heestermans M, van Vlijmen BJM, Versteeg HH.
+Assessment of breast cancer progression and metastasis during a hypercoagulable state
+induced by silencing of antithrombin in a xenograft mouse model. Thromb Res (2023)
+221:51–7. doi: 10.1016/j.thromres.2022.11.018
+54. Mehrotra N, Anees M, Tiwari S, Kharbanda S, Singh H. Polylactic acid based
+polymeric nanoparticle mediated co-delivery of navitoclax and decitabine for cancer
+therapy, nanomedicine: Nanotechnology. Biol Med (2023) 47:102627. doi: 10.1016/
+j.nano.2022.102627
+55. Ali FR, Shoaib MH, Ali SA, Yousuf RI, Siddiqui F, Raja R, et al. A nanoemulsion
+based transdermal delivery of insulin: Formulation development, optimization, in-vitro
+permeation across strat-m® membrane and its pharmacokinetic/pharmacodynamic
+evaluation. J Drug Delivery Sci Technol (2022) 71:103338. doi: 10.1016/j.jddst.2022.103338
+56. Rodrı́guez-Hernández J. 6 - micro-/nanostructured polymer blends containing
+block copolymers. In: Visakh PM, Markovic G, Pasquini D, editors. Recent developments
+in polymer macro, micro and nano blends. United Kingdom: Woodhead Publishing
+(2017). p. 131–61.
+57. Thakur S, Chaudhary J, Singh P, Alsanie WF, Grammatikos SA, Thakur VK.
+Synthesis of bio-based monomers and polymers using microbes for a sustainable
+bioeconomy. Bioresource Technol (2022) 344:126156. doi: 10.1016/j.biortech.2021.126156
+58. Alirezaei M, Ghobeh M, Es-haghi A. Poly(lactic-co-glycolic acid)(PLGA)-based
+nanoparticles modiﬁed with chitosan-folic acid to delivery of artemisia vulgaris l. essential
+oil to HT-29 cancer cells. Process Biochem (2022) 121:207–15. doi: 10.1016/
+j.procbio.2022.06.034
+59. Zhang Y, Jiao L, Wu Z, Gu P, Feng Z, Xu S, et al. Fabrication and characterization of
+Chinese yam polysaccharides PLGA nanoparticles stabilized Pickering emulsion as an efﬁcient
+adjuvant. Int J Biol Macromol (2022) 209:513–24. doi: 10.1016/j.ijbiomac.2022.04.043
+60. Madkour LH. Chapter 13 - nanoparticle and polymeric nanoparticle-based
+targeted drug delivery systems. In: Madkour LH, editor. Nucleic acids as gene
+anticancer drug delivery therapy. Academic Press (2019). p. 191–240.
+61. Sakulkhu U, Mahmoudi M, Maurizi L, Salaklang J, Hofmann H. Protein corona
+composition of superparamagnetic iron oxide nanoparticles with various physico-
+chemical properties and coatings. Sci Rep (2014) 4(1):5020. doi: 10.1038/srep05020
+62. Firouzi M, Nguyen AV. The Gibbs-marangoni stress and nonDLVO forces are
+equally important for modeling bubble coalescence in salt solutions. Colloids Surfaces A:
+Physicochem Eng Aspects (2017) 515:62–8. doi: 10.1016/j.colsurfa.2016.12.004
+63. Meng J, Lau CH, Xue Y, Zhang R, Cao B, Li P. Compatibilizing hydrophilic and
+hydrophobic polymers via spray coating for desalination. J Materials Chem A (2020) 8
+(17):8462–8. doi: 10.1039/D0TA00871K
+64. Snejdrova E, Loskot J, Martiska J, Soukup T, Prokes L, Frolov V, et al. Rifampicin-
+loaded PLGA nanoparticles for local treatment of musculoskeletal infections: Formulation
+and characterization. J Drug Delivery Sci Technol (2022) 73:103435. doi: 10.1016/
+j.jddst.2022.103435
+65. Pitchika S, Sahoo SK. Paclitaxel and lapatinib dual loaded chitosan-coated PLGA
+nanoparticles enhance cytotoxicity by circumventing MDR1-mediated trastuzumab
+resistance in HER2 positive breast cancers: In-vitro and in-vivo studies. J Drug Delivery
+Sci Technol (2022) 73:103445. doi: 10.1016/j.jddst.2022.103445
+66. Oh YJ, Hong J. Application of the MTT-based colorimetric method for evaluating
+bacterial growth using different solvent systems. LWT (2022) 153:112565. doi: 10.1016/
+j.lwt.2021.112565
+67. Al-Kinani MA, Haider AJ, Al-Musawi S. Design and synthesis of
+nanoencapsulation with a new formulation of Fe@Au-CS-CU-FA NPs by pulsed laser
+ablation in liquid (PLAL) method in breast cancer therapy: In vitro and In vivo.
+Plasmonics (2021) 16(4):1107–17. doi: 10.1007/s11468-021-01371-3
+68. Al-Kinani MA, Haider AJ, Al-Musawi S. Design, construction and characterization
+of intelligence polymer coated core–shell nanocarrier for curcumin drug encapsulation
+and delivery in lung cancer therapy purposes. J Inorganic Organometallic Polymers
+Materials (2021) 31(1):70–9. doi: 10.1007/s10904-020-01672-w
+69. Liang GF, Zhu YL, Sun B, Hu FH, Tian T, Li SC, et al. PLGA-based gene delivering
+nanoparticle enhance suppression effect of miRNA in HePG2 cells. Nanoscale Res Lett
+(2011) 6(1):447. doi: 10.1186/1556-276X-6-447
+70. Yang Q, Moulder KR, Cohen MS, Cai S, Forrest LM. Cabozantinib loaded DSPE-
+PEG(2000) micelles as delivery system: Formulation, characterization and cytotoxicity
+evaluation. BAOJ Pharm Sci 1 (2015) 5:001. doi: 10.24947/2380-5552/1/1/00101
+71. Nie X, Liu Y, Li M, Yu X, Yuan W, Huang S, et al. SP94 peptide-functionalized PEG-
+PLGA nanoparticle loading with cryptotanshinone for targeting therapy of hepatocellular
+carcinoma. AAPS PharmSciTech (2020) 21(4):124. doi: 10.1208/s12249-020-01655-7
+72. Yang X, Shi J, Chen X, Jiang Y, Zhao H. Efﬁcacy of cabozantinib and nivolumab in
+treating hepatocellular carcinoma with RET ampliﬁcation, high tumor mutational
+burden, and PD-L1 expression. oncologist (2020) 25(6):470–4. doi: 10.1634/
+theoncologist.2019-0563
+73. Liu Y, Piao X-J, Xu W-T, Zhang Y, Zhang T, Xue H, et al. Calycosin induces
+mitochondrial-dependent apoptosis and cell cycle arrest, and inhibits cell migration
+through a ROS-mediated signaling pathway in HepG2 hepatocellular carcinoma cells.
+Toxicol Vitro (2021) 70:105052. doi: 10.1016/j.tiv.2020.105052
+74. SuﬁSA, Hoda M, Pajaniradje S, Mukherjee V, Coumar SM, Rajagopalan R.
+Enhanced drug retention, sustained release, and anti-cancer potential of curcumin and
+indole-curcumin analog-loaded polysorbate 80-stabilizied PLGA nanoparticles in colon
+cancer cell line SW480. Int J Pharmaceutics (2020) 588:119738. doi: 10.1016/
+j.ijpharm.2020.119738
+75. Patel J, Amrutiya J, Bhatt P, Javia A, Jain M, Misra A. Targeted delivery of
+monoclonal antibody conjugated docetaxel loaded PLGA nanoparticles into EGFR
+overexpressed lung tumour cells. J microencapsulation (2018) 35(2):204–17. doi:
+10.1080/02652048.2018.1453560
+76. Devika MS, Vysakh A, Vijeesh V, Jisha N, Ruby PM. Flavonoid glycoside diosmin
+induces apoptosis and cell cycle arrest in DLD-1 human colon cancer cell line. J Biologically
+Active Products Nat (2022) 12(3):232–42. doi: 10.1080/22311866.2022.2081608
+77. Abdul Mahdi S, Ali Kadhim A, Albukhaty S, Nikzad S, Haider AJ, Ibraheem S, et al.
+Gene expression and apoptosis response in hepatocellular carcinoma cells induced by
+biocompatible polymer/magnetic nanoparticles containing 5-ﬂuorouracil. Electronic J
+Biotechnol (2021) 52:21–9. doi: 10.1016/j.ejbt.2021.04.001
+78. Guimarães A, Bizerra PFV, Miranda CA, Mingatto FE. Effects of imidacloprid on
+viability and increase of reactive oxygen and nitrogen species in HepG2 cell line. Toxicol
+Mech Methods (2022) 32(3):204–12. doi: 10.1080/15376516.2021.1992553
+79. Katarzyńska-Banasik D, Grzesiak M, Sechman A. Selection of reference genes for
+quantitative real-time PCR analysis in chicken ovary following silver nanoparticle
+treatment. Environ Toxicol Pharmacol (2017) 56:186–90. doi: 10.1016/j.etap.2017.09.011
+80. Al-Musawi S, Ibraheem S, Abdul Mahdi S, Albukhaty S, Haider AJ, Kadhim AA,
+et al. Smart nanoformulation based on polymeric magnetic nanoparticles and vincristine
+drug: A novel therapy for apoptotic gene expression in tumors. Life (2021) 11(1):71. doi:
+10.3390/life11010071
+81. Liu S, Zhu P, Zhang L, Ding S, Zheng S, Wang Y, et al. Selection of reference genes
+for RT-qPCR analysis in tumor tissues from male hepatocellular carcinoma patients with
+hepatitis b infection and cirrhosis. Cancer Biomarkers section A Dis Markers (2013) 13
+(5):345–9. doi: 10.3233/CBM-130365
+Bhattacharya et al.
+10.3389/fonc.2023.1125857
+Frontiers in Oncology
+frontiersin.org
+20

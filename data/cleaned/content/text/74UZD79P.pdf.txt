@@ -1,0 +1,916 @@
+Artiﬁcial Cells, Nanomedicine, and Biotechnology
+An International Journal
+ISSN: 2169-1401 (Print) 2169-141X (Online) Journal homepage: www.tandfonline.com/journals/ianb20
+Molecular docking of immunogenic peptide
+of Toxoplasma gondii and encapsulation with
+polymer as vaccine candidate
+Rabia Cakir-Koc, Yasemin Budama-Kilinc, Yagmur Kokcu & Serda Kecel-
+Gunduz
+To cite this article: Rabia Cakir-Koc, Yasemin Budama-Kilinc, Yagmur Kokcu & Serda
+Kecel-Gunduz (2018) Molecular docking of immunogenic peptide of Toxoplasma gondii
+and encapsulation with polymer as vaccine candidate, Artiﬁcial Cells, Nanomedicine, and
+Biotechnology, 46:sup2, 744-754, DOI: 10.1080/21691401.2018.1469024
+To link to this article:  https://doi.org/10.1080/21691401.2018.1469024
+Published online: 09 May 2018.
+Submit your article to this journal
+Article views: 1990
+View related articles
+View Crossmark data
+Citing articles: 2 View citing articles
+Full Terms & Conditions of access and use can be found at
+https://www.tandfonline.com/action/journalInformation?journalCode=ianb20
+
+Molecular docking of immunogenic peptide of Toxoplasma gondii and
+encapsulation with polymer as vaccine candidate
+Rabia Cakir-Koca, Yasemin Budama-Kilinca, Yagmur Kokcub and Serda Kecel-Gunduzc
+aDepartment of Bioengineering, Yildiz Technical University, Istanbul, Turkey; bGraduate School of Engineering and Sciences, Istanbul
+University, Istanbul, Turkey; cPhysics Department, Faculty of Science, Istanbul University, Istanbul, Turkey
+ABSTRACT
+Toxoplasma gondii is one of the most widely spread parasitic organisms in the world. T. gondii causes
+primary, chronic infection and mortality. Major surface antigen 1 is the most abundant tachyzoite sur-
+face protein and highly conserved between species and causes strong humoural response. Some stud-
+ies showed that the peptide sequence of surface antigen has immunity. Therefore, tachyzoite surface
+antigenic peptide sequence is one of the good candidates for vaccine development. However, conform-
+ational information and delivery systems are very important parameters for vaccine development.
+Computational chemistry which is used as an effective method to perform drug or vaccine design pro-
+vides important information on structure–activity relationship, biological effects of functional groups,
+molecular geometry, design of enzyme inhibitors and antagonists. The interaction of immunological
+peptides with protein systems was carried out by means of computing the free energy of binding using
+the molecular docking technique. Due to the major histocompatibility complex (MHC), proteins play a
+substantial role for adaptive immunity, the crystal structure of a MHC class I, which plays a pivotal role
+in the adaptive branch of the immune system, was preferred for docking calculations. A delivery system
+based on poly(lactic-co-glycolic acid) (PLGA) nanoparticles and peptide loaded PLGA nanoparticles was
+prepared in this study to improve the bioavailability of tachyzoite surface antigenic peptide sequence.
+Double emulsion method (water-in-oil-in-water or w/o/w) was used for synthesis of PLGA and peptide
+loaded PLGA nanoparticles. The average particle size, polydispersity index and zeta potential values of
+PLGA and peptide loaded PLGA nanoparticles were measured with zeta-sizer by using dynamic light
+scattering (DLS) technique. The scanning electron microscope (SEM) (Zeiss Supra 50 V) was used for
+imagining the peptide loaded PLGA nanoparticles. Cell toxicity of nanoparticles was assayed on AGS
+(gastric adenocarcinoma) cell line. To evaluate mitochondrial activity of cells and toxicity studies, XTT
+methods were carried out. In this study, we aimed to obtain specific immunological peptide loaded
+PLGA nanoparticles and characterize the formation with FTIR, zeta sizer and SEM imaging, and evaluate
+cytotoxicity and carry out molecular docking calculations of peptide–MHC protein in order to enlight in
+vivo events as vaccine candidate against T. gondii.
+ARTICLE HISTORY
+Received 22 January 2018
+Revised 20 April 2018
+Accepted 20 April 2018
+KEYWORDS
+Toxoplasma; cytotoxicity;
+PLGA; XTT; SEM;
+molecular docking
+Introduction
+Toxoplasmosis, caused by an intracellular protozoan parasite,
+Toxoplasma gondii, is widespread disease throughout the
+world. Toxoplasma is considered as one of the most success-
+ful eukaryotic pathogens which is of major medical and veter-
+inary importance. The parasite is ubiquitous throughout the
+world and is estimated to infect approximately half of the
+world’s population [1]. People can be infected with T. gondii
+by contact with infected animals, transfusion of contaminated
+blood
+or
+organ,
+congenital
+way,
+and
+foodborne
+route.
+Especially, there is a risk for infection of pregnant women,
+because the foetus may be stillborn or have some abnormal-
+ities
+such
+as
+hydrocephalus,
+intracranial
+calcifications,
+microcephaly, foetal growth retardation, ascites or hepatos-
+plenomegaly
+[2].
+Infection
+can
+result
+in
+encephalitis
+in
+immunocompromised hosts, or serious congenital disease in
+developing foetus and causes a great economic loss as it
+may lead to abortion, stillbirth and neonatal loss [3].
+Effective vaccines may contribute toward preventing and
+controlling of disease. There is only one commercial vaccine
+for toxoplasmosis. The vaccine comprises live tachyzoites of
+the S48 “incomplete” strain of Toxoplasma gondii, but this
+vaccine is only approved for to control toxoplasma in sheep.
+So, there is no effective commercial vaccine for human use
+against toxoplasmosis. In order to address this problem,
+numerous vaccination trials against disease have been per-
+formed for their immunological effects in animal models,
+including inactivated and attenuated vaccine, subunit vac-
+cine, genetically engineered vaccine and DNA vaccine [3].
+Recent vaccine studies were focused on the immunodomi-
+nant surface antigens of parasite. Among them, SAG1 protein
+has important role in host cell invasion and stimulate
+immune response against parasite. It has role in protection
+against T. gondii infection and it is shown as important vac-
+cine candidate [4]. However, different sources or isolation,
+purification methods affect quality and amount of protein [5].
+CONTACT Serda Kecel-Gunduz
+skecel@istanbul.edu.tr
+Physics Department, Faculty of Science, Istanbul University, Istanbul, Turkey
+ 2018 Informa UK Limited, trading as Taylor & Francis Group
+ARTIFICIAL CELLS, NANOMEDICINE, AND BIOTECHNOLOGY
+2018, VOL. 46, NO. S2, S744–S754
+https://doi.org/10.1080/21691401.2018.1469024
+
+Many researchers have tried to produce recombinant SAG1
+but have not succeeded because of the loss of immunoactiv-
+ity due to insoluble forms and incorrect folding [6]. Therefore,
+the use of whole protein may not be an effective approach.
+On the other hand, peptide-based subunit vaccines target an
+immune response using a minimal microbial component.
+These vaccines are usually chemically synthesized and have
+no infectious properties. They are physically more stable and
+obtained easier and cheaper than conventional vaccines. Also
+the risk of allergic reaction and autoimmune response is
+reduced because the pathogen component is at a minimal
+level [7]. However, because of the small size and physiological
+degradation risk in body fluids, encapsulation with polymeric
+nanoparticles
+is
+become
+important
+approach
+[8].
+Nanoparticles based on polymer have been emerging for clin-
+ical and biological applications because of their low toxicity,
+low immunogenicity and biocompatibility [9]. Encapsulated
+peptide vaccines presented to the immune systems more
+effectively, more stable to enzymatic degradation than pep-
+tide used alone [7].
+Besides formulation of peptides for delivery, it is important
+to identify the conformational and dynamic information of
+peptides and know the interactions with immunological pro-
+teins of immune systems. Molecular docking calculations
+were employed to model and predict protein–drug interac-
+tions. Docking technique also provides substantial informa-
+tion about prediction of the binding mode of novel drugs,
+and peptide–protein interactions. Since MHC proteins are not-
+able for adaptive immunity, the crystal structure of antigenic
+peptide in complex with the murine MHC class I was pre-
+ferred as the target protein for the docking simulations
+(Figures 1–5). Dynamic light scattering (DLS) technique with
+zeta-sizer was used to obtain the average particle size, poly-
+dispersity index and zeta potential values of poly(lactic-co-
+glycolic acid) (PLGA) and peptide loaded PLGA nanoparticles
+(Figures 6 and 7). Zeta potential values of the PLGA and pep-
+tide loaded PLGA nanoparticles were measured –21.4 and
+–14.3, respectively (Figures 6(b) and 7(b)). The morphology of
+the peptide loaded PLGA nanoparticles was investigated with
+spherical morphology by using SEM (Figure 8). Peptide
+loaded nanoparticles were first synthesized and characterized
+and toxicity of this loaded nanoparticles were examined for
+different concentration on standard cell culture line AGS (gas-
+tric adenocarcinoma) with XTT method (Figures 9–11). In this
+study, we aimed to characterize the formation of specific
+immunological peptide loading PLGA nanoparticles and their
+formation with FTIR (Figure 12), zeta sizer and SEM imaging,
+and to evaluate cytotoxicity and to perform molecular dock-
+ing computations of peptides against T. gondii as a vac-
+cine candidate.
+Materials and methods
+The peptide sequence of T. gondii was commercially pur-
+chased from BioSynthesis Inc. (Lewisville, TX). The peptide
+sequence was obtained from NH2 – Ile – Cys – Pro – Ala –
+Gly – Thr – Thr – Ser – Ser – Cys – Thr – Ser – Lys – Ala –
+Val – Thr – Leu – Ser – Ser – Leu – COOH. The molecular
+weight
+of
+the
+peptide
+and
+isoelectric
+point
+(pI)
+was
+1927.21 g/mol and 8.11, respectively. The peptide was hydro-
+philic and water soluble.
+Figure 1. Schematic for the docked conformation of active site of title compound.
+ARTIFICIAL CELLS, NANOMEDICINE, AND BIOTECHNOLOGY
+S745
+
+PLGA (lactide:glycolide ¼ 50:50, Mw28–34 kDa), and PVA
+were purchased from Sigma-Aldrich (St. Louis, MO). All the
+chemicals and solvents were of analytical grade and used
+without further purification. Ultra-pure water was obtained
+using the Millipore MilliQ Gradient System.
+The initial conformation of the peptide sequence of
+T. gondii was generated using Hyperchem 8.0 professional
+program [10] with an ideal geometry of alpha helix (u ¼ –58
+and w ¼ –47) backbone geometry.
+Encapsulation with PLGA polymer
+Double emulsion method (water-in-oil-in-water or w/o/w)
+was used for synthesis of PLGA and peptide-loaded PLGA
+Figure 2. Detailed interactions of ligand and active site of protein.
+Figure 3. Schematic hydrogen bonding (yellow) for the docked conformation of active site of title compound with GLU-102, GLU-232 and GLN-96. Refer on-line ver-
+sion for coloured figure.
+S746
+R. CAKIR-KOC ET AL.
+
+nanoparticles [11]. PLGA was dissolved in dichloromethane
+(DCM), and peptide in aqueous solution was added. Then,
+sonication was applied for obtaining homogenized water/oil
+emulsion. PVA was added in next step and sonicated again.
+Dichloromethane was evaporated at room temperature and
+solution including nanoparticles was centrifuged. Pellet was
+resuspended with distilled water and used for characteriza-
+tion
+with
+zeta-sizer
+(Figures
+6
+and
+7)
+and
+FTIR
+[12]
+(Figure 12).
+Encapsulation and loading efficiency
+UV–vis spectrometer (Shimadzu, Kyoto, Japan) was used for
+obtaining
+the
+standard
+curve
+of
+peptide
+at
+270 nm.
+Encapsulation and loading efficiency of peptide loaded PLGA
+nanoparticles were measured. The concentration of free pep-
+tide in the supernatant was determined by a UV-Visible
+Spectrometer via peptide standard curve.
+Figure 4. Schematic for the docked conformation of active site of title com-
+pound with ARG-6 and TYR-27.
+Figure 5. The ligand (Ile-Cys-Pro-Ala-Gly-Thr-Thr-Ser-Ser-Cys-Thr-Ser-Lys-Ala-Val-Thr-Leu-Ser-Ser-Leu) is connected to the active site of MHC protein.
+Figure 6. Size distribution (a) and zeta-potential distribution (b) result of PLGA nanoparticles.
+ARTIFICIAL CELLS, NANOMEDICINE, AND BIOTECHNOLOGY
+S747
+
+Encapsulation and loading efficiency of peptide were cal-
+culated by the following formulas, respectively:
+Encapsulation efficiency ¼
+total peptide amount  free peptide amount
+total peptide amount
+ 100
+(1)
+Loading efficiency ¼ encapsulated peptide amount
+total nanoparticles weight
+ 100
+(2)
+In vitro release study of peptide loaded PLGA
+nanoparticles
+An in vitro release study was estimated in pH 7.4 PBS (Sigma-
+Aldrich, St. Louis, MO) by dialysis method. Concisely, 1 mL
+peptide loaded PLGA nanoparticles were sealed in a cellulose
+dialysis membrane (MWCO ¼ 10 kDa, Sigma-Aldrich, St. Louis,
+MO) and incubated in 50 mL of release medium at 37 C
+under orbital shaking (150 rpm). At designated intervals, 1 mL
+samples were removed for analysis and replaced with the
+same volume of the fresh PBS. The release of peptide was
+Figure 7. Size distribution (a) and zeta-potential distribution (b) results of peptide loaded PLGA nanoparticles.
+Figure 8. SEM (a) and TEM (b, c) images of peptide loaded PLGA nanoparticles.
+Figure 9. Cytotoxicity of peptide belongs to T. gondii on AGS cells.
+S748
+R. CAKIR-KOC ET AL.
+
+determined as detailed in the following equation via UV–vis
+spectrometer analysis.
+Release ð%Þ ¼ released peptide
+total peptide
+ 100
+(3)
+Size, size distribution and polydispersity measurements
+of nanoparticles
+The Zetasizer Nano ZS (Malvern Instruments, Malvern, UK),
+which measures particle size based on photon correlation
+spectroscopy, was used to determine the size distribution,
+average size and PdI of nanoparticles at a temperature of
+25 C with a 4.0 mV He–Ne laser (633 nm). In order to remove
+the impurities from the solutions, before electrophoretic light
+scattering measurement, each sample was prepared with
+phosphate-buffered saline (PBS) and filtered with 0.2 lm
+regenerated
+cellulose
+membrane
+(Sartorius,
+G€ottingen,
+Germany) filters.
+Scanning electron microscopy (SEM) analysis of
+nanoparticles
+The SEM (Zeiss Supra 50 V) was used for imaging the peptide
+loaded PLGA nanoparticles. Nanoparticle samples were fixed
+on metal plates and sputtered with gold–palladium mixture
+at a thickness of 100 Å and observed at an accelerated volt-
+age of 20 kV (Figure 8(a)).
+Transmission electron microscopy (TEM)
+Transmission electron microscopy (JEOL, Tokyo, Japan, JEM
+1400 Plus) was used for the observation of morphology of
+peptide loaded PLGA nanoparticles. Briefly, peptide loaded
+Figure 10. Cytotoxicity of nanoparticles on AGS cells.
+Figure 11. Cytotoxicity of peptide-loaded nanoparticles on AGS cells.
+ARTIFICIAL CELLS, NANOMEDICINE, AND BIOTECHNOLOGY
+S749
+
+PLGA nanoparticle was diluted with distilled water solution,
+and placed directly into an ultrasound bath at room tempera-
+ture for 4 min, then two or three drops of this sample were
+deposited on a formvar-coated carbon-supported copper grid,
+and then TEM images were observed at 120 kV (Figure 8(b,c)).
+Cytotoxicity experiments
+An AGS (gastric adenocarcinoma) cell line and XTT method
+was selected for cytotoxicity studies as described before in lit-
+erature [13]. Cells were cultured in a DMEM-F12 medium
+(supplemented with 10% foetal bovine serum, penicillium–
+streptomycin) at 37 C with 5% CO2. Cells were trypsinized
+and collected with centrifugation. The AGS cells were seeded
+(105 cells/well) in 96-well flat-bottom microplates with 100 lL
+of medium. They were incubated for 24 h at 37 C and differ-
+ent concentrations (0, 2, 10, 20, 40, 70 and 100 mg/mL) of the
+peptide, peptide loaded nanoparticles and empty nanopar-
+ticles
+(without
+peptide)
+were
+added
+and
+incubated
+for
+another 24 h. The media were then discarded and 100 lL of
+2,3-bis-(2-methoxy-4-nitro-5-sulfophenyl)-2H-tetrazolium-5-car-
+boxanilide (XTT) solution in fresh medium was added to the
+wells at a concentration of 0.5 mg/mL (with 7.5 lg/mL phena-
+zine methosulphate). The plates were incubated for 3 h at
+37 C and optical density was measured at 450 nm with a
+multi-plate reader (Thermo
+Labsystems, Philadelphia, PA,
+Multiskan Ascent 354 Microplate Photometer). Then, the per-
+cent viability was calculated with the equation (Figures 9–11):
+%viability ¼ absorbance of experimental group
+absorbance of control group
+(4)
+Preparation of the rhodamine labelled peptide loaded
+PLGA nanoparticle for cellular uptake experiments
+The
+powerful
+fluorescence
+dye,
+rhodamine
+123
+(Sigma,
+St. Louis, MO, 83689) was dissolved in ultrapure water.
+To determine, whether peptide loaded PLGA nanoparticles
+were transferred into the cells, peptide loaded PLGA nanopar-
+ticles were labelled with rhodamine 123. Then, rhodamine
+labelled nanoparticles were incubated for 2 h in dark at the
+magnetic
+stirrer.
+After
+that cells
+in
+25 cm2
+cultured
+as
+explained above, exposed the rhodamine labelled peptide
+loaded
+nanoparticles
+and
+images
+were
+taken
+after
+1 h incubation.
+Fourier transform infrared (FTIR) spectroscopy analysis
+Functional groups of PLGA nanoparticles and peptide loaded
+PLGA nanoparticles were analysed with IR Prestige21 FT-IR
+spectrophotometer
+(Shimadzu,
+Kyoto,
+Japan
+in
+universal
+attenuation total reflectance (ATR) mode). The FT-IR spectra
+were obtained with four scans per sample ranging from 4000
+to 750 cm1 and a resolution of 4 cm1 [12] (Figure 12).
+Statistical analysis
+The data were analysed using the statistical program SPSS
+version 24.0 (SPSS, Chicago, IL). The mean and standard devi-
+ation within samples were calculated for all cases and at least
+five
+independent
+experiments
+were
+performed.
+One-way
+ANOVA and Mann–Whitney’s test were used to assess the
+statistical significance value. p < .05 was considered statistic-
+ally significant.
+Results
+Molecular docking results
+The main purpose of the molecular docking is to identify a
+ligand that binds to a specific receptor binding site, and the
+identification of its preferred, energetically most favourable
+binding pose. Not only all the ligand’s conformations but also
+the orientation of a ligand relative to its receptor is taken
+Figure 12. The ATR spectrum PLGA nanoparticles (a), and peptide-loaded PLGA nanoparticles (b).
+S750
+R. CAKIR-KOC ET AL.
+
+into account in binding pose. Major histocompatibility com-
+plex (MHC) proteins play a substantial role for adaptive
+immunity. The crystal structure of a well-characterized anti-
+genic peptide from ovalbumin in complex with the murine
+MHC class I H-2 Kb molecule at 2.5-A resolution, which plays
+a pivotal role in the adaptive branch of the immune system
+was preferred as the target macromolecule for the docking
+simulations [14]. Crystal structure of MHC class 1 protein is
+downloaded from RSCB PDB website (PDB code: 1VAC) [15].
+The protein was primarily prepared by removing the Beta-2
+microglobulin, chicken ovalbumin and waters. The active site
+of the protein was defined to include residues of the active
+site within the grid size of 26 Å – 26 Å – 26 Å. To find an effi-
+cient tool for finding binding poses and binding orientations
+of the ligands, AutoDock-Vina program package was carried
+out [16]. PyMOL and Chimera molecular graphics system
+were used for graphical interpretation and representation of
+docking results [17,18]. RMSD measures the average distance
+between atoms of two protein or ligand structures via the
+simple equation which generally used for a ligand, when lig-
+and shows different poses at a particular binding site cluster
+of a protein. To identify the accuracy of predicting a ligand
+binding pose, the RMSD value must be smaller than 2 Å. For
+all obtained conformations, one conformation well bound to
+the active site were preferred having binding energy with
+–5.4 kcal/mol with RMSD results in Table 1. Ile-Cys-Pro-Ala-
+Gly-Thr-Thr-Ser-Ser-Cys-Thr-Ser-Lys-Ala-Val-Thr-Leu-Ser-Ser-Leu
+peptide is connected to the receptor protein primarily by the
+residues GLU-102, GLU-232, GLN-96 in active site within pro-
+tein (Figures 1–3). Protein–ligand interaction shows that there
+are three H-bonds with GLU-102: The H atoms in N-terminal
+and peptide groups of ligands are involved in the interaction
+with O atoms in COO group of GLU-102 (2.0 Å, 2.5 Å and
+3.5 Å). Other H-bond interaction is also identified with GLU-
+232 (2.7 Å), GLN-96 (2.3 Å, 2.6 Å and 2.9 Å) and THR-10
+(2.2 Å) in Figure 3. In addition to the hydrogen bond interac-
+tions, the weak non-covalent interactions are also observed
+with ARG-6 (2.9 Å, 3.3 Å, 3.4 Å and 3.7 Å), TYR-27 (2.4 Å,
+3.5 Å and 3.7 Å) (Figure 4) and PRO-2 (2.8 Å and 2.9 Å)
+(Figure 2). These results suggest that the ligand is able to
+interact MHC protein as seen in Figure 5 which exhibits an
+important role in the immune system. This may be an import-
+ant result for designing a new generation vaccine in future.
+Zeta-sizer results
+The average particle size, polydispersity index and zeta
+potential values of PLGA and peptide loaded PLGA nanopar-
+ticles are measured with zeta-sizer by using DLS technique
+(Table 2). As shown in Figure 6(a), the size of PLGA nanopar-
+ticles was 255.2 nm with the 99% of the particle size distribu-
+tion. PdI value of nanoparticles in aqueous solution was
+detected as 0.114, which means that the particles have a very
+narrow molecular weight distribution. Size and PdI values of
+peptide loaded PLGA nanoparticles were measured as 231 nm
+with the 99% of the particle size distribution analysis and
+0.173, meaning that the molecular weight distribution of pep-
+tide loaded nanoparticles has a wider distribution range than
+the PLGA nanoparticles, respectively in Figure 7(a). Zeta
+potential values of the PLGA and peptide loaded PLGA nano-
+particles
+were
+measured
+–21.4
+and
+–14.3,
+respectively
+(Figures 6(b) and 7(b)).
+The morphology of the peptide-loaded PLGA nanoparticles
+was investigated with SEM shown in Figure 8(a). As shown in
+the figure, the peptide-loaded PLGA nanoparticles have
+spherical morphology. As shown in Figure 8(b,c), the peptide
+loaded PLGA nanoparticle formation was observed via the
+TEM images such as SEM images in Figure 8(b,c).
+Cytotoxicity results
+Cytotoxicity
+of
+immunological
+peptides
+belonging
+to
+T. gondii, peptide loaded nanoparticles and polymeric nano-
+particles was examined on standard cell culture line AGS
+(gastric adenocarcinoma) with XTT method. XTT methods are
+generally used for toxicity studies and to evaluate mitochon-
+drial activity of cells.
+Figure 9 shows the effect of different concentration of
+peptide (0, 2, 10, 20, 40, 70 and 100 mg/mL) on cells. As
+shown in Figure 9, only in higher concentration (100 mg/mL),
+peptide has slightly toxicity on cells (p < .05). Lower concen-
+trations of peptide do not have lower absorbance than con-
+trol which depends on viability.
+The nanoparticles which do not include peptide were
+exposed to the cells and XTT results are shown in Figure 10.
+PLGA is known as non-toxic polymer and belongs to the
+FDA-approved polymer family [19]. Our results also showed
+that PLGA has not any toxic effect on examined concentra-
+tions. Even, the cell viability was higher than control group
+(except 10 mg/mL p > .05).
+Peptide loaded nanoparticles were synthesized and charac-
+terized in this study and toxicity of this loaded nanoparticles
+is shown in Figure 11. The absorbance value of peptide
+loaded nanoparticles was not lower than control even in con-
+centration of 100 mg/mL.
+The overall results of toxicity of peptide, nanoparticles and
+peptide loaded nanoparticles are shown in Table 3 as % via-
+bility. Cell viability percent was calculated according to con-
+trol group and was given with standard derivations. The
+viability of cells was 89.6% in higher concentration of peptide
+Table 1. Binding affinity of different poses of the title compound as predicted
+by AutoDock Vina.
+Dist. from best mode
+Mode
+Affinity (kcal/mol)
+RMSD I.b.
+RMSD u.b.
+1
+–5.4
+0.000
+0.000
+2
+–5.3
+2.879
+11.205
+3
+–5.2
+3.105
+10.967
+4
+–5.2
+2.992
+12.392
+5
+–5.1
+2.726
+12.063
+6
+–5.1
+2.808
+12.070
+7
+–5.0
+1.638
+2.264
+8
+–5.0
+3.353
+12.375
+9
+–5.0
+2.719
+14.166
+Table 2. Zeta-sizer results of nanoparticles.
+Samples
+Average size (nm)
+PdI
+Zeta potential (mV)
+Nanoparticles
+255.2
+0.114
+–21.4
+Peptide loaded nanoparticles
+231
+0.173
+–14.3
+ARTIFICIAL CELLS, NANOMEDICINE, AND BIOTECHNOLOGY
+S751
+
+(100 mg/mL) and cell viability percent of all other groups are
+higher than 90% in Table 3.
+Fourier transform infrared spectroscopy results
+To determine the absorption bands of peptide loaded-PLGA
+NPs, and PLGA NPs, the ATR spectrums were recorded. Table
+4 gives the absorption bands of DL-lactide monomer, glyco-
+lide monomer, PLA polymer, PLGA co-polymer and peptide
+loaded PLGA NPs, these characteristic bands agree with those
+given in the literature [20,21]. Due to stretch of the carbonyl
+groups, the sharp bands in the region between 1900 cm1
+and
+1550 cm1
+are
+presented
+at
+1760 cm1,
+1750 cm1,
+1750 cm1, 1761 cm1 and 1765 cm1 for DL-lactide, glycolide,
+PLA, PLGA NPs and peptide loaded PLGA NPs, respectively.
+The bands between 1300 cm1 and 1150 cm1 which relate
+to the C–O stretching bands, due to asymmetric and symmet-
+ric C–C(¼O)–O stretching vibrations, are useful in the charac-
+terization of esters groups. The C–O ester stretching bands
+are observed at 1103 cm1 for both PLGA NPs and peptide
+loaded PLGA NPs. In literature, the characteristics of ester
+groups are recorded at 1100 cm1, 1050 cm1 and 1090 cm1
+for DL-lactide, glycolide and PLA, respectively [21]. The bands
+at 999 and 997 cm1 correspond to C–H bending vibrations.
+The profile of the spectra presented for PLGA NPs and pep-
+tide loaded PLGA NPs in Figure 12 is practically identical, due
+to the encapsulation. With the aid of FTIR analysis, it is pos-
+sible to determine all of the reference functional groups
+(C¼O, C–O, CH3, CH2 and CH) in the spectra. The spectra of
+PLGA NPs and peptide loaded PLGA NPs indicate great simi-
+larity and are in agreement with the literature for the PLGA
+co-polymer,
+PLA
+polymer
+and
+lactide
+and
+glyco-
+lide monomers.
+Loading and encapsulation efficiency and in vitro
+release study results
+As shown in Figure 13, the standard curve of the peptide
+was prepared by UV–vis analysis at 270 nm to calculate the
+encapsulation efficiency of the peptide-loaded PLGA nanopar-
+ticles. The encapsulation efficiency of peptide was calculated
+via Equation (1) as 81.6%. The amount of peptide in the total
+peptide-loaded PLGA nanoparticle mass was calculated via
+Equation (2). The loading efficiency of the peptide-loaded
+PLGA nanoparticles was determined as 18%.
+As shown in Figure 14, the in vitro release profile of pep-
+tide loaded PLGA nanoparticles is depicted. The amount of
+the free peptide at the different times was measured by
+UV–Vis spectrometer for 72 h. Finally, it was determined that
+34% of peptide was released at the end of the 72 h.
+Cellular uptake
+Figure 15 shows the cellular uptake of rhodamine labelled
+peptide loaded PLGA nanoparticles. The florescence-labelled
+nanoparticles were seen inside the cells. These images were
+taken after 1 h incubation with nanoparticles and show the
+nanoparticles can enter inside the cells.
+Discussion
+PLGA
+particles
+were
+successfully
+obtained
+in
+nanoscale
+(211.4 nm) according to DLS measurement with zeta-sizer.
+Both nanoparticles, PLGA and peptide loaded PLGA, were
+homogenously obtained with 98% distribution. This means
+nanoparticles are almost identical in size. On the other hand,
+peptide loaded PLGA nanoparticles have little barely larger
+empty PLGA nanoparticles. It may be caused by steric effect
+of functional groups of amino acids in peptide backbone.
+Toxicity of peptides, peptide loaded nanoparticles and
+nanoparticles was measured with mitochondrial activity assay.
+As given in ISO 10993-5 standards, percentages of cell viabil-
+ity above 80% are considered as non-cytotoxicity; within
+Table 3. % Viability of cells was exposed peptide, peptide loaded nanopar-
+ticles and nanoparticles (±values indicate standard derivations).
+Concentration (mg/mL)
+Peptide
+Peptide-loaded nanoparticles Nanoparticles
+2
+98 ± 5.3
+95.4 ± 8.7
+115.2 ± 6.2
+10
+107.8 ± 3.6
+112.6 ± 5.2
+111.9 ± 6.4
+20
+103.1 ± 5.3
+114.3 ± 5.5
+122.2 ± 5.0
+40
+110.6 ± 6.5
+120.6 ± 5.5
+120.5 ± 4.1
+70
+103.5 ± 5.5
+122 ± 4.7
+118.9 ± 4.8
+100
+89.6 ± 1.3
+114.1 ± 7.8
+113.6 ± 3.9
+Table 4. Absorption bands of PLGA NPs and peptide-loaded PLGA NPs particles.
+Gumusderelioglu and Deniz [21]
+This study
+IR absorption
+bands (cm–1)
+Erbetta et al. [20]
+DL-Lactide
+Glycolide
+PLA
+PLGA NPs
+particles
+Peptide
+loaded-PLGA NPs
+3000–2700
+CH, CH3, CH2 (stretching)
+2850
+2511;2320
+2511;2320
+1900–1550
+C¼O (stretch)
+1760
+1750
+1750
+1761
+1765
+1500–1250
+CH3, CH2 (symmetric angular deformation)
+1540;1430
+1450;1360
+1364;1275
+1395;1279
+1350–1150
+CH2, CH (asymmetric angular deformation) (wagging)
+1190
+1186
+1300–1150
+C–O (ester stretch)
+1275;1100
+1265;1050
+1130;1090
+1103
+1103
+750–940
+C–H (bending)
+940
+750
+999
+997
+Figure 13. The standard curve of peptide.
+S752
+R. CAKIR-KOC ET AL.
+
+80–60% weak toxicity; 60–40% moderate toxicity and below
+40% strong cytotoxicity [22]. According to these values, pepti-
+des, peptide loaded nanoparticles or nanoparticles have no
+toxic effect with investigated concentrations on cell line.
+The knowledge of dynamic behaviour of drug molecules is
+important to comprehend biophysical feature of their func-
+tion. Molecular docking is an essential method to elucidate
+the predominant binding modes of a drug molecule with a
+protein. Since MHC proteins play a substantial role for adap-
+tive immunity, the crystal structure of antigenic peptide in
+complex with the murine MHC class I H-2 Kb molecule was
+preferred as the target protein for the docking simulations.
+Due to smaller RMSD value, the accuracy of predicting a lig-
+and binding pose is proven. For all obtained conformations,
+one conformation which is connected to the receptor protein
+primarily by the residues GLU-102, GLU-232, GLN-96, well
+bound to the active site was preferred having binding energy
+with –5.4 kcal/mol.
+Conclusions
+As a result of this study, we obtained specific immunological
+SAG1 peptide loaded PLGA nanoparticles which can be used
+for vaccine candidate in future. The nanoparticle formation
+was characterized and proved with various methods. Also for
+the first time in literature, we showed molecular docking of
+peptide and MHC molecules and this important information
+may enlight in vivo events as vaccine for future studies.
+Ethical approval
+This article does not contain any studies with human participants or ani-
+mals performed by any of the authors.
+Acknowledgements
+The
+authors
+thank
+the
+Turkey
+General
+Directorate
+of
+Agricultural
+Research and Policies (Project Number: TAGEM/15/AR-GE/41) for provid-
+ing peptide used in this study.
+Disclosure statement
+No potential conflict of interest was reported by the authors.
+References
+[1]
+Liu Q, Singla LD, Zhou H. Vaccines against Toxoplasma gondii: sta-
+tus, challenges and future directions. Hum Vac Immunother.
+2012;8:1305–1308.
+[2]
+Cakir-Koc R, €Ozdemir B. A global problem of toxoplasmosis. In:
+The microbiology of central nervous system infections. London
+(UK): Elsevier; 2018. p. 305–317.
+Figure 14. In vitro release profile of peptide loaded PLGA nanoparticles.
+Figure 15. Cellular uptake of rhodamine labelled peptide loaded PLGA nanoparticles (A: 40 and B: 20 magnification).
+ARTIFICIAL CELLS, NANOMEDICINE, AND BIOTECHNOLOGY
+S753
+
+[3]
+Hill DE, Chirukandoth S, Dubey J. Biology and epidemiology of
+Toxoplasma gondii in man and animals. Anim Health Res Rev.
+2005;6:41–61.
+[4]
+Burg JL, Perelman D, Kasper LH, et al. Molecular analysis of the
+gene encoding the major surface antigen of Toxoplasma gondii.
+J Immunol. 1988;141:3584–3591.
+[5]
+Beghetto E, Spadoni A, Bruno L, et al. Chimeric antigens of
+Toxoplasma gondii: toward standardization of toxoplasmosis sero-
+diagnosis using recombinant products. J Clin Microbiol. 2006;44:
+2133–2140.
+[6]
+Makioka A, Suzuki Y, Kobayashi A. Recognition of tachyzoite and
+bradyzoite antigens of Toxoplasma gondii by infected hosts. Infect
+Immun. 1991;59:2763–2766.
+[7]
+Ahmad Fuaad AAH, Jia Z, Zaman M, et al. Polymer-peptide
+hybrids
+as
+a
+highly
+immunogenic
+single-dose
+nanovaccine.
+Nanomedicine (Lond). 2014;9:35–43.
+[8]
+Chang TM. Bioencapsulation in biotechnology. Biomater Artif Cells
+Immobil Biotechnol. 1993;21:291–297.
+[9]
+Asadi N, Davaran S, Panahi Y, et al. Application of nanostructured
+drug delivery systems in immunotherapy of cancer: a review. Artif
+Cells Nanomed Biotechnol. 2017;45:18–23.
+[10]
+Froimowitz M. HyperChem: a software package for computational
+chemistry and molecular modeling. J Comput Chem. 1993;14:
+934–1013.
+[11]
+Gorjikhah F, Azizi Jalalian F, Salehi R, et al. Preparation and char-
+acterization of PLGA-b-CD polymeric nanoparticles containing
+methotrexate and evaluation of their effects on T47D cell line.
+Artif Cells Nanomed Biotechnol. 2017;45:432–440.
+[12]
+Budama-Kilinc Y, Cakir-Koc R, Horzum-Bayir O. The cytotoxicity,
+characteristics, and optimization of insulin loaded nanoparticles.
+Orbital: Electron J Chem. 2017;9:1–6.
+[13]
+Gharaati-Far N, Tohidkia MR, Dehnad A, et al. Efficiency and cyto-
+toxicity analysis of cationic lipids-mediated gene transfection into
+AGS gastric cancer cells. Artif Cells Nanomed Biotechnol. 2017.
+Forthcoming. doi:10.1080/21691401.2017.1355311
+[14]
+Mitaksov V, Fremont DH. Structural definition of the H-2Kd pep-
+tide-binding motif. J Biol Chem. 2006;281:10618–10625.
+[15]
+Fremont DH, Stura EA, Matsumura M, et al. Crystal structure of an
+H-2Kb-ovalbumin peptide complex reveals the interplay of pri-
+mary and secondary anchor positions in the major histocompati-
+bility
+complex
+binding
+groove.
+Proc
+Natl
+Acad
+Sci.
+1995;92:2479–2483.
+[16]
+Trott O, Olson AJ. AutoDock Vina: improving the speed and accur-
+acy of docking with a new scoring function, efficient optimization,
+and multithreading. J Comput Chem. 2010;31:455–461.
+[17]
+DeLano WL. Pymol: an open-source molecular graphics tool. CCP4
+Newslett Protein Crystallogr. 2002;40:82–92.
+[18]
+Pettersen EF, Goddard TD, Huang CC, et al. UCSF Chimera—a
+visualization
+system
+for
+exploratory
+research
+and
+analysis.
+J Comput Chem. 2004;25:1605–1612.
+[19]
+Makadia HK, Siegel SJ. Poly lactic-co-glycolic acid (PLGA) as bio-
+degradable controlled drug delivery carrier. Polymers. 2011;3:
+1377–1397.
+[20]
+Erbetta CDAC, Alves RJ, Resende JM, et al. Synthesis and charac-
+terization of poly(DL-lactide-co-glycolide) copolymer. J Biomater
+Nanobiotechnol. 2012;3:208.
+[21]
+Gumusderelioglu M, Deniz G. Synthesis, characterization and in
+vitro degradation of poly(DL-lactide)/poly(DL-lactide-co-glycolide)
+films. Turk J Chem. 1999;23:153–162.
+[22]
+Lopez-Garcıa J, Lehocky M, Humpolıcek P, et al. HaCaT keratino-
+cytes response on antimicrobial atelocollagen substrates: extent
+of cytotoxicity, cell viability and proliferation. JFB. 2014;5:43–57.
+S754
+R. CAKIR-KOC ET AL.

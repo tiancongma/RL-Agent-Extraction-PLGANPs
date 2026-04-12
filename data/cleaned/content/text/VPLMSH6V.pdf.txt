@@ -1,0 +1,1915 @@
+Rationally developed core–shell polymeric-lipid
+hybrid nanoparticles as a delivery vehicle for
+cromolyn sodium: implications of lipid envelop on
+in vitro and in vivo behaviour of nanoparticles upon
+oral administration†
+Ravi R. Patel, Gayasuddin Khan, Sundeep Chaurasia, Nagendra Kumar
+and Brahmeshwar Mishra*
+In the present study, cromolyn sodium (CS), a highly water soluble molecule was encapsulated into
+rationally designed, core–shell polymeric-lipid hybrid nanoparticles (PLHNs) for enhancing its oral
+bioavailability, by improving its intestinal permeability through lymphatic uptake. The CS encapsulated
+PLGA–lecithin based core–shell PLHNs (CS–PLHNs) were engineered by a double emulsiﬁcation solvent
+evaporation method and optimized using a response surface methodology based “Quality by Design”
+approach. The Box–Behnken experimental design was imperatively enforced to enhance encapsulation
+of CS inside PLHNs without compromising particle size. Optimized CS–PLHNs exhibited a particle size of
+227  3.8 nm and EE of 57.8  1.32% with unimodal size distribution. The physico-chemical
+characterizations of CS–PLHNs suggested the encapsulation of CS in an amorphous form inside PLHNs
+without any interactions. The morphological studies pointed towards the existence of smooth, spherical
+core–shell architecture of CS–PLHNs, which extended release up to 48 h by a controlled diﬀusion
+process. The optimized CS–PLHNs exhibited remarkable stability at diﬀerent environmental conditions as
+well as in biological milieu. An ex vivo intestinal permeation study showed that the permeation of CS was
+signiﬁcantly improved by encapsulating it inside PLHNs compared to that of pure CS, which was
+additionally
+conﬁrmed
+by
+the
+in
+vivo
+intestinal
+uptake
+study
+using
+confocal
+microscopy.
+A
+pharmacokinetic study in rats further exhibited 11.9 fold enhancement in the oral bioavailability of CS
+after its incorporation into PLHNs. In a nutshell, PLHNs can serve as a superior therapeutic carrier system
+by imparting lipophilicity to potentially obtain the high oral bioavailability of CS, which can further be
+extended towards numerous hydrophilic drug molecules.
+1.
+Introduction
+Cromolyn sodium (CS) is a mast cell stabilizer, with a mecha-
+nism
+of
+inhibiting
+the
+release
+of
+chemical
+mediators
+(i.e., histamine and necrosis factor) from sensitized mast cells.
+It is a safe, prominent therapeutic molecule, which is widely
+being employed for the management of various allergic condi-
+tions, including bronchial asthma.1 CS is currently marketed as
+a solution or in powder form for delivery through nasal and
+pulmonary routes. Although, the local administration of CS is
+eﬀective, the resultant dose delivery variability along with
+transient irritation of the throat, trachea and nasal mucosa,
+compel patients to remain non-adherent with prescribed
+pharmacotherapy.2,3 In order to circumvent the diﬃculties
+associated with the existing marketed formulations, oral
+delivery of CS would be a potential alternative. Moreover, ther-
+apeutically active amount of CS in blood circulation would be
+benecial for broad range of diseases, including atherosclerosis
+and other coronary artery diseases, on account of its anti-
+inammatory activity.4 Thus, much eﬀort has been devoted
+for engineering oral formulations of CS that enhances its
+systemic exposure. However, its poor physico-chemical proper-
+ties pose an obstacle to its entry into systemic circulation upon
+oral administration. CS is very hydrophilic (100 mg ml1 at
+20 C) owing to its twin carboxyl groups (pKa ¼ 2.0), which
+hampers its absorption across the gastrointestinal tract (GIT),
+resulting in poorly bioavailable (<1%).5,6 To defeat this oral
+delivery constrains, the continuous eﬀorts have been made
+towards developing formulations that can enhance the intes-
+tinal absorption of CS. Previously, some approaches have been
+Department of Pharmaceutics, Indian Institute of Technology (Banaras Hindu
+University), Varanasi-221005, U.P., India. E-mail: bmishrabhu@rediﬀmail.com; Fax:
++91 542 2368428; Tel: +91 542 6702748
+† Electronic
+supplementary
+information
+(ESI)
+available.
+See
+DOI:
+10.1039/c5ra12732g
+Cite this: RSC Adv., 2015, 5, 76491
+Received 1st July 2015
+Accepted 27th August 2015
+DOI: 10.1039/c5ra12732g
+www.rsc.org/advances
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76491
+RSC Advances
+PAPER
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+View Journal | View Issue
+
+attempted for oral delivery of CS, including prodrugs and pro-
+liposomal beads. However, these studies have yielded limited
+success and further development is still needed for their clinical
+translation.3,7,8
+This
+necessitates
+an
+exploration
+of
+novel
+formulation strategies with enhanced GIT permeation, for
+eﬀective oral delivery of CS.
+Over the past decade, diﬀerent nano-scale vehicles in size
+range of 10–1000 nm, have already been proven to be an eﬃ-
+cient approach for oral delivery of various therapeutic mole-
+cules.9 Amongst them, more attention has been paid to the
+polymeric nanoparticles9,10 solid lipid nanoparticles11,12 and
+liposomes13 for enhancing the absorption across the GIT on
+account of their ability to permeate through the gut wall barrier
+by specic absorption mechanisms.10,13,14 Unfortunately, CS
+being a hydrophilic molecule, the encapsulation inside poly-
+meric nanoparticles as well as solid lipid nanoparticles is
+foremost challenge, owing to its rapid partitioning into external
+aqueous phase during the preparation.10,12,15 Alternatively,
+liposomes have shown tremendous potential to encapsulate
+hydrophilic drugs into the aqueous core with high loading. It
+has also been reported that liposomal encapsulation imparts
+lipophilicity through lipid bilayer, which could facilitate the
+passive transport of hydrophilic drug across the GIT barrier.4,16
+However, oral delivery potential of liposome is limited by their
+erratic and unpredictable absorption prole as well as inability
+to retain their structural integrity at absorption site.3,17
+In order to circumvent these thorny limitations of existing
+delivery systems, an advanced, polymeric-lipid hybrid nano-
+particles (PLHNs) based tunable, robust architecture has been
+impressively proposed, in which a lipid layer envelopes the
+polymeric core. PLHNs are colloidal hybrid carrier systems,
+which comprise of positive attributes of both, liposomes as well
+as polymeric nanoparticles in a single vehicle.18 The polymeric
+core confers the structural integrity to the PLHNs whereas the
+lipid envelop imparts the biomimetic shield. The enhanced
+encapsulation yield for hydrophilic drug could be anticipated by
+lipidic monolayer coating over the surface of the polymeric core
+during the preparation. It has also been reported that molecular
+barrier conferred by lipid, impedes the faster diﬀusion of
+hydrophilic drug into an external aqueous phase and hence,
+potentially increases drug encapsulation yield.19 Literature
+survey reveals that number of PLHNs has been prepared to
+enhance the encapsulation of hydrophilic drug, compared to
+plain polymeric nanoparticles without any lipidic surfactant.14,19
+Moreover, PLHNs have also shown prolongation of the drug
+release owing to their core–shell type of structure, which
+restricts inward penetration rate of water.20 Previous studies
+have described the use of PLHNs for enhancing the oral
+permeability as well as bioavailability.14,21,22 The enhanced oral
+permeation of PLHNs is attributed to their absorption through
+paracellular and transcellular route via enterocytes as well as
+selective uptake by M-cells of Peyer's Patches (PP).21,22 To our
+knowledge, there have been no reports available in literature
+pertaining oral bioavailability enhancement of CS, by preparing
+nanocarrier system till date.
+In this perspective, present study was aimed at the utiliza-
+tion of the potential of PLHNs for oral delivery of CS, which
+would encapsulate the hydrophilic CS with high payload and
+would improve the GIT permeation of CS via selective absorp-
+tion by M cells of PP as well as endocytic uptake through
+enterocytes, resulting in an enhanced bioavailability. CS
+encapsulated
+PLGA–lecithin
+based
+core–shell
+PLHNs
+(CS–PLHNs) were prepared by double emulsication solvent
+evaporation method (W1/O/W2) and optimized using “Quality
+by Design” approach to meet the critical quality attributes for
+the nal product. A 3-level, 4-factor, Box–Behnken experimental
+design (BBD) was employed to investigate the main and inter-
+active inuence of independent variables on physicochemical
+properties of CS–PLHNs. Desirability based numerical optimi-
+zation technique was utilized for optimization of CS–PLHNs.
+The optimized CS–PLHNs were characterized for their various
+solid-state properties, morphological properties and evaluated
+for in vitro drug release study as well as stability study. Ex vivo
+and in vivo intestinal permeation study were executed to assess
+the
+permeation
+performance
+of
+CS–PLHNs
+by
+confocal
+microscopy. Eventually, pharmacokinetic study was conducted
+to evaluate the potential of PLHNs as an eﬀective oral delivery
+carrier system for CS.
+2.
+Materials and methods
+2.1
+Materials
+Cromolyn sodium (CS) and PLGA Resomer® RG 750S (poly-
+(D,L-lactide-co-glycolide) 75 : 25; MW: 75 000–115 000 Da) were
+obtained as gisample from Entod Pharmaceuticals (Mumbai,
+India) and Evonik Industries, Pvt. Ltd, Mumbai, India, respec-
+tively. Lecithin and polyvinyl alcohol (PVA) (MW 80k–125 kDa)
+were purchased from Himedia labs, Mumbai, India. Fluores-
+cein isothiocyanate (FITC) was purchased from Sigma Aldrich,
+USA. All other chemicals and solvents used during the experi-
+ments were of analytical grade and procured from SD ne
+Chemicals, Mumbai, India. Double Distilled Water (DDW) was
+used throughout the experimentations.
+2.2
+Preparation of CS encapsulated PLHNs
+PLGA–lecithin based core–shell CS–PLHNs were prepared by
+modied double emulsication solvent evaporation method
+(W1/O/W2) as earlier reported by Patel et al.23 In brief, 25 mg of
+CS was dissolved in 0.5 ml of DDW (W1) while weighed amount
+of PLGA was dissolved in dichloromethane (O) containing 2%
+w/v span 80. The external aqueous phase (W2) was prepared by
+dispersing designated amount of lecithin and PVA in DDW
+containing acetic acid (0.1% v/v) and tetrahydrofuran (4% v/v).
+The internal aqueous phase (W1) was added in an organic
+phase (O) and emulsied by applying 80% sonication amplitude
+for 90 s using ultra probe sonicator (UP50H, Hielscher, USA)
+over an ice bath. The formed primary emulsion (W1/O) was
+poured into the external aqueous phase (W2) under continuous
+stirring and then whole mixture was sonicated over an ice bath,
+using ultra probe sonicator for 5 min. The resultant emulsion
+(W1/O/W2) was allowed to stir for 6 h on magnetic stirrer at
+1000 rpm. CS–PLHNs were concentrated by removing organic
+phase and excess water, under reduced pressure using rotatory
+76492 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+evaporator (IKA® RV10, Germany). The prepared CS–PLHNs
+were recovered by centrifugation at 15 000 rpm using cooling
+centrifuge (RC 4100 F, Eltek, Mumbai, India) for 15 min at 4 C
+temperature. The supernatant was separated and kept aside for
+drug content analysis as described later. The particles, gathered
+in the form of sediment were washed three times and then
+resuspended in a xed volume of DDW. The CS–PLHNs were
+lyophilized with mannitol (2% w/v) using freeze dryer (Lab-
+conco, USA) for 48 h at 45 C and 0.050 mbar pressure. For,
+solid
+state
+characterizations,
+CS–PLHNs
+were
+lyophilized
+without mannitol intentionally, in order to avoid interference of
+mannitol peaks with pure CS peaks. The dried CS–PLHNs were
+stored in desiccator till further use.
+2.3
+Experimental design
+The Quality by Design approach was performed systematically
+by employing response surface methodology (RSM) for con-
+structing and analyzing second-order polynomial models, with
+a small number of experimental runs. A 4-factor, 3-level BBD
+was used to investigate the quadratic response surfaces by
+evaluating the inuence of independent variables on response
+variables i.e., particle size (Y1), encapsulation eﬃciency (EE) (Y2)
+and PDI (Y3) of CS–PLHNs. The lipid/polymer ratio (X1),
+concentration of surfactant (X2) and organic phase/aqueous
+phase ratio (X3) and concentration of polymer (X4) were
+chosen as four independent variables on the basis of the
+preliminary
+screening,
+using
+Placket–Burman
+screening
+design.23 Each variable is varied at three diﬀerent levels. Each
+variable is represented as +1, 0 and 1, analogous to their high,
+medium and low levels, respectively, which were determined
+from preliminary experimentation. All independent variables
+and response variables along with their actual and coded levels
+are described in Table 1. The generation and statistical analysis
+of experimental design matrix comprising of 29 runs, including
+24 factorial point and 5 center points was executed by using
+Design-Expert® soware (8.0.6.1, Stat-Ease Inc., Minneapolis,
+USA). The correlation between two independent variables and
+response variable was delineated by response surface 3D plots.
+All experiments were run in a randomized order to avoid any
+possible source of experimental bias and to increase the
+predictability of the model.21,24 The non-linear polynomial
+equation generated by the BBD is given as
+Y ¼ b0 + b1X1 + b2X2 + b3X3 + b4X4 + b5X1X2 + b6X1X3
++ b7X1X4 + b8X2X3 + b9X2X4 + b10X3X4 + b11X1
+2
++ b12X2
+2 + b13X3
+2 + b14X4
+2 + E
+where, Y is the measured response of the dependent variable
+associated with each factor level combination; b0 is an intercept;
+b1–b14 are the regression coeﬃcients of the respective variables;
+X1–X4 are the coded levels correspond to the independent
+variables; the term XiXi and Xi
+2 (i ¼ 1, 2, 3 or 4) represent the
+interactive and quadratic terms of the independent variables,
+respectively and E is the random error.25
+Data were analyzed by employing multiple linear regres-
+sions. The correlation coeﬃcient (R2) and lack of t value were
+determined in order to nd out adequacy of the regression
+model. Further, optimization was performed by employing
+numerical optimization based desirability technique.
+2.4
+Characterizations of CS–PLHNs
+2.4.1
+Particle size, polydispersity index (PDI) and zeta
+potential. Measurement of particle size, zeta potential and PDI
+of prepared CS–PLHNs was carried out by photon correlation
+spectroscopy using Delsa Nano C particle size analyzer (Beck-
+man Coulter, UK) at 25 C temperature. CS–PLHNs were diluted
+properly
+(1 : 10)
+with
+DDW
+prior
+to
+measurement.
+All
+measurements were conducted using He–Ne laser generated
+scattering light at a xed angle of 165. The electrophoretic
+mobility of CS–PLHNs, under the inuence of an applied elec-
+tric eld was measured for determination of zeta potential.
+2.4.2
+Encapsulation eﬃciency (EE). The EE (%) of prepared
+CS–PLHNs was measured spectrophotometrically (Shimadzu
+UV 1800, Japan) at lmax of 239 nm by estimating the free CS
+content in supernatant (indirect method). CS–PLHNs were
+centrifuged at 15 000 rpm for 15 minutes at 4 C using cooling
+centrifuge. The clear supernatant was decanted, appropriately
+diluted and analyzed for free CS content.
+The EE of CS–PLHNs was calculated using the following
+formula:
+EE ð%Þ ¼
+amount of CS added  amount of free CS in supernatant
+amount of CS added
+ 100
+2.4.3
+Fourier transforms infrared spectroscopy (FTIR). The
+FTIR spectra of CS, PLGA, lecithin, PVA, physical mixture and
+CS–PLHNs
+were
+recorded
+using
+FTIR
+spectrophotometer
+(SHIMADZU 8400, Japan) in order to observe any signicant
+change, if occurs, between CS and components of CS–PLHNs,
+both aer and before the encapsulation of CS. The scanning was
+Table 1
+Independent variables with their levels and dependent vari-
+ables with their constraints in Box–Behnken experimental design
+Independent variables
+Coded levels of variables
+Low
+Medium
+High
+1
+0
+1
+X1 ¼ lipid/polymer
+ratio (w/w)
+0.25
+0.38
+0.5
+X2 ¼ concentration of
+surfactant (% w/v)
+0.5
+1
+1.5
+X3 ¼ organic phase/aqueous
+phase ratio (v/v)
+0.16
+0.25
+0.33
+X4 ¼ concentration of
+polymer (% w/v)
+1.5
+2.25
+3.0
+Dependent variables (responses)
+Constraints
+Y1 ¼ particle size (nm)
+Minimize
+Y2 ¼ encapsulation eﬃciency (%)
+Maximize
+Y3 ¼ polydispersity index (PDI)
+Minimize
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76493
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+performed over the wavenumber ranging from 4000 to 400 cm1
+at room temperature and the resolution was set at 4 cm1.
+2.4.4
+Diﬀerential scanning calorimetry (DSC). The physical
+state of CS inside PLHNs and compatibility of CS with compo-
+nents of PLHNs were assessed by DSC. The thermograms were
+recorded on TGA/DSC-1, Star system (Mettler Toledo, Switzer-
+land), which was previously calibrated with indium. Weighed
+samples were sealed in an aluminium crimp cell and purged
+with air (ow rate of 40 ml min1). A temperature was raised at a
+rate of 10 C min1 and heat ow was recorded over the scan-
+ning temperature range from 50 to 300 C under nitrogen
+atmosphere (purging rate of 10 ml min1).
+2.4.5
+Powder X-ray diﬀractometry (PXRD). The PXRD
+pattern of CS, PLGA, lecithin, PVA, physical mixture and
+CS–PLHNs were obtained on Rigaku portable X-ray diﬀrac-
+tometer (Rigaku, Japan) for characterizing their crystallographic
+structure as well as changing in physical state of CS during the
+preparation. The X-ray radiation source was Cu Ka 1 tube
+operated at a voltage of 40 kV and 25 mA current. The diﬀrac-
+tion patterns were recorded over the 2q scanning range from 5
+to 50 with a step size 0.01 at 2 min1 scanning speed.
+2.4.6
+Shape and surface morphology
+2.4.6.1
+High
+resolution
+transmission
+electron
+microscopy
+(HR-TEM). The core–shell structure and shape of the CS–PLHNs
+were examined by employing transmission electron microscopy
+(TEM). Briey, a drop of appropriately diluted CS–PLHNs was
+placed on the carbon-coated copper grid and stained with 2%
+w/v phosphotungstic acid. The excess of dispersion was wicked
+oﬀwith lter paper and allowed to dry in air. Then, the grid was
+examined using TEM (TECHNAI-20G2, Philips, Holland) at an
+accelerating voltage of 200 kV with diﬀerent magnications.
+2.4.6.2
+Atomic
+force
+microscopy
+(AFM).
+The
+surface
+morphology of CS–PLHNs was visualized by atomic force
+microscope (NT-MDT, Moscow, Russia). Briey, a drop of
+CS–PLHNs was deposited on freshly cleaved mica and allowed
+to immobilize for 1–2 min, subsequently air dried to form thin
+lm. Then, surface morphology of CS–PLHNs was visualized by
+mounting on AFM scanner and imaged in tapping mode with
+scanning rate of 0.5 Hz. Dimensional analysis was performed
+using SOLVER NEXT soware.
+2.4.6.3
+Confocal laser scanning microscopy (CLSM). For this
+study, FITC tagged micron sized CS–PLHNs were intentionally
+prepared by using similar procedure, except for sonication step.
+Thus, the obtained micron sized CS–PLHNs were visualized for
+their core–shell structure using confocal laser scanning micro-
+scope (LSM 510 META, Carl Zeiss Inc., USA). In this, study FITC
+tagged PLGA was used to get uorescent core.26
+2.5
+In vitro drug release study
+The in vitro drug release of prepared CS–PLHNs was determined
+using modied dialysis bag diﬀusion technique. The CS–PLHNs
+dispersion (3 ml equivalent to 10 mg of CS) was placed in
+dialysis bag (MWCO 12–14 kDa). Aer that, both ends of dialysis
+bag were fastened and immersed in 150 ml of phosphate buﬀer
+pH 7.4 containing ask, maintained at 37  0.5 C under
+100 rpm speed. An aliquot of 5 ml of sample was withdrawn at
+regular time intervals and were replaced with equal volume of
+fresh media in order to maintain sink condition throughout
+experimentation. Withdrawn samples were ltered through
+0.2 m syringe lters and suitability diluted for analyzing drug
+content spectrophotometrically at lmax of 239 nm. In vitro drug
+release data were further tted to various release kinetic
+models, including zero-order model, rst-order model, Higuchi
+model and Korsemeyer–Peppas model, in order to analyze the
+kinetics and mechanism of drug release. The correlation coef-
+cient (R2) was determined by regression analysis to determine
+the best tting of model.27
+2.6
+Stability study
+2.6.1
+Stability
+study
+in
+simulated
+biological
+milieu.
+CS–PLHNs were evaluated for their stability in the diﬀerent
+biological media i.e., simulated gastric uid (SGF, pH 1.2) and
+simulated intestinal uid (SIF, pH 6.8) in order to assess the
+inuence of various GIT uid pH condition on their properties.
+Briey, 250 ml of CS–PLHNs were diluted up to 10 ml of diﬀerent
+simulated uids and incubated at 37 C for diﬀerent time
+interval. At the end of the incubation period, CS–PLHNs were
+analyzed for particle size, PDI and EE for determining their
+stability in simulated biological milieu.
+2.6.2
+Accelerated and real time storage stability study. The
+stability of CS–PLHNs was assessed over a period of 6 month at
+room temperature (25  2 C), refrigerated condition (4  1 C),
+and accelerated condition (40  2 C/75  5% RH) as per ICH
+guideline. Lyophilized CS–PLHNs were sealed in glass vials and
+placed in stability chamber at diﬀerent environmental conditions.
+Samples were withdrawn at diﬀerent time intervals (0, 1, 2, 3 and
+6 months) and analyzed in terms of particle size, PDI and EE.
+2.7
+Animal studies
+2.7.1
+Animals.
+The
+animal
+study
+protocol
+was
+duly
+approved by Central Animal Ethical Committee of Banaras
+Hindu University (no. Dean/2014/CAEC/856). All the animal
+studies were carried out in accordance with the guidelines of
+CPCSEA (Committee for the Purpose of Control and Supervision
+of Experiments on Animal), Ministry of Social Justice and
+Empowerment, Government of India, New Delhi. Adult Charles
+Foster (CF) rats (225  20 g) of either sex were used for all the
+animal studies. Animals were housed in propylene cages under
+standard laboratory conditions with a 12 h light/dark cycle for
+one week before the experiment. They had free access to stan-
+dard rodent diet with water ad libitum. Animals were fasted
+overnight prior to 12 h of experiment but had free access to
+water. Animals were sacriced by euthanasia, and disposal of
+the used animals was done by burning them using an inciner-
+ator. All eﬀorts were made in order to reduce animal suﬀering.
+2.7.2
+Ex vivo intestinal permeation study. The permeation
+potential of CS–PLHNs across the GIT was assessed by ex vivo
+intestinal permeation study, using non-everted gut sac tech-
+nique. Animals were sacriced by cervical dislocation under
+excessive ether anesthesia. The small intestine was isolated by
+abdominal incision and immediately placed into bubbled
+(carbogen, 95 : 5 O2/CO2) cold saline solution. Ileum was
+76494 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+ushed with physiological saline solution to remove any intes-
+tinal content and cut into segments. The CS solution (1 ml,
+10 mg ml1) and CS–PLHNs (1 ml, equivalent to 10 mg ml1)
+were lled in intestinal sac and tied on both sides. Each lled
+intestinal sac was mounted in 40 ml phosphate buﬀer pH 7.4
+lled conical asks, maintained at 37  0.5 C with continuous
+aeration. Samples were collected from receptor compartment at
+diﬀerent time interval and replaced with same volume of fresh
+buﬀer. Withdrawn samples were ltered through 0.2 m syringe
+lters and suitability diluted in order to analyze CS content
+spectrophotometrically at lmax of 239 nm.28,29 Apparent perme-
+ability coeﬃcients (Papp) were calculated using following
+formula and expressed in cm s1.
+Papp ¼ vQ
+vt 
+1
+ACo
+where vQ/vt is the rate of CS-PLHNs/CS appearance in the
+receiver compartment, A is the exposed surface area of intes-
+tinal tissue (cm2) and Co is the concentration of the CS in the
+donor compartment at zero time.
+Permeability enhancement ratio was calculated according to
+following formula.
+Permeability enhancement ratio ¼
+Papp of CS encapsulated PLHNs
+Papp of CS solution
+2.7.3
+In vivo intestinal uptake study using CLSM. The
+intestinal particulate uptake and thereby, permeation of
+CS–PLHNs was visualized by CLSM upon oral administration in
+rats.
+FITC
+tagged
+CS–PLHNs
+were
+administered
+orally
+(20 mg kg1) using oral gavage to overnight fasted rats. Aer 2 h
+of oral administration, rats were sacriced. Small intestine was
+removed by abdominal incision, washed with physiological
+saline solution and preserved with 10% neutral buﬀered
+formalin solution till cryosectioning. Tissue samples were
+freezed by embedding in cryostat media (OCT) and the intes-
+tinal transverse-sections of 5 mm thickness were sliced, using
+the cryo-microtome (Leica CM1850, Leica Microsystem srl,
+Milan, Italy) at 20 C. The CS–PLHNs uptake and permeation
+in the intestinal tissue was observed by visualizing slides under
+a LSM 510 META confocal microscope (Carl Zeiss Inc., USA) at
+diﬀerent magnication with excitation wavelength of 488 nm.29
+2.7.4
+In vivo pharmacokinetic study. Rats were randomly
+divided into three groups (n ¼ 6 rats per group) for single dose
+oral bioavailability study. Each group received formulations
+orally at a dose of 20 mg kg1 body weight of animal with dose
+volume of 500 ml, for maintaining the dose constant. First group
+received CS solution whereas second group was administered
+with CS–PLHNs for relative pharmacokinetic proling. Third
+group served as control, which received only saline solution.
+Serial blood samples (250 ml) were withdrawn from retro-orbital
+plexus at diﬀerent time intervals, under mild ether anesthesia
+and collected into heparinized micro-centrifuge tubes. The
+blood loss was compensated by injecting equivalent volume of
+normal saline solution followed by blood sampling. Plasma was
+separated aer blood collection by centrifugation at 5000 rpm
+for 5 min at 4 C and frozen at 20 C till further analysis.
+Drug analysis in plasma samples was carried out by the earlier
+reported and in-house validated RP-HPLC (Shimadzu LC 20 AD,
+Japan) method.30 The HPLC system (Shimadzu Corporation,
+Koyoto, Japan) equipped with C-18 reverse phase column
+(250 mm  4.6 mm, PS 5 m), a degasser (DGU-20A3) and a pump
+(LC-20AD) with UV-Visible detector (SPD-20A) was utilized for
+the quantication of the CS in plasma samples. The samples
+were analyzed at 239 nm wavelength using isocratic elution at a
+ow rate of 1 ml min1. Mobile phase consisted of acetonitrile
+and 20 mM potassium dihydrogen orthophosphate of pH 2.0 in
+the ratio of 75 : 25 was utilized for analysis. The mobile phase
+was ltered through 0.45 m Millipore membrane lter before
+use. Various pharmacokinetic parameters were determined
+using non-compartmental analysis of plasma concentration–
+time prole data through Winnonlin® 6.1 (Pharsight Corpora-
+tion, Mountain View, CA) pharmacokinetic program.
+2.8
+Statistical analysis
+GraphPad Prism soware (version 5.03, GraphPad Soware,
+USA) was used for statistical comparisons of the results to
+control. Statistical analysis of the results were performed using
+student (unpaired) t-test and one-way ANOVA test. All the
+results were presented as mean  standard deviation (SD),
+except in vivo study, in which results were expressed as mean 
+standard error of mean (SEM). The diﬀerences were assumed
+statistical signicant when p < 0.05 (95% condence interval).
+3.
+Results and discussion
+3.1
+Experimental design
+The signicance inuence of independent variables (i.e., lipid/
+polymer ratio (X1), concentration of surfactant (X2) and
+organic phase/aqueous phase ratio (X3) and concentration of
+polymer (X4)) on response variables (i.e., particle size (Y1),
+encapsulation eﬃciency (EE) (Y2) and PDI (Y3)) was determined
+by employing RSM. According to design matrix of BBD for
+4-factor at 3-level, a total of 29 batches of CS–PLHNs were
+prepared and the response data are summarized in Table 2. The
+statistical evaluation of the results was conducted by applying
+ANOVA through Design-Expert® soware. All the response
+variables were tted to diﬀerent regression models. The tting
+of the best model was conrmed by highest F-value. The
+magnitude of the eﬀect of independent variable is denoted by
+positive and negative sign corresponding to their direct and
+indirect eﬀect, respectively. Further, response surface 3D plots
+and contour plots were developed in order to delineate the
+interactive eﬀect of any two independent variables on response
+variable as depicted in Fig. 1. The useful results obtained by
+statistical analysis of data reaﬃrmed the utility of “Quality by
+Design” approach in performing experiments.24
+3.1.1
+Inuence of independent variables on particle size.
+The various factor level combinations as per design matrix of
+BBD, resulted in particle size of CS–PLHNs vary from a
+minimum of 216.3  2.4 nm to maximum of 342.2  11.2 nm.
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76495
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+The observed wide variation in response variable indicates that
+the particle size was strongly aﬀected by the selected formula-
+tion variables. The quadratic statistical polynomial equation,
+presented below was generated by response surface analysis,
+which quantied the empirical relationship between the
+particle size and signicant independent variables.
+Y1 ¼ 220.56 + 28.35X1  20.58X2  6.55X3 + 10.38X4
+ 13.57X2X4 + 44.09X1
+2 + 28.53X2
+2 + 31.39X3
+2 + 34.78X4
+2
+The quadratic model with F-value of 58.50 (p < 0.0001)
+implied that the model was signicant for tting to the results
+of particle size. The high R2 value (0.9832) indicated the exis-
+tence of good correlation between the predicted results and the
+experimental results. The minimal diﬀerence between pre-
+dicted R2 (0.9080) and adjusted R2 (0.9664) value suggested the
+adequacy of the selected model for the prediction of response.
+The F-value for lack of t of the model was 5.46 suggested that
+the model allows satisfactory tting to data with non-signicant
+lack of t (p ¼ 0.0581). Further, low value for coeﬃcient of
+variation (2.47%) indicated high degree of precision and reli-
+ability of the model. Hence, this quadratic model could be used
+to navigate the design space.23
+Statistical analysis revealed that lipid/polymer ratio (X1) and
+concentration
+of
+polymer
+(X4)
+aﬀects
+positively
+whereas
+concentration of surfactant (X2) and organic phase/aqueous
+phase ratio (X3) provides negative eﬀect on particle size
+(Fig. 1(A)–(D)). The lipid/polymer ratio (X1) appeared to be one
+of the most dominant variables amongst all, which positively
+inuences particle size owing to its direct eﬀect on viscosity.
+The signicant increment in particle size at higher lipid/
+polymer ratio could be attributed to the reduction of the
+shearing eﬃciency of stirrer at higher viscosity which resulted
+in thick covering of the polymeric core by lipid coat. Addition-
+ally, higher lipid/polymer ratio also favors the formation of
+liposome due to the presence of high amount of lipid, above its
+critical micellar concentration and coexistence of liposomes
+with PLHNs might be responsible for measuring the enhanced
+particle size.18 Contrary, the remarkable drop oﬀin the particle
+size was noticed at higher surfactant concentration (X2), which
+might be due to reduction of the interfacial tension between the
+dispersed phase and dispersion medium.31 Moreover, high
+surfactant
+concentration
+also
+oﬀers
+droplet
+stabilization
+against coalescence during the emulsication process by
+interfacial localization and protects from impinging with each
+other in order to grow into bigger ones.32 Similarly, organic
+phase/aqueous phase ratio (X3) showed inverse relationship
+with particle size. This could be attributed to the fact that large
+amount of organic solvent would decrease the viscosity and
+thereby, impart high shear stress, which would result in
+breakdown of emulsion droplets without any coalescence.23,33
+The particle size increased signicantly with increase in poly-
+mer concentration (X4) might be because of triggering of the
+polymer–polymer interaction coupled with viscosity of the
+dispersed phase, which would result in formation of coarse
+dispersion with marked density diﬀerence. According to Stoke's
+low, the resultant density diﬀerence propels particle collisions
+and thereby, aggregations which are diﬃcult to be broken up
+using the same energy of mixing.31,33
+3.1.2
+Inuence of independent variables on encapsulation
+eﬃciency. The EE of developed CS–PLHNs was found to be
+varying in the range from 51.3  2.4% to 63.6  1.6% for
+diﬀerent formulation variable combinations. The second-order
+polynomial equation relating the EE (Y2) and independent
+variables, generated by multiple linear regressions can be rep-
+resented as follows
+Y2 ¼ 59.78 + 4.21X1  2.80X2  0.69X3 + 1.43X4  2.00X2X4
+ 2.24X2
+2  1.40X3
+2  1.34X4
+2
+Based on the F-test in the proposed quadratic model, the
+model with F-value of 27.80 (p < 0.0001) implied that the
+quadratic model was statistically signicant for relating the
+Table 2
+Box–Behnken experimental design representing experi-
+mental runs with independent variables and their observed responses:
+particle size (Y1), encapsulation eﬃciency (Y2), and PDI (Y3) of CS–
+PLHNsa
+Run no.
+Independent
+variables
+Dependent variables
+X1
+X2
+X3
+X4
+Y1
+Y2
+Y3
+Factorial points
+1
+1
+1
+0
+0
+281.1  4.1
+54.6  0.8
+0.257  0.012
+2
+1
+1
+0
+0
+339  3.6
+63.4  0.2
+0.386  0.059
+3
+1
+1
+0
+0
+249.1  2.9
+51.3  2.4
+0.176  0.037
+4
+1
+1
+0
+0
+301  2.1
+59.1  1.2
+0.313  0.061
+5
+0
+0
+1
+1
+283.4  1.2
+55.7  3.7
+0.265  0.095
+6
+0
+0
+1
+1
+257.1  4.7
+54.2  0.7
+0.230  0.053
+7
+0
+0
+1
+1
+310.8  6.8
+60.2  0.5
+0.300  0.12
+8
+0
+0
+1
+1
+293.1  7.3
+57.8  2.3
+0.289  0.038
+9
+1
+0
+0
+1
+268.5  5.9
+53.4  1.9
+0.218  0.092
+10
+1
+0
+0
+1
+313.9  4.1
+61.1  0.1
+0.331  0.012
+11
+1
+0
+0
+1
+284  4.4
+55.8  2.9
+0.269  0.11
+12
+1
+0
+0
+1
+342.2  11.2
+63.6  1.6
+0.389  0.024
+13
+0
+1
+1
+0
+316.3  8.4
+61.5  0.3
+0.342  0.21
+14
+0
+1
+1
+0
+257.6  7.2
+53  0.9
+0.195  0.075
+15
+0
+1
+1
+0
+294.1  5.7
+58.4  1.6
+0.302  0.063
+16
+0
+1
+1
+0
+264.8  3.8
+53.3  1.1
+0.224  0.01
+17
+1
+0
+1
+0
+263.1  2.7
+53.2  2.4
+0.221  0.084
+18
+1
+0
+1
+0
+334.6  9.3
+62.9  1.1
+0.378  0.14
+19
+1
+0
+1
+0
+261.4  1.7
+52.9  3.7
+0.209  0.081
+20
+1
+0
+1
+0
+316.7  4.8
+61.6  2.0
+0.348  0.096
+21
+0
+1
+0
+1
+286.1  7.1
+55.9  0.5
+0.261  0.047
+22
+0
+1
+0
+1
+268.8  5.9
+53.7  0.8
+0.230  0.065
+23
+0
+1
+0
+1
+321.9  7.2
+62  2.1
+0.362  0.01
+24
+0
+1
+0
+1
+250.3  2.6
+51.8  3.2
+0.181  0.013
+Centre points
+25
+0
+0
+0
+0
+222.1  4.6
+58.7  1.1
+0.149  0.043
+26
+0
+0
+0
+0
+216.3  2.4
+59.1  1.9
+0.141  0.099
+27
+0
+0
+0
+0
+218.4  6.3
+60.5  0.2
+0.143  0.12
+28
+0
+0
+0
+0
+221  5.8
+59.8  2.1
+0.145  0.071
+29
+0
+0
+0
+0
+225  3.9
+60.8  0.7
+0.157  0.032
+a All data are shown as mean  S.D.; n ¼ 3.
+76496 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+results of EE. The value of correlation coeﬃcient for EE was
+found to be 0.9653, indicating good correlation. The higher
+value of adjusted R2 (0.9306) and predicted R2 (0.8323) with little
+diﬀerence conrmed the adequacy of the model with high
+signicance. Additionally, the suitability of the model with
+excellent tting to data was demonstrated by the higher F-value
+(1.40) which implied that the lack of t was non-signicant (p ¼
+0.3977). Further, lower value of coeﬃcient of variation (1.76%)
+indicated excellent precision and reliability of the regression
+model. All the above consideration indicated that the present
+regression model could be used to navigate the design space.23
+As depicted in Fig. 1(E)–(H), the lipid/polymer ratio (X1) was
+found to increase EE of CS–PLHNs. Perhaps high lipid/polymer
+ratio provided thick lipidic barrier surrounding the polymeric
+core, which would have curtailed the diﬀusion of the drug
+towards the external aqueous phase.19 Conversely, EE was found
+to decrease with an increase in surfactant concentration (X2).
+This could be explained by the fact that the higher surfactant
+concentration increases drug solubility by reducing interfacial
+tension and increasing partition of drug into aqueous phase,
+which in turn substantially lowers EE.34,35 The organic phase/
+aqueous phase ratio (X3) was also negatively related to EE,
+probably as a result of enhanced partition of the drug into
+aqueous phase due to decreased viscosity.35 The reduction in
+viscosity facilitates rapid diﬀusion of drug during emulsica-
+tion and evaporation step owing to high shear stress, which
+ultimately results in CS–PLHNs with low payload.23 However,
+concentration of polymer (X4) showed positive eﬀect on EE of
+CS–PLHNs, which accordant with published literature that
+higher EE was obtained with higher polymer concentration due
+to rise in viscosity as well as faster solidication.34 Additionally,
+increased polymer concentration would increase diﬀusion path
+length by forming larger sized CS–PLHNs and also form inter-
+facial viscous diﬀusion barrier, which would further favor the
+encapsulation by restricting the drug diﬀusion.36
+Fig. 1
+Graphical illustrations representing the eﬀect of independent variables (lipid/polymer ratio (X1), concentration of surfactant (X2), organic
+phase/aqueous phase ratio (X3) and concentration of polymer (X4)) on response variables: particle size, encapsulation eﬃciency and poly-
+dispersity index of CS–PLHNs. (A & C) Represent the 3D-response surface plots related to particle size whereas (B & D) are corresponding
+contour plots; (E & G) represent the 3D-response surface plots related to encapsulation eﬃciency whereas (F & H) are corresponding contour
+plots; (I & K) represent the 3D-response surface plots related to PDI whereas (J & L) are corresponding contour plots.
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76497
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+3.1.3
+Inuence of independent variables on polydispersity
+index. The PDI of CS–PLHNs varied from minimum of 0.141 
+0.099 to maximum of 0.389  0.024, for various factor level
+combinations. The quadratic model proposed the following
+second-order polynomial equation describing the relationship
+between PDI (Y3) and independent variables
+Y3 ¼ 0.15 + 0.066X1  0.049X2  0.0082X3 + 0.021X4
++ 0.017X2X3  0.037X2X4 + 0.085X1
+2 + 0.052X2
+2
++ 0.061X3
+2 + 0.064X4
+2
+The quadratic model was found to be statistically signicant
+with F-value of 71.04 (p < 0.0001) for tting the results of PDI.
+The high R2 coeﬃcient (0.9861) suggested the goodness of t of
+the model for predicting the results and over 98% of the total
+variations are well explained by the regression model. The
+adequacy of the selected regression model was supported by the
+minimal diﬀerence between predicted R2 (0.9239) and adjusted
+R2 (0.9722) value. The non-signicant lack of t (F-value ¼ 5.62;
+p ¼ 0.0554) conrmed the suitability of the model with satis-
+factory tting to data. Additionally, low value for coeﬃcient of
+variation (5.13%) indicated the reliability of the quadratic
+model with adequate precision. Therefore, the proposed model
+could be employed in order to navigate the design space.23
+The inuence of the independent variables on PDI can be
+evaluated by observing the Fig. 1(I)–(L). The lipid/polymer ratio
+(X1) exhibited signicant positive inuence on PDI owing to its
+direct impact on the thickness of the lipid covering over the
+polymeric core. Higher lipid/polymer ratio would accelerate the
+aggregation by suppressing their native surface charge, which
+would result uneven size distribution. Moreover, formation of
+single and multilamellar liposomes at higher lipid concentra-
+tion also enforces polydispersity.23 Nevertheless, signicant
+drop in polydispersity was noticed at elevated surfactant
+concentration (X2) and organic phase/aqueous phase ratio (X3),
+could be attributed to the marked reduction in the interfacial
+tension, as reported earlier. The reduction in interfacial tension
+between aqueous phase and organic phase ensures good
+emulsication process, imparting homogeneity to CS–PLHNs.27
+The polymer concentration (X4) exhibited positive relationship
+with PDI on account of its direct impact on emulsication
+eﬃciency. Higher polymer concentration could favor the
+formation of coarse dispersion due to lack of suﬃcient energy
+to overcome the viscous forces as well as lack of suﬃcient
+surfactant, which could ultimately impose the polydispersity.37
+3.1.4
+Optimization of CS–PLHNs. Optimization of formu-
+lation by considering all the objectives at a time is diﬃcult
+because of opposite eﬀect of various independent variables. The
+optimum level of one independent variable might result in an
+inverse eﬀect for other independent variable. Hence, a numerical
+optimization technique using desirability function was probed
+for simultaneous optimization of the independent variables,
+which would yield CS–PLHNs with desired quality traits. The
+constraints were xed for all four independent variables in the
+Design-Expert® soware in order to achieve the CS–PLHNs,
+which would have maximum EE with minimum particle size and
+PDI value. The optimized CS–PLHNs were formulated using
+predicted levels of independent variables for conrming the
+validity as well as predictive capability of BBD as shown in Table
+3. The desirability of the optimized CS–PLHNs was 0.866. The
+good agreement with low percentage of bias between predicted
+results and experimental results reaﬃrmed the reliability of BBD
+for statistical optimization.38 The optimized CS–PLHNs showed
+the EE of 57.8  1.32%, which was signicantly higher than that
+reported earlier. Moreover, for comparison, the simple poly-
+meric nanoparticles were prepared by using the same composi-
+tion and same method as optimized PLHNs without using lipid,
+which showed EE of 24.2  0.5%. The signicant diﬀerence (p <
+0.05) clearly indicates the utility of lipid envelop for enhancing
+the EE of hydrophilic drug molecule by forming PLHNs.
+3.2
+FTIR spectroscopy
+In order to examine the interaction between CS and components
+of PLHNs as well as for ensuring the encapsulation of CS inside
+the CS–PLHNs, primary concerns were taken using FTIR study.
+The FTIR spectra of CS, PLGA, lecithin, PVA, physical mixture
+and CS–PLHNs are depicted in Fig. 2. The CS spectrum exhibited
+two basic characteristic peaks at 1640 cm1 and 3416 cm1
+indicative of C]O stretching and O–H stretching, respectively.
+The peaks at 2880 cm1, 1477 cm1, 1573 cm1 and 1410 cm1
+are assigned to the alkane C–H, aromatic C–H, asymmetric and
+symmetric COO, respectively. Additionally, large number of
+characteristic absorption bands in ngerprint region (1400–600
+cm1), were noticed as a result of vibration within the molecule.5
+FTIR spectrum of PLGA showed that the signicant peaks of
+PLGA are C]O stretching at 1748 cm1, C–O stretching at
+Table 3
+Optimal parameters with its desirability value generated by
+Design expert® for CS–PLHNsa
+Independent variables
+Predicted levels
+Lipid/polymer ratio (X1)
+0.37
+Concentration of surfactant (X2)
+1.01% w/v
+Organic phase/aqueous phase ratio (X3)
+0.25
+Concentration of polymer (X4)
+2.25% w/v
+Results
+Experimental values
+Predicted values
+% biasb
+Particle size
+(nm)
+227  3.8
+219.95
+3.20
+Encapsulation
+eﬃciency (%)
+57.8  1.32
+59.69
+3.16
+Polydispersity
+index (PDI)
+0.151  0.027
+0.145
+4.13
+Overall desirability
+0.866
+Yield (%)
+86.47  1.4
+Drug loading (%)
+4.28 + 0.23
+Zeta potential (mV)
+()27.8  1.8
+a All results are shown as mean  S.D.; n ¼ 3. b Bias was calculated as
+[(predicted value  experimental value)/predicted value]  100.
+76498 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+1194 cm1, C–H stretching at 2948 cm1 and broad bands
+between 3200–3600 cm1 due to its terminal hydroxyl group.27 In
+case of FTIR spectrum of PVA, peaks in the range of 2840–3000
+cm1 for C–H stretching, 3200–3550 cm1 for O–H stretching,
+1290 cm1 for C–N stretching and 1750–1735 cm1 for C]O as
+well as C–O stretching from acetate group were observed. FTIR
+spectrum of lecithin showed characteristic band in the range of
+1765–1720 cm1 corresponding to the C]O vibration and
+another band in the range of 1200–1145 cm1 due to the PO2
+vibration. Additionally, some bands in the range of 1200–970
+cm1 were noticed corresponding to both P–O–C as well as PO2
+vibrations, respectively. All the major peaks pertaining to CS
+were retained in the FTIR spectrum of physical mixture, sug-
+gesting the non-involvement of CS in any kind of physico-
+chemical interaction with the components of PLHNs. Further,
+FTIR spectrum of CS–PLHNs showed the appearance of all the
+characteristic peaks of CS with little variations in frequencies
+similar to its pure form, conrming the successful encapsula-
+tion of CS inside the PLHNs without any change in its chemical
+nature during the preparation process.
+3.3
+DSC study
+DSC thermogram of CS, PLGA, lecithin, PVA, their physical
+mixture and CS–PLHNs are depicted in Fig. 3. In the DSC
+thermogram of pure CS, sharp melting endotherm appeared at
+264 C attributed to its melting point, indicating its crystalline
+behaviour. PLGA and PVA exhibited sharp endothermic peak at
+52 C and 226 C, respectively. Lecithin displayed broad endo-
+thermic peak at 87 C corresponding to its phase transition. The
+thermogram of physical mixture of CS with the components of
+PLHNs also showed the similar thermal behaviour of CS at
+264 C as appeared in pure CS thermogram. The physical
+mixture also showed the characteristic endothermic peaks of all
+the components of the PLHNs without any considerable shiin
+peak positions, conrming the compatibility of CS with each
+other. Contrary, the absence of characteristic melting endo-
+therm of CS in the thermogram of CS–PLHNs suggested that the
+phase transformation from crystalline state to amorphous state
+has taken place, during the encapsulation process.39 The shear
+stress provided by the stirrer during the fabrication process of
+PLHNs might have prevented the recrystallization of CS from its
+tiny droplets, leaving CS in an amorphous molecular dispersion
+form inside the PLHNs. Furthermore, the absence of redundant
+endothermic peaks in the thermogram of CS–PLHNs conrmed
+the homogeneous encapsulation of CS inside the PLHNs
+without any interactions.40
+3.4
+PXRD study
+PXRD patterns of pure CS, PLGA, lecithin, PVA, physical mixture
+and CS–PLHNs are depicted in Fig. 4. CS displayed character-
+istic distinctive peaks at 2q angles of 8, 9.83, 11.5, 14, 16.9,
+19.7, 24.3, 26.6 and numerous minor peaks up to 35. The
+intense, sharp and well resolved peaks indicated that CS was
+highly crystalline in nature.41 The diﬀraction patterns of the
+PLGA, PVA and lecithin exhibited number of small diﬀuse peaks
+with broad halo. The diﬀractogram of physical mixture showed
+all the sharp peaks of the CS, nearly at the same scattering 2q
+angles as appeared in pure form, indicating the retention of its
+crystalline behaviour without any physical change. Oppositely,
+the PXRD pattern of CS–PLHNs showed that all the character-
+istic sharp peaks of CS were abridged in their intensity and
+Fig. 3
+Overlay DSC thermograms of CS, PLGA, lecithin, PVA, physical
+mixture and CS–PLHNs.
+Fig. 2
+Overlay FTIR spectra of CS, PLGA, lecithin, PVA, physical
+mixture and CS–PLHNs.
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76499
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+converted into broad, diﬀuse peaks. The stiing of diﬀraction
+intensity of CS conrmed that the physical state of CS was
+transformed towards an amorphous molecular dispersion form
+upon encapsulation inside the PLHNs.42
+3.5
+Morphology study
+The morphological study using HR-TEM micrographs (Fig. 5(A))
+revealed that CS–PLHNs were discrete, homogeneous and
+spherical in shape having uniform size distribution. High
+magnication indicated that CS–PLHNs were appeared as
+spherical particles which have an inner dark polymeric core
+surrounded by the lighter phospholipid envelop. The core–shell
+structure of CS–PLHNs was clearly visible due to the marked
+electron density diﬀerence between polymer and lipid.18 The
+surface of CS–PLHNs was observed as smooth without any
+ruptures. The particle size obtained with TEM micrographs was
+comparable to that obtained by particle size analyzer. Addi-
+tionally, electron diﬀraction (ED) pattern of CS–PLHNs was
+generated by HR-TEM in order to conrm the physical state of
+CS inside the PLHNs. The ED pattern (Fig. 5(D)) exhibited
+smooth diﬀraction halo pattern with absence of star shaped,
+bright spots in its diﬀraction ring pattern, which conrmed the
+encapsulation of CS as an amorphous dispersion form inside
+the PLHNs,39 further substantiating the inference deduced from
+DSC and XRD results.
+The surface morphology of CS–PLHNs was further determined
+by AFM study in order to conrm the morphological aspect
+revealed by HR-TEM. The topographic and three-dimensional
+(3D) AFM micrographs of CS–PLHNs, generated by the atomic
+Fig. 5
+(A) High resolution transmission electron microscopic (HR-TEM) image of CS–PLHNs. Inset image shows core–shell architecture of the
+CS–PLHNs; (B) 2D-atomic force microscopic (AFM) image of CS–PLHNs; (C) 3D-confocal microscopic image of micron sized CS–PLHNs
+tagged with FITC, showing core–shell architecture; (D) electron diﬀraction pattern of CS–PLHNs using HR-TEM; (E) 3D-AFM image of
+CS–PLHNs; (F) ﬂuorescent confocal microscopic image of micron sized CS–PLHNs tagged with FITC.
+Fig. 4
+X-ray diﬀraction spectra of CS, PLGA, lecithin, PVA, physical
+mixture and CS–PLHNs.
+76500 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+level interaction between a sharp tip and the surface of
+CS–PLHNs are depicted in Fig. 5(B) and (E). The particle size and
+surface morphology determined by AFM was in accordance to
+HR-TEM study. The particle size of CS–PLHNs, measured by AFM
+was almost below 250 nm. AFM images showed uniform spher-
+ical shaped CS–PLHNs having smooth surface without any visible
+crevices or pores. The probable reason for smooth surface could
+be the uniform covering of lipid over the surface of polymeric
+core, which has resealed the pores generated by the diﬀusion of
+organic solvent during the preparation.
+Further, core–shell type of architecture of CS–PLHNs was
+conrmed by CLSM study. The CLSM micrograph of uorescent
+CS–PLHNs, generated by visualizing under confocal microscope
+showed clear diﬀerentiation of two regions of diﬀerent material
+(Fig. 5(C) and (F)). The green color represented the polymeric
+core whereas very light circle surrounding the green color rep-
+resented the colorless lipid envelop, which corroborates well
+with the ndings of HR-TEM study.
+3.6
+In vitro drug release study
+In vitro drug release study was performed in order to assess the
+potential of CS–PLHNs to control the release of CS for prolonging
+the action. The in vitro drug release prole of CS from CS–PLHNs,
+in phosphate buﬀer pH 7.4 is presented in Fig. 6. The CS release
+from CS–PLHNs showed phasic release behaviour, comprising of
+initial burst release followed by extended release over a period of
+48 h. The superclass II release was noticed up to 1 h with an
+initial burst of nearly 20% of the drug. This might likely be due to
+the rapid diﬀusion and desorption of surface adsorbed or weakly
+bounded drug as well as partial erosion of the outer phospholipid
+layer of CS–PLHNs, which resulted in quicker diﬀusion of
+hydrophilic drug as reported earlier.42 The subsequent extended
+release was achieved up to 48 h, indicating the slower diﬀusion of
+the encapsulated CS from CS–PLHNs. The sustained release
+might be ascribed to the lipidic barrier provided by phospholipid
+envelop, which has restricted the penetration of release medium
+and curtailed the faster immobilization of the CS from the
+polymeric core and thereby, extended the release.20 Further, drug
+release mechanism and kinetics was determined by substituting
+the drug release prole data of CS–PLHNs to the diﬀerent release
+kinetic models. The release kinetic modeling showed that the
+drug release pattern from the CS–PLHNs was best explained by
+Higuchi model (highest R2 value), indicating matrix diﬀusion
+controlled release process (Table 4). Additionally, the tting of
+Korsmeyer–Peppas semi empirical model revealed the value of
+release exponent (n), which was found to be 0.493, conrming
+the Fickian diﬀusion based release pattern of CS–PLHNs (n < 0.5
+for Fickian diﬀusion). This is expected since the CS being
+hydrophilic drug, has a greater tendency for diﬀusion.27,39 Hence,
+it is possible to achieve uctuation free steady state CS plasma
+level using CS–PLHNs, which provides loading dose followed by
+maintenance dose for extended period of time.
+3.7
+Stability study
+3.7.1
+Stability study in simulated biological milieu. Table 5
+shows the inuence of diﬀerent simulated biological media on
+properties of CS–PLHNs aer incubation at 37 C. The signi-
+cant change (p < 0.05) in the particle size and PDI value of
+CS–PLHNs was observed upon incubation with SGF of pH 1.2,
+which might be due to aggregation of particles, oﬀered by
+lecithin envelop in harsh acidic environment. However, EE
+remained unchanged due to the acidic nature of drug as well as
+barrier provided by the lipid envelop, which might have pre-
+vented the direct exposure of drug molecule to external harsh
+environment and prevented drug loss. Whereas CS–PLHNs did
+not show any signicant change (p > 0.05) in their physical
+attributes, upon incubation with SIF of pH 6.8, which might be
+due to protection oﬀered by lipidic shell against digestive
+enzyme of intestine. Interestingly, CS–PLHNs incubated with
+SGF and subsequent shied in SIF, did not show any signicant
+change in particle size and EE. However, PDI was increased,
+which might be due to partial uncovering of the lipidic shell as a
+result of drastic pH change during the transferring from SGF to
+SIF. Hence, CS–PLHNs may certain to maintain their attributes
+during their gastric transit.
+3.7.2
+Accelerated and real time storage stability study.
+Storage stability study was performed at diﬀerent environ-
+mental conditions in order to assess the potential of CS–PLHNs
+to withstand against environmental changes. Fig. 7 depicts the
+physicochemical
+attributes
+of
+the
+CS–PLHNs
+during
+the
+stability study. The physical appearance of the CS–PLHNs did
+Fig. 6
+In vitro drug release proﬁle of optimized CS–PLHNs in phos-
+phate buﬀer pH 7.4 (vertical bars represent the SD, results are shown as
+mean  S.D.; n ¼ 3).
+Table 4
+Release kinetic models for simulation of release behaviour of
+CS from CS–PLHNs in phosphate buﬀer pH 7.4
+Batch
+Zero
+order
+First
+order
+Higuchi
+model
+Korsemeyer–
+Peppas model
+CS–PLHNs
+R2 ¼ 0.9416
+R2 ¼ 0.8341
+R2 ¼ 0.9804
+R2 ¼ 0.9745
+n ¼ 0.4934
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76501
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+not show any signicant diﬀerence (p > 0.05) at diﬀerent
+conditions. Additionally, insignicant change (p > 0.05) in the
+particle size, PDI and EE was noticed for CS–PLHNs, stored at
+room temperature (25  2 C) and refrigerated condition (4 
+1 C) over a period of 6 month. However, signicant diﬀerence
+(p < 0.05) in the particle size, PDI and EE was observed for the
+CS–PLHNs stored at accelerated condition (40  2 C/75  5%
+RH), indicating the instability of the formulation, which might
+be due to conglomeration of the CS–PLHNs, oﬀered by lecithin
+molecules and degradation of the polymer. Hence, it was rec-
+ommended that developed CS–PLHNs should be stored at
+below room temperature (<25 C) or at refrigerated condition
+(4  1 C), in order to retain their pharmaceutical properties for
+safe and eﬀective long-term use.
+3.8
+Ex vivo permeation study
+The ex vivo permeation study using non-everted rat intestinal
+model was accomplished in order to assess the permeation
+potential of CS–PLHNs. The signicant improvement in the
+intestinal permeation of CS, almost 6 folds (p < 0.05) was
+observed by encapsulating inside PLHNs compared to CS solu-
+tion. Fig. 8 represents the intestinal permeation prole of CS
+from CS solution and CS–PLHNs, along with their apparent
+permeability coeﬃcient (Papp). The Papp value for CS from CS
+solution and CS–PLHNs were found to be 0.909 (0.049) 
+105 cm s1 and 5.441 (0.373)  105 cm s1, respectively. The
+high hydrophilicity oﬀered by the tween carboxylic group of the
+CS might be responsible for its poor permeation across rat
+intestine.5 The observed signicant high (p < 0.05) permeation of
+CS in the form of CS–PLHNs at each time point might be
+attributed to their nano-size as well as hydrophobic nature of
+lipid, which would have facilitated the absorption across intes-
+tine through specialized transport mechanisms.14 It has been
+previously reported that the nanoparticles of less than 500 nm
+are eﬀectively absorbed via endocytosis through lymphoid
+tissues in the intestine.10 Additionally, the enhanced interaction
+Fig. 8
+Ex vivo permeation study of CS–PLHNs and CS solution across
+rat intestinal tissue. Inset image shows apparent permeability coeﬃ-
+cients (Papp) for CS–PLHNs and CS solution (vertical bars represent the
+SD, results are shown as mean  S.D.; n ¼ 3).
+Fig. 7
+Storage stability of the CS–PLHNs at diﬀerent environmental conditions at diﬀerent time interval. *Signiﬁcant values at p < 0.05 compared
+with properties of CS–PLHNs on 0 day. The comparison was made by employing the unpaired student t-test between the results of CS–PLHNs
+on 0 day and 180th day.
+Table 5
+Stability of CS–PLHNs in diﬀerent simulated biological milieua
+Biological milieu
+Time (h)
+Before incubation
+Aer incubation
+Particle size (nm)
+EE (%)
+PDI
+Particle size (nm)
+EE (%)
+PDI
+SGF (pH 1.2)
+2
+227  3.8
+57.8  1.32
+0.151  0.027
+252  4.8
+57.5  1.24
+0.347  0.104
+SIF (pH 6.8)
+6
+231  1.7
+57.4  0.89
+0.164  0.016
+SGF + SIF
+2 + 6
+234  2.3
+56.9  1.36
+0.478  0.129
+a All results are shown as mean  S.D.; n ¼ 3.
+76502 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+of CS–PLHNs with lipophilic biological membrane due to phos-
+pholipid envelop, might be also plausible reason for an eﬀective
+endocytosis through enterocytes as well as M cells of PP, which
+eventually reected via higher CS concentration in basolateral
+side.19,43 Results are in well corroboration with the hypothesis.
+3.9
+In vivo intestinal uptake study
+The in vivo intestinal permeation potential of the CS–PLHNs
+was
+visualized
+using
+confocal
+microscopy
+aer
+oral
+administration in the rats. The confocal microscopic images of
+the cross sections of rat intestine, showing the absorption of
+CS–PLHNs are portrayed in Fig. 9. The strong green uores-
+cence was noticed throughout the apical portion of the villi in
+the intestinal lumen, specically mucosa and submucosa
+(blood and lymphatic vessels). The various stage of internali-
+zation and distribution of CS–PLHNs in the enterocytes and
+intestinal mucosa aer 2 h of administration suggested that, an
+eﬀective endocytosis was taken place in the intestinal mucosal
+Fig. 9
+(I) Diagrammatic illustration of the gastrointestinal-transit of CS–PLHNs and subsequent their intestinal permeation. (II) Confocal laser
+scanning microscopic images of rat intestine after 2 h of oral administration of FITC labeled CS–PLHNs, which shows enhanced absorption and
+uptake of CS–PLHNs into the tissues underlying the absorptive cells. (A) DIC image; (B) ﬂuorescent image; and (C) merge of ﬂuorescent and DIC
+image scanned at 10 plain. (D) DIC image; (E) ﬂuorescent image; and (F) merge of ﬂuorescent and DIC image scanned at 40 plain using
+emersion oil objective. Red, blue and yellow arrows indicate the mucosal, submucosal, and muscular regions of rat intestine in transverse section,
+respectively. (III) Graphics illustrating the various routes of CS–PLHNs absorption across GIT.
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76503
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+epithelia, PP of the follicle-associated epithelium and the
+underneath regions of the secondary lymphoid organ. The
+results conrmed that the CS–PLHNs were able to interact with
+intestinal barrier and be internalized by following various
+transportation mechanisms such as paracellular pathway,
+transcellular pathway through enterocytes and endocytosis by
+M-cells of PP (Fig. 9(III)).44–46 Additionally, a strong uorescence
+was also observed at the surface of the villi conceivably as a
+consequence of CS–PLHNs' bioadhesion with the mucous layer
+of GIT wall. The mucoadhesivity imparted by the phospholipid
+envelop and surfactant layer (i.e., PVA) of CS–PLHNs, prolonged
+the residence time and thereby, improved the intestinal
+permeation.10,43,45 As CS remains encapsulated within the
+CS–PLHNs during the internalization process across GIT, it
+resulted in enhanced permeation, which further strengthens
+our hypothesis. However, specic mechanism needs to be
+elucidated by further studies.
+3.10
+In vivo pharmacokinetic study
+The plasma drug concentration time proles obtained aer oral
+administration of CS solution and CS–PLHNs are presented in
+Fig. 10, and the corresponding various pharmacokinetic param-
+eters are summarized in Table 6. The signicant diﬀerence (p <
+0.05) was noticed in the pharmacokinetic parameters of CS
+solution and CS–PLHNs, aer non-compartmental analysis of CS
+plasma concentration time prole. The peak plasma concentra-
+tion (Cmax) of 268.20  9.59 ng ml1 was observed for CS–PLHNs
+aer single dose administration, which was 2.4 times higher than
+those obtained for the CS solution (112.23  5.90 ng ml1). The
+hydrophobic surface as well as nano-size of the CS–PLHNs could
+have facilitated the permeation of CS across GIT, by virtue of their
+specic absorption mechanisms and that might be responsible
+for the higher value of Cmax.14,39 The time taken to achieve
+maximum drug concentration (Tmax) was also 4 times delayed for
+CS–PLHNs as compared to CS solution, which conrmed the
+sustained in vivo CS release potential of CS–PLHNs similar to the
+in vitro release prole.44,47 The plasma level of CS declined aer
+1.52  0.02 h, indicating rapid systemic elimination of the CS
+owing to its poor plasma protein binding, which was further
+evident by its low systemic mean residence time (MRT) of 2.79 
+0.03 h. Whereas, 5.40 times and 4.76 times enhanced half-life
+(T1/2) and MRT, respectively was obtained with CS–PLHNs as
+compared to free CS solution, which might be due to extended
+absorption and slow release of CS from CS–PLHNs into systemic
+circulation.48 Moreover, the values of AUC0–48 h and AUC0–N for
+CS–PLHNs were also signicantly improved (p < 0.05) compared
+to pure CS solution. From the various pharmacokinetic param-
+eters, it was clear that CS–PLHNs showed the promising potential
+for oral delivery of CS with approximately 11.9 fold higher relative
+bioavailability, compared to pure CS solution. The signicant
+improvement (p < 0.05) in oral bioavailability of CS, achieved with
+CS–PLHNs might be resulted due to the enhanced systemic
+absorption of CS–PLHNs through specialized absorption mech-
+anisms across GIT such as paracellular transport, transcellular
+transport via enterocytes and M-cells of the PP (Fig. 9(III)),44,47
+which corroborates well with the ex vivo and in vivo intestinal
+uptake
+studies
+and
+further
+substantiates
+the
+hypothesis.
+Furthermore, phospholipid covering over the polymeric core
+might have improved the bioadhesion of CS–PLHNs with the
+intestinal membrane and assisted in the CS–PLHNs movement
+through paracellular pathway.42,43
+4.
+Conclusion
+The present strategy provides a deep insight into the captivating
+features of PLHNs for oral delivery of CS like water soluble
+molecules. The W1/O/W2 double emulsication method was
+successfully employed for encapsulation of CS into PLHNs. By
+virtue of Box–Behnken experimental design based Quality by
+Design approach, enormous eﬀorts have been made for higher
+drug encapsulation. The high degree of prediction and reali-
+zation potential conrmed the utility of desirability approach
+for optimization. The various solid-state and surface charac-
+terization studies exhibited the core–shell architecture of
+PLHNs, in which CS was resided in an amorphous form without
+any interaction. The absorption and permeation of CS in rat
+Fig. 10
+Plasma concentration time proﬁle of CS–PLHNs and CS
+solution after single dose oral administration in rats (vertical bars
+represent the SEM, results are shown as mean  SEM; n ¼ 6).
+Table 6
+Pharmacokinetic parameters of CS following single dose oral
+administration of CS solution and CS–PLHNs in rats (dose: 20 mg
+kg1)a
+Parameters
+CS solution
+CS–PLHNs
+Cmax (ng ml1)
+112.23  5.90
+268.20  9.59
+Tmax (h)
+1
+4
+AUC0–48 h (ng h ml1)
+232.16  12.31
+2748.82  276.61
+AUC0–N (ng h ml1)
+295.53  17.79
+3033.81  193.77
+T1/2 (h)
+1.52  0.02
+8.22  0.51
+MRT (h)
+2.79  0.03
+13.30  0.59
+Fr
+1
+11.89  1.25
+a All values are reported as mean  SEM; n ¼ 6.
+76504 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+intestinal epithelial barrier improved greatly aer its incorpo-
+ration inside PLHNs. Eventually, in vivo intestinal uptake and
+pharmacokinetic study conrmed the intestinal permeation
+potential and thereby, its resultant enhanced bioavailability,
+which ought to be the lipophilicity imparted by PLHNs. Further,
+PLHNs oﬀer an exciting delivery strategy for altering the existing
+marketed dosage form of CS as a result of its improved oral
+bioavailability. In the purview of this, the present research
+opens new era in the pharmaceutical eld for harnessing the
+potential of CS like numerous water soluble drug molecules, by
+extrapolating the intriguing ndings of tunable PLHNs.
+Conﬂict of interest
+The authors report no conict of interest.
+Abbreviations
+CS
+Cromolyn sodium
+PLHNs
+Polymeric lipid hybrid nanoparticles
+PLGA
+Poly(D,L-lactide-co-glycolide)
+GIT
+Gastrointestinal tract
+BBD
+Box–Behnken experimental design
+PVA
+Polyvinyl alcohol
+FITC
+Fluorescein isothiocyanate
+DDW
+Double distilled water
+RSM
+Response surface methodology
+PDI
+Polydispersity index
+EE
+Encapsulation eﬃciency
+FTIR
+Fourier transforms infrared spectroscopy
+DSC
+Diﬀerential scanning calorimetry
+PXRD
+Powder X-ray diﬀractometry
+HR-TEM High resolution transmission electron microscopy
+AFM
+Atomic force microscopy
+CLSM
+Confocal laser scanning microscopy
+SGF
+Simulated gastric uid
+SIF
+Simulated intestinal uid
+RP-
+HPLC
+Reverse phase high performance liquid
+chromatography
+UV
+Ultra violate
+ANOVA
+Analysis of variance
+SD
+Standard deviation
+SEM
+Standard error of mean
+ED
+Electron diﬀraction
+CF
+Charles foster
+Papp
+Apparent permeability coeﬃcient
+Cmax
+Peak plasma concentration
+Tmax
+Time taken to achieve maximum drug concentration
+MRT
+Mean residence time
+T1/2
+Half-life
+AUC
+Area under curve
+Acknowledgements
+Author Ravi R. Patel is grateful to the Department of Science
+and Technology, INSPIRE Programme division, New Delhi,
+India for awarding INSPIRE Fellowship (IF No. IF130326). Dr O.
+N. Srivastava and Dr R. K. Singh, Department of Physics, BHU,
+Varanasi, for providing TEM, XRD and DSC facilities, are duly
+acknowledged. Authors would like to thank Head, Department
+of Chemistry, BHU, Varanasi, for providing AFM facility. We are
+highly greatful to Dr S. C. Lakhotia, Department of Zoology,
+BHU, Varanasi for providing facility of CLSM. Authors are
+indebted to Evonik Degussa, Pvt. Ltd, India and Entod Phar-
+maceuticals for providing gratis samples of PLGA and CS,
+respectively.
+References
+1 E. Tsujii, K. I. P. J. Hidati, J. Hiroi, E. Mano, A. Miyatake and
+Y. Suzuki, Int. Congr. Ser., 2004, 1263, 511–514.
+2 X. Ding, P. Rath, R. Angelo, T. Stringfellow, E. Flanders,
+S. Dinh, I. Gomez-Orellana and J. R. Robinson, Pharm. Res.,
+2004, 21, 2196–2206.
+3 D. D. Deshmukh, W. R. Ravis and G. V. Betageri, Int. J.
+Pharm., 2008, 358, 128–136.
+4 A. Leone-Bay, H. Leipold, D. Sarubbi, B. Variano, T. Rivera
+and R. A. Baughman, Pharm. Res., 1996, 13, 222–226.
+5 A. W. G. Alani and J. R. Robinson, Pharm. Res., 2008, 25, 48–
+54.
+6 M. S. Nagarsenker and V. Y. Londhe, Int. J. Pharm., 2003, 251,
+49–56.
+7 A. Yoshimi, H. Hashizume, M. Kitagawa, K. Nishimura and
+N. Kakaya, J. Pharmacobio-Dyn., 1992, 15, 681–686.
+8 T. Mori, K. Nishimura, S. Tamaki, S. Nakamura, H. Tsuda
+and N. Kakeya, Chem. Pharm. Bull., 1988, 36, 338–344.
+9 J. Dai, T. Nagai, X. Wang, T. Zhang, M. Meng and Q. Zhang,
+Int. J. Pharm., 2004, 280, 229–240.
+10 P. Z. Milani, B. D. Loveymi, M. Jelvehgari and H. Valizadeh,
+Colloids Surf., B, 2013, 103, 174–181.
+11 Z. Zhang, H. Bu, Z. Gao, Y. Huang, F. Gao and Y. Li, Int. J.
+Pharm., 2010, 394, 147–153.
+12 S.
+Singh,
+A.
+K.
+Dobhal,
+A.
+Jain,
+J.
+K.
+Pandit
+and
+S. Chakraborty, Chem. Pharm. Bull., 2010, 58, 650–655.
+13 S. Jain, S. R. Patil, N. K. Swarnakar and A. K. Agrawal, Mol.
+Pharmaceutics, 2012, 9, 2626–2635.
+14 S. Jain, P. U. Valvi, N. K. Swarnakar and K. Thanki, Mol.
+Pharm., 2012, 9, 2542–2553.
+15 W. S. Cheow and K. Hadinoto, Colloids Surf., A, 2010, 370,
+79–86.
+16 K. M. Taylor, G. Taylor, I. W. Kellaway and J. Stevens, Pharm.
+Res., 1989, 6, 633–636.
+17 M. Fukunaga, M. M. Miller and L. J. Deos, Horm. Metab.
+Res., 1991, 23, 166–167.
+18 L. Zhang, J. M. Chan, F. X. Gu, J. W. Rhee, A. Z. Wang,
+A.
+F.
+Radovic-Moreno,
+F.
+Alexis,
+R.
+Langer
+and
+O. C. Farokhzad, ACS Nano, 2008, 2, 1696–1702.
+19 W. S. Cheow and K. Hadinoto, Colloids Surf., B, 2011, 85,
+214–220.
+20 J. M. Chan, L. Zhang, K. P. Yuet, G. Liao, J. W. Rhee,
+R. Langer and O. C. Farokhzad, Biomaterials, 2009, 30,
+1627–1634.
+21 B. Gajra, C. Dalwadi and R. R. Patel, DARU, 2015, 23, 3.
+This journal is © The Royal Society of Chemistry 2015
+RSC Adv., 2015, 5, 76491–76506 | 76505
+Paper
+RSC Advances
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online
+
+22 D. M. Benival and P. V. Devarajan, Int. J. Pharm., 2012, 423,
+554–561.
+23 R. R. Patel, N. Kumar, G. Khan, S. Chaurasia and B. Mishra,
+Adv. Sci. Lett., 2014, 20, 923–932.
+24 A. B. Solanki, J. R. Parikh and R. H. Parikh, AAPS
+PharmSciTech, 2007, 8, E1–E7.
+25 R. Gannu, V. V. Yamsani, S. K. Yamsani, C. R. Palem and
+M. R. Yamsani, AAPS PharmSciTech, 2009, 10, 505–514.
+26 S. Basu, R. Harfouche, S. Soni, G. Chimote, R. A. Mashelkara
+and S. Sengupta, Proc. Natl. Acad. Sci. U. S. A., 2008, 106,
+7957–7961.
+27 R. Chawla, S. Jaiswal and B. Mishra, Expert Opin. Drug
+Delivery, 2014, 11, 31–43.
+28 M. S. Freag, Y. S. R. Elnaggar and O. Y. Abdallah, Int. J.
+Pharm., 2003, 454, 462–471.
+29 C. B. Woitiski, B. Sarmento, R. A. Carvalho, R. J. Neufeld and
+F. Veiga, Int. J. Pharm., 2011, 412, 123–131.
+30 P. Sowjanya, N. Srinath, K. S. Sumanth, D. Chaitanya,
+A. P. Sai and V. Padmaja, Int. J. Pharm. Res. Dev., 2013, 5,
+112–120.
+31 Y. Jiang, F. Wang, X. Xu, H. Liu, Q. Meng and W. Liu, Int. J.
+Pharm., 2014, 475, 475–484.
+32 D.
+Quintanar-Guerrero,
+H.
+Fessi,
+E.
+Allemann
+and
+E. Doelker, Int. J. Pharm., 1996, 143, 133–141.
+33 R. M. Mainardes and R. C. Evangelista, Int. J. Pharm., 2005,
+290, 137–144.
+34 Z. Rahman, A. S. Zidan, M. J. Habib and M. A. Khan, Int. J.
+Pharm., 2010, 389, 186–194.
+35 S. A. Guhagarkar, V. C. Malshe and P. V. Devarajan, AAPS
+PharmSciTech, 2009, 10, 935–942.
+36 A. Budhian, S. J. Siegel and K. I. Winey, Int. J. Pharm., 2007,
+336, 367–375.
+37 A. Budhian, S. J. Siegel and K. I. Winey, J. Microencapsulation,
+2005, 22, 773–785.
+38 P. Chaubey, R. R. Patel and B. Mishra, Expert Opin. Drug
+Delivery, 2014, 11, 1163–1181.
+39 N. Kumar, S. Chaurasia, R. R. Patel, V. Kumar and B. Mishra,
+Adv. Sci. Lett., 2014, 20, 984–993.
+40 V. D. Kumar, P. R. P. Verma and S. K. Singh, LWT–Food Sci.
+Technol., 2015, 61, 330–338.
+41 L. M. Nolan, J. Li, L. Tajber, O. I. Corrigan and A. M. Healy,
+Int. J. Pharm., 2011, 405, 23–35.
+42 M. Kumar, V. Kakkar, A. K. Mishra, K. Chuttani and
+I. P. Kaur, Int. J. Pharm., 2014, 461, 223–233.
+43 K. Hu, S. Cao, F. Hu and J. Feng, Int. J. Nanomed., 2012, 7,
+3537–3545.
+44 G. Joshi, A. Kumar and K. Sawant, Eur. J. Pharm. Sci., 2014,
+60, 80–89.
+45 Y. Liu, H. Di Zang, M. Kong, F. K. Ma, Q. F. Dang, X. J. Cheng,
+Q. X. Ji and X. G. Chen, Carbohydr. Polym., 2012, 89, 453–460.
+46 B. Sarmento, A. Ribeiro, F. Veiga, P. Sampaio, R. Neufeld and
+D. Ferreira, Pharm. Res., 2007, 24, 2198–2206.
+47 M. Tariq, M. A. Alam, A. T. Singh, Z. Iqbal, A. K. Panda and
+S. Talegaonkar, Colloids Surf., B, 2015, 128, 448–456.
+48 K. P. Seremeta, M. I. Reyes Tur, S. M. P´erez, C. H¨ocht,
+C. Taira, O. D. L. Hern´andez and A. Sosnik, Colloids Surf.,
+B, 2014, 123, 515–523.
+76506 | RSC Adv., 2015, 5, 76491–76506
+This journal is © The Royal Society of Chemistry 2015
+RSC Advances
+Paper
+Published on 09 September 2015. Downloaded by University of Maryland - College Park on 10/23/2025 4:10:05 PM.
+View Article Online

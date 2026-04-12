@@ -1,0 +1,759 @@
+
+
+Citation: Fahmy, S.A.; Mahdy, N.K.;
+Al Mulla, H.; ElMeshad, A.N.; Issa,
+M.Y.; Azzazy, H.M.E.-S. PLGA/PEG
+Nanoparticles Loaded with
+Cyclodextrin-Peganum harmala
+Alkaloid Complex and Ascorbic Acid
+with Promising Antimicrobial
+Activities. Pharmaceutics 2022, 14, 142.
+https://doi.org/10.3390/
+pharmaceutics14010142
+Academic Editors: Marcel Popa,
+Anca Niculina Cadinoiu and
+Clive Prestidge
+Received: 22 November 2021
+Accepted: 5 January 2022
+Published: 7 January 2022
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright:
+© 2022 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+pharmaceutics
+Article
+PLGA/PEG Nanoparticles Loaded with Cyclodextrin-Peganum
+harmala Alkaloid Complex and Ascorbic Acid with Promising
+Antimicrobial Activities
+Sherif Ashraf Fahmy 1,†
+, Noha Khalil Mahdy 1,†, Hadeer Al Mulla 1, Aliaa Nabil ElMeshad 2,3
+,
+Marwa Y. Issa 4
+and Hassan Mohamed El-Said Azzazy 1,*
+1
+Department of Chemistry, School of Sciences & Engineering, The American University in Cairo, AUC Avenue,
+P.O. Box 74, New Cairo 11835, Egypt; sheriffahmy@aucegypt.edu (S.A.F.);
+noha.khalil@aucegypt.edu (N.K.M.); hadeer.almulla@aucegypt.edu (H.A.M.)
+2
+Department of Pharmaceutics and Industrial Pharmacy, Faculty of Pharmacy, Cairo University, Kasr El-Aini
+Street, Cairo 11562, Egypt; aliaa.elmeshad@pharma.cu.edu.eg
+3
+Department of Pharmaceutics, Faculty of Pharmacy and Drug Technology, The Egyptian Chinese University,
+Gesr El Suez Street, Cairo 11786, Egypt
+4
+Department of Pharmacognosy, Faculty of Pharmacy, Cairo University, Kasr El-Aini Street,
+Cairo 11562, Egypt; marwa.issa@pharma.cu.edu.eg
+*
+Correspondence: hazzazy@aucegypt.edu; Tel.: +20-226-152-559; Fax: +20-227-957-565
+†
+These authors contributed equally to this work.
+Abstract: Antimicrobial drugs face numerous challenges, including drug resistance, systemic toxic
+effects, and poor bioavailability. To date, treatment choices are limited, which warrants the search
+for novel potent antivirals, including those extracted from natural products. The seeds of Peganum
+harmala L. (Zygophyllaceae family) have been reported to have antimicrobial, antifungal, and anticancer
+activities. In the present study, a 2-hydroxy propyl-β-cyclodextrin (HPβCD)/harmala alkaloid-rich
+fraction (HARF) host–guest complex was prepared using a thin-ﬁlm hydration method to improve the
+water solubility and bioavailability of HARF. The designed complex was then co-encapsulated with
+ascorbic acid into PLGA nanoparticles coated with polyethylene glycol (HARF–HPßCD/AA@PLGA-
+PEG NPs) using the W/O/W multiple emulsion-solvent evaporation method. The average particle
+size, PDI, and zeta potential were 207.90 ± 2.60 nm, 0.17 ± 0.01, and 31.6 ± 0.20 mV, respectively.
+The entrapment efﬁciency for HARF was 81.60 ± 1.20% and for ascorbic acid was 88 ± 2.20%. HARF–
+HPßCD/AA@PLGA-PEG NPs had the highest antibacterial activity against Staphylococcus aureus and
+Escherichia coli (MIC of 0.025 mg/mL). They also exhibited high selective antiviral activity against
+the H1N1 inﬂuenza virus (IC50 2.7 µg/mL) without affecting the host (MDCK cells). In conclusion,
+the co-encapsulation of HPCD–HARF complex and ascorbic acid into PLGA-PEG nanoparticles
+signiﬁcantly increased the selective H1N1 killing activity with minimum host toxic effects.
+Keywords: Peganum harmala; ascorbic acid (Vitamin C); 2-hydroxy propyl-β-cyclodextrin; PLGA;
+PEG; antiviral; antibacterial
+1. Introduction
+Microbial infections, including bacterial and viral infections, represent a signiﬁcant
+health burden responsible for many deaths worldwide. Inﬂuenza A virus causes the hospi-
+talization of about 4 million cases and the death of 600,000 patients each year. The pervasive
+use of antimicrobials is the leading cause of resistance to the existing medications [1]. More-
+over, most antimicrobial agents suffer from many drawbacks, including systemic adverse
+reactions, allergy, poor bioavailability, and narrow spectrum [2,3].
+Nature provides an enormous library of novel chemicals that can be explored to
+develop antimicrobials. Peganum harmala L. (Zygophyllaceae family) is a member of the
+Zygophyllaceae family native to the area from the eastern Mediterranean region to India [3,4].
+Pharmaceutics 2022, 14, 142. https://doi.org/10.3390/pharmaceutics14010142
+https://www.mdpi.com/journal/pharmaceutics
+
+Pharmaceutics 2022, 14, 142
+2 of 13
+The seeds of P. harmala are rich in harmala alkaloids such as quinazoline and β-carboline
+alkaloids. The major alkaloid, harmine, is responsible for the various pharmacological activ-
+ities of the harmala seeds [5–7]. Several studies have reported the promising antimicrobial
+activities of P. harmala extracts [8,9].
+Ascorbic acid is an essential dietary nutrient required for various biological func-
+tions [10]. Several in vivo studies have reported the ability of ascorbic acid to prevent
+and alleviate many types of viral infections [10,11]. Ascorbic acid was found to improve
+the immune response to viral infections by stimulating the function and proliferation of
+T-lymphocyte and NK-lymphocyte and the production of interferon [11].
+Despite the global trend to replace synthetic antimicrobials with natural ones, the use
+of natural products to treat microbial infections may face challenges similar to those of syn-
+thetic drugs, such as poor water solubility, low bioavailability, and non-selective targeting
+the infected organ. Thus, numerous nanoplatforms, including liposomes, supramolecular
+systems, and polymeric nanoparticles, were designed, being reported to remarkably ame-
+liorate the therapeutic activities of different types of biologically active compounds [12–18].
+Supramolecular host molecules, such as cyclodextrins (CDs), are involved in overcom-
+ing the poor water solubility of the natural compounds via the formation of host–guest
+complexes. CDs are amphiphilic cyclic oligosaccharides obtained from the enzymatic
+hydrolysis of starch. They comprise three types, namely, α, β, and γ-CDs, consisting of
+six, seven, and eight glucopyranose units, respectively [19]. In this context, 2-hydroxy
+propyl ß cyclodextrin (HPßCD) is a promising derivative of CDs due to its safety, high
+water solubility, and ability to selectively form inclusion complexes with various drug
+molecules [20].
+Polymeric nanoparticles (NPs) have been extensively involved in drug delivery, owing
+to their ability to encapsulate different therapeutically active compounds into their matrix
+and the ability of their surfaces to be decorated with different functional groups [3,21,22].
+Consequently, this could improve the stability of their cargos and prolong their half-lives.
+Poly (lactic-co-glycolic acid) (PLGA) is commonly employed in the fabrication of polymeric
+NPs since it is a biocompatible and biodegradable polymer with favorable physicochemical
+properties [3,21,22]. The surface decoration of PLGA NPs with polyethylene glycol (PEG)
+has been reported to have many advantages, such as (i) improving the water solubility of
+the PLGA NPs and their hydrophobic cargos, (ii) increasing the surface charge and the steric
+hindrance on the PLGA NPs thus extending the stability of the NPs and minimizing their
+aggregation, (iii) causing a stealth effect that prolongs the systemic circulation duration of
+drugs via inhibiting the opsonization effect, and (iv) enhancing the release of the drugs out
+of the polymeric matrix [23,24]. Many studies have reported using PEGylated PLGA NPs
+as promising nanocarriers for various natural bioactive compounds, biotherapeutics (as
+peptides, proteins, or vaccines), and synthetic drugs [23–27].
+In the present study, a 2-hydroxy propyl-β- cyclodextrin (HPβCD)/harmala alkaloid-
+rich fraction (HARF) host–guest complex was fabricated using the thin-ﬁlm hydration
+method to alleviate the water solubility of HARF. The complex formation was investigated
+by 1H NMR spectroscopy and phase solubility study. The prepared complex was then co-
+encapsulated with ascorbic acid into PEGylated PLGA (HARF–HPßCD/AA@PLGA-PEG
+NPs) utilizing the W/O/W multiple emulsion-solvent evaporation method. The designed
+NPs were physically characterized in terms of average size, surface charge, polydispersity
+index (PDI), entrapment efﬁciency, and morphology. Additionally, the release of HARF–
+HPβCD complex and ascorbic acid (AA) from HARF–HPßCD/AA@PLGA-PEG NPs was
+studied, and the release proﬁle was acquired. Finally, the antibacterial and antiviral
+activities of HARF–HPßCD/AA@PLGA-PEG NPs were evaluated.
+2. Materials and Methods
+2.1. Materials
+2-Hydroxy propyl ß cyclodextrin was purchased from BLD Pharmatech Co., Limited
+(Cincinnati, OH, USA). Poly (D,L-lactide-co-glycolide) (PLGA) and polyethylene glycol
+
+Pharmaceutics 2022, 14, 142
+3 of 13
+6000 (PEG) were obtained from Sigma-Aldrich (St. Louis, MO, USA). Polyvinyl alcohol
+(PVA; 98% hydrolyzed, MW ≈13,000) was obtained from Acros Organics (Geel, Belgium).
+Dimethylsulfoxide was purchased from Fisher Chemicals (Fair Lawn, NJ, USA). Tween
+80 was purchased from El-Nasr Pharmaceutical Chemicals Co. (Cairo, Egypt). Tryptic
+soy agar was purchased from Millipore (Bedford, MA, USA). Phosphate-buffered saline,
+streptomycin, penicillin, fetal bovine serum, trichloroacetic acid, Dulbecco’s modiﬁed
+Eagle’s medium (DMEM), SRB, and tris (hydroxymethyl)aminomethane were purchased
+from Lonza (Basel, Switzerland).
+2.2. Extraction and Isolation of Major P. harmala Alkaloids
+Dried mature seeds of P. harmala L. were purchased from the local Egyptian market.
+The major alkaloids of P. harmala seeds were extracted, isolated, and characterized according
+to our previously reported method [5,6].
+2.3. Preparation of Harmala Alkaloid-Rich Fraction/2-Hydroxy Propyl ß Cyclodextrin Complex
+(HARF–HPßCD)
+HARF–HPßCD inclusion complex was designed via the thin-ﬁlm hydration method,
+as described elsewhere, with some modiﬁcations [28]. Brieﬂy, a thin ﬁlm was formed by
+dissolving HARF in methanol followed by drying in a round bottom ﬂask using a rotary
+evaporator. Separately, 5% (w/v) of HPßCD solution was prepared and subsequently
+added to the ﬁlm, followed by 30 min sonication in a SONOREX DIGITAL 10 P sonicator
+(BANDELIN electronic GmbH & Co. KG, Darmstadt, Germany). Afterward, the complex
+solution was stirred for another 30 min and puriﬁed through ﬁltration using a 0.22 µm
+nylon ﬁlter. The ﬁltrate was then dried in a lyophilizer (TOPTION TOPT-10C Freeze dryer,
+Toption Group Co., Xi’an, China).
+2.3.1. 1H NMR Spectroscopy of HARF–HPßCD Complex
+1H NMR spectra of HPßCD and the inclusion complex were measured on a 400 MHz
+FT-NMR spectrometer (ECA-500, JEOL, Tokyo, Japan) in D2O solutions. The scanning
+range of the hydrogen spectrum is 1–13 ppm.
+2.3.2. Phase Solubility Study
+The phase solubility study was performed, as described elsewhere with some modiﬁ-
+cations [29], to conﬁrm the formation of the HARF–HPßCD inclusion complex using UV
+spectroscopy (FLUOstar Omega microplate reader, BMG Labtech, Offenburg, Germany) at
+λ = 373 nm [30]. Brieﬂy, an excess amount of HARF was added to 5 mL of several mixtures
+containing successively increasing concentrations of HPßCD (ranging from 0 to 200 mm)
+all in deionized water. These mixtures were then sealed and stirred at room temperature
+until equilibrium had been reached. The mixtures were then centrifuged at 4000 rpm for 10
+min (Hermle Z326K, Wehingen, Germany), and the absorbance was measured at 373 nm
+using UV spectrophotometer.
+The stability constant (K1:1) was estimated utilizing the slope of the linear correlation
+and the intrinsic solubility (S0) using Equation (1) [31,32].
+K1:1 =
+Slope
+S0(1 −Slope)
+(1)
+Then, the complexation efﬁciency (CE) was computed employing the intrinsic solubil-
+ity and the stability constant using Equation (2) [31,32].
+CE = S0 ∗K1:1
+(2)
+where S0 is the intrinsic solubility, and K1:1 is the stability constant.
+
+Pharmaceutics 2022, 14, 142
+4 of 13
+2.4. Preparation of PEG-Coated PLGA Nanoparticles Dual-Loaded with Ascorbic Acid (AA) and
+HARF–HPßCD Inclusion Complex (HARF–HPßCD/AA@PLGA-PEG NPs)
+The designed HARF–HPßCD complex was co-loaded with AA into PLGA NPs coated
+with PEG (HARF–HPßCD/AA@PLGA-PEG NPs) using the W/O/W multiple emulsion-
+solvent evaporation method, as previously reported with some modiﬁcations [3,7,33,34].
+Brieﬂy, 300 mg of PLGA and 100 mg PEG 6000 were dissolved in 8 mL dichloromethane
+(DCM), forming the emulsion’s organic phase (O). Then, HARF–HPßCD complex and AA
+were dissolved in water (the W/W ratio of each drug/PLGA was 0.2:1) to obtain the inner
+aqueous phase (W1). Into the previously prepared organic phase, we emulsiﬁed 800 µL of
+the internal aqueous phase using a homogenizer at 11,000 rpm for 8 min in an ice bath to
+form a W1/O emulsion (ﬁrst emulsion). Then, 2.5% polyvinyl alcohol was dissolved in
+100 mL deionized water to form the external aqueous phase (W2). The ﬁrst emulsion was
+added to the external aqueous phase (W2) and emulsiﬁed by homogenization at 11,000 rpm
+for 8 min in an ice bath. The resulting W1/O/W2 emulsion (second emulsion) was stirred
+overnight using a magnetic stirrer to allow solvent evaporation and particle hardening.
+Afterward, the nanoparticle colloid was lyophilized (TOPTION TOPT-10C Freeze dryer,
+Toption Group Co., Limited).
+2.5. Characterization of the Designed HARF–HPßCD/AA@PLGA-PEG NPs
+The average particle size and polydispersity index (PDI) were determined using a
+Zetasizer Nano ZS equipped with a 10 mW HeNe laser, allowing for measurements at 633
+nm and a detection angle of 173◦backscatter (Malvern Instruments, Worcestershire, UK).
+The ζ-potential was measured using laser Doppler velocimetry [35–37].
+The morphological features of the prepared nanoparticles were investigated using
+scanning electron microscopy (SEM) via high-resolution ﬁeld emission scanning electron
+microscopy (FESEM) (LEO SUPRA 55, Carl Zeiss, Oberkochen, Germany) with an ac-
+celeration voltage of 1.00 kV. Before conducting the SEM study, we coated freeze-dried
+PLGA NPs via gold sputtering (current: 10 mA) for 2 min under a nitrogen atmosphere.
+The measurements were performed using the image processing program ImageJ (NIH,
+Bethesda, MD, USA).
+2.6. Entrapment Efﬁciency
+The entrapment efﬁciency (EE) of HARF–HPßCD/AA@PLGA-PEG NPs was mea-
+sured indirectly by centrifugation (15,000 rpm, 1 h, 4 ◦C), followed by ultraﬁltration of the
+supernatant. The quantities of the HARF and AA unencapsulated in the ultraﬁltrate were
+determined by a FLUOstar Omega microplate reader (BMG Labtech, Offenburg, Germany)
+spectrophotometer at 373 and 287 nm, respectively, using Equation (3) [37–39].
+EE (%) = Initial f eeded drug −Final loaded drug
+Initial f eeded drug
+× 100
+(3)
+2.7. In Vitro Release Study of HARF–HPßCD Complex and Ascorbic Acid from
+HARF–HPßCD/AA@PLGA-PEG NPs
+The cumulative release % of HARF and AA from HARF–HPßCD/AA@PLGA-PEG
+NPs was investigated utilizing the dialysis membrane method. Brieﬂy, 1 mL of the NPs
+was loaded to a dialysis bag (cutoff molecular weight of 12,000–14,000 Da). The dialysis bag
+was inserted into 50 mL of PBS at pH 7.4 with 2% Tween in a proper jar. The whole system
+was left on a stirrer at 37 ◦C. A 1 mL aliquot of the sample was withdrawn for analysis
+and immediately replaced with another equal volume of warmed buffer at speciﬁc time
+intervals. The concentrations of HARF and AA were determined by a FLUOstar Omega
+microplate reader (BMG Labtech, Offenburg, Germany) spectrophotometer at 373 and
+287 nm wavelengths, respectively.
+
+Pharmaceutics 2022, 14, 142
+5 of 13
+The cumulative release (%) was calculated according to Equation (4) [40].
+Cumulative release (%) = Vs ∑n−1
+1
+c(n −1) + VoCn
+mo
+× 100
+(4)
+where Vs is the volume of each sample removed, c(n −1) is the bulk concentration before
+sampling, Cn is the concentration of the sample, Vo is the bulk volume of the release
+medium, and mo is the original amount of the drug in the nanoparticles tested.
+2.8. Antibacterial Assay for the Designed HARF–HPßCD/AA@PLGA-PEG NPs
+2.8.1. Preparation of the Inoculum Using Colony Suspension Approach
+Staphylococcus aureus ATCC® 6538 (lot no. 4600502) and Escherichia coli ATCC® 8739 (lot
+no. 380063) were obtained from American Type Culture Collection (Manassas, VA, USA).
+Tryptic soy broth (100 mL) was used as inoculation medium for either the Gram-positive
+or Gram-negative bacteria, then incubated at 37.0 ± 1.0 ◦C for 24 ± 2 h. A loopful of the
+broth was streaked onto tryptic soy agar medium and incubated at 37.0 ◦C for 21 ± 3 h.
+Three or four colonies (from each plate) were inoculated in broth, and the suspension was
+incubated till turbidity reached 0.5 McFarland standard. The inoculum density was stan-
+dardized utilizing a 0.5 McFarland standard and DensiCHEK© optical device (BioMérieux,
+Marcy l’Etoile, France). The obtained suspensions contained about 1.0 × 108 CFU/mL of
+Staphylococcus aureus or Escherichia coli.
+2.8.2. Broth Macrodilution Method
+The antibacterial activities of plain PLGA-PEG NPs, HARF, and HARF–HPßCD/
+AA@PLGA-PEG NPs were evaluated by adding and mixing 5.0 mL from each sample to
+5.0 mL broth (1:2 dilution) according to a previously reported method [41]. Next, 5.0 mL
+of the 1:2 dilution was pipetted using a new tip and mixed with 5.0 mL broth (1:4). Ten
+dilutions for each bacterial strain were prepared and inoculated in a 24-well plate. Then,
+100 µL of prepared inoculum was added to each well, resulting in a ﬁnal concentration of
+5.0 × 105 CFU/mL. An additional 100 µL from each bacterial strain suspension was diluted
+and cultured to conﬁrm the inoculum density. All plates were incubated at 37.0 ◦C for 24 h
+and then kept in the dark to monitor growth. All control wells yielded a turbid solution.
+The inoculum density was 4–6 × 105 CFU/mL for both evaluated bacterial strains, with
+reference to the Clinical and Laboratory Standards Institute (CLSI) procedures (document
+M07, A09) [41].
+2.9. Cytotoxicity and Antiviral Assays
+The human inﬂuenza H1N1 and Madin–Darby Canine Kidney (MDCK) cells were
+obtained from American Type Culture Collection (University Boulevard, Manassas, VA,
+USA). Vero E6 cells were grown in DMEM medium supplemented with 10% fetal bovine
+serum and 0.1% antibiotic/antimycotic solution. Gibco BRL provided the antibiotic and
+antimycotic solution, trypsin-EDTA, fetal bovine serum, and DMEM medium (Grand
+Island, NY, USA).
+Cytopathic effect (CPE) reduction assay was used to evaluate the antiviral activities of
+plain PLGA-PEG NPs, HARF, and HARF–HPßCD/AA@PLGA-PEG NPs in cell culture
+systems, as described elsewhere with some modiﬁcations [42,43]. Brieﬂy, MDCK cells
+seeded into a 96-well culture plate at a density of 2 × 104 cells per well were infected
+with 0.1 mL (CCID50) inﬂuenza (H1N1) of the diluted viral suspension of Inﬂuenza H1N1
+and then incubated at 37 ◦C for 60 min to facilitate the adsorption of the virus. The
+antiviral activity for each sample was determined using a twofold diluted concentration of
+1–100 µg/mL. Culture plates were incubated at 37
+◦C in 5% CO2 for 72 h. The development
+of the cytopathic effect was monitored by light microscopy. The cell monolayers were
+stained (0.03% crystal violet in 2% ethanol and 10% formalin). After washing and drying,
+the optical density was measured at 540/630 nm. The antiviral activities were calculated
+according to Pauwels et al. [44], employing Equation (5).
+
+Pharmaceutics 2022, 14, 142
+6 of 13
+Antiviral activity % = (mean optical density of cell controls −mean optical density of virus controls)
+(Optical density of the test −mean optical density of virus controls)
+× 100
+(5)
+The cytotoxicity was evaluated against MDCK cells before conducting the aforemen-
+tioned assay. Cells were seeded at a density of 2 × 104 cells per well in a 96-well culture
+plate. After 24 h, the culture medium containing serially diluted samples was added to the
+cells and incubated for 72 h before being removed, and the cells were washed with PBS.
+The next steps were carried out in the same manner as described above for the antiviral
+activity assay. The 50% cytotoxic concentrations (CC50) and the 50% inhibitory concentra-
+tion (IC50) were computed using GraphPad PRISM Software (Graph-Pad Software, San
+Diego, CA, USA). Selectivity index (SI) was estimated as the ratio of CC50 to IC50.
+3. Results and Discussion
+3.1. Characterization of the Prepared HARF–HPßCD Complex
+3.1.1. 1H NMR Spectroscopy of the HARF–HPßCD Complex
+1H NMR analyses performed in D2O could shed more light on the host–guest com-
+plexation between HPßCD and other guest molecules and could provide clues on the
+inclusion of guest molecules into the hydrophobic cavity of the host molecule. Upon the
+inclusion of the guest molecule into the HPßCD cavity, an upﬁeld shift of the H-3 and H-5
+(hydrogen atoms placed in the interior cavity of HPßCD) occurred due to their shielding
+by the guest molecule (the chemical structure of HPßCD is presented in Figure S1A). On
+the other hand, H-1, H-2, H-4, and H-6 (hydrogen atoms localized on the outer surface of
+HPßCD) will experience milder chemical shifts. In the present work, the suggestion of the
+HARF–HPßCD complex foundation was grounded on modifying the 1H NMR spectra of
+the pure HPßCD upon its complexation with HARF (Figure S1). The 1H NMR chemical
+shifts (in ppm) of HPßCD protons in the presence and absence of HARF are presented in
+Table 1. The induced chemical shift, δ (ppm), is the difference in chemical shifts of HPßCD
+protons before and after the formation of the HARF–HPßCD complex. In this context, a
+positive sign of δ (ppm) indicates a downﬁeld shift, while a negative sign indicates an
+upﬁeld one. It was shown that the H-3 and H-5 protons experienced more remarkable
+HARF-induced chemical shifts than the outer surface protons (H-1, H-2, H-4, and H-6),
+indicating that HARF was only included within the HPßCD cavity. Furthermore, the clear
+upﬁeld shift of H-3 and H-5 protons signals was due to the inclusion of π-electron-rich
+aromatic groups of HARF inside the host cavity. These ﬁndings agree very well with the
+previous studies, which reported that the upﬁeld proton shifts of H-3 and H-5 indicate
+inclusion complexation [45–48].
+Table 1. The chemical shifts (ppm) of HPβCD before and after forming the HARF–HPßCD complex.
+Chemical Shifts (δ, ppm)
+H-1
+H-2
+H-3
+H-4
+H-5
+H-6
+HPßCD
+4.899
+3.310
+3.768
+3.329
+3.552
+3.696
+HARF-HPßCD complex
+4.877
+3.307
+3.741
+3.307
+3.526
+3.675
+∆δ
+−0.022
+−0.003
+−0.027
+−0.022
+−0.026
+−0.021
+3.1.2. Phase Solubility Study
+The solubility of HARF was determined by plotting the change with HPβCD concentra-
+tion, as presented in Figure 1. The R2 value of the extrapolated curve was 0.9807, suggesting
+that a remarkable linear correlation between HARF solubility and HPβCD concentration
+where the solubility of HARF increased with increasing the concentration of HPβCD. As
+previously described by Higuchi and Connors, this phase solubility diagram displays the
+AL-type pattern, indicating a complex stoichiometry of 1:1 (HARF/HPβCD) [29,31]. More-
+
+Pharmaceutics 2022, 14, 142
+7 of 13
+over, the slope was >0.0 and <1.0, while the K value was >0.0, conﬁrming the formation of
+a 1:1 complex [31].
+Figure 1. Phase solubility diagram of HARF in the presence of several mixtures containing succes-
+sively increasing concentrations of HPβCD.
+The stability constant and the complexation efﬁciency (CE) were 81.4 M−1, and 0.66,
+respectively, similar to values reported previously [31,32,49]. This showed that the HPβCD
+had improved the water solubility of HARF via the formation of the host–guest complex.
+3.2. Characterization of the HARF–HPßCD/AA@PLGA-PEG NPs
+3.2.1. Particle Size, Polydispersity Index (PDI), ζ-Potential, Entrapment Efﬁciency (EE), and
+Morphological Features
+The average particle size and PDI of the designed HARF–HPßCD/AA@PLGA-PEG
+NPs were 207 ± 2.60 nm and 0.17 ± 0.01, respectively (Table 2). These values lie within
+the range of the previously reported nanoparticles that exhibited improved biomedical
+applications [50,51]. The particle size distribution of the nanoparticles is presented in
+Figure 2. The ζ-potential of the designed nanoparticles showed a high negative surface
+charge of −31.60 ± 0.20 mV. This is attributed to the presence of the highly negatively
+charged PEG coating the PLGA NPs. Using PEG as a coat for the NPs improves the stability
+of the PLGA NPs in aqueous media, enabling their long shelf life. Moreover, PEG inhibits
+the aggregation of NPs through its steric hindrance effect [49].
+Table 2. Average particle size, PDI, ζ-potential, and entrapment efficiency of HARF–HPßCD/AA@PLGA-
+PEG NPs.
+Formula
+Average Size (nm)
+PDI
+ζ-Potential (mV) ± SD
+Encapsulation Efﬁciency (%)
+HARF
+AA
+HARF–HPßCD/AA@
+PLGA-PEG NPs
+207 ± 2.60
+0.17 ± 0.01
+−31.60 ± 0.20
+81.60 ± 1.20
+87 ± 2.20
+The entrapment efﬁciencies of the HARF and AA are presented in Table 2.
+The high entrapment efﬁciencies of HARF and AA are attributed to the PEG coating
+the PLGA NPs founding a barrier that surrounds and protects the loaded drugs, preventing
+their loss during the homogenization step and retaining their stability [52]. The capacity to
+entrap high concentrations of drugs supports sustained drug release [53].
+As demonstrated in Figure 3A, SEM analysis showed a spherical shape of the prepared
+NPs. The mean average size of the NPs was determined by utilizing the image processing
+program ImageJ (NIH, Bethesda, MD, USA) and was found to be 204.5 ± 70.6 nm (Figure 3B,
+which is close to that obtained from the dynamic light scattering (207 ± 2.6).
+
+Pharmaceutics 2022, 14, 142
+8 of 13
+
+Figure 2. Particle size distribution of the prepared HARF–HPßCD/AA@PLGA-PEG NPs using
+DLS analysis.
+Figure 3. (A) Scanning electron microscopy (SEM) images of the HARF–HPßCD/AA@PLGA-PEG
+NPs. (B) Particle size (nm) histogram of the designed HARF–HPßCD/AA@PLGA-PEG NPs generated
+through employing the image processing program ImageJ (NIH, Bethesda, MD, USA).
+3.2.2. In Vitro Release Study
+Figure 4 portrays the release proﬁle of HARF–HPßCD complex and AA from the
+HARF–HPßCD/AA@PLGA-PEG NPs. The release proﬁle showed an initial release of
+29.8 ± 4.9% and 66.7 ± 6.8% for HARF–HPßCD complex and AA, respectively, in the ﬁrst
+2 h, which increased to 64.6 ± 3% and 76.6 ± 1.3%, respectively, over 48 h. These release
+proﬁles are attributed to the hydrolytic cleavage of the ester bonds of the PLGA copolymer
+in the presence of water [54]. Moreover, coating NPs with PEG was reported to enhance the
+permeability and release of the loaded drugs [55]. The faster release rates of AA compared
+to HARF complex could be due to the higher molecular weight of the complex, making its
+diffusion out of the dialysis membrane much slower than that of AA.
+
+Pharmaceutics 2022, 14, 142
+9 of 13
+Figure 4. Time-dependent release proﬁles of (A) AA and (B) HARF–HPßCD complex from HARF–
+HPßCD/AA@PLGA-PEG NPs at 37 ◦C into phosphate-buffered saline.
+3.2.3. Antibacterial Assay for the Designed HARF–HPßCD/AA@PLGA-PEG NPs
+The bacterial activities of the HARF, plain PLGA-PEG NPs, and HARF–HPßCD/AA@
+PLGA-PEG NPs were assessed against S. aureus and E. coli. HARF–HPßCD/AA@PLGA-
+PEG NPs exhibited high antibacterial activity against S. aureus and E. coli (MIC of
+0.025 mg/mL), as compared to free HARF (MIC of 0.5 mg/mL), as shown in Table 3.
+On the other hand, PLGA-PEG NPs showed no antibacterial activities.
+The HARF–
+HPßCD/AA@PLGA-PEG NPs showed higher bactericidal activity as compared to free
+HARF. This could possibly be attributed to the improved hydrophilicity of HARF upon its
+inclusion inside the HPßCD cavities. Furthermore, the NPs can adhere to the bacterial cell
+wall due to their effective surface areas, releasing their cargo across the cell wall [34,56–58].
+The bactericidal activity of HARF is attributed to the presence of high concentrations of
+β-carboline and quinazoline alkaloids, which have been reported to intercalate the bacterial
+DNA [6].
+Table 3. Bactericidal activity of HARF and HARF–HPßCD/AA@PLGA-PEG NPs against Staphylococ-
+cus aureus and Escherichia coli.
+Bacterial Strain
+Minimum Inhibitory Concentration (MIC in mg/mL)
+PLGA-PEG NPs
+HARF
+HARF–HPßCD/AA@PLGA-PEG NPs
+Staphylococcus aureus
+0
+0.5
+0.025
+Escherichia coli
+0
+0.5
+0.025
+3.2.4. Cytotoxicity and Antiviral Activity Assays
+Treatment choices for viral infections are limited and face many challenges, such as
+drug resistance, systemic toxic effects, and poor bioavailability. This warrants the search for
+effective antiviral agents that can overcome the shortcomings of their current counterparts.
+The antiviral activities of the HARF, PLGA-PEG NPs, and HARF–HPßCD/AA@PLGA-
+PEG NPs against inﬂuenza A (H1N) were investigated through employing the cytopathic
+effect (CPE) reduction assay. The PLGA-PEG showed no antiviral activity. The developed
+HARF–HPCD/PLGA-PEG NPs exhibited high selective antiviral activity against the H1N1
+inﬂuenza virus (Table 4) without affecting the host, MDCK cells, (IC50 of 2.7 µg/mL; CC50
+of 110.4 µg/mL; and selective index, CC50/IC50, of 41.2) compared to free HARF (IC50
+of 30.2 µg/mL, CC50 of 238.8 µg/mL, and selective index of 7.9). The NPs decompose,
+releasing their cargos that kill the virus selectively without harming the host cells. HARF
+is reported to exert its antiviral activity by inhibiting the viral polymerase activity and
+consequently viral RNA replication [59]. On the other hand, the co-encapsulation of
+ascorbic acid causes a synergistic antiviral effect against the inﬂuenza virus by increasing
+the generation of interferon (IFN)-α/β [60,61].
+
+Pharmaceutics 2022, 14, 142
+10 of 13
+Table 4. Antiviral activity of HARF and HARF–HPßCD/AA@PLGA-PEG NPs against inﬂuenza A
+(H1N1) virus.
+Sample
+CC50 (µg /mL)
+IC50 (µg /mL)
+SI
+Plain PLGA-PEG
+0
+0
+0
+HARF
+238.8
+30.2
+7.9
+HARF–HPßCD/AA@PLGA-PEG NPs
+110.4
+2.7
+41.2
+4. Conclusions
+In this work, HARF was ﬁrst mixed with HPßCD as a host molecule to form an
+inclusion complex. This was done to improve the solubility of HARF, which is highly
+hydrophobic. Finally, AA and HARF–HPßCD inclusion complex were co-loaded into the
+PLGA-PEG nanoparticles to form the ﬁnal biodegradable delivery system with enhanced
+release and bioavailability. The fabricated HARF–HPßCD/AA@PLGA-PEG NPs demon-
+strated acceptable cytotoxicity and enhanced antibacterial and antiviral activities compared
+to free HARF. They showed a higher bactericidal effect against Staphylococcus aureus and
+Escherichia coli, with a MIC value of 0.025 mg/mL, as compared to free HARF (MIC of 0.50
+mg/mL). Moreover, the designed NPs exhibited high selective antiviral activity against the
+H1N1 inﬂuenza virus without affecting the host, MDCK cells. Biocompatible nanocarriers
+loaded with natural extracts with antimicrobial activity could be explored as future effective
+treatments of infections.
+Supplementary Materials: The following are available online at https://www.mdpi.com/article/
+10.3390/pharmaceutics14010142/s1, Figure S1. (A) Structure of HPßCD with appropriate protons
+numbered. 1H NMR spectra of (B) HPßCD, (C) HARF, and (D) HARF–HPßCD complex.
+Author Contributions: Conceptualization, S.A.F. and H.M.E.-S.A.; methodology, S.A.F. and H.A.M.;
+data curation, S.A.F. and N.K.M.; software, S.A.F. and H.A.M.; Resources, A.N.E., M.Y.I. and
+H.M.E.-S.A.; writing—original draft preparation, S.A.F. and H.M.E.-S.A.; writing—review and edit-
+ing, S.A.F., H.A.M., A.N.E., M.Y.I. and H.M.E.-S.A.; funding acquisition, H.M.E.-S.A.; supervision,
+H.M.E.-S.A.; project administration, H.M.E.-S.A. All authors have read and agreed to the published
+version of the manuscript.
+Funding: This project was funded by a grant from the American University in Cairo to H.M.E.-S.A.
+Funding number: SSE-CHEM-H.A.-FY2I-FY2 2-RG (2-20)-2020-Fcb-28-21-32-34.
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Inﬂuenza (Seasonal). Available online: https://www.who.int/en/news-room/fact-sheets/detail/inﬂuenza-(seasonal) (ac-
+cessed on 22 November 2021).
+2.
+Mogana, R.; Adhikari, A.; Tzar, M.N.; Ramliza, R.; Wiart, C. Antibacterial activities of the extracts, fractions and isolated
+compounds from canarium patentinervium miq. Against bacterial clinical isolates. BMC Complement. Med. Ther. 2020, 20, 228.
+[CrossRef] [PubMed]
+3.
+Fahmy, S.A.; Mamdouh, W. Garlic oil–loaded PLGA nanoparticles with controllable size and shape and enhanced antibacterial
+activities. J. Appl. Polym. Sci. 2018, 135, 46133. [CrossRef]
+4.
+Omrani, M.; Keshavarz, M.; Nejad Ebrahimi, S.; Mehrabi, M.; McGaw, L.J.; Ali Abdalla, M.; Mehrbod, P. Potential Natural
+Products Against Respiratory Viruses: A Perspective to Develop Anti-COVID-19 Medicines. Front. Pharmacol. 2021, 11, 2115.
+[CrossRef]
+5.
+Fahmy, S.A.; Fawzy, I.M.; Saleh, B.M.; Issa, M.Y.; Bakowsky, U.; Azzazy, H.M.E.-S. Green Synthesis of Platinum and Palladium
+Nanoparticles Using Peganum harmala L. Seed Alkaloids: Biological and Computational Studies. Nanomaterials 2021, 11, 965.
+[CrossRef] [PubMed]
+6.
+Fahmy, S.A.; Issa, M.Y.; Saleh, B.M.; Meselhy, M.R.; Azzazy, H.M.E.A. Peganum harmala alkaloids self-assembled supramolecular
+nanocapsules with enhanced antioxidant and cytotoxic activities. ACS Omega 2021, 6, 11954–11963. [CrossRef]
+
+Pharmaceutics 2022, 14, 142
+11 of 13
+7.
+Azzazy, H.M.E.-S.; Fahmy, S.A.; Mahdy, N.K.; Meselhy, M.R.; Bakowsky, U. Chitosan-Coated PLGA Nanoparticles Loaded with
+Peganum harmala Alkaloids with Promising Antibacterial and Wound Healing Activities. Nanomaterials 2021, 11, 2438. [CrossRef]
+[PubMed]
+8.
+Pathan Aslam, R.; Vadnere Gautam, P.; Singhai Abhay, K.; Kulkarni Bharti, U. Peganum harmala: A Phyto-pharmacological Review.
+Inventi Rapid: Planta Activa 2012, 2012, 2–4.
+9.
+Jinous, A.; Ramezanloo, F. Chemistry, pharmacology and medicinal properties of Peganum harmala L. Afr. J. Pharm. Pharmacol.
+2012, 6, 1573–1580. [CrossRef]
+10.
+Grosso, G.; Bei, R.; Mistretta, A.; Marventano, S.; Calabrese, G.; Masuelli, L.; Giganti, M.G.; Modesti, A.; Galvano, F.; Gazzolo, D.
+Effects of vitamin C on health: A review of evidence. Front. Biosci. 2013, 18, 1017–1029. [CrossRef]
+11.
+Hemilä, H. Vitamin C and infections. Nutrients 2017, 9, 339. [CrossRef] [PubMed]
+12.
+Fahmy, S.A.; Ponte, F.; Fawzy, I.M.; Sicilia, E.; Bakowsky, U.; Azzazy, H.M.E.-S. Betaine host–guest complexation with a calixarene
+receptor: Enhanced in vitro anticancer effect. RSC Adv. 2021, 11, 24673–24680. [CrossRef]
+13.
+Fahmy, S.A.; Alawak, M.; Brüßler, J.; Bakowsky, U.; El Sayed, M.M.H. Nanoenabled Bioseparations: Current Developments and
+Future Prospects. BioMed Res. Int. J. 2019, 2019, 4983291. [CrossRef] [PubMed]
+14.
+Fahmy, S.A.; Ponte, F.; Abd El-Rahman, M.K.; Russo, N.; Sicilia, E.; Shoeib, T. Investigation of the host-guest complexation
+between 4-sulfocalix[4]arene and nedaplatin for potential use in drug delivery. Spectrochim. Acta-Part A Mol. Biomol. Spectrosc.
+2018, 193, 528–536. [CrossRef] [PubMed]
+15.
+Fahmy, S.A.; Ponte, F.; Sicilia, E.; El-Said Azzazy, H.M. Experimental and Computational Investigations of Carboplatin Supramolec-
+ular Complexes. ACS Omega 2020, 5, 31456–31466. [CrossRef]
+16.
+Fahmy, S.A.; Ponte, F.; Fawzy, I.M.; Sicilia, E.; Bakowsky, U.; Azzazy, H.M.E.A. Host-Guest Complexation of Oxaliplatin and
+Para-Sulfonatocalix[n]Arenes for Potential Use in Cancer Therapy. Molecules 2020, 25, 5926. [CrossRef]
+17.
+Fahmy, S.A.; Brüßler, J.; Ponte, F.; Abd El-Rahman, M.K.; Russo, N.; Sicilia, E.; Bakowsky, U.; Shoeib, T. A study on the
+physicochemical properties and cytotoxic activity of p-sulfocalix[4]arene-nedaplatin complex. J. Phys. Conf. Ser. 2019, 1310,
+012011. [CrossRef]
+18.
+Fahmy, S.A.; Brüßler, J.; Alawak, M.; El-Sayed, M.M.H.; Bakowsky, U.; Shoeib, T. Chemotherapy based on supramolecular
+chemistry: A promising strategy in cancer therapy. Pharmaceutics 2019, 11, 292. [CrossRef]
+19.
+Fahmy, S.A.; Ramzy, A.; Saleh, B.M.; Azzazy, H.M.E.-S. Stimuli-Responsive Amphiphilic Pillar[n]arene Nanovesicles for Targeted
+Delivery of Cancer Drugs. ACS Omega 2021, 6, 25876–25883. [CrossRef]
+20.
+Chen, J.; Qin, X.; Zhong, S.; Chen, S.; Su, W.; Liu, Y. Characterization of curcumin/cyclodextrin polymer inclusion complex and
+investigation on its antioxidant and antiproliferative activities. Molecules 2018, 23, 1179. [CrossRef]
+21.
+Mohan, L.J.; McDonald, L.; Daly, J.S.; Ramtoola, Z. Optimising PLGA-PEG nanoparticle size and distribution for enhanced drug
+targeting to the inﬂamed intestinal barrier. Pharmaceutics 2020, 12, 1114. [CrossRef]
+22.
+Tammam, S.N.; Azzazy, H.M.E.A.; Lamprecht, A. Biodegradable Particulate Carrier Formulation and Tuning for Targeted Drug
+Delivery. J. Biomed Nanotechnol. 2015, 11, 555–577. [CrossRef]
+23.
+Perinelli, D.R.; Cespi, M.; Bonacucina, G.; Palmieri, G.F. PEGylated polylactide (PLA) and poly (lactic-co-glycolic acid) (PLGA)
+copolymers for the design of drug delivery systems. J. Pharm. Investig. 2019, 49, 443–458. [CrossRef]
+24.
+Devasvaran, K.; Jairaman, S.; Yahaya, N.A.; Jaganath, I.B.S.; Khung, Y.L.; Lim, V.; Ngalim, S.H. PEG-b-PLGA nanoparticles loaded
+with Geraniin from Phyllanthus watsonii extract as a phytochemical delivery model. Appl. Sci. 2020, 10, 4891. [CrossRef]
+25.
+Alhakamy, N.A. Development and Evaluation of Icariin-Loaded PLGA-PEG Nanoparticles for Potentiation the Proapoptotic
+Activity in Pancreatic Cancer Cells. AAPS PharmSciTech 2021, 22, 1–11. [CrossRef] [PubMed]
+26.
+Del Amo, L.; Cano, A.; Ettcheto, M.; Souto, E.B.; Espina, M.; Camins, A.; García, M.L.; Sánchez-López, E. Surface functionalization
+of plga nanoparticles to increase transport across the bbb for alzheimer’s disease. Appl. Sci. 2021, 11, 4305. [CrossRef]
+27.
+Raﬁei, P.; Haddadi, A. Docetaxel-loaded PLGA and PLGA-PEG nanoparticles for intravenous application: Pharmacokinetics and
+biodistribution proﬁle. Int. J. Nanomed. 2017, 12, 935–947. [CrossRef]
+28.
+Plenagl, N.; Duse, L.; Seitz, B.S.; Goergen, N.; Pinnapireddy, S.R.; Jedelska, J.; Brüßler, J.; Bakowsky, U. Photodynamic therapy–
+hypericin tetraether liposome conjugates and their antitumor and antiangiogenic activity. Drug Deliv. 2019, 26, 23–33. [CrossRef]
+29.
+Higuchi, T.; Connors, K.A. Phase Solubility Techniques. Adv. Anal. Chem. Instrum. 1965, 4, 117–212.
+30.
+Liu, L.; Zhao, T.; Cheng, X.; Wang, C.; Wang, Z. Characterization and determination of trace alkaloids in seeds extracts from
+Peganum harmala linn. Using LC-ESI-MS and HPLC. Acta Chromatogr. 2013, 25, 221–240. [CrossRef]
+31.
+Kurkov, S.V.; Ukhatskaya, E.V.; Loftsson, T. Drug/cyclodextrin: Beyond inclusion complexation. J. Incl. Phenom. Macrocycl. Chem.
+2011, 69, 297–301. [CrossRef]
+32.
+Loftsson, T.; Hreinsdóttir, D.; Másson, M. The complexation efﬁciency. J. Incl. Phenom. Macrocycl. Chem. 2007, 57, 545–552.
+[CrossRef]
+33.
+Tewes, F.; Munnier, E.; Antoon, B.; Okassa, L.N.; Cohen-Jonathan, S.; Marchais, H.; Douziech-Eyrolles, L.; Soucé, M.; Dubois, P.;
+Chourpa, I. Comparative study of doxorubicin-loaded poly(lactide-co-glycolide) nanoparticles prepared by single and double
+emulsion methods. Eur. J. Pharm. Biopharm. 2007, 66, 488–492. [CrossRef]
+34.
+Wang, Y.; Li, P.; Kong, L. Chitosan-modiﬁed PLGA nanoparticles with versatile surface for improved drug delivery. AAPS
+PharmSciTech 2013, 14, 585–592. [CrossRef] [PubMed]
+
+Pharmaceutics 2022, 14, 142
+12 of 13
+35.
+Pinnapireddy, S.R.; Duse, L.; Strehlow, B.; Schäfer, J.; Bakowsky, U. Composite liposome-PEI/nucleic acid lipopolyplexes for safe
+and efﬁcient gene delivery and gene knockdown. Colloids Surf. B Biointerfaces 2017, 158, 93–101. [CrossRef]
+36.
+Preis, E.; Baghdan, E.; Agel, M.R.; Anders, T.; Pourasghar, M.; Schneider, M.; Bakowsky, U. Spray dried curcumin loaded
+nanoparticles for antimicrobial photodynamic therapy. Eur. J. Pharm. Biopharm. 2019, 142, 531–539. [CrossRef]
+37.
+Duse, L.; Baghdan, E.; Pinnapireddy, S.R.; Engelhardt, K.H.; Jedelská, J.; Schaefer, J.; Quendt, P.; Bakowsky, U. Preparation and
+Characterization of Curcumin Loaded Chitosan Nanoparticles for Photodynamic Therapy. Phys. Status Solidi Appl. Mater. Sci.
+2018, 215, 1–5. [CrossRef]
+38.
+Chen, M.X.; Li, T.; Peng, S.; Tao, D. Supramolecular nanocapsules from the self-assembly of amphiphilic calixarene as a carrier for
+paclitaxel. N. J. Chem. 2016, 40, 9923–9929. [CrossRef]
+39.
+El-Shaﬁe, S.; Fahmy, S.A.; Ziko, L.; Elzahed, N.; Shoeib, T.; Kakarougkas, A. Encapsulation of nedaplatin in novel pegylated
+liposomes increases its cytotoxicity and genotoxicity against a549 and u2os human cancer cells. Pharmaceutics 2020, 12, 863.
+[CrossRef] [PubMed]
+40.
+Li, B.; Shan, M.; Di, X.; Gong, C.; Zhang, L.; Wang, Y.; Wu, G. A dual pH- and reduction-responsive anticancer drug delivery
+system based on PEG-SS-poly(amino acid) block copolymer. RSC Adv. 2017, 7, 30242–30249. [CrossRef]
+41.
+Weinstein, M.P.; Patel, J.B.; Burnhman, C.-A.; ZImmer, B.L. M07-Methods for Dilution Antimicrobial Susceptibility Tests for Bacteria
+That Grow Aerobically, 11th ed.; Approved Standard—2018.
+42.
+Khiralla, A.; Spina, R.; Varbanov, M.; Philippot, S.; Lemiere, P.; Slezack-Deschaumes, S.; André, P.; Mohamed, I.; Yagi, S.M.;
+Laurain-Mattar, D. Evaluation of antiviral, antibacterial and antiproliferative activities of the endophytic fungus curvularia
+papendorﬁi, and isolation of a new polyhydroxyacid. Microorganisms 2020, 8, 1353. [CrossRef]
+43.
+Jang, Y.; Shin, J.S.; Lee, J.Y.; Shin, H.; Kim, S.J.; Kim, M. In vitro and in vivo antiviral activity of nylidrin by targeting the
+hemagglutinin 2-mediated membrane fusion of inﬂuenza A virus. Viruses 2020, 12, 581. [CrossRef]
+44.
+Pauwels, R.; Balzarini, J.; Baba, M.; Snoeck, R.; Schols, D.; Herdewijn, P.; Desmyter, J.; De Clercq, E. Rapid and automated
+tetrazolium-based colorimetric assay for the detection of anti-HIV compounds. J. Virol. Methods 1988, 20, 309–321. [CrossRef]
+45.
+Gao, S.; Liu, Y.; Jiang, J.; Li, X.; Zhao, L.; Fu, Y.; Ye, F. Encapsulation of thiabendazole in hydroxypropyl-β-cyclodextrin nanoﬁbers
+via polymer-free electrospinning and its characterization. Pest Manag. Sci. 2020, 76, 3264–3272. [CrossRef] [PubMed]
+46.
+Veiga, F.J.B.; Fernandes, C.M.; Carvalho, R.A.; Geraldes, C.F.G.C. Molecular modelling and 1H-NMR: Ultimate tools for the
+investigation of tolbutamide: β-cyclodextrin and tolbutamide: Hydroxypropyl-β-cyclodextrin complexes. Chem. Pharm. Bull.
+2001, 49, 1251–1256. [CrossRef] [PubMed]
+47.
+Yuan, C.; Jin, Z.; Xu, X. Inclusion complex of astaxanthin with hydroxypropyl-β-cyclodextrin: UV, FTIR, 1H NMR and molecular
+modeling studies. Carbohydr. Polym. 2012, 89, 492–496. [CrossRef]
+48.
+Ge, X.; He, J.; Qi, F.; Yang, Y.; Huang, Z.; Lu, R.; Huang, L. Inclusion complexation of chloropropham with β-cyclodextrin:
+Preparation, characterization and molecular modeling. Spectrochim. Acta-Part A Mol. Biomol. Spectrosc. 2011, 81, 397–403.
+[CrossRef] [PubMed]
+49.
+Meinguet, C.; Masereel, B.; Wouters, J. Preparation and characterization of a new harmine-based antiproliferative compound
+in complex with cyclodextrin: Increasing solubility while maintaining biological activity. Eur. J. Pharm. Sci. 2015, 77, 135–140.
+[CrossRef]
+50.
+Imran, M.; Shah, M.R.; Ullah, F.; Ullah, S.; Sadiq, A.; Ali, I.; Ahmed, F.; Nawaz, W. Double-tailed acyl glycoside niosomal
+nanocarrier for enhanced oral bioavailability of Ceﬁxime. Artif. Cells Nanomed. Biotechnol. 2017, 45, 1440–1451. [CrossRef]
+[PubMed]
+51.
+Cho, K.; Wang, X.; Nie, S.; Chen, Z.; Shin, D.M. Therapeutic nanoparticles for drug delivery in cancer. Clin. Cancer Res. 2008, 14,
+1310–1316. [CrossRef]
+52.
+Li, Y.P.; Pei, Y.Y.; Zhang, X.Y.; Gu, Z.H.; Zhou, Z.H.; Yuan, W.F.; Zhou, J.J.; Zhu, J.H.; Gao, X.J. PEGylated PLGA nanoparticles as
+protein carriers: Synthesis, preparation and biodistribution in rats. J. Control. Release 2001, 71, 203–211. [CrossRef]
+53.
+Ullah, S.; Shah, M.R.; Shoaib, M.; Imran, M.; Elhissi, A.M.A.; Ahmad, F.; Ali, I.; Shah, S.W.A. Development of a biocompatible
+creatinine-based niosomal delivery system for enhanced oral bioavailability of clarithromycin. Drug Deliv. 2016, 23, 3480–3491.
+[CrossRef] [PubMed]
+54.
+Kumari, A.; Yadav, S.K.; Yadav, S.C. Biodegradable polymeric nanoparticles based drug delivery systems. Colloids Surf. B
+Biointerfaces 2010, 75, 1–18. [CrossRef]
+55.
+Locatelli, E.; Franchini, M.C. Biodegradable PLGA-b-PEG polymeric nanoparticles: Synthesis, properties, and nanomedical
+applications as drug delivery system. J. Nanoparticle Res. 2012, 14, 1–17. [CrossRef]
+56.
+Zhang, L.; Pornpattananangkul, D.; Hu, C.-M.; Huang, C.-M. Development of Nanoparticles for Antimicrobial Drug Delivery.
+Curr. Med. Chem. 2010, 17, 585–594. [CrossRef]
+57.
+Esmaeili, F.; Hosseini-Nasr, M.; Rad-Malekshahi, M.; Samadi, N.; Atyabi, F.; Dinarvand, R. Preparation and antibacterial activity
+evaluation of rifampicin-loaded poly lactide-co-glycolide nanoparticles. Nanomed. Nanotechnol. Biol. Med. 2007, 3, 161–167.
+[CrossRef] [PubMed]
+58.
+Koopaei, M.N.; Maghazei, M.S.; Mostafavi, S.H.; Jamalifar, H.; Samadi, N.; Amini, M.; Malek, S.J.; Darvishi, B.; Atyabi, F.;
+Dinarvand, R. Enhanced antibacterial activity of roxithromycin loaded pegylated poly lactide-co-glycolide nanoparticles. DARU
+J. Pharm. Sci. 2012, 20, 1–8. [CrossRef]
+
+Pharmaceutics 2022, 14, 142
+13 of 13
+59.
+Moradi, M.T.; Karimi, A.; Raﬁeian-Kopaei, M.; Fotouhi, F. In vitro antiviral effects of Peganum harmala seed extract and its total
+alkaloids against Inﬂuenza virus. Microb. Pathog. 2017, 110, 42–49. [CrossRef] [PubMed]
+60.
+Kim, Y.; Kim, H.; Bae, S.; Choi, J.; Lim, S.Y.; Lee, N.; Kong, J.M.; Hwang, Y.; Kang, J.S.; Lee, W.J. Vitamin C is an Essential Factor
+on the Anti-viral Immune Responses through the Production of Interferon-α/β at the Initial Stage of Inﬂuenza A Virus (H3N2)
+Infection. Immune Netw. 2013, 13, 70. [CrossRef]
+61.
+Mahmoud, D.B.; Ismail, W.M.; Moatasim, Y.; Kutkat, O.; ElMeshad, A.N.; Ezzat, S.M.; El Deeb, K.S.; El-Fishawy, A.M.; Go-
+maa, M.R.; Kandeil, A.; et al. Delineating a potent antiviral activity of Cuphea ignea extract loaded nano-formulation against
+SARS-CoV-2: In silico and in vitro studies. J. Drug Deliv. Sci. Technol. 2021, 66, 102845. [CrossRef] [PubMed]

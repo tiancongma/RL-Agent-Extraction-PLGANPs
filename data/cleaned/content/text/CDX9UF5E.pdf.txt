@@ -1,0 +1,1129 @@
+International Journal of Pharmaceutics 640 (2023) 123009
+Available online 2 May 2023
+0378-5173/© 2023 Elsevier B.V. All rights reserved.
+Modeling of chitosan modified PLGA atorvastatin-curcumin conjugate
+(AT-CU) nanoparticles, overcoming the barriers associated with PLGA: An
+approach for better management of atherosclerosis
+Rasmita Dash a, Madhulika Yadav a, Jyotirmaya Biswal a, Anshuman Chandra b,
+Vijay Kumar Goel b, Tripti Sharma c, Shakti Ketan Prusty d, Sujata Mohapatra a,*
+a Department of Pharmaceutics, School of Pharmaceutical Sciences, Siksha ‘O’ Anusandhan (Deemed to be University), Bhubaneswar 751003, Odisha, India
+b School of Physical Science, Jawaharlal Nehru University, New Delhi, Delhi 110067, India
+c Department of Pharmaceutical Chemistry, School of Pharmaceutical Sciences, Siksha ‘O’ Anusandhan (Deemed to be University), Bhubaneswar 751003, Odisha, India
+d Department of Pharmacology, School of Pharmaceutical Sciences, Siksha ‘O’ Anusandhan (Deemed to be University), Bhubaneswar 751003, Odisha, India
+A R T I C L E  I N F O
+Keywords:
+Conjugate
+Atherosclerosis
+Burst release
+Zeta potential
+Encapsulation efficiency
+A B S T R A C T
+Conjugate drugs are evolving into potent techniques in the drug development process for enhancing the bio­
+pharmaceutical, physicochemical, and pharmacokinetic properties. Atorvastatin (AT) is the first line of treatment
+for coronary atherosclerosis; however its therapeutic efficacy is limited because of its poor solubility and fast pass
+metabolism. Curcumin (CU) is evidenced in several crucial signaling pathways linked to lipid regulation and
+inflammation. To enhance the therapeutic efficacy and physical properties of AT and CU, a new conjugate de­
+rivative (AT-CU) was synthesized and assessed by in silico, in vitro characterizations, and in vivo efficacy
+through mice model. Although the biocompatibility and biodegradability of Polylactic-co-Glycolic Acid (PLGA)
+in nanoparticles are well documented, burst release is a common issue with this polymer. Hence the current work
+used chitosan as a drug release modifier to the PLGA nanoparticles. The chitosan-modified PLGA AT-CU nano­
+particles were prepaid by single emulsion and solvent evaporation technique. With raising the concentration of
+chitosan the particle size grew from 139.2 nm to 197.7 nm, the zeta potential rose from −20.57 mV to 28.32 mV,
+and the drug encapsulation efficiency improved from 71.81% to 90.57%. At 18 h, the burst release of AT-CU
+from PLGA nanoparticles was seen, hitting abruptly 70.8%. For chitosan-modified PLGA nanoparticles, the
+burst release pattern was significantly reduced which could be due to the adsorption of the drug on the surface of
+chitosan. The efficiency of the ideal formulation i.e F4 (chitosan/PLGA = 0.4) in treating atherosclerosis was
+further strongly evidenced by in vivo investigation.
+1. Introduction
+Cardiovascular diseases still pose a threat to global health despite
+recent advancements. Numerous pathways that contribute to athero­
+sclerosis and associated thrombotic consequences have been clarified by
+an abundance of laboratory and translational research. This information
+has already revolutionized the course of this disease; in particular, the
+emergence of statins and the recognition of the low-density lipoprotein
+(LDL) pathway. Yet, cardiovascular and associated metabolic issues
+continue to be the dominant reason of death worldwide, claiming 17.9
+million lives each year (World Health Organization (WHO) (2022),
+https://www.who.int/health-topics/cardiovascu
+lar-diseases#tab=tab_1). In order to prevent and treat coronary
+atherosclerosis in patients at high risk for clinical events, additional
+strategies are consequently required (Quillard and Libby, 2012). With a
+few exceptions, oral administration is the standard method for many
+atherosclerotic drugs due to patient needs. Poor water solubility and
+first-pass metabolism are the two key factors that impede oral admin­
+istration of most of the cardiovascular drugs. Statins, which are HMG-
+CoA reductase inhibitors, have demonstrated their effectiveness in
+treating cardiovascular diseases. The 1st line drug of choice in the
+treatment of atherosclerosis and many cardio vascular diseases i.e
+* Corresponding author at: School of Pharmaceutical Sciences, Siksha ‘O’ Anusandhan (Deemed to be University), Kalinganagar, Bhubaneswar 751003, Odisha,
+India.
+E-mail address: sujatamohapatra@soa.ac.in (S. Mohapatra).
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+https://doi.org/10.1016/j.ijpharm.2023.123009
+Received 13 December 2022; Received in revised form 24 April 2023; Accepted 27 April 2023
+
+International Journal of Pharmaceutics 640 (2023) 123009
+2
+atorvastatin, a BCS class II drug has extremely low oral bioavailability
+and is frequently difficult to pinpoint (Jayaraj et al., 2020). The devel­
+opment of therapeutics with improved potency and pharmacokinetic
+parameters while maintaining the necessary pharmacological charac­
+teristics without sacrificing chemical and physical stability is crucial.
+The entire process of atherosclerosis involves inflammation and associ­
+ated consequences. Curcumin is absolutely safe considering the fact that
+it has been used since thousands of years in ancient China and India and
+it has been proven to have a positive impact on cardiovascular illnesses.
+The anti-inflammatory and antioxidant properties of curcumin as well as
+the inhibition of vascular smooth muscle cell (VSMC) proliferation and
+migration are responsible for the molecular role of curcumin against
+atherosclerosis (Singh et al., 2021). Due to its poor water solubility,
+curcumin has a limited bioavailability and metabolises quickly to
+inactive metabolites, which significantly reduces its efficacy (Stohs
+et al., 2020). A drug-drug conjugate comprises two or more drugs linked
+together chemically. Conjugates may help with targeting drug delivery
+and modification of pharmacokinetic parameters, improving the effi­
+cacy in the treatment aspects (Hasan et al., 2018).
+An attractive direction to explore in order to strengthen the con­
+ventional therapy approaches in the management of atherosclerosis is
+the application of nanotechnology. Particularly in the context of car­
+diovascular illness, the safety concerns of biomaterials with remarkable
+biocompatibility have drawn considerable interest in nanotechnology
+(Yin et al., 2021). A well-known, FDA approved polymer poly (lactic-co-
+glycolic acid) (PLGA) has been widely studied for its biocompatibility
+and degradability characteristics (Kumar et al., 2015). Numerous studies
+have shown that PLGA has enormous potential as a delivery system for
+the treatment of atherosclerosis. But, one of the main challenges with
+PLGA NPs is that they are unable to directly interact with proteins or
+cells, which makes it difficult for drugs to concentrate in target tissues.
+The drug burst release that happens in PLGA NPs is another drawback
+(Lu et al., 2019). In order to eliminate the PLGA related drawbacks
+chitosan could be employed to modify the PLGA associated drawbacks.
+Chitosan (CS), an amino polysaccharide derivative made of 1, 4-D-glu­
+cosamines and N-acetyl glucosamines, is a naturally occurring cationic
+copolymer. It’s ability to penetrate in to the cardiac cell and has inherent
+cholesterol-reducing, antioxidant, and anti-atherosclerotic properties as
+well as many formulation related benefits (Xu et al., 2017; Jiang et al.,
+2019). Our objective is to synthesize atorvastatin – curcumin conjugate
+(AT-CU) and formulate it’s nanoparticles using chitosan and PLGA to
+strike out the challenges associated with drugs, polymer, also to boost
+the efficacy on atherosclerosis.
+2. Materials
+Atorvastatin was obtained as a gift sample from Sun Pharmaceutical
+Industries Pvt. Ltd. (Mumbai, Maharashtra, India). Curcumin, n-hexane,
+and para toluene sulphonic acid (TsOH) were procured from Sisco
+Research Laboratories Pvt. Ltd. (India). Methanol, sulfuric acid, ethyl
+acetate, sodium chloride, sodium hydroxide, hydrochloric acid, sodium
+sulfate, and ethanol were bought from Merck Life Science Pvt. Ltd. So­
+dium bicarbonate, magnesium sulphate, dichloromethane, 2,2-dime­
+thoxy propane, tetrahydrofuran, di ethyl ether, 1,2- dichloro ethane
+and polyvinyl alcohol were obtained from Himedia Laboratories Pvt.
+Ltd. RESOMER® RG 502 i.e PLGA (50:50 lactide:glycolide) (RG 502,
+Mw 7000–17,000 gm/mol) was received as a gift sample from Evonik
+industries. Chitosan was obtained from the HiMedia Laboratories Pvt.
+Ltd.
+3. Methods
+3.1. Conjugate synthesis
+The conjugate was synthesized following Dash, 2023, in brief prior to
+AT-CU conjugate synthesis the atorvastatin was subjected to esterifica­
+tion, lactone prevention, and finally substitution of the hydroxyl group
+with methyl group (Fig. 1). Following these procedures led to the initial
+esterification of atorvastatin: Five drops of sulphuric acid were added to
+a 100 ml methanolic solution of atorvastatin (2.465 mmol) at 0 ◦C for 10
+min. 10% sodium bicarbonate aqueous solution was then added to the
+resulting solution after stirring for 6 h at room temperature. Next
+washing the organic layer of the mixture with brine and extracting it
+with ethyl acetate, it was dried on magnesium sulphate. After that the
+prevention of lactone formation was achieved by taking the esterified
+atorvastatin (3.483 mmol) in adequate amount of dichloromethane and
+to that solution, 17 mg of para-toluene sulphonic acid was added, the
+resulting solution was allowed to stir for about 4 h at reflux. 20 ml of
+10% sodium bicarbonate solution was introduced to quench the reaction
+then the product was extracted with dichloromethane followed by
+washing with brine and finally dried with magnesium sulphate. The
+replacement of the methyl group with a hydroxy group was achieved by
+introducing 30 ml of tetrahydrofuran into the previous lactone protected
+structure of atorvastatin (1.436 mmol). Then 7.8 ml of 1 M sodium bi­
+carbonate solution was added to that above solution and stirred for 72 h
+at room temperature. It was then mixed with 10 ml of 1 M aqueous
+hydrochloric acid solution. The solution was extracted by diethyl ether,
+organic layer was washed with brine and dried with magnesium sul­
+phate, and then the organic layer was evaporated under reduced pres­
+sure to get the product. The crude product was refined by using silica gel
+chromatography (ethyl acetate/n-hexane) to obtain the pure product.
+The synthesis of AT-CU was achieved using an equimolar ratio of
+modified AT and CU and allowed to dissolve in 50 ml of 1,2-dichloro­
+ethane. To that solution N,N1-dichlorohexylcarboamide (325 mg) and
+4-dimethylaminopyridine (120 mg) was added and stirred at 85 ◦C for
+24 h. The mixture underwent filtration, the filtrate was washed twice
+with dichloromethane, the solution was again rinsed, and the combined
+organic layer was washed with brine before being dried over sodium
+Fig. 1. Steps involving in the synthesis of AT-CU
+conjugate (A) atorvastatin, (B) esterified, lactone
+inhibited, methyl group replaced atorvastatin, (C)
+curcumin, (D) conjugate molecule. [step-1methanol,
+sulphuric acid, sodium bicarbonate, ethyl acetate,
+brine solution, magnesium sulphate, paratoluene sul­
+phonic acid, dichloromethane, 2,2-dimethoxy pro­
+pane, sodium bicarbonate, tetra hydrofuran, sodium
+hydroxide, hydrochloric acid, diethyl ether, brine, and
+step −2 1,2 dichloromethane, N,N1 – dichlorohexyl
+carboimide (DCC), dichloromethane, magnesium sul­
+phate, 4-dimethyl aminopyridine (DMAP)].
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+3
+sulfate. Dichloromethane was evaporated under reduced pressure.
+Finally, the crude residues were refined by chromatography with silica
+gel to dichloromethane (Dash et al., 2023). Fig. 1 shows the schematic
+illustration of the complete synthesis.
+3.2. In silico molecular docking study
+Molecular docking studies were performed to verify the binding re­
+lations between AT, CU and AT-CU with potential target proteins related
+to atherosclerosis at the molecular level. The linking between them in
+terms of energy calculation aims docking score which declares the
+predicted interaction between them. Six potential target proteins were
+selected for in silico docking analysis and the minimum binding energy
+indicates a strong binding score. In this study we investigated the
+atherosclerotic potential of AT, CU and AT-CU using a guided molecular
+docking approach with a view of their affinity towards the types of
+proteins, CASP3 (PDB ID-2XYG), MAPK3 (PDB ID-4QTB), MAPK1 (PDB
+ID-6SLG), AKT1 (PDB ID-6CCY), NOS2 (PDB ID-3E7G), and PTGS2 (PDB
+ID-5IKR). The best potential target was scrutinized basing on the highest
+negative docking score. The × ray crystal structures of the proteins were
+retrieved from the Research Collaboratory for Structural Bioinformatics
+Protein Data Bank (RCSB PDB). BIOVIA discovery studio 2021 client
+software was used to optimize the PDB coordinates of the target protein
+and the ligand molecule prior to docking analysis. The coordinates were
+stable in conformation and had the least energy state. The binding
+pockets of the target protein were investigated using CAST p 3.0. In
+order to perform the docking analysis, autodock tools like Autodock vina
+1.1.2 was used (Trott and Olson, 2010). Other software used here in­
+cludes MGL tool 1.5.6, Marvin sketch, and Pymol for its interaction and
+visualization study. The parameters used for docking are default
+parameters.
+3.3. Molecular dynamic simulation
+In order to verify the structural stability and correlate our experi­
+mental findings MD simulation studies were performed. The Desmond
+Schrodinger package, version 2022-1 with OPLSforce field was used in
+molecular dynamic (MD) simulation to assess and interpret the docked
+calculation of the highest binding affinity docked complex. For MD
+simulation, the Apo-PTGS2, AT with PTGS2, CU with PTGS2, and AT-CU
+withPTGS2 docked complex conformers were selected. All the structures
+were solvated individually in the triclinic box using water molecules as
+solvent and were neutralizing the system using Na+ and Cl−ions. Each
+system was then minimized to avoid steric hindrance and atomic
+clashes. The system was then processed through NVT ensemble and
+finally 50 ns of production run were performed with default parameters
+(Kumar et al., 2022).
+3.4. Nanoparticle preparation
+Nano particles of AT-CU were prepared by single emulsion and sol­
+vent evaporation method (Arafa et al., 2020). A specific amount of AT-
+CU (30 mg) and PLGA (200 mg) were dissolved in adequate amount of
+dichloromethane (DCM) (10 ml). 3% of polyvinyl alcohol (PVA) was
+mixed with 1% acetic acid solution and used as an aqueous phase for the
+preparation of PLGA-AT-CU NPs. The aqueous phase was slightly altered
+i.e. chitosan (20 mg, 40 mg, 80 mg, 120 mg, and 160 mg) was added in
+order to produce the chitosan modified CS-PLGA-AT-CU NPs. The
+organic phase was drop wise introduced to the aqueous phase at room
+temperature with continuous stirring at 1500 rpm, until the solvent
+vaporized. The resulting suspension was freeze centrifuged (12,000 rpm,
+4 ◦C, and 20mins) (HERMLE Z 326 K), nanoparticles were washed with
+distilled water and stored in the refrigerator for future use. The formu­
+lation is detailed in Table 1.
+4. Identification and characterization of AT-CU conjugate
+4.1. Nuclear magnetic resonance (NMR), mass spectroscopy, high
+performance liquid chromatography (HPTLC), and melting point analysis
+Using NMR spectroscopy (Bruker BioSpin GmbH, SPECT), a mag­
+netic field was applied to the atomic nucleus to identify the chemical
+composition and molecular structure of the AT-CU molecule. The tem­
+perature was set at 298 ◦C with DMSO as the solvent, and the frequency
+of the spectrometer was 700.18 Hz (Stemler et al., 2021). The molecular
+mass of the AT-CU conjugate was determined using mass spectroscopy
+(XEVO-G2XSQTOF#YFA1829). The high-performance thin layer chro­
+matography (HPTLC) (the instrument used: CAMAG) was done using
+chloroform: methanol (7:3) as mobile phase to estimate the purity of the
+AT-CU. All three methanolic samples (AT, CU, and AT-CU) of 7 µl and
+10 µl were applied to a 10 × 10 cm precoated silicagel aluminium plate
+(60 F254; Merck Pvt. Ltd) with a thickness of 0.5 mm. The mobile phase
+was prepared by mixing chloroform and methanol (7:3 v/v). WinCAT
+software (CAMAG) was used to generate the HPTLC data. Furthermore,
+the melting point (G LAB melting point apparatus) was checked for AT,
+CU, and AT-CU.
+4.2. Fourier transforms infrared spectroscopy (FTIR spectroscopy)
+The therapeutic effectiveness of the drug may fluctuate due to po­
+tential chemical interactions between different components. The
+chemical stability of the synthesized AT-CU conjugate was verified using
+FTIR spectral data. The sample was molded in to pellets by using po­
+tassium bromide (KBr) and analysed by placing the pellets in the sample
+holder (FT/IR-4600, Jasco) (Lakshmi et al., 2021).
+4.3. UV spectrophotometer
+The wavelength at which the AT-CU conjugate had maximum ab­
+sorption was checked by using ultraviolet spectroscopy (Thermo scien­
+tific, Evolution 201-UV–Visible Spectrophotometer).
+4.4. Saturation solubility study
+Sufficiency of AT, CU, and AT-CU (5 mg) were dissolved in 25 ml of
+distilled water, 0.1 N HCL, and 6.8 phosphate buffer sequentially over
+the course of 72 h in a magnetic stirrer set to 500 rpm at 37 ◦C. The
+resulting solution was then sonicated for 30 min to investigate the sol­
+ubility enhancement of the conjugate. Finally the solution was centri­
+fuged at 10000 rpm for 10 min and it was stabilized for 5 h before being
+filtered (0.45 µm syringe) and subjected to UV spectrophotometric
+analysis (Iqbal et al., 2021). A molecular docking study was conducted
+to experimentally demonstrate the precise binding interaction that
+contributes to improving the solubility of AT-CU in water using auto­
+dock tools like Autodock Vina 1.1.2.
+Table 1
+Compositions of AT-CU nanoparticle formulations (F1 - F6).
+Formulation
+code
+AT-CU amount
+(mg)
+Ratio (Chitosan/
+PLGA)
+PVA
+(mg)
+DCM
+(ml)
+F1
+30
+Pure PLGA
+500
+10
+F2
+30
+0.1
+500
+10
+F3
+30
+0.2
+500
+10
+F4
+30
+0.4
+500
+10
+F5
+30
+0.6
+500
+10
+F6
+30
+0.8
+500
+10
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+4
+5. Characterization of AT-CU nanoparticles
+5.1. FTIR spectroscopy and differential scanning calorimetry (DSC)
+analysis
+Compatibility testing and physical characterization of the nano­
+particles were conducted following the same procedure for FTIR analysis
+as described for AT-CU conjugate. The physical characteristics and
+thermal transitions of the nano formulations and AT-CU were compared
+using the DSC study. 2 to 3 mg of each sample was placed over the
+aluminum pan and the analysis was conducted at a constant heating rate
+of 10◦c/min in a dynamic nitrogen environment. The analysis range was
+fixed from 30 to 300 ◦C.
+5.2. Zeta potential measurement and particle size determination
+The particle size determination and zeta potential measurements of
+all the nanoformulations (F1-F6) were determined using a dynamic light
+scattering particle sizer (Zeta Sizer Nano-ZS Malvern instruments, Mal­
+vern, UK). An appropriate amount of water was used to dilute freshly
+prepared nanoparticles. Three measurements were made on each sample
+(Gordillo-Galeano and CE, 2021).
+5.3. X ray diffraction analysis (XRD)
+For determination of the crystallinity of the prepared nanoparticles
+(F1-F6) X ray diffraction analysis was performed (Rigaku ultimate
+PXDL). Powder sample was placed on a glass slide and set over a sample
+holder. The detection was done in the range (2Θ) of 5–50 ◦C (Kobayashi
+et al., 2022).
+5.4. Evaluation of drug loading (DL) and entrapment efficiency (EE)
+The ultracentrifugation method was employed to assess the drug
+loading and entrapment efficiency of the prepared nanoparticles. To
+separate the free drug, fixed amounts of each nanoparticle suspension
+were centrifuged at 12,000 rpm and 4 ◦C for 20 min. Spectrophotometric
+analysis was used to assess the amount of free drugs in the supernatant.
+From the absorbance data DL and EE were determined following equa­
+tion below (Kanoujia et al., 2016).
+%DL = (Initial amount of drug in NPs - free drug)/Weight of the NPs × 100
+%EE = (Initial amount of drug in NPs - free drug)/Initial amount of drug in
+NPs × 100
+5.5. In vitro release study of the pure and the nano formulations
+The diffusion study by Franz diffusion cell using phosphate buffer,
+pH 6.8, at 37 ± 0.5 ◦C was employed for pure drug and nanoparticles. 2
+mg of sample was spread on the dialysis membrane (Dialysis Mem­
+brane–150, LA401–30MT) (Av. Flat width – 37.70 mm, Av. Diameter-
+25.4, Capacity approx. – 5.07 ml/cm, molecular weight cut-off
+12,000–14,000, Himedia Laboratory Pvt. Ltd., Mumbai), and the re­
+ceptor compartment volume was maintained with 100 ml. The drug
+release was carried out in 0.1 N HCl (pH 1.2) for the first two hours, with
+release evaluation continuing for another 54 h in phosphate buffer so­
+lution (pH 6.8). The samples were taken out at regular intervals and %
+drug released was investigated spectrophotometrically (Aman et al.,
+2021).
+5.6. Scanning electron microscopy (SEM) analysis
+For investigating the surface morphology of the nanoparticles and to
+compare it to that of the pure AT-CU the scanning electron microscopy
+was performed. The morphology images were generated by introducing
+high beam electrons and accelerated voltage of 5/15Kv (ZEISS micro­
+scopy, EVO 18; software used - SmartSEM User Interface).
+5.7. Stability study
+In accordance with the Q1A (R2) guidelines of the International
+Conference on Harmonization (ICH) and earlier information from Cha­
+likwar et al. 2013, the optimized nanoparticle underwent a three-month
+stability test at two temperatures i.e at 4 ◦C and at 25 ◦C with 60% RH.
+After 3 months the entrapment efficiency, zeta potential, and particle
+size of the nanoparticle formulation were investigated (Li et al., 2017).
+6. In vivo study
+6.1. Experimental animals, induction of atherosclerosis and treatment
+protocol
+For the study, the animal house at the School of Pharmaceutical
+Sciences, Siksha ’O’ Anusandhan (Deemed to be University), Bhuba­
+neswar, India, provided thirty male, 8-week-old Swiss albino mice
+weighing 20–25 gm. Each animal was housed in a conventional, clean
+poly-acrylic cage, and the room was kept at a temperature of 23 ◦C with
+a relative humidity of 65–85% and a light–dark cycle of 12:12 h. The
+animals had unrestricted access to food and water. For the induction of
+atherosclerosis, the mice were provided with high fat diet i.e. western
+diet for period of 12 weeks. The western diet was enriched in saturated
+fat, cholesterol and cholate [26,27]. The mice were randomly assigned
+in to the following six groups (n = 5): group I was treated as normal
+control i.e without high fat diet (HFD), group II did not receive any
+treatment (i.e only HFD), group III and group IV was administered with
+AT (2.05 mg/kg) and CU (102.3 mg/kg) respectively along with HFD,
+group V and group VI was given lower (50 mg/kg) and higher dose
+(104.3 mg/kg) respectively of AT-CU with HFD. Each group was
+administered with corresponding formulations once in a day for 10
+weeks. Under IAEC reg. no. IAEC/SPS/SOA/104/2022, all experimental
+methods received approval and rigorously adhered to the laws and
+regulations.
+6.2. Identification of changes in body weight and estimation of
+biochemical parameters
+Prior to beginning the high-fat diet, the mice’s initial weight was
+recorded. Thereafter, the body weights of mice were determined on
+regular intervals. For biochemical estimation the mice were starved
+24hrs. prior to the experiment. Blood samples (0.2 ml) were collected
+after the scarification of animals from each group and the biochemical
+parameters were accessed.
+6.3. Status of oxidative stress marker
+Superoxide dismutase (SOD) is believed to reduce the consequences
+of oxidative changes brought on by oxygen, hence preventing athero­
+genesis and related cellular reactions like apoptosis, hypertrophy, and
+cell migration (Peng et al., 2016). To estimate the SOD activity a blank
+was produced by introducing 0.5 ml of EDTA (1 mM) to 1.5 ml of tris
+buffer (0.05 M). With the same blank preparation solution 1 ml of py­
+rogallol (0.2 mM) was mixed to prepare the control. For the test solution
+the reagent blank and the 50 μl of liver homogenate was mixed sepa­
+rately. A UV spectrophotometer was used to measure the variations in
+absorbance in comparison to the blank. The following formula was used
+to calculate the percentage of protection based on the absorbance data:
+%protection= {A.C - A.T)/A.C} × 100
+where A.C = absorbance of control, A.T = absorbance of test.
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+5
+6.4. Histopathological investigation of heart and aorta
+Aorta were isolated and collected on the scarification day after the
+completion of the treatment schedule. A thin section of the aorta was
+dissected from the mice, fixed overnight in 4% formaldehyde-0.1 M PBS
+(pH 7.4), and then embedded in paraffin. The tissues were put into
+paraffin-containing holders and dried after being cleaned with phos­
+phate buffer saline solution to eliminate any remaining formalin solu­
+tion. A microtome (MICROM, Germany) was used to slice the tissue into
+ultra-thin sections that were then stained with hematoxylin and eosin
+(HE) stain. Microscopic examination of prepared slides was performed
+to analyze pathomorphological changes in the heart and aorta specimen
+(Nagatake et al., 2021).
+6.5. Statistical analysis
+To evaluate and compare the outcomes of several tests and conduct
+statistical analysis, the one-way ANOVA test (also known as Tukey
+multiple comparisons) was used. A p-value greater than 0.05 was
+regarded as significant. For statistical analysis, Origin software (Origin
+pro 8.5) was used. The data were displayed as mean + SD.
+7. Results
+7.1. Synthetic AT-CU conjugate characterization
+The yielded final product i.e AT-CU conjugate (1.595gm (67%)) was
+reddish orange in color. The results of 1H NMR, and C13 NMR for AT-CU
+were: 1H NMR (700 MHz, DMSO) δ 8.54 (d, J = 7.4 Hz, 1H), 8.33 (d, J =
+7.3 Hz, 1H), 8.14 (d, J = 6.0 Hz, 1H), 7.56 (s, 1H), 7.53 (d, J = 12.5 Hz,
+1H), 7.33 (s, 6H), 7.56–7.33 (s, 1H), 7.12 (d, J = 7.5 Hz, 1H), 7.07 (t, J =
+7.7 Hz, 2H), 6.84 (s, 6H), 6.77 (d, J = 9.8 Hz, 1H), 6.73 (m, J = 8.4 Hz,
+2H), 5.65 (d, J = 7.8 Hz, 1H), 4.55 (t, J = 5.4 Hz, 1H), 4.10 (t, J = 5.5 Hz,
+3H), 3.88 (m, J = 14.3 Hz, 1H), 3.83 (d, 5H), 3.59 (s, 2H), 3.36 (s, 4H),
+3.26 (s, 6H), 3.20 (d, J = 11.1 Hz, 6H), 3.04 (s, 3H), 2.51 (s, 5H), 1.72
+(m, J = 12.0 Hz, 5H), 1.62 (m, J = 9.4, 3.9 Hz, 3H), 1.51 (d, J = 12.4 Hz,
+3H), 1.37 (d, J = 6.8 Hz, 2H), 1.31 (s, 1H), 1.25 (m, 5H), 1.16 (d, J =
+11.7 Hz, 2H), 1.05 (dd, J = 20.9, 9.9 Hz, 3H), 13C NMR (176 MHz,
+DMSO) δ 183.66 (s), 171.16 (s), 149.84 (s), 148.45 (s), 142.77 (s),
+139.89 (s), 138.91 (s), 136.41 (s), 135.90 (s), 135.29 (s), 133.90 (s),
+129.58 (s), 128.90 (s), 128.11 (s), 127.76 (s), 126.76 (s), 125.85 (s),
+123.55 (d, J = 14.4 Hz), 123.44 (s), 119.85 (s), 117.99 (s), 116.15 (s),
+115.76 (s), 108.18 (s), 107.95 (s), 106.66 (s), 98.56 (s), 66.25 (s), 65.83
+(s), 56.15 (s), 51.79 (s), 50.88 (s), 45.58 (s), 40.94 (s), 40.58 (s), 40.47
+(s), 40.34 (s), 40.22 (s), 40.10 (s), 39.98 (s), 39.86 (s), 39.74 (s), 39.62
+(s), 33.81 (s), 30.20 (s), 25.32 (s), 25.01 (d, J = 32.5 Hz), 22.84 (s),
+22.60 (s), 20.14 (s) and 19F NMR (377 MHz, DMSO) δ −113.16 (s),
+−113.48 (s), −113.80 (s), −114.00 (s), −114.04 (s), −114.43 (s). The
+1H, and 13C NMR figures of AT-CU were provided in supplementary
+figures (Fig. S-1, and Fig. S-2). The mass spectroscopy of AT-CU has
+depicted a very small peak at 923.5401 g/mol. The fragmented peaks of
+the AT-CU molecule to AT and CU were observed at 575.3154 g/mol and
+306 g/mol respectively (supplementary figure, Fig. S-3). In HPTLC
+analysis, the developed plate was dried and the retention factor (Rf)
+values of the developed spots were visualized at 254 nm and 366 nm
+(Fig. S-4). A clear distinct peak was observed for the AT-CU. From the
+HPTLC analysis the Rf value was found to be 0.38, 0.60, and 0.55 for AT,
+CU and AT-CU respectively. The melting point was checked for AT, CU,
+and AT-CU and the results were found to be at 170–182 ◦C, 164–189 ◦C,
+and 117–149 ◦C respectively. The FTIR analysis reflected the charac­
+teristics sharp peak at 1738 cm−1 confirmed the ester linkage (supple­
+mentary figure, Fig. S-5) between the AT and CU and the conjugate was
+adhered to most of the parent peaks of AT and CU (supplementary
+figure, Fig. S-5). The UV spectrophotometric estimation displayed a peak
+at the maximum wavelength of 414 nm (supplementary figure, Fig. S-6).
+Together, the analyses mentioned above proved that the synthesis of the
+AT-CU conjugate was successful.
+7.2. In silico docking analysis
+Molecular docking study helped in detailed understanding on the
+predicted interaction sites between the ligands and receptor molecules
+which may be beneficial in describing the potential mechanism of ac­
+tion. The binding conformation with the lowest energy was investigated
+out of nine possible conformations for each ligand-receptor combina­
+tion. Table 2 includes information on the binding affinity scores of the
+protein–ligand complex. The docking score value obtained for AT-CU is
+compared with the value obtained for AT and CU. Based on the results, it
+was determined that AT-CU exhibited a higher binding affinity value for
+all the receptors. In accordance with the in silico binding interaction
+analysis, the PTGS2 receptor showed the lowest binding energy i.e
+−12.8 Kcal/mol. The possible binding poses of AT, CU and AT-CU with
+the PTGS2 receptor’s active site have been visually inspected and are
+depicted in Fig. 2.
+7.3. Molecular dynamic simulation study
+The MDS approach was employed to understand the theoretical dy­
+namics of protein structure in the presence of solvent. Apo-PTGS2, and
+PTGS2-compound bound systems were solvated in presence of water to
+investigate the internal motions of the systems, conformational changes
+and binding stability of each compound with PTGS2. All of the systems
+underwent a 50 ns simulation, and it was found that they were all stable
+and had reached a plateau. Additionally, around 50 ns, we discovered
+the consistency with the experimental results; therefore we ended the
+simulation there. The MD trajectories of PTGS2 complexes attained
+equilibrium after 25 ns (Fig. 3A). The Root Mean Square Deviation
+(RMSD) value for all the systems ranged between 2 and 3 Å. The average
+RMSD value calculated on the protein backbone for the system Apo-
+PTGS2, AT-PTGS2, CU-PTGS2 and AT-CU-PTGS2 are 2.25 Å, 2.53 Å,
+2.40 Å and 2.19 Å. CU-PTGS2 complex showed a gradual increase in
+RMSD values during the simulation whereas AT-PTGS2 maintained its
+RMSD values (Fig. 3A). The average RMSD value calculated on the
+ligand backbone for the AT-PTGS2, CU-PTGS2 and AT-CU-PTGS2 is
+1.09 Å, 1.32 Å and 3.5 Å.The synthesized AT-CU-PTGS2 complex was
+fairly stable and showed minimal deviation (Fig. 3B). The root mean
+square fluctuations (RMSF) focuses on conformational fluctuations of a
+protein that occur during simulation and provides insights into fluctu­
+ations at the residue level. The RMSF of the protein cα in the binding site
+were analyzed. The average RMSF value calculated on the protein cα
+residues for the system Apo-PTGS2, AT-PTGS2, CU-PTGS2 and AT-CU-
+PTGS2 is 1.11 Å, 1.07 Å, 1.08 Å and 1.00 Å. We observed that the in
+case of AT-CU the number of residues involved in ligand interaction
+increased and reduced protein fluctuations (Fig. 3C). Average ligand
+RMSF was also calculated and found to be 0.51 Å, 0.53 Å and 2.3 Å.
+Finally, intermolecular hydrogen bonds formed between ligand and
+protein residues during the simulation were examined. PTGS2 interac­
+tion with AT, CU and AT-CU ranged from 1 to 7, 1 to 8 and 7 to 18
+respectively (Fig. 3D). Hence, it is evident form the MD simulation re­
+sults that AT-CU binds to PTGS2 with higher affinity.
+The interactions between the ligand and protein were detected
+Table 2
+In silico docking binding score of AT, CU and AT-CU with the atherosclerotic
+receptors.
+Name of the receptor
+Name of the PDB file
+CU
+AT
+AT-CU
+CASP3
+2XYG
+−5.9
+−6.6
+−8.9
+MAPK3
+4QTB
+−7.8
+−8.8
+−9.7
+MAPK1
+6SLG
+−7.8
+−8.7
+−10.2
+AKT1
+6CCY
+−6.9
+−8.7
+−9.5
+NOS2
+3E7G
+−8.5
+−9.1
+−10.5
+PTGS2
+5IKR
+−7.1
+−7.2
+−12.8
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+6
+throughout the simulation. Hydrogen bonds, hydrophobic, ionic, and
+water bridges are the four different forms of protein–ligand interactions
+(Fig. 4). Fig. 4 also illustrates the various ways that protein residues
+interact with ligand atoms. Comparing AT-CU to pure AT and CU, the
+hydrophobic interactions are noticeably less. Hydrogen bonds and water
+bridges are preferred in the majority of interactions. Hydrogen bond
+characteristics must be taken into account while developing new drugs
+due to their significant impact on drug affinity, metabolism, and ab­
+sorption (Bhat et al., 2022). A water molecule acts as a mediator in the
+hydrogen-bonded protein–ligand interaction that forms the water
+bridges.
+7.4. Solubility study
+Comparing the conjugate to the AT and CU, the solubility of the
+conjugate was around two times greater. The ester group in the conju­
+gate may have contributed to the solubility improvement by forming
+hydrogen bonds with the hydrogen atoms in water molecules through
+their oxygen atoms. Through molecular docking, it was demonstrated
+that the H-atom of the water molecule produced a hydrogen bond with
+the oxygen atom of the ester (Fig. 5B). Molecules that form hydrogen
+bonding with water can significantly influence solubility, hence the
+ester linkage which formed hydrogen bond with the water molecule may
+Fig. 2. Molecular docked complex of (A) AT with PTGS2 (PDB ID: 5IKR), (B) CU with PTGS2 (PDB ID: 5IKR), (C) AT-CU with PTGS2 (PDB ID: 5IKR).
+Fig. 3. Molecular dynamic (MD) simulation of AT, CU and AT-CU with PTGS2 (a) Protein RMSD against time graph. (b) Ligand RMSD against time graph. (c) Protein
+RMSF trajectory and (d) Hydrogen bonds against time graph.
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+7
+have contributed in improving the solubility (Yang et al., 2020; Chen
+et al., 2016; Cortes-Clerget et al., 2021). The solubility of AT, CU and AT-
+CU in water is depicted in Fig. 5A.
+8. Characterization of AT-CU nanoparticle
+8.1. Fourier transforms infrared spectroscopy
+The IR spectra of AT-CU coated with polymeric nanoparticles (F1-F9)
+were compared with the standard spectrum of AT-CU (Fig. 6). The peaks
+at 1738 cm−1, 1365 cm−1, and 1216 cm−1 validated the stretching vi­
+brations of ester, CH3 bending, and C-N stretching of AT-CU. The
+characteristic ester peaks of the AT-CU are intact in the formulations i.e
+at 1759 cm−1, 1759 cm−1, 1738 cm−1, 1737 cm−1, 1738 cm−1, 1738
+cm−1, and 1738 cm−1 for F1, F2, F3, F4, F5, F6, and F7 formulations
+respectively. PLGA demonstrated its characteristic peaks at 1093 cm−1,
+1460 cm−1, 1763 cm−1, and 3776 cm−1 which are assigned to C-O-C
+stretching, CH stretching, C=O stretching, OH stretching respectively.
+The PLGA peaks at 1092 cm−1, 1455 cm−1, and 3501 cm−1 (assigned for
+C-O-C stretching, CH stretching, and C=O stretching, respectively) are
+reflected in the formulation F1. Similarly for F2 (1026 cm−1, 1424 cm−1,
+3748 cm−1; assigned for C-O-C stretching, CH stretching, C=O stretch­
+ing, and OH stretching), F3, (1027 cm−1, 1488 cm−1, 3564 cm−1;
+assigned for C-O-C stretching, CH stretching, C=O stretching, and OH
+Fig. 4. A schematic of detailed ligand atom interactions with the PTGS2 protein residues and their respective interaction fraction (PDB ID −
+5IKR). The selected
+trajectory (0.00 to 50.05 nsec) interactions that happen more than 30.0% of the simulation period are displayed. A –Atorvastatin, B- Curcumin, C- Atorvastatin-
+Curcumin conjugate.
+Fig. 5. (A) % Solubility of AT, CU and AT-CU in water, (B) molecular docked complex of AT-CU with water.
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+8
+stretching), F4, (1068 cm−1, 1416 cm−1, 3447 cm−1; assigned for C–O–C
+stretching, CH stretching, C=O stretching, and OH stretching), F5,
+(1027 cm−1, 1424 cm−1, 3444 cm−1; assigned for C-O-C stretching, CH
+stretching, C=O stretching, OH stretching), F7, (1092 cm−1, 1456 cm−1,
+3502 cm−1; assigned for C–O–C stretching, CH stretching, C=O
+stretching, OH stretching. The existence of PLGA peaks in the formula­
+tions demonstrated successful PLGA integration into the nanoparticle
+formulations. The chitosan exhibited its corresponding peaks at 1657
+cm−1, 2921 cm−1, 1379 cm−1, and 3433 cm−1 for amide stretching, CH
+stretching, CH bending, and NH/OH stretching respectively. The chi­
+tosan peaks for the formulation F1 are; 1626 cm−1, 2927 cm−1, 1396
+cm−1, and 3501 cm−1 (for amide stretching, CH stretching, CH bending,
+and NH/OH stretching respectively). F3 showed peaks at 1647 cm−1,
+2969 cm−1, and 1365 cm−1 which are assigned for amide stretching, CH
+stretching, CH bending, and NH/OH stretching respectively. Similarly
+the chitosan peaks for F4, (1647 cm−1, 2969 cm−1, and 1373 cm−1; for
+amide stretching, CH stretching, CH bending, and NH/OH stretching
+respectively), for F5, (1647 cm−1, 2994 cm−1, and 1365 cm−1; for amide
+stretching, CH stretching, CH bending, and NH/OH stretching respec­
+tively), and F6, (1647 cm−1, 2969 cm−1, and 1365 cm−1 (for amide
+stretching, CH stretching, CH bending, and NH/OH stretching respec­
+tively) were observed. The existence of recognizable peaks in the for­
+mulations verified that chitosan has been properly coated onto the
+surface of the nanoparticle formulations (Wang et al., 2013; Shaker
+et al., 2021).
+8.2. Determination of thermal behaviour
+The DSC analysis of pure AT, CU and AT-CU have been carried out
+and found sharp endothermic peaks at 160.25 ◦C, and 176.17 ◦C for AT
+and CU respectively (supplementary figure Fig. S-7). But in case of AT-
+CU the parent peaks have vanished, suggesting a less ordered structure
+and lattice strain (supplementary figure Fig.-S7). As per Li et al., this
+occurs most commonly in ester-bonded drug conjugates (Li et al., 2018).
+The thermal behavior of the AT-CU nanoparticle coated with polymeric
+system has been checked and found out absence of any parent sharp
+peak. Since there are no parent drug peaks in the formulations (Fig. 7), it
+is possible that the drug has transformed to an amorphous state, which
+could increase its solubility in water and could promote molecular
+dispersion in the nanoparticulate system (Dandamudi et al., 2021).
+8.3. Determination of particle size, and zeta potential
+Particle size<10 nm have been assumed to be easily removed by the
+body via the renal route. However particle size more than 300 nm were
+eliminated from the blood circulation because of the identification of
+reticuloendothelial system (RES). Thus ideal particle size for nano for­
+mulations to treat atherosclerosis is 10–200 nm (Fox et al., 2009). The
+nanoparticles had a particle size range of 139.2–197.7 nm (Table 3). The
+particle size was found to increase with enhancement of chitosan
+concentration.
+The zeta potential of the PLGA-AT-CU NPs appeared negative
+(Table 3), which may have been caused by the carboxyl end groups of
+the PLGA molecule that are present on the interfaces of the particles.
+However, the positive zeta potential for CS-PLGA-AT-CU NPs (Table 3)
+revealed that few of the amino groups of the chitosan molecule were
+present on the surfaces of the nanoparticles. Considering the above
+mentioned facts it is confirmed that chitosan had been efficiently
+covered on PLGA-AT-CU NPs (Chen et al., 2009). It has been reported
+Fig.6. FTIR Spectra of AT-CU, chitosan, PLGA and the prepared nanoparticles.
+Fig. 7. DSC thermogram of AT-CU conjugate and the prepared nano­
+particles. (F1–F6).
+Table 3
+Particle size, and zeta potential of the nanoparticles (F1-F6).
+Formulation code
+Particle size (nm)
+Zeta Potential (Mv)
+F1
+139.2 ± 4.26
+−20.57 ± 0.88
+F2
+148.8 ± 3.29
+21.41 ± 0.61
+F3
+155.2 ± 2.51
+22.69 ± 0.82
+F4
+169.1 ± 3.86
+24.73 ± 0.49
+F5
+184.4 ± 4.58
+26.01 ± 0.92
+F6
+197.7 ± 5.46
+28.32 ± 0.96
+Fig. 8. XRD patterns of pure AT-CU and the prepared nanoparticles (F1–F6).
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+9
+that nanoparticle stability rises with improved zeta potential. When the
+chitosan proportion was increased exponentially, the in vitro stability of
+the CS-PLGA-AT-CU NPs may have strengthened. Furthermore the CS-
+PLGA-AT-CU NPs might participate in ionic adsorption with the nega­
+tively charged cell membrane, increasing cellular absorption (Chen,
+2016; Abouelmagd et al., 2015; Shariatinia, 2019).
+8.4. Identification by XRD
+Crystallinity and crystal structure are commonly determined using
+the XRD investigation. Fig. 8 depicts the XRD patterns of pure AT-CU,
+and its nano formulations. AT-CU showed some sharp peaks at 7.6,
+17.13, 21.81, 31.54◦2Θ demonstrating its partly crystalline structure. F1
+revealed parent peaks exhibiting relatively low intensities that would
+have indicated a decrease in crystallinity. The absence of parent peaks
+(F2-F6) and new peaks in the formulation signifies the amorphous na­
+ture of the drug in the formulation and has no drug-polymer interaction
+(Cao et al., 2014).
+8.5. Drug loading and entrapment efficiency
+From the prepared nanoformulations the drug loading and the
+entrapment efficiency were assessed (Table 4). The PLGA-AT-CU NPs
+(F1) had the lowest entrapment efficiency, at 79.31%, while the
+entrapment efficiency was seen to rise progressively as chitosan con­
+centration increased (F2-F6). However, the value for drug loading
+decreased gradually when the concentration of chitosan was increased,
+which may have been caused by the increase in the overall mass of the
+nanoparticles (Yu et al., 2019). Overall, the inclusion of chitosan was
+beneficial.
+8.6. In vitro release study
+The cumulative release curves in Fig. 9 represent the drug release
+behaviour of drug AT-CU from the nanoparticles as well as pure AT-CU.
+Further readings for pure AT-CU were not taken after 24 h because the
+release was found to be 38.78% and 38.52% at 18 h and 24 h respec­
+tively. The dissolution of pure AT, CU along with AT-CU has been con­
+ducted and given in the supplementary files (Fig. S-8). At 18 hrs the %
+drug release was found to be 38.78% for AT-CU, whereas for AT the %
+drug release was 17.36%, and for CU it was 14.71%. Beyond that time no
+significant drug release was observed up to 36 hrs. In terms of nano­
+particles, they are a component of a controlled drug delivery system in
+which the drug is released in a controlled manner and have proven to be
+extremely effective in modifying drug release behavior. The prepared
+polymeric nanoparticles had a better drug release profile than the pure
+drug AT-CU. One possible explanation for this behavior is the presence
+of the drug AT-CU in the colloidal range in the prepared polymeric
+nanoparticles, which facilitates drug release from the nanoparticles. On
+the contrary, pure drug particles are coarse, which impedes their release
+(Almehmady et al., 2023; Pourseif et al., 2023). Due to the burst release,
+the cumulative AT-CU release from PLGA-AT-CU NPs (F1) hit 71.5%
+after 18 h. Because a strong burst release might weaken the effectiveness
+of a drug and possibly have negative consequences on the body, hence it
+should be avoided (Yoo and Won, 2020; Beig et al., 2022). After 18 h,
+the cumulative AT-CU release from CS-PLGA-AT-CU NPs was 50.32%,
+46.92%, 43.27%, 37.12%, and 24.63% for the F2, F3, F4, F5, and F6
+formulations, respectively. Better sustained release was demonstrated
+by CS-PLGA-AT-CU NPs (F2-F6), but since the sustained release of F5
+and F6 was significantly less, F4 was determined to be the optimum
+formulation. The primary release rate of CS-PLGA-AT-CU NPs was much
+slower than that of PLGA-AT-CU NPs which signifies the drugs adsorp­
+tion to chitosan on the surface of nanoparticles. Furthermore, the release
+rate of AT-CU is gradually decreased by increasing the amount of chi­
+tosan in the nanoparticles. This finding demonstrated that the burst
+release issue of PLGA-AT-CU NPs could be successfully resolved by CS-
+PLGA-AT-CU NPs, leading to more regulated and persistent release of
+AT-CU. As ester is very susceptible to degradation, an analysis of the
+degradation of the AT-CU conjugate in phosphate buffer (pH 6.8) for up
+to 54 h and in 0.1 N HCl (pH 1.2) for 2 h was done using UV visible
+Table 4
+Drug loading and entrapment efficiency of the nanoparticles (F1-F6).
+Formulation
+Drug loading (%)
+Entrapment efficiency (%)
+F1
+10.34 ± 0.02
+79.31 ± 0.19
+F2
+10.13 ± 0.01
+84.3 ± 0.12
+F3
+9.6 ± 0.003
+86.48 ± 0.03
+F4
+8.43 ± 0.01
+87.04 ± 0.16
+F5
+7.56 ± 0.04
+88.2 ± 0.47
+F6
+6.96 ± 0.004
+90.55 ± 0.05
+Fig. 9. In vitro drug release profile of pure AT-CU and its nanoparticles at pH
+1.2 for 2 h followed by pH 6.8 buffer up to 54 h.
+Fig. 10. SEM photomicrographs of (A) pure conjugate i.e AT-CU, (B) PLGA-AT-CU NPs (F1), (C) CS-PLGA-AT-CU NPs (F4) showing nano sized spherical particle.
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+10
+spectrophotometer. The result revealed that the drug’s degradation was
+~12% in phosphate buffer media (pH 6.8) and ~2% in acidic media (pH
+1.2), respectively. A drug typically stays in the GIT for 24 h (Amirabadi
+et al., 2022; Chu and Traverso, 2022). At 24 h, the degradation was
+assessed and it was found to be minor and insignificant, around 4% in
+pH 6.8 buffer solution. Hence the drug was supposed to be stable during
+the GIT transit time.
+8.7. Scanning electron microscopy (SEM) analysis
+The morphology of pure AT-CU, PLGA-AT-CU NPs (F1), and the
+screened CS-PLGA-AT-CU NPs (F4) were explored (Fig. 10). The pure
+AT-CU conjugate exhibited a partly crystalline morphology. Both the F1
+and F4 formulations displayed spherical shapes with smooth surfaces
+(Fig. 10) confirmed the production of nanoparticles (Al-Nemrawi et al.,
+2022; Al-Nemrawi et al., 2018).
+8.8. Stability study
+As per the finding of the in vitro data the scrutinized formulation i.e
+F4 was subjected to stability testing. No noticeable change at 4 ◦C was
+detected in the particle size (172.5 ± 3.53 nm), zeta potential (23.91 ±
+0.27 mV) and entrapment efficiency (86.92 ± 0.95 %) of the nano­
+particle after 3 months, which could be due to the protection of PLGA
+shell and stabilizer PVA. A minor change was observed under 25 ◦C
+storage condition where the particle size was slightly increased (214.7
+± 6.48 nm), zeta potential (20.43 ± 1.6 mV) and entrapment efficiency
+(82.65 ± 2.11 %) was marginally decreased. Overall, after three months
+of storage at 4 ◦C and 25 ◦C with 60% RH, there have been no appre­
+ciable changes, confirming the substantial stability of F4 formulation.
+Though a very minor change was observed under 25 ◦C storage condi­
+tion, the effect on drug release was evaluated after storage and
+compared to the release graph prior to storage of the F4 formulation
+(Supplementary figure Fig. S-9). No such significant change in drug
+release behavior was observed, confirming the sufficient stability of the
+F4 formulation.
+9. In vivo preclinical study
+9.1. Body weight and biochemical parameter estimation
+Body weight and biochemical data were summarized in Fig. 11. High
+fat diet caused weight gain and hyperlipidemia in the HFD group was
+detected throughout the course of the investigation. In comparison to
+the HFD group, every treated group consistently displayed lower body
+weight and satisfactory lipid profiles. After a 10 week course of treat­
+ment, the HFD group’s bodyweight increased by 15% in comparison to
+the normal control group. Mice on the same HFD diet who underwent
+AT-CU low dose and AT-CU high dose intervention lost ~15% of the
+body weight they had gained during the induction phase, a reduction
+comparable to that seen in the healthy control group (Fig. 11 B).
+Compared to the normal HFD group intervention with AT-CU low and
+Fig. 11. Effect of AT, CU and AT-CU on change in body weight and systemic lipid profiles in HFD induced arthrosclerosis. (A) Normal control (yellow colored) and
+HFD group mice. (B) Weight of mice at 22 weeks of age. (C) Total cholesterol in mice blood. (D) Amount of high density lipoprotein (HDL). (E) Amount of low density
+lipoprotein (LDL). (F) Amount of very low density lipoprotein (VLDL) and (G) Triglycerides (TG) (H) Platelet count amount in different treated mice groups. Data
+displayed as the mean ± SD (where n = 5). *P < 0.01, **P < 0.001 as compared with the HFD group by Duncan’s new multiple range test. (For interpretation of the
+references to color in this figure legend, the reader is referred to the web version of this article.)
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+11
+high dose reduced total cholesterol by 2.4 and 2.5 folds respectively
+which was lower than the individual AT and CU groups. The serum HDL
+showed 54.69% reduction in the HFD group as compared to that of the
+normal control group which is similar to that observed in the AT-CU low
+and high dose intervention groups (Fig. 11 D). The HFD group showed a
+1.3 fold higher LDL serum level than the AT-CU group. Serum TC, TG
+and VLDL levels were also found to decrease in the AT-CU group
+compared with the normal control, AT and CU group. A key factor in
+accelerating the development of atherosclerosis is platelet activation.
+Hence therapeutic targeting of platelets has the potential to suppress
+atherosclerosis. AT-CU conjugate significantly exerted a direct anti
+thrombotic effect via inhibition of platelet count (Fig. 11 H) as compared
+to AT and CU. The administration of low dose and high dose of AT-CU
+did not exhibit any discernible dose dependent upregulation of serum
+biochemical parameters as well as the body weight of the mice. When
+compared to the HFD, AT, and CU groups, the administration of AT-CU
+had a better suppressive effect on body weight increment and superior
+effects on modulating the serum levels of HDL, LDL, TC, TG, and VLDL
+(Fig. 11).
+9.2. Estimation of SOD levels
+One of the fundamental pathogenic mechanisms behind atheroscle­
+rosis is oxidative stress, which is associated with a greater formation of
+free oxygen radicals (Ktari et al., 2015). It is directly associated to
+endothelial dysfunction and encourages vascular inflammatory re­
+actions. The SOD study on mice revealed some degree of protection in
+each group that received treatment. The layers of defense are as follows:
+normal control > AT-CU > high dose > AT-CU low dose > AT > CU >
+HFD (Fig. 12). The elevated oxidative stress in the HFD group may be the
+reason for the decreased level of enzymatic defense. Although the high
+dose of AT-CU nanoparticle demonstrated the greatest level of protec­
+tion, low dose and high dose AT-CU exhibited no noticeable difference.
+So, the investigation on the low dose of AT-CU continued.
+9.3. Histopathological estimation of liver and aorta
+The amount of lipid plaque deposition and foam cell formation in the
+aortic cross-sections of mice was investigated in order to figure out the
+effect of drugs on atherosclerosis (Ke et al., 2020). Fig. 13(A) shows that
+in the HFD group, fatty streaks in the aortic arch with lipid accumulation
+have dramatically grown. When compared to the HFD group, curcumin
+treatment reduced the amount of foam cells and the size of atheroscle­
+rotic lesions, indicating that curcumin had an evident anti-atherogenic
+protective effect. The inhibitory effects of atorvastatin on atheroscle­
+rotic mice were markedly reduced (Fig. 13 C). Lipid plaques and foam
+cells were completely absent in cases of AT-CU conjugate (low & high
+dose) which is identical to the normal control group, revealing the
+excellent efficacy of the conjugate in the treatment of atherosclerosis
+(Fig. 13 E, and F).
+10. Conclusion
+In summary, in vitro, in vivo, and silico investigations clearly
+demonstrated superior efficacy for the novel AT-CU conjugate. The in
+silico docking score of AT-CU conjugate had the highest binding energy
+i.e −12.8Kcal/mol, as evidenced by its potency in silico. MD simulations
+confirmed that the AT-CU conjugate was sufficiently stable and consis­
+tent within the experimental analysis of 50 ns. The less hydrophobic
+Fig. 12. SOD content in various groups. Data presented as the mean ± SD
+(where n = 5). aP < 0.01, bP < 0.001 as compared with the HFD group by
+Duncan’s new multiple range test.
+Fig. 13. Histology of atherosclerotic lesions found in mice treated with HFD (arrows indicates the lesions in aorta). (A) HFD group (B) curcumin treated group (C)
+atorvastatin treated group (D) normal control group, (E) atorvastatin curcumin conjugate i.e AT-CU (low dose) (F) AT-CU (high dose).
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+12
+interaction in AT-CU further supported their major influence on drug
+affinities, metabolism, and absorption. NMR spectroscopy, mass spec­
+troscopy, FTIR spectroscopy, and UV spectroscopy demonstrated the
+successful synthesis of AT-CU conjugate. As forecasted by the in silico
+interaction study, the in vitro solubility of the AT-CU conjugate has
+increased by about two times. Through zeta sizer, SEM, and XRD
+investigation, the nanoparticle production has been satisfactorily
+assessed and supported. The drug and polymer peaks in the nano­
+formulations were verified by the FTIR analysis. Chitosan has effectively
+solved the burst release issue of PLGA-AT-CU NPs, as shown by the in
+vitro release profile of the CS-PLGA-AT-CU NPs, which showed that the
+release was significantly reduced after the addition of chitosan. Addi­
+tionally, our in vivo findings revealed that oral CS-PLGA-AT-CU NPs
+aided in the reduction of atherosclerotic lesion growth in mice with
+HFD-induced atherosclerosis. In comparison to AT and CU alone, we
+discovered that CS-PLGA-AT-CU NPs intervention reduced aortic lipid
+accumulation, oxidative stress, and serum HDL levels. These findings all
+together evidenced that CS-PLGA-AT-CU NPs had a significant and
+potentially beneficial impact on the treatment and management of
+atherosclerosis. The remarkable potential benefits of CS-PLGA-AT-CU
+NPs may open up new opportunities for its usage as prospective anti-
+atherosclerotic drugs in the era where cardiovascular diseases like
+atherosclerosis are experiencing rising challenges.
+Funding
+This research did not receive any specific grant from funding
+agencies in the public, commercial, or not-for-profit sectors.
+CRediT authorship contribution statement
+Rasmita Dash: Investigation, Methodology, Writing – original draft.
+Madhulika Yadav: . Jyotirmaya Biswal: . Anshuman Chandra: .
+Vijay Kumar Goel: . Tripti Sharma: . Shakti Ketan Prusty: . Sujata
+Mohapatra: .
+Declaration of Competing Interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Data availability
+Data will be made available on request.
+Acknowledgement
+The authors of the manuscript are massively grateful to Siksha
+‘O’Anusandhan (Deemed to be University) for support and Evonik
+Inustries for providing PLGA as gift sample. AC acknowledges the
+Department of Health Research (DHR), New Delhi for the award of YS
+fellowship [R.12014/30/2022]. The authors are also thankful to
+Department of Biotechnology (DBT), Government of India [BT/INF/22/
+SP45078/2022] for providing the instrumental facilities.
+Appendix A. Supplementary material
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.ijpharm.2023.123009.
+References
+Abouelmagd, S.A., Ku, Y.J., Yeo, Y., 2015. Low molecular weight chitosan-coated
+polymeric nanoparticles for sustained and pH-sensitive delivery of paclitaxel. J. Drug
+Target. 23 (7–8), 725–735.
+Almehmady, A.M., et al., 2023. Enhancing the antifungal activity and ophthalmic
+transport of fluconazole from PEGylated polycaprolactone loaded nanoparticles.
+Polymers. 15 (1), 209.
+Al-Nemrawi, N.K., et al., 2018. Low molecular weight chitosan-coated PLGA
+nanoparticles for pulmonary delivery of tobramycin for cystic fibrosis.
+Pharmaceuticals. 11 (1), 28.
+Al-Nemrawi, N.K., Altawabeyeh, R.M., Darweesh, R., S., 2022. Preparation and
+characterization of docetaxel-PLGA nanoparticles coated with folic acid-chitosan
+conjugate for cancer treatment. J. Pharm. Sci. 111 (2), 485–494.
+Aman, R.M., Zaghloul, R.A., El-Dahhan, M.S., 2021. Formulation, optimization and
+characterization of allantoin-loaded chitosan nanoparticles to alleviate ethanol-
+induced gastric ulcer: in-vitro and in-vivo studies. Sci. Rep. 11 (1), 1–24.
+Amirabadi, H.E., et al., 2022. Intestinal Explant Barrier Chip: Long-term intestinal
+absorption screening in a novel microphysiological system using tissue explants. Lab
+Chip. 22 (2), 326–342.
+Arafa, M.G., Girgis, G.N.S., El-Dahan, M.S., 2020. Chitosan-coated PLGA nanoparticles
+for enhanced ocular anti-inflammatory efficacy of atorvastatin calcium. Int. J.
+Nanomed. 15, 1335.
+Beig, A., et al., 2022. Minimizing the initial burst of octreotide acetate from glucose star
+PLGA microspheres prepared by the solvent evaporation method. Int. J. Pharm. 21,
+121842.
+Bhat, B.A., et al., 2022. Metabolite fingerprinting of phytoconstituents from
+Fritillariacirrhosa D. Don and molecular docking analysis of bioactive peonidin with
+microbial drug target proteins. Sci. Rep. 12 (1), 1–5.
+Cao, Y., et al., 2014. Polymer-controlled core–shell nanoparticles: a novel strategy for
+sequential drug release. RSC Adv. 4 (57), 30430–30439.
+Chalikwar, S.S., et al., 2013. Self-assembled, chitosan grafted PLGA nanoparticles for
+intranasal delivery: design, development and ex vivo characterization. Polym. Plast.
+Technol. Mater. 52 (4), 368–380.
+Chen, H., et al., 2009. Surface modification of mitoxantrone-loaded PLGA nanospheres
+with chitosan. Colloids Surf. B: Biointerf. 73 (2), 212–218.
+Chen, D., et al., 2016a. Regulation of protein-ligand binding affinity by hydrogen bond
+pairing. Sci. Adv. 2 (3), e1501240.
+Chen, H., et al., 2016b. Surface modification of PLGA nanoparticles with biotinylated
+chitosan for the sustained in vitro release and the enhanced cytotoxicity of
+epirubicin. Colloids Surf. B: Biointerf. 138, 1–9.
+Chu, J.N., Traverso, G., 2022. Foundations of gastrointestinal-based drug delivery and
+future developments. Nat. Rev. Gastroenterol. Hepatol. 19 (4), 219–238.
+Cortes-Clerget, M., et al., 2021. Water as the reaction medium in organic chemistry: from
+our worst enemy to our best friend. Chem. Sci. 12 (12), 4237–4266.
+Dandamudi, M., et al., 2021. Chitosan-coated PLGA nanoparticles encapsulating
+triamcinolone acetonide as a potential candidate for sustained ocular drug delivery.
+Pharmaceutics. 13 (10), 1590.
+Dash, R., et al., 2023. Novel atorvastatin-curcumin conjugate nanogel, a selective COX2
+inhibitor with enhanced biopharmaceutical profile: design, synthesis, in silico, in
+vitro, and in vivo investigation. J. Drug Deliv. Sci. Technol. 81, 104211.
+Fox, M.E., Szoka, F.C., Frechet, J.M., 2009. Soluble polymer carriers for the treatment of
+cancer: the importance of molecular architecture. Acc. Chem. Res. 42 (8),
+1141–1151.
+Gordillo-Galeano, A., CE, M.-H., 2021. Hydrodynamic diameter and zeta potential of
+nanostructured lipid carriers: emphasizing some parameters for correct
+measurements. Colloids Surf. A Physicochem. Eng. Asp. 620, 126610.
+Hasan, M., et al., 2018. Drug conjugates—an emerging approach to treat breast cancer.
+Pharmacol. Res. Perspect. 6 (4), e00417.
+Iqbal, R., et al., 2021. Enhanced solubility and biopharmaceutical performance of
+atorvastatin and metformin via electrospunpolyvinylpyrrolidone-hyaluronic acid
+composite nanoparticles. Eur. J. Pharm. Sci. 161, 105817.
+Jayaraj, P., et al., 2020. A pre-formulation strategy for the liposome encapsulation of
+new thioctic acid conjugates for enhanced chemical stability and use as an efficient
+drug carrier for MPO-mediated atherosclerotic CVD treatment. New J. Chem. 44 (7),
+2755–2767.
+Jiang, T., et al., 2019. Chitosan oligosaccharides show protective effects in coronary
+heart disease by improving antioxidant capacity via the increase in intestinal
+probiotics. Oxid. Med. Cell. Longev. 2019, 7658052.
+Kanoujia, J., et al., 2016. Novel genipincrosslinked atorvastatin loaded sericin
+nanoparticles for their enhanced antihyperlipidemic activity. Mater. Sci. Eng. C. 69,
+967–976.
+Ke, X., et al., 2020. Berberine attenuates arterial plaque formation in atherosclerotic rats
+with damp-heat syndrome via regulating autophagy. Drug Des. Devel. Ther. 14,
+2449.
+Kobayashi, M., et al., 2022. Near-infrared spectroscopy-based nondestructive at-line
+analysis of physicochemical properties of atorvastatin calcium hydrate after
+grinding. J. Drug Deliv. Sci. Technol. 71, 103266.
+Ktari, N., et al., 2015. Cholesterol regulatory effects and antioxidant activities of protein
+hydrolysates from zebra blenny (Salariabasilisca) in cholesterol-fed rats. Food Funct.
+6 (7), 2273–2282.
+Kumar, S., et al., 2015. Biocompatible PLGA-oil hybrid nanoparticles for high loading
+and controlled delivery of resveratrol. J. Drug Deliv. Sci. Technol. 30, 54–62.
+Kumar, S., et al., 2022. Identification of HPr kinase/phosphorylase inhibitors: novel
+antimicrobials against resistant Enterococcus faecalis. J. Comput. Aided Mol. Des. 36
+(7), 507–520.
+Lakshmi, B.A., et al., 2021. Ruthenium (II)-curcumin liposome nanoparticles: Synthesis,
+characterization, and their effects against cervical cancer. Colloids Surf. B:
+Biointerfaces. 204, 111773.
+Li, Z., et al., 2017. The studies of PLGA nanoparticles loading atorvastatin calcium for
+oral administration in vitro and in vivo. Asian J. Pharm. 12 (3), 285–291.
+Li, Y., et al., 2018. Integration of phospholipid-hyaluronic acid-methotrexate nanocarrier
+assembly and amphiphilic drug–drug conjugate for synergistic targeted delivery and
+combinational tumor therapy. Biomater. Sci. 6 (7), 1818–1833.
+R. Dash et al.
+
+International Journal of Pharmaceutics 640 (2023) 123009
+13
+Lu, B., Lv, X., Le, Y., 2019. Chitosan-modified PLGA nanoparticles for control-released
+drug delivery. Polymers. 11 (2), 304.
+Nagatake, T., et al., 2021. 12-Hydroxyeicosapentaenoic acid inhibits foam cell formation
+and ameliorates high-fat diet-induced pathology of atherosclerosis in mice. Sci. Rep.
+11 (1), 1.
+Peng, J.R., et al., 2016. Elevated levels of plasma superoxide dismutases 1 and 2 in
+patients with coronary artery disease. Biomed Res. Int. 2016, 3708905.
+Pourseif, T., et al., 2023. Chitosan-based nanoniosome for potential wound healing
+applications: synergy of controlled drug release and antibacterial activity. Int. J.
+Biol. Macromol. 230, 123185.
+Quillard, T., Libby, P., 2012. Molecular imaging of atherosclerosis for improving
+diagnostic and therapeutic development. Circ. Res. 111 (2), 231–244.
+Shaker, M.A., et al., 2021. Enhancement of atorvastatin oral bioavailability via
+encapsulation in polymeric nanoparticles. Int. J. Pharm. 592, 120077.
+Shariatinia, Z., 2019. Pharmaceutical applications of chitosan. Adv. Colloid Interface Sci.
+263, 131–194.
+Singh, L., et al., 2021. Curcumin as a natural remedy for atherosclerosis: a
+pharmacological review. Molecules 26 (13), 4036.
+Stemler, T., et al., 2021. A Structure-Activity Relationship Study of Bimodal BODIPY-
+Labeled PSMA-Targeting Bioconjugates. Chem. Med. Chem. 16 (16), 2535–2545.
+Stohs, S.J., et al., 2020. Highly bioavailable forms of curcumin and promising avenues
+for curcumin-based research and application: a review. Molecules. 25 (6), 1397.
+Trott, O., Olson, A.J., 2010. AutoDockVina: improving the speed and accuracy of docking
+with a new scoring function, efficient optimization, and multithreading. J. Comput.
+Chem. 31 (2), 455–461.
+Wang, Y., Li, P., Kong, L., 2013. Chitosan-modified PLGA nanoparticles with versatile
+surface for improved drug delivery. AAPS Pharm. Sci. Tech. 14 (2), 585–592.
+World Health Organization (WHO), Cardiovascular diseases 2022: Deaths by Cause, Age,
+Sex, by Country and by Region. <https://www.who.int/health-topics/
+cardiovascular-diseases#tab=tab_1> (Accessed 10 December 2022).
+Xu, B., et al., 2017. Chitosan hydrogel improves mesenchymal stem cell transplant
+survival and cardiac function following myocardial infarction in rats. Exp. Ther.
+Med. 13 (2), 588–594.
+Yang, J., et al., 2020. Novel modification of collagen: realizing desired water solubility
+and thermostability in a conflict-free way. ACS omega. 5 (11), 5772–5780.
+Yin, T., et al., 2021. Phagocytosis of polymeric nanoparticles aided activation of
+macrophages to increase atherosclerotic plaques in ApoE−/−
+mice.
+J. Nanobiotechnology 19 (1), 1–5.
+Yoo, J., Won, Y.Y., 2020. Phenomenology of the initial burst release of drugs from PLGA
+microparticles. ACS Biomater. Sci. Eng. 6 (11), 6053–6062.
+Yu, F., et al., 2019. A cerium oxide loaded glycol chitosan nano-system for the treatment
+of dry eye disease. J. Control. Release. 315, 40–54.
+R. Dash et al.

@@ -1,0 +1,1155 @@
+Industrial Crops & Products 164 (2021) 113345
+Available online 7 March 2021
+0926-6690/© 2021 Elsevier B.V. All rights reserved.
+Development of enhanced drug delivery vehicles for three cannabis-based
+terpenes using poly(lactic-co-glycolic acid) based nanoparticles
+Mazen M. El-Hammadi a, Andrea L. Small-Howard b, Mercedes Fern´andez-Ar´evalo a,
+Lucía Martín-Banderas a,*
+a Departmento de Farmacia y Tecnología Farmac´eutica, Facultad de Farmacia, Universidad de Sevilla, c/Prof. García Gonz´alez nº2, 41012, Sevilla, Spain
+b GB Sciences, Inc. (OTCQB:GBLX), 3550 W. Teco Avenue, Las Vegas, NV, USA
+A R T I C L E  I N F O
+Keywords:
+Cannabis-based terpenes
+PLGA polymeric nanoparticles
+Beta-myrcene
+Nerolidol
+Beta-caryophyllene
+Nanomedicine
+A B S T R A C T
+Terpenes derived from different varieties of Cannabis sativa have shown potentially useful pharmacological ac­
+tivities, including the ability to bind to transient receptor potential (TRP) channels. Beta-myrcene (MC), beta-
+caryophyllene (CPh), and nerolidol (NL) are among the most abundant and studied terpenes found in cannabis.
+Despite the potential pharmacological effectiveness of these terpenes, their volatile and hydrophobic nature, and
+associated poor solubility and low bioavailability limit their suitability as pharmaceutical agents. To address
+these limitations, the current study sought to design poly(DL-lactide-co-glycolide) (PLGA) based nanoparticles
+(NPs) that encapsulate MC, CPh, and NL. First, several preparation methods and formulations were tested to
+develop MC-loaded PLGA NPs. The NPs produced had a mean diameter between 200–350 nm, a narrow size
+distribution, and a negative zeta potential in the range of -25 to -30 mV. Optimal NPs were produced using
+emulsion-solvent evaporation, purified and collected by ultra-filtration, and freeze-dried in the presence of
+trehalose 5% (w/w), achieving the highest encapsulation efficiency (EE%: ~8%). Utilizing the optimized
+formulation and preparation method, PEG-PLGA NPs encapsulating MC, CPh, or NL were also fabricated and
+characterized. The encapsulation capacities of CPh (EE%: 64.9 %) and NL (EE%: 55.7 %) PEG-PLGA NPs were
+approximately 3-fold that of MC NPs (EE%: 18.1 %). In conclusion, these three terpenes were successfully
+encapsulated in PLGA-based NPs. The nanosystems developed herein can be proposed as promising therapeutic
+tools for the enhanced delivery of cannabis-derived terpenes.
+1. Introduction
+Terpenes are a broad and diverse family of volatile aromatic organic
+hydrocarbons found in many plants, and yet in some insects. The resin of
+Cannabis sativa, produced by the same glands that secrete cannabinoids
+like tetrahydrocannabinol (THC) and cannabidiol (CBD), is highly rich
+in terpenes with more than 150 different terpenes being isolated from
+different cannabis types (Booth and Bohlmann, 2019). While terpenes
+play a role in plant protection/pollination and are largely employed in
+food and the perfumery industry as flavors and fragrances, they also
+have been found to exert various biological activities (Nuutinen, 2018).
+More recently, interest has focused on the pharmacological synergy
+between terpenes and cannabinoids, and the ability to produce the
+so-called “entourage effect” (Russo, 2011). The conceptual rationale
+underlying this effect is that different cannabis varieties exhibit various
+physiological effects, as observed among cannabis users. Furthermore,
+isolated cannabinoids do not demonstrate the same physiological effects
+as they do when in whole plants or in plant extracts, which has led to the
+theory that these cannabinoid and terpene molecules may act syner­
+gistically. Although solid evidence for the putative entourage effect is
+still lacking (Finlay et al., 2020), it is hoped that this synergistic effect
+may pave the way for more efficient therapies of pain, inflammation,
+depression, anxiety, addiction, epilepsy, cancer, and infections (Ferber
+et al., 2020; Nuutinen, 2018).
+Beta-myrcene (MC), beta-caryophyllene (CPh), and nerolidol (NL)
+are among the most abundant and studied terpenes found in cannabis.
+The molecular structures and physicochemical properties of these ter­
+penes are presented in Fig. 1 and Table 1, respectively.
+Beta-myrcene (or β-myrcene), a monoterpene and the most abundant
+terpene in cannabis, has shown protective properties against inflam­
+mation and oxidative damage (Burcu et al., 2016; Ciftci et al., 2014); as
+well as anti-nociceptive effects (Paula-Freire et al., 2016). More
+* Corresponding author.
+E-mail address: luciamartin@us.es (L. Martín-Banderas).
+Contents lists available at ScienceDirect
+Industrial Crops & Products
+journal homepage: www.elsevier.com/locate/indcrop
+https://doi.org/10.1016/j.indcrop.2021.113345
+Received 8 October 2020; Received in revised form 9 February 2021; Accepted 14 February 2021
+
+Industrial Crops & Products 164 (2021) 113345
+2
+recently, in a study that investigated the effects of several
+cannabis-derived terpenes on the nociceptive TRPV1 channel, the
+transient receptor potential vanilloid-1 ion channel also known as the
+capsaicin receptor, MC has been demonstrated to modulate this receptor
+suggesting its potential use in pain management (Jansen et al., 2019).
+Unlike any other terpenes, beta-caryophyllene (or β-caryophyllene), a
+bicyclic sesquiterpene, is a specific agonist of cannabinoid receptor 2
+(CB2) (Chicca et al., 2014). The CB2 agonism along with other mecha­
+nisms of action provide CPh with potent therapeutic promises in the
+treatment of neuropathic pain and neurodegenerative diseases (Sharma
+et al., 2016). Nerolidol (NL), another sesquiterpene, possesses various
+pharmacological
+activities
+including
+anti-nociceptive,
+anti-in­
+flammatory, anti-oxidant, anti-bacterial, and anticancer properties,
+among others (Chan et al., 2016).
+Despite the potential pharmacological effectiveness of MC, CPh, and
+NL, their volatile nature and hydrophobicity, associated with poor sol­
+ubility and low bioavailability, limit their suitability as pharmaceutical
+agents in practice. For this reason, nanoparticle-based drug delivery
+systems are being proposed to encapsulate these terpenes, which would
+address their physiochemical limitations for delivery while maintaining
+the desired therapeutic activity. Poly(D,L-lactide-co-glycolide) (PLGA)
+is a versatile, biocompatible, biodegradable, Food and Drug Adminis­
+tration (FDA)-approved polymer that is extensively used in formulating
+drug-loaded NPs (El-Hammadi and Arias, 2015). It has been successfully
+employed to encapsulate many terpenes with therapeutic characteris­
+tics, such as α-bisabolol (Marongiu et al., 2014), ginkgo terpenes (Han
+et al., 2012), and Betulinic acid (Iannitelli et al., 2011).
+Terpene-encapsulated PLGA NPs bring about several advantages
+including improved solubility and stability, efficient penetration of
+biological barriers such as mucus and the blood-brain barrier, enhanced
+drug internalization by cells, sustained and synchronized drug release,
+promoted localization at the site of action, and reduced toxicity, and
+consequently increased effectiveness (Han et al., 2012; Iannitelli et al.,
+2011; Marongiu et al., 2014). Despite the growing interest in the phar­
+macological benefits of MC, CPh, and NL in the last decade (Booth and
+Bohlmann, 2019; Chan et al., 2016; Nuutinen, 2018; Santos et al., 2018),
+their encapsulation as isolated terpenes in NPs has rarely been reported.
+In one recent work, NL-loaded polymeric NPs based on Eudragit RS
+100® demonstrated increased therapeutic efficacy of its active principle
+against Trypanosoma evansi, a protozoal parasite that causes a chronic
+wasting syndrome in animals (Baldissera et al., 2016). Furthermore, the
+orally administered NPs allowed the transport of the terpene through the
+blood-brain barrier in mice (Baldissera et al., 2017).
+Based on the aforementioned advantages, the objective of the present
+study was to encapsulate MC, CPh, and NL in PLGA based NPs. To the
+best of our knowledge, there has been no report on the encapsulation of
+these terpenes in PLGA NPs. Thus, MC was first used as a model terpene
+to select the optimal preparation method and formulation for NP
+production. The major criteria for this selection were terpene encapsu­
+lation capacity and NP physical stability. Finally, poly(ethylene glycol)-
+poly(lactide-co-glycolide) (PEG-PLGA), a block co-polymer of PLGA
+with a hydrophilic chain of PEG, was used to encapsulate each of the
+three terpenes individually and the produced terpene-PEG-PLGA NPs
+were extensively characterized.
+2. Materials
+MC, CPh, and NL (a mixture of cis- and trans-isomers) were provided
+by GB Sciences (NV, USA). Resomer® RG 502 H (poly(d,l-lactide-co-
+glycolide 50:50, molecular weight, MW: 13,500 Da; inherent viscosity:
+0.22 dL/g), PEG-PLGA (PEG average Mn 2,000, PLGA average Mn
+11,500; lactide:glycolide 50:50], and Epikuron™ 200 SH hydrogenated
+phosphatidyl choline-enriched lecithin was obtained from Evonik
+(Germany), Sigma-Aldrich (USA), and Cargill (Germany), respectively.
+All other chemicals used including Pluronic® F-68, polyvinyl alcohol
+(PVA) 72,000 Panreac Química, Spain), Span® 60 (Sigma-Aldrich,
+USA), and trehalose (Merck, Germany) were of analytical quality.
+Acetone, ethyl acetate, and dichloromethane were of analytical grade
+from Panreac Química (Spain). Water used in the experiments was
+deionized and filtered (Milli-Q Academic, Millipore, Spain).
+3. Methods
+3.1. Development of MC-loaded PLGA NPs
+MC-loaded PLGA NPs were prepared by nanoprecipitation and
+emulsion-solvent evaporation methods. In addition, various formulas, in
+which different surfactants, including Pluronic® F-68, Span® 60, Epi­
+kuron 200, and PVA, and organic solvents, namely acetone and EA, were
+used, and various preparation conditions, including controlling exces­
+sive evaporation of the terpene during solvent evaporation, selecting the
+Fig. 1. Chemical structures of (A) β–myrcene, (B) β–caryophyllene, (C) trans-nerolidol, and (D) cis-nerolidol.
+Table 1
+Physicochemical properties of β–Myrcene, β–Caryophyllene, and Nerolidol.
+Molecule
+Mw (g/
+mol)
+Boiling
+point
+(◦C)
+Vapor
+Pressure
+(mm Hg at
+25 ◦C)
+Solubility in
+water (mg/L
+at 25 ◦C)
+β–Myrcene*
+136.23
+167.0
+2.090
+4.09
+β–Caryophyllene*
+204.35
+268.4
+0.013
+0.05
+Nerolidol (isomer
+unspecified)
+Lapczynski et al.
+(2008)
+222.37
+276.0
+0.001†
+1.532
+* Data from PubChem, National Institutes of Health (NIH).
+† At 20 ◦C.
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+3
+proper technique for NPs purification and collection, and optimizing
+freeze-drying of NPs, were examined (Fig. 2).
+3.1.1. Preparation of NPs using nanoprecipitation method-a
+MC-loaded NPs were fabricated using a nanoprecipitation method
+previously developed by our group (Berrocoso et al., 2017; Duran-Lo­
+bato et al., 2014). PLGA (22.5 mg) and Span® 60 (7.5 mg) were dis­
+solved in 1.5 mL acetone. MC (10–100% w/w, polymer weight) was
+added to the organic solution. To 4.5 mL Pluronic® F-68 aqueous so­
+lution (0.5 % w/v), the organic phase was added drop-wise using a
+syringe-pump at a rate of 5 mL/h with continuous stirring. The removal
+of acetone was carried out using a rotary evaporator without heating
+over a period of 30 min. To remove non-encapsulated compounds as
+well as the excess surfactant, the suspension was poured into a 50-mL
+centrifugation tube, volume adjusted up to 45 mL with MQ water, and
+spun at 10,000 rpm at 4 ◦C for 30 min. The washing procedure was
+repeated two times using the same conditions. Next, the NP pellet was
+dispersed in MQ water, and the preparation was freeze-dried (−80 ◦C,
+<0.100 mbar; TELSTAR Cryodos, Spain). The lyophilized NPs were
+collected as a white cotton-like material.
+3.1.2. Preparation of NPs using nanoprecipitation method-b
+MC-loaded NPs were prepared using a second nanoprecipitation
+method as previously described (Iannitelli et al., 2011). Briefly, PLGA
+(11 mg) and Epikuron 200 (13 mg) were dissolved in 2.5 mL acetone.
+MC (24 mg) was added to the organic phase. The organic mixture con­
+taining the terpene was poured at once into 5 mL Pluronic® F-68 0.5 %
+w/v with continuous stirring. Acetone was evaporated using a rotary
+evaporator without heating over a period of 40 min. To remove the
+non-encapsulated compounds as well as the excess surfactant, the sus­
+pension was poured into a 50-mL centrifugation tube, volume adjusted
+up to 45 mL with MQ water, and spun at 10,000 rpm at 4 ◦C for 30 min.
+Fig. 2. Methods and formulas used to fabricate β–myrcene-loaded PLGA NPs.
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+4
+The washing procedure was repeated two times using the same condi­
+tions. The NP pellet was dispersed in MQ water, and the preparation was
+freeze-dried. The lyophilized NPs were collected as a white cotton-like
+material.
+3.1.3. Preparation of NPs using emulsion-solvent evaporation method
+The method is based on the emulsification of a polymer organic so­
+lution into an aqueous phase under high-shear force, followed by
+organic solvent evaporation. Briefly, PLGA (40 mg) was dissolved in 1
+mL ethyl acetate (EA). MC (10–100% w/w, PLGA weight) was added to
+EA solution. Preparation of the NPs was performed using a high-speed
+homogenizer (Polytron® PT 2500 E, Kinematica AG, Switzerland).
+The probe of the homogenizer was immersed inside a suitable tube
+containing 5 mL PVA (0.5 % w/v). The terpene-containing organic phase
+was added drop-wise using a pipette with the homogenizer set at 24,000
+rpm, and homogenization was continued for 1 min. This step was carried
+out in an ice bath to prevent excessive heating during the homogeni­
+zation process. The organic solvent was evaporated using a rotary
+evaporator without heating over a period of 35 min. The removal of non-
+encapsulated compounds as well as the excess surfactant was carried out
+either by ultra-centrifugation or ultra-filtration. In ultra-centrifugation,
+the suspension was poured into a 50-mL centrifugation tube, volume
+adjusted up to 45 mL with MQ water, and spun at 10,000 rpm at 4 ◦C for
+30 min. The washing procedure was repeated two times using the same
+conditions. The NP pellet was dispersed in MQ water, and the prepa­
+ration was freeze-dried. When purification was performed using ultra-
+filtration, the NPs suspension was transferred into two Amicon® tubes
+(Ultracel-100 kDa regenerated cellulose membrane, 15 mL sample vol­
+ume) and volume adjusted in each tube up to 10 mL with MQ water.
+Centrifugation was performed at 4000 ×g at 12 ◦C for 30 min to
+concentrate the preparation. The NP suspension was washed twice by
+the addition of MQ water up to 10 mL and the centrifugation (4000 ×g at
+12 ◦C) was repeated, and finally the NP preparation was freeze-dried.
+The lyophilized NPs were collected as white cotton-like material.
+3.2. Factors affecting terpene loss during NP preparation
+To optimize the encapsulation capacity of the NPs, the possible loss
+of terpene during each of the different steps of NP production was
+investigated by examining the solvent evaporation step, the NP collec­
+tion process, and the addition of cryoprotectant before freeze-drying.
+MC was selected as the model terpene because it possesses the highest
+volatility and vapor pressure among the involved terpenes, making it the
+most challenging.
+3.2.1. Organic solvent evaporation
+To study the relative contribution of the solvent evaporation step on
+terpene loss during NP production, a specific amount of MC was dis­
+solved in EA in the presence or absence of the polymer, followed by
+solvent evaporation under pressure using the rotary evaporator without
+heating for 1 h. The remaining residue was dissolved in DCM and the
+content of MC was measured using gas chromatography–mass spec­
+trometry (GC–MS) (as described under section: 3.5. measurement of
+terpene content).
+3.2.2. Purification, collection, and lyophilization of NPs
+To examine the relative contributions of purification and collection
+techniques (i.e. ultra-filtration vs. ultra-centrifugation) and lyophiliza­
+tion on terpene load capacity, MC content was measured in the NPs,
+produced by the three preparation methods studied in this work, both
+immediately after centrifugation (before lyophilization) and after
+freeze-drying.
+3.2.3. Addition of a cryoprotectant
+We hypothesized that MC-loaded NPs may be damaged during
+freezing and freeze drying, which may potentially lead to increased
+terpene loss during the process of lyophilization. To test this hypothesis,
+NPs were dispersed in an aqueous solution of 5% (w/v) trehalose and
+consequently freeze-dried. Terpene load in lyophilized NPs pre-treated
+with trehalose was compared to that of cryoprotectant-free, freeze-
+dried NPs.
+3.3. Preparation of terpene-loaded PEG-PLGA NPs
+MC-, CPh-, and NL-loaded PEG-PLGA NPs were prepared by the
+emulsion-solvent evaporation method, as described above. Briefly, 40
+mg of PEG-PLGA were dissolved in 1 mL EA. Ten milligrams (25 % w/w
+based on PLGA) of MC, CPh, or NL were dissolved in the organic solu­
+tion. The organic phase was added drop-wise to 5 mL of PVA (0.5 % w/
+v) with the homogenizer set at 24,000 rpm, and homogenization was
+continued for 1 min. Next, the organic solvent was removed using a
+rotary evaporator without heating over a period of 35 min. To purify and
+collect the NPs, the suspension was transferred to Amicon® tubes
+(Ultracel-100 kDa regenerated cellulose membrane, 15 mL sample vol­
+ume) and volume adjusted up to 10 mL with MQ water. Centrifugation
+was performed at 4000 ×g at 12 ◦C to concentrate the preparation. This
+procedure was repeated twice. The NP concentrated suspension was
+mixed with a trehalose solution to produce a suspension with 5% (w/v)
+trehalose, and lyophilized NPs were collected as white cotton-like
+material.
+3.4. Characterization of NPs
+3.4.1. Mean diameter and size distribution
+Mean diameter and size distribution of the produced NPs were
+measured at 25.0 ± 0.5 ◦C by dynamic light scattering (Nanosizer ZS,
+Malvern Instruments Ltd., UK).
+3.4.2. Surface electrical charge (zeta potential, ζ)
+The zeta potential of the PEG-PLGA-based NPs is characterized by
+laser Doppler electrophoresis (Nanosizer ZS, Malvern Instruments Ltd.,
+UK). ζ measurements were carried out at room temperature, after
+washing the NPs with distilled water.
+3.4.3. Scanning electron microscope images
+The morphological characterization of the NPs was performed by
+image analysis obtained by scanning electron microscopy in a FEI
+TENEO microscope. NP suspension (free of trehalose) was diluted down
+to around 0.8 mg/mL. Particles were covered with an 8−9 nm Pd/Pt
+shell under vacuum (Leica EM SCD500).
+3.5. Measurement of terpene content
+A GC–MS method was developed for the quantification of the free
+terpenes and terpene-loaded NPs.
+3.5.1. Sample preparation
+Dispersed non-lyophilized NPs were first recovered by spinning at
+10,000 rpm at 4 ◦C for 30 min. Both recovered non-lyophilized and
+lyophilized NPs were dissolved in DCM and then spun to precipitate the
+undissolved material. Next, the supernatant was transferred to a chro­
+matography glass vial and closed tightly for subsequent analysis. For the
+purpose of constructing a calibration curve, MC, CPh, and NL with a
+series of concentrations ranging between 1−60 ppm (1, 2, 5, 10, 20, 40
+and 60 ppm) dissolved in DCM were prepared.
+3.5.2. Quantification method
+Analysis of terpenes was performed using a trace gas chromatog­
+raphy system in tandem with a mass spectrometer (DELTA V™ Isotope
+Ratio Mass Spectrometer, Thermo Scientific, USA). Data acquisition and
+analyses were performed using Xcalibur 2.0.7 (Thermo Scientific, USA).
+A SPB-1 capillary GC column (30 m ×0.25 mm ×1.5 μm, Sigma-Aldrich,
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+5
+USA) was used for this study.
+The temperature of the GC injector was 300 ◦C, and the injection was
+set to split mode with a split flow of 25.0 mL min−1 and a purge flow of
+5.0 mL min−1. The GC column temperature was set to 50 ◦C or 70 ◦C for
+MC, and CPh and NL, respectively, for 1 min and programmed to ramp
+up to 300 ◦C, at a rate between 5−50 ◦C min, at which point this tem­
+perature was maintained for 2 min and then cooled to initial conditions.
+The total run time was 15 min. The peaks of MC, CPh, cis-NL, and trans-
+NL were observed at a retention time of 6.92, 5.73, 6.77, and 7.16 min,
+respectively. The transfer line was maintained at 250 ◦C and helium flow
+was 1 mL min−1. For mass spectrometry detection, ionization was car­
+ried out by electronic impact (EI) with a full scan mode in the m/z range
+of 20–300 and an ion source temperature of 250 ◦C in positive ion mode.
+For quantification purposes, the characteristic ions for terpenes at m/z
+69, 93 and 133 were monitored by selected ion monitoring (SIM) mode.
+3.6. Terpene loading and entrapment efficiency
+Terpene content is expressed as entrapment efficiency (EE, %) and
+drug loading (DL, %) following the Eqs. 1 and 2, respectively:
+EE(%) = mass of terpene incorporated(mg)
+intial mass of terpene(mg)
+× 100
+(1)
+DL(%) = mass of terpene incorporated(mg)
+mass of nanocarrier(mg)
+× 100
+(2)
+3.7. Statistical analysis
+Results are expressed as mean ± SD. All experiments were performed
+in triplicate. Means were compared by One-Way ANOVA followed by the
+Tukey’s test for post hoc multiple range comparisons. A p-value of <
+0.05 was considered statistically significant. The SPSS Statistics 17.0
+statistical package was used for the analyses.
+4. Results
+4.1. Myrcene-loaded PLGA NPs
+Characteristics of blank NPs and MC-loaded PLGA NPs are presented
+in Table 2. The mean diameter ranged between 195–285, 145–275, and
+225–335 nm for NPs produced by nanoprecipitation Method-A, nano­
+precipitation Method-B, and emulsion-solvent evaporation, with a nar­
+row size distribution and polydispersity of around 0.2 or less. In general,
+NPs fabricated by the two nanoprecipitation methods showed a signif­
+icantly smaller particle size compared with those prepared by the
+emulsion-solvent evaporation method, whereas the latter generated
+more homogenous suspensions reflected by the significantly lower PdI (p
+< 0.05). Noticeably, the mean size was significantly enlarged as the
+concentration of starting MC was increased in all preparation methods (p
+< 0.05). The increased size was also accompanied with an increase in
+PdI which was significant in formulations with higher starting terpene
+concentrations, in particular EmulSol3 and EmulSol6 (Table 2; p <
+0.05). Zeta potential was negative for all PLGA-based NPs, with a value
+of approximately -30 for NPs prepared by nanoprecipitation, while a
+slightly higher potential, but statistically significant (p < 0.05), of be­
+tween -24 to -26 was recorded for those prepared by the emulsion-
+solvent evaporation method. This finding may be related to the effect
+of the various stabilizers used and their ability to cover the particle
+surface and modify the surface charge.
+Using nanoprecipitation Method-A, stable NPs could be produced
+with MC concentrations of up to 60 % (w/w). Higher concentrations of
+the terpene were associated with reduced physical stability and resulted
+in the formation of visible aggregations during the phase mixing step
+(the first step of preparation). Since the amount of the starting terpene is
+considered in the calculation of synthesis yield, MC-loaded NPs
+demonstrated a predictable reduction in yield when compared to blank
+NPs in all preparation methods used (p < 0.05). It is noteworthy here
+that, in comparison with ultra-centrifugation, ultra-filtration enabled
+the collection of significantly higher amounts of NPs (Table 2; p < 0.05).
+Table 2
+Characteristics of blank and β–myrcene-loaded PLGA NPs prepared by different methods. Results are mean ± SD.
+Formula
+Method of preparation
+Myrcene % (w/w
+Polymer)
+Recovery of
+NPs
+Mean (nm)
+PdI
+Zeta Potential
+(mV)
+Yield (%)
+Loaded myrcene
+EE%
+DL%
+NPreA0
+Nanoprecipitation
+Method-A
+0
+UC
+195.4 ±
+4.3
+0.165 ±
+0.011
+−29.8 ± 0.9
+84.3 ±
+2.1
+–
+–
+NPreA1
+40
+UC
+244.3 ±
+8.6
+0.124 ±
+0.015
+−30.4 ± 1.2
+56.1 ±
+2.4
+1.72 ±
+0.35
+0.71 ±
+0.17
+NPreA2
+60
+UC
+284.1 ±
+6.3
+0.213 ±
+0.011
+−31.1 ± 0.8
+54.2 ±
+1.7
+2.04 ±
+0.33
+1.17 ±
+0.19
+NPreA3*
+100
+–
+–
+–
+–
+–
+–
+–
+NPreB0
+Nanoprecipitation
+Method-B
+0
+UC
+145.9 ±
+7.8
+0.156 ±
+0.012
+−30.3 ± 0.9
+83.9 ±
+1.9
+–
+–
+NPreB1
+100
+UC
+272.9 ±
+9.6
+0.190 ±
+0.015
+−31.7 ± 1.1
+37.4 ±
+2.4
+0.02 ±
+0.00
+0.02 ±
+0.01
+EmulSol01
+Emulsion-solvent
+evaporation
+0
+UC
+225.7 ±
+5.6
+0.092 ±
+0.012
+−25.6 ± 0.8
+79.1 ±
+1.7
+–
+–
+EmulSol02
+0
+UF
+218.2 ±
+7.1
+0.105 ±
+0.011
+−25.6 ± 0.8
+90.2 ±
+1.9
+–
+–
+EmulSol1
+40
+UC
+227.6 ±
+9.5
+0.093 ±
+0.013
+−25.9 ± 1.1
+56.3 ±
+1.8
+1.45 ±
+0.15
+0.74 ±
+0.06
+EmulSol2
+60
+UC
+245.0 ±
+10.1
+0.130 ±
+0.012
+−24.8 ± 0.7
+50.2 ±
+1.3
+1.62 ±
+0.27
+1.21 ±
+0.21
+EmulSol3
+100
+UC
+285.6 ±
+13.3
+0.161 ±
+0.021
+−25.9 ± 1.3
+40.0 ±
+1.4
+1.58 ±
+0.26
+1.97 ±
+0.26
+EmulSol4
+40
+UF
+234.2 ±
+8.9
+0.132 ±
+0.014
+−23.7 ± 0.7
+65.7 ±
+1.8
+7.63 ±
+0.43
+3.32 ±
+0.10
+EmulSol5
+60
+UF
+264.6 ±
+10.2
+0.151 ±
+0.020
+−24.9 ± 1.0
+59.8 ±
+1.9
+7.81 ±
+0.34
+4.90 ±
+0.25
+EmulSol6
+100
+UF
+344.6 ±
+11.5
+0.225 ±
+0.034
+−24.4 ± 1.2
+48.1 ±
+1.6
+7.03 ±
+0.49
+7.30 ±
+0.27
+UC: Ultra-centrifugation; UF: Ultra-filtration.
+* Aggregations were formed.
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+6
+Results of analysis of MC, including gas chromatogram, mass spec­
+trum of MC, and the calibration curve [Y = (2.023 × 107)X – (6.227 ×
+106), R2 = 0.9990], are shown in Fig. 3. The retention time of MC was
+6.93 min, and the terpene was monitored by selected ion monitoring
+(SIM) mode at m/z 93 and m/z 69, the dominant and characteristic ions.
+This enabled the measurement of MC content in the analyzed NPs. The
+amount of the terpene extracted from the NPs and dissolved in DCM was
+computed using the calibration curve and employed to calculate EE%
+and DL%. NPs produced by the emulsion-solvent evaporation method
+demonstrated a significantly higher terpene loading capacity in com­
+parison with other preparation methods (p < 0.05). In particular, NPs
+collected by ultra-filtration gave the highest loading capacity with an EE
+% close to 8%. Nanoprecipitation Method-A also produced NPs with a
+relatively good terpene load (EE% of approximately 2%), however the
+loading capacity was limited by the maximum concentration of starting
+MC (60 % w/w) which could be used to produce stable NPs. In contrast,
+nanoprecipitation Method-B gave NPs with poor encapsulation effi­
+ciency (EE% > 0.1 %).
+4.2. Scanning electron microscope images
+SEM images confirmed the globular structure of the NPs (Fig. 4).
+Based on SEM images, PLGA-based NPs loaded with MC, CPh and NL
+showed similar structure and size range. Although SEM images were
+mainly used to provide information on the NP surface, some images
+interestingly showed the presence of ruptured large NPs (Fig. 4A, E, and
+I), indicating that the produced NPs could be of the core-shell nano­
+capsule class. This effect is likely to be due to the negative pressure of
+vacuum during sample preparation for SEM imaging and/or the over­
+load of NPs with the liquid terpene, resulting in the explosion of the
+inner liquid core.
+4.3. Factors affecting terpene loss during preparation
+4.3.1. Organic solvent evaporation
+Although no external heating was applied during production, MC
+dissolved in EA (at a concentration of 1% w/w in 1 mL solvent) was
+completely lost when subjected to vacuum in the rotary evaporator for 1
+h. However, when PLGA was added to the MC solution, about 40 % of
+the starting MC was retained. This finding indicates that MC entrapped
+physically in the polymer (or loaded in the NPs) may be effectively
+retained and protected from loss during the evaporation step.
+4.3.2. NP collection process and addition of trehalose
+For this set of experiments, NP formulations with the highest starting
+concentration of MC in each preparation method were used; 60 % (w/w)
+in nanoprecipitation Method-A, and 100 % (w/w) in both nano­
+precipitation Method-B and emulsion-solvent evaporation method. The
+measurement of MC before freeze-drying revealed that NPs produced by
+the emulsion-solvent evaporation method had the highest encapsulation
+efficiency with EE% up to approximately 9%, followed by NPs prepared
+by nanoprecipitation Method-A which had an EE% of 4%, whereas
+nanoprecipitation Method-B resulted in a significantly low EE% close to
+zero (only 0.06 %) (Fig. 5; p < 0.05). In addition, the encapsulation
+efficiency measured after freeze-drying for samples collected by ultra-
+filtration was more than 5-times higher than those collected by ultra-
+Fig. 3. GC–MS analysis of β–myrcene: (A) gas chromatogram; (B) mass spectrum; and (C) calibration curve.
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+7
+centrifugation (Fig. 5). More interestingly, the addition of trehalose
+resulted in significantly higher levels of loaded MC in freeze-dried NPs,
+compared with NPs lyophilized without trehalose, and this effect was
+particularly remarkable with NPs collected by ultra-filtration in which
+approximately 90 % of MC was retained after lyophilization (Fig. 5; p <
+0.05).
+4.4. Terpene-loaded PEG-PLGA NPs
+Results of GC–MS analysis of CPh and -NL, including gas chro­
+matograms, mass spectra, and calibration curves (caryophyllene: Y =
+(8.66 × 106)X, R2 = 0.9993; cis-NL: Y=(7.286 × 106)X – (2.328 × 105),
+R2 = 0.9998; trans-NL: Y=(7.748 × 106)X – (1.42 × 106), R2 = 0.9997),
+are presented in Figs. 6 and 7, respectively. Table 3 demonstrates
+Fig. 4. SEM images, and mean diameter and zeta potential measurements of (A and B; C; D) β–myrcene-, (E and F; G; H) β–caryophyllene-, and (I and J; K; L)
+nerolidol- loaded NPs. Arrows in the SEM images indicate ruptured nanoparticles. Bar size: 500 nm.
+Fig. 5. β–myrcene encapsulation efficiency (EE %) by NPs prepared using nanoprecipitation Method-A (NPreA2), nanoprecipitation Method-B (NPreB1), and
+emulsion-solvent evaporation purified by either ultracentrifugation (EmulSol6) or ultrafiltration (EmulSol6). Results are mean ± SD. Symbols refer to statistically
+significant difference (p < 0.05).
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+8
+characteristics of terpene-loaded PEG-PLGA NPs. The retention time of
+was 5.73, 6.77, and 7.16 min, for CPh, cis-, and trans-NL, respectively.
+Similar to MC, the terpenes were monitored by selected ion monitoring
+(SIM) mode at m/z 93 and m/z 69, the dominant and characteristic ions.
+The encapsulation of the terpenes has resulted in a significant in­
+crease in the mean particle size as compared to the blank NPs (Table 3
+and Fig. 4; p < 0.05). This increase was more remarkable with CPh- and
+NL-loaded NPs, which had a mean size of approximately 350 and 323
+nm, respectively, as compared to MC NPs, with a mean diameter of 266
+nm. In accordance with this finding, the loading capacity of CPh (EE%:
+64.9 %; DL%: 15.1) and NL (EE%: 55.7 %; DL%: 13.9 %) NPs was
+approximately 3-fold that of MC NPs (EE%: 18.1 %; DL%: 4.7 %) (p <
+0.05). This finding highlights the effect of the terpene properties on the
+loading capacity, since significantly higher loading capacities were
+achieved with CPh and NL, which have higher molecular weight and are
+less volatile, compared with MC. Although terpene encapsulation
+significantly increased the polydispersity of the NPs (p < 0.05), all
+terpene-loaded NPs showed a relatively narrow size distribution, with
+PdI < 0.3 for all NPs.
+All PEG-PLGA NPs demonstrated a negative surface charge (Table 3
+and Fig. 4), however, the zeta potential’s absolute values were signifi­
+cantly lower than that recorded with PLGA-based NPs due to the
+neutrally charged PEG chains residing on the surface of the NPs (p <
+0.05). The lyophilized NPs were successfully recovered with a relatively
+high yield; between approximately 75–90% of the starting materials
+(terpene and polymer) was collected.
+5. Discussion
+In this work, several methods and formulas have been examined to
+encapsulate terpenes in PLGA NPs. Among the cannabis-derived ter­
+penes studied here, β-myrcene was selected for further study and opti­
+mization because it is highly volatile and has a low molecular weight, a
+low vapor pressure, and a relatively low boiling point (Table 1). Thus,
+we anticipated that, among the three explored terpenes, it would be the
+most difficult to handle due to its likely tendency to evaporate during
+preparation and its relative instability after encapsulation and during
+storage within the NPs.
+MC, CPh, and NL were analyzed using a GC–MS method. GC–MS is
+one of the most frequently used technique for the analysis of volatile
+terpenes. It is highly selective, reliable, and accurate and has been
+applied for the simultaneous determination of cannabis terpenes (Ibra­
+him et al., 2019).
+The variations observed in MC encapsulation efficiency among the
+selected group of preparation techniques can be related to the mecha­
+nism of particle formation and the effects of the NP formulation. Owing
+to their lipophilic nature, terpenes can be encapsulated within the PLGA
+NP enabling the formation of core-shell nanocapsules (in which the oily
+liquid core is entrapped and retained by a polymer shell) or solid
+nanospheres (where the loaded chemical is dispersed in a matrix of the
+polymer). Core-shell nanocapsules used to be the the nanosystem of
+choice for loading liquid payloads due to their special internal structure
+which can confer high vehiculization capacity. Among the techniques
+Fig. 6. GC–MS analysis of β–caryophyllene: (A) gas chromatogram; (B) mass spectrum; and (C) calibration curve.
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+9
+employed here, emulsion-solvent evaporation resulted into terpene-
+PLGA nanocapsules showing the highest loading efficiency. In this
+particular synthesis method an intermediate emulsion is formed by
+dispersing the organic phase (with terpenes solved in ethyl acetate)
+within the aqueous phase under high shear mixing using a high-speed
+homogenizer. As the solvent is removed by evaporation it leaves the
+liquid terpene inside the NP promoting the formation of core-shell
+nanocapsules. The enlarged diameter of loaded NPs compared to
+blank NPs (up to 50 % increase in size when 100 % w/w MC was used),
+and the SEM images, showing exploded NPs (Fig. 4A, E, and I), may
+provide evidence on the formation of nanocapsules.
+Nanoprecipitation, also known as interfacial polymer deposition
+method, can also be applied to fabricate nanocapsules (Fessi et al.,
+1989). In this technique, the mechanism of particle formation, governed
+by the Marangoni effect, is based on interfacial turbulences at the
+interface between the two phases that involve a set of complex and
+cumulate phenomena including flow, diffusion, and surface tension
+variations (Salatin et al., 2017). Thus, the NPs are generated by inter­
+facial deposition of the polymer following the displacement of a
+semi-polar, water-miscible solvent, such as acetone. Simplicity, ease of
+scalability, good reproducibility, and low energy consumption are
+among advantages of nanoprecipitation over other encapsulation
+methods (Martinez Rivas et al., 2017). However, to achieve the desired
+physical stability and avoid NP aggregation it is crucial to incorporate
+the proper stabilizer(s) in the formulation. In one method, we used a
+combination of Span® 60 and Pluronic® F-68 as stabilizers, a formu­
+lation that we have previously developed and successfully employed to
+load CB13 (synthetic cannabinoid) (Berrocoso et al., 2017; Duran-Lo­
+bato et al., 2014) and paclitaxel (Jimenez-Lopez et al., 2019) into
+PLGA-based NPs. Although nanoprecipitation using this formulation
+provided a relatively good MC loading capacity with low concentrations
+of the starting terpene, the induced physical instability at higher MC
+concentrations was a major limitation and did not enable the production
+of stable NPs with higher MC loads. However, when a combination of
+Pluronic® F-68 and Epikuron 200 was employed, the resulting NPs
+showed a poor MC loading capacity. The same formulation has previ­
+ously been described to produce nanocapsules of carvacrol, a natural
+monoterpene, by nanoprecipitation. In these nanocapsules the oily ter­
+peniod is entrapped within the polymer shell around which phosphati­
+dylcholine (Epikuron 200) is arranged in bilayers to achieve a maximum
+Fig. 7. GC–MS analysis of nerolidol: (A) gas chromatogram; (B) mass spectrum and calibration curve of cis-nerolidol; and (C) mass spectrum and calibration curve of
+trans-nerolidol.
+Table 3
+Characteristics of blank and terpene-loaded PEG-PLGA NPs prepared by the
+emulsion-solvent evaporation method. Results are mean ± SD.
+Loaded terpene
+Mean
+size
+(nm)
+PdI
+Zeta
+Potential
+(mV)
+Yield
+(%)
+Loaded terpene
+EE%
+DL%
+Blank
+195.6
+± 2.5
+0.159
+±
+0.015
+−18.5 ±
+1.3
+89.1
+± 1.3
+–
+–
+β–Myrcene
+266.1
+± 8.4
+0.243
+±
+0.015
+−16.2 ±
+1.5
+77.4
+± 2.1
+18.11
+± 1.75
+4.67 ±
+0.33
+β–Caryophyllene
+350.1
+± 12.8
+0.223
+±
+0.012
+−18.3 ±
+1.3
+84.2
+± 2.1
+63.94
+± 3.14
+15.07
+± 0.57
+Nerolidol
+322.9
+± 8.3
+0.228
+±
+0.026
+−16.9 ±
+1.4
+81.8
+± 2.1
+55.67
+± 2.51
+13.88
+± 0.86
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+10
+stability of the particles in suspension. The resulting carvacrol-loaded
+PLGA NPs demonstrated a relatively efficient DL% (21 %) and EE%
+(26 %) (Iannitelli et al., 2011). Interestingly, MC-loaded NPs fabricated
+using this technique had approximately double the diameter of the blank
+NPs (Table 2). Based on this observation it may hypothesized that MC is
+instantly encapsulated but consequently may not be retained by the
+formed NPs. Inability to retain MC may be related to involvement of one
+or more inappropriate formulation and/or procedure factors. These
+factors can be identified by comparing this method with the nano­
+precipitation Method-A, in which MC was moderately encapsulated and
+retained (differences are summarized in Table 4). Epikuron 200 and its
+amount, the volume of acetone, rate of addition may individually or
+together be responsible for the loss of MC during particle formation.
+Furthermore, differences in physicochemical properties between
+carvacrol (Mw 150.22 g/mol; boiling point 237.7 ◦C; vapor pressure
+0.030 mm Hg at 25 ◦C; solubility in water 1250.0 mg/L at 25 ◦C) and MC
+(Table 1), which is more volatile and less soluble in water, should also be
+considered.
+In addition, fabrication conditions influencing the encapsulation of
+terpenes in NPs have also been investigated and optimized. To reduce
+potential excessive evaporation of the terpene, the solvent evaporation
+step was controlled by avoiding heating and optimizing the time suffi­
+cient for complete removal of the solvent. In the next stage, i.e. NP
+purification and collection, the ultra-filtration was found to give
+significantly higher drug encapsulation efficiency in comparison with
+ultra-centrifugation. Because of the liquid nature of MC (and other ter­
+penes), it is predicted that the mechanical properties of produced NPs
+would be compromised. As a result, the structural integrity of the NPs
+may be damaged by centrifugation, a phenomenon that has previously
+been described with nanocapsules (Fickert et al., 2012). It is likely that
+the greater shear force resulting from higher velocity used in
+ultra-centrifugation (10,000 rpm) compared to ultra-filtration (around
+5500 rpm) may cause greater damage to the terpene-loaded NPs. While
+no remarkable difference was observed in terms of MC content imme­
+diately after centrifugation, the difference was significant in lyophilized
+NPs indicating that MC can be lost during freeze-drying. This finding
+was supported by the complete loss of MC (at similar concentrations to
+those used in the preparation of the NPs), both free or in a physical
+mixture with the polymer, when it was subjected to freeze-drying (re­
+sults are not shown). Additionally, in the absence of trehalose, a sig­
+nificant loss of MC was observed in freeze-dried NPs. Freeze-drying is an
+effective approach to avoid the hydrolytic degradation of the NP matrix
+in aqueous suspension, preventing undesirable changes upon storage,
+and to avert the instability of encapsulated drug. However, freeze-drying
+may also induce changes to NP properties, which may influence its size
+and robustness. To minimize NP instability upon freeze-drying, some
+sugars such as trehalose may be employed as cryoprotectants, which
+prevent aggregation of NPs and protect them from the mechanical stress
+of ice crystals (Fonte et al., 2014). Thus, MC loss in trehalose-free NPs
+provides extra evidence that terpene leakage from damaged NPs can
+occur by its evaporation/sublimation during freeze-drying.
+MC-, CPh-, and NL-loaded PEG-PLGA NPs were also prepared and
+extensively characterized. PEG is a non-ionic hydrophilic polyether that
+is highly biocompatible. Conjugation of PEG to PLGA-based NPs (the so-
+called PEGylation of NPs) brings about several interesting advantages
+including enhanced aqueous solubility, minimized opsonization,
+reduced aggregation and improved stability, minimized immunoge­
+nicity, and prolonged biological half-life (Suk et al., 2016). Additionally,
+surface coating with PEG can minimize hydrophobic or electrostatic
+interactions between coated particles and human mucus resulting in
+reduced mucoadhesion. While high MW PEG can increase mucoadhe­
+sion, dense coverage (e.g. 65–70 %) with low Mw PEG (e.g. 2 kDa), in
+particular, has been found to produce rapid mucus penetration of coated
+NPs. This is of particular interest for oral delivery, as the reduced in­
+teractions can facilitate the NPs to pass through the intestinal mucus
+and, hence, enhance the absorption of the NPs. Furthermore, it has been
+suggested that the high PEG density on the nanoparticles’ surface may
+protect them from gastric pH and enzymes (Berrocoso et al., 2017).
+Accordingly, we used a conjugate in which the average Mw of PEG is 2
+KDa, which is expected to produce NPs with high density PEG at the
+desirable Mw. Moreover, PEG coated non-adhesive NPs with diameter
+around 200–500 nm were found to diffuse quickly through mucus and
+more rapidly than smaller particles (Lai et al., 2007). In our work the
+mean diameter of the terpenes-loaded NPs ranged between ~250−350
+nm making them within the favorable size window for mucus
+penetration.
+Currently, it is widely accepted that PLGA-based NPs exhibit high
+safety profiles with excellent biocompatibility and controllable biode­
+gradability and (Elmowafy et al., 2019). This tremendous quality has
+also been evident through intensive research carried out by group over
+the last decade on PLGA- and PLGA-PEG-based nanosystems, similar to
+those used in this work (Martín-Banderas et al., 2012; Martin Banderas
+et al., 2014; Duran-Lobato et al., 2014; Berrocoso et al., 2017; Cayero
+Otero et al., 2019). Therefore, the developed terpene-loaded PLGA NPs
+are confidently expected to be highly safe for in vivo administration.
+Overall, the PLGA-based NPs developed in this work have the po­
+tential to improve the pharmacological effectiveness of the encapsulated
+terpenes, and they can be particularly useful for oral delivery. Further­
+more, we have recently shown that a similar PLGA nanosystem con­
+taining the synthetic cannabinoid CB13 can enhance oral absorption and
+in vivo biodistribution (Duran-Lobato et al., 2014). Furthermore,
+CB13-loaded PEG-PLGA significantly improved the drug analgesic effi­
+cacy and sustained it up to eleven days following the administration of
+one oral dose in rats (Berrocoso et al., 2017). Thus, examining combi­
+nations of the terpene polymeric nanosystems produced here with
+cannabinoids carried on similar PLGA NPs presents an exciting oppor­
+tunity for more in-depth understating of the therapeutic potential of the
+entourage effect (molecular synergies) encompassing a broad range of
+potential human clinical applications.
+6. Conclusion
+The study demonstrates the successful formulation of PLGA-based
+NPs loaded with the volatile and poorly soluble cannabis terpenes,
+namely β-myrcene, β-caryophyllene, and nerolidol. Among the prepa­
+ration methods investigated, NPs synthesized by the emulsion-solvent
+evaporation technique were associated with the highest encapsulation
+efficiency and a good physical stability. Based on their characteristics,
+the produced particles can enhance the solubility of the terpenes,
+improve permeation through biological barriers, prolong blood circu­
+lation, and sustain terpene release, which may be beneficial for effective
+and long-term therapy. Overall, our findings conclude that MC, CPh, and
+NL PLGA-based NPs can be proposed as promising therapeutic tools for
+the delivery of cannabis terpenes.
+Declaration of Competing Interest
+The authors report no declarations of interest.
+Table 4
+Different formulation and procedure factors of the two nanoprecipitation tech­
+niques used to encapsulate β–myrcene.
+Method
+Stabilizers
+Acetone/
+solvent (mL)
+Rate of addition
+of organic phase
+Nanoprecipitation
+Method-A
+Span® 60/
+Pluronic® F-68
+1.5
+Drop-wise (5 mL/
+h)
+Nanoprecipitation
+Method-B
+Epikuron 200
+/Pluronic® F-68
+2.5
+Poured at once
+M.M. El-Hammadi et al.
+
+Industrial Crops & Products 164 (2021) 113345
+11
+Acknowledgements
+We specially thank Microscopy and Spectrophotometry Services
+from Centro de Investigaci´on, Tecnología e Innovaci´on (CITIUS, Uni­
+versidad de Seville) for technical assistance.
+References
+Baldissera, M.D., Grando, T.H., Souza, C.F., Cossetin, L.F., Sagrillo, M.R., Nascimento, K.,
+da Silva, A.P., Dalla Lana, D.F., Da Silva, A.S., Stefani, L.M., Monteiro, S.G., 2016.
+Nerolidol nanospheres increases its trypanocidal efficacy against trypanosoma
+evansi: New approach against diminazene aceturate resistance and toxicity. Exp.
+Parasitol. 166, 144–149. https://doi.org/10.1016/j.exppara.2016.04.015.
+Baldissera, M.D., Souza, C.F., Boligon, A.A., Grando, T.H., MF D.E.S, AS D.A.S, Stefani, L.
+M., Baldisserotto, B., Monteiro, S.G., 2017. Solving the challenge of the blood-brain
+barrier to treat infections caused by trypanosoma evansi: evaluation of nerolidol-
+loaded nanospheres in mice. Parasitology 144, 1543–1550. https://doi.org/
+10.1017/S003118201700110X.
+Berrocoso, E., Rey-Brea, R., Fernandez-Arevalo, M., Mico, J.A., Martin-Banderas, L.,
+2017. Single oral dose of cannabinoid derivate loaded PLGA nanocarriers relieves
+neuropathic pain for eleven days. Nanomedicine 13, 2623–2632. https://doi.org/
+10.1016/j.nano.2017.07.010.
+Booth, J.K., Bohlmann, J., 2019. Terpenes in Cannabis sativa - from plant genome to
+humans. Plant Sci 284, 67–72. https://doi.org/10.1016/j.plantsci.2019.03.022.
+Burcu, G.B., Osman, C., Asli, C., Namik, O.M., Nese, B.T., 2016. The protective cardiac
+effects of Beta-myrcene after global cerebral ischemia/reperfusion in C57BL/J6
+mouse. Acta. Cir. Bras 31, 456–462. https://doi.org/10.1590/S0102-
+865020160070000005.
+Cayero Otero, M.D., Gomes, M.J., Martins, C., Alvarez Fuentes, J., Fernandez
+Arevalo, M., Sarmento, B., Martín-Banderas, L., 2019. In vivo biodistribution of
+venlafaxine-PLGA nanoparticles for brain delivery: plain vs functionalized
+nanoparticles. Expert Opinion Drug Delivery. 16, 1413–1427. https://doi.org/
+10.1080/17425247.2019.1690452.
+Chan, W.K., Tan, L.T., Chan, K.G., Lee, L.H., Goh, B.H., 2016. Nerolidol: a sesquiterpene
+alcohol with multi-faceted pharmacological and biological activities. Molecules 21.
+https://doi.org/10.3390/molecules21050529.
+Chicca, A., Caprioglio, D., Minassi, A., Petrucci, V., Appendino, G., Taglialatela-
+Scafati, O., Gertsch, J., 2014. Functionalization of beta-caryophyllene generates
+novel polypharmacology in the endocannabinoid system. ACS Chem. Biol. 9,
+1499–1507. https://doi.org/10.1021/cb500177c.
+Ciftci, O., Oztanir, M.N., Cetin, A., 2014. Neuroprotective effects of beta-myrcene
+following global cerebral ischemia/reperfusion-mediated oxidative and neuronal
+damage in a C57BL/J6 mouse. Neurochem. Res. 39, 1717–1723. https://doi.org/
+10.1007/s11064-014-1365-4.
+Duran-Lobato, M., Munoz-Rubio, I., Holgado, M.A., Alvarez-Fuentes, J., Fernandez-
+Arevalo, M., Martin-Banderas, L., 2014. Enhanced cellular uptake and
+biodistribution of a synthetic cannabinoid loaded in surface-modified poly(lactic-co-
+glycolic acid) nanoparticles. J. Biomed. Nanotechnol. 10, 1068–1079. https://doi.
+org/10.1166/jbn.2014.1806.
+El-Hammadi, M., Arias, J.L., 2015. Advanced engineering approaches in the
+development of PLGA-based nanomedicines. In: Aliofkhazraei, M. (Ed.), Handbook
+of Nanoparticles. Springer International Publishing, Switzerland, pp. 1009–1039.
+Elmowafy, E.M., Tiboni, M., Soliman, M.E., 2019. Biocompatibility, biodegradation and
+biomedical applications of poly(lactic acid)/poly(lactic-co-glycolic acid) micro and
+nanoparticles. J. Pharm. Investig. 49, 347–380. https://doi.org/10.1007/s40005-
+019-00439-x.
+Ferber, S.G., Namdar, D., Hen-Shoval, D., Eger, G., Koltai, H., Shoval, G., Shbiro, L.,
+Weller, A., 2020. The "entourage effect": terpenes coupled with cannabinoids for the
+treatment of mood disorders and anxiety disorders. Curr. Neuropharmacol. 18,
+87–96. https://doi.org/10.2174/1570159X17666190903103923.
+Fessi, H., Puisieux, F., Devissaguet, J.P., Ammoury, N., Benita, S., 1989. Nanocapsule
+formation by interfacial polymer deposition following solvent displacement. Int. J.
+Pharm. 55, R1–R4. https://doi.org/10.1016/0378-5173(89)90281-0.
+Fickert, J., Makowski, M., Kappl, M., Landfester, K., Crespy, D., 2012. Efficient
+encapsulation of self-healing agents in polymer nanocontainers functionalized by
+orthogonal reactions. Macromolecules 45, 6324–6332. https://doi.org/10.1021/
+ma301013p.
+Finlay, D.B., Sircombe, K.J., Nimick, M., Jones, C., Glass, M., 2020. Terpenoids from
+Cannabis Do not mediate an entourage effect by acting at cannabinoid receptors.
+Front. Pharmacol. 11. https://doi.org/10.3389/fphar.2020.00359.
+Fonte, P., Soares, S., Sousa, F., Costa, A., Seabra, V., Reis, S., Sarmento, B., 2014. Stability
+study perspective of the effect of freeze-drying using cryoprotectants on the structure
+of insulin loaded into PLGA nanoparticles. Biomacromolecules 15, 3753–3765.
+https://doi.org/10.1021/bm5010383.
+Han, L., Fu, Y., Cole, A.J., Liu, J., Wang, J., 2012. Co-encapsulation and sustained-release
+of four components in ginkgo terpenes from injectable PELGE nanoparticles.
+Fitoterapia 83, 721–731. https://doi.org/10.1016/j.fitote.2012.02.014.
+Iannitelli, A., Grande, R., Di Stefano, A., Di Giulio, M., Sozio, P., Bessa, L.J., Laserra, S.,
+Paolini, C., Protasi, F., Cellini, L., 2011. Potential antibacterial activity of carvacrol-
+loaded poly(DL-lactide-co-glycolide) (PLGA) nanoparticles against microbial
+biofilm. Int. J. Mol. Sci. 12, 5039–5051. https://doi.org/10.3390/ijms12085039.
+Ibrahim, E.A., Wang, M., Radwan, M.M., Wanas, A.S., Majumdar, C.G., Avula, B.,
+Wang, Y.H., Khan, I.A., Chandra, S., Lata, H., Hadad, G.M., Abdel Salam, R.A.,
+Ibrahim, A.K., Ahmed, S.A., ElSohly, M.A., 2019. Analysis of terpenes in Cannabis
+sativa L. Using GC/MS: method development, validation, and application. Planta
+Med. 85, 431–438. https://doi.org/10.1055/a-0828-8387. Epub Jan 15. PMID:
+30646402.
+Jansen, C., Shimoda, L.M.N., Kawakami, J.K., Ang, L., Bacani, A.J., Baker, J.D.,
+Badowski, C., Speck, M., Stokes, A.J., Small-Howard, A.L., Turner, H., 2019.
+Myrcene and terpene regulation of TRPV1. Channels (Austin) 13, 344–366. https://
+doi.org/10.1080/19336950.2019.1654347.
+Jimenez-Lopez, J., El-Hammadi, M.M., Ortiz, R., Cayero-Otero, M.D., Cabeza, L.,
+Perazzoli, G., Martin-Banderas, L., Baeyens, J.M., Prados, J., Melguizo, C., 2019.
+A novel nanoformulation of PLGA with high non-ionic surfactant content improves
+in vitro and in vivo PTX activity against lung cancer. Pharmacol. Res. 141, 451–465.
+https://doi.org/10.1016/j.phrs.2019.01.013.
+Lai, S.K., O’Hanlon, D.E., Harrold, S., Man, S.T., Wang, Y.Y., Cone, R., Hanes, J., 2007.
+Rapid transport of large polymeric nanoparticles in fresh undiluted human mucus.
+Proc. Natl. Acad. Sci. U. S. A. 104, 1482–1487. https://doi.org/10.1073/
+pnas.0608611104.
+Lapczynski, A., Bhatia, S.P., Letizia, C.S., Api, A.M., 2008. Fragrance material review on
+nerolidol (isomer unspecified). Food Chem. Toxicol. 46 (Suppl 11), S247–50.
+https://doi.org/10.1016/j.fct.2008.06.063.
+Marongiu, L., Donini, M., Bovi, M., Perduca, M., Vivian, F., Romeo, A., Mariotto, S.,
+Monaco, H.L., Dusi, S., 2014. The inclusion into PLGA nanoparticles enables
+α-bisabolol to efficiently inhibit the human dendritic cell pro-inflammatory activity.
+J. Nanopart. Res. 16, 2554. https://doi.org/10.1007/s11051-014-2554-4.
+Martin Banderas, L., Mu˜noz Rubio, I.-, Alvarez Fuentes, J., Dur´an Lobato, M.M., Arias
+Mediano, J.L., et al., 2014. Engineering of delta-9-tetrahydrocannabinol delivery
+systems based on surface modfiied-PLGA nanoplatforms. Coll. Surfaces B:
+Biointerfaces. 123, 114–122.
+Martín-Banderas, L., Alvarez-Fuentes, J., Dur´an-Lobato, M., Prados, J., Melguizo, C.,
+Fern´andez-Ar´evalo, M., Holgado, M.´A., 2012. Cannabinoid derivate-loaded PLGA
+nanocarriers for oral administration: formulation, characterization, and cytotoxicity
+studies. Int. J. Nanomed. 7, 5793–5806. https://doi.org/10.2147/ijn.s34633.
+Martinez Rivas, C.J., Tarhini, M., Badri, W., Miladi, K., Greige-Gerges, H., Nazari, Q.A.,
+Galindo Rodriguez, S.A., Roman, R.A., Fessi, H., Elaissari, A., 2017.
+Nanoprecipitation process: from encapsulation to drug delivery. Int. J. Pharm. 532,
+66–81. https://doi.org/10.1016/j.ijpharm.2017.08.064.
+Nuutinen, T., 2018. Medicinal properties of terpenes found in Cannabis sativa and
+Humulus lupulus. Eur. J. Med. Chem. 157, 198–228. https://doi.org/10.1016/j.
+ejmech.2018.07.076.
+Paula-Freire, L.I., Molska, G.R., Andersen, M.L., Carlini, E.L., 2016. Ocimum gratissimum
+essential oil and its isolated compounds (eugenol and myrcene) reduce neuropathic
+pain in mice. Planta Med. 82, 211–216. https://doi.org/10.1055/s-0035-1558165.
+Russo, E.B., 2011. Taming THC: potential cannabis synergy and phytocannabinoid-
+terpenoid entourage effects. Br. J. Pharmacol. 163, 1344–1364. https://doi.org/
+10.1111/j.1476-5381.2011.01238.x.
+Salatin, S., Barar, J., Barzegar-Jalali, M., Adibkia, K., Kiafar, F., Jelvehgari, M., 2017.
+Development of a nanoprecipitation method for the entrapment of a very water
+soluble drug into eudragit RL nanoparticles. Res. Pharm. Sci. 12, 1–14. https://doi.
+org/10.4103/1735-5362.199041.
+Santos, P.S., Oliveira, T.C., LM R.J, Figueiras, A., Nunes, L.C.C., 2018. β-caryophyllene
+delivery systems: enhancing the Oral pharmacokinetic and stability. Curr. Pharm.
+Des. 24, 3440–3453. https://doi.org/10.2174/1381612824666180912151412.
+Sharma, C., Al Kaabi, J.M., Nurulain, S.M., Goyal, S.N., Kamal, M.A., Ojha, S., 2016.
+Polypharmacological properties and therapeutic potential of beta-caryophyllene: a
+dietary phytocannabinoid of pharmaceutical promise. Curr. Pharm. Des. 22,
+3237–3264. https://doi.org/10.2174/1381612822666160311115226.
+Suk, J.S., Xu, Q., Kim, N., Hanes, J., Ensign, L.M., 2016. PEGylation as a strategy for
+improving nanoparticle-based drug and gene delivery. Adv. Drug Deliv. Rev. 99,
+28–51. https://doi.org/10.1016/j.addr.2015.09.012.
+M.M. El-Hammadi et al.

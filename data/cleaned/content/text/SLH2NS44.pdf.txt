@@ -1,0 +1,1637 @@
+International Journal of Pharmaceutics 606 (2021) 120906
+Available online 20 July 2021
+0378-5173/© 2021 Elsevier B.V. All rights reserved.
+Encapsulation of a highly hydrophilic drug in polymeric particles: A
+comparative study of batch and microfluidic processes
+Sarah S. Aboelela a,b, Mariam Ibrahim b, Abu Zayed M. Badruddoza b, Valerie Tran b,
+James K. Ferri b, Thomas D. Roper b,*
+a Department of Pharmaceutics, School of Pharmacy, Virginia Commonwealth University, Richmond, VA 23298, USA
+b Chemical and Life Science Engineering, College of Engineering, Virginia Commonwealth University, Richmond, VA 23220, USA
+A R T I C L E  I N F O
+Keywords:
+Double emulsion
+Solvent evaporation
+Microfluidics
+Hydrophilic drug encapsulation
+Polymeric particles
+PLGA
+Metformin hydrochloride
+Design of experiments
+A B S T R A C T
+The objective of this work was to investigate the effect of microfluidics on the quality attributes of metformin
+hydrochloride-loaded poly lactic-co-glycolic acid polymeric particles (MFH-PLGA PPs) when compared to a
+traditional double emulsion batch method. The relationship of encapsulation and loading efficiencies, yield %,
+particle size, surface morphology, and release profile with process and formulation variables were determined
+using design of experiments (DoE). The effects of the dispersal method of the primary (sonication vs. vortex) or
+secondary emulsion (microfluidics vs. batch), polyvinyl alcohol concentration (PVA), and drug to polymer ratio
+were investigated. The PPs’ size was impacted by both the PVA concentration and the type of primary and
+secondary emulsion dispersion methods. Microfluidics significantly increased the PPs’ yield %, particle size,
+encapsulation, and loading efficiencies. The higher loaded microfluidic-based PPs had more burst release,
+following first-order release kinetics when compared to the lower loaded batch-based particles, which followed
+the Korsmeyer-Peppas model for release kinetics. Microfluidic-based PPs exhibited a smooth, porous, more
+uniform, and larger particle size with hollow structure than the batch-based PPs with a matrix-like structure. In
+conclusion, we have elucidated the effect of microfluidics on the quality attributes of MFH-PLGA PPs and their
+comparison to the traditional batch technique.
+1. Introduction
+Hydrophilic drugs are rapidly eliminated from the body and can be
+metabolized before reaching their target organs. Therefore, they suffer
+from short half-lives, requiring to be administered multiple times daily
+to maintain an effective plasma concentration, which hinders patients’
+compliance (Bharali et al., 2003). Hence, their encapsulation in various
+drug delivery systems (DDSs), particularly polymeric particles (PPs),
+was proposed and investigated to mitigate such challenges. Drug de­
+livery in PPs has allowed the controlled (Sousa et al., 2017; Wang et al.,
+2017), targeted, or sustained-release of the entrapped molecule (Chen
+et al., 2017; Sun et al., 2017). One of the most widely used methods to
+encapsulate hydrophilic drugs in PPs is the double emulsion solvent
+evaporation method (DE-SE) (Lamprecht et al., 1999; Lee et al., 2016).
+Since DEs’ introduction in 1924 by Sefiriz, they have been prepared
+using a traditional batch method, requiring shear mixing (Iqbal et al.,
+2015b; Lagreca et al., 2020). DE-SE is conducted in two main steps:
+emulsification followed by organic solvent evaporation, as summarized
+in Fig. 1. Initially, primary emulsification of an aqueous solution of the
+drug (W1) with an organic solvent containing the polymer (O) is
+accomplished using shear mixing. The primary emulsion (W1/O) is then
+shear mixed for a second time in an outer water phase (W2) containing a
+polymer or a stabilizer to obtain secondary emulsion (W1/O/W2). The
+polymer solidification is induced during the solvent evaporation phase,
+which allows for the polymer precipitation at the oil–water interface and
+further encapsulation of the hydrophilic drug in the PPs. Finally, the
+Abbreviations: ANOVA, Analysis of Variance; DCM, Dichloromethane; DE(s), Double emulsion(s); DE-SE, Double Emulsion-Solvent Evaporation Technique; DoE,
+Design of Experiments; EE%, Encapsulation efficiency %; HPLC, High-performance liquid chromatography; LE %, Loading efficiency %; MFH, Metformin hydro­
+chloride; PLGA, Poly-lactic-co-glycolic acid; PPs, Polymeric particles; PVA, Polyvinyl alcohol; QAs, Quality attributes; DDSs, Drug delivery systems; AIC, Akaike
+information criterion; MSC, Model selection criterion; s, seconds; min, minutes; h, hour; ◦C, degree Celsius.
+* Corresponding author at: Pharmaceutical Engineering Laboratory, Chemical and Life Sciences Engineering, College of Engineering, Virginia Commonwealth
+University, Richmond, VA, 23220, USA.
+E-mail address: tdroper@vcu.edu (T.D. Roper).
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+https://doi.org/10.1016/j.ijpharm.2021.120906
+Received 28 May 2021; Received in revised form 15 July 2021; Accepted 18 July 2021
+
+International Journal of Pharmaceutics 606 (2021) 120906
+2
+solidified particles are separated, washed to remove any excess stabi­
+lizer, and lyophilized. This complex multi-step manufacturing process
+requires a profound understanding of the effect of formulation and
+process variables and their interaction on the fabricated PPs’ quality
+attributes (QAs) such as encapsulation efficiency (EE %), loading effi­
+ciency (LE %), particle size, and release profile. Polyvinyl alcohol con­
+centration in W2 (PVA, acts as a stabilizer) was shown to significantly
+affect the particle size (inverse proportionally) and EE % (inverse pro­
+portionally) of liraglutide PLGA PPs (Ismail et al., 2019). Yang et al.
+observed a similar effect for PVA concentration in W2 on particle size, as
+well as affecting the release profile of their protein-loaded PLGA PPs
+(increasing PVA concentration resulted in slower release) (Yang et al.,
+2001). Polymer concentration was depicted to impact the yielded PPs’
+particle size (direct proportionally) (Ibraheem et al., 2014; Iqbal et al.,
+2015a; Lamprecht et al., 1999) and similarly affects the EE % (Ismail
+et al., 2019; Paulo and Santos, 2019). The in-vitro release profile was
+shown to be influenced by the type of organic solvent, polymer con­
+centration (inverse proportionally) (Paulo and Santos, 2019), and mo­
+lecular weight of lactic acid copolymer (inverse proportionally with %
+burst release) (Zilberman and Grinberg, 2008). Some other variables
+were less well understood, for example, the primary emulsion dispersion
+method between sonication and vortexing (Qi et al., 2014). Researchers
+aimed to determine the effect of formulation and process parameters’
+variables on PPs’ QAs, with an end goal of optimizing and fabricating
+PPs exhibiting certain desired properties. Nevertheless, batch-based
+polymeric particles suffer from low EE %, high polydispersity index
+(PDI) due to lack of control over the droplet size, and difficulty to scale
+up; all of these are attributed to the required shear mixing (Lagreca
+et al., 2020; Rezvantalab and Keshavarz Moraveji, 2019).
+Microfluidics, a technique allowing the rapid and homogenous
+mixing of fluids in microchannels (Whitesides, 2006), represented a
+grand step forward for the controlled fabrication of DDSs that require
+shear mixing during their batch manufacturing. Previous work from the
+Weitz group demonstrated the capability to prepare highly uniform
+double (Utada et al., 2005), triple, and other hierarchical emulsions
+(Utada et al., 2007) on a drop by drop basis using glass capillary devices,
+benefiting from the hydrodynamic instability. They have further
+demonstrated its applicability to various emulsion-based applications,
+such as microparticle fabrication (Shah et al., 2008). Many research
+groups have studied DE droplet engineering using microfluidics,
+concentrating on droplets or droplet-particle geometry relationships.
+For example, Nie et al. have demonstrated the capability to manufacture
+uniform core–shell droplets and further PPs with controlled morphol­
+ogies in microfluidic devices, with a PDI not exceeding 2.5 % (Nie et al.,
+2005). They were interested in controlling the external and internal
+morphology of the PP by varying the flow rates of the input fluids.
+Similarly, Nabavi et al. investigated mechanisms to generate DEs and
+multi-core DE droplets in a single step focusing on droplet-based vari­
+ables (e.g., capillary number) (Nabavi et al., 2017, 2015). All these ef­
+forts have given an insight into droplet engineering and microfluidic
+application to various DDSs. However, for microfluidics to be further
+applied for fabricating hydrophilic drug-loaded microparticles on an
+industrial scale, more research is needed to enlighten how it affects PPs’
+QAs compared to the industry widely used method, batch method.
+Comparing the batch technique to microfluidics in terms of PP QAs was
+studied for other systems, such as single emulsion-based PPs (Busatto
+et al., 2018) and nanoprecipitation-based PPs (Xu et al., 2009), but less
+is known regarding double emulsion-based systems. Moreover, among
+microfluidic DE-based processes, fewer studies have been done to
+investigate the effect of formulation and process variables on the QAs of
+the fabricated PPs, such as particle size, release profile, and LE %, among
+others. Amoyav et al. investigated the impact of microfluidic DE poly­
+mer type, concentration, and molecular weight, organic solvent type,
+and continuous phase flow rate on solely the porosity of the fabricated
+porogen-containing PPs (Amoyav and Benny, 2019).
+Therefore, the purpose of this work was to investigate:
+1. The effect of microfluidics on the PP QAs as compared to the tradi­
+tional batch approach.
+2. A comparison of the two techniques focusing on screening the effect
+of formulation and process parameters variables on the PP’s EE %, LE
+%, particle size, yield %, release profile, and surface and inner
+morphologies.
+The study focused on microfluidics as a method of dispersion of the
+secondary emulsion, while the primary emulsion preparation technique
+was batch-based. Primary emulsion variables, including dispersion
+method, the drug to polymer ratio, PVA concentration in W1, were first
+studied for batch-based PPs using a 23 full factorial DoE study design.
+Selected primary emulsion variables were included in a second DoE,
+comparing microfluidics to batch. Metformin hydrochloride (MFH), a
+small, highly water-soluble drug (log P = -1.8) due to its low molecular
+weight and high hydrophilicity, was considered a model challenging
+hydrophilic drug to be loaded in PLGA PPs.
+2. Materials and methods
+2.1. Materials
+PLGA (50:50, Ester terminated, inherent viscosity 0.63 dl/g in HFIP)
+was obtained from Lactel, Durect Corp. Inc, United States. MFH was
+purchased from Toronto Research Chemicals, Canada. PVA, average
+molecular weight 30,000–70,000 g/mol, 87–90% hydrolyzed was ob­
+tained from Sigma-Aldrich, United States. Dichloromethane (DCM) was
+purchased from J.T. Baker, ACS reagent. All other solvents were of HPLC
+grade and were purchased from Sigma-Aldrich.
+For fabricating the co-flow glass capillary device, square (ID = 0.9
+mm) and round glass capillaries (ID = 0.7 mm, OD = 0.87 mm) pur­
+chased from Vitrocom®, United States, were used. The round glass
+capillary was pulled using a Micropipette puller (Sutter Instrument Co.,
+United States) and polished to the desired nozzle size. Glass pretreat­
+ment, treatment, and post-treatment washing were performed as
+described elsewhere with some modifications (Levenstein et al., 2016).
+The nozzle glass surface was hydrophilic-treated using (3-aminopropyl)
+triethoxysilane to ensure proper wetting for emulsion generation by
+placing 100 µL of the desired silane grade with the capillaries in a
+vacuum desiccator for 60 min. 5-minute epoxy, Devcon®, United States,
+was used to glue the co-flow microfluidic device.
+Fig. 1. Experimental setup of the preparation of MFH-PLGA PPs via the traditional batch method.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+3
+2.2. Batch-based MFH-PLGA PPs preparation
+MFH-PLGA PPs were prepared using the DE-SE technique schemat­
+ically shown in Fig. 1. A 0.25 mL of an aqueous MFH solution (40 or 100
+mg/mL), with or without 1 %w/v PVA, was emulsified in 2 mL of PLGA
+solution in dichloromethane (DCM) at a concentration of 200 mg/mL to
+form the primary emulsion. The primary emulsification was performed
+using sonication for 30 seconds (s) on ice or vortexing for 2 minutes
+(min). The primary emulsion was then added dropwise to a 300 mL
+outer water phase (W2) of 1 %w/v PVA and stirred for 2–3 hours (h) at
+room temperature, allowing for DCM evaporation and solidification of
+the PLGA PPs encapsulating MFH. MFH-PLGA PPs were then collected
+by filtration (Whatman™ Nylon filter, 0.45 µm), washed with deionized
+water three times to remove excess PVA, frozen at −80 ◦C in a Revco™
+freezer, and then lyophilized using Labcono Freezone® freeze dryer.
+Dried MFH-PLGA PPs were stored in closed vials at 4 ◦C for further
+characterizations.
+2.3. Microfluidic-based MFH-PLGA PPs fabrication
+MFH-PLGA PPs were fabricated using microfluidics, as shown in
+Fig. 2. The primary emulsion was prepared using sonication, as
+mentioned earlier. It was then introduced into the nozzle (dispersal
+phase) at 0.05 mL/min in a dripping regime with a 1 % w/v PVA injected
+into the square capillary at 0.5 mL/min (continuous phase). The fabri­
+cated MFH-loaded PLGA droplets were collected in a petri-dish con­
+taining 1 %w/v PVA to avoid coalescence and left in a fume hood for 3 h
+in a quiescent state to allow for DCM evaporation. The fabricated so­
+lidified microfluidic-based MFH-PLGA PPs were further processed in the
+same manner as the batch-based PPs.
+2.4. Design of experiments (DoE) studies
+Design-Expert software (Version 11, Stat-Ease, Minneapolis, MN)
+was used to plan the full-factorial DoE investigation of the primary
+emulsion preparation variables and their effects on the QAs of MFH-
+PLGA PPs. Selected significant primary emulsion variables were
+included in a second full-factorial DoE comparing the batch and
+microfluidics as a secondary emulsion dispersion method. A full-
+factorial DoE design was selected as it is known to be suitable for such
+screening studies (Hanrahan and Lu, 2006). Statistical analysis was
+performed using analysis of variance (ANOVA) in which a P-value of less
+than 0.05 was considered significant.
+2.5. Physicochemical characterization of MFH-PLGA PPs
+2.5.1. Particle morphology and size determination
+The shape and surface morphology of MFH-PLGA PPs were examined
+using Zeiss EVO 50 XVP scanning electron microscope (SEM). Samples
+were loaded on a double-coated carbon conductive tape (Ted Pella Inc.,
+Redding, CA), mounted on aluminum stubs, and sputter-coated twice
+with gold before imaged using SEM at an acceleration voltage of 5–10
+kV. The geometric diameter (Dg = X50) of the particles was measured
+directly from the SEM images with ImageJ 1.49n software (NIH, USA).
+The inner morphology of MFH-PLGA PPs, when done, was examined
+for blade-cut particles using SEM and microtome-cut particles using Jeol
+JEM-1230 transmission electron microscopy (TEM) and Amscope
+ME520TA microscope equipped with an MU-900 camera. The blade-cut
+particles were prepared by immersing the PPs in liquid nitrogen, fol­
+lowed by cross-sectioning using a blade. The protocol used for micro­
+tomy and TEM imaging is detailed in S1.
+2.5.2. Encapsulation efficiency (EE %)
+The amount of MFH successfully incorporated in the PLGA PPs was
+determined using a liquid–liquid extraction method or the in-vitro
+dissolution data (release studies). In the liquid–liquid extraction
+method, 10 mg MFH-PLGA PPs were added to 2 mL of DCM to dissolve
+PLGA, and MFH was extracted using 1 mL of deionized water, stirring at
+50 rpm for 48 h. The aqueous layer was withdrawn, and the concen­
+tration of MFH was determined using HPLC analysis.
+The in-vitro dissolution testing was performed using 10 mg MFH-
+PLGA PPs suspended in 1 mL phosphate buffer pH of 6.8 (±0.05) in
+Eppendorf tubes fitted into a foam piece, making sure the part con­
+taining the solution is submerged in the water bath. They were kept
+stirring at 200 rpm at 37 ◦C. At predetermined time intervals, tubes were
+centrifuged at 14,000 rpm, and then 1 mL was withdrawn for HPLC
+analysis. The removed solution was replaced with a fresh dissolution
+medium. Release studies were performed in triplicates (n = 3) for 54
+days until no further release was observed. The total amount of drug
+released was used to calculate MFH’s EE % in the PLGA PPs. Theoretical
+and actual LE % and EE % were calculated using Equations 1, 2 and 3.
+Theoretical drug loading
+(
+LE
+)
+= Mass of drug intially used in experiment
+Total mass of drug and polymer
+(1)
+Actual LE =
+Mass of encapsulated drug (from HPLC)
+Total mass of PPs used (in extraction or release experiment)
+(2)
+Fig. 2. Diagram of the experimental setup used to prepare MFH-PLGA PPs via microfluidics technique (a), showing the co-flow device image (b).
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+4
+EE % =
+Actual LE
+Theortical drug loading (LE) × 100
+(3)
+2.5.3. In-vitro release profile kinetic modeling
+To understand the mechanism by which MFH released from the
+loaded particles, we subjected the release profile to fit multiple kinetic
+models; zero order, first order, Higuchi, Korsmeyer-Peppas, Baker-
+Lonsdale, Hixson-Crowell, and Hopfenberg, using DDsolver software
+(Zhang et al., 2010). The goodness of fit parameters and rate constants
+were calculated. The goodness of fit of a model was determined based on
+R2 adjusted, Akaike information criterion (AIC), and model selection
+criterion (MSC).
+2.5.4. Process yield %
+For the batch-based formulations, the final lyophilized MFH-PLGA
+PPs were collected in pre-weighed vials, the weight was recorded, and
+Equation 4 was used to calculate the actual yield %.
+Yield % =
+Mass of yielded PPs
+Total mass of drug and polymer intially used × 100
+(4)
+For the microfluidic-based formulations, each microfluidic run
+duration was recorded from the moment the capillaries were filled.
+Equations 5, 6 and 7 were used to calculate the actual yield %.
+Actual volume of the primary emulsion injected
+(
+mL
+)
+= Flow rate of primary emulsion
+(
+mL/min
+)
+× duration of the run
+(
+min
+)
+(5)
+Theoretical mass injected in the actual injected volume
+=
+mass of drug and polymer
+volume of the primary emulsion
+× actual volume of primary emulsion injected
+(6)
+Yield % =
+Mass of yielded PPs
+Theortical mass injected in the actual injected volume
+× 100
+(7)
+2.5.5. Thermal analysis
+Thermal analysis of MFH-PLGA PPs, pure MFH, PLGA 50:50, and
+physical mixtures of both was performed using differential scanning
+calorimetry (DSC) (DSC Q1000, TA instruments, DE, United States). A
+5–10 mg sample was loaded in aluminum pans, cribbed, and heated
+from 0 to 250 ◦C at the rate of 10 ◦C/min under a nitrogen atmosphere.
+Differences in heat flow rate were measured against an empty reference
+pan.
+2.5.6. X-Ray powder diffraction (XRPD) analysis
+MFH’s crystallinity in MFH-PLGA PPs was analyzed using XRPD
+(Miniflex II Desktop X-ray diffractometer, Rigaku, Japan). Copper K-
+alpha radiation was used with a scintillation detector at a generation
+voltage of 30 kV and a current of 15 mA. Data were collected by the 2θ
+method at a scan speed of 1◦/minute at the range of 5 −
+80◦2θ.
+2.5.7. HPLC analysis
+HPLC analysis was performed using an Agilent 1100 HPLC system
+with a Phenomenex Luna® SCX column (250 mm × 4.6 mm, 10 µm, 100
+Å) (Macherey–Nagel, Germany) equipped with a guard column filled
+with the same packing material and UV detection at 218 nm. The mobile
+phase consisted of 100% ammonium phosphate buffer of pH = 3 at a
+flow rate of 2.2 mL/min, run with isocratic conditions. The injection
+volume was 20 μL and the retention time of MFH’s peak was 8.5 min.
+The calibration curve was prepared at 10 µg/mL to 400 µg/mL of MFH.
+3. Results
+3.1. Primary emulsion variables effect on MFH-PLGA PP QAs
+3.1.1. Primary emulsion preparation variables: DoE study
+A two-level, full-factorial design (23) was developed to understand
+the effect of the primary emulsion dispersion method (factor A), the drug
+to polymer ratio (factor B), and PVA concentration in W1 (factor C) on
+yield % (Y1), particle size (Y2), EE % (Y3), and LE % (Y4) of MFH-PLGA
+PPs prepared via the batch technique. The upper and lower levels of each
+variable are summarized in Table 1A. The primary emulsion for each of
+the eight planned formulations was prepared according to the settings
+mentioned in Table 2, keeping the secondary emulsion preparation
+conditions constant across all experiments using stirring for 2–3 h. The
+results of all study responses, summarized in Table 2, were analyzed
+using Design-Expert, which produces half-normal probability plots (S2)
+and Pareto charts to visualize the study variables-response relationship
+and significance.
+3.1.2. Yield %
+The process yield % of the eight batch-based formulations (F1 – F8)
+ranged from 65.9 to 81.8 %. The fitted model describing the influence of
+variables on the yield % is as follows:
+Yield % = 73.54 −4.77B
+According to this model and the Pareto chart Fig. 3a, the drug to
+polymer ratio was the only variable that influenced the yield % of MFH-
+PLGA PPs (P-value = 0.004). The 1:10 drug to polymer ratio resulted in a
+higher yield % (ranging from 75.3 to 81.8 %) than the 1:4 drug to
+polymer ratio (ranging from 65.9 to 69.3 %), as shown in Fig. 4a.
+3.1.3. Particle size
+MFH-PLGA PPs, fabricated under the eight experimental settings,
+had an average geometric diameter between 208.5 and 458.8 µm. The
+polynomial equation describing the contribution of process and formu­
+lation variables on the size of MFH-PLGA PPs is as follows:
+Particle size = 324.49 + 4.91A + 21.81B + 78.14C −34.51AB
+The particle size was significantly affected by the PVA concentration
+in W1 (P-value = 0.0025) as well as the primary emulsion dispersion
+method-drug to polymer ratio interaction (P-value = 0.0253), as
+depicted in the Pareto chart in Fig. 3b. It is evident from the surface plots
+in Fig. 4c and d that higher PVA concentration resulted in larger parti­
+cles, which is consistent across both levels of the other two study vari­
+ables; drug to polymer ratio and dispersion method. MFH-PLGA
+formulations (F3, F5-F7) that contained 1 %w/v PVA in W1 had an
+average particle size ranging from 318.0 to 458.8 µm as compared to
+208.5 to 293.0 µm for the formulations without PVA (F1, F2, F4, and
+F8). Interestingly, from the interaction chart in Fig. 4b, it is apparent
+that sonication, as a high shear mixing method, resulted in similar
+Table 1
+Doe studied variables with their considered levels table 1A) Doe study 1: pri­
+mary emulsion variables understanding table 1B) Doe study 2: comparison of
+microfluidics to batch.
+1A
+Variable
+Code
+High level
+Low level
+Primary emulsion dispersion method
+Factor A
+Sonication
+Vortex
+Drug to polymer ratio
+Factor B
+1:4
+1:10
+PVA concentration in W1 (%w/v)
+Factor C
+1
+0
+1B
+Variable
+Code
+High level
+Low level
+Drug to polymer ratio
+Factor A
+1:4
+1:10
+PVA concentration in W1 (%w/v)
+Factor B
+1
+0
+Secondary emulsion dispersion method
+Factor C
+Batch
+Microfluidics
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+5
+particle sizes at both 1:4 and 1:10 drug to polymer ratios, while vor­
+texing resulted in significantly larger particle size at the 1:4 drug to
+polymer ratio.
+3.1.4. Encapsulation efficiency
+MFH EE % in the PLGA PPs for F1–F8 ranged from an average of 2.3
+to 35.5 %. The fitted model for describing formulation and process
+variables influencing the EE % is as follows:
+EE % = 16.07 + 10.16A −3.87B −2.87AB
+The EE % was influenced by the primary emulsion dispersion method
+(P-value = 0.0003), the drug to polymer ratio (P-value = 0.0097), and
+Table 2
+primary emulsion variables’ DoE study, summarizing the experimental run parameters and their corresponding responses.
+Formulation ID
+Dispersion method
+Drug: polymer ratio
+PVA% in W1
+EE %
+LE %
+Yield %
+Particle size (µm)
+F1
+Vortex
+1:10
+0
+8.3 ± 0.68
+0.7 ± 0.06
+75.3
+208.5 ± 70.0
+F2
+Sonication
+1:10
+0
+30.5 ± 2.44
+2.8 ± 0.23
+81.8
+248.2 ± 84.8
+F3
+Vortex
+1:10
+1
+4.6 ± 0.66
+0.4 ± 0.06
+76.5
+318.0 ± 84.9
+F4
+Vortex
+1:4
+0
+2.3 ± 0.22
+0.5 ± 0.04
+65.9
+293.0 ± 84.4
+F5
+Vortex
+1:4
+1
+2.5 ± 0.40
+0.5 ± 0.08
+72.8
+458.8 ± 124.9
+F6
+Sonication
+1:10
+1
+35.5 ± 1.79
+3.2 ± 0.17
+79.6
+436.0 ± 103.0
+F7
+Sonication
+1:4
+1
+15.2 ± 2.21
+3.0 ± 0.45
+69.3
+397.7 ± 74.5
+F8
+Sonication
+1:4
+0
+17.2 ± 0.89
+3.5 ± 0.18
+67.1
+235.7 ± 30.7
+Fig. 3. Pareto chart of yield % (a); particle size (b); EE % (c); and LE % (d). Orange and blue bars represent the factor effect on the corresponding response positively
+and negatively, respectively.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+6
+the interaction of these two factors (P-value = 0.0262), as shown in the
+Pareto chart (Fig. 3c). It is noticeable from the interaction chart in
+Fig. 4e that vortexing led to low EE % at both 1:4 (an average of 2.3 to
+2.5 %) and 1:10 (an average of 4.6 to 8.3 %) drug to polymer ratios. In
+contrast, sonication resulted in significantly higher EE % at the 1:10
+drug to polymer ratio (an average of 30.5 to 35.5 %).
+3.1.5. Loading efficiency
+The LE % of the eight formulations varied from 0.4 to 3.5 %, which
+the following model describes its significantly affecting variables:
+LE % = 2.25 + 1.43A
+The Pareto chart (Fig. 3d) indicated that the method of dispersion (P-
+value = 0.0019) solely affected the LE % of the MFH-PLGA PPs, in which
+sonication led to significantly higher LE % (Fig. 4f). The LE % of the
+sonicated formulations (F2, F6, F7, and F8) ranged from 2.8 to 3.5 %,
+while the vortexed formulations (F1, F3, F4, and F5) LE% ranged from
+0.4 to 0.7 %.
+Fig. 4. Surface plots showing the effect of the significant model-included variables on yield % (a) and particle size when sonication (c) or vortexing (d) was used.
+Interaction plots of two factors significantly affecting particle size (b) and EE % (e); red and black lines represent the high and low levels of factor included on X2. One
+factor plot of factor significantly affecting LE % (f).
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+7
+3.1.6. Surface morphology
+All F1-F8 formulations were observed to have spherical-shaped
+morphology with polydisperse particle size using SEM, as shown in
+Fig. 5Ia and Fig. 5IIa. From comparing Fig. 5I to Fig. 5II, it is noticeable
+that the degree of the surface porosity and roughness is correlated pri­
+marily to the method of dispersion of the primary emulsion. Formula­
+tions fabricated using vortexing (Fig. 5Ib-d) exhibited a less porous and
+smooth surface than formulations prepped using sonication (Fig. 5IIb-d),
+with a highly porous and rough texture. These findings were consistent
+across each of the four formulations fabricated using the same dispersion
+method while varying the drug to polymer and the PVA concentration.
+From Fig. 5II, it is observed that the sonicated PPs’ degree of porosity is
+affected by the drug to polymer ratio. MFH-PLGA PPs prepared using
+sonication at a 1:4 drug to polymer ratio (Fig. 5IId and e) have an
+extremely porous surface compared to those fabricated at a 1:10 drug to
+polymer ratio (Fig. 5IIb and c).
+3.2. Comparison of microfluidics to traditional batch technique
+3.2.1. DoE study design
+Based on our findings in the previous DoE study, sonication, a pri­
+mary emulsion dispersion method, was proven to be crucial for maxi­
+mizing EE % and LE % and resulting in less poly-dispersed MFH-PLGA
+PPs than vortexing. Accordingly, we fixed sonication as the primary
+emulsion dispersion method for this second DoE study, comparing
+microfluidics to an entirely traditional batch technique. A two-level,
+full-factorial 23 DoE design was utilized to determine the effect of the
+drug to polymer ratio (factor A), PVA concentration (factor B), and
+method of dispersion of the secondary emulsion (factor C) on yield %
+(Y1), particle size (Y2), EE % (Y3), LE % (Y4), cumulative % release at 1
+h (Y5) and 24 h (Y6). The upper and lower level of each variable is
+presented in Table 1B. The summary of the eight formulations experi­
+mental conditions (A1-A8) and their corresponding responses are shown
+in Table 3. Design Expert, as mentioned earlier, analyzes the data and
+summarizes the significance of independent variables on the dependent
+variables in Pareto charts (Fig. 6) and half-normal plots (S3). The sig­
+nificant variables affecting each response are shown in Fig. 7.
+3.2.2. Surface and inner morphology
+Four microfluidic-based MFH-PLGA PPs formulations (A1, A4-A6)
+were fabricated using a co-flow device. The primary emulsion, prep­
+ped using sonication, was injected into the co-flow device as the
+dispersal phase into a continuous phase of 1 %w/v PVA (Fig. 2). Once
+the primary emulsion passed through the nozzle, it formed highly uni­
+form DE droplets (Video 1 and Fig. 8a). The DE droplets collected in the
+petri dish had a 2D-circle shape with a diameter slightly larger than its
+original size coming straight out of the device. The 2D-MFH-PLGA DE
+droplets shrank in size during the solvent evaporation phase, forming
+3D-spherical droplets (Fig. 8b) while maintaining their size uniformity.
+Post-drying and lyophilization, these uniform droplets resulted in uni­
+form PPs, as shown in the SEM images in Fig. 9a and b. Microfluidic
+(Fig. 9a and b) and batch-based (Fig. 9d and e) MFH-PLGA PPs had
+similar surface morphology; spherical particles with porous surfaces.
+The pore size analysis using ImageJ software revealed that the
+microfluidic-based MFH-PLGA PPs had significantly larger pores than
+those produced by the batch process, 13.9 ± 6.22 µm and 2.6 ± 1.10 µm,
+respectively. Microfluidic-based MFH-PLGA PPs had a more uniform
+particle size with a soft, sponge-like texture, while the batch-based PPs
+suffered from high polydispersity with a hard, dense texture. The SEM
+images of cross-sectioned MFH-PLGA PPs in Fig. 9c and f revealed a
+hollow form for the microfluidic-based PPs with varying skin thick­
+nesses; in contrast, the batch-based PPs had a matrix-like structure. The
+same matrix-like inner morphology was confirmed from the TEM and
+optical microscope images of the microtome sections of the batch-based
+particles, as shown in Fig. 10. Unfortunately, the microtomy of the
+microfluidic-based MFH-PLGA PPs was not successful because the PPs
+popped out of the resin during slicing.
+3.2.3. Crystallinity
+The XRPD diffractograms comparing pure MFH, unprocessed PLGA
+(50:50), microfluidic and batch-based MFH-PLGA PPs are shown in S4.
+Pure MFH exhibited multiple characteristic diffraction peaks at 2θ;
+12.5◦, 17.9◦, 23.1◦, 24.8◦, and 25.8◦, indicating its crystalline structure.
+Unprocessed PLGA showed a curved baseline with no identifiable peaks,
+typical for amorphous solids. Likewise, microfluidic and batch-based
+MFH-PLGA PPs had no characteristic peaks, suggesting that MFH is
+encapsulated in the PLGA PPs in an amorphous or molecularly disor­
+dered crystalline phase of molecular dispersion (Shin et al., 2010).
+3.2.4. Thermal analysis
+The DSC thermograms comparing the physical state of MFH-PLGA
+PPs prepped via microfluidics and batch techniques to their individual
+components are shown in S5. Pure MFH had an endothermic peak at
+231.4 ◦C, corresponding to its melting point (Tm). On the other hand,
+pure PLGA 50:50 had a single exothermic peak at 51.61 ◦C, corre­
+sponding to its glass transition temperature (Tg). Both MFH-PLGA PPs
+made via batch and microfluidics had similar Tg and Tm to the physical
+mixture of MFH and PLGA. Hence, indicating only physical interaction
+between the drug and the polymer.
+3.2.5. Formulation and process variables effect on MFH-PLGA PPs’ QAs:
+Between microfluidics and batch
+3.2.5.1. Yield %. MFH-PLGA PPs (A1–A8) yield % ranged from an
+average of 67.1 to 92.7 %. The fitted model describing the variables
+affecting the yield % is as follows:
+Fig. 5. Scanning electron microscopy (SEM) images of MFH-PLGA PPs prepared using (I) vortexing [F1 zoom-out (a) and zoom-in (b), F3 (c), F4 (d), and F5 (e)] and
+(II) sonication [F2 zoom-in (a) and zoom-out (b), F6 (c), F7 (d), and F8 (e)]. Every two images annotated with the same letter were prepared using the same drug:
+polymer ratio and PVA concentration. The images were taken at different magnification powers for clarification reasons.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+8
+Yield % = 79.88 −6.05A −5.43C
+From this model and the Pareto chart (Fig. 6a), it is depicted that the
+drug to polymer ratio (P-value less than 0.0001); consistent with the
+results obtained in the primary emulsion study, in addition to the
+method of dispersion of the secondary emulsion (P-value = 0.0001)
+significantly impact the yield %. It is evident from Fig. 7a and b that the
+low drug to polymer ratio (1:10) resulted in a higher yield % compared
+to the 1:4 drug to polymer ratio for both microfluidic and batch-based
+MFH-PLGA PPs. Moreover, microfluidics led to an overall higher yield
+% (ranging from 78.9 to 92.7 %) than batch (ranging from 67.1 to 81.8
+%).
+3.2.5.2. Particle size. The particle size of the eight MFH-PLGA PPs for­
+mulations varied from an average of 235.7 µm to 1011 µm. The poly­
+nomial equation describing the variables influencing the particle size is
+shown below:
+Particle size = 667.07 + 37.71B −334.67C + 49.74BC
+MFH-PLGA PPs’ size was significantly affected by the method of
+dispersion of the secondary emulsion (P-value less than 0.0001), the
+Table 3
+DoE study comparing microfluidic-based to batch-based MFH-PLGA PPs: Experimental conditions and their corresponding responses.
+Formulation
+#
+Drug:
+polymer ratio
+PVA concentration
+in W1
+Method of dispersion of
+secondary emulsion
+EE%
+LE%
+Yield
+%
+Particle size
+(µm)
+Cumulative %
+release 1 hr
+Cumulative %
+release 24 hr
+A1
+1:4
+1
+Microfluidics
+64.6 ±
+0.87
+12.9 ±
+0.17
+78.9
+973.4 ±
+93.8
+93.6 ± 0.56
+98.6 ± 0.05
+A2
+1:10
+1
+Batch
+33.9 ±
+0.49
+3.1 ±
+0.04
+79.6
+436.0 ±
+103.0
+13.2 ± 3.99
+54.3 ± 2.82
+A3
+1:10
+0
+Batch
+25.7 ±
+6.22
+2.3 ±
+0.57
+81.8
+248.2 ±
+84.8
+15.9 ± 3.17
+41.2 ± 7.81
+A4
+1:10
+0
+Microfluidics
+59.3 ±
+2.70
+5.4 ±
+0.25
+92.7
+1011.6 ±
+183.8
+88.1 ± 2.34
+96.2 ± 0.33
+A5
+1:4
+0
+Microfluidics
+69.6 ±
+1.80
+13.9 ±
+0.36
+80.0
+1010.0 ±
+56.5
+92.1 ± 1.52
+98.2 ± 0.57
+A6
+1:10
+1
+Microfluidics
+50.2 ±
+5.12
+4.6 ±
+0.47
+89.6
+1007.7 ±
+58.7
+54.1 ± 6.71
+80.1 ± 2.95
+A7
+1:4
+1
+Batch
+14.7 ±
+2.78
+2.9 ±
+0.56
+69.3
+397.7 ±
+74.5
+34.6 ± 10.63
+80.0 ± 8.85
+A8
+1:4
+0
+Batch
+19.1 ±
+2.54
+3.8 ±
+0.51
+67.1
+235.7 ±
+30.7
+23.2 ± 0.69
+68.4 ± 5.34
+Fig. 6. Pareto charts of yield % (a); particle size (b); EE % (c); LE % (d); cumulative % release at 1 h (e); cumulative % release 24 h (f). Orange and blue bars
+represent the factor effect on the corresponding response positively and negatively, respectively.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+9
+PVA concentration in W1 (P-value = 0.0043), and the interaction be­
+tween these two variables (P-value = 0.0018), as shown in the Pareto
+chart (Fig. 6b). Microfluidic-based MFH-PLGA PPs had a uniform, non-
+significantly different large particle size at both 1 %w/v (an average of
+973.4 to 1007.7 µm) and 0 %w/v PVA concentration (an average of
+1010.0 to 1011.6 µm). The full batch process resulted in smaller parti­
+cles at 0 %w/v PVA concentration (an average of 235.7 to 248.2 µm)
+that significantly increased at the 1 %w/v PVA concentration (an
+average of 397.7 to 436.0 µm), as shown in the interaction chart in
+Fig. 7c.
+3.2.5.3. Encapsulation efficiency. We tried to determine the EE % of the
+four microfluidic-based MFH-PLGA PPs formulations using the liquid­
+–liquid extraction method as done previously in the first DoE study.
+However, high variability was observed due to microfluidic particles’
+floating into the water phase, leaving the organic layer. Thus, we
+measured the EE % of all eight formulations (A1-A8) using the release
+profile’s total amount released. The release studies were continued till
+no more MFH was being released. When comparing the EE % results of
+the batch-based formulations from both used methods, it is observed
+that there is an excellent agreement.
+It is notable from the Pareto chart in Fig. 7c that the EE % of MFH-
+PLGA PPs is significantly influenced by whether the formulation was
+manufactured using microfluidics or batch technique (P = 0.0004) and
+Fig. 7. Surface plots (a and b) and interaction charts (c, d, and e), showing the model-included factors that significantly affected yield % (a and b), particle size (c),
+EE % (d), and LE % (e).
+Fig. 8. Optical microscope images of highly uniform MFH-PLGA DE collected droplets out of the co-flow device (a) and during solvent evaporation (b). Both images
+were taken at the same magnification power for comparison reasons.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+10
+its interaction with the drug to polymer ratio variable (P = 0.0223).
+Microfluidic-based formulations (A1, A4-A6) had substantially higher
+EE %, ranging from an average of 50.2 % to 69.6 % compared to an
+average EE % range of 14.7 to 33.9 % for batch-based formulations (A2,
+A3, A7, and A8). The EE % was observed (Fig. 7d) to trend directly
+proportional with the drug to polymer ratio when microfluidics was
+used, while vice-versa using the batch technique. The polynomial
+equation describing the contribution of process and formulation vari­
+ables to the EE % is detailed below.
+EE % = 42.14 −0.1375A −18.79C −6.31AC
+3.2.5.4. Loading efficiency. The LE % of the eight formulations varied
+between an average of 2.3 and 13.9 %. The fitted model describing the
+variables influencing the LE % of MFH-PLGA PPs is as follows:
+LE % = 6.06 + 2.31A −3.04C −1.99AC
+MFH-PLGA PPs LE % was influenced by the method of dispersion of
+the secondary emulsion (P = 0.0001), the drug to polymer ratio (P =
+0.0005), and the interaction between these two variables (P = 0.0009)
+(Fig. 6d). From the interaction chart in Fig. 7e, it is evident that
+microfluidics resulted in markedly higher LE % than the batch at both
+levels of the drug to polymer ratio. Microfluidic-based formulations
+prepped at the 1:4 drug to polymer ratio had higher LE % (ranging from
+an average of 12.9–13.9 %) than the 1:10 formulations (ranging from an
+average of 4.6–5.4 %), while the batch-based formulations were not
+much different at both levels (2.9–3.8 % at 1:4 and 2.3–3.1 % at 1:10).
+Interestingly, it is observed that increasing the drug to polymer ratio for
+batch-based formulations did not increase the LE % of MFH-PLGA PPs,
+while vice versa for microfluidic-based formulations.
+3.2.5.5. Release profile and kinetics. The in-vitro release profile of MFH-
+PLGA PPs eight formulations (A1-A8) is shown in Fig. 11a. For clarifi­
+cation reasons, the formulations are labeled by the drug to polymer
+ratio, the PVA concentration in W1, and the method of dispersion of
+secondary emulsion. It is depicted from Fig. 11b that the release is faster
+from microfluidic-based MFH-PLGA PPs (ranged between an average of
+54.1 to 93.6 % by 1 h) than the batch-based PPs (ranged between an
+average of 13.2 to 34.6 %). Formulations fabricated at the same settings
+of the drug to polymer ratio and PVA concentration between the two
+methods followed the same release profile pattern at 1 h. Formulations
+with a high drug to polymer ratio (1:4) released MFH faster than the
+1:10 formulations. PVA presence in the W1 minimally slowed the
+release. These observations reveal the consistency of the impact of the
+primary emulsion preparation conditions on the release profile of
+Fig. 9. SEM images of microfluidic-based MFH-PLGA PPs zoom-out (a), zoom-in (b), and cut particles (c); and batch-based MFH-PLGA PPs zoom-out (d), zoom-in (e),
+and cut particles (f). Images were taken at different magnifications for clarification reasons.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+11
+microfluidic and batch-based MFH-PLGA PPs.
+We studied the cumulative % release at 1 and 24 h as DoE responses
+to determine the formulation and process variables that significantly
+affected the drug release once the imbibition of water happens (1-hour
+time point) and the % burst release (24-hour time point). These variables
+are shown below in the fitted model that best describes the cumulative %
+release at 1 and 24 h:
+% release at 1hour = 51.85 −30.13C
+% release at 24 hours = 77.13 + 9.18A −16.15C
+It is evident from the one-factor charts in Fig. 11c and d that
+microfluidics resulted in PPs that significantly released MFH faster than
+the batch at 1 (P-value = 0.0012) and 24 h (P-value = 0.0040). The %
+burst release, 24-hour time point, was as well influenced by the drug to
+polymer ratio (P-value = 0.0357), as shown in the one-factor chart in
+Fig. 11e. A low drug to polymer ratio resulted in slower release than the
+high drug to polymer ratio.
+MFH in-vitro release data were fitted to multiple kinetic models
+(summarized in Table 4) using the DDDsolver add-in program to
+Microsoft Excel. Each model’s goodness of fit was characterized in terms
+of R2 adjusted, AIC, and MSC, represented in Table 5. The best-fitting
+model will have an R2 adjusted value close to 1, smaller AIC, and MSC
+value greater than 2. The results indicated that MFH release from the
+batch-based MFH-PLGA PPs (A2, A3, A7, and A8) agreed well with the
+Korsmeyer-Peppas model. All four formulations had an n-value less than
+0.43 except for A8. An n-value of less than 0.43 indicates that the MFH
+release from the spherical PLGA PPs follows Fickian diffusion from a
+poly-dispersed system (Ritger and Peppas, 1987). A8 formulation fol­
+lowed a non-Fickian “anomalous” kinetics, indicating structure changes
+of PPs during release or localized swelling stress differences (Bruschi,
+2015; Peppas, 1985). On the other hand, Korsmeyer-Peppas model
+application to microfluidic-based MFH-PLGA PPs in-vitro release profiles
+was not possible as they released more than 80 % by the third time point,
+leaving no sufficient points to fit a model. Korsmeyer-Peppas model can
+be applied only for the release fraction of less than 60 % (Ritger and
+Peppas, 1987). The release of MFH from the microfluidic-based MFH-
+PLGA PPs was in good agreement with first-order kinetics, indicating
+diffusion of a water-soluble drug from a porous matrix (Ramteke et al.,
+2014).
+4. Discussion
+In a systematic two-phase study, we revealed how MFH-PLGA PPs
+QAs differed among microfluidics and batch techniques when the same
+primary emulsion was used (i.e., batch-made). This primary emulsion
+and its variables were separately studied in the first phase of the study.
+• Discussion of the primary emulsion variables effect on MFH-PLGA
+PPs QAs
+The purpose of this first DoE study (Table 1a) was to understand the
+Fig. 10. TEM (a, b, and c) and optical microscope with polarizer images (d) of the microtome sections of the batch-based MFH-PLGA PPs, showing a matrix-
+like structure.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+12
+impacts of the primary emulsion variables in batch separately prior to
+moving on to the planned microfluidics study. Eight formulations (F1-F8
+as in Table 2) were prepared, studying three variables in a batch mode:
+1) primary emulsion dispersion method at vortex and sonication; 2) drug
+to polymer ratio at 1:10 and 1:4; and 3) PVA concentration in W1 at
+0 and 1 %. The effects of these formulation and primary emulsion pro­
+cess parameter variables on four main MFH-PLGA PP QAs (yield %,
+particle size, EE %, and LE %) were evaluated using a DoE approach.
+The primary emulsion dispersion method significantly affected the
+EE %, LE %, and particle size of MFH-PLGA PPs (Figs. 3 and 4). Its
+observed effects on the EE % and particle size depended on the level of
+the drug to polymer ratio used in the formulation. When sonication was
+used as the primary emulsion dispersion method, the LE % of the PPs
+was maximized to 3.5 % compared to 0.7 % using vortexing. The dif­
+ference between sonication and vortexing methods lies in the amount of
+shear force exerted in each case. Sonication applies high shear force,
+breaking up the W1 phase into very tiny droplets uniformly dispersed in
+the O phase. Smaller and better dispersed W1 droplets in the O phase
+result in a more viscous primary emulsion (Yushu and Venkatraman,
+2006). This viscosity hinders the W1 droplets’ diffusion and leakage to
+the W2, resulting in our findings of higher LE % for the sonicated for­
+mulations. On the other hand, vortexing exerts a low shear force that is
+not sufficient to break up the inner W1 droplets into smaller droplets.
+These large inner W1 droplets can easily diffuse out of the less viscous
+primary emulsion to the continuous W2 phase, resulting in PPs with
+lower LE %.
+In addition, sonication resulted in MFH-PLGA PPs with significantly
+higher EE % (Fig. 4e) when compared to vortexing, resulting in an
+Fig. 11. In-vitro release profile of the eight formulations of MFH-PLGA PPs prepared via microfluidics and batch, zoom-out (a) and zoom-in at the 1-hour time frame
+(b). For clarification reasons, each formulation is labeled with the drug to polymer ratio, PVA concentration in W1 followed by the method of dispersion of the
+secondary emulsion; mf stands for microfluidics. One-factor plots showing factors that significantly affected the cumulative % release at 1 (c) and 24 h (d and e).
+Table 4
+in-vitro drug release kinetic models.
+Mathematical Model
+Equation
+Zero-order
+F = k0t
+First-order
+F = 100∙(1 −e−k1∙t)
+Higuchi
+F = kH∙t0.5
+Korsmeyer-Peppas
+F = kkp∙tn
+Hixson-Crowell
+F = 100∙[1 −(1 −kHC∙t)3]
+Hopfenberg
+F = 100∙[1 −(1 −kHB∙t)n]
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+13
+average maximum of 35.5 % and 8.3 %, respectively. This significant
+difference can be explained again by the increase in viscosity of the
+primary emulsion, hindering the leakage of the drug-containing inner
+W1 to the outer W2 phase. Similar trends of LE % and EE % were
+observed in other studies when the effects of high and low shear
+methods for primary emulsion dispersion were compared (Qi et al.,
+2014). The degree to which sonication resulted in an increased EE % of
+MFH into the PLGA PPs was dependent on the drug to polymer ratio. The
+1:10 ratio resulted in formulations with much higher EE % than the 1:4
+ratio of an average maximum of 35.5 % and 17.2 %, respectively. A
+higher amount of MFH in the W1, such as in the 1:4 ratio case, increases
+the concentration gradient between the W1 and W2 phases, thereby
+increasing the amount of MFH diffusing into the W2 and depleting the
+amount of successfully encapsulated MFH (Yang et al., 2001). This
+means that there is a trade-off between EE % and LE % in batch; very
+high EE % can be achieved by lowering the drug concentration or
+increasing the polymer concentration. However, the LE % of the fabri­
+cated PPs would be compromised (the formulation will be mostly
+polymer). Further enhancement of the EE % could be attained by
+reducing the concentration gradient between W1 and W2 phases by
+decreasing the volume of W2. The latter was not examined in the current
+study as the primary emulsion variables were the main focus.
+When the two primary batch emulsification techniques were
+compared, sonication resulted in MFH-PLGA PPs with similar particle
+sizes at both 1:4 and 1:10 ratios, while vortexing led to somewhat larger
+particles at the 1:4 ratio when compared to the 1:10 ratio (Fig. 4b). The
+same observation for the low shear-mixed PPs was noted by Cheng et al.;
+larger particle size at the high drug content (Cheng et al., 2020). On the
+other hand, our sonicated particles’ size not being significantly affected
+by the drug to polymer ratio agreed with Cun et al.’s findings. (Cun
+et al., 2011).
+The other variables studied in the formation of the primary emulsion
+also impacted the QAs of the product PPs. The drug to polymer ratio
+moderately affected the yield % and the particle size and EE % discussed
+above. 1:10 ratio resulted in a maximum yield % of 81.8 %, whereas the
+1:4 ratio resulted in a maximum yield % of 69.3 %, which can be
+attributed to the low EE % of the latter. This effect was largely inde­
+pendent of the primary emulsification technique (Fig. 3a and 4a). The
+PVA concentration used in the primary emulsification significantly
+impacted the particle size of MFH-PLGA PPs, where the addition of PVA
+increased the particle size (Fig. 3b and 4c and d). As established in the
+literature (Yang et al., 2001), increasing the PVA concentration leads to
+an increase in the primary emulsion viscosity, making it more chal­
+lenging to disperse the primary emulsion into smaller droplets during
+the secondary batch emulsification process, which results in overall
+larger particles. Our findings agreed with what was observed by other
+researchers (Abdelkader et al., 2018; Ahmad et al., 2020).
+The surface morphology noticeably varied among MFH-PLGA PPs
+prepared via different primary emulsion dispersion methods. Sonication
+resulted in rough and highly porous surfaces, with porosity correlated
+directly to the drug to polymer ratio, while vortexing resulted in a
+smooth and less porous texture (Fig. 5). This porous surface for the
+sonicated PPs matches the capability of sonication to uniformly disperse
+the W1 into very tiny droplets in the O phase that ultimately transformed
+into pores in the final solidified MFH-PLGA PPs (Qi et al., 2014). As
+described earlier, increasing the amount of drug increases the phase’s
+viscosity (Rahman et al., 2010), making it more difficult for the finely
+dispersed W1 droplets to coalesce. Hence, more porous surfaces were
+observed for the 1:4 sonicated formulations when compared to the
+formulations at the 1:10 ratio. Vortexing applies less shear force that was
+not sufficient to disperse the W1 into smaller droplets, resulting in a
+primary emulsion with less viscosity. Hence, the inner W1 can easily
+migrate to the continuous W2.
+• Comparison of microfluidic and batch processes
+Based on these previous findings of vortexing negatively affecting
+two of the most critical QAs of PPs – EE % and LE %, we fixed sonication
+as the method of primary emulsion dispersion in the second DoE. It
+compared the effects of secondary emulsion dispersion techniques of
+Table 5
+Kinetic modeling paramenters results of met-pnlga pps.
+Kinetic models
+Parameters
+A1
+A2
+A3
+A4
+A5
+A6
+A7
+A8
+Zero-order
+k0
+0.106
+0.103
+0.102
+0.105
+0.106
+0.105
+0.105
+0.103
+R2 adjusted
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+AIC
+110.212
+100.593
+99.274
+109.554
+110.023
+105.791
+104.894
+102.406
+MSC
+−4.216
+−0.946
+−0.771
+−4.903
+−4.182
+−2.566
+−1.964
+−1.446
+First-order
+k1
+2.754
+0.025
+0.015
+2.121
+2.540
+0.491
+0.293
+0.082
+R2 adjusted
+0.999
+0.904
+0.909
+0.991
+0.998
+0.883
+0.928
+0.854
+AIC
+25.369
+71.110
+72.527
+44.874
+32.212
+71.420
+67.794
+75.235
+MSC
+4.269
+2.003
+1.9039
+2.375
+3.599
+0.872
+1.746
+1.271
+Higuchi
+kH
+3.937
+3.649
+3.602
+3.912
+3.933
+0.646
+3.810
+3.692
+R2 adjusted
+0.0
+0.4518
+0.561
+0.0
+0.0
+0.892
+0.0
+0.113
+AIC
+105.793
+90.862
+88.681
+104.987
+105.592
+99.435
+97.802
+94.133
+MSC
+−3.7735
+0.028
+0.289
+−3.636
+−3.739
+−1.930
+−1.255
+−0.619
+Korsmeyer-Peppas
+kKP
+N/A
+15.775
+18.125
+N/A
+N/A
+N/A
+34.616
+23.136
+R2 adjusted
+N/A
+0.988
+0.9692
+N/A
+N/A
+N/A
+1.000
+1.000
+AIC
+N/A
+14.1744
+13.178
+N/A
+N/A
+N/A
+−191.468
+−190.798
+MSC
+N/A
+3.4266
+2.862
+N/A
+N/A
+N/A
+70.339
+69.974
+n
+N/A
+0.398
+0.264
+N/A
+N/A
+N/A
+0.408
+0.509
+Hixson-Crowell
+kHC
+0.001
+0.01
+0.01
+0.001
+0.001
+0.001
+0.001
+0.001
+R2 adjusted
+0.0
+0.485
+0.617
+0.0
+0.0
+0.0
+0.0
+0.106
+AIC
+106.322
+90.228
+87.291
+105.515
+106.119
+99.799
+98.052
+94.205
+MSC
+−3.827
+0.091
+0.428
+−3.689
+−3.792
+−1.966
+−1.280
+−0.626
+Baker-Lonsdale
+KBL
+0.000
+0.000
+0.000
+0.000
+0.000
+0.000
+0.000
+0.000
+R2 adjusted
+0.0
+0.671
+0.759
+0.0
+0.0
+0.0
+0.0
+0.395
+AIC
+104.472
+85.712
+82.574
+103.566
+104.247
+97.084
+94.99
+90.283
+MSC
+−3.642
+0.543
+0.899
+−3.4940
+−3.605
+−1.695
+−0.974
+−0.234
+Hopfenberg
+KHB
+0.013
+0.000
+0.000
+0.003
+0.012
+0.001
+0.000
+0.000
+R2 adjusted
+0.999
+0.892
+0.898
+0.9903
+0.997
+0.869
+0.919
+0.836
+AIC
+27.379
+73.112
+74.530
+46.880
+34.223
+73.425
+69.798
+77.200
+MSC
+4.0678
+1.8026
+1.704
+2.175
+3.398
+0.671
+1.545
+1.074
+n
+322.683
+6079.904
+2740.395
+837.036
+373.904
+944.420
+1976.751
+4628.879
+*N/A not applicable because the formulation released more than 60 % by the third time point (no enough points to be fit).
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+14
+batch and microfluidics on the QAs of MFH-PLGA PPs. In order to create
+a comprehensive picture of the batch-microfluidics space, the drug to
+polymer ratio and PVA concentration remained a part of the DoE in
+which a 23 design was employed (Table 3). The use of a commonly
+prepared, sonicated primary emulsion in comparing microfluidics to
+batch has made the variables’ effects on MFH-PLGA PPs more apparent
+and easier to evaluate systematically. For microfluidic secondary
+emulsion fabrication, the primary emulsion was dispersed in the W2
+phase using the co-flow device (Fig. 2b). The batch secondary emulsion
+was prepped by adding the primary emulsion dropwise instantly into the
+continuous W2 phase while shear mixing (stirring).
+The use of microfluidics affected several aspects of MFH-PLGA PPs
+QAs, including EE %, LE %, particle size, yield %, surface and inner
+morphologies, and cumulative % release at 1 and 24 h. Microfluidics, a
+dispersion method with no need for shear mixing, resulted in MFH-PLGA
+PPs with much higher EE % and LE % (Fig. 7d and e). In addition, when
+using microfluidics, in contrast with batch, the EE % and LE % increased
+with the increased drug to polymer ratio (Fig. 7d). As explained earlier,
+increasing the amount of drug in the W1 leads to an increase in the
+concentration gradient between the W1 and W2 phases; thus, the drug
+diffuses down the concentration gradient at a faster rate due to the
+existing shear mixing in batch (Yang et al., 2001). However, in micro­
+fluidics, this diffusion rate possibly decreased due to the fact that no
+shear mixing was needed during the double emulsification and solvent
+evaporation process, in addition to the smaller W2 phase (Fig. 2a).
+The particle size of MFH-PLGA PPs was significantly larger and more
+monodispersed for microfluidic-based formulations, which varied be­
+tween 973.4 and 1011.6 µm, whereas the completely batch-based PPs’
+size varied between 235.7 and 436.0 µm. The PVA concentration only
+impacted the particle size of MFH-PLGA PPs, when a full batch tech­
+nique was used (Fig. 7c). In the literature, it is established that the
+emulsion droplet size formed in microfluidic devices depends on input
+fluids flow rates, viscosities, and device geometry (Shang et al., 2017). In
+our study, the microfluidic-based MFH-PLGA PP size (about 1000 µm)
+was close to the square capillary’s inner dimensions (0.9 mm). During
+the primary emulsion dispersion into the continuous W2 phase, we
+observed that the primary emulsion droplets, once they came out of the
+nozzle, enlarged in size and had a diameter close to the inner diameter of
+the square capillary, as shown in video 1. This observed droplet diam­
+eter minimally increased before it started to decrease during the solvent
+evaporation phase. This geometry-related particle size may explain why
+PVA concentration did not influence the size of microfluidic-based MFH-
+PLGA PPs. The PVA concentration influenced the size of the batch-based
+PPs due to the reasons discussed above related to the increased primary
+emulsion viscosity at higher PVA concentration, hindering its break up
+into tiny droplets by the batch-based secondary emulsion dispersion
+method, namely, stirring.
+Microfluidics increased the overall yield % of MFH-PLGA PPs when
+compared to the batch technique (Fig. 7a and b). A potential explanation
+for this is the uniformly large particle size for all microfluidic-based
+formulations that may result in fewer mechanical losses upon filtra­
+tion. In contrast, the batch-based formulations were much smaller and
+more polydisperse, and fine particles were noted in the filtrate. In
+addition, a higher yield % would be expected owing to the higher
+loading of the microfluidic-based MFH-PLGA PPs.
+The SEM micrographs showed that microfluidics resulted in large
+uniform MFH-PLGA PPs with large surface pores, while the batch led to
+small polydisperse particles that exhibited small pores (Fig. 9b and e).
+This large pore size is probably due to the coalescence of the dispersed
+W1 in the primary emulsion during the 45-minute microfluidic emulsi­
+fication run. This coalescence eventually resulted in a double emulsion
+with large internal W1 droplets. These large droplets would translate
+into large pores (13.9 ± 6.22 µm) after the complete solidification of the
+PPs (Qi et al., 2014). This explanation was further supported when the
+internal morphology of the microfluidic-based PPs was examined
+(Fig. 9c) and determined to be a hollow structure. On the other hand, the
+batch-based primary emulsion was instantly added to the continuous W2
+phase, forming the secondary emulsion. This emulsion mostly main­
+tained its tiny, well-dispersed W1 droplets structure, which solidified to
+particles with a matrix-like structure (Fig. 9f and 10a-d) and small sur­
+face pores (2.6 ± 1.10 µm).
+Microfluidic-based MFH-PLGA PPs with the hollow structure, larger
+pore sizes, and higher LE % exhibited much faster release at 1 and 24 h
+than the matrix-like structured batch PPs (Fig. 11). High MFH loading
+into the microfluidic-based PLGA PPs resulted in a higher concentration
+gradient between the inside of the PPs and the release media. Simulta­
+neously, the thin polymeric matrix, in addition to the large pore size,
+accounted for less resistance for drug diffusion across the matrix. Hence,
+it explains why microfluidic-based PPs had a high burst release, with a
+release profile following first-order kinetics down the concentration
+gradient. With the diffusion rate dependent on the drug molecule’s
+molecular weight, a small molecule such as MFH would suffer more
+significantly from rapid diffusion across the PLGA matrix when
+compared to larger molecules. In contrast, the matrix-like structure and
+the small pores from the fully batch-based process hindered the rapid
+leakage of this small molecule into the outer release media.
+The drug to polymer ratio influenced the cumulative % release at 24
+h in addition to the secondary emulsion dispersion method (Fig. 11e).
+The fact that the 1:10 ratio led to a relatively lower burst release than the
+1:4 can be attributed to the former’s lower drug concentration gradient
+between the inner and outer release media. Hence, the rate by which the
+drug was released was slower in the 1:10 case, as similarly reported by
+others (Cheng et al., 2020; Mainardes and Evangelista, 2005).
+5. Conclusions
+The studies detailed in this work were undertaken to investigate the
+effect of process and formulation variables on the QAs of a highly hy­
+drophilic drug-loaded PLGA PPs, in this case, MFH. Multiple primary
+emulsion process and formulation variables were screened using a DoE
+approach to determine the most significant factors impacting the QAs of
+MFH-PLGA PPs, namely EE % and LE %. This facilitated the comparison
+of the effect of microfluidics to the traditional batch technique on the
+QAs of MFH-PLGA PPs under the selected primary emulsion variables. In
+the primary emulsion screening phase, it was found that the sonication
+increased the EE % and LE % and impacted the particle size and the
+surface porosity and roughness of MFH-PLGA PPs. The low drug to
+polymer ratio increased the yield % and EE % and decreased the particle
+size of the vortexed particles, while the high PVA concentration
+increased the particle size.
+In the microfluidics-batch comparison phase, we found that micro­
+fluidics increased the yield %, EE %, LE %, and particle size of MFH-
+PLGA PPs over the traditional batch method. The low drug to polymer
+ratio decreased the % burst release and increased the yield % owing to a
+higher concentration gradient. The PVA concentration effect, while seen
+in the batch-based formulations, was not observed under microfluidic
+conditions owing to the device-based geometry. Using a simple co-flow
+microfluidic device, the EE % and LE % of MFH-PLGA PPs were
+improved from 19.1 % and 3.8 %, respectively, for the batch-based PPs,
+to 69.6 % and 13.9 % for the microfluidic-based PPs. However, despite
+successfully loading MFH into the PLGA PPs using microfluidics – as
+targeted, the release profile from the PPs was negatively impacted
+because of the hollow porous structure in addition to the high LE %. This
+burst release will be tackled in our future studies that will be focused on
+engineering PPs using a fully microfluidic system, with the intent of
+fabricating a polymer shell with no pores. This will be coupled by
+studying the effect of PLGA’s molecular weight and lactic to glycolic
+acid ratios.
+The current study concluded our initial investigations into the
+encapsulation of highly hydrophilic drugs into PPs. Future studies to
+determine the effect of formulation and process variables on the QAs of
+PPs fabricated using an entirely microfluidic process are planned. These
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+15
+include multiple device designs and geometries, relative and total flow
+rates, and W1, O, and W2 phases’ variables, including PVA
+concentration.
+CRediT authorship contribution statement
+Sarah S. Aboelela: Conceptualization, Methodology, Investigation,
+Writing – original draft, Writing - review & editing. Mariam Ibrahim:
+Methodology, Writing - review & editing. Abu Zayed Badruddoza:
+Methodology, Writing - review & editing. Valerie Tran: Investigation.
+James K. Ferri: Supervision, Writing - review & editing. Thomas D.
+Roper: Conceptualization, Methodology, Supervision, Writing - review
+& editing.
+Declaration of Competing Interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Acknowledgments
+The authors would like to thank Drs. Frank Gupton, Sandro da
+Rocha, and Mo Jiang for experimental laboratory access. Dr. Fahad
+Almalki is gratefully acknowledged for his help with the XRPD. We
+acknowledge the Virginia Commonwealth University Microscopy Fa­
+cility for their assistance with imaging.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.ijpharm.2021.120906.
+References
+Abdelkader, D.H., El-Gizawy, S.A., Faheem, A.M., McCarron, P.A., Osman, M.A., 2018.
+Effect of process variables on formulation, in-vitro characterisation and
+subcutaneous delivery of insulin PLGA nanoparticles: An optimisation study. J. Drug
+Deliv. Sci. Technol. 43, 160–171. https://doi.org/10.1016/j.jddst.2017.10.004.
+Ahmad, N., Ahmad, R., Alrasheed, R.A., Almatar, H.M.A., Al-Ramadan, A.S., Amir, M.,
+Sarafroz, M., 2020. Quantification and evaluations of catechin hydrate polymeric
+nanoparticles used in brain targeting for the treatment of epilepsy. Pharmaceutics
+12, 203. https://doi.org/10.3390/pharmaceutics12030203.
+Amoyav, B., Benny, O., 2019. Microfluidic based fabrication and characterization of
+highly porous polymeric microspheres. Polymers (Basel). 11 (3), 419. https://doi.
+org/10.3390/polym11030419.
+Bharali, D.J., Sahoo, S.K., Mozumdar, S., Maitra, A., 2003. Cross-linked
+polyvinylpyrrolidone nanoparticles: A potential carrier for hydrophilic drugs.
+J. Colloid Interface Sci. 258 (2), 415–423. https://doi.org/10.1016/S0021-9797(02)
+00099-1.
+Bruschi, M.L. (Ed.), 2015. Mathematical models of drug release, in: Strategies to Modify
+the Drug Release from Pharmaceutical Systems. Woodhead Publishing, pp. 63–86.
+https://doi.org/10.1016/B978-0-08-100092-2.00005-9.
+Busatto, C., Pesoa, J., Helbling, I., Luna, J., Estenoz, D., 2018. Effect of particle size,
+polydispersity and polymer degradation on progesterone release from PLGA
+microparticles: Experimental and mathematical modeling. Int. J. Pharm. 536,
+360–369. https://doi.org/10.1016/j.ijpharm.2017.12.006.
+Chen, T., Li, C., Li, Y.e., Yi, X., Wang, R., Lee, S.-Y., Zheng, Y., 2017. Small-Sized mPEG-
+PLGA Nanoparticles of Schisantherin A with Sustained Release for Enhanced Brain
+Uptake and Anti-Parkinsonian Activity. ACS Appl. Mater. Interfaces 9 (11),
+9516–9527. https://doi.org/10.1021/acsami.7b0117110.1021/acsami.7b01171.
+s001.
+Cheng, S.Y., Akindoyo, J.O., Jaafar, M., Hamid, Z.A.A., 2020. Effect of Formulation
+Variables on the Performance of Doxycycline-Loaded PLA Microsphere. Arab. J. Sci.
+Eng. 45 (9), 7419–7428. https://doi.org/10.1007/s13369-020-04592-6.
+Cun, D., Jensen, D.K., Maltesen, M.J., Bunker, M., Whiteside, P., Scurr, D., Foged, C.,
+Nielsen, H.M., 2011. High loading efficiency and sustained release of siRNA
+encapsulated in PLGA nanoparticles: Quality by design optimization and
+characterization. Eur. J. Pharm. Biopharm. 77 (1), 26–35. https://doi.org/10.1016/
+j.ejpb.2010.11.008.
+Hanrahan, G., Lu, K., 2006. Application of factorial and response surface methodology in
+modern experimental design and optimization. Crit. Rev. Anal. Chem. 36 (3-4),
+141–151. https://doi.org/10.1080/10408340600969478.
+Ibraheem, D., Iqbal, M., Agusti, G., Fessi, H., Elaissari, A., 2014. Effects of process
+parameters on the colloidal properties of polycaprolactone microparticles prepared
+by double emulsion like process. Colloids Surfaces A Physicochem. Eng. Asp. 445,
+79–91. https://doi.org/10.1016/j.colsurfa.2014.01.012.
+Iqbal, M., Valour, J.-P., Fessi, H., Elaissari, A., 2015a. Preparation of biodegradable PCL
+particles via double emulsion evaporation method using ultrasound technique.
+Colloid Polym. Sci. 293 (3), 861–873. https://doi.org/10.1007/s00396-014-3464-9.
+Iqbal, M., Zafar, N., Fessi, H., Elaissari, A., 2015b. Double emulsion solvent evaporation
+techniques used for drug encapsulation. Int. J. Pharm. https://doi.org/10.1016/j.
+ijpharm.2015.10.057.
+Ismail, R., Sov´any, T., G´acsi, A., Ambrus, R., Katona, G., Imre, N., Cs´oka, I., 2019.
+Synthesis and Statistical Optimization of Poly(Lactic-Co-Glycolic Acid)
+Nanoparticles Encapsulating GLP1Analog Designed for Oral Delivery. Pharm. Res.
+36, 99.
+Lagreca, E., Onesto, V., Di Natale, C., La Manna, S., Netti, P.A., Vecchione, R., 2020.
+Recent advances in the formulation of PLGA microparticles for controlled drug
+delivery. Prog. Biomater. 9 (4), 153–174. https://doi.org/10.1007/s40204-020-
+00139-y.
+Lamprecht, A., Ubrich, N., Hombreiro P´erez, M., Lehr, C.-M., Hoffman, M., Maincent, P.,
+1999. Biodegradable monodispersed nanoparticles prepared by pressure
+homogenization-emulsification. Int. J. Pharm. 184 (1), 97–105. https://doi.org/
+10.1016/S0378-5173(99)00107-6.
+Lee, B.K., Yun, Y., Park, K., 2016. PLA micro- and nano-particles. Adv. Drug Deliv. Rev.
+https://doi.org/10.1016/j.addr.2016.05.020.
+Levenstein, M.A., Bawazer, L.A., Mc Nally, C.S., Marchant, W.J., Gong, X., Meldrum, F.
+C., Kapur, N., 2016. A reproducible approach to the assembly of microcapillaries for
+double emulsion production. Microfluid. Nanofluidics 20. https://doi.org/10.1007/
+s10404-016-1806-2.
+Mainardes, R.M., Evangelista, R.C., 2005. PLGA nanoparticles containing praziquantel:
+Effect of formulation variables on size distribution. Int. J. Pharm. 290, 137–144.
+https://doi.org/10.1016/j.ijpharm.2004.11.027.
+Nabavi, S.A., Vladisavljevi´c, G.T., Gu, S., Ekanem, E.E., 2015. Double emulsion
+production in glass capillary microfluidic device: Parametric investigation of droplet
+generation behaviour. Chem. Eng. Sci. 130, 183–196. https://doi.org/10.1016/j.
+ces.2015.03.004.
+Nabavi, S.A., Vladisavljevi´c, G.T., Manovi´c, V., 2017. Mechanisms and control of single-
+step microfluidic generation of multi-core double emulsion droplets. Chem. Eng. J.
+322, 140–148. https://doi.org/10.1016/j.cej.2017.04.008.
+Nie, Z., Xu, S., Seo, M., Lewis, P.C., Kumacheva, E., 2005. Polymer particles with various
+shapes and morphologies produced in continuous microfluidic reactors. J. Am.
+Chem. Soc. 127 (22), 8058–8063. https://doi.org/10.1021/ja042494w10.1021/
+ja042494w.s001.
+Paulo, F., Santos, L., 2019. Microencapsulation of caffeic acid and its release using a w/
+o/w double emulsion method: Assessment of formulation parameters. Dry. Technol.
+37 (8), 950–961. https://doi.org/10.1080/07373937.2018.1480493.
+Peppas, N., 1985. Analysis of Fickian and non-Fickian drug release from polymers.
+Pharm. Acta Helv. 60, 110–111.
+Qi, F., Wu, J., Hao, D., Yang, T., Ren, Y.u., Ma, G., Su, Z., 2014. Comparative studies on
+the influences of primary emulsion preparation on properties of uniform-sized
+exenatide-loaded PLGA microspheres. Pharm. Res. 31 (6), 1566–1574. https://doi.
+org/10.1007/s11095-013-1262-6.
+Rahman, Z., Zidan, A.S., Habib, M.J., Khan, M.A., 2010. Understanding the quality of
+protein loaded PLGA nanoparticles variability by Plackett-Burman design. Int. J.
+Pharm. 389 (1-2), 186–194. https://doi.org/10.1016/j.ijpharm.2009.12.040.
+Ramteke, K.H., Dighe, P.A., Kharat, A.R., Patil, S.V., 2014. Mathematical models of drug
+dissolution: a review. Sch. Acad. J. Pharm 3, 388–396.
+Rezvantalab, S., Keshavarz Moraveji, M., 2019. Microfluidic assisted synthesis of PLGA
+drug delivery systems. RSC Adv. https://doi.org/10.1039/C8RA08972H.
+Ritger, P.L., Peppas, N.A., 1987. A simple equation for description of solute release II.
+Fickian and anomalous release from swellable devices. J. Control. Release 5, 37–42.
+https://doi.org/10.1016/0168-3659(87)90035-6.
+Shah, R.K., Shum, H.C., Rowat, A.C., Lee, D., Agresti, J.J., Utada, A.S., Chu, L.Y., Kim, J.
+W., Fernandez-Nieves, A., Martinez, C.J., Weitz, D.A., 2008. Designer emulsions
+using microfluidics. Mater. Today. https://doi.org/10.1016/S1369-7021(08)70053-
+1.
+Shang, L., Cheng, Y., Zhao, Y., 2017. Emerging Droplet Microfluidics. Chem. Rev.
+https://doi.org/10.1021/acs.chemrev.6b00848.
+Shin, S.B., Cho, H.Y., Kim, D.D., Choi, H.G., Lee, Y.B., 2010. Preparation and evaluation
+of tacrolimus-loaded nanoparticles for lymphatic delivery. Eur. J. Pharm. Biopharm.
+74, 164–171. https://doi.org/10.1016/j.ejpb.2009.08.006.
+Sousa, F., Cruz, A., Fonte, P., Pinto, I.M., Neves-Petersen, M.T., Sarmento, B., 2017. A
+new paradigm for antiangiogenic therapy through controlled release of bevacizumab
+from PLGA nanoparticles. Sci. Rep. 7, 3736. https://doi.org/10.1038/s41598-017-
+03959-4.
+Sun, J., Lei, Y., Dai, Z., Liu, X., Huang, T., Wu, J., Xu, Z.P., Sun, X., 2017. Sustained
+Release of Brimonidine from a New Composite Drug Delivery System for Treatment
+of Glaucoma. ACS Appl. Mater. Interfaces 9, 7990–7999. https://doi.org/10.1021/
+acsami.6b16509.
+Utada, A.S., Chu, L.Y., Fernandez-Nieves, A., Link, D.R., Holtze, C., Weitz, D.A., 2007.
+Dripping, jetting, drops, and wetting: The magic of microfluidics. MRS Bull. 32,
+702–708. https://doi.org/10.1557/mrs2007.145.
+Utada, A.S., Lorenceau, E., Link, D.R., Kaplan, P.D., Stone, H.A., Weitz, D.A., 2005.
+Monodisperse double emulsions generated from a microcapillary device. Science
+(80-. ). 308, 537–541. https://doi.org/10.1126/science.1109164.
+Wang, Jianmei, Li, Y., Wang, X., Wang, Jianchun, Tian, H., Zhao, P., Tian, Y., Gu, Y.,
+Wang, L., Wang, C., 2017. Droplet microfluidics for the production of microparticles
+and nanoparticles. Micromachines. https://doi.org/10.3390/mi8010022.
+S.S. Aboelela et al.
+
+International Journal of Pharmaceutics 606 (2021) 120906
+16
+Whitesides, G.M., 2006. The origins and the future of microfluidics. Nature. https://doi.
+org/10.1038/nature05058.
+Xu, Q., Hashimoto, M., Dang, T.T., Hoare, T., Kohane, D.S., Whitesides, G.M., Langer, R.,
+Anderson, D.G., David, H., 2009. Preparation of monodisperse biodegradable
+polymer microparticles using a microfluidic flow-focusing device for controlled drug
+delivery. Small 5, 1575–1581. https://doi.org/10.1002/smll.200801855.
+Yang, Y.Y., Chung, T.S., Ping Ng, N., 2001. Morphology, drug distribution, and in vitro
+release profiles of biodegradable polymeric microspheres containing protein
+fabricated by double-emulsion solvent extraction/evaporation method. Biomaterials
+22, 231–241. https://doi.org/10.1016/S0142-9612(00)00178-2.
+Yushu, H., Venkatraman, S., 2006. The effect of process variables on the morphology and
+release characteristics of protein-loaded PLGA particles. J. Appl. Polym. Sci. 101,
+3053–3061. https://doi.org/10.1002/app.23933.
+Zhang, Y., Huo, M., Zhou, J., Zou, A., Li, W., Yao, C., Xie, S., 2010. DDSolver: An add-in
+program for modeling and comparison of drug dissolution profiles. AAPS J. 12,
+263–271. https://doi.org/10.1208/s12248-010-9185-1.
+Zilberman, M., Grinberg, O., 2008. HRP-Loaded bioresorbable microspheres: Effect of
+copolymer composition and molecular weight on microstructure and release profile.
+J. Biomater. Appl. 22, 391–407. https://doi.org/10.1177/0885328207077591.
+S.S. Aboelela et al.

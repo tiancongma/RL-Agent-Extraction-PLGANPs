@@ -1,0 +1,1742 @@
+Research Article
+Anti-Biofilm Effect of Ampicillin-Loaded Poly (Lactic-co-glycolic
+Acid) Nanoparticles Conjugated with Lysostaphin on
+Methicillin-Resistant Staphylococcus aureus
+Elahe Norouzi
+,1 Seyed Mostafa Hosseini
+,1 Babak Asghari
+,1 Reza Mahjoub
+,2
+Ehsan Nazarzadeh Zare
+,3 Mohammad-Ali Shahbazi
+,4 Fereshte Kalhori
+,5
+and Mohammad Reza Arabestani
+1,6
+1Department of Microbiology, Faculty of Medicine, Hamadan University of Medical Sciences, Hamadan, Iran
+2Department of Pharmacology and Toxicology, School of Pharmacy, Medicinal Plants and Natural Products Research Center,
+Hamadan University of Medical Sciences, Hamadan, Iran
+3School of Chemistry, Damghan University, Damghan, Iran
+4Department of Biomedical Engineering, University Medical Center Groningen, University of Groningen,
+Antonius Deusinglaan 1, 9713 AV Groningen, Netherlands
+5Biotechnology Department, Hamadan University of Medical Sciences, Hamadan, Iran
+6Infectious Disease Research Center, Hamadan University of Medical Sciences, Hamadan, Iran
+Correspondence should be addressed to Mohammad Reza Arabestani; mohammad.arabestani@gmail.com
+Received 18 June 2023; Revised 7 November 2023; Accepted 27 November 2023; Published 6 December 2023
+Academic Editor: Vijay Gondil
+Copyright © 2023 Elahe Norouzi et al. Tis is an open access article distributed under the Creative Commons Attribution License,
+which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+Staphylococcus aureus exhibits the capacity to develop bioflms on various surfaces, encompassing both living and nonliving substrates,
+enabling it to develop resistance against the immune system and antibiotics. Terefore, this bacterium can cause numerous challenges in
+healthcare and treatment systems. Te present study aimed to investigate the ampicillin-loaded PLGA nanoparticles’ efect on pre-
+venting the methicillin-resistant Staphylococcus aureus (MRSA) bioflm formation when it is conjugated with lysostaphin. With the use
+of the double emulsion evaporation technique, nanodrug carriers were created. Physicochemical attributes of the nanoparticles, such as
+particle size, drug loading, PDI, encapsulation efciency, zeta potential, efciency of lysostaphin conjugation, and morphology, were
+measured. Minimum inhibitory concentration (MIC), well difusion, and other techniques were used to investigate the efect of the
+produced nanodrug carrier on strains of S. aureus. A toxicity test was conducted to examine the toxic efects of artifcially generated
+nanomedicines on the L929 fbroblast culture. Te nanoparticle average size, zeta potential, PDI, lysostaphin conjugation efciency and
+drug loading encapsulation efciency, and in the optimum PLGA-AMP-LYS (F4) formulation were 301.9±32nm, 0.261±0.010,
+−19.2±3.4mV, 18.916±1.6, and 94.53±3.8, 40%, respectively. After 72hours, neither the well difusion nor MIC techniques revealed
+any discernible variation between ampicillin and nanodrug carriers. Te bioflm investigation’s fndings, however, indicated that
+compared to the free drug, the hindering efect of the nanodrug carrier was greater after 72hours. Te toxicity test fndings revealed that
+the synthesized nanodrug had no toxic efects on the cells. Given the excellent efcacy of the nanomedicine carrier established in the
+present study, applying this technology to combat hospital-acquired infections caused by Staphylococcus bacteria could yield signifcant
+benefts in managing staphylococcal infections.
+1. Introduction
+Given the lengthy and expensive nature of developing new
+drugs, repurposing existing drugs is becoming increasingly
+popular. Additionally, strategies that aim to enhance the
+efectiveness of antimicrobial treatments can contribute to
+reducing drug resistance. Extensive research has been
+conducted on nanoparticles as promising drug carriers,
+given their capacity to improve the infltration of antimi-
+crobial drugs into the bioflms’ deeper layers. Leveraging
+Hindawi
+Canadian Journal of Infectious Diseases and Medical Microbiology
+Volume 2023, Article ID 4627848, 15 pages
+https://doi.org/10.1155/2023/4627848
+
+nanoparticles to elevate the medicinal properties of currently
+available antibiotics shows great potential as a viable strategy
+[1]. Nanoparticles facilitate the improved delivery of anti-
+microbial medications to the dense bioflm layers [2].
+Nanoparticle-based drug carriers protect the enclosed
+medication against various factors, including enzymatic and
+chemical degradation [3, 4]. Drug release from nanoparticles
+is continuous and controlled, and drug spreads in bioflm
+layers [5]. PLGA has gained signifcant attention among the
+numerous
+nanoparticles
+due
+to
+its
+remarkable
+bio-
+compatibility, biodegradability, absence of toxicity, approval
+from the European Medicine Agency and the Food and Drug
+Administration (FDA), controlled and stable drug release,
+targeted delivery to specifc cells or organs, as well as its
+compatibility with a wide range of hydrophilic and hy-
+drophobic drugs [6–8]. Te polymerization of lactic and
+glycolic acid monomers forms a copolymer which is PLGA.
+Te improved treatment efect and the accelerated healing
+process are results of the controlled and stable drug release
+from PLGA [5]. Te use of bacteriocins is another bioflm
+treatment method. Antimicrobial peptides called bacterio-
+cins are useful for treating infections caused by bioflms [9].
+Staphylococcins are a group of bacteriocins that have been
+identifed from several Staphylococcus species, collectively
+known as staphylococcins. Staphylococcins, including aur-
+eocin 53, epidermin, pep5, and lysostaphin, are active
+against all staphylococcus species [9]. 246 amino acids make
+up the 27 kDa zinc metalloenzyme known as lysostaphin,
+which is very active against Staphylococcus aureus strains. In
+1964, Schindler and Schuhardt isolated lysostaphin from
+Staphylococcus
+simulans
+biovar
+staphylolyticus
+[10].
+Streptococcus aureus strains’ cell walls contain pentaglycine
+bridges that are broken by this enzyme [10, 11]. Ampicillin,
+which belongs to the aminopenicillin family, is a beta-lactam
+antibiotic that is generally comparable to its successor,
+amoxicillin, in terms of spectrum and level of activity [12].
+Following the introduction of ampicillin, a signifcant
+number of bacteria have developed resistance to it by
+producing beta-lactamases [13]. S. aureus is an opportunistic
+and life-threatening Gram-positive pathogen. It is recog-
+nized as a contributor to both healthcare-associated in-
+fections and community-acquired infections, encompassing
+minor skin conditions to severe ailments such as sepsis,
+pneumonia, and endocarditis. Moreover, this particular
+bacterium is renowned for being a common reason behind
+the infections of soft tissue and skin [14, 15]. Since the 1980s,
+methicillin-resistant Staphylococcus aureus (MRSA) has
+spread worldwide, reaching a point where many countries
+now observe MRSA rates of 50% or higher among Staph-
+ylococcus aureus infections in hospitals. However, a few
+countries have managed to maintain low MRSA rates by
+implementing efective search-and-destroy policies and
+controlling antibiotic overuse [16]. Staphylococcus aureus
+colonization is in two forms: persistent carriers (20–25%)
+and intermittent carriers (75–80%), which shows a clear
+correlation between the risk of hospital infections and
+S. aureus nasal carriers [17]. S. aureus strains have two
+modes with diferent characteristics: planktonic state and
+bioflm state [18]. Bacteria are encased within a self-
+generated extracellular polymeric matrix when in the bio-
+flm state [19]. Te bioflm matrix mainly consists of exo-
+polysaccharides, eDNA, and proteins protecting bacteria
+against various environmental stresses [17, 20]. Bioflm
+formation includes diferent steps: frst, planktonic bacteria
+reversibly attach to biotic or abiotic surfaces. Te attachment
+becomes irreversible. Next, microcolonies form and then
+mature. Finally, the bioflm disperses, and the planktonic
+cells are released from the bioflm. Te planktonic cells are
+attached to other areas, and bioflm is formed again.
+Terefore, bioflm-related infections are often chronic and
+recurrent [17, 20]. In addition, infections associated with
+bioflms display resilience against the majority of antibiotics
+and the immune system of the host [1, 20]. Getting infected
+in venous ulcers, and pressure sores, and developing diabetic
+foot conditions are associated with the existence of Staph-
+ylococcus aureus capable of producing bioflms. Among the
+diferent drug-resistant strains of Staphylococcus aureus,
+hospitalized patients with wound infections face a sub-
+stantial risk from methicillin-resistant Staphylococcus au-
+reus (MRSA). Strains of MRSA that generate bioflms lead to
+illness and fatalities in humans [21]. Increasing the dosage of
+antibiotics and extending the duration of infection treatment
+is necessary to combat bacterial bioflms, albeit resulting in
+elevated resistance and side efects. [22]. Furthermore, sessile
+cells display unique features in contrast to their planktonic
+counterparts, which can potentially result in elevated anti-
+biotics’ minimum bactericidal concentration (MBC) and
+minimum inhibitory concentration (MIC) values [1, 20].
+Terefore, how should these infections be treated remains
+a challenging question, and innovative strategies are needed
+to eradicate bacterial bioflm-related infections [23]. Uti-
+lizing nanoparticles for the targeted delivery of antibiotics to
+the bioflm’s interior layers is considered a promising
+strategy [24]. Using nanoparticles prolongs bacterial expo-
+sure to antibiotics by enabling sustained and controlled drug
+release, thereby reducing the necessity of dosage escalation
+[5]. Tus, in this research, the impact of poly (lactic-co-
+glycolic acid) polymer nanoparticles loaded with ampicillin
+and linked with lysostaphin on the inhibition of MRSA
+bioflm was investigated in vitro.
+2. Materials and Methods
+2.1. Materials. Ampicillin, polyvinyl alcohol (PVA), poly
+(lactic-co-glycolic acid) (PLGA) 50 : 50 (30,000–60,000 g/
+mol), and lysostaphin were acquired from Sigma Aldrich
+(MO, USA). Te N-hydroxysulfosuccinimide (NHS), 1-
+ethyl-3-(3-dimethylaminopropyl)
+carbodiimide
+hydro-
+chloride (EDC), and 2-morpholinoethanesulfonic acid
+(MES) were also supplied by Sigma Aldrich (MO, USA).
+Two assay kits, including the MTT and the Bradford
+protein assay kit, were produced in Kiazist, Iran. Te
+Mueller–Hinton agar, blood agar, Mueller–Hinton broth,
+dichloromethane, and chloroform were purchased from
+Merck (Darmstadt, Germany). Fetal bovine serum (FBS),
+penicillin, and streptomycin were obtained from Gibco in
+the United States. Additionally, Dulbecco’s modifed Eagle’s
+medium (DMEM) was employed.
+2
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+2.2. PLGA-AMP Synthesis. Te PLGA-AMP was fabricated
+using the double emulsion-solvent evaporation method.
+Briefy, a total of 120 mg of PLGA polymer was dissolved in
+15 mL of chloroform and agitated on a magnetic stirrer at
+25°C and 150 rpm for a duration of 3 hours. After that, 24 mg
+of ampicillin was added to the mixture, and the frst
+emulsion (W1/O) was formed. Te previously dissolved
+PVA powder in distilled water (PVA 2%) was added to the
+frst emulsion, and the secondary emulsion was formed
+(W1/O/W2). Te sample was then subjected to homoge-
+nization by employing an ultrasonic probe device (Bandelin
+Sonopuls, Berlin, Germany) operating at 45% amplitude
+(20 W) for a duration of two minutes, following a consistent
+pulse pattern of 10 seconds on and 5 seconds of. Dropwise
+additions of the second emulsion were made with magnetic
+stirring for 30 minutes in 20 mL of cold distilled water (4°C).
+By
+employing
+a
+high-speed
+centrifuge
+(37,000 g
+for
+20 minutes), PLGA-AMP was fnally separated [25]. Ly-
+ophilization of the prepared samples was performed at
+−80°C with a vacuum pump (Christ, China) equipped with
+a condenser fow system. Te lyophilized nanoparticles were
+converted into a solution and then sterilized using 450 nm
+flters to make them appropriate for biological research
+involving bacteria and cell lines.
+2.3.
+Lysostaphin
+Conjugation. A
+total
+of
+20 mg
+of
+PLGA-AMP NPs were dispersed in 10 mL of MES bufer
+(pH 5.0) according to Moura et al. protocol [26]. Te ac-
+tivation process involved the addition of 1 mL of 0.1 M EDC
+and 1 mL of 0.7 M NHS to the nanoparticle suspension. Te
+suspension was allowed to stand at room temperature while
+being gently stirred for a duration of 1 hour. In order to
+remove any remaining reagents, the activated nanoparticles
+were centrifuged at 21,000 g for 10 minutes at 4°C and
+subsequently
+redispersed
+in
+phosphate-bufered
+saline
+(PBS). Next, 3 mg of lysostaphin was added to the NP
+suspension, followed by homogenization using a vortex
+mixer. Te resulting suspension was incubated at 4°C for
+24 hours. A second round of centrifugation was achieved to
+eliminate any conjugated lysostaphin. Te pellets obtained
+were redissolved in PBS. To assess the efectiveness of
+lysostaphin conjugation to PLGA-AMP nanoparticles, the
+Bradford protein assay was performed using the Coomassie
+Plus (Bradford) kit [26].
+2.4. Characteristics of NPs. Te particle size, PDI (Poly-
+dispersity Index), and Zeta potential were measured fol-
+lowing the lyophilization process using the Dynamic Light
+Scattering (DLS) technique and the Zetasizer Nano ZS 3600
+equipment from Malvern Devices in Worcestershire, in the
+UK [27].
+2.5. Morphology. Te morphological characteristics of the
+nanoparticles were analyzed using Field Emission Scanning
+Electron Microscopy (FE-SEM). In summary, a mixture of
+1 mL of distilled water and 10 mg of lyophilized PLGA-AMP
+nanoparticles was prepared, and then 2 μL of this mixture
+was deposited onto a glass surface. To prevent electrostatic
+charge during examination and analysis using FE-SEM
+(TSCAN, Czech Republic), a thin gold layer was applied to
+the dried suspension [28].
+2.6. Determination of Entrapment Efciency (EE %) and Drug
+Loading(DL%). Following guidelines from the literature, an
+indirect
+method
+involving
+a
+spectrophotometer
+was
+employed to ascertain the amount of ampicillin loaded and
+encapsulated within the synthesized nanoparticles. Initially,
+1 mL of distilled water was combined with 5 mg of lyoph-
+ilized nanoparticles, and the mixture was vortexed. Te
+subsequent step involved centrifugation at 37,000 g for
+20 minutes at 4°C. A 268 nm-wavelength spectrophotometer
+(2100UV, USA) was used to analyze the supernatant. Te
+drug’s concentration was found using a standard curve. Te
+amount of drug that was loaded (equation-(2)) and en-
+capsulated (equation-(1)) was calculated using the following
+equations [29, 30]:
+Entrapment Efficiency EE (%)  initial drug amount (24 mg) −free drug amount (1.3 mg)
+initial drug amount (24 mg)
+× 100
+ 94.5,
+(1)
+Drug Loading DL (%)  initial drug amount (24 mg) −free drug amount (1.3 mg)
+initial PLGA amount (120 mg)
+× 100
+ 18.91.
+(2)
+2.7. Determination of Stability of NPs. Te nanoparticles’
+stability was monitored at periodic intervals of time. Using
+nano Zetasizer devices, the stability of NPs was evaluated by
+measuring their particle size, zeta potential, and PDI at
+intervals of 0, 2, 4, 6, 8, and 12 months after the process of
+lyophilization. A spectrophotometer was used concurrently
+to determine the quantity of ampicillin encapsulated in the
+nanoparticles [31].
+Canadian Journal of Infectious Diseases and Medical Microbiology
+3
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+2.8. Determining Drug Release. After carefully weighing the
+lyophilized nanoparticles, they were added to a 40 ml release
+medium (PBS bufer, pH: 7.4) within a dialysis bag
+(12,000 Da molecular weight cut-of, sourced from Dialysis
+tubing, Sigma Chemical Co., Missouri, USA). Te system
+was simultaneously stirred with a magnetic stirrer at
+100 rpm as 37°C temperature was maintained. One mL of the
+medium was taken at regular intervals, and the ampicillin
+content was measured using a spectrophotometer. A similar
+technique was carried out with free ampicillin placed in the
+same medium and encased in the dialysis bags in order to
+contrast this set of tests’ outcomes with those of free am-
+picillin. Ten, numerous samples were collected from the
+medium during the same time, and they were examined. It is
+important to highlight that after each withdrawal of a sample
+from the medium, a similar amount of fresh medium was
+promptly replenished [32].
+2.9.TeDiferentialScanningCalorimetry(DSC)andFourier-
+Transform Infrared Spectroscopy (FTIR). To scrutinize any
+possible
+interactions
+between
+the
+components
+in
+PLGA-AMP nanoparticles and ampicillin, a series of tests
+were conducted. Tis aspect was explored through FTIR
+analysis within the temperature range of 400 to 4000°C. DSC
+analysis was also performed in the temperature range of 20
+to 400°C at a rate of 10°C per minute to confrm the drug
+loading in the PLGA matrix [33, 34].
+2.10. MTT Assay. For assessing cytotoxic efects, a murine
+fbroblast cell line was employed to conduct the MTT
+assay on PLGA-AMP, free-AMP, lysostaphin, and pure
+PLGA. Te kit contained a 96-well clean plate, two-
+channel reservoirs, solvent, and MTT reagent. In this
+procedure, 104 L929 fbroblasts were isolated using trypan
+blue staining, and then they were placed into 96-well cell
+culture plates flled with DMEM medium containing 10%
+FBS (fetal bovine serum) and 1% penicillin-streptomycin.
+Subsequently, the cells were cultured overnight at 37°C
+with 5% CO2. Following the removal of the DMEM
+culture medium, PLGA-AMP, free-AMP, lysostaphin, and
+pure PLGA were introduced into the cell culture, along
+with DMEM containing 10% FBS, and were then in-
+cubated for 24 hours. Te concentrations used were 25 μg/
+mL, 50 μg/mL, 100 μg/mL, and 200 μg/mL. Positive con-
+trols consisted of wells containing the culture medium but
+no drug. Each experiment was conducted three times.
+Following the addition of 150 μL of fresh DMEM without
+fetal bovine serum to each well, all cells were washed with
+PBS to eliminate any residual drugs and polymers. Ten,
+20 μL of the MTTassay reagent was placed into every well.
+For three to four hours, the plate underwent incubation at
+37°C with 5% CO2. To dissolve formazan particles,
+a 100 μL solubilizer was then added to each well and well
+mixed for 15 min, using an orbital shaker. Te absorbance
+at 570 nm was measured with a 96-well ELISA plate
+reader. Te extent of the positive charge’s absorption
+became the main factor used to establish the viability of
+cells [35].
+2.11. Bacterial Strains. Methicillin-resistant Staphylococcus
+aureus (MRSA) (ATCC 33591) and methicillin-sensitive
+Staphylococcus aureus (MSSA) (ATCC 25923) were the
+bacterial strains chosen for this study. Besides, the clinical
+strain was isolated from Besat Hospital, Hamadan, Iran.
+2.12. Minimum Inhibitory Concentration (MIC) and Agar
+Well Difusion. According to CLSI recommendations, agar
+well difusion and minimum inhibitory concentrations
+(MIC) tests were conducted. In each well, 100 μL of PLGA-
+AMP, PLGA-AMP-LYS, and free-AMP were administered
+at varying concentrations (5, 25, and 50 μg/mL) and in-
+cubated for 24, 48, and 72 hours at 37°C. Subsequently, the
+diameter of the inhibitory zone was measured for each well.
+Additionally, the MIC test was conducted using sterilized
+96-well cell culture plates. PLGA-AMP, PLGA-AMP-LYS,
+and free-AMP were dispensed at various concentrations,
+with 100 μL of each concentration added to individual
+microplate wells, excluding the control wells. In each well,
+100 μL of Muller–Hinton broth medium was introduced,
+and subsequently, 100 μL of diferent bacterial strains at
+a concentration of 1.5 ×10^6 CFU/mL were added, except for
+the control well. For 24, 48, and 72 hours, the microplates
+were incubated at 37°C in an incubator [36, 37].
+2.13. Analysis of Bioflm Inhibition. For the quantitative
+evaluation of forming bioflms with and without nano-
+particles and free drugs, the crystal violet staining method
+was employed. To put it briefy, newly cultured strains were
+thinned out at a 1 :100 ratio and incorporated into the TSB
+culture medium enriched with a 1% glucose solution. Te
+fnal concentration of each microplate well was 50, 30, 20, 10,
+or 5 μg/mL. After that, various quantities of PLGA-AMP,
+PLGA-AMP-LYS, and free-AMP were employed. Te
+microplate underwent 24, 48, and 72 hours of incubation at
+37°C. Te culture medium in each well was subsequently
+aspirated, and the wells were washed three times with PBS.
+Methanol was employed to fx the bioflm within each well.
+Subsequently, the wells were stained with a 2% crystal violet
+solution. After a 15-minute staining period, the wells were
+gently rinsed with water. Te next step involved creating
+a suspension of adherent cells in 95% ethyl alcohol. Sub-
+sequently, the optical density (OD) was evaluated at 600 nm
+after a 30-minute incubation period [38].
+2.14. Statistical Analysis. Statistical analysis was performed
+using ANOVA to assess the diferences among the treatments.
+Another statistical method utilized to compare the groups was
+the Dunnett test. A 95% confdence interval was established,
+and statistical signifcance was defned as P < 0.05.
+3. Results
+3.1. Te NPs’ Properties. In the optimal PLGA-AMP-LYS
+formulation (F4), the nanoparticles exhibited a mean di-
+ameter of 301.9 ± 32 nm, a PDI of 0.261 ± 0.010, and a zeta
+potential of −19.2 ± 3.4 mV, as shown in Table 1.
+4
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Table 1: Components and technological parameters of various formulations.
+Formulation
+AMP (mg)
+LYS (mg)
+PLGA (mg)
+DCM1 (ml)
+Chl2 (ml)
+PVA (ml)
+Size (nm)
+PDI
+ZP (mV)
+EE (%)
+DL (%)
+LCE3 (%)
+F1
+6
+—
+30
+20
+—
+20 (1%)
+724.4 ± 45
+0.372 ± 0.021
+−18.5 ± 1.6
+92.24 ± 7.3
+13.91 ± 1.2
+—
+F2
+6
+—
+30
+—
+15
+20 (1%)
+435.4 ± 23
+0.280 ± 0.014
+−17.3 ± 1.5
+93.43 ± 5.2
+15.53 ± 1.4
+—
+F3
+12
+—
+60
+—
+15
+20 (2%)
+321.2 ± 36
+0.274 ± 0.012
+−20.5 ± 2.1
+93.50 ± 4.5
+16.42 ± 2.3
+—
+F4
+24
+3
+120
+—
+15
+20 (2%)
+301.9 ± 32
+0.261 ± 0.010
+−19.2 ± 3.4
+94.53 ± 3.
+1 .91 ± 1.6
+40
+1Dichloromethane. 2Chloroform. 3Lysostaphin conjugation efciency. Bold values represent the best formulation used in the study.
+Canadian Journal of Infectious Diseases and Medical Microbiology
+5
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+3.2. Morphology. Te outcomes of PLGA-AMP morphology
+analysis via FE-SEM are shown in supplementary fle 1.
+Based on the image, the majority of the particles appeared to
+be spherical, displaying a smooth surface and exhibiting
+a uniform dispersion. Te size and PDI (0.261 ± 0.010) of
+most nanoparticles were consistent with this observation.
+3.3. Drug Loading and Encapsulation Efciency. Te range
+for the quantity of ampicillin loaded in PLGA in various
+formulations was 13.91% to 18.91%, while the range for the
+amount of encapsulation was 92.24% to 94.53%. In the
+optimized PLGA-AMP-LYS (F4) formulation, the levels of
+ampicillin loaded and encapsulated were 18.91% ± 1.6 and
+94.53% ± 3.8, respectively, as depicted in Table 1.
+3.4. Stability of NPs. Te nanoparticles’ zeta potential, PDI,
+and particle size were evaluated at intervals of 0, 2, 4, 6, 8,
+and 12 months after production (Table 2). Te fndings
+indicated that at least till the sixth month after production,
+there was very little variation in the size of the nanoparticles.
+Tese diameters went from 301.9 ± 32 nm to 502.6 ± 43 nm
+after a year. Zeta potential and PDI changes were not ap-
+preciably diferent.
+3.5. Drug Release. Te drug release test was conducted over
+72 hours in an in vitro setting using a PBS bufer with a pH of
+7.4. Te fndings are displayed in Figure 1. Results showed
+that the time required was more than 72 hours to release
+approximately 80% of the drug from the PLGA matrix. In
+comparison, 80% of the free drug was released within the
+initial 30 hours, and within the frst 20 hours, 35% of the
+drug was released from the PLGA matrix. During this same
+time frame, 75% of the free drug was released.
+3.6. FTIR Analysis. Te FTIR spectra of ampicillin, PLGA,
+and PLGA-AMP are displayed in Figure 2. Encapsulating
+ampicillin in PLGA nanoparticles prevents the drug’s ab-
+sorption peaks at 985 cm−1, as can be seen in this fgure.
+However, inside the same sites of PLGA-AMP, three am-
+picillin feature absorption peaks are seen at 1450 and
+985 cm−1. When PLGA and PLGA-AMP nanoparticle
+spectra are compared, it can be seen that the PLGA-AMP
+nanoparticle spectra appear to have strong PLGA absorption
+peaks at 2980 and 1500 cm−1.
+3.7. DSC Analysis. To scrutinize PLGA nanoparticles’ re-
+crystallization and melting characteristics, we acquired DSC
+thermograms for ampicillin, PLGA, a physical mixture, and
+PLGA-AMP nanoparticles (Figure 3). Te DSC thermogram
+for PLGA illustrates a melting transition at a temperature of
+200°C. Remarkably, the melting points of both the physical
+mixture and the nanoparticles closely resembled those of the
+PLGA. During the physical blending with ampicillin,
+a subtle alteration in the melting behavior of PLGA was
+detected. Te DSC thermograms of ampicillin showed
+a clear endothermic peak, manifesting at a temperature of
+220°C. Te melting points of both the physical mixture and
+PLGA-AMP nanoparticles appear relatively low in comparison
+to data regarding this characteristic for other substances. Of
+particular signifcance is that there was little to no change in the
+physical mixture, PLGA-AMP, or endothermic peak positions
+of the ampicillin. Te absence of a discernible melting peak in
+the PLGA-AMP thermogram indicates that the ampicillin
+molecules are potentially stabilized within the PLGA matrix or
+that there is an absence of freely present ampicillin crystals
+within the PLGA-AMP structure.
+3.8. MTT Assay. Te toxicity evaluation of murine L929
+fbroblasts exposed to varying concentrations of PLGA-
+AMP, ampicillin, free PLGA, and lysostaphin can be ob-
+served in Figure 4. At 37°C and 5% CO2, cells were cultivated
+with varying concentrations of free ampicillin, PLGA-AMP,
+free PLGA (blank), and lysostaphin. Furthermore, the
+identical cells employed in the positive control group (un-
+treated) were subjected to incubation in the culture medium.
+All formulations had no toxic efect to 50 μg/ml. Te toxicity
+of PLGA-AMP was lower than free ampicillin at 200 μg/ml.
+3.9. Agar Well Difusion and Minimum Inhibitory Concen-
+tration (MIC). Tables 3 and 4 display the well difusion and
+MIC test results at 24, 48, and 72hours. Free ampicillin had
+a better impact on all three strains in both techniques at 24 and
+48h than PLGA-AMP. Te anticipated results can be attributed
+to the fact that, in both approaches, the bacteria were exposed to
+the freely available drug; however, only a minimal quantity of
+the medication was released from the PLGA-AMP. In addition,
+the release of medication from PLGA-AMP occurred after
+72hours of incubation, which gradually increased the inhibition
+zone of PLGA-AMP. Te MIC of PLGA-AMP also approached
+that of free ampicillin after 72hours. Lysostaphin-conjugated
+nanoparticles had no inhibitory efect on Staphylococcus aureus
+strains at 24, 48, and 72hours after incubation.
+3.10. Bioflm Analysis. Te results pertaining to the impacts
+of PLGA-AMP and free ampicillin on the inhibition of
+MRSA, MSSA, and clinical strains’ bioflm formation at 24,
+48, and 72 hours are presented in Figures 5–7, respectively.
+Both PLGA-AMP and free ampicillin exhibited efectiveness
+in inhibiting bioflm formation at 24, 48, and 72 hours of
+incubation. Conversely, strains exposed to free PLGA and the
+positive control strains (untreated) displayed robust bioflm
+formation. During the 24- and 48-hour intervals, it was
+observed that free ampicillin exhibited a greater capacity to
+inhibit bioflm formation in all three strains when compared
+to PLGA-AMP. By the 72-hour time point, the impact of
+PLGA-AMP was signifcantly enhanced due to the gradual
+release of ampicillin. Tis led to PLGA-AMP achieving results
+that closely resembled those of free ampicillin, and, in some
+instances, even surpassing its efcacy. Nanoparticles that were
+conjugated with lysostaphin exhibited no discernible impact
+on the inhibition of bioflm formation during the 24, 48, and
+72 hours of incubation. In these cases, the exposed strains
+continued to form strong bioflms.
+6
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+4. Discussion
+Various methods are employed for drug loading within
+PLGA [7]. Te synthesis method is chosen depending on the
+purpose of drug loading and preparation of the nanodrug
+and its important features. Te present study utilized the
+double emulsion evaporation method to prepare nanodrugs.
+Te fndings showed that by using the mentioned method,
+the drug loading and encapsulation efciency, zeta potential,
+PDI, size of the nanoparticles, and lysostaphin conjugation
+efciency in the optimum PLGA-AMP-LYS (F4) formula-
+tion
+were
+301.9 ± 32 nm,
+0.261 ± 0.010,
+−19.2 ± 3.4 mV,
+18.91 ± 1.6, and 94.53 ± 3.8, 40%, respectively. Considering
+the synthesized nanodrug’s local use, the size was suitable.
+4000
+500
+3500
+3000
+2500
+2000
+1500
+1000
+PLGA
+Transmittance (%T)
+Wavenumbers (cm-1)
+Free-AMP
+PLGA-AMP
+Figure 2: FTIR spectra of free-AMP, PLGA, and PLGA-AMP.
+Free-AMP
+PLGA-AMP
+0
+20
+40
+60
+80
+Time (H)
+0
+20
+40
+60
+80
+100
+Drug fraction (%)
+Figure 1: In a phosphate bufer with a pH of 7.4, the in vitro release profles of ampicillin from the PLGA-AMP-LYS (F4) formulation were
+investigated. In this study, free ampicillin served as the control.
+Table 2: Te PLGA-AMP formulation’s technological features include average diameter, PDI, and zeta potential throughout the stability
+study (means ± SD, n  3).
+Formulation
+Technological
+parameters
+Time (months)
+0
+2
+4
+6
+8
+12
+PLGA-AMP-LYS
+(F4)
+Size (nm)
+301.9 ± 32
+304.3 ± 34
+307.8 ± 32
+312.5 ± 31
+486.5 ± 36
+502.6 ± 43
+PDI
+0.261 ± 0.010
+0.262 ± 0.014
+0.264 ± 0.011
+0.274 ± 0.017
+0.278 ± 0.012
+0.295 ± 0.016
+ZP∗(mV)
+−19.2 ± 3.4
+−18.6 ± 3.2
+−18.4 ± 2.2
+−18.8 ± 4.6
+−17.8 ± 3.8
+−16.2 ± 4.3
+∗Zeta potential.
+Canadian Journal of Infectious Diseases and Medical Microbiology
+7
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Furthermore, considering the zeta potential was −19.2 mV,
+the prepared nanodrug was stable. A rise in the negative zeta
+potential enhances particle stability by increasing repulsive
+forces, thereby preventing particle accumulation over time
+[39]. PVA is a surfactant and dispersing agent that afects
+nanoparticles’
+characteristics
+and
+reduces
+the
+surface
+tension between PLGA and water [39]. Te important point
+was that while the amount of PVA in the synthesis process
+increased, the surface charge of the nanodrug increased,
+while the zeta potential became more negative. Tis fnding
+aligns with the fndings of Sharma et al. [40] because the
+surface charge of the nanodrug increased with the increment
+0
+20
+40
+60
+80
+100
+120
+25
+50
+100
+200
+Standard media
+Percentage cell viability
+Concentration (µg/ml)
+PLGA
+PLGA-AMP
+Free-AMP
+Free-LYS
+Figure 4: Te PLGA-AMP, lysostaphin, and free-AMP efects on L929 cells.
+Table 3: Results of MIC.
+MIC value (μg/mL) 150-100-50-25-15-5-0.5 (μg/mL)
+Time (h)
+Bacterial strains
+PLGA-AMP
+Free-AMP
+24
+MSSA
+50 ± 4
+5 ± 1
+MRSA
+100 ± 7
+50 ± 2
+Clinical strain
+100 ± 5
+15 ± 1
+48
+MSSA
+25 ± 2
+5 ± 1
+MRSA
+100 ± 6
+50 ± 5
+Clinical strain
+50 ± 2
+15 ± 1
+72
+MSSA
+15 ± 1
+5 ± 1
+MRSA
+50 ± 5
+50 ± 3
+Clinical strain
+15 ± 1
+30 ± 1
+50
+300
+200
+Physical mix
+100
+350
+PLGA
+Heat flow (wg)
+0
+250
+150
+400
+Temperature (°C)
+-100
+-50
+Free-AMP
+PLGA-AMP
+Figure 3: DSC thermograms of free-AMP, PLGA + free-AMP (physical mixture), PLGA, and PLGA-AMP.
+8
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+of the surfactant amount in their study, which was a stabi-
+lizing agent and prevented the aggregation of nanoparticles
+and provided stability during the synthesis. Furthermore, in
+our investigation, the augmentation of PVA concentration
+resulted in a reduction in nanoparticle size, in line with the
+observations made by Hern´andez-Giottonini et al. [41]. Tey
+found that the nanoparticle size diminished as the PVA
+concentration increased, which they attributed to the
+increase in viscosity following the increase in PVA con-
+centration. However, it should be mentioned that the ma-
+jority of surfactants are toxic in nature, and their use is
+restricted. Fortunately, PVA has fewer toxic efects than
+other surfactants, such as tween, lecithin, and poloxamer;
+however, the optimum amount of PVA should be used.
+Another important factor in the synthesis of the nanodrug
+was the amount of PDI, which was 0.261. Many factors are
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (24 h)
+30
+10
+20
+5
+50
+Concentration (µg/mL)
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+(a)
+ns
+ns
+ns
+ns
+ns
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (48 h)
+30
+20
+5
+50
+10
+Concentration (µg/mL)
+(b)
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+30
+20
+10
+5
+50
+Concentration (µg/mL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (72 h)
+(c)
+Figure 5: Graphical depiction of bioflm inhibition (OD values) of methicillin-resistant staphylococcus by diferent formulations in (a) 24,
+(b) 48, and (c) 72 hours. Comparisons were performed among free AMP, PLGA-AMP, free-PLGA, and control (treatment): NS, non-
+signifcant; ∗p < 0.05.
+Table 4: Results of agar well difusion.
+Zone of inhibition (mm) 50-25-5 (μg/mL)
+Time (h)
+Bacterial strains
+PLGA-AMP
+Free-AMP
+24
+MSSA
+25
+15
+10
+45
+30
+25
+MRSA
+5
+0
+0
+10
+0
+0
+Clinical strain
+15
+10
+5
+40
+30
+15
+48
+MSSA
+30
+20
+15
+45
+30
+25
+MRSA
+10
+5
+0
+10
+0
+0
+Clinical strain
+20
+15
+5
+40
+30
+15
+72
+MSSA
+35
+25
+20
+45
+30
+25
+MRSA
+10
+5
+0
+10
+0
+0
+Clinical strain
+25
+20
+10
+40
+30
+15
+Canadian Journal of Infectious Diseases and Medical Microbiology
+9
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+important in the PDI. For example, if we increase the du-
+ration of the ultrasonic probe during the synthesis, the
+particle size will decrease and become more homogeneous.
+As in our study, as the duration of using the magnetic stirrer
+increased, the PDI was smaller. However, is it possible to
+determine the size of PDI without considering the amount of
+load and encapsulation? Our fndings showed that in-
+creasing the duration of using the ultrasonic probe and
+magnetic stirrer reduced drug loading and encapsulation
+amount, so a balance between the amount of loading and
+PDI should be achieved during the synthesis. Tis obser-
+vation corresponds with the outcomes reported by Ito et al.
+[42]. In their study, it was found that the drug loading
+decreased as the homogenization time increased. Another
+important aim of this study was to determine the amount of
+drug loading in the PLGA matrix. Te quantity of drug
+loading and encapsulation holds signifcant importance in
+enhancing the efcacy of therapeutic drugs, and it also
+warrants further investigation for their potential clinical
+applications [40]. In this current study, the drug loading and
+encapsulation levels in PLGA were assessed using the in-
+direct spectrophotometer method, and drug absorption was
+measured at 268 nm wavelength. In our study, the drug
+loading was 18.91%, and the encapsulation efciency was
+94.53%. As the quantity of the drug was elevated, the drug
+loading capacity also increased, aligning with the fndings
+reported by Snejdrova et al. [43]. In general, the drug loading
+capacity is contingent on multiple factors, such as the drug’s
+characteristics (hydrophilic or hydrophobic), the synthesis
+method employed, and the quantity of the drug utilized
+[40, 44]. Besides, Sharma et al. [40] study revealed that the
+encapsulation rate of paclitaxel in PLGA was higher than
+that of epirubicin, which was attributed to the hydrophobic
+nature of paclitaxel, which easily interacts with the hydro-
+phobic part of PLGA. Also, their study showed that sur-
+factant concentration afected drug loading and nanoparticle
+encapsulation. As mentioned, the type of synthesis tech-
+nique selected and the quantity of the drug directly impact
+the drug loading capacity. Wang et al. [45] loaded the natural
+compound paenol with the nanoprecipitation method,
+a suitable method for loading hydrophobic drugs, and the
+loading and encapsulation amounts in PLGA were 12.7%
+and 86%, respectively. Te drug loading may be reduced due
+to the selection of an inappropriate synthesis method leading
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+30
+20
+10
+5
+50
+Concentration (µg/mL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (24 h)
+(a)
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+20
+5
+50
+30
+10
+Concentration (µg/mL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (48 h)
+(b)
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+20
+5
+10
+30
+50
+Concentration (µg/mL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (72 h)
+(c)
+Figure 6: Graphical depiction of bioflm inhibition (OD values) of methicillin-sensitive staphylococcus by diferent formulations in (a) 24,
+(b) 48, and (c) 72 hours. Comparisons were performed among free AMP, PLGA-AMP, free-PLGA, and control (treatment): NS, non-
+signifcant; ∗p < 0.05.
+10
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+to drug leakage outside the nanoparticle and drug de-
+struction during the synthesis process [43]. Additionally, the
+kind of solvent used for PLGA during synthesis is a critical
+factor that infuences the size, polydispersity index (PDI),
+and drug loading. In the present study, dichloromethane was
+frst used as a solvent for PLGA. Nonetheless, due to in-
+adequacies in terms of size, PDI, and drug loading, along
+with the low solubility of PLGA in dichloromethane, the
+synthesized nanoparticles were not considered suitable, so
+dichloromethane was replaced by chloroform. As a result,
+with the better solubility of PLGA in chloroform, the size
+and PDI decreased and drug loading also increased. Our
+fndings were congruent with the study of Kim et al. [46],
+indicating that the solubility of PLGA in acetone was better
+than dichloromethane, and using dichloromethane during
+the synthesis of nanoparticles caused an increase in size and
+a lower encapsulation. For the reason that the duration of
+stability of nanoparticles is important, in our study, the
+stability of PLGA-AMP-LYS (F4) was investigated for
+12 months. In the current investigation, notable alterations
+in size, PDI, and zeta potential were not observed for up to
+six months following the synthesis, while after 12 months of
+nanodrug preparation, PLGA-AMP size increased from
+301.9 nm to 502.6 nm. Tis can be due to the adhesion of
+nanoparticles. However, there were no signifcant difer-
+ences noted in zeta potential and PDI after the 12 months.
+Additionally, one of the advantages of the load of the drug in
+polymer nanoparticles is controlling the drug release rate
+following the polymer matrix’s destruction, so the load of the
+drug in nanoparticles leads to a stable and controlled release
+of the drug in the desired region. Consequently, this en-
+hances the drug’s stability within the desired range [46]. Te
+cross-linking of lactic acid and glycolic acid monomers with
+the drug gives rise to the creation of a polymer layer encasing
+the drug, facilitating a controlled and stable release of the
+drug from the nanoparticle [47]. In the current research, to
+investigate the release of ampicillin from PLGA-AMP-LYS
+(F4), the free drug and the nanodrug were enclosed inside
+two dialysis bags separately. Each one was located separately
+in a PBS medium (pH: 7.4). Our results demonstrated that,
+within 10 hours, approximately 55% of ampicillin was re-
+leased from the dialysis bag into the release medium, while
+only 20% of ampicillin was released from the nanodrug
+during the same time. After 72 h, 92% of free ampicillin and
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+20
+5
+10
+30
+50
+Concentration (µg/mL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (24 h)
+(a)
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (48 h)
+50
+20
+10
+5
+30
+Concentration (µg/mL)
+(b)
+*
+*
+*
+*
+*
+*
+*
+*
+ns
+ns
+ns
+ns
+ns
+Free-AMP
+PLGA-AMP
+Free-PLGA
+Control (Untreated)
+20
+5
+10
+30
+50
+Concentration (µg/mL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+OD (72 h)
+(c)
+Figure 7: Bioflm inhibition (OD values) of staphylococcus by formulations shown graphically in (a) 24 hours, (b) 48 hours, and (c)
+72 hours. Te following comparisons were made: free AMP, PLGA-AMP, free-PLGA, and control (treatment): nonsignifcant, or NS;
+∗p < 0.05.
+Canadian Journal of Infectious Diseases and Medical Microbiology
+11
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+75% of ampicillin from the nanodrug were released in the
+release medium. Te slow release of ampicillin from
+nanodrugs can be attributed to drug release from the
+nanoparticle core and the decomposition of PLGA into lactic
+acid and glycolic acid monomers [39]. However, the time it
+takes for drugs to be released from various types of nano-
+particles can vary across diferent research studies, and one
+of the main reasons is the use of various materials and
+methods. Generally speaking, the extended drug release
+duration from nanoparticles compared to free drug results
+from the gradual release of the drug from the nanoparticle
+matrix. In the study of Zakeri-Milani et al. [39], initially,
+vancomycin exhibited a rapid release from PLGA, but over
+time, the rate of drug release from PLGA decreased. Te
+rapid initial release of the drug was attributed to its presence
+on or near the surface of the PLGA, while the delayed release
+from the center of the PLGA was also noted. In our study,
+FE-SEM was used to examine the morphology of the syn-
+thesized nanoparticles. Electron microscopy results were
+consistent with PDI. Because according to Supplementary
+fle 1, the particles’ size was the same, with a smooth and
+spherical surface. Te slight diference in nanoparticle di-
+ameter size in DLS and SEM results can be attributed to the
+fact that DLS determines the hydrodynamic diameter in
+solution, while SEM images are obtained without solvent
+[48]. Additionally, in the present study, the conjugation of
+lysostaphin on PLGA-AMP in the presence of NHS and
+EDC was created by creating a link between the carboxyl end
+of PLGA and the amine end of lysostaphin. Te Bradford kit
+showed a 40% efciency in lysostaphin conjugation. In
+Moura et al.’s study [26], the percentage of anti-CD46
+conjugation on PLGA ranged from 31% to 36% in difer-
+ent formulations. On the other hand, FTIR and DSC were
+used in this investigation to verify that during the synthesis
+of PLGA-AMP, the elements did not chemically react with
+each other and were not converted into a new compound,
+and additionally to confrm that the drug was not physically
+located next to PLGA, and the results were completely
+promising. One of the most important topics in the synthesis
+and use of nanodrugs is the investigation of their toxicity.
+Due to the truth that the purpose of using nanomedicines is
+disease treatment in humans, investigating toxicity is of
+paramount signifcance. In the present study, PLGA-AMP at
+a 50 μg/ml concentration had no toxicity on L929 fbroblast
+cells, so 100% of the cells survived. Additionally, in our
+study, at a 200 μg/ml concentration, the toxicity of
+PLGA-AMP was lower than that of free ampicillin on cells.
+Terefore, drug encapsulation in nanoparticles may reduce
+toxicity. In the study of Liang et al. [49], the toxicity of
+rifapentine-loaded PLGA (RPT/PLGA NPs) on J744A.1 cell
+line was investigated. Te survival of cells exposed to RPT/
+PLGA NPs at a 50 μg/mL concentration was above 90%,
+while the survival of cells exposed to free rifapentine at the
+same concentration was 40%. Teir research demonstrated
+a substantial reduction in the toxicity of rifapentine fol-
+lowing its encapsulation in PLGA. In our study, following
+the investigation of the synthesized nanoparticles’ charac-
+teristics, well difusion, MIC, and bioflm inhibition tests
+were performed to investigate their antimicrobial activity.
+Besides, 5, 25, and 50 μg/mL of free ampicillin were found
+more efective than PLGA-AMP on MRSA, MSSA, and
+clinical strains at 24 and 48 hours. But after 72 h, the size of
+the diameter of the halo of growth inhibition in the optimum
+formulation of PLGA-AMP and free ampicillin was almost
+the same. Since this method allows the bacteria to be in
+direct contact with the drug, the free ampicillin had a better
+efect in 24 and 48 h, while according to the release rate of the
+prepared nanodrug, which is 72 h, the halos became closer to
+each other during this time. Also, the MIC of free ampicillin
+at 24 and 48 h was lower than that of PLGA-AMP. However,
+after 72 h, the MIC of the optimum formulation of
+PLGA-AMP decreased due to the release of ampicillin from
+PLGA and approached the MIC of free ampicillin. Well
+difusion and MIC study fndings were predictable due to the
+long release time of PLGA-AMP. Free ampicillin was
+available from the start to exert its antimicrobial mechanism,
+while the drug was released from PLGA-AMP gradually.
+Tese fndings align with the outcomes of Hosseini et al.’s
+study [31]. Additionally, our inquiry aimed at inhibiting the
+bioflm formation of Staphylococcus aureus strains. We
+investigated the efect of PLGA-AMP and free ampicillin on
+bioflm formation by MRSA, MSSA, and clinical strains. Te
+results obtained after 72 h were promising. In all stages of the
+experiment, strains exposed to pure PLGA and the control
+group displayed robust bioflm formation, whereas those
+exposed to PLGA-AMP and free ampicillin exhibited di-
+minished bioflm formation. At 24 and 48 h, a small amount
+of ampicillin was released from PLGA-AMP, so bioflm
+formation in all three bacterial strains was less inhibited than
+free ampicillin. While free ampicillin was completely in
+direct contact with bacteria and inhibited bioflm formation
+with a higher percentage than PLGA-AMP, bioflm for-
+mation was more afected by the increase in ampicillin
+release from PLGA-AMP after 72 h. Te outcomes with
+PLGA-AMP were comparable to those with free ampicillin,
+and in certain instances, even slightly better, especially after
+72 hours. According to Lange et al.’s study [50], Ag-NPs
+measuring 154 nm in size with a zeta potential of −26 mV
+exhibited a more pronounced impact on bioflm formation
+compared to Cu-NPs, which had a size of 345 nm and a zeta
+potential of −0.4. In their study, it is assumed that a more
+negative zeta potential leads to greater stability and the
+tendency of nanoparticles to accumulate is less, so their
+surface is not limited, and as a result, the antibacterial
+property is stronger. Also, smaller nanoparticles will pen-
+etrate deeper layers better. Also, in the study of Bastari et al.
+[51], levofoxacin was loaded in PLGA coated with calcium
+phosphate. Teir study showed that both PLGA loaded with
+levofoxacin coated with calcium phosphate and uncoated
+prevented Staphylococcus aureus bioflm formation for four
+weeks. It is important in our study that the amount of
+ampicillin loading in PLGA-AMP before lysostaphin con-
+jugation was 18.91%. Following the conjugation of lysos-
+taphin, the researchers reevaluated well difusion, MIC
+(minimum inhibitory concentration), and bioflm formation
+inhibition tests. Nanoparticles conjugated with lysostaphin
+had
+no
+antimicrobial
+and
+antibioflm
+activity,
+while
+PLGA-AMP had antimicrobial and antibioflm activity.
+12
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Terefore, we assume that drug release occurred during the
+conjugation of lysostaphin on PLGA-AMP because in the
+stage of lysostaphin conjugation, PLGA-AMP was dissolved
+in EDC and NHS and stirred for one hour. Next, in order to
+separate the precipitate of the nanodrug, centrifugation was
+performed. In the next step, lysostaphin was added to the
+precipitate of the nanodrug placed at 4°C for 24 hours and
+centrifuged. Terefore, the drug may have been removed
+from PLGA-AMP during this period.
+5. Conclusion
+In this study, a nanodrug was efectively synthesized using
+the double emulsion evaporation method, making it a po-
+tential treatment candidate for Staphylococcus aureus in-
+fections and the inhibition of bioflm formation by such
+strains. Te antimicrobial efectiveness of free ampicillin
+surpassed that of PLGA-AMP in both the MIC and well
+difusion assays at 24 and 48 hours, as ampicillin was re-
+leased from PLGA-AMP over a span of approximately
+72 hours. Consequently, the duration of efectiveness for
+PLGA-AMP in the well difusion and MIC methods was
+72 hours. Furthermore, in comparison to PLGA-AMP, free
+ampicillin exhibited a more pronounced impact on inhib-
+iting the bioflm formation of Staphylococcus aureus strains.
+Nonetheless, their results showed remarkable consistency,
+and in certain cases, they exhibited even slight improve-
+ments after the 72 hour mark. Hence, the outcomes of our
+research highlight the promising efcacy of the optimal
+PLGA-AMP formulation after 72 hours. Utilizing this
+technology holds the potential to reduce staphylococcal
+infections and could serve as a valuable tool in managing
+hospital-acquired infections caused by this bacterium.
+Data Availability
+Te datasets utilized and/or examined in the present study
+can be obtained from the corresponding author upon rea-
+sonable request.
+Ethical Approval
+Tis study received approval from the Ethics Committee of
+Hamadan University of Medical Sciences (Approval Code:
+IR.UMSHA.REC.1400.467).
+Conflicts of Interest
+Te authors confrm the absence of any conficts of interest.
+Authors’ Contributions
+MRA, SMH, ENZ, and MASH were responsible for de-
+signing the study. EN, SMH, FK, and BA collaborated on the
+experimental work and contributed to drafting the manu-
+script. MRA, EN, and SMH conducted the data analysis. EN
+and SMH were involved in the cell culture, while SMH and
+RM were responsible for designing the nanoparticles. MRA
+oversaw the entire process, from design to review, and
+prepared the manuscript. All authors reviewed and ap-
+proved the fnal manuscript.
+Acknowledgments
+Te authors express their gratitude to the Hamadan Uni-
+versity of Medical Sciences for its fnancial support in fa-
+cilitating this research. Financial support for this study was
+provided by the Hamadan University of Medical Sciences
+under project no. 140007276055.
+Supplementary Materials
+Scanning electron microscopy of PLGA-AMP nanoparticles
+using feld emission technology. (Supplementary Materials)
+References
+[1] S. Fulaz, H. Devlin, S. Vitale, L. Quinn, J. P. O’Gara, and
+E. Casey, “Tailoring nanoparticle-bioflm interactions to in-
+crease the efcacy of antimicrobial agents against Staphylo-
+coccus aureus,” International Journal of Nanomedicine, vol.15,
+pp. 4779–4791, 2020.
+[2] A. Iannitelli, R. Grande, A. D. Stefano et al., “Potential an-
+tibacterial activity of carvacrol-loaded poly (DL-lactide-co-
+glycolide)(PLGA) nanoparticles against microbial bioflm,”
+International Journal of Molecular Sciences, vol. 12, no. 8,
+pp. 5039–5051, 2011.
+[3] H. Devlin, S. Fulaz, D. W. Hiebner, J. P. O’Gara, and E. Casey,
+“Enzyme-functionalized mesoporous silica nanoparticles to
+target Staphylococcus aureus and disperse bioflms,” In-
+ternational Journal of Nanomedicine, vol. 16, pp. 1929–1942,
+2021.
+[4] N. G´omez-Sequeda, J. Ruiz, C. Ortiz, M. Urquiza, and
+R. Torres, “Potent and specifc antibacterial activity against
+Escherichia coli O157: H7 and methicillin resistant Staphy-
+lococcus aureus (MRSA) of G17 and G19 peptides encapsu-
+lated
+into
+Poly-Lactic-Co-Glycolic
+Acid
+(PLGA)
+nanoparticles,” Antibiotics, vol. 9, no. 7, p. 384, 2020.
+[5] A. Shariati, Z. Chegini, E. Ghaznavi-Rad, E. N. Zare, and
+S. M. Hosseini, “PLGA-based nanoplatforms in drug delivery
+for inhibition and destruction of microbial bioflm,” Frontiers
+in Cellular and Infection Microbiology, vol. 12, Article ID
+926363, 2022.
+[6] Z. Huang, T. Zhou, Y. Yuan et al., “Synthesis of carbon
+quantum dot-poly lactic-co-glycolic acid hybrid nanoparticles
+for chemo-photothermal therapy against bacterial bioflms,”
+Journal of Colloid and Interface Science, vol. 577, pp. 66–74,
+2020.
+[7] H. K. Makadia and S. J. Siegel, “Poly lactic-co-glycolic acid
+(PLGA) as biodegradable controlled drug delivery carrier,”
+Polymers, vol. 3, no. 3, pp. 1377–1397, 2011.
+[8] J.-S. Choi, K. Seo, and J.-W. Yoo, “Recent advances in PLGA
+particulate systems for drug delivery,” Journal of Pharma-
+ceutical Investigation, vol. 42, no. 3, pp. 155–163, 2012.
+[9] H. Ceotto-Vigoder, S. Marques, I. Santos et al., “Nisin and
+lysostaphin activity against preformed bioflm of Staphylo-
+coccus aureus involved in bovine mastitis,” Journal of Applied
+Microbiology, vol. 121, no. 1, pp. 101–114, 2016.
+[10] M. D. Bastos, B. G. Coutinho, and M. L. V. Coelho,
+“Lysostaphin: a staphylococcal bacteriolysin with potential
+clinical
+applications,”
+Pharmaceuticals,
+vol.
+3,
+no.
+4,
+pp. 1139–1161, 2010.
+Canadian Journal of Infectious Diseases and Medical Microbiology
+13
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+[11] J. K. Kumar, “Lysostaphin: an antistaphylococcal agent,”
+Applied Microbiology and Biotechnology, vol. 80, no. 4,
+pp. 555–561, 2008.
+[12] S. Sharma, L. Singh, and S. Singh, “Comparative study be-
+tween penicillin and ampicillin,” Scholars Journal of Applied
+Medical Sciences, vol. 1, no. 4, pp. 291–294, 2013.
+[13] J. Pazlarova, S. Purkrtova, J. Babulikova, and K. Demnerova,
+“Efects of ampicillin and vancomycin on Staphylococcus
+aureus bioflms,” Czech Journal of Food Sciences, vol. 32, no. 2,
+pp. 137–144, 2014.
+[14] J. L. Lister and A. R. Horswill, “Staphylococcus aureus bio-
+flms: recent developments in bioflm dispersal,” Frontiers in
+Cellular and Infection Microbiology, vol. 4, p. 178, 2014.
+[15] P. Neopane, H. P. Nepal, R. Shrestha, O. Uehara, and
+Y. Abiko, “In vitro bioflm formation by Staphylococcus au-
+reus isolated from wounds of hospital-admitted patients and
+their association with antimicrobial resistance,” International
+Journal of General Medicine, vol. 11, pp. 25–32, 2018.
+[16] M. Otto, “Community-associated MRSA: what makes them
+special?” International Journal of Medical Microbiology,
+vol. 303, no. 6-7, pp. 324–330, 2013.
+[17] R. Parastan, M. Kargar, K. Solhjoo, and F. Kaflzadeh,
+“Staphylococcus aureus bioflms: structures, antibiotic re-
+sistance, inhibition, and vaccines,” Gene Reports, vol. 20,
+Article ID 100739, 2020.
+[18] N. K. Archer, M. J. Mazaitis, J. W. Costerton, J. G. Leid,
+M. E. Powers, and M. E. Shirtlif, “Staphylococcus aureus
+bioflms: properties, regulation, and roles in human disease,”
+Virulence, vol. 2, no. 5, pp. 445–459, 2011.
+[19] J. Liu, J.-Y. Madec, A. Bousquet-M´elou, M. Haenni, and
+A. A. Ferran, “Destruction of Staphylococcus aureus bioflms
+by combining an antibiotic with subtilisin A or calcium
+gluconate,” Scientifc Reports, vol. 11, no. 1, p. 6225, 2021.
+[20] M. Otto, “Staphylococcal bioflms,” Microbiology Spectrum,
+vol. 6, no. 4, pp. 6–4, 2018.
+[21] K. M. Alarjani and M. Skalicky, “Antimicrobial resistance
+profle of Staphylococcus aureus and its in-vitro potential
+inhibition efciency,” Journal of Infection and Public Health,
+vol. 14, no. 12, pp. 1796–1801, 2021.
+[22] G. Gebreyohannes, A. Nyerere, C. Bii, and D. B. Sbhatu,
+“Challenges of intervention, treatment, and antibiotic re-
+sistance of bioflm-forming microorganisms,” Heliyon, vol. 5,
+no. 8, Article ID e02192, 2019.
+[23] J. A. Wu, C. Kusuma, J. J. Mond, and J. F. Kokai-Kun,
+“Lysostaphin disrupts Staphylococcus aureus and Staphylo-
+coccus epidermidis bioflms on artifcial surfaces,” Antimi-
+crobial
+Agents
+and
+Chemotherapy,
+vol.
+47,
+no.
+11,
+pp. 3407–3414, 2003.
+[24] G. A. Hughes, “Nanostructure-mediated drug delivery,”
+Nanomedicine: Nanotechnology, Biology and Medicine, vol. 1,
+no. 1, pp. 22–30, 2005.
+[25] M. Yang, S. Xie, V. P. Adhikari, Y. Dong, Y. Du, and D. Li,
+“Te synergistic fungicidal efect of low-frequency and low-
+intensity ultrasound with amphotericin B-loaded nano-
+particles on C. albicans in vitro,” International Journal of
+Pharmaceutics, vol. 542, no. 1-2, pp. 232–241, 2018.
+[26] C. C. Moura, M. A. Segundo, J. D. Neves, S. Reis, and
+B. Sarmento, “Co-association of methotrexate and SPIONs
+into anti-CD64 antibody-conjugated PLGA nanoparticles for
+theranostic application,” International Journal of Nano-
+medicine, vol. 9, pp. 4911–4922, 2014.
+[27] P. Rafei and A. Haddadi, “Docetaxel-loaded PLGA and
+PLGA-PEG
+nanoparticles
+for
+intravenous
+application:
+pharmacokinetics and biodistribution profle,” International
+Journal of Nanomedicine, vol. 12, pp. 935–947, 2017.
+[28] B. C. Garms, H. Poli, D. Baggley et al., “Evaluating the efect of
+synthesis, isolation, and characterisation variables on reported
+particle size and dispersity of drug loaded PLGA nano-
+particles,” Materials Advances, vol. 2, no. 17, pp. 5657–5671,
+2021.
+[29] A. Tripathi, R. Gupta, and S. A. Saraf, “PLGA nanoparticles of
+anti tubercular drug: drug loading and release studies of
+a water in-soluble drug,” International Journal of PharmTech
+Research, vol. 2, no. 3, pp. 2116–2123, 2010.
+[30] H. Chaudhary, H. Chaudhary, and V. Kumar, “Taguchi design
+for optimization and development of antibacterial drug-
+loaded PLGA nanoparticles,” International Journal of Bi-
+ological Macromolecules, vol. 64, pp. 99–105, 2014.
+[31] S. M. Hosseini, R. Abbasalipourkabir, F. A. Jalilian et al.,
+“Doxycycline-encapsulated
+solid
+lipid
+nanoparticles
+as
+promising tool against Brucella melitensis enclosed in mac-
+rophage: a pharmacodynamics study on J774A. 1 cell line,”
+Antimicrobial Resistance and Infection Control, vol. 8, no. 1,
+pp. 62–12, 2019.
+[32] T. S. J. Kashi, S. Eskandarion, M. Esfandyari-Manesh et al.,
+“Improved
+drug
+loading
+and
+antibacterial
+activity
+of
+minocycline-loaded PLGA nanoparticles prepared by solid/
+oil/water ion pairing method,” International Journal of
+Nanomedicine, vol. 7, pp. 221–234, 2012.
+[33] M. Holgado, J. Arias, M. C´ozar, J. Alvarez-Fuentes, A. Gañ´an-
+Calvo, and M. Fern´andez-Ar´evalo, “Synthesis of lidocaine-
+loaded PLGA microparticles by fow focusing: efects on drug
+loading and release properties,” International Journal of
+Pharmaceutics, vol. 358, no. 1-2, pp. 27–35, 2008.
+[34] K. K. Chereddy, R. Coco, P. B. Memvanga et al., “Combined
+efect of PLGA and curcumin on wound healing activity,”
+Journal of Controlled Release, vol. 171, no. 2, pp. 208–215,
+2013.
+[35] Z. H. Wang, Z. Y. Wang, C. S. Sun, C. Y. Wang, T. Y. Jiang,
+and S. L. Wang, “Trimethylated chitosan-conjugated PLGA
+nanoparticles for the delivery of drugs to the brain,” Bio-
+materials, vol. 31, no. 5, pp. 908–915, 2010.
+[36] K. G. Bhat, T. M. Nalawade, and S. Sogi, “Antimicrobial
+activity of endodontic medicaments and vehicles using agar
+well difusion method on facultative and obligate anaerobes,”
+International journal of clinical pediatric dentistry, vol. 9,
+no. 4, pp. 335–341, 2016.
+[37] P. Taylor, F. Schoenknecht, J. Sherris, and E. Linner, “De-
+termination of minimum bactericidal concentrations of ox-
+acillin for Staphylococcus aureus: infuence and signifcance of
+technical factors,” Antimicrobial Agents and Chemotherapy,
+vol. 23, no. 1, pp. 142–150, 1983.
+[38] J.-H. Lee, Y.-G. Kim, and J. Lee, “Inhibition of Staphylococcus
+aureus bioflm formation and virulence factor production by
+petroselinic acid and other unsaturated C18 fatty acids,”
+Microbiology Spectrum, vol. 10, no. 3, pp. e0133022–22, 2022.
+[39] P.
+Zakeri-Milani,
+B.
+D.
+Loveymi,
+M.
+Jelvehgari,
+and
+H. Valizadeh, “Te characteristics and improved intestinal
+permeability of vancomycin PLGA-nanoparticles as colloidal
+drug delivery system,” Colloids and Surfaces B: Biointerfaces,
+vol. 103, pp. 174–181, 2013.
+[40] N. Sharma, R. M. Kumari, N. Gupta, A. Syed, A. H. Bahkali,
+and S. Nimesh, “Poly-(lactic-co-glycolic) acid nanoparticles
+for synergistic delivery of epirubicin and paclitaxel to human
+lung cancer cells,” Molecules, vol. 25, no. 18, p. 4243, 2020.
+[41] K. Y.
+Hern´andez-Giottonini, R.
+J.
+Rodr´ıguez-C´ordova,
+C. A. Guti´errez-Valenzuela et al., “PLGA nanoparticle
+14
+Canadian Journal of Infectious Diseases and Medical Microbiology
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+preparations by emulsifcation and nanoprecipitation tech-
+niques: efects of formulation parameters,” RSC Advances,
+vol. 10, no. 8, pp. 4218–4231, 2020.
+[42] F. Ito, H. Fujimori, and K. Makino, “Factors afecting the
+loading efciency of water-soluble drugs in PLGA micro-
+spheres,” Colloids and Surfaces B: Biointerfaces, vol. 61, no. 1,
+pp. 25–29, 2008.
+[43] E. Snejdrova, J. Loskot, J. Martiska et al., “Rifampicin-loaded
+PLGA nanoparticles for local treatment of musculoskeletal
+infections: formulation and characterization,” Journal of Drug
+Delivery Science and Technology, vol. 73, Article ID 103435,
+2022.
+[44] U. Posadowska, M. Brzychczy-Włoch, and E. Pamuła,
+“Gentamicin loaded PLGA nanoparticles as local drug de-
+livery system for the osteomyelitis treatment,” Acta of Bio-
+engineering and Biomechanics, vol. 17, no. 3, pp. 41–48, 2015.
+[45] F. Wang, Q. Shan, X. Chang, Z. Li, and S. Gui, “Paeonol-
+loaded PLGA nanoparticles as an oral drug delivery system:
+design, optimization and evaluation,” International Journal of
+Pharmaceutics, vol. 602, Article ID 120617, 2021.
+[46] D.-H. Kim, T. N. Nguyen, Y.-M. Han et al., “Local drug
+delivery using poly (lactic-co-glycolic acid) nanoparticles in
+thermosensitive gels for inner ear disease treatment,” Drug
+Delivery, vol. 28, no. 1, pp. 2268–2277, 2021.
+[47] H. Tang, J. Chen, L. Wang et al., “Co-delivery of epirubicin
+and paclitaxel using an estrone-targeted PEGylated liposomal
+nanoparticle for breast cancer,” International Journal of
+Pharmaceutics, vol. 573, Article ID 118806, 2020.
+[48] H. Bao, Q. Zhang, and Z. Yan, “Te impact of camptothecin-
+encapsulated poly (lactic-co-glycolic acid) nanoparticles on
+the activity of cytochrome P450 in vitro,” International
+Journal of Nanomedicine, vol. 14, pp. 383–391, 2019.
+[49] Q. Liang, H. Xiang, X. Li et al., “Development of rifapentine-
+loaded PLGA-based nanoparticles: in vitro characterisation
+and in vivo study in mice,” International Journal of Nano-
+medicine, vol. 15, pp. 7491–7507, 2020.
+[50] A. Lange, A. Grzenia, M. Wierzbicki et al., “Silver and copper
+nanoparticles inhibit bioflm formation by mastitis patho-
+gens,” Animals, vol. 11, no. 7, p. 1884, 2021.
+[51] K. Bastari, M. Arshath, Z. H. M. Ng et al., “A controlled release
+of antibiotics from calcium phosphate-coated poly (lactic-co-
+glycolic acid) particles and their in vitro efcacy against
+Staphylococcus aureus bioflm,” Journal of Materials Science:
+Materials in Medicine, vol. 25, no. 3, pp. 747–757, 2014.
+Canadian Journal of Infectious Diseases and Medical Microbiology
+15
+ 9575, 2023, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1155/2023/4627848 by University Of Maryland, Wiley Online Library on [15/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

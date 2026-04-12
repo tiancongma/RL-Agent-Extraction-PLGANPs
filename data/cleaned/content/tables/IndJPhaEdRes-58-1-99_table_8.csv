@@ -1,0 +1,118 @@
+"Bandil, et al.: PLGA-Chitosan Nanoparticles Containing Vinorelbine Bitartrate"
+"Table 1: Experiment design in Box-Behnken Quadratic Model."
+"Independent Factors
+Level
+Optimization"
+"controls"
+"-1
+0
++1"
+"40
+100
+160
+-1 to +1
+X1 (Chitosan, mg)"
+"0.2
+0.3
+0.4
+-1 to +1
+X2 (Poloxamer 188, %w/v)"
+"5
+10
+15
+-1 to +1
+X3 (sonication time, min)"
+"Selected Responses"
+"Particle size (nm)
+Minimum"
+"PDI
+Minimum"
+"EE (%)
+Maximum"
+"Table 2: Absorbance data for calibration curve of VD."
+"literature.20  VD  exhibited  a  partition  coefficient  of  0.36  and"
+"solubility in water, ethanol, acetone and phosphate buffer. Hence 
+Concentration of VD in 
+Absorbance Obtained"
+"sample (µg/mL)
+acetone  was  used  as  the  solvent  to  prepare  the  internal  phase"
+"containing VD and PLGA."
+"10
+0.104"
+"20
+0.224"
+"Absorption maxima and calibration curve of VD"
+"30
+0.352"
+"The UV-absorption maximum of VD in phosphate buffer pH 7.4"
+"40
+0.489"
+"was obtained to be 268 nm (Figure 1). This wavelength was used"
+"50
+0.632"
+"for construction of calibration curve by measuring the absorbance"
+"60
+0.772"
+"of 10 to 80 µg/mL solution of VD (Table 2). The linearity of the"
+"70
+0.909
+calibration curved depicted a R2 value of 0.9994 (Figure 2)."
+"80
+1.027"
+"Optimization of experimental conditions for"
+"at  15000  rpm  for  15  min  and  the  supernatant  was  assayed  for 
+nanoparticle formulation"
+"the amount of VD present using spectrophotometric method to"
+"The experimental milieu obtained through the trial runs of the"
+"calculate the amount of free drug using the calibration curve of"
+"optimization  of  the  independent  factors  and  selected  results  is"
+"VD. The percent EE was calculated using the following formula,"
+"shown in Table 3. The particles size (Y1) of the formulations ranged"
+"from 378.68 to 163.46 nm and the PDI (Y2) ranged from 0.229 to"
+"0.540. The EE (Y3) of the trial formulations was found to be in"
+"the range of 64.00 to 80.81 %. The p value of the models obtained 
+In vitro release study"
+"for all the three responses were <0.0001 and the R2 values were"
+"The  quantification  of  VD 
+released 
+from 
+the  nanoparticle"
+"0.9913,  0.9736  and  0.9780  for  Y1,  Y2  and  Y3  respectively  (Table"
+"formulation was done in Phosphate Buffer pH 7.4 (PBS) as the"
+"4). So, it may be said that every response fits the model very well."
+"dissolution medium by loading the formulation in dialysis bag."
+"The derived quadratic model is provided below in terms of coded"
+"The dialysis bag containing the nanoparticles was immersed in a"
+"values:"
+"beaker containing 100 mL of PBS and the contents were stirred"
+"continuously using magnetic stirrer, maintaining the temperature"
+"Y =   β0   +   β1X1   +   β2X2   +   β3X3   +   β4X1X2   +   β5X2X3   +   β6X1X3"
+"at  37±1°C.  A  fixed  volume  of  sample  (2  mL)  was  withdrawn"
+"+   β7X12   +   β8X22   +   β9X32"
+"from  the  beaker  at  definite  time  intervals  and  sink  conditions"
+"were  maintained  using  PBS.  The  sample  was  quantified  using"
+"where Y represents the response, β0–β9 represent the regression"
+"UV-spectrophotometry  at  268  nm  post  appropriate  dilution.  A"
+"coefﬁcients and X1, X2, X3 represent the independent factors."
+"release curve was plotted taking time as one coordinate.19"
+"The following models were obtained for the measured responses."
+"RESULTS"
+"Particle Size= 246.29 + 98.3862 * X1 + 10.05 * X2 + -0.88125 * X3"
+"2 + 
++ -0.1 * X1X2 + -3.2475 * X1X3 + 0.025 * X2X3 + 2.92125 * X1
+Physical characteristics of VD"
+""
+"19.6987 * X2
+2 + 15.1062 * X3"
+"Vinorelbine ditartrate was assessed for its texture, odor and color"
+"and  the  purchased  powder  of  VD  was  found  to  be  yellowish 
+PDI = 0.243 + 0.01025 * X1+ 0.0045 * B + -0.096 * C + -0.00025"
+"2+ 
+white, odorless and amorphous in nature. The melting of VD was 
+* X1X2 + 0.00075 * X1X3+ -0.00925 * X2X3+ 0.002375 * X1"
+""
+"observed in the range of 181-183°C, consonant with the reference 
+-0.007625 * X2
+2+ 0.194875 * X3"
+"Indian Journal of Pharmaceutical Education and Research, Vol 58, Issue 1, Jan-Mar, 2024
+101"

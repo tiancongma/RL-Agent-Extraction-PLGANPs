@@ -1,0 +1,1032 @@
+International Journal of Pharmaceutics 379 (2009) 226–234
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+Pharmaceutical Nanotechnology
+Development and physicochemical characterization of copper complexes-loaded
+PLGA nanoparticles
+T. Courant a,b, V.G. Roullin a,∗, C. Cadiou b, F. Delavoie c, M. Molinari d, M.C. Andry a, F. Chuburu b,∗∗
+a Institut de Chimie Moléculaire de Reims, CNRS UMR 6229, UFR Pharmacie Reims, 51 rue Cognacq-Jay, 51100 Reims, France
+b Institut de Chimie Moléculaire de Reims, CNRS UMR 6229, UFR des Sciences Exactes et Naturelles, Bâtiment 18 - Europol’Agro, BP 1039, 51687 Reims Cedex 2, France
+c Laboratoire de Microscopie Electronique Analytique, INSERM UMRS 926, 21 rue Clément Ader, 51685 Reims Cedex 2, France
+d Laboratoire de Microscopies et d’Etudes des Nanostructures, UFR des Sciences, Université de Reims Champagne-Ardenne, 21 rue Clément Ader, 51685 Reims Cedex 2, France
+a r t i c l e
+i n f o
+Article history:
+Received 30 January 2009
+Received in revised form 17 March 2009
+Accepted 27 March 2009
+Available online 5 April 2009
+Keywords:
+Nanoparticles
+Poly(lactide-co-glycolide)
+Triacetin
+Copper
+Double-emulsion
+a b s t r a c t
+PLGA nanoparticles were prepared via a modiﬁed W/O/W emulsion solvent diffusion process, in which
+all formulation components were fully biocompatible and biodegradable. Different independent pro-
+cessing parameters were systematically studied. Nanoparticles were characterized by DLS (particle size,
+polydispersity, -potential) and TEM/AFM (surface morphology). An optimized formulation was used
+to encapsulate copper complexes of cyclen and DOTA as potential PET imaging agents. Results showed
+that the predominant formulation factors appeared to be the lactide-to-glycolide (L:G) ratio of PLGA, the
+nature of the diffusion phase, and the presence of hydroxyl ions in the ﬁrst-emulsion aqueous phase.
+By regulating those 3 parameters, PLGA nanoparticles were prepared with very good preparation yields
+(>95%), a size less than 200 nm and a polydispersity index less than 0.1. TEM pictures showed nanoparti-
+cles with a narrow size distribution, a spherical shape and a smooth surface. The optimized formulation
+allowed to encapsulate Cu–cyclen and Cu–DOTA complexes with an encapsulation efﬁciency between
+20% and 25%.
+© 2009 Elsevier B.V. All rights reserved.
+1. Introduction
+The ability to image molecular events in vivo is of great inter-
+est to investigate biochemical and physiological processes in living
+organisms. These goals can be achieved by using speciﬁc imag-
+ing probes able to target particular tissues or cell types and to
+monitor diseases even at early development stages. For this pur-
+pose, sensitive molecular imaging techniques like the radionuclide
+based positron emission tomography are undoubtedly among the
+most sensitive molecular imaging techniques (Ametamey et al.,
+2008). The PET technique requires the use of positron emitting iso-
+topes linked to the molecule of interest (Miller et al., 2008). Several
+positron emitting radionuclides exist for incorporation into probes,
+among which 64Cu. (Heppeler et al., 1999; Yoo et al., 2004). The
+long half-life of 64Cu is useful for studying biochemical processes
+with slow pharmacokinetics (Ametamey et al., 2008). This radionu-
+clide is coordinated by a ligand, either a cyclen or a DOTA molecule
+(Scheme 1), which is able to ensure a strong thermodynamic sta-
+bility and kinetics inertness for the resulting complex in order to
+∗Corresponding author. Tel.: +33 3 26 91 80 54; fax: +33 3 26 91 37 44.
+∗∗Corresponding author.
+E-mail addresses: gaelle.roullin@univ-reims.fr (V.G. Roullin), francoise.chuburu@
+univ-reims.fr (F. Chuburu).
+prevent in vivo prejudicial demetallation (Bianchi et al., 1991). As
+previously stated, it is important to deliver the right dose of radioac-
+tivity at a given target site. Recently, pharmaceutical formulations
+have been designed for this purpose, bearing in mind the neces-
+sity to improve the therapeutic efﬁcacy while reducing deleterious
+side effects (Brannon-Peppas and Blanchette, 2004; Maeda et al.,
+2000). Nano-objects such as liposomes (Hamoudeh et al., 2008)
+or micelles can be used for this objective. Nanoparticles (NPs) can
+also be very useful since they offer some speciﬁc advantages over
+liposomes, for instance they help to increase the stability of drugs
+and possess useful controlled release (CR) properties (Soppimath
+et al., 2001). Moreover, the size of these objects should allow their
+diffusion out of the blood vessels to reach the pathological areas.
+In particular, nanoparticles in the size range of 20–200 nm have
+been shown to accumulate preferentially at tumor sites through an
+enhanced permeability retention effect (Jain, 1999).
+Several nanomaterials made of various building blocks ranging
+from conventional lipids to synthetic or natural polymers have been
+explored. Synthetic polymers and natural macromolecules have
+been extensively researched as colloidal materials for nanoparticle
+production design for drug delivery. Synthetic polymers present the
+advantage of high purity and reproducibility over natural polymers.
+Research in the biomedical area has extensively focused on the
+polyester family, i.e. poly(lactic acid) (PLA), poly(-caprolactone)
+(PCL), poly(glycolic acid) (PGA) because of their biocompatibility
+0378-5173/$ – see front matter © 2009 Elsevier B.V. All rights reserved.
+doi:10.1016/j.ijpharm.2009.03.036
+
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+227
+Scheme 1.
+and biodegradability properties (Espuelas et al., 1998; Mundargi et
+al., 2008). In particular, poly(lactide-co-glycolide) (PLGA) is FDA-
+approved for human use (Brigger et al., 2002; Jain, 2000). PLGA
+and its various derivatives have set the basis to develop micro-
+or nanoparticles encapsulating therapeutic drugs for controlled
+release applications (Bose and Bogner, 2007; Narisawa et al., 1994).
+Indeed, they present inherent advantages over the conventional
+devices, such as extended release rates in addition to their biocom-
+patibility/biodegradability and ease of administration via injection.
+The preparation of submicron PLGA particles containing an
+active agent raises serious challenges that do not necessarily exist
+when preparing larger diameter microparticles. The optimal formu-
+lation should satisfy the following: (i) submicron size production
+with a high recovery yield, (ii) high encapsulation efﬁciency and
+bioavailability of the active agent, (iii) minimal ‘burst’ effect of the
+effective agent, (iv) low levels of toxic agents used in formulation
+(excluding active agents) (v) process scalable to large quantities. In
+practice, it is difﬁcult to satisfy all the aforementioned criteria; com-
+promises usually have to be made in at least one of these conditions
+when preparing nanoparticles (Birnbaum et al., 2000).
+Most nanoparticle formulations are based on preliminary
+microemulsions (Kwon et al., 2001). They are characterized by a
+great stability in suspension due to their very small size. This sta-
+bility is essentially the consequence of signiﬁcant steric repulsion
+between droplets (Anton et al., 2008). Common methods used in the
+preparation of nanoparticles include high-energy emulsiﬁcation
+techniques, to create oil-in-water (O/W) and water-in-oil-in-water
+(W/O/W) emulsions. Furthermore, they allow a good NPs size con-
+trol and a relative narrow particle size distribution.
+In this work, a modiﬁed double-emulsion (W/O/W)–solvent
+diffusion method was developed to encapsulate hydrophilic macro-
+cyclic copper complexes. Since the radio-labelled pharmaceuticals
+possess the same physicochemical and biochemical properties than
+the unlabelled compounds, the copper complexes used herein are
+based on cyclen and DOTA cavities but the metal cation is not
+radioactive. The preparation and the optimization of the W/O/W
+method using a non-toxic solvent partially miscible in water, i.e.
+triacetin (Karlstad et al., 1992) and Poloxamer 188 (Pluronic® F-68)
+as surfactant agent are reported. The inﬂuence of some formula-
+tion variables on the nanoparticle characteristics such as polymer
+composition (lactide/glycolide ratio), polymer concentration in the
+organic phase, sonication characteristics, composition of the diffu-
+sion phase, internal aqueous phase volume, concentration of the
+stabilizing agent and aqueous phase pH, nature of the encapsu-
+lated complex (neutral/ionic, as well as counter-anion inﬂuence),
+have been investigated in order to control and optimize the process.
+The resulting NPs properties such as mean particle hydrodynamic
+diameters, surface morphology and drug loading content are also
+reported.
+2. Materials and methods
+2.1. Materials
+All
+chemicals
+were
+used
+as
+received
+without
+further
+puriﬁcation. Solvents were of reagent grade. Poly(lactide-co-
+glycolide)
+(PLGA,
+50:50,
+65:35,
+85:15
+lactide/glycolide)
+were purchased from Sigma–Aldrich, France. Poloxamer 188
+(Pluronic®
+F-68, polyethyleneglycol-co-polypropyleneglycol-co-
+polyethyleneglycol) was purchased from Sigma-Aldrich France.
+Water for injections (Ecotainer® - Aqua B. Braun) was used for
+all batches. 1,2,3-Triacetoxypropane (triacetin) was purchased
+from Sigma–Aldrich, France. 95% (v/v) ethanol was obtained from
+Charbonneaux Brabant (France).
+2.2. Synthesis of [Cu(cyclen)]SO4
+A methanolic solution of CuSO4.6H2O (0.64 mmol, 10 mL)
+was
+added
+dropwise
+to
+a
+solution
+of
+cyclen
+(1,4,7,10-
+tetraazacyclododecane
+0.58 mmol)
+in
+methanol
+(10 mL).
+The
+dark blue solution was reﬂuxed and further concentrated by
+evaporation. The complex could either be obtained in solution
+in less than 1 h or further precipitated as a dark blue powder by
+addition of diethyl ether (0.17 g, 88%). The mass spectrum of the
+powder was recorded with a Q-TOF mass spectrometer (Micro-
+mass, Manchester, UK) equipped with an electrospray ionization
+(ESI) source operated in the positive ion mode.
+Elemental
+Anal.
+Calc.
+for
+C8H20N4CuSO4—powder
+(331.88 g mol−1): C, 28.95; H, 6.07; N, 16.88. Found: C, 29.09;
+H, 6.10; N, 16.96%. ESI-MS (m/z): calc. for [Cu(C8H19N4)]+ 234.1;
+found 234.1.
+2.3. Synthesis of [Cu(DOTAH2)]
+DOTAH4 (0.20 mmol) and CuSO4.6H2O (0.20 mmol) were dis-
+solved in 25 mL of distilled water. Then 3.0 mL of a NaOH solution
+(0.1 mol L−1) were added (pH = 3.3) and the mixture was left at room
+temperature. The complex could either be obtained in solution in
+less than 1 h or as light blue crystals after 3 days.
+Elemental
+Anal.
+Calc.
+for
+C16H26N4CuO8—crystals
+(465.95 g mol−1): C, 41.24; H, 5.62; N, 12.02. Found: C, 41.41;
+H, 5.65; N, 12.07%. ESI-MS (m/z): calc. for [Cu(C16H25N4O8)]+ 464.1;
+found 464.1.
+2.4. Nanoparticles preparation
+The formation of nanoparticles was achieved by adjusting the
+multiple emulsion technique, i.e. water (internal, Wi)-in-oil (O)-
+in water (external, We). Batches of nanoparticles were prepared
+using two types of devices: a high-speed homogenizer (IKA Ultra
+Turrax® T25) and an ultrasonic probe (Vibracel VC 750). Tem-
+perature was maintained at ∼20–25 ◦C during all emulsiﬁcation
+steps. The two sonication times were ﬁxed to 30 s, according to
+sonication times usually reported in the literature (Song et al.,
+2008) while mechanical emulsiﬁcation times were set between
+2 and 5 min. Ultra Turrax® was used at various homogenization
+speeds: 8000, 16000 and 24000 rpm. The ﬁrst-emulsion (Wi/O)
+was formed by emulsiﬁcation between an aqueous solution con-
+taining various amounts Pluronic® F-68 (0.01–0.1%, w/v) and metal
+complexes and an organic solution of PLGA in 5 mL triacetin. Then,
+10 mL of an aqueous solution containing the same percentage of
+Pluronic® F-68 (0.01–0.1%, w/v) were added to this primary emul-
+sion to obtain the double-emulsion (Wi/O/We). Afterwards, the
+droplets were converted into nanoparticles through the solvent
+diffusion step, carried out with addition of 150 mL of hydroal-
+coholic mixtures for which the composition has been studied.
+Raw nanoparticle suspensions were obtained within 0.5 h. Subse-
+quently, the hydroalcoholic diffusion phase was replaced by water
+either by evaporation or by dialysis. Dialysis technique was carried
+out introducing the colloidal suspension containing the nanoparti-
+cles (10 mL) in a dialysis membrane (Spectrum, Spectrapore® 6.0,
+MWCO 24 kDa); the suspension was dialyzed three times at 20 ◦C
+
+228
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+against 1.8 L of deionised water for at least 2 h under magnetic
+stirring.
+In this study, the inﬂuence of some processing parameters and
+polymer characteristics on NPs mean diameter and polydisper-
+sity indexes was evaluated (L:G ratio of PLGA, PLGA concentration,
+emulsiﬁcation device, diffusion phase composition, internal aque-
+ous phase volume, surfactant concentration and pH of the internal
+phase). Unless otherwise mentioned, all the experiments were con-
+ducted by varying one of the parameters while keeping all the
+others at a set of standard conditions. All batches of nanoparticles
+were produced in triplicate.
+2.5. Determination of entrapment efﬁciencies
+The non-encapsulated complexes were separated from the
+nanoparticles by centrifugation for 1 h at 4 ◦C at 30,000 g (Beckman
+AvantiTM 30 Centrifuge, France). Then the supernatant was dosed
+by UV–vis spectrophotometry (Cary 5000, Varian, France) at 592
+and 734 nm for [Cu(cyclen)] SO4 and [Cu(DOTAH2)] respectively.
+Repeated washing steps of the NPs sediments with water were per-
+formed in order to remove the complexes potentially adsorbed at
+the NPs surface (washing water volumes = centrifuged suspension
+volumes). No signal was detected by UV–vis spectrophotometry
+from the washing solutions, which indicated that no complex
+adsorption occurred.
+Copper complexes entrapment efﬁciency (EE, %) and drug load-
+ing efﬁciency (DLE, %, w/w) were calculated by Eqs. (1) and (2),
+respectively:
+EE =
+mass of copper complex in particles
+mass of copper complex used in formulation × 100
+(1)
+DLE = mass of copper complex in particles
+mass of recovered particles
+× 100
+(2)
+2.6. Particle size analysis and -potential measurements
+Dynamic light scattering (DLS) was used for measurement of
+average hydrodynamic diameters and polydispersity indexes (PdIs)
+(Malvern Zetasizer Nano-ZS, Malvern Intruments, UK). Each sample
+was analyzed in triplicate at 20 ◦C at a scattering angle of 173◦. Pure
+water was used as a reference dispersing medium.
+-potential data were collected through electrophoretic light
+scattering at 25 ◦C, 150 V, in triplicate for each sample (Malvern
+Zetasizer Nano-ZS, Malvern Intruments, UK), in pure water. The
+instrument was calibrated with a Malvern-50 mV standard before
+each analysis cycle.
+2.7. Morphological studies
+The shape and surface morphology of the PLGA NPs were inves-
+tigated by transmission electron microscopy (TEM) and atomic
+force microscopy (AFM). A drop of NPs suspension was placed
+on a 200-mesh copper grid covered with Formvar/carbon. After
+negative staining with 2% (w/v) uranyl acetate for 1 min, the cop-
+per grid was then dried at room temperature before being loaded
+in the transmission electron microscope (CM30, Philips, Limeil-
+Brevannes, France) at an accelerating voltage of 250 kV.
+Samples for AFM imaging were prepared by placing a drop of
+PLGA NPs suspension on a freshly cleaved mica sheet and allowing it
+to dry in the air. AFM imaging was performed using a Nanoscope III
+(Veeco, Dourdan, France) in tapping mode. A silicon tip with a spring
+constant of 46 N m−1 and a resonant frequency around 300 kHz
+was used in the study. AFM images were generated with a scan
+rate of 1 Hz and 256 lines per image. Experiments were performed
+at constant room temperature. During the scans, proportional and
+integral gains were increased to the value just below the feedback
+Fig. 1. Effect of L:G ratio on (a) particle mean diameters and (b) corresponding poly-
+dispersity indexes, PdIs. Values are presented ±sd (n = 9). PLGA concentration 3%
+(w/v), F-68 concentration 0.01% (w/v) in both Wi and We aqueous phases.
+started to oscillate. Images were processed only by ﬂattening to
+remove background slopes.
+3. Results and discussion
+3.1. Effect of preparation variables on nanoparticles
+characteristics
+In order to produce copper-loaded nanoparticles corresponding
+to a mean diameter less than 200 nm with a narrow size distribution
+(PdI < 0.1), the inﬂuence of several isolated factors on the (Wi/O/We)
+process conditions was analyzed.
+3.1.1. Effect of the lactide/glycolide ratio
+Three different lactide-to-glycolide ratios (L:G) of PLGA present-
+ing similar molecular weights were used to check the inﬂuence of
+the L:G ratio on mean particle size and PdI. Polymer concentration
+in the organic phase was ﬁxed to 3% (w/v) and F-68 concentration in
+both Wi and We aqueous phases was ﬁxed to 0.01% (w/v). It can be
+seen (Fig. 1) that the mean diameters and the PdIs were noticeably
+affected by the L:G ratio; indeed increasing the L:G ratio increased
+the mean diameters and the PdIs, as already reported by Lemoine et
+al. (1996). The mean diameter increased by 60 nm with an increase
+of ratio from 50:50 to 85:15, giving a mean diameter higher than
+200 nm, which is not acceptable for the required i.v. applications.
+In parallel, the PdI increased with the L:G ratio: only PLGA 50:50
+allowed to obtain nanoparticles with a narrow size range (PdI < 0.1)
+since PLGA 65:35 produced a PdI in the 0.1-range and PLGA 85:15 a
+value higher than 0.1. This increase can be correlated to the polymer
+cristallinity. As the L:G ratio increases, the better chain organization
+taking place in lactic crystalline microdomains increases which pre-
+vents further chain rearrangements during polymer desolvation;
+as a result, mean particle diameters increase. Consequently, PLGA
+50:50 appeared to be the better choice to obtain nanoparticles with
+a size less than 200 nm and a PdI less than 0.1.
+3.1.2. Effect of PLGA concentration
+The PLGA concentration was varied from 1.5% to 8.0% (w/v) while
+the F-68 concentrations in both Wi and We phases remained con-
+
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+229
+Fig. 2. Effect of PLGA concentration on (a) particle mean diameters and (b) cor-
+responding polydispersity indexes, PdIs. Values are presented ±sd (n = 9). F-68
+concentration 0.01% (w/v) in both Wi and We aqueous phases.
+stant and equal to 0.01% (w/v). This surfactant concentration was
+determined by preliminary experiments which showed that it was
+sufﬁcient to obtain double-emulsions suitable for nanoparticles
+production. Fig. 2 shows the effect of the polymer concentration
+on the mean diameter and the PdI of the resulting nanoparticles.
+These two parameters increased almost linearly with increasing
+PLGA concentration, in agreement with the ﬁndings of Kwon et al.
+(2001) and Song et al. (1997), leading to mean diameters higher
+than 200 nm for PLGA concentrations above 5% (w/v). Nevertheless,
+the particle size distribution remained narrow (PdI ∼0.1). Indeed,
+increasing PLGA concentration leads to an increase of the organic
+phase viscosity. The consecutive higher viscous resistance to the
+shear forces induces the formation of droplets with larger sizes
+and then hinders the nanoparticles formation. Moreover, with the
+increase of the PLGA amount, the chosen F-68 quantity was prob-
+ably insufﬁcient to correctly stabilize the emulsion, and then to
+inhibit the droplets coalescence during the solvent diffusion step
+(Kwon et al., 2001 and vide infra). Consequently, a polymer con-
+centration of 3% (w/v) for a 0.01% (w/v) F-68 concentration was a
+good compromise (i) to produce NPs with satisfactory mean diame-
+ters and PdIs and (ii) to bring sufﬁcient PLGA amounts to efﬁciently
+entrap active molecules.
+3.1.3. Inﬂuence of the high energy emulsiﬁcation parameters
+Batches of nanoparticles using PLGA 50:50, 3% (w/v)/triacetin/F-
+68 0.01% (w/v) were prepared using a high-speed homogenizer
+or an ultrasonic probe. With the high-speed homogenizer, poly-
+disperse NPs distributions, with size ranges between 500 nm and
+1 m, were obtained. The mean diameters tended to be smaller
+with an increase of the homogenization speed but polydispersity
+could not be avoided (Abismail et al., 1999; Anton et al., 2008).
+Ultrasonic probes are known to be more powerful devices which
+theoretically allow the formation of smaller emulsions and sub-
+sequent smaller nanoparticles. When using this kind of probe, a
+single population of nanoparticles was obtained. Sonication power
+appeared to have a quite negligible inﬂuence until the value of 22 W
+(32% amplitude). Beyond this value, it seemed that the additional
+energy was too high and destabilized the system since the distribu-
+tion became polydisperse. The difference observed between these
+two devices is their dispersive energy mechanisms. In the case of
+high-speed homogenizer, most of the provided energy is dissipated
+and lost in viscous frictions (Friberg and Jones, 1994; Walstra, 1993),
+the remaining energy being insufﬁcient to overcome the huge
+interfacial surface energy of nanoemulsions. On the contrary, son-
+ication locally brings sufﬁcient energy to overcome this drawback,
+enabling the formation of emulsions. The droplets are subsequently
+stabilized by the presence of surfactant molecules which further
+favourably contribute to the interfacial tension reduction (Behrend
+et al., 2000).
+3.1.4. Inﬂuence of the diffusion phase composition
+One of the most important factors inﬂuencing the NPs size is
+the solvent diffusion step. The mechanism of nanoparticle forma-
+tion based on emulsion template was previously described (Choi et
+al., 2002; Kwon et al., 2001). They proposed that the solvent solu-
+tion is dispersed in the continuous phase as globules. The stability
+of this emulsion is enhanced by the presence of stabilizing agent
+molecules adsorbed at the interface. The subsequent addition of the
+diffusion phase destabilizes this equilibrium and triggers the sol-
+vent diffusion to the continuous phase. During the migration of the
+solvent molecules, new nanometric globules are produced from the
+microdroplets and gradually become poorer in solvent. As a result,
+the polymer chains in the globules precipitate at the contact with
+the continuous non-solvent phase. An increase in the globule diffu-
+sion rate should lead to the formation of smaller and monodisperse
+nanoparticles. This kinetics can be related to the value of the globule
+diffusion coefﬁcient into the continuous phase, which is described
+by the Stokes–Einstein equation:
+D =
+kT
+6r ,
+(3)
+where D (cm2 s−1) is diffusion coefﬁcient, k (1.3805 × 10−23 J K−1)
+is the Boltzman constant, T (K) is the temperature, r is the glob-
+ule hydrodynamic volume radius and  (cP) is the diffusion phase
+viscosity. In order to enhance the diffusion rate to obtain smaller
+NPs, the variables to be adjusted are the temperature T and the vis-
+cosity of diffusion phase . Since PLGA has a low glass-transition
+temperature (between 30 and 40 ◦C, Astete and Sabliov, 2006), a
+temperature superior to 30 ◦C is unsuitable. Indeed, exceeding the
+glass-transition temperature would lead to “melted” PLGA with
+physicochemical properties unsuitable for formulation applica-
+tions. Consequently, formulation temperature was ﬁxed at 20 ◦C.
+Concerning the aqueous diffusion phase, its viscosity can be mod-
+iﬁed through the addition of co-solvents, such as alcohols. For
+biocompatibility reasons, ethanol was chosen as co-solvent, which
+also allows to improve the triacetin solubility (miscible in ethanol
+whatever the proportions and 1 in 14 (v/v) in water, Palmieri,
+2006). Hydroalcoholic diffusion phases of various compositions
+were tested to modulate the triacetin diffusion and therefore the
+NPs ﬁnal size. Polymer concentration in the organic phase was
+ﬁxed to 3% (w/v) and F-68 concentration in both Wi and We aque-
+ous phases was ﬁxed to 0.01% (w/v). Fig. 3 shows the inﬂuence of
+the composition of the hydroalcoholic diffusion phase on the mean
+diameters and PdIs of the NPs. It can be noticed that the NPs size
+increased dramatically for a water percentage superior to 50% (v/v).
+Moreover, for aqueous percentages above 70% (v/v), several popu-
+lations were observed. The smaller sizes and values of PdI were
+obtained for a 5% (v/v) water diffusion phase. These results indi-
+cate that as expected, one of the major factors to be controlled is
+the diffusion kinetics, the triacetin diffusion being more rapid with
+
+230
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+Fig. 3. Inﬂuence of the water percentage in the hydroalcoholic diffusion phase on
+(a) particle mean diameters and (b) corresponding PdI values. Values are presented
+±sd (n = 9). PLGA concentration 3% (w/v), F-68 concentration 0.01% (w/v) in both Wi
+and We aqueous phases.
+95% (v/v) ethanol diffusion phase. As a result, the synthesized NPs
+exhibited satisfying mean diameters (∼160 nm) and PdIs (<0.1).
+3.1.5. Inﬂuence of the internal aqueous phase volume
+The effect of the Wi phase volume was also explored while keep-
+ing organic phase volume identical (5 mL). Polymer concentration
+in the organic phase was ﬁxed to 3% (w/v) and F-68 concentration
+in both Wi and We aqueous phases was ﬁxed to 0.01% (w/v). Fig. 4
+shows that the inﬂuence of an increase of Wi volume from 250 L
+to 1 mL was quite negligible since the particle sizes remained in
+the 160–180 nm range and the PdI was less than 0.1. These results
+agree well with Ngaboni Okassa et al. (2005) and Zambaux et al.
+(1998) experiments, concerning the preparation of PLA nanoparti-
+cles for which a threefold increase of the Wi volume phase led to
+particles with equivalent NPs size characteristics. Moreover and as
+mentioned by these authors, it should be noted that an increase in
+the Wi phase volume could lead to an increase of the NPs loading.
+3.1.6. Concentration of Pluronic® F-68 surfactant
+Surfactant concentrations in Wi and We phases of 0.01 and
+0.1% (w/v) were alternatively used to evaluate the effect of F-68
+concentration on the NPs size (Table 1) while keeping the PLGA
+concentration ﬁxed to 3% (w/v). First, a 10-fold increase of F-68 per-
+centage in Wi for a constant F-68 percentage in We of 0.01% resulted
+in the reduction of both mean diameters and PdIs (entries 1 and 2). It
+is likely that a higher F-68 presence in Wi resulted in a more regular
+and stable ﬁrst-emulsion which in turn provided smaller droplets
+and allowed, in the consecutive step, the formation of smaller NPs.
+For the same F-68 percentages in Wi, the increase of F-68 concen-
+tration in We (entries 1 and 3 or 2 and 4) did not result in reducing
+the NPs size. These ﬁndings are not in agreement with some previ-
+ously reported ones (Quintanar-Guerrero et al., 1996; Zambaux et
+al., 1998) where the increase of the surfactant concentrations in We
+led to smaller particles. This discrepancy can herein be explained
+by the fact that, in the studied ternary system (PLGA/triacetin/F-68
+water), the increase of F-68 in We slows down the triacetin diffu-
+Fig. 4. Inﬂuence of the internal aqueous phase (Wi) volume on (a) particle mean
+diameters and (b) corresponding PdI values. Values are presented ±sd (n = 9). PLGA
+concentration 3% (w/v), F-68 concentration 0.01% (w/v) in both Wi and We aqueous
+phases.
+sion into the hydroalcohic phases. Actually, introducing 0.1% (w/v)
+F-68 in the aqueous phase of a triacetin/water (1/4, v/v) emulsion
+resulted into increasing the demixing time from 4 h to over a week.
+Thus, F-68 presence in We could result in slower triacetin diffusion
+rate, subsequent slower polymer precipitation, which would allow
+more nanodroplet coalescence to occur, ﬁnally producing larger
+NPs. From mean diameters and PdIs point of view, the best results
+were obtained for 0.1% and 0.01% (w/v) F-68 concentrations in Wi
+and We phases respectively (Table 1 entry 2).
+3.1.7. Inﬂuence of the pH in the internal phase (Wi)
+This factor was evaluated since it may play a role in entrap-
+ment efﬁciency of drugs (Song et al., 1997) whose hydrosolubility
+is pH-dependent (for instance, CuDOTAH2). Polymer concentration
+in the organic phase was ﬁxed to 3% (w/v) and F-68 concentra-
+tion in both Wi and We aqueous phases was ﬁxed to 0.01% (w/v).
+As seen in Fig. 5, the mean diameter was strongly reduced with
+increasing pH (from 171 nm at pH = 7 to 109 nm at pH = 13) while
+PdI was maintained at a value <0.1 all over the pH range. The reduc-
+tion of the particle size consecutive to the pH evolution has already
+been observed by Quintanar-Guerrero et al. (1996) for PLA nanopar-
+ticles using F-68 as a surfactant. These results were attributed
+to the presence of hydroxyl ions at the oil-water interface since
+Marinova et al. (1996) indeed suggested that the adsorption of
+Table 1
+Inﬂuence of F-68 concentration on NPs mean diameters and PdIs.
+Entries
+F-68% (w/v)
+in Wi
+F-68% (w/v)
+in We
+Mean diameter
+(nm)
+PdI (±sd)
+1
+0.01
+0.01
+197 ± 3 nm
+0.075 ± 0.014
+2
+0.1
+0.01
+168 ± 2 nm
+0.061 ± 0.014
+3
+0.01
+0.1
+209 ± 2 nm
+0.062 ± 0.027
+4
+0.1
+0.1
+211 ± 3 nm
+0.042 ± 0.029
+PLGA concentration 3% (w/v).
+
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+231
+Fig. 5. Inﬂuence of the internal aqueous phase (Wi) pH on (a) particle mean diam-
+eters and (b) corresponding PdI values. Values are presented ±sd (n = 9). PLGA
+concentration 3% (w/v), F-68 concentration 0.01% (w/v) in both Wi and We aqueous
+phases.
+hydroxyl ions was an inherent property of the oil–water interface.
+Moreover Beattie and Djerdev (2004) suggested that the hydroxyl
+ions adsorption could be reinforced in the presence of surfactant
+molecules, OH−ions being stabilized through hydrogen bonds by
+the oxygen atoms of the polyoxyethylene chains of the non-ionic
+surfactant (Beattie and Djerdev, 2004; Becher and Schick, 1987). To
+point out the role of OH−ions in our system, we prepared some F-68
+water/triacetin emulsions in presence of various electrolytes in the
+Wi aqueous phase (Table 2). In presence of hydroxyl ions, the emul-
+sions appeared to be more stable than those prepared in presence
+of sulphate or chloride anions (entries 1–2 versus 3–5), which cor-
+roborated our hypothesis. Furthermore, it is likely that the cations
+play an important part in the system stabilisation since with K+ and
+Bu4N+, the corresponding emulsions and NPs suspensions were less
+stable than with Na+ (entries 4–5 versus 3). In fact, it was previ-
+ously pointed out that PEG chains tended to coordinate Na+, due to
+the Lewis base character of PEG chains (Ratner and Shriver, 1988).
+So, when introducing in the system both Na+ and OH−ions, the
+stabilizing mechanisms should largely counterbalance the destabi-
+lizing ones which generally occur during O/W interface formation.
+Ultimately, the presence of OH−in solution produces a decrease
+in the F-68 hydration (Collins and Washabaugh, 1985; Hofmeister,
+1888; Lopez-Leon et al., 2003; Vadnere et al., 1984) thereby improv-
+ing packing at the interface and thus reducing the nanodroplet
+size. Finally, in Table 2, the indicated sizes correspond to the NPs
+suspensions once they were centrifuged and dialyzed to remove
+ﬂocculates and solvating ions. The best formulation results were
+indeed obtained for NaOH (entry 3), since it allowed reduced parti-
+cle sizes and PdIs, a production yield recovery well above 95% and
+a maximal stability from 4 ◦C to room temperature.
+3.2. Optimal PLGA-NPs preparation and morphological
+characterization
+From the abovementioned experiments, Wi phase pH was
+adjusted through NaOH concentration; its value resulted from a
+compromise between the smallest mean diameters (Fig. 5) and a
+pH which can avoid accelerated polyester degradation. Further-
+more, the presence of NaOH allowed a maximal recovery in NPs
+production (>95%). Consequently, the pH of Wi in the optimized
+formulation was maintained equal to 10.
+The optimal formulation results, in terms of size characteristics
+and morphology, were obtained for the following settings: 750 L
+of 0.1% (w/v) F-68 pH 10 aqueous solution (Wi) were emulsiﬁed
+in 5 mL triacetin (O) containing 150 mg PLGA 50:50 for 30 s, 32%
+ampl. (22 W), subsequently similarly sonicated in 10 mL 0.01% (w/v)
+F-68 aqueous solution (We). NPs were precipitated by addition of
+150 mL 95% (v/v) ethanol. NPs prepared with this optimal formu-
+lation exhibited a mean diameter of 154.0 ± 5.1 nm (n = 9). The PdI
+values (0.069 ± 0.014, n = 9) indicated a very narrow size distribu-
+tion. These results are very interesting, compared to what is usually
+reported for similar ternary systems generated by W/O/W process
+for which PdIs are usually higher (from 0.15 to 0.4) (Gryparis et al.,
+2007; Kocbek et al., 2007; Ngaboni Okassa et al., 2007; Yin et al.,
+2006).
+The DLS measurements of the three independently produced
+batches were not appreciably different from each other (Table 3).
+This accounted for the robustness and reproducibility of the pro-
+cedure and the ternary system suitability. TEM and AFM pictures
+(Fig. 6a and b) showed NPs with a spherical shape and a smooth
+Table 2
+Inﬂuence of Wi salts presence on emulsion stability and NPs characteristics.
+Entries
+Cation
+Anion
+Emulsion stabilitya
+Production efﬁciencyb
+NPs suspension stability
+NPs mean diameter (nm, ±sd)
+PdI (±sd)
+1
+Na+
+SO42−
+1
+1
+Unstable (sedimentation in 24 h)
+258 ± 2
+0.116 ± 0.026
+2
+Na+
+Cl−
+1
+Aggregates no NPs
+–
+–
+–
+3
+Na+
+OH−
+3
+3
+Very stable (several months)
+150 ± 6
+0.069 ± 0.014
+4
+K+
+OH−
+2
+2
+Unstable (ﬂocculation in 48 h)
+177 ± 3
+0.079 ± 0.006
+5
+Bu4N+
+OH−
+2
+2
+Unstable (ﬂocculation in 48 h)
+214 ± 5
+0.099 ± 0.016
+PLGA concentration 3% (w/v), F-68 concentration 0.01% (w/v) in both Wi and We aqueous phases.
+a 0: Immediate demixtion after the end of the stirring; 1: stability < 3 min; 2: 3 min < stability < 10 min; 3: stability > 10 min.
+b 1: Estimated production yield < 50%; 50% < estimated production yield < 95%; 3: estimated production yield > 95%.
+Table 3
+Raw mean diameters and PdIs of optimized blank NPs.
+Raw data
+Batch 1
+Batch 2
+Batch 3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+Mean diameter (nm)
+152
+155
+156
+149
+148
+147
+158
+157
+161
+PdI
+0.064
+0.051
+0.075
+0.076
+0.079
+0.053
+0.055
+0.097
+0.057
+-potential
+−52.0
+−50.2
+−46.5
+−47.7
+−49.0
+−49.7
+−46.7
+−48.3
+−49.6
+
+232
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+Fig. 6. (a) TEM photographs of nanoparticles prepared from PLGA; bar corresponded to 200 nm. (b) Surface topography and (c) corresponding 3-D AFM-images of NPs obtained
+by tapping-mode AFM and visualized in amplitude mode.
+Table 4
+Raw mean diameters and PdIs of copper complexes-loaded NPs.
+Raw data
+Batch 1
+Batch 2
+Batch 3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+Cu(cyclen)-NPs
+Mean diameter (nm)
+183
+174
+185
+188
+194
+189
+184
+184
+186
+PdI
+0.072
+0.076
+0.079
+0.024
+0.057
+0.062
+0.070
+0.041
+0.064
+-potential
+−43.4
+−47.7
+−48.8
+−42.2
+−43.7
+−43.7
+−45.3
+−46.5
+−47.2
+Cu(DOTA)-NPs
+Mean diameter (nm)
+104
+102
+103
+116
+117
+117
+120
+120
+127
+PdI
+0.097
+0.089
+0.095
+0.109
+0.081
+0.106
+0.091
+0.100
+0.099
+-potential
+−47.0
+−49.5
+−49.3
+−42.9
+−43.1
+−43.8
+−46.2
+−47.8
+−49.4
+surface; on AFM 3-D reconstructed images, the mean diameter
+could be evaluated about 112 nm (Fig. 6c). The differences observed
+between the two morphological evaluations were essentially due
+to the fact that, in DLS, the hydrodynamic radius of the particle
+(which takes into account the double solvation layer) is measured.
+On the contrary, TEM and AFM were performed on dried, dia-
+lyzed NPs, i.e. depleted of surface ions, solvent and non-solvent
+molecules. Consequently, the genuine mean diameter (by TEM) is
+generally far smaller that the hydrodynamic one (by DLS) (Zanetti-
+Ramos et al., 2009). The -potential of NPs after dialysis was found
+strongly negative (−48.9 ± 1.8 mV, n = 9), whereas -potential of
+raw (undialyzed) suspensions displayed values of −24.2 ± 1.1 mV.
+This discrepancy demonstrated efﬁcient F-68 adsorption at the
+nanoparticles surface. This coating afforded good stability to the
+nanoparticles suspension and contributed to conceal polymer car-
+boxylic charges, which could be a great advantage to prevent in vivo
+NPs opsonization (Santander-Ortega et al., 2006).
+3.3. Copper complexes encapsulation—inﬂuence of the complex
+nature
+The optimized formulation (in terms of mean diameters and
+PdIs) was used to encapsulate two macrocyclic copper complexes
+[Cu(cyclen)](SO4) and [CuDOTAH2] (Scheme 1) in times compatible
+with the 64Cu half-life (less than two hours for both complex and
+subsequent nanoparticle preparation). Both complexes enabled to
+obtain spherical nanoparticles. By comparison with the production
+yields obtained with blank NPs, the production yields remained
+unchanged with the incorporation of [CuDOTAH2] complex (esti-
+mated >95%) whereas it slightly decreased with the incorporation
+of [Cu(cyclen)](SO4). NPs presented mean hydrodynamic diameters
+of 185.0 ± 5.3 nm for particles containing the cationic [Cu(cyclen)]2+
+complex1 and 113,0 ± 9,0 nm for particles containing [CuDOTA]2−
+(since pH 10 for Wi induced an ionisation of [CuDOTAH2]) (Table 4).
+PdIs were 0.061 ± 0.018 and 0.096 ± 0.009 respectively. By compar-
+ison with the blank NPs mean sizes (154.0 ± 5.1 nm), the complexes
+encapsulation resulted in a 35-nm size increase for [Cu(cyclen)]2+
+and a 40-nm size decrease for [CuDOTA]2−. These variations could
+not be attributed to a macrocyclic template effect since, in this case,
+both complexes would induce an increase in the NPs size. These
+results (size and NPs recovery) can nevertheless be understood
+as following: (i) the crucial presence of hydroxyl ions enabled, as
+aforementioned, the droplets stabilization, the subsequent NPs size
+reduction (compatible with the therapeutic targets) and improved
+recovery yields; (ii) when kosmotropic SO42−ions (Collins and
+Washabaugh, 1985; Hofmeister, 1888; Iwanaga et al., 1998; Lopez-
+Leon et al., 2003; Vadnere et al., 1984) were present as counterions
+of [Cu(cyclen)]2+, they partially counter-balanced the favourable
+inﬂuence of OH−and led to an increase in the measured NPs
+sizes. Besides, in the case of [CuDOTA]2−encapsulation, at basic pH
+the complex exhibited two anionic carboxylate arms which could
+behave like hydroxyl ions; they would hence be stabilized through
+hydrogen bonds by the oxygen atoms of the polyoxyethylene chains
+1 Since for this complex, sulphate is a non coordinating anion, the complex is
+named [Cu(cyclen)]2+.
+
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+233
+of the non-ionic surfactant and lead to the reduction of the particle
+size.
+The -potentials of dialyzed copper-loaded NPs were found to be
+identical for both complexes (−45.4 ± 2.26 mV for [Cu(cyclen)]2+-
+NPs and −46.6 ± 2.71 mV for [CuDOTA]2−NPs). No signiﬁcant
+change could be observed between -potentials of blank NPs
+(Table 3) and NPs containing copper complexes (Table 4). This may
+signify that copper complexes are not adsorbed at the NPs surface,
+otherwise the -potential values would have been affected.
+By comparison with the production yields obtained with blank
+NPs, the production yields remained unchanged with the incorpo-
+ration of [CuDOTAH2] complex (estimated >95%) whereas it slightly
+decreased with the incorporation of [Cu(cyclen)](SO4). Encapsula-
+tion efﬁciencies (EE) were 26% for [Cu(cyclen)](SO4) and 19% for
+[CuDOTAH2]. The calculated drug loading efﬁciencies (DLE) were
+3.0% and 2.7% for [Cu(cyclen)](SO4) and [CuDOTAH2], respectively.
+These results compared well with those reported by (Gryparis et
+al., 2007) for which the double-emulsion method led to cisplatin
+encapsulation in same yield range.
+4. Conclusion
+In this work, we reported a modiﬁed W/O/W process to obtain
+copper complexes effective loading into PLGA nanoparticles. These
+optimized nanoparticles were spherical, monodisperse, with a
+mean diameter well below 200 nm, reaching 110 nm in the case of
+[CuDOTAH2] complex encapsulation. We showed that the simulta-
+neous presence of hydroxyl ions, Na+ and PEG segments of the F-68
+surfactant molecules in the ﬁrst-emulsion aqueous phase resulted
+in a highly structured droplet formation and ensuing remarkably
+small nanoparticles. On the basis of these results, as well as the
+relatively good encapsulation efﬁciencies, the currently described
+nanoparticles might represent a promising formulation as PET
+imaging agents. This easy-to-run method could be extended to the
+synthesis of radiolabelled complex-loaded nanoparticles in a ster-
+ile way while keeping production times and operating procedures
+compatible with the 12.7 h half-life of 64Cu. Further experiments are
+presently on-going to assess this point, as well as the nanoparticle
+in vivo behaviour. Co-encapsulation of various hydrophilic drugs
+will subsequently be tested, in order to design multimodal imaging
+NPs.
+Acknowledgement
+Thomas Courant acknowledges a doctoral fellowship from la
+Région Champagne-Ardenne.
+References
+Abismail, B., Canselier, J.P., Wilhelm, A.M., Delmas, H., Gourdon, C., 1999. Emulsiﬁ-
+cation by ultrasound: drop size distribution and stability. Ultrason. Sonochem.
+6, 75–83.
+Anton, N., Benoit, J.P., Saulnier, P., 2008. Design and production of nanoparticles
+formulated from nanoemulsion templates—a review. J. Control. Release 128,
+185–189.
+Ametamey, S.M., Honer, M., Schubiger, P.A., 2008. Molecular imaging with PET. Chem.
+Rev. 128, 1501–1516.
+Astete, C.E., Sabliov, C.M., 2006. Synthesis and characterization of PLGA nanoparti-
+cles. J. Biomater. Sci. Polym. Ed. 17 (3), 247–289.
+Beattie, J.K., Djerdev, A.M., 2004. The pristine oil/water interface: surfactant-free
+hydroxide-charged emulsions. Angew. Chem. 116, 3652–3655.
+Becher, P., Schick, M.J., 1987. In: Schick, M.J. (Ed.), Nonionic Surfactants; Surfactant
+Science Series 23. Marcel Dekker, New York, pp. 435–491.
+Behrend, O., Ax, K., Schubert, H., 2000. Inﬂuence of continuous phase viscosity on
+emulsiﬁcation by ultrasound. Ultrason. Sonochem. 7, 77–85.
+Bianchi, A., Micheloni, M., Paoletti, P., 1991. Thermodynamic aspects of the polyaaza-
+cycloalkane complexes with cations and anions. Coord. Chem. Rev. 110, 17–113.
+Birnbaum, D.T., Kosmala, J.D., Brannon-Peppas, L., 2000. Optimization of Preparation
+Techniques for poly(lactic acid-co-glycolic acid) Nanoparticles. J. Nanopart. Res.
+2, 173–181.
+Bose, S., Bogner, R.H., 2007. Solventless pharmaceutical coating processes: a review.
+Pharm. Dev. Technol. 12, 115–131.
+Brannon-Peppas, L., Blanchette, J.O., 2004. Nanoparticle and targeted systems for
+cancer therapy. Adv. Drug Deliv. Rev. 56, 1649–1659.
+Brigger, I., Dubernet, C., Couvreur, P., 2002. Nanoparticles in cancer therapy and
+diagnosis. Adv. Drug Deliv. Rev. 54, 631–651.
+Choi, S.-W., Kwon, H.-Y., Kim, W.-S., Kim, J.-H., 2002. Thermodynamic parameters on
+poly(d,l-lactide-co-glycolide) particle size in emulsiﬁcation–diffusion process.
+Colloids Surf. A: Physicochem. Eng. Aspects 201, 283–289.
+Collins, K.D., Washabaugh, M.W., 1985. The Hofmeister effect and the behaviour of
+water at interfaces. Q. Rev. Biophys. 18, 323–422.
+Espuelas, M.S., Legrand, P., Cheron, M., Barratt, G., Puisieux, F., Renedo, M.J., Devis-
+saguet, J.P., Irache, J.M., 1998. Interaction of amphotericin B with polymeric
+colloids: 2. Effect of poloxamer on the adsorption of amphotericin B onto poly(e-
+caprolactone) nanospheres. Colloids Surf. B: Biointerfaces 11, 203–212.
+Friberg, S.E., Jones, S., 1994. In: Kroschwith, J.I. (Ed.), Kirk-Othmer Encyclopedia of
+Chemical Technology, 9. Wiley, New York, pp. 393–413.
+Gryparis, E.C., Hatziapostolou, M., Papadimitriou, E., Avgoustakis, K., 2007. Anti-
+cancer activity of cisplatin-loaded PLGA-mPEG nanoparticles on LNCaP prostate
+cancer cells. Eur. J. Pharm. Biopharm. 67, 1–8.
+Hamoudeh, M., Kamleh, M.A., Diab, R., Fessi, H., 2008. Radionuclides delivery sys-
+tems for nuclear imaging and radiotherapy of cancer. Adv. Drug Deliv. Rev. 60,
+1329–1346.
+Heppeler, A., Froidevaux, S., Macke, H.R., Jermann, E., Béhé, M., Powell, P., Hennig,
+H., 1999. Radiometal-labelled macrocyclic chelator-derivatised somatostatin
+analogue with superb tumor targeting properties and potential for receptor-
+mediated internal radiotherapy. Chem. Eur. J. 5, 1974–1981.
+Hofmeister, F., 1888. Zur Lehre von der Wirkung der Salze. Naunyn-Schmiedebergs
+Arch. Exp. Pathol. Pharmak. 24, 247–260.
+Iwanaga, T., Suzuki, M., Kunieda, H., 1998. Effect of added salts or polyols on the liquid
+crystalline structures of polyoxyethylene-type non-ionic surfactants. Langmuir
+14, 5775–5781.
+Jain, R.K., 1999. Transport of molecules, particles, and cells in solid tumors. Annu.
+Rev. Biomed. Eng. 1, 241–243.
+Jain, R.A., 2000. The manufacturing techniques of various drug loaded biodegradable
+poly(lactide-co-glycolide) (PLGA) devices. Biomaterials 21, 2475–2490.
+Karlstad, M.D., Killefer, J.A., Bailey, J.W., DeMichele, S.J., 1992. Parenteral nutrition
+with short- and long-chain triglycerides: triacetin reduces atrophy of small and
+large bowel mucosa and improves protein metabolism in burned rats. Am. J. Clin.
+Nutr. 55, 1005–1011.
+Kocbek, P., Obermajer, N., Cegnar, M., Kos, J., Kristl, J., 2007. Targeting cancer cells
+using PLGA nanoparticles surface modiﬁed with monoclonal antibody. J. Control.
+Release 120, 18–26.
+Kwon, H.-Y., Lee, J.-Y., Choi, S.-W., Jang, Y., Kim, J.-H., 2001. Preparation of PLGA
+nanoparticles containing estrogen by emulsiﬁcation–diffusion method. Colloids
+Surf. A: Physicochem. Eng. Aspects 182, 123–130.
+Lemoine, D., Francois, C., Kedzierewicz, F., Preat, V., Hoffman, M., Maincent, P., 1996.
+Stability study of nanoparticles of poly(epsilon-caprolactone), poly(d,l-lactide)
+and poly(d,l-lactide-co-glycolide). Biomaterials 17, 2191–2197.
+Lopez-Leon, T., Jodar-Reyes, A.B., Bastos-Gonzalez, D., Ortega-Vinuesa, J.L., 2003.
+Effects in the stability and electrophoretic mobility of polystyrene latex particles.
+J. Phys. Chem. B 107, 5696–5708.
+Maeda, H., Wu, J., Sawa, T., Matsumura, Y., Hori, K., 2000. Tumor vascular permeability
+and the EPR effect in macromolecular therapeutics: a review. J. Control. Release
+65, 271–284.
+Marinova, K.G., Alargova, R.G., Denkov, N.D., Velev, O.D., Petsev, D.N., Ivanov, I.B.,
+Borwankar, R.P., 1996. Charging of oil-water interfaces due to spontaneous
+adsorption of hydroxyl ions. Langmuir 12, 2045–2051.
+Miller, P.W., Long, N.J., Vilar, R., Gee, A.D., 2008. Synthesis of 11C, 18F, 15O, and 13N radi-
+olabels for positron emission tomography. Angew. Chem. Int. Ed. 47, 8998–9033.
+Mundargi, R.C., Babu, V.R., Rangaswamy, V., Patel, P., Aminabhavi, T.M., 2008.
+Nano/micro technologies for delivering macromolecular therapeutics using
+poly(d,l-lactide-co-glycolide) and its derivatives. J. Control. Release 125,
+193–209.
+Narisawa, S., Nagata, M., Danyoshi, L., Yoshino, H., Murata, K., Hirakawa, Y., Noda,
+K., 1994. An organic acid-induced sigmoidal release system for oral controlled-
+release preparations. Pharm. Res. 11, 111–116.
+Ngaboni Okassa, L., Marchais, H., Douziech-Eyrolles, L., Cohen-Jonathan, S., Soucé, M.,
+Dubois, P., Chourpa, I., 2005. Development and characterization of sub-micron
+poly(d,l-lactide-co-glycolide)
+particles
+loaded
+with
+magnetite/maghemite
+nanoparticles. Int. J. Pharm. 302, 187–196.
+Ngaboni Okassa, L., Marchais, H., Douziech-Eyrolles, L., Hervé, K., Cohen-Jonathan,
+S., Munnier, E., Soucé, M., Linassier, C., Dubois, P., Chourpa, I., 2007. Optimization
+of iron oxide nanoparticles encapsulation within poly(d,l-lactide-co-glycolide)
+sub-micron particles. Eur. J. Pharm. Biopharm. 67, 31–38.
+Palmieri, A., 2006. Handbook of Pharmaceutical Excipients. In: Rowe, R.C., Sheskey,
+P.J., Owen, S.C. (Eds.), ﬁfth ed., London, pp. 790-791.
+Quintanar-Guerrero, D., Fessi, H., Allémann, E., Doelker, E., 1996. Inﬂuence of sta-
+bilizing agents and preparative variables on the formation of poly(d,l-lactic
+acid) nanoparticles by an emulsiﬁcation–diffusion technique. Int. J. Pharm. 143,
+133–141.
+Ratner, M.A., Shriver, D.F., 1988. Ion transport in solvent-free polymers. Chem. Rev.
+88, 109–124.
+Santander-Ortega, M.J., Jódar-Reyes, A.B., Csaba, N., Bastos-González, D., Ortega-
+Vinuesa, J.L., 2006. Colloidal stability of Pluronic F68-coated PLGA nanoparticles:
+a variety of stabilisation mechanisms. J. Colloid Interface Sci. 302, 522–529.
+
+234
+T. Courant et al. / International Journal of Pharmaceutics 379 (2009) 226–234
+Song, C.X., Labhasetwar, V., Murphy, H., Qu, X., Humphrey, W.R., Shebuski, R.J., Levy,
+R.J., 1997. Formulation and characterization of biodegradable nanoparticles for
+intravascular local drug delivery. J. Control. Release 43, 197–212.
+Song, X., Zhao, Y., Wu, W., Bi, Y., Cai, Z., Chen, Q., Li, Y., Hou, S., 2008. PLGA
+nanoparticles simultaneously loaded with vincristine sulfate and verapamil
+hydrochloride: systematic study of particle size and drug entrapment efﬁciency.
+Int. J. Pharm. 350, 320–329.
+Soppimath, K.S., Aminabhavi, T.M., Kulkarni, A.R., Rudzinski, W.E., 2001. Biodegrad-
+able polymeric nanoparticles as drug delivery devices. J. Control. Release 70,
+1–20.
+Vadnere, M., Amidon, G., Lindenbaum, S., Haslam, J.L., 1984. Thermodynamic
+studies on the gel-sol transition of some Pluronic polyols. Int. J. Pharm. 22,
+207–218.
+Walstra, P., 1993. Principles of emulsion formation. Chem. Eng. Sci. 48, 333.
+Yin, Y., Chen, D., Qiao, M., Lu, Z., Hu, H., 2006. Preparation and evaluation of lectin-
+conjugated PLGA nanoparticles for oral delivery of thymopentin. J. Control.
+Release 116, 337–345.
+Yoo, J., Reichert, D.E., Welch, M.J., 2004. Comparative in vivo behavior studies of
+cyclen-based copper-64 complexes: regioselective synthesis, X-ray Structure,
+radiochemistry, log P, and biodistribution. J. Med. Chem. 47, 6625–6637.
+Zambaux, M.F., Bonneaux, F., Gref, R., Maincent, P., Dellacherie, E., Alonso, M.J.,
+Labrude, P., Vigneron, C., 1998. Inﬂuence of experimental parameters on the
+characteristics of poly(lactic acid) nanoparticles prepared by a double-emulsion
+method. J. Control. Release 50, 31–40.
+Zanetti-Ramos, B.G., Fritzen-Garcia, M.B., de Oliveira, C.S., Avelino Pasa, A., Soldi, V.,
+Borsali, R., Creczynski-Pasa, T.B., 2009. Dynamic light scattering and atomic force
+microscopy techniques for size determination of polyurethane nanoparticles.
+Mater. Sci. Eng. C 29, 638–640.

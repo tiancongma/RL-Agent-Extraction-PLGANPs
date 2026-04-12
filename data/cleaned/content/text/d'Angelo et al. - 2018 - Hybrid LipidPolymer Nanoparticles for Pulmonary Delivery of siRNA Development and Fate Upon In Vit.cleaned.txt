@@ -1,0 +1,923 @@
+## Abstract
+Background: Nowadays, the downregulation of genes involved in the pathogenesis of severe lung diseases
+through local siRNA delivery appears an interesting therapeutic approach. In this study, we propose novel
+hybrid lipid-polymer nanoparticles (hNPs) consisting of poly(lactic-co-glycolic) acid (PLGA) and dipalmitoyl
+phosphatidylcholine (DPPC) as siRNA inhalation system.
+Methods: A panel of DPPC/PLGA hNPs was prepared by emulsion/solvent diffusion and fully characterized. A
+combination of model siRNAs against the sodium transepithelial channel (ENaC) was entrapped in optimized
+hNPs comprising or not poly(ethylenimine) (PEI) as third component. siRNA-loaded hNPs were characterized for
+encapsulation efficiency, release kinetics, aerodynamic properties, and stability in artificial mucus (AM). The fate
+and cytotoxicity of hNPs upon aerosolization on a triple cell co-culture model (TCCC) mimicking human epithelial
+airway barrier were assessed. Finally, the effect of siRNA-loaded hNPs on ENaC protein expression at 72 hours
+was evaluated in A549 cells.
+Results: Optimized muco-inert hNPs encapsulating model siRNA with high efficiency were produced. The developed hNPs displayed a hydrodynamic diameter of *150 nm, a low polydispersity index, a negative f potential
+close to -25 mV,and a peculiar triphasic siRNA releaselasting for 5 days,which sloweddownin thepresence of PEI.
+siRNA formulations showed optimal in vitro aerosol performance after delivery with a vibrating mesh nebulizer.
+Furthermore, small-angle X-ray scattering analyses highlighted an excellent stability upon incubation with AM,
+confirming the potential of hNPs for direct aerosolization on mucus-lined airways. Studies in TCCC confirmed that
+fluorescent hNPs are internalized inside airway epithelial cells and do not exert any cytotoxic or acute proinflammatory effect. Finally, a prolonged inhibition of ENaC protein expression was observed in A549 cells upon
+treatment with siRNA-loaded hNPs.
+Conclusions: Results demonstrate the great potential of hNPs as carriers for pulmonary delivery of siRNA,
+prompting toward investigation of their therapeutic effectiveness in severe lung diseases.
+
+Keywords: dipalmitoylphosphatidylcholine, inhalable nanoparticles, poly(ethylenimine), poly(lactic-co-glycolic)
+acid, siRNA, triple cell coculture
+
+1Di.S.T.A.Bi.F., University of Campania ''Luigi Vanvitelli,'' Caserta, Italy.
+2Laboratory of Drug Delivery, Department of Pharmacy, University of Napoli Federico II, Napoli, Italy.
+3Adolphe Merkle Institute, University of Fribourg, Fribourg, Switzerland.
+4Applied Physics, Department of Medical Biotechnology and Translational Medicine, University of Milano, Milano, Italy.
+5Laboratory of Biochemistry, Department of Pharmacy, University of Napoli Federico II, Napoli, Italy.
+
+170
+
+171
+
+## Materials Methods
+Naked siRNAs have a half-life of less than an hour in human
+plasma and are often unable to penetrate cell membranes. In
+fact, cellular uptake and the escape from endolysosomes are
+critical steps before siRNA reaches the cytoplasm, where its
+target is located. Conceiving siRNA for local delivery by inhalation, the presence of high mucin, DNA, and actin concentrations, makes airway mucus a very complex barrier to
+overcome. Thus, optimal inhalable formulations are required: (i) to enhance siRNA stability; (ii) to overcome lung
+cellular and noncellular barriers; and (iii) to increase siRNA
+availability at the target level.
+Amid advanced drug delivery systems, the encapsulation of
+siRNA into colloidal carriers is considered a very promising
+formulation approach for inhaled treatment of severe lung diseases. In this context, biodegradable poly(lactic-co-glycolic)
+acid (PLGA) nanoparticles (NPs) are gaining considerable interest since they may provide protection of the therapeutic cargo
+from enzymatic degradation, prolonged release (i.e., decreased
+number of administrations), and improved retention in the
+lungs. Nevertheless, particle engineering with excipients
+aimed to overcome the mucus-lined human lung epithelial
+barrier is essential.
+
+Resomer RG 502H (uncapped PLGA 50:50, inherent viscosity 0.16 0.24dL/g) was purchased from Evonik Industries
+AG (Germany). Rhodamine-labeled PLGA was synthesized
+as previously described. 1,2-dipalmitoyl-sn-glycero-3phosphocholine (DPPC) was a kind gift of Lipoid GmbH
+(Switzerland). siGENOME SMARTpool siRNA against a
+and b subunits of the sodium transepithelial channel (ENaC)
+(Human SCNN1A and SCNN1B; 19 mer duplexes; Mw =
+13.4 kDa) and siGENOME Non-Targeting siRNA Pool
+were purchased from Dharmacon (GE Healthcare).
+Ph.Eur. grade mannitol (Pearlitol C160) was kindly
+gifted by Roquette Italia S.p.a. (Italy). Egg yolk emulsion,
+deoxyribonucleic acid sodium salt from calf thymus (DNA),
+diethylenetriaminepentaacetic acid (DTPA), phosphate buffer
+salts, branched polyethylenimine (PEI; 25 kDa), potassium
+chloride, rhodamine B (Rhod-B), RPMI 1640 amino acid
+solution, sodium chloride, and mucin from porcine stomach
+were purchased from Sigma-Aldrich (Missouri). Methylene
+chloride and ethanol 96% (v/v) were supplied by Carlo
+Erba (Italy).
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+In the attempt to combine the most valuable properties of
+both lipid and polymeric nanocarriers, hybrid lipid-polymer
+NPs (hNPs) have recently been proposed. Thanks to
+their ability to form a shell upon the polymer core, lipids
+may be useful to impart peculiar surface properties to the
+carrier, likely tuning NP interactions with the lung environment, while enhancing their tolerance in the pulmonary
+tract. In fact, the use of endogenous phospholipids, such
+as dipalmitoylphosphatidylcholine (DPPC), can be considered a valid approach to increase NP compatibility with the
+lung environment. Furthermore, DPPC has been shown to
+improve the technological features of PLGA particles aimed
+to nucleic acid delivery to the lung.
+
+Production of DPPC/PLGA hybrid NPs
+
+DPPC/PLGA hNPs were prepared by an emulsion/solvent
+diffusion technique. Briefly, a water in oil emulsion (w/o) was
+achieved adding 100 lL of water to 1 mL of methylene chloride containing PLGA (10 mg; 1% w/v) and DPPC at different
+DPPC/PLGA weight ratios (1:10, 1:20, 1:50, 1:100, and
+1:150), under vortex mixing (2400 minutes-1; Heidolph, Germany). When needed, PEI was added to the internal water
+phase at the theoretical loading of 0.016 mg per 100 mg of
+PLGA. Just after mixing, the w/o emulsion was added to
+12.5mL of ethanol 96% (v/v) under moderate magnetic stirring, leading toimmediate nanoparticleprecipitation.Then, the
+formulation was diluted with 12.5 mL of Milli-Q water under
+stirring for 10 minutes. Afterward, residue organic solvent was
+removed by rotary evaporation under vacuum at 30C (Heidolph VV 2000, Germany). hNPs were isolated from the resulting hNP colloidal dispersion (5mL) by centrifugation at
+7000 rcf for 20 minutes at 4C (Hettich Zentrifugen, Germany)
+and dispersed in Milli-Q water.
+siRNA-loaded hNPs were prepared in optimized formulation conditions at a theoretical loading of 1 nmol/100 mg
+of PLGA (N/P theoretical ratio of 10 in PEI-modified hNPs)
+by adding siRNA to the internal water phase.
+
+Along these lines, the aim of this work was to design and
+optimizehNPsconsistingofPLGAand DPPC, introducing PEI
+as a third component to assist siRNA encapsulation in the
+hNPs. A preliminary formulation study allowed to select optimized muco-inert DPPC/PLGA and PEI/DPPC/PLGA hNPs
+displaying optimal in vitro aerosol performance. A particular
+attention was devoted tothe characterizationofthe carrier upon
+contact with simulated lung fluids through a combination of
+analytical techniques, that is spectrophotometric assay, dynamic
+light scattering (DLS), and small-angle X-ray scattering (SAXS).
+To allow a proof of principle of RNP potential for siRNA
+delivery to the lung, selected formulations were loaded with
+
+172
+
+Fluorescently-labeled hNPs (DPPC/PLGARhod and DPPC/
+PLGARhod) were prepared using rhodamine-labeled PLGA
+(PLGA-Rhod) in the organic phase at 10% w/w with respect
+to the total PLGA amount.
+
+systems with sampling at 15 L/minutes and insertion of a filter
+in micro-orifice collector (MOC). Briefly, 1 mL of hNP
+dispersion was transferred to the reservoir of the nebulizer,
+which was connected to the induction port of the NGI. The
+nebulizer was operated at 15 L/minutes, and the aerosol was
+drawn through the impactor for 5 minutes, until dryness.
+The amount of fluorescent hNPs remaining inside the
+nebulizer chamber, deposited on the seven NGI collection
+cups, and in the induction port was quantitatively recovered
+in NaOH 0.5 M. After stirring at room temperature for
+1 hour, the amount of fluorescent hNPs in the resulting solutions was determined by spectrofluorimetric analysis at kex
+
+In vitro interaction with mucin.
+The light scattering of hNP
+aqueous dispersions with or without mucin was assessed by
+spectrophotometry as previously described. Briefly, a
+saturated solution of type II mucin was prepared by centrifugation at 6000 rcf for 20 minutes in a mucin dispersion in
+water (0.08% w/v) stirred overnight. Then, hNPs were dispersed in the mucin solution at a concentration of 1 mg/mL by
+vortexing for 1 minute. The light scattering of the mucin/
+hNPs mixtures was measured by spectrophotometric analysis
+at 650 nm at time 0 and after incubation for 30 and 60 minutes
+at room temperature. Reference absorbances of mucin and
+1 mg/mL hNP dispersions in water were also evaluated.
+
+173
+
+553 nm/kem 577 nm (GloMax Explorer, Promega, Italy) as
+previously reported. Calibration curves were derived by
+analyzing serial dilutions of DPPC/PLGARhod or PEI/DPPC/
+PLGARhod standard solutions prepared from a stock of hNPs
+degraded in NaOH 0.5 M. The linearity of the response was
+verified over the concentration range 2-200 lg/mL (r2 ++
+0.999). Each experiment was run in triplicate.
+The emitted dose (ED) was measured as the difference between the total amount of hNPs initially placed and the amount
+remaining in the nebulizer chamber. Upon emission, the experimental mass median aerodynamic diameter (MMADexp)
+and the geometric SD (GSD) were calculated according to the
+European Pharmacopoeia, deriving a plot of cumulative mass
+of particle retained in each collection cup (expressed as percent
+of total mass recovered in the impactor) versus the cutoff diameter of the respective stage.
+The fine particle fraction (FPF) was calculated taking into
+account the amount of hNPs deposited in stages 3-7 (MMADexp <5.39 lm) compared to the initial amount loaded into the
+nebulizer chamber, while the respirable fraction (RF) referred
+to the total amount recovered from the NGI.
+
+around again and placed in BD Falcon (Corning) tissue culture
+plates (12-well plates). In the lower chamber, 1.5 mL of medium, and at the apical side of the TCCC, 500 lL medium
+containing 2.5 * 104 MDM/mL were added. The complete
+TCCC systems were kept with 1.5 mL of medium in the lower
+chamber and 0.5 mL in the upper chamber at 37C in 5% CO2
+humidified atmosphere for 24 hours.
+To establish the ALI, the medium in the upper chamber of
+the TCCC systems was removed 24 hours before exposure
+in the Vitrocell Cloud, while the medium in the lower
+chamber was replaced by 0.6 mL of fresh medium.
+
+In vitro TCCC exposure to aerosolized NPs.
+Cell exposure to hNPs at ALI was carried out with the Vitrocell Cloud
+system (Vitrocell Systems GmbH, Germany). Briefly, the
+Vitrocell Cloud consists of three main components: a nebulizer, an exposure chamber, and a flow system, with an incubation
+chamber
+providing
+suitable
+temperature
+and
+humidity cell culture conditions. The aerosol is generated into
+the exposure chamber by a perforated vibrating membrane
+nebulizer (AeronebPro, with a span of 2.5-6.0 lm volume
+mean diameter). Before each experiment, freeze-dried hNPs
+were dispersed in 0.5 mM sodium chloride.
+For TCCC exposure to low hNP concentrations, 200 lL
+of a 0.5 mg/mL hNP dispersion was aerosolized (0.1mg of
+hNPs). For high hNP concentrations, TCCC were exposed to
+further 400 lL (2* 200 lL) of a 0.9 mg/mL hNP dispersion
+(0.5mg of hNPs). TCCC exposed to 0.5 mM sodium chloride
+and mannitol aqueous solutions was used as controls. Following the exposure in the chamber (10 and 30 minutes for
+0.1 and 0.5 mg of hNPs, respectively), the inserts were immediately placed in new BD Falcon 12- well tissue culture
+plates containing 0.6 mL of fresh medium for cell uptake
+studies, cytotoxicity assay, and tumor necrosis factor alpha
+(TNF-a) release. The morphology of hNPs was analyzed by
+transmission electron microscopy (TEM) before nebulization
+and after exposing a 400 mesh copper film grid to nebulized
+hNPs. The analysis was performed with a FEI Tecnai spirit
+TEM at 120 kV and images were acquired with a Veleta CCD
+camera (2048 * 2048 pixels).
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+In vitro studies on airway triple cell cocultures
+
+All in vitro exposure experiments were conducted with a
+three-dimensional TCCC mimicking the human epithelial
+airway barrier comprising human bronchial epithelial cells
+(16HBE14o-), human blood monocyte-derived macrophages
+(MDM), and dendritic cells (MDDC).
+
+16HBE14o- cell cultures.
+16HBE14o- cells were kindly
+provided by Dieter Gruenert (passage number P2.54; University California, San Francisco, CA). Cells were maintained
+in minimum essential media 1 * (with Earle's Salts, 25 mM
+HEPES and without l-glutamine; Gibco BRL, Thermo Fisher
+Scientific), supplemented with 1% l-glutamine, 1% penicillin/streptomycin, and 10% fetal calf serum.
+
+of 0.5 * 106 cells/insert on transparent BD Falcon (Corning)
+cell culture inserts (surface area of 0.9 cm2, pores with
+3.0 lm diameter, and PET membranes for 12-well plates).
+The cell culture inserts were pretreated with 150 lL of a
+fibronectin coating solution containing 0.1 mg/mL bovine
+serum albumin (Sigma-Aldrich), 1% Type I bovine collagen
+(BD Biosciences, Becton Dickinson, New Jersey), and 1%
+human fibronectin (BD Biosciences, Becton Dickinson) in
+the LHC Basal Medium (Sigma-Aldrich). Inserts were
+placed in BD Falcon tissue culture plates (12-well plates)
+with 0.5 mL medium in the upper and 1.5 mL in the lower
+chamber. The cells were kept at 37C in 5% CO2 humidified
+atmosphere for 7 days (medium changed after 3-4 days).
+
+Nanoparticle deposition efficiency.
+The amount of hNPs
+deposited upon nebulization inside the Vitrocell Cloud was
+assessed. To this purpose, glass coverslips (24 * 24 mm) were
+placed onto the compartments for cell culture inserts and exposed to different amounts of aerosolized rhodamine-labeled
+DPPC/PLGARhod and PEI/DPPC/PLGARhod hNPs. After the
+exposure, coverslips were removed and rinsed with NaOH
+0.5 M (500lL). After stirring at room temperature for 1 hour,
+the amount of fluorescent hNPs in the solutions was quantified
+by spectrofluorimetric analysis as described for in vitro aerosol
+
+## Results
+absorbance at 650 nm - SD over time.
+The interactions of hNPs with mucin were further investigated by DLS as previously reported. Briefly, the hNP
+dispersions in mucin were examined with the Malvern Zetasizer Nano ZS (Malvern Instruments, United Kingdom).
+
+representative size distribution by intensity of hNPs in mucin
+versus hNPs in water. The size distribution profile of the
+mucin solution was also recorded as control.
+
+Characterization of DPPC/PLGA hybrid NPs
+
+Size and zeta potential.
+The hydrodynamic diameter
+(DH), the polydispersity index (PI), and the zeta potential (f
+potential) of hNPs were determined by DLS, with a Malvern
+Zetasizer Nano ZS (Malvern Instruments, United Kingdom). Results are expressed as mean value - standard deviation (SD) of triplicate measurements in different batches.
+
+Particle stability in artificial mucus.
+To assess the stability
+of siRNA-loaded hNPs and their ability to diffuse inside
+airway mucus, SAXS analyses were performed on hNP dispersions in the presence of artificial mucus (AM). As previously reported, AM was prepared by adding 25 lL of sterile
+egg yolk emulsion, 25 mg of mucin, 20 mg of DNA, 30 lL of
+aqueous DTPA (1 mg/mL), 25 mg NaCl, 11 mg KCl, and
+100 lL of RPMI 1640 to 5 mL of water. The dispersion was
+stirred until a homogenous mixture was obtained. For stability
+studies, aqueous dispersions of siRNA-loaded hNPs (10 mg/
+mL) were mixed with AM in a 1:3 volume ratio for a total
+40 lL sample volume. After a 1-hour equilibration time,
+SAXS was performed as described above. Particle structure
+after a 12-hour incubation with AM was verified by repeated
+SAXS measurements.
+
+siRNA loading inside hNPs.
+siRNA actual loading was
+measured indirectly by quantifying the amount of unencapsulated siRNA. Briefly, just after production, hNPs
+were collected by centrifugation (7000 rcf for 20 minutes at
+4C) and the supernatant was analyzed for siRNA content
+using Quant-IT RiboGreen reagent (Thermo Fisher Scientific, Massachusetts, Stati Uniti) according to the manufacturer's instructions. Quantitative analysis was performed by
+spectrofluorimetry at kex 480 nm/kem 520 nm (EnVision
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+reported as actual loading (nmol of encapsulated siRNA per
+mg of yielded hNPs) and encapsulation efficiency (actual
+loading/theoretical loading * 100) - SD of values collected
+from three different batches.
+
+In vitro release kinetics of siRNA.
+siRNA-loaded hNPs
+were characterized for in vitro siRNA release kinetics in
+phosphate buffer (120 mM NaCl, 2.7 mM KCl, and 10 mM
+Na2HPO4) at pH 7.2 (phosphate-buffered saline [PBS]).
+Release studies were performed upon dilution of hNP dispersions in PBS to a theoretical siRNA concentration of
+0.2 nmol/mL. hNP dispersions were incubated in a horizontal
+shaking water bath at 37C (ShakeTemp SW 22, Julabo,
+Italy). At scheduled time intervals, samples were centrifuged
+at 7000 rcf for 20 minutes at 4C to isolate hNPs and the
+release medium was withdrawn and analyzed for siRNA
+content by spectrofluorimetric analysis as described for actual
+loading. The medium was replaced by the same amount of
+fresh PBS. Experiments were carried out in triplicate and
+
+SAXS spectroscopy.
+Synchrotron SAXS measurements
+were performed at the ID02 high-brilliance beamline at the
+ESRF (Grenoble, France), with a beam cross section of
+200 * 400 lm and wavelength k = 0.1 nm, using two different
+sample detection distances: 1 and 6 m. The range of investigated momentum transfer, q = (4p/k)sin(h), was 0.0116 nm-1
+<q <6.43 nm-1, where 2 h is the scattering angle. All measurements were performed at T = 25C. Samples were put in
+plastic capillaries (KI-BEAM, ENKI srl) with 2 mm internal
+diameter, 0.05 mm wall thickness, and closed with polyethylene caps. Capillaries were then mounted horizontally onto
+the sample holder. Sample concentration was 10 mg/mL. The
+exposure time of each measurement was 0.1 seconds, and
+spectra were checked for radiation damage.
+The measured SAXS profiles report the scattered radiation intensity as a function of the momentum transfer, q,
+where 1 m and 6 m sample-to-detector distance spectra were
+merged. Solvent subtraction was obtained by measuring
+water-filled capillaries and empty capillaries.
+
+In Vitro aerosol performance.
+The aerosolization properties of fluorescently-labeled DPPC/PLGARhod and PEI/
+DPPC/PLGARhod hNP dispersions were investigated in vitro
+after delivery from the Aeroneb Go nebulizer (Aerogen Ltd.,
+Ireland) by a Next Generation Impactor (NGI) (Copley Scientific, United Kingdom) according to the Comite' Europe'en
+
+per cm2 - SD of values collected from triplicate analyses.
+
+TCCC system.
+To produce the TCCC in vitro model,
+16HBE14o- cell cultures were supplemented on the apical side
+with MDM and on the basolateral side with MDDC derived
+from human blood as previously reported. Briefly,
+16HBE14o- cells were cultured as described above. At 5 days,
+the medium was removed from the upper and lower chamber,
+the inserts turned upside down, and the bottom was abraded
+carefully with a cell scraper. The inserts were then incubated
+with 65lL medium containing 83* 104 MDDC/mL on the
+basal side for 2 hours. Afterward, the inserts were turned
+
+Cell uptake studies.
+The TCCC was exposed to different
+amounts of aerosolized rhodamine-labeled DPPC/PLGARhod
+and PEI/DPPC/PLGARhod hNPs. After 24 hours postexposure, TCCC were fixed for 15 minutes with 3% paraformaldehyde in PBS at room temperature and cells were washed
+thrice in PBS. The F-actin cytoskeleton and the DNA of all
+cells were stained with phalloidin (ALEXA 488) (Molecular
+Probes, Life Technologies Europe B.V., Switzerland) and
+
+174
+
+4C/,6- diamidin-2-phenylindol (DAPI) (1 lg/mL) in a 1:100
+and 1:50 dilution in 0.3% Triton X-100 in PBS, respectively.
+For microscopy, membranes were embedded in Glycergel
+(DAKO Schweiz AG, Baar, Switzerland). Sample analysis
+was performed with an inverted Zeiss confocal laser scanning
+microscope 710 (LSM, Axio Observer.Z1, Zeiss, Germany).
+Representative images (z-stacks) were recorded at three independent fields of view for each sample. Image processing
+was achieved using the 3D reconstruction software Imaris
+(Bitplane AG, Switzerland).
+
+under humidified atmosphere of 5% CO2 at 37C. siRNA
+transfections and treatments were performed as previously
+described.(20b)
+
+Western blotting.
+Total proteins (75 lg) were extracted
+from the cells, separated on 10% sodium dodecyl sulfatepolyacrylamide gel electrophoresis and electrotransferred on
+polyvinylidene fluoride (PVDF) as previously described.
+
+Then, the membrane was incubated for 2 hours with 5%
+nonfat milk to block nonspecific binding sites and incubated
+2 hours at room temperature with the following antibodies: anti-bENaC (Santa Cruz Biotechnology), antiSCNN1A (Proteintech Europe), and anti-b-actin (Santa Cruz
+Biotechnology). Densitometric analysis was carried out using
+ImageJ software (Image 1.49v, available on: http://imagej.
+nih.gov/ij, National Institutes of Health, Bethesda, MD).
+
+Cytotoxicity assay.
+The TCCC was exposed to different
+amounts of aerosolized siRNA-DPPC/PLGA and siRNA-PEI/
+DPPC/PLGA, and corresponding empty hNPs. After 24 hours
+postexposure at 37C, lactate dehydrogenase (LDH) release
+by the TCCC, indicative of cell membrane damage, was assessed by the LDH cytotoxicity detection kit (Roche Applied
+Science, Germany) according to the manufacturer's guidelines. The test was performed in triplicates and evaluated in
+comparison to the negative controls, which are TCCC exposed to aqueous solutions of 0.5 mM sodium chloride or
+mannitol at the same concentrations of hNP dispersions. As a
+positive control, TCCC were treated with 100 lL of 0.2%
+Triton X-100 in PBS on the apical side and incubated for
+24 hours at 37C and 5% CO2.
+
+Data analysis
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+expressed as mean value - standard error mean (n = 3). The
+significance of differences was determined with the software
+Kaleida graph using one-way analysis of variance followed
+by Bonferroni post-hoc test. A p-value <0.05 was considered
+significant.
+
+Tumor necrosis factor-a release.
+The potential proinflammatory response was also investigated after 24 hours
+postexposure to hNPs by quantifying the release of TNF-a
+using an ELISA kit (R&D Systems) according to the manufacturer's protocol.
+
+Development studies of DPPC/PLGA hNPs
+for siRNA loading
+
+In-depth formulation studies were performed on empty
+hNPs to establish the optimal ratio between the selected
+components, that is, PLGA, DPPC, and PEI. Overall hNP
+properties are reported in Table 1.
+Independent of the amount of DPPC added to the organic
+phase and the presence of PEI in the internal water phase, the
+adopted formulation conditions lead to the formation of
+hNPs with DH ranging between *135 and *169 nm, low PI
+(<0.130), and negative f potentials (between -16 and
+-30 mV). Nevertheless, in each case, a flocculation of the
+exceeding amount of the lipid component was apparent after
+rotary evaporation of the diffusion solvent under vacuum.
+This phenomenon was particularly evident when high
+amounts of DPPC were added to the formulation (i.e., DPPC/
+
+In vitro gene silencing effect
+
+Cell cytotoxicity.
+A549 cells were seeded onto 96-well
+plates (5 * 104 cells/well) and incubated with hNPs for 24
+and 48-72 hours. Then, cell viability was evaluated by MTT
+assay as previously reported.(20a)
+
+Cell culture, transfection, and treatment.
+Human alveolar
+basal epithelial cell line (A549) was cultured in Dulbecco's
+modified Eagle's medium supplemented with 10% heatinactivated fetal bovine serum (Microtech), 1.5 mM Lglutamine, 100 units/mL penicillin, and 100lg/mL streptomycin
+
+DPPC/PLGA and PEI/DPPC/PLGA Hybrid Lipid-Polymer Nanoparticles
+
+PEI theoretical
+loading (mg/100 mg
+of PLGA)
+DPPC/PLGA
+ratio (w/w)
+DH
+(nm - SD)
+PI
+(mean - SD)
+f potential
+(mV - SD)
+
+Formulation
+
+DPPC/PLGA10
+--
+1:10
+151.3 - 21.3
+0.127 - 0.079
+-25.3 - 0.5
+DPPC/PLGA 20
+--
+1:20
+149.7 - 2.1
+0.083 - 0.006
+-23.2 - 2.4
+DPPC/PLGA 50
+--
+1:50
+135.4 - 17.2
+0.088 - 0.008
+-24.3 - 6.0
+DPPC/PLGA 100
+--
+1:100
+158.9 - 7.1
+0.082 - 0.004
+-28.4 - 2.9
+DPPC/PLGA 150
+--
+1:150
+168.6 - 7.1
+0.124 - 0.094
+-15.7 - 1.3
+PEI/DPPC/PLGA 10
+0.016
+1:10
+166.5 - 13.9
+0.128 - 0.093
+-26.1 - 0.5
+PEI/DPPC/PLGA 20
+0.016
+1:20
+165.4 - 9.1
+0.102 - 0.006
+-31.7 - 1.2
+PEI/DPPC/PLGA 50
+0.016
+1:50
+162.3 - 13.9
+0.124 - 0.041
+-28.0 - 0.7
+PEI/DPPC/PLGA 100
+0.016
+1:100
+150.9 - 30.4
+0.106 - 0.027
+-28.0 - 0.3
+PEI/DPPC/PLGA 150
+0.016
+1:150
+146.4 - 0.3
+0.123 - 0.027
+-22.2 - 2.7
+
+PI, polydispersity index; SD, standard deviation.
+
+175
+
+the absorbance of the reference mucin dispersion was close to
+zero, higher values of absorbance were observed at each time
+point upon addition of hNP dispersions. Nevertheless, no
+significant differences were observed between absorbance of
+hNPs dispersed in water or mucin (Fig. 1A). The interactions
+between mucin and either DPPC/PLGA or PEI/DPPC/PLGA
+hNP were analyzed also by DLS (Fig. 1B, C, respectively).
+The combined particle size distribution for the various
+replicates shows no change in the position and intensity of the
+peak. Inlinewithpreviousstudies, the apparentdimension of
+bare PLGA is significantly shifted to larger sizes upon addition
+of mucin, reflecting strong mucin/NP hydrophobic interactions, which likely provide a basis for mucoadhesive NPs
+
+hNP size and PI (Table 2) compared to empty hNPs (Table 1).
+siRNA-loaded hNPswith a DH around 140 nm (141 and 142 nm
+for siRNA-DPPC/PLGA and siRNA-PEI/DPPC/PLGA, respectively) and low PI were produced with good yields (52%
+and 53% for siRNA-DPPC/PLGA and siRNA-PEI/DPPC/
+PLGA, respectively). siRNA was effectively incorporated inside DPPC/PLGA hNPs with a mean encapsulation efficiency
+of 75%. The addition of PEI inside the formulation allowed
+to reach an excellent encapsulation efficiency of 96%, thus
+increasing siRNA actual loading from 1.35 to 1.74 nmol per
+100 mg of hNPs.
+Results of in vitro release studies performed at physiological pH and temperature (pH 7.2 and 37C) are reported
+in Figure 2 as percentage of siRNA released over time.
+Both siRNA-DPPC/PLGA and siRNA-PEI/DPPC/PLGA
+hNPs displayed a typical triphasic release profile, characterized
+byaninitial burst,withmorethan50% ofsiRNA releasedinthe
+first hours, followed by a slow release phase lasting a couple of
+days and a final fast release time period after 4-5 days. Although, both formulations show similar release profile, siRNA/
+
+In vitro assessment of mucin interactions with optimized empty DPPC/PLGA and PEI/DPPC/PLGA hNPs. (A)
+Scattering at 650 nm of hNPs in mucin (1mg/mL) over time.
+The absorbance at 650 nm of mucin and hNP dispersions in
+water is reported as control. (B-C) Size distribution by intensity of hNP dispersions in water or a saturated mucin solution
+evaluated by DLS. The size distribution profile of mucin in
+water is reported as control (B DPPC/PLGA hNPs and C PEI/
+DPPC/PLGA). hNPs, hybrid lipid-polymer nanoparticles.
+Color images available online at www.liebertpub.com/jamp
+
+Lipid-Polymer Nanoparticles
+
+siRNA-DPPC/
+PLGA
+siRNA-PEI/
+DPPC/PLGA
+
+DH (nm - SD)
+141 - 0.50
+142 - 1.8
+PI (mean - SD)
+0.120 - 0.018
+0.114 - 0.0050
+f potential (mV - SD)
+-29.1 - 1.6
+-29.9 - 1.4
+Yield of production
+(% - SD)
+52.0 - 8.9
+53.4 - 2.5
+
+siRNA actual loadinga
+(% - SD)
+1.35 - 0.02
+1.74 - 0.04
+
+PLGA 1:10 w/w), but it was limited up to a theoretical DPPC/
+PLGA ratio of 1:20. Thus, this last ratio was selected for further
+studies tomaximizethe amountofDPPCassociatedtothe NPs,
+while limiting flocculation. The corresponding formulations,
+from here on, are named DPPC/PLGA and PEI/DPPC/PLGA.
+Mucin/nanoparticle interaction studies were performed by
+measuring the absorbance at 650 nm of DPPC/PLGA and
+PEI/DPPC/PLGA hNPs in mucin over time (Fig. 1A). While
+
+Encapsulation efficiency
+(% - SD)
+74.8 - 1.5
+95.9 - 2.2
+
+asiRNA loading was expressed as nmol of encapsulated siRNA
+per 100 mg of hNPs. siRNA theoretical loading was 1 nmol/100 mg
+of hNPs.
+hNPs, hybrid lipid-polymer nanoparticles.
+
+176
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+In vitro release kinetics of siRNA from hNPs in PBS
+at pH 7.2. Data are expressed as siRNA released (%) - SD
+(n = 3). PBS, phosphate-buffered saline; SD, standard deviation. Color images available online at www.liebertpub.com/
+jamp
+
+DPPC/PLGA hNPs provided a significantly more rapid release
+compared to siRNA-PEI/DPPC/PLGA hNPs. Nevertheless,
+both hNP formulations sustained siRNA release for 1 week.
+The I(q) SAXS spectra of siRNA-DPPC/PLGA and siRNAPEI/DPPC/PLGA hNPs are reported in Figure 3 (Top panel). A
+low q region affected by the finite size of the particle in the
+range of the 100 nm distances can be identified. At higher q, an
+extended region with q-4 slope shows up, which identifies a
+sharp solvent-particle interface and a smooth particle surface.
+Giunieranalysisintheinterval0.0116nm-1<q<0.0246nm-1
+
+Small-angle X-ray scattering spectra of siRNAloaded hNPs. Top panel: siRNA-DPPC/PLGA (full dots)
+and siRNA-PEI/DPPC/PLGA (empty dots) in water. The
+red line is the representative fitting of the siRNA-PEI/
+DPPC/PLGA data with the form factor of a polydisperse
+sphere (red line). Bottom panel: siRNA-DPPC/PLGA (top)
+and siRNA-PEI/DPPC/PLGA (bottom) after 12 hours of
+incubation with artificial mucus (AM) (empty dots) versus a
+reconstructed spectrum obtained by summing up AM and
+naked hNP spectra (blue line). siRNA-DPPC/PLGA spectrum is stacked for clarity. Color images available online at
+www.liebertpub.com/jamp
+
+gives gyration radii Rg = 53- 0.5 nm and Rg= 52- 0.6 nm for
+siRNA-DPPC/PLGA and siRNA-PEI/DPPC/PLGA hNPs,
+respectively. If modeled as spheres, this corresponds to particle
+radii of 68 and 67nm, in good agreement with hydrodynamic
+radii (Table 2). The best fit of I(q) is obtained by applying the
+form factor of a distribution of polydispersed spheres with a
+number-averaged mean radius of 45- 9 nm for siRNA-DPPC/
+PLGA and 42- 11nm for siRNA-PEI/DPPC/PLGA hNPs.
+The fits are shown in Figure 3 (red lines).
+The phospholipid component is possibly coating the PLGA
+particle, without forming a bilayer envelope. A comparison
+of the spectra of bare PLGA NPs and DPPC/PLGA hNPs is
+reported in Supplementary Figure S2 to better illustrate this
+point. We underline that PEI and siRNA contents are actually
+of the order of lg over 10mg of particles, so that scattering
+contribution from those components are not detectable.
+Applying SAXS analysis, the stability of hNPs in mucus
+was studied during 12 hours after mixing AM with aqueous
+dispersions of hNPs in a 3:1 volume ratio. The scattering
+spectra obtained after equilibration over 12 hours are reported
+in Figure 3 (Bottom panel). Of note, the obtained spectrum is
+consistent with the sum of the naked particle spectrum and the
+mucus spectrum that give the reconstructed line shown in the
+figure (blue line).
+In vitro aerosol performance of the optimized hNP formulations was first assessed through NGI. To easily quantify
+
+the amount of hNPs deposited in each cup, blank fluorescent
+DPPC/PLGARhod and PEI/DPPC/PLGARhod hNPs were used
+(Fig. 4). In fact, neither the presence of siRNA nor the addition of PLGA-Rhod affected hNP size and surface properties,
+which are crucial for aerosolization.
+According to the new regulatory guidance, both USP and
+Ph.Eur. recognize the suitability of the NGI for nebulizer
+characterization when used at 15L/min excluding the preseparator and placing an internal filter below the MOC. In
+this configuration, the seven NGI stages produce cutoff diameters in the range 14.1-0.98 lm, while the last five stages have
+cutoff diameters between 5.39 and 0.98lm. Figure 4A describes the cumulative droplet size distribution of the hNP dose
+emitted after aerosolization from an Aeroneb Go vibratingmesh nebulizer. In both cases, the best fit line was from logarithmic linear regression (r2 > 0.96). The deposition patterns
+of DPPC/PLGARhod and PEI/DPPC/PLGARhod throughout the
+NGI cups are shown in Figure 4B. In both cases, less than 1.5%
+of the ED of hNPs was deposited in the throat, with 65%-75%
+of the ED recovered from Cups 3-7 (MMADexp<5.39 lm).
+
+177
+
+In vitro aerosolization of hNPs on TCCC
+
+The ability of aerosolized hNPs to penetrate airway epithelial barrier was probed in vitro on TCCC. The experiments
+were carried out on fresh dispersions of freeze-dried hNPs
+(1:25 hNP/mannitol weight ratio) in 0.5 mM NaCl for ideal
+nebulization. Mannitol was added to the hNPs as cryoprotectant to avoid common hNP aggregation in a collapsed
+cake. In fact, it induced the lowest variation of DH and PI
+with respect to the control, and no difference was observed
+when changing the hNP/cryoprotectant ratio (Supplementary
+Table S1 and Supplementary Fig. S3). Furthermore, mannitol
+could also work facilitating hNP transport through mucus,
+and in so doing siRNA diffusion, due to its established ability
+to improve fluidity of mucus.
+
+The stability of hNPs during the nebulization process
+was confirmed by transmission electron microscopy (TEM)
+analysis of freeze-dried siRNA-loaded hNPs in the presence
+of mannitol (1:25 NP/mannitol ratio) before and after nebulization in the Vitrocell Cloud (Fig. 5). TEM images suggest a potential core-shell structure for both siRNA-DPPC/
+PLGA and siRNA-PEI/DPPC/PLGA, which was retained
+after the nebulization process, which did not cause any apparent modification of the hNP structure or hNP aggregation
+for each tested concentration.
+The deposition efficiency was also evaluated for both tested
+formulations, highlighting in each case a homogeneous distribution of the hNPs on the coverslips inside the exposure
+chamber (Supplementary Fig. S4) and a direct correlation between the delivered and deposited doses of hNPs. In particular,
+0.0051- 0.0018 and 0.0127- 0.0058lg/cm2 of hNPs were
+deposited on coverslips after nebulization of DPPC/PLGARhod
+dispersions at low and high concentrations, respectively.
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+In vitro aerosol performance of DPPC/PLGA and
+PEI/DPPC/PLGA hNPs upon delivery through the Aeroneb Go nebulizer. (A) Cumulative mass recovered as a
+function of the cutoff diameter of the NGI stages; (B) NGI
+deposition pattern; (C) fine particle characteristics of the
+aerosol cloud. Data are presented as mean - SD (n = 3). NGI,
+Next Generation Impactor. Color images available online at
+www.liebertpub.com/jamp
+
+Nevertheless, while DPPC/PLGARhod formulation showed a
+peak at 5.39 lm, the highest percent of PEI/DPPC/PLGARhod
+was recovered from cup with a cutoff diameter of 3.3 lm. As a
+consequence, by the same value of GSD, PEI/DPPC/PLGARhod
+hNPs displayed a lower MMADexp and, consequently, higher
+FPF and RF values compared to DPPC/PLGARhod (Fig. 4C).
+
+Transmission electron microscopy (TEM) images
+of reconstituted freeze-dried siRNA-loaded hNPs (siRNADPPC/PLGA and siRNA-PEI/DPPC/PLGA) before and after nebulization. Scale bar is 0.2 lm. Field is representative
+of the sample.
+
+178
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+CLSM images of TCCC after 24 hours postexposure to 0.5 mg of fluorescently labeled DPPC/PLGARhod (A)
+and PEI/DPPC/PLGARhod (B) hNPs. Red color corresponds
+to the hNPs, white color to cytoskeletal F-actin, and cyan
+color to nulcei. The arrows show hNPs engulfed by the cells.
+TCCC, triple cell coculture model. Color images available
+online at www.liebertpub.com/jamp
+
+LDH release (A) and TNF-a secretion (B) of TCCC
+after 24 hours postexposure to different theoretical amounts
+(0.1 and 0.5 mg) of aerosolized empty or siRNA-loaded hNPs.
+Sodium chloride was used as negative control. Mannitol
+aqueous solutions at the same volume and concentrations used
+for hNP samples were also aerosolized for comparison. Triton
+0.2% (w/v) in PBS was used as positive control in LDH release
+(A). LDH data are presented as mean optical density (OD)
+values-SEM of samples diluted 1:10 v/v in cell culture medium
+(n=3) (**p<0.001). TNF-a data are presented as the mean fold
+increase of samples relative to the negative control (i.e., sodium
+chloride) - SEM (n = 3). LDH, lactate dehydrogenase; SEM,
+standard error mean; TNF-a, tumor necrosis factor alpha.
+Color images available online at www.liebertpub.com/jamp
+
+Meanwhile, likely, as a consequence of the good aerosolization properties of PEI-containing formulations, 0.01370.0032 and 0.0334- 0.0069lg/cm2 of hNPs were recovered
+from coverslips after nebulization of low and high concentrations of PEI/DPPC/PLGARhod hNPs, respectively.
+
+Fate and cytotoxicity of aerosolized hNPs in TCCC
+
+To study the cell uptake, fluorescently labeled hNPs were
+aerosolized on TCCC. After 24 hours postexposure to hNPs,
+
+that both DPPC/PLGARhod and PEI/DPPC/PLGARhod hNPs
+(labeled in red) can effectively penetrate into cells and are
+localized intracellularly.
+At the tested concentrations, the developed hNPs displayed
+no significant cytotoxicity compared to both sodium chloride
+and mannitol solutions aerosolized at the same concentrations
+of the samples ( p > 0.5) (Fig. 7A). On the other hand, a significant cytotoxic effect was observed when the cocultures
+were incubated with Triton-X as positive control ( p < 0.001
+versus DPPC/PLGARhod and PEI/DPPC/PLGARhod). These
+findings were confirmed by CLSM analysis of all treated
+
+samples, since no alteration of cell morphology occurred after
+TCCC exposure to hNPs compared to the negative control
+(Supplementary Fig. S5).
+The potential proinflammatory effect of aerosolized empty
+and siRNA-loaded hNPs on TCCC was also investigated by
+determining TNF-a secretion 24 hours postexposure (Fig. 7B).
+Of note, exposure to mannitol and empty hNPs, at both low and
+highconcentration,causeda less thanonefold increase ofTNFa release to the TCCC exposed to 0.5 mM aqueous sodium
+chloride. As for siRNA-loaded hNPs, we can see at all concentrations tested a higher production of TNF-a in comparison
+to negative control, although values were not significantly
+different from the mannitol control.
+
+179
+
+In vitro silencing effect of siRNA-loaded hNPs
+
+siRNA-loaded hNPs. We found that siRNA pool slowly released from hNPs resulted in efficient knockdown of both
+aENaC and bENaC subunit proteins up to 72 hours (Fig. 8).
+Western blots confirmed that protein expression was significantly reduced by more than 60% and 40% for aENaC and
+bENaC, respectively, bysiRNA-DPPC/PLGA hNPscompared
+to control (untreated cells). Of note, the addition of PEI inside
+the formulation increased the silencing efficiency of siRNAloaded hNPs by a further significant 10% compared to siRNADPPC/PLGA hNPs. The same amount of blank DPPC/PLGA
+and PEI/DPPC/PLGA hNPs did not affect the levels of ENaC
+subunits (data not shown).
+
+Once proven that the developed hNPs are able to overcome
+the lung barriers and reach the target cells, we further evaluated the effect of siRNA-loaded hNPs on gene silencing
+efficiency in a human lung epithelial cell line, that is A549
+cells. Preliminary cytotoxicity studies showed that both
+DPPC/PLGA and PEI/DPPC/PLGA hNPs exhibited a safe
+profile toward A549 cells in a wide range of concentrations
+(from 0.2 to 2 mg/mL) up to 72 hours of incubation (Supplementary Fig. S6). Nevertheless, to determine the amount of
+siRNA-loaded hNPs necessary to obtain an efficient gene depletion, dose-response studies were further performed by
+transiently transfecting A549 cells with increasing concentrations of siRNA pool by using lipofectamine. Results showed a
+specific and dose-dependent silencing of both aENaC and
+bENaC subunits (Supplementary Fig. S7). In particular, while
+nontargeting siRNA pool at 20 nM did not exert any effect on
+the levels of aENaC and bENaC subunits (data not shown),
+siRNA pool against ENaC resulted in robust protein knockdown at 24 hours (about 50% and 60% of gene depletion for
+aENaC and bENaC, respectively). This siRNA concentration
+was thus selected for in vitro gene silencing studies with
+
+able to easily penetrate across the airway mucus layer.
+
+Downloaded by University of Maryland from www.liebertpub.com at 10/22/25. For personal use only.
+
+Furthermore, the adopted formulation conditions allowed the
+production of hNPs with a hydrodynamic diameter of 150 nm,
+which are expected to easily diffuse through the gel-like
+structure of the mucus. Finally, aqueous hNPs were
+transformed into a solid long-term stable lyophilized powder,
+which can be reconstituted in saline and, likely, employed to
+co-administer a mucus rehydrating agent, that is mannitol.
+
+If DPPC, which is the principal component of the lung
+lining fluids, is expected to tune hNP interactions with the
+lung environment, the addition of PEI can play a crucial role
+for siRNA entrapment inside DPPC/PLGA hNPs. This hypothesis was confirmed by encapsulation studies performed
+on two siRNA sequences, for a and b ENaC subunits, which
+have been shown to produce a long-term reduction of transepithelial Na+ currents and fluid absorption. In particular,
+the combination of the two siRNA can expand the lung fluid
+volume in vitro. Of note, siRNA was entrapped inside
+selected hNPs with high efficiency, particularly when PEI
+was coencapsulated. This effect could be likely ascribed to
+the formation of a complex between PEI, employed at the
+theoretical N/P ratio of 10, and siRNA.
+Information about the presence of PEI/siRNA complexes
+inside hNPs could not be derived from SAXS spectra, due to
+the very low amounts of both components. Nevertheless,
+SAXS analysis clearly demonstrated that the role of PEI in the
+formulation is not to affect the overall particle morphology,
+except for a very slight decrease of the average size. On the
+other hand, the phospholipid component is possibly coating the
+PLGA particles, as suggested by TEM analysis. Furthermore,
+
+Representative Western blotting of protein extracts
+from A549 cells treated or not with siRNA- DPPC/PLGA or
+siRNA-PEI/DPPC/PLGA for 72 hours. aENaC and bENaC
+proteins were detected by using the indicated antibodies. Antiactin was used as the loading control (A). The quantification
+of signals is shown (B). The signal of untreated cells (NT) was
+set as 1.
+
+180
+
+independent of the presence of PEI inside the formulation,
+hNPs were stable inside artificial CF mucus at least for
+12 hours, confirming, along with in vitro aerosol performance
+studies, the potential of the system for direct aerosolization on
+the mucus-lined human airway epithelial barrier.
+In fact, to attain maximum siRNA availability at lung
+epithelial cells, where its target is located, the hNPs should
+(i) uniformly deposit on the airway epithelium in their stable
+form; (ii) penetrate inside the lung epithelial barrier; and
+(iii) interact with the lung epithelium, without compromising cell availability. To draw key information on all these
+points and to establish a priori target formulation parameters
+for siRNA delivery to human airway epithelium, the behavior of the developed DPPC/PLGA hNPs after deposition
+on triple cell co-cultures, which realistically mimic human
+airway epithelium environment, was investigated.
+When grown on porous supports at ALI, human bronchial
+epithelial cells reproduce in vivo morphology and key physiologic processes, sometimes including tight junctions and
+basal and mucus cells. Furthermore, direct deposition of
+the aerosolized drug to the apical compartment of the cell
+culture can be envisaged through systems especially designed
+for dose-controlled and spatially uniform deposition of liquid
+aerosols on cells, such as the Vitrocell Cloud employed
+
+conditions allowed to tune hNP properties, so as to achieve
+uniform and efficient aerosolization on lung epithelial cells in
+their integer form. Afterward, hNPs were demonstrated to
+penetrate inside extracellular lung lining fluids, to be taken up
+by lung epithelial cells without exerting a cytotoxic effect
+or a proinflammatory response on the treated lung epithelium model.
+Once siRNA molecules overcome the aforementioned lung
+epithelial barriers and reach the target cells, they still need to
+overcome a series of intracellular barriers to exert their activity. Following cell entry, siRNA molecules must escape
+early from endosomes to avoid exposure to the noxious acidic
+environment as well as late-stage attack by the hydrolases in
+the endolysosome. Noteworthy, in vitro ENaC silencing
+studies ruled out any degradation process, while proving the
+ability of the siRNA released from hNPs to reach the cytoplasm and, after binding to its target mRNA, to silence the
+gene of interest. As a consequence, robust and long-lasting
+knockdown of both aENaC and bENaC proteins could be
+achieved.
+
+cytotoxic or acute proinflammatory effect toward any of the
+cell components of the co-culture model. Finally, in vitro gene
+silencing studies highlighted that released siRNAs are capable
+to reduce ENaC protein expression in human lung epithelial
+
+PLGA hNPs as carriers for siRNA delivery on the human epithelial airway barrier, prompting toward investigation of their
+therapeutic effectiveness in severe lung diseases.
+
+## Discussion
+The importance of lung barriers in determining the therapeutic efficacy of inhaled drugs in severe lung diseases, such as
+CF, is nowadays acknowledged. A current paradigm suggests that only NPs with appropriate size and surface properties
+may overcome the complex mucus airway barrier and assist
+drug interactions with human airway epithelial cells. This
+aspect is particularly crucial for siRNA-based therapeutics, the
+clinical application of which is further hindered by the short
+half-life in vivo and the low capability to penetrate cell membranes. To overcome these issues, we have designed and developed novel DPPC/PLGA hNPs, containing or not PEI as
+third component, suitable for pulmonary delivery of siRNA.
+In line with literature data, a DPPC layer is likely present
+on the surface of PLGA particles giving rise to a core-shell
+structure, which is independent of the presence of PEI. As
+demonstrated by hNP/mucus interaction studies, this structure

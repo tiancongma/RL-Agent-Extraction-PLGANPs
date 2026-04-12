@@ -1,0 +1,1698 @@
+International Journal of Biological Macromolecules 267 (2024) 131491
+Available online 9 April 2024
+0141-8130/© 2024 Elsevier B.V. All rights reserved.
+Mucoadhesive chitosan-poly (lactic-co-glycolic acid) nanoparticles for
+intranasal delivery of quetiapine – Development & characterization in
+physiologically relevant 3D tissue models
+Dnyandev G. Gadhave a, Mural Quadros a, Akanksha R. Ugale a, Mimansa Goyal a,
+Seyoum Ayehunie b, Vivek Gupta a,*
+a Department of Pharmaceutical Sciences, College of Pharmacy and Health Sciences, St. John's University, 8000 Utopia Parkway, Queens, NY 11439, USA
+b MatTek Corporation, 200 Homer Ave, Ashland, MA 01721, USA
+A R T I C L E  I N F O
+Keywords:
+Chitosan/PLGA nanoparticles
+Intranasal delivery
+Quetiapine
+RPMI-2650
+Monolayer
+Schizophrenia
+EpiNasal™
+A B S T R A C T
+Quetiapine hemifumarate (QF) delivery to the CNS via conventional formulations is challenging due to poor
+solubility and lower oral bioavailability (9 %). Similarly, many other second-generation antipsychotics, such as
+olanzapine, clozapine, and paliperidone, have also shown low oral bioavailability of <50 %. Hence, the present
+work was intended to formulate QF-loaded biodegradable PLGA-NPs with appropriate surface charge modifi­
+cation through poloxamer-chitosan and investigate its targeting potential on RPMI-2650 cell lines to overcome
+the limitations of conventional therapies. QF-loaded poloxamer-chitosan-PLGA in-situ gel (QF-PLGA-ISG) was
+designed using emulsification and solvent evaporation techniques. Developed QF-PLGA-ISG were subjected to
+evaluation for particle size, PDI, zeta potential, ex-vivo mucoadhesion, entrapment efficiency (%EE), and drug
+loading, which revealed 162.2 nm, 0.124, +20.5 mV, 52.4 g, 77.5 %, and 9.7 %, respectively. Additionally, QF-
+PLGA formulation showed >90 % release within 12 h compared to 80 % of QF-suspension, demonstrating that
+the surfactant with chitosan-poloxamer polymers could sustainably release medicine across the membrane. Ex-
+vivo hemolysis study proved that developed PLGA nanoparticles did not cause any hemolysis compared to
+negative control. Further, in-vitro cellular uptake and transepithelial permeation were assessed using the RPMI-
+2650 nasal epithelial cell line. QF-PLGA-ISG not only improved intracellular uptake but also demonstrated a
+1.5–2-fold increase in QF transport across RPMI-2650 epithelial monolayer. Further studies in the EpiNasal™ 3D
+nasal tissue model confirmed the safety and efficacy of the developed QF-PLGA-ISG formulation with up to a 4-
+fold increase in transport compared to plain QF after 4 h. Additionally, histological reports demonstrated the
+safety of optimized formulation. Finally, favorable outcomes of IN QF-PLGA-ISG formulation could provide a
+novel platform for safe and effective delivery of QF in schizophrenic patients.
+1. Introduction
+Schizophrenia is a complex mental condition that severely affects the
+patient's lifestyle, thinking, feelings, and mental abilities, leading to
+marked mood swings and suicidal tendencies [1,2]. With a higher rate of
+premature death than the general population, unfortunately, the mor­
+tality rate of the young (9–12 years) schizophrenic patient population
+was found to be higher than that of the general population [3,4].
+Currently, available treatments for schizophrenia suffer from several
+limitations, including limited delivery to the brain due to the hurdle of
+rigid blood-brain barrier (BBB) [5–7]. Hence, higher doses (150–750
+mg/day) and frequent dosing (2–3 times a day) of antipsychotics are
+needed to achieve therapeutic concentration in the targeted site, leading
+to drug-related toxicities [8].
+Quetiapine hemifumarate (QF) is FDA-approved second-generation
+atypical antipsychotic, which is highly effective against bipolar disor­
+ders such as schizophrenia [9,10]. However, oral chronic QF adminis­
+tration has been associated with serious hematologic toxicities such as
+leukopenia and thrombocytopenia, which could occur due to metabolic
+conversion into highly reactive quinone-imine free radical species
+[11–14]. Oral bioavailability of QF is limited (approximately 9 %), when
+formulated in conventional immediate-release and extended-release
+* Corresponding author at: College of Pharmacy and Health Sciences, St. John's University, 8000 Utopia Parkway, Queens, NY 11439, USA.
+E-mail address: guptav@stjohns.edu (V. Gupta).
+Contents lists available at ScienceDirect
+International Journal of Biological Macromolecules
+journal homepage: www.elsevier.com/locate/ijbiomac
+https://doi.org/10.1016/j.ijbiomac.2024.131491
+Received 21 October 2023; Received in revised form 23 March 2024; Accepted 7 April 2024
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+2
+tablets [10]. Therefore, higher doses and dosing frequency are needed to
+maintain the drug concentration within the therapeutic window. In
+addition, oral QF is absorbed from the GI epithelium directly into the
+blood, potentially causing unwanted hematological toxicities [9]. With
+available formulations, QF delivery to the brain is always tricky due to
+the dense network of endothelial cells in the central nervous system
+(CNS), which acts as a biological barrier and limits the delivery of
+therapeutics to the brain [15,16]. Alternatively, parenteral delivery may
+overcome the bioavailability barrier by controlling extensive first-pass
+metabolism [17,18]. However, parenteral therapy seems to fail in
+achieving effective QF concentrations at the CNS due to the tight junc­
+tion of BBB [19].
+Due to above mentioned challenges, design, and development of
+appropriate drug delivery strategies for the site-specific, safe, and
+effective delivery of antipsychotic medications including QF has been of
+paramount importance. Currently, nose-to-brain delivery approaches
+have attracted the attention of researchers in CNS therapies, which
+provide the potential transport of therapeutics directly from the nose to
+brain, bypassing the BBB [3,20,21]. The drug can traverse from the nose
+to CNS via various pathways, i.e., the trigeminal nerve pathway,
+lymphatic pathway, and majorly the olfactory pathway [16]. Intranasal
+(IN) delivery has been established as a proven approach for effectively
+delivering antipsychotics to the brain from exposed nerve endings [22].
+Additionally, this strategy offers non-invasive administration and direct
+brain distribution by avoiding first-pass metabolism and enzymatic
+degradation [23]. It also aids in lowering the dose and dosing frequency,
+thus improving patient comfort and acceptability. Despite these ad­
+vantages, IN administration has numerous limitations, such as muco­
+ciliary clearance, responsible for rapid clearance of applied formulations
+through the nasal cavity [24]. These nasal reflex mechanisms reduce the
+duration of nasal localization of applied nanoformulations, leading to
+diminished drug absorption via the nasal cavity [25]. Thereby, the in­
+clusion of recognized gelling/mucoadhesive agents such as chitosan,
+poloxamer, and gellan gum in IN formulations can increase the locali­
+zation time of the drug at the site of application, and help to improve the
+penetration in the brain [5].
+According to several published reports, nanotechnology-based for­
+mulations have proven their superiority in delivering therapeutics to the
+brain over conventional formulations [6,26]. Several researchers re­
+ported that poly (lactic-co-glycolic acid) nanoparticles (PLGA-NPs) are
+highly suitable for drug delivery in neurological disorders because their
+promising features such as nanometric size (100–250 nm), acceptable
+biodegradability, excellent biocompatibility, controlled release ability,
+promising drug entrapment and loading properties [26–28]. Addition­
+ally, PLGA-NPs are an excellent carrier/vector for DNA, proteins, ther­
+apeutic agents, RNA, and vitamins. Chitosan (CH) is a natural
+polysaccharide, globally employed for biomedical applications due to its
+acceptable biocompatibility, promising safety, significant biological
+activity, and limited immunogenicity [20,27,29]. CH possesses special
+features of forming a gel in a physiological environment in the presence
+of mucin, which is mainly located in the nasal secretions. CH produces a
+protein-polysaccharide complex (electrostatic interaction) with mucin
+at pH 2.5 and 6.4, which is deemed responsible for mucoadhesion [30].
+Further, poloxamer 407 (P407) was incorporated to prepare thermo­
+sensitive in-situ gels to boost the consistency and cohesiveness of the
+formulation [3,25]. Many researchers have utilized a combination of
+ionic and thermo-sensitive gelling systems for the nose-to-brain delivery
+of medicines, which are liquid at ambient temperature, and convert to
+gel at nasal cavity temperature (34 ◦C) [1,25].
+The present work aimed to prepare QF-loaded biodegradable PLGA-
+NPs with appropriate surface charge modification through poloxamer-
+chitosan and investigate its brain-targeting and nasal epithelium trans­
+port potential in RPMI-2650 cells to overcome the limitations associated
+with conventional QF therapies. During the experiment, QF-loaded
+P407-CH-PLGA in-situ gel (QF-PLGA-ISG) was prepared by emulsifica­
+tion and solvent evaporation method. Moreover, the characterization of
+the QF-PLGA-NPs and QF-PLGA-ISG for particle size, polydispersity
+index, ex-vivo mucoadhesion, surface charge, ex-vivo hematological
+toxicities, accelerated stability, in-vitro release, in-vitro cytotoxicity,
+cellular uptake, and permeation studies were performed in RPMI-2650
+cell lines to demonstrate the safety and targeting potential of the
+developed nanoparticles.
+2. Materials and methods
+2.1. Materials & cell culture
+Quetiapine hemifumarate (QF) was procured from Cayman Chemical
+Company (Michigan, USA). Resomer® RG 502H (Poly(D, L-lactide-co-
+glycolide 50:50)) was purchased from Evonik (Piscataway, NJ, USA).
+Polyvinyl alcohol (PVA) was received from Sigma-Aldrich (St. Louis,
+MO, USA). Dichloromethane (DCM), dimethyl sulfoxide (DMSO), HPLC
+grade acetonitrile (ACN), 3-(4,5-dimethylthiazol-2-yl)-2,5-diphenylte­
+trazolium bromide (MTT), and coumarin-6 (C6) were procured from
+Fisher Scientific (Hampton, NH, USA). Glycol-chitosan was procured
+from MedChemExpress (Monmouth Junction, NJ, USA). Kolliphor(R)
+407 was received as a gift sample from BASF Corporation (NY, USA).
+Human nasal epithelial cell line (RPMI-2650) was obtained from
+ATCC (Manassas, VA, USA) and preserved in EMEM medium (Corning)
+supplemented with 10 % FBS (Atlanta Biologicals), and 1 % penicillin-
+streptomycin. MatTek EpiNasal™ tissues was procured as a gift sam­
+ple from MatTek Life Sciences (Ashland, MA, USA) and cultured in NAS-
+100-MM EpiNasal™ culture medium. All cell lines and MatTek tissues
+were incubated at 37 ◦C/5 % CO2 and 90–100 % relative humidity.
+2.2. Analytical method development for QF by RP-UPLC
+A reverse-phase liquid chromatography technique was developed for
+quantifying QF using Waters Acquity UPLC (Milford, MA, USA). The
+column used was XBridge® BEH Shield RP18 2.5 μm (3.0 × 100 mm).
+The mobile phase combined an organic phase of ACN and an aqueous
+phase of 0.1 % orthophosphoric acid (OPA) in a ratio of 75:25 with a
+flow rate of 0.3 mL/min. The wavelength used for detection was 294 nm.
+The data was processed using Empower 3.0 software (Waters, MA, USA).
+2.3. Formulation of QF-loaded PLGA nanoparticles (QF-PLGA-NPs)
+QF-loaded PLGA nanoparticles were prepared using emulsification
+and solvent evaporation techniques [31]. Briefly, 20 mg QF with 60 mg
+of PLGA was dissolved in 3 mL of organic solvent (dichloromethane) to
+form an organic phase, while the aqueous phase (10 mL) was composed
+of 1 % of polyvinyl alcohol (PVA) in deionized water. Further, QF
+containing organic phase was added dropwise to the aqueous phase
+following 4 min probe sonication with 40 % amplitude (10 s on/off
+cycle; Qsonica Q500, Newtown, CT, USA) to develop an O/W emulsion.
+This O/W emulsion was then left to evaporate overnight under moderate
+magnetic stirring. Simultaneously, QF-PLGA-NPs were separated from
+the remaining aqueous phase by centrifugation (15,000 ×g for 30 min),
+and the pellet of PLGA-NPs was then washed three times with deionized
+water. Finally, the developed QF-PLGA-NPs were resuspended in 1 mL of
+water and stored for further characterization [32].
+2.4. Formulation of CH-P407-PLGA in-situ gel (ISG)
+A QF-loaded in-situ gel formulation was developed using the appro­
+priate and safe concentrations of mucoadhesive and in-situ gelling
+agents. Chitosan (CH) and poloxamer-407 (P407)-coated PLGA-NPs
+(QF-PLGA-ISG) were designed upon the addition of 2 % w/v CH and
+18 % w/v P407 (equivalent to total formulation volume, screened
+through temperature-controlled magnetic stirrer) in previously devel­
+oped QF-PLGA-NP suspension with continuous stirring at 300 rpm for
+25 min. The CH-P407 produced a coat on the QF-PLGA-NPs. In the
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+3
+current formulation, CH acted as a mucoadhesive, and P407 acted as an
+in-situ gelling agent. Further, the fabricated QF-PLGA-ISG was utilized
+for different studies, including globule size, viscosity, zeta potential,
+mucoadhesive strength, in-vitro release, ex-vivo hemolysis, in-vitro
+cytotoxicity, cellular uptake, and permeation studies.
+2.5. Screening of gelation properties and concentration of polymers
+Gelation properties of polymers at different concentrations and
+temperatures were performed using a temperature-controlled magnetic
+stirrer. In this context, the formulation's sol-gel transition temperature
+was examined and noted. Briefly, 2 mL of QF-PLGA-ISG formulations
+containing vials were placed on a heat-controlled magnetic stirrer. The
+mixture was stirred at 400 rpm with a continuous increment of 1 ◦C/min
+at a temperature. The temperature at which the stirring stopped due to
+sol-gel conversion was measured and noted [1,33,34].
+2.6. DSC analysis
+Compatibility of QF with the selected polymers (PLGA, PVA, CH, and
+P407) was tested utilizing DSC 6000 (PerkinElmer, Inc.; Shelton, CT,
+USA). Samples were analyzed at the range of 50 ◦C to 250 ◦C and the
+heating rate was fixed at 10 ◦C/min, employing an empty pan as a
+reference under the nitrogen purge at flow rate of 50 mL/min [16,35].
+2.7. Physicochemical characterization for developed PLGA formulations
+2.7.1. Particle size, polydispersity index (PDI), and surface charge
+(ζ-potential)
+Particle size distribution of PLGA-NPs and PLGA-ISG were screened
+through the DLS technique utilizing Zetasizer nano ZS (Malvern In­
+strument, UK). Additionally, PDI was used to study the uniformity of
+particle size. Simultaneously, the surface charge of nanoparticle was
+screened by measuring the ζ-potential of the nanosystem using Zetasizer
+nano ZS (Malvern Instrument, UK) [36,37].
+2.7.2. Analysis of entrapment efficiency and drug loading
+Entrapment efficiency (%EE) and QF-loading (%DL) for developed
+nanoparticles were screened by measuring the quantity of free QF in a
+supernatant. Exactly, 1 mL of QF-PLGA-NPs and QF-PLGA-ISG formu­
+lations containing 2 mg/mL of QF (theoretical amount) were centrifuged
+at 15,000 rpm for 30 min. Then the supernatant was mixed with 10 mL
+acetonitrile. Dilutions were prepared with a 1:1 ratio of water: aceto­
+nitrile (mobile phase) and followed by QF quantification in the super­
+natants at 294 nm using the ultra-pressure liquid chromatography
+(UPLC) method. Eqs. (1) and (2) were utilized to calculate the %EE and
+%DL of the nanoparticles, respectively [38].
+%EE = Weight of added drug −Weight of free drug
+Weight of entrapped drug
+× 100
+(1)
+%DL = Weight of entrapped drug −Weight of free drug
+Total weight of PLGA polymer and drug
+× 100
+(2)
+2.7.3. Rheological behavior of developed formulations
+Rheological behavior of the QF-PLGA-NPs and QF-PLGA-ISG was
+assessed through a Brookfield viscometer (Brookfield Engineering
+Laboratories Inc., Middleboro, MA, USA), using spindle number-21.
+Briefly, 10 mL of sample was analyzed at the temperature of 25 ◦C
+and 34 ◦C. Briefly, the test speed was gradually raised from 5 to 100 rpm,
+and measurements were carried out in triplicates [3,39].
+2.7.4. Bio-adhesion potential of developed PLGA-ISG
+Consistency and cohesiveness of the developed PLGA-NPs and PLGA-
+ISG were evaluated using a TA.XT Plus texture analyzer (Texture
+Technologies Corp., Hamilton, MA, USA). In due course of experiment,
+the formulation was sprayed on freshly collected nasal mucosa (ob­
+tained from the animal house), and then a cylindrical probe was dipped
+in the formulation for 10 s. Measurements were accomplished at a ve­
+locity of 1 mm/s with a trigger force of 3 g. Simultaneously, the force
+needed to break the adhesion between nasal mucosa and gel was
+determined and reported [17,40,41].
+2.7.5. In-vitro QF release
+In-vitro QF release assessments were conducted utilizing the dialysis
+method, as reported previously [22,36]. Briefly, dialysis cassettes
+(0.1–0.5 mL, 2000 MWCO, Thermo Scientific, Waltham, MA, USA) were
+allowed to equilibrate in a previously prepared simulated nasal elec­
+trolyte solution (SNES: pH 6.4) for 10 min [42]. Then, the formulations
+were filtered through a syringe filter (0.22 μm), and 500 μL of each
+formulation was loaded into the cassette membrane. Then hydrated
+cassettes were immersed into a beaker containing 100 mL of SNES (pH
+6.4; 34 ± 0.5 ◦C) using a floater while stirring at 200 rpm. 1 mL of
+sample was withdrawn at predefined time points, i.e., 0.5, 1, 2, 4, 8, 12,
+and 24 h, and replenished with fresh SNES. Collected samples were then
+diluted with mobile phase and analyzed through the validated UPLC
+method, as described in Section 2.2 [43].
+2.7.6. Ex-vivo hemolysis study
+According to previously published reports [11,12], QF administra­
+tion may induce hemolytic anemia in individuals. Therefore, it was
+necessary to confirm that hemolysis does not occur after IN adminis­
+tration. Hemolytic index <1 % is crucial to maintain RBC viability in the
+blood. The QF-induced hemolytic potential was analyzed using various
+formulations such as control (distilled water), negative control (0.01 %
+sodium lauryl sulfate), QF-PLGA-NPs (10, 50, and 100 μg/mL), and QF-
+PLGA-ISG (10, 50, and 100 μg/mL). Briefly, 4 mL of blood samples were
+collected through a 23-gauge needle from the lateral saphenous vein of
+the male Sprague Dawley rats (weighed 150 to 200 g); and centrifuged at
+3000 rpm for 15 min to separate the cell pellet; which was then washed
+thrice with saline water. Later, cells were incubated with different
+concentrations (10, 50, and 100 μg/mL) of formulations and other
+control treatments at 37 ◦C. Finally, 200 μL samples were collected from
+treated cells at different time points (0.5, 4, and 10 h), followed by
+centrifugation for 15 min at 13,000 ×g. Eventually, absorbance for
+obtained samples was measured at 570 nm using a Spark 10 M Plate
+Reader (Tecan, M¨annedorf, Switzerland). Eq. (3) was used to calculate
+the percentage of hemolysis [44–46].
+2.7.7. Stability evaluation
+Shelf-life or stability evaluation of fabricated QF-PLGA-NPs and QF-
+PLGA-ISG formulations was conducted according to ICH guidelines
+(Q1aR2). Formulations were kept in the stability chamber (VWR™
+Hemolysis Ratio (%) =
+Absorbance of sample −Absorbance of control
+Absorbance of negative control −Absorbance of control × 100
+(3)
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+4
+stability chamber, USA) for three months under prescribed accelerated
+stability conditions (40 ◦C and 75 % RH). In this context, the samples
+were examined for three months of crucial physicochemical parameters
+such as particle size, PDI, clarity, ζ-potential, and QF content [40].
+2.8. Cell culture experiments
+For this assay, RPMI-2650, a human nasal epithelial cell line (ATCC,
+Manassas, VA, USA) was grown using EMEM cell growth media
+augmented with 1 % antibiotics (penicillin-streptomycin) and 10 %
+Fetal Bovine Serum (FBS). Subsequently, cells were allowed to grow in
+T75 cell culture flasks (VWR, Radnor, Pennsylvania, USA) at 37 ◦C/5 %
+CO2 until 85–90 % confluency was achieved. Confluent cells were then
+trypsinized and utilized for in-vitro cell experiments such as cell
+viability, cellular uptake, and cell permeability studies [38,47,48].
+2.8.1. In-vitro cell viability study
+This study evaluated the safety of pure QF, blank-PLGA-ISG, and QF-
+PLGA-ISG formulations on RPMI-2650 cell lines. Cell viability experi­
+ments were conducted utilizing MTT assay. Briefly, 2500 cells/well were
+seeded in TC-treated 96-well plates (VWR, Radnor, Pennsylvania, USA),
+followed by overnight incubation at specified conditions for adherence.
+The following day, cells were treated with varying concentrations of
+pure
+QF,
+Blank-PLGA-ISG,
+and
+QF-PLGA-ISG
+(equivalent
+to
+0.78125–1000 μM of QF), and media was utilized as a control. After 24
+h, the cell viability was determined by MTT assay following established
+protocols [49,50]. The % viability of RPMI-2650 cells was calculated by
+the following Eq. (4) [37].
+Cell viability (%) = Mean absorbance of treatment
+Mean absorbance of control × 100
+(4)
+2.8.2. Cellular uptake by fluorescence microscopy
+An established method was used to ascertain the impact of NP
+loading and targeting on the intracellular absorption of the encapsulated
+medication. Coumarin-6 (C6), 1 mg/mL, a fluorescent dye was incor­
+porated in the formulation of NPs for cellular uptake. Briefly, RPMI-
+2650 cells were seeded at a density of 1 × 104 cells/well in tissue
+culture-treated cell imaging eight-chambered cover glass, followed by
+overnight incubation. The next day, cells were treated with C6-loaded
+PLGA and PLGA-ISG at 1 μg/mL concentration for 1 to 3 h. After incu­
+bation, cells were fixed with 4 % PFA for 10 min after each interval and
+rewashed twice with ice-cold PBS. Chambers were removed, and 20 μL
+of DAPI nuclear stain was applied dropwise to a glass slide before being
+covered with a cover glass. Covered glass slide kept overnight in fridge
+for proper staining [31]. Finally, stained slides were imaged using a
+fluorescence microscope (EVOS FL, Thermo Scientific, Fair Lawn, NJ,
+USA) [47].
+2.8.3. Quantitative cellular uptake of C6 PLGA-ISG formulation
+To investigate the difference in cellular uptake of C6-loaded PLGA
+and PLGA-ISG, we used Nexcelom Cellometer Vision (Nexcelom, Law­
+rence, MA, USA). The experiment was conducted after incubating C6-
+loaded PLGA-ISG (C6 equivalent to 1 μg/mL) with the RPMI-2650
+cells (5 × 106 cells/sterile petri dish) for 3 h. The incubated cells were
+trypsinized and rewashed with ice-cold PBS and followed by centrifu­
+gation. Cell pellets were then distributed in 50 μL of PBS and samples
+were examined for C6 signals utilizing a Cellometer Vision. The mean
+fluorescence intensity (MFI) of C6-loaded PLGA-ISG was compared with
+C6 solution, and control RPMI-2650 cells [51,52].
+2.8.4. Permeation across RPMI 2650 nasal epithelial cell monolayers
+In the permeation experiment, RPMI-2650 cells were seeded on
+polyester Transwell™ inserts (12-well plates, area 0.33 cm2, 0.4 μm pore
+size). Briefly, 100 μL of cell suspension was seeded at 8.5 × 104 cells/
+Transwell™ polyester inserts to create the air-liquid interface model,
+and 600 μL of media was added in the basolateral chambers to ensure
+monolayer growth. Finally, plates were incubated for 24 h at 37 ◦C, 95 %
+air humidity, and 5 % CO2 [53,54].
+2.8.5. Transepithelial electrical resistance (TEER)
+TEER measurement was utilized to assess the integrity of the cell
+layer. This approach measures the ionic resistance across the cell layer
+throughout distinct development and differentiation stages. Using an
+EVOM® resistance meter and Endohm® chamber (World Precision In­
+struments, Sarasota, FL, USA), the TEER of RPMI-2650 cell layers was
+taken on every 2 to 3 days during culture to confirm the establishment of
+the cellular monolayer. The measurement approach comprises
+measuring the blank resistance (RBlank) of the membrane alone (without
+cells) and the resistance across the cell layer on the insert membrane
+(RTotal), as the pore size and density of the insert membranes influences
+the TEER. Final cell membrane resistance was calculated by the
+following equations (Eqs. (5) and (6)) [53].
+RCells(Ω) = RTotal −RBlank
+(5)
+TEERCells = RCells(Ω) × MArea(cm2)
+(6)
+2.8.6. QF permeation across RPMI-2650 cell monolayers
+After 16 days with an appropriate TEER plateau values (80–85 Ω.
+cm2), RPMI-2650 cells monolayer was used for the permeation study.
+The PLGA formulations containing QF were used to treat cells. The
+EMEM medium in the Transwell™ basal chamber (acceptor) was with­
+drawn from each well prior to the treatment and replaced with fresh
+media. The apical chamber (donor) of Transwell™ inserts was filled
+with 100 μL of 25 μM and 50 μM of QF solution; and QF-PLGA-ISG
+(formulations were diluted with 1× PBS, pH 7.4) and were subse­
+quently incubated at 37 ◦C/5 % CO2 and 95 % air humidity. After
+completion of treatment, 100 μL sample was withdrawn once/h for 3 h
+from the acceptor chamber and replenished with the same volume of
+fresh media. All permitted samples were analyzed through UV spectro­
+photometer for QF content in triplicate [48]. The apparent permeation
+coefficient (Papp) and steady-state flux (Jss) were calculated using the
+equations (Eqs. (7) and (8)).
+Papp =
+(dQ
+dt
+)
+×
+( 1
+AC
+)
+(7)
+Jss = Papp × C
+(8)
+where dQ/dt is a change in concentration/change in a time at steady
+state, A is the membrane surface area, and C is the initial QF concen­
+tration in the apical chamber.
+2.9. Permeation of QF using EpiNasal™ 3D in-vitro nasal tissue
+EpiNasal™ 3D in-vitro nasal tissue model (NAS-100-BETA, MatTek
+Corporation, Ashland, MA) was used to assess intranasal permeability of
+QF following nanoparticle encapsulation, following manufacturer's
+protocol. Briefly, the EpiNasal™ tissues were stabilized using supplied
+media (NAS-100-MM) in a humidified 37 ◦C, 5 % CO2 incubator. Before
+the experiment, the integrity of EpiNasal™ tissues were screened
+through TEER measurement (TEER analysis conducted following 2.8.5).
+For the permeation study, the NAS-100-MM medium was replaced with
+5 mL of prewarmed 1× PBS (to overcome protein interference). Cell
+culture inserts were filled with 50 μL of 1 mg/mL and 2.5 mg/mL of QF
+solution (control) and QF-PLGA-ISG (formulations were diluted with
+sterile 1× PBS, pH 7.4) and were incubated at 37 ◦C/5 % CO2 and 90 ±
+10 % RH. After completion of treatment, 100 μL sample was collected on
+4 h and 8 h from the bottom wells. All samples were screened for QF
+permeation via validated UPLC method in triplicate. Similarly, Eqs. (7)
+and (8) were utilized to calculate Papp and Jss.
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+5
+2.9.1. Histopathology on MatTek EpiNasal™ tissues after 8 h of treatment
+After 8 h treatments, EpiNasal™ tissues were prepared for histo­
+pathological screening. Initially, the tissues were cleaned with ethanol.
+The viability of EpiNasal™ tissues is essential throughout the investi­
+gation. Thus, the treated tissues were submerged in a 10 % formalin
+solution, significantly improving their viability. Subsequently, all tissues
+were stained through hematoxylin and eosin. Later, the stained tissues
+were placed to dry overnight and then observed under an inverted mi­
+croscope at 40× magnification equipped with a color camera (Laxco,
+Mill Creek, WA, USA). Finally, the respective tissues were examined for
+damage and disruption. Structural transformations under QF formula­
+tion treated sections were investigated by comparing them against
+control tissues.
+2.10. Data representation & statistical analysis
+GraphPad Prism 9.5.1 software (Boston, MA, USA) was utilized to
+carry out statistical analyses. Each experiment was performed at least
+three times, and data were presented as means with standard deviations
+unless otherwise noted. Cell viability studies were performed in tripli­
+cate with n = 6 for each repetition. The findings were analyzed using the
+student's t-test when comparing unpaired samples from two groups. The
+outcomes from cytotoxicity, uptake, and permeation studies were
+screened through Tukey's post-hoc comparison with ANOVA. The p-
+values (*p ≤0.05 or lower) were considered statistically significant.
+3. Results
+3.1. Formulation and development of QF-PLGA-NPs
+For QF formulation development, the appropriate biocompatible,
+biodegradable, and natural excipients were selected from the GRAS
+(Generally Recognized as Safe) approved list of polymers. As described,
+the choice of components for the final formulation was achieved after
+different trials and stability of formulations. Table 1 represents different
+test formulations, which were performed to investigate the proper
+development of QF-PLGA-NPs. As can be seen, the F5 formulation
+showed appropriate results compared to other test batches and was
+considered an optimized batch. QF-PLGA-NPs (Batch F5) formulation
+was composed of QF (20 mg), PLGA (60 mg), dichloromethane (3 mL),
+PVA (1 % w/v), tween 20 (1 % w/v), and water (10 mL), respectively
+(Table 2). This composition fulfilled the appropriate requirements, such
+as nanometric particle size (154.3 ± 1.2 nm, surface charge (−17.8 ±
+0.6 mV), PDI (0.12 ± 0.01), and %EE (75.8 ± 1.4 %) (Table 1).
+3.2. Preparation of in-situ gel formulation
+Many studies have suggested that numerous factors could affect the
+feasibility of intranasal (IN) route for delivering medications to the brain
+[39]. However, the IN pathway has proven more effective in delivering
+drugs to the brain by incorporating specific excipients (such as gelling
+agents, absorption enhancers, and targeting ligands) [1,55]. The current
+research aims to extend the residency period of the developed nano-
+formulation in the nasal cavity to ascertain transport the incorporated
+medicine to the brain. For the development of mucoadhesive formula­
+tion, various in-situ gelling agents were examined during the experi­
+ment. Various polymers, i.e., CH, HPMC K4M, P407, and Carbopol 974P,
+etc., were tested for their gelling properties. The flowability and gelling
+tendency of different concentrations of CH (1–2%w/v) and P407
+(16–20%w/v) polymers were visually observed by temperature-
+controlled magnetic stirring method at ambient (25 ± 0.5 ◦C) and
+physiological temperatures (34 ± 0.5 ◦C). Formulation batches of 1, 2,
+4, 6, 8, and 9 at 25 ± 0.5 ◦C represented excellent flowability, making
+ease of installation of the formulations at the corresponding tempera­
+ture. Meanwhile, formulation batches 3, 5, and 7 demonstrated low
+flowability at ambient temperature, indicating difficulty in their appli­
+cation (Table S1). However, batches 2 and 7 were discovered to be non-
+flowable at 34 ± 0.5 ◦C due to the sol-to-gel conversion supported by its
+temperature modulation features. Further, batches 1, 4, 6, and 8 look
+flowable at physiological temperatures, and batches 3 and 5 reflect
+extreme hard gelation. Finally, Table S1 revealed the optimized
+formulation batch 7 composed with 2%w/v of mucoadhesive agent (CH)
+and 18%w/v of in-situ gelling agent (P407), was found to be liquid at 25
+± 0.5 ◦C and converted to gel at 30 ± 0.5 ◦C. Thus, this sol-gel trans­
+formation prevents loss or leakage from the administration site and
+improves IN retention time, which effectively helps to overcome nasal
+mucociliary clearance. The mixture of CH (2%w/v) and P407 (18%w/v)
+produced a thermosensitive gel with the appropriate consistency,
+whereas other concentrations made a highly rigid or highly flowable gel
+at a physiological temperature and pH. Furthermore, P407 and CH
+produced a stable gel for IN delivery at nasal temperature (34 ± 0.5 ◦C),
+unlike other polymers that made unstable gels. Hence, 2 % CH and 18 %
+P407 produced a better in-situ mucoadhesive gelling system. The
+detailed formulation compositions are presented in Table 2.
+3.3. Investigation of QF and excipients' compatibility via DSC
+DSC analysis estimated the thermal behavior and interaction
+Table 1
+The formulation layout for trial batches of QF-PLGA-NPs development. The
+development was carried out in triplicates.
+Sr.
+no.
+Formulation factors
+Responses
+Drug
+(mg)
+PLGA
+(mg)
+DCM
+(mL)
+PVA
+(mg)
+Globule
+size (nm)
+PDI
+ζ-Potential
+(mV)
+F1
+10
+20
+1
+40
+504.7 ±
+11
+0.61
+±
+0.03
+−5.31 ±
+0.7
+F2
+20
+40
+2
+70
+282.1 ±
+7.4
+0.52
+±
+0.02
+−7.54 ±
+0.4
+F3
+30
+60
+3
+100
+211.9 ±
+9.8
+0.48
+±
+0.04
+−14.6 ±
+0.3
+F4
+10
+40
+2
+70
+239.8 ±
+6.3
+0.61
+±
+0.03
+−9.82 ±
+0.5
+F5
+20
+60
+3
+100
+154.3 ±
+1.2
+0.12
+±
+0.01
+−17.8 ±
+0.6
+F6
+30
+20
+1
+40
+608.9 ±
+14
+0.63
+±
+0.03
+−8.34 ±
+0.7
+Drug: Quetiapine hemifumarate; PLGA: Poly (lactic-co-glycolic) acid; DCM:
+Dichloromethane (organic phase); PVA: Polyvinyl alcohol (emulsifier).
+Table 2
+Final optimized composition of QF-PLGA-NPs (F5 according to trial batches) and
+QF-PLGA-ISG formulation (QF-PLGA-ISG formulation contained blend of 18 %
+w/v poloxamer 407 + 2 % w/v chitosan in water).
+Category
+Name of
+component
+Optimized QF-
+PLGA-NPs
+composition
+Optimized QF-
+PLGA-ISG
+composition
+Polymer
+PLGA
+60 mg
+60 mg
+Organic solvent
+DCM
+3 mL
+3 mL
+Emulsifier
+PVA
+100 mg
+100 mg
+Aqueous phase (Q.
+S.)
+Water
+10 mL
+10 mL
+Natural
+mucoadhesive
+agent
+Chitosan
+–
+200 mg
+In-situ gelling
+agent
+Poloxamer
+407
+–
+1800 mg
+Each QF-PLGA-NPs formulation contains QF 2 mg/mL, each optimized QF-
+PLGA-ISG formulation contains QF 2 mg/mL.
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+6
+between QF and polymers. Fig. 1A shows DSC thermograms for pure QF,
+QF-PLGA-ISG, QF-PLGA-NPs, and blank physical mixture. Pure QF
+sample reflected a melting endothermic peak at 176.9 ◦C, which dis­
+appeared from QF-PLGA-ISG, QF-PLGA-NPs, and blank excipients
+mixture (Fig. 1A). Thus, the DSC findings depicted the complete
+encapsulation of QF in the PLGA nanoparticles. No interaction between
+the drug and polymer was observed, and the results indicated that the
+developed formulation was stable.
+3.4. Physicochemical characterization of formulations
+3.4.1. Particle size, pdi and ζ-potential
+The dispersed particles in the prepared QF-PLGA-NPs and QF-PLGA-
+ISG system revealed an average particle size of154.3 ± 1.2 nm and
+162.2 ± 1.4 nm (Fig. 1C), respectively. The nanodroplets of the
+developed PLGA should have a higher surface area, thus possessing the
+potential to bypass BBB via the IN route to efficiently deliver the ther­
+apeutics into the CNS. Moreover, the PDI for developed nano­
+formulations was 0.122 ± 0.01 and 0.124 ± 0.02 for QF-PLGA-NPs and
+QF-PLGA-ISG, respectively (Fig. 1C), which conformed mono/uniform
+distribution of NPs. A relatively monodispersed formulation may help in
+improving the stability by reducing the particle's agglomerations. Po­
+tential differences between the statistical double layer of developed
+PLGA-NPs and the aqueous phase were revealed −17.8 ± 0.6 mV and +
+20.5 ± 0.7 mV (Fig. 1C), respectively. Additionally, representative
+graphs for particle size and ζ-potential are shown in Fig. S1A–D. The
+negative surface charge helps to increase the stability of uncoated PLGA
+nanoparticles due to repulsion of like-charged particles and thus, may
+reduce the possibility of particle aggregation [51]. Whereas the PLGA-
+ISG formulation possesses a positive charge, revealed by the coating of
+cationic polymers (CH-P04) on PLGA-NPs. It was hypothesized that the
+ionic interaction between the positive charge of the PLGA-ISG and the
+carboxy group on mucin helps to improve the mucoadhesion of the
+nanoparticles.
+3.4.2. Drug encapsulation efficiency of PLGA nanoformulations
+Drug entrapment efficiency is among the most crucial factors in
+determining the drug holding potential at the selected surfactant and co-
+surfactant concentrations. Fig. 1B represents the Drug entrapment effi­
+ciency of the generated PLGA nanoparticles. QF-PLGA-NPs and QF-
+PLGA-ISG nanoparticles demonstrated drug encapsulation efficiencies
+of 75.8 ± 1.4 % and 77.5 ± 1.6 %, respectively, resulting in a drug
+concentration of 1.5 ± 0.03 mg/mL and 1.6 ± 0.02 mg/mL, which was
+equivalent to 9.5 ± 0.9 % and 9.7 ± 0.6 % QF loading, respectively
+(Fig. 1B). Excellent drug encapsulation of QF in PLGA nanoparticles
+proved its compatibility with selected PLGA and PVA concentrations for
+nanoparticle synthesis, which makes them suitable carriers for QF de­
+livery to the brain.
+3.4.3. Rheological behavior of PLGA nanoparticles
+Rheological behavior is vital in determining the fluidity of formu­
+lations for IN administration. If the formulation is highly viscous at room
+temperature, it will be challenging to administer into the nasal cavity;
+Fig. 1. (A) DSC thermograms for pure QF, blank physical mixture, QF-PLGA-
+NPs and QF-PLGA-ISG, physicochemical characterization of developed nano­
+formulations: (B) particle size, PDI and ζ-potential of QF-PLGA-NPs, and QF-
+PLGA-ISG. (C) Analysis of QF % entrapment efficiency in QF-PLGA-NPs and
+QF-PLGA-ISG. Values are depicted as the mean ± SD (n = 3), *p < 0.05 cor­
+responding to QF-PLGA-NPs formulations.
+Fig. 2. (A) Determination of viscosity, (B) representative image for bio-adhesion strength and (C) ex-vivo bio-adhesive force of QF-PLGA-NPs and QF-PLGA-ISG
+formulations. Values are depicted as the mean ± SD (n = 3), *p < 0.05 corresponding to QF-PLGA-NPS formulation.
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+7
+therefore, the fluidity of the formulation at ambient temperature is
+critical. As can be seen in Fig. 2, the QF-PLGA-NPs formulation exhibited
+lower viscosity (6.5 ± 0.3 cP), which indicated excellent fluidity and
+ease of nasal administration, which may be due to the lack of mucoad­
+hesive and gelling polymers (Fig. 2A). At 25 ◦C, the viscosity for QF-
+PLGA-ISG (10.8 ± 0.6 cP) was revealed to be significantly less (*p <
+0.05) that could be due to ambient temperature. However, following
+exposure to physiological temperature (34 ◦C), the viscosity of QF-
+PLGA-ISG was improved up to 104.1 ± 1.2 cP (Fig. 2A). Findings indi­
+cated that the CH-P407 polymers will improve the viscosity of QF-PLGA-
+ISG following IN administration; and hence will enable the gel to
+overcome the barrier of mucociliary clearance.
+3.4.4. Ex-vivo bio-adhesion potential
+Mucociliary clearance is the primary defense mechanism of the res­
+piratory system, which protects the nasal cavity from external threats/
+infections [56]. As a result, following application, the liquid formula­
+tions are quickly washed out from the nostril. However, inadequate
+residence time is the foremost hurdle for the absorption of therapeutics
+through IN route. As seen in Fig. 2B, The QF-PLGA-NPs formulation
+exhibited a significantly low mucoadhesive strength (2.5 ± 0.1 g). At
+ambient temperature (25 ± 0.5 ◦C), the QF-PLGA-ISG formulation also
+demonstrated a low mucoadhesive force of 5.6 ± 0.4 g, which reflects
+more fluidity and less viscosity. However, at a physiological temperature
+of 34 ± 0.5 ◦C, a high mucoadhesive strength of 52.4 ± 4.7 g was ob­
+tained for QF-PLGA-ISG, which is reflective of in-situ gelling extending
+the local residence time (Fig. 2B). As a result, the gel formulation will
+remain at the absorption site for an extended time. Fig. 2C demonstrates
+a representative histogram of mucoadhesive strength measurements for
+QF-PLGA-ISG. These results show that developed QF-PLGA-ISG might
+help overcome the limitations associated with mucociliary clearance
+and improve the residence and hence transport of the entrapped drug to
+the intended site of action.
+3.4.5. In-vitro QF release
+This study helps to explore the QF release pattern from fabricated
+PLGA nanoformulations. Fig. 3A presents the release pattern from QF-
+PLGA-NP and QF-PLGA-ISG in comparison of QF suspension, in simu­
+lated nasal fluid. As can be seen, both QF-PLGA-NP and QF-PLGA-ISG
+demonstrated complete drug release by 24 h, with the majority of QF
+being released within 8 h; 97.7 ± 1.2 % from QF-PLGA-NPs and 85.7 ±
+5.8 % from QF-PLGA-ISG. In comparison, QF-Suspension only
+demonstrated a drug release of 67.6 ± 3.4 % in 8 h (Fig. 3A), which may
+be attributed to low aqueous solubility of QF. The experimental results
+of this investigation demonstrated that the QF-PLGA-NPs released more
+rapidly than the QF-PLGA-ISG. It could be because the QF-PLGA-ISG
+formulation contained polymers, which results in a sustained release
+profile. The relatively faster release of QF from QF-PLGA-NPs might be
+due to the improved surface area of nanoformulation, which penetrates
+quickly via the dialysis membranes. It was also discovered that the
+droplet size of QF-PLGA-NPs and QF-PLGA-ISG was <165 nm, which
+helps to improve QF's solubility. Additionally, insufficient solubility of
+QF in QF-Suspension may cause partial drug release, where the coarse
+suspension particles slow down the rate of QF release via the dialysis
+cassette's pores. The zero-order model was chosen as the best-fit model
+because it showed the most significant regression coefficient (R2) of
+0.976 and 0.986 for the QF-PLGA-NPs and QF-PLGA-ISG, respectively
+(Fig. 3B). The plotted release kinetic models for QF-PLGA-NPs and QF-
+PLGA-ISG formulations are depicted in Fig. S2. Additionally, zero-
+order kinetics show continuous QF release irrespective of SNES fluid
+concentration until the system is saturated. At this point, it enters a
+linear elimination phase. According to the release study, QF-PLGA-ISG
+exhibited a better sustained-release impact within 24 h than QF-PLGA-
+NPs and QF-Suspension. In contrast, the sustained release of QF from
+the QF-PLGA-ISG is beneficial for extended absorption via IN route
+compared to other formulations.
+3.4.6. Ex-vivo hemolysis study
+This investigation evaluates the amount of hemoglobin released after
+erythrocyte destruction by QF-PLGA formulations. Due to the produc­
+tion of minimal oxyhemoglobin, QF-PLGA-NPs and QF-PLGA-ISG
+nanoparticles in the study demonstrated decreased rates of RBC hemo­
+lysis compared to 0.01 % of SLS and QF-Suspension. Furthermore,
+compared to QF-Suspension and QF-PLGA-NPs, the QF-PLGA-ISG
+nanoparticles had much-reduced hemolysis (<3.5 %) after 10 h of
+treatment at a higher concentration (100 μg/mL). This is due to the
+protective effect of CH-P407 coating the nanoparticles' surface, which
+lowers the oxidative stress caused by QF and exhibits protective effects
+on erythrocytes (Fig. 4A and B). Findings suggested that all QF-loaded
+NPs have considerably less potential to induce hemolysis than 0.01 %
+SLS (negative control) and plain QF-Suspension. As reported previously
+Fig. 3. (A) Cumulative QF release from QF-Suspension, QF-PLGA-NPs and QF-
+PLGA-ISG over 24 h via a dialysis cassette. (B) The regression coefficient of
+kinetic models observed for QF-loaded nanoformulations.
+Fig. 4. (A) Visual examination of the blood samples treated with 10, 50 and
+100 μg/mL of pure QF, QF-PLGA-NPs and QF-PLGA-ISG formulation against
+0.01 % of negative control (SLS) in the microcentrifuge tubes and (B) % he­
+molysis (hemolytic index) caused by pure QF, QF-PLGA-NPs and QF-PLGA-ISG
+at different concentrations (10, 50 and 100 μg/mL) against negative control.
+Data expressed as mean ± SD (n = 3). *p < 0.05, **p < 0.01, ***p < 0.001.
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+8
+[11], this investigation was primarily concerned with hemolytic evi­
+dence of QF, such as leukopenia, neutropenia, thrombocytopenia, and
+hemolytic anemia. Ultimately, the results demonstrated the QF-loaded
+biodegradable PLGA formulation to be biocompatible with blood sam­
+ples, which can diminish the hemolytic potential of QF.
+3.4.7. Stability evaluation
+An accelerated stability assay was conducted as per ICH guidelines
+for up to 3 months, and selected formulations were assessed for particle
+size, PDI, clarity, ζ-potential, and QF content. All the evaluation pa­
+rameters were observed to be within the accepted limits; thus, there was
+no significant variation in the test results and no signs of instability
+(Table 3). Therefore, optimized QF-PLGA-NPs and QF-PLGA-ISG for­
+mulations retained excellent stability.
+3.5. Cell culture experiments
+3.5.1. In-vitro cytotoxicity
+The in-vitro cell viability analysis was conducted to determine the
+safety of the developed QF-PLGA-ISG formulation on human nasal
+epithelial cell line RPMI-2650. As can be seen in Fig. 5, The safety of QF
+was enhanced using biodegradable cationic PLGA nanoparticles, and no
+significant cytotoxicity was not observed after treatment with higher
+concentrations of up to 50 μM of the QF-PLGA-ISG formulation. Cyto­
+toxicity, after 12 and 24 h of treatment with developed nano­
+formulations is shown in Fig. 5. Both blank and QF-loaded PLGA-ISG,
+along with plain QF demonstrated ≈90 % cell viability at the highest
+concentration of 50 μM after 12-hour treatment (Fig. 5A). However,
+plain QF (50 μM) demonstrated significant toxicity after 24-hour expo­
+sure, demonstrated by 66.2 ± 3.0 % cell viability, which was circum­
+vented by encapsulation in PLGA-ISG (79.4 ± 3.3 %) (Fig. 5B). Blank
+PLGA-ISG demonstrated 85.2 ± 4.7 % cell viability, thus confirming
+safety of formulation excipients. In addition, cytotoxicity results for 4 h
+treatment with nanoformulations are illustrated in Fig. S3. 4 h cyto­
+toxicity was proposed to demonstrate the safety of the formulation for
+permeation studies. Findings concluded that the developed PLGA NPs
+did not cause cytotoxicity at higher concentrations (90–95 % cell
+viability up to 50 μM) (Fig. S3). Hence, the developed formulation was
+deemed safe for nasal epithelial cell lines.
+3.5.2. Qualitative in-vitro cellular uptake of PLGA-ISG by fluorescence
+microscopy
+Fluorescence-loaded C6-PLGA-ISG was fabricated to detect the up­
+take of optimized formulation in the intracellular environment. C6 (dye)
+is generally released very slowly; therefore, the work aims to improve
+Table 3
+Stability evaluation of QF-PLGA-NPs and QF-PLGA-ISG after 3 months.
+Formulations
+Parameters
+Time
+Initial
+1 month
+2
+months
+3
+months
+QF-PLGA-
+NPs
+Particle size*
+(nm)
+154.3
+± 1.2
+167.8
+± 1.6
+168.5 ±
+2.4
+172.4 ±
+2.6
+QF-PLGA-
+ISG
+162.2
+± 1.4
+176.4
+± 1.9
+178.2 ±
+1.3
+175.5 ±
+2.8
+QF-PLGA-
+NPs
+Polydispersity
+index*
+0.122
+± 0.01
+0.242
+± 0.05
+0.268 ±
+0.03
+0.231 ±
+0.02
+QF-PLGA-
+ISG
+0.124
+± 0.02
+0.264
+± 0.08
+0.228 ±
+0.05
+0.262 ±
+0.03
+QF-PLGA-
+NPs
+Zeta potential*
+(mV)
+−17.8
+± 0.6
+−19.2
+± 1.1
+−17.6
+± 0.8
+−17.7
+± 0.7
+QF-PLGA-
+ISG
++20.5
+± 0.7
++19.8
+± 0.9
++19.6
+± 1.6
++19.2
+± 1.2
+QF-PLGA-
+NPs
+Entrapment
+efficiency* (%)
+75.8 ±
+1.4
+75.7 ±
+0.8
+75.8 ±
+2.6
+75.3 ±
+1.4
+QF-PLGA-
+ISG
+77.5 ±
+1.6
+77.5 ±
+1.3
+77.5 ±
+2.2
+76.9 ±
+1.9
+Fig. 5. MTT assay and cell viability comparison for pure QF, blank PLGA-ISG
+and QF-PLGA-ISG formulations on human nasal epithelial RPMI-2650 for (A)
+12 h and (B) 24 h of treatments. All values are expressed as mean ± SD (n = 3),
+*p < 0.05.
+Fig. 6. In-vitro cellular uptake of C6 (control) and C6-PLGA-ISG in RPMI-2650
+cells. Fluorescence microscopy images: (A) control treated cells for 1 h (Nuclei
+are stained blue with DAPI and C6/C6-loaded-PLGA are stained green), (B) C6-
+PLGA-ISG treated cells for 1 h, (C) control treated cells for 3 h and (D) C6-PLGA-
+ISG treated cells for 3 h. Scale bar = 50 μm. (For interpretation of the references
+to color in this figure legend, the reader is referred to the web version of
+this article.)
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+9
+the release and uptake of the dye into the cells. Cellular uptake studies
+depict intact nanoparticle uptake by cells in an aqueous extracellular
+environment. Fig. 6 shows qualitative fluorescence illustrations of
+RPMI-2650 cells incorporated with C6-loaded nanoparticles for 1
+(Fig. 6A & B) and 3 h, (Fig. 6C & D) respectively. According to obser­
+vations, it was confirmed that C6-loaded PLGA-ISG exhibited higher
+uptake compared to the control (plain C6 solution). It was also
+demonstrated that C6-PLGA-ISG localized in the cells for a longer time
+with excessive fluorescence intensity, observed after 3 h of incubation.
+The findings assure the maximum uptake of CH-P407-coated cationic
+particles, thus highlighting the controlled release potential of polymeric
+NPS in cellular environments.
+3.5.3. Quantitative in-vitro cellular uptake
+A fluorescence intensity quantification experiment was performed
+after incubating the cells with C6-PLGA-ISG for 3 h, to learn more about
+the impact of PLGA-ISG on intracellular uptake of encapsulated drug
+molecules. As represented in Fig. 7A, C6-loaded PLGA-ISG demonstrated
+about twice the fluorescence intensity compared to plain C6 control
+(Fig. 7A & C). Fig. 7B demonstrates representative fluorescent count of
+cells, for GFP intensity (Fig. 7B). Fig. S4 depicted quantitative presen­
+tation of in-vitro cellular uptake for different treatments such as control,
+C6 solution and C6-PLGA-ISG by Nexcelom Cellometer Vision. Quanti­
+fication of the green protein fluorescence (GFP) intensity is represented
+in Fig. 7C, demonstrating 95.2 ± 4.6 % cells with GFP signal for C6-
+PLGA-ISG, which was statistically significant (*p ≤0.05) when
+compared to 76.3 ± 3.9 % cells with plain C6 treatment, and only 0.15
+± 0.02 % for control untreated RPMI2650 cells (Fig. 7C). Outcomes
+reflect that the C6-PLGS-ISG formulation treated cells exhibit 7387.2 ±
+320 fluorescence intensity, which was superior to 3991.8 ± 184 and
+1212.7 ± 64 fluorescence intensities of C6 solution and control treated
+cell lines, respectively. The interaction between the anionic surface of
+the cellular membrane and the cationic charge of PLGA-ISG facilitates
+the easy absorption of the nanoparticles into the cells. Hence, CH-P407,
+as cationic polymers, make cellular uptake easier. As a result, the C6-
+PLGA-ISG formulation with a higher positive charge (+20.5 mV)
+exhibited a superior uptake profile.
+3.5.4. QF permeation across RPMI-2650 cell monolayers
+The RPMI2650 human nasal epithelial cell monolayer was evaluated
+for intranasal permeation of QF after encapsulation in the optimized
+PLGA-ISG. To develop a monolayer, RPMI-2650 cells were cultured on
+transwell inserts for 14 days to encourage the development of a cellular
+monolayer tissue. Transepithelial resistance (TEER) was tested every
+2–3 days until a plateau in TEER values was achieved (Day 16). On day
+16, TEER values were measured to be 86.4 Ω.cm2, compared to 41.2 Ω.
+cm2 on day 1 (Fig. 8A). Results of cumulative QF transport from 25 μM
+and 50 μM QF-PLGA-ISG transport across RPMI-2650 cell monolayers
+are shown in Fig. 8B and C, respectively. As can be seen, following a 3 h
+incubation period, 1.1 ± 0.02 μg and 2.2 ± 0.01 μg of QF permeated
+from 25 and 50 μM of QF-PLGA-ISG, which is significant higher (****P
+< 0.001), compared to 0.86 ± 0.05 μg and 1.6 ± 0.04 μg of QF
+permeated following same concentrations of plain QF solution, respec­
+tively (Fig. 8B & C). It can also be seen that the in-situ gelling system
+demonstrated rapid QF permeation than the QF solution. That is because
+a cationic mucoadhesive agent could enhance the nasal residence time
+as well as positive charge particles interacting with negative charge cell
+membrane. This mechanism helps in opening pores of cell membrane,
+hence the rapid drug permeation occurred through QF-PLGA-ISG
+formulation. Additionally, mucoadhesive polymers could enhance the
+localization time, resulting in enhanced permeation of QF through QF-
+PLGA-ISG formulation. Comparative assessment of the steady-state
+flux (Jss) and permeability coefficient (Papp) was conducted for QF-
+PLGA-ISG formulations over 3 h. The QF-PLGA-ISG formulation
+exhibited significantly higher values for Jss and Papp than other for­
+mulations (**P < 0.01). The 50 μM QF-PLGA-ISG demonstrated highly
+significant (****p ≤0.001) Papp (2.80 ± 0.4 cm/h × 10−5) and Jss (6.28
+± 0.5 μg/cm2/h) than the Papp (2.02 ± 0.3 cm/h × 10−5) and Jss (4.54 ±
+0.3 μg/cm2/h) of 50 μM QF solution after 3 h of treatment (Fig. 8D–F).
+These results illustrate the potential of the developed formulation,
+which can overcome the barrier of BBB and enhance QF penetration
+towards the CNS.
+3.6. Permeation of QF across EpiNasal™ 3D in-vitro tissue samples
+Intranasal (IN) permeation potential of optimized QF-PLGA-ISG
+formulation
+was
+screened
+across
+EpiNasal™
+tissue
+samples.
+Fig. 7. (A) Quantitative presentation of fluorescence intensities by Nexcelom
+Cellometer Vision and (B) internalization of fluorescence and its intensity in
+RPMI0-2650 cells and (C) findings from Nexcelom Cellometer analysis based on
+fluorescence intensity for control RPMI-2650 cells, C6 solution and C6-PLGA-
+ISG. Data expressed as mean ± SD (n = 3) *p < 0.05.
+Fig. 8. (A) Transepithelial electrical resistance (TEER) value for RPMI-2650
+monolayer on Transwell™ after 1st and 16th day of incubation. Cumulative
+amount of QF permeated across the RPMI-2650 epithelial cell line incubated on
+Transwell™ inserts after 3 h treatment from (B) 25 and (C) 50 μM of QF so­
+lution and QF-PLGA-ISG. Apparent permeability of (D) 25 and (E) 50 μM QF
+solution and QF-PLGA-ISG and (F) Permeation results of QF, permeated across
+the nasal epithelial cells RPMI-2650 (concentration of QF in donor chamber, Cd
+= 1.1 and 2.2 μg/mL and volume of NPs in donor compartment, Vd = 100 μL).
+Data expressed as mean ± SD (n = 3). **p < 0.01, ***p < 0.005 and ****p
+< 0.001.
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+10
+Transepithelial electrical resistance (TEER) was measured before the
+treatment of the tissue samples. Initially, the TEER values were esti­
+mated to be 115.2 ± 4.8 Ω.cm2, which remained consistent after 4 h of
+treatment (110.7 ± 5.5 Ω.cm2) (Fig. 9A). Outcomes of cumulative QF
+permeation from 1 mg/mL and 2.5 mg/mL of QF-PLGA-ISG across
+EpiNasal™ tissues are shown in Fig. 9B and C, respectively. After 4 h
+treatment, 8.9 ± 1.1 μg and 24.5 ± 2.6 μg of QF permeated from 1 mg/
+mL and 2.5 mg/mL of QF-PLGA-ISG were found to be significantly
+higher (**P < 0.01) than 2.5 ± 0.4 μg and 7.5 ± 1.2 μg of QF permeated
+following same concentrations of QF solution, respectively. Similarly,
+after 8 h treatment, 1 mg/mL and 2.5 mg/mL of QF-PLGA-ISG revealed
+significantly (**P < 0.01) better permeation of 14.3 ± 0.5 μg and 35.4
+± 1.5 μg than the permeation (5.4 ± 0.6 μg and 12.8 ± 1.1 μg) of QF
+solution for the same concentrations (Fig. 9B & C). These outcomes
+demonstrated that the in-situ gelling approach accelerates the QF
+permeation rate more than the QF solution. Cationic mucoadhesive
+polymers may improve nasal localization time, and positively charged
+molecules interact with the negatively charged cell surface. This
+approach helps open the epithelial membrane's pores and accelerates
+the rate of QF permeation through the QF-PLGA-ISG formulation.
+Comparative examination of the steady-state flux (Jss) and apparent
+permeability (Papp) was performed for QF-PLGA-ISG formulations over 4
+and 8 h. The QF-PLGA-ISG demonstrated higher values for Jss and Papp
+than the QF solution (**P < 0.01). Fig. 9D and E represent higher Papp
+for QF-PLGA-ISG than the Papp of QF solution after 4 h of treatment.
+Whereas, the 1 mg/mL and 2.5 mg/mL QF-PLGA-ISG revealed very
+significant (****p ≤0.001) Papp (5.6 × 10−6 and 1.3 × 10−5) and Jss (1.1
+× 10−7 and 6.9 × 10−7) than the Papp (2.1 × 10−6 and 5.0 × 10−6) and Jss
+(4.2 × 10−8 and 2.5 × 10−7) of 1 mg/mL and 2.5 mg/mL QF solution
+after 8 h of treatment (Fig. 9F–H). These outcomes represent the po­
+tential of the fabricated QF-PLGA-ISG, which can overcome the physi­
+ological barrier and improve QF delivery to the brain. Comparing the
+findings of this study with the QF permeation study across RPMI-2650
+cell monolayers, both studies reproduced the results. Hence, the
+permeation across the RPMI-2650 monolayer has precisely correlated
+with the findings of permeation across EpiNasal™ tissues. These out­
+comes represent the potential of fabricated QF-PLGA-ISG, which can
+overcome the physiological barrier and improve QF delivery to the
+brain.
+3.6.1. Histopathological screenings
+Safety of developed QF-PLGA-ISG formulation was conducted in
+normal EpiNasal™ tissues to determine any histopathological modifi­
+cations or toxicity indications after IN administration. The pathological
+illustrations of control, QF-PLGA-ISG, and QF-solution treated tissues
+after 8 h of treatment are depicted in Fig. 10A–E. As can be seen,
+microscopic images demonstrated no abnormal influences of optimized
+formulations in mucosal structures. Histological reports of Control, QF-
+PLGA-ISG treated, and QF solution treated tissues shown in Fig. 10F did
+not demonstrate any significant damage in the Control, QF-PLGA-ISG
+treated, and QF solution treated EpiNasal™ tissues, which confirmed
+the safety of optimized formulation in IN application. Simultaneously,
+the histological report's overall pathological score demonstrated no
+abnormalities in the treated tissues. Therefore, the optimized QF-PLGA-
+ISG formulation was found safe for IN administration.
+4. Discussion
+Lipophilicity and molecular weight are two significant physico­
+chemical features of a drug that control penetration via the nose-to-brain
+pathway. QF, a suitable candidate for nose-to-brain delivery, is a prac­
+tically water-insoluble medication with low molecular weight (441.5 g/
+mol) and appropriate lipophilicity (log p = 2.8) [9]. Associated limita­
+tions of conventional QF dosage forms include rapid first-pass meta­
+bolism, short t1/2, lower bioavailability of QF, and hematological side
+effects [57].
+The current investigation demonstrated the potential to address
+these limitations of available treatments with QF. In the present work,
+QF has been reformulated using biodegradable and biocompatible PLGA
+nanoparticles through scalable emulsification and solvent evaporation
+techniques [32]. Despite the nasal route advances in brain delivery, it is
+linked with different limitations like mucociliary clearance (defensive
+mechanism of the respiratory system) and losing dose, even unsuitable
+for liquid formulations. Hence, the nasal clearance barrier has been
+addressed by converting the QF-PLGA-NPs into in-situ gel with the help
+of biodegradable cationic polymer CH and in-situ gelling agent P407,
+Fig. 9. (A) Transepithelial electrical resistance (TEER) for MatTek EpiNasal™
+tissue after initial and 4 h of treatment. The cumulative amount of QF perme­
+ated across MatTek EpiNasal™ tissue after 8 h of treatments from (B) 1 mg/mL
+and (C) 2.5 mg/mL of QF solution and QF-PLGA-ISG. Apparent permeability
+after 4 h treatment of (D) 1 mg/mL and (E) 2.5 mg/mL QF solution and QF-
+PLGA-ISG. Apparent permeability after 8 h treatment of (F) 1 mg/mL and (G)
+2.5 mg/mL QF solution and QF-PLGA-ISG and (H) Permeation outcomes of QF,
+permeated across the MatTek EpiNasal™ tissue. Data expressed as mean ± SD
+(n = 3). **p < 0.01, ***p < 0.005 and ****p < 0.001.
+Fig. 10. Histological investigation of EpiNasal™ tissue sections after 8 h
+treatment with QF formulations, (A) Control (Untreated tissue), (B) QF solution
+(1 mg/mL) treated tissues, (C) QF solution (2.5 mg/mL) treated tissues, (D) QF-
+PLGA-ISG (1 mg/mL) treated tissues and (E) QF-PLGA-ISG (2.5 mg/mL) treated
+tissues. (F) Histopathological report of control, QF solution 1 mg/mL treated,
+QF solution 2.5 mg/mL treated, QF-PLGA-ISG 1 mg/mL treated, and QF-PLGA-
+ISG 2.5 mg/mL treated EpiNasal™ tissues samples after 8 h of treatment.
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+11
+using the cold method [35]. Moreover, the developed QF-PLGA-NPs
+were further evaluated for their physiochemical properties, in-vitro
+release, and cell cycle experiments.
+Optimized QF-PLGA-NPs and QF-PLGA-ISG reproduced nanometric
+particle sizes, the findings have precisely complied with the results of
+previously reported studies [58]. Particle size is a crucial parameter that
+helps to improve the drug permeation across the nasal mucosa and
+successfully targets the QF towards the site of action. Simultaneously,
+QF-PLGA-NPs and QF-PLGA-ISG revealed an optimum PDI, demon­
+strating uniform size distribution of nanosized particles. Uniform PDI
+helped in calculating the average monodispersity of nanoparticles.
+ζ-Potential experiments demonstrated the stability of developed nano­
+particles, wherein formulated QF-PLGA-NPs depicted negative surface
+charge, which helps to increase the stability of uncoated PLGA nano­
+particles, which could be due to the repulsion of like-charged particles
+and consequently reduce the probability of particle aggregation.
+Simultaneously, the PLGA-ISG formulation exhibited a positive surface
+charge, which could be due to the coating of cationic polymers (CH-P04)
+on QF-PLGA-NPs. It was hypothesized that the ionic interaction between
+the positive charge of PLGA-ISG and the carboxy group on mucin helps
+to improve the mucoadhesion of the nanoparticles. Chatzitaki et al.,
+2020, developed chitosan-coated PLGA-NPs for brain delivery and
+revealed a cationic surface charge that complies with the findings of QF-
+PLGA-ISG formulation [40].
+Optimized QF formulations exhibited superior drug entrapment,
+which confirmed the loading potential of optimized formulations. The
+maximum amount of drug is entrapped within PLGA nanoparticle core,
+which may improve QF solubility, provide protection against enzymatic
+degradation, improve stability and absorption. Viscosity is essential in
+determining the fluidity of IN formulations for the feasibility of
+administration [59]. The highly viscous formulation is challenging to
+administer in the nose. Therefore, formulation fluidity at ambient tem­
+perature is mandatory. The developed QF-PLGA-ISG revealed excellent
+fluidity at room temperature, but it turns to gel at physiological tem­
+perature. Because polymer P407 does not change its transition at room
+temperature, but it rapidly converts to the gel once the temperature
+increases.
+Similarly, the mucoadhesive strength of formulation is crucial to
+overcome the nasal clearance barrier. Mucociliary clearance is an ideal
+characteristic of the nasal mucosa/respiratory system (a nasal defensive
+mechanism), which clears the formulation from the application site.
+However, more localization time is needed to absorb therapeutics
+through the IN route [60]. Developed QF-PLGA-ISG contains CH-P407
+cationic-charged polymers. The P407 converts to gel at nasal tempera­
+ture; however, CH makes a strong adhesive bond with nasal mucosa
+when it encounters mucin. The formulation remains in the nose longer,
+and the QF can be released sustainably. The findings demonstrated that
+QF-PLGA-ISG exhibited excellent mucoadhesive potential, efficiently
+addressing the mucociliary clearance limitation [22].
+In-vitro release from optimized formulations is essential for predict­
+ing the formulation's in-vivo fate and the therapeutic outcomes. This
+screening helped determine in-vitro and in-vivo correlation for the
+developed formulation. The QF-PLGA-NPs and QF-PLGA-ISG showed a
+biphasic release pattern exhibited by an initial burst release due to the
+particle surface coat dissolution. Which may be due to diffusion of the
+drug from the carrier when in contact with the nasal fluid. Subsequently,
+a sustained release pattern was followed that may be attributed to the
+diffusion of QF through the matrix or the gradual erosion of PLGA. The
+published work [61] observed a similar release mechanism for PLGA
+nanoparticles, which complies with experimental findings. The sus­
+tained release potential of developed formulation allows for prolonging
+drug uptake to the brain, which helps to reduce dose and dosing fre­
+quency along with limitations of conventional formulation. For a better
+understanding of the release mechanism of QF from the QF-PLGA-ISG,
+different release models were utilized for the in-vitro release data, and
+the zero-order kinetic model was found to be the best-fitting model. This
+model represents the constant QF release from the PLGA core and may
+enhance therapeutic impact by reducing the adverse effects. This model
+mainly represents the sustained/controlled release of QF from the
+developed PLGA formulations [2].
+Hemolysis is a complex event in which red blood cells (RBCs) burst
+and disintegrate. No alternative approach is available currently to detect
+hemolysis except the ex-vivo methods. This study estimated the amount
+of hemoglobin released following erythrocyte destruction to assess the
+hemolytic impact of developed QF-PLGA formulations [62]. Outcomes
+of the hemolysis demonstrated that all QF-loaded formulations have a
+considerably lower possibility to induce hemolysis than the negative
+control and QF-Suspension. Some previous investigations mainly
+involved hemolytic evidence of QF, like neutropenia, leukopenia, he­
+molytic anemia, and thrombocytopenia [63]. Eventually, the results
+indicated the QF-loaded biodegradable PLGA formulations are highly
+compatible with physiological samples. The PLGA nanoparticles are
+reported [64] for their biodegradability and biocompatibility, making
+them non-toxic and safer. PLGA tends to be released sustainably, which
+further helps to protect the blood from direct exposure to QF and
+degradation of RBCs. These vital properties of PLGA make it safe and
+valuable for QF delivery compared to other dosage forms.
+Another standard for successfully developing a delivery system is the
+stability and shelf-life of the formulation. The objective of stability
+testing is to establish the shelf life as well as the suggested storage
+conditions for the drug product, as well as to provide evidence regarding
+how the quality and integrity of the dosage form changes over time and
+in response to environmental factors like temperature and humidity. In
+this context, QF-PLGA-NPs and QF-PLGA-ISG NPs were kept under
+accelerated conditions for 3 months while being stored at 4 ◦C. QF
+formulations were discovered to exhibit negligible alterations in PS, PDI,
+and zeta and %EE, demonstrating that developed formulations main­
+tained their integrity throughout storage [32].
+Subsequently, the safety of the QF-PLGA-ISG on nasal epithelial cells
+is crucial to demonstrating nasal mucosa's vitality after chronic treat­
+ments. Therefore, the safety of QF-PLGA-ISG and Blank PLGA-ISG were
+assessed against normal nasal epithelial cell lines, RPMI-2650. The
+findings of this study demonstrated the blank formulation did not cause
+any cytotoxicity throughout 24 h of treatment. Even the QF-PLGA-ISG
+was non-toxic against RPMI-2650 after 24 h of exposure. Overall, the
+outcomes of the present study demonstrate the safety potential of QF-
+PLGA-ISG for IN delivery against brain disorders [48,53].
+Improved intracellular uptake/penetration of drug-loaded formula­
+tions is crucial for therapeutic efficacy. The physicochemical concerns,
+such as particle size, shape, surface charge, and therapeutic solubility of
+optimized formulation, are critical to achieving efficient cellular
+permeation/uptake. As reported previously [65], nanoformulation with
+a size <200 nm is excellent for improving intracellular uptake while
+being small sufficiently to avoid mucociliary clearance and enzymatic
+degradation. The in-vitro cellular uptake, both qualitative and quanti­
+tative, was estimated through fluorescence microscopy and Nexcelom
+Cellometer Vision. In contrast, the C6-PLGA-ISG formulation displayed
+superior intracellular uptake in RPMI-2650 cell lines compared to plain
+coumarin-6. The outcomes of fluorescence microscopy demonstrated
+that C6-PLGA-ISG localized in the cells for a prolonged time with
+maximum fluorescence intensity. The results confirmed the highest
+uptake for formulation due to the cationic particles, i.e., CH-P407, which
+highlights the sustained release prospect of PLGA ISG in intracellular
+environments. Later, the cell uptake by Cellometer Vision reflects that
+the C6-PLGS-ISG formulation treated cells exhibit excellent fluorescence
+intensity, which was more magnificent than the fluorescence intensities
+of the C6 solution. Such outcomes occurred due to the interaction of the
+cationic charge of PLGA-ISG with the anionic surface of the cell mem­
+brane. That helped to facilitate the absorption of the formulation into
+the cells. Hence, CH-P407, as a cationic compound, improved the
+cellular uptake and drug permeation. The C6-PLGA-ISG formulation
+with a significant positive charge (+20.5 mV) demonstrated an
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+12
+excessive uptake profile, which could help protect the formulation from
+ciliary clearance and enzymatic degradation [47,51].
+A permeation study confirmed improved QF permeation across nasal
+cell line monolayer. As reported, charge modification is relevant for
+opening tight junctions of the barrier, enhancing the permeation of
+medicines towards the site of action. This may be because the mucus
+layer is widely known to alter particle dispersion and drug permeability
+across mucosal tissues. Positively charged formulations are frequently
+retained in the mucus network because polyanionic mucin glycopro­
+teins, mainly, are the major proteins involved in contact filtering. The
+RPMI-2650 cells were grown for 16 days to prepare nasal epithelial
+monolayer in an air-liquid interface. As previously reported [53], the
+developed membrane represented the human nasal mucosa. In this
+work, cationic QF-PLGA-ISG demonstrated enhanced cellular perme­
+ation compared to the QF. Therefore, CH-P407 coated cationic PLGA-
+ISG formulation can permeate across barriers. The findings of the
+permeability investigation showed that QF-PLGA-ISG might avoid
+mucociliary clearance (reflux mechanism of nasal physiology) and help
+to permeate QF across the membrane safely [48]. These outcomes
+demonstrate the potential of the developed formulation to enhance QF
+penetration towards the CNS by circumventing the BBB. Finally, out­
+comes from the current investigation demonstrate a definite potential of
+QF-PLGA-ISG
+for
+nose-to-brain
+delivery
+in
+mental
+disorders,
+schizophrenia.
+Permeation outcomes across EpiNasal™ tissue samples demon­
+strated the potency of QF-PLGA-ISG formulation in QF permeation. The
+EpiNasal™ tissue permeation results strongly supported the findings of
+permeation across RPMI-2650 nasal epithelial cell monolayer. Many
+researchers have corroborated in-vitro permeation data with in-vivo
+bioavailability studies and have reported strong in-vitro in-vivo correla­
+tion. Inoue et al., 2020, [66] obtained a significant correlation between
+in-vitro Calu-3 cell permeability and rats nasal permeation rate, indi­
+cating that nasal drug permeability and bioavailability strongly corre­
+late with in-vitro permeability. Similarly, Leonard et al., 2007, [67]
+performed an in-vitro and in-vivo correlation for IN formulation, and the
+results confirmed improved drug bioavailability with an in-vitro and in-
+vivo correlation. Currently, Nozohouri et al., 2022, [68] also found a
+strong correlation between in-vitro and in-vivo permeability data for
+CNS-acting formulations. All the findings from earlier investigations
+strongly supported that the in-vitro studies correlate with in-vivo studies.
+Furthermore, the results of permeation across RPMI-2650 cells mono­
+layer and EpiNasal™ discovered similar, which could support and
+encourage the in-vivo studies. These advantageous outcomes docu­
+mented the penetrating potential of developed QF-PLGA-ISG towards
+the CNS by circumventing the BBB. Additionally, histopathological
+screenings confirmed the safety of developed formulations against Epi­
+Nasal™ tissues. Hence, according to the observations of the overall
+investigation, the developed formulation was found safe and effective
+for the proposed treatment. Finally, outcomes from the current research
+demonstrate a definite potential of QF-PLGA-ISG for nose-to-brain de­
+livery in mental disorders, schizophrenia.
+5. Conclusions
+Current work focused on increasing QF intranasal permeability and
+physicochemical stability to improve absorption and biological effec­
+tiveness in mental disorders. A noninvasive strategy for IN drug delivery
+for QF, an antipsychotic agent, was developed by formulation of ISG
+using ionic and thermo-responsive polymers. It was discovered that this
+cutting-edge method of drug administration could avoid BBB in­
+teractions and deliver QF directly to the brain. Biodegradable PLGA-ISG
+has the potential to reduce QF dose, dosing frequency, and associated
+toxicities, enabling effective delivery of QF to the CNS via the IN route.
+In addition, the in-vitro release study of QF-PLGA-ISG reflected sustained
+drug release in SNES over 24 h, which could assess the prolonged de­
+livery of QF to the brain. Ex-vivo hemocompatibility confirmed that the
+developed formulation does not cause signs of hemolysis compared to
+pure QF and negative control. In addition, in-vitro cytotoxicity studies
+proved the safety of QF-PLGA-ISG than pure QF against RPMI-2650
+human nasal epithelial cells. Transwell™ permeability studies showed
+that reducing nasal clearance due to mucoadhesive agents and flux
+could improve drug transport across the nasal epithelium, thereby
+increasing the permeability of drug across RPMI-2650 cells in presence
+of biodegradable PLGA-polymer. Simultaneously, EpiNasal tissue
+permeability studies strongly correlated with the permeability of RPMI-
+2650 cell monolayers. EpiNasal tissue permeation studies revealed the
+potential of the QF-PLGA-ISG formulation to cross the nasal tissue bar­
+rier, which strongly reinforces that the developed IN formulation has
+great potential for treating CNS disorders. Finally, the histological re­
+ports demonstrated no significant damage in treated EpiNasal™ tissues,
+which confirmed the safety of optimized QF-PLGA-ISG formulation in IN
+application. Therefore, the PLGA-ISG delivery of antipsychotics has
+been successfully projected towards the CSN, with an excellent future for
+safe and economical therapy of schizophrenia.
+Funding
+This work was supported with research funds of VG by the College of
+Pharmacy and Health Sciences, St. John's University, Queens, New York,
+USA, DGG and MG were supported by an industry grant to VG. AU, and
+MQ were supported by the teaching assistantships from the College of
+Pharmacy & Health Sciences, St. John's University, Queens, New York,
+USA.
+CRediT authorship contribution statement
+Dnyandev G. Gadhave: Conceptualization, Data curation, Formal
+analysis, Investigation, Methodology, Software, Validation, Writing –
+original draft. Mural Quadros: Investigation, Methodology. Akanksha
+R. Ugale: Investigation, Methodology. Mimansa Goyal: Investigation,
+Methodology. Seyoum Ayehunie: Funding acquisition, Resources.
+Vivek Gupta: Conceptualization, Funding acquisition, Methodology,
+Project administration, Resources, Supervision, Writing – review &
+editing.
+Declaration of competing interest
+The authors declare that they have no known financial conflicts that
+may have looked to have influenced the research presented in this study.
+Data availability
+Data will be made available on request.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.ijbiomac.2024.131491.
+References
+[1] D. Gadhave, S. Tupe, A. Tagalpallewar, B. Gorain, H. Choudhury, C. Kokare, Nose-
+to-brain delivery of amisulpride-loaded lipid-based poloxamer-gellan gum
+nanoemulgel: in vitro and in vivo pharmacological studies, Int. J. Pharm. 607
+(2021) 121050, https://doi.org/10.1016/j.ijpharm.2021.121050.
+[2] U. Seju, A. Kumar, K.K. Sawant, Development and evaluation of olanzapine-loaded
+PLGA nanoparticles for nose-to-brain delivery: in vitro and in vivo studies, Acta
+Biomater. 7 (2011) 4169–4176, https://doi.org/10.1016/j.actbio.2011.07.025.
+[3] D. Gadhave, A. Gupta, S. Khot, A. Tagalpallewar, C. Kokare, Nose-to-brain delivery
+of paliperidone palmitate poloxamer-guar gum nanogel: formulation, optimization
+and pharmacological studies in rats, Ann. Pharm. Fr. 81 (2023) 315–333, https://
+doi.org/10.1016/j.pharma.2022.08.010.
+[4] D.G. Gadhave, A.A. Tagalpallewar, C.R. Kokare, Agranulocytosis-protective
+olanzapine-loaded nanostructured lipid carriers engineered for CNS delivery:
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+13
+optimization and hematological toxicity studies, AAPS PharmSciTech 20 (2019)
+22, https://doi.org/10.1208/s12249-018-1213-y.
+[5] Y. Qu, A. Li, L. Ma, S. Iqbal, X. Sun, W. Ma, C. Li, D. Zheng, Z. Xu, Z. Zhao, D. Ma,
+Nose-to-brain delivery of disulfiram nanoemulsion in situ gel formulation for
+glioblastoma targeting therapy, Int. J. Pharm. 597 (2021) 120250, https://doi.org/
+10.1016/j.ijpharm.2021.120250.
+[6] C. Fornaguera, A. Dols-Perez, G. Calder´o, M.J. García-Celma, J. Camarasa,
+C. Solans, PLGA nanoparticles prepared by nano-emulsion templating using low-
+energy methods as efficient nanocarriers for drug delivery across the blood–brain
+barrier, J. Control. Release 211 (2015) 134–143, https://doi.org/10.1016/j.
+jconrel.2015.06.002.
+[7] D.G. Gadhave, V.V. Sugandhi, C.R. Kokare, Potential biomaterials and
+experimental animal models for inventing new drug delivery approaches in the
+neurodegenerative disorder: multiple sclerosis, Brain Res. 1822 (2024) 148674,
+https://doi.org/10.1016/j.brainres.2023.148674.
+[8] J.S. Maan, M. Ershadi, I. Khan, A. Saadabadi, Quetiapine, in: StatPearls, StatPearls
+Publishing, Treasure Island (FL), 2024. http://www.ncbi.nlm.nih.gov/books/N
+BK459145/. (Accessed 21 March 2024).
+[9] B. Shah, D. Khunt, M. Misra, H. Padh, Non-invasive intranasal delivery of
+quetiapine fumarate loaded microemulsion for brain targeting: formulation,
+physicochemical and pharmacokinetic consideration, Eur. J. Pharm. Sci. 91 (2016)
+196–207, https://doi.org/10.1016/j.ejps.2016.05.008.
+[10] C. Zhou, S. Xue, F. Xue, L. Liu, J. Liu, Q. Ma, J. Qin, Q. Tan, H. Wang, Z. Peng, The
+impact of quetiapine on the brain lipidome in a cuprizone-induced mouse model of
+schizophrenia, Biomed. Pharmacother. 131 (2020) 110707, https://doi.org/
+10.1016/j.biopha.2020.110707.
+[11] K.-Y. Fan, W.-Y. Chen, M.-C. Huang, Quetiapine-associated leucopenia and
+thrombocytopenia: a case report, BMC Psychiatry 15 (2015) 110, https://doi.org/
+10.1186/s12888-015-0495-9.
+[12] F.C. Arslan, D.S. Aykut, C. Ince, A. Tiryaki, Neutropenia and thrombocytopenia
+induced by quetiapine monotherapy: a case report and review of literature, Klinik
+Psikofarmakoloji Bülteni-bulletin of clinical, Psychopharmacology 26 (2016)
+319–323, https://doi.org/10.5455/bcp.20151219072235.
+[13] G. Cr´epeau-Gendron, S. L’Heureux, Quetiapine XR-induced neutropenia: is a
+clozapine trial still possible for treatment-resistant schizophrenia? A case report:
+Clozapine after quetiapine XR-induced neutropenia, Early Intervention in
+Psychiatry 9 (2015) 151–155, https://doi.org/10.1111/eip.12134.
+[14] B. Ravi Shankar, Quetiapine-induced leucopenia and thrombocytopenia,
+Psychosomatics 48 (2007) 530–531, https://doi.org/10.1176/appi.psy.48.6.530.
+[15] X. Li, M.D. Cameron, Potential role of a quetiapine metabolite in quetiapine-
+induced neutropenia and agranulocytosis, Chem. Res. Toxicol. 25 (2012)
+1004–1011, https://doi.org/10.1021/tx2005635.
+[16] D. Gadhave, S. Khot, S. Tupe, M. Shinde, A. Tagalpallewar, B. Gorain, C. Kokare,
+Nose-to-brain delivery of octreotide acetate in situ gel for pituitary adenoma:
+pharmacological and in vitro cytotoxicity studies, Int. J. Pharm. 629 (2022)
+122372, https://doi.org/10.1016/j.ijpharm.2022.122372.
+[17] S.A. Kumbhar, C.R. Kokare, B. Shrivastava, B. Gorain, H. Choudhury, Antipsychotic
+potential and safety profile of TPGS-based Mucoadhesive aripiprazole
+Nanoemulsion: development and optimization for nose-to-brain delivery, J. Pharm.
+Sci. 110 (2021) 1761–1778, https://doi.org/10.1016/j.xphs.2021.01.021.
+[18] B. Shah, D. Khunt, M. Misra, Comparative evaluation of intranasally delivered
+quetiapine loaded mucoadhesive microemulsion and polymeric nanoparticles for
+brain targeting: pharmacokinetic and gamma scintigraphy studies, Futur J Pharm
+Sci 7 (2021) 6, https://doi.org/10.1186/s43094-020-00156-5.
+[19] R. Pathak, R. Prasad Dash, M. Misra, M. Nivsarkar, Role of mucoadhesive polymers
+in enhancing delivery of nimodipine microemulsion to brain via intranasal route,
+Acta Pharm. Sin. B 4 (2014) 151–160, https://doi.org/10.1016/j.
+apsb.2014.02.002.
+[20] F.A. Bruinsmann, A. De Cristo Soares Alves, A. De Fraga Dias, L.F. Lopes Silva,
+F. Visioli, A. Raffin Pohlmann, F. Figueir´o, F. Sonvico, S. Stanisçuaski Guterres,
+Nose-to-brain delivery of simvastatin mediated by chitosan-coated lipid-core
+nanocapsules allows for the treatment of glioblastoma in vivo, Int. J. Pharm. 616
+(2022) 121563, https://doi.org/10.1016/j.ijpharm.2022.121563.
+[21] S. Cunha, M. Swedrowska, Y. Bellahnid, Z. Xu, J.M. Sousa Lobo, B. Forbes, A.
+C. Silva, Thermosensitive in situ hydrogels of rivastigmine-loaded lipid-based
+nanosystems for nose-to-brain delivery: characterisation, biocompatibility, and
+drug deposition studies, Int. J. Pharm. 620 (2022) 121720, https://doi.org/
+10.1016/j.ijpharm.2022.121720.
+[22] D. Gadhave, B. Gorain, A. Tagalpallewar, C. Kokare, Intranasal teriflunomide
+microemulsion: an improved chemotherapeutic approach in glioblastoma, Journal
+of Drug Delivery Science and Technology 51 (2019) 276–289, https://doi.org/
+10.1016/j.jddst.2019.02.013.
+[23] W.A. Banks, Drug delivery to the brain in Alzheimer’s disease: consideration of the
+blood–brain barrier, Adv. Drug Deliv. Rev. 64 (2012) 629–639, https://doi.org/
+10.1016/j.addr.2011.12.005.
+[24] S. Bhavna, M. Md, R. Ali, A. Ali, S. Bhatnagar, J. Baboota, Ali, donepezil
+nanosuspension intended for nose to brain targeting: in vitro and in vivo safety
+evaluation, Int. J. Biol. Macromol. 67 (2014) 418–425, https://doi.org/10.1016/j.
+ijbiomac.2014.03.022.
+[25] Y. Yu, R. Feng, S. Yu, J. Li, Y. Wang, Y. Song, X. Yang, W. Pan, S. Li, Nanostructured
+lipid carrier-based pH and temperature dual-responsive hydrogel composed of
+carboxymethyl chitosan and poloxamer for drug delivery, Int. J. Biol. Macromol.
+114 (2018) 462–469, https://doi.org/10.1016/j.ijbiomac.2018.03.117.
+[26] S. Raman, A.A. Khan, S. Mahmood, Nose to brain delivery of selegiline loaded
+PLGA/lipid nanoparticles: synthesis, characterisation and brain pharmacokinetics
+evaluation, Journal of Drug Delivery Science and Technology 77 (2022) 103923,
+https://doi.org/10.1016/j.jddst.2022.103923.
+[27] N. Ahmad, Rasagiline-encapsulated chitosan-coated PLGA nanoparticles targeted
+to the brain in the treatment of parkinson’s disease, J. Liq. Chromatogr. Relat.
+Technol. 40 (2017) 677–690, https://doi.org/10.1080/10826076.2017.1343735.
+[28] X. Wang, D. Gadhave, G. Chauhan, V. Gupta, Development and characterization of
+inhaled nintedanib-loaded PLGA nanoparticles using scalable high-pressure
+homogenization technique, Journal of Drug Delivery Science and Technology
+(2023) 105233, https://doi.org/10.1016/j.jddst.2023.105233.
+[29] G.-F. Tong, N. Qin, L.-W. Sun, Development and evaluation of Desvenlafaxine
+loaded PLGA-chitosan nanoparticles for brain delivery, Saudi Pharmaceutical
+Journal 25 (2017) 844–851, https://doi.org/10.1016/j.jsps.2016.12.003.
+[30] S. Ahmad, I. Khan, J. Pandit, N.A. Emad, S. Bano, K.I. Dar, M.M.A. Rizvi, M.
+D. Ansari, Mohd. Aqil, Y. Sultana, Brain targeted delivery of carmustine using
+chitosan coated nanoparticles via nasal route for glioblastoma treatment, Int. J.
+Biol. Macromol. 221 (2022) 435–445, https://doi.org/10.1016/j.
+ijbiomac.2022.08.210.
+[31] B. Vaidya, V. Parvathaneni, N.S. Kulkarni, S.K. Shukla, J.K. Damon, A. Sarode,
+D. Kanabar, J.V. Garcia, S. Mitragotri, A. Muth, V. Gupta, Cyclodextrin modified
+erlotinib loaded PLGA nanoparticles for improved therapeutic efficacy against non-
+small cell lung cancer, Int. J. Biol. Macromol. 122 (2019) 338–347, https://doi.
+org/10.1016/j.ijbiomac.2018.10.181.
+[32] R.S. Elbatanony, V. Parvathaneni, N.S. Kulkarni, S.K. Shukla, G. Chauhan, N.
+K. Kunda, V. Gupta, Afatinib-loaded inhalable PLGA nanoparticles for localized
+therapy of non-small cell lung cancer (NSCLC)—development and in-vitro efficacy,
+Drug Deliv. and Transl. Res. 11 (2021) 927–943, https://doi.org/10.1007/s13346-
+020-00802-8.
+[33] N. Ahmad, R. Ahmad, F.J. Ahmad, W. Ahmad, M.A. Alam, M. Amir, A. Ali,
+Poloxamer-chitosan-based Naringenin nanoformulation used in brain targeting for
+the treatment of cerebral ischemia, Saudi Journal of Biological Sciences 27 (2020)
+500–517, https://doi.org/10.1016/j.sjbs.2019.11.008.
+[34] P.K. Sharma, M.K. Chauhan, Optimization and characterization of Brimonidine
+tartrate nanoparticles-loaded in situ gel for the treatment of Glaucoma, Curr. Eye
+Res. 46 (2021) 1703–1716, https://doi.org/10.1080/02713683.2021.1916037.
+[35] D. Gadhave, N. Rasal, R. Sonawane, M. Sekar, C. Kokare, Nose-to-brain delivery of
+teriflunomide-loaded lipid-based carbopol-gellan gum nanogel for glioma:
+pharmacological and in vitro cytotoxicity studies, Int. J. Biol. Macromol. 167
+(2021) 906–920, https://doi.org/10.1016/j.ijbiomac.2020.11.047.
+[36] V. Parvathaneni, M. Goyal, N.S. Kulkarni, S.K. Shukla, V. Gupta, Nanotechnology
+based repositioning of an anti-viral drug for non-small cell lung Cancer (NSCLC),
+Pharm. Res. 37 (2020) 123, https://doi.org/10.1007/s11095-020-02848-2.
+[37] V. Parvathaneni, N.S. Kulkarni, G. Chauhan, S.K. Shukla, R. Elbatanony, B. Patel,
+N.K. Kunda, A. Muth, V. Gupta, Development of pharmaceutically scalable inhaled
+anti-cancer nanotherapy – repurposing amodiaquine for non-small cell lung cancer
+(NSCLC), Mater. Sci. Eng. C 115 (2020) 111139, https://doi.org/10.1016/j.
+msec.2020.111139.
+[38] V. Parvathaneni, S.K. Shukla, N.S. Kulkarni, V. Gupta, Development and
+characterization of inhalable transferrin functionalized amodiaquine nanoparticles
+– efficacy in non-small cell lung Cancer (NSCLC) treatment, Int. J. Pharm. 608
+(2021) 121038, https://doi.org/10.1016/j.ijpharm.2021.121038.
+[39] S.A. Kumbhar, C.R. Kokare, B. Shrivastava, B. Gorain, H. Choudhury, Preparation,
+characterization, and optimization of asenapine maleate mucoadhesive
+nanoemulsion using box-Behnken design: in vitro and in vivo studies for brain
+targeting, Int. J. Pharm. 586 (2020) 119499, https://doi.org/10.1016/j.
+ijpharm.2020.119499.
+[40] A.-T. Chatzitaki, S. Jesus, C. Karavasili, D. Andreadis, D.G. Fatouros, O. Borges,
+Chitosan-coated PLGA nanoparticles for the nasal delivery of ropinirole
+hydrochloride: in vitro and ex vivo evaluation of efficacy and safety, Int. J. Pharm.
+589 (2020) 119776, https://doi.org/10.1016/j.ijpharm.2020.119776.
+[41] D. Gadhave, H. Choudhury, C. Kokare, Neutropenia and leukopenia protective
+intranasal olanzapine-loaded lipid-based nanocarriers engineered for brain
+delivery, Appl. Nanosci. 9 (2019) 151–168, https://doi.org/10.1007/s13204-018-
+0909-3.
+[42] D.G. Gadhave, C.R. Kokare, Nanostructured lipid carriers engineered for intranasal
+delivery of teriflunomide in multiple sclerosis: optimization and in vivo studies,
+Drug Dev. Ind. Pharm. 45 (2019) 839–851, https://doi.org/10.1080/
+03639045.2019.1576724.
+[43] S.K. Shukla, A. Chan, V. Parvathaneni, V. Gupta, Metformin-loaded chitosomes for
+treatment of malignant pleural mesothelioma – a rare thoracic cancer, Int. J. Biol.
+Macromol. 160 (2020) 128–141, https://doi.org/10.1016/j.ijbiomac.2020.05.146.
+[44] H. Van De Ven, C. Paulussen, P.B. Feijens, A. Matheeussen, P. Rombaut, P. Kayaert,
+G. Van Den Mooter, W. Weyenberg, P. Cos, L. Maes, A. Ludwig, PLGA nanoparticles
+and nanosuspensions with amphotericin B: Potent in vitro and in vivo alternatives
+to Fungizone and AmBisome, J. Control. Release 161 (2012) 795–803. doi:https://
+doi.org/10.1016/j.jconrel.2012.05.037.
+[45] G. Jeswani, L. Chablani, U. Gupta, R.K. Sahoo, K.T. Nakhate, Ajazuddin,
+development and optimization of paclitaxel loaded Eudragit/PLGA nanoparticles
+by simplex lattice mixture design: exploration of improved hemocompatibility and
+in vivo kinetics, Biomed. Pharmacother. 144 (2021) 112286, https://doi.org/
+10.1016/j.biopha.2021.112286.
+[46] S. Godara, V. Lather, S.V. Kirthanashri, R. Awasthi, D. Pandita, Lipid-PLGA hybrid
+nanoparticles of paclitaxel: preparation, characterization, in vitro and in vivo
+evaluation, Mater. Sci. Eng. C 109 (2020) 110576, https://doi.org/10.1016/j.
+msec.2019.110576.
+[47] X. Wang, V. Parvathaneni, S.K. Shukla, N.S. Kulkarni, A. Muth, N.K. Kunda,
+V. Gupta, Inhalable resveratrol-cyclodextrin complex loaded biodegradable
+D.G. Gadhave et al.
+
+International Journal of Biological Macromolecules 267 (2024) 131491
+14
+nanoparticles for enhanced efficacy against non-small cell lung cancer, Int. J. Biol.
+Macromol. 164 (2020) 638–650, https://doi.org/10.1016/j.ijbiomac.2020.07.124.
+[48] V.S.S. Gonçalves, A.A. Matias, J. Poejo, A.T. Serra, C.M.M. Duarte, Application of
+RPMI 2650 as a cell model to evaluate solid formulations for intranasal delivery of
+drugs, Int. J. Pharm. 515 (2016) 1–10, https://doi.org/10.1016/j.
+ijpharm.2016.09.086.
+[49] M. Goyal, G. Tulsyan, D.D. Kanabar, T. Chavan, A. Muth, V. Gupta, Poly vinyl
+pyrrolidone (PVP) based inhaled delivery carriers for olaparib for non-small cell
+lung cancer (NSCLC) treatment, Journal of Drug Delivery Science and Technology
+87 (2023) 104767, https://doi.org/10.1016/j.jddst.2023.104767.
+[50] IJMS | Free Full-Text | Repurposing Bedaquiline for Effective Non-Small Cell Lung
+Cancer (NSCLC) Therapy as Inhalable Cyclodextrin-Based Molecular Inclusion
+Complexes, (n.d.). https: //www.mdpi.com/1422-0067/22/9/4783 (accessed
+October 17, 2023).
+[51] B. Vaidya, N.S. Kulkarni, S.K. Shukla, V. Parvathaneni, G. Chauhan, J.K. Damon,
+A. Sarode, J.V. Garcia, N. Kunda, S. Mitragotri, V. Gupta, Development of inhalable
+quinacrine loaded bovine serum albumin modified cationic nanoparticles:
+repurposing quinacrine for lung cancer therapeutics, Int. J. Pharm. 577 (2020)
+118995, https://doi.org/10.1016/j.ijpharm.2019.118995.
+[52] S.K. Shukla, V. Nguyen, M. Goyal, V. Gupta, Cationically modified inhalable
+nintedanib niosomes: enhancing therapeutic activity against non-small-cell lung
+cancer, Nanomedicine 17 (2022) 935–958, https://doi.org/10.2217/nnm-2022-
+0045.
+[53] G. Vaz, A. Clementino, E. Mitsou, E. Ferrari, F. Buttini, C. Sissa, A. Xenakis,
+F. Sonvico, C.L. Dora, In vitro evaluation of curcumin- and quercetin-loaded
+Nanoemulsions for intranasal administration: effect of surface charge and viscosity,
+Pharmaceutics 14 (2022) 194, https://doi.org/10.3390/pharmaceutics14010194.
+[54] S. Ladel, P. Schlossbauer, J. Flamm, H. Luksch, B. Mizaikoff, K. Schindowski,
+Improved in vitro model for intranasal mucosal drug delivery: primary olfactory
+and respiratory epithelial cells compared with the permanent nasal cell line RPMI
+2650, Pharmaceutics 11 (2019) 367, https://doi.org/10.3390/
+pharmaceutics11080367.
+[55] H. Choudhury, N.F.B. Zakaria, P.A.B. Tilang, A.S. Tzeyung, M. Pandey,
+B. Chatterjee, N.A. Alhakamy, S.K. Bhattamishra, P. Kesharwani, B. Gorain, S. Md,
+Formulation development and evaluation of rotigotine mucoadhesive
+nanoemulsion for intranasal delivery, Journal of Drug Delivery Science and
+Technology 54 (2019) 101301, https://doi.org/10.1016/j.jddst.2019.101301.
+[56] R. Rukmangathen, I.M. Yallamalli, P.R. Yalavarthi, Formulation and
+biopharmaceutical evaluation of risperidone-loaded chitosan nanoparticles for
+intranasal delivery, Drug Dev. Ind. Pharm. 45 (2019) 1342–1350, https://doi.org/
+10.1080/03639045.2019.1619759.
+[57] V. Fryer, J. Billings, Low-dose quetiapine causing agranulocytosis and leucopenia
+in a patient with benign neutropenia: a case report, Cureus 12 (n.d.) e8505. doi:
+https://doi.org/10.7759/cureus.8505.
+[58] H. Akel, I. Cs´oka, R. Ambrus, A. Bocsik, I. Gr´of, M. M´esz´aros, A. Szecsk´o, G. Kozma,
+S. Veszelka, M.A. Deli, Z. K´onya, G. Katona, In vitro comparative study of solid
+lipid and PLGA nanoparticles designed to facilitate nose-to-brain delivery of
+insulin, Int. J. Mol. Sci. 22 (2021) 13258, https://doi.org/10.3390/
+ijms222413258.
+[59] D. Sharma, D. Maheshwari, G. Philip, R. Rana, S. Bhatia, M. Singh, R. Gabrani, S.
+K. Sharma, J. Ali, R.K. Sharma, S. Dang, Formulation and optimization of
+polymeric nanoparticles for intranasal delivery of lorazepam using box-Behnken
+design, In Vitro and In Vivo Evaluation, Biomed Res Int 2014 (2014) 156010,
+https://doi.org/10.1155/2014/156010.
+[60] C. Kokare, D. Koli, D. Gadhave, C. Mote, G. Khandekar, Efavirenz-loaded intranasal
+microemulsion for crossing blood-CNS interfaces in neuronal-AIDS:
+pharmacokinetic and in vivo safety evaluation, Pharm. Dev. Technol. 25 (2020)
+28–39, https://doi.org/10.1080/10837450.2019.1659818.
+[61] P. Shah, P. Dubey, B. Vyas, A. Kaul, A.K. Mishra, D. Chopra, P. Patel, Lamotrigine
+loaded PLGA nanoparticles intended for direct nose to brain delivery in epilepsy:
+pharmacokinetic, pharmacodynamic and scintigraphy study, Artificial Cells,
+Nanomedicine, and Biotechnology 49 (2021) 511–522, https://doi.org/10.1080/
+21691401.2021.1939709.
+[62] R. Xu, J. Wang, J. Xu, X. Song, H. Huang, Y. Feng, C. Fu, Rhynchophylline loaded-
+mPEG-PLGA nanoparticles coated with Tween-80 for preliminary study in
+Alzheimer’s disease, Int. J. Nanomedicine 15 (2020) 1149–1160, https://doi.org/
+10.2147/IJN.S236922.
+[63] A. Arici, H. Altun, C. Acipayam, Quetiapine induced autoimmune hemolytic
+Anemia in a child patient: a case report, Clin Psychopharmacol Neurosci 16 (2018)
+501–504, https://doi.org/10.9758/cpn.2018.16.4.501.
+[64] D.S. Jain, A.N. Bajaj, R.B. Athawale, S.S. Shikhande, A. Pandey, P.N. Goel, R.
+P. Gude, S. Patil, P. Raut, Thermosensitive PLA based nanodispersion for targeting
+brain tumor via intranasal route, Mater. Sci. Eng. C 63 (2016) 411–421, https://
+doi.org/10.1016/j.msec.2016.03.015.
+[65] Q. Liang, H. Xiang, X. Li, C. Luo, X. Ma, W. Zhao, J. Chen, Z. Tian, X. Li, X. Song,
+<p>development of Rifapentine-loaded PLGA-based nanoparticles: in vitro
+characterisation and in vivo study in mice</p>, IJN 15 (2020) 7491–7507. doi:
+https://doi.org/10.2147/IJN.S257758.
+[66] D. Inoue, T. Furubayashi, A. Tanaka, T. Sakane, K. Sugano, Quantitative estimation
+of drug permeation through nasal mucosa using in vitro membrane permeability
+across Calu-3 cell layers for predicting in vivo bioavailability after intranasal
+administration to rats, Eur. J. Pharm. Biopharm. 149 (2020) 145–153, https://doi.
+org/10.1016/j.ejpb.2020.02.004.
+[67] A.K. Leonard, A.P. Sileno, G.C. Brandt, C.A. Foerder, S.C. Quay, H.R. Costantino, In
+vitro formulation optimization of intranasal galantamine leading to enhanced
+bioavailability and reduced emetic response in vivo, Int. J. Pharm. 335 (2007)
+138–146, https://doi.org/10.1016/j.ijpharm.2006.11.013.
+[68] S. Nozohouri, S.H. Esfahani, B. Noorani, D. Patel, H. Villalba, Y. Ghanwatkar, M.
+S. Rahman, Y. Zhang, U. Bickel, P.C. Trippier, V.T. Karamyan, T.J. Abbruscato, In-
+vivo and ex-vivo brain uptake studies of Peptidomimetic Neurolysin activators in
+healthy and stroke animals, Pharm. Res. 39 (2022) 1587–1598, https://doi.org/
+10.1007/s11095-022-03218-w.
+D.G. Gadhave et al.

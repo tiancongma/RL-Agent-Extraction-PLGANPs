@@ -1,0 +1,1412 @@
+Nanomed J. 12(3):421-432, Summer 2025
+
+A nanoparticle loaded nasal sol-gel system of midazolam hydrochloride
+for the management of intermittent seizures
+
+Venkatesh Prasad Srinivasan 1, Preethi Sudheer 1*, Keserla Bhavani 2, Arumugam Muthu Kumar 2
+
+1Department of Pharmaceutics, Krupanidhi College of Pharmacy, Bangalore, Karnataka, India
+2 Department of Pharmacology, Oxford College of Pharmacy, Bangalore, Karnataka, India
+
+ABSTRACT
+Objective(s): Midazolam hydrochloride is a short-acting hypnotic sedative with anticonvulsant properties.
+Considering the poor bioavailability, rapid elimination, and inconvenience of administering oral medication in
+epileptic conditions, this study proposed the use of a nanoparticulate in situ nasal gel system for midazolam to
+achieve an optimum therapeutic effect.
+Materials and Methods: Drug-loaded PLGA nanoparticles were prepared by an emulsion-solvent evaporation
+method utilizing a Box–Behnken design concentrated on particle size, zeta potential, and drug entrapment
+efficiency as responses. The optimized nanoparticles were incorporated into a 0.2% w/v gellan gum solution. The
+nanoparticle-loaded gel was studied for ex vivo drug permeation through excised sheep nasal mucosa. The
+anticonvulsive activity of the gel was compared with that of the marketed midazolam nasal spray (0.5 mg/0.1
+ml).
+Results: Particle size (200 nm to 310 nm), zeta potential (-25mV to -31mV), and entrapment efficiency
+(81.23±0.21 to 93.32±0.28%) were observed in the formulations. The drug release from the formulations over 12
+h was found to be 75.32±0.028to 84.63±0.061%. Particle size and zeta potential were best fitted to the quadratic
+model, and an entrapment efficiency linear model was suggested. The ex vivo permeation studies of the
+optimized nanoparticle-incorporated gel formulation exhibited a fourfold increase in flux and permeability
+coefficient in comparison to the pure drug-incorporated gel. The anticonvulsive effect in pentylenetetrazol (PTZ)-
+induced rat model epilepsy showed a similar anticonvulsive profile to that of the marketed nasal spray.
+Conclusion: Drug-loaded nanoparticles incorporated in situ gel would be a promising, biocompatible, and non-
+invasive approach to achieve the required therapeutic efficacy by sustained and direct action on brain cells
+
+Keywords: Nasal, Gellan gum; Midazolam; Nanoparticles; PLGA
+
+How to cite this article
+Srinivasan VP, Sudheer P, Bhavani K , Muthu Kumar A. A nanoparticle loaded nasal sol-gel system of midazolam hydrochloride
+for the management of intermittent seizures. Nanomed J. 12(3):421-432. DOI: 10.22038/NMJ.2025.80993.2006
+
+INTRODUCTION
+Epilepsy
+is
+the
+fourth
+most
+common
+neurological problem reported by the World
+Health Organization and affects individuals of all
+age groups. When two or more unprovoked
+seizures occur, the patient is diagnosed with
+epilepsy [1]. There are chances of intermittent
+seizures in epileptic conditions, which are
+characterized by continuous or repetitive seizures
+in the brain, each lasting five minutes or more for
+up to two hours, without regaining consciousness
+between seizures [2, 3].
+At present, the available treatments for
+seizures focus on prevention and control rather
+than cure. Despite existing treatment options, the
+risk of seizure occurrence and subsequent
+complications
+remains,
+potentially
+affecting
+quality of life. Although antiepileptic drugs (AEDs)
+can often manage epileptic seizures, they do not
+offer a definitive cure, as AED dosages typically
+require individual adjustment. A significant
+number of patients with epilepsy fail to respond to
+first-line
+medications.
+Consequently,
+pharmacological interventions aim to manage
+symptoms through long-term administration of
+antiepileptic drugs [4].
+Individuals with epilepsy are administered
+medications in urgent situations or for short- and
+long-term treatment. Urgent cases necessitate
+prompt intervention; in other instances, there is a
+RESEARCH PAPER
+*Corresponding author(s) Email: preetisudheer@gmail.com
+Note. This manuscript was submitted on July 07, 2024;
+approved on September 28, 2024
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+422                                                                                                                                                          Nanomed J. 12(3):421-432, Summer 2025
+
+need to minimize adverse effects to enhance
+patient
+adherence.
+Treating
+epilepsy
+with
+traditional methods presents challenges owing to
+limited bioavailability and the development of
+drug
+resistance,
+which
+diminishes
+the
+effectiveness of ongoing treatments [4].
+Several methods have been investigated for
+the delivery of epilepsy medication. While oral
+administration
+is
+common,
+we
+sometimes
+encounter
+nil-by-mouth
+conditions,
+where
+patients cannot take or swallow medications by
+mouth. Intravenous (IV) administration is a well-
+studied
+alternative
+but
+requires
+trained
+healthcare
+professionals
+for
+proper
+implementation. In cases where access is
+restricted, alternative routes of administration,
+such as rectal and buccal, have been utilized.
+However, these methods have limitations in their
+application [5].
+The challenges in epilepsy management
+stemming
+from
+the
+inability
+of
+current
+antiepileptic drugs (AEDs) to effectively cross the
+blood-brain barrier (BBB) can be addressed
+through appropriate drug delivery mechanisms.
+An ideal system would enable targeted and
+regulated AED administration to specific brain
+regions, thereby minimizing drug-related side
+effects and improving therapeutic efficacy [5].
+Research on intranasal administration of
+antiepileptic drugs (AEDs) is gaining momentum,
+with several benzodiazepine nasal sprays currently
+in clinical trials and a few already approved for
+use. This delivery method may utilize multiple
+pathways, including the trigeminal and olfactory
+nerves, as well as a systemic route. Each of these
+pathways could contribute to drug efficacy, with
+the systemic route potentially facilitating passage
+through the blood-brain barrier (BBB). This
+administration method typically yields a lower
+effective dose than alternative routes, and early
+results from intranasal delivery have been positive
+and show potential [6].
+Nasal administration offers several benefits
+over oral delivery, including a quicker action,
+reduced
+drug
+breakdown,
+and
+enhanced
+absorption. Compared with intravenous methods,
+nasal administration allows for easier self-
+administration, greater patient acceptance, and
+direct
+drug
+transport
+to
+the
+brain
+by
+circumventing the blood-brain barrier through
+olfactory nerve pathways.
+Among the drug delivery devices, nasal sprays
+are the most common. They offer benefits, such as
+ease of use and cost-effective production.
+Nevertheless, they have drawbacks including
+imprecise dosing and inadequate depth of drug
+administration. Additionally, the limited time the
+medication remains in the nasal cavity due to
+quick mucociliary elimination negatively affects its
+bioavailability [7].
+In situ nasal gels have emerged as promising
+alternatives
+to
+conventional
+gels
+and
+mucoadhesive
+powders,
+addressing
+their
+limitations and offering potential for both
+localized and systemic drug administration. These
+innovative drug delivery systems initially exist in a
+liquid state prior to application. However, upon
+administration, they transform into a gel-like
+consistency
+in
+response
+to
+specific
+microenvironmental
+conditions
+such
+as
+temperature fluctuations, pH alterations, or the
+introduction of ions [8].
+Recently, various nanostructured drug delivery
+systems have been shown to effectively control
+epilepsy
+by
+addressing
+the
+challenge
+of
+antiepileptic drug (AED) elimination at the blood-
+brain
+barrier
+(BBB)
+and
+improving
+drug
+bioavailability.
+Employing
+customized
+nanocarriers to direct drug molecules to the brain
+is a novel approach to selective brain drug
+targeting. Therefore, an optimal strategy for
+enhancing drug retention and targeting is to
+integrate nanotechnology with in situ gel
+technology [[9,10].
+Benzodiazepines, play a pivotal role in
+managing
+epilepsy
+by
+potentiating
+neural
+inhibition mediated by gamma-aminobutyric acid
+(GABA) receptors [11]. Midazolam hydrochloride,
+a derivative of benzodiazepine, was approved by
+the United States Food and United States Food
+and USFDA in 2018 for epilepsy treatment. It is
+marketed as a nasal spray for the management of
+acute,
+recurring,
+and
+stereotypical
+seizure
+episodes. The drug exhibits 27 % bioavailability
+and a 2.5-hour elimination half-life when taken
+orally [12-14].
+Although midazolam is currently available as a
+nasal spray, which is expected to surpass
+conventional nasal formulations, this study
+proposes an in situ nasal drop formulation. This
+new approach aimed to extend the retention time
+of midazolam in the nasal cavity and incorporate
+nanotechnology for additional benefits. These
+advantages include controlled drug release and
+improved drug transport across the blood-brain
+barrier (BBB) due to the size range of the particles.
+Therefore, this study proposes a convergence
+intranasal route, an in situ approach using natural
+polymer and nanoparticle technology with
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+  Nanomed J. 12(3):421-432, Summer 2025                                                                                                                                                        423
+
+biodegradable
+polymeric
+space to
+manage
+epileptic conditions.
+
+MATERIALS AND METHODS
+Materials
+The
+Mylan
+laboratories
+extended
+their
+assistance in providing midazolam. PLGA polymer,
+poloxamer 407, and gellan gum were procured
+from Sigma Aldrich Corporation. Analytical-grade
+solvents and other chemicals were of analytical
+grade.
+
+Compatibility studies-Fourier-Transform Infrared
+Spectroscopy (FTIR)
+Midazolam and the physical mixtures were kept
+on a sample holder, IR spectra (using Bruker Alpha
+II FTIR instrument recorded using Attenuated Total
+Reflection (ATR) mechanism was employed to
+record the IR spectra at 400-4000 cm-1 at a
+resolution of 1 cm-1 [15,16].
+
+Preparation of drug loaded nanoparticles
+Emulsification-solvent evaporation method:
+The polymer solution (in acetone) was added
+dropwise by syringing to 10 ml of an aqueous drug-
+surfactant solution (Poloxamer 407 1% (w/v)
+solution on a high-pressure homogenizer at 10,000
+rpm for 10 min in an ice bath. The homogenized
+nanosuspension obtained via ultrasonication was
+freeze-dried to obtain nanoparticles. [15,16].
+
+Optimization of formulation trials using Design-
+Expert® Software Version 13
+A Box-Behnken design (BBD) used to statistically
+optimize the formulations. The factors (X1-polymer
+concentration, X2; Surfactant concentration X3;
+phase volume ratio) for the responses are listed in
+(Table 1). Fifteen runs in a random order (Table 2)
+consisted of three replicates and a central point
+[17,18].
+
+Entrapment efficiency
+Nanoparticles (25mg) was added to 10 ml water
+in Eppendorf tubes, subjected to vertexing followed
+by centrifugation at 5000-15000rpm for 50 min,
+after diluting the supernatant with distilled water,
+the absorbance was measured at 219 against water
+as blank. [19].
+𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝑒𝑒𝑛𝑛𝑛𝑛 𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒  = 𝑇𝑇𝑇𝑇𝑇𝑇𝑇𝑇𝑇𝑇 𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐−𝑓𝑓𝑓𝑓𝑓𝑓𝑓𝑓 𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐∗100
+𝑇𝑇𝑇𝑇𝑇𝑇𝑇𝑇𝑇𝑇 𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑 𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐𝑐
+
+Table 1. Factors and responses selected in Box Behnken design
+Factors
+Ranges
+Low level
+High level
+(X1) Polymer conc. (mg)
+100
+500
+(X2) Surfactant conc. (mg)
+150
+300
+(X3) Phase volume ratio (%)
+20
+40
+Responses
+Lower limit
+Upper limit
+(R1) Drug entrapment efficiency (%)
+80
+90
+(R2) Particle size(nm)
+50
+600
+(R3) Zeta potential (mV)
+≥-30
+
+Table 2.  Formulations suggested by the experimental design
+Formulation code
+Drug (mg)
+Polymer concentration
+(mg)
+Surfactant concentration
+(mg)
+Phase volume ratio (%)
+
+T1
+250
+500
+150
+30
+T2
+250
+100
+300
+30
+T3
+250
+300
+150
+20
+T4
+250
+300
+225
+30
+T5
+250
+300
+300
+20
+T6
+250
+500
+225
+20
+T7
+250
+300
+225
+30
+T8
+250
+500
+225
+40
+T9
+250
+300
+225
+30
+T10
+250
+100
+225
+20
+T11
+250
+100
+225
+40
+T12
+250
+300
+300
+40
+T13
+250
+100
+150
+30
+T14
+250
+300
+150
+40
+T15
+250
+500
+300
+30
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+424                                                                                                                                                          Nanomed J. 12(3):421-432, Summer 2025
+
+Particle size analysis and zeta potential
+The mean particle size distribution and zeta
+potential were determined via SZ-100 HORIBA via
+dynamic light scattering (DLS) and electrophoretic
+methods in a zeta measurement cell, respectively. The
+diluted samples were analyzed at a scattering angle of
+90° and 25.2 °C. The electrophoretic mobility of the
+nanodispersion was measured by laser Doppler
+velocimetry at 25°C [20].
+
+Drug release profile
+In vitro experiments were conducted using a
+diffusion cell setup. Approximately 25 mg of
+nanoparticles was held on a dialysis membrane
+between the two compartments of the diffusion cell.
+The donor side had (nanoparticles and 1 ml of (SNF),
+while the receptor side (had 50 ml of simulated nasal
+fluid at pH 6.4). The receptor compartment had a
+constant temperature of   35°C, and was magnetically
+stirred at 120 rpm. For a 1 ml volume of receiver fluid
+drawn on an hourly basis, an equal volume of SNF was
+added to the receiver compartment to ensure sink
+conditions. The drug concentration was determined
+spectrophotometrically after appropriate dilution at a
+wavelength of 219 nm [21].
+
+Statistical treatment of the data
+All three responses, such as particle size, zeta
+potential, and drug entrapment, were statistically
+analyzed using Pearson’s correlation coefficient.
+
+Optimization of formulation trials
+After evaluating the three responses using
+statistical principles and understanding the design
+space through graphical methods using the desirability
+criterion, the optimum formulation was selected
+
+Scanning Electron microscopy (SEM)
+After sputtering the dispersion with gold, the
+samples were spread onto a sample holder. Images
+were obtained at a voltage of 30 KV under argon
+purging [22].
+
+Differential scanning calorimetry (DSC)
+Approximately 5 mg of midazolam, the physical
+mixture, and the formulation were precisely placed in
+non-hermetically sealed aluminium pans and crimped.
+Constant heat was supplied (0°C to 350°C) at 10 °C/min
+with nitrogen purging at 40 ml/min; the DSC
+thermograms were recorded using Shimadzu DSC-60,
+Japan [20].
+
+Preparation of nanoparticulate in situ nasal gel
+The study utilized deacetylated gellan gum at
+concentrations of 0.05, 0.1, 0.2, 0.3, and 0.5% w/v. The
+gelling
+properties
+and
+viscosities
+of
+these
+concentrations were recorded using SNF at 34°C [23].
+Midazolam-loaded nanoparticles (equivalent to the
+prescribed dose of 5 mg/mL, weighed according to its
+drug content) were mechanically mixed with gellan
+gum solution (0.2%w/w) to form a nanoparticle-loaded
+in situ gel [24].
+
+Evaluation
+pH and Viscosity
+pH measurements were performed using a glass
+electrode.  Viscosity imparts retentive properties to
+nasal mucosa. Viscosity measurements were carried
+out in triplicate at angular velocities of 50–100 rpm at
+37 °C using a brook-field viscometer [24].
+
+Drug content
+A one ml volume of gel was placed in a 10 ml
+volumetric flask, suitably diluted with double distilled
+water, and spectrophotometric analysis of the sample
+was carried out at 214 nm [24].
+
+Ex vivo permeation studies
+Fresh nasal mucosa from sheep, with its olfactory
+region removed, was placed into the SNF. The samples
+were
+then
+positioned
+between
+the
+two
+compartments of the assembly, referred to as the
+donor and receiver, which contained phosphate
+buffer solution at pH 7.4. After adding the
+nanoparticulate gel to the donor side, samples were
+withdrawn at suitable time intervals, analyzed
+spectroscopically, and the drug concentration was
+calculated [24].
+
+Stability study
+Two stability conditions were used in this study: 40
+⁰ C ± 2 ⁰ C 75 ± 5% relative humidity, and (25 °C ± 2) 65
+± 5% relative humidity. The gel was studied for its
+viscosity, drug content, and pH.
+
+Anticonvulsant activity
+All animal experiments comply with the
+committee for the purpose of control and supervision
+of experiments on animals (CPCSEA) guidelines and
+were carried out in accordance with prevention of
+cruelty to animal (PCA) Act, 1960.  Healthy Wistar rats
+(150-200 g) (maintained by CPCSEA guidelines) of
+either sex, provided by animal house of the institution.
+The animals were divided into IV groups (n=3 rats per
+group). Group I received (saline) and group II received
+standard drug (PTZ). Group III, Nanoparticle in-situ gel
+(5 mg/1 ml), and Group IV, marketed formulation of
+midazolam nasal spray (Medistat, Alteus Biogenics)
+(0.5 mg midazolam/0.1 ml each metered dose in
+single spray). The volume of the 0.005 ml (0.5 mg
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+  Nanomed J. 12(3):421-432, Summer 2025                                                                                                                                                        425
+
+Table 3.Percentage yield and physical observation of blank formulations
+Trial no.
+PLGA (mg)
+Poloxamer 407 (%)
+Percentage Yield (%)
+Observation
+1
+100
+0.1
+80.12
+Slightly sticky
+2
+100
+1
+65.14
+Slightly sticky
+3
+100
+0.3
+82.56
+Free flowing
+4
+500
+0.2
+61.66
+Free flowing
+5
+500
+0.5
+34.12
+Free flowing
+6
+500
+1
+48.2
+Free flowing
+7
+700
+0.7
+40.65
+Free flowing
+8
+500
+0.5
+43.06
+Free flowing
+9
+700
+0.9
+36.95
+Free flowing
+10
+500
+1
+33.99
+Free flowing
+11
+500
+0.3
+88.15
+Free flowing
+midazolam /0.1 ml) of marketed nasal spray and
+0.003 ml of nanoparticulate in situ drops were
+instilled into each nostril animal using a
+micropipette.
+Convulsions
+were
+induced by
+administering pentylenetetrazole (PTZ) via the
+intraperitoneal route at a dose level (40 mg/kg)
+immediately
+after
+administration
+of
+the
+formulations. Parameters such as the onset of
+seizures, duration, and recovery time were
+observed, and the data were statistically analyzed
+using ANOVA and the Brown-Forsythe test [25].
+
+RESULTS AND DISCUSSION
+Preparation of Nanoparticles
+Initially, blank emulsions were prepared to
+determine the effect of the concentration of the
+polymer (PLGA), surfactant (poloxamer), and phase
+volume ratio (organic to aqueous phase) on the
+formation of nanoparticles and their physical
+properties, such as flowability and % yield, as
+shown in Table 3. In preliminary trials, the product
+obtained was sticky and non-free-flowing. The glass
+transition temperature of the polymer has been
+reported to be 45°C. The introduction of heat into
+the emulsion system at a high speed might have
+converted the polymer to a rubbery stage, and thus,
+changes were observed physically. Drug-loaded
+nanoparticles
+were
+prepared
+under
+cooling
+conditions and evaluated for drug content,
+entrapment efficiency, and particle size.
+
+Evaluation of the responses and statistical
+treatment of the data
+Particle size and distribution determined by DLS
+ranged from 212 nm to 309 nm, and the poly
+dispersibility index of all formulations was less than
+0.162. The particle size and distribution patterns
+indicated that the influence of the formulation
+variables and processing conditions was suitable for
+obtaining nanosized particles. A low polydispersity
+value
+indicates
+minimum
+aggregation
+of
+nanoparticles
+and
+their
+consistency
+during
+manufacturing.
+Drug
+concentration
+had
+a
+considerable impact on particle size. A higher
+concentration (500 mg) of PLGA increased the
+particle size to 309 nm, as in formulation T15.
+Similarly, the observed particle size was lower
+than 212 nm when using a lower polymer
+concentration. The larger particle size at higher
+concentrations may be attributed to viscous forces,
+which result in the coagulation of droplets on
+emulsification and, thus, on drying, resulting in
+larger particles. This variation in the size range may
+also be due to the effect of polylactic and glycolic
+acid concentrations on the particle size. The phase
+volume ratio had an impact on the particle size. The
+particle size was larger when the phase volume
+ratio was 40 %, as in T11, T12, and T14. However,
+the phase volume ratio and polymer concentration
+could affect particle size, as observed in the other
+formulations.
+The zeta potential indicates the net surface
+charge and its primary factor that determines the
+stability of the colloids. The zeta ranged between -
+25 mV and -31 mV, which means that the
+nanoparticles offer relatively good stability under
+the chosen processing conditions. The negative zeta
+potential was attributed to the terminal carboxylic
+acid group. A five-mV difference was observed from
+the T3 formulation, with a maximum particle size of
+212 nm, to the T15 formulation, with a particle size
+of 309 nm. This effect may be due to the larger
+particle size; therefore, a low charge density on the
+surface resulted in fewer repulsive forces.
+Drug entrapment efficiency ranged from
+81.23±0.21 to 93.32±0.28%. The entrapment
+efficiency was greatly affected by the polymer,
+surfactant concentration, and phase volume ratio;
+in T2, T10, T11, and T13, the polymer concentration
+slightly
+affected
+the
+entrapment
+efficiency,
+whereas no notable changes were observed by
+changing the surfactant amount. The phase volume
+ratio considerably affected entrapment efficiency,
+as formulations T8, T11, T12, and T14 had relatively
+lower entrapment efficiencies. However, drug
+entrapment efficiency was not affected by phase
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+426                                                                                                                                                          Nanomed J. 12(3):421-432, Summer 2025
+
+Table 4. Results of experimental trials
+Formulation code
+Particle size (nm)
+Zeta potential (mV)
+Drug entrapment efficiency (%)
+T1
+251
+29
+90.32±0.23
+T2
+233
+28
+85.04±0.112
+T3
+212
+31
+90.33±0.23
+T4
+213
+28
+88.62±0.20
+T5
+275
+28
+91.52±0.19
+T6
+271
+30
+93.03±0.25
+T7
+220
+29
+89.12±0.18
+T8
+292
+28
+93.32±0.28
+T9
+213
+27
+85.2±0.25
+T10
+215
+30
+86.03±0.18
+T11
+216
+29
+83.23±0.23
+T12
+267
+28
+88.06±0.23
+T13
+212
+28
+85.23±0.26
+T14
+267
+28
+81.23±0.21
+volume alone. Instead, it was also affected by the
+cofactor; the concentration of the polymer, as in
+the T8 formulation, had a high drug loading, which
+used the highest polymer concentration. When the
+phase volume ratio was 20%, as in T3, T5, T6 and
+T10,
+the
+drug
+entrapment
+efficiency
+was
+90.33±0.23, 91.52±0.19,.03±0.25 and 86.03±0.18 %
+respectively.
+However, at
+T10,
+the
+lowest
+concentration of the polymer might have reduced
+the entrapment efficiency to 86.03±0.18%. Higher
+phase volume ratios lead to a large concentration
+of the organic phase; thus, emulsification results in
+higher resistive forces, resulting in larger particles
+and lower entrapment efficiency. (Table 4)
+All research findings obtained were subjected to
+statistical analysis via correlation to understand the
+influence of each parameter on the other
+parameters. The correlation typically has values
+ranging from -one to zero–one. The results indicate
+that the Pearson correlation coefficient of -0.4326
+between particle size and zeta potential shows that
+particle size has an inverse effect on zeta potential,
+and vice versa. The correlation between particle
+size and entrapment efficiency was 0.460432,
+indicating a linear relationship between both
+responses.
+
+In vitro drug release studies
+The in vitro drug release from the formulations
+at 12 h ranged from 75.32±0.028 to 84.63±0.061%
+shown in Fig.1; for the first half an hour,
+approximately 8.27±0.03 to10.76±0.06 % drug
+release was observed, whereas over seven h,
+50.6±0.032 % to 59.9±0.012 % drug release was
+observed. In the next 7 h, approximately 30 % of the
+drug was released from various formulations on an
+average. A rapid initial drug release in 30 min
+accounted for the surface drug, and a sustained
+effect was observed in the later phase.   The slow
+and sustained release of drugs from NPs was due to
+slow degradation/erosion from the backbones after
+fluid entry and the slow degradation and erosion of
+the backbone. An ANOVA was carried out for the in
+vitro drug release data, and the results indicated
+that there was no significant difference between
+the results, as supported by P (0.504≥0.05).
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+  Nanomed J. 12(3):421-432, Summer 2025                                                                                                                                                        427
+
+Fig. 1. In vitro drug release profile of drug loaded formulations (T1-T15)
+Fig. 2. 3D response surface of (A) particle size (B) zeta potential (C) transmittance
+Responses evaluation
+To understand and identify combinations of
+variables or factors that jointly optimize a response,
+a response evaluation was conducted. This will be
+used to analyze the impact of multiple factors on a
+selected response.  Each response will be analyzed
+separately using a fit model concept.   A "Box
+Behnken design" was used in optimization trials
+(factors – polymer concentration, concentration,
+concentration of surfactant and phase volume
+ratio) for outcomes such as size, zeta potential and
+drug entrapment efficiency—the experimental
+design generated 15 experimental trials. The model
+fit summary suggested a quadratic fit for particle
+size and zeta potential and a linear model for
+entrapment efficiency (P<0.05).
+The
+polymer
+concentration
+significantly
+affected the particle size (P<0.0001), and a positive
+effect
+was
+observed.
+Similarly,
+surfactant
+concentration significantly affected the particle size
+and had an inverse effect on the particle size.
+(P<0.004). However, the interactive effect of these
+two factors had a positive impact on the particle
+size distribution. As the phase volume ratio
+increased, particle size decreased. A similar
+observation
+was
+made
+for
+the
+surfactant
+concentration. The polymer concentration and
+phase volume did not significantly contribute to the
+particle size distribution, although they had a
+positive effect. All except the surfactant and phase
+volume interactions brought large particles into the
+emulsification. The quadratic effect of all three
+factors was significant for the particle size P<0.05).
+The surfactant concentration and phase volume
+ratio significantly affected the zeta potential. (p
+<0.0202). High-order interactions were observed
+only in the phase volume ratio of the zeta potential.
+The remaining factors had no significant effects. All
+parameters except the phase volume had a positive
+impact on the zeta potential. The interactive effect
+between the polymer and surfactant and the
+polymer and phase volume increased the zeta
+potential, but it was not significant.
+The polymer concentration and phase volume
+ratio
+significantly
+affected
+the
+drug-loading
+efficiency; all the factors had a linear relationship,
+and a high-order effect was observed. The other
+two factors increased the drug entrapment
+efficiency, except for the phase volume ratio.
+(Fig.2.)
+A desirability approach of 0.91 aided in selecting
+the formula with a polymer concentration,
+surfactant concentration and phase and volume
+ratio of 300 mg, 225 mg, and 30%, respectively.
+
+Evaluation of optimum formula
+The optimum formulation (at a concentration of
+300 mg of polymer, 250 mg of surfactant, and phase
+volume ratio of 30) suggested a maximum
+desirability of 1, particle size of 220 nm, zeta
+potential of- 29mV and drug entrapment efficiency
+of 89 %. Optimum Formulation. The optimized
+formula had a particle size of 216.1 nm, zeta vale of
+30.2Mv, 94.3±0.09 % drug content, and 89.23± 1.12
+% entrapment efficiency, respectively. (Fig.3 and
+Fig. 4.) The results suggested that the optimum
+formulation was in the nanosized range, and that
+the predicted particle size was almost achieved. The
+formulation exhibited good stability, as the zeta
+value was ≥ 30 mV, suggesting minimal aggregation
+of the particles. Drug loading was found to be
+almost the same as the predicted value.
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+428                                                                                                                                                          Nanomed J. 12(3):421-432, Summer 2025
+
+Fig. 3.  Particle size of the optimum formulation
+
+Fig. 4.  Zeta potential of the optimum formulation
+The percentage biases of 1.8, 4.1, and 0.25, for
+particle size, zeta potential, and drug entrapment
+efficiency, respectively, indicate that there was no
+significant difference between the predicted and
+observed results.
+In nanotechnology, particles range between 1-
+100 nm are referred to as nanoparticles. A size
+range of 100 nm -300 nm is ideal for brain delivery
+via
+the
+BBB.
+In
+addition,
+for
+polymeric
+nanoparticles, the range recommended via the
+olfactory region 5 nm -200 nm. Therefore, the
+results   of all the formulation trials and the
+optimum formulation’s particle size suggest the
+suitability of these to cross both the olfactory
+region and BBB to the brain. The zeta values were
+related to particle size.  There is an introduction
+surface charge density due to nanosization, and
+therefore, the chances of agglomeration are higher.
+Nevertheless, the zeta values were promising, and
+the results indicated good stability of the system.
+Scanning Electron Microscopy
+As observed Fig 5. The optimized drug-loaded
+nanoparticles were nearly spherical. Discrepancies
+and uniformity were evident among the particles.
+Zeta potential values of approximately, in turn,
+supported this -30mV, indicating the absence of
+mere aggregation of particles.
+
+Fig.5. SEM photograph of nanoparticles
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+  Nanomed J. 12(3):421-432, Summer 2025                                                                                                                                                        429
+
+Fig. 6. DSC thermogram of (a) Pure drug (b) Physical mixture (C) Optimised nanoparticle incorporated gel
+
+Differential scanning colorimetry
+The
+DSC
+thermo-grams
+of
+Midazolam
+Hydrochloride, a physical mixture of drug PLGA,
+Poloxamer 407, gellan gum and nanoparticles
+were analyzed to study the existence of
+interactions, if any, between the drug and
+excipients
+in
+the
+nanoparticles.
+DSC
+thermogram of pure Midazolam Hydrochloride
+exhibited endothermic thermal transitions at
+164°C (Fig. 6) corresponding to its melting
+temperature (Tm) (curve a), whereas in graph b,
+the same peak is observed at 143.4°C; perhaps
+the drug is more solubilized in the surfactant,
+and still, the endotherm 260–261°C, which
+corresponds to its melting temperature of PLGA
+(curve c). The thermogram of drug-loaded
+nanoparticles
+exhibited
+endotherms
+corresponding to the melting endotherms of the
+PLGA polymer (curve b), poloxamer at 59.180 °C,
+and gellan gum at 113.280 °C. The drug peak was
+absent in thermogram C, whereas the PLGA
+peak was 259.01°C and the poloxamer peak was
+52.02°C. The two additional peaks in the
+thermogram may be due to the degradation
+products
+of
+gellan
+gum
+at
+very
+high
+temperatures.
+
+Gelation studies with deacetylated gellan gum
+The in situ gelling properties of (0.05%w/v-
+0.2%w/v) claim that gelling was very low at low
+concentrations of gellan gum; from 0.2%w/v
+concentration, gel formation was observed, and
+hereafter, the firmness of the gel increased with
+an increase in the concentration of gellan gum.
+(Table 5). The viscosity of the gel formulations
+increased to 0.4%w/v. However, the firmness of
+the gel was taken as a cut-off point, and after this
+concentration, the gel was very firm and the
+viscosity decreased. Based on these results, 0.2%
+w/v gel was selected to incorporate the optimized
+nanoparticle
+formula.
+As
+reported
+in
+the
+literature, the concentration of gellan gum affects
+gelation, and an optimum concentration is
+required to produce gel formation with both
+mono-and divalent ions present in SNF, which
+bridges the polymer chains.
+
+Evaluation of Nano particle loaded in situ Gel
+formulation
+A colorless gel formulation using 0.2%w/v gel
+was used to incorporate nanoparticles at a dose of
+5 mg /0.1 ml. The nanoparticle gel had a drug
+content of 94.3±0.09%, pH of 5.9±1.02, and
+viscosity of 109±0.102 (cP).
+
+Table 5. Gelation studies
+Sl No
+No
+Concentration of Gellan
+Gum (%W/V)
+Viscosity      (Cps)
+Gelation in presence of
+SNF
+Without SNF
+SNF
+G1
+0.05
+21.4 ±0.103
+41.4±0.12
+No Gelation
+G2
+0.1
+23.9±0.51
+57.8±0.32
+Slight Gelation
+G3
+0.2
+30.6±0.03
+114.0±0.21
+Firm gel formation
+G4
+0.4
+32.6±0.12
+650.2±0.012
+Thickened gel
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+430                                                                                                                                                          Nanomed J. 12(3):421-432, Summer 2025
+
+Fig. 7.  Ex-vivo permeation studies
+
+Fig. 8. FT-IR spectrum-  Spectra 1) pure Midazolam Hydrochloride Spectra 2) physical mix Spectra 3) Nanoparticulate gel
+Ex-vivo permeation profile
+ The rate of permeation was 72±0.20 and
+68.02±0.05 in the first seven h, 87.02±0.23% and
+94.72±0.20 % in 24 from drug-loaded gel and
+nanoparticle-loaded gels, respectively. There was a
+five-fold increase in the average flux and seven-fold
+increase in the permeability coefficient values of the
+nanoparticulate gel compared to the pure drug gel.
+The nanoparticles formulation showed activity up to
+94.72±0.20 in 24 h against 79.02±0.02%, confirming
+prolonged gel activity. (Fig 7.)
+
+FTIR spectrum
+The IR spectra of Midazolam Hydrochloride
+revealed characteristic absorption bands in the
+following IR regions: drug peaks at 3073 cm-1 (N-H
+stretch), 2847(C-H stretch), 2947 cm−1 carbonyl
+stretch), 1642 cm-1 C-N stretch, and 533 cm-1. C-Cl
+stretch and 972 cm-1 C=C bending alkenes. Repetition
+of these bands in the physical blend and formulation
+spectra showed agreement with the drug and
+excipients (PLGA, poloxamer, gellan gum), as shown in
+Fig. 8.
+
+Short term stability studies
+The Midazolam Hydrochloride-loaded optimum
+formulation was subjected to short-term stability
+studies for 90 days under the aforementioned
+conditions. The viscosity and pH results showed that
+there was no change under different storage
+conditions. The maximum drug content was 93±0.02
+% at 25 ±2°C RH and 91±0.13 at 40±2°C RH. This may
+be due to the retention of the amorphous matrix drug
+shelf life, which minimizes the expulsion of the drug
+during storage
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+  Nanomed J. 12(3):421-432, Summer 2025                                                                                                                                                        431
+
+Fig. 9. Various stages of seizures observed after intraperitoneal administration of PTZ
+
+Table 6. Results of anticonvulsant activity
+Treatment Groups
+Onset of seizure after
+administering PTZ (Sec)
+Seizure duration
+(sec)
+Seizure (%)
+Supine Recovery (min)
+Saline
+-
+-
+-
+-
+PTZ
+60± 2.12
+306± 1.35
+100
+10
+Nanoparticulate in
+situ gel
+182±2.34
+192±3.23
+20
+5
+marketed formulation
+180±1.16
+186±2.25
+20
+5
+Anti-convulsive activity
+The nanoparticle-loaded in situ gel was studied
+for its anticonvulsant activity against the marketed
+midazolam nasal spray in rats with PTZ-induced
+seizures. (Fig. 9) The onset, duration, and recovery
+of seizures were observed. (Table 6) The seizure
+onset started from 60± 2.12 sec for the induced
+group, whereas 182±2.34 and 180±1.16 sec for the
+formulation-induced and marketed spray group,
+indicating the in-situ drops' potential to reduce
+seizure initiation. The seizure duration was 1.6
+times less in the formulation group, which was on
+par with the marketed spray group. The %
+protection of the formulation in the control group
+was 62%, and the % protection was the same for the
+formulation compared to the reference group. The
+pharmacodynamic
+responses
+obtained
+were
+subjected to statistical analysis using one-way
+ANOVA. The P value (time of onset seizure < 0.001
+and duration of seizure0.0001) indicates that the
+results are statistically significant, followed by
+Brown Forsythe's test to confirm ANOVA (p< 0.05).
+
+CONCLUSION
+In the present study, Midazolam Hydrochloride
+Nanoparticles were developed for intranasal
+application to provide the additional benefit of
+sustained drug action and direct action on brain
+cells. Drug-loaded PLGA nanoparticles were
+successfully prepared using the emulsion-solvent
+evaporation method. Characterization studies
+suggested that the methodology adopted and the
+processing conditions significantly affected the
+particle size, zeta potential, and entrapment
+efficiency. The surface response methodology
+‘’Box-Behnken
+design
+model’
+successfully
+optimized the formulation trials. Drug-excipient
+interaction studies using IR and DSC proved that the
+excipients were safe and compatible. The
+comparative ex-vivo profile of the nanoparticle-
+incorporated gel vs. the pure drug gel confirmed its
+potential for permeation via the nasal mucosal
+membrane and further drug action. The anti-
+convulsant activity study in experimental rats
+proved the developed formulation’s ‘me too’ action
+in comparison with the marketed nasal spray.
+Therefore,
+this
+study
+concluded
+that
+the
+nanoparticulate colloidal drug delivery system of
+Midazolam Hydrochloride using PLGA, poloxamer
+407, and gellan gum is expected to provide an
+alternative to drug therapy via the nasal route to
+the brain, with minimal trouble to the patient from
+an administrative point of view.
+
+ETHICAL CONSIDERATIONS
+The approval for the experiment was obtained
+from the Institutional Animal Ethics Committee
+(IAEC), (Ref No: KCP/IAEC/PCOL/PCEU/65/2020).
+
+DATA AVAILABILITY STATEMENT
+Authors state that all data is presented in the
+manuscript.
+
+VP. Srinivasan et al. / Nanoparticle laden sol-gel system of midazolam hydrochloride
+
+432                                                                                                                                                          Nanomed J. 12(3):421-432, Summer 2025
+
+CONFLICTS OF INTEREST
+The authors declare no conflict of interest.
+
+FUNDING
+Nil
+
+ACKNOWLEDGEMENT
+The authors thank Krupanidhi College of
+Pharmacy for the facilities provided.
+
+REFERENCES
+1. Manford M. Recent advances in epilepsy. J Neurol.
+2017; 264(8):1811–1824.
+2. Olkkola KT, Ahonen J. Midazolam and other
+benzodiazepines. Modern Anesthetics. 2008:335-
+360.
+3. Cornett EM, Nemomsa MA, Turbeville B, Busby MA,
+Kaye JS, Kaye AJ, et al. Midazolam nasal spray to treat
+intermittent, stereotypic episodes of frequent seizure
+activity:
+pharmacology
+and
+clinical
+role,
+a
+comprehensive
+review.
+Health
+Psychol
+Res.
+2022;10(5).
+4. Erdő F, Bors LA, Farkas D, Bajza Á, Gizurarson S et al.
+Evaluation of intranasal delivery route of drug
+administration for brain targeting. Brain Res bulletin.
+2018; 143:155-170.
+5. Bonferoni MC, Rassu G, Gavini E, Sorrenti M,
+Catenacci L, Giunchedi P et al. Nose-to-brain delivery
+of antioxidants as a potential tool for the therapy of
+neurological
+diseases.
+Pharmaceutics.
+2020;
+12(12):1246.
+6. Patel S, Koradia H, Parikh R. Design, and development
+of intranasal in situ gelling system of Midazolam
+hydrochloride using 32 full factorial design. J Drug
+Deliv Sci and Technol. 2015; 30:154-162.
+7. Gholizadeh H, Cheng S, Pozzoli M, Messerotti E, Traini
+D, Young P, Kourmatzis A, Ong HX et al. Smart
+thermosensitive chitosan hydrogel for nasal delivery
+of ibuprofen to treat neurological disorders. Expert
+Opin Drug Deliv. 2019; 16 (4):453-466.
+8. Kapoor M, Cloyd JC, Siegel RA. A review of intranasal
+formulations
+for
+the
+treatment
+of
+seizure
+emergencies. J Controlled Release. 2016; 237:147-
+159.
+9. Su Y, Sun B, Gao X, Dong X, Fu L, Zhang Y, et al.
+Intranasal delivery of targeted nanoparticles loaded
+with miR-132 to brain for the treatment of
+neurodegenerative
+diseases.
+Front
+Pharmacol.
+2020;11.
+10. Zeeshan M, Mukhtar M, Ul Ain Q, Khan S, Ali H.
+Nanopharmaceuticals: A Boon to the Brain-Targeted
+Drug Delivery, Pharmaceutical Formulation Design -
+Recent Practices. IntechOpen; 2020.
+11. Pal SL, Jana U, Manna PK, Mohanta GP, Manavalan R.
+Nanoparticle: An overview of preparation and
+characterization. J Applied Pharm Sci. 2011;(6):228-
+34.
+12. Formica ML, Real DA, Picchio ML, Catlin E, Donnelly
+RF, Paredes AJ. On a highway to the brain: A review
+on nose-to-brain drug delivery using nanoparticles.
+Appl Mater Today. 2022; 29(101631):101631.
+13. Islam SU, Shehzad A, Ahmed MB, Lee YS. Intranasal
+delivery of nanoformulations: A potential way of
+treatment for neurological disorders. Molecules.
+2020;25(8):1929.
+14. Sonawane RO, Bachhav Y, Tekade AR, Pardeshi CV.
+Nanoparticles for direct nose-to-brain drug delivery:
+Implications of targeting approaches. In: Direct Nose-
+to-Brain Drug Delivery. Elsevier. 2021: 157–168.
+15. Nigam K, Kaur A, Tyagi A, Nematullah M, Khan F,
+Gabrani R, Dang S et al. Nose-to-brain delivery of
+lamotrigine-loaded PLGA nanoparticles. Drug Deliv
+Transl Res. 2019;9(5):879-890.
+16. Kızılbey K. Optimization of rutin-loaded PLGA
+nanoparticles synthesized by single-emulsion solvent
+evaporation method. ACS Omega. 2019;4(1):555–
+562.
+17. Joshi AS, Patel HS, Belgamwar VS, Agrawal A, Tekade
+AR. Solid lipid nanoparticles of ondansetron HCl for
+intranasal delivery: development, optimization and
+evaluation. J Mater Sci: Mater Med. 2012;23(9):2163-
+2175.
+18. Sharaf NS, Shetta A, Elhalawani JE, Mamdouh W.
+Applying Box–Behnken Design for formulation and
+optimization of PLGA-coffee nanoparticles and
+detecting enhanced antioxidant and anticancer
+activities. Polymers (Basel). 2021; 14(1):144.
+19. Wavikar PR, Vavia PR. Rivastigmine-loaded in situ
+gelling nanostructured lipid carriers for nose to brain
+delivery. J Liposome Res. 2015; 25(2):141-149.
+20. Abdel-Bar HM, Abdel-Reheem AY, Awad GA, Mortada
+ND. Evaluation of brain targeting and mucosal
+integrity of nasally administrated nanostructured
+carriers of a CNS active drug, clonazepam. J Phar &
+Pharm Sci. 2013; 16(3):456-469.
+21. Fahmy UA, Badr-Eldin SM, Ahmed OA, Aldawsari HM,
+Tima S, Asfour HZ, Al-Rabia MW, Negm AA, Sultan
+MH, Madkhali OA, Alhakamy NA et al. Intranasal
+niosomal in situ gel as a promising approach for
+enhancing flibanserin bioavailability and brain
+delivery: In vitro optimization and ex vivo/in vivo
+evaluation. Pharm. 2020;(6):485.
+22.  Bhavna, Md, S., Ali, M., Ali, R., Bhatnagar, A.,
+Baboota, S., & Ali, J, et al. brain targeting of Donepezil
+nanosuspension intended for nose: In vitro and in
+vivo safety evaluation. Int J Bio Macromol 2014;
+67:418–425.
+23. Sherafudeen SP, Vasantha PV. Development and
+evaluation of in situ nasal gel formulations of
+loratadine. Res Pharm Sci. 2015; (6):466.
+24. Deshkar SS, Jadhav MS, Shirolkar SV. Development of
+carbamazepine nanostructured lipid carrier loaded
+Thermosensitive gel for intranasal delivery. Adv
+Pharm Bull. 2020; 11(1):150–162.
+25. Nogueira C, Lemos-Senna E, da Silva Vieira E, Sampaio
+TB, Mallmann MP, Oliveira MS, et al. Β-caryophyllene
+cationic nanoemulsion for intranasal delivery and
+treatment of epilepsy: Development and in vivo
+evaluation of anticonvulsant activity. J Nanopart Res.
+2023; 25(1).

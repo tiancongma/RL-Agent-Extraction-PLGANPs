@@ -1,0 +1,1083 @@
+Oral delivery of recombinant outer membrane protein 23-based
+nanovaccine can minimize Aeromonas hydrophila infection in
+Oreochromis niloticus
+Mave Harshitha a
+, Dincy Lourdh DSouza a, Banada Thimmappa Rakshitha a,
+Indrani Karunasagar b, Anirban Chakraborty c, Biswajit Maiti a,*
+a Nitte (Deemed to be University), Nitte University Centre for Science Education and Research, Department of Bio & Nano Technology, Paneer Campus, Deralakatte,
+Mangalore, 575018, India
+b Nitte (Deemed to be University), DST Technology Enabling Centre, Paneer Campus, Deralakatte, Mangaluru, 575018, India
+c Nitte (Deemed to be University), Nitte University Centre for Science Education and Research, Department of Molecular Genetics & Cancer, Paneer Campus, Deralakatte,
+Mangalore, 575018, India
+A R T I C L E  I N F O
+Keywords:
+Nanovaccine
+Outer membrane protein
+Tilapia
+Immune response
+Real-time PCR
+A B S T R A C T
+Significant financial losses are incurred annually in commercial aquaculture due to the opportunistic pathogen
+Aeromonas hydrophila outbreaks in warm-water fish species. Thus, an appropriate vaccine and an efficient de­
+livery system must be developed to combat such infectious diseases effectively. This study focused on developing
+an outer membrane protein (OMPs)-based nanovaccine employing the double emulsion method, integrating it in
+a biodegradable polylactic-co-glycolic acid (PLGA) polymer. The resultant nanoparticle, carrying the recombi­
+nant protein Omp23 (rOmp23), had a size of 346.5 nm, an impressive 74.45 % encapsulation efficiency, and a
+polydispersity index of 0.318. Additionally, the spherical shape of the PLGA-Omp23 nanoparticles was confirmed
+by scanning electron microscope. Further, to evaluate their in vivo efficacy, tilapia fish were administered the
+vaccine-incorporated feed orally for 21 days post-challenge with the target pathogen. Cytokine expression levels
+were monitored at intervals to track the activation of targeted immune genes and to assess nonspecific immune
+response parameters. The obtained relative percentage survival of 73 %, highlighted the therapeutic promise of
+the PLGA-encapsulated OMP-based nanovaccine. This study demonstrates the utility of nanoparticle system
+designed to encapsulate the outer membrane protein as a potential oral fish vaccine for infectious diseases. This
+strategy could be an efficient, cost-effective, and least stressful mode of vaccination to manage infectious
+diseases.
+1. Introduction
+Aquaculture is the world’s most rapidly expanding food sector,
+boasting a global production of 85.3 million tons in 2019 [1,2], which
+increased to 122.6 million tonnes in 2020 [3]. Fish farming, a
+billion-dollar industry, stands out as one of the fastest-growing sectors in
+animal food production, providing a stable source of income for millions
+and playing a vital role in ensuring food security and driving economic
+development [4]. However, the most formidable challenge confronting
+this industry remains the widespread occurrence of diseases leading to
+annual global losses surpassing $10 billion [5]. Aeromonas hydrophila, an
+opportunistic pathogen of warm water fish, primarily causes disease
+outbreaks in freshwater aquaculture, leading to global food and nutri­
+tional insecurity and the accompanying economic loss [6,7].
+Geographically, A. hydrophila infections are reported worldwide, span­
+ning more than 20 countries across six continents [8]. While antibiotics
+or chemotherapeutics are commonly used for fish disease treatment,
+they are associated with negative consequences such as drug resistance,
+consumer safety due to residues, and environmental impact [9]. Against
+this background, vaccination is a highly effective strategy for thwarting
+a wide range of bacterial and viral infections, and actively fostering
+environmental, social, and economic sustainability within the global
+aquaculture production landscape [10]. Starting from the initial reports
+in the 1940s, numerous vaccines have been developed, significantly
+* Corresponding author. Nitte University Centre for Science Education and Research, Department of Bio & Nano Technology, Paneer Campus, Deralakatte,
+Mangalore, 575018, India.
+E-mail address: maiti.b@nitte.edu.in (B. Maiti).
+Contents lists available at ScienceDirect
+Microbial Pathogenesis
+journal homepage: www.elsevier.com/locate/micpath
+https://doi.org/10.1016/j.micpath.2025.107765
+Received 9 November 2024; Received in revised form 13 May 2025; Accepted 28 May 2025
+Microbial Pathogenesis 206 (2025) 107765
+Available online 29 May 2025
+0882-4010/© 2025 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+
+mitigating the losses attributed to bacterial and viral infections in fish
+[11]. There is a global transition from antibiotic use toward the adoption
+of immunization across various regions for many infectious diseases of
+fish [12]. Scientific and technological progress and our understanding of
+molecular immunology have positively impacted nearly every facet of
+aquaculture, making substantial contributions to production. Notably,
+advances in reproductive technologies have facilitated the closure of life
+cycles for aquaculture species [1,13,14]. Experimental evidence from
+multiple studies underscores the effectiveness of specific Gram-negative
+bacterial OMPs as immunogenic molecules that confer protection to fish
+when exposed to pathogenic bacteria [15–17]. Achieving optimal vac­
+cine efficacy requires practical delivery strategies and the use of adju­
+vants. Fish vaccine designs have recently centered on using
+nanoparticles (NPs) as efficient adjuvants and delivery systems. NPs can
+either function as transient delivery vehicles, safeguarding the antigen
+until it reaches the intended target site for sustained release, or they can
+facilitate antigen transport to immune system cells by co-delivering the
+antigen alongside the nanoparticle [18,19]. Most available vaccines for
+tilapia are in the form of injectable formulations [20,21], making them
+well-suited for larger fish that can be handled and anesthetized. How­
+ever, this process necessitates individual fish handling, which can
+induce stress and immunosuppression, and it negatively impacts vaccine
+response, sometimes even leading to mortalities [20]. In contrast, oral
+vaccination offers a no-stress promising approach for the mass immu­
+nization of high-volume, low-value species like tilapia while also
+effectively safeguarding against mass mortalities [22]. Furthermore,
+oral
+administration
+elicits
+mucosal
+immunity,
+producing
+antigen-specific antibodies in various mucosal sites, including the skin,
+mucus, bile, and intestines [23]. These sites typically serve as the initial
+contact points between aquatic pathogens and their host organisms
+[24]. In this study, we describe the preparation and characterization of a
+nanovaccine with encapsulated Omp23 that elicits an immune response,
+followed by an assessment of vaccine efficacy by experimental challenge
+by the pathogen, A. hydrophila. The approach for safeguarding tilapia
+from A. hydrophila infections by oral delivery of nanovaccine makes it
+promising for potential commercialization.
+2. Materials and methods
+2.1. Bacterial cultures and molecular confirmation
+Aeromonas hydrophila strain (A. hydrophila Aero B COFM), a diseased
+fish isolate, was retrieved from the institute repository maintained at
+−80 ◦C in an ultra-low freezer (PHCbi, Japan). The culture was activated
+by inoculating in nutrient broth and incubating at 30 ◦C for 24 h, then
+subculturing on nutrient agar and incubating at 30 ◦C for 24 h. Genus-
+specific confirmation was done by PCR for target genes, namely the lip
+gene [25], aer gene [26], and ompW gene [27] (Table 1). ATCC 49140
+was used as the reference strain of A. hydrophila in this study.
+2.2. PCR amplification of the omp23 gene
+The genomic data of A. hydrophila bearing GenBank accession
+number CP027804.1 was retrieved to identify and target the omp23 gene
+sequence and to design three primers: F1, F2, and R (Table 1). Primers
+F1 and R facilitated full-length gene amplification, cloning, and DNA
+sequencing. At the same time, F2-R combination, was used to exclude
+the signal peptide-encoding area and for cloning and expressing only the
+omp23 gene region. PCR reactions were conducted in 30 μL volumes
+with 1X Taq amplification buffer (HiMedia, India), 10 mM dNTPs (2.5
+mM each), 20 pmol of each primer, and 1 U of Taq polymerase (HiMe­
+dia). The template, ranging from 200 to 400 ng, and nuclease-free water
+served as the negative control. PCR included an initial denaturation at
+95 ◦C for 5 min, followed by 30 cycles of denaturation at 95 ◦C for 1 min,
+annealing at 52 ◦C for 1 min, extension at 72 ◦C for 1 min, and a final
+extension at 72 ◦C for 10 min. Resultant PCR products were electro­
+phoresed on 1.5–2 % agarose gels, followed by gel staining with
+ethidium bromide (5 μg/mL) and imaging using a Bio-Rad gel docu­
+mentation system (Bio-Rad, USA).
+2.3. Cloning and sequencing of the omp23 gene
+Following amplification using F1 and R primers, the PCR product of
+the full-length open reading frame (ORF) of the omp23 gene was purified
+using a Qiagen PCR purification kit (Qiagen, Germany). The purified
+PCR product was cloned using the Qiagen PCR cloning kit, following the
+manufacturer’s protocol (Qiagen, Germany). Positive colonies were
+identified using blue-white screening on Luria Bertani (LB)-ampicillin-X-
+gal plates containing 100 μg/mL ampicillin and 2 % X-gal [28,29].
+Selected white colonies were confirmed by PCR using the F1 and R
+primers and sequenced for inserts in PCR-positive recombinant plas­
+mids, (M/S Eurofins Genomics India Pvt Ltd, Bengaluru, India). The
+obtained nucleotide sequences were subsequently analyzed for similar­
+ity using the basic local alignment search tool (BLAST-NCBI).
+2.4. Cloning and over-expression of recombinant Omp23
+The segment of the omp23 gene, excluding the signal peptide, was
+amplified using F2 and R primers. The resultant PCR product was pu­
+rified and ligated to the pBAD expression system (Thermo Fisher, USA)
+Table 1
+List of primers used in this study.
+Primers
+Primer sequence (5′-3′)
+Purpose
+Source/Reference
+Ah-aer F
+GCAGACCCATCTATCCAG
+Identification of A. hydrophila
+[25]
+Ah-aer R
+TTCTCCGGTAACAGGATTG
+Ah-lip F
+AACCTGGTTCCGCTCAAGCCGTTG
+Identification of A. hydrophila
+[26]
+Ah-lip R
+TTGCTCGCCTCGGCCCAGCCAGCT
+Ah-ompW F
+ATGAAAAAGATCCTTCCTCT
+Identification of A. hydrophila
+[27]
+Ah-ompW R
+TCAGAAGCGATAGCCGACAC
+Ah-omp23 F1
+ATGAAGAAGACCTTGATTGC
+Cloning and sequencing of omp23 gene
+This study
+Ah-omp23 F2
+GCCGATGACTGGCGTTTCGC
+Cloning and expression of omp23 gene
+This study
+Ah-omp23 R
+GAAGGTGAATTCGCCACCGA
+Cloning, sequencing, and expression of the omp23
+This study
+ELF-1α F
+GGGAAAGGAAAAGACCCACA
+Expression analysis of immune genes
+[72]
+ELF-1α R
+AACACCCAGGCGTACTTGAA
+IL-10F
+CGCAGTGCAGAAGAGTCGAC
+Expression analysis of immune genes
+[55]
+IL-10 R
+CCCGCTTGAGATCCTGAA ATAT
+IFN- γ F
+AAGGGCTGTGATGTGTTTCTG
+Expression analysis of immune genes
+[73]
+IFN- γ R
+TGTACTGAGCGGCATTACTCC
+IL-1β F
+ACATTGCCAACCTCATCATCG
+Expression analysis of immune genes
+[73]
+IL-1β R
+TTGAGCAGGTCCTTGTCCTTG
+CD4 F
+CATTAGCCTGGGTGGTCAAT
+Expression analysis of immune genes
+[73]
+CD4 R
+CCCTTTCTTTGACAGGGAGA
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+2
+
+at 37 ◦C for 2 h. The ligated product was introduced into chemically
+competent Escherichia coli BL21 cells following the heat shock method.
+The transformants were selected by plating the cells on LB agar plates
+supplemented with ampicillin (100 μg/mL). Confirming clones carrying
+the recombinant plasmid was done by PCR using F2 and R primers. The
+isolated recombinant clones of Omp23 were cultured in LB broth sup­
+plemented with ampicillin (100 μg/mL) at 37 ◦C with continuous
+agitation. Upon reaching an OD600 of 0.5–0.8, induction of protein
+expression was initiated by adding 0.2 % arabinose. Whole-cell lysates
+were used to analyze recombinant protein expression for protein
+extraction. The expression of the recombinant protein was studied by
+electrophoresis in 12 % sodium dodecyl sulfate-polyacrylamide gel
+(SDS-PAGE) [30].
+2.5. Purification of recombinant Omp23
+The purification of rOmp23 protein was done using nickel-
+nitrilotriacetic acid (Ni-NTA) affinity chromatography (Qiagen), hav­
+ing six histidine tags (His6) [27,28]. The purity was assessed in 12 %
+SDS-PAGE gel, and protein concentration was determined using the
+bicinchoninic acid (BCA) protein assay kit (Sigma-Aldrich, USA) using a
+spectrophotometer (Multiskan SkyHigh microplate spectrophotometer,
+ThermoFisher, USA). For further characterization, Western blotting was
+performed according to the method established by Towbin et al. [31].
+The target protein was identified using a mouse anti-His antibody
+(diluted 1:1000 in PBS, Biolegend, USA). Interaction of the protein
+bands with the antibody on a nitrocellulose membrane (Pall Corpora­
+tion, USA) was visualized by subsequent incubation with an anti-mouse
+horseradish peroxidase conjugate (diluted 1:2500 in PBS, Promega,
+USA). Chemiluminescent signals were generated using enhanced
+chemiluminescence substrates (ECL Western blotting substrates,
+Bio-Rad, USA), and the resulting bands were visualized utilizing a
+chemiluminescence documentation system (MINI HD9, UVITEC, UK).
+2.6. Preparation of nanoparticle and characterization
+The encapsulation of rOmp23 in PLGA NPs (PLGA Mn: 7000–17000
+MW, Sigma-Aldrich) involved the W1/O/W2 double emulsion solvent
+evaporation technique as described previously [28,32]. In this process,
+10 mg of the protein was dissolved in a buffer solution (100 mM
+NaH2PO4, 10 mM Tris-Cl, 8 M Urea, pH 4.5) and emulsified in the
+organic phase, which consisted of 0.9 mL of dichloromethane (DCM),
+100 mg/mL PLGA, and 0.5 mg/mL Pluronic F-127 in 3 mL of polyvinyl
+alcohol (25 mg/mL PVA). The primary emulsion was created by soni­
+cation for 20 min on ice using a sonicator (Qsonica, USA). The outer
+aqueous phase was then added, and sonication was continued for an
+additional 20 min in ice chill condition to form the secondary emulsion.
+added to a 40 mL solution of 25 mg/mL PVA and stirred for 20 h at
+ambient temperature (27◦c) using a magnetic stirrer until DCM
+completely evaporated. Protein-loaded PLGA NPs were isolated and
+washed twice with ultracentrifugation. Finally, the obtained pellets
+were dispersed in 1X PBS and lyophilized (Zirbus Technology, Ger­
+many). The hydrodynamic diameter and polydispersity index of the NPs
+was estimated using a zeta sizer (SZ-100V2, Horiba Instruments Ltd,
+Japan). The lyophilized samples were appropriately diluted with PBS
+(pH 7.4), and aliquots from each batch were examined in dynamic light
+scattering (DLS) cuvettes. Analysis was performed in triplicate for each
+preparation, for size distribution and polydispersity index using DLS at a
+scattering angle of 90◦at a temperature of 25 ◦C, and standard de­
+viations were calculated for each measurement. Additionally, scanning
+electron microscopy (SEM) (ZEISS Gemini, Australia) was done at the
+National Institute of Technology Karnataka, India, to study the
+morphology of the NPs.
+2.7. Encapsulation efficiency measurement and in vitro protein release
+study
+To evaluate the integrity of the protein and to ascertain its encap­
+sulation efficiency, the rOmp23-containing particles were dissolved in a
+solution of 0.5 % w/v SDS (pH 7.4), prepared by dissolving SDS in a 0.1
+M NaOH solution [28,33]. The protein amount encapsulated within the
+nanoparticles was calculated by subtracting the concentration of free
+protein in the supernatant from the total protein loaded during NP
+preparation, by the formula of Rauta et al. [34]: Encapsulation effi­
+ciency (%) = (Total amount of protein - Free protein)/(Total amount of
+protein) x 100. To study the release kinetics of the protein from the
+nanoparticles, the protein-loaded nanoparticles were incubated at 28 ◦C
+in 1X PBS, and samples were drawn at specified intervals (0, 3, 6, 9, up to
+48 h). Following centrifugation at 12,000 rpm for 10 min, 500 μL of the
+supernatant was collected, and an equal volume of PBS was added
+(Dubey et al., 2016 a). The released rOmp23 protein in the collected
+samples was quantified using the BCA method (Pierce™ BCA protein
+assay kit, ThermoFisher).
+2.8. Fish and bacterial strains
+Tilapia fish, Oreochromis niloticus, weighing approximately 9–11 g,
+were obtained from the College of Fisheries, Mangalore, India, and
+carefully transported in oxygenated bags to the experimental site. They
+were acclimatized for a month before commencing the experiments, and
+were confirmed for the absence of Aeromonas, Edwardsiella, and Vibrio
+infections. Skin samples from five randomly selected fish were collected
+for bacterial isolation, and genotypic identification by PCR. The fish
+were kept in aerated tanks, and commercial feed was given during the
+period. The tank water was cleaned twice weekly to maintain a healthy
+environment and minimize the risk of disease outbreaks.
+2.9. Vaccine preparations for oral delivery
+The Omp23 encapsulated nanoparticle was meticulously blended
+with finely ground and sieved commercial fish feed with a dose of 10 μg/
+g of fish body weight to form a uniform dough. This moist vaccine-feed
+mixture was extruded using a hand extruder and allowed to air-dry at
+room temperature (32 ◦C). Subsequently, the prepared dry pellets were
+stored at 4 ◦C until ready for use. Fish were fed with vaccine once in a
+day that accounted for 1 % of the fish’s body weight for 21 days.
+2.10. Determination of lethal dose (LD50) of A. hydrophila
+The LD50 value of A. hydrophila on tilapia was determined using
+thirty fish evenly distributed among three separate tanks, each con­
+taining ten fish. A control tank that contained ten fish was also main­
+tained. Viable counts of A. hydrophila were determined using the surface
+spread method on tryptone soya agar by plating ten-fold serial dilutions
+of an overnight culture. The culture was centrifuged, resuspended in
+sterile phosphate-buffered saline (PBS), and diluted to achieve three
+consecutive dilutions with viable counts of 1.6 × 108, 1.6 × 107, 1.6 ×
+106, and 1.6 × 105 cells per 0.1 mL. These dilutions were injected
+intraperitoneally into the fish, and mortality was observed for up to one
+week. The obtained LD50 value was subsequently calculated for exper­
+iments assessing protection against challenge.
+2.11. Vaccination, challenge, and relative percentage of analysis
+The health assessment of O. niloticus was based on clinical observa­
+tions, including surface morphology, pathological signs, and monitoring
+abnormal swimming behaviour. Four fish were sampled for external and
+detailed pathological examinations of internal organs. The fish were
+divided into four groups, each comprising 45 fish. Group 1 served as the
+control group and received commercial feed. Group 2 was fed empty NPs
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+3
+
+devoid of rOmp23 protein. Group 3, denoted as the vaccine group,
+received NPs coated with rOmp23 protein (10 μg/g of fish body weight).
+Group 4, named the protein group, received rOmp23 protein. Each
+group was carried out in triplicates (15 fish in each group). Throughout
+the 21-day experimental trial, the fish were fed twice daily. Following
+two weeks of immune stimulation, fish were challenged using a patho­
+genic strain of A. hydrophila (1.6 × 107 CFU/mL) intraperitoneal injec­
+tion at 0.1 mL/fish. Fourteen days post-challenge, mortality, and clinical
+signs were documented, and the level of protection was estimated in
+different groups i.e., nanoparticle feed group (NPFG), Protein feed group
+(PFG), Empty nanoparticle feed group (ENFG) and Commercial feed
+group (CFG) using Kaplan-Meier survival analysis. The relative percent
+survival (RPS) was calculated over 14 consecutive days using the for­
+mula outlined by Kole et al. [35]: RPS = {1 - (mortality in the immu­
+nized group/mortality in the control group)} × 100 %.
+2.12. Non-specific immune response studies
+2.12.1. Collection of serum
+Following vaccination, blood samples were drawn from protein feed
+group (rOmp23), empty nanoparticle feed group, rOmp23-NP, and
+commercial feed group (control), at multiple time points: 7, 14, 21, and
+49 days of post-vaccination (dpv), according to the protocol of Sir­
+iyappagouder et al. [36].
+2.12.2. Myeloperoxidase activity
+Myeloperoxidase activity was studied as per the method of Quade
+et al. [37] and Behera et al. [38]. The optical density (O.D) of the
+mixture was measured at 450 nm using a spectrophotometer (Multiclan
+SkyHigh microplate spectrophotometer, USA).
+2.12.3. Anti-protease activity
+The serum antiprotease activity was assessed using the colorimetric
+method of Sahoo et al. [39]. Percentage inhibition was calculated using
+the formula: Percentage inhibition (%) = (O.D. reference – O.D. sample)
+× 100/O.D. reference as per Yadav et al. [40].
+2.12.4. Bacterial agglutination activity
+The agglutination test was performed in U-shaped microtitre plates
+[38]. The titre was expressed as the reciprocal of the highest serum
+dilution, showing agglutination of the bacterial cells.
+2.13. RT-PCR detection of the expression of immune-related genes in the
+vaccinated fish
+To study the expression patterns of immune-related genes in vacci­
+nated fish, intestine and kidney tissue samples were collected at various
+time intervals (0, 7, 14, and 21 days). Total RNA extraction was done
+using the TRIzol (Invitrogen, USA) method. The obtained RNA from
+samples were diluted in RNase-free water, and their concentration and
+purity were determined using a spectrophotometer (NanoPhotometer®,
+Implen, USA). Quantitative polymerase chain reaction (RT-qPCR) was
+performed to quantify TNF-α, CD4, IFN- γ, IL-10, and IL-1β gene
+expression levels in the intestine and kidney. The one-step TB Green
+PrimeScript RT-PCR kit (Takara, Japan) was used for RT-qPCR analysis
+on a CFX Opus 96 Real-Time PCR platform (Bio-Rad, Singapore). Gene-
+specific primers used are listed in Table 1, with the ELF-1α gene serving
+as the internal control. Relative gene expression of each group was
+calculated using the formula: Relative expression = 2^(-ΔΔCt), where
+ΔCt represents the difference between the sample Ct value, the ELF-1α Ct
+value, and ΔΔCt indicates the difference between the ΔCt value of the
+vaccinated and the control group [41]. Triplicate data points were used
+for analysis.
+2.14. Statistical analysis
+The RT-qPCR results were subjected to two-way ANOVA for statis­
+tical significance. GraphPad Prism, version 8.4.3. (GraphPad, CA, USA),
+was utilized for the data analysis. For statistical analysis, the RT-qPCR
+results were examined by two-way ANOVA to determine statistical sig­
+nificance. GraphPad Prism, version 8.4.3. (GraphPad, CA, USA), was
+employed for data analysis.
+3. Results
+3.1. PCR identification of omp23 of A. hydrophila
+The gene omp23 was confirmed by amplifying the target sequence
+using F1 and R primers, resulting in a distinct single band of 627 bp.
+Confirmation of the exclusion of the signal peptide region was achieved
+by visualizing a PCR-amplified product of 567 bp (Fig. 1).
+3.2. Cloning and expression of rOmp23
+Upon analysis, the DNA sequence corresponding to the omp23 gene
+product was deposited in GenBank and assigned accession number:
+MZ044977. Optimal expression of rOmp23 was observed 4 h post-
+induction with 0.2 % arabinose. The molecular weight of the resulting
+Omp23 deduced sequence was observed to be 37 kDa on 12 % SDS-
+PAGE (Fig. 2). Following purification, the recombinant protein exhibi­
+ted high purity on SDS-PAGE, and Western blot analysis showed a
+distinct band, thus confirming it as Omp23.
+3.3. Encapsulation and characterization
+Size distribution analysis revealed the empty PLGA NPs to be in the
+size range of 209 ± 36.1 nm (Fig. 3A), while the rOmp23-encapsulated
+NPs were larger with a size range of 346.5 ± 15.1 nm (Fig. 3B). The
+polydispersity index was calculated to be 0.308 ± 0.02. The SEM images
+depicted the spherical structure of the formulated NPs (Fig. 3C). The
+encapsulation efficiency of rOmp23 in PLGA NPs was found to be 74.45
+%. In vitro release showed approximately 63 % of the encapsulated
+protein released within 48-h (Fig. 3D).
+3.4. Non-specific immune response studies
+After vaccination, the non-specific immune response parameters in
+tilapia fish were assessed in the different groups (rOmp23, Empty NP,
+rOmp23-NP, and Control) at various post-immunization time intervals.
+Fig. 4A shows myeloperoxidase activity, and Fig. 4B the antiprotease
+activity. Across all treated groups and control (rOmp23, Empty NP,
+Fig. 1. PCR Amplification of omp23 gene in A. hydrophila. A: Full-length
+amplification of omp23 (F1 & R primers), M: DNA marker, L1: A. hydrophila.
+B: Amplification of omp23 gene using F2 & R primers. M: DNA marker, L1 and
+L2: Negative control, L1: A. hydrophila.
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+4
+
+rOmp23-NP, and Control), parameters such as bacterial agglutination
+assay, myeloperoxidase, and antiprotease levels exhibited significantly
+higher values (p < 0.05) compared to the control group. The higher
+values obtained in the NPG treated group were statistically significant
+(p < 0.05) than those other groups (rOmp23, Empty NP and Control).
+These parameters did not differ much in all the treated groups at 21 and
+49-days post-immunization. Myeloperoxidase titers were notably higher
+(p < 0.05) in all nanoparticle-vaccinated groups compared to the con­
+trol. The anti-protease activity in nanoparticle-vaccinated fish ranged
+from 60 % to 80 % across different days, with the highest inhibition (80
+%) observed on the 14th day post-immunization. In Fig. 5, bacterial
+agglutination titre was significantly higher (p < 0.05) in the treated
+groups than in control.
+3.5. Expression analysis of immune genes
+Following vaccination, RT-qPCR analysis was performed to examine
+the expression levels of immune genes in both the intestine and kidney
+tissue of the fish. 21 dpv, the nanovaccine group showed substantial
+upregulation of the TNF-α, CD4, IL-10 expression in the intestine
+compared to the ENP group. Fig. 6 shows an initial increase in gene
+expression for IFN-γ and, IL-1β which gradually decreased over time.
+During the initial stages in the nano-vaccine administered group, high
+levels of IL-10 and CD4 gene expression were observed in the kidney. In
+contrast, IFN-γ, IL-1β, TNF-α gene expression gradually increased, with a
+decrease observed at certain time points.
+3.6. Challenge study
+The RPS in vaccinated and control groups was evaluated in the
+challenge experiment. The day following the challenge, clinical signs
+that presented as darkened body colour and skin ulcers leading to
+gradual mortality were observed in both the control and the group fed
+with empty NP. Mortality rates gradually increased, becoming pro­
+nounced four days post-challenge. Fig. 7 illustrates the survival rates in
+all the groups, and the corresponding RPS values, which were 73 % for
+the NPG, 46.42 % for the PG, and 10 % for the ENPG groups.
+4. Discussion
+Vaccination is one of the best and most affordable prevention
+Fig. 2. Separation of rOmp23 on 12 % SDS-PAGE M: Protein molecular weight
+marker (PageRuler™ Pre-stained protein Ladder, Thermo Fisher Scientific),
+Lane 1: Control BL21 cells, Lane 2: After 0.2 % arabinose induction, Lane 3:
+Clear-cell lysate, Lanes 4: washing buffer passed through column Lane 5: Pu­
+rified rOmp23. Lane 6: Protein marker in Western blotting (PageRuler™ Pre-
+stained protein Ladder, Thermo Fisher Scientific), Lane 7: Western blotting –
+rOmp23 (37 kDa).
+Fig. 3. (A) The size distribution pattern of PLGA-encapsulated Omp23 is determined by the dynamic scattering (DLS) method. Size distribution of empty NPs with an
+average size of 209.8 ± 36.1 nm. (B) Size distribution of Omp23 encapsulated in PLGA 346.5 ± 15.1 nm. (C) Scanning Electron micrograph of Omp23-loaded PLGA
+nanoparticle. (D) In-vitro release of Omp23 from encapsulated PLGA NPs encapsulation and observed within 55 h incubation in PBS, the release of Omp23 increased
+exponentially within 15 h after the start of the in-vitro test.
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+5
+
+strategies for infectious diseases in humans and other animals, including
+fish. Most of the molecules in the recently developed subunit vaccines
+are pure proteins derived through recombinant DNA technology; how­
+ever, they are ineffective due to a lack of suitable adjuvants or vaccine
+carriers. Hence, safe, and useful delivery vehicles are critical for vacci­
+nation. The ability of PLGA particles to gradually release peptides and
+proteins sustainably over one to four months makes them useful for
+various commercial items, including the medical and pharmaceutical
+industries [42]. OMPs on the surface of Gram-negative bacteria have
+sought after molecules to develop fish vaccines because of their strong
+immunogenicity coupled with protective immunity [43]. The effec­
+tiveness and characteristics of the outer membrane protein of
+A. hydrophila encapsulated in PLGA nanoparticle have been examined in
+this study as a viable vaccine candidate against motile aeromonad in­
+fections of fish. This study used the DLS method to analyze the nano­
+particle for the size and polydispersity index. The size of the Omp23
+encapsulated in PLGA was 346.5 nm. The increased nanoparticle size
+shows that the protein has been encapsulated with PLGA [34], where the
+size of PLGA OMP-NPs from 98.6 nm to 166.4 nm was observed. The
+polydispersity index of PLGA-Omp23 NPs was 0.313. It was nearly
+similar to the observation by Rauta et al. [34], who obtained the PDI
+value of 0.308 thus for their PLGA-OMP NPs, confirming the mono­
+disperse nature. The in vitro study to examine the release of Omp23 in
+PBS for 48 h showed an exponential rise in the antigen release after 25 h.
+The release was 45 % in 48 h, higher than the 34 % of rOmpW release
+obtained by Dubey et al., [44]. The kinetics of rOmpW in vitro release
+follows a typical pattern, beginning with a rapid initial release of anti­
+gens within 24 h followed by a continual release over an extended
+period. A follow-up on the release test, if continued after 48 h, could
+have revealed a sustained continuous release of the rOmpW antigen
+from encapsulated NPs [44]. This demonstrates the ability of PLGA to
+release the antigen slowly over time, which is necessary to strengthen
+the immunological response. The SEM image of the nanoparticle showed
+it to be spherical in shape and uniform, similar to the observations by
+Rauta et al. [34]. The 74.45 % encapsulation efficiency for PLGA NPs
+obtained in this study was higher than the 53.56 % shown by Dubey
+et al. [44]. High encapsulation efficiencies enable NPs to convey the
+antigens effectively in vivo [45]. The formulation of the nanovaccine was
+optimized in this study based on particle size, polydispersity index,
+encapsulation efficiency, and in vitro release kinetics. Moreover, these
+conditions provided a high encapsulation efficiency (74.45 %) and
+sustained release profile over 24 h, which are essential for effective
+antigen delivery and prolonged immune stimulation. The optimized
+conditions balanced both physical stability and biological efficacy, as
+evidenced by the elevated cytokine and antibody responses in tilapia.
+Post-vaccination response at different time intervals was studied to
+evaluate non-specific immune parameters in the four experimental
+groups, (rOmp23, Empty NP, rOmp23-NP and Control), each aimed at
+eliciting varying levels of immune response compared to the control.
+The group treated with NP showed heightened immune response
+compared to the others. In fish, innate immunity serves as a critical first
+line of defence for protection. The pivotal role of innate immunity in fish
+is paramount for initial pathogen defense, guiding subsequent adaptive
+immune responses [46]. Myeloperoxidase (MPO), primarily produced
+by neutrophils, constitutes a crucial innate immune system molecule. It
+plays a significant role in combating bacterial threats by leveraging its
+antibacterial effects. MPO’s action on halide ions in the presence of
+H2O2 generates hypohalites, thus effectively eliminating bacteria [46].
+This study observed an early increase in MPO levels, consistent with
+previous findings, which was evident at ten days post-immunization
+(dpi) in the immunized group. This observation suggests that the anti­
+genic preparations in this study stimulate both specific and non-specific
+components of the immune system, working synergistically to confer
+protection. Fish serum typically contains an array of protease inhibitors
+and antiproteases aimed at curtailing pathogen invasion [47]. Bacterial
+pathogens often secrete diverse proteases that play a role as virulence
+factors. These enzymes boost the pathogen’s virulence, simultaneously
+breaking down host proteins and supplying crucial precursor amino
+acids for bacterial growth and replication. The sera derived from
+BF-immunized fish displayed varying degrees of anti-protease activity,
+ranging from 60 % to 80 % during different days of analysis. Our study
+Fig. 4. (A) The myeloperoxidase activity of sera of O. niloticus in different treated groups at 7th, 14th, 21st snd 49th days of post-immunization (Values are mean OD
+values ± S.E.). Mean values bearing Empty NP group and control group are statically non-significant (p > 0.05) at 21- and 49-days post-immunization. (B) Nano
+vaccine effect on antiprotease activity in O. niloticus after immunization. Highest inhibition is seen on14th day in nano vaccinated group. The data represent mean ±
+SD, “*” indicates significant differences at p ≤0.05.
+Fig. 5. The bacterial agglutination activity of sera in different treated groups of
+O. niloticus at different time intervals after post-immunization (Values are mean
+log 2 titre values S.E). Mean values bearing empty NP and control group are
+statically non-significant (p > 0.05) at 21- and 49-days post-immunization.
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+6
+
+Fig. 6. (A) Expression levels of (A) TNF-α (B) CD4, (C) IFN-γ, (D) IL-10, and (E) IL-1β in intestine samples (n = 3 fish intestine samples × 3 replicates per treatment)
+after vaccination in each group. Data are presented as mean ± SD, and p-values were calculated by two-way ANOVA (GraphPad prism) p values are<0.0001 for
+(****) extremely significant, 0.001 to 0.01 for (**) very significant, 0.01 to 0.05 for (*) for significant and greater than or equal to for non-significant values. (B)
+Expression levels of (A) IL-10, (B) TNF-α, (C) IFN- γ, (D) IL-1β, and (E) CD4 in kidney samples (n = 3 fish intestine samples × 3 replicates per treatment) after
+vaccination in each group. Data are presented as mean ± SD, and p-values were calculated by two-way ANOVA (GraphPad prism) p values are<0.0001 for (****)
+extremely significant, 0.001 to 0.01 for (**) very significant, 0.01 to 0.05 for (*) for significant and greater than or equal to for non-significant values.
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+7
+
+showed the highest level of protease inhibitory activity (around 80 %)
+on day 14 post-immunization. The notable suppression of protease ac­
+tivity observed underscores the potential of vaccine to combat bacterial
+virulence and averting the degradation of host proteins. The PLGA-OMP
+treated group demonstrated significantly higher immune response
+compared to other groups at both 21- and 42-days post-immunization.
+Previous studies have shown that PLGA micro-particles enhance
+phagocytosis by macrophages [48]. and neutrophils in mice and
+humans. Comparable results were also observed with the use of PLGA
+alone in mammals [49] and in fish, specifically rainbow trout [38].
+In this study, changes in the immune defence system upon vaccina­
+tion against A. hydrophila resulted in the upregulation and down­
+regulation of specific immune genes. The investigation of immune-
+related gene expression patterns in fish is relatively recent, leading to
+a better understanding in future of immune response to pathogens. TNF-
+α and IL-10, identified as crucial components of innate immunity [50,
+51], play significant roles. The activation of innate immunity mediated
+by these cytokines likely influences the initiation of specific adaptive
+immune responses [41]. IL-10 is recognized as an anti-inflammatory
+cytokine that mitigates inflammation by blocking chemokine receptors
+and impeding the effects of pro-inflammatory cytokines, thus reducing
+potential host damage [52]. It is also associated with B cell-triggered
+immunoglobulins [53]. In this study there was a gradual increase in
+IL-10 and TNF-α expression levels in the intestine of the vaccinated
+group. Upregulation of IL-10 was initially observed in the kidney during
+the early post-vaccination period in the nano vaccine administered
+group. This upregulation potentially helps maintain a delicate balance
+between pro- and anti-inflammatory responses, as Jiang et al. [54]
+suggested. Moreover, IL-10 contributes to synthesizing a multifunctional
+cytokine inhibitory factor, which aids in immune-suppressive functions,
+significantly hinders proinflammatory cytokine responses such as IL-1β,
+TNF-α, and IFN-γ, preventing tissue damage. Studies in fish have re­
+ported increased IL-10 mRNA expression levels due to various immu­
+nostimulants, linked to transcriptional changes in innate immune cells,
+like macrophages [55]. TNF-α and IL-10 are crucial components of
+innate immunity [56,57]. Activation of these cytokines potentially
+primes the onset of specific adaptive immune response [58]. TNF-α gene
+upregulation in the intestine on the 21st-day post-vaccination in the
+nanovaccine-administered group. On the other hand, TNF-α gene upre­
+gulation occurred in the kidney before vaccination, followed by a
+gradual decrease in gene expression. Previous reports have highlighted a
+similar pattern wherein an initial rise in IL-1β and TNF-α expression
+occurred shortly after bacterial infection, followed by decline [59]. IL-10
+functions as an anti-inflammatory cytokine, pivotal in reducing
+inflammation [52]. Its role in minimizing host damage involves blocking
+chemokine receptors and curbing the impact of pro-inflammatory
+cytokines. Additionally, IL-10 has links to B cell-induced immunoglob­
+ulins [53]. Our study showed a gradual increase in IFN-γ, an important
+immunoregulatory molecule in innate and adaptive immunity. An
+upregulation of IFN-γ expression in both the intestine and kidney of the
+vaccinated group was observed on 14th day, thus suggesting that the
+nanovaccine probably stimulates both innate and adaptive responses,
+potentially fostering the activation of immune-related macrophages [60,
+61]. In a study by Lindenstrøm et al., [62], IL-10 and IL-1β expression
+levels in the intestine and kidney exhibited variation being significantly
+low between weeks 2 and 4 and relatively elevated during weeks 6 and
+8. Saurabh and Sahoo [63], observed the upregulation of IL-1β in trout
+skin as a response to the parasite Gyrodactylus derjavini infection. In the
+Indian major carp, Catla catla infected with A. hydrophila, IL-1β
+expression significantly decreased, suggesting potential pathogen toxin
+release during different phases of attachment. This process seems to play
+a
+significant
+role
+in
+regulating
+inflammation,
+affecting
+the
+down-regulation and upregulation of IL-1β and IL-10 expression. Savan
+et al. [64] surmised the involvement of IL-10 in synthesis of a multi­
+functional
+cytokine
+inhibitory
+factor
+and
+promoting
+immune-suppression. Its pivotal role in counteracting proinflammatory
+cytokine response like IL-1β, TNF-α, and IFN-γ, while simultaneously
+preventing tissue damage, has been studied [65,66]. Some researchers
+have reported increased IL-10 mRNA expression levels in fish due to
+various immunostimulants, and studied the associated transcriptional
+changes in innate immune cells like macrophages [67,68]. The
+early-response pro-inflammatory cytokine, IL-1β, plays a crucial role in
+stimulating immune response by activating lymphocytes or triggering
+the release of other cytokines that subsequently activate macrophages,
+natural killer cells, and lymphocytes [69]. In this study, we noted an
+upregulation of the IL-1β gene in the intestine on the 7th day, followed
+by a downregulation in the nanovaccine-administered group on the 14th
+and 21st day post-vaccination. On the contrary, upregulation of the
+IL-1β gene was observed in the kidney on the 14th and 21st days
+post-vaccination in the nanovaccine-administered group. Higher CD4
+and MHC-II expression levels offer significant advantages regarding
+exogenous antigen presentation, reflecting enhanced antigen presenta­
+tion [70]. In our study, upregulation of the CD4 gene was observed in the
+intestine of the nanovaccine-administered group on the 21st day. In the
+kidney, CD4 upregulation occurred before vaccination, followed by a
+gradual decrease in expression in the control nonvaccinated fish group.
+This suggests that activated CD4 T cells, producing the IL-2 cytokine,
+facilitate the differentiation of CD4 T cells into various T cell subsets,
+particularly Th cells, thereby augmenting immune response processes
+[71]. The highlight of the study was the high RPS of 73 obtained in the
+group vaccinated with the rOmp23 nanovaccine 14 days after the
+challenge. In contrast, the control groups displayed signs of darkened
+body colour and loss of balance starting 2nd day post-challenge, even­
+tually leading to mortality. The clinical signs were likely due to indi­
+vidual differences and were not considered significant in calculating the
+final survival. The cardinal findings of this study are a pointer to the
+critical role of innate immunity in fish through oral vaccination. Zhang
+et al. [41] observed similar results in their study, underscoring the im­
+mune regulatory mechanism activated by oral vaccines.
+While the current study demonstrates the feasibility of expressing
+and purifying the target protein, a potential limitation lies in the scal­
+ability of the procedure. For practical or industrial applications, large
+quantities of high-purity protein are required, which can have chal­
+lenges in terms of cost, time, and technical efficiency. The yields ob­
+tained under laboratory conditions may not readily translate to large-
+scale production due to constraints in expression efficiency, solubility,
+or purification throughput. Therefore, additional optimization strate­
+gies, such as enhancing expression systems or employing bioprocess
+engineering techniques, may be necessary to overcome these limitations
+and make the process viable for broader application.
+This research provides essential insights into immune factors asso­
+ciated with nano-oral vaccines in fish, confirming the efficacy of
+Fig. 7. The Kaplan-Meyer’s survival graph of fish vaccinated with Onp23
+nanoparticle (10 μg/g of fish body weight) Mortality in the control group
+started at one-day post-challenge. The highest post-challenge survival propor­
+tion (PCSP) was in the nano vaccinated group (73 %), followed by the protein
+group (46.42 %). Empty NP groups had the lowest PCSP (10 %).
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+8
+
+incorporating protective antigens into nanoparticles to elicit long-
+lasting innate and adaptive immune responses. Interestingly, the
+rOmp23-PLGA vaccine developed in this study was superior in providing
+a high degree of protection.
+5. Conclusion
+The findings of this study underscore the potential of utilizing PLGA
+encapsulated with outer membrane protein Omp23 as a promising
+vaccination strategy against aeromonad infections of fish. The encap­
+sulation process demonstrated efficient antigen release kinetics, sus­
+tained release over time, and protection against acidic conditions, all of
+which are essential for preserving the integrity of the antigen. The
+ability of the nanoparticle to trigger a heightened immune response,
+particularly the non-specific immune parameters such as myeloperox­
+idase and anti-protease activity, signifies its capability to bolster the
+host’s defense mechanisms. The upregulation of crucial immune-related
+genes like IL-10, TNF-α, IFN-γ, and IL-1β in vaccinated fish suggests a
+robust activation of both innate and adaptive immunity, critical for
+combating pathogen invasion and establishment. The enhanced
+expression of genes associated with antigen presentation, such as CD4
+and MHC-II, further supports the notion of improved immune response
+elicited by the vaccination. The RPS of 73 % post-challenges in the group
+administered with the rOmp23 nanovaccine highlights its effectiveness
+in conferring protection compared to the control groups, which dis­
+played signs of infection and subsequent mortality. These outcomes
+emphasize the pivotal role of innate immunity, especially in the context
+of oral vaccination in fish. In conclusion, the study demonstrates that the
+PLGA-encapsulated Omp23 nanoparticle vaccine possessed promising
+attributes: efficient antigen delivery, innate and adaptive immunity
+activation, and significant protection against fish aeromonad infection.
+These findings pave the way for developing effective and long-lasting
+vaccination strategies in aquaculture for other infectious agents and
+promote blue transformation goals advocated by FAO.
+CRediT authorship contribution statement
+Mave Harshitha: Writing – original draft, Visualization, Methodol­
+ogy, Investigation, Formal analysis, Data curation, Conceptualization.
+Dincy Lourdh DSouza: Writing – review & editing, Methodology,
+Investigation, Data curation. Banada Thimmappa Rakshitha: Writing
+– review & editing, Methodology, Investigation, Data curation. Indrani
+Karunasagar: Writing – review & editing, Supervision, Project admin­
+istration, Investigation, Conceptualization. Anirban Chakraborty:
+Writing – review & editing, Supervision, Resources, Project adminis­
+tration, Investigation, Conceptualization. Biswajit Maiti: Writing – re­
+view
+&
+editing,
+Validation,
+Supervision,
+Resources,
+Project
+administration, Methodology, Investigation, Funding acquisition,
+Conceptualization.
+Institutional review board statement
+The central ethics committee approval (NU/CEC/2021/151) was
+taken from the Nitte (Deemed to be University). Institutional animal
+ethical committee approval (NGSM/IAEC/2022-23/308) was taken
+from NGSM Institute of Pharmaceutical Sciences, Nitte (Deemed to be
+University). The biosafety approval (NU/IBSC/2021-22/14A) was taken
+from the institutional biosafety committee (IBSC), Nitte (Deemed to be
+University).
+Funding
+This study was supported by the Department of Science and Tech­
+nology (DST), Government of India, through the Indo-Norway joint
+project (INT/NOR/RCN/BIO/P-01/2018).
+Declaration of competing interest
+The authors declare the following financial interests/personal re­
+lationships which may be considered as potential competing interests:
+Biswajit Maiti reports financial support was provided by Department
+of Science and Technology, Government of India. If there are other au­
+thors, they declare that they have no known competing financial in­
+terests or personal relationships that could have appeared to influence
+the work reported in this paper.
+References
+[1] P.S. Sudheesh, A. Al-Ghabshi, N. Al-Mazrooei, N.S. Al-Habsi, Comparative
+pathogenomics of bacteria causing infectious diseases in fish, Int. J. Evol. Biol.
+(2012 May 22) 457264, https://doi.org/10.1155/2012/457264.
+[2] A.A. Irshath, A.P. Rajan, S. Vimal, V.S. Prabhakaran, R. Ganesan, Bacterial
+pathogenesis in various fish diseases: recent advances and specific challenges in
+vaccine development, Vaccines 11 (2023 Feb 17) 470, https://doi.org/10.3390/
+vaccines11020470.
+[3] FAO, The State of World Fisheries and Aquaculture 2022: towards Blue
+Transformation, FAO, Rome, Italy, 2022.
+[4] G.S. Rathor, B. Swain, Advancements in fish vaccination: current innovations and
+future horizons in aquaculture health management, Appl. Sci. 14 (2024 Feb 17)
+5672, https://doi.org/10.20944/preprints202402.1353.v1.
+[5] FAO, The State of World Fisheries and Aquaculture: towards Blue Transformation,
+FAO, Rome, Italy, 2018.
+[6] A. Mzula, P.N. Wambura, R.H. Mdegela, G.M. Shirima, Current state of modern
+biotechnological-based Aeromonas hydrophila vaccines for aquaculture: a
+systematic review, BioMed Res. Int. (2019 July 29) 3768948, https://doi.org/
+10.1155/2019/3768948.
+[7] J. Lu, C. Xiong, J. Wei, C. Xiong, R. Long, Y. Yu, H. Ye, E. Ozdemir, Y. Li, R. Wu,
+The role and molecular mechanism of flgK gene in biological properties,
+pathogenicity and virulence genes expression of Aeromonas hydrophila, Int. J.
+Biol. Macromol. 258 (2024 Feb) 129082, https://doi.org/10.1016/j.
+ijbiomac.2023.129082.
+[8] A.S. Alawam, M.S. Alwethaynani, Construction of an aerolysin-based multi-epitope
+vaccine against Aeromonas hydrophila: an in-silico machine learning and artificial
+intelligence-supported approach, Front. Immunol. 15 (2024 March 1) 1369890,
+https://doi.org/10.3389/fimmu.2024.1369890.
+[9] C. Manyi-Loh, S. Mamphweli, E. Meyer, A. Okoh, Antibiotic use in agriculture and
+its consequential resistance in environmental sources: potential public health
+implications, Molecules 23 (2018 March 30) 795, https://doi.org/10.3390/
+molecules23040795.
+[10] J. Ma, T.J. Bruce, E.M. Jones, K.D. Cain, A review of fish vaccine development
+strategies: conventional methods and modern biotechnological approaches,
+Microorganisms 7 (2019) 569, https://doi.org/10.3390/microorganisms7110569,
+2019 Nov 14.
+[11] W.B. Van Muiswinkel, A history of fish immunology and vaccination I. The early
+days, Fish Shellfish Immunol. 25 (2008 Oct 4) 397–408, https://doi.org/10.1016/
+j.fsi.2008.02.019.
+[12] P.J. Midtlyng, Current use and need for new fish vaccines, in: Principles of Fish
+Immunology: from Cells and Molecules to Host Protection, Springer International
+Publishing, Cham, 2022 March 13, pp. 599–608, https://doi.org/10.1007/978-3-
+030-85420-1_19, 599–608.
+[13] R.L. Naylor, R.W. Hardy, A.H. Buschmann, S.R. Bush, L. Cao, D.H. Klinger, D.
+C. Little, J. Lubchenco, S.E. Shumway, M. Troell, A 20-year retrospective review of
+global aquaculture, Nature 591 (2021 March 21) 551–563, https://doi.org/
+10.1038/s41586-021-03308-6.
+[14] M.F. Rohani, S.M. Islam, M.K. Hossain, Z. Ferdous, M.A. Siddik, M. Nuruzzaman,
+U. Padeniya, C. Brown, M. Shahjahan, Probiotics, prebiotics and synbiotics
+improved the functionality of aquafeed: upgrading growth, reproduction,
+immunity and disease resistance in fish, Fish Shellfish Immunol. 120 (2022 Jan)
+569–589, https://doi.org/10.1016/j.fsi.2021.12.037.
+[15] B. Maiti, M. Shetty, M. Shekar, I. Karunasagar, I. Karunasagar, Recombinant outer
+membrane protein A (OmpA) of Edwardsiella tarda, a potential vaccine candidate
+for fish, commoncarp, Microbiol. Res. 167 (2011Dec20) (2011) 1–7, https://doi.
+org/10.1016/j.micres.2011.02.002.
+[16] R.M. Khushiramani, B. Maiti, M. Shekar, S.K. Girisha, N. Akash, A. Deepanjali,
+I. Karunasagar, I. Karunasagar, Recombinant Aeromonas hydrophila outer
+membrane protein 48 (Omp48) induces a protective immune response against
+Aeromonas hydrophila and Edwardsiella tarda, Res. Microbiol. 163 (2012 May)
+(2012) 286–291, https://doi.org/10.1016/j.resmic.2012.03.001.
+[17] B. Maiti, S. Dubey, H.M. Munang’Andu, I. Karunasagar, I. Karunasagar,
+Ø. Evensen, Application of outer membrane protein-based vaccines against major
+bacterial fish pathogens in India, Front. Immunol. 11 (2020 July 21) 1362, https://
+doi.org/10.3389/fimmu.2020.01362.
+[18] K.T. Mody, A. Popat, D. Mahony, A.S. Cavallaro, C. Yu, N. Mitter, Mesoporous
+silica nanoparticles as antigen carriers and adjuvants for vaccine delivery,
+Nanoscale 5 (2013 Apr 9) 5167–5179, https://doi.org/10.1039/c3nr00357d.
+[19] M. Harshitha, A. Nayak, S. Disha, U.S. Akshath, S. Dubey, H.M. Munang’andu,
+A. Chakraborty, I. Karunasagar, B. Maiti, Nanovaccines to combat Aeromonas
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+9
+
+hydrophila infections in warm-water aquaculture: opportunities and challenges,
+Vaccines 11 (2023 Sep 23) 1555, https://doi.org/10.3390/vaccines11101555.
+[20] H.M. Munang’andu, J. Paul, Ø. Evensen, An overview of vaccination strategies and
+antigen delivery systems for Streptococcus agalactiae vaccines in Nile tilapia
+(Oreochromis niloticus), Vaccines 4 (2016 Dec 13) 48, https://doi.org/10.3390/
+vaccines4040048.
+[21] A. Miccoli, M. Manni, S. Picchietti, G. Scapigliati, State-of-the-art vaccine research
+for aquaculture use: the case of three economically relevant fish species, Vaccines 9
+(2021 Feb 10) 40, https://doi.org/10.3390/vaccines9020140.
+[22] A. Assefa, F. Abunna, Maintenance of fish health in aquaculture: review of
+epidemiological approaches for prevention and control of infectious disease of fish,
+Vet. Med. (2018 Feb 26), https://doi.org/10.1155/2018/5432497. Int.
+[23] J.H.W.M. Rombout, A.A. Van den Berg, Van den Berg, P. Witte, E. Egberts,
+Immunological importance of the second gut segment of carp. III. Systemic and/or
+mucosal immune responses after immunization with soluble or particulate antigen,
+J. Fish. Biol. 35 (1989 Aug) 179–186, https://doi.org/10.1111/j.1095-8649.1989.
+tb02967.x.
+[24] P.H.M. Joosten, E. Tiemersma, A. Threels, C. Caumartin-Dhieux, J.H.W.
+M. Rombout, Oral vaccination of fish against Vibrio anguillarum using alginate
+microparticles, Fish Shellfish Immunol. 7 (1997 Oct) (1997) 471–485, https://doi.
+org/10.1006/fsim.1997.0100.
+[25] A. Casc´on, J. Anguita, C. Hernanz, M. S´anchez, M. Fernandez, G Naharro,
+Identification of Aeromonas hydrophila hybridization group 1 by PCR assays, Appl.
+Environ. Microbiol. 2 (1996 April 1) 1167–1170, https://doi.org/10.1128/
+aem.62.4.1167-1170.1996.
+[26] J.A. Santos, C.J. Gonz´alez, A. Otero, M.L. García-L´opez, Hemolytic activity and
+siderophore production in different Aeromonas species isolated from fish, Appl.
+Environ. Microbiol. 65 (1999 Dec 1) (1999) 5612–5614, https://doi.org/10.1128/
+AEM.65.12.5612-5614.1999.
+[27] B. Maiti, P. Raghunath, I. Karunasagar, I. Karunasagar, I. Cloning and expression of
+an outer membrane protein OmpW of Aeromonas hydrophila and study of its
+distribution in Aeromonas spp, J. Appl. Microbiol. 107 (2009 Oct 1) 1157–1167,
+https://doi.org/10.1111/j.1365-2672.2009.04296.x.
+[28] M. Harshitha, R. D’souza, S. Disha, U.S. Akshath, S. Dubey, H.M. Munang’andu,
+A. Chakraborty, I. Karunasagar, B. Maiti, Polylactic-Co-glycolic acid polymer-based
+nano-encapsulation using recombinant maltoporin of Aeromonas hydrophila as
+potential vaccine candidate, Mol. Biotechnol. (2024 March 21) 1–10, https://doi.
+org/10.1007/s12033-024-01117-6.
+[29] M. Harshitha, R. D’souza, S.D. Akshay, A. Nayak, S. Disha, V. Aditya, U.S. Akshath,
+S. Dubey, H.M. Munang’andu, A. Chakraborty, I. Karunasagar, B. Maiti, Oral
+administration of recombinant outer membrane protein A-based nanovaccine
+affords protection against Aeromonas hydrophila in zebrafish, World J. Microbiol.
+Biotechnol. 40 (2024 June 24) 250, https://doi.org/10.1007/s11274-024-04059-
+y.
+[30] U.K. Laemmli, Cleavage of structural proteins during the assembly of the head of
+bacteriophage T4, Nature 227 (1970 Aug 15) 680–685. https://www.nature.co
+m/articles/227680a0.
+[31] H. Towbin, T. Staehelin, J. Gordon, Electrophoretic transfer of proteins from
+polyacrylamide gels to nitrocellulose sheets: procedure and some applications,
+Proc. Natl. Acad. Sci. 76 (1979 Sep 15) 4350–4354, https://doi.org/10.1073/
+pnas.76.9.4350.
+[32] M.M. Pakulska, I. Elliott Donaghue, J.M. Obermeyer, A. Tuladhar, C.
+K. McLaughlin, T.N. Shendruk, M.S. Shoichet, Encapsulation-free controlled
+release: electrostatic adsorption eliminates the need for protein encapsulation in
+PLGA nanoparticles, Sci. Adv. 2 (2016 May 27) 1600519, https://doi.org/
+10.1126/sciadv.1600519.
+[33] S. Dubey, K. Avadhani, S. Mutalik, S.M. Sivadasan, B. Maiti, S.K. Girisha, M.
+N. Venugopal, S. Mutoloki, Ø. Evensen, I. Karunasagar, H.M. Mweemba Munang′
+andu, Edwardsiella tarda OmpA encapsulated in chitosan nanoparticles shows
+superior protection over inactivated whole cell vaccine in orally vaccinated
+fringed-lipped peninsula carp (Labeo fimbriatus), Vaccines 4 (2016 Nov 7) 40,
+https://doi.org/10.3390/vaccines4040040.
+[34] P.R. Rauta, B. Nayak, Parenteral immunization of PLA/PLGA nanoparticle
+encapsulating outer membrane protein (Omp) from Aeromonas hydrophila:
+evaluation of immunostimulatory action in Labeo rohita (rohu), Fish Shellfish
+Immunol. 44 (2015 May) 287–294, https://doi.org/10.1016/j.fsi.2015.02.007.
+[35] S. Kole, S.S.N. Qadiri, S.M. Shin, W.S. Kim, J. Lee, S.J. Jung, Nanoencapsulation of
+inactivated-viral vaccine using chitosan nanoparticles: evaluation of its protective
+efficacy and immune modulatory effects in olive flounder (Paralichthys olivaceus)
+against viral haemorrhagic septicaemia virus (VHSV) infection, Fish Shellfish
+Immunol. 91 (2019 Aug) 136–147, https://doi.org/10.1016/j.fsi.2019.05.017.
+[36] P. Siriyappagouder, K.M. Shankar, B.N. Kumar, R. Patil, O.V. Byadgi, Evaluation of
+biofilm of Aeromonas hydrophila for oral vaccination of Channa striatus, Fish
+Shellfish Immunol. 41 (2014 Dec) 581–585, https://doi.org/10.1016/j.
+fsi.2014.09.021.
+[37] M.J. Quade, J.A. Roth, A rapid, direct assay to measure degranulation of bovine
+neutrophil primary granules, Vet. Immunol. Immunopathol. 58 (1997 Sep 19)
+239–248, https://doi.org/10.1016/s0165-2427(97)00048-2.
+[38] T. Behera, P.K. Nanda, C. Mohanty, D. Mohapatra, P. Swain, B.K. Das, P. Routray,
+B.K. Mishraa, S.K. Sahoo, Parenteral immunization of fish, Labeo rohita with Poly
+D, L-lactide-co-glycolic acid (PLGA) encapsulated antigen microparticles promotes
+innate and adaptive immune responses, Fish Shellfish Immunol. 28 (2010 Feb)
+320–325, https://doi.org/10.1016/j.fsi.2009.11.009.
+[39] P.K. Sahoo, P.R. Rauta, B.R. Mohanty, K.D. Mahapatra, J.N. Saha, M. Rye, A.
+E. Eknath, Selection for improved resistance to Aeromonas hydrophila in Indian
+major carp Labeo rohita: survival and innate immune responses in first generation
+of resistant and susceptible lines, Fish Shellfish Immunol. 31 (2011 Sep 11) (2011)
+432–438, https://doi.org/10.1016/j.fsi.2011.06.014.
+[40] S.K. Yadav, P.K. Dash, P.K. Sahoo, L.C. Garg, A. Dixit, Modulation of immune
+response and protective efficacy of recombinant outer-membrane protein F
+(rOmpF) of Aeromonas hydrophila in Labeo rohita, Fish Shellfish Immunol. 80
+(2018 Sep) 563–572, https://doi.org/10.1016/j.fsi.2018.06.041.
+[41] W. Zhang, C. Zhu, F. Xiao, X. Liu, A. Xie, F. Chen, P. Dong, P. Lin, C. Zheng,
+H. Zhang, H. Gong, PH-controlled release of antigens using mesoporous silica
+nanoparticles delivery system for developing a fish oral vaccine, Front. Immunol.
+12 (2021 April 19) 644396, https://doi.org/10.3389/fimmu.2021.644396.
+[42] W. Jiang, R.K. Gupta, M.C. Deshpande, S.P. Schwendeman, Biodegradable poly
+(lactic-co-glycolic acid) microparticles for injectable delivery of vaccine antigens,
+Adv. Drug Deliv. Rev. 57 (2005 Jan 10) 391–410, https://doi.org/10.1016/j.
+addr.2004.09.003.
+[43] S. Guo, L. Hu, J. Feng, P. Lin, L. He, Q. Yan, Q, Immunogenicity of a bivalent
+protein as a vaccine against Edwardsiella anguillarum and Vibrio vulnificus in
+Japanese eel (Anguilla japonica), Microbiologyopen 8 (2019 June) (2019) 00766,
+https://doi.org/10.1002/mbo3.766.
+[44] S. Dubey, K. Avadhani, S. Mutalik, S.M. Sivadasan, B. Maiti, J. Paul, S.K. Girisha,
+M.N. Venugopal, S. Mutoloki, Ø. Evensen, I. Karunasagar, Aeromonas hydrophila
+OmpW PLGA nanoparticle oral vaccine shows a dose-dependent protective
+immunity in rohu (Labeo rohita), Vaccines 4 (2016 June 1) 21, https://doi.org/
+10.3390/vaccines4020021.
+[45] F. Danhier, E. Ansorena, J.M. Silva, R. Coco, A. Le Breton, V. Preat, PLGA-based
+nanoparticles: an overview of biomedical applications, J. Contr. Release 161
+(2012) 505–522, https://doi.org/10.1016/j.jconrel.2012.01.043.
+[46] P. Dash, P.K. Sahoo, P.K. Gupta, L.C. Garg, A. Dixit, Immune responses and
+protective efficacy of recombinant outer membrane protein R (rOmpR)-based
+vaccine of Aeromonas hydrophila with a modified adjuvant formulation in rohu
+(Labeo rohita), Fish Shellfish Immunol. 39 (2014 Aug) 512–523, https://doi.org/
+10.1016/j.fsi.2014.06.007.
+[47] Y.V. Rao, R. Chakrabarti, Enhanced anti-proteases in Labeo rohita fed with diet
+containing herbal ingredients, Indian J. Clin. Biochem. 19 (2004) 132–134,
+https://doi.org/10.1007/BF02894272, 2004 July.
+[48] Y. Tabata, Y. Ikada, Macrophage phagocytosis of biodegradable microspheres
+composed of L-lactic acid/glycolic acid homo-and copolymers, J. Biomed. Mater.
+Res. 22 (1988 Oct) 837–858, https://doi.org/10.1002/jbm.820221002.
+[49] K.D. Newman, P. Elamanchili, G.S. Kwon, J. Samuel, Uptake of poly (D, L-lactic-co-
+glycolic acid) microspheres by antigen-presenting cells in vivo, J. Biomed. Mater.
+Res. 60 (2002 Feb 26) (2002) 480–486, https://doi.org/10.1002/jbm.10019.
+[50] A. Cerami, TNF and EPO: major players in the innate immune response: their
+discovery, J. Rheum. Dis. 71 (2012) 55–59, https://doi.org/10.1136/
+annrheumdis-2011-200800.
+[51] V. Grasso, D. Padilla, J. Bravo, L. Rom´an, I. Rosario, B. Acosta, B. Vega, F. El Aamri,
+O. Escuela, J. Ramos-Vivas, F. Acosta, Immunization of sea bream (Sparus aurata)
+juveniles against Photobacterium damselae subsp. piscicida by short bath: effect on
+some pro-inflammatory molecules and the Mx gene expression, Fish Shellfish
+Immunol. 46 (2015 Oct) 292–296, https://doi.org/10.1016/j.fsi.2015.06.030.
+[52] D.C. Zhang, Y.Q. Shao, Y.Q. Huang, S.G. Jiang, S.G. Cloning, Characterization and
+expression analysis of interleukin-10 from the zebrafish (Danio rerion), BMB Rep.
+38 (2005) 571–576, https://doi.org/10.5483/bmbrep.2005.38.5.571.
+[53] L. Hummelshoj, L.P. Ryder, L.K. Poulsen, The role of the interleukin-10 subfamily
+members in immunoglobulin production by human B cells, Scand. J. Immunol. 64
+(2006 June 26) 40–47, https://doi.org/10.1111/j.1365-3083.2006.01773.x.
+[54] X. Jiang, C. Zhang, Y. Zhao, X. Kong, C. Pei, L. Li, G. Nie, X. Li, Immune effects of
+the vaccine of live attenuated Aeromonas hydrophila screened by rifampicin on
+common carp (Cyprinus carpio L), Vaccine 34 (2016 June) 3087–3092, https://
+doi.org/10.71502/Fijbs.45538.
+[55] R. Harikrishnan, G. Devi, C. Balasundaram, H. Van Doan, S. Jaturasitha, E. Ringø,
+C. aggio, Effect of chrysophanic acid on immune response and immune genes
+transcriptomic profile in Catla catla against Aeromonas hydrophila, Sci. Rep. 11
+(2021 Jan 12) 612.
+[56] C.J. Secombes, T. Wang, S. Hong, S. Peddie, M. Crampe, K.J. Laing,
+C. Cunningham, J. Zou, Cytokines and innate immunity of fish, Dev. Comp.
+Immunol. 25 (2001 Oct 12) 713–723, https://doi.org/10.1016/s0145-305x(01)
+00032-5.
+[57] M. Colonna, A. Krug, M. Cella, Interferon-producing cells: on the front line in
+immune responses against pathogens, Curr. Opin. Immunol. 14 (2002 June 1)
+(2002) 373–379, https://doi.org/10.1016/s0952-7915(02)00349-7.
+[58] A. Pashine, N.M. Valiante, J.B. Ulmer, Targeting the innate immune response with
+improved vaccine adjuvants, Nat. Med. 11 (2005 April 5) S63–S68, https://doi.
+org/10.1038/nm1210.
+[59] I. Rojo, O.M. de Il´arduya, A. Estonba, M.A. Pardo, Innate immune gene expression
+in individual zebrafish after Listonella anguillarum inoculation, Fish Shellfish
+Immunol. 23 (2007 Dec) 1285–1293, https://doi.org/10.1016/j.fsi.2007.07.002.
+[60] F. Siegrist, M. Ebeling, U. Certa, The small interferon-induced transmembrane
+genes and proteins, J. Interferon Cytokine Res. 31 (2011 Jan 12) 183–197, https://
+doi.org/10.1089/jir.2010.0112.
+[61] P. Pereiro, G. Forn-Cuni, A. Figueras, B. Novoa, Pathogen-dependent role of turbot
+(Scophthalmus maximus) interferon-gamma, Fish Shellfish Immunol. 59 (2016
+Dec) 25–35, https://doi.org/10.1016/j.fsi.2016.10.021.
+[62] T. Lindenstrøm, K. Buchmann, C.J. Secombes, Gyrodactylus derjavini infection
+elicits IL-1β expression in rainbow trout skin, Fish Shellfish Immunol. 15 (2003
+Aug) 107–115, https://doi.org/10.1016/s1050-4648(02)00142-0.
+[63] S. Saurabh, P.K. Sahoo, Non-specific immune responses of the Indian major carp
+Labeo rohita (Hamilton) to infestation by the freshwater fish louse Argulus
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+10
+
+siamensis (Wilson), Indian J. Fish. 57 (2010 Jan-Feb) 45–53, https://doi.org/
+10.1016/j.fsi.2006.03.010.
+[64] R. Savan, D. Igawa, M. Sakai, Cloning, characterization and expression analysis of
+interleukin-10 from the common carp, Cyprinus carpio L, Eur. J. Biochem. 270
+(2003 Nov 28) 4647–4654, https://doi.org/10.1046/j.1432-1033.2003.03854.x.
+[65] K.W. Moore, R. de Waal Malefyt, R.L. Coffman, A. O’Garra, Interleukin-10 and the
+interleukin-10 receptor, Annu. Rev. Immunol. 19 (2001 April) 683–765, https://
+doi.org/10.1146/annurev.immunol.19.1.683.
+[66] A.R. Burmeister, I. Marriott, The interleukin-10 family of cytokines and their role
+in the CNS, Front. Cell. Neurosci. 12 (2018 Nov 27) 458, https://doi.org/10.3389/
+fncel.2018.00458.
+[67] R.A. Pengal, L.P. Ganesan, G. Wei, H. Fang, M.C. Ostrowski, S. Tridandapani,
+S Lipopolysaccharide-induced production of interleukin-10 is promoted by the
+serine/threonine kinase Akt, Mol. Immunol. 43 (2006 April) 1557–1564, https://
+doi.org/10.1016/j.molimm.2005.09.022.
+[68] M.A. Burgos-Aceves, A. Cohen, Y. Smith, C. Faggio, MicroRNAs and their role on
+fish oxidative stress during xenobiotic environmental exposures, Ecotoxicol.
+Environ. Saf. 48 (2018 Feb) 995–1000, https://doi.org/10.1016/j.
+ecoenv.2017.12.001.
+[69] C. Low, S. Wadsworth, C. Burrells, C.J. Secombes, Expression of immune genes in
+turbot (Scophthalmus maximus) fed a nucleotide-supplemented diet, Aquaculture
+221 (2003 May 1) 3–40, https://doi.org/10.1016/S0044-8486(03)00022-X.
+[70] C. Ding, E. Fan, S. Wang, L. Guo, J. Li, Q. Liu, A potential aquaculture vaccine
+vector: evaluation of a double-gene attenuated Listeria monocytogenes in zebrafish
+(Danio rerio), Aquaculture 479 (2017 July) (2017) 311–320, https://doi.org/
+10.1016/j.micpath.2019.03.040.
+[71] P. Mu, Y. Wang, J. Ao, C. Ai, X. Chen, Molecular cloning and bioactivity of an IL-2
+homologue in large yellow croaker (Larimichthys crocea), Fish Shellfish Immunol.
+81 (2018 Oct) 309–317, https://doi.org/10.1016/j.fsi.2018.07.040.
+[72] A.M. Prabhakara, D.P. Nanjappa, A. Kotian, K. Kalladka, G. Chakraborty, R. Vittal,
+J.R.M. Raj, V.K. Deekshit, A. Chakraborty, Wild-type and cancer-prone zebrafish
+exhibit distinct gut microbial diversity and differential anti-inflammatory response
+upon infection, J. Biosci. 47 (2022 Nov 2) 65.
+[73] M.K. Raida, K. Buchmann, K. Bath, Vaccination of rainbow trout (Oncorhynchus
+mykiss Walbaum) against Yersinia ruckeri: effects of temperature on protection
+and gene expression, Vaccine 26 (2008 Feb 20) 1050–1062, https://doi.org/
+10.1016/j.vaccine.2007.12.029.
+M. Harshitha et al.
+Microbial Pathogenesis 206 (2025) 107765
+11

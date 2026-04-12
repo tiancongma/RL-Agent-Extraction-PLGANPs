@@ -1,0 +1,130 @@
+"29 
+15 
+0.6 
+2.5 
+203.8","0.115 
+-1.07 
+35.62 
+8.900"
+"30 
+15 
+0.6 
+5.0 
+188.1","0.103 
+-2.58 
+19.43 
+4.860"
+"*Results not shown since this experiment was excluded from the analysis.",""
+"Before  any  modeling  attempt,  data 
+from  all  experiments  were","5 and 10, which is an indication that average accurate models were"
+"subjected to an outlier test to avoid unwanted effect of incoherent","obtained.  Note  that  all  regressions  are  statistically  significant  at  a"
+"experiments  in  models.  Principal  components  analysis  (PCA)  is  a","significance level of 0.05 (p-values below 0.05), except the regression"
+"recommended method for the detection of outliers on multivariate","for LC with a p-value of 0.086. This was in fact the lowest RER value"
+"data.25 Data from the 30 experiments were modeled by PCA (auto-","that was obtained for this attribute. The lack-of-fit test for all models"
+"scaled  data) 
+and 
+three 
+principal 
+components  were 
+retained","revealed a p-value above 0.05 indicating good reproducibility (data"
+"encompassing 91.8 % of the total data variance. Both Hotelling’s T2","not shown)."
+"and squared prediction error statistics signalled experiment 21 as an","The obtained PLGA nanoparticles’ Z-ave ranged from 187.9 to 239.9"
+"outlier, as the factors used in this experiment (15 % (w/v) PVA, 0.2","nm. Model for this attribute involved all single terms, together with"
+"dl/g  PolVisc,  5  %  (w/w)  OVA)  lead  to  unstable  nanoparticles.    In","squared terms for PVA (positive) and PolVisc (positive). The effects"
+"consequence, this experiment was excluded from further processing.","of PolVisc and OVA can be observed on the contour plot of Figure 1A,"
+"All  models  considered 
+initially  a  structure  encompassing  single,","showing  that  a  minimum  nanoparticles’  Z-ave  (185  nm)  can  be"
+"interactions and squared terms. Each response model was pruned by","achieved  using  a  PolVis  in  the  interval  0.3  to  0.6  dl/g,  for  values"
+"excluding statistically non-significant terms considering a significance","ranging  from  4.2  to  5.0  %  (w/w)  of  OVA.  A  PLGA  polymer  with"
+"level of 0.05. Terms were removed one-by-one sequentially until no","viscosity outside this range in addition to a lower OVA leads to higher"
+"statistically non-significant terms were present or until a reduction","Z-ave values."
+"on the regression Q2 was observed (Table 2).","Yerlikaya  et  al. 
+(2013)  also 
+studied 
+the  effect  of 
+surfactant"
+"","concentration in aqueous phase (%) on Z-ave, ZP and EE of paclitaxel-"
+"T
+able 2 Models’ coefficients* and performance indicators.","loaded  PLGA  nanoparticles.26  The  authors  also 
+followed  a  QbD"
+"Coefficients 
+Z-ave 
+PdI 
+ZP 
+EE (%) 
+LC","approach,  but 
+an 
+incomplete 
+factorial  design  was  employed"
+"(nm) 
+(mV) 
+(g/mg)","(Plackett-Burman design and Box-Behnke design).26 Regarding Z-ave"
+"Offset 
+191.9 
+0.080 
+-2.660 
+63.96 
+15.52","response, 
+the  surfactant  concentration  on  aqueous  phase  was"
+"PVA 
+-2.560 
+--- 
+--- 
+-20.99 
+-3.240","considered  one  of  the  most  significant  factors  affecting  this  QCA"
+"PolVisc 
+7.520 
+-0.020 
+0.160 
+--- 
+-1.880","(pvalue = 0.026, Plackett-Burman).26 In our Z-ave model, PVA was not"
+"OVA 
+-8.450 
+--- 
+-0.290 
+-23.94 
+-2.230","the most important factor (pvalue = 0.21), but it was observed that"
+"PVA2 
+6.640 
+--- 
+--- 
+--- 
+---","an increase in PVA in the internal aqueous phase, decreased PLGA"
+"PolVisc2 
+13.75 
+0.050 
+-0.470 
+--- 
+---","nanoparticles Z-ave.  This fact was also observed by Rahman et  al."
+"PVA*OVA 
+--- 
+--- 
+--- 
+20.42 
+---","(2010)  and  it  was  indeed  expected  due  to  the  higher  emulsifier"
+"PolVisc*OVA 
+--- 
+--- 
+--- 
+--- 
+9.180","activity that prevents droplets’ coalescence.27, 28"
+"Regression 
+<0.001 
+0.001 
+0.043 
+0.004 
+0.086",""
+"p-value",""
+"RMSE 
+7.2 
+0.036 
+0.540 
+14.90 
+5.180",""
+"RER 
+7.2 
+4.700 
+5.800 
+5.100 
+4.200","A"
+"*All coefficients are statistically significant for a significance level of",""

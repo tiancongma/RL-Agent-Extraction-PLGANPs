@@ -1,0 +1,1747 @@
+
+
+Citation: Alkholief, M.; Kalam, M.A.;
+Anwer, M.K.; Alshamsan, A. Effect of
+Solvents, Stabilizers and the
+Concentration of Stabilizers on the
+Physical Properties of
+Poly(D,L-lactide-co-glycolide)
+Nanoparticles: Encapsulation, In
+Vitro Release of Indomethacin and
+Cytotoxicity against HepG2-Cell.
+Pharmaceutics 2022, 14, 870.
+https://doi.org/10.3390/
+pharmaceutics14040870
+Academic Editors: Juan José Torrado,
+Bruno Sarmento and Oya Tagit
+Received: 6 February 2022
+Accepted: 12 April 2022
+Published: 15 April 2022
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright:
+© 2022 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+pharmaceutics
+Article
+Effect of Solvents, Stabilizers and the Concentration of
+Stabilizers on the Physical Properties of
+Poly(D,L-lactide-co-glycolide) Nanoparticles: Encapsulation,
+In Vitro Release of Indomethacin and Cytotoxicity
+against HepG2-Cell
+Musaed Alkholief 1, Mohd Abul Kalam 1
+, Md Khalid Anwer 2
+and Aws Alshamsan 1,*
+1
+Nanobiotechnology Unit, Department of Pharmaceutics, College of Pharmacy, King Saud University,
+P.O. Box 2457, Riyadh 11451, Saudi Arabia; malkholief@ksu.edu.sa (M.A.); makalam@ksu.edu.sa (M.A.K.)
+2
+Department of Pharmaceutics, College of Pharmacy, Prince Sattam Bin Abdulaziz University,
+Al-Kharj 11942, Saudi Arabia; m.anwer@psau.edu.sa
+*
+Correspondence: aalshamsan@ksu.edu.sa
+Abstract: A biocompatible, biodegradable and FDA-approved polymer [Poly lactic-co-glycolic acid
+(PLGA)] was used to prepare the nanoparticles (NPs) to observe the effect of solvents, stabilizers
+and their concentrations on the physical properties of the PLGA-NPs, following the encapsulation
+and in vitro release of Indomethacin (IND). PLGA-NPs were prepared by the single-emulsion sol-
+vent evaporation technique using dichloromethane (DCM)/chloroform as the organic phase with
+Polyvinyl-alcohol (PVA)/Polyvinylpyrrolidone (PVP) as stabilizers to encapsulate IND. The effects of
+different proportions of PVA/PVP with DCM/chloroform on the physiochemical properties (particle
+size, the polydispersity index, the zeta potential by Malvern Zetasizer and morphology by SEM)
+of the NPs were investigated. DSC was used to check the physical state, the possible complex-
+ation of PLGA with stabilizer(s) and the crystallinity of the encapsulated drug. Stabilizers at all
+concentrations produced spherical, regular-shaped, smooth-surfaced discrete NPs. Average size of
+273.2–563.9 nm was obtained when PVA (stabilizer) with DCM, whereas it ranged from 317.6 to
+588.1 nm with chloroform. The particle size was 273.2–563.9 nm when PVP was the stabilizer with
+DCM, while it was 381.4–466.6 nm with chloroform. The zeta potentials of PVA-stabilized NPs were
+low and negative (−0.62 mV) while they were comparatively higher and positive for PVP-stabilized
+NPs (+17.73 mV). Finally, drug-loaded optimal NPs were composed of PLGA (40 mg) and IND
+(4 mg) in 1 mL DCM/chloroform with PVA/PVP (1–3%), which resulted in sufﬁcient encapsulation
+(54.94–74.86%) and drug loading (4.99–6.81%). No endothermic peak of PVA/PVP appeared in the
+optimized formulation, which indicated the amorphous state of IND in the core of the PLGA-NPs.
+The in vitro release study indicated a sustained release of IND (32.83–52.16%) from the PLGA-NPs
+till 72 h and primarily followed the Higuchi matrix release kinetics followed by Korsmeyer–Peppas
+models. The cell proliferation assay clearly established that the organic solvents used to prepare
+PLGA-NPs had evaporated. The PLGA-NPs did not show any particular toxicity in the HepG2 cells
+within the dose range of IND (250–500 µg/mL) and at an equivalent concentration of PLGA-NPs
+(3571.4–7142.7 µg/mL). The cytotoxicity of the hepatotoxic drug (IND) was reduced by its encapsula-
+tion into PLGA-NPs. The outcomes of this investigation could be implemented to prepare PLGA-NPs
+of acceptable properties for the encapsulation of low/high molecular weight drugs. It would be
+useful for further in vitro and in vivo applications to use this delivery system.
+Keywords: PLGA; Indomethacin; nanoparticles; solvents; stabilizers; morphology; particle-size;
+encapsulation; drug release; cytotoxicity
+Pharmaceutics 2022, 14, 870. https://doi.org/10.3390/pharmaceutics14040870
+https://www.mdpi.com/journal/pharmaceutics
+
+Pharmaceutics 2022, 14, 870
+2 of 29
+1. Introduction
+Natural and synthetic polymers have been extensively used by researchers for drug
+delivery applications for decades [1–5]. Natural polymers (e.g., bovine serum albumin)
+have fallen out of favor due to impurity and cost effectiveness issues [6,7]. Synthetic
+polymers (e.g., poly D,L-Lactide-co-glycolic Acid, PLGA), on the other hand, have become
+more preferable to formulation scientists as drug delivery carriers, due to their superior
+biodegradability and biocompatibility properties [8,9]. A wide variety of synthetic poly-
+mers have been studied, with PLGA being one of the most used. PLGA is biocompatible
+and biodegradable, and has been explored in many drug delivery applications, such as
+controlled delivery carriers for peptide, proteins, antigens, genes, vaccines, growth fac-
+tors and many other macromolecular therapeutics [8,10–19]. The frequent application of
+PLGA for drug delivery is due to its attractive mechanical and handling properties [20]. In
+addition, researchers prefer using PLGA because it has been approved by World Health
+Organization and Food Drug Administration (FDA) for human use since 1989 [5,7,9,21–24].
+PLGA-NPs can be synthesized using different techniques, including emulsion solvent
+evaporation or diffusion, solvent displacement, salting-out, nanoprecipitation and many
+other techniques [8,25–29]. Of these methods, the single (o/w) or double (w/o/w) emulsion
+solvent evaporation are the oldest and most extensively used techniques to encapsulate the
+hydrophilic and hydrophobic drugs into the PLGA-based micro- or nanoparticles [6,9,22].
+In this method, PLGA and Indomethacin (IND) are dissolved in organic solvent (chloro-
+form/dichloromethane/ethyl acetate/acetone etc.) and then emulsiﬁed by the stabilizer
+present in the aqueous phase via homogenization followed by sonication [28]. The nano-
+droplets obtained are further treated by evaporating the organic solvent(s) before purifying
+and collecting the PLGA-NPs by washing with puriﬁed water (ultracentrifugation) for
+its further characterization [21,25]. The morphological and physical/physicochemical
+characteristics (particle size, its distribution, physical and stability, release proﬁle of the
+encapsulated drug, etc.) of the NPs can be greatly inﬂuenced by the formulation parame-
+ters [30,31]. The above characteristics of PLGA-NPs might change by changing the type of
+organic solvent(s) used to solubilize the polymer and the type of emulsiﬁer/stabilizer, and
+their respective concentrations. Other factors that play a role include the mechanical forces
+(such as homogenization/probe-sonication, magnetic stirring rate, etc.) used to emulsify
+the mixture of organic and solvents, and the duration for the complete evaporation of the
+organic solvent [27,30].
+Indomethacin (IND) is a nonsteroidal anti-inﬂammatory drug (NSAID) used to relieve
+fever, pain, swelling and stiffness of joints in moderate to severe arthritic conditions
+such as rheumatoid, osteo and gouty arthritis or spondylitis. It is also used for other
+purposes including in the shoulder pain affected by tendinitis or bursitis. It acts by the
+reversible inhibition of cyclooxygenase enzymes (COX-I and COX-II), also known as
+prostaglandin-endoperoxide synthase. The COX-1 catalyzes the synthesis of prostaglandins
+and thromboxane, while COX-2 is articulated in response to inﬂammation and injury.
+Thus, the antipyretic, analgesic and anti-inﬂammatory actions of IND take place as a
+result of decreased prostaglandin synthesis. Unlike other NSAIDs, IND also inhibits the
+enzyme phospholipase-A2 (causes the release of arachidonic acid from phospholipids).
+The antipyretic effect of IND might be due to its action on the hypothalamus causing
+vasodilation, increased peripheral blood ﬂow and thus the dissipation of heat [32]. The
+poor aqueous solubility of IND (0.937 mg/L at 25 ◦C) leads to poor bioavailability [33].
+Thus, taking high doses of IND is needed for some conditions. High doses of this drug for
+prolonged use may cause intestinal bleeding and increase the risk of stroke or fatal heart
+attack or myocardial infarction [34]. The encapsulation of IND into nanoparticulate drug
+carriers is needed to improve its bioavailability and reduce its dose and dosing frequency.
+In the present study, we investigated the effect of different formulation parameters on
+the physiochemical properties of the PLGA-NPs. We prepared four batches of PLGA-NPs
+using two different organic solvents, namely chloroform and dichloromethane (DCM), with
+two commonly used stabilizers, namely Polyvinyl alcohol (PVA) and Polyvinylpyrrolidone
+
+Pharmaceutics 2022, 14, 870
+3 of 29
+(PVP) and studied their inﬂuence on the particle size, its distribution and their morpho-
+logical characteristics. We also investigated the effects of different concentrations and
+viscosities of the aqueous solution of the stabilizers on the PLGA-NPs. In addition, we uti-
+lized differential scanning calorimetry to check any polymer–stabilizer or drug interactions
+and the crystallinity of the encapsulated drug. To our knowledge, most of the literature has
+focused on the release behavior of the payload from the PLGA-NPs system. Thus, here we
+synthesized drug-loaded PLGA-NPs by the single emulsion solvent evaporation technique
+using IND as a model lipophilic drug. The physicochemical properties including the drug
+encapsulation, its loading and in vitro drug release and release kinetics were investigated
+in detail. Moreover, the toxicity of PLGA-NPs (with and without IND) was examined by
+performing the cytotoxicity using HepG2 cells.
+2. Materials and Methods
+2.1. Materials
+Poly (D,L-lactic-co-glycolic acid) (50:50) with molecular weight 40,000–75,000 and
+Polyvinylpyrrolidone (PVP; Av. Mw ~ 55,000) were purchased from Sigma Aldrich Co.
+(St. Louis, MO, USA). Indomethacin (IND) was procured from Winlab, UK. Polyvinyl
+alcohol (PVA) with 17,200 Mw was purchased from AVONCHEM Ltd. (Macclesﬁeld,
+Cheshire, UK). Dichloromethane (DCM) and chloroform were purchased from PANREAC
+QUIMICA SA, (Barcelona, Spain) and MERK (Darmstadt, Germany), respectively. Puriﬁed
+water was obtained through Milli-Q water puriﬁer (Millipore, France) system.
+2.2. Chromatographic Analysis of Indomethacin
+The reverse phase (RP) HPLC-UV method was used for the analysis of IND at 241 nm
+wavelength [35–37]. “The HPLC system (Waters®, Model-1500-series controller, Milford,
+MA, USA) equipped with UV-detector (Waters®, Model-2489, dual absorbance detector,
+USA), binary pump (Waters®, Model-1525, USA), automated sampling system (Waters®,
+Model-2707 Autosampler, USA). The system was run by “Breeze software” (Breeze™HPLC
+Systems From Waters Corporation, Milford, MA, USA). A C18 analytical column (Macherey-
+Nagel 150 × 4.6 mm, 5 µm) was used at room temperature. The chromatography was
+performed by isocratic elution of the mobile phase composed of 75:25, v/v of Acetonitrile
+and Milli-Q® water (the pH of water was adjusted to 3.2 by Ortho-Phosphoric acid). The
+ﬂow rate was 1 mL/min and the volume of injection was 30 µL. Total run time was 5 min
+and retention time (Rt) for IND was 3.5 min. The calibration curve was constructed in the
+concentration range 0.1, 0.2, 0.4, 0.8, 1.6, 2.5, 5.0 and 10 µgmL−1. The straight-line equation
+obtained was y = 150,383x −6548.7 with a correlation coefﬁcient (R2) of 0.9991.
+2.3. Preparation of PLGA Nanoparticles
+The PLGA-NPs were prepared by the single emulsion solvent evaporation technique.
+Here, the PLGA-NPs were prepared using the oil-in-water (o/w) single emulsion solvent
+evaporation technique [38]. In brief, 40 mg of PLGA (50:50; Mol. Wt. of 40–75 kDa)
+and 4 mg of IND were dissolved into 1 mL of the organic phase consisting of either
+chloroform or dichloromethane (DCM). These organic phases were then emulsiﬁed after
+the addition of 5 mL of varying concentrations of (1%, 3%, 6% or 9%, w/v) of polyvinyl
+alcohol (PVA) or polyvinyl pyrrolidone (PVP) by pulse sonication using a probe sonicator
+at 40% power for 40 s (4 cycles, 10 s each) using a probe sonicator (Sonics & Materials,
+Inc., Newtown, PA, USA) on an ice bath. The organic solvent was evaporated by magnetic
+stirring at 800 rpm at room temperature for overnight to obtain the suspension of NPs. The
+suspended PLGA-NPs were puriﬁed after washing with Milli-Q® water to remove the extra
+stabilizers and collected by ultracentrifugation at 15,000 rpm for 30 min at 4 ◦C (Preparative
+ultracentrifuge, WX-series by Hitachi Koki, Hitachinaka, Japan). Finally, the drug-loaded
+PLGA-NPs were also prepared by the same procedure, where 4 mg of IND was dissolved
+into the organic phase containing PLGA. The washing process was performed three times
+
+Pharmaceutics 2022, 14, 870
+4 of 29
+for the puriﬁcation and collection of PLGA-NPs. The obtained NPs were then dispersed in
+10 mL of Milli-Q water, freeze-dried and were stored at −80 ◦C [39] for further experiments.
+2.4. Particle Size and Zeta Potential Measurement
+The hydrodynamic diameter (mean particle size), size distribution and zeta potential of
+the developed PLGA-NPs were checked by Dynamic Light Scattering (DLS) measurement
+by Zetasizer Nano-Series (Nano-ZS, Malvern Instruments Limited, Worcestershire, UK) as
+per the reported methods [28,40]. Before starting the measurements, the suspensions of the
+NPs were suitably diluted with Milli-Q® water (Millipore, France). For zeta potential, by
+considering the dielectric constant of the dispersant (i.e., 78.5 for water), the electrophoretic
+mobility was calculated at 25 ◦C by the software. The electrophoretic values were utilized
+to estimate the zeta potential by the software DTS V-4.1 (Malvern, Worcestershire, UK)
+installed in the system. All the measurements were performed in triplicate.
+2.5. Morphological Characterization of PLGA-NPs
+The shape and surface morphology of the PLGA-NPs was observed and determined
+by micrographs of the NPs obtained by Scanning Electron Microscopy (SEM) (Zeiss EVO
+LS10; Cambridge, UK) using the gold sputter technique. The freeze-dried PLGA-NPs were
+coated with gold using an ion-sputter (Q150R Sputter unit) from Quorum Technologies Ltd.
+(East Sussex, UK) in an argon atmosphere at 20 mA for 1 min. Observation and imaging
+was completed at 10 to 20 kV accelerating voltage and 8.5 mm of working distance. The
+magniﬁcation for the SEM images was kept at around 10 to 15 KX [28].
+2.6. FTIR Spectral Analysis
+Attenuated total reﬂectance (ATR) FTIR spectrum of solid samples (of pure drug
+(IND), PLGA 50:50, Empty PLGA-NPs and IND-loaded PLGA-NPs-5) were recorded using
+Bruker ALPHA spectrometer (Bruker Optics, Rosenheim, Germany). The spectrometer was
+equipped with a diamond prism with single bounce reﬂection ATR accessory. A thin layer
+of the solid sample was kept over the ATR accessory and the spectra were recorded from
+4000–450 cm−1 wavenumber range using OPUS software (V-7.8), Bruker Optics, Rosenheim,
+Germany.
+2.7. Viscosity Evaluation of the Surfactant Solutions
+Viscosity study of the different concentrations of the stabilizers (PVA and PVP) was
+conducted to explore if there was a direct or indirect relationship between the viscosity and
+the characterization parameters [41]. The viscosity of the stabilizer solutions was evaluated
+by “Brookﬁeld Viscometer (Brookﬁeld Engineering Laboratories, Middleboro, MA, USA)”
+following as reported [42,43]. The viscosities (Pa.s) were determined at different shear rates
+(300–500 s−1 for PVA and 360–460 for PVP s−1) at 25 ± 1 ◦C temperature.
+2.8. Encapsulation Efﬁciency and Drug-Loading Capacity
+For the determination of the encapsulation efﬁciency (%EE) drug loading (%DL),
+10 mg of drug-loaded PLGA-NPs were dispersed in 5 mL of Milli-Q water. The dispersion
+was centrifuged at 13,500 rpm at 10 ◦C for 15 min (PRISM-R, Labnet International Inc.,
+Edison, NJ, USA). The supernatant was removed and the sediments of PLGA-NPs (pre-
+cipitant) were washed by Milli-Q water in triplicate with 2 min of vortexing. Thereafter,
+10 mL 1:1 (v/v) mixture of CHCl3 and DCM (to dissolve the PLGA and solubilize the IND)
+was added in the precipitant or pellet and vortexed. For complete extraction of the drug
+(Indomethacin, IND) from NPs, the mixture was subjected to ultrasonication (Model-3510,
+Branson Ultrasonic Corporation) for 20 min. The resulting suspension was further cen-
+trifuged for 10 min at 13,500 rpm. The supernatant was collected and the concentration of
+the drug was analyzed by the reported HPLC-UV method at 241 nm wavelength [35–37].
+
+Pharmaceutics 2022, 14, 870
+5 of 29
+The %EE and %DL were calculated in triplicate according to the following equations
+(Equations (1) and (2)).
+%EE =
+ Amount of IND in NPs precipitant (mg)
+Initial amount of IND added (mg)
+
+× 100
+(1)
+%DL =
+ Amount of IND in NPs precipitant (mg)
+Total mount of NPs (mg)
+
+× 100
+(2)
+2.9. In Vitro Release and Kinetics Study
+Based on the physicochemical features, two formulations from each batch were se-
+lected for the comparative in vitro release proﬁle of IND from different PLGA-NPs. The
+in vitro release of IND from the selected and optimized PLGA-NPs was performed in in
+triplicate by the dialysis tubing method [44–46]. Phosphate buffer saline (PBS, pH 7.4) with
+0.25% (w/v) of sodium lauryl sulphate (SLS) was used as the release media. An in vitro
+release study was also performed using dilute HCl solution (pH 1.2) with 0.25% (w/v)
+of SLS as release medium. A total of 10 mg of freeze-dried drug-loaded NPs was put in
+1 mL of PBS mixed by vortexing and transferred into dialysis tubing. Both the ends of
+the dialysis tubing were tied and put into 100 mL capacity beakers containing 50 mL of
+the release medium. Beakers were placed in a shaking water bath (100 opm) where the
+temperature of water bath was maintained at 37 ± 0.5 ◦C. At stipulated time points 1 mL
+of the sample was taken out from each beaker and centrifuged at 13,500 rpm for 10 min.
+The supernatants was collected and 30 µL of each was injected into the HPLC-UV system
+for the analysis of released drug [37]. The cumulative amount drug released (%DR) was
+calculated by the following equation (Equation (3)), where DF stands for dilution factor.
+%DR = Conc. (µg/mL) × DF × Volume of release medium (mL)
+Initial amount of IND in NPs (µg)
+× 100
+(3)
+To check the kinetics and mechanism of IND release from the PLGA-NPs, the in vitro
+release data were ﬁtted into different kinetic models [47,48]. The applied kinetic models
+include the zero-order (%DR versus time, Equation (4)), ﬁrst-order (Log %D remaining
+versus time, Equation (5)), Higuchi matrix (%DR versus square root of time, Equation (6)),
+Korsmeyer–Peppas (Log fraction DR versus Log time, Equation (7)) and Hixson–Crowell
+(cube root of %D remaining in the polymeric matrix versus time, Equation (8)). From the
+values of slopes and co-efﬁcient of correlation (R2) of kinetic plots obtained in different
+model equations, the release/diffusion-exponent (n-value) was calculated. The determi-
+nation of n-values could provide an idea about the mechanism of drug release from the
+NPs [36,49,50].
+At = k0t
+(4)
+LogA0 −LogAt = k1t/2.303
+(5)
+At = kHM
+√
+t
+(6)
+At = kKP tn
+(7)
+3p
+A0 −
+3p
+At = kHCt
+(8)
+In the above equations, At is the amount of released IND at time ‘t’, A0 is the initial
+amount of IND in the PLGA-NPs. The expression ‘k’ is the rate constants (k0 for zero-order,
+k1 for ﬁrst order, kHM for Higuchi matrix, kKP for Korsmeyer–Peppas, and KHC for the
+Hixson–Crowell model). The n-value in the Korsmeyer–Peppas equation is known as the
+diffusion or release exponent.
+2.10. Differential Scanning Calorimetry (DSC)
+The analysis of the physical state and possible complexation of the PLGA with the
+used stabilizers as well as the crystallinity of the encapsulated drug (IND) was checked
+
+Pharmaceutics 2022, 14, 870
+6 of 29
+through the differential scanning calorimetry technique through a DSC-8000 (Perkin Elmer
+Instruments, Shelton, WA, USA) at the heating rate of 10 ◦C per min. Around 4–5 mg of
+PLGA-NPs was weighed and put in aluminum pans and the lids were crimped. The pans
+were hermetically sealed and placed in the sample cell of the calibrated DSC instrument
+to check the melting temperature of the materials [40,51]. Both the reference and sample
+cells were continuously purged with N2 gas at the rate of 20 mL per min. The results
+were analyzed by the software Pyris™(Version-11, PerkinElmer Inc., Houston, TX, USA)
+attached to the system. The thermal behavior of the materials used in the PLGA-NPs was
+examined at 10 ◦C per min of heating rate within 20 to 240 ◦C temperature range.
+2.11. Stability of IND-Loaded PLGA-NPs
+A short-term stability on drug-loaded freeze-dried PLGA-NPs (IND-PLGA-NPs-5) was
+performed [28,52,53]. The drug-loaded NPs (10 mg) were crammed into glass containers
+and stored at 4 ± 0.5 ◦C, 30 ± 1 ◦C (as per the Saudi Arabian climatic zone (IVa)) and
+37 ± 1 ◦C for 1-month. The alteration in the particle size, polydispersity index, zeta
+potential, encapsulation efﬁciency (%EE) and drug-loading capacity (%DL) with storage
+time was determined at the 15th and 30th day to recognize the stability of the NPs. All the
+measurements were performed in triplicate.
+2.12. In Vitro Cytotoxicity Studies
+2.12.1. Maintenance and Growth of Cell Line
+The human hepatic cancer cell (HepG2) lines were cultured under CO2 (5%) at 37 ◦C
+using Dulbecco’s Modiﬁed Eagle’s Medium (DMEM), procured from UFC Biotech, Riyadh,
+Saudi Arabia). The media were accompanied with 1% mixture of “Penicillin-Streptomycin”
+(Thermo Fischer Scientiﬁc, Waltham, MA, USA), 10% Fetal Bovine Serum (FBS) and 1%
+L-Glutamine obtained from Alpha Chemika, Maharashtra, India and BioWest, Riverside,
+MO, USA, respectively, while the MTT was obtained from “Sigma Aldrich”, St. Louis,
+MO, USA.
+2.12.2. MTT Assay
+The in vitro cytotoxic activities of the free drug (IND solution) and the IND-loaded
+PLGA-NPs were investigated as compared to the empty PLGA-NPs-5 using HepG2 cells
+by assessing their viability through an MTT assay [54]. The cell cultures in the phase of
+exponential growth were “Trypsinized” and diluted in DMEM to obtain a total cell count of
+5 × 105 cells/mL. The suspension of cells were then transferred into ﬂat-bottomed 96 well
+microplate in 100 µL medium and left overnight to attach. The medium was changed
+with 100 µL of fresh medium containing IND, IND-loaded NPs and empty PLGA-NPs-5
+using the equivalent amount of NPs to obtain IND concentrations (5–1000 µg/mL) in the
+same media as the solvent. An equivalent amount of empty NPs was also used. The
+free IND was dissolved in DMSO and diluted with the media, keeping the concentration
+of DMSO not more than 1%, (v/v). Three wells were used as a negative control for cell
+viability, where only cells (without treatment) were suspended in the FBS free DMEM. Each
+product dilution was evaluated in triplicate. After 24 h, 48 h and 72 h of incubation, the
+cell suspensions were removed and the wells were washed with PBS. Then, 20 µL of MTT
+solution (at 5 mg/mL concentration in PBS) and 80 µL of the medium was added and
+incubated at 37 ◦C for 4 h. Subsequently, the culture ﬂuid (containing media and MTT)
+was discarded leaving the precipitate of formazan crystals. The crystals were dissolved
+in 100 µL mixture (99.4 mL/0.6 mL/10 g) of DMSO, acetic acid and sodium lauryl sulfate
+at room temperature for 10–15 min. The microplates were observed and absorbance was
+measured at 570 nm using spectrophotometric microplate reader (Synergy HT, BioTek Inst.,
+Winooski, VT, USA). The results were normalized as compared to the absorbance obtained
+for viable control cells (by considering as 100%) and expressed as plots of cells viability
+versus log concentration of IND. The IC50 values were determined for the employed
+
+Pharmaceutics 2022, 14, 870
+7 of 29
+cells against each product including the empty NPs using GraphPad Prism 5, San Diego,
+CA, USA.
+2.13. Statistical Analysis
+All the experiments were performed in triplicate (n = 3). The data were expressed
+as mean with standard deviation (SD). Data were analyzed and compared by the Paired
+t-test using GraphPad Prism 5, USA. The p-value, less than (p < 0.05) was considered as
+statistically signiﬁcant.
+3. Results and Discussion
+3.1. Preparation of PLGA-NPs
+For the preparation of NPs, we used PLGA as the main polymer mixed with either PVP
+or PVA, while either chloroform or DCM were used as the organic solvents. We employed
+the single emulsion solvent evaporation method which is helpful in optimizing the design
+of the NPs (size, morphology and surface properties) making them better candidates for
+drug delivery applications. In this method, the emulsiﬁcation of the two phases and the
+stabilization (droplet protection) of the NPs are prime factors, which are greatly inﬂuenced
+by the type of stabilizers used and their quantity. PVA and PVP were chosen as stabilizers
+because they facilitate the formulation of smaller PLGA-NPs with a spherical shape and
+a narrow granulometric distribution even at higher concentrations, in addition to their
+ability to prevent the coalescence of particles to aggregate [55–58]. Although PVP-stabilized
+PLGA-NPs have shown similar features to PVA-stabilized NPs in terms of the encapsulation
+and loading of low molecular weight drugs [59], under similar conditions PVP-stabilized
+PLGA-NPs had higher efﬁciencies compared to PVA-stabilized NPs for the encapsulation
+and loading of proteins [59–61]. As for the type of organic solvents used, chloroform and
+DCM are the most commonly used to prepare the PLGA-NPs by the emulsiﬁcation solvent
+evaporation method. However, reports have indicated that other solvents can be used,
+but mostly in combination, such as DCM-acetone that is used to dissolve rifampicin and
+DCM-acetone-ethanol used to dissolve Estradiol valerate [62]. Additionally, propylene
+carbonate has been utilized to reduce the toxic effect of benzyl alcohol to encapsulate
+estrogen into PLGA-NPs [57,58]. The solvent evaporation process during the preparation
+of PLGA-NPs is a critical step to encapsulate the drug(s) as it decreases the diffusion of
+drug(s) to the external aqueous phase, in addition to obtaining smaller particles [63,64]. The
+chloroform and DCM as organic solvents for PLGA are easily evaporated in a short duration
+even at a reduced pressure (vacuum rotational evaporator) or with magnetic stirring at
+normal atmospheric pressure [55,63]. The smaller particles are obtained due to the higher
+solvent-front kinetic energy that leads to the higher rate of diffusion of the organic phase
+at the interface and a higher rate of droplet dispersion, which results in smaller NPs [63].
+Solvent evaporation causes a volume reduction in the dispersion phase which subsequently
+increases the density and viscosity of the dispersed NPs. This phenomenon prevents the
+coalescence and agglomeration of the NPs during the evaporation of organic solvents [64].
+Using the proper preparation technique, such as single emulsion or double emulsion,
+is critical as the chosen method affects the physicochemical properties of NPs and the
+drug-loading capacity [65,66]. For example, the encapsulation and loading of lipophilic
+agents through the single emulsion technique supports the formation of smaller NPs
+than that of the double emulsion technique [17,67,68]. The employed emulsion solvent
+evaporation technique, also called the ultrasonication solvent evaporation technique, was
+ﬁrst introduced by Vanderhoff et al. and has become a very popular method for the
+synthesis of polymer-based nanoparticles [7,62,65,69]. The process parameters in this
+technique, such as the volume of the aqueous phase containing stabilizer/emulsiﬁer,
+magnetic stirring, homogenization speed and drug/PLGA ratio (in the case of drug-loaded
+NPs) can easily be controlled and optimized to obtain the NPs with an improved surface
+morphology and the desired size distribution [55,65]. This method has been used frequently
+to encapsulate low and high molecular weight drugs [27,28,70–72]. Moreover, smaller NPs
+
+Pharmaceutics 2022, 14, 870
+8 of 29
+could be obtained using a small quantity of PLGA and a large volume of a stabilizer-
+containing aqueous phase at a high homogenization speed while larger particles can be
+obtained at higher PLGA concentrations [55,56]. A high amount of polymer caused an
+increased viscosity of the internal phase, leading to its insufﬁcient and non-homogenous
+dispersion into the aqueous phase during emulsiﬁcation and resulting in larger NPs [55].
+3.2. Effect of Formulation Factors on Particle Size and Zeta Potential
+The PLGA-NPs prepared by the single emulsion solvent evaporation method produced
+particles with an average size in the range of 273–563 nm when PVA was used as the
+stabilizer and DCM was used as the organic solvent, whereas it was in the range of
+317–588 nm when chloroform was used as the solvent. As for PVP, the mean particle size
+was in the range of 287–684 nm when DCM was used as the solvent, while it was in the
+range of 381–466 nm when chloroform was the solvent (Table 1).
+Table 1. PLGA-NPs prepared by the single-emulsion solvent evaporation technique.
+Formulations
+Organic Solvents *
+Type of Stabilizer,
+Its Concentration *
+Mean ± SD *, n = 3
+Particle Size (nm)
+Polydispersity
+Index
+Zeta-Potential
+(mV)
+Batch 1
+PLGA-NPs-1
+CHCl3
+PVA (1%, w/v)
+328.1 ± 24.4
+0.096 ± 0.079
+−1.90 ± 0.91
+PLGA-NPs-2
+CHCl3
+PVA (3%, w/v)
+345.2 ± 8.3
+0.061 ± 0.036
+−1.12 ± 0.06
+PLGA-NPs-3
+CHCl3
+PVA (6%, w/v)
+588.1 ± 23.9
+0.096 ± 0.028
+−0.74 ± 0.12
+PLGA-NPs-4
+CHCl3
+PVA (9%, w/v)
+317.6 ± 2.7
+0.285 ± 0.088
+−0.68 ± 0.11
+Batch 2
+PLGA-NPs-5
+DCM
+PVA (1%, w/v)
+273.2 ± 3.3
+0.087 ± 0.064
+−0.92 ± 0.21
+PLGA-NPs-6
+DCM
+PVA (3%, w/v)
+406.3 ± 8.5
+0.213 ± 0.044
+−0.89 ± 0.28
+PLGA-NPs-7
+DCM
+PVA (6%, w/v)
+554.4 ± 23.8
+0.239 ± 0.045
+−0.76 ± 0.06
+PLGA-NPs-8
+DCM
+PVA (9%, w/v)
+563.9 ± 54.4
+0.170 ± 0.015
+−0.62 ± 0.58
+Batch 3
+PLGA-NPs-9
+CHCl3
+PVP (1%, w/v)
+456.9 ± 61.4
+0.152 ± 0.069
+17.73 ± 3.45
+PLGA-NPs-10
+CHCl3
+PVP (3%, w/v)
+448.8 ± 22.4
+0.142 ± 0.035
+14.05 ± 2.05
+PLGA-NPs-11
+CHCl3
+PVP (6%, w/v)
+466.6 ± 90.5
+0.256 ± 0.181
+3.86 ± 1.26
+PLGA-NPs-12
+CHCl3
+PVP (9%, w/v)
+381.4 ± 83.5
+0.255 ± 0.179
+2.67 ± 1.41
+Batch 4
+PLGA-NPs-13
+DCM
+PVP (1%, w/v)
+287.8 ± 12.0
+0.035 ± 0.029
+10.24 ± 3.93
+PLGA-NPs-14
+DCM
+PVP (3%, w/v)
+566.9 ± 64.1
+0.268 ± 0.042
+5.82 ± 2.65
+PLGA-NPs-15
+DCM
+PVP (6%, w/v)
+609.3 ± 26.9
+0.512 ± 0.055
+5.37 ± 1.06
+PLGA-NPs-16
+DCM
+PVP (9%, w/v)
+684.2 ± 43.1
+0.846 ± 0.016
+4.91 ± 2.37
+* PVA = Polyvinyl alcohol; PVP = Polyvinyl pyrrolidone; CHCl3 = Chloroform; DCM = Dichloromethane;
+SD = Standard deviation.
+Overall, the results of the particle size measurement indicate that PLGA-NPs prepared
+using PVA as stabilizer were smaller compared to PVP when DCM was used to solubilize
+the PLGA, with an exception at 1% PVP. This might be attributed to the good stabilizing
+property of PVP at this concentration (having optimum viscosity) with DCM. At the varying
+concentrations of PVA (1%, 3%, 6% and 9%, w/v) and using DCM as the organic solvent
+by keeping the other formulations factors constant (such as volume of solvents, stirring
+speed, amount of PLGA), an increase in the size of the NPs was found from 273–563 nm
+(Table 1). Similarly, an increase in particle size was observed from 317–588 nm as the
+concentration of PVA was increased and chloroform was used as the organic solvent.
+Contrary to this observation, the particle size was smallest (317 nm) at the highest (9%,
+w/v) concentration of PVA when chloroform was used, which might be due to the strong
+anchoring of the hydrophobic segment of PVA with the matrix of PLGA which remained
+
+Pharmaceutics 2022, 14, 870
+9 of 29
+closely associated with polymer surface [73]. The mechanistic effect of stabilizers on the
+size of PLGA-NPs might be due to the interpenetration of PVA/PVP and PLGA molecules
+during the formation of NPs [74,75]. These stabilizers might develop a uniform coating
+network throughout the surface of PLGA, where PVA cannot shield completely the negative
+surface charge (due to –COOH functional groups of PLGA) as compared to PVP. Thus, PVA
+caused a weak negative zeta potential [15], while PVP showed a relatively high positive zeta
+potential. In spite of the weak zeta potential, the PLGA-NPs were stabilized by the varying
+layers of PVA/PVP which surrounded the NPs by mechanism of steric hindrance [76].
+The particle size and zeta potential distributions of the four NPs prepared with 1%
+stabilizers are represented in Figure 1. The values of polydispersity index and zeta potential
+are also summarized in Table 1. The zeta potentials of the NPs prepared with PVA showed
+low negatively charged surfaces, while most of the NPs prepared with PVP were found to
+have comparatively higher and positive surface charges. To check the effect of stabilizer
+on surface charges, the zeta potentials of 1% PVA and PVP solutions were also checked.
+The PVA solution showed slightly negative (−2.26 ± 0.49 mV) zeta potentials while it was
+positive (+5.06 ± 1.58 mV) for the PVP solution. Thus, we could state that the positive
+zeta potential of PVP solution might be the reason for the slightly higher zeta potentials of
+the PLGA-NPs developed using PVP as the stabilizer. The low polydispersity values in
+all cases of NPs (except in the cases where 6% and 9% PVP, which were 0.512 and 0.846,
+respectively) indicated the unimodal distribution of the particles in the dispersion medium.
+Figure 1. Particle size and zeta potential distribution curves of PLGA-NPs prepared with: (A) 1%
+PVA and chloroform; (B) 1% PVA and DCM (C) 1% PVP with chloroform (D) 1% PVP with DCM and
+(E–H) are their zeta potentials, respectively.
+
+Pharmaceutics 2022, 14, 870
+10 of 29
+As for the type of organic solvent, we observed that using DCM as the organic phase
+resulted in comparatively good-sized particles as compared to chloroform when NPs
+were prepared with the PVA at 1%, 3%, 6% and 9%, w/v concentrations. DCM produced
+uniform and smaller PLGA-NPs than chloroform (stabilized by PVA) which might be
+due to the comparatively low solubility/miscibility of DCM with water. On the other
+hand, when chloroform was used as an organic phase, it produced larger NPs. This
+contrasts with the previous work, where they reported that relatively smaller NPs were
+produced when they employed vitamin-E-TPGS as the stabilizer [22,27,40,77]. This can
+be explained by the degree of stabilization that occurs either from the stabilizer itself, or
+other formulation parameters (concentration of PLGA in organic phase, speed of magnetic
+stirring and homogenization and sonication power, etc.) [55,57,58]. While PLGA-NPs with
+larger particles sizes are generally unwanted, they still might have an advantage in cases
+where the high amount of lipophilic drugs (relative to the amount of PLGA) need to be
+encapsulated as compared to smaller particles (subject to the solubility of the stabilizer in
+aqueous phase and its miscibility with the organic phase). However, this should be pursued
+carefully as the release kinetics of the encapsulated drug(s) may be inﬂuenced [22,78,79].
+Although both organic solvents have limited solubility in water, the higher solubility of
+chloroform in the aqueous phase as compared to DCM [80] facilitates its rapid diffusion
+from oil droplets towards the outer aqueous phase during the emulsiﬁcation process, which
+causes the rapid precipitation of PLGA, consequently obstructing the formation of smaller
+sized NPs [15].
+Overall, PLGA-NPs prepared by the single emulsion solvent evaporation technique
+produced smaller NPs with a smooth surface and reliable properties when the most com-
+monly used stabilizer (PVA) was employed, even at higher concentrations with DCM as
+the organic solvent, which is in agreement with previous reports [81,82].
+3.3. Effect of the Two Stabilizers on the Morphology of PLGA-NPs
+The effect of PVA and PVP at different concentrations on the morphology of PLGA-
+NPs was observed in two different organic solvents, chloroform and DCM. An obvious
+effect in the morphological structure of the NPs was found, which can be observed in
+most of the SEM images as shown in the Figures 2 and 3. At lower concentrations (1%
+and 3%, w/v) of PVA, NPs obtained had a spherical and regular shape with a smooth
+surface (Figure 2A,B, respectively) with no aggregation. This conﬁrmed the relevance and
+suitability of the selected formulation parameters to prepare the PLGA-NPs. At higher
+concentrations (6% and 9%, w/v) of PVA, however, NPs tended to aggregate and form
+irregular shapes (Figure 2C,D, respectively). These aggregates might have been formed due
+to residual stabilizers, which in turn increase the viscosity of the aqueous phase, requiring
+extra washing of the NPs during ultracentrifugation [76]. Likewise, we observed a similar
+outcome when PVP was used as a stabilizer. At 1% and 3% w/v concentrations of PVP,
+we obtained NPs that had a smooth surface and spherical, regular shapes (Figure 3A,B,
+respectively). Whereas, the aggregated–irregular-shaped particles were found with higher
+concentrations (6% and 9%, w/v) of PVP (Figure 3C,D, respectively). On the other hand,
+when DCM was used as an organic solvent, the prepared PLGA-NPs with either PVA or
+PVP as stabilizer produced regular spherical-shaped NPs with smooth surfaces at all the
+four concentrations employed (Figures 4 and 5). It is noteworthy that the population of NPs
+were very low but discrete and spherical at all concentrations of PVA with equal amounts
+of PLGA, which might be due to the strong emulsifying property of PVA even at low
+concentrations and its good surface stabilizing feature towards PLGA-NPs. The presence of
+PVA at the interface prevented the coalescence of nano-droplets and the aggregation of NPs,
+which might be due to reduction in the overall energy of the two phases by PVA [57,83]. This
+might be attributed to the high HLB value of PVA (>18) than that of PVP (14 to 16) [77,84]
+and might be due to the low viscosity of PVP as compared to PVA, even at the same
+concentrations of the two stabilizers. Overall, employing DCM as an organic solvent seems
+to produce more regular and spherical nanoparticles compared to chloroform, which is
+
+Pharmaceutics 2022, 14, 870
+11 of 29
+advantageous in terms of the shelf-stability of the PLGA-NPs due to the narrow, uniform
+and unimodal granulometric distribution of the particles [55–58]. Based on these results,
+NPs prepared with 1% of either PVA or PVP were used for further analysis.
+
+Figure 2. SEM images of the PLGA-NPs prepared with chloroform as organic solvent with different
+concentrations of PVA in the aqueous phase. (A) 1%, w/v PVA; (B) 3%, w/v PVA; (C) 6%, w/v PVA and
+(D) 9%, w/v PVA.
+
+Figure 3. SEM images of the PLGA-NPs prepared with chloroform as organic solvent with different
+concentrations of PVP in the aqueous phase. (A) 1%, w/v PVP; (B) 3%, w/v PVP; (C) 6%, w/v PVP and
+(D) 9%, w/v PVP.
+
+Pharmaceutics 2022, 14, 870
+12 of 29
+
+Figure 4. SEM images of the PLGA-NPs prepared with DCM as organic solvent with different
+concentrations of PVA in the aqueous phase. (A) 1%, w/v PVA; (B) 3%, w/v PVA; (C) 6%, w/v PVA and
+(D) 9%, w/v PVA.
+
+Figure 5. SEM images of the PLGA-NPs prepared with DCM as organic solvent with different
+concentrations of PVP in the aqueous phase. (A) 1%, w/v PVP; (B) 3%, w/v PVP; (C) 6%, w/v PVP and
+(D) 9%, w/v PVP.
+3.4. Fourier Transform Infrared (FTIR) Analysis
+The FTIR spectra were recorded to investigate the possible interaction (if any) between
+PLGA and IND during the encapsulation of IND into the PLGA-NPs. The FTIR spectra of
+PLGA, IND, empty PLGA-NPs and IND-PLGA-NPs-5 are presented in Figure 6.
+
+Pharmaceutics 2022, 14, 870
+13 of 29
+Figure 6. FT-IR spectra of pure IND (A), PLGA (B), empty PLGA-NPs (C) and IND-loaded PLGA-
+NPs-5 (D).
+
+Pharmaceutics 2022, 14, 870
+14 of 29
+The sample of pure IND demonstrated the characteristic bands at 1585 cm−1 (aromatic
+C=C stretching and 1680 cm−1 (carboxyl stretching). The C–Cl stretching at 831 cm−1,
+C-O stretching ether at 1219 cm−1 and 1066 cm−1. Low intensity peaks at 2123 cm−1
+and 2230 cm−1 wavenumbers were possibly indicate the O–H (carboxy) stretching [85].
+From pure PLGA the band at 1933 cm−1 was the characteristic peak of –C=O– stretching
+of aliphatic polyesters and also at 2030 cm−1 and 2124 cm−1 C=O bond stretching was
+observed. Moreover, the peaks at 727 cm−1 and 846 cm−1 were due to the C-H bending
+(vib). The IR scan of empty PLGA-NPs demonstrated characteristic bands at 1089 cm−1
+and 1176 cm−1 which were due to the C-O stretching (ether) and peak at 1755 cm−1 was
+due to the aromatic C=C stretching. A less intense band appeared at 2023 cm−1 might be
+due to the –C=O– stretching of aliphatic polyesters (characteristic of PLGA) [86–88]. The
+IND-loaded PLGA-NPs has shown a prominent IR band at 2139 cm−1 (–C=O– stretching
+of aliphatic polyesters and a less prominent band at 2014 cm−1, are characteristic bands
+for PLGA). The characteristic bands of IND did not appear in the drug-loaded NPs-5,
+which might suggest the proper encapsulation of IND into core of the NPs. Moreover,
+from this IR spectral analysis, it was concluded that IND was compatible with the PLGA
+(main excipient) used to prepare the NPs. However, the broadening and less intense bands
+appeared in the IR spectrum of IND-PLGA-NPs-5, also suggesting the absence of a chemical
+interaction between the drug (IND) and the polymer (PLGA).
+3.5. Viscosity-Shear Rate Relationship of Different Concentrations of PVA and PVP
+In this study, the viscosity versus concentration relationship for PVA and PVP solutions
+at four different concentrations (1%, 3%, 6% and 9%, w/v) of each formulation, was
+investigated using Milli-Q water as the solvent [89,90]. An increment in the viscosity
+of aqueous solutions was noticed which was proportional to the concentration of the
+stabilizers (Figure 7). The concentration dependence on the viscosity was more pronounced
+in the case of PVA (Figure 7A) as compared to PVP (Figure 7B) at the same concentrations
+of both the stabilizer. Each solution showed pseudoplastic behavior, which was due to the
+concentration dependency of PVA and PVP.
+
+Figure 7. Relationship between viscosity and shear rate in the aqueous solutions of PVA (A) and
+PVP (B).
+The viscosity (Pa.s) of each solution was higher at the low shear rate (s−1) and the vis-
+cosity of aqueous solutions of PVA and PVP increased with increasing their concentrations,
+exceptionally in case of 3% PVA as compared to 1% PVA. This might be due to the fact that
+viscosity is highly time and temperature-dependent. The decreased viscosity of 3% PVA
+solution might be attributed to the unwanted delayed processing in viscosity determination,
+also the temperature of the solution might be increased [91]. Here, we observed that the
+viscosity of the PVA–aqueous solutions decreased less rapidly with increasing the shear rate
+compared to PVP solutions. This indicated that PVA solutions were more viscous than the
+PVP solutions at same concentrations. Although these are well known phenomena, in this
+
+Pharmaceutics 2022, 14, 870
+15 of 29
+study we tried to correlate the effect of viscosity of the stabilizers on the size and morphol-
+ogy of PLGA-NPs. The measurements of viscosity of polymer(s) manifests the molecular
+interactions between the polymer (here, PVA and PVP) and the solvents, and from this the
+degree or magnitude of the interaction could be predicted [41,92]. The relatively smaller
+sized PLGA-NPs were obtained at lower concentrations of PVA and PVP which may have
+resulted from the low viscous solution of the stabilizers. Due to the low viscosity of the
+aqueous phase, their good interaction with the PLGA in organic phase led to the stress-free
+formation of PLGA-NPs during the organic solvent evaporation [15]. Viscosity of PVP
+aqueous solutions exhibited Newtonian ﬂow at low shear-rate and lower concentrations,
+and shear-thinning at high shear-rate and higher concentrations (Figure 7B). The ﬁndings
+related to the effect of shear rate on the viscosity of aqueous solutions of stabilizer could be
+useful in understanding their effect in the development of PLGA-NPs [93,94].
+3.6. Loading of Drug (IND) and In Vitro Release
+Considering the facts of the above ﬁndings about the empty PLGA-NPs, a few drug-
+loaded formulations were developed to encapsulate a model lipophilic drug (indomethacin,
+IND). Where, PVA/PVP (1% and 3% w/v), PLGA (40 mg) and IND (4 mg), DCM and CHCl3
+were used as organic solvent(s) to dissolve the polymer and the drug. The developed
+formulations were further characterized.
+3.6.1. Encapsulation Efﬁciency and Drug Loading Capacity
+The encapsulation efﬁciencies and drug loading capacities of the selected PLGA-NPs
+of the four batches (Batch-1 to Batch-4) are summarized in Table 2. The physicochemical
+properties indicated the acceptable size of PLGA-NPs, good polydispersity with high
+encapsulation of IND at 1% PVA (stabilizer) and DCM as organic solvent. The mean size of
+PLGA-NPs-5, polydispersity and zeta-potential were 275.4 ± 8.5 nm, −0.157 ± 0.044 and
+−1.13 ± 0.29 mV respectively, with 72.96 ± 4.59% encapsulation, 6.63 ± 0.41% drug loading
+and highest amount (52.16 ± 3.83%) of cumulative drug release at 72 h as compared to
+other formulations. Although the highest encapsulation and drug loading (74.86 ± 4.78%
+and 6.81 ± 0.45%) was found with PLGA-NPs-6 (3% PVA and DCM) but the cumulative
+release was poor (37.88 ± 2.11%). Similarly, the size of PLGA-NPs-13 (286.9 ± 13.2 nm)
+was comparable to PLGA-NPs-5 and slightly high positive surface charge (10.4 ± 3.94
+mV) but other parameters including the drug release were not sufﬁciently good. Overall,
+at similar preparation conditions the PLGA-NPs-5 showed satisfactory physiochemical
+characteristics; thus, it was assumed as the best one amongst the eight optimized PLGA-NPs
+of the four batches.
+
+Pharmaceutics 2022, 14, 870
+16 of 29
+Table 2. Physicochemical characteristics of some selected formulations after the encapsulation of Indomethacin (IND). Data are presented as Mean ± SD, n = 3.
+Formulations
+Mean ± SD, n = 3
+Particle Size
+(nm)
+Polydispersity
+Index
+Zeta Potential
+(mV)
+Encapsulation
+Efﬁciency (%)
+Drug Loading
+(%)
+Cumulative Drug Release
+(%) at pH 7.4
+Cumulative Drug Release
+(%) at pH 1.2
+At 12 h
+At 72 h
+At 12 h
+At 72 h
+PVA Group formulations
+Batch-1
+1%, PVA with CHCl3 (PLGA-NPs-1)
+331.8 ± 8.4
+0.174 ± 0.035
+−2.89 ± 0.95
+68.74 ± 5.47
+6.24 ± 0.51
+16.46 ± 0.63
+43.94 ± 2.43
+41.28 ± 3.09
+42. 16 ± 2.49
+3%, PVA with CHCl3 (PLGA-NPs-2)
+547.4 ± 10.3
+0.288 ± 0.078
+−0.81 ± 0.14
+69.59 ± 6.15
+6.32 ± 0.56
+13.09 ± 0.78
+32.83 ± 1.76
+30.38 ± 2.01
+32.89 ± 3.88
+Batch-2
+1%, PVA with DCM (PLGA-NPs-5)
+275.4 ± 8.5
+0.157 ± 0.048
+−1.13 ± 0.29
+72.96 ± 4.59
+6.63 ± 0.42
+18.82 ± 1.38
+52.16 ± 3.83
+31.70 ± 2.03
+40.06 ± 1.32
+3%, PVA with DCM (PLGA-NPs-6)
+410.9 ± 11.3
+0.205 ± 0.061
+−1.14 ± 0.58
+74.86 ± 4.78
+6.81 ± 0.45
+14.58 ± 0.81
+37.88 ± 2.11
+37.04 ± 1.07
+39. 17 ± 1.49
+PVP Group formulations
+Batch-3
+1%, PVP with CHCl3 (PLGA-NPs-9)
+439.3 ± 15.1
+0.179 ± 0.033
+16.1 ± 3.5
+54.94 ± 6.34
+4.99 ± 0.58
+15.76 ± 0.86
+39.90 ± 2.28
+34.05 ± 1.27
+38.14 ± 1.83
+3%, PVP with CHCl3 (PLGA-NPs-10)
+379.5 ± 10.5
+0.177 ± 0.065
+15.5 ± 2.6
+58.91 ± 4.84
+5.36 ± 0.44
+16.83 ± 0.95
+43.64 ± 2.53
+26.46 ± 2.28
+32.48 ± 2.12
+Batch-4
+1%, PVP with DCM (PLGA-NPs-13)
+286.9 ± 13.2
+0.066 ± 0.002
+10.4 ± 3.94
+63.33 ± 6.77
+5.76 ± 0.62
+19.42 ± 3.47
+48.07 ± 2.47
+33.13 ± 1.18
+35.81 ± 2.08
+3%, PVP with DCM (PLGA-NPs-14)
+569.6 ± 15.6
+0.276 ± 0.055
+7.6 ± 2.37
+65.37 ± 5.36
+5.94 ± 0.49
+19.05 ± 1.08
+51.68 ± 2.99
+39.89 ± 1.86
+43.01 ± 1.17
+
+Pharmaceutics 2022, 14, 870
+17 of 29
+3.6.2. In Vitro Drug Release and Release Kinetics
+A sustained release of IND from all the optimized PLGA-NPs was found at pH 7.4,
+as shown in Figure 8). The in vitro release proﬁles of IND from the selected formulations
+of the four batches (PLGA-NPs-1 with 1% PVA and PLGA-NPs-2 with 3% PVA from
+Batch-1, PLGA-NPs-5 with 1% PVA and PLGA-NPs-6 with 3% PVA (Figure 8A) from
+Batch-2, PLGA-NPs-9 with 1% PVP and PLGA-NPs-10 with 3% PVP from Batch-3 and
+PLGA-NPs-13 with 1% PVP and PLGA-NPs-14 with 3% PVP from Batch-4 (Figure 8B)
+were summarized in Table 2. For the comparative release assessment, two time points, i.e.,
+12 h and 72 h were chosen for all the formulations. The cumulative release of the drug
+from PVA group PLGA-NPs at 12 h were almost same without any signiﬁcant difference
+(p < 0.05), a highest amount 52.16 ± 3.83% of drug was released from PLGA-NPs-5 (1%
+PVA), which was signiﬁcantly (p < 0.05) higher from the rest of the three formulations of
+PVA group. The use of DCM as an organic solvent to prepare this formulation provided a
+good encapsulation of IND which might have resulted in its higher and sustained release
+in PBS with 0.25% SLS.
+
+Figure 8. In vitro release proﬁles of IND from different PLGA-NPs in PBS (pH 7.4). Prepared with
+different concentrations of stabilizers, (A) PVA and (B) PVP.
+At 12 h, the release of IND from PVP group formulations prepared with CHCl3 were
+almost same (15–16%) with no signiﬁcant difference (p < 0.05), while a slightly improved
+release (19.4%) was found with the formulations prepared with DCM. However, the highest
+amount 51.6% of drug was released from PLGA-NPs-14 (3% PVP), which was slightly
+higher from the rest of the three formulations of PVP group. The higher concentration of
+PVP (3%, w/v), provided better stabilization to this formulation, which might be the reason
+for improved and sustained release of IND in the selected release medium.
+The in vitro release proﬁles of IND in acidic conditions (pH 1.2) from the selected
+PVA group and PVP group formulations of the four batches are illustrated in Figure 9A,
+B, respectively, while the cumulative amount of the drug released at 12 h and 72 h is also
+summarized in Table 2. The highest amount (42.16%) of drug was released at 72 h from
+PLGA-NPs-1 (1% PVA with CHCl3), slightly less amount (40.06%) was released from PLGA-
+NPs-5 (1% PVA with DCM) and 39.2% was from PLGA-NPs-6 (3%PVA with DCM) which
+were signiﬁcantly (p < 0.05) higher from the PLGA-NPs-2 (3%PVA with CHCl3) of PVA
+group formulations. Similarly, for PVP group formulations, the highest amount (43.16%) of
+drug was released at 72 h from PLGA-NPs-41 (3% PVP with DCM), slightly less (38.14%)
+was released from PLGA-NPs-9 (1% PVP with CHCl3) and an almost equivalent amount
+(32.5% and 35.81%) was released from PLGA-NPs-10 and PLGA-NPs-13, respectively.
+
+Pharmaceutics 2022, 14, 870
+18 of 29
+
+Figure 9. In vitro release proﬁles of IND from different PLGA-NPs in acidic pH (1.2). Prepared with
+different concentrations of stabilizers, (A) PVA and (B) PVP.
+Overall, the cumulative amount of drug released from most of the PVA and PVP group
+PLGA-NPs in acidic release medium followed a biphasic release pattern as illustrated in
+Figure 9A,B. Initially, a burst release was found from all the formulations followed by a
+sustained release of the drug, while a sustained release pattern was observed through-
+out the experiment performed at pH 7.4. Around 21.3–33.9% and 21.4–28.01% of drugs
+were released within 6 h from PVA and PVP group formulations, respectively. At 12 h,
+30.38–41.27% and 26.46–39.89% drugs were release from PVA and PVP group formulations,
+respectively, while a maximum 42.01% (from PVA group) and 42.61% (from PVP group)
+were released in 48 h. After 12 h, clearly the prolonged and sustained drug release occurred
+till 72 h. An initial burst release might be beneﬁcial for the use of IND in terms of acute
+inﬂammatory conditions, as it would assist the quick achievement of the therapeutic level,
+followed by a sustained release to maintain the therapeutic concentration of IND. The
+initial burst release of a drug might be due to loosely bound or surface-adsorbed drugs
+and the fast dissolution of IND in an acidic environment (pH 1.2). Secondly the sustained
+release could be due to the diffusion of the drug across the PLGA matrix, following the
+drug dissolution and polymer erosion.
+The release of the drug at 12 h was very high at an acidic pH as compared to pH
+7.4 as shown in Table 2. The release of the drug at acidic and basic conditions are almost
+equal from PLGA-NPs-1, PLGA-NPs-2 and PLGA-NPs-6 at 72 h study. While from other
+formulations the drug release was comparatively higher at pH 7.4 at 72 h, which could
+be attributed to high drug release during the initial hours at acidic condition, might
+saturated the release even after maintaining the sink condition. Thus, further release from
+the formulation could not have occurred, so the release in acidic condition was low in
+some formulations. Moreover, the degradation mechanism of PLGA at pH 7.4 takes place
+“inside-out” and at acidic pH it occurs as “outside-in”. At pH 7.4, in some PLGA-NPs
+the pore formation and surface pitting might occurred. Whereas, at an acidic pH the
+PLGA-NPs maintained their smooth surfaces during the process of polymer degradation
+and rupturing. The rupturing of the PLGA-NPs was accredited to the crystallization of
+the oligomeric degradation of PLGA due to its low solubility at acidic pH. Moreover,
+Zolnik and Burgess [95], reported that the degradation of PLGA taken place in an extra
+homogeneous pattern at acidic pH as compared to pH 7.4. This might be the result of
+entire NPs experienced a close-to-uniform pH at acidic condition. However, at pH 7.4,
+the local micro environmental pH within the PLGA-NPs was varied signiﬁcantly due to
+accumulation of acid oligomers. Thus, a heterogeneous degradation resulted in the random
+creation of pores within PLGA-NPs degraded at pH 7.4 which was not occurred during
+their degradation acidic pH.
+
+Pharmaceutics 2022, 14, 870
+19 of 29
+The sustained release of IND from the PLGA-NPs was obtained from initial to 72 h,
+when PBS (pH 7.4) with 0.25% (v/v) SLS was used as release medium. Thus, only the
+release data obtained from this experiment was subjected to different kinetic models to
+check the mechanism of drug release from PLGA-NPs. The plots obtained in the applied
+models were represented in the supplementary data (Figures S1–S4). The calculated values
+of kinetic parameters including the rate constants of different reactions (k0 for zero-order,
+k1 for ﬁrst order, kHM for Higuchi-Matrix, kKP for Korsmeyer–Peppas and KHC for Hixson-
+Crowell models) were summarized in Table 3. Based on the best ﬁt model with highest
+correlation coefﬁcient (R2) value, it was found that the selected NPs from the four batches
+primarily followed the Higuchi matrix release model, indicating the diffusion-controlled
+drug release from the PLGA-NPs, which was further substantiated by the mathematical
+calculation of the release-exponents (Table 3). The Higuchi-Matrix mathematical model
+in this investigation recommended that the initial drug concentration in the PLGA-NPs
+was much higher as compared to the solubilization of PLGA, even after uninterrupted
+maintenance of the sink condition throughout the experiment. Moreover, the diffusion of
+drug (IND) remained persistent and the swelling of polymer-matrix of the NPs was not
+signiﬁcant, which was also suggested in some previous reports [49,96].
+Table 3. Fitting of the in vitro release data in different release kinetic models.
+Formulations
+Release Kinetic Models
+Zero Order
+First Order
+Higuchi Matrix
+Korsmeyer–Peppas
+Hixon–Crowell
+R2
+*k0
+(10−2)
+n-
+Value
+R2
+*k1
+(10−1)
+n-
+Value
+R2
+*kHM
+(10−2)
+n-
+Value
+R2
+*kKP
+(10−1)
+n-
+Value
+R2
+*kHC
+(10−0)
+n-
+Value
+PLGA-NPs-1
+0.966
+1.66
+0.0024
+0.985
+9.31
+0.0014
+0.998
+4.64
+0.2366
+0.996
+1.78
+0.2461
+0.979
+1.38
+0.0009
+PLGA-NPs-2
+0.964
+1.28
+0.0018
+0.979
+9.35
+0.0009
+0.999
+3.54
+0.0173
+0.998
+1.35
+0.2412
+0.974
+1.39
+0.0006
+PLGA-NPs-5
+0.968
+1.85
+0.0029
+0.989
+9.28
+0.0018
+0.997
+5.26
+0.0282
+0.994
+2.08
+0.2563
+0.984
+1.44
+0.0012
+PLGA-NPs-6
+0.965
+1.44
+0.0021
+0.982
+9.33
+0.0012
+0.999
+4.02
+0.0203
+0.998
+1.58
+0.2462
+0.976
+1.42
+0.0008
+PLGA-NPs-9
+0.963
+1.43
+0.0022
+0.982
+9.33
+0.0013
+0.998
+4.12
+0.0216
+0.997
+1.65
+0.2579
+0.976
+1.27
+0.0009
+PLGA-NPs-10
+0.964
+1.58
+0.0024
+0.984
+9.32
+0.0014
+0.841
+4.51
+0.0236
+0.998
+1.81
+0.2562
+0.978
+1.30
+0.0009
+PLGA-NPs-13
+0.936
+1.81
+0.0077
+0.958
+9.29
+0.0058
+0.991
+5.07
+0.0822
+0.990
+2.01
+0.0947
+0.951
+1.34
+0.0037
+PLGA-NPs-14
+0.967
+1.76
+0.0029
+0.959
+9.30
+0.0022
+0.997
+5.11
+0.0284
+0.994
+2.02
+0.2649
+0.983
+1.36
+0.0012
+*k = Rate constants (k0 for zero-order, k1 for ﬁrst-order, kHM for Higuchi-Matrix, kKP for Korsmeyer-Peppas and
+KHC for Hixson-Crowell model) and n-value = Diffusion exponent.
+Apart from the Higuchi-Matrix model, the second-best ﬁt model was the Korsmeyer–
+Peppas with second highest R2-values (Table 3). Where, linearity in the release curves
+of IND till 72 h (Log fraction drug released versus log time) with the higher R2 values
+were found (Supplementary Data, Figures S1–S4). This also indicated the sustained release
+feature of the PLGA-NPs. The diffusion-exponent values were fallen between 0 and 0.5
+for all the formulations of four batches (Table 3), indicated a Fickian diffusion mechanism
+of IND release. Among the applied release kinetic models, for all the PLGA-NPs from
+the four batches, the Higuchi-matrix model was appeared as the best ﬁtted one followed
+by Korsmeyer–Peppas model. This model described the progressive loss of PLGA-NPs
+with time which was due to polymer erosion, and the release of IND from PLGA-NPs was
+occurred due to the diffusion of release medium into the matrix of PLGA. Concurrently,
+swelling and erosion of polymer matrix occurred, which might be the reason of sustained
+release of the encapsulated IND in the present investigation, which was also reported in
+previous report [97].
+For the preferred PLGA-NPs-5, the R2 and n values were 0.999 and 0.0282 (Higuchi
+matrix model); 0.994 and 0.2563 (Korsmeyer–Peppas model) as shown in Table 3. In
+both the model, though the n-values were lower than 0.5, yet, these values still indicated
+the diffusion-controlled release mechanism for IND from the PLGA-NPs [49,98]. As, the
+n-values were <0.45 in the present case of IND-loaded spherical PLGA-NPs, a Fickian-
+diffusion release mechanism was directed [97,99]. The non-linear curve ﬁtting of in vitro
+release data obtained for PLGA-NPs-5, using the Higuchi matrix model (primarily) and
+
+Pharmaceutics 2022, 14, 870
+20 of 29
+Korsmeyer–Peppas model (secondary), shows that the release constant (k, indicating the
+rate of drug release) was directly proportional to the diffusion exponent. Therefore, the
+drug release was depended on the structural and physical properties of the IND and the
+PLGA-matrix. The highest values of “k” (kHP, 2.08 × 10−1 and kHM, 5.26 × 10−2 h−1) were
+found with PLGA-NPs-5 (Table 3). These ﬁndings were in agreement with the previous
+reports for the release of vancomycin from chitosan-alginate microparticles [100] and from
+the microporous calcium phosphate ceramics [101].
+3.7. DSC Analysis
+Differential Scanning Calorimetry was conducted on the optimized lyophilized NPs
+(PLGA-NPs-5) to determine any possible complexation of the polymer (PLGA) with the
+stabilizers (PVA and PVP), and to check the crystallinity of the encapsulated model drug
+(IND). The overlay scans of DSC were represented in Figure 10. A sharp endothermic
+peak at 157 ◦C for IND was appeared as shown in Figure 10A, indicates the crystalline
+characteristic of the drug. The reported melting point of indomethacin is 158 ◦C, a slight
+variation in the melting temperature indicated the purity of the drug. The endothermic
+peaks of PLGA (Figure 10B), PVA (Figure 10C) and PVP (Figure 10D) appeared at 60 ◦C,
+202 ◦C and 152 ◦C respectively. The peak of IND was almost diminished in the PLGA-NPs
+suggesting that the drug was encapsulated into the core of the NPs. The appearance of a
+very low intensity melting peak (at around 158 ◦C) in case of PLGA-NPs-5 (Figure 10E),
+might be due to the presence of surface adsorbed drug in the crystalline state.
+Figure 10. Overlay DSC thermograms of Indomethacin. Indomethacin, IND alone (A); PLGA alone
+(B); PVA alone (C); PVP alone (D) and PLGA-NPs-5 from Batch-2 (E).
+Although, no endothermic peak of stabilizer was noticed in the DSC scan of the
+lyophilized PLGA-NPs, indicating that the stabilizer was completely washed out during
+the puriﬁcation steps by ultracentrifugation or the traces of the stabilizer (if remained), was
+not in the crystalline state. Furthermore, non-appearance of any new peaks throughout the
+scanning of the NPs, indicating the good compatibility among all the excipients used to
+develop the NPs.
+
+Pharmaceutics 2022, 14, 870
+21 of 29
+3.8. Stability Studies
+The results of the stability study (Table 4) indicate that the freeze-dried PLGA-NPs-5
+were stable at different temperatures for 1 month. Almost no changes in the mentioned
+characteristic parameters for the PLGA-NPs were found stored at 4 ◦C. A slight variation
+in particle sizes were noted in the samples store at 37 ◦C, and such changes were non-
+signiﬁcant. No obvious change in the particle size was associated with the stabilizer’s
+protection effect on the PLGA-NPs shell, which was also reported in the previous short
+term stability on drug loaded PLGA-NPs [28,52].
+Table 4. Storage stability of IND-loaded PLGA-NPs (IND-PLGA-NPs-5). Results are represented as
+mean ± SD of triple measurements.
+Characterization Parameters
+Storage Time (Days)
+Initial (0 Day)
+At 15th Day
+At 30th Day
+At 4 ◦C
+Particle Size (nm)
+275.4 ± 8.5
+275.8 ± 8.67
+276.9 ± 7.81
+Polydispersity-index
+0.157 ± 0.048
+0.158 ± 0.051
+0.163 ± 0.054
+Zeta-Potential (mV)
+−1.13 ± 0.29
+−1.12 ± 0.27
+−1.11 ± 0.28
+Encapsulation efﬁciency (%)
+72.96 ± 4.59
+72.54 ± 4.51
+71.02 ± 4.63
+Drug loading (%)
+6.63 ± 0.42
+6.50 ± 0.43
+6.46 ± 0.45
+At 30 ◦C
+Particle Size (nm)
+275.4 ± 8.5
+277.2 ± 8.65
+279.0 ± 8.81
+Polydispersity-index
+0.157 ± 0.048
+0.158 ± 0.049
+0.159 ± 0.047
+Zeta-Potential (mV)
+−1.13 ± 0.29
+−1.12 ± 0.27
+−1.11 ± 0.31
+Encapsulation efﬁciency (%)
+72.96 ± 4.59
+71.87 ± 4.54
+71.0 ± 4.64
+Drug loading (%)
+6.63 ± 0.42
+6.53 ± 0.41
+6.46 ± 0.42
+At 37 ◦C
+Particle Size (nm)
+275.4 ± 8.5
+277.8 ± 9.36
+279.8 ± 6.95
+Polydispersity-index
+0.157 ± 0.048
+0.159 ± 0.049
+0.161 ± 0.048
+Zeta-Potential (mV)
+−1.13 ± 0.29
+−1.12 ± 0.28
+−1.11 ± 0.29
+Encapsulation efﬁciency (%)
+72.96 ± 4.59
+71.38 ± 4.72
+70.28 ± 4.22
+Drug loading (%)
+6.63 ± 0.42
+6.44 ± 0.39
+6.42 ± 0.41
+3.9. Cytotoxicity Study by MTT Assay
+Drug encapsulation into PLGA-NPs provides a good solution to minimize the potential
+toxicity while retaining the therapeutic efﬁcacy of numerous loaded drugs including
+chemotherapeutics, analgesics and NSAIDs [102]. Here, we sought to encapsulate IND into
+PLGA-NPs to reduce the toxicities associated with its free delivery and due to the organic
+solvents used in its preparation, by evaluating the cell survival rate during MTT assay. The
+cytotoxicity of IND, empty PLGA-NPs and IND-loaded NPs as well as PLGA-only were
+evaluated after an incubation with the HepG2 cells for 24 h, 48 h and 72 h. The results for
+IC50 were represented in Figure 11, which indicated a decrease in the cell viabilities with
+increasing concentrations of the tests.
+
+Pharmaceutics 2022, 14, 870
+22 of 29
+Figure 11. Cytotoxicity after 24 h, 48 h and 72 h of incubation in HepG2 cells: pure IND (A);
+empty-PLGA-NPs (B) and IND-PLGA-NPs-5 (C) with IC50 values (µg/mL).
+The histograms of the percentage cell viability against varying concentrations of IND
+and the NPs were represented in Figure 12. As shown in Figure 12, cell proliferation
+of IND was examined at 5–1000 µg/mL concentrations, where the observed IC50 were
+242.4, 129.9 and 80.06 µg/mL at 24 h, 48 h and 72 h, respectively. A report of Xiong et al.,
+2013, indicated that the PLGA-NPs was not signiﬁcantly toxic up to 300 µg/mL against
+RAW264.7 and BEAS-2B cells [103]. Likewise, in the present investigation, we found that
+the IND-loaded PLGA-NPs-5, has shown increased cell viability at an equivalent drug
+concentration (5–1000 µg/mL) and the observed IC50 were 430.5, 372.2 and 260.9 µg/mL at
+24 h, 48 h and 72 h, respectively. Moreover, the cell proliferation assay conducted using
+empty-PLGA-NPs at equivalent concentration of IND (i.e., the amount of empty-PLGA-
+NPs those containing the same amount of IND in the drug-loaded NPs) has shown IC50
+values of 1096, 605.2 and 410.9 µg/mL at 24 h, 48 h and 72 h, respectively. Thus, even at
+these high concentrations of PLGA, the cells were viable at IC50 of 410.9 µg/mL when the
+duration of treatment was prolonged (72 h). This might be due to the time-dependent effect
+of PLGA-NPs on the cytotoxicity.
+The MTT assay results clearly demonstrating the reduction in toxicity of IND by 66%
+in case of formulation (IND-PLGANPs) and empty PLGA-NPs with IC50 of 7142.7 µg/mL.
+Thus, we can assume that even at this very high concentration of PLGA (empty PLGA-
+NPs/IND-PLGA-NPs-5), the product was non-toxic as even at these high concentrations
+of PLGA, the cells were viable and the IC50 was signiﬁcantly reduced as the duration of
+treatment was prolonged (i.e., 410.9 µg/mL at 72 h), indicating the time-dependent effect
+of PLGA-NPs on the cytotoxicity.
+At high concentrations the PLGA-NPs was toxic, this might be associated with the
+physicochemical properties including the particle size, zeta-potential and selective targeting
+of the PLGA-NPs. These play an important role in terms of its efﬁcacy in biological systems.
+In previous reports, it was found that the increasing the particle sizes, the IC50 of cytotoxicity
+was also increased, which suggests that small sized NPs encouraged higher cytotoxicity at
+low IC50 values [104,105]. The cytotoxicity results show that PLGA-NPs induced an anti-
+proliferative effect at an average particle size of 189 nm, while in the present investigation
+the size of the tested NPs was 275.4 nm, this might be one reason for its toxic nature at some
+
+Pharmaceutics 2022, 14, 870
+23 of 29
+concentrations. Even though our formulations did not exhibit any potential toxicity of the
+PLGA-NPs against HepG2 cells, might be due to its non-targeting and high zeta-potential
+properties [103–105].
+Figure 12. Histograms of the percentage cell viability of HepG2 after 24 h, 48 h and 72 h of incubation
+with varying concentrations (5–1000 µg/mL) of pure IND (A) and its equivalent concentration of
+empty-PLGA-NPs (B) and IND-loaded PLGA-NPs (C). Data were presented as the mean of three
+independent experiments with error bars as standard deviation (SD).
+The HepG2 are liver-derived human cell lines those display abundant parenchymal cell
+functions containing the metabolism of polycyclic aromatic hydrocarbons. The observed
+proliferation rate of HepG2 (i.e., doubling time) was measured, and it was found that these
+cells were doubled after 48.95 h at 5 × 105 cells/well, cell density of HepG2 cells. The
+highest live cells were observed at 72 h, and these results were similar to Miura et al., 1999,
+who seeded 4 × 105 cells/well in 6-well plates, and they believed that this was a more
+appropriate cell number for 6-well plates [106]. The doubling time of HepG2 cells was
+48.95 h in the present investigation, which was consistent with other studies, where the
+doubling time of HepG2 was around 2.05 days (49.2 h) [107–109]. The growth rate at 24 h,
+48 h, and 72 h were 53%, 52%, and 49%, respectively, and there was no major change in the
+growth rate with cell viability of more than 94.27% at 72 h. Thereby, no signiﬁcant change
+in doubling time was found.
+Overall, the PLGA-NPs in the present investigation did not show any particular
+toxicity at most of the concentrations and could not inﬂuence the normal growth of HepG2
+cells within the IND dose range (250–500 µg/mL) and at equivalent amount of PLGA-
+NPs (3571.4–7142.7 µg/mL). Conclusively, an ideal size, zeta-potential, dose, duration of
+treatment and targeting ability of PLGA-NPs to deliver the encapsulated drugs at desired
+site are essential to develop an efﬁcient and safe drug carrier.
+
+Pharmaceutics 2022, 14, 870
+24 of 29
+A signiﬁcantly (p < 0.05) high IC50 value for the PLGA-NPs indicated that the FDA-
+approved polymer used to prepare the NPs was non-toxic. The above ﬁndings also indi-
+cated that the complete evaporation of the organic solvent (DCM) used to prepare the NPs.
+Moreoverthe cytotoxicity of hepatotoxic drug (IND) can be reduced by its encapsulation
+into PLGA-NPs, which was in agreement with previous reports [102,110].
+4. Conclusions
+We have acknowledged some process variables that are decisive to obtain proper
+sized, uniformly distributed PLGA-NPs with a smooth surface and a solid dense structure
+discrete. This study has shed light on the inﬂuence of preparation condition on physic-
+ochemical properties of PLGA-NPs, following the single-emulsion solvent-evaporation
+method to prepare the NPs. The PVA at lower concentrations was proved to be a good
+stabilizer to obtain an optimized PLGA-NPs with excellent size and surface properties,
+when DCM was used as organic solvent to dissolve the polymer. Controlling the particle
+size and morphology of the NPs may have a potential impact in tailoring the drug delivery
+applications of such nano-carriers. The developed and characterized PLGA-based NPs
+as controlled delivery system in the present investigation was stable and would have
+good potential applications for the loading of hydrophilic and poorly soluble lipophilic
+therapeutic agents. A short-term storage physical stability indicated that the optimized
+PLGA-NPs was stable at different temperatures for 30 days. A prolonged release of the
+IND from the optimized NPs suggested the sustained and controlled release property
+of PLGA. A signiﬁcantly (p < 0.05) high IC50 value for the NPs during the cytotoxicity
+study, indicated that the developed PLGA-NPs was non-toxic. Moreover, the adverse effect
+associated with the cytotoxic drugs such as IND (a hepatotoxic drug) could be overcome
+by their encapsulation into the PLGA-NPs. Nonetheless, further studies are needed to
+substantiate the current outcomes, which we are currently conducting in our lab that may
+further extend the utility of PLGA-NPs.
+Supplementary Materials: The following supporting information can be downloaded at: https:
+//www.mdpi.com/article/10.3390/pharmaceutics14040870/s1, Figure S1: Different kinetic model
+plots for PLGA-NPs-1 (prepared with 1%, w/v PVA as stabilizer and CHCl3 as organic solvent) (A)
+and PLGA-NPs-2 (prepared with 3%, w/v PVA as stabilizer and CHCl3 as organic solvent (B); Figure
+S2: Different kinetic model plots for PLGA-NPs-5 (prepared with 1%, w/v PVA as stabilizer and
+DCM as organic solvent) (A) and PLGA-NPs-6 (prepared with 3%, w/v PVA as stabilizer and DCM
+as organic solvent (B); Figure S3: Different kinetic model plots for PLGA-NPs-9 (prepared with
+1%, w/v PVP as stabilizer and CHCl3 as organic solvent) (A) and PLGA-NPs-10 (prepared with 3%,
+w/v PVP as stabilizer and CHCl3 as organic solvent (B); Figure S4: Different kinetic model plots
+for PLGA-NPs-13 (prepared with 1%, w/v PVP as stabilizer and DCM as organic solvent) (A) and
+PLGA-NPs-14 (prepared with 3%, w/v PVP as stabilizer and DCM as organic solvent (B).
+Author Contributions: Conceptualization, M.A.K.; Formal analysis, M.A.; Funding acquisition,
+A.A.; Investigation, M.A.K.; Methodology, M.A., M.A.K. and M.K.A.; Project administration, A.A.;
+Resources, M.A., M.A.K. and M.K.A.; Software, M.A.K.; Supervision, A.A.; Validation, M.A.; Visual-
+ization, M.A.; Writing—original draft, M.A.K. and M.K.A.; Writing—review and editing, M.A. and
+A.A. All authors have read and agreed to the published version of the manuscript.
+Funding: This research received no external funding.
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Data Availability Statement: The data presented in this study are available on request from the
+corresponding author.
+Acknowledgments: The authors are very grateful to the Deanship of Scientiﬁc Research and Re-
+search Centre, College of Pharmacy, King Saud University, Riyadh, Saudi Arabia for their funding
+and support.
+
+Pharmaceutics 2022, 14, 870
+25 of 29
+Conﬂicts of Interest: The authors declare no any conﬂict of interest.
+References
+1.
+Patra, J.K.; Das, G.; Fraceto, L.F.; Campos, E.V.R.; del Pilar Rodriguez-Torres, M.; Acosta-Torres, L.S.; Diaz-Torres, L.A.; Grillo, R.;
+Swamy, M.K.; Sharma, S.; et al. Nano based drug delivery systems: Recent developmentsi and future prospects. J. Nanobiotechnol.
+2018, 16, 71. [CrossRef] [PubMed]
+2.
+Sung, Y.K.; Kim, S.W. Recent advances in polymeric drug delivery systems. Biomater. Res. 2020, 24, 12. [CrossRef] [PubMed]
+3.
+Wu, Q.-X.; Lin, D.-Q.; Yao, S.-J. Design of Chitosan and Its Water Soluble Derivatives-Based Drug Carriers with Polyelectrolyte
+Complexes. Mar. Drugs 2014, 12, 6236–6253. [CrossRef] [PubMed]
+4.
+Martinho, N.; Damgé, C.; Reis, C.P. Recent Advances in Drug Delivery Systems. J. Biomater. Nanobiotechnol. 2011, 2, 510–526.
+[CrossRef]
+5.
+Dinarvand, R.; Sepehri, N.; Manouchehri, S.; Rouhani, H.; Atyabi, F. Polylactide-co-glycolide nanoparticles for controlled delivery
+of anticancer agents. Int. J. Nanomed. 2011, 6, 877–895. [CrossRef]
+6.
+Astete, C.E.; Sabliov, C.M. Synthesis and characterization of PLGA nanoparticles. J. Biomater. Sci. Polym. Ed. 2006, 17, 247–289.
+[CrossRef]
+7.
+Jain, R.A. The manufacturing techniques of various drug loaded biodegradable poly(lactide-co-glycolide) (PLGA) devices.
+Biomaterials 2000, 21, 2475–2490. [CrossRef]
+8.
+Makadia, H.K.; Siegel, S.J. Poly lactic-co-glycolic acid (PLGA) As biodegradable controlled drug delivery carrier. Polymers 2011, 3,
+1377–1397. [CrossRef]
+9.
+Tulla-Puche, J.; Albericio, F. Polymers and drug delivery systems. Curr. Drug Deliv. 2012, 9, 367–394. [CrossRef]
+10.
+Fathi-Achachelouei, M.; Keskin, D.; Bat, E.; Vrana, N.E.; Tezcaner, A. Dual growth factor delivery using PLGA nanoparticles in
+silk ﬁbroin/PEGDMA hydrogels for articular cartilage tissue engineering. J. Biomed. Mater. Res. Part B Appl. Biomater. 2020, 108,
+2041–2062. [CrossRef]
+11.
+Gu, P.; Wusiman, A.; Zhang, Y.; Liu, Z.; Bo, R.; Hu, Y.; Liu, J.; Wang, D. Rational Design of PLGA Nanoparticle Vaccine Delivery
+Systems To Improve Immune Responses. Mol. Pharm. 2019, 16, 5000–5012. [CrossRef] [PubMed]
+12.
+Liang, G.F.; Zhu, Y.L.; Sun, B.; Hu, F.H.; Tian, T.; Li, S.C.; Xiao, Z.D. PLGA-based gene delivering nanoparticle enhance suppression
+effect of miRNA in HePG2 cells. Nanoscale Res. Lett. 2011, 6, 447. [CrossRef] [PubMed]
+13.
+Ramezani, M.; Ebrahimian, M.; Hashemi, M. Current Strategies in the Modiﬁcation of PLGA-based Gene Delivery System. Curr.
+Med. Chem. 2017, 24, 728–739. [CrossRef]
+14.
+Petrizzo, A.; Conte, C.; Tagliamonte, M.; Napolitano, M.; Bifulco, K.; Carriero, V.; De Stradis, A.; Tornesello, M.L.; Buonaguro,
+F.M.; Quaglia, F.; et al. Functional characterization of biodegradable nanoparticles as antigen delivery system. J. Exp. Clin. Cancer
+Res. 2015, 34, 114. [CrossRef]
+15.
+Cegnar, M.; Kos, J.; Kristl, J. Cystatin incorporated in poly(lactide-co-glycolide) nanoparticles: Development and fundamental
+studies on preservation of its activity. Eur. J. Pharm. Sci. 2004, 22, 357–364. [CrossRef]
+16.
+Bisht, R.; Rupenthal, I.D. PLGA nanoparticles for intravitreal peptide delivery: Statistical optimization, characterization and
+toxicity evaluation. Pharm. Dev. Technol. 2018, 23, 324–333. [CrossRef]
+17.
+Mundargi, R.C.; Babu, V.R.; Rangaswamy, V.; Patel, P.; Aminabhavi, T.M. Nano/micro technologies for delivering macromolecular
+therapeutics using poly(d,l-lactide-co-glycolide) and its derivatives. J. Control. Release 2008, 125, 193–209. [CrossRef]
+18.
+Anderson, J.M.; Shive, M.S. Biodegradation and biocompatibility of PLA and PLGA microspheres. Adv. Drug Deliv. Rev. 1997, 28,
+5–24. [CrossRef]
+19.
+Freitas, S.; Merkle, H.P.; Gander, B. Microencapsulation by solvent extraction/evaporation: Reviewing the state of the art of
+microsphere preparation process technology. J. Control. Release 2005, 102, 313–332. [CrossRef]
+20.
+Martins, C.; Sousa, F.; Araújo, F.; Sarmento, B. Functionalizing PLGA and PLGA Derivatives for Drug Delivery and Tissue
+Regeneration Applications. Adv. Health Mater. 2018, 7, 1701035. [CrossRef]
+21.
+Bala, I.; Hariharan, S.; Kumar, M.N.V.R. PLGA Nanoparticles in Drug Delivery: The State of the Art. Crit. Rev. Ther. Drug Carr.
+Syst. 2004, 21, 387–422. [CrossRef] [PubMed]
+22.
+McCall, R.L.; Sirianni, R.W. PLGA nanoparticles formed by single- or double-emulsion with vitamin E-TPGS. J. Vis. Exp. 2013, 82,
+e51015. [CrossRef] [PubMed]
+23.
+Park, K.; Skidmore, S.; Hadar, J.; Garner, J.; Park, H.; Otte, A.; Soh, B.K.; Yoon, G.; Yu, D.; Yun, Y.; et al. Injectable, long-acting PLGA
+formulations: Analyzing PLGA and understanding microparticle formation. J. Control. Release 2019, 304, 125–134. [CrossRef]
+[PubMed]
+24.
+Uskokovi´c, D.; Stevanovic, M. Poly(lactide-co-glycolide)-based Micro and Nanoparticles for the Controlled Drug Delivery of
+Vitamins. Curr. Nanosci. 2009, 5, 1–14. [CrossRef]
+25.
+Alshamsan, A. Nanoprecipitation is more efﬁcient than emulsion solvent evaporation method to encapsulate cucurbitacin I in
+PLGA nanoparticles. Saudi Pharm. J. 2014, 22, 219–222. [CrossRef]
+26.
+McCarron, P.A.; Donnelly, R.F.; Marouf, W. Celecoxib-loaded poly(D,L-lactide-co-glycolide) nanoparticles prepared using a novel
+and controllable combination of diffusion and emulsiﬁcation steps as part of the salting-out procedure. J. Microencapsul. 2006, 23,
+480–498. [CrossRef]
+
+Pharmaceutics 2022, 14, 870
+26 of 29
+27.
+Alkholief, M.; Albasit, H.; Alhowyan, A.; Alshehri, S.; Raish, M.; Kalam, A.; Alshamsan, A. Employing a PLGA-TPGS based
+nanoparticle to improve the ocular delivery of Acyclovir. Saudi Pharm. J. 2018, 27, 293–302. [CrossRef]
+28.
+Kalam, A.; Alshamsan, A. Poly (d,l-lactide-co-glycolide) nanoparticles for sustained release of tacrolimus in rabbit eyes. Biomed.
+Pharmacother. 2017, 94, 402–411. [CrossRef]
+29.
+Beck-Broichsitter, M.; Rytting, E.; Lebhardt, T.; Wang, X.; Kissel, T. Preparation of nanoparticles by solvent displacement for drug
+delivery: A shift in the “ouzo region” upon drug loading. Eur. J. Pharm. Sci. 2010, 41, 244–253. [CrossRef]
+30.
+Sahana, D.; Mittal, G.; Bhardwaj, V.; Kumar, M. PLGA Nanoparticles for Oral Delivery of Hydrophobic Drugs: Inﬂuence of
+Organic Solvent on Nanoparticle Formation and Release Behavior In Vitro and In Vivo Using Estradiol as a Model Drug. J. Pharm.
+Sci. 2008, 97, 1530–1542. [CrossRef]
+31.
+Caputo, F.; Clogston, J.; Calzolai, L.; Rösslein, M.; Prina-Mello, A. Measuring particle size distribution of nanoparticle enabled
+medicinal products, the joint view of EUNCL and NCI-NCL. A step by step approach combining orthogonal measurements with
+increasing complexity. J. Control. Release 2019, 299, 31–43. [CrossRef]
+32.
+Lucas, S. The Pharmacology of Indomethacin. Headache J. Head Face Pain 2016, 56, 436–446. [CrossRef]
+33.
+Dannenfelser, R.-M.; Yalkowsky, S.H. Data base of aqueous solubility for organic non-electrolytes. Sci. Total Environ. 1991,
+109–110, 625–628. [CrossRef]
+34.
+Williams, C.M. Using medications appropriately in older adults. Am. Fam. Physician 2002, 66, 1917.
+35.
+Kalam, M.A.; Khan, A.A.; Khan, S.; Almalik, A.; Alshamsan, A. Optimizing indomethacin-loaded chitosan nanoparticle size,
+encapsulation, and release using Box–Behnken experimental design. Int. J. Biol. Macromol. 2016, 87, 329–340. [CrossRef]
+36.
+Boon, V.; Glass, B.; Nimmo, A. High-Performance Liquid Chromatographic Assay of Indomethacin in Porcine Plasma with
+Applicability to Human Levels. J. Chromatogr. Sci. 2006, 44, 41–44. [CrossRef]
+37.
+Novakova, L.; Matysová, L.; Havlíková, L.C.; Solich, P. Development and validation of HPLC method for determination of
+indomethacin and its two degradation products in topical gel. J. Pharm. Biomed. Anal. 2005, 37, 899–905. [CrossRef]
+38.
+Kızılbey, K. Optimization of Rutin-Loaded PLGA Nanoparticles Synthesized by Single-Emulsion Solvent Evaporation Method.
+ACS Omega 2019, 4, 555–562. [CrossRef]
+39.
+Niu, L.; Panyam, J. Freeze concentration-induced PLGA and polystyrene nanoparticle aggregation: Imaging and rational design
+of lyoprotection. J. Control. Release 2017, 248, 125–132. [CrossRef]
+40.
+Alhowyan, A.A.; Altamimi, M.A.; Kalam, M.A.; Khan, A.A.; Badran, M.; Binkhathlan, Z.; Alkholief, M.; Alshamsan, A. Antifungal
+efﬁcacy of Itraconazole loaded PLGA-nanoparticles stabilized by vitamin-E TPGS: In vitro and ex vivo studies. J. Microbiol.
+Methods 2019, 161, 87–95. [CrossRef]
+41.
+Guettari, M.; Gomati, R. Inﬂuence of polyvinylpyrrolidone on the interaction between water and methanol. Braz. J. Chem. Eng.
+2013, 30, 677–682. [CrossRef]
+42.
+Kalam, M.A.; Raish, M.; Ahmed, A.; Alkharfy, K.M.; Mohsin, K.; Alshamsan, A.; Al-Jenoobi, F.I.; Al-Mohizea, A.M.; Shakeel, F.
+Oral bioavailability enhancement and hepatoprotective effects of thymoquinone by self-nanoemulsifying drug delivery system.
+Mater. Sci. Eng. C Mater. Biol. Appl. 2017, 76, 319–329. [CrossRef] [PubMed]
+43.
+Shakeel, F.; Haq, N.; El-Badry, M.; Alanazi, F.K.; Alsarra, I. Ultra ﬁne super self-nanoemulsifying drug delivery system (SNEDDS)
+enhanced solubility and dissolution of indomethacin. J. Mol. Liq. 2013, 180, 89–94. [CrossRef]
+44.
+Ahnfelt, E.; Sjögren, E.; Hansson, P.; Lennernäs, H. In Vitro Release Mechanisms of Doxorubicin From a Clinical Bead Drug-
+Delivery System. J. Pharm. Sci. 2016, 105, 3387–3398. [CrossRef]
+45.
+Alkholief, M. Optimization of Lecithin-Chitosan nanoparticles for simultaneous encapsulation of doxorubicin and piperine. J.
+Drug Deliv. Sci. Technol. 2019, 52, 204–214. [CrossRef]
+46.
+Malinovskaya, Y.; Melnikov, P.; Baklaushev, V.; Gabashvili, A.; Osipova, N.; Mantrov, S.; Ermolenko, Y.; Maksimenko, O.;
+Gorshkova, M.; Balabanyan, V.; et al. Delivery of doxorubicin-loaded PLGA nanoparticles into U87 human glioblastoma cells. Int.
+J. Pharm. 2017, 524, 77–90. [CrossRef]
+47.
+Chourasiya, V.; Bohrey, S.; Pandey, A. Formulation, optimization, characterization and in-vitro drug release kinetics of atenolol
+loaded PLGA nanoparticles using 3 3 factorial design for oral delivery. Mater. Discov. 2016, 5, 1–13. [CrossRef]
+48.
+Dash, S.; Murthy, P.N.; Nath, L.; Chowdhury, P. Kinetic modeling on drug release from controlled drug delivery systems. Acta Pol.
+Pharm. 2010, 67, 217–223.
+49.
+Kalam, M.A.; Humayun, M.; Parvez, N.; Yadav, S.; Garg, A.; Amin, S.; Sultana, Y.; Ali, A. Release kinetics of modiﬁed
+pharmaceutical dosage forms: A review. Cont. J. Pharm. Sci. 2007, 1, 30–35.
+50.
+Wei, X.; Sun, N.; Wu, B.; Yin, C.; Wu, W. Sigmoidal release of indomethacin from pectin matrix tablets: Effect of in situ crosslinking
+by calcium cations. Int. J. Pharm. 2006, 318, 132–138. [CrossRef]
+51.
+Altamimi, M.A.; Neau, S.H. Use of the Flory–Huggins theory to predict the solubility of nifedipine and sulfamethoxazole in the
+triblock, graft copolymer Soluplus. Drug Dev. Ind. Pharm. 2016, 42, 446–455. [CrossRef] [PubMed]
+52.
+Li, Z.; Tao, W.; Zhang, D.; Wu, C.; Song, B.; Wang, S.; Wang, T.; Hu, M.; Liu, X.; Wang, Y.; et al. The studies of PLGA nanoparticles
+loading atorvastatin calcium for oral administration in vitro and in vivo. Asian J. Pharm. Sci. 2017, 12, 285–291. [CrossRef]
+[PubMed]
+53.
+Raish, M.; Kalam, M.A.; Ahmad, A.; Shahid, M.; Ansari, M.A.; Ahad, A.; Ali, R.; Bin Jardan, Y.A.; Alshamsan, A.; Alkholief, M.;
+et al. Eudragit-Coated Sporopollenin Exine Microcapsules (SEMC) of Phoenix dactylifera L. of 5-Fluorouracil for Colon-Speciﬁc
+Drug Delivery. Pharmaceutics 2021, 13, 1921. [CrossRef] [PubMed]
+
+Pharmaceutics 2022, 14, 870
+27 of 29
+54.
+Alshememry, A.; Kalam, M.A.; Almoghrabi, A.; Alzahrani, A.; Shahid, M.; Khan, A.A.; Haque, A.; Ali, R.; Alkholief, M.;
+Binkhathlan, Z.; et al. Chitosan-coated poly (lactic-co-glycolide) nanoparticles for dual delivery of doxorubicin and naringin
+against MCF-7 cells. J. Drug Deliv. Sci. Technol. 2022, 68, 103036. [CrossRef]
+55.
+Mainardes, R.M.; Evangelista, R.C. PLGA nanoparticles containing praziquantel: Effect of formulation variables on size distribu-
+tion. Int. J. Pharm. 2005, 290, 137–144. [CrossRef] [PubMed]
+56.
+Murakami, H.; Kobayashi, M.; Takeuchi, H.; Kawashima, Y. Preparation of poly(dl-lactide-co-glycolide) nanoparticles by modiﬁed
+spontaneous emulsiﬁcation solvent diffusion method. Int. J. Pharm. 1999, 187, 143–152. [CrossRef]
+57.
+Kwon, H.-Y.; Lee, J.-Y.; Choi, S.-W.; Jang, Y.; Kim, J.-H. Preparation of PLGA nanoparticles containing estrogen by emulsiﬁcation–
+diffusion method. Colloids Surfaces A Physicochem. Eng. Asp. 2001, 182, 123–130. [CrossRef]
+58.
+Quintanar-Guerrero, D.; Fessi, H.; Allémann, E.; Doelker, E. Inﬂuence of stabilizing agents and preparative variables on the
+formation of poly (D, L-lactic acid) nanoparticles by an emulsiﬁcation-diffusion technique. Int. J. Pharm. 1996, 143, 133–141.
+[CrossRef]
+59.
+Feczkó, T.; Tóth, J.; Gyenis, J.J.C.; Physicochemical, S.A.; Aspects, E. Comparison of the preparation of PLGA–BSA nano-and
+microparticles by PVA, poloxamer and PVP. Colloids Surf. A 2008, 319, 188–195. [CrossRef]
+60.
+Coombes, A.; Yeh, M.-K.; Lavelle, E.; Davis, S. The control of protein release from poly(dl-lactide co-glycolide) microparticles
+by variation of the external aqueous phase surfactant in the water-in oil-in water method. J. Control. Release 1998, 52, 311–320.
+[CrossRef]
+61.
+Shakeri, S.; Roghanian, R.; Emtiazi, G.; Errico, C.; Chiellini, F.; Chiellini, E. Preparation of protein-loaded PLGA-PVP blend
+nanoparticles by nanoprecipitation method: Entrapment, Initial burst and drug release kinetic studies. Nanomed. J. 2015, 2,
+175–186.
+62.
+Esmaeili, F.; Atyabi, F.; Dinarvand, R. Preparation of PLGA nanoparticles using TPGS in the spontaneous emulsiﬁcation solvent
+diffusion method. J. Exp. Nanosci. 2007, 2, 183–192. [CrossRef]
+63.
+Jung, T.; Breitenbach, A.; Kissel, T. Sulfobutylated poly(vinyl alcohol)-graft-poly(lactide-co-glycolide)s facilitate the preparation of
+small negatively charged biodegradable nanospheres. J. Control. Release 2000, 67, 157–169. [CrossRef]
+64.
+Lamprecht, A.; Ubrich, N.; Yamamoto, H.; Schäfer, U.; Takeuchi, H.; Lehr, C.-M.; Maincent, P.; Kawashima, Y. Design of
+rolipram-loaded nanoparticles: Comparison of two preparation methods. J. Control. Release 2001, 71, 297–306. [CrossRef]
+65.
+Javadzadeh, Y.; Ahadi, F.; Davaran, S.; Mohammadi, G.; Sabzevari, A.; Adibkia, K. Preparation and physicochemical characteriza-
+tion of naproxen–PLGA nanoparticles. Colloids Surf. B Biointerfaces 2010, 81, 498–502. [CrossRef] [PubMed]
+66.
+Auría-Soro, C.; Nesma, T.; Juanes-Velasco, P.; Landeira-Viñuela, A.; Fidalgo-Gomez, H.; Acebes-Fernandez, V.; Gongora, R.;
+Almendral Parra, M.J.; Manzano-Roman, R.; Fuentes, M. Interactions of Nanoparticles and Biosystems: Microenvironment of
+Nanoparticles and Biomolecules in Nanomedicine. Nanomaterials 2019, 9, 1365. [CrossRef] [PubMed]
+67.
+Yang, Y.-Y.; Chia, H.-H.; Chung, T.-S. Effect of preparation temperature on the characteristics and release proﬁles of PLGA
+microspheres containing protein fabricated by double-emulsion solvent extraction/evaporation method. J. Control. Release 2000,
+69, 81–96. [CrossRef]
+68.
+Yang, Y.Y. Morphology, drug distribution, and in vitro release proﬁles of biodegradable polymeric microspheres containing
+protein fabricated by double-emulsion solvent extraction/evaporation method. Biomaterials 2001, 22, 231–241. [CrossRef]
+69.
+Vanderhoff, J.W.; El-Aasser, M.S.; Ugelstad, J. Polymer Emulsiﬁcation Process. U.S. Patent US4177177A, 4 December 1979.
+70.
+Adibkia, K.; Omidi, Y.; Siahi, M.R.; Javadzadeh, A.R.; Barzegar-Jalali, M.; Barar, J.; Maleki, N.; Mohammadi, G.; Nokhodchi, A.;
+Javadzadeh, A. Inhibition of Endotoxin-Induced Uveitis by Methylprednisolone Acetate Nanosuspension in Rabbits. J. Ocul.
+Pharmacol. Ther. 2007, 23, 421–432. [CrossRef]
+71.
+Alshamsan, A.; Binkhathlan, Z.; Kalam, M.A.; Qamar, W.; Kfouri, H.; Alghonaim, M.; Lavasanifar, A. Mitigation of Tacrolimus-
+Associated Nephrotoxicity by PLGA Nanoparticulate Delivery Following Multiple Dosing to Mice while Maintaining its
+Immunosuppressive Activity. Sci. Rep. 2020, 10, 6675. [CrossRef]
+72.
+Adibkia, K.; Shadbad, M.R.S.; Nokhodchi, A.; Javadzedeh, A.; Barzegar-Jalali, M.; Barar, J.; Mohammadi, G.; Omidi, Y. Piroxicam
+nanoparticles for ocular delivery: Physicochemical characterization and implementation in endotoxin-induced uveitis. J. Drug
+Target. 2007, 15, 407–416. [CrossRef] [PubMed]
+73.
+Prabha, S.; Labhasetwar, V. Critical determinants in PLGA/PLA nanoparticle-mediated gene expression. Pharm. Res. 2004, 21,
+354–364. [CrossRef] [PubMed]
+74.
+Nafee, N.; Taetz, S.; Schneider, M.; Schaefer, U.F.; Lehr, C.-M. Chitosan-coated PLGA nanoparticles for DNA/RNA delivery:
+Effect of the formulation parameters on complexation and transfection of antisense oligonucleotides. Nanomed. Nanotechnol. Biol.
+Med. 2007, 3, 173–183. [CrossRef] [PubMed]
+75.
+Rezvantalab, S.; Drude, N.; Moraveji, M.K.; Güvener, N.; Koons, E.K.; Shi, Y.; Lammers, T.; Kiessling, F. PLGA-Based Nanoparticles
+in Cancer Treatment. Front. Pharmacol. 2018, 9, 1260. [CrossRef]
+76.
+Mehrotra, A.; Pandit, J.K. Preparation and Characterization and Biodistribution Studies of Lomustine Loaded PLGA Nanoparticles
+by Interfacial Deposition Method. J. Nanomed. Biother. Discov. 2015, 5, 4. [CrossRef]
+77.
+Turk, C.T.S.; Oz, U.C.; Serim, T.M.; Hascicek, C. Formulation and Optimization of Nonionic Surfactants Emulsiﬁed Nimesulide-
+Loaded PLGA-Based Nanoparticles by Design of Experiments. AAPS PharmSciTech. 2014, 15, 161–176. [CrossRef]
+
+Pharmaceutics 2022, 14, 870
+28 of 29
+78.
+Panyam, J.; Dali, M.M.; Sahoo, S.K.; Ma, W.; Chakravarthi, S.S.; Amidon, G.L.; Levy, R.J.; Labhasetwar, V. Polymer degradation
+and in vitro release of a model protein from poly(d,l-lactide-co-glycolide) nano- and microparticles. J. Control. Release 2003, 92,
+173–187. [CrossRef]
+79.
+Siepmann, J.; Faisant, N.; Akiki, J.; Richard, J.; Benoit, J. Effect of the size of biodegradable microparticles on drug release:
+Experiment and theory. J. Control. Release 2004, 96, 123–134. [CrossRef]
+80.
+Yeo, Y.; Basaran, O.A.; Park, K. A new process for making reservoir-type microcapsules using ink-jet technology and interfacial
+phase separation. J. Control. Release 2003, 93, 161–173. [CrossRef]
+81.
+Cartiera, M.S.; Johnson, K.M.; Rajendran, V.; Caplan, M.J.; Saltzman, W.M. The uptake and intracellular fate of PLGA nanoparticles
+in epithelial cells. Biomaterials 2009, 30, 2790–2798. [CrossRef]
+82.
+Wischke, C.; Schwendeman, S.P. Principles of encapsulating hydrophobic drugs in PLA/PLGA microparticles. Int. J. Pharm. 2008,
+364, 298–327. [CrossRef] [PubMed]
+83.
+Murakami, H.; Kawashima, Y.; Niwa, T.; Hino, T.; Takeuchi, H.; Kobayashi, M. Inﬂuence of the degrees of hydrolyzation and
+polymerization of poly(vinylalcohol) on the preparation and properties of poly(dl-lactide-co-glycolide) nanoparticle. Int. J. Pharm.
+1997, 149, 43–49. [CrossRef]
+84.
+Lv, C.; Su, Y.; Wang, Y.; Ma, X.; Sun, Q.; Jiang, Z. Enhanced permeation performance of cellulose acetate ultraﬁltration membrane
+by incorporation of Pluronic F127. J. Membr. Sci. 2007, 294, 68–74. [CrossRef]
+85.
+Jain, D.K.; Darwhekar, G.; Solanki, S.S.; Sharma, R. Osmotically regulated asymmetric capsular system for sustained delivery of
+indomethacin. J. Pharm. Investig. 2013, 43, 27–35. [CrossRef]
+86.
+GÜMÜ¸SDERELIO ˘GLU, M.; Deniz, G. Synthesis, characterization and in vitro degradation of poly (dl-lactide)/poly (dl-lactide-co-
+glycolide) ﬁlms. Turk. J. Chem. 1999, 23, 153–162.
+87.
+Shams, T.; Parhizkar, M.; Illangakoon, U.; Orlu, M.; Edirisinghe, M. Core/shell microencapsulation of indomethacin/paracetamol
+by co-axial electrohydrodynamic atomization. Mater. Des. 2017, 136, 204–213. [CrossRef]
+88.
+Singh, G.; Kaur, T.; Kaur, R.; Kaur, A. Recent biomedical applications and patents on biodegradable polymer-PLGA. Int. J.
+Pharmacol. Pharm. Sci. 2014, 1, 30–42.
+89.
+Panda, S.; Mohanty, G.C.; Samal, R.; Roy, G.S. Viscosity studies of polyvinyl alcohol (PVA, Mw = 1,25,000) in solvent distilled
+water and aqueous solution of urea. Mater. Sci. Res. India 2010, 7, 443–448. [CrossRef]
+90.
+Shimizu, Y.; Tanabe, T.; Yoshida, H.; Kasuya, M.; Matsunaga, T.; Haga, Y.; Kurihara, K.; Ohta, M. Viscosity measurement of
+Xanthan–Poly(vinyl alcohol) mixture and its effect on the mechanical properties of the hydrogel for 3D modeling. Sci. Rep. 2018,
+8, 16538. [CrossRef]
+91.
+Augusto, P.; Ibarz, A.; Cristianini, M. Effect of high pressure homogenization (HPH) on the rheological properties of tomato juice:
+Time-dependent and steady-state shear. J. Food Eng. 2012, 111, 570–579. [CrossRef]
+92.
+Wu, C.-S.; Senak, L.; Bonilla, J.; Cullen, J. Comparison of relative viscosity measurement of polyvinylpyrrolidone in water by
+glass capillary viscometer and differential dual-capillary viscometer. J. Appl. Polym. Sci. 2002, 86, 1312–1315. [CrossRef]
+93.
+Tóthová, J.; Lisý, V. Intrinsic viscosity of PVP polymers in extremely diluted solutions. e-Polymers 2013, 13, 22. [CrossRef]
+94.
+Maggio, T.; Scales, C.; Romo-Uribe, A.; Liang, B. The shear rate and concentration dependence of viscosity in concentrated
+solutions of PVP and Bovine Mucin. Contact Lens Anterior Eye 2018, 41, S67. [CrossRef]
+95.
+Zolnik, B.S.; Burgess, D.J. Effect of acidic pH on PLGA microsphere degradation and release. J. Control. Release 2007, 122, 338–344.
+[CrossRef]
+96.
+Gouda, R.; Baishya, H.; Qing, Z. Application of mathematical models in drug release kinetics of carbidopa and levodopa ER
+tablets. J. Dev. Drugs 2017, 6, 1–8.
+97.
+Supramaniam, J.; Adnan, R.; Kaus, N.H.M.; Bushra, R. Magnetic nanocellulose alginate hydrogel beads as potential drug delivery
+system. Int. J. Biol. Macromol. 2018, 118, 640–648. [CrossRef]
+98.
+Singhvi, G.; Singh, M. Review: In vitro drug release characterization models. Int. J. Pharm. Stud. Res. 2011, 2, 77–84.
+99.
+Jing, Z.; Dai, X.; Xian, X.; Du, X.; Liao, M.; Hong, P.; Li, Y. Tough, stretchable and compressive alginate-based hydrogels achieved
+by non-covalent interactions. RSC Adv. 2020, 10, 23592–23606. [CrossRef]
+100. Gbureck, U.; Vorndran, E.; Barralet, J.E. Modeling vancomycin release kinetics from microporous calcium phosphate ceramics
+comparing static and dynamic immersion conditions. Acta Biomater. 2008, 4, 1480–1486. [CrossRef]
+101. Unagolla, J.M.; Jayasuriya, A.C. Drug transport mechanisms and in vitro release kinetics of vancomycin encapsulated chitosan-
+alginate polyelectrolyte microparticles as a controlled drug delivery system. Eur. J. Pharm. Sci. 2018, 114, 199–209. [CrossRef]
+102. Hung, H.-I.; Klein, O.J.; Peterson, S.W.; Rokosh, R.; Osseiran, S.; Nowell, N.H.; Evans, C.L. PLGA nanoparticle encapsulation
+reduces toxicity while retaining the therapeutic efﬁcacy of EtNBS-PDT in vitro. Sci. Rep. 2016, 6, 33234. [CrossRef] [PubMed]
+103. Xiong, S.; George, S.; Yu, H.; Damoiseaux, R.; France, B.; Ng, K.W.; Loo, J.S.-C. Size inﬂuences the cytotoxicity of poly (lactic-co-
+glycolic acid) (PLGA) and titanium dioxide (TiO2) nanoparticles. Arch. Toxicol. 2012, 87, 1075–1086. [CrossRef] [PubMed]
+104. Chiu, H.I.; Samad, N.A.; Fang, L.; Lim, V. Cytotoxicity of targeted PLGA nanoparticles: A systematic review. RSC Adv. 2021, 11,
+9433–9449. [CrossRef]
+105. Di-Wen, S.; Pan, G.-Z.; Hao, L.; Zhang, J.; Xue, Q.-Z.; Wang, P.; Yuan, Q.-Z. Improved antitumor activity of epirubicin-loaded
+CXCR4-targeted polymeric nanoparticles in liver cancers. Int. J. Pharm. 2016, 500, 54–61. [CrossRef]
+106. Miura, N.; Matsumoto, Y.; Miyairi, S.; Nishiyama, S.; Naganuma, A. Protective Effects of Triterpene Compounds Against the
+Cytotoxicity of Cadmium in HepG2 Cells. Mol. Pharmacol. 1999, 56, 1324–1328. [CrossRef]
+
+Pharmaceutics 2022, 14, 870
+29 of 29
+107. Louisa, M.; Suyatna, F.D.; Wanandi, S.I.; Asih, P.B.S.; Syafruddin, D. Differential expression of several drug transporter genes in
+HepG2 and Huh-7 cell lines. Adv. Biomed. Res. 2016, 5, 104. [CrossRef]
+108. Norouzzadeh, M.; Kalikias, Y.; Mohamadpur, Z.; Shariﬁ, L.; Mahmoudi, M. Determining population doubling time and the
+appropriate number of HepG2 cells for culturing in 6-well plate. Int. Res. Bas. Sci. 2016, 10, 299–303.
+109. Wen-Sheng, W.J.O. ERK signaling pathway is involved in p15INK4b/p16INK4a expression and HepG2 growth inhibition
+triggered by TPA and Saikosaponin a. Oncogene 2003, 22, 955–963. [CrossRef]
+110. Sriuttha, P.; Sirichanchuen, B.; Permsuwan, U. Hepatotoxicity of Nonsteroidal Anti-Inﬂammatory Drugs: A Systematic Review of
+Randomized Controlled Trials. Int. J. Hepatol. 2018, 2018, 5253623. [CrossRef]

@@ -1,0 +1,878 @@
+The concept of quality by design in the pharmaceutical field requires better control
+of drug formulation and manufacturing processes (1) to ensure robust and predictable
+outcomes. To circumvent these limitations, there is emerging interest in using mathema-
+tical methods to better predict drug formulations (2). To contribute to this knowledge
+gap in the field, specifically for drug nanoencapsulation, this study reports on the appli-
+cation of statistical analysis to elucidate the features of heparin-loaded nanoparticles.
+281
+Acta Pharm. 60 (2010) 281–293
+Original research paper
+10.2478/v10007-010-0022-y
+Statistical analysis of low molecular mass heparin
+nanoencapsulation
+VAISHNAVI GANTI1
+ABEBE ENDALE MENGESHA1
+JACOB MARSZALEK2
+BI-BOTTI C. YOUAN1,*
+1 Laboratory of Future Nanomedicines
+and Theoretical Chronopharmaceutics
+University of Missouri-Kansas City
+School of Pharmacy
+Division of Pharmaceutical Sciences
+Kansas City MO 64108
+2 University of Missouri-Kansas City
+School of Education, Division of
+Counseling & Education Psychology
+Kansas City, MO 64110
+Accepted June 8, 2010
+The objective of this study was to use Box-Behnken de-
+sign (BBD) to investigate the influence of formulation vari-
+ables on the properties of heparin-loaded poly(lactic-co-
+-glycolic acid) (PLGA)-polymethacrylate-RLPO (E-RLPO)
+nanoparticles (NP) in terms of mean diameter (as size)
+and drug encapsulation efficiency. The NPs were prepa-
+red by the double emulsion solvent evaporation method.
+The independent variables were: X1 – polymer mass ra-
+tio (PLGA:E-RLPO) in the oil phase, X2 – concentration
+of polyvinyl alcohol (PVA) as emulsion stabilizer, and X3
+– volume of the external aqueous phase (W2). Particle si-
+ze (analyzed by dynamic light scattering) and encapsu-
+lation efficiency (EE, estimated by spectrophotometry)
+were the investigated responses. The polynomial equa-
+tion obtained from regression analysis of the reduced
+model (p = 0.0002, F = 25.7952 and R2 = 0.96) provided
+an excellent fit. The optimal size for the NP was found
+to be 134.2 ± 16.5 nm with formulation variables of
+48.2:61.8, 0.321 (%, m/V) and 263 mL for X1, X2 and X3,
+respectively. Probably, due to electrostatic interaction be-
+tween the negatively charged drug and the positively
+charged E-RLPO, the percent EE of heparin was between
+74.4 ± 6.5 % (lowest value) and 92.1 ± 5.3 % (highest va-
+lue). The data suggest that BBD is a useful tool in ratio-
+nal design of heparin-loaded NPs.
+Keywords: heparin, nanoparticle, encapsulation efficien-
+cy, Box-Behnken design
+* Correspondence; e-mail: youanb@umkc.edu
+
+Heparin is a water soluble, negatively charged molecule belonging to the group of
+glycoso-aminoglycans. Its anticoagulant action is well established (3). After injection,
+heparin chains enter a cellular pool and effectively prevent thrombosis by increasing the
+electronegative potential of the vessel wall (4). Low-molecular-mass heparins (LMWH’s)
+are heparin salts having an average molecular mass of less than 8000 Da. Heparin is still
+essentially administered in clinics by injections, which presents several limitations for
+effective pharmacotherapy of thrombosis. To overcome these limitations, a non-invasive
+and improved heparin delivery system may be needed to enhance patient compliance
+and minimize adverse effects (5). Alternative for heparin delivery, which are under re-
+search include the pulmonary route (6) that offers many advantages. Considering the
+above aspects and the urgent need for an alternative route for heparin, the long-term
+goal of this research endeavour is to formulate heparin-loaded nanoparticles for pulmo-
+nary delivery. In pursuit of that goal, the immediate objective of this study was to opti-
+mize heparin nanoencapsulation with a polymeric matrix using the double-emulsion
+solvent-evaporation method.
+A 3-factor, 3-level Box-Behnken design (BBD) was employed to design experiments
+based on the response surface methodology (7). The design specified low, medium, and
+high values for the chosen variables. BBD is an efficient experimental design method,
+because it involves fewer experiments compared to a full factorial design. In this study,
+the influence of independent variables, such as polymer ratio, stabilizer concentration
+and volume of the external phase, on the particle size and encapsulation efficiency was
+analyzed.
+EXPERIMENTAL
+Materials
+Polymethacrylate EudragitTM or EudragitC RLPO (E-RLPO) was purchased from
+Röhm Pharma GmbH (Germany). Poly(DL-lactide-co-glycolide) (PLGA) with inherent
+viscosity (inh = ln rel/c, natural logarithm of the ratio between relative viscosity, rel
+and polymeric dispersion concentration, c of 1.08 dL g–1 at 30 °C and a lactide-to-gly-
+colide ratio of 50:50 was obtained from Birmingham Polymers, Inc. (USA). Polyvinyl al-
+cohol (PVA) (Mr 30–70 kDa) and Azure-II dye were purchased from Sigma (USA). Meth-
+ylene chloride (Fischer Scientific, USA), low-molecular-mass heparin (LMWH, lot # PH
+61807 @ 170 IU mg–1) (Celsus, USA), and all other chemicals were of analytical grade
+and were used without further purification.
+Experimental design
+The experimental design and analysis of the results were performed using the JMP
+version 5.1 software (SAS Institute, USA). The 3-factor, 3-level BBD was used to opti-
+mize the particle size and percent encapsulation of the drug. The number of experiments
+(N) required was determined using the following equation (7):
+N = (2k)(k – 1) + C0
+(1)
+282
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+
+where k is the number of factors and C0 is the number of central points. In this study,
+three factors (k = 3) and three central points (C0 = 3) were considered, providing a total
+of 15 experiments according to Eq. (1). The independent variables are defined in Table I.
+Based on the analysis of the data and the model obtained after multiple regression, a
+polynomial equation was predicted defining the optimized nanoparticles in terms of the
+least diameter size (after freeze drying) and maximum heparin encapsulation.
+Preparation of heparin-loaded nanoparticles
+LMWH-loaded nanoparticles were prepared by an adapted multiple emulsion
+(w/o/w) technique (8). In this, 1 mL of an aqueous heparin solution (5000 IU) was first
+emulsified in methylene chloride (10 mL) containing 0.5 g of the polymers by sonication
+(VWR, USA) for 1 min at 60 W. The resulting water-in-oil (w/o) emulsion was poured
+into an aqueous solution containing PVA, and mixed in a homogenizer (Ultra Turrax,
+T-25 basic, USA) for 3 min. This formed the secondary water-in-oil-in-water (w/o/w)
+emulsion. The organic solvent was removed at room temperature (32–37 °C) with con-
+tinuous magnetic stirring for 2 hours. The emulsion was centrifuged at 20,000 rpm (29,
+100xg) for 60 min, washed three times with water to remove excess PVA, and then dried
+in a freeze-dryer (Labconco Co., USA). Samples were taken for particle size analysis be-
+fore and after the freeze-drying. The supernatant collected after centrifugation was ana-
+lyzed for heparin, and the encapsulation efficiency (EE) was calculated.
+Characterization of nanoparticles
+Particle size. – Particle size was measured by differential light scattering (DLS) (Brook-
+haven Instruments Corp., USA) with the 90 Plus particle-sizing software (version 3.78).
+Typically, 1–2 mL of the appropriately diluted sample was measured in triplicate. In or-
+der to evaluate the effect of the drying process on the NP, samples were measured before
+and after the freeze-drying.
+Morphology analysis. – Surface features of the NP were analyzed using scanning elec-
+tron microscopy (SEM) (FEI Co., USA). Samples of NP were fixed on supports with car-
+bon-glue, and coated with gold–palladium under an argon atmosphere using a gold
+sputter module in a high-vacuum evaporator. The morphology of the samples was ob-
+served with XL-30, ESEM-FEG (FEI Co.).
+283
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+Table I. Independent variables and their levels in Box-Behnken design
+Independent variable
+Level
+Low
+Medium
+High
+Polymer ratio (PLGA:E-RLPO)
+20:80
+50:50
+80:20
+PVA (%, m/V)
+0.1
+0.3
+0.5
+External phase volume (mL)
+100
+200
+300
+
+Determination of drug encapsulation efficiency. – The supernatant recovered by centri-
+fugation during washing of the NPs was assayed using spectrophotometry (Genesys 10
+Bio, Thermo Electron Co., USA) after appropriate dilution (9). A standard curve was first
+plotted with heparin in the concentration range 1–5 IU mL–1. Typically, an aliquot of 0.5
+mL of aqueous heparin solution, or the supernatant from NP preparation, was reacted with
+4.5 mL of Azure II solution (0.01 mg mL–1) at room temperature and assayed at 530 nm.
+Experiments were conducted in triplicate. Mean values and standard deviations were
+calculated for each sample. Heparin concentration (IU mL–1) was determined from the
+standard curve using values for the slope and intercept (0.0185 mL IU–1 and 0.0057, res-
+pectively, R = 0.9939). The drug entrapment efficiency was expressed as the percentage
+of heparin entrapped compared to the theoretical value.
+RESULTS AND DISCUSSION
+Particle size analysis
+Heparin-loaded nanoparticles ranging from 150–875 nm were prepared after freeze-
+-drying (Table II) using the 15-set of experiments of the BBD. As shown in Table II, the
+284
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+Table II. Experimental design with measured responses
+Batch
+No.
+Patterna
+Polymer
+ratio (%)
+PVA
+(%, m/V)
+External
+phase
+(mL)b
+Diameter be-
+fore freeze-
+-drying (nm)
+Diameter after
+freeze-dryingc
+Encapsulation
+efficiencyc
+(%)
+1
+0+–
+50:50
+0.5
+100
+221.1
+391.3 ± 33.9
+82.5 ± 1.6
+2
++0–
+80:20
+0.3
+100
+334.7
+589.2 ± 50.9
+75.1 ± 8.9
+3
+++0
+80:20
+0.5
+200
+446.0
+346.5 ± 21.2
+74.4 ± 6.5
+4
+–0+
+20:80
+0.3
+300
+190.1
+194.8 ± 65.1
+87.3 ± 7.5
+5
+000
+50:50
+0.3
+200
+277.3
+211.5 ± 35.4
+87.7 ± 5.7
+6
+0– –
+50:50
+0.1
+100
+743.4
+875.7 ± 91.9
+89.4 ± 6.6
+7
+– –0
+20:80
+0.1
+200
+373.4
+602.1 ± 53.7
+92.1 ± 5.3
+8
+0++
+50:50
+0.5
+300
+469.1
+301.2 ± 33.9
+81.1 ± 7.9
+9
+–+0
+20:80
+0.5
+200
+196.9
+150.4 ± 17.0
+91.1 ± 4.1
+10
++–0
+80:20
+0.1
+200
+271.4
+348.5 ± 45.3
+77.9 ± 8.3
+11
+0–+
+50:50
+0.1
+300
+344.5
+252.4 ± 53.7
+87.5 ± 9.5
+12
+000
+50:50
+0.3
+200
+209.2
+165.0 ± 22.6
+88.5 ± 6.7
+13
++0+
+80:20
+0.3
+300
+235.6
+210.4 ± 19.8
+90.1 ± 0.1
+14
+–0–
+20:80
+0.3
+100
+286.8
+416.0 ± 41.0
+80.1 ± 6.8
+15
+000
+50:50
+0.3
+200
+224.1
+213.6 ± 14.1
+82.5 ± 5.8
+a Pattern: (–) low, (0) medium, (+) high (Table I).
+b Volume of the external water phase in the w/o/w emulsion.
+c Diameter and EE are mean values ± SD (n = 3).
+
+low levels of PVA and external aqueous phase volume (Table I) resulted in large heparin-
+-loaded particles with a mean diameter of 875 ± 92 nm. On the other hand, the high level
+of PVA (0.5 %, m/V), medium level of external phase volume (200 mL), and low level of
+PLGA:E-RLPO polymer ratio (20:80) provided the smallest particle size (150 ± 17 nm).
+These factors, affecting the size range of the NPs, are discussed in detail in the sections
+below.
+Morphological analysis
+Surface morphology studies of the heparin-loaded nanoparticles of the different sets
+of BBD batches showed variation in size consistent with the results in Table II. Figs. 1a
+and 1b show typical SEM pictures of the small- and large-sized nanoparticles produced
+by BBD experiments in batches 9 and 6, respectively.
+In some of the SEM pictures, the remnants of PVA are clearly visible in the form of a
+mesh-like structure. Repeated washings have removed most of the PVA from the NPs.
+Fig. 1c shows typical PVA-containing NPs before the washing steps. Heparin-loaded
+NPs are not clearly visible under the SEM due to the PVA covering layers. Indeed, it has
+been shown that some amount of the PVA is always found to be associated with poly-
+mer nanoparticles, even after repeated washings (10). After washing, the heparin-loaded
+NPs appeared to be smooth, spherical and nonporous in both isolated and aggregated
+forms (Fig. 1).
+285
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+Fig. 1. SEM of heparin-loaded nanopar-
+ticles: a) small-sized nanoparticles (batch
+No. 9, Table II), b) large-sized nanoparti-
+cles (batch No. 6, Table II), c) heparin-
+-loaded nanoparticles before washing out
+PVA.
+a)
+c)
+b)
+
+Drug encapsulation analysis
+The drug encapsulation efficiency (EE) of the nanoparticles was remarkably high,
+ranging from 74.4 ± 8.9 % (batch No. 3) to 92.1 ± 5.3 % (batch No. 7) (Table II). This also
+suggests that the system in the present experimental setup was robust with respect to
+the percentage of drug encapsulated. The narrow range over which the EE varied for the
+system was mainly due to incorporation of the positively charged E-RLPO, which took
+part in an electrostatic interaction with the negatively charged heparin macromolecules
+(11).
+Analysis of experimental data
+Data obtained for the size and encapsulation efficiency based on the fifteen BBD ex-
+periments (Table II) were analyzed as shown in Figs. 2–4 by depicting Pareto plots and
+contour profiles, and examining the regression model parameter estimates residual
+286
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+100
+100
+200
+200
+300
+300
+400
+400
+500
+500
+600
+600
+700
+700
+800
+800
+75
+50
+25
+0
+–25
+–50
+–75
+a)
+900
+900
+Predicted diameter (nm)
+Predicted diameter (nm)
+Residual (nm)
+50
+40
+30
+20
+10
+0
+–10
+–20
+–30
+–40
+–50
+b)
+Residual (nm)
+Fig. 2. Residuals vs. predicted particle size of the heparin-loaded nanoparticles:
+a) full model, b) reduced model.
+0
+X2
+2
+4
+6
+8
+10
+12
+Standardized effect
+Independent variables
+and their interaction
+X3
+X2X3
+X3
+2
+X2
+2
+X X
+1
+3
+X X
+1
+2
+X1
+2
+X1
++
+–
+Fig. 3. Standardized Pareto chart for the particle size of heparin-loaded nanoparticles after
+freeze-drying. Independent variables: X1 – polymer mass ratio (PLGA: E-RLPO) in the oil phase; X2
+– concentration of polyvinyl alcohol (PVA %, m/V) as emulsion stabilizer; and X3 – volume of the
+external aqueous phase (mL) and their corresponding interaction. Statistical significance level (p =
+0.05) is indicated by the vertical line.
+
+plots. Except for batches 1, 2, 7 and 14, there was a good correlation between the size of
+heparin-loaded NPs before and after freeze-drying (Table II), suggesting that there was
+no need to use cryoprotectants for this type of nanoparticles. Abdelwahed et al. (12) de-
+scribed the stabilization of nanocapsule reservoir systems using 5 % PVA as a
+cryoprotectant. In this study, the concentration of PVA in the heparin-loaded NP was
+usually less than 0.5 %. The reasons why these four samples exhibited dramatic in-
+creases in size during freeze-drying remain to be elucidated.
+The encapsulation efficiency of the NPs was above 75 % (Table II), which is consid-
+ered acceptable for all levels of independent variables (Table I). Hence, the variables
+were optimized for particle size as described below.
+Multiple regression analysis was performed using particle size as the response vari-
+able and polymer ratio (PLGA: E-RLPO), concentration of PVA (%, m/V), and volume of
+the external aqueous phase as independent variables. A polynomial equation determin-
+ing the nanoparticle size was obtained based on the regression analysis, resulting in a
+model that predicted the size of heparin-loaded nanoparticles. Eq. (2) incorporates indi-
+vidual as well as combined effects of the independent variables:
+Y = 191.1 + 16.4X1– 111.2X2 – 164.2X3 + 112.4X1X2 – 39.4X1X3 +
++ 133.3X2X3 + 34.2X12 + 136.7X22 + 127.4X32
+(2)
+where, Y is the partical size, X1 is the percentage polymer ratio, X2 is the concentration
+of PVA (%, m/V), and X3 is the volume of the external aqueous phase (mL) (Table I). It is
+important to underscore that in this study, the total amount/mass of polymer used to
+form the NP matrix is constant. Only the relative proportion of PLGA to E-RLPO is the
+variable in this context. In this constant amount of polymer mixture, defining the mass
+or mass percentage of one polymer will automatically set the value for the second poly-
+mer. This reduces the percentage polymer ratio into a single factor. For example, a per-
+centage ratio of 50:50 means that the polymeric portion contains by mass 50 % of each
+type of polymer and indeed corresponds to a standard ratio of 1:1. From the regression
+287
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+PVA (%,
+/ )
+m V
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+300
+250
+200
+150
+100
+External phase volume (mL)
+250
+200
+150
+300
+350
+400
+450
+500
+550
+600
+650
+700
+750
+800
+850
+Fig. 4. Contour plot of the particle size (nm)
+as the function of external phase volume
+and PVA concentration. Polymer ratio was
+kept constant at the center point.
+
+analysis, the predicted values, residuals and standard errors for particle size were calcu-
+lated and are shown in Table III. The R2 value for the model was found to be 0.98, indi-
+cating an excellent fit to the data. Nevertheless, analysis of the data showed that the co-
+efficients of interactions, namely polymer ratio ´ polymer ratio (X12), and polymer ratio ´
+external volume (X1X3), were not statistically significant. Therefore, these interaction
+terms were omitted from the final model. This omission was justified by performing the
+following three different analyses:
+(i) Regression analysis of the reduced model was performed and the p (0.0002), F
+(25.7952) and R2 (0.96) values (Table IV) verified an excellent fit. The above values were
+highly significant, justifying the omission of insignificant parameters.
+(ii) Plot of residual vs. predicted values showed no correlation of data for either full
+(Fig. 2a) or reduced models (Fig. 2b).
+(iii) Regression analysis for the residuals obtained in both full and reduced models
+was performed to justify the omission of insignificant interaction terms for obtaining a
+reduced polynomial equation.
+The above tests justified the omission of insignificant parameters. The reduced po-
+lynomial equation was derived as shown below:
+Y = 212.1 + 16.4X1 – 111.2X2 – 164.2X3 + 112.4X1X2 + 133.3X2X3 +
++ 134.1X22 + 124.8X32
+(3)
+288
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+Table III. Measured and calculated values for particle mean diameter after freeze-drying
+Batch
+No.
+Observed
+diameter (nm)a
+Predicted
+diameter (nm)
+Residual
+(nm)b
+Standard error
+(nm)c
+1
+391.3 ± 33.9
+374.8
++16.5
+23.9
+2
+589.2 ± 50.9
+572.5
++16.7
+35.8
+3
+346.5 ± 21.2
+379.5
+–33.0
+15.0
+4
+194.8 ± 65.1
+211.4
+–16.6
+45.9
+5
+211.5 ± 35.4
+196.7
++14.8
+25.1
+6
+875.7 ± 91.9
+863.7
++12.0
+64.8
+7
+602.1 ± 53.7
+569.0
++33.1
+37.9
+8
+301.2 ± 33.9
+313.1
+–11.9
+23.0
+9
+150.4 ± 17.0
+121.8
++28.6
+12.1
+10
+348.5 ± 45.3
+377.0
+–28.5
+31.8
+11
+252.4 ± 53.7
+268.8
+–16.4
+37.9
+12
+165.0 ± 22.6
+196.7
+–31.7
+15.9
+13
+210.4 ± 19.8
+165.4
++45.0
+14.1
+14
+416.0 ± 41.0
+460.9
+–44.9
+29.3
+15
+213.6 ± 14.1
+196.7
++16.9
+9.9
+a Mean ± SD, n = 3.
+b Residual: observed diameter (nm) – predicted diameter (nm)
+
+where Y is the praticle size, X1, X2 and X3 are the same variables as defined above. The
+R2 value for Eq. (3) was 0.96, which shows excellent fit, and the fit of the reduced model
+was not significantly different from that of the initial model as shown in Table IV by cal-
+culated F (FCAL(5, 7) = 2.46, p = 0.14). This table also indicates that the data fits to the re-
+duced model as well. C1 is the sum of squares of the residuals (error) of the full model;
+C2 is the sum of squares of the residuals (error) of the reduced model, D1 is the mean
+square of the error of the full model, NTO is the number of terms omitted (which is 2).
+On closer analysis, it appears that both the concentration of PVA (%, m/V) (X2) and the
+external phase volume (X3) have a quadratic effect on particle size when other variables
+are held constant, where particle size is minimized at the medium level of each. In addi-
+tion, PVA concentration has a moderating effect on the relationship between the poly-
+mer ratio and particle size, where the high level of concentration adds 112.4 nm to the ef-
+fect of polymer ratio, and the low level subtracts 112.4 nm, when the volume of the
+external phase is held constant. Concentration of PVA also had a moderating effect on
+the relationship between the volume of the external phase and particle size, where the
+high level of concentration adds 133.3 nm to the effect of the external phase on particle
+size, and the low level subtracts 133.3 nm when the polymer ratio is held constant.
+Pareto plots. – Pareto plots (Fig. 3) show the particle size varying curvilinearly with
+the volume of the external phase (X3) and the PVA concentration, the emulsifier (X2) in-
+dicating that at extremely low and extremely high values of these independent varia-
+bles, it is possible to achieve maximum values for the response. Since the response un-
+der consideration is particle size, we should aim at medium values to obtain the smallest
+particle size, which is the ultimate objective of this work.
+Contour profile. – To further elucidate the results from the Pareto plots, the contour
+profiles X2 vs. X3 were plotted (Fig. 4). The contour profile predicted the particle size of
+the heparin-loaded NPs to curvilinearly change with the two factors, PVA concentration
+and the volume of the external phase. The third factor, the polymer ratio, was kept con-
+stant at the medium value. As shown in Fig. 4, the smallest size of heparin-loaded NPs
+289
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+Table IV. Results of ANOVA for the full model and reduced models predicting particle size
+Source
+d.f.
+Sum of
+squares
+Mean
+square
+F-value
+p-valuea
+Reduced model
+Model
+7
+530508.16
+75786.9
+25.7952
+0.0002
+Error
+7
+20566.15
+(C2)
+2938.0
+Corrected total
+14
+551074.32
+Full model
+Model
+9
+565078.15
+62786.5
+30.3021
+0.0009
+Error
+5
+10360.08
+(C1)
+2072.0
+(D1)
+Corrected total
+14
+575438.24
+a Probability of obtaining F-value greater than calculated.
+FCAL = [(C2 – C1)/NTO]/D1 = 2.46 (df1 = 5, df2 = 7, p = 0.14), where NTO is the number of terms omitted.
+
+(150 nm) was obtained with PVA concentration in the range of 0.25–0.4 %, (m/V), and the
+external phase volume varying from 225–290 mL. Considering all the above observa-
+tions, we concluded that the best values for obtaining the smallest particle size would be
+around the medium value of the PVA concentration and in-between the medium to high
+levels of the external phase (Fig. 4).
+Prediction profiler. – The prediction profiler (Fig. 5) further confirmed the above ob-
+servations. Fig. 5 displays prediction traces for each independent variable. A prediction
+trace is the predicted response obtained when one variable changes while the others are
+held constant at current values. Prediction profiles are especially useful in multiple-re-
+sponse models to help evaluate the factors helpful in optimizing an experimental de-
+sign. Fig. 5 shows that it is possible to achieve the optimum size of 134.24 nm and encap-
+sulation efficiency (EE) of 88.8 %, with desirability of 0.95 on the scale of 0 to 1, where 0
+is not acceptable and 1 is the desirable response. Optimized independent variables were
+48.2:61.8, 0.321 (%, m/V) and 263 mL for X1, X2 and X3, respectively. Checkpoint analysis
+with this optimal condition analysis gave a mean size of 144.4 ± 16 nm (n = 3) and a
+mean residual of 10.16 nm with 90.1 % EE. The size range of the optimal formula was
+similar to that of sample No. 9 of the BBD design, as shown by the dynamic light scatter-
+ing data in Table II and morphologically in Fig. 1a.
+Physical meaning of statistical analysis. – The Pareto plot analysis, regression models,
+contour profiles and the prediction profiler gave predictable results about the effects on
+the responses due to individual and combined factors. From the Pareto plot, we dedu-
+ced the nature of the relationship between the responses and the individual factors,
+which are significant. The particle size varies curvilinearly with PVA (%, m/V) and exter-
+nal phase volume, so the medium value of the parameter would give the desired re-
+290
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+PVA
+%,
+/ )
+m V
+20
+48.2
+80
+0.1
+0.321
+0.5
+100
+263
+300
+% polymer
+ratio
+external phase
+volume (mL)
+desirability
+0
+1
+875.7
+56.5023
+134.2408
+74.065
+±
+Diameter after
+freeze drying (mm)
+Prediction profiler
+102.593
+70.1955
+88.79837
+10.173
+±
+Encapsulation
+efficiency (%)
+1
+0
+0.95103
+Desirability
+Fig. 5. Prediction and desirability plot
+of the reduced model showing the ef-
+fect of polymer ratio (X1), concentra-
+tion PVA (X2) and volume of the exter-
+nal phase (X3) on the particle size of
+heparin-loaded nanoparticles.
+
+sponse. Eq. (2) and Pareto plot (Fig. 3) showed that the influence of the polymer percent-
+age ratio (X1) was not significant, either alone or when combined with the external
+phase volume (X1X3). This may be explained by the fact that the various polymer ratios
+utilized in the study behaved in a similar way. The potential charge density effect, re-
+lated to the different charges provided by the different levels of E-RLPO that were incor-
+porated, might have been overridden by the steric effect of the PLGA.
+Although polymer concentration is known to have an increasing effect on the diam-
+eter size, the levels of PVA concentration and external phase volume when used in com-
+bination, were found to minimize the effects on the particle size. Polymer concentration
+in the internal phase of the emulsion is an important factor due to its significant increas-
+ing effect on the particle size, but this effect was moderated by PVA concentration. This
+data may be explained by the fact that increasing viscosity of the dispersed phase leads
+to coarser dispersion of polymer solution into the aqueous phase (13). This could result
+from increased resistance due to the flow and shear stress during emulsification. Inade-
+quate distribution of the phases during emulsification would produce an unstable emul-
+sion, resulting in larger particle sizes and higher polydispersity (14).
+In this study, PVA was used as an emulsion stabilizer. The amount of emulsion sta-
+bilizer plays an important role in the emulsification process and in the protection of
+droplets, because it can prevent coalescence of globules before particle hardening (14).
+The concentration of PVA clearly affects the particle size, although the effect partly de-
+pends on polymer ratio and external phase volume. At lower concentrations, the num-
+ber of PVA macromolecules is not adequate to stabilize the emulsion. The resultant
+emulsion has coarser droplets and is more polydisperse. At higher PVA concentrations,
+the amount of residual PVA associated with the nanoparticles increased (13), leading to
+aggregation of the particles. This may be due to the interlocking of PVA and PLGA mole-
+cules during particle formation.
+The external phase volume plays an important role in the formation and stability of
+the double emulsion system. With an increase in the external phase volume, the droplet
+size of the secondary emulsion decreases because of a decrease in the frequency of colli-
+sion/coalescence of droplets, though the amount of decrease depends on the level of
+PVA concentration. This may also be explained by the Oswald ripening process (15), in
+which small particles shrink due to enhanced solubility arising from their high curva-
+ture while larger particles grow.
+CONCLUSIONS
+The statistical analysis based on BBD design provided the best data fit to the regres-
+sion formula containing significant factor coefficients that predicted particle diameter
+values (after freeze-drying). The values of independent variables for the above predicted
+responses were 48.2:61.8 (PLGA:E-RLPO), 0.321 (PVA %, m/V), 263 mL (external phase
+volume) and are in agreement with the results obtained from the contour profiler, check-
+point analysis and the Pareto plot.
+The nanosystem was found to be robust with respect to the percentage of drug en-
+capsulation. Future studies should also include the development of predictive mathe-
+291
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+
+matical models relating the influence of process parameters and other factors that may
+affect nanoparticle characteristics (e.g., size, drug encapsulation, and drug release and
+stability). Some of these process parameters and factors include the rate and speed of
+stirring, polymer molecular mass, internal/external phase ratio, operation temperature,
+and the method of solvent removal. In addition, it would be interesting to study the
+amount and type of residual emulsion stabilizers associated with nanoparticles, and
+their effect on the physico-chemical properties of the particles themselves.
+REFERENCES
+1. R. A. Lionberger, S. L. Lee, A. Raw and L. X. Yu, Quality by design: concepts for ANDAs, AAPS
+Journal 10 (2008) 268–276; DOI: 10.1208/s12248-008-9026-7.
+2. L. C. Du Toit, V. Pillay, M. P. Danckwerts and C. Penny, Formulation and statistical optimization
+of a novel crosslinked polymeric anti-tuberculosis drug delivery system, J. Pharm. Sci. 97 (2008)
+2176–2207; DOI: 10.1002/jps.21159.
+3. P. S. Damus, M. Hicks and R. D. Rosenberg, Anticoagulant action of heparin, Nature 246 (1973)
+355–357; DOI: 10.1038/246355a0.
+4. L. B. Jacques, Heparin: an old drug with a new paradigm, Science 206 (1979) 528–533; DOI: 10.
+1126/science.386509.
+5. M. Meysman and P. Haentjens, Pulmonary embolism: current treatment options, Curr. Treat.
+Options Cardiovas. Med. 7 (2005) 483–490; DOI: 10.1007/s11936-005-0034-y.
+6. N. A. Motlekar and B. B. Youan, The quest for non-invasive delivery of bioactive macromole-
+cules: a focus on heparins, J. Control. Rel. 113 (2006) 91–101; DOI: 10.1016/j.jconrel.2006.04.008.
+7. G. E. P. Box and D. W. Behnken, Some new three level designs for the study of quantitative vari-
+ables, Technometrics 2 (1960) 455–476; DOI: 10.2307/1266454.
+8. A. Lamprecht, N. Ubrich, M. Hombreiro Perez, C. Lehr, M. Hoffman and P. Maincent, Influ-
+ences of process parameters on nanoparticle preparation performed by a double emulsion pres-
+sure homogenization technique, Int. J. Pharm. 196 (2000) 177–182; DOI: 10.1016/S0378-5173(99)
+00422-6.
+9. L. H. Lam, J. E. Silbert and R. D. Rosenberg, The separation of active and inactive forms of hepa-
+rin, Biochem. Biophys. Res. Commun. 69 (1976) 570–577; DOI: 10.1016/0006-291X(76)90558-1.
+10. S. K. Sahoo, J. Panyam, S. Prabha and V. Labhasetwar, Residual polyvinyl alcohol associated
+with poly (D,L-lactide-co-glycolide) nanoparticles affects their physical properties and cellular
+uptake, J. Control. Rel. 82 (2002) 105–114; DOI: 10.1016/S0168-3659(02)00127-X.
+11. Y. Jiao, N. Ubrich, M. Marchand-Arvier, C. Vigneron, M. Hoffman, T. Lecompte and P. Main-
+cent, In vitro and in vivo evaluation of oral heparin-loaded polymeric nanoparticles in rabbits,
+Circulation 105 (2002) 230–235; DOI: 10.1161/hc0202.101988.
+12. W. Abdelwahed, G. Degobert and H. Fessi, A pilot study of freeze drying of poly(epsilon-
+-caprolactone) nanocapsules stabilized by poly(vinyl alcohol): formulation and process optimi-
+zation, Int. J. Pharm. 309 (2006) 178–188; DOI: 10.1016/j.ijpharm.2005.10.003.
+13. M. F. Zambaux, F. Bonneaux, R. Gref, P. Maincent, E. Dellacherie, M. J. Alonso, P. Labrude and
+C. Vigneron, Influence of experimental parameters on the characteristics of poly(lactic acid)
+nanoparticles prepared by a double emulsion method, J. Control. Rel. 50 (1998) 31–40; DOI: 10.
+1016/S0168-3659(97)00106-5.
+14. D. Quintanar-Guerrero, H. Fessi, E. Allemann and R. E. Doelke, Influence of stabilizing agents
+and preparative variables on the formation of poly(D,L-lactic acid) nanoparticles by an emul-
+292
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.
+
+sification-diffusion technique, Int. J. Pharm. 143 (1996) 133–141; DOI: 10.1016/S0378-5173(96)
+04697-2.
+15. Y. Liu, K. Kathan, W. Saad and R. K. Prud’homme, Ostwald ripening of beta-carotene nano-
+particles, Phys. Rev. Lett. 98 (2007) 036102; DOI: 10.1103/PhysRevLett.98.036102.
+S A @ E T A K
+Statisti~ka analiza nanokapsuliranja niskomolekularnog heparina
+VAISHNAVI GANTI, ABEBE ENDALE MENGESHA, JACOB MARSZALEK i BI-BOTTI C. YOUAN
+Box-Behnkenovo dizajniranje (BBD) primijenjeno je za pra}enje utjecaja formulacij-
+skih varijabli na svojstva nano~estica (NP) s heparinom. Za izradu nano~estica kori{ten
+je kopolimer mlije~ne i glikolne kiseline (PLGA) i polimetakrilat-RLPO (E-RLPO). Nano-
+~estice su pripravljene metodom dvostruke evaporacije otapala iz emulzije. Nezavisne
+varijable bile su: X1 – omjer masa polimera (PLGA : E-RLPO) u uljnoj fazi, X2 – koncen-
+tracija polivinil alkohola (PVA) kao stabilizatora emulzije i X3 – volumen vanjske vode-
+ne faze (W2). Zavisne varijable bile su veli~ina ~estica (analizirana pomo}u dinami~kog
+rasapa svjetlosti) i u~inkovitost inkapsuliranja (EE) (pra}ena spektrofotometrijski). Polinom-
+ska jednad`ba dobivena regresijskom analizom reduciranog modela odli~no je odgova-
+rala (p = 0,0002, F = 25,7952 i R2 = 0,96). Optimalna veli~ina nano~estica bila je 134,2 ±
+16,5 nm s formulacijskim varijablama 48,2:61,8, 0,321 (%, m/V) i 263 mL for X1, X2 od-
+nosno X3. Vjerojatno je zbog elektrostatskih interakcija izme|u negativno nabijene ljeko-
+vite tvari i pozitivno nabijenog E-RLPO u~inkovitost inkapsuliranja heparina varirala od
+74,4 ± 6,5 % (najni`a vrijednost) do 92,1 ± 5,3 % (najvi{a vrijednost). Rezultati sugeriraju
+da je BBD vrlo korisno u racionalnom dizajniranju nano~estica s heparinom.
+Klju~ne rije~i: heparin, nano~estica, stupanj inkapsuliranja, Box-Behnkenovo dizajniranje
+Laboratory of Future Nanomedicines and Theoretical Chronopharmaceutics, University of
+Missouri-Kansas City, School of Pharmacy, Division of Pharmaceutical Sciences, Kansas City MO 64108
+University of Missouri-Kansas City, School of Education, Division of Counseling & Education
+Psychology, 615 East 52nd Street, Kansas City, MO 64110
+293
+V. Ganti et al.: Statistical analysis of low molecular mass heparin nanoencapsulation, Acta Pharm. 60 (2010) 281–293.

@@ -1,0 +1,907 @@
+Pharmaceutics, Drug Delivery and Pharmaceutical Technology
+Novel Superparamagnetic Microdevices Based on Magnetized
+PLGA/PLA Microparticles Obtained by Supercritical Fluid Emulsion
+and Coating by Carboxybetaine-Functionalized Chitosan Allowing the
+Tuneable Release of Therapeutics
+Vincenzo Cricchio 1, Mark Best 2, Ernesto Reverchon 1, Nicola Maffulli 3, Gary Phillips 2,
+Matteo Santin 2, *, Giovanna Della Porta 1, 3, *
+1 Supercritical Fluids Lab., Department of Industrial Engineering, University of Salerno, Via Giovanni Paolo II, 84084 Fisciano, SA, Italy
+2 Brighton Studies in Tissue-mimicry and Aided Regeneration (BrightSTAR), Brighton Centre for Regenerative Medicine (BCRM), University of Brighton,
+Huxley Building Lewes Road, Brighton, UK
+3 Translational Medicine Lab., Department of Medicine, Surgery and Dentistry, University of Salerno, Via S. Allende, 84081 Baronissi, SA, Italy
+a r t i c l e i n f o
+Article history:
+Received 1 March 2017
+Revised 26 April 2017
+Accepted 2 May 2017
+Available online 10 May 2017
+Keywords:
+drug delivery systems
+microencapsulation
+PLGA
+super paramagnetic iron oxide
+nanoparticles
+supercritical ﬂuids
+controlled delivery
+a b s t r a c t
+When superparamagnetic nanoparticles (MAG) are loaded within microcarriers of thermosensitive and
+injectable biopolymers, “smart” microdevices are obtained: they respond to an external magnetic ﬁeld
+through the release of any co-encapsulated molecules with a remote on-off control.
+Creating reliable and effective fabrication technologies for the production of these smart nano/
+microdevices remains a challenge. In this work, supercritical emulsion extraction technology is proposed
+for the fabrication of microcapsules with a core of poly-lactic-co-glycolic acid (PLGA) or polylactic acid
+(PLA) covered by carboxybetaine-functionalized chitosan (f-chi) and loaded with MAG (mean size of
+6.5 ± 3.0 nm) and water-soluble ﬂuorescein (Fluo). Fluo is co-encapsulated as a ﬂuorescent marker for
+the release study.
+Microcarriers showed a mean size of 800 ± 60 nm with an encapsulation efﬁciency of up to 90%. The
+inversion of surface charge, after the f-chi coating, suggested the presence of a uniform functionalized
+surface available for further chemical linkage. The external chitosan layer had a thickness of 200 ± 50 nm.
+An excellent MAG dispersion was conﬁrmed within the biopolymer matrix that was shown to be
+responsive to external magnetic ﬁeld; indeed, Fluo was released over 3 or 5 days from PLGA or f-chi-PLGA
+microdevices into phosphate-buffered saline medium at 37C, whereas remote on-off controlled release
+was achieved when an alternating magnetic ﬁeld was applied.
+© 2017 American Pharmacists Association®. Published by Elsevier Inc. All rights reserved.
+Introduction
+Superparamagnetic nanoparticles (MAG) embedded within
+biopolymer microcarriers may offer several therapeutic advantages
+in a number of clinical applications. The biopolymer coating can
+enhance their biocompatibility, prevent leaching, and improve
+dispersability1,2; additionally, in the case of
+thermosensitive
+behavior of the biopolymer chosen for coating, a ﬁxed dose of the
+co-encapsulated molecule can be released by remote control.3,4
+The possibility of treating cancer by induced hyperthermia has
+led to the development of many different devices designed to heat
+malignant cells while sparing surrounding healthy tissue.5,6 The
+frequency and strength of the externally applied magnetic ﬁeld is
+obviously limited by deleterious physiological responses to high-
+frequency magnetic ﬁelds.7,8 However, hyperthermia can be an
+effective local adjuvant therapy for carcinomas and sarcomas; as an
+example, a randomized phase III trial showed that regional
+hyperthermia combined with neoadjuvant chemotherapy for soft-
+tissue sarcomas resulted in better local progression-free survival
+than chemotherapy alone.9 Several reports suggested that hyper-
+thermia for osteosarcoma achieved an effective response, including
+the induction of apoptosis10 and inhibition of tumor proliferation11
+and DNA synthesis12 in vitro. Regional hyperthermia using an
+alternating
+magnetic
+ﬁeld
+(AMF)
+reduced
+the
+pulmonary
+* Correspondence
+to:
+Giovanna
+Della
+Porta
+(Telephone:
+þ39089964104;
+Fax: þ39089964057) and Matteo Santin (Telephone/Fax: þ44 (0)1273 642083).
+E-mail address: gdellaporta@unisa.it (G. Della Porta).
+Contents lists available at ScienceDirect
+Journal of Pharmaceutical Sciences
+journal homepage: www.jpharmsci.org
+http://dx.doi.org/10.1016/j.xphs.2017.05.005
+0022-3549/© 2017 American Pharmacists Association®. Published by Elsevier Inc. All rights reserved.
+Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+
+metastasis of osteosarcoma in an in vivo study.13 Recent studies
+indicated that hyperthermia contributes to the improvement of the
+prognosis of patients with soft-tissue sarcomas; however, few
+reports have evaluated the impact of hyperthermia on tumor cell
+motility, which is an important factor of metastasis.14
+The use of a targetable magnetic device is an appealing treat-
+ment option as it can offer a better way of ensuring that the
+intended target tissue is heated and a localized drug delivery is
+obtained by an on-demand actuation mechanism. The second
+option is obtained using thermosensitive polymers15 or silica,16
+which can serve as coating materials for magnetic nanoparticles
+and trigger the release of a drug in an on-off mode in response to a
+magnetically induced increase in temperature. A large variety of
+magnetic microdevices have been proposed in the literature to
+deliver drugs to speciﬁc target sites. Generally, the magnetic
+component of the particle is coated with a biocompatible polymer
+to shield the magnetic particle from the surrounding environ-
+ment17-19 and can also be functionalized by attaching carboxyl or
+amine
+groups.20
+Magneto
+liposomes21
+and
+porous
+metallic
+nanocapsules22 have also been described.
+In vivo studies using magnetic carriers loaded with doxorubicin
+have already been applied to sarcoma tumors implanted in rat
+tails23 and the initial results were encouraging, showing a total
+remission of the sarcomas compared to no remission in another
+group of rats which were administered with 10 times the drug dose
+but without magnetic targeting. In addition, success in cytotoxic
+drug delivery and tumor remission has been reported by several
+groups using animal models including rats24 and swine.25 More
+recently, an in vitro study reported that magnetic poly-lactide-co-
+glycolide (PLGA) nanocarriers co-encapsulated with doxorubicin
+were easily internalized into murine Lewis lung carcinoma cells
+inducing apoptosis.26 Other authors have described magnetic
+microdevices with functional properties of magnetic resonance
+imaging27 or as magnetic actuation for noninvasive remote-
+controlled drug release28 or as on-demand release of multifunc-
+tional nanocapsules.29
+Due to its signiﬁcant biodegradability and biocompatibility,
+PLGA/PLA has been approved in drug delivery systems for paren-
+teral administration by the FDA and the European Medicine
+Agency. Moreover, the possibility of sustained release and targeted
+nano- and microparticle delivery to speciﬁc organs or cells lends
+these materials to other clinical applications. As a consequence,
+polylactide (PLA) and its glycolide copolymer PLGA have been
+used as a magnetide carrier and different fabrication technologies
+have been described including a single-step coaxial electro-
+hydrodynamic
+atomization
+technique,30
+conventional
+solvent
+evaporation methods,31-38 supercritical technology,39 and chemi-
+cal synthesis.40,41
+An engineered size distribution, coupled with excellent nano-
+particle and drug co-encapsulation efﬁciency, is a very important
+fabrication parameter for the industrial production of microcap-
+sules, ensuring their controlled and reproducible manufacture.
+Reliable and effective fabrication technologies able to satisfy all
+these parameters and assure economically adequate encapsulation
+efﬁciency (higher than 80%) remain a challenge. In fulﬁlling this
+objective, supercritical ﬂuid technologies have been described that
+offer improved control over the morphology and composition of
+micro- and nanoparticles42-44 (or biomaterial porosity).45 Among
+all the supercritical technologies described in the literature for
+micro-
+and
+nanoparticle
+fabrication,
+supercritical
+emulsion
+extraction (SEE) was recently described as the most effective
+method for the fabrication of biopolymer microcapsules, due to the
+fact that it uses supercritical CO2 for the fast extraction of the
+emulsion oily phase (oil-in-water or multiple water-oil-water)
+achieving
+the
+production
+of
+microcapsules
+with
+excellent
+encapsulation efﬁciency. This technology has recently been devel-
+oped with a continuous process operation layout that assures a
+greater uniformity of product.46,47
+However, PLGA/PLA showed low potential to modify the surface
+properties to provide better interaction with biological materials.
+Recently,
+aqueous
+solutions
+of
+zwitterionic
+carboxybetaine
+derivatives have drawn special attention, due to their antifouling
+properties which have been shown to resist a wide variety of
+protein adsorption, bioﬁlm formation, and cell attachment.48
+Carboxybetaine also provides the capability of further biomaterial
+functionalization.49 The overall hydration property of carbox-
+ybetaine is ascribed to its ability to form hydrogen-bonded
+interactions with a range of organic and inorganic acids owing to
+a high electron density on its 2 carboxylic oxygen atoms.
+The aim of this article is to explore the performance of SEE in the
+fabrication of PLA- and PLGA-injectable microcapsules carrying
+MAG loaded with ﬂuorescein (Fluo), a typical ﬂuorescent probe.
+The microdevices were coated with chitosan functionalized with
+carboxybetaine moieties to improve surface biocompatibility of the
+microsystem. Different emulsion compositions were processed by
+SEE to identify the best emulsion stability and formulation to obtain
+the highest encapsulation efﬁciency and an engineered drug
+release with or without the ability to control release remotely using
+an external magnetic ﬁeld.
+Materials and Methods
+Materials
+CO2 (99.9%) was purchased from SON (Naples, Italy). Polyvinyl
+alcohol (molecular weight: 30,000-55,000), polysorbate (Tween
+80), ﬂuorescein sodium salt (Fluo, water solubility 500 g/L), and
+iron oxide nanoparticles (mean size, 6.5 nm ± 3.0 nm; plus oleic
+acid, as stabilizer) were used in water suspension as received from
+Sigma-Aldrich Company (Milan, Italy). PLA (RESOMER® RG 203H;
+molecular weight, 20,000) and PLGA (50:50, RESOMER® RG 504H;
+molecular weight, 38,000-54,000) were obtained from Evonik
+Industries (Essen, Germany). Ethyl acetate (purity, 99.9%) was
+supplied by Carlo Erba Reagents (Milan, Italy).
+Emulsion Preparation and SEE Apparatus
+Different water-oil-water (w1-o-w2) emulsions (ratio 1:19:80 w/w)
+were
+prepared
+to
+load
+MAG
+and
+Fluo
+into
+the
+biopolymer
+capsules, respectively. The oil phase was always prepared by
+dissolving 2 g of PLA or PLGA in 19 g of ethyl acetate. The internal
+water phase (w1) was of 1 mL of water/polyvinyl alcohol solution
+(0.06% w/w) with a ﬁxed amount of MAG (2.5, 5, 10 mg) and Fluo
+(10 mg), respectively; the external water phase (w2) was 80 g of ethyl
+acetate -saturated water solution with Tween 80 (0.6% w/w) in
+water. The primary emulsion (w1-o) was obtained by sonication for
+1 min at 30% of tip sonicator amplitude (mod. S-450D, Branson
+Ultrasonics Corporation, Danbury, CT); the w1-o emulsions were, then,
+immediately mixed into the external water phase by high-speed stir-
+ring (mod. L4RT; Silverson Machines Ltd., Waterside, CheshamBucks,
+UK) for 3 min at 3300 rpm. The emulsion stability was monitored by
+optical microscopy; stable emulsions were loaded into the column
+(height, 1600 mm; internal diameter, 10 mm) packed with stainless
+steel packings (Pro-Pak, 4 mm nominal size, 0.94 voidage) by
+high-pressure pistonpump (mod. 305; Gilson, Villiers-le-Bel, France) at
+the top of the column and contacted with supercritical CO2 pumped by
+asecondhigh-pressurediaphragmpump(mod.MilroyalB;MiltonRoy)
+from the bottom. Before starting the emulsion delivery, the columnwas
+wetted with a ﬁxed amount of the water phase. A separator located
+downstream at the top of the columnwas used to recover the extracted
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2098
+
+solvent. The nanocarrier suspension was continuously collected at the
+bottom of the extraction column using a needle valve and washed with
+pure water by centrifugation prior their lyophilization.
+Droplet and Microsphere Morphology
+Droplets in the emulsion were observed using an optical
+microscope (mod. BX 50; Olympus, Tokyo, Japan) equipped with a
+phase-contrast condenser. Microsphere’s shape and morphology
+were investigated by ﬁeld emission scanning electron microscopy
+(FE-SEM, mod. LEO 1525; Carl Zeiss SMT AG, Oberkochen, Ger-
+many) coupled with energy-dispersive X-ray spectroscopy (INCA
+Energy 350; Oxford Instruments, Abingdon, UK) and by the same
+FE-SEM equipped with a scanning transmission electron micro-
+scope (S-TEM) detector (mod. Zees Ultra Plus; Carl Zees SMT AG,
+Oberkochen, Germany). For FE-SEM observation, samples of pow-
+der were placed on a double-sided adhesive carbon tape previously
+stuck to an aluminum stub and coated with a thin chromium ﬁlm
+(layer thickness, 250 Ǻ) using a sputter coater (mod.108 A; Agar
+Scientiﬁc, Stansted, UK).
+Chitosan Functionalization and Microsphere Coating
+Chitosan was dissolved in acetic acid and diluted 1:1 with meth-
+anol before N-succinylating with 4% (w/v) succinic anhydride in
+acetone solution (SC). This step was followed by the grafting of
+betaine monomers previously activated through reaction with
+10 molar excess N-(3-dimethylaminopropyl)-N-ethylcarbodiimide
+hydrochloride (EDC) and 25 molar excess N-hydroxysuccinimide in
+0.1 M 2-(N-Morpholino)ethanesulfonic acid buffer pH 6.0. SC-B was
+desalted into dH2O using dialysis with 3.5-kDa molecular weight
+cutoff cellulose tubing and syringe ﬁltered at 0.45 mm before lyoph-
+ilizing. The synthesis of both the derivatized chitosan and ﬁnal
+functionalized chitosan (f-chi) was assessed by Fourier transform-
+infrared spectroscopy (FT-IR). Functionalization was assessed on
+chitosan samplesinpowdered form using thePerkin Elmer Spectrum
+65 with a universal ATR sampling accessory. A total of 8 scans were
+obtained between 650 cm1 and 4000 cm1 (at 4 cm1) per sample.
+To obtain f-chi-coated microdevices (f-chi-PLGA), the microcap-
+sules, as recovered after the SEE process (at pH 3.9 due to the
+presence of CO2, still dissolved in water), were centrifuged and
+Figure 1. FE-SEM images of PLGA and PLA microcarriers loaded with different MAG amounts. The microcarriers consistently showed spherical morphologies and mean sizes
+between 995 and 983 nm for PLGA and 837 and 853 nm for PLA. FE-SEM images of the empty devices are also reported for the purpose of comparison.
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2099
+
+resuspended in 50 M acetic acid buffer to reach a chitosan solution
+of 0.4 mg/mL and incubated for 1 h at room temperature. After in-
+cubation, the uncoated chitosan was removed by an ultracentrifu-
+gation and washing step in phosphate buffer at pH 7, repeated twice.
+Microcapsule Size Distributions and Suspension Zeta Potential
+Particle size distributions (PSDs) were measured using a
+Mastersizer S apparatus (mod. Mastersizer S; Malvern Instruments
+Ltd., Worcestershire, UK), based on dynamic light scattering.
+Analyses were performed immediately after the preparation of the
+emulsions and of the microsphere suspensions, using several mil-
+ligrams of each sample, appropriately diluted with distilled water.
+A Zetasizer (mod. NanoZS; Malvern Inc., Worcestershire, UK)
+equipped with a 5.0 mW He-Ne laser operating at 633 nm was used
+for zeta potential measurements. Samples were analyzed in glass
+cuvettes at 25C and scattering angle of 173; all the results are
+based on an average of 3 measurements, which was calculated on
+an average of 10 runs. Zeta potential value expressed in mV
+indicates the potential difference between the dispersion medium
+and the stationary layer of ﬂuid attached on the dispersed particle
+and is a key indicator of the dispersion stability.
+The electrical characteristics of free MAG and PLA/PLGA micro-
+carriers were analyzed by electrophoresis measurements as a
+function of pH using the Malvern Zetasizer. In this assay, different
+solutions of NaCl (0.001M) in NaOH or HCl at pH values ranging
+from 3 to 11 were prepared using a pH meter (Mettler Toledo,
+Bethune, France). Zeta potential of diluted suspensions was tested
+to determine the pH effect on the MAG-loaded microapsules.50
+Solid State Characterization
+MAG encapsulation efﬁciency was measured by thermogravi-
+metric analysis (TGA), as the residue remaining after total
+combustion of the polymeric component of the particles. And 4 mg
+of each sample was placed in alumina crucibles and heated up to
+600C at a rate of 10C/min, under a constant air ﬂow of 50 N cm3/
+min. The infrared spectra were recorded with a Unicam Mattson
+5000 FT-IR Spectrometer at room temperature. The spectra were
+taken in KBr discs in the range of 3500-400 cm1.
+Drug Loading and In Vitro Release Study
+Fluo was measured ﬂuorimetrically (lex 460 nm; lem 515 nm)
+using a spectroﬂuorimeter (mod. Inﬁnite™200 series; InsTecan
+Group Ltd., M€annedorf, Switzerland). Encapsulation efﬁciency of
+Fluo was measured by dispersing an accurately weighed amount
+(approximately 20 mg) of microcarriers in 1 mL of acetone and then
+diluted with 20 mL of distilled water. Encapsulation efﬁciency
+percentage (EE%) was expressed as Fluo amount detected/Fluo
+amount loaded  100.
+In vitro release data were obtained by suspending 20 mg of
+microcarriers in 3 mL of physiological solution at room tempera-
+ture and stirred continuously. Every 24 h the samples were
+centrifuged at 2 g for 15 min and the supernatant was completely
+removed and replaced with fresh media to maintain sink condi-
+tions. Released Fluo concentrations from collected samples were
+then assayed ﬂuorimetrically. Release experiments were per-
+formed in triplicate and curves are the mean proﬁle obtained;
+error bars are also reported to better describe the data. Triggered
+release was monitored by weighting 20 mg of microdevices,
+dispersing them into 4 mL of physiological solution within a petri
+dish on top of the solenoid and subjected to an AMF of strength
+2.98 kA/m and frequency 297 kHz. The rise in surface temperature
+of nanocomposites was recorded by IR camera. The AMF was
+continued for 5 min and the released Fluo concentrations were
+assayed ﬂuorimetrically. The experiment was repeated every hour
+and the Fluo released after the magnetic ﬁeld exposure was then
+Figure 2. Emission differential X-ray scanning electron microscope image of PLGA microcarriers loaded with MAG at concentrations of 2.5 mg/g; single-element maps related to
+iron (red), oxygen (light blue), and carbonium (green) are also shown. MAG nanoparticles showed uniform dispersion within the biopolymer devices (see red signals on SEM image)
+coupled with good encapsulation efﬁciency, as indicated from the iron concentration percentage calculated by the instrument.
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2100
+
+monitored by centrifuging at 2 g for 15 min, sampling the super-
+natant, and replacing with fresh media.
+Results and Discussion
+Microcarrier Fabrication: Operative SEE Conditions
+Microcarriers were produced by processing different emulsion
+formulations by SEE at operative pressure and temperature
+conditions of 9 MPa and 38C, respectively, with a countercurrent
+SC-CO2 ﬂow rate of 1.4 kg/h and a liquid/gas ratio of 0.1 on mass
+based.46 The operative conditions used were selected in order to
+achieve a fast and complete extraction of ethyl acetate, the oily
+phase of the emulsion. Indeed, using these pressure and temper-
+ature conditions, a complete miscibility between CO2 and ethyl
+acetate is obtained, whereas no miscibility with the water external
+phase is possible. Moreover, under these conditions, CO2 has a
+density of about 0.3 gcm3 and a good density difference is
+assured between the gas and the liquid moving in a countercur-
+rent fashion within the packed column; these operative conditions
+assured a fast, effective, and complete ethyl acetate extraction
+after only 5 min of residence time in the apparatus. The SEE layout
+also allows the continuous recovery of the microdevices, so they
+have no chance of aggregating or reorganizing their structure. The
+Figure 3. TGA and FT-IR traces of PLGA/MAG and PLA/MAG and f-chi-coated capsules. The thermal behavior was used to calculate the iron oxide loading after samples were heated
+to 750C for the different formulations. Encapsulation efﬁciency was 99% for all PLGA and 90% for PLA samples. FT-IR traces of different formulations consistently revealed the
+characteristic absorption peak for Fe3O4 at 580 cm1 and those for polyesters at about 1750 cm1 (carbonyl groups), 1080 cm1 (C-O-C stretching bands), and 1450 cm1 (C-H
+stretching in methyl groups). The f-chi covering provided carboxybetaine moieties on the material with a slight increase in methyl peak at 2937 cm1.
+Table 1
+List of Microcapsules Produced by SEE, Mean Size (MS) and Standard Deviation (±), Drug Encapsulation Efﬁciency Expressed as Percentage (EE%), Drug Real Loadings Expressed
+as mg/g (g Is Referred to the Amount of Biopolymer Contained in the Product), and Z-potential (Zp) Values Measured at pH 5.5
+Microcapsule Composition
+MS (nm)
+Mag (EE%)
+Mag (mg/g)
+Fluo (EE%)
+Fluo (mg/g)
+Zp pH 5.5 (mV)
+PLGA/MAG
+880 (±104)
+99
+1.2
+e
+e
+3.01
+PLGA/MAG
+995 (±126)
+99
+2.5
+e
+e
+5.6
+PLGA/MAG
+971 (±118)
+99
+5
+e
+e
+4.2
+PLGA/MAG/Fluo
+983 (±148)
+99
+5
+78
+7.8
+5.5
+PLA/MAG
+837 (±119)
+90
+1
+e
+e
+4.1
+PLA/MAG
+828 (±124)
+90
+2
+e
+e
+2.1
+PLA/MAG
+853 (±108)
+90
+4
+e
+e
+2.6
+f-chi-PLGA/MAG
+1103 (±110)
+99
+5
+e
+31.7
+f-chi-PLGA/MAG/Fluo
+1114 (±130)
+99
+5
+80
+8.0
+34.5
+f-chi-PLA/MAG
+1098 (±118)
+99
+5
+e
+e
+27.7
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2101
+
+operative pressure, temperature, and ﬂow rate ratio conditions
+described in this work are different from those described by Furlan
+et al.39 where the authors reported the production of magnetic
+nanocomposites in a PLGA matrix via supercritical ﬂuid extraction
+of emulsion. In addition, they used a different process layout that
+works in a semicontinuous arrangement that involves 2 streams
+mixed by spraying them with 2 nozzles at the inlet of the reactor.
+In this conﬁguration, the particles remain suspended in the water
+phase throughout the whole process and they are recovered only
+after reactor depressurization; therefore, some rearrangements
+and aggregation of the particles are possible.
+Microcarrier Sizes and Loadings
+Figure 1 shows the SEM micrographs of PLGA and PLA micro-
+carriers; they are spherical, with mean sizes ranging between 800
+and 900 nm and a standard deviation not higher than 10% of the
+mean value; their mean sizes did not show any inﬂuence with
+Figure 4. Zeta potential values of PLGA and PLA microcarrier suspension loaded with MAG at different pH; pure F3O3 nanoparticle suspensions, empty and f-chi-coated carrier
+suspensions are also reported for comparison.
+Figure 5. FE-SEM images of PLGA and PLA carriers loaded with MAG and coated with f-chi; the coated carrier preserved the spherical shape (upper side). Histograms representing
+the PSD of coated and uncoated PLGA and PLA microcapsules also loaded with MAG (5 mg/g for PLGA; 4 mg/g for PLA): the coated particles showed a mean size increase of 0.2 mm
+(lower left side). TEM image of the PLGA microcarrier, with the evidence of MAG loaded within (white spots) and the f-chi coating that generate slightly irregular surface (lower
+right side).
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2102
+
+respect to different MAG loadings. Emission differential X-ray
+scanning electron microscope analyses suggested a good iron
+dispersion within the biopolymer matrix, as illustrated in Figure 2,
+where the red map in the micrograph indicates iron atomic X-ray
+emission (the data reported refer to PLGA/MAG loaded at 2.5 mg/g).
+Good encapsulation efﬁciency was also suggested from the iron
+percentage calculated by the X-ray emissions. In Figure 3, TGA
+traces are reported to describe the thermal behavior of 3 different
+carrier formulations from which was calculated the iron oxide
+amount after samples were heated to 750C. Encapsulation efﬁ-
+ciency was 99% for all PLGA samples and 90% for PLA devices. Mean
+sizes and standard deviation of all the prepared devices with
+different MAG loading are listed in Table 1, together with the
+nominal MAG loading and the measured values.
+The MAG loaded within the polymer matrix was also clearly
+detected by FT-IR. Indeed, as illustrated in Figure 3, the FT-IR spectra
+of the different formulations fabricated showed the characteristic
+absorption peak for Fe3O4 at 580 cm1 in agreement with other
+works,51 and those of the polyesters that are evident at about 1750
+cm1 (carbonyl groups), 1080 cm1 (C-O-C stretching bands) and
+1450 cm1 (C-H stretching in methyl groups). The IR traces therefore
+conﬁrmed a good dispersion and encapsulation of magnetite within
+the matrix of the PLGA and PLA devices fabricated by SEE. All the
+emulsionformulationstestedhere providedimprovedencapsulation
+efﬁciency when compared with those reported in the literature.31,39
+The
+excellent
+encapsulation
+efﬁciency
+obtainable
+by
+SEE
+processing is due to the short residence time of the emulsion/
+suspension in the high-pressure packed column that caused fast
+polymer hardening. However, when the amount of magnetite
+loaded was more than 5 mg/g, evident nanoparticle agglomerates
+on the microcarrier surface were observed by SEM, suggesting
+ineffective entrapment; as a consequence, only microdevices with a
+MAG loading below 5 mg/g will be further discussed. This result
+seemed somewhat in contrast with that reported by Liu et al.32 that
+described biopolymer microcarriers with a magnetite content of
+40%-60%; however, distorted surface morphology was always
+reported by the authors. In our case, to assure a triggered release,
+MAG loading between 0.5% and 1% was selected, also to avoid the
+stronger thermal side effect that higher MAG loading may have.
+Carrier Surface Stability
+Surface charge is one of the most important parameters
+governing tissue uptake of particles. Zeta potential is a useful
+indicator of surface charge, and it can be employed as an index
+reﬂecting the stability of the microdevices obtained. Moreover, it
+has been mentioned that the surface properties of magnetite are
+extremely sensitive to pH ﬂuctuations. However, such properties
+should not be found when magnetite crystals are well encapsulated
+in the interior of PLA or PLGA nanoparticles. Thus, we investigated
+the inﬂuence of pH on the zeta potential in water suspension for all
+of the SEE-produced microcarriers. Synthesized magnetite crystals
+show an obvious isoelectric point in the vicinity of pH 6.7 accom-
+panied by a negative potential in alkaline pH medium and a positive
+one in acidic pH medium.50 These data were conﬁrmed and
+demonstrated in Figure 4 (see black square dots). However, surface
+charges of the magnetic microcarriers (for all the formulas tested
+with PLA and PLGA) were not inﬂuenced by the pH values as also
+illustrated in Figure 4, where the zeta potential of particles was
+found to be less positive (negative) than that of magnetite at acid
+(basic) pH values. This leads to the conﬁrmation that magnetite is
+very well encapsulated within the microdevices.
+f-Chi Coating
+FT-IR spectra of functionalized chitosan showed a reduction in
+the peaks attributed to the primary amine groups (peak 1564 cm1)
+of the chitosan following the chemical grafting of the betaine
+molecules. Further evidence to support the successful grafting of
+these carboxybetaine moieties on the material was provided by the
+increased methyl peak formation at 2937 cm1 (consistent in the
+betaine-only spectra) and in the aliphatic amine region of peaks
+between 1020 cm1 and 1220 cm1 (see also Fig. 3).
+f-Chi was used to coat MAG-loaded PLA and PLGA microcarriers
+at concentrations of 0.4 mg/mL, and the resulting zeta potentials of
+these coated microspheres were also compared to those of the
+uncoated samples. Indeed, the uncoated PLA and PLGA nano-
+particles showed a negative zeta potential at pH 4.75 of 8.1 ± 1.2
+mV; when they were covered with f-chi, the zeta potential value
+increased up to 26 ± 1.2 mV at pH of 5.5 for both samples (see red
+and blue rhombus in Fig. 4). This inversion of zeta potential toward
+positive values demonstrated the successful coating of the beads
+whereby
+f-chi-exposing
+carboxybetaine
+and
+remaining
+nonfunctionalized amino groups of chitosan contribute to the
+change in surface charge. In both cases, the adsorption of chitosan
+occurred spontaneously, with no aggregation of the colloids.
+In Figure 5, an FE-SEM image and a TEM image of PLGA carriers
+loaded
+with
+MAG
+at
+5
+mg/g
+and
+coated
+with
+f-chi
+are
+Figure 6. Release proﬁles from PLGA and f-chi-PLGA microspheres loaded with ﬂuorescein in phosphate-buffered saline medium at 37C (left side); triggered release from PLGA/
+MAG, f-chi-PLGA/MAG and PLA/MAG microcapsules all loaded with the same amount of ﬂuorescein (8 mg/g) and with the same content of MAG (4 mg/g) in phosphate-buffered
+saline medium at 37C by AMF (right side).
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2103
+
+illustrated; the coating did not alter the spherical shape of the
+structure, but generated slightly irregular carrier surfaces. FE-SEM
+images of PLA-coated microdevices loaded with MAG at 5 mg/g
+are also illustrated in Figure 5. The covered microcapsules also
+showed an increase in mean size from 921 nm to 1100 nm in the
+case of PLGA and from 839 nm to 1098 nm in the case of PLA
+microdevices, as represented by the histograms reported in
+Figure 5, where the PSDs of the coated and uncoated devices are
+compared, for both PLGA and PLA formulations. No increase in the
+size distribution was monitored. From the mean size increases, the
+chitosan layer was calculated to range between 100 and 125 nm.
+The f-chi coating improved MAG encapsulation efﬁciency that was
+measured at 99% for both PLGA and PLA devices. It can be specu-
+lated that the chitosan coating (performed just after SEE process-
+ing) prevents a washing off for the MAG nanoparticles (9%-10% of
+the loading) present on the microcarrier surface by facilitating their
+stronger adhesion to the microcarrier surface. The improved drug
+loading efﬁciency can also be ascribed to the ability of carbox-
+ybetaine to entrap solutes by their highly hydrated molecular
+structure via hydrogen bonding.52
+Sustained Release
+The cumulative amount of Fluo released (%) versus time (days)
+from uncoated and f-chi-coated PLGA microspheres is illustrated in
+Figure 6. Experimental points over the complete assay time are
+presented in the scatter plot with the standard deviation (3 repli-
+cates were performed). Almost 60% of loaded Fluo was released in
+the ﬁrst day; this “burst” effect is typical for small and highly water-
+soluble molecules loaded in less than 1-micron devices. From day 2,
+Fluo showed a sustained release, with an amount of 8% of the load
+released each day for the following 5 days. The f-chi coating
+reduced to one-half the Fluo burst release and further delayed the
+overall release of the Fluo. Indeed, only 34% of the loaded molecule
+was released in the ﬁrst day, followed by a slower release of 5.5%/
+day of the loaded amount. From the coated microdevice, two-thirds
+of the Fluo load was released per day when compared to the un-
+coated devices and, therefore, the total release time was increased
+to 10 days. The reduction in the burst release and the slower overall
+Fluo release observed for the f-chi-coated devices can again be
+speculated to be further controlled by carboxybetaine and its ability
+to entrap solutes within their highly hydrated molecular structure.
+Triggered Release by AMF
+Magnetite nanoparticles with a size generally less than 30 nm
+exhibit super paramagnetism.53 Thus, the encapsulated magnetite
+was expected to have superparamagnetic properties and the pro-
+duced microspheres were exposed to an AMF to demonstrate
+remote control release. In detail, microdevices with different
+compositions, PLGA, f-chi-PLGA, and PLA all loaded with 8 mg/g of
+Fluo and 4 mg/g of MAG, were exposed to an AMF and the amount
+of Fluo released is plotted in Figure 6, against time; the AMF input is
+also shown. All microcarriers performed an on-off release of the
+loaded Fluo. MAG/PLGA microdevices showed a triggered release
+with 40%, 30%, and 20% of the encapsulated Fluo released during
+the ﬁrst 3 spots, whereas a lower amount of Fluo was released in
+each of the ﬁrst 3 spots from the coated f-chi-PLGA (36%, 28%, and
+10%, respectively), suggesting that the f-chi coating reduced the
+dose emitted in each spot. The PLA nanocarrier released an amount
+between 25% and 18% of the loaded Fluo in the ﬁrst 3 spots, and
+then 10% of the loaded molecules for the subsequent 3 spots. The
+results indicated that a good remote control release was obtainable
+from the described microdevices and the possibility of engineering
+the amount delivered in each spot varied according to the micro-
+carrier formulation.
+Conclusions and Perspectives
+The advantage of the proposed approach is the combination of
+the emulsiﬁcation method with the use of the supercritical ﬂuid
+technology that offers a robust and fast way to fabricate engineered
+microcarriers, with excellent encapsulation efﬁciency and good
+magnetic nanoparticle dispersion within the biopolymer matrix.
+The
+approach
+also
+proposed
+an
+effective
+carboxybetaine-
+functionalized chitosan coating of the microcarriers that opens
+new routes of investigation for a controlled release of drugs
+combined with enhanced biocompatibility properties.
+However, the behaviors of the microsystems proposed were
+described in vitro by using a simulated physiological medium with
+microspheres always well dispersed. As we move to an in vivo
+biological environment, speciﬁc surfactants and additives have to
+be considered for the injectable formulation in order to assure the
+good dispersion of the locally hosted microsystems and to prevent
+large particle aggregation that may eventually occur.54,55 Therefore,
+further studies will involve an in vivo testing of the formulation
+proposed on animal models with a speciﬁc follow-up that will also
+include the postmortem microscopy as a primary technique for
+qualitatively assessing the state of dispersion of the microsystem
+proposed.
+References
+1. Pankhurst QA, Connolly J, Jones SK, Dobson J. Applications of magnetic nano-
+particles in biomedicine. J Phys D Appl Phys. 2003;36:167-181.
+2. Tartaj P, Morales M, Veintemillas-Verdaguer S, Gonzalez-Carreno T, Serna CJ.
+The preparation of magnetic nanoparticles for applications in biomedicine.
+J Phys D Appl Phys. 2003;36:182-197.
+3. Dobson J. Remote control of cellular behaviour with magnetic nanoparticles.
+Nat Nanotechnology. 2008;3:139-143.
+4. Mura S, Nicolas J, Couvreur P. Stimuli-responsive nanocarriers for drug
+delivery. Nat Mater. 2013;12:991-1003.
+5. Van der Zee J. Heating the patient: a promising approach? Ann Oncol. 2002;13:
+1173-1184.
+6. Wust P, Hildebrandt B, Sreenivasa G, et al. Hyperthermia in combined treat-
+ment of cancer. Lancet Oncol. 2002;3:487-497.
+7. Jordan A, Scholz R, Maier-Hau K, et al. Presentation of a new magnetic ﬁeld
+therapy system for the treatment of human solid tumors with magnetic ﬂuid
+hyperthermia. J Magnetism Magn Mater. 2001;225:118-126.
+8. Granov AM, Muratov OV, Frolov VF. Problems in the local hyperthermia of
+inductively heated embolized tissues. Theor Foundations Chem Eng. 2002;36:
+63-66.
+9. Issels RD, Lindner LH, Verweij J, et al. Neo-adjuvant chemotherapy alone or
+with regional hyperthermia for localised high-risk soft-tissue sarcoma: a
+randomised phase 3 multicentre study. Lancet Oncol. 2010;11:561-570.
+10. Alcaide M, Ramírez-Santillan C, Feito MJ, et al. In vitro evaluation of glass-glass
+ceramic thermoseed-induced hyperthermia on human osteosarcoma cell line.
+J Biomed Mater Res A. 2012;100A:64-71.
+11. Trieb K, Blahovec H, Kubista B. Effects of hyperthermia on heat shock protein
+expression, alkaline phosphatase activity and proliferation in human osteo-
+sarcoma cells. Cell Biochem Funct. 2007;25:669-672.
+12. Shui C, Scutt A. Mild heat shock induces proliferation, alkaline phosphatase
+activity, and mineralization in human bone marrow stromal cells and Mg-63
+cells in vitro. J Bone Miner Res. 2001;16:731-741.
+13. Shido Y, Nishida Y, Suzuki Y, Kobayashi T, Ishiguro N. Targeted hyperthermia
+using magnetite cationic liposomes and an alternating magnetic ﬁeld in a
+mouse osteosarcoma model. J Bone Joint Surg Br. 2010;92:580-585.
+14. Nakajima K, Yanagawa T, Watanabe H, Takagishi K. Hyperthermia reduces
+migration of osteosarcoma by suppression of autocrine motility factor. Oncol
+Rep. 2012;28(6):1953-1958.
+15. Hua MY, Liub HL, Yanga HW, et al. The effectiveness of a magnetic
+nanoparticle-based delivery system for BCNU in the treatment of gliomas.
+Biomaterials. 2011;32:516-527.
+16. Zhang L, Wang T, Yang L, et al. General route to multifunctional uniform yolk/
+mesoporous silica shell nanocapsules: a platform for simultaneous cancer-
+targeted
+imaging
+and
+magnetically
+guided
+drug
+delivery.
+Chem
+Eur
+J.
+2012;18:12512-12521.
+17. Hamoudeh M, Fessi H. Preparation, characterization and surface study of poly-
+epsilon
+caprolactone
+magnetic
+microparticles.
+J
+Colloid
+Interface
+Sci.
+2006;300(2):584-590.
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2104
+
+18. Hoare T, Santamaria J, Goya GF, et al. A magnetically triggered composite
+membrane for on-demand drug delivery. Nanoletters. 2009;9(10):3651-3657.
+19. Chomoucka J, Drbohlavova J, Huska D, Adam V, Kizek R, Hubalek J. Magnetic
+nanoparticles and targeted drug delivering. Pharm Res. 2010;62:144-149.
+20. Misak HE, Asmatulu R, Gopu JS, et al. Albumin based nanocomposite sphere for
+advanced drug delivery system. Biotechnol J. 2014;9:163-170.
+21. Plassat
+V,
+Wilhelm
+C,
+Marsaud
+V,
+et
+al.
+Anti-estrogen-loaded
+super-
+paramagnetic liposomes for intracellular magnetic targeting and treatment of
+breast cancer tumors. Adv Funct Mater. 2011;21:83-92.
+22. Zhang F, Braun GB, Pallaoro A, et al. Mesoporous multifunctional upconversion
+luminescent and magnetic “nanorattle” materials for targeted chemotherapy.
+Nano Lett. 2011;12:61-67.
+23. Widder KJ, Morris RM, Poore GA, Howard DP, Senyei AE. Selective targeting of
+magnetic
+albumin
+microspheres
+containing
+low-dose
+doxorubicin-total
+remission in Yoshida sarcoma-bearing rats. Eur J Cancer Clin Oncol. 1983;19:
+135-139.
+24. Pulfer SK, Ciccotto SL, Gallo JM. Distribution of small magnetic particles in brain
+tumor-bearing rats. J Neuro-oncol. 1999;41:99-105.
+25. Goodwin SC, Bittner CA, Peterson CL, Wong G. Single-dose toxicity study of
+hepatic intra-arterial infusion of doxorubicin coupled to a novel magnetically
+targeted drug carrier. Toxicol Sci. 2001;60:177-183.
+26. Jia Y, Yuan M, Yuan H, et al. Co-encapsulation of magnetic Fe3O4 nanoparticles
+and doxorubicin into biodegradable PLGA nanocarriers for intratumoral drug
+delivery. Int J Nanomedicine. 2012;7:1697-1708.
+27. Jain TK, Richey J, Strand M, et al. Magnetic nanoparticles with dual functional
+properties: drug delivery and magnetic resonance imaging. Biomaterials.
+2008;29:4012-4021.
+28. Thomas CR, Ferris DP, Lee JH, et al. Noninvasive remote-controlled release of
+drug molecules in vitro using magnetic actuation of mechanized nanoparticles.
+J Am Chem Soc. 2010;132:10623-10625.
+29. Hu SH, Chen SY, Gao X. Multifunctional nanocapsules for simultaneous
+encapsulation of hydrophilic and hydrophobic compounds and on-demand
+release. ACS Nano. 2012;6:2558-2565.
+30. Gun S, Edirisinghe M, Stride E. Encapsulation of superparamagnetic iron oxide
+nanoparticles in poly-(lactide-co-glycolic acid) microspheres for biomedical
+applications. Mater Sci Eng C. 2013;33:3129-3137.
+31. Astete CE, Kumar CSSR, Sabliova CM. Size control of poly(d,l-lactide-co-
+glycolide) and poly(d,l-lactide-co-glycolide)-magnetite nanoparticles synthe-
+sized by emulsion evaporation technique. Colloids Surf A: Physicochem Eng
+Aspects. 2007;299:209-216.
+32. Liu X, Kaminski MD, Chen H, Torno M, Taylor LT, Rosengart AJ. Synthesis and
+characterization
+of
+highly-magnetic
+biodegradable
+poly(D,L-lactide-co-
+glycolide) nanospheres. J Control Release. 2007;119:52-58.
+33. Koneracka M, Muckova M, Zavisova V, et al. Encapsulation of anticancer drug
+and magnetic particles in biodegradable polymer nanospheres. J Phys Condens
+Matter. 2008;20:204151-204156.
+34. Koppolu BP, Rahimi M, Nattama SP, Wadajkar A, Nguyen K. Development of
+multiple-layer polymeric particles for targeted and controlled drug delivery.
+Nanomedicine. 2010;6:355-361.
+35. Zhao H, Saatchi K, Hafeli UO. Preparation of biodegradable magnetic micro-
+spheres with poly(lactic acid)-coated magnetite. J Magnetism Magn Mater.
+2009;321:1356-1363.
+36. Kini S, Bahadur D, Panda D. Magnetic PLGA nanospheres: a dual therapy for
+cancer. IEEE Trans Magn. 2011;47(10):2882-2886.
+37. Shubhra QTH, Feczko T, Kardos AF, et al. Co-encapsulation of human serum
+albumin and superparamagnetic iron oxide in PLGA nanoparticles: Part II.
+Effect of process variables on protein model drug encapsulation efﬁciency.
+J Microencapsul. 2014;31(2):156-165.
+38. Perez A, Mijangos C, Hernandez R. Preparation of hybrid Fe3O4/poly(lactic-co-
+glycolic acid) (PLGA) particles by emulsion and evaporation method. Optimi-
+zation of the experimental parameters. Macromol Symp. 2014;335:62-69.
+39. Furlan M, Kluge J, Mazzotti M, Lattuada M. Preparation of biocompatible
+magnetiteePLGA composite nanoparticles using supercritical ﬂuid extraction
+of emulsions. J Supercrit Fluids. 2010;54:348-356.
+40. Cai K, Luo Z, Hu Y, et al. Magnetically triggered reversible controlled drug
+delivery from microfabricated polymeric multireservoir devices. Adv Mater.
+2009;21:4045-4049.
+41. Tudorachi N, Chiriac AP, Mustata F. New nanocomposite based on poly(lactic-
+co-glycolic acid) copolymer and magnetite. Synth Characterization Composites:
+B. 2015;72:150-159.
+42. Campardelli R, Oleandro E, Adami R, Reverchon E. Polymethylmethacrylate
+(PMMA) sub-microparticles produced by supercritical assisted injection in a
+liquid antisolvent. J Supercrit Fluids. 2014;92:93-99.
+43. Espirito Santo I, Campardelli R, Albuquerque EC, de Melo SV, Reverchon E, Della
+Porta G. Liposomes size engineering by combination of ethanol injection and
+supercritical processing. J Pharm Sci. 2015;104(11):3842-3850.
+44. Della Porta G, Falco N, Reverchon E. NSAID drugs release from injectable mi-
+crospheres produced by supercritical ﬂuid emulsion extraction. J Pharm Sci.
+2010;99:1484-1499.
+45. Baldino L, Cardea S, De Marco I, Reverchon E. Chitosan scaffolds formation by a
+supercritical freeze extraction process. J Supercrit Fluids. 2014;90:27-34.
+46. Falco N, Reverchon E, Della Porta G. Injectable PLGA/hydrocortisone formula-
+tion produced by continuous supercritical emulsion extraction. Int J Pharm.
+2013;441:589-597.
+47. Della Porta G, Campardelli R, Cricchio V, Oliva F, Maffulli N, Reverchon E.
+Injectable PLGA/hydroxyapatite/chitosan microcapsules produced by super-
+critical emulsion extraction technology: an in vitro study on teriparatide/
+gentamicin controlled release. J Pharm Sci. 2016;105:2164-2172.
+48. Cao B, Tang Q, Cheng G. Recent advances of zwitterionic carboxybetaine
+materials and their derivatives. J Biomater Sci Polym Ed. 2014;25(14-15):
+1502-1513.
+49. Godzisz D, Ilczyszyn MM, Ilczyszyn M. Classiﬁcation and nature of hydrogen
+bonds to betaine. X-ray, 13C CP MAS and IR description of low barrier
+hydrogen bonds. J Mol Struct. 2002;606(1-3):123-137.
+50. Hamoudeh M, Al Faraj A, Canet-Soulas E, Bessueille F, Leonard D, Fessi H.
+Elaboration of PLLA-based superparamagnetic nanoparticles: characterization,
+magnetic behaviour study and in vitro relaxivity evaluation. Int J Pharm.
+2007;338:248-257.
+51. Wei Lai C, Wang YH, Lai CH, et al. Iridium-complex-functionalized Fe3O4/SiO2
+core/shell nanoparticles: a facile three-in-one system in magnetic resonance
+imaging, luminescence imaging, and photodynamic therapy. Small. 2008;4(2):
+218-224.
+52. Meikle ST, Pi~neiro Y, Ba~nobre Lopez M, Rivas J, Santin M. Surface function-
+alization superparamagnetic
+nanoparticles
+conjugated with thermores-
+ponsive poly(epsilon-lysine) dendrons tethered with carboxybetaine for
+the mild hyperthermia-controlled delivery of VEGF. Acta Biomater. 2016;40:
+235-242.
+53. Gupta AK, Gupta M. Synthesis and surface engineering of iron oxide nano-
+particles for biomedical applications. Biomaterials. 2005;26(18):3995-4021.
+54. Powers KW, Brown SC, Krishna VB, Wasdo SC, Moudgil BM, Roberts SM.
+Research strategies for safety evaluation of nanomaterials. Part VI. Character-
+ization
+of
+nanoscale
+particles
+for
+toxicological
+evaluation.
+Toxicol
+Sci.
+2006;90(2):296-303.
+55. Savolainena K, Aleniusa H, Norppaa H, Pylkk€anena L, Tuomia T, Kasperb G. Risk
+assessment of engineered nanomaterials and nanotechnologies. A review.
+Toxicology. 2010;269:92-104.
+V. Cricchio et al. / Journal of Pharmaceutical Sciences 106 (2017) 2097-2105
+2105

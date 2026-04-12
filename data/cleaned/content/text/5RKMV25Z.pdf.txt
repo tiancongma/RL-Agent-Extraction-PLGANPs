@@ -1,0 +1,999 @@
+Contents lists available at ScienceDirect
+Journal of Inorganic Biochemistry
+journal homepage: www.elsevier.com/locate/jinorgbio
+Engineering and biological assessment of double core nanoplatform for co-
+delivery of hybrid fluorophores to human melanoma
+Urszula Bazylińskaa,⁎, Dominika Wawrzyńczykb, Anna Szewczykc,d, Julita Kulbackac
+a Department of Physical and Quantum Chemistry, Faculty of Chemistry, Wroclaw University of Science and Technology, Wroclaw, Poland
+b Advanced Materials Engineering and Modelling Group, Faculty of Chemistry, Wroclaw University of Science and Technology, Wroclaw, Poland
+c Department of Molecular and Cellular Biology, Faculty of Pharmacy, Wroclaw Medical University, Wroclaw, Poland
+d Department of General Zoology, Zoological Institute, University of Wroclaw, Wroclaw, Poland
+A R T I C L E I N F O
+Keywords:
+Up-converting nanocrystals
+Rose Bengal
+Double emulsion process
+Photodynamic therapy
+Human melanoma
+Immunofluorescence
+A B S T R A C T
+We investigated new development in photodynamic therapy (PDT), aiming at enhanced tumor selectivity and
+biocompatibility, which included application of a third-generation photosensitizing agent, i.e. xanthene-origin
+Rose Bengal (RB) co-encapsulated with up-converting NaYF4 nanoparticles (NPs) co-doped with lanthanide ions:
+Er3+ (2%) and Yb3+ (20%). The hybrid fluorophores were applied as components of double core nanocarriers
+(NCs)
+obtained
+by
+double
+(multiple)
+emulsion
+solvent
+evaporation
+process.
+Next,
+to
+improve
+the
+biocompatibility and photodynamic activity, biodegradable polymer: poly(lactide-co-glycolide) – PLGA and
+non-ionic surfactants with different hydrophobicity: Span 80 and Cremophor A25, were used. After the
+engineering process, controlled by dynamic light scattering (DLS) measurements, ζ-potential evaluation,
+transmission electron and atomic force microscopy (TEM and AFM) imaging, as well as optical analysis provided
+by measurements of the up-conversion emission spectra and luminescence kinetics for encapsulated only
+NaYF4:Er3+,Yb3+ NPs and co-encapsulated RB + NaYF4:Er3+,Yb3+ molecules, spherical polyester NCs with
+average size < 200 nm, were tested on human melanoma (Me-45 and MeWo) cells and a control human
+keratinocyte (HaCaT) cell line. The photodynamic action of the investigated NCs was assessed by oxidoreductive
+potential measurements with 3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide (MTT) assay, that
+corresponds to percentage of the viable cells. Immunofluorescence and the NCs internalization studies were
+visualized by confocal laser scanning microscopy (CLSM studies). Our results indicated effective photosensitizer
+delivery into the cancer cells and significant photodynamic efficiency enhanced by the near infrared
+(NIR)-activation of the encapsulated hybrid cargo in the skin melanoma cells.
+1. Introduction
+The possibility of challenging skin melanoma efficient inactivation
+has
+recently
+attracted
+significant
+interest,
+mainly
+due
+to
+the
+improvement of novel antitumor treatments protocols [1,2]. Among the
+well-known approaches, photodynamic therapy (PDT) is recognized as
+an effective anticancer tool, having many advantageous in comparison
+with
+conventional
+treatments
+such
+as
+chemo-
+or
+radio-therapy.
+Although, some side effects of PDT may occur after irradiation, e.g.
+light-triggered photosensitive reactions and swelling in the treated
+area,
+causing pain and difficulties in swallowing or breathing.
+Additionally, insufficient therapeutic outcome of PDT is frequently
+associated with poor efficiency of applied photosensitizing agents, and
+rising drug resistance taking place after repeated application of the
+same treatment procedures [2,3]. Thus, alternative tools for enhanced
+photosensitizer delivery and activation are still required to improve the
+PDT method outcome. The latest research indicates that nanoscopic
+drug delivery systems [4,5], novel inorganic fluorescent markers [6,7],
+and their combinations [8,9] can significantly boost the photosensitizer
+active delivery, and thus increase the therapeutic effect. Innovative
+developments in the field of nanotechnology and nanoencapsulation,
+regarding the drug delivery in PDT, show considerable progress in the
+design of novel nanoemulsions and their structural features via
+layering, embedding and clustering processes [9,10]. These approaches
+enable
+creation
+of
+polymeric
+or
+lipid
+nanocarriers
+(oil-core
+nanocapsules,
+nanospheres,
+polymeric
+micelles,
+solid
+lipid
+nanoparticles, lyotropic liquid crystals) for encapsulation/entrapment/
+loading of organic or inorganic (or both) compounds, which may
+increase their solubility, bioavailability and photosensitivity of applied
+PDT protocols [10–12].
+https://doi.org/10.1016/j.jinorgbio.2020.111088
+Received 29 November 2019; Received in revised form 10 April 2020; Accepted 16 April 2020
+⁎ Corresponding author.
+E-mail address: urszula.bazylinska@pwr.edu.pl (U. Bazylińska).
+Journal of Inorganic Biochemistry 208 (2020) 111088
+Available online 05 May 2020
+0162-0134/ © 2020 Elsevier Inc. All rights reserved.
+T
+
+Our
+recent
+studies
+involving
+encapsulation
+of
+inorganic,
+up-converting NaYF4 nanoparticles (NPs) [9,13,14] inside various
+lipid-polymeric
+nanostructures
+encouraged
+us
+to
+research
+up-conversion-supported near infrared (NIR)-light triggered PDT of
+human melanoma - cancer type which is highly resistant to standard
+chemotherapy and radiotherapy [15], in the present contribution. By
+using the double emulsion embedding technique we were able to create
+polymeric nanocarriers (NCs) based on a poly(lactide-co-glycolide)
+(PLGA) copolymer stabilized by non-ionic surfactants (Span 80 and
+Cremophor
+A25)
+containing
+loaded:
+(i)
+second
+generation
+photosensitizer – Rose Bengal (RB) and (ii) trioctylphosphine oxide
+(TOPO)-stabilized
+NaYF4:2%Er3+,20%Yb3+
+NPs.
+This
+approach
+allowed us to fabricate the biocompatible NCs with hydrophilic
+(organic) and hydrophobic (inorganic) cargo showing high colloidal
+stability and loading capacity, as well as resistance to chemical
+degradation. Latest data indicate RB as an effective photosensitizer for
+human cancer therapy, including promising treatment of melanoma
+[16]. The role of up-converting NaYF4:2%Er3+,20%Yb3+ NPs relies on
+both, the possibility to use PDT triggering by the 980 nm NIR light,
+which falls into the so called therapeutic window of cells and tissues,
+simultaneously avoiding the spectrum overlapping with the main
+biological dyes resulting in background auto-fluorescence suppression.
+Additionally, the possible static or dynamic energy transfer between the
+up-converting NPs and the xanthene-origin photosensitizer assures
+improvement of the photodynamic activity of the obtained NCs [13].
+Furthermore, selected for this study lanthanide doped NPs showed
+stable
+in
+time
+up-conversion
+luminescence
+with
+minimal
+photo-bleaching and suppressed influence of the surroundings, thus
+being
+versatile
+luminescent
+probes
+for
+any
+other
+bio-related
+applications [17].
+In our latest contributions significant effort was made to evaluate
+the obtained systems, in order to choose the most promising and
+optimized
+nanocontainer
+capable
+to
+co-encapsulate
+hybrid
+fluorophores with different hydrophobicity [9,13,18]. We also provided
+pilot
+biological
+experiments
+with
+free
+and
+loaded
+NaYF4
+NPs,
+performed on cancer (SKOV-3) and normal (HUVEC) cells, which
+indicated that only encapsulated NPs show low toxicity in appropriate
+concentrations [19]. Thus, in the present studies we decided to verify
+the
+photoactive
+performance
+of
+RB
+in
+the
+encapsulated
+and
+co-encapsulated with the up-converting NPs form, which in fact
+revealed more toxic properties in cancer cells after irradiation, si-
+multaneously protecting normal cells. The combination of organic
+(hydrophilic) photosensitizer (RB) and inorganic (poorly water soluble)
+up-converting NPs (NaYF4:2%Er3+,20%Yb3+) co-loaded in the NCs
+dual compartment structure (double core), for simultaneous deliver of
+the hybrid cargo and in vitro PDT, arises as efficient and safe approach
+for the novel anti-melanoma protocols. This biological evaluation was
+performed using two cell line models - human melanoma: wild type of
+melanoma granular fibroblasts (MeWo) and malignant cells derived
+from a lymph node metastasis of skin melanoma (Me-45), as well
+as
+-
+normal
+skin
+cells,
+i.e.
+spontaneously
+immortalized
+human
+cutaneous
+keratinocyte
+line
+(HaCaT)
+applied
+as
+control.
+Our
+data
+have
+showed
+that
+the
+applied
+combination
+of
+organic and inorganic agents, as well as encapsulation technology and
+NIR light 980 nm optical activation enhances the dual platform
+transport to the target skin melanoma cells and improves the
+effectiveness of the PDT treatment. We strongly believe that these
+well-defined theranostic NCs can be valuable, not only to anticancer
+protocols, but also to multi-modal imaging applications, targeted
+molecular diagnosis of melanoma and phototherapy of cancers.
+2. Experimental
+2.1. Materials
+The following reagents applied for the synthesis of NaYF4:2%
+Er3+,20%Yb3+ NPs: lanthanide oxides (Y2O3, Yb2O3, Er2O3), sodium
+trifluoroacetate, trifluoroacetic acid, octadecane and trioctylphosphine
+oxide as well as Rose Bengal (RB) were purchased from Sigma Aldrich
+and
+used
+as
+received.
+Non-ionic
+surfactants
+with
+different
+hydrophobicity: Cremophor A25 and Span 80 were purchased from
+BASF Care Creations and Sigma Aldrich, respectively. Ester endcap poly
+(lactide-co-glycolide) (PLGA, lactide:glicolide = 50:50) (PolySciTech®)
+was applied as biocompatible polymer for the NCs stabilization.
+Additional chemical reagents and solvents were of commercial grade
+and were applied as received. Doubly distilled water used for all
+experiments was purified using a Milli-Q purification system (Millipore,
+Bedford, MA).
+2.2. Synthesis of TOPO stabilized up-converting NaYF4:Er3+,Yb3+NPs
+TOPO stabilized NaYF4 NPs co-doped with Er3+ (2%) and Yb3+
+(20%) were synthesized based on protocols described previously [9].
+Briefly, 1 mmol of lanthanide oxides were mixed and dissolved in
+~50% concentrated trifluoroacetic acid, followed by the excess water
+and acid evaporation. Next, 15 ml of octadecane, 20 g of TOPO and
+1.25 mmol of sodium trifluoroacetate were added into the reaction
+flask. The solution was then heated to 120 °C under vacuum with
+magnetic stirring for total oxygen and water removal, during which the
+flask was purged with dry nitrogen every 5 min. The resulting yellow
+solution
+was
+then
+heated
+to
+300 °C
+for
+60 min.
+Obtained
+NaYF4:Er3+,Yb3+ NPs were collected by centrifugation (11,000 rpm),
+washed several times with mixture of acetone and methanol, and finally
+dispersed in chloroform.
+2.3. Co-encapsulation of a hybrid cargo in the nanocarriers double-core
+Inorganic
+TOPO-stabilized
+luminescent
+lanthanide-doped
+NaYF4:Er3+,Yb3+ NPs (0.1 mg/ml) with high hydrophobicity and
+organic water soluble photosensitizer - RB (0.1 mg/ml) were co-laded
+into the double core of colloidal NCs obtained by an optimized double
+emulsion (w/o/w) evaporation process according to the method
+developed before in our group [9,13]. The dual nanoplatform was
+stabilized
+by
+PLGA
+and
+non-ionic
+surfactants
+with
+different
+hydrophilic-lipophilic balance (HLB), i.e. (Cremophor A25 and Span
+80). Generally, 1 ml of aqueous internal phase was emulsified for 5 min
+in 4 ml of dichloromethane (containing NaYF4:Er3+,Yb3+ NPs, PLGA in
+a concentration of 5 mg/ml and 0.5% Span 80) using a homogenizer
+with
+25,000 rpm.
+This
+primary
+emulsion
+was
+poured
+into
+1%
+Cremophor A25 aqueous solution (containing RB molecules), while
+stirring in a homogenizer for 5 min (25,000 rpm), and immersed in an
+ice water bath to produce the water-in-oil-in-water (w/o/w) emulsion.
+Finally, the organic solvent was evaporated under reduced pressure in a
+rotary evaporator (Ika RV 10 digital) and polymeric NCs loaded by the
+hybrid fluorescent cargo NPs + RB were collected overnight.
+2.4. Evaluation of the NCs size, surface charge and morphology
+The key physicochemical parameters of NCs, such as hydrodynamic
+diameter (DH), polydispersity index (PDI), and zeta potential (ζ) were
+analysed
+by
+means
+of
+dynamic
+light
+scattering
+(DLS)
+and
+microelectrophoretic method (ζ) using Zetasizer Nano Series (Malvern
+Instruments, Worcestershire, UK) equipped with a HeeNe laser
+(632.8 nm). DLS measurements were conducted at 25 °C and the
+detection angle was 173°, as previously described [9,12]. Each value
+was an average of three runs, with at least 10–20 measurements. We
+applied the DTS (Nano) program for data evaluation. The NCs shape
+and morphology were studied by atomic force microscopy (AFM) and
+transmission electron microscopy (TEM) according to our previous
+protocols [9,13]. Briefly, the AFM imaging was conducted using a
+NanoScope Dimension V instrument with an RT ESP tube scanner
+(Veeco Instruments, Plainview, NY, USA). The samples, prepared by
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+2
+
+adsorption of a few drops of the diluted NCs aqueous suspension on
+mica surface, were analysed at 0.5 Hz scanning speed using a
+low-resonance-frequency pyramidal silicon cantilever resonating at
+250–331 kHz at a constant force of 20–80 N/m. The resonance
+amplitude was adjusted manually to the lowest possible value enabling
+stable imaging. The TEM observations were performed with Field
+Electron and Ion Company (FEI) Tecnai G2 20 X-TWIN electron
+microscope (FEI, Brno, Czech Republic) by placing a few drops of the
+diluted NCs suspension on CueNi grid specimens.
+2.5. Measurements of the encapsulated hybrid cargo optical properties
+The absorption spectra of RB molecules loaded in NCs were
+measured with JASCO V670 spectrometer. The up-conversion emission
+spectra and luminescence lifetimes of NaYF4:Er3+,Yb3+ NPs loaded
+inside the NCs were measured with an Edinburgh Instruments FLS 980
+spectrofluorometer under 980 nm fractionated laser diode (8 W, Spectra
+Laser, Poland). The emission decay curves were measured at 540 nm
+(Er3+ ions 2H11/2 + 4S3/2 →4I15/2 transition), and fitted with double
+exponential decay model, while for the energy transfer efficiency
+calculations we have used averaged lifetimes calculated based on the
+following equation:
+=
++
++
+avg
+A
+A
+A
+A
+1 1
+2 2
+1
+2 , where A1 and A2 are the amplitudes
+corresponding to the τ1 and τ2 lifetimes.
+2.6. Biological studies in vitro
+2.6.1. Cell culture
+The
+studies
+involving
+the
+biological
+response
+of
+NCs
+with
+co-encapsulated RB and NaYF4:Er3+,Yb3+ NPs were performed upon
+well characterized human skin cell lines, i.e. wild type of human
+melanoma granular fibroblasts (MeWo) and malignant melanoma cells
+derived from a lymph node metastasis of skin melanoma (Me-45).
+Normal skin cells, i.e. spontaneously immortalized human cutaneous
+keratinocyte line (HaCaT), were applied as control. Me-45 cell line was
+obtained from the Oncology Centre Gliwice (Poland), where the line
+was derived from a 35-year-old woman's lymph node cells. MeWo cell
+line was purchased from ECACC General Cell Collection (Germany).
+HaCaT cells were purchased from the CLS Cell Lines Service GmbH
+(Germany).
+The
+all
+cell
+lines
+were
+grown
+in
+DMEM
+medium
+(Sigma–Aldrich, USA) with addition of 10% fetal bovine serum (FBS,
+Lonza,
+Switzerland)
+and
+supplemented
+with
+antibiotics
+(Antibiotic-Antimycotic
+stabilized,
+Sigma–Aldrich,
+USA).
+For
+experiments, the cells were removed by trypsinization (Trypsin–EDTA,
+Sigma–Aldrich, USA) and washed with sterile PBS (Phosphate Buffered
+Saline, LabEmpire, Poland). The cells were maintained in a humidified
+atmosphere at 37 °C and 5% CO2.
+2.6.2. Cytotoxicity and photodynamic reaction (PDR) in vitro
+The 3(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide
+(MTT, Sigma-Aldrich, Poland) test was used for the evaluation of the
+photodynamic effect induced in skin human cells. The experimental
+conditions were set according to our previous reports [12]. For the
+cytotoxicity evaluation, all cell types were seeded onto 96-well plates
+(Nunc, Biokom, Poland) at a density of 104 cells/well in 200 μl of
+medium/well and incubated at 37 °C in 5% CO2 atmosphere. After 24 h
+a fresh culture medium with selected concentration (5 μM) of free and
+encapsulated RB molecules, co-loaded with or without up-converting
+NPs, was added and the samples were incubated for the next 24 h. Then
+the cell medium was replaced with fresh one and the cells were
+irradiated for 5 min by means of a HOP 250 lamp (OPTEL, Poland)
+equipped with polarization plate and a green filter (520–560 nm) using
+10 J/cm2 of the radiation fluence rate at the cell monolayer level. The
+influence
+of
+the
+studied
+nanosystems
+on
+the
+mitochondrial
+oxidoreductive potential in the examined cell lines was evaluated after
+24 h and 48 h of incubation at 37 °C using the MTT test according to the
+manufacturer's protocol. The absorbance was determined by means of a
+multiwell scanning spectrophotometer at 570 nm (EnSpire Perkin
+Elmer, Poland). Mitochondrial function was expressed as a percentage
+of viable cells under treatment relative to untreated control cells.
+2.6.3. Confocal
+laser
+scanning
+microscopy
+for
+bioimaging
+and
+the
+evaluation of F-actin after NIR-induced PDR
+For the studies of intracellular photosensitizer localization, human
+melanoma granular fibroblasts (MeWo) were selected, which revealed
+the best cellular response for the nanosystems investigated in the
+photodynamic reation (PDR) studies in vitro. The MeWo cells were
+seeded on microscopic cover slides placed in Petri dishes (35 mm, Nunc,
+Poland) for 24 h. Then free BR and BR + NaYF4:Er3+,Yb3+ NPs
+co-loaded into the studied NCs were added at 5 μM concentration, and
+then incubated for 4 h. After the incubation, the culture medium was
+removed and the cover glasses were washed with PBS, fixed for 10 min
+in 4% paraformaldehyde (PFA) and one more time washed with PBS.
+Slides were mounted in fluorescence mounting medium (DAKO),
+containing 4,6-diamidino-2-phenylindole (DAPI) for nuclei staining.
+The prepared samples were stored in the darkness in 4 °C. For imaging,
+FluoView FV1000 confocal laser scanning microscope (Olympus) was
+used.
+To evaluate the reorganization of cellular cytoskeleton after 980 nm
+laser irradiation, F-actin was selected as the most crucial protein
+responsible
+for
+the
+cell
+shape
+and
+morphology.
+The
+immuno-
+fluorescence was performed. The co-encapsulated NaYF4:Er3+,Yb3+
+NPs + RB molecules were irradiated for 5 min using the 980 nm laser
+diode with 6.2 W/cm2 light intensity. The MeWo cells were grown on
+coverslips, fixed with 4% PFA in PBS, blocked with 1% FBS in PBS (for
+1 h at 37 °C), and permeabilized with 1% triton X-100 (Sigma) in PBS
+(v/v) (3 × 3 min). All washing steps were performed with PBS. After an
+overnight incubation with primary antibody - monoclonal mouse
+F-actin antibody (2 μg/ml; Sigma-Aldrich), the cells were washed
+with
+PBS
+(2 × 10 min)
+and
+labeled
+with
+secondary
+antibody
+-
+AlexaFluor®488 conjugated (for 1 h at 37 °C; 1:50; Sigma-Aldrich).
+Then, the cells were mounted in a fluorescence mounting medium with
+4′,6-diamidino-2-phenylindole dihydrochloride (DAPI, Sigma) for DNA
+staining.
+The
+samples
+were
+imaged
+using
+an
+Olympus
+FluoView
+FV1000
+CLSM
+(Olympus,
+Poland)
+by
+employing
+a
+Plan-Apochromat 60× oil-immersion objective.
+2.6.4. Statistical analysis
+Unless otherwise indicated, all the data are mean values ± SD
+calculated from at least three independent experiments. The two-way
+Anova test was used to check the significant level between independent
+variables. The level of significance was set to p ≤0.05 (marked with *).
+3. Results and discussion
+3.1. Evaluation of the co-loaded NC engineering.
+As the main scientific purpose of the present contribution, we
+applied effective co-encapsulation approach, i.e. double emulsion
+evaporation technique – described as one of the most favorable method
+of nanoemulsion structural design [20]. The main reason for selecting
+this method was to enhance the solubility and antitumor photodynamic
+activity of hybrid fluorophores, i.e. a hydrophilic xanthene-origin
+photosensitizing agent of second generation –RB and up-converting
+NaYF4:Er3+,Yb3+NPs, which were co-delivered to human melanoma
+skin cancer cells (Me-45 and MeWo). For this purpose, we used
+polyester-origin polymer: PLGA and non-ionic surfactants with different
+HLB, i.e. hydrophilic Cremophor A25 and hydrophobic Span 80 as
+biocompatible NCs components to co-encapsulate the theranostic cargo
+(Scheme 1). The used inorganic up-converting lanthanide co-doped
+NaYF4:Er3+,Yb3+ NPs were synthesized by the thermal decomposition
+reaction in presence of surface coordinating TOPO ligand. We have
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+3
+
+intentionally applied TOPO as a growth controlling factor and NPs
+surface stabilizing ligand, since it assures the small size (below 8 nm) of
+the obtained NPs, with simultaneously low dispersion of their shapes
+and sizes within the sample, and preserved strong luminescence [7]. To
+increase the in vitro cell death effect via photodynamic activity, we
+applied NIR 980 nm excitation against the co-encapsulated cargo
+loaded in the double core of the fabricated NCs. Since many unique
+properties of effective NCs stem from their size, surface charge and
+colloidal stability, we first determined the NCs physicochemical
+characteristics, which was important for their further biocompatibility
+and anticancer activity [4,5,8]. Thus, in the first step, we prepared and
+characterized the NCs suspension co-loaded by the hybrid cargo
+(NaYF4:Er3+,Yb3+NPs + RB) to examine its utility for further optical
+properties, cytotoxicity and photodynamic activity on human skin cells.
+The appropriate surfactant and polymer ratio was established according
+to our previously optimized procedure [9]. The DH, PDI and ζ-potential
+of the obtained NCs were dependent on the cargo type. Consequently,
+the NCs sizes ranged from 150 nm to 158 nm, and PDI from 0.23 to 0.28
+for unloaded (empty) nanosystems and for those with the encapsulated
+hybrid cargo (NaYF4:Er3+,Yb3+NPs + RB), respectively. All obtained
+NCs showed a negative zeta potential ranging from −8 to −12 mV,
+which results from the use of a negatively charged PLGA molecules
+[18].
+AFM morphology imaging revealed that the co-loaded NCs were
+well-separated and roughly spherical in shape, with smooth surface,
+proving that they were effectively stabilized by the surrounding
+surfactants and polymeric shell in aqueous environment (Fig. 1a).
+Nevertheless, TEM images (Fig. 1b) clearly showed organic and
+sphere-shaped objects with size of about 150 nm, containing small
+spherical
+particles
+inside
+(visible
+as
+dark
+spots
+with
+size
+of
+approximately 5 nm) indicating the effective NaYF4:Er3+,Yb3+ NPs
+co-encapsulation with RB in the interior compartments of the NCs. The
+obtained results were in a good agreement with AFM imaging and DLS
+size distribution data, as well as our previous studies on TEM imaging of
+the
+free
+and
+encapsulated
+up-converting
+lanthanide
+doped
+NPs
+[9,13,14]. Thus, we proved that the systems fabricated by double
+emulsion method exhibit an exceptional nanocontainer structure
+capable of enclosing diverse inorganic and organic (hybrid) cargo in the
+double
+core
+surrounded
+by
+PLGA
+shield.
+Notably,
+obtained
+physicochemical parameters are in good correlation also with the
+literature data reporting favorable features of drug delivery systems for
+various anticancer including PDT applications [10,11]. Furthermore,
+the NCs storage (Fig. 1c) time did not affect significantly their unique
+physicochemical properties indicating usefulness of the double core
+nanoplatform in further optical and biological applications.
+3.2. Optical characteristics
+Both the lanthanide doping (Er3+ + Yb3+ ions) and type of
+encapsulated
+photosensitizer
+(RB)
+were
+chosen
+to
+assure
+the
+overlapping between their up-conversion emission and absorbance
+spectra, respectively. Such a combination of the optically active
+components of NCs facilitates energy transfer between them, allowing
+for NIR triggered PDT [6,13,21]. Upon 980 nm laser diode excitation
+synthesized, TOPO stabilized NaYF4:Er3+,Yb3+ NPs showed intense
+visible emission with three lines peaking at approximately 520 nm,
+540 nm and 660 nm, what corresponded to the transition from excited
+2H11/2, 4S3/2 and 4F9/2 energy levels to the ground 4I15/2 state in Er3+
+ions,
+respectively
+(Fig.
+2a).
+Those
+spectroscopic
+features
+of
+NaYF4:Er3+,Yb3+ NPs were preserved upon encapsulation (Fig. 2b) and
+forming the hydrofilized NPs aqueous suspension. Additionally green
+Er3+ ions emission band (2H11/2 →4I15/2 and 4S3/2 →4I15/2 transitions)
+partly overlapped with RB molecules absorbance spectra (Fig. 2b), what
+should facilitate the efficient energy transfer between optically active
+Scheme 1. The general concept of the performed studies laded to the improved photoactivity of the co-encapsulated hybrid fluorophores upon human skin malignant
+melanoma cell lines.
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+4
+
+components of obtained NCs. In our previous work [13], where we
+investigated
+similar
+systems
+based
+on
+larger
+(~10 nm
+in
+size)
+NaYF4:Er3+,Yb3+ NPs and RB molecules, we showed that for such
+systems FRET energy transfer reaches 50% of efficiency at the distance
+of
+approximately
+12 nm,
+thus
+due
+to
+the
+construction
+of
+the
+investigated in this work NCs we should also deal with the nonradiative
+energy
+transfer
+between
+the
+cargo
+components.
+In
+fact,
+co-encapsulation
+of
+RB
+molecules
+resulted
+in
+suppression
+of 2H11/2 →4I15/2 and 4S3/2 →4I15/2 emission bands intensity in respect
+to the 4F9/2 →4I15/2 one, and most importantly emergence of additional
+emission band peaking at ~600 nm upon 980 nm excitation (Fig. 2c).
+The latter was attributed to the indirectly excited RB emission, i.e.
+energy transfer from NaYF4:Er3+,Yb3+ NPs (donor) to RB molecules
+(acceptor) occurred, giving the possibility of NIR triggered PDT effect.
+To further characterize the process (static or dynamic type [22])
+responsible for the RB molecules characteristic emission excitation
+upon NIR light, we also measured Er3+ decay curves at 540 nm. We
+observed slight shortening of the luminescence lifetime from 34.14 μs
+for NCs loaded with only NaYF4:Er3+,Yb3+ NPs down to 25.48 μs for
+NCs with co-encapsulated RB molecules (Fig. 2d). The detected
+shortening of the luminescence lifetime implicates the dynamic, FRET
+based, energy transfer between NPs and RB molecules with the
+efficiency at the level of 25% [23]. Fitting of decay curves (theoretical
+curves are presented in Fig. 2d) was based on the double-exponential
+model, while the lifetimes for FRET efficiency calculations were taken
+as average values (please see the experimental section for the details).
+Fig. 1. Characteristics of the co-encapsulated NaYF4:Er3+,Yb3+ NPs and RB molecules
+in PLGA-origin nanocarriers by means of atomic force microscopy (AFM), transmission electron microscopy (TEM) and dynamic light scattering (DLS).
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+5
+
+3.3. Biological response upon human melanoma (MeWo and Me-45) and
+normal (HaCaT) cells
+The main goal of our study was to obtain the optimal delivery
+conditions for the co-encapsulated RB + NaYF4:Er3+,Yb3+ NPs uptake
+in the melanoma cell cultures. In the first step of biological studies, we
+investigated cytotoxicity of empty and loaded NCs without irradiation
+(dark condition), and after photoactivation of the co-encapsulated RB in
+the cancer Me-45 and MeWo cells, as well as in normal keratinocytes
+(Fig. 3). The cell viability was estimated after 24 h and 48 h of
+incubation, and the obtained results reveal that our nanosystems
+(empty and loaded), are safe for the all cell lines if no external
+irradiation is applied. The cell exposure to green light, followed by the
+mentioned incubation time, significantly decreased cell viability in both
+melanoma cell lines (Fig. 3a and b). It should be revealed that no
+significant effect was visible between the cancer cell lines treated by the
+co-encapsulated cargo after 24 h of light exposure. However, free RB
+induced stronger photocytotoxic effect in normal (HaCaT) than in
+cancer (Me-45 and MeWo) cells, what indicate that encapsulation
+process has protective influence against the normal keratinocytes. This
+effect was still visible after additional 24 h incubation (Fig. 3b), where
+MeWo cell line became extremely sensitive to the irradiation of the
+encapsulated compounds, causing > 90% decrease in the cells viability.
+Thus, the MeWo cells were selected to show the influence of the
+encapsulation process on cellular uptake and localization of the studied
+nanosystems. As it is shown in Fig. 4a, the improved photodynamic
+activity of the co-encapsulated RB upon MeWo cells finds confirmation
+in the cellular internalization studies performed by CLSM. Intracellular
+distribution investigation showed, that the polyester NCs revealed
+better efficacy for the active cargo delivery to the skin melanoma
+cancer cells, than the free photosensitizer molecules. While, the results
+of immunofluorescence study shown in Fig. 4b, put new light on the
+possibility to NIR-induced PDT after 980 nm irradiation due to the
+co-encapsulation of the RB and NaYF4:Er3+,Yb3+ NPs. It has been
+proved that reactive oxygen species (ROS) activation, including 1O2
+generation, triggers multiple chain reaction what directly and indirectly
+ravage cellular compartments to deprive cell of normal functioning.
+One of these targets is cytoskeleton, which when damaged, causes the
+cell
+to
+lose
+adhesive
+properties
+[24].
+Cytoskeleton
+components
+rearrangement and damage were also observed in other studies, where
+HeLa cells were exposed to PDT with RB [25]. Chiavello et al. [26] also
+confirmed actin filaments destruction after photodynamic reaction in
+lung cancer cells. The available data suggest that cytoskeleton
+modifications are strongly associated with the metastasis after PDT.
+Thus, the photodamage aimed at cytoskeleton proteins seems to be a
+promising therapeutic approach. Our results obtained for cytoskeleton
+fluorescent staining revealed, that in the case of studied systems
+(co-loaded
+NCs),
+we
+could
+observe
+the
+reorganization
+and
+destabilization of F-acin fibres within the cytoskeleton. Baldea et al.,
+similarly to our studies observed that photodynamic method can affect
+cytoskeleton
+organization
+in
+melanoma
+cells.
+The
+authors
+also
+indicated
+that
+porphyrins
+such
+as
+meso-5,10,15,20-tetrakis
+(4-hydroxyphenyl) porphyrin (THOPP) and meso-5-(4-hydroxyphenyl)-
+10,15,20-tris (4-methoxy phenyl) porphyrin (THOMPP) could damage
+DNA and alternate pigmentogenesis [27]. Akasov et al. also observed
+better effect of photodynamic reaction in melanoma cells in contrary to
+normal keratinocytes ones. The applied flavin mononucleotide (FMN)
+selectively accumulated in cancer cells, and additionally performed in
+vivo studies showed promising antimelanoma effect [28]. In the other
+studies up-converting NPs were functionalized with RB to treat breast
+Fig. 2. The optical properties of as-synthesized and encapsulated NaYF4:Er3+,Yb3+ NPs. Up-conversion emission spectra of chloroform solution (a) and encapsulated
+form (b) of NaYF4:Er3+,Yb3+ NPs additionally compared with RB absorbance spectra (red area in b). The insets in (a) and (b) show up-conversion emission of as-
+synthesized sample and the solution of co-encapsulated NPs and RB molecules, respectively. The comparison of up-conversion emission spectra of NCs loaded with
+only NaYF4:Er3+,Yb3+ NPs (black line) and with co-encapsulated RB molecules (red) (c). Luminescence decay curves and theoretical fitting lines of green Er3+ ions
+emission measured for NCs loaded with only NaYF4:Er3+,Yb3+ NPs (black line) and with co-encapsulated RB molecules (red) (d). (For interpretation of the references
+to color in this figure legend, the reader is referred to the web version of this article.)
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+6
+
+Fig. 3. Cyto- and photocytotoxicity of the studied nanosystems upon human skin cells: cancer melanoma (Me-45 and MeWo) and normal skin keratinocytes (HaCaT)
+performed 24 h (a) and 48 h (b) after irradiation. Data represented as means ± SD for minimum n = 3, where * p ≤0.05 was judged as statistically significant.
+Fig. 4. Intracellular distribution of the
+obtained NCs in the human melanoma
+(MeWo) cells (a) and photodynamic
+efficiency upon the MeWo cell line ex-
+pressed by an oxidation of the fila-
+mentous actin (F-actin) cytoskeleton
+after near infrared (IR) cell irradiation
+by 980 nm laser diode of NaYF4:Er/Yb
+NPs co-loaded with RB, compared to
+the controls (24 h after PDT) (b).
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+7
+
+cancer. High drug loading capacity (160 RB/nanoparticle), and the
+efficient energy transfer from up-converting NPs to RB molecules was in
+fact detected. The observed phenomenon suggested that this approach
+can be effective in deep-lying tumors [29]. The presented results
+converged
+in
+fact
+with
+our
+recent
+studies
+performed
+on
+the
+photo-physical level, concerning the evidence of singlet oxygen
+photogeneration by the co-encapsulated RB and NaYF4 molecules
+following the NIR-activated energy transfer between the hybrid
+fluorophores [14].
+4. Conclusions
+The results presented in this work may support designing and
+developing a new generation of bioinspired drug delivery nanocarriers
+for potential application in conventional (green light activated) or
+NIR-induced (980 nm) photodynamic therapy of melanoma skin cancer.
+We demonstrated the usefulness of the co-encapsulated hybrid cargo
+(RB photosensitizer and TOPO-stabilized NaYF4:Er3+,Yb3+NPs) for
+effective tumor destruction via photoactivation. The polyester-derived
+nanocarriers with double-core loaded by the theranostic compounds,
+co-stabilized by PLGA, Span 80 and Cremophor A25 non-ionic
+surfactants, were near spherical in shape, showing sizes < 200 nm, with
+narrow
+distribution.
+The
+selection
+of
+luminescent
+NPs
+and
+photosensitizer type assured compatibility between their optical char-
+acteristics, i.e. overlapping between donor (NaYF4:Er3+,Yb3+ NPs)
+emission and acceptor (RB molecules) absorbance spectra for efficient
+energy transfer between them, followed by the possible positive PDT
+effect. The in vitro biological studies using photodynamic method with
+the co-loaded hybrid fluorophores supported by the up-converting NPs
+activation, showed an in vitro selectivity toward human metastatic
+melanoma, since the newly developed nanoplatform entered the tumor
+cells more easily in comparison to the normal ones. In conclusion, we
+reported
+for
+the
+first
+time,
+the
+application
+of
+encapsulated
+photosensitizer with up-converting NPs for NIR-induced anti-melanoma
+therapy.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+Acknowledgements
+This work has been supported by National Science Centre (Poland)
+within a framework of SONATA 8 programme (No. 2014/15/D/ST4/
+00808) and by Wroclaw University of Science and Technology.
+References
+[1] B. Domingues, J.M. Lopes, P. Soares, H. Populo, Melanoma treatment in review,
+Immunotargets Ther 7 (2018) 35–49.
+[2] L.M. Davids, B. Kleeman, Combating melanoma: the use of photodynamic therapy
+as a novel, adjuvant therapeutic tool, Cancer Treat. Rev. 37 (2011) 465–475.
+[3] C. Naidoo, C.A. Kruger, H. Abrahamse, Photodynamic therapy for metastatic mel-
+anoma treatment: a review, Technol. Cancer Res. Treat. 17 (2018) 1.
+[4] T. Datea, V. Nimbalkara, J. Kamata, A. Mittala, R.I. Mahatob, D. Chitkara, Lipid-
+polymer hybrid nanocarriers for delivering cancer therapeutics, J. Control. Release
+271 (2018) 60–73.
+[5] S. Hossen, M.K. Hossain, M.K. Basher, M.N.H. Mia, M.T. Rahman, M.J. Uddin,
+Smart nanocarrier-based drug delivery systems for cancer therapy and toxicity
+studies: a review, J. Adv. Res. 15 (2019) 1–18.
+[6] M. Buchner, P.G. Calavia, V. Muhr, A. Kroeninger, A.J. Baeumner, T. Hirsch,
+D.A. Russell, M.J. Marin, Photosensitiser functionalised luminescent upconverting
+nanoparticles for efficient photodynamic therapy of breast cancer cells, Photochem.
+Photobiol. Sci. 18 (2019) 98–109.
+[7] D. Wawrzyńczyk, A. Bednarkiewicz, M. Nyk, W. Stręk, M. Samoć, Ligand-dependent
+luminescence of ultra-small Eu3+-doped NaYF4 nanoparticles, J. Nanopart. Res. 15
+(2013) 1707.
+[8] K.M. Vargas, Y.S. Shon, Hybrid lipid–nanoparticle complexes for biomedical ap-
+plications, J. Mater. Chem. B 7 (2019) 695–708.
+[9] U. Bazylińska, D. Wawrzyńczyk, Encapsulation of TOPO stabilized
+NaYF4:Er3+,Yb3+ nanoparticles in biocompatible nanocarriers: synthesis, optical
+properties and colloidal stability, Colloids Surf. A: Physicochem. Eng. Aspects 532
+(2017) 556–563.
+[10] T. Li, J. Yan, Functional polymer nanocarriers for photodynamic therapy,
+Pharmaceuticals (Basel) 30 (2018) 11.
+[11] K. Shanmugapriya, H.W. Kang, Engineering pharmaceutical nanocarriers for pho-
+todynamic therapy on wound healing: review, Mat. Sci. Eng. C. 105 (2019) 110110.
+[12] U. Bazylińska, J. Kulbacka, J. Schmidt, Y. Talmon, S. Murgia, Polymer-free cubo-
+somes for simultaneous bioimaging and photodynamic action of photosensitizers in
+melanoma skin cancer cells, J. Colloid Interface Sci. 522 (2018) 163–173.
+[13] D. Wawrzyńczyk, B. Cichy, J. Zaręba, On the interaction between up-converting
+NaYF4:Er3+,Yb3+ nanoparticles and Rose Bengal molecules constrained within the
+double core of multifunctional nanocarriers, J. Mat. Chem. C 7 (2019)
+15021–15034.
+[14] D. Wawrzyńczyk, U. Bazylińska, Ł. Lamch, J. Kulbacka, A. Szewczyk,
+A. Bednarkiewicz, K.A. Wilk, M. Samoć, Förster resonance energy transfer-activated
+processes in smart nanotheranostics fabricated in a sustainable manner,
+ChemSusChem 12 (2019) 706–719.
+[15] Y.Y. Huang, D. Vecchio, P. Avci, R. Yin, M. Garcia-Diaz, M.R. Hamblin, Melanoma
+resistance to photodynamic therapy: new insights, Biol. Chem. 394 (2013)
+239–250.
+[16] H. Liu, et al., Intralesional rose bengal in melanoma elicits tumor immunity via
+activation of dendritic cells by the release of high mobility group box 1, Oncotarget
+7 (2016) 37893–37905.
+[17] A. Gnach, A. Bednarkiewicz, Lanthanide-doped up-converting nanoparticles: merits
+and challenges, Nano Today 7 (2012) 532–563.
+[18] U. Bazylińska, J. Kulbacka, G. Chodaczek, Nanoemulsion structural design in co-
+encapsulation of hybrid multifunctional agents: influence of the smart PLGA poly-
+mers on the nanosystem-enhanced delivery and electro-photodynamic treatment,
+Pharmaceutics 11 (2019) 405.
+[19] U. Bazylińska, D. Wawrzyńczyk, J. Kulbacka, R. Frąckowiak, B. Cichy,
+A. Bednarkiewicz, M. Samoć, K.A. Wilk, Polymeric nanocapsules with up-con-
+verting nanocrystals make ideal fluorescent bioprobes, Sci. Rep. 6 (2016) 1–14.
+[20] N. Ahmed, M. Michelin-Jamois, H. Fessi, A. Elaissari, Modified doubleemulsion
+process as a new route to prepare submicron biodegradablemagnetic/poly-
+caprolactone particles for in vivo theranostics, Soft Matter 8 (2012) 2554–2564.
+[21] S. Han, B.W. Hwang, E.Y. Jeon, D. Jung, G.H. Lee, D.H. Keum, K.S. Kim, S.H. Yun,
+H.J. Cha, S.K. Hahn, Upconversion nanoparticles/hyaluronate-rose bengal con-
+jugate complex for noninvasive photochemical tissue bonding, ACS Nano 11 (2017)
+9979–9988.
+[22] F. Lu, L. Yang, Y. Ding, J.J. Zhu, Highly emissive Nd3+-sensitized multilayered
+upconversion nanoparticles for efficient 795 nm operated photodynamic therapy,
+Adv. Funct. Mater. 26 (2016) 4778–4785.
+[23] J.R. Lakowicz, Principles of Fluorescence Spectroscopy, 3rd edition, Springer, 2006.
+[24] S.M. Mahalingam, J.D. Ordaz, P.S. Low, Targeting of a photosensitizer to the mi-
+tochondrion enhances the potency of photodynamic therapy, ACS Omega 3 (2018)
+6066–6074.
+[25] E. Panzarini, V. Inguscio, L. Dini, Overview of cell death mechanisms induced by
+Rose Bengal acetate-photodynamic therapy, Int. J. Photoen. (2011), https://doi.
+org/10.1155/2011/713726.
+[26] A. Chiaviello, I. Postiglione, G. Palumbo, Targets and mechanisms of photodynamic
+therapy in lung cancer cells: a brief overview, Cancers 3 (2011) 1014–1041.
+[27] I. Baldea, D.E. Olteanu, P. Bolfa, F. Tabaran, R.M. Ion, G.A. Filip, Melanogenesis
+and DNA damage following photodynamic therapy in melanoma with two meso-
+substituted porphyrins, J. Photochem. Photobiol. B 161 (2016) 402–410.
+[28] R.A. Akasov, N.V. Sholina, D.A. Khochenkov, A.V. Alova, P.V. Gorelkin,
+A.S. Erofeev, A.N. Generalova, E.V. Khaydukov, Photodynamic therapy of mela-
+noma by blue-light photoactivation of flavin mononucleotide, Sci. Rep. (2019)
+9679.
+[29] M. Buchner, P. García Calavia, V. Muhr, A. Kröninger, A.J. Baeumner, T. Hirsch,
+D.A. Russell, M.J. Marín, Photosensitiser functionalised luminescent upconverting
+nanoparticles for efficient photodynamic therapy of breast cancer cells, Photochem.
+Photobiol. Sci. 18 (2019) 98–109.
+U. Bazylińska, et al.
+Journal of Inorganic Biochemistry 208 (2020) 111088
+8

@@ -1,0 +1,996 @@
+RESEARCH ARTICLE
+Development of quercetin nanoformulation and in vivo
+evaluation using streptozotocin induced diabetic rat model
+Deepak Chitkara & Sanjay K. Nikalaje &
+Anupama Mittal & Mahesh Chand & Neeraj Kumar
+Published online: 18 February 2012
+# Controlled Release Society 2012
+Abstract Quercetin-loaded poly(lactic-co-glycolic acid)
+(PLGA) nanoparticles (Qu-NP) were prepared by emul-
+sion–diffusion–evaporation method and characterized as
+179.9±11.2 nm in size with 0.128 as polydispersity index,
+more than 86% drug entrapment efficiency, and zeta poten-
+tial was −6.06±1.51 mV. D-Trehalose (5% w/v) was found
+to be a suitable cryoprotectant for lyophilization of Qu-NP,
+and antioxidant assays indicated that Qu-NP were able to
+retain the antioxidant property similar to that of free drug at
+equivalent concentration after formulation development. In
+vitro release study of Qu-NP showed a controlled release
+pattern of quercetin. An enhanced oral bioavailability
+(523% relative increase) was observed in pharmacokinetic
+study with a 6-day sustained release from Qu-NP as com-
+pared to quercetin suspension, which indicated the reduced
+dosing frequency. Efficacy in diabetic rats suggested that
+same dose of Qu-NP on every fifth day was sufficient to
+bring effect similar to daily dose of oral quercetin suspen-
+sion, and the same effect was also observed for catalase and
+superoxide dismutase levels in pancreas and kidneys. Thus,
+the system offers an efficacious oral therapy with reduced
+dose and dosing frequency for treatment of diabetes and is
+hence patient compliant.
+Keywords Quercetin . Nanoparticles . Oral delivery.
+Controlled release . Bioavailability. Diabetes
+Introduction
+Diabetes mellitus is one of the most common endocrine
+metabolic disorders wherein imbalance of reactive oxygen
+species (ROS) and natural antioxidant defense mechanisms
+occurs, leading to oxidative stress. Excessive oxidative
+stress has been implicated in the pathology of diabetes and
+further leads to complications associated with the disease.
+Parallelly, impaired generation of naturally occurring anti-
+oxidants also result in increased oxidative injury. In this
+situation, external supply of antioxidants is essential to
+counter balance the dangerous effects of oxidative stress. It
+is evident that flavanoid antioxidants like quercetin have
+potential role in ROS scavenging in the pathogenesis of
+diabetes, which can also delay the oxidative injury and cell
+death [1–3].
+Quercetin (3,3′,4′,5,7-pentahydroxy flavone) is the most
+potent polyphenolic flavanoid antioxidant having a broad
+range of biological, pharmacological, and medical benefits
+[4]. Several studies have provided evidence of the role of
+quercetin in prophylaxis and therapy of various disorders
+related to oxidative stress [5]. These studies show superox-
+ide anion scavenging activity, antilipid peroxidation, anti-
+superoxide formation and 2,2-diphenyl-1-picryhydrazyl
+(DPPH) scavenging activity of quercetin [6]. Apart from
+this, it also exerts antiproliferative effect on different malig-
+nant cells by several mechanisms, such as inhibition of the
+cell cycle at control points G0/G1, G1/S, and G2/M, inter-
+action with estrogen II binding sites [7], inhibiting glycoly-
+sis and activity of several enzymes like protein kinase C,
+mitogen-activated protein kinase, cell division cycle kinase,
+and tyrosine kinase. It is reported that quercetin induces
+UDP-glucoronyl transferase activity [8] and is an inhibitor
+of P-glycoprotein (P-gp) [9], multidrug resistance protein
+[10] and Cyp3A [11].
+D. Chitkara: S. K. Nikalaje: A. Mittal: M. Chand:
+N. Kumar (*)
+Department of Pharmaceutics, National Institute of Pharmaceutical
+Education and Research (NIPER),
+Sector 67, SAS Nagar,
+Mohali 160 062, India
+e-mail: neeraj@niper.ac.in
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+DOI 10.1007/s13346-012-0063-5
+
+However, pharmaceutically, quercetin is a challenging
+molecule to be delivered due to its poor solubility, low
+hydrophilicity (log P of 1.81), gastrointestinal instability,
+extensive first pass metabolism, and minimal absorption in
+gastrointestinal tract [2]. Quercetin belongs to BCS class II.
+It has been reported that its oral bioavailability is <17% in
+rats and <2% in humans [12, 13], thereby limiting its clin-
+ical application using conventional dosage forms. Thus, an
+improved oral formulation of quercetin is required with
+better bioavailability and higher efficacy.
+Approaches based on nanoformulations for the delivery
+of potential therapeutic molecules have been reported to
+improve the efficacy of such molecules, which otherwise
+suffer from certain limitations [14–18]. Different delivery
+systems for quercetin have been reported such as nanopar-
+ticles [6], solid lipid nanoparticles [12], liposomes [19], and
+microemulsion [20] for various applications, such as in
+neurodegenerative disease, aging, etc. Wu et al. [6] have
+reported Eudragit E and polyvinyl alcohol (PVA) nanopar-
+ticles to increase the dissolution of quercetin, which showed
+enhanced release of quercetin up to 74-fold and exhibited
+more effective DPPH scavenging, antisuperoxide formation,
+superoxide anion scavenging, and antilipid peroxidation
+activity as compared to pure drug. Solid lipid nanoparticles
+(SLN) were prepared to increase oral bioavailability of
+quercetin, which showed increased relative oral bioavail-
+ability by 5.71-fold and drug release for 48 h in vivo [12].
+Ghosh et al. [21] evaluated the therapeutic efficacy of nano-
+encapsulated quercetin in arsenic oxide-induced ROS-
+mediated oxidative damage in hepatocytes and brain cells
+by oral administration prior to arsenite treatment and
+observed an improvement in antioxidant levels in brain
+and liver. Recently, quercetin has also been encapsulated
+in poly(D,L-lactide) (PLA) nanoparticles for improve-
+ment of its poor aqueous solubility and stability, and it
+was observed that antioxidant activity of nanoparticles
+and free drug was similar; however, no further work is
+reported in the literature [22]. Considering the different
+drug delivery approaches reported in the literature, it
+becomes evident that quercetin nanoparticulate formula-
+tion may offer an appropriate solution to exploit the
+therapeutic potential of the drug for the treatment of
+diabetes.
+In the present study, quercetin-loaded PLGA nano-
+particulate formulation is developed and evaluated using
+oral route for efficacy in diabetes and enhanced oral
+bioavailability at reduced dose and reduced dosing fre-
+quency. For this purpose, pharmacokinetic study was
+carried out in male Sprague–Dawley rats to assess the
+oral bioavailability and sustained release of quercetin
+from Qu-NPs. Antidiabetic efficacy of the formulation
+was evaluated in streptozotocin-induced diabetic rat model
+by measuring the levels of blood glucose and natural
+antioxidants, catalase, and superoxide dismutase (SOD) in
+pancreas and kidneys.
+Materials and methods
+Materials
+Quercetin dihydrate was purchased from Sigma (St. Louis,
+MO, USA) and used as received. PLGA (75/25) was syn-
+thesized in-house by ring opening polymerization from
+DL-lactide and glycolide using stannous-2-ethylhexanoate as
+catalyst (0.2% w/w). Both DL-lactide and glycolide were taken
+in a round bottom flask (RBF) and distilled in the presence of
+toluene and dried under vacuum. Stannous-2-ethylhexanoate
+(in toluene) was added to the reaction flask, and toluene
+was evaporated under vacuum. The temperature was raised
+to 150°C. After 10 min, vacuum was removed, and reaction
+was allowed to continue under nitrogen atmosphere for 8 h.
+Crude polymer so obtained was then purified twice by dis-
+solving in dichloromethane and precipitating in isopropyl
+alcohol. The purified polymer was then dried under vacuum
+for 48 h and characterized for molecular weight and LA/GA
+ratio by gel permeation chromatography (GPC) and 1H NMR.
+GPC was performed using chloroform (HPLC grade) filtered
+through 0.22-μm filter and sonicated for 60 min. Chroma-
+tography was carried out at 35°C temperature using a
+Shimazdu LC-10AD HPLC pump and Shimazdu RID-6A
+refractive index detector coupled with a styragel HR4 column
+in an isocratic mode with the stated mobile phase at a flow rate
+of 1 ml/min. The sample injection volume was 100 μl, and
+data were analyzed using “GPC for Class-Vp” software. The
+molecular weight distribution obtained was Mw of 94 kDa, Mn
+of 75 kDa, and polydispersity index of 1.25. 1H NMR was
+used to determine the lactic acid/glycolic acid ratio. A small
+amount of the synthesized PLGA was dissolved in deuterated
+chloroform (CDCl3) and analyzed using a Bruker (Avane
+DPX 300) NMR. Tetramethylsilane signal was taken as the
+zero of chemical shift. The spectrum was recorded in the
+chemical shift (δ) values ranging from 0 to 11 ppm and lactic
+acid/glycolic acid ratio was calculated to be 73:27 (in mole
+percent). PLGA was used from the same batch for complete
+study. All other chemicals were of analytical grade and used as
+purchased.
+Preparation of quercetin-loaded PLGA nanoparticles
+(Qu-NP)
+Nanoparticles were prepared by emulsion–diffusion–
+evaporation method with slight modification [23]. PLGA
+(50 mg) and quercetin were dissolved in ethyl acetate (3 ml;
+organic phase) and kept on stirring for 1 h. It was then
+emulsified with PVA solution (1% w/v; 5 ml; aqueous phase)
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+113
+
+while stirring at 1,000 rpm to form o/w primary emulsion. The
+primary emulsion was homogenized (Polytron PT4000; Poly-
+tron Kinematica, Lucerne, Switzerland) at 20,000 rpm for
+5 min and then added drop wise to 30 ml of double distilled
+water while stirring at 1,000 rpm. Ethyl acetate was then
+removed by evaporation, colloidal suspension of PLGA
+nanoparticles was centrifuged at 17,000×g for 5 min
+and washed twice with double distilled water to remove
+unentrapped drug and adsorbed PVA. Nanoparticles at
+three initial drug loadings, i.e., 10%, 15%, and 20% w/w were
+prepared and characterized for particle size, PDI, zeta poten-
+tial, drug loading, entrapment efficiency, and surface
+morphology.
+Characterization of Qu-NP
+Particle size distribution and zeta potential
+Particle size distribution and zeta potential of nanoparticles
+were determined using Zeta sizer (Malvern ZS, UK) by
+dynamic light scattering technique. For particle size meas-
+urements, nanoparticles were dispersed in double distilled
+water, and measurements were carried out in triplicate tak-
+ing an average of five measurements. Zeta potential, which
+is an indicative parameter for the stability of nanoparticles,
+was estimated on the basis of electrophoretic mobility of
+nanoparticles under an electric field. The measurements
+were carried out in triplicate, each being an average of 30
+measurements.
+Morphology
+Scanning electron microscope (SEM) image of nanoparticles
+was taken to examine the shape and surface morphology. For
+this purpose, nanoparticles were mounted on an aluminum
+stub with double-sided adhesive carbon tape and dried in air
+followed by coating with gold using sputter coater. Coated
+samples were then observed under SEM (Hitachi S-3400,
+Tokyo, Japan) to study the morphology of the particles.
+Quercetin loading and encapsulation efficiency
+For determination of drug loading and encapsulation effi-
+ciency, drug-loaded nanoparticles were harvested from the
+suspension by centrifugation at 17,000×g for 5 min and
+pellet obtained was dried under vacuum for 48 h. Weighed
+amount of dried pellet was dissolved in acetonitrile (ACN;
+5 ml) by sonication for 5 min. Samples were then filtered
+and analyzed by reversed phase HPLC method using Zor-
+bax Eclipse XDB-C18 (5 μm, 250×4.6 mm) column. Mo-
+bile phase consisted of ACN/sodium acetate buffer (pH 3.8)
+(37:63) in isocratic mode at a flow rate of 1 ml/min. Detec-
+tion was carried out at 373 nm using photodiode array
+detector. Drug loading and encapsulation efficiency were
+calculated using the following equations.
+Encapsulation efficiency ð%Þ ¼
+Mass of drug in nanoparticles
+Mass of drug used in formulation  100
+ð1Þ
+Drug loading ð%w=wÞ ¼
+Mass of drug in nanoparticles
+Mass of drug loaded nanoparticles  100
+ð2Þ
+Freeze drying of Qu-NP
+Qu-NPs were freeze dried using a VirTis freeze dryer (Wiz-
+ard 2.0). For this purpose, nanoparticles were suspended in
+double distilled water (2 ml) in glass vials, and a solution of
+lyoprotective agent was added to keep their concentration at
+5% w/v in final suspension. Different lyoprotective agents
+such as glucose, sucrose, D-trehalose, lactose, and sorbitol
+were screened. Lyophilization cycle encompassed three
+steps: (1) Samples were frozen to −45°C step wise for 7 h
+in seven-step process (thermal treatment); (2) after freezing
+step, samples were dried from −45°C to 20°C in 33.5 h in a
+ten-step process (primary drying); and (3) secondary drying
+was performed at 25°C for 5 h. The freeze-dried samples
+were resuspended in double distilled water and evaluated for
+particle size and size distribution, redispersibility and appear-
+ance of formed cake.
+In vitro evaluation of Qu-NP
+Quercetin release study
+Quercetin has a low solubility in phosphate buffer; however,
+there is a requirement of sink condition in the bulk phase
+during in vitro release studies. To maintain the sink con-
+ditions, the release study was carried out in phosphate buffer
+(100 mM; pH 7.4) containing 5% w/v Tween-80 using
+dialysis bag method. Nanoparticles (1 mg equivalent of
+quercetin) were placed in a dialysis bag (10,000 MW cut-
+off), and the bag was suspended in a vial containing 15 ml of
+release media. It was placed in a reciprocal shaking water
+bath and kept at 37°C. At regular time intervals, 1 ml of
+release medium was withdrawn followed by replacement of
+the same amount of fresh medium. The amount of drug
+released was then analyzed using validated HPLC method.
+Antioxidant assays
+Two different antioxidant assays were performed, viz.
+DPPH scavenging activity assay (to show the free radical
+114
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+
+scavenging activity) and antisuperoxide formation assay (for
+xanthine oxidase inhibition activity) for quercetin and
+Qu-NP.
+DPPH scavenging activity assay DPPH is a stable free
+radical and can be used to determine the free radical scav-
+enging activity of the drug or nanoparticles [6]. Pure quer-
+cetin and Qu-NP were dissolved in dimethyl sulfoxide, and
+DPPH was dissolved in ethanol (200 mM solution). Then,
+both the solutions were mixed in equimolar proportion
+and incubated at room temperature for 30 min. Sample
+without quercetin was used as a control sample and
+gave maximum absorbance. The absorbance of the reaction
+solution was measured by a microplate spectrophotom-
+eter (Biotek PowerWave XS2) at 517 nm. The percent
+scavenging effect of free radical by quercetin was cal-
+culated using Eq. 3.
+% Scavenging effect ¼ Ab517 control  Ab517 sample
+Ab517 control
+ 100
+ð3Þ
+Antisuperoxide formation assay Quercetin has xanthine oxi-
+dase inhibition activity and prevents the formation of
+free radicals, which are generated during the interaction
+of xanthine with xanthine oxidase. It can be directly
+measured by the formation of uric acid and analyzed
+at 295 nm in UV spetrophotometer. Superoxide anion and
+hydrogen peroxide are also generated as side products as
+given in pictorial diagram.
+Not formed
+Quercetin
+Xanthine oxidase
+Xanthine
+Uric acid + superoxide anion + H2O2
+In this method, the test sample was mixed with xanthine,
+xanthine oxidase, and deionized water, and suspension was
+vortexed for 2 min. Sample without quercetin was taken as
+control sample. The superoxide anion formation was deter-
+mined spectrophotometrically by measuring uric acid pro-
+duction at 295 nm [6]. The percentage of inhibition was
+calculated using Eq. 4.
+% Inhibition ¼ Ab295 control  Ab295 sample
+Ab295 control
+ 100
+ð4Þ
+In vivo evaluation of the formulation
+All studies (pharmacokinetic and efficacy studies) were
+conducted in male Sprague–Dawley rats (∼250 g). Animals
+were housed in plastic cages in a 12-h dark–light cycle with
+controlled temperature (25°C) and humidity (70%). Food
+and water were provided ad libitum throughout the study.
+All protocols were approved by Institutional Animal Ethics
+Committee, NIPER, SAS Nagar, India, and experiments
+were performed in accordance with the guidelines of
+CPCSEA, India.
+Pharmacokinetic studies
+Pharmacokinetic study was carried out to assess the oral
+bioavailability (using Eq. 5) and quercetin levels in the
+central compartment.
+% Relative bioavailability ¼ AUCðQu  NPÞ=AUCðQu  SUSÞ  100
+ð5Þ
+Animals were kept on fasting for overnight before start of
+the experiment. Animals were randomly divided into two
+groups. Group 1 received 150 mg/kg quercetin suspension
+in 2.5% w/v aqueous solution of sodium carboxymethyl cel-
+lulose, and group 2 received equivalent dose of Qu-NP (with
+initial drug loading of 15% w/w) suspended in water via oral
+gavage. Blood samples (0.5 ml) were collected at regular time
+intervals into heparinized microcentrifuge tubes, and plasma
+was separated immediately by centrifugation at 10,000×g for
+10 min at 15°C. After centrifugation, plasma samples were
+collected as supernatant and stored at −60°C until analyzed.
+For determination of quercetin in the plasma samples, a
+HPLC-UV bioanalytical method was developed and val-
+idated. In brief, 200 μl of plasma was taken in microcentri-
+fuge tube containing 25 μl of hisperetin solution (10 μg/ml) as
+internal standard. To this, methanol (1 ml) and hydrochloric
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+115
+
+acid (25%, 100 μl) were added and vortexed for 2 min to
+precipitate out proteins. Samples were centrifuged at
+10,000×g for 10 min, and supernatant was evaporated using
+Centrivac dryer (Heto, Germany). The residue left was recon-
+stituted in 100 μl of mobile phase (ammonium acetate buffer
+(25 mM; pH 3.5) and ACN (63:37)) and analyzed using a
+Shimadzu HPLC system coupled with a PDA detector at a
+flow rate of 1 ml/min and injection volume of 75 μl. Analyt-
+ical wavelength (λmax) for detection of quercetin and hisper-
+etin were 373 and 288 nm, respectively.
+Efficacy studies in diabetic rat model
+In vivo efficacy of quercetin-loaded nanoparticles was
+assessed in streptozotocin-induced diabetic rat model. For this
+purpose, diabetic rat model was developed by intraperitonial
+administration of streptozotocin at a dose of 55 mg/kg in
+Sprague–Dawley rats. Diabetes was induced in 2 days, which
+was confirmed by analyzing blood glucose level using glu-
+cose determination kit (Accurex, Thane, India). In this study,
+diabetic and normal animals were divided into five groups
+(n06), and each group was given the treatment as shown in
+Table 1. All animals in each group were assessed twice weekly
+for 15 days by measuring blood glucose levels. After 15 days,
+animals were killed, and target organs (kidneys and pancreas)
+were excised to determine the levels of natural antioxidants,
+i.e., catalase and SOD using reported procedures [24, 25].
+Statistics
+Statistical evaluation was performed using one-way ANOVA
+followed by Holm–Sidak test using SigmaPlot 11.0 for Win-
+dows. The significance level was set at P<0.05.
+Results and discussion
+Characterization of Qu-NP
+In vivo performance of any nanoformulation depends on the
+particle size and size distribution, drug loading, and
+redispersibility of the cake during reconstitution at the time
+of delivery to the patient. Particle size is a very important
+parameter since it influences the drug release, in vivo
+uptake, and absorption via payer’s patches and thus overall
+bioavailability of the formulation [26]. In this study, Qu-NP
+showed a particle size of 179.9 nm at 10% initial drug loading,
+which increased to 257.3 and 278.5 nm for 15% and 20%
+w/w drug loading batches, respectively (Table 2). Increase in
+particle size on increasing the drug loading is a commonly
+observed phenomenon during the preparation of nanopar-
+ticles. It was also observed that increasing the initial drug
+loading from 10% to 20% also resulted in a wider size distri-
+bution of nanoparticles; PDI increased from 0.128 to 0.311 but
+was still within the acceptable limit (<0.4). The increase in
+particle size and PDI may be attributed to the increase in the
+drug loading since at higher drug loading more amount of
+drug would be present in the nanoparticles [27].
+Drug loading and entrapment efficiency of quercetin in
+Qu-NP are shown in Table 2. It is observed that entrapment
+efficiency was higher than 86% in case of 10% and 15% (w/w)
+initial drug loadings, while it was 72% at 20% (w/w) drug
+loading. The most likely reason for higher encapsulation
+efficiency of quercetin in PLGA nanoparticles could be the
+lipophilic character of quercetin, leading to higher drug parti-
+tioning into polymeric matrix of nanoparticles and lesser into
+the external aqueous phase. On further increase in drug load-
+ing to 20%, a decrease in entrapment efficiency was seen,
+which could be due to the increased drug concentration gra-
+dient in polymer matrix, and this leads to higher drug leaching
+to the external medium during the preparation step. Further-
+more, the drug holding capacity of the polymer could have
+also reached to the maximum and thus led to a decrease in
+encapsulation efficiency.
+Zeta potential value depicts the surface charge of the
+particles in suspension form, hence directly influences the
+particle stability in aqueous dispersion. Qu-NPs were found
+to have zeta potential of ≈−6 mV, which was not signifi-
+cantly affected by changing the drug loading. The higher the
+value of the zeta potential, the more will be the electrostatic
+repulsion, and hence, the greater will be the stability of
+nanoparticulate suspension. For stability of the formulation,
+Table 1 Study design for effi-
+cacy experiments
+Qu-SUS quercetin suspension,
+Qu-NP quercetin nanoparticles
+Sample number
+Group
+Treatment
+Treatment schedule
+1
+Normoglycemic (control)
+No treatment
+–
+2
+Normoglycemic
+Quercetin suspension
+150 mg/kg daily for 15 days
+3
+Diabetic (control)
+No treatment
+–
+4
+Diabetic Qu-SUS
+Quercetin suspension
+150 mg/kg daily for 15 days
+5
+Diabetic Qu-NP
+Quercetin loaded NP
+150 mg/kg every 5th day for
+15 days
+116
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+
+different surfactants have been reported in the literature,
+among these PVA is the preferred surfactant due to its better
+safety profile; however, it creates a less negative zeta poten-
+tial in nanosuspension, and thus, it is less resistant to aggre-
+gation. Furthermore, to enhance the stability of such
+formulations with a smaller zeta potential value, freeze
+drying appears to a suitable method, which not only
+improves the stability but also facilitates handling of the
+colloidal systems in solid form [28]. The prepared formula-
+tion was further assessed for surface morphology using
+SEM, which showed spherical particles with smooth sur-
+face, indicating the absence of any unentrapped or adsorbed
+drug (Fig. 1).
+For freeze drying of Qu-NP, different sugars such as
+sucrose, lactose, glucose, sorbitol, and D-trehalose were
+screened as lyoprotectants at 5% w/v concentration, and
+their effect on cake formation, particle size, and redispersi-
+bility of Qu-NP was studied (Fig. 2, Table 3). In the case
+when no lyoprotectant was used, an increase in particle size
+of Qu-NP was observed. Collapsed cake was formed when
+sorbitol was used. The use of D-trehalose, glucose, sucrose,
+and lactose as cryoprotectant showed a good cake forma-
+tion, and the ratio of final particle size (Sf) to initial particle
+size (Si) was found to be close to 1; however, redispersibility
+was found to be better when D-trehalose was used.
+In vitro evaluation of the formulation
+Drug release study
+For efficacy of a drug formulation, it is important that drug
+should be released at desired rate to maintain the therapeutic
+concentration in the blood stream as well as at the site of
+action. In PLGA-based nanoformulation, which is a matrix
+type system, drug is released through diffusion and matrix
+degradation processes, and thus, it becomes important to
+know the drug release behavior under in vitro conditions,
+which may be affected by several factors [29] such as nature
+of drug molecule and polymeric matrix, size and shape of the
+particles, type of degradation (bulk vs. surface erosion), etc.
+Quercetin is a lipophilic drug with a very poor aqueous
+solubility (≤10 μg/ml); thus, in order to maintain the sink
+conditions during in vitro release studies, Tween-80 (5%
+w/v) was added to the release media in which the solubility of
+quercetin was found to be 1.3 mg/ml. The release of quercetin
+from the Qu-NP (Fig. 3) showed that 20–40% drug was
+released in 1 day followed by a very slow release for 42 days
+of the study period. To confirm the complete release, mass
+balance of drug remaining in the nanoparticles was carried
+out; thus, these particles were dissolved in acetonitrile and
+analyzed. The residual quercetin in the nanoparticles was
+found to be 29%, 26%, and 21%, which confirm that most
+of the drug is stable during the release experiments. When
+release was compared for different drug loading samples, a
+slightly faster release of quercetin from the Qu-NP with 20%
+w/w initial drug loading was observed as compared to 10%
+and 15% w/w. This could be attributed to the difference in the
+proportion of polymer available to entrap quercetin in the
+nanoparticles, thereby decreasing the rate of diffusion of quer-
+cetin from different Qu-NP. Since 20% w/w drug loading
+Qu-NP have lower ratio of polymer to quercetin than 15% and
+10% w/w, thus release of quercetin occurred at a faster rate, but
+this difference in the release was statistically insignificant.
+Antioxidant assays
+In vitro antioxidant assays are frequently employed to deter-
+mine the free radical scavenging activity of an antioxidant.
+Table 2 Characterization of Qu-NP prepared at different initial drug loadings
+Batch
+number
+Initial drug
+loading (% w/w)
+Entrapment
+efficiency ( %)
+Practical drug
+loadinga (%w/w)
+Particle
+size (nm)
+Polydispersity
+Index (PDI)
+Zeta potential
+(mV)
+A
+10
+86.50
+13.44
+179.9±11.2
+0.128±0.01
+−6.06±1.51
+B
+15
+88.17
+19.02
+257.3±27.3
+0.226±0.19
+−6.67±1.44
+C
+20
+72. 07
+24.10
+278.5±39.3
+0.311±0.08
+−6.57±0.39
+a In the present case practical drug loading is achieved higher than initial drug loading due to the higher loss of polymer content at processing stage
+in comparison to drug content
+Fig. 1 SEM photograph of Qu-NP. Magnification 15.0k
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+117
+
+The objective of this study was to ascertain the functional
+stability of quercetin after nanoparticles preparation. Querce-
+tin produces its antioxidant activity by two mechanisms, either
+by scavenging the free radicals or by inhibiting enzymes
+responsible for the production of free radicals, e.g., xanthine
+oxidase, etc. Thus, two different antioxidant assays were con-
+ducted, viz. DPPH scavenging activity and xanthine oxidase
+inhibition activity.
+DPPH is a stable free radical and has been used to deter-
+mine the free radical scavenging activity of a compound.
+Quercetin has free radical scavenging activity due to its ability
+to donate the hydrogen ion, which stabilizes the free radicals
+and prevents the oxidation of the lipid, protein, and DNA and
+reduces the injuries caused by oxidative stress. SC50 value is
+the concentration of the antioxidant required to scavenge 50%
+of free radicals in the presence of antioxidant, and it was found
+to be 10.03 μg/ml for quercetin control. Qu-NPs were ana-
+lyzed at an equivalent amount of quercetin, and no statistically
+significant difference was observed between the quercetin
+(control) and Qu-NP (Fig. 4), indicating that the antioxidant
+activity of quercetin was preserved after encapsulation in the
+nanoparticles.
+To access the antisuperoxide formation activity, IC50
+value was determined, which is the concentration of the
+antioxidant required to inhibit 50% of enzyme activity in
+the presence of antioxidant. IC50 value for quercetin was
+found to be 10.63 μg/ml. Quercetin in Qu-NP was also able
+to retain the antisuperoxide formation activity as that of free
+quercetin control as shown in Fig. 4.
+In vivo evaluation of the formulation
+Pharmacokinetic studies
+Qu-NPs were designed to enhance the oral bioavailability
+and sustain the in vivo plasma levels of quercetin. Studies
+were conducted in male Sprague–Dawley rats wherein plas-
+ma levels of the drug after oral administration of quercetin
+suspension and Qu-NP at an equivalent dose of 150 mg/kg
+were determined at regular time intervals. The plasma con-
+centration–time profile of quercetin suspension and Qu-NP
+is shown in Fig. 5. The relevant pharmacokinetic parameters
+were calculated by trapezoidal method using Kinetica 5.0
+software and have been listed in Table 4.
+During the drug absorption through GIT membrane,
+quercetin makes conjugate with sulfates and glucuronides;
+thus, it reaches to central compartment in the form of free
+drug as well as drug conjugates [3, 4]. Thus, it is important
+to develop an analysis method through which the entire
+quercetin content can be analyzed. In the present study,
+modified acid hydrolysis method was used to cleave all
+the ester bonds of quercetin metabolites such that these
+metabolites also get converted back to the drug itself, which
+Fig. 2 Appearance of Qu-NP
+cake after lyophilization. a
+Without lyoprotectant, b with
+glucose, c with D-trehelose, d
+with sucrose, e with sorbitol, f
+with lactose
+Table 3 Optimization of cryoprotectant used in freeze drying
+Cryoprotectant
+(5% w/v)
+Appearance of
+lyophilized product
+Ratio (Sf/Si)
+Reconstitution
+score
+No cryoprotectant
+Intact cake
+2.57
+−
+Glucose
+Shrinkage of cake
+1.08
++
+D-trehalose
+Intact cake
+1.00
++++
+Sucrose
+Intact cake
+1.03
+++
+Sorbitol
+Collapsed cake
+–
+−
+Lactose
+Intact cake
+1.05
++
+Sf particle size after freeze drying, Si particle size before freeze drying
+118
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+
+was then analyzed by the bioanalytical HPLC method [12].
+The lower limit of quantification of quercetin by the vali-
+dated bioanalytical HPLC method was found to be 50 ng/
+ml. After administration of Qu-NPs, it was observed that the
+quercetin plasma levels at 2.4 μg/ml were reached within
+15 min; thereafter, there was a steep decline to 700 ng/ml in
+2 h. In 6 h, quercetin levels further increased to 900 ng/ml
+followed by a gradual decrease over a period of 6 days. In
+contrast to this, oral administration of quercetin suspension
+showed plasma concentration of 110 ng/ml of quercetin in
+15 min, which reached at a Cmax of 435 ng/ml in 4 h
+followed by a decline to undetectable limits after 24 h.
+The early appearance of maximal quercetin plasma concen-
+tration after oral administration of Qu-NP could be attribut-
+ed to the specialized uptake mechanism of nanoparticles,
+which occurs directly via gut-associated lymphatic tissue
+(GALT) and further into the peripheral blood compartment
+leading to faster absorption [30]. However, in case of quer-
+cetin suspension, the drug is absorbed by passive diffusion
+through the intestine. Enhanced rate of absorption of the
+drug through GALT is reported in the literature, wherein
+quercetin with fat diet was absorbed at a faster rate due to
+incorporation into chylomicrons with consecutive export
+into the peripheral blood via lymph [31, 32]. Furthermore,
+a second peak of quercetin was observed at 6 h after admin-
+istration of Qu-NP, which could be due to the bio-adhesion
+of the PLGA nanoparticles in the gut mucosa, leading to
+prolonged absorption of quercetin [33, 34]. Similar phenom-
+enon in the pharmacokinetic study is also reported in the
+literature for drug-loaded SLNs [30, 35, 36]. The relative
+Fig. 3 In vitro release profiles
+of Qu-NP at different initial
+drug loadings (n03). Formula-
+tions A, B, and C refer to the
+Qu-NP with practical drug
+loading of 13.44%, 19.02%,
+and 24.10%, respectively
+Fig. 4 The antioxidant activities
+of quercetin (control) and Qu-NP
+at different drug loadings (n03).
+No statistically significant
+difference was observed between
+any of the formulations vs. pure
+quercetin indicating the func-
+tional stability of quercetin
+after encapsulation in PLGA
+nanoparticles
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+119
+
+bioavailability of quercetin was determined by comparing
+the area under curve (AUC) values of Qu-NP with that of
+quercetin suspension and was found to be 523%. This
+marked difference between Qu-NP and quercetin suspen-
+sion could be attributed to the specialized uptake of nano-
+particles through payer’s patches via M-Cells into the
+lymphatic system and then directly into the systemic circula-
+tion and thus bypassing the first pass metabolism. In addition
+to this, nanoparticles prevent the enzymatic degradation of
+quercetin in the GIT. Furthermore, PLGA matrix provided a
+barrier for quercetin release in vivo thereby, enhancing its
+mean residence time in plasma. These results clearly indicate
+that dose as well as dosing frequency of quercetin could be
+reduced by employing the developed nanoparticulate formu-
+lation for the treatment of diabetic disorder.
+Efficacy studies in diabetic rat model
+Streptozotocin (STZ)-induced diabetic rat model was
+developed to study the efficacy of Qu-NP. STZ is an
+antibiotic produced by Streptomyces achromogenes and
+is the most commonly used chemical agent to induce
+experimental diabetes in rats [1, 37, 38]. It is taken up
+by pancreatic β-cells via glucose transporter GLUT2
+and causes alkylation of the DNA by the nitrosourea
+moiety ultimately leading to death of β-cells. For the
+induction of diabetes, STZ was injected intraperitoneally
+at a single dose of 55 mg/kg. Diabetes was induced in
+2 days as confirmed by the elevated blood glucose
+levels; thereafter, animals were randomly divided into differ-
+ent groups and were treated with quercetin suspension and
+Qu-NP as shown in Table 1. Normal rats (normoglycemic
+group) in which no diabetes was induced served as the nega-
+tive control wherein glucose levels were ≈100 mg/dl, while in
+diabetic (positive control) group, it reached to 530 mg/dl.
+Significantly lower glucose levels were seen in diabetic
+groups treated with quercetin suspension as well as Qu-NP
+as against diabetic control group (Fig. 6). In addition to this,
+diabetic groups treated with Qu-NP showed better effect than
+that of quercetin suspension at days 7, 10, and 15 (P<0.05)
+although Qu-NP were administered every fifth day in com-
+parison to daily dosing of quercetin suspension. It indicates
+that there is a sustained supply of quercetin from Qu-NP
+formulation at a single dose in 5 days, whereas the same effect
+Fig. 5 Comparative in vivo
+plasma concentration-time pro-
+file of quercetin suspension
+(oral) and Qu-NP (oral) indi-
+cating an increased AUC/bio-
+availability and sustained
+plasma levels of quercetin from
+Qu-NP (n04)
+Table 4 Pharmacokinetic parameters for different quercetin formulations
+Formulation studied
+Dose (mg/kg)
+Cmax (μg/ml)
+tmax (min)
+AUC0–∞(μg/ml min)
+Quercetin suspension (oral)
+150
+0.435
+240
+594
+Qu-NP (oral)a
+150
+2.426; 0.925
+15; 360
+3107
+a Two peaks were observed for Qu-NP
+120
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+
+was observed after daily administration of quercetin suspen-
+sion at the same dose. In the present study, normal levels of
+blood glucose were not reached in the treatment groups due to
+permanent damage of substantial number of β-cells in the
+pancreas by streptozotocin as indicated by the high blood
+glucose levels [37]. The antihyperglycemic effect of quercetin
+might be due to its antioxidant property, which scavenges the
+free radicals produced by STZ and thus helps the sur-
+viving β-cells to proliferate and secrete more insulin. In
+addition to this, quercetin also enhances the insulin sensitivity,
+leading to increased utilization of glucose by the extrahepatic
+tissues and thereby decreasing the blood glucose levels. This
+observation is supported by the literature reports where these
+types of flavanoids enhance insulin release up to 70% by
+acting on islet function [39, 40].
+Level of natural antioxidants, SOD, and catalase was also
+determined in pancreas and kidneys, since their status in
+these two organs indicate the extent of oxidative damage,
+which is usually altered in oxidative stress conditions. In
+this study, it was observed that in diabetic control group, the
+levels of SOD and catalase were significantly reduced than
+the normoglycemic group (Fig. 7) due to the excess gener-
+ation of ROS. Upon treatment with quercetin in the form of
+drug suspension as well as Qu-NP, the activity of SOD and
+catalase was significantly increased since quercetin miti-
+gates the action of ROS on SOD and catalase.
+Fig. 6 Blood glucose level profile of normoglycemic and streptozotocin-
+induced diabetic rats after treatment with Qu-NP and Qu-SUS (n06).
+Diabetic control showed a value significantly higher than normoglycemic
+and normoglycemic-QuNP groups at all points (P<0.05). At days 7, 10,
+and 15, *P<0.05 for diabetic control and Qu-SUS. Qu-NP (150 mg/kg
+every fifth day) showed similar effect to that of Qu-SUS (150 mg/kg
+daily) indicating requirement of less dose and reduced dosing frequency
+Fig. 7 Effect of treatment with Qu-NP and Qu-SUS upon the
+activities of SOD and catalase in pancreas and kidneys in normal
+and streptozotocin-induced diabetic rats. One unit of SOD is
+defined as the concentration of enzyme that gives half maximal
+inhibition of nitro blue tetrazolium (NBT) dye reduction. One unit
+of catalase is defined as the amount of enzyme that liberates half
+the peroxide oxygen from a hydrogen peroxide solution under
+assay conditions.
+@P<0.05 vs. diabetic control, normoglycemic
+and normoglycemic Qu-SUS;
+#P<0.05 vs. diabetic control and
+normoglycemic and normoglycemic Qu-SUS; *P<0.05 vs. diabetic con-
+trol, $P<0.05 vs. diabetic control. Qu-NP and Qu-SUS show a statisti-
+cally significant difference in SOD and catalase activities as compared to
+diabetic control group. While Qu-NP (150 mg/kg every fifth day) and
+Qu-SUS (150 mg/kg daily) do not show any statistically significant
+difference in SOD and catalase activities thereby indicating reduced dose
+and dosing frequency of quercetin after nanoencapsulation
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+121
+
+Conclusion
+In the present study, quercetin-loaded PLGA nanoparticles
+(Qu-NP) were successfully prepared and tested at reduced
+dose and lesser frequency for pharmacokinetics as well as
+efficacy in rat model. In pharmacokinetic study, it was
+observed that Qu-NP showed an increase of 523% in rela-
+tive oral bioavailability of quercetin to that of quercetin
+suspension, indicating the potential to reduce dose using
+Qu-NP. Additionally, the plasma levels of quercetin were
+also sustained for 6 days in vivo, thus promising a reduced
+dosing frequency. In the efficacy studies, decrease in blood
+glucose level was observed in diabetic rats treated with
+quercetin suspension (150 mg/kg given daily) and Qu-NP
+(150 mg/kg given every fifth day) as compared to diabetic
+control group. Catalase and SOD levels were also found to
+be significantly increased in the diabetic rats treated with
+Qu-NP (150 mg/kg every fifth day), and these levels were
+approximately equal to the quercetin suspension (150 mg/kg
+daily) treated groups. These results clearly demonstrate that
+Qu-NP offers an efficacious oral therapy with reduced dose
+and dosing frequency for treatment of diabetes and is hence
+patient compliant.
+Acknowledgments
+DC and AM are thankful for their research asso-
+ciate ship award to Department of Biotechnology (DBT) and Council
+of Scientific and Industrial Research (CSIR) respectively to carry out
+this research. NK is thankful to NIPER for financial support through
+grant C-11 (Nanotechnology and drug delivery).
+References
+1. Mahesh T, Menon VP. Quercetin allievates oxidative stress in
+streptozotocin-induced diabetic rats. Phytother Res. 2004;18:123–7.
+2. Date AA, Nagarsenker MS, Patere S, Dhawan V, Gude RP, Hassan
+PA, et al. Lecithin-based novel cationic nanocarriers (Leciplex) II:
+improving therapeutic efficacy of quercetin on oral administration.
+Mol Pharm. 2011;8:716–26.
+3. Zhang L, Zuo Z, Lin G. Intestinal and hepatic glucuronidation of
+flavonoids. Mol Pharm. 2007;4:833–45.
+4. Chen X, Yin OQ, Zuo Z, Chow MS. Pharmacokinetics and mod-
+eling of quercetin and metabolites. Pharm Res. 2005;22:892–901.
+5. Boots AW, Haenen GR, Bast A. Health effects of quercetin: from
+antioxidant to nutraceutical. Eur J Pharmacol. 2008;585:325–37.
+6. Wu TH, Yen FL, Lin LT, Tsai TR, Lin CC, Cham TM. Preparation,
+physicochemical characterization, and antioxidant effects of quer-
+cetin nanoparticles. Int J Pharm. 2008;346:160–8.
+7. Kim YJ, Bae YC, Suh KT, Jung JS. Quercetin, a flavonoid, inhibits
+proliferation and increases osteogenic differentiation in human
+adipose stromal cells. Biochem Pharmacol. 2006;72:1268–78.
+8. Galijatovic A, Walle UK, Walle T. Induction of UDP-
+glucuronosyltransferase by the flavonoids chrysin and quercetin
+in Caco-2 cells. Pharm Res. 2000;17:21–6.
+9. Ott M, Huls M, Cornelius MG, Fricker G. St. John’s Wort con-
+stituents modulate P-glycoprotein transport activity at the blood–
+brain barrier. Pharm Res. 2010;27:811–22.
+10. van Zanden JJ, van der Woude H, Vaessen J, Usta M, Wortelboer
+HM, Cnubben NH, et al. The effect of quercetin phase II metab-
+olism on its MRP1 and MRP2 inhibiting potential. Biochem Phar-
+macol. 2007;74:345–51.
+11. Umathe SN, Dixit PV, Kumar V, Bansod KU, Wanjari MM.
+Quercetin pretreatment increases the bioavailability of pioglita-
+zone in rats: involvement of CYP3A inhibition. Biochem Pharma-
+col. 2008;75:1670–6.
+12. Li H, Zhao X, Ma Y, Zhai G, Li L, Lou H. Enhancement of
+gastrointestinal absorption of quercetin by solid lipid nanopar-
+ticles. J Control Release. 2009;133:238–44.
+13. Gao L, Liu G, Wang X, Liu F, Xu Y, Ma J. Preparation of a
+chemically stable quercetin formulation using nanosuspension
+technology. Int J Pharm. 2011;404:231–7.
+14. Hariharan S, Bhardwaj V, Bala I, Sitterberg J, Bakowsky U, Ravi
+Kumar MN. Design of estradiol loaded PLGA nanoparticulate
+formulations: a potential oral delivery system for hormone therapy.
+Pharm Res. 2006;23:184–95.
+15. Sonaje K, Italia JL, Sharma G, Bhardwaj V, Tikoo K, Kumar
+MNVR. Development of biodegradable nanoparticles for oral deliv-
+ery of ellagic acid and evaluation of their antioxidant efficacy
+against cyclosporine A-induced nephrotoxicity in rats. Pharm
+Res. 2007;24:899–908.
+16. Yen F-L, Wu T-H, Lin L-T, Cham T-M, Lin C-C. Naringenin-loaded
+nanoparticles improve the physicochemical properties and the hep-
+atoprotective effects of naringenin in orally-administered rats with
+CCl4-induced acute liver failure. Pharm Res. 2009;26:893–902.
+17. Devadasu VR, Wadsworth RM, Kumar MNVR. Protective effects
+of nanoparticulate coenzyme Q10 and curcumin on inflammatory
+markers and lipid metabolism in streptozotocin-induced diabetic
+rats: a possible remedy to diabetic complications. Drug Deliv and
+Transl Res. 2011;1:448–55.
+18. Blum JS, Weller CE, Booth CJ, Babar IA, Liang X, Slack FJ, et al.
+Prevention of K-Ras- and Pten-mediated intravaginal tumors by
+treatment with camptothecin-loaded PLGA nanoparticles. Drug
+Deliv and Transl Res. 2011;1:383–94.
+19. Priprem A, Watanatorn J, Sutthiparinyanont S, Phachonpai W,
+Muchimapura S. Anxiety and cognitive effects of quercetin lip-
+osomes in rats. Nanomedicine. 2008;4:70–8.
+20. Vicentini FT, Simi TR, Del Ciampo JO, Wolga NO, Pitol DL,
+Iyomasa MM, et al. Quercetin in w/o microemulsion: in vitro and
+in vivo skin penetration and efficacy against UVB-induced skin
+damages evaluated in vivo. Eur J Pharm Biopharm. 2008;69:948–57.
+21. Ghosh A, Mandal AK, Sarkar S, Panda S, Das N. Nanoencapsu-
+lation of quercetin enhances its dietary efficacy in combating
+arsenic-induced oxidative damage in liver and brain of rats. Life
+Sci. 2009;84:75–80.
+22. Kumari A, Yadav SK, Pakade YB, Singh B, Yadav SC. Develop-
+ment of biodegradable nanoparticles for delivery of quercetin.
+Colloids Surf B: Biointerfaces. 2010;80:184–92.
+23. Mittal G, Carswell H, Brett R, Currie S, Ravi Kumar MNV.
+Development and evaluation of polymer nanoparticles for oral
+delivery of estradiol to rat brain in a model of Alzheimer’s pathol-
+ogy. J Control Release. 2011;150:220–8.
+24. Luck H. Catalase spectrophotometric method. In: Bergmeyer H-U,
+editor. Methods in enzymatic analysis. New York: Academic;
+1963. p. 885–93.
+25. Kono Y. Generation of superoxide radical during autooxidation of
+hydroxylamine and an assay of superoxide dismutase. Arch Bio-
+chem Biophys. 1978;186:189–95.
+26. Mittal G, Sahana DK, Bhardwaj V, Ravi Kumar MNV. Estradiol
+loaded PLGA nanoparticles for oral administration: Effect of poly-
+mer molecular weight and copolymer composition on release behav-
+ior in vitro and in vivo. J Control Release. 2007;119:77–85.
+27. Govender T, Stolnik S, Garnett MC, Illum L, Davis SS. PLGA
+nanoparticles prepared by nanoprecipitation: drug loading and
+122
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+
+release studies of a water soluble drug. J Control Release.
+1999;57:171–85.
+28. Abdelwahed W, Degobert G, Stainmesse S, Fessi H. Freeze-drying
+of nanoparticles: formulation, process and storage considerations.
+Adv Drug Del Rev. 2006;58:1688–713.
+29. Fredenberg S, Wahlgren M, Reslow M, Axelsson A. The
+mechanisms of drug release in poly(lactic-co-glycolic acid)-
+based drug delivery systems—a review. Int J Pharm. 2011;415:34–
+52
+30. Luo CF, Yuan M, Chen MS, Liu SM, Zhu L, Huang BY, et al.
+Pharmacokinetics, tissue distribution and relative bioavailability of
+puerarin solid lipid nanoparticles following oral administration. Int
+J Pharm. 2011;410:2011.
+31. Azuma K, Ippoushi K, Ito H, Higashio H, Terao J. Combination of
+lipids and emulsifiers enhances the absorption of orally adminis-
+tered quercetin in rats. J Agric Food Chem. 2002;50:1706–12.
+32. Lesser S, Cermak R, Wolffram S. Bioavailability of quercetin in
+pigs is influenced by the dietary fat content. J Nutr. 2004;134:1508–
+11.
+33. He W, Horn SW, Hussain MD. Improved bioavailability of orally
+administered mifepristone from PLGA nanoparticles. Int J Pharm.
+2007;334:173–8.
+34. Jawahar N, Nagasamy Venkatesh D, Sureshkumar R, Senthil V,
+Ganesh GNK, Vinoth P, et al. Development and charecterization of
+PLGA-nanoparticles containing carvedilol. J Pharm Sci & Res.
+2009;1:123–8.
+35. Löbenberg R, Araujo L, Kreuter J. Bodydistribution of azidothy-
+midinebound to nanoparticles after oral administration. Eur J
+Pharm Biopharm. 1997;44:127–32.
+36. Yang S, Zhu J, Lu Y, Liang B, Yang C. Body distribution of
+camptothecin solid lipid nanoparticles after oral administration.
+Pharm Res. 1999;16:751–7.
+37. Coskun O, Kanter M, Korkmaz A, Oter S. Quercetin, a flavanoid
+antioxidant, prevents and protects streptozotocin-induced oxida-
+tive stress and β-cell damage in rat pancreas. Pharmacol Res.
+2005;51:117–23.
+38. Vessal M, Hemmati M, Vasei M. Antidiabetic effects of quercetin
+in streptozocin-induced diabetic rats. Comp Biochem Physiol C
+Toxicol Pharmacol. 2003;135:357–64.
+39. Hii CS, Howell SL. Effects of epicatechin on rat islets of Langer-
+hans. Diabetes. 1985;33:291–6.
+40. Hii CST, Howell SL. Effects of flavanoids on insulin secretion and
+45Ca2+ handling in rat islets of langerhans. J Endocrinol. 1985;
+107:1–8.
+Drug Deliv. and Transl. Res. (2012) 2:112–123
+123

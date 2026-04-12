@@ -1,0 +1,1524 @@
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+Available online 29 August 2020
+1773-2247/© 2020 Elsevier B.V. All rights reserved.
+Research paper
+Improved antileishmanial activity and cytotoxicity of a novel nanotherapy
+for N-iodomethyl-N,N-dimethyl-N-(6,6-diphenylhex-5-en-1-yl)
+ammonium iodide
+Maritza Fern´andez a, M. ´Angeles Holgado b, M. Dolores Cayero-Otero b, Tatiana Pineda a,
+Lina M. Yepes a, Diana P. Gaspar c, Ant´onio J. Almeida c, Sara M. Robledo a,1,
+Lucia Martín-Banderas b,*,1
+a PECET-Facultad de Medicina, Universidad de Antioquia-Udea, Medellín, Colombia
+b Departamento de Farmacia y Tecnología Farmac´eutica, Facultad de Farmacia, Universidad de Sevilla, Sevilla, Spain
+c Research Institute for Medicines (iMed.ULisboa), Faculty of Pharmacy, Universidade de Lisboa, Lisbon, Portugal
+A R T I C L E  I N F O
+Keywords:
+Cutaneous leishmaniasis
+Quaternary ammonium iodide
+Solid lipid nanoparticles
+Polymeric nanoparticles
+A B S T R A C T
+The N-iodomethyl-N, N-Dimethyl-N-(6,6-diphenylhex-5-en-1-yl) ammonium iodide (C6I) is a new chemical en­
+tity (NCE) with demonstrated in vitro and in vivo antileishmanial activity. As many others NCE, C6I is poorly
+water soluble (Class II of the Biopharmaceutical Classification System), thus its oral administration is potentially
+compromised. To overcome the issue, nanotechnology is a real and useful tool. Moreover, nanotechnology can
+improve C6I internalization by macrophages, the drug targets, therefore increasing its antileishmanial activity.
+The present work aimed to develop a potential suitable oral nanodrug delivery system for C6I to improve its
+antileishmanial activity. For this purpose, polymeric and solid lipid nanoparticles were developed. Polylactic-co-
+glycolic acid polyester (PLGA) were prepared by nanoprecipitation while solid lipid nanoparticles made of
+glycerol tripalmitate (Trp) and glyceryl tristearate (Trs) were obtained by emulsion–solvent evaporation method.
+Physicochemical characterization of all formulations was performed, as well as stability studies. A lyophilization
+procedure was also established. Biological activity was evaluated by antileishmanial activity and cytotoxicity in
+vitro assays.
+Five types of commercial PLGA to encapsulate C6I were tested. The best results were obtained using PLGA
+752S and D-α-Tocopheryl polyethylene glycol 1000 succinate (TPGS), the water-soluble form of vitamin E.
+Particles around 220 nm in diameter and encapsulation efficiency (EE) up to 60% were obtained. Solid lipid
+nanoparticles based on Trs and Trp lipids were also in the nanoscale showing a low polydispersity index and EE%
+>60%. Both types of nanoformulations, polymeric and lipidic, thd C6I cytotoxicity in human and hamster
+macrophages cell cultures. In vitro assays with PLGA loaded-C6I showed a noticeable improved antileishmanial
+activity on intracellular amastigotes of L. (V.) panamensis, with the following EC50 values: PLGA «< Trs-SLN «
+free C6I < Trp-SLN. In conclusion, PLGA nanoformulation could be a suitable candidate for preclinical evaluation
+in animal model.
+1. Introduction
+Leishmaniasis is a neglected tropical disease that affects millions of
+people worldwide [1]. Around 20 species of Leishmania can cause the
+infection, in which this intracellular parasite invades macrophages. The
+disease presents mainly three different clinical forms: visceral,
+monocutaneous, and cutaneous leishmaniasis (CL). The CL is the most
+common form and generally causes aberrant lesions on the infected in­
+dividuals, bringing to them a permanent social stigma and psychological
+suffering [1,2]. Leishmania spp. Is an intracellular parasite and infects
+macrophages [1,2]. Pentavalent antimony salts are still considered the
+first-line drug treatment. They present serious drawbacks including:
+* Corresponding author. c/ Prof. García Gonz´alez nº2, 41012, Sevilla, Spain.
+E-mail address: luciamartin@us.es (L. Martín-Banderas).
+1 Co-senior author.
+Contents lists available at ScienceDirect
+Journal of Drug Delivery Science and Technology
+journal homepage: www.elsevier.com/locate/jddst
+https://doi.org/10.1016/j.jddst.2020.101988
+Received 27 June 2019; Received in revised form 23 July 2020; Accepted 30 July 2020
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+2
+high doses, parenteral administration, severe adverse effects and large
+costs [2]. Meanwhile, the access to miltefosine, the only oral drug
+approved for the treatment of leishmaniasis, is still strongly limited,
+despite the efforts from institutions after the patent expired [3].
+Therefore, there is an urgent needed to develop new drugs to treat
+Leishmaniasis, which not only can target the parasite inside the mac­
+rophages, but also provides more effective and affordable treatment for
+patients.
+In the search for new molecules with antileishmanial potential, new
+choline analogs from the family of the halomethylated quaternary
+ammonium salts were developed and demonstrated promising activity
+[4]. Our group identified a series of 24 halomethylated and
+non-halomethylated quaternary ammonium salts, being N-iodome­
+thyl-N, N-dimethyl-N- (6,6-diphenylhex-5-en-1-yl) ammonium iodide
+(C6I) the lead compound for the treatment of experimental CL [5–7].
+The selection was based on the antileishmanial activity, meaning the
+ability to inhibit the choline/ethanolamine kinase of L. major, at a
+concentration lower than 20 μg/mL (on Leishamania (Viannia) pan­
+amensis) [4,7].
+In an attempt to deal with these challenges, different strategies have
+been developed. In this sense, nanotechnology is a promising new
+approach in the treatment of leishmaniasis. Encapsulating the drugs into
+nanoscale systems, the physicochemical, biopharmaceutical and toxi­
+cological properties significantly change. In the last decade, several
+studies have been shown the application of nanosystems for treating
+leishmaniasis, such as metallic, polymeric and lipid nanoparticles (NPs),
+as well as liposomes and nanocrystals [8,9]. Currently, amphotericin B is
+an example of the usage of this approach. The classical formulation
+displays adverse effects on kidney and liver that restrict its use only to
+some cases that did not respond to the first line treatment, that is based
+on the intramuscular administration of meglumine antimoniate (MA),
+while the liposomal form of amphotericin B (Ambisome®, Gilead Sci­
+ences, Inc.) improves its clinical and biopharmaceutical profile [10].
+Presently, this is the unique liposomal product approved for the treat­
+ment of leishmaniasis, however it is not widely affordable because of its
+high cost.
+Polylactic-co-glycolic acid polyester (PLGA), a copolymer of lactic
+and glycolic acids approved for pharmaceutical use by the FDA and the
+EMA, is one of the most used polymers due to its biodegradability and
+biocompatibility. Polymer-based NPs are widely used in experimental
+models for the administration of active molecules, since they have been
+successfully used as a passive delivery system for various intracellular
+pathogens [11–13]. The potential of primaquine-loaded poly-­
+alkylcyanoacrylate (PACA) NPs were 21 times more effective than free
+primaquine to eliminate L. donovani [14]. Similarly, nanoencapsulated
+miltefosine has shown greater activity against intracellular amastigotes
+of
+L.
+donovani
+compared
+to
+the
+conventional
+drug
+[15].
+Nano-D-amphotericin B treatment elicited also an increased reduction in
+the number of parasites and cell viability regarding the free amphoter­
+icin B [16]. These results suggest that NPs present higher efficacy than
+the free molecules, and this implies in a reduced frequency of
+administration.
+On the other hand, solid lipid nanoparticles (SLN) are aqueous
+colloidal dispersions with a matrix composed of biodegradable lipids
+that are solid at room temperature. Many of these lipids are long chain
+fatty acids, mono-, di- and triglycerides, sterols and waxes, with phos­
+pholipids, poloxamers, polysorbates and sodium cholate or glycocholate
+as surfactants that can solubilize lipophilic drugs and stabilize the
+nanodispersions [17]. The SLN have become an alternative for drug
+delivery because of their low cost and easy large-scale production and
+storage. Recent advances in SLN formulation have improved the
+lymphatic uptake and oral bioavailability of entrapped molecules. For
+example, nano drug delivery systems can increase therapeutic efficacy
+by releasing leishmanicidal drug substances in macrophage-rich organs,
+such as the bone marrow, liver and spleen, improving the activity on the
+target and reducing the toxic effects of several antileishmanial
+substances [18]. Our group has demonstrated expertise in SLN and
+developed a Precirol® lipid based-nanosystem [19] for C6I oral
+administration. Results showed improved in vitro and in vivo anti­
+leishmanial activity of C6I-loaded Precirol® SLNs, with EC50 values
+40-fold lower than free C6I in animal model after a daily dose of 30
+mg/kg/day for 28 days.
+Furthermore, both PLGA NPs and SLN present controlled release
+properties suitable for prolonged oral drug delivery, decreasing doses
+and treatment duration [20]. Therefore, the goal of the present study
+was to investigate the in vitro antileishmanial activity and cytotoxicity of
+C6I-loaded PLGA NPs and SLN as potential nanocarriers for oral
+administration.
+2. Material and methods
+2.1. Chemicals
+PLGA 50:50: Resomer® RG 502 (molecular weight, MW: 12,000 Da;
+inherent viscosity: 0.24 dL/g), Resomer® RG 502H (MW: 12,000 Da;
+inherent viscosity: 0.19 dL/g), Resomer® RG 504 (MW: 48.000 Da;
+inherent viscosity: 0.5 dL/g), Resomer® RG 504H (Mw: 48,000;
+inherent viscosity: 0.53 dL/g) and PLGA 75:25: Resomer® RG 752S
+(Mw: 15,000; inherent viscosity: 0.24 dL/g) were obtained from Evonik
+(Germany). Soy lecithin (Lipoid S100) was kindly given by Lipoid
+(Germany). Tristearin (Trs) (glycerol tristearate, mp = 72–75 ◦C), tri­
+palmitin (Trp) (glyceryl tripalmitate, purity ≥85%, mp = 66 ◦C), sodium
+deoxycholate, Tween® 20, Span® 60, Tween® 80, Pluronic® F-68, D-
+alpha tocopherol polyethylene glycol succinate 100 (TPGS) were ob­
+tained from Sigma-Aldrich (Spain). Acetonitrile (HPLC grade), sodium
+acetate (C2H3NaO2), phosphoric acid (H3PO4), sodium dihydrogen
+phosphate (NaH2PO4), disodium hydrogen phosphate (Na2HPO4) and
+hydrochloric acid (HCl) were obtained from Merck (Deisenhofen, Ger­
+many). Milli-Q quality water was obtained from Millipore (Bedford, MD,
+USA). Threalose was obtained from VWR International Eurolab S.L.
+(Barcelona, Spain).
+2.2. Parasites, cell line and culture conditions
+Promastigotes of L. (V.) panamensis (MHOM/CO/87/UA140 ePir-
+GFP), U-937 promonocytes (ATCC CRL1593.2), Caco-2 human intesti­
+nal cells (ATCC® HTB-37™) and Detroit 551 fibroblasts (ATCC CCL-
+110) were obtained from the American Type Culture Collection
+(ATCC, Manassas, VA, USA). Human macrophages (MDMhu) and golden
+hamster peritoneal macrophages (MPha) were derived from peripheral
+blood monocytes. Briefly, peripheral mononuclear cells from three
+healthy donors were isolated from defibrinated blood using density
+gradient centrifugation (Ficoll-Hypaque 1.077; Sigma-Aldrich), ac­
+cording to the manufacturer’s instructions.
+MTT
+(3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium
+bro­
+mide), PMA (phorbol-12-myristate-13-acetate), doxorubicin, Dulbec­
+co’s modified Eagle medium (DMEM), RPMI 1640, L-glutamine,
+penicillin, streptomycin, trypsin-EDTA and Amphotericin B deoxy­
+cholate (AmB) (used as an in vitro leishmanicidal control compound)
+were obtained of Sigma-Aldrich (St. Louis, MO, USA). Fetal bovine
+serum (FBS) was obtained from Invitrogen.
+2.3. Synthesis of nanoparticle
+2.3.1. C6I-PLGA NPs
+PLGA NPs were obtained by nanoprecipitation method [21] with
+modifications [22–24]. Five PLGA references with different molecular
+weight, lactic: acid ratio and carboxylic groups (Resomer® RG 502,
+502H, 504, 504H and 752S) were assayed in order to select the most
+suitable for C6I vehiculization. Hydrophilic and lipophilic surfactants as
+Pluronic® F-68 (for the aqueous phase) and Span® 60 and TCP (for the
+organic phase) were tested. Forty-five mg of polymer and 15 mg of
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+3
+Span® 60 were co-dissolved in 3 mL of acetone. For loaded NPs, C6I was
+dissolved in the polymer solution at 10% w/w polymer/drug. Blank NPs
+(without drug) were used as control. The organic solution is dropwise
+added at 5 mL/min using a syringe pump (Harvard Apparatus Ltd,
+Edenbridge, UK) into 9 mL of 0.5% Pluronic® F-68 aqueous solution
+under magnetic stirring. The NPs dispersion occurred under agitation for
+4 h at room temperature until complete solvent evaporation. For the
+selection of the surfactants, 15 mg of Span® 60 with different TPGS
+concentrations were tested. The Pluronic® F-68 surfactant was main­
+tained at 0.5%. The NPs suspensions with particle diameter lower than
+300 nm, without aggregates and/or precipitates were selected. After
+solvent evaporation, NPs were collected and washed by centrifugation at
+10,000 g for 60 min at 4 ◦C (Eppendorf 504R centrifuge, Eppendorf AG,
+Germany).
+2.3.2. C6I-SLN NPs
+In a first stage, the solubility of C6I in the molten lipids Trp and Trs
+was determined. It was performed using a slight modification of a pre­
+viously described method [24,25]. Briefly, the solid lipids Trp and Trs
+were melted at 10 ◦C above each respective melting point, in a
+controlled temperature water bath. Small amounts of C6I were then
+successively added until the saturation of the lipid was achieved, cor­
+responding to an excess of solid C6I that persisted for more than 8 h.
+Each determination was carried out in triplicate.
+The NPs of Trp and Trs loaded with C6I (C6I-Trp and C6I-Trs,
+respectively) were prepared by the emulsion-solvent evaporation
+method using Trp or Trs as lipid component, and sodium deoxycholate,
+Tween® 20 and soy lecithin as co-surfactants. Trp or Trs (50 mg) was
+dissolved with lecithin (360 mg) and mixed with C6I (3 or 5 mg) in
+dichloromethane (organic phase), which was then added to the aqueous
+phase containing Tween® 20 and sodium deoxycholate. The dispersion
+step was performed by sonication for 3 min (Branson Sonifier 250, USA)
+followed by 5 min of stirring at 12,500 rpm using a Silverson High Speed
+Mixer L4RT (Silverson Machines, Chesham, UK). The NPs dispersion was
+maintained by stirring for approximately 4 h at room temperature until
+the evaporation of dichloromethane. The unbound C6I was separated
+from the NPs dispersion by size exclusion chromatography in a PD-10
+column (Bio-Rad Laboratories) using PBS pH 7.4 [26].
+2.4. Characterization methods of PLGA and SLN NPs
+The particle size and distribution were analysed by photon correla­
+tion spectroscopy (PCS) using a Zetasizer Nano S (Malvern Instruments,
+UK). Samples were maintained in polystyrene cuvettes and measure­
+ments were performed at 25.0 ± 0.1 ◦C after dilution of the NPs in pu­
+rified water (1:100). The results were expressed as mean diameter and
+polydispersity index (PI). The surface charges (zeta potential, ZP) of the
+C6I-PLGA, C6I-Trs, C6I-Trp and blank NPs were determined based on
+the mobility of the particles in an electric field using a Zetasizer Nano Z
+(Malvern Instruments, UK). For this step, 100 μL of the samples were
+placed in a specific cuvette with 900 μL purified water. All measure­
+ments were performed in triplicate. After dilution, the aspect and
+morphology of PLGA and SLN NPs were determined by scanning elec­
+tron microscopy (SEM, XL-30 Royal Philips Electronics, Amsterdam).
+2.5. C6I encapsulation efficiency and drug loading
+The drug content of the PLGA, Trs and Trp NPs was determined
+indirectly by measuring the amount of non-encapsulated drug. After
+centrifugation of the recently prepared NPs, the supernatant was
+recovered and the amount of free C6I was measured by spectropho­
+tometry in a microplate reader at 233 nm (UV-1700 Pharmaspec, Shi­
+madzu, Japan). The supernatant from blank PLGA, Trs and Trp NPs were
+used as blank. The quantification method was validated according to the
+International Guide for Validation of Analytical Procedures (Interna­
+tional Conference on Harmonisation - ICH), topic Q2 (R1) 2005 [27].
+The calibration curve was constructed over the range 10–0.25 mg/mL
+(r2 = 0.9990, limit of detection: 0.1 mg/mL, limit of quantification: 0.3
+mg/mL). The encapsulation efficacy percentage (EE%) and C6I drug
+loading percentage (DL%) was calculated according to the following
+equations, 1 and 2:
+(EE%) = (mgofencapsulatedC6I)/(mgofinitialC6I)x100
+(1)
+(DL%) = (mgofencapsulatedC6I)/(mgofpolymerorlipid)x100
+(2)
+2.6. In vitro drug release
+NPs samples were suspended in phosphate buffer (pH 7.4) (4 mg of
+lyophilized PLGA NPs were suspended in 15 mL and 1 mg of SLN were
+suspended in 1 mL), maintained at 37 ◦C and stirred mechanically (100
+rpm) during the release experiments (Unitronic OR, Selecta, Spain).
+Aliquots (500 μL) were withdrawn at fixed time intervals (0.5, 1, 2, 4, 8,
+24 and 48 h) and replaced by fresh medium. Samples were filtered
+(Millex® GV, syringe filter, 0.22 μm Millipore) upon centrifugation at
+30,000×g for 30 min at 4 ◦C. The filtered samples were evaluated by
+spectrophotometry in a microplate reader (UV-1700 Pharmaspec, Shi­
+madzu, Japan) at 233 nm C6I release experiments were performed in
+triplicate.
+In order to compare the dissolution profiles obtained, a model-
+independent method which includes the difference factor (f1) and the
+similarity factor (f2) was used (equations (3) and (4)) [28]:
+f1 =
+∑n
+t=1(Rt −Tt)
+∑n
+t=1Rt
+x100
+(3)
+f2 = 50log10
+⎡
+⎢⎢⎣
+100
+̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅̅
+1 +
+∑n
+t=1(Rt−Tt)2
+n
+√
+⎤
+⎥⎥⎦
+(4)
+where, Rt and Tt are the cumulative percentage dissolved at each of the
+selected n time points of the formulation 1 and formulation 2, respec­
+tively. The factor f1 is proportional to the average difference between
+the two profiles, whereas factor f2 is inversely proportional to the
+average squared difference between the two profiles.
+2.7. Stability
+Colloidal stability of NPs in biological environments at different
+storage conditions is critical to the design of optimal preparations, and
+to clarify the fate of these nanosystems after administration. Thus, the
+stability of PLGA NPs and SLN was evaluated at high and low temper­
+atures, different pH solutions and lyophilized conditions. In these
+evaluations, the mean particle diameter, ZP values and drug loading
+were assessed.
+2.7.1. SLN stability
+2.7.1.1. Storage conditions. Fresh solutions of PLGA, Trs and Trp NPs
+(blank and loaded with C6I) were stored at 4 ◦C (±2 ◦C). SLNs particles
+were stored for 2 months. PLGA NPs were stored for 2 and 6 months also
+[24–26]. Mean particle diameter, PI, ZP and DL were determined after
+separation of the unbound C6I by spectrophotometry in a microplate
+reader at 233 nm [29].
+2.8. DLS and DCS tests
+Due to the relative low melting points of some lipids used in the
+synthesis of SLN, a deep thermal stability study was carried out for fresh
+Trp and Trs NPs. Samples were tested under a programmed heating-
+cooling cycle. The samples were properly diluted with purified water
+(1:100) in a quartz cell, and particle size analysis was performed while
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+4
+heating the sample from 25 to 90 ◦C at a rate of 0.5 ◦C/min, and then
+cooling it from 90 to 25 ◦C at the same rate. Particle size measurements
+were determined every 0.5 ◦C. Moreover, differential scanning calo­
+rimetry (DSC) was performed on a DSC calorimeter Q200 (TA In­
+struments, DE, USA). Dispersions of SLNs and bulk materials – C6I, Trp,
+Trs, sodium deoxycholate, Tween® 20 and soy lecithin – were accu­
+rately weighed into sealed aluminium containers and measured against
+a blank reference vessel. The samples were heated, and the thermograms
+were recorded in a temperature range from −20 to 240 ◦C, with a
+heating rate of 10 ◦C/min. Each sample was measured in triplicate [25,
+26].
+2.8.1. PLGA stability
+2.8.1.1. Storage conditions. Fresh solutions of PLGA, Trs and Trp NPs
+(blank or loaded with C6I) were stored at 4 ◦C (±2 ◦C). SLNs particles
+were stored for 2 months, and PLGA NPs for 2 and 6 months as previ­
+ously reported [24–26]. Mean particle diameter, PI, ZP and DL were
+determined after separation of the unbound C6I by spectrophotometry
+in a microplate reader at 233 nm [29].
+2.9. pH effect on the NPs
+It is known that the pH of aqueous dispersions of PLGA NPs can affect
+the chemical stability of the polymer. A brief study was carried out to
+determine PLGA NPs stability under different simulated biological en­
+vironments. Blank and C6I-loaded PLGA NPs were incubated in 1 mL of:
+(i) phosphoric acid buffer pH 1–1.2; (ii) phosphate buffer pH 6.8; (iii)
+phosphate buffer pH 7.4, and (IV) 0.9% of saline solutions. In all cases, 1
+mL of aqueous dispersion PLGA NPs was added and the mixtures were
+incubated at 37 ◦C (sample suspension:buffer volume rate was 1:10).
+The particle size was determined at 15 and 30 min, and following 1, 2, 3,
+4, 6, 7 and 24 h.
+2.10. Lyophilization: effect of cryoprotector on PLGA NPs
+The influence of cryoprotectors on the quality of freeze-dried for­
+mulations has been widely investigated and its use is often necessary to
+reduce particles aggregation and obtain a better re-dispersion of the
+freeze-dried product [30,31]. To preserve PLGA NPs, different concen­
+trations of trehalose as cryoprotectant were tested. Once the trehalose
+was added, the particle size was measured. The sample that maintained
+the particle size was selected and freeze-dried (Criodos-50, Telstar In­
+dustrial SL, Terrassa, Spain) at −80 ± 0.5 ◦C and 0.057 mbar, to obtain a
+fine powder. All formulations were prepared in triplicate.
+2.11. In vitro cytotoxicity activity
+The cytotoxicity of free C6I, blank NPs (Trs, Trp and PLGA) and
+loaded NPs (C6I-Trs, C6I-Trp and C6I-PLGA) was evaluated in vitro on
+primary cultures of human monocyte-derived macrophages (MDMhu)
+and golden hamster peritoneal macrophages (MPha). Cytotoxicity was
+also evaluated in Caco-2 human intestinal cells (ATCC® HTB-37™) and
+Detroit 551 human fibroblasts (ATCC® CCL-110™). Cytotoxic effect
+was determined by cell viability assay using the MTT (3-(4,5-dime­
+thylthiazol-2-yl)-2,5-diphenyltetrazolium bromide) enzymatic micro
+method [32]. Briefly, cells grown at 100,000 cell/100 μL in RPMI-1640
+supplemented with 10% FBS, 1% antibiotics (10,000 units of penicillin
+and 10 mg/mL streptomycin). Then, they were exposed to 100 μL of the
+corresponding concentrations (200, 50, 12.5 and 3.125 μg/mL) of NPs
+(loaded or blank) or free C6I. After 72 h of incubation at 37 ◦C with 5%
+CO2, 10 μL/well of MTT solution (0.5 mg/mL) was added to each well
+and plates were incubated at 37 ◦C for 3 h. The reaction was stopped by
+the addition of 100 μL/well of isopropanol solution at 50% with sodium
+dodecyl sulphate at 10%, following 30 min of incubation. Cell viability
+was determined by the amount of formazan produced according to the
+color intensity (absorbance), recorded as the optical density (O.D) ob­
+tained at 570 nm in a Varioskan reader (ThermoFisher Scientific, MA,
+USA). Untreated cells were used as a viability control, and doxorubicin
+was used as a control for cytotoxicity. At least two independent assays
+were performed. The results were expressed in percentage as the mean
+lethal concentrations (LC50), calculated by Probit analysis [33], as
+follows:
+% viability = (O.D exposed cells / O.D unexposed cells) x 100
+From that, the percentage of cell growth inhibition was determined
+as:
+% inhibition = 100 - % Viability.
+The toxicity was defined according to the LC50 values, accordingly:
+high cytotoxicity: LC50 < 100 μg/mL; moderate cytotoxicity: 100 μg/
+mL < LC50 < 200 μg/mL; and low cytotoxicity: LC50 > 200 μg/mL [4–7,
+32].
+2.12. 2.9 In vitro antileishmanial activity
+The antileishmanial activity of the blank NPs, C6I-loaded NPs and
+free C6I was evaluated on intracellular amastigotes of L. (V.) panamensis
+transfected with the gene of the green fluorescent protein (MHOM/CO/
+87/UA140-EGFP) [34]. The effect of each formulation was determined
+according to the inhibition of infection observed and the decreased
+parasite load within the macrophages. In summary, human U-937 cells
+at a concentration of 3 × 105 cells/mL in complete RPMI 1640 medium
+and 0.1 μg/mL phorbol 12-myristate 13-acetate were infected with
+promastigotes using the rate 15:1 parasites per cell, and then incubated
+for 3 h at 34 ◦C and 5% CO2. Afterwards, cells were washed twice with
+PBS to remove non-internalized parasites. One mL of complete 1640
+RPMI medium was added, and the cells were incubated for 24 h to
+ensure multiplication of intracellular parasites. After 24 h of infection,
+the medium was replaced by fresh medium containing each type of NPs
+at concentrations of 50, 12.5, 3.125 and 0.78 μg/mL, following incu­
+bation. After 72 h, the effect of each formulation on the parasite load
+was determined. Cells were detached from the dish with trypsin-EDTA
+solution (250 mg). The recovered cells were centrifuged at 1100 rpm
+for 10 min at 4 ◦C, the supernatant was discarded, and the cells were
+washed with 1 mL of cold PBS and centrifuged at 1100 rpm for 10 min at
+4 ◦C. The supernatant was discarded, the cells were suspended in 500 μL
+of PBS and analysed by flow cytometry (FC 500MPL, Cytomics, Brea, CA,
+USA), counting at least 10,000 events. The antileishmanial activity was
+determined according to the reduction of the number of viable parasites
+within the infected cells obtained for each formulation and at each
+concentration. The number of parasites for each concentration of each
+type of NPs was calculated using the following formula:
+% Infection = (MFI of infected and treated cells / MFI of untreated infected
+cells) × 100
+Then, inhibition percentage was calculated as:
+% Inhibition of parasites = 100 - % Infection
+All assays were performed in triplicate, in two independent experi­
+ments. The results of antileishmanial activities were expressed as the
+median effective concentrations (EC50) measured by Probit method
+[32]. The activity of each compound was established according to the
+EC50 values as: high activity: EC50 < 25 μg/mL; moderate activity: 25
+μg/mL < EC50 < 50 μg/mL; and potentially not active: EC50 > 100
+μg/mL [4–7].
+2.13. Statistical analysis
+The statistical analysis of the experimental data was performed using
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+5
+a unidirectional analysis of variance (unidirectional ANOVA), and the
+differences between the groups were analysed using a unidirectional
+ANOVA with Dunnet’s post hoc test with GraphPad Prism version 6.0
+(GraphPad Software, San Diego, CA, USA). Data were expressed as
+means ± SD. A value of p < 0.05 was considered significant.
+3. Results
+3.1. Synthesis and characterization of PLGA and SLN NPs
+3.1.1. PLGA NPs
+Five polymers were tested in standard conditions with the purpose of
+selecting excipients for the nanoformulation, previously to the synthesis
+of this NP. The stability of the PLGA NPs suspensions was dependent on
+the nature of the polymer. After 4 h of evaporation of the solvent, the
+stability of the suspension was observed macroscopically, and the size of
+the particles was measured. No sediments or aggregates were observed
+macroscopically in the suspension of the NPs elaborated using
+Resomer® GR 752S. For the rest of the Resomer® assayed, particles got
+into visible aggregates during acetone evaporation step at room tem­
+perature. The particles were larger than 2 μm, therefore difficult to re-
+suspend, so they were discarded.
+Differences were also observed between blank and loaded NPs
+elaborated with Resomer® GR 752S and Span® 60 (Hydrophile-Lip­
+ophile Balance (HLB) 4.7) as a surfactant. Results are summarized in
+Table 1. Smaller diameters were obtained for blank NPs (≈300 nm),
+while loaded NPs showed diameters higher than 1000 nm (formulations
+#1 and #2).
+Best nanoformulation was selected based on the criteria of size
+(<300 nm), hence the assay of different combinations of surfactants.
+First, TCP (HLB 13) was included as surfactant in the organic phase. The
+concentration of Span® 60 (HLB 4.7) was the same. Using a 5% w/w of
+TPGS (formulations #3 and #4), diameters decreased around 50% (from
+1320 nm to 688 nm), while using 10% of TPGS (formulations #5 and
+#6) diameters decreased around 70% (from 1320 nm to 441 nm), with a
+narrow size distribution (PI ≈0.1). Nevertheless, higher concentrations
+of TCP (15% and 20%) (Formulations #7 - #10) did not reduce NPs size.
+Moreover, the replacement of Span® 60 by Pluronic® F-68, keeping
+10% of TPGS, decreased particle sizes to ≈220 nm (formulations #11
+and #12).
+The zeta potential (ZP) was moderately affected by the final NP
+composition. The formulations containing TPGS showed reduced ZP
+values, indicating that there was some drug on the surface of the
+particles.
+The formulation selected was #12, which presented the best profile
+according to the criteria (size <300 nm, suitable for oral formulation).
+The SEM image of #12 showed the particle size smaller than 1 μm,
+corroborating the PCS results. (Fig. 1A).
+3.1.2. Characterization of Trs and Trp NPs
+The C6I-Trp and C6I-Trs SLN were prepared using the emulsion-
+solvent evaporation method indicated above. After preparation of C6I-
+Trp and C6I-Trs NPs, lipid saturation was observed using an initial
+amount of C6I of 5 mg. Especially in these conditions, the EE% was 50%
+for Trp and 63% for Trs. The PI was superior to 0.3, and the zeta po­
+tential was affected by the electrical charge of the internalized com­
+pound, hence the size was increased. Reducing the initial amount from 5
+to 3 mg, EE% increased up to 65–67% for both formulations. For these
+same formulations, particles around 104–107 nm in diameter with a
+narrow size distribution (PI ≈0.25) were obtained. In general, the ZP
+values the relation was inverse with drug concentration: the higher the
+drug load, the lower the ZP values and the best concentration of com­
+pound was 3 mg (P < 0.05). (Table 2).
+In a morphologic study by SEM, C6I-Trs NPs was selected for higher
+EE% in comparison to Trp. Those formulations showed spherical and
+homogeneous particles. Nevertheless, some aggregates were also
+observed as a result of the sample preparation process (a thin film of gold
+was spotted over the samples in high vacuum under low pressure)
+(Fig. 1B-C).
+3.2. C6I release studies
+PLGA NPs showed a C6I time-dependent release profile, reaching
+asymptotic values at ≈24 h. In the first hour, more than 50% of the C6I
+is released at physiological pH 7.4. For example, for Trp NPs, after 8 h of
+assay, about half of the drug concentration was released. The release
+profile of C6I in Trs and PLGA NP was similar. The obtained values
+corresponding to f1 and f2 for both formulations were 3.86 and 66.58,
+respectively. According to Diaz and cols. [35], f1 values up to 15 (0–15)
+and f2 values greater than 50 (50–100) ensure the “sameness” or
+“equivalence” of the two dissolution profiles. Therefore, both release
+profiles (Trs and PLGA NPs) can be considered similar.
+After 20 h, the amount of C6I released was >94% from Trs NPs and
+90% from Trp NPs. Release profile was more sustained in Trp NPs, then
+becoming exponential until 22 h (Fig. 2).
+In vitro release profiles were fitted to several kinetic models widely
+used (zero order, first order and Higuchi model). To test the pertinence
+of the release models employed, the Akaike Information Criteria (AIC)
+were used. The AIC are a measure of the best fit based on maximum
+probability. Table 3 shows the correlation coefficients (r2) and AIC
+values obtained after fitting.
+The Higuchi model provided the best adjustment curve for all the
+NPs with the higher determination coefficients and smallest AIC values
+for all the NPs tested, indicating that the release mechanism was mainly
+diffusional.
+Table 1
+Physicochemical properties of C6I-PLGA NPs using Resomer® RG752S.
+Formulation #
+Formulation
+C6I % w/w
+Organic phase surfactant
+diameter ± SD (nm)
+PI ± SD
+ZP ± SD (Mv)
+1
+PLGA-blank
+0
+Span 60
+301 ± 20
+0.19 ± 0.22
+−44.1 ± 0.32
+2
+PLGA-C6I
+10
+Span 60
+1320 ± 25
+0.43 ± 0.34
+−39.4 ± 0.85
+3
+PLGA-blank
+0
+Span 60 + TCP
+5%
+302 ± 0.7
+0.20 ± 0.10
+−30.6 ± 0.61
+4
+PLGA-C6I
+10
+Span 60 + TCP 5%
+688 ± 33
+0.1 0 ± 0.30
+−25.8 ± 0.61
+5
+PLGA-blank
+0
+Span 60 + TPGS 10%
+288 ± 0.18
+0.17 ± .0.20
+−29.6 ± 0.80
+6
+PLGA-C6I
+10
+Span 60 + TPGS 10%
+441 ± 15
+0.15 ± 0.57
+−32.6 ± 1.01
+7
+PLGA-blank
+0
+Span 60 + TPGS 15%
+272 ± 0.2
+0.20 ± 0.30
+−25.3 ± 0.4
+8
+PLGA-C6I
+10
+Span 60 + TPGS 15%
+944 ± 11
+0.05 ± 1.39
+−25.5 ± 1.72
+9
+PLGA-blank
+0
+Span 60 + TPGS 20%
+271 ± 1.0
+0.13 ± 1.0
+−25.6 ± 1.1
+10
+PLGA-C6I
+10
+Span 60 + TPGS 20%
+1154 ± 20
+0.23 ± 1.68
+−25,1 ± 0.53
+11
+PLGA-blank
+0
+TPGS 10% + Pluronic
+222 ± 3
+0.19 ± 0.80
+−27.1 ± 1.0
+12
+PLGA-C6I
+10
+TPGS 10% + Pluronic
+221 ± 2
+0.10 ± 0.12
+−20.61 ± 1.49
+Data represent mean value ± SD (n = 3). PI: polydispersity index; ZP: zeta potential; TPGS: tocopherol.
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+6
+3.3. Stability
+3.3.1. SLN
+3.3.1.1. Storage conditions. According to the results obtained in the
+previous section, 3 mg loaded SLN were selected to continue with the
+stability studies. The stability of blank and 3 mg loaded Trs and Trp NPs
+was assessed by measuring the changes on diameter and ZP. The
+refrigerated storage conditions 4 ◦C (±2 ◦C) caused minor changes in the
+diameter of loaded Trs and Trp NPs after two months of storage, whereas
+the ZP decreased significantly (P < 0.05). (Table 4).
+3.3.1.2. DLS and DCS tests. Moreover, a deep study of the effect of
+temperature on the diameter of Trp and Trs NPs were evaluated by DLS,
+applying a heating gradient from 25 to 90 ◦C, then cooling down to the
+initial temperature at the same rate. The diameter measurements were
+performed every 0.5 ◦C/min by Zetasizer Nano S (Malvern Instruments,
+UK). When Trp and Trs NPs were subjected to a temperature increase, a
+gradual reduction in diameter throughout the heating step was
+observed. The initial diameter value was not recovered after a cooling
+phase. The formulation composed of Trp was the most affected, reducing
+its diameter from 104 to 85 nm in the temperature range of 70–80 ◦C.
+The melting point of Trp is lower than the melting point of Trs, which
+withstand a high temperature than Trp NPs. In the same way, Trs NPs
+suffered the same decreased of diameter around 60 ◦C. Despite these
+variations in diameter, the values were always within the nanorange
+(Fig. 3A-B).
+The raw lipids presented melting points between 70 ◦C and 80 ◦C.
+The melting point of C6I was 160.1 ◦C. However, for loaded C6I-Trp and
+Trs NPs, the melting point peak of the drug was not detected. Perhaps it
+can be explained by a structural change of the drug within the particles
+from its crystalline form to an amorphous or molecularly dispersed state.
+For all formulations, the melting points of the Trs and Trp were lower
+than the melting points of the bulk lipids. Fig. 3C shows the thermo­
+grams of each component of Trp and Trs NPs (blank and loaded NPs).
+PLGA stability.
+3.3.1.3. Storage conditions. According to the results displayed in
+Table 1, formulations #11 and #12 were selected for this study. The
+stability test did not show significant variations in monitored parame­
+ters (diameter, PI, ZP, EE and DL) after 6 months of storage under
+refrigeration (P < 0.05) (Table 5).
+3.3.1.4. pH effect. The chemical stability of PLGA is greatly affected by
+pH. This was confirmed with formulation #12, which revealed polymer
+degradation by hydrolysis at extreme conditions of pH and temperature.
+In the present work, it was also studied how different pH buffered values
+can affect the diameter of loaded C6I-NPs.
+Phosphoric acid buffer (pH 1.2, with and without pepsine), phos­
+phate buffer (pH 6.8), phosphate buffer (pH 7.4) and 0.9% saline solu­
+tion were used. Results are summarized in Fig. 4. No variations on
+particle diameter after incubation at pH 1.2 (with or without pepsine)
+and 0.9% saline solution. However, after the incubation of the NPs in
+phosphate buffer at pH 7.4 and at pH 6.8, significant size variations were
+observed.
+3.3.1.5. Lyophilization: effect of cryoprotector on PLGA NPs. Freeze-
+drying is a widely used process for drying and improving the stability of
+various pharmaceutical products, including NPs. The process involved
+three steps: freezing, ice sublimation and desorption of unfrozen water.
+There are many factors that can affect the quality of the final product
+after freeze-drying: type and the concentration of the cryoprotectant,
+nature of the surfactant, chemical groups attached to the NPs surface, or
+the type of polymer used to elaborate the NPs.
+In the present study, trehalose was selected as one of the most useful
+cryoprotectant to protect PLGA NPs during the stressful freezing step.
+The influence of trehalose/NP ratio on diameter was studied in formu­
+lation #12, (i) after the freezing step, and (ii) at the end of the freeze-
+drying process. Table 5 shows the results obtained. Fresh NPs (formu­
+lation #11) were ≈220 nm in diameter and showed narrow size distri­
+bution (PI ≈0.1).
+The presence of cryoprotectant significantly reduced the diameter of
+the particles. Percentages of trehalose greater than 0.06% did not
+significantly affect the diameter of the NPs after freezing and thawing
+(Table 6). Using this trehalose ratio, particles were easily redispersed in
+distilled water.
+Fig. 1. Appearance of PLGA and C6I-Trs NPs nanoparticles by SEM. The figure shows the appearance of PLGA NPs loaded with C6I (formulation #12) observed at
+scanning electronic microscopy at 2500 x (A). PLGA nanoparticle 8,000x (B). C6I-Trs NPs loaded with 3 mg of C6I (C). Notice of spherical shape of nanoparticle.
+Table 2
+Physicochemical properties of C6I-SLN.
+SLN
+Lipid
+Diameter ±
+SD (nm)
+PI ±
+SD
+ZP ± SD
+(mV)
+%EE ±
+SD
+%DL
+± SD
+Blank
+Trs
+Trp
+117 ± 7
+0.27 ±
+0.1
+−29.7 ±
+3.8
+NA
+NA
+112 ± 10
+0.27 ±
+0.1
+−26.0 ±
+5.6
+NA
+NA
+C6I-SLN
+(5 mg)
+Trs
+119 ± 2*
+0.36 ±
+0.1
+−4.7 ±
+1.0
+63.4 ±
+0.2*
+12.7 ±
+0.9
+Trp
+114 ± 2*
+0.26 ±
+0.1
+−5.3 ±
+1.0
+50.2 ±
+0.8*
+10.2 ±
+0.5
+C6I-SLN
+(3 mg)
+Trs
+107 ± 7
+0.25 ±
+0.3
+−16.5 ±
+1.2
+66.7 ±
+1.0
+13.3 ±
+0.7
+Trp
+104 ± 5
+0.26 ±
+0.1
+−16.4 ±
+1.7
+65.8 ±
+0.7
+13.2 ±
+0.6
+Data represent mean value ± SD (n = 3). (Trs: Tristearin; Trp: Tripalmitin. PI:
+polydispersity index; ZP: zeta potential; EE: encapsulation efficiency; DL: drug
+loading. NA: Not applied). * statistical significance (P < 0.05).
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+7
+3.4. In vitro cytotoxic and antileishmanial activity of PLGA, Trs and Trp
+NPs
+Blank and loaded PLGA and SLNs NPs were not cytotoxic to any of
+the cell lines tested, as well as for any of the NPs, regardless of whether
+they were loaded or not with C6I.
+In all conditions, the cytotoxic doses were higher than 200 μg/mL
+(LC50). In contrast, free C6I was cytotoxic to fibroblast (Detroit cells),
+monocyte-derived macrophages, and U937 cells at doses lower than 100
+μg/mL (Table 7). The antileishmanial activity (EC50) increased when
+the C6I was encapsulated into the NPs. Both type of NP formulations,
+polymeric and SLN, reduced the effective dose up to 30 times when
+compared to free C6I, especially PLGA NPs, which showed the highest
+effectiveness. Trp-C6I EC50 value was higher than for free drug (23.3 vs.
+16.7). Nevertheless, its effective dose was lower than 100 μg/mL. When
+Fig. 2. In vitro C6I release profile from PLGA, Trp and Trs NPs. The NPs were loaded with 3 mg of C6I, the release solution was 10 mM PBS, pH 7.4 at 37 ◦C. Data
+represented as the mean value ± SD of triplicate experiment.
+Table 3
+Correlation coefficients (r2) and AIC values obtained for the indicated NPs.
+PLGA NPs
+Trs NPs
+Trp NPs
+r2
+AIC
+r2
+AIC
+r2
+AIC
+Zero order
+0.3437
+74.55
+0.2982
+70.37
+0.4091
+68.36
+First order
+0.1845
+112.76
+0.2114
+85.13
+0.1874
+111.92
+Higuchi
+0.9926
+6.47
+0.9921
+1.11
+0.9936
+4.85
+Table 4
+Physicochemical stability of C6I-loaded SLN under different storage conditions.
+Formulation
+Temperature
+a
+Diameter ± SD
+(nm)
+PI ± SD
+ZP± SD
+(mV)
+Trp
+T0
+112 ± 10
+0.26 ± 0.04
+−26.0 ± 5.6
+T1
+113 ± 10
+0.30 ± 0.04
+−24.9 ± 7.1
+T2
+151 ± 45*
+0.40 ±
+0.12*
+−16.4 ±
+2.9*
+Trs
+T0
+117 ± 7
+0.27 ± 0.02
+−29.7 ± 3.8
+T1
+111 ± 3
+0.30 ± 0.02
+−24.9 ± 7.1
+T2
+133 ± 26*
+0.38 ±
+0.13*
+−16.4 ±
+2.9*
+Trp-C6I
+T0
+104 ± 10
+0.26 ± 0.01
+−16.4 ± 1.7
+T1
+110 ± 5
+0.33 ± 0.03
+−20.8 ± 5.5
+T2
+144 ± 32*
+0.39 ±
+0.08*
+−10.6 ±
+3.7*
+Trs-C6I
+T0
+107 ± 7
+0.25 ± 0.03
+−16.5 ± 1.2
+T1
+111 ± 8
+0.31 ± 0.04
+−15.1 ± 2.8
+T2
+109 ± 3*
+0.28 ±
+0.02*
+−9.3 ± 3.1*
+Data represent mean value ± SD (n = 3). Trs:Tristearin; Trp: Tripalmitin. a: store
+conditions 4 ◦C (±2 ◦C). SLNs particles were stored for T0: fresh; T1: 2 months;
+and T2: 6 months (P < 0.05).
+Fig. 3. DLS thermograms for solid lipid nanoparticles. Figure shows the DLS
+thermograms for (A) Trs-C6I NPs and (B) Trp-C6I NPs (mean ± SD, n = 3). (C)
+DSC thermograms nanoparticles and components. The figure shows the DSC
+thermograms obtained for Tween® 20 (a); lecithin (b); sodium deoxicolate (c);
+C6I (d); Trs (e); blank Trs SLN (f); loaded C6I-Trs SLN (g); Trp (h); blank Trp
+SLN (i); and loaded C6I-Trp SLN (j).
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+8
+Trp-C6I cytotoxicity and antileishmanial activity (LC50/EC50) ratio was
+calculated, a selectivity index (IS) > 1 was obtained, in contrast to the
+free drug IS (= 0.4). The data suggest that the dose of encapsulated C6I
+to eliminate the parasite is lower than the dose needed to kill the cells
+(Table 7).
+4. Discussion
+In the search of novel therapeutic actives against CL, we have
+developed a choline analog from the family of halomethylated quater­
+nary ammonium salts [5]. We selected N-iodomethyl-N,N-dime­
+thyl-N-(6,6-diphenylhex-5-en-1-yl)ammonium iodide (C6I) as lead
+compound from a series of 24 molecules mainly because of its in vitro
+leishmanicidal activity [5]. Additionally, the lead compound was also
+selected because of its physicochemical, pharmacokinetic and pharma­
+ceutical properties that make it suitable for oral administration [6].
+However, this compound presents a main physicochemical disadvan­
+tage: its low aqueous solubility which could difficult the dissolution
+process in the gastrointestinal (GI) tract and therefore could affect its
+oral bioavailability [6–19]. In this scenario, the inclusion of C6I in a
+suitable nanoacarrier could be improved its oral delivery. Currently,
+polymeric or lipid-based NPs seem to be the most promising approaches
+[9].
+NPs are solid and spherical structures with size smaller than 1 μm.
+Currently, a wide variety of drugs have been marketed using nano­
+formulations with the purpose of improving the bioavailability of the
+drug in affected tissues or cells and avoiding toxicity [34]. Additionally,
+NPs confer protection from degradation in biological fluids, allowing
+drug administration by different routes [10].
+The herein described PLGA NPs presented homogeneous diameters
+and were suitable for oral administration, as previously reported by
+Abdelwahed et al., (2006) [30]. Although some studies reported the
+independence of the type of PLGA polymer over particle size and system
+stability [36], C6I was only compatible with the Resomer® RG 752S.
+Particles obtained using other presentations of this polymer (502, 502H,
+504 and 504H) resulted into aggregates and precipitated, which
+impaired resuspension. Polymer selection is an important part of the
+design of products, once variations in the proportion of glycolic or lactic
+acid can affect the interaction between the C6I compound and the
+polymer. Resomer® RG 752S is the most hydrophobic polymer of all
+those that were tested. Possibly, the affinity of the C6I was mediated by
+hydrophobic type interactions, although some authors have reported
+ionic interactions between different polymers and the encapsulated
+compounds [37–38]. In any case, our results clearly indicate that
+drug-polymer interactions should be studied in a case-by-case scenario
+and emphasize the need of thorough studies for every drug candidate.
+The balance of forces (hydrophilic-lipophilic) of the excipients
+constituting the formulation could determine the behavior of the active
+pharmaceutical ingredient encapsulated. These forces establish the
+loading efficiency and physical stability of the NPs and should be taken
+into account in formulation design [39]. The effect of excipients was
+demonstrated by formulation #2 where the surfactant Span® 60 and C6I
+showed an evident interaction and the diameter increased when NPs
+were loaded with the compound. The replacement of Span® 60 for TPGS
+resulted in particle size reduction and changes in the aspect of the
+formulation (without aggregates). Other studies have shown
+Table 5
+Physicochemical properties for formulations #11 and #12, fresh and after 6
+months of storage at 4 ◦C (±2 ◦C).
+Condition
+Formulation
+Diameter
+± SD (nm)
+PI ±
+SD
+ZP± SD
+(mV)
+EE±
+SD
+(%)
+DL±
+SD
+(%)
+Fresh NPs
+11
+222 ± 3
+0.2 ±
+0.8
+−27.1 ±
+1.0
+NA
+NA
+12
+221 ± 2
+0.1 ±
+0.12
+−20.61
+± 1.5
+62 ±
+0.2
+11 ±
+0.3
+6 months
+2–8 ◦C
+11
+215 ± 6
+0.2 ±
+0.06
+−26.8 ±
+1.2
+NA
+NA
+12
+218 ± 2
+0.20
+±
+0.05
+−20.4 ±
+1.5
+61 ±
+1.2
+10 ±
+0.9
+Data represent mean value ± SD (n = 3). PI: Polydispersity index; ZP: zeta po­
+tential; EE: encapsulation efficiency; DL: drug loading. NA: Not applied.
+Fig. 4. Effect of pH on diameter of loaded C6I-PLGA NPs (formulation #12)
+after incubation in different media. Data were expressed as mean ± SD (n = 3).
+Table 6
+Effect of trehalose (%) on diameter of loaded C6I-PLGA NPs.
+Trehalose (%)
+Diameter ± SD (nm)
+PI ± SD
+Frozen
+Lyophilized
+0.01
+500 ± 14
+NA
+0.02 ± 0.02
+0.02
+630 ± 13
+NA
+0.33 ± 0.1
+0.05
+302 ± 4
+NA
+0.07 ± 0.01
+0.06
+255 ± 6
+283 ± 6
+0.20 ± 0.1
+0.07
+264 ± 6
+311 ± 8
+0.17 ± 0.1
+0.15
+255 ± 3
+282 ± 8
+0.12 ± 0.24
+Data represent mean value ± SD (n = 3). PI: Polydispersity index. NA: Not
+applied.
+Table 7
+In vitro cytotoxicity and antileishmanial activity of C6I NPs.
+Sample
+LC50
+MPha
+MDMhu
+Detroit 551
+Caco-2
+U-937
+EC50
+IS
+C6I
+9.9 ± 0.3
+>200
+36.3
+>200
+6.8 ± 0.2
+16.7 + 1.0
+0.4
+PLGA- C6I
+>200
+>200
+>200
+>200
+>200
+0.57 + 0.1
+350.8
+Trp-C6I
+>200
+>200
+>200
+>200
+>200
+23.3 + 4.1
+8.5
+Trs-C6I
+>200
+>200
+>200
+>200
+>200
+3.7 + 1.0
+54.1
+Blank PLGA
+>200
+>200
+>200
+>200
+>200
+>50
+<4
+Blank Trs
+>200
+>200
+>200
+>200
+>200
+181.2 + 26.0
+1.1
+Blank Trp
+>200
+>200
+>200
+>200
+>200
+161.3 + 18.2
+1.2
+Doxorubicin
+<1.5 ± 2.1
+20.2 ± 2.5
+14.0 ± 1.1
+0.14 ± 0.0
+0.4 ± 0.1
+NA
+NA
+Amphotericin B
+53.8 ± 7.0
+10.0 ± 1.2
+NA
+NA
+32.2 ± 8.8
+0.4 ± 0.1
+80.0
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+9
+interactions between Span® 60 and other components of the respective
+formulation [40–41]. In the present case, it was possible to observe a
+competitive process between C6I and the surfactant, since the chemical
+structure of the former, i.e. a hydrophilic head and a hydrophobic tail,
+allowed
+inferring
+a
+possible
+surfactant
+activity.
+In
+fact,
+Hydrophile-Lipophile Balance (HLB) index value, calculated according
+to the Davis method, was 6.5 [42], very close to the Span® 60 HLB value
+(4.7).
+Therefore, both compounds could compete for the hydrophobic re­
+gions of PLGA and this could affect the stability of the formulation and
+contribute to increase particle size (formulations #2, #4, #6, #8 and
+#10) [40]. When TPGS was used instead of Span® 60 (formulations #11
+and #12), the NPs size decreased noticeably. This may be due to the fact
+that TPGS presents higher HLB values because of its hydrophilicity. After
+these studies, formulation #12 was selected for further in vitro screening.
+Another parameter that could affect the stability of nano­
+formulations was the zeta potential. The electrical charge of a compound
+could modify the charge of a particle. For example, the ZP of formulation
+#11 was −27.1 ± 1.0 mV, while for formulation #12 the ZP changed to
+−20.6 ± 1.49 mV (6). Despite the ZP being outside the desired range
+(near +30 or −30 mV), the obtained values still indicate suitable
+colloidal stability, considering the steric stabilization given by the sur­
+factants used [43].
+Regarding the stability of formulation #12, the results did not show
+significant variations in monitored parameters after 6 months of storage
+under refrigeration conditions, when compared to freshly prepared NPs.
+In relation to the release profile of PLGA NPs, it is known that this
+polymer is degraded by hydrolysis, which in turn is pH dependent. So,
+the C6I release at pH 7.4 showed a biphasic profile, typical of this
+polymer, probably due to diffusion-degradation. The release phase was
+associated to loss of C6I at the surface and a subsequent degradation
+phase of the polymer, as well as a diffusion of the drug through the
+polymer matrix [44].
+Regarding Trs and Trp NPs, the solubility of C6I in these lipids was
+low and the saturation of the system during formulation studies was
+observed with 5 mg of compound. However, decreasing the quantity of
+C6I in the system to 3 mg, greater encapsulation efficiency around 65%
+was achieved. Several studies have shown the loading capacities of these
+lipids with different compounds and systems, especially to load qua­
+ternary compounds with low polarity. The high concentration of C6I
+could affect the reorganization of lipid maybe for the electrical charge of
+the compounds, which could decrease the capacity of encapsulated
+molecules [45–47].
+One disadvantage related to Trs and Trp NPs is the effect of tem­
+perature on the reorganization of the crystalline structure, which can
+influence the presence of the active compound in the particle and pro­
+motes its release. In the present study, it was possible to verify the
+protective role of lecithin against the direct effects of temperature, as
+previously demonstrated by other authors [48]. This effect could be
+verified in the Trs and Trp NPs when comparing results obtained in the
+stability studies related to the effects of temperature and DLS, where the
+changes were not significant concerning particle size and loading ca­
+pacity. The electrical surface properties of the particle were affected by
+the presence of the compound leading probably a reorganization of lipid
+matrices with subsequent rearrangement of the compound in the
+formulation [46]. This reorganization of lipid nanoparticle matrix was
+demonstrated by the DSC studies. These results could be explained
+because of potential defects in the lipid network, leading to a decrease of
+their crystallinity in comparison to bulk counterparts [49].
+The in vitro release of C6I from the NPs occurred rapidly in the first
+hours, releasing more than 50% of the formulation payload. The drug
+release from the NPs appeared to have two components with an initial
+fast release of about 50% at the first 24 h of sampling time. This was
+followed by a slower exponential release of the remaining drug. The fast
+initial compound release from lipid matrices could probably be
+explained because of the presence of drug molecules adsorbed or close to
+the surface of SLN. Comparing the release profiles from lipid particles, it
+can be observed two things: (i) C6I was released faster from Trs than Trp
+NPs, (ii) from Trs NPs, the release profile was more sustained, likely
+because of a stronger interaction of the compound with Trs, since this
+lipid is more hydrophobic than Trp. Finally, for both lipids the expo­
+nential delayed release may be attributed to diffusion of the dissolved
+drug within the NPs core into the dissolution medium [50].
+In addition, these NPs improved the dissolution profile according to
+Fernandez et al. (2018) for C6I free [19]. Previous works in the literature
+demonstrated that decreasing particle size can lead to an increased
+dissolution rate and higher oral bioavailability of poorly soluble com­
+pounds. This phenomenon could be explained by Noyes-Whitney and
+Ostwald-Freundlich principles: the particle size in the nanometer range
+may cause an increased dissolution rate and saturation solubility for a
+nanoformulation [51].
+No cytotoxicity was observed for Trs, Trp and PLGA NPs loaded with
+C6I in comparison with the free C6I. In contrast, the antileishmanial
+activity increased, especially for formulation using PLGA, that was 30
+times more active than the free C6I. The second most active nano­
+formulation was C6I-Trs NPs followed by C6I-Trp NPs. These different
+activities of both lipids could be related to differences between the
+release profiles, faster in C6I-Trs than in C6I-Trp NPs.
+The effect on the activity of the compound may be due to multiple
+reasons, since there are reports of the benefits of using NPs as a vehicle
+for leishmanicidal drugs [12,13]. In one hand, the PLGA NPs may pro­
+vide protection to fragile molecules against enzymatic hydrolytic
+degradation [40]. On the other hand, it is known that particles 200–300
+nm in diameter are more susceptible to be phagocyted by macrophages
+and C6I-PLGA NPs are in those diameters [52]. Another factor to take
+into account is the acid pH of the phagolysosome environment that fa­
+vors the autocatalytic degradation of PLGA and the subsequent release
+of the drug, thus ensuring a localized effect [53, 54].
+Finally, the use of TPGS as a complement in the treatment of leish­
+maniasis has also been tested, where the disease has been associated
+with a production of reactive oxygen species and the gradual exhaustion
+of TPGS and ascorbate [55]. In the case of Trs and Trp nanoformulations,
+the potentiating effect of the activity of the antileishmanial compound
+after being encapsulated in these solid lipids has been documented
+previously. The use of lipids to improve the bioavailability of poorly
+soluble compounds has also been studied [48]. Several hypotheses may
+explain how the SLN improve the effectiveness of compound, one of
+them, the nanoparticles may increase the dissolution of compounds in
+physiological solutions [6; 53]. Additionally, many studies describe
+several properties of SLN over conventional formulations to improve the
+biopharmaceutical profile – increased solubility, enhanced stability,
+improved epithelium permeability and bioavailability, prolonged
+half-life, tissue targeting, and minimal side effects). Finally, this kind of
+nanoformulation maximize the antileishmanial activity [45, 48].
+5. Conclusion
+The present work investigated different nanoparticle systems to
+encapsulate C6I, a highly active antileishmania compound, but highly
+cytotoxic and with moderate solubility in water. A comparative study of
+polymeric and SLN performance regarding characterization, stability
+cytotoxicity and in vitro antileishmanial activity was performed. The
+study showed that PLGA and Trs nanoparticles loaded C6I presented
+leishmanicidal activity in vitro with a dose several times lower than the
+free active C6I compound. PLGA formulations showed the highest se­
+lective index (IS > 350). So, the C6I dose loaded into PLGA NPs needed
+to eliminate the parasite keeping alive the cells were the lowest. The
+cytotoxicity effect of the formulation on the relevant cell lines (Caco-2
+human intestinal cells and Detroit 551 human fibroblasts) was almost
+null. Nevertheless, a more deep in vitro study on these cell lines will be
+necessary in order to understand nanoparticle-cell interactions and their
+ability to cross the intestinal barrier. Finally, the possibility to obtain a
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+10
+lyophilized dried powder of this formulation, help PLGA NPs to be a
+potential alternative for the administration of the C6I in future in vivo
+tests.
+Author contributions
+MF and SMR: Conceptualization; MF, LM-B, MDC-O, DPG, AJA, TP,
+LY, DG and SMR: methodology. MF, SMR, MAH and LM-B. AJA: writing
+– original draft; AJA and SMR: writing – review & editing. All authors:
+data analysis, discussion of results and review the manuscript.}
+Funding sources
+This work was supported by Colciencias [CT-695, 2014]; General
+System of Royalties [TC-137C-2014]; MFC had financial support of
+Colciencias [CT 567; 2012].
+Declaration of competing interest
+The authors declare no conflict of interest.
+Acknowledgments
+L.M.-B. is especially grateful for the financial support from V Plan
+Propio (Universidad de Sevilla). Authors are also grateful for the PhD
+grant of MD Cayero-Otero (USE-CONV-806). We also thank the Uni­
+versidad de Sevilla’s CITIUS Microscopy Service for their technical
+assistance. D.P.G. and A.J.A. are grateful to Fundaç˜ao para a Ciˆencia e
+Tecnologia, Portugal for the financial support (project UID/DTP/
+04138/2013 and grant SFRH/BD/89520/201).
+References
+[1] World Health Organization, WHO Statistical Information System, 2010. Geneva,
+Switzerland. Available, http://www.who.int/whosis/en/. Accessed 10 of
+December 2018.
+[2] J. Alvar, I.D. Velez, C. Bern, M. Herrero, P. Desjeux, J. Cano, Who Leishmaniasis
+Control Team, Leishmaniasis worldwide and global estimates of its incidence, PLoS
+One 7 (5) (2012) 35671, https://doi.org/10.1371/journal.pone.0035671.
+[3] T. Sunyoto, J. Potet, M. Boelaert, Why miltefosine-a life-saving drug for
+leishmaniasis-is unavailable to people who need it the most, BMJ Glob Health 3 (3)
+(2018), https://doi.org/10.1136/bmjgh-2018-000709.
+[4] Rios-Vasquez A, Cardona RO, Duque SM, Restrepo S, Bernal I, Medina D, Jones Ma,
+U.S. Patent No. 9,145,352. 2015. Washington, DC: U.S. Patent and Trademark
+Office.e.
+[5] S.M. Duque-Benítez, L.A. Ríos-V´asquez, R. Ocampo-Cardona, D.L. Cede˜no, M.
+A. Jones, I.D. V´elez, S.M. Robledo, Synthesis of novel quaternary ammonium salts
+and their in vitro antileishmanial activity and U-937 cell cytotoxicity, Molecules 21
+(4) (2016) 381, https://doi.org/10.3390/molecules21040381.
+[6] M. Fern´andez, J. Murillo, L.A. Ríos-V´asquez, R. Ocampo-Cardona, D.L. Cede˜no, M.
+A. Jones, I.D. V´elez, S.M. Robledo, In vivo studies of the effectiveness of novel N-
+halomethylated and non-halomethylated quaternary ammonium salts in the topical
+treatment of cutaneous leishmaniasis, Parasitol. Res. 117 (1) (2018) 273–286,
+https://doi.org/10.1007/s00436-017-5702-9.
+[7] S.A. Pulido, V.H. Nguyen, J.F. Alzate, D.L. Cede˜no, M.A. Makurath, A. Ríos-
+V´asquez, J.A. Friesen, Insights into the phosphatidylcholine and
+phosphatidylethanolamine biosynthetic pathways in Leishmania parasites and
+characterization of a choline kinase from Leishmania infantum, Comp. Biochem.
+Physiol. B Biochem. Mol. Biol. 213 (2017) 45–54, https://doi.org/10.1016/j.
+cbpb.2017.07.008.
+[8] S.K. Kalangi, A. Dayakar, D. Gangappa, R. Sathyavathi, R.S. Maurya, D.N. Rao,
+Biocompatible silver nanoparticles reduced from Anethum graveolens leaf extract
+augments the antileishmanial efficacy of miltefosine, Exp. Parasitol. 170 (2016)
+184–192, https://doi.org/10.1016/j.exppara.2016.09.002.
+[9] A.H. Mohamed-Ahmed, S. Brocchini, S.L. Croft, Recent advances in development of
+amphotericin B formulations for the treatment of visceral leishmaniasis, Curr.
+Opin. Infect. Dis. 25 (6) (2012) 695–702, https://doi.org/10.1097/
+QCO.0b013e328359eff2.
+[10] T.T.H. Pham, P.M. Loiseau, G. Barratt, Strategies for the design of orally
+bioavailable antileishmanial treatments, Int. J. Pharm. 454 (1) (2013) 539–552,
+https://doi.org/10.1016/j.ijpharm.2013.07.035.
+[11] A. Kumari, S.K. Yadav, S.C. Yadav, Biodegradable polymeric nanoparticles based
+drug delivery systems, Colloids Surf. B Biointerfaces 75 (1) (2010) 1–18, https://
+doi.org/10.1016/j.colsurfb.2009.09.001.
+[12] S. Mondal, P. Roy, S. Das, A. Halder, A. Mukherjee, T. Bera, In vitro susceptibilities
+of wild and drug resistant leishmania donovani amastigote stages to
+andrographolide nanoparticle: role of vitamin E derivative TPGS for nanoparticle
+efficacy, PloS One 8 (12) (2013), e81492, https://doi.org/10.1371/journal.
+pone.0081492.
+[13] R. Kumar, G.C. Sahoo, K. Pandey, V. Das, R.K. Topno, M.Y. Ansari, P. Das,
+Development of PLGA–PEG encapsulated miltefosine based drug delivery system
+against visceral leishmaniasis, Mater Sci Eng C Mater Biol. Appl. 59 (2016)
+748–753, https://doi.org/10.1016/j.msec.2015.10.083.
+[14] R. Kumar, G.C. Sahoo, K. Pandey, V. Das, P. Das, Study the effects of PLGA-PEG
+encapsulated Amphotericin B nanoparticle drug delivery system against Leishmania
+donovani, Drug Deliv. 22 (3) (2015) 383–388, https://doi.org/10.3109/
+10717544.2014.891271.
+[15] R. Gaspar, V. Pr´eat, F.R. Opperdoes, M. Roland, Macrophage activation by
+polymeric nanoparticles ofpolyalkylcyanoacrylates: Activity against intracellular
+Leishmania donovani associated with hydrogen peroxide production, Pharm. Res.
+(N. Y.) 9 (6) (1992) 782–787.
+[16] E. Palma, A. Pasqua, A. Gagliardi, D. Britti, M. Fresta, D. Cosco, Antileishmanial
+activity of amphotericin B-loaded-PLGA nanoparticles: An overview, Materials 11
+(2018) 1167, https://doi.org/10.3390/ma11071167.
+[17] W. Mehnert, K. M¨ader, Solid lipid nanoparticles: production, characterization and
+applications, Adv. Drug Deliv. Rev. 47 (2–3) (2001) 165–196.
+[18] A. de Souza, D.S.S. Marins, S.L. Mathias, L.M. Monteiro, M.N. Yukuyama, C.
+B. Scarim, N.A. Bou-Chacra, Promising nanotherapy in treating leishmaniasis, Int.
+J. Pharm. 547 (1–2) (2018) 421–431, https://doi.org/10.1016/j.
+ijpharm.2018.06.018.
+[19] M. Fern´andez, L.A. Ríos-V´asquez, R. Ocampo-Cardona, D.L. Cede˜no, O. Fl´orez, T.
+M. Garrigues, J.A. Almeida, I.D. V´elez, S.M. Robledo, Physicochemical and
+biopharmaceutical characterization of N-iodomethyl-N,N-dimethyl-N-(6,6-1
+diphenylhex-5-en-1-yl) ammonium iodide and A promising antileishmania delivery
+system, Int Arch Med Microbiol 1 (2018), 007.
+[20] A.J. Almeida, E. Souto, Solid lipid nanoparticles as a drug delivery system for
+peptides and proteins, Adv. Drug Deliv. Rev. 59 (6) (2007) 478–490.
+[21] H. Fessi, F. Puisieux, J.P. Devissaguet, N. Ammoury, S. Benita, Nanocapsule
+formation by interfacial polymer deposition following solvent displacement, Int. J.
+Pharm. 55 (1) (1989) R1–R4.
+[22] L. Martín-Banderas, I. Mu˜noz-Rubio, J. ´Alvarez-Fuentes, M. Dur´an-Lobato, J.
+L. Arias, M.´A. Holgado, M. Fern´andez-Ar´evalo, Engineering of Δ9-
+tetrahydrocannabinol delivery systems based on surface modified-PLGA
+nanoplatforms, Colloids Surf. B Biointerfaces 123 (2014) 114–122, https://doi.
+org/10.1016/j.colsurfb.2014.09.002.
+[23] M. Dur´an-Lobato, L. Martín-Banderas, L.M. Gonçalves, M. Fern´andez-Ar´evalo, A.
+J. Almeida, Comparative study of chitosan-and PEG-coated lipid and PLGA
+nanoparticles as oral delivery systems for cannabinoids, J. Nano Res. 17 (2) (2015)
+61.
+[24] Vitorino C, Carvalho FA, Almeida AJ, Sousa JJ, Pais AA. The size of solid lipid
+nanoparticles: An interpretation from experimental design. Colloids Surf. B
+Biointerfaces. 20118; 4(1): 117-130. doi: 10.1016/j.colsurfb.2010.12.024.
+[25] D.P. Gaspar, V. Faria, L.M. Gonçalves, P. Taboada, C. Remu˜n´an-L´opez, A.
+J. Almeida, Rifabutin-loaded solid lipid nanoparticles for inhaled antitubercular
+therapy: Physicochemical and in vitro studies, Int. J. Pharm. 497 (2016) 199–209,
+https://doi.org/10.1016/j.ijpharm.2015.11.050.
+[26] R.M. Lopes, M.L. Corvo, C.V. Eleut´erio, M.C. Carvalheiro, E. Scoulica, M. Cruz,
+Formulation of oryzalin (ORZ) liposomes: in vitro studies and in vivo fate, Eur. J.
+Pharm. Biopharm. 82 (2012) 281–290, https://doi.org/10.1016/j.
+ejpb.2012.06.013.
+[27] International Conference on Harmonisation of Technical Requirement for
+Registration of Pharmaceuticals for Human Use (ICH), ICH Topic Q2 (R1).
+Validation of Analytical Procedures: Text and Methodology (CPMP/ICH/281/95),
+2005. http://www.ich.org/fileadmin/Public_Web_Site/ICH_Products/Guid
+elines/Quality/Q2_R1/Step4/Q2_R1__Guideline.pdf. Accessed 11 April 2019.
+[28] R.M. Maggio, P.M. Castellano, T.S. Kaufman, A new principal component analysis-
+based approach for testing “similarity” of drug dissolution profiles, Eur. J.
+Pharmaceut. Sci. 34 (2008) 66–77.
+[29] M. Mehanny, R.M. Hathout, A.S. Geneidi, S. Mansour, Studying the effect of
+physically-adsorbed coating polymers on the cytotoxic activity of
+optimizedbisdemethoxycurcuminloaded-PLGA nanoparticles, J. Biomed. Mater.
+Res. 105 (2017) 1433–1445, https://doi.org/10.1002/jbm.a.36028.
+[30] W. Abdelwahed, G. Degobert, S. Stainmesse, H. Fessi, Freeze-drying of
+nanoparticles: formulation, process and storage considerations, Adv. Drug Deliv.
+Rev. 58 (15) (2006) 1688–1713.
+[31] L. Martín-Banderas, J. ´Alvarez-Fuentes, M. Dur´an-Lobato, J. Prados, C. Melguizo,
+M. Fern´andez-Ar´evalo, M.´A. Holgado, Cannabinoid derivate-loaded PLGA
+nanocarriers for oral administration: formulation, characterization, and
+cytotoxicity studies, Int. J. Nanomed. 7 (2012) 5793–5806, https://doi.org/
+10.2147/IJN.S34633.
+[32] C.V. Mesa, G.A. Bland´on, D.L. Mu˜noz, C.E. Muskus, A.F. Fl´orez, R. Ochoa, S.
+M. Robledo, In silico screening of potential drug with antileishmanial activity and
+validation of their activity by in vitro and in vivo studies, J. Chem. Eng. 9 (2015)
+375–402.
+[33] D.J. Finney, Assays Based on Quantal Responses in: Statistical Method in Biological
+Assay, Charles Griffin & Co. Ltd, London, 1978.
+[34] S.A. Pulido, D.L. Mu˜noz, A.M. Restrepo, C.V. Mesa, J.F. Alzate, I.D. V´elez, S.
+M. Robledo, Improvement of the green fluorescent protein reporter system in
+Leishmania spp. for the in vitro and in vivo screening of antileishmanial drugs, Acta
+Trop. 122 (2012) 36–45, https://doi.org/10.1016/j.actatropica.2011.11.015.
+M. Fern´andez et al.
+
+Journal of Drug Delivery Science and Technology 61 (2021) 101988
+11
+[35] D.A. Diaz, S.T. Colgan, C.S. Langer, N. Bandi, M.D. Likar, L. Van Alstine,
+Dissolution similarity requirements: How similar or dissimilar are the global
+regulatory expectations? AAPS J. 18 (2016) 15–22.
+[36] S. Onoue, S. Yamada, H.K. Chan, Nanodrugs: pharmacokinetics and safety, Int. J.
+Nanomed. 9 (2014), https://doi.org/10.2147/IJN.S38378, 1025-1237.
+[37] H. Hillaireau, P. Couvreur, Nanocarriers’ entry into the cell: relevance to drug
+delivery, Cell. Mol. Life Sci. 66 (2009) 2873–2896.
+[38] D. Bodmer, T. Kissel, E. Traechslin, Factors influencing the release of peptides and
+proteins from biodegradable parenteral depot systems, J. Contr. Release 21 (1–3)
+(1992) 129–137.
+[39] S. De, D.H. Robinson, Particle size and temperature effect on the physical stability
+of PLGA nanospheres and microspheres containing Bodipy, AAPS PharmSciTech 5
+(4) (2004) e5.
+[40] Z. Sezgin-Bayindir, N. Yuksel, Investigation of formulation variables and excipient
+interaction on the production of niosomes, AAPS PharmSciTech 13 (3) (2012)
+826–835, https://doi.org/10.1208/s12249-012-9805-4.
+[41] M. Azizi, F. Farahmandghavi, M. Joghataei, M. Zandi, M. Imani, M. Bakhtiary,
+F. Ghazizadeh, Fabrication of protein-loaded PLGA nanoparticles: effect of selected
+formulation variables on particle size and release profile, J. Polym. Res. 20 (4)
+(2013) 110.
+[42] M. Basha, S.H. AbdEl-Alim, R.N. Shamma, G.E. Awad, Design and optimization of
+surfactant-based nanovesicles for ocular delivery of Clotrimazole, J. Liposome Res.
+23 (3) (2013) 203–210, https://doi.org/10.3109/08982104.2013.788025.
+[43] X. Guo, Z. Rong, X. Ying, Calculation of hydrophile-lipophile balance for
+polyethoxylated surfactants by group contribution method, J. Colloid Interface Sci.
+298 (1) (2006) 441–450.
+[44] M.A. Iqbal, S. Md, J.K. Sahni, S. Baboota, S. Dang, J. Ali, Nanostructured lipid
+carriers system: recent advances in drug delivery, J. Drug Target. 20 (2012)
+813–830.
+[45] M.A. Holgado, J.L. Arias, M.J. C´ozar, J. Alvarez-Fuentes, A.M. Ga˜n´an-Calvo,
+M. Fern´andez-Ar´evalo, Synthesis of lidocaine-loaded PLGA microparticles by flow
+focusing. Effects on drug loading and release properties, Int. J. Pharm. 358 (2008)
+27–35, https://doi.org/10.1016/j.ijpharm.2008.02.012.
+[46] R.M. Lopes, M.M. Gaspar, J. Pereira, C.V. Eleut´erio, M. Carvalheiro, A.J. Almeida,
+M. Cruz, Liposomes versus lipid nanoparticles: comparative study of lipid-based
+systems as oryzalin carriers for the treatment of leishmaniasis, J. Biomed.
+Nanotechnol. 10 (2014) 3647–3657.
+[47] R.M. Lopes, J. Pereira, M.A. Esteves, M.M. Gaspar, M. Carvalheiro, C.V. Eleut´erio,
+M. Cruz, Lipid-based nanoformulations of trifluralin analogs in the management of
+Leishmania infantum infections, Nanomedicine 11 (2016) 153–170.
+[48] L.M. Gonçalves, F. Maestrelli, L. Mannelli, C. Ghelardini, A.J. Almeida, P. Mura,
+Development of solid lipid nanoparticles as carriers for improving oral
+bioavailability of glibenclamide, Eur. J. Pharm. Biopharm. 102 (2016) 41–50,
+https://doi.org/10.1016/j.ejpb.2016.02.012.
+[49] R.H. Müller, K. M¨ader, S. Gohla, Solid lipid nanoparticles (SLN) for controlled drug
+delivery - A review of the state of the art, Eur. J. Pharm. Biopharm. 50 (2000)
+161–177.
+[50] C. Freitas, R.H. Müller, Correlation between long-term stability of solid lipid
+nanoparticles (SLN) and crystallinity of the lipid phase, Eur. J. Pharm. Biopharm.
+47 (1999) 125–132.
+[51] T. Govender, S. Stolnik, M.C. Garnett, L. Illum, S.S. Davis, PLGA nanoparticles
+prepared by nanoprecipitation: drug loading and release studies of a water soluble
+drug, J. Contr. Release 57 (2) (1999) 171–185.
+[52] F. Danhier, B. Ucakar, M.L. Vanderhaegen, M.E. Brewster, T. Arien, V. Pr´eat,
+Nanosuspension for the delivery of a poorly soluble anti-cancer kinase inhibitor,
+Eur. J. Pharm. Biopharm. 88 (1) (2014) 252–260, https://doi.org/10.1016/j.
+ejpb.2014.05.014.
+[53] S. Zaioncz, N.M. Khalil, R.M. Mainardes, Exploring the role of nanoparticles in
+amphotericin B delivery, Curr. Pharmaceut. Des. 23 (2017) 509–521, https://doi.
+org/10.2174/1381612822666161027103640.
+[54] R.C. Mundargi, V.R. Babu, V. Rangaswamy, P. Patel, T.M. Aminabhavi, Nano/
+micro technologies for delivering macromolecular therapeutics using poly (D, L-
+lactide-co-glycolide) and its derivatives, J. Contr. Release 125 (2008) 193–209.
+[55] G. Sen, R. Mukhopadhaya, J. Ghosal, T. Biswas, Combination of ascorbate and
+alpha-tocopherol as a preventive therapy against structural and functional defects
+of erythrocytes in visceral leishmaniasis, Free Radic. Res. 38 (2004) 527–534.
+M. Fern´andez et al.

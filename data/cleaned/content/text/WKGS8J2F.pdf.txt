@@ -1,0 +1,836 @@
+Contents lists available at ScienceDirect
+Journal of Drug Delivery Science and Technology
+journal homepage: www.elsevier.com/locate/jddst
+Influence of formulation parameters on encapsulation of doxycycline in
+PLGA microspheres prepared by double emulsion technique for the
+treatment of periodontitis
+Muhanad Ali, X. Frank Walboomers, John A. Jansen, Fang Yang∗
+Department of Biomaterials (Dentistry), Radboud University Medical Centre, PO BOX 9101, 6500 HB, Nijmegen, the Netherlands
+A R T I C L E I N F O
+Keywords:
+Formulation parameters
+PLGA microspheres
+Double emulsion
+Antibiotic
+Drug delivery
+Periodontal disease
+Drug carriers
+pH
+And co-solvent
+A B S T R A C T
+Advanced therapeutics often employ controlled release of pharmaceutics by the use of microspheres. However,
+common techniques to produce microspheres suffer from poor encapsulation efficiency (EE) of hydrophilic
+drugs. The aim of this study was to assess various formulation parameters to enhance doxycycline (DOX) en-
+capsulation into poly(D, L-lactide-co-glycolide) (PLGA) microspheres prepared by double emulsion (water/oil/
+water) solvent evaporation technique. The parameters included variations in co-solvents, external aqueous phase
+(W2) pH, and PLGA end-groups (ester- or acid-terminated). Results showed that the formulated microspheres
+sized < 10 μm and were of low polydispersity. Furthermore, an external phase pH of 9.0 was most suitable for
+the incorporation of the drug. Additionally, the replacement of the polymer phase with a co-solvent system (1:5,
+EtOH:DCM %) significantly enhanced the drug EE using acid-terminated PLGA polymer. Drug release kinetics
+showed an initial burst release phase, followed by a controlled exponential phase that lasted up to 21 days.
+Furthermore, in vitro studies revealed concentration-dependent toxicity using periodontal ligament cells (PDLCs)
+and antibacterial properties against periodontal pathogens. Overall, this study demonstrated the optimal for-
+mulation parameters needed to achieve a high encapsulation of water-soluble drug into PLGA microspheres
+using emulsification techniques.
+1. Introduction
+Periodontitis is a chronic disease caused by the colonization of the
+gingival margin, predominantly by gram-negative bacteria, such as
+Porphyromonas gingivalis (Pg) and Fusobacterium nucleatum (Fn) [1,2]. A
+recent report described that 44.7% of adults of 30 years and older in the
+US had periodontitis, representing approximately 65 million people [3].
+Clinical signs of severe periodontitis are associated with the develop-
+ment of deep periodontal pockets (∼5 mm), destruction of the tooth-
+supporting structures (i.e. bone, gums, and ligament tissue) and ulti-
+mately tooth loss [4].
+Current treatment for destructive periodontitis consists of mechan-
+ical removal of plaque from the periodontal pocket via scaling and root
+planning (SRP) and the use of adjunctive therapy like the administra-
+tion of antibiotics [5]. Doxycycline hyclate (DOX) is classified as a
+broad-spectrum antibiotic and a member of the tetracycline antibiotics
+group, which can penetrate the bacterial membrane and inhibit bac-
+terial protein synthesis of a wide range of gram-negative and gram-
+positive bacteria [6,7]. However, many drawbacks are associated with
+the systemic administration of DOX, including drug resistance and
+toxicity [8]. In periodontitis treatment, DOX has to be administered
+several times per day to avoid an insufficient antibiotic concentration in
+subgingival regions [5]. Hence, local delivery of DOX using drug car-
+riers is a more suitable method of drug delivery for this application with
+fewer side-effects [1].
+Antimicrobial agents are incorporated in drug delivery systems
+(DDS) to provide local sustained release of antibiotics to the tissue
+surrounding the periodontal pocket, such as hydrogels, fibers, chips and
+polymeric microspheres [9–12]. Local delivery of antibiotics provided
+improved treatment results in several clinical studies [13,14]. For ex-
+ample, local treatment of microencapsulated minocycline (Arestin®)
+showed greater probing depth reduction with SRP compared to SRP
+alone in patients with moderate to severe periodontitis [15,16]. The
+therapeutic benefit of microencapsulated minocycline delivery, how-
+ever, is associated with more adverse drug reactions compared to DOX,
+such as nausea, weakness, and vomiting [17–19]. Considering these
+negative aspects, with regard to the use of minocycline delivery, the use
+of local delivery systems based on DOX presents advantages for the
+https://doi.org/10.1016/j.jddst.2019.04.031
+Received 16 January 2019; Received in revised form 16 April 2019; Accepted 17 April 2019
+∗Corresponding author.
+E-mail address: fang.yang@radboudumc.nl (F. Yang).
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+Available online 24 April 2019
+1773-2247/ © 2019 Elsevier B.V. All rights reserved.
+T
+
+treatment of periodontitis.
+Poly(lactide-co-glycolic acid) (PLGA) microspheres are a suitable
+drug carrier, biodegradable and already used in many medical devices
+[20]. The solvent evaporation double emulsion technique (water/oil/
+water; W/O/W) is the most widely used technique for the encapsulation
+of therapeutic agents in PLGA microspheres. However, a major limita-
+tion of this technique is poor EE of hydrophilic small molecules, due to
+the partitioning of water-soluble molecules into the external aqueous
+phase (W2) before solidification of PLGA microspheres. This has led to
+several studies converting to the spray drying as a microencapsulation
+technique as a result [21–25]. Moreover, limited studies have system-
+atically investigated the effect of formulation parameters on en-
+capsulation of DOX in PLGA microspheres using the W/O/W double
+emulsion technique.
+Hence, the aim of the present study was to optimize the formulation
+parameters in the double emulsion technique, (1) to optimize en-
+capsulation of DOX into PLGA microspheres, (2) to describe its con-
+trolled release, and (3) to evaluate its efficacy against common peri-
+odontal pathogens. Three formulation parameters were selected and
+investigated, i.e. the inclusion of co-solvents, manipulation of the ex-
+ternal phase pH, and utilization of different PLGA polymer capping-
+groups. Different co-solvent ratios were used to facilitate faster polymer
+precipitation and quick solidification of the microspheres [26,27].
+Additionally, the external phase pH was altered in an effort to reduce
+the drug's water solubility and improve the EE [28]. Furthermore, dif-
+ferent PLGA polymer capping-groups were used to identify the best
+terminal-group to facilitate better drug-polymer matrix interaction
+[29]. To our best knowledge, the effect of these formulations has not
+been previously investigated on the encapsulation of DOX in PLGA
+microspheres using the double emulsion technique. The effects of these
+parameters were compared on microsphere morphology, particle size
+distribution, and EE. The ideal formulations, based on the EE and drug
+release properties, were used in cell proliferation and cell viability as-
+says using Alamar Blue (AB) and MTT assay, respectively. Lastly, the
+efficacy of the fabricated PLGA microspheres was tested against Gram-
+negative bacteria, Porphyromonas gingivalis (Pg) and Fusobacterium nu-
+cleatum (Fn), using a zone of inhibition test.
+2. Materials & methods
+2.1. Materials
+Poly(D,L-lactide-co-glycolide) (PLGA, ester-terminated, 5002, and
+acid-terminated, 5002A, 50:50 lactide:glycolide ratio, intrinsic visc-
+osity
+0.2 dl/g) was
+purchased
+from Corbion
+Purac
+(Gorinchem,
+Netherlands). Doxycycline hyclate (DOX), polyvinyl alcohol (Mw:
+20,000–30,000), which was chosen as surfactant for external phase
+(W2), dichloromethane (DCM), and ethanol (EtOH) were obtained from
+Sigma-Aldrich (St. Louis, USA). Analytical grades sodium chloride
+(NaCl) and phosphate-buffered tablets were acquired from Merck
+(Darmstadt, Germany) and ThermoFisher Scientific (Waltham, USA),
+respectively. For the cell culture studies, Dulbecco's modified Eagle's
+medium (DMEM), RPMI-1640 medium, supplemented with 10% fetal
+bovine serum (FBS), 1% penicillin-streptomycin (1% P/S), Vybrant®
+MTT
+3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium
+bromide
+assay kit (V-12154), and Alamar Blue® reagent (all bought from
+ThermoFisher Scientific, Waltham, USA). All chemicals were used
+without further purification.
+2.2. Methods
+2.2.1. Preparation of PLGA microspheres
+Protocol for the formulation of PLGA microspheres was adapted
+from Moura et al. (2015) [30]. In brief, 100 mg of PLGA was dissolved
+in 4 ml DCM or a co-solvent ratio composed of 0:1, 1:3 or 1:5 (EtOH:
+DCM). 1 ml of phosphate buffered saline (PBS) with 20% w/w DOX
+dissolved was added to the polymer solution and the mixture was
+emulsified for 4 min at 17.5 × 103 RPM using a mixer (IKA® T25 digital
+ultra-Turrax®, IKA® Werke GMBH & Co. KG, Staufen im Breisgau, Ger-
+many) to form the (W1/O) emulsion. This mixture was subsequently
+added slowly into 200 ml of an aqueous solution containing 2% w/v
+polyvinyl alcohol (PVA) with 4% w/v NaCl and emulsified again at
+17.5 × 103 RPM for 6 min at room temperature to form the W1/O/W2
+emulsion. Solvent removal and hardening of the microspheres were
+achieved by continued stirring in a magnetic stirrer overnight at 300
+RPM at room temperature (23 °C). Later, the microspheres were iso-
+lated by centrifugation (4000×g for 3 min) and washed with distilled
+water several times to remove excess PVA. Finally, the microspheres
+produced were freeze-dried (BenchTop Pro, SP Scientific, Warminster,
+Fig. 1. Schematic representation of the water-in-oil (W/O/W) double emulsion solvent evaporation technique.
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+264
+
+PA) at −55 °C in a vacuumed sealed flask (270 μB) for at least 24 h and
+stored at −20 °C for further analysis. The pH of the external phase was
+adjusted to pH 5.5, 7.0 and 9.0 by adding droplets of sodium hydroxide
+(NaOH) or hydrochloric acid (HCl) accordingly (see fig1).
+2.2.2. Encapsulation efficiency
+To determine the amount of DOX encapsulated in PLGA micro-
+spheres, 15 mg of DOX-loaded microspheres were dissolved in 1 ml
+DCM by continued stirring (n = 3). Once microspheres completely
+dissolved, 3 ml PBS was added to the mixture to precipitate the polymer
+and extract the drug into the aqueous layer. The suspension was vig-
+orously mixed for 3 h and allowed to stand still to get a clear solution,
+followed by centrifugation for 10 min at 10,000 RPM. The supernatant
+was filtered and analyzed for DOX content by UV spectrophotometer at
+a wavelength of 360 nm using Synergy HTX multi-mode Reader
+(BioTek, Winooski, USA). Please note that there may be small dis-
+crepancies in the EE and LC values in Figs. 2 and 3 due to the batch-
+batch differences.
+The EE and LC were calculated using the following formulas:
+=
+Encapsulation efficiency EE
+(
+) (%)
+×
+Drug loading mg
+Theoretical loading mg
+(
+(
+)/
+(
+))
+100
+=
+Loading capacity LC
+(
+) (%)
+×
+Weight of drug in microspheres mg
+Weight of microspheres mg
+(
+(
+) /
+(
+))
+100
+2.2.3. Doxycycline solubility in the external aqueous phase
+The effect of pH on solubility was investigated by placing an
+equivalent of 50 mg/ml DOX in three solutions composed of the same
+concentration of emulsifying agent (2% PVA) and salt (4% NaCl), which
+were used in the formulation protocol (2.2.1). Additionally, the pH of
+the solution was adjusted accordingly as previously described. The
+control was made as DOX dissolved in distilled water without the
+presence of salts and stabilizers. The solutions were stirred at 300 RPM
+for 1 h at room temperature (23 °C). A sample was drawn and filtered
+through a 0.2 μm filter (Millipore, Burlington, USA) to separate the
+undissolved solid from the dissolved drug. DOX concentration was then
+analyzed using the Synergy HTX multi-mode Reader.
+2.2.4. Morphologic examination and particle size distribution
+The shape and surface morphology was performed using a Zeiss
+Sigma 300 VP-FESEM (Carl Zeiss Microscopy, Jena, Germany) after
+coating with 10 nm chromium. The image was acquired at 5kv. The size
+and particle size index (PDI) of PLGA microspheres was measured using
+dynamic light scattering technique (DLS), which can measure particle
+range from 0.3 nm to 10 μm (DLS-Zetasizer Nano ZS, Malvern
+Instruments, Malvern, UK), after suspending 5 mg of the microspheres
+in 20 ml of deionised water. Three determinations were carried out for
+each formulation.
+2.2.5. Fourier transform infrared spectral study (FT-IR)
+Chemical stability and interaction between the drug and the poly-
+meric matrix were investigated using FT-IR spectroscopy (Spectrum
+Two FT-IR Spectrometer, PerkinElmer, Waltham, USA). The samples
+were scanned in the 4000-650 cm−1 range with an ATR accessory.
+2.2.6. In vitro release study
+The in vitro release kinetics of 5 mg lyophilized drug-loaded mi-
+crospheres were suspended in 1 ml PBS at physiological pH (pH 7.4)
+and incubated in the shaker at 37 °C at 150 RPM (n = 3). During each
+time-point, ranging from 1 h to 21 days, microspheres were centrifuged
+at 10,000 RPM for 2 min and 900 μl of supernatant was removed and
+stored at −20 °C for later analysis and 900 μl of fresh PBS was then
+added to the spheres, vortexed briefly and returned to the water bath
+until the next time point. The dilutions were analyzed individually in
+the UV/VIS spectrophotometer (Synergy) at 360 nm and using their
+respective absorbance values and absorption curve was constructed. A
+standard calibration curve of DOX was constructed by plotting absor-
+bance versus concentration. The amount of DOX release was calculated
+and expressed as the percentage of the amount of encapsulated drug
+plotted versus time.
+2.2.7. Cell culture
+All experiments were done in accordance with the national guide-
+lines for working with human materials (Dutch Federation of biome-
+dical scientific societies, human tissue, and medical research: code of
+Fig. 2. The effect of a) co-solvent ratio and b) ex-
+ternal aqueous (W2) pH and polymer-terminal group
+on the encapsulation efficiency (EE, %) of DOX in
+5002A PLGA microspheres . Note that adding EtOH
+as a co-solvent in the composition 1:3 EtOH: DCM
+did not change the EE and LC, whereas 1:5 results in
+a significant increase. Acid-terminated PLGA 5002A
+with a higher external phase (W2) pH showed greater
+encapsulation of DOX. Data are shown as mean ± SD
+(n=3). The significant difference is displayed com-
+pared to control (the monosolvent group in 2a and
+the pH 5.5 group in 2b) if without further in-
+dication,where * p < 0.05, **p < 0.01, and ***
+p < 0.001.
+) pH showed greater encapsulation of
+DOX.
+Fig. 3. The effect of pH of the external phase composed of 2% PVA and 4%
+NaCl on the solubility of DOX at room temperature (23 °C). The control was
+distilled water without the presence of salts and stabilizers. Drug solubility
+decreased significantly at higher pH compared to control.The significant dif-
+ference is displayed compared to control where * p < 0.05, **=p < 0.01,
+and ***=p < 0.001. Data are shown as mean ± SD (n = 3).
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+265
+
+conduct for responsible use. Available at https://www.federa.org/).
+After informed patient consent, periodontal ligament cells (PDLCs)
+were harvested from an impacted third molar from one adult patient
+(18 years, female). The cell proliferation medium consisted of advanced
+Dulbecco's Modified Eagle Medium/Ham's F-12 (DMEM/F-12) supple-
+mented with 10% fetal calf serum (FBS) and 1% penicillin/strepto-
+mycin (all: Gibco). The cells were cultured for a total of three passages
+and then frozen in medium supplemented with 10% dimethyl sulfoxide
+(Sigma) in liquid nitrogen. After defrosting, cells from the 5th passage
+were used.
+2.2.8. Cell viability study
+The AlamarBlue test was used to investigate cell viability in the
+presence of PLGA microspheres. PDLCs were seeded at 10,000 cells/
+well on a 96-well plate for 24 h before DOX using increasing con-
+centrations of DOX ranging 0–1000 μg/ml, for 48 h (n = 3). The cells
+were then washed with PBS and AB reagent (10% of the well volume)
+was added to each well and incubated for 4 h at 37 °C to allow resazurin
+to become converted to resorufin by metabolically active cells. PDLC
+viability was determined by fluorescence measurements made on
+Synergy HTX multi-mode Reader (BioTek, Winooski, USA) using an
+excitation wavelength of 535 nm and an emission wavelength of
+590 nm. The percentage of AB reduction was compared against PDLCs
+which received no drug (control).
+2.2.9. Cell proliferation study
+The effect of DOX release medium on PDLC proliferation was in-
+vestigated using 3-(4,5-dimethylthiazol-2-yl)-2,5-diphenyltetrazolium
+bromide (MTT) Vybrant® assay kit according to ISO 10993–5. The
+primary human PDLCs (passage number < 10) were seeded at a con-
+centration of 10,000 cells/well in a 96-well plate (n = 3). After 24 h
+incubation, the medium was removed and replaced with release cell
+culture medium obtained from PLGA microspheres at 37 °C using pro-
+tocol shown in 2.2.6, including negative control (i.e. untreated cells).
+After 24 h of incubation, the wells were aspirated and washed twice
+with PBS and replaced with 100 μl of DMEM medium with 10% MTT
+12 mM stock solution and incubated for 4 h at 37 °C. Subsequently,
+100 μl of SDS-HCL solution was added per well and incubated for 4 h at
+37 °C. Cell proliferation was quantified by using a spectrophotometer at
+a wavelength of 570 and 690 nm. The relative cell viability (%) related
+to the control wells was calculated by:
+Absorbance test
+Absorbance control x
+[
+]
+/[
+]
+100
+2.2.10. In vitro antibacterial activity assay
+The antibacterial activity of drug-loaded microspheres was com-
+pared with that of void microspheres (control) using gram-negative
+anaerobic bacteria Pg (ATCC 33277) and Fn (ATCC 25586). In this
+assay, DOX-loaded PLGA microspheres formulated at pH 7.0 and pH 9.0
+(Table 1, D11 & D12) were used. The bacterial strains were cultured in
+fastidious anaerobe culture agar plate (FAA) where colonies of P. gin-
+givalis (Pg) and F. nucleatum (Fn) were inoculated at a concentration of
+9.0 × 108 CFU/ml. 10 mg of freeze-dried DOX-loaded PLGA micro-
+spheres were placed onto 8 mm filter paper (n = 3) and added onto the
+surface of the agar under sterile conditions and incubated at 37 °C. The
+size of the inhibition zone was then measured after 48 h.
+2.2.11. Statistical analysis
+One-way analysis of variance (ANOVA) with a Tukey post-test was
+used to detect differences in all the tests which were run in triplicates
+(n = 3) and presented as the mean ± standard deviation (SD). A stu-
+dent's t-test was used to compare the in vitro cytotoxicity between
+treated and untreated cells. Statistical analyses were carried out using
+GraphPad Prism software. The level of significance in the statistical
+analysis was determined at p < 0.05.
+3. Results
+3.1. Effect of co-solvent on the encapsulation efficiency
+Fig. 2a shows the effect of utilizing different EtOH: DCM co-solvents
+ratios (i.e. 0:1 control, 1:3 and 1:5) in manufacturing 5002A PLGA
+microspheres using an external phase pH of 9.0, under otherwise
+identical
+conditions.
+The
+EE
+increased
+significantly
+from
+19.33% ± 4.93 for the control to 42.12% ± 4.66 using a co-solvent
+system composed of a ratio of 1:5 (p < 0.05). However, an increase in
+ethanol concentration to 1:3 (EtOH: DCM, %) did not result in a change
+in drug EE (p > 0.05). The same significant effects were measured for
+the LC. Hence, a co-solvent system in the ratio of 1:5 (EtOH: DCM, %)
+was used for the remainder of the study.
+3.2. Effect of pH and terminal group on the encapsulation efficiency
+To improve the EE of the microspheres further, two additional
+parameters were investigated, i.e. the pH of the external aqueous phase
+(W2) and the polymer terminal group. Fig. 2b shows that increasing the
+alkalinity of the W2 from pH 5.5 to pH 7.0 or pH 9.0 resulted in a
+significant increase in EE of DOX (p < 0.05). Moreover, the choice of
+polymer terminal-group also influenced the EE and LC. Ester-termi-
+nated PLGA using co-solvent at pH 9.0 resulted in a maximum EE of
+21% ± 4.06
+(LC = 1.64% ± 0.59).
+In
+contrast,
+acid-terminated
+5002A, under identical conditions, resulted in a maximum EE of
+45% ± 6.31 (LC = 9.05% ± 1.26). Hence, acid-terminated PLGA
+formulations utilizing a co-solvent system were selected for further in
+vitro studies.
+3.3. Doxycycline solubility
+To explain the pH effects on EE, DOX solubility was measured at
+different pH's. Fig. 3 shows the effect of pH of the external phase (W2)
+on drug solubility. The figure demonstrates that drug solubility de-
+creased significantly with the inclusion of our external phase conditions
+(2% PVA and 4% NaCl compared to control (p < 0.001). Moreover, a
+significant decrease in drug solubility was observed between W2 pH 5.5
+and pH 9.0 (p < 0.01).
+3.4. Morphological examination and size distribution
+The surface morphology of DOX-loaded microspheres was examined
+by SEM at 5000x magnification (Fig. 4). Typically, all the microspheres
+prepared under various conditions had an acceptable size (< 10 μm)
+and were suitable for further in vitro studies. It can be observed that
+hollow PLGA microspheres were formulated with different surface
+morphologies. Additionally, SEM micrographs revealed a smooth
+Table 1
+Mean microsphere size of microspheres prepared with different organic phase
+compositions and external phase pH. Data are shown as mean ± SD (n = 3).
+Formulation
+Polymer
+type
+W2 (pH)
+Particle Size
+(μm) ± SD
+PDI ± SD
+LC ± SD %
+D1
+5002
+5.5
+3.16 ± 0.26
+0.63 ± 0.49
+0.47 ± 0.26
+D2
+7.0
+4.59 ± 0.05
+0.84 ± 0.27
+0.55 ± 0.27
+D3
+9.0
+2.17 ± 0.23
+0.63 ± 0.54
+0.44 ± 0.12
+D4
+5002 +
+co-
+solvent
+5.5
+7.78 ± 3.15
+0.38 ± 0.25
+0.72 ± 0.13
+D5
+7.0
+5.63 ± 0.62
+0.67 ± 0.43
+1.64 ± 0.59
+D6
+9.0
+6.55 ± 0.13
+0.18 ± 0.06
+0.99 ± 0.21
+D7
+5002A
+5.5
+5.09 ± 0.03
+0.73 ± 0.37
+0.85 ± 0.37
+D8
+7.0
+6.44 ± 2.99
+0.39 ± 0.40
+1.68 ± 0.35
+D9
+9.0
+4.53 ± 0.61
+0.69 ± 0.53
+3.87 ± 0.98
+D10
+5002A +
+co-
+solvent
+5.5
+6.16 ± 0.44
+0.15 ± 0.13
+2.25 ± 0.47
+D11
+7.0
+8.00 ± 1.61
+0.47 ± 0.16
+5.11 ± 0.13
+D12
+9.0
+7.76 ± 1.66
+0.26 ± 0.08
+9.05 ± 1.26
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+266
+
+surfaced spherical morphology without aggregation at pH 5.5. In-
+creased porosity and surface imperfections were observed at higher pH,
+particularly for acid-terminated 5002A (Fig. 4, g-i). The mean particle
+size (z-average) of all the samples are shown in Table 1. The size of the
+microspheres was the smallest and largest when they were prepared
+using monosolvent and co-solvent, respectively. The mean microsphere
+size for DOX-loaded microspheres with ester- and acid-terminated
+PLGA (without co-solvent) were found to range 2.17–4.59 μm (D1-D3)
+and 4.53–5.09 μm (D7-D9), respectively. The mean microsphere size for
+ester- and acid-terminated microspheres (with co-solvent) was found to
+be significantly higher (p < 0.05), which ranged 4.53–5.09 μm (D4-
+D6) and 6.16–8.00 μm (D10-D12), respectively. Statistical evaluation
+revealed that no significant difference were obtained by increasing the
+external aqueous phase pH.
+3.5. Fourier transform infrared (FT-IR) studies
+The FT-IR spectra of placebo PLGA microspheres, pristine DOX, and
+DOX-loaded microspheres with the highest EE (Table 1, D12) are de-
+picted in Fig. 5. The bands observed with the placebo microspheres
+were almost identical to the DOX-loaded microspheres with the addi-
+tional bands due to DOX with minor shifting. DOX-loaded in PLGA
+microspheres can easily be identified by the broad IR stretching vi-
+bration regions of functional groups -OH/-NH at 3000-3500 cm−1.
+Furthermore, bands at 1610 and 1459 cm−1 correspond to carbonyl
+(C=O) stretching and methylene (-CH2) bending vibrations of the drug,
+respectively. Band observed between 1450 and 850 cm−1 corresponds
+to C-H bending vibrations of the PLGA polymer. This result clearly in-
+dicates the chemical stability of the drug and polymer during the for-
+mulation process.
+3.6. In vitro drug release study
+The in vitro release profiles of DOX-loaded PLGA microspheres after
+21 days are displayed in Fig. 6. These formulations were selected be-
+cause they contained the highest EE compared to other formulations.
+Generally, all formulations showed an initial burst release followed by a
+controlled phase in which the remaining of the drug is released.
+Overall, a total of 27.87 ± 1.4, 36.98 ± 0.2 and 40.81 μg ± 0.8 of
+the drug was released from PLGA microspheres formulated with a W2 of
+pH 5.5, 7.0 and 9.0 after 21, respectively. The release rate was also
+higher for the formulation with the lowest amount of drug (i.e. pH 5.5)
+and became slower when the incorporated amount of drug was higher
+i.e. pH 7.0 and 9.0.
+Fig. 4. SEM images of DOX-loaded PLGA microspheres prepared using external phase conditions. (a–c) PLGA 5002 microspheres formulated using an external phase
+(W2) of: (a) pH 5.5, (b) pH 7.0 and (c) pH 9.0. (d–f) PLGA 5002 with co-solvent (1:5, EtOH: DCM); (g–i) PLGA 5002A without co-solvent; (j–l) PLGA 5002A with co-
+solvent. Magnification is 5000x, scale bar is 10 μm.
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+267
+
+3.7. Cytocompatibility and antibacterial studies
+3.7.1. Free drug cytotoxicity
+The effect of DOX concentration (0–1000 μg/ml) on PDLC viability
+is shown in Fig. 7a. DOX at a concentration of 5 μg/ml showed no toxic
+effects on PDLC in vitro, with a mean reduction of AB reagent equal to
+that of control (p > 0.05). The percentage of AB reduction decreased
+significantly at concentrations greater 25 μg/ml (p < 0.0001) with the
+greatest difference observed at the highest concentrations of DOX tested
+(500 & 1000 μg/ml).
+3.7.2. Cytotoxicity of released drug
+The cytotoxicity of DOX released from PLGA microspheres as de-
+termined by MTT cell proliferation assay is shown in Fig. 7b. In this
+assay, the release medium was obtained at 37 °C at three different time-
+points: 0–1, 3–4 and 6–7 days. The data determined that there was no
+significant effect between drug release obtained at different time in-
+tervals and cytotoxicity of PDLCs (p > 0.05).
+3.7.3. Morphologic examination of PDLCs
+Microscopic images of PDLC exposed to increasing concentrations of
+DOX are shown in Fig. 7c. The images obtained showed cells treated
+with DOX at high concentrations (≥25 μg/ml) displayed greater mor-
+phological signs of apoptosis compared to healthy cells. Microscopic
+images revealed that the cells exposed to high concentrations of DOX
+were less adherent (Fig. 7c, iii-viii) compared to untreated cells (Fig. 7c,
+i). Overall, the morphologic images showed that DOX is toxic in a dose-
+dependent manner.
+3.8. Antibacterial potential of PLGA microspheres
+Drug-loaded PLGA microspheres with the highest EE (i.e. pH 7.0
+and 9.0 using 5002A + co) were used in the antibacterial tests with
+anaerobic bacteria found in periodontal pockets of periodontitis pa-
+tients (i.e. Pg and Fn). The results displayed in Fig. 8 showed no in-
+hibition zone surrounding the void microspheres (control). However,
+drug-loaded PLGA microspheres showed an inhibition zone sur-
+rounding all the spheres tested using the inhibition zone test. A sig-
+nificant difference was obtained between pH 7.0 and 9.0 microspheres
+for P. gingivalis (p < 0.05) where spheres formulated at pH 9.0 resulted
+in a larger inhibition zone. However, no significant difference was
+observed between pH 7.0 and pH 9.0 microspheres for F. nucleatum
+bacteria (p > 0.05).
+4. Discussion
+The objective of this study was to identify the optimum formulation
+parameters required to achieve a maximum encapsulation efficacy for
+DOX-loaded PLGA microspheres using the double emulsion technique.
+We hypothesized that poor encapsulation of DOX was attributed to high
+drug water solubility of the drug, which favors partitioning into the
+external phase before solidification of the polymeric microspheres. To
+prevent drug partitioning, we adjusted specific formulation parameters
+which we hypothesized were essential for improving drug encapsula-
+tion, i.e. the inclusion of co-solvents, the pH of the external phase, and
+the variation of the PLGA terminal group (acid or ester-terminated).
+Overall, the data suggested that drug encapsulation was strongly in-
+fluenced by the formulation factors investigated.
+Where adjusting the pH of the external phase resulted in a sig-
+nificant increase in drug encapsulation and loading efficiency. The in-
+crease in encapsulation efficiency was found to be mainly due to a re-
+duction in DOX solubility in the external phase in response to increasing
+the alkalinity of the W2. DOX is an amphoteric compound with three
+pKa values corresponding to pKa1 3.02 ± 3.02 (tricarbonyl system),
+pKa2 7.97 ± 0.15 (ketophenolic system), and pKa3 9.15 ± 0.3 (di-
+methylammonium group). When the pH of the solution is below the pKa
+Fig. 5. Fourier transform infrared spectroscopy spectra of a)Placebo micro-
+spheres, b)pristine DOX, and c) DOX-loaded microspheres. Results from FT-IR
+confirm the chemical stability of DOX in PLGA microspheres due to the ap-
+pearance of characteristic bands of different functional groups of O-H/N-H and
+CH2 groups at 3388 cm−1 and 1459 cm−1.
+Fig. 6. Cumulative in vitro release profile of DOX-loaded PLGA microspheres a)
+amount (μg/ml) and b) percentage (%) of drug doxycycline released in PBS at
+37 °C. PLGA (5002A) formulated using co-solvent ratio of 1:5 and external
+aqueous phase of: pH 5.5 (D10), pH 7.0 (D11), and pH 9.0 (D12). Data are
+shown as mean ± SD (n = 3).
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+268
+
+(pH < pKa), DOX is ionized resulting in increased solubility in the W2.
+However, when the pH is greater than the pKa (pH > pKa), DOX is
+unionized resulting in a decreased solubility in the W2. Furthermore,
+under acidic pH conditions, the addition of hydrochloric acid causes the
+formation of doxycycline hydrochloride (DOX-HCL-H2O) [7]. However,
+under alkaline conditions, drug neutralization with sodium hydroxide
+occurs resulting in the insoluble form of the drug, doxycycline mono-
+hydrate (DOX-H2O). The monohydrate variant lacks a hydrogen bond
+donor or acceptor and is, therefore, unable to interact with water mo-
+lecules [31]. Hence, a reduction in water solubility was observed.
+Experimentally, it was not possible to increase the alkalinity of the W2
+phase beyond 9.0, due to increased polymer erosion as observed after
+the close morphologic examination.
+In addition to the external phase pH, PLGA polymer capping-group
+played a vital role in facilitating drug encapsulation. Acid-terminated
+PLGA encapsulated significantly more drug under the same conditions
+compared to ester-terminated PLGA. This can be due to better inter-
+action between the drug molecule and carboxylic acid end groups of
+PLGA. A higher drug-polymer interaction leads to a slower drug diffu-
+sion from the polymer microspheres into the W2 prepared with an acid-
+terminated polymer [21]. Furthermore, the inclusion of co-solvents
+resulted in a higher EE due to the quick solidification of PLGA polymer
+into polymeric droplets by transitioning from the organic phase into the
+water phase [32]. Quick solidification results in a fast mass transfer of
+the polymer from a semi-solid to a solid microsphere, which facilitates a
+higher encapsulation of hydrophilic drugs [33]. In the present study a
+maximum ratio of 1:5 (EtOH: DCM) was used. However, it was not
+possible to increase the concentration of co-solvent (EtOH) beyond this
+range due to polymer stability issues.
+SEM analysis showed that PLGA microspheres manufactured using
+acid-terminated PLGA displayed a porous morphology compared to
+ester-terminated PLGA, which contained a smoother surface appear-
+ance. Acid-terminated polymers have a higher water solubility com-
+pared to ester-capped PLGA, which is related to the orientation of the
+carboxylic end groups [29]. The porous morphology is due to auto-
+catalysis by the carboxylic end groups, which translated into faster
+biodegradation of the polymer matrix as a result of hydrolysis of the
+ester bonds in the polymer chain [28].
+The mean particle size and distribution data showed that dependent
+on the formulation parameters, PLGA microspheres of different sizes
+Fig. 7. Cytotoxicity of doxycycline hyclate using a) free drug and b) released drug in PBS at 37 °C (line displays 100% cell viability of untreated cells). Percentage
+difference between treated and control cells . C) PDLC morphology under a light microscope 20X. i) Control cells, cells treated for 24 h with doxycycline at ii) 5 μg/
+ml iii) 25 μg/ml iv) 50 μg/ml v) 100 μg/ml. Vi) 500 μg/ml vii) 1000 μg/ml viii) 20% DMSO. Scale bar = 500 μm. The significant difference is displayed compared to
+control where * p < 0.05, ** p < 0.01, and *** p < 0.001. Data are shown as mean ± SD (n=3).
+Fig. 8. Inhibition zone test for P. Ginigivalis and F. nucleatum bacterial strains
+using void microspheres (control), PLGA microspheres formulated using an
+external aqueous phase of pH 7.0 and 9.0. DOX-loaded PLGA microspheres
+showed antibacterial activity against two types of bacterial strains. The sig-
+nificant difference is displayed compared to control where *
+p < 0.05, **
+p < 0.01, and *** p < 0.001. Data are shown as mean ± SD (n=3).
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+269
+
+(< 10 μm) were obtained. Microsphere size is an important factor to
+consider because it affects the encapsulation efficiency, product in-
+jectability, and in vivo biodistribution [34]. In the context of period-
+ontitis, smaller spheres facilitate better penetration of periodontal
+tissue [35]. For example, smaller sized spheres can penetrate areas that
+are not accessible to other devices, such as alveolar bone trabeculae and
+the underlining connective tissues of the periodontal pocket. Hence, a
+higher concentration of drug can reach these inaccessible areas with the
+added benefit of a controlled release of antibiotic. Additionally, the
+particle size is important for controlling microsphere degradation and
+release kinetics of the encapsulated drug [36]. Ultimately, the purpose
+of these microspheres is intended for injection to the periodontal pocket
+in an aqueous or gel suspension.
+The in vitro release kinetics revealed a sustained release profile for
+up to 21 days. The release of the encapsulated drug from PLGA mi-
+crospheres occurs via diffusion and/or erosion of the polymer matrix
+[34]. More noticeably, formulations which encapsulated the highest
+amount of drug (Table 1, D12) displayed the slowest release compared
+to formulations having the lowest amount of drug (D10). At higher drug
+loading, there is a greater interaction between the microspheres leading
+to the formation of aggregates, which extends into the polymer matrix
+and needs more time to dissolve [37].
+Cytotoxicity studies revealed concentration-dependent toxicity.
+Higher concentrations displayed greater cell cytotoxicity compared to
+the lower concentrations tested. Interestingly, the concentrations of
+DOX from 500 to 1000 μg/ml displayed similar values identical to the
+positive control (20% DMSO). This indicates that DOX may have a
+negative impact on survival of healthy tissue PDLC by affecting cell
+metabolism in a concentration-dependent manner. These results are in
+agreement with other studies which showed a reduction in PDLC
+treated with DOX at a concentration of 100–1000 μM [38]. Also, our
+findings imply that concentrations greater than 25 μg/ml should be
+avoided in the treatment of PD to maximize therapy. The minimum
+inhibitory concentration (MIC90) of DOX required to inhibit the growth
+of 90% of periodontitis-causing bacteria (i.e. Pg) is 0.12–1.56 μg/ml
+[38]. From our data, the maximum concentration of DOX that had little
+adverse effect in PDLC is 5 μg/ml. Thus, little cellular damage should
+occur with topical administration of DOX to the periodontal pocket at
+the dose equivalent to the MIC90. According to our in vitro release study,
+just 1 mg of DOX can provide sustained release of therapeutic con-
+centrations of DOX (i.e. above its MIC90) and maintain these levels for
+several weeks, which easily fits most of the periodontal pockets (sup-
+plementary material, Table S1) [39]. The amount of DOX remaining in
+microspheres after the duration of the release study is supplied in the
+supplemenntary material (Table S2). Moreover, sterilization techniques
+should be considered for the PLGA-loaded microspheres to meet in-
+dustry guidelines for pharmaceutical products. As such, gamma(γ)-ir-
+radiation (∼5–25 kGy) is accepted for the sterilization of pharmaceu-
+tical products in accordance with good manufacturing practices [40].
+In summary, the microspheres formulated should induce a con-
+trolled release of DOX equivalent to the MIC90 without inducing cellular
+cytotoxicity. It is important to note, however, that in vivo studies have
+to be done to confirm the current in vitro data.
+5. Conclusions
+An overview is provided of the effect of key formulation parameters,
+i.e. the pH of the W2, polymer end-group and inclusion of co-solvent, on
+the encapsulation of DOX using the double emulsion technique. The
+effect of these parameters was found to be highly important for the
+encapsulation of DOX. Overall, the formulated microspheres were ro-
+bust with controlled drug release kinetics and antibacterial properties
+against periodontitis causing pathogens.
+Conflicts of interest
+The authors declare that they have no conflict of interest.
+Acknowledgments
+This
+study
+was
+financially
+supported
+by
+the
+Netherlands
+Organisation for Scientific Research (NWO) Applied and Engineering
+Sciences with project number 13844.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://
+doi.org/10.1016/j.jddst.2019.04.031.
+References
+[1] G. Greenstein, Local drug delivery in the treatment of periodontal diseases: asses-
+sing the clinical significance of the results, J. Periodontol. 77 (4) (2006) 565–578.
+[2] T.E. Van Dyke, Proresolving lipid mediators: potential for prevention and treatment
+of periodontitis, J. Clin. Periodontol. 38 (Suppl 11) (2011) 119–125.
+[3] P.I. Eke, et al., Update on prevalence of periodontitis in adults in the United States:
+NHANES 2009 – 2012, J. Periodontol. 86 (5) (2015) 611–622.
+[4] R.C. Page, K.S. Kornman, The pathogenesis of human periodontitis: an introduction,
+Periodontol 14 (2000) 9–11 1997.
+[5] I. Sanz, et al., Nonsurgical treatment of periodontitis, J. Evid. Based Dent. Pract. 12
+(3 Suppl) (2012) 76–86.
+[6] J.H. Reed, A review of the experimental use of antimicrobial agents in the treatment
+of periodontitis and gingivitis in the dog, Can. Vet. J. 29 (9) (1988) 705–708.
+[7] A.C.S. Kogawa, Hérida Regina Nunes, Doxycycline hyclate: a review of properties,
+applications and analytical methods, Int. J. Life Sci. Pharma Res. 2 (4) (2012) 11–18.
+[8] J.P. Raval, et al., Controlled-release and antibacterial studies of doxycycline-loaded
+poly(ε-caprolactone) microspheres, J. Saudi. Chem. Soc. 18 (5) (2014) 566–573.
+[9] M. Panwar, S.H. Gupta, Local drug delivery with tetracycline fiber : an alternative
+to surgical periodontal therapy, Med. J. Armed Forces India 65 (3) (2009) 244–246.
+[10] W. Orapiriyakul, et al., Antibacterial surface modification of titanium implants in
+orthopaedics, J. Tissue Eng. 9 (2018) 2041731418789838-2041731418789838.
+[11] A. Nasajpour, et al., Tissue regeneration: a multifunctional polymeric periodontal
+membrane with osteogenic and antibacterial characteristics (adv. Funct. Mater. 3/
+2018), Adv. Funct. Mater. 28 (3) (2018) 1870021.
+[12] Y. Pakzad, F. Ganji, Thermosensitive hydrogel for periodontal application: in vitro
+drug release, antibacterial activity and toxicity evaluation, J. Biomater. Appl. 30 (7)
+(2016) 919–929.
+[13] Y. Qin, et al., Formulation and evaluation of in situ forming PLA implant containing
+tinidazole for the treatment of periodontitis, J. Biomed. Mater. Res. B Appl.
+Biomater. 100 (8) (2012) 2197–2202.
+[14] V.S. Chadha, K.M. Bhat, The evaluation of doxycycline controlled release gel versus
+doxycycline controlled release implant in the management of periodontitis, J.
+Indian Soc. Periodontol. 16 (2) (2012) 200–206.
+[15] T.E. Van Dyke, et al., Enhancing the value of scaling and root-planing: arestin
+clinical trial results, J. Int. Acad. Periodontol. 4 (3) (2002) 72–76.
+[16] R.C. Williams, et al., Treatment of periodontitis by local administration of mino-
+cycline microspheres, A Controlled Trial 72 (11) (2001) 1535–1544.
+[17] N.W. Carris, et al., Minocycline as A Substitute for doxycycline in targeted sce-
+narios: a systematic review, Open Forum Infect Dis 2 (4) (2015) ofv178.
+[18] A.J. van Winkelhoff, et al., Antimicrobial profiles of periodontal pathogens isolated
+from periodontitis patients in The Netherlands and Spain, J. Clin. Periodontol. 32
+(8) (2005) 893–898.
+[19] K. Smith, J.J. Leyden, Safety of doxycycline and minocycline: a systematic review,
+Clin. Ther. 27 (9) (2005) 1329–1342.
+[20] I. Bala, S. Hariharan, M.N. Kumar, PLGA nanoparticles in drug delivery: the state of
+the art, Crit. Rev. Ther. Drug Carrier Syst. 21 (5) (2004) 387–422.
+[21] F. Ramazani, et al., Strategies for encapsulation of small hydrophilic and amphi-
+philic drugs in PLGA microspheres: state-of-the-art and challenges, Int J Pharm 499
+(1–2) (2016) 358–367.
+[22] R. Kassab, et al., Microspheres Containing Doxycycline: Properties and in Vitro
+Study vol. 5, (2013), pp. 264–269.
+[23] P. Patel, et al., Microencapsulation of doxycycline into poly(lactide-co-glycolide) by
+spray drying technique: effect of polymer molecular weight on process parameters,
+J. Appl. Polym. Sci. 108 (6) (2008) 4038–4046.
+[24] L. Wang, et al., Plga microspheres as a delivery vehicle for sustained release of
+tetracycline: biodistribution in mice after subcutaneous administration, J. Drug
+Deliv. Sci. Technol. 23 (6) (2013) 547–553.
+[25] R.S. Patel, et al., Doxycycline delivery from PLGA microspheres prepared by a
+modified solvent removal method, J. Microencapsul. 29 (4) (2012) 344–352.
+[26] A. Rawat, D.J. Burgess, Effect of ethanol as a processing co-solvent on the PLGA
+microsphere characteristics, Int. J. Pharm. 394 (1–2) (2010) 99–105.
+[27] N. Sharma, P. Madan, S. Lin, Effect of process and formulation variables on the
+preparation of parenteral paclitaxel-loaded biodegradable polymeric nanoparticles:
+a co-surfactant study, Asian J. Pharm. Sci. 11 (3) (2016) 404–416.
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+270
+
+[28] B.S. Zolnik, D.J. Burgess, Effect of acidic pH on PLGA microsphere degradation and
+release, J. Control. Release 122 (3) (2007) 338–344.
+[29] N. Samadi, et al., The effect of lauryl capping group on protein release and de-
+gradation of poly(d,l-lactic-co-glycolic acid) particles, J. Control. Release 172 (2)
+(2013) 436–443.
+[30] L.A. Moura, et al., Characterization of the release profile of doxycycline by PLGA
+microspheres adjunct to non-surgical periodontal therapy, J. Biomater. Sci. Polym.
+Ed. 26 (10) (2015) 573–584.
+[31] A.O. Legendre, et al., Solid state chemistry of the antibiotic doxycycline: structure
+of the neutral monohydrate and insights into its poor water solubility,
+CrystEngComm 14 (7) (2012) 2532–2540.
+[32] A. Al-Maaieh, D.R. Flanagan, Salt and cosolvent effects on ionic drug loading into
+microspheres using an O/W method, J. Control. Release 70 (1–2) (2001) 169–181.
+[33] A. Rawat, D.J. Burgess, Effect of ethanol as a processing co-solvent on the PLGA
+microsphere characteristics, Int J Pharm 394 (1–2) (2010) 99–105.
+[34] F.Y. Han, et al., Bioerodable PLGA-based microparticles for producing sustained-
+release drug formulations and strategies for improving drug loading, Front.
+Pharmacol. 7 (2016) 185.
+[35] T.S. Kashi, et al., Improved drug loading and antibacterial activity of minocycline-
+loaded PLGA nanoparticles prepared by solid/oil/water ion pairing method, Int. J.
+Nanomed. 7 (2012) 221–234.
+[36] F. Ramazani, et al., Formulation and characterization of microspheres loaded with
+imatinib for sustained delivery, Int J Pharm 482 (1–2) (2015) 123–130.
+[37] H. Adi, et al., Controlled release antibiotics for dry powder lung delivery, Drug Dev.
+Ind. Pharm. 36 (1) (2010) 119–126.
+[38] A. Suzuki, et al., Effects of minocycline and doxycycline on cell survival and gene
+expression in human gingival and periodontal ligament cells, J. Periodontal. Res. 41
+(2) (2006) 124–131.
+[39] T.E. Rams, J. Slots, Local delivery of antimicrobial agents in the periodontal pocket,
+10 (1) (1996) 139–159.
+[40] S. Richards, EN 552: validating 25 kGy as a sterilization dose, Med. Device Technol.
+7 (6) (1996) 22–25.
+M. Ali, et al.
+Journal of Drug Delivery Science and Technology 52 (2019) 263–271
+271

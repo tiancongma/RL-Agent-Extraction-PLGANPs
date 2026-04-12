@@ -1,0 +1,1167 @@
+O R I G I N A L R E S E A R C H
+A Peptide-Functionalized Magnetic
+Nanoplatform-Loaded Melatonin for Targeted
+Amelioration of Fibrosis in Pressure
+Overload-Induced Cardiac Hypertrophy
+This article was published in the following Dove Press journal:
+International Journal of Nanomedicine
+Xueli Zhao1
+Xuanying Wang1
+Jing Wang1
+Jiani Yuan1
+Juan Zhang1
+Xiaoli Zhu1
+Changhui Lei1
+Qianli Yang1
+Bo Wang1
+Feng Cao2
+Liwen Liu1
+1Department of Ultrasound of Xijing
+Hospital, Xijing Hypertrophic
+Cardiomyopathy Center, Fourth Military
+Medical University, Xi’an 710032,
+People’s Republic of China; 2Department
+of Cardiology, Chinese PLA General
+Hospital, Beijing 100700, People’s
+Republic of China
+Introduction: Currently, the unsatisfactory treatment of cardiac hypertrophy is due to the
+unbridled myocardial ﬁbrosis. Melatonin has been demonstrated to ameliorate cardiac hyper-
+trophy and its accompanied ﬁbrosis in previous studies. But it is not clinically appealing due to its
+short-lasting time against the hostile microenvironment when administered orally.
+Methods: Herein, to address this, poly (lactide) polycarboxybetaine (PLGA-COOH) accom-
+panied by cardiac homing peptide (CHP) and superparamagnetic iron oxide nanoparticles
+(SPIONs) were used to establish a novel drug delivery and transportation strategy for mela-
+tonin via a facile two-step emulsion method. This study characterized these nanoparticles
+(CHP-mel@SPIONs) and tested their delivery to the hypertrophied heart and their effect on
+myocardial hypertrophy and ﬁbrosis in an animal model of pressure overload-induced cardiac
+hypertrophy.
+Results: The engineered magnetic nanoparticles of CHP-mel@SPIONs were spherical
+(diameter = 221 ± 13 nm) and had a negative zeta potential of −19.18 ± 3.27 mV. The CHP-
+mel@SPIONs displayed excellent drug encapsulation capacities of SPIONs (75.27 ± 3.1%)
+and melatonin (77.69 ± 6.04%) separately, and their magnetic properties were characterized
+by constructing magnetic hysteresis curves and exhibited no remnant magnetization or
+coercivity. The animal experiments showed that compared with mel@SPIONs, CHP-mel
+@SPIONs accumulated more in the heart, especially in the presence of an external magnetic
+ﬁeld, with in vivo echocardiography and RT-PCR and histological assessments conﬁrming
+the amelioration of the myocardial hypertrophy and ﬁbrosis with low drug doses.
+Conclusion: This simple biocompatible dual-targeting nanoagent may be a potential candi-
+date for the guided clinical therapy of heart disease.
+Keywords: magnetic targeting, cardiac homing peptide, cardiac hypertrophy, melatonin,
+myocardial ﬁbrosis
+Introduction
+Cardiac hypertrophy is a progressive pathological compensatory reaction to chronic
+pressure overload.1,2 Most cardiac hypertrophy patients exhibit excessive myocar-
+dial ﬁbrosis,3 which not only interferes with the systolic and diastolic functions, but
+is also associated with worse clinical outcomes such as malignant ventricular
+arrhythmia, heart failure (HF) and sudden death.4–6 It is therefore important to
+address excessive myocardial ﬁbrosis in cardiac hypertrophy. But current clinical
+Correspondence: Liwen Liu
+Email liuliwen@fmmu.edu.cn
+International Journal of Nanomedicine
+Dovepress
+open access to scientiﬁc and medical research
+Open Access Full Text Article
+submit your manuscript | www.dovepress.com
+International Journal of Nanomedicine 2020:15 1321–1333
+1321
+http://doi.org/10.2147/IJN.S235518
+DovePress
+© 2020 Zhao et al. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.php
+and incorporate the Creative Commons Attribution – Non Commercial (unported, v3.0) License (http://creativecommons.org/licenses/by-nc/3.0/). By accessing the work
+you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For
+permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+International Journal of Nanomedicine downloaded from https://www.dovepress.com/
+For personal use only.
+
+treatments aimed only at alleviating the symptoms without
+reducing the ﬁbrosis itself. Hence, there is a great need for
+a treatment that reverses myocardial ﬁbrosis, but this
+remains a big challenge.
+Melatonin
+(N-acetyl-5-methoxytryptamine,
+Mel),
+a ubiquitous and versatile molecule secreted by the pineal
+gland in a rhythmic manner, is highly beneﬁcial for func-
+tioning living organs and tissues.7,8 In particular, it plays
+a cardiac–protective role in conditions such as ischaemia–
+reperfusion injury, atherosclerosis, diabetic cardiomyopa-
+thy, pathological hypertrophy and heart failure.9–14 More
+recently, one of the underlying mechanisms of melato-
+nin’s cardiac-protective role has shed light on its anti-
+ﬁbrosis effects in the heart.15–17 Melatonin can protect
+diabetic myocardium from diastolic chamber stiffness
+and diastolic dysfunction.18 Melatonin can attenuate car-
+diac ﬁbrosis by inhibiting the TGFb1–Smad3 signaling
+pathway.19 Furthermore, pathological ﬁbrosis results in
+the deposition of extracellular matrix (ECM), and mela-
+tonin contributes to its reduction.20,21 Thus, there is sub-
+stantial evidence that melatonin could play a potentially
+important role in the treatment and prevention of ﬁbrosis
+existing in cardiac hypertrophy. However, melatonin is
+conventionally administered orally, which involves sev-
+eral drawbacks that affect its efﬁciency as a treatment for
+ﬁbrosis, including oral fast-release, low bioavailability
+and tolerance insurgence. There is, therefore, a need for
+an
+efﬁcient
+new
+strategy
+for
+targeted
+delivery
+of
+melatonin.22–24
+Superparamagnetic iron oxide nanoparticles (SPIONs)
+have emerged as a promising targeted drug delivery plat-
+form because of their unique magnetic property, which is
+ideal for in vivo use.25,26 SPIONs can be highly magne-
+tized, allowing associated drug molecules to be dragged to
+the target site in the body under the inﬂuence of an external
+magnetic ﬁeld. There has been increasing interest in
+SPIONs–drug associates, especially with regard to their
+potential role in targeted therapy. However, the major draw-
+back of the SPION–drug system is its lack of accuracy in
+targeting intended tissues, which has resulted in unsatisfac-
+tory therapeutic effects and the risk of normal tissues being
+damaged in the magnetic ﬁeld.
+Recently, a cardiac homing peptide (CHP, comprising
+the peptide motif CSTSMLKAC) has been developed to
+enhance the speciﬁcity and efﬁciency of directly targeting
+nanoparticles to hypertrophied myocardium.27–29 This is
+achieved through its high sensitivity to ischaemic cardiac
+tissue,
+which
+can
+result
+from
+continuous
+cardiac
+hypertrophy.30
+In this study, we described and tested a dual-targeting
+nanoplatform that used CHP and SPIONs for the targeted
+delivery of melatonin to hypertrophied heart tissue under
+an external magnetic ﬁeld. We hypothesized that this
+nanoplatform, CHP-mel@SPIONs, would provide accu-
+rate
+and
+effective
+treatment
+for
+pressure
+overload-
+induced cardiac hypertrophy and its associated myocardial
+ﬁbrosis. If so, then this nanoplatform may have a strong
+potential for clinical application.
+Experimental
+Materials
+Oleic acid-coated SPIONs (d = 10 nm, 5 mg/mL) were pur-
+chased from Xi’an ruixi Biological Technology Co., Ltd.
+(China). CHP and ﬂuorescein isothiocyanate (FITC)-CHP
+were purchased from GL Biochem Ltd. (Shanghai, China).
+PLGA-COOH (50:50, MW ¼ 20,000) was obtained from
+Jinan Daigang Biomaterial Co., Ltd. (China). Melatonin was
+purchased from Sigma-Aldrich (St. Louis, MO, USA). MES
+(2-(N-morpholino)ethane
+sulfonic
+acid)
+hydrate,
+EDC
+(1-ethyl-3-(3-dimethylaminopropyl)-carbodiimide
+hydro-
+chloride), NHS (N-hydroxysuccinimide) were obtained from
+Sigma-Aldrich Chemical Co. (St. Louis, MO, USA). The
+ﬂuorescent dyes DAPI (4′,6-diamidino-2-phenylindole), DiI
+(1,1′-dioctadecyl-3,3,3′,3′ tetramethylindocarbocyanine per-
+chlorate) and DiR (1,1ʹ-dioctadecyl-3,3,3′,3′-tetramethylindo-
+tricarbocyanine iodide) were also obtained from Sigma-
+Aldrich Chemical Co. Deionized water was used in the
+preparations.
+Preparation of CHP-mel@SPIONs
+The magnetic and CHP-based dual-targeting nanoparticles,
+CHP-mel@SPIONs,
+were
+prepared
+as
+previously
+described.31 Brieﬂy, 100 mg PLGA-COOH, 200 μL
+SPIONs and 20 mg melatonin were completely dissolved
+in 2 mL dichloromethane (CH2Cl2). When preparing ﬂuor-
+escent nanoprobes, a few drops of DiI ﬂuorescent dye
+were also added. The solution slowly dropped from an
+injection syringe into 10 mL 4% PVA solution, which
+was emulsiﬁed using an ultrasonic probe (Ultrasonic Cell
+Crusher JN-900D, Ningbo, China) at 450 W for 10 min
+(with a vibration on/off cycle of 1.2 s/0.8 s to prevent
+overheating), followed by organic phase evaporation. The
+solution was then centrifuged at 13,000 rpm for 10 min.
+Finally, the precipitate was washed three times and
+Zhao et al
+Dovepress
+submit your manuscript | www.dovepress.com
+DovePress
+International Journal of Nanomedicine 2020:15
+1322
+Powered by TCPDF (www.tcpdf.org)
+
+adjusted to the ﬁnal concentration using phosphate-
+buffered saline (PBS).
+Targeted CHP-mel@SPIONs were prepared based on
+a method used for carbodiimides. First, the prepared
+mel@SPIONs were dispersed in 10 mL MES buffer
+(0.1 mol/L, PH = 5.5) together with 24 mg EDC and
+12 mg NHS (a mixed coupling activator) for oscillation
+and incubated for 1 h. Residual EDC and NHS were
+extracted using MES buffer (0.1 mol/L, pH = 5.5) after
+being centrifuged three times for 10 min at 13,000 rpm.
+The precipitate was then redissolved in MES buffer (0.1
+mol/L, pH = 8.0), and 1 mL CHP peptide solution
+(1 mg/mL) was dropped into the above solution fol-
+lowed by overnight incubation with continuous shaking.
+Afterward, after three consecutive centrifugations to
+remove unbonded CHP peptide, the ﬁnal CHP-mel
+@SPIONs were harvested and stored at 4°C.
+Characterization of CHP/mel@SPIONs
+The size distribution, polydispersity index and surface
+zeta potential of the prepared nanoparticles were deter-
+mined through dynamic light scattering at 25°C using
+a laser particle size analyzer (DelsaNano C Particle
+Analyzer; USA) after equilibrating for 30 s. For a better
+understanding of the morphology of the prepared nanop-
+robes, the nanoparticles were carefully dropped onto
+a copper grid, negatively stained and observed by trans-
+mission
+electron
+microscopy
+(JEM-2100
+Electron
+Microscope; Japan). The nanoparticle surface was exam-
+ined
+using
+atomic
+force
+microscopy
+(Agilent
+5500
+Scanning Probe Microscope; USA) performed at 25°C
+on a silicon slice with a general-purpose tapping tip (tip
+height, 10–15 μm; cantilever thickness, 7.0 ± 1.0 μm;
+cantilever width, 38 ± 7.5 μm; cantilever length, 225 ±
+10 μm; resonance frequency, 146–236 kHz; force con-
+stant, 21–98 Nm−1; NANOSENSOR, USA). The atomic
+force microscopy images were then analyzed using Pico
+Image Elements 7.2 software (USA). The conjugation
+efﬁciency for the attachment of CHP onto the shells of
+the
+nanoparticles
+was
+determined
+by
+incubating
+mel@SPIONs with FITC-labelled CHP peptide overnight.
+The labeled nanoparticles were then observed under
+a Nikon A1 confocal laser scanning microscope (Nikon,
+Japan). Magnetic hysteresis curves were obtained with
+a
+superconducting
+quantum
+interference
+device
+(Quantum Design, USA) under a magnetic ﬁeld of 15
+kOe at 300 K.
+Encapsulation Efﬁciency of
+CHP-mel@SPIONs for SPIONs and
+Melatonin
+The encapsulation efﬁciency of CHP-mel@SPIONs for
+SPIONs was determined by inductively coupled plasma
+mass spectrometry, as follows. The suitable standard dilu-
+tions
+of
+Fe
+(GBW(E)080123;
+National
+Institute
+of
+Metrology, China) were prepared in 20% nitric acid to
+obtain a standard curve for the range 1–100 ng/mL. CHP-
+mel@SPIONs samples were digested in 5 mL of nitric
+acid and incubated overnight at 4°C. The resulting solution
+was diluted to achieve concentrations within the calibra-
+tion range. The Fe content was measured by inductively
+coupled
+plasma
+mass
+spectrometry
+(NexION
+350D;
+PerkinElmer, USA). The encapsulation efﬁciency of CHP-
+mel@SPIONs or CHP-mel for melatonin was analyzed
+using a UV-visible absorption spectrometer (HALO DB-
+20R; Dynamica, Australia) at a wavelength of 278 nm
+according to the standard curve.
+Drug Release Proﬁle in vitro
+The release proﬁle for melatonin from CHP-mel@SPIONs
+in vitro was characterized by a dialysis method. Brieﬂy,
+2 mL of CHP-mel@SPION solution (containing 2 mg/mL
+melatonin) was placed into a dialysis membrane (MW
+3500 Da) and then submerged in 30 mL of sustained-
+released PBS medium (containing 0.1% Tween-80) at PH
+7.4, and this was then incubated in a vibrating water bath
+at 37°C (to simulate body temperature). At ﬁxed intervals,
+2 mL of dialysate was extracted, and the solution was
+replenished with an equal volume. The melatonin concen-
+trations at different time points were detected by UV-
+visible absorption spectrometry. The cumulative release
+of melatonin from CHP-mel@SPIONs was calculated
+and plotted as the release ratio against time.
+Animal Model of Cardiac Hypertrophy
+and Treatments
+All animals received care in compliance with the Guidelines
+for the Care and Use of Laboratory Animals of the animal
+ethics committee of Fourth Military Medical University
+(Licence
+number:
+SYXK
+2019–001).
+As
+described
+previously,32 Sprague–Dawley rats (200–250 g), housed
+under optimum conditions, were anesthetized and subjected
+to transverse aortic constriction surgery (TAC) to induce
+cardiac hypertrophy or a sham surgical procedure without
+aortic ligation. The groups were set as sham surgery group
+Dovepress
+Zhao et al
+International Journal of Nanomedicine 2020:15
+submit your manuscript | www.dovepress.com
+DovePress
+1323
+Powered by TCPDF (www.tcpdf.org)
+
+(sham), TAC rats treated with saline group (TAC), TAC rats
+treated with mel@SPIONs (mel@SPIONs), TAC rats trea-
+ted with CHP/mel@SPIONs (CHP/mel@SPIONs) and TAC
+rats treated with CHP/mel@SPIONs exposed to an external
+magnetic ﬁeld (CHP/mel@SPIONs + M). The external mag-
+netic ﬁeld was achieved using a 0.6-T neodymium perma-
+nent magnet positioned outside the heart for 2 h after
+injection of the nanodroplets. The treatments began after
+a recovery period of 1 week and were administered once
+every 3 days for 8 consecutive weeks. Table 1 lists the study
+design of the animal experiment.
+At the endpoint of the experiments, the rats were sacri-
+ﬁced. The wet weights of the heart and left ventricle were
+determined and normalized to the animal’s body weight. The
+left ventricular tissue samples were immersed in paraformal-
+dehyde (4%), embedded in parafﬁn and sectioned serially
+(5–6 μm sections). The slides were stained with hematoxylin
+and eosin (HE) or Masson trichrome for evaluation of cross-
+sectional areas of cardiomyocytes and collagen deposition,
+respectively. The remaining portions were snap-frozen in
+liquid nitrogen for subsequent real-time reverse transcription
+polymerase chain reaction (RT-PCR) analysis.
+Assessment of CHP-mel@SPIONs
+Targeting in vivo
+To assess the targeting ability of CHP-mel@SPIONs, rats
+were anesthetized with intraperitoneal injections of 1%
+sodium pentobarbital (40 mg/kg). Once they were motionless,
+1 mL of DiI-labelled mel@SPIONs or CHP-mel@SPIONs
+was injected via the tail vein. At 48 h after injection, rats were
+sacriﬁced, and their hearts and other major organs were
+harvested and frozen. According to the standard protocol
+described in Cryosectioning Tissues,33 4–5 μm cryosections
+were continuously cut at a temperature of −20°C. After ﬁxa-
+tion for 15 min in 4% paraformaldehyde, the cryosections
+were stained with DAPI dye for 10 min in the dark to
+visualize the cell nuclei. After washing 3 times with PBS,
+the ﬂuorescence distributions on the sealed slides were photo-
+graphed with a confocal laser scanning microscope.
+To further conﬁrm the accumulation of the nanoparti-
+cles, cross-sections from the treated hearts were stained
+with Prussian blue to detect the presence of iron. The
+organs of different formulations, including the heart,
+liver,
+spleen,
+lung
+and
+kidney,
+were
+harvested
+for
+Prussian blue staining after 48 h treatment.
+Iron Concentration Assay in vivo
+Rats were sacriﬁced 48 h after intravenous administration,
+the concentrations of iron of the tissues including heart,
+liver, spleen, lung and kidney were evaluated using Iron
+Assay Kit (Sigma-Aldrich). The absorbance (OD) of the
+samples was tested at 593 nm.
+Cardiac Function Analysis
+Cardiac function in response to cardiac hypertrophy and nano-
+particle therapy was evaluated by echocardiography. The
+anesthetized rats were placed on the stage of a vevo 2100
+Imaging System (Visual Sonics imaging system, Canada),
+and serial B-mode and M-mode echocardiography were
+acquired along the short axis of the left ventricle at the level
+of the papillary muscles. The following parameters of left
+ventricular contractile function and thickness were measured
+on M-mode echocardiography as reported previously,34,35
+including interventricular septum end-diastolic thickness
+(IVSd), interventricular septal end-systole thickness (IVSs),
+posterior end-diastolic wall thickness (LVPWd), posterior end-
+systole wall thickness (LVPWs), left ventricular ejection frac-
+tion (LVEF) and left ventricular fractional shortening (LVFS).
+Measurement of Hydroxyproline
+To assess collagen levels in the hearts of the ﬁve treatment
+groups, hydroxyproline concentrations were measured in
+samples from left ventricles by stepwise treatment with
+various
+buffers
+according
+to
+the
+instructions
+of
+a hydroxyproline kit (Nanjing Jiancheng Bioengineering
+Institute, Nanjing, China) as described previously.36 The
+hydroxyproline concentrations were then estimated spec-
+trophotometrically using a SpectraMax M5 microplate
+reader (Molecular Devices, CA, USA) at 550 nm.
+Table 1 A Diagram for Study Design of Animal Experiment
+Groups
+Sham
+TAC
+mel@SPIONs
+CHP/mel@SPIONs
+CHP/mel@SPIONs + M
+Numbers
+10
+10
+10
+10
+9
+Treatment
+Administered once every 3 days for 8 consecutive weeks, CHP/mel@SPIONs + M group received a external magnetic ﬁeld outside
+the heart for 2 h after injection of the nanodroplets. Rats were administered with the nanoparticles once every 3 days for 8 weeks.
+Zhao et al
+Dovepress
+submit your manuscript | www.dovepress.com
+DovePress
+International Journal of Nanomedicine 2020:15
+1324
+Powered by TCPDF (www.tcpdf.org)
+
+HE and Masson’s Trichrome Staining
+After euthanizing the animals, their hearts were perfused
+with 60 mL of cold saline and harvested. A microtome was
+used to cut 4–5 μm thick transversal sections from formalin-
+ﬁxed left ventricular tissues. These were stained with HE
+and Masson’s Trichrome for histopathology and collagen
+deposition assessments, following standard procedures. The
+quantitative assessments of the cross-sectional area of myo-
+cyte and the percentage of myocardial ﬁbrosis area were
+performed separately using Image J (NIH) and Image-Pro
+Plus 6.0 (USA) software.
+Real-Time Quantitative Polymerase Chain
+Reaction (RT-PCR)
+Total RNA was extracted from ﬂash-frozen myocardial tis-
+sues using TRIzol (Invitrogen, USA). RNA purity and con-
+centration were assessed by determining the A260/A280
+ratio with a spectrophotometer (PTC-220 Peltier DYAD;
+MJ Research Inc., USA). cDNA was synthesized using
+PrimeScript™RT Master Mix (Takara Bio, Japan) and then
+ampliﬁed by speciﬁc TB Green™Premix Ex Taq™II (Tli
+RNaseH Plus) (Takara Bio) with a CFX96 real-time PCR
+system-C1000
+thermal
+cycler
+(Bio-Rad
+Laboratories,
+Hercules, CA, USA). All reactions were performed in
+a ﬁnal volume of 25 μL, following the manufacturer’s
+instructions. The expression levels of target genes were pre-
+sented as Ct values and shown as 2–ΔΔCt. GAPDH was used
+as an internal reference. Table 2 lists the primer sequences
+used for the RT-PCR.
+Statistical Analysis
+The ﬁgures present data as mean values with the error bar
+indicating the standard deviation. One-way analysis of
+variance was used for the statistical evaluations. The sta-
+tistical analysis was performed using GraphPad Prism
+(GraphPad Software, Inc., La Jolla, CA). P-values <0.05
+were considered to indicate statistical signiﬁcance.
+Results and Discussion
+Preparation and Characterization of
+Magnetic Nanoparticles (CHP/
+mel@SPIONs)
+In this study, we synthesized targeted magnetic nanoparti-
+cles, CHP-mel@SPIONs, to assess our strategy for
+enhanced targeted delivery of melatonin to the heart. The
+nanoparticles were synthesized via a two-step emulsion
+method that encapsulated melatonin, SPIONs and CHP in
+the shell simultaneously. The structural characteristic of
+the nanoparticles was ﬁrst conﬁrmed by atomic force
+microscopy. This showed them to be spherical, with homo-
+geneous size and height (Figure 1A–C). The phase image
+of atomic force microscopy can be used to distinguish the
+different surface features and is useful for the composi-
+tional
+mapping
+of
+surfaces
+and
+interfaces
+of
+nanoparticles.37 Figure 1C showed a full view of a three-
+dimensional
+reconstruction
+of
+a
+CHP-mel@SPIONs.
+Transmission electron microscopy was then used to inves-
+tigate the internal structure of CHP-mel@SPIONs. This
+suggested that SPIONs were homogenously encapsulated
+in the CHP-mel@SPIONs (Figure 1D). The size, estimated
+from dynamic light scattering, was around 221 ± 13 nm
+(Figure 1F), which was consistent with the TEM ﬁndings,
+and the polydispersity index was <0.1, conﬁrming the
+homogeneity of all the preparations. The zeta potential of
+mel@SPIONs and CHP-mel@SPIONs was −31.34 ± 2.61
+mV and −19.18 ± 3.27 mV separately (Figure 1E).
+A negative surface charge can prolong nanoparticle
+blood circulation and prevent cytotoxicity caused by the
+proton-sponge effect.38 The CHP-mel@SPIONs displayed
+excellent drug encapsulation capacities of SPIONs (75.27
+± 3.91%) and melatonin (77.69 ± 6.04%) separately. And
+Table 2 Sequences of Primers for RT-PCR
+Gene
+Forward Primer (5′-3′)
+Reverse Primer (5′-3′)
+GAPDH
+CAAGTTCAACGGCACAGTCAA
+CGCCAGTAGACTCCACGACA
+ANP
+TGAGCCGAGACAGCAAACA
+CAAAAGGCCAGGAAGAGGA
+β-MHC
+GGCTGGCTACAGAAGAACAAG
+CACGGTCTGAAAGGATGAGC
+Collagen1
+AACTTTGCTTCCCAGATGTCC
+CATCATCTCCGTTCTTGCCA
+Collagen3
+CCTGGTGGGAAAGGTGAAAT
+CCCTTTGCTCCATTCTTGC
+TGF-β1
+GACCGCAACAACGCAATCT
+TACCAAGGTAACGCCAGGAAT
+MMP-9
+TCTTCAAGGACGGTCGGTAT
+AAGGCTGAGTTCAACTTTGCA
+Smad-3
+CCTGGCTACCTGAGTGAAGATG
+TGTAGGTCCAAGTTATTGTGTGCT
+Dovepress
+Zhao et al
+International Journal of Nanomedicine 2020:15
+submit your manuscript | www.dovepress.com
+DovePress
+1325
+Powered by TCPDF (www.tcpdf.org)
+
+the encapsulation efﬁciency of melatonin in CHP-mel was
+85.10 ± 5.28%. Furthermore, after 30 days of storage at 4°
+C, there was no remarkable change in the diameters of
+CHP-mel@SPIONs (Figure 1G), indicating their excellent
+stability during storage.
+The in vitro drug release proﬁle of CHP-mel@SPIONs
+was shown in Figure 1H. The proﬁle showed that melato-
+nin was released from nanoparticles in a typical biphasic
+pattern, with approximately 50% released in the initial 24
+h before reaching a plateau and the releasing speed of
+melatonin in the later phase is relatively slow. The plateau
+percentages of melatonin release observed over a period of
+96 h were nearly 70%, this indicated that CHP-mel
+@SPIONs released melatonin in a controlled manner.
+The magnetic properties of targeted drug carriers are of
+great importance. The magnetic properties of CHP-mel
+@SPIONs were assessed from magnetic hysteresis curves.
+Figure 1I showed that the magnetic hysteresis curves exhib-
+ited no remnant magnetization or coercivity at room tem-
+perature, and the superparamagnetic characteristics were
+retained in the ﬁnal nanoparticles. The magnetic response
+of CHP-mel@SPIONs was also conﬁrmed. A magnet
+induced the rapid accumulation of the nanoparticles onto
+the wall of the cuvette, indicating their sensitivity to
+a magnetic ﬁeld. Thus, CHP-mel@SPIONs are potentially
+useful for magnet-assisted targeting, which is a promising
+technique for enhancing the local accumulation of drug-
+encapsulated vehicles.
+To improve the ability of the nanoparticles to target the
+hypertrophic heart, a myocardium-targeted peptide, CHP,
+was conjugated to the surface of mel@SPIONs. The CHP
+conjugation was determined by examining the extent of
+Figure 1 Characterizations of CHP/mel@SPIONs. (A–C) AFM measurements of the prepared CHP/mel@SPIONs ((A) phase image; (B) height image; (C) 3D image). (D)
+TEM image of CHP/mel@SPIONs. (E, F) Size distribution and Zeta potential of CHP/mel@SPIONs. (G) Size changes of CHP/mel@SPIONs at 4°C after long-term storage
+(n = 3). (H) In vitro melatonin releasing curves of CHP/mel@SPIONs, datas are expressed as the percentage of total melatonin. (I) Magnetization curves of CHP/
+mel@SPIONs, the inserted picture shows the magnetic separation for CHP/mel@SPIONs.
+Zhao et al
+Dovepress
+submit your manuscript | www.dovepress.com
+DovePress
+International Journal of Nanomedicine 2020:15
+1326
+Powered by TCPDF (www.tcpdf.org)
+
+connections between FITC-labelled CHP and DiI-labelled
+mel@SPIONs nanodroplets. As shown by the merged orange
+images in Figure 2, there was a perfect connection between
+the mel@SPIONs nanoprobes (red) and CHP peptides
+(green). These results meant that CHP-mel@SPIONs had
+the potential to target the ischemic cardiomyocyte. In this
+study, we choose a bifunctional or mediator linker (EDC/
+NHS) to connect the CHP to the surface of mel@SPIONs,
+for the following reasons: 1) EDC/NHS linker does not
+induce any cytotoxicity in the biological systems; 2) Water
+solubility of waste products allows their easy washing at the
+end of the process; 3) Above all, NHS/EDC linker contrib-
+uted to covalent attachment which showed a high controll-
+ability for immobilization of biomolecules onto the surface
+and provided sufﬁcient stability of surface-active agent.39,40
+Biodistribution and Delivery Efﬁciency of
+Modiﬁed CHP/mel@SPIONs
+To assess the targeting ability of CHP-mel@SPIONs
+in vivo, TAC rats were injected systematically with DiI-
+labelled nanoparticles with or without an external magnetic
+ﬁeld. At 48 h postinjection, the rats were sacriﬁced and the
+major organs were collected for frozen sections, with images
+captured using a confocal laser scanning microscope. More
+prominent and wide-ranging DiI-labelled nanoparticles
+(seen as red dots in Figure 3A) were observed in the cardiac
+cryosections in the group treated with CHP-mel@SPIONs
+than in those treated with mel@SPIONs, conﬁrming that
+CHP targeting resulted in the CHP-mel@SPIONs reaching
+the heart area. In the group of CHP-mel@SPIONs + M,
+a
+greater
+number
+of DiI-labelled
+nanoparticles
+were
+observed in the heart, this could be explained by the mag-
+netic nanoparticles being attracted by the presence of the
+magnet. When the other organs were assessed, the liver
+showed a decreased signal of nanoparticles when compared
+with that of mel@SPIONs. This indicated that CHP conju-
+gation increased on-target delivery and decreased off-target
+delivery when CHP-mel@SPIONs were administered sys-
+temically. Although the exact mechanism by which CHP
+interacts with the myocardium is unknown, its conjugation
+to the mel@SPIONs ampliﬁed the accumulation of the
+nanoparticles in the heart. The half-life of melatonin admi-
+nistered either orally or intravenously is only approximately
+45 min, which is too short to exert long-lasting effects.22
+However, this speciﬁc nanoparticle drug delivery system
+resulted in a controlled release and a decreased decomposi-
+tion rate of melatonin, which ultimately prolongs its time of
+effect.
+To further conﬁrm the accumulation of the nanoparticles
+in the heart, cross-sections from the treated hearts were
+stained with Prussian blue. Figure 3B depicts that there was
+extremely little blue staining (black arrows) in the animals
+treated with mel@SPIONs and no staining in the saline
+group. There was more blue staining in the group treated
+with CHP-mel@SPIONs, with the highest level observed in
+the TAC rats treated with CHP-mel@SPIONs with a magnet.
+These results conﬁrmed the best targeting ability of CHP-mel
+@SPIONs with a magnetic ﬁeld again. The concentration of
+iron was assayed 24 h after intravenous administration of
+CHP-mel@SPIONs formulation (Figure 3C). The highest
+iron level was observed in the heart of the animals treated
+with CHP-mel@SPIONs + M. These ﬁndings were consis-
+tent with the ﬂuorescent imaging results and indicated that
+long circulation and dual-targeting contributed to the
+improved accumulation of CHP-mel@SPIONs in the heart.
+Cardiac Function in vivo
+To investigate whether CHP-mel@SPIONs combined
+with an external magnetic ﬁeld conferred protection
+Figure 2 CLSM image results showed a preferential connection between FITC-labelled CHP peptide and DiI-labelled mel@SPIONs nanoparticles.
+Dovepress
+Zhao et al
+International Journal of Nanomedicine 2020:15
+submit your manuscript | www.dovepress.com
+DovePress
+1327
+Powered by TCPDF (www.tcpdf.org)
+
+against TAC-induced cardiac hypertrophy in rats, the
+overall morphology of the heart was assessed in vivo
+with echocardiography and ex vivo by measuring the
+weights of the total heart and left ventricle, normalized
+to the body weight (HW/BW and LW/BW, respectively).
+The animals that underwent TAC surgery exhibited
+marked increases in key hypertrophic parameters that
+indicated
+cardiac
+hypertrophy
+(HW/BW,
+LW/BW,
+LVPWs, LVPWd, IVSd and IVSs (Figure 4A–G). All
+three
+groups
+treated
+with
+melatonin
+nanoparticles
+showed
+considerably
+decreased
+HW/BW,
+LW/BW,
+LVPWs, LVPWd, IVSd and IVSs compared with the
+untreated TAC rats, indicating that melatonin has the
+ability to attenuate cardiac hypertrophy.
+Figure 3 (A) CLSM analysis of cardiac sections for the experimental groups and substantial localization in other tissues such as kidney, liver, spleen and lungs from rats
+injected CHP/mel@SPIONs nanodroplets (magniﬁcation = 200×). (B) Prussian blue staining of the heart of different groups after TAC surgery (magniﬁcation = 400×). Black
+arrows point to blue-stained iron. (C) Iron biodistribution in vivo. The concentration of iron in organs after 48 h. *P < 0.05 vs CHP/mel@SPIONs+M.
+Zhao et al
+Dovepress
+submit your manuscript | www.dovepress.com
+DovePress
+International Journal of Nanomedicine 2020:15
+1328
+Powered by TCPDF (www.tcpdf.org)
+
+The animals treated with CHP-mel@SPIONs with an
+external magnetic ﬁeld exhibited the greatest therapeutic
+effect on the hypertrophic heart reﬂected by all of the
+above six parameters than the other melatonin treatment
+groups, indicating clear restoration of cardiac function,
+perhaps due to the increased accumulation of CHP-mel
+@SPIONs through dual-targeting approach. LVEF and
+LVFS determined using echocardiography showed no
+obvious difference among the ﬁve groups (Figure 4H–I),
+indicating that left ventricular function remained compen-
+sated in the groups that underwent TAC surgery.
+The two hallmarks of cardiac remodeling caused by
+pressure overload are cardiac hypertrophy and cardiac
+ﬁbrosis.41
+To
+determine
+whether
+melatonin
+exerted
+a therapeutic effect on these two conditions, histological
+analyses using HE and Masson’s staining to assess myo-
+cyte cross-section area (CSA) and cardiac collagen volume
+fraction (CVF) were performed using parafﬁn-embedded
+cardiac tissues. After 8 weeks of pressure overload follow-
+ing TAC surgery, the amounts of ﬁbrosis and myocyte
+CSA increased considerably. After treatment, CSA and
+CVF showed a pronounced decrease in all three treatment
+groups
+compared
+with
+those
+in
+the
+TAC
+group.
+Furthermore, CSA and CVF were signiﬁcantly lower in
+the CHP-mel@SPIONs + M group than in other treatment
+groups (Figure 5A–D).
+Figure 4 Effects of 8-week treatment on cardiac contractile function and wall thickness after TAC surgery. (A) Representative M-mode echocardiographic images. (B, C)
+The ratio of heart weight (HW) and left ventricle weight (LW) to body weight (BW). (D) LVPWd. (E) LVPWs. (F) IVSd. (G) IVSs. (H) LVEF. (I) LVFS. *P< 0.05 vs sham group;
+#P< 0.05 vs TAC group.
+Abbreviations: LVPWd, left ventricular posterior wall thickness at end-diastole; LVPWs, left ventricular posterior wall thickness at end-systole; IVSd, interventricular septal
+thickness in diastole; IVSs, interventricular septal thickness in systole; LVEF, left ventricular ejection fraction; LVFS, left ventricular fractional shortening; determined by
+echocardiography.
+Dovepress
+Zhao et al
+International Journal of Nanomedicine 2020:15
+submit your manuscript | www.dovepress.com
+DovePress
+1329
+Powered by TCPDF (www.tcpdf.org)
+
+To further gain insight into the effect of melatonin on
+the cardiac ﬁbrosis induced by pressure overload, we mea-
+sured the hydroxyproline concentration in heart tissues. As
+displayed in Figure 5E, the hydroxyproline concentration
+was increased signiﬁcantly in the rat heart after TAC
+surgery but showed a remarkable reversal in the group
+treated with CHP-mel@SPIONs and an external magnetic
+ﬁeld (P < 0.05). These experiments indicate that melatonin
+nanoparticles have better anti-ﬁbrotic effects against TAC
+model.
+RT-PCR analysis clearly showed that treatment with
+CHP-mel@SPIONs +M resulted in signiﬁcant regression
+of cardiac hypertrophy and myocardial ﬁbrosis, as evi-
+denced by reduced expression of hypertrophy-related
+genes and myocardial ﬁbrosis markers (Figure 6A–F).
+The gene expression levels of ANP and β-MHC in all
+three melatonin-treated groups were downregulated when
+compared with those in the TAC group. Fibrosis markers
+were markedly elevated in animals that underwent TAC
+surgery compared with the sham group, as shown by
+Figure 5 Regression of cardiac hypertrophy and myocardial ﬁbrosis in experimental rats. (A) Representative images of HE staining of heart sections (magniﬁcation = 0.5×).
+(B, C) Representative HE staining and Masson staining images of left ventricular tissue sections (magniﬁcation = 400×). (D, E) Quantitative analysis of the average cross-
+sectional area of myocytes (CSA) in cardiac tissues and cardiac collagen volume fraction (CVF) in each group. (F) The hydroxyproline concentration of the left ventricular
+tissues. *P< 0.05 vs sham group; #P< 0.05 vs TAC group.
+Zhao et al
+Dovepress
+submit your manuscript | www.dovepress.com
+DovePress
+International Journal of Nanomedicine 2020:15
+1330
+Powered by TCPDF (www.tcpdf.org)
+
+collagen 1, collagen 3, TGF-β1 and Smad 3 mRNA levels.
+After treatment, the genes related to cardiac hypertrophy
+and myocardial ﬁbrosis all exhibited a decreasing trend,
+indicating that melatonin effectively ameliorated the pres-
+sure-induced cardiac hypertrophy and myocardial ﬁbrosis.
+These results were consistent with previous reports.16,20,42
+The CHP-mel@SPIONs + M group showed a favorable
+therapeutic as conﬁrmed by the lowest expression of these
+genes. These datas indicated that melatonin demonstrates
+anti-ﬁbrotic and anti-hypertrophied properties in TAC-
+induced cardiac remodeling, which is similar to previous
+research.14
+Taken together, these results strongly suggest that by
+integrating CHP and magnetic targeting, melatonin loading
+and controlled release properties, the prepared nanoparticles
+show great potential in facilitating targeted delivery of mel-
+atonin for treating cardiac hypertrophy and myocardial ﬁbro-
+sis with high efﬁcacy and low dose. However, the precise
+mechanism
+of
+cardiomyocyte
+selective
+binding
+and
+internalization of CHP peptide needs to be investigated
+further. In addition, the associated mechanisms of anti-
+ﬁbrotic properties of melatonin are not explored in this
+study, we will design the other experiments for further
+research. This study promises to provide a solution to the
+bottleneck in the clinical and experimental translation of
+targeted therapy of pathological heart conditions in the
+future.
+Conclusion
+In this study, a polymeric nanocapsule formulation for
+a dual-targeting therapeutic system was successfully con-
+structed to deliver melatonin speciﬁcally to the heart to
+ameliorate cardiac hypertrophy and myocardial ﬁbrosis.
+These CHP-mel@SPIONs were uniform in size and exhib-
+ited favorable stability and magnetic properties. In an
+animal model of cardiac hypertrophy, the targeted delivery
+provided by the nanoparticles’ response to a magnetic ﬁeld
+alongside the CHP targeting resulted in an increased
+Figure 6 Quantitative RT-PCR analysis of the hypertrophy-related genes and ﬁbrosis markers. (A) ANP mRNA level. (B) β-MHC mRNA level. (C) Collagen 1 mRNA level.
+(D) Collagen 3 mRNA level. (E) TGF-β1 mRNA level. (F) Smad-3 mRNA level. GAPDH was used as an internal loading control. *P < 0.05 vs sham group; #P < 0.05 vs TAC
+group.
+Dovepress
+Zhao et al
+International Journal of Nanomedicine 2020:15
+submit your manuscript | www.dovepress.com
+DovePress
+1331
+Powered by TCPDF (www.tcpdf.org)
+
+uptake of melatonin and functional recovery, evidenced by
+reduced left cardiac hypertrophy and ﬁbrosis, with a low
+drug dosage. This design strategy opens up a new
+approach for the future development of a viable clinical
+treatment for pressure-induced cardiac hypertrophy.
+Acknowledgments
+The authors acknowledge the ﬁnancial support through the
+Key Science and Technology Innovation Team Project of
+Shaanxi Province (2014KCT-20), the National Natural
+Science Foundation of China (81671693), International
+Cooperation
+Funding
+of
+the
+China
+Science
+and
+Technology
+Ministry
+(2014DFA31980),
+Shaanxi
+Provincial Key Project (2017ZDXM-SF-058), and Key R
+& D Project of Shaanxi Province (2019KW-076).
+Disclosure
+The authors report no conﬂicts of interest in this work.
+References
+1. Chu L, Li P, Song T, et al. Protective effects of tannic acid on
+pressure
+overload-induced
+cardiac
+hypertrophy
+and
+underlying
+mechanisms in rats. J Pharm Pharmacol. 2017;69:1191–1207.
+doi:10.1111/jphp.2017.69.issue-9
+2. Zhao L, Cheng G, Jin R, et al. Deletion of interleukin-6 attenuates
+pressure
+overload-induced
+left
+ventricular
+hypertrophy
+and
+dysfunction.
+Circ
+Res.
+2016;118:1918–1929.
+doi:10.1161/
+CIRCRESAHA.116.308688
+3. Shimizu I, Minamino T. Physiological and pathological cardiac
+hypertrophy. J Mol Cell Cardiol. 2016;97:245–262. doi:10.1016/j.
+yjmcc.2016.06.001
+4. Authors/Task Force M, Elliott PM, Anastasakis A, et al. 2014 ESC
+guidelines on diagnosis and management of hypertrophic cardiomyo-
+pathy: the task force for the diagnosis and management of hyper-
+trophic cardiomyopathy of the european society of cardiology (ESC).
+Eur Heart J. 2014;35:2733–2779.
+5. Creemers EE, Pinto YM. Molecular mechanisms that control inter-
+stitial ﬁbrosis in the pressure-overloaded heart. Cardiovasc Res.
+2011;89:265–272. doi:10.1093/cvr/cvq308
+6. Roche PL, Filomeno KL, Bagchi RA, et al. Intracellular signaling of
+cardiac ﬁbroblasts. Compr Physiol. 2015;5:721–760.
+7. Manchester LC, Coto-Montes A, Boga JA, et al. Melatonin: an
+ancient
+molecule
+that
+makes
+oxygen
+metabolically
+tolerable.
+J Pineal Res. 2015;59:403–419. doi:10.1111/jpi.2015.59.issue-4
+8. Yang GH, Li YC, Wang ZQ, et al. Protective effect of melatonin on
+cigarette smoke-induced restenosis in rat carotid arteries after balloon
+injury. J Pineal Res. 2014;57:451–458. doi:10.1111/jpi.12185
+9. Yu L, Fan C, Li Z, et al. Melatonin rescues cardiac thioredoxin
+system during ischemia-reperfusion injury in acute hyperglycemic
+state
+by
+restoring
+notch1/hes1/akt
+signaling
+in
+a
+membrane
+receptor-dependent manner. J Pineal Res. 2017;62.
+10. Dominguez-Rodriguez A, Abreu-Gonzalez P, Reiter RJ. The potential
+usefulness of serum melatonin level to predict heart failure in patients
+with hypertensive cardiomyopathy. Int J Cardiol. 2014;174:415–417.
+doi:10.1016/j.ijcard.2014.04.044
+11. Zhao Y, Xu L, Ding S, et al. Novel protective role of the circadian
+nuclear receptor retinoic acid-related orphan receptor-alpha in dia-
+betic cardiomyopathy. J Pineal Res. 2017;62:e12378.
+12. Favero G, Rodella LF, Reiter RJ, et al. Melatonin and its atheropro-
+tective effects: a review. Mol Cell Endocrinol. 2014;382:926–937.
+doi:10.1016/j.mce.2013.11.016
+13. Xu L, Su Y, Zhao Y, et al. Melatonin differentially regulates patho-
+logical and physiological cardiac hypertrophy: crucial role of circa-
+dian nuclear receptor RORalpha signaling. J Pineal Res. 2019;67:
+e12579. doi:10.1111/jpi.12579
+14. Zhai M, Liu Z, Zhang B, et al. Melatonin protects against the
+pathological cardiac hypertrophy induced by transverse aortic con-
+striction through activating PGC-1beta: in vivo and in vitro studies.
+J Pineal Res. 2017;63.
+15. Hu W, Ma Z, Jiang S, et al. Melatonin: the dawning of a treatment for
+ﬁbrosis? J Pineal Res. 2016;60:121–131. doi:10.1111/jpi.2016.60.
+issue-2
+16. Yeung HM, Hung MW, Lau CF, et al. Cardioprotective effects of
+melatonin against myocardial injuries induced by chronic intermittent
+hypoxia in rats. J Pineal Res. 2015;58:12–25. doi:10.1111/jpi.12190
+17. Wu Y, Si F, Luo L, et al. The effect of melatonin on cardio ﬁbrosis in
+juvenile rats with pressure overload and deregulation of hdacs.
+Korean
+J
+Physiol
+Pharmacol.
+2018;22:607–616.
+doi:10.4196/
+kjpp.2018.22.6.607
+18. Jyothirmayi GN, Soni BJ, Masurekar M, et al. Effects of metformin
+on
+collagen
+glycation
+and
+diastolic
+dysfunction
+in
+diabetic
+myocardium.
+J
+Cardiovasc
+Pharmacol
+Ther.
+1998;3:319–326.
+doi:10.1177/107424849800300407
+19. Xiao H, Ma X, Feng W, et al. Metformin attenuates cardiac ﬁbrosis
+by inhibiting the tgfbeta1-smad3 signalling pathway. Cardiovasc Res.
+2010;87:504–513. doi:10.1093/cvr/cvq066
+20. Simko F, Pechanova O, Pelouch V, et al. Effect of melatonin, captopril,
+spironolactone and simvastatin on blood pressure and left ventricular
+remodelling in spontaneously hypertensive rats. J Hypertension Suppl.
+2009;27:S5–10. doi:10.1097/01.hjh.0000358830.95439.e8
+21. Karimfar MH, Rostami S, Haghani K, et al. Melatonin alleviates
+bleomycin-induced
+pulmonary
+ﬁbrosis
+in mice.
+J Biol
+Regul
+Homeost Agents. 2015;29:327–334.
+22. Harpsoe NG, Andersen LP, Gogenur I, et al. Clinical pharmacoki-
+netics of melatonin: a systematic review. Eur J Clin Pharmacol.
+2015;71:901–909. doi:10.1007/s00228-015-1873-4
+23. Massella D, Leone F, Peila R, et al. Functionalization of cotton
+fabrics with polycaprolactone nanoparticles for transdermal release
+of melatonin. J Funct Biomater. 2017;9:1.
+24. Aeschbach D, Lockyer BJ, Dijk DJ, et al. Use of transdermal mela-
+tonin delivery to improve sleep maintenance during daytime. Clin
+Pharmacol Ther. 2009;86:378–382. doi:10.1038/clpt.2009.109
+25. Chen J, Yang J, Liu R, et al. Dual-targeting theranostic system with
+mimicking apoptosis to promote myocardial infarction repair via
+modulation
+of
+macrophages.
+Theranostics.
+2017;7:4149–4167.
+doi:10.7150/thno.21040
+26. Bai
+J,
+Wang
+JT, Rubio
+N,
+et
+al.
+Triple-modal
+imaging
+of
+magnetically-targeted
+nanocapsules
+in
+solid
+tumours
+in
+vivo.
+Theranostics. 2016;6:342–356. doi:10.7150/thno.11918
+27. Won YW, McGinn AN, Lee M, et al. Targeted gene delivery to
+ischemic myocardium by homing peptide-guided polymeric carrier.
+Mol Pharm. 2013;10:378–385. doi:10.1021/mp300500y
+28. Vandergriff A, Huang K, Shen D, et al. Targeting regenerative exo-
+somes to myocardial infarction using cardiac homing peptide.
+Theranostics. 2018;8:1869–1878. doi:10.7150/thno.20524
+29. Wang X, Chen Y, Zhao Z, et al. Engineered exosomes with ischemic
+myocardium-targeting peptide for targeted therapy in myocardial
+infarction.
+J
+Am
+Heart
+Assoc.
+2018;7:e008737.
+doi:10.1161/
+JAHA.118.008737
+30. Eskerud I, Gerdts E, Larsen TH, et al. Left ventricular hypertrophy
+contributes to myocardial ischemia in non-obstructive coronary artery
+disease (the
+MicroCAD study). Int J Cardiol. 2019;286:1–6.
+doi:10.1016/j.ijcard.2019.03.059
+Zhao et al
+Dovepress
+submit your manuscript | www.dovepress.com
+DovePress
+International Journal of Nanomedicine 2020:15
+1332
+Powered by TCPDF (www.tcpdf.org)
+
+31. Sun Y, Zheng Y, Ran H, et al. Superparamagnetic PLGA-iron
+oxide microcapsules for dual-modality US/MR imaging and high
+intensity
+focused
+US
+breast
+cancer
+ablation.
+Biomaterials.
+2012;33:5854–5864. doi:10.1016/j.biomaterials.2012.04.062
+32. Ruppert M, Bodi B, Korkmaz-Icoz S, et al. Myoﬁlament ca(2+)
+sensitivity correlates with left ventricular contractility during the
+progression of pressure overload-induced left ventricular myocardial
+hypertrophy
+in
+rats.
+J
+Mol
+Cell
+Cardiol.
+2019;129:208–218.
+doi:10.1016/j.yjmcc.2019.02.017
+33. Fischer AH, Jacobson KA, Rose J, et al. Cryosectioning tissues. CSH
+Protoc. 2008;2008:pdb.prot4991. doi:10.1101/pdb.prot4939
+34. Traynham CJ, Cannavo A, Zhou Y, et al. Differential role of g
+protein-coupled receptor kinase 5 in physiological versus pathologi-
+cal cardiac hypertrophy. Circ Res. 2015;117:1001–1012. doi:10.1161/
+CIRCRESAHA.115.306961
+35. Gao E, Lei YH, Shang X, et al. A novel and efﬁcient model of coronary
+artery ligation and myocardial infarction in the mouse. Circ Res.
+2010;107:1445–1453. doi:10.1161/CIRCRESAHA.110.223925
+36. Reddy GK, Enwemeka CS. A simpliﬁed method for the analysis
+of
+hydroxyproline
+in
+biological
+tissues.
+Clin
+Biochem.
+1996;29:225–229. doi:10.1016/0009-9120(96)00003-6
+37. El-Gogary RI, Rubio N, Wang JT, et al. Polyethylene glycol con-
+jugated polymeric nanocapsules for targeted delivery of quercetin to
+folate-expressing cancer cells in vitro and in vivo. ACS Nano.
+2014;8:1384–1401. doi:10.1021/nn405155b
+38. Chen J, Ding J, Wang Y, et al. Sequentially responsive shell-stacked
+nanoparticles for deep penetration into solid tumors. Adv Mater.
+2017;29:1701170.
+39. Alves NM, Pashkuleva I, Reis RL, et al. Controlling cell behavior
+through the design of polymer surfaces. Small. 2010;6:2208–2220.
+doi:10.1002/smll.201000233
+40. Totaro KA, Liao X, Bhattacharya K, et al. Systematic investigation of
+EDC/sNHS-mediated bioconjugation reactions for carboxylated peptide
+substrates.
+Bioconjug
+Chem.
+2016;27:994–1004.
+doi:10.1021/acs.
+bioconjchem.6b00043
+41. Moens AL, Takimoto E, Tocchetti CG, et al. Reversal of cardiac hyper-
+trophy and ﬁbrosis from pressure overload by tetrahydrobiopterin: efﬁcacy
+of recoupling nitric oxide synthase as a therapeutic strategy. Circulation.
+2008;117:2626–2636. doi:10.1161/CIRCULATIONAHA.107.737031
+42. Xie YF, Zhang JC, Liu SJ, et al. Effect of melatonin on proliferation
+and apoptosis of ﬁbroblasts in human hypertrophic scar. Zhonghua
+Shao Shang Za Zhi. 2011;27:422–426.
+International Journal of Nanomedicine
+Dovepress
+Publish your work in this journal
+The International Journal of Nanomedicine is an international, peer-
+reviewed journal focusing on the application of nanotechnology in
+diagnostics, therapeutics, and drug delivery systems throughout the
+biomedical ﬁeld. This journal is indexed on PubMed Central,
+MedLine, CAS, SciSearch®, Current Contents®/Clinical Medicine,
+Journal Citation Reports/Science Edition, EMBase, Scopus and the
+Elsevier Bibliographic databases. The manuscript management system
+is completely online and includes a very quick and fair peer-review
+system, which is all easy to use. Visit http://www.dovepress.com/
+testimonials.php to read real quotes from published authors.
+Submit your manuscript here: https://www.dovepress.com/international-journal-of-nanomedicine-journal
+Dovepress
+Zhao et al
+International Journal of Nanomedicine 2020:15
+submit your manuscript | www.dovepress.com
+DovePress
+1333
+Powered by TCPDF (www.tcpdf.org)

@@ -1,0 +1,1271 @@
+Cellular Uptake of Hybrid PLGA-Lipid Gadolinium Nanoparticles
+Functionalized for Magnetic Resonance Imaging of Pancreatic
+Adenocarcinoma Cells
+Alessandro Amaolo, Hanieh Sadeghi, Carla Carrera, Sergio Padovan, Fabio Carniato, Enza Di Gregorio,
+and Giuseppe Ferrauto*
+Cite This: ACS Nanosci. Au 2025, 5, 184−195
+Read Online
+ACCESS
+Metrics & More
+Article Recommendations
+*
+sı
+Supporting Information
+ABSTRACT: Pancreatic adenocarcinoma (PDAC) presents sig-
+nificant diagnostic challenges, necessitating improved imaging
+techniques. Here, we develop hybrid poly(lactic-co-glycolic acid)
+(PLGA)-phospholipid nanoparticles (NPs) loaded with gadoli-
+nium (Gd) chelates and functionalized with albumin, adenosine, or
+glutamine to boost their internalization in PDAC cells and increase
+the detectability by magnetic resonance imaging (MRI). Gd-PLGA
+NPs were synthesized using an oil-in-water emulsion solvent
+extraction method and incorporating DSPE-PEG(2000)methoxy
+and DPPE-PEG(2000) N-Hydroxysuccinimide (NHS) for surface
+functionalization with albumin, adenosine, or glutamine. NPs were
+characterized by dynamic light scattering for particle size and ζ
+potential measurements, in addition to 1H NMR and proton nuclear magnetic relaxation dispersion to assess relaxivity and
+contrastographic properties, and stability studies were conducted in both HEPES-buffered saline and human serum. Reported
+studies demonstrated that all the preparations display a good stability, a hydrodynamic diameter lower than 200 nm, and a slight
+negative surface charge, with good potential for applications in cells and in vivo. In vitro studies on MiaPaca2 and Panc1 cell lines
+confirmed that functionalized NPs display higher cellular uptake and stronger MRI signal enhancement than unconjugated controls,
+with albumin-PLGA-lipid NPs leading to the greatest uptake. Our findings highlight a promising route toward a more sensitive,
+targeted MRI of PDAC, calling for in vivo studies to assess diagnostic potential and therapeutic applications.
+KEYWORDS: magnetic resonance imaging, molecular imaging, nanoparticles, pancreatic cancer, PLGA, theranostic
+1. INTRODUCTION
+The major challenges in pancreatic cancer are early diagnosis
+and the establishment of standardized international guidelines
+in assessing suspicious pancreatic masses. Magnetic resonance
+imaging (MRI) allows for tumor detection in the early stage
+with equal sensitivity and specificity as the current gold
+standard imaging techniques used in clinics.1 According to the
+National Comprehensive Cancer Network pancreatic protocol,
+the first route of diagnosis when there is clinical suspicion of
+cancer is multidetector computed tomography, which provides
+a comprehensive examination of the disease.2,3 It includes the
+administration of intravenous high iodine concentrated
+contrast agents to maximize the X-ray attenuation differences
+between the hypovascular tumor and the surrounding
+pancreatic parenchyma.4,5 Despite being considered safe
+overall, contrast CT often leads to dose-dependent adverse
+effects, such as nephrotoxicity and exposure to radiation. In
+addition, there is great variability in the concentration and rate
+of injection of contrast solution and age, weight, and cardiac
+output of the examined patient.3,5 Therefore, there is a need
+for a standardized protocol to provide a clearer framework for
+clinicians to follow, minimizing errors and variability. MRI of
+the pancreas evaluates the local proton density of tissues within
+the body with a high spatial resolution without being invasive.
+Like CT, gadolinium (Gd)-based contrast enhancement agents
+(GBCAs) are administered at high dose, corresponding to
+0.1−0.4 mmol/kg body weight for GBCAs.6−8 Furthermore, in
+specific cases, MRI has an advantage over CT in patients with
+sensitivities in iodinating contrast and renal impairment and in
+differentiating iso-attenuating pancreatic lesions.9 MR imaging
+agents work by shortening the longitudinal (T1) and transverse
+(T2) relaxation time of water protons in their vicinity,
+increasing the contrast of tissues in which they distribute.10
+Received:
+January 27, 2025
+Revised:
+April 10, 2025
+Accepted:
+April 10, 2025
+Published: April 24, 2025
+Article
+pubs.acs.org/nanoau
+© 2025 The Authors. Published by
+American Chemical Society
+184
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+This article is licensed under CC-BY 4.0
+Downloaded via UNIV OF MARYLAND COLG PARK on October 21, 2025 at 17:17:55 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+Improving their biodistribution to targeted sites could counter
+the limitations of single molecule-based imaging technologies
+to augment image quality, enhance temporal resolution, and
+improve probe sensitivity.11,12 Delivering GBCAs encapsulated
+by nanoparticles (NPs) can overcome this challenge.
+Protection of these agents from undesirable interactions with
+biological milieu allows for prolonged plasma half-life, hence
+increasing biodistribution within the tumor, which can be
+followed in real time, after administration.13,14 In vivo uptake
+of NPs can either passively or actively target the pathology of
+interest to enhance the accumulation of the active agent at the
+desired site.15 The enhanced permeability and retention (EPR)
+effect is the mode that best describes this accumulation and is
+firmly dictated by the permeability of the tumor. However, in
+vivo uptake and retention of NPs are poor due to the tumor-
+associated stromal barrier that surrounds the pancreas.
+Poly(lactic-co-glycolic acid) (PLGA) is a clinically approved
+US FDA and European Medicine Agency (EMA) biomaterial
+used for the fabrication of several NPs.16 These polymers are
+commercially available at different molecular weights and
+compositions.16 PLGA can be part of more complex
+supramolecular copolymers, formed through noncovalent
+interactions such as hydrogen bonding, π−π stacking, metal
+coordination, and host−guest interactions. These systems have
+gained significant attention due to their dynamic and reversible
+assembly properties, tunable mechanical strength, self-healing
+capabilities, and responsiveness to external stimuli such as pH,
+temperature, and enzymatic activity, making them ideal for
+biomedical applications, including drug delivery and tissue
+engineering.17,18
+A well-studied and applied hybrid structure is the
+combination of PLGA with PEGylated lipids and DPPE-PEG
+(2000) NHS). Hybrid PLGA-phospholipid NPs offer several
+advantages over pure PLGA NPs, primarily due to the
+incorporation of phospholipids, which enhances their phys-
+icochemical and biological properties. The phospholipid layer
+improves the stability of the NPs by reducing aggregation and
+providing a more uniform particle size distribution.19 Addi-
+tionally, phospholipids enhance biocompatibility and reduce
+immune system recognition, leading to prolonged circulation
+time in the bloodstream.20 These hybrid NPs also exhibit
+improved drug loading efficiency and controlled release
+profiles, allowing for more effective and sustained drug
+delivery.21 Moreover, the phospholipid component facilitates
+better interaction with biological membranes, improving
+cellular uptake and bioavailability of encapsulated therapeu-
+tics.22 Furthermore, incorporating a phospholipid containing
+an active group, such as maleimide or carboxyl, enables
+bioconjugation with targeting ligands, antibodies, or peptides,
+enhancing selective drug delivery to specific cells or tissues.23
+As a result, hybrid PLGA-phospholipid NPs provide a versatile
+and superior drug delivery platform compared to pure PLGA
+NPs, making them highly valuable for biomedical applications.
+This hybrid approach holds great potential for advancing
+nanomedicine by optimizing the performance of PLGA NPs
+for precision drug delivery applications.
+Herein, Gd-loaded poly(lactic-co-glycolic acid) (PLGA)
+phospholipid hybrid NPs (Scheme S1) have been developed to
+target human pancreatic cancer cell lines at different
+malignancies by actively augmenting NPs’ surface with specific
+epitopes, enhancing its uptake within the cell.24,25 Delivery of
+GBCAs through albumin-, adenosine-, or glutamine-coated
+polymeric NPs could provide higher MR contrast as means of
+higher cellular uptake.
+Various immunoglobin G (IgG)-functionalized silver NPs
+were used to successfully target Pancreatic adenocarcinoma
+(PDAC) cells;26−28 however, our hybrid PLGA-lipid NPs
+uniquely exploit specific metabolic pathways that are highly
+active in PDAC, thus potentially offering enhanced selectivity
+and sensitivity for diagnostic imaging.
+Albumin is the most abundant protein in the blood, and
+tumor cells internalize it through micropinocytosis from the
+extracellular matrix to produce growth supporting amino acids,
+such as glutamine and proline.29−31 Adenosine is a naturally
+occurring purine nucleoside, highly expressed in neoplastic
+microenvironments with pro- and antitumorigenic effects,
+depending on the receptors engaged on the different cell
+types.32 Pharmacological inhibition of G-protein-coupled
+adenosine receptors, A1a, A2a, A2b, and A3, in pancreatic
+cancer cell lines did not affect intracellular levels of adenosine;
+instead, blockade of equilibrative nucleoside transporters
+(ENTs) and concentrative nucleoside transporters (CNTs)
+by dipyridamole decreased their intracellular concentration,
+confirming their potential role in the uptake of adenosine-
+coated NPs via nucleoside transporters.33 While not essential
+to normal cells, glutamine becomes an essential amino acid for
+cancer cell survival and proliferation. The Warburg effect best
+describes their preference to increase glycolysis for energy
+production, even in the presence of oxygen.29 Inhibition of
+glutamine metabolism disrupts cancer cell growth and
+increases oxidative stress, highlighting the cancer cells’ reliance
+on glutamine.34
+These concepts suggested that broadly targeting cancer
+metabolism could provide a therapeutic avenue for enhanced
+cellular uptake of surface-decorated Gd-loaded PLGA-NPs in
+pancreatic cancer, setting a steppingstone for future in vivo
+therapeutic applications.
+2. MATERIALS AND METHODS
+2.1. Chemicals and Buffers
+The 1,2-distearoyl-sn-glycero-3-phosphoethanolamine-N-[methoxy-
+(polyethylene glycol)-2000] (ammonium salt) 18:0 PEG2000 PE
+and 1,2-distearoyl-sn-glycero-3-phosphoethanolamine-N-[carboxy-
+(polyethylene glycol)-2000 NHS ester] (sodium salt) were purchased
+from Avanti Polar Lipids Inc., Croda International Plc group
+(Alabama, US). Poly(D,L-lactide-co-glycolide) (PLGA) 50:50
+(P2191), average molecular weight (Mw) 30,000−60,000 Da, and
+poly(vinyl alcohol) (PVA), Mw 31,000−50,000 Da (98−99%
+hydrolyzed), albumin from bovine serum (BSA), N,N′-dimethylfor-
+mamide (DMF), Fmoc-Gln(Trt)−OH glutamine Reagent, Piper-
+idine, N,N′-diisopropylcarbodiimide, Oxyma, Trifluoroacetic, triiso-
+propylsilane, hepes, NaCl, chloroform, methanol, deuterated water,
+Thiazoly Blue Tetrazolium Bromide (MTT), and all other salts and
+solvents were purchased from Sigma-Aldrich (Massachusetts, US) and
+used without further purification. The amphiphilic Gd-DOTAMA
+(C18H37)2 was synthesized and purified according to previously
+reported procedure.35
+Human pancreatic cancer cell lines (MiaPaca2 and PANC1) were
+obtained from the American Type Culture Collection (ATCC,
+Virginia, US). Dulbecco’s Modified Eagle Medium (DMEM) high
+glucose, fetal bovine serum (FBS), penicillin and streptomycin, L-
+glutamine (L-Gln), and MycoAlert PLUS Mycoplasma Detection Kit
+were obtained from Lonza Sales AG-EuroClone S.p.A. (Milano, It).
+Dialysis buffer solution was made with Hepes (3.8 mM) and NaCl
+150 mM. pH and osmolarity were corrected to 7.3 ± 0.1 and 280 ±
+20 mOsm/L), respectively. pH was measured by using three-point
+calibration with standard solutions (pH = 4.0, 7.0, and 10.0).
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+185
+
+Osmolarity was controlled by using a Knauer K-7400S Semi-Micro
+Osmometer upon three-point calibration with standard solutions (0,
+300, and 850 mOsm/L).
+2.2. Preparation of PLGA-NPs
+PLGA-NPs were obtained using the oil-in-water (o/w) emulsion
+solvent extraction method.13 A scheme of the preparation method is
+reported in the Supporting Information (Scheme S2). Briefly, phase 1
+emulsion was prepared by dissolving 25 mg of PLGA, 3.2 mg of Gd-
+DOTAMA (C18H37)2, 1 mg of DSPE-PEG (2000) methoxy, and 1.2
+mg of DPPE-PEG (2000)NHS in 0.5 mL of chloroform. Organic
+phase 1 solution was added to phase 2, a 3% w/v PVA aqueous
+solution (3 mL), drop by drop, under controlled stirring. The 2
+phases were then emulsified with a sonicator (Ika T-25 Ultra-Turrax
+Digital Homogenizer with an Ika Dispersing Tool S25N-18G, Cole
+Parmer, Germany) tip for 2 and a half minutes at 100% power. The
+final emulsion was transferred to a 50 mL round-bottomed flask and
+attached to a rotary evaporator at 740 mmHg and 30 rpm for 120 min
+to remove the organic solvent. Free Gd-DOTAMA (C18H37)2 traces
+were removed by dialysis (Mwco 14 000 Da) at 4 °C in HEPES-
+buffered saline (HBS) dialysis buffer overnight. PVA solvent excess
+was removed to concentrate the final solution through 5 cycles of
+vivaspin (Sartorius) (CO of 1 × 106) centrifugation at 4500 rpm for
+20 min. Control NPs, without ligand coating, were synthesized using
+the same synthetic protocol without activated NHS ester groups. NPs
+were stored in darkness at 4 °C for further analysis.
+2.3. Conjugation of BSA, ADN, and Glut to PLGA-NPs
+A solution of BSA, ADN, or Glut in HBS (10, 1, and 1 mg/mL,
+respectively) was added to PLGA-NP solution after NP preparation
+using an NHS to ligand molar ratio of 1:5.
+Synthesis of polyglutamine [6 glutamine residues, poly(Q6)] was
+carried out by solid phase peptide synthesis (SPPS), as reported in
+Supporting Information and summarized in Scheme S3. For
+characterization,
+1H NMR spectrum acquisition of polyglutamine
+was done using a Bruker 600 MHz (Supporting Information). BSA
+and ADN were purchased and used with or without further
+purification.
+The conjugation reaction between the protein and PLGA-NPs was
+carried out at room temperature for 4 h under controlled stirring. The
+final reaction solution was centrifuged and concentrated via vivaspin
+(Sartorius) (CO of 1 × 106) centrifugation cycles at 4500 rpm for 20
+min. The observed relaxivity (R1obs) and amount of Gd-DOTAMA
+(C18H37)2 entrapped in PLGA-NPs were determined by 1H Nuclear
+Magnetic Resonance (nuclear magnetic relaxation dispersion
+(NMRD)) T1 measurement, at 21.5 MHz and 25 °C (Stelar
+Spinmaster, Mede, Italy), of the digested sample complex solution (6
+mol/L HCL at 120 °C for 24 h). The Gd concentration was
+calculated using the following formula
+R
+Gd mmol/L
+(
+0.5)/13.7
+2
+1obs
+[
+] = [
+] ×
+where R1obs represents the observed longitudinal relaxation rate of the
+digested sample, 0.5 is the diamagnetic contribution of HCl, and 13.7
+is the coefficient corresponding to the Gd relaxivity in 1 molar
+solution, all of which are multiplied by the dilution factor. The
+relaxivity was then normalized (R1p mM−1 s−1) against the obtained
+Gd concentration, calculated as such
+R
+R
+(mM
+s )
+(
+0.38)/ Gd mmol/L
+1p
+1
+1
+1obs
+=
+[
+]
+where R1obs represents the measured longitudinal relaxation rate of the
+NP in an aqueous solution, 0.38 is the diamagnetic contribution of
+water, and [Gd mmol/L] is the metal concentration. Relaxivity of
+nanosystems is a measure of the efficiency of the Gd ions in
+enhancing the relaxation rate of water protons. The encapsulation
+efficiency (EE %) of Gd-DOTAMA (C18H37)2 was calculated with the
+following formula
+EE Gd DOTAMA %
+Gd DOTAMA
+/Gd DOTAMA
+100
+encap
+tot
+=
+×
+Where Gd-DOTAMAencap is the amount of the encapsulated Gd
+complex and Gd-DOTAMAtot is the amount initially added for PLGA
+synthesis. The hydrodynamic mean diameter of PLGA-NPs was
+determined using a dynamic light scattering (DLS) Malvern Zetasizer
+3000HS instrument (Malvern, UK). All samples were analyzed at 25
+°C in filtered HBS buffer (pH 7.4, filter CO 200 nm). The amounts of
+the conjugated ligands were determined using the following assays:
+BSA Bradford assay quantification was used to determine the protein
+concentration ligated from the final synthesis volume of the BSA-
+PLGA. Its CE %, was evaluated with the following formula
+BSA CE%
+(BSA
+/BSA
+)
+100
+ligated
+tot
+=
+×
+where BSAligated is the protein amount resulting from the Bradford
+assay and BSAtot is the added protein from the conjugation reaction.
+Free ADN was quantified by means of the sulfur-penerol method
+from the resulting waste volume of the NPs vivaspin centrifugation.
+The CE % of linked ADN was then calculated by using the following
+formula
+ADN CE%
+(ADN
+ADN
+/ADN )
+100
+tot
+free
+tot
+=
+×
+where ADNtot is the total adenosine used for the ligation and ADNfree
+is the excess adenosine washed away from the vivaspins. Free
+Polyglutamine was quantified by means of BCA assay from the
+resultant vivaspin excess volume.
+The CE % of Polyglutamine was calculated with the following
+Glut CE%
+(Glut
+Glut
+/Glut
+)
+100
+tot
+free
+tot
+=
+×
+where Gluttot is the total glutamine used for the initial ligation
+reaction and Glutfree is the glutamine in the excess volume washed
+away from the vivaspins. The average number of BSA, ADN, and Glut
+molecules conjugated to PLGA-NPs was calculated by dividing the
+number of ligand molecules found in the solution for the calculated
+average number (n) of PLGA-NPs. The average number (n) of
+PLGA-NPs was calculated using the calculator tool in the DLS
+instrument. Resulting NPs were kept under dark at 4 °C for further
+analysis.
+2.4. Relaxometric Quantification of Metal Concentration
+The concentration of Gd(III) in the NPs was determined by using a
+1H relaxometric approach. Briefly, 70 μL of specimens was added to
+an equal volume of 37% HCl and placed into sealed glass vials
+overnight at 120 °C. Then, the water proton 1/T1 (=R1) longitudinal
+relaxation rate of acidic solutions was measured at 25 °C by using a
+Stelar SpinMaster relaxometer and the concentration of metal was
+calculated based on previously obtained calibration curves of Gd (III)
+aqua-ion solutions.
+2.5. Proton Nuclear Magnetic Relaxation Dispersion 1/T1
+Profiles
+Measurements were carried out at 25 °C over a range of magnetic
+field strengths from 0.00024 to 0.47 T (corresponding to 0.01−20
+MHz proton Larmor Frequency) on a Stelar field-cycling relaxometer
+(Stelar, Mede, Italy), under complete computer control with an
+absolute uncertainty of 1%. Data points from 0.5 T (21.5 MHz) to 1.7
+T (70 MHz) were collected on a Spinmaster spectrometer (Stelar,
+Mede, Italy) working at variable magnetic fields.
+2.6. PLGA-NPs’ Size and R1obs Stabilities
+To perform size and R1obs stability tests, PLGA, BSA-PLGA, ADN-
+PLGA, and Glut-PLGA NPs were diluted in HBS buffer or human
+serum (Sernorum) (Sigma-Aldrich) and left at 37 °C, under
+continued stirring for 7 days. The R1obs, size, and ζ-potential of
+each PLGA-NP sample were monitored on the Stelar field-cycling
+relaxometer operating at 21.5 MHz and DLS, respectively, both at 25
+°C.
+2.7. Cell Lines
+MiaPaca2 and Panc1 cells were cultured in DMEM high glucose
+medium supplemented with 10% (v/v) FBS, 100 U/mL penicillin,
+100 U/mL streptomycin, and 2 mM L-glutamine. Cells were routinely
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+186
+
+passed twice a week. Briefly, cells were gently washed with sterile
+phosphate-buffered saline (PBS) to remove the residual media. Then,
+cells were detached with 0.25% trypsin−EDTA solution for 3−5 min
+at 37 °C until cells were fully dissociated. Fresh medium was added to
+neutralize trypsin activity, and cell suspension was centrifuged at 1100
+rpm for 5 min. The supernatant was finally discarded, and the cell
+pellet was resuspended in a fresh medium. Cells were then seeded into
+a new culture flask and incubated at 37 °C under a humidified
+atmosphere of 5% CO2. Cells were negative for mycoplasma as tested
+by using a MycoAlert Mycoplasma Detection Kit (Lonza Sales AG-
+EuroClone S.p.A., Milano, It).
+2.7.1. In Vitro Cell Viability. The MTT test was used to evaluate
+the in vitro cytotoxicity of the PLGA-NPs on MiaPaca2 and Panc1.
+Both cell lines were seeded at a density of 1 × 104 viable cells/well in
+96-well plates for 24 h before experiments. Cells were incubated with
+PLGA-NPs for 24 h at increasing concentrations of Gd ranging from 0
+to 80 μM. The medium was then discarded from the wells and washed
+with 100 μL PBS. From a stock solution of MTT (5 mg/mL) in PBS,
+an aliquot of 10 μL was mixed with 100 μL of DMEM medium for
+each seeded well. After 4 h of incubation, the culture medium with
+MTT solution was discarded and crystals of formazan dissolved in
+150 μL of dimethyl sulfoxide. The absorbance of the resulting
+coloration was read on a microplate reader (GloMax Microplate
+Reader, Promega) at a 560 nm wavelength. Cell viability was
+calculated as a fraction of viability against the controls.
+2.7.2. Cellular Uptake Experiments. For in vitro uptake
+experiments, around 7 × 105 MiaPaca2 or Panc1 were seeded in 6
+cm diameter Petri dishes and left for 24 h to proliferate. Then, cells
+were incubated for 24 h at 37 °C in the presence of PLGA, BSA-
+PLGA, ADN-PLGA, or Glut-PLGA NPs at 80, 50, 30, 20, and 10 μM
+Gd concentrations. At the end of the incubation, cells were washed
+three times with 5 mL of ice-cold PBS, detached with trypsin/EDTA,
+and transferred to falcon tubes. Cell samples were sonicated at 30%
+power for 30 s in ice, and their protein concentrations were
+determined by a Bradford assay (Biorad, Hercules, CA, USA). Sample
+digestion was performed with concentrated HNO3 (70%, 1 mL)
+under microwave heating (Milestone MicroSYNTH Microwave
+labstation). The Gd content in the cell samples was determined
+using inductively coupled plasma (element-2; Thermo-Finnigan,
+Rodano (MI), Italy).
+2.8. MRI
+All MRI images were acquired on a Bruker Avance 300 spectrometer
+(7T) equipped with a Micro 2.5 microimaging probe (Bruker
+BioSpin, Ettlingen, Germany). Following the final incubation step in
+the uptake experiments, MiaPaca2 and Panc1 cells were washed,
+detached, centrifuged, and resuspended in 0.07 mL of PBS. The
+suspensions were aliquoted in glass capillaries containing cell-retained
+Gd from prior incubation (10−80 μM), centrifuged at 1100 rpm for 5
+min to form cell pellets, and fixed in a conical glass tube containing
+water. The phantom was imaged using a standard T1-weighted
+multislice spin−echo sequence (TR = 200 ms; TE = 3 ms; NEX = 6;
+FOV = 15 × 15; MTX = 128 × 128) and T1 map (TR = 6000, 3000,
+1500, 800, 600, 400, 200, 100, 50 ms; TE = 3 ms; FOV = 5 × 5; MTX
+= 128 × 128). The T1 relaxation times were calculated by using a
+standard saturation recovery spin echo. The T1values were obtained
+from the T1map scans by manually drawing in the ROI, within the
+circumference of the glass capillaries. The longitudinal water proton
+relaxation rate (1/T1) of each sample was then calculated and
+expressed as a percentage. The cell pellets were then recovered from
+the capillaries with an elongated glass pipet and suspended in 0.2 mL
+of PBS. The recovered samples were stored for further sonication,
+protein assay, and sample digestion.
+2.9. Statistical Analysis
+Data were calculated from at least 3 independent experiments and
+expressed as means ± standard error of the mean or ± SD (standard
+Figure 1. (A) Extracted UPLC chromatogram of Glut. (B) Mass spectra of synthesized Glut. (C) 1H NMR spectrum of synthesized Glut in H20
+and D20 at 298 K.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+187
+
+deviation of the mean), as indicated in the different determinations.
+Statistical analyses were performed using the student multiple t-test
+and One-way ANOVA. A p-value less than 0.05 was considered
+statistically significant.
+3. RESULTS AND DISCUSSION
+3.1. Preparation of PLGA NPs
+PLGA NPs are one of the most effective biodegradable
+delivery platforms in cancer nanomedicine.36 To obtain them,
+the o/w emulsion solvent extraction method was used37
+(Scheme S1). Briefly, PLGA (P2191) 50:50, DSPE-
+PEG(2000)methoxy, DPPE-PEG(2000)NHS, and Gd-DOTA-
+MA (C18H37)2 were dissolved in chloroform. The organic
+phase was added drop by drop into an aqueous phase of
+poly(vinyl alcohol) surfactant (PVA), allowing the polymer to
+nucleate. Choosing the surfactant concentration is important
+to facilitate the emulsion and obtain the desired particle size.
+An excess of PVA would decrease the final size, while an
+insufficient amount would fail NPs’ stabilization, leading to
+aggregation and precipitation.38 The fate of the NPs upon
+administration is strictly determined by its surface properties
+and size.39,40 In vivo studies showed that small particles of less
+than 30 nm are eliminated by renal filtration and larger ones,
+150 to 300 nm, are phagocytised by the mononuclear
+phagocytic system cells mainly present in the liver and the
+spleen.39,40 Our aim was to produce particles about 150 nm in
+diameter; hence, PVA was kept at 3%, yielding uniform, small
+sized and monodispersed NPs,41 as also shown in previous
+reports.13,25 Furthermore, NPs with a hydrodynamic diameter
+between 100 and 150 nm have previously been used for passive
+tumor targeting due to the EPR effect. During tumor
+development, cancer cells secrete VEGF and growth factors
+to stimulate angiogenesis, supporting the formation of blood
+vessels that provide the nutritional and oxygen supply for
+growth. These structures are usually abnormal in form and
+structure characterized by discontinuous endothelium, leaving
+wide fenestrations of 200 to 800 nm and allowing particles to
+passively accumulate in the tumor.42−44
+3.2. UPLC and Mass Analysis of Synthesized
+Polyglutamine
+The targeting route exploited herein is based on the
+administration of NPs externally decorated with polyglutamine
+(Glut). For this purpose, the synthesis of Glut was carried out
+successfully by SPPS on Rink Amide ProTide Resin, using a
+Liberty Blue automated peptide synthesizer (Scheme S2,
+Supporting Information).
+After cleavage from the resin, polyglutamine was checked by
+analytical UPLC, by means of an ACQUITY UPLC system
+equipped with both UV−vis and MS detectors. A HSS T3
+column (1.8 μm, 2.1 × 100 mm) was used with gradient
+elution (solvent A: 0.05% trifluoroacetyl in H2O; solvent B:
+CH3CN) from 0% to 5% in 6 min and from 5% to 80% in 1
+min at a flow rate of 0.4 mL min−1). Polyglutamine was
+characterized by a UPLC Acquity H-Class coupled with the
+QDa mass detector and TUV detectors. The chromatogram
+displays a single, prominent peak with a retention time of 2.07
+(Figure 1A). This dominant component (tR 2.07 min, λ = 220
+nm) has a purity of ≥85%. Minor peaks observed at earlier
+retention times correspond to synthesis of byproducts or
+shorter polyglutamine chains. The mass spectrometric analysis
+(Figure 1B) revealed two significant signals, providing insight
+into the peptide’s protonation states. The first signal, ESI + MS
+m/z (calcd For C30H51N13O12, MW 785.82): [M + 2H]2+
+393.44 (obsd), 393.91 (calcd), corresponds to the doubly
+protonated form of the polyglutamine peptide. The second
+signal, [M + 1H]1+ 785.88 (obsd) and 786.82 (calcd)
+corresponds to the singly protonated form of the molecule.
+The consistency between the theoretical and observed mass-
+to-charge ratios supports the structural integrity and purity of
+the synthesized polyglutamine. These data provide validation
+for the synthesis process, ensuring that the polyglutamine
+peptide is suitable for further experimental research.
+3.3. NMR Spectra of Poly-Glutamine
+In this study, two
+1H NMR spectra were obtained for
+synthesized polyglutamine using H2O and D2O as solvents,
+respectively, revealing significant insights into the molecular
+characteristics and solvent interactions of the sample. The H2O
+spectrum exhibited a broad water proton peak between 3 and 6
+ppm, a common feature due to high proton concentration,
+which overshadowed other signals. Notably, exchangeable
+protons from amide groups were present, manifesting between
+6.0 to 8.5 ppm, consistent with the literature that highlights
+these regions for such functional groups in polypeptides.45,46
+The three peaks around 2.4 to 2.6 ppm, well detectable using
+D2O as solvent, validated the glutamine structure (Figure
+1C).47 Exchangeable peaks between 6.0 to 8.5 ppm are not
+detectable using D2O as solvent due to proton exchange with
+deuterium.
+3.4. BSA, ADN, and Glut Surface Conjugation to PLGA-NPs
+Prior to surface conjugation, NPs underwent a dialysis washing
+step against HEPES Buffered Salt (HBS) to remove unbound
+Gd(III) chelates and then were centrifuged to separate
+aggregates and further impurities. The supernatant was
+collected and washed from excess PVA with vivaspin
+centrifugation cycles. Removing excess surfactant from the
+solution allows for higher surface-to-ligand contact between
+the activated NHS esters on the surface of the NPs and the
+reactive groups of the ligand, ensuring that most of the particle
+reactive sites bind to the amine groups of the latter. All
+formulations demonstrated size ranges considered to be
+suitable for potential (intravenous) i.v. administration and
+prolonged-circulating half-life properties. In Table S1 and
+Figure 2, particle size is reported by considering the
+hydrodynamic diameter obtained from DLS, with standard
+deviations calculated from three independent batches prepared
+on separate days. The resulting diameter measurements
+correspond to 140 ± 6, 155 ± 5, 146 ± 11, and 149 ± 15
+nm for PLGA, BSA-PLGA, ADN-PLGA, and Glut-PLGA,
+respectively. Their polydispersity index (PDI) was kept below
+0.2 and exhibited a proportional pattern in relation to their
+size. The ζ-potential reflects the average surface charge
+distribution, with values suggesting a neutral to slightly
+negative surfaces, consistent with PEGylated NPs.48 The
+mean particle ζ-potentials were approximately −4. ± 1.6, −4.5
+± 2, - 3.0 ± 0.6, and −2.9 ± 0.6 mV for PLGA, BSA-PLGA,
+ADN-PLGA, and Glut-PLGA, respectively (Table S1 and
+Figure 2).
+Surface charge and PDI were similar between the groups.
+BSA-PLGA experienced an increment in size of around 15 nm
+compared to the preconjugation one, because of the surface
+binding of a high molecular weight molecule. The resulting
+surface charge was mostly attributed to the characteristics of
+the hydrophilic pegylated shell and the corresponding ligand.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+188
+
+BSA is an anionic protein at physiological pH and adsorption
+onto NPs’ surface may impart a negative charge to the NPs.
+Although not significant, BSA did indeed decrease the NP
+surface charge after conjugation. Similarly, ADN and Glut
+conjugation slightly increased the surface charge of NPs,
+though unaltering its negative charge. The negative ζ-
+potentials obtained are less favorable for cellular uptake due
+to the negatively charged nature of cellular membranes.
+Despite this, for in vivo applications, a slightly negative charge
+prolongs NPs’ blood circulation time, which accordingly
+enhances biodistribution inside the tumor.49
+Longitudinal relaxivity values (r1p) for PLGA, BSA-PLGA,
+ADN-PLGA, and Glut-PLGA were calculated to be 23.9 ± 1.9,
+27.0 ± 2.8, 22.1 ± 1.6, and 23.2 ± 2.4 m−1 s−1, respectively, at
+21.5 MHz and 298 K (Table 1). All the formulated PLGAs
+demonstrated a good Gd (III) complex encapsulation
+efficiency (EE %) of above 80%. To determine the grade of
+functionalization for each group, the ratio of ligand molecules
+attached to the surface of each PLGA was calculated, resulting
+in 3.5 × 106, 2.6 × 106, and 5.2 × 106 ligand molecules/NP for
+BSA, ADN, and Glut, respectively. It corresponds to a
+conjugation efficiency (CE %), in percentage, of 77%, 65%,
+and 99%.
+3.5. Proton Nuclear Magnetic Relaxation Dispersion 1/T1
+Profiles
+The relaxivity values for the different formulations were
+measured as a function of the applied magnetic field at 298 K,
+thereby obtaining the NMRD profiles. A mathematical analysis
+of these curves is essential for extrapolating the molecular and
+dynamic parameters responsible for the relaxivity values. The
+1H NMRD of the different samples exhibits a shape
+characteristic of systems, in which Gd(III) complexes undergo
+slow rotation, with a peak at approximately 30 MHz (Figure
+3).
+As a general comment, the restriction of mobility of the
+confined Gd(III) chelates is promoted by the strong
+interactions between the steric lipophilic chains of the complex
+molecules and the hydrophobic PLGA polymer chains. This
+observation strongly reinforces the potential of PLGA NPs
+encapsulated with amphiphilic Gd complexes compared to
+hydrophilic ones for imaging applications. The rotational
+dynamics were analyzed using the Lipari-Szabo model-free
+approach, which describes both local (τRL) and global (τRG)
+rotational correlation times through an order parameter, S2.
+If the reorientational motion of the Gd(III) complex is
+independent of the global tumbling of the NPs, then S2 = 0.
+Conversely, if the complex is immobilized on the surface of the
+NPs, S2 = 1. The r1p value of BSA-PLGAs was approximately
+Figure 2. Physiochemical characterization of polymeric NPs such as
+size, PDI, ζ-potential, and average NP number from the formulated
+PLGAs were assessed. NPs from the BSA targeted group displayed
+significant size increase compared to the untargeted group (B vs G).
+PDI was kept below 0.2, indicating monodispersed particle
+population. NPs’ ζ-potential remained unaltered after ligand
+conjugation in all groups (n = 3 independent NP batches per
+group). Results are shown as mean ± SD. The Mann−Whitney test
+was used to determine statistical differences between the groups, with
+*p < 0.05.
+Table 1. Obtained Parameters from the 1H NMRD Profile Analysis of the Formulated PLGAs
+PLGA/Gd
+PLGA/Gd/ADN
+PLGA/Gd/Glut
+PLGA/Gd/BSA
+τRL/ns
+1.2 ± 0.1
+1.2 ± 0.1
+1.3 ± 0.1
+3.3 ± 0.3
+τRG/ns
+80a
+80a
+80a
+80a
+S2
+0.41 ± 0.02
+0.41 ± 0.02
+0.42 ± 0.01
+0.45 ± 0.02
+τM/ns
+640 ± 20
+700 ± 35
+600 ± 22
+540 ± 30
+q
+1a
+1a
+1a
+1a
+r/Å
+3.0a
+3.0a
+3.0a
+3.0a
+a/Å
+3.8a
+3.8a
+3.8a
+3.8a
+298D/10−10 m2 s−1
+2.24a
+2.24a
+2.24a
+2.24a
+aParameters were fixed during fitting analysis.
+Figure 3. Profiles of 1/T1
+1H-NMRD (pH 7.4, 25 °C) of PLGA-NPs.
+NMRD analysis was conducted using the parameters reported in
+Table 1.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+189
+
+17% higher with respect to the unconjugated NPs at 30 MHz.
+This increase is primarily attributed to an increase in τRL from
+1.2 ns for PLGA/Gd to 3.3 ns for PLGA/Gd/BSA. A slight
+reduction in the water residence lifetime was also observed,
+although this parameter is not accurately extrapolated from this
+analysis. However, the values show a similar order of
+magnitude to those calculated for other nanosystems function-
+alized with Gd-DOTAMA derivatives (see Botta and Aime’s
+articles). During fitting, τRG was fixed at 80 ns, consistent with
+literature (same references as above), with D (2.24 × 10−10 m2
+s−1), rGd−H (3.0 Å), and a Gd−H (3.8 Å) (Table 1).
+3.6. Assessment of Stability by Size and Relaxivity
+Stability of the PLGAs’ formulations was assessed for 4 days by
+measuring their size, ζ-potential, and the relaxivity using DLS
+and the SpinMaster instrument operating at 21 MHz,
+respectively. Figure 4A−C shows that all NPs are stable in
+size in both Hepes Buffered Salt (HBS) and human serum.
+Additionally, the ζ-potential of each PLGA-NP sample in HBS
+did not change in the analyzed time (Figure S1).
+This suggests that human serum has little affinity toward
+these amphiphilic Gd-DOTAMA (C18H37)2 complexes,
+indicating that their linkage to the PLGA-NPs’ surface will
+be stable when administered i.v. control PLGA NPs were more
+stable as their size underwent little change after incubation
+with HBS. All targeted PLGAs were subject to a slight size
+increase going from around 150 to 180 nm after incubation
+with HBS. In human serum, targeted PLGAs behaved similarly
+to its analogue HBS profile. The control PLGA increased in
+size after 72 h of incubation, possibly attributed to slow
+unspecific adsorption from the serum to the free available
+surface of the particle. Analogously, measurement of relaxivity
+did not change during the measurement time, indicating a
+structural rigidity of the NPs and capacity at holding the Gd
+complex within its structure without altering its properties
+(Figure 4D−F).
+3.7. In Vitro Cell Viability
+Biocompatibility of NPs was tested in vitro by (i) hemolysis
+tests on red blood cells and (ii) viability assays performed on
+pancreatic MiaPaca2 and Panc1 cells.
+The first test was used to assess the eventual interaction of
+NPs with biological cell membranes. RBCs were used for this
+purpose since they are the most abundant cells in the blood, so
+their interaction with NPs has to be tested in view of possible
+future i.v. administration. Data showed the absence of RBC
+lysis upon incubation with all four formulations (30 min,
+concentration of 80 μM, Figure S2).
+The second test on cell culture was carried out to confirm
+the biocompatible nature of the polymer and establish an ideal
+dose with the lowest toxicity for cellular uptake experiments.
+Each cell line was incubated with PLGA, BSA-PLGA, ADN-
+PLGA, and Glut-PLGA at increasing μM concentrations for 24
+h (Figure 5).
+Figure 4. Targeted PLGA-NPs’ size stabilities were measured by DLS, at 25 °C, over a course of 3 days in HBS and human serum and compared to
+control PLGA group (A−C). Gd complex stability was evaluated by measuring the r1obs in a Stelar Spinmaster at 21.5 MHz over the course of 4
+days (D−F).
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+190
+
+The highest Gd concentration used for the MTT assay
+corresponds to the minimum dose required to achieve a
+detectable MR signal. Cell viability levels were evaluated
+against ISO 10993-5 standards for in vitro cytotoxicity, which
+recommend viability thresholds above 70% for biocompati-
+bility.50 The low toxicity of the control PLGA group
+demonstrated the biocompatibility of these “naked” nano-
+systems. Cells may incorporate a higher concentration of
+extracellular components depending on their metabolic needs.
+Applying an essential metabolite, or a byproduct of it, to NPs’
+surface may induce a higher internalization and release of the
+Gd complex thus increasing toxicity. In fact, ligation of BSA,
+ADN, or Glut faintly decreased cell viability, although at
+acceptable levels. The observed increase in toxicity in the BSA-
+PLGA group may account for a higher PLGA uptake mediated
+by the high KRAS-induced macropinocytosis activity charac-
+Figure 5. Percentage of viability (measured with MTT assay) of MiaPaca2 and Panc1 cells after 24 h of incubation at increasing concentrations of
+Gd-loaded PLGAs. Graphs show the mean ± SD of percentage of viability evaluated on three independent experiments.
+Figure 6. (A) 7T MR images of T1-weighted 5 mm glass tubes containing MiaPaca2 or Panc1 cells incubated with PLGAs at variable
+concentrations of Gd. (B) Comparison of T1 enhancements between PLGAs at 7T MRI.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+191
+
+teristic of pancreatic cancer cells. The toxicity due to ADN
+may be attributed to increased uptake mediated by ENTs and
+CNTs receptors. In the Glut group, toxicity may be attributed
+to receptor-mediated internalization of solute carrier family 1,
+member 5 (SLC1A5). The viability, in percentage, of
+MiaPaca2 after 24 h incubation at 80 μM Gd with PLGA,
+BSA-PLGA, ADN-PLGA, and Glut-PLGA were 70%, 85%,
+75%, and 70% and 71%, 71%, 56%, and 90% for Panc1,
+respectively.
+3.8. Cellular Uptake
+A preliminary assessment about internalization of NPs inside
+RBCs was carried out to exclude the specific loading of NPs
+eventually occurring after in vivo intravascular administration
+of NPs. RBCs were placed ex vivo in the presence of the four
+formulations of NPs for 3 h (concentration of 80 μM). Later,
+they were extensively washed in buffer and recollected by
+centrifugation. Cells content was quantified by using the
+Bradford assay and the internalization of Gd-containing-NPs
+by quantification of the ICP−MS measure of Gd.
+The comparison of the cellular uptake efficiencies and the
+resulting contrast enhancement of the formulated Gd-loaded
+PLGA-NPs were assessed by acquiring MR images at 7T
+(Figure 6A).
+As a result, no Gd internalization was assessed for all four
+tested NP formulations, so the aspecific uptake was excluded
+from RBCs (data not shown).
+After 24 h of incubation at varying concentrations of Gd, the
+cells were collected and pelleted into 5 mm diameter glass
+capillaries. Signal enhancement was obtained from T1map 7T
+MR images. The measured signal intensity of the Gd-
+DOTAMA (C18H37)2 within the capillaries was able to
+increase sensitivity even at the lowest concentration, which is
+a primary imaging probe requirement to be visualized and
+detected by the instrument (Figure 6B).
+It is worth noting that by increasing the concentration of
+Gd-bearing-NPs in the incubation medium, there is an increase
+in the T1
+enh % in MR images of cells pellets (Figure 6B), as
+consequence of a larger amount of Gd complexes internalized
+inside cells (in endosomes, through micropinocytosis, see
+following Figure 7 for quantification). However, this increase is
+linear only at a low concentration. By increasing the amount of
+loaded Gd complexes, there is a saturation in the T1
+enh % signal.
+This “quenching” of relaxivity has been largely analyzed in the
+literature, and it takes place when the difference in the
+relaxation rates between endosomes and cytoplasm is higher
+than the exchange rate (kex) between the two compartments,
+that is, IR1
+intra −R1
+extra I > or ≫kex.51 Together with the T1-
+“quenching”, the high payload of paramagnetic species in the
+endosomes causes a dramatic decrease of T2* and both the
+conditions hamper the enhance of signal in T1w-MR images
+(Figure 6A,B).
+Cell pellets were then recollected for protein quantification
+and sample digestion to measure the Gd concentration via
+ICP−MS and finally determine the nmol Gd/mg cell protein
+ratio (Figure 7). This result allows for the quantification of
+PLGA NPs internalized inside cells.
+Surface-treated NPs with BSA and ADN showed high
+uptake in both cell lines at greater concentrations, 50 and 80
+μM, confirming cells’ preference to endocytose albumin for
+glutamine production and adenosine through the dynamic
+exchange between the extracellular and intracellular spaces. In
+the ADN-PLGA group at 80 μM, Panc1 showed substantial
+decreased uptake of NPs compared to both BSA and
+untargeted groups. The mechanism of adenosine internal-
+ization is concentration-dependent; therefore, adding a higher
+amount of ADN-carrying particles in the extracellular space
+might hamper this mechanism, resulting in poor intracellular
+delivery of the contrast agent.
+Glut-PLGA showed the lowest uptake among PLGA
+formulations at all of the concentrations. The L-Glutamine
+constituent of the culture medium may have hindered the
+intracellular uptake of Glut-PLGA, although preliminary
+experiments did not point in this direction (data not
+shown). Further studies will be needed to evaluate the possible
+role of glutamine present in the cell culture medium.
+Finally, to gain further insights into the internalization of
+NPs, preliminary experiments were conducted by using
+confocal microscopy for the detection of carboxyfluorescein-
+labeled-PLGA-NPs either w/o surface modification or upon
+coating with BSA. Data, reported in Figures S3 and S4, show
+that in both cell lines at 30 min or 24 h of incubation, the
+fluorescence signal is cytoplasmatic, thus confirming a rapid
+uptake of the system and endosomal escape after loading.
+4. CONCLUSIONS
+This study instigates the use of targeted NPs for imaging
+PDAC cells. In comparison to the existing functionalized NPs
+and imaging methods for PDAC, our study introduces a novel
+approach by leveraging hybrid PLGA-lipid NPs functionalized
+with metabolic ligands, such as albumin, adenosine, and
+glutamine.
+Two considerations have to be taken into account for
+comparing the NPs reported herein to previously reported
+ones, i.e., (i) the kind of NP and (ii) the targeting agent
+attached to NP surface.
+Concerning the chemical nature of NPs, previous research
+has explored a variety of formulations, including polymeric,
+inorganic, and liposomal systems, to enhance MRI contrast in
+Figure 7. ICP−MS quantification of Gd retained intracellularly by MiaPaca2 and Panc1 cells after 24 h incubation. Graphs show the mean ± SD of
+internalized Gd nmol per mg of total cell proteins from 3 independent experiments. (***p < 0.01, **p < 0.1, *p < 0.5).
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+192
+
+PDAC detection.52 Polymeric NPs, such as PLGA-based
+systems, have demonstrated high biocompatibility easiness of
+preparation and controlled drug release, being considered a
+well-suitable system for theranostic applications.53 Inorganic
+NPs, including SPIONs and gold nanostructures, have been
+also largely investigated, especially because they offer higher
+MRI contrast (due to their magnetic properties).54 However,
+their application is strongly hampered by non-optimal
+biocompatibility.
+Also, liposomal NPs have also been investigated for their
+ability to encapsulate imaging agents/drugs and facilitate
+prolonged circulation, as well as for improved biocompati-
+bility.55 Both liposomes and PLGA-NPs represent good
+possibilities for targeted imaging and/or therapy, and the
+choice of one or the other systems is strongly linked to the
+nature of drugs to be delivered, if mainly hydrophilic or
+hydrophobic.
+The hybrid PLGA-lipid NPs used herein offer a distinctive
+advantage by combining a biodegradable polymeric core with a
+lipid shell to improve stability, biocompatibility, and tunable
+surface functionalization, thus mixing some advantages of
+PLGA NPs and of liposomes. The presence of pegylated
+phospholipids can be strongly advantageous for both
+improving blood lifetime and making bioconjugation with
+targeting ligands easy (using the NHS strategy).
+The second point deals with the targeting agent attached to
+the surface of the NPs. The functionalization with metabolic
+ligands provides an innovative targeting strategy that enhances
+NP uptake through active metabolic pathways rather than
+solely relying on passive diffusion (EPR effect), which is
+significantly hindered in PDAC due to its dense stromal
+microenvironment and poor vascularization.
+Albumin, for instance, is abundantly internalized by PDAC
+cells through micropinocytosis to support amino acid
+metabolism, making it a promising targeting agent. Similarly,
+adenosine uptake is regulated by nucleoside transporters,
+which are overexpressed in the tumor microenvironment, and
+glutamine metabolism plays a crucial role in cancer cell
+survival, providing an additional route for targeted NP delivery.
+Hence, the metabolic targeting strategy exploits fundamental
+cancer cell processes, allowing for enhanced specificity and
+higher imaging sensitivity.
+This can overcome immunogenicity and limited penetration
+in tumor tissues, which are linked to the use of antibody
+conjugation for active targeting, as commonly reported for
+SPIONs and gold-based NPs.
+In conclusion, the herein reported hybrid PLGA-phospho-
+lipid-targeted formulations showed improved cellular uptake
+compared to control NPs and good relaxometric properties,
+highlighting their potential not only as a noninvasive diagnostic
+tool but also for improving eventual drug delivery efficiency.
+While this study focused on 2D cell cultures, future research
+should incorporate 3D tumor spheroid or organoid models to
+better replicate the TME. Such models can provide insight into
+NP penetration and uptake in conditions closer to in vivo.
+Future studies will aim to validate these findings in vivo and
+explore therapeutic applications using hybrid NPs in advanced
+tumor models.
+■ASSOCIATED CONTENT
+*
+sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acsnanoscienceau.5c00010.
+Polyglutamine synthesis on a solid phase and character-
+ization, 1H NMR spectrum acquisition of polyglut-
+amine, and hemolysis test, assessment of stability of NPs,
+hemolysis, confocal microscopy of MiaPaca2 cells,
+confocal microscopy of Panc1 cells, schematic model
+of the functionalized NPs with a combination of PLGA
+and PEGylated phospholipid, chemical structures of
+reagents and PLGA NP preparation steps, scheme of
+glut SPPS synthesis, data about NP properties, and
+supplementary references (PDF)
+■AUTHOR INFORMATION
+Corresponding Author
+Giuseppe Ferrauto −Molecular Imaging Center, Department
+of Molecular Biotechnologies and Health Sciences, University
+of Torino, Torino 10126, Italy;
+orcid.org/0000-0003-
+4937-6140; Email: giuseppe.ferrauto@unito.it
+Authors
+Alessandro Amaolo −Molecular Imaging Center, Department
+of Molecular Biotechnologies and Health Sciences, University
+of Torino, Torino 10126, Italy
+Hanieh Sadeghi −Molecular Imaging Center, Department of
+Molecular Biotechnologies and Health Sciences, University of
+Torino, Torino 10126, Italy;
+orcid.org/0009-0008-2370-
+7523
+Carla Carrera −Molecular Imaging Center, Department of
+Molecular Biotechnologies and Health Sciences, University of
+Torino, Torino 10126, Italy;
+orcid.org/0000-0002-1571-
+7851
+Sergio Padovan −Molecular Imaging Center, Department of
+Molecular Biotechnologies and Health Sciences, University of
+Torino, Torino 10126, Italy
+Fabio Carniato −Dipartimento di Scienze e Innovazione
+Tecnologica, Università degli Studi del Piemonte Orientale,
+Alessandria 15121, Italy;
+orcid.org/0000-0002-6268-
+1687
+Enza Di Gregorio −Molecular Imaging Center, Department
+of Molecular Biotechnologies and Health Sciences, University
+of Torino, Torino 10126, Italy
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acsnanoscienceau.5c00010
+Author Contributions
+All authors have given approval to the final version of the
+manuscript. CRediT: Alessandro Amaolo data curation,
+formal analysis, investigation, methodology, writing - original
+draft, writing - review & editing; Hanieh Sadeghi inves-
+tigation; Carla Carrera investigation, methodology; Sergio
+Padovan investigation, methodology; Fabio Carniato formal
+analysis, methodology, writing - review & editing; Enza Di
+Gregorio conceptualization, methodology, resources, super-
+vision, writing - original draft, writing - review & editing;
+Giuseppe Ferrauto conceptualization, formal analysis, funding
+acquisition, methodology, project administration, resources,
+supervision, writing - review & editing.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+193
+
+Funding
+This publication is part of the project NODES which has
+received funding from the MUR-M4C2 1.5 of PNRR with
+grant agreement no. ECS00000036 (G.F.) and from PNRR
+M4C2-Investimento 1.4-CN00000041 “Finanziato dall’
+Unione Europea-NextGenerationEU” (G.F.). The publication
+has been founded by Italian Ministery for University and
+research with PRIN 2022 project entitled “A multidisciplinary
+approach to develop targeted nanotherapy of Pancreatic
+Adenocarcinoma and improve tumor phenotyping” (G.F.)
+Notes
+The authors declare no competing financial interest.
+FOE contribution to the EuroBioImaging MultiModal
+Molecular Imaging Italian Node (www.mmmi.unito.it) is
+gratefully acknowledged.
+■ACKNOWLEDGMENTS
+Figures no 1 and TOC are created using BioRender.com.
+■ABBREVIATIONS
+BSA, bovine serum albumin; CE %, conjugation efficiency
+percentage; DLS, dynamic light scattering; DMEM, Dulbecco’s
+modified Eagle medium; DMF, N,N′-dimethylformamide;
+EPR, enhanced permeability and retention; FBS, fetal bovine
+serum; GBCA, gadolinium-based contrast enhancement agent;
+Gd, gadolinium; HBS, HEPES-buffered saline; ICP, induc-
+tively coupled plasma; MDCT, multidetector computed
+tomography; MRI, magnetic resonance imaging; MTT,
+thiazoly blue tetrazolium bromide; NHS, N-hydroxysuccini-
+mide; NMRD, nuclear magnetic relaxation dispersion; NP,
+nanoparticle; PBS, phosphate-buffered saline; PEG, poly-
+ethylene glycol; PLGA, poly(lactic-co-glycolic acid); PVA,
+poly(vinyl alcohol); SEM, standard error of the mean; T1,
+longitudinal relaxation time
+■REFERENCES
+(1) Treadwell, J. R.; Zafar, H. M.; Mitchell, M. D.; Tipton, K.;
+Teitelbaum, U.; Jue, J. EUS-FNA Diagnostic Accuracy for Pancreatic
+Cancer: A Meta-Analysis. Pancreas 2016, 45, 789.
+(2) Yang, J.; Xu, R.; Wang, C.; Qiu, J.; Ren, B.; You, L. Detection
+and Characterization of Circulating Tumor Cells in Pancreatic
+Cancer: A Comprehensive Review. Cancer Commun. 2021, 41,
+1257−1274.
+(3) Zhang, L.; Sanagapalli, S.; Stoita, A. Challenges in Diagnosis of
+Pancreatic Cancer in the Era of Precision Medicine. World J.
+Gastroenterol. 2018, 24, 2047−2060.
+(4) Lu, D. S.; Vedantham, S.; Krasny, R. M.; Kadell, B.; Berger, W.
+L.; Reber, H. A. Imaging Strategies for Detecting Pancreatic
+Adenocarcinoma: A Clinical Overview. Radiology 1996, 199, 697−
+701.
+(5) Gbande, P.; N’timon, B.; Tchakpedeou, D. A.; Tchaou, M.;
+Adambounou, K.; Sonhaye, L.; Agoda-Koussema, L. K.; Adjenou, K.
+Magnetic Resonance Imaging in the Evaluation of Pancreatic Lesions:
+A Case Series. Radiol. Res. Pract. 2023, 8296467.
+(6) Overbeek, K. A.; Goggins, M.; Dbouk, M.; Levink, I. J. M.;
+Koopmann, B. D. M.; et al. Pancreatic Cancer Surveillance in High-
+Risk Individuals: A Multicenter Study. Gastroenterology 2022, 162,
+772−785e4.
+(7) Weinmann, H.; Brasch, R.; Press, W.; Wesbey, G. Characteristics
+of Gadolinium-Based Contrast Agents for MR Imaging. Am. J.
+Roentgenol. 1984, 142, 619−624.
+(8) Ibrahim, M. A.; Hazhirkarzar, B.; Dublin, A. B. Imaging of
+Pancreatic Tumors. In StatPearls; StatPearls Publishing: Treasure
+Island, FL, 2024.
+(9) Fattahi, R.; Balci, N. C.; Perman, W. H.; Hsueh, E. C.; Al-kaade,
+S.; Havlioglu, N.; Burton, F. R. The Role of Diffusion-Weighted MRI
+in Pancreatic Tumor Imaging. J. Magn. Reson. Imaging 2009, 29, 350−
+356.
+(10) Wahsner, J.; Gale, E. M.; Rodríguez-Rodríguez, A.; Caravan, P.
+Chemistry of MRI Contrast Agents: Current Challenges and New
+Frontiers. Chem. Rev. 2019, 119, 957−1057.
+(11) Key, J.; Leary, J. F. Nanoparticles for Multimodal In Vivo
+Imaging in Cancer. Int. J. Nanomed. 2014, 9, 711−726.
+(12) Liu, L.; Kshirsagar, P. G.; Gautam, S. K.; Gulati, M.; et al.
+Multifunctional Nanovaccines for Cancer Immunotherapy: Current
+Progress and Future Challenges. Theranostics 2022, 12, 1030−1060.
+(13) Mariano, R. N.; Alberti, D.; Cutrin, J. C.; Geninatti Crich, S.;
+Aime, S. A New Approach for Pancreatic Cancer Imaging Using
+Targeted Nanoparticles. Mol. Pharmaceutics 2014, 11, 4100−4106.
+(14) Gao, M.; Zhang, D.; Jin, Q.; Jiang, C.; et al. Nanoparticles in
+Cancer Diagnosis and Therapy: Recent Advances. Oncotarget 2016, 7,
+58133−58141.
+(15) Yallapu, M. M.; Gupta, B. K.; Jaggi, M.; Chauhan, S. C.
+Nanoparticle-Based Targeted Delivery in Cancer Therapy. J. Colloid
+Interface Sci. 2010, 351, 19−29.
+(16) Dong, J.; et al. Core−shell metal−organic frameworks with
+pH/GSH dual-responsiveness for combined chemo−chemodynamic
+therapy. Chem. Commun. 2022, 58, 12341−12344.
+(17) Feng, W.; et al. Supramolecular delivery systems based on
+pillararenes. Chem. Commun. 2018, 54, 13626−13640.
+(18) Chao, S.; Shen, Z.; Pei, Y.; Lv, Y.; Chen, X.; Ren, J.; Yang, K.;
+Pei, Z. Pillar[5]arene-based supramolecular photosensitizer for
+enhanced hypoxic-tumor therapeutic effectiveness. Chem. Commun.
+2021, 57, 7625−7628.
+(19) Danhier, F.; Ansorena, E.; Silva, J. M.; Coco, R.; Le Breton, A.;
+Préat, V. PLGA-Based Nanoparticles: An Overview of Biomedical
+Applications. J. Controlled Release 2012, 161, 505−522.
+(20) Wang, H.; Xie, Y.; Li, F.; Zhang, Y.; Wang, S.; Liu, Z.
+Phospholipid-Based Nanoparticles: A Potential Drug Delivery System
+for Cancer Therapy. Mater. Sci. Eng., C 2021, 118, 111524.
+(21) Sanna, V.; Pintus, G.; Bandiera, P.; Roggio, A. M. Development
+of Polymeric Nanoparticles for Controlled Release of Anticancer
+Agents. Int. J. Pharm. 2013, 456, 211−220.
+(22) Zhang, L.; Chan, J. M.; Gu, F. X.; Rhee, J. W.; Wang, A. Z.;
+Radovic-Moreno, A. F.; Langer, R. Self-Assembled Lipid−Polymer
+Hybrid Nanoparticles: A Robust Drug Delivery Platform. ACS Nano
+2019, 2, 1696−1702.
+(23) Torchilin, V. P. Multifunctional and Stimuli-Sensitive
+Pharmaceutical Nanocarriers. Eur. J. Pharm. Biopharm. 2009, 71,
+431−444.
+(24) Swami, R.; Singh, I.; Jeengar, M. K.; Naidu, V. G. M.; Khan, W.;
+Sistla, R. Advances in Nanomedicine for Cancer Treatment. Int. J.
+Pharm. 2015, 486, 287−296.
+(25) Turino, L. N.; Ruggiero, M. R.; Stefanìa, R.; Cutrin, J. C.; Aime,
+S.; Geninatti Crich, S. Multifunctional Nanoparticles for Enhanced
+Cancer Imaging. Bioconjugate Chem. 2017, 28, 1283−1290.
+(26) Nedelcu, A.; Mocan, T.; Sabau, L. I.; Matea, C. T.; Tabaran, F.;
+Pop, T.; Delcea, C.; Mosteanu, O.; Mocan, L. In vitro photothermal
+therapy of pancreatic cancer mediated by immunoglobulin G-
+functionalized silver nanoparticles. Sci. Rep. 2024, 14, 14417.
+(27) Trabulo, S.; Aires, A.; Aicher, A.; Heeschen, C.; Cortajarena, A.
+L. Biochim. Biophys. Acta 2017, 1861, 1597−1605.
+(28) Patra, J. K.; Das, G.; Fraceto, L. F.; Campos, E. V. R.; et al.
+Green Nanotechnology: Advances in Cancer Therapy and Diagnosis.
+J. Nanobiotechnol. 2018, 16, 1−33.
+(29) Derle, A.; Santis, M. C. D.; Gozzelino, L.; Ratto, E.; Martini, M.
+Cancer Metabolism: Pathophysiological Insights and Therapeutic
+Opportunities. Cell Stress 2018, 2, 332−339.
+(30) Davidson, S. M.; Jonas, O.; Keibler, M. A.; Hou, H. W.; et al.
+Strategies to Exploit Cancer Metabolism for Therapeutic Gain. Nat.
+Med. 2017, 23, 235−241.
+(31) Yardley, D. A. Nab-Paclitaxel Mechanisms of Action and
+Delivery. J. Controlled Release 2013, 170, 365−372.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+194
+
+(32) Kaur, T.; Weadick, B.; Mace, T. A.; Desai, K.; Odom, H.;
+Govindarajan, R. Targeting the Tumor Microenvironment in
+Pancreatic Cancer: The Role of Tumor-Stroma Crosstalk. Pharmacol.
+Ther. 2022, 240, 108300.
+(33) Yang, D.; Zhang, Q.; Ma, Y.; Che, Z.; Zhang, W.; Wu, M.; Wu,
+L.; Liu, F.; Chu, Y.; Xu, W.; McGrath, M.; Song, C.; Liu, J. Efficacy of
+Combination Therapy with PD-L1 Blockade and Irradiation in
+Murine Pancreatic Cancer. eBioMedicine 2019, 47, 114−127.
+(34) Encarnación-Rosado, J.; Sohn, A. S. W.; Biancur, D. E.; Lin, E.
+Y.; Osorio-Vasquez, V.; Rodrick, T.; González-Baerga, D.; Zhao, E.;
+Yokoyama, Y.; Simeone, D. M.; Jones, D. R.; Parker, S. J.; Wild, R.;
+Kimmelman, A. C. Pancreatic Cancer Metabolism: A Central Role for
+KRAS-Driven Processes. Nat. Cancer 2024, 5, 85−99.
+(35) Anelli, P. L.; Lattuada, L.; Lorusso, V.; Schneider, M.; Tournier,
+H.; Uggeri, F. Contrast Agents for MRI: High Relaxivity, Tissue-
+Specific Gadolinium Chelates. MAGMA 2001, 12, 114−120.
+(36) Liu, J.; Xu, J.; Zhou, J.; Zhang, Y.; Guo, D.; Wang, Z.
+Multifunctional Nanocarriers for Targeted Delivery of Therapeutics
+to Pancreatic Cancer. Int. J. Nanomed. 2017, 12, 1113−1126.
+(37) Doiron, A. L.; Chu, K.; Ali, A.; Brannon-Peppas, L. Preparation
+of Nanoparticle-Based Systems for Efficient Targeting in Cancer
+Therapy. Proc. Natl. Acad. Sci. U.S.A. 2008, 105, 17232−17237.
+(38) Chen, X.; Wang, T. Applications of Nanotechnology in
+Agriculture and Food Systems. J. Integr. Agric. 2019, 18, 1035−1041.
+(39) Moghimi, S. M.; Hunter, A. C.; Andresen, T. L. Factors
+Controlling the Pharmacokinetics, Biodistribution, and Efficacy of
+Nanomedicines. Annu. Rev. Pharmacol. Toxicol. 2012, 52, 481−503.
+(40) Toy, R.; Hayden, E.; Shoup, C.; Baskaran, H.; Karathanasis, E.
+The Role of Nanotechnology in Overcoming Cancer Drug Resistance.
+Nanotechnology 2011, 22, 115101.
+(41) Sahoo, S. K.; Panyam, J.; Prabha, S.; Labhasetwar, V. Residual
+Drug Delivery and Cancer Cell Targeting by Nanoparticles. J.
+Controlled Release 2002, 82, 105−114.
+(42) Hobbs, S. K.; Monsky, W. L.; Yuan, F.; Roberts, W. G.; Griffith,
+L.; Torchilin, V. P.; Jain, R. K. Regulation of Transport Pathways in
+Tumors: The Role of Nanoparticle Size. Proc. Natl. Acad. Sci. U.S.A.
+1998, 95, 4607−4612.
+(43) Jain, R. K. Normalizing Tumor Vasculature with Anti-
+Angiogenic Therapy: A New Paradigm for Combination Therapy.
+Sci. Am. 1994, 271, 58−65.
+(44) Sanità, G.; Carrese, B.; Lamberti, A. Targeting Tumor
+Vasculature with Nanomedicine: Progress and Challenges. Front.
+Mol. Biosci. 2020, 26, 587012.
+(45) Yamauchi, K.; Kuroki, S.; Fujii, K.; Ando, I. Development of
+High-Resolution NMR Techniques Using Chemical Physics. Chem.
+Phys. Lett. 2000, 324, 435−439.
+(46) Nagarajan, R.; Ramadan, S.; Thomas, M. A. Applications of
+Magnetic Resonance Spectroscopy in Cancer Metabolism Studies.
+Magn. Reson. Insights 2010, 2010, 1−9.
+(47) Majumder, S.; Roy, D.; Roy, K.; Kundu, M.; Choudhury, S.;
+Roy, M. N. Thermophysical Properties of Ionic Liquids and Their
+Applications. J. Chem. Eng. Data 2023, 68, 2957−2981.
+(48) Petrini, M.; Lokerse, W. J. M.; Mach, A.; Hossann, M.; Merkel,
+O. M.; Lindner, L. H. Thermal Targeting of Tumors Using
+Liposomes: Challenges and Perspectives. Int. J. Nanomed. 2021, 16,
+4045−4061.
+(49) He, C.; Hu, Y.; Yin, L.; Tang, C.; Yin, C. Biodegradable
+Polymeric Nanoparticles for Targeted Drug Delivery. Biomaterials
+2010, 31, 3657−3666.
+(50) Gruber, S. Cytotoxicity Testing and ISO 10993−5 Guidelines.
+Johner Inst. Blog, https://blog.johner-institute.com/regulatory-
+affairs/cytotoxicity-testing/, (Accessed December 4, 2024).
+(51) Di Gregorio, E.; Ferrauto, G.; Gianolio, E.; Aime, S. Gd.
+Loading by Hypotonic Swelling: An Efficient and Safe Route for
+Cellular Labeling. Contrast Media Mol. Imaging 2013, 8 (6), 475−486.
+(52) Schroeder, A.; Heller, D. A.; Winslow, M. M.; Dahlman, J. E.;
+Pratt, G. W.; Langer, R.; Jacks, T.; Anderson, D. G. Treating
+Metastatic Cancer with Nanotechnology. Nat. Rev. Cancer 2012, 12
+(1), 39−50.
+(53) George, A.; Shah, P. A.; Shrivastav, P. S. Natural Biodegradable
+Polymers Based Nano-Formulations for Drug Delivery: A Review. Int.
+J. Pharm. 2019, 561, 244−264.
+(54) Zhao, Y.; Ye, F.; Brismar, T. B.; Li, X.; et al. Multimodal
+Imaging of Pancreatic Ductal Adenocarcinoma Using Multifunctional
+Nanoparticles as Contrast Agents. ACS Appl. Mater. Interfaces 2020,
+12 (48), 53665−53681.
+(55) Barenholz, Y. Doxil®The First FDA-Approved Nano-Drug:
+Lessons Learned. J. Controlled Release 2012, 160 (2), 117−134.
+ACS Nanoscience Au
+pubs.acs.org/nanoau
+Article
+https://doi.org/10.1021/acsnanoscienceau.5c00010
+ACS Nanosci. Au 2025, 5, 184−195
+195

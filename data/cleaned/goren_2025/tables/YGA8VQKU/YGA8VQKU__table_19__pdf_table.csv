@@ -1,0 +1,92 @@
+0,1
+ACS Biomaterials Science & Engineering,pubs.acs.org/journal/abseba Article
+"that smaller nanoparticles are better able to enter cells, and","size, surface charge, and hydrophobicity/hydrophilicity of the"
+their higher specific surface area interacts more with cellular,"particles, and it also depends on mechanisms of diffusion and"
+"components, causing greater cellular damage.44 Others have","Endocytosis is an energetic process that endocytosis.50,51"
+found that smaller nanoparticles are more biocompatible41 or,involves membrane bending (Eb) and stretching (Es) energies
+"cause more pathological changes,45 but these outcomes were",and the energy of nanoparticle−membrane adhesion (Ead)
+based on different nanomaterials and various cell lines.46 One,such that the total energy is Et = Eb + Es + Ead. The total Gibbs
+possible source of toxicity in this study is the presence of trace,free energy of particle uptake can also be described by eq 1.52
+organic solvents remaining in the larger nanoparticles due to,2 2
+,2 a z
+,2 2 2 B
+"incomplete solvent evaporation during synthesis. However, a",2 E a z w k a z = + +
+,i kjjj y {zzz i kjjjjj y {zzzzz tot ad el 0 2
+,A a
+deeper investigation on the mechanisms of cell damage is,0 (1)
+needed.47,
+,"where a is the nanoparticle diameter (100, 150, 200, and 250"
+Surface-modified nanoparticles showed toxicity that was,
+,nm); z is the degree of cellular uptake (z = 0 and z = 2 means
+dependent on the surface modification and particle concen-,
+,"no uptake and complete uptake, respectively53); is the κB"
+"tration (Figure 5B). Compared to bare PLGA-150, ALG-",
+,membrane bending stiffness; is the nanoparticle− wad
+"PLGA-150 particles, which are negatively charged, showed no",
+,membrane adhesion strength; γ0 is the baseline surface tension
+toxicity over the entire range tested�up to 1000 μg/mL.,
+,is the elastic expansion modulus; and with a spherical cell; kel
+CHS-PLGA-150 and PEG-PLGA-150 were observed to have a,
+,"is the cell area before cell deformation. In this model, the A0"
+"stronger toxic effect on cells, likely due to their positive and",
+,effect of nanoparticle size on uptake depends on the
+"near-neutral charges, respectively, allowing for electrostatic",
+,competition between the bending and stretching energies.
+interactions with the negatively charged cell membranes. Other,
+,"For small nanoparticles, membrane deformation mainly"
+studies suggest that PEG has a distinct effect on cellular activity,
+,"affects the bending energy, with higher bending energies"
+that is mainly caused by changes in the osmolality of the cell,
+,"resulting in lower uptake. Above a certain size, membrane"
+medium.48 Additional studies are required to determine the,
+,"deformation is dominated by stretching, and high stretching"
+exact mechanism of this induced toxicity. Since all groups,
+,energy decreases uptake. Table 2 shows the calculated energy
+showed greater than 70% viability at NP concentrations up to,
+"100 μg/mL, this concentration was used for further NP uptake",
+,Table 2. Uptake Energy for PLGA NPs of the Sizes Used in
+studies.,
+,This Study
+Quantitative Uptake of Nanoparticles by HCECs. To,
+investigate the effect of physicochemical properties on cellular,
+,NPs size (nm) energy index (Etot/κB)
+"uptake of NPs, HCECs were incubated with nanoparticles for",
+,100 74.3
+"20, 40, and 60 min at 37 °C. Results shown in Figure 6 are",
+,150 326.9
+calculated as the ratio of the uptake fluorescent intensity,
+,200 1037.4
+relative to the total fluorescent intensity of nanoparticles,
+,250 2562.7
+"initially added to the cells. According to Figure 6A, the",
+majority of nanoparticle uptake occurred during the first 20,
+,
+min of incubation with the plateau possibly occurring due to,"for nanoparticle uptake assuming wad/κB = 1400 μm−2, γ0/κB ="
+the cells.49 According to 20 min results,
+uptake saturation of,"1.25 × 10−3 nm−2, kel/κB = 5 nm−2,52 and A0 = 1161.5 μm−2,"
+"shown in Figure 6B, the 100 nm PLGA NPs had significantly",which was measured from images of HCECs using ImageJ
+higher uptake than the other bare NPs and there is no,"software. According to the calculated energy indices, the high"
+"significant difference between the uptake of 150, 200, and 250",uptake of 100 nm PLGA nanoparticles could be explained by
+"nm particles (p-value > 0.05). Furthermore, among the ∼150",the relatively lower energy barrier. These results are consistent
+"nm particles with different surface chemistries, PEG-PLGA",with published studies which report that among particles
+NPs showed significantly higher uptake compared to the bare,"(PLGA and polystyrene) ranging from 50 nm to 10 μm, 100"
+"150 nm PLGA NPs (p-value < 0.05). Additionally, while",nm NPs showed the highest uptake into different cell lines
+alginate and chitosan increased particle uptake compared to,"including rabbit conjunctiva epithelial, HT-29, and Caco-2"
+"bare PLGA NPs, it was not statistically significant. Figure 6C",cells.52−54 It is worth mentioning that in the total energy
+shows the uptake values as a function of the measured zeta,"equation for nanoparticle uptake, nanoparticle size is just one"
+"potential of the particles. In general, it appeared that uptake",of the contributing factors in the uptake process and other
+"was increased for particles that were more neutral in charge,",factors such as nanoparticle surface charge would also affect
+regardless of the surface chemistry. The observed behavior,the deformation and adhesion interactions between the
+could be due to the influences of surface charge on cell,nanoparticles and cell membrane.
+membrane interactions and particle stability. The more,"To visualize the uptake of the nanoparticles, cells were"
+negatively charged particles were observed to be stable in the,"stained to identify cytoplasmic membranes (red), nuclei"
+simulated ocular fluid but likely had unfavorable interactions,"(blue), and nanoparticles (green) and imaged using"
+with the negatively charged cell membranes�reducing overall,"fluorescence microscopy, as shown in Figure 7. The images"
+uptake compared to more neutral particles. While greater,confirmed successful uptake of NPs with many appearing to be
+cellular interactions would be expected of the highly positive,localized near the nuclei.
+"CHS-PLGA-150 NPs, these showed significant aggregation in",Effect of Temperature on Nanoparticle Uptake. A
+"the simulated ocular fluid, which would lead to increase in",common approach to study the energy dependency of NP
+particle size and decrease in total surface area available�both,uptake is to evaluate it at varying temperatures.55−58 In this
+of which could negatively impact cellular uptake.,"work, uptake studies were conducted at 4, 20, and 37 °C, and"
+A survey of literature shows that cellular uptake of,the results expressed as relative to the fluorescent uptake
+nanoparticles depends on a variety of parameters including,"intensity of each particle type at 37 °C. As shown in Figure 8,"

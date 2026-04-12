@@ -1,0 +1,161 @@
+"R. Dash et al.                                                                                                                                                                                                                                    
+International Journal of Pharmaceutics 640 (2023) 123009"
+"Table 2 
+6.4. Histopathological investigation of heart and aorta"
+"In silico docking binding score of AT, CU and AT-CU with the atherosclerotic"
+"receptors.  
+Aorta were isolated and collected on the scarification day after the"
+"completion of the treatment schedule. A thin section of the aorta was 
+Name of the receptor 
+Name of the PDB file 
+CU 
+AT 
+AT-CU"
+"dissected from the mice, fixed overnight in 4% formaldehyde-0.1 M PBS"
+"CASP3 
+2XYG  
+(cid:0) 5.9  
+(cid:0) 6.6  
+(cid:0) 8.9"
+"(pH  7.4),  and  then  embedded  in  paraffin.  The  tissues  were  put  into 
+MAPK3 
+4QTB  
+(cid:0) 7.8  
+(cid:0) 8.8  
+(cid:0) 9.7"
+"MAPK1 
+6SLG  
+(cid:0) 7.8  
+(cid:0) 8.7  
+(cid:0) 10.2 
+paraffin-containing  holders  and  dried  after  being  cleaned  with  phos-"
+"AKT1 
+6CCY  
+(cid:0) 6.9  
+(cid:0) 8.7  
+(cid:0) 9.5"
+"phate buffer saline solution to eliminate any remaining formalin solu-"
+"NOS2 
+3E7G  
+(cid:0) 8.5  
+(cid:0) 9.1  
+(cid:0) 10.5"
+"tion. A microtome (MICROM, Germany) was used to slice the tissue into"
+"PTGS2 
+5IKR  
+(cid:0) 7.1  
+(cid:0) 7.2  
+(cid:0) 12.8"
+"ultra-thin sections that were then stained with hematoxylin and eosin"
+"(HE) stain. Microscopic examination of prepared slides was performed"
+"to analyze pathomorphological changes in the heart and aorta specimen 
+AT-CU conjugate was successful."
+"(Nagatake et al., 2021)."
+"7.2.
+In silico docking analysis"
+"6.5.
+Statistical analysis"
+"Molecular  docking  study  helped  in  detailed  understanding  on  the"
+"To evaluate and compare the outcomes of several tests and conduct 
+predicted interaction sites between the ligands and receptor molecules"
+"statistical  analysis,  the  one-way  ANOVA  test  (also  known  as  Tukey 
+which may be beneficial in describing the potential mechanism of ac-"
+"multiple  comparisons)  was  used.  A  p-value  greater  than  0.05  was 
+tion. The binding conformation with the lowest energy was investigated"
+"regarded as significant. For statistical analysis, Origin software (Origin 
+out  of  nine  possible  conformations  for  each  ligand-receptor  combina-"
+"pro 8.5) was used. The data were displayed as mean + SD. 
+tion. Table 2 includes information on the binding affinity scores of the"
+"protein–ligand complex. The docking score value obtained for AT-CU is"
+"compared with the value obtained for AT and CU. Based on the results, it 
+7. Results"
+"was determined that AT-CU exhibited a higher binding affinity value for"
+"all  the  receptors.  In  accordance  with  the  in  silico  binding  interaction 
+7.1.
+Synthetic AT-CU conjugate characterization"
+"analysis,  the  PTGS2  receptor  showed  the  lowest  binding  energy  i.e"
+"(cid:0) 12.8 Kcal/mol. The possible binding poses of AT, CU and AT-CU with 
+The yielded final product i.e AT-CU conjugate (1.595gm (67%)) was"
+"the PTGS2 receptor’s active site have been visually inspected and are 
+reddish orange in color. The results of 1H NMR, and C13 NMR for AT-CU"
+"depicted in Fig. 2. 
+were: 1H NMR (700 MHz, DMSO) δ 8.54 (d, J = 7.4 Hz, 1H), 8.33 (d, J ="
+"7.3 Hz, 1H), 8.14 (d, J = 6.0 Hz, 1H), 7.56 (s, 1H), 7.53 (d, J = 12.5 Hz,"
+"1H), 7.33 (s, 6H), 7.56–7.33 (s, 1H), 7.12 (d, J = 7.5 Hz, 1H), 7.07 (t, J =
+7.3. Molecular dynamic simulation study"
+"7.7 Hz, 2H), 6.84 (s, 6H), 6.77 (d, J = 9.8 Hz, 1H), 6.73 (m, J = 8.4 Hz,"
+"2H), 5.65 (d, J = 7.8 Hz, 1H), 4.55 (t, J = 5.4 Hz, 1H), 4.10 (t, J = 5.5 Hz, 
+The MDS approach was employed to understand the theoretical dy-"
+"3H), 3.88 (m, J = 14.3 Hz, 1H), 3.83 (d, 5H), 3.59 (s, 2H), 3.36 (s, 4H), 
+namics of protein structure in the presence of solvent. Apo-PTGS2, and"
+"3.26 (s, 6H), 3.20 (d, J = 11.1 Hz, 6H), 3.04 (s, 3H), 2.51 (s, 5H), 1.72 
+PTGS2-compound bound systems were solvated in presence of water to"
+"(m, J = 12.0 Hz, 5H), 1.62 (m, J = 9.4, 3.9 Hz, 3H), 1.51 (d, J = 12.4 Hz, 
+investigate the internal motions of the systems, conformational changes"
+"3H), 1.37 (d, J = 6.8 Hz, 2H), 1.31 (s, 1H), 1.25 (m, 5H), 1.16 (d, J =
+and binding stability of each compound with PTGS2. All of the systems"
+"11.7  Hz,  2H),  1.05 (dd,  J  = 20.9,  9.9  Hz,  3H),  13C  NMR  (176  MHz, 
+underwent a 50 ns simulation, and it was found that they were all stable"
+"DMSO)  δ  183.66  (s),  171.16  (s),  149.84  (s),  148.45  (s),  142.77  (s), 
+and had reached a plateau. Additionally, around 50 ns, we discovered"
+"139.89  (s),  138.91  (s), 136.41  (s), 135.90  (s),  135.29  (s), 133.90  (s), 
+the consistency with the experimental results; therefore we ended the"
+"129.58  (s),  128.90  (s), 128.11  (s), 127.76  (s),  126.76  (s), 125.85  (s), 
+simulation  there.  The  MD  trajectories  of  PTGS2  complexes  attained"
+"123.55 (d, J = 14.4 Hz), 123.44 (s), 119.85 (s), 117.99 (s), 116.15 (s), 
+equilibrium  after  25  ns  (Fig.  3A).  The  Root  Mean  Square  Deviation"
+"115.76 (s), 108.18 (s), 107.95 (s), 106.66 (s), 98.56 (s), 66.25 (s), 65.83 
+(RMSD) value for all the systems ranged between 2 and 3 Å. The average"
+"(s), 56.15 (s), 51.79 (s), 50.88 (s), 45.58 (s), 40.94 (s), 40.58 (s), 40.47 
+RMSD  value  calculated  on  the  protein  backbone  for  the  system  Apo-"
+"(s), 40.34 (s), 40.22 (s), 40.10 (s), 39.98 (s), 39.86 (s), 39.74 (s), 39.62 
+PTGS2,  AT-PTGS2,  CU-PTGS2  and  AT-CU-PTGS2  are  2.25  Å,  2.53  Å,"
+"(s), 33.81 (s), 30.20 (s), 25.32 (s), 25.01 (d, J = 32.5 Hz), 22.84 (s), 
+2.40 Å and 2.19 Å. CU-PTGS2 complex showed a gradual increase in"
+"22.60  (s),  20.14  (s)  and  19F  NMR  (377  MHz,  DMSO)  δ  (cid:0) 113.16  (s), 
+RMSD values during the simulation whereas AT-PTGS2 maintained its"
+"(cid:0) 113.48 (s), (cid:0) 113.80 (s), (cid:0) 114.00 (s), (cid:0) 114.04 (s), (cid:0) 114.43 (s). The 
+RMSD  values  (Fig.  3A).  The  average  RMSD  value  calculated  on  the"
+"1H,  and  13C  NMR figures  of  AT-CU  were provided  in  supplementary 
+ligand  backbone  for  the  AT-PTGS2,  CU-PTGS2  and  AT-CU-PTGS2  is"
+"figures  (Fig.  S-1,  and  Fig.  S-2).  The  mass  spectroscopy  of  AT-CU  has 
+1.09 Å, 1.32 Å and 3.5 Å.The synthesized AT-CU-PTGS2 complex was"
+"depicted a very small peak at 923.5401 g/mol. The fragmented peaks of 
+fairly  stable  and  showed  minimal  deviation  (Fig.  3B).  The  root  mean"
+"the AT-CU molecule to AT and CU were observed at 575.3154 g/mol and 
+square fluctuations (RMSF) focuses on conformational fluctuations of a"
+"306  g/mol  respectively  (supplementary  figure,  Fig.  S-3).  In  HPTLC 
+protein that occur during simulation and provides insights into fluctu-"
+"analysis,  the  developed  plate  was  dried  and  the  retention  factor  (Rf) 
+ations at the residue level. The RMSF of the protein cα in the binding site"
+"values of the developed spots were visualized at 254 nm and 366 nm 
+were analyzed. The average RMSF value calculated on the protein cα"
+"(Fig. S-4). A clear distinct peak was observed for the AT-CU. From the 
+residues for the system Apo-PTGS2, AT-PTGS2, CU-PTGS2 and AT-CU-"
+"HPTLC analysis the Rf value was found to be 0.38, 0.60, and 0.55 for AT, 
+PTGS2 is 1.11 Å, 1.07 Å, 1.08 Å and 1.00 Å. We observed that the in"
+"CU and AT-CU respectively. The melting point was checked for AT, CU, 
+case  of  AT-CU  the  number  of  residues  involved  in  ligand  interaction"
+"◦
+◦"
+"and AT-CU and the results were found to be at 170–182 
+increased  and  reduced  protein  fluctuations  (Fig.  3C).  Average  ligand 
+C, 164–189 
+C,"
+"◦"
+"RMSF was also calculated and found to be 0.51 Å, 0.53 Å and 2.3 Å. 
+and  117–149 
+C  respectively.  The  FTIR  analysis  reflected  the  charac-"
+"teristics sharp peak at 1738 cm
+Finally,  intermolecular  hydrogen  bonds  formed  between  ligand  and 
+(cid:0) 1  confirmed the ester linkage (supple-"
+"protein residues during the simulation were examined. PTGS2 interac-
+mentary figure, Fig. S-5) between the AT and CU and the conjugate was"
+"tion  with AT,  CU  and  AT-CU  ranged  from  1  to  7,  1  to  8  and  7  to  18 
+adhered  to  most  of  the  parent  peaks  of  AT  and  CU  (supplementary"
+"respectively (Fig. 3D). Hence, it is evident form the MD simulation re-
+figure, Fig. S-5). The UV spectrophotometric estimation displayed a peak"
+"at the maximum wavelength of 414 nm (supplementary figure, Fig. S-6). 
+sults that AT-CU binds to PTGS2 with higher affinity."
+"The  interactions  between  the  ligand  and  protein  were  detected 
+Together, the analyses mentioned above proved that the synthesis of the"

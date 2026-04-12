@@ -1,0 +1,951 @@
+Vol.:(0123456789)
+AAPS PharmSciTech (2025) 26:112
+https://doi.org/10.1208/s12249-025-03089-5
+RESEARCH ARTICLE
+Formononetin‑Loaded PLGA Large Porous Microparticles
+via Intratracheal Instillation for Bleomycin‑Induced Pulmonary Fibrosis
+Treatment
+Hongting Liu1,2 · Yao Sun1,2 · Shihao Cai1 · Conglu Zhao1,2 · Xiang xu1,2 · Aiguo Xu3 · Honggang Zhou1 · Cheng Yang1 ·
+Xiaoting Gu1 · Xiaoyu Ai1 
+Received: 10 November 2024 / Accepted: 11 March 2025 / Published online: 17 April 2025
+© The Author(s), under exclusive licence to American Association of Pharmaceutical Scientists 2025
+Abstract
+Idiopathic pulmonary fibrosis (IPF) is a progressive lung disease of unknown cause, with few effective therapies available
+and high mortality rates. Our preceding research indicated that formononetin (FMN) could improve the symptoms of the
+bleomycin-induced pulmonary fibrosis and be a promising drug against IPF. In this study, an inhalable formononetin-loaded
+poly(lactic-co-glycolic) acid (PLGA) large porous microspheres (FMN-PLGA-MSs) was prepared by the method of emul-
+sion solvent evaporation. SEM showed that FMN-PLGA-MSs were loose particles existing many pores on the surfaces,
+and the measured mean geometric diameter was more than 10 µm. The encapsulation efficiency (EE) and drug loading
+efficiency (DL) were 87.72 ± 6.34% and 4.18 ± 0.30%. FMN in FMN-PLGA-MSs could be rapidly released within 2 h and
+sustainably released for 21 d. Cell tests and q-RT-PCR tests showed that FMN could inhibit the activation of fibroblasts
+and the deposition of extracellular matrix (ECM) by acting on the TGF-β1/Smad3 signaling pathway. FMN-PLGA-MSs
+showed higher antifibrotic effects than free FMN oral administration in the pulmonary fibrosis models of mice, remarkably
+improving pulmonary function, decreasing hydroxyproline levels, and attenuating lung injuries. By formulating formonon-
+etin into microsphere preparations, its solubility can be significantly enhanced, enabling effective pulmonary drug delivery.
+This approach not only improves lung targeting but also reduces systemic toxicity. Additionally, it facilitates superior lung
+deposition and extends the retention time of the formononetin within the lungs. Taken together, FMN-PLGA-MSs may be
+a promising inhaled medication for the treatment of IPF.
+Keywords  Formononetin · Large porous microspheres · Poly(lactic-co-glycolic) acid · Pulmonary fibrosis
+Introduction
+Idiopathic pulmonary fibrosis (IPF) is often considered
+the most severe and lethal progressive interstitial lung dis-
+ease [1, 2]. It is distinguished by excessive proliferation of
+fibroblasts and deposition of extracellular matrix (ECM),
+which accelerates patient morbidity and mortality [3, 4]. The
+median survival of patients with IPF is 2.8 years [5]. Due to
+our limited understanding of the underlying pathobiologi-
+cal mechanisms of IPF, the treatment presents a series of
+clinical challenges [6]. The Food and Drug Administration
+(FDA) has only approved two drugs, pirfenidone and nin-
+tedanib, for the treatment of mild and moderate IPF [7, 8].
+However, these two drugs are only capable of mitigating the
+decline in pulmonary function among patients, yet they fail
+to enhance survival rates and are associated with significant
+Hongting Liu, Yao Sun and Shihao Cai contributed equally to this
+work.
+ *	 Cheng Yang
+
+yangcheng@nankai.edu.cn
+ *	 Xiaoting Gu
+
+guxiaoting@nankai.edu.cn
+ *	 Xiaoyu Ai
+
+aixiaoyu@nankai.edu.cn
+1
+Present Address: State Key Laboratory of Medicinal
+Chemical Biology, College of Pharmacy and Tianjin Key
+Laboratory of Molecular Drug Research, Nankai University,
+Tianjin 300350, China
+2
+Tianjin International Joint Academy of Biomedicine, Tianjin,
+China
+3
+Department of Respiratory and Critical Care Medicine,
+The First Affiliated Hospital of Zhengzhou University,
+Zhengzhou 450000, China
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 2 of 14
+side effects [9, 10]. There is an urgent need to find innovative
+and effective solutions and therapeutic agents.
+In order to better combat IPF, many new drugs have been
+researched and developed. For instance, vardenafil [11, 12],
+ifetroban [13], and yinfenidone hydrochloride [14] have all
+shown potential as therapeutic agents. Furthermore, extracts
+obtained from natural plants, such as curcumin [15] and
+gypenosides [16], have shown good anti-pulmonary fibrosis
+therapeutic effects both in vitro and in vivo.
+Formononetin (FMN), an isoflavone compound with low
+polarity, is isolated from natural plants, such as red clover
+[17]. FMN is typically abundant in a variety of edible plants,
+such as Mongolian Milkvetch Root, Liquorice, Reticulate
+Millettia, and others. The active compound has demonstrated
+extensive practical value in the fields of food, cosmetics and
+medicine [18–20]. According to Juliana et al., formononetin
+has shown good qualities in anticancer, anti-inflammatory,
+antimicrobial and antiviral, antioxidant, neuroprotective, and
+so on [21]. It has been reported that formononetin can sig-
+nificantly improve renal fibrosis, liver fibrosis and cardiac
+fibrosis, and so on [22–24]. Our previous research found that
+FMN could improve the symptoms of IPF and might be a
+promising drug for IPF treatment. However, the poor water
+solubility and the low bioavailability of FMN limit its clini-
+cal application. Improving the water solubility and targeting
+of FMN through formulation methods is a feasible approach
+to enhance its IPF treatment effect.
+Pulmonary administration is an effective drug delivery
+system for the therapy of lung diseases, such as asthma,
+emphysema, pneumonia, pulmonary fibrosis, and chronic
+obstructive pulmonary disease [25]. Compared with tra-
+ditional oral and injection, pulmonary drug delivery is an
+efficient delivery method for lung diseases. It can produce
+a high local concentration at the lung pathological site with
+smaller drug dose and lower systemic side effects [26].
+With the aim of reducing drug phagocytosis by mac-
+rophages and improving the therapeutic effect when applied
+via pulmonary administration, various formulations have
+been designed [27]. Compared with other novel drug deliv-
+ery systems, microspheres can achieve higher drug loading
+and better sustained-release effect [28]. So far, more than
+10 types of microsphere preparations have been introduced
+to the market. Porous microspheres are a dosage form for
+pulmonary drug delivery. In the process of microsphere
+preparation, an appropriate amount of pore-forming agent
+is added to produce drug-loaded porous microspheres with
+low density (less than 0.4 g/mL) and large geometric par-
+ticle size (greater than 10 μm) [29]. These characteristics
+can avoid phagocytosis by pulmonary macrophages, slow
+down particle aggregation, deposit the drug in the deep
+lung, provide sustained release, and improve the thera-
+peutic effect of the drug [30–32]. The carrier for prepar-
+ing porous microspheres includes biodegradable polymers
+such as polylactic-co-glycolic acid (PLGA), albumin, algi-
+nate, chitosan, and lipids such as dipalmitoylphosphatidyl-
+choline and triglycerides, among which PLGA is the most
+commonly used carrier [33–35]. PLGA is a functional poly-
+mer compound synthesized from polylactic acid (PLA) and
+polyglycolic acid (PGA) in a certain proportion. It has good
+biocompatibility, degradability, non-toxicity, and has been
+approved by the FDA for drug delivery [36, 37]. Hu et al.
+prepared PLGA porous microspheres containing curcumin
+for pulmonary delivery in the treatment of IPF. In vivo
+studies showed that curcumin-loaded porous microspheres
+significantly reduced the hydroxyproline content induced
+by bleomycin, decreased the synthesis of collagen I, and
+exhibited better anti-fibrotic effects compared to curcumin
+powder [15]. Porous microspheres loading RLX (Recombi-
+nant Human Relaxin-2) was prepared by Liu, which not only
+reduced excessive collagen deposition, but also reversed
+fibrosis to some extent [38].
+Here, we prepared FMN-loaded PLGA large porous
+microspheres (FMN-PLGA-MSs) for the treatment of ble-
+omycin-induced pulmonary fibrosis via intratracheal instil-
+lation. We characterized the FMN-PLGA-MSs, including
+particle size, drug loading efficiency and encapsulation effi-
+ciency. Furthermore, we evaluated the in vitro release pro-
+files and uptake by fibroblasts. We revealed the anti-fibrotic
+theory of FMN through measuring a train of in vitro mark-
+ers in the cells, including Collagen I, α-SMA, fibronectin.
+Finally, the therapeutic efficacy and in vivo biodistribution of
+FMN-PLGA-MSs were demonstrated in a mouse model. It
+is expected that FMN-PLGA-MSs can provide a new thera-
+peutic strategy for IPF treatment.
+Materials and Methods
+Materials
+Formononetin (FMN) was obtained from Dalian Meilun
+Biotechnology Co., Ltd. (Dalian, China). Poly(lactic-co-gly-
+colic) acid (PLGA, lactide/glycolide, 50:50, mol/mol, MW
+10 kDa) was purchased from Jinan Daigang Biomaterial Co.,
+Ltd. (Shandong, China). Polyvinyl alcohol (PVA) was pur-
+chased from the Aladdin Industrial Corporation (Shanghai,
+China). Ammonium bicarbonate (AB) was obtained from
+the Sinopharm Chemical Reagent Co., Ltd. (Beijing, China).
+Coumarin-6 was reserved from Shanghai Chemical Reagent
+Co., Ltd. (Shanghai, China). Cyanine 7 (Cy7) was purchased
+from Tianjin Solomon Biotechnology Co., Ltd. (Tianjin,
+China). Fetal bovine serum (FBS), Roswell Park Memo-
+rial Institute (RPMI) 1640 medium, Dulbecco’s Modified
+Eagle’s Medium (DMEM), 4',6-diamidino-2-phenylindole
+(DAPI) and mounting medium (antifading) were purchased
+from Solarbio Technology Co., Ltd. (Beijing, China).
+
+AAPS PharmSciTech (2025) 26:112
+Page 3 of 14 
+112
+Bleomycin hydrochloride for injection was manufactured by
+Nippon Kayaku Co., Ltd. (Tokyo, Japan). All other reagents
+and solvents were of analytical grade or high-performance
+liquid chromatographic (HPLC) grade.
+Animals
+Male C57BL/6 J mice (20–25 g) were purchased from Vital
+River Laboratory Animal Technology Co., Ltd. (Beijing,
+China). All mice were fed and well-cared for under patho-
+gen-free conditions at Nankai University. The animal-related
+experiments were conducted under the approval of the Nan-
+kai University Laboratory Animal Center Committee.
+Preparation of FMN‑PLGA‑MSs
+FMN-PLGA-MSs were prepared by water-in-oil-in-water
+(w/o/w) emulsion solvent evaporation method [39]. In short,
+PLGA (120 mg) and FMN (6 mg) were dissolved in dichlo-
+romethane (2 mL), then an AB solution (1% w/v, 1 mL) was
+added and was mixed uniformly. The resulting solution was
+sonicated in the ice bath at an amplitude of 60% for 2 min
+(1 s, 1 s) to form the W/O emulsion. Then, the PVA solution
+(1% w/v, 18 mL) was mixed into the emulsion. The above
+system was homogenized using high shear homogenizer for
+1 min at 3500 rpm to attain W/O/W emulsions. Organic
+solvent was evaporated at room temperature under mechani-
+cal stirring at a speed of 250 rpm overnight. At last, the
+final emulsions were centrifuged at 6000 rpm for 10 min
+and were lyophilized by freeze dryer (LGJ-12A, Beijing
+Sihuan Qihang Technology). The cold well temperature was
+−65℃ and the vacuum degree was 0–20 Pa in the freeze-
+drying process. Blank PLGA MSs without FMN, as well as
+Coumarin-6-loaded and Cy7-loaded PLGA MSs, were also
+elaborated using the same method as mentioned above.
+Characterization of FMN‑PLGA‑MSs
+The volume diameters of FMN-PLGA-MSs were measured
+by dynamic light scattering (Mastersizer 2000, Malvern,
+U.K.).
+The crystal states of samples (including FMN-PLGA-
+MSs, blank PLGA-MSs, PLGA, free FMN, the physical
+mixture of FMN/PLGA, and the physical mixture of FMN/
+blank PLGA-MSs) were measured by X-ray diffractometer
+(XRD, Ultima IV, Rigaku, Japan). For XRD analysis, a cop-
+per tube was powered at 40 kV and 40 mA, the scanning θ
+range was from 10° to 40° at a trend of 0.02°, and the scan-
+ning step size was 10°/min.
+The preliminary surface morphology of FMN-PLGA-
+MSs were observed using optical microscope (Ni-E, Nikon,
+Japan) at 40 × magnification. The detailed surface morpholo-
+gies of FMN-PLGA-MSs were observed by field-emission
+scanning electron microscope (SEM, JSM-7800F, JEOL,
+Japan). The FMN-PLGA-MSs were fixed on a metal plate
+using a double-sided conductive adhesive and then sputter-
+coated with gold under in a vacuum. Images were captured
+under a voltage of 15.0 kV and a beam curret of 200 nA.
+The FT-IR spectrometer (TENSOR 37, BRUKER, Ger-
+many) was used to evaluate the interaction between polymer
+and drug. Besides, FT-IR spectra of PLGA, FMN-PLGA-
+MSs, blank PLGA-MSs, FMN powders, the physical mix-
+ture of FMN/PLGA and the physical mixture of FMN/blank
+PLGA-MSs were recorded in the range of 4000 to 400 ­cm−1.
+Drug Loading and Encapsulation Efficiency
+Drug loading (DL) and encapsulation efficiency (EE) were
+measured through spectrophotometry. FMN-PLGA-MSs
+were dissolved in a mixture solvent (DMSO: MeOH = 1:9,
+v/v) and then were quantified by using a UV–Visible spec-
+trophotometer (UV-3802S, unico, China) at 301 nm. The DL
+and EE were calculated as follows:
+In Vitro Release Study
+The drug release profiles of FMN from FMN-PLGA-
+MSs were studied using the dialysis method. Free FMN
+and FMN-PLGA-MSs were individually placed in 2 mL
+of simulated lung fluid (SLF) [40]. These solutions were
+transferred to dialysis bags (molecular weight cut-off of
+12,000–14,000 Da), which were suspended in 40 mL of SLF.
+The suspensions were placed on a thermostatic oscillator at
+37 ± 0.5℃ and 150 rpm. 1 mL SLF was sampled to detect the
+drug concentration by UV–vis spectrophotometry at 301 nm
+and 1 mL of fresh SLF was added back at pre-specified time
+points.
+Cell Culture and Cytotoxicity Test
+DMEM supplemented with 10% (v/v) FBS was used to incu-
+bate mouse lung fibroblast cells (MLg, ATCC) and mouse
+fibroblast cells (NIH-3T3, ATCC) at 37°C and 5% ­CO2. The
+inhibitory activities of FMN-PLGA-MSs on these cells were
+determined using the methyl thiazolyl tetrazolium (MTT)
+assay. Both MLg and NIH-3T3 cells were pre-seeded into
+96-well plates at the number of 1 × ­104 cells per well and
+cultured for 24 h. After that, various concentrations (1.25,
+2.5, 5, 10, 20, 40, 80 and 160 μM) of Nintedanib solution
+DL(%) = Encapsulated drug weight
+MSs weight
+× 100%
+EE(%) = Actual encapsulated drug weight
+Theoretical drug weight
+× 100%
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 4 of 14
+(NDNB), FMN solution (FMN) and FMN-PLGA-MSs were
+added and incubated for another 24, 48, and 72 h. After
+exposure to 20 μL of MTT reagent (5 mg/mL working solu-
+tion) for 4 h at 37°C and 5% ­CO2, 150 µL DMSO was added
+to each well to solubilize the formazan crystal. A microplate
+reader (Thermo Fisher Scientific, Massachusetts, USA) was
+used to measure the absorbance of each well at 570 nm.
+Inhibition of the TGF‑β1/Smad3 Signaling Pathway
+CAGA-NIH3T3 cells in the logarithmic growth phase were
+seeded into 96-well plates with a cell suspension of 5000
+cells/mL at 100 μL per well. Then the cells were cultured
+overnight. The serum was removed from the cells, which
+were starved for 24 h. Subsequently, 5 μM free FMN, 10 μM
+free FMN, 5 μM FMN-PLGA-MSs and 10 μM FMN-PLGA-
+MSs were added, each with 5 ng/mL TGF-β1 to stimulate
+cells. After 18 h of cultivation, the expression intensity of
+luciferase was detected using the Luciferase assay kit and
+the results were analyzed.
+Wound‑Healing Assays
+MLg cells or NIH-3T3 cells were incubated in six-well
+plates, and were treated with FMN, FMN-PLGA-MSs and/
+or TGF-β1 in DMEM with 1‰ FBS. When cells reached
+a suitable confluence, 200 µL pipette tips scraped the cell
+layer to form a wound. Then the wounds were observed at
+0, 12, 24 and 48 h by the optical microscope (Nikon, Tokyo,
+Japan).
+Real‑Time Quantitative PCR
+TRIzol Reagent was used to isolate RNA from MLg cells.
+The cDNA was synthesized using FastKing gDNA Dispel-
+ling RT SuperMix (TIANGEN Biotech, China). Based on
+the manufacturer's protocol, qRT-PCR was performed using
+the UNICON® Qpcr SYBR Green Master Mix (Yeasen Bio-
+tech, China). Sequences of the specific primer sets are as
+follows:
+GAPDH: forward primer: 5’-AAC​TTT​GGC​ATT​GTG​
+GAA​GG-3’; reverse primer: 5’-ACA​CTT​GGG​GGT​AGG​
+AAC​A-3’;
+α-SMA: forward primer: 5’-GCT​GGT​GAT​GAT​GCT​
+CCC​A-3’; reverse primer: 5’-GCC​CAT​TCC​AAC​CAT​
+TAC​TCC-3’;
+Fibronectin: forward primer: 5’-GTG​TAG​CAC​AAC​TTC​
+CAA​TTA​CGA​A-3’; reverse primer: 5’-GGA​ATT​TCC​
+GCC​TCG​AGT​CT-3’;
+Collagen I: forward primer: 5’-CCA​AGA​AGA​CAT​CCC​
+TGA​AGTCA-3’; reverse primer: 5’-TGC​ACG​TCA​TCG​
+CAC​ACA​ −3’.
+Cellular Uptake
+We used qualitative and quantitative methods to evalu-
+ate the uptake of FMN-PLGA-MSs in MLg and NIH-3T3
+cells. For the qualitative method, we seeded MLg and NIH-
+3T3 cells onto slides, and placed in 24-well plates, then
+cultured at 37°C and 5% ­CO2 for 24 h. Further, cells were
+incubated with Coumarin-6-loaded PLGA microspheres
+(C6-PLGA-MSs) for different time periods (0, 5, 15, 30,
+60, and 120 min). After incubation, the plates were rinsed
+three times with PBS, fixed with 4% (w/v) paraformaldehyde
+for 10 min at room temperature, and then stained with DAPI
+for another 3 min. Finally, the cells were rinsed three times
+with PBS. At last, the coverslips were mounted and observed
+using confocal laser scanning microscopy (TCS SP8, Leica,
+German).
+For the quantitiative method, we measured the cellular
+uptake of C6-PLGA-MSs using the flow cytometric. MLg
+and NIH-3T3 cells were incubated with C6-PLGA-MSs for
+30, 60, and 120 min. After incubation, the cells were rinsed
+with PBS, trypsinized for 2 min, harvested, rinsed again with
+PBS and analyzed by LSR Fortessa flow cytometer (Becton,
+Dickinson and Company, USA).
+Animal Study
+We used the method of endotracheal injection of bleomycin,
+as described previously, to establish a mouse model of pul-
+monary fibrosis. Healthy mice were given saline as a control.
+The BLM (2 U) solutions, which were dissolved in normal
+saline, were endotracheally injected into the other mice for
+7 consecutive days to induce pulmonary fibrosis.
+Forty-two mice were equally divided into seven groups:
+control group, model group, 100 mg/kg NDNB group,
+50 mg/kg FMN group, 100 mg/kg FMN group, 25 mg/kg
+FMN-PLGA-MSs group and 50 mg/kg FMN-PLGA-MSs
+group. On the 7th day after bleomycin injection, the mice
+in the NDNB group and the free FMN group were orally
+administered NDNB and FMN, respectively. The mice in
+the FMN-PLGA-MSs group were instilled intratrache-
+ally with FMN-PLGA-MSs, using a small animal aerosol
+drug delivery device (HY-LWH03, YSKD Bio-technology,
+Beijing, China). No treatment was administered for the
+control group. On the 14th day, pulmonary function was
+tested in the mice. The high-resolution lung scans in mice
+were acquired using computed tomography (CT, NEMO II,
+PINGSHENG Healthcare Inc., China), and analyzed with
+three-dimensional (3D) finite element algorithms (AVA-
+TAR3, PINGSENG Healthcare Inc., China). Then the mice
+were sacrificed after the completion of the bleomycin treat-
+ment. The lung tissues were fixed by immersion in the 4%
+(w/v) paraformaldehyde solution and further investigated
+using H&E and Masson staining.
+
+AAPS PharmSciTech (2025) 26:112
+Page 5 of 14 
+112
+In Vivo Biodistribution Study
+We used Cy7 as a fluorescence probe to observe the bio-
+distribution of PLGA microspheres in mice. We adminis-
+tered Cy7-loaded PLGA MSs (Cy7-PLGA-MSs) to mice
+by intratracheal instillation [41]. Mice were sacrificed at
+various time points (0.5, 2, 12, 24, and 48 h) to collect the
+major organs, such as heart, lungs, liver, spleen and kid-
+neys. Then we recorded the fluorescence signals using an
+IVIS image system (IVIS Spectrum, PerkinElmer, USA)
+with excitation/emission wavelengths of 700/760 nm [42].
+Statistical Analysis
+We used GraphPad Prism 8.0.1 software for statistical
+analysis. The two-tailed Student’s t-test was utilized to
+compare differences between the two groups, and one-way
+analysis of variance (ANOVA) was used for comparisons
+among three or more groups. Results were expressed as
+mean ± standard deviation. In all analysis, p < 0.05 was
+ranked implying important.
+Results and Discussion
+Preparation and Characterization
+FMN-PLGA-MSs were prepared by the water-in-oil-in-
+water (W/O/W) emulsion solvent evaporation method [43].
+Figure 1a-b showed that the FMN-PLGA-MSs suspension
+was uniform, and the lyophilized FMN-PLGA-MSs were
+white loose particles. The final FMN-PLGA-MSs con-
+tained 4.18 ± 0.30% FMN with a high encapsulation effi-
+ciency of 87.72 ± 6.34%.
+The FMN-PLGA-MSs had a mean geometric size of
+3.335 µm (D10), 13.041 μm (D50), 25.339 µm (D90) and
+a span of 1.687 (Fig. 1c).
+The microscopic image showed the homogeneous size
+distribution of FMN-PLGA-MSs (Fig. 1d). The scanning
+electron microscopy (SEM) images showed that FMN-
+PLGA-MSs were uniform in size and smooth spheres with
+a lot of pores and channels on the surfaces (Fig. 1e).
+X-ray diffraction (XRD) analysis showed that the crys-
+tal structure of the FMN-PLGA-MSs was distinct from
+those of the free FMN powder, the physical mixture of
+FMN and blank PLGA microspheres, and the physical
+mixture of FMN and PLGA (Fig. 1f). Free FMN existed
+in a crystalline form, and the specific peaks of FMN were
+still present in the physical mixtures but absent in the
+FMN-PLGA-MSs. This indicated that FMN adopted an
+amorphous form with high dispersion within the PLGA
+microspheres due to the high solubility of FMN in PLGA
+polymers [44].
+Figure 1g revealed the FTIR spectra of free FMN, free
+PLGA, and FMN-PLGA-MSs in the wavenumber range
+of 400–4000 ­cm−1. In the spectra of FMN-PLGA-MSs,
+the characteristic peaks of FMN at 1247 ­cm−1 (vAr-O) and
+1637 ­cm−1 (vC=O) were not clearly visible, the character-
+istic peak of PLGA at 2950 ­cm−1 (vC–H) and 1760 ­cm−1
+(vC=O) were clearly observed and significantly increased,
+the above results indicated that FMN was encapsulated into
+PLGA MSs successfully. The increased peak intensity might
+be attributed to hydrophobic interaction between the ben-
+zene ring of FMN and the long carbon chain of PLGA. The
+hydrophobic interaction was beneficial for the compatibility
+between the carrier material and drug, and stabilized the
+FMN-PLGA-MSs.
+Release Test
+The drug release of FMN from FMN-PLGA-MSs in the SLF
+was investigated (Fig. 1h). The results showed that FMN
+released from FMN-PLGA-MSs for more than 21 days.
+FMN-PLGA-MSs showed a faster FMN release than free
+FMN in the early stage. Briefly, about 11.40% of FMN
+was rapidly released from FMN-PLGA-MSs in the first
+2 h, whereas the initial burst release of free FMN was only
+3.40%. Furthermore, FMN in FMN-PLGA-MSs was sustain-
+ably released until the 21st day, and nearly 67.23% FMN was
+released from FMN-PLGA-MSs.
+The rapid release of FMN from FMN-PLGA-MSs may
+be attributed to the highly exposed FMN adsorbed on the
+surface of FMN-PLGA-MSs, where numerous channels pro-
+vide release pathways for the embedded FMN [36, 45]. The
+rapid release allows FMN to enter lung tissues and achieve
+sufficient accumulation before the FMN-PLGA-MSs are
+phagocytized by lung macrophages. In addition, the release
+behavior of MN-PLGA-MSs has a certain relationship with
+the particle size. When the microspheres have a wide parti-
+cle size distribution, the smaller microspheres aggravate the
+burst release of the group, while the larger microspheres lead
+to a slow release rate in the later stage, which makes the slow
+release effect. Slow-release properties of FMN-PLGA-MSs
+could be beneficial for long-term treatment of IPF.
+Cytotoxicity Test
+Fibroblast cytotoxicity using the MTT assay is commonly
+used for testing the safety of drugs [46]. MLg and NIH-3T3
+cells were incubated with different concentrations of free
+NDNB, free FMN and FMN-PLGA-MSs for 24 h, 48 h, and
+72 h [47].
+As shown in Fig. 2a, the proliferation of MLg cells and
+NIH-3T3 cells decreased with the prolongation of action
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 6 of 14
+
+AAPS PharmSciTech (2025) 26:112
+Page 7 of 14 
+112
+time and the increase of drug concentration, the cell via-
+bility of NDNB group, FMN group and FMN-PLGA-MSs
+group decreased accordingly. When drug concentrations
+exceeded 10 μM in MLg cells and 5 μM in NIH-3T3 cells,
+NDNB group had the lower proliferation than FMN group
+and FMN-PLGA-MSs group, and the cell viability in
+FMN group and FMN-PLGA-MSs group was similar. For
+MLg cells, the cell viability rates of NDNB group, FMN
+group and FMN-PLGA-MSs group were 20.57%, 42.88%
+and 61.77% at 24 h, 14.87%, 59.94% and 59.18% at 48 h,
+20.12%, 55.82% and 83.97% at 72 h, respectively. For NIH-
+3T3 cells, the cell viability rates of NDNB group, FMN
+group and FMN-PLGA-MSs group were 37.15%, 61.96%
+and 76.03% at 24 h, 12.11%, 75.48% and 77.61% at 48 h,
+11.85%, 73.97% and 82.48% at 72 h, respectively. These
+results indicate that FMN and FMN-PLGA-MSs are safer
+than NDNB for MLg and NIH-3T3 cells, suggesting that
+FMN has higher systemic safety.
+Inhibition of the TGF‑β1/Smad3 Signaling Pathway
+TGF-β1 is known as one of the most important pro-fibrotic
+factors and plays an important central regulatory role in the
+pathogenesis of pulmonary fibrosis. The luciferase reporter
+gene assay was used to detect the effect of FMN and FMN-
+PLGA-MSs in inhibiting TGF-β1/Smad3 signaling pathway.
+In Fig. 2b, TGF-β1 group had the highest fluorescence inten-
+sity, indicating CAGA-NIH-3T3 cells expressed the highest
+amount of luciferase protein. After treatment with FMN and
+FMN-PLGA-MSs for 18 h, the fluorescence intensity signifi-
+cantly decreased, indicating that FMN could inhibit TGF-β1/
+Smad3 signaling pathway to downregulate luciferase pro-
+tein and improve cell fibrosis. Moreover, the fluorescence
+reduction intensity of high-dose 5 μM FMN group and 5 μM
+FMN-PLGA-MS group was higher than that of low-dose
+10 μM FMN group and 10 μM FMN-PLGA-MS group,
+respectively, indicating that FMN improved CAGA-NIH3T3
+cells fibrosis in a dose-dependent manner. The fluorescence
+reduction intensities of FMN-PLGA-MSs groups were not
+as high as those of FMN groups, which might be due to
+the sustained-release effect of microspheres. The release of
+FMN from microspheres took time, while FMN-PLGA-MSs
+treatment of cells only lasted for 18 h, and FMN was not
+released in time, resulting in less therapeutic effect than free
+FMN groups.
+Inhibition on Migration of Lung Fibroblasts
+Wound healing assay is often used to verify the effects of
+free FMN and FMN-PLGA-MSs on TGF-β1-induced fibro-
+blast migration. In Fig. 2c-d, compared with TGF-β1 group,
+both FMN and FMN-PLGA-MSs inhibited fibroblast migra-
+tion, with the FMN-PLGA-MSs group exhibiting a stronger
+inhibitory effect than the FMN group. These results indicate
+that FMN and FMN-PLGA-MSs can inhibit the migration
+of fibrotic MLg cells and NIH-3T3 cells, consistent with
+the above results of the TGF-β1/Smad3 signaling pathway
+inhibition.
+Attenuation on TGF‑β1‑activated Lung Fibroblasts
+TGF-β1 is the most critical fibroblast-activating factor
+involved in the development of IPF. To investigate whether
+FMN could inhibit TGF-β1-induced fibroblast activation,
+we cultured MLg cells with TGF-β1 (5 ng/mL), free FMN
+(10 μM, 20 μM) and FMN-PLGA-MSs (10 μM, 20 μM)
+to evaluate the gene expression levels of α-SMA, colla-
+gen I and fibronectin. As shown in Fig. 3, both free FMN
+and FMN-PLGA-MSs could decrease TGF-β1-stimulated
+mRNA expression levels of a-SMA, collagen I and fibronec-
+tin. These results suggest that FMN act was an inhibitor
+of TGF-β1/Smad3 signaling pathway, which could inhibit
+TGF-β1-induced myofibroblast activation and downregulate
+extracellular matrix deposition. After encapsulating FMN
+into FMN-PLGA-MSs, it had the same inhibitory effect
+on TGF-β1-induced lung fibroblast activation and ECM
+accumulation.
+Fibroblasts Uptake
+Figure 4a showed the uptake of PLGA microspheres by MLg
+and NIH-3T3 cells at different time points. MLg and NIH-
+3T3 cells were incubated with C6-PLGA-MSs. Coumarin-6
+shows green fluorescence under a fluorescence microscope
+indicating the location of PLGA microspheres. At 5 min,
+slight green fluorescence appeared in MLg and NIH-3T3
+cells, indicating that C6-PLGA-MSs could be taken up by
+fibroblasts in a short time. With the extension of incubation
+time, the fluorescence signal in cells gradually increased,
+and strong fluorescence appeared at 120 min. Meanwhile,
+flow cytometry results showed the similar trend (Fig. 4b).
+The above results indicate that PLGA microspheres can be
+rapidly and efficiently internalized by fibroblasts [48].
+In addition, the release profile of FMN-PLGA-MSs
+revealed that approximately 11.4% of FMN was released
+Fig. 1   Characterization of FMN-loaded PLGA microspheres (FMN-
+PLGA-MSs). a Appearance of FMN PLGA W/O/W emulsions.
+b Appearance of lyophilized FMN-PLGAMSs. c the particle size
+of FMN-PLGA-MSs. d Microscopic picture of FMN-PLGA-MSs
+(40 ×). e SEM images of FMN-PLGA-MSs. f XRD analysis of the
+crystallinity of FMN-PLGAMSs and raw materials (FMN, PLGA,
+FMN–PLGA physical mixture, blank PLGA MSs, or FMN–blank
+PLGA MSs physical mixture). g FTIR spectra of FMN—PLGA-MSs
+and raw materials (FMN, PLGA, FMN–PLGA physical mixture,
+blank PLGA MSs, or FMN–blank PLGA MSs physical mixture). h
+In vitro release of FMN from FMN powders and FMN-PLGAMSs in
+the SLF (n = 3)
+◂
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 8 of 14
+Fig. 2   Toxicity and effect of fbroblasts. a Inhibition of NDNB, FMN
+and FMN-PLGA-MSs on MLg and NIH-3T3 cells (n = 6). b Inhibi-
+tory effects of FMN and FMN-PLGA-MSs on TGF-β1 signaling
+pathway (n = 4). c Migration of FMN and FMN-PLGA-MSs on Mlg
+cells (n = 3). d Migration of FMN and FMN-PLGA-MSs on NIH-3T3
+cells (n = 3)
+
+AAPS PharmSciTech (2025) 26:112
+Page 9 of 14 
+112
+from the microspheres within the first 120 min. The released
+FMN has the potential to reach lung tissues and exert anti-
+fibrosis effects [49].
+Pulmonary Fibrosis Inhibition
+The therapeutic effect of FMN-PLGA-MSs was evaluated
+in a mouse model of BLM-induced pulmonary fibrosis [50].
+Seven days after injection of bleomycin, mice were adminis-
+tered different doses of FMN (50, 100 mg/kg), FMN-PLGA-
+MSs (25, 50 mg/kg), or NDNB (100 mg/kg) once daily.
+Based on their safety profile in mice, FMN-PLGA-MSs
+were instilled intratracheally into the lungs using a small
+animal aerosol drug delivery device at lower doses. NDNB,
+a drug used to treat IPF, was used as a positive control.
+Fourteen days after BLM injection, changes in pulmonary
+function were measured (Fig. 5a). BLM-induced pulmonary
+fibrosis led to an increase in inspiratory resistance (Ri) and
+expiratory resistance (Re), along with an obvious reduc-
+tion in forced vital capacity (FVC) and dynamic compli-
+ance (Cdyn). The pulmonary function of FMN-PLGA-MSs
+(50 mg/kg) treated mice was significantly improved, with
+effects superior to those of free FMN (50, 100 mg/kg) and
+comparable to those of NDNB (100 mg/kg). In addition,
+Fig. 5b showed that the FMN-PLGA-MSs could alleviate
+BLM-induced weight loss compared with the model group,
+the alleviative effects of FMN-PLGA-MSs (25, 50 mg/kg)
+were similar to those of NDNB (100 mg/kg).
+The lung tissue structure of healthy mice was continuous
+and intact, and the alveoli had distinct alveolar cavities. The
+lung tissue of the BLM-induced mice was damaged and the
+alveolar walls were thickened. As shown in Fig. 5c, FMN-
+PLGA-MSs (50 mg/kg) were significantly decreased the
+percentage of fibrotic areas and hydroxyproline (HYP), the
+reduction effect was similar to NDNB [51]. The same results
+were observed in CT images (Fig. 5d). The lungs in saline
+group appeared dark on CT images and the 3D image simu-
+lated by the software was a complete lung tissue, indicating
+the pulmonary function was good. The gray area of the lungs
+in BLM group increased significantly and the 3D image sim-
+ulated by the software was a defective lung tissue, indicating
+the lung had developed fibrosis seriously. Compared with the
+BLM group, the gray area of the lungs in FMN groups and
+FMN-PLGA-MSs groups showed significant improvements,
+and the 3D images were more complete. It was worth noting
+that FMN-PLGA-MSs (50 mg/kg) with intratracheal instil-
+lation had the best therapeutic effect, which were similar to
+NDNB (100 mg/kg).
+Furthermore, HE staining and Masson staining were
+used to detect the histological status of lung tissue samples
+[52]. HE staining (Fig. 6a) revealed that FMN-PLGA-MSs
+(50 mg/kg) had a stronger effect in attenuating the varia-
+tion in alveoli and the infiltration of pulmonary interstitial
+mesenchyme. Besides, the mice lungs in the FMN-PLGA-
+MSs (50 mg/kg) group had similar to the that of healthy
+mice. Masson staining (Fig. 6b) showed similar results. Both
+FMN-PLGA-MSs and FMN reduced collagen production
+in lung tissues in IPF, with the former exhibiting a stronger
+effect.
+The above results suggest that FMN-PLGA-MSs even at
+a lower dose, show a stronger anti-pulmonary fibrosis effect
+than free FMN.
+Fig. 3   FMN attenuates TGF-β1-induced activation of lung fibro-
+blasts. Mouse lung fibroblast (MLg) cells were exposed to TGF-β1
+(5 ng/mL) and/or FMN (10 µM, 20 µM) for 24 h, and quantitative
+real-time PCR was used to detect the mRNA levels of Fn, αSMA
+and Collagen I. Data was noted as the means ± SD, n = 3. ##P < 0.01,
+###P < 0.001, ####P < 0.0001 vs control group, *P < 0.05, **P < 0.01,
+***P < 0.001, ****P < 0.0001 vs TGF-β1 group
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 10 of 14
+Fig. 4   Uptake of the Coumarin-6 loaded PLGA MSs by Mlg and NIH3T3 cells. a qualitative analysis with fluorescent microscopy, b quantita-
+tive analysis using flow cytometer (n = 3)
+
+AAPS PharmSciTech (2025) 26:112
+Page 11 of 14 
+112
+In Vivo Biodistribution Study
+In vivo imaging system was used to detect the tissue distribution
+of microspheres in vivo, mice were administered with Cy7-
+PLGA-MSs by intratracheal instillation, the results were shown
+in Fig. 7. The fluorescence intensity indicates that Cy7-PLGA-
+MSs had higher concentrations in the lung tissue compared to
+other major organs such as the heart, liver and kidneys. Almost
+all of the fluorescence was observed in the lungs, while other
+major organs showed low or almost no fluorescence intensity.
+The retention time of Cy7-PLGA-MSs in the lungs was up to
+48 h, which was conducive to targeted treatment of pulmonary
+fibrosis, reducing side effects. However, the retention time of
+Cy7-PLGA-MSs in the lungs was not long enough. Next, we
+will focus on improving the pulmonary release of FMN and
+prolonging its pulmonary retention time, so as to reduce the
+frequency of administration and improve patient adaptability.
+Conclusion
+In this study, we prepared FMN-PLGA-MSs using a water-
+in-oil-in-water (W/O/W) emulsion solvent evaporation
+method for the delivery of FMN to the lungs through
+Fig. 5   FMN-PLGA-MSs improves pulmonary function in BLM-
+treated mice. a Pulmonary function parameters in mice, including
+Expiratory resistance (Re), Inspiratory resistance (Ri), Forced vital
+capacity (FVC), and dynamic compliance (Cdyn). b Average body
+weight of mice in each group. c HYP contents of lung tissues in mice
+and the percentage of fibrotic areas. d Lung CT images of mice in
+each group. Data was noted as the means ± SD, n = 6. ###P < 0.001,
+##P < 0.01, #P < 0.05  vs control group, ***P < 0.001, **P < 0.01,
+*P < 0.05 vs TGF-β1 group
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 12 of 14
+intratracheal instillation. FMN-PLGA-MSs displayed large
+porous structure, appropriate aerodynamic diameters, high
+drug loading capacity and encapsulation efficiency. The
+rapid release of FMN from FMN-PLGA-MSs allowed the
+drug to enter lung fibroblast cells prior to phagocytosis.
+Free FMN can inhibit TGF-β1-induced lung fibroblast
+migration, myofibroblast activation and extracellular
+matrix deposition through the TGF-β1/Smad3 signaling
+pathway, and FMN-PLGA-MSs have a similar effect. Fur-
+thermore, FMN encapsulated by PLGA microspheres and
+delivered by intratracheal instillation not only reduced
+the drug dosage, but also improved the therapeutic effi-
+cacy in the treatment of bleomycin-induced pulmonary
+fibrosis compared to systemic administration of free drug.
+The therapeutic effect of intratracheal instillation of FMN-
+PLGA-MSs is similar to that of oral Nintedanib. In conclu-
+sion, compared to free FMN, FMN-PLGA-MSs can pro-
+mote the deposition and distribution of drugs in the lungs
+via intratracheal instillation, allowing drugs directly act on
+the lesion site, reduce systemic drug distribution, thereby
+reducing the drug dose, improving therapeutic effect, and
+avoiding the systemic side effects associated with tradi-
+tional systemic administration. FMN-PLGA-MSs may be
+a promising candidate for the treatment of IPF.
+Author Contribution  Hongting Liu, Yao Sun, Shihao Cai: conduct-
+ing the experiments and data acquisition and analysis and writing the
+Fig. 6   Histochemical analysis. a Lung tissue sections were stained with hematoxylin–eosin (HE). b Masson Trichrome staining. Scale
+bar = 50 μm
+Fig. 7   The tissues (heart, lungs, liver, spleen, and kidneys) fluorescence intensity of mouse treated with inhalable Cy7-PLGA-MSs for 0.5, 2, 12,
+24, and 48 h (n = 3)
+
+AAPS PharmSciTech (2025) 26:112
+Page 13 of 14 
+112
+original manuscript. Conglu Zhao, Xiang xu: assisting in the experi-
+ments, data acquisition, and literature search. Aiguo Xu, Honggang
+Zhou, Cheng Yang, Xiaoting Gu, Xiaoyu Ai: review, editing, guidance,
+and supervision.
+Funding  This work was supported by the National Natural Science
+Foundation of China (81803458), the Fundamental Research Funds
+for the Central Universities, Nankai University (63231203), the
+Fundamental Research Funds for the Central Universities, Nankai
+University (63231200) and Natural Science Foundation of Tianjin
+(22JCQNJC01610).
+Data Availability  The data of "Formononetin-Loaded PLGA Large
+Porous Microparticles via Intratracheal Instillation for Bleomy-
+cin-Induced Pulmonary Fibrosis Treatment" can be used by AAPS
+PharmSciTech.
+Declarations 
+Conflict of Interest  The authors declare no competing interests.
+References
+	 1.	 Quinn C, Wisse A, Manns ST. Clinical course and manage-
+ment of idiopathic pulmonary fibrosis. Multidiscip Respir Med.
+2019;14:35.
+	 2.	 Nureki SI, Tomer Y, Venosa A, Katzen J, Russo SJ, Jamil S, Bar-
+rett M, Nguyen V, Kopp M, Mulugeta S, Beers MF. Expression
+of mutant Sftpc in murine alveolar epithelia drives spontaneous
+lung fibrosis. J Clin Invest. 2018;128(9):4008–24.
+	 3.	 King TE, Pardo A, Selman M. Idiopathic pulmonary fibrosis. The
+Lancet. 2011;378(9807):1949–61.
+	 4.	 George PM, Patterson CM, Reed AK, Thillai M. Lung trans-
+plantation for idiopathic pulmonary fibrosis. Lancet Respir Med.
+2019;7(3):271–82.
+	 5.	 Sharif R. Overview of idiopathic pulmonary fibrosis (IPF) and
+evidence-based guidelines. Am J Manag Care. 2017;23(11
+Suppl):S176-s182.
+	 6.	 Spagnolo P, Sverzellati N, Rossi G, Cavazza A, Tzouvelekis A,
+Crestani B, Vancheri C. Idiopathic pulmonary fibrosis: An update.
+Ann Med. 2015;47(1):15–27.
+	 7.	 Meyer KC, Decker CA. Role of pirfenidone in the management
+of pulmonary fibrosis. Ther Clin Risk Manag. 2017;13:427–37.
+	 8.	 Bargagli E, Piccioli C, Rosi E, Torricelli E, Turi L, Piccioli E,
+Pistolesi M, Ferrari K, Voltolini L. Pirfenidone and Nintedanib in
+idiopathic pulmonary fibrosis: Real-life experience in an Italian
+referral centre. Pulmonology. 2019;25(3):149–53.
+	 9.	 Suri GS, Kaur G, Jha CK, Tiwari M. Understanding idiopathic
+pulmonary fibrosis - Clinical features, molecular mechanism and
+therapies. Exp Gerontol. 2021;153:111473.
+	10.	 Mora AL, Rojas M, Pardo A, Selman M. Emerging therapies for
+idiopathic pulmonary fibrosis, a progressive age-related disease.
+Nat Rev Drug Discovery. 2017;16(11):755–72.
+	11.	 Dunkern TR, Feurstein D, Rossi GA, Sabatini F, Hatzelmann A.
+Inhibition of TGF-beta induced lung fibroblast to myofibroblast
+conversion by phosphodiesterase inhibiting drugs and activators
+of soluble guanylyl cyclase. Eur J Pharmacol. 2007;572(1):12–22.
+	12.	 Bourne MH Jr, Kottom TJ, Hebrink DM, Choudhury M, Leof
+EB, Limper AH. Vardenafil activity in lung fibrosis and in vitro
+synergy with nintedanib. Cells. 2021;10(12):3502.
+	13.	 Suzuki T, Kropski JA, Chen J, Carrier EJ, Chen X, Sher-
+rill TP, Winters NI, Camarata JE, Polosukhin VV, Han W,
+Rathinasabapathy A, Gutor S, Gulleman P, Sabusap C, Banovich
+NE, Tanjore H, Freeman ML, Tada Y, Young LR, Gokey JJ,
+Blackwell TS, West JD. Thromboxane-prostanoid receptor sign-
+aling drives persistent fibroblast activation in pulmonary fibrosis.
+Am J Respir Crit Care Med. 2022;206(5):596–607.
+	14.	 Lin R, Zhang Z, Cao S, Yang W, Zuo Y, Yang X, Zhang J, Xu J,
+Li J, Wang X. The development of HEC-866 and its analogues for
+the treatment of idiopathic pulmonary fibrosis. RSC Med Chem.
+2021;12(7):1222–31.
+	15.	 Hu Y, Li M, Zhang M, Jin Y. Inhalation treatment of idiopathic
+pulmonary fibrosis with curcumin large porous microparticles. Int
+J Pharm. 2018;551(1–2):212–22.
+	16.	 Liu S, Yang Q, Dong B, Qi C, Yang T, Li M, He S, Liu B,
+Wu J. Gypenosides Attenuate Pulmonary Fibrosis by Inhib-
+iting the AKT/mTOR/c-Myc Pathway. Front Pharmacol.
+2021;12:806312.
+	17.	 Dluhošová J, Ištvánek J, Nedělník J, Řepková J. Red Clover (Tri-
+folium pratense) and zigzag clover (T. medium) - a picture of
+genomic similarities and differences. Front Plant Sci. 2018;9:724.
+	18.	 Liu Y, Liu J, Wu KX, Guo XR, Tang ZH. A rapid method for
+sensitive profiling of bioactive triterpene and flavonoid from
+Astragalus mongholicus and Astragalus membranaceus by
+ultra-pressure liquid chromatography with tandem mass spec-
+trometry. J Chromatogr B Analyt Technol Biomed Life Sci.
+2018;1085:110–8.
+	19.	 Jiang D, Rasul A, Batool R, Sarfraz I, Hussain G, Mateen Tahir
+M, Qin T, Selamoglu Z, Ali M, Li J, Li X. Potential anticancer
+properties and mechanisms of action of formononetin. Biomed
+Res Int. 2019;2019:5854315.
+	20.	 Frozza C, Santos DA, Rufatto LC, Minetto L, Scariot FJ, Echever-
+rigaray S, Pich CT, Moura S, Padilha FF, Borsuk S, Savegnago L,
+Collares T, Seixas FK, Dellagostin O, Roesch-Ely M, Henriques
+JAP. Antitumor activity of Brazilian red propolis fractions against
+Hep-2 cancer cell line. Biomed Pharmacother. 2017;91:951–63.
+	21.	 Dutra JM, Espitia PJ, Batista RA. Formononetin: Biological
+effects and uses–A review. Food Chem. 2021;359:129975.
+	22.	 Qian L, Xu H, Yuan R, Yun W, Ma Y. Formononetin ameliorates
+isoproterenol induced cardiac fibrosis through improving mito-
+chondrial dysfunction. Biomed Pharmacother. 2024;170:116000.
+	23.	 Zhu B, Ni Y, Gong Y, Kang X, Guo H, Liu X, Li J, Wang L. Formon-
+onetin ameliorates ferroptosis-associated fibrosis in renal tubular epi-
+thelial cells and in mice with chronic kidney disease by suppressing
+the Smad3/ATF3/SLC7A11 signaling. Life Sci. 2023;315:121331.
+	24.	 Zhao Q, Bai J, Chen Y, Liu X, Zhao S, Ling G, Jia S, Zhai F,
+Xiang R. An optimized herbal combination for the treatment of
+liver fibrosis: Hub genes, bioactive ingredients, and molecular
+mechanisms. J Ethnopharmacol. 2022;297:115567.
+	25.	 Kuzmov A, Minko T. Nanotechnology approaches for inhalation
+treatment of lung diseases. J Control Release. 2015;219:500–18.
+	26.	 Patton JS, Byron PR. Inhaling medicines: delivering drugs
+to the body through the lungs. Nat Rev Drug Discovery.
+2007;6(1):67–74.
+	27.	 Ghumman M, Dhamecha D, Gonsalves A, Fortier L, Sorkhdini
+P, Zhou Y, Menon JU. Emerging drug delivery strategies for idi-
+opathic pulmonary fibrosis treatment. Eur J Pharm Biopharm.
+2021;164:1–12.
+	28.	 Xu Y, Liu H, Song L. Novel drug delivery systems targeting oxi-
+dative stress in chronic obstructive pulmonary disease: a review.
+J Nanobiotechnol. 2020;18(1):145.
+	29.	 Torchilin VP. Micellar nanocarriers: pharmaceutical perspectives.
+Pharm Res. 2007;24(1):1–16.
+	30.	 Zhang T, Zhu L, Li M, Hu Y, Zhang E, Jiang Q, Han G, Jin Y.
+Inhalable Andrographolide-β-cyclodextrin Inclusion Complexes
+for Treatment of Staphylococcus aureus Pneumonia by Regulating
+Immune Responses. Mol Pharm. 2017;14(5):1718–25.
+
+AAPS PharmSciTech (2025) 26:112
+112 
+Page 14 of 14
+	31.	 Vishwa B, Moin A, Gowda DV, Rizvi SM, Hegazy WA, Abu Lila
+AS, Khafagy ES, Allam AN. Pulmonary targeting of inhalable
+moxifloxacin microspheres for effective management of tubercu-
+losis. Pharmaceutics. 2021;13(1):79.
+	32.	 Zhang H, Hao LZ, Pan JA, Gao Q, Zhang JF, Kankala RK, Wang
+SB, Chen AZ, Zhang HL. Microfluidic fabrication of inhalable
+large porous microspheres loaded with H(2)S-releasing aspirin
+derivative for pulmonary arterial hypertension therapy. J Control
+Release. 2021;329:286–98.
+	33.	 Ashrafizadeh M, Ahmadi Z, Mohamadi N, Zarrabi A, Abasi S,
+Dehghannoudeh G, Tamaddondoust RN, Khanbabaei H, Moham-
+madinejad R, Thakur VK. Chitosan-based advanced materi-
+als for docetaxel and paclitaxel delivery: Recent advances and
+future directions in cancer theranostics. Int J Biol Macromol.
+2020;145:282–300.
+	34.	 Haddad R, Alrabadi N, Altaani B, Li T. Paclitaxel drug delivery
+systems: focus on nanocrystals’ surface modifications. Polymers
+(Basel). 2022;14(4):658.
+	35.	 Guagliardo R, Pérez-Gil J, De Smedt S, Raemdonck K. Pulmonary
+surfactant and drug delivery: Focusing on the role of surfactant
+proteins. J Control Release. 2018;291:116–26.
+	36.	 Lu T, He F, Ye J. Physicochemical Properties, In Vitro Degra-
+dation, and Biocompatibility of Calcium Phosphate Cement
+Incorporating Poly(lactic-co-glycolic acid) Particles with Dif-
+ferent Morphologies: A Comparative Study. ACS Omega.
+2021;6(12):8322–31.
+	37.	 Su Y, Zhang B, Sun R, Liu W, Zhu Q, Zhang X, Wang R, Chen
+C. PLGA-based biodegradable microspheres in drug deliv-
+ery: recent advances in research and application. Drug Deliv.
+2021;28(1):1397–418.
+	38.	 Qiu S, Fu X, Shi Y, Zang H, Zhao Y, Qin Z, Lin G, Zhao X.
+Relaxin-Loaded Inhaled Porous Microspheres Inhibit Idiopathic
+Pulmonary Fibrosis and Improve Pulmonary Function Post-Ble-
+omycin Challenges. Mol Pharm. 2023;20(8):3947–59.
+	39.	 Zhu L, Li M, Liu X, Du L, Jin Y. Inhalable oridonin-loaded
+poly(lactic-co-glycolic)acid large porous microparticles for in situ
+treatment of primary non-small cell lung cancer. Acta Pharmaceu-
+tica Sinica B. 2017;7(1):80–90.
+	40.	 Ming Zeng X, Martin GP, Marriott C, Pritchard J. The use of lac-
+tose recrystallised from carbopol gels as a carrier for aerosolised
+salbutamol sulphate. Eur J Pharmaceutics Biopharmaceutics.
+2001;51(1):55–62.
+	41.	 Xue J, Zhao Z, Zhang L, Xue L, Shen S, Wen Y, Wei Z, Wang L,
+Kong L, Sun H, Ping Q, Mo R, Zhang C. Neutrophil-mediated
+anticancer drug delivery for suppression of postoperative malig-
+nant glioma recurrence. Nat Nanotechnol. 2017;12(7):692–700.
+	42.	 Tang J, Li J, Li G, Zhang H, Wang L, Li D, Ding J. Spermidine-
+mediated poly(lactic-co-glycolic acid) nanoparticles containing
+fluorofenidone for the treatment of idiopathic pulmonary fibrosis.
+Int J Nanomedicine. 2017;12:6687–704.
+	43.	 Hao L, Jiang Y, Zhang R, Zhang N, Yang Y, Gao Y, Song Y.
+Preparation and in vivo/in vitro characterization of Ticagrelor
+PLGA sustained-release microspheres for injection. Des Mono-
+mers Polym. 2021;24(1):305–19.
+	44.	 Chen W, Palazzo A, Hennink WE, Kok RJ. Effect of Particle Size
+on Drug Loading and Release Kinetics of Gefitinib-Loaded PLGA
+Microspheres. Mol Pharm. 2017;14(2):459–67.
+	45.	 Liu Z, Chen H, Lv F, Wang J, Zhao S, Li Y, Lu W. Sequential
+release of paclitaxel and imatinib from core–shell microparticles
+prepared by coaxial electrospray for vaginal therapy of cervical
+cancer. Int J Mol Sci. 2021;22(16):8760.
+	46.	 Coward WR, Saini G, Jenkins G. The pathogenesis of idiopathic
+pulmonary fibrosis. Ther Adv Respir Dis. 2010;4(6):367–88.
+	47.	 Kim KK, Kugler MC, Wolters PJ, Robillard L, Galvez MG, Brum-
+well AN, Sheppard D, Chapman HA. Alveolar epithelial cell mes-
+enchymal transition develops in vivo during pulmonary fibrosis
+and is regulated by the extracellular matrix. Proc Natl Acad Sci.
+2006;103(35):13180–5.
+	48.	 Thomas C, Gupta V, Ahsan F. Particle Size Influences the Immune
+Response Produced by Hepatitis B Vaccine Formulated in Inhal-
+able Particles. Pharm Res. 2010;27(5):905–19.
+	49.	 Jaroonwitchawan T, Chaicharoenaudomrung N, Namkaew J,
+Noisa P. Curcumin attenuates paraquat-induced cell death in
+human neuroblastoma cells through modulating oxidative stress
+and autophagy. Neurosci Lett. 2017;636:40–7.
+	50.	 Guo J, Fang Y, Jiang F, Li L, Zhou H, Xu X, Ning W. Neohes-
+peridin inhibits TGF-β1/Smad3 signaling and alleviates ble-
+omycin-induced pulmonary fibrosis in mice. Eur J Pharmacol.
+2019;864:172712.
+	51.	 Ren Y, Zhao J, Shi Y, Chen C, Chen X, Lv C. Simple determina-
+tion of L-hydroxyproline in idiopathic pulmonary fibrosis lung
+tissues of rats using non-extractive high-performance liquid chro-
+matography coupled with fluorescence detection after pre-column
+derivatization with novel synthetic 9-acetylimidazol-carbazole. J
+Pharm Biomed Anal. 2017;142:1–6.
+	52.	 Dancer RCA, Wood AM, Thickett DR. Metalloproteinases in idi-
+opathic pulmonary fibrosis. Eur Respir J. 2011;38(6):1461.
+Publisher's Note  Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds
+exclusive rights to this article under a publishing agreement with the
+author(s) or other rightsholder(s); author self-archiving of the accepted
+manuscript version of this article is solely governed by the terms of
+such publishing agreement and applicable law.

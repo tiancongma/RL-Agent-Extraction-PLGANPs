@@ -1,0 +1,602 @@
+J. of Supercritical Fluids 63 (2012) 1–7
+Contents lists available at SciVerse ScienceDirect
+The Journal of Supercritical Fluids
+journal homepage: www.elsevier.com/locate/supflu
+Bacteria microencapsulation in PLGA microdevices by supercritical
+emulsion extraction
+G. Della Porta a,b,∗, F. Castaldo a, M. Scognamiglio a, L. Paciello a, P. Parascandola a, E. Reverchon a
+a Dipartimento di Ingegneria Industriale, Università di Salerno, Via Ponte don Melillo, Fisciano (SA), Italy
+b Laboratorio di Ingegneria Cellulare e Molecolare, DEIS (sede di Cesena), Università di Bologna, Via Venezia 52, Cesena (FC), Italy
+a r t i c l e
+i n f o
+Article history:
+Received 13 October 2011
+Received in revised form
+19 December 2011
+Accepted 20 December 2011
+Keywords:
+Supercritical ﬂuid
+Emulsion
+Microdevices
+PLGA
+Bacteria encapsulation
+a b s t r a c t
+Cell microencapsulation continues to hold signiﬁcant promise for biotechnology and medicine and is
+considered an important tool for tissue engineering. Encapsulated cells would also provide a source of
+sustained continuous release of therapeutic products for longer durations at the site of implantation.
+The present work investigates the possibility of prokaryotic cells microencapsulation by Supercritical
+Emulsion Extraction (SEE) technology; Lactobacillus acidophilus was selected as a model bacterium and
+poly-lactic-co-glycolic acid (PLGA, 75:25) was chosen as biopolymer because FDA approved in devices for
+biomedical applications.
+A double emulsion (w1-o-w2 ratio 2:18:80) was used with an internal water phase (w1) composition
+of L. acidophilus suspended in MRS broth plus the 0.4% of poly-vinyl alcohol (PVA), as surfactant; the best
+overall cell mass content was found to be not higher than 10 mg/mL (that correspond to 7.5 × 106 UFC/mL).
+Other emulsion phases were: o-phase containing ethyl acetate (EA) and PLGA at 10% (w/w) and w2-phase
+of water plus 0.6% of PVA (w/w). This emulsion treated by SEE at 90 bar and 37 ◦C for 30 min allowed the
+formation of PLGA microcapsules with a mean size of 20 m (±10 m) loaded with the 0.6% (w/w) of
+microorganism with an excellent encapsulation efﬁciency (80%).
+Size and morphology of the produced microdevices were monitored by laser scattering and by SEM-
+EDX analyses and conﬁrmed SEE as an innovative and efﬁcient encapsulation technology. Particularly, the
+microspheres were constituted by a PLGA wall containing the cells entrapped into the polymeric matrix.
+Cell viability less than 5% (w/w) with respect to the loaded microorganism was also evaluated; neverthe-
+less the biodegradable microdevice produced may be particularly interesting for several biotechnological
+application in which mainly the killed vectors is used as bioactive signal delivery.
+© 2011 Elsevier B.V. All rights reserved.
+1. Introduction
+Cell microencapsulation in biodegradable devices is considered
+an important challenge for tissue engineering and regenerative
+medicine [1]. Indeed, cells targeting problems (live or death) can
+be overcame by their delivering using biopolymer microcapsules
+which can protect the encapsulated materials from the harsh exter-
+nal environments [2,3] or address it to a more speciﬁc target
+[4–6]. Microspheres loaded with cells have been also proposed as
+activate biopolymer scaffolds for tissue engineering applications
+[7,8] or as immunoprotected implants for cell-based therapy [9].
+Encapsulated cells may also provide a source of sustained contin-
+uous release of therapeutic products for longer durations at the
+site of implantation [10]. For example, bacteria can be genetically
+∗Corresponding author at: Dept. of Industrial Engineering, University of Salerno,
+Via Ponte Don Melillo, 84084 Fisciano (Sa), Italy. Tel.: +39 089 964104;
+fax: +39 089 964057; mobile: +39 320 7979003.
+E-mail address: gdellaporta@unisa.it (G. Della Porta).
+engineered to synthesize products with high therapeutic poten-
+tial and used as a potential delivery vector for various antigens
+or therapeutic and immunomodulatory proteins [11]. In vitro or
+with animal models studies demonstrated that Lactococcus lactis
+has emerged as potential delivery vector of different antigens and,
+in some speciﬁc cases, also the killed bacterium can be an inter-
+esting vector capable to produce comparable responses to those
+elicited by live bacteria [12]. Although native L. lactis is a gener-
+ally recognized as safe (GRAS), the genetically modiﬁed versions
+have to be assessed for safety and biological containment. From
+this perspective, the use of dead L. lactis vectors seems to be a
+safer option if the efﬁcacy is retained, because there is no risk of
+spreading recombinant DNA in the environment.
+Several technologies have been tested for the production of
+bacteria loaded microdevices, such as spray-drying, extrusion,
+phase separation and solvent extraction/evaporation of emulsions.
+Almost all of these technologies were tested on probiotics bacteria
+mainly to develop probiotic health based product. However, none
+of these reported methods has resulted in a large number of shelf-
+stable cells necessary for use in industry [13]. Mainly problems
+0896-8446/$ – see front matter © 2011 Elsevier B.V. All rights reserved.
+doi:10.1016/j.supﬂu.2011.12.020
+
+2
+G. Della Porta et al. / J. of Supercritical Fluids 63 (2012) 1–7
+of low encapsulation efﬁciency and reduction of cell viability
+were reported [14,15]. For example, the use of spray drying for
+Lactobacilli and Biﬁdobacteria microencapsulation was reported
+for a number of different strains [16,17] including Lactobacillus
+acidophilus [18]; however, most of the bacteria do not survive at
+temperature or osmotic extremes to which they are exposed dur-
+ing the spray drying or emulsiﬁcation process and, in several cases,
+reduced encapsulation efﬁciency was also reported. A different
+cell coating technique was proposed by Picot and Lacroix [19,20]
+using an emulsion containing milk fat droplets and whey protein
+polymers with freeze-dried bacteria, then spray dried. The direct
+dispersion of fresh cells in a heat-treated whey protein suspension
+followed by spray drying was suggested as the less destructive
+microencapsulation method, with survival rates of 26% for Biﬁ-
+dobacter breve and 1.4% for the more heat-sensitive Biﬁdobacter
+longum [21]. Several biodegradable polymer matrixes have been
+also tested for bacteria encapsulation such as: alginate systems
+[22], cellulose acetate phthalate [23], proteins and polysaccharide
+mixtures [24], chitosan [25]. Poly-lactic-co-glycolic acid (PLGA)
+was never used until now because almost all biopolymer matrix
+reported above were selected for food industry applications;
+whereas, the encapsulation into PLGA microdevices may be much
+more interesting for biotechnological and biomedical applications
+[26].
+The most common method of PLGA microdevices preparation
+is the solvent evaporation/extraction of emulsions; this technol-
+ogy may require elevate temperatures or reduced pressures and
+long processing times (several hours), that may produce parti-
+cles aggregation, as well as, cells damage [27]. Supercritical ﬂuid
+technologies were also proposed to produce PLGA microdevices.
+Particularly, RESS technology showed problems of low solubility of
+almost all PLGA co-polymers in SC-CO2 that will prevent affordable
+process yields [28]; whereas, the even low solubility of SC-CO2 in
+the PLGA is again the main problem when using the SAS technology
+because it causes the precipitation of large polymer aggregates [29].
+More recently, Biﬁdobacteria encapsulation into PVA/PVA complex
+matrix by supercritical ﬂuid was also reported followed by a milling
+of the obtained complex [30].
+Supercritical Emulsion Extraction (SEE) technology was recently
+proposed for the production of biopolymer microspheres by several
+authors from oil-in-water emulsions [31,32]. The authors reported
+a better control of microspheres sizes and distributions, as well as,
+excellent drug loading achieved by SEE with respect to the conven-
+tional extraction/evaporation technology; the innovative process
+was also characterized by mild temperature conditions. The very
+good process performances were justiﬁed considering supercrit-
+ical ﬂuid properties such as lower viscosity and higher diffusivity
+that will improve the mass transfer and reduce the processing times
+during the extraction of the oily dispersed phase [33,34].
+The present work aims to investigate the possible use of SEE
+technology, as a low impact method, for bacterial cells encap-
+sulation into PLGA microdevices intended for biomedical and
+pharmaceutical use. L. acidophilus was selected as a model bac-
+terium because of its high sensitivity to temperature or osmotic
+variations. Our aim was also to explore SEE process conditions
+that may allow high encapsulation efﬁciency of intact bacteria
+even with low cell viability, considering that genetically modi-
+ﬁed bacteria may eventually be also used as antigen vectors, also
+when dead. In this sense, double water–oil–water emulsions with
+different internal water phase compositions and biopolymer con-
+centrations in the oily phase were tested to monitor the effects
+of these parameters on droplets stability, microspheres morphol-
+ogy and cells loading. The SEE process parameters like operating
+pressure and temperature, ﬂow rate and contacting time between
+the emulsion and supercritical carbon dioxide (SC-CO2) were also
+studied with respect to microsphere size distribution and to cells
+encapsulation efﬁciency. A comparative study between the charac-
+teristics of the microspheres obtained by SEE and those produced
+by conventional solvent evaporation (SE) was also proposed. Cells
+dispersion and viability into microspheres were also monitored.
+2. Experimental methods
+2.1. Materials
+CO2 (99.9% SON Naples, Italy), polyvinyl alcohol (PVA, mol. wt.:
+30,000–55,000, Aldrich Chemical Co.), ethyl acetate (EA, purity
+99.9%, Aldrich Chemical Co.), poly (lactic/glycolic) acid (PLGA,
+85:15 mol. wt.; 20,000–60,000 Aldrich Chemical Co.) were used as
+received. L. acidophilus ATCC 43121 was grown at 37 ◦C for 24 h in
+Erlenmayer ﬂasks containing 200 ml MRS Broth (BD 288130), using
+aerobic conditions.
+2.2. Biomass production
+To obtain viable cells of L. acidophilus, two-step cell propaga-
+tion was set up in 500 mL Erlenmeyer ﬂasks, incubated at 37 ◦C
+and 150 rpm in an Orbital Incubator (Stuart Scientiﬁc S150). In
+the ﬁrst step, 1 mL of a frozen culture (stored at −80 ◦C in 20.0%,
+v/v glycerol) was propagated in 200 mL MRS broth. During expo-
+nential growth, an aliquot of broth culture was withdrawn to be
+employed as inoculum in the second step propagation ﬂasks. In
+the latter case, L. acidophilus cells were allowed to grow for 24 h
+in 200 mL MRS broth to achieve a viable biomass suspension hav-
+ing an optical density of 1.8 at 590 nm. Beyond this OD value, cell
+conglomeration phenomena begin to occur, which reduce cell via-
+bility. The obtained biomass was then collected by centrifugation
+at 6500 rpm for 20 min and re-suspended in fresh MRS broth to be
+processed and entrapped in PLGA matrix.
+2.3. Emulsions preparation
+Different double emulsions were prepared to optimize the
+composition of each phase: 5 or 10 mg/mL of live cells were pre-
+suspended into MRS broth/PVA solution or aqueous PVA solution;
+a ﬁxed amount of these suspensions was then added into EA/PLGA
+solutions and sonicated for 2 min (Digital Sonifer Branson mod.
+450). This primary emulsion was added into a known amount of
+aqueous PVA solution to form the secondary emulsion using a high-
+speed stirrer (mod. L4RT Silverson Machines Ltd., United Kingdom)
+operating at 800 rpm for 3 min at 10 ◦C, controlled using an ice bath.
+2.4. Microspheres preparation by conventional solvent
+evaporation
+EA was evaporated from the emulsions for 60 min at 30 ◦C
+under controlled and mild vacuum (170 mmHg, rotating evapora-
+tor) under moderate stirring. During the evaporation, the emulsions
+were swept by a continuous nitrogen ﬂow at constant ﬂow rate
+(70 L/h).
+2.5. SEE apparatus: description and procedure
+In a typical experiment, 40 g of emulsion were placed into the
+0.25 dm3 cylindrical stainless steel vessel. SC-CO2 was delivered
+using a high pressure diaphragm pump (Milton Roy, model Milroyal
+B, Point Saint Pierre, France) and was bubbled into the extraction
+vessel at a constant ﬂow rate (0.1–0.5 kg/h), through a cylindri-
+cal stainless steel dispenser located at the bottom of the extractor.
+The cylindrical dispenser maximizes the contact between the two
+phases during the extraction. Temperature was maintained con-
+stant using an air-heated thermostated oven. A separator located
+
+G. Della Porta et al. / J. of Supercritical Fluids 63 (2012) 1–7
+3
+Fig. 1. Description of the apparatus: CO2 cylinder, HP, high pressure diaphragm
+pump, SEE, high pressure vessel, S, separator for oily phase recovery.
+downstream the micrometering valve was used to recover the
+liquid solvent extracted and the pressure in the separator was
+regulated by a backpressure valve. At the exit of the separator a
+rotameter and a dry test meter were used to measure the CO2 ﬂow
+rate and the total amount of CO2 delivered, respectively. When
+the extraction process was complete, the suspension was recov-
+ered from the extractor vessel for further processing. Particles
+were washed several times by centrifugation with distilled water
+and collected by membrane ﬁltration. Particles were also dried for
+morphological studies or incubated in MRS broth for viability eval-
+uations. A schematic representation of the proposed process and
+the apparatus used is reported in Fig. 1.
+2.6. Droplets and microspheres morphology and size distributions
+The microorganisms and the droplets formed in the emulsions
+were observed using an optical microscope (mod. BX 50 Olym-
+pus, Tokyo, Japan) equipped with a phase contrast condenser. Field
+Emission-Scanning Electron Microscope (FE-SEM mod. LEO 1525,
+Carl Zeiss SMT AG, Oberkochen, Germany) was used to study the
+morphology of the collected microspheres. Dried powder was dis-
+persed on a carbon tab previously stuck to an aluminum stub.
+Samples were coated with gold–palladium (layer thickness 250 ˚A)
+using a sputter coater (mod. 108 A, Agar Scientiﬁc, Stansted, UK).
+Droplet size distributions (DSD) and particle size distributions
+(PSD) were measured by dynamic light scattering (mod. Mas-
+tersizer S, Malvern Instruments Ltd., Worcherstershire, UK). The
+Mastersizer S software uses Mie theory to produce an optimal
+analysis of the light energy distribution and to obtain the size dis-
+tribution of the particles. Analyses were performed just after the
+preparation of emulsions and microsphere suspensions using sev-
+eral milligrams of each sample and repeated ten times.
+2.7. Microspheres sectioning
+The microspheres sectioning procedure was adapted from
+Ehtezazi et al. [35]. Microspheres were dispersed for 2–3 h in
+an aqueous solution containing gelatine (20%, w/v control ref.
+30) and glycerine (5%), to allow the complete occupation of the
+microspheres internal microporosity by the aqueous medium, this
+occupation was necessary to avoid internal pores distortion dur-
+ing the sectioning. The suspension was then drawn into a 2.5 mL
+syringe, which was then immersed for 2–3 min in liquid nitrogen
+to solidify the gelatine suspension. The solid gelatine was then pre-
+cut in samples of 5 mm long. These samples were then mounted on
+a refrigerated stub using a small amount of Neg 50, immersed in the
+pre-chilled iso-pentane and sectioned in a cryostat (mod. HM 550,
+MICROM International Gmbh) at 40 ◦C, using a pre-chilled blade.
+The sections were cut and prevented from curling during section-
+ing using a small pre-chilled brush. Sections with a thickness of
+20 m were used for the microscopic measurements.
+2.8. Cell dispersion in the microspheres
+Cells dispersion in the microspheres was evaluated using an
+Energy Dispersive X-Ray analyzer (EDX mod. INCA Energy 350,
+Oxford Instruments, Witney, UK), using the signal of Phosphorus
+that is present only in the cell. Before the evaluation of the elemen-
+tal composition, the samples were coated with chromium (layer
+thickness 150 A) using a turbo sputter coater (mod. K575X, EmiTech
+Ashford, Kent, UK).
+2.9. Cell viability evaluation
+PLGA microcapsules were dispersed in a MRS broth for 36 h at
+37 ◦C. Then, aliquots (50 L) of these cell suspensions were spread
+on YPD or MRS agar plates and incubated in the aerated Heraeus
+incubator at 37 ◦C for 48 h to evaluate the Colony Forming Units
+(CFU) originated from the viable cells.
+3. Results and discussion
+3.1. SEE process parameters selection
+SEE operating pressure and temperature conditions were
+selected to enhance the extraction of the oily dispersed phase of
+the emulsion; whereas, the SC-CO2 ﬂow rate was chosen to avoid
+emulsion/suspension loss by washing out in the SC-CO2 stream. In
+a previous work [31] it was reported that EA/CO2 mixture critical
+pressure at 37 ◦C is of 80 bar with a CO2 molar fraction of 0.9; at
+these operating conditions water is only slightly soluble in SC-CO2;
+whereas, EA is fully miscible. As a consequence, operating condi-
+tions explored in this work were 90 bar (slightly higher than the
+mixture critical point) and 37 ◦C to prevent microorganisms suf-
+fering by its warming up. It has also to be considered that the
+compressed CO2 may have a “bactericidal effect”, as reported by
+several authors [36,37]. However, it was also indicated that it is
+not the pressurized carbon dioxide to be really active in enzymes
+denaturation or bacteria inactivation but the fast depressurization
+step at the end of the process. Moreover, the effective sterilization
+with compressed CO2 was also obtained by combining a thermal
+effect or adding others agents, such as peracetic acid. Nevertheless,
+to avoid any adverse effect in this sense, the SEE apparatus was
+designed to allow very slow compression/decompression steps of
+the suspension.
+At the operating pressure and temperature conditions reported
+above, SC-CO2 is expected to be an excellent solvent for EA and,
+after contact with emulsion, to extract the organic solvent, pro-
+ducing the polymer hardening into microspheres. A SC-CO2 ﬂow
+rate of 0.4 kg/h was used for 30 min for treating 40 g of emulsion.
+Operating at these conditions, the ethyl acetate residue into the
+recovered suspension was less than 50 ppm. Higher ﬂow rates of
+0.6 and 0.8 kg/h were also tested and considered not suitable, due
+to a large entrainment of emulsion in the gaseous stream. Shorter
+processing times of 10 and 20 min were also investigated, but, in
+both cases ethyl acetate elimination was less efﬁcient and solvent
+residues of 354 ppm and 825 ppm, respectively, were measured.
+
+4
+G. Della Porta et al. / J. of Supercritical Fluids 63 (2012) 1–7
+Fig. 2. (a) OM image of w1-o-w2 emulsion with ratio of 4:16:80 (microorganism
+concentration in w1 of 5 mg/mL). (b) SEM image of PLGA microspheres after SEE
+process operating at 90 bar and 37 ◦C, with a SC-CO2 ﬂow rate of 0.4 kg/h for 20 min.
+3.2. Emulsions optimization for L. acidophilus encapsulation
+The droplets in the emulsion were produced in the range of
+10–40 m to be large enough to encapsulate bacterial cells that
+are of about 1–2 m in size. Different emulsion compositions were
+tested to ﬁnd the optimal phase ratios and the optimal concentra-
+tion of each component. In some preliminary experiments, distilled
+water with a PVA concentration of 0.4% was used as the water inter-
+nal phase, but this emulsion failed in entrapping bacteria inside the
+droplets. In addition, monitoring the cell viability, it was observed
+that cell survival in distilled water was much reduced (vitality
+decreased to 50% in 24 h). In the subsequent experiments, a MRS
+broth was used as the internal water phase, with the same PVA
+concentration, as surfactant. The cell mass content charged in the
+internal water phase was reduced to 5 mg/mL (that correspond to
+3.7 × 106 CFU/mL). The oily phase contained 10% (w/w) of PLGA
+in EA and the external water phase was formed by distilled and
+sterilized water with the 0.8% of PVA, as surfactant.
+Emulsions with different internal water phase ratios, namely
+of 4:16:80 and 2:18:20 (w1-o-w2) were also compared. When the
+4:16:80 ratio was used, the emulsion was unstable as is also illus-
+trated in the OM image reported in Fig. 2a, in which it is well
+visible the migration of the internal water phase to the external
+one. As a consequence, open microcapsules were produced after
+the SEE process and almost all bacteria were recovered outside
+the particles. An example of the produced material is illustrated
+in the SEM image reported in Fig. 2b. When the w1-o-w2 ratio of
+2:16:80 was tested, stable droplets were produced, as illustrated
+in the OM image reported in Fig. 3a, in which spherical droplets
+Fig. 3. (a) OM image of w1-o-w2 emulsion with ratio of 2:18:80 (microorganism
+concentration in w1 of 5 mg/mL). (b) SEM image of PLGA microspheres after SEE
+process operating at 90 bar and 37 ◦C, with a SC-CO2 ﬂow rate of 0.4 kg/h for 20 min.
+that contain cells inside are evident. Drying this emulsion by SEE,
+spherical microcapsules were obtained, as illustrated in the SEM
+image reported in Fig. 3b.
+An emulsion with a w1-o-w2 ratio of 2:16:80 was also tested,
+increasing the L. acidophilus concentration in the internal water
+phase to 10 mg/mL (that correspond to 7.5 × 106 CFU/mL); in this
+case, probably due to the higher cells concentration, the bacteria
+were extruded from the droplets and conﬁned on the microspheres
+surface, as can be observed in Fig. 4 where a SEM image of the PLGA
+microparticles obtained is illustrated.
+All the emulsions described above were processed also by
+conventional solvent evaporation (SE) and for all the emulsion
+composition explored the microspheres obtained by SE were char-
+acterized by an open and irregular morphology, with a large
+amount of cells outside the particles. Particularly, when the opti-
+mized emulsion composition of w1-o-w2 ratio 2:16:80 (with cell
+content in w1 of 5 mg/mL) was treated by SE, mainly empty and
+concave particles were produced. An example of these concave and
+collapsed microparticles is illustrated in the SEM image reported in
+Fig. 5. The reason of the observed morphologies was well described
+by Rosca et al. [38] and it was mainly due to the low stability of
+the double emulsion during the SE treatment. Indeed, the authors
+reported that when double emulsions are processed by conven-
+tional solvent evaporation, since the process takes several hour,
+the loss of the water internal phase can easily occur, generating
+concave and collapsed shaped particles that are also expected to
+be empty.
+
+G. Della Porta et al. / J. of Supercritical Fluids 63 (2012) 1–7
+5
+Fig. 4. SEM image of PLGA microspheres obtained operating at 90 bar and 37 ◦C, with
+a SC-CO2 ﬂow rate of 0.4 kg/h for 20 min. They were produced using an emulsion with
+w1-o-w2 ratio of 2:18:80 and with a microorganism concentration in the internal
+w1 phase of 10 mg/mL.
+3.3. Microcapsule size and bacteria loading
+DSD and PSD curves, obtained by laser scattering analysis for
+each emulsion and microparticle suspension studied were also
+used, as an indirect method, for encapsulation efﬁciency evalua-
+tion. Indeed, a simple bacteria suspension showed a Mean Diameter
+(MS) of 1.2 m with a Standard Deviation (SD) of ±0.5 m, whereas,
+oily droplets and derived PLGA microspheres where produced with
+mean sizes between 20 and 50 m; therefore, when bacteria encap-
+sulation was not good, bimodal curves were expected. Examples of
+particle size distributions obtained are illustrated in Fig. 6a and b.
+Particularly, in Fig. 6a is reported the histogram representing the
+PSD of the microspheres obtained from the not stable emulsion
+with w1-o-w2 ratio of 4:16:80 (microorganism concentration in w1
+of 5 mg/mL) also illustrated in Fig. 2a and, in this case, the presence
+of a bacteria suspension not well entrapped into the microspheres
+can be easily recognized by the typical bimodal evolution of the
+diameter populations. In Fig. 6b is reported the histogram rep-
+resenting the PSD of the microspheres obtained from the stable
+emulsion with w1-o-w2 ratio of 2:18:80 (microorganism concen-
+tration in w1 of 5 mg/mL) also illustrated in Fig. 3a and, in this
+case, only one peak is present conﬁrming the absence of the free
+bacteria in suspension. The microspheres produced in this last
+case showed a MD of 20 m and SD of ±10 m. This emulsion
+Fig. 5. SEM image of PLGA microspheres obtained by the conventional solvent evap-
+oration process.
+100
+10
+1
+0.1
+0
+5
+10
+15
+20
+25
+30
+35
+40
+a
+b
+Volume, %
+Diameter, μm
+Diameter, μm
+100
+10
+1
+0.1
+0
+10
+20
+30
+40
+50
+Volume, %
+Fig. 6. (a) PSD of the microspheres obtained from not stable emulsion (w1-o-w2
+ratio: 4:16:80 and cell concentration of 5 mg/mL); (b) PSD of the microspheres
+obtained from stable emulsion (w1-o-w2 ratio: 2:18:80 and cell concentration of
+w1 of 5 mg/mL).
+composition was conﬁrmed to be the best for bacteria entrapment
+after SEE processing.
+To further evaluate the bacteria spatial distribution inside the
+particles, the elemental composition of microspheres was stud-
+ied by Energy Dispersive X-Ray (EDX) analyzer integrated in the
+SEM apparatus. Cells contain in a relatively high amount the Phos-
+phorus (P) that is not present in PLGA; therefore, it can be used
+to indicate the location of the microorganism into the microde-
+vices. In Fig. 7 SEM image of the microspheres with elemental maps
+of some constitutive elements (carbonium, oxygen and phospho-
+rous) are reported. It is evident that phosphorus (mapped in red) is
+uniformly spread over all the microspheres; i.e., cells should be uni-
+formly distributed into the microspheres. The EDX relative amount
+of the phosphorus with respect to the other elements indicates the
+presence of almost 0.8% of phosphorus with respect to the overall
+carbon atoms identiﬁed in the sample conﬁrming the efﬁciency of
+cell loading into microspheres.
+Microcapsule internal structure was also investigated by sec-
+tioning them using a stereological method; then, selected sections
+
+6
+G. Della Porta et al. / J. of Supercritical Fluids 63 (2012) 1–7
+Fig. 7. EDX image of PLGA microspheres charged with 0.6% (w/w) of cells obtained operating at 90 bar and 37 ◦C, with a SC-CO2 ﬂow rate of 0.4 kg/h for 20 min. Phosphorus
+was highlighted in red, carbon in green and oxygen in blue. (For interpretation of the references to color in this ﬁgure legend, the reader is referred to the web version of this
+article.)
+were observed by SEM. An example of the SEM image of the sec-
+tion obtained is illustrated in Fig. 8; in the ﬁgure it is possible to
+observe the bacteria cells inside the microcapsule. Bacteria viabil-
+ity was also monitored for these microcapsules by their incubation
+into a MRS broth for 36 h; it resulted to be less than 5% (w/w) with
+respect to the loaded microorganism.
+Fig. 8. SEM images of PLGA microcapsule section obtained using SEE technology.
+4. Conclusions and perspectives
+The production of spherical microdevices formed by PLGA, con-
+taining the bacteria entrapped into the polymeric matrix was
+demonstrated to be a possible application of the SEE technology
+processing a double water–oil–water emulsion with supercritical
+carbon dioxide at 90 bar and 37 ◦C for 30 min. A particle size tar-
+get of 20 m as mean size with an optimum percentage of 0.6%
+(w/w) cell loaded were successfully obtained (encapsulation efﬁ-
+ciency 80%). Nevertheless very low cell viability was monitored
+suggesting that the described technology can be applied, for exam-
+ple, in the encapsulation of genetically modiﬁed bacteria especially
+when dead cells must be used in order to retain almost all the ther-
+apeutically efﬁcacy as biological signals and to avoid any others
+adverse effects. However, future perspectives of this work can be
+the improvement of bacteria survival through the addition of pro-
+tectants to the liquid media in which they are retained in emulsion
+prior to SEE treatment and/or growth promoting factors including
+various probiotic/prebiotic combinations.
+References
+[1] G. Orive, R.M. Hernández, A.R. Gascón, R. Calaﬁore, T.M.S. Chang, P. De Vos,
+G. Hortelano, D.D. Hunkeler, I. Lacík, J.L. Pedraz, History, challenges and per-
+spectives of cell microencapsulation, Trends in Biotechnology 22 (2) (2004)
+88–92.
+[2] S. Prakash, M.L. Jones, Artiﬁcial cell therapy: new strategies for the therapeutic
+delivery of live bacteria, J. Biomedicine and Biotechnology 1 (2005) 44–56.
+[3] M.V. Sefton, M.H. May, S. Lahooti, J.E. Babensee, Making microencapsulation
+work: conformal coating, immobilization gels and in vivo performance, J. Con-
+trolled Release 65 (2000) 173–186.
+
+G. Della Porta et al. / J. of Supercritical Fluids 63 (2012) 1–7
+7
+[4] F. Lim, A.M. Sun, Microencapsulated islets as bioartiﬁcial endocrine pancreas,
+Science 210 (4472) (1980) 908–910.
+[5] S. Prakash, T.M. Chang, In vitro and in vivo uric acid lowering by artiﬁcial
+cells containing microencapsulated genetically engineered E. coli DH5 cells,
+International J. of Artiﬁcial Organs 23 (7) (2000) 429–435.
+[6] T. Visted, R. Bjerkvig, P.O. Enger, Cell encapsulation technology as a therapeutic
+strategy for CNS malignancies, J. Neuro-Oncology 3 (2001) 201–210.
+[7] O. Smidsrod, G. Skjakbraek, Alginate as immobilization matrix for cells, Trends
+in Biotechnology 8 (1990) 71–78.
+[8] M.Singh, B. Sandhu, A. Scurto, C. Berkland, S. Michael, M.S. Detamore,
+Microsphere-based scaffolds for cartilage tissue engineering: using subcritical
+CO2 as a sintering agent, Acta Biomaterialia 6 (1) (2010) 137–143.
+[9] W.M. Kuhtreiber, R.P. Lanza, W.L. Chick, Cell Encapsulation Technology and
+Therapeutics, Birkhauser, Boston, 1999.
+[10] A. Murua, A. Portero, G. Orive, R.M. Hernández, M. de Castro, J.L. Pedraz,
+Cell microencapsulation technology: toward clinical application, J. Controlled
+Release 132 (2008) 76–83.
+[11] M. Bahey-El-Din, C.G. Gahan, Lactococcus lactis: from the dairy industry to
+antigen and therapeutic protein delivery, Discovery Medicine 9 (48) (2010)
+455–461.
+[12] M. Bahey-El-Din, C.G. Gahan, B.T. Grifﬁn, Lactococcus lactis as a cell factory for
+delivery of therapeutic proteins, Current Gene Therapy 10 (1) (2010) 34–45.
+[13] K. Kailasapathy, Microencapsulation of probiotic bacteria: technology and
+potential application, Current Issues of Intestinal Microbiology 3 (2002) 39–48.
+[14] A.K. Anal, H. Singh, Recent advances in microencapsulation of probiotics for
+industrial applications and targeted delivery, Trends in Food Science and Tech-
+nology 18 (2007) 240–251.
+[15] S.J. Kim, S.J. Cho, S.H. Kim, O.J. Song, S. Shin, D.S. Cha, H.J. Park, Effect of microen-
+capsulation on viability and other characteristics in Lactobacillus acidophilus
+ATCC 43121, LWT-Food Science and Technology 41 (2008) 493–500.
+[16] B.M. Corcoran, R.P. Ross, G.F. Fitzgerald, C. Stanton, Comparative survival of pro-
+biotic lactobacilli spray-dried in the presence of prebiotic substances, J. Applied
+Microbiology 96 (2004) 1024–1039.
+[17] K. O’Riordan, D. Andrews, K. Buckle, P. Conway, Evaluation of microencapsu-
+lation of a Biﬁdobacterium strain with starch as an approach to prolonging
+viability during storage, J. Applied Microbiology 91 (2001) 1059–1066.
+[18] Z. Ruixiang, S. Junliang, T. Peter, W. Dahong, N. Shengyang, Measurement of
+particle diameter of Lactobacillus acidophilus microcapsule by spray drying and
+analysis on its microstructure, World J. of Microbiology and Biotechnology 24
+(2008) 1349–1354.
+[19] A. Picot, C. Lacroix, Production of multiphase water insoluble microcapsules
+for cell microencapsulation using an emulsiﬁcation/spray-drying technology,
+J. Food Science 68 (2003) 2693–2700.
+[20] A. Picot, C. Lacroix, Effects of micronization on viability and thermotolerance
+of probiotic freeze-dried cultures, International Dairy J. 13 (2003) 455–462.
+[21] A. Picot, C. Lacroix, Encapsulation of biﬁdobacteria in whey protein-based
+microcapsules and survival in simulated gastrointestinal conditions and in
+yoghurt, International Dairy J. 14 (2004) 505–515.
+[22] K.N. Chen, M.J. Chen, J.R. Liu, C.W. Lin, H.Y. Chiu, Optimization of incorporated
+prebiotics as coating materials for probiotic microencapsulation, J. Food Science
+70 (2005) 260–266.
+[23] C.S. Favaro-Trindale, C.R. Grosso, Microencapsulation of L. acidophilus (La-05)
+and B. lactis (Bb-12) and evaluation of their survival at the pH values of the
+stomach and in bile, J. Microencapsulation 19 (2002) 485–494.
+[24] D. Guerin, J.C. Vuillemard, M. Subirade, Protection of Biﬁdobacteria encapsu-
+lated in polysaccharide-protein gel beads against gastric juice and bile, J. Food
+Protections 66 (2003) 2076–2084.
+[25] S. Lee, D.S. Cha, H.J. Park, Survival of freeze-dried Lactobacillus bulgaricus KFRI
+673 in chitosan-coated calcium alginate microparticles, J. Agricultural and Food
+Chemistry 52 (2004) 7300–7305.
+[26] D.M. Yoon, J.P. Fisher, Polymeric scaffolds for tissue engineering application,
+in: Fisher Mikos Bronzino (Ed.), Tissue Engineering, CRC Press Taylor & Francis
+Group, FL, USA, 2007.
+[27] M. Li, O. Rouaud, D. Poncelet, Microencapsulation by solvent evaporation. State
+of the art for the process engineering approaches, International J. of Pharma-
+ceutics 363 (2008) 26–39.
+[28] B. Kongsombut, A. Tsutsumi, N. Suankaew, T. Charinpanitkul, Encapsulation of
+SiO2 and TiO2 ﬁne powders with poly-lactic-co-glycolic acid by rapid expansion
+of supercritical CO2 incorporated with ethanol co-solvent, Industrial Engineer-
+ing & Chemical Research 48 (2009) 11230–11235.
+[29] T.J. Young, K.P. Johnston, Encapsulation of lysozyme by precipitation with a
+vapor-over-liquid antisolvent, J. Pharmaceutical Sciences 88 (1999) 640–650.
+[30] M.S. Thantsha, J. Guest, I. Mputle, Comparison of different methods for release of
+Biﬁdobacterium longum Bb46 from poly(vinylpyrrolidone)-poly(vinylacetate-
+co-crotonic acid) interpolymer complex matrix and the effect of grinding on
+the microparticles, World J. of Microbiology and Biotechnology 27 (10) (2011)
+2443–2448.
+[31] G. Della Porta, E. Reverchon, Nanostructured microspheres produced by super-
+critical ﬂuid extraction of emulsion, J. Biotechnology and Bioengineering 100
+(5) (2007) 1033–1929.
+[32] P. Chattopadhyay, B.Y. Shekunov, D. Yim, D. Cipolla, B. Boyd, S. Farr, Production
+of solid lipid nanoparticle suspensions using supercritical ﬂuid extraction of
+emulsions (SFEE) for pulmonary delivery using the AERx system, Advanced
+Drug Delivery Reviews 59 (2007) 444–453.
+[33] G. Della Porta, N. Falco, E. Reverchon, NSAID drugs release from injectable
+microspheres produced by supercritical ﬂuid emulsion extraction, J. Pharma-
+ceutical Sciences 99 (2009) 1484–1499.
+[34] G. Della Porta, R. Campardelli, N. Falco, E. Reverchon, PLGA microdevices for
+retinoids sustained release produced by supercritical emulsion extraction:
+Continuous versus batch operation layouts, J. Pharmaceutical Sciences 100 (10)
+(2011) 4357–4367.
+[35] T. Ehtezazi, C. Washington, C.D. Melia, Determination of the internal morphol-
+ogy of poly (d,l-lactide) microspheres using stereological methods, J. Controlled
+Release 57 (1999) 301–314.
+[36] S. Spilimbergo, A. Bertucco, F.M. Lauro, G. Bertoloni, Inactivation of Bacillus
+subtilis spores by supercritical CO2 treatment, Innovative Food Science and
+Emerging Technologies 4 (2003) 161–165.
+[37] A. White, D. Burns, T.W. Christensen, Effective terminal sterilization using
+supercritical carbon dioxide, J. Biotechnology 123 (2006) 504–515.
+[38] I.D. Rosca, F. Watari, M. Uo, Microparticles formation and its mechanism in
+single and double emulsion by solvent evaporation, J. Controlled Release 99
+(2004) 271–280.

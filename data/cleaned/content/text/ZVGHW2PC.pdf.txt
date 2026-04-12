@@ -1,0 +1,680 @@
+1082
+IEEE TRANSACTIONS ON NANOTECHNOLOGY, VOL. 12, NO. 6, NOVEMBER 2013
+Salt-Leaching Synthesis of Porous
+PLGA Nanoparticles
+Azhar Ilyas, Muhymin Islam, Waseem Asghar, Jyothi U. Menon, Aniket S. Wadajkar, Kytai T. Nguyen,
+and Samir M. Iqbal, Senior Member, IEEE
+Abstract—Poly(lactic-co-glycolic acid) (PLGA) nanoparticles
+are widely used for controlled delivery of bioactive agents in thera-
+peutic applications. These nanoparticles show bioavailability, bet-
+ter encapsulation, controlled release, biocompatibility, and in vivo
+biodegradability. This paper reports a novel approach to synthe-
+size porous PLGA nanoparticles and their use as controlled release
+vehicles. Bovine serum albumin (BSA) loaded PLGA nanoparti-
+cles (porous and nonporous) were synthesized using water-in-oil-
+in-water double emulsion method. Speciﬁcally, PLGA nanoparti-
+cles were prepared using chloroform and polyvinyl alcohol, and
+freeze drying was employed for the phase separation to obtain the
+nanoparticles. The porous nanoparticles were prepared through
+the salt-leaching process where sodium bicarbonate was used as an
+extractable porogen. In vitro drug release behavior of porous and
+nonporous nanoparticles was monitored over a period of 30 days.
+A much more enhanced BSA release was observed in case of porous
+polymeric nanoparticles when compared to nonporous nanoparti-
+cles. The characterization was done using laser scattering, zeta po-
+tential analysis, and scanning electron microscopy. The drug load-
+ing efﬁciencies for BSA in porous and nonporous PLGA nanopar-
+ticles were 65.50% and 77.59%, respectively. Over a period of
+30 days, the cumulative BSA released from PLGA porous and non-
+porous nanoparticles were measured to be 87.41% and 59.91%,
+respectively. The synthesis of porous nanoparticles with this novel,
+Manuscript received January 31, 2013; revised April 29, 2013; accepted
+April 29, 2013. Date of publication August 23, 2013; date of current version
+November 6, 2013. This work was supported by the National Science Founda-
+tion under CAREER Grant ECCS-0845669 to SMI. The work of A. Ilyas, M.
+Islam, and W. Asghar was supported in part by the Department of Electrical
+Engineering, University of Texas at Arlington, and the Consortium for Nano-
+materials for Aerospace Commerce and Technology program, Rice University,
+Houston, TX, USA. The review of this paper was arranged by Associate Editor
+M. De Vittorio.
+A. Ilyas and M. Islam are with the Department of Electrical Engineering,
+Nano-Bio Lab, and Nanotechnology Research Center, Shimadzu Institute for
+Research Technologies, University of Texas at Arlington, Arlington, TX 76019
+USA (e-mail: azhar.ilyas@mavs.uta.edu; muhymin.islam@mavs.uta.edu).
+W. Asghar was with the Department of Electrical Engineering, Univer-
+sity of Texas at Arlington, Arlington, TX 76019 USA. He is now with the
+Harvard-MIT Division of Health Sciences and Technology, Massachusetts
+Institute of Technology, Cambridge, MA 02139 USA, and also with the
+Center for Biomedical Engineering, Department of Medicine, Brigham and
+Women’s Hospital, Harvard Medical School, Boston, MA 02115 USA (e-mail:
+waseem.asghar@mit.edu).
+J. U. Menon and A. S. Wadajkar are with the Department of Bioengineer-
+ing, University of Texas at Arlington, Arlington, TX 76019 USA (e-mail:
+jyothi.menon@mavs.uta.edu; aniket.wadajkar@mavs.uta.edu).
+K. T. Nguyen is with the Department of Bioengineering, University of
+Texas at Arlington, Arlington, TX 76010 USA, and also with the Univer-
+sity of Texas Southwestern Medical Center, Dallas, TX 75390 USA (e-mail:
+knguyen@uta.edu).
+S. M. Iqbal is with the Department of Electrical Engineering Nano-Bio Lab,
+Department of Bioengineering, and the Nanotechnology Research Center, Shi-
+madzu Institute for Research Technologies, University of Texas at Arlington,
+Arlington, TX 76019 USA (e-mail: SMIQBAL@uta.edu).
+Color versions of one or more of the ﬁgures in this paper are available online
+at http://ieeexplore.ieee.org.
+Digital Object Identiﬁer 10.1109/TNANO.2013.2279532
+rapid, and inexpensive method opens a new horizon of using a wide
+range of cheap and easily-accessible water-soluble salts that can be
+extracted through leaching process to introduce porous morphol-
+ogy on the nanoparticle surfaces. The porous nanoparticles can
+have useful applications in controlled drug delivery systems.
+Index Terms—Drug delivery, drug loading efﬁciency, nanopar-
+ticles, nanoporous particles, porogen, salt-leaching.
+I. INTRODUCTION
+O
+VER the last few decades, there has been increased inter-
+est in developing biodegradable micro/nanoparticles for
+drug delivery applications. Among the new drug delivery sys-
+tems, the polymeric nanoparticles have emerged as promising
+carriers for sustained release of bioactive agents. The increased
+surface area offered by small particles makes these exceed-
+ingly effective for targeted drug delivery [1]–[3]. It has also
+been reported that nanoparticles can offer elevated drug content
+inside the neoplastic cells by prevailing over the multidrug resis-
+tance [4], [5]. The increased focus on deploying nanoparticles
+as drug delivery systems is due to the ease of their preparation
+with well-deﬁned biodegradable polymers like poly(lactic-co-
+glycolic acid) (PLGA), which are low cost and show highly
+stable behavior in the biological ﬂuids [6], [7]. The destiny of
+nanoparticles in any drug delivery operation is also an important
+concern during the development process.
+The controlled and targeted release eliminates the possibility
+of both under and overdosing. The control of the concentration
+of released drug in the therapeutic range signiﬁcantly improves
+the effects and quality of the drug. The PLGA offers many
+possibilities to accurately control the drug release kinetics over
+periods of days to months and easy administration using stan-
+dard intramuscular or intravenous routes. But drug stability and
+accelerated polymer degradation due to autocatalytic effects are
+the major concerns in nonporous PLGA-based particles [8].
+The porous drug delivery systems can overcome these autocat-
+alytic effects by increasing the diffusivity of the molecules [9].
+Thus, PLGA-based porous nanoparticles can be very helpful to
+optimize the therapeutic efﬁciency of medical treatments and
+to reduce serious side effects [10]. The porous nanoparticle
+systems also exhibit much better ﬂow and aerosolization ef-
+ﬁciency during pulmonary administration when compared to
+nonporous nanoparticles [11], [12]. The porous and nonporous
+PLGA nanoparticles are widely studied for their drug release
+behaviors. The pore characteristics have signiﬁcant impact on
+drug release and by controlling pore morphology, it is possible
+to design highly controlled drug release systems [10]. In this pa-
+per, we describe the salt-leaching technique to prepare porous
+1536-125X © 2013 IEEE
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.
+
+ILYAS et al.: SALT-LEACHING SYNTHESIS OF POROUS PLGA NANOPARTICLES
+1083
+polymeric drug delivery system with prolonged and con-
+trolled drug release properties. PLGA is a biocompatible and
+biodegradable copolymer which undergoes hydrolysis in the
+body to produce the biodegradable metabolites; glycolic acid
+and lactic acid. The biodegradability, biocompatibility, and tis-
+sue reaction of PLGA have been documented before [5], [13],
+[14]. Given all these exquisite properties, it has been approved
+by Food and Drug Administration in USA and European Medi-
+cal Agency for use in parenteral drug delivery systems. Numer-
+ous polymeric objects like microspheres, microcapsules, and
+nanoparticles have been synthesized using PLGA to deliver va-
+riety of drugs [15]. These PLGA nanoparticles are prepared
+either by using single emulsion or double emulsion methods.
+The single emulsion method is straightforward where only one
+water phase solution is emulsiﬁed with an oil phase solution. The
+water-in-oil-in-water (w/o/w) double emulsion method incorpo-
+rates dispersed oil beads containing smaller aqueous globules.
+The nanoparticles obtained by this technique provide a great op-
+portunity for the controlled release of chemical species initially
+entrapped in the internal globules [16], [17].
+Bovine serum albumin (BSA) is a hydrophilic drug model
+which ﬁnds its use in a wide range of applications due to its
+stability, low-cost, and minimal side effects in most of the
+biochemical reactions. Similarly, chloroform (CHCl3) is also
+widely used organic solvent because it is fairly unreactive, con-
+veniently volatile, and effortlessly miscible with other organic
+solutions.
+Nanoparticles have been identiﬁed as important drug carrier
+nanovehicles where therapeutic and diagnostic agents are en-
+capsulated, covalently attached, or adsorbed on to the surface
+of such nanocarriers. The research into rational and controlled
+drug delivery has resulted into hollow nanospheres and porous
+nanoparticles. The porous nanoparticle systems can be made
+of various materials, prepared in a variety of different ways,
+and designed to deliver drugs to speciﬁc parts of the body. The
+porous nanoparticles can vary from 25 nm to several hundred nm
+of diameter [11]. Owing to large effective surface areas, porous
+nanoparticles are widely used as inorganic carriers for biolog-
+ical reagents [18]. The porous nature has proven to facilitate a
+controlled release of encapsulated drugs of varying chemistry
+and molecular weights.
+Various approaches have been developed before to synthe-
+size porous micro/nanoparticles which incorporate the use of
+poly(acrylic acid), Pluronic F-127, or ammonium bicarbonate
+as the porogen reagent [19]–[21]. These chemical species are
+either limited by their physicochemical properties, high price,
+or need for thermal curing. We offer a simple and straightfor-
+ward method, which may empower us to use a wide range of
+cheap, easily obtainable, and water-soluble salts as extractable
+porogens. Such a rapid, inexpensive, and simple technique with
+potential for a variety of alternative materials as porogen, can
+improve the controlled drug delivery systems to a large extent.
+In this work, porous and nonporous PLGA nanoparticles
+containing BSA were prepared by the w/o/w double emulsion
+method using sodium bicarbonate as the extractable porogen.
+The porous nanoparticles showed increased and sustained drug
+release than the nonporous ones. The nanoparticle size, size
+distribution, porosity, stability, drug loading efﬁciency, and drug
+release behavior were characterized. The BSA release behavior
+was characterized using bicinchoninic acid (BCA) protein as-
+say. Standard curves were plotted to determine the amount of
+the drug loaded and released.
+II. MATERIALS AND METHODS
+A. Chemicals
+All the chemicals were purchased from Sigma-Aldrich
+(St. Louis, MO, USA) unless otherwise noted. There were three
+major experimental goals achieved in succession. The ﬁrst sec-
+tion details the synthesis of drug loaded porous and nonporous
+nanoparticles. The second step focuses on drug loading efﬁ-
+ciency. The third and the most important part demonstrates the
+drug release behavior of the nanoparticles.
+B. Synthesis of BSA Loaded Porous and
+Nonporous PLGA Nanoparticles
+Twenty milligrams of the hydrophilic BSA was dissolved in
+0.2 ml of deionized (DI) water to make the water phase of the
+solution (w1). In parallel, 90 mg of PLGA was dissolved in
+3 ml of chloroform to make 3% PLGA solution, forming the
+oil phase solution (o). Then, 1 gm of polyvinyl alcohol (PVA)
+was dissolved in 20 ml of warm (50 ◦C) DI water to make
+5% aqueous PVA solution that formed the second water phase
+solution (w2). All the solutions were vortexed to ensure that
+the reagents were mixed well. Now, the BSA solution (w1) was
+added to the PLGA solution and vortexed for 30 s to make
+water-in-oil phase. In order to prepare porous nanoparticles,
+2 mg of sodium bicarbonate was mixed in 1 ml of DI water to
+form 2% (w/v) porogen solution. This solution was immediately
+added to the above water-in-oil solution to introduce pores on
+the particles. These pores would be formed at a later stage due to
+salt-leaching. This step of adding sodium bicarbonate solution
+was skipped for the preparation of nonporous nanoparticles as
+shown by the schematic ﬂowchart in Fig. 1. The solution was
+then sonicated for 1–2 min at 40 W, and then added drop-wise
+to the stirring beaker of aqueous PVA solution. This formed
+the w/o/w phase. The resultant solution was then emulsiﬁed by
+sonication for 2 min at 40 W. Next, the mixture was gently
+stirred overnight in a chemical hood allowing the chloroform
+to evaporate. Once the chloroform evaporated completely, the
+solution was transferred into a 50 ml tube and centrifuged at
+4000 rpm for 15 min. The supernatant was collected and frozen
+for calculating the loading efﬁciency at later stage. The pellet
+was resuspended in 5 ml PBS and vortexed for 1 min. The
+dynamic light scattering (DLS) was used to measure the size and
+polydispersity of nanoparticles using a ZetaPALS DLS detector
+(Brookhaven Instruments, Holtsville, NY, USA). The solutions
+were then freeze dried to –80 ◦C.
+In order to get the porous nanoparticles, the freeze-dried
+nanoparticles were taken in a plastic tube and 3 ml of DI wa-
+ter was added to perform salt leaching. The tube was vortexed
+again and centrifuged at 4000 rpm for 15 min. This step was
+repeated three times to completely remove the trapped salts.
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.
+
+1084
+IEEE TRANSACTIONS ON NANOTECHNOLOGY, VOL. 12, NO. 6, NOVEMBER 2013
+Fig. 1.
+Schematic ﬂowchart demonstrates the procedure to synthesize porous
+and nonporous nanoparticles.
+Iterative washing in DI water after centrifugation is known to
+completely remove the water-soluble salts [22], [23]. The su-
+pernatant during salt-leaching was also collected and frozen to
+study the possible drug released during leaching as the loaded
+drug (BSA) was hydrophilic.
+C. Preparation of PLGA Nanoparticles for Scanning Electron
+Microscope Imaging
+The freeze-dried nanoparticles were suspended in DI water
+and diluted 10X to reduce their density on the substrate surface
+used for imaging. DI water was used instead of PBS to avoid
+crystallization and imaging artifacts stemming from the salts of
+PBS. The solution was then poured on the top of autoclaved
+glass cover slips and left overnight to dry in nitrogen ambient.
+Fig. 2.
+SEM micrographs of BSA-loaded PLGA nanoparticles. (a) Nonporous
+nanoparticles with average diameter of 321.8 nm. The inset shows a magniﬁed
+view of a nonporous nanoparticle. (b) Porous nanoparticles with average diam-
+eter of 525.2 nm. The inset shows a magniﬁed view of a porous nanoparticle to
+illustrate the surface topography and estimated pore sizes of 30–60 nm.
+The samples were then sputter coated with 50 ˚A thick gold
+to prevent the surface from getting charged during electron mi-
+croscopy. The thin layer of gold coating made sure that the cover
+slip surfaces were conductive enough to image with scanning
+electron microscope (SEM). Fig. 2 shows the SEM micrographs
+of porous and nonporous nanoparticles.
+D. Indirect Calculation of Drug Loading Efﬁciency
+The drug loading efﬁciency was determined using an indi-
+rect method. The supernatant samples collected and frozen in
+the previous steps were used to calculate the loading efﬁciency.
+The indirect method relied on the protein present in the super-
+natant solution. Instead of direct investigation of the amount of
+drug loaded in the nanoparticles, the amount of drug present in
+the supernatant was measured using the standard curves. The
+drug present in supernatant solution reﬂected the amount of un-
+loaded drug which was subsequently used to calculate the loaded
+drug. Loading Efﬁciency was calculated using the formula given
+below
+Loading Efﬁciency (%) = A −B
+A
+× 100
+(1)
+Where A represents the amount of original drug dissolved in DI
+water and B is the amount of drug present in the supernatant
+(unloaded drug).
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.
+
+ILYAS et al.: SALT-LEACHING SYNTHESIS OF POROUS PLGA NANOPARTICLES
+1085
+E. BSA Release from Nanoparticles
+In order to monitor drug release from BSA loaded nanopar-
+ticles, these were resuspended in PBS and placed in a 100 kDa
+molecular weight cutoff dialysis bag (Spectrum Laboratories
+Inc., Rancho Dominguez, CA, USA). Equal concentrations of
+porous and nonporous nanoparticles (2 mg each) were separately
+mixed in 2 ml of PBS and were put in different bags. Each dial-
+ysis bag was immersed in 10 ml of PBS solution which was
+the dialysate. Three replicates for both types of particles were
+prepared to study the drug release behavior. Drug release studies
+were performed by measuring BSA release at predeﬁned time
+points: 1, 5, 7, 11, 14, 18, 22, and 30 days. At each time point,
+the PBS solution was replaced by fresh PBS solution keeping
+the volume unchanged and the collected samples were stored at
+−20 ◦C for further analysis.
+At each time point, three samples (one from each replicate)
+were collected to get reliable release data. After collecting all the
+samples for porous and nonporous PLGA nanoparticles, Pierce
+BCA protein assay (Fisher Scientiﬁc, Hampton, NH, USA) was
+used for quantitative analysis of the drug release. The working
+reagent consisted of reagent A and reagent B at the ratio of
+50:1, where BCA was used as reagent A and copper sulphate as
+reagent B. A 200 μl volume of the working reagent and 25 μl of
+PBS (containing BSA obtained from collected samples) were
+added to each well for respective measurements of porous and
+nonporous nanoparticles’ drug release behavior. After adding all
+the samples, which were collected at predetermined time points,
+to the BCA containing wells, standard solutions were also added
+on the same well plate, with gradually reducing concentrations
+of BSA to determine the standard curve. The well plate was then
+covered with the aluminum foil and kept in the incubator at 37 ◦C
+for 30 min. In the presence of protein, the color of the solution
+changed from blue to purple. Absorbance was recorded using
+spectrophotometry (Tecan Inﬁnite M200 Plate Reader, Durham,
+NC, USA) at wavelength of 562 nm. Absorbance values for the
+standard concentration values provided a standard curve that
+was then used to calculate the concentration of BSA released.
+The percentages of protein release were calculated using the
+following equation:
+Percentage of protein release = X
+Y × 100
+(2)
+where X indicates the amount of released BSA and Y represents
+the total amount of loaded BSA.
+With the obtained values, percentage of cumulative protein
+release was calculated and plotted against the administered time
+points. The standard deviations of the absorbance at each time
+point were also plotted on the same graph to demonstrate the
+precision of the data.
+III. RESULTS AND DISCUSSION
+The morphology of synthesized nanoparticles was found to
+be spherical from SEM micrographs with average diameters for
+porous and nonporous nanoparticles to be 525.2 and 321.8 nm,
+TABLE I
+CHARACTERISTICS OF BSA-LOADED POROUS AND
+NONPOROUS PLGA NANOPARTICLES
+Fig. 3.
+Size distribution of BSA-loaded (a) nonporous and (b) porous PLGA
+nanoparticles.
+respectively (see Table I). The size distribution was also ob-
+served to be more uniform in case of nonporous nanoparticles
+as shown in Fig. 3.
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.
+
+1086
+IEEE TRANSACTIONS ON NANOTECHNOLOGY, VOL. 12, NO. 6, NOVEMBER 2013
+The porous nanoparticles were expected to be larger than the
+nonporous nanoparticles in line with previous reports [11]. The
+larger sizes of the porous nanoparticles were due to sodium bi-
+carbonate incorporation which later leached out, leaving porous
+features on the nanoparticle surfaces. The porosity, pore sizes,
+and distribution of pores on the porous nanoparticles could be
+controlled by using different concentrations of the porogen [21].
+Here, a single concentration of porogen was used because the
+main focus was to establish salt-leaching as a novel technique
+to prepare the porous nanoparticles. The pore sizes were seen to
+range between 30–60 nm from SEM data.
+Polydispersity index, a dimensionless number, is used to
+gauge the particle size distribution. Its value may vary from
+0.01 (monodispersed particles) to 0.7 (particles with ﬂuctuating
+size distribution) [5]. Particles with broadly varying size distri-
+bution indicate polydispersity index >0.7 [24]. Polydispersity of
+both types of nanoparticles (given in Table I) clearly shows that
+both types of nanoparticles had polydispersity index much less
+than 0.7. Porous PLGA nanoparticles exhibited polydispersity
+higher than nonporous ones which might have stemmed from
+the uncontrolled vortexing of porogen in w/o phase solution
+while synthesizing the nanoparticles.
+The stability of the nanoparticles in solution is very impor-
+tant for biological applications that incorporate colloidal sus-
+pensions. The particle composition and the medium in which
+these nanoparticles are dispersed determine the zeta potential
+(ζ) of the particles. High surface charges (ζ > ±30 mV) pre-
+vent aggregation and thus make the nanoparticles highly stable
+in the colloid suspension [25]. Particles with surface charges
+(ζ > ±10 mV) are also relatively stable whereas ζ < ±10 mV al-
+lows the particles to ﬂocculate due to small repulsive effect [26].
+In this work, we used PLGA with carboxylic acid end groups
+(–COOH) on it and the presence of carboxyl groups on the
+PLGA nanoparticle surfaces passed on negative charges which
+was conﬁrmed by the ζ values recorded for both types of
+nanoparticles. Though the zeta potential for the nanoparticles
+was less than –30 mV, but it was still high enough to give rea-
+sonably good colloidal properties.
+The drug loading efﬁciency was determined by using the
+indirect method because BSA is hydrophilic drug and can de-
+grade in organic solvent. The loading efﬁciency was found to
+be 65.50% and 77.59% for BSA loaded porous and nonporous
+nanoparticles, respectively. The drug loading efﬁciency was suf-
+ﬁciently high which showed the viability of those nanoparticles
+in controlled drug delivery systems. High loading efﬁciency is
+always desired for an efﬁcient drug delivery system so that less
+quantity of the nanoparticles would be needed to administer a
+particular dose. The nonporous nanoparticles had higher load-
+ing efﬁciency as compared to porous nanoparticles. The porous
+structures on the surface of nanospheres allowed some drug to
+easily ﬂow out whereas nonporous nanoparticles incorporated
+more drug [21]. The salt-leaching process, on one hand, caused
+the formation of porous structures on the nanoparticles surface
+but it also reduced the loading efﬁciency of the nanoparticles.
+To investigate the BSA drug release from porous and non-
+porous PLGA nanoparticles, BCA protein assay was used.
+The cumulative BSA release for porous and nonporous PLGA
+Fig. 4.
+Comparison of BSA release from porous and nonporous PLGA
+nanoparticles shows a sustained release behavior. The porous nanoparticles
+show higher release dose over the course of a month than nonporous ones. Error
+bars represent the standard deviation in percentage protein release (n = 3).
+nanoparticles was found to be 87.41% and 59.91%, respectively,
+over a period of 30 days. For the ﬁrst few days, more than 30%
+of BSA was released, while after that relatively less amount
+of BSA release was observed as shown in Fig. 4. The release
+behavior of both types of nanoparticles is plotted to show the
+comparison over the same period of time.
+Comparison of BSA release from the porous and nonporous
+PLGA nanoparticles showed a faster but sustained release from
+porous nanoparticles. The porous nanoparticles offered better
+release behavior owing to their increased surface area and bet-
+ter ﬂow of ﬂuid through leaky structures [27], [28]. Gener-
+ally, reports show that larger particles show lower drug release
+rate when compared to smaller particles because the length
+of diffusion pathway is higher for larger particles and drug
+concentration gradient is smaller [10]. Here, porous nanoparti-
+cles were larger in size but exhibited higher release rate than
+smaller nonporous nanoparticles. This nonintuitive behavior
+clearly stemmed from the porosity. As the porosity increased,
+the percent of cumulative drug release also increased [21]. More-
+over drug release from porous nanoparticles would also depend
+on the pore characteristics and the nature of host guest inter-
+actions [29]. These data show nanoparticles that are not only
+larger but also have higher release of drug.
+The drug release data for 30 days showed a sustained release
+which was reﬂected by a good amount of BSA. A burst release
+for the ﬁrst few days was observed which stemmed from the
+release of drug adsorbed on or near the surface of nanoparticles
+and thus ensured immediate availability of the therapeutic drug.
+The PLGA nanoparticles are employed for oral and intravenous
+drug delivery routes but these are not selective to speciﬁc cells.
+Selectivity can be imparted by making the nanoparticles func-
+tional. A number of functional groups, antibodies, and aptamers
+can be employed to make these selective to certain cells, pro-
+teins, or genes. These functional groups can bind to the target
+cells and the payload of nanoparticle-based drugs can be deliv-
+ered selectively [30], [31].
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.
+
+ILYAS et al.: SALT-LEACHING SYNTHESIS OF POROUS PLGA NANOPARTICLES
+1087
+IV. CONCLUSION
+This paper demonstrates that BSA-loaded porous PLGA
+nanoparticles provide sustained and enhanced drug release, even
+though these are larger in size. The salt-leaching is a novel
+approach to synthesize porous nanoparticles where sodium bi-
+carbonate is used as the porogen. Moreover, the nonporous
+nanoparticles are very uniform in their size distribution but the
+porous nanoparticles show a larger distribution over a speciﬁc
+range, due to the trapped salts that lead to the pore formation af-
+ter leaching. Drug loading efﬁciency of nonporous nanoparticles
+is calculated to be higher than that of porous nanoparticles which
+is due to easy release through the features on the porous nanopar-
+ticles. The drug release behavior of both types of nanoparticles
+is monitored over a period of 30 days and porous nanoparticles,
+although larger in size, show faster sustained release. Owing to
+the enhanced surface area, better release behavior and their sta-
+bility over varying temperatures, porous nanoparticles are thus
+recognized as much better drug carriers.
+ACKNOWLEDGMENT
+The authors would like to thank Evi Shiakolas for her as-
+sistance with graphics and W. Ali for help in data analysis.
+They acknowledge valuable discussions with the scientiﬁc staff
+at the UT-Arlington Characterization Center for Materials and
+Biology (C2MB) and Nanotechnology Research Center. Partial
+nanoparticle characterization was carried out at Nanomedicine
+and Drug Delivery Laboratory, University of Texas Southwest-
+ern Medical Center at Dallas, Dallas, TX, USA.
+REFERENCES
+[1] Y. Parajo, I. d’ Angelo, A. Horvath, T. Vantus, K. Gyorgy, A. Welle,
+M. Garcia-Fuentes, and M. J. Alonso, “PLGA: Poloxamer blend micro-
+and nanoparticles as controlled release systems for synthetic proangio-
+genic factors,” Eur. J. Pharm. Sci., vol. 41, pp. 644–649, 2010.
+[2] S. Gelperina, O. Maksimenko, A. Khalansky, L. Vanchugova, E. Shipulo,
+K. Abbasova, R. Berdiev, S. Wohlfart, N. Chepurnova, and J. Kreuter,
+“Drug delivery to the brain using surfactant-coated poly (lactide-co-
+glycolide) nanoparticles: Inﬂuence of the formulation parameters,” Eur.
+J. Pharm. Biopharm., vol. 74, pp. 157–163, 2009.
+[3] B. J. Boyd, “Past and future evolution in colloidal drug delivery systems,”
+Expert Opin. Drug Del., vol. 5, pp. 69–85, 2008.
+[4] S. Bennis, C. Chapey, J. Robert, and P. Couvreur, “Enhanced cytotoxicity
+of doxorubicin encapsulated in polyisohexylcyanoacrylate nanospheres
+against multidrug-resistant tumour cells in culture,” Eur. J. Cancer, vol. 30,
+pp. 89–93, 1994.
+[5] W. Asghar, M. Islam, A. S. Wadajkar, Y. Wan, A. Ilyas, K. T. Nguyen, and
+S. M. Iqbal, “PLGA micro-and nanoparticles loaded into gelatin scaffold
+for controlled drug release,” IEEE Trans. Nanotechnol., vol. 11, no. 3,
+pp. 546–553, May 2012.
+[6] B. Magenheim and S. Benita, “Nanoparticle characterization: A compre-
+hensive physicochemical approach,” STP Pharm. Sci., vol. 4, pp. 221–241,
+1991.
+[7] R. Jalil and J. R. Nixon, “Biodegradable poly (lactic acid) and poly
+(lactide-co-glycolide) microcapsules: Problems associated with prepar-
+ative techniques and release properties,” J. Microencapsulation, vol. 7,
+pp. 297–325, 1990.
+[8] J. Siepmann, K. Elkharraz, F. Siepmann, and D. Klose, “How autocatalysis
+accelerates drug release from PLGA-based microparticles: A quantitative
+treatment,” Biomacromolecules, vol. 6, pp. 2312–2319, 2005.
+[9] L. Fan and S. K. Singh, Controlled Release: A Quantitative Treatment.
+Berlin, Germany: Springer, 1989.
+[10] D. Klose, F. Siepmann, K. Elkharraz, S. Krenzlin, and J. Siepmann,
+“How porosity and size affect the drug release mechanisms from
+PLGA-based microparticles,” Int. J. Pharm., vol. 314, pp. 198–206,
+2006.
+[11] J. Heeren, T. Grewal, A. Laatsch, D. Rottke, F. Rinninger, R. K. Murray,
+D. K. Granner, P. A. Mayes, and V. W. Rodwell, “Porous nanoparticles
+in drug delivery systems,” Pak. J. Pharm. Sci., vol. 19, pp. 155–158,
+2006.
+[12] D. L. French, D. A. Edwards, and R. W. Niven, “The inﬂuence of for-
+mulation on emission, deaggregation and deposition of dry powders for
+inhalation,” J. Aerosol Sci., vol. 27, pp. 769–783, 1996.
+[13] D. H. Lewis, “Controlled release of bioactive agents from lactide/glycolide
+polymers,” Drugs Pharma. Sci., vol. 45, pp. 1–41, 1990.
+[14] D. Klose, F. Siepmann, K. Elkharraz, and J. Siepmann, “PLGA-based drug
+delivery systems: Importance of the type of drug and device geometry,”
+Int. J. Pharm., vol. 354, pp. 95–103, 2008.
+[15] J. M. Lu, X. Wang, C. Marin-Muller, H. Wang, P. H. Lin, Q. Yao, and
+C. Chen, “Current advances in research and clinical applications of
+PLGA-based nanotechnology,” Expert Rev. Molecular Diagnostics, vol. 9,
+pp. 325–341, 2009.
+[16] K. Pays, J. Giermanska-Kahn, B. Pouligny, J. Bibette, and F. Leal-
+Calderon, “Double emulsions: How does release occur?” J. Control. Rel.,
+vol. 79, pp. 193–205, 2002.
+[17] F. Tewes, E. Munnier, B. Antoon, L. Ngaboni Okassa, S. Cohen-Jonathan,
+H. Marchais, L. Douziech-Eyrolles, M. Souce, P. Dubois, and I. Chourpa,
+“Comparative study of doxorubicin-loaded poly (lactide-co-glycolide)
+nanoparticles prepared by single and double emulsion methods,” Eur.
+J. Pharma. Biopharm., vol. 66, pp. 488–492, 2007.
+[18] F. He, R. X. Zhuo, L. J. Liu, D. B. Jin, J. Feng, and X. L. Wang, “Im-
+mobilized lipase on porous silica beads: Preparation and application for
+enzymatic ring-opening polymerization of cyclic phosphate,” Reactive
+Functional Polymers, vol. 47, pp. 153–158, 2001.
+[19] G. Zhao, T. Ishizaka, H. Kasai, H. Oikawa, and H. Nakanishi, “Fabrication
+of unique porous polyimide nanoparticles using a reprecipitation method,”
+Chem. Mater., vol. 19, pp. 1901–1905, 2007.
+[20] H. J. Chung, H. K. Kim, J. J. Yoon, and T. G. Park, “Heparin immobi-
+lized porous PLGA microspheres for angiogenic growth factor delivery,”
+Pharma. Res., vol. 23, pp. 1835–1841, 2006.
+[21] Y. J. Oh, J. Lee, J. Y. Seo, T. Rhim, S. H. Kim, H. J. Yoon, and K. Y. Lee,
+“Preparation of budesonide-loaded porous PLGA microparticles and their
+therapeutic efﬁcacy in a murine asthma model,” J. Control Rel., vol. 150,
+pp. 56–62, 2011.
+[22] S. B. Lee, Y. H. Kim, M. S. Chong, S. H. Hong, and Y. M. Lee, “Study of
+gelatin-containing artiﬁcial skin V: Fabrication of gelatin scaffolds using
+a salt-leaching method,” Biomaterials, vol. 26, pp. 1961–1968, 2005.
+[23] T. G. Kim, H. J. Chung, and T. G. Park, “Macroporous and nanoﬁbrous
+hyaluronic acid/collagen hybrid scaffold fabricated by concurrent electro-
+spinning and deposition/leaching of salt particles,” Acta Biomaterialia,
+vol. 4, pp. 1611–1619, 2008.
+[24] M. Nidhin, R. Indumathy, K. J. Sreeram, and B. U. Nair, “Synthesis of
+iron oxide nanoparticles of narrow size distribution on polysaccharide
+templates,” Bull. Mater. Sci., vol. 31, pp. 93–96, 2008.
+[25] P. Couvreur, G. Barratt, E. Fattal, P. Legrand, and C. Vauthier, “Nanocap-
+sule technology: A review,” Cri. Rev. Therapeutic Drug Carrier Sys.,
+vol. 19, pp. 99–134, 2002.
+[26] K. Yoshioka, E. Sakai, M. Daimon, and A. Kitahara, “Role of steric
+hindrance in the performance of superplasticizers for concrete,” J. Amer.
+Ceramic Soc., vol. 80, pp. 2667–2671, 1997.
+[27] J. F. Chen, H. M. Ding, J. X. Wang, and L. Shao, “Preparation and char-
+acterization of porous hollow silica nanoparticles for drug delivery appli-
+cation,” Biomaterials, vol. 25, pp. 723–727, 2004.
+[28] M. S. Arayne and N. Sultana, “Porous nanoparticles in drug delivery
+systems,” Pak. J. Pharma. Sci., vol. 19, pp. 158–169, 2006.
+[29] C. Y. Sun, C. Qin, C. G. Wang, Z. M. Su, S. Wang, X. L. Wang, G. S. Yang,
+K. Z. Shao, Y. Q. Lan, and E. B. Wang, “Chiral nanoporous metal-organic
+frameworks with high porosity as materials for drug delivery,” Adv. Mater.,
+vol. 23, pp. 5629–5632, 2011.
+[30] J. Cheng, B. A. Teply, I. Sheriﬁ, J. Sung, G. Luther, F. X. Gu, E. Levy-
+Nissenbaum, A. F. Radovic-Moreno, R. Langer, and O. C. Farokhzad,
+“Formulation of functionalized PLGA-PEG nanoparticles for in vivo tar-
+geted drug delivery,” Biomaterials, vol. 28, pp. 869–876, 2007.
+[31] S. Dhar, F. X. Gu, R. Langer, O. C. Farokhzad, and S. J. Lippard, “Targeted
+delivery of cisplatin to prostate cancer cells by aptamer functionalized Pt
+(IV) prodrug-PLGA-PEG nanoparticles,” Proc. Nat. Acad. Sci., vol. 105,
+pp. 17356–17361, 2008.
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.
+
+1088
+IEEE TRANSACTIONS ON NANOTECHNOLOGY, VOL. 12, NO. 6, NOVEMBER 2013
+Azhar Ilyas was born in Haroonabad, Punjab,
+Pakistan, in 1985. He received the Bachelor’s de-
+gree in electrical engineering from the University
+of Engineering and Technology, Lahore, Pakistan,
+in September 2007. He has been working toward his
+Ph.D. under the supervision of Dr. S. M. Iqbal in the
+Department of Electrical Engineering at the Univer-
+sity of Texas at Arlington (UT-Arlington), TX, USA,
+since September 2009.
+He was a member of the Faculty of Engineering,
+University of Central Punjab, Lahore, from 2007 to
+2009, before he moved to USA for graduate studies. He is currently a Graduate
+Research Associate in the Nano-Bio Lab, Nanotechnology Research Center at
+UT-Arlington. His research interests include nanoscale biosensors, solid-state
+micropores for cellular level diagnosis, and application of artiﬁcial photosyn-
+thesis in photovoltaic cells.
+Muhymin Islam was born in Dhaka, Bangladesh, in
+1986. He received the Bachelor’s degree in electri-
+cal and electronics engineering from the Bangladesh
+University of Engineering and Technology, Dhaka,
+Bangladesh, in 2009. Since 2010, he has been work-
+ing toward his Ph.D. degree in the Department of
+Electrical Engineering under the supervision of Dr.
+S. M. Iqbal at UT-Arlington.
+His research is focused on solid-state platforms
+for early disease diagnostics.
+Waseem Asghar was born in Sahiwal, Punjab,
+Pakistan, in 1984. He received his Bachelor’s de-
+gree in electrical engineering from the University
+of Engineering and Technology, Lahore, Pakistan, in
+September 2007, and the Ph.D. degree from Univer-
+sity of Texas at Arlington, Arlington, TX, USA, in
+April 2012.
+He is currently a Postdoctoral Research Fellow
+at Harvard Medical School, Brigham and Women’s
+Hospital, and Harvard-MIT Division of Health Sci-
+ences and Technology, Boston, MA, USA. His re-
+search interests include disease diagnosis and prognosis, cancer detection,
+biosensors, point-of-care devices, and biomaterials. He has published more
+than 20 peer-reviewed journal and full-length conference papers. He has also
+contributed two book chapters.
+Jyothi U. Menon received the M.S. degree in bio-
+engineering from University of Texas at Arlington,
+Arlington, TX, USA, in 2010 where she is currently
+working toward her Ph.D.
+She has authored seven peer-reviewed journal ar-
+ticles and one book chapter. Her research interests
+include nanomaterials for pulmonary delivery, bio-
+materials, drug delivery, and tissue engineering.
+Aniket S. Wadajkar was born in Nanded, India,
+in 1982. He received the M.S. and Ph.D. de-
+grees in biomedical engineering, in 2008 and 2012,
+respectively.
+He is currently a Senior Scientist in Applied DNA
+Sciences, NY, USA. His research interests include
+drug delivery, nanobiomaterials, and tissue engineer-
+ing. . He has authored over 20 journal publications
+and two book chapters.
+Dr. Wadajkar received the Pre-Doctoral Fellow-
+ship award from the American Heart Association,
+the Outstanding Bioengineer Award, and is listed in the Who’s Who Among
+American Universities and Colleges.
+Kytai T. Nguyen received the B.S. degree in chem-
+ical engineering from the University of Minnesota,
+Minneapolis, MN, USA, in 1995, and the Ph.D. de-
+gree in chemical engineering with an emphasis in
+bioengineering from the Rice University, Houston,
+TX, USA, in 2000.
+She is currently an Associate Professor in the De-
+partment of Bioengineering at University of Texas
+at Arlington, Arlington, TX, USA, and the Univer-
+sity of Texas Southwestern Medical Center, Dallas,
+TX, USA. Her research interests include biomateri-
+als, drug delivery systems, gene therapy systems, cellular engineering, and tissue
+engineering.
+Samir M. Iqbal (S’92–M’07–SM’09) was born in
+Bahrain, in 1972. He received the Bachelor’s degree
+in electrical engineering from the NED University of
+Engineering and Technology, Karachi, Pakistan, in
+1997, and the Ph.D. degree from Purdue University,
+West Lafayette, IN, USA, in 2007.
+He worked as a Post-Doctoral Research Associate
+at Birck Nanotechnology Center in the Discovery
+Park of Purdue University before joining University
+of Texas at Arlington, Arlington in 2007, where he is
+currently an Associate Professor of Electrical Engi-
+neering. He holds courtesy appointment in the Department of Bioengineering
+which is a joint program of the University of Texas at Arlington, and the Uni-
+versity of Texas Southwestern Medical Center, Dallas, TX, USA. He also leads
+Nano-Bio Lab and serves on the Joint Graduate Studies Committee of the Bio-
+engineering Program between University of Texas at Arlington and University
+of Texas Southwestern Medical Center at Dallas.
+Authorized licensed use limited to: University of Maryland College Park. Downloaded on October 23,2025 at 15:23:21 UTC from IEEE Xplore.  Restrictions apply.

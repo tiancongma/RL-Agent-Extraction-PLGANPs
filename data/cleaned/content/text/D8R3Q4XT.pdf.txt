@@ -1,0 +1,1213 @@
+Rom J Morphol Embryol 2023, 64(4):567–577
+ISSN (print) 1220–0522, ISSN (online) 2066–8279
+
+doi: 10.47162/RJME.64.4.14
+This is an open-access article distributed under the terms of a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public
+License, which permits unrestricted use, adaptation, distribution and reproduction in any medium, non-commercially, provided the new creations
+are licensed under identical terms as the original work and the original work is properly cited.
+ORIGINAL PAPER
+Zinc–Boron–PLGA biocomposite material: preparation,
+structural characterization, and in vitro assessment
+MARIA VIORICA CIOCÎLTEU1,2), ION ROMULUS SCOREI1), GABRIELA RĂU1,3), CLAUDIU NICOLICESCU4),
+ANDREI BIŢĂ1,5), VLADIMIR LUCIAN ENE6), ANDREEA SIMIONESCU7), ADINA TURCU-ŞTIOLICĂ8),
+VENERA CRISTINA DINESCU9), JOHNY NEAMŢU1,10), LAURENŢIU MOGOANTĂ11,12),
+GEORGE DAN MOGOŞANU1,5)
+1)Department of Biochemistry, BioBoron Research Institute, S.C. Natural Research S.R.L., Podari, Dolj County, Romania
+2)Department of Analytical Chemistry, Faculty of Pharmacy, University of Medicine and Pharmacy of Craiova, Romania
+3)Department of Organic Chemistry, Faculty of Pharmacy, University of Medicine and Pharmacy of Craiova, Romania
+4)Department of Engineering and Management of Technological Systems, Faculty of Mechanics, University of Craiova,
+Drobeta Turnu-Severin, Romania
+5)Department of Pharmacognosy & Phytotherapy, Faculty of Pharmacy, University of Medicine and Pharmacy of Craiova,
+Romania
+6)Department of Science and Engineering of Oxide Materials and Nanomaterials, Faculty of Chemical Engineering and
+Biotechnologies, National University of Science and Technology Polytechnic Bucharest, Romania
+7)Department of Chemistry, Faculty of Exact Sciences, University of Craiova, Romania
+8)Department of Pharmacoeconomics, Faculty of Pharmacy, University of Medicine and Pharmacy of Craiova, Romania
+9)Department of Health Promotion and Occupational Medicine, Faculty of Medicine, University of Medicine and Pharmacy
+of Craiova, Romania
+10)Department of Physics, Faculty of Pharmacy, University of Medicine and Pharmacy of Craiova, Romania
+11)Research Center for Microscopic Morphology and Immunology, University of Medicine and Pharmacy of Craiova,
+Romania
+12)Romanian Academy of Medical Sciences, Craiova Subsidiary, Romania
+Abstract
+Nowadays, the state-of-the-art discoveries in the field of delivery systems for therapeutic purposes have redefined the importance of biocompatible
+and biodegradable poly(lactic-co-glycolic acid (PLGA) nanocomposites. The study aimed to obtain a biocomposite material, with improved
+properties of its constituents [zinc–boron (Zn–B) complex and PLGA], by a simple, cost-effective method. The water/oil/water double emulsion
+technique allowed the adjustment of the synthesis parameters, to maximize the degree of Zn–B complex encapsulation. The morphological
+aspects of the samples were established by scanning electron microscopy (SEM). Particle size distribution was determined by dynamic light
+scattering (DLS). Morphology was typical for PLGA, spherical one. Depending on the synthesis conditions, the obtained particles have diameters
+between 10–450 nm. Zeta potential (ZP) showed that the particles have electronegative surface charge, offering a favorable perspective on
+aggregation, flocculation, and dispersion phenomena. It was observed, applying the design of experiments, that the particles size increased
+with increasing amounts of PLGA and polyvinyl alcohol (PVA), while ZP increased with higher PLGA and smaller PVA amounts in the formulation.
+The encapsulation efficiency was determined by ultra-high performance liquid chromatography/mass spectrometry (UHPLC/MS). The in vitro
+assessment was performed using Vero CCL-81 epithelial cell line and the 3-(4,5-Dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide (MTT)
+test. Zn–B–PLGA biocomposite has promising characteristics and can be used for future biomedical applications.
+Keywords: Zn–B–PLGA biocomposite, design of experiment, scanning electron microscopy, dynamic light scattering, ultra-high
+performance liquid chromatography/mass spectrometry, in vitro assessment.
+ Introduction
+Poly(lactic-co-glycolic acid) (PLGA) has a series of
+properties (adjustable sizes, stability, biodegradability,
+the possibility of surface functionalization) that offers
+it numerous advantages already described that led to its
+extensive use as a drug delivery system [1].
+The flexibility of degradation is an important factor that
+makes PLGA suitable to produce medical devices, such as
+nanoparticles (NPs), implants, or grafts. PLGA consists of
+a class of biodegradable polymers that are approved by the
+Food and Drug Administration (FDA), which gives them
+sustainability in terms of drug delivery. These polymers
+have been studied as vehicles for proteins, peptides,
+ribonucleic acid (RNA) or deoxyribonucleic acid (DNA)
+[2].
+PLGA-based microparticles (MPs) or NPs represent
+most formulations on the pharmaceutical market, there are
+14 products with PLGA clinically approved and currently
+used in medical practice in diseases such as prostate cancer,
+osteoarthritis, diabetes, etc., and many other PLGA-based
+products in clinical trials [3–6].
+R J M E
+Romanian Journal of
+Morphology & Embryology
+http://www.rjme.ro/
+
+Maria Viorica Ciocîlteu et al.
+
+568
+PLGA in living tissues
+PLGA is considered compatible with living tissues,
+meaning it does not elicit a significant immune response
+or toxic effects in living tissues. It has been extensively
+studied and used in preclinical and clinical settings.
+However, it is important to note that individual responses
+can vary, and careful consideration of factors, such as
+degradation rate, molecular weight, and specific application
+is necessary to ensure optimal biocompatibility [1, 3–5].
+In the body, PLGA undergoes a process of hydrolysis
+and forms lactic acid (LA) and glycolic acid (GA) [7].
+These original monomers of PLGA are secondary products
+of metabolic pathways in the human body. The human body
+can metabolize GA to toxic oxalic acid, but the amounts in
+typical applications are negligible and systemic toxicity is
+minimal [8]. On the other hand, the acidic PLGA degradation
+medium can induce an autocatalytic environment because
+the local pH drops sufficiently for this to be possible. The
+autocatalytic capacities of PLGA are size dependent. The
+first surface that begins to degrade is the center of the PLGA
+matrix because this is where acidic oligomers accumulate.
+Thus, an acidic center is formed from which erosion begins
+[7, 8].
+Polymer–drug interaction was also observed in the
+studies, which gives PLGA a potential degree of toxicity
+in drug dose delivery. At the same time, toxicity can also
+be associated with the inconstant release of medicinal
+compounds, but additional research is needed to prove
+this aspect [9].
+Boron and Zinc as essential elements
+Boron (B) is an essential element, although it is required
+in small amounts compared to other essential elements. It
+plays important roles in various biological processes and is
+necessary for the growth and development of plants, animals,
+and humans [10]. In plants, B is involved in cell wall
+formation, membrane integrity, carbohydrate metabolism,
+and the transport of nutrients [11]. It also plays a role in
+pollen germination and fruit development. In animals and
+humans, B is involved in bone health, as it influences the
+metabolism and utilization of calcium, magnesium, and
+vitamin D [12]. It also plays a role in brain function and
+cognitive performance [10, 11].
+B has a huge impact on the microbiota, particularly in
+the gastrointestinal tract [13–20]. There are a few studies
+that suggest that it may have a modulatory role. One study
+published in the Journal of Trace Elements in Medicine and
+Biology investigated the influence of B on gut microbiota
+(GM) in rats. The results showed that B supplementation
+led to changes in the composition of the GM, including
+an increase in the abundance of certain bacterial species.
+Karatekeli et al. (2023) showed that B exhibits hepato-
+protective antioxidant, anti-inflammatory, and antiapoptotic
+effect in rats exposed to aflatoxins [14]. Arciniega-Martínez
+et al. (2022) examined the effects of B on immune function,
+showing that B-containing compounds induce an immune
+response on cells [15].
+One of the most important trace elements in the human
+body, zinc (Zn) is essential for regulatory, structural, and
+catalytic activities, involving immune response, oxidative
+stress, homeostasis, ageing, and apoptosis [21, 22]. Zn has
+a critical role for immunity and cell survival, being involved
+in many biological functions by the fact that it is a component
+of more than 300 enzymes and 1000 transcription factors
+[23]. Zn affects GM [24], inhibits pathogenic bacteria [25],
+meliorate incidence of diarrhea by reducing intestinal damage
+and improving anti-inflammatory factors [26].
+Zn–boric acid (BA) biological interplay has been
+evidenced in rats. At an equivalent B concentration, Zn
+borate exhibited low acute toxicity [median lethal dose
+(LD50) >10 g/kg body weight (b.w.)] unlike disodium
+tetraborate pentahydrate (LD50 of 3.3 g/kg b.w.). Moreover,
+in a 28-day subacute oral gavage assay, no toxic effects
+were observed for 1 g Zn borate/kg b.w./day (equivalent
+to 0.05 g B/kg b.w./day) [27].
+Zn–B complex: novel natural active
+Zn and B-based dietary supplement
+In vitro and in vivo, Zn–B complex turned out to be a
+non-toxic, biocompatible, and biodegradable nutritional
+supplement, significantly increasing alpha2-macroglobulin
+(A2M) levels [28, 29]. It has been shown that Zn–B complex
+has a similar composition to fructoboric acid, a naturally
+occurring compound found in plants [30].
+In recent years, the use of PLGA formulations for oral
+controlled release has gained more and more importance
+[31, 32]. Subsequently, PLGA can release Zn and B into
+the colon, two essential elements for a healthy symbiosis
+between the microbiota and the human host.
+Aim
+The aim of the study was the preparation and structural
+characterization of a new biocomposite material with PLGA
+as a transporter of Zn–B complex for systemic administration.
+The preparation was carried out by a simple, cost-effective
+method, optimizing the key parameters for the adjusting of
+the Zn–B complex amount encapsulated into the PLGA
+sphere, as well as the biocomposite dimensions, stability,
+and functionality, and it was submitted as a United States
+Provisional Patent Application [18]. In addition, the in vitro
+assessment of Zn–B–PLGA biocomposite was performed
+using Vero CCL-81 epithelial cell line and the 3-(4,5-
+Dimethylthiazol-2-yl)-2,5-diphenyltetrazolium bromide
+(MTT) test.
+ Materials and Methods
+Chemicals, reagents, and cell line
+Poly(D,L-lactide-co-glycolide) 65:35, molecular weight
+(MW) 40 000–75 000, was purchased from Sigma-Aldrich
+(Taufkirchen, Germany). Dichloromethane (DCM), polyvinyl
+alcohol (PVA) 8-88 (MW approx. 67 000), ammonium
+acetate, potassium bromide and LiChrosolv® water and
+acetonitrile for chromatography were achieved from Merck
+Millipore (Darmstadt, Germany). For the Zn–B complex
+preparation, Zn powder, BA and fructose were purchased
+also from Merck Millipore. For in vitro assessment, dimethyl
+sulfoxide (DMSO), ethylenediaminetetraacetic acid (EDTA),
+Eagle’s Minimal Essential Medium (EMEM), fetal bovine
+serum (FBS), MTT, phosphate-buffered saline (PBS), trypsin
+and Vero CCL-81 epithelial cell line were purchased from
+Sigma-Aldrich.
+
+Zinc–Boron–PLGA biocomposite material: preparation, structural characterization, and in vitro assessment
+
+569
+Preparation of Zn–B complex
+Zn–B complex was synthesized based on general methods
+used for the synthesis of various borate complexes with
+carbohydrates (fructose, sorbitol, mannitol) and B inorganic
+anions [33–36]. The optimization of Zn–B complex synthesis
+was made using a Büchi-type reactor made of steel, with
+a capacity of 300 mL, and which can withstand a pressure
+of up to 100 bar, equipped with temperature probe, pressure
+gauge, pneumatic connection, and safety valve. For the
+activation of metallic Zn, 9.146 g (70 mmol) of Zn powder
+and 300 mL of distilled water were added to a Büchi-type
+reactor, equipped with two necks, device for nitrogen
+(N2) admission and overpressure regulation, and with a
+thermometer. The air was gradually replaced, for 10–15
+minutes, with inert gas (purging with N2). The reaction
+mixture was heated to 140–150°C, for three hours, under
+strong stirring (plate with electromagnetic stirrer), to activate
+metallic Zn. After three hours, the reaction mixture from
+the metallic Zn activation was cooled to 50–60°C, then
+12.412 g (68.95 mmol) of fructose and 2.137 g (34.47 mmol)
+of BA (in this order) were gradually added, while stirring.
+Next, the reaction mixture was kept under stirring for
+60 minutes, at a temperature of 50–60°C. After three hours,
+the reaction mixture has a temperature of 91.5°C and a
+pH of 6.36. After another 60 minutes, the reaction mixture
+was filtered under vacuum to separate the excess of unreacted
+metallic Zn.
+Preparation of Zn–B–PLGA biocomposite
+W1 aqueous phase: 50 mg of Zn–B complex were
+solubilized in 2 mL aqueous solution with 4% PVA 8-88
+(w/v).
+Oil phase O: 50–150 mg of PLGA 65:35 was dissolved
+in DCM.
+The two phases were brought into contact and mixed
+at 45000 rpm in a Heidolph Silent Crusher Vortex (Wood
+Dale, Illinois, USA) to obtain the W1/O primary emulsion.
+W2 aqueous phase: 95 mL of aqueous solution with
+1–4% PVA 8-88 as emulsifier (w/v).
+The primary emulsion was added dropwise to the
+secondary aqueous phase stirred at 1000 rpm for three
+hours to evaporate the DCM.
+The particles were centrifuged at 11 000 rpm, washed
+and frozen overnight. The final suspension was subjected
+to a lyophilization process using an Alpha 1-2 LSCbasic
+freeze dryer (Martin Christ Gefriertrocknungsanlagen GmbH,
+Osterode am Harz, Germany), as follows: the suspended
+particles were frozen at -55°C overnight and at 0.02 mbar
+for 48 hours.
+Design of experiments analysis
+To solve design constraints and perform minimum
+experimental runs, we used design of experiments (DoE)
+by a systematic quality by design (QbD) approach (Table 1).
+The independent variables (factors) were the concentrations
+of PVA and of PLGA, whereas the dependent variables
+(responses) were the size of the Zn–B–PLGA biocomposite
+and the zeta potential (ZP). According to a full factorial
+(two levels) design, interaction model, we performed seven
+experiments (Table 2). Only terms with significance level
+less than p<0.05 were included into the experimental
+model. We calculated R2 (the fraction of the variation in
+the response explained by the model), Q2 (the predictive
+power of the models), F-value (the mean regression ratio),
+model validity (to which extent the measurement meets the
+real-life situations), reproducibility (the ability to achieve
+the same output when the input is the same).
+Table 1 – Independent variables (factors) and their
+levels
+Independent variable
+Symbol
+Levels
+-1
+0
++1
+PVA concentration [%]
+X1
+1
+2.5
+4
+PLGA concentration [mg]
+X2
+50
+100
+150
+PLGA: Poly(lactic-co-glycolic acid); PVA: Polyvinyl alcohol.
+Table 2 – Experimental design matrix of responses
+Experiment
+PVA
+concentration
+[%]
+PLGA
+concentration
+[mg]
+Particle
+size
+[nm]
+ZP
+[mV]
+N1
+1
+50
+17.7±
+0.071
+-1.11±
+0.55
+N2
+4
+50
+225±
+0.912
+-5.07±
+0.57
+N3
+1
+150
+365.7±
+0.05
+3.45±
+2.49
+N4
+4
+150
+435.2±
+0.079
+-2.19±
+0.64
+N5
+2.5
+100
+232.9±
+0.411
+-3.71±
+1.69
+N6
+2.5
+100
+241.9±
+0.04
+-3.11±
+0.45
+N7
+2.5
+100
+257.5±
+0.246
+-2.78±
+0.33
+PLGA: Poly(lactic-co-glycolic acid); PVA: Polyvinyl alcohol; ZP: Zeta
+potential.
+The experimental data obtained from the seven (N1–N7)
+experiments were fitted to a polynomial model, which
+allows prediction of the formulation variables on the Zn–
+B–PLGA biocomposite characteristics, using MODDE ver.
+21.1 for Windows software (Sartorius Stedim Data Analytics
+AB, Umeå, Sweden). The mathematical approach allows
+each Y response to be represented by an equation:
+Y = b0 + b1X1 + b2X2 + b12X1X2
+where X1 and X2 – independent variables (as in Table 1);
+b1 and b2 – the estimation of the main effects of the X1 and
+X2 factors; b12 – the estimation of the interaction between
+X1 and X2 factors.
+Spectral characterization
+Fourier-transform infrared (FTIR) spectra were recorded
+on a Thermo Nicolet Avatar 370 FTIR spectrometer (Thermo
+Nicolet Corp., Madison, WI, USA) in potassium bromide
+pellets, using EZ Omnic ver. 7.3. software and spectral
+library (Thermo Electron Corp., Madison, WI, USA). The
+samples were scanned within the range 4000–400 cm-1.
+Thirty-two scans were performed, with a resolution of
+16 cm-1.
+Morphological aspects
+Scanning electron microscopy (SEM) was carried out
+to highlight aspects related to the morphology of the samples,
+such as shape, agglomeration tendency, porous character.
+To determine the morphology and elemental composition
+of the obtained biocomposite, a high-resolution SEM, FEI
+Inspect F50 (FEI Company, Hillsboro, Oregon, USA) was
+
+Maria Viorica Ciocîlteu et al.
+
+570
+used. The microscope is equipped with a field emission
+gun (FEG) and an energy-dispersive X-ray spectrometer
+(EDS), with a resolution at MnK of 133 eV. The acquisition
+of micrographs was made with an energy value of 30 keV
+and a point-to-point resolution of 1.2 nm, at different
+magnifications, using the secondary electron detector.
+For SEM analysis, we fixed the samples 20 minutes,
+at room temperature, in 4% paraformaldehyde (PFA). After
+three PBS washes, to dehydrate the cells, the samples were
+sequentially immersed in 70%, 90% and 100% ethanol,
+15 minutes twice for each concentration. Then, the samples
+were air dried. Since the samples to be analyzed do not
+have electrical conductivity, their preparation was necessary,
+which consists of a metallization process (covering the
+surface to be analyzed with a film of gold NPs approx. 4 nm
+thick). This process of obtaining electrical conductivity takes
+60 seconds. The analysis was carried out in a vacuum, by
+measuring the energy of the secondary electrons resulting
+from the interaction of the surfaces with the primary electron
+beam.
+Dynamic light scattering analysis
+The numerical and volumetric distribution of the
+synthesized NPs (hydrodynamic diameter) was measured
+by the dynamic light scattering (DLS) technique using a
+Brookhaven 90 Plus equipment (Brookhaven Instruments
+Corp., Austin, Texas, USA) provided with laser of 35 mW
+output power and 660 nm wavelength. The analysis of the
+Brownian motion of the particles brought into the liquid
+medium and dispersed (by ultrasonication) was correlated
+with the size of the particles by laser illumination and
+analysis of the intensity of scattered light fluctuations.
+The samples were diluted in water and sonicated for five
+minutes. The analysis was performed at 25°C, diffraction
+angle of 90°.
+Zn–B complex loading efficiency
+in Zn–B–PLGA biocomposite
+The loading efficiency (LE) [%] was determined by
+measuring 25 mg of Zn–B–PLGA biocomposite NPs in
+2 mL of water. The dispersion was initially stirred under
+ultrasound and then left for 40 days for the complete release
+of the active principle and complete hydrolysis of the
+polymer. The obtained solution was filtered, diluted 1:20 and
+subjected to ultra-high performance liquid chromatography/
+mass spectrometry (UHPLC/MS) analysis. Waters (Milford,
+Massachusetts, USA) Arc System coupled with a Waters
+QDa MS detector was used for the UHPLC/MS analysis.
+The column was a Waters Atlantis Premier BEH Z-HILIC
+(2.1×100 mm, 2.5 μm) eluted with two solvents: A (10%
+ammonium acetate in water) and B (acetonitrile) in isocratic
+mode (25% A). The flow rate of the mobile phase was set
+to 0.3 mL/min. The column temperature was equilibrated
+to 30°C. The injection volume was 5 μL. The QDa MS
+detector was set to negative mode at 0.8 kV for the capillary,
+20 V for the cone voltage and 400°C for the capillary. The
+mass range was set at m/z 100–600 for spectra collection
+and Selected Ion Recording (SIR) mode was used for
+quantification at m/z 367 [27, 29].
+LE [%] was calculated using formula:
+LE [%] ൌ𝑀𝑎𝑠𝑠 𝑜𝑓 𝑍𝑛– 𝐵 𝑐𝑜𝑚𝑝𝑙𝑒𝑥 ሾ𝑚𝑔ሿ
+𝑀𝑎𝑠𝑠 𝑜𝑓 𝑍𝑛– 𝐵– 𝑃𝐿𝐺𝐴 ሾ𝑚𝑔ሿ×100
+Cell culture and MTT assay
+The cell line and the experimental conditions are specified
+in a previously published paper [28], as follows: Vero
+CCL-81 epithelial cell line obtained from African green
+monkey kidney; supplementation of EMEM with 10%
+FBS; incubation at 37°C in a humid atmosphere of 5%
+carbon dioxide (CO2); trypsin–EDTA treatment to detach
+adherent cells with 80% confluence; detached cells were
+seeded in 96-well plates (104 cells/cm2 density) and allowed
+for 24 hours to grow in monolayer; cells were incubated
+for an additional 24 hours with sterile medium of Zn–B–
+PLGA biocomposite (0.1, 0.5, 1, 3, 5, 7 and 10 mM); 5%
+DMSO was used as positive control of cytotoxicity; the
+genuine culture plate represented the negative control of
+cytotoxicity [37]. The contrast phase microscopy (Olympus
+CKX41 microscope, video camera, image capture, CellSens
+software) was used for the assessment of Vero cell line
+density and morphology.
+For the assessment of cytotoxicity, cell viability and
+proliferation, the MTT test was applied. MTT reagent
+(1 mg/mL) was added in cell culture medium 24 hours
+after the Zn–B–PLGA biocomposite treatment, only by
+applying the prior washing with PBS of the cell culture
+monolayer. The optical density (OD) of the metabolically
+viable Vero cell line, represented by the DMSO-solubilized
+formazan dye, a MTT reduction product, was assessed by
+spectrophotometry (550 nm) after three hours incubation
+at 37°C [38].
+Statistical analysis
+Mean diameter, polydispersity index (PDI), ZP and
+encapsulation efficiency consisted of mean values (n=5)
+and standard deviation (SD). The non-parametric values
+were analyzed using the Kruskal–Wallis test. For in vitro
+assessment, the statistical analysis was performed using
+the Statistical Package for the Social Sciences (SPSS) ver.
+25.0 for Windows (SPSS, Chicago, IL, USA). Differences
+between cell cultures treated with Zn–B–PLGA biocomposite
+and control cell line were evidenced by one-way analysis of
+variance (ANOVA). Statistical comparisons were performed
+with the Student’s unpaired test when data exhibit a normal
+distribution. Differences were considered significant for
+p-values less than 0.05.
+ Results
+Optimal experimental design of Zn–B–PLGA
+biocomposite preparation
+The water/oil/water (W/O/W) double emulsion method
+[39] is one of the most used techniques for PLGA-based
+biomaterials due to the simplicity of the process, the low
+cost of the used instrumentation, and the easiness in the
+parameters control [40]. The method consists in adding the
+insoluble volatile organic phase (DCM) [41] over the W1
+aqueous phase, which contains Zn–B complex dissolved in
+the aqueous phase, emulsifying at a high speed (45 000 rpm)
+with a homogenizer. The result is a water-in-oil primary
+emulsion that was added by continuous mixing to a very
+large amount of W2 aqueous phase (95 mL) containing
+different surfactants, in our case PVA (1–4%, w/v), forming
+a W/O/W double emulsion. The concentration of the polymer
+was chosen between 50 and 150 mg. The use of DCM as
+
+Zinc–Boron–PLGA biocomposite material: preparation, structural characterization, and in vitro assessment
+
+571
+organic solvent leads to Zn–B–PLGA biocomposite spheres
+of 15–450 nm size (as shown by DLS), while for the
+use of other type of organic solvent (acrylonitrile [42],
+tetrahydrofuran [43]) leads to obtaining smaller particles,
+with diameters less than 100 nm.
+To determine the levels of factors that ensure optimal
+size and ZP, we fitted an initial model that explained over
+99% of the size’s variation and over 94% of the ZP’s
+variation, which indicates that all responses were well
+fitted by the experimental model. The predictive power
+of the model was high for size (82%) and moderate for
+ZP (51%), which indicates that all responses were well
+predicted by the experimental model. Furthermore, model
+validity (0.62 for size and 0.86 for ZP) and reproducibility
+(0.99 for size and 0.86 for ZP) values were greater than
+0.6 and 0.8, respectively, suggesting a reduced experimental
+error. F-value for regression was 128.26 (p=0.001) for size
+and 15.9 (p=0.024) for ZP, respectively (Table 2).
+According to the coefficient list for designed model,
+each response was represented by the equations:
+Size = 253.7 + 69.2X1 + 139.55X2 – 34.45X1X2
+ZP = -3.06 – 0.68X1 + 0.14X2 + 1.31X1X2
+where X1 and X2 – independent variables; ZP – zeta
+potential.
+The results of the ANOVA test showed not only the
+p-value was lower than 0.05 for all responses, but also
+p-value for the lack of ﬁt was greater than 0.05 for all
+responses (F=3.12, p=0.219 for size and F=0.46, p=0.566
+for ZP), which conﬁrmed that the proposed model was
+adequate, reliable, with a good predictive power.
+The responses contour plots illustrated the quantitative
+effect of the factors on the two responses, identifying the
+optime values for the two factors to obtain the expected
+responses (Figure 1).
+After performing optimizer within the design space with
+a target of 200 nm for size and minimize for ZP, the model
+proposed the X1=4% and X2=50 mg values. Furthermore,
+using the prediction list outside the design space, the
+characteristics of the optimum formulation could be obtained
+for X1=5% and X2=10 mg values, the model predicting
+the size 221 nm (119 nm to 323 nm) and ZP -8.3 mV
+(-11 mV to -5.7 mV) values.
+
+Figure 1 – Coefficient overview plot for both responses.
+B: Boron; MLR: Multiple linear regression; PLGA:
+Poly(lactic-co-glycolic acid); PVA: Polyvinyl alcohol;
+Zn: Zinc; ZP: Zeta potential.
+FTIR characterization
+FTIR analysis highlighted the carbonyl (–C=O) stretching
+vibration that appeared as a prominent peak in the PLGA
+spectrum, at 1736 cm-1 (simple PLGA) and at 1734 cm-1
+(Zn–B–PLGA biocomposite), respectively. The aliphatic
+C–H stretching vibrations can also be observed in the range
+of 2800–3000 cm-1 for the methylene (–CH2–) groups of the
+polymer. The stretching vibration of the ester (C–O–C)
+bond was observed both in simple PLGA and Zn–B–PLGA
+biocomposite at 1255 cm-1 and 1251 cm-1, respectively.
+Hydroxyl stretching vibrations in Zn–B complex due to the
+presence of alcohol groups appeared as a broad band in the
+range of 3200–3600 cm-1. Carbonyl stretching vibration
+also appeared in the Zn–B complex at 1638 cm-1 due to
+the –C=O group of the fructose molecule. The peaks at
+1060 cm-1 and 1065 cm-1 from Zn–B complex and Zn–
+B–PLGA biocomposite, respectively, can be attributed to
+the C–O–C (from etheric group) vibrations, while the peaks
+at 1423 cm-1 and 1427 cm-1 correspond to C–H stretching
+vibrations, being influenced by intra and intermolecular
+factors (Figure 2).
+
+Figure 2 – FTIR analysis of PLGA, Zn–B complex and Zn–B–PLGA biocomposite. B: Boron; FTIR: Fourier-transform
+infrared; PLGA: Poly(lactic-co-glycolic acid); Zn: Zinc.
+
+Maria Viorica Ciocîlteu et al.
+
+572
+
+Morphological aspects
+SEM at different magnitudes revealed a porous material,
+the spherical shape of the NPs of Zn–B–PLGA biocomposite
+are well organized. The three-dimensional aspect of the
+lattice was also highlighted by SEM (Figure 3, A–E).
+According to the energy dispersive X-ray (EDX) mapping,
+the predominant elements content in the Zn–B–PLGA
+biocomposite are C (56.33 wt%), O (43.46 wt%), Zn
+(0.21 wt%). Our EDX analyzer can detect elements with
+an atomic number from 11 (natrium – Na) upward, so B,
+our major interest element could not be detected by this
+method (Figure 4).
+
+Figure 3 – Morphology of the Zn–B–PLGA biocomposite nanoparticles. SEM micrographs at different magnitudes:
+(A–C) Zn–B–PLGA biocomposite; (D and E) Zn–B complex. B: Boron; PLGA: Poly(lactic-co-glycolic acid); SEM:
+Scanning electron microscopy; Zn: Zinc.
+
+Figure 4 – EDX mapping analysis of Zn–B–PLGA
+biocomposite. B: Boron; EDX: Energy dispersive X-ray;
+PLGA: Poly(lactic-co-glycolic acid); Zn: Zinc.
+DLS analysis
+The obtained experimental data showed the presence of
+two granulometric intervals: [190–291] nm and [1–1.6] μm,
+respectively. The first interval [190–291] nm has the
+following structure: 14.32% of the total number of particles
+are of 190.2 nm, 24.05% of the total number of particles are
+of 207.1 nm, 27.02% of the total number are of 225 nm,
+15.94% of the total number of particles are of 245.4 nm,
+6.75% of 267.1 nm, and 0.81% of 290.8 nm. The second
+range [1–1.6] μm is organized as follows: 0.27% of the
+total number of particles are of 1038.7 nm, 4.86% of the
+total number of particles have the size of 1130.7 nm, 3.24%
+of the total number of particles have 1230.8 nm, 0.81%
+of the total number of particles have 1339.8 nm, 1.62%
+are at 1458.5 nm, and 0.27% at 1587.7 nm.
+From the point of view of the numerical distribution,
+for N2 synthesis, the largest number of particles have a
+size around 225 nm (Figure 5A), and the particles that are
+the majority in the case of volume distribution (the largest
+volume being around the size of 1.1 μm – Figure 5B) are
+just a few in number.
+The volume distribution also shows two granulometric
+ranges: [190.2–267.1] nm and [1039–1587.7] nm, respectively.
+The first range is presented as follows: 0.32% of the total
+volume are of size 190.2 nm, 0.96% of the total volume are
+of size 207.3 nm, 1.27% are of 225.5 nm, 9.96% are of size
+245.4 nm, 0.64% are of 267.1 nm. The second interval is
+structured as follows: 1.91% of the total volume are of size
+1.38 μm, 31.94% of the total volume are of size 1.13 μm,
+28.11% of the total volume are of size 1.23 μm, 7.98% of
+the total volume are of size 1339 μm, 22.68% of the total
+volume are of size 1458 μm, 7.24% of the total volume are
+of 1587 μm.
+
+Figure 5 – (A) Numerical distribution of Zn–B–PLGA biocomposite particles – maximum number of particles at 225.43 nm
+for N2 synthesis according to experimental design model (highlighted in red); (B) Volumetric distribution of Zn–B–PLGA
+biocomposite particles for N2 synthesis. B: Boron; PLGA: Poly(lactic-co-glycolic acid); Zn: Zinc.
+
+Zinc–Boron–PLGA biocomposite material: preparation, structural characterization, and in vitro assessment
+
+573
+
+Compared to the number distribution, in the case of
+the volume distribution it is found that the largest volume
+of particles is located in the second interval. If we analyze
+the numerical distribution in the second range, we find that
+there is a very small number of particles in this interval,
+but which have a large size and therefore a larger volume.
+Being a very small number, it is possible that they will be
+crowded.
+PDI had values between 150–400. For example, for
+N2 synthesis, PDI was 0.335 and for N5 synthesis, 0.227.
+The lower values indicate a more monodisperse (narrow
+size distribution) system. Our values indicate a moderately
+narrow size distribution, so that in the presented conditions,
+we have obtained a polydisperse system but still relatively
+uniform [44, 45].
+The ZP (-5.07±0.57 mV for n=5, Figure 6) was calculated
+by determining the electrophoretic mobility and applying
+the Henry equation.
+
+Figure 6 – ZP of Zn–B–PLGA biocomposite particles
+for N2 synthesis. B: Boron; PLGA: Poly(lactic-co-glycolic
+acid); Zn: Zinc; ZP: Zeta potential.
+Zn–B complex loading efficiency
+in Zn–B–PLGA biocomposite
+LEs between 5–16% were obtained for different synthesis
+conditions. Figure 7 shows a typical chromatogram for N5
+synthesis, with LE of 5%.
+
+Figure 7 – UHPLC chromatogram for N2 synthesis of
+Zn–B–PLGA biocomposite according to experimental
+design model. B: Boron; PLGA: Poly(lactic-co-glycolic
+acid); UHPLC: Ultra-high performance liquid chroma-
+tography; Zn: Zinc.
+The desired LE can widely vary [46]. Through the
+W/O/W double emulsion method, incorporation efficiencies
+of up to 30–35% are generally obtained. This percentage may
+vary depending on experimental variables (PLGA/Zn–B
+ratio, solvent, evaporation conditions), and in the synthesis
+process [47]. Based on the intended therapeutic purpose
+and the nature of the active substance being encapsulated,
+there is no universally fixed minimum LE. Our future
+analyzes will focus on maximizing the incorporation
+percentage by varying the synthesis conditions.
+In vitro assessment of Zn–B–PLGA
+biocomposite
+The Vero cell line grown in the presence of Zn–B–PLGA
+biocomposite showed a typical fibroblast morphology, with
+a polygonal, elongated, and flat shape. The cell density was
+not significantly affected regardless of the concentrations
+applied as treatment. It appeared to correspond to a normal
+culture in the exponential growth phase. Moreover, in the
+positive cytotoxicity control, round cells in the process of
+detaching from the substrate or dying were mainly noted
+(Figure 8, A–I).
+The viability of the treated Vero cell line was quantified
+using the MTT assay, considering the metabolically active
+viable cells. Cell morphology and density showed increased
+values of formazan absorbance, in the case of treatments
+with Zn–B–PLGA biocomposite, almost similar to those of
+cells grown on the genuine substrate (control). Although
+at higher doses there is a slight decrease in metabolic
+activity, the statistical analysis did not highlight significant
+differences compared to the negative cytotoxicity control,
+nor between the experimental conditions achieved. However,
+it can be observed that cell viability was affected above the
+minimum toxic concentration of 3 mM (Figure 9).
+ Discussions
+The properties of PLGA biocomposites depend greatly
+on the LA/GA polymer ratio because GA has a low solubility
+in water while LA is extremely high soluble in water. For
+our synthesis, with Zn–B complex-loaded PLGA NPs as
+potential oral delivery system, we preferred to use PLGA
+with 65:35 ratio of copolymers, which is known to have
+a slower degradation time (2–3 months) and implicitly the
+release of the active principle (1–2 months) slower than
+PLGA 50:50 but not so great as that of PLGA 85:15 [48].
+Since Zn–B complex is hydrophilic, the W/O/W double
+emulsion was successfully used, evaporating the organic
+solvent (DCM), which could have raised the issue of high
+toxicity [49].
+We used PVA as a non-ionic surfactant [50] in the aqueous
+phase, which has hydrophilic head and a hydrophobic tail
+([CH2CH(OH)]n), which is considered a critical double
+emulsion-stabilizing surfactant, although there are studies
+that consider that an increased concentration of it can affect
+the encapsulation efficiency [51]. Since in our previous
+studies of experimental design we found that the stirring
+speed had no major impact on efficiency or particle size,
+therapeutic agent encapsulation efficiency increases with
+concentration and pH, and decrease with PLGA concentration
+[52, 53], we chose to investigate how other parameters
+influence the size of Zn–B–PLGA biocomposite, such as
+
+Maria Viorica Ciocîlteu et al.
+
+574
+the amount of polymer added in the synthesis process and
+the concentration of the emulsifying agent. Our findings
+confirm that the size of the particles increases with increasing
+amounts of PLGA and PVA.
+
+Figure 8 – The effect of Zn–B–PLGA biocomposite on Vero cell line morphology and density: (A) Control; (B) 5% DMSO;
+(C–I) The influence of Zn–B–PLGA biocomposite applied in different concentrations: 0.1 mM (C), 0.5 mM (D), 1 mM (E),
+3 mM (F), 5 mM (G), 7 mM (H), and 10 mM (I), respectively. B: Boron; DMSO: Dimethyl sulfoxide; PLGA: Poly(lactic-
+co-glycolic acid); Zn: Zinc.
+
+Figure 9 – Viability of Vero cell line treated for 24 hours
+with different concentrations of Zn–B–PLGA biocom-
+posite, as determined by the MTT assay. B: Boron;
+DMSO: Dimethyl sulfoxide; MTT: 3-(4,5-Dimethyl-
+thiazol-2-yl)-2,5-diphenyltetrazolium bromide; OD:
+Optical density; PLGA: Poly(lactic-co-glycolic acid);
+Zn: Zinc.
+Morphology
+At higher magnifications, a fibrillar interpenetrated
+structure can be noted with the appearance of a folded sheet.
+Furthermore, the SEM micrographs showed pore channels,
+which are characteristic to W/O/W double emulsion, the
+inner water droplets tend to come out through a diffusion
+process during the volatilization process of the organic
+solvent, as the polymer precipitates and encapsulates the
+active principle from W1 aqueous phase [54]. The addition of
+Zn–B complex does not substantially change the morphology
+of the material, the active substance being most likely
+absorbed inside the pores, and just a smaller amount may
+be on the surface of the particles.
+DLS measurements
+PLGA is extremely safe as a drug delivery system for
+MPs/NPs, but NPs of any biocomposite material have
+specific biodistribution, with toxic effects depending on the
+size [55]. Even if NPs with larger sizes can incorporate a
+larger amount of drug, those with smaller sizes have a
+better penetration of biological barriers and the arrival of
+the drug at the site of action.
+Our goal was to vary the synthesis parameters to obtain
+particles with dimensions of 100–200 nm, because cellular
+uptake is deeply affected by the size of the NPs [56]. When
+we obtained Zn–B–PLGA biocomposite NPs as targeted
+drug delivery, we also considered that the active principle
+loading capacity increases with size.
+Zeta potential
+Information regarding ZP of biopolymeric nanocomposites
+is very limited. The data provided by our study is novel
+
+Zinc–Boron–PLGA biocomposite material: preparation, structural characterization, and in vitro assessment
+
+575
+in this field. When immersed in water, Zn–B–PLGA
+biocomposite exhibits a negative ZP. The obtained negative
+charge is attributed to dissociation of carboxylic groups
+on the particle surface [57]. Also, the ZP (-5 mV) after
+lyophilization is not in the stability range [-25 mV; +25 mV],
+the literature mentions that particles with negative charges
+have colloid stability. Our other ZP studies on nanocomposites
+with PLGA showed that the centrifuged particles exhibit a
+much lower potential (-42 mV) compared to the lyophilized
+ones [58].
+Biomedical applications
+B, a trace element essential for human health, has recently
+gained attention for its potential role in modulating GM
+composition and function. Studies have shown that B can
+influence the growth and activity of specific beneficial
+bacteria while inhibiting the proliferation of harmful
+pathogens in the gut [13]. Zn is also a trace element
+known for its immune-modulating and anti-inflammatory
+properties. It also influences the composition and function
+of the GM [59].
+PLGA is a widely used polymer in drug delivery systems
+for colon targeted delivery as it improves the bioavailability
+of many drugs to the colon [31]. Our purpose was to
+encapsulate the Zn–B complex within PLGA NPs to create
+a targeted and controlled-release delivery system for B and
+Zn in the intestinal tract.
+PLGA NPs protect the Zn–B complex from degradation
+in the stomach, allowing for its targeted release in the
+intestinal tract, where it can have a more significant impact
+on the GM. The Zn–B–PLGA biocomposite is engineered
+to release B and Zn gradually over an extended period,
+ensuring a sustained and consistent supply to the gut, which
+is essential for microbiota health. Zn–B–PLGA biocomposite
+can be used in research studies to investigate the precise
+effects of B and Zn on GM. Additionally, the biocomposite
+can be developed into clinical interventions for individuals
+with microbiota-related health conditions [60].
+Extensive research in various applications was carried
+out for more than a decade supporting the biocompatibility
+and lack of toxicity of PLGA. Mohammadi-Samani et al.
+(2015) proved the biocompatibility of PLGA microspheres
+for delivering peptides and proteins to the skin. It highlighted
+that PLGA microspheres are well-tolerated and exhibit
+no significant toxicity in in vitro and in vivo studies [61].
+In a comprehensive review, Danhier et al. (2012) showed
+various biomedical applications of PLGA NPs, emphasizing
+their biocompatibility and safety [1]. Nair et al. (2008)
+explored the use of PLGA in tissue engineering. It noted
+that PLGA scaffolds are well-tolerated by the human
+body and do not induce significant toxicity, making them
+suitable for regenerative medicine applications [62]. The
+study of Guan et al. (2016) evaluated the in vitro and
+in vivo toxicity of PLGA NPs modified with polyethylene
+glycol (PEG). The results suggested that PEGylated PLGA
+NPs are safe and well-tolerated [63]. Makadia et al. (2011)
+discussed the use of PLGA as a controlled drug delivery
+carrier. It highlights the biodegradability and biocompatibility
+of PLGA, making it a safe and effective platform for sustained
+drug release [64].
+Our research demonstrated that both Zn–B complex
+and Zn–B–PLGA biocomposite have lower in vitro toxicity
+levels on the Vero kidney cell line, compared to Zn orotate,
+the most used dietary supplement as a source of Zn [28].
+Furthermore, our previous toxicodynamic studies highlighted
+that Zn–B complex has very low in vivo toxicity, being
+included in Category V, a practically non-toxic substance,
+compared to other Zn salts (orotate, chloride, oxide, sulfate)
+[29]. In fact, Zn–B complex can be used as stable non-toxic
+nutritional supplements, with enhanced rate of intestinal
+absorption, inducing A2M expression for healthy aging
+and longevity [27].
+ Conclusions
+The Zn–B–PLGA biocomposite represents a novel
+delivery system for Zn and B as active principles. Its
+applicability will be further analyzed, and the synthesis
+parameters will be adjusted to better use of PLGA as novel
+Zn–B complex carrier. The obtained material is stable
+and functional, biocompatible, being able to combine the
+desired properties of the carrier material and the encapsulated
+Zn–B complex in future biomedical applications.
+Conflict of interests
+The authors declare that they have no conflict of interests.
+Acknowledgments
+This work was supported by a grant of the Ministry of
+Research, Innovation and Digitization, CCCDI–UEFISCDI,
+project number PN-III-P2-2.1-PED-2021-0804, within
+PNCDI III.
+References
+[1] Danhier F, Ansorena E, Silva JM, Coco R, Le Breton A, Préat V.
+PLGA-based nanoparticles: an overview of biomedical applications.
+J Control Release, 2012, 161(2):505–522. https://doi.org/10.
+1016/j.jconrel.2012.01.043  PMID: 22353619
+[2] Nie H, Lee LY, Tong H, Wang CH. PLGA/chitosan composites
+from a combination of spray drying and supercritical fluid
+foaming techniques: new carriers for DNA delivery. J Control
+Release, 2008, 129(3):207–214. https://doi.org/10.1016/j.jcon
+rel.2008.04.018  PMID: 18539352
+[3] Anselmo AC, Mitragotri S. An overview of clinical and commercial
+impact of drug delivery systems. J Control Release, 2014, 190:
+15–28. https://doi.org/10.1016/j.jconrel.2014.03.053  PMID:
+24747160  PMCID: PMC4142089
+[4] Molavi F, Barzegar-Jalali M, Hamishehkar H. Polyester based
+polymeric nano and microparticles for pharmaceutical purposes:
+a review on formulation approaches. J Control Release, 2020,
+320:265–282. https://doi.org/10.1016/j.jconrel.2020.01.028  PMID:
+31962095
+[5] Zhong H, Chan G, Hu Y, Hu H, Ouyang D. A comprehensive map
+of FDA-approved pharmaceutical products. Pharmaceutics,
+2018, 10(4):263. https://doi.org/10.3390/pharmaceutics1004
+0263  PMID: 30563197  PMCID: PMC6321070
+[6] Wan B, Bao Q, Burgess D. Long-acting PLGA microspheres:
+advances in excipient and product analysis toward improved
+product understanding. Adv Drug Deliv Rev, 2023, 198:114857.
+https://doi.org/10.1016/j.addr.2023.114857  PMID: 37149041
+[7] Andhariya JV, Jog R, Shen J, Choi S, Wang Y, Zou Y, Burgess DJ.
+In vitro–in vivo correlation of parenteral PLGA microspheres:
+effect of variable burst release. J Control Release, 2019, 314:
+25–37. https://doi.org/10.1016/j.jconrel.2019.10.014  PMID:
+31654687
+[8] Miao Y, Cui H, Dong Z, Ouyang Y, Li Y, Huang Q, Wang Z.
+Structural evolution of polyglycolide and poly(glycolide-co-
+lactide) fibers during in vitro degradation with different heat-
+setting temperatures. ACS Omega, 2021, 6(43):29254–29266.
+https://doi.org/10.1021/acsomega.1c04974  PMID: 34746613
+PMCID: PMC8567347
+[9] Proikakis CS, Tarantili PA, Andreopoulos AG. The role of
+polymer/drug interactions on the sustained release from poly
+(DL-lactic acid) tablets. Eur Polym J, 2006, 42(12):3269–3276.
+https://doi.org/10.1016/j.eurpolymj.2006.08.023  https://www.
+sciencedirect.com/science/article/abs/pii/S00143057060029
+53?via%3Dihub
+
+Maria Viorica Ciocîlteu et al.
+
+576
+[10] Kim HJ, Furukawa Y, Kakegawa T, Bita A, Scorei R, Benner SA.
+Evaporite borate-containing mineral ensembles make phosphate
+available and regiospecifically phosphorylate ribonucleosides:
+borate as a multifaceted problem solver in prebiotic chemistry.
+Angew Chem Int Ed Engl, 2016, 55(51):15816–15820. https://
+doi.org/10.1002/anie.201608001  PMID: 27862722
+[11] Uluisik I, Karakaya HC, Koc A. The importance of boron in
+biological systems. J Trace Elem Med Biol, 2018, 45:156–162.
+https://doi.org/10.1016/j.jtemb.2017.10.008  PMID: 29173473
+[12] Mitruţ I, Cojocaru MO, Scorei IR, Biţă A, Mogoşanu GD,
+Popescu M, Olimid DA, Manolea HO. Preclinical and histological
+study of boron-containing compounds hydrogels on experimental
+model of periodontal disease. Rom J Morphol Embryol, 2021,
+62(1):219–226. https://doi.org/10.47162/RJME.62.1.21  PMID:
+34609424  PMCID: PMC8597384
+[13] Biţă A, Scorei IR, Bălşeanu TA, Ciocîlteu MV, Bejenaru C,
+Radu A, Bejenaru LE, Rău G, Mogoşanu GD, Neamţu J,
+Benner SA. New insights into boron essentiality in humans and
+animals. Int J Mol Sci, 2022, 23(16):9147. https://doi.org/10.
+3390/ijms23169147  PMID: 36012416  PMCID: PMC9409115
+[14] Karatekeli S, Demirel HH, Zemheri-Navruz F, Ince S. Boron
+exhibits hepatoprotective effect together with antioxidant, anti-
+inflammatory, and anti-apoptotic pathways in rats exposed to
+aflatoxin B1. J Trace Elem Med Biol, 2023, 77:127127. https://
+doi.org/10.1016/j.jtemb.2023.127127  PMID: 36641954
+[15] Arciniega-Martínez IM, Romero-Aguilar KS, Farfán-García ED,
+García-Machorro J, Reséndiz-Albor AA, Soriano-Ursúa MA.
+Diversity of effects induced by boron-containing compounds
+on immune response cells and on antibodies in basal state.
+J Trace Elem Med Biol, 2022, 69:126901. https://doi.org/10.
+1016/j.jtemb.2021.126901  PMID: 34801850
+[16] Biţă A, Scorei IR, Rangavajla N, Bejenaru LE, Rău G,
+Bejenaru C, Ciocîlteu MV, Dincă L, Neamţu J, Bunaciu A,
+Rogoveanu OC, Pop MI, Mogoşanu GD. Diester chlorogeno-
+borate complex: a new naturally occurring boron-containing
+compound. Inorganics, 2023, 11(3):112. https://doi.org/10.3390/
+inorganics11030112  https://www.mdpi.com/2304-6740/11/3/112
+[17] Mitruţ I, Scorei IR, Manolea HO, Biţă A, Mogoantă L, Neamţu J,
+Bejenaru LE, Ciocîlteu MV, Bejenaru C, Rău G, Mogoşanu GD.
+Boron-containing compounds in Dentistry: a narrative review.
+Rom J Morphol Embryol, 2022, 63(3):477–483. https://doi.org/
+10.47162/RJME.63.3.01  PMID: 36588485  PMCID: PMC9926150
+[18] Scorei IR, Ciocilteu MV, Bita A, Rau G, Mogosanu GD, Dinca L.
+Zinc–Boron–PLGA biocomposite-based materials and uses
+thereof. United States Patent and Trademark Office (USPTO),
+Provisional Patent Application No. 63536442, September 4, 2023.
+https://www.uspto.gov/patents/basics/types-patent-applications/
+provisional-application-patent
+[19] Donoiu I, Militaru C, Obleagă O, Hunter JM, Neamţu J, Biţă A,
+Scorei IR, Rogoveanu OC. Effects of boron-containing compounds
+on cardiovascular disease risk factors – a review. J Trace Elem
+Med Biol, 2018, 50:47–56. https://doi.org/10.1016/j.jtemb.2018.
+06.003  PMID: 30262316
+[20] Hunter DJ, March L, Chew M. Osteoarthritis in 2020 and beyond:
+a Lancet Commission. Lancet, 2020, 396(10264):1711–1712.
+https://doi.org/10.1016/S0140-6736(20)32230-3  PMID: 33159851
+[21] Prasad AS. Chapter 20 – Discovery of zinc for human health
+and biomarkers of zinc deficiency. In: Collins JF (ed). Molecular,
+genetic, and nutritional aspects of major and trace minerals.
+Academic Press–Elsevier, London, UK, 2017, 241–260. https://
+doi.org/10.1016/B978-0-12-802168-2.00020-8  https://www.
+sciencedirect.com/science/article/pii/B97801280216820002
+08?via%3Dihub
+[22] Stefanidou M, Maravelias C, Dona A, Spiliopoulou C. Zinc: a
+multipurpose trace element. Arch Toxicol, 2006, 80(1):1–9.
+https://doi.org/10.1007/s00204-005-0009-5  PMID: 16187101
+[23] McCall KA, Huang C, Fierke CA. Function and mechanism of
+zinc metalloenzymes. J Nutr, 2000, 130(5S Suppl):1437S–1446S.
+https://doi.org/10.1093/jn/130.5.1437S  PMID: 10801957
+[24] Scarpellini E, Balsiger LM, Maurizi V, Rinninella E, Gasbarrini A,
+Giostra N, Santori P, Abenavoli L, Rasetti C. Zinc and gut
+microbiota in health and gastrointestinal disease under the
+COVID-19 suggestion. Biofactors, 2022, 48(2):294–306. https://
+doi.org/10.1002/biof.1829  PMID: 35218585  PMCID: PMC
+9082519
+[25] Wu C, Labrie J, Tremblay YD, Haine D, Mourez M, Jacques M.
+Zinc as an agent for the prevention of biofilm formation by
+pathogenic bacteria. J Appl Microbiol, 2013, 115(1):30–40.
+https://doi.org/10.1111/jam.12197  PMID: 23509865
+[26] de Queiroz CAA, Fonseca SGC, Frota PB, Figueiredo IL,
+Aragão KS, Magalhães CEC, de Carvalho CBM, Lima AÂM,
+Ribeiro RA, Guerrant RL, Moore SR, Oriá RB. Zinc treatment
+ameliorates diarrhea and intestinal inflammation in under-
+nourished rats. BMC Gastroenterol, 2014, 14:136. https://doi.
+org/10.1186/1471-230X-14-136  PMID: 25095704  PMCID:
+PMC4142448
+[27] Biţă A, Scorei IR, Bălşeanu TA, Rău G, Ciocîlteu MV,
+Mogoşanu GD. Zinc–boron complex-based dietary supplements
+for longevity and healthy life. Curr Health Sci J, 2023, 49(3):
+381–387. https://doi.org/10.12865/CHSJ.49.03.10  https://www.
+chsjournal.org/article/49/3/10/
+[28] Oancea CN, Cîmpean A, Ion R, Neamţu J, Biţă A, Scorei IR,
+Neamţu AS, Rogoveanu OC, Zaharie SI, Birkenmeier G.
+In vitro cytotoxicity of zinc fructoborate, a novel zinc–boron
+active natural complex. Curr Health Sci J, 2018, 44(2):113–
+117. https://doi.org/10.12865/CHSJ.44.02.03  PMID: 30746157
+PMCID: PMC6320461
+[29] Scorei IR. Novel active zinc and boron-based dietary supplements
+for longevity and healthy life. Grant of the Romanian National
+Authority for Scientific Research and Innovation, CNCS/CCCDI–
+UEFISCDI, Project No. PN-III-P2-2.1-PED-2016-0410, 2017.
+https://www.naturalresearch.ro/projects/#
+[30] Hunter JM, Nemzer BV, Rangavajla N, Biţă A, Rogoveanu OC,
+Neamţu J, Scorei IR, Bejenaru LE, Rău G, Bejenaru C,
+Mogoşanu GD. The fructoborates: part of a family of naturally
+occurring sugar-borate complexes – biochemistry, physiology,
+and impact on human health: a review. Biol Trace Elem Res,
+2019, 188(1):11–25. https://doi.org/10.1007/s12011-018-1550-4
+PMID: 30343480  PMCID: PMC6373344
+[31] Lozoya-Agullo I, Araújo F, González-Álvarez I, Merino-Sanjuán M,
+González-Álvarez M, Bermejo M, Sarmento B. PLGA nano-
+particles are effective to control the colonic release and absorption
+on ibuprofen. Eur J Pharm Sci, 2018, 115:119–125. https://doi.
+org/10.1016/j.ejps.2017.12.009  PMID: 29248559
+[32] Naeem M, Bae J, Oshi MA, Kim MS, Moon HR, Lee BL, Im E,
+Jung Y, Yoo JW. Colon-targeted delivery of Cyclosporine A
+using dual-functional Eudragit® FS30D/PLGA nanoparticles
+ameliorates murine experimental colitis. Int J Nanomedicine,
+2018, 13:1225–1240. https://doi.org/10.2147/IJN.S157566  PMID:
+29535519  PMCID: PMC5836652
+[33] Scorei IR. Calcium fructoborate: plant-based dietary boron as
+potential medicine for cancer therapy. Front Biosci (Schol Ed),
+2011, 3(1):205–215. https://doi.org/10.2741/s145  PMID: 21196370
+[34] Hunter JM. Compositions and methods for borocarbohydrate
+complexes. United States Patent and Trademark Office (USPTO),
+Patent No. 9102700 B1, August 11, 2015. https://patents.google.
+com/patent/US9102700
+[35] Hubbard SA. Comparative toxicology of borates. Biol Trace
+Elem Res, 1998, 66(1–3):343–357. https://doi.org/10.1007/BF
+02783147  PMID: 10050929
+[36] Korolenko SE, Avdeeva VV, Malinina EA, Kuznetsov NT.
+Zinc(II) and cadmium(II) coordination compounds with boron
+cluster anions: classification of compounds depending on strength
+of metal–boron cage interaction and analysis of structures
+(review). Russ J Inorg Chem, 2021, 66(9):1350–1373. https://
+doi.org/10.1134/S0036023621090047  https://link.springer.com/
+article/10.1134/S0036023621090047
+[37] Liao TT, Shi YL, Jia JW, Jia RW, Wang L. Sensitivity of
+morphological change of Vero cells exposed to lipophilic
+compounds and its mechanism. J Hazard Mater, 2010, 179(1–3):
+1055–1064. https://doi.org/10.1016/j.jhazmat.2010.03.113  PMID:
+20427127
+[38] Berridge MV, Herst PM, Tan AS. Tetrazolium dyes as tools in
+cell biology: new insights into their cellular reduction. Biotechnol
+Annu Rev, 2005, 11:127–152. https://doi.org/10.1016/S1387-
+2656(05)11004-7  PMID: 16216776
+[39] Kamaly N, Yameen B, Wu J, Farokhzad OC. Degradable
+controlled-release polymers and polymeric nanoparticles:
+mechanisms of controlling drug release. Chem Rev, 2016,
+116(4):2602–2663. https://doi.org/10.1021/acs.chemrev.5b00
+346  PMID: 26854975  PMCID: PMC5509216
+[40] Silva ATCR, Cardoso BCO, Silva MESR, Freitas RFS, Sousa RG.
+Synthesis, characterization, and study of PLGA copolymer
+in vitro degradation. J Biomater Nanobiotechnol, 2015, 6:8–19.
+https://doi.org/10.4236/jbnb.2015.61002  https://www.scirp.org/
+journal/paperinformation?paperid=52929
+
+Zinc–Boron–PLGA biocomposite material: preparation, structural characterization, and in vitro assessment
+
+577
+[41] Ciocîlteu MV, Podgoreanu P, Delcaru C, Chifiriuc MC, Manda CV,
+Biţă A, Popescu M, Amzoiu E, Croitoru O, Bleotu C, Bostan M,
+Neamţu J. PLGA–Gentamicin biocomposite materials with
+potential antimicrobial applications in orthopedics. Farmacia
+2019, 67(4):580–586. https://doi.org/10.31925/farmacia.2019.
+4.4  https://farmaciajournal.com/issue-articles/plga-gentamicin-
+biocomposite-materials-with-potential-antimicrobial-applications-
+in-orthopedics/
+[42] Huang W, Zhang C. Tuning the size of poly(lactic-co-glycolic
+acid) (PLGA) nanoparticles fabricated by nanoprecipitation.
+Biotechnol J, 2018, 13(1):1700203. https://doi.org/10.1002/biot.
+201700203  PMID: 28941234  PMCID: PMC5924600
+[43] Prakapenka AV, Bimonte-Nelson HA, Sirianni RW. Engineering
+poly(lactic-co-glycolic acid) (PLGA) micro- and nano-carriers
+for controlled delivery of 17β-estradiol. Ann Biomed Eng, 2017,
+45(7):1697–1709. https://doi.org/10.1007/s10439-017-1859-8
+PMID: 28634732  PMCID: PMC5599155
+[44] Mostafa MM, Amin MM, Zakaria MY, Hussein MA, Shamaa MM,
+Abd El-Halim SM. Chitosan surface-modified PLGA nanoparticles
+loaded with cranberry powder extract as a potential oral delivery
+platform for targeting colon cancer cells. Pharmaceutics, 2023,
+15(2):606. https://doi.org/10.3390/pharmaceutics15020606  PMID:
+36839928  PMCID: PMC9964659
+[45] Wang J, Wang F, Li X, Zhou Y, Wang H, Zhang Y. Uniform
+carboxymethyl chitosan-enveloped Pluronic F68/poly(lactic-
+co-glycolic acid) nano-vehicles for facilitated oral delivery of
+Gefitinib, a poorly soluble antitumor compound. Colloids Surf
+B Biointerfaces, 2019, 177:425–432. https://doi.org/10.1016/
+j.colsurfb.2019.02.028  PMID: 30798063
+[46] Sun SB, Liu P, Shao FM, Miao QL. Formulation and evaluation
+of PLGA nanoparticles loaded Capecitabine for prostate cancer.
+Int J Clin Exp Med, 2015, 8(10):19670–19681. PMID: 26770631
+PMCID: PMC4694531
+[47] Huang WF, Tsui GCP, Tang CY, Yang M. Optimization strategy
+for encapsulation efficiency and size of drug loaded silica
+xerogel/polymer core–shell composite nanoparticles prepared
+by gelation–emulsion method. Polym Eng Sci, 2018, 58(5):
+742–751. https://doi.org/10.1002/pen.24609  https://4spepubli
+cations.onlinelibrary.wiley.com/doi/abs/10.1002/pen.24609
+[48] Houchin ML, Topp EM. Physical properties of PLGA films during
+polymer degradation. J Appl Polym Sci, 2009, 114(5):2848–
+2854. https://doi.org/10.1002/app.30813  https://onlinelibrary.
+wiley.com/doi/abs/10.1002/app.30813
+[49] Kluin OS, van der Mei HC, Busscher HJ, Neut D. Biodegradable
+vs non-biodegradable antibiotic delivery devices in the treatment
+of osteomyelitis. Expert Opin Drug Deliv, 2013, 10(3):341–351.
+https://doi.org/10.1517/17425247.2013.751371  PMID: 23289645
+[50] Hariharan S, Bhardwaj V, Bala I, Sitterberg J, Bakowsky U,
+Ravi Kumar MN. Design of estradiol loaded PLGA nano-
+particulate formulations: a potential oral delivery system for
+hormone therapy. Pharm Res, 2006, 23(1):184–195. https://
+doi.org/10.1007/s11095-005-8418-y  PMID: 16267632
+[51] Arriaga LR, Datta SS, Kim SH, Amstad E, Kodger TE,
+Monroy F, Weitz DA. Ultrathin shell double emulsion templated
+giant unilamellar lipid vesicles with controlled microdomain
+formation. Small, 2014, 10(5):950–956. https://doi.org/10.1002/
+smll.201301904  PMID: 24150883
+[52] Turcu-Ştiolică A, Ciocîlteu MV, Podgoreanu P, Neacşu I, Ionescu
+(Filip) OL, Nicolicescu C, Neamţu J, Amzoiu E, Amzoiu E,
+Manda CV. PLGA–Gentamicin and PLGA–Hydroxyapatite–
+Gentamicin microspheres for medical applications. Pharm Chem
+J, 2022, 56(5):645–653. https://doi.org/10.1007/s11094-022-
+02689-w  https://link.springer.com/article/10.1007/s11094-022-
+02689-w
+[53] Ciocilteu MV, Nicolaescu OE, Mocanu AG, Nicolicescu C,
+Rau G, Neamtu J, Amzoiu E, Amzoiu E, Oancea C, Turcu-
+Stiolica A. Process optimization using quality by design (QBD)
+approach of a Gentamicin loaded PLGA biocomposite. J Sci
+Arts, 2021, 57(4):1069–1080. https://doi.org/10.46939/J.Sci.
+Arts-21.4-b02  https://www.josa.ro/index.html?https%3A//www.
+josa.ro/josa.html
+[54] Mezzenga R, Folmer BM, Hughes E. Design of double emulsions
+by osmotic pressure tailoring. Langmuir, 2004, 20(9):3574–3582.
+https://doi.org/10.1021/la036396k  PMID: 15875386
+[55] Berchane NS, Carson KH, Rice-Ficht AC, Andrews MJ. Effect
+of mean diameter and polydispersity of PLG microspheres
+on drug release: experiment and theory. Int J Pharm, 2007,
+337(1–2):118–126. https://doi.org/10.1016/j.ijpharm.2006.12.037
+PMID: 17289316
+[56] He C, Hu Y, Yin L, Tang C, Yin C. Effects of particle size and
+surface charge on cellular uptake and biodistribution of
+polymeric nanoparticles. Biomaterials, 2010, 31(13):3657–
+3666. https://doi.org/10.1016/j.biomaterials.2010.01.065  PMID:
+20138662
+[57] Kadri R, Elkhoury K, Ben Messaoud G, Kahn C, Tamayol A,
+Mano JF, Arab-Tehrany E, Sánchez-González L. Physico-
+chemical interactions in nanofunctionalized alginate/GelMA
+IPN hydrogels. Nanomaterials (Basel), 2021, 11(9):2256. https://
+doi.org/10.3390/nano11092256  PMID: 34578572  PMCID:
+PMC8465058
+[58] Postelnicu RA, Ciocîlteu MV, Neacşu IA, Nicolicescu C, Costachi A,
+Amzoiu M, Neamţu J, Pisoschi CG, Mocanu AG, Rău G, Amzoiu E.
+PLGA–Bisphosphonates conjugated nanoparticles: synthesis
+and morphological characterization. Farmacia, 2023, 71(1):83–
+90. https://doi.org/10.31925/farmacia.2023.1.11  https://farmacia
+journal.com/issue-articles/plga-bisphosphonates-conjugated-
+nanoparticles-synthesis-and-morphological-characterization/
+[59] Pajarillo EAB, Lee E, Kang DK. Trace metals and animal health:
+interplay of the gut microbiota with iron, manganese, zinc, and
+copper. Anim Nutr, 2021, 7(3):750–761. https://doi.org/10.1016/
+j.aninu.2021.03.005  PMID: 34466679  PMCID: PMC8379138
+[60] Hua S, Marks E, Schneider JJ, Keely S. Advances in oral
+nano-delivery systems for colon targeted drug delivery in
+inflammatory bowel disease: selective targeting to diseased
+versus healthy tissue. Nanomedicine, 2015, 11(5):1117–1132.
+https://doi.org/10.1016/j.nano.2015.02.018  PMID: 25784453
+[61] Mohammadi-Samani S, Taghipour B. PLGA micro and nano-
+particles in delivery of peptides and proteins; problems and
+approaches. Pharm Dev Technol, 2015, 20(4):385–393. https://
+doi.org/10.3109/10837450.2014.882940  PMID: 24483777
+[62] Nair LS, Laurencin CT. Biodegradable polymers as biomaterials.
+Prog Polym Sci, 2007, 32(8–9):762–798. https://doi.org/10.
+1016/j.progpolymsci.2007.05.017  https://www.sciencedirect.
+com/science/article/abs/pii/S0079670007000664?via%3Dihub
+[63] Guan Q, Sun S, Li X, Lv S, Xu T, Sun J, Feng W, Zhang L,
+Li Y. Preparation, in vitro and in vivo evaluation of mPEG–PLGA
+nanoparticles co-loaded with Syringopicroside and Hydroxy-
+tyrosol. J Mater Sci Mater Med, 2016, 27(2):24. https://doi.org/
+10.1007/s10856-015-5641-x  PMID: 26704541
+[64] Makadia HK, Siegel SJ. Poly lactic-co-glycolic acid (PLGA) as
+biodegradable controlled drug delivery carrier. Polymers (Basel),
+2011, 3(3):1377–1397. https://doi.org/10.3390/polym3031377
+PMID: 22577513  PMCID: PMC3347861
+
+Corresponding authors
+Ion Romulus Scorei, Professor, PhD, Department of Biochemistry, BioBoron Research Institute, S.C. Natural Research
+S.R.L., 31B Dunării Street, 207465 Podari, Dolj County, Romania; Phone +40351–407 543, e-mail: romulus_ion@yahoo.com
+Claudiu Nicolicescu, Associate Professor, PhD, Department of Engineering and Management of Technological Systems,
+Faculty of Mechanics, University of Craiova, 1 Călugăreni Street, 220037 Drobeta Turnu-Severin, Mehedinţi County,
+Romania; Phone +40252–333 431, e-mail: nicolicescu_claudiu@yahoo.com
+
+Received: December 15, 2023
+
+Accepted: December 30, 2023

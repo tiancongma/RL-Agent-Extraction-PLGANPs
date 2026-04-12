@@ -1,0 +1,1539 @@
+2013
+http://informahealthcare.com/mnc
+ISSN: 0265-2048 (print), 1464-5246 (electronic)
+J Microencapsul, 2013; 30(8): 728–740
+! 2013 Informa UK Ltd. DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+and optimization using response surface methodology intended
+for pulmonary delivery
+Aimen Abdo Elsaid Ali, Muhammad Taher, and Farahidah Mohamed
+Department of Pharmaceutical Technology, Kulliyyah of Pharmacy, International Islamic University Malaysia, Kuantan, Pahang, Malaysia
+Abstract
+Documented to exhibit cytotoxicity and poor oral bioavailability, alpha-mangostin was
+encapsulated into PLGA microspheres with optimization of formulation using response surface
+methodology. Mixed levels of four factors Face central composite design was employed to
+evaluate critical formulation variables. With 30 runs, optimized formula was 1% w/v polyvinyl
+alcohol, 1:10 ratio of oil to aqueous and sonicated at 2 and 5 min time for primary and
+secondary emulsion, respectively. Optimized responses for encapsulation efficiency, particle
+size and polydispersity index were found to be 39.12  0.01%, 2.06  0.017 mm and
+0.95  0.009, respectively, which matched values predicted by mathematical models. About
+44.4% of the encapsulated alpha-mangostin was released over 4 weeks. Thermal analysis of the
+microspheres showed physical conversion of alpha-mangostin from crystallinity to amorphous
+with encapsulated one had lower in vitro cytotoxicity than free alpha-mangostin. Aerodynamic
+diameter (784.3  7.5 nm) of this alpha-mangostin microsphere suggests suitability for
+peripheral pulmonary delivery.
+Keywords
+Factorial design, inhalation, lung cancer,
+xanthones
+History
+Received 8 May 2012
+Revised 6 March 2013
+Accepted 11 March 2013
+Published online 30 April 2013
+Introduction
+Despite numerous studies on anti-cancer agents, lung tumour
+remains one of the most common killers throughout the world (Zu
+et al., 2009; Jemal et al., 2011). Clinically used anti-cancers
+administered parenterally as free drug solutions inherit many
+problems including normal tissue toxicity, lack of specificity and
+susceptibility to induce drug resistance (Wong et al., 2007).
+Targeting the drugs by enhancing its specificity seems to be a
+promising approach to minimize the undesirable effects with
+improved drug bioavailability. This can be achieved by micro-
+encapsulation of the therapeutic agents into biodegradable
+polymers customized to appropriate size range with or without
+ligand attached to it. For instance, highly potent cytotoxic drug,
+doxorubicin, demonstrated non-selective distribution in cancerous
+and healthy tissue leading to severe side effects when adminis-
+tered as a free drug. However, its corresponding conjugated form,
+formulated as PLGA nanoparticles, demonstrated significant
+reduction in undesirable effects against HepG2 cells (Yoo et al.,
+2000).
+In this study, we attempted to encapsulate a potent natural
+product-based cytotoxic agent, alpha-mangostin, which is abun-
+dantly found in the inedible parts of Garcinia species. It can also
+be naturally obtained from the stem bark of Garcinia malaccensis
+(Taher et al., 2012) or chemically synthesized (Iikubo et al.,
+2002). Its anti-proliferative activities were demonstrated against
+numerous cell lines including human colonic cancer, DLD-1 cells
+(Akao et al., 2008), breast cancer, BC-1 cells, small-cell lung
+cancer, NCI-H187 (Suksamrarn et al., 2006) and human lung
+adenocarcinoma A549 cells (Shih et al., 2010). In addition, it was
+found to possess many therapeutic properties namely analgesic
+(Cui et al., 2010), anti-inflammatory (Chen et al., 2008), anti-
+fungal (Kaomongkolgit et al., 2009) and anti-bacterial activities
+(Sakagami et al., 2005). Furthermore, alpha-mangostin was
+reported
+to
+exert
+anti-oxidative
+(Williams
+et
+al.,
+1995;
+Mahabusarakam et al., 2000; Jung et al., 2006; Pedraza-
+Chaverri et al., 2009) and neuroprotective effects (Pedraza-
+Chaverri et al., 2009; Wang et al., 2012). Interestingly, alpha
+mangostin had also been used in combination with doxorubicin to
+mitigate toxicity of doxorubicin against healthy cells (Tangpong
+et al., 2011).
+Nevertheless, it had been reported that alpha-mangostin was
+rapidly distributed to the rat tissue following intravenous admin-
+istration
+explaining
+its
+low
+oral
+bioavailability
+and
+short
+circulating half-life attributed to its lipophilic nature. To date,
+only recently, attempt was made applying solid dispersion concept
+to enhance water solubility of alpha-mangostin through coupling
+it with water-soluble polymer, polyvinylpyrrolidone (PVP), to
+form nanomicelle. However, the previous studies had not
+addressed the issue of short half-life and low oral bioavailability.
+Therefore, the aim of this study was to encapsulate alpha-
+mangostin into PLGA microsphere as a preliminary approach to
+extend its half-life and probably its bioavailability. Multiple
+emulsion solvent evaporation was employed to synthesize the
+microspheres to the size distribution desirable for pulmonary
+delivery that was envisaged to provide controlled release of the
+therapeutic agent passively targeting the bronchopulmonary
+region. On contact with the mucous membrane of the pulmonary
+Address for correspondence: Farahidah Mohamed, International Islamic
+university Malaysia, Pharmaceutical Technology Department, Kulliyyah
+of Pharmacy, International Islamic University Malaysia, Bandar
+Indera Mahkota, 25200 Kuantan, Pahang, Malaysia. E-mail: farahidah@
+iium.edu.my
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+region, the microsphere was expected to release alpha-mangostin
+in a gradual manner from the slowly dissolving microspheres and
+hence extending its half-life and bioavailability. Nevertheless,
+the scope of this study focuses on fabrication, optimization and
+characterization of the particles only. The potential route of
+administration via pulmonary was also assessed simply based
+on its aerodynamic diameter. In addition, the degree to which
+this microsphere may influence its half-life and bioavailability
+will be subjects of our future studies.
+With respect to delivering the micro-carrier particles into the
+pulmonary region, the desired aerodynamic diameter of range
+1–5 mm is crucial to ensure deposition at the lung periphery since
+the submicron particles have the ability to be suspended in air and
+exhaled, while larger particles are held in oropharynx (Mohamed
+and Van Der Walle, 2008; Emami et al., 2009). The study utilized
+response surface methodology (RSM) employing the central
+composite design (CCD) of mixed-levels of four factors to
+elucidate critical processing parameters reflected in responses
+obtained.
+Although single emulsion method was the most commonly
+employed technique for encapsulation of lipophilic substances,
+high drug loading of the latter may result in re-crystallization of
+the compound during the solvent evaporation process, which in
+turn leads to perforation of the particle wall by drug needle
+(Wischke and Schwendeman, 2008). Therefore, double emulsion
+solvent evaporation method was employed here instead of single
+emulsion in order to reduce the porosity of loaded particles that
+also mitigated the burst effect as well as prolong the drug release.
+Materials and methods
+Materials
+The co-polymer PLGA (50:50, 0.4 dl/g) was purchased from
+PURAC (Holland, The Netherlands). Polyvinyl alcohol (PVA)
+with a molecular weight of 115 kDa (degree of hydrolysis 87%)
+was purchased from BDH Chemicals (England, UK). Acetonitrile
+of high-performance liquid chromatographic (HPLC) grade was
+obtained from Fischer scientific (Leicestershire, UK). All other
+chemicals were of analytical grade. Alpha-mangostin was isolated
+from the stem bark of G. malaccensis as reported by Taher et al.,
+2012. The purity of the isolated alpha-mangostin was approxi-
+mately 94% as identified by HPLC and compared to the reference
+standard of purity 96.5%. The latter was purchased from
+ChromaDex (Irvin, CA).
+Experimental design
+We employed mixed-levels of four factors using CCD of RSM to
+generate mathematical models following 30 runs. The factors that
+were the independent variables constituted of PVA concentration
+(X1), volume ratio of oil to aqueous phase in primary emulsion
+(X2) and sonication times for both primary (X3) and secondary
+emulsions (X4). Only the latter was tested against two levels,
+while the others tested against three levels. All factors were
+evaluated for the following responses: encapsulation efficiency
+(EE), particle size (PS) distribution, polydispersity index (SPAN).
+The models (Equation 1) were generated by Design-Expert
+software version 8.0.7.1 (State-Ease Inc., Minneapolis, MN).
+Table 1 shows the independent variables with their respective
+levels. According to Murphy (2007), the mathematical relation-
+ship between the independent variables and the responses were
+described by the following quadratic polynomial equation:
+Y ¼ 0 þ
+X
+k
+i¼1
+iXi þ
+X
+k
+i¼1
+iX2
+i þ
+X
+k1
+i¼1
+X
+k
+j 4 i
+ijXiXj
+ð1Þ
+where Y is the response, 0 represents the coefficient of the
+intercept and i refers to the estimated coefficient for the
+independent variables (Xi, i ¼ 1, 2, . . . , k), (Xj, j4i).
+Model validation
+The mathematical model was validated using check point analysis
+to assess its reliability in describing the characteristics of
+microspheres (Nasr et al., 2011). Briefly, five points were
+randomly chosen using the Design-Expert software (State-Ease
+Inc., Minneapolis, MN) since their predictive response values
+were derived within the low and high limit of 95% confidence
+interval. All formulations were characterized for their EE (Y1),
+particles size (Y2) and SPAN (Y3) as previously described
+followed by the calculation of bias based on the following
+equation, counted for each responses to envisage validity between
+actual and predicted values:
+Biasð%Þ ¼ Difference between actual and predicted values
+Actual value
+ 100
+ð2Þ
+Preparation of alpha-mangostin-loaded microspheres
+A modified multiple emulsion–solvent evaporation technique was
+adopted as described by Harun et al. (2012). Briefly, 1% w/v
+alpha-mangostin was mixed by vortexing into 5% w/v PLGA
+previously dissolved in dichloromethane (DCM). To this oil
+phase, either 1, 3 or 5% w/v PVA was injected based on oil to
+aqueous volume ratios of 1:1, 1:5 and 1:10 and sonicated over ice
+bath at 40% amplitude (Cole-Parmer 750-Watt Ultrasonic
+Processors; Chicago, IL) for either 1, 2 or 3 min. This primary
+emulsion was immediately injected into 10 times larger its
+volume, a secondary aqueous phase consisted of 1% w/v PVA and
+sonicated at either 3 or 5 min over ice bath. Finally, the double
+emulsion was transferred into a continuously stirred hardening
+tank operating at 500 rpm, and stirring was continued for 2 h to
+allow compete evaporation of DCM. The hardened microsphere
+was harvested by serial centrifugation at 1000, 3000 and 5000
+rpm consecutively for 3 min each to remove larger particles,
+washed three times with purified water and lyophilized. The
+lyophilized microspheres were kept in air-tight amber glass
+container at 4 C until further evaluation.
+Determination of alpha-mangostin content in the
+microspheres
+Alpha-mangostin was extracted from PLGA microspheres by first
+solubilizing these microspheres in acetonitrile and then precipi-
+tating the polymer by diluting with phosphate buffered saline
+(PBS) 30% (v/v). The supernatant containing the extracted alpha-
+Table 1. Independent variables and their designated levels in RSM
+design.
+Independent variables
+Factors’
+Coded levels*
+(factors)
+Unit
+symbols
+1
+0
+1
+PVA concentrationy
+% (w/v)
+X1
+1
+3
+5
+Volume ratio of oil to
+aqueous phasey
+n/a
+X2
+1:1
+5:1
+10:1
+Sonication timey
+Minute
+X3
+1
+2
+3
+Sonication timez
+Minute
+X4
+3
+–
+5
+*Levels 1, 0 and 1 represent low, intermediate (centre point) and high,
+respectively.
+yPrimary emulsion.
+zSecondary emulsion.
+DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+729
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+mangostin was filtered through 0.2 mm PTFE microfilter prior to
+analysis on the modified reverse phase HPLC (RP-HPLC) method
+as described by Ali et al. (2012). The EE was calculated based on
+the following equation:
+Encapsulation effeciency% ¼ Experimental concentration
+Theoretical concentration  100
+ð3Þ
+PS and SPAN
+Prior to freeze-drying, the particles were subjected to size analysis
+by laser particle size analyzer BT-9300H (Bettersize Instruments
+Ltd., Liaoning, China). Size distribution was expressed as volume
+median diameter (d [v, 50]). The SPAN was calculated employing
+this equation: (d[v, 90] – d[v, 10])/d[v, 50], where d[v, 10], d[v,
+50] and d[v, 90] represent the cumulative distribution of the PS at
+10, 50 and 90% of total volume, respectively. Each sample was
+measured in triplicate.
+Scanning electron microscope
+The morphology of the optimized formulation of freeze-dried
+microspheres was assessed by scanning electron microscope (Carl
+Zeiss Evo 50, Oberkochen, Germany) at an accelerating voltage
+of 5–10 KV and under high vacuum pressure. The samples were
+mounted on aluminium stub pre-pasted with double-sided carbon
+tapes and sputter-coated with a thin layer of gold prior to viewing
+to increase image contrast.
+Characterization of aerodynamic diameter
+Optimized formulation was subjected to the measurement of
+aerodynamic diameter by calculation based on the following
+equation: aerodynamic diameter (da) ¼ d ˇ; where d ¼ PS
+measured by laser diffraction and  ¼ tapped density of the
+freeze-dried
+microspheres,
+measured
+by
+jolting
+volumeter
+(Copley JV 1000, Copley Scientific, Nottingham, UK), tapped
+for 5000.
+In vitro cytotoxicity study
+A549 cell, a human non-small-cell lung adenocarcinoma cell line,
+was purchased from American Type Culture Collection (ATCC,
+Manassas, VA). The cells were grown in a complete medium
+containing Dulbecco’s Modified Eagle Medium supplemented
+with 10% foetal bovine serum and 1% penicillin–streptomycin
+(10 000 units/ml–10 000 mg/ml, respectively) at 37C under a
+humidified 5% CO2 incubator.
+The cytotoxicity of free alpha-mangostin and the loaded
+microspheres with alpha-mangostin were evaluated by measuring
+the cell viability using a modified 3-(4,5-dimethylthiazol-2-yl)-
+2,5-diphenyl-tetrazolium bromide (MTT) assay according to
+previously described method by Mosmann (1983). Briefly,
+A549 cells were seeded in 96-well micro-plates at a density of
+1  104 cells/well and incubated for 24 h. Then, cells were treated
+with a serial dilution of free alpha-mangostin, namely 100, 50, 25,
+12.5, 6.25, 3.13 and 1.56 mg/ml, in dimethyl sulfoxide (DMSO).
+For determination of cytotoxicity of alpha-mangostin micro-
+spheres, the cells were treated with the microspheres of equivalent
+concentration of 120, 60, 48, 36, 24, 12, 6, 3 and 1 mg/ml of the
+alpha-mangostin. The microspheres were presuspended in sterile
+PBS prior to loading into the cell. Incubation time following the
+loading was 48 h. The empty microspheres were used as the
+control. After the exposure period, the medium was withdrawn
+and the cells were washed with PBS and incubated with 20 ml of
+5 mg/ml MTT solution for 4 h. The resultant water-insoluble
+formazan crystals were solubilised with 100 ml/well of DMSO.
+Then, the absorbance was measured by UV spectrophotometer
+at 560 nm and 650 nm (reference) using microplate reader.
+The percentage of cell viability was calculated based on the
+following equation. The cytotoxicity activities were expressed as
+the mean of three replicates  standard error of the concentration
+of alpha-mangostin required to reduce cell viability by 50%
+(IC50), which was calculated from the plot of the concentration
+versus corresponding cell viability. Data were analysed by four-
+parametric logistic equation using Sigma Plot software (ver-
+sion 11) (Systat Software Inc., San Jose, CA).
+Cell viability ð%Þ ¼ ðAbsorbance of the sample  blankÞ
+ðAbsorbance of the control  blankÞ  100
+In vitro release study
+The in vitro release profile of the alpha-mangostin from the
+optimized formulation of PLGA-microspheres was conducted
+according to a previously described method (Bouissou et al.,
+2004). Five milligrams of microspheres with equivalent amount
+of approximately 0.5 mg alpha-mangostin were resuspended in
+1 ml PBS (pH 7.4) containing 0.1% v/v Tween 80 in Eppendorf
+tubes. The tubes were placed vertically without shaking and
+incubated at 37 C for 4 weeks. At a pre-determined time intervals
+(1, 3, 6, 12, 24 and 72 h followed by 1, 2, 3 and 4 weeks), the
+samples were centrifuged at 3000 rpm for 3 min and the super-
+natant was withdrawn and replenished with an equal volume of
+fresh medium. The supernatant consisted of alpha-mangostin was
+diluted with 70% v/v acetonitrile, filtered through 0.2 mm PTFE
+microfilter and immediately analysed by a modified RP-HPLC as
+described by Pothitirat and Gritsanapan (2009). Data were
+expressed as the mean percentage of cumulative release  stand-
+ard deviation (n ¼ 3).
+Differential scanning calorimetry
+The physical nature of alpha-mangostin and glass transition
+temperature (Tg) of the PLGA before and after the micro-
+encapsulation
+process
+were
+determined
+using
+differential
+scanning calorimetry (DSC 1, STARe System, Mettler Toledo,
+Greifensee, Switzerland). Briefly, 5 mg of each sample were
+accurately weighed into a 40 ml, pin-holed aluminium crucibles
+and
+hermetically
+sealed.
+All
+measurements
+were
+operated
+against a reference of similar geometric and size of an empty
+pin-holed, hermetically sealed aluminium crucible. The cru-
+cibles were isothermally equilibrated for 5 min at 0 C to ensure
+isothermal starting conditions. Then, a re-conditioning process
+was performed by gradual heating from 0 to 85 C followed by
+quench-cooling to 20 C in order to remove any sample
+history (Rouse et al., 2007). Then, the crucibles were heated
+again to 250 C. All heating were conducted at the same rate,
+i.e. 10 C/min. The scanning was conducted under nitrogen
+purge at flow rate of 1 ml/min. The thermograms were analysed
+using Mettler STARe software (version 9.10) (Mettler Toledo,
+Greifensee, Switzerland), and the Tg was expressed as onset,
+midpoint and endpoint temperatures.
+FTIR spectroscopy
+FTIR spectroscopy was performed to assess the interaction
+between alpha-mangostin and PLGA copolymer using Fourier
+transform infrared spectrometer (Spectrum 100, Perkin-Elmer
+Ltd, England, UK). The spectra of samples were analyzed over a
+range of 400–4000 cm1 at a resolution of 2 cm1. Total of 12
+730
+A. A. E. Ali et al.
+J Microencapsul, 2013; 30(8): 728–740
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+scans were performed for each sample using built-in standard
+software package.
+Results and discussion
+Analysis of model
+Multiple emulsion solvent evaporation technique for microencap-
+sulation of lipophilic therapeutic agents into PLGA is rarely being
+reported as the protocol of choice perhaps due to low affinity
+between relatively hydrophilic PLGA and the agent. In this study,
+we had proved that it was feasible to encapsulate lipophilic agent
+employing PVA as stabilizer with desirable size distribution
+intended for pulmonary delivery. Since stability of primary
+emulsion during the preparation of double emulsion process is
+crucial to ensure substantially high EE (Mohamed and Van Der
+Walle, 2008), different independent variables that may influence
+its stability had been identified and manipulated to investigate
+their effects on the responses using RSM. As shown in Table 2, 30
+runs tailored in Face CCD was accomplished and the mathem-
+atical relationships were generated between the independent
+variables addressed as second-order polynomial equation using
+multi-linear regression analysis in order to envisage the relevant
+responses. The following were the generated models:
+Y1 ¼ 30:49  1:09X1 þ 1:70X2  0:52X3  0:43X4
+ 0:42X1X2  1:10X1X3  0:99X1X4
+ 0:065X2X3  0:16X2X4  0:077X3X4
+þ 1:52X2
+1 þ 2:20X2
+2  4:26X2
+3
+ð4Þ
+Y2 ¼ 2:02 þ 0:096X1  0:005X2 þ 0:056X3  0:020X4
+ 0:056X1X2  0:071X1X3 þ 0:049X1X4
+þ 0:021X2X3  0:047X2X4 þ 0:001X3X4
+ 0:19X2
+1 þ 0:11X2
+2  0:29X2
+3
+ð5Þ
+Y3 ¼ 0:97 þ 0:031X1  0:007X2 þ 0:097X3  0:034X4
+ 0:080X1X2 þ 0:013X1X3 þ 0:058X1X4
+þ 0:078X2X3 þ 0:006X2X4 þ 0:069X3X4
+ 0:099X2
+1  0:017X2
+2  0:085X2
+3
+ð6Þ
+where Y1, Y2 and Y3 refer to EE, PS and polydispersibility index
+(SPAN), respectively, as the responses. The factors including PVA
+concentration, ratio of oil to aqueous phase and sonication time
+for both primary and secondary emulsion were represented in the
+equations as X1, X2, X3 and X4, respectively.
+Following the 30 runs, the data were analyzed by analysis of
+variance (ANOVA) with multiple regression analysis and three-
+dimensional response surface plots were generated based on the
+reduced polynomial equations, which contain only the statistically
+significant terms to visualize the significant manipulating impact
+of the variables on the responses (Gohel and Amin, 1998). It was
+found that PVA concentration (X1) and the ratio of oil to water
+phase (X2) in primary emulsion exhibited extremely significant
+(p50.001) effects on the EE. However, interaction between those
+two did not appear to significantly affect the EE. In contrast,
+sonication time of both primary and secondary emulsion seems to
+insignificantly
+affect
+EE
+individually.
+However,
+interaction
+between PVA concentration and sonication time of primary
+emulsion seems to significantly (p50.05) influence EE as
+Table 2. Face CCD lay out with the responses values.
+Independent variables
+Responses  SD
+Run
+X1
+X2
+X3
+X4
+EE (%)
+PS (mm)
+SPAN
+1
+1
+1
+1
+1
+27.08  0.015
+1.68  0.043
+0.90  0.047
+2
+1
+1
+1
+1
+30.37  0.016
+1.57  0.023
+0.26  0.033
+3
+1
+1
+1
+1
+30.23  0.040
+1.91  0.006
+0.72  0.019
+4
+1
+1
+1
+1
+26.85  0.024
+1.89  0.006
+0.70  0.004
+5
+1
+0
+0
+1
+32.34  0.020
+1.82  0.017
+0.94  0.008
+6
+1
+0
+0
+1
+32.55  0.005
+1.63  0.133
+0.91  0.104
+7
+1
+1
+1
+1
+33.53  0.033
+1.85  0.006
+0.91  0.004
+8
+1
+1
+1
+1
+32.21  0.023
+1.70  0.006
+0.41  0.003
+9
+1
+1
+1
+1
+33.58  0.035
+2.06  0.017
+0.95  0.009
+10
+1
+1
+1
+1
+35.30  0.016
+1.87  0.059
+0.91  0.041
+11
+0
+1
+0
+1
+30.61  0.009
+2.07  0.072
+1.02  0.039
+12
+0
+1
+0
+1
+36.14  0.015
+2.19  0.031
+0.96  0.026
+13
+0
+0
+1
+1
+25.20  0.037
+1.80  0.010
+0.85  0.006
+14
+0
+0
+1
+1
+27.44  0.113
+2.01  0.006
+0.92  0.008
+15
+0
+0
+0
+1
+29.20  0.063
+2.18  0.015
+0.87  0.003
+16
+0
+0
+0
+1
+25.96  0.023
+1.82  0.075
+0.91  0.021
+17
+0
+0
+1
+1
+27.64  0.044
+2.20  0.006
+0.89  0.002
+18
+0
+0
+1
+1
+26.73  0.117
+1.99  0.159
+0.99  0.089
+19
+0
+1
+0
+1
+32.08  0.061
+2.14  0.010
+0.93  0.009
+20
+0
+1
+0
+1
+34.66  0.039
+2.16  0.173
+1.01  0.103
+21
+1
+1
+1
+1
+28.63  0.036
+2.09  0.006
+0.91  0.003
+22
+1
+1
+1
+1
+27.39  0.042
+2.23  0.006
+0.89  0.005
+23
+1
+1
+1
+1
+26.43  0.015
+1.85  0.006
+0.91  0.008
+24
+1
+1
+1
+1
+24.26  0.028
+2.10  0.021
+0.92  0.005
+25
+1
+0
+0
+1
+38.03  0.027
+1.84  0.001
+0.86  0.001
+26
+1
+0
+0
+1
+27.20  0.085
+2.06  0.015
+0.89  0.003
+27
+1
+1
+1
+1
+35.32  0.101
+2.05  0.044
+0.57  0.044
+28
+1
+1
+1
+1
+29.68  0.040
+1.76  0.006
+0.40  0.005
+29
+1
+1
+1
+1
+27.50  0.015
+1.98  0.128
+0.93  0.085
+30
+1
+1
+1
+1
+28.04  0.013
+1.99  0.006
+1.01  0.023
+Abbreviation: Standard deviation (SD), PVA concentration (X1), ratio of oil to aqueous phase (X2), sonication time for primary
+emulsion (X3), sonication time for secondary emulsion (X4), encapsulation efficiency (EE), particle size (PS), polydispersibility
+index (SPAN), low factorial level (1), centre point level (0) and high factorial level (1).
+DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+731
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+depicted in RSM plots (Figure 1a). The RSM plots (Figure 1a and
+b) also suggest that PVA concentration and ratio of oil phase are
+the most critical factor to consider to achieve highest EE. Having
+said that, the highest achievable here by using PVA as stabiliser
+and surfactant was approximately 36–38%, which is relatively
+poor EE compared to other PLGA microspheres with different
+encapsulated agent (Mohamed and van der Walle, 2006). This
+may be attributed to low affinity of alpha-mangostin and xanthone
+for the polymer accelerating diffusion out from the oil phase to
+the external aqueous medium and precipitated in the form of
+crystals from the nascent microspheres (Barichello et al., 1999;
+Teixeira et al., 2005).
+Surprisingly, the PS distributions or geometric diameter
+(1.48–2.26 mm) of all experimental runs were within desirable
+target range (53 mm) suitable for deep inhalation. As attested by
+ANOVA, the PVA concentration and sonication time of primary
+emulsion showed extremely significant effect (p50.001) on the
+PS individually. In addition, interaction between the two factors
+significantly influences PS suggesting their critical role in
+determining optimum size for microspheres. Again, sonication
+time of secondary emulsion did not appear to significantly
+influence the PS. Based on the polynomial equation of the PS
+(Y2; Equation 5), it showed that PVA concentration had
+synergistic influence on the PS, i.e. the size increased with
+PVA concentration. It had been suggested that high concentra-
+tion of PVA increased viscosity of the primary emulsion
+resulting in larger droplet size (Bouissou et al., 2006). In
+addition, desirable PS seems to be the easiest to achieve by the
+protocol employed maybe due temperature of sonication that
+was lowered since the sonication was conducted over the ice
+bath. Low temperature employed could minimise pre-mature
+hardening of microspheres that possibly attributed to increase
+rate of solvent evaporation facilitated at high temperature
+(Scholes et al., 1993).
+Figure 1. (a) Three-dimensional response surface plot (left) with its corresponding contour plot (right) of the alpha-mangostin microspheres prepared
+at constant high level 1 for both sonication time of secondary emulsion (5 min) and ratio of oil phase (10:1). The encapsulation efficiency was at highest
+(more than 36%) at red region of the plot (middle left corner) corresponds to lowest level of PVA concentration (less than 2%) with intermediate to
+highest level of sonication time for primary emulsion (1.5–3 min). (b) Three-dimensional response surface plot (left) with its corresponding contour
+plot (right) of the loaded microspheres prepared at constant centre point 0 level for primary emulsion sonication time (2 min) but at high level 1 for
+secondary emulsion sonication time (5 min). The encapsulation efficiency was at highest (more than 36%) at red region of the plot (uppermost left
+corner) corresponds to highest ratio of oil phase 1:10 but at lowest concentration of PVA (1% w/v).
+732
+A. A. E. Ali et al.
+J Microencapsul, 2013; 30(8): 728–740
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+Looking at the 30 runs data, and RSM plots (Figure 2a and b),
+we concluded that desirable geometric PS could be obtained at all
+sonication time of primary emulsion and at relatively wide range
+of PVA concentration. Therefore, it seems that the factors tested
+in this study had less profound effect on the PS as compared to
+effect on the EE of alpha-mangostin microsphere.
+Therefore, for optimize formulation, we had selected the
+following levels for PVA concentration, ratio of oil phase,
+sonication time of primary and secondary to be at 1, 1, 0 and
+1, respectively. The RSM plots (Figure 2a and b) reveals that
+PVA-desirable geometric PS could be despite having insignificant
+influence on EE and PS, sonication time of secondary emulsion
+seems to play an important role in producing almost monodis-
+perse (desirable span value of less than 0.5) microspheres. As
+reflected by Equation (6), this sonication time has antagonistic
+effects on span value in such a way that the high level (5 min)
+produced small span value as corroborated by the RSM plots
+(Figure 3a and b). Based on ANOVA, PVA concentration had less
+significant effect compared to both sonication time of primary and
+secondary emulsion. Comparing span values of all 30 runs, we
+concluded that the optimum level for sonication time of primary
+and secondary emulsion were 2 and 5 min, respectively, for
+desirable span values of less than 0.5.
+Overall, the results suggested that optimized formulation of
+alpha-mangostin microspheres required the following factors,
+i.e. 1% w/v PVA concentration, 1:10 ratio of oil to aqueous phase
+in primary emulsion, 2 min sonication time for primary emulsion
+and 5 min for secondary emulsion (i.e. 1, 1, 0 and 1 levels).
+Model validation
+To check adequacy of the generated mathematical models for all
+responses, we had done check point analysis to validate the
+equations. The analysis plays a critical role to identify prediction
+strength of the polynomial equations that were obtained from
+multi linear regression analysis. The points were randomly
+selected within the high and low levels of the independent
+variables. Bias less than 10% reflect a validated and reliable
+Figure 2. (a) Three-dimensional response surface plot (left) with its corresponding contour plot (right) of the loaded microspheres prepared at constant
+high level 1 for both sonication time of secondary emulsion (5 min) and ratio of oil phase (10:1). The particle size is within desirable geometric
+diameter (more than 2 mm) at red region of the plot (from middle to right side) corresponding to PVA concentration of 3–5% w/v and occurs throughout
+all levels of sonication time for primary emulsion. (b) Three-dimensional response surface plot (left) with its corresponding contour plot (right) of the
+loaded microspheres prepared at constant centre point 0 level for primary emulsion sonication time (2 min) but at high level 1 for secondary emulsion
+sonication time (5 min). The particle size was within desirable geometric diameter at red region of the plot (lower right corner) corresponding to lowest
+ratio of oil phase (1:1) but at PVA concentration of 3–5% w/v.
+DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+733
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+predictive model (Ricci et al., 2006; Nasr et al., 2011). With
+respect to EE (Y1), a good agreement between the experimental
+and predicted values was observed as shown in Table 3. It is clear
+that the calculated biases for all experiments were less than 10%,
+which implies that the EE model (Equation 4) was valid and
+reliable. Similarly, the experimental values for PS were extremely
+close to the corresponding predicted values (bias510%; Table 4).
+Hence, both mathematical models for EE (Equation 4) and PS
+(Equation 5) could be employed for optimization of microencap-
+sulation of alpha-mangostin.
+Figure 3. (a) Three-dimensional response surface plot (left) with its corresponding contour plot (right) of alpha-mangostin microspheres prepared at
+constant centre point, high level of sonication time primary emulsion (2 min) and at high level 1 for secondary emulsion (5 min). The microspheres
+prepared were almost monodisperse (span less than 0.5) at green to blue region of the plot (one-third of left plot), which occur for all ratio of oil phase
+at PVA concentration less than 2% w/v. (b) Three-dimensional response surface plot (left) with its corresponding contour plot (right) of alpha-
+mangostin microspheres prepared at constant high level 1 for sonication time of secondary emulsion (5 min) and at low level of PVA concentration (1%
+w/v). The microspheres obtained were almost monodisperse at green to blue region of the plot (all area), suggesting that monodispersity could probably
+be achieved at all ratio of oil and at all level of sonication time of primary emulsion.
+Table 3. Model adequacy validation using check points analysis for encapsulation efficiency (Y1).
+Factors
+Experimental value (Y1)
+Run
+X1
+X2
+X3
+X4
+Predicted value (Y1)
+ SD
+Bias (%)
+1
+1
+1
+0
+1
+32.45
+32.78  0.014
+1.01
+2
+1
+1
+0
+1
+37.82
+39.12  0.006
+3.32
+3
+0
+1
+1
+1
+26.99
+29.82  0.086
+9.49
+4
+0
+1
+1
+1
+31.22
+30.73  0.017
+1.59
+5
+1
+1
+0
+1
+30.58
+29.88  0.43
+2.34
+734
+A. A. E. Ali et al.
+J Microencapsul, 2013; 30(8): 728–740
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+In contrast, the biases for SPAN were found to be inconsistent,
+with some extreme values laid outside 10% limit. This implies
+that the mathematical model for this factor is less predictable and
+less reliable to be used for optimization process, hence exclusion
+of this factor.
+Optimization
+In order to obtain a formula with maximum EE, minimum PS and
+narrow SPAN, the levels of the independent variables were
+optimized by graphical and numerical analysis using Design-
+Expert software based on the criterion of desirability (Zu et al.,
+2009). The desirability is defined as an objective function having
+scores range from zero to one. Zero indicates that the predicted
+response is outside the limit, whereas value one reflects targeted
+response value (Ibrahim et al., 2010). As such, for EE that had a
+desirability score of 0.98, the predicted response was differing
+from experimental value by only 0.02% (Table 5). Similarly, since
+the PS had a desirability score of 0.61, the predicted response for
+the PS was less than 0.5% confirming good agreement between
+mathematical models and experimental value.
+The optimized microspheres formula loaded with a-mangostin
+was prepared with 1% (w/v) PVA, 10:1 (v/v) volume ratio of oil to
+aqueous phase, 2 and 5 min sonication for primary and secondary
+emulsion, respectively. The total desirability of this formulation
+was 0.77, which refer to weighted geometric average of all
+responses desirability as stated by Ibrahim et al. (2010) and hence
+indicates mathematical models generated from 30 runs here are
+valid and predictive tools for optimization.
+External morphology and theoretical aerodynamic
+diameter
+As shown in Figure 4(A), protocol employed yielded spherical,
+non-aggregated, non-porous smooth surfaces alpha-mangostin
+microspheres. The results is coherent with overall span values
+(less than 0.5) obtained in the 30 runs suggesting almost
+monodisperse particles produced regardless of levels of the
+independent variables. The microspheres, however, is unstable
+against higher voltage of electron beam (magnification 17 000)
+disrupting its surfaces (Figure 4B) at higher magnification Figure
+4(B).
+Following tapping of 5000, the volume occupied per 175 mg
+of lyophilized alpha-mangostin microspheres (2.06  0.017 mm)
+were found to be 1.2 ml. Therefore, the aerodynamic diameter (da)
+was 784.3  7.5 nm, which is desirable range for fine particle
+fraction (FPF; aerodynamic diameter less than 5 mm, as recom-
+mended by Britich Pharmacopoeia). This FPF value had also been
+employed by other researchers that consider 30–40% FPF as
+efficient aerosolised particles (Fiegel et al., 2004; Zeng et al.,
+2007). The value in this study is a useful indicator prior to
+determination of FPF using suitable cascade impactor like Next
+Figure 4. Microimages of optimized alpha-mangostin microspheres at different resolution: (A) 5000 mag; (B) 17 000 mag.
+Table 4. Model adequacy validation using check points analysis for particle size (Y2) and polydispersity index (Y3).
+Factors
+Predicted responses
+Experimental responses  SD
+Bias (%)
+Run
+X1
+X2
+X3
+X4
+Y2
+Y3
+Y2
+Y3
+Y2
+Y3
+1
+1
+1
+0
+1
+1.81
+0.85
+1.72  0.005
+0.91  0.003
+5.23
+6.59
+2
+1
+0
+1
+1
+1.76
+0.80
+1.71  0.006
+0.88  0.003
+2.92
+9.09
+3
+1
+1
+0
+1
+2.02
+0.99
+1.87  0.006
+0.86  0.003
+8.02
+15.12
+4
+0
+1
+1
+1
+2.11
+0.87
+2.10  0.153
+1.05  0.131
+0.48
+17.14
+5
+0
+1
+1
+1
+2.10
+0.79
+2.04  0.173
+0.99  0.086
+2.94
+20.20
+Table 5. Predicted and observed responses for the optimized formulation with their individual desirability.
+Response
+Predicted value
+Observed value  SD
+Bias (%)
+Individual desirability
+Encapsulation efficiency (%)
+37.81
+39.12  0.01
+3.44
+0.98
+Particle size (mm)
+1.78
+2.06  0.017
+15.73
+0.61
+Polydispersibility index
+0.81
+0.95  0.009
+17.28
+0.36
+DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+735
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+Generation Cascade Impactor. In addition, several strategies have
+been reported with regard to controlling and modulating surface
+morphology of microspheres, fabricated by solvent-evaporation
+and intended for pulmonary delivery. Huo et al. (2005) reported
+relatively large microspheres (5–30 mm) of smooth surface for
+pulmonary delivery which were stable for 3 months and although
+corresponding tapped density was not performed, these spheres
+would appear to be too large for effective deposition to the
+peripheral lung.
+In vitro release study
+As mentioned earlier, although the loaded alpha-mangostin into
+PVP nanomicelles revealed highest aqueous solubility (2.7 mg/
+ml)
+as
+compared
+to
+its
+counterpart
+free
+alpha-mangostin
+(200 ng/ml), the in vitro release profile of alpha-mangostin
+from these nanocarriers was not addressed due to strong hydrogen
+bonding between the polymer and alpha-mangostin (Aisha et al.,
+2012). Therefore, in this study we used Tween 80 solution to
+confer the ‘‘sink condition’’ during the release essay as employed
+by other independent study (Ji et al., 2012). 0.1% Tween 80 and
+other surfactant have been employed in many other studies to
+cause sink condition based on its ability to reduce the interfacial
+tension of the freeze-dried particles and cause full hydration of
+the particles. The concentration of surfactant used was based on
+critical micelle concentration of Tween 80 and other sorbitan-
+based group which is very low, approximately 0.005% v/v.
+Presence of the surfactant also improves aqueous solubility of the
+alpha-mangostin, which indirectly evidenced by the absorbance
+data. One millilitre volume was used to ensure quantifiable
+amount of extracted alpha-mangostin from the PLGA micro-
+spheres up to 1 month release.
+As these microspheres were intended for pulmonary delivery,
+it is expected that these particle will be deposited in the lung
+region (esp. alveolar and some maybe deposited in tracheobron-
+chial region) and started releasing the alpha-mangostin there upon
+contact with lung surfactant or other enzymes and mucous. These
+lung regions are not having as high magnitude of muscular
+movement as those in gastrointestinal tract neither the lung
+environment have that active secretion of bile acid/gastro fluid.
+Hence, the best release simulation is a stagnant condition rather
+than shaken. The condition is also to ensure the release is
+absolutely due to the ability of PLGA to degrade upon contact
+with water and simultaneously release the therapeutic agents, and
+not due to other external factors facilitating the degradation.
+The in vitro release profile of alpha-mangostin from the
+optimized alpha-mangostin microspheres exhibited a typical tri-
+phasic pattern attributed to PLGA degradation profile as shown in
+Figure 5. The mathematical analysis of the release curve revealed
+logarithmic model. The first stage commenced with an initial
+burst release of 33.9 mg/ml corresponding to 7.7% of the total
+entrapped alpha-mangostin in the first 1 h. The burst release effect
+had been reported in numerous PLGA microsphere preparations
+regardless of agents being encapsulated, be it macromolecules
+(Mohamed and van der Walle, 2006; Mao et al., 2007) and small
+molecules (Liu et al., 2004; Xu and Czernuszka, 2008). It appears
+that this natural product-based alpha-mangostin also exhibited
+similar release profile, and this may implied that hydro or
+lypophilicity of the encapsulating agents may not play role in
+causing the burst effects. It was suggested that the burst effect was
+predominantly due to precipitating encapsulated agents on the
+surface of microspheres, which were formed during thermo-
+dynamically transient phases of nascent microspheres (Xu and
+Czermuska, 2008). The second release phase lasted for about 72 h,
+which was likely to follow first-order kinetic release with a total
+cumulative amount of 26.1%. Subsequent to this release was the
+third release phase that lasted for 28 days. At the end of the
+experiment, about 44.4% of alpha-mangostin was released from
+PLGA microspheres. It is noteworthy that the release measured
+over the entire 4 weeks did not result in complete release of alpha-
+mangostin, which implied that total degradation time of this
+PLGA (IV 0.4 dl/g) may take longer than 4 weeks to completely
+degrade releasing all entrapped alpha-mangostin. Besides, the
+sustained-release of alpha-mangostin may also be due to polymer
+entanglement and some interaction between alpha-mangostin and
+the PLGA, as evident by the FTIR spectra (Figure 7).
+In vitro cytotoxicity
+Human non-small lung adenocarcinoma cells (A549) line had
+been documented to exert characteristic type II pulmonary
+Figure 5. The in vitro release profile of the optimized formulation of alpha-mangostin-PLGA microspheres; n ¼ 3.
+736
+A. A. E. Ali et al.
+J Microencapsul, 2013; 30(8): 728–740
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+epithelial cells, and it may play a substantial role as drug barriers
+to pulmonary delivery (Foster et al., 1998). As such, the
+cytotoxicity of alpha-mangostin before and after it was entrapped
+into PLGA microspheres were determined against this cell line
+using MTT assay. We found that our free alpha-mangostin
+exhibited IC50 of 12.88 mM (Figure 7), which was in good
+agreement to the previously reported value (Shih et al., 2010).
+However, the inhibition of cell growth by free alpha-mangostin
+was significantly higher (p50.05) than alpha-mangostin loaded-
+PLGA
+microspheres
+(Table
+6).
+The
+result
+indicated
+that
+microencapsulation had significantly reduced its efficacy to
+inhibit cell growth.
+Differential scanning calorimetry
+The thermal behaviour for both free alpha-mangostin and PLGA
+copolymer was investigated before and after the microencapsula-
+tion process in order to delineate any physical changes that may
+occur post-encapsulation. As shown in Figure 6, alpha-mangostin
+exhibited a sharp endothermic peak at 181.4 C, which was
+attributed to its melting point. However, this peak disappeared
+from the thermogram of alpha-mangostin PLGA microspheres.
+Similar result was previously reported by Aisha et al. (2012) when
+they dispersed the alpha-mangostin in a water-soluble polymer.
+These data suggest that encapsulation of alpha-mangostin into
+PLGA microspheres had changed its physical nature from
+crystalline to amorphous state, which in turn leads to enhance
+its aqueous solubility (Teixeira et al., 2005). The latter is desirable
+since it is related to bioavailability of the alpha-mangostin, which
+is envisaged to be increased as well at the vicinity of any
+absorbing membrane, which include alveolar region.
+Free PLGA copolymer with a molecular weight of 34 kDa (IV
+0.4 dl/g) showed a Tg onset at 40.9 C which was increased post-
+encapsulation based on the Tg exhibited by the alpha-mangostin
+PLGA microspheres and the blank microsphere (Table 6). The
+slight increase in temperature maybe suggestive of anti-plasticiz-
+ing effect caused by residual PVA in the microspheres that was
+also previously reported by other independent study (Bouissou
+et al., 2006). Looking closer, the anti-plasticizing effect seemed
+to be higher in alpha-mangostin PLGA microsphere compared to
+blank
+microsphere,
+and
+this slight
+increase
+may also
+be
+contributed from the presence of hydrogen bonding between
+PLGA and the alpha-mangostin as evident by the FTIR spectra
+(Figure 8). However, the slight increase in Tg may also preclude
+any dominant influence as a result of experimental circumstances
+on the PLGA molecular structure.
+FTIR spectroscopy
+Functional groups analyses were assessed using FT-IR spectros-
+copy to determine possible molecular interaction between the
+alpha-mangostin and PLGA copolymer. Figure 8 shows the
+fingerprint spectrum of free alpha-mangostin produced broad
+peaks at 3408.2 cm1 and 3251.5 cm1, which refer to the
+vibrational stretching of hydroxyl groups. In addition, the
+characteristic absorption bands for CH3, C–O and prenyl groups
+were observed at 2910.1, 1050.1 and 1639.6 cm1, respectively.
+In contrast, these bands were disappeared when alpha-mangostin
+was entrapped into PLGA microspheres. These data were in good
+agreement with alpha-mangostin spectrum that was previously
+reported (Aisha et al., 2012). With respect to free PLGA, blank
+and alpha-mangostin loaded-PLGA microspheres spectra, the
+Figure 6. Thermograms of free alpha-mangostin, unloaded PLGA, loaded and blank microspheres.
+Table 6. Glass transition temperature(Tg), in vitro release and cytotoxicity results.
+Tg (C)
+In vitro release (%)
+Sample
+Onset
+Midpoint
+Endpoint
+Burst effect
+Release after 48 h.
+IC50 (mM)
+Alpha-mangostin (AM)
+n/a
+n/a
+n/a
+–
+–
+12.88  2.437
+AM-PLGA microspheres
+43.96
+45.33
+47.303
+7.48  0.309
+26.21  0.663
+17.73  2.865
+Blank microspheres
+43.34
+45.06
+46.87
+–
+–
+–
+PLGA (raw)
+40.87
+42.44
+44.10
+–
+–
+–
+Results were analysed using paired t-test to compare significant difference between the IC50. Free alpha-mangostin did not exhibit Tg phase but instead
+a melting point peak at 181.4 C.
+DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+737
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+triple transmission peaks that were observed in the range of 1400–
+1500 cm1 refer to glycolide and lactide of PLGA polymer,
+whereas the vibrational stretching of free PLGA carbonyl groups
+appeared
+at
+1736.4 cm1
+which
+shifted
+to
+1748.3
+and
+1747.6 cm1 the spectra of blank and loaded microspheres,
+respectively (Liu et al., 2004; Xu and Czermuska, 2008). The
+FTIR spectra of both blank and loaded microspheres exhibited
+almost similar pattern; however, the only difference was detected
+at 1604.6 cm1 suggestive of alpha-mangostin existence. These
+results indicate that microencapsulation had induced interaction
+between hydroxyl groups of alpha-mangostin to form hydrogen
+bonds with PLGA carbonyl groups. In addition, although PVA
+Figure 7. Plots showing IC50 of (a) free alpha-mangostin and (b) encapsulated alpha-mangostin. AM: alpha-mangostin.
+Figure 8. FTIR spectra of the free forms of
+PLGA, alpha-mangostin and polyvinyl alco-
+hol before microencapsulation process com-
+pared to the blank and loaded microspheres.
+738
+A. A. E. Ali et al.
+J Microencapsul, 2013; 30(8): 728–740
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+was suggested to act as anti-plasticiser, however, the residual
+amount maybe minute enough to cause any molecular changes on
+the PLGA structure, as evident by the FTIR spectra.
+Conclusion
+Alpha-mangostin as a hydrophobic natural product-based com-
+pound was successfully encapsulated in PLGA microspheres
+using the solvent evaporation method, however, with relatively
+low EE. The experimental parameters were optimized by factorial
+CCD that produced formulation with desirable properties. The
+concentration of PVA in the internal aqueous phase and the
+volume of the oil phase for the primary emulsion play a critical
+role to control the EE. The PS of the microspheres and
+polydispersity were affected by the PVA concentration and
+emulsification time for primary emulsion. Longer emulsification
+time for secondary emulsion yielded microspheres with narrow
+SPAN. It was also found that microencapsulation had changed
+crystalline to amourphous alpha-mangostin that is expected to
+have better water solubility, at the expense of its efficacy to inhibit
+cell growth. However, since water solubility was thought to be
+enhanced, we expect that its bioavailability would be improved,
+which can only be proven by a pre-clinical study. The resultant
+PLGA microspheres may be used as a promising micro-carrier
+system to deliver alpha-mangostin to the lung cancer tissue.
+Declaration of interest
+The authors report no conflicts of interest. The authors alone are
+responsible for the content and writing of the article.
+This work was funded by International Islamic University Malaysia
+(IIUM) (Grant ID: EDW B1002-350).
+References
+Aisha AFA, Ismail Z, Abu-Salah KM, Majid AMSA. Solid dispersions
+of a-mangostin improve its aqueous solubility through self-assembly of
+nanomicelles. J Pharm Sci, 2012;101(2):815–25.
+Akao Y, Nakagawa Y, Nozawa Y. Anti-cancer effects of xanthones from
+pericarps of mangosteen. Int J Mol Sci, 2008;9:355–70.
+Ali AAE, Taher M, Helaluddin ABM, Mohamed F. Development and
+validation of analytical method by RP-HPLC for quantification of
+alpha-mangostin encapsulated in PLGA microspheres. J Anal Bioanal
+Tech, 2012;3:7. doi: http://dx.doi.org/10.4172/2155-9872.1000155.
+Barichello JM, Morishita M, Takayama K, Nagai T. Encapsulation of
+hydrophilic and lipophilic drugs in PLGA nanoparticles by the
+nanoprecipitation method. Drug Dev Indu Pharm, 1999;25:471–6.
+Bouissou C, Potter U, Altroff H, Mardon H, Van Der Walle C. Controlled
+release of the fibronectin central cell binding domain from polymeric
+microspheres. J Control Release, 2004;95:557–66.
+Bouissou C, Rouse J, Price R, Van der walle C. The influence of
+surfactant on PLGA microsphere glass transition and water sorption:
+Remodeling the surface morphology to attenuate the burst release.
+Pharm Res, 2006;23:1295–305.
+Chen LG, Yang LL, Wang CC. Anti-inflammatory activity of mangostins
+from Garcinia mangostana. Food Chem Toxicol, 2008;46:688–93.
+Cui J, Hu W, Cai Z, Liu Y, Li S, Tao W, Xiang H. New medicinal
+properties of mangostins: Analgesic activity and pharmacological
+characterization of active ingredients from the fruit hull of Garcinia
+mangostana L. Pharmacol Biochem Behav, 2010;95:166–72.
+Emami J, Hamishehkar H, Najafabadi AR, Gilani K, Minaiyan M,
+Mahdavi H, Mirzadeh H, Fakhari A, Nokhodchi A. Particle size design
+of PLGA microspheres for potential pulmonary drug delivery using
+response surface methodology. J Microencapsul, 2009;26:1–8.
+Fiegel J, Fu J, Hanes J. Poly (ether-anhydride) dry powder aerosols for
+sustained drug delivery in the lungs. J Control Release, 2004;96:
+411–23.
+Foster
+KA,
+Oster
+CG,
+Mayer
+MM,
+Avery
+ML,
+Audus
+KL.
+Characterization of the A549 cell line as a type II pulmonary epithelial
+cell model for drug metabolism. Exp Cell Res, 1998;243:359–66.
+Gohel M, Amin A. Formulation optimization of controlled release
+diclofenac sodium microspheres using factorial design. J Control
+Release, 1998;51:115–22.
+Huo D, Deng S, Li L, Ji J. Studies on the poly (lactic-co-glycolic) acid
+microspheres of cisplatin for lung-targeting. Int J Pharm, 2005;289:
+63–7.
+Ibrahim HM, Ahmed TA, Lila AEA, Samy AM, Kaseem AA, Nutan
+MTH. Mucoadhesive controlled release microcapsules of indometh-
+acin: Optimization and stability study. J Microencapsul, 2010;27:
+377–86.
+Iikubo K, Ishikawa Y, Ando N, Umezawa K, Nishiyama S. The first direct
+synthesis of [alpha]-mangostin, a potent inhibitor of the acidic
+sphingomyelinase. Tetrahedron Lett, 2002;43:291–3.
+Harun Ismail AF, Doolanea AM, Awang M, Mohamed F. High initial
+burst release of gentamicin formulated as PLGA microspheres implant
+for
+treating
+orthopaedic
+infection.
+Int
+J
+Pharm
+Pharm
+Sci,
+2012;4(Suppl. 4):685–91.
+Jemal A, Bray F, Center MM, Ferlay J, Ward E, Forman D. Global cancer
+statistics. CA Cancer J Clin, 2011;61(2):69–90.
+Ji X, Gao Y, Chen L, Zhang Z, Deng Y, Li Y. Nanohybrid systems of non-
+ionic surfactant inserting liposomes loading paclitaxel for reversal of
+multidrug resistance. Int J Pharm, 2012;422:390–97.
+Jung, HA, Su BN, Keller WJ, Mehta RG, Kinghorn AD. Antioxidant
+xanthones from the pericarp of Garcinia mangostana (Mangosteen).
+J Agric Food Chem, 2006;54:2077–82.
+Kaomongkolgit R, Jamdee K, Chaisomboon N. Antifungal activity of
+alpha-mangostin against Candida albicans. J Oral Sci, 2009;51:401–6.
+Liu DZ, Chen, WP, Lee CP, Wu SL, Wang YC, Chung TW. Effects of
+alginate
+coated
+on
+PLGA
+microspheres
+for
+delivery
+tetracycline hydrochloride to periodontal pockets. J Microencapsul,
+2004;21:643–52.
+Mahabusarakam W, Proudfoot J, Taylor W, Croft K. Inhibition of
+lipoprotein oxidation by prenylated xanthones derived from mangostin.
+Free Radic Res, 2000;33:643–59.
+Mao S, Xu J, Cai C, Germershaus O, Schaper A, Kissel T. Effect of WOW
+process parameters on morphology and burst release of FITC-dextran
+loaded PLGA microspheres. Int J Pharm, 2007;334(1–2):137–48.
+Mohamed F, van der Walle CF. PLGA microcapsules with novel dimpled
+surfaces for pulmonary delivery of DNA. Int J Pharm, 2006;311(1–2):
+97–107.
+Mohamed F, van der Walle CF. Engineering biodegradable polyester
+particles with specific drug targeting and drug release properties.
+J Pharm Sci, 2008;97:71–87.
+Mosmann T. Rapid colorimetric assay for cellular growth and survival:
+Application to proliferation and cytotoxicity assays. J Immunol
+Methods, 1983;65:55–63.
+Murphy TD. 2007. Response surface methodology for validation of oral
+dosage forms. In: Torbeck LD, ed. Pharmaceutical and medical device
+validation by experimental design. New York: Informa Healthcare.
+Nasr M, Awad GAS, Mansour S, Al shamy A, Mortada ND. A reliable
+predictive factorial model for entrapment optimization of a sodium
+bisphosphonate into biodegradable microspheres. J Pharm Sci, 2011;
+100:612–21.
+Pedraza-Chaverri J, Reyes-Fermin LM, Nolasco-Amaya EG, Orozco-
+Ibarra M, Medina-Campos ON, Gonzalez-Cuahutencos O, Rivero-Cruz
+I, Mata R. ROS scavenging capacity and neuroprotective effect of
+alpha-mangostin against 3-nitropropionic acid in cerebellar granule
+neurons. Exp Toxicol Pathol, 2009;61:491–501.
+Pothitirat W, Gritsanapan W. HPLC quantitative analysis method for the
+determination of a-mangostin in mangosteen fruit rind extract. Thai J
+Agri Sci, 2009;42:7–12.
+Ricci M, Giovagnoli S, Blasi P, Schoubben A, Perioli L, Rossi C.
+Development of liposomal capreomycin sulfate formulations: Effects
+of formulation variables on peptide encapsulation. Int J Pharm, 2006;
+311:172–81.
+Rouse JJ, Mohamed F, van der Walle CF. Physical ageing and thermal
+analysis of PLGA microspheres encapsulating protein or DNA. Int J
+Pharm, 2007;339(1–2):112–20.
+Sakagami Y, Iinuma M, Piyasena KG, Dharmaratne HR. Antibacterial
+activity
+of
+alpha-mangostin
+against
+vancomycin
+resistant
+Enterococci (VRE) and synergism with antibiotics. Phytomedicine,
+2005;12:203–8.
+Scholes P, Coombes A, Illum L, Daviz S, Vert M, Davies M. The
+preparation of sub-200 nm poly (lactide-co-glycolide) microspheres for
+site-specific drug delivery. J Control Release, 1993;25:145–53.
+Shih YW, Chien ST, Chen PS, Lee JH, Wu SH, Yin LT. Alpha mangostin
+suppresses phorbol 12-myristate 13-acetate-induced MMP-2/MMP-9
+expressions via avb3 integrin/FAK/ERK and NF-jB signaling pathway
+DOI: 10.3109/02652048.2013.788081
+Microencapsulation of alpha-mangostin into PLGA microspheres
+739
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.
+
+in human lung adenocarcinoma A549 cells. Cell Biochem Biophys,
+2010;58:31–44.
+Suksamrarn
+S,
+Komutiban
+O,
+Ratananukul
+P,
+Chimnoi
+N,
+Lartpornmatulee N, Suksamrarn A. Cytotoxic prenylated xanthones
+from the young fruit of Garcinia mangostana. Chem Pharmaceut Bull,
+2006;54:301–5.
+Taher M, Susanti D, Rezali MF, Zohri FSA, Ichwan SJA, Alkhamaiseh
+SI, Ahmad F. Apoptosis, antimicrobial and antioxidant activities of
+phytochemicals from Garcinia malaccensis Hk.f. Asian Pac J Trop
+Med, 2012;5:136–41.
+Tangpong J, Miriyala S, Noel T, Sinthupibulyakit C, Jungsuwadee P, St.
+Clair DK. Doxorubicin-induced central nervous system toxicity and
+protection
+by
+xanthone
+derivative
+of
+Garcinia
+Mangostana.
+Neuroscience, 2011;175:292–9.
+Teixeira M, Alonso MJ, Pinto MMM, Barbosa CM. Development and
+characterization of PLGA nanospheres and nanocapsules containing
+xanthone and 3-methoxyxanthone. Eur J Pharm Biopharm, 2005;59:
+491–500.
+Wang Y, Xia Z, Xu JR, Wang YX, Hou LN, Qiu Y, Chen HZ.
+a-Mangostin, a polyphenolic xanthone derivative from mangosteen,
+attenuates b-amyloid oligomers-induced neurotoxicity by inhibiting
+amyloid aggregation. Neuropharmacology, 2012;62(2):871–81.
+Williams P, Ongsakul M, Proudfoot J, Croft K, Beilin L. Mangostin
+inhibits the oxidative modification of human low density lipoprotein.
+Free Radic Res, 1995;23:175–84.
+Wischke C, Schwendeman SP. Principles of encapsulating hydrophobic
+drugs in PLA/PLGA microparticles. Int J Pharm, 2008;364:298–327.
+Wong HL, Bendayan R, Rauth AM, Li Y, Wu XY. Chemotherapy with
+anticancer drugs encapsulated in solid lipid nanoparticles. Adv Drug
+Deliv Rev, 2007;59:491–504.
+Xu Q, Czernuszka JT. Controlled release of amoxicillin from hydro-
+xyapatite-coated poly (lactic-co-glycolic acid) microspheres. J Control
+Release, 2008;127:146–53.
+Yoo HS, Lee KH, Oh JE, Park TG. In vitro and in vivo anti-tumor
+activities of nanoparticles based on doxorubicin-PLGA conjugates.
+J Control Rel, 2000;68:419–31.
+Zeng XM, MacRitchie HB, Marriott C, Martin GP. Huimidity-induced
+changes of the aerodynamic properties of dry powder aerosol formu-
+lations containing different carriers. Int J Pharm, 2007;333(1–2):45–55.
+Zu Y, Zhang Y, Zhao X, Zhang Q, Liu Y, Jiang R. Optimization of the
+preparation process of vinblastine sulfate (VBLS)-loaded folate-
+conjugated bovine serum albumin (BSA) nanoparticles for tumor-
+targeted drug delivery using response surface methodology (RSM). Int
+J Nanomedicine, 2009;4:321–33.
+740
+A. A. E. Ali et al.
+J Microencapsul, 2013; 30(8): 728–740
+Journal of Microencapsulation Downloaded from informahealthcare.com by University of Laval on 05/25/14
+For personal use only.

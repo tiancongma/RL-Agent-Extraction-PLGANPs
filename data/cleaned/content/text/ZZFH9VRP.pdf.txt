@@ -1,0 +1,1336 @@
+TYPE Original Research
+PUBLISHED 04 January 2023
+DOI 10.3389/fnut.2022.953326
+OPEN ACCESS
+EDITED BY
+Andrew Scholey,
+Swinburne University of
+Technology, Australia
+REVIEWED BY
+Giovanna Mobbili,
+Marche Polytechnic University, Italy
+Dongxu Wang,
+Jiangsu University of Science and
+Technology, China
+*CORRESPONDENCE
+Ying Chen
+2015019@htu.edu.cn
+Liyong Huang
+liyongh0816@163.com
+SPECIALTY SECTION
+This article was submitted to
+Nutrition, Psychology and Brain
+Health,
+a section of the journal
+Frontiers in Nutrition
+RECEIVED 26 May 2022
+ACCEPTED 25 November 2022
+PUBLISHED 04 January 2023
+CITATION
+Yang X, Han M, Wang X, Wang J, Sun X,
+Zhang C, Yan S, Huang L and Chen Y
+(2023) Evaluation of the synergistic
+eﬀects of
+epigallocatechin-3-gallate-loaded
+PEGylated-PLGA nanoparticles with
+nimodipine against neuronal injury
+after subarachnoid hemorrhage.
+Front. Nutr. 9:953326.
+doi: 10.3389/fnut.2022.953326
+COPYRIGHT
+© 2023 Yang, Han, Wang, Wang, Sun,
+Zhang, Yan, Huang and Chen. This is
+an open-access article distributed
+under the terms of the Creative
+Commons Attribution License (CC BY).
+The use, distribution or reproduction
+in other forums is permitted, provided
+the original author(s) and the copyright
+owner(s) are credited and that the
+original publication in this journal is
+cited, in accordance with accepted
+academic practice. No use, distribution
+or reproduction is permitted which
+does not comply with these terms.
+Evaluation of the synergistic
+eﬀects of epigallocatechin-3-
+gallate-loaded PEGylated-PLGA
+nanoparticles with nimodipine
+against neuronal injury after
+subarachnoid hemorrhage
+Xianguang Yang1, Mengguo Han1, Xue Wang1, Jian Wang1,
+Xiaoxue Sun1, Chunyan Zhang1, Shuaiguo Yan1,
+Liyong Huang2,3* and Ying Chen1*
+1College of Life Sciences, Henan Normal University, Xinxiang, Henan, China, 2Department of
+Neurosurgery, The First Aﬃliated Hospital of Xinxiang Medical University, Henan, China, 3Henan Key
+Laboratory of Neurorestoratology, The First Aﬃliated Hospital of Xinxiang Medical University,
+Henan, China
+Subarachnoid hemorrhage (SAH) is a devastating subtype of stroke with
+high mortality and morbidity. Although serious side eﬀects might occur,
+nimodipine,
+a
+second-generation
+1,4-dihydropyridine
+calcium
+channel
+blocker, is clinically used to improve neurological outcomes after SAH.
+Recently, (-)-epigallocatechin-3-gallate (EGCG) has been reported to inhibit
+Ca2+
+overloading-induced
+mitochondrial
+dysfunction,
+oxidative
+stress,
+and neuronal cell death after SAH; however, low bioavailability, instability,
+and cytotoxicity at a high dose limited the clinical application of EGCG.
+To
+overcome
+these
+limitations,
+PEGylated-PLGA
+EGCG
+nanoparticles
+(EGCG-NPs) were constructed to enhance the bioavailability by using the
+double-emulsion method. Antioxidative activity, cytotoxicity, behavioral,
+and immunohistochemistry studies were carried out to determine the
+neuroprotective eﬀectiveness after cotreatment with EGCG-NPs (75 mg/kg/d
+preconditioning for 7 days before SAH) and nimodipine (10 mg/kg/d after
+30 min of SAH) by using in vivo SAH models. The optimized EGCG-NPs
+with a Box–Behnken design showed a small particle size of 167 nm, a zeta
+potential value of −22.6 mV, an encapsulation eﬃciency of 86%, and a
+sustained-release proﬁle up to 8 days in vitro. Furthermore, EGCG-NPs (75
+mg/kg/d) had superior antioxidative activity to free EGCG (100 mg/kg/d).
+EGCG-NPs combined with nimodipine exhibited signiﬁcant synergistic eﬀects
+against neuronal cell death by suppressing oxidative stress, Ca2+ overloading,
+mitochondrial dysfunction, and autophagy after SAH. These results suggest
+that cotreatment with EGCG-NPs and nimodipine may serve as a promising
+novel strategy for the treatment of SAH.
+KEYWORDS
+EGCG, subarachnoid hemorrhage, PLGA-PEG, nanoparticles, nimodipine, autophagy
+Frontiers in Nutrition
+01
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+Introduction
+Green tea, the second most popular beverage in the world,
+is made from fresh leaves of Camellia sinensis, which contains
+abundant polyphenols. Polyphenols have been associated with
+providing beneﬁcial health eﬀects in the prevention of cancers,
+diabetes, and neurodegenerative and cardiovascular diseases
+(1–4). (-)-Epigallocatechin-3-gallate (EGCG) is one of the
+most abundant compounds, having excellent bioactivities even
+at low concentrations (plasma levels of ≤10 µM), such as
+antioxidant and anti-inﬂammatory properties (5, 6). However,
+the limitations of EGCG such as its low bioavailability,
+instability, short half-time, and cytotoxicity at a large dose
+have hampered its application in clinical settings. Encapsulated
+EGCG might be eﬀective in overcoming the aforementioned
+disadvantages, which enhances its stability and increases its
+concentration in the plasma via slow and sustainable release
+(7). Therefore, several diﬀerent nanoparticles (NPs) have been
+formulated, including liposomes, magnetic NPs, and polymeric
+NPs (8–12). Among these nanocarriers, PLGA is a safety
+European Medicines Agency (EMA)- and U.S. Food and
+Drug Administration (FDA)-approved drug carrier with higher
+biocompatibility and biodegradability. More importantly, PLGA
+microspheres provide sustained drug release over a period
+of a few weeks to months. Moreover, PLGA-encapsulated
+EGCG-NPs exhibited a more therapeutic eﬀect against several
+cancers, such as non-small-cell lung cancer, breast cancer, and
+prostate cancer (13, 14). Most recently, loading of EGCG
+in PEGylated-PLGA NPs (EGCG-NPs) has been found to
+have neuroprotective eﬀects with no major side eﬀects against
+epilepsy and Alzheimer’s disease, indicating that EGCG-NP
+administration might be a potential therapeutic strategy in
+clinical settings (15, 16).
+Even though survivors of subarachnoid hemorrhage (SAH)
+have increased by 17% in the past few decades due to the
+advanced early diagnosis and interventional therapy, SAH, an
+uncommon subtype of stroke, remains a leading cause of death
+and severe disability worldwide (17). It has been reported that
+multiple factors, including inﬂammatory responses, oxidative
+stress, calcium overloading, and mitochondrial dysfunction,
+are associated with SAH progression and poor outcomes
+(18). Among them, calcium homeostasis is critical for the
+physiological maintenance of intra- and extracellular signaling
+cascades
+because
+overloaded
+calcium
+triggers
+secondary
+ischemia, which results in poor outcomes by inducing the
+narrowing of intracranial arteries and activating Ca2+ signaling
+pathway-induced cell life-and-death decisions (19). Therefore,
+blocking calcium channels is a promising strategy to counteract
+the elevation of intracellular calcium either from the endo-
+and/or exogenous pool after SAH. Indeed, several calcium
+antagonists exhibited neuroprotective properties, including
+nimodipine and nicardipine (20). Nimodipine, an L-type
+dihydropyridine calcium channel antagonist, is the only
+FDA-approved drug to improve neurological outcomes and
+to decrease mortality in patients with SAH (19, 21). The
+recommended dose of orally administered nimodipine is
+30–120 mg every 4 h for 21 days. However, one of the serious
+side eﬀects of nimodipine is hypoperfusion, which worsens
+neurological outcomes.
+A mutual interplay between calcium signaling pathways and
+ROS signaling systems might contribute to the pathogenesis of
+various disorders. In our previous studies, EGCG has been found
+to act as a voltage-gated calcium channel (VGCC) antagonist
+by blocking the calcium inﬂux from the extracellular space
+and as an antioxidative agent by reducing ROS generation
+(22–24). Indeed, the imbalance between ROS generation and
+reduction/scavenging inevitably resulted in oxidative stress,
+which was strongly associated with the diverse pathogenesis
+of early brain injury (EBI) after SAH. Kang et al. reported
+that EGCG decreased cell death processes and neurotoxic
+eﬀects by inhibiting oxidative stress in the hippocampal tissue
+(25). However, some in vivo and in vitro pharmacological
+studies have demonstrated that EGCG at high concentrations
+exhibited acute and subacute toxicities (26). For example, 50 µM
+or 50 mg/kg/day of EGCG dramatically increased reactive
+oxygen species (ROS) generation and exacerbated mitochondria
+abnormalities (27–29). Several studies have demonstrated the
+neuroprotective eﬃcacy of EGCG-NPs; however, none of them
+has been used in in vivo SAH therapy. Therefore, the aim of
+this study was to prepare PEGylated-PLGA EGCG-NPs and
+investigate its eﬃcacy and safety against SAH. In this study,
+EGCG-NPs were characterized by particle size and morphology,
+polydispersity index, drug encapsulation eﬃciency, and drug
+loading capacity. The synergetic neuroprotective eﬀects of
+EGCG-NPs (75 mg/kg/d) with nimodipine (10 mg/kg/d) were
+evaluated using in vivo and in vitro SAH models.
+Materials and methods
+Materials
+mPEG-poly
+lactic-co-glycolic
+acid
+(PLGA)
+(75:25,
+45,000) was purchased from Daigang Biomaterial Co., Ltd
+(Jinan, Shandong, China). EGCG (purity > 98%; Yuanye
+Biotechnology Co., Ltd, Shanghai, China) was dissolved in
+water (pH 3.0) and stored at −20◦C. Nimodipine was obtained
+from Ruiyang Pharmaceutical Co., Ltd (Yi Yuan, Shandong,
+China). Lactate dehydrogenase (LDH), glutathione (GSH),
+superoxide dismutase (SOD), total antioxidant capacity (T-
+AOC), and malondialdehyde (MDA) kits were obtained from
+the Nanjing Jiancheng Bioengineering Institute (Nanjing,
+Jiangsu, China). JC-1, Fluo-3 AM, DCFH-DA, Nissl staining
+kits, and enhanced chemiluminescence kits were purchased
+from Beyotime (Shanghai, China). CaMKII, Atg5, Beclin-1, and
+Mn-SOD antibodies were obtained from Proteintech Group, Inc
+Frontiers in Nutrition
+02
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+TABLE 1 Box-Behnken design used for optimization of EGCG-loaded
+formulae.
+Independent variables
+Coded levels
+Low level
+(−1)
+Medium
+level (0)
+High level
+(1)
+X1: EGCG (mg/ml)
+1
+5.5
+10
+X2: PEG-PLGA (mg)
+12
+16
+20
+X3: Tween-80 (%)
+1.5
+2.25
+3
+Dependent variables
+Goal
+Y1: Average particle size (nm)
+Minimize
+Y2: Zeta potential (mV)
+Maximize in terms of absolute value
+Y3: Encapsulation eﬃciency (%)
+Maximize
+Y4: Polydispersity index (PDI)
+Minimize
+(Rosemont, IL, USA). SP-9002 SPlink detection and DAB kits
+were purchased from Zhongshan Golden Bridge Biotechnology
+(Beijing, China).
+Preparation of EGCG-NPs
+EGCG-NPs were prepared by using the double-emulsion
+method in three steps: (1) EGCG was dissolved in 1 ml of the
+aqueous phase (W1) at pH 3.0 and emulsiﬁed with 1.5 ml of
+an oil phase (O) composed of ethyl acetate, which contained
+the dissolved polymeric matrix. Simple emulsion (W1/O) was
+prepared by using an ultrasound probe at 20% amplitude for
+20 s; (2) 2 ml of 2.5% Tween-80 (W2) was added to W1/O, and
+the mixture was subjected to ultrasound at 20% amplitude for
+2 min to yield a double emulsion (W1/O/W2); (3) 2 ml of 0.02%
+Tween-80 was added dropwise to stabilize the emulsion. Finally,
+the organic solvent was evaporated by stirring for 24 h.
+Optimization
+To obtain the optimal formulation, a 23 Box–Behnken
+design was used (Table 1). The eﬀect of the independent
+variables [EGCG (X1), PEG-PLGA (X2), and Tween-80 (X3)]
+on the dependent variables [average particle size (Zav) (Y1),
+zeta potential (ZP) (Y2), polydispersity index (PDI) (Y3), and
+encapsulation eﬃciency (EE) (Y4)] was evaluated. A total of 15
+experiments were required. The response Y was modeled using
+the following full second-order polynomial equation:
+Y = β0 + β1X1 + β2X2 + β3X3 + β12X1X2 + β13X1X3
++β23X2X3 + β11X2
+1 + β22X2
+2 + β33X2
+3
+where Y is the established response, β0 is the intercept, and β1-
+β33 are the measured coeﬃcients computed from the observed
+experimental values of Y.
+Physicochemical characterization
+The Zav, PDI, and ZP were measured using dynamic light
+scattering and laser Doppler electrophoresis using an M3 PALS
+system in Zetasizer Nano ZS (Malvern Instruments, Malvern,
+UK) at a detection angle of 90◦, 25◦C with a 5-mW He–Ne laser
+operating at a 633-nm wavelength. Samples were diluted in water
+(1:10). The results were the averages of triplicate experiments
+with an average of 15 runs per measurement.
+Morphology of EGCG-NPs
+Transmission electron microscopy (TEM) (JEM 1010,
+JEOL, Japan) was used to investigate the morphology of the
+EGCG-NPs. A single drop of the diluted samples (1:10) was
+mounted on a carbon-coated copper grid, and then negative
+staining with uranyl acetate (2%) took place to visualize
+the particles.
+Determination of the encapsulation
+eﬃciency
+Free
+EGCG
+was
+separated
+from
+EGCG-NPs
+by
+ﬁltration/centrifugation
+using
+an
+Amicon
+R⃝
+Ultra-0.5
+centrifugal
+ﬁlter
+device
+(Millipore
+R⃝
+Co,
+Massachusetts,
+USA) for centrifugation at 12,000 × g for 30 min at 4◦C. The
+concentration of EGCG was detected. An Agilent 1100 HPLC
+system with a UV detector was used for the HPLC analysis by
+using a C18 analytical column at 40◦C. The optimized mobile
+phase consisted of acetonitrile and buﬀer. The ﬂow rate was
+0.8 ml/min, and the injection volume was set at 15 µl. The UV
+wavelength was set at 280 nm. Standards with a concentration
+range of 0.03–0.5 mg/ml were prepared. All experiments were
+carried out in triplicate. Then, encapsulation eﬃciency was
+calculated using the following equation:
+EE = (total amount of EGCG −free amount of EGCG)
+/total amount of EGCG×100%.
+In vitro drug release
+The release proﬁle of EGCG from the polymeric matrix was
+determined by bulk equilibrium direct dialysis, as described by
+Albuquerque et al., with some modiﬁcations (30). For this test,
+Frontiers in Nutrition
+03
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+two diﬀerent release mediums were chosen: one medium was
+composed of an acid buﬀer solution (pH 3.0) with ascorbic acid
+0.25%, and the other medium was PBS 0.1 M buﬀer solution
+(pH 7.4) with ascorbic acid 0.25%. The dialysis sacs were
+equilibrated with the dissolution medium 1 h before the start of
+the experiment. After that, 5 ml of EGCG-NPs and free EGCG
+samples were enclosed in dialysis bags (Viskase Inc. MWCO
+12–14,000, IL, USA) and then placed in 70 ml of buﬀers at 37◦C
+with stirring at 50 rpm in a shaking incubator. At predetermined
+time intervals, 1 ml of the sample was withdrawn from the
+release medium to be analyzed with HPLC using the conditions
+described earlier. Then, the same amount of fresh medium was
+added to a dialysis container. Diﬀerent kinetic models were used
+to adjust the data. The assay was carried out in triplicate.
+Animals
+The animal use and care protocols were approved by the
+Institutional Animal Care and Use Committee (IACUC) of
+Henan Normal University. A total of 60 adult male Kunming
+mice weighing 18–20 g were purchased from Zhengzhou
+University. All animals underwent institutional quarantine for
+7 days before use. The animals were housed in a temperature-
+controlled (22 ± 3◦C) and humidity-controlled (40–70%)
+environment with a 12-h light/dark cycle.
+Experiment 1
+To evaluate the antioxidant eﬀect of EGCG-NPs, 24 mice
+were randomly divided into four groups (n = 6): Sham, SAH,
+SAH + free EGCG (150 mg/kg/d), and SAH + EGCG-NPs (75
+mg/kg/d). The samples were collected from serum and ipsilateral
+hippocampus and cortex, and antioxidative enzymes activities,
+ROS level and the expression of Mn-SOD were detected. EGCG
+was intragastrically administered with water for 7 days before
+OxyHb injection, respectively.
+Experiment 2
+To explore the neuroprotective eﬀects of cotreatment with
+EGCG-NPs and nimodipine, 30 mice were randomly assigned to
+ﬁve groups (n = 6): Sham, SAH, SAH + nimodipine (30 mg/kg),
+SAH + EGCG-NPs, and SAH + EGCG-NPs+nimodipine (10
+mg/kg). Ipsilateral hippocampus and cortex were chosen for
+immunoﬂuorescence and Nissl staining. Nimodipine was given
+after 30 min of SAH.
+Mouse SAH model
+SAH was induced in mice using the model reported by
+Huang et al. (31). The animals were placed in a prone
+position under 1% pentobarbital general anesthesia (50 mg/kg,
+intraperitoneally). The posterior cervical muscles were dissected
+through a suboccipital midline skin incision and retracted
+laterally. The exposed transparent atlantooccipital membrane
+was penetrated with a 30-gauge needle. Under spontaneous
+breathing, a 23-gauge needle without a point was percutaneously
+inserted into the skull at a controlled depth of 1.5 mm in the
+cross-position at 2 mm from the sagittal suture and 1 mm from
+the coronal suture. Subsequently, 50 µl (150 µmol/l) of OxyHb
+was injected through this hole into the subarachnoid space.
+Then, the animals were euthanized 48 h after SAH. Some were
+isolated the ipsilateral hippocanpus and cortex and stored at
+−80◦C for enzyme activity assay. The others were perfused
+with 4% paraformaldehyde in phosphate buﬀer 0.1 M and then
+embedded in paraﬃn. Coronal sections of the brain with the
+cortex and hippocampus were chosen for the following studies.
+LDH, GSH, SOD, T-AOC, and MDA assay
+The LDH, GSH, SOD, T-AOC, and MDA contents in
+serum and ipsilateral hippocampus and cortex were determined
+by using speciﬁc commercial assay kits according to the
+manufacturers’ instructions.
+Measurement of intracellular reactive
+oxygen species
+To detect the ROS levels of brain tissues, the brain sections
+were incubated with 10 µM of DCFH-DA at 37◦C for 30 min.
+Excitation and emission wavelengths were set at 485 and
+530 nm, respectively. The sections were then observed by
+ﬂuorescence microscopy (AX10, Zeiss). Fluorescence intensities
+were quantiﬁed by using ImageJ software.
+Cell culture and treatments
+PC12 cells were grown in the RPMI 1640 medium with
+5% fetal bovine serum (FBS), 10% horse serum, and 1%
+penicillin/streptomycin at 37◦C under 5% CO2. At 24 h after
+seeding the cells, OxyHb was added to a ﬁnal concentration
+of 10 µM to establish an in vitro SAH model. Then, 25 µm of
+EGCG-NPs and 10 µm of nimodipine were used.
+Measuring cytosolic Ca2+ concentration
+levels
+To investigate the changes in the intracellular calcium
+level after SAH, the Ca2+ concentration was detected using
+Fluo-3 AM. In brief, 1 × 105 cells were incubated with 2 µM
+Frontiers in Nutrition
+04
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+of Fluo-3 AM for 1 h at 37◦C in the dark. After gently
+washing the cells three times with Hanks’ balanced salt solution
+(HBSS), an additional incubation was performed to equilibrate
+the intracellular dye concentration at room temperature. The
+ﬂuorescence was continuously monitored at 10-s intervals for
+up to 8 min using a microplate ﬂuorometer, with excitation
+wavelength of 506 nm and emission wavelength of 526 nm. The
+average ﬂuorescence value was presented as relative ﬂuorescence
+units (RFUs).
+Immunohistochemistry assay
+Deparaﬃnized sections were treated with 0.3% hydrogen
+peroxide in methanol for 15 min at room temperature to block
+endogenous peroxidase activity. The sections were incubated in
+0.01 M, pH 9.0 EDTA buﬀer for 20 min at 121◦C and cooled
+to room temperature. After being blocked with 10% normal
+goat serum for 1 h at room temperature, the sections were
+subsequently incubated overnight with anti-Mn-SOD, CaMKII,
+anti-Atg5, and anti-Beclin-1 antibodies. After being extensively
+washed, the sections were then stained by using the SP-9002
+SPlink detection kit. ImageJ software was used to evaluate the
+expression level.
+Nissl staining
+Nissl staining was performed to measure hippocampus
+injury. After being deparaﬃnized and hydrated with distilled
+water, the brain sections were incubated with 0.5% toluidine
+blue at 37◦C for 30 min, then dehydrated with graded alcohols,
+and cleared in xylene. Finally, these sections were coverslipped
+using neutral resins and observed under a light microscope by
+a researcher who was entirely blind to experimental conditions.
+The neuronal density loss was estimated.
+Neurological score evaluation
+The modiﬁed Garcia scoring system was blindly assessed for
+neurological function at 48 h after SAH. The total score ranged
+from 3 to 18, and the scoring was used based on (1) spontaneous
+activity, (2) symmetry of limb movement, (3) climbing, (4) body
+proprioception, (5) the movement of forelimbs, and 6) response
+to vibrissal touch. Higher scores for the modiﬁed Garcia scoring
+system indicated a better neurological function.
+Statistical analysis
+The statistical analysis was performed using the Statistical
+Package for Social Sciences (SPSS Inc., Chicago, IL) program.
+All data were reported as means ± SD of three independent
+experiments. One-way ANOVA, followed by Tukey’s post-hoc
+test, was performed for group comparison. The neurological
+scores were compared using a Kruskal–Wallis non-parametric
+test,
+followed
+by
+multiple-comparison
+procedures
+using
+Duncan’s method. A statistical signiﬁcance was set at a P < 0.05.
+Results
+Optimization study
+Table 2 shows 15 experimental results of the optimization
+of EGCG-NPs formulation, with the obtained responses of
+dependent variables. The particle size of the EGCG-NPs varied
+from 94.97 to 256 nm and was directly proportional to the
+concentration of polymer and EGCG (Figure 1A). ZP was
+found to be in the range of −23 to −15.8 mV, which was
+inversely proportional to the concentration of polymer and
+EGCG, indicating that a low dose of EGCG and polymer
+led to an increase in ZP (Figure 1B). The observed PDI
+values varied from 0.077 to 0.243, revealing a narrow size
+distribution and good homogeneity of distribution (Table 2).
+The most inﬂuential parameters of PDI were the concentration
+of EGCG and polymer, suggesting that the high concentrations
+of EGCG and polymer induced very broad size distribution of
+nanoparticles (Figure 1C). The observed EE values varied from
+78.62 to 85.97% (Table 2). In contrast to the lower encapsulation
+eﬃciency caused by an intermediate concentration of polymer
+and EGCG-NPs, either a high or a low concentration of
+polymer and EGCG will increase the encapsulation eﬃciency,
+indicating that larger amounts of EGCG can be loaded in the
+developed NPs (Figure 1D). The multiple regression analysis was
+performed using the following polynomial equations:
+Y1 = 24.36746 −20.46965X1 + 31.52943X2
++182.20278X3 −1.84431X1X2 −2.29083X1X3
+−5.39111X2X3 + 1.02495X2
+1 + 1.43811X2
+2 −31.56148X2
+3
+Y2 = −58.99547 + 3.68125X1 + 0.80474X2 + 4.70611X3
+−0.074583X1X2 −0.63083X1X3 + 0.48889X2X3
+−0.054427X2
+1 −0.05177X2
+2 + 0.86519X2
+3
+Y3 = −0.12365 −1.77083X1 + 0.02815X2 + 0.19430X3
+−1.500002X1X2 −8.83333X1X3 + 3.7037X2X3
++7.91667X2
+1 −1.25103X2
+2 −0.01125X2
+3
+Y4 = 110.24262 −1.72972X1 + 0.097531X2 −11.60481X3
+−0.041528X1X2 + 0.56417X1X3 −0.25852X2X3
++0.014609X2
+1 + 0.087346X2
+2 + 1.11778X2
+3.
+Frontiers in Nutrition
+05
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+TABLE 2 Box-Behnken design matrix with values and the measured response.
+Run
+X1
+X2
+X3
+Y1
+Y2
+PDI
+Y3
+1
+0
+0
+0
+111.07 ± 1.69
+−20.47 ± 1.17
+0.142 ± 0.02
+79.66 ± 1.23
+2
+1
+1
+0
+135.87 ± 1.95
+−20.37 ± 0.78
+0.077 ± 0.01
+81.89 ± 2.01
+3
+0
+−1
+−1
+121.07 ± 4.40
+−20.87 ± 0.35
+0.132 ± 0.04
+84.7 ± 0.87
+4
+−1
+−1
+0
+118.47 ± 2.41
+−23 ± 0.43
+0.131 ± 0.04
+85.6 ± 1.34
+5
+0
+0
+0
+119.97 ± 1.95
+−20.6 ± 1.30
+0.118 ± 0.04
+82.17 ± 0.79
+6
+−1
+0
+−1
+113.83 ± 5.02
+−22.8 ± 1.31
+0.103 ± 0.07
+84.42 ± 0.96
+7
+0
+1
+−1
+189.1 ± 2.55
+−21.7 ± 0.78
+0.111 ± 0.04
+85.65 ± 1.52
+8
+−1
+1
+0
+256 ± 4.80
+−20.23 ± 0.31
+0.158 ± 0.02
+84.61 ± 1.68
+9
+1
+−1
+0
+131.13 ± 4.33
+−19.77 ± 1.00
+0.158 ± 0.05
+85.97 ± 1.07
+10
+1
+0
+−1
+133.8 ± 5.05
+−17.8 ± 0.46
+0.11 ± 0.03
+78.62 ± 0.82
+11
+−1
+0
+1
+106.93 ± 3.47
+−18.03 ± 0.58
+0.243 ± 0.07
+84.7 ± 2.54
+12
+0
+1
+1
+94.97 ± 0.28
+−15.8 ± 0.95
+0.117 ± 0.05
+83.33 ± 2.17
+13
+1
+0
+1
+99.41 ± 1.31
+−20.6 ± 0.79
+0.144 ± 0.04
+85.67 ± 1.62
+14
+0
+0
+0
+113.5 ± 0.56
+−17.2 ± 0.17
+0.171 ± 0.01
+85.64 ± 0.77
+15
+0
+−1
+1
+99.72 ± 0.86
+−21.57 ± 1.41
+0.088 ± 0.04
+85.87 ± 1.46
+X1, X2, X3, Y1, Y2, Y3, Y4. Y1, Average particle size (nm); Y2, Zeta potential (mV); Y3, Encapsulation eﬃciency (%); Y4, Polydispersity index (PDI).
+FIGURE 1
+3D surface of the eﬀect of EGCG-NPs. (A) Zav surface response at a ﬁxed EGCG concentration of 1.5 mg/ml. (B) ZP response at a ﬁxed
+Tween-80 concentration of 2.25%. (C) PDI response. (D) EE response at a ﬁxed Tween-80 concentration of 2.25%.
+Validation of optimized EGCG-NPs
+formulation
+To promote drug release from the polymeric matrix, a
+high drug-loading formulation with low-surfactant level was
+used to develop nanoparticles. Based on the Box–Behnken
+design, the optimal formulation with 7.0 mg/ml of EGCG,
+12 mg/ml of PLGA-PEG, and Tween-80 1.2% was obtained.
+The optimized formulation was composed of 167 nm Zav,
+−22.6 mV ZP, 86% EE, and 0.136 PDI (Figures 2A, B). The
+morphology of the optimized EGCG-NPs formulation was
+observed using TEM, with the microspheres showing no
+aggregation (Figure 2C). The diameter of the EGCG-NPs was
+consistent with the results obtained from an electrophoretic
+light-scattering spectrophotometer experiment. PEG located
+toward the aqueous phase creates a smooth surface and a
+hydrophilic layer surrounding the particles, which increases the
+stability of the sample.
+In vitro release of EGCG-NPs
+The diﬀusion/degradation process of the polymer matrix is
+the limited step to control the encapsulated drugs released from
+the polymeric delivery systems (32). In vitro release tests were
+performed to investigate the EGCG-NPs release proﬁle on pH
+3.0 and pH 7.0 medium (Figure 3). EGCG showed an initial
+burst (in acid buﬀer and in PBS) owing to the superﬁcially
+entrapped drug. Free EGCG showed faster kinetics than EGCG-
+NPs. After 6 h, more than 90% of free drugs were released,
+Frontiers in Nutrition
+06
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+FIGURE 2
+Optimization of EGCG-NPs. Particle size distribution of EGCG-NPs measured with electrophoretic light-scattering (ELS) analyzer (A). Zeta
+potential measurement of EGCG-NPs (B). TEM image of EGCG-NPs (C). Scale bar = 100 nm.
+whereas the released EGCG-NPs were ∼10% of the initial
+amount. The best ﬁt with the highest correlation was found for
+the hyperbola model for free EGCG, EGCG-NPs in acid buﬀer,
+and EGCG-NPs in PBS, indicating a diﬀusion-governed release.
+EGCG-NPs inhibition OxyHb-induced
+oxidative stress
+To
+determine
+whether
+EGCG-NPs
+have
+stronger
+antioxidative activity than free EGCG, we examined the
+T-AOC, GSH, SOD, and MDA after SAH. As shown in
+Figures 4A–D, the lowest serum level of T-AOC, GSH, and SOD
+in the SAH group (P < 0.05 vs. Sham) was restored by both
+EGCG and EGCG-NPs groups (P < 0.05 vs. SAH). However,
+T-AOC activity reached its highest peak after EGCG-NPs
+treatment, but there was no signiﬁcant diﬀerence between
+EGCG and EGCG-NPs groups. In contrast to the EGCG-
+induced upregulation of GSH and SOD, EGCG-NPs enhanced
+the GSH and SOD (P < 0.01 vs. Sham; P < 0.01 vs. SAH)
+activities and showed a signiﬁcant diﬀerence compared with the
+EGCG group (P < 0.01 vs. EGCG; P < 0.05 vs. EGCG). As a
+result, the serum MDA level was signiﬁcantly downregulated by
+EGCG-NPs (P < 0.01 vs. EGCG). Similar to the serum GSH,
+T-AOC, SOD, and MDA levels, the activities of antioxidative
+enzymes in ipsilateral hippocampus and cortex were higher in
+the EGCG-NPs group than in the EGCG group (Figures 4E–H).
+EGCG-NPs reduced ROS generation by
+increasing Mn-SOD activity after SAH
+In order to investigate the mitochondrial function after
+EGCG-NPs treatment, we measured the changes in intracellular
+ROS and Mn-SOD levels. OxyHb exposure signiﬁcantly
+increased the intracellular ROS level (P < 0.01 vs. Sham),
+whereas preconditioning EGCG and EGCG-NPs decreased the
+ROS level (P < 0.01 vs. SAH) (Figures 5A, B). Notably, there
+is a signiﬁcant diﬀerence between these two groups (P < 0.01
+vs. EGCG). Considering that Mn-SOD is a major player in
+Frontiers in Nutrition
+07
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+FIGURE 3
+In vitro EGCG release proﬁle of free EGCG and EGCG-NPs in pH 3.0 and pH 7.4 buﬀers. Data are expressed as mean ± SD (n = 3).
+FIGURE 4
+Eﬀects of EGCG-NPs on the regulation of antioxidative enzymes activities after SAH. Serum T-AOC, GSH, SOD activities, and MDA level,
+respectively (A–D). T-AOC, GSH, SOD activities, and MDA levels in the brain, respectively (E–H). Values represent three independent
+experiments. *P < 0.05 vs. Sham, **P < 0.01 vs. Sham; #P < 0.05 vs. SAH, ##P < 0.01 vs. SAH; &P < 0.05 vs. EGCG, &&P < 0.01 vs. EGCG.
+Frontiers in Nutrition
+08
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+FIGURE 5
+Eﬀects of EGCG-NPs on the mitochondrial oxidative stress after SAH. ROS ﬂuorescence distribution in the brain detected by ﬂuorescence
+microscopy (A). Quantiﬁcation of ROS ﬂuorescence intensity after SAH (scale bar = 100 µm) (B). Identiﬁcation of the expression of Mn-SOD by
+the immunohistochemical assay (scale bar = 20 µm) (C). Quantiﬁcation of the Mn-SOD level by densitometry (D). Quantiﬁcation represents the
+means and standard deviations of the results from three independent experiments. **P < 0.01 vs. Sham; ##P < 0.01 vs. SAH; &P < 0.05 vs.
+EGCG; &&P < 0.01 vs. EGCG.
+scavenging ROS in mitochondria, we next detected Mn-SOD
+expression (Figures 5C, D). Consistent with the ROS level,
+the low expression of Mn-SOD in SAH and EGCG groups
+was signiﬁcantly increased in the EGCG-NPs group (P <
+0.01 vs. SAH, P < 0.01 vs. EGCG), suggesting that EGCG-
+NPs downregulated ROS generation after SAH mainly by
+maintaining the mitochondrial function.
+Cotreatment with EGCG-NPs and
+nimodipine inhibition Ca2+ overloading
+and CaMKII activation after SAH
+Previous studies have demonstrated that Ca2+ overloading
+is a major player inducing secondary brain injury. To
+determine the eﬀects of EGCG-NPs and nimodipine on Ca2+
+concentration after SAH, the cytosolic Ca2+ level was measured
+using Fluo-3 AM. A high Ca2+ level in the SAH group
+can be downregulated by preconditioning EGCG-NPs and
+nimodipine, but there is no signiﬁcant diﬀerence between these
+two groups (P < 0.05 vs. Sham). However, EGCG-NPs +
+nimodipine showed stronger eﬀects on the regulation of calcium
+homeostasis than EGCG-NPs or nimodipine, and a signiﬁcant
+diﬀerence was observed (P < 0.01 vs. SAH; P < 0.05 vs. EGCG;
+P < 0.01 vs. nimodipine) (Figure 6A).
+Calcium overloading is an important pathological event
+in SAH development, which activates the CaMKII-mediated
+signaling pathway. In this study, the expression of CaMKII
+was markedly activated after SAH, but EGCG-NPs, nimodipine,
+and cotreatment with EGCG-NPs and nimodipine signiﬁcantly
+inhibited the expression of CaMKII (P < 0.01 vs. SAH)
+(Figures 6B, C). Compared with EGCG-NPs, both nimodipine
+and EGCG-NPs + nimodipine dramatically inhibited the
+expression of CaMKII (P < 0.05 vs. EGCG, P < 0.01 vs. EGCG,
+respectively), but there was no statistically signiﬁcant diﬀerence
+between these two groups.
+EGCG-NPs synergistic nimodipine
+reduction autophagy after SAH
+Activated CaMKII can directly phosphorylate Beclin-1,
+activating autophagy, which is the main pathway for eliminating
+abnormal mitochondria. As shown in Figure 7A, the expression
+of Beclin-1 was similar to that of CaMKII. In normal brain tissue,
+faint Beclin-1 staining signals were observed, whereas strong
+Beclin-1 staining signals were found in the SAH group (P <
+0.01 vs. Sham). The moderate Beclin-1 was only observed in the
+EGCG-NPs group, but not in the nimodipine and EGCG-NPs
++ nimodipine group, indicating that the expression of Beclin-1
+largely relied on the CaMKII activation (Figure 7B). As for Atg5,
+the strongest staining signals were detected in the SAH group
+(P < 0.01 vs. Sham). The expression of Atg5 can be inhibited
+in the other three groups (P < 0.01 vs. SAH), but faint signals
+Frontiers in Nutrition
+09
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+FIGURE 6
+Cotreatment of EGCG-NPs and nimodipine attenuated the intracellular Ca2+ levels and the expression of CaMKII after SAH. EGCG-NPs +
+nimodipine signiﬁcantly attenuated the Ca2+ overloading after SAH (A). Fluorescence was monitored at a measurement frequency of 10 s using
+a ﬂuorescence plate reader. Cotreatment of EGCG-NPs and nimodipine inhibited the expression of CaMKII (B), scale bar = 100 µm.
+Quantiﬁcation of the CaMKII level by densitometry (C). Scale bar = 100 µm. *P < 0.05 vs. Sham, ** P < 0.01 vs. Sham; #P < 0.05 vs. SAH,
+##P < 0.01 vs. SAH; &P < 0.05 vs. EGCG, &&P < 0.01 vs. EGCG.
+FIGURE 7
+Cotreatment of EGCG-NPs and nimodipine inhibited autophagy induced by OxyHb. Identiﬁcation of the expression of Beclin-1, scale bar =
+100 µm (A). Quantiﬁcation of the expression of Beclin-1 (B). Immunohistochemical microscope image of Atg5, scale bar = 100 µm (C).
+Quantiﬁcation of the Atg5 level by densitometry (D). *P < 0.05 vs. Sham, **P < 0.01 vs. Sham; #P < 0.05 vs. SAH, ##P < 0.01 vs. SAH; &P <
+0.05 vs. EGCG, && P < 0.01 vs. EGCG; $$P < 0.01 vs. nimodipine.
+Frontiers in Nutrition
+10
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+FIGURE 8
+Cotreatment of EGCG-NPs and nimodipine signiﬁcantly improves the pathological changes after SAH. Representative micrographs of Nissl
+staining in the hippocampal DG region, scale bar = 500 µm (A). LDH levels after SAH (B). Neurological deﬁcits after SAH (C). Results are
+presented as the means and standard deviations of the results of three independent experiments. **P < 0.01 vs. Sham; #P < 0.05 vs. SAH,
+##P < 0.01 vs. SAH; &P < 0.05 vs. EGCG, &&P < 0.01 vs. EGCG; $P < 0.05 vs. nimodipine.
+were observed in EGCG-NPs+ nimodipine group (P < 0.01 vs.
+EGCG; P < 0.01 vs. nimodipine) (Figures 7C, D).
+Synergistic eﬀects of EGCG-NPs and
+nimodipine improve the pathological
+changes after SAH
+Nissl staining also showed that both EGCG-NPs and
+nimodipine treatment groups showed an obvious reverse to the
+severe damage in the dentate gyrus areas of the hippocampus
+after SAH (Figure 8A). However, there was signiﬁcantly
+less neuron loss and shrinkage morphology of neurons in
+cotreatment with EGCG-NPs and nimodipine groups than those
+in either EGCG-NPs or nimodipine group.
+The neuroprotective role of EGCG-NPs was also evaluated
+by detecting the LDH level, which was widely regarded as a
+cell injury marker after SAH (Figure 8B). The LDH level was
+signiﬁcantly increased after SAH (P < 0.01 vs. Sham), whereas
+treatment
+with
+EGCG-NPs
+and
+nimodipine
+signiﬁcantly
+downregulated LDH activity. Speciﬁcally, treatment with
+EGCG-NPs led to a lower LDH activity than treatment with
+the nimodipine group (P < 0.01 vs. EGCG-NPs). However,
+the lowest LDH level was observed in cotreatment with EGCG
+and nimodipine groups (P < 0.01 vs. Sham, P < 0.01 vs.
+EGCG-NPs, P < 0.01 vs. nimodipine), which almost reached
+the normal level.
+Similar to the LDH and Nissl staining results, the
+neurological scores, as shown in Figure 8C, were signiﬁcantly
+lower 48 h after SAH than those of the Sham group (P < 0.01
+vs. Sham). However, both EGCG-NPs and nimodipine improved
+neurological scores, with no signiﬁcant diﬀerence between these
+two groups (P < 0.01 vs. Sham; P < 0.01 vs. SAH). Cotreatment
+with EGCG-NPs and nimodipine considerably improved the
+Frontiers in Nutrition
+11
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+neurological performance, showing a statistically signiﬁcant
+diﬀerence with either EGCG-NPs or nimodipine (P < 0.01 vs.
+Sham; P < 0.01 vs. SAH; P < 0.01 vs. EGCG-NPs; P < 0.05 vs.
+nimodipine), indicating that impaired behavior function caused
+by SAH can be restored by EGCG-NPs + nimodipine.
+Discussion
+A growing body of evidence supports a correlation
+between EGCG intake and a reduced risk of central nervous
+diseases (33, 34). Recently, we have reported the eﬃcacy
+of EGCG in SAH treatment by inhibiting calcium-induced
+autophagy (22–24). This study describes EGCG-NPs as a novel
+therapeutic approach for the treatment of SAH, including the
+following novel ﬁndings: (1) PEGylated-PLGA-loaded EGCG-
+NPs were successfully synthesized; (2) EGCG-NPs exhibited
+stronger antioxidative stress activity than free EGCG; (3)
+cotreatment with EGCG-NPs and nimodipine inhibited Ca2+
+overloading and CaMKII activity; (4) cotreatment with EGCG-
+NPs and nimodipine eliminated dysfunctional mitochondria
+by autophagy; and (5) EGCG-NPs + nimodipine signiﬁcantly
+reversed histopathological alterations after SAH.
+Even though free EGCG has been found to exhibit
+antioxidative activities and mitochondrial protective eﬀects after
+SAH, its poor bioavailability, low stability, and potential toxicity
+restricted its usage in clinical settings. Therefore, a nanoparticle
+formulation based on the biodegradable PLGA polymer
+was performed. Previous research studies have synthesized
+PEGylated-PLGA-loaded EGCG-NPs, showing an increase in
+the penetrating capability of the blood–brain barrier (BBB).
+However, low drug loading restricted its use both in the
+laboratory and clinical studies (10). In this study, 7 mg of EGCG
+was used to synthesize EGCG-NPs, and highly monodisperse
+and uniform EGCG-NPs were spherical in shape and had
+an average diameter of 167 nm, a PDI value of 0.136, a zeta
+potential value of −22.6 mV, and an EE of 86%. Particles smaller
+than 200 nm and the surfactant (Tween-80) might enhance the
+penetration of EGCG-NPs through the BBB. In addition, a
+suitable release of the drug from PLGA resulted in a prolonged
+permanence time in blood. Polymeric surface modiﬁcation
+with PEG has also been demonstrated to enhance the rapid
+spread of carried drugs within brain tissue by reducing the
+reticuloendothelial system uptake (35). As a result, synthesized
+EGCG-NPs might exhibit stronger bioavailability and stability
+than free EGCG. These ﬁndings are consistent with the present
+study showing that the low concentration of EGCG-NPs (75
+mg/kg) had stronger antioxidative properties than free EGCG
+(150 mg/kg) in the treatment of SAH, that is, upregulation of
+GSH, SOD, and T-AOC activities and downregulation of MDA
+and ROS levels.
+ROS are not only harmful oxidative stressors but also
+function as well-accepted second messengers by regulating
+target proteins in a variety of physiological and pathological
+conditions, as well as in SAH progression. ROS modulates
+plasma membrane/intracellular Ca2+ channels and Ca2+
+ATPase activities to maintain intracellular calcium homeostasis
+(36). Calcium signals, in turn, are essential for the formation
+of
+free
+radicals
+because
+an
+elevated
+intracellular
+Ca2+
+level regulates ROS-generating enzymes (37). Considering
+that EGCG-NPs inhibited ROS generation after SAH, the
+intracellular Ca2+ level was detected. The level of Ca2+
+concentration in cotreatment with EGCG-NPs and nimodipine
+groups was signiﬁcantly lower than that in either EGCG-
+NPs
+or
+nimodipine
+group.
+In
+recent
+years,
+substantial
+antagonists/agonists have been chosen to block or activate one
+signaling pathway but, ﬁnally, failed to be successfully used
+in the clinic, such as NO donors, calcium channel blockers,
+antioxidants, and anti-inﬂammatory agents. Subsequently,
+some researchers proposed that the combination of two or
+multiple treatments may improve the SAH outcome due to
+the cross-talk between pathological pathways. In our previous
+studies, EGCG has been reported to reduce Ca2+ overloading,
+reduce ROS generation, and eventually prevent mitochondrial
+function and neuronal cell death. Therefore, EGCG combined
+with nimodipine might be a novel strategy in the treatment of
+SAH by targeting ROS and calcium signaling pathways. Due to
+the pivotal roles of mitochondria in regulating ROS generation,
+Ca2+ homeostasis, and cell growth and diﬀerentiation, a
+growing body of studies is focusing on developing strategies
+to precisely maintain sustainable mitochondrial function.
+In line with previous studies, cotreatment with EGCG-NPs
+signiﬁcantly reduced mitochondrial oxidative stress than free
+EGCG, indicating that EGCG-NPs might directly protect
+mitochondrial function after SAH.
+The accumulation of dysfunctional mitochondria was
+deleterious and caused serious consequences, even led to cell
+death. Autophagy plays pivotal roles in cellular quality control
+by alleviating abnormal mitochondria; therefore, moderate
+activation of autophagy predominantly acts as a pro-survival
+pathway after SAH (38–41). On the other hand, either defective
+or excess autophagy can promote cell injury and death
+after SAH (42–44). CaMKII, the major calcium-dependent
+signaling protein, has been evoked either by intracellular Ca2+
+overloading or by ROS (45–47). Recently, CaMKII has been
+reported to directly phosphorylate Beclin-1 at Ser90, resulting
+in the ubiquitination of Beclin-1 and initiation of autophagy
+(48). Therefore, the CaMKII signaling pathway might be a
+potential target in SAH therapy (49–51). Bensalem et al.
+have demonstrated that polyphenols upregulated the expression
+of CaMKII to inhibit a cognitive decline in middle-aged
+mice (52). Green tea polyphenols also exhibited a similar
+bioactivity proﬁle by upregulation of the expression of CaMKII
+to attenuate cognitive deﬁcits (53). In contrast to these
+ﬁndings, our study showed that the over-expression of CaMKII
+activated autophagy through Beclin-1 and Atg5 in SAH, whereas
+Frontiers in Nutrition
+12
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+cotreatment with EGCG-NPs and nimodipine downregulated
+autophagy by maintaining calcium homeostasis, indicating
+that EGCG-NPs synergistically improved the neuroprotective
+eﬀects of nimodipine by regulating mitochondrial function, ROS
+generation, and antioxidative enzyme activation and eventually
+protecting neuronal cells against OxyHb insult.
+Conclusion
+Results of this study conﬁrmed that the EGCG-NP
+formulation represents a promising drug delivery strategy to
+enhance its antioxidative activity and related mitochondrial
+protection. The ﬁndings clearly indicated that cotreatment with
+EGCG-NPs and nimodipine exhibited stronger neuroprotective
+eﬀects by maintaining calcium homeostasis, mitochondrial
+function, and autophagy ﬂux. Taken together, EGCG-NPs
+combined with nimodipine can be regarded as a potential novel
+pharmacological strategy in SAH.
+Data availability statement
+The original contributions presented in the study are
+included in the article/supplementary material, further inquiries
+can be directed to the corresponding authors.
+Ethics statement
+The
+animal
+study
+was
+reviewed
+and
+approved
+by
+Institutional Animal Care and Use Committee (IACUC)
+of Henan Normal University.
+Author contributions
+XY, YC, and LH designed the study. XS, MH, and JW
+performed the experiments. XW, CZ, and MH performed data
+collection. XS, CZ, SY, and JW performed statistical analyses. XY,
+MH, LH, and YC wrote the paper. All authors contributed to the
+article and approved the submitted version.
+Funding
+This work was supported by the Henan Key Laboratory of
+Neurorestoratology (HNSJXF-2021-007).
+Conﬂict of interest
+The authors declare that the research was conducted in
+the absence of any commercial or ﬁnancial relationships
+that
+could
+be
+construed
+as
+a
+potential
+conﬂict
+of interest.
+Publisher’s note
+All claims expressed in this article are solely those
+of the authors and do not necessarily represent those
+of their aﬃliated organizations, or those of the publisher,
+the editors and the reviewers. Any product that may be
+evaluated in this article, or claim that may be made by
+its manufacturer, is not guaranteed or endorsed by the
+publisher.
+References
+1. Khan N, Mukhtar H. Tea polyphenols in promotion of human health.
+Nutrients. (2018) 11:39. doi: 10.3390/nu11010039
+2. Suzuki T, Pervin M, Goto S, Isemura M, Nakamura Y. Beneﬁcial eﬀects of tea
+and the green tea catechin epigallocatechin-3-gallate on obesity. Molecules. (2016)
+21:1305. doi: 10.3390/molecules21101305
+3. Di Lorenzo A, Curti V, Tenore GC, Nabav SM, Dagli M. Eﬀects of tea and
+coﬀee consumption on cardiovascular diseases and relative risk factors: an update.
+Curr Pharm Des. (2017) 23:2474–87. doi: 10.2174/1381612823666170215145855
+4. Yan L, Guo MS, Zhang Y, Yu L, Wu JM, Tang Y, et al. Dietary plant
+polyphenols as the potential drugs in neurodegenerative diseases: current evidence,
+advances, and opportunities. Oxid Med Cell Longev. (2022) 2022:5288698.
+doi: 10.1155/2022/5288698
+5. Higdon JV, Frei B. Tea catechins and polyphenols: health eﬀects,
+metabolism, and antioxidant functions. Crit Rev Food Sci Nutr. (2003) 43:89–143.
+doi: 10.1080/10408690390826464
+6. Meng Q, Velalar CN, Ruan R. Regulating the age-related oxidative damage,
+mitochondrial integrity, and antioxidative enzyme activity in ﬁscher 344 rats by
+supplementation of the antioxidant epigallocatechin-3-gallate. Rejuvenation Res.
+(2008) 11:649–60. doi: 10.1089/rej.2007.0645
+7. Granja A, Pinheiro M, Reis S. Epigallocatechin gallate nanodelivery systems
+for cancer therapy. Nutrients. (2016) 8:307. doi: 10.3390/nu8050307
+8. Yavarpour-Bali H, Ghasemi-Kasman M, Pirzadeh M. Curcumin-loaded
+nanoparticles: a novel therapeutic strategy in treatment of central nervous
+system disorders. Int J Nanomedicine. (2019) 14:4449–60. doi: 10.2147/IJN.S20
+8332
+9. Safwat MA, Kandil BA, Elblbesy MA, Soliman GM, Eleraky NE.
+Epigallocatechin-3-Gallate-loaded gold nanoparticles: preparation and evaluation
+of anticancer eﬃcacy in ehrlich tumor-bearing mice. Pharmaceuticals. (2020)
+13:254. doi: 10.3390/ph13090254
+10. Cano A, Ettcheto M, Chang JH, Barroso E, Espina M, Kühne BA, et al. Dual-
+drug loaded nanoparticles of Epigallocatechin-3-gallate (EGCG)/Ascorbic acid
+enhance therapeutic eﬃcacy of EGCG in a APPswe/PS1dE9 Alzheimer’s disease
+mice model. J Control Release. (2019) 301:62–75. doi: 10.1016/j.jconrel.2019.
+03.010
+11. Han MG, Wang X, Wang J, Lang DC, Xia XH, Jia YF, et al. Ameliorative
+eﬀects of epigallocatechin-3-gallate nanoparticles on 2,4-dinitrochlorobenzene
+induced
+atopic
+dermatitis:
+A
+potential
+mechanism
+of
+inﬂammation-
+related necroptosis. Front Nutr. (2022) 9:953646. doi: 10.3389/fnut.2022.
+95364
+12. Minnelli C, Moretti P, Laudadio E, Gerelli Y, Pigozzo A, Armeni T, et al.
+Tuning curvature and phase behavior of monoolein bilayers by epigallocatechin-
+3-gallate: structural insight and cytotoxicity. Colloids Surf B Biointerfaces. (2022)
+209 (Pt. 1):112171. doi: 10.1016/j.colsurfb.2021.112171
+13. Zhang L, Chen W, Tu G, Chen X, Lu Y, Wu L, et al. Enhanced
+chemotherapeutic
+eﬃcacy
+of
+PLGA-encapsulated
+epigallocatechin
+gallate
+(EGCG) against human lung cancer. Int J Nanomedicine. (2020) 15:4417–29.
+doi: 10.2147/IJN.S243657
+Frontiers in Nutrition
+13
+frontiersin.org
+
+Yang et al.
+10.3389/fnut.2022.953326
+14. Kazi J, Sen R, Ganguly S, Jha T, Ganguly S, Chatterjee Debnath M. Folate
+decorated epigallocatechin-3-gallate (EGCG) loaded PLGA nanoparticles; in-vitro
+and in-vivo targeting eﬃcacy against MDA-MB-231 tumor xenograft. Int J Pharm.
+(2020) 585:119449. doi: 10.1016/j.ijpharm.2020.119449
+15. Cano A, Ettcheto M, Espina M, Auladell C, Calpena AC, Folch J, et al.
+Epigallocatechin-3-gallate loaded PEGylated-PLGA nanoparticles: a new anti-
+seizure strategy for temporal lobe epilepsy. Nanomedicine. (2018) 14:1073–85.
+doi: 10.1016/j.nano.2018.01.019
+16. Smith A, Giunta B, Bickford PC, Fountain M, Tan J, Shytle RD. Nanolipidic
+particles improve the bioavailability and alpha-secretase inducing ability of
+epigallocatechin-3-gallate (EGCG) for the treatment of Alzheimer’s disease. Int J
+Pharm. (2010) 389:207–12. doi: 10.1016/j.ijpharm.2010.01.012
+17. Macdonald RL, Schweizer TA. Spontaneous subarachnoid haemorrhage.
+Lancet. (2017) 389:655–66. doi: 10.1016/S0140-6736(16)30668-7
+18. Sehba FA, Pluta RM, Zhang JH. Metamorphosis of subarachnoid hemorrhage
+research: from delayed vasospasm to early brain injury. Mol Neurobiol. (2011)
+43:27–40. doi: 10.1007/s12035-010-8155-z
+19. Feigin VL, Rinkel GJ, Algra A, Vermeulen M, van Gijn J. Calcium antagonists
+in patients with aneurysmal subarachnoid hemorrhage: a systematic review.
+Neurology. (1998) 50:876–83. doi: 10.1212/WNL.50.4.876
+20. Neifert SN, Chapman EK, Martini ML, Shuman WH, Schupper AJ, Oermann
+EK, et al. Aneurysmal subarachnoid hemorrhage: the last decade. Transl Stroke Res.
+(2021) 12:428–46. doi: 10.1007/s12975-020-00867-0
+21. Allen GS, Ahn HS, Preziosi TJ, Battye R, Boone SC, Boone SC,
+et al. Cerebral arterial spasm–a controlled trial of nimodipine in patients
+with
+subarachnoid
+hemorrhage.
+N
+Engl
+J
+Med.
+(1983)
+308:619–24.
+doi: 10.1056/NEJM198303173081103
+22. Chen Y, Chen J, Sun X, Shi X, Wang L, Huang L, et al. Evaluation of
+the neuroprotective eﬀect of EGCG: a potential mechanism of mitochondrial
+dysfunction and mitochondrial dynamics after subarachnoid hemorrhage. Food
+Funct. (2018) 9:6349–59. doi: 10.1039/C8FO01497C
+23. Zhang Y, Han M, Sun X, Gao G, Yu G, Huang L, et al. EGCG
+promotes neurite outgrowth through the integrin β1/FAK/p38 signaling pathway
+after subarachnoid hemorrhage. Evid Based Complement Alternat Med. (2021)
+2021:8810414. doi: 10.1155/2021/8810414
+24. Chen Y, Huang L, Zhang H, Diao X, Zhao S, Zhou W. Reduction in autophagy
+by (-)-Epigallocatechin-3-Gallate (EGCG): a potential mechanism of prevention of
+mitochondrial dysfunction after subarachnoid hemorrhage. Mol Neurobiol. (2017)
+54:392–405. doi: 10.1007/s12035-015-9629-9
+25. Kang KS, Wen Y, Yamabe N, Fukui M, Bishop SC, Zhu BT, et al. Dual
+beneﬁcial eﬀects of (-)-epigallocatechin-3-gallate on levodopa methylation and
+hippocampal neurodegeneration: in vitro and in vivo studies. PLoS ONE. (2010)
+5:e11951. doi: 10.1371/journal.pone.0011951
+26. Lee MJ, Wang ZY, Li H, Chen L, Sun Y, Gobbo S, et al. Analysis of plasma
+and urinary tea polyphenols in human subjects. Cancer Epidemiol Biomarkers Prev.
+(1995) 4:393–9.
+27. Elbling L, Weiss RM, Teufelhofer O, Uhl M, Knasmueller S, Schulte-
+Hermann R, et al. Green tea extract and (-)-epigallocatechin-3-gallate, the major
+tea catechin, exert oxidant but lack antioxidant activities. FASEB J. (2005) 19:807–9.
+doi: 10.1096/fj.04-2915fje
+28. Weng Z, Zhou P, Salminen WF, Yang X, Harrill AH, Cao Z, et al. Green
+tea epigallocatechin gallate binds to and inhibits respiratory complexes in swelling
+but not normal rat hepatic mitochondria. Biochem Biophys Res Commun. (2014)
+443:1097–104. doi: 10.1016/j.bbrc.2013.12.110
+29. Miao Y, Sun X, Gao G, Jia X, Wu H, Chen Y, et al. Evaluation of (-)-
+epigallocatechin-3-gallate (EGCG)-induced cytotoxicity on astrocytes: a potential
+mechanism of calcium overloading-induced mitochondrial dysfunction. Toxicol In
+Vitro. (2019) 61:104592. doi: 10.1016/j.tiv.2019.104592
+30.
+Albuquerque
+N,
+Neri
+JR,
+Lemos
+M,
+Yamauti
+M,
+de
+Sousa
+F,
+Santiago SL. Eﬀect of polymeric microparticles loaded with catechin on the
+physicochemical properties of an adhesive system. Oper Dent. (2019) 44:E202–11.
+doi: 10.2341/18-112-L
+31. Huang L, Wan J, Chen Y, Wang Z, Hui L, Li Y, et al. Inhibitory
+eﬀects of p38 inhibitor against mitochondrial dysfunction in the early brain
+injury after subarachnoid hemorrhage in mice. Brain Res. (2013) 1517:133–40.
+doi: 10.1016/j.brainres.2013.04.010
+32. Puri S, Kallinteri P, Higgins S, Hutcheon GA, Garnett MC. Drug
+incorporation and release of water soluble drugs from novel functionalized
+poly (glycerol adipate) nanoparticles. J Control Release. (2008) 125:59–67.
+doi: 10.1016/j.jconrel.2007.09.009
+33. Fernandes L, Cardim-Pires TR, Foguel D, Palhano FL. Green tea polyphenol
+epigallocatechin-gallate in amyloid aggregation and neurodegenerative diseases.
+Front Neurosci. (2021) 15:718188. doi: 10.3389/fnins.2021.718188
+34. Cai J, Jing D, Shi M, Liu Y, Lin T, Xie Z, et al. Epigallocatechin
+gallate
+(EGCG)
+attenuates
+infrasound-induced
+neuronal
+impairment
+by
+inhibiting microglia-mediated inﬂammation. J Nutr Biochem. (2014) 25:716–25.
+doi: 10.1016/j.jnutbio.2014.02.012
+35. Salem SA, Hwei NM, Bin Saim A, Ho CC, Sagap I, Singh R, et al. Polylactic-
+co-glycolic acid mesh coated with ﬁbrin or collagen and biological adhesive
+substance as a prefabricated, degradable, biocompatible, and functional scaﬀold
+for regeneration of the urinary bladder wall. J Biomed Mater Res A. (2013)
+101:2237–47. doi: 10.1002/jbm.a.34518
+36. Görlach A, Bertram K, Hudecova S, Krizanova O. Calcium and ROS: a mutual
+interplay. Redox Biol. (2015) 6:260–71. doi: 10.1016/j.redox.2015.08.010
+37. Gordeeva AV, Zvyagilskaya RA, Labas YA. Cross-talk between reactive
+oxygen species and calcium in living cells. Biochemistry. (2003) 68:1077–80.
+doi: 10.1023/A:1026398310003
+38. Shao A, Wang Z, Wu H, Dong X, Li Y, Tu S, et al. Enhancement of
+autophagy by histone deacetylase inhibitor trichostatin A ameliorates neuronal
+apoptosis after subarachnoid hemorrhage in rats. Mol Neurobiol. (2016) 53:18–27.
+doi: 10.1007/s12035-014-8986-0
+39. Liu Y, Li J, Wang Z, Yu Z, Chen G. Attenuation of early brain injury and
+learning deﬁcits following experimental subarachnoid hemorrhage secondary to
+cystatin C: possible involvement of the autophagy pathway. Mol Neurobiol. (2014)
+49:1043–54. doi: 10.1007/s12035-013-8579-3
+40. Zhang T, Wu P, Budbazar E, Zhu Q, Sun C, Mo J, et al. Mitophagy
+reduces
+oxidative
+stress
+via
+Keap1
+(kelch-like
+epichlorohydrin-associated
+protein 1)/Nrf2 (nuclear factor-E2-related
+factor 2)/PHB2 (prohibitin 2)
+pathway after subarachnoid hemorrhage in rats. Stroke. (2019) 50:978–88.
+doi: 10.1161/STROKEAHA.118.021590
+41. Zhou K, Enkhjargal B, Mo J, Zhang T, Zhu Q, Wu P, et al.
+Dihydrolipoic acid enhances autophagy and alleviates neurological deﬁcits
+after subarachnoid hemorrhage in rats. Exp Neurol. (2021) 342:113752.
+doi: 10.1016/j.expneurol.2021.113752
+42. Carloni S, Buonocore G, Balduini W. Protective role of autophagy in
+neonatal hypoxia-ischemia induced brain injury. Neurobiol Dis. (2008) 32:329–39.
+doi: 10.1016/j.nbd.2008.07.022
+43. Wang Z, Shi XY, Yin J, Zuo G, Zhang J, Chen G. Role of autophagy in early
+brain injury after experimental subarachnoid hemorrhage. J Mol Neurosci. (2012)
+46:192–202. doi: 10.1007/s12031-011-9575-6
+44. Lee JY, He Y, Sagher O, Keep R, Hua Y, Xi G. Activated autophagy
+pathway in experimental subarachnoid hemorrhage. Brain Res. (2009) 1287:126–
+35. doi: 10.1016/j.brainres.2009.06.028
+45. He BJ, Joiner ML, Singh MV, Luczak ED, Swaminathan PD, Koval OM, et al.
+Oxidation of CaMKII determines the cardiotoxic eﬀects of aldosterone. Nat Med.
+(2011) 17:1610–8. doi: 10.1038/nm.2506
+46. Hart PC, Mao M, de Abreu AL, Ansenberger-Fricano K, Ekoue DN, Ganini
+D, et al. MnSOD upregulation sustains the Warburg eﬀect via mitochondrial
+ROS and AMPK-dependent signalling in cancer. Nat Commun. (2015) 6:6053.
+doi: 10.1038/ncomms7053
+47. Kowara R, Moraleja KL, Chakravarthy B. Involvement of nitric oxide
+synthase and ROS-mediated activation of L-type voltage-gated Ca2+ channels
+in
+NMDA-induced
+DPYSL3
+degradation.
+Brain
+Res.
+(2006)
+1119:40–9.
+doi: 10.1016/j.brainres.2006.08.047
+48. Li X, Wu XQ, Deng R, Li DD, Tang J, Chen WD, et al. CaMKII-
+mediated Beclin 1 phosphorylation regulates autophagy that promotes degradation
+of Id and neuroblastoma cell diﬀerentiation. Nat Commun. (2017) 8:1159.
+doi: 10.1038/s41467-017-01272-2
+49. Takeuchi M, Yamamoto T. Apoptosis induced by NAD depletion is inhibited
+by KN-93 in a CaMKII-independent manner. Exp Cell Res. (2015) 335:62–7.
+doi: 10.1016/j.yexcr.2015.05.019
+50. Zhou K, Enkhjargal B, Xie Z, Sun C, Wu L, Malaguit J, et al. Dihydrolipoic
+acid inhibits lysosomal rupture and NLRP3 through LAMP1/CaMKII/TAK1
+pathways after subarachnoid hemorrhage in rat. Stroke. (2018) 49:175–83.
+doi: 10.1161/STROKEAHA.117.018593
+51. Edvinsson L, Povlsen GK, Ahnstedt H, Waldsee R. CaMKII inhibition with
+KN93 attenuates endothelin and serotonin receptor-mediated vasoconstriction
+and prevents subarachnoid hemorrhage-induced deﬁcits in sensorimotor function.
+J Neuroinﬂammation. (2014) 11:207. doi: 10.1186/s12974-014-0207-2
+52. Bensalem J, Servant L, Alfos S, Gaudout D, Layé S, Pallet V, et al.
+Dietary polyphenol supplementation prevents alterations of spatial navigation in
+middle-aged mice. Front Behav Neurosci. (2016) 10:9. doi: 10.3389/fnbeh.2016.
+00009
+53. Song Y, Li X, Gong X, Zhao X, Ma Z, Xia T, et al. Green tea polyphenols
+improve isoﬂurane-induced cognitive impairment via modulating oxidative stress.
+J Nutr Biochem. (2019) 73:108213. doi: 10.1016/j.jnutbio.2019.07.004
+Frontiers in Nutrition
+14
+frontiersin.org

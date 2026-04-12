@@ -1,0 +1,682 @@
+International Journal of Pharmaceutics 390 (2010) 70–75
+Contents lists available at ScienceDirect
+International Journal of Pharmaceutics
+journal homepage: www.elsevier.com/locate/ijpharm
+Pharmaceutical Nanotechnology
+Preparation and characterization of poly(dl-lactide-co-glycolide)
+nanoparticles for siRNA delivery
+Dongmei Cun, Camilla Foged, Mingshi Yang, Sven Frøkjær, Hanne Mørck Nielsen ∗
+Department of Pharmaceutics and Analytical Chemistry, The Faculty of Pharmaceutical Sciences, University of Copenhagen, Universitetsparken 2, DK-2100 Copenhagen, Denmark
+a r t i c l e
+i n f o
+Article history:
+Received 2 January 2009
+Received in revised form 5 October 2009
+Accepted 7 October 2009
+Available online 15 October 2009
+Keywords:
+siRNA delivery
+PLGA
+Biodegradable nanoparticles
+Encapsulation efﬁciency
+Integrity
+a b s t r a c t
+Synthetic short interfering RNA (siRNA) is promising for speciﬁc and efﬁcient knockdown of disease-
+related genes. However, in vivo application of siRNA requires an effective delivery system. Commonly
+used siRNA carriers are based on polycations, which form electrostatic complexes with siRNA. Such
+poly- or lipoplexes are of limited use in vivo due to severe problems associated with toxicity, serum
+instability and non-speciﬁc immune-responses. The aim of the present study was to prepare uniformly
+sized nanoparticles (NPs) with a high load of siRNA by use of the safe and biodegradable poly-(dl-lactide-
+co-glycolide) (PLGA) polymer without including polycations. The siRNA was encapsulated in the core of
+NPs by the double emulsion solvent evaporation method. To optimize the NP formulation, the effects of
+important formulation and processing parameters were investigated systematically. Generally, spherical
+siRNA-loaded NPs (<300 nm, PDI < 0.2, zeta potential −40 mV) were obtained. An encapsulation efﬁciency
+of up to 57% was achieved by adjusting the inner water phase volume, the PLGA concentration, the ﬁrst
+emulsiﬁcation sonication time, and stabilization of the water–oil interface with serum albumin. The
+integrity of siRNA was preserved during the preparation. Preparation of core-loaded siRNA-NPs based on
+PLGA and no cationic excipient seems possible and promising for delivery of siRNA.
+© 2009 Published by Elsevier B.V.
+1. Introduction
+Targeted post-transcriptional silencing of disease-associated
+genes using exogenous short interfering RNA (siRNA) appears to
+be a promising strategy to treat various human diseases (Huang et
+al., 2008; Singh, 2008). However, the clinical application of siRNA
+has been hampered by its rapid degradation, non-speciﬁc distri-
+bution, poor cellular uptake and low endosomal escape efﬁciency
+(Xie et al., 2006). Therefore, delivery systems capable of protect-
+ing and transporting siRNA through extracellular and intracellular
+barriers to reach the site of action in the cytosol are required for suc-
+cessful development of siRNA-based therapeutics (de Fougerolles,
+2008). Various non-viral siRNA delivery systems such as cationic
+lipids, cationic polymers and cell-penetrating peptides have been
+studied intensively, but toxicity, low serum stability, non-speciﬁc
+immune-stimulating effects and lack of biodegradability are criti-
+cal issues that severely limits the use of cationic vectors for clinic
+applications (Akhtar and Benter, 2007).
+Nanoparticles (NPs) based on poly(dl-lactide-co-glycolide)
+(PLGA) have been widely investigated as carriers for DNA and
+oligonucleotides due to their small particle size, favourable safety
+∗Corresponding author. Tel.: +45 35 33 63 46; fax: +45 35 33 60 30.
+E-mail address: hmn@farma.ku.dk (H.M. Nielsen).
+proﬁle and sustained-release characteristics (Luten et al., 2008).
+Recently, siRNA-loaded PLGA NPs have shown gene silencing in
+vitro (Yuan et al., 2006). Generally, two different approaches are
+used in order to load nucleic acids into PLGA NPs: (1) encapsulation
+into the core of NPs and (2) adsorption onto the surface of modiﬁed,
+cationic PLGA NPs via electrostatic interactions. By optimizing the
+encapsulation procedures, drug delivery systems with sufﬁcient
+loading, protection and controlled release proﬁle of the nucleic
+acid drug can be prepared. In fact, biodegradable PLGA microparti-
+cles encapsulating pDNA have been tested in phase 2 clinical trials
+(Klencke et al., 2002; Garcia et al., 2004). The advantages of protec-
+tion and long-term sustained-release are of particular interest for
+siRNA therapeutics, since the RNA backbone is more susceptible to
+serum nuclease hydrolysis than DNA, and the silencing effects of
+siRNA are transient (Gary et al., 2007).
+With regards to formulation development, it is very challenging
+to efﬁciently encapsulate high amounts of hydrophilic macro-
+molecular compounds like siRNA into uniform, nano-sized PLGA
+particles, mainly due to the hydrophobic nature of the PLGA and the
+absence of electrostatic interactions between siRNA and PLGA. One
+way to improve encapsulation of nucleic acids is to add a cationic
+excipient to the PLGA matrix (Tahara et al., 2008), but this approach
+may also raise safety concerns with respect to clinical applications.
+Therefore, the hypothesis of the current study was that the siRNA
+encapsulation efﬁciency could be improved by systematically and
+carefully exploiting the opportunities in varying the parameters
+0378-5173/$ – see front matter © 2009 Published by Elsevier B.V.
+doi:10.1016/j.ijpharm.2009.10.023
+
+D. Cun et al. / International Journal of Pharmaceutics 390 (2010) 70–75
+71
+used in the procedure for PLGA NP preparation. To our knowledge,
+no systematic study has so far been reported, in order to relate the
+effects of processing and formulation parameters to the encapsu-
+lation efﬁciency of siRNA in PLGA NPs in the absence of cationic
+excipients.
+The classic double emulsion solvent evaporation method (DESE)
+enables relatively high encapsulation efﬁciencies for water-soluble
+drugs compared to other methods like the emulsion solvent dif-
+fusion method. However, the stability of siRNA during processing
+might be of major concern due to exposure to organic solvent, soni-
+cation and mechanical stress. Sonication is widely used to fabricate
+PLGA microparticles and NPs, but can introduce high pressure, tem-
+perature gradients, shear forces and free radicals (Krishnamurthy
+et al., 2000). In addition, labile compounds like siRNA are even more
+prone to destabilization during processing of NPs than microparti-
+cles, since substantially more energy is added to the system in order
+to decrease the particle size. There is little information available in
+the literature regarding the effect of these destructive factors on
+the stability of siRNA during NP preparation.
+The aims of this study were (i) to prepare siRNA-loaded PLGA
+NPs without the addition of any cationic excipient to the system
+or compromising the siRNA integrity and (ii) to investigate the
+effects of important process and formulation parameters on the
+encapsulation efﬁciency, particle size and uniformity.
+2. Materials and methods
+2.1. Materials
+A Dicer substrate siRNA targeting enhanced green ﬂuorescent
+protein (EGFP) was provided by Integrated DNA Technolo-
+gies, BVBA (Leuven, Belgium) in desalted and lyophilized form.
+The
+duplex
+was
+obtained
+by
+annealing
+the
+HPLC-puriﬁed
+sense and antisense strands whose sequences were as fol-
+lows: sense 5′-pACCCUGAAGUUCAUCUGCACCACcg-3′, antisense
+5′-CGGUGGUGCAGAUGAACUUCAGGGUCA-3′ (Rose et al., 2005).
+Capital letters are ribonucleotides, lower case letters are 2′-
+deoxyribonucleotides and underlined capital letters are 2′-O-
+methylribonucleotides. PLGA (lactide:glycolide molar ratio: 75:25,
+Mw: 20 kDa) was purchased from Wake Pure Chemical Industries,
+Ltd. (Osaka, Japan). Polyvinylalcohol (PVA403) with 80.0% of degree
+of hydrolysis was provided by Kuraray (Osaka, Japan). Acetylated
+bovine serum albumin (BSA) was obtained from Sigma Chemical Co.
+(St. Louis, MO). Quant-iTTM RiboGreen® RNA Reagent and SYBR®
+Green II RNA gel stain were purchased from Molecular Probes Ltd.,
+Invitrogen (Paisley, UK). All other chemicals and reagents were
+obtained commercially at analytical grade.
+2.2. Preparation of siRNA-loaded PLGA NPs
+siRNA-loaded PLGA NPs were prepared by the water-in-oil-
+in-water (w1/o/w2) double emulsion solvent evaporation (DESE)
+method. In brief, siRNA solubilized in 50, 100 or 200 l of Tris–EDTA
+buffer (10 mM Tris, 1 mM EDTA, pH 7.5) (TE buffer) with or
+without acetylated BSA was mixed with 500 l dichloromethane
+(DCM) containing various amounts of PLGA, and the mixture was
+emulsiﬁed by sonication using a UP100H ultrasonic processor
+(Hielscher Ultrasonics GmbH, Teltow, Germany) into a primary
+w1/o emulsion. Two ml of 2% (w/v) PVA in diethyl pyrocarbon-
+ate (DEPC)-treated water were poured directly into the primary
+emulsion and further emulsiﬁed by sonication for another 60 s
+to form a w1/o/w2 double emulsion. The resulting emulsion was
+diluted with 6 ml of 2% (w/v) PVA and stirred magnetically for 3 h at
+room temperature to evaporate DCM. The PLGA NPs were collected
+by ultracentrifugation (OptimaTM Max Ultracentrifuge, Beckman
+Coulter, CA, USA) at 38,203 × g for 10 min at 4 ◦C, washed twice with
+6 ml of DEPC-treated water, re-suspended in DEPC-treated water,
+and freeze-dried for 48 h without use of a cryoprotectant (Epsilon 2-
+4 LSC freeze dryer, Martin Christ Gefriertrocknungsanlagen GmbH,
+Osterode am Harz, Germany). For freeze-drying, the samples were
+frozen to −40 ◦C over 2 h on a temperature controlled shelf. The
+primary drying was done at −40 ◦C and 1.030 mBar for 30 h, the
+shelf temperature was gradually increased to −10 ◦C over 10 h, and
+the ﬁnal drying was done at −10 ◦C and 0.0010 mBar for 10 h, the
+temperature increased to +10 ◦C over 1 h and drying was continued
+for another 16 h.
+2.3. Particle size and zeta potential
+Freeze-dried NPs were re-dispersed in DEPC-treated water
+(0.2 mg/ml) by a short period of sonication (<1 min). The mean
+particle diameter (Z-average) and polydispersity index (PDI) of
+NPs were determined by dynamic light scattering using the
+photon correlation spectroscopy (PCS) technique, and the zeta
+potential of NPs was measured by the laser Doppler electrophore-
+sis technique. The measurements were performed on undiluted
+samples (n = 3) in DEPC-treated water at 25 ◦C using a Malvern
+NanoZS (Malvern Instruments Ltd., Worcestershire, UK) equipped
+with a 633 nm laser and 173◦detection optics. The voltage used
+for the zeta potential measurements was selected automati-
+cally based on the measured conductivity of the sample. The
+Helmholtz–Smoluchowski equation was used to convert the elec-
+trophoretic mobility to the zeta potential. Malvern DTS v.5.00
+software (Malvern Instruments Ltd., Worcestershire, UK) was used
+for data acquisition and analysis. A polystyrene size standard
+(220 ± 6 nm, Duke Scientiﬁc Corp., NC, USA) and zeta poten-
+tial transfer standard (−50 ± 5 mV, Malvern Instruments Ltd.,
+Worcestershire, UK) were used to verify the performance of the
+instrument.
+2.4. Morphology
+The morphology of the NPs was determined by transmission
+electron microscopy (TEM). The NPs were suspended in water
+(5 mg/ml) and the particles were visualized by a Morgagni 268D
+TEM instrument (FEI Inc., Hillsboro, OR, USA). Photographs were
+recorded using a Megaview III digital camera (Soft Imaging Sys-
+tem) after negative staining of NPs with 2% (w/v) uranyl acetate in
+water.
+2.5. siRNA encapsulation efﬁciency
+The siRNA encapsulation efﬁciency was determined by measur-
+ing the amount of extractable siRNA in the freeze-dried PLGA NPs.
+For each sample, 2 mg of freeze-dried NPs were dissolved in 200 l
+of chloroform, and 500 l of TE buffer was added. The mixture was
+rotated end-over-end for 90 min at room temperature to facilitate
+extraction of siRNA from the chloroform phase into the aqueous
+phase. The aqueous and organic phases were separated by cen-
+trifugation for 20 min at 18,000 × g at 4 ◦C (refrigerated centrifuge
+SIGMA 1-15PK, Osterode am Harz, Germany). The supernatant was
+collected and incubated at 37 ◦C for 5 min to remove residual chlo-
+roform. The samples were then further diluted with TE buffer and
+the siRNA was quantiﬁed by the RiboGreen® RNA reagent according
+to the manufacturer’s instructions using a FLUOstar OPTIMA plate
+reader (BMG Labtech GmbH, Offenburg, Germany) at an excitation
+wavelength of 485 nm and an emission wavelength of 520 nm. Each
+sample was assayed in triplicate. The loading percentage (w/w, ng
+siRNA per mg dry NPs) and encapsulation efﬁciency were calculated
+
+72
+D. Cun et al. / International Journal of Pharmaceutics 390 (2010) 70–75
+using the following Eqs. (1) and (2):
+siRNA loading = the weight of drug in microspheres (ng)
+the weight of microspheres (mg)
+(1)
+encapsulation effciency =
+actual siRNA loading
+theoretical siRNA loading × 100%
+(2)
+2.6. siRNA stability
+The stability of siRNA under various conditions during the emul-
+siﬁcation process was investigated. First, the effect of sonication
+time was examined by sonicating a siRNA solution (0.36 mg/ml at
+60 W) for 0, 30, 60, 90 and 120 s. At each time point, 2 l aliquots of
+siRNA solution were withdrawn and analyzed. Second, the effects of
+PLGA on the stability of siRNA during emulsiﬁcation were studied
+by emulsifying 100 l siRNA solution (0.36 mg/ml) into 250 l of
+DCM containing 15 mg PLGA by sonication at 60 W for 0, 30, 60, 90
+and 120 s to form an emulsion. Then, the emulsion was centrifuged
+at 18,000 × g, 4 ◦C for 10 min, and the supernatant was collected.
+Third, the integrity of siRNA extracted as described above from
+freeze-dried PLGA NPs was investigated. The aqueous phase from
+the extraction was collected, and the siRNA was concentrated by
+precipitation with a mixture of 99.9% (v/v) ethanol and 5 M NaCl
+(25:1, v/v) at −20 ◦C.
+The integrity of siRNA in the samples was analyzed on a 15%
+polyacrylamide gel containing 7 M urea and TBE buffer (0.089 M
+Tris base, 0.089 M boric acid, and 2 mM sodium EDTA, pH 8.3). Elec-
+trophoresis was carried out with 1× TBE buffer at a constant voltage
+of 200 V for 1 h. siRNA was visualized using an image station (Kodak
+Image station 1000, Eastman Kodak Company, OR, USA) after stain-
+ing for 40 min with a 1:10,000 dilution of SYBR® Green II RNA gel
+stain in DEPC-water.
+2.7. Statistics
+The experiments were performed in triplicate, unless otherwise
+stated. Values are given as means ± S.D. The statistical signiﬁcance
+of the results was determined using a Student’s t-test where P < 0.05
+was considered signiﬁcant.
+3. Results and discussion
+3.1. Characterization of siRNA-loaded PLGA NPs
+siRNA was successfully encapsulated into PLGA NPs using the
+classic DESE method. The morphology of siRNA-loaded PLGA NPs
+was visualized by TEM, and a representative formulation is shown
+in Fig. 1. The main information to be drawn from the micrograph is
+that the NPs were spherical with a smooth surface. Particles with
+sizes between approximately 50 and 400 nm were observed in the
+sample indicating a relatively broad size distribution. However, for
+that speciﬁc sample the mean particle diameter measured by PCS
+was 224.0 nm and the size distribution was rather monodisperse
+(PDI 0.096) (Table 1). Generally, prepared PLGA particles with an
+acceptable PDI (<0.2) were in the nanometer range (220–260 nm)
+and the size was controlled by varying formulation parameters (see
+Fig. 1. Transmission electron micrograph of siRNA-loaded PLGA NPs prepared using
+2.4 g siRNA, a w1/o ratio 0.1, a PLGA concentration of 30 mg/ml, 60 s sonication and
+no BSA. The size bar represents 1 m.
+Section 3.2). The zeta potential of all NPs prepared in this study was
+approximately −40 mV (results not shown).
+3.2. Formulation and process parameters determine the
+encapsulation efﬁciency and the mean particle size
+Various formulation and process parameters were studied
+systematically to produce siRNA-loaded PLGA NPs with the
+desired properties such as a mean particle size below 300 nm, a
+monodisperse size distribution (PDI lower than 0.2) and a high
+encapsulation efﬁciency without the use of cationic complex-
+ing excipients. The parameters included (i) the volume ratio of
+the inner water phase to the oil phase (0.1–0.4), (ii) the PLGA
+concentration (30–200 mg/ml), (iii) the sonication time for the
+ﬁrst emulsiﬁcation (30–90 s) and (iv) the siRNA concentration
+(2.4–6.0 g/mg PLGA) and (v) the BSA content (0–360 g). The
+parameter ranges were chosen based on initial pilot experiments
+in order to provide the largest possible design space without com-
+promising the feasibility of the process.
+3.2.1. Volume ratio of the inner water phase to the oil phase
+The effects of the volume ratio of the inner water phase to the oil
+phase in the primary emulsion on the properties of NPs were ﬁrst
+addressed. The following parameters were kept constant: (i) the
+siRNA theoretical loading (2.4 g siRNA/mg PLGA), (ii) the poly-
+mer concentration (30 mg/ml) and (iii) the sonication time (60 s)
+for the formation of the primary emulsion. The results are sum-
+marized in Table 1. The mean particle size increased signiﬁcantly
+by increasing the volume of the inner water phase above 100 l.
+The encapsulation efﬁciency also increased signiﬁcantly from 10.9%
+to 38.2% when the inner phase volume was increased from 50 to
+200 l. There was a direct correlation between the larger volume
+of the inner water phase and a higher siRNA loading and encapsu-
+lation efﬁciency. Similarly, the encapsulation efﬁciency of another
+large and hydrophilic molecule, ﬂuorescein isothiocyanate-labeled
+bovine serum albumin, into PLGA NPs was increased with increas-
+Table 1
+The effects of the volume ratio of the inner water phase to the oil phase.
+Vw1 (l)
+Vw1/Vo
+Diameter (nm)
+PDI
+siRNA loading (ng/mg NPs)
+Encapsulation efﬁciency (%)
+50
+0.1
+224.0 ± 4.4
+0.096 ± 0.018
+260.1 ± 11.9
+10.9 ± 0.5
+100
+0.2
+228.1 ± 1.6
+0.128 ± 0.012
+514.8 ± 11.1
+21.5 ± 0.8
+200
+0.4
+251.1 ± 1.6
+0.130 ± 0.011
+914.0 ± 30.9
+38.2 ± 1.3
+Values represent mean ± S.D., n = 3. Fixed values were: siRNA concentration 2.4 g/mg PLGA, PLGA concentration 30 mg/ml, sonication time 60 s, BSA amount 0 g.
+Vw1: Volume of the inner water phase; Vo: volume of oil phase; NPs: nanoparticles; PDI: Polydispersity index.
+
+D. Cun et al. / International Journal of Pharmaceutics 390 (2010) 70–75
+73
+Table 2
+The effects of the PLGA concentration in the oil phase.
+Conc. of PLGA (mg/ml)
+Diameter (nm)
+PDI
+siRNA loading (ng/mg NPs)
+Encapsulation efﬁciency (%)
+30
+228.1 ± 1.6
+0.128 ± 0.012
+514.8 ± 11.1
+21.5 ± 0.8
+60
+242.6 ± 1.4
+0.169 ± 0.018
+346.8 ± 18.2
+29.0 ± 1.5
+200
+422.7 ± 4.2
+0.384 ± 0.028
+107.8 ± 26.7
+30.0 ± 7.4
+Values represent mean ± S.D., n = 3. Fixed values were: siRNA concentration 2.4 g/mg PLGA, w1/o ratio 0.2, sonication 60 s, BSA amount 0 g.
+PDI: polydispersity index; NPs: nanoparticles.
+Table 3
+The effects of the sonication time.
+Sonication time (s)
+Diameter (nm)
+PDI
+siRNA loading (ng/mg NPs)
+Encapsulation efﬁciency (%)
+30
+248.0 ± 4.1
+0.166 ± 0.010
+214.9 ± 20.1
+18.0 ± 1.7
+60
+242.6 ± 1.4
+0.169 ± 0.018
+346.8 ± 18.2
+29.0 ± 1.5
+90
+250.2 ± 1.1
+0.122 ± 0.026
+506.4 ± 21.6
+42.3 ± 1.8
+Values represent mean ± S.D., n = 3. Fixed values were: siRNA concentration 2.4 g/mg PLGA, PLGA concentration 60 mg/ml, w1/o ratio 0.2, BSA amount 0 g.
+PDI: polydispersity index; NPs: nanoparticles.
+ing volume of the inner water phase (Bilati et al., 2005). For the same
+nominal siRNA loading, increasing the inner water phase volume
+will reduce the siRNA concentration gradient between the inner
+and outer water phase, and, consequently limit the diffusion of
+siRNA from the inner to the outer water phase and increase the
+encapsulation efﬁciency. However, the volume ratio of the inner
+water phase in the primary emulsion should be increased with
+care. If the phase volume ratio is too high, water droplets will
+likely coalesce and form a less stable emulsion due to the high sur-
+face energy of water (72.8 mJ/m2). Consequently, the particle size
+will increase signiﬁcantly, and the encapsulation efﬁciency may
+decrease, respectively.
+3.2.2. PLGA concentration in oil phase
+The PLGA concentration is a critical factor inﬂuencing the char-
+acteristics and the encapsulation efﬁciency. As shown in Table 2,
+the encapsulation efﬁciency was increased from 21.5% to 29% when
+the PLGA concentration in oil phase was increased from 30 to
+60 mg/ml. However, there was no signiﬁcant increase in the encap-
+sulation efﬁciency when the concentration was increased further
+to 200 mg/ml, probably due to saturation of the oil phase. On the
+other hand, the siRNA loading decreased with the increase in the
+PLGA concentration because of the reduced nominal siRNA loading.
+Also, for the high PLGA concentration, the mean size of the parti-
+cles increased above 400 nm and the size distribution was rather
+polydisperse (PDI ∼0.4). This can be explained by the increased vis-
+cosity of the oil phase, which hinders the diffusion of siRNA from
+the inner water phase. Therefore, less siRNA is leaking into the
+exterior water phase during the course of evaporation. However, a
+more viscous polymer solution is less likely to separate into smaller
+droplets at the same sonication power. As a result, the particle size
+increased signiﬁcantly and the size distribution broadened when a
+higher concentration of PLGA was used to produce the NPs. Taking
+both the encapsulation efﬁciency and mean particle size into con-
+sideration, a PLGA concentration of 60 mg/ml seems optimal for
+siRNA loading.
+3.2.3. Sonication time
+The effect of sonication time during preparation of the primary
+emulsion was investigated. The critical step in the DESE process
+is the dispersion of the inner water phase in the organic solution
+containing the polymer, and the sonication time determines the
+size of the primary emulsion droplet. Previous studies report that
+higher encapsulation efﬁciencies are obtained with water-soluble
+drugs in PLGA microspheres when there is an increased size dif-
+ference between the primary w1/o emulsion and the secondary
+w1/o/w2 emulsion (Ito et al., 2008). As a result of a small differ-
+ence in the droplet size between the two emulsions, a thin oil layer
+forms around the inner water droplet, and the drug in the inner
+water phase can thus easily leak through the oil phase. In order to
+avoid this, siRNA-loaded PLGA NPs were prepared by applying dif-
+ferent periods of sonication to the primary emulsion. The effects on
+the mean particle size and encapsulation efﬁciency were investi-
+gated keeping the theoretical siRNA loading at 2.4 g/mg PLGA, the
+polymer concentration at 60 mg/ml and the phase volume ratio at
+0.2. As expected, longer sonication time increased the encapsula-
+tion efﬁciency signiﬁcantly, however, the mean particle diameter
+did not change signiﬁcantly with sonication for between 30 and
+90 s (Table 3).
+Increasing the sonication time during the primary emulsiﬁca-
+tion can compromise the integrity of siRNA. Therefore, the stability
+of siRNA was examined by applying different periods of sonication
+to the primary emulsion followed by recovery of siRNA from the
+primary emulsion by centrifugation. The results are shown in Fig. 2.
+siRNA remained intact even after 120 s of sonication, regardless of
+the absence or presence of PLGA in the oil phase.
+3.2.4. Theoretical loading of siRNA in the internal water phase
+The theoretical loading of siRNA is deﬁned as the ratio of the
+nominal amount of siRNA against the total amount of PLGA. The
+encapsulation efﬁciency approached 57.5% when the theoretical
+Fig. 2. Gel electrophoresis of siRNA recovered from the primary emulsion prepared
+using different sonication times (a) in the absence of PLGA in the oil phase and (b)
+in the presence of PLGA in the oil phase.
+
+74
+D. Cun et al. / International Journal of Pharmaceutics 390 (2010) 70–75
+Table 4
+The effects of the theoretical loading of siRNA in the internal water phase.
+Theoretical loading of siRNA (g/mg PLGA)
+Diameter (nm)
+PDI
+siRNA loading (ng/mg NPs)
+Encapsulation efﬁciency (%)
+2.4
+255.5 ± 1.9
+0.178 ± 0.010
+1379.6 ± 37.4
+57.5 ± 1.6
+6.0
+258.1 ± 1.8
+0.174 ± 0.014
+1476.2 ± 243.4
+24.6 ± 4.1
+Values represent mean ± S.D., n = 3. Fixed values were: PLGA concentration 60 mg/ml, w1/o ratio 0.4, sonication time 90 s, BSA amount 0 g.
+PDI: polydispersity index; NPs: nanoparticles.
+Table 5
+The effects of acetylated bovine serum albumin (BSA) in the internal water phase.
+Amount of BSA (g)
+Ratio of BSA to siRNA
+Diameter (nm)
+PDI
+siRNA loading (ng/mg NPs)
+Encapsulation efﬁciency (%)
+0
+0
+251.8 ± 1.7
+0.171 ± 0.023
+1133.1 ± 6.1
+26.1 ± 0.1
+180
+2:1
+254.5 ± 3.0
+0.169 ± 0.015
+1478.1 ± 35.8
+34.0 ± 4.7
+360
+4:1
+250.3 ± 1.9
+0.152 ± 0.030
+1997.8 ± 262.7
+46.0 ± 8.7
+Values represent mean ± S.D., n = 3. Fixed values were: siRNA concentration 2.4 g/mg PLGA, PLGA concentration 60 mg/ml, w1/o ratio 0.2, sonication time 60 s.
+PDI: polydispersity index; NPs: nanoparticles
+loading was kept constant at 2.4 g/mg PLGA and the NPs were
+prepared by the optimal parameters determined by the previous
+studies, namely with a concentration of 60 mg/ml PLGA, a volume
+ratio w1/o of 0.4, and applying 60 s of sonication for the ﬁrst emulsi-
+ﬁcation (Table 4). However, the encapsulation efﬁciency decreased
+to 24.6% when the theoretical loading was increased to 6.0 g
+siRNA/mg PLGA although showing comparable actual siRNA load-
+ings of the two formulations, even though much more siRNA was
+added into the ﬁrst formulation. This is in line with the results
+obtained with the small peptide mellitin (Cui et al., 2005), and
+can be explained by that an increase in the concentration of the
+inner water phase will increase the siRNA concentration gradient
+between inner and outer water phases, which will enhance the dif-
+fusion from the inner to the outer water phase with subsequent
+loss in encapsulated siRNA.
+3.2.5. Addition of acetylated BSA
+Acetylated BSA was added to the internal water phase to
+increase the loading of siRNA in the NPs. The same protein has been
+used in the formulation of DNA-loaded PLGA NPs to accelerate the
+release of DNA. Also, acetylated BSA was used since it is available in
+nuclease-free quality (Prabha and Labhasetwar, 2004). The effects
+of adding BSA on the characteristics of siRNA-NPs were investigated
+by keeping the other parameters constant and systematically vary-
+ing the amount of acetylated BSA in the inner water phase. Addition
+of acetylated BSA did not inﬂuence the mean particle size and size
+distribution signiﬁcantly, but resulted in a signiﬁcant increase in
+the encapsulation efﬁciency (Table 5). The encapsulation efﬁciency
+almost doubled when the amount of acetylated BSA was 4-fold
+higher than the amount of added siRNA, as compared to the for-
+mulation without acetylated BSA.
+The stability of the primary w/o emulsion plays a crucial
+role for the drug loading and encapsulation efﬁciency of water-
+soluble drugs in PLGA particles manufactured by the DESE method.
+Stabilization of the emulsion can also reduce the leakage of water-
+soluble drugs from the inner water phase to the outer water phase
+(Ito et al., 2008). In the ﬁeld of emulsion-based food production,
+proteins have been widely used as emulsiﬁers to retard the de-
+emulsiﬁcation process because the protein molecules localize at
+the oil–water interface, and thereby facilitate the formation and
+improve the stability of the emulsions by lowering the interfa-
+cial tension and thus preventing the coalescence of oil droplets
+(Dalgleish, 1997). This explains the stabilization of the primary
+emulsion by acetylated BSA. The encapsulation efﬁciency of siRNA
+was increased signiﬁcantly as a consequence of the stabilization.
+In addition, the increased viscosity of the inner water phase after
+adding BSA is also suggested to contribute to the enhanced stability
+of the emulsion and the increased encapsulation efﬁciency.
+Efﬁcient and reproducible loading of siRNA into NPs is a prereq-
+uisite for their use as a siRNA delivery system. It is very difﬁcult
+to obtain a high siRNA encapsulation efﬁciency in PLGA due to the
+hydrophilic nature and relatively small molecular size of siRNA.
+Therefore, siRNA molecules easily escape from the PLGA phase and
+diffuse to the outer water phase, which results in siRNA loss during
+the preparation process. The cationic polymer polyethyleneimine
+(Patil and Panyam, 2009) and the cationic lipid 1, 2-dioleoyl-3-
+trimethylammoniumpropane (Tahara et al., 2008) have been used
+to pre-complex siRNA prior to entrapment in PLGA nanoparticles.
+However, since cationic compounds are known to be cytotoxic (Lv
+et al., 2006), the addition of cationic agents to the formulation will
+increase the safety concerns connected with future clinic applica-
+tion. Furthermore, the complex formation might delay the release
+of siRNA signiﬁcantly (Patil and Panyam, 2009; Tahara et al., 2008).
+Therefore, it is desirable to increase the encapsulation efﬁciency by
+formulation and process optimization instead of adding cationic
+excipients. The current results consolidate that the encapsulation
+efﬁciency can be increased signiﬁcantly simply by optimizing the
+formulation and process parameters. Apart from a high encapsu-
+lation efﬁciency and proper physical characteristics of the NP, it
+is crucial to preserve the integrity of the siRNA upon encapsula-
+tion, as well as to ensure that it is released from the NPs upon
+administration.
+3.3. Integrity of siRNA is preserved
+The integrity of siRNA in the ﬁnal product was evaluated by
+extracting siRNA from dissolved PLGA NPs, followed by gel elec-
+Fig. 3. Gel electrophoresis of siRNA extracted from the nanoparticles. Lanes 1–3:
+native siRNA (positive control); lanes 4 and 5: extracted siRNA; lanes 6–8: extraction
+from blank PLGA nanoparticles (negative control).
+
+D. Cun et al. / International Journal of Pharmaceutics 390 (2010) 70–75
+75
+trophoresis (Fig. 3). siRNA appeared intact during the production
+process, and critical steps such as sonication and freeze-drying had
+no inﬂuence on the integrity of the siRNA.
+4. Conclusion
+The results of the present study show that siRNA can be incor-
+porated successfully, i.e. with high encapsulation efﬁciency, into
+biodegradable PLGA NPs using the DESE method. The obtained
+siRNA-loaded PLGA NPs were spherical in shape, had a smooth sur-
+face and a net negative surface charge. The particle size and the
+encapsulation efﬁciency in particularly were inﬂuenced by vari-
+ous formulation and processing parameters. By optimizing those
+parameters, NPs with siRNA encapsulation efﬁciency up to 57% and
+particle diameter around 250 nm could be produced without the aid
+of cationic excipients. Optimal parameters were 2.4 g siRNA/mg
+PLGA, 60 mg/ml PLGA, w1/o volume ratio of 0.4, and 90 s of sonica-
+tion time for the ﬁrst emulsiﬁcation. In addition, the presence of BSA
+increases the encapsulation efﬁciency in the NP. We are currently
+determining the siRNA release proﬁles and silencing effects in vitro.
+Acknowledgements
+The authors would like to thank the Alfred Benzon Foundation
+(Denmark) (D.C), the Danish Research Council for Technology and
+Production Sciences [Grant No. 26-02-0019 (C.F)] and the Danish
+Agency for Science, Technology and Innovation for the funding of
+this work. Dr. Christina K. Johnsen (Statens Serum Institute, Den-
+mark) is acknowledged for the technical assistance with the TEM
+analysis. We acknowledge the Alfred Benzon Foundation and the
+Drug Research Academy for co-funding the FLUOstar OPTIMA plate
+reader. In addition, this paper has been carried out with the ﬁnan-
+cial support from the Commission of the European Communities,
+Priority 3 “Nanotechnologies and Nanosciences, Knowledge Based
+Multifunctional Materials, New Production Processes and Devices”
+of the Sixth Framework Programme for Research and Technological
+Development (Targeted Delivery of Nanomedicine: NMP4-CT-
+2006-026668). It does not necessarily reﬂect its views and in no
+way anticipates the Commission’s future policy in this area.
+References
+Akhtar, S., Benter, I., 2007. Toxicogenomics of non-viral drug delivery systems for
+RNAi: potential impact on siRNA-mediated gene silencing activity and speci-
+ﬁcity. Adv. Drug Deliv. Rev. 59, 164–182.
+Bilati, U., Allemann, E., Doelker, E., 2005. Poly(lactide-co-glycolide) protein-loaded
+nanoparticles prepared by the double emulsion method-processing and formu-
+lation issues for enhanced entrapment efﬁciency. J. Microencapsul. 22, 205–
+214.
+Cui, F., Cun, D., Tao, A., Yang, M., Shi, K., Zhao, M., Guan, Y., 2005. Preparation and
+characterization of mellitin-loaded poly (DL-lactic acid) or poly (DL-lactic-co-
+glycolic acid) microspheres made by the double emulsion method. J. Control.
+Release 107, 310–319.
+Dalgleish, D.G., 1997. Adsorption of protein and the stability of emulsions. Trends
+Food Sci. Technol. 8, 1–6.
+de Fougerolles, A.R., 2008. Delivery vehicles for small interfering RNA in vivo. Hum.
+Gene Ther. 19, 125–132.
+Garcia, F., Petry, K.U., Muderspach, L., Gold, M.A., Braly, P., Crum, C.P., Magill, M.,
+Silverman, M., Urban, R.G., Hedley, M.L., Beach, K.J., 2004. ZYC101a for treatment
+of high-grade cervical intraepithelial neoplasia: a randomized controlled trial.
+Obstet. Gynecol. 103, 317–326.
+Gary, D.J., Puri, N., Won, Y.Y., 2007. Polymer-based siRNA delivery: perspectives on
+the fundamental and phenomenological distinctions from polymer-based DNA
+delivery. J. Control. Release 121, 64–73.
+Huang, C., Li, M., Chen, C., Yao, Q., 2008. Small interfering RNA therapy in can-
+cer: mechanism, potential targets, and clinical applications. Expert Opin. Ther.
+Targets 12, 637–645.
+Ito, F., Fujimori, H., Makino, K., 2008. Factors affecting the loading efﬁciency of
+water-soluble drugs in PLGA microspheres. Colloid Surf. B: Biointerfaces 61, 25–
+29.
+Klencke, B., Matijevic, M., Urban, R.G., Lathey, J.L., Hedley, M.L., Berry, M., Thatcher,
+J., Weinberg, V., Wilson, J., Darragh, T., Jay, N., Da Costa, M., Palefsky, J.M.,
+2002. Encapsulated plasmid DNA treatment for human papillomavirus 16-
+associated anal dysplasia: a phase I study of ZYC101. Clin. Cancer Res. 8, 1028–
+1037.
+Krishnamurthy, R., Lumpkin, J.A., Sridhar, R., 2000. Inactivation of lysozyme by son-
+ication under conditions relevant to microencapsulation. Int. J. Pharm. 205,
+23–34.
+Luten, J., van Nostrum, C.F., De Smedt, S.C., Hennink, W.E., 2008. Biodegradable poly-
+mers as non-viral carriers for plasmid DNA delivery. J. Control. Release 126,
+97–110.
+Lv, H., Zhang, S., Wang, B., Cui, S., Yan, J., 2006. Toxicity of cationic lipids and cationic
+polymers in gene delivery. J. Control. Release 114, 100–109.
+Patil, Y., Panyam, J., 2009. Polymeric nanoparticles for siRNA delivery and gene
+silencing. Int. J. Pharm. 367, 195–203.
+Prabha, S., Labhasetwar, V., 2004. Critical determinants in PLGA/PLA nanoparticle-
+mediated gene expression. Pharm. Res. 21, 354–364.
+Rose, S.D., Kim, D.H., Amarzguioui, M., Heidel, J.D., Collingwood, M.A., Davis, M.E.,
+Rossi, J.J., Behlke, M.A., 2005. Functional polarity is introduced by Dicer process-
+ing of short substrate RNAs. Nucl. Acids Res. 33, 4140–4156.
+Singh, S.K., 2008. RNA interference and its therapeutic potential against HIV infec-
+tion. Expert Opin. Biol. Ther. 8, 449–461.
+Tahara, K., Sakai, T., Yamamoto, H., Takeuchi, H., Kawashima, Y., 2008. Establishing
+chitosan coated PLGA nanosphere platform loaded with wide variety of nucleic
+acid by complexation with cationic compound for gene delivery. Int. J. Pharm.
+354, 210–216.
+Xie, F.Y., Woodle, M.C., Lu, P.Y., 2006. Harnessing in vivo siRNA delivery for
+drug discovery and therapeutic development. Drug Discov. Today 11, 67–
+73.
+Yuan, X., Li, L., Rathinavelu, A., Hao, J., He, M., Heitlage, V., Tam, L., Viqar, S., Salehi, M.,
+2006. SiRNA drug delivery by biodegradable polymeric nanoparticles. J. Nanosci.
+Nanotechnol. 6, 2821–2828.

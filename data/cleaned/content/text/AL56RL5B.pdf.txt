@@ -1,0 +1,1341 @@
+Biodegradable Film for the Targeted Delivery of siRNA-Loaded
+Nanoparticles to Vaginal Immune Cells
+Jijin Gu, Sidi Yang, and Emmanuel A. Ho*
+Laboratory for Drug Delivery and Biomaterials, College of Pharmacy, Faculty of Health Sciences, University of Manitoba,
+750 McDermot Avenue, Winnipeg, Manitoba Canada, R3E 0T5
+*
+S Supporting Information
+ABSTRACT: The goal of this study was to develop and char-
+acterize a novel intravaginal ﬁlm platform for targeted delivery
+of small interfering RNA (siRNA)-loaded nanoparticles (NP)
+to dendritic cells as a potential gene therapy for the prevention
+of sexually transmitted human immunodeﬁciency virus (HIV)
+infection. Poly(ethylene glycol) (PEG)-functionalized poly(D,
+L-lactic-co-glycolic acid) (PLGA)/polyethylenimine (PEI)/siRNA
+NP (siRNA-NP) were fabricated using a modiﬁed emulsion-
+solvent evaporation method and characterized for particle size,
+zeta potential, encapsulation eﬃciency (EE), and siRNA release.
+siRNA-NP were decorated with anti-HLA-DR antibody
+(siRNA-NP-Ab) for targeting delivery to HLA-DR+ dendritic cells (DCs) and homogeneously dispersed in a biodegradable ﬁlm
+consisting of poly vinyl alcohol (PVA) and λ-carrageenan. The siRNA-NP-Ab-loaded ﬁlm (siRNA-NP-Ab-ﬁlm) was transparent,
+displayed suitable physicomechanical properties, and was noncytotoxic. Targeting activity was evaluated in a mucosal coculture
+model consisting of a vaginal epithelial monolayer (VK2/E6E7 cells) and diﬀerentiated KG-1 cells (HLA-DR+ DCs). siRNA-NP-Ab
+were rapidly released from the ﬁlm and were able to penetrate the epithelial layer to be taken up by diﬀerentiated KG-1 cells.
+siRNA-NP-Ab demonstrated higher targeting activity and signiﬁcantly higher knockdown of synaptosome-associated 23-kDa protein
+(SNAP-23) mRNA and protein when compared to siRNA-NP without antibody conjugation. Overall, these data suggest that our
+novel siRNA-NP-Ab-ﬁlm may be a promising platform for preventing HIV infection within the female genital tract.
+KEYWORDS: intravaginal delivery, microbicides, polymeric ﬁlm, SNAP-23, mucosal coculture model
+■INTRODUCTION
+Intravaginal drug delivery is a promising route for both local
+and systemic drug absorption attributed to its large surface
+area, rich blood supply, accessibility, and avoidance of hepatic
+ﬁrst-pass elimination.1,2 However, successful delivery of drugs
+via the vagina remains a challenge, primarily due to poor drug
+retention as a result of “wash-out” and poor drug absorption
+across the vaginal epithelium, which often requires multiple
+daily doses to achieve the desired therapeutic eﬀect.3 Accept-
+ability of intravaginal drug administration by women and
+doctors is increasing, particularly because it is eﬀective for the
+prevention of sexually transmitted infections including human
+immunodeﬁciency virus (HIV) and because the vagina is an ex-
+cellent route for the delivery of nucleic acids, peptides/proteins,
+and other therapeutically important macromolecules.2 Recently,
+there has been an increasing interest in using small interfering
+RNA (siRNA) to knockdown host and/or viral factors as a
+strategy to suppress the viral life cycle resulting in reduced viral
+entry into cells or the establishment of productive infection.4,5
+As a result, development of siRNA-based vaginal microbicides
+is a promising approach for the treatment and prevention of
+sexually transmitted infections. However, delivery of siRNA
+across the vaginal mucosa is challenging because the siRNA
+molecules need to penetrate the cervicovaginal mucus layer,
+overcome the cervicovaginal epithelial barrier, avoid rapid
+nuclease degradation, and be taken up by target cervicovaginal
+lymphocytes.6 There is currently a lack of studies evaluating the
+intravaginal delivery of siRNA and, consequently, a lack of
+strategies for overcoming the obstacles mentioned above.
+Nanosized drug carriers such as nanoparticles (NP) have
+been investigated for in vitro/in vivo siRNA delivery to over-
+come typical drug delivery challenges such as physicochemical
+stability, low cellular uptake, rapid cellular and tissue clearance,
+the need for multiple dosing, and the potential induction of
+an immunogenic response.7,8 Mucus-penetrating NP may
+provide advantageous distribution of microbicides throughout
+the reproductive tract, including the highly folded epithelial
+surfaces of the vagina.9,10
+Strategies that oﬀer controlled local delivery of siRNA play a
+signiﬁcant role in improving gene therapy outcomes.6 Despite
+the fact that the female genital tract is a suitable route for local
+and systemic drug administration, the major obstacle with
+vaginal delivery is patient compliance. Many of the currently
+Received:
+January 24, 2015
+Revised:
+June 17, 2015
+Accepted:
+June 22, 2015
+Published: June 22, 2015
+Article
+pubs.acs.org/molecularpharmaceutics
+© 2015 American Chemical Society
+2889
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+Downloaded via UNIV OF MARYLAND COLG PARK on October 20, 2025 at 17:54:00 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+available vaginal dosage forms, such as gels and creams, suﬀer
+from leakage, messiness, and low residence time, resulting in
+poor patient compliance.11,12 Vaginal ﬁlms have several advan-
+tages over conventional intravaginal dosage forms, which in-
+clude portability, convenience in application, prolonged reten-
+tion time, easy storage, and improved stability of drug.13,14
+Therefore, polymeric ﬁlms are increasingly being investigated as
+a promising approach for vaginal drug delivery. Vaginal ﬁlms
+can be designed for immediate or controlled release by op-
+timizing the polymeric composition of the ﬁlm, or combining
+thin ﬁlm technology with other drug delivery strategies.15,16
+Hence, biodegradable and biocompatible ﬁlms would be
+an excellent platform for the vaginal delivery of siRNA-
+encapsulated NP to improve localized transfection eﬃciency.
+Retrovirus assembly is a complex process that requires the
+orchestrated participation of viral components and host-cell
+factors. The concerted movement of diﬀerent viral proteins to
+speciﬁc sites in the plasma membrane allows for virus particle
+assembly and ultimately budding and maturation of infectious
+virions. In eukaryotic cells, biological membrane fusion is
+generally executed by fusogenic soluble N-ethylmaleimide-
+sensitive factor (NSF) attachment protein (SNAP) receptors
+(SNAREs).17 Synaptosome-associated 23-kDa protein (SNAP-23)
+is a SNARE protein located on the plasma membrane, and it is
+involved with the exocytosis of secretory vesicles. Studies have
+shown that the absence of SNAP-23 expression on host cells
+results in defects with HIV-1 particle production. This defect
+correlates with a deﬁciency in Gag-membrane localization,
+suggesting a role for SNARE proteins in Gag accumulation at
+the plasma membrane.17 RNA interference (RNAi) is increas-
+ingly being utilized for the speciﬁc targeting and down-regulation
+of disease-causing genes, including those involved in viral
+infections such as HIV. Hence, using speciﬁc siRNA against
+SNAP-23 will disrupt the host SNARE machinery, resulting in a
+signiﬁcant reduction in HIV-1 virus particle production.
+In this study, we developed and characterized a novel
+biodegradable ﬁlm formulation for the active targeted delivery
+of siRNA-loaded NP (siRNA-NP) to HLA-DR+ immune cells
+of the vaginal mucosa. NP were manufactured from poly-
+ethylene glycol-poly(D, L-lactide-co-glycolide) (PLGA-PEG)
+and polyethylenimine (PEI)/siRNA complexes, and function-
+alized with anti-HLA-DR antibody (siRNA-NP-Ab). We
+investigated the physicochemical properties of the siRNA-NP-
+Ab and siRNA-NP-Ab-loaded ﬁlm (siRNA-NP-Ab-ﬁlm) and
+determined its impact on the viability of epithelial and immune
+cells. Most importantly, we evaluated the ability of siRNA-NP-Ab
+released from ﬁlm to penetrate epithelial cells and speciﬁcally
+target delivery into HLA-DR+ immune cells (HIV target cells)
+using a vaginal mucosal coculture model (Figure 1). SNAP-23
+knockdown eﬃciency was also determined at both mRNA and
+protein levels.
+■MATERIALS AND METHODS
+Materials. HOOC-PEG (2k)-b-PLGA (50/50) (10 k),
+(PLGA-PEG, Mn: 12000; PI: 1.6) was custom synthesized by
+Advanced Polymer Materials, Inc. (Montreal, QC, Canada).
+PLGA (MW 15 kDa, acid terminated), branched polyethyle-
+nimine (PEI, MW 25 kDa, Aldrich), poly vinyl alcohol (PVA,
+98−99% hydrolyzed; MW 31 000−50 000) and ionomycin
+were obtained from Sigma-Aldrich (Oakville, ON, Canada).
+1-Ethyl-3-(3-(dimethylamino)propyl) carbodiimide (EDC) and
+N-hydroxysulfosuccinimide (Sulfo-NHS) were purchased from
+G-Biosciences (Geno Technology Inc., Maryland Heights, MO,
+U.S.A.). λ-carrageenan was purchased from American Custom
+Chemicals Corp (San Diego, CA, U.S.A.). Ethyl acetate (AR grade)
+was purchased from Thermo Fisher Scientiﬁc Inc. (Toronto,
+ON, Canada). rhIL-4, rhGM-CSF and rhTNF-α were obtained
+from R&D Systems (Minneapolis, MN, U.S.A.). 4′-6-Diamidino-
+2-phenylindole (DAPI) and Annexin V-FITC/7-AAD apoptosis
+kit were purchased from Life Technologies, Inc. (Burlington,
+ON, Canada). Anti-HLA-DR antibody was obtained from
+Biolegend (San Diego, CA, U.S.A.). Trypsin-EDTA, penicillin/
+streptomycin solution and fetal bovine serum (FBS) were
+purchased from Gibco Life Technologies (Burlington, ON,
+Canada). cDNA ampliﬁcation kits for rapid ampliﬁcation of
+cDNA ends was obtained from Clontech Laboratories, Inc.
+(Mountain View, CA, U.S.A.). Double distilled water (ddH2O)
+was puriﬁed using a Millipore Simplicity System, which was
+used for all the experiments.
+Cell Lines and siRNA. All cell lines used in this study were
+obtained from ATCC. The vaginal epithelial cell line, VK2/
+E6E7, was maintained in ATCC complete growth medium
+(Keratinocyte-Serum Free medium with 0.1 ng/mL human
+recombinant epidermal growth factor (EGF), 0.05 mg/mL
+bovine pituitary extract, additional calcium chloride (44.1 mg/L),
+and 1% penicillin-streptomycin) under conditions of 5% CO2 at
+37 °C. The KG-1 immune cell line was maintained in ATCC-
+formulated Iscove’s Modiﬁed Dulbecco’s Medium (IMDM)
+supplemented with 20% FBS and 1% penicillin-streptomycin
+under conditions of 5% CO2 at 37 °C.
+All siRNA sequences were chemically synthesized by
+Ambion-Invitrogen and puriﬁed by HPLC. siRNA against
+SNAP-23 (siSNAP-23) consisted of the following sense strand
+Figure 1. Schematic representation of anti-HLA-DR antibody conju-
+gated PLGA-PEG/PEI/siRNA NP (siRNA-NP-Ab) formulated into a
+biodegradable ﬁlm for targeting siRNA delivery into vaginal HLA-DR+
+dendritic cells. siRNA-NP-Ab were homogeneously dispersed in a bio-
+degradable ﬁlm consisting of poly vinyl alcohol (PVA) and λ-carrageenan.
+Upon administration, the ﬁlm will disintegrate within the vaginal
+lumen allowing siRNA-NP-Ab to penetrate across the vaginal mucosa
+and target delivery to HLA-DR+ dendritic cells.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2890
+
+5′-CCAACAGAGAUCGUAUUGAtt-3′ and antisense strand
+5′-UCAAUACGAUCUCUGUUGGtg-3′. Nontargeting scrambled
+siRNA was used as a negative control (siNC) with a sense strand
+consisting of 5′-UUCUCCGAACGUGUCACGUTT-3′ and an
+antisense strand of 5′-ACGUGACACGUUCGGAGAATT-3′.
+Fluorescent siRNA used in this study were labeled at the 5′-end
+of the sense strand with carboxyﬂuorescein (FAM) (FAM-siRNA)
+or cyanine dye (Cy3) (Cy3-siRNA).
+Preparation of siRNA-NP and siRNA-NP-Ab. siRNA-NP
+was formulated by a double-emulsion solvent evaporation method
+previously described with some modiﬁcations.18−20 In brief,
+siRNA was complexed to PEI (N/P ratio 3:1) in TE buﬀer and
+incubated at room temperature for 15 min with intermittent
+vortexing. This aqueous solution (100 μL) was then added
+dropwise to ethyl acetate (500 μL) solution of PLGA-PEG-
+COOH (10 mg/mL) to form the ﬁrst emulsion with 10 s
+sonication on ice using a probe sonicator. This mixture was
+then added dropwise to 4.0 mL of 0.5% (w/v) PVA solution
+and sonicated to form a double emulsion. The ﬁnal emulsion
+was poured into a vial and stirred for 4 h to evaporate the ethyl
+acetate before centrifuging at 12 000g for 15 min at 4 °C. The
+particles were washed twice and resuspended in 1 mL ddH2O,
+rapidly frozen, and lyophilized.
+Prior to antibody conjugation, the carboxyl groups on the
+siRNA-NP surface (from PEG-COOH) were activated by EDC
+(1.92 mg/mL) and sulfo-NHS (1.08 mg/mL) coupling reaction
+in 2-(N-morpholino) ethanesulfonic acid (MES) buﬀer (pH 6.0)
+for 1 h. The activated siRNA-NP were collected by centrifuga-
+tion (12 000g, 15 min), resuspended in pH 7.4 PBS, and reacted
+with 20 μL of anti-HLA-DR antibody (0.5 mg/mL) for 2 h, with
+stirring at room temperature. The siRNA-NP conjugated to anti-
+body were collected by centrifugation (12 000g, 15 min), washed
+three times with DEPC-treated water to remove free antibody,
+and resuspended in ddH2O.
+Characterization of siRNA-NP and siRNA-NP-Ab. Particle
+size and zeta potential of the NP were measured by dynamic
+light scattering (DLS) using the ZetaPALS (Brookhaven).
+Transmission electron microscopy (TEM) was utilized to
+investigate the morphology of the NP after negative staining
+with 2% (w/v) phosphotungstic acid solution.
+The encapsulation eﬃciency (EE) of siRNA loaded in the NP
+was calculated as EE (%) = (the total amount of siRNA −the
+amount of siRNA in supernatant)/total amount of siRNA × 100.
+The amount of free siRNA recovered in the NP wash solution
+obtained during the formulation step was quantiﬁed using the
+Quant-iT Picogreen reagent. siRNA loading in NP was deter-
+mined by subtracting the amount of siRNA recovered in the
+wash solutions from initial amount of siRNA added.
+In vitro release studies were carried out using Cy3-siRNA-NP
+and Cy3-siRNA-NP-Ab. Brieﬂy, NP (5.0 mg) were suspended
+in 1.0 mL of release medium (PBS, pH 7.4) in RNase-free
+microcentrifuge tubes, and incubated at 37 °C with gentle
+shaking (100 rpm). At predetermined time intervals, the NP
+suspension was centrifuged at 12 000g, 4 °C for 10 min, and
+100 μL of the supernatant was withdrawn for quantiﬁcation of
+siRNA and replaced with an equivolume of fresh release
+medium. The concentration of released Cy3-siRNA in the
+supernatant was determined using a microplate reader (BioTek
+Synergy) with an excitation wavelength of 530 nm and an
+emission wavelength of 590 nm. The percentage of released
+siRNA was normalized to the total amount of siRNA
+encapsulated. Samples were taken and analyzed in triplicates
+for each time point.
+Preparation of siRNA-NP-Film and siRNA-NP-Ab-Film.
+The polymeric ﬁlm was prepared by a solvent casting and
+solvent evaporation method.14 Brieﬂy, PVA and λ-carrageenan
+were completely dissolved in 10 mL of ddH2O at 80 °C and
+mixed intermittently. Subsequently, 600 μL of glycerin and
+300 μL of PEG400 were then added to the solution, followed
+by the addition of siRNA-NP or siRNA-NP-Ab. The polymeric
+dispersion was vortexed to achieve a homogneous mixture and
+then sonicated for 30 min without heat (using sonication bath)
+to obtain an aqueous dispersion and to remove entrapped air
+bubbles. The polymeric solution (4.0 mL) was then uniformly
+spread onto an evaporation dish (30.0 cm2) and dried in an
+oven at 37 °C for 20 ± 4 h or in a freeze-dryer (0.05 mbar,
+−47 °C) overnight.
+Characterization of the Film. Polymeric ﬁlms were eval-
+uated for various physical and mechanical parameters including
+thickness, weight, and disintegration time, and they were visually
+inspected for appearance and transparency. The thickness of
+each ﬁlm was measured at ﬁve diﬀerent locations (center and
+four corners) using a digital caliper, and the mean value was
+calculated. All measurements were performed in triplicate.
+For gross qualitative evaluation of ﬁlm disintegration, 50 mg
+of ﬁlm was immersed in 3 mL of ddH2O in a 10 mL vial at
+37 °C. The vial was shaken at 100 rpm on an orbital shaker, and
+the rate of disintegration was visually recorded. Film disintegra-
+tion was deﬁned as the time for the intact ﬁlm structure to
+completely disappear into solution.
+Surface morphology of ﬁlm was captured under a Scanning
+Auger Microprobe (SAM, JEOL JAMP 9500F). The dried ﬁlm
+samples were cut into small pieces and attached to slab surfaces
+with double-sided adhesive tapes.
+KG-1 Cell Diﬀerentiation. KG-1 cells can be diﬀerentiated
+rapidly into mature dendritic cells (mKG-1) when cultured in
+serum-free medium at a concentration of 2 × 105 cells/mL
+for 1−3 days in a humidiﬁed incubator at 37 °C and 5% CO2
+with rhGM-CSF (100 ng/mL), rhTNF-α (10 ng/mL), and
+200 ng/mL ionomycin.21 During diﬀerentiation into mature
+DCs, the cells exhibit de novo cell-surface expression of CD83
+and intracellular synthesis of IL-10, and up-regulation of HLA-DR
+cell surface expression.21 After diﬀerentiation, the mKG-1 cells
+were used for NP uptake and targeting studies. mKG-1 cells were
+identiﬁed according to the following method: cultured cells were
+washed, resuspended in cold PBS at a density of 1.5 × 105 cells/mL
+and incubated with monoclonal antibody FITC-labeled anti-
+CD83, PE-conjugated anti-HLA-DR or Alexa647-conjugated
+anti-IL-10 or appropriate isotypic controls for 30 min. Stained
+cells were analyzed for three-color immunoﬂuorescence with a
+ﬂow cytometer (FACSCalibur, BD, U.S.A.).
+In Vitro Cytotoxicity Studies. For cytotoxicity studies,
+VK2/E6E7 and mKG-1 cells were seeded in a 96-well plate at
+2 × 104 cells per 100 μL per well, respectively. After 24 h of
+incubation (37 °C, 5% CO2), the cell culture medium was
+replaced with 100 μL positive and negative control medium and
+various treatment groups. Cell viability was determined using
+the MTS assay (CellTiter 96 A-Queous One Solution Cell
+Proliferation Assay, Promega), following the manufacturer’s
+instructions. Levels of interleukin-1β (IL-1β), interleukin-6
+(IL-6), and interleukin-8 (IL-8) in supernatant of each well
+were evaluated using enzyme-linked immunosorbent assay kits
+(ELISA) obtained from R&D Systems. Treatment groups
+included siRNA-NP, siRNA-NP-Ab, blank ﬁlm, siRNA-NP-ﬁlm,
+and siRNA-NP-Ab-ﬁlm. Various NPs and ﬁlms were diluted in
+cell culture medium to achieve an appropriate concentration
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2891
+
+(ﬁlms: 0−10 mg/mL; NP was administrated at the concen-
+tration according to the loading of ﬁlm: 0.043 nmol siRNA/
+0.15 mg NP/mg ﬁlm). Cells cultured in medium alone without
+treatment were used as negative control. Cells treated with 1%
+(v/v) Triton X-100 were used as positive control for the MTS
+assay. Nonoxynol-9 (N-9; 200 μg/mL; Spectrum Chemical
+Corp., New Brunswick, NJ, U.S.A.) diluted in culture medium
+was used as a positive control for IL-1β ELISA (R&D System
+Inc., Minneapolis, MN, U.S.A.). Lipopolysaccharide (LPS;
+50 μg/mL; from Escherichia coli 0111:B4, Sigma) prepared in
+culture medium was used as positive control for IL-6 and IL-8
+ELISA (R&D System). Cells were incubated for 4, 12, and 24 h
+at 37 °C and 5% CO2.
+In Vitro Cellular Uptake of siRNA-NP and siRNA-NP-Ab.
+To examine the cellular uptake of siRNA-NP and siRNA-NP-
+Ab, VK2/E6E7 or mKG-1 cells were seeded in a 24-well plate
+at a density of 3 × 105 cells per 500 μL per well and incubated
+for 24 h. The cells were then incubated with FAM-siRNA-NP
+or FAM-siRNA-NP-Ab formulations at a concentration of
+0.15 nmol FAM-siRNA/well (1 mg/mL NP) for 0.5−24 h. At
+the end of the incubation period, the medium containing NP
+was removed, and the cells were rinsed three times with ice-
+cold PBS before DAPI (5 μg/mL) staining. The ﬂuorescence of
+the noninternalized NP attached to the plasma membrane was
+quenched by incubation in 0.4% trypan blue (GIBCO BRL,
+Invitrogen) for 5 min. After being washed with PBS, ﬂuo-
+rescence was directly observed and imaged under a ﬂuorescence
+microscope (Nikon TE2000). For quantiﬁcation, the cells were
+collected at various time points, rinsed with PBS, and analyzed
+using ﬂow cytometry (FACSCalibur, BD, U.S.A.).
+For the competitive inhibition assay, VK2/E6E7 and mKG-1
+cells were pretreated with excess amounts of free anti-HLA-DR.
+After 2 h of incubation, the FAM-siRNA-NP with or without
+antibody conjugation was added to the cells. The ﬂuorescence
+intensity of each sample was then analyzed as described above.
+Evaluation of Penetration of NP Using a Vaginal
+Mucosal Coculture Model. VK2/E6E7 cells were seeded
+onto a cell culture insert consisting of a polycarbonate mem-
+brane (mean pore size 3.0 μm, eﬀective cell growth area of
+membrane 0.33 cm2, Corning Inc. Life Sci., MA, U.S.A.) at a
+density of 5 × 104 cells/200 μL medium per well and were
+cultured until the formation of tight junctions was achieved.
+Trans-epithelial electrical resistance (TEER) was monitored
+daily by a volt-ohm meter (Millicell-ERS-2, Millipore, U.S.A.)
+attached to Endohm-12 chamber electrodes to evaluate the
+cell monolayer integrity. Cell monolayers with TEER values
+over 150 Ω were used for the following experiments. Six days
+after seeding, VK2/E6E7 cell monolayers grown in the trans-
+well chambers were transferred to a 24-well plate containing
+mKG-1 cells in complete culture medium and then cocultured
+for another day. Culture medium (300 μL) containing
+siRNA-NP, siRNA-NP-Ab, siRNA-NP-ﬁlm, or siRNA-NP-Ab-
+ﬁlm was then added into the upper apical chamber of each
+transwell. siRNA-NP and siRNA-NP-Ab were incorporated
+with coumarin-6 for ﬂuorescent quantitation of NP and the
+transport of NP from the apical to basolateral direction was
+studied. At various time points (4, 12, 24, and 48 h), mKG-1
+cells were collected from the basolateral chamber, quenched
+with 0.4% trypan blue, washed with PBS, and analyzed using a
+ﬂow cytometer to determine cellular uptake.
+Silencing Activity of siSNAP-23 in a Vaginal Mucosal
+Coculture Model. As described earlier, cells were treated with
+various NP and NP-ﬁlm formulations containing siSNAP-23 or
+siNC. mKG-1 cells were harvested 24, 48, or 72 h post-
+treatment and centrifuged at 600 rpm for 5 min at 4 °C,
+following removal of the incubation medium.
+Quantitative real-time polymerase chain reaction (qPCR)
+was used to determine the down-regulation of SNAP-23 mRNA
+level. Glyceraldehyde 3-phosphate dehydrogenase (GAPDH)
+was used as the housekeeping gene for normalization of results.
+The comparative CT (ΔΔCT) method was used to quantitate
+relative SNAP-23 mRNA expression level, comparing treated
+samples to nontreated controls.22,23
+To demonstrate that siRNA-mediated SNAP-23 gene silencing
+can engage the RNAi machinery, 5′-rapid ampliﬁcation of
+cDNA ends (RACE) PCR assay was performed to characterize
+the mRNA cleavage products using SMARTer RACE cDNA
+ampliﬁcation kit (Clontech) according to the manufacturer’s
+protocol. Brieﬂy, mKG-1 cells were treated with diﬀerent
+siRNA formulations using the mucosal coculture model. After
+transfection, total RNA was extracted from mKG-1 cells and
+subjected to 5′-RACE to identify the speciﬁc cleavage products.
+cDNA was synthesized from 1 μg of total RNA and 5′-CDS
+primer A for the 5′ RACE. RACE PCR was performed with the
+cDNA, SNAP-23 gene speciﬁc primer and universal primer
+mixture. PCR products were run on a 2% agarose gel for 40 min at
+120 V and visualized using SYBR Safe gel stain (Life Technologies).
+For analysis of SNAP-23 protein expression, mKG-1 cells
+were analyzed by ﬂow cytometry after stained with FITC-labeled
+SNAP-23 antibody. The mKG-1 cells stained with FITC-labeled
+nonspeciﬁc antibody were used as isotype stain control. Cells
+were gated to evaluate 10 000 viable cells per experiment. The
+mean ﬂuorescence intensity of ﬂuorescence-positive cell
+population was determined. The extent of SNAP-23 silencing
+with diﬀerent formulations was expressed relative to the cells
+treated with the scrambled siRNA of the corresponding formu-
+lations. Cells were also imaged using a ﬂuorescence microscope
+(Nikon TE2000).
+Impact of the various siRNA formulations on cell viability was
+also determined using the apoptosis kit with Annexin V FITC/
+7-aminoactinomycin D (7-AAD) according to the manufacturer’s
+instructions (Life Technologies). Brieﬂy, cell populations were
+washed twice with PBS and then resuspended in 100 μL of 1 ×
+binding buﬀer at a concentration of 1 × 106 cells/mL. Afterward,
+the resuspended cells were stained with 5 μL Annexin V FITC
+and 1 μL 7-AAD for 15 min at room temperature in the dark,
+and then 400 μL of binding buﬀer was added. The stained
+samples were analyzed immediately by ﬂow cytometry. For each
+sample, the ﬂuorescence of 1 × 104 events was measured. Every
+experiment was performed in triplicate.
+Statistical Analysis. Data were analyzed by a two-way
+ANOVA test with P < 0.05 considered statistically signiﬁcant.
+All data were shown as means ± SD of at least N ≥3 unless
+otherwise indicated.
+■RESULTS
+Characterization of siRNA-NP and siRNA-NP-Ab. In
+this study, the mean particle size and zeta potential of the NP
+formulations used are summarized in Table 1. Blank NP had a
+mean particle size of 161.0 ± 4.6 nm and a polydispersity index
+(PDI) of 0.108 ± 0.016. The PDI of NP is smaller than
+0.2, indicating narrow size distribution. The zeta potential of
+blank NP in ddH2O was found to be −32.76 ± 1.01 mV. In the
+presence of PEI/siRNA complexes, the siRNA-NP had an
+eﬀective hydrodynamic diameter of 201.4 ± 4.3 nm in ddH2O,
+with no appreciable increase in zeta potential (−29.65 ± 3.35 mV).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2892
+
+When siRNA-NP were conjugated with antibody, the diameter
+of the conjugated NP increased to 232.0 ± 3.0 nm. However,
+no signiﬁcant eﬀect was observed on the zeta potential, which
+indicates the presence of negatively charged surfaces. PEI was
+included in the formulation because studies have shown that
+preformed PEI/siRNA complexes result in higher encapsula-
+tion of siRNA in the ﬁnal formed siRNA-NP.24 In our studies,
+we found that prior to antibody conjugation, the EE was 75.89
+± 3.67%, and after conjugation, the EE was 70.68 ± 4.89%. The
+slight siRNA loss may be due to the release of siRNA from
+the siRNA-NP during the conjugation process, which involves
+repeating wash steps, centrifugation, and prolonged stirring.
+This observation has been reported previously.25
+The morphology of siRNA-NP and siRNA-NP-Ab were
+examined by TEM, and the representative images are shown in
+Figure 2. The micrograph images revealed that the siRNA-NP
+were generally spherical in shape and possessed a smooth
+surface (Figure 2A) even after being functionalized with anti-
+body (Figure 2B). Because TEM measurement requires samples
+to be air-dried before analysis, particle sizes measured by TEM
+are always slightly smaller than those from DLS with samples
+suspended in solution.26 Generally speaking, the particle size
+directly measured from the TEM images was in good agreement
+with the DLS measurements. The release of siRNA from
+siRNA-NP and siRNA-NP-Ab (loaded with 1.5 nmol Cy3-
+labeled siRNA) was evaluated in PBS (pH 7.4) for 15 days
+(Figure 2C). There was no signiﬁcant diﬀerence in siRNA
+release between siRNA-NP and siRNA-NP-Ab. In the ﬁrst 4 h,
+siRNA-NP-Ab had a burst release of ∼8.9% of total loading
+with ∼35% of siRNA released cumulatively after 15 days.
+Preparation and Characteristics of the Films. Polymeric
+ﬁlms were prepared by a solvent evaporation method with
+formulation A (Table 2) containing siRNA-NP-Ab (5.0 mg).27
+To remove the solvent, two methods of drying the ﬁlm were
+evaluated. One method involved the incubation of ﬁlms at
+37 or 60 °C, which resulted in a 3.4 ± 2.6% and 21.2 ± 4.3%
+loss of siRNA, respectively. The second method evaluated the
+use of a freeze-dryer, which signiﬁcantly improved the stability
+of siRNA with 1.4 ± 0.2% loss of siRNA. These results
+indicated that siRNA quickly degraded at high temperatures.
+Furthermore, the appearance of the ﬁlms using the two drying
+methods was also compared. When the polymer solution was
+lyophilized under reduced pressure in a freeze-dryer, an opaque
+and porous ﬁlm was produced (Supporting Information, Figure
+S1A). The conventional heat drying method (37 °C) produced
+ﬁlms that were transparent and homogeneous (Supporting
+Information, Figure S1B). These results suggest that water was
+quickly released from the frozen polymer solution during the
+drying process. As a result, the ﬁlms used for this study were
+prepared under the conventional heat drying method (37 °C).
+Films prepared from varying polymeric compositions
+(Table 2) were evaluated on the basis of physical parameters
+including thickness, weight, and disintegration time and were
+visually inspected for appearance and transparency (Table 3).
+The thickness of the ﬁlms varied between 33.3 ± 3.56 and
+77.3 ± 9.88 μm, and the average weight of the ﬁlms was
+between 231.0 ± 18.1 and 342.5 ± 27.1 mg/dish (30.0 cm2).
+The thickness of the ﬁlms increased as the polymer con-
+centration increased but did not change signiﬁcantly when the
+loading of NP increased.
+Our results showed that the major contributing factor
+regulating ﬁlm appearance (e.g., smoothness and transparency),
+and disintegration time was related to the amount of PVA
+and λ-carrageenan in the formulation. The ﬁlms became more
+Figure 2. Surface morphology and release kinetics of siRNA from NP.
+TEM images (250 000× magniﬁcation) of (A) siRNA-NP and (B)
+siRNA-NP-Ab. (C) Cumulative release of Cy3-labeled siRNA from
+siRNA-NP and siRNA-NP-Ab in PBS (pH 7.4). Data represent the
+mean ± SD; N = 5.
+Table 2. Vaginal Film Formulations (10 mL Solution)
+formulation
+PVA
+(%, m/v)
+λ-carrageenan
+(mg)
+glycerin
+(mL)
+PEG400
+(mL)
+NPs
+(mg)
+A
+1
+50
+0.6
+0.3
+0
+B
+2
+50
+0.6
+0.3
+0
+C
+5
+50
+0.6
+0.3
+0
+D
+2
+25
+0.6
+0.3
+0
+E
+2
+100
+0.6
+0.3
+0
+F
+2
+50
+0.6
+0.3
+50
+G
+2
+50
+0.6
+0.3
+100
+Table 1. Particle Size, Zeta Potential, and EE (%) of Various NP Formulations
+parameter
+particle size (nm)
+PDI
+zeta potential (mV)
+EE (%)
+blank NP
+161.0 ± 4.6
+0.108 ± 0.016
+−32.76 ± 1.01
+
+siRNA-NP
+201.4 ± 4.3
+0.131 ± 0.009
+−29.65 ± 3.35
+75.89 ± 3.67
+siRNA-NP-Ab
+232.0 ± 3.0
+0.149 ± 0.022
+−27.37 ± 2.45
+70.68 ± 4.89
+Data represent means ± SD; N = 5. siRNA-NP = siRNA-encapsulated nanoparticles; siRNA-NP-Ab = antibody conjugated siRNA-encapsulated
+nanoparticles; EE (%) = siRNA encapsulation eﬃciency.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2893
+
+textured, rigid, and opaque as the ratio of PVA was increased.
+Furthermore, as the concentration of either PVA or λ-carrageenan
+was increased, the time for ﬁlm disintegration increased as well.
+Changes in PEG400 and glycerin did not have any eﬀect on the
+rate of ﬁlm disintegration.14 Films from formulation A formed a
+gel structure and started to lose its structural integrity within
+5 min. Films from formulation B showed steady hydration and
+kept their structural integrity for the ﬁrst hour followed by slow
+disintegration. Films from formulation C maintained their
+structural integrity for 24 h and only showed swelling with no
+signs of obvious disintegration. Finally, none of the NP loading
+dose tested in this study had any eﬀect on ﬁlm appearance,
+texture, disintegration, or pliability. However, when the loading
+dose of NPs was greater than 40 mg, the ﬁlms would begin to
+exhibit a cloudy surface.
+From the various ﬁlm formulations evaluated, formulation A
+was the most acceptable based on its physicomechanical prop-
+erties (e.g., <10 min disintegration time, homogeneous, smooth,
+pliable, and semitransparent with no pores) (Figure 3A,B).
+Surface morphology of blank ﬁlm and siRNA-NP-Ab-ﬁlm were
+observed by SAM to evaluate the eﬀects of the incorporation of
+NP on the surface morphology of the ﬁlm. As shown in Figure
+3C,D, the blank ﬁlm displayed homogeneous and smooth
+surface morphology and the incorporation of siRNA did not
+alter the surface morphology of the ﬁlm. However, visualization
+of surface topography showed diﬀerences in the surface rough-
+ness between blank ﬁlm and siRNA-NP-Ab-ﬁlm. Although the
+ﬁlm with NP had a rougher surface as compared to the blank
+ﬁlm, it still had a homogeneous surface with no pores. The
+impact of PEG during the preparation of siRNA-NP-ﬁlm was
+also evaluated. Using SAM, ﬁlms containing siRNA-NP pre-
+pared with PLGA (Figure 3E) showed higher amounts of
+aggregation on the ﬁlm surface when compared to siRNA-NP
+prepared from PEG- PLGA (Figure 3F).
+Diﬀerentiation of KG-1 Cells. After culturing for 3 days in
+serum-free medium supplemented with rhGM-CSF, TNF-α,
+and ionomycin, KG-1 cells diﬀerentiated completely into
+mature DCs (mKG-1) with characteristic stellate morphology
+(Supporting Information, Figure S2A), de novo cell-surface
+expression of CD83, up-regulation of HLA-DR cell-surface ex-
+pression, and de novo intracellular synthesis of IL-10 (Supporting
+Information, Figure S2B). Notably, mKG-1 cells contained a
+high percentage of HLA-DR (∼99.8%) cell subpopulation after
+diﬀerentiation. The cells retained all phenotypic properties of
+mature DCs for approximately 3 weeks when serum-free
+medium supplemented with rhGM-CSF, TNF-α, and ionomy-
+cin was exchanged with complete culture medium at day 3. Our
+observations are similar to those previously reported.21 As ex-
+pected, there was no detection of HLA-DR receptor expression
+on the surface of VK2/E6E7 cells, and hence, these cells were
+used as the control for targeting studies.
+In Vitro Cytotoxicity Evaluation. The cytotoxicity of
+the various formulations was evaluated in the presence of
+VK2/E6E7 and mKG-1 cells in vitro at varying time points.
+As indicated in Figure 4, the viability of VK2/E6E7 cells was
+higher than 90%, and none of the treatment groups had any
+signiﬁcant impact on cell viability when compared to the nega-
+tive control group for up to 12 h. After 24 h, there was some
+slight reduction in cell viability for the ﬁlm groups at 10 mg/mL.
+Furthermore, cytotoxicity was observed to be concentration-
+dependent. In comparison to VK2/E6E7 cells, the mKG-1 cells
+appear to be more sensitive to siRNA-NP and siRNA-NP-Ab
+treatment demonstrating a signiﬁcant reduction in cell via-
+bility after 4 h of incubation with the highest concentration.
+Table 3. Properties of Vaginal Film Formulations
+formulation
+thickness (μm)
+weight (mg)
+disintegration time
+appearance
+A
+33.3 ± 3.56
+231.0 ± 18.1
+10 min
+semitransparent
+B
+56.4 ± 5.67
+271.7 ± 3.32
+24 h
+semitransparent
+C
+77.3 ± 9.88
+342.5 ± 27.1
+swelling
+transparent
+D
+47.7 ± 3.99
+253.6 ± 11.9
+20 h
+semitransparent
+E
+69.4 ± 3.29
+301.4 ± 9.28
+>24 h
+semitransparent
+F
+54.6 ± 1.49
+289.3 ± 8.87
+24 h
+semitransparent
+G
+58.2 ± 2.51
+294.5 ± 4.91
+24 h
+semitransparent
+Figure 3. Surface morphology of ﬁlms (A) blank ﬁlm, (B) siRNA-NP-Ab-ﬁlm, (C) blank ﬁlm, (D) siRNA-ﬁlm, (E) siRNA-PLGA-NP-Ab-ﬁlm and
+(F) siRNA-PLGA-PEG-NP-Ab-ﬁlm. Images C−F were captured using SAM at 500× magniﬁcation; inset image depicts partially enlarged
+morphology of NPs (2000× magniﬁcation).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2894
+
+The enhanced cytotoxicity of mKG-1 cells following treatment
+with siRNA-NP-Ab could be attributed to enhanced cellular
+uptake (Figure 6) as well as the increased intrinsic toxicity of
+NP.28 In addition, mKG-1 also showed polymer concentration-
+dependent cytotoxicity. Appreciable cytotoxicity appeared even at
+12 h when mKG-1 cells were treated with 5 mg/mL siRNA-NP-
+Ab-ﬁlm. This concentration of polymer is signiﬁcantly higher than
+what was used for in vitro studies. It should also be kept in mind
+that the polymeric ﬁlm will not be in direct contact with mKG-1
+cells, except for NP and a small amount of polymer that may have
+penetrated across the epithelial cells either in vitro or in vivo.
+PEI has been previously shown to induce the production of
+inﬂammatory cytokines in gene delivery applications.29,30 As a
+result, ELISA was performed to evaluate potential cytokine
+(IL-1β, IL-6, and IL-8) production by VK2/E6E7 and mKG-1
+cells after treatment with various formulations (Figure 5).
+From our studies, no signiﬁcant diﬀerences were observed in
+the production of the inﬂammatory cytokines IL-1β (Figure 5A),
+IL-6 (Figure 5B), and IL-8 (Figure 5C) in comparison to the
+negative control.
+Cellular Uptake. HLA-DR is abundantly expressed on
+the cell membrane of antigen-presenting cells such as
+monocyte/macrophages and follicular dendritic cells (FDC).31
+The ability of anti-HLA-DR conjugated NP to enhance siRNA
+internalization in cells that express HLA-DR was evaluated using
+mature DCs (mKG-1) and VK2/E6E7 cells. Signiﬁcantly higher
+uptake of FAM-siRNA-NP-Ab into mKG-1 cells was observed in
+comparison to cells treated with FAM-siRNA-NP, with a
+maximum uptake of FAM-siRNA-NP-Ab occurring after 4 h of
+treatment (Figure 6). Studies performed on VK2/E6E7 cells
+demonstrated no signiﬁcant diﬀerence in cell uptake between
+the FAM-siRNA-NP-Ab- and FAM-siRNA-NP-treated groups
+(Figure 7). These results suggest that uptake into mKG-1 is due
+to the speciﬁc recognition of HLA-DR by siRNA-NP-Ab.
+In order to conﬁrm the role of anti-HLA-DR mediated targeting
+ability in enhancing internalization of siRNA-NP, competitive inhibi-
+tion assay with pretreatment of free anti-HLA-DR was performed
+in mKG-1 and VK2/E6E7 cells. Preincubation with an excess
+amount of anti-HLA-DR signiﬁcantly reduced internalization of
+anti-HLA-DR functionalized NP in HLA-DR-positive mKG-1
+cells but not in HLA-DR-negative VK2/E6E7 cells (Supporting
+Information, Figure S3). These results demonstrate that anti-
+HLA-DR on the surface of NP competed with free anti-HLA-DR
+antibody for the same HLA-DR antigen on mKG-1 cells.
+Figure 4. Impact of various formulations on the cell viability of VK2/E6E7 and mKG-1 cells. (A−C) VK2/E6E7 cells were incubated with various
+formulations. The concentration of ﬁlm was (A) 1 mg/mL, (B) 5 mg/mL, and (C) 10 mg/mL; (D−F) mKG-1 cells were incubated with various
+formulations. The concentration of ﬁlm was (D) 1 mg/mL, (E) 5 mg/mL, and (F) 10 mg/mL; NPs were administrated at the concentration
+according to the loading of ﬁlm (0.043 nmol siRNA/0.15 mg NP/mg ﬁlm). 1% (v/v) Triton X-100 was used as a positive control. Data represent the
+mean ± SD; N = 5. *, p < 0.05, **, p < 0.01 and ***, p < 0.001.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2895
+
+Vaginal Mucosal Coculture Model. The cellular uptake
+results described above demonstrated the speciﬁc targeting
+eﬃciencies of anti-HLA-DR. However, cellular uptake by
+VK2/E6E7 and mKG-1 cells, respectively, may not accurately
+reﬂect the targeting ability of our system because our goal is
+to penetrate the epithelial layer to target delivery into the
+underlying mucosal immune cells. The in vitro vaginal mucosal
+coculture model is a rapid and inexpensive method for eval-
+uating penetration of NP across vaginal epithelial cells and
+into vaginal immune cells.32 As a result, targeting studies were
+evaluated using a vaginal mucosal coculture model consisting of
+VK2/E6E7 cells grown on a tissue culture insert with mKG-1
+cells in the lower bottom chamber of the tissue culture plate
+(Figure 8A). After seeding, VK2/E6E7 cells were allowed to
+grow to establish a cell monolayer to simulate an intact vaginal
+epithelial layer. Polarized, conﬂuent monolayers were typically
+formed within 5−10 days. Integrity of epithelial cell monolayers
+was monitored by measuring TEER (Figure 8B). The value of
+TEER can be used as an index to evaluate the compactness of a
+cell monolayer. It has been reported that cell monolayers with a
+TEER value higher than 150 Ω is appropriate for assessing
+drug delivery.33 Subsequently, we sought to investigate whether
+siRNA-NP, siRNA-NP-Ab, siRNA-NP-ﬁlm, or siRNA-NP-Ab-
+ﬁlm could deliver siRNA across the VK2/E6E7 cells monolayer
+and be taken up by mKG-1 cells. The increased TEER values
+after treatment with various formulations (day 7, 8, and 9)
+indicate that the NP and ﬁlm formulations did not decrease
+the integrity of the VK2/E6E7 cell monolayer over time
+(Figure 8B). In other words, there was no signiﬁcant cyto-
+toxicity during the treatment with various formulations.
+To elucidate the targeting and penetrating eﬃciency of the
+NP, the contents on the apical side (AS), cellular monolayer
+(CM), and basolateral side (BS) were analyzed, respectively. AS
+refers to the amount of NP ﬂoating in the culture medium. CM
+refers to the amount of NP internalized by VK2/E6E7 cells. BS
+refers to the total amount of NP in the medium and taken
+up by mKG-1 cells. In this study, transportation through cell
+monolayers was time-dependent. As indicated in Figure 8C,
+ﬂuorescent NPs were able to penetrate across the epithelial cell
+monolayer and to be taken up by mKG-1 cells within 4 h. Both
+siRNA-NP and siRNA-NP-Ab groups possessed remarkably
+higher transport capability compared with ﬁlm groups. For
+example, 15.2 ± 2.1% of the NP were found on the BS for the
+siRNA-NP group, but only 7.5 ± 1.4% of NP could be detected
+for the siRNA-NP-ﬁlm group under the same conditions after
+24 h of incubation. For VK2/E6E7 cell monolayers, the uptake
+percentage of siRNA-NP and siRNA-NP-Ab at 24 h was
+1.45- and 1.52-fold higher than that of siRNA-NP-ﬁlm and
+siRNA-NP-Ab-ﬁlm treated groups, respectively. These results
+suggest that the presence of PVA and λ-carrageenan polymers
+signiﬁcantly decreased the uptake of NP into VK2/E6E7 cells.34
+Moreover, siRNA-NPs and siRNA-NP-Ab showed similar
+transcellular transport trend and almost the same uptake in
+VK2/E6E7 cells, which indicates that anti-HLA-DR conjugation
+had no impact on the penetration of NP across the VK2/E6E7
+cell monolayer. In contrast, siRNA-NP-Ab demonstrated an
+enhanced uptake into mKG-1 cells in comparison to siRNA-NP,
+suggesting that anti-HLA-DR plays a speciﬁc role in mediating
+cellular uptake. As shown in Figure 8D, approximately 8.4 ±
+1.6% of the total added siRNA-NP-Ab was taken up by mKG-1
+cells after 24 h. This was 3 times higher than that of the non-
+targeting siRNA-NP. As shown in Figure 8E, the uptake of NP in
+mKG-1 cells was concentration-dependent. In other words,
+treatment with a higher dose of NP resulted in greater penetra-
+tion across the VK2/E6E7 cell monolayer and higher uptake into
+mKG-1 cells. Based on the data of Figure 8B, the concentration-
+dependent uptake of NP by mKG-1 cells was due to increased
+NP penetration across the epithelium and was not due to a
+decrease in integrity of the VK2/E6E7 cell monolayer.
+Knock-Down of SNAP-23 Expression in Vitro. Down-
+regulation of SNAP-23 expression mediated by siRNA-NP,
+siRNA-NP-Ab, siRNA-NP-ﬁlm, and siRNA-NP-Ab-ﬁlm in mKG-1
+cells was evaluated in vitro using the mucosal coculture model at
+both mRNA and protein level (Figure 9). As expected, siNC-NP,
+siNC-NP-Ab, siNC-NP-ﬁlm, and siNC-NP-Ab-ﬁlm yielded no
+signiﬁcant reduction in SNAP-23 gene expression when compared
+to nontreated control as determined by qPCR (Figure 9A,B). All
+siSNAP-23 formulations demonstrated statistically signiﬁcant
+SNAP-23 mRNA knockdown relative to treatment with medium
+alone or formulations containing siNC in a time- and dose-
+dependent manner in mKG-1 cells. As shown in Figure 9A,
+knockdown of SNAP-23 mRNA after 72 h of treatment was
+approximately 1.5−3-fold higher than groups treated for 24 h
+Figure 5. Inﬂammatory cytokines (A) interleukin (IL)-1β, (B) IL-6,
+and (C) IL-8 production of VK2/E6E7 and mKG-1 cells were deter-
+mined by enzyme-linked immunosorbent assay (ELISA) after 24 h of
+incubation in medium supplemented with (PEI 3 μg/mL, NP 1.5 mg/mL,
+and ﬁlm 10 mg/mL). Cells cultured in medium alone without treatment
+were used as a negative control, and 200 μg/mL of nonoxynol-9 (N-9) or
+50 μg/mL of lipopolysaccharide (LPS)-treated cells were used as positive
+controls for IL-1β and IL-6/IL-8, respectively. Data represent the mean ±
+SD; N = 3.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2896
+
+with various siSNAP-23 formulations (200 nM siSNAP-23).
+Furthermore, greater SNAP-23 gene knockdown eﬃciency was
+observed in formulations containing siSNAP-23-NP-Ab in com-
+parison to formulations containing siSNAP-23-NP. Also, it was
+not a surprise that the knockdown eﬃciency was signiﬁcantly
+lower for groups treated with NP-ﬁlms in comparison to groups
+treated with NP alone due to the time required for ﬁlm
+disintegration and NP diﬀusion. However, this deﬁciency could
+be easily compensated by increasing the ﬁlm size used for treat-
+ment or increasing the NP loading within the ﬁlm. As shown in
+Figure 9B, dose-dependent inhibition of SNAP-23 mRNA in
+mKG-1 cells was observed in all treatment groups containing
+siSNAP-23. siSNAP-23-NP-ﬁlm and siSNAP-23-NP-Ab-ﬁlm
+achieved approximately 28.3 ± 14.2% and 59.3 ± 7.45% down-
+regulation of SNAP-23 mRNA with 200 nM siRNA, whereas
+47.5 ± 4.88% and 73.2 ± 5.25% knockdown was observed with
+400 nM siRNA after 48 h treatment, respectively. Hence, siSNAP-
+23-NP-Ab-ﬁlm could obtain a higher and acceptable gene silencing
+eﬃciency with an appropriate incubation time and concentration.
+Changes to SNAP-23 protein expression were assessed using
+ﬂow cytometry and visualized by ﬂuorescence microscopy
+after immunoﬂuorescence staining. As shown in Figure 9C,D,
+SNAP-23 protein was expressed in great abundance in the un-
+treated mKG-1 cells and all siNC formulation groups, whereas
+treatment of mKG-1 cells with siSNAP-23 formulations sig-
+niﬁcantly reduced SNAP-23 protein expression levels compared
+to untreated control. The histogram peak shifted to the left
+after mKG-1 cells were treated with siSNAP-23-NP, siSNAP-
+23-NP-Ab, siSNAP-23-NP-ﬁlm, and siSNAP-23-NP-Ab-ﬁlm for
+48 h (200 nM siSNAP-23), respectively (Figure 9C). These
+results support our qPCR gene knockdown studies. Further-
+more, immunoﬂuorescence image analysis showed a reduction
+in SNAP-23 protein expression in cells treated with siSNAP-23
+formulation groups when compared to nontreated control
+(Figure 9D).
+5′-RACE PCR was performed to conﬁrm that the siRNA was
+indeed triggering the RNAi mechanism (Figure 10). Speciﬁc
+mRNA cleavage products generated by RNA-induced silencing
+complex (RISC)-mediated hydrolysis of target mRNA is the
+deﬁnitive marker conﬁrming RNAi as the mechanism of
+gene silencing.35,36 Activated RISC cleaves target mRNA
+precisely between the nucleotides complementary to positions
+10 and 11 of the siRNA from the 5′-end of the antisense strand
+(Figure 10A), generating an mRNA cleavage product that is
+unique to the siRNA sequence. The bands for expected PCR
+5′-RACE products of cleaved SNAP-23 mRNA appeared
+around 420 bp (Figure 10B), which matched the predicted
+cleavage site between positions 10 and 11 (10 bp) from the
+Figure 6. Cellular uptake eﬃciency of FAM-siRNA-NP and FAM-siRNA-NP-Ab in mKG-1 cells. Representative ﬂuorescence images of mKG-1 cells
+treated with (A) FAM-siRNA-NP and (B) FAM-siRNA-NP-Ab. (C) Quantitative analysis of the cellular uptake of FAM-siRNA-NP with or without
+anti-HLA-DR conjugation in mKG-1 cells using ﬂow cytometry. Data represent the mean ± SD; N = 3. **, p < 0.01 and ***, p < 0.001.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2897
+
+5′-end of the siRNA antisense strand. The presence of
+SNAP-23 mRNA fragments indicate that siSNAP-23 delivered
+by NP can engage the RNAi machinery and induce the desired
+mRNA cleavage. As expected, no 5′-RACE PCR products were
+generated from mRNA isolated from nontreated mKG-1 cells
+or cells treated with formulations containing siNC. Further-
+more, RACE does not provide a quantitative measure of
+the amount of the fragments so the intensities of the bands
+cannot be correlated with knockdown eﬃciency in the mKG-1
+cell samples.
+Cell apoptosis is an important parameter for evaluating
+the toxicity of NP and ﬁlm. To explore whether siRNA-NP or
+siRNA-NP-Ab can cause cell damage via apoptosis, mKG-1
+cells were detected by an Annexin V FITC/7-AAD double stain
+(Figure 11). In the dot plot, the cells were divided into four
+populations: cells that were viable and not undergoing
+apoptosis (Annexin V−and 7-AAD−, Q3); cells undergoing
+early apoptosis (Annexin V+ and 7-AAD−, Q4); cells in late
+apoptosis or already dead (Annexin V+ and 7-AAD+, Q2); and
+some cell debris due to mechanical damage (Annexin V−
+and 7-AAD+, Q1). Cell damage caused by the toxicity of NP
+includes all apoptotic (early and late apoptosis) and dead cells
+(Q2 + Q4). As shown in Figure 11, the untreated mKG-1 cells
+(negative control group) were primarily Annexin V and 7-AAD
+negative, indicating that they were viable and not undergoing
+apoptosis. Compared to the negative control group, the
+apoptosis and death rate (Q2 + Q4) of mKG-1 cells was
+4.6 ± 0.36%, 8.2 ± 1.3%, 5.2 ± 0.91%, 8.9 ± 1.1%, 4.7 ± 0.41%,
+9.2 ± 2.1%, 5.1 ± 0.72%, and 9.5 ± 0.85%, when treated with
+siNC-NP, siNC-NP-Ab, siNC-NP-ﬁlm, siNC-NP-Ab-ﬁlm,
+siSNAP-23-NP, siSNAP-23-NP-Ab, siSNAP-23-NP-ﬁlm, siS-
+NAP-23-NP-Ab-ﬁlm, respectively. Compared to siRNA-NP
+formulations, the Q2 + Q4 of mKG-1 cells slightly increased
+after treatment with siRNA-NP-Ab formulations, suggesting
+that the increased cell death is a result of increased targeted
+cellular uptake of NP. Moreover, there is no signiﬁcant
+diﬀerence between siNC and siSNAP-23 formulation groups.
+These results indicate that treatment with NP formulations
+have no discernible impact on mKG-1 cell viability at the con-
+centration used.
+■DISCUSSION
+Intravaginal drug delivery has now been recognized as a
+promising route for delivery of therapeutic compounds
+including nucleic acids (pDNA and siRNA)6,37 and biomacro-
+molecules such as therapeutic peptide and protein drugs.38,39
+Recently, there have been signiﬁcant interests to develop
+intravaginal siRNA delivery systems for the prevention/
+reduction of sexually transmitted infections, especially HIV.40
+There are several challenges that must be overcome when
+Figure 7. Cellular uptake eﬃciency of FAM-siRNA-NP and FAM-siRNA-NP-Ab in VK2/E6E7 cells. Representative ﬂuorescence images of
+VK2/E6E7 cells treated with (A) FAM-siRNA-NP and (B) FAM-siRNA-NP-Ab. (C) Quantitative analysis of the cellular uptake of FAM-siRNA-NP
+with or without anti-HLA-DR conjugation in VK2/E6E7 cells using ﬂow cytometry. Data represent the mean ± SD; N = 3.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2898
+
+Figure 8. Evaluation of NP penetration and cellular uptake in a vaginal mucosal coculture model. (A) Schematic sketch of the vaginal mucosal
+coculture model. (B) TEER values were measured for VK2/E6E7 cell monolayer cultured on transwell insert. The values of day 1−6 and day 7−9
+represent the TEER of VK2/E6E7 cell monolayer before and after treatment, respectively. Each point represents the mean ± SD of at least four
+inserts. (C) Time-dependent evaluation of the NP in various formulations to transport from the AS across the CM and into the BS compartment.
+The initial concentration of NP in the AS was 0.7 mg/mL and the corresponding concentration of siRNA is 200 nM. (D) Time-dependent cellular
+uptake of siRNA-NP and siRNA-NP-Ab in mKG-1 cells. The initial concentration of NP in the AS was 0.7 mg/mL, and the corresponding
+concentration of siRNA is 200 nM. (E) Concentration-dependent cellular uptake of siRNA-NP and siRNA-NP-Ab in mKG-1 cells after 48 h. The
+initial concentration of NP in the AS was 0.175, 0.35, 0.7, and 1.4 mg/mL and the corresponding concentration of siRNA is 50, 100, 200, and
+400 nM. AS = apical side; CM = cell monolayer; BS = basolateral side.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2899
+
+Figure 9. Evaluation of SNAP-23 mRNA and protein levels in mKG-1 cells after treatment with various formulations using the vaginal mucosal
+coculture model. The expression of SNAP-23 mRNA was determined by qPCR. SNAP-23 mRNA expression was normalized to GAPDH mRNA.
+The relative percentage of mRNA expression levels from treated mKG-1 was normalized to that of the nontreated mKG-1 cells (negative control),
+which was deﬁned as 100%. (A) Knockdown of SNAP-23 mRNA expression in mKG-1 cells after diﬀerent incubation times (24, 48, and 72 h) using
+the vaginal mucosal coculture model (200 nM siRNA loading). (B) Knockdown of SNAP-23 mRNA expression in mKG-1 cells with diﬀerent
+concentrations of various formulations (100, 200, and 400 nM siRNA loading) using the vaginal mucosal coculture model after 48 h of treatment.
+(C) Quantiﬁcation of SNAP-23 protein expression in mKG-1 cells by ﬂow cytometry after 48 h of treatment with various formulations (200 nM
+siRNA loading). (i) unstained cell control; (ii) isotype antibody stained control; (iii) untreated cells control; (iv) siNC-NP; (v) siNC-NP-Ab; (vi)
+siNC-NP-ﬁlm; (vii) siNC-NP-Ab-ﬁlm; (viii) siSNAP-23-NP; (ix) siSNAP-23-NP-Ab; (x) siSNAP-23-NP-ﬁlm (xi) siSNAP-23-NP-Ab-ﬁlm. (D)
+Expression of SNAP-23 protein in mKG-1 cells was imaged by ﬂuorescence microscopy after 48 h of treatment with various formulations (200 nM
+siRNA loading). Anti-SNAP-23 antibodies labeled with FITC are seen in green. Nuclei stained with DAPI are seen in blue. (i) isotype antibody
+stained control; (ii) untreated cells control; (iii) siNC-NP; (iv) siNC-NP-Ab; (v) siNC-NP-ﬁlm; (vi) siNC-NP-Ab-ﬁlm; (vii) siSNAP-23-NP; (viii)
+siSNAP-23-NP-Ab; (ix) siSNAP-23-NP-ﬁlm; (x) siSNAP-23-NP-Ab-ﬁlm. Data are shown as means ± SD (N = 5). **, p < 0.01 and ***, p < 0.001.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2900
+
+delivering siRNA intravaginally. Topically applied microbicides
+must traverse the mucosa and enhance penetration and delivery
+to the epithelial or immune cells, while enhancing therapeutic
+eﬃcacy and minimizing toxicity. Furthermore, the negative
+charge on siRNA makes it diﬃcult to enter cells, and the
+presence of nucleases along with the acidic pH vaginal environ-
+ment will further reduce its bioavailability. With these goals in
+mind, delivery of siRNA can be improved by utilizing nano-
+technology such as polymeric drug carriers for controlled
+targeted delivery. NP fabricated from PLGA for drug delivery is
+an excellent choice because PLGA is one of the most widely
+accepted and FDA-approved biodegradable polymers used in
+the pharmaceutical industry.41,42 In addition, the siRNA-PLGA
+NP exhibited a lower inﬂammatory response compared to
+siRNA lipoplexes, while maintaining its ability to knock down
+gene expression.
+In this study, PLGA-PEG NP were used because studies
+have shown that it improves diﬀusion across human cervical
+mucus.43 Most importantly, we introduced PEI into the NP
+formulation as a method of increasing the encapsulation
+eﬃciency of siRNA and improving the transfection eﬃciency of
+siRNA into mKG-1 cells. Based on the fact that HLA-DR is
+expressed highly on certain immune cells,21 the main objective
+of this study was to demonstrate proof-of-concept that anti-
+HLA-DR functionalized NP can penetrate across an epithelial
+monolayer and deliver siRNA into HLA-DR+ immune cells
+with high eﬃciency.
+Drugs administered in a liquid (low-viscosity) formulation,
+such as a suspension in the case of NP, will have low vaginal
+retention times due to gravitational forces and lack of anat-
+omical structures to form an enclosed space, which permits leakage
+to the external environment. Most importantly, development of
+Figure 10. Speciﬁc detection of mRNA cleavage products with 5′-RACE PCR in vitro. (A) Schematic representation of the location of the predicted
+SNAP-23 siRNA cleavage site. The mRNA sequence and siRNA antisense strand are illustrated to show where the cleavage occurs with an RNAi
+mechanism. (B) Agarose gel electrophoresis of 5′-RACE PCR ampliﬁcation products from the cleaved mRNA fragment in mKG-1 cells treated with
+various siRNA formulations. 1, molecular mass ladder; 2, untreated cells control; 3, siNC-NP; 4, siNC-NP-Ab; 5, siNC-NP-ﬁlm; 6, siNC-NP-Ab-
+ﬁlm; 7, siSNAP-23-NP; 8, siSNAP-23-NP-Ab; 9, siSNAP-23-NP-ﬁlm; 10, siSNAP-23-NP-Ab-ﬁlm. The correct product indicated by the arrow has a
+size of 420 bp.
+Figure 11. siRNA-NP systems induce apoptosis in mKG-1 cells. Apoptotic/dead cells were stained with Annexin V FITC and 7-AAD after treatment
+with various siRNA formulations, and analyzed by ﬂow cytometry. In the dot plot, the X-axis and the Y-axis represent the FL1 (green, Annexin V
+FITC positive) and the FL3 (red, 7-AAD positive), respectively. The dot plot is divided into four quadrants (Q1, Q2, Q3, and Q4). Q1: Upper left
+quadrant (UL), showing red-positive cells (Annexin V−/7-AAD+), cell debris; Q2: Upper right quadrant (UR), showing both positive cells
+(Annexin V+/7-AAD+), late apoptotic/dead cells; Q3: Lower left quadrant (LL), showing both negative cells (Annexin V−/7-AAD−), live cells;
+Q4: Lower right quadrant (LR), showing green-positive cells (Annexin V+/7-AAD−), early apoptosis cells. The percentages of Q1, Q2 and Q4 are
+presented in the plots. Results depict one representative of three independent experiments. (a) untreated cells control; (b) siNC-NP; (c) siNC-NP-
+Ab; (d) siNC-NP-ﬁlm; (e) siNC-NP-Ab-ﬁlm; (f) siSNAP-23-NP; (g) siSNAP-23-NP-Ab; (h) siSNAP-23-NP-ﬁlm; (i) siSNAP-23-NP-Ab-ﬁlm;
+(j) positive control (0.01% Triton X-100).
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2901
+
+a suitable vehicle to enable vaginal delivery of NP is an
+important aspect for bench-to-bedside translation. Compared
+to intravaginal gel formulations,44 vaginal ﬁlms are solid, ﬂexible
+thin strips of polymeric water-soluble material that can dissolve
+and release active ingredients, when placed on the vaginal
+mucosal surface. To the best of our knowledge, we are the ﬁrst
+group to develop a biodegradable vaginal ﬁlm for targeted
+delivery of siRNA-NP-Ab into HLA-DR+ mKG-1 cells using a
+mucosal coculture model.
+After conﬁrming that siRNA can be successfully delivered
+into mKG-1 cells, the next goal was to conﬁrm gene-silencing
+activity of the siRNA. Coculture experiments were carried out
+to evaluate the transport of NP from the ﬁlms across vaginal
+epithelial cells and into HLA-DR+ immune cells. Our studies
+conﬁrmed that our NP-ﬁlm formulation could deliver bioactive
+siRNA into cells, and reduce SNAP-23 gene/protein expression
+in mKG-1 cells. Our results also indicate that our technology
+platform has no signiﬁcant impact on the viability of VK2/E6E7
+and mKG-1 cells.
+Design of the ﬁlm formulation is an important factor that can
+aﬀect therapeutic eﬃcacy. Our results indicated that NP-ﬁlm
+could disintegrate in 10 min, which fully guarantees the com-
+plete release of NP. Although many studies have shown that
+NP are able to penetrate cervicovaginal mucus and eﬀectively
+deliver drugs,9,10 incorporating PVA in the NP formulation may
+delay or block the penetration of NP,34 as observed in our
+vaginal mucosal coculture model. Immune cells such as T cells
+and dendritic cells are known to be diﬃcult to transfect by
+conventional lipid and polymer-based gene delivery ap-
+proaches.45,46 As a result, conjugating our NP with anti-HLA-
+DR antibody signiﬁcantly improved cellular uptake and gene
+silencing eﬃciency. Further studies are required to evaluate
+the utility of our platform to deliver siRNA into primary
+immune cells and speciﬁcally target delivery into HLA-DR+
+cells in vivo.
+■CONCLUSIONS
+This is the ﬁrst study to develop and assess in vitro, a novel
+polymeric ﬁlm platform for the targeted delivery of siRNA into
+HLA-DR+ mKG-1cells in a mucosal coculture model for the
+knockdown of SNAP-23 expression. Our studies demonstrated
+that siRNA-NP-Ab can transport across the vaginal epithelial
+cell monolayer and be taken up by mKG-1 cells at signiﬁcantly
+higher concentration compared to siRNA-NP. Films containing
+siRNA-NP-Ab can signiﬁcantly knock-down SNAP-23 gene/
+protein expression and had no signiﬁcant impact on cell
+viability compared to controls. Overall, this novel technology
+platform has potential utility as a vaginal pre-exposure
+prophylaxis for the prevention of HIV and other sexually
+transmitted infections.
+■ASSOCIATED CONTENT
+*
+S
+Supporting Information
+Figures depicting the appearance of the ﬁlms, diﬀerentiation of
+KG-1 cells, and competitive inhibition assay. The Supporting
+Information is available free of charge on the ACS Publications
+website at DOI: 10.1021/acs.molpharmaceut.5b00073.
+■AUTHOR INFORMATION
+Corresponding Author
+*E-mail: emmanuel_ho@umanitoba.ca. Tel: 1-204-272-3180.
+Fax: 1-204-474-7617.
+Notes
+The authors declare no competing ﬁnancial interest.
+■ACKNOWLEDGMENTS
+This study was funded in part by a Manitoba Health Research
+Council (MHRC) Establishment Grant, a MHRC Operating
+Grant, and the University of Manitoba Research Grants Pro-
+gram (URGP) awarded to Dr. Emmanuel A. Ho. Dr. Jijin Gu
+and Ms. Sidi Yang were supported by a MHRC Postdoctoral
+Fellowship and a MHRC Graduate Studentship, respectively.
+■REFERENCES
+(1) Chen, Y.; Traore, Y. L.; Li, A.; Fowke, K. R.; Ho, E. A.
+Development of polyether urethane intravaginal rings for the sustained
+delivery of hydroxychloroquine. Drug Des., Dev. Ther. 2014, 8, 1801−
+1815.
+(2) Rohan, L. C.; Sassi, A. B. Vaginal Drug Delivery Systems for HIV
+Prevention. AAPS J. 2009, 11 (1), 78−87.
+(3) Acarturk, F. Mucoadhesive vaginal drug delivery systems. Recent
+Pat Drug Deliv Formul 2009, 3 (3), 193−205.
+(4) Wu, Y.; Navarro, F.; Lal, A.; Basar, E.; Pandey, R. K.; Manoharan,
+M.; Feng, Y.; Lee, S. J.; Lieberman, J.; Palliser, D. Durable protection
+from Herpes Simplex Virus-2 transmission following intravaginal
+application of siRNAs targeting both a viral and host gene. Cell Host
+Microbe 2009, 5 (1), 84−94.
+(5) Kumar, P.; Ban, H. S.; Kim, S. S.; Wu, H.; Pearson, T.; Greiner,
+D. L.; Laouar, A.; Yao, J.; Haridas, V.; Habiro, K.; Yang, Y. G.; Jeong, J.
+H.; Lee, K. Y.; Kim, Y. H.; Kim, S. W.; Peipp, M.; Fey, G. H.;
+Manjunath, N.; Shultz, L. D.; Lee, S. K.; Shankar, P. T cell-specific
+siRNA delivery suppresses HIV-1 infection in humanized mice. Cell
+2008, 134 (4), 577−586.
+(6) Yang, S.; Chen, Y.; Ahmadie, R.; Ho, E. A. Advancements in the
+field of intravaginal siRNA delivery. J. Controlled Release 2013, 167 (1),
+29−39.
+(7) Wu, S. Y.; Chang, H. I.; Burgess, M.; McMillan, N. A. Vaginal
+delivery of siRNA using a novel PEGylated lipoplex-entrapped alginate
+scaffold system. J. Controlled Release 2011, 155 (3), 418−426.
+(8) Katakowski, J. A.; Palliser, D. siRNA-based topical microbicides
+targeting sexually transmitted infections. Curr. Opin Mol. Ther 2010,
+12 (2), 192−202.
+(9) Ensign, L. M.; Tang, B. C.; Wang, Y. Y.; Tse, T. A.; Hoen, T.;
+Cone, R.; Hanes, J. Mucus-Penetrating Nanoparticles for Vaginal Drug
+Delivery Protect Against Herpes Simplex Virus. Sci. Transl. Med. 2012,
+4 (138), 138ra79.
+(10) Yang, M.; Yu, T.; Wang, Y. Y.; Lai, S. K.; Zeng, Q.; Miao, B.;
+Tang, B. C.; Simons, B. W.; Ensign, L. M.; Liu, G.; Chan, K. W.; Juang,
+C. Y.; Mert, O.; Wood, J.; Fu, J.; McMahon, M. T.; Wu, T. C.; Hung,
+C. F.; Hanes, J. Vaginal delivery of paclitaxel via nanoparticles with
+non-mucoadhesive surfaces suppresses cervical tumor growth. Adv.
+Healthcare Mater. 2014, 3 (7), 1044−1052.
+(11) Wheeler, L. A. Silencing sexually transmitted infections: topical
+siRNA-based interventions for the prevention of HIV and HSV. Infect.
+Dis. Obstet. Gynecol. 2014, 2014, 125087.
+(12) Ndesendo, V. M.; Pillay, V.; Choonara, Y. E.; Buchmann, E.;
+Bayever, D. N.; Meyer, L. C. A review of current intravaginal drug
+delivery approaches employed for the prophylaxis of HIV/AIDS and
+prevention of sexually transmitted infections. AAPS PharmSciTech
+2008, 9 (2), 505−520.
+(13) Ghosal, K.; Ranjan, A.; Bhowmik, B. B. A novel vaginal drug
+delivery system: anti-HIV bioadhesive film containing abacavir. J.
+Mater. Sci.: Mater. Med. 2014, 25 (7), 1679−1689.
+(14) Ham, A. S.; Rohan, L. C.; Boczar, A.; Yang, L.; Buckheit, K. W.;
+Buckheit, R. W. Vaginal Film Drug Delivery of the Pyrimidinedione
+IQP-0528 for the Prevention of HIV Infection. Pharm. Res. 2012, 29
+(7), 1897−1907.
+(15) Zhang, X.; Kovtun, A.; Mendoza-Palomares, C.; Oulad-
+Abdelghani, M.; Fioretti, F.; Rinckenbach, S.; Mainard, D.; Epple,
+M.; Benkirane-Jessel, N. SiRNA-loaded multi-shell nanoparticles
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2902
+
+incorporated into a multilayered film as a reservoir for gene silencing.
+Biomaterials 2010, 31 (23), 6013−6018.
+(16) Gu, J. Ho, Emmanuel, A. Drug Delivery: Intravaginal,
+Advantages and Challenges. In Encyclopedia of Biomedical Polymers
+and Polymer Biomaterials, 1st ed.; Mishra, M., Ed.; Taylor & Francis:
+New York, 2015; Vol. 4, pp 2712−2725.
+(17) Joshi, A.; Garg, H.; Ablan, S. D.; Freed, E. O. Evidence of a role
+for soluble N-ethylmaleimide-sensitive factor attachment protein
+receptor (SNARE) machinery in HIV-1 assembly and release. J. Biol.
+Chem. 2011, 286 (34), 29861−29871.
+(18) Woodrow, K. A.; Cu, Y.; Booth, C. J.; Saucier-Sawyer, J. K.;
+Wood, M. J.; Saltzman, W. M. Intravaginal gene silencing using
+biodegradable polymer nanoparticles densely loaded with small-
+interfering RNA. Nat. Mater. 2009, 8 (6), 526−533.
+(19) Yang, S.; Chen, Y.; Gu, K.; Dash, A.; Sayre, C. L.; Davies, N. M.;
+Ho, E. A. Novel intravaginal nanomedicine for the targeted delivery of
+saquinavir to CD4+ immune cells. Int. J. Nanomed. 2013, 8, 2847−
+2858.
+(20) Steinbach, J. M.; Weller, C. E.; Booth, C. J.; Saltzman, W. M.
+Polymer nanoparticles encapsulating siRNA for treatment of HSV-2
+genital infection. J. Controlled Release 2012, 162 (1), 102−110.
+(21) Berges, C.; Naujokat, C.; Tinapp, S.; Wieczorek, H.; Hoh, A.;
+Sadeghi, M.; Opelz, G.; Daniel, V. A cell line model for the
+differentiation of human dendritic cells. Biochem. Biophys. Res.
+Commun. 2005, 333 (3), 896−907.
+(22) Schmittgen, T. D.; Livak, K. J. Analyzing real-time PCR data by
+the comparative C(T) method. Nat. Protoc. 2008, 3 (6), 1101−1108.
+(23) Woska, J. R., Jr.; Gillespie, M. E. Small-interfering RNA-
+mediated identification and regulation of the ternary SNARE complex
+mediating RBL-2H3 mast cell degranulation. Scand J. Immunol 2011,
+73 (1), 8−17.
+(24) Patil, Y.; Panyam, J. Polymeric nanoparticles for siRNA delivery
+and gene silencing. Int. J. Pharm. 2009, 367 (1−2), 195−203.
+(25) Zhao, J.; Mi, Y.; Liu, Y.; Feng, S. S. Quantitative control of
+targeting effect of anticancer drugs formulated by ligand-conjugated
+nanoparticles of biodegradable copolymer blend. Biomaterials 2012, 33
+(6), 1948−1958.
+(26) Leclerc, L.; Rima, W.; Boudard, D.; Pourchez, J.; Forest, V.; Bin,
+V.; Mowat, P.; Perriat, P.; Tillement, O.; Grosseau, P.; Bernache-
+Assollant, D.; Cottier, M. Size of submicrometric and nanometric
+particles affect cellular uptake and biological activity of macrophages in
+vitro. Inhalation Toxicol. 2012, 24 (9), 580−588.
+(27) Dobaria, N. B.; Badhan, A. C.; Mashru, R. C. A novel
+itraconazole bioadhesive film for vaginal delivery: design, optimization,
+and physicodynamic characterization. AAPS PharmSciTech 2009, 10
+(3), 951−959.
+(28) Singh, R. P.; Ramarao, P. Accumulated polymer degradation
+products as effector molecules in cytotoxicity of polymeric nano-
+particles. Toxicol. Sci. 2013, 136 (1), 131−143.
+(29) Kawakami, S.; Ito, Y.; Charoensit, P.; Yamashita, F.; Hashida, M.
+Evaluation of proinflammatory cytokine production induced by linear
+and branched polyethylenimine/plasmid DNA complexes in mice. J.
+Pharmacol. Exp. Ther. 2006, 317 (3), 1382−1390.
+(30) Wegmann, F.; Gartlan, K. H.; Harandi, A. M.; Brinckmann, S.
+A.; Coccia, M.; Hillson, W. R.; Kok, W. L.; Cole, S.; Ho, L. P.; Lambe,
+T.; Puthia, M.; Svanborg, C.; Scherer, E. M.; Krashias, G.; Williams, A.;
+Blattman, J. N.; Greenberg, P. D.; Flavell, R. A.; Moghaddam, A. E.;
+Sheppard, N. C.; Sattentau, Q. J. Polyethyleneimine is a potent
+mucosal adjuvant for viral glycoprotein antigens. Nat. Biotechnol. 2012,
+30 (9), 883−888.
+(31) Dufresne, I.; Desormeaux, A.; Bestman-Smith, J.; Gourde, P.;
+Tremblay, M. J.; Bergeron, M. G. Targeting lymph nodes with
+liposomes bearing anti-HLA-DR Fab’ fragments. Biochim. Biophys.
+Acta, Biomembr. 1999, 1421 (2), 284−294.
+(32) Kinlock, B. L.; Wang, Y.; Turner, T. M.; Wang, C.; Liu, B.
+Transcytosis of HIV-1 through vaginal epithelial cells is dependent on
+trafficking to the endocytic recycling pathway. PLoS One 2014, 9 (5),
+e96760.
+(33) Gao, H.; Yang, Z.; Zhang, S.; Pang, Z.; Liu, Q.; Jiang, X. Study
+and evaluation of mechanisms of dual targeting drug delivery system
+with tumor microenvironment assays compared with normal assays.
+Acta Biomater. 2014, 10 (2), 858−867.
+(34) Yang, M.; Lai, S. K.; Yu, T.; Wang, Y. Y.; Happe, C.; Zhong, W.;
+Zhang, M.; Anonuevo, A.; Fridley, C.; Hung, A.; Fu, J.; Hanes, J.
+Nanoparticle penetration of human cervicovaginal mucus: the effect of
+polyvinyl alcohol. J. Controlled Release 2014, 192, 202−208.
+(35) Soutschek, J.; Akinc, A.; Bramlage, B.; Charisse, K.; Constien,
+R.; Donoghue, M.; Elbashir, S.; Geick, A.; Hadwiger, P.; Harborth, J.;
+John, M.; Kesavan, V.; Lavine, G.; Pandey, R. K.; Racie, T.; Rajeev, K.
+G.; Rohl, I.; Toudjarska, I.; Wang, G.; Wuschko, S.; Bumcrot, D.;
+Koteliansky, V.; Limmer, S.; Manoharan, M.; Vornlocher, H. P.
+Therapeutic silencing of an endogenous gene by systemic admin-
+istration of modified siRNAs. Nature 2004, 432 (7014), 173−178.
+(36) Judge, A. D.; Robbins, M.; Tavakoli, I.; Levi, J.; Hu, L.; Fronda,
+A.; Ambegia, E.; McClintock, K.; MacLachlan, I. Confirming the
+RNAi-mediated mechanism of action of siRNA-based cancer
+therapeutics in mice. J. Clin. Invest. 2009, 119 (3), 661−673.
+(37) Katakowski, J. A.; Palliser, D. Optimizing siRNA delivery to the
+genital mucosa. Discov Med. 2011, 11 (57), 124−132.
+(38) Ramessar, K.; Rademacher, T.; Sack, M.; Stadlmann, J.; Platis,
+D.; Stiegler, G.; Labrou, N.; Altmann, F.; Ma, J.; Stoger, E.; Capell, T.;
+Christou, P. Cost-effective production of a vaginal protein microbicide
+to prevent HIV transmission. Proc. Natl. Acad. Sci. U. S. A. 2008, 105
+(10), 3727−3732.
+(39) Gupta, P. N.; Pattani, A.; Curran, R. M.; Kett, V. L.; Andrews, G.
+P.; Morrow, R. J.; Woolfson, A. D.; Malcolm, R. K. Development of
+liposome gel based formulations for intravaginal delivery of the
+recombinant HIV-1 envelope protein CN54gp140. Eur. J. Pharm. Sci.
+2012, 46 (5), 315−322.
+(40) Bennasser, Y.; Yeung, M. L.; Jeang, K. T. RNAi therapy for HIV
+infection: principles and practicalities. BioDrugs 2007, 21 (1), 17−22.
+(41) Kumar, R.; Kulkarni, A.; Nabulsi, J.; Nagesha, D. K.; Cormack,
+R.; Makrigiorgos, M. G.; Sridhar, S. Facile Synthesis of PEGylated
+PLGA Nanoparticles Encapsulating Doxorubicin and its In Vitro
+Evaluation as Potent Drug Delivery Vehicle. Drug Delivery Transl. Res.
+2013, 3 (4), 299−308.
+(42) Mansoor, F.; Earley, B.; Cassidy, J. P.; Markey, B.; Foster, C.;
+Doherty, S.; Welsh, M. D. Intranasal delivery of nanoparticles
+encapsulating BPI3V proteins induces an early humoral immune
+response in mice. Res. Vet. Sci. 2014, 96 (3), 551−557.
+(43) Cu, Y.; Saltzman, W. M. Controlled surface modification with
+poly(ethylene)glycol enhances diffusion of PLGA nanoparticles in
+human cervical mucus. Mol. Pharmaceutics 2009, 6 (1), 173−181.
+(44) Date, A. A.; Shibata, A.; Goede, M.; Sanford, B.; La Bruzzo, K.;
+Belshan, M.; Destache, C. J. Development and evaluation of a
+thermosensitive vaginal gel containing raltegravir+efavirenz loaded
+nanoparticles for HIV prophylaxis. Antiviral Res. 2012, 96 (3), 430−
+436.
+(45) He, W.; Bennett, M. J.; Luistro, L.; Carvajal, D.; Nevins, T.;
+Smith, M.; Tyagi, G.; Cai, J.; Wei, X.; Lin, T. A.; Heimbrook, D. C.;
+Packman, K.; Boylan, J. F. Discovery of siRNA lipid nanoparticles to
+transfect suspension leukemia cells and provide in vivo delivery
+capability. Mol. Ther. 2014, 22 (2), 359−370.
+(46) Landry, B.; Aliabadi, H. M.; Samuel, A.; Gul-Uludag, H.; Jiang,
+X.; Kutsch, O.; Uludag, H. Effective non-viral delivery of siRNA to
+acute myeloid leukemia cells with lipid-substituted polyethylenimines.
+PLoS One 2012, 7 (8), e44197.
+Molecular Pharmaceutics
+Article
+DOI: 10.1021/acs.molpharmaceut.5b00073
+Mol. Pharmaceutics 2015, 12, 2889−2903
+2903

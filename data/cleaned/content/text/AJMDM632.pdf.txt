@@ -1,0 +1,659 @@
+International Journal of Pharmaceutics 343 (2007) 247–254
+Pharmaceutical Nanotechnology
+Preparation, characterization, cytotoxicity and transfection efﬁciency of
+poly(dl-lactide-co-glycolide) and poly(dl-lactic acid) cationic
+nanoparticles for controlled delivery of plasmid DNA
+Ashwin Basarkar a, Dilip Devineni b, Ravi Palaniappan b, Jagdish Singh a,∗
+a Department of Pharmaceutical Sciences, College of Pharmacy, Nursing, and Allied Sciences, North Dakota State University, Fargo, ND 58105, USA
+b Department of Pharmaceutical Sciences, College of Pharmacy and Health Sciences, Mercer University, Atlanta, GA 30341, USA
+Received 24 August 2006; received in revised form 12 May 2007; accepted 14 May 2007
+Available online 18 May 2007
+Abstract
+The objective of this study was to investigate the effect of formulation parameters (i.e. polymer molecular weight and homogenization speed) on
+various physicochemical and biological properties of cationic nanoparticles. Cationic nanoparticles were prepared using different molecular weights
+of poly(dl-lactide-co-glycolide) (PLGA) and poly(dl-lactic acid) (PLA) by double emulsion solvent evaporation at two different homogenization
+speeds, and were characterized in terms of size, surface charge, morphology, loading efﬁciency, plasmid release, plasmid integrity, cytotoxicity,
+and transfection efﬁciency. Cationic surfactant, cetyltrimethylammonium bromide (CTAB), was used to provide positive charge on the surface of
+nanoparticles. Reporter plasmid gWIZTM Beta-gal was loaded on the surface of nanoparticles by incubation. Use of higher homogenization speed
+and lower molecular weight polymer led to a decrease in mean particle size, increase in zeta potential, increase in plasmid loading efﬁciency, and
+a decrease in burst release. The nanoparticles displayed good morphology as evident from scanning electron micrographs. In vitro cytotoxicity
+study by MTT assay showed a low toxicity. Structural integrity of the pDNA released from nanoparticles was maintained. Transfecting human
+embryonic kidney (HEK293) cells with nanoparticles prepared from low molecular weight PLGA and PLA resulted in an increased expression of
+beta-galactosidase as compared to those prepared from high molecular weight polymer. Our results demonstrate that the PLGA and PLA cationic
+nanoparticles can be used to achieve prolonged release of pDNA, and the plasmid release rate and transfection efﬁciency are dependent on the
+formulation variables.
+© 2007 Elsevier B.V. All rights reserved.
+Keywords: Poly(dl-lactide-co-glycolide) (PLGA); Poly(dl-lactic acid) (PLA); Cationic nanoparticles; Plasmid DNA (pDNA); Cytotoxicity; Transfection efﬁciency
+1. Introduction
+The turn of the century has seen enormous progress being
+made in the ﬁeld of gene therapy. This strategy has been
+explored in the treatment of gene related disorders such as
+cystic ﬁbrosis (Alton and Geddes, 1995; Griesenbach et al.,
+2004), severe combined immunodeﬁciency syndrome (Otsu
+and Candotti, 2002; Cavazzana-Calvo et al., 2005), cancer
+(Zwiebel et al., 1993; Kashani-Sabet, 2004), cardiovascular
+diseases (Shah and Losordo, 2005), and AIDS (Strayer et
+al., 2005; Vanniasinkam and Ertl, 2005). Several thousand
+patients have been involved in clinical trials going on all over
+∗Corresponding author. Tel.: +1 701 231 7943; fax: +1 701 231 8333.
+E-mail address: Jagdish.Singh@ndsu.edu (J. Singh).
+the world with majority focusing on cancer (66%), followed
+by monogenic diseases (8.7%), and vascular diseases (8.7%)
+(http://www.wiley.co.uk/genetherapy/clinical/). The basic con-
+cept of gene therapy is that human diseases may be treated by
+the transfer of genetic material into speciﬁc cells of a patient in
+order to correct or supplement the defective gene. Though gene
+therapy holds great promise for the achievement of this task, the
+transferofgeneticmaterialintohigherorganismsstillremainsan
+enormous technical challenge (Wiethoff and Middaugh, 2003).
+In order to enhance gene therapy, specialized design fea-
+tures are required for delivery vector to overcome extracellular
+and intracellular barriers, and ensure efﬁcient DNA delivery
+to the nucleus (Wiethoff and Middaugh, 2003; Lechardeur and
+Lukacs, 2002). The vectors used for gene delivery are broadly
+classiﬁed as viral and non-viral vectors. Viral vectors account
+for about 75% of the clinical protocols currently in opera-
+0378-5173/$ – see front matter © 2007 Elsevier B.V. All rights reserved.
+doi:10.1016/j.ijpharm.2007.05.023
+
+248
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+tion (http://www.wiley.co.uk/genetherapy/clinical/). However,
+there are some serious concerns associated with viral vectors
+such as immunogenicity, insertional mutations, and potential
+pathogenicity. Non-viral methods have received considerable
+attention lately because of their low immunogenic potential, ease
+of manufacture and safety. Most common non-viral approaches
+include use of neutral or cationic polymers and liposomes.
+Polymeric systems for gene delivery have attracted much
+attention due to their favorable physicochemical characteristics
+that make them suitable candidates for gene delivery appli-
+cation. Several polymers, such as polyethyleneimine (PEI),
+polymethacrylates, poly(dl-lactide-co-glycolide) (PLGA) and
+poly(dl-lactic acid) (PLA) have been extensively investigated
+for gene delivery (Kasturi et al., 2005; Jones et al., 1997; Kim et
+al., 2005). These biodegradable polymers undergo bulk hydroly-
+sis thereby providing sustained delivery of the therapeutic agent
+depending on the polymer molecular weight and copolymer
+composition (Ramchandani et al., 1997). The degradation prod-
+ucts, lactic acid and glycolic acid, are removed from the body
+through citric acid cycle (Shive and Anderson, 1997). PLGA
+and PLA particles are matrix-type systems prepared by emul-
+siﬁcation followed by evaporation of the organic phase. They
+have been used for controlled delivery in several studies and
+have shown good efﬁciency and biocompatibility both in vitro
+and in vivo (Shive and Anderson, 1997; Kang and Singh, 2005).
+Two particles based gene delivery strategies have been pur-
+sued by researchers; encapsulation of DNA into the polymer
+matrix, or loading of anionic DNA on the surface of cationic
+particles. Encapsulation strategy has been conventionally used
+for delivery of DNA (Jones et al., 1997; Wang et al., 1999).
+Particles encapsulating DNA have showed good efﬁcacy in ani-
+mal models and have already completed phase II clinical trials.
+Still, there exist some fundamental limitations to this technique
+such as; creation of low pH microenvironment during degrada-
+tion of polymer, low encapsulation efﬁciency, inability to escape
+phagolysosomes and low bioavailability. In addition, DNA is
+subjected to chemical, thermal and mechanical stresses dur-
+ing the production of particles leading to extensive degradation
+(Ando et al., 1999).
+Surface loading of DNA on particles is a relatively newer
+approach (Singh et al., 2000; Esposito et al., 1999). Plasmid
+DNA is a polyanionic molecule which can be loaded on a poly-
+cationic surface due to ionic interaction. A cationic surfactant
+or polymer or a combination is used for preparation of cationic
+particles which, apart from facilitating plasmid loading, also, by
+virtue of its positive charge, helps in attachment of the particles
+on cell surface. This approach has the advantage of improved
+loading and increased bioavailability. PLGA particles func-
+tionalized using cetyltrimethylammonium bromide (CTAB), in
+particular, have aroused much interest due to biodegradability
+and proven safety proﬁle of the polymer (Denis-Mize et al.,
+2000; Singh et al., 2000; Oster et al., 2005; Wischke et al.,
+2006). CTAB, which is a cationic surfactant, is incorporated on
+the surface of particles during emulsiﬁcation, thereby providing
+a highly positive zeta potential. PLGA/CTAB particles showed
+high loading efﬁciency and were able to release plasmid DNA
+maintaining a predominantly supercoiled conformation (Singh
+et al., 2000). PLGA/CTAB particles have been successfully used
+for delivering DNA vaccine for immunization in mice (Luo et
+al., 2003; O’Hagan et al., 2004; He et al., 2005).
+Effect of modulating different formulation variables on sta-
+bility and in vitro release of nucleic acids encapsulated into
+PLGA/PLA microparticles and nanoparticles has been exten-
+sively studied (Walter et al., 1999; Diez and Tros de Ilarduya,
+2006). A multitude of factors such as size of pDNA, polymer
+molecular weight, polymer amphiphilicity, size and nature of the
+entrapped molecule, nature of the solvent, formulation condi-
+tions, nature and concentration of surfactant are known to affect
+physicochemical characteristics of particles. Factors affecting
+properties of particles with a surface loaded molecule need to
+be thoroughly investigated.
+In this study, we attempted to evaluate the effect of polymer
+molecular weight and homogenization speed on the character-
+istics of PLGA/CTAB and PLA/CTAB nanoparticles. Cationic
+nanoparticles were prepared by double emulsion/solvent evapo-
+ration using CTAB in external aqueous phase to provide positive
+charge on the surface of particles. Cationic nanoparticles were
+evaluated for physicochemical characteristics such as size, mor-
+phology, surface charge and plasmid loading efﬁciency. The
+plasmid release rate of nanoparticles was studied in vitro and
+the conformational stability of released plasmid was determined.
+In vitro cytotoxicity, and transfection efﬁciency (both fresh and
+after storage) of nanoparticles were also determined.
+2. Materials and methods
+2.1. Materials
+The plasmid encoding beta-galactosidase, gWizTM -gal was
+obtained from Aldevron LLC (Fargo, ND, USA). Poly(dl-lactic
+acid) (PLA) (Inherent visc. 0.2 dL/g, MW ≈10,000) was pur-
+chasedfromPolysciencesInc.(Warrington,PA,USA),polymers
+poly(dl-lactide-co-glycolide)(PLGA)(inherentvisc.0.44 dL/g,
+MW ≈50,000 and 0.63 dL/g, MW ≈100,000) and poly(dl-
+lactic acid) (PLA) (inherent visc. 0.67 dL/g, MW ≈106,000)
+were purchased from Birmingham Polymers, Inc. (Birmingham,
+AL, USA). Cetyltrimethylammonium bromide (CTAB) was
+obtainedfromSigmaChemicalCompany(St.Louis,MO,USA).
+Human embryonic kidney (HEK293) cell line was obtained
+fromAmericanTypeCultureCollection(ATCC,Rockville,MD,
+USA). Beta-galactosidase enzyme assay system with reporter
+lysis buffer was purchased from Promega corp. (Madison, WI,
+USA). Micro BCATM protein assay reagent kit was purchased
+from Pierce Biotechnology (Rockford, IL, USA). De-ionized
+water was used to prepare all solutions and buffers.
+2.2. Preparation of cationic nanoparticles
+Nanoparticles were prepared using double emulsion/solvent
+evaporation technique. Brieﬂy, 250 mg polymer was dissolved
+in 10 ml dichloromethane (DCM) and 1 ml phosphate buffered
+saline (PBS) was dispersed into it by sonication at 80 W for
+1 min using an ultrasonic homogenizer (Model 150 V/T, Biolog-
+ics Inc., Manassas, VA, USA) to form a primary w/o emulsion.
+
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+249
+This emulsion was then added to 50 ml aqueous solution of
+cetyltrimethylammonium bromide (CTAB) (0.5%, w/v) and
+homogenized for 12 h at predetermined homogenization speeds
+of 3000 or 5000 rpm using a homogenizer (Model L4RT, Silver-
+son, UK) leading to the formation of secondary w/o/w emulsion
+and subsequent evaporation of the organic phase. The resultant
+nanoparticles were separated by centrifugation at 10,000 rpm.
+The particles were washed twice by re-suspension in distilled
+water (5 ml) followed by centrifugation at 10,000 rpm to remove
+excess surfactant. Finally, the particles were lyophilized for
+24 h.
+2.3. Particle size and zeta potential
+Average particle diameters were measured via dynamic light
+scattering technique on a PSS/NICOMP 380 DLS particle sizing
+system (Santa Barbara, CA, USA). The samples were diluted in
+distilled water (pH 6.8) using autodilution mode. Six sub-runs
+were used for each measurement.
+The zeta potential was measured on Zetasizer nano version
+4.0 (Malvern Instruments, UK). A concentration of 0.1–0.5%
+(w/w) was chosen for the zeta potential measurements. The mea-
+surements were done in distilled water (pH 6.8) using disposable
+zeta cells (DTS 1060) using the general purpose protocol at
+27 ◦C. A manual duration of about 30 sub-runs was used for each
+measurement. The mean zeta potential was determined using
+phase analysis light scattering technique.
+2.4. Scanning electron microscopy
+Particle morphology of selected batches was determined by
+scanning electron microscopy (SEM). The samples were sprin-
+kled onto carbon tape attached to aluminum mounts followed
+by coating with gold using a Technics Hummer II sputter coater.
+Images were obtained using a JEOL JSM-6300 Scanning Elec-
+tron Microscope.
+2.5. Plasmid DNA loading on nanoparticles
+Loading of reporter plasmid gWizTM Beta-gal was performed
+on the surface of nanoparticles. The particles were suspended in
+asolutionofpDNA(0.5 mg/ml)inPBSatatheoreticalloadingof
+1% w/w at 4 ◦C for 6 h on a shaking platform followed by cen-
+trifugation at 10,000 rpm. Loaded nanoparticles were washed
+twicewithPBSandthesupernatantswerecollectedandanalyzed
+at 260 nm to determine plasmid loading efﬁciency. The nanopar-
+ticles were ﬁnally re-suspended in distilled water, lyophilized
+and stored at −20 ◦C.
+2.6. In vitro plasmid release
+Plasmid release from cationic nanoparticles was studied in
+phosphate buffered saline (PBS) (pH 7.4). Ten milligrams of
+pDNA loaded nanoparticles were incubated in 1 ml PBS at
+37 ◦C in a reciprocal shaking water bath. At ﬁxed time inter-
+vals, samples were removed by centrifugation and the amount
+of free DNA was determined in the supernatant at 260 nm by
+UV spectrophotometer. The particles were re-suspended in fresh
+media.
+2.7. Structural integrity of plasmid DNA
+Structural integrity of pDNA was evaluated both immediately
+after loading and at different time points in the released samples
+by agarose gel electrophoresis. To determine plasmid stability
+immediately after surface loading, 10 mg loaded nanoparticles
+were dissolved in 2 ml chloroform and the plasmid was extracted
+by adding 2 ml PBS followed by agitation. DNA samples recov-
+ered from nanoparticles by extraction and the samples released
+at different time points (i.e. 0.5, 1, 3, 7, and 14 days) along
+with control untreated pDNA were applied to 0.7% agarose
+gel in 1X Tris-Acetate EDTA (TAE) buffer. Band separation
+for supercoiled and open circular pDNA was observed after gel
+electrophoresis at 5 V/cm2 for 45 min.
+2.8. Cytotoxicity evaluation by MTT assay
+Cytotoxicity of selected formulations was determined by (3-
+(4,5-dimethylthiazol-2-yl)-2, 5-diphenyltetrazolium bromide)
+MTT assay in human embryonic kidney (HEK293) cells (ATCC
+CRL-1573). This assay is based on the ability of living cells to
+reduce a water-soluble yellow dye, MTT, to a purple colored
+water-insoluble formazan product by mitochondrial enzyme
+succinate dehydrogenase. The cells were maintained in modi-
+ﬁed minimum essential medium (Eagle) (EMEM) supplemented
+with 10% fetal bovine serum (FBS) in 5% CO2 incubator at
+37 ◦C. Eight thousand cells were seeded per well in 96-well
+microtiter plates followed by incubation for 24 h. Nanoparticles
+at different concentrations, 2.5–50 g per well in 100 l media,
+were added to the wells. After 20 h incubation, 20 l MTT solu-
+tion (5 mg/ml in PBS, pH 7.4) was added to cells followed by
+further incubation for 4 h. Thereafter, the media was removed
+and cells were rinsed with PBS. The formazan crystals formed
+were dissolved using dimethyl sulfoxide (DMSO) (100 l/well)
+and absorbance was read at 570 nm on a microplate reader. Cell
+viability was determined as a percentage of the negative control
+(untreated cells).
+2.9. Expression of beta-galactosidase
+Human embryonic kidney (HEK293) cells were plated in
+24 well plates at a density of 2 × 105 cells/well in EMEM
+supplemented with 10% FBS and cultured for 24 h. Effect of
+storage on transfection efﬁciency of nanoparticles was studied
+by comparing the expression of beta-galactosidase using freshly
+prepared nanoparticles with nanoparticles stored at −20 ◦C
+for 2 weeks. Nanoparticles were added to cells at a pDNA
+equivalent dose of 500 ng/well to the cells in 1 ml of com-
+plete cell culture medium followed by 48 h incubation. Naked
+DNA was also added at equivalent dose. Following incuba-
+tion, the media was removed; cells were washed with PBS,
+and lysed. Expression of beta-galactosidase was quantiﬁed
+by beta-galactosidase enzyme assay according to manufac-
+turer’s protocol. The total protein content of the samples
+
+250
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+was measured by Micro BCATM protein assay (Smith et al.,
+1985).
+3. Results and discussion
+3.1. Particle size and zeta potential
+Table 1 summarizes the results of physical characteriza-
+tion of nanoparticles. The mean particle size was found to
+depend on both polymer molecular weight and homogeniza-
+tion speed. Higher homogenization speed resulted in particles
+with a lower mean diameter as compared to lower homoge-
+nization speed irrespective of the polymer type or molecular
+weight. Higher homogenization speed leads to formation of
+smaller droplets due to increased shear during emulsiﬁcation
+which may subsequently result in formation of smaller parti-
+cles.NanoparticlespreparedwithlowermolecularweightPLGA
+or PLA had slightly lower mean size than particles prepared
+using higher molecular weight polymers. Increase in polymer
+molecular weight causes an increase in viscosity of the organic
+solvent phase which results in formation of larger particles. Sim-
+ilar results have been reported by other investigators on the
+inﬂuence of polymer molecular weight on particle size (Diez
+and Tros de Ilarduya, 2006). Polydispersity index (PDI) of for-
+mulations was between 0.26 and 0.43. Although studies have
+reported high polydispersity especially with multiple emulsion
+technique, such size distribution is not ideal particularly for in
+vivoapplication.Furtherattemptswillbemadetolowerthepoly-
+dispersity of the nanoparticles by modifying various formulation
+parameters.
+Zeta potential of formulations prepared at higher homoge-
+nization speed was signiﬁcantly higher (p < 0.05) as compared
+to those prepared at lower homogenization speed irrespective of
+the polymer used (Table 1). Such increase in zeta potential may
+be due to relatively higher amount of strongly bound CTAB on
+the surface of particles prepared at higher speed. Investigators
+have previously reported a higher amount of surface-associated
+stabilizer in submicron particles as compared to larger particles
+(Panyam et al., 2003). As an increase in the homogenization
+speed leads to formation of smaller particles, it may also result
+in increased binding of CTAB on the surface causing an increase
+in the zeta potential. Particles prepared with lower molecular
+weight polymer had signiﬁcantly higher (p < 0.05) zeta potential
+as compared to higher molecular weight polymer irrespective
+of polymer type or homogenization speed. This may be due
+to more hydrophilic nature of low molecular weight polymers
+which may result in higher incorporation of hydrophilic CTAB
+on the oil-water interphase.
+3.2. Scanning electron microscopy
+SEM images (Fig. 1) revealed that all the nanoparticles for-
+mulations observed displayed good morphology with spherical
+structure. Nanoparticles had smooth and non-porous surface and
+were non-aggregated unlike one previous study that showed
+presenceofhighlyaggregatedparticlesasaresultofusingCTAB
+in the external phase (Oster et al., 2005). This may be due to
+differences in the formulation protocol. We did not observe any
+effectofchangingthepolymertypeorpolymermolecularweight
+on the morphology of nanoparticles.
+3.3. Plasmid DNA loading on nanoparticles
+Plasmid loading on the surface of cationic nanoparticles is
+primarily via ionic interaction, which depends on the zeta poten-
+tial, though some non-ionic interaction may also exist. All the
+formulations displayed plasmid loading efﬁciency over 70%
+(Table 1). High plasmid loading efﬁciency of particles using
+CTAB as emulsiﬁer in the external phase has been reported
+previously (Singh et al., 2000; Oster et al., 2005). In general,
+higher amount of pDNA loading was observed for particles with
+a higher surface zeta potential. Thus, nanoparticles prepared at
+a higher homogenization speed had higher plasmid loading as
+compared to those prepared at lower speed. Also, particles pre-
+pared with low molecular weight PLGA/PLA displayed higher
+loading efﬁciency as compared to those prepared with higher
+molecular weight PLGA/PLA (Table 1).
+3.4. In vitro plasmid release
+Figs. 2 and 3 show in vitro release of pDNA from cationic
+nanoparticles prepared from PLA and PLGA, respectively.
+Release of pDNA encapsulated into nanoparticles is governed
+primarily by the molecular weight of PLGA/PLA used. These
+Table 1
+Effect of polymer molecular weight (inherent viscosity) and homogenization speed on physical properties of cationic nanoparticles
+Formulation
+Polymer
+Mean particle size (nm)
+Polydispersity index (PDI)
+Zeta potential (mV)
+Loading efﬁciency (%)a
+1
+PLA 0.20b
+737
+0.39
+58.50 ± 0.71
+97.84
+2
+PLA 0.20c
+887
+0.37
+48.42 ± 1.20
+80.15
+3
+PLA 0.67b
+769
+0.34
+31.86 ± 1.18
+96.61
+4
+PLA 0.67c
+1142
+0.28
+26.84 ± 0.74
+80.45
+5
+PLGA 0.44b
+740
+0.34
+53.40 ± 0.68
+94.44
+6
+PLGA 0.44c
+919
+0.26
+24.56 ± 1.74
+72.15
+7
+PLGA 0.63b
+795
+0.43
+27.62 ± 0.83
+92.61
+8
+PLGA 0.63c
+1000
+0.27
+24.86 ± 0.87
+76.10
+a Loading efﬁciency calculated as a percentage of theoretical loading of 10 g pDNA/mg nanoparticles.
+b Homogenization speed 5000 rpm.
+c Homogenization speed 3000 rpm.
+
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+251
+Fig. 1. Scanning electron micrographs of cationic nanoparticles prepared at 5000 rpm using polymers PLA0.20 (A), PLGA 0.44 (B), PLA 0.67 (C), and PLGA 0.63
+(D).
+polymers degrade by bulk hydrolysis forming progressively
+smaller polymer fragments, which eventually are solubilised.
+Lower molecular weight polymers, being more hydrophilic,
+degrade faster releasing the encapsulated molecule (Tinsley-
+Bownetal.,2000).Invitroplasmidreleasewas,thus,expectedto
+be faster for particles prepared with low molecular weight poly-
+mers due to greater hydrophilic nature coupled with a higher
+surface area as a result of smaller size. Contrary to this, low
+molecular weight polymers displayed a reduced burst release
+(amount released at day 1). This effect may be attributed to
+higher zeta potential of such particles leading to stronger ionic
+binding of pDNA resulting in lower burst release. Particles pre-
+pared at higher homogenization speed showed reduced burst
+Fig. 2. In vitro release of plasmid DNA from nanoparticles prepared from
+different molecular weights of PLA at two different homogenization speeds
+(n = 3).
+release as compared to those prepared at lower speed. Higher
+zeta potential of particles prepared at higher speed results in
+stronger binding of negatively charged pDNA on the surface
+which causes lowering of burst release. Due to their better
+physicochemical properties and release behaviour, formulations
+prepared at higher speed (5000 rpm) were selected for further
+studies.
+3.5. Structural integrity of plasmid DNA
+Integrity of pDNA was studied both immediately after load-
+ing and in samples released at different time points, by agarose
+gel electrophoresis and was compared to untreated control DNA
+(Figs. 4 and 5). We found that pDNA extracted from nanoparti-
+Fig. 3. In vitro release of plasmid DNA from nanoparticles prepared from dif-
+ferent molecular weights of PLGA at two different homogenization speeds
+(n = 3).
+
+252
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+Fig. 4. Agarose gel electrophoresis of pDNA extracted from cationic nanoparti-
+cles. Lane 1 corresponds to control pDNA. Lanes 2–5 correspond to pDNA
+extracted from formulations 1, 3, 5, and 7, respectively. The lower band is
+supercoiled (S.C.) pDNA and the upper band is open circular (O.C.) pDNA.
+cles immediately after loading showed good structural integrity.
+Majority of the extracted pDNA maintained its supercoiled
+conformation and was similar to the control DNA (Fig. 4).
+Samples released at different time points post-incubation were
+also evaluated for conformational stability of pDNA (Fig. 5).
+Plasmid was predominantly present in open circular form with
+some amount of supercoiled DNA. The proportion of super-
+coiled form was found to decrease further in samples taken at
+later time points. The open circular and supercoiled forms of
+pDNA are reported to be similar in their ability to transfect cells
+(Kimoto and Taketo, 1996). Thus, the nanoparticles were able
+to deliver pDNA in a functionally active form for a period of 2
+weeks.
+Fig. 5. Agarose gel electrophoresis of pDNA released from formulation 1. Lanes
+1–5 correspond to pDNA released at 0.5, 1, 3, 7, and 14 days, respectively. The
+lower band is supercoiled (S.C.) pDNA and the upper band is open circular
+(O.C.) pDNA.
+Fig. 6. Cytotoxicity of cationic microparticle formulations analyzed by MTT
+assay, 24 h post-treatment (n = 8).
+3.6. Cytotoxicity evaluation
+Cationic agents have been reported to cause serious cellular
+toxicity due to electrostatic interaction with negatively charged
+cellular membrane (Fischer et al., 2003). In vitro toxicity of
+nanoparticles was evaluated by MTT assay in HEK293 cells
+using increasing doses of nanoparticles. Fig. 6 shows the results
+of MTT assay. The nanoparticle formulations were found to
+be non-toxic at majority of concentrations studied. We did not
+observe a signiﬁcant difference (p > 0.05) in the toxicity of dif-
+ferent formulations at any of the concentrations used. There was
+a slight reduction in cell viabilities at higher concentrations.
+Average cell viabilities were between 80 and 120% of control
+at the concentrations studied.
+3.7. Expression of beta-galactosidase
+Ability of cationic nanoparticles to transfect cells in vitro
+was studied in HEK293 cells. Expression of beta-galactosidase
+was quantiﬁed by enzyme assay. We observed higher expres-
+sion of beta-galactosidase in cells treated with low molecular
+weight polymer nanoparticles (Fig. 7A and B). This effect
+was observed for both PLGA and PLA based nanoparticles.
+Cationic particles have been reported to have a residual posi-
+tive charge after adsorption of pDNA which leads to attachment
+of nanoparticles onto the surface of cells (Feng et al., 2006).
+The amount of residual charge present on the nanoparticles
+can determine their ability to adhere to the cell membrane
+and subsequently be taken up by the cells. Nanoparticles pre-
+pared with low molecular weight PLGA or PLA may have
+a higher amount of residual positive charge after loading of
+pDNA, due to their higher initial zeta potential, which may facil-
+itate efﬁcient cellular internalization of nanoparticles. Higher
+zeta potential coupled with smaller size may be responsible for
+higher transfection efﬁciency of cationic nanoparticles prepared
+with smaller molecular weight PLGA/PLA. We also studied
+the effect of storage of nanoparticles on transfection efﬁciency
+by comparing the efﬁciency of freshly made particles to those
+stored for 2 weeks at −20 ◦C. We did not observe a signiﬁcant
+(p > 0.05) change in transfection efﬁciency after storage for 2
+weeks at −20 ◦C. This shows that cationic nanoparticles remain
+stable and preserve their transfection efﬁciency as well as the
+
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+253
+Fig. 7. Expression of beta-galactosidase by PLA (A) and PLGA (B) nanopar-
+ticles, fresh (black columns) or after storage for 2 weeks (white columns).
+Nanoparticles were incubated at a dose equivalent to 500 ng pDNA per well.
+Plasmid DNA in equivalent dose was used as control (n = 4).
+integrity of plasmid DNA for at least 2 weeks during storage at
+−20 ◦C.
+4. Conclusions
+This study investigated the effect of changing formulation
+parameters on the properties of pDNA loaded cationic nanopar-
+ticles. Physicochemical properties of cationic nanoparticles such
+as size, zeta potential, plasmid loading efﬁciency and in vitro
+plasmid release were affected by polymer molecular weight and
+speed of homogenization. Loading on the surface of nanopar-
+ticles did not adversely affect the structural integrity of pDNA.
+Nanoparticle formulations displayed low toxicity in vitro. Low-
+ering the molecular weight of PLGA/PLA led to a signiﬁcant
+enhancement in the transfection efﬁciency of nanoparticles. In
+summary, it is feasible to deliver pDNA for prolonged duration
+by loading it on the surface of PLGA/PLA cationic nanoparticles
+and the physicochemical and biological properties of nanopar-
+ticles can be altered by changing the formulation variables.
+Acknowledgements
+We acknowledge ﬁnancial support to JS from NIH grant #
+HD 46483-01 and Fraternal Order of Eagles fund.
+References
+Alton, E., Geddes, D., 1995. The prospects for gene therapy in cystic ﬁbrosis.
+Curr. Opin. Pulm. Med. 1, 471–477.
+Ando, S., Putnam, D., Pack, D.W., Langer, R., 1999. PLGA microspheres con-
+taining plasmid DNA: preservation of supercoiled DNA via cryopreparation
+and carbohydrate stabilization. J. Pharm. Sci. 88, 126–130.
+Cavazzana-Calvo, M., Lagresle, C., Hacein-Bey-Abina, S., Fischer, A., 2005.
+Gene therapy for severe combined immunodeﬁciency. Annu. Rev. Med. 56,
+585–602.
+Denis-Mize, K.S., Dupuis, M., MacKichan, M.L., Singh, M., Doe, B., O’Hagan,
+D., Ulmer, J.B., Donnelly, J.J., McDonald, D.M., Ott, G., 2000. Plasmid
+DNA adsorbed onto cationic microparticles mediates target gene expres-
+sion and antigen presentation by dendritic cells. Gene Ther. 7, 2105–
+2112.
+Diez, S., Tros de Ilarduya, C., 2006. Versatility of biodegradable poly(d, l-lactic-
+co-glycolic acid) microspheres for plasmid DNA delivery. Eur. J. Pharm.
+Biopharm. 63, 188–197.
+Esposito, E., Sebben, S., Cortesi, R., Menegatti, E., Nastruzzi, C., 1999. Prepa-
+ration and characterization of cationic microspheres for gene delivery. Int.
+J. Pharm. 189, 29–41.
+Feng,
+M.,
+Lee,
+D.,
+Li,
+P.,
+2006.
+Intracellular
+uptake
+and
+release
+of poly(ethyleneimine)-co-poly(methyl methacrylate) nanoparticle/pDNA
+complexes for gene delivery. Int. J. Pharm. 311, 209–214.
+Fischer, D., Li, Y., Ahlemeyer, B., Krieglstein, J., Kissel, T., 2003. In vitro
+cytotoxicity testing of polycations: inﬂuence of polymer structure on cell
+viability and hemolysis. Biomaterials 24, 1121–1131.
+Griesenbach, U., Geddes, D.M., Alton, E.W., 2004. Advances in cystic ﬁbrosis
+gene therapy. Curr. Opin. Pulm. Med. 10, 542–546.
+He, X., Jiang, L., Wang, F., Xiao, Z., Li, J., LiuF L.S., Li, D., Ren, D., Jin, X., Li,
+K., He, Y., Shi, K., Guo, Y., Zhang, Y., Sun, S., 2005. Augmented humoral
+and cellular immune responses to hepatitis B DNA vaccine adsorbed onto
+cationic microparticles. J. Control. Release 107, 357–372.
+Jones, D.H., Corris, S., McDonald, S., Clegg, J.C., Farrar, G.H., 1997.
+Poly(dl-lactide-co-glycolide)-encapsulated plasmid DNA elicits systemic
+and mucosal antibody responses to encoded protein after oral administration.
+Vaccine 15, 814–817.
+Kang, F., Singh, J., 2005. Preparation, in vitro release, in vivo absorption and
+biocompatibility studies of insulin-loaded microspheres in rabbits. AAPS
+Pharm. Sci. Technol. 6, E487–E494.
+Kashani-Sabet, M., 2004. Non-viral delivery of ribozymes for cancer gene ther-
+apy. Expert Opin. Biol. Ther. 4, 1749–1755.
+Kasturi, S.P., Sachaphibulkij, K., Roy, K., 2005. Covalent conjugation of
+polyethyleneimine on biodegradable microparticles for delivery of plasmid
+DNA vaccines. Biomaterials 26, 6375–6385.
+Kim, I.S., Lee, S.K., Park, Y.M., Lee, Y.B., Shin, S.C., Lee, K.C., Oh, I.J.,
+2005. Physicochemical characterization of poly(l-lactic acid) and poly(d, l-
+lactide-co-glycolide) nanoparticles with polyethylenimine as gene delivery
+carrier. Int. J. Pharm. 298, 255–262.
+Kimoto,H.,Taketo,A.,1996.StudiesonelectrotransferofDNAintoEscherichia
+coli: effect of molecular form of DNA. Biochim. Biophys. Acta 17, 325–330.
+Lechardeur, D., Lukacs, G.L., 2002. Intracellular barriers to non-viral gene
+transfer. Curr. Gene Ther. 2, 183–194.
+Luo, Y., O’Hagan, D., Zhou, H., Singh, M., Ulmer, J., Reisfeld, R.A., James
+Primus, F., Xiang, R., 2003. Plasmid DNA encoding human carcinoem-
+bryonic antigen (CEA) adsorbed onto cationic microparticles induces
+protective immunity against colon cancer in CEA-transgenic mice. Vaccine
+21, 1938–1947.
+O’Hagan, D.T., Singh, M., Dong, C., Ugozzoli, M., Berger, K., Glazer, E., Selby,
+M., Wininger, M., Ng, P., Crawford, K., Paliard, X., Coates, S., Houghton,
+M., 2004. Cationic microparticles are a potent delivery system for a HCV
+DNA vaccine. Vaccine 23, 672–680.
+Oster, C.G., Kim, N., Grode, L., Barbu-Tudoran, L., Schaper, A.K., Kaufmann,
+S.H., Kissel, T., 2005. Cationic microparticles consisting of poly(lactide-
+co-glycolide) and polyethylenimine as carriers systems for parental DNA
+vaccination. J. Control. Release 104, 359–377.
+Otsu, M., Candotti, F., 2002. Gene therapy in infants with severe combined
+immunodeﬁciency. BioDrugs 16, 229–239.
+
+254
+A. Basarkar et al. / International Journal of Pharmaceutics 343 (2007) 247–254
+Panyam, J., Dali, M.M., Sahoo, S.K., Ma, W., Chakravarthi, S.S., Amidon,
+G.L., Levy, R.J., Labhasetwar, V., 2003. Polymer degradation and in vitro
+release of a model protein from poly(d, l-lactide-co-glycolide) nano- and
+microparticles. J. Control. Release 92, 173–187.
+Ramchandani, M., Pankaskie, M., Robinson, D., 1997. The inﬂuence of manu-
+facturing procedure on the degradation of poly(lactide-co-glycolide) 85:15
+and 50:50 implants. J. Control. Release 43, 161–173.
+Shah, P.B., Losordo, D.W., 2005. Non-viral vectors for gene therapy: clinical
+trials in cardiovascular disease. Adv. Genet. 54, 339–361.
+Shive, M.S., Anderson, J.M., 1997. Biodegradation and biocompatibility of PLA
+and PLGA microspheres. Adv. Drug. Deliv. Rev. 28, 5–24.
+Singh, M., Briones, M., Ott, G., O’Hagan, D., 2000. Cationic microparticles: A
+potent delivery system for DNA vaccines. Proc. Natl. Acad. Sci. U.S.A. 97,
+811–816.
+Smith, P.K., Krohn, R.I., Hermanson, G.T., Mallia, A.K., Gartner, F.H., Proven-
+zano, M.D., Fujimoto, E.K., Goeke, N.M., Olson, B.J., Klenk, D.C., 1985.
+Measurement of protein using bicinchoninic acid. Anal. Biochem. 150,
+76–85.
+Strayer, D.S., Akkina, R., Bunnell, B.A., Dropulic, B., Planelles, V., Pomerantz,
+R.J., Rossi, J.J., Zaia, J.A., 2005. Current status of gene therapy strategies
+to treat HIV/AIDS. Mol. Ther. 11, 823–842.
+Tinsley-Bown, A.M., Fretwell, R., Dowsett, A.B., Davis, S.L., Farrar,
+G.H., 2000. Formulation of poly(d, l-lactic-co-glycolic acid) micropar-
+ticles for rapid plasmid DNA delivery. J. Control Release 66, 229–
+241.
+Vanniasinkam, T., Ertl, H.C., 2005. Adenoviral gene delivery for HIV-1 vacci-
+nation. Curr. Gene. Ther. 5, 203–212.
+Walter, E., Moelling, K., Pavlovic, J., Merkle, H.P., 1999. Microencapsulation
+of DNA using poly(dl-lactide-co-glycolide): stability issues and release
+characteristics. J. Control. Release 61, 361–374.
+Wang, D., Robinson, D.R., Kwon, G.S., Samuel, J., 1999. Encapsulation of
+plasmid DNA in biodegradable poly(d, l-lactic-co-glycolic acid) micro-
+spheres as a novel approach for immunogene delivery. J. Control. Release 57,
+9–18.
+Wiethoff, C.M., Middaugh, C.R., 2003. Barriers to nonviral gene delivery. J.
+Pharm. Sci. 92, 203–217.
+Wischke, C., Borchert, H.H., Zimmermann, J., Siebenbrodt, I., Lorenzen, D.R.,
+2006. Stable cationic microparticles for enhanced model antigen delivery to
+dendritic cells. J. Control. Release 114, 359–368.
+Zwiebel, J.A., Su, N., MacPherson, A., Davis, T., Ojeifo, J.O., 1993. The
+gene therapy of cancer: transgenic immunotherapy. Semin. Hematol. 4,
+119–128.

@@ -1,0 +1,1516 @@
+## Abstract
+Background
+
+Lung cancer remains a leading cancer type, but current
+chemotherapy is limited by issues including poor drug delivery,
+toxicity, and resistance. To address these challenges, we developed
+a novel PLGA-PEG-LHRH (PPL) nanoconjugate system for improved
+drug delivery. Curcumin, known for its anticancer and P-gp
+inhibition properties, was co-loaded with bcl2siRNA (bclsR) to
+inhibit the bcl2 protein, thus overcoming both resistance
+mechanisms.
+
+[image]
+
+Background
+
+Lung cancer is the most frequent subtype of cancer, causing death
+in both men and women. It is predicted that by 2035, 3 million
+cases of lung cancer will be prevalent globally [1, 2]. The World
+Health Organization (WHO) reports that lung cancer is greatly
+increasing the disease burden worldwide with 1,350,000 new
+instances (12.4% of all new cancer cases) resulting in 17.6% of all
+cancer-related deaths in 2020 . Tobacco use, occupational
+asbestos exposure, cannabis or marijuana use, radon exposure, air
+
+pollution, exposure to the group 1 carcinogen arsenic, inflammation
+and cellular damage during respiratory infections, inflammation
+and scarring associated with chronic obstructive pulmonary disease,
+and a family history of lung cancer are the common etiological
+factors for the development of lung cancer . According to
+histology, there are two types of lung cancer: small cell lung cancer
+(SCLC, 13%) and non-small cell lung cancer (NSCLC, 85%).
+Additionally, NSCLC is further classified as big cell carcinoma (510%), squamous cell carcinoma (25-30%), and lung
+adenocarcinoma (40%) . Treatment for lung cancer involves
+the combined use of radiation therapy, chemotherapy, and/or
+surgery depending on the stage and condition. Most lung
+malignancies are identified at advanced stages, with local tumor
+invasion or distant metastases, and are thus not amenable to
+surgery because of the lack of early-stage diagnostics, resulting in
+poor 5 year survival rate. Therefore, the only options for treating
+lung cancer currently are chemotherapy and radiation therapy [5,
+6]. However, chemotherapy encounters several difficulties, such as
+poor bioavailability of the drug, systemic cytotoxicity, rapid
+elimination, non-specific drug distribution, and the emergence of
+drug resistance which is a major concern [1, 7]. The major causes
+of resistance to drugs are pump and non-pump resistance. The
+pump resistance is caused by the action of proteins termed ABC
+transporters, such as P-Glycoprotein (p-gp), which are responsible
+for drug efflux and therefore lowering intracellular concentration of
+the drug [8, 9]. There are reports on the suppression of this pump
+resistance with p-gp inhibitors. However, despite the suppression of
+drug efflux pumps, cells can still survive because of activated nonpump resistance. Activation of cell apoptosis mostly via Bcl-2
+protein is the primary mechanism of non-pump resistance .
+Formulations based on short-interfering RNA (siRNA) have
+the potential to treat a variety of genetic targets by silencing them
+effectively and specifically [8, 11]. The majority of anticancer
+medications concurrently activate the cellular pump and non-pump
+defense, preventing cell death. Therefore, it is important to
+concurrently block both pump-dependent and non-pump
+mechanisms of resistance in cells to successfully reduce the overall
+resistance to chemotherapy . The current strategy for addressing
+issues related to drug resistance is focused on combination
+treatment targeting both the resistance-causing mechanisms. The
+
+## Materials Methods
+PLGA (Expansorb(r) DLG 50-2A, 50:50, Mw 5-20 kDa) (PLGA) was
+purchased from Merck (USA). Curcumin was purchased from SRL
+(India). Polyvinyl Alcohol (PVA), [D-Lys6]-LHRH, NH2-PEG-COOH,
+and poly-L-lysine (PLL) were obtained from Sigma-Aldrich (India).
+N-hydroxysuccinimide (NHS), 1-ethyl-3-(3-dimethylaminopropyl)-
+carbodiimide (EDC) were obtained from Abcam. 4-dimethyl
+aminopyridine (DMAP), N,N-diisopropylethylamine (DIPEA),
+methanol, and ethanol were obtained from SRL. Anhydrous
+methylene chloride, anhydrous chloroform, acetone, diethyl ether,
+
+dimethyl sulfoxide (DMSO), acetonitrile HPLC grade, water HPLC
+grade, and Tween 80 were obtained from Merck (Mumbai, India).
+The BCA Protein Assay Kit was purchased from Abcam (US).
+Dialysis membrane, Thiazolyl Blue Tetrazolium Bromide (MTT),
+F12K media, phosphate-buffered saline (PBS), PenicillinStreptomycin antibiotic solution, and Trypsin/EDTA (TE) were
+purchased from HiMedia (India). Fetal bovine serum (FBS) was
+procured from GibcoInc (USA), Bcl-2 siRNA and antibodies specific
+for BCL2 and p-gp were obtained from Cell Signaling Technology
+(USA), Total RNA purification Mini Kit was purchased from
+Favorgen Biotech corp., Verso cDNA Synthesis Kit was obtained
+from Thermo Fisher Scientific, standardized DNA primers were
+purchased from Integrated DNA Technologies (USA). All of the
+other reagents and substances utilized in the investigation were of
+analytical grade.
+
+A549 human lung cancer cell lines were obtained from the National
+Centre for Cell Science (NCCS), Pune, India. Balb/c mice were
+obtained from Vivo Biotech, Hyderabad, and Wistar rats were
+obtained from the animal house of the University.
+
+Synthesis of conjugates
+
+Synthesis of PLGA-PEG-COOH (PPCH) conjugation
+
+The datasets generated during and/or analyzed during the current
+study are available from the corresponding author on reasonable
+request.
+
+Abbreviations
+
+LHRH:
+
+Luteinizing-hormone releasing hormone
+
+PLGA:
+
+Poly (DL-lactide co-glycolide acid)
+
+PPL:
+
+PLGA-PEG-LHRH
+
+bclsR:
+
+Bcl2siRNA
+
+FTIR:
+
+Fourier transform infrared
+
+NMR:
+
+Nuclear magnetic resonance
+
+XPS:
+
+X-ray photoelectron spectroscopy
+
+BCA:
+
+Bicinchoninic acid
+
+TEM:
+
+Transmission electron microscope
+
+AUC:
+
+Area under curve
+
+p-gp:
+
+P-glycoprotein
+
+PNPs:
+
+Polymeric nanoparticles
+
+FDA:
+
+Food and Drug Administration
+
+PVA:
+
+Polyvinyl alcohol
+
+PLL:
+
+Poly-L-lysine
+
+NHS:
+
+N-Hydroxysuccinimide
+
+EDC:
+
+1-Ethyl-3-(3-dimethylaminopropyl)-carbodiimide
+
+DMAP:
+
+4-Dimethyl aminopyridine
+
+DIPEA:
+
+N,N-diisopropylethylamine
+
+DMSO:
+
+Dimethyl sulfoxide
+
+MTT:
+
+Methyl thiazolyl blue tetrazolium bromide
+
+PBS:
+
+Phosphate-buffered saline
+
+FBS:
+
+Fetal bovine serum
+
+PPCH:
+
+PLGA-PEG-COOH
+
+CUR-SiRNA-PPL NP:
+
+Curcumin- and siRNA-loaded PPL nanoparticle
+
+PDI:
+
+Polydispersity index
+
+DEE:
+
+Drug entrapment efficiency
+
+DMSO:
+
+Di methyl sulfoxide
+
+B(a)P:
+
+Benzo(a)pyrene
+
+TIR:
+
+Tumor inhibition ratio
+
+H&E:
+
+Hematoxylin and eosin
+
+PCR:
+
+Polymer chain reaction
+
+CUR:
+
+Curcumin
+
+CUR susp:
+
+Curcumin suspension
+
+optimized nanoconjugate had size of 179 +- 16 nm, favorable zeta
+potential, high drug entrapment, and was confirmed via TEM.
+
+Controlled release studies indicated 83% drug release within 24 h.
+In vitro studies revealed significant cytotoxicity against A549 lung
+cancer cells, with the nanoconjugate showing IC50 of 8.24 ug/mL
+compared to 21.26 ug/mL for plain curcumin. Enhanced cellular
+uptake and effective targeting of A549 cells were observed.
+Molecular analyses demonstrated significant downregulation of
+MDR1 and Bcl2 RNA and protein expression, highlighting the
+nanoconjugates' ability to suppress resistance mechanisms.
+Pharmacokinetic studies in Wistar rats showed superior plasma
+drug concentrations, half-life, and AUC for the nanoconjugate
+versus pure drug suspension. Biodistribution studies showed
+increased drug accumulation in the lungs. In vivo efficacy studies in
+Balb/c mice demonstrated higher tumor inhibition ratios for CURsiRNA PPL NPs (66.89%) and CUR-PPL NPs (59.84%) which was
+further confirmed with TNFa and p53 levels in blood.
+Histopathological studies showed good healing in the CUR-siRNA
+PPL NP- and CUR-PPL NP-treated mice compared to suspension.
+
+potential p-gp inhibition and a BCL-2 expression down-regulator.
+
+Curcumin, a natural polyphenol produced from the rhizome of
+Curcuma longa (turmeric), is a potential anticancer drug 
+because of its capacity to trigger cancer cells to undergo apoptosis
+without having harmful effects on healthy cells [13, 14].
+Curcumin's potential to inhibit nuclear factor-kappa B (NF kappa B),
+which controls apoptosis, cell proliferation, and inflammation in
+healthy cells, is the primary cause of its anticancer properties
+. According to recent studies, curcumin also has a
+potential inhibitory effect on the overexpressed p-gp of tumor cells
+[13, 15, 18]. However, despite its promising properties, its clinical
+use has been constrained because of its poor water solubility
+(0.125 mg/L), poor bioavailability, severe metabolism, degradation,
+and quick excretion . To circumvent these
+restrictions, numerous techniques have been utilized with Nano
+Drug Delivery Systems, such as liposomes, inorganic carriers,
+protein-based nanocarriers, and polymeric nanoparticles for
+improved local retention and safer systemic delivery [14, 16].
+
+Polymeric nanoparticles (PNPs) are sub-micron carriers consisting
+of an oily core encapsulated within a polymeric-based shell, with
+surfactants present at the interface . Due to the existence of a
+polymeric wall, PNPs have a high drug-loading capacity, are
+physicochemically stable, and are resistant to enzymatic
+destruction. Additionally, PNPs may improve the pharmacokinetic
+profile of hydrophobic medicines and reduce their toxicity [21, 22].
+PNPs can easily deliver curcumin and offer longer circulation,
+greater permeability, and resistance to metabolic processes .
+Among the different polymers utilized in the cancer drug-based
+formulation, the Food and Drug Administration (FDA) recognized
+the poly (DL-lactide co-glycolide acid) (PLGA)-based
+
+to its relatively low toxicity, biocompatibility, biodegradability,
+non-immunogenicity, and sustained release capabilities [23, 24].
+Moreover, PLGA is widely used to transport proteins, peptides,
+small-molecular-weight substances, and nucleic acids such as small
+interfering RNA (siRNA) [25, 26]. One major limitation of curcumin
+is its short circulation time, moreover, nanoparticles also suffer
+
+similar problems due to RES (reticuloendothelial system) uptake
+[23, 27]. Hence, the stealth coating of the nanovesicle is essential to
+have prolonged circulation times. The PEGylation of PLGA NP can
+be used to prevent the opsonin binding, extend the nanoparticles'
+duration of circulation, and reduce RES uptake [23, 28, 29].
+
+To minimize the overall toxicity of chemotherapeutic treatments to
+healthy cells and to increase the tumor accumulation of anticancer
+therapies, active targeting is considered one of the advanced
+strategies [30, 31]. This limits the drug's proximity to non-target
+organs, reducing the risk of systemic toxicity and subsequent
+harmful side effects. Targeting the receptor with a high-affinity
+targeting ligand will selectively recognize the overexpressed
+receptors on the cancer cell surfaces, and could enhance the
+
+PPL nanoconjugates with better circulation time due to PEGylation
+was developed to target the lung cancer cells to enhance efficacy
+
+and Dao et al.  with modifications. Briefly, 2.5 g of acidterminated PLGA was solubilized in anhydrous methylene chloride,
+and to it, 95 mg NHS and 129 mg EDC were added. It was stirred
+overnight at normal room temperature under nitrogen to activate
+the carboxylic group present in acid-terminated PLGA. PLGA-NHS
+was precipitated in diethyl ether (cold), filtered, and washed to
+remove unreacted EDC and NHS, and then dried under vacuum.
+PLGA-NHS (2 g) was added to NH2-PEG-COOH (500 mg) and
+DIPEA (85 mg) after redissolving in anhydrous chloroform. After
+stirring for 24 h under nitrogen, the mixture was precipitated with
+diethyl ether (ice-cold), filtered, washed, and dried by
+lyophilization (Coolsafe 110-4, LABOGENE, Germany) to obtain
+PPCH .
+
+PPL conjugation
+
+The LHRH ligand was conjugated with the PLGA-PEG copolymer by
+dissolving 100 mg of prepared PPCH and 10 mg of activated LHRHNH2 in anhydrous methylene chloride solution and stirred for 1 h
+under nitrogen at room temperature. Three milligrams of EDC and
+1 mg of DMAP were added to the dispersion, which was then stirred
+at room temperature under nitrogen for for48 h. The product was
+subsequently obtained by precipitating in ice-cold diethyl ether;
+filtered, purified with dialysis, lyophilized (Coolsafe 110-4,
+LABOGENE, Germany), and stored at - 20 degC [7, 23].
+
+Evaluation of Conjugates
+
+The formation of PPL conjugate was confirmed by Fourier transform
+infrared (FTIR), X-ray photoelectron spectroscopy (XPS), nuclear
+magnetic resonance (NMR), and bicinchoninic acid (BCA) studies.
+
+FTIR analysis
+
+The FTIR spectra of the conjugated and unconjugated PLGA were
+compared to check for structural change due to conjugation by
+scanning from 400 cm-1 to 4000 cm-1 in FTIR spectrometer
+(PerkinElmer Model: L1600400 Spectrum Two Ft-IR/DTGS).
+
+NMR study
+
+The conjugation of PLGA-PEG and PPL was confirmed by the proton
+NMR spectrum (ECX400 -Jeol 400 MHz, Japan). The standard 1H
+NMR spectra were analyzed to verify the conjugation at 400 MHz
+by using DMSO as solvent.
+
+XPS study
+
+XPS is one of the most promising instruments for
+identifying chemical entities on a surface. The conjugation of
+(DLys6) LHRH to nanoparticles was confirmed based upon the
+presence of nitrogen peak in XPS. Nitrogen is a constituent of the
+various bonds (peptide and amide) formed between the NPs and
+
+peptides through NHS activation. The samples were dispersed in
+water, processed, and analyzed using a Thermo Fisher Scientific Xray photoelectron spectrometer (Escalab Xi +) equipped with a
+monochromatic AI k alpha source. 50 eV pass energy was employed
+for the analysis with a 200 eV survey.
+
+BCA Protein Assay
+
+The quantity of LHRH peptide in PPL conjugation was quantified
+utilizing the BCA Protein Assay Kit (Abcam), following the
+
+concentration determination. It employs a copper salt, reducible by
+protein(s), forming a colored complex with bicinchoninic acid, with
+a strong absorbance at 562 nm. The complex intensity correlates
+with protein amount.
+
+Formulation of curcumin- and siRNA-loaded PPL
+nanoconjugate system
+
+The curcumin- and siRNA-loaded PPL nanoparticle (CUR-SiRNAPPL NP) was formulated using the method of double emulsion
+solvent evaporation (w1/o/w2) . Briefly, 20 mg of PPL and
+10 mg of curcumin were dissolved completely in a mixture of
+acetone and methanol (3 mL, 7:3 v/v) to form the organic phase.
+Fifty micrograms of bclsR was mixed with 50 mg of poly-L-lysine
+(PLL) in 200mL of nuclease-free water, and the resulting solution
+was added gradually to the organic solution. The mixture was then
+sonicated (Labman Scientific Instruments) at 4 degC for 15 min to
+produce w1/o primary emulsion. This primary emulsion was then
+added gradually to deionized water containing Polyvinyl Alcohol
+(PVA) and tween 80 solutions, with continuous stirring, and
+sonicated at 4 degC for 15 min to form w1/o/w2 double emulsion.
+This emulsion was then stirred in room condition until the organic
+solvent was completely evaporated. Then, the CUR-SiRNA-PPL NPs
+were obtained by centrifuging at 15,000 rpm for 50 min at 4 degC and
+freeze-dried.
+
+Particle size characterization
+
+Particle size and polydispersity index (PDI) were analyzed by
+dynamic light scattering using a particle size analyzer (Zetasizer,
+Malvern Nano S 90). Determination was carried out at 25 degC at a
+fixed angle of 90deg. Before the measurement, the NC suspension was
+adequately diluted at 1:9 ratios. This dilution was then vortexed
+and the size and PDI. The zeta potential of the PLGA nanoconjugate
+was evaluated by electrophoretic mobility technique using a
+Malvern Zetasizer Nano-ZS500. TEM studies for particle size
+characterization and morphology were performed using TEM JEOL
+JEM 2100 (200 kV). Prepared NP was added onto a carbon-coated
+copper grid (400-mesh) which was stained with 2% (w/v)
+phosphotungstic acid solution for 20 min. Approximately 15 min
+after depositing the nanoparticles, the grid was gently tapped with
+filter paper to remove excess water and then air-dried and
+transmission electron microscopy (TEM) micrographs were acquired
+at a magnification of 200,000 x .
+
+Concentrations of CUR for release studies and entrapment efficiency
+were calculated using a Waters HPLC system (Milford, MA,
+Massachusetts, USA) equipped with a dual pump (Waters 515) and
+a UV detector (Waters 2489). The solvent system comprised
+acetonitrile/water (HPLC grade), and a Nova-Pak(r) HR C18 column
+(3.9 x 300 mm, 6 um particle size) maintained at 25.0 +- 0.5 degC was
+utilized. Empower chromatography software facilitated data
+acquisition, analysis, and reporting.
+
+Evaluation of various acetonitrile/water ratios (with 2% acetic acid)
+including 80:20, 70:30, 60:40, 75:25, and 85:15 v/v was conducted
+to determine the optimal solvent system. The selection was based
+
+developed using a solvent system of acetonitrile/water (2% acetic
+acid) (85:15 v/v) at different flow rates (0.5, 1, and 1.5 mL/min),
+and optimization was based on peak characteristics. Accuracy was
+determined by analyzing six separate reference drug solutions
+(100 ug/mL) with the appropriate mobile phase. Precision testing
+involved assaying standard drug solutions at concentrations of 25,
+50, 75, and 100 ug/mL. Furthermore, linearity assessment was done
+by preparing a calibration curve using serial dilutions ranging from
+
+3-200 ug/mL. All the above tests for accuracy, precision, and
+linearity were conducted using acetonitrile/water (2% acetic acid)
+(85:15 v/v) at a flow rate of 0.5 mL/min and detection at 425 nm
+wavelength. A calibration curve for CUR was established by plotting
+the peak area against concentrations with the determination of R2
+
+value [35, 36].
+
+Drug Entrapment Efficiency (DEE)
+
+The DEE (%) of CUR-SiRNA-PPL NP was calculated by measuring
+the concentration of free drug using the following procedure. Two
+milliliters of prepared CUR-SiRNA-PPL NP solution in PBS was coldcentrifuged at 12,000 rpm for 30 min to separate the free drug from
+the NPs. One milliliter of the clear supernatant was collected, and
+the free drug concentration was measured using HPLC (Waters).
+DEE % was calculated using the following equation :
+
+$${\text{EE}}\left( \% \right) = \left[ {\left( {\left(
+{{\text{Total}}\;{\text{drug}}\;{\text{loaded}}{-}{\text{free}}\;
+{\text{drug}}\;{\text{present}}} \right)/{\text{Total}}\;
+{\text{drug}}\;{\text{loaded}}} \right) { \times }{1}00} \right]$$
+
+Entrapment efficiency of siRNA
+
+To calculate siRNA encapsulation efficiency, CUR-SiRNA-PPL NPs
+were solubilized in PBS buffer and further centrifuged for 50 min at
+4 degC at 15,000 x g. The supernatant was analyzed for siRNA
+concentration using a Nanodrop spectrophotometer (Thermo Fisher
+Scientific, US) to determine unencapsulated siRNA. The
+encapsulated siRNA amount was then determined by subtracting
+the unencapsulated siRNA from the total loaded siRNA . The
+siRNA encapsulation was assessed using the following equations.
+
+Encapsulation Efficiency (%) = (Amount of encapsulated siRNA/
+Amount of Total siRNA Loaded) x 100% 
+
+In vitro drug release study
+
+In vitro drug release from prepared CUR-SiRNA-PPL NP was
+performed using a cellulose dialysis membrane. Phosphate buffer
+
+(pH 7.4) containing 1% Tween 80 was used as a medium for the
+release study. One milliliter of the prepared formulation was taken
+into a dialysis bag (molecular weight cut off between 12,000 and
+14,000 K) and dialyzed against a 100 mL release medium. The
+solution was continuously agitated magnetically at 100 rpm at 37
++- 1 degC using an IKA HS7 magnetic stirrer. Two milliliters of the
+sample was withdrawn from the receptor cell at definite time
+intervals (1, 2, 3, 4, 5, 6, 7, 8, and 24 h) and at each time, and the
+medium was compensated with an equal volume of fresh
+dissolution medium. The quantity of drug in the sampled solution
+
+curcumin concentration in the solution, a calibration curve was
+prepared for curcumin (R2 = 0.97 over the concentration range
+between 3 and 200 mg/mL) by employing a pure drug solution
+dissolved in HPLC grade methanol, and the graph was plotted with
+drug release (%) against time (h) [38, 39].
+
+In vitro Cytotoxicity studies
+
+The human lung cancer A594 cell line was incubated in an F12K
+medium containing 10% FBS, 100 mg/mL streptomycin, and 100
+U/ mL penicillin. This was followed by culturing the cells in a 5%
+CO2 atmosphere with 95% air and 95% humidity at 37 degC. Cell
+viability was assessed by the MTT assay. One hundred microliters
+(1.8 x 106 cells/well) of cells was pipetted out and seeded into 96well plates in all the wells except those wells marked as blank and
+then incubated for 12 h to make the cells adhere to the surface of
+the wells. Then, treatment concentrations were added in triplicate
+for all the concentrations except controlled and blank. In the
+controlled wells, only media was taken and incubated on the plate
+for 24, 48, and 72 h. The treatment groups contained CUR
+suspension, CUR-PLGA NPs, and CUR-SiRNA-PPL NP. The cultures
+were treated with MTT solution and additionally incubated for 4 h
+at 37 degC. The supernatants were discarded, and the formazan
+crystals were dissolved by adding 200 mL of DMSO to each well.
+The 96-well plates were then read using a microplate reader
+(Synergy H1) to measure absorbance at 570 nm, with background
+correction at 655 nm .
+
+The following equation was used to calculate the % cell viability
+
+:
+
+$$\left[ {\left( {{\text{Abs57}}0\;{\text{of}}\;{\text{treated}}\;
+{\text{cells}}/{\text{Abs57}}0\;{\text{of}}\;{\text{untreated}}\;
+{\text{cells}}} \right){\text{x1}}00} \right].$$
+
+Percentage cell viability and IC50 were calculated.
+
+In vitro cell uptake study
+
+In vitro cellular uptake of CUR-SiRNA-PPL NPs and CUR-PLGA NPs
+formulations was determined by fluorescent microscope (XD-RFL
+Fluorescence Microscope, SDPTOP, China) using A549 human lung
+cancer cells. Briefly, 200,000 cells/mL cells were seeded in a 12well plate following incubation in a CO2 incubator at 37 degC for
+24 h. The medium was then aspirated and washed with 1 mL of 1X
+PBS. In 1 mL of culture medium required concentration of the
+formulations was then treated and incubated for 2, 4, and 6 h.
+Following treatment, the cells were washed twice with 1X PBS and
+then mounted with 500uLof mounting medium before imaging
+. The cells were then observed with a 20X objective on a
+fluorescence microscope, equipped with an emission filter of
+525/50 nm and an excitation filter of 470/40 nm. ImageJ Software
+v1.48 was used to analyze the images.
+
+Determination of the extent of suppression of targeted
+gene
+
+The extent of suppression of targeted Bcl-2 mRNA and mdr1 was
+
+et al. . Briefly, A549 cancer cells with 70% confluency were
+transfected with CUR-SiRNA-PPL NPs and incubated for 24 h. RNA
+from cells was isolated by utilizing Total RNA purification Mini Kit
+(Favorgen) and its cDNA was synthesized using Verso cDNA
+Synthesis Kit (Thermo Fisher Scientific). The cDNA product was
+then added to reaction mixtures that contained SYBR Green
+(Thermo Fisher Scientific) and standardized DNA primers
+. Then the solution was amplified using a Rotorgene Q (Qiagen)
+5plex real-time PCR machine. b-actin expression was selected as a
+
+housekeeping gene. The following standard primers were used for
+the study: Bcl2, forward (F) AGCTTTGAACAGAATACTTTTGTGG
+and reverse (R) CGACTGAAGAGTGAGCCCAG; and P-gp forward (F)
+GCCGCTTCATTTTCGACTGC and reverse (R)
+CTAGAGTGGAGACTCCGGTGA. Following were the PCR conditions:
+denaturation initially at 95@C for 5 min, followed by 35 cycles of
+denaturation for 30 s at same temperature and annealing for 30 s at
+60@C.
+
+Protein expression/western blot studies
+
+Protein expression levels of P-gp and Bcl2 in cancer cells were
+assessed via western blot analysis. A549 cells 80% confluent, were
+treated with a solution of CUR-SiRNA-PPL NPs. After treatment,
+cells were lysed at 4 degC in RIPA lysis buffer (ELAB SCIENCE)
+supplemented with protease inhibitors. Cell lysates were obtained
+via centrifugation. From the supernatant of centrifuged cell lysates
+protein samples were separated on 10% SDS-PAGE gels and placed
+onto PVDF membranes. The membranes were then probed with
+primary antibodies against P-gp or Bcl2, followed by HRPconjugated goat anti-rabbit IgG (Abcam) for blot development.
+Expression levels of Bcl2 and P-gp were compared relative to bactin, a housekeeping protein. Western blot images were analyzed
+using EZ-Capture MG (Japan) and Image J software[9, 24].
+
+Pharmacokinetic study
+
+The pharmacokinetics study was performed by using Albino Wistar
+rats, 8-10 weeks old having 150-200 gm body weight. The study
+was conducted in accordance with the CPCSEA guidelines, after
+obtaining approval from the Institutional Animal Ethical Committee
+(IAEC) (Ref no: GIPS/IAEC/PhD/PRO/01/2023). Animals were
+provided a standard diet and water ad libitum and maintained in a
+12:12 h light-dark cycle with constant ambient conditions. All rats
+were fasted overnight before the experiment but had free access to
+water. A total of 18 rats either male or female were taken and
+divided into 3 groups (6 in each group). The groups I received CURSiRNA-PPL NP, group II received CUR-PLGA NPs and group III
+received curcumin suspension. The above-mentioned treatments
+were administered intravenously through the tail vein in a dose
+
+equivalent to 50 mg/kg body weight to different groups of animals.
+Then 0.5 mL of blood was collected from each animal at
+predetermined time intervals (0.5 h, 1 h, 2 h, 4 h, 6 h, 10 h, and
+24 h) by retro-orbital puncture and transferred to the K2 EDTA vials
+with immediate vortexing. Blood samples were centrifuged at
+5000 rpm for 20 min at 4 degC. The supernatant (200mL) was
+collected as plasma samples and preserved at -800 C. Then 1.2 mL
+of a mixture of ethyl acetate and methanol (9:1) was added to
+plasma as extracting solvent, vortexed for 5 min, and centrifuged at
+8000 RPM for 20 min at 4 degC. From the supernatant, 1 mL of the
+organic layer was collected, and evaporated, and the residues were
+reconstituted in acetonitrile [42, 43]. Then the CUR concentration
+was determined by HPLC (Arc Waters RPHPLC) using mobile phase
+acetonitrile/water (2% acetic acid) (85:15 v/v) at a flow rate of
+0.5 mL/min and at a wavelength of 425 nm.
+
+In vivo anticancer study and biodistribution study
+
+Animal study design
+
+For performing in vivo anticancer study and biodistribution study,
+Benzo(a)pyrene [B(a)P] induced lung cancer model was followed
+using Balb/c mice. B(a)P, a polycyclic aromatic hydrocarbon
+present in tobacco, is a crucial agent for lung cancer pathogenesis
+. For inducing lung cancer, adult Balb/c mice (20-25 g) of
+either sex were used. The protocol was approved by the IAEC of the
+University (GCU/IAEC/SPON/PRO/4/2023), ensuring all
+
+CPCSEA and Animal Ethical Committee guidelines. Mice were
+housed in Individually Ventilated Caging (IVC) (Orchid Mumbai),
+provided with a standard diet and free access to water, and
+maintained with a 12:12 h light-dark cycle at 25 degC.
+
+In vivo anticancer study
+
+For the in vivo anticancer study, 36 Balb/c mice were taken, and
+they were divided into six groups. Mice of Group-1 (Positive
+Control) were kept in the normal laboratory without any cancer
+induction. Other mice were treated with B(a)P dissolved in corn oil
+
+at a dose of 50 mg/kg body weight orally, twice a week, for
+16 weeks to induce lung cancer . Mice were divided into
+different groups; Group 2 (treatment with saline), Group 3
+(treatment with PPL Blank NPs) (PPL blank NP), Group 4
+(treatment with PPL NPs with curcumin) (CUR-PPL NP), Group 5
+(treatment with CUR-SiRNA-PPL NPs) and Group 6 (treatment with
+CUR suspension). After 16 weeks, the groups were treated with
+the required dose (dosing volume 100 ul) by intravenous (IV)
+administration through tail-vein for 12 days (every 3rd day, leading
+to a total of 5 dosing/mice). On the 13th day after treatment, the
+mice were euthanized by cervical dislocation, and lungs were
+collected and observed for the growth of the tumor. The tumor size
+was assessed by measuring two perpendicular dimensions using
+Vernier calipers. Tumor volume was determined using the formula:
+
+$${\text{V}} = \left( {{\text{W}}^{{2}} \times {\text{L}}}
+\right)/{2},$$
+
+where "L" is the tumor length at the longest point, and "W" at
+the widest point .
+
+The tumor inhibition ratio (TIR %) was calculated using the
+formula:
+
+$${\text{TIR}}\left( \% \right) = \left( {{\text{Wc}} -
+{\text{Wt}}} \right)/{\text{Wc}} \times {1}00\% .$$
+
+where Wc and Wt are the mean weight of the tumor of the saline
+group and treatment group respectively .
+
+In vivo biodistribution study
+
+The in vivo biodistribution study was performed on 18 B(a)P
+induced balb/c mice by inducing lung cancer as described by Velli
+et al. ; Kasala et al. ; Magesh et al.  for up to 16 weeks.
+After 16 weeks, the mice were divided into 3 groups, and the
+treatments (SiRNA-CUR-PPL NP, CUR-PPL NP, and CUR-Susp) were
+given to the three groups with the required dose (dosing volume
+100 ul) respectively, by intravenous (IV) administration through
+tail-vein. The mice were then euthanized by cervical dislocation,
+and the major organs like the heart, liver, spleen, kidney, and lung
+
+were excised, washed, and weighed. The separated organs were
+then homogenized (IKA T25 digital Ultra-Turrax) with PBS,
+centrifuged at 5000 rpm for 20 min at 4 degC and the supernatant was
+collected. Acetonitrile was added to the resulting solution for
+deproteinization. Ethyl acetate (1.2 mL) and methanol (9:1) mixture
+was added to the solution, vortexed for 5 min, and centrifuged at
+8000 RPM for 20 min at 4 degC. From that, 1 mL organic layer was
+collected, evaporated, and reconstituted in acetonitrile [42, 43].
+CUR concentration was determined by HPLC using acetonitrile (2%
+acetic acid) (85:15 v/v) at 0.5 mL/min and 425 nm wavelength.
+
+TNF-a and p53 marker estimation
+
+Plasma from each mouse group was collected for analysis. TNFalpha and p53 levels were determined using an ELISA kit
+(Elabscience) and FineTest TP53 ELISA kit, respectively, using the
+standard protocol and absorbance was read at 450 nm.
+
+Histopathology study
+
+A histopathological study was conducted by collecting the lung
+tissues from all the animals. Specimens of lung tissues were fixed in
+10% formalin solution at room temperature. Subsequently, tissues
+were dehydrated in graded alcohol series, clearing in xylene,
+embedding in paraffin to make blocks of 4-5 microns. Paraffinembedded tissue blocks were sectioned into a thickness of 4 mm
+using a rotary microtome. After deparaffinizing the samples, they
+were stained with hematoxylin and eosin (H&E), and examined
+under a light microscope .
+
+using FTIR and 1H NMR. The targeting ligand (LHRH) was then
+
+conjugated with this synthesized di-block polymer PPCH by
+carbodiimide chemistry to form PPL using DMAP as a catalyst.
+
+Confirmation of PPL conjugates
+
+The confirmation of the formation of PPL nanoconjugate was
+performed by FTIR, 1H NMR, XPS, and BCA analyses of the free
+polymer and the conjugates.
+
+FTIR analysis
+
+FTIR analysis was used to confirm the conjugation of LHRH to
+PPCH. The FTIR spectra for acid-terminated PLGA displayed (Fig. 1
+A) characteristic peaks at 1743 cm-1,1161 cm-1 and 1080 cm-1.
+In addition to the peaks for PLGA, the spectra of the PPCH
+conjugate (Fig. 1 A) exhibited additional peaks at 2945 cm-1,
+1566 cm-1, 1359 cm-1, 1277 cm-1 and 961 cm-1. The FTIR
+spectra for PPL (Fig. 1 A) revealed additional peaks, in addition to
+those observed for PPCH, at 3302.82 cm-1, 1560 cm-1, and an
+increased intensity at 1650 cm-1.
+
+Fig. 1
+[image]
+
+Confirmation of conjugates; A FTIR spectra of PLGA-COOH, PLGAPEG-COOH and PLGA-PEG-LHRH, B and C 1H NMR spectra of
+PLGA-COOH and PLGA-PEG-LHRH, D XPS Spectra of PLGA-PEGLHRH
+
+Full size image
+
+1H NMR study
+
+The standard 1H NMR spectra were analyzed for acid-terminated
+PLGA and the peaks obtained (Fig. 1 B) at 1.47 ppm, 4.8 ppm, and
+5.2 ppm. At 3.5 ppm an additional peak (Fig. 1 C) was observed in
+the case of PPL, in addition to a small peak at 7.0 ppm, 2.49 to
+2.5 ppm, 4.9 and 5.2 ppm. Thus, the finding confirms the synthesis
+of PPL.
+
+XPS study
+
+The conjugation of LHRH to PPCH was further verified based on the
+presence of a nitrogen peak in XPS corresponding to amide
+formation with the peptide. Nitrogen peak was originally absent in
+
+Based on data on particle size, size distribution analysis, and drug
+entrapment efficiency, the obtained PLGA NPs were optimized by
+using different variables like sonication time, different stabilizers,
+and concentration of stabilizer, etc., as shown in Table 1. In this
+study, curcumin being the hydrophobic drug was directly added to
+the organic phase containing the PPL conjugate. It was then
+emulsified with the aqueous phase containing siRNA along with PLL
+in nuclease-free water. The resulting primary emulsion is then
+added in a larger aqueous phase containing the stabilizers and
+stirred for the formation of more homogenous nanoformulation
+followed by evaporation at room temperature for the removal of the
+organic solvents .
+
+Table 1 Formulation table for optimized curcumin-SiRNAPLGA-LHRH Nanoparticle (CUR-SiRNA-PPL NPs) (mean +- SD, n
+= 3)
+
+Full size table
+
+Particle size and polydispersity index analysis
+
+The size, polydispersity index (PDI), and zeta potential are
+important properties that affect the stability and performance of
+NPs. Particle size and PDI were determined by dynamic light
+scattering technique using Malvern Zeta sizer. The mean particle
+size of CUR-SiRNA-PPL NPs was obtained in the size range of 179.5
++- 16 nm and polydispersity of 0.155 +- 0.14 (Fig. 2 A). The zeta
+
+ratio of acetonitrile/water (2% acetic acid), flow rate, and run time.
+Based on the research, the ideal mobile phase ratio was determined
+to be 85:15 v/v of acetonitrile to water (2% acetic acid), with a
+flow rate of 0.5 mL/min. A calibration curve with linearity R2 =
+0.9913 and y = 35744x + 353,956 was produced at different
+dilutions ranging from 3 mg/mL to 200 mg/mL.
+
+Entrapment efficiency
+
+The prepared CUR-SiRNA-PPL NPs showed curcumin entrapment
+efficiency (% DEE) as 85.7 +- 2.4%. The siRNA encapsulation
+
+efficiency was found to be 97.16 +- 1.32%.
+
+In vitro drug release study
+
+The in vitro release profile of CUR-SiRNA-PPL NPs formulation is
+shown in Fig. 2 D. The cumulative percentage release of curcumin
+was investigated in phosphate buffer pH 7.4 containing tween 80
+(1%), for 24 h using a dialysis bag technique. From the release
+study, the cumulative percent drug release was observed
+approximately 83 +- 2% in 24 h.
+
+In vitro cytotoxicity studies (MTT) inA549 cell lines
+
+The impact of the prepared siRNA-LHRH delivery systems on cell
+cytotoxicity was determined by using MTT assay on A549 cells. The
+cell viability of the CUR-SiRNA-PPL NPs (LHRH-targeted), PLGA NP
+(non-targeted), and CUR suspension was determined in vitro
+utilizing MTT colorimetric assay against A549 lung cancer cell lines
+
+After the treatment, RNA was extracted and cDNA was synthesized.
+The quantification of the extracted cDNA was done with the help of
+a microplate reader (Synergy BIOTEK), and the amount was found
+to be 14.217 ng/ul. Then, Ct values and the relative fold change
+values were calculated from the data obtained in qRT-PCR. The
+
+for (A) p-gp and (B) bCL2 on A549 lung cancer cells after 24h of
+
+treatment. (C) The expression levels of p-gp and BCL2 proteins
+
+levels of P-gp or Bcl2 proteins were plotted by taking b actin as
+a control. The expression levels of Bcl2 and P-gp protein in A549
+cells were significantly reduced after treatment with CUR-SiRNAPPL NPs.
+
+Pharmacokinetic study
+
+The effect of the formulation on the extent of absorption and
+systemic circulation was then observed in Wistar rats. The
+pharmacokinetic study was conducted by analyzing the drug
+concentration in the collected blood samples from the treated rats.
+Extraction of curcumin from the plasma of Wistar rats was obtained
+
+methanol and ethyl acetate. The plasma drug concentration-time
+profiles and pharmacokinetic parameters, such as tmax, Cmax, AUC024, AUC0-, and t1/2 of curcumin for each formulation were
+determined and are shown in Table 3. The pharmacokinetic profile
+of Free Cur, Cur-PLGA NP, and CUR-SiRNA-PPL NPs was evaluated
+based on key parameters. The plasma drug concentration profile
+(Fig. 6 B) of CUR-SiRNA-PPL NPs showed significant enhancement
+in drug absorption compared to the reference formulation. CurPLGA NP and CUR-SiRNA-PPL NPs exhibited prolonged half-lives
+(T 1/2) of 12.9 +- 3.29 and 11.1 +- 1.71 h, respectively, compared to
+CUR suspension (5.1 +- 0.94 h). Both formulations demonstrated
+higher AUC values, approximately 3.8 and sixfold greater than that
+of CUR suspension respectively, indicating enhanced bioavailability.
+Notably, CUR-SiRNA-PPL NPs displayed the highest AUC0- (82.1
+
++- 3.9 uM*hr) and Cmax (4.6 +- 0.58 uM), suggesting sustained
+release and increased peak concentration.
+
+Table 3 Pharmacokinetic parameters of CUR-SiRNA-PPL NPs,
+Cur-PLGA NP, and CUR suspension in rats (mean +- SD, n = 6)
+
+Full size table
+Fig. 6
+[image]
+
+A Plasma Drug concentration-time curve of three different
+treatments (n = 6), B Quantitative distribution of CUR in tissues of
+rats following iv administration of three treatments (mean +- S.D, n
+= 3)
+
+Full size image
+
+In vivo biodistribution study
+
+The concentration of CUR in different tissues was determined by
+performing in vivo biodistribution in B(a) P-induced lung cancerbearing balb/c mice. The biodistribution study was performed at
+a 24-h time point after intravenous administration of free CUR,
+CUR-PPL NPs, and CUR-SiRNA-PPL NPs in Balb/c mice and isolated
+the distinct organs like lung, liver, kidney, heart, and spleen. The
+comparative biodistribution of drugs in different organs in the three
+treatment groups is shown in Fig. 6. As shown in Fig. 6 B, the drug
+in the free CUR-treated group was mainly distributed to the spleen
+and liver, and a very small amount to the lung, heart, and kidney
+after 24 h of injection. However, the SiRNA-CUR-PPL NPs group
+showed a significant amount of curcumin (5.80 +- 0.62 ng/g) in
+the lung as compared to the other examined organs. SiRNA-CURPPL NP groups did not exhibit a significant increase in drug
+accumulation. Furthermore, CUR-PPL NP-treated groups also
+showed higher drug concentration in the lung (4.17 +- 0.84 ng/g) as
+compared to the other organs, but the drug concentration was lesser
+than the siRNA-CUR-PPL NP-treated groups. From the study, it was
+observed that siRNA-CUR-PPL NP exhibited maximum drug
+concentration in the lung tumor tissue than CUR-PPL NP (P < 0.05)
+and free-CUR groups (P < 0.05) but not in the other organs.
+
+In vivo anticancer study
+
+The in vivo anticancer activity in human lung cancer-bearing Balb/
+c mice was used to further confirm the in vitro antitumor activity
+
+and drug resistance have hindrances in its effectiveness. Drug
+resistance primarily occurs through pump and non-pump
+mechanisms . In most of the studies, the pump mechanism is a
+major concern in the development of therapies for resistant cases.
+However, a more wholesome approach is needed directing at both
+pump and non-pump mechanisms. Reports of studies on this type of
+approach are very limited. However, combination therapies with
+co-delivering down regulators of both pump and non-pump
+mechanisms have high potential. This along with selective delivery
+of anticancer drugs toward cancer cells through active targeting
+
+optimized using different variables like sonication time, different
+stabilizers, and concentration of stabilizer, etc. In this study,
+curcumin being the hydrophobic drug was directly added to
+the organic phase containing the PPL conjugate. It was then
+emulsified with the aqueous phase containing siRNA along with PLL
+
+water (2% acetic acid) as mobile phase, with a flow rate of 0.5 mL/
+min. The prepared CUR-SiRNA-PPL NPs showed high curcumin
+entrapment which may be due to the high solubility of the drug in
+the lipophilic core. The solubility and stability of poorly watersoluble drugs (e.g., CUR) can be improved by surrounding the
+molecules inside a nanocarrier. The inclusion of CUR into the core
+of PLGA NPs significantly increased the solubility and effectiveness
+of the anticancer property . The siRNA encapsulation efficiency
+was exceptionally high, indicating robust incorporation of siRNA
+within the PLGA NPs, emphasizing their effectiveness as a delivery
+
+system. This high entrapment of curcumin and siRNA was very
+essential for sufficient release and absorption of these drugs. From
+the release study, the cumulative percent drug release was observed
+approximately 83 +- 2% in 24 h indicating a sustained release. This
+could be due to the stable incorporation of the drug within the
+PLGA core of the nanoconjugates, and the polymeric shell restricted
+rapid drug release into the dialysate [7, 52].
+
+The impact of the prepared siRNA-LHRH delivery systems on cell
+cytotoxicity was determined by using MTT assay on A549 cells. The
+
+determine the gene suppression effects of CUR-SiRNA-PPL NPs, the
+reduction in MDR1 and BCL2 mRNA levels was quantitatively
+
+## Results
+The PPL conjugate was successfully synthesized and characterized
+using FTIR, 1H NMR, XRD, XPS and BCA assay. Curcumin and
+bclsR-loaded PLGA nanoemulsions were prepared by double
+
+targeting in lung cancer drug delivery, luteinizing-hormone
+releasing hormone (LHRH) peptide which is specific to extracellular
+overexpressed receptors in lung cancer cells can be targeted [23,
+30, 33]. In healthy lung cells, LHRH expression is quite low, but it
+is increased in the malignant condition . LHRH peptides are
+extensively investigated for their targeting capabilities and delivery
+of anticancer drugs to LHRHR-overexpressing sites. Shitole et al.
+ formulated PPL nanocapsules encapsulating both docetaxel
+and quercetin, demonstrating their efficacy against prostate cancer
+. Similarly, Cao et al.  formulated PPL polymer micelles
+encapsulating docetaxel, reporting improved anticancer activity
+against prostate cancer due to LHRH targeting . In a separate
+study, Li et al.  developed LHRH-targeted polysaccharide
+nanoparticles for cisplatin delivery in breast cancer, achieving
+higher cellular internalization in MCF-7 cells and improved tumor
+accumulation and suppression compared to non-targeted
+nanoparticles . Hence the nanoparticles can be specifically
+targeted to tumor cells by conjugating with ligands, siRNAs, or
+antibodies .
+
+Despite all the developments in the use of nanoformulations for
+better therapy of lung cancer, its successful translation to clinical
+application is still lacking. Heterogenicity of tumors, insufficient
+delivery, toxicity, and resistance are some of the major issues to be
+addressed. The design of multifunctional nanoformulations with a
+
+more combined approach is therefore necessary for better delivery
+against these cells. Hence, in the present study, a multifunctional
+approach has been designed for better site-specific delivery to lung
+cancer cells by employing curcumin as a powerful anticancer drug
+and a possible p-gp inhibitor downregulating the efflux pumps, and
+siRNA targeting the BCL2 mRNA to downregulate its apoptosis
+
+uptake by cancer cells, enhancing the effectiveness of anticancer
+medications and decreasing the related systemic toxicity. Many
+efforts have been made to reduce drug resistance focusing on
+downregulating any one mechanism. However, very limited
+attempts have been made till now to inhibit both pump and nonpump mechanisms simultaneously along with an active targeting
+mechanism. This study proposes using curcumin as a potential P-gp
+inhibitor to downregulate efflux pump-mediated resistance and
+bclsR to downregulate bcl2 mRNA-regulated non-pump resistance
+along with active targeting of cancer cells by using LHRH ligand.
+Hence, the development of a multifunctional nanoconjugate with
+more site-specific delivery along with down regulators of both
+mechanisms shall be an innovative approach for designing therapy
+addressing both problems of systemic toxicity and drug resistance
+involved in chemotherapy of lung Cancer.
+
+Preparation of PPL conjugates
+
+The PPCH copolymer was synthesized from the activated acidterminated PLGA and then reacted with heterofunctional PEG and
+NH2-PEG-COOH as per the procedure discussed in the
+
+BCA protein assay
+
+The amount of LHRH in the PPL was further assessed
+spectrophotometrically using the BCA protein assay kit (Abcam)
+(LHRH being a peptide). At 562 nm, the study reported
+the presence of 61 +- 5.12 mmol LHRH/g in the PPL conjugate.
+
+Formulation of drug- and siRNA-loaded nanoparticles
+
+The curcumin and bclsR were loaded in the PLGA nanoformulation
+by the double emulsion (w1/o/w2) solvent evaporation followed by
+
+exhibited good stability, with zeta potential values ranging from
+-17.0 to -17.4 mV (Fig. 2 B). Particle size and morphology were
+studied by incorporating TEM analysis. From the TEM images,
+the homogeneous and spherical size of the formulation was
+observed with uniform dispersion and no particle aggregation. The
+
+evidence of surface conjugation in the NPs was also observed from
+the TEM image as shown in Fig. 2 C.
+
+Fig. 2
+[image]
+
+Characterization of CUR-SiRNA-PPL nanoparticles. A Particle size
+and size distribution, B zeta potential, C TEM image showing
+surface conjugation, D in vitro drug release of CUR-SiRNA-PPL NPs
+in PBS (pH 7.4)
+
+Full size image
+
+demonstrated significant enhancement in cytotoxicity of drugs in
+using siRNA conjugate. A comparison between the % viability of
+different formulations according to concentration is shown in Fig. 3
+C. The IC50 value for the treatments with CUR-SiRNA-PPL NPs
+(LHRH-targeted) and CUR-PLGA NP formulations was found to be
+
+Fig. 3
+[image]
+
+Cell viability of study of CUR-SiRNA-PPL NPs, CUR-PLGA NP, and
+CUR suspension on A549 cells after 24 h (A) and 48 h (B)
+treatment. C IC50 values the three formulations after 24 h and 48 h
+treatment
+
+Full size image
+Table 2 IC50 values of A549 cells after 24 and 48 h of
+treatment (mean +- SD, n = 3)
+
+Full size table
+
+In vitro cell uptake studies
+
+In vitro cellular uptake of CUR-SiRNA-PPL NPs, CUR-PLGA NPs
+formulations, and CUR suspension was determined in A549 human
+
+cellular uptake increased with time (2, 4, and 6 h) showing
+the highest uptake at 6 h in all three treatments as shown in Fig. 4.
+The cellular uptake in CUR-SiRNA-PPL NPs was comparatively
+higher than Cur-PLGA NPs with the curcumin suspension showing
+the least uptake.
+
+Fig. 4
+[image]
+
+Fluorescence images of qualitative cellular uptake of CUR-SiRNAPPL NPs, CUR-PLGA NP, and CUR suspension in A549 cells after 2,
+4, and 6 h of treatment
+
+Full size image
+
+Determination of the extent of suppression of targeted
+gene
+
+To determine the gene suppression effects of CUR-SiRNA-PPL NPs,
+the reduction in MDR1 and BCL2 mRNA levels was quantitatively
+
+A549 cells were significantly lowered by ~ 87.57% and ~ 68.70%,
+respectively, compared to those in the untreated A549 cells (Fig. 5
+A and B respectively) conforming to the considerable
+downregulation of P-gp and Bcl2 mRNA gene.
+
+Fig. 5
+[image]
+
+represents statistical significance of (p <= 0.05)
+
+Full size image
+
+Western blot studies
+
+Western blotting studies were performed to determine the
+expression of Bcl2 and P-gp proteins in A549 cancer cells. A typical
+immunoblotting picture (Fig. 5 C) was shown after each gel was
+
+corresponding treatments were given to the animals. On the 15th
+day, it was observed that the CUR-siRNA-PPL NP group's mean
+tumor volume (18 +- 4.6 mm3) was notably lower than (Fig. 7) that
+of the CUR-PPL NP group (64 +- 8.5 mm3), CUR-Susp group (112.5
++- 17.4 mm3), Blank-PPL NP group (1008 +- 27 mm3) and saline
+
+grew very fast in mice with treatments of saline group and PPL
+blank NPs. Tumor growth was also evident in other organs of
+the spleen, liver, and intestine indicating metastasis in these groups
+as shown in Supplementary Fig. 1. While every treatment group
+using drug-encapsulated NCs showed some degree of antitumor
+activity. The tumor size reduction was found to be in the following
+order of magnitude when compared to the saline group, CURsiRNA-PPL NP > CUR-PPL NP > CUR-Susp > Blank-PPL NP. The
+delivery of CUR-siRNA-PPL NP exhibited the strongest anticancer
+efficacy. The percentage tumor inhibition ratio (TIR%) on the 15th
+day was found as 66.89% for the CUR-siRNA-PPL NP groups, which
+was higher than the CUR-PPL NP group (59.84%), CUR-Susp group
+(45.05%) and blank-PPL NP-treated group (12.99%) (Fig. 7).
+
+Fig. 7
+[image]
+
+In vivo tumor inhibition ratios (TIR%) in benzo(a) pyrene induced
+lung cancer bearing mice (n = 6) treated with Saline, blank -PPL
+NP, CUR-PPL NP, CUR-siRNA -PPL NP and CUR-Susp
+
+Full size image
+
+TNF-a and p53 estimation
+
+P53 level was found to increase showing 96.41 pg/ml for negative
+control, whereas 187.84 pg/ml and 151.08 pg/ml for CUR-siRNAPPL NCs and CUR-PPL NCs, respectively. Moreover, the levels of
+TNFa were found to be reduced from 161.93 pg/ml for negative
+
+control to 25.54 pg/ml and 68.86 pg/ml for CUR-siRNA-PPL NCs
+and CUR-PPL NCs, respectively.
+
+Histopathology study
+
+different groups and healing (Fig. 8). After 15 days of treatment and
+subsequent isolation of lung tissue, it was observed that the lung
+tissues of the control group displayed normal histological
+architecture with well-defined alveolar spaces, bronchioles, and
+blood vessels (Fig. 8A). Saline-treated group (Fig. 8B) and blank
+PPL NP-treated groups (Fig. 8C) exhibited a well-defined tumor
+with a fibrous capsule, increased fibrosis, inflammatory cell
+infiltration, severe squamous epithelial thickening, mild bronchitis,
+interalveolar hemorrhages, and bronchiolar epithelium thickening.
+CUR-PPL NP-treated group (Fig. 8D) also showed moderate
+inflammatory cell infiltration, mild bronchitis, interalveolar
+hemorrhages, and bronchiolar epithelium thickening. In CURSiRNA-PPL NP-treated group (Fig. 8E) displayed mild to moderate
+inflammatory cells. Mild fibrosis was noted in some areas,
+suggesting tissue remodeling and repair. The free CUR-treated
+group (Fig. 8F) demonstrated moderate inflammatory cell
+infiltration, blood vessel congestion, alveolar space inflation, and
+mild septal inflammation. The CUR-SiRNA-PPL NP group showed
+mild inflammatory and vascular changes with some normal alveolar
+structures, suggesting a less severe pathological condition. Whereas,
+the saline-treated group and blank PPL NP showed inflammation,
+with extensive hyperchromatic cell proliferation and severe
+vascular congestion.
+
+Fig. 8
+[image]
+
+Histopathology images of tissue samples from the lung tumor; mice
+(n = 6) were treated with (A) control group, (B) saline group (C)
+PPL blank NP, (D) CUR-PPL NP, (E) CUR-SiRNA-PPL NPs, (F) CUR
+suspension
+
+Full size image
+
+current study, an attempt is made to develop a combination therapy
+by using curcumin, which is an effective anticancer drug and P-gp
+inhibitor [15, 49], and siRNA targeting BCL-2 mRNA. Besides, a
+nanoconjugate was also developed by using LHRH peptide for sitespecific delivery which innovatively addressed systemic toxicity and
+drug resistance in lung cancer chemotherapy. LHRH targeting
+reduces non-specific interactions, lowering systemic toxicities,
+increasing vesicle accumulation at the lung tumor site, and
+enhancing therapeutic efficacy . In the present work, therefore
+a PPL conjugate system was developed for the selective delivery to
+the target cells.
+
+The PPCH copolymer was synthesized from the activated acidterminated PLGA followed by a reaction with heterofunctional PEG
+and NH2-PEG-COOH. The structure of the copolymer PPCH was
+confirmed using FTIR and 1H NMR. The targeting ligand (LHRH)
+was then conjugated with this synthesized di-block polymer PPCH
+by carbodiimide chemistry to form PPL using DMAP as a catalyst.
+The confirmation of the formation of PPL nanoconjugate was
+performed by FTIR, 1H NMR, XPS, and BCA analyses of the free
+polymer and the conjugates. FTIR analysis was used to confirm the
+conjugation of LHRH to PPCH. The FTIR spectra for acid-terminated
+PLGA displayed characteristic peaks at 1743 cm-1 for the C = O
+stretch and 1161 cm-1 and 1080 cm-1 corresponding to the C - O
+
+stretch of PLGA. In addition to the peaks for PLGA, the spectra of
+the PPCH conjugate (Fig. 1 A) exhibited additional peaks at
+2945 cm-1of C - H stretch of CH2, 1566 cm-1 for N-H amide,
+1359 cm-1 for C-H bending of alkane group, 1277 cm-1 for C-O
+stretching ether and 961 cm-1 for C-H stretching of alkane group,
+thereby, confirming the covalent conjugation of acid-terminated
+PLGA with NH2-PEG-COOH and thus, synthesis of diblock
+copolymer PPCH. The FTIR spectra for PPL (Fig. 1 A) revealed
+additional peaks, in addition to those observed for PPCH, at
+3302.82 cm-1 for the NH stretch of amide, 1560 cm-1 for the -NH
+amide bands, and an increased intensity at 1650 cm-1
+
+corresponding to the C = O amide/peptide bond. These
+observations confirm the formation of the PPL conjugate.
+
+The standard 1H NMR spectra were analyzed for acid-terminated
+PLGA and the peaks obtained at 1.47 ppm (-CH3) Methyl, 4.8 ppm
+(-CH2-) Methylene, and 5.2 ppm (-CH-) Methine of PLGA lactide. At
+3.5 ppm, an additional peak (Fig. 1 C) was observed in the case of
+PPL corresponding to the (-CH2-) Methylene group of PEG, a small
+peak at 7.0 ppm corresponding to an aromatic proton, 2.49 to
+2.5 ppm corresponding to (NCOCH3), at 4.9 and 5.2 corresponding
+to glycolide and lactide respectively. Thus, the finding confirms the
+synthesis of PPL. The conjugation of LHRH to PPCH was further
+verified based on the presence of a nitrogen peak in XPS
+corresponding to amide formation with the peptide which was
+originally absent in the PLGA-curcumin nanoparticle. The BCA
+protein assay reported the presence of LHRH in a significant
+amount in the PPL conjugate confirming of conjugation of the
+peptide ligand to the PPCH intermediate.
+
+The curcumin and bclsR were co-loaded in the PLGA
+nanoformulation by the double emulsion (w1/o/w2) solvent
+
+in better siRNA entrapment in the nanoparticles and avoid the
+
+toxicity to polyethyleneimine (PEI) which is mostly used otherwise
+. The size, polydispersity index (PDI), and zeta potential are the
+important properties that affect the stability and performance of
+NPs. The prepared siRNA- and CUR-loaded PPLNPs (CUR-SiRNAPPL NPs) offer stealth properties with the help of PEG coating
+against opsonin adsorption and macrophage interaction resulting in
+reduced RES uptake. It also creates a hydrophilic surface, enhancing
+solubility and prolonging circulation time in vivo. These properties
+indirectly increase vesicle accumulation at the tumor site via the
+EPR effect [20, 23]. The EPR effect in tumor targeting is enhanced
+by NP of sizes between 100 and 200 nm . The mean particle
+sizes of the NPs were found less than < 200 nm, which is clinically
+relevant for tumor targeting by the EPR effect . The decrease in
+size of the resulting PLGA NPs might be due to the PEGylation of
+PLGA which could be due to the hydrophilic properties of PEG,
+causing a decrease in the tension at the interface of organic and
+aqueous phase . The homogeneity and small size of the
+resulting NPs might also be due to the sonication during
+emulsification where the high energy is released . The prepared
+NPs showed good stability in terms of zeta potential which could be
+attributed to the presence of PVA as the steric stabilizer. Some
+amount of steric stabilization is also due to the PEG segment due to
+the salvation effect . The TEM images showed spherical and
+homogeneous NPs with no aggregation and the conjugated NPs
+showed a notable outer layer of mushroom-like structure on the NPs
+surface, which may be due to the surface conjugation of LHRH
+supporting the core-shell structure and potentially targeting the
+LHRH receptor of cancer cells .
+
+drugs in using siRNA conjugate. The IC50 value for the treatments
+with CUR-SiRNA-PPL NPs (LHRH-targeted) and CUR-PLGA NP
+formulations was found to be lower as compared to free-CUR. The
+observed reduction in IC50 values (by more than twofold) for
+LHRH-targeted NPs may be attributed to the affinity-based targeting
+of the LHRH ligand, which likely enhanced the accumulation of NCs
+within the cells . According to the literature, higher
+cytotoxicity of NP-formulated drugs arises from NPs adsorbing on
+the cell surface, increasing local drug concentration, and creating a
+gradient that enhances drug influx into the cell . The capacity
+of NCs to accumulate within the cells may be the cause of the
+variation in cell viability between the free-drug and NCs form of
+CUR, as demonstrated by the outcomes of in vitro cellular uptake.
+In vitro cellular uptake was determined in A549 human lung cancer
+cells by fluorescent technique. The cellular uptake in CUR-SiRNAPPL NPs was comparatively higher than Cur-PLGA NPs with the
+curcumin suspension showing the least uptake. This increased
+cellular uptake might be due to the ligand-mediated internalization
+in the tumor cells and enhanced permeability and retention in the
+tumor cells. This might have resulted in a higher concentration of
+the drug resulting in increased cytotoxicity. Similar studies using
+LHRH as a targeting moiety have shown enhanced cellular uptake
+of LHRH-linked nanoformulations compared to non-targeted ones in
+breast Cancer  and lung Cancer .
+
+Another important aspect of the study was to decrease the
+resistance by downregulating both pump and non-pump
+mechanism. Accordingly, the p-gp inhibition potential of curcumin
+and BCL2 downregulation by bclsR was explored. P-gp is mainly
+
+responsible for drug efflux and Bcl-2 mRNA is responsible for
+controlling cell survival. So, the control of P-gp and Bcl2 gene
+expression is vital for the effectiveness of anticancer drug delivery.
+The downregulation of these two genes was quantitatively
+
+A549 cells were significantly lowered compared to those in the
+untreated A549 cells conforming to the considerable
+downregulation of the P-gp and Bcl2 mRNA gene. The
+downregulation of the P-gp expression could be attributed to
+curcumin which is also a potential P-gp inhibitor supporting similar
+reports by Choi et al.,  who have shown earlier that curcumin
+(15-45 uM) downregulates P-gp expression within 48 h of
+treatment in resistant L1210/Adr cells. The bclsR was effective in
+silencing of Bcl2 mRNA expression. Similar downregulation of
+Bcl2mRNA has been reported earlier by siRNA [10, 24]. The
+obtained downregulations in the present study hold significance
+considering that reports of such downregulations by both
+mechanisms are very limited. This silencing effect of CUR-siRNAPPL NP on P-gp and Bcl2 proteins was further analyzed via western
+blot analysis by using specific primary antibodies for P-gp and Bcl2
+proteins. The quantitative levels of P-gp or Bcl2 proteins were
+plotted by taking b actin as a control. The expression levels of Bcl2
+and P-gp protein in A549 cells were significantly reduced after
+treatment with CUR-SiRNA-PPL NPs. Overexpressing P-gp can lead
+to a significant reduction in intracellular drug concentrations by
+mediating drug efflux . After treatment with CUR-siRNA-PPL
+NPs, P-gp protein expression was efficiently reduced, indicating that
+NPs can reverse MDR through the P-gp pathway. Also, the
+concurrent administration of CUR and bclsR effectively silenced the
+Bcl2 mRNA, reducing the non-pump resistance and hence increasing
+
+drop in P-gp and Bcl2 protein levels suggests that the produced NPs
+can effectively down-regulate the expression of both genes that are
+strongly linked to both pump and non-pump types of resistance
+
+by Taratula et al. , and Chen et al.  showing that bclsR
+
+successfully downregulated Bcl-2 mRNA, greatly reducing nonpump resistance, and increasing the activity of anticancer drugs.
+Hence, the proposed nanoconjugate system delivers anticancer
+drugs and siRNA into lung cancer cells, inducing cell death and
+suppressing pump and non-pump drug resistance. This targeted DDS
+preserves the specific activity of both, enhancing drug cytotoxicity
+through simultaneous cell death induction and resistance
+suppression.
+
+The effect of the formulation on the extent of absorption and
+systemic circulation was then observed in Wistar rats. The plasma
+drug concentration profile of CUR-SiRNA-PPL NPs showed
+significant enhancement in drug absorption compared to the
+reference formulation. Cur-PLGA NP and CUR-SiRNA-PPL NPs
+exhibited prolonged half-lives (T 1/2) of 12.9 +- 3.29 and 11.1 +-
+1.71 h, respectively, compared to Cur suspension (5.1 +- 0.94 h).
+This may be attributed to the long circulating sustained release
+behavior of the PPL conjugate as well as Clearnace evading
+
+docetaxel-based PLGA-PEG Nanoparticles have been reported by
+Rafieie and Hadadi . Both formulations demonstrated higher
+AUC values, approximately 3.8 and sixfold greater than that of CUR
+suspension respectively, indicating enhanced bioavailability.
+Notably, CUR-SiRNA-PPL NPs displayed the highest AUC0- (82.1
++- 3.9 uM*hr) and Cmax (4.6 +- 0.58 uM), suggesting sustained
+release and increased peak concentration. These findings suggest
+that the nanoformulations improve the pharmacokinetic parameters
+of curcumin, potentially enhancing its therapeutic efficacy. The
+pharmacokinetic analysis revealed that the groups administered
+with CUR-SiRNA-PPL NPs and CUR-PLGA NPs showed significantly
+greater tmax than groups with CUR suspension indicating a more
+sustained release. This may be because the drug is released from the
+core of polymeric NPs indicating a more sustained release and
+absorption of the drug in these groups. In comparison with the
+control group (CUR suspension), a large magnitude of AUC0-24 and
+AUC0- in the test group was observed. This indicates a high level
+of drug availability over a longer period in the plasma. This can be
+attributed to the nanoparticulate size of < 200 nm resulting
+in greater surface area for absorption and also due to the drug's
+long-term sustained release behavior from the polymeric core in the
+
+in vivo system. The half-life (t1/2) of the drug in the test group was
+much longer than the control group, indicating that the drug release
+behavior was sustained. This may also be attributed to the
+PEGylation resulting in reduced RES uptake. The improved blood
+retention of CUR-SiRNA-PPL NPs is attributed to their uniform,
+slightly negative charges, and delayed drug release. This long
+circulation and sustained release enhance tumor site accumulation
+via the EPR effect and reduce systemic toxicity . One such
+study by Li et al.,  showed prolonged blood circulation,
+retaining over 7% after 24 h for the LHRH-targeted Cisplatin
+nanoparticles as compared to free cisplatin .
+
+The concentration of CUR in different tissues was determined by
+performing in vivo biodistribution in B(a) P-induced lung cancerbearing balb/c mice. The biodistribution study was performed at
+a 24-h time point after intravenous administration of free CUR,
+CUR-PPL NPs, and CUR-SiRNA-PPL NPs in Balb/c mice and isolated
+the distinct organs like lung, liver, kidney, heart, and spleen. The
+drug in the free CUR-treated group was mainly distributed to the
+spleen and liver and a very small amount to the lung, heart, and
+kidney after 24 h of injection. However, the SiRNA-CUR-PPL NPs
+group showed a significant amount of curcumin in the lung as
+compared to the other examined organs, indicating that drug
+loading is improved in the lung tumor target site and reduced in
+other organs. In comparison with other normal tissues, SiRNA-CURPPL NP groups did not exhibit a significant increase in drug
+accumulation. Furthermore, CUR-PPL NP-treated groups also
+showed higher drug concentration in the lung as compared to the
+other organs, but the drug concentration was lesser than the siRNACUR-PPL NP-treated groups. From the study, it was observed that
+siRNA-CUR-PPL NP exhibited maximum drug concentration in the
+lung tumor tissue than CUR-PPL NP (P < 0.05) and CUR suspension
+groups (P < 0.05) but not in the other organs. This can be
+attributed to the active targeting of cancerous cells with
+overexpressed receptors due to the LHRH ligand. The phenomenon
+of LHRH peptide binding is indeed responsible for the increased
+drug accumulation in the tumor. The study further demonstrates the
+superiority of active tumor targeting over passive macromolecular
+treatment targeting via the EPR phenomenon. Thus, the selective
+penetration and cytotoxic effect of the anticancer medication to the
+
+tumor can be improved by using LHRH peptide as a targeting
+moiety in DDS for the treatment of malignancies that overexpress
+LHRHRs. However, this selective delivery to lung cancer cells may
+also be attributed to passive targeting due to the size of the
+nanoconjugates thereby avoiding the RES uptake to the liver and
+spleen. This behavior may also be attributed to PEGylation which
+
+studies by Koopaei et al. 2014, Zhang et al. [61, 62]. As can be
+observed the major organ of distribution of CUR-Sus was found to
+be liver and spleen. Similar distributions in liver have also been
+reported for similar formulations for docetaxel  Anticancer
+medications can be used in these situations at modest dosages,
+which prevent negative side effects and increase therapeutic
+
+distribution were also reported in studies Giram S et al. in PLGAbased surface modified nanoparticles for active targeting in cancer
+
+The in vivo anticancer activity in human lung cancer-bearing Balb/
+c mice was used to further confirm the in vitro antitumor activity
+
+with treatments of saline group and PPL blank NPs. Tumor growth
+was also evident in other organs of the spleen, liver, and intestine
+indicating metastasis in these groups. While every treatment group
+using drug-encapsulated NCs showed some degree of antitumor
+activity. The tumor size reduction was found to be in the following
+order of magnitude when compared to the saline group, CURsiRNA-PPL NP > CUR-PPL NP > CUR-Susp > Blank-PPL NP. The
+delivery of CUR-siRNA-PPL NP exhibited the strongest anticancer
+efficacy. The percentage tumor inhibition ratio (TIR%) on the 15th
+day was found higher than the CUR-PPL NP group, CUR-Susp group
+and blank-PPL NP-treated group. These findings showed that CURsiRNA-PPL NP was superior to free drug solution and non-targeted
+NPs as the most successful therapy for decreasing the tumor
+volume. This enhanced antitumor activity may be due to siRNA
+targeting BCL2 mRNA, suppressing cellular antiapoptotic defenses.
+Substantial drug accumulation at the tumor location was
+accomplished by actively targeting the NPs with the LHRH peptide
+and combining the EPR effect with receptor-mediated endocytosis
+by increasing cellular uptake [6, 10]. Cur-susp-treated group
+
+showed moderate anticancer efficacy which could be attributed to
+the poor absorption as has been evidenced in the lower AUC of the
+
+anticancer studies showed a decrease in the TNF-a and an increase
+in p53 levels indicating healing in the CUR-siRNA-PPL NCs and
+CUR-PPL NCs group mice suggesting induction of apoptosis due to
+the curcumin or bclsR-mediated downregulation of bcl2 as has been
+observed earlier.
+
+different groups and healing. After 15 days of treatment, it was
+observed that the lung tissues of the control group displayed normal
+histological architecture with well-defined alveolar spaces,
+bronchioles, and blood vessels. No signs of inflammation, fibrosis,
+or necrosis were observed in the uninduced group. Saline-treated
+group and blank PPL NP-treated groups exhibited a well-defined
+tumor with a fibrous capsule, increased fibrosis, inflammatory cell
+infiltration, severe squamous epithelial thickening, mild bronchitis,
+interalveolar hemorrhages, and bronchiolar epithelium thickening.
+CUR-PPL NP-treated group had also shown moderate inflammatory
+cell infiltration, mild bronchitis, interalveolar hemorrhages, and
+bronchiolar epithelium thickening. In CUR-SiRNA-PPL NP-treated
+group displayed mild to moderate inflammatory cells which are
+primarily composed of lymphocytes and macrophages, blood vessel
+congestion, alveolar hemorrhages, and generally normal alveoli.
+Mild fibrosis was noted in some areas, suggesting tissue remodeling
+and repair. The free CUR-treated group demonstrated moderate
+inflammatory cell infiltration, blood vessel congestion, alveolar
+space inflation, and mild septal inflammation. The findings
+highlight the variability in tissue response across different groups,
+ranging from severe tumor development and inflammation to mild
+pathological changes. The CUR-SiRNA-PPL NP group showed mild
+inflammatory and vascular changes with some normal alveolar
+structures, suggesting a less severe pathological condition, whereas
+the saline-treated group and blank PPL NP showed inflammation,
+with extensive hyperchromatic cell proliferation and severe
+vascular congestion, suggesting aggressive tumor growth and
+compromised blood flow and the CUR-PPL NP group and CUR
+suspension group displayed moderate inflammatory infiltration and
+
+alveolar changes, indicating an intermediate level of tissue damage
+
+progression of lung pathology under different conditions and the
+effectiveness of the treatments administered. The observed
+inflammation and mild fibrosis are indicative of an immune
+response and tissue remodeling, which are common following
+effective anticancer treatments. These findings suggest that while
+the treatment is effective in reducing tumor burden, ongoing
+monitoring for potential adverse effects is necessary [47, 65].
+
+## Discussion
+Lung cancer is one of the leading frequent subtypes of cancer that
+leads to death in humans. Although chemotherapy is the most
+
+## Conclusion
+From the study, it may be concluded that the PPL nanoconjugate
+system, loaded with curcumin and bcsR, can be potentially
+effective, multifunctional targeted approach for lung cancer
+therapy.
+
+The study developed a combination therapy for lung cancer using
+curcumin and siRNA targeting BCL2 mRNA, delivered via PPLNPs.
+This system targets cancer cells through the LHRH ligand, reducing
+systemic toxicity and increasing drug accumulation at the tumor
+site. The PPL copolymer was synthesized and confirmed through
+various analyses, and the NPs showed efficient drug and siRNA
+entrapment with sustained release properties. In vitro studies
+revealed significant cytotoxicity and enhanced uptake of the NPs in
+A549 lung cancer cells. The combination therapy effectively
+downregulated P-gp and BCL2 mRNA, addressing both pump and
+non-pump resistance mechanisms. In vivo, pharmacokinetic analysis
+in rats showed sustained drug release and increased bioavailability.
+Biodistribution studies confirmed preferential drug accumulation in
+the lungs. In vivo, anticancer studies in mice demonstrated superior
+tumor inhibition with the combination therapy, supported by
+histopathological observations indicating reduced tumor
+development and inflammation. These findings suggest that the
+proposed targeted delivery system holds promise for more effective
+lung cancer treatment by enhancing therapeutic efficacy and
+minimizing adverse effects. Future studies investigating the
+potential for combining this therapy with other agents could
+enhance its therapeutic impact and broaden its applicability to
+other resistant cancer types. The effectiveness of conjugating LHRH
+with siRNA may potentially be investigated in other malignancies
+where LHRHR is overexpressed. Additionally, more studies may be
+encouraged to further assess biodistribution and systemic toxicity
+and validate the system's translational potential.

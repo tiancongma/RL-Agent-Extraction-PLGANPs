@@ -1,0 +1,1210 @@
+Contents lists available at ScienceDirect
+European Journal of Pharmaceutical Sciences
+journal homepage: www.elsevier.com/locate/ejps
+Platelet lysate-loaded PLGA nanoparticles in a thermo-responsive hydrogel
+intended for the treatment of wounds
+Sergio Alberto Bernal-Cháveza,1, Sergio Alcalá-Alcaláb,1, Doris Cerecedoc,1,
+Adriana Ganem-Ronderoa,1,⁎
+a División de Estudios de Posgrado (Tecnología Farmacéutica), Facultad de Estudios Superiores Cuautitlán, Universidad Nacional Autónoma de México, Cuautitlán Izcalli,
+Estado de México 54740, México
+b Laboratorio de Tecnología Farmacéutica, Facultad de Farmacia, Universidad Autónoma del Estado de Morelos, Cuernavaca, Morelos, México
+c Laboratorio de Hematobiología, Escuela Nacional de Medicina y Homeopatía, Sección de Estudios de Posgrado, Instituto Politécnico Nacional, Ciudad de México, México
+A R T I C L E I N F O
+Keywords:
+Platelet lysate
+PLGA nanoparticles
+Hydrogel
+Thermo-responsive polymer
+Pluronic F-127
+Wound healing
+A B S T R A C T
+A thermo-responsive hydrogel of Pluronic F-127, containing PLGA nanoparticles loaded with a platelet lysate for
+wound treatment, was prepared. A high rate of incorporation of the lysate (about 80%) in the nanoparticles was
+achieved by the double emulsion-solvent evaporation method. The nanoparticles were characterized by mea-
+suring their size (about 318 nm), polydispersity index (0.29) and Z potential (-17.6), as well as by infrared and
+calorimetric techniques, and determining their stability as a function of time. It was found through measures of
+transepidermal water loss that the hydrogel containing the nanoparticles was capable of providing a semi-
+occlusive environment, necessary for the recovery of a wound. The inclusion of lysate in nanoparticles and this in
+turn in the hydrogel allowed a gradual release, which would avoid contact of the total dose with the biological
+medium. Studies with ﬁbroblasts and in vivo in mice showed that the hydrogel containing nanoparticles with
+platelet lysate promoted faster tissue regeneration than the lysate in its free form, so this system is presented as a
+good alternative for the treatment of wounds.
+1. Introduction
+Over the years, the prevalence of people with chronic wounds has
+increased dramatically by a number of factors including smoking,
+obesity, and chronic diseases such as diabetes, that can slow the healing
+process of a wound and increase the risk of becoming chronic
+(Chandika et al., 2015). A single diabetic ulcer, which usually becomes
+a chronic wound, with all the consequences that this implies, costs
+thousands of dollars to the health system, and the cost increases dra-
+matically, considering that the number of aﬀected patients grows ex-
+ponentially each year. This has resulted in the immense market for
+wound healing, which does not stop growing year by year (Han and
+Ceilley, 2017). In addition to the cost of wound care, current therapies
+are far from guaranteeing adequate healing and recurrence is common.
+Furthermore, many systems require frequent administrations and high
+doses to achieve the desired eﬀect, with the possibility of undesirable
+eﬀects if high systemic concentrations are reached (Chandika et al.,
+2015). Because of this situation, the improvement of chronic wound
+treatments has become such a necessity that the scientiﬁc community
+has focused not only on developing new treatments but also on im-
+proving the eﬀectiveness of current therapies (Gainza et al., 2015;
+Chouhan et al., 2019). The wound healing process is a complex phy-
+siological event involving several overlapping stages that include in-
+ﬂammation, the formation of granulation tissue, re-epithelization, ma-
+trix formation and remodeling (Barrientos et al., 2008). However, any
+interruption or interference on these pathways, such as those caused by
+intracellular and extracellular pH changes, as well as the increase in
+enzyme and macrophage activity, among others, results in a non-
+healing wound, turning the wound into chronic. In chronic wounds, the
+physiological balance between tissue degradation and tissue reassembly
+has been lost and catabolic process predominates (Percival et al., 2014).
+The inﬂammation stage is characterized by an exudate coming from the
+wound, with a high content of proteins, such as growth factors [GF:
+transforming growth factor (TGF)-β1, platelet-derived growth factor
+(PDGF), insulin-like growth factor (IGF), ﬁbroblast growth factor (FGF),
+vascular endothelial growth factor (VEGF)], inﬂammatory components,
+chemokines, cytokines (CK) and matrix molecules; moreover, it facil-
+itates the ingress of white cells and provides the moist environment
+https://doi.org/10.1016/j.ejps.2020.105231
+Received 20 September 2019; Received in revised form 28 December 2019; Accepted 20 January 2020
+⁎ Corresponding author.
+E-mail address: ganemq@hotmail.com (A. Ganem-Rondero).
+1 These authors contributed equally to this work.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+Available online 31 January 2020
+0928-0987/ © 2020 Elsevier B.V. All rights reserved.
+T
+
+important for healing (Cutting, 2003); Garcia-Orue et al., 2017. The
+presence of proinﬂammatory cells creates a proteolytic microenviron-
+ment, constituted for example by matrix metalloproteinases that facil-
+itate extracellular matrix degradation, as well as the degradation of GF
+and CK during the healing process. This decrease in GF and CK can
+retard wound healing. Therefore, if they are externally administered
+they would contribute to regenerate tissue growth (Gainza et al., 2015).
+Platelet lysate (PL) is a blood product containing a plethora of growth-
+promoting factors (GF), which has been studied and used since the
+1970s (Shanskii et al., 2013). PL is widely recognized for the positive
+eﬀects of GF on tissue repair and regeneration, vascular remodeling and
+regulation of inﬂammatory and immune responses (Santo et al., 2015;
+Dellera et al., 2014; Santo et al., 2012) and has been considered as a
+safe and eﬃcient mesenchymal stromal cells (MSC) culture supplement
+for robust MSC cultivation (Fekete et al., 2012). Furthermore, PL is
+known to stimulate the in vitro proliferation of chondrocytes (Santo
+et al., 2015), ﬁbroblasts (Fontana et al., 2016) and the keratinocytes
+migration (Ranzato et al., 2008). Since PL represents a natural source of
+multiple GF, it avoids the need of including diﬀerent bioactive agents in
+a delivery system. However, if PL is externally administered, it is dif-
+ﬁcult to expect the desired biological eﬀect in vivo because of the short
+half-life of GF. Furthermore, high doses and/or frequent administra-
+tions will be required, which raises the issues of toxicity and costs.
+Thus, it is indispensable for improved in vivo high eﬃcacy to achieve a
+controlled PL delivery system (Gainza et al., 2015; Santo et al., 2012).
+The use of polymeric nanoparticles as drug delivery systems oﬀers
+an interesting alternative in the area of dermal administration, espe-
+cially for hydrophilic macromolecules such as GF (Gainza et al., 2015;
+Garcia-Orue et al., 2017; Shekhter et al., 2015). These nanoparticles can
+protect PL from the external environment of wounds and in addition
+they are able to control its release. PLGA is one of the polymers that has
+been most used as a GF carrier for wound treatment due to its bio-
+compatibility and biodegradability (Gainza et al., 2015). A few con-
+trolled release systems including PL have been developed. For example,
+Santo et al. (2015, 2012) developed PL-loaded chitosan-chondroitin
+sulfate nanoparticles for cartilage regeneration and as an osteogenic
+supplement for bone tissue engineering. Likewise, a foam based on poly
+(D,L-lactic acid), containing the same type of nanoparticles, but in this
+case, to enhance the osteogenic diﬀerentiation of human adipose de-
+rived stem cells (Santo et al., 2012). Few are the references that focus
+on the healing of skin wounds using micro- and nanocarriers loaded
+with PL. Fontana et al. (2016) created PL-modiﬁed porous silicon mi-
+croparticles for the proliferation of cells in wounds. In all the cases
+mentioned above, controlled release of PL was achieved.
+Likewise, hydrogel (HG) dressings, based on smart polymers, can be
+ideal platforms for the administration and retention of drugs to the skin.
+In relation to thermo-sensitive HG, these have several advantages
+(Gainza et al., 2015; Chouhan et al., 2019): i) They can be easily ap-
+plied in the form of a solution, becoming a HG in situ at physiological
+temperature; ii) they can adopt the exact shape of the wound, which
+promotes intimate contact with the area, covering and protecting it; iii)
+the use of adhesives, glues or sutures is not necessary; iv) maintain the
+necessary moisture conditions for wound healing; v) they may con-
+stitute semi-occlusive systems that allow an adequate gas exchange; vi)
+contribute to the controlled release of the drug; vii) provide protection
+to the drug; viii) they are easy to prepare. However, they also have
+disadvantages such as low mechanical resistance, dilution with wound
+ﬂuids and rapid drug release. That is why in this work the properties of
+polymeric nanoparticles based on PLGA were combined with those of
+thermo-sensitive Pluronic F-127® HG, seeking to achieve a better eﬀect
+of PL on skin wounds. Therefore, a Pluronic F-127® HG containing
+nanoparticles (NP) loaded with PL was developed, characterized and
+evaluated through in vitro and in vivo tests, as a release system for
+wound healing.
+2. Materials and methods
+2.1. Materials
+Poly (lactic-co-glycolic) acid (PLGA 50:50, carboxylic end group)
+was purchased from Evonik Industries (Darmstadt, Germany). Pluronic
+F127® was purchased from Sigma-Aldrich (St. Louis, MO, USA). Low
+viscosity
+polyvinyl
+alcohol
+(PVA)
+was
+obtained
+from
+Silanes
+Laboratories (CDMX, Mexico). PL was donated by Banco de Sangre,
+Hospital Juárez de México, S.S. (CDMX, Mexico). Fibroblasts were
+cultured in RPMI-1640 medium supplemented with 10% fetal bovine
+serum, 400 mM L-glutamine, 50 μM gentamycin, 25 mM HEPES, 2 g/L
+sodium bicarbonate, 1 mM sodium pyruvate in a humid atmosphere of
+5% CO2 at 37 °C. Cell viability was assessed by exclusion of 0.2% trypan
+blue and was routinely > 90%. Sodium hydroxide and potassium
+monobasic phosphate were all supplied by Fermont (CDMX, Mexico).
+All the solutions were prepared using water from a Milli-Q® ﬁltration
+system (Millipore, Billerica, MA, USA).
+2.2. Methods
+2.2.1. Preparation and characterization of placebo nanoparticles (NP) and
+PL-loaded nanoparticles (NP+PL)
+Preparation of nanoparticles
+Before preparing the nanoparticles, platelet lisate (PL) was character-
+ized by techniques such as Fourier Transform Infrared Spectroscopy
+(FTIR/ATR), circular dichroism (CD) and ultraviolet (UV) spectro-
+photometry, as well as by the well-known reactions for proteins, using
+the Bradford and Biuret reagents (the results of these tests can be found
+in the supplementary material).
+Both NP (placebo nanoparticles) and NP+PL (nanoparticles loaded
+with platelet lysate) were prepared according to a previously optimized
+process, based on a modiﬁed double emulsion-solvent evaporation
+technique (Fonte et al., 2015), using PLGA as a biodegradable polymer.
+Brieﬂy, 150 mg of PLGA were dissolved in 10 ml of dichloromethane,
+adding dropwise 1 ml of phosphate buﬀer solution (PBS) for NP or 1 ml
+of PL aqueous solution for the NP+PL, under constant homogenization
+at 15,000 rpm during 5 min. This ﬁrst water in oil (W/O) emulsion was
+then added to 30 ml of an aqueous solution of PVA (5% w/w) under the
+same conditions of homogenization, obtaining the second emulsion (W/
+O/W). Afterward, the solvent was evaporated at room temperature,
+under magnetic stirring, getting the nanoparticles. Finally, the nano-
+particle suspension was washed three times with 10 ml of deionized
+water, removing the residual PVA by centrifugation at 12000 rpm using
+a Hermle Z326 K centrifuge (Germany) for 45 min each. The nano-
+particles were prepared by adding two amounts of PL, 2 mg and 8 mg,
+keeping a PL:PLGA ratio of 1:75 and 1:19, respectively.
+Particle size (PS), polydispersity index (PDI), Z potential (zP), encapsula-
+tion eﬃciency (%EE), loading capacity (%LC) and morphology of nano-
+particles
+Both NP and NP+PL were characterized by measuring particle size
+(PS), polydispersity index (PDI) and Z potential (zP), using a Zetasizer
+Nano ZS90 (Malvern, Worcs, UK). PS and PDI were determined by the
+dynamic light scattering technique, diluting the suspension of NP or NP
++LP with deionized water, using polystyrene cuvettes and a 90° angle.
+For zP, the preparation was similar, using capillary polystyrene cuvettes
+and performing the measurement by the electrophoretic light scattering
+technique. The measurements were made in triplicate for each sample.
+Encapsulation eﬃciency (%EE) and loading capacity (%LC) were
+calculated using Eqn 1 and 2, respectively:
+=
+−
+EE
+Initial amount of PL
+Amount of PL in the supernatant
+Initial amount of PL
+%
+*100%
+(1)
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+2
+
+=
+−
+LC
+Initial amount of PL
+Amount of PL in the supernatant
+Total weight of NP
+%
+*100%
+(2)
+Free PL (in the supernatant, including the three wash volumes) was
+separated by centrifuging the NP+PL suspension at 12,000 rpm for
+2.5 h, at 4 °C, using a Hermle Z326 K centrifuge (Germany).
+Quantiﬁcation was carried out by UV spectrophotometry at 280 nm,
+using a previously validated method (data shown in the supplementary
+material).
+The nanoparticles were visualized by scanning electron microscopy
+(SEM) using a JSM-7600F electron microscope. Samples were prepared
+by spreading dropwise 25 μl of diluted nanoparticle suspension over a
+copper grill, drying it at room temperature for 24 h.
+Thermal behavior
+The nanosystems and the individual components were frozen at −20 ºC
+and were then lyophilized for 24 h at a temperature of −52 ºC and a
+vacuum value of 0.450 mBar in a freeze dryer machine (Labconco
+FreeZone 2.5, USA). Then, the thermal behavior was analyzed by
+Diﬀerential Scanning Calorimetry (DSC) using a Q20 calorimeter (TA
+Instruments, New Castle, DE, USA). Brieﬂy, 5 mg of each sample was
+placed in a Tzero® aluminum pan (TA Instruments, Switzerland), car-
+rying out the analysis under the following conditions: thermal equili-
+brium at 20 °C, isotherm for 3 min and a thermal ramp of 10 °C/min
+until 350 °C.
+Attenuated total reﬂectance-Fourier transform infrared (ATR-FTIR) spec-
+troscopy
+Once dried by lyophilization, under the conditions set forth in the
+previous section (Thermal Behavior), nanoparticles were placed on a
+horizontal ATR zinc selenide cell, registering the infrared spectrum of
+the nanosystems using an infrared equipment ABB-MB3000 FTIR
+(Quebec, Canada). Measurements represented an average of 150 scans
+with a resolution of 16. The infrared spectra for the raw materials of the
+nanosystems were also obtained. Experiments were performed in tri-
+plicate.
+Circular dichroism spectroscopy
+Circular dichroism (CD) spectroscopy analysis was performed in a J-815
+Perkin-Elmer equipment (Jasco Inc., Easton, MD) by placing the sample
+in a 1 mm cell. The analysis was carried out under the following con-
+ditions: standard sensitivity, bandwidth of 1.00 nm, scan speed 10 nm/
+min, temperature of 25 °C, wavelength from 250 to 195 nm, with in-
+tervals of 0.5 nm, registering 110 points for reading. The study was
+carried out for the PL solution, as well as for the suspension of nano-
+particles and for the hydrogels. All systems had the same concentration
+of PL.
+Stability
+A sample of 5 ml of each system (NP or NP+PL) was stored at
+4.0 °C ± 0.1 °C, to avoid the instability problems inherent to PL. The
+stability of the systems was assessed by measuring PS, PDI and zP using
+the same techniques previously mentioned. Likewise, the PL released
+from the NP+PL system was quantiﬁed in the supernatant after cen-
+trifuging the samples at 12,000 rpm for 2.5 h, at 4 °C, using a Hermle
+Z326 K centrifuge (Germany). Quantiﬁcation was carried out by UV
+spectrophotometry at 280 nm (see supplementary material). Stability
+studies were followed for 3 months. Experiments were performed in
+triplicate.
+Eﬀect of temperature and of wound ﬂuid on particle size (PS)
+The eﬀect of both temperature and components of wound ﬂuid (WF)
+on the nanosystems, was evaluated by measuring PS by dynamic light
+scattering, according to the procedure described above. In the case of
+temperature, a ramp from 20 °C to 65 °C was performed. Each mea-
+surement was repeated three times for each sample (PL in solution, NP
+and NP+PL). For the WF eﬀect, 1.0 ml of the nanosystem suspension
+was exposed for 11 h to 0.3 ml of blood plasma, used as a WF simulator,
+at 33 °C (average temperature of a wound) (Trengove et al., 1996;
+Dini et al., 2015).
+In vitro release of PL from NP
+A volume of 1 ml of NP+PL suspension was placed inside a dialysis
+membrane bag composed of Biotech Grade Cellulose Ester with a
+MWCO of 1,000 kDa (Spectrum®Labs, San Francisco CA, USA). The bag
+was immersed in 5 ml of PBS solution pH 7.2 at 33 °C, with constant
+magnetic stirring. For comparison purposes, the release of PL from an
+aqueous solution was studied. For this, 1 ml of solution containing an
+amount of PL equivalent to that of the NP suspension was placed in the
+dialysis bag. The total volume of the receptor medium was withdrawn
+at pre-set times and it was analyzed by UV spectroscopy at 280 nm
+(validation parameters presented in the supplementary material). The
+test was performed in triplicate.
+Eﬀect of free and encapsulated PL on a ﬁbroblast culture
+In order to conﬁrm if PL maintained its biological activity once in-
+corporated into the NP, in vitro studies were carried out in a culture of
+dermal ﬁbroblasts (ATCC® PCS-201–012 Manassas, VA, USA). The
+technique for this evaluation was the scratch assay [Liang et al., 2007],
+which consisted of diametrically scratching the ﬁbroblast culture using
+a plastic tip and thereby generating a cell-free space, in which the
+formulation was placed. The progressive coating of this space by ﬁ-
+broblasts was followed by sequential photographs. The study was
+conducted by treating ﬁbroblasts with PBS solution, a solution of PL, a
+NP suspension and the suspension of NP+PL, separately.
+2.2.2. Inclusion of NP and NP+PL in a hydrogel
+Preparation and characterization
+Both NP and NP+PL were included in a thermosensitive polymeric
+hydrogel (HG) based on Pluronic F-127®. The HG was prepared by the
+cold method, dissolving a quantity of polymer, equivalent to 20% (w/
+v), in deionized water at 4 °C under magnetic stirring. The polymer was
+left to hydrate at that temperature for 24 h until a clear solution was
+obtained. HGs containing NP or NP+PL were obtained by the same
+procedure, replacing the deionized water with the NP (NP HG) or the
+NP+PL suspension (NP+PL HG). Approximately 75 mg of NP are
+contained in 100 ml of HG.
+Hydrogel viscosity was measured using a Brookﬁeld CAP2000 + L
+viscometer (Brookﬁeld Engineering Labs., Stoughton, MA, USA). A
+volume of 50 μl of each hydrogel (HG, NP HG and NP+PL HG) was
+placed on the ﬂat plate of the equipment. A viscosity proﬁle versus
+temperature (from 5 °C to 40 °C) with a ramp of 2 °C/min was per-
+formed, with the spindle No. 3 at 50 rpm. The pH of the hydrogels was
+measured at 4 ± 1 °C, under constant stirring, using a pH meter
+(Corning 430 New York, USA).
+In addition to viscosity measurements as a function of temperature,
+the sol-gel transition temperature, as well as the time needed to gel,
+were
+determined
+for
+hydrogels
+by
+the
+following
+methods:
+(i)
+Determination of the non-ﬂow time: The time was recorded when the
+hydrogels, which were in an incubator at 33 °C, did not ﬂow, once the
+vial containing them was reversed. (ii) Loss of movement of a magnetic
+bar: Magnetic stir bars were introduced into ﬂasks containing the hy-
+drogels. The temperature gradually increased, recording the moment
+when the bars stopped completely. (iii) Brownian motion loss tempera-
+ture: This was determined by taking advantage of the measurement
+principle of the dynamic light scattering technique using a Zetasizer
+Nano ZS90 (Malvern, Worcs, UK). PS measurements were made on a
+ramp from 5 to 30 °C, recording the temperature where the value of PS
+drops drastically, indicating that the system has gelled and therefore,
+the equipment was not able to measure PS. (iv) Micellization tempera-
+ture: Thermograms were performed by diﬀerential scanning calorimetry
+(DSC) using a Q20 calorimeter (TA Instruments, New Castle, DE, USA).
+The analysis was made for the polymer (Pluronic® F-127) and for the
+diﬀerent hydrogels, placing approximately 10 mg in Tzero® aluminum
+pans (TA Instruments, New Castle, DE, USA). The analysis was carried
+out under the following conditions: sample equilibrium at 0 °C, iso-
+therm for 1 min and a heating ramp of 1 °C/min until 70 °C.
+Stability
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+3
+
+The stability of the hydrogels, maintained at 4 ± 0.5 °C, was followed
+for 3 months, observing any physical change and measuring the visc-
+osity at time 0, 7, 15, 30, 60 and 90 days. Additionally, the stability of
+the PL included in the hydrogels was determined by circular dichroism.
+Occlusive eﬀect
+Pig skin was assembled in modiﬁed Franz cells, ﬁlling the receiving
+chamber with a buﬀer solution pH 7.2 and extending 100 μl of each
+hydrogel (containing aprox. 75 µg of NP) on the exposed surface of the
+skin. The cells were maintained at 33 °C ± 0.5 °C inside an incubator.
+After 24 h of contact, and with the complete evaporation of the HG
+water, the water loss was measured using a Tewameter® TM-300
+(Courage & Khazaka Electronic, Köln, Germany). The results were
+compared with those obtained with untreated skin.
+In vitro release of PL from the hydrogel
+A volume of 5 ml of hydrogel containing PL (PL HG) or hydrogel con-
+taining PL-loaded nanoparticles (NP+PL HG), was placed in the bottom
+of a ﬂask and incubated at 33 °C ± 0.5 °C until reaching a non-ﬂuid
+semi-solid state. Then, 2 ml of PBS solution pH 7.2 was carefully added
+over the hydrogel. The entire volume of PBS was replaced with fresh
+medium at diﬀerent time intervals, analyzing its PL content by UV
+spectroscopy at 280 nm (validation parameters shown in the supple-
+mentary material). The test was performed in triplicate.
+In vivo evaluation of the NP+PL HG system
+The Ethics Committee of Escuela Nacional de Medicina y Homeopatía-
+IPN (Mexico), approved animal experimentation (CBE/015/2018),
+which was carried out in accordance with the Guide for the Care and
+Use of Laboratory Animals of the oﬃcial Mexican standard NOM-062-
+ZOO-1999. A group of seven CD1 mice, from 7 to 9 weeks of age was
+used. The mice were anesthetized with a ketamine (90 mg/kg)-xylazine
+(7 mg/kg) cocktail and later, the hair on the back of each mouse was
+shaved and the surgery was performed. Four punch biopsies were
+performed to create full-thickness cutaneous wound with 3 mm size in
+diameter. Then, 5 μL of NP HG, NP+PL HG or PL solution, were de-
+posited on three of the wounds, using the fourth wound as control
+(without treatment). The wounds were treated by the daily application
+of the aforementioned formulations, following the evolution of the
+wounds by means of photographs on days 0, 1, 3, 5, 7 and 10. After
+that, the wound area was determined using imajeJ® software (version
+1.52q, National Institutes of Health, USA), presenting the results gra-
+phically.
+3. Results and discussion
+3.1. Preparation and characterization of nanoparticles
+Table 1 shows the particle size (PS), polydispersity index (PDI) and
+Z potential (zP) values for the PL-loaded nanoparticles (NP+PL) and
+for placebo nanoparticles (NP). Unlike lipid systems, PLGA produces
+nanoparticles with more homogeneous sizes, without the need to carry
+out a subsequent reduction (Sahin et al., 2017; Mura et al., 2011;
+Elizondo et al., 2011). Signiﬁcantly larger size values were obtained
+with the inclusion of PL, which was expected, considering that it is a
+mixture of protein, although in both cases, with and without PL, the
+nanoparticles showed a low dispersion, as shown by the PDI values
+obtained. In relation to the zP, a value of approximately -29 ± 1 was
+obtained for placebo nanoparticles, which may be indicative of a very
+stable system [Mura et al., 2011]. However, the incorporation of PL in
+NPs signiﬁcantly reduced zP by almost 40%, attributable to the inter-
+action of the polar groups of PL with the carboxyl groups of PLGA. The
+negative zP values are also attributed to the carboxyl terminal group of
+PLGA, which is ionized in the aqueous medium [Danhier et al., 2012;
+Tefas et al., 2015].
+Table 2 shows the values of encapsulation eﬃciency (%EE) and
+loading capacity (LC) when incorporating two diﬀerent amounts of PL.
+As observed, although the %EE decreased when increasing the amount
+of PL, the LC increased by more than 60%. The reduction in %EE by
+increasing the amount of PL from 2 mg (drug:polymer ratio 1:75) to
+8 mg (drug:polymer ratio 1:19) can be attributed to the saturation of
+the system, as reported for various nanometric carriers (Goke and
+Bunjes, 2018; Sun et al., 2012).
+One of the advantages of therapeutic proteins is that very small
+concentrations
+have
+signiﬁcant
+pharmacological
+eﬀects
+(Mitragotri et al., 2014). In the case of PL, previous studies have shown
+that approximately 100 ng of PL/15000 ﬁbroblasts are required to have
+an eﬀect on the proliferation and migration of ﬁbroblasts in cell culture
+(unpublished data). Therefore, considering the loading capacity ob-
+tained in this work, the amount of PL is well above the dose required to
+obtain the proliferative eﬀect necessary for the healing of a wound. It
+should be noted, that although a low %EE may be expected for the PL,
+due to the diﬀerent nature of PLGA (hydrophobic) and PL (hydrophilic),
+an adequate %EE was achieved thanks to the preparation technique
+used in this work, which has proven to be useful to increase the %EE of
+hydrophilic molecules, such as proteins (Soppimath et al., 2001;
+Makadia and Siegel, 2011; Nabi-Meibodi et al., 2013; Patel et al.,
+2014). Considering the above, the 1:19 PL:PLGA ratio was used for the
+subsequent tests.
+The nanoparticles presented a spherical shape, as shown in SEM
+images (Fig. 1). An increase in particle size was observed when in-
+corporating PL (NP+PL), which corroborates the result obtained by
+dynamic light scattering (Table 1). The small diﬀerences between dy-
+namic light scattering and microscopy can be attributed to the process
+of preparation of the sample prior to observation and also to the eﬀect
+of the electronic source on nanoparticles (Bibi et al., 2011).
+A way to assess that PL has been incorporated into NP and thus
+justify the ability of NP to protect PL from the external factors that it
+will face within a wound (e.g., pH, temperature, proteases), is the
+evaluation of its thermal behavior. Fig. 2 shows the thermal events for
+PL, PLGA, the physical mixture of both components, the placebo na-
+noparticles (NP) and the nanoparticles with PL (NP+PL). In the case of
+the physical mixture, two signals were observed, one at 44.6 °C, cor-
+responding to PLGA, and the other at 125.3 °C which was associated to
+the lyophilized PL. Considering that only these two components form
+the mixture, a shift from 127.8 ºC to 125.3 ºC in the endotherm asso-
+ciated with the PL, might indicate that there was an interaction be-
+tween these two components during the mixing procedure. The value of
+Tg in the NP corresponded to that reported for PLGA 50:50 (Zolnik and
+Burgess, 2007). The thermogram labeled NP+PL did not show the
+characteristic signal for PL, which indicated that it was incorporated in
+NP. The same result has been reported when incorporating a protein in
+Table 1
+Values of particle size (PS), polydispersity index (PDI) and Z potential (zP) for
+plain nanoparticles (NP) and loaded nanoparticles (NP+PL)a.
+NP
+NP+PL
+PS (nm)
+267.0 ± 10.5
+317.9 ± 18.2*
+PDI
+0.103 ± 0.026
+0.298 ± 0.023*
+zP (mV)
+−29.1 ± 1.0
+−17.6 ± 1.8*
+a PL:PLGA ratio 1:19.
+⁎ p < 0.05 after addition of PL (n = 6).
+Table 2
+Values of encapsulation eﬃciency (%EE) and loading capacity (LC) for the
+nanoparticle suspensions prepared with two diﬀerent amounts of platelet lysate
+(PL).
+PL added (mg)
+PL:PLGA ratio
+%EE
+LC (µg/mg)
+2
+1:75
+90.3 ± 4.4
+12.0 ± 3.1
+8
+1:19
+60.1 ± 3.7*
+32.0 ± 2.9*
+⁎ p < 0.05 after increasing the amount of PL (n = 6).
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+4
+
+PLGA nanoparticles (Azizi et al., 2013). The shift of approximately 3 °C
+in the Tg of NP+PL with respect to the PLGA value, may be related to
+an interaction between PL and the polymer (just as observed in the case
+of the physical mixture). Considering the nature of PLGA, it can be
+thought that the interactions are hydrophobic with some contributions
+of hydrogen bonds (Yadav and Sawant, 2010; Miladia et al., 2015).
+Fig. 3 presents the infrared spectra of the raw materials used for the
+preparation of nanoparticles, as well as the spectra for NP and NP+PL.
+The arrows in the spectrum for PL are attributed to amide I and amide II
+characteristic signals, although these bands were not observed in the
+system marked as NP+PL. This behavior correlates very well with that
+observed in the calorimetric studies which indicate the incorporation of
+PL in NP (Fig. 2). Another aspect that suggests the encapsulation of PL
+in NP is the presence of a band around 3286 cm−1 in the system labeled
+as NP+PL, commonly called amide A, attributed to the -NH group of PL
+(Barth, 2007; Kong and Yu, 2007), which is not observed naturally in
+the polymer. It should also be noted that one of the main signals of
+PLGA at 1750 cm−1 corresponding to the carbonyl group (C = O) is
+clearly observed in both NP and NP+PL.
+The results of the stability studies performed for NP and NP+PL, are
+shown in Table 3. Although no signiﬁcant diﬀerences were found in PS,
+PDI and zP, neither for NP nor for NP+PL during the three months in
+Fig. 1. SEM micrographies for NP (left) and NP+PL (right). The square shows a representative nanoparticle of each group with its particle size value in nm.
+Fig. 2. Thermograms obtained with the raw materials, the physical mixture, NP and NP+PL.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+5
+
+which the stability of the nanosystems was evaluated (p>0.05); on
+average 1.9 mg of PL were released (approximately 33% in relation to
+the initial amount). The release of PL from NP is attributed to the
+natural diﬀusion of PL, due to the diﬀerence in hydrophilicity between
+the PLGA and PL (Soppimath et al., 2001). It is worth mentioning that
+the PL released each time preserved its activity when added to a ﬁ-
+broblast culture (data not shown).
+Fig. 3. Infrared spectra for raw materials, NP and NP+PL.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+6
+
+3.2. Eﬀect of temperature and wound ﬂuid on the particle size
+Changes in the size of PL in solution, NP and NP+PL, were mon-
+itored as the temperature increased, without ﬁnding signiﬁcant changes
+until before 40 °C (Fig. 4). It was only after 40 °C that there was an
+increase in the size of the PL in solution (e.g., from 34 to 47 nm at
+44 °C), attributed to protein unfolding and aggregate formation
+(Roberts, 2014). The PS of unloaded nanoparticles (NP) was not mod-
+iﬁed as the temperature increased, while the system containing PL (NP
++PL) decreased its size as the temperature increased above 40 °C (e.g.,
+approximately from 382 to 323 nm at 44 °C, reaching 276 nm at 55 °C).
+This decrease can be attributed to the fact that the protein adsorbed on
+the surface of the nanoparticles, began to desorb going to solution,
+causing the PS to decrease. However, these changes would not be ex-
+pected to occur at normal body temperature. Another relevant wound
+characteristic that has to be taken into account, and that can aﬀect
+nanoparticles upon their administration, is the presence of a ﬂuid
+known as wound ﬂuid (WF), resulting from the drainage of blood
+plasma to the wound site (Staiano-Coico et al., 2000). The results
+showed that the size of unexposed NP remained constant (approxi-
+mately 250 nm), while systems exposed to blood plasma (simulating the
+WF) increased their PS, reaching an average size of 400 nm (Fig. 5).
+This phenomenon can be attributed to the adsorption properties of NPs,
+which are capable of interacting with blood proteins, resulting in pro-
+tein-nanoparticle corona formation (Fornaguera et al., 2015). The vo-
+lume of blood plasma used for the study was chosen taking into account
+the average amount produced per day in a wound of certain dimensions
+(Thomas, 1997), considering of course that the great variability be-
+tween individuals with chronic wounds and the pathophysiology of the
+wound, can cause the amount of WF to be very variable (Cutting, 2003).
+3.3. Eﬀect of free and encapsulated PL on a ﬁbroblast culture
+In order to assess that PL maintained its biological activity once
+incorporated in nanoparticles, and also to corroborate that the condi-
+tions of the manufacturing process of nanoparticles did not aﬀect its
+performance, the eﬀect of the systems on a ﬁbroblasts cell culture was
+evaluated. As appreciated in Fig. 6, after 24 h of contact with the PL
+solution and NP+PL, the cell-free space generated in the ﬁbroblast cell
+culture was almost covered, compared to the control (a phosphate
+buﬀer solution) and to the NP (unloaded nanoparticles). A slight dif-
+ference in the appearance of the cell culture was observed for PL and NP
++PL regarding the saturation of the zone. This can be attributed to the
+controlled release of PL when included in NP. Something relevant about
+this test is that PL retained its biological activity when incorporated
+into a nanometric system.
+3.4. Hydrogel-type platform characterization
+With the experimental evidence shown so far in this document,
+nanosystems suﬀered from drug leakage when they are in suspension
+(Table 3) (Hernandez-Caselles et al., 1990). Likewise, due to the low
+viscosity of the NP suspension, its application and residence on the
+target site becomes diﬃcult, so it is expected that the incorporation of
+NP into a hydrogel-type platform (HG) can solve these two problems. In
+addition, the property of Pluronic® F127, as a thermosensitive polymer,
+allows the platform to be in a ﬂuid form at room temperature (ap-
+proximately 22 °C), in order to be administered in the form of a spray,
+and subsequently due to the temperature of the wound (approximately
+33.5 °C) it will solidify, allowing the formulation to be retained in the
+wound area. Another additional advantage of this type of administra-
+tion is the possibility of avoiding contact with other parts of the body,
+which minimizes the possibility of contaminating the wound at the time
+of applying the formulation.
+Table 3
+Stability studies for NP and NP+PL at 4.0 °C ± 0.1 (n = 3).
+0 days
+7 days
+15 days
+1 month
+2 months
+3 months
+PS (nm)
+NP
+264.7 ± 12.2
+261.0 ± 12.8
+266.3 ± 26.2
+262.7 ± 18.3
+252.3 ± 10.2
+256.7 ± 13.4
+NP+PL
+333.1 ± 25.8
+335.5 ± 13.9
+307.0 ± 26.9
+317.4 ± 23.0
+343.7 ± 9.8
+328.1 ± 20.2
+PDI
+NP
+0.101 ± 0.024
+0.116 ± 0.059
+0.097 ± 0.044
+0.091 ± 0.053
+0.065 ± 0.128
+0.088 ± 0.098
+NP+PL
+0.307 ± 0.024
+0.285 ± 0.015
+0.314 ± 0.014
+0.316 ± 0.014
+0.291 ± 0.010
+0.284 ± 0.016
+ZP (mV)
+NP
+−30.0 ± 1.52
+−28.2 ± 1.27
+−28.6 ± 2.07
+−27.0 ± 2.51
+−26.7 ± 1.03
+−26.4 ± 2.09
+NP+PL
+−17.4 ± 0.66
+−18.3 ± 1.12
+−19.5 ± 1.50
+−16.5 ± 1.87
+−16.1 ± 0.50
+−16.4 ± 0.70
+PL (mg)
+NP
+—
+—
+—
+—
+—
+—
+NP+PL
+5.68 ± 0.18
+4.82 ± 0.56
+4.01 ± 0.34
+4.30 ± 0.11
+4.0 ± 0.14
+3.81 ± 0.21
+PS = Particle size; PDI = polydispersity index; zP = Z potential; PL = Platelet lysate amount; NP = Placebo nanoparticles; NP+PL = PL-loaded nanoparticles.
+
+0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+20
+25
+30
+35
+40
+45
+50
+55
+60
+65
+70
+Particle size (nm)
+Temperature (°C)
+NP
+NP+PL
+PL
+Fig. 4. Eﬀect of temperature on the size of PL in solution, NP and NP+PL.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+7
+
+The gelation temperature of the hydrogels and the moment in which
+this occurs was determined in this work by diﬀerent techniques, in-
+cluding the measurement of viscosity as the temperature increased.
+Fig. 7A shows the viscosity values of hydrogels with respect to the
+temperature for HG (without nanoparticles), HG containing unloaded
+nanoparticles (NP HG) and HG containing PL-loaded nanoparticles (NP
++PL HG). As can be seen for the three proﬁles, the viscosity increased
+as the temperature rose, having its highest viscosity value above 32 °C,
+so it is expected that at the moment of its administration, the hydrogel
+will gel completely, allowing its permanence on the application site
+during the PL release period. Although the viscosity began to decrease
+after 36 to 37 °C, this decrease was not relevant, without causing the
+HG to spill out of the wound site. The decrease in viscosity at tem-
+peratures above 36 °C can be attributed to a relaxation of the polymer
+chains by thermal agitation, which increase their mobility and therefore
+the ﬂuidity. The time needed to gel was determined visually, placing
+the hydrogel in vials, which were kept in an incubator at 33 °C. The
+moment when the hydrogel did not ﬂow, remaining at the bottom of the
+vials when they were inverted, was recorded (Fig. 7B). The base gel
+(HG) began to gel earlier (at 5 min) than the systems with the nano-
+particles (NP HG and NP + PL HG), but all the systems completely lost
+their ﬂuidity at 10 min. In this study, a volume of 500 μl of hydrogel
+was used in all cases, so if it took between 5 and 10 min for this volume
+to form a gel, it would be expected that for the thin layers that will be
+deposited on a wound, the non- ﬂow time will be much less.
+Other techniques were used in order to identify the point where
+hydrogels undergo a change from a state of "free" polymer chains to a
+micellar state, thereby causing hydrogels to have a more rigid structure
+(Nie et al., 2011; Matanovic et al., 2014). Among these techniques,
+calorimetry allowed to follow the micellization process, which for the
+base hydrogel (HG) occurred at approximately 32 °C, whereas for the
+systems with nanoparticles (NP HG and NP + PL HG), this point was
+found below 25 °C (data shown in the supplementary material). It has
+been reported that the presence of a structure such as nanoparticles
+
+100
+150
+200
+250
+300
+350
+400
+450
+0
+2
+4
+6
+8
+10
+12
+Particle size (nm)
+Time (h)
+NP unexposed to WF
+NP exposed to WF
+Fig. 5. Eﬀect of exposure time of wound ﬂuid (WF) on the particle size of NP. Blood plasma was used as a WF simulator. A temperature of 33 °C was maintained
+during the measurement.
+Fig. 6. In vitro evaluation of the eﬀect of PL in solution, NP and NP + PL on a scratched ﬁbroblasts cell culture. The upper images correspond to the scratched
+ﬁbroblasts before applying the formulations, and the ones below are the resulting images after 24 h in contact with the formulations. Control was a PBS solution.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+8
+
+within a hydrogel modiﬁes its micellization point to a value lower than
+that of the base system (without nanoparticles) (Matanovic et al.,
+2014). Other methods used in this work included the point at which a
+magnetic bar stopped completely due to the increase in viscosity,
+meaning that the hydrogel no longer ﬂowed. In this way, the sol-gel
+transition temperature value was around 28 ºC for all the systems. The
+same phenomenon occurs when carrying out the Brownian motion loss
+study, in which the size of the systems was monitored by dynamic light
+scattering at increasing temperatures. In this case, above 27 °C there
+was a fall to sizes very close to zero, indicative of the loss of movement
+and therefore to the loss of ﬂuidity. This phenomenon is explained by
+the fact that by dynamic light scattering the size is proportional to the
+Brownian motion rate, so if the latter is lost, the same thing happens
+with the size value. The results of micellization monitored by calori-
+metry, as well as those of Brownian motion loss temperature, can be
+consulted in the supplementary material.
+The pH of the intact skin is between 4.0 and 6.0. This acidic pH is
+attributed mainly to the presence of an "acid mantle" that has an im-
+portant contribution on the skin's barrier properties (Schneider et al.,
+2007). In the case of wounds, the role of pH (whose value is between
+7.15 and 8.9) has proven to be of fundamental importance during the
+rehabilitation of chronic wounds (Percival et al., 2014; Schneider et al.,
+2007). Prolonged chemical acidiﬁcation of the wound bed, results in an
+increase of the rate of healing of venous ulcers in the lower extremities.
+Fig. 7. (A) Viscosity proﬁles for hydrogels versus temperature changes. (B) Non-ﬂow time of the diﬀerent HG at 33.5 °C. A blue dye was added in order to more
+clearly visualize the hydrogel. Base = without nanosystem (HG); HG containing unloaded nanoparticles (NP HG); HG containing PL-loaded NP (NP+PL HG).
+P=Poise.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+9
+
+The main explanation for this mechanism is related to the increase in
+the availability of oxygen, and to the reduction of the histotoxicity of
+ﬁnal products of bacteria, among others. It has also been mentioned
+that the wound ﬂuid (WF) contains a high level of proteases whose
+activity is extremely sensitive to pH. The peak of activity of proteases is
+between 7 and 8 and decreases rapidly in the presence of acidic en-
+vironments, being enhanced at pH above 7 (Greener et al., 2005). In
+addition, when a wound is maintained in acidic conditions, ﬁbroblasts
+proliferate more actively (Liu et al., 2002).
+The hydrogels had a pH value between 6.5 and 6.6, which suggests
+that the activity of proteases may decrease, allowing the release of PL
+from the nanoparticulate system, and therefore, performing their
+therapeutic activity with a low probability of being degraded by these
+enzymes (at least, a slower degradation rate is expected), as demon-
+strated by Greener et al. (2005) who noticed that the fall in pH around
+6.0 decreases the activity of proteases by 40–90%.
+3.5. Stability
+The stability of the hydrogels was followed for three months,
+measuring their viscosity and observing the physical changes that could
+occur. No changes in the viscosity of the systems are reported during
+this time, nor any noticeable alteration to the naked eye. In addition,
+the stability of the PL included in the hydrogels was veriﬁed by circular
+dichroism. Fig. 8A shows the spectra of HG with and without PL
+compared with a solution of PL, presenting almost the same spectra
+proﬁle for PL HG and for PL solution. In addition, with the aim of
+corroborating that the proteins of PL maintain their folded structure
+when exposed to the temperature of the wound, protein denaturation
+was evaluated by circular dichroism at 222 nm. Fig. 8B shows the de-
+naturing curve of PL in solution compared with the hydrogel containing
+PL (PL HG). As can be observed, when included in HG, PL began its
+transition from native to denatured, approximately 8 °C later (black
+dotted arrow) compared to the PL solution (black solid arrow). It can
+even be observed that 50% of denaturation, with respect to the initial
+concentration, occurred at about 70 °C for the PL HG (black solid line),
+which was higher than for the PL solution (57 °C, black dotted line).
+This agrees with the reports conﬁrming the protection that hydrogels
+provide to the drugs, among them platelet rich plasma [Selvan et al.,
+2020; Samberg et al., 2019; Jain et al., 2017].
+3.6. Occlusive eﬀect
+When applying a formulation or a dressing on a wound, it is de-
+sirable that it generates a semi-occlusive environment, since one of the
+"natural" forms of recovery of a wound is the autocatalytic activity that
+degrades dead tissue (Zhai and Maibach, 2007), and this occurs with a
+certain level of humidity in the damaged area. Below a certain level of
+humidity, the rate of wound healing slows down and on the other hand,
+a totally occlusive system favors bacterial growth and even encourage
+greater proteolytic activity that would degrade endogenous growth
+factors (Dreifke et al., 2015; McCarty and Percival, 2013). In this work,
+the degree of occlusion caused by hydrogels on pig skin in vitro was
+determined by measuring the transepidermal water loss (TEWL). Fig. 9
+shows the reduction in TEWL with the diﬀerent hydrogels, in relation to
+untreated skin (skin without hydrogel). As can be seen, the presence of
+Fig. 8. (A) Circular dichroism spectra for a PBS solution, platelet lisate in PBS solution (PL solution), hydrogel (Base HG), and hydrogel containing PL (PL HG); (B)
+Denaturing proﬁles for the PL solution and PL HG.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+10
+
+the base gel (HG) generated a reduction in TEWL of around 20%, while
+for the gel with placebo nanoparticles (NP HG) and nanoparticles with
+PL (NP+PL HG), a reduction of around 65% and 45% were obtained,
+respectively, these reductions were signiﬁcantly diﬀerent from HG
+(p<0.05). This behavior is explained by the fact that the presence of
+nanoparticles (about 75 mg of NP per 100 ml of HG), is expected to
+limit the moisture loss to a greater extent than when the base hydrogel
+(HG) is applied. On the other hand, the hydrophilic nature of PL in NP
++PL HG, caused a greater attraction of water towards the NP, resulting
+in a lower percentage of reduction (on average 45% with respect to the
+initial value). Therefore, considering that the value of TEWL showed a
+decrease between 45 and 65% in the case of hydrogels with nano-
+particles, it can be thought that the systems exert a semi-occlusive eﬀect
+on the skin, because they only partially block the loss of transepidermal
+water. This could represent another advantage in addition to those al-
+ready mentioned for the system proposed in this work.
+3.7. In vitro delivery of PL from the systems
+In Fig. 10, the release proﬁles of all the systems prepared in this
+work, including the PL in solution, used as reference can be compared.
+As expected, the release of PL from the solution was immediate,
+reaching 23% at 30 min and having practically released 100% at 3 h.
+When the PL was formulated in the hydrogel (PL HG) it diﬀused stea-
+dily over time, without a lag time. The release reaches 98% at 12 h.
+From the nanoparticles (NP + PL), the release presented a lag time,
+quantifying the PL in the receptor medium at 3 h. As with the hydrogel,
+the release proﬁle of the PL from the nanoparticles was constant and
+was completed at 13 h with an average of 94% released. Therefore, with
+both systems a sustained release was achieved for 12 h. When evalu-
+ating the release of the complete system (NP+PL HG) there was a lag
+time greater than with the NP+PL system, quantifying PL in the re-
+ceptor solution after 5 h. The release was constant until 13 h with ap-
+proximately 75% released, decreasing the release rate from this time,
+but continuing until 24 h when 96% was reached. This decrease in the
+release rate can be attributed to the depletion of the drug in the system,
+which reduces the ﬂow. In the latter case, the PL has to cross two
+barriers to reach the target site: the polymeric layer of NP and subse-
+quently the platform structure of HG, which allows prolonging the re-
+lease for 24 h. The results obtained coincide with reports that show a
+sustained and controlled release when formulating growth factors in
+nanoparticles (Gainza et al., 2015; Chu et al., 2010), in hydrogels
+(Gainza et al., 2015; Jain et al., 2017; Dumortier et al., 2006) or with
+the combination of carriers and hydrogels (Ribeiro et al., 2013).
+3.8. In vivo evaluation of the NP+PL HG system
+The eﬀect of PL on wound closure, both in its free form (in solution)
+and included in the system (NP+PL HG), was evaluated by a cutaneous
+excisional wound-healing model. In order to contrast the eﬀect, a
+control (wound without treatment) and a placebo formulation (NP HG)
+were also monitored. Images of representative wounds of the mice from
+days 0, 1, 3, 5, 7 and 10 are presented in Fig. 11A and B. As shown, on
+day 3, only slight diﬀerences were found among the wounds. However,
+on day 5, wounds treated with PL (PL solution) and NP+PL HG, as well
+as the placebo formulation (NP HG), showed a rather slight progress in
+wound closure. This can be attributed to the proliferative and migration
+eﬀects of PL, but also to the protective and moisturizing eﬀect provided
+by the NP HG system as such. Some authors attribute the progress in
+wound regeneration to lactate produced by the degradation of PLGA,
+which accelerates angiogenesis and activates pro-collagen factors
+(Gainza et al., 2015); however, in our case is risky to ensure this, due to
+the short contact time. The changes in the area of the wound were
+recorded in the graph that appears in Fig. 11C, where it can be seen that
+on day 5 there are already signiﬁcant diﬀerences (p < 0.05) between
+the NP+PL HG system and the other systems, the wound disappearing
+with this treatment from day 7. These in vivo data suggest that PL ap-
+plication using nanoparticles to prevent its degradation, and in-
+corporated into a hydrogel to improve its application and retention, and
+forming a semi-occlusive protective ﬁlm, accelerates wound closure,
+having shown to be more eﬀective than PL in solution (Dreifke et al.,
+2015). It is important to notice that the PL solution also improved
+wound healing, nonetheless, the appreciation of the wounded place was
+still visible at day 10. This can be attributed to the fact that PL in so-
+lution will be more susceptible to degradation by proteases and pH in a
+chronic wound (McCarty and Percival, 2013), while the complete
+system allowed a closer contact, for a longer time with the aﬀected site,
+releasing PL in a sustained manner. No clinically signiﬁcant weight loss
+or evidence of infection in any mouse were appreciated throughout the
+study period.
+Fig. 9. Decrease in transepidermal water loss (TEWL) for pigskin exposed to HG
+systems. Hydrogel without nanosystem (HG); HG containing unloaded nano-
+particles (NP HG); HG containing PL-loaded NP (NP+PL HG). Error bars re-
+present conﬁdence intervals with α=0.05 (n = 8). *p<0.05.
+Fig. 10. Release proﬁles of PL from diﬀerent systems: (●) NP+PL HG: hydrogel
+containing PL-loaded nanoparticles; (■) PL HG: hydrogel containing PL; (▲)
+NP+PL: PL-loaded nanoparticles; (×) PL in solution. The graph was con-
+structed with the averages of three replicates (n = 3). Error bars represent the
+standard deviation.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+11
+
+The results found in this work coincide with that reported by other
+authors in relation to an increase in cell proliferation and a faster
+wound recovery by including biomolecules participating in the tissue
+regeneration process, in some type of carrier (e.g., micro - nanoparticle
+or hydrogel) as reported by Chu et al. (2010), who demonstrate that
+encapsulation of rhEGF in PLGA nanoparticles stimulates cell pro-
+liferation and reduces healing time. Fontana et al. (2016), who loaded
+platelet lysate into porous silicon microparticles ﬁnding a greater
+proliferative eﬀect and an eﬀective, but short lasting acidophilia of the
+collagen ﬁbres, a sign of regeneration. Other authors found that the
+inclusion of platelet-rich plasma in a gel promoted the proliferation of
+ﬁbroblasts [Selvan et al., 2020; Samberg et al., 2019; Jain et al., 2017].
+As discussed so far in this document, the prepared system constitutes a
+potentially valuable alternative for the treatment of wounds.
+Fig. 11. (A) and (B) are representative images of the evolution of the four full-thickness wounds caused to mice, as a function of time, for each treatment. The
+arrowheads indicate the original wound places for PL solution and for NP+PL HG. (C) Graph showing the excisional wound-closure area in the dorsal region of mice
+during diﬀerent treatment days. Platelet lisate in PBS solution (PL solution); HG containing unloaded nanoparticles (NP HG); HG containing PL-loaded NP (NP+PL
+HG). Control: wound without treatment. Data are presented as mean ± standard deviation.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+12
+
+4. Conclusion
+A smart thermo-reversible system was prepared, containing PLGA
+nanoparticles loaded with a platelet lysate, intended for the treatment
+of chronic wounds. Polymeric nanoparticles were characterized by
+particle size, Z potential, polydispersity index and encapsulation eﬃ-
+ciency, showing adequate technological characteristics for the purpose
+of the study and guaranteeing the dose necessary to achieve a ther-
+apeutic eﬀect. The inclusion of the lysate in the particles was corro-
+borated by means of techniques such as infrared spectroscopy and
+diﬀerential scanning calorimetry. It was found that the lysate included
+in the particles enhances the repair eﬀect on a culture of ﬁbroblasts,
+promoting cell migration and proliferation.
+The inclusion of the nanoparticles in the thermo-reversible gel oﬀers
+multiple advantages such as the following: (i) Easy administration, as it
+can be applied in the form of a spray, which on contact with the site
+forms a protective ﬁlm on the wound. (ii) The release is prolonged for
+up to 24 h, which guarantees the gradual release of the lysate during
+this time. (iii) It provides a semi-occlusive eﬀect, forming a protective
+barrier that keeps a certain degree of humidity, but which allows an
+adequate gaseous exchange.
+The results of the in vitro studies with which the properties of this
+system were evaluated, are very promising, and are supported by the in
+vivo tests performed in mice, where a faster tissue regeneration was
+observed when applying the complete system (NP+PL HG).
+Funding
+This work was supported by the PAPIIT IN226119 project (DGAPA,
+Universidad Nacional Autónoma de México) and PIAPI1803 (Facultad
+de Estudios Superiores Cuautitlán, Universidad Nacional Autónoma de
+México).
+Credit author statement
+This was the contribution of each author during the development of
+this work:
+Sergio A Bernal-Chávez - Development of the bulk of the experi-
+mental part: Preparation and characterization of the nanoparticles in-
+cluding the platelet lysate. Inclusion of the nanoparticles in the hy-
+drogel. Characterization of the hydrogel. In vivo studies. Sergio Alcalá-
+Alcalá - Micrographies. Support for the release studies and transepi-
+dermal water loss tests. Doris Cerecedo - Obtaining the platelet lysate.
+Evaluation of the eﬀect on ﬁbroblasts. Support the protocol for in vivo
+studies. Adriana Ganem-Rondero - Proposal, administration of the
+project and planning of activities. Analysis of results and revision of the
+manuscript.
+Declaration of Competing Interest
+None
+Acknowledgments
+The authors would like to thank Consejo Nacional de Ciencia y
+Tecnología (CONACYT) for the scholarship provided to Bernal-Chávez.
+The authors also thank Dr. Claudia Guadalupe Benítez Cardoza (Escuela
+Nacional de Medicina y Homeopatía-IPN) for her generous support
+during
+circular
+dichroism
+analysis
+and
+Prof.
+Crisóforo
+Mercado
+Márquez (Facultad de Estudios Superiores Cuautitlán) for supporting
+the in vivo studies.
+References
+Chandika, P., Ko, S.C., Jung, W.K., 2015. Marine-derived biological macromolecule-based
+biomaterials for wound healing and skin tissue regeneration. Int. J. Biol. Macromol.
+77, 24–35.
+Han, G., Ceilley, R., 2017. Chronic wound healing: a review of current management and
+treatments. Adv. Ther. 34, 599–610.
+Gainza, G., Villullas, S., Pedraz, J.L., Hernandez, R.M., Igartua, M., 2015. Advances in
+drug delivery systems (DDSs) to release growth factors for wound healing and skin
+regeneration. Nanomedicine 11, 1551–1573.
+Chouhan, D., Dey, N., Bhardwaj, N., Mandal, B.B., 2019. Emerging and innovative ap-
+proaches for wound healing and skin regeneration: current status and advances.
+Biomaterials 216, 119267.
+Barrientos, S., Stojadinovic, O., Golinko, M.S., Brem, H., Tomic-Canic, M., 2008. Growth
+factors and cytokines in wound healing. Wound Repair Regen. 16, 585–601.
+Percival, S.L., McCarty, S., Hunt, J.A., Woods, E.J., 2014. The eﬀects of pH on wound
+healing, bioﬁlms, and antimicrobial eﬃcacy. Wound Repair Regen. 22, 174–186.
+Cutting, K.F., 2003. Wound exudate: composition and functions. Br. J. Commun. Nurs. 8
+(suppl 4–9).
+Garcia-Orue, I., Pedraz, J.L., Hernandez, R.M., Igartua, M., 2017. Nanotechnology-based
+delivery systems to release growth factors and other endogenous molecules for
+chronic wound healing. J. Drug Deliv. Sci. Tec. 42, 2–17.
+Shanskii, Y.D., Sergeeva, N.S., Sviridova, I.K., Kirakozov, M.S., Kirsanova, V.A.,
+Akhmedova, S.A., Antokhin, A.I., Chissov, V.I., 2013. Human platelet lysate as a
+promising growth-stimulating additive for culturing of stem cells and other cell types.
+Bull. Exp. Biol. Med. 156, 146–151.
+Santo, V.E., Popa, E.G., Mano, J.F., Gomes, M.E., Reis, R.L., 2015. Natural assembly of
+platelet lysate-loaded nanocarriers into enriched 3D hydrogels for cartilage re-
+generation. Acta Biomater. 19, 56–65.
+Dellera, E., Bonferoni, M.C., Sandri, G., Rossi, S., Ferrari, F., Del Fante, C., Perotti, C.,
+Grisoli, P., Caramella, C., 2014. Development of chitosan oleate ionic micelles loaded
+with silver sulfadiazine to be associated with platelet lysate for application in wound
+healing. Eur. J. Pharm. Biopharm. 88, 643–650.
+Santo, V.E., Gomes, M.E., Mano, J.F., Reis, R.L., 2012. Chitosan-chondroitin sulfate na-
+noparticles for controlled delivery of platelet lysates in bone regenerative medicine.
+J. Tissue Eng. Regen. Med. 3 (6 Suppl), s47–s59.
+Fekete, N., Gadelorge, M., Furst, D., Maurer, C., Dausend, J., Fleury-Cappellesso, S.,
+Mailander, V., Lotﬁ, R., Ignatius, A., Sensebe, L., Bourin, P., Schrezenmeier, H.,
+Rojewski, M.T., 2012. Platelet lysate from whole blood-derived pooled platelet
+concentrates and apheresis-derived platelet concentrates for the isolation and ex-
+pansion of human bone marrow mesenchymal stromal cells: production process,
+content and identiﬁcation of active components. Cytotherapy 14, 540–554.
+Fontana, F., Mori, M., Riva, F., Makila, E., Liu, D., Salonen, J., Nicoletti, G., Hirvonen, J.,
+Caramella, C., Santos, H.A., 2016. Platelet lysate-modiﬁed porous silicon micro-
+particles for enhanced cell proliferation in wound healing applications. ACS Appl.
+Mater. Interfaces 8, 988–996.
+Ranzato, E., Patrone, M., Mazzucco, L., Burlando, B., 2008. Platelet lysate stimulates
+wound repair of HaCaT keratinocytes. Br. J. Dermatol. 159, 537–545.
+Shekhter, A.B., Rudenko, T.G., Istranov, L.P., Guller, A.E., Borodulin, R.R., Vanin, A.F.,
+2015. Dinitrosyl iron complexes with glutathione incorporated into a collagen matrix
+as a base for the design of drugs accelerating skin wound healing. Eur. J. Pharm. Sci.
+78, 8–18.
+V.E.Santo, A.R.C.D., Popa, E.G., Gomes, M.E., Mano, J.F., Reis, R.L., 2012. Enhancement
+of osteogenic diﬀerentiation of human adipose derived stem cells by the controlled
+release of platelet lysates from hybrid scaﬀolds produced by supercritical ﬂuid
+foaming. J. Control Release 162, 19–27.
+Fonte, P., Araujo, F., Seabra, V., Reis, S., van de Weert, M., Sarmento, B., 2015. Co-
+encapsulation of lyoprotectants improves the stability of protein-loaded PLGA na-
+noparticles upon lyophilization. Int. J. Pharm. 496, 850–862.
+Trengove, N.J., Langton, S.R., Stacey, M.C., 1996. Biochemical analysis of wound ﬂuid
+from nonhealing and healing chronic leg ulcers. Wound Repair Regen. 4, 234–239.
+Dini, V., Salvo, P., Janowska, A., Di Francesco, F., Barbini, A., Romanelli, M., 2015.
+Correlation between wound temperature obtained with an infrared camera and
+clinical wound bed score in venous leg ulcers. Wounds 27, 274–278.
+Liang, C.C., Park, A.Y., Guan, J.L., 2007. In vitro scratch assay: a convenient and in-
+expensive method for analysis of cell migration in vitro. Nat. Protoc. 2, 329–333.
+Sahin, A., Esendagli, G., Yerlikaya, F., Caban-Toktas, S., Yoyen-Ermis, D., Horzum, U.,
+Aktas, Y., Khan, M., Couvreur, P., Capan, Y., 2017. A small variation in average
+particle size of PLGA nanoparticles prepared by nanoprecipitation leads to con-
+siderable change in nanoparticles’ characteristics and eﬃcacy of intracellular de-
+livery. Artif. Cells Nanomed. Biotechnol. 45, 1657–1664.
+Mura, S., Hillaireau, H., Nicolas, J., Le Droumaguet, B., Gueutin, C., Zanna, S., Tsapis, N.,
+Fattal, E., 2011. Inﬂuence of surface charge on the potential toxicity of PLGA na-
+noparticles towards Calu-3 cells. Int. J. Nanomed. 6, 2591–2605.
+Elizondo, E., Moreno, E., Cabrera, I., Cordoba, A., Sala, S., Veciana, J., Ventosa, N., 2011.
+Liposomes and other vesicular systems: structural characteristics, methods of pre-
+paration, and use in nanomedicine. Prog. Mol. Biol. Transl. Sci. 104, 1–52.
+Danhier, F., Ansorena, E., Silva, J.M., Coco, R., Le Breton, A., Preat, V., 2012. PLGA-based
+nanoparticles: an overview of biomedical applications. J. Control Release 161,
+505–522.
+Tefas, L.R., Tomuta, I., Achim, M., Vlase, L., 2015. Development and optimization of
+quercetin-loaded PLGA nanoparticles by experimental design. Clujul. Med. 88,
+214–223.
+Goke, K., Bunjes, H., 2018. Carrier characteristics inﬂuence the kinetics of passive drug
+loading into lipid nanoemulsions. Eur. J. Pharm. Biopharm. 126, 132–139.
+Sun, J., Wang, F., Sui, Y., She, Z., Zhai, W., Wang, C., Deng, Y., 2012. Eﬀect of particle size
+on solubility, dissolution rate, and oral bioavailability: evaluation using coenzyme Q
+(1)(0) as naked nanocrystals. Int. J. Nanomed. 7, 5733–5744.
+Mitragotri, S., Burke, P.A., Langer, R., 2014. Overcoming the challenges in administering
+biopharmaceuticals: formulation and delivery strategies. Nat. Rev. Drug Discov. 13,
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+13
+
+655–672.
+Soppimath, K.S., Aminabhavi, T.M., Kulkarni, A.R., Rudzinski, W.E., 2001. Biodegradable
+polymeric nanoparticles as drug delivery devices. J. Control Release 70, 1–20.
+Makadia, H.K., Siegel, S.J., 2011. Poly lactic-co-glycolic acid (PLGA) as biodegradable
+controlled drug delivery carrier. Polymers (Basel) 3, 1377–1397.
+Nabi-Meibodi, M., Vatanara, A., Najafabadi, A.R., Rouini, M.R., Ramezani, V., Gilani, K.,
+Etemadzadeh, S.M., Azadmanesh, K., 2013. The eﬀective encapsulation of a hydro-
+phobic lipid-insoluble drug in solid lipid nanoparticles using a modiﬁed double
+emulsion solvent evaporation method. Colloids Surf. B Biointerfaces 112, 408–414.
+Patel, A., Gaudana, R., Mitra, A.K., 2014. A novel approach for antibody nanocarriers
+development through hydrophobic ion-pairing complexation. J. Microencapsul. 31,
+542–550.
+Bibi, S., Kaur, R., Henriksen-Lacey, M., McNeil, S.E., Wilkhu, J., Lattmann, E.,
+Christensen, D., Mohammed, A.R., Perrie, Y., 2011. Microscopy imaging of lipo-
+somes: from coverslips to environmental SEM. Int. J. Pharm. 417, 138–150.
+Zolnik, B.S., Burgess, D.J., 2007. Eﬀect of acidic pH on PLGA microsphere degradation
+and release. J. Control Release 122, 338–344.
+Azizi, M., Farahmandghavi, F., Joghataei, M., Mojgan Zandi, M.I., Bakhtiary, M.,
+Dorkoosh, F.A., Ghazizadeh, F., 2013. Fabrication of protein-loaded PLGA nano-
+particles: eﬀect of selected formulation variables on particle size and release proﬁle.
+J. Polym. Res. 20, 110.
+Yadav, K.S., Sawant, K.K., 2010. Formulation optimization of etoposide loaded PLGA
+nanoparticles by double factorial design and their evaluation. Curr. Drug Deliv. 7,
+51–64.
+Miladia, K., Sfar, S., Fessi, H., Elaissari, A., 2015. Encapsulation of alendronate sodium by
+nanoprecipitation and double emulsion: from preparation to in vitro studies. Ind.
+Crops Prod. 72, 24–33.
+Barth, A., 2007. Infrared spectroscopy of proteins. Biochim. Biophys. Acta 1767,
+1073–1101.
+Kong, J., Yu, S., 2007. Fourier transform infrared spectroscopic analysis of protein sec-
+ondary structures. Acta Biochim. Biophys. Sin (Shanghai) 39, 549–559.
+Roberts, C.J., 2014. Protein aggregation and its impact on product quality. Curr. Opin.
+Biotechnol. 30, 211–217.
+Staiano-Coico, L., Higgins, P.J., Schwartz, S.B., Zimm, A.J., Goncalves, J., 2000. Wound
+ﬂuids: a reﬂection of the state of healing. Ostomy. Wound Manage. 46, 85S–93S quiz
+94S-95S.
+Fornaguera, C., Caldero, G., Mitjans, M., Vinardell, M.P., Solans, C., Vauthier, C., 2015.
+Interactions of PLGA nanoparticles with blood components: protein adsorption,
+coagulation, activation of the complement system and hemolysis studies. Nanoscale
+7, 6045–6058.
+Thomas, S., 1997. Assessment and management of wound exudate. J. Wound Care 6,
+327–330.
+Hernandez-Caselles, T., Villalain, J., Gomez-Fernandez, J.C., 1990. Stability of liposomes
+on long term storage. J. Pharm. Pharmacol. 42, 397–400.
+Nie, S., Hsiao, W.L., Pan, W., Yang, Z., 2011. Thermoreversible Pluronic F127-based
+hydrogel containing liposomes for the controlled delivery of paclitaxel: in vitro drug
+release, cell cytotoxicity, and uptake studies. Int. J. Nanomed. 6, 151–166.
+Matanovic, M.R., Kristl, J., Grabnar, P.A., 2014. Thermoresponsive polymers: insights
+into decisive hydrogel characteristics, mechanisms of gelation, and promising bio-
+medical applications. Int. J. Pharm. 472, 262–275.
+Schneider, L.A., Korber, A., Grabbe, S., Dissemond, J., 2007. Inﬂuence of pH on wound-
+healing: a new perspective for wound-therapy? Arch. Dermatol. Res. 298, 413–420.
+Greener, B., Hughes, A.A., Bannister, N.P., Douglass, J., 2005. Proteases and pH in
+chronic wounds. J. Wound Care 14, 59–61.
+Liu, Y., Kalen, A., Risto, O., Wahlstrom, O., 2002. Fibroblast proliferation due to exposure
+to a platelet concentrate in vitro is pH dependent. Wound Repair Regen. 10, 336–340.
+Selvan, N.K., Shanmugarajan, T.S., Uppuluri, V.N.V.A., 2020. Hydrogel based scaﬀolding
+polymeric biomaterials: approaches towards skin tissue regeneration. J. Drug Deliver.
+Sci. Tec. 55, 101456.
+Samberg, M., Stone, R., Natesan, S., Kowalczewski, A., Becerra, S., Wrice, N., Cap, A.,
+Christy, R., 2019. Platelet rich plasma hydrogels promote in vitro and in vivo angio-
+genic potential of adipose-derived stem cells. Acta Biomater. 87, 76–87.
+Jain, E., Sheth, S., Dunn, A., Zustiak, S.P., Sell, S.A., 2017. Sustained release of multi-
+component platelet-rich plasma proteins from hydrolytically degradable PEG hy-
+drogels. J. Biomed. Mater. Res. A 105, 3304–3314.
+Zhai, H., Maibach, H.I., 2007. Eﬀect of occlusion and semi-occlusion on experimental skin
+wound healing: a reevaluation. Wounds 19, 270–276.
+Dreifke, M.B., Jayasuriya, A.A., Jayasuriya, A.C., 2015. Current wound healing proce-
+dures and potential care. Mater. Sci. Eng. C Mater. Biol. Appl. 48, 651–662.
+McCarty, S.M., Percival, S.L., 2013. Proteases and delayed wound healing. Adv. Wound
+Care (New Rochelle) 2, 438–447.
+Chu, Y., Yu, D., Wang, P., Xu, J., Li, D., Ding, M., 2010. Nanotechnology promotes the
+full-thickness diabetic wound healing eﬀect of recombinant human epidermal growth
+factor in diabetic rats. Wound Repair Regen. 18, 499–505.
+Dumortier, G., Grossiord, J.L., Agnely, F., Chaumeil, J.C., 2006. A review of poloxamer
+407 pharmaceutical and pharmacological characteristics. Pharm. Res. 23,
+2709–2728.
+Ribeiro, M.P., Morgado, P.I., Miguel, S.P., Coutinho, P., Correia, I.J., 2013. Dextran-based
+hydrogel containing chitosan microparticles loaded with growth factors to be used in
+wound healing. Mater. Sci. Eng. C 33, 2958–2966.
+S.A. Bernal-Chávez, et al.
+European Journal of Pharmaceutical Sciences 146 (2020) 105231
+14

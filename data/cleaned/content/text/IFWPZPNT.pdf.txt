@@ -1,0 +1,725 @@
+Improved efﬁcacy of cisplatin in combination with a nano-formulation of
+pentacyclic triterpenediol
+Noor Alam b, Arem Qayum a,c, Ashok Kumar a,c, Vaibhav Khare b, Parduman Raj Sharma c,
+Samar Singh Andotra d, Shashank K. Singh a,c, Surinder Koul d,⁎, Prem N. Gupta a,b,⁎⁎
+a Academy of Scientiﬁc and Innovative Research (AcSIR), Anusandhan Bhawan, 2 RaﬁMarg, New Delhi 110001, India
+b Formulation & Drug Delivery Division, CSIR-Indian Institute of Integrative Medicine, Canal Road, Jammu 180001, India
+c Cancer Pharmacology Division, CSIR-Indian Institute of Integrative Medicine, Canal Road, Jammu 180001, India
+d Natural Product Chemistry Division, CSIR-Indian Institute of Integrative Medicine, Canal Road, Jammu 180001, India
+a b s t r a c t
+a r t i c l e
+i n f o
+Article history:
+Received 24 March 2016
+Received in revised form 7 May 2016
+Accepted 22 May 2016
+Available online 24 May 2016
+Cisplatin is widely used for the treatment of various cancers including cervical, ovarian, lung and head and neck,
+however, its clinical success is limited owing to the dose-dependent adverse effects, mainly nephrotoxicity and
+neurotoxicity. In order to address this limitation, the present study was undertaken to investigate growth inhib-
+itory effect of cisplatin in combination with a triterpenediol (3a, 24-dihydroxyurs-12-ene and 3a, 24-
+dihydroxyolean-12-ene, TPD) on human ovarian cancer cell line. Poly(dl-lactic-co-glycolic) acid nanoparticles
+loaded with TPD (TPD-PLGA-NPs) were successfully developed by emulsion solvent evaporation method. The
+TPD-PLGA-NPs were characterized for size distribution and zeta potential which was in order of 152.56 ±
+3.01 nm and −17.36 ± 0.37 mV respectively. The morphological evaluation was carried out by transmission
+electron microscopy and the formulation was also characterized using Fourier transform infrared spectroscopy
+(FTIR) and differential scanning calorimetry (DSC). The drug loading of the optimized formulation was
+51.03 ± 1.52 μg/mg and the formulation exhibited sustained drug release proﬁle. The in vitro cellular uptake
+study of coumarin-6 loaded PLGA nanoparticles in OVCAR-5 cells demonstrated a time dependent increase in up-
+take efﬁciency. Further, growth inhibitory effect of cisplatin was investigated in combination with TPD-PLGA-
+NPs. The combination index (CI) was b1, indicating a synergistic interaction. Further, at 75% of cell growth inhi-
+bition (ED75) the dose of cisplatin was reduced to 3.8 folds using this combination. The results indicated the po-
+tential of cisplatin and TPD-PLGA-NPs combination in order to reduce to dose limiting toxicities of the former.
+© 2016 Elsevier B.V. All rights reserved.
+Keywords:
+Cisplatin
+Boswellia serrata
+Drug combination
+PLGA
+Nanoparticles
+1. Introduction
+Conventional single drug chemotherapy (mono-therapy) offers lim-
+ited accessibility of drug to tumor tissues that requires a higher dose,
+leading to adverse effect [1]. Also, repeated treatment with single drug
+and administration of higher dose can result in resistance to the chemo-
+therapeutics. For a decade, combination chemotherapy has been envis-
+aged as a potential strategy to limit the draw-backs associated with
+single chemotherapeutic agent. Unlike mono-therapy, combination
+chemotherapy offers beneﬁts such as countering different biological tar-
+gets in cancer cells, thereby maximizing therapeutic efﬁcacy and re-
+duces the adverse effect [2].
+Cisplatin is one of the potent chemotherapeutic agents for the treat-
+ment of various solid tumors including cervical, ovarian, head and neck,
+and lung cancer [3]. The biochemical mechanisms of cisplatin cytotoxic-
+ity involve the binding of the drug to guanines base of DNA and forma-
+tion of inter-strand and intra-strand DNA cross links. These complexes
+may interfere with normal DNA replication and/or transcription mech-
+anisms [4]. Besides the binding with DNA, cisplatin may covalently bind
+to proteins and other cellular targets, and modulate the activity of en-
+zymes, receptors, and other proteins that ends up in cytotoxic phenom-
+ena [5]. The severe side-effects, including nephrotoxicity, neurotoxicity,
+myelotoxicity, bone-marrow depression and acquired chemo-resis-
+tance have limited the usage of cisplatin [6–8]. In order to overcome
+the dose-limiting toxicities in clinical use of cisplatin, combined chemo-
+therapy with other anticancer agents is a potential option [9]. A number
+of drug combination with platinum compounds have been investigated
+which improved clinical outcome and exhibited a positive impact on
+survival of patient [10–12].
+The combinations of cisplatin with the phytochemicals are also re-
+ceiving recognition in order to limit cytotoxic manifestation of the
+Materials Science and Engineering C 68 (2016) 109–116
+⁎ Correspondence to: S. Koul, Natural Product Chemistry Division, CSIR-Indian Institute
+of Integrative Medicine, Canal Road, Jammu-Tawi 180001, India.
+⁎⁎ Correspondence to: P.N. Gupta, Senior Scientist Formulation & Drug Delivery Division
+CSIR-Indian Institute of Integrative Medicine Canal Road, Jammu-Tawi-180001, India.
+E-mail addresses: skoul@iiim.ac.in (S. Koul), pngupta10@gmail.com,
+pngupta@iiim.ac.in (P.N. Gupta).
+http://dx.doi.org/10.1016/j.msec.2016.05.093
+0928-4931/© 2016 Elsevier B.V. All rights reserved.
+Contents lists available at ScienceDirect
+Materials Science and Engineering C
+journal homepage: www.elsevier.com/locate/msec
+
+cisplatin [13]. In this study a natural compound derived from the
+Boswellia serrata is investigated in combination with cisplatin. The
+gum exudate of Boswellia serrata, was traditionally explored in the man-
+agement of various diseases [14,15]. Boswellic acids (BAs), a group of
+pentacyclic triterpenoids are obtained from gum resin of Boswellia
+serrata. The major constituents of gum resin, β-boswellic acid, 11-
+keto-β-boswellic acid, 3-O-acetyl-β-boswellic acid and 3-O-acetyl-11-
+keto-β boswellic acid have been indicated for anti-neoplastic and anti-
+inﬂammatory activities [16,17]. The other pentacyclic triterpenediol ob-
+tained from Boswellia serrata, occurs in the form of an isomeric mixture
+of 3α, 24-dihydroxyurs-12-ene and 3α, 24-dihydroxyolean-12-ene
+(TPD) in nature. One 3α, 24-dihydroxyurs-12-ene isomer was isolated
+previously from the gum resin of Boswellia serrata [18] and when this
+was
+synthesized
+chemically,
+an
+isomeric
+mixture
+of
+3α,24-
+dihydroxyurs-12-ene and 3α,24-dihydroxyolean-12-ene (TPD) was ob-
+tained [19]. It was reported that a pentacyclic ring bone of boswellic acid
+is decisive characteristics for anti-topoisomerase activity [17]. The TPD
+induces apoptosis through extrinsic pathway by huge generation of re-
+active oxygen species and nitric oxide, activation of tumor necrosis fac-
+tor (TNF) family proteins and activation of caspase-8. Further, the loss of
+mitochondrial membrane potential leads to release of cytochrome c
+from the mitochondria, activate caspase-9 and ﬁnally cleavage of poly
+ADP ribose polymerase (PARP) that induce apoptosis through intrinsic
+pathway [20,21].
+Combination chemotherapy with drugs having different mode of ac-
+tion is advantageous compared to monotherapy [22]. As the biological
+targets of cisplatin and TPD are different [4,20] and both the agents
+are active on the same cancerous cell lines, hence, we investigated
+TPD as a potential candidate for combination chemotherapy with cis-
+platin. Further, the low aqueous solubility and high lipophilicity of
+TPD [21], necessitating the development of appropriate formulation
+for intravenous administration for its clinical application. Therefore
+TPD loaded PLGA nanoparticles (TPD-PLGA-NPs) were developed and
+characterized for various parameters including morphology, particle
+size distribution, zeta potential, drug loading and drug release proﬁle.
+The developed formulation was also characterized using Fourier trans-
+form infrared spectroscopy (FTIR) and differential scanning calorimetry
+(DSC). Additionally, the nano-formulation was evaluated for cellular
+uptake behavior. Subsequently, in vitro growth inhibition of combina-
+tion of cisplatin with TPD or TPD-PLGA-NPs was investigated for possi-
+ble synergistic effect in order to address dose associated toxicities of the
+cisplatin.
+2. Material and methods
+2.1. Materials
+PLGA (MW 24–38 kDa) was purchased from Boehringer Ingelheim
+(Germany). Cisplatin, polyvinyl alcohol (PVA, MW 31–50 kDa),
+coumarin-6, dichloromethane (DCM), 4,6-Diamidino-2-phenylindole
+dihydrochloride (DAPI), RPMI-1640 medium, sulforhodamine B (SRB)
+dye, streptomycin and penicillin were purchased from Sigma-Aldrich
+(India). Fetal bovine serum (FBS) was obtained from Gibco Life technol-
+ogies, U.S.A. All other chemicals and excipients used were of analytical
+grade. Ultrapure water (Millipore, India) was used throughout the
+experiments.
+2.2. Preparation of triterpenediol 3a, 24-dihydroxyurs-12-ene and 3a, 24-
+dihydroxyolean-12-ene (TPD)
+The isomeric mixture of TPD was obtained from boswellic acids by
+the method as described previously by our group [20]. Brieﬂy, a
+weighed amount of mixture of (α + β) boswellic acid was taken in
+dry ether and diazomethane solubilized in diethyl ether was dropped
+in the reaction mixture, until completion of the reaction. The solvent
+of the reaction mixture and excess of diazomethane were removed to
+obtain the mixture comprising the methyl esters. Subsequently, the
+methyl ester derivative of boswellic acid was dissolved in dry ether
+and lithium aluminum hydride (LiAlH4) was added to the reaction mix-
+ture and stirred for 1 h under nitrogen conditions. Further, the ethyl ac-
+etate was added to the solution to neutralize excess LiAlH4 and the
+organic layer was washed with puriﬁed water. The desired product
+(3α, 24-dihydroxyurs-12-ene and 3α, 24-dihydroxyolean-12-ene,
+TPD) was obtained after concentrating the solvent and crystallized as
+white crystals using hexane-ethylacetate solution.
+2.3. Preparation and optimization of TPD loaded PLGA nanoparticles (TPD-
+PLGA-NPs)
+TPD loaded nanoparticles were prepared by emulsion solvent evap-
+oration method [23], with minor modiﬁcation [Fig. 1]. The drug and
+polymer ratio was optimized by taking different concentration of TPD
+and a ﬁxed PLGA (35 mg) concentration, which were subsequently, dis-
+solved in dichloromethane and emulsiﬁed (Labsonic M Ultrasonic Ho-
+mogenizer, Sartorious, Germany) into aqueous phase containing PVA
+(2%, w/v). The emulsion was agitated by magnetic stirrer until complete
+evaporation of dichloromethane. The nanoparticles were collected by
+centrifugation (19,000 rpm, 15 min; Sigma 3–30 K, Germany), and
+reconstituted the pellet with water and centrifuged again. This step
+was repeated thrice for washing of nanoparticles. Finally, the pellet
+was dispersed in Milli-Q water and freeze dried (Advantage freeze
+dryer, VirTis, Gardiner, NY, USA) with mannitol as cryoprotectant. The
+freeze dried formulations were stored in desiccators till further use.
+2.4. Characterization of nanoparticles
+2.4.1. Particle size, polydispersity index and zeta potential measurement
+Particle size, polydispersity index and zeta potential of the nanopar-
+ticles were determined by dynamic light scattering (Zetasizer Nano
+ZS90, Malvern Instruments, UK) at 25 °C after resuspension of formula-
+tion in appropriate volume of phosphate buffer saline (PBS, pH 7.4).
+Each measurement was performed in triplicate.
+2.4.2. Morphological examination
+The morphology of TPD loaded PLGA nanoparticles was examined
+using transmission electron microscope (TEM, Philips Morgagni-268)
+operating at 70 kV. The nanoparticles suspension was sonicated and a
+drop of suspension placed on the copper grid. After drying, samples
+were treated with phosphotungstic acid (2%) and subsequently, ob-
+served under the TEM.
+2.4.3. Drug loading
+Weighed amount of TPD-PLGA nanoparticles was dissolved in aceto-
+nitrile and vigorously vortexed and sonicated. Subsequently, this solu-
+tion was centrifuged at 19,000 rpm for 15 min, supernatant was
+collected and analyzed by high performance liquid chromatography
+(HPLC) [20]. The analysis was performed at 30 °C by a RP-18 column
+(E-Merck, 5 μm, 4.0 × 250 mm). The mobile phase was a mixture of
+acetonitrile: water (0.5% acetic acid) in 95:05 ratios at a ﬂow rate of
+1.5 mL/min and detection was performed at 210 nm.
+2.4.4. In vitro release proﬁle
+In order to determine the in vitro release pattern of TPD from PLGA
+nanoparticles, weighted amount of nanoparticles were dispersed in
+phosphate buffer saline (PBS, pH 7.4 and pH 5.5) containing tween-80
+(0.5%, v/v) in a microcentrifuge tubes. The tubes were placed in a
+water bath shaker incubator (New Brunswick Scientiﬁc, USA) at 37 °C
+under gentle agitation. At a deﬁnite time intervals, the tubes were cen-
+trifuged (19,000 rpm, 10 min) and the known volume of supernatants
+were collected. After sampling, the equal volume of fresh PBS containing
+tween-80 (0.5%, v/v) was added to the release media. The collected
+samples were analyzed as described above using HPLC.
+110
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116
+
+2.4.5. Fourier transform infrared spectroscopy (FTIR)
+FTIR spectra of TPD, PLGA, physical mixture of TPD and PLGA, and
+TPD-PLGA nanoparticles were obtained using FTIR spectrophotometer
+(Spectrum RXI, FTIR instrument, Perkin Elmer, USA). Each sample was
+triturated separately with IR grade potassium bromide and compressed
+into thin pellets. The obtained pellets were scanned over the range of
+4000–500 cm−1 and the characteristic peaks of the samples were
+recorded.
+2.4.6. Differential scanning calorimetry (DSC)
+Thermal analysis was performed for TPD, PLGA, physical mixture of
+TPD and PLGA, and TPD-PLGA nanoparticles using DSC (Mettler-Toledo
+International Inc., Switzerland). Two milligram of each sample was kept
+into aluminum crucible and sealed with a standard aluminum lid. The
+sample was ﬂushed with nitrogen at a rate of 30 mL/min under an
+inert atmosphere and analyzed over a temperature range of 35–300 °C.
+The temperature was increased at a rate of 10 °C/min.
+2.5. Cell line experiments
+2.5.1. Cell culture and growth conditions
+Human ovarian cancer cell line (OVCAR-5) was acquired from Na-
+tional Cancer Institute (NCI), USA and grown in complete growth medi-
+um (RPMI-1640) supplemented with 10% fetal bovine serum, 100 μg/mL
+streptomycin and 100 units/mL penicillin in carbon dioxide incubator
+(New Brunswick Scientiﬁc, USA) at 37 °C, 5% CO2 and 98% RH.
+2.5.2. In vitro cellular uptake study
+2.5.2.1. Preparation of coumarin-6-loaded PLGA nanoparticles. To investi-
+gate the in vitro cellular uptake of PLGA nanoparticles, coumarin-6
+was used as a ﬂuorescence probe. Nanoparticles containing coumarin-
+6 were prepared using the same method described for TPD nanoparti-
+cles, except that 20 μL (1 mg/mL) dye was added instead of drug to
+the PLGA solution before formation of nanoparticles. Unloaded couma-
+rin-6 was removed from nanoparticles by centrifugation (19,000 rpm,
+15 min). Finally, coumarin-6-loaded nanoparticles (C6-PLGA-NPs)
+were washed, freeze dried and stored for further use.
+2.5.2.2. Intracellular uptake of coumarin-6-loaded PLGA nanoparticles. Cel-
+lular uptake of nanoparticles was evaluated by confocal laser scanning
+microscopy (CLSM) in OVCAR-5 cell line. OVCAR-5 cells were seeded
+in 6 well plates over glass cover slips at a density of 1 × 105 cells/well
+and incubated overnight. Subsequently, the cells were treated with
+ﬁxed concentration of C6-PLGA-NPs (0.125 mg/mL) and incubated for
+1, 2 and 4 h. After incubation, the medium was removed and cells
+were washed with ice-cold PBS and ﬁxed for 30 min with paraformalde-
+hyde (4% in PBS) at room temperature. The formaldehyde solution was
+removed and cells were then washed with ice-cold PBS and nuclei were
+stained with 4′,6-diamidino-2-phenylindole (DAPI, 1 μg/mL in PBS).
+Finally, the cells were investigated under the confocal laser scanning
+microscope (Olympus Fluoview FV1000).
+2.5.3. In vitro growth inhibition assay
+The sulforhodamine B (SRB) assay was performed to evaluate in
+vitro growth inhibition of cisplatin, TPD and TPD-PLGA-NPs and their
+combinations in the selected cell line [24]. Brieﬂy, cells suspension
+(100 μL) were added in 96-well tissue culture plate at a density of
+8000–12,000 cells per well 24 h prior to drug treatment. The cells
+were exposed with different concentration of free drug, nano-formula-
+tion and their combinations with ﬁxed molar ratio. Following 48 h treat-
+ment cells were ﬁxed with ice-cold trichloro acetic acid (50%, 50 μL) in
+all the wells for 1 h at 4 °C. The plates were washed with distilled
+water and allowed to air-dry, followed by staining with SRB dye
+(50 μL of 0.4% in 1% acetic acid) for 30 min at room temperature. Un-
+bound dye was removed with acetic acid (1%, v/v). The plates were air
+dried and solubilized the bound dye by adding 100 μL of 10 mM Tris
+buffer (pH 10.4) to each well. The absorbance was recorded at 540 nm
+on microplate reader (BioTek Synergy HT) and IC50 values were obtain-
+ed by plotting optical density versus concentration.
+2.5.4. Assessment of combination effects
+The combined effect of two drugs was analyzed to know the na-
+ture of the drug interaction from the median effect principle given
+by Chou and Talalay [25], by using the CalcuSyn software (Version
+2.11, Biosoft). The IC50 values obtained from single drug treatment
+cell growth inhibition assays were used to design the combination
+experiments. The cells were treated with cisplatin, TPD and TPD-
+PLGA-NPs alone or in combination (cisplatin:TPD-PLGA-NPs or
+cisplatin:TPD) at a ﬁxed molar ratio of 2:1 (cisplatin:TPD). The com-
+bination index (CI) values for the selected combinations treatment
+were determined using the equation: CI = (D)1 / (Dx)1 + (D)2 /
+(Dx)2, where (D)1 and (D)2 are the concentrations of individual
+drug in the combination resulting in x% growth inhibition, and
+(Dx)1 and (Dx)2 are the concentrations of individual drugs alone to
+elicit the same effect [26]. The CI values for drug interaction were
+plotted as a function of fraction affected (Fa). CI values of b1, =1
+and N1 demonstrate synergism, additive effect and antagonism re-
+spectively. Further, we evaluated the dose reduction index (DRI) to
+measure the dose reduction of individual drug in a synergistic com-
+bination at a particular effect level compared with the doses of single
+drug alone [22].
+2.6. Statistical analysis
+The results were presented as mean ± SD. The statistical analysis
+was carried out using student's t-test (for two groups). Statistical signif-
+icance was taken as p b 0.05.
+Fig. 1. The schematic representation of the steps involved in the preparation of TPD loaded PLGA nanoparticles by emulsion solvent evaporation method.
+111
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116
+
+3. Results
+3.1. Optimization of TPD loaded PLGA nanoparticles
+In order to optimize the amount of TPD incorporated into PLGA
+nanoparticles, polymer to drug ratios e.g. 35:1.16 (E1), 35:1.4 (E2),
+35:1.75 (E3), 35:2.33 (E4) were evaluated [Fig. 2]. The TPD loaded
+PLGA nanoparticles were fabricated by emulsion solvent evaporation
+method and drug loading was determined. It was observed that a max-
+imum drug loading (≈51 μg/mg) was obtained for the E3 formulation
+which was signiﬁcantly (p b 0.05) high as compared to E2 formulation.
+Further increase in drug to polymer ratio does not increase the drug
+loading signiﬁcantly. Therefore further experiments were performed
+using E3 formulation.
+3.2. Size, polydispersity index, zeta potential and morphology of optimized
+formulation
+The optimized TPD-PLGA nanoparticles were readily re-dispersible
+in aqueous media and exhibited average size, polydispersity index and
+zeta potential of 152.56 ± 3.01 nm, 0.168 ± 0.01 and −17.36 ±
+0.37 mV respectively [Fig. 3A, B]. The TPD-PLGA nanoparticles showed
+spherical shape under the TEM [Fig. 3C]. The particle size determination
+by TEM was in accordance to the size as measured using photon corre-
+lation spectroscopy.
+3.3. Drug loading and release proﬁle
+The optimized formulation showed drug loading of 51.03 ±
+1.52 μg/mg of nanoparticles. The in vitro release of TPD from PLGA
+nanoparticles was performed in phosphate buffered saline (PBS,
+pH 7.4 and pH 5.5) at 37 °C [Fig. 3D]. The released TPD was measured
+by HPLC technique as described previously. The typical biphasic release
+pattern was observed at both pH values. A rapid release was observed in
+the ﬁrst 12 h followed by a sustained release. The rapid release is con-
+tributed by the presence of drug in outer layer of polymeric particles
+while sustained release may be attributed to the drug in the inner
+core matrix. Further, the drug release proﬁle of TPD nanoparticles was
+slightly higher at pH 5.5 as compared to pH 7.4. In order to understand
+the drug release mechanism from TPD loaded PLGA nanoparticles, data
+were analyzed using kinetic models. A good correlation was observed
+between experimental data and Higuchi equation for TPD-PLGA-NPs
+at pH 7.4 and pH 5.5. Thus, the release of TPD from PLGA nanoparticles
+assumed to be controlled by diffusion through the polymeric matrix and
+subsequent release owing to the polymeric degradation. The release
+data were also analyzed according to the Korsmeyer–Peppas model
+and release exponent (n) was found to be 0.355 and 0.346 at pH 5.5
+and 7.4 respectively, indicating that the release of TPD from PLGA nano-
+particles follows Fickian diffusion kinetics.
+3.4. Fourier transform infrared spectroscopy (FTIR)
+FTIR spectroscopy was performed to characterize the interaction be-
+tween the drug and polymer [Fig. 4]. A characteristic band at 3390 cm−1
+is attributed to\\OH groups stretching vibration in TPD. In the spectra
+of pure PLGA, the peaks at 1760 cm−1 is attributed to the absorbance
+of \\C_O in PLGA matrix. Further, the physical mixture and TPD-
+PLGA nanoparticles showed mild peak at 3390 cm−1 due to \\OH
+stretching of TPD and prominent peak at 1760 cm−1 owing to the absor-
+bance of carbonyl group of PLGA. Additionally, the FTIR spectrum of for-
+mulation showed mild peaks at 1569 cm−1 which may be attributed to
+the stretching vibrations of\\C_O groups attached to hydroxyl groups
+via hydrogen bonds of residual polyvinyl alcohol that was used as sur-
+factant during nanoparticle fabrication process [27]. Overall, the results
+indicated the absence of any drug polymer interactions.
+3.5. Differential scanning calorimetry (DSC)
+In order to investigate the thermal behavior of TPD-PLGA nanoparti-
+cles, DSC was conducted for free TPD, PLGA, physical mixture of TPD and
+PLGA, and TPD-PLGA nanoparticles. The existence of an endothermic
+peak at 186 °C in the thermogram of pure TPD and physical mixture
+characterizes the melting of drug [Fig. 5]. The disappearance of melting
+endothermic peak of the drug in the nanoparticles formulation indicated
+the presence of drug in molecular dispersion form within the polymeric
+system. The pure PLGA and nanoparticles showed a peak at 50 °C,
+indicating characteristic glass transition temperature of the polymer.
+3.6. In vitro cellular uptake study
+The uptake of the nanoparticles in ovarian cancer cells was investi-
+gated using coumarin-6 as ﬂuorescence probe which was loaded into
+the nanoparticles. The confocal microscopic images showed the uptake
+of PLGA nanoparticles inside the cell and their localization in the cyto-
+plasm. The uptake of PLGA nanoparticles was dependent on the incuba-
+tion
+time
+[Fig.
+6].
+The
+PLGA
+nanoparticles
+exhibited
+higher
+accumulation preferentially in the cytoplasm of OVCAR-5 cells after
+4 h, indicated by comparatively elevated ﬂuorescence intensity, as com-
+pared to after 1 h. The time dependent enhancement in the cellular ﬂuo-
+rescence intensity owing to the greater cellular accumulation of the
+nanoparticles is also witnessed previously [28].
+3.7. In vitro growth inhibition study
+The growth inhibitory effect of cisplatin, TPD and TPD-PLGA-NPs
+alone on ovarian cancer cell line was tested in order to evaluate the
+cell line speciﬁc drug sensitivity. The IC50 values for cisplatin, TPD and
+TPD-PLGA-NPs were 54.53 ± 3.2, 38.33 ± 2.08 and 32.8 ± 1.95 μM, re-
+spectively, after 48 h.
+3.8. Assessment of combination effects
+In order to increase anti-neoplastic efﬁcacy of cisplatin by reducing
+its concentration in presence of TPD, we have evaluated the growth in-
+hibition potential of cisplatin and TPD-PLGA-NPs combination in the
+ovarian cancer cell line. Based on the IC50 values of cisplatin and TPD-
+PLGA-NPs, we selected 2:1 (cisplatin:TPD-PLGA-NPs; TPD amount in
+nanoparticles calculated based on drug loading) ratio and performed
+dose-range experiments. We observed that cisplatin (1–70 μM) alone
+inhibited 6–63% proliferation after 48 h, whereas TPD-PLGA-NPs (0.5–
+35 μM) alone exhibited 1–78% growth inhibition in OVCAR-5 cells. The
+combination of cisplatin and TPD-PLGA-NPs, at this ﬁxed ratio, im-
+proved the growth-inhibition (13–85%) in OVCAR-5 cells [Fig. 7A]. The
+IC50 values of cisplatin and TPD-PLGA-NPs in this combination were
+found to be 30.43 ± 3.78 μM and 15.23 ± 1.88 μM respectively. In
+order to know the quantitative measure of drug interaction, CI values
+Fig. 2. Optimization of drug loading in TPD-PLGA nanoparticles with varying polymer to
+drug ratios [35:1.16 (E1), 35:1.4(E2), 35:1.75(E3) and 35:2.33(E4)].
+112
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116
+
+were calculated using CalcuSyn software. The CI values obtained from
+combined growth inhibition of cisplatin with TPD-PLGA-NPs indicating
+a synergistic inhibitory effect (CI b 1) when Fa value was N0.5 [Fig. 7B].
+According to the dose reduction index, for 75% of cell growth inhibition,
+TPD-PLGA-NPs reduced 3.82 folds concentration of cisplatin in OVCAR-5
+cells. Further, isobolograms was also constructed for Fa values of 0.50,
+0.75, and 0.90, representing 50%, 75% and 90% growth inhibition respec-
+tively [Fig. 7C]. The cisplatin and TPD-PLGA-NPs combination was found
+to be superior as compared to plain drug combination (supplementary
+data). Altogether these results showed the efﬁcacy of cisplatin and
+TPD-PLGA-NPs combination with regard to improved cell growth inhi-
+bition. Moreover, this combination can also be explored to reduce the
+concentration of cisplatin and in turn, the dose associated adverse
+effects.
+4. Discussion
+Cisplatin is a widely used chemotherapeutic agent in the clinic, how-
+ever, severe adverse effect associated with cisplatin, mainly nephrotox-
+icity and neurotoxicity, hampers its clinical success. The management of
+nephrotoxicity includes hydration in combination with the use of di-
+uretics [29]. However, another dose limiting toxicity, neurotoxicity, is
+still challenging and may lead to peripheral neuropathy and hearing
+loss [30]. Previously, we investigated the potential of nano-formulations
+to reduce the side effect of cisplatin [31,32]. In this study the combina-
+tion of cisplatin with an anticancer pentacyclic triterpenoids obtained
+from the natural source (gum resin of Boswellia serrata) is investigated
+as a potential combination.
+Taking into consideration the physiochemical characteristics of TPD
+such as the high lipophilicity and low water solubility, it was encapsu-
+lated into PLGA based nanoparticles for intravenous administration.
+PLGA is FDA approved biodegradable and biocompatible polymer
+which has been used since many decades for drug delivery application.
+The biodegradation proﬁle of PLGA is well known as its biodegradation
+leads to the formation of lactic and glycolic acid which are used in Krebs
+cycle [33]. TPD-PLGA nanoparticles were fabricated by using emulsion
+solvent evaporation method. Formulations of TPD loaded PLGA
+Fig. 3. Characterization of nanoparticles: A representative size distribution (A) and zeta potential (B) of TPD-PLGA nanoparticles. Transmission electron photomicrographs of TPD-PLGA
+nanoparticles (C). Cumulative in-vitro release proﬁle of TPD from PLGA nanoparticles in PBS (pH 5.5 and 7.4) at 37 °C (D). Data represent the mean ± SD (n = 3).
+Fig. 4. Characterization of nanoparticles using fourier transforms infrared spectroscopy:
+(A) TPD, (B) PLGA, (C) Physical mixture (TPD and PLGA) and (D) TPD-PLGA nanoparticles.
+Fig. 5. Differential scanning calorimetry thermograms of: (A) TPD; (B) PLGA; (C) physical
+mixture (TPD and PLGA) and (D) TPD-PLGA nanoparticles.
+113
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116
+
+nanoparticles were prepared with varying polymer to drug ratio in
+order to have optimum loading proﬁle. Formulation E3 exhibited opti-
+mum drug loading. Further increase in drug amount does not affect
+drug loading signiﬁcantly. The optimized formulation had negative
+zeta potential and showed particle size below 200 nm. The size range
+of developed nano-formulation is optimum with regard to long circula-
+tory characteristics, allowing site-speciﬁc localization in the tumor vas-
+culature via passive targeting [34,35]. On the other hand, the neutral or
+negatively charged nanocarriers possess the potential to avoid renal
+elimination and could result in long circulation in vivo [36]. Thus the op-
+timum size range of nanocarrier and surface charge could be of impor-
+tance for improved cytotoxicity in vivo.
+The shape of TPD-PLGA-NPs was spherical as examined by TEM and
+there was a good correlation of the size determined by dynamic light
+scattering method and TEM. The in vitro release proﬁle of TPD from
+PLGA nanoparticles at pH 7.4 and pH 5.5 showed a biphasic drug release
+proﬁle characterized by an early rapid release and followed by sustained
+release. At initial stage, loosely bound drug at the nanoparticle surfaces
+was released in the media. Subsequently, partitioning of the drug local-
+ized in the outer layer of the polymeric matrix occur into the release
+media and at the later stages drug localized in the core of the nanopar-
+ticles released through swollen and degraded polymer [37,38]. It was
+also observed that the drug release was slightly higher at pH 5.5
+(mimics the pH of tumor microenvironment) which could be attributed
+to the relatively enhanced polymer degradation in acidic pH. This ﬁnd-
+ing is in accordance to a previous investigation [39]. The observed pat-
+tern of TPD release from nanoparticles could be beneﬁcial for avoiding
+off-target effects in systemic circulation by diminished release at
+pH 7.4 and favoring bulk of the release in tumors microenvironment.
+The characterization of optimized formulation by FTIR spectroscopy
+ruled out the possibility of any polymer drug interaction. The FTIR spec-
+tral investigation revealed that the speciﬁc functional groups of poly-
+meric carrier in the nanoparticles have almost the identical chemical
+characteristics of the pure polymeric substance. Further, the absence
+of endothermic peak of TPD in formulation indicated the amorphous na-
+ture and suggesting encapsulation of the drug within the polymer
+matrix.
+The in vitro cellular uptake of PLGA nanoparticles performed in
+OVCAR-5 cell, showed a time dependent increase in incorporation of
+PLGA nanoparticles into the cytoplasm of the cells. As the incubation
+time increases, the ﬂuorescent intensity increases, indicating an in-
+crease in the nanoparticle uptake by the cells. The colloidal carrier in-
+cluding nanoparticles are predominantly internalization into the cells
+by the mechanism of endocytosis, however, there are other mechanism
+as well for the entry into the cells [40,41]. The attribute of enhanced cel-
+lular accumulation associated with the nano-formulations could trans-
+late to better therapeutic efﬁcacy [42,43]. In our study, efﬁcient
+cellular uptake of the nanoparticles in the OVCAR-5 cells infers efﬁcient
+accumulation and subsequent release of the drug within the cells,
+allowing greater intracellular drug concentration. This could result in
+better anticancer activity of TPD and in turn, lead to lowering of cisplatin
+concentration for the desired activity in combination.
+The resurgence of chemotherapy using cisplatin is witnessed recent-
+ly and new mechanism based drug combination is a potential area of re-
+search [44]. The drug combination is intended to improve the
+therapeutic efﬁcacy or reducing the dose with the same or improved ef-
+ﬁcacy in order to avoid toxic manifestations. Mechanistically, cisplatin
+mediates its cytotoxic effects by inhibiting DNA replication through its
+binding with guanine residues. On the other hand, TPD has been
+shown to induce apoptosis through extrinsic pathway by activating
+Fig. 6. Cellular uptake analysis of coumarin-6 loaded PLGA nanoparticles in OVCAR-5 cells
+after (A) 1 h, (B) 2 h, and (C) 4 h using confocal laser scanning microscope. Blue color
+represents ﬂuorescence of DAPI, indicating nucleus staining. Coumarin-6 loaded
+nanoparticles are showing green color ﬂuorescence.
+114
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116
+
+necrosis factor (TNF) family proteins and activation of caspase-8, and
+through intrinsic pathway by activating caspase-9 and cleavage of
+PARP [20,21]. Therefore, the combination of cisplatin with TPD was in-
+vestigated for possible synergistic effect. IC50 values are commonly
+used to select appropriate ratio for drug combination as reported previ-
+ously by our group [45] as well as other investigators [46,47]. The IC50
+values for cisplatin and TPD-PLGA-NPs were 54.53 ± 3.2 and 32.8 ±
+1.95 μM, respectively in OVCAR-5 cells. Therefore, combination effect
+of cisplatin and TPD-PLGA-NPs was determined at a ﬁxed molar ratio
+(2:1, Cisplatin: TPD). CI values were determined according to Chou
+and Talalay method using CalcuSyn software. When Fa value was
+N0.5, a synergistic cytotoxic effect (CI b 1) was observed between cis-
+platin and TPD-PLGA-NPs in OVCAR-5 cells. There was a signiﬁcant re-
+duction in the IC50 value of the both drug in combination. The
+isobolograms was also generated and synergy evaluated on the basis
+of ED50, ED75 and ED90 of drug combinations. The combination was
+found to be synergistic at the selected drug ratio. In isobologram, the di-
+agonal line connecting two 50% growth inhibition dose (ED50) points is
+the theoretical line of additivity. The experimental ED50 point was
+below the line of additivity, indicating synergistic effect. The similar re-
+sults were obtained in the ED75 and ED90. At higher drug concentration,
+the experimental effective dose points were far from the theoretical line
+of additivity, which indicate that synergistic effect is more prominent in
+the order of ED50 b ED75 b ED90. Further, the dose reduction index were
+determined for the two drug combinations and it was found that at 75%
+of cell growth inhibition in OVCAR-5 cells, TPD-PLGA-NPs reduced the
+concentration of cisplatin by approximately four folds. On the other
+hand, for the same degree of growth inhibition, the plain drug (TPD), re-
+duced the concentration of cisplatin only by 1.17 folds. The reduced
+dose of cisplatin coupled with the equal or improved therapeutic re-
+sponse using ﬁxed drug combination could improve clinical success of
+this widely used drug by reducing dose-associated toxic manifestations.
+It has been reported that a combination of cisplatin with topoisomerase
+inhibitors is a potential strategy to overcome acquired resistance of cis-
+platin [29]. Further, it has been shown that a pentacyclic ring in the
+boswellic acid is crucial for anti-topoisomerase property [17]. Therefore
+this combination may also be beneﬁcial in context of acquired cisplatin
+resistance.
+In conclusion, keeping into consideration the clinical potential and
+dose-limiting toxicities of cisplatin, a novel strategy was explored com-
+prising a mechanism based drug combination with TPD, which was ob-
+tained from Boswellia serrata having a history of traditional use.
+Considering the physicochemical characteristics of TPD, a nano-formu-
+lation was developed and characterized for various parameters. The
+combination of cisplatin with TPD nano-formulation result in a syner-
+gistic effect coupled with the reduction in the dose of cisplatin. Further,
+the combination of cisplatin with TPD-PLGA-NPs was superior as com-
+pared to the combination of cisplatin with TPD. The ﬁndings are of con-
+siderable signiﬁcance keeping in view the dose-depending toxicities of
+the cisplatin. However, further studies are required to evaluate potential
+of this combination in suitable animal model.
+Declaration of interest
+The authors state no conﬂict of interest.
+Acknowledgement
+Authors are grateful to Director, CSIR-IIIM, Jammu for providing nec-
+essary support for carrying out this work. The ﬁnancial assistance to
+Noor Alam in the form of Senior Research Fellowship from Indian Coun-
+cil of Medical Research, New Delhi is truly acknowledged. Authors also
+acknowledge research funding from the Major Lab Project (MLP6006).
+The institutional publication number for this manuscript is IIIM/1875/
+2015.
+Fig. 7. TPD synergistically enhanced growth inhibition of cisplatin in OVCAR-5 cells. (A) OVCAR-5 cells were exposed to either cisplatin (1–70 μM) or TPD-PLGA-NPs (0.5–35 μM) alone or
+in combination at 2:1 (cisplatin:TPD-PLGA-NPs) ﬁxed molar ratio for 48 h. Each value was the mean ± SD of three independent experiments. *, signiﬁcant difference (p b 0.05) (B) Fa-CI
+plots were drawn to show the synergistic effects between cisplatin and TPD-PLGA-NPs in OVCAR-5 cell lines. (C) Isobologram analysis for the combinations interaction of cisplatin with
+TPD-PLGA-NPs in OVCAR-5 with ﬁxed drug ratio 2:1 of cisplatin and TPD-PLGA-NPs. The individual doses of cisplatin and TPD-PLGA-NPs to achieve 90% (blue line connected open dotted
+circle) growth inhibition (Fa = 0.90), 75% (green line connected plus sign) growth inhibition (Fa = 0.75), and 50% (red line connected cross symbol) growth inhibition (Fa = 0.50) were
+plotted on the x and y axes. Combination index (CI) values calculated using Calcusyn software is represented by points above (indicating antagonism between drugs) or below the lines
+(indicating synergy). (X symbol) ED50, (plus sign) ED75 and (open dotted circle) ED90.
+115
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116
+
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at http://dx.
+doi.org/10.1016/j.msec.2016.05.093.
+References
+[1] S.K. Sahoo, S. Parveen, J.J. Panda, The present and future of nanotechnology in
+human healthcare, Nanomedicine 3 (2007) 20–31.
+[2] P. Parhi, C. Mohanty, S.K. Sahoo, Nanotechnology-based combinational drug deliv-
+ery: an emerging approach for cancer therapy, Drug Discov. Today 17 (2012)
+1044–1052.
+[3] B. Rosenberg, Fundamental studies with cisplatin, Cancer 55 (1985) 2303–2316.
+[4] R.P. Perez, Cellular and molecular determinants of cisplatin resistance, Eur. J. Cancer
+34 (1998) 1535–1542.
+[5] T. Peleg-Shulman, D. Gibson, Cisplatin-protein adducts are efﬁciently removed by
+glutathione but not by 5′-guanosine monophosphate, J. Am. Chem. Soc. 123
+(2001) 3171–3172.
+[6] J.H. Maduro, E. Pras, P.H. Willemse, E.G. deVries, Acute and long-term toxicity fol-
+lowing radiotherapy alone or in combination with chemotherapy for locally ad-
+vanced cervical cancer, Cancer Treat. Rev. 29 (2003) 471–488.
+[7] Z.H. Siddik, Cisplatin: mode of cytotoxic action and molecular basis of resistance,
+Oncogene 22 (2003) 7265–7279.
+[8] X. Yao, K. Panichpisal, N. Kurtzman, K. Nugent, Cisplatin nephrotoxicity: a review,
+Am. J. Med. Sci. 334 (2007) 115–124.
+[9] D. Wang, S.J. Lippard, Cellular processing of platinum anticancer drugs, Nat. Rev. 4
+(2005) 307–320.
+[10] P.A. Bunn, Chemotherapy for advanced non-small-cell lung cancer: who, what,
+when, why? J. Clin. Oncol. 20 (2002) 23S–33S.
+[11] M. Martin, Platinum compounds in the treatment of advanced breast cancer, Clin.
+Breast Cancer 2 (2001) 190–208.
+[12] J. Cosaert, E. Quoix, Platinum drugs in the treatment of non-small-cell lung cancer,
+Br. J. Cancer 87 (2002) 825–833.
+[13] N.M. Yunos, P. Beal, J.Q. Yu, F. Huq, Synergism from sequenced combinations of
+curcumin and epigallocatechin-3-gallate with cisplatin in the killing of human ovar-
+ian cancer cells, Anticancer Res. 31 (2011) 1131–1140.
+[14] R. Han, Highlight on the studies of anticancer drugs derived from plants in China,
+Stem Cells 12 (1994) 53–63.
+[15] H.P. Ammon, H. Safayhi, T. Mack, J. Sabieraj, Mechanism of antiinﬂammatory actions
+of curcumine and boswellic acids, J. Ethnopharmacol. 38 (1993) 113–119.
+[16] H. Safayhi, T. Mack, J. Sabieraj, M.I. Anazodo, L.R. Subramanian, H.P. Ammon,
+Boswellic acids: novel, speciﬁc, non-redox inhibitors of 5-lipoxygenase, J.
+Pharmacol. Exp. Ther. 261 (1992) 1143–1146.
+[17] R.F. Hoernlein, T. Orlikowsky, C. Zehrer, D. Niethammer, E.R. Sailer, T. Simmet, G.E.
+Dannecker, H.P. Ammon, Acetyl-11-keto-beta boswellic acid induce apoptosis in
+HL-60 and CCRF- CEM cells and inhibit topoisomerase-I, J. Pharmacol. Exp. Ther.
+288 (1999) 613–619.
+[18] B. Mahajan, S.C. Taneja, V.K. Sethi, K.L. Dhar, Two triterpenoids from Boswellia
+serrata gum resin, Phytochemistry 39 (1995) 453–455.
+[19] G.G. Allan, The stereochemistry of the boswellic acids, Phytochemistry 7 (1968)
+963–973.
+[20] S. Bhushan, A. Kumar, F. Malik, S.S. Andotra, V.K. Sethi, I.P. Kaur, S.C. Taneja, G.N.
+Qazi, J. Singh, A triterpenediol from Boswellia serrata induces apoptosis through
+both the intrinsic and extrinsic apoptotic pathways in human leukemia HL-60
+cells, Apoptosis 12 (2007) 1911–1926.
+[21] S. Bhushan, V. Kakkar, H.C. Pal, S.K. Guru, A. Kumar, D.M. Mondhe, P.R. Sharma, S.C.
+Taneja, I.P. Kaur, J. Singh, A.K. Saxena, Enhanced anticancer potential of encapsulated
+solid lipid nanoparticles of TPD: a novel triterpenediol from Boswellia serrata, Mol.
+Pharm. 10 (2013) 225–235.
+[22] T.C. Chou, Theoretical basis, experimental design, and computerized simulation of
+synergism and antagonism in drug combination studies, Pharmacol. Rev. 58
+(2006) 621–681.
+[23] Y. Mo, L.Y. Lim, Paclitaxel-loaded PLGA nanoparticles: potentiation of anticancer ac-
+tivity by surface conjugation with wheat germ agglutinin, J. Control. Release 108
+(2005) 244–262.
+[24] P. Houghton, R. Fang, I. Techatanawat, G. Steventon, P.J. Hylands, C.C. Lee, The
+sulphorhodamine (SRB) assay and other approaches to testing plant extracts and
+derived compounds for activities related to reputed anticancer activity, Methods
+42 (2007) 377–387.
+[25] T.C. Chou, P. Talalay, Quantitative analysis of dose-effect relationships: the combined
+effects of multiple drugs or enzyme inhibitors, Adv. Enzym. Regul. 22 (1984) 27–55.
+[26] L. Zhao, M.G. Wientjes, J.L. Au, Evaluation of combination chemotherapy: integration
+of nonlinear regression, curve shift, isobologram, and combination index analyses,
+Clin. Cancer Res. 10 (2004) 7994–8004.
+[27] U.H. Hossain, T. Seidl, W. Ensinger, Combined in situ infrared and mass spectromet-
+ric analysis of high-energy heavy ion induced degradation of polyvinyl polymers,
+Polym. Chem. 5 (2014) 1001–1012.
+[28] P. Soni, J. Kaur, K. Tikoo, Dual drug-loaded paclitaxel–thymoquinone nanoparticles
+for effective breast cancer therapy, J. Nanopart. Res. 17 (2015) 1–12.
+[29] E. Wong, C.M. Giandomenico, Current status of platinum-based antitumor drugs,
+Chem. Rev. 99 (1999) 2451–2466.
+[30] M.P. Decatris, S. Sundar, K.J. O'Byrne, Platinum-based chemotherapy in metastatic
+breast cancer: current status, Cancer Treat. Rev. 30 (2004) 53–81.
+[31] N. Alam, V. Khare, R. Dubey, A. Saneja, G.D. Singh, N. Sharma, B.K. Chandan, P.N.
+Gupta, Biodegradable polymeric system for cisplatin delivery: development, in
+vitro characterization and investigation of toxicity proﬁle, Mater. Sci. Eng. C 38
+(2014) 85–93.
+[32] N. Alam, R. Dubey, A. Kumar, M. Koul, N. Sharma, P.R. Sharma, B.K. Chandan, S.K.
+Singh, G.D. Singh, P.N. Gupta, Reduced toxicological manifestation of cisplatin fol-
+lowing encapsulation in folate grafted albumin nanoparticles, Life Sci. 142 (2015)
+76–85.
+[33] F. Danhier, E. Ansorena, J.M. Silva, R. Coco, A.L. Breton, V. Préat, PLGA-based nano-
+particles: an overview of biomedical applications, J. Control. Release 161 (2012)
+505–522.
+[34] S.M. Moghimi, A.C. Hunter, J.C. Murry, Long-circulating and target-speciﬁc nanopar-
+ticles: theory to practice, Pharmacol. Rev. 53 (2001) 283–318.
+[35] D. Peer, J.M. Karp, S. Hong, O.C. Farokhzad, R. Margalit, R. Langer, Nanocarriers as an
+emerging platform for cancer therapy, Nat. Nanotechnol. 2 (2007) 751–780.
+[36] S. Acharya, S.K. Sahoo, PLGA nanoparticles containing various anticancer agents and
+tumour delivery by EPR effect, Adv. Drug Deliv. Rev. 63 (2011) 170–183.
+[37] L. Mu, S.S. Feng, PLGA/TPGS nanoparticles for controlled release of paclitaxel: effects
+of the emulsiﬁer and drug loading ratio, Pharm. Res. 20 (2003) 1864–1872.
+[38] F. Danhier, N. Lecouturier, B. Vroman, C. Jerome, Paclitaxel-loaded PEGylated PLGA-
+based nanoparticles: in vitro and in vivo evaluation, J. Control. Release 133 (2009)
+11–17.
+[39] W.X. Shen, W. Nuo, Synthesis, characterization, biodegradation, and drug delivery
+application of biodegradable lactic/glycolic acid polymers. Part II: biodegradation,
+J. Biomater. Sci. Polym. Ed. 12 (2001) 21–34.
+[40] H.M. Ding, Y.Q. Ma, Controlling cellular uptake of nanoparticles with pH-sensitive
+polymers, Sci. Rep. 3 (2013) 2804.
+[41] P. Nativo, I.A. Prior, M. Brust, Uptake and intracellular fate of surface-modiﬁed gold
+nanoparticles, ACS Nano 2 (2008) 1639–1644.
+[42] A.Z. Wang, R. Langer, O.C. Farokhzad, Nanoparticle delivery of cancer drugs, Annu.
+Rev. Med. 63 (2012) 185–198.
+[43] S. Parveen, R. Misra, S.K. Sahoo, Nanoparticles: a boon to drug delivery, therapeutics,
+diagnostics and imaging, Nanomedicine 8 (2012) 147–166.
+[44] L. Kelland, The resurgence of platinum-based cancer chemotherapy, Nat. Rev. Can-
+cer 7 (2007) 573–584.
+[45] A. Pandita, B. Kumar, S. Manvati, S. Vaishnavi, S.K. Singh, R.N.K. Bamezai, Synergistic
+combination of gemcitabine and dietary molecule induces apoptosis in pancreatic
+cancer cells and down regulates PKm2 expression, PLoS One 9 (2014), e107154.
+[46] V. Pavillard, D. Kherfellah, S. Richard, J. Robert, D. Montaudon, Effects of the combi-
+nation of camptothecin and doxorubicin or etoposide on rat glioma cells and
+camptothecin-resistant variants, Br. J. Cancer 85 (2001) 1077–1083.
+[47] J. Zhang, L. Miao, S. Guo, Y. Zhang, L. Zhang, A. Satterlee, W.Y. Kim, L. Huang, Syner-
+gistic anti-tumor effects of combined gemcitabine and cisplatin nanoparticles in a
+stroma-rich bladder carcinoma model, J. Control. Release 182 (2014) 90–96.
+116
+N. Alam et al. / Materials Science and Engineering C 68 (2016) 109–116

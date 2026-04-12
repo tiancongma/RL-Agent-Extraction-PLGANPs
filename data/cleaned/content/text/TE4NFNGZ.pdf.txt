@@ -1,0 +1,1341 @@
+Published in IET Nanobiotechnology
+Received on 7th May 2012
+Revised on 30th November 2012
+Accepted on 13th December 2012
+doi: 10.1049/iet-nbt.2012.0012
+ISSN 1751-8741
+In vitro degradation of poly (D, L-lactide-co-glycolide)
+nanoparticles loaded with linamarin
+Ahmed S. Hussein1,2, Norhaﬁzah Abdullah1, Fakhru’l-Razi Ahmadun1
+1Department of Chemical and Environmental Engineering, Faculty of Engineering, Universiti Putra Malaysia, 43400
+Serdang, Selangor, Malaysia
+2Advanced Materials and Nanotechnology Lab., Institute of Advanced Technology, Universiti Putra Malaysia, 43400
+Serdang, Selangor, Malaysia
+E-mail: ahmedsh65@yahoo.com
+Abstract: Linamarin-loaded poly (lactide-co-glycolide) (PLGA) nanoparticles (NPs) were prepared by the double emulsion
+solvent evaporation technique. The formulated PLGA (50:50) and PLGA (85:15) NPs were spherically shaped, having an
+average particle size < 190 nm, drug entrapment efﬁciency (50–52%) and zeta potentials ranging from −25 to −30 mV.
+Interestingly, all formulated PLGA NPs exhibited a controlled biphasic release proﬁle. Polymer degradation was investigated
+in the current research to determine the major degradation products and then the polymer biocompatibility as well as safety.
+The PLGA NPs degradation behaviour was investigated by measuring water uptake, mass loss, change of pH of the
+degradation medium, morphological changes, and lactic and glycolic acid concentrations. Gravimetrical methods, pH meter,
+scanning electron microscope and high-performance liquid chromatography were employed, respectively. PLGA (50:50) NPs
+were found to degrade faster than PLGA (85:15) NPs. With regard to water uptake, mass loss and pH change, the
+degradation behaviour of PLGA (50:50) NPs was signiﬁcantly (ρ < 0.05) different from that of PLGA (85:15) NPs. A
+complete degradation of PLGA (50:50) NPs was achieved after 102 days, whereas, only about 60% of PLGA (85:15) NPs
+were degraded within the same period. Complete degradation and release of the degradation products naturally by the body
+ensures safety of the delivery carrier.
+1
+Introduction
+Owing to the multiple limitations of conventional drugs, such
+as solubility, low bioavailability, compatibility and toxicity,
+there have been strong efforts in the development of
+polymeric drug delivery systems. Although these delivery
+systems might be biodegradable or non-biodegradable, the
+latter has gained less attention. An ideal polymer to be
+used in drug delivery systems should be biocompatible,
+biodegradable and non-toxic [1, 2]. The applications of
+biodegradable
+polymers
+in
+the
+biomedical
+ﬁeld
+for
+controlled drug delivery have received signiﬁcant interest
+in
+the
+past
+few
+decades.
+Among
+the
+biodegradable
+polymers,
+polyesters
+have
+been
+the
+most
+widely
+investigated
+ones.
+Among
+the
+polyesters,
+polylactide,
+polyglycolide and their copolymers are the most popular
+choices as carriers because of their good degradation as
+well as their approval for clinical use [3–5]. The PLGA
+copolymer undergoes degradation in aqueous mediums for
+both in vitro and in vivo through the cleavage of its
+backbone ester linkage [6]. A good understanding of the
+biodegradation phenomenon and an approval of the cellular
+and
+tissue
+responses
+are
+fundamental
+prerequisites
+in
+designing and developing any successful biodegradable
+delivery system containing drugs. Furthermore, to assess
+the drug release kinetics of any drug delivery system, it is
+mandatory to characterise its degradation and erosion
+behaviour. Since a change in the surface area of the colloid
+takes place as soon as the degradation process starts, it is
+essential to control the degradation rate to ensure an even
+dosage delivery of the drugs [7].
+Generally, degradation rates of the polyesters depend on
+many factors including type and component of polyester,
+molecular
+weight,
+molecular
+weight
+distribution,
+crystallinity as well as macroscopic geometry [8]. An
+important prerequisite for the hydrolytic degradation of the
+polymeric devices is their wetting behaviour. Release of the
+drugs from these devices was found to be controlled by
+diffusion and an erosion mechanism. After incubation of
+the
+nanoparticles
+(NPs)
+into
+the
+dissolution
+medium,
+desorption of the surface bound drug occurs ﬁrst followed
+by diffusion of both water into and linamarin out from the
+NPs, which mainly take place through the NPs walls. As
+the
+process
+continues,
+the
+degradation
+process
+will
+predominate because of chain relaxation and the formation
+of more pores on the surfaces of the NPs. Water penetration
+and contact angle are the most important factors in
+describing the wettability of the delivery device [9]. The
+complete degradation of the polymeric NPs into water
+soluble degradation products, such as lactic and glycolic
+acids, observed in this study after 3 months ensures a
+complete release of the encapsulated drug from the matrix.
+www.ietdl.org
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+33
+doi: 10.1049/iet-nbt.2012.0012
+& The Institution of Engineering and Technology 2013
+
+This
+degradation
+also
+ensures
+easy
+excretion
+of
+the
+degradation
+products
+from
+the
+body
+through
+natural
+pathways, and, consequently, the safety of the delivery
+system.
+Linamarin (α-hydroxyisobutyronitrile-β-D-glucose) is a
+cyanogenic glucoside found in the leaves and roots of
+plants, such as lima beans, ﬂax and abundantly in the
+cassava plant (Manihot esculenta Crantz). Linamarin is a
+water-soluble molecule and can be hydrolysed by acid or
+enzyme to liberate a toxic chemical ‘hydrogen cyanide’
+(HCN), which is the main source of toxicity of linamarin if
+found in high concentrations. Some previous researches
+have proven that linamarin exhibits a good cytotoxicity
+effect towards HT29, MCH-7 and HL-60 [10, 11]. This
+cytotoxicity has been mainly attributed to the toxic HCN
+that is liberated from the hydrolysis of linamarin. Therefore
+this HCN can also harm normal (healthy) cells if both the
+dosage form and administration of linamarin is not well
+formulated. To circumvent this problem, linamarin has been
+encapsulated into PLGA NPs to control its release, and,
+consequently, toxicity. The main objective of the current
+research is to investigate the degradation behaviour of the
+formulated linamarin loaded PLGA NPs to ensure complete
+release of the hosted drug as well as the safety of the
+delivery system. The selection of PLGA (50:50) and PLGA
+(85:15) copolymers was because they have been the most
+investigated copolymers in drug delivery systems. They also
+provide an opportunity to investigate the effect of changing
+(lactide (LA)/glycolide(GA)) composition on the PLGA
+degradation.
+2
+Materials and methods
+2.1
+Materials
+Poly (DL-lactide-co-glycolide) (PLGA) with two molar ratios
+L/G = (50:50), MW 40 000–75 000; and L/G = (85:15), MW
+50 000–75 000; polyvinyl alcohol (PVA), average MW 16
+000 and 98% hydrolysed; and dichloromethane (DCM)
+were
+purchased
+from
+Sigma
+Aldrich
+(Poole,
+UK).
+Linamarin was delivered by AG Scientiﬁc (USA).
+2.2
+Preparation of the NPs
+Linamarin loaded NPs were prepared using a double
+emulsion solvent evaporation (w/o/w) technique [12–16].
+DCM and PVA were employed in this research as organic
+solvent and surfactant, respectively. The ﬁrst emulsion (w/
+o) was prepared by adding an aqueous solution of the drug
+(linamarin) to an organic solution of the polymer (PLGA)
+previously
+mixed
+with
+surfactant
+solution
+then
+homogenised for 3 min (Heidolph DIAX 900, Germany).
+The ﬁrst emulsion was then introduced into a new aqueous
+solution of the surfactant and homogenised for another 3
+min
+to
+obtain
+the
+double
+emulsion
+(w/o/w).
+After
+evaporation of the organic solvent, the suspensions were
+centrifuged at 12 000 rpm to separate the NPs (Eppendorf
+Centrifuge 5810R, Germany), washed well using distilled
+water to remove any free drug and/or PVA. Finally, the NPs
+were frozen for 20 h and freeze dried for 36 h (EPSILON
+18D Freeze Dryer, Denmark).
+2.3
+Drug release
+The drug release was investigated by placing a weighted
+sample into stoppered conical ﬂasks containing phosphate
+buffer, pH 7.4, incubated at 37°C and centrifugation rate at
+150 rpm. At predetermined time intervals, a sample was
+taken from the release medium, centrifuged and 1 ml of the
+supernatant was taken for analysis and the removed volume
+was replaced by a fresh buffer. Concentration of linamarin
+released
+was
+measured
+spectrophotometrically
+at
+a
+wavelength of 545 nm (Spectronic Genesys TM and PC
+Model
+336003,
+Spectronic
+Instruments,
+USA).
+Each
+recorded data were an average of three replicates (n = 3).
+2.4
+In vitro degradation of the NPs
+The polymer degradation process was investigated by
+determining the change in the surface morphology, water
+uptake, mass loss, change in the pH of the release medium,
+concentration of lactic and glycolic acids in the medium.
+Simply, each sample of NPs was divided into 10 mg
+batches, and each batch was placed in screw-capped vials
+containing 4 ml of 0.1 M phosphate buffer pH (7.4) and
+incubated at 37°C with a constant shaking rate of 150 rpm.
+2.4.1 Water uptake and mass loss:
+Both water uptake
+and mass loss were determined gravimetrically. The initial
+mass of a given NPs sample, as indicated in Section 2.3,
+was calculated and denoted as Mo. At designated time
+intervals, the incubated sample was removed, rinsed with
+distilled water, the surface dried using water-absorbent
+paper and the wet mass of the sample was measured
+immediately (Mw). The sample was then freeze dried and
+kept in desiccators until constant weight (Md) was achieved.
+The percentage of water uptake was calculated according to
+(1). Meanwhile, the percentage mass loss was calculated
+using (2) [17–19]. Each recorded data were an average of
+three replicates (n = 3).
+Water uptake (%) = (Md −Mw)
+Md
+x 100
+(1)
+Mass loss (%) = (Mo −Md)
+Mo
+x 100
+(2)
+2.4.2 Change of pH:
+The pH variation of the drug release
+medium was investigated to determine its physiological
+activity on the body. At different predetermined time
+intervals, the pH of the medium (see Section 2.3) was
+directly measured using a pH meter (pH 526 Multical,
+WTW, Weilheim, Germany). Each recorded data were an
+average of three replicates (n = 3).
+2.4.3 Determination of the concentrations of lactic
+and glycolic acids: To accurately deﬁne the degradation
+process of the PLGA NPs, a simultaneous determination of
+the main degradation products was also performed. Only
+the PLGA (50:50) copolymer was employed for this test
+and concentrations of the degradation products with time
+were
+measured
+using
+high-performance
+liquid
+chromatography (HPLC). At predetermined time intervals,
+the sample batch (see Section 2.3) was removed and
+centrifuged.
+The
+supernatant
+containing
+water-soluble
+degradation products was used for HPLC. Meanwhile, 1 ml
+of the released medium was centrifuged at 12 000 rpm for
+15 min and the supernatant ﬁltered through a 0.22 µm
+membrane ﬁlter. A volume of 20 µl sample was injected
+into
+the
+HPLC
+(Shimadzu
+LC-10AS
+Liquid
+www.ietdl.org
+34
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+& The Institution of Engineering and Technology 2013
+doi: 10.1049/iet-nbt.2012.0012
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Chromatography, Japan) using organic column packed with
+9 µm
+polystyrene
+divinylbenzene
+ion
+exchange
+resin
+(Aminex
+HPX-87H;
+300 mm × 7.8 mm,
+Bio-Rad
+Laboratories, USA). The column operated at 65°C, mobile
+phase (0.009 N sulphuric acid), ﬂow rate of 0.7 ml/min, and
+a UV detector of λ 220 nm, which was determined from the
+preliminary scanning of best absorbance wavelength. The
+concentrations
+of
+LA
+and
+GA
+were
+determined
+by
+integrating the peak areas using a calibration curve of
+standard solutions of LA and GA. Each recorded data were
+an average of three replicates (n = 3).
+2.4.4 Morphological changes: At predetermined time
+intervals, sample batches (see Section 2.3) were removed;
+centrifuged and separated NPs were freeze dried. The
+freeze-dried NPs were stuck onto aluminium stubs using a
+double-sided adhesive carbon tape and coated with gold–
+palladium (Baltec SC030 Sputter Coater, Germany). The
+surface morphology of the NPs was examined using a
+scanning electron microscope (SEM; Philips XL30 ESEM,
+the Netherlands). Micrographs were taken of different
+representative areas of the sample on each stub.
+3
+Results and discussion
+The formulated linamarin-loaded PLGA NPs were spherically
+shaped; unimodal with average size ranged from 160 to 186
+nm (Fig. 1). The observed zeta potentials ranging from −25
+to
+−30 mV
+indicate
+relatively
+good
+stability
+of
+the
+formulated
+PLGA
+in
+their
+emulsions.
+Linamarin
+was
+physically incorporated with PLGA and most of the drug
+was encapsulated into the NPs core surrounded by the
+polymer; however, some linamarin molecules were attached
+onto the NPs surfaces. However, most of the water soluble
+drugs
+like
+linamarin
+suffer
+low
+drug
+encapsulation
+efﬁciency (DEE), it is good that our PLGA NPs exhibited
+reasonably high DEE ( > 50%). NPs with high DEE ensure
+that small quantity of NPs is required to convey a sufﬁcient
+drug concentration.
+3.1
+Drug release
+Interestingly, all the three different formulations, two from
+PLGA (50:50) NPs and one from PLGA (85:15) NPs
+exhibited some burst release followed by controlled drug
+release proﬁles that lasted for days (Fig. 2). Since drug
+release mostly starts by diffusion process, thus the DEE
+might also be indirectly related to degradation of PLGA.
+Desorption of the surface bound drug, as well as diffusion
+of the encapsulated drug molecules from the NPs, creates
+more channels and/or pores on the surface of the NPs. No
+doubt this will improve the diffusion of more water into the
+NPs, release more of the drug molecules, and, ﬁnally, lead
+to degradation of the polymer. Thus, complete degradation
+of the biodegradable polymeric delivery systems, such as
+PLGA NPs, ensures the release of the entire entrapped drug
+from the NPs as well as the fate of the polymer and its
+degradation
+products.
+Polymer
+degradation
+into
+biocompatible end products ensures the elimination of these
+degradation products from the body, and, ﬁnally, the safety
+of the delivery system. Therefore a good understanding of
+the polymer degradation is a prerequisite for successful
+development
+of
+any
+polymeric
+drug
+delivery
+system
+designed for controlled release.
+3.2
+Degradation of PLGA NPs
+Three formulated batches, two of PLGA (50:50) NPs and one
+PLGA (85:15) NPs were employed in the current research to
+investigate the polymer degradation behaviour. These two
+copolymers were selected to study the effect of changing
+the polymer composition (hydrophobicity) based on the LA/
+GA ratios on the degradation process. Accordingly, water
+uptake, mass loss, pH changes, concentration of degradation
+products
+(lactic
+and
+glycolic
+acids)
+and
+morphology
+changes of the PLGA NPs were examined.
+3.2.1 Water uptake: Generally, the incubated NPs swell
+by water from the surrounding medium, and drug molecules
+diffuse
+out
+of
+the
+particles.
+Consequently,
+polymer
+degradation starts, and, thus, the greater the swelling the
+more degradable the polymer will be. Thus, water uptake is
+a good gravimetrical technique to determine the wettability
+and degradability of a polymeric delivery system. The water
+uptake proﬁle is shown in Fig. 3 where it is obvious that
+there is an initial period of slow water uptake, which lasted
+for nearly 1 week for both batches of PLGA (50:50) (a) and
+(b) NPs and one batch of PLGA (85:15) NPs. In the second
+week, the water uptake values were about 10.5, 11.8 and
+8.7% for PLGA (50:50) (a) and (b) NPs and PLGA (85:15)
+NPs, respectively. The increase in water uptake was slow
+until the third week of incubation where the values were
+20.2, 22.1 and 14.7%; for PLGA (50:50) NPs batch (a),
+batch (b) and PLGA (85:15) NPs batch, respectively.
+Fig. 1
+Particle size measurement using dynamic light scattering with an average size of 168 nm
+www.ietdl.org
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+35
+doi: 10.1049/iet-nbt.2012.0012
+& The Institution of Engineering and Technology 2013
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+However, the water uptake values of 47.5 and 49.2% were
+observed after 6 weeks for PLGA (50:50) batch (a) and
+batch (b), respectively; on the other hand, only 27.4% water
+uptake was observed for the PLGA (85:15) batch at the
+same incubation time. The water uptake of PLGA (50:50)
+NPs is signiﬁcantly different (ρ < 0.05) from that of their
+counterpart PLGA (85:15) NPs.
+The enhanced water uptake observed for the PLGA (50:50)
+NPs, as compared with that of PLGA (85:15), may mainly be
+attributed to the enhanced wettability of the polymer as a
+result of the great hydrophilicity and amorphous property of
+the former sample. The hydrophilicity of PLGA (50:50) is
+mainly because of its greater hydrophilic glycolide moiety
+(50%), compared with only 15% for PLGA (85:15). The
+water uptake by a polymeric matrix is also inﬂuenced by
+the ratio of its crystalline to amorphous regions as the
+amorphous regions are more easily hydrolysable [20].
+3.2.2 Mass loss:
+The mass loss technique is a simple but
+rather effective technique to characterise the erosion of a
+biodegradable polymeric matrix. As the mass loss proﬁle is
+linear for surface eroding devices only, mass loss proﬁles
+allow an immediate assessment of the type of erosion that a
+polymer matrix is undergoing, that is, whether it is surface
+or bulk erosion [21]. It was generally stated that during the
+early stages of the degradation process, only a decrease in
+the molecular weight of the polymer takes place, without
+any signiﬁcant weight loss. Moreover, the polymer degrades
+to
+a
+critical
+molecular
+weight,
+and
+its
+produced
+water-soluble
+fragments
+will
+be
+released
+into
+the
+surrounding aqueous medium [22]. The proﬁles of mass
+loss for both batches of PLGA (50:50) NPs and one batch
+of PLGA (85:15) NPs, as a function of the incubation
+(hydrolysis) time carried out in this research, are shown in
+Fig. 4.
+It is clear that there is an initial period of no weight loss that
+lasted for 1 week (induction stage) for all three batches where
+no soluble products formed, then followed by a little
+reduction in mass of the NPs. Meanwhile, considerable
+mass losses were observed (36.8 and 40.7%) at the third
+week and (58.8 and 56.3%) at the ﬁfth week of incubation
+for PLGA (50:50) (a) and (b) batches, respectively. The
+mass loss observed with PLGA (85:15) NPs was only
+18.8% at third week and 41% at ﬁfth week of incubation.
+At the end of the sixth week of incubation the masses
+remaining for the PLGA (50:50) NPs were only 31.7%
+(68.3% mass loss) for batch (a) and 35.4% (64.6% mass
+loss) for batch (b). However, for the PLGA (85:15) NPs,
+about 51.2% of the mass remained (only 41.8% mass loss)
+after 6 weeks of incubation. These results indicate that
+PLGA (50:50) copolymer degrades and loses mass faster
+than PLGA (85:15). The measured mass loss of PLGA
+(50:50) NPs is signiﬁcantly different (ρ < 0.05) from that
+of the PLGA (85:15) NPs. Our results are in accordance
+with the degradation order that was reported previously as
+50:50 > 75:25 > 85:15 at all time-points beyond a week
+[23]. Other similar ﬁndings were also previously reported
+when a fast mass loss calculated of about (80%) for the
+PLGA (50:50) microspheres was observed after the seventh
+week of incubation, as compared with only 10 and 1% for
+PLGA
+(75:25)
+and
+poly(D,L-lactide)
+(PDLLA)
+microspheres, respectively [24].
+Generally, in the ﬁrst phase of degradation, a signiﬁcant
+amount of water-soluble low-molecular-weight oligomers
+are formed. Later, these degradation products diffuse out
+from the polymer matrix, and, consequently, this leads to
+Fig. 3
+Water uptake proﬁles of two batches of PLGA (50:50) NPs
+(—ο—) (—†—) and a batch of PLGA (85:15) NPs (—Δ—) as
+function of the incubation time
+Fig. 2
+Drug release proﬁles of two batches of PLGA (50:50 NPs
+(—ο—) (—†—) and a batch of PLGA (85:15) NPs (—Δ—) as
+function of the incubation time
+Fig. 4
+Mass loss proﬁles of two batches of PLGA (50:50) NPs
+(—ο—) (—†—) and a batch of PLGA (85:15) NPs (—Δ—) as
+function of the incubation time
+www.ietdl.org
+36
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+& The Institution of Engineering and Technology 2013
+doi: 10.1049/iet-nbt.2012.0012
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+mass loss. Diffusion of the produced water-soluble oligomers
+also leads to the formation of more pores on the NPs surface,
+and, as a result, more water molecules penetrate [19]. Thus, as
+the process continues, more water uptake and mass loss are
+detected.
+High
+molecular
+weight
+fractions
+remain
+water-insoluble until a critical molecular weight is reached
+where they become water-soluble and then start to diffuse.
+Thus, the water-solubility of a polymer determines when its
+mass loss and erosion and degradation would take place.
+Owing to the fact that great mass loss starts from the 2nd
+half of the degradation process, our samples are considered
+to undergo bulk degradation rather than surface eroding.
+Several previous studies have also stated that PLGA is a
+bulk-degradable copolymer [6, 19, 25]. Interestingly, in line
+with these earlier ﬁndings, the samples of the present
+investigation, exhibited a noticeable mass loss because of
+degradation starting from the third week, especially for
+PLGA (50:50). From all these ﬁndings it could be said that
+mass loss decreases with the increasing lactide content in
+the copolymer because of the increase in copolymer
+hydrophobicity.
+3.2.3 Change of pH of the degradation medium:
+A
+particular feature of the PLGA degradation is the formation
+of acidic degradation products, namely, lactic and glycolic
+acids. Accumulation of these acidic monomers increases
+acidity and reduces the pH of the medium [20, 26].
+Therefore the change in pH of the degradation medium was
+also investigated, as shown in Fig. 5. A great change in pH
+might affect the living cells (the smallest basic structural
+and functional unit of all known living organisms). It may
+also affect degradation of the polymer and thus release of
+the encapsulated drug as well as its kinetic mechanism. It is
+important to note that PLGA is polyester and its hydrolytic
+degradation is known to be catalysed by protons. This
+means
+that
+in
+highly
+acidic
+mediums,
+the
+polymer
+degradation increases leading to a greater reduction in the
+pH and acidity of the medium. Thus, increasing pH
+(increasing basicity) of the incubation medium would
+slightly decrease the degradation rate of the polymer [27].
+Therefore the pH of the medium should be carefully
+monitored to be within the acceptable physiological limits
+to ensure that the activity of both the cells and enzymes are
+not altered since both are non-monotonic pH dependent.
+Generally, a decrease in the pH with incubation time was
+observed for all three batches (two PLGA (50:50) and one
+PLGA (85:15) NPs). For the 1st week, the pH change was
+small because of the limited formation of water-soluble
+oligomers, while starting from the second week, a notable
+decrease was observed, especially for PLGA (50:50) NPs.
+This decrease in pH is mainly because of the formation of
+aqueous oligomers, such as L-lactic acid, D-lactic acid and
+glycolic acid. Since these degradation products are acidic
+and retained in the incubation medium, then any polymer
+degradation will result in a further reduction in pH. After 3
+weeks of incubation, the reduction in pH was from 7.4 to
+7.1, 7.1 and 7.2 for PLGA (50:50) NPs batches of (a) and
+(b) and PLGA (85:15), respectively. By the end of the sixth
+week of incubation, the ﬁnal pH values were 6.8, 6.7 and
+7.1 for PLGA (50:50) NPs batches of (a) and (b) and
+PLGA (85:15), respectively. The change in pH observed
+with PLGA (50:50) NPs is signiﬁcantly different (ρ < 0.05)
+from that of their counterpart PLGA (85:15) NPs.
+Since the change in pH results from the acidic degradation
+products, the slow decrease in the pH observed for the PLGA
+(85:15) NPs compared with the PLGA (50:50) NPs could
+mainly
+be
+attributed
+to
+the
+slow
+water
+uptake
+and
+degradation rate of the former polymer. However, the
+change in pH observed in this current research (from 7.4 to
+the range of 6.7–7.1) is considered unlikely to alter the
+body biological activity; the authors believe that more
+control of the pH is still required. This could be achieved
+by changing the polymer composition, which, consequently,
+will modify the polymer degradation, or by adding a pH
+modiﬁer that should be biologically safe (does not harm
+healthy cells) to maintain the pH within the physiological
+limits regardless of the polymer degradation.
+3.2.4 Determination of lactic and glycolic acids:
+PLGA (50:50) NPs have been employed to determine the
+major polymer degradation products. The HPLC results
+conﬁrmed that the major PLGA degradation products are
+lactic and glycolic acids. The chemical structure, general
+degradation process and degradation products of the PLGA
+copolymer are shown in Fig. 6. The standard HPLC graphs
+of lactic and glycolic acids in the HPLC analysis are shown
+in Fig. 7.
+The concentrations of lactic and glycolic acids with
+incubation time measured in the current research are
+presented in Fig. 8. From the results it is obvious that the
+concentrations of both the lactic and glycolic acids were
+small during the ﬁrst weeks of incubation time. Similarly, it
+Fig. 5
+Decrease in pH with the degradation behaviour of two
+batches of PLGA (50:50) NPs (—ο—) (—†—) and a batch of
+PLGA (85:15) NPs (—Δ—) as function of the incubation time
+Fig. 6
+Schematic representation of the PLGA degradation in vitro or in vivo
+www.ietdl.org
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+37
+doi: 10.1049/iet-nbt.2012.0012
+& The Institution of Engineering and Technology 2013
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+is noticeable that at the second week, only about 0.1 and 0.5
+mg of lactic and glycolic acids, respectively, were detected.
+Then, the lactic and glycolic acids concentrations increased
+to 0.44 and 1.4 mg at the ﬁfth week, and, ﬁnally, to 0.8 and
+2.9 mg at the seventh week, respectively.
+However, lactic acid has greater molecular weight than
+glycolic acid; it is clear that the concentration of the
+released glycolic acid was greater than that for the lactic
+acid. These results conﬁrm the enhanced hydrophilicity
+(water solubility) of the poly (glycolide) part, which is the
+main source of glycolic acid from degradation of the
+PLGA. These ﬁndings are in accordance with the enhanced
+degradability of PLGA (50:50) NPs compared with PLGA
+(85:15) NPs observed in the current research.
+Since the PLGA degradation products (lactic and glycolic
+acid) are body metabolisable moieties [25, 28], would
+further break down into carbon dioxide and water [29]
+then easily and naturally release from the body. This
+ensures the safety of our PLGA-based formulated NPs as
+drug delivery carriers since no toxicity is expected because
+of
+the
+accumulation
+of
+any
+foreign
+substances.
+The
+ﬁndings of this research correlate with those reported in a
+previous study, where the PLGA (50:50) delivery system
+was incubated for 3 weeks and the principal water-soluble
+acids detected were lactic, lactoylactic and glycolic acids
+[30].
+Besides
+these
+water-soluble
+acids
+as
+the
+main
+degradation products, other unknown oligomers were also
+previously detected as impurities in the PLGA degradation
+products [31].
+However,
+although
+the
+PLGA
+copolymer
+is
+water-insoluble, it is hydrolytically unstable and can be
+degraded by attacking its ester bonds, and, consequently, a
+random chain scission occurs, resulting in lactic and
+glycolic
+acids.
+These
+degradation
+products
+are
+easily
+metabolised in the body to water and carbon dioxide via the
+Krebs cycle [29, 32]. These ﬁnal degradation products can
+easily be eliminated from the body through the natural
+pathways, hence safety of the delivery system is guaranteed.
+Moreover, the complete polymer degradation also ensures
+release of the entire encapsulated drug from the NPs [3].
+3.2.5 NPs morphology changes: For biodegradable
+polymers, it is important to investigate the morphological
+changes over time as the polymer erodes. PLGA is a
+copolymer
+consisting
+of
+(LA)
+with
+crystalline
+and
+hydrophobic
+nature,
+and
+(GA)
+with
+amorphous
+and
+hydrophilic nature. Hydration generally increases hydrolysis
+and fragmentation of the parent particles. Meanwhile, poly
+(glycolide) (GA) is the hydrophilic part of the polymer; the
+higher the amount of this particular part the polymer
+becomes more hydrophilic and susceptible to hydration.
+The SEM images revealed an apparent change in NPs
+surface morphology with incubation time (Fig. 9).
+The deterioration in the smoothness and spherical shape of
+the NPs is dependent on the rate of polymer degradation. The
+PLGA (50:50) NPs retained their structure and integrity for
+up to 30 days before starting to agglomerate at 37 days.
+The
+agglomeration
+became
+predominant
+and
+reached
+maximum after 50 days. After 60 days of incubation, no
+clear NPs were found, instead, ﬂakes were observed. The
+ﬂakes started to degrade after 72 days of incubation, and
+nearly 70–80%; of the polymers were degraded after 90
+days of incubation time. However, the PLGA (85:15) NPs
+retained their structure even after 37 days of incubation,
+without any noticeable agglomeration compared with the
+PLGA (50:50) NPs. Clearly, the PLGA (85:15) NPs only
+started to agglomerate after 50 days of incubation and most
+of the NPs remained in the medium even after 60 days. The
+rate of PLGA (85:15) NPs agglomeration increased after 72
+days and some degradation was observed after 92 days.
+These results indicate that PLGA (50:50) NPs degrade
+faster than their counterpart PLGA (85:15) NPs. The
+amorphous regions are more degradable than the crystalline
+regions because of the compact structure of the latter, which
+retards the penetration of the dissolution ﬂuids into the
+system (NPs) as well as the diffusion of the degradation
+products from the NPs. Degradation of the amorphous
+regions is also expected to create some pores and crevices
+on the NPs, which, consequently, will enhance degradation.
+Therefore the fast degradation of the PLGA (50:50) NPs
+could be attributed to their enhanced amorphous and
+hydrophilic nature, whereas the slow degradation rate
+observed for the PLGA (85:15) NPs could be attributed to
+their strong hydrophobic nature because of the high poly
+(lactide)
+content,
+which
+reduces
+its
+wettability
+and
+degradation [6, 20, 24, 33–36].
+The crystallinity of the polymer may also play a signiﬁcant
+role in modulating the degradation rate. Therefore it could be
+expected that the matrix forming polymer would rapidly
+undergo the transition, that is, from a glassy state to a
+rubbery one, upon contact with the phosphate buffer [37].
+Generally, the amorphous polymers do not present a close
+packed
+organisation
+and
+are
+more
+hygroscopic
+than
+Fig. 8
+Concentrations of the degradation products namely lactic
+(—ο—) and glycolic (—†—) acids from PLGA (50:50) NPs
+measured using HPLC
+Fig. 7
+Standard HPLC graphs of (1) glycolic and (2) lactic acids
+www.ietdl.org
+38
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+& The Institution of Engineering and Technology 2013
+doi: 10.1049/iet-nbt.2012.0012
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+crystalline polymers [3]. In addition, co-polymers are
+normally more amorphous than their homo-polymers and
+they become increasingly susceptible to hydrolysis as the
+two monomer contents reach equivalence [38]. L-PLA is
+semi-crystalline in nature, whereas D,L-PLA is amorphous
+because
+of
+the
+irregularities
+in
+the
+chain
+structure.
+However, PGA has been reported to be highly crystalline
+[36, 39]. It was found that the compositions that ranged
+from
+25–70%
+molar
+ratio
+of
+the
+GA
+result
+in
+the
+amorphous L-LA/GA copolymers, whereas in the case of
+DL-LA in the copolymer, the amorphous region extends
+from 0–70% GA [40]. More speciﬁcally, PLGA has a glass
+transition temperature (Tg) of 45°C, which is above the
+physiological temperature of 37°C; hence, it is normally
+glassy in nature [6].
+Meanwhile,
+the
+semi-crystalline
+microporous
+devices
+permit the release of low molecular weight degradation
+products.
+As
+for
+the
+semi-crystalline
+polyesters,
+the
+degradation occurs in the amorphous regions and later in
+the crystalline ones. It is important to note that crystallinity
+gradually increases with the degradation process, resulting
+in a highly crystalline material, which is much more
+resistant to hydrolysis than the starting polymer [28]. The
+increase in crystallinity with the degradation process has
+been attributed to the increased mobility of the partially
+degraded polymer chains because of a larger degree of
+entanglement and their realignment into a more crystalline
+state.
+These
+results
+indicate
+that
+the
+post-fabrication
+treatment, such as heat or annealing, as well as shelf-time,
+may have some effect on the performance of drug-loaded
+devices [28].
+The ﬁndings of this research correlate with those found by
+Muthu [6], and Porjazoska et al. [40], who reported both a
+higher degradation rate and rapid mass loss of PLGA
+(50:50) NPs compared with PLGA (85:15) NPs. Mundargi
+et al. [26] and Bala et al. [41] reported a nearly complete
+degradation of the PLGA (50:50) NPs in 50–60 days. A
+previous research had reported a complete degradation of
+the PLGA (85:15) matrix only after 6 months [42]. PLGA
+with different molar ratios of (65:35), (75:25) and (80:20)
+have also previously showed progressively longer in vivo
+life-times [26]. Therefore it could be concluded that the
+PLGA copolymer with different ratios of LA and GA
+contents
+exhibit
+different
+degradation
+rates.
+Therefore
+PLGA-based delivery systems can be tailored to suit
+speciﬁc applications.
+4
+Conclusion
+As for the PLGA degradation, using water uptake, mass
+loss, pH change, determination of lactic and glycolic
+acids and morphology changes techniques, the results
+revealed a good biodegradability of PLGA, speciﬁcally,
+PLGA (50:50). Generally, the batches of PLGA (50:50)
+NPs signiﬁcantly (ρ < 0.05) differ in their degradation
+behaviour from the PLGA (85:15) NPs. PLGA (50:50)
+NPs degrades faster than PLGA (85:15) NPs and they
+Fig. 9
+SEM images of the polymer degradation as function of incubation time (Magniﬁcation at 5000×)
+www.ietdl.org
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+39
+doi: 10.1049/iet-nbt.2012.0012
+& The Institution of Engineering and Technology 2013
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+completely degraded in 102 days, whereas, PLGA did not.
+Therefore it is recommended to use PLGA (50:50) based
+NPs as drug delivery systems because of their complete
+degradation,
+and,
+consequently,
+release
+of
+both
+the
+hosted drug and the degradation products (lactic and
+glycolic acids) in a limited period of time. The whole
+PLGA degradation process could be generally explained
+by
+the
+three-phase
+mechanism.
+First,
+random
+chain
+scissions
+with
+a
+signiﬁcant
+decrease
+in
+polymer
+molecular weight, but without appreciable mass loss or
+soluble monomer products. Second, a decrease in both
+the
+molecular
+weight
+and
+mass
+exists
+and
+soluble
+oligomeric
+fragments
+form.
+Third,
+the
+polymer
+will
+completely
+solubilise
+producing
+soluble
+monomers,
+namely,
+lactic
+and
+glycolic
+acids.
+Based
+on
+the
+high-performance chromatography results, it could be
+stated that PLGA degrades into body metabolites known
+as lactic and glycolic acids. These acids are known to be
+further metabolised inside the human body and into
+carbon dioxide and water, which can be easily excreted
+through natural pathways, such as with urine. Thus, the
+successful
+development
+of
+such
+biomedical
+devices,
+which are biocompatible and biodegradable with short
+contact duration (several weeks) with the body living
+cells, is an advantage to be added to their controlled
+drug delivery. This complete degradation of the polymer
+and
+release
+of
+the
+degradation
+products
+would
+undoubtedly eliminate the risk of any toxicity by the
+degradation of these by-products, since the causes of
+toxicity of some biomaterials are mostly because of the
+low-molecular-weight compounds that are leached from
+the biomaterials into the patient’s body.
+5
+References
+1
+Aurora, J.: ‘Nanoparticulate drug delivery – fantasy to reality’, Drug
+Deliv., (Touch Brieﬁngs 2007), 2007, pp. 50–52
+2
+Vasir, J.K., Labhasetwar, V.: ‘Biodegradable nanoparticles for cytosolic
+delivery of therapeutics’, Adv. Drug Deliv. Rev., 2007, 59, (8), pp.
+718–728
+3
+Eglin,
+D.,
+Alini,
+M.:
+‘Degradable
+polymeric
+materials
+for
+osteosynthesis: tutorial’, Eur. Cell Mater., 2008, 16, pp. 80–91
+4
+Lao, L.L., Venkatraman, S.S., Peppas, N.A.: ‘Modeling of drug release
+from biodegradable polymer blends’, Eur. J. Pharm. Biopharm., 2008,
+70, (3), pp. 796–803
+5
+Patterson, J., Stayton, P.S., Li, X.: ‘In situ characterization of the
+degradation of PLGA microspheres in hyaluronic acid hydrogels by
+optical coherence tomography’, IEEE Trans. Med. Imaging, 2009, 28,
+(1), pp. 74–81
+6
+Muthu, M.S.: ‘Nanoparticles based on PLGA and its co-polymer: an
+overview’, Asian J. Pharm., 2009, 3, (4), pp. 266–273
+7
+Asif, M., Arayne, M.S., Sultana, N., Hussain, F.: ‘Fabrication of
+nanoparticles within polymeric pores for controlled release of drug’,
+Pak. J. Pharm. Sci., 2006, 19, (1), pp. 73–84
+8
+Zhu,
+W.,
+Wang,
+B.,
+Zhang,
+Y.,
+Ding,
+J.:
+‘Preparation
+of
+a
+thermosensitive and biodegradable microgel via polymerization of
+macromonomers based on diacrylated Pluronic/oligoester copolymers’,
+Eur. Polym. J., 2005, 41, (9), pp. 2161–2170
+9
+Witt, C., Kissel, T.: ‘Morphological characterization of microspheres,
+ﬁlms and implants prepared from poly (lactide-co-glycolide) and
+NBA
+triblock
+copolymer:
+is
+the
+erosion
+controlled
+by
+degradation, swelling or diffusion’, Eur. J. Pharm. Biopharm., 2001,
+51, pp. 171–181
+10
+Alfourjani, W.A.: ‘Development and evaluation of linamarin drug for
+controlled release using biodegradable PLGA nanoparticles’. M.Sc.
+thesis, Universiti Putra Malaysia, 2005
+11
+Idibie, C.A., Davids, H., Iyuke, S.E.: ‘Cytotoxicity of puriﬁed cassava
+linamarin to a selected cancer cell lines’, Bioprocess Biosyst. Eng.,
+2007, 30, (4), pp. 261–269
+12
+Cohen-Sela, E., Chorny, M., Koroukhov, N., Danenberg, H.D., Golomb,
+G.:
+‘A
+new
+double
+emulsion
+solvent
+diffusion
+technique
+for
+encapsulating
+hydrophilic
+molecules
+in
+PLGA
+nanoparticles’,
+J. Control. Release, 2009, 133, (2), pp. 90–95
+13
+Nkansah, M.K., Tzeng, S.Y., Holdt, A.H., Lavik, E.B.: ‘Poly
+(lactic-co-glycolic acid) nanospheres and microspheres for short- and
+long-term
+delivery
+of
+bioactive
+ciliary
+neurotrophic
+factor’,
+Biotechnol. Bioeng., 2008, 100, (5), pp. 1010–1019
+14
+Panyam, J., Dali, M.M., Sahoo, S.K., et al.: ‘Polymer degradation and in
+vitro release of a model protein from poly(D,L-lactide-co-glycolide)
+nano- and microparticles’, J. Control. Release, 2003, 92, (1–2),
+pp. 173–187
+15
+Sahoo, S.K., Panyam, J., Prabha, S., Labhasetwar, V.: ‘Residual
+polyvinyl alcohol associated with poly (D,L-lactide-co-glycolide)
+nanoparticles affects their physical properties and cellular uptake’,
+J. Control. Release, 2002, 82, (1), pp. 105–114
+16
+Zambaux, M.F., Bonneaux, F., Gref, R., et al.: ‘Inﬂuence of experimental
+parameters on the characteristics of poly (lactic acid) nanoparticles
+prepared by a double emulsion method’, J. Control. Release, 1998,
+50, (1–3), pp. 31–40
+17
+Vey, E., Roger, C., Meehan, L., et al.: ‘Degradation mechanism of
+poly (lactic-co-glycolic) acid block copolymer cast ﬁlms in phosphate
+buffer
+solution’,
+Polym.
+Degrad.
+Stability,
+2008,
+93,
+(10),
+pp. 1869–1876
+18
+Ko, J.T., Lee, J.H., Kim, J.M., et al.: ‘Development of biodegradable
+methoxy poly (ethyleneglycol)-polyesters diblock copolymers as drug
+carrier for implantable disc’, Tissue Eng. Regen. Med., 2006, 3, (2),
+pp. 158–168
+19
+Farahani, T.D., Entezami, A.A., Mobedi, H., Abtahi, M.: ‘Degradation
+of poly (D,L-lactide-co-glycolide) 50:50 implant in aqueous medium’,
+Iran. Polym. J., 2005, 14, (8), pp. 753–763
+20
+Giteau, A., Venier-Julienne, M.C., Aubert-Pouëssel, A., Benoit, J.P.:
+‘How to achieve sustained and complete protein release from
+PLGA-based microparticles?’ Int. J. Pharm., 2008, 350, (1–2), pp.
+14–26
+21
+Siepmann, J., Gopferich, A.: ‘Mathematical modeling of bioerodible,
+polymeric drug delivery systems’, Adv. Drug Deliv.. Rev., 2001, 48,
+(2–3), pp. 229–247
+22
+Husmann, M., Schenderlein, S., Luck, M.M., Lindner, H., Kleinebudde,
+P.: ‘Polymer erosion in PLGA microparticles produced by phase
+separation method’, Int. J. Pharm., 2002, 242, (1–2), pp. 277–280
+23
+Intra, J., Glasgow, J.M., Mai, H.Q., Salem, A.K.: ‘Pulsatile release of
+biomolecules
+from
+polydimethylsiloxane
+(PDMS)
+chips
+with
+hydrolytically degradable seals’, J. Control. Release, 2008, 127, (3),
+pp. 280–287
+24
+Chen, X., Ooi, C.P.: ‘Hydrolytic degradation and drug release properties
+of ganciclovir-loaded biodegradable microspheres’, Acta Biomater.,
+2008, 4, (4), pp. 1046–1056
+25
+Panyam, J., Labhasetwar, V.: ‘Biodegradable nanoparticles for drug and
+gene delivery to cells and tissue’, Adv. Drug Deliv. Rev., 2003, 55, (3),
+pp. 329–347
+26
+Mundargi, R.C., Babu, V.R., Rangaswamy, V., Patel, P., Aminabhavi, T.
+M.:
+‘Nano/micro
+technologies
+for
+delivering
+macromolecular
+therapeutics using poly(D,L-lactide-co-glycolide) and its derivatives’,
+J. Control. Release, 2008, 125, (3), pp. 193–209
+27
+Faisant, N., Akiki, J., Siepmann, F., Benoit, J.P., Siepmann, J.: ‘Effects
+of the type of release medium on drug release from PLGA-based
+microparticles: experiment and theory’, Int. J. Pharm., 2006, 314, (2),
+pp. 189–197
+28
+Anderson, J.M., Shive, M.S.: ‘Biodegradation and biocompatibility of
+PLA and PLGA microspheres’, Adv. Drug Deliv. Rev., 1997, 28, (1),
+pp. 5–24
+29
+Park,
+J.H.,
+Ye,
+M.,
+Park,
+K.:
+‘Biodegradable
+polymers
+for
+microencapsulation of drugs’, Molecules, 2005, 10, (1), pp. 146–161
+30
+Giunchedi,
+P.,
+Conti,
+B.,
+Scalia,
+S.,
+Conte,
+U.:
+‘In
+vitro
+degradation study of polyester microspheres by a new HPLC method
+for monomer release determination’, J. Control. Release, 1998, 56,
+(1–3), pp. 53–62
+31
+Ding, A.G., Schwendeman, S.P.: ‘Determination of water-soluble acid
+distribution in poly(lactide-co-glycolide)’, J. Pharm. Sci., 2004, 93,
+(2), pp. 322–331
+32
+Panyam, J., Zhou, W.Z., Prabha, S., Sahoo, S.K., Labhasetwar, V.:
+‘Rapid
+endo-lysosomal
+escape
+of
+poly(DL-lactide-co-glycolide)
+nanoparticles: implications for drug and gene delivery’, FASEB J.,
+2002, 16, (10), pp. 1217–1226
+33
+Lin, R., Ng, L.S., Wang, C.H.: ‘In vitro study of anticancer drug
+doxorubicin in PLGA-based microparticles’, Biomaterials, 2005, 26,
+(21), pp. 4476–4485
+34
+Alexis,
+F.:
+‘Factors
+affecting
+the
+degradation
+and
+drug-release
+mechanism of poly(lactic acid) and poly(lactic acid)-co-(glycolic
+acid)’, Polym. Int., 2005, 54, (1), pp. 36–46
+www.ietdl.org
+40
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+& The Institution of Engineering and Technology 2013
+doi: 10.1049/iet-nbt.2012.0012
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+35
+Huh, K.M., Cho, Y.W., Park, K.: ‘PLGA-PEG block copolymers for
+drug formulations’, Drug Deliv. Technol., 2003, 3, (5), pp. 1–9
+36
+Jain, R.A.: ‘The manufacturing techniques of various drug loaded
+biodegradable
+poly
+(lactide-co-glycolide)
+(PLGA)
+devices’,
+Biomaterials, 2000, 21, (23), pp. 2475–2490
+37
+Siepmann, J., Faisant, N., Akiki, J., Richard, J., Benoit, J.P.:
+‘Effect
+of
+the
+size
+of
+biodegradable
+microparticles
+on
+drug
+release: experiment and theory’, J. Control. Release, 2004, 96, (1),
+pp. 123–134
+38
+Abbas, A.O., Donovan, M.D., Salem, A.K.: ‘Formulating poly
+(lactide-co-glycolide) particles for plasmid DNA delivery’, J. Pharm.
+Sci., 2008, 97, (7), pp. 2448–2461
+39
+Nair, L.S., Laurencin, C.T.: ‘Biodegradable polymers as biomaterials’,
+Prog. Polym. Sci., 2007, 32, (8–9), pp. 762–798
+40
+Porjazoska, A., Goracinova, K., Mladenovska, K., et al.: ‘Poly
+(lactide-co-glycolide) microparticles as systems for controlled release
+of proteins–Preparation and characterization’, Acta Pharm., 2004, 54,
+(3), pp. 215–229
+41
+Bala, I., Hariharan, S., Kumar, M.N.V.R.: ‘PLGA nanoparticles in drug
+delivery: the state of the art’, Crit. Rev. Ther. Drug Carrier Syst., 2004,
+21, (5), pp. 387–422
+42
+Lee, S.H., Shin, H.: ‘Matrices and scaffolds for delivery of bioactive
+molecules in bone and cartilage tissue engineering’, Adv. Drug Deliv.
+Rev., 2007, 59, (4–5), pp. 339–359
+www.ietdl.org
+IET Nanobiotechnol., 2013, Vol. 7, Iss. 2, pp. 33–41
+41
+doi: 10.1049/iet-nbt.2012.0012
+& The Institution of Engineering and Technology 2013
+ 1751875x, 2013, 2, Downloaded from https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-nbt.2012.0012 by University Of Maryland, Wiley Online Library on [23/10/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

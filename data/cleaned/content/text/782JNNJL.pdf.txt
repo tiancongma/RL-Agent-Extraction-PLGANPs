@@ -1,0 +1,1698 @@
+CGRP-releasing PLGA/nHA/GO composite microspheres enhance
+distraction osteogenesis via activation of the cAMP/PKA/CREB pathway
+Yimurang Hamiti a,b,1, Kai Liu a,b,1, Xin Yang a,b, Sulong Wang a,b, Xiriaili Kadier a,b,
+Aihemaitijiang Yusufu a,b,*
+a Department of Trauma and Microreconstructive Surgery, The First Affiliated Hospital of Xinjiang Medical University, Urumqi, Xinjiang, China
+b Xinjiang Key Laboratory of Trauma Repair and Reconstruction, Urumqi, Xinjiang, China
+A R T I C L E  I N F O
+Keywords:
+CGRP
+PLGA microspheres
+Distraction osteogenesis
+Bone regeneration
+cAMP/PKA/CREB pathway
+A B S T R A C T
+Large bone defects present significant clinical challenges, with distraction osteogenesis (DO) requiring prolonged
+treatment periods and yielding suboptimal outcomes. Calcitonin gene-related peptide (CGRP) demonstrates
+potent bone-forming activity but suffers from rapid degradation and a short half-life, limiting its therapeutic
+applications. This study engineered sustained-release CGRP microspheres using poly(D,L-lactide-co-glycolide)/
+nano-hydroxyapatite/graphene oxide (PLGA/nHA/GO) composite matrices via W/O/W double emulsion-
+solvent evaporation method to address these limitations. The fabricated microspheres exhibited uniform
+spherical morphology (51.15 ± 0.40 μm), high encapsulation efficiency (86.14 ± 2.5 %), and sustained CGRP
+release over 42 days. In vitro studies compared four groups: control (untreated), blank microspheres, free CGRP
+solution, and CGRP-loaded microspheres. CGRP microspheres significantly enhanced rat bone marrow mesen­
+chymal stem cell proliferation, migration capacity, and osteogenic differentiation compared to all other treat­
+ment groups. Mechanistic investigations confirmed activation of the cAMP/PKA/CREB signaling pathway with
+upregulation of osteogenic transcription factors (Runx2, Osterix) and bone matrix proteins (osteopontin,
+osteocalcin). In a rat femoral distraction osteogenesis model, CGRP microspheres demonstrated superior bone
+regeneration compared to control, blank microspheres, and free CGRP groups: substantially increased bone
+mineral density, significantly improved biomechanical properties, and accelerated bone formation. Histological
+analysis confirmed enhanced bone maturation and integration This engineered sustained-release system repre­
+sents a promising therapeutic platform for enhancing bone regeneration through targeted molecular pathway
+activation, offering significant potential for clinical translation in orthopedic applications.
+1. Introduction
+Large bone defects resulting from severe trauma, tumor resection,
+infection, or congenital malformations represent one of the most
+formidable challenges in orthopedic surgery [1]. Traditional therapeutic
+approaches, including the use of autologous bone grafts, allografts, and
+xenografts, are constrained by inherent limitations such as limited donor
+site availability, risk of donor site morbidity, immune rejection, and
+disease transmission [2,3]. Distraction osteogenesis (DO), pioneered by
+the Russian orthopedic surgeon Gavriil Abramovich Ilizarov, is a
+well-established bone regeneration technique in which gradual,
+controlled mechanical traction is applied to bone segments to stimulate
+the body’s intrinsic osteogenic potential. Based on Ilizarov’s biological
+law of "tension-stress," this technique has been widely adopted for limb
+lengthening, deformity correction, and large bone defect reconstruction
+[4,5]. The DO process encompasses three distinct phases: a latency
+period (5–7 days) for initial healing, a distraction phase where
+controlled separation at 0.5–2.0 mm/day stimulates new bone forma­
+tion, and a consolidation phase during which bone callus mineralizes
+and remodels [6]. While DO offers advantages over traditional bone
+grafting by avoiding donor site morbidity and simultaneously regener­
+ating bone and soft tissues, the treatment typically requires prolonged
+duration (6–12 months) and may be associated with complications
+including nonunion, delayed healing, pin site infections, and patient
+* Corresponding author. Department of Trauma and Microreconstructive Surgery, The First Affiliated Hospital of Xinjiang Medical University, Urumqi, Xinjiang,
+China.
+E-mail address: ahmatjang@163.com (A. Yusufu).
+1 These authors have contributed equally to this work and share first authorship.
+Contents lists available at ScienceDirect
+Materials Today Bio
+journal homepage: www.journals.elsevier.com/materials-today-bio
+https://doi.org/10.1016/j.mtbio.2025.102181
+Received 6 June 2025; Received in revised form 19 July 2025; Accepted 8 August 2025
+Materials Today Bio 34 (2025) 102181
+Available online 14 August 2025
+2590-0064/© 2025 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY-NC-ND license ( http://creativecommons.org/licenses/by-
+nc-nd/4.0/ ).
+
+discomfort [7,8]. Recent advances in understanding the cellular and
+molecular mechanisms of DO have revealed that bone marrow mesen­
+chymal stem cells (BMSCs) play pivotal roles by migrating to distraction
+sites and differentiating into osteoblasts in response to mechanical
+stimulation [9–14]. Therefore, development of effective adjuvant ther­
+apeutic strategies to accelerate new bone formation, maturation, and
+mineralization during DO, thereby reducing treatment duration and
+improving bone regeneration quality, holds substantial clinical
+significance.
+Among the various bioactive factors capable of promoting bone
+regeneration, calcitonin gene-related peptide (CGRP) presents unique
+advantages that remain underexplored because of critical pharmaceu­
+tical challenges. CGRP, a 37-amino acid neuropeptide synthesized and
+released primarily by sensory neurons, represents one of the most potent
+endogenous vasodilators known and extensively participates in neuro­
+transmission, inflammation regulation, pain perception, and tissue
+repair [15–18]. Accumulating evidence has demonstrated that CGRP
+plays a pivotal role in bone metabolism, with CGRP and its receptors
+widely expressed in osteoblasts, osteocytes, osteoclasts, and bone
+marrow stromal cells [19,20]. Studies have shown that CGRP directly
+stimulates osteoblast proliferation and differentiation while promoting
+the synthesis of bone matrix proteins, thereby enhancing bone formation
+[21,22]. CGRP was selected for this study based on several compelling
+advantages over other osteogenic agents: (1) it has a dual mechanism of
+action-unlike growth factors that primarily target either osteoblasts or
+osteoclasts, CGRP simultaneously stimulates bone formation while
+inhibiting bone resorption, providing balanced bone remodeling regu­
+lation [23,24]; (2) clinical relevance-CGRP is naturally released during
+bone healing processes and distraction osteogenesis, making it a phys­
+iologically relevant therapeutic target [25]; (3) unique signaling
+pathway-CGRP activates the cAMP/PKA/CREB cascade, which differs
+from Smad-dependent pathways, potentially offering complementary
+therapeutic mechanisms; and (4) superior safety profile-as an endoge­
+nous peptide, CGRP has well-established safety compared with that of
+recombinant growth factors. While bone morphogenetic proteins
+(BMPs) are potent osteoinductors, they are associated with significant
+side effects including ectopic bone formation, inflammatory responses,
+and high costs [26]. Platelet-derived growth factor (PDGF) primarily
+stimulates cell proliferation but has limited direct osteogenic effects
+[27]. Insulin-like growth factor-1 (IGF-1) promotes osteoblast function
+but lacks the antiresorptive properties of CGRP [28]. In contrast, CGRP
+exerts balanced bone anabolic and anticatabolic effects through
+endogenous pathways, making it particularly suitable for the complex
+bone remodeling processes involved in distraction osteogenesis. How­
+ever, CGRP exhibits an extremely short in vivo half-life (2–10 min) due
+to rapid enzymatic degradation and poor tissue penetration, severely
+limiting its clinical application potential [29–31].
+To overcome these pharmaceutical limitations while harnessing the
+unique osteogenic potential of CGRP, in this study, a novel sustained-
+release system was engineered using poly(D,L-lactide-co-glycolide)/
+nano-hydroxyapatite/graphene oxide (PLGA/nHA/GO) composite mi­
+crospheres. PLGA, an FDA-approved biodegradable polymer, provides
+controlled drug release through gradual hydrolysis while maintaining
+effective drug concentrations at target sites [32–34]. To further enhance
+bioactivity and osteoconductive properties, nHA was incorporated as
+the primary component of natural bone minerals, providing excellent
+biocompatibility and favorable microenvironments for osteoblast func­
+tion [35,36]. Owing to its unique physicochemical properties, including
+large specific surface area and abundant surface functional groups,
+graphene oxide has demonstrated potential for promoting stem cell
+osteogenic differentiation through the modulation of intracellular
+signaling pathways [37–40]. The integration of these components cre­
+ates a synergistic platform that addresses the pharmacokinetic limita­
+tions of CGRP while potentially enhancing its biological effects.
+Furthermore, this study systematically investigated the molecular
+mechanisms underlying the osteogenic effects of CGRP, specifically
+focusing on the cAMP/PKA/CREB signaling pathway, where CGRP
+binding to G protein-coupled receptors activates adenylyl cyclase, ele­
+vates intracellular cAMP levels, activates PKA, and phosphorylates
+CREB to regulate the expression of osteogenic genes [41–45].
+Based on this background, this study aimed to (1) successfully pre­
+pare and characterize CGRP-loaded PLGA/nHA/GO composite micro­
+spheres with optimal physicochemical properties and sustained-release
+performance; (2) systematically investigate their effects on rat BMSC
+proliferation, migration, and osteogenic differentiation while eluci­
+dating the underlying cAMP/PKA/CREB signaling mechanisms through
+in vitro experiments; and (3) comprehensively evaluate their efficacy in
+promoting bone regeneration in a rat femoral distraction osteogenesis
+model through radiological, biomechanical, and histomorphological
+assessments. We hypothesized that CGRP-PLGA/nHA/GO composite
+microspheres can achieve long-term sustained CGRP release and effec­
+tively promote rBMSC osteogenic differentiation through cAMP/PKA/
+CREB signaling pathway activation, thereby significantly enhancing DO
+efficiency and quality in vivo. The results of this study are expected to
+provide important experimental evidence and theoretical support for the
+development of novel, efficient CGRP-based bone regeneration thera­
+peutic strategies.
+2. Materials and methods
+2.1. Materials and reagents
+Poly(D,L-lactide-co-glycolide) (PLGA, lactide:glycolide molar ratio
+50:50, ester-terminated, molecular weight 10,000–20,000 Da) was
+purchased from Shanghai Yuanye Bio-Technology Co., Ltd. (Shanghai,
+China). Nano-hydroxyapatite (nHA, particle size <200 nm) was ob­
+tained from Aladdin Chemical Reagent Co., Ltd. (Shanghai, China).
+Single-layer graphene oxide (GO) was procured from Adamas Reagent
+Co., Ltd. (Shanghai, China). Polyvinyl alcohol (PVA, molecular weight
+9000–10,000 Da, 80 % hydrolyzed) was purchased from Sigma-Aldrich
+(St. Louis, MO, USA). Rat α-calcitonin gene-related peptide (rat α-CGRP,
+HY-P0203) was obtained from MCE (Shanghai, China). All other
+chemicals and solvents were of analytical grade or higher purity. Ul­
+trapure water with a resistivity of 18.2 MΩ cm was used throughout all
+experiments.
+2.2. Drug-loaded microsphere preparation
+CGRP-PLGA/nHA/GO composite microspheres were prepared via a
+W/O/W double emulsion-solvent evaporation method. The detailed
+procedure included the following key steps: (1) Organic phase prepa­
+ration and nanoparticle dispersion: precisely weighed PLGA (200 mg),
+nHA (50 mg), and GO (2 mg) were dispersed in dichloromethane (DCM,
+8 mL) using a three-step protocol: ultrasonication of nHA and GO in
+DCM for 10 min to break up agglomerates, followed by high-speed
+stirring at 1300 rpm for 10 min, then dissolution of PLGA with addi­
+tional stirring for 10 min to form a homogeneous organic phase sus­
+pension. (2) Primary emulsion formation: One milliliter of CGRP
+aqueous solution (10−5 mol/L) served as the inner aqueous phase (W),
+which was slowly added dropwise to the high-speed stirred (1300 rpm)
+organic phase under ice-bath conditions, followed by continuous stirring
+for 10 min to form the W1/O primary emulsion. (3) Double emulsion
+formation: PVA (1.2 g) was precisely weighed and dissolved in ultrapure
+water (80 mL) in an 80 ◦C water bath under stirring for approximately 1
+h until complete dissolution and then cooled to room temperature to
+obtain a 1.5 % (w/v) PVA solution as the external aqueous phase (W2).
+The PVA external aqueous phase was magnetically stirred at 1300 rpm
+while the W/O primary emulsion was slowly added dropwise, ensuring
+an organic phase to external aqueous phase volume ratio of approxi­
+mately 1:10. After continued emulsification under stirring for 10 min,
+the mixed emulsion was subjected to ultrasonication via an ultrasonic
+cell disruptor (power, 50 W; processing time, 30 s; working time, 2 s;
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+2
+
+remaining time, 3 s). (4) Microsphere solidification and collection: The
+double emulsion was continuously magnetically stirred at room tem­
+perature for 5–6 h to allow complete DCM evaporation and gradual
+microsphere solidification. After stirring completion, the suspension was
+allowed to stand overnight for microsphere sedimentation. The
+following day, the microspheres were collected by centrifugation via a
+high-speed refrigerated centrifuge at 4 ◦C and 4000 rpm for 5 min. After
+discarding the supernatant was discarded, the microspheres were
+washed 3–5 times with abundant ultrapure water to remove residual
+PVA and unencapsulated CGRP. The cleaned microspheres were resus­
+pended in a small amount of ultrapure water, transferred to freeze-
+drying vials, and freeze-dried under vacuum conditions for at least 24
+h using a freeze dryer, ultimately resulting in dried CGRP-PLGA/nHA/
+GO composite microsphere powder. As controls, blank PLGA/nHA/GO
+microspheres without CGRP were prepared via the same method. All
+prepared microspheres were stored sealed and dried at −20 ◦C for future
+use.
+2.3. Drug-loaded microsphere characterization
+2.3.1. Particle size analysis
+The microsphere particle size distribution was determined using a
+laser diffraction particle size analyzer (Mastersizer 2000, Malvern In­
+struments, UK). Appropriate amounts of dried microspheres were
+dispersed in deionized water and ultrasonicated for 3 min before mea­
+surement. The particle refractive index was set to 1.59, the absorption
+coefficient to 0.1, and the dispersion medium as water. Each sample was
+measured in triplicate.
+2.3.2. Morphology and surface characteristics
+Microsphere morphology and surface characteristics were observed
+by scanning electron microscopy (SEM, JEOL JSM-7610FPLUS, Tokyo,
+Japan). The dried microsphere samples were mounted on sample stages,
+gold-sputtered using a vacuum ion sputter coater, and observed at 5 kV
+accelerating voltage. To investigate internal microsphere structure,
+some microspheres were freeze-fractured in liquid nitrogen to expose
+internal cross-sections for SEM observation. Surface-porosity metrics
+were obtained from 20 k × SEM micrographs. For each of three inde­
+pendent batches, 30 randomly selected microspheres were binarised in
+ImageJ (threshold = 110), and automated particle analysis was used to
+calculate projected porosity (% area) and equivalent circular pore
+diameter.
+2.3.3. Chemical structure and phase composition
+Chemical structure and phase composition analyses included Fourier
+transform infrared spectroscopy (FTIR) and X-ray diffraction (XRD).
+FTIR analysis was performed using an infrared spectrometer (NicoletiS
+20, Thermo Fisher Scientific, USA) to analyze the chemical structures of
+the PLGA, nHA, GO raw materials and CGRP-PLGA/nHA/GO composite
+microspheres. Samples were mixed with dried KBr powder at approxi­
+mately 1:100 ratio, ground uniformly, and pressed into pellets. Scanning
+was performed in the 400-4000 cm−1 wavenumber range with 4 cm−1
+resolution and 32 accumulated scans. XRD analysis was conducted using
+an X-ray diffractometer (Bruker D8 Advance, Bruker, Germany) to
+analyze crystal structures of various components in microspheres.
+Testing conditions included Cu Kα radiation source (λ = 0.15406 nm),
+tube voltage 40 kV, tube current 20 mA, scanning in 5–60◦2θ range with
+0.03◦step size and 2◦/min scanning speed.
+2.3.4. Encapsulation efficiency and drug loading
+The CGRP encapsulation efficiency (EE) and drug loading (DL)
+ability of the CGRP-PLGA/nHA/GO composite microspheres were
+determined using a CGRP ELISA kit (Elabscience, Wuhan, China). Pre­
+cisely weighed amounts of composite microspheres were fully dispersed
+in appropriate volumes of 2 % SDS solution and ultrasonically disrupted
+for 30 min to destroy microsphere structure and completely release
+CGRP. After centrifugation at 10,000 rpm for 10 min at 4 ◦C to separate
+microsphere debris, supernatants were collected, appropriately diluted,
+and analyzed according to ELISA kit instructions to determine actual
+CGRP loading. EE and DL were calculated based on initial theoretical
+total CGRP mass added. All measurements were performed in triplicate,
+with results expressed as mean ± standard deviation (SD). Calculation
+formulas were: Encapsulation Efficiency (EE) (%) = (Total CGRP input -
+Free CGRP amount)/Total CGRP input × 100 %; Drug Loading (DL) (%)
+= (Total CGRP input - Free CGRP amount)/Total microsphere mass ×
+100 %.
+2.3.5. Energy-dispersive X-ray spectroscopy (EDS) and elemental mapping
+Elemental distribution within composite microspheres was analyzed
+using energy-dispersive X-ray spectroscopy (EDS) coupled with scan­
+ning electron microscopy (JEOL JSM-7610FPLUS, Tokyo, Japan).
+Microsphere samples were carbon-coated and analyzed at 10 kV accel­
+erating voltage. Elemental mapping was performed to visualize the
+spatial distribution of carbon (C), oxygen (O), calcium (Ca), and phos­
+phorus (P) within individual microspheres.
+2.3.6. Thermogravimetric analysis (TGA)
+Thermal degradation behavior and component quantification were
+analyzed using a thermogravimetric analyzer (TGA-50, Shimadzu,
+Japan). Samples (5–10 mg) were heated from 25 ◦C to 800 ◦C at a
+heating rate of 10 ◦C/min under nitrogen atmosphere (50 mL/min). The
+thermal degradation profiles of pure PLGA, nHA, GO, and composite
+microspheres were compared to confirm successful incorporation and
+determine actual nanoparticle loading efficiency.
+2.4. In vitro drug release and degradation
+2.4.1. In vitro CGRP release study
+To evaluate drug release kinetics and biodegradation performance of
+composite microspheres, accurately weighed CGRP-PLGA/nHA/GO
+composite microspheres (300 mg) were placed in centrifuge tubes con­
+taining 10 mL PBS (0.01 mol/L, pH 7.4, containing 0.1 % w/v BSA). BSA
+addition aimed to simulate physiological fluid environment and prevent
+CGRP concentration reduction due to non-specific adsorption. Centri­
+fuge tubes were subsequently placed in a constant-temperature hori­
+zontal shaker at 37 ◦C, 100 rpm for oscillation. At predetermined time
+points (0.5h, 1d, 3d, 5d, 7d, 14d, 21d, 28d, 35d, 42d), 2 mL release
+medium was withdrawn from each centrifuge tube, and immediately
+replaced with 2 mL fresh PBS buffer solution preheated to 37 ◦C to
+maintain total release system volume and "sink" conditions. Withdrawn
+release solutions were centrifuged at 4 ◦C, 10,000 rpm for 10 min, su­
+pernatants were collected, and CGRP concentrations were determined
+using CGRP ELISA kit.
+2.4.2. In vitro microsphere degradation behavior
+Precisely weighed CGRP-PLGA/nHA/GO composite microspheres
+(300 mg) were placed in centrifuge tubes containing 3 mL PBS (0.01
+mol/L, pH 7.4) and 0.1 mg/mL protease XIV (P5147, Sigma-Aldrich).
+Protease XIV addition aimed to simulate in vivo enzymatic degrada­
+tion environment. Centrifuge tubes were incubated in a constant-
+temperature shaker at 37 ◦C, 100 rpm. At predetermined time in­
+tervals (1d, 3d, 7d, 14d, 21d, 28d, 35d, 42d), samples were removed and
+centrifuged, and supernatants were carefully aspirated. Collected mi­
+crospheres were washed several times with ultrapure water and freeze-
+dried to constant weight. Microsphere samples at different degradation
+time points were subjected to SEM observation to record surface
+morphology and structural changes over time. Microsphere degradation
+rate was calculated using the following formula: Degradation Rate (%) =
+(W0-Wt)/W0 × 100 %. Where W0 is initial dry weight of microspheres
+before degradation, and Wt is remaining mass of microspheres after
+freeze-drying. Three parallel samples were established for each group,
+with results expressed as mean ± SD.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+3
+
+2.5. In vitro cell studies
+2.5.1. Cell culture
+Rat bone marrow mesenchymal stem cells (rBMSCs) used in this
+study were purchased from Wuhan Procell Life Science & Technology
+Co., Ltd. (Wuhan, China). These cells were routinely cultured in α-MEM
+medium containing 10 % FBS (Gibco, USA) and 1 % antibiotic-
+antimycotic mixture (Gibco, USA). The culture environment was
+maintained in a humidified incubator at 37 ◦C with 5 % CO2. The cell
+culture medium was changed every two days to ensure adequate
+nutrition and suitable microenvironment for cell growth.
+2.5.2. Biocompatibility
+To evaluate the in vitro cytotoxicity of the CGRP-PLGA/nHA/GO
+composite microspheres, appropriate amounts of microspheres were
+sterilized under UV lamp irradiation for 12 h and extracted in serum-free
+α-MEM culture medium at a material mass to extraction liquid volume
+ratio of 0.2 g/mL for 24 h at 37 ◦C. After extraction completion,
+extraction liquids were centrifuged and filtered through 0.22 μm
+microporous membranes. rBMSCs were seeded in 96-well plates at a
+density of 1 × 104 cells per well and exposed to different concentration
+gradients (5.0 %, 15.0 %, 30.0 %, 60.0 %, 100.0 % v/v) of microsphere
+extraction liquids. On days 1, 3, 5, and 7 of culture, 10 μL CCK-8 solution
+was added to each well, followed by continued incubation at 37 ◦C for
+1–2 h, then optical density (OD values) was measured at 450 nm using a
+microplate reader.
+2.5.3. Cell morphology and proliferation
+To thoroughly investigate effects of CGRP-PLGA/nHA/GO micro­
+spheres on rBMSC biological behaviors and potential PKA signaling
+pathway mechanisms, this study established the following four experi­
+mental groups for comparative analysis: (1) Control group, cells
+cultured only in blank culture medium; (2) PLGA/nHA/GO microsphere
+group, cells co-cultured with CGRP-free blank microspheres (30 mg/
+well); (3) CGRP solution group, cells directly exposed to 10−5 mol/L
+CGRP solution; (4) CGRP-PLGA/nHA/GO microsphere group, cells co-
+cultured with CGRP-loaded composite microspheres (30 mg/well, con­
+taining equivalent 10−5 mol/L CGRP).
+Cell viability was assessed using Calcein AM/PI dual staining kit
+(EFL, Suzhou, China). rBMSCs were seeded in 12-well plates at a density
+of 2 × 104 cells per well, treated according to group assignments for 1
+and 3 days, then stained according to kit instructions. Cell adhesion
+morphology was observed using Phalloidin-FITC/DAPI staining (YEA­
+SEN, Shanghai, China) to visualize F-actin cytoskeleton distribution and
+nuclear morphology. Cell proliferation capacity was detected using CCK-
+8 method. rBMSCs were seeded in 96-well plates at a density of 1 × 104
+cells per well. On days 1, 3, 5, and 7 of culture, culture medium was
+aspirated and 100 μL complete culture medium containing 10 % CCK-8
+was added to each well, followed by dark incubation at 37 ◦C for 1 h,
+then OD values were detected at 450 nm using a multifunctional
+microplate reader.
+2.5.4. Cell apoptosis
+Annexin V-FITC/PI dual staining method (Beyotime Biotechnology,
+China) combined with flow cytometry was used to quantitatively
+analyze cell apoptosis/necrosis status. rBMSCs were seeded in 6-well
+plates at a density of 1 × 105 cells per well, treated according to
+group assignments and cultured for 6 h, then changed to serum-free
+culture medium and continued culture for 12 and 24 h before cell
+collection. Cells were resuspended in Binding Buffer, 5 μL Annexin V-
+FITC and 5 μL PI were added, followed by dark reaction at room tem­
+perature for 10 min, then cell apoptosis was detected using flow
+cytometry (BD Biosciences, USA).
+2.5.5. Cell migration
+Cell migration capacity was evaluated using both Transwell
+migration assay and scratch assay methods. Transwell chambers with 8
+μm pore size (Corning Costar Corp, USA) were used with 200 μL cell
+suspension (containing 5 × 104 cells) seeded into upper chambers and
+600 μL culture medium containing different treatment groups in lower
+chambers. Culture plates were placed in a 37 ◦C, 5 % CO2 incubator for
+24 h. For scratch assay, logarithmic growth phase rBMSCs were seeded
+in 24-well plates at a density of 2 × 105 cells per well, cultured until cell
+confluence reached approximately 90–100 %. A sterile 200 μL pipette
+tip was used to create a straight "wound" line in the cell monolayer
+center. Scratch area images were observed and photographed at 0, 12,
+and 24 h.
+2.5.6. In vitro osteogenic properties
+To evaluate effects of CGRP-PLGA/nHA/GO composite microspheres
+on rBMSC osteogenic differentiation, cells were cultured in specialized
+osteogenic induction medium (OriCell, Cyagen Biosciences, Guangzhou,
+China). Osteogenic differentiation levels were assessed through Alizarin
+Red S (ARS) staining and quantification for late-stage mineralization,
+and alkaline phosphatase (ALP) activity detection, staining, and quan­
+tification for early-stage osteogenic markers. For ARS staining, rBMSCs
+were seeded in 12-well plates at a density of 2 × 104 cells per well. After
+14 and 21 days of culture, cells were fixed with 4 % paraformaldehyde
+and stained with 1 % ARS solution. For quantitative analysis, bound dye
+was extracted using 10 % cetylpyridinium chloride (CPC) solution and
+absorbance was measured at 562 nm. For ALP staining, cells were
+cultured for 4 and 7 days, then fixed and stained using BCIP/NBT
+alkaline phosphatase color development kit (Beyotime Biotechnology,
+China). For quantitative ALP activity measurement, cells were lysed
+with RIPA buffer and incubated with p-nitrophenyl phosphate (p-NPP)
+substrate solution. ALP activity was normalized to total protein content
+determined by BCA assay.
+2.6. Molecular biology studies
+2.6.1. cAMP concentration detection (ELISA method)
+After rBMSCs were treated according to above groupings for 30 min,
+cells were collected. Cells were washed twice with pre-chilled PBS, then
+cell lysis buffer was added for cell lysis on ice. According to cAMP ELISA
+kit (Elabscience, Wuhan, China) instructions, cAMP concentrations in
+cell lysates were measured. Total protein concentrations were deter­
+mined by BCA method for cAMP concentration standardization.
+2.6.2. Quantitative real-time polymerase chain reaction (qRT-PCR)
+rBMSCs were seeded in 6-well culture plates at a density of 2 × 105
+cells per well, routinely cultured for 1 day, then changed to osteogenic
+induction medium containing different treatment groups. After 7 days of
+culture, cells were collected and total RNA was extracted using TRIzol
+reagent (Invitrogen). After determining RNA concentration and purity,
+1 μg total RNA was reverse transcribed to cDNA using PrimeScript™ RT
+Master Mix (TaKaRa, Japan). Using diluted cDNA as template, amplifi­
+cation was performed on a real-time fluorescence quantitative PCR in­
+strument using SYBR® Premix Ex Taq™ II (TaKaRa). Target genes
+detected included osteogenic-related genes Runx2, Spp1 (OPN), Bglap
+(OCN), SP7 (Osx), and cell proliferation-related gene CyclinD1. Gapdh
+served as internal reference gene.
+2.6.3. Western Blot analysis
+Western Blot analysis was performed to detect related protein
+expression and phosphorylation levels. For phosphorylated protein
+detection, BMSCs were subjected to serum starvation for 12–24 h, fol­
+lowed by stimulation with corresponding drugs for 30 min according to
+grouping before cell collection. For total protein detection, BMSCs were
+cultured in osteogenic induction medium for 7 days before collecting
+cells from each group. RIPA lysis buffer containing protease inhibitors
+and phosphatase inhibitors was added for cell lysis on ice for 30 min to
+extract total proteins. After determining protein concentrations by BCA
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+4
+
+method, equal amounts of total proteins were subjected to SDS-PAGE gel
+electrophoresis, then proteins were wet-transferred to PVDF mem­
+branes. Membranes were blocked with TBST buffer containing 5 %
+skimmed milk at room temperature for 1–2 h. Subsequently, PVDF
+membranes were incubated overnight at 4 ◦C with specific primary
+antibodies including PKA antibody (Affinity, AF7746), phosphorylated
+PKA antibody (Affinity, AF7246), CREB antibody (Affinity, AF6188),
+phosphorylated CREB antibody (Affinity, AF3189), OPN antibody (Af­
+finity, AF0227), OCN antibody (Affinity, DF12303) (Affinity Bio­
+sciences, USA); Runx2 antibody (Abcam, ab236639), Osx antibody
+(Abcam, ab209484), CyclinD1 antibody (Abcam, ab134175), GAPDH
+antibody (Abcam, ab181602) (Abcam, UK). After washing, HRP-labeled
+secondary antibodies (Abcam, ab6721) were incubated at room tem­
+perature for 1 h. Enhanced chemiluminescence (ECL) kit was used to
+detect protein bands, and ImageJ software was used for quantitative
+analysis.
+2.7. In vivo experiments
+2.7.1. Animals
+This study selected adult male Sprague-Dawley (SD) rats weighing
+approximately 420 g, provided by Xinjiang Medical University Labora­
+tory Animal Center. All rats were housed in specific pathogen-free (SPF)
+grade animal facilities with strictly controlled environmental condi­
+tions. All animal experimental procedures strictly followed institutional
+guidelines and were approved by the Animal Ethics Committee of Xin­
+jiang Medical University (Ethics approval number: IACUC-JT-
+20231121-35).
+2.7.2. Establishment of rat femoral distraction osteogenesis model and
+grouped treatment
+This study included 84 SD rats for in vivo experiments. Rats were
+anesthetized by intraperitoneal injection of 2 % pentobarbital sodium (3
+mg/100 g body weight). After satisfactory anesthesia, routine prepara­
+tion and disinfection of the right femoral surgical area were performed.
+Under strict aseptic conditions, a longitudinal skin incision approxi­
+mately 2 cm long was made on the lateral aspect of the right femoral
+mid-shaft. A specially designed unilateral mini external fixator was used
+with four 1.2 mm diameter stainless steel self-tapping screws inserted to
+securely install the external fixator on the lateral femur. Precise trans­
+verse osteotomy was performed at the midpoint of the femoral shaft
+between the two pairs of fixation pins using a micro oscillating saw.
+After osteotomy completion, the surgical area was thoroughly irrigated
+with sterile saline, and muscles, fascia, and skin were sutured layer by
+layer. Distraction protocol implementation began after a 5-day latency
+period. Femoral distraction proceeded at 0.25 mm increments every 12
+h (total daily distraction distance of 0.5 mm), continued for 10
+consecutive days, creating a 5.0 mm distraction gap. After distraction
+phase completion, experimental animals entered a 6-week bone tissue
+mineralization consolidation period.
+All successfully modeled rats were randomly divided into four
+experimental groups, each containing 21 rats: (1) Control group: Local
+injection of saline 100 μL; (2) PLGA/nHA/GO microsphere group: Local
+injection of drug-free blank microspheres (30 mg in 100 μL saline); (3)
+CGRP solution group: Local injection of CGRP solution (10−5 mol/L,
+100 μL); (4) CGRP-PLGA/nHA/GO microsphere group: Local injection of
+CGRP-loaded composite microspheres (30 mg in 100 μL saline).
+2.7.3. Gross Specimen Observation and digital radiographic assessment
+After animal sacrifice at predetermined time points, extracted
+femoral specimens were subjected to gross observation and photo­
+graphic documentation, focusing on new bone morphology and healing
+progression in distraction areas. Weekly anteroposterior X-ray exami­
+nations were performed using digital X-ray equipment (HF400VA,
+MIKASA X-RAY Co., Ltd., Japan) under standardized conditions (44 kV,
+4.5 mAs) to dynamically monitor bone callus formation and density
+changes within distraction gaps throughout the consolidation period.
+2.7.4. Micro-computed tomography assessment
+At 6 weeks after consolidation completion, femoral specimens from
+each group (n = 3) were fixed in 4 % paraformaldehyde and analyzed
+using high-resolution Micro-CT scanner (SkyScan 1176, Bruker, Ger­
+many). Scanning parameters were set as: voltage 65 kV, current 385 μA,
+voxel size 18 μm. The entire distraction area was selected as the region
+of interest for quantitative analysis. Key bone microstructural parame­
+ters were measured including bone mineral density (BMD), bone volume
+fraction (BV/TV), trabecular number (Tb.N), trabecular thickness (Tb.
+Th), and trabecular separation (Tb.Sp).
+2.7.5. Biomechanical testing
+At Biomechanical performance testing was performed on right
+femoral specimens from each group (n = 3) after external fixator
+removal. Specimens were placed on a three-point bending testing ma­
+chine (JD-D500/JD-T100, Zhongji Testing Equipment, China) with
+support point spacing of 18 mm. Loading was applied at the midpoint of
+distraction areas in the anteroposterior direction at a constant rate of
+0.5 mm/min until fracture occurred. Load-displacement curves were
+recorded to calculate ultimate load, energy to failure, and stiffness.
+2.7.6. Histomorphological and immunohistochemical analysis
+Detailed histomorphological and immunohistochemical analyses
+were performed at 2, 4, and 6 weeks after consolidation completion. For
+histological staining, femoral specimens (n = 3 per group) were fixed in
+10 % neutral formalin, embedded in methyl methacrylate, and sectioned
+at 10 μm thickness using a hard tissue microtome. Sections were stained
+with Von Kossa, Masson’s trichrome, Goldner’s trichrome, and Safranin
+O-Fast Green to evaluate mineralized bone distribution, collagen orga­
+nization, and cartilage presence.
+For immunohistochemical analysis, separate specimens were decal­
+cified in 10 % EDTA solution, paraffin-embedded, and sectioned at 5 μm
+thickness. After antigen retrieval and blocking, sections were incubated
+with primary antibodies: Anti-Runx2 (Bioss, bs-1134R), Anti-Osterix
+(Osx) (Servicebio, GB111900), Anti-osteocalcin (OCN) (Servicebio,
+GB115684), Anti-osteopontin (OPN) (Servicebio, GB11500), Anti-
+phosphorylated PKA (p-PKA (Affinity Biosciences, AF7246), Anti-
+phosphorylated CREB (p-CREB) (Affinity Biosciences, AF3189).
+Following standard immunohistochemical procedures with HRP-labeled
+secondary antibodies and DAB development, positive staining areas
+were quantified using ImageJ software.
+2.8. Statistical analysis
+All experimental data were analyzed using SPSS 22.0 statistical
+software package. Quantitative data were uniformly expressed as mean
+± standard deviation. Before parametric testing, Shapiro-Wilk test was
+used to assess normal distribution of data. If data followed normal dis­
+tribution and showed homogeneity of variance, independent samples t-
+test was used for comparisons between two groups; for multiple group
+comparisons, one-way analysis of variance (One-way ANOVA) was
+employed with post-hoc multiple comparison methods such as Tukey’s
+HSD test or LSD test for pairwise comparisons. All statistical tests were
+set as two-sided tests, with P < 0.05 as the criterion for determining
+statistical significance. Charts were created using GraphPad Prism v.8.0
+software.
+3. Results
+3.1. Composite microsphere characterization
+3.1.1. Microsphere morphology, particle size, and distribution
+Scanning electron microscopy (SEM) observations (Fig. 1A) revealed
+that
+successfully
+prepared
+CGRP-PLGA/nHA/GO
+composite
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+5
+
+Fig. 1. Characterization of CGRP-PLGA/nHA/GO Composite Microspheres (A) SEM morphology images showing spherical morphology and surface structure of
+microspheres. (B) Laser particle size analysis showing microsphere size distribution. (C) FTIR spectral analysis of chemical structures of various components. (D) XRD
+pattern analysis of crystalline phase structures of various components. (E) EDS elemental mapping showing spatial distribution of carbon (C), oxygen (O), calcium
+(Ca), and phosphorus (P) within individual microspheres. (F) EDS spectrum with elemental composition showing weight percentages of detected elements. (G)
+Thermogravimetric analysis (TGA) curves showing thermal degradation profiles of pure PLGA, GO, nHA, and composite microspheres from 25 ◦C to 800 ◦C under
+nitrogen atmosphere.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+6
+
+microspheres exhibited good spherical or near-spherical morphologies
+with relatively smooth surfaces. Some microspheres showed a few
+porous structures on their surfaces, which would favor subsequent cell
+adhesion and nutrient exchange. Overall, the microsphere dispersion
+was good, with no obvious agglomeration observed. Observation of
+liquid nitrogen freeze-fractured microspheres revealed relatively dense
+internal structures or porous network structures, depending on cross-
+sectional positions.
+Quantitative surface porosity analysis revealed that the majority of
+CGRP-PLGA/nHA/GO composite microspheres possessed substantial
+surface porosity. Low-magnification SEM counting (n = 150) showed
+that 92.0 ± 2.0 % of microspheres displayed ≥1 μm surface pores. High-
+magnification analysis yielded a projected porosity of 34.8 ± 2.1 % and
+an average surface pore diameter of 4.9 ± 0.5 μm. This porous surface
+structure facilitates controlled drug release while providing pathways
+for nutrient and metabolite transport.
+Laser particle size analysis results showed (Fig. 1B) that CGRP-
+PLGA/nHA/GO composite microspheres had an average particle diam­
+eter of 51.15 ± 0.40 μm with a Polydispersity Index (PDI) of 0.41,
+indicating moderate size distribution uniformity suitable for pharma­
+ceutical applications.
+3.1.2. Chemical structure and phase composition of microspheres
+To investigate interactions between drugs and polymers, FTIR was
+performed on optimized formulation microspheres and spectra were
+compared with those of PLGA, nHA, and GO. FT-IR spectral analysis
+results are shown in Fig. 1C. PLGA characteristic absorption peaks such
+as C=O stretching vibration peak (approximately 1760 cm−1) and C-O-C
+stretching vibration peak (approximately 1080–1180 cm−1) were
+clearly visible. nHA characteristic absorption peaks including PO4
+3−
+group stretching vibration peaks (approximately 1030–1090 cm−1 and
+962 cm−1), bending vibration peaks (approximately 560–600 cm−1),
+and -OH stretching vibration peak (approximately 3400–3500 cm−1)
+were also evident. GO showed -OH stretching vibration (approximately
+3417 cm−1), C=O stretching vibration (carboxyl or ketone groups,
+approximately 1735 cm−1), and C-O stretching vibration (epoxy or hy­
+droxyl groups, approximately 1050–1250 cm−1) characteristic peaks.
+In composite microsphere FT-IR spectra, main characteristic peaks of
+PLGA, nHA, and GO were observed individually, and weak signals of
+CGRP amide I band (approximately 1650 cm−1) and amide II band
+(approximately 1540 cm−1) might appear or overlap with other peaks,
+indicating successful CGRP encapsulation in composite microspheres
+while maintaining main chemical structures of each component during
+physical mixing without obvious chemical bond destruction or new
+chemical bond formation.
+XRD pattern analysis is shown in Fig. 1D. Pure nHA powder dis­
+played typical hydroxyapatite crystalline phase characteristic diffrac­
+tion peaks, such as at 2θ = 25.8◦(002), 31.8◦(211), 36.0◦(202), 39.9◦
+(310), 46.8◦(222). PLGA, due to its amorphous nature, showed a broad
+diffuse peak in the 2θ = 15–25◦range. GO showed its characteristic
+(001) diffraction peak at approximately 2θ 10–12◦. In composite
+microsphere XRD patterns, nHA characteristic crystal diffraction peaks
+were clearly observed, indicating that nHA maintained good crystal­
+linity during composite processes, which was important for exerting
+bioactivity and providing mechanical support. Meanwhile, PLGA
+amorphous peaks and GO characteristic peaks were also present but
+slightly shifted, possibly due to mixing with multiple amorphous sub­
+stances. These results confirmed that composite microspheres were
+successfully formed by PLGA, nHA, and GO composition, and CGRP
+encapsulation did not significantly alter main carrier material crystal­
+line phase structures.
+Energy-dispersive X-ray spectroscopy (EDS) analysis provided direct
+evidence of uniform nanoparticle distribution within the composite
+microspheres (Fig. 1E and F). Elemental mapping revealed homoge­
+neous distribution of carbon (C, green), oxygen (O, red), calcium (Ca,
+purple), and phosphorus (P, cyan) throughout individual microspheres,
+confirming successful incorporation of both nHA and GO components.
+Thermogravimetric analysis provided quantitative validation of
+nanoparticle incorporation and retention within the composite micro­
+spheres (Fig. 1G). CGRP-loaded microspheres retained 20.38 ± 0.15 wt
+% residue at 800 ◦C. After subtracting the 1.14 wt% carbonaceous res­
+idue attributable to PLGA degradation, the measured nHA + GO residue
+was 19.24 wt%, corresponding to a nanoparticle retention efficiency of
+96.5 %. This value agrees closely with the theoretical 19.93 wt%
+calculated from the feed ratio, confirming that nanoparticle detachment
+during microsphere formation is minimal and that both nHA and GO
+remain well-integrated within the polymer matrix.
+3.1.3. CGRP encapsulation efficiency and drug loading
+CGRP encapsulation efficiency (EE) and drug loading (DL) in CGRP-
+PLGA/nHA/GO composite microspheres were determined using ELISA
+method. Results showed that composite microspheres prepared by
+optimized double emulsion-solvent evaporation method achieved CGRP
+EE of 86.14 ± 2.5 % (n = 3) and DL of 8.44 ± 0.25 % (n = 3). High
+encapsulation efficiency and drug loading indicated that the W/O/W
+double emulsion-solvent evaporation method could effectively encap­
+sulate hydrophilic CGRP peptides uniformly in PLGA/nHA/GO com­
+posite matrices while reducing drug loss during preparation processes.
+3.2. In vitro CGRP release and Degradation Characteristics of CGRP-
+PLGA/nHA/GO composite microspheres
+3.2.1. In vitro CGRP release curves
+Composite microsphere in vitro CGRP cumulative release curves in
+simulated physiological fluid environment (PBS, pH 7.4, 37 ◦C) are
+shown in Fig. 2A. Release processes exhibited typical multi-phase
+release patterns. In the initial 0.5–24 h, approximately 9.25 ± 0.47 %
+(n = 3) CGRP was rapidly released, possibly attributed to rapid disso­
+lution of drugs adsorbed on microsphere surfaces or near-surface layers
+(initial burst release). Subsequent 1–28 days represented a sustained,
+relatively gradual drug release phase, with CGRP diffusing at slower
+rates from microsphere matrix pores and degradation-generated chan­
+nels. After 28–42 days, drug release approached plateau phase, indi­
+cating most releasable CGRP had been released. By day 42, total
+cumulative CGRP release reached 90.53 ± 2.41 % (n = 3).
+This characteristic of initial rapid release followed by long-term
+sustained slow release could meet early rapid efficacy requirements
+while providing stable CGRP concentrations for subsequent long-term
+bone repair processes, which was important for exerting CGRP biolog­
+ical effects. Sustained drug release was closely related to PLGA matrix
+degradation behavior.
+3.2.2. In vitro microsphere degradation behavior
+In vitro degradation behavior of composite microspheres in PBS so­
+lution containing protease XIV was evaluated through mass loss rates
+and SEM morphological observation. As shown in Fig. 2B, microspheres
+exhibited gradual mass loss during 42-day degradation cycles. In early
+degradation stages (1–7 days), microsphere weight loss was relatively
+slow, with weight loss ratio of approximately 11.89 ± 1.39 % (n = 3) on
+day 7. As degradation time extended (14–42 days), microspheres
+entered accelerated weight loss stages, with weight loss ratio reaching
+74.11 ± 2.36 % (n = 3) on day 42.
+SEM photographs (Fig. 2C) directly showed microsphere morpho­
+logical changes during degradation processes: initial microspheres had
+smooth, intact surfaces; as degradation progressed (after 14 days),
+microsphere surfaces began showing holes and erosion traces; in late
+degradation stages (35–42 days), microsphere structures underwent
+obvious collapse and fragmentation, forming large-scale holes, indi­
+cating significant hydrolysis and enzymatic degradation of PLGA
+matrices. nHA and GO as composite material components might affect
+overall microsphere degradation rates and patterns, such as nHA release
+and GO sheet exposure. This controllable degradation behavior matched
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+7
+
+sustained drug release characteristics and represented important con­
+siderations for designing long-acting drug delivery systems.
+3.3. In vitro cell studies
+3.3.1. Biocompatibility
+CCK-8 method was used to detect cytotoxicity of different concen­
+trations of PLGA/nHA/GO composite microsphere extracts on rBMSCs,
+with results shown in Fig. 3A. After co-culture with PLGA/nHA/GO
+microsphere extracts at concentrations from 5 % to 100 % (v/v) for 1, 3,
+5, and 7 days, rBMSC OD values in all concentration groups showed no
+statistically significant differences compared to control groups con­
+taining only complete culture medium (P > 0.05), indicating good
+biocompatibility of blank microsphere extracts. These results demon­
+strated that PLGA/nHA/GO composite microspheres and their degra­
+dation products showed no obvious cytotoxicity to rBMSCs within tested
+concentration ranges, possessing good biocompatibility and providing
+foundations for subsequent cell function experiments and in vivo
+applications.
+3.3.2. Cell proliferation and morphology
+Calcein AM/PI dual staining results (Fig. 3C) analysis found that
+after co-culture for 1 and 3 days, compared to control groups, free CGRP
+solution groups, PLGA/nHA/GO blank microsphere groups, and CGRP-
+PLGA/nHA/GO composite microsphere groups all showed significant
+differences in cell survival rates. Among them, CGRP-PLGA/nHA/GO
+composite microsphere groups showed higher Calcein AM green fluo­
+rescence signals (live cells) and lower PI red fluorescence signals (dead
+cells) at both time points, indicating this group could significantly pro­
+mote cell survival and reduce cell apoptosis, superior to free CGRP
+solution groups and blank microsphere groups. Additionally, as culture
+time extended to 3 days, composite microsphere group survival-
+promoting effects became more obvious, suggesting sustained CGRP
+release potential for more effectively maintaining cell activity.
+Through in-depth observation of cell morphological changes via cell
+adhesion and cytoskeleton staining, Phalloidin/DAPI fluorescence
+staining results (Fig. 3D) showed that after 1 and 3 days of culture,
+compared to PLGA/nHA/GO blank microsphere groups and free CGRP
+solution groups, CGRP-PLGA/nHA/GO composite microsphere group
+cells exhibited more sufficient spreading, more extended cell body
+expansion, and formation of more pseudopodia and filopodial struc­
+tures. Intracellular cytoskeletal protein F-actin microfilament bundles in
+CGRP-PLGA/nHA/GO group cells appeared clearer and more robust,
+tending to arrange orderly along cell long-axis directions, forming good
+intracellular tension structures. These phenomena suggested that CGRP
+continuously released by CGRP-PLGA/nHA/GO microspheres might
+improve cell-material surface interactions through specific molecular
+mechanisms, significantly promoting cell adhesion and spreading be­
+haviors crucial for subsequent cell function performance.
+Quantitative detection of cell proliferation capacity through CCK-8
+method, cell proliferation curves shown in Fig. 3B indicated that
+compared to control groups and PLGA/nHA/GO blank microsphere
+groups, free CGRP solution groups and CGRP-PLGA/nHA/GO composite
+microsphere groups could significantly promote rBMSC proliferation
+activity (P < 0.05). This proliferation-promoting effect was particularly
+obvious on culture days 3, 5, and 7. Notably, in later culture stages (such
+as days 5 and 7), CGRP-PLGA/nHA/GO composite microsphere group
+proliferation-promoting effects were even superior to free CGRP solu­
+tion groups. This fully demonstrated unique advantages of CGRP
+sustained-release systems in maintaining long-term, stable cellular
+Fig. 2. In Vitro Release and Degradation Characteristics of CGRP-PLGA/nHA/GO Composite Microspheres (A) In vitro CGRP cumulative release curves (n =
+3); (B) In vitro microsphere degradation mass loss rates (n = 3); (C) SEM morphological changes of microspheres at different degradation time points.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+8
+
+Fig. 3. Biocompatibility, Cellular Effects, and Apoptosis Analysis (A) CCK-8 cytotoxicity assessment of different concentration microsphere extracts on BMSCs
+over 7 days (n = 3). (B) CCK-8 cell proliferation assay showing proliferation capacity of BMSCs treated with different groups over 7 days (n = 3). (C) Calcein AM/PI
+dual staining showing cell viability at 1 and 3 days post-treatment. Live cells display green fluorescence (Calcein AM) while dead cells show red fluorescence (PI).
+Scale bar: 50 μm. (D) Phalloidin-FITC/DAPI staining showing F-actin cytoskeleton (green) and nuclei (blue) at 1 and 3 days post-treatment. Scale bar: 50 μm. (E)
+Annexin V-FITC/PI dual staining flow cytometry analysis of BMSC apoptosis after 24h and 48h treatment with different experimental groups. (F) Quantitative
+analysis of apoptotic cell percentages from flow cytometry data (n = 3).
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+9
+
+biological effects.
+3.3.3. Cell Apoptosis Analysis
+Quantitative analysis of cell apoptosis/necrosis status through flow
+cytometry (Annexin V-FITC/PI dual staining) (Fig. 3E and F) showed
+that compared to control groups, CGRP-PLGA/nHA/GO composite
+microsphere group rBMSCs showed significantly reduced apoptotic cell
+proportions after co-culture for 24h (10.55 ± 0.40 % vs 31.33 ± 0.9 %,
+P < 0.05) and 48h (15.68 ± 0.92 % vs 41.43 ± 1.53 %, P < 0.05),
+indicating this group could effectively inhibit cell apoptosis and main­
+tain cell activity. At 24h, free CGRP solution groups showed certain anti-
+apoptotic effects compared to control groups (17.17 ± 0.54 % vs 31.33
+± 0.91 %, P < 0.05), but effects were weaker than composite micro­
+sphere groups, suggesting free CGRP might have shorter action time due
+to rapid degradation. Overall, CGRP-PLGA/nHA/GO composite micro­
+spheres significantly enhanced rBMSC survival capacity and reduced
+apoptosis through sustained CGRP release, superior to free drugs and
+blank carriers, demonstrating good biocompatibility and drug delivery
+advantages.
+3.3.4. Effects of composite microspheres on rBMSC migration capacity
+Scratch healing assay results (Fig. 4A and B) indicated that at 12 and
+Fig. 4. Cell Migration and Osteogenic Differentiation Assessment (A) Scratch wound healing assay showing cell migration into the wound area at 0, 12, and 24 h
+post-scratching. Scale bar: 100 μm. (B) Quantitative analysis of scratch wound closure percentage over time (n = 3). (C) Transwell migration assay showing migrated
+cells (stained with crystal violet) after 24h incubation. Scale bar: 100 μm. (D) Quantitative analysis showing number of migrated cells per high-power field (n = 3).
+(E) Alizarin Red S staining showing calcium deposition and mineralized nodule formation at 14 and 21 days of osteogenic culture. Orange-red staining indicates
+calcium deposits. Scale bar: 100 μm. (F) Quantitative analysis of Alizarin Red S staining by cetylpyridinium chloride extraction, expressed as μg Alizarin Red S per
+well (n = 3). (G) BCIP/NBT alkaline phosphatase (ALP) staining showing ALP activity at 4 and 7 days of osteogenic culture. Purple-blue precipitates indicate ALP-
+positive areas. Scale bar: 50 μm. (H) Quantitative ALP activity measurement normalized to total protein content, expressed as U/mg protein (n = 3).
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+10
+
+24 h post-scratching, compared to control groups and PLGA/nHA/GO
+microsphere groups, free CGRP solution groups and CGRP-PLGA/nHA/
+GO composite microsphere groups could significantly accelerate rBMSC
+coverage and healing of scratch areas (P < 0.05). CGRP-PLGA/nHA/GO
+composite microsphere group scratch healing rates were slightly supe­
+rior to free CGRP groups (31.79 ± 2.91 % vs 23.75 ± 1.27 %), further
+confirming
+CGRP-PLGA/nHA/GO
+microsphere
+cell
+migration-
+promoting capacity.
+Transwell chamber method evaluation results (Fig. 4C and D)
+showed that compared to control groups and PLGA/nHA/GO micro­
+spheres, free CGRP solution groups and CGRP-PLGA/nHA/GO com­
+posite microsphere groups could significantly promote rBMSC migration
+toward Transwell lower chambers (P < 0.05). Among them, CGRP-
+PLGA/nHA/GO composite microsphere group induced cell migration
+numbers were slightly superior to free CGRP groups (442.00 ± 20.42 vs
+383.00 ± 19.67), demonstrating sustained-release CGRP chemot actic
+potential.
+3.3.5. Osteogenic property assessment
+3.3.5.1. Alizarin Red staining and mineralization quantification. Alizarin
+Red S staining was used to detect calcified nodule formation in late-stage
+osteogenic differentiation extracellular matrix. After 14 and 21 days of
+culture, results (Fig. 4E) showed that compared to control groups and
+PLGA/nHA/GO microsphere groups, free CGRP solution groups and
+CGRP-PLGA/nHA/GO composite microsphere group rBMSCs formed
+more numerous and larger orange-red calcified nodules. CGRP-PLGA/
+nHA/GO composite microsphere group mineralization levels were
+significantly superior to control groups and PLGA/nHA/GO microsphere
+groups. In contrast, free CGRP groups showed certain pro-mineralization
+effects but weaker than composite microsphere groups, possibly related
+to rapid CGRP release and degradation; while blank microsphere groups
+showed only baseline levels of calcium deposition, indicating limited
+direct effects of PLGA/nHA/GO itself on osteogenic differentiation.
+Quantitative analysis confirmed these observations (Fig. 4F). At day
+14, control cultures deposited only 9.6 ± 0.5 μg/well of mineralized
+matrix, while blank microspheres and free CGRP solution increased
+calcium deposition to 16.8 ± 0.8 and 25.2 ± 1.0 μg/well, respectively.
+CGRP-loaded microspheres demonstrated the most prominent mineral­
+ization effect, achieving 36.0 ± 0.9 μg/well, representing approximately
+2.8-fold enhancement over controls (p < 0.001). By day 21, minerali­
+zation continued to progress with CGRP-loaded microspheres reaching
+54.0 ± 0.5 μg/well, significantly exceeding free CGRP (38.0 ± 0.9 μg/
+well) and blank microspheres (27.2 ± 0.8 μg/well), corresponding to
+3.6-fold increase compared to controls (p < 0.001).
+3.3.5.2. Alkaline phosphatase (ALP) detection and activity quantification.
+Under osteogenic induction culture conditions, ALP was an important
+early-stage osteoblast differentiation marker. ALP staining results
+(Fig. 4G) showed that after 4 and 7 days of culture, compared to control
+groups and PLGA/nHA/GO microsphere groups, free CGRP solution
+groups and CGRP-PLGA/nHA/GO composite microsphere group
+rBMSCs exhibited deeper and more extensive ALP-positive staining
+(purple-blue precipitates), indicating these groups could more effec­
+tively promote early osteogenic differentiation of rBMSCs. Composite
+microsphere group ALP expression levels at both 4 and 7 days of culture
+were significantly higher than other groups, and differentiation-
+promoting advantages became more significant with time extension.
+In contrast, free CGRP groups showed certain ALP activity enhancement
+effects but weaker than composite microsphere groups, possibly related
+to short-term CGRP actions; while blank microsphere group ALP activity
+was close to control groups, indicating limited direct effects of materials
+themselves on early osteogenic differentiation.
+Quantitative ALP activity measurements provided robust statistical
+evidence for these observations (Fig. 4H). At day 4, control group ALP
+activity was 0.81 ± 0.03 U/mg protein, while blank PLGA/nHA/GO
+microspheres, free CGRP solution, and CGRP-loaded microspheres
+significantly increased enzymatic activity to 1.59 ± 0.04, 2.20 ± 0.07,
+and 3.01 ± 0.06 U/mg protein, respectively. CGRP-loaded microspheres
+demonstrated approximately 3.7-fold enhancement compared to con­
+trols (p < 0.001). By day 7, ALP activity further increased across all
+treatment groups, with CGRP-loaded microspheres reaching 5.22 ±
+0.10 U/mg protein, significantly higher than blank microspheres (2.62
+± 0.08 U/mg protein) and free CGRP solution (3.82 ± 0.09 U/mg pro­
+tein, p < 0.001). The sustained-release CGRP microspheres consistently
+outperformed equivalent doses of free CGRP, highlighting the advan­
+tages of controlled drug delivery.
+These results confirmed that CGRP-PLGA/nHA/GO composite mi­
+crospheres could significantly enhance early osteogenic differentiation
+capacity of rBMSCs through sustained CGRP release, further supporting
+their application potential in bone regeneration fields.
+3.4. Molecular mechanisms of composite microspheres regulating rBMSC
+osteogenic differentiation through cAMP/PKA/CREB pathway
+3.4.1. cAMP concentration detection
+The ELISA results (Fig. 5A) revealed that, compared with the control
+and PLGA/nHA/GO microspheres, the CGRP-PLGA/nHA/GO composite
+microspheres significantly elevated the intracellular cAMP concentra­
+tions in rBMSCs (P < 0.05). The free CGRP solution also significantly
+elevated the cAMP concentration. These results indicate that CGRP
+released by CGRP-PLGA/nHA/GO microspheres could serve as a first
+messenger, effectively activating the production of cAMP as an intra­
+cellular second messenger.
+3.4.2. qRT-PCR analysis
+To elucidate the molecular mechanisms by which CGRP-PLGA/nHA/
+GO composite microspheres regulate rBMSC osteogenic differentiation,
+the mRNA expression levels of osteogenic-related transcription factors
+and marker genes, as well as PKA pathway downstream effector
+CyclinD1, were detected. qRT-PCR results (Fig. 5E) showed that after 7
+days of osteogenic induction culture, compared to control groups and
+PLGA/nHA/GO microsphere groups, CGRP-PLGA/nHA/GO composite
+microsphere groups significantly upregulated expression of key osteo­
+genic transcription factors Runx2 and Osx, as well as late-stage osteo­
+genic marker genes OPN (Spp1) and OCN (Bglap) (P < 0.05).
+Meanwhile, cell proliferation-related CyclinD1 gene expression was also
+significantly upregulated (P < 0.05). These results suggested that CGRP-
+PLGA/nHA/GO microspheres might activate PKA signaling pathways,
+thereby regulating transcription of downstream osteogenic-related
+genes and cell cycle-related genes, promoting rBMSC osteogenic differ­
+entiation and proliferation.
+3.4.3. Western Blot analysis
+To verify PKA signaling pathway activation and its effects on
+downstream osteogenic protein expression at protein levels, Western
+Blot analysis was performed (Fig. 5B–D). After treating BMSCs (30 min
+for phosphorylated proteins, 7 days for total proteins), compared to
+control groups and PLGA/nHA/GO microsphere groups, CGRP-PLGA/
+nHA/GO composite microsphere groups significantly increased PKA
+phosphorylation levels (p-PKA Thr197/Total PKA ratio elevation) and
+downstream key substrate CREB phosphorylation levels (p-CREB
+Ser133/Total CREB ratio elevation) (P < 0.05). Meanwhile, osteogenic-
+related proteins Runx2, Osx, OPN, OCN, and cell cycle protein CyclinD1
+expression levels were all significantly upregulated (P < 0.05) (Fig. 5F
+and G).
+These protein-level evidence strongly demonstrated that CGRP
+released by CGRP-PLGA/nHA/GO composite microspheres primarily
+upregulated osteogenic-related protein expression through activating
+cAMP/PKA/CREB signaling pathways, thereby promoting rBMSC oste­
+ogenic differentiation. Multiple in vitro experimental results including
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+11
+
+proliferation, apoptosis, ALP activity, mineralization, gene and protein
+expression provided solid evidence chains for CGRP-PLGA/nHA/GO
+microspheres exerting pro-osteogenic and pro-proliferative effects
+through CGRP-activated cAMP/PKA/CREB signaling pathways.
+3.5. In vivo experimental results
+3.5.1. Gross Specimen Observation and X-ray assessment
+The gross observation of the femoral specimens collected at the
+consolidation periods (Fig. 6B) revealed that all groups exhibited vary­
+ing degrees of healing in distraction gaps over time. By consolidation
+week 6, control groups and PLGA/nHA/GO microsphere groups still
+presented obvious depressions or fibrous tissue connections in
+Fig. 5. Molecular Mechanism Analysis (A) Intracellular cAMP concentration measured by ELISA after 30 min of treatment, normalized to total protein content (n
+= 3). (B–D) Western blot analysis and quantitative assessment of PKA and CREB phosphorylation levels. (B) Representative Western blot images showing p-PKA
+(Thr197), total PKA, p-CREB (Ser133), total CREB, and GAPDH expression. (C) Quantitative analysis of p-PKA/total PKA ratio. (D) Quantitative analysis of p-CREB/
+total CREB ratio. (E) qRT-PCR analysis of osteogenic-related gene mRNA expression after 7 days of osteogenic induction. Relative expression levels of Runx2, Osx,
+OPN (Spp1), OCN (Bglap), and CyclinD1 normalized to Gapdh internal control using 2^-ΔΔCt^ method (n = 3). (F) Representative Western blot images showing
+expression of osteogenic proteins Runx2, Osx, OPN, OCN, CyclinD1, and GAPDH loading control. (G) Quantitative analysis of protein expression levels normalized to
+GAPDH (n = 3).
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+12
+
+distraction gaps with discontinuous new bone formation. CGRP solution
+group showed improved healing, but still with incomplete bone bridges
+or insufficient bone callus. CGRP-PLGA/nHA/GO microsphere group
+distraction gaps were almost completely filled with hard new bone tis­
+sue, with good bone bridge formation, relatively smooth surfaces, and
+tight connections with surrounding host bone.
+The dynamic X-ray observation results (Fig. 6A) were consistent with
+the gross observation trends. At consolidation week 2, the control and
+PLGA/nHA/GO microsphere groups presented only small amounts of
+vague bone callus shadows within the distraction gap, with clearly
+visible gaps. In contrast, the CGRP solution group presented small
+amounts of new bone callus with a slightly greater density than that in
+the first two groups. Compared with the CGRP solution group, the CGRP-
+PLGA/nHA/GO microsphere group presented more abundant new bone
+callus shadows within the distraction gap, with a greater density, and
+the distraction gap began to show blurring.
+Entering consolidation week 4, the control and PLGA/nHA/GO
+microsphere groups still presented relatively small amounts of bone
+callus, with a low bone density and an obvious distraction gap. In the
+CGRP solution group, the amount and density of bone callus were
+increased, but the distraction gap was still partially visible. The CGRP-
+PLGA/nHA/GO microsphere groups presented significant advantages
+at this stage, with substantially greater amounts of bone callus, a
+significantly elevated density, effective filling of most distraction gaps
+with new bone, and initial bone continuity formation.
+By consolidation completion at week 6, the control and PLGA/nHA/
+GO microsphere groups failed to achieve complete distraction gap
+healing, with X-ray images showing partial areas as fibrous connections
+or only small amounts of immature bone callus formation. Compared
+with the control group, the CGRP solution group showed superior bone
+healing, but small residual gaps or areas of insufficient bone density
+were still observed. In sharp contrast, in the CGRP-PLGA/nHA/GO
+microsphere group, the distraction gap was basically filled with
+mature, well-bridged bone callus, with high new bone density, relatively
+clear trabecular structures, and some degree of medullary canal recan­
+alization, demonstrating excellent overall bone healing effects.
+3.5.2. Micro-CT analysis results
+At week 6, after the completion of the consolidation period, three-
+dimensional micro-CT reconstruction and quantitative analysis of new
+bone in the femoral distraction area of the rats in each group (Fig. 7A
+and B) were performed. Three-dimensional reconstruction images
+directly showed that control groups and PLGA/nHA/GO microsphere
+groups still had obvious bone defects in distraction areas with sparse
+new bone amounts and poor bone continuity. CGRP solution group new
+bone amounts increased compared to the first two groups but bone
+structures might still be insufficiently dense and complete. CGRP-PLGA/
+nHA/GO microsphere groups showed the most ideal bone regeneration
+effects, with most abundant new bone amounts in distraction areas,
+dense and well-connected trabecular structures, forming relatively
+complete and solid bone bridges with better medullary canal
+recanalization.
+Further quantitative parameter analysis revealed significantly
+greater bone mineral density (BMD) in the CGRP-PLGA/nHA/GO
+microsphere group than in the control, PLGA/nHA/GO microsphere,
+and CGRP solution groups (P < 0.05). CGRP solution group BMD values
+were also significantly higher than control groups and PLGA/nHA/GO
+microsphere groups (P < 0.05). In bone volume fraction (BV/TV) as­
+pects, CGRP-PLGA/nHA/GO microsphere group BV/TV values were
+similarly significantly higher than all other three groups (P < 0.05),
+while CGRP solution group BV/TV values were also significantly supe­
+rior to control groups and PLGA/nHA/GO microsphere groups (P <
+0.05).
+Additionally, with respect to other key parameters reflecting bone
+microstructures, such as the trabecular number (Tb.N) and trabecular
+thickness (Tb.Th), the CGRP-PLGA/nHA/GO microsphere group pre­
+sented significant advantages over the other groups, with significantly
+greater Tb.N and Tb.Th values (P < 0.05); With respect to trabecular
+separation (Tb.Sp), the Tb.Sp values in the CGRP-PLGA/nHA/GO
+microsphere group were significantly lower than those in the other
+groups (P < 0.05), indicating denser new bone structures with smaller
+trabecular spacing. These comprehensive Micro-CT assessment results
+from three-dimensional structure and bone mass levels further power­
+fully confirmed that CGRP-PLGA/nHA/GO composite microspheres
+could significantly promote high-quality new bone formation and
+effective mineralization during distraction osteogenesis processes in
+vivo.
+3.5.3. Biomechanical performance evaluation
+At week 6 after consolidation period completion, three-point
+bending tests were performed on regenerated femurs from each group
+to assess mechanical strength (Fig. 7C). Experimental results showed
+that ultimate loads that CGRP-PLGA/nHA/GO microsphere group re­
+generated femurs could withstand were significantly higher than control
+groups, PLGA/nHA/GO microsphere groups, and CGRP solution groups
+(P < 0.05). CGRP solution group ultimate loads were also significantly
+higher than control groups and PLGA/nHA/GO microsphere groups (P
+< 0.05). Regarding material toughness indicators, namely energy to
+failure, CGRP-PLGA/nHA/GO microsphere groups also showed signifi­
+cant superiority, with values significantly higher than other groups (P <
+Fig. 6. In Vivo Distraction Osteogenesis X-ray and Gross Specimen Observation (A) X-rayimages at different time points showing bone callus formation in
+distraction areas; (B) Gross specimen observation of distraction area healing at consolidation week 6.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+13
+
+0.05), reflecting that their new bone could absorb more energy before
+fracture occurrence. Additionally, stiffness values representing material
+deformation resistance capacity were also significantly higher in CGRP-
+PLGA/nHA/GO microsphere groups than the other three groups (P <
+0.05).
+These biomechanical testing results fully demonstrated that local
+application of CGRP-PLGA/nHA/GO composite microspheres could not
+only effectively increase new bone amounts but more importantly could
+significantly improve biomechanical performance, making them closer
+to normal, healthy bone tissue in strength, stiffness, and toughness. This
+was crucially important for achieving functional bone regeneration and
+ensuring regenerated bone could withstand physiological loads with
+Fig. 7. Micro-CT Analysis and Biomechanical Testing (A) Micro-CT three-dimensional reconstruction images of distraction areas at 6 weeks post-consolidation
+showing bone regeneration patterns across treatment groups. (B) Quantitative micro-CT analysis of bone microstructural parameters including bone mineral density
+(BMD), bone volume (BV), bone volume fraction (BV/TV), trabecular number (Tb.N), trabecular thickness (Tb.Th), and trabecular separation (Tb.Sp) (n = 3). (C)
+Biomechanical testing results showing ultimate load, energy to failure, and stiffness measured by three-point bending test (n = 3).
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+14
+
+significant clinical implications.
+3.5.4. Histological analysis
+Histological staining results (Fig. 8) showed that at consolidation
+week 6, through Von Kossa staining observation, control groups and
+PLGA/nHA/GO microsphere groups showed only small amounts of
+irregularly distributed black mineralized deposits within distraction
+areas, with most areas still occupied by unmineralized fibrous tissues.
+CGRP solution group mineralized areas increased compared to the first
+two groups but mineralized bone distribution might still be insuffi­
+ciently continuous and uniform. In contrast, CGRP-PLGA/nHA/GO
+microsphere group distraction areas showed large amounts of dense
+black mineralized bone tissues, forming continuous bone bridge struc­
+tures with relatively mature trabecular morphology.
+Masson’s trichrome and Goldner’s trichrome staining results further
+confirmed these observations. These staining clearly showed that CGRP-
+PLGA/nHA/GO microsphere group new bone tissues were more mature,
+with orderly arranged collagen fibers and uniformly distributed bone
+cells, forming sharp contrasts with large amounts of fibrous tissues and
+small amounts of immature osteoid matrices in control groups and
+PLGA/nHA/GO microsphere groups. CGRP solution group histological
+performance was intermediate between these two. From trabecular
+morphology perspectives, CGRP-PLGA/nHA/GO group trabeculae were
+more robust with tighter inter-connections.
+Through Safranin O-Fast Green staining observation, at early
+experimental time points, distraction areas might show small amounts of
+endochondral ossification signs. However, by consolidation completion
+at week 6, CGRP-PLGA/nHA/GO microsphere group distraction areas
+showed almost no cartilage tissue remnants, mainly replaced by mature
+lamellar bone structures, indicating high bone remodeling processes and
+bone tissue maturity. In contrast, control groups and PLGA/nHA/GO
+microsphere groups might still have partial cartilage areas or
+fibrocartilage tissues at this time.
+3.5.5. Immunohistochemical staining
+Immunohistochemical staining results (Fig. 9) showed that in new
+bone tissues within distraction areas at consolidation weeks 4 or 6, key
+osteogenic transcription factors Runx2 and Osterix (Osx) positive
+expression levels in CGRP-PLGA/nHA/GO microsphere group new bone
+areas (especially in active osteoblasts and young osteocytes) were
+significantly higher than control groups, PLGA/nHA/GO microsphere
+groups, and CGRP solution groups (P < 0.05). Similarly, as important
+markers of bone matrix maturation and mineralization, osteopontin
+(OPN) and osteocalcin (OCN) positive expression intensities in CGRP-
+PLGA/nHA/GO microsphere group new bone matrices and osteoblasts
+were also significantly stronger than all other three groups (P < 0.05).
+To further verify in vivo activation of cAMP/PKA/CREB signaling
+pathways, immunohistochemical staining was performed for p-PKA and
+p-CREB. Results showed that in CGRP-PLGA/nHA/GO microsphere
+group new bone areas, p-PKA and p-CREB positive staining levels were
+significantly higher than control groups, PLGA/nHA/GO microsphere
+groups, and CGRP solution groups (P < 0.05). These results were
+consistent with in vitro Western Blot detected PKA and CREB phos­
+phorylation level elevation trends, indicating that CGRP-PLGA/nHA/
+GO microspheres could similarly activate PKA/CREB signaling path­
+ways in vivo.
+These comprehensive histological and immunohistochemical results
+from cellular and tissue levels further powerfully confirmed that CGRP-
+PLGA/nHA/GO composite microspheres could effectively promote high-
+quality new bone formation during distraction osteogenesis processes,
+with underlying mechanisms closely related to activating PKA/CREB
+signaling pathways and significantly upregulating key osteogenic tran­
+scription factor and bone matrix protein expression.
+Fig. 8. Histological Staining Results Histological staining of distraction areas in each group: Von Kossa staining showing mineralized bone (black), Masson’s
+trichrome staining showing collagen (blue) and muscle (red), Goldner’s trichrome staining differentiating mineralized bone, osteoid matrix, and cells. Scale bar: 200
+μm, 50 μm.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+15
+
+4. Discussion
+The findings of this study on bone defect repair, particularly the
+reconstruction of large bone defects, have always been a severe chal­
+lenge faced by clinical orthopedic fields [1]. Distraction osteogenesis
+(DO) technology induces bone regeneration through mechanical force
+stimulation, providing an effective approach to solving this problem, but
+its long treatment cycles and high complication rates still limit its clin­
+ical application effects [7,8]. Therefore, developing bioactive materials
+that can synergize with DO technology to accelerate new bone formation
+and maturation has important research value and clinical prospects. This
+study successfully constructed a calcitonin gene-related peptide
+(CGRP)-loaded
+PLGA/nHA/GO
+ternary
+composite
+microsphere
+(CGRP-PLGA/nHA/GO) and systematically evaluated its physicochem­
+ical properties, in vitro biological effects, and its capacity and mecha­
+nisms for promoting bone regeneration in DO models. Study results
+showed that CGRP-PLGA/nHA/GO microspheres achieved high encap­
+sulation efficiency, sustained CGRP release over 42 days, and superior
+biocompatibility, establishing the foundation for their therapeutic effi­
+cacy. In vitro studies revealed that CGRP microspheres significantly
+enhanced rBMSC proliferation, migration capacity, and osteogenic dif­
+ferentiation markers compared to controls and free CGRP. Most
+importantly, in a rat femoral distraction-osteogenesis model the
+CGRP-loaded microspheres markedly enhanced bone repair, yielding
+higher bone-mineral density, greater ultimate load, and faster callus
+formation than the control groups. Combined with the demonstrated
+activation of the cAMP/PKA/CREB pathway, these findings constitute a
+substantial advance in bone-tissue-engineering strategies for complex
+skeletal reconstruction.
+The strategic selection and integration of PLGA, nHA, and GO com­
+ponents was based on complementary functional requirements to
+address CGRP’s primary pharmaceutical challenges. Our characteriza­
+tion results confirmed successful composite formation with uniform
+spherical morphology (approximately 51 μm diameter) and appropriate
+physicochemical properties for injectable applications [33,34]. FTIR
+and XRD analyses confirmed successful composition of three compo­
+nents PLGA, nHA, and GO, and CGRP encapsulation processes did not
+damage original chemical structures and nHA crystalline forms of each
+component, which was crucial for maintaining material bioactivity [35,
+36]. Drug encapsulation rate and loading results showed that W1/O/W
+double emulsification methods could effectively encapsulate hydro­
+philic peptide drugs CGRP in hydrophobic polymer matrices, achieving
+satisfactory drug loading efficiency [33]. The observed release kinetics
+showed sustained CGRP release for up to 42 days with initial rapid
+release followed by slow sustained release characteristics, providing
+temporal kinetics that align with the extended consolidation phase re­
+quirements of distraction osteogenesis. This controllable release pattern
+was particularly important for bone regeneration processes requiring
+long-term regulation, while in vitro degradation experiments confirmed
+good biodegradability consistent with PLGA characteristics [34,46].
+Fig. 9. Immunohistochemical Staining Results Immunohistochemical staining and analysis of osteogenic-related proteins and signaling pathway markers in
+distraction areas at consolidation weeks 2, 4 and 6. Staining for Runx2, Osterix (Osx), osteopontin (OPN), osteocalcin (OCN), phosphorylated PKA (p-PKA), and
+phosphorylated CREB (p-CREB) across different treatment groups. Quantitative analysis shows positive staining area percentage (n = 3). Scale bar: 200 μm.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+16
+
+Our systematic investigation of cellular responses provided crucial
+insights into how CGRP-PLGA/nHA/GO microspheres enhance bone
+regeneration at the molecular level. The biocompatibility assessments
+showed that different concentrations of microsphere extracts showed no
+obvious cytotoxicity to rBMSCs, providing strong evidence for safety of
+CGRP-PLGA/nHA/GO microspheres as bone repair materials [47].
+Live/dead cell staining further confirmed good cell survival states in
+cultures treated with CGRP microspheres [48]. Beyond biocompati­
+bility, CGRP microspheres significantly promoted multiple biological
+behaviors of rBMSCs through sustained CGRP release rather than direct
+cell-material contact. Cell cytoskeleton staining experiments revealed
+that CGRP microsphere treatments enhanced rBMSC spreading and
+cytoskeletal organization, forming clearer and more organized F-actin
+structures, likely due to sustained CGRP release improving cellular re­
+sponses and promoting favorable cell morphology [49]. Cell prolifera­
+tion studies demonstrated that CGRP microspheres could significantly
+promote rBMSC proliferation, with long-term effects superior to equiv­
+alent doses of free CGRP solutions, highlighting advantages of
+sustained-release systems [50]. Additionally, CGRP microspheres
+possessed anti-apoptotic effects, protecting rBMSC survival under
+adverse environments [51].
+The enhanced BMSC migration observed with CGRP microspheres in
+both Transwell and scratch assays [52,53] likely involves multiple
+complementary mechanisms beyond direct chemotaxis. CGRP-induced
+activation of adenylyl cyclase and subsequent cAMP elevation can
+modulate cytoskeletal dynamics through PKA-mediated phosphoryla­
+tion of cytoskeletal regulatory proteins, enhancing cell motility and
+directional migration [54]. Our cytoskeleton staining results showing
+more extended cell body expansion and organized F-actin microfilament
+bundles support this mechanistic interpretation. Additionally, CGRP’s
+well-known vasodilatory effects may create favorable microenviron­
+mental conditions that facilitate cell migration through improved
+nutrient and oxygen availability [55]. The sustained CGRP release
+profile appears crucial for maintaining these migration-promoting ef­
+fects, as evidenced by the superior performance compared to bolus
+CGRP administration.
+In core osteogenic differentiation aspects, this study confirmed
+through ALP activity detection/staining and Alizarin Red S staining that
+CGRP-PLGA/nHA/GO microspheres could significantly promote early
+and late osteogenic differentiation of rBMSCs, manifested as enhanced
+ALP activity and increased calcified nodule formation [56,57]. qRT-PCR
+and Western Blot results further revealed at molecular levels that
+CGRP-PLGA/nHA/GO microspheres could significantly upregulate
+expression of key osteogenic transcription factors Runx2 and Osx, as
+well as late osteogenic markers OPN and OCN [14,21]. These results
+were consistent with previous reports of CGRP directly promoting
+osteoblast differentiation and function [22,23]. This study’s innovation
+lay in combining CGRP with PLGA/nHA/GO composite carriers,
+achieving effective CGRP sustained release and proving superiority of
+this composite system in promoting BMSC osteogenic differentiation.
+Osteoconductive properties of nHA and pro-osteogenic characteristics of
+GO might produce synergistic effects with CGRP bioactivity, jointly
+enhancing BMSC osteogenic potential [36,40].
+To explore molecular mechanisms by which CGRP-PLGA/nHA/GO
+microspheres exerted pro-osteogenic effects, this study focused on
+cAMP/PKA/CREB signaling pathways. Our investigations demonstrated
+that CGRP-PLGA/nHA/GO microsphere treatments could significantly
+increased intracellular cAMP concentrations in rBMSCs and subse­
+quently upregulated p-PKA and p-CREB protein levels. This series of
+molecular activations showed high consistency in timing and degree
+with downstream osteogenic-related gene (Runx2, Osx, OPN, OCN) and
+protein expression upregulation, as well as cell proliferation-related
+gene (CyclinD1) upregulation. This strong correlation suggested that
+cAMP/PKA/CREB signaling pathways might play key roles in CGRP-
+PLGA/nHA/GO microsphere-mediated pro-osteogenic effects. CGRP as
+a known G protein-coupled receptor agonist, with adenylyl cyclase
+activation and cAMP elevation being its classical signal transduction
+approaches [43,44]. This study’s results provided new evidence for this
+classical pathway’s role in CGRP promoting BMSC osteogenic differen­
+tiation. CyclinD1 as a key protein in cell cycle regulation, its expression
+upregulation was consistent with enhanced cell proliferation capacity,
+while CREB was one of the important upstream factors regulating
+CyclinD1 transcription [42], further supporting PKA/CREB pathway
+roles in CGRP-PLGA/nHA/GO microsphere promoting cell proliferation.
+In the most clinically translatable in vivo animal experiment portion,
+this study used classical rat femoral distraction osteogenesis models to
+comprehensively evaluate bone regeneration effects of CGRP-PLGA/
+nHA/GO microspheres. X-ray and Micro-CT results both visually and
+quantitatively showed that compared to control groups, blank micro­
+sphere groups, and pure CGRP solution groups, CGRP-PLGA/nHA/GO
+microsphere groups could significantly promote new bone formation
+within distraction gaps during DO consolidation periods, increase bone
+mass, improve bone mineral density, and enhance trabecular micro­
+structures, manifested as earlier bone callus bridging and denser bone
+structures [6,24,58]. Biomechanical testing results further confirmed
+that CGRP-PLGA/nHA/GO microsphere-treated regenerated bone
+possessed higher ultimate loads, failure energies, and stiffness, indi­
+cating significantly improved mechanical performance closer to normal
+bone strength and toughness [7,59]. Histological staining results
+confirmed
+radiological
+and
+mechanical
+findings,
+with
+CGRP-PLGA/nHA/GO microsphere group new bone tissues being more
+mature, higher mineralization degrees, more orderly collagen arrange­
+ments, and fewer cartilage components. Immunohistochemical staining
+showed that key protein Runx2, Osx, OPN, OCN expression levels in
+CGRP-PLGA/nHA/GO microsphere group new bone areas were signifi­
+cantly higher than other groups, highly consistent with in vitro molec­
+ular
+biology
+detection
+results,
+further
+confirming
+that
+CGRP-PLGA/nHA/GO microspheres promoted bone regeneration in
+vivo through upregulating osteogenic-related factor expression [14,60].
+Notably, CGRP-PLGA/nHA/GO microsphere group demonstrated supe­
+rior in vivo bone regeneration effects compared to pure CGRP solution
+groups across multiple indicators, fully demonstrating the enormous
+advantages of sustained-release systems in maintaining local effective
+drug concentrations, extending drug action times, and improving
+bioavailability.
+The demonstrated efficacy suggests significant potential for clinical
+translation, yet several important considerations must be addressed. The
+injection-based delivery approach offers substantial advantages for
+clinical implementation, as it can be easily integrated into existing
+distraction osteogenesis protocols without requiring additional surgical
+procedures. When compared to existing bone regeneration strategies,
+CGRP microspheres offer distinct advantages in safety profile and
+mechanism of action. Unlike BMP-2, which has been associated with
+serious complications including ectopic bone formation, inflammatory
+reactions, and potential malignancy risks, CGRP represents an endoge­
+nous signaling molecule with well-established safety profiles [61]. The
+dual anabolic and anti-catabolic effects of CGRP provide more balanced
+bone remodeling compared to purely anabolic agents, potentially
+resulting in better bone quality and reduced risk of complications.
+However, translation from rat models to human applications requires
+careful consideration of differences in bone remodeling rates, mechan­
+ical loading patterns, and healing timescales [62].
+This study’s findings were consistent with recent reports about
+CGRP’s positive roles in bone metabolism and bone regeneration. For
+example, Ye et al. research showed that degradable magnesium com­
+bined with DO could synergistically stimulate bone tissue regeneration
+through CGRP-FAK-VEGF signal axes [24]. Ma et al. research also
+confirmed that CGRP could promote osteogenic differentiation of peri­
+odontal ligament stem cells [22]. This study’s characteristics lay in
+constructing novel CGRP ternary composite sustained-release micro­
+spheres and systematically applying them to DO models while thor­
+oughly exploring molecular mechanisms through which they regulated
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+17
+
+BMSC functions via cAMP/PKA/CREB pathways. PLGA provided drug
+sustained-release foundations, nHA enhanced osteoconductivity and
+biocompatibility, while GO might further synergistically promote
+osteogenesis through its unique physicochemical properties and bioac­
+tivity [31,35,39]. This multi-component composite strategy provided
+new ideas for constructing high-performance bone repair materials.
+Although this study achieved some meaningful results, it also had
+certain limitations. First, in mechanism exploration aspects, this study
+mainly revealed strong correlations between CGRP-PLGA/nHA/GO
+microsphere pro-osteogenic effects and cAMP/PKA/CREB signaling
+pathway activation, but due to not using inhibitors for intervention
+experiments, direct causal relationships between the two could not be
+established. In the future, PKA inhibitors (such as H89) or gene knock­
+down (siRNA) approaches could be used to further verify pathway ne­
+cessity. Second, CGRP’s mechanisms of action might also involve other
+signaling pathways such as MAPK pathways [60], with possible cross­
+talk between these pathways requiring more comprehensive mechanism
+exploration in the future. Third, although rat DO models were classical
+bone regeneration models, they still differed from human bone regen­
+eration physiological processes, requiring larger animal models or even
+clinical studies to verify CGRP-PLGA/nHA/GO microsphere effective­
+ness and safety in the future. Additionally, specific roles of GO and
+interaction mechanisms among CGRP, nHA, and GO were not fully
+elucidated, warranting further research. The potential for immune re­
+sponses to GO components requires thorough investigation through
+longer-term studies [63]. Finally, specific degradation products of mi­
+crospheres in vivo and their long-term safety require longer observation
+periods, and questions about optimal dosing, dosing frequency, and
+application effects in different bone defect models warrant further
+exploration.
+The promising outcomes warrant systematic advancement through
+several research phases. Immediate priorities include comprehensive
+dose-response optimization studies to determine minimum effective and
+maximum safe doses of CGRP microspheres. Investigation of combina­
+tion therapies, particularly with mechanical stimulation or other growth
+factors, may yield synergistic effects that further enhance bone regen­
+eration outcomes [64]. The development of personalized delivery ap­
+proaches based on patient-specific factors such as age, bone quality, and
+systemic health status represents an important avenue for optimizing
+therapeutic efficacy. From a technical perspective, exploration of
+alternative delivery vehicles or hybrid systems may offer advantages for
+specific clinical applications.
+A structured preclinical development pathway should include large
+animal studies in sheep or goat distraction models to evaluate safety,
+efficacy, and optimal dosing regimens while providing data on systemic
+distribution and clearance of microsphere components [65]. Compre­
+hensive toxicology studies must address potential long-term effects of all
+components, following established guidelines for biotechnology prod­
+ucts. Good Manufacturing Practice (GMP) development of the micro­
+sphere production process will be essential for ensuring consistent
+quality and regulatory compliance. Additionally, development of com­
+panion diagnostic approaches to monitor treatment response will facil­
+itate clinical trial design and patient selection strategies.
+This work contributes to the evolving paradigm of precision medi­
+cine in orthopedic applications, where therapeutic interventions are
+tailored to specific biological mechanisms and patient characteristics.
+The successful integration of nanotechnology, sustained-release sys­
+tems, and mechanistic understanding exemplifies the multidisciplinary
+approach required for advancing complex tissue engineering challenges.
+The insights into cAMP/PKA/CREB pathway regulation may have
+broader applications beyond distraction osteogenesis, potentially
+informing treatments for other bone disorders characterized by
+impaired healing or remodeling [66]. Furthermore, the microsphere
+platform could serve as a template for delivering other bioactive mole­
+cules with similar pharmaceutical challenges, expanding its impact
+beyond CGRP applications.
+5. Conclusion
+In conclusion, this comprehensive study demonstrates the successful
+development, characterization, and validation of a novel CGRP delivery
+system that significantly enhances distraction osteogenesis through
+well-characterized cellular and molecular mechanisms. The substantial
+improvements in bone formation, mineralization, and biomechanical
+properties, coupled with detailed mechanistic understanding of cAMP/
+PKA/CREB pathway activation, establish a strong foundation for clinical
+translation. While several limitations and challenges remain for
+advancing this approach to human trials, the promising preclinical
+outcomes and clear development pathway provide compelling justifi­
+cation for continued development toward clinical implementation.
+CRediT authorship contribution statement
+Yimurang Hamiti: Writing – review & editing, Writing – original
+draft, Methodology, Investigation, Formal analysis, Conceptualization.
+Kai Liu: Writing – review & editing, Validation, Methodology, Investi­
+gation, Formal analysis, Data curation. Xin Yang: Writing – review &
+editing, Visualization, Validation, Methodology, Investigation, Formal
+analysis. Sulong Wang: Validation, Resources, Investigation, Data
+curation. Xiriaili Kadier: Validation, Software, Resources, Investiga­
+tion. Aihemaitijiang Yusufu: Writing – review & editing, Supervision,
+Resources,
+Project
+administration,
+Funding
+acquisition,
+Conceptualization.
+Ethics approval and consent to participate
+All animal experimental procedures were approved by the Animal
+Ethics Committee of Xinjiang Medical University (Ethics approval
+number: IACUC-JT-20231121-35) and were conducted in accordance
+with the Guidelines for Laboratory Animal Care and Use.
+Funding
+This research was supported by the Tianshan Talent Technology
+Innovation Leading Talent - High-Level Leading Talent Project [grant
+number 2022TSYCLJ0026].
+Declaration of competing interest
+The authors declare the following financial interests/personal re­
+lationships which may be considered as potential competing interests:
+Aihemaitijiang Yusufu reports financial support was provided by Tian­
+shan Talent Technology Innovation Leading Talent - High-Level Leading
+Talent Project. If there are other authors, they declare that they have no
+known competing financial interests or personal relationships that could
+have appeared to influence the work reported in this paper.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at https://doi.
+org/10.1016/j.mtbio.2025.102181.
+Data availability
+Data will be made available on request.
+References
+[1] R. Dimitriou, E. Jones, D. McGonagle, P.V. Giannoudis, Bone regeneration: current
+concepts and future directions, BMC Med. 9 (2011) 66, https://doi.org/10.1186/
+1741-7015-9-66.
+[2] Y. Fillingham, J. Jacobs, Bone grafts and their substitutes, Bone Jt J 98-B (1 Suppl
+A) (2016) 6–9, https://doi.org/10.1302/0301-620X.98B1.36350.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+18
+
+[3] W. Wang, K.W.K. Yeung, Bone grafts and biomaterials substitutes for bone defect
+repair: a review, Bioact. Mater. 2 (2017) 224–247, https://doi.org/10.1016/j.
+bioactmat.2017.05.007.
+[4] G.A. Ilizarov, The tension-stress effect on the genesis and growth of tissues. Part I.
+The influence of stability of fixation and soft-tissue preservation, Clin. Orthop.
+Relat. Res. 238 (1989) 249–281.
+[5] G.A. Ilizarov, The tension-stress effect on the genesis and growth of tissues. Part II.
+The influence of the rate and frequency of distraction, Clin. Orthop. Relat. Res. 239
+(1989) 263–285.
+[6] Y. Liu, F. Cai, K. Liu, J. Liu, X. Zhang, A. Yusufu, Cyclic distraction-compression
+dynamization technique enhances the bone formation during distraction
+osteogenesis, Front. Bioeng. Biotechnol. 9 (2022) 810723, https://doi.org/
+10.3389/fbioe.2021.810723.
+[7] Y. Liu, J. Liu, F. Cai, K. Liu, X. Zhang, A. Yusufu, Hypoxia during the consolidation
+phase of distraction osteogenesis promotes bone regeneration, Front. Physiol. 13
+(2022) 804469, https://doi.org/10.3389/fphys.2022.804469.
+[8] P. Kostenuik, F.M. Mirza, Fracture healing physiology and the quest for therapies
+for delayed healing and nonunion, J. Orthop. Res. 35 (2017) 213–223, https://doi.
+org/10.1002/jor.23460.
+[9] L. Kong, H.A. Li, Q. Kang, G. Li, An update to the advances in understanding
+distraction histogenesis: from biological mechanisms to novel clinical applications,
+Journal of Orthopaedic Translation 25 (2020) 3–10.
+[10] D. Paley, Problems, obstacles, and complications of limb lengthening by the
+Ilizarov technique, Clin. Orthop. Relat. Res. 250 (1990) 81–104.
+[11] M.F. Pittenger, A.M. Mackay, S.C. Beck, R.K. Jaiswal, R. Douglas, J.D. Mosca,
+Multilineage potential of adult human mesenchymal stem cells, Science 284 (1999)
+143–147, https://doi.org/10.1126/science.284.5411.143.
+[12] T. Squillaro, G. Peluso, U. Galderisi, Clinical trials with mesenchymal stem cells: an
+update, Cell Transplant. 25 (2016) 829–848, https://doi.org/10.3727/
+096368915X689622.
+[13] Q. Chen, P. Shou, C. Zheng, M. Jiang, G. Cao, Q. Yang, Fate decision of
+mesenchymal stem cells: adipocytes or osteoblasts? Cell Death Differ. 23 (2016)
+1128–1139, https://doi.org/10.1038/cdd.2015.168.
+[14] F. Long, Building strong bones: molecular regulation of the osteoblast lineage, Nat.
+Rev. Mol. Cell Biol. 13 (2011) 27–38, https://doi.org/10.1038/nrm3254.
+[15] L. Edvinsson, CGRP receptor antagonists and antibodies against CGRP and its
+receptor in migraine treatment, Br. J. Clin. Pharmacol. 80 (2015) 193–199,
+https://doi.org/10.1111/bcp.12627.
+[16] F.A. Russell, R. King, S.J. Smillie, X. Kodji, S.D. Brain, Calcitonin gene-related
+peptide: physiology and pathophysiology, Physiol. Rev. 94 (2014) 1099–1142,
+https://doi.org/10.1152/physrev.00034.2013.
+[17] S. Iyengar, K.W. Johnson, M.H. Ossipov, S.K. Aurora, CGRP and the trigeminal
+system in migraine, Headache 59 (2019) 659–681, https://doi.org/10.1111/
+head.13529.
+[18] B. Holzmann, Modulation of immune responses by the neuropeptide CGRP, Amino
+Acids 45 (2013) 1–7, https://doi.org/10.1007/s00726-011-1161-2.
+[19] A. Bjurholm, A. Kreicbergs, E. Brodin, M. Schultzberg, Substance P- and CGRP-
+immunoreactive nerves in bone, Peptides 9 (1988) 165–171, https://doi.org/
+10.1016/0196-9781(88)90023-x.
+[20] H. He, J. Chai, S. Zhang, L. Ding, P. Yan, W. Du, Z. Yang, CGRP may regulate bone
+metabolism through stimulating osteoblast differentiation and inhibiting osteoclast
+formation, Mol. Med. Rep. 13 (2016) 3977–3984, https://doi.org/10.3892/
+mmr.2016.5023.
+[21] W. Liang, L. Li, X. Cui, Z. Tang, X. Wei, H. Pan, B. Li, Enhanced proliferation and
+differentiation effects of a CGRP- and Sr-enriched calcium phosphate cement on
+bone mesenchymal stem cells, J. Appl. Biomater. Funct. Mater. 14 (2016)
+e431–e440, https://doi.org/10.5301/jabfm.5000295.
+[22] K. Zhang, M. Wang, Y. Li, C. Li, S. Tang, X. Qu, N. Feng, Y. Wu, The PERK-EIF2α-
+ATF4 signaling branch regulates osteoblast differentiation and proliferation by
+PTH, Am. J. Physiol. Endocrinol. Metab. 316 (2019) E590–E604, https://doi.org/
+10.1152/ajpendo.00371.2018.
+[23] L. Wang, X. Shi, R. Zhao, B.P. Halloran, D.J. Clark, C.R. Jacobs, W.S. Kingery,
+Calcitonin-gene-related peptide stimulates stromal cell osteogenic differentiation
+and inhibits RANKL induced NF-kappaB activation, osteoclastogenesis and bone
+resorption, Bone 46 (2010) 1369–1379, https://doi.org/10.1016/j.
+bone.2009.11.029.
+[24] L. Ye, J. Xu, J. Mi, X. He, Q. Pan, L. Zheng, Biodegradable magnesium combined
+with distraction osteogenesis synergistically stimulates bone tissue regeneration
+via CGRP-FAK-VEGF signaling axis, Biomaterials 275 (2021) 120984, https://doi.
+org/10.1016/j.biomaterials.2021.120984.
+[25] Y. Wang, Z. Pan, Q. Wang, Y. Shu, Z. Tan, Y. Chen, J. He, J. Wang, J. Wang, J. Yan,
+Sequential SDF-1/CGRP-releasing smart composite hydrogel promotes
+osteoporotic fracture healing by targeting sensory nerve-regulated bone
+remodeling, Mater. Today Bio 32 (2025) 101750, https://doi.org/10.1016/j.
+mtbio.2025.101750.
+[26] A.W. James, G. LaChaud, J. Shen, et al., A review of the clinical side effects of bone
+morphogenetic protein-2, Tissue Eng., Part B 22 (4) (2016) 284–297.
+[27] A.I. Caplan, D. Correa, PDGF in bone formation and regeneration: new insights into
+a novel mechanism involving MSCs, J. Orthop. Res. 29 (12) (2011) 1795–1803.
+[28] L. Xian, X. Wu, L. Pang, et al., Matrix IGF-1 maintains bone mass by activation of
+mTOR in mesenchymal stem cells, Nat. Med. 18 (7) (2012) 1095–1101.
+[29] L. Edvinsson, R. Ekman, I. Jansen, J. McCulloch, R. Uddman, Peptide-containing
+nerve fibers in human cerebral arteries: immunocytochemistry,
+radioimmunoassay, and in vitro pharmacology, Ann. Neurol. 21 (1987) 431–437,
+https://doi.org/10.1002/ana.410210503.
+[30] A. Jamaluddin, C.L. Chuang, E.T. Williams, A. Siow, S.H. Yang, P.W.R. Harris,
+others, Lipidated calcitonin gene-related peptide (CGRP) peptide antagonists retain
+CGRP receptor activity and attenuate CGRP action in vivo, Front. Pharmacol. 13
+(2022) 832589, https://doi.org/10.3389/fphar.2022.832589.
+[31] H.K. Makadia, S.J. Siegel, Poly lactic-co-glycolic acid (PLGA) as a biodegradable
+controlled drug delivery carrier, Polymers 3 (2011) 1377–1397, https://doi.org/
+10.3390/polym3031377.
+[32] F. Danhier, E. Ansorena, J.M. Silva, R. Coco, A. Le Breton, V. Pr´eat, PLGA-based
+nanoparticles: an overview of biomedical applications, J. Contr. Release 161
+(2012) 505–522, https://doi.org/10.1016/j.jconrel.2012.01.043.
+[33] I. Bala, S. Hariharan, M.N. Kumar, PLGA nanoparticles in drug delivery: the state of
+the art, Crit. Rev. Ther. Drug Carrier Syst. 21 (2004) 387–422, https://doi.org/
+10.1615/critrevtherdrugcarriersyst.v21.i5.20.
+[34] S. Fredenberg, M. Wahlgren, M. Reslow, A. Axelsson, The mechanisms of drug
+release in poly(lactic-co-glycolic acid)-based drug delivery systems—a review, Int.
+J. Pharm. 415 (2011) 34–52, https://doi.org/10.1016/j.ijpharm.2011.05.049.
+[35] M. Sadat-Shojai, M.T. Khorasani, E. Dinpanah-Khoshdargi, A. Jamshidi, Synthesis
+methods for nanosized hydroxyapatite with diverse structures, Acta Biomater. 9
+(2013) 7591–7621, https://doi.org/10.1016/j.actbio.2013.04.012.
+[36] H. Zhou, J. Lee, Nanoscale hydroxyapatite particles for bone tissue engineering,
+Acta Biomater. 7 (2011) 2769–2781, https://doi.org/10.1016/j.
+actbio.2011.03.019.
+[37] D.R. Dreyer, S. Park, C.W. Bielawski, R.S. Ruoff, The chemistry of graphene oxide,
+Chem. Soc. Rev. 39 (2010) 228–240, https://doi.org/10.1039/b917103g.
+[38] H. Shen, L. Zhang, M. Liu, Z. Zhang, Biomedical applications of graphene,
+Theranostics 2 (2012) 283–294, https://doi.org/10.7150/thno.3642.
+[39] W.C. Lee, C.H. Lim, H. Shi, L.A. Tang, Y. Wang, C.T. Lim, others, Origin of
+enhanced stem cell growth and differentiation on graphene and graphene oxide,
+ACS Nano 5 (2011) 7334–7341, https://doi.org/10.1021/nn202190c.
+[40] H. Elkhenany, L. Amelse, A. Lafont, S. Bourdo, M. Caldwell, N. Neilsen, others,
+Graphene nanoscaffolds for osteogenic differentiation of human mesenchymal
+stem cells, ACS Appl. Mater. Interfaces 9 (2017) 36664–36675, https://doi.org/
+10.1021/acsami.7b10888.
+[41] P. Sassone-Corsi, The cyclic AMP pathway, Cold Spring Harbor Perspect. Biol. 4
+(2012) a011148, https://doi.org/10.1101/cshperspect.a011148.
+[42] B. Mayr, M. Montminy, Transcriptional regulation by the phosphorylation-
+dependent factor CREB, Nat. Rev. Mol. Cell Biol. 2 (2001) 599–609, https://doi.
+org/10.1038/35085068.
+[43] I. Villa, R. Melzi, F. Pagani, F. Ravasi, A. Rubinacci, F. Guidobono, Effects of
+calcitonin gene-related peptide and amylin on human osteoblast-like cells
+proliferation, Eur. J. Pharmacol. 409 (2000) 273–278, https://doi.org/10.1016/
+s0014-2999(00)00872-4.
+[44] Y.L. Liang, M. Khoshouei, G. Deganutti, A. Glukhova, C. Koole, T.S. Peat, And
+others. Cryo-EM structure of the active, Gs-protein complexed, human CGRP
+receptor, Nature 561 (2018) 492–497, https://doi.org/10.1038/s41586-018-0535-
+y.
+[45] S.C. Egea, I.M. Dickerson, Direct interactions between calcitonin-like receptor
+(CLR) and CGRP-receptor component protein (RCP) regulate CGRP receptor
+signaling, Endocrinology 153 (2012) 1850–1860, https://doi.org/10.1210/
+en.2011-1459.
+[46] M. Hazekawa, H. Kojima, T. Haraguchi, M. Yoshida, T. Uchida, Effect of self-
+healing encapsulation on the initial burst release from PLGA microspheres
+containing a long-acting prostacyclin agonist, ONO-1301, Chem. Pharm. Bull. 65
+(2017) 653–659, https://doi.org/10.1248/cpb.c17-00025.
+[47] L. Cai, X. Qin, Z. Xu, Y. Song, H. Jiang, Y. Wu, H. Ruan, J. Chen, Comparison of
+cytotoxicity evaluation of anticancer drugs between real-time cell analysis and
+CCK-8 method, ACS Omega 4 (2019) 12036–12042, https://doi.org/10.1021/
+acsomega.9b01142.
+[48] M.J. Stoddart, Cell viability assays: introduction, Methods Mol. Biol. 740 (2011)
+1–6, https://doi.org/10.1007/978-1-61779-108-6_1.
+[49] A. Abalymov, L. Van der Meeren, M. Saveleva, E. Prikhozhdenko, K. Dewettinck,
+B. Parakhonskiy, A.G. Skirtach, Cells-grab-on particles: a novel approach to control
+cell focal adhesion on hybrid thermally annealed hydrogels, ACS Biomater. Sci.
+Eng. 6 (2020) 3933–3944, https://doi.org/10.1021/acsbiomaterials.0c00119.
+[50] M.V. Berridge, P.M. Herst, A.S. Tan, Tetrazolium dyes as tools in cell biology: new
+insights into their cellular reduction, Biotechnol. Annu. Rev. 11 (2005) 127–152,
+https://doi.org/10.1016/s1387-2656(05)11004-7.
+[51] I. Vermes, C. Haanen, H. Steffens-Nakken, C. Reutelingsperger, A novel assay for
+apoptosis. Flow cytometric detection of phosphatidylserine expression on early
+apoptotic cells using fluorescein labelled Annexin V, J. Immunol. Methods 184
+(1995) 39–51, https://doi.org/10.1016/0022-1759(95)00072-i.
+[52] H.C. Chen, Boyden chamber assay, Methods Mol. Biol. 294 (2005) 15–22, https://
+doi.org/10.1385/1-59259-860-9:015.
+[53] C.C. Liang, A.Y. Park, J.L. Guan, In vitro scratch assay: a convenient and
+inexpensive method for analysis of cell migration in vitro, Nat. Protoc. 2 (2007)
+329–333, https://doi.org/10.1038/nprot.2007.30.
+[54] A.K. Howe, Regulation of actin-based cell migration by cAMP/PKA, Biochim.
+Biophys. Acta 1692 (2–3) (2004) 159–174.
+[55] S.D. Brain, A.D. Grant, Vascular actions of calcitonin gene-related peptide and
+adrenomedullin, Physiol. Rev. 84 (3) (2004) 903–934.
+[56] C.A. Gregory, W.G. Gunn, A. Peister, D.J. Prockop, An Alizarin red-based assay of
+mineralization by adherent cells in culture: comparison with cetylpyridinium
+chloride extraction, Anal. Biochem. 329 (2004) 77–84, https://doi.org/10.1016/j.
+ab.2004.02.002.
+[57] W. Chen, L. Ma, W. Sun, W. Xiao, H. Guo, J. Xiu, X. Jiang, CGRP promotes
+osteogenic differentiation by regulating macrophage M2 polarization through
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+19
+
+HDAC6/AKAP12 signaling pathway, Regen. Med. 19 (2024) 379–391, https://doi.
+org/10.1080/17460751.2024.2370697.
+[58] M.L. Bouxsein, S.K. Boyd, B.A. Christiansen, R.E. Guldberg, K.J. Jepsen, R. Müller,
+Guidelines for assessment of bone microstructure in rodents using micro-computed
+tomography, J. Bone Miner. Res. 25 (2010) 1468–1486, https://doi.org/10.1002/
+jbmr.141.
+[59] C.H. Turner, D.B. Burr, Basic biomechanical measurements of bone: a tutorial,
+Bone 14 (1993) 595–608, https://doi.org/10.1016/8756-3282(93)90081-k.
+[60] Y. Jiang, N. Xin, Y. Xiong, Y. Guo, Y. Yuan, Q. Zhang, P. Gong, αCGRP regulates
+osteogenic differentiation of bone marrow mesenchymal stem cells through ERK1/
+2 and p38 MAPK signaling pathways, Cell Transplant. 31 (2022)
+9636897221107636, https://doi.org/10.1177/09636897221107636.
+[61] E.J. Carragee, E.L. Hurwitz, B.K. Weiner, A critical review of recombinant human
+bone morphogenetic protein-2 trials in spinal surgery, Spine J. 11 (6) (2011)
+471–491.
+[62] A.I. Pearce, R.G. Richards, S. Milz, et al., Animal models for implant biomaterial
+research in bone: a review, Eur. Cell. Mater. 13 (2007) 1–10.
+[63] L. Ou, B. Song, H. Liang, et al., Toxicity of graphene-family nanoparticles: a general
+review of the origins and mechanisms, Part. Fibre Toxicol. 13 (1) (2016) 57.
+[64] K.S. Kang, A.G. Robling, New insights into Wnt-Lrp5/6-β-catenin signaling in
+mechanotransduction, Front. Endocrinol. 5 (2014) 246.
+[65] L.A. Mills, A.H. Simpson, The relative incidence of fracture non-union in the
+Scottish population (5.17 million): a 5-year epidemiological study, BMJ Open 3 (2)
+(2013) e002276.
+[66] M. Zaidi, Skeletal remodeling in health and disease, Nat. Med. 13 (7) (2007)
+791–801.
+Y. Hamiti et al.
+Materials Today Bio 34 (2025) 102181
+20
