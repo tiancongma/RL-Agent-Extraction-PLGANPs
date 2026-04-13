@@ -1,0 +1,630 @@
+{
+  "document_key": "UFXX9WXE",
+  "doi": "10.1155/2014/156010",
+  "formulation_candidates": [
+    {
+      "candidate_id": "fc_Lzp_PLGA_NPs",
+      "raw_label": "Lzp-PLGA-NPs",
+      "normalized_label": "Lzp-PLGA-NPs",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_1",
+        "s_8",
+        "s_24"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "fc_optimized_NPs",
+      "raw_label": "optimized NPs",
+      "normalized_label": "optimized nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "fc_Lzp_PLGA_NPs",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_14",
+        "s_17"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "cc_PLGA",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_2"
+      ]
+    },
+    {
+      "component_id": "cc_lorazepam",
+      "formulation_candidate_id": "",
+      "component_name": "lorazepam",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_2",
+        "s_6"
+      ]
+    },
+    {
+      "component_id": "cc_acetone",
+      "formulation_candidate_id": "",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic solvent",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_2",
+        "s_7"
+      ]
+    },
+    {
+      "component_id": "cc_poloxamer_407",
+      "formulation_candidate_id": "",
+      "component_name": "poloxamer 407",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_3"
+      ]
+    },
+    {
+      "component_id": "cc_water",
+      "formulation_candidate_id": "",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "aqueous solvent",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_3",
+        "s_7"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "vc_stirring_speed",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring speed",
+      "value_text": "300 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_4"
+      ]
+    },
+    {
+      "variable_id": "vc_stirring_duration",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring duration",
+      "value_text": "3 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_4"
+      ]
+    },
+    {
+      "variable_id": "vc_stirring_temperature",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring temperature",
+      "value_text": "30∘C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_4"
+      ]
+    },
+    {
+      "variable_id": "vc_centrifugation_speed",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation speed",
+      "value_text": "12,000 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_5"
+      ]
+    },
+    {
+      "variable_id": "vc_centrifugation_duration",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation duration",
+      "value_text": "30 min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_5"
+      ]
+    },
+    {
+      "variable_id": "vc_centrifugation_temperature",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation temperature",
+      "value_text": "4∘C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_5"
+      ]
+    },
+    {
+      "variable_id": "vc_X1_polymer_concentration_doe",
+      "formulation_candidate_id": "",
+      "variable_name": "X1 = polymer concentration (w/v)",
+      "value_text": "varying concentrations",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_10",
+        "s_22"
+      ]
+    },
+    {
+      "variable_id": "vc_X2_surfactant_concentration_doe",
+      "formulation_candidate_id": "",
+      "variable_name": "X2 = surfactant concentration (w/v)",
+      "value_text": "varying concentrations",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_11",
+        "s_22"
+      ]
+    },
+    {
+      "variable_id": "vc_X3_aqueous_organic_phase_ratio_doe",
+      "formulation_candidate_id": "",
+      "variable_name": "X3 = aqueous/organic phase ratio (v/v)",
+      "value_text": "varying ratios",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_12",
+        "s_22"
+      ]
+    },
+    {
+      "variable_id": "vc_X4_drug_concentration_doe",
+      "formulation_candidate_id": "",
+      "variable_name": "X4 = drug concentration",
+      "value_text": "varying concentrations",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Inferred as the fourth independent variable from context.",
+      "evidence_span_ids": [
+        "s_15",
+        "s_22",
+        "s_23"
+      ]
+    },
+    {
+      "variable_id": "vc_X1_optimized",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "variable_name": "X1",
+      "value_text": "10 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_15",
+        "s_23"
+      ]
+    },
+    {
+      "variable_id": "vc_X2_optimized",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "variable_name": "X2",
+      "value_text": "9.42 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_15",
+        "s_23"
+      ]
+    },
+    {
+      "variable_id": "vc_X3_optimized",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "variable_name": "X3",
+      "value_text": "10",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_15",
+        "s_23"
+      ]
+    },
+    {
+      "variable_id": "vc_X4_optimized",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "variable_name": "X4",
+      "value_text": "4.5 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_15",
+        "s_23"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "mc_drug_entrapment_general",
+      "formulation_candidate_id": "",
+      "measurement_name": "other",
+      "value_text": "drug entrapment",
+      "unit_text": "%",
+      "ambiguity_note": "General mention as dependent variable",
+      "evidence_span_ids": [
+        "s_9",
+        "s_21"
+      ]
+    },
+    {
+      "measurement_id": "mc_drug_loading_general",
+      "formulation_candidate_id": "",
+      "measurement_name": "other",
+      "value_text": "drug loading",
+      "unit_text": "%",
+      "ambiguity_note": "General mention as dependent variable",
+      "evidence_span_ids": [
+        "s_9"
+      ]
+    },
+    {
+      "measurement_id": "mc_Y1_predicted",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "measurement_name": "size",
+      "value_text": "170.5",
+      "unit_text": "d⋅nm",
+      "ambiguity_note": "predicted value",
+      "evidence_span_ids": [
+        "s_16"
+      ]
+    },
+    {
+      "measurement_id": "mc_Y2_predicted",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "86.81",
+      "unit_text": "%",
+      "ambiguity_note": "predicted value",
+      "evidence_span_ids": [
+        "s_16"
+      ]
+    },
+    {
+      "measurement_id": "mc_z_average_exp",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "measurement_name": "size",
+      "value_text": "168.2",
+      "unit_text": "d⋅nm",
+      "ambiguity_note": "experimental value",
+      "evidence_span_ids": [
+        "s_18",
+        "s_21"
+      ]
+    },
+    {
+      "measurement_id": "mc_PDI_exp",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "measurement_name": "pdi",
+      "value_text": "0.08",
+      "unit_text": "",
+      "ambiguity_note": "experimental value",
+      "evidence_span_ids": [
+        "s_18"
+      ]
+    },
+    {
+      "measurement_id": "mc_Y2_exp",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "83.8",
+      "unit_text": "%",
+      "ambiguity_note": "experimental value",
+      "evidence_span_ids": [
+        "s_18"
+      ]
+    },
+    {
+      "measurement_id": "mc_drug_loading_exp",
+      "formulation_candidate_id": "fc_optimized_NPs",
+      "measurement_name": "loading_content",
+      "value_text": "8.7",
+      "unit_text": "%",
+      "ambiguity_note": "experimental value",
+      "evidence_span_ids": [
+        "s_19"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rh_optimized_variant",
+      "source_candidate_id": "fc_optimized_NPs",
+      "target_candidate_id": "fc_Lzp_PLGA_NPs",
+      "relation_type": "inherits_from",
+      "note": "Optimized formulation is a variant of the general Lzp-PLGA-NPs",
+      "evidence_span_ids": [
+        "s_8",
+        "s_14",
+        "s_17",
+        "s_24"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "s_1",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "2.3. Nanoparticles Preparation. Lzp-PLGA-NPs were pre- pared using emulsion solvent evaporation (nanoprecipita- tion) method.",
+      "supporting_text": "Lzp-PLGA-NPs were pre- pared using emulsion solvent evaporation (nanoprecipita- tion) method."
+    },
+    {
+      "span_id": "s_2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "During the process, the organic phase was pre- pared by dissolving accurately weighed PLGA and lorazepam in acetone as organic solvent.",
+      "supporting_text": "PLGA and lorazepam in acetone as organic solvent."
+    },
+    {
+      "span_id": "s_3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The organic phase was then added drop wise at the rate of 1ml/min into an aqueous phase containing surfactant (poloxamer 407) dissolved in water as aqueous solvent.",
+      "supporting_text": "surfactant (poloxamer 407) dissolved in water as aqueous solvent."
+    },
+    {
+      "span_id": "s_4",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The nanoparticles suspension was kept under continuous stirring at 300 rpm (RPM preoptimized, data not shown) for 3 h at 30∘C to allow the complete evapo- ration of acetone, leaving behind the colloidal suspension of Lzp-PLGA-NPs in aqueous phase.",
+      "supporting_text": "stirring at 300 rpm (RPM preoptimized, data not shown) for 3 h at 30∘C"
+    },
+    {
+      "span_id": "s_5",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The colloidal nanosuspension was centrifuged at 12,000 rpm (Remi, Mumbai, India) for 30 min at 4∘C to get the final nanoparticulate containing pellet as encapsulated lorazepam.",
+      "supporting_text": "centrifuged at 12,000 rpm (Remi, Mumbai, India) for 30 min at 4∘C"
+    },
+    {
+      "span_id": "s_6",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "Louis, USA. Lorazepam was purchased from R L Fine Chem., Bangalore, India.",
+      "supporting_text": "Lorazepam was purchased from R L Fine Chem., Bangalore, India."
+    },
+    {
+      "span_id": "s_7",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "HPLC grade acetone and water were purchased from Fisher Scientific, Mumbai, India.",
+      "supporting_text": "HPLC grade acetone and water were purchased from Fisher Scientific, Mumbai, India."
+    },
+    {
+      "span_id": "s_8",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "2.2. Experimental Design. Box-Behnken design was employ- ed for constructing polynomial model for optimization of Lzp-PLGA-NPs keeping 4 independent and 2 dependent variables using Design Expert (version 8.0.0, Stat-Ease Inc., Minneapolis, Minnesota).",
+      "supporting_text": "Box-Behnken design was employ- ed for constructing polynomial model for optimization of Lzp-PLGA-NPs keeping 4 independent and 2 dependent variables"
+    },
+    {
+      "span_id": "s_9",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 10",
+      "supporting_text": "Table 1: Independent and dependent variables levels in Box- drug entrapment and drug loading [34] of nanoparticles was"
+    },
+    {
+      "span_id": "s_10",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 10, sample_row_1",
+      "supporting_text": "𝑋1 = polymer concentration (w/v)"
+    },
+    {
+      "span_id": "s_11",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 10, sample_row_2",
+      "supporting_text": "𝑋2 = surfactant concentration (w/v)"
+    },
+    {
+      "span_id": "s_12",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 10, sample_row_3",
+      "supporting_text": "𝑋3 = aqueous/organic phase ratio (v/v)"
+    },
+    {
+      "span_id": "s_13",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 13",
+      "supporting_text": "Table 2: Effect of independent process variables on dependent variable."
+    },
+    {
+      "span_id": "s_14",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "Point prediction of the Design Expert software was used to determine the optimized NPs on the basis of closeness of desirability factor close to 1, which predicted the optimized process parameters to be 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL with predicted values of responses 𝑌1 170.5 d⋅nm and 𝑌2 86.81%.",
+      "supporting_text": "Point prediction of the Design Expert software was used to determine the optimized NPs"
+    },
+    {
+      "span_id": "s_15",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "Point prediction of the Design Expert software was used to determine the optimized NPs on the basis of closeness of desirability factor close to 1, which predicted the optimized process parameters to be 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL with predicted values of responses 𝑌1 170.5 d⋅nm and 𝑌2 86.81%.",
+      "supporting_text": "optimized process parameters to be 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL"
+    },
+    {
+      "span_id": "s_16",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "Point prediction of the Design Expert software was used to determine the optimized NPs on the basis of closeness of desirability factor close to 1, which predicted the optimized process parameters to be 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL with predicted values of responses 𝑌1 170.5 d⋅nm and 𝑌2 86.81%.",
+      "supporting_text": "predicted values of responses 𝑌1 170.5 d⋅nm and 𝑌2 86.81%."
+    },
+    {
+      "span_id": "s_17",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "The optimized formulation was developed and characterized for 𝑧-average and % drug entrapment.",
+      "supporting_text": "The optimized formulation was developed and characterized for 𝑧-average and % drug entrapment."
+    },
+    {
+      "span_id": "s_18",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "The experimental value for responses 𝑌1 168.2 d⋅nm with PDI 0.08 and 𝑌2 83.8% of optimized formulation was found in good agreement with the predicted values generated by the RSM and the result assures the validity of RSM model.",
+      "supporting_text": "experimental value for responses 𝑌1 168.2 d⋅nm with PDI 0.08 and 𝑌2 83.8% of optimized formulation"
+    },
+    {
+      "span_id": "s_19",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "The percentage drug loading of optimized Lzp-PLGA- NPs was calculated using (3) and it was found to be 8.7%.",
+      "supporting_text": "percentage drug loading of optimized Lzp-PLGA- NPs was calculated using (3) and it was found to be 8.7%."
+    },
+    {
+      "span_id": "s_20",
+      "source_region_type": "paragraph",
+      "source_locator_text": "Lorazepam loaded polymeric nanoparticles using PLGA as release controlling polymer showed potential outcome which were optimized using 4-factor, 2-level Box-Behnken design.",
+      "supporting_text": "4-factor, 2-level Box-Behnken design."
+    },
+    {
+      "span_id": "s_21",
+      "source_region_type": "paragraph",
+      "source_locator_text": "The dependent responses, that is, percentage drug entrapment and 𝑧-average, for different combinations of independent variables, that is, polymer, surfactant, w/o phase ratio, and drug concentration, were obtained experimentally and the results were found to fit the quadratic design model.",
+      "supporting_text": "dependent responses, that is, percentage drug entrapment and 𝑧-average"
+    },
+    {
+      "span_id": "s_22",
+      "source_region_type": "paragraph",
+      "source_locator_text": "The dependent responses, that is, percentage drug entrapment and 𝑧-average, for different combinations of independent variables, that is, polymer, surfactant, w/o phase ratio, and drug concentration, were obtained experimentally and the results were found to fit the quadratic design model.",
+      "supporting_text": "independent variables, that is, polymer, surfactant, w/o phase ratio, and drug concentration"
+    },
+    {
+      "span_id": "s_23",
+      "source_region_type": "paragraph",
+      "source_locator_text": "On the basis of desirable constraints, point predication technique of Box-Behnken design proposed optimized formulation with combination of 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL.",
+      "supporting_text": "optimized formulation with combination of 𝑋1 10 mg/mL, 𝑋2 9.42 mg/mL, 𝑋3 10, and 𝑋4 4.5 mg/mL."
+    },
+    {
+      "span_id": "s_24",
+      "source_region_type": "paragraph",
+      "source_locator_text": "It can be concluded that Lzp-PLGA-NPs were successfully optimized and developed using Box-Behnken design.",
+      "supporting_text": "Lzp-PLGA-NPs were successfully optimized and developed using Box-Behnken design."
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "uo_rpm_preoptimized",
+      "category": "reported_but_unassigned",
+      "note": "RPM preoptimized, data not shown",
+      "evidence_span_ids": [
+        "s_4"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 10",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "s_9"
+    },
+    {
+      "table_id": "Table 13",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "s_13"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 10",
+      "varying_variables": [
+        "polymer concentration (w/v)",
+        "surfactant concentration (w/v)",
+        "aqueous/organic phase ratio (v/v)",
+        "drug concentration"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "polymer concentration (w/v)",
+        "surfactant concentration (w/v)",
+        "aqueous/organic phase ratio (v/v)",
+        "drug concentration"
+      ]
+    },
+    {
+      "table_id": "Table 13",
+      "varying_variables": [
+        "PLGA",
+        "% Drug",
+        "volume ratio"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": []
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 10",
+      "selected_variable": "X1",
+      "selected_value": "10 mg/mL",
+      "explicit": true,
+      "evidence_span": "s_15"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 10",
+      "selected_variable": "X2",
+      "selected_value": "9.42 mg/mL",
+      "explicit": true,
+      "evidence_span": "s_15"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 10",
+      "selected_variable": "X3",
+      "selected_value": "10",
+      "explicit": true,
+      "evidence_span": "s_15"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 10",
+      "selected_variable": "X4",
+      "selected_value": "4.5 mg/mL",
+      "explicit": true,
+      "evidence_span": "s_15"
+    }
+  ],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "",
+      "inherits_from_preparation": true,
+      "evidence_span": "s_1"
+    },
+    {
+      "table_id": "Table 13",
+      "inherits_from_preparation": true,
+      "evidence_span": "s_13"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 10",
+      "is_doe": true
+    }
+  ]
+}

@@ -621,19 +621,35 @@ def ensure_genai(model: str) -> None:
         raise RuntimeError("Gemini model name is empty.")
 
 
-def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float, *, progress_label: str = "") -> str:
+def call_gemini(
+    model: str,
+    prompt: str,
+    retries: int,
+    sleep_sec: float,
+    *,
+    progress_label: str = "",
+    timeout_seconds: int | None = None,
+) -> str:
     ensure_genai(model)
     last_err: Exception | None = None
     for attempt in range(retries + 1):
         try:
+            if progress_label:
+                print(
+                    f"{progress_label} request_start attempt={attempt + 1}/{retries + 1} "
+                    f"prompt_chars={len(prompt)} timeout_seconds={timeout_seconds if timeout_seconds is not None else 'sdk_default'}",
+                    flush=True,
+                )
             mdl = genai.GenerativeModel(model)
-            resp = mdl.generate_content(
-                prompt,
-                generation_config={
+            request_kwargs: dict[str, Any] = {
+                "generation_config": {
                     "temperature": 0,
                     "response_mime_type": "application/json",
                 },
-            )
+            }
+            if timeout_seconds is not None:
+                request_kwargs["request_options"] = {"timeout": timeout_seconds}
+            resp = mdl.generate_content(prompt, **request_kwargs)
             if getattr(resp, "text", ""):
                 return str(resp.text)
             candidates = getattr(resp, "candidates", []) or []
@@ -644,6 +660,12 @@ def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float, *, prog
             raise RuntimeError("Gemini returned empty content.")
         except Exception as exc:  # pragma: no cover
             last_err = exc
+            if progress_label:
+                print(
+                    f"{progress_label} request_exception attempt={attempt + 1}/{retries + 1} "
+                    f"error_type={type(exc).__name__} error={exc}",
+                    flush=True,
+                )
         if attempt < retries:
             if progress_label:
                 print(
@@ -652,6 +674,102 @@ def call_gemini(model: str, prompt: str, retries: int, sleep_sec: float, *, prog
                 )
             time.sleep(sleep_sec)
     raise last_err or RuntimeError("Gemini call failed.")
+
+
+def call_gemini_stream_collect(
+    model: str,
+    prompt: str,
+    retries: int,
+    sleep_sec: float,
+    *,
+    progress_label: str = "",
+    timeout_seconds: int | None = None,
+) -> dict[str, Any]:
+    ensure_genai(model)
+    last_result: dict[str, Any] | None = None
+    for attempt in range(retries + 1):
+        parts: list[str] = []
+        chunk_count = 0
+        started_at = time.time()
+        first_chunk_elapsed: float | None = None
+        try:
+            if progress_label:
+                print(
+                    f"{progress_label} stream_request_start attempt={attempt + 1}/{retries + 1} "
+                    f"prompt_chars={len(prompt)} timeout_seconds={timeout_seconds if timeout_seconds is not None else 'sdk_default'}",
+                    flush=True,
+                )
+            mdl = genai.GenerativeModel(model)
+            request_kwargs: dict[str, Any] = {
+                "generation_config": {
+                    "temperature": 0,
+                    "response_mime_type": "application/json",
+                },
+                "stream": True,
+            }
+            if timeout_seconds is not None:
+                request_kwargs["request_options"] = {"timeout": timeout_seconds}
+            stream = mdl.generate_content(prompt, **request_kwargs)
+            for chunk in stream:
+                chunk_count += 1
+                text = getattr(chunk, "text", "") or ""
+                if text:
+                    parts.append(str(text))
+                now = time.time()
+                if first_chunk_elapsed is None:
+                    first_chunk_elapsed = now - started_at
+                if progress_label and (chunk_count == 1 or chunk_count % 25 == 0):
+                    print(
+                        f"{progress_label} stream_progress chunk_count={chunk_count} "
+                        f"collected_chars={sum(len(part) for part in parts)} elapsed_seconds={round(now - started_at, 3)}",
+                        flush=True,
+                    )
+            collected_text = "".join(parts)
+            if not collected_text:
+                raise RuntimeError("Gemini stream returned empty content.")
+            return {
+                "status": "success",
+                "text": collected_text,
+                "chunk_count": chunk_count,
+                "first_chunk_elapsed_seconds": round(first_chunk_elapsed or 0.0, 3),
+                "elapsed_seconds": round(time.time() - started_at, 3),
+                "error_type": "",
+                "error_message": "",
+            }
+        except Exception as exc:  # pragma: no cover
+            collected_text = "".join(parts)
+            last_result = {
+                "status": "request_failure",
+                "text": collected_text,
+                "chunk_count": chunk_count,
+                "first_chunk_elapsed_seconds": round(first_chunk_elapsed or 0.0, 3),
+                "elapsed_seconds": round(time.time() - started_at, 3),
+                "error_type": type(exc).__name__,
+                "error_message": str(exc),
+            }
+            if progress_label:
+                print(
+                    f"{progress_label} stream_request_exception attempt={attempt + 1}/{retries + 1} "
+                    f"chunk_count={chunk_count} collected_chars={len(collected_text)} "
+                    f"error_type={type(exc).__name__} error={exc}",
+                    flush=True,
+                )
+        if attempt < retries:
+            if progress_label:
+                print(
+                    f"{progress_label} retrying_stream attempt={attempt + 2}/{retries + 1}",
+                    flush=True,
+                )
+            time.sleep(sleep_sec)
+    return last_result or {
+        "status": "request_failure",
+        "text": "",
+        "chunk_count": 0,
+        "first_chunk_elapsed_seconds": 0.0,
+        "elapsed_seconds": 0.0,
+        "error_type": "RuntimeError",
+        "error_message": "Gemini stream call failed.",
+    }
 
 
 def call_nvidia_hosted(model: str, prompt: str, retries: int, sleep_sec: float, *, progress_label: str = "") -> str:
@@ -775,6 +893,22 @@ def resolve_tables_dir(text_path: Path, key: str) -> Path | None:
         if candidate.exists():
             return candidate
     return None
+
+
+def resolve_tables_dir_for_record(record: dict[str, Any], text_path: Path, key: str) -> Path | None:
+    explicit_table_dir = normalize_text(record.get("table_dir"))
+    explicit_table_available = normalize_text(record.get("table_available"))
+    if explicit_table_dir:
+        candidate = Path(explicit_table_dir)
+        if not candidate.is_absolute():
+            candidate = (PROJECT_ROOT / candidate).resolve()
+        if candidate.exists():
+            return candidate
+        if explicit_table_available in {"1", "true", "yes", "y"}:
+            raise FileNotFoundError(f"Manifest row for {key} declares table_available=yes but table_dir is missing: {candidate}")
+    if explicit_table_available in {"0", "false", "no", "n"}:
+        return None
+    return resolve_tables_dir(text_path, key)
 
 
 def load_table_manifest_payload(table_dir: Path | None) -> dict[str, Any]:
@@ -4482,7 +4616,7 @@ def convert_legacy_raw_response_to_v2(
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
         text_path = (PROJECT_ROOT / text_path).resolve()
-    table_dir = resolve_tables_dir(text_path, record["key"])
+    table_dir = resolve_tables_dir_for_record(record, text_path, record["key"])
     evidence_spans: list[dict[str, Any]] = []
     formulation_candidates: list[dict[str, Any]] = []
     component_candidates: list[dict[str, Any]] = []
@@ -4629,7 +4763,7 @@ def build_live_v2_document(
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
         text_path = (PROJECT_ROOT / text_path).resolve()
-    table_dir = resolve_tables_dir(text_path, record["key"])
+    table_dir = resolve_tables_dir_for_record(record, text_path, record["key"])
     source_table_files = []
     if table_dir and table_dir.exists():
         source_table_files = [str(path.relative_to(PROJECT_ROOT)).replace("\\", "/") for path in sorted(table_dir.glob("*.csv"))]
@@ -4959,7 +5093,11 @@ def main() -> None:
     records = read_tsv(manifest_path)
     selected_keys = [normalize_text(key) for key in args.paper_keys if normalize_text(key)]
     if selected_keys:
-        records = [record for record in records if normalize_text(record.get("key")) in selected_keys]
+        records = [
+            record
+            for record in records
+            if normalize_text(record.get("key") or record.get("paper_key")) in selected_keys
+        ]
     if not records:
         raise ValueError("No manifest records selected for extraction.")
 
@@ -4996,7 +5134,7 @@ def main() -> None:
     try:
         with jsonl_path.open("w", encoding="utf-8") as handle:
             for index, record in enumerate(records, start=1):
-                key = normalize_text(record.get("key"))
+                key = normalize_text(record.get("key") or record.get("paper_key"))
                 if not key:
                     continue
                 if "text_path" not in record or not normalize_text(record.get("text_path")):
@@ -5009,7 +5147,7 @@ def main() -> None:
                         text_path = (PROJECT_ROOT / text_path).resolve()
                     if not text_path.exists():
                         raise FileNotFoundError(f"Missing paper text for {key}: {text_path}")
-                    table_dir = resolve_tables_dir(text_path, key)
+                    table_dir = resolve_tables_dir_for_record(record, text_path, key)
                     candidate_artifact_path = candidate_blocks_path(out_dir, key)
                     candidate_artifact, segmentation_bundle = build_candidate_segmentation_artifact(
                         record=record,

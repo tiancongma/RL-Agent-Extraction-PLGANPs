@@ -1,0 +1,943 @@
+{
+  "document_key": "5ZXYABSU",
+  "doi": "10.2147/IJN.S130908",
+  "formulation_candidates": [
+    {
+      "candidate_id": "form_gat_plga_np",
+      "raw_label": "Gat-loaded PLGA NPs",
+      "normalized_label": "Gatifloxacin-loaded PLGA Nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_gat_plga_np"
+      ],
+      "status": "derived_from_shared_context"
+    },
+    {
+      "candidate_id": "form_rh_np",
+      "raw_label": "rhodamine nanoparticles",
+      "normalized_label": "Rhodamine Nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_rh_np"
+      ],
+      "status": "derived_from_shared_context"
+    },
+    {
+      "candidate_id": "form_npr1",
+      "raw_label": "formulation NPR1",
+      "normalized_label": "NPR1",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "form_gat_plga_np",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_npr1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_npr2",
+      "raw_label": "formulation NPR2",
+      "normalized_label": "NPR2",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "form_gat_plga_np",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_npr2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_npr3",
+      "raw_label": "formulation NPR3",
+      "normalized_label": "NPR3",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "form_gat_plga_np",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_npr3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_optimized_ps80",
+      "raw_label": "formulation prepared with polysorbate 80",
+      "normalized_label": "Polysorbate 80 Optimized Formulation",
+      "instance_kind": "optimized_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "form_gat_plga_np",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_optimized_ps80"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "form_blank_np",
+      "raw_label": "blank NPs",
+      "normalized_label": "Blank Nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_form_blank_np"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_plga",
+      "formulation_candidate_id": "form_rh_np",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_plga_synth1"
+      ]
+    },
+    {
+      "component_id": "comp_plga_type",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA (Resomer® RG 502)",
+      "component_role": "polymer",
+      "amount_text": "50:50",
+      "amount_kind": "ratio",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_plga_mat"
+      ]
+    },
+    {
+      "component_id": "comp_rh",
+      "formulation_candidate_id": "form_rh_np",
+      "component_name": "Rhodamine-123",
+      "component_role": "drug",
+      "amount_text": "2.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_rh_synth1",
+        "span_comp_rh_mat"
+      ]
+    },
+    {
+      "component_id": "comp_acetone",
+      "formulation_candidate_id": "form_rh_np",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "4 mL",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_acetone_synth1"
+      ]
+    },
+    {
+      "component_id": "comp_pva",
+      "formulation_candidate_id": "form_rh_np",
+      "component_name": "PVA",
+      "component_role": "additive",
+      "amount_text": "1% (12 mL)",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_pva_synth1"
+      ]
+    },
+    {
+      "component_id": "comp_water",
+      "formulation_candidate_id": "form_rh_np",
+      "component_name": "Distilled water",
+      "component_role": "solvent",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_water_synth1"
+      ]
+    },
+    {
+      "component_id": "comp_gat",
+      "formulation_candidate_id": "form_gat_plga_np",
+      "component_name": "Gatifloxacin sesquihydrate",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_gat_mat"
+      ]
+    },
+    {
+      "component_id": "comp_ps80",
+      "formulation_candidate_id": "",
+      "component_name": "Polysorbate 80",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_ps80_mat"
+      ]
+    },
+    {
+      "component_id": "comp_labrafil",
+      "formulation_candidate_id": "",
+      "component_name": "Labrafil® M 1944 CS",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_comp_labrafil_mat"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_plga_ratio",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA ratio",
+      "value_text": "50:50",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_plga_ratio"
+      ]
+    },
+    {
+      "variable_id": "var_pva_mw",
+      "formulation_candidate_id": "",
+      "variable_name": "PVA molecular weight",
+      "value_text": "30,000–70,000 Da",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_pva_mw"
+      ]
+    },
+    {
+      "variable_id": "var_acetone_vol",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Acetone volume",
+      "value_text": "4 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_acetone_vol_synth"
+      ]
+    },
+    {
+      "variable_id": "var_pva_conc",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "PVA concentration",
+      "value_text": "1%",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_pva_conc_synth"
+      ]
+    },
+    {
+      "variable_id": "var_pva_vol",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "PVA volume",
+      "value_text": "12 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_pva_vol_synth"
+      ]
+    },
+    {
+      "variable_id": "var_stir_time",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Stirring time",
+      "value_text": "15 minutes",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_stir_time_synth"
+      ]
+    },
+    {
+      "variable_id": "var_evap_time",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Evaporation time",
+      "value_text": "2 hours",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_evap_time_synth"
+      ]
+    },
+    {
+      "variable_id": "var_evap_temp",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Evaporation temperature",
+      "value_text": "25°C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_evap_temp_synth"
+      ]
+    },
+    {
+      "variable_id": "var_evap_pressure",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Evaporation pressure",
+      "value_text": "70 mbar",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_evap_pressure_synth"
+      ]
+    },
+    {
+      "variable_id": "var_wash_cycles",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Washing cycles",
+      "value_text": "3",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_wash_cycles_synth"
+      ]
+    },
+    {
+      "variable_id": "var_cent_speed",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Centrifugation speed",
+      "value_text": "15,000 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_cent_speed_synth"
+      ]
+    },
+    {
+      "variable_id": "var_cent_time",
+      "formulation_candidate_id": "form_rh_np",
+      "variable_name": "Centrifugation time",
+      "value_text": "30 minutes",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_cent_time_synth"
+      ]
+    },
+    {
+      "variable_id": "var_drug_pol_ratio",
+      "formulation_candidate_id": "",
+      "variable_name": "Drug/polymer ratio",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_drug_pol_ratio"
+      ]
+    },
+    {
+      "variable_id": "var_surfactant_type_ps80",
+      "formulation_candidate_id": "",
+      "variable_name": "Surfactant type",
+      "value_text": "Polysorbate 80",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_surfactant_type"
+      ]
+    },
+    {
+      "variable_id": "var_surfactant_type_labrafil",
+      "formulation_candidate_id": "",
+      "variable_name": "Surfactant type",
+      "value_text": "Labrafil",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_var_surfactant_type"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_ee_npr1",
+      "formulation_candidate_id": "form_npr1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "55.3%±0.4%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_ee_npr1"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_npr2",
+      "formulation_candidate_id": "form_npr2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "51.3%±0.3%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_ee_npr2"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_npr3",
+      "formulation_candidate_id": "form_npr3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "60.9%±0.4%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_ee_npr3"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_npr1",
+      "formulation_candidate_id": "form_npr1",
+      "measurement_name": "loading_content",
+      "value_text": "2.63±0.04 mg/100 mg NPs",
+      "unit_text": "mg/100 mg NPs",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_dl_npr1"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_npr2",
+      "formulation_candidate_id": "form_npr2",
+      "measurement_name": "loading_content",
+      "value_text": "2.42±0.02 mg/100 mg NPs",
+      "unit_text": "mg/100 mg NPs",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_dl_npr2"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_npr3",
+      "formulation_candidate_id": "form_npr3",
+      "measurement_name": "loading_content",
+      "value_text": "2.72±0.02 mg/100 mg NPs",
+      "unit_text": "mg/100 mg NPs",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_dl_npr3"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_optimized_ps80",
+      "formulation_candidate_id": "form_optimized_ps80",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "28.2%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_ee_optimized_ps80"
+      ]
+    },
+    {
+      "measurement_id": "meas_size_optimized_ps80",
+      "formulation_candidate_id": "form_optimized_ps80",
+      "measurement_name": "size",
+      "value_text": "176.5 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_size_optimized_ps80"
+      ]
+    },
+    {
+      "measurement_id": "meas_zeta_optimized_ps80",
+      "formulation_candidate_id": "form_optimized_ps80",
+      "measurement_name": "zeta_potential",
+      "value_text": "-20.1 mV",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_meas_zeta_optimized_ps80"
+      ]
+    },
+    {
+      "measurement_id": "meas_process_yield",
+      "formulation_candidate_id": "",
+      "measurement_name": "other",
+      "value_text": "Process yield",
+      "unit_text": "",
+      "ambiguity_note": "Measurement described, but no value given for specific formulation",
+      "evidence_span_ids": [
+        "span_meas_process_yield_desc"
+      ]
+    },
+    {
+      "measurement_id": "meas_gat_ee_desc",
+      "formulation_candidate_id": "",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "Gat-encapsulation efficiency",
+      "unit_text": "%",
+      "ambiguity_note": "Measurement described, but no value given for specific formulation",
+      "evidence_span_ids": [
+        "span_meas_gat_ee_desc"
+      ]
+    },
+    {
+      "measurement_id": "meas_rh_ee_desc",
+      "formulation_candidate_id": "",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "Rh EE",
+      "unit_text": "",
+      "ambiguity_note": "Measurement described, but no value given for specific formulation",
+      "evidence_span_ids": [
+        "span_meas_rh_ee_desc"
+      ]
+    },
+    {
+      "measurement_id": "meas_in_vitro_release",
+      "formulation_candidate_id": "",
+      "measurement_name": "other",
+      "value_text": "In vitro release of Gat",
+      "unit_text": "",
+      "ambiguity_note": "Measurement described, but no value given for specific formulation",
+      "evidence_span_ids": [
+        "span_meas_in_vitro_release_desc"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_npr1_variant",
+      "source_candidate_id": "form_npr1",
+      "target_candidate_id": "form_gat_plga_np",
+      "relation_type": "varies_by",
+      "note": "NPR1 is a variant of Gat-loaded PLGA NPs",
+      "evidence_span_ids": [
+        "span_rel_npr_variants"
+      ]
+    },
+    {
+      "relation_id": "rel_npr2_variant",
+      "source_candidate_id": "form_npr2",
+      "target_candidate_id": "form_gat_plga_np",
+      "relation_type": "varies_by",
+      "note": "NPR2 is a variant of Gat-loaded PLGA NPs",
+      "evidence_span_ids": [
+        "span_rel_npr_variants"
+      ]
+    },
+    {
+      "relation_id": "rel_npr3_variant",
+      "source_candidate_id": "form_npr3",
+      "target_candidate_id": "form_gat_plga_np",
+      "relation_type": "varies_by",
+      "note": "NPR3 is a variant of Gat-loaded PLGA NPs",
+      "evidence_span_ids": [
+        "span_rel_npr_variants"
+      ]
+    },
+    {
+      "relation_id": "rel_optimized_variant",
+      "source_candidate_id": "form_optimized_ps80",
+      "target_candidate_id": "form_gat_plga_np",
+      "relation_type": "varies_by",
+      "note": "Optimized formulation is a variant of Gat-loaded PLGA NPs",
+      "evidence_span_ids": [
+        "span_rel_optimized_variant"
+      ]
+    },
+    {
+      "relation_id": "rel_surfactant_variation",
+      "source_candidate_id": "comp_ps80",
+      "target_candidate_id": "comp_labrafil",
+      "relation_type": "varies_by",
+      "note": "Polysorbate 80 and Labrafil are varied as surfactants",
+      "evidence_span_ids": [
+        "span_rel_surfactant_variation"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_form_gat_plga_np",
+      "source_region_type": "formulation_result_block",
+      "source_locator_text": "[FORMULATION_RESULT_BLOCK] (Gat-loaded PLGA NPs)",
+      "supporting_text": "Gat-loaded PLGA NPs"
+    },
+    {
+      "span_id": "span_form_rh_np",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (rhodamine nanoparticles)",
+      "supporting_text": "rhodamine nanoparticles"
+    },
+    {
+      "span_id": "span_form_npr1",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (formulation NPR1)",
+      "supporting_text": "formulation NPR1"
+    },
+    {
+      "span_id": "span_form_npr2",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (formulation NPR2)",
+      "supporting_text": "formulation NPR2"
+    },
+    {
+      "span_id": "span_form_npr3",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (formulation NPR3)",
+      "supporting_text": "formu­ lation NPR3"
+    },
+    {
+      "span_id": "span_form_optimized_ps80",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (formulation prepared with polysorbate 80)",
+      "supporting_text": "the formulation prepared with polysorbate 80"
+    },
+    {
+      "span_id": "span_form_blank_np",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (blank NPs)",
+      "supporting_text": "blank NPs"
+    },
+    {
+      "span_id": "span_comp_plga_synth1",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (50 mg of PLGA)",
+      "supporting_text": "50 mg of PLGA"
+    },
+    {
+      "span_id": "span_comp_plga_mat",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (PLGA with a ratio of 50:50 PLGA)",
+      "supporting_text": "PLGA with a ratio of 50:50 PLGA (Resomer® RG 502)"
+    },
+    {
+      "span_id": "span_comp_rh_synth1",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (2.5 mg Rh)",
+      "supporting_text": "2.5 mg Rh"
+    },
+    {
+      "span_id": "span_comp_rh_mat",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Rhodamine (Rh)-123)",
+      "supporting_text": "Rhodamine (Rh)-123"
+    },
+    {
+      "span_id": "span_comp_acetone_synth1",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (4 mL acetone)",
+      "supporting_text": "4 mL acetone"
+    },
+    {
+      "span_id": "span_comp_pva_synth1",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (12 mL of 1% PVA)",
+      "supporting_text": "12 mL of 1% PVA"
+    },
+    {
+      "span_id": "span_comp_pva_mat",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Polyvinyl alcohol (PVA; molecular weight 30,000–70,000 Da))",
+      "supporting_text": "Polyvinyl alcohol (PVA; molecular weight 30,000–70,000 Da)"
+    },
+    {
+      "span_id": "span_comp_water_synth1",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (distilled water)",
+      "supporting_text": "distilled water"
+    },
+    {
+      "span_id": "span_comp_gat_mat",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Gat sesquihydrate)",
+      "supporting_text": "Gat sesquihydrate"
+    },
+    {
+      "span_id": "span_comp_ps80_mat",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Polysorbate 80)",
+      "supporting_text": "Polysorbate 80"
+    },
+    {
+      "span_id": "span_comp_labrafil_mat",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Labrafil® M 1944 CS)",
+      "supporting_text": "Labrafil® M 1944 CS"
+    },
+    {
+      "span_id": "span_var_plga_ratio",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (PLGA with a ratio of 50:50 PLGA)",
+      "supporting_text": "PLGA with a ratio of 50:50 PLGA (Resomer® RG 502)"
+    },
+    {
+      "span_id": "span_var_pva_mw",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Polyvinyl alcohol (PVA; molecular weight 30,000–70,000 Da))",
+      "supporting_text": "Polyvinyl alcohol (PVA; molecular weight 30,000–70,000 Da)"
+    },
+    {
+      "span_id": "span_var_acetone_vol_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (4 mL acetone)",
+      "supporting_text": "4 mL acetone"
+    },
+    {
+      "span_id": "span_var_pva_conc_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (1% PVA)",
+      "supporting_text": "1% PVA"
+    },
+    {
+      "span_id": "span_var_pva_vol_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (12 mL of 1% PVA)",
+      "supporting_text": "12 mL of 1% PVA"
+    },
+    {
+      "span_id": "span_var_stir_time_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (15 minutes)",
+      "supporting_text": "15 minutes"
+    },
+    {
+      "span_id": "span_var_evap_time_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (2 hours)",
+      "supporting_text": "2 hours"
+    },
+    {
+      "span_id": "span_var_evap_temp_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (25°C)",
+      "supporting_text": "25°C"
+    },
+    {
+      "span_id": "span_var_evap_pressure_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (70 mbar)",
+      "supporting_text": "70 mbar"
+    },
+    {
+      "span_id": "span_var_wash_cycles_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (three times)",
+      "supporting_text": "three times"
+    },
+    {
+      "span_id": "span_var_cent_speed_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (15,000 rpm)",
+      "supporting_text": "15,000 rpm"
+    },
+    {
+      "span_id": "span_var_cent_time_synth",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (30 minutes)",
+      "supporting_text": "30 minutes"
+    },
+    {
+      "span_id": "span_var_drug_pol_ratio",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (drug/polymer ratio)",
+      "supporting_text": "drug/polymer ratio"
+    },
+    {
+      "span_id": "span_var_surfactant_type",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (surfactants)",
+      "supporting_text": "surfactants"
+    },
+    {
+      "span_id": "span_meas_ee_npr1",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (55.3%±0.4%)",
+      "supporting_text": "55.3%±0.4%"
+    },
+    {
+      "span_id": "span_meas_ee_npr2",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (51.3%±0.3%)",
+      "supporting_text": "51.3%±0.3%"
+    },
+    {
+      "span_id": "span_meas_ee_npr3",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (60.9%±0.4%)",
+      "supporting_text": "60.9%±0.4%"
+    },
+    {
+      "span_id": "span_meas_dl_npr1",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (2.63±0.04 mg)",
+      "supporting_text": "2.63±0.04 mg"
+    },
+    {
+      "span_id": "span_meas_dl_npr2",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (2.42±0.02 mg)",
+      "supporting_text": "2.42±0.02 mg"
+    },
+    {
+      "span_id": "span_meas_dl_npr3",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (2.72±0.02 mg)",
+      "supporting_text": "2.72±0.02 mg"
+    },
+    {
+      "span_id": "span_meas_ee_optimized_ps80",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (encapsulation efficiency (28.2%))",
+      "supporting_text": "encapsulation efficiency (28.2%)"
+    },
+    {
+      "span_id": "span_meas_size_optimized_ps80",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (particle size (176.5 nm))",
+      "supporting_text": "particle size (176.5 nm)"
+    },
+    {
+      "span_id": "span_meas_zeta_optimized_ps80",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (ζ-potential (-20.1 mV))",
+      "supporting_text": "ζ-potential (-20.1 mV)"
+    },
+    {
+      "span_id": "span_meas_process_yield_desc",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (Process yield was calculated)",
+      "supporting_text": "Process yield was calculated"
+    },
+    {
+      "span_id": "span_meas_gat_ee_desc",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (Gat-encapsulation efficiency (EE%) was determined)",
+      "supporting_text": "Gat-encapsulation efficiency (EE%) was determined"
+    },
+    {
+      "span_id": "span_meas_rh_ee_desc",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (Rh EE was determined)",
+      "supporting_text": "Rh EE was determined"
+    },
+    {
+      "span_id": "span_meas_in_vitro_release_desc",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (In vitro release of Gat from NPs was carried out)",
+      "supporting_text": "In vitro release of Gat from NPs was carried out"
+    },
+    {
+      "span_id": "span_rel_npr_variants",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (mean values were 55.3%±0.4% (formulation NPR1), 51.3%±0.3% (formulation NPR2), and 60.9%±0.4% (formu­ lation NPR3))",
+      "supporting_text": "mean values were 55.3%±0.4% (formulation NPR1), 51.3%±0.3% (formulation NPR2), and 60.9%±0.4% (formu­ lation NPR3)"
+    },
+    {
+      "span_id": "span_rel_optimized_variant",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (The best results corresponded to the formulation prepared with polysorbate 80)",
+      "supporting_text": "The best results corresponded to the formulation prepared with polysorbate 80"
+    },
+    {
+      "span_id": "span_rel_surfactant_variation",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (To distinguish the effect between the surfactants)",
+      "supporting_text": "To distinguish the effect between the surfactants, gatifloxacin- loaded PLGA nanoparticles were prepared."
+    },
+    {
+      "span_id": "span_unassigned_table_desc",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Formulation table: drug/polymer ratio, loading, EE, DL.)",
+      "supporting_text": "Formulation table: drug/polymer ratio, loading, EE, DL."
+    },
+    {
+      "span_id": "span_table2_ref",
+      "source_region_type": "materials_procurement_block",
+      "source_locator_text": "[MATERIALS_PROCUREMENT_BLOCK] (Table 2)",
+      "supporting_text": "Table 2"
+    },
+    {
+      "span_id": "span_sel_ps80_optimized",
+      "source_region_type": "optimization_result_block",
+      "source_locator_text": "[OPTIMIZATION_RESULT_BLOCK] (The best results corresponded to the formulation prepared with polysorbate 80)",
+      "supporting_text": "The best results corresponded to the formulation prepared with polysorbate 80"
+    },
+    {
+      "span_id": "span_prep_inherit_synth1",
+      "source_region_type": "synthesis_method_block",
+      "source_locator_text": "[SYNTHESIS_METHOD_BLOCK] (Briefly, 50 mg of PLGA and 2.5 mg Rh were dissolved...)",
+      "supporting_text": "Briefly, 50 mg of PLGA and 2.5 mg Rh were dissolved in 4 mL acetone and mixed by vortexing. This mixture was added dropwise into 12 mL of 1% PVA under continuous stirring for 15 minutes. The resulting suspension was then evaporated in a rotary evaporator (Rotavapor-R; Büchi Labortechnik AG, Flawil, Switzerland) to remove acetone completely (2 hours, 25°C, and 70 mbar). The NP suspension obtained was then washed with distilled water three times and cen­ trifuged (Avanti J-301; Beckman Coulter, Brea, CA, USA) at 15,000 rpm for 30 minutes to remove PVA."
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "obs_table_content_desc",
+      "category": "shared_context",
+      "note": "Description of expected content for a formulation table, including drug/polymer ratio, loading, EE, DL.",
+      "evidence_span_ids": [
+        "span_unassigned_table_desc"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "span_table2_ref"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "Formulation Name"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": []
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "",
+      "selected_variable": "Surfactant type",
+      "selected_value": "Polysorbate 80",
+      "explicit": true,
+      "evidence_span": "span_sel_ps80_optimized"
+    }
+  ],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_prep_inherit_synth1"
+    }
+  ],
+  "boundary_markers": []
+}

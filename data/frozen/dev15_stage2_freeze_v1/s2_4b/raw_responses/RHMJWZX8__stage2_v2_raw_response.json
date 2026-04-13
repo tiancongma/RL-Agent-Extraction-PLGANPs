@@ -1,0 +1,996 @@
+{
+  "document_key": "RHMJWZX8",
+  "doi": "10.1111/jphp.12481",
+  "formulation_candidates": [
+    {
+      "candidate_id": "fc_ap_solution",
+      "raw_label": "AP solution",
+      "normalized_label": "Acetylpuerarin solution",
+      "instance_kind": "new_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s1",
+        "s2",
+        "s9",
+        "s12",
+        "s40",
+        "s43",
+        "s45",
+        "s48"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "fc_ap_plga_nps",
+      "raw_label": "PLGA-NPs",
+      "normalized_label": "AP-PLGA-NPs",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s1",
+        "s2",
+        "s4",
+        "s9",
+        "s13",
+        "s39",
+        "s41",
+        "s42",
+        "s44",
+        "s49",
+        "s50",
+        "s51"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "cc_acetylpuerarin",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "component_name": "Acetylpuerarin",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "Encapsulated drug",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s5"
+      ]
+    },
+    {
+      "component_id": "cc_plga_50_50",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "component_name": "PLGA 50:50",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "Dissolved in organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s6"
+      ]
+    },
+    {
+      "component_id": "cc_polysorbate_80",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "component_name": "Polysorbate 80",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "Dissolved in aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s7"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "vc_pbs",
+      "formulation_candidate_id": "",
+      "variable_name": "phosphate-buffered saline",
+      "value_text": "phosphate-buffered saline",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "variable_id": "vc_polysorbate_80_conc",
+      "formulation_candidate_id": "",
+      "variable_name": "polysorbate 80 concentration",
+      "value_text": "1%",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "variable_id": "vc_ph",
+      "formulation_candidate_id": "",
+      "variable_name": "pH",
+      "value_text": "7.4",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "variable_id": "vc_temperature",
+      "formulation_candidate_id": "",
+      "variable_name": "temperature",
+      "value_text": "37°C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "variable_id": "vc_analyte_ap",
+      "formulation_candidate_id": "",
+      "variable_name": "AP",
+      "value_text": "AP",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s46"
+      ]
+    },
+    {
+      "variable_id": "vc_analyte_pue",
+      "formulation_candidate_id": "",
+      "variable_name": "PUE",
+      "value_text": "PUE",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s47"
+      ]
+    },
+    {
+      "variable_id": "vc_dose",
+      "formulation_candidate_id": "",
+      "variable_name": "dose",
+      "value_text": "15 mg/kg",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s38"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "mc_ap_sol_ap_auc",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "AUC0−∞",
+      "value_text": "1863.69 ± 204.52",
+      "unit_text": "h ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s14"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ap_auc",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "AUC0−∞",
+      "value_text": "5398.60 ± 724.77",
+      "unit_text": "h ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s15",
+        "s2"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_ap_mrt",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "MRT0−∞",
+      "value_text": "1.92 ± 0.12",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s16"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ap_mrt",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "MRT0−∞",
+      "value_text": "4.48 ± 0.38",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s17"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_ap_t1_2",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "t1/2",
+      "value_text": "1.47 ± 0.23",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s18"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ap_t1_2",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "t1/2",
+      "value_text": "3.22 ± 0.52",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s19"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_ap_tmax",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "Tmax",
+      "value_text": "0.083 ± 0",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s20"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ap_tmax",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "Tmax",
+      "value_text": "0.083 ± 0",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s21"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_ap_cl",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "CL",
+      "value_text": "8.13 ± 0.92",
+      "unit_text": "l/h/kg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s22"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ap_cl",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "CL",
+      "value_text": "2.82 ± 0.40",
+      "unit_text": "l/h/kg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s23"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_ap_cmax",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "Cmax",
+      "value_text": "1318.17 ± 95.88",
+      "unit_text": "ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s24"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ap_cmax",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "Cmax",
+      "value_text": "1242.98 ± 105.38",
+      "unit_text": "ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s25",
+        "s3"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_pue_auc",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "AUC0−∞",
+      "value_text": "6587.04 ± 1520.60",
+      "unit_text": "h ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s26"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_pue_auc",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "AUC0−∞",
+      "value_text": "15106.98 ± 3652.73",
+      "unit_text": "h ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s27",
+        "s2"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_pue_mrt",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "MRT0−∞",
+      "value_text": "2.29 ± 0.27",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s28"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_pue_mrt",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "MRT0−∞",
+      "value_text": "4.72 ± 0.67",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s29"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_pue_t1_2",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "t1/2",
+      "value_text": "1.81 ± 0.17",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s30"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_pue_t1_2",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "t1/2",
+      "value_text": "3.58 ± 0.41",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s31"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_pue_tmax",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "Tmax",
+      "value_text": "0.25 ± 0.09",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s32"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_pue_tmax",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "Tmax",
+      "value_text": "0.92 ± 0.49",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s33"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_pue_cl",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "CL",
+      "value_text": "2.39 ± 0.57",
+      "unit_text": "l/h/kg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s34"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_pue_cl",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "CL",
+      "value_text": "1.05 ± 0.30",
+      "unit_text": "l/h/kg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s35"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_sol_pue_cmax",
+      "formulation_candidate_id": "fc_ap_solution",
+      "measurement_name": "Cmax",
+      "value_text": "3038.48 ± 159.81",
+      "unit_text": "ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s36"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_ps",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "size",
+      "value_text": "145.0",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s39"
+      ]
+    },
+    {
+      "measurement_id": "mc_ap_plga_nps_zp",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "zeta_potential",
+      "value_text": "−14.81",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s39"
+      ]
+    },
+    {
+      "measurement_id": "mc_cumulative_release_rate",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "Cumulative release rate",
+      "value_text": "",
+      "unit_text": "%",
+      "ambiguity_note": "Measurement name from Figure 3 axis label, specific values not provided in text.",
+      "evidence_span_ids": [
+        "s9"
+      ]
+    },
+    {
+      "measurement_id": "mc_neurological_deficit_scores",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "neurological deﬁcit scores",
+      "value_text": "signiﬁcantly decreased",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_opt_res_1"
+      ]
+    },
+    {
+      "measurement_id": "mc_infarct_volume",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "infarct volume",
+      "value_text": "signiﬁcantly decreased",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_opt_res_1"
+      ]
+    },
+    {
+      "measurement_id": "mc_brain_infiltration_inflammatory_cells",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "brain inﬁltration of inﬂammatory cells",
+      "value_text": "signiﬁcantly alleviated",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_opt_res_1"
+      ]
+    },
+    {
+      "measurement_id": "mc_neuronal_pyknosis_karyolysis",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "neuronal pyknosis and karyolysis",
+      "value_text": "signiﬁcantly alleviated",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_opt_res_1"
+      ]
+    },
+    {
+      "measurement_id": "mc_apoptosis_nerve_cells",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "apoptosis in nerve cells",
+      "value_text": "signiﬁcantly mitigated",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_opt_res_2"
+      ]
+    },
+    {
+      "measurement_id": "mc_percentage_apoptotic_cells",
+      "formulation_candidate_id": "fc_ap_plga_nps",
+      "measurement_name": "percentage of apoptotic cells",
+      "value_text": "more signiﬁcant reduction",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s_opt_res_3"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rh_comparison_pharmacokinetics",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "fc_ap_solution",
+      "relation_type": "varies_by",
+      "note": "Pharmacokinetic parameters compared between AP-PLGA-NPs and AP solution.",
+      "evidence_span_ids": [
+        "s1",
+        "s2",
+        "s11"
+      ]
+    },
+    {
+      "relation_id": "rh_comparison_in_vitro_release",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "fc_ap_solution",
+      "relation_type": "varies_by",
+      "note": "In-vitro release profiles compared between PLGA-NPs and solution.",
+      "evidence_span_ids": [
+        "s9"
+      ]
+    },
+    {
+      "relation_id": "rh_shared_context_in_vitro_release",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "vc_pbs",
+      "relation_type": "shares_context_with",
+      "note": "Shared context for in-vitro release study.",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "relation_id": "rh_shared_context_in_vitro_release_ps80",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "vc_polysorbate_80_conc",
+      "relation_type": "shares_context_with",
+      "note": "Shared context for in-vitro release study.",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "relation_id": "rh_shared_context_in_vitro_release_ph",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "vc_ph",
+      "relation_type": "shares_context_with",
+      "note": "Shared context for in-vitro release study.",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "relation_id": "rh_shared_context_in_vitro_release_temp",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "vc_temperature",
+      "relation_type": "shares_context_with",
+      "note": "Shared context for in-vitro release study.",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "relation_id": "rh_shared_dose_ap_solution",
+      "source_candidate_id": "fc_ap_solution",
+      "target_candidate_id": "vc_dose",
+      "relation_type": "shares_context_with",
+      "note": "Both formulations administered at the same dose for in-vivo studies.",
+      "evidence_span_ids": [
+        "s38"
+      ]
+    },
+    {
+      "relation_id": "rh_shared_dose_ap_plga_nps",
+      "source_candidate_id": "fc_ap_plga_nps",
+      "target_candidate_id": "vc_dose",
+      "relation_type": "shares_context_with",
+      "note": "Both formulations administered at the same dose for in-vivo studies.",
+      "evidence_span_ids": [
+        "s38"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "s1",
+      "source_region_type": "paragraph",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Compared with AP solution, PLGA-NPs provided higher AUC, MRT, t1/2, but lower plasma clearance (CL) for both AP and PUE, indicating an increased drug exposure in blood circulation."
+    },
+    {
+      "span_id": "s2",
+      "source_region_type": "paragraph",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Following intravenous administration of AP-PLGA-NPs, the AUC0−∞values of AP and PUE were 5398.60 ± 724.77 and 15106.98 ± 3652.73 h ng/ml, which were 2.90- and 2.29-fold as great as those of AP solution, respectively."
+    },
+    {
+      "span_id": "s3",
+      "source_region_type": "paragraph",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "The Cmax values of AP and PUE were similar in the two groups, suggesting a sustained release of the NP preparation."
+    },
+    {
+      "span_id": "s4",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Figure 2 The schematic diagram (a) showing the preparation of AP-PLGA-NPs and the photograph (b) of the prepared nanoparticles under trans- mission electron microscopy."
+    },
+    {
+      "span_id": "s5",
+      "source_region_type": "figure_label",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Acetylpuerarin"
+    },
+    {
+      "span_id": "s6",
+      "source_region_type": "figure_label",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "PLGA 50:50"
+    },
+    {
+      "span_id": "s7",
+      "source_region_type": "figure_label",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Polysorbate 80"
+    },
+    {
+      "span_id": "s8",
+      "source_region_type": "figure_label",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "solvent diffusion/evaporation"
+    },
+    {
+      "span_id": "s9",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Figure 3 In-vitro release proﬁles of acetylpuerarin from PLGA-NPs and solution in phosphate-buffered saline containing 1% polysorbate 80 (pH 7.4) at 37°C (mean ± SD, n = 3)."
+    },
+    {
+      "span_id": "s10",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "phosphate-buffered saline containing 1% polysorbate 80 (pH 7.4) at 37°C"
+    },
+    {
+      "span_id": "s11",
+      "source_region_type": "table_caption",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "Table 1 Pharmacokinetic parameters of AP and PUE after intravenous administration of AP formulations (mean ± SD, n = 6)"
+    },
+    {
+      "span_id": "s12",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, header",
+      "supporting_text": "Administration of AP solution"
+    },
+    {
+      "span_id": "s13",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, header",
+      "supporting_text": "Administration of AP-PLGA-NPs"
+    },
+    {
+      "span_id": "s14",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 1, col 2",
+      "supporting_text": "1863.69 ± 204.52"
+    },
+    {
+      "span_id": "s15",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 1, col 3",
+      "supporting_text": "5398.60 ± 724.77**"
+    },
+    {
+      "span_id": "s16",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 2, col 2",
+      "supporting_text": "1.92 ± 0.12"
+    },
+    {
+      "span_id": "s17",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 2, col 3",
+      "supporting_text": "4.48 ± 0.38**"
+    },
+    {
+      "span_id": "s18",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 3, col 2",
+      "supporting_text": "1.47 ± 0.23"
+    },
+    {
+      "span_id": "s19",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 3, col 3",
+      "supporting_text": "3.22 ± 0.52**"
+    },
+    {
+      "span_id": "s20",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 4, col 2",
+      "supporting_text": "0.083 ± 0"
+    },
+    {
+      "span_id": "s21",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 4, col 3",
+      "supporting_text": "0.083 ± 0"
+    },
+    {
+      "span_id": "s22",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 5, col 2",
+      "supporting_text": "8.13 ± 0.92"
+    },
+    {
+      "span_id": "s23",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 5, col 3",
+      "supporting_text": "2.82 ± 0.40**"
+    },
+    {
+      "span_id": "s24",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 6, col 2",
+      "supporting_text": "1318.17 ± 95.88"
+    },
+    {
+      "span_id": "s25",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 6, col 3",
+      "supporting_text": "1242.98 ± 105.38"
+    },
+    {
+      "span_id": "s26",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 1, col 4",
+      "supporting_text": "6587.04 ± 1520.60"
+    },
+    {
+      "span_id": "s27",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 1, col 5",
+      "supporting_text": "15106.98 ± 3652.73**"
+    },
+    {
+      "span_id": "s28",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 2, col 4",
+      "supporting_text": "2.29 ± 0.27"
+    },
+    {
+      "span_id": "s29",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 2, col 5",
+      "supporting_text": "4.72 ± 0.67**"
+    },
+    {
+      "span_id": "s30",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 3, col 4",
+      "supporting_text": "1.81 ± 0.17"
+    },
+    {
+      "span_id": "s31",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 3, col 5",
+      "supporting_text": "3.58 ± 0.41**"
+    },
+    {
+      "span_id": "s32",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 4, col 4",
+      "supporting_text": "0.25 ± 0.09"
+    },
+    {
+      "span_id": "s33",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 4, col 5",
+      "supporting_text": "0.92 ± 0.49**"
+    },
+    {
+      "span_id": "s34",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 5, col 4",
+      "supporting_text": "2.39 ± 0.57"
+    },
+    {
+      "span_id": "s35",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 5, col 5",
+      "supporting_text": "1.05 ± 0.30**"
+    },
+    {
+      "span_id": "s36",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 6, col 4",
+      "supporting_text": "3038.48 ± 159.81"
+    },
+    {
+      "span_id": "s37",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 6, col 5",
+      "supporting_text": "3094.07 ±"
+    },
+    {
+      "span_id": "s38",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Acetylpuerarin solution (15 mg/kg); AP-PLGA-NPs (15 mg/kg)."
+    },
+    {
+      "span_id": "s39",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "AP-PLGA-NPs were successfully prepared with a mean particle size of 145.0 nm and a zeta potential of −14.81 mV."
+    },
+    {
+      "span_id": "s40",
+      "source_region_type": "text_span",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "AP solution"
+    },
+    {
+      "span_id": "s41",
+      "source_region_type": "text_span",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "PLGA-NPs"
+    },
+    {
+      "span_id": "s42",
+      "source_region_type": "text_span",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "AP-PLGA-NPs"
+    },
+    {
+      "span_id": "s43",
+      "source_region_type": "text_span",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "AP solution"
+    },
+    {
+      "span_id": "s44",
+      "source_region_type": "text_span",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "PLGA-NPs"
+    },
+    {
+      "span_id": "s45",
+      "source_region_type": "text_span",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "solution"
+    },
+    {
+      "span_id": "s46",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, header",
+      "supporting_text": "AP"
+    },
+    {
+      "span_id": "s47",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, header",
+      "supporting_text": "PUE"
+    },
+    {
+      "span_id": "s48",
+      "source_region_type": "text_span",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Acetylpuerarin solution"
+    },
+    {
+      "span_id": "s49",
+      "source_region_type": "text_span",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "AP-PLGA-NPs"
+    },
+    {
+      "span_id": "s50",
+      "source_region_type": "text_span",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "AP-PLGA-NPs"
+    },
+    {
+      "span_id": "s51",
+      "source_region_type": "text_span",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "PLGA-NPs"
+    },
+    {
+      "span_id": "s_opt_res_1",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "In this study, the neurological deﬁcit scores and infarct volume signiﬁcantly decreased, and the brain inﬁltration of inﬂammatory cells and neuronal pyknosis and karyolysis were signiﬁcantly alleviated 24 h after reperfusion in the rats treated with AP-PLGA-NPs."
+    },
+    {
+      "span_id": "s_opt_res_2",
+      "source_region_type": "paragraph",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "In addi- tion, AP-PLGA-NPs signiﬁcantly mitigated the apoptosis in nerve cells after cerebral ischaemic injury."
+    },
+    {
+      "span_id": "s_opt_res_3",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "more signiﬁcant reduction in the number of TUNEL-positive cells was observed in AP-PLGA-NPs group."
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "uo_cmax_pue_fragmented",
+      "category": "measurement_without_boundary",
+      "note": "Fragmented Cmax value for PUE in Table 1 for AP-PLGA-NPs.",
+      "evidence_span_ids": [
+        "s37"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "s11"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Administration of AP solution",
+        "Administration of AP-PLGA-NPs"
+      ],
+      "constant_variables": [
+        "AP",
+        "PUE"
+      ],
+      "new_variables_introduced": []
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "",
+      "selected_variable": "dose",
+      "selected_value": "15 mg/kg",
+      "explicit": true,
+      "evidence_span": "s38",
+      "risk_label": null,
+      "risk_reason": null
+    }
+  ],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "fc_ap_plga_nps",
+      "inherits_from_preparation": true,
+      "evidence_span": "s4"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": false
+    }
+  ]
+}

@@ -184,17 +184,10 @@ def has_declared_scope_ref(document_scope_ids: set[str], semantic_scope_ref: str
     return bool(base_ref and base_ref in document_scope_ids)
 
 
-def main() -> None:
-    args = parse_args()
-    semantic_jsonl = Path(args.semantic_jsonl)
-    stage2_tsv = Path(args.stage2_tsv)
-    report_out = Path(args.report_out) if normalize_text(args.report_out) else None
-
-    documents = read_jsonl(semantic_jsonl)
-    rows = read_tsv(stage2_tsv)
-    errors: list[str] = []
-    warnings: list[str] = []
-
+def collect_mode_values(
+    documents: list[dict[str, Any]],
+    rows: list[dict[str, str]] | None = None,
+) -> tuple[list[str], list[str], list[str], str]:
     document_modes = sorted(
         {
             normalize_text(document.get("stage2_semantic_source_mode"))
@@ -205,16 +198,27 @@ def main() -> None:
     row_modes = sorted(
         {
             normalize_text(row.get("stage2_semantic_source_mode"))
-            for row in rows
+            for row in (rows or [])
             if normalize_text(row.get("stage2_semantic_source_mode"))
         }
     )
     observed_modes = sorted(set(document_modes) | set(row_modes))
-    if not observed_modes:
-        errors.append("No stage2_semantic_source_mode observed in semantic documents or Stage2 rows.")
+    declared_mode = observed_modes[0] if observed_modes else ""
+    return document_modes, row_modes, observed_modes, declared_mode
+
+
+def validate_semantic_documents(
+    documents: list[dict[str, Any]],
+    *,
+    require_mode: bool = True,
+) -> dict[str, Any]:
+    errors: list[str] = []
+    warnings: list[str] = []
+    document_modes, row_modes, observed_modes, declared_mode = collect_mode_values(documents, None)
+    if require_mode and not observed_modes:
+        errors.append("No stage2_semantic_source_mode observed in semantic documents.")
     if len(observed_modes) > 1:
         errors.append(f"Mixed stage2_semantic_source_mode values observed: {observed_modes}")
-    declared_mode = observed_modes[0] if observed_modes else ""
     if declared_mode and declared_mode not in ALLOWED_MODES:
         errors.append(f"Unsupported stage2_semantic_source_mode: {declared_mode}")
 
@@ -223,6 +227,7 @@ def main() -> None:
         for document in documents
         if has_llm_declared_doe_scope(document)
     }
+    document_scope_ids: dict[str, set[str]] = {}
     for document in documents:
         key = normalize_text(document.get("document_key") or document.get("key"))
         for family in TABLE_MARKER_FAMILIES:
@@ -248,11 +253,34 @@ def main() -> None:
                 scope_id = normalize_text(declaration.get("scope_id"))
                 if not has_table_formulation_scope_marker(document, scope_id):
                     errors.append(f"{key}: table formulation scope declaration lacks an LLM-provenance table_formulation_scopes marker")
-    document_scope_ids = {
-        normalize_text(document.get("document_key") or document.get("key")): declared_scope_ids(document)
-        for document in documents
+        document_scope_ids[key] = declared_scope_ids(document)
+
+    return {
+        "declared_mode": declared_mode,
+        "document_modes": document_modes,
+        "row_modes": row_modes,
+        "observed_modes": observed_modes,
+        "errors": errors,
+        "warnings": warnings,
+        "document_scope_ids": document_scope_ids,
+        "document_keys_with_doe_scope": document_keys_with_doe_scope,
     }
 
+
+def validate_stage2_rows(
+    *,
+    documents: list[dict[str, Any]],
+    rows: list[dict[str, str]],
+    declared_mode: str,
+    document_scope_ids: dict[str, set[str]],
+    document_keys_with_doe_scope: set[str],
+) -> dict[str, Any]:
+    errors: list[str] = []
+    warnings: list[str] = []
+    document_by_key = {
+        normalize_text(document.get("document_key") or document.get("key")): document
+        for document in documents
+    }
     for index, row in enumerate(rows, start=1):
         row_id = normalize_text(row.get("formulation_id") or row.get("local_instance_id") or f"row_{index}")
         key = normalize_text(row.get("key"))
@@ -306,14 +334,7 @@ def main() -> None:
                 elif not has_declared_scope_ref(document_scope_ids.get(key, set()), semantic_scope_ref):
                     errors.append(f"{row_id}: table row expansion semantic_scope_ref is not declared in the document scope declarations")
                 else:
-                    document = next(
-                        (
-                            item
-                            for item in documents
-                            if normalize_text(item.get("document_key") or item.get("key")) == key
-                        ),
-                        None,
-                    )
+                    document = document_by_key.get(key)
                     if not isinstance(document, dict) or not has_table_formulation_scope(document, semantic_scope_ref):
                         errors.append(f"{row_id}: table row expansion exists without declared table_formulation_authorization_scope")
                     elif not has_table_formulation_scope_marker(document, semantic_scope_ref):
@@ -337,6 +358,39 @@ def main() -> None:
                 warnings.append(f"{row_id}: diagnostic comparator row is missing semantic_scope_ref")
         elif candidate_source.startswith("doe_numbered_table_row") or row_materialization_mode == "deterministic_row_expansion_within_llm_scope":
             errors.append(f"{row_id}: DOE expansion function unit rows are not allowed outside llm_first_composite mode")
+
+    return {"errors": errors, "warnings": warnings}
+
+
+def main() -> None:
+    args = parse_args()
+    semantic_jsonl = Path(args.semantic_jsonl)
+    stage2_tsv = Path(args.stage2_tsv)
+    report_out = Path(args.report_out) if normalize_text(args.report_out) else None
+
+    documents = read_jsonl(semantic_jsonl)
+    rows = read_tsv(stage2_tsv)
+    document_modes, row_modes, observed_modes, declared_mode = collect_mode_values(documents, rows)
+    errors: list[str] = []
+    warnings: list[str] = []
+    if not observed_modes:
+        errors.append("No stage2_semantic_source_mode observed in semantic documents or Stage2 rows.")
+    if len(observed_modes) > 1:
+        errors.append(f"Mixed stage2_semantic_source_mode values observed: {observed_modes}")
+    if declared_mode and declared_mode not in ALLOWED_MODES:
+        errors.append(f"Unsupported stage2_semantic_source_mode: {declared_mode}")
+    semantic_validation = validate_semantic_documents(documents, require_mode=False)
+    errors.extend(semantic_validation["errors"])
+    warnings.extend(semantic_validation["warnings"])
+    row_validation = validate_stage2_rows(
+        documents=documents,
+        rows=rows,
+        declared_mode=declared_mode,
+        document_scope_ids=semantic_validation["document_scope_ids"],
+        document_keys_with_doe_scope=semantic_validation["document_keys_with_doe_scope"],
+    )
+    errors.extend(row_validation["errors"])
+    warnings.extend(row_validation["warnings"])
 
     report = {
         "schema": "stage2_semantic_authority_contract_report_v1",

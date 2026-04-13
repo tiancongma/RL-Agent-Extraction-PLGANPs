@@ -1,6 +1,24 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+"""
+Build the Stage5 benchmark-final formulation table.
+
+Contract:
+- This module owns the benchmark-final family only.
+- It may perform source-faithful final-row closure, identity-preserving
+  filtering, conservative duplicate or variant collapse under explicit rules,
+  and explicit Stage3 resolved-field carry-through for governed resolved
+  fields.
+- It must not perform modeling-ready normalization, donor-fill,
+  assumption-based inference, or target-schema convenience projection.
+
+Implementation note:
+- Some older Stage5 derivation or curated-projection helpers still operate on
+  legacy weak-label artifacts. Those are branch-only modeling utilities and are
+  not part of this benchmark-final contract.
+"""
+
 import argparse
 import csv
 import hashlib
@@ -426,6 +444,9 @@ def normalize_surfactant_concentration(row: dict[str, str]) -> str:
 
 
 def build_core_fields(row: dict[str, str]) -> dict[str, str]:
+    # This signature is used only for conservative identity-preserving closure
+    # decisions inside benchmark-final Stage5. It is not a license to rewrite
+    # row values into a normalized modeling schema.
     return {
         "polymer_identity": infer_polymer_identity(row),
         "polymer_name_raw": str(row.get("polymer_name_raw", "") or "").strip(),
@@ -913,6 +934,10 @@ def apply_resolved_relation_fields(
     representative: dict[str, str],
     resolved_field_map: dict[str, dict[str, dict[str, str]]],
 ) -> tuple[dict[str, str], set[str]]:
+    # Stage5 benchmark-final may carry through only explicit Stage3-resolved
+    # fields when the representative row is otherwise blank. It must not
+    # replace an already reported row value with a convenience-normalized or
+    # inferred alternative.
     materialized = dict(final_row)
     applied_fields: set[str] = set()
     candidate_id = str(representative.get("formulation_id", "") or "").strip()

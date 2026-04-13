@@ -89,11 +89,18 @@ inside those coarse stages; it does not introduce new runtime namespaces.
   - this boundary may include candidate segmentation and selector work inside
     S2-2, but prompt assembly must consume the persisted evidence artifact
     rather than rereading clean text.
+- `S2-2a Candidate segmentation`
+  - candidate discovery and structure recovery only.
+- `S2-2b Selector evidence prioritization`
+  - deterministic role-aware evidence selection over frozen candidate blocks.
 - `S2-3 Prompt assembly`
   - assemble prompt inputs from `evidence_blocks_v1.json` only.
   - must not reread clean text, rescore candidates, or perform new selection or
     ranking.
-- `S2-4 LLM call`
+- `S2-4a Prompt construction freeze boundary`
+  - optional frozen local boundary that materializes prompt artifacts from the
+    canonical S2-3 evidence handoff and stops before the live LLM call.
+- `S2-4b Live LLM call freeze boundary`
   - the only nondeterministic Stage2 substep.
   - output: raw LLM response payloads under the run-scoped raw-response
     surface.
@@ -123,10 +130,22 @@ inside those coarse stages; it does not introduce new runtime namespaces.
   - materialize final formulation-row candidates from Stage2 plus Stage3
     outputs.
 - `S5-2 Filtering / normalization`
-  - apply deterministic benchmark-facing filtering, normalization, and identity
-    guardrails.
+  - apply deterministic benchmark-facing filtering and identity guardrails for
+    the benchmark-final family only.
+  - allowed benchmark-final work at this boundary is limited to
+    source-faithful closure, identity-preserving filtering, duplicate or
+    variant collapse under explicit conservative rules, and explicit Stage3
+    resolved-relation carry-through when the final row is otherwise blank for a
+    governed Stage3-resolved field.
+  - convenience normalization, unit harmonization, canonical label cleanup,
+    donor-fill, assumption-based inference, and modeling-target-specific
+    projection do not belong to the benchmark-final family.
 - `S5-3 Final table`
   - emit the final formulation table and its decision trace.
+  - this benchmark-final object is the only GT-compared Stage5 artifact.
+  - downstream Stage5 helpers may derive modeling-ready or reviewer-facing
+    surfaces from the frozen final table, but they must not redefine the
+    benchmark-final table or change formulation membership.
 
 ### Benchmark
 
@@ -175,7 +194,8 @@ establish a manifest linking papers to those assets.
 - cleaned full text
 - key-to-text mappings
 - dataset-local table assets
-- manifest rows linking key, DOI, title, and content paths
+- manifest rows linking key, DOI, title, content paths, and declared upstream
+  source lineage
 
 ### Single Source of Truth
 `data/cleaned/index/manifest_current.tsv`
@@ -189,6 +209,9 @@ establish a manifest linking papers to those assets.
 - Any change to files in `data/cleaned/index/` requires re-running all
   downstream stages.
 - Only one `manifest_current.tsv` may exist as the active authoritative manifest.
+- `manifest_current.tsv` may be assembled from one or more explicitly declared
+  raw Zotero-source manifests, but the assembly contract must preserve row-level
+  source provenance rather than assuming a single upstream corpus.
 
 ---
 
@@ -267,6 +290,59 @@ boundary:
   or Stage5 outputs, and no use of GT comparison for closure
 - S2-2b non-benchmark rule:
   this is a stage-local freeze only, not downstream system validation
+- frozen discoverability rule:
+  once a fine-grained Stage2 substep is frozen in the current cycle, the repo
+  must expose discoverable ownership, inputs, outputs, stop boundary, and next
+  lawful step in maintained governance and execution-facing surfaces
+- current-cycle explicit frozen discoverability mapping:
+  - `S2-2a`
+    - owner:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
+    - outputs:
+      `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+      and `analysis/candidate_segmentation_debug_v1.tsv`
+    - next lawful step:
+      `S2-2b`
+  - `S2-2b`
+    - owner:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+      plus `build_role_aware_selection`
+    - outputs:
+      `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+      and `analysis/table_selection_debug_v1.json`
+    - next lawful step:
+      `S2-3`
+  - `S2-3`
+    - owner:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+      plus `build_prompt_preview_row`
+    - outputs:
+      in-memory prompt payload and maintained observability
+      `analysis/stage2_prompt_preview_v1.tsv`
+    - next lawful step:
+      `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when prompt freezing is active
+  - `S2-4a`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+    - outputs:
+      `analysis/s2_4a_prompt_template_v1.txt`
+      `analysis/s2_4a_prompts_v1.jsonl`
+      `analysis/s2_4a_prompt_audit_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - next lawful step:
+      `S2-4b live LLM call`
+  - `S2-4b`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+    - inputs:
+      frozen `analysis/s2_4a_prompts_v1.jsonl`
+    - outputs:
+      replayable `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      request metadata sidecars under `request_metadata/`
+      `analysis/s2_4b_request_summary_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - next lawful step:
+      `S2-5 semantic parsing` only through the maintained composite Stage2 path
 
 ### Key Artifacts
 - Stage2 internal semantic-intermediate artifacts:
@@ -482,6 +558,47 @@ formulation records and compare only those final records to GT.
 Stage 5 is the only benchmark-valid reporting layer. Earlier stages may produce
 diagnostic comparisons, but they are not the official system result.
 
+### Internal Stage5 Families
+
+- Benchmark-final family
+  - canonical object:
+    `final_formulation_table_v1.tsv`
+  - maintained entrypoints:
+    `src/stage5_benchmark/build_minimal_final_output_v1.py`
+    `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+    `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
+  - role:
+    source-faithful final closure, identity-preserving filtering, explicit
+    Stage3-resolved field carry-through, hard identity freeze, and GT compare
+  - benchmark-final must not:
+    replace paper-reported values with convenience-normalized values, perform
+    donor-fill, perform assumption-based inference, or change formulation
+    membership after identity freeze
+
+- Downstream modeling-ready family
+  - role:
+    consume the frozen benchmark-final object and build downstream
+    normalization, harmonization, derivation, or curated projection surfaces
+    for non-benchmark use
+  - first maintained surface:
+    `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py` emits a
+    row-linked sidecar from `final_formulation_table_v1.tsv` using explicit
+    deterministic parse/math rules only
+  - allowed operations:
+    canonical label cleanup, unit harmonization, safe deterministic derivation,
+    curated projection, and preservation of raw benchmark-final values plus
+    provenance
+  - modeling-ready outputs must not:
+    replace `final_formulation_table_v1.tsv`, redefine benchmark-final
+    semantics, or change formulation membership
+
+- Downstream audit/review family
+  - role:
+    consume the frozen benchmark-final object for reviewer-facing audit exports
+    and workbooks
+  - these surfaces are downstream support artifacts, not benchmark-final
+    builders and not modeling-ready projections
+
 ---
 
 ## Separation Of Concerns
@@ -511,6 +628,11 @@ diagnostic comparisons, but they are not the official system result.
   provenance.
 - The relation artifact is not yet the sole driver of final keep/drop/collapse
   decisions.
+- Some branch or historical Stage5 helper scripts still project from legacy
+  weak-label inputs rather than from the frozen benchmark-final object.
+  Those helpers are not part of the active benchmark-final family and should be
+  treated as legacy or branch-only modeling utilities until they are
+  explicitly re-anchored downstream of `final_formulation_table_v1.tsv`.
 
 ### Location
 - `src/stage5_benchmark/`

@@ -3175,3 +3175,166 @@ Impact
 - Selector logic is frozen.
 - `evidence_blocks_v1.json` is now the canonical S2-3 input.
 - No further modification to S2-2 is allowed in downstream work.
+
+## 2026-04-12
+
+### Decision: Close the discoverability gap for frozen Stage2 fine-grained substeps (MDEC089)
+
+Decision
+- Fine-grained Stage2 substeps that are already frozen in practice must not
+  remain implicit in broad Stage2 governance wording alone.
+- For the current cycle, the repo must expose discoverable ownership,
+  input/output contract, stop boundary, and next lawful step for:
+  - `S2-2a`
+  - `S2-2b`
+  - `S2-3`
+  - `S2-4a`
+- `S2-4a` now receives a dedicated execution-facing maintained runner:
+  - `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+- `S2-2a`, `S2-2b`, and `S2-3` remain internal Stage2 substeps, but their
+  owning script/function surfaces and handoff contracts must be explicit in the
+  maintained governance and execution-surface registry.
+
+Reason
+- Prior practical work already used `S2-2a`, `S2-2b`, `S2-3`, and `S2-4a` as
+  meaningful frozen or stage-local boundaries.
+- The maintained broad Stage2 surfaces did not let a future agent answer, from
+  normal repo reading alone, what `S2-4a` produced, which artifacts belonged to
+  each frozen substep, or what the next lawful step was after a frozen local
+  boundary.
+- This caused avoidable ambiguity in freeze audits, replay planning, and
+  stage-local execution.
+
+Impact
+- Future agents must be able to determine the current frozen Stage2 substep and
+  the next lawful step without re-deriving structure from broad Stage2 docs or
+  historical chat context.
+- Frozen-priority gap closing is now explicit:
+  1. `S2-4a`
+  2. `S2-3`
+  3. `S2-2b`
+  4. `S2-2a`
+- `docs/maintained_script_surface.tsv`, `project/PIPELINE_SCRIPT_MAP.md`,
+  `project/ACTIVE_PIPELINE_FLOW.md`, `project/ACTIVE_PIPELINE_RUNBOOK.md`, and
+  `project/2_ARCHITECTURE.md` must remain aligned on this discoverability rule.
+
+### Decision: Give frozen S2-4b its own maintained live-call boundary (MDEC090)
+
+Decision
+- The frozen `S2-4b` boundary must have a dedicated execution-facing
+  maintained runner rather than remaining implicit inside the coarse composite
+  Stage2 path.
+- That runner is:
+  - `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+- The dedicated `S2-4b` runner must:
+  - consume frozen `S2-4a` prompt artifacts only
+  - use the maintained Gemini live-call wrapper already frozen in repo practice
+  - persist replayable raw response payloads and request-level metadata sidecars
+  - stop before `S2-5`, `S2-6`, and `S2-7`
+  - treat only API / transport / request-level failure as failure at this boundary
+- Returned malformed or weak content must still be persisted and must not be
+  judged semantically at `S2-4b`.
+
+Reason
+- `S2-4a` prompt freezing already created a lawful immutable upstream handoff.
+- Leaving the next live-call step only inside the coarse composite Stage2 path
+  would force future agents to choose between hidden fallthrough into parsing
+  or an unguided custom live-call replay.
+- A dedicated maintained boundary keeps the frozen live-call surface
+  independently runnable, independently auditable, and replayable by the
+  maintained composite Stage2 path later.
+
+Impact
+- Future agents can now resolve the exact `S2-4b` script path, frozen inputs,
+  raw-response outputs, and stop boundary from normal governed repo reading.
+- The maintained Stage2 composite entrypoint remains the only path that can
+  rehydrate raw responses into completed Stage2 authority for downstream use.
+- `docs/maintained_script_surface.tsv`, `docs/src_script_registry.tsv`,
+  `project/PIPELINE_SCRIPT_MAP.md`, `project/ACTIVE_PIPELINE_FLOW.md`, and
+  `project/ACTIVE_PIPELINE_RUNBOOK.md` must remain aligned on the dedicated
+  `S2-4b` boundary.
+
+### Decision: Freeze the successful S2-4b live-call settings for the current cycle (MDEC091)
+
+Decision
+- Freeze the successful current-cycle `S2-4b` live-call policy at:
+  - model:
+    `gemini-2.5-flash`
+  - request mode:
+    `stream_collect`
+  - request timeout seconds:
+    `180`
+  - request retries:
+    `0`
+  - retry sleep seconds:
+    `3.0`
+  - persistence rule:
+    persist any returned raw payload as-is at the `S2-4b` boundary
+  - failure rule:
+    persist request metadata for timeout, auth, transport, or API failure and
+    mark controlled failure without semantic judgment
+- This decision changes only the `S2-4b` call-layer operating settings needed
+  for stable runtime behavior.
+- It does not reopen or alter frozen `S2-4a` prompt content, prompt assembly,
+  evidence selection, evidence ordering, or any downstream `S2-5+` behavior.
+
+Reason
+- The original non-streaming live-call path could block indefinitely in real
+  frozen-prompt execution without an internal bounded request result.
+- The successful one-paper `S2-4b` validation proved that streamed collection
+  with a 180-second bounded request window and zero retries produced a lawful
+  raw-response boundary without hanging.
+- Future agents should not need to rediscover stable `S2-4b` operating
+  settings from prior validation runs once this freeze exists.
+
+Impact
+- The dedicated maintained `S2-4b` runner now has an explicit frozen current-
+  cycle call policy rather than relying on command-line overrides alone.
+- `project/ACTIVE_PIPELINE_RUNBOOK.md`, `project/ACTIVE_PIPELINE_FLOW.md`,
+  `project/PIPELINE_SCRIPT_MAP.md`, `docs/maintained_script_surface.tsv`, and
+  `docs/src_script_registry.tsv` must stay aligned on these frozen settings.
+- Future full-scope `S2-4b` execution for the current cycle must consume frozen
+  `S2-4a` prompts and use these call-layer settings unless a later governed
+  decision explicitly supersedes them.
+
+### Decision: Freeze the completed DEV15 S2-4b output set as the lawful pre-S2-5 handoff for the current cycle (MDEC092)
+
+Decision
+- Record the completed full-DEV15 `S2-4b` run:
+  - source run:
+    `data/results/20260412_8517d36/04_s2_4b_live_llm_call_dev15_v1`
+- Freeze its minimal reusable output set under:
+  - `data/frozen/dev15_stage2_freeze_v1/s2_4b/`
+- The frozen `S2-4b` output set must include:
+  - run-level `RUN_CONTEXT.md`
+  - `stage2_s2_4b_run_metadata_v1.json`
+  - `analysis/s2_4b_request_summary_v1.tsv`
+  - preserved raw payloads under `raw_responses/`
+  - per-request metadata sidecars under `request_metadata/`
+- This frozen set becomes the lawful preparation boundary for future `S2-5`
+  work in the current cycle.
+- It remains a frozen `S2-4b` dataset only; it does not itself execute `S2-5`
+  or create the completed Stage2 authority surface.
+
+Reason
+- The dedicated maintained `S2-4b` runner has now completed the full DEV15
+  prompt set using the frozen current-cycle call settings without hanging.
+- Future agents should be able to consume the frozen `S2-4b` handoff material
+  directly from the portable frozen layer rather than re-deriving run-local
+  authority from `data/results/...`.
+- The boundary must preserve both successful raw payloads and controlled
+  failures exactly as produced, without semantic inspection.
+
+Impact
+- The current-cycle portable Stage2 freeze now extends through `S2-4b`.
+- Future `S2-5` work may use the frozen `S2-4b` dataset as its upstream raw-
+  response handoff, but must still stop short of claiming completed Stage2
+  authority until replay through the maintained composite Stage2 path.
+- The canonical current-cycle facts are now:
+  - full DEV15 `S2-4b` run completed
+  - success_count:
+    `6`
+  - failure_count:
+    `9`
+  - preserved raw payload count:
+    `7`

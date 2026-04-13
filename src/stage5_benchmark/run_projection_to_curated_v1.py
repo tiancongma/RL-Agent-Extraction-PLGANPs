@@ -18,7 +18,7 @@ DEFAULT_SAMPLE_MANIFEST = "data/cleaned/samples/sample_goren18.tsv"
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Project derived formulation values into curated schema without modifying extraction outputs."
+        description="Legacy or branch-only modeling helper: project derived formulation values into curated schema without modifying extraction outputs."
     )
     parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
     parser.add_argument(

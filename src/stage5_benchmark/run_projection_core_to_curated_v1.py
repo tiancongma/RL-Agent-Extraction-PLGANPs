@@ -14,7 +14,7 @@ DEFAULT_RUN_ID = "run_20260219_1623_780eb83_goren18_weaklabels_v1"
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Project schema_v1 formulation_core rows into curated column schema."
+        description="Legacy or branch-only modeling helper: project schema_v1 formulation_core rows into a curated column schema."
     )
     parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
     parser.add_argument(

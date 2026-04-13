@@ -1,0 +1,41 @@
+{
+  "schema": "stage2_s2_6_run_metadata_v1",
+  "run_id": "02_s2_6_contract_validation",
+  "run_dir": "data/results/20260413_8517d36/02_s2_6_contract_validation",
+  "stage_boundary": "S2-6",
+  "boundary_class": "internal_intermediate",
+  "authoritative_for_downstream": false,
+  "lawful_resume_boundary": false,
+  "owner_script": "src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py",
+  "owner_function_surface": [
+    "src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_semantic_documents",
+    "src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_selection_marker",
+    "src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_inheritance_marker",
+    "src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::has_llm_declared_doe_scope",
+    "src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::has_table_formulation_scope_marker"
+  ],
+  "inputs": {
+    "source_s2_5_run_dir": "data/results/20260413_8517d36/01_s2_5_semantic_parsing",
+    "semantic_jsonl": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+    "semantic_summary_tsv": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects/semantic_stage2_v2_summary.tsv",
+    "targeted_manifest_tsv": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/targeted_manifest.tsv",
+    "source_s2_5_metadata": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/stage2_s2_5_run_metadata_v1.json"
+  },
+  "outputs": {
+    "validation_report": "data/results/20260413_8517d36/02_s2_6_contract_validation/analysis/stage2_semantic_authority_contract_report_v1.json",
+    "run_context": "data/results/20260413_8517d36/02_s2_6_contract_validation/RUN_CONTEXT.md"
+  },
+  "stop_boundary": "semantic_contract_validation_artifacts_written",
+  "next_lawful_step": "S2-7 compatibility projection",
+  "not_executed": [
+    "S2-5 semantic parsing",
+    "S2-7 compatibility projection",
+    "Stage3",
+    "Stage4",
+    "Stage5"
+  ],
+  "status": "pass",
+  "error_count": 0,
+  "warning_count": 0,
+  "generated_at": "2026-04-13T13:01:46"
+}

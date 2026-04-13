@@ -1,0 +1,44 @@
+{
+  "schema": "stage2_s2_5_run_metadata_v1",
+  "run_id": "01_s2_5_semantic_parsing",
+  "run_dir": "data/results/20260413_8517d36/01_s2_5_semantic_parsing",
+  "stage_boundary": "S2-5",
+  "boundary_class": "internal_intermediate",
+  "authoritative_for_downstream": false,
+  "lawful_resume_boundary": false,
+  "owner_script": "src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py",
+  "owner_function_surface": [
+    "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::convert_legacy_raw_response_to_v2",
+    "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::normalize_replayed_live_document",
+    "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_v2_document",
+    "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::finalize_llm_first_document",
+    "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::summary_row"
+  ],
+  "inputs": {
+    "manifest_tsv": "data/results/20260401_5d9f4e6/08_dev15_count_validation/targeted_manifest.tsv",
+    "targeted_manifest_tsv": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/targeted_manifest.tsv",
+    "raw_responses_dir": "data/results/20260401_5d9f4e6/08_dev15_count_validation/semantic_stage2_objects/raw_responses",
+    "selected_raw_response_files": [
+      "data/results/20260401_5d9f4e6/08_dev15_count_validation/semantic_stage2_objects/raw_responses/UFXX9WXE__stage2_v2_raw_response.json",
+      "data/results/20260401_5d9f4e6/08_dev15_count_validation/semantic_stage2_objects/raw_responses/WIVUCMYG__stage2_v2_raw_response.json"
+    ]
+  },
+  "outputs": {
+    "semantic_dir": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects",
+    "semantic_jsonl": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+    "semantic_summary_tsv": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects/semantic_stage2_v2_summary.tsv",
+    "run_context": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/RUN_CONTEXT.md"
+  },
+  "stop_boundary": "semantic_intermediate_artifacts_written",
+  "next_lawful_step": "S2-6 contract validation",
+  "not_executed": [
+    "S2-6 contract validation",
+    "S2-7 compatibility projection",
+    "Stage3",
+    "Stage4",
+    "Stage5"
+  ],
+  "generated_at": "2026-04-13T12:31:28",
+  "failure_count": 0,
+  "failures": []
+}

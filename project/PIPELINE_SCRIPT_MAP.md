@@ -29,14 +29,14 @@ Script classes used here are fixed:
 |---|---|---|---|---|---|---|
 | Stage 0 | Relevance filtering and raw corpus intake | `src/stage0_relevance/zotero_api_sync_selected.py` | `ACTIVE_ENTRYPOINT` | Sync the selected Zotero item set into the raw JSONL artifact used by downstream stages. | Zotero library selection; local storage root | `data/raw/zotero/zotero_selected_items.jsonl` |
 | Stage 0 | Relevance filtering and raw corpus intake | `src/stage0_relevance/zotero_fetch_llm_relevant_pdfs.py` | `ACTIVE_ENTRYPOINT` | Fetch local PDF or HTML assets for the selected relevant records. | Zotero-tagged relevant items; DOI or attachment metadata | local source files referenced from the raw JSONL |
-| Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert the raw Zotero-derived JSONL into the authoritative manifest. | `data/raw/zotero/zotero_selected_items.jsonl` | `data/cleaned/index/manifest_current.tsv` |
+| Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/zotero_raw_to_manifest.py` | `ACTIVE_ENTRYPOINT` | Convert one or more explicitly declared Zotero-derived raw JSONL sources into the authoritative manifest while preserving row-level source provenance. | one or more declared raw Zotero JSONL artifacts such as `data/raw/zotero/zotero_selected_items.jsonl` and collection-specific raw exports | `data/cleaned/index/manifest_current.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/clean_manifest_to_text.py` | `ACTIVE_ENTRYPOINT` | Build cleaned text assets and the authoritative key-to-text mapping. | `data/cleaned/index/manifest_current.tsv` | `data/cleaned/content/text/`; `data/cleaned/index/key2txt.tsv` |
 | Stage 1 | Manifest, clean text, and tables | `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py` | `ACTIVE_ENTRYPOINT` | Build dataset-local table assets for extraction and later audit. | dataset manifest TSV; cleaned content | dataset-local `tables/` assets |
 | Stage 2 | Composite semantic extraction and deterministic post-LLM completion | `src/stage2_sampling_labels/run_stage2_composite_v1.py` | `ACTIVE_ENTRYPOINT` | Run the governed composite Stage2 graph: LLM semantic discovery from cleaned assets followed by deterministic post-LLM completion into the only authoritative Stage2 artifact consumed by Stage3, then refresh run-level feature-unit observability inside `RUN_CONTEXT.md`. The maintained S2-2 boundary now materializes `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json` as the explicit pre-selector candidate-segmentation surface and `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json` as the canonical pre-LLM evidence package. Candidate segmentation is responsible for structure recovery, conservative table isolation, and conservative noise filtering; deterministic role-aware evidence selection with a DOE overlay remains downstream of that boundary. Prompt preview artifacts remain derived observability only. Stage2 live input assembly can optionally use the governed ordered-evidence-pack mode when `STAGE2_INPUT_EVIDENCE_PACKING_MODE=ordered_blocks`. | scope manifest TSV; cleaned text; cleaned or governed tables; paper-key subset; source_mode; llm_backend; model; max_text_chars | semantic-intermediate JSONL/summary under `semantic_stage2_objects/`; maintained candidate artifacts under `semantic_stage2_objects/candidate_blocks/`; canonical S2-2 evidence artifacts under `semantic_stage2_objects/evidence_blocks/`; completed Stage2 weak-label TSV/JSONL under `semantic_to_widerow_adapter/`; `RUN_CONTEXT.md` |
 | Stage 3 | Deterministic formulation relation materialization | `src/stage3_relation/build_formulation_relation_artifacts_v1.py` | `ACTIVE_ENTRYPOINT` | Build explicit paper-level formulation relation artifacts and resolved relation-backed descriptive synthesis fields from the compatibility-projected legacy wide-row surface without any LLM usage. | compatibility-projected Stage 2 candidate formulation-instance TSV; optional compatibility-projected JSONL; optional scope manifest TSV | `formulation_relation_records_v1.tsv`; `formulation_logic_graph_v1.jsonl`; `formulation_relation_summary_v1.tsv`; `resolved_relation_fields_v1.tsv` |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/eval_weak_labels_v7pilot3.py` | `ACTIVE_ENTRYPOINT` | Produce candidate-instance diagnostic counts and mismatch artifacts from the compatibility-projected legacy wide-row surface. | compatibility-projected Stage 2 candidate TSV; scope manifest; GT workbook | per-paper diagnostic TSVs and summary markdown |
 | Stage 4 | Candidate-level diagnostics and review | `src/stage4_eval/build_dev15_review_workbook_v1.py` | `STABLE_TOOL` | Build reviewer-facing workbooks from Stage 4 artifacts. | Stage 4 summaries; checked manual workbook | reviewer workbook XLSX |
-| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the final formulation table and decision trace from compatibility-projected Stage 2 candidate rows by materializing direct extraction fields plus explicit Stage 3 resolved relation fields, while applying conservative benchmark-facing identity guardrails such as descendant filtering. Parent-linked non-synthesis descendants remain filterable, sweep-style `variant_formulation` members are not auto-filtered by `post_processing` alone, and parent-linked helper descendants with preserved blank/control/model-drug-substitution semantics are also filterable even when upstream routing tags regress. | compatibility-projected Stage 2 candidate formulation-instance TSV; required Stage 3 relation-record TSV; required Stage 3 resolved-relation-field TSV | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
+| Stage 5 | Final formulation closure and benchmark comparison | `src/stage5_benchmark/build_minimal_final_output_v1.py` | `ACTIVE_ENTRYPOINT` | Build the benchmark-final formulation table and decision trace from compatibility-projected Stage 2 candidate rows by materializing direct extraction fields plus explicit Stage 3 resolved relation fields, while applying conservative benchmark-facing identity guardrails such as descendant filtering. Parent-linked non-synthesis descendants remain filterable, sweep-style `variant_formulation` members are not auto-filtered by `post_processing` alone, and parent-linked helper descendants with preserved blank/control/model-drug-substitution semantics are also filterable even when upstream routing tags regress. This entrypoint is source-faithful closure only: it must not perform donor-fill, assumption-based inference, modeling-target-specific normalization, or benchmark-semantic redefinition. | compatibility-projected Stage 2 candidate formulation-instance TSV; required Stage 3 relation-record TSV; required Stage 3 resolved-relation-field TSV | `final_formulation_table_v1.tsv`; `final_output_decision_trace_v1.tsv`; `final_output_summary_v1.md` |
 | Stage 5 | Comparison node | `src/stage5_benchmark/compare_final_table_to_gt_v1.py` | `ACTIVE_ENTRYPOINT` | Compare only the Stage 5 final formulation table to the frozen DEV15 Layer1 GT counts TSV and refresh run-level feature-unit observability inside `RUN_CONTEXT.md`. | final formulation table; scope manifest; frozen Layer1 GT counts TSV | `final_table_vs_gt_counts.tsv`; `final_table_vs_gt_summary.md`; `RUN_CONTEXT.md` |
 
 ## Evaluation Reference Path
@@ -120,6 +120,7 @@ stage-completion entrypoints.
 |---|---|---|
 | `src/stage1_cleaning/find_html_table_candidates_v1.py` | `STABLE_TOOL` | Probe HTML content for table candidates before extraction. |
 | `src/stage1_cleaning/extract_tables_for_keys_v1.py` | `STABLE_TOOL` | Targeted table extraction for selected keys. |
+| `src/stage1_cleaning/derive_target_manifest_v1.py` | `STABLE_TOOL` | Derive scope-specific manifests from the canonical `data/cleaned/index/manifest_current.tsv` with explicit selection-rule metadata and no recency-based scope inference. |
 | `src/stage1_cleaning/pdf2clean.py` | `STABLE_TOOL` | Underlying PDF or HTML cleaner used by Stage 1 wrappers. |
 | `src/utils/html_parser.py` | `STABLE_TOOL` | Shared HTML parsing utilities. |
 
@@ -131,6 +132,11 @@ stage-completion entrypoints.
 | `src/stage2_sampling_labels/build_key2txt_from_sample_manifest.py` | `STABLE_TOOL` | Build sample-local key-to-text mappings. |
 | `src/stage2_sampling_labels/build_evidence_bundle_for_keys_v1.py` | `STABLE_TOOL` | Build deterministic evidence packages for selected keys. |
 | `src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit numbered DOE formulation rows from Stage1 table assets and emit additive Stage2 candidate artifacts. |
+| `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py` | `STABLE_TOOL` | Execution-facing frozen S2-4a prompt-construction runner. It consumes canonical `evidence_blocks_v1.json` artifacts, writes `analysis/s2_4a_prompt_template_v1.txt`, `analysis/s2_4a_prompts_v1.jsonl`, `analysis/s2_4a_prompt_audit_v1.tsv`, and `RUN_CONTEXT.md`, and stops before any live LLM call or downstream Stage2 completion. |
+| `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py` | `STABLE_TOOL` | Execution-facing frozen S2-4b live-call runner. It consumes immutable `analysis/s2_4a_prompts_v1.jsonl`, uses Gemini 2.5 Flash through `call_gemini_stream_collect`, freezes the current-cycle live-call policy at `stream_collect`, `request_timeout_seconds=180`, and `request_retries=0`, writes replayable raw response payloads plus request metadata sidecars, writes `RUN_CONTEXT.md`, and stops before S2-5 semantic parsing or any downstream Stage2 completion. The maintained runner also exposes bounded diagnostic call-layer controls for `max_parallel_requests` and `inter_request_sleep_seconds` without changing the default frozen policy. |
+| `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py` | `STABLE_TOOL` | Execution-facing frozen S2-5 semantic-parsing runner. It consumes frozen `raw_responses/<paper_key>__stage2_v2_raw_response.json` payloads plus manifest provenance, reuses the maintained raw-response parsing path from `extract_semantic_stage2_objects_v2.py`, writes only `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`, `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`, and `RUN_CONTEXT.md`, and stops before S2-6 contract validation, S2-7 compatibility projection, or any completed Stage2 artifact emission. |
+| `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py` | `STABLE_TOOL` | Execution-facing frozen S2-6 contract-validation runner. It consumes an `S2-5` run directory and validates only the semantic-intermediate Stage2 contract using the maintained document-level validator logic, writes only `analysis/stage2_semantic_authority_contract_report_v1.json` plus `RUN_CONTEXT.md`, and stops before S2-7 compatibility projection or any completed Stage2 artifact emission. |
+| `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py` | `STABLE_TOOL` | Execution-facing frozen S2-7 compatibility-projection runner. It consumes a passing `S2-6` validation run, resolves the referenced `S2-5` semantic JSONL from that validation surface, invokes the maintained compatibility-projection logic directly, writes the completed Stage2 artifact under `semantic_to_widerow_adapter/`, writes `RUN_CONTEXT.md`, and stops before any `Stage3` call. |
 | `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` | `STABLE_TOOL` | Internal LLM semantic-discovery substep used by the governed composite Stage2 entrypoint. Emits object-first semantic-intermediate artifacts for any declared manifest scope, persists `candidate_blocks_v1.json` as the explicit candidate-segmentation boundary inside S2-2, persists `evidence_blocks_v1.json` as the canonical S2-2 pre-LLM evidence contract, applies deterministic role-aware evidence selection with a DOE overlay when signaled, and derives prompt-preview observability from that same evidence body. |
 | `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` | `STABLE_TOOL` | Internal deterministic post-LLM completion substep used by the governed composite Stage2 entrypoint. Converts semantic intermediates into the completed Stage2 artifact required by unchanged downstream consumers, including governed DOE row expansion and governed non-DOE table row expansion when authorized by Stage2 semantic markers. |
 | `src/stage2_sampling_labels/table_row_expansion_v1.py` | `STABLE_TOOL` | Deterministically enumerate explicit non-DOE formulation-table rows from Stage1 table assets when the LLM has declared a formulation-bearing non-DOE table through the Stage2 table authorization contract. |
@@ -163,8 +169,17 @@ Stage 2 active contract note:
 
 - The frozen Stage2 authority contract is LLM semantic discovery, not
   deterministic semantic reconstruction.
-- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the one governed
-  Stage2 execution entrypoint.
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the governed
+  coarse-grained Stage2 wrapper and the lawful replay/rehydration entrypoint
+  for the full composite Stage2 path.
+- It is not the only maintained Stage2 execution surface in practical repo
+  usage.
+- Dedicated maintained fine-grained runners now also exist for frozen
+  substeps such as:
+  - `S2-4a`
+  - `S2-4b`
+- `S2-5` semantic parsing, `S2-6` contract validation, and `S2-7`
+  compatibility projection now also have dedicated maintained runners.
 - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
   internal LLM semantic-discovery substep.
 - The maintained Stage2 path now contains one formal internal execution
@@ -177,6 +192,108 @@ Stage 2 active contract note:
     status
   - `analysis/stage2_prompt_preview_v1.tsv` is derived observability only and
     must resolve back to that canonical artifact
+- current-cycle frozen-substep discoverability mapping:
+  - `S2-2a`
+    - owner surface:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
+    - outputs:
+      `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+      and `analysis/candidate_segmentation_debug_v1.tsv`
+    - stop boundary:
+      candidate segmentation only
+    - next lawful step:
+      `S2-2b`
+  - `S2-2b`
+    - owner surface:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+      plus `build_role_aware_selection`
+    - outputs:
+      `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+      and `analysis/table_selection_debug_v1.json`
+    - stop boundary:
+      canonical evidence handoff written
+    - next lawful step:
+      `S2-3`
+  - `S2-3`
+    - owner surface:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+      plus `build_prompt_preview_row`
+    - outputs:
+      in-memory prompt payload and maintained observability
+      `analysis/stage2_prompt_preview_v1.tsv`
+    - stop boundary:
+      prompt assembled from canonical evidence only
+    - next lawful step:
+      `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when prompt freezing is required
+  - `S2-4a`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+    - outputs:
+      `analysis/s2_4a_prompt_template_v1.txt`
+      `analysis/s2_4a_prompts_v1.jsonl`
+      `analysis/s2_4a_prompt_audit_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      prompt artifacts written, no live LLM call
+    - next lawful step:
+      `S2-4b live LLM call`
+  - `S2-4b`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+    - inputs:
+      frozen `analysis/s2_4a_prompts_v1.jsonl`
+    - outputs:
+      replayable `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      request metadata sidecars under `request_metadata/`
+      `analysis/s2_4b_request_summary_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      raw-response payloads written, no semantic parsing or validation
+    - next lawful step:
+      `S2-5 semantic parsing`
+  - `S2-5`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+    - inputs:
+      frozen `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      plus minimal manifest provenance for `text_path` and paper metadata
+    - outputs:
+      `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+      `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      semantic-intermediate artifacts written, no validation or compatibility projection
+    - next lawful step:
+      `S2-6 contract validation`
+  - `S2-6`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+    - inputs:
+      frozen `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+      from an `S2-5` run directory
+    - outputs:
+      `analysis/stage2_semantic_authority_contract_report_v1.json`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      validation artifacts written, no compatibility projection
+    - next lawful step:
+      `S2-7 compatibility projection`
+  - `S2-7`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+    - inputs:
+      passing `S2-6` validation report plus the referenced frozen
+      `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+    - outputs:
+      `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+      `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl`
+      `semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv`
+      `semantic_to_widerow_adapter/compatibility_projection_summary_v1.json`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      completed Stage2 artifact written, no Stage3 execution
+    - next lawful step:
+      `Stage3 relation materialization`
 - `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py` is
   the internal deterministic post-LLM completion substep.
 - `src/stage2_sampling_labels/table_row_expansion_v1.py` is a governed
@@ -229,19 +346,36 @@ Stage 2 active contract note:
 | `src/stage5_benchmark/build_two_table_schema_v3.py` | `STABLE_TOOL` | Newer schema builder for downstream database-facing table work. |
 | `src/stage5_benchmark/run_formulation_core_signature_v1.py` | `STABLE_TOOL` | Runner for explicit core-signature generation. |
 | `src/stage5_benchmark/run_derivation_v1.py` | `STABLE_TOOL` | Deterministic derivation helper for downstream tables. |
-| `src/stage5_benchmark/run_projection_to_curated_v1.py` | `STABLE_TOOL` | Projection helper into curated table forms. |
-| `src/stage5_benchmark/run_projection_core_to_curated_v1.py` | `STABLE_TOOL` | Projection helper from core signatures to curated exports. |
+| `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py` | `STABLE_TOOL` | First true downstream modeling-ready helper anchored to the frozen benchmark-final table. Emits a row-linked sidecar of explicit deterministic parse/math transforms while preserving benchmark-final raw values, row identity linkage, and transform provenance. |
+| `src/stage5_benchmark/run_projection_to_curated_v1.py` | `STABLE_TOOL` | Projection helper into curated table forms. Current implementation remains a legacy or branch-only modeling helper unless and until it is explicitly re-anchored downstream of the frozen benchmark-final table. |
+| `src/stage5_benchmark/run_projection_core_to_curated_v1.py` | `STABLE_TOOL` | Projection helper from core signatures to curated exports. Current implementation is downstream schema work, not benchmark-final closure. |
 | `src/stage5_benchmark/run_alignment_eval_v1.py` | `STABLE_TOOL` | Alignment-evaluation helper for Stage 5 assets. |
 | `src/stage5_benchmark/run_alignment_eval_core_v1.py` | `STABLE_TOOL` | Core-signature alignment evaluation helper. |
 | `src/stage5_benchmark/run_alignment_eval_schema_v3_v1.py` | `STABLE_TOOL` | Schema-v3 alignment evaluation helper. |
 | `src/stage5_benchmark/run_evidence_token_qc_v1.py` | `STABLE_TOOL` | Evidence-token QC helper for numeric field support and field-level review prioritization. |
-| `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py` | `STABLE_TOOL` | Postprocess the Stage 5 final table into a reviewer-facing formulation audit surface for the downstream audit/governance layer without changing benchmark counts. |
+| `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py` | `STABLE_TOOL` | Postprocess the frozen Stage 5 benchmark-final table into a reviewer-facing formulation audit surface for the downstream audit/governance layer without changing benchmark counts or benchmark-final semantics. |
 | `src/stage5_benchmark/audit_evidence_resolver_v1.py` | `STABLE_TOOL` | Resolve paper-local text/table evidence pointers for downstream audit-pack and field-review tooling. |
 | `src/stage5_benchmark/build_audit_pack_human_evidence_v1.py` | `STABLE_TOOL` | Build a human-readable evidence workbook for review of extracted formulation fields and provenance. |
 | `src/stage5_benchmark/export_full_database_v1.py` | `STABLE_TOOL` | Final database export utility for downstream release work. |
 | `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for Layer 2 boundary GT from the Stage 5 final formulation table, with prediction-reference columns separated from GT-authoritative reviewer fields. |
-| `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for formulation-row value credibility audit from frozen Stage 5 final rows, with compact reviewer columns, helper formulation labels, Layer 2 paper-risk metadata, dropdown GT controls, and strict evidence/value support gating. |
-| `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric credibility review. The latest Stage5 final table plus audit-ready export are canonical for current-system presence; historical scaffold and prior-workbook bridge artifacts are advisory mapping aids only. |
+| `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for formulation-row value credibility audit from frozen Stage 5 benchmark-final rows, with compact reviewer columns, helper formulation labels, Layer 2 paper-risk metadata, dropdown GT controls, and strict evidence/value support gating. |
+| `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric credibility review. The latest Stage5 benchmark-final table plus audit-ready export are canonical for current-system presence; historical scaffold and prior-workbook bridge artifacts are advisory mapping aids only. |
+
+## Stage5 Internal Family Note
+
+- Benchmark-final family:
+  - `build_minimal_final_output_v1.py`
+  - `enforce_identity_freeze_v1.py`
+  - `compare_final_table_to_gt_v1.py`
+- Downstream modeling-ready family:
+  - `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py` is the first maintained downstream modeling-ready surface anchored directly to the frozen benchmark-final table
+  - it emits a sidecar only and does not redefine `final_formulation_table_v1.tsv`
+  - deterministic derivation, normalization, and curated projection helpers
+  - only when explicitly downstream of the frozen benchmark-final object
+- Downstream audit/review family:
+  - audit-ready export and reviewer workbooks built from the frozen
+    benchmark-final object
+- No Stage5 helper may redefine or replace `final_formulation_table_v1.tsv`.
 | `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py` | `STABLE_TOOL` | Build a diagnostic-only scaffold-binding surface from a frozen Layer2-style GT workbook and selected Stage5 final tables using article-native-first identity binding. It emits audit TSV/markdown surfaces only and does not mutate benchmark-valid outputs. |
 | `src/stage5_benchmark/enforce_identity_freeze_v1.py` | `STABLE_TOOL` | Mandatory Stage5 post-materialization identity gate. Validate `IDENTITY_FREEZE_RULE_V1` against an upstream identity scaffold plus a Stage5 final table, emit violation diagnostics, and fail non-zero on any identity-invariance breach unless explicitly run in report-only mode. |
 | `src/stage5_benchmark/run_layer3_cross_audit_v1.py` | `STABLE_TOOL` | Build a report-only Layer 3 cross-audit pack from the compact value workbook plus cleaned text/tables. It emits deterministic cell-risk flags, bounded Gemini/NVIDIA auditor execution or task exports, partial backend checkpoints, and a merged human-review TSV/markdown report for value-credibility audit without modifying workbook contents or benchmark-valid artifacts. |

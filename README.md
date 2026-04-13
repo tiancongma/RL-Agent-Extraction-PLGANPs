@@ -132,9 +132,25 @@ Current active Stage 3 script:
 
 - `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
 
-Current active Stage 2 script:
+Current maintained Stage 2 execution surfaces:
 
 - `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+  - governed coarse-grained Stage2 wrapper and lawful replay/rehydration path
+    into the authoritative completed Stage2 artifact
+- `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+  - dedicated maintained frozen `S2-4a` prompt-construction boundary
+- `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+  - dedicated maintained frozen `S2-4b` live-call boundary
+- `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+  - dedicated maintained frozen `S2-5` semantic-parsing boundary that writes
+    semantic-intermediate artifacts only
+- `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+  - dedicated maintained frozen `S2-6` contract-validation boundary that
+    consumes `S2-5` semantic intermediates and writes validation artifacts only
+- `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+  - dedicated maintained frozen `S2-7` compatibility-projection boundary that
+    consumes a passing `S2-6` validation surface and writes the completed
+    Stage2 artifact only
 
 Stage2 authority reminder:
 
@@ -142,6 +158,10 @@ Stage2 authority reminder:
   fallback, comparator, migration-support, or diagnostic infrastructure only.
 - Stage2 is a composite stage consisting of LLM semantic discovery followed by
   deterministic post-LLM completion.
+- Operationally, Stage2 now includes fine-grained maintained execution
+  surfaces for frozen substeps, while the composite runner remains the coarse
+  maintained wrapper and the lawful replay/rehydration path for completed
+  Stage2 authority.
 - No formulation candidate may enter authoritative Stage2 output unless it is
   traceable to `llm_semantic_discovery` or to an explicitly declared governed
   fallback semantic source.
@@ -149,6 +169,9 @@ Stage2 authority reminder:
   `llm_first_composite` mode it is lawful only within LLM-declared DOE scope.
 - Only the completed Stage2 artifact is authoritative for downstream Stage3
   consumption and Stage2 structural evaluation.
+- The completed Stage2 artifact remains authoritative for downstream Stage3
+  consumption whether produced through the coarse composite wrapper or the
+  dedicated frozen `S2-7` runner.
 - The governed three-paper comparison slice
   `src/utils/run_threepaper_stage2_v2_comparison.py` is a Stage2-only
   semantic-intermediate architecture-enforcement experiment for `WIVUCMYG`,

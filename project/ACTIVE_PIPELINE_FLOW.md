@@ -78,8 +78,11 @@ Fine-grained governance mapping:
 - Stage2:
   - `S2-1 Scope resolution`
   - `S2-2 Evidence construction`
+  - `S2-2a Candidate segmentation`
+  - `S2-2b Selector evidence prioritization`
   - `S2-3 Prompt assembly`
-  - `S2-4 LLM call`
+  - `S2-4a Prompt construction freeze boundary`
+  - `S2-4b Live LLM call freeze boundary`
   - `S2-5 Semantic parsing`
   - `S2-6 Contract validation`
   - `S2-7 Compatibility projection`
@@ -251,7 +254,9 @@ authoritative manifest used by extraction.
 
 Exact input files or directories:
 
-- `data/raw/zotero/zotero_selected_items.jsonl`
+- one or more declared raw Zotero JSONL artifacts such as:
+  - `data/raw/zotero/zotero_selected_items.jsonl`
+  - `data/raw/zotero/zotero_collection__goren_2025.jsonl`
 - local PDF and HTML files referenced by the raw records
 
 Exact script path(s) and script filename(s):
@@ -336,6 +341,24 @@ Exact input files or directories:
 Exact script path(s) and script filename(s):
 
 - `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+
+Operational execution note:
+
+- `run_stage2_composite_v1.py` is the governed coarse-grained Stage2 wrapper
+  for the full composite contract and the lawful replay/rehydration path that
+  can traverse through `S2-5`, `S2-6`, and `S2-7` into the completed Stage2
+  artifact.
+- Current maintained Stage2 execution also includes dedicated fine-grained
+  execution-facing surfaces for frozen substeps where governance has made
+  them explicit, including:
+  - `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+- These dedicated runners do not replace the composite Stage2 contract or the
+  lawful replay/rehydration requirement for authoritative completed Stage2
+  output.
 
 Internal Stage2 scripts:
 
@@ -460,6 +483,118 @@ S2-2 contract note:
 - this prompt-assembly boundary is S2-3:
   - it may assemble prompts from `evidence_blocks_v1.json` only
   - it must not reread clean text or perform new evidence selection or ranking
+- current-cycle frozen-substep discoverability mapping:
+  - `S2-2a`
+    - owner:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
+    - outputs:
+      `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+      and `analysis/candidate_segmentation_debug_v1.tsv`
+    - stop boundary:
+      candidate segmentation only
+    - next lawful step:
+      `S2-2b`
+  - `S2-2b`
+    - owner:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+      plus `build_role_aware_selection`
+    - outputs:
+      `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+      and `analysis/table_selection_debug_v1.json`
+    - stop boundary:
+      canonical evidence handoff written
+    - next lawful step:
+      `S2-3`
+  - `S2-3`
+    - owner:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+      plus `build_prompt_preview_row`
+    - outputs:
+      in-memory prompt payload and maintained observability
+      `analysis/stage2_prompt_preview_v1.tsv`
+    - stop boundary:
+      prompt assembled from canonical evidence only
+    - next lawful step:
+      `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when that frozen boundary is being audited
+  - `S2-4a`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+    - outputs:
+      `analysis/s2_4a_prompt_template_v1.txt`
+      `analysis/s2_4a_prompts_v1.jsonl`
+      `analysis/s2_4a_prompt_audit_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      prompt artifacts written, no live LLM call
+    - next lawful step:
+      `S2-4b live LLM call`
+  - `S2-4b`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+    - inputs:
+      frozen `analysis/s2_4a_prompts_v1.jsonl`
+    - outputs:
+      replayable `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      request metadata sidecars under `request_metadata/`
+      `analysis/s2_4b_request_summary_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - frozen live-call policy for the current cycle:
+      - model:
+        `gemini-2.5-flash`
+      - request mode:
+        `stream_collect`
+      - timeout seconds:
+        `180`
+      - retries:
+        `0`
+      - returned content is persisted without semantic judgment at this boundary
+    - stop boundary:
+      raw-response payloads written, no parsing or validation
+    - next lawful step:
+      `S2-5 semantic parsing`
+  - `S2-5`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+    - inputs:
+      frozen `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      plus minimal manifest provenance needed for paper metadata and `source_text_path`
+    - outputs:
+      `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+      `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      semantic-intermediate artifacts written, no contract validation or compatibility projection
+    - next lawful step:
+      `S2-6 contract validation`
+  - `S2-6`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+    - inputs:
+      frozen `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+      plus any preserved `S2-5` provenance sidecars already written in the same run directory
+    - outputs:
+      `analysis/stage2_semantic_authority_contract_report_v1.json`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      semantic contract validation artifacts written, no compatibility projection
+    - next lawful step:
+      `S2-7 compatibility projection`
+  - `S2-7`
+    - owner:
+      `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+    - inputs:
+      passing `S2-6` validation report plus the referenced frozen
+      `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+    - outputs:
+      `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+      `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl`
+      `semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv`
+      `semantic_to_widerow_adapter/compatibility_projection_summary_v1.json`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      completed Stage2 artifact written, no Stage3 execution
+    - next lawful step:
+      `Stage3 relation materialization`
 - S2-4 is the LLM call boundary:
   - it is the only nondeterministic Stage2 substep
   - it emits run-scoped raw LLM response payloads
@@ -502,6 +637,8 @@ S2-2 contract note:
 Boundary status:
 
 - `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+  - `internal_intermediate`
+- `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
   - `internal_intermediate`
 - `semantic_stage2_objects/raw_responses/`
   - `diagnostic_boundary`
@@ -618,6 +755,23 @@ records.
 Stage 5 is a materialization layer. It must not perform semantic inference or
 same-paper donor search.
 
+Internal Stage5 family rule:
+
+- benchmark-final family:
+  - `build_minimal_final_output_v1.py`
+  - `enforce_identity_freeze_v1.py`
+  - `compare_final_table_to_gt_v1.py`
+- downstream modeling-ready family:
+  - first maintained modeling-ready surface: `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py`
+  - this helper reads only the frozen benchmark-final table and emits a downstream sidecar of deterministic parse/math transforms with row identity linkage and raw-value provenance
+  - deterministic normalization, derivation, and curated projection helpers
+    that operate only downstream of the frozen benchmark-final object
+- downstream audit/review family:
+  - audit-ready export and reviewer workbooks derived from the frozen
+    benchmark-final object
+- these are internal Stage5 families only; they do not create a new coarse
+  stage or alter benchmark comparison semantics
+
 Stage 5 identity constraints layer:
 
 - exclude parent-linked non-synthesis descendants when they are explicitly
@@ -642,6 +796,32 @@ Identity freeze and attachment discipline:
 - measurement fields such as size, PDI, zeta, EE, and LC must not trigger a
   split by default
 - if uncertain, attach to the existing identity rather than split
+
+Benchmark-final contract:
+
+- the canonical benchmark-valid object is `final_formulation_table_v1.tsv`
+- benchmark-final may include:
+  - deterministic row closure
+  - identity-preserving filtering
+  - conservative duplicate or variant collapse under explicit rules
+  - explicit Stage3 resolved relation carry-through
+- benchmark-final must not:
+  - silently replace paper-reported values with convenience-normalized values
+  - perform assumption-based inference
+  - perform donor-fill
+  - change formulation membership after identity freeze
+
+Downstream modeling-ready contract:
+
+- modeling-ready outputs must be downstream of the frozen benchmark-final
+  object
+- the first maintained modeling-ready path is a sidecar TSV built from
+  `final_formulation_table_v1.tsv` plus explicit deterministic transform rules
+- they may include normalization, canonical label cleanup, unit harmonization,
+  safe deterministic derivation, and curated projection
+- they must preserve raw benchmark-final values and provenance
+- they must not replace `final_formulation_table_v1.tsv`
+- they must not change formulation membership
 
 Stage 5 post-comparison risk stratification layer:
 
@@ -706,6 +886,9 @@ Reviewer-facing audit-system interpretation:
   - field-level review workbook
   - cell-level cross-audit report
   - evidence handoff tooling
+- these downstream reviewer-facing surfaces are not modeling-ready projections
+  and are not benchmark-final builders; they are frozen-final-table audit
+  surfaces
 
 Stage completion artifact:
 
@@ -838,6 +1021,13 @@ python src/stage1_cleaning/zotero_raw_to_manifest.py --overwrite
 python src/stage1_cleaning/clean_manifest_to_text.py --overwrite --prefer html
 python src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py --dataset-id goren_2025 --manifest-tsv data/cleaned/goren_2025/index/manifest.tsv
 ```
+
+When the canonical manifest is assembled from multiple declared upstream raw
+sources, pass repeatable `--input` arguments plus aligned source-provenance
+arguments such as `--source-collection`, `--source-manifest-lineage`,
+`--source-selection-rule`, and `--input-dataset-id`. The assembly contract is
+explicit; it must not be inferred from recency, file naming similarity, or
+undocumented notes.
 
 ### Step 2. Run the composite Stage2 entrypoint
 

@@ -220,6 +220,16 @@ Core scripts:
 - `src/stage1_cleaning/clean_manifest_to_text.py`
 - `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py`
 
+Stage1 raw-source contract note:
+
+- `src/stage1_cleaning/zotero_raw_to_manifest.py` may assemble
+  `manifest_current.tsv` from one or more explicitly declared raw Zotero JSONL
+  inputs.
+- Multi-source Stage1 regeneration must pass declared per-input provenance such
+  as source collection, source manifest lineage, and source selection rule.
+- Stage1 regeneration must not assume that the canonical manifest comes from a
+  single raw corpus selector.
+
 Completion artifacts:
 
 - `data/cleaned/index/manifest_current.tsv`
@@ -269,20 +279,33 @@ Current clarification on remaining Stage2 pressure:
 
 Current implementation-status note:
 
-- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the one governed
-  Stage2 execution entrypoint.
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py` is the governed
+  coarse-grained Stage2 wrapper and the lawful replay/rehydration entrypoint
+  for traversing the maintained full Stage2 path into the authoritative
+  completed Stage2 artifact.
+- It is not the only maintained Stage2 execution surface in practical repo
+  usage.
+- Dedicated maintained fine-grained Stage2 runners also exist for:
+  - `S2-4a` prompt construction freeze
+  - `S2-4b` live LLM call freeze
+  - `S2-5` semantic parsing freeze
 - The governed Stage2 wrapper refreshes run-level feature activation observability after writing `RUN_CONTEXT.md`.
 - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
   internal LLM semantic-discovery substep used by the governed Stage2 entrypoint.
 - The same maintained Stage2 path may replay saved raw responses without new
   LLM calls and rehydrate current live-v2 raw-response freezes back into the
   authoritative completed Stage2 artifact.
+- `S2-6` contract validation now also has a dedicated maintained runner.
+- `S2-7` compatibility projection now also has a dedicated maintained runner.
 - The maintained Stage2 path should be read through the following internal
   governance mapping:
   - `S2-1 Scope resolution`
   - `S2-2 Evidence construction`
+  - `S2-2a Candidate segmentation`
+  - `S2-2b Selector evidence prioritization`
   - `S2-3 Prompt assembly`
-  - `S2-4 LLM call`
+  - `S2-4a Prompt construction freeze boundary`
+  - `S2-4b Live LLM call freeze boundary`
   - `S2-5 Semantic parsing`
   - `S2-6 Contract validation`
   - `S2-7 Compatibility projection`
@@ -329,7 +352,141 @@ Current implementation-status note:
 - S2-3 prompt assembly may consume `evidence_blocks_v1.json` only:
   - it must not reread clean text
   - it must not perform new selection or ranking
-- S2-4 is the only nondeterministic Stage2 substep and emits raw LLM response
+- fine-grained frozen-substep ownership for current-cycle discoverability:
+  - `S2-2a`
+    - owner surface:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
+    - inputs:
+      declared manifest row, governed clean text, governed Stage1 table assets
+    - outputs:
+      `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+      and `analysis/candidate_segmentation_debug_v1.tsv`
+    - stop boundary:
+      candidate segmentation only
+    - next lawful step:
+      `S2-2b`
+  - `S2-2b`
+    - owner surface:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+      plus `build_role_aware_selection`
+    - inputs:
+      frozen `candidate_blocks_v1.json`, same manifest row, same governed clean text/table assets
+    - outputs:
+      `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+      and `analysis/table_selection_debug_v1.json`
+    - stop boundary:
+      canonical evidence handoff written
+    - next lawful step:
+      `S2-3`
+  - `S2-3`
+    - owner surface:
+      `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+      plus `build_prompt_preview_row`
+    - inputs:
+      `evidence_blocks_v1.json` only
+    - outputs:
+      in-memory prompt payload and maintained observability
+      `analysis/stage2_prompt_preview_v1.tsv`
+    - stop boundary:
+      prompt assembled from canonical evidence only
+    - next lawful step:
+      `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when prompt freezing is being audited
+  - `S2-4a`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+    - inputs:
+      canonical `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+    - outputs:
+      `analysis/s2_4a_prompt_template_v1.txt`
+      `analysis/s2_4a_prompts_v1.jsonl`
+      `analysis/s2_4a_prompt_audit_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      prompt artifacts written, no live LLM call
+    - next lawful step:
+      `S2-4b live LLM call`
+  - `S2-4b`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+    - inputs:
+      frozen `analysis/s2_4a_prompts_v1.jsonl`
+    - outputs:
+      replayable `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      request metadata sidecars under `request_metadata/`
+      `analysis/s2_4b_request_summary_v1.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - frozen call policy for the current cycle:
+      - model:
+        `gemini-2.5-flash`
+      - request mode:
+        `stream_collect` via
+        `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect`
+      - generation config:
+        `temperature=0`
+        `response_mime_type=application/json`
+      - request timeout seconds:
+        `180`
+      - request retries:
+        `0`
+      - retry sleep seconds:
+        `3.0`
+      - persistence rule:
+        any returned payload is written as-is to `raw_responses/` even if malformed
+      - failure rule:
+        timeout, auth, transport, or API failure writes request metadata and marks controlled failure
+    - optional bounded stability-test controls on the maintained runner:
+      - `--max-parallel-requests`
+      - `--inter-request-sleep-seconds`
+      - these are diagnostic call-layer controls only
+      - they do not alter frozen `S2-4a` prompt content or the default frozen `S2-4b` policy unless explicitly used
+    - stop boundary:
+      raw-response payloads written, no semantic parsing or validation
+    - next lawful step:
+      `S2-5 semantic parsing`
+  - `S2-5`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+    - inputs:
+      frozen `raw_responses/<paper_key>__stage2_v2_raw_response.json`
+      plus minimal manifest provenance for paper metadata and `text_path`
+    - outputs:
+      `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+      `semantic_stage2_objects/semantic_stage2_v2_summary.tsv`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      semantic-intermediate artifacts written, no validation or compatibility projection
+    - next lawful step:
+      `S2-6 contract validation`
+  - `S2-6`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+    - inputs:
+      frozen `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+      from an `S2-5` run directory
+    - outputs:
+      `analysis/stage2_semantic_authority_contract_report_v1.json`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      validation artifacts written, no compatibility projection
+    - next lawful step:
+      `S2-7 compatibility projection`
+  - `S2-7`
+    - owner surface:
+      `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+    - inputs:
+      passing `S2-6` validation report plus the referenced frozen
+      `semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+    - outputs:
+      `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+      `semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl`
+      `semantic_to_widerow_adapter/compatibility_projection_trace_v1.tsv`
+      `semantic_to_widerow_adapter/compatibility_projection_summary_v1.json`
+      and stage-local `RUN_CONTEXT.md`
+    - stop boundary:
+      completed Stage2 artifact written, no Stage3 execution
+    - next lawful step:
+      `Stage3 relation materialization`
+- S2-4b is the only nondeterministic Stage2 substep and emits raw LLM response
   payloads for live or replay-backed processing
 - S2-5 parses raw LLM responses into Stage2 semantic-object artifacts
 - Stage2 segmentation closure freeze rule:
@@ -344,7 +501,7 @@ Current implementation-status note:
   - judge S2-2b only inside the S2-2 boundary on frozen S2-2a inputs
   - selector must not introduce new candidate discovery behavior and operates
     strictly on existing `candidate_blocks_v1.json`
-  - do not use S2-3 prompt assembly, S2-4 LLM call, S2-5 semantic parsing,
+  - do not use S2-3 prompt assembly, S2-4b live LLM call, S2-5 semantic parsing,
     S2-6 contract validation, or S2-7 compatibility projection to decide
     selector closure
   - do not use any Stage3, Stage4, Stage5, or GT-comparison signal for S2-2b
@@ -424,6 +581,15 @@ Current implementation-status note:
   LLM-declared DOE scope in `llm_first_composite` mode.
 - That validator is S2-6:
   - contract validation, not selector logic
+- `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+  is the dedicated maintained execution surface for the semantic-only S2-6
+  boundary. It consumes `S2-5` semantic intermediates only, writes validation
+  artifacts only, and stops before `S2-7`.
+- `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+  is the dedicated maintained execution surface for `S2-7`. It requires a
+  passing `S2-6` validation report, consumes the referenced `S2-5` semantic
+  intermediates, writes the completed Stage2 compatibility-projected artifact,
+  and stops before `Stage3`.
 - `src/stage2_sampling_labels/emit_semantic_objects_from_cleaned_papers_v1.py`
   remains available only for explicitly declared fallback, comparator,
   migration-support, or diagnostic use and must not be treated as the governed
@@ -628,6 +794,23 @@ Completion artifacts:
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
 
+Stage5 internal family rule:
+
+- benchmark-final family:
+  - `src/stage5_benchmark/build_minimal_final_output_v1.py`
+  - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+  - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
+- downstream modeling-ready family:
+  - first maintained modeling-ready surface: `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py`
+  - this helper reads only the frozen benchmark-final table and writes a row-linked sidecar of explicit deterministic parse/math transforms; it is downstream Stage5 support, not a new stage
+  - deterministic normalization, derivation, and curated projection helpers
+    that operate only downstream of the frozen benchmark-final object
+- downstream audit/review family:
+  - audit-ready export and reviewer workbooks built from the frozen
+    benchmark-final object
+- these are internal Stage5 contract families only; they do not define a new
+  coarse stage
+
 Required Stage 3 inputs:
 
 - `formulation_relation_records_v1.tsv`
@@ -760,6 +943,26 @@ Materialization rule:
   relation fields only.
 - Stage 5 must not perform semantic inference, donor search, or silent
   relation-layer bypass.
+- Benchmark-final Stage5 also must not silently replace paper-reported values
+  with convenience-normalized values.
+- Benchmark-final Stage5 may apply deterministic row closure,
+  identity-preserving filtering, explicit Stage3 resolved relation carry-
+  through, and conservative duplicate or variant collapse under explicit rules.
+- Modeling-ready helpers may normalize, harmonize units, derive fields, and
+  project curated exports only after the benchmark-final object is frozen, and
+  they must preserve raw benchmark-final values plus provenance.
+- The first maintained modeling-ready helper currently stops at a sidecar TSV
+  rather than curated projection so the frozen benchmark-final contract stays
+  explicit while downstream reuse becomes auditable.
+
+Current implementation caution:
+
+- some branch-only legacy derivation and projection helpers in
+  `src/stage5_benchmark/` still read legacy weak-label artifacts directly
+  rather than the frozen benchmark-final table
+- treat those helpers as non-mainline modeling utilities, not as part of the
+  active benchmark-final contract, until they are explicitly re-anchored
+  downstream of `final_formulation_table_v1.tsv`
 
 Production-path endpoint:
 

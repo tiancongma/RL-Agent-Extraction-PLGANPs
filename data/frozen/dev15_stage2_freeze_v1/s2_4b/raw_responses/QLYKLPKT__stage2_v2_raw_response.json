@@ -1,0 +1,538 @@
+{
+  "document_key": "QLYKLPKT",
+  "doi": "10.2147/IJN.S54040",
+  "formulation_candidates": [
+    {
+      "candidate_id": "FC1",
+      "raw_label": "PLGA-based itraconazole injectable nanospheres for sustained release nanoparticles",
+      "normalized_label": "PLGA-ITZ-NS",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s2", "s10", "s13", "s18", "s24", "s25"],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC2",
+      "raw_label": "Sporanox",
+      "normalized_label": "Sporanox",
+      "instance_kind": "candidate_non_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s7", "s12"],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC3",
+      "raw_label": "unloaded PLGA nanoparticles",
+      "normalized_label": "unloaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s16"],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "CC1",
+      "formulation_candidate_id": "FC1",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "1% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "solution in acetone",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s3", "s6", "s9"]
+    },
+    {
+      "component_id": "CC2",
+      "formulation_candidate_id": "FC1",
+      "component_name": "poloxamer 188",
+      "component_role": "surfactant",
+      "amount_text": "2.5, 3, 4, and 10 mg/mL",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solutions",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s4", "s8"]
+    },
+    {
+      "component_id": "CC3",
+      "formulation_candidate_id": "FC1",
+      "component_name": "ITZ",
+      "component_role": "drug",
+      "amount_text": "5:1, 10:1, and 15:1",
+      "amount_kind": "ratio",
+      "phase_hint": "PLGA:ITZ (w/w)",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s5", "s8"]
+    },
+    {
+      "component_id": "CC4",
+      "formulation_candidate_id": "",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s6", "s9", "s22"]
+    },
+    {
+      "component_id": "CC5",
+      "formulation_candidate_id": "FC1",
+      "component_name": "lyoprotectants",
+      "component_role": "additive",
+      "amount_text": "various concentrations",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s11"]
+    },
+    {
+      "component_id": "CC6",
+      "formulation_candidate_id": "FC3",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s16"]
+    },
+    {
+      "component_id": "CC7",
+      "formulation_candidate_id": "FC3",
+      "component_name": "poloxamer 188",
+      "component_role": "surfactant",
+      "amount_text": "different concentrations",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s16"]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "VC1",
+      "formulation_candidate_id": "FC3",
+      "variable_name": "Poloxamer 188 concentration",
+      "value_text": "2.5, 3, 4, 10 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s4", "s16", "s17"]
+    },
+    {
+      "variable_id": "VC2",
+      "formulation_candidate_id": "FC1",
+      "variable_name": "PLGA:ITZ (w/w) ratio",
+      "value_text": "5:1, 10:1, 15:1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s5", "s24"]
+    },
+    {
+      "variable_id": "VC3",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA concentration",
+      "value_text": "1% (w/v)",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s3", "s6", "s9"]
+    },
+    {
+      "variable_id": "VC4",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA solution volume",
+      "value_text": "5 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s3", "s5"]
+    },
+    {
+      "variable_id": "VC5",
+      "formulation_candidate_id": "",
+      "variable_name": "Aqueous solution volume",
+      "value_text": "50 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s4", "s6"]
+    },
+    {
+      "variable_id": "VC6",
+      "formulation_candidate_id": "",
+      "variable_name": "Organic phase addition rate",
+      "value_text": "0.3 mL per minute",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s6"]
+    },
+    {
+      "variable_id": "VC7",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA ratio",
+      "value_text": "50:50",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s8", "s9"]
+    },
+    {
+      "variable_id": "VC8",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA molecular weight",
+      "value_text": "30,000–60,000 Da",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s8"]
+    },
+    {
+      "variable_id": "VC9",
+      "formulation_candidate_id": "FC1",
+      "variable_name": "Lyoprotectant concentrations",
+      "value_text": "various concentrations",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s11"]
+    },
+    {
+      "variable_id": "VC10",
+      "formulation_candidate_id": "",
+      "variable_name": "Acetone removal temperature",
+      "value_text": "60°C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s22"]
+    },
+    {
+      "variable_id": "VC11",
+      "formulation_candidate_id": "",
+      "variable_name": "Acetone removal time",
+      "value_text": "6 hours",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s22"]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M1",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "size",
+      "value_text": "",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s11", "s17", "s18", "s23", "s24", "s25"]
+    },
+    {
+      "measurement_id": "M2",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "zeta_potential",
+      "value_text": "",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s11", "s17", "s20", "s23"]
+    },
+    {
+      "measurement_id": "M3",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s11", "s21", "s24"]
+    },
+    {
+      "measurement_id": "M4",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "other",
+      "value_text": "external morphology",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s11"]
+    },
+    {
+      "measurement_id": "M5",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "pdi",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s17", "s18", "s23", "s24", "s25"]
+    },
+    {
+      "measurement_id": "M6",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "other",
+      "value_text": "ITZ concentration in rat plasma",
+      "unit_text": "ng/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": ["s7", "s12"]
+    },
+    {
+      "measurement_id": "M7",
+      "formulation_candidate_id": "FC1",
+      "measurement_name": "other",
+      "value_text": "pharmacokinetic parameters",
+      "unit_text": "",
+      "ambiguity_note": "Includes T½, AUC, MRT, Vss, CL",
+      "evidence_span_ids": ["s7", "s12", "s19"]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "RH1",
+      "source_candidate_id": "FC1",
+      "target_candidate_id": "FC2",
+      "relation_type": "shares_context_with",
+      "note": "PLGA-ITZ-NS formulation was compared with Sporanox®",
+      "evidence_span_ids": ["s7", "s12"]
+    },
+    {
+      "relation_id": "RH2",
+      "source_candidate_id": "FC3",
+      "target_candidate_id": "VC1",
+      "relation_type": "varies_by",
+      "note": "Unloaded PLGA nanoparticles formulation varies by poloxamer 188 concentration",
+      "evidence_span_ids": ["s4", "s16"]
+    },
+    {
+      "relation_id": "RH3",
+      "source_candidate_id": "FC1",
+      "target_candidate_id": "VC2",
+      "relation_type": "varies_by",
+      "note": "PLGA-ITZ-NS formulation varies by PLGA:ITZ ratio",
+      "evidence_span_ids": ["s5", "s24"]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "s1",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "METADATA",
+      "supporting_text": "key: QLYKLPKT\ndoi: 10.2147/IJN.S54040\ntitle: Development of PLGA-based itraconazole injectable nanospheres for sustained release"
+    },
+    {
+      "span_id": "s2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK: sentence 1",
+      "supporting_text": "PLGA-based itraconazole injectable nanospheres for sustained release nanoparticles"
+    },
+    {
+      "span_id": "s3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK: sentence 1",
+      "supporting_text": "5 mL of PLGA (1% w/v) solution"
+    },
+    {
+      "span_id": "s4",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK: sentence 1",
+      "supporting_text": "four aqueous solutions (50 mL of each) containing 2.5, 3, 4, and 10 mg/mL of nonionic surfactant (poloxamer 188)"
+    },
+    {
+      "span_id": "s5",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK: sentence 2",
+      "supporting_text": "various amounts of ITZ were dissolved into three solutions (5 mL of each) of 1% (w/v) PLGA in acetone to obtain PLGA:ITZ (w/w) ratios of 5:1, 10:1, and 15:1, respectively."
+    },
+    {
+      "span_id": "s6",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK: sentence 3",
+      "supporting_text": "The organic phase was added at a constant rate of 0.3 mL per minute with stirring to 50 mL of the aqueous phase, containing an optimal concentration of poloxamer 188."
+    },
+    {
+      "span_id": "s7",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK: sentence 1",
+      "supporting_text": "our formulation was bioequivalent to Sporanox"
+    },
+    {
+      "span_id": "s8",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK: Materials list",
+      "supporting_text": "PLGA (polylactic-glycolic acid, ratio: 50:50, molecular weight 30,000–60,000 Da), poloxamer 188 (Pluronic® F-68), ITZ"
+    },
+    {
+      "span_id": "s9",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK: sentence 5",
+      "supporting_text": "a 1% (w/v) PLGA solution was prepared by dissolving the PLGA (50:50) in acetone."
+    },
+    {
+      "span_id": "s10",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK: sentence 3",
+      "supporting_text": "newly developed PLGA-ITZ-NS"
+    },
+    {
+      "span_id": "s11",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK: sentence 2-4",
+      "supporting_text": "Their physicochemical properties, including size, zeta potential, external morphology and encap­sulation efficiency, were characterized by dynamic light scattering (DLS), scanning electron microscopy (SEM) and high performance liquid chromatography (HPLC). The effect of the different selected lyoprotectants with various concentrations on NS particles size and surface charge were also assessed."
+    },
+    {
+      "span_id": "s12",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK: sentence 6",
+      "supporting_text": "Pharmacokinetics of the optimum PLGA-ITZ-NS formulation was compared with the former commercial Sporanox injection formulation using rats as the animal model."
+    },
+    {
+      "span_id": "s13",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 8: sample_row_2",
+      "supporting_text": "concentration was 3 mg/mL, the optimal PLGA-ITZ-NS"
+    },
+    {
+      "span_id": "s14",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 8: sample_row_1",
+      "supporting_text": "Note: 3 mg/ml was selected as optimal surfactant concentration to prepare Plga-"
+    },
+    {
+      "span_id": "s15",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 8: title_or_caption",
+      "supporting_text": "Experimental design variable table."
+    },
+    {
+      "span_id": "s16",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1: title_or_caption",
+      "supporting_text": "Table 1 Physicochemical properties of unloaded PLGA nanoparticles stabilized by different concentrations of poloxamer 188"
+    },
+    {
+      "span_id": "s17",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1: column_headers",
+      "supporting_text": "Poloxamer 188 (mg/mL) Particle size (nm) PDI Zeta potential (mV)"
+    },
+    {
+      "span_id": "s18",
+      "source_region_type": "table_notes",
+      "source_locator_text": "Table 1: Note",
+      "supporting_text": "Note: 3 mg/mL was selected as optimal surfactant concentration to prepare PLGA- ITZ-NS for the remaining studies."
+    },
+    {
+      "span_id": "s19",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK: sentence 2",
+      "supporting_text": "Abbreviations: ITZ, itraconazole; PLGA-ITZ-NS, itraconazole-loaded poly(lactic- co-glycolic acid) nanospheres; n, number of rats used; T½, terminal biological half- life; AUC, total area under the plasma concentration versus time curve; MRT, mean residence time; Vss, volume of distribution at steady state; CL, clearance."
+    },
+    {
+      "span_id": "s20",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK: sentence 5",
+      "supporting_text": "zeta potential indicates the amount of charges on the surface of nanoparticles."
+    },
+    {
+      "span_id": "s21",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK: sentence 6",
+      "supporting_text": "Formulation with a high drug encapsula­tion efficiency can improve its bioavailability, thus making better therapeutic efficacy."
+    },
+    {
+      "span_id": "s22",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK (2nd): sentence 1",
+      "supporting_text": "Acetone was removed by evaporation under vacuum at 60°C for 6 hours"
+    },
+    {
+      "span_id": "s23",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK (2nd): sentence 3",
+      "supporting_text": "The particle size, size distribution polydispersity index (PDI), and the zeta potential were measured by dynamic light scattering (DLS) method"
+    },
+    {
+      "span_id": "s24",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK (2nd): sentence 1-4",
+      "supporting_text": "PLGA-ITZ-NS, with a ratio of 5:1 and 10:1, gave similar small particle sizes, but the latter had lower PDI and higher EE, which were more preferable. NS, with a ratio of 15:1, provided similar EE as NS with its ratio of 10:1, but the particle size was larger. Therefore, the PLGA-ITZ prepared with an initial ratio of 10:1 was chosen as the optimal formulation when considering particle size, PDI and EE comprehensively, and was utilized for the formulation of all the following studies."
+    },
+    {
+      "span_id": "s25",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK (1st): sentence 1-2",
+      "supporting_text": "When the poloxamer 188 concentration was 3 mg/mL, the optimal PLGA-ITZ-NS formulation was obtained with the smallest particle size (189±5 nm) and PDI (0.08±0.02). Therefore, 3 mg/mL of poloxamer 188 was chosen for the preparation of PLGA- ITZ-NS during the whole study."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 8",
+      "is_formulation_table": false,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "s15"
+    },
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "s16"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": ["Poloxamer 188 (mg/mL)"],
+      "constant_variables": ["PLGA (unloaded)"],
+      "new_variables_introduced": []
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 1",
+      "selected_variable": "Poloxamer 188 concentration",
+      "selected_value": "3 mg/mL",
+      "explicit": true,
+      "evidence_span": "s18"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "",
+      "selected_variable": "PLGA:ITZ (w/w) ratio",
+      "selected_value": "10:1",
+      "explicit": true,
+      "evidence_span": "s24"
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "FC1",
+      "inherit_type": "selected_condition",
+      "variable": "Poloxamer 188 concentration",
+      "value": "3 mg/mL",
+      "evidence_span": "s18"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "",
+      "to_table": "FC1",
+      "inherit_type": "selected_condition",
+      "variable": "PLGA:ITZ (w/w) ratio",
+      "value": "10:1",
+      "evidence_span": "s24"
+    }
+  ],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "s9"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    }
+  ]
+}

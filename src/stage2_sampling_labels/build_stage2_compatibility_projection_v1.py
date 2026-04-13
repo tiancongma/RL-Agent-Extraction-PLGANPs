@@ -1128,20 +1128,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main() -> None:
-    parser = build_arg_parser()
-    args = parser.parse_args()
-    contract_path = Path(args.contract_out) if args.contract_out else Path("data/db/db_v2") / CONTRACT_TSV_NAME
-    if args.write_contract_only:
-        write_projection_contract(contract_path)
-        print(f"[ok] wrote projection contract -> {contract_path}")
-        return
-
-    if not args.input_jsonl or not args.output_dir:
-        parser.error("--input-jsonl and --output-dir are required unless --write-contract-only is used.")
-
-    input_path = Path(args.input_jsonl)
-    output_dir = Path(args.output_dir)
+def run_projection(
+    *,
+    input_path: Path,
+    output_dir: Path,
+    contract_path: Path,
+) -> dict[str, Any]:
     documents = load_jsonl_documents(input_path)
     all_rows: list[dict[str, str]] = []
     all_traces: list[dict[str, str]] = []
@@ -1218,7 +1210,29 @@ def main() -> None:
         ],
     }
     (output_dir / SUMMARY_JSON_NAME).write_text(json.dumps(summary, indent=2), encoding="utf-8")
-    print(f"[ok] projected {len(all_rows)} rows from {len(documents)} document payload(s) -> {output_dir}")
+    return summary
+
+
+def main() -> None:
+    parser = build_arg_parser()
+    args = parser.parse_args()
+    contract_path = Path(args.contract_out) if args.contract_out else Path("data/db/db_v2") / CONTRACT_TSV_NAME
+    if args.write_contract_only:
+        write_projection_contract(contract_path)
+        print(f"[ok] wrote projection contract -> {contract_path}")
+        return
+
+    if not args.input_jsonl or not args.output_dir:
+        parser.error("--input-jsonl and --output-dir are required unless --write-contract-only is used.")
+
+    input_path = Path(args.input_jsonl)
+    output_dir = Path(args.output_dir)
+    summary = run_projection(
+        input_path=input_path,
+        output_dir=output_dir,
+        contract_path=contract_path,
+    )
+    print(f"[ok] projected {summary['projected_rows']} rows from {summary['documents']} document payload(s) -> {output_dir}")
 
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ FIELD_ALIASES = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Derive normalized formulation fields from extraction output without changing extraction logic."
+        description="Legacy or branch-only modeling helper: derive normalized formulation fields from extraction output without changing extraction logic."
     )
     parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
     parser.add_argument(

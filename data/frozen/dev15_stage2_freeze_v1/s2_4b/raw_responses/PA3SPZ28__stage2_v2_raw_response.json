@@ -1,0 +1,992 @@
+{
+  "document_key": "PA3SPZ28",
+  "doi": "10.1038/s41598-017-00696-6",
+  "formulation_candidates": [
+    {
+      "candidate_id": "fc_1",
+      "raw_label": "GAR-loaded nanoparticles (GAR-NPs)",
+      "normalized_label": "GAR-NPs",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_1",
+        "es_10",
+        "es_11"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "fc_2",
+      "raw_label": "Drug free nanoparticles",
+      "normalized_label": "Drug free nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "fc_1",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_8"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "fc_3",
+      "raw_label": "Fluorescent nanoparticles",
+      "normalized_label": "Fluorescent nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "fc_1",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_9"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_1",
+      "formulation_candidate_id": "fc_1",
+      "component_name": "PLGA",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_2"
+      ]
+    },
+    {
+      "component_id": "comp_2",
+      "formulation_candidate_id": "fc_1",
+      "component_name": "GAR",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_3"
+      ]
+    },
+    {
+      "component_id": "comp_3",
+      "formulation_candidate_id": "fc_1",
+      "component_name": "acetone",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_4"
+      ]
+    },
+    {
+      "component_id": "comp_4",
+      "formulation_candidate_id": "fc_1",
+      "component_name": "vitamin E TPGS",
+      "amount_text": "20 ml, 0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_5"
+      ]
+    },
+    {
+      "component_id": "comp_5",
+      "formulation_candidate_id": "fc_2",
+      "component_name": "PLGA",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_2",
+        "es_8"
+      ]
+    },
+    {
+      "component_id": "comp_6",
+      "formulation_candidate_id": "fc_2",
+      "component_name": "vitamin E TPGS",
+      "amount_text": "20 ml, 0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_5",
+        "es_8"
+      ]
+    },
+    {
+      "component_id": "comp_7",
+      "formulation_candidate_id": "fc_2",
+      "component_name": "acetone",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_4",
+        "es_8"
+      ]
+    },
+    {
+      "component_id": "comp_8",
+      "formulation_candidate_id": "fc_3",
+      "component_name": "PLGA",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_2",
+        "es_9"
+      ]
+    },
+    {
+      "component_id": "comp_9",
+      "formulation_candidate_id": "fc_3",
+      "component_name": "FITC",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_9"
+      ]
+    },
+    {
+      "component_id": "comp_10",
+      "formulation_candidate_id": "fc_3",
+      "component_name": "vitamin E TPGS",
+      "amount_text": "20 ml, 0.03% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_5",
+        "es_9"
+      ]
+    },
+    {
+      "component_id": "comp_11",
+      "formulation_candidate_id": "fc_3",
+      "component_name": "acetone",
+      "amount_text": "10 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_4",
+        "es_9"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_1",
+      "formulation_candidate_id": "",
+      "variable_name": "preparation method",
+      "value_text": "nanoprecipitation method",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_1"
+      ]
+    },
+    {
+      "variable_id": "var_2",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring condition",
+      "value_text": "magnetic stirring",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_6"
+      ]
+    },
+    {
+      "variable_id": "var_3",
+      "formulation_candidate_id": "",
+      "variable_name": "temperature",
+      "value_text": "room temperature",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_6"
+      ]
+    },
+    {
+      "variable_id": "var_4",
+      "formulation_candidate_id": "",
+      "variable_name": "solvent evaporation time",
+      "value_text": "overnight",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_7"
+      ]
+    },
+    {
+      "variable_id": "var_5",
+      "formulation_candidate_id": "",
+      "variable_name": "filtration method",
+      "value_text": "Whatman filter paper 1",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_7"
+      ]
+    },
+    {
+      "variable_id": "var_6",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation speed",
+      "value_text": "18,000 rpm",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_7"
+      ]
+    },
+    {
+      "variable_id": "var_7",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation temperature",
+      "value_text": "4 °C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_7"
+      ]
+    },
+    {
+      "variable_id": "var_8",
+      "formulation_candidate_id": "",
+      "variable_name": "washing steps",
+      "value_text": "2–3 times with distilled water",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_7"
+      ]
+    },
+    {
+      "variable_id": "var_9",
+      "formulation_candidate_id": "",
+      "variable_name": "lyophilisation time",
+      "value_text": "48 h",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_7"
+      ]
+    },
+    {
+      "variable_id": "var_10",
+      "formulation_candidate_id": "fc_3",
+      "variable_name": "drug identity",
+      "value_text": "FITC",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "Replaces GAR",
+      "evidence_span_ids": [
+        "es_9"
+      ]
+    },
+    {
+      "variable_id": "var_11",
+      "formulation_candidate_id": "",
+      "variable_name": "incubation time",
+      "value_text": "2 h, 4 h or 8 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_16",
+        "es_18"
+      ]
+    },
+    {
+      "variable_id": "var_12",
+      "formulation_candidate_id": "fc_3",
+      "variable_name": "FITC loaded NPs concentration",
+      "value_text": "50 µg/ml",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_16"
+      ]
+    },
+    {
+      "variable_id": "var_13",
+      "formulation_candidate_id": "",
+      "variable_name": "cell line",
+      "value_text": "B16F10 cells",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_16",
+        "es_19",
+        "es_22",
+        "es_24"
+      ]
+    },
+    {
+      "variable_id": "var_14",
+      "formulation_candidate_id": "fc_3",
+      "variable_name": "FITC-loaded NPs concentration",
+      "value_text": "200 µg/ml",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_18"
+      ]
+    },
+    {
+      "variable_id": "var_15",
+      "formulation_candidate_id": "",
+      "variable_name": "cell lines",
+      "value_text": "B16F10, Hela, MDA-MB-231, HCT-116 and HepG2",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_19"
+      ]
+    },
+    {
+      "variable_id": "var_16",
+      "formulation_candidate_id": "",
+      "variable_name": "free GAR concentration",
+      "value_text": "5–100 µM for 24 h and 1–55 µM for 48 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_20"
+      ]
+    },
+    {
+      "variable_id": "var_17",
+      "formulation_candidate_id": "fc_1",
+      "variable_name": "GAR-NPs concentration (GAR equivalent)",
+      "value_text": "1–55 µM of GAR for 24 h and 1–40 µM of GAR for 48 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_20"
+      ]
+    },
+    {
+      "variable_id": "var_18",
+      "formulation_candidate_id": "",
+      "variable_name": "incubation time",
+      "value_text": "24 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_22"
+      ]
+    },
+    {
+      "variable_id": "var_19",
+      "formulation_candidate_id": "",
+      "variable_name": "free GAR concentration",
+      "value_text": "10, 12 and 15 µM",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_22"
+      ]
+    },
+    {
+      "variable_id": "var_20",
+      "formulation_candidate_id": "fc_1",
+      "variable_name": "GAR-NPs concentration (GAR equivalent)",
+      "value_text": "10, 12 and 15 µM",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_22"
+      ]
+    },
+    {
+      "variable_id": "var_21",
+      "formulation_candidate_id": "fc_2",
+      "variable_name": "blank NPs concentration",
+      "value_text": "100 µM",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_24"
+      ]
+    },
+    {
+      "variable_id": "var_22",
+      "formulation_candidate_id": "",
+      "variable_name": "free GAR concentration",
+      "value_text": "15 µM",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_24"
+      ]
+    },
+    {
+      "variable_id": "var_23",
+      "formulation_candidate_id": "fc_1",
+      "variable_name": "GAR-NPs concentration (GAR equivalent)",
+      "value_text": "15 µM",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_24"
+      ]
+    },
+    {
+      "variable_id": "var_24",
+      "formulation_candidate_id": "",
+      "variable_name": "DAPI solution concentration",
+      "value_text": "4 µg/ml",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_24"
+      ]
+    },
+    {
+      "variable_id": "var_25",
+      "formulation_candidate_id": "",
+      "variable_name": "cell line",
+      "value_text": "KB cells",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_24"
+      ]
+    },
+    {
+      "variable_id": "var_26",
+      "formulation_candidate_id": "fc_1",
+      "variable_name": "GAR-NPs concentration (GAR equivalent)",
+      "value_text": "0.5, 1, 2.5, 10, 15, 30, 50, 75, 100 µM",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_26"
+      ]
+    },
+    {
+      "variable_id": "var_27",
+      "formulation_candidate_id": "",
+      "variable_name": "incubation temperature",
+      "value_text": "37 °C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_27"
+      ]
+    },
+    {
+      "variable_id": "var_28",
+      "formulation_candidate_id": "",
+      "variable_name": "incubation time",
+      "value_text": "1 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_27"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_1",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "more than 88 ± 3.3%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_12"
+      ]
+    },
+    {
+      "measurement_id": "meas_2",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "other",
+      "value_text": "around 39 ± 2.5%",
+      "unit_text": "%",
+      "ambiguity_note": "Initial rapid drug release within 4h",
+      "evidence_span_ids": [
+        "es_13"
+      ]
+    },
+    {
+      "measurement_id": "meas_3",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "other",
+      "value_text": "Around 86 ± 3.9%",
+      "unit_text": "%",
+      "ambiguity_note": "Total GAR released over 6 days",
+      "evidence_span_ids": [
+        "es_14"
+      ]
+    },
+    {
+      "measurement_id": "meas_4",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "size",
+      "value_text": "88.05 ± 2.7 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "average diameter",
+      "evidence_span_ids": [
+        "es_15"
+      ]
+    },
+    {
+      "measurement_id": "meas_5",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "pdi",
+      "value_text": "0.170 ± 0.05",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_15"
+      ]
+    },
+    {
+      "measurement_id": "meas_6",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "zeta_potential",
+      "value_text": "−28.10 ± 2.1",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_15"
+      ]
+    },
+    {
+      "measurement_id": "meas_7",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "other",
+      "value_text": "Cell viability(%) (Abs /Abs ) test cells control cells",
+      "unit_text": "%",
+      "ambiguity_note": "Cell viability determined by equation",
+      "evidence_span_ids": [
+        "es_21"
+      ]
+    },
+    {
+      "measurement_id": "meas_8",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "other",
+      "value_text": "Apoptotic/necrotic and living cells were detected",
+      "unit_text": "",
+      "ambiguity_note": "Detected by flow cytometer",
+      "evidence_span_ids": [
+        "es_23"
+      ]
+    },
+    {
+      "measurement_id": "meas_9",
+      "formulation_candidate_id": "fc_1",
+      "measurement_name": "other",
+      "value_text": "% lysis was calculated",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "es_28"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_1",
+      "source_candidate_id": "fc_2",
+      "target_candidate_id": "fc_1",
+      "relation_type": "inherits_from",
+      "note": "Drug free nanoparticles prepared according to the same procedure as GAR-NPs, but without GAR.",
+      "evidence_span_ids": [
+        "es_8"
+      ]
+    },
+    {
+      "relation_id": "rel_2",
+      "source_candidate_id": "fc_3",
+      "target_candidate_id": "fc_1",
+      "relation_type": "inherits_from",
+      "note": "Fluorescent nanoparticles prepared by replacing GAR with FITC in the GAR-NPs procedure.",
+      "evidence_span_ids": [
+        "es_9"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "es_1",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Preparation method: Preparation of GAR-loaded nanoparticles (GAR-NPs). Nanoparticles were prepared by the nanopre- cipitation method20.",
+      "supporting_text": "Preparation of GAR-loaded nanoparticles (GAR-NPs). Nanoparticles were prepared by the nanopre- cipitation method"
+    },
+    {
+      "span_id": "es_2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature.",
+      "supporting_text": "PLGA (50 mg)"
+    },
+    {
+      "span_id": "es_3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature.",
+      "supporting_text": "GAR (5 mg)"
+    },
+    {
+      "span_id": "es_4",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature.",
+      "supporting_text": "acetone (10 ml)"
+    },
+    {
+      "span_id": "es_5",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature.",
+      "supporting_text": "aqueous vitamin E TPGS solution (20 ml, 0.03% w/v)"
+    },
+    {
+      "span_id": "es_6",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature.",
+      "supporting_text": "magnetic stirring at room temperature"
+    },
+    {
+      "span_id": "es_7",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The solvent was allowed to evaporate overnight. The suspension obtained was filtered (Whatman filter paper 1) to remove any precipitate and centrifuged at 18,000 rpm at 4 °C (Sorvall RC 5 Plus). The supernatant containing the free drug was discarded; the pellet obtained was washed 2–3 times with distilled water and lyophilised (VirTis, USA) for 48 h to get a free flowing powder.",
+      "supporting_text": "The solvent was allowed to evaporate overnight. The suspension obtained was filtered (Whatman filter paper 1) to remove any precipitate and centrifuged at 18,000 rpm at 4 °C (Sorvall RC 5 Plus). The supernatant containing the free drug was discarded; the pellet obtained was washed 2–3 times with distilled water and lyophilised (VirTis, USA) for 48 h"
+    },
+    {
+      "span_id": "es_8",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Drug free nanoparticles were prepared according to the same procedure.",
+      "supporting_text": "Drug free nanoparticles were prepared according to the same procedure."
+    },
+    {
+      "span_id": "es_9",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Fluorescent nanoparticles were pre- pared by replacing GAR with FITC (5 mg).",
+      "supporting_text": "Fluorescent nanoparticles were pre- pared by replacing GAR with FITC (5 mg)."
+    },
+    {
+      "span_id": "es_10",
+      "source_region_type": "paragraph",
+      "source_locator_text": "Herein we report the formulation of GAR entrapped PLGA nanoparticles by nanoprecipitation method using vitamin E TPGS as an emulsifier.",
+      "supporting_text": "formulation of GAR entrapped PLGA nanoparticles"
+    },
+    {
+      "span_id": "es_11",
+      "source_region_type": "formulation_result",
+      "source_locator_text": "The disappearance of distinct peaks in GAR-NPs suggested the conversion of crystalline state to amor- phous state during nanoparticulate formulation.",
+      "supporting_text": "GAR-NPs"
+    },
+    {
+      "span_id": "es_12",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "Optimization result: best/highest/efficiency/loading outcome. Inline table/result split candidate. Encapsulation efficiency was more than 88 ± 3.3% (Table 1).",
+      "supporting_text": "Encapsulation efficiency was more than 88 ± 3.3%"
+    },
+    {
+      "span_id": "es_13",
+      "source_region_type": "formulation_result",
+      "source_locator_text": "Initial rapid release (around 39 ± 2.5%) was observed within the first 4 h.",
+      "supporting_text": "Initial rapid release (around 39 ± 2.5%)"
+    },
+    {
+      "span_id": "es_14",
+      "source_region_type": "formulation_result",
+      "source_locator_text": "Around 86 ± 3.9% of GAR was released from nanopar- ticulated formulation over the period of 6 days.",
+      "supporting_text": "Around 86 ± 3.9% of GAR was released"
+    },
+    {
+      "span_id": "es_15",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "Nanoprecipitation technique yielded GAR-NPs with most nar- row size distribution (average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1).",
+      "supporting_text": "average diameter 88.05 ± 2.7 nm) as determined by dynamic light scattering (DLS) with a PDI value of 0.170 ± 0.05 and satisfactory zeta potential (−28.10 ± 2.1"
+    },
+    {
+      "span_id": "es_16",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish. After overnight incubation, the culture medium was replaced with fresh medium, FITC loaded NPs (50 µg/ml) were added, and incubated for 2 h, 4 h or 8 h.",
+      "supporting_text": "FITC loaded NPs (50 µg/ml) were added, and incubated for 2 h, 4 h or 8 h."
+    },
+    {
+      "span_id": "es_17",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish. After overnight incubation, the culture medium was replaced with fresh medium, FITC loaded NPs (50 µg/ml) were added, and incubated for 2 h, 4 h or 8 h.",
+      "supporting_text": "B16F10 cells"
+    },
+    {
+      "span_id": "es_18",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Following 80% confluency in each dish, the medium was removed and replaced with FITC-loaded NPs (200 µg/ml) and incubated for 2 h, 4 h or 8 h.",
+      "supporting_text": "FITC-loaded NPs (200 µg/ml) and incubated for 2 h, 4 h or 8 h."
+    },
+    {
+      "span_id": "es_19",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The cytotoxic effects of free GAR and GAR-NPs to B16F10, Hela, MDA-MB-231, HCT-116 and HepG2 cell lines were analysed by the MTT assay23. Briefly, B16F10, Hela, MDA-MB-231 and HCT-116 cell lines were maintained in DMEM (high glucose), whereas HepG2 was maintained in MEM medium.",
+      "supporting_text": "B16F10, Hela, MDA-MB-231, HCT-116 and HepG2 cell lines"
+    },
+    {
+      "span_id": "es_20",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "After 24 h, the respective media were removed and replaced with 200 µl of fresh media containing different concentrations of free GAR (5–100 µM for 24 h and 1–55 µM for 48 h) dissolved in minimum amount of DMSO and GAR-NPs (1–55 µM of GAR for 24 h and 1–40 µM of GAR for 48 h).",
+      "supporting_text": "different concentrations of free GAR (5–100 µM for 24 h and 1–55 µM for 48 h) dissolved in minimum amount of DMSO and GAR-NPs (1–55 µM of GAR for 24 h and 1–40 µM of GAR for 48 h)."
+    },
+    {
+      "span_id": "es_21",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Cell viability was determined as per the equation given below, where Abstest cells represents the amount of formazan determined for cells treated either with free GAR or GAR-NPs and Abscontrol cells stands for the amount of intracellular formazan present in non-treated cells. = × Cell viability(%) (Abs /Abs ) test cells control cells",
+      "supporting_text": "Cell viability(%) (Abs /Abs ) test cells control cells"
+    },
+    {
+      "span_id": "es_22",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The cells were treated separately with different concentrations (10, 12 and 15 µM) of free GAR and GAR-NPs (containing an equivalent amount of GAR as mentioned) and allowed to incubate for 24 h at 37 °C, 5% CO2.",
+      "supporting_text": "different concentrations (10, 12 and 15 µM) of free GAR and GAR-NPs (containing an equivalent amount of GAR as mentioned) and allowed to incubate for 24 h"
+    },
+    {
+      "span_id": "es_23",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Apoptotic/necrotic and living cells were detected by a flow cytometer (BD FACS) and data were analysed using FACSDiva Version 6.2 software.",
+      "supporting_text": "Apoptotic/necrotic and living cells were detected"
+    },
+    {
+      "span_id": "es_24",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The cells were treated with blank NPs (100 µM), free GAR (15 µM) and GAR-NPs (containing 15 µM GAR) for another 24 h under the same condition as mentioned above. Then they were washed twice with PBS and fixed in 70% ethanol at −20 °C for 15 min. After washing thrice with PBS, cells were treated with DAPI solution (4 µg/ml) for 5 min at room temperature and imaged under confocal laser scanning microscope (Leica, DFC 420C, Germany).",
+      "supporting_text": "blank NPs (100 µM), free GAR (15 µM) and GAR-NPs (containing 15 µM GAR) for another 24 h ... cells were treated with DAPI solution (4 µg/ml)"
+    },
+    {
+      "span_id": "es_25",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "B16F10 and KB cells were grown separately on cover slips placed in 35 mm dish for 24 h at 37 °C in humidified air containing 5% CO2.",
+      "supporting_text": "KB cells"
+    },
+    {
+      "span_id": "es_26",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "In order to examine the hemolytic effect, 190 µl of the suspension was added to each well of a 96-well plate and treated with 10 µl of GAR-NPs (containing an increasing concentration of GAR, e.g. 0.5, 1, 2.5, 10, 15, 30, 50, 75, 100 µM).",
+      "supporting_text": "GAR-NPs (containing an increasing concentration of GAR, e.g. 0.5, 1, 2.5, 10, 15, 30, 50, 75, 100 µM)"
+    },
+    {
+      "span_id": "es_27",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Following incubation at 37 °C for 1 h with gentle stirring, the unlysed erythrocytes were separated by centrifugation at 10,000 g for 5 min and the optical density (OD) of the supernatant was measured at 570 nm.",
+      "supporting_text": "incubation at 37 °C for 1 h"
+    },
+    {
+      "span_id": "es_28",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The value was compared with the OD of the supernatant (positive control) where full lysis occurred and the % lysis was calculated.",
+      "supporting_text": "% lysis was calculated"
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "obs_1",
+      "category": "shared_context",
+      "note": "Vitamin E TPGS NF Grade was gifted by Antares Health Products.",
+      "evidence_span_ids": [
+        "es_29"
+      ]
+    },
+    {
+      "observation_id": "obs_2",
+      "category": "shared_context",
+      "note": "HPLC grade acetone was purchased from Spectrochem (Mumbai, India).",
+      "evidence_span_ids": [
+        "es_30"
+      ]
+    },
+    {
+      "observation_id": "obs_3",
+      "category": "shared_context",
+      "note": "All other solvents and chemicals were of analytical grade and procured from Merck, India.",
+      "evidence_span_ids": [
+        "es_31"
+      ]
+    },
+    {
+      "observation_id": "obs_4",
+      "category": "shared_context",
+      "note": "99MoO4 − was purchased from Bhabha Atomic Research Centre (Mumbai, India) and 99mTcO4 − was extracted from a 5 N NaOH solution of 99MoO4 − by butan-2-one.",
+      "evidence_span_ids": [
+        "es_32"
+      ]
+    },
+    {
+      "observation_id": "obs_5",
+      "category": "shared_context",
+      "note": "ECIL gamma counter (Model LV 4755) obtained from ECIL was used for measuring tissue and organ radioactivities.",
+      "evidence_span_ids": [
+        "es_33"
+      ]
+    },
+    {
+      "observation_id": "obs_6",
+      "category": "reported_but_unassigned",
+      "note": "The disappearance of distinct peaks in GAR-NPs suggested the conversion of crystalline state to amorphous state during nanoparticulate formulation.",
+      "evidence_span_ids": [
+        "es_11"
+      ]
+    },
+    {
+      "observation_id": "obs_7",
+      "category": "reported_but_unassigned",
+      "note": "The initial burst release may be due to GAR loosely associated with the surface or embedded in the surface layer of the polymer, whereas sustained release occurred due to the Figure 1.",
+      "evidence_span_ids": [
+        "es_34"
+      ]
+    },
+    {
+      "observation_id": "obs_8",
+      "category": "shared_context",
+      "note": "The nanoparticles were characterized for size, surface morphology, surface charge, encapsulation efficiency and in vitro drug release kinetics.",
+      "evidence_span_ids": [
+        "es_35"
+      ]
+    },
+    {
+      "observation_id": "obs_9",
+      "category": "shared_context",
+      "note": "For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish.",
+      "evidence_span_ids": [
+        "es_36"
+      ]
+    },
+    {
+      "observation_id": "obs_10",
+      "category": "shared_context",
+      "note": "B16F10 cells (3.5 × 105) were seeded (DMEM medium) on a cover slip placed inside a 35 mm dish and incubated for 24 h at 37 °C in humidified air containing 5% CO2.",
+      "evidence_span_ids": [
+        "es_37"
+      ]
+    },
+    {
+      "observation_id": "obs_11",
+      "category": "shared_context",
+      "note": "All cells were plated at a density of 1 × 104 cells per well in 96-well plates and cultivated at 37 °C in humidified air containing 5% CO2 (HealForce HF-90, JAPAN).",
+      "evidence_span_ids": [
+        "es_38"
+      ]
+    },
+    {
+      "observation_id": "obs_12",
+      "category": "shared_context",
+      "note": "B16F10 melanoma cells (1 × 106) were cultured in 60 mm tissue culture dishes to reach 80% confluency.",
+      "evidence_span_ids": [
+        "es_39"
+      ]
+    },
+    {
+      "observation_id": "obs_13",
+      "category": "shared_context",
+      "note": "Freshly collected blood samples from male Sprague-Dawley rats were taken in heparinised tubes and centrifuged (5 min at 1000 g) at 4 °C.",
+      "evidence_span_ids": [
+        "es_40"
+      ]
+    },
+    {
+      "span_id": "es_29",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "Materials: Vitamin E TPGS NF Grade was gifted by Antares Health Products.",
+      "supporting_text": "Vitamin E TPGS NF Grade was gifted by Antares Health Products."
+    },
+    {
+      "span_id": "es_30",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "HPLC grade acetone was purchased from Spectrochem (Mumbai, India).",
+      "supporting_text": "HPLC grade acetone was purchased from Spectrochem (Mumbai, India)."
+    },
+    {
+      "span_id": "es_31",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "All other solvents and chemicals were of analytical grade and procured from Merck, India.",
+      "supporting_text": "All other solvents and chemicals were of analytical grade and procured from Merck, India."
+    },
+    {
+      "span_id": "es_32",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "99MoO4 − was purchased from Bhabha Atomic Research Centre (Mumbai, India) and 99mTcO4 − was extracted from a 5 N NaOH solution of 99MoO4 − by butan-2-one.",
+      "supporting_text": "99MoO4 − was purchased from Bhabha Atomic Research Centre (Mumbai, India) and 99mTcO4 − was extracted from a 5 N NaOH solution of 99MoO4 − by butan-2-one."
+    },
+    {
+      "span_id": "es_33",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "ECIL gamma counter (Model LV 4755) obtained from ECIL was used for measuring tissue and organ radioactivities.",
+      "supporting_text": "ECIL gamma counter (Model LV 4755) obtained from ECIL was used for measuring tissue and organ radioactivities."
+    },
+    {
+      "span_id": "es_34",
+      "source_region_type": "formulation_result",
+      "source_locator_text": "The initial burst release may be due to GAR loosely associated with the surface or embedded in the surface layer of the polymer, whereas sustained release occurred due to the Figure 1.",
+      "supporting_text": "The initial burst release may be due to GAR loosely associated with the surface or embedded in the surface layer of the polymer, whereas sustained release occurred due to the Figure 1."
+    },
+    {
+      "span_id": "es_35",
+      "source_region_type": "paragraph",
+      "source_locator_text": "The nanoparticles were characterized for size, surface morphology, surface charge, encapsulation efficiency and in vitro drug release kinetics.",
+      "supporting_text": "The nanoparticles were characterized for size, surface morphology, surface charge, encapsulation efficiency and in vitro drug release kinetics."
+    },
+    {
+      "span_id": "es_36",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish.",
+      "supporting_text": "For flow cytometry experiments, B16F10 cells were cultured (DMEM medium) in 35 mm dish."
+    },
+    {
+      "span_id": "es_37",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "B16F10 cells (3.5 × 105) were seeded (DMEM medium) on a cover slip placed inside a 35 mm dish and incubated for 24 h at 37 °C in humidified air containing 5% CO2.",
+      "supporting_text": "B16F10 cells (3.5 × 105) were seeded (DMEM medium) on a cover slip placed inside a 35 mm dish and incubated for 24 h at 37 °C in humidified air containing 5% CO2."
+    },
+    {
+      "span_id": "es_38",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "All cells were plated at a density of 1 × 104 cells per well in 96-well plates and cultivated at 37 °C in humidified air containing 5% CO2 (HealForce HF-90, JAPAN).",
+      "supporting_text": "All cells were plated at a density of 1 × 104 cells per well in 96-well plates and cultivated at 37 °C in humidified air containing 5% CO2 (HealForce HF-90, JAPAN)."
+    },
+    {
+      "span_id": "es_39",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "B16F10 melanoma cells (1 × 106) were cultured in 60 mm tissue culture dishes to reach 80% confluency.",
+      "supporting_text": "B16F10 melanoma cells (1 × 106) were cultured in 60 mm tissue culture dishes to reach 80% confluency."
+    },
+    {
+      "span_id": "es_40",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Freshly collected blood samples from male Sprague-Dawley rats were taken in heparinised tubes and centrifuged (5 min at 1000 g) at 4 °C.",
+      "supporting_text": "Freshly collected blood samples from male Sprague-Dawley rats were taken in heparinised tubes and centrifuged (5 min at 1000 g) at 4 °C."
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "medium",
+      "evidence_span": "Encapsulation efficiency was more than 88 ± 3.3% (Table 1)."
+    }
+  ],
+  "table_variable_roles": [],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "GAR-NPs preparation",
+      "inherits_from_preparation": true,
+      "evidence_span": "Preparation method: Preparation of GAR-loaded nanoparticles (GAR-NPs). Nanoparticles were prepared by the nanopre- cipitation method20. Briefly, an organic solution of PLGA (50 mg) and GAR (5 mg) in acetone (10 ml) was added to an aqueous vitamin E TPGS solution (20 ml, 0.03% w/v) under magnetic stirring at room temperature. The solvent was allowed to evaporate overnight. The suspension obtained was filtered (Whatman filter paper 1) to remove any precipitate and centrifuged at 18,000 rpm at 4 °C (Sorvall RC 5 Plus). The supernatant containing the free drug was discarded; the pellet obtained was washed 2–3 times with distilled water and lyophilised (VirTis, USA) for 48 h to get a free flowing powder. Drug free nanoparticles were prepared according to the same procedure. Fluorescent nanoparticles were pre- pared by replacing GAR with FITC (5 mg)."
+    }
+  ],
+  "boundary_markers": []
+}
