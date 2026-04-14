@@ -288,10 +288,20 @@ def resolve_table_path_for_id(table_id: str, document: dict[str, Any]) -> Path |
     wanted = normalize_text(table_id).lower()
     if not wanted:
         return None
+    wanted_number_match = re.search(r"\btable\s+(\d+)\b", wanted, flags=re.IGNORECASE)
+    wanted_number = str(int(wanted_number_match.group(1))) if wanted_number_match else ""
     for path in source_table_paths(document):
         rows = read_csv_rows(path)
-        if extract_table_label(path, rows).lower() == wanted:
+        label = extract_table_label(path, rows).lower()
+        if label == wanted:
             return path
+        if wanted_number:
+            label_number_match = re.search(r"\btable\s+(\d+)\b", label, flags=re.IGNORECASE)
+            if label_number_match and str(int(label_number_match.group(1))) == wanted_number:
+                return path
+            stem_number_match = re.search(r"__table_(\d+)__", path.name, flags=re.IGNORECASE)
+            if stem_number_match and str(int(stem_number_match.group(1))) == wanted_number:
+                return path
     return None
 
 
@@ -423,36 +433,89 @@ def run_table_row_expansion(
     jsonl_rows: list[dict[str, Any]] = []
     table_row_count = 0
     group_hint = f"{document_key}__table_formulation_group__01"
+    table_activation_rows: list[dict[str, str]] = []
 
     for scope in scopes:
         table_id = normalize_text(scope.get("table_id"))
-        if not table_id or not scope.get("is_formulation_table"):
+        activation_row = {
+            "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "table_id": table_id,
+            "scope_id": normalize_text(scope.get("scope_id")),
+            "table_type": normalize_text(scope.get("table_type")),
+            "marker_provenance": marker_provenance(scope),
+            "considered": "yes",
+            "authorized": "no",
+            "called": "no",
+            "rows_emitted": "0",
+            "rows_retained_after_projection": "0",
+            "skip_reason": "",
+            "table_path": normalize_text(scope.get("table_path")),
+            "varying_variable_count": "0",
+            "varying_variables": "",
+        }
+        if not table_id:
+            activation_row["skip_reason"] = "missing_table_id"
+            table_activation_rows.append(activation_row)
+            continue
+        if not scope.get("is_formulation_table"):
+            activation_row["skip_reason"] = "not_formulation_table"
+            table_activation_rows.append(activation_row)
             continue
         if marker_provenance(scope) not in LLM_MARKER_SOURCES:
+            activation_row["skip_reason"] = "scope_not_llm_authorized"
+            table_activation_rows.append(activation_row)
             continue
         boundary = boundary_markers.get(table_id, {})
         if bool(boundary.get("is_doe")):
+            activation_row["skip_reason"] = "blocked_by_doe_boundary"
+            table_activation_rows.append(activation_row)
             continue
         table_path_text = normalize_text(scope.get("table_path"))
         if not table_path_text:
+            resolved_path = resolve_table_path_for_id(table_id, document)
+            if resolved_path is not None:
+                table_path_text = str(resolved_path)
+                scope["table_path"] = table_path_text
+                activation_row["table_path"] = table_path_text
+        if not table_path_text:
+            activation_row["authorized"] = "yes"
+            activation_row["skip_reason"] = "missing_table_path"
+            table_activation_rows.append(activation_row)
             continue
         table_path = Path(table_path_text)
         if not table_path.exists():
+            activation_row["authorized"] = "yes"
+            activation_row["skip_reason"] = "table_path_not_found"
+            table_activation_rows.append(activation_row)
             continue
         role_info = variable_roles.get(table_id, {})
         if marker_provenance(role_info) not in LLM_MARKER_SOURCES:
+            activation_row["authorized"] = "yes"
+            activation_row["skip_reason"] = "missing_llm_variable_roles"
+            table_activation_rows.append(activation_row)
             continue
         varying_variables = [normalize_text(item) for item in ensure_list(role_info.get("varying_variables")) if normalize_text(item)]
+        activation_row["authorized"] = "yes"
+        activation_row["called"] = "yes"
+        activation_row["varying_variable_count"] = str(len(varying_variables))
+        activation_row["varying_variables"] = "|".join(varying_variables)
         if len(varying_variables) != 1:
+            activation_row["skip_reason"] = f"unsupported_varying_variable_count:{len(varying_variables)}"
+            table_activation_rows.append(activation_row)
             continue
         varying_variable = varying_variables[0]
         candidate_values = candidate_values_for_variable(document, varying_variable)
         if not candidate_values:
+            activation_row["skip_reason"] = "missing_candidate_values"
+            table_activation_rows.append(activation_row)
             continue
         assignment_rows = _extract_row_assignments(table_path, candidate_values)
         scope_id = normalize_text(scope.get("scope_id"))
         if not scope_id:
-            continue
+            scope_id = f"{document_key}__table_formulation_scope__{normalize_token(table_id)}"
+            scope["scope_id"] = scope_id
+            activation_row["scope_id"] = scope_id
         table_selection_markers = [
             marker
             for marker in selection_markers
@@ -547,12 +610,35 @@ def run_table_row_expansion(
                 }
             )
             table_row_count += 1
+        activation_row["called"] = "yes"
+        activation_row["rows_emitted"] = str(len(assignment_rows))
+        activation_row["rows_retained_after_projection"] = str(len(assignment_rows))
+        activation_row["skip_reason"] = "" if assignment_rows else "no_assignment_rows_matched"
+        table_activation_rows.append(activation_row)
     summary = {
+        "function_unit": FUNCTION_UNIT_ID,
+        "document_key": document_key,
+        "considered": bool(scopes),
+        "authorized": any(row.get("authorized") == "yes" for row in table_activation_rows),
+        "called": any(row.get("called") == "yes" for row in table_activation_rows),
+        "emitted_row_count": table_row_count,
+        "retained_row_count": table_row_count,
+        "skip_reason": "" if table_row_count else (
+            next(
+                (
+                    row.get("skip_reason", "")
+                    for row in table_activation_rows
+                    if row.get("skip_reason")
+                ),
+                "no_table_scopes",
+            )
+        ),
         "document_key": document_key,
         "emitted_row_count": table_row_count,
         "table_count": sum(1 for item in scopes if bool(item.get("is_formulation_table"))),
         "group_hint": group_hint if table_row_count else "",
         "status": "emitted_rows" if table_row_count else "no_rows_emitted",
+        "table_activation_rows": table_activation_rows,
     }
     return rows, traces, jsonl_rows, summary
 

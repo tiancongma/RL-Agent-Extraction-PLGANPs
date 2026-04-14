@@ -33,6 +33,7 @@ NUMBERED_DOE_RECOVERY_MIN_ROWS_ENV = "STAGE2_NUMBERED_DOE_MIN_ROWS"
 DOE_ENUMERATION_MODE_ENV = "STAGE2_DOE_ENUMERATION_MODE"
 LLM_FIRST_COMPOSITE_MODE = "llm_first_composite"
 LLM_SEMANTIC_DISCOVERY = "llm_semantic_discovery"
+LLM_PARSED = "llm_parsed"
 LLM_DECLARED_SCOPE = "llm_declared_scope"
 DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
 FUNCTION_UNIT_ID = "doe_row_expansion_function_unit_v1"
@@ -63,7 +64,7 @@ def doe_enumeration_mode() -> str:
     value = normalize_text(os.getenv(DOE_ENUMERATION_MODE_ENV, "")).lower()
     if value in {"off", "explicit_only"}:
         return value
-    return "off"
+    return "explicit_only"
 
 
 def numbered_doe_recovery_enabled() -> bool:
@@ -90,7 +91,7 @@ def resolve_llm_declared_doe_scope(document: dict[str, Any]) -> dict[str, Any] |
     for declaration in semantic_scope_declarations(document):
         if normalize_text(declaration.get("scope_kind")) != DOE_SCOPE_KIND:
             continue
-        if normalize_text(declaration.get("declared_by")) != LLM_SEMANTIC_DISCOVERY:
+        if normalize_text(declaration.get("declared_by")) not in {LLM_SEMANTIC_DISCOVERY, LLM_PARSED}:
             continue
         modes = {
             normalize_text(mode)
@@ -219,10 +220,18 @@ def run_doe_row_expansion_function_unit(
     model_name: str,
     semantic_scope: dict[str, Any] | None,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any]]:
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
     source_mode = stage2_semantic_source_mode(document)
     if source_mode != LLM_FIRST_COMPOSITE_MODE:
         return [], [], [], {
             "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "considered": True,
+            "authorized": False,
+            "called": False,
+            "emitted_row_count": 0,
+            "retained_row_count": 0,
+            "skip_reason": f"semantic_source_mode_not_llm_first:{source_mode}",
             "enabled": False,
             "mode": doe_enumeration_mode(),
             "candidate_count": 0,
@@ -234,6 +243,13 @@ def run_doe_row_expansion_function_unit(
     if not numbered_doe_recovery_enabled():
         return [], [], [], {
             "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "considered": True,
+            "authorized": False,
+            "called": False,
+            "emitted_row_count": 0,
+            "retained_row_count": 0,
+            "skip_reason": "recovery_disabled",
             "enabled": False,
             "mode": doe_enumeration_mode(),
             "candidate_count": 0,
@@ -245,6 +261,13 @@ def run_doe_row_expansion_function_unit(
     if not semantic_scope:
         return [], [], [], {
             "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "considered": True,
+            "authorized": False,
+            "called": False,
+            "emitted_row_count": 0,
+            "retained_row_count": 0,
+            "skip_reason": "missing_llm_declared_doe_scope",
             "enabled": True,
             "mode": doe_enumeration_mode(),
             "candidate_count": 0,
@@ -255,26 +278,20 @@ def run_doe_row_expansion_function_unit(
         }
 
     text_path = resolve_document_text_path(document)
-    if text_path is None or not text_path.exists():
-        return [], [], [], {
-            "function_unit": FUNCTION_UNIT_ID,
-            "enabled": True,
-            "mode": doe_enumeration_mode(),
-            "candidate_count": 0,
-            "row_count": 0,
-            "table_count": 0,
-            "tables_dir": "",
-            "notes": "missing_source_text_path",
-        }
+    raw_text = ""
+    text_mode = "full_text_available"
+    if text_path is not None and text_path.exists():
+        raw_text = text_path.read_text(encoding="utf-8", errors="ignore")
+    else:
+        text_mode = "table_assets_only_missing_source_text_path"
+        text_path = REPO_ROOT / "data" / "cleaned" / "__missing_text__" / f"{document_key}.txt"
 
-    document_key = normalize_text(document.get("document_key") or document.get("key"))
     paper = PaperRecord(
         key=document_key,
         doi=normalize_text(document.get("doi")),
         title=normalize_text(document.get("title")),
         text_path=text_path,
     )
-    raw_text = text_path.read_text(encoding="utf-8", errors="ignore")
     emitted_forms, artifact_rows, summary = enumerate_numbered_doe_candidates_for_paper(
         paper=paper,
         raw_text=raw_text,
@@ -327,6 +344,13 @@ def run_doe_row_expansion_function_unit(
     recovery_summary.update(
         {
             "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "considered": True,
+            "authorized": True,
+            "called": True,
+            "emitted_row_count": len(rows),
+            "retained_row_count": len(rows),
+            "skip_reason": "" if rows else "no_rows_emitted",
             "enabled": True,
             "mode": doe_enumeration_mode(),
             "candidate_count": len(rows),
@@ -334,6 +358,7 @@ def run_doe_row_expansion_function_unit(
             "table_count": int(recovery_summary.get("selected_table_count", 0) or 0),
             "tables_dir": normalize_text(recovery_summary.get("tables_dir")),
             "semantic_scope_ref": scope_ref,
+            "text_mode": text_mode,
         }
     )
     return rows, traces, jsonl_rows, recovery_summary

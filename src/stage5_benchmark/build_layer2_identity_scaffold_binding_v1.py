@@ -62,6 +62,15 @@ def normalize_namespaced_label(paper_key: str, value: Any) -> str:
     return text
 
 
+def normalize_identity_equivalent_label(paper_key: str, value: Any) -> str:
+    text = normalize_namespaced_label(paper_key, value)
+    text = normalize_text(text)
+    if not text:
+        return ""
+    text = re.sub(r"^formulation\s+", "", text, flags=re.IGNORECASE)
+    return normalize_label_token(text)
+
+
 def scaffold_key_for_row(row: dict[str, str]) -> str:
     paper_key = normalize_text(row.get("paper_key"))
     native_label = normalize_text(row.get("scaffold_native_label"))
@@ -98,8 +107,13 @@ def build_final_indexes(rows: list[dict[str, str]]) -> dict[str, dict[tuple[str,
             normalized_namespaced = normalize_namespaced_label(paper_key, representative_id)
             if normalized_namespaced:
                 namespaced_index[(paper_key, normalized_namespaced.lower())].append(row)
-        if paper_key and raw_label:
-            strict_index[(paper_key, normalize_label_token(raw_label))].append(row)
+        strict_candidates = {
+            normalize_identity_equivalent_label(paper_key, raw_label),
+            normalize_identity_equivalent_label(paper_key, representative_id),
+        }
+        for candidate in strict_candidates:
+            if candidate:
+                strict_index[(paper_key, candidate)].append(row)
     return {
         "exact": exact_index,
         "namespaced": namespaced_index,
@@ -123,12 +137,25 @@ def collect_matches(
 ) -> dict[str, list[dict[str, str]]]:
     native_label = gt_native_label(gt_row)
     formulation_label = normalize_text(gt_row.get("formulation_label"))
+    strict_candidates = [
+        normalize_identity_equivalent_label(paper_key, native_label),
+        normalize_identity_equivalent_label(paper_key, formulation_label),
+    ]
+    strict_matches: list[dict[str, str]] = []
+    seen_ids: set[int] = set()
+    for candidate in strict_candidates:
+        if not candidate:
+            continue
+        for row in final_indexes["strict"].get((paper_key, candidate), []):
+            marker = id(row)
+            if marker in seen_ids:
+                continue
+            seen_ids.add(marker)
+            strict_matches.append(row)
     return {
         "exact": final_indexes["exact"].get((paper_key, native_label.lower()), []) if native_label else [],
         "namespaced": final_indexes["namespaced"].get((paper_key, native_label.lower()), []) if native_label else [],
-        "strict": final_indexes["strict"].get((paper_key, normalize_label_token(formulation_label)))
-        if formulation_label
-        else [],
+        "strict": strict_matches,
     }
 
 

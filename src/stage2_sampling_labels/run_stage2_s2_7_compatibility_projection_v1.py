@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import subprocess
 import sys
@@ -11,6 +12,8 @@ from pathlib import Path
 try:
     from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
         CONTRACT_TSV_NAME,
+        EXECUTION_LEDGER_NAME,
+        FUNCTION_UNIT_ACTIVATION_NAME,
         LEGACY_JSONL_NAME,
         LEGACY_TSV_NAME,
         SUMMARY_JSON_NAME,
@@ -25,6 +28,8 @@ except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
         CONTRACT_TSV_NAME,
+        EXECUTION_LEDGER_NAME,
+        FUNCTION_UNIT_ACTIVATION_NAME,
         LEGACY_JSONL_NAME,
         LEGACY_TSV_NAME,
         SUMMARY_JSON_NAME,
@@ -39,6 +44,15 @@ except ModuleNotFoundError:  # pragma: no cover
 
 RUN_METADATA_NAME = "stage2_s2_7_run_metadata_v1.json"
 DOE_GUARD_NAME = "numbered_doe_regression_guard_v1.tsv"
+
+
+def write_tsv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter="\t")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({field: row.get(field, "") for field in fieldnames})
 
 
 def parse_args() -> argparse.Namespace:
@@ -98,6 +112,8 @@ def build_run_context(
     semantic_jsonl_path: Path,
     compat_dir: Path,
     projection_summary_path: Path,
+    function_unit_activation_report_path: Path,
+    execution_ledger_path: Path,
     projected_row_count: int,
     projected_document_count: int,
 ) -> str:
@@ -167,6 +183,10 @@ Benchmark reporting rule:
   - `{compat_dir / TRACE_TSV_NAME}`
 - compatibility summary JSON:
   - `{projection_summary_path}`
+- function-unit activation report v2:
+  - `{function_unit_activation_report_path}`
+- execution ledger v2:
+  - `{execution_ledger_path}`
 - numbered DOE guard TSV:
   - `{compat_dir / DOE_GUARD_NAME}`
 - projection contract TSV:
@@ -188,6 +208,19 @@ Benchmark reporting rule:
 - projected_row_count: `{projected_row_count}`
 - completed_stage2_artifact_status: `written`
 - lawful_stage3_resume_boundary: `yes`
+
+## 10. Function Unit Execution
+- activation_report_v2:
+  - `{function_unit_activation_report_path}`
+- execution_ledger_v2:
+  - `{execution_ledger_path}`
+- tracked_fields:
+  - `was_unit_considered`
+  - `was_unit_authorized`
+  - `was_unit_called`
+  - `rows_emitted`
+  - `rows_retained_after_projection`
+  - `skip_reason`
 """
 
 
@@ -242,6 +275,45 @@ def main() -> None:
         output_dir=compat_dir,
         contract_path=contract_path,
     )
+    analysis_dir = run_dir / "analysis"
+    function_unit_activation_report_path = analysis_dir / FUNCTION_UNIT_ACTIVATION_NAME
+    execution_ledger_path = analysis_dir / EXECUTION_LEDGER_NAME
+    write_tsv(
+        function_unit_activation_report_path,
+        list(summary.get("function_unit_activation_rows", [])),
+        [
+            "document_key",
+            "function_unit",
+            "was_unit_considered",
+            "was_unit_authorized",
+            "was_unit_called",
+            "rows_emitted",
+            "rows_retained_after_projection",
+            "skip_reason",
+            "status",
+        ],
+    )
+    write_tsv(
+        execution_ledger_path,
+        list(summary.get("execution_ledger_rows", [])),
+        [
+            "document_key",
+            "function_unit",
+            "table_id",
+            "scope_id",
+            "table_type",
+            "marker_provenance",
+            "was_unit_considered",
+            "was_unit_authorized",
+            "was_unit_called",
+            "rows_emitted",
+            "rows_retained_after_projection",
+            "varying_variable_count",
+            "varying_variables",
+            "table_path",
+            "skip_reason",
+        ],
+    )
 
     projection_summary_path = compat_dir / SUMMARY_JSON_NAME
     run_context = build_run_context(
@@ -257,6 +329,8 @@ def main() -> None:
         semantic_jsonl_path=semantic_jsonl_path,
         compat_dir=compat_dir,
         projection_summary_path=projection_summary_path,
+        function_unit_activation_report_path=function_unit_activation_report_path,
+        execution_ledger_path=execution_ledger_path,
         projected_row_count=int(summary["projected_rows"]),
         projected_document_count=int(summary["documents"]),
     )
@@ -289,6 +363,8 @@ def main() -> None:
             "completed_stage2_jsonl": to_repo_rel(compat_dir / LEGACY_JSONL_NAME),
             "compatibility_trace_tsv": to_repo_rel(compat_dir / TRACE_TSV_NAME),
             "compatibility_summary_json": to_repo_rel(projection_summary_path),
+            "feature_activation_report_v2_tsv": to_repo_rel(function_unit_activation_report_path),
+            "execution_ledger_v2_tsv": to_repo_rel(execution_ledger_path),
             "numbered_doe_guard_tsv": to_repo_rel(compat_dir / DOE_GUARD_NAME),
             "projection_contract_tsv": to_repo_rel(contract_path),
             "run_context": to_repo_rel(run_dir / "RUN_CONTEXT.md"),
@@ -331,6 +407,8 @@ def main() -> None:
     print(f"completed_stage2_tsv={compat_dir / LEGACY_TSV_NAME}")
     print(f"completed_stage2_jsonl={compat_dir / LEGACY_JSONL_NAME}")
     print(f"projection_summary={projection_summary_path}")
+    print(f"feature_activation_report_v2={function_unit_activation_report_path}")
+    print(f"execution_ledger_v2={execution_ledger_path}")
 
 
 if __name__ == "__main__":

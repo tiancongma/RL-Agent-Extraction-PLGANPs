@@ -22,6 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 
 LLM_FIRST_COMPOSITE_MODE = "llm_first_composite"
 LLM_SEMANTIC_DISCOVERY = "llm_semantic_discovery"
+LLM_PARSED = "llm_parsed"
 LLM_DECLARED_SCOPE = "llm_declared_scope"
 DOCUMENT_SCOPE_KIND = "llm_document_scope"
 DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
@@ -54,7 +55,7 @@ def resolve_llm_document_scope(document: dict[str, Any]) -> dict[str, Any] | Non
     for declaration in semantic_scope_declarations(document):
         if normalize_text(declaration.get("scope_kind")) != DOCUMENT_SCOPE_KIND:
             continue
-        if normalize_text(declaration.get("declared_by")) != LLM_SEMANTIC_DISCOVERY:
+        if normalize_text(declaration.get("declared_by")) not in {LLM_SEMANTIC_DISCOVERY, LLM_PARSED}:
             continue
         return declaration
     document_key = normalize_text(document.get("document_key") or document.get("key"))
@@ -71,7 +72,7 @@ def has_llm_declared_doe_scope(document: dict[str, Any]) -> bool:
     for declaration in semantic_scope_declarations(document):
         if normalize_text(declaration.get("scope_kind")) != DOE_SCOPE_KIND:
             continue
-        if normalize_text(declaration.get("declared_by")) != LLM_SEMANTIC_DISCOVERY:
+        if normalize_text(declaration.get("declared_by")) not in {LLM_SEMANTIC_DISCOVERY, LLM_PARSED}:
             continue
         return True
     return False

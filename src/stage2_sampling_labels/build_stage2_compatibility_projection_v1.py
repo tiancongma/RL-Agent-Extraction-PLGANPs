@@ -58,6 +58,8 @@ LEGACY_JSONL_NAME = "weak_labels__v7pilot_r3_fixparse.jsonl"
 TRACE_TSV_NAME = "compatibility_projection_trace_v1.tsv"
 SUMMARY_JSON_NAME = "compatibility_projection_summary_v1.json"
 CONTRACT_TSV_NAME = "stage2_replacement_compatibility_projection_contract.tsv"
+FUNCTION_UNIT_ACTIVATION_NAME = "feature_activation_report_v2.tsv"
+EXECUTION_LEDGER_NAME = "execution_ledger_v2.tsv"
 IDENTITY_VARIABLES_FIELD = "identity_variables_json"
 LLM_FIRST_COMPOSITE_MODE = "llm_first_composite"
 FALLBACK_SEMANTIC_SOURCE_MODE = "governed_fallback_semantic_source"
@@ -979,6 +981,12 @@ def project_document(
     sequential_summary = {
         "function_unit": SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
         "document_key": document_key,
+        "considered": True,
+        "authorized": False,
+        "called": False,
+        "emitted_row_count": 0,
+        "retained_row_count": 0,
+        "skip_reason": "blocked_by_table_row_expansion" if table_rows else "not_invoked",
         "status": "skipped_due_to_table_row_expansion" if table_rows else "not_invoked",
         "replaced_row_count": 0,
     }
@@ -1014,6 +1022,42 @@ def project_document(
                     for item in jsonl_rows
                     if normalize_text(item.get("formulation_id")) in kept
                 ]
+
+    recovery_summary["retained_row_count"] = sum(
+        1 for row in rows if is_governed_doe_recovery_candidate_source(normalize_text(row.get("candidate_source")))
+    )
+    table_summary["retained_row_count"] = sum(
+        1 for row in rows if normalize_text(row.get("candidate_source")) == "table_row_expansion_v1"
+    )
+    sequential_summary = {
+        "function_unit": normalize_text(sequential_summary.get("function_unit")) or SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
+        "document_key": document_key,
+        "considered": bool(sequential_summary.get("considered", True)),
+        "authorized": bool(
+            sequential_summary.get("authorized")
+            if "authorized" in sequential_summary
+            else sequential_summary.get("triggered", False)
+        ),
+        "called": bool(
+            sequential_summary.get("called")
+            if "called" in sequential_summary
+            else sequential_summary.get("triggered", False)
+        ),
+        "emitted_row_count": int(
+            sequential_summary.get("emitted_row_count")
+            or sequential_summary.get("candidate_count")
+            or 0
+        ),
+        "retained_row_count": sum(
+            1 for row in rows if normalize_text(row.get("candidate_source")) == SEQUENTIAL_OPTIMIZATION_CANDIDATE_SOURCE
+        ),
+        "skip_reason": normalize_text(sequential_summary.get("skip_reason") or sequential_summary.get("notes")),
+        "status": normalize_text(sequential_summary.get("status"))
+        or ("emitted_rows" if sequential_summary.get("materialized") else "no_rows_emitted"),
+        "replaced_row_count": int(sequential_summary.get("replaced_row_count") or 0),
+        "semantic_scope_ref": normalize_text(sequential_summary.get("semantic_scope_ref")),
+        "notes": normalize_text(sequential_summary.get("notes")),
+    }
 
     rows, suppressed_rows = prefer_governed_doe_rows_over_llm_numeric_rows(rows)
     if suppressed_rows:
@@ -1054,6 +1098,7 @@ def project_document(
             row[f"{field}_scope"] = scope if normalize_text(row.get(f"{field}_value_text")) else ""
 
     summary = {
+        "document_key": document_key,
         "doe_recovery_summary": recovery_summary,
         "sequential_optimization_summary": sequential_summary,
         "table_row_expansion_summary": table_summary,
@@ -1068,6 +1113,65 @@ def write_tsv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in fieldnames})
+
+
+def build_function_unit_activation_rows(projection_summaries: list[dict[str, Any]]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for summary in projection_summaries:
+        document_key = normalize_text(summary.get("document_key"))
+        for unit_key in [
+            "doe_recovery_summary",
+            "table_row_expansion_summary",
+            "sequential_optimization_summary",
+        ]:
+            unit_summary = summary.get(unit_key)
+            if not isinstance(unit_summary, dict):
+                continue
+            rows.append(
+                {
+                    "document_key": document_key or normalize_text(unit_summary.get("document_key")),
+                    "function_unit": normalize_text(unit_summary.get("function_unit")),
+                    "was_unit_considered": "yes" if unit_summary.get("considered") else "no",
+                    "was_unit_authorized": "yes" if unit_summary.get("authorized") else "no",
+                    "was_unit_called": "yes" if unit_summary.get("called") else "no",
+                    "rows_emitted": str(int(unit_summary.get("emitted_row_count") or 0)),
+                    "rows_retained_after_projection": str(int(unit_summary.get("retained_row_count") or 0)),
+                    "skip_reason": normalize_text(unit_summary.get("skip_reason")),
+                    "status": normalize_text(unit_summary.get("status")),
+                }
+            )
+    return rows
+
+
+def build_execution_ledger_rows(projection_summaries: list[dict[str, Any]]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for summary in projection_summaries:
+        table_summary = summary.get("table_row_expansion_summary")
+        if not isinstance(table_summary, dict):
+            continue
+        for activation_row in ensure_list(table_summary.get("table_activation_rows")):
+            if not isinstance(activation_row, dict):
+                continue
+            rows.append(
+                {
+                    "document_key": normalize_text(activation_row.get("document_key")),
+                    "function_unit": normalize_text(activation_row.get("function_unit")),
+                    "table_id": normalize_text(activation_row.get("table_id")),
+                    "scope_id": normalize_text(activation_row.get("scope_id")),
+                    "table_type": normalize_text(activation_row.get("table_type")),
+                    "marker_provenance": normalize_text(activation_row.get("marker_provenance")),
+                    "was_unit_considered": normalize_text(activation_row.get("considered")),
+                    "was_unit_authorized": normalize_text(activation_row.get("authorized")),
+                    "was_unit_called": normalize_text(activation_row.get("called")),
+                    "rows_emitted": normalize_text(activation_row.get("rows_emitted")),
+                    "rows_retained_after_projection": normalize_text(activation_row.get("rows_retained_after_projection")),
+                    "varying_variable_count": normalize_text(activation_row.get("varying_variable_count")),
+                    "varying_variables": normalize_text(activation_row.get("varying_variables")),
+                    "table_path": normalize_text(activation_row.get("table_path")),
+                    "skip_reason": normalize_text(activation_row.get("skip_reason")),
+                }
+            )
+    return rows
 
 
 def build_projection_contract_rows() -> list[dict[str, str]]:
@@ -1169,6 +1273,8 @@ def run_projection(
     )
     write_projection_contract(contract_path)
     guard_stats = write_numbered_doe_guard_artifact(output_dir, guard_rows)
+    function_unit_activation_rows = build_function_unit_activation_rows(projection_summaries)
+    execution_ledger_rows = build_execution_ledger_rows(projection_summaries)
     summary = {
         "schema": "stage2_replacement_compatibility_projection_v1",
         "status": "transitional_support",
@@ -1195,6 +1301,8 @@ def run_projection(
             1 for row in all_rows if normalize_text(row.get("candidate_source")) == "table_row_expansion_v1"
         ),
         "table_row_expansion_function_unit": "table_row_expansion_v1",
+        "function_unit_activation_rows": function_unit_activation_rows,
+        "execution_ledger_rows": execution_ledger_rows,
         "numbered_doe_guard_tsv": str(Path(guard_stats["guard_path"]).resolve()),
         "numbered_doe_guard_fail_count": int(guard_stats["fail_count"]),
         "numbered_doe_guard_warn_count": int(guard_stats["warn_count"]),
