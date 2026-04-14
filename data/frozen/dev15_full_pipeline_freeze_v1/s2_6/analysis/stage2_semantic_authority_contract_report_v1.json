@@ -1,0 +1,28 @@
+{
+  "schema": "stage2_semantic_authority_contract_report_v1",
+  "validation_scope": "s2_6_semantic_intermediate_only",
+  "source_boundary": "S2-5",
+  "next_lawful_step": "S2-7 compatibility projection",
+  "declared_mode": "llm_first_composite",
+  "document_modes": [
+    "llm_first_composite"
+  ],
+  "row_modes": [],
+  "document_count": 2,
+  "row_count": 0,
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "status": "pass",
+  "inputs": {
+    "source_s2_5_run_dir": "data/results/20260413_8517d36/01_s2_5_semantic_parsing",
+    "semantic_jsonl": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+    "semantic_summary_tsv": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/semantic_stage2_objects/semantic_stage2_v2_summary.tsv",
+    "targeted_manifest_tsv": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/targeted_manifest.tsv",
+    "source_s2_5_metadata": "data/results/20260413_8517d36/01_s2_5_semantic_parsing/stage2_s2_5_run_metadata_v1.json"
+  },
+  "observed_modes": [
+    "llm_first_composite"
+  ]
+}

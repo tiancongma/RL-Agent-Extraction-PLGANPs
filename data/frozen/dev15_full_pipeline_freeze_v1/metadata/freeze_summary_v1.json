@@ -1,0 +1,73 @@
+﻿{
+    "source_run_path":  "data/results/20260412_8517d36/18_full_pipeline_benchmark_dev15_v1",
+    "paper_count":  15,
+    "stage2_row_count":  70,
+    "stage5_row_counts_per_paper":  [
+                                        {
+                                            "paper_key":  "5GIF3D8W",
+                                            "row_count":  1
+                                        },
+                                        {
+                                            "paper_key":  "5ZXYABSU",
+                                            "row_count":  7
+                                        },
+                                        {
+                                            "paper_key":  "7ZS858NS",
+                                            "row_count":  1
+                                        },
+                                        {
+                                            "paper_key":  "BB3JUVW7",
+                                            "row_count":  17
+                                        },
+                                        {
+                                            "paper_key":  "BXCV5XWB",
+                                            "row_count":  3
+                                        },
+                                        {
+                                            "paper_key":  "INMUTV7L",
+                                            "row_count":  2
+                                        },
+                                        {
+                                            "paper_key":  "L3H2RS2H",
+                                            "row_count":  4
+                                        },
+                                        {
+                                            "paper_key":  "PA3SPZ28",
+                                            "row_count":  2
+                                        },
+                                        {
+                                            "paper_key":  "QLYKLPKT",
+                                            "row_count":  2
+                                        },
+                                        {
+                                            "paper_key":  "RHMJWZX8",
+                                            "row_count":  2
+                                        },
+                                        {
+                                            "paper_key":  "UFXX9WXE",
+                                            "row_count":  2
+                                        },
+                                        {
+                                            "paper_key":  "V99GKZEI",
+                                            "row_count":  5
+                                        },
+                                        {
+                                            "paper_key":  "WFDTQ4VX",
+                                            "row_count":  2
+                                        },
+                                        {
+                                            "paper_key":  "WIVUCMYG",
+                                            "row_count":  9
+                                        },
+                                        {
+                                            "paper_key":  "YGA8VQKU",
+                                            "row_count":  4
+                                        }
+                                    ],
+    "identity_freeze_status":  "FAIL",
+    "failure_classes":  [
+                            "row count drift",
+                            "identity reassignment",
+                            "unresolved scaffold binding"
+                        ]
+}

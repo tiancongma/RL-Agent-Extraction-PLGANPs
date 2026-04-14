@@ -1,0 +1,640 @@
+{
+  "document_key": "WFDTQ4VX",
+  "doi": "10.1080/10717544.2016.1199605",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F1",
+      "raw_label": "lopinavir-loaded PLGA NPs",
+      "normalized_label": "Lopinavir-loaded PLGA Nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2",
+      "raw_label": "Optimized NPs",
+      "normalized_label": "Optimized Nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "F1",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_22"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "C1",
+      "formulation_candidate_id": "F1",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "25 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_2"
+      ]
+    },
+    {
+      "component_id": "C2",
+      "formulation_candidate_id": "F1",
+      "component_name": "drug",
+      "component_role": "drug",
+      "amount_text": "15 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_3"
+      ]
+    },
+    {
+      "component_id": "C3",
+      "formulation_candidate_id": "F1",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "2.5 ml",
+      "amount_kind": "volume",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_4"
+      ]
+    },
+    {
+      "component_id": "C4",
+      "formulation_candidate_id": "F1",
+      "component_name": "Pluronic F68",
+      "component_role": "surfactant",
+      "amount_text": "0.25% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_7"
+      ]
+    },
+    {
+      "component_id": "C5",
+      "formulation_candidate_id": "",
+      "component_name": "Pluronic F 68",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_10"
+      ]
+    },
+    {
+      "component_id": "C6",
+      "formulation_candidate_id": "",
+      "component_name": "Brij 35",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_11"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "V1",
+      "formulation_candidate_id": "F1",
+      "variable_name": "organic phase addition rate",
+      "value_text": "0.5 ml/ min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_5"
+      ]
+    },
+    {
+      "variable_id": "V2",
+      "formulation_candidate_id": "F1",
+      "variable_name": "aqueous phase volume",
+      "value_text": "5 ml",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_6"
+      ]
+    },
+    {
+      "variable_id": "V3",
+      "formulation_candidate_id": "F1",
+      "variable_name": "stirring temperature",
+      "value_text": "room temperature",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_8"
+      ]
+    },
+    {
+      "variable_id": "V4",
+      "formulation_candidate_id": "F1",
+      "variable_name": "centrifugation speed",
+      "value_text": "25 000 g",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_9"
+      ]
+    },
+    {
+      "variable_id": "V5",
+      "formulation_candidate_id": "F1",
+      "variable_name": "centrifugation time",
+      "value_text": "30 min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_9"
+      ]
+    },
+    {
+      "variable_id": "V6",
+      "formulation_candidate_id": "F1",
+      "variable_name": "centrifugation temperature",
+      "value_text": "4 C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_9"
+      ]
+    },
+    {
+      "variable_id": "V7",
+      "formulation_candidate_id": "",
+      "variable_name": "X1",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "variable_id": "V8",
+      "formulation_candidate_id": "",
+      "variable_name": "X2",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "variable_id": "V9",
+      "formulation_candidate_id": "",
+      "variable_name": "X3",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "variable_id": "V10",
+      "formulation_candidate_id": "",
+      "variable_name": "surfactant concentration",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_20"
+      ]
+    },
+    {
+      "variable_id": "V11",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA concentration",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_21"
+      ]
+    },
+    {
+      "variable_id": "V12",
+      "formulation_candidate_id": "",
+      "variable_name": "Drug concentration",
+      "value_text": "",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_21"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M1",
+      "formulation_candidate_id": "",
+      "measurement_name": "size",
+      "value_text": "less than 160 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_15"
+      ]
+    },
+    {
+      "measurement_id": "M2",
+      "formulation_candidate_id": "",
+      "measurement_name": "size",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_20"
+      ]
+    },
+    {
+      "measurement_id": "M3",
+      "formulation_candidate_id": "",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_21"
+      ]
+    },
+    {
+      "measurement_id": "M4",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "size",
+      "value_text": "126.6 ± 4.16 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_24"
+      ]
+    },
+    {
+      "measurement_id": "M5",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "near to 22%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_24"
+      ]
+    },
+    {
+      "measurement_id": "M6",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "95.7 ± 2.43%",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_25"
+      ]
+    },
+    {
+      "measurement_id": "M7",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "size",
+      "value_text": "greater than 200 nm",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_25"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "R1",
+      "source_candidate_id": "F1",
+      "target_candidate_id": "F2",
+      "relation_type": "shares_context_with",
+      "note": "Optimized NPs are a variant of the general lopinavir-loaded PLGA NPs preparation.",
+      "evidence_span_ids": [
+        "span_22"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_1",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "Formulation of lopinavir-loaded PLGA NPs NPs were prepared using solvent diffusion (nanoprecipitation) method"
+    },
+    {
+      "span_id": "span_2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "PLGA (25 mg)"
+    },
+    {
+      "span_id": "span_3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "drug (15 mg)"
+    },
+    {
+      "span_id": "span_4",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "2.5 ml of acetone"
+    },
+    {
+      "span_id": "span_5",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "0.5 ml/ min"
+    },
+    {
+      "span_id": "span_6",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "5 ml of aqueous phase"
+    },
+    {
+      "span_id": "span_7",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "0.25% w/v Pluronic F68"
+    },
+    {
+      "span_id": "span_8",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "continuous stirring on magnetic stirrer at room temperature"
+    },
+    {
+      "span_id": "span_9",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "SYNTHESIS_METHOD_BLOCK",
+      "supporting_text": "centrifuged at 25 000 g for 30 min at 4 C"
+    },
+    {
+      "span_id": "span_10",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "Pluronic F 68 was obtained as gift sample from BASF, Germany."
+    },
+    {
+      "span_id": "span_11",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "Brij 35 was purchased from Sigma Aldrich, Germany."
+    },
+    {
+      "span_id": "span_12",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "Caco-2 cells were obtained from National Centre for cell line studies (NCCS), Pune, India."
+    },
+    {
+      "span_id": "span_13",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "MATERIALS_PROCUREMENT_BLOCK",
+      "supporting_text": "DMEM medium, penicillin–streptomycin solu- tion, Trypsin-EDTA solution, fetal bovine serum (FBS) and Hank’s balanced salt solution (HBSS) were purchased from Himedia, Mumbai, India."
+    },
+    {
+      "span_id": "span_14",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "Experimental design: varying concentrations or batches."
+    },
+    {
+      "span_id": "span_15",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "EXPERIMENTAL_DESIGN_BLOCK",
+      "supporting_text": "For PS, at fixed level ( 1) of X1, at all levels of X2 and X3, particle size of less than 160 nm could be achieved."
+    },
+    {
+      "span_id": "span_16",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 15",
+      "supporting_text": "Table 15: Experimental design variable table."
+    },
+    {
+      "span_id": "span_17",
+      "source_region_type": "table_summary",
+      "source_locator_text": "Table 15",
+      "supporting_text": "column_headers: levels of both the factors"
+    },
+    {
+      "span_id": "span_18",
+      "source_region_type": "table_summary",
+      "source_locator_text": "Table 15",
+      "supporting_text": "Three check points were selected as shown in Table 7."
+    },
+    {
+      "span_id": "span_19",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 13",
+      "supporting_text": "Table 13: Formulation table with drug/polymer/loading variables."
+    },
+    {
+      "span_id": "span_20",
+      "source_region_type": "table_summary",
+      "source_locator_text": "Table 13",
+      "supporting_text": "X3 (surfactant concentration) on responses PS"
+    },
+    {
+      "span_id": "span_21",
+      "source_region_type": "table_summary",
+      "source_locator_text": "Table 13",
+      "supporting_text": "explains that PLGA concentration has major X2 and X3, influence on entrapment, but Pluronic F 68 concentration, negate the effect of PLGA concentration, even at highest level, of PLGA and lowest level of surfactant, EE of 50% could be, achieved. At fixed level of X2, contour plot between X1 and X3, shows that Drug concentration overpowers the effect of, surfactant concentration, Higher entrapments (greater than, levels of 80%) could be achieved at 0.5 to 1 level of X1, at all, X3. At fixed level of X3, Contour plot between X1 and X2 ..."
+    },
+    {
+      "span_id": "span_22",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Optimized NPs with desirability criteria"
+    },
+    {
+      "span_id": "span_23",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "Our desirabil- ity criteria were maximum entrapment with minimum particle size (less than 200 nm)."
+    },
+    {
+      "span_id": "span_24",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "the batch with smallest particle size of 126.6 ± 4.16 nm exhibited EE near to 22% (at X1 ¼  1, X2 ¼  1.0, X3 ¼  1.0)"
+    },
+    {
+      "span_id": "span_25",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "OPTIMIZATION_RESULT_BLOCK",
+      "supporting_text": "while that with highest EE of 95.7 ± 2.43% produced particle size greater than 200 nm (at X1¼1, X2¼"
+    },
+    {
+      "span_id": "span_26",
+      "source_region_type": "paragraph",
+      "source_locator_text": "PARAGRAPH_BLOCK",
+      "supporting_text": "The NPs were prepared by nanoprecipitation, optimized by 33 factorial design and characterized by TEM, DSC, FTIR studies and safety was assessed by MTT assay."
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "U1",
+      "category": "shared_context",
+      "note": "Caco-2 cells are mentioned as a material, likely for an assay.",
+      "evidence_span_ids": [
+        "span_12"
+      ]
+    },
+    {
+      "observation_id": "U2",
+      "category": "shared_context",
+      "note": "Cell culture media and reagents are mentioned as materials.",
+      "evidence_span_ids": [
+        "span_13"
+      ]
+    },
+    {
+      "observation_id": "U3",
+      "category": "other",
+      "note": "General statement about experimental design.",
+      "evidence_span_ids": [
+        "span_14"
+      ]
+    },
+    {
+      "observation_id": "U4",
+      "category": "reported_but_unassigned",
+      "note": "Reference to Table 7, which is not provided in the evidence pack.",
+      "evidence_span_ids": [
+        "span_18"
+      ]
+    },
+    {
+      "observation_id": "U5",
+      "category": "other",
+      "note": "Desirability criteria for optimization.",
+      "evidence_span_ids": [
+        "span_23"
+      ]
+    },
+    {
+      "observation_id": "U6",
+      "category": "other",
+      "note": "Characterization methods used for NPs.",
+      "evidence_span_ids": [
+        "span_26"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 15",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "span_16"
+    },
+    {
+      "table_id": "Table 13",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "span_19"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 15",
+      "varying_variables": [
+        "X1",
+        "X2",
+        "X3"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": []
+    },
+    {
+      "table_id": "Table 13",
+      "varying_variables": [
+        "X1",
+        "X2",
+        "X3",
+        "concentration",
+        "independent factors"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "drug/polymer ratio",
+        "loading",
+        "EE",
+        "DL"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "",
+      "selected_variable": "X1, X2, X3",
+      "selected_value": "X1=1, X2=1.0, X3=1.0",
+      "explicit": true,
+      "evidence_span": "span_24",
+      "risk_label": "",
+      "risk_reason": ""
+    },
+    {
+      "marker_readiness": "partial_semantic",
+      "source_table_id": "",
+      "selected_variable": "X1, X2",
+      "selected_value": "X1=1, X2=",
+      "explicit": true,
+      "evidence_span": "span_25",
+      "risk_label": "review",
+      "risk_reason": "missing_selected_value"
+    }
+  ],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 15",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_1"
+    },
+    {
+      "table_id": "Table 13",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_1"
+    },
+    {
+      "table_id": "",
+      "inherits_from_preparation": true,
+      "evidence_span": "span_26"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 15",
+      "is_doe": true
+    },
+    {
+      "table_id": "",
+      "is_doe": true
+    }
+  ]
+}

@@ -217,6 +217,7 @@ missing or stale.
 Core scripts:
 
 - `src/stage1_cleaning/zotero_raw_to_manifest.py`
+- `src/stage1_cleaning/hydrate_manifest_v1.py`
 - `src/stage1_cleaning/clean_manifest_to_text.py`
 - `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py`
 
@@ -229,6 +230,12 @@ Stage1 raw-source contract note:
   as source collection, source manifest lineage, and source selection rule.
 - Stage1 regeneration must not assume that the canonical manifest comes from a
   single raw corpus selector.
+- `src/stage1_cleaning/hydrate_manifest_v1.py` is the explicit deterministic
+  `S1-3 Manifest hydration` helper.
+- `S1-3a Asset hydration` binds rows to governed cleaned text and table
+  surfaces.
+- `S1-3b Scope overlays` binds deterministic dataset, split, and benchmark
+  metadata from governed manifest surfaces.
 
 Completion artifacts:
 
@@ -803,6 +810,8 @@ Stage5 internal family rule:
 - downstream modeling-ready family:
   - first maintained modeling-ready surface: `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py`
   - this helper reads only the frozen benchmark-final table and writes a row-linked sidecar of explicit deterministic parse/math transforms; it is downstream Stage5 support, not a new stage
+  - first maintained row-wise modeling-ready table: `src/stage5_benchmark/build_modeling_ready_table_v1.py`
+  - this helper reads the frozen benchmark-final table plus the sidecar and writes one row per frozen formulation with raw carry-through values and pivoted transformed modeling columns
   - deterministic normalization, derivation, and curated projection helpers
     that operate only downstream of the frozen benchmark-final object
 - downstream audit/review family:
@@ -954,6 +963,9 @@ Materialization rule:
 - The first maintained modeling-ready helper currently stops at a sidecar TSV
   rather than curated projection so the frozen benchmark-final contract stays
   explicit while downstream reuse becomes auditable.
+- The first maintained row-wise modeling-ready table is intentionally narrow
+  and modeling-core only; it is not a broad audit export and it does not
+  replace the long-form sidecar provenance contract.
 
 Current implementation caution:
 

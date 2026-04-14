@@ -1,0 +1,38 @@
+{
+  "stage_boundary": "S2-4b",
+  "paper_key": "INMUTV7L",
+  "doi": "10.3390/nano10040720",
+  "status": "success",
+  "llm_backend": "gemini",
+  "model": "gemini-2.5-flash",
+  "request_timeout_seconds": 180,
+  "request_retries": 0,
+  "retry_sleep_sec": 3.0,
+  "generation_config": {
+    "temperature": 0,
+    "response_mime_type": "application/json"
+  },
+  "request_mode": "stream_collect",
+  "source_prompts_jsonl_path": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompts_v1.jsonl",
+  "source_prompt_template_path": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompt_template_v1.txt",
+  "source_prompt_audit_path": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompt_audit_v1.tsv",
+  "source_freeze_manifest_path": "data/frozen/dev15_stage2_freeze_v1/FREEZE_MANIFEST.md",
+  "source_prompt_sha256": "19ae374cd656264f2fe5753660008a3947d4a628cf4111f480866d73f3859d69",
+  "source_prompt_row_fields": {
+    "paper_key": "INMUTV7L",
+    "doi": "10.3390/nano10040720",
+    "title": "",
+    "evidence_blocks_path": "data/results/20260410_a165cd1/14_s2_prompt_assembly_readiness_v2/semantic_stage2_objects/evidence_blocks/INMUTV7L/evidence_blocks_v1.json",
+    "source_evidence_artifact_path": "",
+    "ordered_block_order": []
+  },
+  "request_started_at_utc": "2026-04-12T22:27:50.754446+00:00",
+  "raw_response_path": "data/results/20260412_8517d36/04_s2_4b_live_llm_call_dev15_v1/raw_responses/INMUTV7L__stage2_v2_raw_response.json",
+  "request_finished_at_utc": "2026-04-12T22:28:37.280350+00:00",
+  "response_character_count": 12154,
+  "response_sha256": "77b2b61baf95dc111e0618c3cf51f975761f12726a0d72177c46eac797b92c29",
+  "stream_chunk_count": 73,
+  "first_chunk_elapsed_seconds": 33.598,
+  "elapsed_seconds": 46.521,
+  "api_failure": ""
+}

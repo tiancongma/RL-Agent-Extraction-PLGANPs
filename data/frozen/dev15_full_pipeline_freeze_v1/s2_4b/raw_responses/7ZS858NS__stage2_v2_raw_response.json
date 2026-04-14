@@ -1,0 +1,485 @@
+{
+  "document_key": "7ZS858NS",
+  "doi": "10.1021/acsomega.0c00111",
+  "formulation_candidates": [
+    {
+      "candidate_id": "fc1",
+      "raw_label": "MF-loaded nanoparticles, MF NPs, MF-loaded PLGA NPs",
+      "normalized_label": "MF NPs",
+      "instance_kind": "new_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s1",
+        "s9",
+        "s10",
+        "s14"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp1",
+      "formulation_candidate_id": "fc1",
+      "component_name": "Mometasone furoate",
+      "component_role": "drug",
+      "amount_text": "2 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2",
+        "s5"
+      ]
+    },
+    {
+      "component_id": "comp2",
+      "formulation_candidate_id": "fc1",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "6 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2",
+        "s6"
+      ]
+    },
+    {
+      "component_id": "comp3",
+      "formulation_candidate_id": "fc1",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "1 mL",
+      "amount_kind": "concentration",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2",
+        "s8"
+      ]
+    },
+    {
+      "component_id": "comp4",
+      "formulation_candidate_id": "fc1",
+      "component_name": "Solutol HS 15",
+      "component_role": "surfactant",
+      "amount_text": "0.1% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2",
+        "s7"
+      ]
+    },
+    {
+      "component_id": "comp5",
+      "formulation_candidate_id": "fc1",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "2 mL",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "Used to adjust formulation volume to 2 mL.",
+      "evidence_span_ids": [
+        "s3"
+      ]
+    },
+    {
+      "component_id": "comp6",
+      "formulation_candidate_id": "fc1",
+      "component_name": "sucrose",
+      "component_role": "additive",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "Used as cryoprotectant at different concentrations for variations in Table 2, not a fixed component of the initial MF NPs preparation.",
+      "evidence_span_ids": [
+        "s9"
+      ]
+    },
+    {
+      "component_id": "comp7",
+      "formulation_candidate_id": "fc1",
+      "component_name": "mannitol",
+      "component_role": "additive",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "",
+      "ambiguity_note": "Used as cryoprotectant at different concentrations for variations in Table 2, not a fixed component of the initial MF NPs preparation.",
+      "evidence_span_ids": [
+        "s9"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var1",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "MF amount",
+      "value_text": "2 mg",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2"
+      ]
+    },
+    {
+      "variable_id": "var2",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "PLGA amount",
+      "value_text": "6 mg",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2"
+      ]
+    },
+    {
+      "variable_id": "var3",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "acetone volume",
+      "value_text": "1 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2"
+      ]
+    },
+    {
+      "variable_id": "var4",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "aqueous solution volume",
+      "value_text": "2 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2"
+      ]
+    },
+    {
+      "variable_id": "var5",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "Solutol HS 15 concentration",
+      "value_text": "0.1% (w/v)",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s2"
+      ]
+    },
+    {
+      "variable_id": "var6",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "stirring speed",
+      "value_text": "900 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s3"
+      ]
+    },
+    {
+      "variable_id": "var7",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "stirring time",
+      "value_text": "24 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s3"
+      ]
+    },
+    {
+      "variable_id": "var8",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "formulation volume adjusted to",
+      "value_text": "2 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s3"
+      ]
+    },
+    {
+      "variable_id": "var9",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "centrifugation time",
+      "value_text": "1 min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s4"
+      ]
+    },
+    {
+      "variable_id": "var10",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "centrifugation speed",
+      "value_text": "3000 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s4"
+      ]
+    },
+    {
+      "variable_id": "var11",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "PLGA type",
+      "value_text": "Purasorb PDLG 5010 (50:50)",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s6"
+      ]
+    },
+    {
+      "variable_id": "var12",
+      "formulation_candidate_id": "fc1",
+      "variable_name": "PLGA inherent viscosity",
+      "value_text": "1 dL/g",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s6"
+      ]
+    },
+    {
+      "variable_id": "var13",
+      "formulation_candidate_id": "",
+      "variable_name": "sucrose concentration",
+      "value_text": "diﬀerent concentrations",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Specific concentrations are not provided in the text.",
+      "evidence_span_ids": [
+        "s9"
+      ]
+    },
+    {
+      "variable_id": "var14",
+      "formulation_candidate_id": "",
+      "variable_name": "mannitol concentration",
+      "value_text": "diﬀerent concentrations",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Specific concentrations are not provided in the text.",
+      "evidence_span_ids": [
+        "s9"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "m1",
+      "formulation_candidate_id": "fc1",
+      "measurement_name": "size",
+      "value_text": "117 ± 13",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "measurement_id": "m2",
+      "formulation_candidate_id": "fc1",
+      "measurement_name": "pdi",
+      "value_text": "0.26 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "measurement_id": "m3",
+      "formulation_candidate_id": "fc1",
+      "measurement_name": "zeta_potential",
+      "value_text": "−32 ± 1.2",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "measurement_id": "m4",
+      "formulation_candidate_id": "fc1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "90 ± 2.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10"
+      ]
+    },
+    {
+      "measurement_id": "m5",
+      "formulation_candidate_id": "fc1",
+      "measurement_name": "loading_content",
+      "value_text": "22.4 ± 0.5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "s10",
+        "s12"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "s1",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "2.2. Preparation of MF NPs. MF-loaded nanoparticles were prepared using the nanoprecipitation method13 with modiﬁcation.",
+      "supporting_text": "MF-loaded nanoparticles were prepared using the nanoprecipitation method13 with modiﬁcation."
+    },
+    {
+      "span_id": "s2",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The organic phase, consisting of 2 mg of MF and 6 mg of PLGA in 1 mL of acetone, was rapidly poured into 2 mL of aqueous solution containing 0.1% (w/v) Solutol HS 15.",
+      "supporting_text": "The organic phase, consisting of 2 mg of MF and 6 mg of PLGA in 1 mL of acetone, was rapidly poured into 2 mL of aqueous solution containing 0.1% (w/v) Solutol HS 15."
+    },
+    {
+      "span_id": "s3",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "The suspension was stirred at 900 rpm for 24 h to allow complete evaporation of the organic solvent, and the formulation volume was adjusted with water to 2 mL (Figure 2).",
+      "supporting_text": "The suspension was stirred at 900 rpm for 24 h to allow complete evaporation of the organic solvent, and the formulation volume was adjusted with water to 2 mL (Figure 2)."
+    },
+    {
+      "span_id": "s4",
+      "source_region_type": "synthesis_method",
+      "source_locator_text": "Then, the formulation was centrifuged for 1 min at 3000 rpm to discard debris.",
+      "supporting_text": "Then, the formulation was centrifuged for 1 min at 3000 rpm to discard debris."
+    },
+    {
+      "span_id": "s5",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "Mometasone furoate (MF) was purchased from Acros Organics (New Jersey, USA).",
+      "supporting_text": "Mometasone furoate (MF) was purchased from Acros Organics (New Jersey, USA)."
+    },
+    {
+      "span_id": "s6",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "PLGA-Purasorb PDLG 5010 (50:50) with an inherent viscosity midpoint of 1 dL/g was kindly donated by Corbion Purac (Gorinchem, the Netherlands).",
+      "supporting_text": "PLGA-Purasorb PDLG 5010 (50:50) with an inherent viscosity midpoint of 1 dL/g was kindly donated by Corbion Purac (Gorinchem, the Netherlands)."
+    },
+    {
+      "span_id": "s7",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "Solutol HS 15 (Macrogol 15 hydroxystearate) was kindly supplied by BASF (Ludwigshafen, Germany).",
+      "supporting_text": "Solutol HS 15 (Macrogol 15 hydroxystearate) was kindly supplied by BASF (Ludwigshafen, Germany)."
+    },
+    {
+      "span_id": "s8",
+      "source_region_type": "materials_procurement",
+      "source_locator_text": "Acetone and methanol were purchased from Sigma-Aldrich (Rehovot, Israel).",
+      "supporting_text": "Acetone and methanol were purchased from Sigma-Aldrich (Rehovot, Israel)."
+    },
+    {
+      "span_id": "s9",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "In the present study, sucrose and mannitol were used as cryoprotectants at diﬀerent concentrations, and the physicochemical properties of MF NPs were measured by DLS after freeze-drying (Table 2).",
+      "supporting_text": "In the present study, sucrose and mannitol were used as cryoprotectants at diﬀerent concentrations, and the physicochemical properties of MF NPs were measured by DLS after freeze-drying (Table 2)."
+    },
+    {
+      "span_id": "s10",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "Physicochemical Properties, Encapsulation Eﬃciency, and Drug Loading Content of MF NPs (n = 3, mean ± s.d.) formulation mean diameter (nm) polydispersity index (PDI) zeta potential (mV) encapsulation eﬃciency (%)a drug loading content (%)b MF NPs 117 ± 13 0.26 ± 0.02 −32 ± 1.2 90 ± 2.1 22.4 ± 0.5",
+      "supporting_text": "Physicochemical Properties, Encapsulation Eﬃciency, and Drug Loading Content of MF NPs (n = 3, mean ± s.d.) formulation mean diameter (nm) polydispersity index (PDI) zeta potential (mV) encapsulation eﬃciency (%)a drug loading content (%)b MF NPs 117 ± 13 0.26 ± 0.02 −32 ± 1.2 90 ± 2.1 22.4 ± 0.5"
+    },
+    {
+      "span_id": "s11",
+      "source_region_type": "experimental_design",
+      "source_locator_text": "The NPs are assumed to be stable throughout the freeze-drying process if the ratio Sf/Si is close to 1, with an upper limit of 2.44−46",
+      "supporting_text": "The NPs are assumed to be stable throughout the freeze-drying process if the ratio Sf/Si is close to 1, with an upper limit of 2.44−46"
+    },
+    {
+      "span_id": "s12",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "Moreover, the drug loading content was 22.4 ± 0.5% (w/w), where most of the existing nanomedicines usually do not reach values higher than 10% drug loading content.30",
+      "supporting_text": "Moreover, the drug loading content was 22.4 ± 0.5% (w/w), where most of the existing nanomedicines usually do not reach values higher than 10% drug loading content.30"
+    },
+    {
+      "span_id": "s13",
+      "source_region_type": "optimization_result",
+      "source_locator_text": "In a previous study, the MF encapsulation eﬃciency in PLGA NPs and WGA- conjugated PLGA NPs using an emulsion−solvent evaporation technique was 78 ± 5.5 and 60 ± 2.5%, respectively.21",
+      "supporting_text": "In a previous study, the MF encapsulation eﬃciency in PLGA NPs and WGA- conjugated PLGA NPs using an emulsion−solvent evaporation technique was 78 ± 5.5 and 60 ± 2.5%, respectively.21"
+    },
+    {
+      "span_id": "s14",
+      "source_region_type": "paragraph",
+      "source_locator_text": "In this study, MF-loaded PLGA NPs were successfully prepared using the nanoprecipitation method with a mean particle size of 117 nm and a satisfactory polydispersity index (PDI) of 0.26 (Table 1 and Figure 3A)",
+      "supporting_text": "In this study, MF-loaded PLGA NPs were successfully prepared using the nanoprecipitation method with a mean particle size of 117 nm and a satisfactory polydispersity index (PDI) of 0.26 (Table 1 and Figure 3A)"
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "uo1",
+      "category": "shared_context",
+      "note": "Stability criterion for freeze-drying, not a direct measurement of the current NPs.",
+      "evidence_span_ids": [
+        "s11"
+      ]
+    },
+    {
+      "observation_id": "uo2",
+      "category": "reported_but_unassigned",
+      "note": "Encapsulation efficiency from a previous study, not the current formulation.",
+      "evidence_span_ids": [
+        "s13"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "s9"
+    },
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "s14"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "sucrose concentration",
+        "mannitol concentration"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": []
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "s14"
+    },
+    {
+      "table_id": "Table 2",
+      "inherits_from_preparation": true,
+      "evidence_span": "s9"
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 2",
+      "is_doe": true
+    }
+  ]
+}

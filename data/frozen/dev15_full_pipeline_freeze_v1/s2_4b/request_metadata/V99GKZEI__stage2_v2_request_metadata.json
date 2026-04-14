@@ -1,0 +1,38 @@
+{
+  "stage_boundary": "S2-4b",
+  "paper_key": "V99GKZEI",
+  "doi": "10.1039/C5RA27386B",
+  "status": "success",
+  "llm_backend": "gemini",
+  "model": "gemini-2.5-flash",
+  "request_timeout_seconds": 180,
+  "request_retries": 1,
+  "retry_sleep_sec": 5.0,
+  "generation_config": {
+    "temperature": 0,
+    "response_mime_type": "application/json"
+  },
+  "request_mode": "stream_collect",
+  "source_prompts_jsonl_path": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompts_v1.jsonl",
+  "source_prompt_template_path": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompt_template_v1.txt",
+  "source_prompt_audit_path": "data/frozen/dev15_stage2_freeze_v1/s2_4a/analysis/s2_4a_prompt_audit_v1.tsv",
+  "source_freeze_manifest_path": "data/frozen/dev15_stage2_freeze_v1/FREEZE_MANIFEST.md",
+  "source_prompt_sha256": "afbeaa1f2bf71a77f11bd409fd0cec57486534876dd16e31b122d04583e8c738",
+  "source_prompt_row_fields": {
+    "paper_key": "V99GKZEI",
+    "doi": "10.1039/C5RA27386B",
+    "title": "",
+    "evidence_blocks_path": "data/results/20260410_a165cd1/14_s2_prompt_assembly_readiness_v2/semantic_stage2_objects/evidence_blocks/V99GKZEI/evidence_blocks_v1.json",
+    "source_evidence_artifact_path": "",
+    "ordered_block_order": []
+  },
+  "request_started_at_utc": "2026-04-13T13:55:21.854682+00:00",
+  "raw_response_path": "data/results/20260412_8517d36/14_s2_4b_completion_remaining5_v1/raw_responses/V99GKZEI__stage2_v2_raw_response.json",
+  "request_finished_at_utc": "2026-04-13T13:56:33.044679+00:00",
+  "response_character_count": 29879,
+  "response_sha256": "516d5b05c703b2fb1c8d88f795bc2113345da85d5c0d3c50b239b4ff7d6b9d16",
+  "stream_chunk_count": 198,
+  "first_chunk_elapsed_seconds": 30.873,
+  "elapsed_seconds": 71.177,
+  "api_failure": ""
+}

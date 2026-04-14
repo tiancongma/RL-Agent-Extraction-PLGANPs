@@ -1,0 +1,1016 @@
+{
+  "document_key": "WIVUCMYG",
+  "doi": "10.1002/jps.24101",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F_F1_T1",
+      "raw_label": "F1",
+      "normalized_label": "F1",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_F14_T1",
+      "raw_label": "F14",
+      "normalized_label": "F14",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_F26_T1",
+      "raw_label": "F26",
+      "normalized_label": "F26",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_F11_T1_implied",
+      "raw_label": "F11",
+      "normalized_label": "F11",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "Formulation F11 is implied to exist in Table 1's design space, as it is referenced in Table 6.",
+      "evidence_span_ids": [
+        "span_id_table1_row_pattern",
+        "span_id_table6_sample_F11"
+      ],
+      "status": "derived_from_shared_context"
+    },
+    {
+      "candidate_id": "F_F19_T1_implied",
+      "raw_label": "F19",
+      "normalized_label": "F19",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "Formulation F19 is implied to exist in Table 1's design space, as it is referenced in Table 6.",
+      "evidence_span_ids": [
+        "span_id_table1_row_pattern",
+        "span_id_table6_sample_F19"
+      ],
+      "status": "derived_from_shared_context"
+    },
+    {
+      "candidate_id": "F_F20_T1_implied",
+      "raw_label": "F20",
+      "normalized_label": "F20",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "ambiguity_note": "Formulation F20 is implied to exist in Table 1's design space, as it is referenced in Table 6.",
+      "evidence_span_ids": [
+        "span_id_table1_row_pattern",
+        "span_id_table6_sample_F20"
+      ],
+      "status": "derived_from_shared_context"
+    },
+    {
+      "candidate_id": "F_F11_T6",
+      "raw_label": "F11",
+      "normalized_label": "F11",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "F_F11_T1_implied",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table6_summary",
+        "span_id_table6_sample_F11"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_F19_T6",
+      "raw_label": "F19",
+      "normalized_label": "F19",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "F_F19_T1_implied",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table6_summary",
+        "span_id_table6_sample_F19"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_F20_T6",
+      "raw_label": "F20",
+      "normalized_label": "F20",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "F_F20_T1_implied",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table6_summary",
+        "span_id_table6_sample_F20"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "C_cPF",
+      "formulation_candidate_id": "",
+      "component_name": "cPF",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_headers",
+        "span_id_table1_factors_cPF"
+      ]
+    },
+    {
+      "component_id": "C_cPVA",
+      "formulation_candidate_id": "",
+      "component_name": "cPVA",
+      "component_role": "surfactant",
+      "amount_text": "",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_headers",
+        "span_id_table1_factors_cPVA"
+      ]
+    },
+    {
+      "component_id": "C_cPLGA",
+      "formulation_candidate_id": "",
+      "component_name": "cPLGA",
+      "component_role": "polymer",
+      "amount_text": "",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_headers",
+        "span_id_table1_factors_cPLGA"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "V_cPF_factor",
+      "formulation_candidate_id": "",
+      "variable_name": "cPF",
+      "value_text": "0.00, 0.50, 1.00, 1.50, 2.00 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_headers",
+        "span_id_table1_factors_cPF"
+      ]
+    },
+    {
+      "variable_id": "V_cPVA_factor",
+      "formulation_candidate_id": "",
+      "variable_name": "cPVA",
+      "value_text": "5.00, 10.00, 15.00, 20.00, 25.00 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_headers",
+        "span_id_table1_factors_cPVA"
+      ]
+    },
+    {
+      "variable_id": "V_cPLGA_factor",
+      "formulation_candidate_id": "",
+      "variable_name": "cPLGA",
+      "value_text": "8.00, 8.50, 9.00, 9.50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_headers",
+        "span_id_table1_factors_cPLGA"
+      ]
+    },
+    {
+      "variable_id": "V_pH_factor",
+      "formulation_candidate_id": "",
+      "variable_name": "pH",
+      "value_text": "coded levels -2 to +2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Specific numerical values for pH coded levels are not provided in the paragraph block, only the coded levels are implied by Table 1 headers.",
+      "evidence_span_ids": [
+        "span_id_table1_headers"
+      ]
+    },
+    {
+      "variable_id": "V_cPLGA_plot_context",
+      "formulation_candidate_id": "",
+      "variable_name": "cPLGA",
+      "value_text": "9.0 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_plot_context"
+      ]
+    },
+    {
+      "variable_id": "V_cPVA_plot_context",
+      "formulation_candidate_id": "",
+      "variable_name": "cPVA",
+      "value_text": "15.0 mg/mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_plot_context"
+      ]
+    },
+    {
+      "variable_id": "V_cPF_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "variable_name": "cPF",
+      "value_text": "−1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "variable_id": "V_cPVA_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "variable_name": "cPVA",
+      "value_text": "−1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "variable_id": "V_cPLGA_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "variable_name": "cPLGA",
+      "value_text": "−1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "variable_id": "V_pH_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "variable_name": "pH",
+      "value_text": "−1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "variable_id": "V_cPF_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "variable_name": "cPF",
+      "value_text": "−1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "variable_id": "V_cPVA_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "variable_name": "cPVA",
+      "value_text": "1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "variable_id": "V_cPLGA_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "variable_name": "cPLGA",
+      "value_text": "−1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "variable_id": "V_pH_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "variable_name": "pH",
+      "value_text": "1",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "variable_id": "V_cPF_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "variable_name": "cPF",
+      "value_text": "0",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "variable_id": "V_cPVA_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "variable_name": "cPVA",
+      "value_text": "0",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "variable_id": "V_cPLGA_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "variable_name": "cPLGA",
+      "value_text": "0",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "variable_id": "V_pH_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "variable_name": "pH",
+      "value_text": "0",
+      "variable_role": "identity_signal",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M_MeanSize_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "measurement_name": "size",
+      "value_text": "566.50 ± 8.05",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "measurement_name": "pdi",
+      "value_text": "0.286 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "measurement_name": "zeta_potential",
+      "value_text": "−8.28 ± 0.71",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_F1_T1",
+      "formulation_candidate_id": "F_F1_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "87.69 ± 0.13",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F1"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "measurement_name": "size",
+      "value_text": "318.40 ± 3.11",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "measurement_name": "pdi",
+      "value_text": "0.207 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "measurement_name": "zeta_potential",
+      "value_text": "−7.44 ± 0.19",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_F14_T1",
+      "formulation_candidate_id": "F_F14_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "39.79 ± 1.77",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F14"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "measurement_name": "size",
+      "value_text": "357.80 ± 3.40",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "measurement_name": "pdi",
+      "value_text": "0.147 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "measurement_name": "zeta_potential",
+      "value_text": "−6.58 ± 0.22",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_F26_T1",
+      "formulation_candidate_id": "F_F26_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "62.09 ± 1.30",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_id_table1_sample_F26"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_Before_F11_T6",
+      "formulation_candidate_id": "F_F11_T6",
+      "measurement_name": "size",
+      "value_text": "324.30 ± 4.03",
+      "unit_text": "nm",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F11"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_Before_F11_T6",
+      "formulation_candidate_id": "F_F11_T6",
+      "measurement_name": "pdi",
+      "value_text": "0.091 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F11"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_Before_F11_T6",
+      "formulation_candidate_id": "F_F11_T6",
+      "measurement_name": "zeta_potential",
+      "value_text": "–7.41 ± 0.56",
+      "unit_text": "mV",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F11"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_After_F11_T6",
+      "formulation_candidate_id": "F_F11_T6",
+      "measurement_name": "size",
+      "value_text": "317.1 ± 0.98",
+      "unit_text": "nm",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F11"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_After_F11_T6",
+      "formulation_candidate_id": "F_F11_T6",
+      "measurement_name": "pdi",
+      "value_text": "0.096 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F11"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_After_F11_T6",
+      "formulation_candidate_id": "F_F11_T6",
+      "measurement_name": "zeta_potential",
+      "value_text": "−6.86 ± 0.62",
+      "unit_text": "mV",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F11"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_Before_F19_T6",
+      "formulation_candidate_id": "F_F19_T6",
+      "measurement_name": "size",
+      "value_text": "368.20 ± 2.65",
+      "unit_text": "nm",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F19"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_Before_F19_T6",
+      "formulation_candidate_id": "F_F19_T6",
+      "measurement_name": "pdi",
+      "value_text": "0.097 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F19"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_Before_F19_T6",
+      "formulation_candidate_id": "F_F19_T6",
+      "measurement_name": "zeta_potential",
+      "value_text": "−6.25 ± 0.34",
+      "unit_text": "mV",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F19"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_After_F19_T6",
+      "formulation_candidate_id": "F_F19_T6",
+      "measurement_name": "size",
+      "value_text": "360.7 ± 1,32",
+      "unit_text": "nm",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F19"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_After_F19_T6",
+      "formulation_candidate_id": "F_F19_T6",
+      "measurement_name": "pdi",
+      "value_text": "0.098 ± 0.03",
+      "unit_text": "",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F19"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_After_F19_T6",
+      "formulation_candidate_id": "F_F19_T6",
+      "measurement_name": "zeta_potential",
+      "value_text": "−5.07 ± 0.23",
+      "unit_text": "mV",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F19"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_Before_F20_T6",
+      "formulation_candidate_id": "F_F20_T6",
+      "measurement_name": "size",
+      "value_text": "343.80 ± 2.74",
+      "unit_text": "nm",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F20"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_Before_F20_T6",
+      "formulation_candidate_id": "F_F20_T6",
+      "measurement_name": "pdi",
+      "value_text": "0.085 ± 0.03",
+      "unit_text": "",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F20"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_Before_F20_T6",
+      "formulation_candidate_id": "F_F20_T6",
+      "measurement_name": "zeta_potential",
+      "value_text": "−8.50 ± 0.61",
+      "unit_text": "mV",
+      "ambiguity_note": "Before Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F20"
+      ]
+    },
+    {
+      "measurement_id": "M_MeanSize_After_F20_T6",
+      "formulation_candidate_id": "F_F20_T6",
+      "measurement_name": "size",
+      "value_text": "338.5 ± 1.90",
+      "unit_text": "nm",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F20"
+      ]
+    },
+    {
+      "measurement_id": "M_PDI_After_F20_T6",
+      "formulation_candidate_id": "F_F20_T6",
+      "measurement_name": "pdi",
+      "value_text": "0.132 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F20"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPot_After_F20_T6",
+      "formulation_candidate_id": "F_F20_T6",
+      "measurement_name": "zeta_potential",
+      "value_text": "−3.43 ± 0.28",
+      "unit_text": "mV",
+      "ambiguity_note": "After Freeze-Drying",
+      "evidence_span_ids": [
+        "span_id_table6_sample_F20"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "R_F11_T6_inherits_F11_T1",
+      "source_candidate_id": "F_F11_T6",
+      "target_candidate_id": "F_F11_T1_implied",
+      "relation_type": "inherits_from",
+      "note": "Formulation F11 in Table 6 is an optimized variant of F11 from the DOE in Table 1.",
+      "evidence_span_ids": [
+        "span_id_table6_summary",
+        "span_id_table6_sample_F11",
+        "span_id_table1_row_pattern"
+      ]
+    },
+    {
+      "relation_id": "R_F19_T6_inherits_F19_T1",
+      "source_candidate_id": "F_F19_T6",
+      "target_candidate_id": "F_F19_T1_implied",
+      "relation_type": "inherits_from",
+      "note": "Formulation F19 in Table 6 is an optimized variant of F19 from the DOE in Table 1.",
+      "evidence_span_ids": [
+        "span_id_table6_summary",
+        "span_id_table6_sample_F19",
+        "span_id_table1_row_pattern"
+      ]
+    },
+    {
+      "relation_id": "R_F20_T6_inherits_F20_T1",
+      "source_candidate_id": "F_F20_T6",
+      "target_candidate_id": "F_F20_T1_implied",
+      "relation_type": "inherits_from",
+      "note": "Formulation F20 in Table 6 is an optimized variant of F20 from the DOE in Table 1.",
+      "evidence_span_ids": [
+        "span_id_table6_summary",
+        "span_id_table6_sample_F20",
+        "span_id_table1_row_pattern"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_id_meta_key",
+      "source_region_type": "text_span",
+      "source_locator_text": "key: WIVUCMYG",
+      "supporting_text": "key: WIVUCMYG"
+    },
+    {
+      "span_id": "span_id_meta_doi",
+      "source_region_type": "text_span",
+      "source_locator_text": "doi: 10.1002/jps.24101",
+      "supporting_text": "doi: 10.1002/jps.24101"
+    },
+    {
+      "span_id": "span_id_table3_ref",
+      "source_region_type": "text_span",
+      "source_locator_text": "Table 3 . p Value Obtained from ANOVA Statistical Analysis of Effect of Independent Variables on the Physicochemical Properties of the NPs",
+      "supporting_text": "Table 3 . p Value Obtained from ANOVA Statistical Analysis of Effect of Independent Variables on the Physicochemical Properties of the NPs"
+    },
+    {
+      "span_id": "span_id_plot_context",
+      "source_region_type": "text_span",
+      "source_locator_text": "Response surface plot of the effect of the aqueous phase pH on the Z Ave and PI. (cPLGA = 9.0 mg/mL; cPVA = 15.0 mg/mL)",
+      "supporting_text": "Response surface plot of the effect of the aqueous phase pH on the Z Ave and PI. (cPLGA = 9.0 mg/mL; cPVA = 15.0 mg/mL)"
+    },
+    {
+      "span_id": "span_id_table1_summary",
+      "source_region_type": "text_span",
+      "source_locator_text": "Variable table: formulation factors and concentrations. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv]",
+      "supporting_text": "Variable table: formulation factors and concentrations. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_01__html_table.csv]"
+    },
+    {
+      "span_id": "span_id_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1 - title_or_caption",
+      "supporting_text": "Experimental design variable table."
+    },
+    {
+      "span_id": "span_id_table1_role_hint",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "Table 1 - table_role_hint",
+      "supporting_text": "design matrix"
+    },
+    {
+      "span_id": "span_id_table1_headers",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1 - column_headers",
+      "supporting_text": "Coded Levels of Factors || Factorial || Coded Levels of Factors || cPF (mg/mL) || Coded Levels of Factors || cPVA (mg/mL) || Coded Levels of Factors || cPLGA (mg/mL) || Coded Levels of Factors || pH || Measured Responses || Mean Size (nm) ± SD || Measured Responses || Polidispersity Index ± SD || Measured Responses || Zeta Potential (mV) ± SD || Measured Responses || Entrapment Efficiency (%) ± SD"
+    },
+    {
+      "span_id": "span_id_table1_row_pattern",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "Table 1 - row_identifier_pattern",
+      "supporting_text": "F-numbered rows"
+    },
+    {
+      "span_id": "span_id_table1_sample_F1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1 - sample_row_1",
+      "supporting_text": "F1 | −1 | −1 | −1 | −1 | 566.50 ± 8.05 | 0.286 ± 0.02 | −8.28 ± 0.71 | 87.69 ± 0.13"
+    },
+    {
+      "span_id": "span_id_table1_sample_F14",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1 - sample_row_2",
+      "supporting_text": "F14 | −1 | 1 | −1 | 1 | 318.40 ± 3.11 | 0.207 ± 0.02 | −7.44 ± 0.19 | 39.79 ± 1.77"
+    },
+    {
+      "span_id": "span_id_table1_sample_F26",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1 - sample_row_3",
+      "supporting_text": "F26 | 0 | 0 | 0 | 0 | 357.80 ± 3.40 | 0.147 ± 0.02 | −6.58 ± 0.22 | 62.09 ± 1.30"
+    },
+    {
+      "span_id": "span_id_table6_summary",
+      "source_region_type": "text_span",
+      "source_locator_text": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_06__html_table.csv]",
+      "supporting_text": "Optimization result: best/highest/efficiency/loading outcome. Formulation table: drug/polymer ratio, loading, EE, DL. [TABLE_SUMMARY data/cleaned/content_goren_2025/tables/WIVUCMYG/WIVUCMYG__table_06__html_table.csv]"
+    },
+    {
+      "span_id": "span_id_table6_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 6 - title_or_caption",
+      "supporting_text": "Formulation table with drug/polymer/loading variables."
+    },
+    {
+      "span_id": "span_id_table6_role_hint",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "Table 6 - table_role_hint",
+      "supporting_text": "formulation"
+    },
+    {
+      "span_id": "span_id_table6_headers",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 6 - column_headers",
+      "supporting_text": "Empty Cell || Formulation || Before Freeze-Drying || Mean Size (nm) ± SD || Before Freeze-Drying || Polidispersity Index ± SD || Before Freeze-Drying || Zeta Potential (mV) ± SD || After Freeze-Drying || Mean Size (nm) ± SD || After Freeze-Drying || Polidispersity Index ± SD || After Freeze-Drying || Zeta Potential (mV) ± SD"
+    },
+    {
+      "span_id": "span_id_table6_row_pattern",
+      "source_region_type": "paper_notes",
+      "source_locator_text": "Table 6 - row_identifier_pattern",
+      "supporting_text": "F-numbered rows"
+    },
+    {
+      "span_id": "span_id_table6_sample_F11",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6 - sample_row_1",
+      "supporting_text": "F11 | 324.30 ± 4.03 | 0.091 ± 0.01 | –7.41 ± 0.56 | 317.1 ± 0.98 | 0.096 ± 0.02 | −6.86 ± 0.62"
+    },
+    {
+      "span_id": "span_id_table6_sample_F19",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6 - sample_row_2",
+      "supporting_text": "F19 | 368.20 ± 2.65 | 0.097 ± 0.01 | −6.25 ± 0.34 | 360.7 ± 1,32 | 0.098 ± 0.03 | −5.07 ± 0.23"
+    },
+    {
+      "span_id": "span_id_table6_sample_F20",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6 - sample_row_3",
+      "supporting_text": "F20 | 343.80 ± 2.74 | 0.085 ± 0.03 | −8.50 ± 0.61 | 338.5 ± 1.90 | 0.132 ± 0.01 | −3.43 ± 0.28"
+    },
+    {
+      "span_id": "span_id_prep_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "Preparation method: Preparation and Optimization of PLGA NP s",
+      "supporting_text": "Preparation method: Preparation and Optimization of PLGA NP s"
+    },
+    {
+      "span_id": "span_id_table1_factors_cPF",
+      "source_region_type": "text_span",
+      "source_locator_text": "cPF (mg/mL) 0.00 0.50 1.00 1.50 2.00",
+      "supporting_text": "cPF (mg/mL) 0.00 0.50 1.00 1.50 2.00"
+    },
+    {
+      "span_id": "span_id_table1_factors_cPVA",
+      "source_region_type": "text_span",
+      "source_locator_text": "cPVA (mg/mL) 5.00 10.00 15.00 20.00 25.00",
+      "supporting_text": "cPVA (mg/mL) 5.00 10.00 15.00 20.00 25.00"
+    },
+    {
+      "span_id": "span_id_table1_factors_cPLGA",
+      "source_region_type": "text_span",
+      "source_locator_text": "cPLGA (mg/mL) 8.00 8.50 9.00 9.50",
+      "supporting_text": "cPLGA (mg/mL) 8.00 8.50 9.00 9.50"
+    }
+  ],
+  "unassigned_observations": [
+    {
+      "observation_id": "U_PreparationMethod",
+      "category": "shared_context",
+      "note": "General preparation method mentioned, not directly linked to a specific table for inheritance.",
+      "evidence_span_ids": [
+        "span_id_prep_method"
+      ]
+    },
+    {
+      "observation_id": "U_Table3_Ref",
+      "category": "candidate_non_formulation",
+      "note": "Table 3 is referenced as a statistical analysis table, not a formulation table.",
+      "evidence_span_ids": [
+        "span_id_table3_ref"
+      ]
+    }
+  ],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "span_id_table1_role_hint"
+    },
+    {
+      "table_id": "Table 6",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "span_id_table6_role_hint"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "cPF (mg/mL)",
+        "cPVA (mg/mL)",
+        "cPLGA (mg/mL)",
+        "pH"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Mean Size (nm)",
+        "Polidispersity Index",
+        "Zeta Potential (mV)",
+        "Entrapment Efficiency (%)"
+      ]
+    },
+    {
+      "table_id": "Table 6",
+      "varying_variables": [
+        "cPF",
+        "cPVA",
+        "cPLGA",
+        "pH"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Mean Size (nm) Before Freeze-Drying",
+        "Polidispersity Index Before Freeze-Drying",
+        "Zeta Potential (mV) Before Freeze-Drying",
+        "Mean Size (nm) After Freeze-Drying",
+        "Polidispersity Index After Freeze-Drying",
+        "Zeta Potential (mV) After Freeze-Drying"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "unclear",
+      "selected_variable": "cPLGA",
+      "selected_value": "9.0 mg/mL",
+      "explicit": true,
+      "evidence_span": "span_id_plot_context"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "unclear",
+      "selected_variable": "cPVA",
+      "selected_value": "15.0 mg/mL",
+      "explicit": true,
+      "evidence_span": "span_id_plot_context"
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 6",
+      "inherit_type": "selected_condition",
+      "variable": "Formulation ID",
+      "value": "F11",
+      "evidence_span": "span_id_table6_sample_F11"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 6",
+      "inherit_type": "selected_condition",
+      "variable": "Formulation ID",
+      "value": "F19",
+      "evidence_span": "span_id_table6_sample_F19"
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 6",
+      "inherit_type": "selected_condition",
+      "variable": "Formulation ID",
+      "value": "F20",
+      "evidence_span": "span_id_table6_sample_F20"
+    }
+  ],
+  "preparation_inheritance_markers": [],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    }
+  ]
+}

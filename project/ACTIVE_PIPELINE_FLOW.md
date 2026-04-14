@@ -73,8 +73,10 @@ Fine-grained governance mapping:
 
 - Stage0 / Stage1:
   - `S1-1 Raw ingestion`
-  - `S1-2 Clean text`
-  - `S1-3 Scope manifest`
+  - `S1-2 Multi-source manifest assembly`
+  - `S1-3 Manifest hydration`
+  - `S1-3a Asset hydration`
+  - `S1-3b Scope overlays`
 - Stage2:
   - `S2-1 Scope resolution`
   - `S2-2 Evidence construction`
@@ -262,6 +264,7 @@ Exact input files or directories:
 Exact script path(s) and script filename(s):
 
 - `src/stage1_cleaning/zotero_raw_to_manifest.py`
+- `src/stage1_cleaning/hydrate_manifest_v1.py`
 - `src/stage1_cleaning/clean_manifest_to_text.py`
 - `src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py`
 
@@ -764,6 +767,8 @@ Internal Stage5 family rule:
 - downstream modeling-ready family:
   - first maintained modeling-ready surface: `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py`
   - this helper reads only the frozen benchmark-final table and emits a downstream sidecar of deterministic parse/math transforms with row identity linkage and raw-value provenance
+  - first maintained row-wise modeling-ready table: `src/stage5_benchmark/build_modeling_ready_table_v1.py`
+  - this helper reads the frozen benchmark-final table plus the sidecar and emits one row per frozen formulation with selected raw carry-through values and selected transformed modeling columns
   - deterministic normalization, derivation, and curated projection helpers
     that operate only downstream of the frozen benchmark-final object
 - downstream audit/review family:
@@ -817,6 +822,9 @@ Downstream modeling-ready contract:
   object
 - the first maintained modeling-ready path is a sidecar TSV built from
   `final_formulation_table_v1.tsv` plus explicit deterministic transform rules
+- the first maintained row-wise modeling-ready table is built from that frozen
+  final table plus the sidecar and keeps raw benchmark-final values distinct
+  from transformed modeling columns
 - they may include normalization, canonical label cleanup, unit harmonization,
   safe deterministic derivation, and curated projection
 - they must preserve raw benchmark-final values and provenance
@@ -1020,6 +1028,7 @@ $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
 python src/stage1_cleaning/zotero_raw_to_manifest.py --overwrite
 python src/stage1_cleaning/clean_manifest_to_text.py --overwrite --prefer html
 python src/stage1_cleaning/run_tables_extraction_for_dataset_v1.py --dataset-id goren_2025 --manifest-tsv data/cleaned/goren_2025/index/manifest.tsv
+python src/stage1_cleaning/hydrate_manifest_v1.py --manifest-tsv data/cleaned/index/manifest_current.tsv --out-tsv data/cleaned/index/manifest_current.tsv --overwrite --dataset-manifest-tsv data/cleaned/goren_2025/index/manifest.tsv --dataset-id goren_2025 --split-manifest-tsv data/cleaned/goren_2025/index/splits/dev_manifest_v7pilot3_2026-03-06.tsv --split-tag dev_manifest_v7pilot3_2026-03-06 --benchmark-tag DEV15 --split-manifest-tsv data/cleaned/goren_2025/index/splits/dev_manifest_remaining12_2026-03-10.tsv --split-tag dev_manifest_remaining12_2026-03-10 --benchmark-tag DEV15
 ```
 
 When the canonical manifest is assembled from multiple declared upstream raw
@@ -1028,6 +1037,15 @@ arguments such as `--source-collection`, `--source-manifest-lineage`,
 `--source-selection-rule`, and `--input-dataset-id`. The assembly contract is
 explicit; it must not be inferred from recency, file naming similarity, or
 undocumented notes.
+
+Manifest hydration rule:
+
+- `S1-2` assembly alone is not the contract-complete canonical manifest.
+- `S1-3a` asset hydration must bind rows to governed cleaned text and table
+  surfaces such as `data/cleaned/index/key2txt.tsv` and dataset-scoped table
+  roots.
+- `S1-3b` scope overlays must bind deterministic dataset/split/benchmark
+  metadata from governed dataset and split manifests.
 
 ### Step 2. Run the composite Stage2 entrypoint
 

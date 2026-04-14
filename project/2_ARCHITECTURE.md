@@ -71,11 +71,19 @@ inside those coarse stages; it does not introduce new runtime namespaces.
 
 - `S1-1 Raw ingestion`
   - Zotero-derived raw corpus intake and attachment availability.
-- `S1-2 Clean text`
-  - cleaned content and table-asset construction from the declared raw inputs.
-- `S1-3 Scope manifest`
-  - authoritative manifest and scope-ready indexing surfaces consumed by
-    downstream extraction.
+- `S1-2 Multi-source manifest assembly`
+  - deterministically assemble the canonical manifest key universe and
+    bibliographic identity from one or more explicitly declared raw Zotero
+    sources.
+- `S1-3 Manifest hydration`
+  - deterministically hydrate the assembled manifest into the fully usable
+    canonical manifest consumed by downstream extraction.
+- `S1-3a Asset hydration`
+  - bind manifest rows to already-governed cleaned text and table asset
+    surfaces.
+- `S1-3b Scope overlays`
+  - bind deterministic dataset and benchmark scope overlays onto the hydrated
+    manifest.
 
 ### Stage2
 
@@ -194,8 +202,10 @@ establish a manifest linking papers to those assets.
 - cleaned full text
 - key-to-text mappings
 - dataset-local table assets
-- manifest rows linking key, DOI, title, content paths, and declared upstream
-  source lineage
+- assembled manifest rows linking key, DOI, title, and declared upstream source
+  lineage
+- hydrated manifest rows linking key, DOI, title, content paths, table paths,
+  and deterministic scope overlays
 
 ### Single Source of Truth
 `data/cleaned/index/manifest_current.tsv`
@@ -212,6 +222,9 @@ establish a manifest linking papers to those assets.
 - `manifest_current.tsv` may be assembled from one or more explicitly declared
   raw Zotero-source manifests, but the assembly contract must preserve row-level
   source provenance rather than assuming a single upstream corpus.
+- `manifest_current.tsv` is contract-complete only after explicit manifest
+  hydration populates asset-binding and scope-overlay fields from governed
+  Stage1 source surfaces.
 
 ---
 
@@ -584,6 +597,11 @@ diagnostic comparisons, but they are not the official system result.
     `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py` emits a
     row-linked sidecar from `final_formulation_table_v1.tsv` using explicit
     deterministic parse/math rules only
+  - first row-wise surface:
+    `src/stage5_benchmark/build_modeling_ready_table_v1.py` pivots selected
+    sidecar values back into one row per frozen `final_formulation_id` while
+    keeping raw benchmark-final carry-through fields distinct from transformed
+    modeling columns
   - allowed operations:
     canonical label cleanup, unit harmonization, safe deterministic derivation,
     curated projection, and preservation of raw benchmark-final values plus
