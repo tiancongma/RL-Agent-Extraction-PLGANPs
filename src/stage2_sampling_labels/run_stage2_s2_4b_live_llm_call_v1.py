@@ -212,6 +212,10 @@ def build_request_metadata_payload(
         },
         "request_started_at_utc": datetime.now(timezone.utc).isoformat(),
         "raw_response_path": to_repo_rel(raw_response_path),
+        "raw_payload_status": "not_written_yet",
+        "raw_payload_persisted": False,
+        "raw_payload_character_count": 0,
+        "raw_payload_sha256": "",
     }
 
 
@@ -267,6 +271,7 @@ def process_prompt_row(
     with metadata_write_lock:
         request_metadata_path.write_text(json.dumps(metadata_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    raw_text = ""
     try:
         call_result = call_gemini_stream_collect(
             model,
@@ -279,33 +284,51 @@ def process_prompt_row(
         raw_text = str(call_result.get("text", "") or "")
         if raw_text:
             raw_response_path.write_text(raw_text, encoding="utf-8")
+        metadata_payload["raw_payload_persisted"] = bool(raw_text and raw_response_path.exists())
+        metadata_payload["raw_payload_character_count"] = len(raw_text)
+        metadata_payload["raw_payload_sha256"] = hashlib.sha256(raw_text.encode("utf-8")).hexdigest() if raw_text else ""
         metadata_payload["status"] = str(call_result.get("status", "request_failure"))
         metadata_payload["request_finished_at_utc"] = datetime.now(timezone.utc).isoformat()
         metadata_payload["response_character_count"] = len(raw_text)
-        metadata_payload["response_sha256"] = hashlib.sha256(raw_text.encode("utf-8")).hexdigest()
+        metadata_payload["response_sha256"] = metadata_payload["raw_payload_sha256"]
         metadata_payload["stream_chunk_count"] = int(call_result.get("chunk_count") or 0)
         metadata_payload["first_chunk_elapsed_seconds"] = float(call_result.get("first_chunk_elapsed_seconds") or 0.0)
         metadata_payload["elapsed_seconds"] = float(call_result.get("elapsed_seconds") or 0.0)
         if metadata_payload["status"] == "success":
+            metadata_payload["raw_payload_status"] = (
+                "success_payload_persisted" if metadata_payload["raw_payload_persisted"] else "success_without_payload"
+            )
             metadata_payload["api_failure"] = ""
             print(f"{progress_label} wrote_raw_response={to_repo_rel(raw_response_path)}", flush=True)
         else:
+            metadata_payload["raw_payload_status"] = (
+                "request_failure_payload_persisted"
+                if metadata_payload["raw_payload_persisted"]
+                else "request_failure_no_payload"
+            )
             metadata_payload["api_failure"] = {
                 "error_type": str(call_result.get("error_type", "")),
                 "error_message": str(call_result.get("error_message", "")),
             }
-            print(
-                f"{progress_label} request_failure={call_result.get('error_type', '')}: {call_result.get('error_message', '')}",
-                flush=True,
-            )
+            if metadata_payload["raw_payload_persisted"]:
+                print(f"{progress_label} wrote_partial_raw_response={to_repo_rel(raw_response_path)}", flush=True)
+            print(f"{progress_label} request_failure={call_result.get('error_type', '')}: {call_result.get('error_message', '')}", flush=True)
     except Exception as exc:
         metadata_payload["status"] = "request_failure"
         metadata_payload["request_finished_at_utc"] = datetime.now(timezone.utc).isoformat()
-        metadata_payload["response_character_count"] = 0
-        metadata_payload["response_sha256"] = ""
+        metadata_payload["response_character_count"] = len(raw_text)
+        metadata_payload["response_sha256"] = hashlib.sha256(raw_text.encode("utf-8")).hexdigest() if raw_text else ""
         metadata_payload["stream_chunk_count"] = 0
         metadata_payload["first_chunk_elapsed_seconds"] = 0.0
         metadata_payload["elapsed_seconds"] = 0.0
+        metadata_payload["raw_payload_persisted"] = bool(raw_text and raw_response_path.exists())
+        metadata_payload["raw_payload_character_count"] = len(raw_text)
+        metadata_payload["raw_payload_sha256"] = metadata_payload["response_sha256"]
+        metadata_payload["raw_payload_status"] = (
+            "exception_after_payload_persisted"
+            if metadata_payload["raw_payload_persisted"]
+            else "exception_before_payload_persisted"
+        )
         metadata_payload["api_failure"] = {
             "error_type": type(exc).__name__,
             "error_message": str(exc),
@@ -323,6 +346,8 @@ def process_prompt_row(
         "source_prompts_jsonl_path": to_repo_rel(prompts_jsonl),
         "source_prompt_sha256": prompt_sha256,
         "raw_response_path": to_repo_rel(raw_response_path) if raw_response_path.exists() else "",
+        "raw_payload_status": metadata_payload.get("raw_payload_status", ""),
+        "raw_payload_persisted": "yes" if metadata_payload.get("raw_payload_persisted") else "no",
         "request_metadata_path": to_repo_rel(request_metadata_path),
         "api_failure_type": (
             metadata_payload["api_failure"].get("error_type", "")
@@ -606,6 +631,8 @@ def main() -> None:
             "source_prompts_jsonl_path",
             "source_prompt_sha256",
             "raw_response_path",
+            "raw_payload_status",
+            "raw_payload_persisted",
             "request_metadata_path",
             "api_failure_type",
             "api_failure_message",

@@ -69,6 +69,18 @@ reads:
 - the frozen Layer1 GT counts TSV
 - the declared scope manifest
 
+Benchmark-legality clarification:
+
+- Stage5 final-table materialization is necessary but not sufficient for a
+  benchmark-valid run.
+- Benchmark-valid reporting additionally requires the mandatory
+  identity-freeze gate to pass before the compare node can legalize the run.
+- The full DEV15 lineage
+  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
+  is the governing example:
+  it reached Stage5 final-table materialization but remained diagnostic-only
+  because the identity-freeze contract failed.
+
 Complete pipeline does not mean forced full recomputation.
 
 ## Complete Pipeline vs Full Recomputation
@@ -264,6 +276,39 @@ Frozen authority contract:
 - In `llm_first_composite` mode, deterministic DOE row expansion is lawful only
   within an LLM-declared DOE scope.
 
+Current governed repair note:
+
+- Stage2 decomposition exposed a real execution-ownership failure:
+  semantic signals could exist while deterministic function units were not
+  reliably taking control of execution on the active mainline.
+- Silent non-activation is not acceptable when semantic authorization is
+  present.
+- Current status is:
+  - DOE execution path repaired on-path for `UFXX9WXE`, with `26`
+    deterministic rows emitted in
+    `data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix`
+  - non-DOE table-row execution partially repaired only
+  - the dominant remaining blocker for broader coverage is upstream missing
+    `table_formulation_scopes` in Stage2 extraction or selector or
+    evidence-handoff artifacts
+
+Stage2 repair campaign closure note (`2026-04-14`):
+
+- The `2026-04-14` Stage2 repair campaign closed three engineering work
+  packages without changing Stage3 or Stage5 semantics:
+  - `S2-5 parser/normalization preservation repair`
+    - repaired only for already-authorized non-DOE cases
+    - does not create authority when `table_formulation_scopes` are absent
+  - `S2-4b semantic omission repair`
+    - prompt-layer framing repair proven on `L3H2RS2H`
+    - not a selector, parser, Stage3, or Stage5 fix
+  - `S2-4b call-layer persistence hardening`
+    - recovered `WFDTQ4VX` at the maintained live-call boundary
+    - explicit persisted-payload status is now recorded in request metadata
+- These closures are engineering-layer registrations only.
+- Benchmark consequence remains pending until a patched-path downstream compare
+  lineage is present.
+
 Current clarification on remaining Stage2 pressure:
 
 - The current maintained Stage2 contract is considered healthy on authority:
@@ -322,6 +367,10 @@ Current implementation-status note:
     `clean text / extracted tables -> candidate segmentation -> role-aware selector -> governed evidence package`
   - candidate artifact:
     `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+  - execution-grade full-table authority artifact:
+    `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+  - authority validation artifact:
+    `analysis/table_authority_validation_v1.tsv`
   - canonical artifact:
     `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
   - S2-2 is the first engineering freeze point in Stage2
@@ -330,10 +379,44 @@ Current implementation-status note:
   - consumer:
     the same maintained extractor's role-aware selector consumes candidate
     blocks and its prompt-assembly path consumes the canonical evidence
-    artifact
+    artifact, while downstream authorized deterministic execution may resolve
+    back to the preserved S2-2 full-table authority surface by stable table
+    identity
   - candidate segmentation is responsible for structure recovery,
-    conservative section-aware splitting, table isolation, and conservative
-    noise filtering only
+    conservative section-aware splitting, table isolation, conservative
+    noise filtering, and execution-grade full-table preservation for selected
+    formulation-relevant tables
+  - full-table authority contract:
+    - `normalized_table_payloads_v1.json` is the current maintained
+      implementation of the Stage2 full-table authority surface
+    - it is execution-facing, not prompt-facing
+    - it must preserve row numbering, row order, column structure, header
+      hierarchy when available, and table-local identifiers when available
+    - it must remain bound to the selected table identity
+    - it must be stored in S2-2 rather than recomputed ad hoc downstream
+    - each preserved authority record must carry stable `table_id`,
+      `source_table_reference`, deterministic `table_type`, `row_count`,
+      `has_row_numbering`, `header_structure`, `raw_cells`,
+      execution-facing `normalized_rows`, `row_identity_signals`, and
+      `reconstruction_confidence`
+  - summary-view contract:
+    - `evidence_blocks_v1.json` is the maintained semantic-facing summary or
+      evidence surface for selector behavior, prompt assembly, and LLM
+      semantic authorization
+    - it may be lossy or role-shaped for token-budget reasons
+    - table-derived summary blocks must carry stable `table_id` and explicit
+      `summary_is_lossy=true`
+    - it must never become the sole downstream execution surface when a
+      full-table authority surface exists
+  - engineering principle:
+    the LLM sees the semantic-facing summary view, while deterministic
+    execution operates on the preserved table entity
+  - unified execution-input rule:
+    - DOE and non-DOE row materialization must resolve semantic target ->
+      stable `table_id` -> preserved S2-2 full-table authority surface
+    - Stage1 table assets may remain a reconstruction fallback inside S2-2a
+      only; they are not the downstream execution source of truth once
+      authority exists
   - `analysis/stage2_prompt_preview_v1.tsv` remains maintained observability,
     but it is derived from the canonical evidence artifact and is not the
     primary truth surface
@@ -367,9 +450,13 @@ Current implementation-status note:
       declared manifest row, governed clean text, governed Stage1 table assets
     - outputs:
       `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
-      and `analysis/candidate_segmentation_debug_v1.tsv`
+      `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+      `semantic_stage2_objects/normalized_table_payloads/<paper_key>/payloads/*.csv`
+      `analysis/candidate_segmentation_debug_v1.tsv`
+      and `analysis/table_authority_validation_v1.tsv`
     - stop boundary:
-      candidate segmentation only
+      candidate segmentation plus execution-grade full-table preservation only;
+      no semantic role packaging and no row materialization
     - next lawful step:
       `S2-2b`
   - `S2-2b`
@@ -377,12 +464,15 @@ Current implementation-status note:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
       plus `build_role_aware_selection`
     - inputs:
-      frozen `candidate_blocks_v1.json`, same manifest row, same governed clean text/table assets
+      frozen `candidate_blocks_v1.json`, preserved
+      `normalized_table_payloads_v1.json`, same manifest row, same governed
+      clean text/table assets
     - outputs:
       `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
       and `analysis/table_selection_debug_v1.json`
     - stop boundary:
-      canonical evidence handoff written
+      canonical semantic-facing evidence handoff written; execution-facing
+      full-table authority remains unchanged from S2-2a
     - next lawful step:
       `S2-3`
   - `S2-3`
@@ -440,7 +530,7 @@ Current implementation-status note:
       - persistence rule:
         any returned payload is written as-is to `raw_responses/` even if malformed
       - failure rule:
-        timeout, auth, transport, or API failure writes request metadata and marks controlled failure
+        timeout, auth, transport, or API failure writes request metadata, preserves any recovered raw payload, and marks controlled failure without semantic judgment
     - optional bounded stability-test controls on the maintained runner:
       - `--max-parallel-requests`
       - `--inter-request-sleep-seconds`
@@ -647,6 +737,8 @@ Maintained replay/rehydration rule:
 
 Internal Stage2 intermediate:
 
+- `data/results/<stage2_run_id>/semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+- `data/results/<stage2_run_id>/analysis/table_authority_validation_v1.tsv`
 - `data/results/<stage2_run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 - `data/results/<stage2_run_id>/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
 - supporting semantic summary and raw-response sidecars
@@ -801,12 +893,23 @@ Completion artifacts:
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
 
+Legality reminder:
+
+- `final_formulation_table_v1.tsv` is the necessary benchmark-final object, but
+  it does not become a legal benchmark-valid result until the mandatory
+  identity-freeze gate passes.
+- A compare file emitted after a failed identity-freeze check remains
+  diagnostic-only and must not be treated as legal benchmark evidence.
+
 Stage5 internal family rule:
 
 - benchmark-final family:
   - `src/stage5_benchmark/build_minimal_final_output_v1.py`
   - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
   - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
+  - `src/stage5_benchmark/build_minimal_final_output_v1.py` emits two governed sibling outputs from the same decision pass:
+    - primary benchmark-facing `final_formulation_table_v1.tsv`
+    - linked lower-level `downstream_variant_records_v1.tsv` for excluded downstream/post-processing descendants
 - downstream modeling-ready family:
   - first maintained modeling-ready surface: `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py`
   - this helper reads only the frozen benchmark-final table and writes a row-linked sidecar of explicit deterministic parse/math transforms; it is downstream Stage5 support, not a new stage
@@ -814,6 +917,15 @@ Stage5 internal family rule:
   - this helper reads the frozen benchmark-final table plus the sidecar and writes one row per frozen formulation with raw carry-through values and pivoted transformed modeling columns
   - deterministic normalization, derivation, and curated projection helpers
     that operate only downstream of the frozen benchmark-final object
+
+Benchmark-facing identity rule:
+
+- downstream/post-processing variants do not enter the primary benchmark-facing
+  formulation database unless the paper explicitly reports them as independent
+  formulation identities
+- when Stage5 excludes those rows from the primary final table, it must retain
+  them in the governed linked lower-level surface
+  `downstream_variant_records_v1.tsv`
 - downstream audit/review family:
   - audit-ready export and reviewer workbooks built from the frozen
     benchmark-final object
@@ -862,6 +974,18 @@ Identity Freeze Gate (Mandatory)
   - identity reassignment
   - unresolved or ambiguous scaffold bindings
 - It emits diagnostics and must not silently fix benchmark-valid outputs.
+- Governing failure example:
+  - the full DEV15 lineage
+    `data/results/20260401_5d9f4e6/09_dev15_count_validation`
+    reached Stage5 final-table materialization and compare output generation
+    but remained invalid because identity freeze failed
+  - the governed repair lineage later localized the failure classes as:
+    - row count drift
+    - identity reassignment
+    - unresolved scaffold binding
+  - scaffold-binding and representation repair work are governed follow-on
+    repair lineage, not proof that a lawful full-pipeline rerun has now passed
+    the gate
 - Hard rule:
   - after identity freeze, downstream stages may attach, resolve, and derive
     fields only
@@ -869,8 +993,16 @@ Identity Freeze Gate (Mandatory)
   - measurement fields such as size, PDI, zeta, EE, and LC must not trigger
     identity split by default
 - Failure behavior:
-  - if identity freeze is violated, the run is invalid and must not proceed to
-    value-level evaluation
+- if identity freeze is violated, the run is invalid and must not proceed to
+  value-level evaluation
+- the maintained compare entrypoint now requires an explicit identity-freeze
+  mode:
+  - `benchmark`:
+    blocks compare output generation on any failed identity-freeze summary and
+    remains the default
+  - `debug_identity`:
+    preserves the failed identity-freeze diagnostics, then emits compare
+    outputs as `diagnostic-only, not benchmark-valid final output`
 - Default behavior is enforced invariant:
   - any violation causes non-zero exit status
   - use report-only mode only for bounded diagnostics
@@ -985,6 +1117,8 @@ Comparison-node inputs:
 - `final_formulation_table_v1.tsv`
 - frozen Layer1 GT counts TSV
 - declared scope manifest TSV
+- identity-freeze summary TSV from
+  `audit/identity_freeze_guardrail_v1/identity_freeze_summary_v1.tsv`
 
 Optional post-comparison audit-risk input:
 
@@ -1147,9 +1281,20 @@ Comparison-node outputs:
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
 
+Compare-mode rule:
+
+- `benchmark` is the default compare mode and remains strict:
+  - failed identity freeze blocks compare output generation
+- explicit `debug_identity` compare mode may continue from the same frozen
+  Stage5 final table after failed identity freeze
+- `debug_identity` outputs are diagnostic-only and must never be reported as
+  benchmark-valid
+
 The production path yields the final formulation table. The benchmark-valid
 result is obtained only when the comparison node reads that table together with
-the frozen Layer1 GT counts TSV and declared scope manifest as separate inputs.
+the frozen Layer1 GT counts TSV, declared scope manifest, and a passing
+identity-freeze summary as separate inputs. Explicit `debug_identity` compare
+continuation is diagnostic-only and must never be reported as benchmark-valid.
 
 ## What This Runbook Does Not Allow
 

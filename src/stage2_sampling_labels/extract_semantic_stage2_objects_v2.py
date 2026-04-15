@@ -50,6 +50,9 @@ EVIDENCE_BLOCKS_FILENAME = "evidence_blocks_v1.json"
 EVIDENCE_BLOCKS_SUBDIR = "evidence_blocks"
 CANDIDATE_BLOCKS_FILENAME = "candidate_blocks_v1.json"
 CANDIDATE_BLOCKS_SUBDIR = "candidate_blocks"
+NORMALIZED_TABLE_PAYLOADS_FILENAME = "normalized_table_payloads_v1.json"
+NORMALIZED_TABLE_PAYLOADS_SUBDIR = "normalized_table_payloads"
+TABLE_AUTHORITY_VALIDATION_NAME = "table_authority_validation_v1.tsv"
 PROMPT_PREVIEW_NAME = "stage2_prompt_preview_v1.tsv"
 TABLE_SELECTION_DEBUG_NAME = "table_selection_debug_v1.json"
 CANDIDATE_SEGMENTATION_DEBUG_NAME = "candidate_segmentation_debug_v1.tsv"
@@ -609,6 +612,10 @@ def candidate_blocks_path(out_dir: Path, key: str) -> Path:
     return out_dir / CANDIDATE_BLOCKS_SUBDIR / key / CANDIDATE_BLOCKS_FILENAME
 
 
+def normalized_table_payloads_path(out_dir: Path, key: str) -> Path:
+    return out_dir / NORMALIZED_TABLE_PAYLOADS_SUBDIR / key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+
+
 def ensure_genai(model: str) -> None:
     if genai is None:
         raise RuntimeError("google.generativeai is not installed.")
@@ -676,6 +683,35 @@ def call_gemini(
     raise last_err or RuntimeError("Gemini call failed.")
 
 
+def extract_gemini_stream_chunk_text(chunk: Any) -> str:
+    """Safely recover streamed text without relying solely on SDK quick accessors."""
+    try:
+        direct_text = getattr(chunk, "text")
+    except Exception:
+        direct_text = ""
+    if direct_text:
+        return str(direct_text)
+
+    collected: list[str] = []
+    candidates = getattr(chunk, "candidates", None)
+    if candidates is None and isinstance(chunk, dict):
+        candidates = chunk.get("candidates")
+    for candidate in ensure_list(candidates):
+        content = getattr(candidate, "content", None)
+        if content is None and isinstance(candidate, dict):
+            content = candidate.get("content")
+        parts = getattr(content, "parts", None)
+        if parts is None and isinstance(content, dict):
+            parts = content.get("parts")
+        for part in ensure_list(parts):
+            part_text = getattr(part, "text", None)
+            if part_text is None and isinstance(part, dict):
+                part_text = part.get("text")
+            if part_text:
+                collected.append(str(part_text))
+    return "".join(collected)
+
+
 def call_gemini_stream_collect(
     model: str,
     prompt: str,
@@ -712,7 +748,7 @@ def call_gemini_stream_collect(
             stream = mdl.generate_content(prompt, **request_kwargs)
             for chunk in stream:
                 chunk_count += 1
-                text = getattr(chunk, "text", "") or ""
+                text = extract_gemini_stream_chunk_text(chunk)
                 if text:
                     parts.append(str(text))
                 now = time.time()
@@ -2446,6 +2482,22 @@ def parse_header_cell(cell: str) -> list[str]:
     return [text]
 
 
+def derive_stable_table_id(source_csv_path: str, meta: dict[str, Any] | None = None) -> str:
+    meta = meta or {}
+    explicit = normalize_text(meta.get("table_id"))
+    if explicit:
+        return explicit
+    caption = normalize_text(meta.get("caption_or_title"))
+    match = re.search(r"\btable\s+(\d+)\b", caption, flags=re.IGNORECASE)
+    if match:
+        return f"Table {int(match.group(1))}"
+    path = Path(normalize_text(source_csv_path))
+    stem_match = re.search(r"__table_(\d+)__", path.name, flags=re.IGNORECASE)
+    if stem_match:
+        return f"Table {int(stem_match.group(1))}"
+    return path.stem or "unknown_table"
+
+
 def infer_units_from_headers(headers: list[str]) -> list[str]:
     units: list[str] = []
     seen: set[str] = set()
@@ -3008,6 +3060,93 @@ def choose_required_roles(signals: dict[str, bool]) -> tuple[str, str | None, li
     return GENERAL_SELECTOR_PROFILE, None, list(GENERAL_REQUIRED_ROLES)
 
 
+FORMULATION_BEARING_ROLES = {"FORMULATION_TABLE", "FORMULATION_RESULT", "OPTIMIZATION_RESULT"}
+
+
+def selector_candidate_title(candidate: dict[str, Any]) -> str:
+    if candidate.get("candidate_kind") == "table":
+        item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
+        meta = item.get("meta", {}) if isinstance(item, dict) else {}
+        return normalize_text(meta.get("caption_or_title"))
+    return normalize_text(candidate.get("section_label"))
+
+
+def selector_candidate_table_id(candidate: dict[str, Any]) -> str:
+    if candidate.get("candidate_kind") != "table":
+        return ""
+    item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
+    meta = item.get("meta", {}) if isinstance(item, dict) else {}
+    source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
+    return derive_stable_table_id(source_csv_path, meta)
+
+
+def selector_candidate_summary(candidate: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "candidate_id": normalize_text(candidate.get("candidate_id")),
+        "role": normalize_text(candidate.get("role")),
+        "origin_locator": normalize_text(candidate.get("origin_locator")),
+        "source_filename": Path(normalize_text(candidate.get("origin_locator"))).name if normalize_text(candidate.get("origin_locator")) else "",
+        "table_id": selector_candidate_table_id(candidate),
+        "title_or_caption": selector_candidate_title(candidate),
+        "role_priority": normalize_text(candidate.get("role_priority")),
+    }
+
+
+def selector_formulation_bearing_summaries(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        selector_candidate_summary(candidate)
+        for candidate in candidates
+        if normalize_text(candidate.get("role")) in FORMULATION_BEARING_ROLES
+    ]
+
+
+def is_doe_relevant_table_candidate(candidate: dict[str, Any]) -> bool:
+    if candidate.get("candidate_kind") != "table":
+        return False
+    meta, rows, blob, _, row_labels, _, _ = selector_table_context(candidate)
+    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": blob})
+    if role_hint == "design matrix":
+        return True
+    lowered_labels = [normalize_text(label).lower() for label in row_labels if normalize_text(label)]
+    if any(
+        token in blob
+        for token in [
+            "experimental design",
+            "factorial design",
+            "factorial",
+            "design matrix",
+            "box-behnken",
+            "response surface",
+            "check point",
+            "checkpoint",
+            "coded levels",
+            "independent variables",
+            "full factorial design layout",
+        ]
+    ):
+        return True
+    return any(re.fullmatch(r"f\d+", label, flags=re.I) for label in lowered_labels)
+
+
+def doe_table_strength(candidate: dict[str, Any]) -> float:
+    variable_score = float(candidate.get("score_breakdown", {}).get("final_score") or 0.0)
+    meta, rows, blob, _, row_labels, _, raw_score = selector_table_context(candidate)
+    formulation_role_variant = dict(candidate)
+    formulation_role_variant["role"] = "FORMULATION_TABLE"
+    formulation_score = float(table_role_score(formulation_role_variant, "FORMULATION_TABLE").get("final_score") or 0.0)
+    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": blob})
+    strength = variable_score + max(formulation_score, 0.0) + (raw_score / 50.0)
+    if role_hint == "design matrix":
+        strength += 8.0
+    if "full factorial design layout" in blob:
+        strength += 6.0
+    if "table 1. factorial design parameters and experimental conditions" in blob:
+        strength += 4.0
+    if any(re.fullmatch(r"f\d+", normalize_text(label), flags=re.I) for label in row_labels if normalize_text(label)):
+        strength += 2.0
+    return strength
+
+
 def build_selector_surface_text(
     text_content: str,
     *,
@@ -3359,6 +3498,14 @@ def build_role_aware_selection(
     missing_or_weak_roles: list[str] = []
     duplicate_suppression_events: list[dict[str, str]] = []
     selected_by_role: dict[str, list[dict[str, Any]]] = {}
+    doe_formulation_coverage_audit: dict[str, Any] = {
+        "reason_code": "no_doe_case",
+        "before_formulation_bearing_blocks": [],
+        "after_formulation_bearing_blocks": [],
+        "doe_candidate_considered": {},
+        "doe_added_or_upgraded": {},
+        "preserved_existing_blocks": [],
+    }
 
     def maybe_add_candidate(candidate: dict[str, Any], priority: str) -> bool:
         origin_key = candidate["origin_key"]
@@ -3377,6 +3524,13 @@ def build_role_aware_selection(
         used_origins.add(origin_key)
         if candidate["candidate_kind"] == "table" and signature:
             used_table_signatures.add(signature)
+        chosen = dict(candidate)
+        chosen["role_priority"] = priority
+        selected.append(chosen)
+        selected_by_role.setdefault(str(candidate["role"]), []).append(chosen)
+        return True
+
+    def add_role_alias_candidate(candidate: dict[str, Any], priority: str) -> bool:
         chosen = dict(candidate)
         chosen["role_priority"] = priority
         selected.append(chosen)
@@ -3507,6 +3661,85 @@ def build_role_aware_selection(
     if signals.get("has_sequential_signal") or signals.get("has_optimization_signal"):
         add_optimization_complements()
 
+    def add_doe_formulation_coverage() -> None:
+        before_blocks = selector_formulation_bearing_summaries(selected)
+        doe_formulation_coverage_audit["before_formulation_bearing_blocks"] = before_blocks
+        doe_formulation_coverage_audit["preserved_existing_blocks"] = before_blocks
+        if not signals.get("has_doe_signal"):
+            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = before_blocks
+            doe_formulation_coverage_audit["reason_code"] = "no_doe_case"
+            return
+
+        already_covered = [
+            candidate
+            for candidate in selected
+            if candidate.get("candidate_kind") == "table"
+            and normalize_text(candidate.get("role")) == "FORMULATION_TABLE"
+            and is_doe_relevant_table_candidate(candidate)
+        ]
+        if already_covered:
+            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = selector_formulation_bearing_summaries(selected)
+            doe_formulation_coverage_audit["reason_code"] = "doe_not_added_already_covered"
+            doe_formulation_coverage_audit["doe_candidate_considered"] = selector_candidate_summary(already_covered[0])
+            return
+
+        formulation_variant_by_candidate_id = {
+            normalize_text(candidate.get("candidate_id")): candidate
+            for candidate in candidates_by_role.get("FORMULATION_TABLE", [])
+            if candidate.get("candidate_kind") == "table"
+        }
+        doe_candidates = [
+            candidate
+            for candidate in candidates_by_role.get("VARIABLE_TABLE", [])
+            if is_doe_relevant_table_candidate(candidate)
+        ]
+        doe_candidates.sort(
+            key=lambda candidate: (
+                -doe_table_strength(candidate),
+                candidate.get("origin_key", ""),
+            )
+        )
+        if not doe_candidates:
+            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = before_blocks
+            doe_formulation_coverage_audit["reason_code"] = "no_doe_case"
+            return
+
+        strongest_doe_candidate = doe_candidates[0]
+        doe_formulation_coverage_audit["doe_candidate_considered"] = selector_candidate_summary(strongest_doe_candidate)
+        formulation_variant = formulation_variant_by_candidate_id.get(normalize_text(strongest_doe_candidate.get("candidate_id")))
+        if formulation_variant is None:
+            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = before_blocks
+            doe_formulation_coverage_audit["reason_code"] = "no_doe_case"
+            return
+
+        existing_same_origin_formulation = next(
+            (
+                candidate
+                for candidate in selected_by_role.get("FORMULATION_TABLE", [])
+                if normalize_text(candidate.get("origin_locator")) == normalize_text(formulation_variant.get("origin_locator"))
+            ),
+            None,
+        )
+        if existing_same_origin_formulation is not None:
+            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = selector_formulation_bearing_summaries(selected)
+            doe_formulation_coverage_audit["reason_code"] = "doe_not_added_already_covered"
+            doe_formulation_coverage_audit["doe_candidate_considered"] = selector_candidate_summary(existing_same_origin_formulation)
+            return
+
+        added = False
+        if normalize_text(formulation_variant.get("origin_key")) in used_origins:
+            added = add_role_alias_candidate(formulation_variant, "coverage")
+        else:
+            added = maybe_add_candidate(formulation_variant, "coverage")
+        doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = selector_formulation_bearing_summaries(selected)
+        if added:
+            doe_formulation_coverage_audit["reason_code"] = "doe_added_to_formulation_set"
+            doe_formulation_coverage_audit["doe_added_or_upgraded"] = selector_candidate_summary(formulation_variant)
+        else:
+            doe_formulation_coverage_audit["reason_code"] = "doe_not_added_already_covered"
+
+    add_doe_formulation_coverage()
+
     selected.sort(
         key=lambda item: (
             {"primary": 0, "secondary": 1, "coverage": 2, "fallback": 3}.get(item["role_priority"], 4),
@@ -3523,6 +3756,7 @@ def build_role_aware_selection(
         "selected_candidates": selected,
         "duplicate_suppression_events": duplicate_suppression_events,
         "duplicate_table_suppression_active": bool(duplicate_suppression_events),
+        "doe_formulation_coverage_audit": doe_formulation_coverage_audit,
     }
 
 
@@ -3725,6 +3959,8 @@ def build_evidence_blocks_artifact(
         role_assignment: str | None,
         role_priority: str | None,
         role_score_breakdown: dict[str, Any] | None,
+        table_id: str | None,
+        summary_is_lossy: bool,
     ) -> None:
         if not normalize_text(text_content):
             return
@@ -3746,6 +3982,8 @@ def build_evidence_blocks_artifact(
                 "role_assignment": role_assignment,
                 "role_priority": role_priority,
                 "role_score_breakdown": role_score_breakdown,
+                "table_id": normalize_text(table_id),
+                "summary_is_lossy": bool(summary_is_lossy),
             }
         )
         order_tokens.append(block_type)
@@ -3766,6 +4004,8 @@ def build_evidence_blocks_artifact(
         role_assignment=None,
         role_priority="primary",
         role_score_breakdown=None,
+        table_id="",
+        summary_is_lossy=False,
     )
 
     if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE:
@@ -3808,6 +4048,8 @@ def build_evidence_blocks_artifact(
                 role_assignment=role,
                 role_priority=str(candidate["role_priority"]),
                 role_score_breakdown=candidate["score_breakdown"],
+                table_id=selector_candidate_table_id(candidate),
+                summary_is_lossy=candidate["candidate_kind"] == "table",
             )
     else:
         raw_prefix_text = raw_text[:max_chars] if max_chars > 0 else raw_text
@@ -3827,9 +4069,12 @@ def build_evidence_blocks_artifact(
             role_assignment="CONTEXT_FALLBACK",
             role_priority="fallback",
             role_score_breakdown=None,
+            table_id="",
+            summary_is_lossy=False,
         )
         if current_table_mode == "summary":
             for idx, item in enumerate(summary_candidates[:4], start=1):
+                table_id = derive_stable_table_id(str(item["path"]), item.get("meta") if isinstance(item.get("meta"), dict) else {})
                 append_block(
                     block_id=f"{record['key']}__table_summary__{idx:02d}",
                     block_type="table",
@@ -3846,6 +4091,8 @@ def build_evidence_blocks_artifact(
                     role_assignment="FORMULATION_TABLE",
                     role_priority="fallback",
                     role_score_breakdown=table_role_score(item, "FORMULATION_TABLE"),
+                    table_id=table_id,
+                    summary_is_lossy=True,
                 )
         elif table_dir is not None and table_dir.exists():
             for idx, path in enumerate(sorted(table_dir.glob("*.csv"))[:4], start=1):
@@ -3865,6 +4112,8 @@ def build_evidence_blocks_artifact(
                     role_assignment="FORMULATION_TABLE",
                     role_priority="fallback",
                     role_score_breakdown=None,
+                    table_id=derive_stable_table_id(str(path)),
+                    summary_is_lossy=True,
                 )
 
     feature_activation_snapshot = {
@@ -3918,6 +4167,8 @@ def build_evidence_blocks_artifact(
                 "role_assignment",
                 "role_priority",
                 "role_score_breakdown",
+                "table_id",
+                "summary_is_lossy",
             ]
         )
         for block in evidence_blocks
@@ -3970,6 +4221,7 @@ def build_evidence_blocks_artifact(
             "input_packing_mode": current_input_packing_mode,
             "table_mode": current_table_mode,
             "summary_first_column_enhancement": summary_enhanced,
+            "summary_view_is_lossy": True,
             "ordered_block_order": ordered_block_order,
             "selector_strategy": "role_aware_selector_v1" if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else resolved_selector_strategy(current_table_mode),
         },
@@ -3984,6 +4236,7 @@ def build_evidence_blocks_artifact(
         "selected_roles": role_selection["selected_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
         "missing_or_weak_roles": role_selection["missing_or_weak_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
         "duplicate_table_suppression_events": role_selection["duplicate_suppression_events"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
+        "doe_formulation_coverage_audit": role_selection["doe_formulation_coverage_audit"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else {},
         "feature_activation_snapshot": feature_activation_snapshot,
         "technical_status": technical_status,
         "design_status": design_status,
@@ -4007,6 +4260,11 @@ def build_evidence_blocks_artifact(
                 ),
                 None,
             )
+            selected_candidates_for_table = [
+                candidate
+                for candidate in role_selection["selected_candidates"]
+                if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
+            ]
             payload_candidates.append(
                 {
                     "file": item["path"].name,
@@ -4014,6 +4272,7 @@ def build_evidence_blocks_artifact(
                     "selected": item["path"].name in selected_summary_names,
                     "selected_role": selected_candidate["role"] if selected_candidate is not None else "",
                     "selected_role_priority": selected_candidate["role_priority"] if selected_candidate is not None else "",
+                    "selected_roles": [candidate["role"] for candidate in selected_candidates_for_table],
                     "row_pattern": item["row_pattern"],
                     "quality_flags": item.get("quality_flags") or [],
                     "page_number": normalize_text(item["meta"].get("page_number")),
@@ -4037,9 +4296,562 @@ def build_evidence_blocks_artifact(
             "missing_or_weak_roles": artifact.get("missing_or_weak_roles") or [],
             "selected_tables": sorted(selected_summary_names),
             "duplicate_table_suppression_events": artifact.get("duplicate_table_suppression_events") or [],
+            "doe_formulation_coverage_audit": artifact.get("doe_formulation_coverage_audit") or {},
             "candidates": payload_candidates,
         }
     return artifact, debug_payload
+
+
+def _normalized_table_csv_name(source_csv_path: str, candidate_id: str) -> str:
+    path = Path(normalize_text(source_csv_path))
+    stem = path.stem if path.stem else normalize_token(candidate_id) or "normalized_table"
+    return f"{stem}__normalized.csv"
+
+
+def normalize_selected_table_rows(
+    rows: list[list[str]],
+    *,
+    table_role_hint: str,
+) -> tuple[list[list[str]], list[str], dict[str, Any]]:
+    normalized_rows = [list(row) for row in rows]
+    actions: list[str] = []
+    metadata: dict[str, Any] = {
+        "numbered_row_column_index": "",
+        "numbered_row_count": 0,
+        "numbered_row_start_index": "",
+    }
+    if normalized_rows:
+        first = [normalize_text(cell) for cell in normalized_rows[0]]
+        if first and all(cell.isdigit() for cell in first):
+            expected = [str(i) for i in range(len(first))]
+            if first == expected:
+                normalized_rows = normalized_rows[1:]
+                actions.append("drop_enumerator_index_row")
+    matrix_view = detect_shifted_numbered_matrix_view(normalized_rows)
+    if matrix_view is not None:
+        normalized_rows = matrix_view["normalized_rows"]
+        actions.extend(matrix_view["actions"])
+        metadata.update(
+            {
+                "numbered_row_column_index": str(int(matrix_view["anchor_col"])),
+                "numbered_row_count": int(matrix_view["numbered_row_count"]),
+                "numbered_row_start_index": str(int(matrix_view["first_numbered_row_index"])),
+            }
+        )
+    return normalized_rows, actions, metadata
+
+
+def detect_shifted_numbered_matrix_view(
+    rows: list[list[str]],
+    *,
+    min_rows: int = 8,
+) -> dict[str, Any] | None:
+    if not rows:
+        return None
+    width = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    best_view: dict[str, Any] | None = None
+    for anchor_col in range(width):
+        numbered_hits: list[tuple[int, int]] = []
+        for row_index, row in enumerate(rows):
+            if not isinstance(row, list) or anchor_col >= len(row):
+                continue
+            anchor = normalize_text(row[anchor_col])
+            if not re.fullmatch(r"\d{1,3}\.?", anchor):
+                continue
+            anchor_number = int(re.sub(r"\D", "", anchor) or "0")
+            trailing = [normalize_text(cell) for cell in row[anchor_col + 1 :] if normalize_text(cell)]
+            numeric_like = sum(1 for cell in trailing if re.search(r"\d", cell))
+            if numeric_like < 3:
+                continue
+            numbered_hits.append((row_index, anchor_number))
+        if len(numbered_hits) < min_rows:
+            continue
+        longest_run: list[tuple[int, int]] = []
+        current_run: list[tuple[int, int]] = []
+        for hit in numbered_hits:
+            row_index, anchor_number = hit
+            if anchor_number == 1:
+                current_run = [hit]
+                if len(current_run) > len(longest_run):
+                    longest_run = list(current_run)
+                continue
+            if current_run and anchor_number == current_run[-1][1] + 1:
+                current_run.append(hit)
+                if len(current_run) > len(longest_run):
+                    longest_run = list(current_run)
+            elif anchor_number == 1:
+                current_run = [hit]
+            else:
+                current_run = []
+        if len(longest_run) < min_rows:
+            continue
+        start_index = longest_run[0][0]
+        view_rows: list[list[str]] = []
+        for row in rows[max(0, start_index - 5) :]:
+            if not isinstance(row, list):
+                continue
+            trimmed = [normalize_text(cell) for cell in row[anchor_col:]]
+            while trimmed and not trimmed[-1]:
+                trimmed.pop()
+            if any(trimmed):
+                view_rows.append(trimmed)
+        if not view_rows:
+            continue
+        candidate = {
+            "anchor_col": anchor_col,
+            "numbered_row_count": len(longest_run),
+            "first_numbered_row_index": start_index,
+            "normalized_rows": view_rows,
+            "actions": ["left_align_shifted_numbered_matrix"],
+        }
+        if best_view is None or candidate["numbered_row_count"] > best_view["numbered_row_count"]:
+            best_view = candidate
+    return best_view
+
+
+def load_table_cells(source_csv_path: str, fallback_rows: list[list[str]] | None = None) -> list[list[str]]:
+    path = Path(normalize_text(source_csv_path))
+    if path and not path.is_absolute():
+        path = (PROJECT_ROOT / path).resolve()
+    if path.exists():
+        rows: list[list[str]] = []
+        with path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
+            reader = csv.reader(handle)
+            for row in reader:
+                rows.append([normalize_text(cell) for cell in row])
+        if rows:
+            return rows
+    return [[normalize_text(cell) for cell in row] for row in ensure_list(fallback_rows)]
+
+
+def flatten_header_rows(header_rows: list[list[str]], column_count: int) -> list[str]:
+    flattened: list[str] = []
+    for col_index in range(column_count):
+        values: list[str] = []
+        for row in header_rows:
+            if col_index >= len(row):
+                continue
+            cell = normalize_text(row[col_index])
+            if cell and cell.lower() not in {value.lower() for value in values}:
+                values.append(cell)
+        flattened.append(" / ".join(values))
+    return flattened
+
+
+def infer_header_structure(rows: list[list[str]]) -> dict[str, Any]:
+    if not rows:
+        return {
+            "header_row_count": 0,
+            "column_count": 0,
+            "header_rows": [],
+            "flattened_headers": [],
+            "header_hierarchy_detected": False,
+        }
+    column_count = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    header_rows: list[list[str]] = []
+    for idx, row in enumerate(rows[:3]):
+        compact = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact:
+            continue
+        if idx == 0 or looks_like_header_row(row):
+            header_rows.append([normalize_text(cell) for cell in row])
+        else:
+            break
+    if not header_rows:
+        header_rows = [[normalize_text(cell) for cell in rows[0]]]
+    flattened_headers = flatten_header_rows(header_rows, column_count)
+    return {
+        "header_row_count": len(header_rows),
+        "column_count": column_count,
+        "header_rows": header_rows,
+        "flattened_headers": flattened_headers,
+        "header_hierarchy_detected": len(header_rows) > 1,
+    }
+
+
+def build_normalized_row_entries(
+    normalized_matrix: list[list[str]],
+    *,
+    header_structure: dict[str, Any],
+    numbered_row_column_index: str,
+) -> list[dict[str, Any]]:
+    header_row_count = int(header_structure.get("header_row_count") or 0)
+    headers = [normalize_text(item) for item in ensure_list(header_structure.get("flattened_headers"))]
+    numbering_index = int(numbered_row_column_index) if normalize_text(numbered_row_column_index).isdigit() else -1
+    row_entries: list[dict[str, Any]] = []
+    for row_index, row in enumerate(normalized_matrix[header_row_count:], start=header_row_count + 1):
+        cells = [normalize_text(cell) for cell in row]
+        cell_map: dict[str, str] = {}
+        for col_index, value in enumerate(cells):
+            header = headers[col_index] if col_index < len(headers) else f"column_{col_index + 1}"
+            if header and value:
+                cell_map[header] = value
+        row_entries.append(
+            {
+                "row_index": row_index,
+                "row_number": normalize_text(cells[numbering_index]) if 0 <= numbering_index < len(cells) else "",
+                "cells": cells,
+                "cell_map": cell_map,
+                "row_text": " | ".join(value for value in cells if value),
+            }
+        )
+    return row_entries
+
+
+def build_row_identity_signals(
+    normalized_matrix: list[list[str]],
+    *,
+    header_structure: dict[str, Any],
+    numbered_row_column_index: str,
+) -> dict[str, Any]:
+    row_entries = build_normalized_row_entries(
+        normalized_matrix,
+        header_structure=header_structure,
+        numbered_row_column_index=numbered_row_column_index,
+    )
+    row_numbers = [normalize_text(item.get("row_number")) for item in row_entries if normalize_text(item.get("row_number"))]
+    first_column_labels = [normalize_text(item["cells"][0]) for item in row_entries if item.get("cells") and normalize_text(item["cells"][0])]
+    return {
+        "row_number_column_index": normalize_text(numbered_row_column_index),
+        "row_number_values": row_numbers[:100],
+        "first_column_labels": first_column_labels[:100],
+        "row_pattern": infer_row_pattern(row_numbers or first_column_labels),
+    }
+
+
+def classify_execution_table_type(
+    normalized_matrix: list[list[str]],
+    *,
+    meta: dict[str, Any],
+    table_role_hint: str,
+    normalization_metadata: dict[str, Any],
+) -> str:
+    header_parts = extract_informative_header_parts(normalized_matrix)
+    signal_text = build_summary_table_signal_text(normalized_matrix[:6], meta, header_parts)
+    base_hint = infer_table_role_hint(header_parts, {**meta, "_signal_text": signal_text})
+    numbered_row_count = int(normalization_metadata.get("numbered_row_count") or 0)
+    row_ids = [normalize_text(row[0]) for row in normalized_matrix[1:] if isinstance(row, list) and row and normalize_text(row[0])]
+    row_pattern = infer_row_pattern(row_ids)
+    has_formulation = has_strong_formulation_table_signal(signal_text) or any(
+        token in signal_text for token in ["formulation", "drug", "polymer", "surfactant", "loading", "ratio"]
+    )
+    has_optimization = any(token in signal_text for token in ["selected", "optimal", "optimized", "desirability"])
+    has_parameter = any(token in signal_text for token in ["factor", "level", "run", "concentration", "ratio", "parameter", "variable"])
+    has_doe = (
+        base_hint == "design matrix"
+        or numbered_row_count >= 8
+        or row_pattern in {"numeric runs", "F-numbered rows"}
+        or any(token in signal_text for token in ["factorial", "design", "independent variables", "dependent variables", "coded levels"])
+    )
+    if has_doe and (has_formulation or has_optimization):
+        return "mixed_table"
+    if has_doe:
+        return "DOE_table"
+    if has_formulation and has_optimization:
+        return "mixed_table"
+    if base_hint == "optimization" or has_optimization:
+        return "optimization_table"
+    if base_hint == "formulation" or has_formulation:
+        return "formulation_table"
+    if has_parameter:
+        return "parameter_sweep_table"
+    return "non_formulation_table"
+
+
+def compute_reconstruction_confidence(
+    *,
+    representation_status: str,
+    selector_readiness_label: str,
+    normalization_actions: list[str],
+    normalized_row_count: int,
+    raw_row_count: int,
+) -> float:
+    confidence = 0.55
+    if selector_readiness_label == "ready":
+        confidence += 0.2
+    if representation_status in {"repaired_summary", "raw_summary"}:
+        confidence += 0.1
+    if normalized_row_count >= max(raw_row_count - 1, 1):
+        confidence += 0.1
+    if "reload_from_source_table_asset" in normalization_actions:
+        confidence += 0.1
+    if "derive_matrix_from_selected_companion_table" in normalization_actions:
+        confidence += 0.05
+    return max(0.0, min(1.0, round(confidence, 2)))
+
+
+def build_table_authority_validation_row(
+    *,
+    paper_key: str,
+    table_id: str,
+    source_table_reference: str,
+    table_type: str,
+    raw_cells: list[list[str]],
+    normalized_matrix: list[list[str]],
+    normalization_actions: list[str],
+    selector_readiness_label: str,
+) -> dict[str, Any]:
+    raw_row_count = len(raw_cells)
+    normalized_row_count = len(normalized_matrix)
+    raw_width = max((len(row) for row in raw_cells if isinstance(row, list)), default=0)
+    normalized_width = max((len(row) for row in normalized_matrix if isinstance(row, list)), default=0)
+    normalized_row_texts = [
+        normalize_text(" | ".join(normalize_text(cell) for cell in row if normalize_text(cell)))
+        for row in normalized_matrix
+        if isinstance(row, list)
+    ]
+    non_empty_texts = [row for row in normalized_row_texts if row]
+    duplicate_row_count = max(0, len(non_empty_texts) - len(set(non_empty_texts)))
+    allowed_row_drop_actions = {"drop_enumerator_index_row", "caption_recovery"}
+    missing_rows_detected = normalized_row_count < raw_row_count and not bool(
+        set(normalization_actions).intersection(allowed_row_drop_actions)
+    )
+    return {
+        "paper_key": paper_key,
+        "table_id": table_id,
+        "source_table_reference": source_table_reference,
+        "table_type": table_type,
+        "row_count_before": raw_row_count,
+        "row_count_after": normalized_row_count,
+        "missing_rows_detected": "yes" if missing_rows_detected else "no",
+        "duplicate_row_count": duplicate_row_count,
+        "column_count_before": raw_width,
+        "column_count_after": normalized_width,
+        "column_collapse_detected": "yes" if normalized_width < raw_width else "no",
+        "selector_readiness_label": selector_readiness_label,
+        "normalization_actions": "|".join(normalization_actions),
+    }
+
+
+def build_normalized_table_payload_artifact(
+    *,
+    record: dict[str, str],
+    out_dir: Path,
+    producer_script: str,
+    evidence_artifact_path: Path,
+    evidence_artifact: dict[str, Any],
+    segmentation_bundle: dict[str, Any],
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    selected_table_roles: dict[str, set[str]] = {}
+    for block in ensure_list(evidence_artifact.get("evidence_blocks")):
+        if not isinstance(block, dict):
+            continue
+        candidate_id = normalize_text(block.get("candidate_id"))
+        if not candidate_id or not bool(block.get("is_table_derived")):
+            continue
+        selected_table_roles.setdefault(candidate_id, set()).add(normalize_text(block.get("role_assignment")))
+    selected_table_ids = {
+        normalize_text(block.get("candidate_id"))
+        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
+        if normalize_text(block.get("candidate_id")) and bool(block.get("is_table_derived"))
+    }
+    selected_entries: list[dict[str, Any]] = []
+    candidate_rows = ensure_list(segmentation_bundle.get("selector_candidates"))
+    candidate_lookup = {
+        normalize_text(candidate.get("candidate_id")): candidate
+        for candidate in candidate_rows
+        if normalize_text(candidate.get("candidate_id"))
+    }
+    payload_dir = normalized_table_payloads_path(out_dir, record["key"]).parent / "payloads"
+    validation_rows: list[dict[str, Any]] = []
+    for candidate in candidate_rows:
+        if normalize_text(candidate.get("candidate_id")) not in selected_table_ids:
+            continue
+        if normalize_text(candidate.get("candidate_kind")) != "table":
+            continue
+        item = candidate.get("item")
+        if not isinstance(item, dict):
+            continue
+        source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
+        rows = item.get("rows") or []
+        if not isinstance(rows, list) or not rows:
+            continue
+        meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+        raw_cells = load_table_cells(source_csv_path, rows)
+        normalized_rows, normalization_actions, normalization_metadata = normalize_selected_table_rows(
+            rows,
+            table_role_hint=normalize_text(candidate.get("table_role_hint")),
+        )
+        raw_source_path = Path(source_csv_path)
+        if not raw_source_path.is_absolute():
+            raw_source_path = (PROJECT_ROOT / raw_source_path).resolve()
+        if int(normalization_metadata.get("numbered_row_count") or 0) < 8 and raw_source_path.exists():
+            raw_source_rows: list[list[str]] = []
+            with raw_source_path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
+                reader = csv.reader(handle)
+                for row in reader:
+                    raw_source_rows.append([normalize_text(cell) for cell in row])
+            raw_normalized_rows, raw_actions, raw_metadata = normalize_selected_table_rows(
+                raw_source_rows,
+                table_role_hint=normalize_text(candidate.get("table_role_hint")),
+            )
+            if int(raw_metadata.get("numbered_row_count") or 0) > int(normalization_metadata.get("numbered_row_count") or 0):
+                normalized_rows = raw_normalized_rows
+                normalization_actions = list(dict.fromkeys(list(normalization_actions) + ["reload_from_source_table_asset"] + raw_actions))
+                normalization_metadata = raw_metadata
+        payload_basis_csv_path = source_csv_path
+        payload_basis_candidate_id = normalize_text(candidate.get("candidate_id"))
+        payload_basis_same_source = True
+        if (
+            normalize_text(candidate.get("table_role_hint")) == "design matrix"
+            and int(normalization_metadata.get("numbered_row_count") or 0) < 8
+        ):
+            best_companion: dict[str, Any] | None = None
+            for companion_id, roles in selected_table_roles.items():
+                if companion_id == normalize_text(candidate.get("candidate_id")):
+                    continue
+                if "FORMULATION_TABLE" not in roles:
+                    continue
+                companion = candidate_lookup.get(companion_id)
+                if not isinstance(companion, dict):
+                    continue
+                companion_item = companion.get("item")
+                if not isinstance(companion_item, dict):
+                    continue
+                companion_rows = companion_item.get("rows") or []
+                if not isinstance(companion_rows, list) or not companion_rows:
+                    continue
+                companion_normalized_rows, companion_actions, companion_metadata = normalize_selected_table_rows(
+                    companion_rows,
+                    table_role_hint=normalize_text(companion.get("table_role_hint")),
+                )
+                companion_source_csv_path = normalize_text(companion_item.get("repair_source_csv_path")) or normalize_text(companion.get("origin_locator"))
+                companion_source_path = Path(companion_source_csv_path)
+                if not companion_source_path.is_absolute():
+                    companion_source_path = (PROJECT_ROOT / companion_source_path).resolve()
+                if int(companion_metadata.get("numbered_row_count") or 0) < 8 and companion_source_path.exists():
+                    companion_source_rows: list[list[str]] = []
+                    with companion_source_path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
+                        reader = csv.reader(handle)
+                        for row in reader:
+                            companion_source_rows.append([normalize_text(cell) for cell in row])
+                    raw_companion_rows, raw_companion_actions, raw_companion_metadata = normalize_selected_table_rows(
+                        companion_source_rows,
+                        table_role_hint=normalize_text(companion.get("table_role_hint")),
+                    )
+                    if int(raw_companion_metadata.get("numbered_row_count") or 0) > int(companion_metadata.get("numbered_row_count") or 0):
+                        companion_normalized_rows = raw_companion_rows
+                        companion_actions = list(dict.fromkeys(list(companion_actions) + ["reload_from_source_table_asset"] + raw_companion_actions))
+                        companion_metadata = raw_companion_metadata
+                companion_count = int(companion_metadata.get("numbered_row_count") or 0)
+                if companion_count < 8:
+                    continue
+                companion_payload = {
+                    "normalized_rows": companion_normalized_rows,
+                    "actions": companion_actions,
+                    "metadata": companion_metadata,
+                    "candidate_id": companion_id,
+                    "source_csv_path": companion_source_csv_path,
+                }
+                if best_companion is None or companion_count > int(best_companion["metadata"].get("numbered_row_count") or 0):
+                    best_companion = companion_payload
+            if best_companion is not None:
+                normalized_rows = best_companion["normalized_rows"]
+                normalization_actions = list(normalization_actions) + ["derive_matrix_from_selected_companion_table"]
+                normalization_actions.extend(best_companion["actions"])
+                normalization_actions = list(dict.fromkeys(normalization_actions))
+                normalization_metadata = dict(best_companion["metadata"])
+                payload_basis_csv_path = best_companion["source_csv_path"]
+                payload_basis_candidate_id = best_companion["candidate_id"]
+                payload_basis_same_source = False
+        csv_name = _normalized_table_csv_name(source_csv_path, normalize_text(candidate.get("candidate_id")))
+        normalized_csv_path = payload_dir / csv_name
+        normalized_csv_path.parent.mkdir(parents=True, exist_ok=True)
+        with normalized_csv_path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle)
+            writer.writerows(normalized_rows)
+        table_id = derive_stable_table_id(source_csv_path, meta)
+        header_structure = infer_header_structure(normalized_rows)
+        normalized_row_entries = build_normalized_row_entries(
+            normalized_rows,
+            header_structure=header_structure,
+            numbered_row_column_index=normalize_text(normalization_metadata.get("numbered_row_column_index")),
+        )
+        row_identity_signals = build_row_identity_signals(
+            normalized_rows,
+            header_structure=header_structure,
+            numbered_row_column_index=normalize_text(normalization_metadata.get("numbered_row_column_index")),
+        )
+        table_type = classify_execution_table_type(
+            normalized_rows,
+            meta=meta,
+            table_role_hint=normalize_text(candidate.get("table_role_hint")),
+            normalization_metadata=normalization_metadata,
+        )
+        reconstruction_confidence = compute_reconstruction_confidence(
+            representation_status=normalize_text(item.get("representation_status")),
+            selector_readiness_label=normalize_text(item.get("selector_readiness_label")),
+            normalization_actions=normalization_actions,
+            normalized_row_count=len(normalized_rows),
+            raw_row_count=len(raw_cells),
+        )
+        first_column_labels = [
+            normalize_text(row[0])
+            for row in normalized_rows[1:]
+            if isinstance(row, list) and row and normalize_text(row[0])
+        ]
+        source_table_reference = source_csv_path
+        source_table_asset_id = Path(source_csv_path).stem
+        selected_entries.append(
+            {
+                "table_id": table_id,
+                "candidate_id": normalize_text(candidate.get("candidate_id")),
+                "source_csv_path": source_csv_path,
+                "source_table_reference": source_table_reference,
+                "source_table_asset_id": source_table_asset_id,
+                "source_filename": Path(source_csv_path).name,
+                "source_table_id": table_id,
+                "source_caption_or_title": normalize_text(meta.get("caption_or_title")),
+                "table_role_hint": normalize_text(candidate.get("table_role_hint")),
+                "table_type": table_type,
+                "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
+                "representation_status": normalize_text(item.get("representation_status")),
+                "repair_actions": ensure_list(item.get("repair_actions")),
+                "normalization_actions": normalization_actions,
+                "same_source_table_asset": payload_basis_same_source and bool(item.get("same_source_table_asset", True)),
+                "derived_from_candidate_id": "" if payload_basis_same_source else payload_basis_candidate_id,
+                "repair_source_manifest_path": normalize_text(item.get("repair_source_manifest_path")),
+                "payload_basis_source_csv_path": payload_basis_csv_path,
+                "payload_basis_candidate_id": payload_basis_candidate_id,
+                "normalized_csv_path": to_repo_rel(normalized_csv_path),
+                "row_count": len(normalized_rows),
+                "normalized_row_count": len(normalized_rows),
+                "raw_row_count": len(raw_cells),
+                "header_row_count": int(header_structure.get("header_row_count") or 0),
+                "data_row_count": max(0, len(normalized_rows) - 1),
+                "has_row_numbering": bool(int(normalization_metadata.get("numbered_row_count") or 0)),
+                "header_structure": header_structure,
+                "raw_cells": raw_cells,
+                "normalized_rows": normalized_row_entries,
+                "normalized_matrix": normalized_rows,
+                "row_identity_signals": row_identity_signals,
+                "reconstruction_confidence": reconstruction_confidence,
+                "first_column_labels": first_column_labels[:25],
+                "numbered_row_column_index": normalize_text(normalization_metadata.get("numbered_row_column_index")),
+                "numbered_row_count": int(normalization_metadata.get("numbered_row_count") or 0),
+                "numbered_row_start_index": normalize_text(normalization_metadata.get("numbered_row_start_index")),
+            }
+        )
+        validation_rows.append(
+            build_table_authority_validation_row(
+                paper_key=record["key"],
+                table_id=table_id,
+                source_table_reference=source_table_reference,
+                table_type=table_type,
+                raw_cells=raw_cells,
+                normalized_matrix=normalized_rows,
+                normalization_actions=normalization_actions,
+                selector_readiness_label=normalize_text(item.get("selector_readiness_label")),
+            )
+        )
+    return {
+        "paper_key": record["key"],
+        "producer_script": producer_script,
+        "contract_version": "s2_2_normalized_table_payloads_v1",
+        "source_evidence_artifact_path": to_repo_rel(evidence_artifact_path),
+        "full_table_authority_role": "execution_grade_table_authority",
+        "normalized_table_payloads": selected_entries,
+    }, validation_rows
 
 
 def build_prompt_preview_row(
@@ -4192,8 +5004,12 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any])
                 "raw_label": "string",
                 "normalized_label": "string",
                 "instance_kind": "new_formulation|variant_formulation|candidate_non_formulation|unclear",
-                "formulation_role": "variant|baseline|optimized|control|unclear",
+                "formulation_role": "variant|baseline|optimized|control|characterization_only|comparative|unclear",
                 "parent_candidate_id": "string or empty",
+                "change_role": "synthesis_defining|non_synthesis|unclear",
+                "change_descriptions": ["strings describing the grounded change from the parent or empty list"],
+                "instance_context_tags": ["doe|sweep|post_processing|test_condition|measurement_context|optimized|control|empty"],
+                "change_context_tags": ["doe|sweep|post_processing|test_condition|measurement_context|optimized|control|empty"],
                 "ambiguity_note": "string or empty",
                 "evidence_span_ids": ["span ids"],
                 "status": "reported|ambiguous|derived_from_shared_context",
@@ -4362,6 +5178,13 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any])
         "- Prefer true paper caption lines and nearby narrative references over noisy PDF extractor fragments when deciding which paper table a marker belongs to.\n"
         "- Do not mark a table as non_formulation just because some extracted PDF table fragments contain abstract text, references, or assay traces; use the paper's caption and surrounding formulation narrative to identify the real formulation tables.\n"
         "- Mark a later sweep table as sequential_child when it is performed under a selected condition from an earlier table.\n"
+        "- When the paper reports parent-linked downstream treatment, storage, freeze-drying, reconstitution, assay-condition, or measurement-condition variants of an already defined formulation, keep those rows visible but mark them as non-independent descendants rather than new synthesis-defining cores.\n"
+        "- For those descendant cases, keep instance_kind='variant_formulation', keep the explicit parent_candidate_id, set change_role='non_synthesis', and populate change_descriptions plus grounded context tags.\n"
+        "- If the paper explicitly names individual downstream variants or explicitly lists concrete downstream levels tied to the parent formulation, preserve those individual variants as separate formulation_candidates instead of collapsing them into one family placeholder.\n"
+        "- Use change_context_tags=['post_processing'] for downstream processing or handling changes applied after preparation, such as freeze-drying, cryoprotectants, storage, or reconstitution, when that interpretation is supported by the paper evidence.\n"
+        "- Use change_context_tags=['measurement_context'] for assay, release-condition, or characterization-condition variants when the paper changes the evaluation context rather than the formulation synthesis/design core.\n"
+        "- instance_context_tags may describe the broader row context and change_context_tags may describe the specific grounded difference from the parent; at least one of them should carry the grounded descendant cue when the paper makes it explicit.\n"
+        "- If the paper makes clear that a parent-linked row is only a characterization/control/comparator helper, use formulation_role='characterization_only', 'control', or 'comparative' when the evidence supports that specific role.\n"
         "- Emit selection_markers and inheritance_markers only from explicit text or explicit table notes/captions; do not guess beyond the paper evidence.\n"
         f"- Use marker_readiness='{EXECUTION_READY_MARKER}' only when the marker is fully grounded for current execution use.\n"
         f"- Use marker_readiness='{PARTIAL_SEMANTIC_MARKER}' when the paper clearly supports the semantic cue but some non-execution-critical grounding is still incomplete.\n"
@@ -4381,11 +5204,27 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any])
         "- Do not use vague placeholders to simulate grounding.\n"
         "- Emit preparation_inheritance_markers only when the paper makes clear that a formulation-bearing table inherits the shared preparation context.\n"
         "- boundary_markers must explicitly label each marked table as DOE or non-DOE.\n"
+        "- boundary_markers must use the same literal table_id as the corresponding table_formulation_scope; do not emit blank, global, or paper-level boundary markers when the evidence refers to a specific paper table.\n"
+        "- Mixed-table rule: if the evidence pack contains both a DOE-style variable/design table and a separate formulation-bearing non-DOE table, preserve both boundaries separately. Mark only the DOE table as is_doe=true and keep the non-DOE formulation table explicitly labeled with is_doe=false.\n"
+        "- Non-DOE formulation-table rule: when a table caption, nearby narrative, or summary block indicates that the table lists named formulations, samples, batches, or compositions together with formulation outcomes, treat that table as formulation-bearing even if the prompt provides only summary-mode rows and noisy repaired text. In that case, emit a table_formulation_scope for the literal table_id and emit a matching non-DOE boundary_marker for that same table.\n"
+        "- Downstream-descendant table rule: a later table that reports downstream handling, storage, freeze-drying, reconstitution, assay conditions, or characterization conditions for an already defined parent formulation universe is still a non-DOE boundary unless the paper explicitly frames it as a DOE/factor-design table.\n"
         "- Example sequential-optimization pattern: if Table 1 varies one formulation variable across explicit levels and the paper says one level was selected as optimal, and Table 2 then varies a different formulation variable under that selected condition, emit both Table 1 and Table 2 in table_formulation_scopes, emit the Table 1 selection in selection_markers, and emit a Table 1 -> Table 2 selected_condition inheritance marker.\n"
         "- Minimal example for that pattern:\n"
         "  table_formulation_scopes = [{\"table_id\": \"Table 1\", \"is_formulation_table\": true, \"table_type\": \"partial_formulation\", \"confidence\": \"high\", \"evidence_span\": \"...\"}, {\"table_id\": \"Table 2\", \"is_formulation_table\": true, \"table_type\": \"sequential_child\", \"confidence\": \"high\", \"evidence_span\": \"...\"}]\n"
         f"  selection_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"source_table_id\": \"Table 1\", \"selected_variable\": \"poloxamer 188 concentration\", \"selected_value\": \"3 mg/mL\", \"explicit\": true, \"evidence_span\": \"...selected as optimal...\"}}]\n"
         f"  inheritance_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"from_table\": \"Table 1\", \"to_table\": \"Table 2\", \"inherit_type\": \"selected_condition\", \"variable\": \"poloxamer 188 concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"...after the optimal surfactant concentration had been determined...\"}}]\n"
+        "- Non-DOE mixed-table example:\n"
+        "  nearby evidence = 'Table 7 reports DOE factor levels. Table 9 reports named formulations F1-F6 with polymer/drug ratio, surfactant concentration, particle size, and encapsulation efficiency.'\n"
+        "  table_formulation_scopes = [{\"table_id\": \"Table 7\", \"is_formulation_table\": true, \"table_type\": \"doe_table\", \"confidence\": \"high\", \"evidence_span\": \"...DOE factor levels...\"}, {\"table_id\": \"Table 9\", \"is_formulation_table\": true, \"table_type\": \"full_formulation\", \"confidence\": \"high\", \"evidence_span\": \"...named formulations F1-F6...\"}]\n"
+        "  boundary_markers = [{\"table_id\": \"Table 7\", \"is_doe\": true}, {\"table_id\": \"Table 9\", \"is_doe\": false}]\n"
+        "  table_variable_roles = [{\"table_id\": \"Table 9\", \"varying_variables\": [\"polymer/drug ratio\", \"surfactant concentration\"], \"constant_variables\": [], \"new_variables_introduced\": [\"particle size\", \"encapsulation efficiency\"]}]\n"
+        "- For that non-DOE mixed-table pattern, do not collapse the non-DOE table into the DOE boundary and do not replace a literal table_id with an empty table_id.\n"
+        "- Downstream-descendant example:\n"
+        "  nearby evidence = 'The baseline nanoparticles were then freeze-dried using mannitol or sucrose at different concentrations before DLS characterization.'\n"
+        "  table_formulation_scopes = [{\"table_id\": \"Table 2\", \"is_formulation_table\": true, \"table_type\": \"sequential_child\", \"confidence\": \"high\", \"evidence_span\": \"...freeze-dried using mannitol or sucrose...\"}]\n"
+        "  boundary_markers = [{\"table_id\": \"Table 2\", \"is_doe\": false}]\n"
+        "  formulation_candidates = [{\"candidate_id\": \"F1\", \"raw_label\": \"baseline nanoparticles\", \"normalized_label\": \"baseline nanoparticles\", \"instance_kind\": \"new_formulation\", \"formulation_role\": \"baseline\", \"parent_candidate_id\": \"\", \"change_role\": \"unclear\", \"change_descriptions\": [], \"instance_context_tags\": [], \"change_context_tags\": [], \"ambiguity_note\": \"\", \"evidence_span_ids\": [\"span_1\"], \"status\": \"reported\"}, {\"candidate_id\": \"F2\", \"raw_label\": \"baseline nanoparticles with mannitol 4%\", \"normalized_label\": \"baseline nanoparticles with mannitol 4%\", \"instance_kind\": \"variant_formulation\", \"formulation_role\": \"variant\", \"parent_candidate_id\": \"F1\", \"change_role\": \"non_synthesis\", \"change_descriptions\": [\"freeze-dried with mannitol 4% as cryoprotectant\"], \"instance_context_tags\": [\"post_processing\"], \"change_context_tags\": [\"post_processing\"], \"ambiguity_note\": \"Downstream freeze-drying variant of the baseline nanoparticles.\", \"evidence_span_ids\": [\"span_2\"], \"status\": \"reported\"}, {\"candidate_id\": \"F3\", \"raw_label\": \"baseline nanoparticles with sucrose 4%\", \"normalized_label\": \"baseline nanoparticles with sucrose 4%\", \"instance_kind\": \"variant_formulation\", \"formulation_role\": \"variant\", \"parent_candidate_id\": \"F1\", \"change_role\": \"non_synthesis\", \"change_descriptions\": [\"freeze-dried with sucrose 4% as cryoprotectant\"], \"instance_context_tags\": [\"post_processing\"], \"change_context_tags\": [\"post_processing\"], \"ambiguity_note\": \"Downstream freeze-drying variant of the baseline nanoparticles.\", \"evidence_span_ids\": [\"span_3\"], \"status\": \"reported\"}]\n"
+        "- For that descendant pattern, do not silently discard the descendant row and do not upgrade the downstream handling difference into a new synthesis-defining formulation core unless the paper explicitly treats it as a new formulation identity.\n"
         "- Positive example for the mandatory sequential-optimization literal-value rule:\n"
         "  nearby evidence = 'Poloxamer 188 concentration was studied at 2.5, 3, 4, and 10 mg/mL. 3 mg/mL was selected as the optimal surfactant concentration. After the optimal surfactant concentration had been determined, the remaining studies used that condition.'\n"
         f"  selection_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"poloxamer 188 concentration\", \"selected_value\": \"3 mg/mL\", \"explicit\": true, \"evidence_span\": \"3 mg/mL was selected as the optimal surfactant concentration.\"}}]\n"
@@ -5116,9 +5955,11 @@ def main() -> None:
     prompt_preview_rows: list[dict[str, Any]] = []
     table_selection_debug_rows: list[dict[str, Any]] = []
     candidate_segmentation_debug_rows: list[dict[str, Any]] = []
+    table_authority_validation_rows: list[dict[str, Any]] = []
     prompt_preview_path = out_dir.parent / "analysis" / PROMPT_PREVIEW_NAME
     table_selection_debug_path = out_dir.parent / "analysis" / TABLE_SELECTION_DEBUG_NAME
     candidate_segmentation_debug_path = out_dir.parent / "analysis" / CANDIDATE_SEGMENTATION_DEBUG_NAME
+    table_authority_validation_path = out_dir.parent / "analysis" / TABLE_AUTHORITY_VALIDATION_NAME
     current_table_mode = table_mode()
     summary_enhanced = summary_first_column_enhancement_enabled()
     current_input_packing_mode = input_packing_mode()
@@ -5172,6 +6013,17 @@ def main() -> None:
                         segmentation_bundle=segmentation_bundle,
                     )
                     write_json(artifact_path, evidence_artifact)
+                    normalized_payload_path = normalized_table_payloads_path(out_dir, key)
+                    normalized_payload_artifact, table_authority_rows = build_normalized_table_payload_artifact(
+                        record=record,
+                        out_dir=out_dir,
+                        producer_script="src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+                        evidence_artifact_path=artifact_path,
+                        evidence_artifact=evidence_artifact,
+                        segmentation_bundle=segmentation_bundle,
+                    )
+                    write_json(normalized_payload_path, normalized_payload_artifact)
+                    table_authority_validation_rows.extend(table_authority_rows)
                     prompt = build_live_prompt(record, evidence_artifact)
                     prompt_preview_rows.append(
                         build_prompt_preview_row(
@@ -5337,10 +6189,31 @@ def main() -> None:
                 "text_preview",
             ],
         )
+    if table_authority_validation_rows:
+        write_tsv(
+            table_authority_validation_path,
+            table_authority_validation_rows,
+            [
+                "paper_key",
+                "table_id",
+                "source_table_reference",
+                "table_type",
+                "row_count_before",
+                "row_count_after",
+                "missing_rows_detected",
+                "duplicate_row_count",
+                "column_count_before",
+                "column_count_after",
+                "column_collapse_detected",
+                "selector_readiness_label",
+                "normalization_actions",
+            ],
+        )
     print(f"wrote_jsonl={jsonl_path}")
     print(f"wrote_summary={summary_path}")
     print(f"wrote_candidate_blocks_dir={out_dir / CANDIDATE_BLOCKS_SUBDIR}")
     print(f"wrote_evidence_blocks_dir={out_dir / EVIDENCE_BLOCKS_SUBDIR}")
+    print(f"wrote_normalized_table_payloads_dir={out_dir / NORMALIZED_TABLE_PAYLOADS_SUBDIR}")
     if prompt_preview_rows:
         print(f"wrote_prompt_preview={prompt_preview_path}")
     if table_selection_debug_rows:

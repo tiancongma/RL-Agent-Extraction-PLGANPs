@@ -111,6 +111,7 @@ The canonical path starts from Zotero-derived raw records under
 `data/raw/zotero/` and ends at:
 
 - `final_formulation_table_v1.tsv`
+- `downstream_variant_records_v1.tsv`
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
 
@@ -122,6 +123,10 @@ Current active Stage 5 scripts:
 Stage 5 is a materialization layer. It must not perform semantic inference.
 Benchmark-valid Stage 5 closure now depends on both Stage 3 relation records and
 Stage 3 resolved relation fields.
+The primary benchmark-facing formulation table excludes downstream/post-processing
+variants unless they are independently reported formulation identities; those
+excluded rows are preserved in the governed linked lower-level surface
+`downstream_variant_records_v1.tsv`.
 
 Current Stage 5 supporting review export:
 

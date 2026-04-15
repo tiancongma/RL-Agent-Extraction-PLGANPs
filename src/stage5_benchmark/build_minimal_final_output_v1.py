@@ -35,6 +35,7 @@ from src.utils.paths import PROJECT_ROOT, dataset_text_root
 
 DECISION_TRACE_NAME = "final_output_decision_trace_v1.tsv"
 FINAL_TABLE_NAME = "final_formulation_table_v1.tsv"
+DOWNSTREAM_VARIANT_RECORDS_NAME = "downstream_variant_records_v1.tsv"
 SUMMARY_NAME = "final_output_summary_v1.md"
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
@@ -341,6 +342,17 @@ def parse_json_list(value: Any) -> list[str]:
     return [str(item).strip() for item in parsed if str(item).strip()]
 
 
+def parse_json_array(value: Any) -> list[Any]:
+    text = str(value or "").strip()
+    if not text:
+        return []
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+    return parsed if isinstance(parsed, list) else []
+
+
 def normalize_identity_variable_name(value: Any) -> str:
     text = normalize_text(value)
     text = re.sub(r"[^a-z0-9]+", "_", text)
@@ -480,6 +492,106 @@ def row_context_tags(row: dict[str, str]) -> set[str]:
     return observed
 
 
+def row_table_scope_items(row: dict[str, str]) -> list[dict[str, Any]]:
+    return [
+        item
+        for item in parse_json_array(row.get("table_formulation_scopes_json", "[]"))
+        if isinstance(item, dict)
+    ]
+
+
+def row_selection_marker_items(row: dict[str, str]) -> list[dict[str, Any]]:
+    return [
+        item
+        for item in parse_json_array(row.get("selection_markers_json", "[]"))
+        if isinstance(item, dict)
+    ]
+
+
+def row_inheritance_marker_items(row: dict[str, str]) -> list[dict[str, Any]]:
+    return [
+        item
+        for item in parse_json_array(row.get("inheritance_markers_json", "[]"))
+        if isinstance(item, dict)
+    ]
+
+
+def has_explicit_downstream_descendant_signal(row: dict[str, str]) -> bool:
+    if normalize_text(row.get("change_role")) != "non_synthesis":
+        return False
+    if not bool(str(row.get("parent_instance_id", "") or "").strip()):
+        return False
+    tags = row_context_tags(row)
+    if tags.isdisjoint(
+        {
+            "post_processing",
+            "measurement_context",
+            "test_condition",
+            "downstream_assay",
+            "in_vivo",
+            "pharmacokinetics",
+        }
+    ):
+        return False
+    if any(
+        normalize_text(scope.get("table_type")) == "sequential_child"
+        for scope in row_table_scope_items(row)
+    ):
+        return True
+    if any(
+        normalize_text(marker.get("marker_readiness")) == "execution_ready"
+        for marker in row_selection_marker_items(row)
+    ):
+        return True
+    if any(
+        normalize_text(marker.get("marker_readiness")) == "execution_ready"
+        for marker in row_inheritance_marker_items(row)
+    ):
+        return True
+    return False
+
+
+def parse_identity_variable_items(value: Any) -> list[dict[str, str]]:
+    items: list[dict[str, str]] = []
+    for item in parse_json_array(value):
+        if not isinstance(item, dict):
+            continue
+        name = str(item.get("name") or item.get("name_raw") or "").strip()
+        raw_value = str(item.get("value") or item.get("value_raw") or "").strip()
+        if not name and not raw_value:
+            continue
+        items.append(
+            {
+                "name": name,
+                "value": raw_value,
+            }
+        )
+    return items
+
+
+def downstream_variable_payloads(row: dict[str, str]) -> tuple[str, str, str]:
+    items = parse_identity_variable_items(row.get(IDENTITY_VARIABLES_FIELD, ""))
+    if not items:
+        return "", "", ""
+    names = [item["name"] for item in items if item["name"]]
+    values = [item["value"] for item in items if item["value"]]
+    signature = " | ".join(
+        f"{item['name']}={item['value']}"
+        for item in items
+        if item["name"] and item["value"]
+    )
+    return (
+        json.dumps(names, ensure_ascii=True),
+        json.dumps(values, ensure_ascii=True),
+        signature,
+    )
+
+
+def make_downstream_variant_record_id(row: dict[str, str]) -> str:
+    base = row_source_key(row)
+    return f"{row.get('key', '').strip()}__dvr__{short_hash(base)}"
+
+
 def has_commercial_reference_signal(row: dict[str, str]) -> bool:
     tags = row_context_tags(row)
     if "commercial" in tags:
@@ -617,6 +729,7 @@ def should_filter_non_formulation(
         tags = row_context_tags(row)
         formulation_role = normalize_text(row.get("formulation_role"))
         helper_descendant_signals = has_explicit_helper_descendant_signal(row, core_fields)
+        explicit_downstream_descendant = has_explicit_downstream_descendant_signal(row)
         non_synthesis_descendant = normalize_text(row.get("change_role")) == "non_synthesis"
         helper_role_match = formulation_role in {"control", "characterization_only"}
         helper_context_match = helper_descendant_signals and (
@@ -635,7 +748,11 @@ def should_filter_non_formulation(
                 "parent_linked_non_synthesis_descendant_variant",
                 "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
             )
-        if non_synthesis_descendant and "post_processing" in tags and not is_ambiguous_sweep_style_variant(row):
+        if (
+            non_synthesis_descendant
+            and "post_processing" in tags
+            and (explicit_downstream_descendant or not is_ambiguous_sweep_style_variant(row))
+        ):
             return (
                 True,
                 "parent_linked_non_synthesis_descendant_variant",
@@ -1287,10 +1404,123 @@ def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> 
             writer.writerow(row)
 
 
+def build_downstream_variant_rows(
+    *,
+    rows: list[dict[str, str]],
+    decision_rows: list[dict[str, str]],
+    final_id_by_source_id: dict[str, str],
+) -> list[dict[str, str]]:
+    source_key_by_paper_and_formulation_id = {
+        (normalize_text(row.get("key")), normalize_text(row.get("formulation_id"))): row_source_key(row)
+        for row in rows
+    }
+    decision_by_source_id = {
+        (
+            normalize_text(row.get("zotero_key")),
+            normalize_text(row.get("source_formulation_id")),
+        ): row
+        for row in decision_rows
+        if normalize_text(row.get("zotero_key")) and normalize_text(row.get("source_formulation_id"))
+    }
+    downstream_rows: list[dict[str, str]] = []
+    for row in rows:
+        decision = decision_by_source_id.get(
+            (normalize_text(row.get("key")), normalize_text(row.get("formulation_id")))
+        )
+        if not decision:
+            continue
+        decision_name = normalize_text(decision.get("decision"))
+        variant_signal = normalize_text(decision.get("variant_signal"))
+        if variant_signal != "post_processing_or_measurement_variant":
+            continue
+        if decision_name not in {"filtered_non_formulation", "collapsed_into_existing"}:
+            continue
+
+        linked_primary_final_id = normalize_text(decision.get("target_final_formulation_id"))
+        parent_source_formulation_id = str(row.get("parent_instance_id", "") or "").strip()
+        primary_link_resolution = "direct_target_final"
+        if not linked_primary_final_id and parent_source_formulation_id:
+            parent_source_key = source_key_by_paper_and_formulation_id.get(
+                (normalize_text(row.get("key")), normalize_text(parent_source_formulation_id))
+            )
+            if parent_source_key:
+                linked_primary_final_id = final_id_by_source_id.get(parent_source_key, "")
+                primary_link_resolution = (
+                    "parent_source_lookup" if linked_primary_final_id else "parent_source_lookup_unresolved"
+                )
+            else:
+                primary_link_resolution = "parent_source_missing"
+        elif not linked_primary_final_id:
+            primary_link_resolution = "no_primary_link_available"
+
+        downstream_variable_names_json, downstream_variable_values_json, downstream_variable_signature = (
+            downstream_variable_payloads(row)
+        )
+        sequential_child_tables = sorted(
+            {
+                str(item.get("table_id") or "").strip()
+                for item in row_table_scope_items(row)
+                if normalize_text(item.get("table_type")) == "sequential_child"
+                and str(item.get("table_id") or "").strip()
+            }
+        )
+        downstream_rows.append(
+            {
+                "variant_record_id": make_downstream_variant_record_id(row),
+                "paper_key": str(row.get("key", "") or "").strip(),
+                "doi": str(row.get("doi", "") or "").strip(),
+                "linked_primary_final_formulation_id": linked_primary_final_id,
+                "parent_source_formulation_id": parent_source_formulation_id,
+                "source_formulation_id": str(row.get("formulation_id", "") or "").strip(),
+                "source_raw_formulation_label": str(row.get("raw_formulation_label", "") or "").strip(),
+                "instance_kind": str(row.get("instance_kind", "") or "").strip(),
+                "formulation_role": str(row.get("formulation_role", "") or "").strip(),
+                "change_role": str(row.get("change_role", "") or "").strip(),
+                "variant_class": str(decision.get("variant_class", "") or "").strip(),
+                "variant_signal": str(decision.get("variant_signal", "") or "").strip(),
+                "candidate_source": str(row.get("candidate_source", "") or "").strip(),
+                "instance_context_tags": str(row.get("instance_context_tags", "") or "").strip(),
+                "change_context_tags": str(row.get("change_context_tags", "") or "").strip(),
+                "change_descriptions": str(row.get("change_descriptions", "") or "").strip(),
+                IDENTITY_VARIABLES_FIELD: str(row.get(IDENTITY_VARIABLES_FIELD, "") or "").strip(),
+                "downstream_variable_names_json": downstream_variable_names_json,
+                "downstream_variable_values_json": downstream_variable_values_json,
+                "downstream_variable_signature": downstream_variable_signature,
+                "sequential_child_table_ids_json": json.dumps(sequential_child_tables, ensure_ascii=True),
+                "table_formulation_scopes_json": str(row.get("table_formulation_scopes_json", "") or "").strip(),
+                "table_variable_roles_json": str(row.get("table_variable_roles_json", "") or "").strip(),
+                "selection_markers_json": str(row.get("selection_markers_json", "") or "").strip(),
+                "inheritance_markers_json": str(row.get("inheritance_markers_json", "") or "").strip(),
+                "boundary_markers_json": str(row.get("boundary_markers_json", "") or "").strip(),
+                "instance_evidence_region_type": str(row.get("instance_evidence_region_type", "") or "").strip(),
+                "evidence_section": str(row.get("evidence_section", "") or "").strip(),
+                "evidence_span_text": str(row.get("evidence_span_text", "") or "").strip(),
+                "supporting_evidence_refs": str(row.get("supporting_evidence_refs", "") or "").strip(),
+                "excluded_from_primary_database": "yes",
+                "exclusion_decision": decision_name,
+                "exclusion_reason": str(decision.get("decision_rule", "") or "").strip(),
+                "exclusion_reason_text": str(
+                    decision.get("collapse_reason") or decision.get("decision_reason") or ""
+                ).strip(),
+                "primary_link_resolution": primary_link_resolution,
+                "primary_table_contract": "excluded_from_primary_benchmark_facing_formulation_database",
+            }
+        )
+    return sorted(
+        downstream_rows,
+        key=lambda item: (
+            item["paper_key"],
+            item["linked_primary_final_formulation_id"],
+            item["source_formulation_id"],
+        ),
+    )
+
+
 def build_summary_markdown(
     input_path: Path,
     final_rows: list[dict[str, str]],
     decision_rows: list[dict[str, str]],
+    downstream_variant_rows: list[dict[str, str]],
     summary_path: Path,
     relation_records_tsv: Path | None,
     resolved_relation_fields_tsv: Path | None,
@@ -1339,7 +1569,7 @@ def build_summary_markdown(
         "- collapses rows only when signature completeness is high and a unique conservative target is available",
         "- collapses structured DOE/table-derived alternate representations when they clearly duplicate an already richer retained row for the same paper-local row anchor",
         "- applies the validated WFDTQ4VX checkpoint coordinate rule to collapse checkpoint batches that exactly match one design-row formulation identity",
-        "- preserves provenance by retaining representative-row metadata, collapsed-variant membership, and a row-level decision trace",
+        "- preserves provenance by retaining representative-row metadata, collapsed-variant membership, a row-level decision trace, and a linked downstream-variant record surface for rows excluded from the primary benchmark-facing database",
         "",
         "## What phase 1 intentionally does not handle",
         "",
@@ -1371,6 +1601,7 @@ def build_summary_markdown(
         f"- filtered_non_formulation: `{decision_counts['filtered_non_formulation']}`",
         f"- collapsed_into_existing: `{decision_counts['collapsed_into_existing']}`",
         f"- final_rows: `{len(final_rows)}`",
+        f"- downstream_variant_records: `{len(downstream_variant_rows)}`",
         f"- review_needed_rows: `{review_needed_count}`",
         "",
         "## Variant class counts",
@@ -1895,8 +2126,15 @@ def build_minimal_final_output(
             final_row["field_source_type"] = "unresolved_blank"
         final_rows.append(final_row)
 
+    downstream_variant_rows = build_downstream_variant_rows(
+        rows=rows,
+        decision_rows=decision_rows,
+        final_id_by_source_id=final_id_by_source_id,
+    )
+
     decision_trace_path = out_dir / DECISION_TRACE_NAME
     final_table_path = out_dir / FINAL_TABLE_NAME
+    downstream_variant_path = out_dir / DOWNSTREAM_VARIANT_RECORDS_NAME
     summary_path = out_dir / SUMMARY_NAME
 
     field_source_by_final_id = {
@@ -1975,10 +2213,54 @@ def build_minimal_final_output(
         final_rows,
     )
 
+    write_tsv(
+        downstream_variant_path,
+        [
+            "variant_record_id",
+            "paper_key",
+            "doi",
+            "linked_primary_final_formulation_id",
+            "parent_source_formulation_id",
+            "source_formulation_id",
+            "source_raw_formulation_label",
+            "instance_kind",
+            "formulation_role",
+            "change_role",
+            "variant_class",
+            "variant_signal",
+            "candidate_source",
+            "instance_context_tags",
+            "change_context_tags",
+            "change_descriptions",
+            IDENTITY_VARIABLES_FIELD,
+            "downstream_variable_names_json",
+            "downstream_variable_values_json",
+            "downstream_variable_signature",
+            "sequential_child_table_ids_json",
+            "table_formulation_scopes_json",
+            "table_variable_roles_json",
+            "selection_markers_json",
+            "inheritance_markers_json",
+            "boundary_markers_json",
+            "instance_evidence_region_type",
+            "evidence_section",
+            "evidence_span_text",
+            "supporting_evidence_refs",
+            "excluded_from_primary_database",
+            "exclusion_decision",
+            "exclusion_reason",
+            "exclusion_reason_text",
+            "primary_link_resolution",
+            "primary_table_contract",
+        ],
+        downstream_variant_rows,
+    )
+
     build_summary_markdown(
         input_tsv,
         final_rows,
         decision_rows,
+        downstream_variant_rows,
         summary_path,
         relation_records_tsv,
         resolved_relation_fields_tsv,
@@ -1990,7 +2272,9 @@ def build_minimal_final_output(
         "filtered_rows": sum(1 for row in decision_rows if row["decision"] == "filtered_non_formulation"),
         "collapsed_rows": sum(1 for row in decision_rows if row["decision"] == "collapsed_into_existing"),
         "kept_rows": sum(1 for row in decision_rows if row["decision"] == "kept"),
+        "downstream_variant_rows": len(downstream_variant_rows),
         "final_table_path": final_table_path,
+        "downstream_variant_path": downstream_variant_path,
         "decision_trace_path": decision_trace_path,
         "summary_path": summary_path,
         "relation_records_tsv": relation_records_tsv,
@@ -2025,11 +2309,13 @@ def main() -> None:
                 "filtered_rows": stats["filtered_rows"],
                 "collapsed_rows": stats["collapsed_rows"],
                 "kept_rows": stats["kept_rows"],
+                "downstream_variant_rows": stats["downstream_variant_rows"],
                 "relation_records_tsv": (
                     str(stats["relation_records_tsv"]) if stats["relation_records_tsv"] else ""
                 ),
                 "resolved_relation_fields_tsv": str(stats["resolved_relation_fields_tsv"]),
                 "final_table_path": str(stats["final_table_path"]),
+                "downstream_variant_path": str(stats["downstream_variant_path"]),
                 "decision_trace_path": str(stats["decision_trace_path"]),
                 "summary_path": str(stats["summary_path"]),
             },

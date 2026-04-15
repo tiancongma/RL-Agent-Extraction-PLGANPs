@@ -121,6 +121,39 @@ The activation report is intentionally evidence-based. A feature must not be mar
 
 For numbered DOE row activation specifically, governed recovery rows are accepted when they preserve the explicit numbered table-row anchor pattern and the run-level report can prove the same downstream evidence structure.
 
+## Current governed lessons
+
+### Stage5 legality lesson
+
+- Stage5 final-table generation is necessary but not sufficient for benchmark
+  legality.
+- The hard legality boundary is the mandatory identity-freeze gate, not
+  final-table materialization alone.
+- The governing example is the failed DEV15 full-pipeline lineage:
+  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
+- That lineage reached Stage5 final-table materialization but remained
+  diagnostic-only because identity freeze failed.
+- Therefore compare outputs, reviewer exports, and modeling-ready continuations
+  derived from a failed identity-freeze run are not benchmark-valid.
+
+### Stage2 decomposition lesson
+
+- Stage2 decomposition created a real execution-ownership failure:
+  semantic signals could exist while governed deterministic function units were
+  not provably active on the mainline.
+- The active contract remains:
+  - LLM = semantic discovery and authorization
+  - deterministic function units = execution
+- Silent non-activation is a governed failure state, not an acceptable hidden
+  fallback.
+- DOE execution is now restored on-path for `UFXX9WXE` in
+  `data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix`, where governed
+  deterministic execution emitted `26` rows.
+- Non-DOE table-row execution has partial downstream repair only in
+  `data/results/20260414_0011ee7/01_non_doe_table_row_repair_v1`.
+- The dominant remaining blocker for broader DEV15 coverage is upstream missing
+  `table_formulation_scopes`, not permission for downstream units to guess.
+
 ## Files
 
 - registry:

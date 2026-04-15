@@ -3338,3 +3338,352 @@ Impact
     `9`
   - preserved raw payload count:
     `7`
+
+## 2026-04-14
+
+### Decision: Record identity freeze as the hard Stage5 benchmark-validity boundary (MDEC093)
+
+Decision
+- Stage5 final-table generation is necessary but not sufficient for
+  benchmark-valid reporting.
+- Benchmark legality requires the mandatory identity-freeze gate to pass before
+  GT compare, modeling-ready continuation, or audit-ready outputs may be
+  treated as legal benchmark-facing surfaces.
+- The full DEV15 lineage
+  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
+  is the governing failure example.
+
+Reason
+- That lineage reached Stage5 final-table materialization and produced compare
+  outputs, but the identity-freeze contract failed.
+- The governed repair lineage localized the failure classes as row count drift,
+  identity reassignment, and unresolved scaffold binding.
+
+Impact
+- Compare outputs from the failed DEV15 lineage remain diagnostic-only, not
+  benchmark-valid.
+- Scaffold-binding and representation repairs are governed follow-on work, but
+  they do not by themselves prove that a lawful full-pipeline run now passes
+  the hard identity-freeze gate.
+
+### Decision: Record Stage2 decomposition as a true functional-unit execution-ownership failure (MDEC094)
+
+Decision
+- Stage2 decomposition introduced a real architecture failure:
+  semantic signals could exist while governed deterministic function units were
+  not reliably taking control of execution on the mainline.
+- The intended active contract remains:
+  - LLM = semantic discovery and authorization
+  - deterministic function units = execution
+- Silent non-activation is not acceptable when semantic authorization is
+  present.
+
+Reason
+- Functional-unit and feature-ledger audits from the failed DEV15 lineage
+  showed that some units existed in governance or code without being provably
+  active in the run artifacts.
+- Sequential optimization remained active, while DOE and non-DOE table-row
+  execution were not yet reliably on-path across the same governed lineage.
+
+Impact
+- Future governance must treat silent non-activation as an execution-ownership
+  failure rather than a benign observability gap.
+- Repair work should preserve the LLM semantic-authority boundary while making
+  deterministic execution activation provable in run artifacts.
+
+### Decision: Record DOE function-unit mainline restoration for the confirmed UFXX9WXE case (MDEC095)
+
+Decision
+- The governed DOE execution path is restored on the mainline for the confirmed
+  `UFXX9WXE` repair case.
+- The validating run is:
+  `data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix`
+- In that run, governed deterministic DOE execution emitted `26` rows after a
+  valid LLM-declared DOE scope reached the execution unit.
+
+Reason
+- The DOE repair lineage demonstrated that the issue was not only
+  under-documentation.
+- Run-local activation evidence now proves that the DOE function-unit path can
+  truly take control on the mainline when its governed preconditions are
+  satisfied.
+
+Impact
+- DOE execution ownership is recorded as repaired for the confirmed UFXX9WXE
+  case.
+- This does not authorize deterministic semantic authority outside the governed
+  Stage2 contract.
+
+### Decision: Record non-DOE table-row repair as partial with the dominant blocker moved upstream (MDEC096)
+
+Decision
+- Non-DOE table-row repair is partial:
+  readiness-gating and execution-unit defects are repaired for already-
+  authorized cases, but broader DEV15 coverage remains upstream-blocked by
+  missing `table_formulation_scopes`.
+
+Reason
+- The non-DOE repair lineage separated:
+  - data insufficiency
+  - readiness overstrictness
+  - execution-unit limitation
+- The repaired run showed downstream improvement for already-authorized cases
+  while the broader full-freeze replay still failed to authorize many papers.
+
+Impact
+- The dominant remaining blocker is now upstream Stage2 extraction, selector,
+  or evidence-handoff completeness rather than downstream willingness to
+  execute without authorization.
+- Future work must not overclaim that non-DOE table-row execution is broadly
+  repaired across DEV15.
+
+### Decision: Register the 2026-04-14 parser/normalization preservation repair as an authorized-case Stage2 execution repair, not an upstream authorization fix (MDEC097)
+
+Decision
+- The `2026-04-14` parser/normalization repair family is recorded as a lawful
+  Stage2 execution-preservation repair for already-authorized non-DOE cases.
+- The primary maintained repair surface is:
+  - `src/stage2_sampling_labels/table_row_expansion_v1.py`
+- This family does not create or infer missing `table_formulation_scopes`.
+
+Reason
+- The campaign validation showed real downstream repair for already-authorized
+  replay cases such as `5GIF3D8W` table-auth replay and `UFXX9WXE`.
+- The same campaign also showed that full-freeze replay failures for
+  `5GIF3D8W` and `WIVUCMYG` remained upstream-blocked by missing non-DOE table
+  authorization scopes.
+
+Impact
+- Future agents may treat this family as engineering-closed at the intended
+  preservation boundary.
+- Future agents must not describe this repair as broad non-DOE authorization
+  closure across DEV15.
+- Stage3 and Stage5 remain out of scope for this repair family.
+
+### Decision: Register the 2026-04-14 S2-4b semantic omission repair as prompt-layer semantic framing, not selector or parser repair (MDEC098)
+
+Decision
+- The `2026-04-14` semantic omission repair family is recorded as a prompt-
+  layer Stage2 repair at `S2-3 -> S2-4a -> S2-4b`.
+- The primary maintained repair surface is:
+  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+- The confirmed repaired paper at the intended boundary is:
+  - `L3H2RS2H`
+
+Reason
+- The campaign localized the earliest failing boundary for the proven case to
+  weak or ambiguous non-DOE table framing at the live LLM boundary, not to
+  selector loss, parser loss, or downstream execution filtering.
+- Bounded validation showed lawful raw non-DOE table authorization appearing
+  for `L3H2RS2H` without DOE regression on the `UFXX9WXE` guard case.
+
+Impact
+- Future agents may treat this family as engineering-closed for the prompt-
+  framing boundary it actually repaired.
+- Future agents must not describe this family as a selector fix, parser fix,
+  Stage3 fix, or Stage5 fix.
+- Paper-level closure for `WFDTQ4VX` depended on separate call-layer
+  persistence hardening and must remain distinguished from this semantic
+  framing repair.
+
+### Decision: Register the 2026-04-14 S2-4b call-layer persistence hardening as maintained live-call durability work, not semantic repair (MDEC099)
+
+Decision
+- The `2026-04-14` call-layer persistence hardening family is recorded as
+  maintained `S2-4b` durability work.
+- The maintained repair surfaces are:
+  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+- This family preserves raw boundary semantics and explicit failure reporting
+  without changing semantic schema or downstream authorization rules.
+
+Reason
+- The campaign proved that `WFDTQ4VX` was blocked by streamed-response
+  collection and persistence behavior rather than by a proven semantic omission
+  after the prompt-layer repair.
+- Post-hardening bounded validation recovered `WFDTQ4VX` and preserved a
+  successful no-regression guard on `L3H2RS2H`.
+
+Impact
+- The maintained `S2-4b` boundary now explicitly records whether a recoverable
+  raw payload was persisted in success or controlled-failure cases.
+- Future agents must classify this family as call-layer engineering, not
+  semantic repair, Stage3 repair, or Stage5 repair.
+- Benchmark consequence from the `2026-04-14` Stage2 repair campaign remains
+  pending until a downstream patched-path compare lineage is present.
+
+### Decision: Add explicit dual-mode identity-freeze compare behavior without weakening benchmark legality (MDEC100)
+
+Decision
+- The maintained Stage5 compare entrypoint now exposes an explicit
+  `--identity-freeze-mode` contract with two modes:
+  - `benchmark`
+  - `debug_identity`
+- `benchmark` remains the default and blocks compare output generation when the
+  identity-freeze summary records any violation.
+- `debug_identity` may continue from the same frozen Stage5 final table after a
+  failed identity freeze, but the resulting compare outputs must be labeled
+  diagnostic-only and must not be reported as benchmark-valid.
+
+Reason
+- Current debugging needs count-compare visibility from patched downstream
+  lineages even when identity freeze remains unresolved.
+- The old hard stop suppressed useful diagnostic comparison surfaces and
+  encouraged ad hoc workarounds outside the maintained compare entrypoint.
+- Benchmark legality must still remain strict and explicit.
+
+Impact
+- Identity freeze remains the hard benchmark-validity boundary.
+- The compare node now supports lawful diagnostic continuation without changing
+  Stage2, Stage3, or Stage5 materialization semantics.
+- Run metadata and compare artifacts must record the explicit compare mode plus
+  benchmark-validity status.
+
+### Decision: Split benchmark-facing primary formulation identity from preserved downstream/post-processing variant records (MDEC101)
+
+Decision
+- The maintained Stage5 benchmark-final builder now owns two governed sibling
+  outputs from the same source-faithful closure pass:
+  - primary benchmark-facing `final_formulation_table_v1.tsv`
+  - linked lower-level `downstream_variant_records_v1.tsv`
+- Downstream/post-processing descendants such as freeze-drying variants,
+  storage-condition variants, re-dispersion variants, assay-condition variants,
+  and measurement-condition variants must not enter the primary benchmark-facing
+  formulation database unless the paper explicitly reports them as independent
+  formulation identities.
+- When Stage5 excludes or collapses those rows out of the primary benchmark
+  database, it must preserve them in the linked lower-level surface rather than
+  silently dropping them.
+
+Reason
+- Earlier governed Stage5 identity work already established the exclusion half
+  of this design through parent-linked non-synthesis descendant suppression and
+  helper-descendant filtering.
+- Historical descendant-filter validations proved the repository repeatedly
+  needed to keep the primary benchmark-facing database clean, but the retained
+  implementation still ended in filtered-away rows instead of a durable
+  preserved lower-level record surface.
+- Recent Stage2 descendant-signal repairs now preserve enough lawful semantic
+  evidence to carry parent linkage, non-synthesis change role, downstream
+  context tags, and downstream variable payloads into a stable lower-level
+  record table.
+
+Impact
+- The benchmark-facing primary formulation database stays one-row-per-primary
+  formulation identity.
+- Excluded downstream/post-processing descendants remain discoverable and
+  auditable through `downstream_variant_records_v1.tsv` with explicit parent
+  linkage and exclusion provenance.
+- This is not a new coarse stage, not a paper-specific heuristic, and not a
+  Stage5 keyword hack; it formalizes previously fragmented Stage5 identity and
+  descendant-governance intent into one canonical maintained contract.
+
+### Decision: Split Stage2 table handling into semantic-facing summary view versus execution-facing full-table authority (MDEC101)
+
+Decision
+- For strong table-bearing papers, especially DOE-style papers, Stage2 must
+  preserve two distinct table surfaces once a formulation-relevant table is
+  detected:
+  - an execution-facing full-table authority surface
+  - a semantic-facing LLM summary or evidence surface
+- The current maintained implementation stores the execution-facing surface at:
+  - `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+  - with additive execution payload members under:
+    `semantic_stage2_objects/normalized_table_payloads/<paper_key>/payloads/*.csv`
+- The current maintained implementation stores the semantic-facing surface at:
+  - `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+- S2-2a owns construction and preservation of the execution-facing full-table
+  authority surface.
+- S2-2b owns role-aware summary or evidence packaging for selector behavior and
+  LLM packaging.
+- S2-3 prompt assembly may consume only the semantic-facing summary or evidence
+  surface.
+- Downstream deterministic execution may resolve from semantic authorization
+  back to the preserved S2-2 full-table authority surface by stable table
+  identity.
+
+Reason
+- The `2026-04-14` DOE recovery investigation showed that semantic
+  authorization alone is insufficient when downstream execution sees only a
+  lossy summary payload.
+- Historical successful DOE recovery depended on access to a lossless or
+  maximally structure-preserving table surface with stable numbering and row
+  order.
+- This is not a rollback of LLM semantic authority.
+- The LLM still owns semantic discovery and authorization, while deterministic
+  execution still owns row materialization.
+- The change is a contract split between semantic-facing and execution-facing
+  table surfaces so that downstream execution no longer depends on a summary
+  view as its only table representation.
+
+Impact
+- Future agents must be able to answer from repo reading alone:
+  - where the execution-grade table authority is stored
+  - which Stage2 substep owns it
+  - what the LLM sees
+  - what deterministic enumerators use
+  - how authorized execution resolves semantic target to execution payload
+- S2-7 and its function units must treat the preserved S2-2 full-table
+  authority surface as the execution source of truth whenever it is available.
+- The engineering principle is now explicit:
+  the LLM sees a semantic-facing summary of a table, while deterministic
+  execution operates on the preserved table entity.
+
+### Decision: Complete the Stage2 table-authority contract for DOE and non-DOE execution inputs (MDEC102)
+
+Decision
+- The maintained S2-2 full-table authority surface remains
+  `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`,
+  but it is now contract-complete for execution use across DOE and non-DOE
+  table families.
+- Each preserved table authority record must now carry:
+  - stable `table_id`
+  - `source_table_reference`
+  - deterministic `table_type`
+  - `row_count`
+  - `has_row_numbering`
+  - `header_structure`
+  - `raw_cells`
+  - execution-facing `normalized_rows`
+  - `row_identity_signals`
+  - `reconstruction_confidence`
+- S2-2 now also writes `analysis/table_authority_validation_v1.tsv` as the
+  maintained observability surface for row-count preservation, duplicate-row
+  detection, and column-collapse detection during authority construction.
+- The semantic-facing summary surface remains
+  `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`,
+  and table-derived summary blocks must carry stable `table_id` plus explicit
+  `summary_is_lossy=true`.
+- DOE and non-DOE deterministic row materialization must now share the same
+  execution contract:
+  semantic target -> stable `table_id` -> preserved S2-2 full-table authority.
+- Stage1 table assets may remain a deterministic reconstruction fallback inside
+  S2-2a only.
+- Once a preserved S2-2 authority surface exists, Stage1 table assets are no
+  longer the downstream execution source of truth.
+
+Reason
+- The earlier contract split (MDEC101) established the semantic-facing versus
+  execution-facing distinction but still left two practical gaps:
+  - the execution-facing authority payload was not fully self-describing for
+    all formulation-relevant table families
+  - the non-DOE row-expansion path still had a code-contract dependency on
+    Stage1 tables rather than the preserved S2-2 authority surface
+- DOE recovery work on `WFDTQ4VX` and mixed-table audits on `UFXX9WXE`
+  confirmed that semantic authorization remains necessary but is not sufficient
+  unless deterministic execution sees an execution-grade preserved table
+  entity.
+- This decision does not weaken LLM semantic authority and does not move row
+  materialization earlier than S2-7.
+
+Impact
+- The repository now defines one unified Stage2 table-handling invariant:
+  the LLM operates on a semantic summary of a table, while deterministic
+  execution operates on the preserved table entity.
+- Future contract violations should be classified under:
+  - `table_payload_degradation`
+  - `enumerator_input_mismatch`
+- Bounded validation must confirm both:
+  - S2-2 preserved authority is execution-grade and self-describing
+  - downstream DOE and non-DOE executors no longer rely on summary-only or
+    direct Stage1 table inputs when authority is available

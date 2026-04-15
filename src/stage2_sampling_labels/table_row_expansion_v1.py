@@ -12,6 +12,7 @@ FUNCTION_UNIT_ID = "table_row_expansion_v1"
 ROW_MATERIALIZATION_MODE = "table_row_expansion_v1"
 RECOVERY_CANDIDATE_SOURCE = "table_row_expansion_v1"
 SCOPE_KIND = "table_formulation_authorization_scope"
+DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
 METHOD_GROUP_SIGNATURE_HINT_FIELD = "method_group_signature_hint"
 
 TABLE_SCOPE_FIELD = "table_formulation_scopes_json"
@@ -43,6 +44,9 @@ INHERITANCE_RISK_REASONS = {
     "missing_target_table",
     "cross_table_link_unresolved",
 }
+REPO_ROOT = Path(__file__).resolve().parents[2]
+NORMALIZED_TABLE_PAYLOADS_SUBDIR = "normalized_table_payloads"
+NORMALIZED_TABLE_PAYLOADS_FILENAME = "normalized_table_payloads_v1.json"
 
 
 def normalize_text(value: Any) -> str:
@@ -53,6 +57,11 @@ def normalize_token(value: Any) -> str:
     text = normalize_text(value).lower()
     text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
     return re.sub(r"_+", "_", text).strip("_")
+
+
+def _normalize_table_label(value: Any) -> str:
+    text = normalize_text(value).lower()
+    return re.sub(r"[^a-z0-9]+", " ", text).strip()
 
 
 def ensure_list(value: Any) -> list[Any]:
@@ -79,6 +88,39 @@ def parse_json_maybe(value: Any) -> Any:
         return json.loads(text)
     except Exception:
         return text
+
+
+def is_llm_first_document(document: dict[str, Any]) -> bool:
+    return normalize_text(document.get("stage2_semantic_source_mode")) == "llm_first_composite"
+
+
+def _resolve_semantic_stage2_root(document: dict[str, Any]) -> Path | None:
+    raw_response_path = normalize_text(document.get("source_raw_response_path"))
+    if raw_response_path:
+        candidate = Path(raw_response_path)
+        if not candidate.is_absolute():
+            candidate = (REPO_ROOT / candidate).resolve()
+        parent = candidate.parent
+        if parent.name == "raw_responses":
+            return parent.parent
+    return None
+
+
+def _load_normalized_table_payloads(document: dict[str, Any]) -> list[dict[str, Any]]:
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    if not document_key:
+        return []
+    semantic_root = _resolve_semantic_stage2_root(document)
+    if semantic_root is None:
+        return []
+    manifest_path = semantic_root / NORMALIZED_TABLE_PAYLOADS_SUBDIR / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+    if not manifest_path.exists():
+        return []
+    try:
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    return [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
 
 
 def source_table_paths(document: dict[str, Any]) -> list[Path]:
@@ -135,9 +177,15 @@ def extract_table_label(table_path: Path, rows: list[list[str]]) -> str:
     return table_path.stem
 
 
-def marker_provenance(marker: dict[str, Any]) -> str:
+def marker_provenance(marker: dict[str, Any], *, document: dict[str, Any] | None = None) -> str:
     provenance = normalize_text(marker.get("marker_provenance"))
-    return provenance if provenance in LLM_MARKER_SOURCES else ""
+    if provenance in LLM_MARKER_SOURCES:
+        return provenance
+    # Backward-compatibility for older llm-first replay payloads that carried
+    # governed table markers without the explicit provenance field.
+    if document and is_llm_first_document(document):
+        return "llm_parsed"
+    return ""
 
 
 def infer_selection_marker_readiness(marker: dict[str, Any]) -> str:
@@ -209,17 +257,28 @@ def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) ->
         "table_id": normalize_text(scope.get("table_id")),
         "table_path": normalize_text(scope.get("table_path")),
         "table_asset_id": normalize_text(scope.get("table_asset_id")),
+        "variable_name": normalize_text(scope.get("variable_name")),
+        "candidate_values": [
+            normalize_text(item)
+            for item in ensure_list(scope.get("candidate_values"))
+            if normalize_text(item)
+        ],
         "is_formulation_table": bool(scope.get("is_formulation_table")),
         "table_type": normalize_text(scope.get("table_type")),
         "confidence": normalize_text(scope.get("confidence")),
         "evidence_span": normalize_text(scope.get("evidence_span")),
-        "marker_provenance": marker_provenance(scope),
+        "marker_provenance": marker_provenance(scope, document=document),
     }
     if not normalized["table_path"]:
-        table_path = resolve_table_path_for_id(normalized["table_id"], document)
-        if table_path is not None:
-            normalized["table_path"] = str(table_path)
-            normalized["table_asset_id"] = normalize_text(normalized["table_asset_id"]) or table_path.stem
+        payload = resolve_table_authority_payload_for_scope(
+            normalized,
+            normalized_payloads=_load_normalized_table_payloads(document),
+        )
+        if payload is not None:
+            normalized["table_path"] = normalize_text(payload.get("normalized_csv_path"))
+            normalized["table_asset_id"] = normalize_text(normalized["table_asset_id"]) or normalize_text(
+                payload.get("source_table_asset_id")
+            )
     return normalized
 
 
@@ -230,18 +289,18 @@ def normalize_variable_role(role: dict[str, Any]) -> dict[str, Any]:
         "constant_variables": [normalize_text(item) for item in ensure_list(role.get("constant_variables")) if normalize_text(item)],
         "new_variables_introduced": [normalize_text(item) for item in ensure_list(role.get("new_variables_introduced")) if normalize_text(item)],
         "variable_source": normalize_text(role.get("variable_source")),
-        "marker_provenance": marker_provenance(role),
+        "marker_provenance": "",
     }
 
 
-def normalize_selection_marker(marker: dict[str, Any]) -> dict[str, Any]:
+def normalize_selection_marker(marker: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
     normalized = {
         "source_table_id": normalize_text(marker.get("source_table_id")),
         "selected_variable": normalize_text(marker.get("selected_variable")),
         "selected_value": normalize_text(marker.get("selected_value")),
         "explicit": bool(marker.get("explicit")),
         "evidence_span": normalize_text(marker.get("evidence_span")),
-        "marker_provenance": marker_provenance(marker),
+        "marker_provenance": marker_provenance(marker, document=document),
         MARKER_READINESS_FIELD: normalize_marker_readiness(marker, family="selection"),
     }
     if normalized[MARKER_READINESS_FIELD] == PARTIAL_SEMANTIC_MARKER:
@@ -250,7 +309,7 @@ def normalize_selection_marker(marker: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
-def normalize_inheritance_marker(marker: dict[str, Any]) -> dict[str, Any]:
+def normalize_inheritance_marker(marker: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
     normalized = {
         "from_table": normalize_text(marker.get("from_table")),
         "to_table": normalize_text(marker.get("to_table")),
@@ -258,7 +317,7 @@ def normalize_inheritance_marker(marker: dict[str, Any]) -> dict[str, Any]:
         "variable": normalize_text(marker.get("variable")),
         "value": normalize_text(marker.get("value")),
         "evidence_span": normalize_text(marker.get("evidence_span")),
-        "marker_provenance": marker_provenance(marker),
+        "marker_provenance": marker_provenance(marker, document=document),
         MARKER_READINESS_FIELD: normalize_marker_readiness(marker, family="inheritance"),
     }
     if normalized[MARKER_READINESS_FIELD] == PARTIAL_SEMANTIC_MARKER:
@@ -267,20 +326,20 @@ def normalize_inheritance_marker(marker: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
-def normalize_preparation_marker(marker: dict[str, Any]) -> dict[str, Any]:
+def normalize_preparation_marker(marker: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
     return {
         "table_id": normalize_text(marker.get("table_id")),
         "inherits_from_preparation": bool(marker.get("inherits_from_preparation")),
         "evidence_span": normalize_text(marker.get("evidence_span")),
-        "marker_provenance": marker_provenance(marker),
+        "marker_provenance": marker_provenance(marker, document=document),
     }
 
 
-def normalize_boundary_marker(marker: dict[str, Any]) -> dict[str, Any]:
+def normalize_boundary_marker(marker: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
     return {
         "table_id": normalize_text(marker.get("table_id")),
         "is_doe": bool(marker.get("is_doe")),
-        "marker_provenance": marker_provenance(marker),
+        "marker_provenance": marker_provenance(marker, document=document),
     }
 
 
@@ -305,6 +364,160 @@ def resolve_table_path_for_id(table_id: str, document: dict[str, Any]) -> Path |
     return None
 
 
+def resolve_table_authority_payload_for_scope(
+    scope: dict[str, Any],
+    *,
+    normalized_payloads: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    wanted_table_id = _normalize_table_label(scope.get("table_id"))
+    wanted_table_path = normalize_text(scope.get("table_path")).replace("\\", "/").lower()
+    wanted_asset_id = normalize_text(scope.get("table_asset_id")).lower()
+    for item in normalized_payloads:
+        payload_table_id = _normalize_table_label(item.get("table_id") or item.get("source_table_id"))
+        payload_source_ref = normalize_text(
+            item.get("source_table_reference") or item.get("source_csv_path")
+        ).replace("\\", "/").lower()
+        payload_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
+        if wanted_table_id and payload_table_id == wanted_table_id:
+            return item
+        if wanted_table_path and payload_source_ref == wanted_table_path:
+            return item
+        if wanted_asset_id and payload_asset_id == wanted_asset_id:
+            return item
+    return None
+
+
+def authority_row_entries(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = [item for item in ensure_list(payload.get("normalized_rows")) if isinstance(item, dict)]
+    if rows:
+        return rows
+    matrix = [row for row in ensure_list(payload.get("normalized_matrix")) if isinstance(row, list)]
+    if not matrix:
+        normalized_csv_path = normalize_text(payload.get("normalized_csv_path"))
+        if normalized_csv_path:
+            csv_path = Path(normalized_csv_path)
+            if not csv_path.is_absolute():
+                csv_path = (REPO_ROOT / csv_path).resolve()
+            if csv_path.exists():
+                matrix = read_csv_rows(csv_path)
+    header_structure = payload.get("header_structure") if isinstance(payload.get("header_structure"), dict) else {}
+    header_row_count = int(header_structure.get("header_row_count") or 0)
+    entries: list[dict[str, Any]] = []
+    for index, row in enumerate(matrix[header_row_count:], start=header_row_count + 1):
+        cells = [normalize_text(cell) for cell in row]
+        entries.append(
+            {
+                "row_index": index,
+                "row_number": "",
+                "cells": cells,
+                "row_text": " | ".join(value for value in cells if value),
+            }
+        )
+    return entries
+
+
+def infer_table_scopes_from_table_anchored_formulations(document: dict[str, Any]) -> list[dict[str, Any]]:
+    if not is_llm_first_document(document):
+        return []
+    if any(isinstance(item, dict) for item in ensure_list(document.get("table_formulation_scopes"))):
+        return []
+
+    evidence_by_id = {
+        normalize_text(item.get("span_id") or item.get("evidence_span_id")): item
+        for item in ensure_list(document.get("evidence_spans"))
+        if isinstance(item, dict) and normalize_text(item.get("span_id") or item.get("evidence_span_id"))
+    }
+    doe_scope_table_refs = {
+        normalize_text(ref)
+        for declaration in ensure_list(document.get("semantic_scope_declarations"))
+        if isinstance(declaration, dict)
+        and normalize_text(declaration.get("scope_kind")) == DOE_SCOPE_KIND
+        for ref in ensure_list(declaration.get("table_scope_refs"))
+        if normalize_text(ref)
+    }
+    doe_scope_table_numbers = {
+        str(int(match.group(1)))
+        for ref in doe_scope_table_refs
+        for match in [re.search(r"\btable\s+(\d+)\b", ref, flags=re.IGNORECASE)]
+        if match
+    }
+    for variable in ensure_list(document.get("variable_candidates")):
+        if not isinstance(variable, dict):
+            continue
+        if normalize_text(variable.get("variable_role")) != "doe_factor":
+            continue
+        for span_id in ensure_list(variable.get("evidence_span_ids")):
+            span = evidence_by_id.get(normalize_text(span_id))
+            if not span:
+                continue
+            locator = normalize_text(span.get("source_locator_text"))
+            match = re.search(r"\btable\s+(\d+)\b", locator, flags=re.IGNORECASE)
+            if match:
+                doe_scope_table_numbers.add(str(int(match.group(1))))
+    table_hits: dict[str, dict[str, Any]] = {}
+    for candidate in ensure_list(document.get("formulation_candidates")):
+        if not isinstance(candidate, dict):
+            continue
+        candidate_id = normalize_text(candidate.get("candidate_id"))
+        if not candidate_id:
+            continue
+        for span_id in ensure_list(candidate.get("evidence_span_ids")):
+            span = evidence_by_id.get(normalize_text(span_id))
+            if not span:
+                continue
+            region = normalize_text(span.get("source_region_type")).lower()
+            locator = normalize_text(span.get("source_locator_text"))
+            if region not in {"table_row", "table_cell"}:
+                continue
+            match = re.search(r"\btable\s+(\d+)\b", locator, flags=re.IGNORECASE)
+            if not match:
+                continue
+            table_number = str(int(match.group(1)))
+            table_id = f"Table {table_number}"
+            if (
+                table_id in doe_scope_table_refs
+                or locator in doe_scope_table_refs
+                or table_number in doe_scope_table_numbers
+            ):
+                continue
+            bucket = table_hits.setdefault(
+                table_id,
+                {
+                    "candidate_ids": set(),
+                    "evidence_span": normalize_text(span.get("supporting_text")) or locator,
+                },
+            )
+            bucket["candidate_ids"].add(candidate_id)
+
+    inferred: list[dict[str, Any]] = []
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    next_index = 1
+    for table_id in sorted(table_hits):
+        candidate_ids = table_hits[table_id]["candidate_ids"]
+        if len(candidate_ids) < 2:
+            continue
+        table_path = resolve_table_path_for_id(table_id, document)
+        if table_path is None:
+            continue
+        inferred.append(
+            {
+                "scope_id": f"{document_key}__table_formulation_scope__{next_index:02d}",
+                "table_id": table_id,
+                "table_path": str(table_path),
+                "table_asset_id": table_path.stem,
+                "variable_name": "",
+                "candidate_values": [],
+                "is_formulation_table": True,
+                "table_type": "full_formulation",
+                "confidence": "medium",
+                "evidence_span": table_hits[table_id]["evidence_span"],
+                "marker_provenance": "llm_parsed",
+            }
+        )
+        next_index += 1
+    return inferred
+
+
 def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, Any]:
     table_scopes = [
         normalize_table_scope(item, document=document)
@@ -316,26 +529,55 @@ def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, A
         for item in ensure_list(document.get("table_variable_roles"))
         if isinstance(item, dict)
     ]
+    for role in table_roles:
+        role["marker_provenance"] = marker_provenance(role, document=document)
     selection_markers = [
-        normalize_selection_marker(item)
+        normalize_selection_marker(item, document=document)
         for item in ensure_list(document.get("selection_markers"))
         if isinstance(item, dict)
     ]
     inheritance_markers = [
-        normalize_inheritance_marker(item)
+        normalize_inheritance_marker(item, document=document)
         for item in ensure_list(document.get("inheritance_markers"))
         if isinstance(item, dict)
     ]
     preparation_markers = [
-        normalize_preparation_marker(item)
+        normalize_preparation_marker(item, document=document)
         for item in ensure_list(document.get("preparation_inheritance_markers"))
         if isinstance(item, dict)
     ]
     boundary_markers = [
-        normalize_boundary_marker(item)
+        normalize_boundary_marker(item, document=document)
         for item in ensure_list(document.get("boundary_markers"))
         if isinstance(item, dict)
     ]
+    if not table_scopes:
+        inferred_scopes = [
+            normalize_table_scope(item, document=document)
+            for item in infer_table_scopes_from_table_anchored_formulations(document)
+        ]
+        if inferred_scopes:
+            table_scopes = inferred_scopes
+            known_boundaries = {
+                normalize_text(item.get("table_id"))
+                for item in boundary_markers
+                if isinstance(item, dict) and normalize_text(item.get("table_id"))
+            }
+            for scope in inferred_scopes:
+                table_id = normalize_text(scope.get("table_id"))
+                if not table_id or table_id in known_boundaries:
+                    continue
+                boundary_markers.append(
+                    normalize_boundary_marker(
+                        {
+                            "table_id": table_id,
+                            "is_doe": False,
+                            "marker_provenance": "llm_parsed",
+                        },
+                        document=document,
+                    )
+                )
+                known_boundaries.add(table_id)
 
     document["table_formulation_scopes"] = table_scopes
     document["table_variable_roles"] = table_roles
@@ -387,18 +629,68 @@ def _extract_row_assignments(table_path: Path, candidate_values: list[str]) -> l
     return assignments
 
 
-def candidate_values_for_variable(document: dict[str, Any], variable_name: str) -> list[str]:
+def _extract_row_assignments_from_authority(
+    row_entries: list[dict[str, Any]],
+    candidate_values: list[str],
+) -> list[dict[str, str]]:
+    assignments: list[dict[str, str]] = []
+    seen_values: set[str] = set()
+    for entry in row_entries:
+        if not isinstance(entry, dict):
+            continue
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells")) if normalize_text(cell)]
+        row_text = normalize_text(entry.get("row_text")) or " ".join(cells)
+        normalized_row_text = normalize_token(row_text)
+        if not normalized_row_text or "note:" in row_text.lower():
+            continue
+        matched_value = ""
+        for value in candidate_values:
+            if text_matches_value(row_text, value):
+                matched_value = value
+                break
+        if not matched_value:
+            continue
+        value_key = normalize_token(matched_value)
+        if value_key in seen_values:
+            continue
+        seen_values.add(value_key)
+        row_ordinal = normalize_text(entry.get("row_number")) or normalize_text(entry.get("row_index"))
+        assignments.append(
+            {
+                "row_ordinal": row_ordinal or str(len(assignments) + 1),
+                "variable_value": matched_value,
+                "row_text": row_text,
+            }
+        )
+    return assignments
+
+
+def candidate_values_for_variable(document: dict[str, Any], variable_name: str, *, scope: dict[str, Any] | None = None) -> list[str]:
     wanted = normalize_text(variable_name)
     if not wanted:
         return []
-    for variable in ensure_list(document.get("variable_candidates")):
+    variable_records = ensure_list(document.get("variable_candidates")) or ensure_list(
+        document.get("variable_or_factor_candidates")
+    )
+    for variable in variable_records:
         if not isinstance(variable, dict):
             continue
-        if normalize_text(variable.get("variable_name")) != wanted:
+        variable_name_raw = normalize_text(variable.get("variable_name") or variable.get("factor_name_raw"))
+        if variable_name_raw != wanted:
             continue
-        values = parse_candidate_values(normalize_text(variable.get("value_text")))
+        values = parse_candidate_values(
+            normalize_text(variable.get("value_text") or variable.get("factor_expression_raw"))
+        )
         if values:
             return values
+    if scope:
+        scoped_values = [
+            normalize_text(item)
+            for item in ensure_list(scope.get("candidate_values"))
+            if normalize_text(item)
+        ]
+        if scoped_values:
+            return scoped_values
     return []
 
 
@@ -428,12 +720,33 @@ def run_table_row_expansion(
     inheritance_markers = execution_ready_markers(
         [item for item in ensure_list(document.get("inheritance_markers")) if isinstance(item, dict)]
     )
+    normalized_payloads = _load_normalized_table_payloads(document)
     rows: list[dict[str, str]] = []
     traces: list[dict[str, str]] = []
     jsonl_rows: list[dict[str, Any]] = []
     table_row_count = 0
     group_hint = f"{document_key}__table_formulation_group__01"
     table_activation_rows: list[dict[str, str]] = []
+    if not scopes and normalized_payloads:
+        table_activation_rows.append(
+            {
+                "function_unit": FUNCTION_UNIT_ID,
+                "document_key": document_key,
+                "table_id": "",
+                "scope_id": "",
+                "table_type": "",
+                "marker_provenance": "",
+                "considered": "yes",
+                "authorized": "no",
+                "called": "no",
+                "rows_emitted": "0",
+                "rows_retained_after_projection": "0",
+                "skip_reason": "missing_table_formulation_scopes",
+                "table_path": "",
+                "varying_variable_count": "0",
+                "varying_variables": "",
+            }
+        )
 
     for scope in scopes:
         table_id = normalize_text(scope.get("table_id"))
@@ -471,24 +784,23 @@ def run_table_row_expansion(
             activation_row["skip_reason"] = "blocked_by_doe_boundary"
             table_activation_rows.append(activation_row)
             continue
-        table_path_text = normalize_text(scope.get("table_path"))
-        if not table_path_text:
-            resolved_path = resolve_table_path_for_id(table_id, document)
-            if resolved_path is not None:
-                table_path_text = str(resolved_path)
-                scope["table_path"] = table_path_text
-                activation_row["table_path"] = table_path_text
-        if not table_path_text:
+        authority_payload = resolve_table_authority_payload_for_scope(
+            scope,
+            normalized_payloads=normalized_payloads,
+        )
+        if authority_payload is None:
             activation_row["authorized"] = "yes"
-            activation_row["skip_reason"] = "missing_table_path"
+            activation_row["skip_reason"] = "missing_table_authority_payload"
             table_activation_rows.append(activation_row)
             continue
-        table_path = Path(table_path_text)
-        if not table_path.exists():
-            activation_row["authorized"] = "yes"
-            activation_row["skip_reason"] = "table_path_not_found"
-            table_activation_rows.append(activation_row)
-            continue
+        authority_table_id = normalize_text(authority_payload.get("table_id") or authority_payload.get("source_table_id"))
+        authority_table_path = normalize_text(authority_payload.get("normalized_csv_path"))
+        scope["table_path"] = authority_table_path
+        if authority_table_id:
+            scope["table_id"] = authority_table_id
+            table_id = authority_table_id
+            activation_row["table_id"] = authority_table_id
+        activation_row["table_path"] = authority_table_path
         role_info = variable_roles.get(table_id, {})
         if marker_provenance(role_info) not in LLM_MARKER_SOURCES:
             activation_row["authorized"] = "yes"
@@ -505,12 +817,15 @@ def run_table_row_expansion(
             table_activation_rows.append(activation_row)
             continue
         varying_variable = varying_variables[0]
-        candidate_values = candidate_values_for_variable(document, varying_variable)
+        candidate_values = candidate_values_for_variable(document, varying_variable, scope=scope)
         if not candidate_values:
             activation_row["skip_reason"] = "missing_candidate_values"
             table_activation_rows.append(activation_row)
             continue
-        assignment_rows = _extract_row_assignments(table_path, candidate_values)
+        assignment_rows = _extract_row_assignments_from_authority(
+            authority_row_entries(authority_payload),
+            candidate_values,
+        )
         scope_id = normalize_text(scope.get("scope_id"))
         if not scope_id:
             scope_id = f"{document_key}__table_formulation_scope__{normalize_token(table_id)}"
@@ -618,7 +933,7 @@ def run_table_row_expansion(
     summary = {
         "function_unit": FUNCTION_UNIT_ID,
         "document_key": document_key,
-        "considered": bool(scopes),
+        "considered": bool(scopes or source_table_paths(document)),
         "authorized": any(row.get("authorized") == "yes" for row in table_activation_rows),
         "called": any(row.get("called") == "yes" for row in table_activation_rows),
         "emitted_row_count": table_row_count,

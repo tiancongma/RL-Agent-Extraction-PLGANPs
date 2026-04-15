@@ -24,7 +24,7 @@ from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse imp
 )
 from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
     PaperRecord,
-    enumerate_numbered_doe_candidates_for_paper,
+    enumerate_numbered_doe_candidates_for_explicit_tables,
 )
 
 
@@ -39,6 +39,8 @@ DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
 FUNCTION_UNIT_ID = "doe_row_expansion_function_unit_v1"
 ROW_MATERIALIZATION_MODE = "deterministic_row_expansion_within_llm_scope"
 RECOVERY_CANDIDATE_SOURCE = "doe_numbered_table_row_recovery"
+NORMALIZED_TABLE_PAYLOADS_SUBDIR = "normalized_table_payloads"
+NORMALIZED_TABLE_PAYLOADS_FILENAME = "normalized_table_payloads_v1.json"
 
 
 def normalize_text(value: Any) -> str:
@@ -114,6 +116,154 @@ def resolve_document_text_path(document: dict[str, Any]) -> Path | None:
     if not path.is_absolute():
         path = (REPO_ROOT / path).resolve()
     return path
+
+
+def _normalize_table_label(value: Any) -> str:
+    text = normalize_text(value).lower()
+    return re.sub(r"[^a-z0-9]+", " ", text).strip()
+
+
+def _table_scope_records(document: dict[str, Any]) -> list[dict[str, Any]]:
+    return [item for item in ensure_list(document.get("table_formulation_scopes")) if isinstance(item, dict)]
+
+
+def _boundary_marker_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    markers: dict[str, dict[str, Any]] = {}
+    for marker in ensure_list(document.get("boundary_markers")):
+        if not isinstance(marker, dict):
+            continue
+        table_id = normalize_text(marker.get("table_id"))
+        if not table_id:
+            continue
+        markers[_normalize_table_label(table_id)] = marker
+    return markers
+
+
+def _variable_role_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    roles: dict[str, dict[str, Any]] = {}
+    for role in ensure_list(document.get("table_variable_roles")):
+        if not isinstance(role, dict):
+            continue
+        table_id = normalize_text(role.get("table_id"))
+        if not table_id:
+            continue
+        roles[_normalize_table_label(table_id)] = role
+    return roles
+
+
+def _resolve_semantic_stage2_root(document: dict[str, Any]) -> Path | None:
+    raw_response_path = normalize_text(document.get("source_raw_response_path"))
+    if raw_response_path:
+        candidate = Path(raw_response_path)
+        if not candidate.is_absolute():
+            candidate = (REPO_ROOT / candidate).resolve()
+        parent = candidate.parent
+        if parent.name == "raw_responses":
+            return parent.parent
+    return None
+
+
+def _load_normalized_table_payloads(document: dict[str, Any]) -> list[dict[str, Any]]:
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    if not document_key:
+        return []
+    semantic_root = _resolve_semantic_stage2_root(document)
+    if semantic_root is None:
+        return []
+    manifest_path = semantic_root / NORMALIZED_TABLE_PAYLOADS_SUBDIR / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+    if not manifest_path.exists():
+        return []
+    try:
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    return [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
+
+
+def _resolve_normalized_payload_for_scope(
+    *,
+    matching_scope: dict[str, Any],
+    normalized_payloads: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    wanted_table_path = normalize_text(matching_scope.get("table_path")).replace("\\", "/").lower()
+    wanted_asset_id = normalize_text(matching_scope.get("table_asset_id")).lower()
+    wanted_table_id = _normalize_table_label(matching_scope.get("table_id"))
+    for item in normalized_payloads:
+        source_csv_path = normalize_text(item.get("source_csv_path")).replace("\\", "/").lower()
+        source_table_id = _normalize_table_label(item.get("source_table_id"))
+        source_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
+        if wanted_table_path and source_csv_path == wanted_table_path:
+            return item
+        if wanted_asset_id and source_asset_id == wanted_asset_id:
+            return item
+        if wanted_table_id and source_table_id == wanted_table_id:
+            return item
+    return None
+
+
+def resolve_authorized_doe_targets(
+    document: dict[str, Any],
+    semantic_scope: dict[str, Any],
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    carrier_refs = [normalize_text(item) for item in ensure_list(semantic_scope.get("table_scope_refs")) if normalize_text(item)]
+    boundary_map = _boundary_marker_map(document)
+    variable_role_map = _variable_role_map(document)
+    normalized_scopes = _table_scope_records(document)
+    normalized_payloads = _load_normalized_table_payloads(document)
+    targets: list[dict[str, Any]] = []
+    unresolved_refs: list[str] = []
+    for ref in carrier_refs:
+        wanted = _normalize_table_label(ref)
+        matching_scope = None
+        for scope in normalized_scopes:
+            if _normalize_table_label(scope.get("table_id")) == wanted:
+                matching_scope = scope
+                break
+        if matching_scope is None:
+            unresolved_refs.append(ref)
+            continue
+        boundary = boundary_map.get(wanted)
+        if boundary is None or not bool(boundary.get("is_doe")):
+            unresolved_refs.append(ref)
+            continue
+        table_asset_id = normalize_text(matching_scope.get("table_asset_id"))
+        if not table_asset_id and not normalize_text(matching_scope.get("table_id")):
+            unresolved_refs.append(ref)
+            continue
+        normalized_payload = _resolve_normalized_payload_for_scope(
+            matching_scope=matching_scope,
+            normalized_payloads=normalized_payloads,
+        )
+        normalized_csv_path = normalize_text(normalized_payload.get("normalized_csv_path")) if normalized_payload else ""
+        if not normalized_payload or not normalized_csv_path:
+            unresolved_refs.append(ref)
+            continue
+        execution_table_path = normalized_csv_path
+        targets.append(
+            {
+                "table_id": normalize_text(matching_scope.get("table_id")) or ref,
+                "table_path": execution_table_path,
+                "source_table_path": normalize_text(matching_scope.get("table_path")),
+                "table_asset_id": table_asset_id,
+                "table_type": normalize_text(matching_scope.get("table_type")),
+                "evidence_span": normalize_text(matching_scope.get("evidence_span")),
+                "scope_id": normalize_text(matching_scope.get("scope_id")),
+                "variable_role_present": "yes" if wanted in variable_role_map else "no",
+                "normalized_payload_path": normalized_csv_path,
+                "normalized_payload_used": "yes" if normalized_csv_path else "no",
+            }
+        )
+    binding = {
+        "authorized_target_carrier": "|".join(carrier_refs),
+        "resolved_execution_target": "|".join(
+            f"{normalize_text(item.get('table_id'))}:{normalize_text(item.get('table_path')) or normalize_text(item.get('table_asset_id'))}"
+            for item in targets
+        ),
+        "binding_success": bool(targets),
+        "unresolved_authorized_target_refs": "|".join(unresolved_refs),
+        "normalized_payload_used": "yes" if any(normalize_text(item.get("normalized_payload_used")) == "yes" for item in targets) else "no",
+    }
+    return targets, binding
 
 
 def build_existing_forms_for_recovery(document: dict[str, Any]) -> list[dict[str, Any]]:
@@ -276,6 +426,34 @@ def run_doe_row_expansion_function_unit(
             "tables_dir": "",
             "notes": "missing_llm_declared_doe_scope",
         }
+    authorized_targets, binding = resolve_authorized_doe_targets(document, semantic_scope)
+    if not authorized_targets:
+        notes = "authorized_target_unresolved"
+        if binding["unresolved_authorized_target_refs"]:
+            notes = f"{notes}:{binding['unresolved_authorized_target_refs']}"
+        return [], [], [], {
+            "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "considered": True,
+            "authorized": True,
+            "called": False,
+            "emitted_row_count": 0,
+            "retained_row_count": 0,
+            "skip_reason": "authorized_target_unresolved",
+            "enabled": True,
+            "mode": doe_enumeration_mode(),
+            "candidate_count": 0,
+            "row_count": 0,
+            "table_count": 0,
+            "tables_dir": "",
+            "semantic_scope_ref": normalize_text(semantic_scope.get("scope_id")) or f"{document_key}__llm_declared_doe_scope__01",
+            "authorized_target_carrier": binding["authorized_target_carrier"],
+            "resolved_execution_target": "",
+            "binding_success": "no",
+            "doe_expansion_attempted": "no",
+            "normalized_payload_used": "no",
+            "notes": notes,
+        }
 
     text_path = resolve_document_text_path(document)
     raw_text = ""
@@ -292,9 +470,10 @@ def run_doe_row_expansion_function_unit(
         title=normalize_text(document.get("title")),
         text_path=text_path,
     )
-    emitted_forms, artifact_rows, summary = enumerate_numbered_doe_candidates_for_paper(
+    emitted_forms, artifact_rows, summary = enumerate_numbered_doe_candidates_for_explicit_tables(
         paper=paper,
         raw_text=raw_text,
+        explicit_targets=authorized_targets,
         existing_forms=build_existing_forms_for_recovery(document),
         min_numbered_rows=numbered_doe_recovery_min_rows(),
     )
@@ -358,9 +537,19 @@ def run_doe_row_expansion_function_unit(
             "table_count": int(recovery_summary.get("selected_table_count", 0) or 0),
             "tables_dir": normalize_text(recovery_summary.get("tables_dir")),
             "semantic_scope_ref": scope_ref,
+            "authorized_target_carrier": binding["authorized_target_carrier"],
+            "resolved_execution_target": binding["resolved_execution_target"],
+            "binding_success": "yes" if binding["binding_success"] else "no",
+            "doe_expansion_attempted": "yes",
+            "normalized_payload_used": binding["normalized_payload_used"],
             "text_mode": text_mode,
         }
     )
+    if not rows:
+        recovery_summary["notes"] = (
+            f"{normalize_text(recovery_summary.get('notes'))} "
+            f"Authorized binding succeeded against {binding['resolved_execution_target']} but no rows were emitted."
+        ).strip()
     return rows, traces, jsonl_rows, recovery_summary
 
 

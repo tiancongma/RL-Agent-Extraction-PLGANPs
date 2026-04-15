@@ -51,6 +51,18 @@ They must not choose scripts by name similarity, recency, or convenience, and
 they must not auto-select legacy, deprecated, wrapper-only, or diagnostic
 scripts unless the user explicitly requests them.
 
+When the repo-local MCP server `repo-mcp` is available, Codex must use it
+before making repository-governed execution decisions:
+
+- call `resolve_active_run_source` before results-based benchmark, alignment,
+  comparison, workbook, or audit work
+- call `check_script_selection_legality` before choosing an execution-facing
+  script
+- call `validate_new_file_path` before creating a new file
+- call `get_authoritative_gt` before GT-consuming work
+- call `check_lawful_resume_boundary` before reusing an intermediate artifact
+  as a downstream resume boundary
+
 ---
 
 # 2. Governance layer rule

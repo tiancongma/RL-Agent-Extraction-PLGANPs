@@ -92,19 +92,26 @@ inside those coarse stages; it does not introduce new runtime namespaces.
     the current Stage2 execution.
 - `S2-2 Evidence construction`
   - the first engineering freeze point in Stage2.
-  - output:
+  - outputs:
+    `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+    and
     `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
-  - this boundary may include candidate segmentation and selector work inside
-    S2-2, but prompt assembly must consume the persisted evidence artifact
-    rather than rereading clean text.
+  - this boundary may include candidate segmentation, full-table authority
+    preservation, and selector work inside S2-2, but prompt assembly must
+    consume the persisted semantic-facing evidence artifact rather than
+    rereading clean text.
 - `S2-2a Candidate segmentation`
-  - candidate discovery and structure recovery only.
+  - candidate discovery, structure recovery, and execution-grade full-table
+    authority preservation only.
 - `S2-2b Selector evidence prioritization`
-  - deterministic role-aware evidence selection over frozen candidate blocks.
+  - deterministic role-aware semantic-facing evidence selection over frozen
+    candidate blocks and preserved table authority.
 - `S2-3 Prompt assembly`
   - assemble prompt inputs from `evidence_blocks_v1.json` only.
   - must not reread clean text, rescore candidates, or perform new selection or
     ranking.
+  - the LLM may see a lossy or role-shaped summary of a table here, but this
+    surface must never become the sole execution source of truth.
 - `S2-4a Prompt construction freeze boundary`
   - optional frozen local boundary that materializes prompt artifacts from the
     canonical S2-3 evidence handoff and stops before the live LLM call.
@@ -149,7 +156,12 @@ inside those coarse stages; it does not introduce new runtime namespaces.
     donor-fill, assumption-based inference, and modeling-target-specific
     projection do not belong to the benchmark-final family.
 - `S5-3 Final table`
-  - emit the final formulation table and its decision trace.
+  - emit the primary benchmark-facing final formulation table and its decision
+    trace.
+  - when Stage5 excludes or collapses downstream/post-processing descendants
+    that do not define independent benchmark-facing formulation identity,
+    preserve them in a governed linked lower-level record surface rather than
+    silently dropping them.
   - this benchmark-final object is the only GT-compared Stage5 artifact.
   - downstream Stage5 helpers may derive modeling-ready or reviewer-facing
     surfaces from the frozen final table, but they must not redefine the
@@ -250,6 +262,12 @@ boundary:
     selector -> governed evidence package
 - candidate-segmentation artifact:
   `data/results/run_<run_id>/semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
+- execution-grade full-table authority artifact:
+  `data/results/run_<run_id>/semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+- execution payload members:
+  `data/results/run_<run_id>/semantic_stage2_objects/normalized_table_payloads/<paper_key>/payloads/*.csv`
+- authority validation artifact:
+  `data/results/run_<run_id>/analysis/table_authority_validation_v1.tsv`
 - canonical artifact:
   `data/results/run_<run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 - producer:
@@ -257,14 +275,52 @@ boundary:
 - consumer:
   the same maintained extractor's role-aware selector consumes the persisted
   candidate surface and then the prompt-assembly path consumes the canonical
-  evidence artifact before live LLM calls or replay normalization
+  evidence artifact before live LLM calls or replay normalization; downstream
+  deterministic execution may resolve back to the preserved S2-2 full-table
+  authority surface by stable table identity
 - candidate responsibility rule:
   candidate segmentation performs structure recovery, candidate generation,
   conservative table isolation, and conservative high-confidence noise
   filtering only
+- full-table authority rule:
+  when a formulation-relevant table is detected, S2-2 must preserve an
+  execution-grade table surface that is lossless or maximally
+  structure-preserving relative to the best available Stage1 table asset
+- full-table preservation rule:
+  the preserved execution-facing table surface must retain row numbering, row
+  order, column structure, header hierarchy when available, and table-local
+  identifiers when available
+- authority storage rule:
+  the execution-facing table surface must be stored in S2-2 and must remain
+  bound to the selected table identity rather than being rebuilt ad hoc
+  downstream
+- authority schema rule:
+  each preserved table authority record must carry stable `table_id`,
+  `source_table_reference`, deterministic `table_type`, `row_count`,
+  `has_row_numbering`, `header_structure`, `raw_cells`, execution-facing
+  `normalized_rows`, `row_identity_signals`, and `reconstruction_confidence`
 - selector responsibility rule:
-  selector prioritizes and retains evidence from candidate blocks; it does not
-  own structure recovery anymore
+  selector prioritizes and retains semantic-facing evidence from candidate
+  blocks; it does not own lossless table preservation anymore
+- semantic-facing summary rule:
+  `evidence_blocks_v1.json` is the maintained semantic-facing summary or
+  evidence surface for selector behavior, prompt assembly, and LLM semantic
+  authorization
+- summary observability rule:
+  table-derived summary blocks must carry stable `table_id` and explicit
+  `summary_is_lossy=true`
+- execution-facing authority rule:
+  `normalized_table_payloads_v1.json` is the maintained execution-facing
+  full-table authority surface for downstream deterministic table execution
+- execution-input rule:
+  DOE and non-DOE deterministic table row materialization must resolve
+  semantic target -> stable `table_id` -> preserved S2-2 full-table authority
+  surface; Stage1 table assets may remain a reconstruction fallback inside
+  S2-2a only and must not remain the downstream execution source of truth
+- table-surface principle:
+  the LLM sees a semantic-facing summary of a table, while deterministic
+  execution operates on the preserved table entity bound to the same stable
+  table identity
 - observability rule:
   `analysis/stage2_prompt_preview_v1.tsv` is derived from the canonical S2-2
   artifact and is not the primary truth surface
@@ -313,7 +369,13 @@ boundary:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
     - outputs:
       `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
-      and `analysis/candidate_segmentation_debug_v1.tsv`
+      `semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+      `semantic_stage2_objects/normalized_table_payloads/<paper_key>/payloads/*.csv`
+      `analysis/candidate_segmentation_debug_v1.tsv`
+      and `analysis/table_authority_validation_v1.tsv`
+    - stop boundary:
+      candidate segmentation and execution-grade table preservation only; no
+      semantic role packaging and no row materialization
     - next lawful step:
       `S2-2b`
   - `S2-2b`
@@ -323,6 +385,9 @@ boundary:
     - outputs:
       `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
       and `analysis/table_selection_debug_v1.json`
+    - stop boundary:
+      semantic-facing evidence handoff written; execution-facing full-table
+      authority remains preserved from S2-2a
     - next lawful step:
       `S2-3`
   - `S2-3`
@@ -413,6 +478,35 @@ boundary:
 - direct comparison of raw semantic objects to formulation-level GT is
   diagnostic only when the deterministic completion substep has not been
   applied
+- deterministic execution ownership after Stage2 decomposition must remain
+  provable from run artifacts rather than inferred from code presence or
+  registry presence alone
+- silent non-activation of governed deterministic execution units is an
+  architecture failure when the semantic authorization signal is present
+
+### Current Functional-Unit Execution Status
+
+- The intended active contract remains:
+  - LLM semantic discovery and authorization
+  - deterministic function units for governed execution
+- The DEV15 decomposition-era audit established a real architecture failure:
+  semantic signals could exist while governed deterministic function units were
+  not reliably taking control of execution on the mainline.
+- In the failed DEV15 lineage, sequential optimization behavior remained
+  active, while DOE and non-DOE table-row execution were not yet provably
+  reliable on-path across the same governed lineage.
+- The DOE execution path is now restored on the mainline for the confirmed
+  `UFXX9WXE` repair case:
+  - `data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix`
+  - governed DOE function-unit activation emitted `26` deterministic rows
+- Non-DOE table-row execution has partial downstream repair only:
+  - rule and unit-level execution issues improved observability and restored
+    already-authorized cases
+  - broader DEV15 coverage remains upstream-blocked when
+    `table_formulation_scopes` are missing from the Stage2 evidence handoff
+- This means the dominant remaining limitation is now upstream Stage2
+  extraction, selector, or evidence-handoff completeness rather than a claim
+  that deterministic execution no longer matters.
 
 ### Current Clarification On Stage2 Contract Pressure
 
@@ -491,6 +585,25 @@ Non-change statement:
 
 ### Stage2 Internal Pre-LLM Evidence Artifact
 `data/results/run_<run_id>/semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
+
+### Stage2 Internal Full-Table Authority Artifact
+`data/results/run_<run_id>/semantic_stage2_objects/normalized_table_payloads/<paper_key>/normalized_table_payloads_v1.json`
+
+Contract note:
+- this is the current maintained implementation of the Stage2 full-table
+  authority surface
+- it is execution-facing, not prompt-facing
+- it must preserve table identity and execution-grade structure for downstream
+  authorized deterministic row materialization
+- it now records stable `table_id`, `source_table_reference`, deterministic
+  `table_type`, `row_count`, `has_row_numbering`, `header_structure`,
+  `raw_cells`, execution-facing `normalized_rows`, `row_identity_signals`,
+  and `reconstruction_confidence`
+- the colocated `payloads/*.csv` files are additive execution payload members
+  referenced by the JSON artifact and are not an ad hoc downstream rebuild
+- DOE and non-DOE deterministic table execution must resolve through this
+  preserved authority surface rather than using the semantic-facing summary
+  view as the execution input
 
 ### Stage2 Authoritative Completion Artifact
 `data/results/run_<run_id>/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
@@ -571,18 +684,57 @@ formulation records and compare only those final records to GT.
 Stage 5 is the only benchmark-valid reporting layer. Earlier stages may produce
 diagnostic comparisons, but they are not the official system result.
 
+Benchmark-validity clarification:
+
+- Stage5 final-table generation is necessary but not sufficient for
+  benchmark-valid reporting.
+- Benchmark legality additionally requires:
+  - identity-freeze pass
+  - the separate GT compare node
+- The full DEV15 run
+  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
+  reached Stage5 final-table materialization but failed the mandatory
+  identity-freeze gate and therefore did not produce legal benchmark-valid GT
+  compare or modeling-ready continuation outputs.
+- The governed repair lineage has localized the failure classes as:
+  - row count drift
+  - identity reassignment
+  - unresolved scaffold binding
+- Scaffold-binding and representation repair work are part of the governed
+  follow-on repair lineage, but they do not by themselves prove that a lawful
+  full-pipeline benchmark run now passes the hard identity-freeze gate.
+
 ### Internal Stage5 Families
 
 - Benchmark-final family
   - canonical object:
     `final_formulation_table_v1.tsv`
+  - linked lower-level preserved record surface:
+    `downstream_variant_records_v1.tsv`
   - maintained entrypoints:
     `src/stage5_benchmark/build_minimal_final_output_v1.py`
     `src/stage5_benchmark/enforce_identity_freeze_v1.py`
     `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
   - role:
     source-faithful final closure, identity-preserving filtering, explicit
-    Stage3-resolved field carry-through, hard identity freeze, and GT compare
+    Stage3-resolved field carry-through, preservation of excluded
+    downstream/post-processing descendant records in a linked lower-level
+    surface, hard identity freeze, and GT compare
+  - legality rule:
+    `final_formulation_table_v1.tsv` becomes benchmark-valid only after the
+    mandatory identity-freeze contract passes; final-table materialization
+    alone does not legalize downstream compare, reviewer export, or
+    modeling-ready surfaces
+  - primary identity rule:
+    benchmark-facing formulation identity is one row per independently
+    reported formulation identity; downstream/post-processing descendants do
+    not join the primary final table unless the paper explicitly reports them
+    as independent formulation identities
+  - lower-level preservation rule:
+    excluded downstream/post-processing descendants must remain visible in the
+    linked `downstream_variant_records_v1.tsv` surface with parent linkage,
+    change-role semantics, downstream variable payloads, and exclusion
+    provenance
   - benchmark-final must not:
     replace paper-reported values with convenience-normalized values, perform
     donor-fill, perform assumption-based inference, or change formulation

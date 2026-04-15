@@ -54,6 +54,7 @@ from src.utils.paths import DATA_CLEANED_DIR, DATA_RESULTS_DIR
 from src.utils.run_id import validate_artifact_subdir
 
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 ARTIFACT_NAME = "numbered_doe_row_candidates_v1.tsv"
 SUMMARY_NAME = "numbered_doe_row_candidates_summary_v1.tsv"
 VALID_RUN_TYPES = {
@@ -291,6 +292,47 @@ def select_candidate_tables(tables_dir: Path, min_numbered_rows: int) -> list[di
         )
     selected.sort(key=lambda item: (str(item["csv_path"]).lower(), item["page_number"]))
     return selected
+
+
+def explicit_table_candidate(
+    *,
+    csv_path: Path,
+    min_numbered_rows: int,
+    table_id: str = "",
+    caption_or_title: str = "",
+    source_type: str = "semantic_authorized_table_target",
+) -> dict[str, Any] | None:
+    if not csv_path.is_absolute():
+        csv_path = (REPO_ROOT / csv_path).resolve()
+    if not csv_path.exists():
+        return None
+    rows = read_table_rows(csv_path)
+    numbered_idx = first_numbered_row_index(rows)
+    if numbered_idx is None:
+        return None
+    numbered_rows: list[list[str]] = []
+    for row in rows[numbered_idx:]:
+        if row_is_numbered(row) is None:
+            continue
+        if count_numeric_like_cells(row[1:]) < 3:
+            continue
+        numbered_rows.append(row)
+    if len(numbered_rows) < min_numbered_rows:
+        return None
+    header_row = combine_header_rows(rows, numbered_idx)
+    keyword_score = table_keyword_score(header_row, rows[:numbered_idx])
+    if keyword_score < 2 and source_type != "semantic_authorized_table_target":
+        return None
+    return {
+        "csv_path": csv_path,
+        "page_number": "",
+        "source_type": source_type,
+        "caption_or_title": normalize_text(caption_or_title),
+        "rows": rows,
+        "header_row": header_row,
+        "numbered_rows": numbered_rows,
+        "semantic_table_id": normalize_text(table_id),
+    }
 
 
 def infer_drug_name(title: str, raw_text: str) -> str:
@@ -584,6 +626,92 @@ def enumerate_numbered_doe_candidates_for_paper(
         "new_candidates_emitted": str(len(emitted_forms)),
         "regression_status": "ok" if emitted_forms else "no_new_candidates",
         "notes": "Explicit numbered DOE table rows were enumerated deterministically." if emitted_forms else "No missing numbered DOE rows were emitted.",
+    }
+    return emitted_forms, artifact_rows, summary
+
+
+def enumerate_numbered_doe_candidates_for_explicit_tables(
+    *,
+    paper: PaperRecord,
+    raw_text: str,
+    explicit_targets: list[dict[str, Any]],
+    existing_forms: list[dict[str, Any]] | None = None,
+    min_numbered_rows: int = 8,
+) -> tuple[list[dict[str, Any]], list[dict[str, str]], dict[str, str]]:
+    forms = existing_forms or []
+    existing_map = existing_numeric_label_map(forms)
+    candidate_targets = [item for item in explicit_targets if isinstance(item, dict)]
+    selected_tables: list[dict[str, Any]] = []
+    unresolved_targets: list[str] = []
+    for target in candidate_targets:
+        table_path = Path(str(target.get("table_path") or "").replace("\\", "/"))
+        table_id = normalize_text(target.get("table_id"))
+        table_asset_id = normalize_text(target.get("table_asset_id"))
+        display_id = table_id or table_asset_id or normalize_text(table_path.name)
+        selected = explicit_table_candidate(
+            csv_path=table_path,
+            min_numbered_rows=min_numbered_rows,
+            table_id=table_id,
+            caption_or_title=normalize_text(target.get("evidence_span")),
+        )
+        if selected is None:
+            unresolved_targets.append(display_id)
+            continue
+        selected_tables.append(selected)
+
+    emitted_forms: list[dict[str, Any]] = []
+    artifact_rows: list[dict[str, str]] = []
+    numbered_rows_found = 0
+    selected_table_ids: list[str] = []
+    selected_table_paths: list[str] = []
+    for idx, table in enumerate(selected_tables, start=1):
+        table_id = normalize_text(table.get("semantic_table_id")) or f"{paper.key}__numbered_doe_table_{idx:02d}"
+        selected_table_ids.append(table_id)
+        selected_table_paths.append(str(Path(table["csv_path"])).replace("\\", "/"))
+        for row in table["numbered_rows"]:
+            formulation_number = row_is_numbered(row)
+            if formulation_number is None:
+                continue
+            numbered_rows_found += 1
+            existing_match = existing_map.get(str(formulation_number))
+            if existing_match and existing_match.get("candidate_source") != "llm_extracted":
+                continue
+            candidate, artifact_row = build_stage2_candidate_form(
+                paper=paper,
+                table_id=table_id,
+                csv_path=table["csv_path"],
+                formulation_number=formulation_number,
+                row=row,
+                header_row=table["header_row"],
+                raw_text=raw_text,
+            )
+            if existing_match:
+                artifact_row["existing_stage2_match"] = existing_match.get("formulation_id", "")
+            emitted_forms.append(candidate)
+            artifact_rows.append(artifact_row)
+
+    notes = (
+        "Explicit numbered DOE table rows were enumerated deterministically from authorized semantic table targets."
+        if emitted_forms
+        else "No numbered DOE rows were emitted from the authorized semantic table targets."
+    )
+    if unresolved_targets:
+        notes = f"{notes} Unresolved targets: {' | '.join(unresolved_targets)}."
+    summary = {
+        "paper_key": paper.key,
+        "doi": paper.doi,
+        "title": paper.title,
+        "tables_dir": "|".join(str(Path(path).parent).replace("\\", "/") for path in selected_table_paths),
+        "candidate_tables_considered": str(len(candidate_targets)),
+        "selected_table_count": str(len(selected_tables)),
+        "selected_table_ids": "|".join(selected_table_ids),
+        "selected_table_paths": "|".join(selected_table_paths),
+        "unresolved_authorized_targets": "|".join(unresolved_targets),
+        "numbered_rows_found": str(numbered_rows_found),
+        "existing_stage2_numeric_rows": str(len(existing_map)),
+        "new_candidates_emitted": str(len(emitted_forms)),
+        "regression_status": "ok" if emitted_forms else "no_new_candidates",
+        "notes": notes,
     }
     return emitted_forms, artifact_rows, summary
 

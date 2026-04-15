@@ -1,0 +1,9 @@
+path	change_kind	summary
+project/2_ARCHITECTURE.md	update	Recorded the Stage5 identity-freeze gate as the hard benchmark-validity boundary and documented the Stage2 functional-unit execution-ownership failure plus current DOE and non-DOE repair status.
+project/ACTIVE_PIPELINE_FLOW.md	update	Clarified that Stage5 final-table materialization alone is not benchmark-valid, added the governing failed DEV15 legality example, and recorded the repaired DOE path plus the remaining upstream non-DOE blocker.
+project/ACTIVE_PIPELINE_RUNBOOK.md	update	Added operating and stage-level legality guidance for the identity-freeze gate, documented the failed DEV15 Stage5 lineage as diagnostic-only, and captured current Stage2 functional-unit repair status.
+project/feature_units/FEATURE_UNIT_GOVERNANCE.md	update	Added governed lessons explaining why final-table generation alone is insufficient and why Stage2 decomposition created a real execution-ownership failure, including current DOE and non-DOE status.
+project/4_DECISIONS_LOG.md	update	Appended four governed decisions covering the identity-freeze benchmark boundary, the Stage2 execution-ownership failure, DOE mainline restoration, and the partial non-DOE repair with upstream scope blocker.
+docs/audits/repair_track_status_2026-04-14.md	add	Created a durable repair-status audit summarizing facts, evidence, current status, and intentionally deferred claims for both repair tracks.
+data/mem/v1/dec.tsv	update	Added governed memory decision entries for the four required repair-track memory topics.
+data/mem/v1/idx.tsv	update	Indexed the four new governed memory decision entries so future memory bootstrap can recover them directly.

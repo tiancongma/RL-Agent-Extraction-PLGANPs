@@ -87,6 +87,7 @@ def render_run_context(
             "## 8. Final outputs",
             "",
             f"- `{run_dir / 'final_formulation_table_v1.tsv'}`",
+            f"- `{run_dir / 'downstream_variant_records_v1.tsv'}`",
             f"- `{run_dir / 'final_output_decision_trace_v1.tsv'}`",
             f"- `{run_dir / 'final_output_summary_v1.md'}`",
             f"- `{run_dir / 'RUN_CONTEXT.md'}`",
@@ -118,6 +119,7 @@ def render_run_context(
             f"- kept_rows: `{stats['kept_rows']}`",
             f"- filtered_rows: `{stats['filtered_rows']}`",
             f"- collapsed_rows: `{stats['collapsed_rows']}`",
+            f"- downstream_variant_rows: `{stats['downstream_variant_rows']}`",
         ]
     ) + "\n"
 
@@ -217,12 +219,14 @@ def main() -> None:
                 "resolved_relation_fields_tsv": str(args.resolved_relation_fields_tsv),
                 "run_dir": str(run_dir),
                 "final_table_path": str(stats["final_table_path"]),
+                "downstream_variant_path": str(stats["downstream_variant_path"]),
                 "decision_trace_path": str(stats["decision_trace_path"]),
                 "summary_path": str(stats["summary_path"]),
                 "input_rows": stats["input_rows"],
                 "final_rows": stats["final_rows"],
                 "filtered_rows": stats["filtered_rows"],
                 "collapsed_rows": stats["collapsed_rows"],
+                "downstream_variant_rows": stats["downstream_variant_rows"],
             },
             indent=2,
         )

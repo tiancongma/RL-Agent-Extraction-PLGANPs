@@ -382,6 +382,7 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
                 "row_materialization_mode": normalize_text(item.get("row_materialization_mode")),
                 "semantic_scope_authority": normalize_text(item.get("semantic_scope_authority")),
                 "semantic_scope_ref": normalize_text(item.get("semantic_scope_ref")),
+                "change_role": normalize_text(item.get("change_role")) or "unclear",
                 "change_descriptions": ensure_list(item.get("change_descriptions")),
                 "instance_context_tags": ensure_list(item.get("instance_context_tags")),
                 "change_context_tags": ensure_list(item.get("change_context_tags")),
@@ -682,7 +683,7 @@ def base_row(identity: dict[str, Any], document_key: str, doi: str, model_name: 
             "instance_kind_reconciliation_note": "compatibility_projection_v1",
             "instance_kind": normalize_text(identity.get("instance_kind")),
             "change_descriptions": stringify_json(change_descriptions),
-            "change_role": "unclear",
+            "change_role": normalize_text(identity.get("change_role")) or "unclear",
             "instance_context_tags": stringify_json(instance_context_tags),
             "change_context_tags": stringify_json(change_context_tags),
             "formulation_role": normalize_text(identity.get("formulation_role")),
@@ -1275,6 +1276,42 @@ def run_projection(
     guard_stats = write_numbered_doe_guard_artifact(output_dir, guard_rows)
     function_unit_activation_rows = build_function_unit_activation_rows(projection_summaries)
     execution_ledger_rows = build_execution_ledger_rows(projection_summaries)
+    write_tsv(
+        output_dir / FUNCTION_UNIT_ACTIVATION_NAME,
+        function_unit_activation_rows,
+        [
+            "document_key",
+            "function_unit",
+            "was_unit_considered",
+            "was_unit_authorized",
+            "was_unit_called",
+            "rows_emitted",
+            "rows_retained_after_projection",
+            "skip_reason",
+            "status",
+        ],
+    )
+    write_tsv(
+        output_dir / EXECUTION_LEDGER_NAME,
+        execution_ledger_rows,
+        [
+            "document_key",
+            "function_unit",
+            "table_id",
+            "scope_id",
+            "table_type",
+            "marker_provenance",
+            "was_unit_considered",
+            "was_unit_authorized",
+            "was_unit_called",
+            "rows_emitted",
+            "rows_retained_after_projection",
+            "varying_variable_count",
+            "varying_variables",
+            "table_path",
+            "skip_reason",
+        ],
+    )
     summary = {
         "schema": "stage2_replacement_compatibility_projection_v1",
         "status": "transitional_support",
@@ -1313,6 +1350,8 @@ def run_projection(
             str(output_dir / LEGACY_TSV_NAME),
             str(output_dir / LEGACY_JSONL_NAME),
             str(output_dir / TRACE_TSV_NAME),
+            str(output_dir / FUNCTION_UNIT_ACTIVATION_NAME),
+            str(output_dir / EXECUTION_LEDGER_NAME),
             str(Path(guard_stats["guard_path"]).resolve()),
             str(contract_path),
         ],
