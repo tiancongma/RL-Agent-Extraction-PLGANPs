@@ -1,0 +1,1355 @@
+{
+  "document_key": "7ZS858NS",
+  "doi": "10.1021/acsomega.0c00111",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F1",
+      "raw_label": "MF NPs",
+      "normalized_label": "MF nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_abs",
+        "span_prep_method",
+        "span_table1_caption",
+        "span_table1_row_mf_nps"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2",
+      "raw_label": "MF NPs with sucrose 4%",
+      "normalized_label": "MF nanoparticles with sucrose 4%",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "freeze-dried with sucrose 4% as cryoprotectant"
+      ],
+      "instance_context_tags": [
+        "post_processing",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Downstream freeze-drying variant of the baseline MF NPs.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_caption",
+        "span_table2_row_sucrose4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3",
+      "raw_label": "MF NPs with sucrose 6%",
+      "normalized_label": "MF nanoparticles with sucrose 6%",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "freeze-dried with sucrose 6% as cryoprotectant"
+      ],
+      "instance_context_tags": [
+        "post_processing",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Downstream freeze-drying variant of the baseline MF NPs.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_caption",
+        "span_table2_row_sucrose6"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4",
+      "raw_label": "MF NPs with sucrose 8%",
+      "normalized_label": "MF nanoparticles with sucrose 8%",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "freeze-dried with sucrose 8% as cryoprotectant"
+      ],
+      "instance_context_tags": [
+        "post_processing",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Downstream freeze-drying variant of the baseline MF NPs.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_caption",
+        "span_table2_row_sucrose8",
+        "span_selection_8percent",
+        "span_table3_row_sucrose_ph74",
+        "span_table3_row_sucrose_ph64"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5",
+      "raw_label": "MF NPs with mannitol 4%",
+      "normalized_label": "MF nanoparticles with mannitol 4%",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "freeze-dried with mannitol 4% as cryoprotectant"
+      ],
+      "instance_context_tags": [
+        "post_processing",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Downstream freeze-drying variant of the baseline MF NPs.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_caption",
+        "span_table2_row_mannitol4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F6",
+      "raw_label": "MF NPs with mannitol 6%",
+      "normalized_label": "MF nanoparticles with mannitol 6%",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "freeze-dried with mannitol 6% as cryoprotectant"
+      ],
+      "instance_context_tags": [
+        "post_processing",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Downstream freeze-drying variant of the baseline MF NPs.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_caption",
+        "span_table2_row_mannitol6"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F7",
+      "raw_label": "MF NPs with mannitol 8%",
+      "normalized_label": "MF nanoparticles with mannitol 8%",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "freeze-dried with mannitol 8% as cryoprotectant"
+      ],
+      "instance_context_tags": [
+        "post_processing",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "post_processing"
+      ],
+      "ambiguity_note": "Downstream freeze-drying variant of the baseline MF NPs.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_caption",
+        "span_table2_row_mannitol8",
+        "span_selection_8percent",
+        "span_table3_row_mannitol_ph74",
+        "span_table3_row_mannitol_ph64"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "C1",
+      "formulation_candidate_id": "F1",
+      "component_name": "mometasone furoate",
+      "component_role": "drug",
+      "amount_text": "2 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "component_id": "C2",
+      "formulation_candidate_id": "F1",
+      "component_name": "PLGA-Purasorb PDLG 5010 (50:50)",
+      "component_role": "polymer",
+      "amount_text": "6 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "component_id": "C3",
+      "formulation_candidate_id": "F1",
+      "component_name": "Solutol HS 15",
+      "component_role": "surfactant",
+      "amount_text": "0.1% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "component_id": "C4",
+      "formulation_candidate_id": "F1",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "1 mL",
+      "amount_kind": "volume",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Evaporated after preparation.",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "component_id": "C5",
+      "formulation_candidate_id": "F1",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "2 mL",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "Volume adjusted to 2 mL after evaporation.",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "component_id": "C6",
+      "formulation_candidate_id": "F2",
+      "component_name": "sucrose",
+      "component_role": "additive",
+      "amount_text": "4% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "nanosuspension",
+      "ambiguity_note": "Used as cryoprotectant during freeze-drying.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "component_id": "C7",
+      "formulation_candidate_id": "F3",
+      "component_name": "sucrose",
+      "component_role": "additive",
+      "amount_text": "6% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "nanosuspension",
+      "ambiguity_note": "Used as cryoprotectant during freeze-drying.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "component_id": "C8",
+      "formulation_candidate_id": "F4",
+      "component_name": "sucrose",
+      "component_role": "additive",
+      "amount_text": "8% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "nanosuspension",
+      "ambiguity_note": "Used as cryoprotectant during freeze-drying.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "component_id": "C9",
+      "formulation_candidate_id": "F5",
+      "component_name": "mannitol",
+      "component_role": "additive",
+      "amount_text": "4% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "nanosuspension",
+      "ambiguity_note": "Used as cryoprotectant during freeze-drying.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "component_id": "C10",
+      "formulation_candidate_id": "F6",
+      "component_name": "mannitol",
+      "component_role": "additive",
+      "amount_text": "6% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "nanosuspension",
+      "ambiguity_note": "Used as cryoprotectant during freeze-drying.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "component_id": "C11",
+      "formulation_candidate_id": "F7",
+      "component_name": "mannitol",
+      "component_role": "additive",
+      "amount_text": "8% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "nanosuspension",
+      "ambiguity_note": "Used as cryoprotectant during freeze-drying.",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol8"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "V1",
+      "formulation_candidate_id": "F1",
+      "variable_name": "preparation method",
+      "value_text": "nanoprecipitation",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "variable_id": "V2",
+      "formulation_candidate_id": "F1",
+      "variable_name": "stirring speed",
+      "value_text": "900 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "variable_id": "V3",
+      "formulation_candidate_id": "F1",
+      "variable_name": "stirring duration",
+      "value_text": "24 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "variable_id": "V4",
+      "formulation_candidate_id": "F1",
+      "variable_name": "centrifugation speed (debris removal)",
+      "value_text": "3000 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "variable_id": "V5",
+      "formulation_candidate_id": "F1",
+      "variable_name": "centrifugation duration (debris removal)",
+      "value_text": "1 min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method"
+      ]
+    },
+    {
+      "variable_id": "V6",
+      "formulation_candidate_id": "",
+      "variable_name": "DLS measurement temperature",
+      "value_text": "25 °C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_char_dls"
+      ]
+    },
+    {
+      "variable_id": "V7",
+      "formulation_candidate_id": "",
+      "variable_name": "DLS diluent",
+      "value_text": "water",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_char_dls"
+      ]
+    },
+    {
+      "variable_id": "V8",
+      "formulation_candidate_id": "",
+      "variable_name": "UV-Vis wavelength",
+      "value_text": "248 nm",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_char_ee",
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V9",
+      "formulation_candidate_id": "",
+      "variable_name": "drug release medium",
+      "value_text": "phosphate-buffered saline (PBS) containing 1% SDS",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V10",
+      "formulation_candidate_id": "",
+      "variable_name": "drug release pH",
+      "value_text": "7.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V11",
+      "formulation_candidate_id": "",
+      "variable_name": "drug release pH",
+      "value_text": "6.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V12",
+      "formulation_candidate_id": "",
+      "variable_name": "drug release temperature",
+      "value_text": "37 °C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V13",
+      "formulation_candidate_id": "",
+      "variable_name": "drug release stirring speed",
+      "value_text": "150 rpm",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V14",
+      "formulation_candidate_id": "",
+      "variable_name": "dialysis membrane MWCO",
+      "value_text": "8000 Da",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_release_study"
+      ]
+    },
+    {
+      "variable_id": "V15",
+      "formulation_candidate_id": "F2",
+      "variable_name": "cryoprotectant type",
+      "value_text": "sucrose",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "variable_id": "V16",
+      "formulation_candidate_id": "F2",
+      "variable_name": "cryoprotectant concentration",
+      "value_text": "4% (w/v)",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "variable_id": "V17",
+      "formulation_candidate_id": "F3",
+      "variable_name": "cryoprotectant type",
+      "value_text": "sucrose",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "variable_id": "V18",
+      "formulation_candidate_id": "F3",
+      "variable_name": "cryoprotectant concentration",
+      "value_text": "6% (w/v)",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "variable_id": "V19",
+      "formulation_candidate_id": "F4",
+      "variable_name": "cryoprotectant type",
+      "value_text": "sucrose",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "variable_id": "V20",
+      "formulation_candidate_id": "F4",
+      "variable_name": "cryoprotectant concentration",
+      "value_text": "8% (w/v)",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "variable_id": "V21",
+      "formulation_candidate_id": "F5",
+      "variable_name": "cryoprotectant type",
+      "value_text": "mannitol",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "variable_id": "V22",
+      "formulation_candidate_id": "F5",
+      "variable_name": "cryoprotectant concentration",
+      "value_text": "4% (w/v)",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "variable_id": "V23",
+      "formulation_candidate_id": "F6",
+      "variable_name": "cryoprotectant type",
+      "value_text": "mannitol",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "variable_id": "V24",
+      "formulation_candidate_id": "F6",
+      "variable_name": "cryoprotectant concentration",
+      "value_text": "6% (w/v)",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "variable_id": "V25",
+      "formulation_candidate_id": "F7",
+      "variable_name": "cryoprotectant type",
+      "value_text": "mannitol",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol8"
+      ]
+    },
+    {
+      "variable_id": "V26",
+      "formulation_candidate_id": "F7",
+      "variable_name": "cryoprotectant concentration",
+      "value_text": "8% (w/v)",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method",
+        "span_table2_row_mannitol8"
+      ]
+    },
+    {
+      "variable_id": "V27",
+      "formulation_candidate_id": "",
+      "variable_name": "freezing temperature",
+      "value_text": "-80 °C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method"
+      ]
+    },
+    {
+      "variable_id": "V28",
+      "formulation_candidate_id": "",
+      "variable_name": "freezing duration",
+      "value_text": "at least 24 h",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_freeze_drying_method"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M1",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "size",
+      "value_text": "117 ± 13",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_mf_nps"
+      ]
+    },
+    {
+      "measurement_id": "M2",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "pdi",
+      "value_text": "0.26 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_mf_nps"
+      ]
+    },
+    {
+      "measurement_id": "M3",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "zeta_potential",
+      "value_text": "-32 ± 1.2",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_mf_nps"
+      ]
+    },
+    {
+      "measurement_id": "M4",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "90 ± 2.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_mf_nps"
+      ]
+    },
+    {
+      "measurement_id": "M5",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "loading_content",
+      "value_text": "22.4 ± 0.5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_mf_nps"
+      ]
+    },
+    {
+      "measurement_id": "M6",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "size",
+      "value_text": "162 ± 12",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "measurement_id": "M7",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "pdi",
+      "value_text": "0.44 ± 0.06",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "measurement_id": "M8",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "zeta_potential",
+      "value_text": "-32 ± 1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "measurement_id": "M9",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "Sf/Si ratio",
+      "value_text": "1.38",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose4"
+      ]
+    },
+    {
+      "measurement_id": "M10",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "size",
+      "value_text": "206 ± 7.6",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "measurement_id": "M11",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "pdi",
+      "value_text": "0.45 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "measurement_id": "M12",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "zeta_potential",
+      "value_text": "-39 ± 4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "measurement_id": "M13",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Sf/Si ratio",
+      "value_text": "1.75",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose6"
+      ]
+    },
+    {
+      "measurement_id": "M14",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "size",
+      "value_text": "146 ± 17",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "measurement_id": "M15",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "pdi",
+      "value_text": "0.43 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "measurement_id": "M16",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "zeta_potential",
+      "value_text": "-30.4 ± 0.7",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "measurement_id": "M17",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "Sf/Si ratio",
+      "value_text": "1.25",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_sucrose8"
+      ]
+    },
+    {
+      "measurement_id": "M18",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "size",
+      "value_text": "210 ± 31",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "measurement_id": "M19",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "pdi",
+      "value_text": "0.39 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "measurement_id": "M20",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "zeta_potential",
+      "value_text": "-32.3 ± 2.6",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "measurement_id": "M21",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "Sf/Si ratio",
+      "value_text": "1.78",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol4"
+      ]
+    },
+    {
+      "measurement_id": "M22",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "size",
+      "value_text": "256 ± 2.2",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "measurement_id": "M23",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "pdi",
+      "value_text": "0.42 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "measurement_id": "M24",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "zeta_potential",
+      "value_text": "-36.5 ± 0.5",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "measurement_id": "M25",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Sf/Si ratio",
+      "value_text": "2.18",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol6"
+      ]
+    },
+    {
+      "measurement_id": "M26",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "size",
+      "value_text": "206 ± 4.5",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol8"
+      ]
+    },
+    {
+      "measurement_id": "M27",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "pdi",
+      "value_text": "0.36 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol8"
+      ]
+    },
+    {
+      "measurement_id": "M28",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "zeta_potential",
+      "value_text": "-31.3 ± 0.4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol8"
+      ]
+    },
+    {
+      "measurement_id": "M29",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "Sf/Si ratio",
+      "value_text": "1.75",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_mannitol8"
+      ]
+    },
+    {
+      "measurement_id": "M30",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "other",
+      "value_text": "0.955",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for first-order kinetic model at pH 7.4",
+      "evidence_span_ids": [
+        "span_table3_row_sucrose_ph74"
+      ]
+    },
+    {
+      "measurement_id": "M31",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "other",
+      "value_text": "0.984",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for Higuchi model at pH 7.4",
+      "evidence_span_ids": [
+        "span_table3_row_sucrose_ph74"
+      ]
+    },
+    {
+      "measurement_id": "M32",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "other",
+      "value_text": "0.57",
+      "unit_text": "",
+      "ambiguity_note": "n value for Korsmeyer-Peppas model at pH 7.4",
+      "evidence_span_ids": [
+        "span_table3_row_sucrose_ph74"
+      ]
+    },
+    {
+      "measurement_id": "M33",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "other",
+      "value_text": "0.985",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for Korsmeyer-Peppas model at pH 6.4",
+      "evidence_span_ids": [
+        "span_table3_row_sucrose_ph64"
+      ]
+    },
+    {
+      "measurement_id": "M34",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "other",
+      "value_text": "0.975",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for first-order kinetic model at pH 6.4",
+      "evidence_span_ids": [
+        "span_table3_row_sucrose_ph64"
+      ]
+    },
+    {
+      "measurement_id": "M35",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "other",
+      "value_text": "0.66",
+      "unit_text": "",
+      "ambiguity_note": "n value for Korsmeyer-Peppas model at pH 6.4",
+      "evidence_span_ids": [
+        "span_table3_row_sucrose_ph64"
+      ]
+    },
+    {
+      "measurement_id": "M36",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "other",
+      "value_text": "0.988",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for first-order kinetic model at pH 7.4",
+      "evidence_span_ids": [
+        "span_table3_row_mannitol_ph74"
+      ]
+    },
+    {
+      "measurement_id": "M37",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "other",
+      "value_text": "0.950",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for Higuchi model at pH 7.4",
+      "evidence_span_ids": [
+        "span_table3_row_mannitol_ph74"
+      ]
+    },
+    {
+      "measurement_id": "M38",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "other",
+      "value_text": "0.46",
+      "unit_text": "",
+      "ambiguity_note": "n value for Korsmeyer-Peppas model at pH 7.4",
+      "evidence_span_ids": [
+        "span_table3_row_mannitol_ph74"
+      ]
+    },
+    {
+      "measurement_id": "M39",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "other",
+      "value_text": "0.980",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for Korsmeyer-Peppas model at pH 6.4",
+      "evidence_span_ids": [
+        "span_table3_row_mannitol_ph64"
+      ]
+    },
+    {
+      "measurement_id": "M40",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "other",
+      "value_text": "0.976",
+      "unit_text": "",
+      "ambiguity_note": "R2 value for first-order kinetic model at pH 6.4",
+      "evidence_span_ids": [
+        "span_table3_row_mannitol_ph64"
+      ]
+    },
+    {
+      "measurement_id": "M41",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "other",
+      "value_text": "0.63",
+      "unit_text": "",
+      "ambiguity_note": "n value for Korsmeyer-Peppas model at pH 6.4",
+      "evidence_span_ids": [
+        "span_table3_row_mannitol_ph64"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "span_abs",
+      "source_region_type": "text_span",
+      "source_locator_text": "ABSTRACT",
+      "supporting_text": "Developing Biodegradable Nanoparticles Loaded with Mometasone Furoate for Potential Nasal Drug Delivery ... poly(lactic-co-glycolic acid) (PLGA) nanoparticles (NPs) loaded with mometasone furoate (MF) were generated using the nanoprecipitation method and characterized physicochemically and morphologically."
+    },
+    {
+      "span_id": "span_prep_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Section 2.2. Preparation of MF NPs",
+      "supporting_text": "MF-loaded nanoparticles were prepared using the nanoprecipitation method13 with modiﬁcation. The organic phase, consisting of 2 mg of MF and 6 mg of PLGA in 1 mL of acetone, was rapidly poured into 2 mL of aqueous solution containing 0.1% (w/v) Solutol HS 15. The suspension was stirred at 900 rpm for 24 h to allow complete evaporation of the organic solvent, and the formulation volume was adjusted with water to 2 mL (Figure 2). Complete evaporation was conﬁrmed by weighting the glass vial before addition of the organic phase and after the evaporation process. Then, the formulation was centrifuged for 1 min at 3000 rpm to discard debris. The supernatant was then transferred to a new tube for further investigation."
+    },
+    {
+      "span_id": "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1. Physicochemical Properties, Encapsulation Eﬃciency, and Drug Loading Content of MF NPs (n = 3, mean ± s.d.)"
+    },
+    {
+      "span_id": "span_table1_row_mf_nps",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 1",
+      "supporting_text": "MF NPs | 117 ± 13 | 0.26 ± 0.02 | −32 ± 1.2 | 90 ± 2.1 | 22.4 ± 0.5"
+    },
+    {
+      "span_id": "span_char_dls",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Section 2.3. Physicochemical Characterization of MF NPs",
+      "supporting_text": "Particle size distribution, polydispersity index (PDI), and zeta potential of NPs were characterized by dynamic light scattering (DLS) using Malvern’s Zetasizer (Nano series, Nanos-ZS, U.K.) at 25 °C using water as a diluent."
+    },
+    {
+      "span_id": "span_char_ee",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Section 2.4. Determination of Drug Encapsulation Eﬃciency",
+      "supporting_text": "MF NPs were centrifuged for 30 min at 13,600 rpm to precipitate the NPs. The supernatant was discarded, and the sediment was dissolved in acetone. Methanol was then added to precipitate the polymer, followed by vortex and centrifugation for 1 min at 2000 rpm. Afterward, the supernatant containing the drug and organic solvents was transferred and evaporated. Methanol was then added to the residue, and the MF concentration was determined using a Biochrom UV−Vis spectrophotometer at a wavelength of 248 nm. The concen- trations of the calibration curve ranged from 0 to 16 μg/mL (Figure S1)."
+    },
+    {
+      "span_id": "span_char_morph",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Section 2.5. Morphological Evaluation of MF NPs",
+      "supporting_text": "Morphological evaluation of MF NPs was carried out using scanning electron microscopy (SEM) and scanning transmission electron microscopy (STEM) by an extreme high-resolution scanning electron microscope (XHR SEM) (model Magellan 400L, FEI, Germany). The samples were diluted with water and ﬁxed on an SEM stub."
+    },
+    {
+      "span_id": "span_release_study",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Section 2.6. In Vitro Drug Release Studies",
+      "supporting_text": "MF NPs containing 225 μg of MF were placed in dialysis bags with a molecular cut-oﬀof 8000 Da. The dialysis bags were suspended in 50 mL of phosphate-buﬀered saline (PBS) containing 1% SDS (pH 7.4 and pH 6.4) and maintained at 37 °C (150 rpm). At predetermined time intervals, 1 mL of the release medium was discarded and replaced by an equal volume of fresh medium to maintain sink conditions. The concentration of MF was determined using UV−Vis at a wavelength of 248 nm. The concentrations of the calibration curves in PBS containing 1% SDS ranged from 0 to 17.5 μg/mL (Figure S2)."
+    },
+    {
+      "span_id": "span_freeze_drying_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Section 2.8. Freeze-Drying of MF NPs",
+      "supporting_text": "The MF NPs were lyophilized in the presence of two cryoprotectants, mannitol and sucrose, at three diﬀerent concentrations: 4, 6, and 8% (w/v). After cryoprotectant dissolution in nanosuspension, samples were kept at −80 °C for at least 24 h prior to lyophilization. The lyophilized MF NPs were then reconstituted to the initial volume, and their physicochemical properties were evaluated."
+    },
+    {
+      "span_id": "span_table2_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2. Physicochemical Properties of MF NPs after Freeze-Drying Using Cryoprotectants at Diﬀerent Concentrations (n = 3, mean ± s.d.)"
+    },
+    {
+      "span_id": "span_table2_row_sucrose4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 'sucrose 4%'",
+      "supporting_text": "sucrose | 4% | 162 ± 12 | 0.44 ± 0.06 | −32 ± 1 | 1.38"
+    },
+    {
+      "span_id": "span_table2_row_sucrose6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 'sucrose 6%'",
+      "supporting_text": "sucrose | 6% | 206 ± 7.6 | 0.45 ± 0.02 | −39 ± 4 | 1.75"
+    },
+    {
+      "span_id": "span_table2_row_sucrose8",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 'sucrose 8%'",
+      "supporting_text": "sucrose | 8% | 146 ± 17 | 0.43 ± 0.02 | −30.4 ± 0.7 | 1.25"
+    },
+    {
+      "span_id": "span_table2_row_mannitol4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 'mannitol 4%'",
+      "supporting_text": "mannitol | 4% | 210 ± 31 | 0.39 ± 0.01 | −32.3 ± 2.6 | 1.78"
+    },
+    {
+      "span_id": "span_table2_row_mannitol6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 'mannitol 6%'",
+      "supporting_text": "mannitol | 6% | 256 ± 2.2 | 0.42 ± 0.01 | −36.5 ± 0.5 | 2.18"
+    },
+    {
+      "span_id": "span_table2_row_mannitol8",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 'mannitol 8%'",
+      "supporting_text": "mannitol | 8% | 206 ± 4.5 | 0.36 ± 0.02 | −31.3 ± 0.4 | 1.75"
+    },
+    {
+      "span_id": "span_selection_8percent",
+      "source_region_type": "text_span",
+      "source_locator_text": "Section 3, paragraph 6",
+      "supporting_text": "The eﬀect of cryoprotectants on MF release after the freeze-drying process was investigated on the system with 8% (w/v) cryoprotectant because it had the lowest Sf/Si ratio observed."
+    },
+    {
+      "span_id": "span_table3_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 3",
+      "supporting_text": "Table 3. Correlation Coeﬃcient (R2) Values of Various Release Kinetic Models in 1% SDS Buﬀers (pH 7.4 and pH 6.4) for Freeze-Dried MF NPs"
+    },
+    {
+      "span_id": "span_table3_row_sucrose_ph74",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 'sucrose pH 7.4'",
+      "supporting_text": "sucrose pH 7.4 | 0.907 | 0.955 | 0.984 | 0.57 | 0.934"
+    },
+    {
+      "span_id": "span_table3_row_sucrose_ph64",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 'sucrose pH 6.4'",
+      "supporting_text": "sucrose pH 6.4 | 0.971 | 0.975 | 0.952 | 0.66 | 0.985"
+    },
+    {
+      "span_id": "span_table3_row_mannitol_ph74",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 'mannitol pH 7.4'",
+      "supporting_text": "mannitol pH 7.4 | 0.975 | 0.988 | 0.950 | 0.46 | 0.953"
+    },
+    {
+      "span_id": "span_table3_row_mannitol_ph64",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 'mannitol pH 6.4'",
+      "supporting_text": "mannitol pH 6.4 | 0.954 | 0.976 | 0.940 | 0.63 | 0.980"
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 1. Physicochemical Properties, Encapsulation Eﬃciency, and Drug Loading Content of MF NPs (n = 3, mean ± s.d.)"
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "sequential_child",
+      "confidence": "high",
+      "evidence_span": "Table 2. Physicochemical Properties of MF NPs after Freeze-Drying Using Cryoprotectants at Diﬀerent Concentrations (n = 3, mean ± s.d.)"
+    },
+    {
+      "table_id": "Table 3",
+      "is_formulation_table": true,
+      "table_type": "sequential_child",
+      "confidence": "high",
+      "evidence_span": "Table 3. Correlation Coeﬃcient (R2) Values of Various Release Kinetic Models in 1% SDS Buﬀers (pH 7.4 and pH 6.4) for Freeze-Dried MF NPs"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "mean diameter",
+        "polydispersity index (PDI)",
+        "zeta potential",
+        "encapsulation efficiency",
+        "drug loading content"
+      ]
+    },
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "cryoprotectant type",
+        "cryoprotectant concentration"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "mean diameter",
+        "PDI",
+        "zeta potential",
+        "Sf/Si ratio"
+      ]
+    },
+    {
+      "table_id": "Table 3",
+      "varying_variables": [
+        "cryoprotectant type",
+        "pH"
+      ],
+      "constant_variables": [
+        "cryoprotectant concentration"
+      ],
+      "new_variables_introduced": [
+        "R2 (zero order)",
+        "R2 (first order)",
+        "R2 (Higuchi model)",
+        "n (Korsmeyer-Peppas model)",
+        "R2 (Korsmeyer-Peppas model)"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 2",
+      "selected_variable": "cryoprotectant concentration",
+      "selected_value": "8% (w/v)",
+      "explicit": true,
+      "evidence_span": "The eﬀect of cryoprotectants on MF release after the freeze-drying process was investigated on the system with 8% (w/v) cryoprotectant because it had the lowest Sf/Si ratio observed."
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 2",
+      "to_table": "Table 3",
+      "inherit_type": "selected_condition",
+      "variable": "cryoprotectant concentration",
+      "value": "8% (w/v)",
+      "evidence_span": "The eﬀect of cryoprotectants on MF release after the freeze-drying process was investigated on the system with 8% (w/v) cryoprotectant because it had the lowest Sf/Si ratio observed."
+    }
+  ],
+  "preparation_inheritance_markers": [],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 3",
+      "is_doe": false
+    }
+  ]
+}

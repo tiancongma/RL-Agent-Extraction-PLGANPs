@@ -1890,37 +1890,33 @@ def build_document(record: dict[str, str]) -> dict[str, Any]:
     if not text_path.is_absolute():
         text_path = REPO_ROOT / text_path
     tables_dir = resolve_tables_dir(key, text_path)
-    if key == "5ZXYABSU":
-        return build_5zxyabsu_document(record, text_path, tables_dir)
-    if key == "WIVUCMYG":
-        return build_wivucmyg_document(record, text_path, tables_dir)
-    if key == "5GIF3D8W":
-        return build_5gif3d8w_document(record, text_path, tables_dir)
-    if key == "7ZS858NS":
-        return build_7zs858ns_document(record, text_path, tables_dir)
-    if key == "BB3JUVW7":
-        return build_bb3juvw7_document(record, text_path, tables_dir)
-    if key == "UFXX9WXE":
-        return build_ufxx9wxe_document(record, text_path, tables_dir)
-    if key == "BXCV5XWB":
-        return build_bxcv5xwb_document(record, text_path, tables_dir)
-    if key == "INMUTV7L":
-        return build_inmutv7l_document(record, text_path, tables_dir)
-    if key == "PA3SPZ28":
-        return build_pa3spz28_document(record, text_path, tables_dir)
-    if key == "QLYKLPKT":
-        return build_qlyklpkt_document(record, text_path, tables_dir)
-    if key == "RHMJWZX8":
-        return build_rhmjwzx8_document(record, text_path, tables_dir)
-    if key == "L3H2RS2H":
-        return build_l3h2rs2h_document(record, text_path, tables_dir)
-    if key == "V99GKZEI":
-        return build_v99gkzei_document(record, text_path, tables_dir)
-    if key == "WFDTQ4VX":
-        return build_wfdtq4vx_document(record, text_path, tables_dir)
-    if key == "YGA8VQKU":
-        return build_yga8vqku_document(record, text_path, tables_dir)
-    raise ValueError(f"Unsupported paper key for this governed emitter: {key}")
+    builder = DOCUMENT_BUILDERS.get(key)
+    if builder is None:
+        raise ValueError(f"Unsupported paper key for this governed emitter: {key}")
+    return builder(record, text_path, tables_dir)
+
+
+DOCUMENT_BUILDERS: dict[str, Any] = {
+    "5GIF3D8W": build_5gif3d8w_document,
+    "5ZXYABSU": build_5zxyabsu_document,
+    "7ZS858NS": build_7zs858ns_document,
+    "BB3JUVW7": build_bb3juvw7_document,
+    "BXCV5XWB": build_bxcv5xwb_document,
+    "INMUTV7L": build_inmutv7l_document,
+    "L3H2RS2H": build_l3h2rs2h_document,
+    "PA3SPZ28": build_pa3spz28_document,
+    "QLYKLPKT": build_qlyklpkt_document,
+    "RHMJWZX8": build_rhmjwzx8_document,
+    "UFXX9WXE": build_ufxx9wxe_document,
+    "V99GKZEI": build_v99gkzei_document,
+    "WFDTQ4VX": build_wfdtq4vx_document,
+    "WIVUCMYG": build_wivucmyg_document,
+    "YGA8VQKU": build_yga8vqku_document,
+}
+
+
+def supported_paper_keys() -> list[str]:
+    return sorted(DOCUMENT_BUILDERS)
 
 
 def finalize_fallback_document(document: dict[str, Any]) -> dict[str, Any]:

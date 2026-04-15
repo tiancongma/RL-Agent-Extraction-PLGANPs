@@ -1,0 +1,2886 @@
+{
+  "document_key": "L3H2RS2H",
+  "doi": "10.1016/j.ejpb.2004.09.002",
+  "formulation_candidates": [
+    {
+      "candidate_id": "FC_NS_EMPTY_T2",
+      "raw_label": "Empty nanospheres",
+      "normalized_label": "Empty PLGA nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_ns_empty",
+        "span_table2_header_empty",
+        "span_table2_row_empty"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_XAN_50_T1",
+      "raw_label": "XAN nanospheres (Theoretical concentration 50 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with Xanthone (50 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 50 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_50"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_XAN_60_T1",
+      "raw_label": "XAN nanospheres (Theoretical concentration 60 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with Xanthone (60 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 60 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "change_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_60",
+        "span_table1_selection_text"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_XAN_70_T1",
+      "raw_label": "XAN nanospheres (Theoretical concentration 70 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with Xanthone (70 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 70 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_70",
+        "span_table1_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_XAN_80_T1",
+      "raw_label": "XAN nanospheres (Theoretical concentration 80 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with Xanthone (80 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 80 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_80",
+        "span_table1_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_XAN_T2",
+      "raw_label": "XAN nanospheres",
+      "normalized_label": "PLGA nanospheres loaded with Xanthone",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_XAN_60_T1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "characterized after selection from Table 1"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This entry represents the XAN nanospheres characterized in Table 2, which are implicitly the optimal 60 mg/mL formulation selected from Table 1.",
+      "evidence_span_ids": [
+        "span_table2_header_xan",
+        "span_table2_row_xan",
+        "span_table2_footnote_a"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_3MEOXAN_50_T1",
+      "raw_label": "3-MeOXAN nanospheres (Theoretical concentration 50 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with 3-Methoxyxanthone (50 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 50 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_50"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_3MEOXAN_60_T1",
+      "raw_label": "3-MeOXAN nanospheres (Theoretical concentration 60 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with 3-Methoxyxanthone (60 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 60 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "change_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_60",
+        "span_table1_selection_text"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_3MEOXAN_70_T1",
+      "raw_label": "3-MeOXAN nanospheres (Theoretical concentration 70 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with 3-Methoxyxanthone (70 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 70 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_70",
+        "span_table1_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_3MEOXAN_80_T1",
+      "raw_label": "3-MeOXAN nanospheres (Theoretical concentration 80 mg/mL)",
+      "normalized_label": "PLGA nanospheres loaded with 3-Methoxyxanthone (80 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_EMPTY_T2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 80 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_80",
+        "span_table1_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NS_3MEOXAN_T2",
+      "raw_label": "3-MeOXAN nanospheres",
+      "normalized_label": "PLGA nanospheres loaded with 3-Methoxyxanthone",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NS_3MEOXAN_60_T1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "characterized after selection from Table 1"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This entry represents the 3-MeOXAN nanospheres characterized in Table 2, which are implicitly the optimal 60 mg/mL formulation selected from Table 1.",
+      "evidence_span_ids": [
+        "span_table2_header_3meoxan",
+        "span_table2_row_3meoxan",
+        "span_table2_footnote_b"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_EMPTY_T4",
+      "raw_label": "Empty nanocapsules",
+      "normalized_label": "Empty PLGA nanocapsules",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_nc_empty",
+        "span_table4_header_empty",
+        "span_table4_row_empty"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_200_T3",
+      "raw_label": "XAN nanocapsules (Theoretical concentration 200 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone (200 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 200 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_200"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_400_T3",
+      "raw_label": "XAN nanocapsules (Theoretical concentration 400 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone (400 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 400 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_400"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_600_T3",
+      "raw_label": "XAN nanocapsules (Theoretical concentration 600 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone (600 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 600 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "change_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_600",
+        "span_table3_selection_text"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_700_T3",
+      "raw_label": "XAN nanocapsules (Theoretical concentration 700 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone (700 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 700 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_700",
+        "span_table3_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_800_T3",
+      "raw_label": "XAN nanocapsules (Theoretical concentration 800 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone (800 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with Xanthone at 800 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_800",
+        "span_table3_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_T4",
+      "raw_label": "XAN nanocapsules",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_XAN_600_T3",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "characterized after selection from Table 3"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This entry represents the XAN nanocapsules characterized in Table 4, which are implicitly the optimal 600 mg/mL formulation selected from Table 3.",
+      "evidence_span_ids": [
+        "span_table4_header_xan",
+        "span_table4_row_xan",
+        "span_table4_footnote_a"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_3MEOXAN_1000_T3",
+      "raw_label": "3-MeOXAN nanocapsules (Theoretical concentration 1000 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with 3-Methoxyxanthone (1000 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 1000 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1000"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_3MEOXAN_1200_T3",
+      "raw_label": "3-MeOXAN nanocapsules (Theoretical concentration 1200 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with 3-Methoxyxanthone (1200 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 1200 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1200"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_3MEOXAN_1400_T3",
+      "raw_label": "3-MeOXAN nanocapsules (Theoretical concentration 1400 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with 3-Methoxyxanthone (1400 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 1400 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "change_context_tags": [
+        "doe",
+        "optimized"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1400",
+        "span_table3_selection_text"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_3MEOXAN_1600_T3",
+      "raw_label": "3-MeOXAN nanocapsules (Theoretical concentration 1600 mg/mL)",
+      "normalized_label": "PLGA nanocapsules loaded with 3-Methoxyxanthone (1600 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "loaded with 3-Methoxyxanthone at 1600 mg/mL theoretical concentration, resulted in precipitation"
+      ],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1600",
+        "span_table3_selection_text_precipitate"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_3MEOXAN_T4",
+      "raw_label": "3-MeOXAN nanocapsules",
+      "normalized_label": "PLGA nanocapsules loaded with 3-Methoxyxanthone",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_3MEOXAN_1400_T3",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "characterized after selection from Table 3"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This entry represents the 3-MeOXAN nanocapsules characterized in Table 4, which are implicitly the optimal 1400 mg/mL formulation selected from Table 3.",
+      "evidence_span_ids": [
+        "span_table4_header_3meoxan",
+        "span_table4_row_3meoxan",
+        "span_table4_footnote_b"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_EMPTY_0_5ML_MYRITOL_STUDY",
+      "raw_label": "Empty nanocapsules (0.5 mL Myritol 318)",
+      "normalized_label": "Empty PLGA nanocapsules prepared with 0.5 mL Myritol 318",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "prepared with 0.5 mL Myritol 318"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "This formulation is part of an implicit sweep to determine optimal Myritol 318 volume.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_EMPTY_0_6ML_MYRITOL_STUDY",
+      "raw_label": "Empty nanocapsules (0.6 mL Myritol 318)",
+      "normalized_label": "Empty PLGA nanocapsules prepared with 0.6 mL Myritol 318",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "prepared with 0.6 mL Myritol 318"
+      ],
+      "instance_context_tags": [
+        "sweep",
+        "optimized"
+      ],
+      "change_context_tags": [
+        "sweep",
+        "optimized"
+      ],
+      "ambiguity_note": "This formulation is part of an implicit sweep to determine optimal Myritol 318 volume, and 0.6 mL was selected as optimal.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details",
+        "span_table5_oil_volume_selection"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_EMPTY_0_7ML_MYRITOL_STUDY",
+      "raw_label": "Empty nanocapsules (0.7 mL Myritol 318)",
+      "normalized_label": "Empty PLGA nanocapsules prepared with 0.7 mL Myritol 318",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "prepared with 0.7 mL Myritol 318, resulted in poor stability"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "This formulation is part of an implicit sweep to determine optimal Myritol 318 volume.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_EMPTY_0_8ML_MYRITOL_STUDY",
+      "raw_label": "Empty nanocapsules (0.8 mL Myritol 318)",
+      "normalized_label": "Empty PLGA nanocapsules prepared with 0.8 mL Myritol 318",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_EMPTY_T4",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "prepared with 0.8 mL Myritol 318, resulted in poor stability"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "This formulation is part of an implicit sweep to determine optimal Myritol 318 volume.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_EMPTY_T5_0_6ML",
+      "raw_label": "Empty nanocapsules",
+      "normalized_label": "Empty PLGA nanocapsules (0.6 mL Myritol 318)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "FC_NC_EMPTY_0_6ML_MYRITOL_STUDY",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "characterized in Table 5"
+      ],
+      "instance_context_tags": [
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "measurement_context"
+      ],
+      "ambiguity_note": "This entry represents the empty nanocapsules characterized in Table 5, which are implicitly prepared with the optimal 0.6 mL Myritol 318.",
+      "evidence_span_ids": [
+        "span_table5_row_empty"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "raw_label": "XAN nanocapsules (0.6 mL Myritol 318, 1440 mg/mL theoretical concentration)",
+      "normalized_label": "PLGA nanocapsules loaded with Xanthone (0.6 mL Myritol 318, 1440 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_XAN_600_T3",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "prepared with 0.6 mL Myritol 318",
+        "loaded with XAN at 1440 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "sweep",
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "This formulation uses the optimal Myritol 318 volume (0.6 mL) and a new theoretical XAN concentration (1440 mg/mL) for characterization in Table 5.",
+      "evidence_span_ids": [
+        "span_table5_row_xan",
+        "span_table5_oil_volume_selection"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "raw_label": "3-MeOXAN nanocapsules (0.6 mL Myritol 318, 3360 mg/mL theoretical concentration)",
+      "normalized_label": "PLGA nanocapsules loaded with 3-Methoxyxanthone (0.6 mL Myritol 318, 3360 mg/mL theoretical concentration)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "FC_NC_3MEOXAN_1400_T3",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "prepared with 0.6 mL Myritol 318",
+        "loaded with 3-MeOXAN at 3360 mg/mL theoretical concentration"
+      ],
+      "instance_context_tags": [
+        "sweep",
+        "measurement_context"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "This formulation uses the optimal Myritol 318 volume (0.6 mL) and a new theoretical 3-MeOXAN concentration (3360 mg/mL) for characterization in Table 5.",
+      "evidence_span_ids": [
+        "span_table5_row_3meoxan",
+        "span_table5_oil_volume_selection"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NE_XAN",
+      "raw_label": "XAN nanoemulsion",
+      "normalized_label": "Xanthone nanoemulsion",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "Used as a control for in vitro release studies, omitting polymer from nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_prep_nc_nanoemulsion",
+        "span_nanoemulsion_control_release",
+        "span_nanoemulsion_release_fig7"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "FC_NE_3MEOXAN",
+      "raw_label": "3-MeOXAN nanoemulsion",
+      "normalized_label": "3-Methoxyxanthone nanoemulsion",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "Used as a control for in vitro release studies, omitting polymer from nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_prep_nc_nanoemulsion",
+        "span_nanoemulsion_control_release",
+        "span_nanoemulsion_release_fig6"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "COMP_XAN",
+      "formulation_candidate_id": "",
+      "component_name": "Xanthone",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Used in nanospheres and nanocapsules, amounts vary.",
+      "evidence_span_ids": [
+        "span_mat_xan",
+        "span_prep_ns_xan_3meoxan_amt",
+        "span_prep_nc_xan_3meoxan_amt"
+      ]
+    },
+    {
+      "component_id": "COMP_3MEOXAN",
+      "formulation_candidate_id": "",
+      "component_name": "3-Methoxyxanthone",
+      "component_role": "drug",
+      "amount_text": "",
+      "amount_kind": "unknown",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Used in nanospheres and nanocapsules, amounts vary.",
+      "evidence_span_ids": [
+        "span_mat_3meoxan",
+        "span_prep_ns_xan_3meoxan_amt",
+        "span_prep_nc_xan_3meoxan_amt"
+      ]
+    },
+    {
+      "component_id": "COMP_PLGA",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA (50:50) MW 50 000–75 000",
+      "component_role": "polymer",
+      "amount_text": "63 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "63 mg for nanospheres, 50 mg for nanocapsules. Using 63 mg as a general reference.",
+      "evidence_span_ids": [
+        "span_mat_plga",
+        "span_prep_ns_plga_amt",
+        "span_prep_nc_polymer_lecithin_amt"
+      ]
+    },
+    {
+      "component_id": "COMP_PLURONIC_F68_NS",
+      "formulation_candidate_id": "",
+      "component_name": "Pluronic F-68",
+      "component_role": "surfactant",
+      "amount_text": "0.25% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "Concentration specific to nanosphere preparation.",
+      "evidence_span_ids": [
+        "span_mat_pluronic",
+        "span_prep_ns_pluronic_sol"
+      ]
+    },
+    {
+      "component_id": "COMP_PLURONIC_F68_NC",
+      "formulation_candidate_id": "",
+      "component_name": "Pluronic F-68",
+      "component_role": "surfactant",
+      "amount_text": "0.5% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "Concentration specific to nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_mat_pluronic",
+        "span_prep_nc_pluronic_sol"
+      ]
+    },
+    {
+      "component_id": "COMP_ACETONE",
+      "formulation_candidate_id": "",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "10 mL",
+      "amount_kind": "volume",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Used as solvent for polymer and drug in both nanosphere and nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_prep_ns_acetone_vol",
+        "span_prep_nc_polymer_lecithin_amt"
+      ]
+    },
+    {
+      "component_id": "COMP_THREALOSE",
+      "formulation_candidate_id": "",
+      "component_name": "threalose dihydrate",
+      "component_role": "additive",
+      "amount_text": "5% (w/v)",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "Used during centrifugation for nanospheres.",
+      "evidence_span_ids": [
+        "span_mat_threalose",
+        "span_prep_ns_threalose_centrifugation"
+      ]
+    },
+    {
+      "component_id": "COMP_SOYBEAN_LECITHIN",
+      "formulation_candidate_id": "",
+      "component_name": "soybean lecithin",
+      "component_role": "surfactant",
+      "amount_text": "100 mg",
+      "amount_kind": "mass",
+      "phase_hint": "organic phase",
+      "ambiguity_note": "Used in nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_mat_lecithin",
+        "span_prep_nc_polymer_lecithin_amt"
+      ]
+    },
+    {
+      "component_id": "COMP_MYRITOL_318",
+      "formulation_candidate_id": "",
+      "component_name": "Myritol 318",
+      "component_role": "solvent",
+      "amount_text": "0.5–0.6 mL",
+      "amount_kind": "volume",
+      "phase_hint": "oil core",
+      "ambiguity_note": "Used as oil core for nanocapsules, volume varied in study.",
+      "evidence_span_ids": [
+        "span_mat_myritol",
+        "span_prep_nc_xan_3meoxan_amt",
+        "span_table5_oil_volume_study_details"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "VAR_NS_THEO_CONC_XAN",
+      "formulation_candidate_id": "FC_NS_XAN_50_T1",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_xan_50"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_XAN_OPT",
+      "formulation_candidate_id": "FC_NS_XAN_60_T1",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "60 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Selected as optimal.",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_xan_60",
+        "span_table1_selection_text"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_XAN_70",
+      "formulation_candidate_id": "FC_NS_XAN_70_T1",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "70 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_xan_70"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_XAN_80",
+      "formulation_candidate_id": "FC_NS_XAN_80_T1",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "80 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_xan_80"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_3MEOXAN",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_50_T1",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "50 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_3meoxan_50"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_3MEOXAN_OPT",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_60_T1",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "60 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Selected as optimal.",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_3meoxan_60",
+        "span_table1_selection_text"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_3MEOXAN_70",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_70_T1",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "70 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_3meoxan_70"
+      ]
+    },
+    {
+      "variable_id": "VAR_NS_THEO_CONC_3MEOXAN_80",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_80_T1",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "80 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table1_header_theo_conc",
+        "span_table1_row_3meoxan_80"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_XAN_200",
+      "formulation_candidate_id": "FC_NC_XAN_200_T3",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "200 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_xan",
+        "span_table3_row_xan_200"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_XAN_400",
+      "formulation_candidate_id": "FC_NC_XAN_400_T3",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "400 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_xan",
+        "span_table3_row_xan_400"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_XAN_OPT",
+      "formulation_candidate_id": "FC_NC_XAN_600_T3",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "600 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Selected as optimal.",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_xan",
+        "span_table3_row_xan_600",
+        "span_table3_selection_text"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_XAN_700",
+      "formulation_candidate_id": "FC_NC_XAN_700_T3",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "700 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_xan",
+        "span_table3_row_xan_700"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_XAN_800",
+      "formulation_candidate_id": "FC_NC_XAN_800_T3",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "800 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_xan",
+        "span_table3_row_xan_800"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_3MEOXAN_1000",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1000_T3",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "1000 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_3meoxan",
+        "span_table3_row_3meoxan_1000"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_3MEOXAN_1200",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1200_T3",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "1200 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_3meoxan",
+        "span_table3_row_3meoxan_1200"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_3MEOXAN_OPT",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1400_T3",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "1400 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Selected as optimal.",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_3meoxan",
+        "span_table3_row_3meoxan_1400",
+        "span_table3_selection_text"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_3MEOXAN_1600",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1600_T3",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "1600 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Resulted in precipitation.",
+      "evidence_span_ids": [
+        "span_table3_header_theo_conc_3meoxan",
+        "span_table3_row_3meoxan_1600"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_MYRITOL_VOL_0_5",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_5ML_MYRITOL_STUDY",
+      "variable_name": "Myritol 318 volume",
+      "value_text": "0.5 mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Part of an implicit sweep for optimal oil volume.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_MYRITOL_VOL_0_6_OPT",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_6ML_MYRITOL_STUDY",
+      "variable_name": "Myritol 318 volume",
+      "value_text": "0.6 mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Selected as optimal limiting volume.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details",
+        "span_table5_oil_volume_selection"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_MYRITOL_VOL_0_7",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_7ML_MYITOL_STUDY",
+      "variable_name": "Myritol 318 volume",
+      "value_text": "0.7 mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Part of an implicit sweep for optimal oil volume, resulted in poor stability.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_MYRITOL_VOL_0_8",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_8ML_MYRITOL_STUDY",
+      "variable_name": "Myritol 318 volume",
+      "value_text": "0.8 mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Part of an implicit sweep for optimal oil volume, resulted in poor stability.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_XAN_T5",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "variable_name": "Theoretical concentration of XAN",
+      "value_text": "1440 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "New theoretical concentration for XAN nanocapsules in Table 5.",
+      "evidence_span_ids": [
+        "span_table5_header_theo_conc",
+        "span_table5_row_xan"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_THEO_CONC_3MEOXAN_T5",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "variable_name": "Theoretical concentration of 3-MeOXAN",
+      "value_text": "3360 mg/mL",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "New theoretical concentration for 3-MeOXAN nanocapsules in Table 5.",
+      "evidence_span_ids": [
+        "span_table5_header_theo_conc",
+        "span_table5_row_3meoxan"
+      ]
+    },
+    {
+      "variable_id": "VAR_NC_MYRITOL_VOL_T5",
+      "formulation_candidate_id": "FC_NC_EMPTY_T5_0_6ML",
+      "variable_name": "Myritol 318 volume",
+      "value_text": "0.6 mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Optimal Myritol 318 volume used for all nanocapsules in Table 5.",
+      "evidence_span_ids": [
+        "span_table5_caption",
+        "span_table5_oil_volume_selection"
+      ]
+    },
+    {
+      "variable_id": "VAR_PLGA_AMT_NS",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA amount",
+      "value_text": "63 mg",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Fixed amount for nanosphere preparation.",
+      "evidence_span_ids": [
+        "span_prep_ns_plga_amt"
+      ]
+    },
+    {
+      "variable_id": "VAR_PLGA_AMT_NC",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA amount",
+      "value_text": "50 mg",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Fixed amount for nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_prep_nc_polymer_lecithin_amt"
+      ]
+    },
+    {
+      "variable_id": "VAR_PLURONIC_F68_CONC_NS",
+      "formulation_candidate_id": "",
+      "variable_name": "Pluronic F-68 concentration",
+      "value_text": "0.25% (w/v)",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Fixed concentration for nanosphere preparation.",
+      "evidence_span_ids": [
+        "span_prep_ns_pluronic_sol"
+      ]
+    },
+    {
+      "variable_id": "VAR_PLURONIC_F68_CONC_NC",
+      "formulation_candidate_id": "",
+      "variable_name": "Pluronic F-68 concentration",
+      "value_text": "0.5% (w/v)",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Fixed concentration for nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_prep_nc_pluronic_sol"
+      ]
+    },
+    {
+      "variable_id": "VAR_SOYBEAN_LECITHIN_AMT_NC",
+      "formulation_candidate_id": "",
+      "variable_name": "Soybean lecithin amount",
+      "value_text": "100 mg",
+      "variable_role": "shared_context",
+      "ambiguity_note": "Fixed amount for nanocapsule preparation.",
+      "evidence_span_ids": [
+        "span_prep_nc_polymer_lecithin_amt"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "MEAS_NS_XAN_50_FINAL_CONC",
+      "formulation_candidate_id": "FC_NS_XAN_50_T1",
+      "measurement_name": "Final concentration",
+      "value_text": "13.0G1.1",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_50",
+        "span_table1_header_xan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_XAN_50_IE",
+      "formulation_candidate_id": "FC_NS_XAN_50_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "26.1G2.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_50",
+        "span_table1_header_xan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_XAN_60_FINAL_CONC",
+      "formulation_candidate_id": "FC_NS_XAN_60_T1",
+      "measurement_name": "Final concentration",
+      "value_text": "20.0G2.4",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_60",
+        "span_table1_header_xan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_XAN_60_IE",
+      "formulation_candidate_id": "FC_NS_XAN_60_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "33.0G4.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_xan_60",
+        "span_table1_header_xan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_50_FINAL_CONC",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_50_T1",
+      "measurement_name": "Final concentration",
+      "value_text": "19.0G0.6",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_50",
+        "span_table1_header_3meoxan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_50_IE",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_50_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "38.1G1.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_50",
+        "span_table1_header_3meoxan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_60_FINAL_CONC",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_60_T1",
+      "measurement_name": "Final concentration",
+      "value_text": "24.9G4.6",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_60",
+        "span_table1_header_3meoxan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_60_IE",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_60_T1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "41.5G7.6",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row_3meoxan_60",
+        "span_table1_header_3meoxan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_EMPTY_DIAMETER",
+      "formulation_candidate_id": "FC_NS_EMPTY_T2",
+      "measurement_name": "size",
+      "value_text": "154G6",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_empty",
+        "span_table2_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_EMPTY_PI",
+      "formulation_candidate_id": "FC_NS_EMPTY_T2",
+      "measurement_name": "pdi",
+      "value_text": "0.06G0.03",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_empty",
+        "span_table2_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_EMPTY_ZETA",
+      "formulation_candidate_id": "FC_NS_EMPTY_T2",
+      "measurement_name": "zeta_potential",
+      "value_text": "K36.2G5.2",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_empty",
+        "span_table2_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_XAN_DIAMETER",
+      "formulation_candidate_id": "FC_NS_XAN_T2",
+      "measurement_name": "size",
+      "value_text": "164G8",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_xan",
+        "span_table2_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_XAN_PI",
+      "formulation_candidate_id": "FC_NS_XAN_T2",
+      "measurement_name": "pdi",
+      "value_text": "0.06G0.03",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_xan",
+        "span_table2_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_XAN_ZETA",
+      "formulation_candidate_id": "FC_NS_XAN_T2",
+      "measurement_name": "zeta_potential",
+      "value_text": "K38.9G1.3",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_xan",
+        "span_table2_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_DIAMETER",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_T2",
+      "measurement_name": "size",
+      "value_text": "164G9",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3meoxan",
+        "span_table2_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_PI",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_T2",
+      "measurement_name": "pdi",
+      "value_text": "0.06G0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3meoxan",
+        "span_table2_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NS_3MEOXAN_ZETA",
+      "formulation_candidate_id": "FC_NS_3MEOXAN_T2",
+      "measurement_name": "zeta_potential",
+      "value_text": "K36.0G3.0",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3meoxan",
+        "span_table2_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_200_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_XAN_200_T3",
+      "measurement_name": "Final concentration",
+      "value_text": "178G21",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_200",
+        "span_table3_header_xan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_200_IE",
+      "formulation_candidate_id": "FC_NC_XAN_200_T3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "89G11",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_200",
+        "span_table3_header_xan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_400_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_XAN_400_T3",
+      "measurement_name": "Final concentration",
+      "value_text": "342G18",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_400",
+        "span_table3_header_xan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_400_IE",
+      "formulation_candidate_id": "FC_NC_XAN_400_T3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "85G5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_400",
+        "span_table3_header_xan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_600_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_XAN_600_T3",
+      "measurement_name": "Final concentration",
+      "value_text": "529G57",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_600",
+        "span_table3_header_xan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_600_IE",
+      "formulation_candidate_id": "FC_NC_XAN_600_T3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "88G9",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_xan_600",
+        "span_table3_header_xan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_1000_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1000_T3",
+      "measurement_name": "Final concentration",
+      "value_text": "887G51",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1000",
+        "span_table3_header_3meoxan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_1000_IE",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1000_T3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "89G5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1000",
+        "span_table3_header_3meoxan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_1200_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1200_T3",
+      "measurement_name": "Final concentration",
+      "value_text": "918G9",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1200",
+        "span_table3_header_3meoxan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_1200_IE",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1200_T3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "77G1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1200",
+        "span_table3_header_3meoxan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_1400_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1400_T3",
+      "measurement_name": "Final concentration",
+      "value_text": "1162G80",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1400",
+        "span_table3_header_3meoxan_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_1400_IE",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_1400_T3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "83G6",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table3_row_3meoxan_1400",
+        "span_table3_header_3meoxan_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_T4_DIAMETER",
+      "formulation_candidate_id": "FC_NC_EMPTY_T4",
+      "measurement_name": "size",
+      "value_text": "274G3",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_empty",
+        "span_table4_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_T4_PI",
+      "formulation_candidate_id": "FC_NC_EMPTY_T4",
+      "measurement_name": "pdi",
+      "value_text": "0.455G0.130",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_empty",
+        "span_table4_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_T4_ZETA",
+      "formulation_candidate_id": "FC_NC_EMPTY_T4",
+      "measurement_name": "zeta_potential",
+      "value_text": "K40.9G5.9",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_empty",
+        "span_table4_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T4_DIAMETER",
+      "formulation_candidate_id": "FC_NC_XAN_T4",
+      "measurement_name": "size",
+      "value_text": "278G15",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_xan",
+        "span_table4_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T4_PI",
+      "formulation_candidate_id": "FC_NC_XAN_T4",
+      "measurement_name": "pdi",
+      "value_text": "0.412G0.051",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_xan",
+        "span_table4_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T4_ZETA",
+      "formulation_candidate_id": "FC_NC_XAN_T4",
+      "measurement_name": "zeta_potential",
+      "value_text": "K39.1G0.7",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_xan",
+        "span_table4_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T4_DIAMETER",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T4",
+      "measurement_name": "size",
+      "value_text": "280G19",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_3meoxan",
+        "span_table4_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T4_PI",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T4",
+      "measurement_name": "pdi",
+      "value_text": "0.376G0.104",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_3meoxan",
+        "span_table4_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T4_ZETA",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T4",
+      "measurement_name": "zeta_potential",
+      "value_text": "K39.5G4.7",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table4_row_3meoxan",
+        "span_table4_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_T5_DIAMETER",
+      "formulation_candidate_id": "FC_NC_EMPTY_T5_0_6ML",
+      "measurement_name": "size",
+      "value_text": "261G17",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_empty",
+        "span_table5_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_T5_PI",
+      "formulation_candidate_id": "FC_NC_EMPTY_T5_0_6ML",
+      "measurement_name": "pdi",
+      "value_text": "0.48G0.06",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_empty",
+        "span_table5_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_T5_ZETA",
+      "formulation_candidate_id": "FC_NC_EMPTY_T5_0_6ML",
+      "measurement_name": "zeta_potential",
+      "value_text": "K36.3G4.3",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_empty",
+        "span_table5_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T5_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "Final concentration",
+      "value_text": "1173G100",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_xan",
+        "span_table5_header_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T5_IE",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "82G7",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_xan",
+        "span_table5_header_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T5_DIAMETER",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "size",
+      "value_text": "273G18",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_xan",
+        "span_table5_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T5_PI",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "pdi",
+      "value_text": "0.48G0.05",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_xan",
+        "span_table5_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_T5_ZETA",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "zeta_potential",
+      "value_text": "K36.4G9.3",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_xan",
+        "span_table5_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T5_FINAL_CONC",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "Final concentration",
+      "value_text": "2780G238",
+      "unit_text": "mg/mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_3meoxan",
+        "span_table5_header_final_conc"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T5_IE",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "83G7",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_3meoxan",
+        "span_table5_header_ie"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T5_DIAMETER",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "size",
+      "value_text": "271G16",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_3meoxan",
+        "span_table5_header_diameter"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T5_PI",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "pdi",
+      "value_text": "0.43G0.03",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_3meoxan",
+        "span_table5_header_pi"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_T5_ZETA",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "zeta_potential",
+      "value_text": "K41.8G5.4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table5_row_3meoxan",
+        "span_table5_header_zeta"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_0_5ML_STABILITY",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_5ML_MYRITOL_STUDY",
+      "measurement_name": "other",
+      "value_text": "stable",
+      "unit_text": "",
+      "ambiguity_note": "Showed a small pellet and a cream layer, no free oil.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_0_6ML_STABILITY",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_6ML_MYRITOL_STUDY",
+      "measurement_name": "other",
+      "value_text": "stable",
+      "unit_text": "",
+      "ambiguity_note": "Showed a small pellet and a cream layer, no free oil.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_0_7ML_STABILITY",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_7ML_MYRITOL_STUDY",
+      "measurement_name": "other",
+      "value_text": "poor stability",
+      "unit_text": "",
+      "ambiguity_note": "Showed a free oil layer.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_EMPTY_0_8ML_STABILITY",
+      "formulation_candidate_id": "FC_NC_EMPTY_0_8ML_MYRITOL_STUDY",
+      "measurement_name": "other",
+      "value_text": "poor stability",
+      "unit_text": "",
+      "ambiguity_note": "Showed a free oil layer.",
+      "evidence_span_ids": [
+        "span_table5_oil_volume_study_details"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_STABILITY_SIZE",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "size",
+      "value_text": "no significant differences",
+      "unit_text": "",
+      "ambiguity_note": "During storage at 4 °C for 4 months.",
+      "evidence_span_ids": [
+        "span_char_nc_stability_method",
+        "span_stability_text",
+        "span_stability_fig8"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_STABILITY_ZETA",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "zeta_potential",
+      "value_text": "no significant variation",
+      "unit_text": "",
+      "ambiguity_note": "During storage at 4 °C for 4 months.",
+      "evidence_span_ids": [
+        "span_char_nc_stability_method",
+        "span_stability_text",
+        "span_stability_fig9"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_XAN_STABILITY_CRYSTALS",
+      "formulation_candidate_id": "FC_NC_XAN_T5_0_6ML",
+      "measurement_name": "other",
+      "value_text": "no crystals observed",
+      "unit_text": "",
+      "ambiguity_note": "For up to 4 months.",
+      "evidence_span_ids": [
+        "span_stability_crystals"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_STABILITY_SIZE",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "size",
+      "value_text": "no significant differences",
+      "unit_text": "",
+      "ambiguity_note": "During storage at 4 °C for 4 months.",
+      "evidence_span_ids": [
+        "span_char_nc_stability_method",
+        "span_stability_text",
+        "span_stability_fig8"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_STABILITY_ZETA",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "zeta_potential",
+      "value_text": "no significant variation",
+      "unit_text": "",
+      "ambiguity_note": "During storage at 4 °C for 4 months.",
+      "evidence_span_ids": [
+        "span_char_nc_stability_method",
+        "span_stability_text",
+        "span_stability_fig9"
+      ]
+    },
+    {
+      "measurement_id": "MEAS_NC_3MEOXAN_STABILITY_CRYSTALS",
+      "formulation_candidate_id": "FC_NC_3MEOXAN_T5_0_6ML",
+      "measurement_name": "other",
+      "value_text": "crystals observed",
+      "unit_text": "",
+      "ambiguity_note": "At the end of the fourth month, no crystals for up to 3 months.",
+      "evidence_span_ids": [
+        "span_stability_crystals"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "span_abs_nanospheres_char",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "The nanospheres had a mean diameter !170 nm, a narrow size distribution (polydispersity index !0.1), and a negative surface charge (zeta potential !K36 mV). Their incorporation efﬁciencies were 33% for XAN and 42% for 3-MeOXAN."
+    },
+    {
+      "span_id": "span_abs_nanocapsules_char",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "Nanocapsules were also nanometric (mean size !300 nm) and exhibited a negative charge (zeta potential !K36 mV). Their incorporation efﬁciency values (O77%) were higher than those corresponding to nanospheres for both xanthones."
+    },
+    {
+      "span_id": "span_intro_aim",
+      "source_region_type": "text_span",
+      "source_locator_text": "1. Introduction",
+      "supporting_text": "the aim of the present work was to develop new formulations of XAN and 3-MeOXAN consisting of PLGA nanospheres and nanocapsules"
+    },
+    {
+      "span_id": "span_mat_xan",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "Xanthone (XAN)"
+    },
+    {
+      "span_id": "span_mat_plga",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "PLGA (50:50) MW 50 000–75 000"
+    },
+    {
+      "span_id": "span_mat_pluronic",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "Pluronic F-68"
+    },
+    {
+      "span_id": "span_mat_threalose",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "Threalose dihydrate"
+    },
+    {
+      "span_id": "span_mat_3meoxan",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "3-Methoxyxanthone (3-MeOXAN) was synthesised in our laboratory"
+    },
+    {
+      "span_id": "span_mat_myritol",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "Myritol 318 (caprilic/capric acid triglyceride)"
+    },
+    {
+      "span_id": "span_mat_lecithin",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.1. Materials",
+      "supporting_text": "soybean lecithin"
+    },
+    {
+      "span_id": "span_prep_ns_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "Nanospheres containing XAN or 3-MeOXAN were prepared by the solvent displacement technique described by Fessi et al. [18]."
+    },
+    {
+      "span_id": "span_prep_ns_plga_amt",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "organic solution of PLGA (63 mg)"
+    },
+    {
+      "span_id": "span_prep_ns_xan_3meoxan_amt",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "different amounts of XAN or 3-MeOXAN"
+    },
+    {
+      "span_id": "span_prep_ns_acetone_vol",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "in acetone (10 mL)"
+    },
+    {
+      "span_id": "span_prep_ns_pluronic_sol",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "10 mL of an aqueous solution of Pluronicw F-68 0.25% (w/v)"
+    },
+    {
+      "span_id": "span_prep_ns_threalose_centrifugation",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "after solubilization of a certain amount of threalose dihydrate for achieving a 5% (w/v) concentration."
+    },
+    {
+      "span_id": "span_prep_ns_empty",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2. Preparation of nanospheres",
+      "supporting_text": "Empty nanospheres were prepared according to the same procedure but omitting the xanthones in the organic phase."
+    },
+    {
+      "span_id": "span_char_ns_size_zeta_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.3.1. Particle size and zeta potential",
+      "supporting_text": "Particle size analysis of nanospheres was performed by photon correlation spectroscopy (PCS). This technique yields the mean particle diameter and the polydispersity index (PI), which is a dimensionless measure of the broadness of the particle size distribution. Zeta potential was evaluated by laser Doppler anemometry (LDA)."
+    },
+    {
+      "span_id": "span_char_ns_ie_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.3.2. Quantification of XAN and 3-MeOXAN content in nanospheres",
+      "supporting_text": "The content of XAN and 3-MeOXAN of the nanospheres was determined by UV (Schimadzu UV 1603 spectropho- tometer, Shimadzu Co., Kyoto, Japan) at 237 nm, by a modiﬁcation of a previously validated method [23], following the dissolution of the nanospheres in acetonitrile. Previous studies demonstrated no absorbance interference from empty nanospheres under the same conditions. Incorporation efﬁciency was calculated as follows: I:E:ð%Þ Z A=B!100"
+    },
+    {
+      "span_id": "span_prep_nc_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.4. Preparation of nanocapsules",
+      "supporting_text": "XAN and 3-MeOXAN-containing PLGA nanocapsules were prepared by the interfacial polymer deposition technique described by Fessi et al. [19]."
+    },
+    {
+      "span_id": "span_prep_nc_polymer_lecithin_amt",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.4. Preparation of nanocapsules",
+      "supporting_text": "about 50 mg of polymer and 100 mg of soybean lecithin were dissolved in 10 mL of acetone."
+    },
+    {
+      "span_id": "span_prep_nc_xan_3meoxan_amt",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.4. Preparation of nanocapsules",
+      "supporting_text": "Different amounts of XAN or 3-MeOXAN were dissolved in 0.5–0.6 mL of Myritolw 318"
+    },
+    {
+      "span_id": "span_prep_nc_pluronic_sol",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.4. Preparation of nanocapsules",
+      "supporting_text": "poured into 20 mL of an aqueous solution of Pluronicw F-68 0.5% (w/v)"
+    },
+    {
+      "span_id": "span_prep_nc_empty",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.4. Preparation of nanocapsules",
+      "supporting_text": "Empty nanocapsules were prepared according to the same procedure but omitting the xanthones in the organic phase."
+    },
+    {
+      "span_id": "span_prep_nc_nanoemulsion",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.4. Preparation of nanocapsules",
+      "supporting_text": "XAN and 3-MeOXAN nanoemulsions were prepared as nanocapsules, omitting the polymer in the organic phase."
+    },
+    {
+      "span_id": "span_char_nc_size_zeta_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.5.1. Particle size and zeta potential",
+      "supporting_text": "Particle size analysis of nanocapsules was performed by photon correlation spectroscopy (PCS). This technique yields the mean particle diameter and the polydispersity index (PI), which is a dimensionless measure of the broadness of the particle size distribution. Zeta potential was evaluated by laser Doppler anemometry (LDA)."
+    },
+    {
+      "span_id": "span_char_nc_ie_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.5.2. Quantification of XAN and 3-MeOXAN content in nanocapsules",
+      "supporting_text": "The content of XAN and 3-MeOXAN of the nanocap- sules was determined by a previously validated HPLC method [24], following the dissolution of an aliquot of the nanocapsule dispersion in acetonitrile. Incorporation efﬁciency was calculated as described for nanospheres (Section 2.3.2)."
+    },
+    {
+      "span_id": "span_char_nc_release_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.5.3. In vitro release studies of XAN and 3-MeOXAN from nanocapsules",
+      "supporting_text": "In vitro release studies of XAN and 3-MeOXAN from the nanocapsules were carried out at 37 8C, by the bulk equilibrium reverse dialysis bag technique, as previously described by Levy and Benita [25]."
+    },
+    {
+      "span_id": "span_char_nc_stability_method",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.5.4. Physical stability",
+      "supporting_text": "The effect of storage time on the particle size and zeta potential of XAN and 3-MeOXAN-containing nanocap- sules formulations was assessed. Nanocapsules aqueous dispersions were stored in sealed glass bottles at 4 8C and protected from light, during a 4-month period."
+    },
+    {
+      "span_id": "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres"
+    },
+    {
+      "span_id": "span_table1_header_theo_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 0, col 0",
+      "supporting_text": "Theoretical concen- tration (mg/mL)"
+    },
+    {
+      "span_id": "span_table1_header_xan_final_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 0, col 1",
+      "supporting_text": "XAN nanospheres Final con- centration (mg/mL)"
+    },
+    {
+      "span_id": "span_table1_header_xan_ie",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 0, col 2",
+      "supporting_text": "XAN nanospheres Encapsula- tion efﬁ- ciency (%)"
+    },
+    {
+      "span_id": "span_table1_header_3meoxan_final_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 0, col 3",
+      "supporting_text": "3-MeOXAN nanospheres Final con- centration (mg/mL)"
+    },
+    {
+      "span_id": "span_table1_header_3meoxan_ie",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, row 0, col 4",
+      "supporting_text": "3-MeOXAN nanospheres Encapsula- tion efﬁ- ciency (%)"
+    },
+    {
+      "span_id": "span_table1_row_xan_50",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 1",
+      "supporting_text": "50 13.0G1.1 26.1G2.1"
+    },
+    {
+      "span_id": "span_table1_row_xan_60",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 2",
+      "supporting_text": "60 20.0G2.4 33.0G4.1"
+    },
+    {
+      "span_id": "span_table1_row_xan_70",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 3",
+      "supporting_text": "70 Crystals of XAN ND"
+    },
+    {
+      "span_id": "span_table1_row_xan_80",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 4",
+      "supporting_text": "80 Crystals of XAN ND"
+    },
+    {
+      "span_id": "span_table1_row_3meoxan_50",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 1",
+      "supporting_text": "50 19.0G0.6 38.1G1.1"
+    },
+    {
+      "span_id": "span_table1_row_3meoxan_60",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 2",
+      "supporting_text": "60 24.9G4.6 41.5G7.6"
+    },
+    {
+      "span_id": "span_table1_row_3meoxan_70",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 3",
+      "supporting_text": "70 Crystals of 3-MeOXAN ND"
+    },
+    {
+      "span_id": "span_table1_row_3meoxan_80",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 4",
+      "supporting_text": "80 Crystals of 3-MeOXAN ND"
+    },
+    {
+      "span_id": "span_table1_selection_text",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.1. Characteristics of XAN and 3-MeOXAN-loaded nanospheres",
+      "supporting_text": "According to the results shown in Table 1, maximum incorporation efﬁciencies were achieved either for XAN (33.0G4.1%) or for 3-MeOXAN (41.5G7.6%) corresponding to a theoretical concentration of 60 mg/mL."
+    },
+    {
+      "span_id": "span_table1_selection_text_precipitate",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.1. Characteristics of XAN and 3-MeOXAN-loaded nanospheres",
+      "supporting_text": "For concentrations above 70 mg/mL both xanthones precipitated in the form of crystals, indicating that the maximum loading capacity of the carrier was reached."
+    },
+    {
+      "span_id": "span_table2_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2 Mean diameter, polydispersity index (PI) and zeta potential (z) of PLGA empty and loaded nanospheres"
+    },
+    {
+      "span_id": "span_table2_header_empty",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, row 0, col 0",
+      "supporting_text": "Empty nanospheres"
+    },
+    {
+      "span_id": "span_table2_header_xan",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, row 0, col 1",
+      "supporting_text": "XAN nanospheresa"
+    },
+    {
+      "span_id": "span_table2_header_3meoxan",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, row 0, col 2",
+      "supporting_text": "3-MeOXAN nanospheresb"
+    },
+    {
+      "span_id": "span_table2_header_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, row 1, col 0",
+      "supporting_text": "Diameter (nm)"
+    },
+    {
+      "span_id": "span_table2_header_pi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, row 2, col 0",
+      "supporting_text": "PI"
+    },
+    {
+      "span_id": "span_table2_header_zeta",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, row 3, col 0",
+      "supporting_text": "z (mV)"
+    },
+    {
+      "span_id": "span_table2_row_empty",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 1, col 0; row 2, col 0; row 3, col 0",
+      "supporting_text": "154G6 0.06G0.03 K36.2G5.2"
+    },
+    {
+      "span_id": "span_table2_row_xan",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 1, col 1; row 2, col 1; row 3, col 1",
+      "supporting_text": "164G8 0.06G0.03 K38.9G1.3"
+    },
+    {
+      "span_id": "span_table2_row_3meoxan",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, row 1, col 2; row 2, col 2; row 3, col 2",
+      "supporting_text": "164G9 0.06G0.01 K36.0G3.0"
+    },
+    {
+      "span_id": "span_table2_footnote_a",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, footnote a",
+      "supporting_text": "a XAN nanosphere with theoretical concentration of 60 mg/mL."
+    },
+    {
+      "span_id": "span_table2_footnote_b",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, footnote b",
+      "supporting_text": "b 3-MeOXAN nanospheres with theoretical concentration of 60 mg/mL."
+    },
+    {
+      "span_id": "span_table2_inheritance_text",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.1. Characteristics of XAN and 3-MeOXAN-loaded nanospheres",
+      "supporting_text": "Particle size results (Table 2) of prepared empty XAN and 3-MeOXAN nanospheres showed that all samples were in the nanometric range (mean diameter !170 nm) and exhibited a narrow size distribution (PI!0.1)."
+    },
+    {
+      "span_id": "span_table3_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 3",
+      "supporting_text": "Table 3 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules"
+    },
+    {
+      "span_id": "span_table3_header_theo_conc_xan",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 0",
+      "supporting_text": "XAN nanocapsules Theoretical concentration (mg/mL)"
+    },
+    {
+      "span_id": "span_table3_header_xan_myritol",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 1",
+      "supporting_text": "XAN nanocapsules XAN/ Myritol 318% (w/v)"
+    },
+    {
+      "span_id": "span_table3_header_xan_final_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 2",
+      "supporting_text": "XAN nanocapsules Final concen- tration (mg/mL)"
+    },
+    {
+      "span_id": "span_table3_header_xan_ie",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 3",
+      "supporting_text": "XAN nanocapsules Encapsulation efﬁciency (%)"
+    },
+    {
+      "span_id": "span_table3_header_theo_conc_3meoxan",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 4",
+      "supporting_text": "3-MeOXAN nanocapsules Theoretical concentration (mg/mL)"
+    },
+    {
+      "span_id": "span_table3_header_3meoxan_myritol",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 5",
+      "supporting_text": "3-MeOXAN nanocapsules 3-MeOXAN/ Myritol 318% (w/v)"
+    },
+    {
+      "span_id": "span_table3_header_3meoxan_final_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 6",
+      "supporting_text": "3-MeOXAN nanocapsules Final concen- tration (mg/mL)"
+    },
+    {
+      "span_id": "span_table3_header_3meoxan_ie",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 3, row 0, col 7",
+      "supporting_text": "3-MeOXAN nanocapsules Encapsulation efﬁciency (%)"
+    },
+    {
+      "span_id": "span_table3_row_xan_200",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 1",
+      "supporting_text": "200 0.4 178G21 89G11"
+    },
+    {
+      "span_id": "span_table3_row_xan_400",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 2",
+      "supporting_text": "400 0.8 342G18 85G5"
+    },
+    {
+      "span_id": "span_table3_row_xan_600",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 3",
+      "supporting_text": "600 1.2 529G57 88G9"
+    },
+    {
+      "span_id": "span_table3_row_xan_700",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 4",
+      "supporting_text": "700 1.4 Crystals of XAN ND"
+    },
+    {
+      "span_id": "span_table3_row_xan_800",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 5",
+      "supporting_text": "800 1.6 Crystals of XAN ND"
+    },
+    {
+      "span_id": "span_table3_row_3meoxan_1000",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 1",
+      "supporting_text": "1000 2.0 887G51 89G5"
+    },
+    {
+      "span_id": "span_table3_row_3meoxan_1200",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 2",
+      "supporting_text": "1200 2.4 918G9 77G1"
+    },
+    {
+      "span_id": "span_table3_row_3meoxan_1400",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 3",
+      "supporting_text": "1400 2.8 1162G80 83G6"
+    },
+    {
+      "span_id": "span_table3_row_3meoxan_1600",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 4",
+      "supporting_text": "1600 3.2 Crystals of 3-MeOXAN ND"
+    },
+    {
+      "span_id": "span_table3_selection_text",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules",
+      "supporting_text": "maximum concentrations of xanthones encapsulated into the nanocapsules were attained for theoretical concentrations of 600 mg/mL for XAN (corresponding to a concentration of 1.2%, w/v, in Myritol 318) and 1400 mg/mL for 3-MeOXAN (corresponding to a concentration of 2.8%, w/v, in Myritol 318)."
+    },
+    {
+      "span_id": "span_table3_selection_text_precipitate",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules",
+      "supporting_text": "For higher concentrations, XAN crystals could be observed, indicating that the maximum loading capacity of the nanocapsules had been reached... As in the previous case, for higher concentrations, 3-MeOXAN crystals could be detected."
+    },
+    {
+      "span_id": "span_table4_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 4",
+      "supporting_text": "Table 4 Mean diameter, polydispersity index (PI) and zeta potential (z) of empty and loaded PLGA nanocapsules"
+    },
+    {
+      "span_id": "span_table4_header_empty",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, row 0, col 0",
+      "supporting_text": "Empty nanocapsules"
+    },
+    {
+      "span_id": "span_table4_header_xan",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, row 0, col 1",
+      "supporting_text": "XAN nanocapsulesa"
+    },
+    {
+      "span_id": "span_table4_header_3meoxan",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, row 0, col 2",
+      "supporting_text": "3-MeOXAN nanocapsulesb"
+    },
+    {
+      "span_id": "span_table4_header_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, row 1, col 0",
+      "supporting_text": "Diameter (nm)"
+    },
+    {
+      "span_id": "span_table4_header_pi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, row 2, col 0",
+      "supporting_text": "PI"
+    },
+    {
+      "span_id": "span_table4_header_zeta",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, row 3, col 0",
+      "supporting_text": "z (mV)"
+    },
+    {
+      "span_id": "span_table4_row_empty",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 4, row 1, col 0; row 2, col 0; row 3, col 0",
+      "supporting_text": "274G3 0.455G0.130 K40.9G5.9"
+    },
+    {
+      "span_id": "span_table4_row_xan",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 4, row 1, col 1; row 2, col 1; row 3, col 1",
+      "supporting_text": "278G15 0.412G0.051 K39.1G0.7"
+    },
+    {
+      "span_id": "span_table4_row_3meoxan",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 4, row 1, col 2; row 2, col 2; row 3, col 2",
+      "supporting_text": "280G19 0.376G0.104 K39.5G4.7"
+    },
+    {
+      "span_id": "span_table4_footnote_a",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, footnote a",
+      "supporting_text": "a XAN nanocapsules with theoretical concentration of 600 mg/mL."
+    },
+    {
+      "span_id": "span_table4_footnote_b",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 4, footnote b",
+      "supporting_text": "b 3-MeOXAN nanocapsules with theoretical concentration of 1400 mg/mL."
+    },
+    {
+      "span_id": "span_table4_inheritance_text",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules",
+      "supporting_text": "Results of particle size analysis (Tables 4 and 5) indicate that the mean sizes of the different nanocapsule formulations are lower than 300 nm and correspond to a mid-range polydispersity population (PI!0.5)."
+    },
+    {
+      "span_id": "span_table5_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 5",
+      "supporting_text": "Table 5 Mean diameter, polydispersity index (PI), zeta potential (z) and incorporation parameters of various nanocapsule formulations: empty nanocapsules (0.6 mL Myritol 318 and without xanthones), XAN-loaded nanocapsules (0.6 mL Myritol 318, XAN theoretical concentration of 1440 mg/mL) and 3-MeOXAN-loaded nanocapsules (0.6 mL Myritol 318, 3-MeOXAN theoretical concentration of 3360 mg/mL)"
+    },
+    {
+      "span_id": "span_table5_header_sample",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 0",
+      "supporting_text": "Sample"
+    },
+    {
+      "span_id": "span_table5_header_theo_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 1",
+      "supporting_text": "Theoretical con- centration (mg/mL)"
+    },
+    {
+      "span_id": "span_table5_header_final_conc",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 2",
+      "supporting_text": "Final concentration (mg/mL) [n]"
+    },
+    {
+      "span_id": "span_table5_header_ie",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 3",
+      "supporting_text": "Encapsulation efﬁciency (%)"
+    },
+    {
+      "span_id": "span_table5_header_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 4",
+      "supporting_text": "Diameter (nm) [n]"
+    },
+    {
+      "span_id": "span_table5_header_pi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 5",
+      "supporting_text": "PI"
+    },
+    {
+      "span_id": "span_table5_header_zeta",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 5, row 0, col 6",
+      "supporting_text": "z (mV) [n]"
+    },
+    {
+      "span_id": "span_table5_row_empty",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 5, row 1",
+      "supporting_text": "Empty nanocapsules – – – 261G17 [5] 0.48G0.06 K36.3G4.3 [5]"
+    },
+    {
+      "span_id": "span_table5_row_xan",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 5, row 2",
+      "supporting_text": "XAN nanocapsules 1440 1173G100 [7] 82G7 273G18 [5] 0.48G0.05 K36.4G9.3 [5]"
+    },
+    {
+      "span_id": "span_table5_row_3meoxan",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 5, row 3",
+      "supporting_text": "3-MeOXAN nanocapsules 3360 2780G238 [7] 83G7 271G16 [5] 0.43G0.03 K41.8G5.4 [5]"
+    },
+    {
+      "span_id": "span_table5_context_oil_volume_study",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules",
+      "supporting_text": "The second strategy adopted in order to increase the con- centration of the nanoencapsulated xanthones in the nanocapsules suspension was based on increasing the volume of Myritol 318 and on concentrating the ﬁnal dispersion to 5 mL instead of 10 mL."
+    },
+    {
+      "span_id": "span_table5_oil_volume_selection",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules",
+      "supporting_text": "Thus, our results suggest that 0.6 mL is the limiting volume of Myritol 318 that allows the preparation of stable nanocapsule formulations. As a consequence, the new formulations of XAN and 3-MeOXAN-containing nanocapsules were prepared using 0.6 mL of Myritol 318, while maintaining the concentration of each compound in the oil volume (1.2%, w/v, for XAN and 2.8%, w/v, for 3-MeOXAN)."
+    },
+    {
+      "span_id": "span_table5_oil_volume_study_details",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.2. Characteristics of XAN and 3-MeOXAN-loaded nanocapsules",
+      "supporting_text": "several formulations of empty nanocapsules were obtained using ﬁxed amounts of polymer and surfactants and different volumes of Myritol 318 (0.5, 0.6, 0.7 and 0.8 mL) and submitted to centrifugation (25 000!g, for 30 min). The formulations containing 0.5 and 0.6 mL of Myritol 318 showed a small pellet at the bottom of the ﬂask, attributed to nanospheres and a cream layer at the surface corresponding to nanocapsules. No free oil could be detected in these formulations indicating that the oil was completely coated by the polymer. The formulations including 0.7 and 0.8 mL of Myritol 318 showed a free oil layer at the surface of the dispersions upon centrifugation indicating a poor stability."
+    },
+    {
+      "span_id": "span_nanoemulsion_control_release",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.3. In vitro release",
+      "supporting_text": "Nanoemulsions were used as control, in order to investigate the role of polymeric wall on drug release."
+    },
+    {
+      "span_id": "span_nanoemulsion_release_fig6",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "Fig. 6",
+      "supporting_text": "Fig. 6. In vitro release proﬁles of 3-MeOXAN from PLGA nanocapsules and from nanoemulsion followed by its diffusion through the dialysis bag."
+    },
+    {
+      "span_id": "span_nanoemulsion_release_fig7",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "Fig. 7",
+      "supporting_text": "Fig. 7. In vitro release proﬁles of XAN from PLGA nanocapsules and from nanoemulsion followed by its diffusion through the dialysis bag."
+    },
+    {
+      "span_id": "span_stability_fig8",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "Fig. 8",
+      "supporting_text": "Fig. 8. Evolution of mean size of empty nanocapsules, XAN- and 3- MeOXAN-loaded nanocapsules, during storage at 4 8C for 4 months."
+    },
+    {
+      "span_id": "span_stability_fig9",
+      "source_region_type": "figure_caption",
+      "source_locator_text": "Fig. 9",
+      "supporting_text": "Fig. 9. Evolution of zeta potential of empty nanocapsules, XAN- and 3- MeOXAN-loaded nanocapsules, during storage at 4 8C for 4 months."
+    },
+    {
+      "span_id": "span_stability_text",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.4. Physical stability",
+      "supporting_text": "no signiﬁcant differences (PO0.05) on the mean size of empty nanocapsules and XAN- or 3-MeOXAN-loaded nanocapsules were observed during storage of the respective aqueous dispersions at 4 8C for 4 months. Similarly, no signiﬁcant variation on zeta potential values (Fig. 9) was observed during storage for all studied nanocapsule formulations (PO0.05)."
+    },
+    {
+      "span_id": "span_stability_crystals",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.4. Physical stability",
+      "supporting_text": "No sediment, cream or free oil could be observed in any formulation. In addition, no XAN crystals were observed for up to 4 months. For 3-MeOXAN-loaded nanocapsules no crystals were detected for up to 3 months. However, some crystals could be observed at the end of the fourth month."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 1 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres"
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "sequential_child",
+      "confidence": "high",
+      "evidence_span": "Table 2 Mean diameter, polydispersity index (PI) and zeta potential (z) of PLGA empty and loaded nanospheres"
+    },
+    {
+      "table_id": "Table 3",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 3 Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules"
+    },
+    {
+      "table_id": "Table 4",
+      "is_formulation_table": true,
+      "table_type": "sequential_child",
+      "confidence": "high",
+      "evidence_span": "Table 4 Mean diameter, polydispersity index (PI) and zeta potential (z) of empty and loaded PLGA nanocapsules"
+    },
+    {
+      "table_id": "Table 5",
+      "is_formulation_table": true,
+      "table_type": "sequential_child",
+      "confidence": "high",
+      "evidence_span": "Table 5 Mean diameter, polydispersity index (PI), zeta potential (z) and incorporation parameters of various nanocapsule formulations: empty nanocapsules (0.6 mL Myritol 318 and without xanthones), XAN-loaded nanocapsules (0.6 mL Myritol 318, XAN theoretical concentration of 1440 mg/mL) and 3-MeOXAN-loaded nanocapsules (0.6 mL Myritol 318, 3-MeOXAN theoretical concentration of 3360 mg/mL)"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Theoretical concentration of XAN",
+        "Theoretical concentration of 3-MeOXAN"
+      ],
+      "constant_variables": [
+        "PLGA amount",
+        "Pluronic F-68 concentration"
+      ],
+      "new_variables_introduced": [
+        "Final concentration",
+        "Encapsulation efficiency"
+      ]
+    },
+    {
+      "table_id": "Table 2",
+      "varying_variables": [],
+      "constant_variables": [
+        "Theoretical concentration of XAN",
+        "Theoretical concentration of 3-MeOXAN",
+        "PLGA amount",
+        "Pluronic F-68 concentration"
+      ],
+      "new_variables_introduced": [
+        "Diameter",
+        "PI",
+        "Zeta potential"
+      ]
+    },
+    {
+      "table_id": "Table 3",
+      "varying_variables": [
+        "Theoretical concentration of XAN",
+        "Theoretical concentration of 3-MeOXAN"
+      ],
+      "constant_variables": [
+        "PLGA amount",
+        "Soybean lecithin amount",
+        "Pluronic F-68 concentration",
+        "Myritol 318 volume"
+      ],
+      "new_variables_introduced": [
+        "XAN/Myritol 318% (w/v)",
+        "3-MeOXAN/Myritol 318% (w/v)",
+        "Final concentration",
+        "Encapsulation efficiency"
+      ]
+    },
+    {
+      "table_id": "Table 4",
+      "varying_variables": [],
+      "constant_variables": [
+        "Theoretical concentration of XAN",
+        "Theoretical concentration of 3-MeOXAN",
+        "PLGA amount",
+        "Soybean lecithin amount",
+        "Pluronic F-68 concentration",
+        "Myritol 318 volume"
+      ],
+      "new_variables_introduced": [
+        "Diameter",
+        "PI",
+        "Zeta potential"
+      ]
+    },
+    {
+      "table_id": "Table 5",
+      "varying_variables": [
+        "Theoretical concentration of XAN",
+        "Theoretical concentration of 3-MeOXAN"
+      ],
+      "constant_variables": [
+        "Myritol 318 volume"
+      ],
+      "new_variables_introduced": [
+        "Final concentration",
+        "Encapsulation efficiency",
+        "Diameter",
+        "PI",
+        "Zeta potential"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 1",
+      "selected_variable": "Theoretical concentration of XAN",
+      "selected_value": "60 mg/mL",
+      "explicit": true,
+      "evidence_span": "maximum incorporation efﬁciencies were achieved either for XAN (33.0G4.1%) or for 3-MeOXAN (41.5G7.6%) corresponding to a theoretical concentration of 60 mg/mL."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 1",
+      "selected_variable": "Theoretical concentration of 3-MeOXAN",
+      "selected_value": "60 mg/mL",
+      "explicit": true,
+      "evidence_span": "maximum incorporation efﬁciencies were achieved either for XAN (33.0G4.1%) or for 3-MeOXAN (41.5G7.6%) corresponding to a theoretical concentration of 60 mg/mL."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 3",
+      "selected_variable": "Theoretical concentration of XAN",
+      "selected_value": "600 mg/mL",
+      "explicit": true,
+      "evidence_span": "maximum concentrations of xanthones encapsulated into the nanocapsules were attained for theoretical concentrations of 600 mg/mL for XAN (corresponding to a concentration of 1.2%, w/v, in Myritol 318) and 1400 mg/mL for 3-MeOXAN (corresponding to a concentration of 2.8%, w/v, in Myritol 318)."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 3",
+      "selected_variable": "Theoretical concentration of 3-MeOXAN",
+      "selected_value": "1400 mg/mL",
+      "explicit": true,
+      "evidence_span": "maximum concentrations of xanthones encapsulated into the nanocapsules were attained for theoretical concentrations of 600 mg/mL for XAN (corresponding to a concentration of 1.2%, w/v, in Myritol 318) and 1400 mg/mL for 3-MeOXAN (corresponding to a concentration of 2.8%, w/v, in Myritol 318)."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "",
+      "selected_variable": "Myritol 318 volume",
+      "selected_value": "0.6 mL",
+      "explicit": true,
+      "evidence_span": "Thus, our results suggest that 0.6 mL is the limiting volume of Myritol 318 that allows the preparation of stable nanocapsule formulations."
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 2",
+      "inherit_type": "selected_condition",
+      "variable": "Theoretical concentration of XAN",
+      "value": "60 mg/mL",
+      "evidence_span": "XAN nanosphere with theoretical concentration of 60 mg/mL."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 2",
+      "inherit_type": "selected_condition",
+      "variable": "Theoretical concentration of 3-MeOXAN",
+      "value": "60 mg/mL",
+      "evidence_span": "3-MeOXAN nanospheres with theoretical concentration of 60 mg/mL."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 3",
+      "to_table": "Table 4",
+      "inherit_type": "selected_condition",
+      "variable": "Theoretical concentration of XAN",
+      "value": "600 mg/mL",
+      "evidence_span": "XAN nanocapsules with theoretical concentration of 600 mg/mL."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 3",
+      "to_table": "Table 4",
+      "inherit_type": "selected_condition",
+      "variable": "Theoretical concentration of 3-MeOXAN",
+      "value": "1400 mg/mL",
+      "evidence_span": "3-MeOXAN nanocapsules with theoretical concentration of 1400 mg/mL."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "",
+      "to_table": "Table 5",
+      "inherit_type": "selected_condition",
+      "variable": "Myritol 318 volume",
+      "value": "0.6 mL",
+      "evidence_span": "As a consequence, the new formulations of XAN and 3-MeOXAN-containing nanocapsules were prepared using 0.6 mL of Myritol 318"
+    }
+  ],
+  "preparation_inheritance_markers": [],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 3",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 4",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 5",
+      "is_doe": false
+    }
+  ]
+}

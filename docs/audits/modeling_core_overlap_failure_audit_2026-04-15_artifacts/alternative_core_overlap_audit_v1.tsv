@@ -1,0 +1,7 @@
+core_set_name	definition	baseline_count	row_binding_count	combined_binding_count
+Core Set A	official	20	20	20
+Core Set B	official	20	20	20
+Core Set C	official	20	20	20
+Core Set A1	drug_name + encapsulation_efficiency_percent + (polymer_mw_kDa OR la_ga_ratio)	20	20	20
+Core Set A2	drug_name + encapsulation_efficiency_percent + (polymer_amount OR drug_feed_amount OR drug_polymer_ratio)	20	20	20
+Core Set A3	drug_name + encapsulation_efficiency_percent + surfactant_name + (surfactant_concentration OR polymer_amount)	20	20	20

@@ -1,0 +1,2724 @@
+{
+  "document_key": "BB3JUVW7",
+  "doi": "10.1016/j.ijpharm.2021.120820",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F1_NS",
+      "raw_label": "Artemether 5mg, PLGA 75mg, PVA 75mg, Acetone 5mL, Aqueous phase 15mL",
+      "normalized_label": "Artemether 5mg, PLGA 75mg, PVA 75mg, Acetone 5mL, Aqueous phase 15mL nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2_NS",
+      "raw_label": "Artemether 5mg, PLGA 75mg, PVA 150mg, Acetone 5mL, Aqueous phase 15mL",
+      "normalized_label": "Artemether 5mg, PLGA 75mg, PVA 150mg, Acetone 5mL, Aqueous phase 15mL nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3_NS",
+      "raw_label": "Artemether 10mg, PLGA 75mg, PVA 300mg, Acetone 10mL, Aqueous phase 30mL",
+      "normalized_label": "Artemether 10mg, PLGA 75mg, PVA 300mg, Acetone 10mL, Aqueous phase 30mL nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4_NS",
+      "raw_label": "Artemether 10mg, PLGA 75mg, PVA 150mg, Acetone 10mL, Aqueous phase 30mL",
+      "normalized_label": "Artemether 10mg, PLGA 75mg, PVA 150mg, Acetone 10mL, Aqueous phase 30mL nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5_NS",
+      "raw_label": "Artemether 10mg, PLGA 75mg, PVA 150mg, Acetone 15mL, Aqueous phase 30mL",
+      "normalized_label": "Artemether 10mg, PLGA 75mg, PVA 150mg, Acetone 15mL, Aqueous phase 30mL nanospheres",
+      "instance_kind": "new_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F1_NR",
+      "raw_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 4x, Acetone liquefaction, Incubation 15 min)",
+      "normalized_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 4x, Acetone liquefaction, Incubation 15 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2_NR",
+      "raw_label": "Nanorods (Film thickness 150 µm, PLGA 75:25, Stretching 4x, Acetone liquefaction, Incubation 15 min)",
+      "normalized_label": "Nanorods (Film thickness 150 µm, PLGA 75:25, Stretching 4x, Acetone liquefaction, Incubation 15 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3_NR",
+      "raw_label": "Nanorods (Film thickness 100 µm, PLGA 50:50, Stretching 4x, Acetone liquefaction, Incubation 15 min)",
+      "normalized_label": "Nanorods (Film thickness 100 µm, PLGA 50:50, Stretching 4x, Acetone liquefaction, Incubation 15 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4_NR",
+      "raw_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 2x, Acetone liquefaction, Incubation 15 min)",
+      "normalized_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 2x, Acetone liquefaction, Incubation 15 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5_NR",
+      "raw_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 4x, Heat* liquefaction, Incubation 5 min)",
+      "normalized_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 4x, Heat* liquefaction, Incubation 5 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row5"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F6_NR",
+      "raw_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 2x, Heat* liquefaction, Incubation 15 min)",
+      "normalized_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 2x, Heat* liquefaction, Incubation 15 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row6"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F7_NR",
+      "raw_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 4x, Heat* liquefaction, Incubation 15 min)",
+      "normalized_label": "Nanorods (Film thickness 100 µm, PLGA 75:25, Stretching 4x, Heat* liquefaction, Incubation 15 min)",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "unclear",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Nanorods obtained by mechanical stretching of nanospheres under specified process conditions."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "change_context_tags": [
+        "doe",
+        "process_setting"
+      ],
+      "ambiguity_note": "The specific parent nanosphere formulation from Table 1 used to create these nanorods is not explicitly stated.",
+      "evidence_span_ids": [
+        "span_table2_row7"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_artemether_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "component_name": "Artemether",
+      "component_role": "drug",
+      "amount_text": "5",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_artemether"
+      ]
+    },
+    {
+      "component_id": "comp_plga_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "75",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_plga"
+      ]
+    },
+    {
+      "component_id": "comp_pva_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "75",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_pva"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "5",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_acetone"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "component_name": "Aqueous phase",
+      "component_role": "solvent",
+      "amount_text": "15",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_aqueous"
+      ]
+    },
+    {
+      "component_id": "comp_artemether_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "component_name": "Artemether",
+      "component_role": "drug",
+      "amount_text": "5",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_artemether"
+      ]
+    },
+    {
+      "component_id": "comp_plga_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "75",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_plga"
+      ]
+    },
+    {
+      "component_id": "comp_pva_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "150",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_pva"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "5",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_acetone"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "component_name": "Aqueous phase",
+      "component_role": "solvent",
+      "amount_text": "15",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_aqueous"
+      ]
+    },
+    {
+      "component_id": "comp_artemether_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "component_name": "Artemether",
+      "component_role": "drug",
+      "amount_text": "10",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_artemether"
+      ]
+    },
+    {
+      "component_id": "comp_plga_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "75",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_plga"
+      ]
+    },
+    {
+      "component_id": "comp_pva_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "300",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_pva"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_acetone"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "component_name": "Aqueous phase",
+      "component_role": "solvent",
+      "amount_text": "30",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_aqueous"
+      ]
+    },
+    {
+      "component_id": "comp_artemether_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "component_name": "Artemether",
+      "component_role": "drug",
+      "amount_text": "10",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_artemether"
+      ]
+    },
+    {
+      "component_id": "comp_plga_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "75",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_plga"
+      ]
+    },
+    {
+      "component_id": "comp_pva_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "150",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_pva"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "10",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_acetone"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "component_name": "Aqueous phase",
+      "component_role": "solvent",
+      "amount_text": "30",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_aqueous"
+      ]
+    },
+    {
+      "component_id": "comp_artemether_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "component_name": "Artemether",
+      "component_role": "drug",
+      "amount_text": "10",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_artemether"
+      ]
+    },
+    {
+      "component_id": "comp_plga_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "75",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_plga"
+      ]
+    },
+    {
+      "component_id": "comp_pva_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "150",
+      "amount_kind": "mass",
+      "phase_hint": "mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_pva"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "15",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_acetone"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "component_name": "Aqueous phase",
+      "component_role": "solvent",
+      "amount_text": "30",
+      "amount_kind": "volume",
+      "phase_hint": "mL",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_aqueous"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_film_thickness_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "variable_name": "Film thickness",
+      "value_text": "100",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row1_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "75:25",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row1_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "4x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row1_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Acetone",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row1_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "variable_name": "Incubation period",
+      "value_text": "15",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row1_incubation_period"
+      ]
+    },
+    {
+      "variable_id": "var_film_thickness_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "variable_name": "Film thickness",
+      "value_text": "150",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row2_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "75:25",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row2_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "4x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row2_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Acetone",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row2_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "variable_name": "Incubation period",
+      "value_text": "15",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row2_incubation_period"
+      ]
+    },
+    {
+      "variable_id": "var_film_thickness_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "variable_name": "Film thickness",
+      "value_text": "100",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row3_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "50:50",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row3_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "4x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row3_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Acetone",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row3_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "variable_name": "Incubation period",
+      "value_text": "15",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row3_incubation_period"
+      ]
+    },
+    {
+      "variable_id": "var_film_thickness_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "variable_name": "Film thickness",
+      "value_text": "100",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row4_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "75:25",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row4_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "2x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row4_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Acetone",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row4_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "variable_name": "Incubation period",
+      "value_text": "15",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row4_incubation_period"
+      ]
+    },
+    {
+      "variable_id": "var_film_thickness_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "variable_name": "Film thickness",
+      "value_text": "100",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row5_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "75:25",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row5_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "4x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row5_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Heat*",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row5_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "variable_name": "Incubation period",
+      "value_text": "5",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row5_incubation_period"
+      ]
+    },
+    {
+      "variable_id": "var_film_thickness_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "variable_name": "Film thickness",
+      "value_text": "100",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row6_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "75:25",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row6_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "2x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row6_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Heat*",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row6_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "variable_name": "Incubation period",
+      "value_text": "15",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row6_incubation_period"
+      ]
+    },
+    {
+      "variable_id": "var_film_thickness_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "variable_name": "Film thickness",
+      "value_text": "100",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row7_film_thickness"
+      ]
+    },
+    {
+      "variable_id": "var_plga_type_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "variable_name": "PLGA type (lactide: glycolide)",
+      "value_text": "75:25",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row7_plga_type"
+      ]
+    },
+    {
+      "variable_id": "var_stretching_extent_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "variable_name": "Extent of stretching",
+      "value_text": "4x",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row7_stretching_extent"
+      ]
+    },
+    {
+      "variable_id": "var_liquefaction_method_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "variable_name": "Liquefaction method",
+      "value_text": "Heat*",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row7_liquefaction_method"
+      ]
+    },
+    {
+      "variable_id": "var_incubation_period_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "variable_name": "Incubation period",
+      "value_text": "15",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row7_incubation_period"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_ps_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "measurement_name": "size",
+      "value_text": "190.2 ± 18.0",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_ps"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "measurement_name": "pdi",
+      "value_text": "0.06 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_pdi"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "measurement_name": "zeta_potential",
+      "value_text": "−8.0 ± 0.58",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_zp"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "78.5 ± 1.8",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_ee"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_F1NS",
+      "formulation_candidate_id": "F1_NS",
+      "measurement_name": "loading_content",
+      "value_text": "4.9 ± 0.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1_dl"
+      ]
+    },
+    {
+      "measurement_id": "meas_ps_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "measurement_name": "size",
+      "value_text": "214.3 ± 6.2",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_ps"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "measurement_name": "pdi",
+      "value_text": "0.238",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_pdi"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "measurement_name": "zeta_potential",
+      "value_text": "−1.8 ± 0.22",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_zp"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "80.0 ± 0.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_ee"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_F2NS",
+      "formulation_candidate_id": "F2_NS",
+      "measurement_name": "loading_content",
+      "value_text": "5.0 ± 0.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2_dl"
+      ]
+    },
+    {
+      "measurement_id": "meas_ps_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "measurement_name": "size",
+      "value_text": "196.8 ± 1.1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_ps"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "measurement_name": "pdi",
+      "value_text": "0.214",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_pdi"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "measurement_name": "zeta_potential",
+      "value_text": "−2.2 ± 0.16",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_zp"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "78.3 ± 0.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_ee"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_F3NS",
+      "formulation_candidate_id": "F3_NS",
+      "measurement_name": "loading_content",
+      "value_text": "9.2 ± 0.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3_dl"
+      ]
+    },
+    {
+      "measurement_id": "meas_ps_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "measurement_name": "size",
+      "value_text": "245.5 ± 44.5",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_ps"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "measurement_name": "pdi",
+      "value_text": "0.183",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_pdi"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "measurement_name": "zeta_potential",
+      "value_text": "−3.2 ± 0.24",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_zp"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "80.6 ± 0.4",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_ee"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_F4NS",
+      "formulation_candidate_id": "F4_NS",
+      "measurement_name": "loading_content",
+      "value_text": "9.5 ± 0.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4_dl"
+      ]
+    },
+    {
+      "measurement_id": "meas_ps_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "measurement_name": "size",
+      "value_text": "129.3 ± 3.6",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_ps"
+      ]
+    },
+    {
+      "measurement_id": "meas_pdi_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "measurement_name": "pdi",
+      "value_text": "0.06 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_pdi"
+      ]
+    },
+    {
+      "measurement_id": "meas_zp_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "measurement_name": "zeta_potential",
+      "value_text": "−7.4 ± 0.69",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_zp"
+      ]
+    },
+    {
+      "measurement_id": "meas_ee_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "86.9 ± 0.2",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_ee"
+      ]
+    },
+    {
+      "measurement_id": "meas_dl_F5NS",
+      "formulation_candidate_id": "F5_NS",
+      "measurement_name": "loading_content",
+      "value_text": "10.2 ± 0.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5_dl"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "measurement_name": "size",
+      "value_text": "234.1 ± 61.7",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row1_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "measurement_name": "size",
+      "value_text": "61.3 ± 8.7",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row1_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "measurement_name": "other",
+      "value_text": "3.8 ± 0.8",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row1_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "measurement_name": "size",
+      "value_text": "237.2 ± 61.9",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row1_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "measurement_name": "size",
+      "value_text": "77.8 ± 13.3",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row1_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F1NR",
+      "formulation_candidate_id": "F1_NR",
+      "measurement_name": "loading_content",
+      "value_text": "1.8",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row1_drug_content"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "measurement_name": "size",
+      "value_text": "295.1 ± 64.9",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row2_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "measurement_name": "size",
+      "value_text": "58.1 ± 12.0",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row2_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "measurement_name": "other",
+      "value_text": "5.1 ± 0.8",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row2_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "measurement_name": "size",
+      "value_text": "265.4 ± 66.3",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row2_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "measurement_name": "size",
+      "value_text": "59.6 ± 15.2",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row2_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F2NR",
+      "formulation_candidate_id": "F2_NR",
+      "measurement_name": "loading_content",
+      "value_text": "1.4",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row2_drug_content"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "measurement_name": "size",
+      "value_text": "211.3 ± 44.1",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row3_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "measurement_name": "size",
+      "value_text": "61.1 ± 11.6",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row3_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "measurement_name": "other",
+      "value_text": "3.5 ± 0.7",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row3_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "measurement_name": "size",
+      "value_text": "198.1 ± 37.5",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row3_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "measurement_name": "size",
+      "value_text": "67.7 ± 10.4",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row3_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F3NR",
+      "formulation_candidate_id": "F3_NR",
+      "measurement_name": "loading_content",
+      "value_text": "2.6",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row3_drug_content"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "measurement_name": "size",
+      "value_text": "128.1 ± 23.1",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row4_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "measurement_name": "size",
+      "value_text": "61.5 ± 10.3",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row4_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "measurement_name": "other",
+      "value_text": "2.1 ± 0.3",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row4_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "measurement_name": "size",
+      "value_text": "127.5 ± 22.9",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row4_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "measurement_name": "size",
+      "value_text": "61.3 ± 10.4",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row4_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F4NR",
+      "formulation_candidate_id": "F4_NR",
+      "measurement_name": "loading_content",
+      "value_text": "1.6",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row4_drug_content"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "measurement_name": "size",
+      "value_text": "241.7 ± 76.3",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row5_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "measurement_name": "size",
+      "value_text": "140.1 ± 31.3",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row5_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "measurement_name": "other",
+      "value_text": "1.7 ± 0.3",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row5_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "measurement_name": "size",
+      "value_text": "294.0 ± 85.8",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row5_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "measurement_name": "size",
+      "value_text": "157.6 ± 32.8",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row5_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F5NR",
+      "formulation_candidate_id": "F5_NR",
+      "measurement_name": "loading_content",
+      "value_text": "0.9",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row5_drug_content"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "measurement_name": "size",
+      "value_text": "329.6 ± 79.3",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row6_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "measurement_name": "size",
+      "value_text": "92.2 ± 14.9",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row6_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "measurement_name": "other",
+      "value_text": "3.6 ± 0.7",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row6_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "measurement_name": "size",
+      "value_text": "343.0 ± 79.7",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row6_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "measurement_name": "size",
+      "value_text": "98.9 ± 17.8",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row6_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F6NR",
+      "formulation_candidate_id": "F6_NR",
+      "measurement_name": "loading_content",
+      "value_text": "0.8",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row6_drug_content"
+      ]
+    },
+    {
+      "measurement_id": "meas_major_axis_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "measurement_name": "size",
+      "value_text": "510.7 ± 114.6",
+      "unit_text": "nm",
+      "ambiguity_note": "Major axis",
+      "evidence_span_ids": [
+        "span_table2_row7_major_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_axis_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "measurement_name": "size",
+      "value_text": "102.0 ± 23.7",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor axis",
+      "evidence_span_ids": [
+        "span_table2_row7_minor_axis"
+      ]
+    },
+    {
+      "measurement_id": "meas_ar_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "measurement_name": "other",
+      "value_text": "5.1 ± 0.9",
+      "unit_text": "",
+      "ambiguity_note": "Aspect Ratio (AR)",
+      "evidence_span_ids": [
+        "span_table2_row7_ar"
+      ]
+    },
+    {
+      "measurement_id": "meas_feret_diameter_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "measurement_name": "size",
+      "value_text": "559.5 ± 102.8",
+      "unit_text": "nm",
+      "ambiguity_note": "Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row7_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_minor_feret_diameter_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "measurement_name": "size",
+      "value_text": "119.3 ± 28.8",
+      "unit_text": "nm",
+      "ambiguity_note": "Minor Feret’s diameter",
+      "evidence_span_ids": [
+        "span_table2_row7_minor_feret_diameter"
+      ]
+    },
+    {
+      "measurement_id": "meas_drug_content_F7NR",
+      "formulation_candidate_id": "F7_NR",
+      "measurement_name": "loading_content",
+      "value_text": "3.2",
+      "unit_text": "µg/mg",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row7_drug_content"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_nanorods_from_nanospheres",
+      "source_candidate_id": "F1_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    },
+    {
+      "relation_id": "rel_nanorods_from_nanospheres_2",
+      "source_candidate_id": "F2_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    },
+    {
+      "relation_id": "rel_nanorods_from_nanospheres_3",
+      "source_candidate_id": "F3_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    },
+    {
+      "relation_id": "rel_nanorods_from_nanospheres_4",
+      "source_candidate_id": "F4_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    },
+    {
+      "relation_id": "rel_nanorods_from_nanospheres_5",
+      "source_candidate_id": "F5_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    },
+    {
+      "relation_id": "rel_nanorods_from_nanospheres_6",
+      "source_candidate_id": "F6_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    },
+    {
+      "relation_id": "rel_nanorods_from_nanospheres_7",
+      "source_candidate_id": "F7_NR",
+      "target_candidate_id": "unclear",
+      "relation_type": "inherits_from",
+      "note": "Nanorods are obtained from nanospheres, but the specific parent nanosphere formulation is not specified.",
+      "evidence_span_ids": [
+        "span_nanorods_from_nanospheres_text"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1 . Particle size, PDI, %EE, %DL and zeta potential of the artemether loaded nanospheres."
+    },
+    {
+      "span_table2_caption": "span_table2_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2 . Physicochemical parameters of nanorods obtained by varying the process conditions."
+    },
+    {
+      "span_table1_row1": "span_table1_row1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, Row 1",
+      "supporting_text": "5\t75\t75\t5\t15\t190.2 ± 18.0\t0.06 ± 0.01\t−8.0 ± 0.58\t78.5 ± 1.8\t4.9 ± 0.1"
+    },
+    {
+      "span_table1_row1_artemether": "span_table1_row1_artemether",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'Artemether (mg)'",
+      "supporting_text": "5"
+    },
+    {
+      "span_table1_row1_plga": "span_table1_row1_plga",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'PLGA (mg)'",
+      "supporting_text": "75"
+    },
+    {
+      "span_table1_row1_pva": "span_table1_row1_pva",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'PVA (mg)'",
+      "supporting_text": "75"
+    },
+    {
+      "span_table1_row1_acetone": "span_table1_row1_acetone",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'Acetone (mL)'",
+      "supporting_text": "5"
+    },
+    {
+      "span_table1_row1_aqueous": "span_table1_row1_aqueous",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'Aqueous phase (mL)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table1_row1_ps": "span_table1_row1_ps",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'Particle size (nm)'",
+      "supporting_text": "190.2 ± 18.0"
+    },
+    {
+      "span_table1_row1_pdi": "span_table1_row1_pdi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'PDI'",
+      "supporting_text": "0.06 ± 0.01"
+    },
+    {
+      "span_table1_row1_zp": "span_table1_row1_zp",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col 'Zeta potential (mV)'",
+      "supporting_text": "−8.0 ± 0.58"
+    },
+    {
+      "span_table1_row1_ee": "span_table1_row1_ee",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col '%EE'",
+      "supporting_text": "78.5 ± 1.8"
+    },
+    {
+      "span_table1_row1_dl": "span_table1_row1_dl",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 1, Col '% DL'",
+      "supporting_text": "4.9 ± 0.1"
+    },
+    {
+      "span_table1_row2": "span_table1_row2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, Row 2",
+      "supporting_text": "5\t75\t150\t5\t15\t214.3 ± 6.2\t0.238\t−1.8 ± 0.22\t80.0 ± 0.1\t5.0 ± 0.0"
+    },
+    {
+      "span_table1_row2_artemether": "span_table1_row2_artemether",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'Artemether (mg)'",
+      "supporting_text": "5"
+    },
+    {
+      "span_table1_row2_plga": "span_table1_row2_plga",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'PLGA (mg)'",
+      "supporting_text": "75"
+    },
+    {
+      "span_table1_row2_pva": "span_table1_row2_pva",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'PVA (mg)'",
+      "supporting_text": "150"
+    },
+    {
+      "span_table1_row2_acetone": "span_table1_row2_acetone",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'Acetone (mL)'",
+      "supporting_text": "5"
+    },
+    {
+      "span_table1_row2_aqueous": "span_table1_row2_aqueous",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'Aqueous phase (mL)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table1_row2_ps": "span_table1_row2_ps",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'Particle size (nm)'",
+      "supporting_text": "214.3 ± 6.2"
+    },
+    {
+      "span_table1_row2_pdi": "span_table1_row2_pdi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'PDI'",
+      "supporting_text": "0.238"
+    },
+    {
+      "span_table1_row2_zp": "span_table1_row2_zp",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col 'Zeta potential (mV)'",
+      "supporting_text": "−1.8 ± 0.22"
+    },
+    {
+      "span_table1_row2_ee": "span_table1_row2_ee",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col '%EE'",
+      "supporting_text": "80.0 ± 0.1"
+    },
+    {
+      "span_table1_row2_dl": "span_table1_row2_dl",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 2, Col '% DL'",
+      "supporting_text": "5.0 ± 0.0"
+    },
+    {
+      "span_table1_row3": "span_table1_row3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, Row 3",
+      "supporting_text": "10\t75\t300\t10\t30\t196.8 ± 1.1\t0.214\t−2.2 ± 0.16\t78.3 ± 0.0\t9.2 ± 0.0"
+    },
+    {
+      "span_table1_row3_artemether": "span_table1_row3_artemether",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'Artemether (mg)'",
+      "supporting_text": "10"
+    },
+    {
+      "span_table1_row3_plga": "span_table1_row3_plga",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'PLGA (mg)'",
+      "supporting_text": "75"
+    },
+    {
+      "span_table1_row3_pva": "span_table1_row3_pva",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'PVA (mg)'",
+      "supporting_text": "300"
+    },
+    {
+      "span_table1_row3_acetone": "span_table1_row3_acetone",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'Acetone (mL)'",
+      "supporting_text": "10"
+    },
+    {
+      "span_table1_row3_aqueous": "span_table1_row3_aqueous",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'Aqueous phase (mL)'",
+      "supporting_text": "30"
+    },
+    {
+      "span_table1_row3_ps": "span_table1_row3_ps",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'Particle size (nm)'",
+      "supporting_text": "196.8 ± 1.1"
+    },
+    {
+      "span_table1_row3_pdi": "span_table1_row3_pdi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'PDI'",
+      "supporting_text": "0.214"
+    },
+    {
+      "span_table1_row3_zp": "span_table1_row3_zp",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col 'Zeta potential (mV)'",
+      "supporting_text": "−2.2 ± 0.16"
+    },
+    {
+      "span_table1_row3_ee": "span_table1_row3_ee",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col '%EE'",
+      "supporting_text": "78.3 ± 0.0"
+    },
+    {
+      "span_table1_row3_dl": "span_table1_row3_dl",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 3, Col '% DL'",
+      "supporting_text": "9.2 ± 0.0"
+    },
+    {
+      "span_table1_row4": "span_table1_row4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, Row 4",
+      "supporting_text": "10\t75\t150\t10\t30\t245.5 ± 44.5\t0.183\t−3.2 ± 0.24\t80.6 ± 0.4\t9.5 ± 0.0"
+    },
+    {
+      "span_table1_row4_artemether": "span_table1_row4_artemether",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'Artemether (mg)'",
+      "supporting_text": "10"
+    },
+    {
+      "span_table1_row4_plga": "span_table1_row4_plga",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'PLGA (mg)'",
+      "supporting_text": "75"
+    },
+    {
+      "span_table1_row4_pva": "span_table1_row4_pva",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'PVA (mg)'",
+      "supporting_text": "150"
+    },
+    {
+      "span_table1_row4_acetone": "span_table1_row4_acetone",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'Acetone (mL)'",
+      "supporting_text": "10"
+    },
+    {
+      "span_table1_row4_aqueous": "span_table1_row4_aqueous",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'Aqueous phase (mL)'",
+      "supporting_text": "30"
+    },
+    {
+      "span_table1_row4_ps": "span_table1_row4_ps",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'Particle size (nm)'",
+      "supporting_text": "245.5 ± 44.5"
+    },
+    {
+      "span_table1_row4_pdi": "span_table1_row4_pdi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'PDI'",
+      "supporting_text": "0.183"
+    },
+    {
+      "span_table1_row4_zp": "span_table1_row4_zp",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col 'Zeta potential (mV)'",
+      "supporting_text": "−3.2 ± 0.24"
+    },
+    {
+      "span_table1_row4_ee": "span_table1_row4_ee",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col '%EE'",
+      "supporting_text": "80.6 ± 0.4"
+    },
+    {
+      "span_table1_row4_dl": "span_table1_row4_dl",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 4, Col '% DL'",
+      "supporting_text": "9.5 ± 0.0"
+    },
+    {
+      "span_table1_row5": "span_table1_row5",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, Row 5",
+      "supporting_text": "10\t75\t150\t15\t30\t129.3 ± 3.6\t0.06 ± 0.01\t−7.4 ± 0.69\t86.9 ± 0.2\t10.2 ± 0.0"
+    },
+    {
+      "span_table1_row5_artemether": "span_table1_row5_artemether",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'Artemether (mg)'",
+      "supporting_text": "10"
+    },
+    {
+      "span_table1_row5_plga": "span_table1_row5_plga",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'PLGA (mg)'",
+      "supporting_text": "75"
+    },
+    {
+      "span_table1_row5_pva": "span_table1_row5_pva",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'PVA (mg)'",
+      "supporting_text": "150"
+    },
+    {
+      "span_table1_row5_acetone": "span_table1_row5_acetone",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'Acetone (mL)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table1_row5_aqueous": "span_table1_row5_aqueous",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'Aqueous phase (mL)'",
+      "supporting_text": "30"
+    },
+    {
+      "span_table1_row5_ps": "span_table1_row5_ps",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'Particle size (nm)'",
+      "supporting_text": "129.3 ± 3.6"
+    },
+    {
+      "span_table1_row5_pdi": "span_table1_row5_pdi",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'PDI'",
+      "supporting_text": "0.06 ± 0.01"
+    },
+    {
+      "span_table1_row5_zp": "span_table1_row5_zp",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col 'Zeta potential (mV)'",
+      "supporting_text": "−7.4 ± 0.69"
+    },
+    {
+      "span_table1_row5_ee": "span_table1_row5_ee",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col '%EE'",
+      "supporting_text": "86.9 ± 0.2"
+    },
+    {
+      "span_table1_row5_dl": "span_table1_row5_dl",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row 5, Col '% DL'",
+      "supporting_text": "10.2 ± 0.0"
+    },
+    {
+      "span_table2_row1": "span_table2_row1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 1",
+      "supporting_text": "100\t75:25\t4x\tAcetone\t15\t234.1 ± 61.7\t61.3 ± 8.7\t3.8 ± 0.8\t237.2 ± 61.9\t77.8 ± 13.3\t1.8"
+    },
+    {
+      "span_table2_row1_film_thickness": "span_table2_row1_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Film thickness (µm)'",
+      "supporting_text": "100"
+    },
+    {
+      "span_table2_row1_plga_type": "span_table2_row1_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "75:25"
+    },
+    {
+      "span_table2_row1_stretching_extent": "span_table2_row1_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Extent of stretching'",
+      "supporting_text": "4x"
+    },
+    {
+      "span_table2_row1_liquefaction_method": "span_table2_row1_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Liquefaction method'",
+      "supporting_text": "Acetone"
+    },
+    {
+      "span_table2_row1_incubation_period": "span_table2_row1_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Incubation period (min)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table2_row1_major_axis": "span_table2_row1_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Major axis (nm)'",
+      "supporting_text": "234.1 ± 61.7"
+    },
+    {
+      "span_table2_row1_minor_axis": "span_table2_row1_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Minor axis (nm)'",
+      "supporting_text": "61.3 ± 8.7"
+    },
+    {
+      "span_table2_row1_ar": "span_table2_row1_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'AR'",
+      "supporting_text": "3.8 ± 0.8"
+    },
+    {
+      "span_table2_row1_feret_diameter": "span_table2_row1_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "237.2 ± 61.9"
+    },
+    {
+      "span_table2_row1_minor_feret_diameter": "span_table2_row1_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "77.8 ± 13.3"
+    },
+    {
+      "span_table2_row1_drug_content": "span_table2_row1_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 'Drug content (µg/mg)'",
+      "supporting_text": "1.8"
+    },
+    {
+      "span_table2_row2": "span_table2_row2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 2",
+      "supporting_text": "150\t75:25\t4x\tAcetone\t15\t295.1 ± 64.9\t58.1 ± 12.0\t5.1 ± 0.8\t265.4 ± 66.3\t59.6 ± 15.2\t1.4"
+    },
+    {
+      "span_table2_row2_film_thickness": "span_table2_row2_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Film thickness (µm)'",
+      "supporting_text": "150"
+    },
+    {
+      "span_table2_row2_plga_type": "span_table2_row2_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "75:25"
+    },
+    {
+      "span_table2_row2_stretching_extent": "span_table2_row2_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Extent of stretching'",
+      "supporting_text": "4x"
+    },
+    {
+      "span_table2_row2_liquefaction_method": "span_table2_row2_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Liquefaction method'",
+      "supporting_text": "Acetone"
+    },
+    {
+      "span_table2_row2_incubation_period": "span_table2_row2_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Incubation period (min)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table2_row2_major_axis": "span_table2_row2_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Major axis (nm)'",
+      "supporting_text": "295.1 ± 64.9"
+    },
+    {
+      "span_table2_row2_minor_axis": "span_table2_row2_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Minor axis (nm)'",
+      "supporting_text": "58.1 ± 12.0"
+    },
+    {
+      "span_table2_row2_ar": "span_table2_row2_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'AR'",
+      "supporting_text": "5.1 ± 0.8"
+    },
+    {
+      "span_table2_row2_feret_diameter": "span_table2_row2_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "265.4 ± 66.3"
+    },
+    {
+      "span_table2_row2_minor_feret_diameter": "span_table2_row2_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "59.6 ± 15.2"
+    },
+    {
+      "span_table2_row2_drug_content": "span_table2_row2_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 'Drug content (µg/mg)'",
+      "supporting_text": "1.4"
+    },
+    {
+      "span_table2_row3": "span_table2_row3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 3",
+      "supporting_text": "100\t50:50\t4x\tAcetone\t15\t211.3 ± 44.1\t61.1 ± 11.6\t3.5 ± 0.7\t198.1 ± 37.5\t67.7 ± 10.4\t2.6"
+    },
+    {
+      "span_table2_row3_film_thickness": "span_table2_row3_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Film thickness (µm)'",
+      "supporting_text": "100"
+    },
+    {
+      "span_table2_row3_plga_type": "span_table2_row3_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "50:50"
+    },
+    {
+      "span_table2_row3_stretching_extent": "span_table2_row3_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Extent of stretching'",
+      "supporting_text": "4x"
+    },
+    {
+      "span_table2_row3_liquefaction_method": "span_table2_row3_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Liquefaction method'",
+      "supporting_text": "Acetone"
+    },
+    {
+      "span_table2_row3_incubation_period": "span_table2_row3_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Incubation period (min)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table2_row3_major_axis": "span_table2_row3_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Major axis (nm)'",
+      "supporting_text": "211.3 ± 44.1"
+    },
+    {
+      "span_table2_row3_minor_axis": "span_table2_row3_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Minor axis (nm)'",
+      "supporting_text": "61.1 ± 11.6"
+    },
+    {
+      "span_table2_row3_ar": "span_table2_row3_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'AR'",
+      "supporting_text": "3.5 ± 0.7"
+    },
+    {
+      "span_table2_row3_feret_diameter": "span_table2_row3_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "198.1 ± 37.5"
+    },
+    {
+      "span_table2_row3_minor_feret_diameter": "span_table2_row3_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "67.7 ± 10.4"
+    },
+    {
+      "span_table2_row3_drug_content": "span_table2_row3_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 'Drug content (µg/mg)'",
+      "supporting_text": "2.6"
+    },
+    {
+      "span_table2_row4": "span_table2_row4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 4",
+      "supporting_text": "100\t75:25\t2x\tAcetone\t15\t128.1 ± 23.1\t61.5 ± 10.3\t2.1 ± 0.3\t127.5 ± 22.9\t61.3 ± 10.4\t1.6"
+    },
+    {
+      "span_table2_row4_film_thickness": "span_table2_row4_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Film thickness (µm)'",
+      "supporting_text": "100"
+    },
+    {
+      "span_table2_row4_plga_type": "span_table2_row4_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "75:25"
+    },
+    {
+      "span_table2_row4_stretching_extent": "span_table2_row4_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Extent of stretching'",
+      "supporting_text": "2x"
+    },
+    {
+      "span_table2_row4_liquefaction_method": "span_table2_row4_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Liquefaction method'",
+      "supporting_text": "Acetone"
+    },
+    {
+      "span_table2_row4_incubation_period": "span_table2_row4_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Incubation period (min)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table2_row4_major_axis": "span_table2_row4_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Major axis (nm)'",
+      "supporting_text": "128.1 ± 23.1"
+    },
+    {
+      "span_table2_row4_minor_axis": "span_table2_row4_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Minor axis (nm)'",
+      "supporting_text": "61.5 ± 10.3"
+    },
+    {
+      "span_table2_row4_ar": "span_table2_row4_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'AR'",
+      "supporting_text": "2.1 ± 0.3"
+    },
+    {
+      "span_table2_row4_feret_diameter": "span_table2_row4_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "127.5 ± 22.9"
+    },
+    {
+      "span_table2_row4_minor_feret_diameter": "span_table2_row4_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "61.3 ± 10.4"
+    },
+    {
+      "span_table2_row4_drug_content": "span_table2_row4_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 4, Col 'Drug content (µg/mg)'",
+      "supporting_text": "1.6"
+    },
+    {
+      "span_table2_row5": "span_table2_row5",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 5",
+      "supporting_text": "100\t75:25\t4x\tHeat*\t5\t241.7 ± 76.3\t140.1 ± 31.3\t1.7 ± 0.3\t294.0 ± 85.8\t157.6 ± 32.8\t0.9"
+    },
+    {
+      "span_table2_row5_film_thickness": "span_table2_row5_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Film thickness (µm)'",
+      "supporting_text": "100"
+    },
+    {
+      "span_table2_row5_plga_type": "span_table2_row5_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "75:25"
+    },
+    {
+      "span_table2_row5_stretching_extent": "span_table2_row5_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Extent of stretching'",
+      "supporting_text": "4x"
+    },
+    {
+      "span_table2_row5_liquefaction_method": "span_table2_row5_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Liquefaction method'",
+      "supporting_text": "Heat*"
+    },
+    {
+      "span_table2_row5_incubation_period": "span_table2_row5_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Incubation period (min)'",
+      "supporting_text": "5"
+    },
+    {
+      "span_table2_row5_major_axis": "span_table2_row5_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Major axis (nm)'",
+      "supporting_text": "241.7 ± 76.3"
+    },
+    {
+      "span_table2_row5_minor_axis": "span_table2_row5_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Minor axis (nm)'",
+      "supporting_text": "140.1 ± 31.3"
+    },
+    {
+      "span_table2_row5_ar": "span_table2_row5_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'AR'",
+      "supporting_text": "1.7 ± 0.3"
+    },
+    {
+      "span_table2_row5_feret_diameter": "span_table2_row5_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "294.0 ± 85.8"
+    },
+    {
+      "span_table2_row5_minor_feret_diameter": "span_table2_row5_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "157.6 ± 32.8"
+    },
+    {
+      "span_table2_row5_drug_content": "span_table2_row5_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 5, Col 'Drug content (µg/mg)'",
+      "supporting_text": "0.9"
+    },
+    {
+      "span_table2_row6": "span_table2_row6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 6",
+      "supporting_text": "100\t75:25\t2x\tHeat*\t15\t329.6 ± 79.3\t92.2 ± 14.9\t3.6 ± 0.7\t343.0 ± 79.7\t98.9 ± 17.8\t0.8"
+    },
+    {
+      "span_table2_row6_film_thickness": "span_table2_row6_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Film thickness (µm)'",
+      "supporting_text": "100"
+    },
+    {
+      "span_table2_row6_plga_type": "span_table2_row6_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "75:25"
+    },
+    {
+      "span_table2_row6_stretching_extent": "span_table2_row6_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Extent of stretching'",
+      "supporting_text": "2x"
+    },
+    {
+      "span_table2_row6_liquefaction_method": "span_table2_row6_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Liquefaction method'",
+      "supporting_text": "Heat*"
+    },
+    {
+      "span_table2_row6_incubation_period": "span_table2_row6_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Incubation period (min)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table2_row6_major_axis": "span_table2_row6_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Major axis (nm)'",
+      "supporting_text": "329.6 ± 79.3"
+    },
+    {
+      "span_table2_row6_minor_axis": "span_table2_row6_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Minor axis (nm)'",
+      "supporting_text": "92.2 ± 14.9"
+    },
+    {
+      "span_table2_row6_ar": "span_table2_row6_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'AR'",
+      "supporting_text": "3.6 ± 0.7"
+    },
+    {
+      "span_table2_row6_feret_diameter": "span_table2_row6_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "343.0 ± 79.7"
+    },
+    {
+      "span_table2_row6_minor_feret_diameter": "span_table2_row6_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "98.9 ± 17.8"
+    },
+    {
+      "span_table2_row6_drug_content": "span_table2_row6_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 6, Col 'Drug content (µg/mg)'",
+      "supporting_text": "0.8"
+    },
+    {
+      "span_table2_row7": "span_table2_row7",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 7",
+      "supporting_text": "100\t75:25\t4x\tHeat*\t15\t510.7 ± 114.6\t102.0 ± 23.7\t5.1 ± 0.9\t559.5 ± 102.8\t119.3 ± 28.8\t3.2"
+    },
+    {
+      "span_table2_row7_film_thickness": "span_table2_row7_film_thickness",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Film thickness (µm)'",
+      "supporting_text": "100"
+    },
+    {
+      "span_table2_row7_plga_type": "span_table2_row7_plga_type",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'PLGA type (lactide: glycolide)'",
+      "supporting_text": "75:25"
+    },
+    {
+      "span_table2_row7_stretching_extent": "span_table2_row7_stretching_extent",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Extent of stretching'",
+      "supporting_text": "4x"
+    },
+    {
+      "span_table2_row7_liquefaction_method": "span_table2_row7_liquefaction_method",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Liquefaction method'",
+      "supporting_text": "Heat*"
+    },
+    {
+      "span_table2_row7_incubation_period": "span_table2_row7_incubation_period",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Incubation period (min)'",
+      "supporting_text": "15"
+    },
+    {
+      "span_table2_row7_major_axis": "span_table2_row7_major_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Major axis (nm)'",
+      "supporting_text": "510.7 ± 114.6"
+    },
+    {
+      "span_table2_row7_minor_axis": "span_table2_row7_minor_axis",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Minor axis (nm)'",
+      "supporting_text": "102.0 ± 23.7"
+    },
+    {
+      "span_table2_row7_ar": "span_table2_row7_ar",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'AR'",
+      "supporting_text": "5.1 ± 0.9"
+    },
+    {
+      "span_table2_row7_feret_diameter": "span_table2_row7_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Feret’s diameter (nm)'",
+      "supporting_text": "559.5 ± 102.8"
+    },
+    {
+      "span_table2_row7_minor_feret_diameter": "span_table2_row7_minor_feret_diameter",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Minor Feret’s diameter (nm)'",
+      "supporting_text": "119.3 ± 28.8"
+    },
+    {
+      "span_table2_row7_drug_content": "span_table2_row7_drug_content",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 7, Col 'Drug content (µg/mg)'",
+      "supporting_text": "3.2"
+    },
+    {
+      "span_nanorods_from_nanospheres_text": "span_nanorods_from_nanospheres_text",
+      "source_region_type": "text_span",
+      "source_locator_text": "2.2.2. Preparation of artemether loaded PLGA nanorods",
+      "supporting_text": "Preparation of artemether loaded PLGA nanorods"
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 1 . Particle size, PDI, %EE, %DL and zeta potential of the artemether loaded nanospheres."
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 2 . Physicochemical parameters of nanorods obtained by varying the process conditions."
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Artemether (mg)",
+        "PLGA (mg)",
+        "PVA (mg)",
+        "Acetone (mL)",
+        "Aqueous phase (mL)"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Particle size (nm)",
+        "PDI",
+        "Zeta potential (mV)",
+        "%EE",
+        "% DL"
+      ]
+    },
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "Film thickness (µm)",
+        "PLGA type (lactide: glycolide)",
+        "Extent of stretching",
+        "Liquefaction method",
+        "Incubation period (min)"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Major axis (nm)",
+        "Minor axis (nm)",
+        "AR",
+        "Feret’s diameter (nm)",
+        "Minor Feret’s diameter (nm)",
+        "Drug content (µg/mg)"
+      ]
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": true
+    }
+  ]
+}

@@ -195,6 +195,13 @@ Recommended task-to-query pattern:
   - `run lineage`
   - parent or child run theme
 
+Daily baseline audit support:
+
+- `src/utils/daily_baseline_audit_v1.py`
+- This is a governance-support utility only.
+- It may freeze a baseline snapshot from explicit run authority and an explicit maintained chain, record a declared modification scope from `docs/feature_governance/daily_audit_scope_contract_v1.tsv`, and build count-level plus fingerprint-level layered deltas between a baseline snapshot and an explicit rerun surface.
+- It must not execute pipeline stages, invent a chain, infer current sources by recency, or stand in for manual Stage0-Stage5 reproduction.
+
 Maintained-surface update rule:
 
 - when a maintained execution entrypoint changes, update both this runbook and

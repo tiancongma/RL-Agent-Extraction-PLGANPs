@@ -1,0 +1,1712 @@
+{
+  "document_key": "BXCV5XWB",
+  "doi": "10.1007/s10439-019-02430-x",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F1",
+      "raw_label": "KGN-loaded poly(lactic acid-co-glycolic acid) (PLGA) nanoparticles",
+      "normalized_label": "KGN-loaded PLGA nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_01",
+        "span_04",
+        "span_20",
+        "span_24",
+        "span_27",
+        "span_71"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2",
+      "raw_label": "PLGA–poly(ethylene glycol) (PEG) nanoparticles",
+      "normalized_label": "KGN-loaded PLGA-PEG nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F1",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "PEG surface modification"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "PLGA-PEG is a modification of PLGA nanoparticles.",
+      "evidence_span_ids": [
+        "span_01",
+        "span_04",
+        "span_15",
+        "span_21",
+        "span_25",
+        "span_28",
+        "span_71"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3",
+      "raw_label": "PLGA–PEG–hyaluronic acid (HA) nanoparticles",
+      "normalized_label": "KGN-loaded PLGA-PEG-HA nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "F2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "HA surface modification"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "PLGA-PEG-HA is a modification of PLGA-PEG nanoparticles.",
+      "evidence_span_ids": [
+        "span_01",
+        "span_04",
+        "span_09",
+        "span_15",
+        "span_19",
+        "span_22",
+        "span_26",
+        "span_29",
+        "span_71"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4",
+      "raw_label": "non-KGN loaded formulations (PLGA)",
+      "normalized_label": "non-KGN loaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "F1",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "No KGN loaded"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [
+        "control"
+      ],
+      "ambiguity_note": "Control formulation without KGN, derived from KGN-loaded PLGA.",
+      "evidence_span_ids": [
+        "span_17",
+        "span_18",
+        "span_23",
+        "span_68",
+        "span_69"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5",
+      "raw_label": "non-KGN loaded formulations (PLGA-PEG)",
+      "normalized_label": "non-KGN loaded PLGA-PEG nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "F2",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "No KGN loaded"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [
+        "control"
+      ],
+      "ambiguity_note": "Control formulation without KGN, derived from KGN-loaded PLGA-PEG.",
+      "evidence_span_ids": [
+        "span_17",
+        "span_18",
+        "span_23",
+        "span_68",
+        "span_69"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F6",
+      "raw_label": "non-KGN loaded formulations (PLGA-PEG-HA)",
+      "normalized_label": "non-KGN loaded PLGA-PEG-HA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "F3",
+      "change_role": "non_synthesis",
+      "change_descriptions": [
+        "No KGN loaded"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [
+        "control"
+      ],
+      "ambiguity_note": "Control formulation without KGN, derived from KGN-loaded PLGA-PEG-HA.",
+      "evidence_span_ids": [
+        "span_17",
+        "span_18",
+        "span_23",
+        "span_68",
+        "span_69"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "C1",
+      "formulation_candidate_id": "F1",
+      "component_name": "Kartogenin",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_57",
+        "span_62"
+      ]
+    },
+    {
+      "component_id": "C2",
+      "formulation_candidate_id": "F1",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_54"
+      ]
+    },
+    {
+      "component_id": "C3",
+      "formulation_candidate_id": "F1",
+      "component_name": "acetonitrile",
+      "component_role": "solvent",
+      "amount_text": "10 mL",
+      "amount_kind": "volume",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_59"
+      ]
+    },
+    {
+      "component_id": "C4",
+      "formulation_candidate_id": "F1",
+      "component_name": "poly(vinyl alcohol)",
+      "component_role": "surfactant",
+      "amount_text": "0.2% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_58",
+        "span_60"
+      ]
+    },
+    {
+      "component_id": "C5",
+      "formulation_candidate_id": "F1",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "100 mL",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_60"
+      ]
+    },
+    {
+      "component_id": "C6",
+      "formulation_candidate_id": "F2",
+      "component_name": "Kartogenin",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_57",
+        "span_62"
+      ]
+    },
+    {
+      "component_id": "C7",
+      "formulation_candidate_id": "F2",
+      "component_name": "PLGA–PEG copolymer",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_55"
+      ]
+    },
+    {
+      "component_id": "C8",
+      "formulation_candidate_id": "F2",
+      "component_name": "acetonitrile",
+      "component_role": "solvent",
+      "amount_text": "10 mL",
+      "amount_kind": "volume",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_59"
+      ]
+    },
+    {
+      "component_id": "C9",
+      "formulation_candidate_id": "F2",
+      "component_name": "poly(vinyl alcohol)",
+      "component_role": "surfactant",
+      "amount_text": "0.2% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_58",
+        "span_60"
+      ]
+    },
+    {
+      "component_id": "C10",
+      "formulation_candidate_id": "F2",
+      "component_name": "water",
+      "component_role": "solvent",
+      "amount_text": "100 mL",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_60"
+      ]
+    },
+    {
+      "component_id": "C11",
+      "formulation_candidate_id": "F3",
+      "component_name": "Kartogenin",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "polymer solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_57",
+        "span_62"
+      ]
+    },
+    {
+      "component_id": "C12",
+      "formulation_candidate_id": "F3",
+      "component_name": "PLGA–PEG nanoparticles",
+      "component_role": "precursor",
+      "amount_text": "used to achieve 3:1 w/w HA:nanoparticle ratio",
+      "amount_kind": "ratio",
+      "phase_hint": "MES buffer",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_19",
+        "span_66"
+      ]
+    },
+    {
+      "component_id": "C13",
+      "formulation_candidate_id": "F3",
+      "component_name": "hyaluronic acid",
+      "component_role": "polymer",
+      "amount_text": "5 mg/mL (solubilization), 3:1 w/w HA:nanoparticle (conjugation)",
+      "amount_kind": "concentration|ratio",
+      "phase_hint": "MES buffer",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_56",
+        "span_64",
+        "span_66"
+      ]
+    },
+    {
+      "component_id": "C14",
+      "formulation_candidate_id": "F3",
+      "component_name": "MES buffer",
+      "component_role": "solvent",
+      "amount_text": "0.01 M, pH 5.5",
+      "amount_kind": "concentration|pH",
+      "phase_hint": "aqueous phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_64"
+      ]
+    },
+    {
+      "component_id": "C15",
+      "formulation_candidate_id": "F3",
+      "component_name": "EDC",
+      "component_role": "additive",
+      "amount_text": "1:5:5 molar ratio (EDC:sulfo-NHS:HA)",
+      "amount_kind": "ratio",
+      "phase_hint": "HA activation",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_65"
+      ]
+    },
+    {
+      "component_id": "C16",
+      "formulation_candidate_id": "F3",
+      "component_name": "sulfo-NHS",
+      "component_role": "additive",
+      "amount_text": "1:5:5 molar ratio (EDC:sulfo-NHS:HA)",
+      "amount_kind": "ratio",
+      "phase_hint": "HA activation",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_65"
+      ]
+    },
+    {
+      "component_id": "C17",
+      "formulation_candidate_id": "F3",
+      "component_name": "HCl",
+      "component_role": "additive",
+      "amount_text": "0.1 M",
+      "amount_kind": "concentration",
+      "phase_hint": "HA de-salting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_63"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "V1",
+      "formulation_candidate_id": "",
+      "variable_name": "nanoprecipitation method",
+      "value_text": "nanoprecipitation",
+      "variable_role": "process_setting",
+      "ambiguity_note": "Shared preparation method for all nanoparticles.",
+      "evidence_span_ids": [
+        "span_01",
+        "span_07",
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V2",
+      "formulation_candidate_id": "",
+      "variable_name": "ACN volume",
+      "value_text": "10 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_59"
+      ]
+    },
+    {
+      "variable_id": "V3",
+      "formulation_candidate_id": "",
+      "variable_name": "PVA concentration in water",
+      "value_text": "0.2% w/v",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_60"
+      ]
+    },
+    {
+      "variable_id": "V4",
+      "formulation_candidate_id": "",
+      "variable_name": "water volume",
+      "value_text": "100 mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_60"
+      ]
+    },
+    {
+      "variable_id": "V5",
+      "formulation_candidate_id": "",
+      "variable_name": "addition rate (polymer solution to PVA solution)",
+      "value_text": "0.5 mL/min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08",
+        "span_61"
+      ]
+    },
+    {
+      "variable_id": "V6",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring temperature (after precipitation)",
+      "value_text": "60 °C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V7",
+      "formulation_candidate_id": "",
+      "variable_name": "stirring time (after precipitation)",
+      "value_text": "4 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V8",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation speed (nanoparticle collection)",
+      "value_text": "15,000 rpm",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V9",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation time (nanoparticle collection)",
+      "value_text": "20 min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V10",
+      "formulation_candidate_id": "",
+      "variable_name": "centrifugation temperature (nanoparticle collection)",
+      "value_text": "room temperature (20 °C)",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V11",
+      "formulation_candidate_id": "",
+      "variable_name": "washing steps (nanoparticle collection)",
+      "value_text": "three times with water",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_08"
+      ]
+    },
+    {
+      "variable_id": "V12",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA de-salting solution",
+      "value_text": "0.1 M HCl",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_63"
+      ]
+    },
+    {
+      "variable_id": "V13",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA solubilization buffer",
+      "value_text": "0.01 M MES buffer, pH 5.5",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_64"
+      ]
+    },
+    {
+      "variable_id": "V14",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA concentration in MES buffer",
+      "value_text": "5 mg/mL",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_64"
+      ]
+    },
+    {
+      "variable_id": "V15",
+      "formulation_candidate_id": "F3",
+      "variable_name": "EDC:sulfo-NHS:HA molar ratio",
+      "value_text": "1:5:5",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_65"
+      ]
+    },
+    {
+      "variable_id": "V16",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA activation time",
+      "value_text": "2 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_65"
+      ]
+    },
+    {
+      "variable_id": "V17",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA activation temperature",
+      "value_text": "RT",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_65"
+      ]
+    },
+    {
+      "variable_id": "V18",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA activation atmosphere",
+      "value_text": "under N2",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_65"
+      ]
+    },
+    {
+      "variable_id": "V19",
+      "formulation_candidate_id": "F3",
+      "variable_name": "HA:nanoparticle w/w ratio",
+      "value_text": "3:1",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_66"
+      ]
+    },
+    {
+      "variable_id": "V20",
+      "formulation_candidate_id": "F3",
+      "variable_name": "conjugation stirring time",
+      "value_text": "24 h",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_67"
+      ]
+    },
+    {
+      "variable_id": "V21",
+      "formulation_candidate_id": "F3",
+      "variable_name": "conjugation stirring temperature",
+      "value_text": "RT",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_67"
+      ]
+    },
+    {
+      "variable_id": "V22",
+      "formulation_candidate_id": "F3",
+      "variable_name": "conjugation atmosphere",
+      "value_text": "under N2",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_09",
+        "span_67"
+      ]
+    },
+    {
+      "variable_id": "V23",
+      "formulation_candidate_id": "F1",
+      "variable_name": "nanoparticle concentration for hMSC differentiation",
+      "value_text": "42.4 µg/mL",
+      "variable_role": "measurement_context",
+      "ambiguity_note": "Concentration calculated to deliver 100 nM KGN over 3 days.",
+      "evidence_span_ids": [
+        "span_16",
+        "span_72",
+        "span_73"
+      ]
+    },
+    {
+      "variable_id": "V24",
+      "formulation_candidate_id": "F2",
+      "variable_name": "nanoparticle concentration for hMSC differentiation",
+      "value_text": "18.4 µg/mL",
+      "variable_role": "measurement_context",
+      "ambiguity_note": "Concentration calculated to deliver 100 nM KGN over 3 days.",
+      "evidence_span_ids": [
+        "span_16",
+        "span_72",
+        "span_73"
+      ]
+    },
+    {
+      "variable_id": "V25",
+      "formulation_candidate_id": "F3",
+      "variable_name": "nanoparticle concentration for hMSC differentiation",
+      "value_text": "11.28 µg/mL",
+      "variable_role": "measurement_context",
+      "ambiguity_note": "Concentration calculated to deliver 100 nM KGN over 3 days.",
+      "evidence_span_ids": [
+        "span_16",
+        "span_72",
+        "span_73"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M1",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "size",
+      "value_text": "167 ± 1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_30",
+        "span_36"
+      ]
+    },
+    {
+      "measurement_id": "M2",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "pdi",
+      "value_text": "0.12 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_31",
+        "span_37"
+      ]
+    },
+    {
+      "measurement_id": "M3",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "zeta_potential",
+      "value_text": "− 33.1 ± 0.7",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_32",
+        "span_38"
+      ]
+    },
+    {
+      "measurement_id": "M4",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "62 ± 1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_11",
+        "span_33",
+        "span_39"
+      ]
+    },
+    {
+      "measurement_id": "M5",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "loading_content",
+      "value_text": "47 ± 1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_12",
+        "span_34",
+        "span_40"
+      ]
+    },
+    {
+      "measurement_id": "M6",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "size",
+      "value_text": "297 ± 1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_30",
+        "span_42"
+      ]
+    },
+    {
+      "measurement_id": "M7",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "pdi",
+      "value_text": "0.13 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_31",
+        "span_43"
+      ]
+    },
+    {
+      "measurement_id": "M8",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "zeta_potential",
+      "value_text": "11.2 ± 0.4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_32",
+        "span_44"
+      ]
+    },
+    {
+      "measurement_id": "M9",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "71 ± 1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_11",
+        "span_33",
+        "span_45"
+      ]
+    },
+    {
+      "measurement_id": "M10",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "loading_content",
+      "value_text": "16 ± 1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_12",
+        "span_34",
+        "span_46"
+      ]
+    },
+    {
+      "measurement_id": "M11",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "size",
+      "value_text": "507 ± 1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_30",
+        "span_48"
+      ]
+    },
+    {
+      "measurement_id": "M12",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "pdi",
+      "value_text": "0.14 ± 0.01",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_31",
+        "span_49"
+      ]
+    },
+    {
+      "measurement_id": "M13",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "zeta_potential",
+      "value_text": "− 28.5 ± 0.6",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_32",
+        "span_50"
+      ]
+    },
+    {
+      "measurement_id": "M14",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "55 ± 1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_11",
+        "span_33",
+        "span_51"
+      ]
+    },
+    {
+      "measurement_id": "M15",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "loading_content",
+      "value_text": "13 ± 1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_12",
+        "span_34",
+        "span_52"
+      ]
+    },
+    {
+      "measurement_id": "M16",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "36 ± 1",
+      "unit_text": "% w/w",
+      "ambiguity_note": "HA content",
+      "evidence_span_ids": [
+        "span_13",
+        "span_35",
+        "span_53"
+      ]
+    },
+    {
+      "measurement_id": "M17",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "other",
+      "value_text": "quantified using HPLC",
+      "unit_text": "",
+      "ambiguity_note": "KGN release profile",
+      "evidence_span_ids": [
+        "span_74"
+      ]
+    },
+    {
+      "measurement_id": "M18",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "other",
+      "value_text": "quantified using HPLC",
+      "unit_text": "",
+      "ambiguity_note": "KGN release profile",
+      "evidence_span_ids": [
+        "span_74"
+      ]
+    },
+    {
+      "measurement_id": "M19",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "quantified using HPLC",
+      "unit_text": "",
+      "ambiguity_note": "KGN release profile",
+      "evidence_span_ids": [
+        "span_74"
+      ]
+    },
+    {
+      "measurement_id": "M20",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "other",
+      "value_text": "examined by measuring the hydrodynamic diameter and PDI by DLS",
+      "unit_text": "",
+      "ambiguity_note": "Suspension stability",
+      "evidence_span_ids": [
+        "span_75"
+      ]
+    },
+    {
+      "measurement_id": "M21",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "other",
+      "value_text": "examined by measuring the hydrodynamic diameter and PDI by DLS",
+      "unit_text": "",
+      "ambiguity_note": "Suspension stability",
+      "evidence_span_ids": [
+        "span_75"
+      ]
+    },
+    {
+      "measurement_id": "M22",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "examined by measuring the hydrodynamic diameter and PDI by DLS",
+      "unit_text": "",
+      "ambiguity_note": "Suspension stability",
+      "evidence_span_ids": [
+        "span_75"
+      ]
+    },
+    {
+      "measurement_id": "M23",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "other",
+      "value_text": "viability similar to the non-treated controls",
+      "unit_text": "",
+      "ambiguity_note": "hMSC viability",
+      "evidence_span_ids": [
+        "span_76"
+      ]
+    },
+    {
+      "measurement_id": "M24",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "other",
+      "value_text": "viability similar to the non-treated controls",
+      "unit_text": "",
+      "ambiguity_note": "hMSC viability",
+      "evidence_span_ids": [
+        "span_76"
+      ]
+    },
+    {
+      "measurement_id": "M25",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "viability similar to the non-treated controls",
+      "unit_text": "",
+      "ambiguity_note": "hMSC viability",
+      "evidence_span_ids": [
+        "span_76"
+      ]
+    },
+    {
+      "measurement_id": "M26",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "other",
+      "value_text": "increase in fluorescence signal",
+      "unit_text": "",
+      "ambiguity_note": "hMSC interaction (flow cytometry with FITC-loaded nanoparticles)",
+      "evidence_span_ids": [
+        "span_77"
+      ]
+    },
+    {
+      "measurement_id": "M27",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "other",
+      "value_text": "increase in fluorescence signal",
+      "unit_text": "",
+      "ambiguity_note": "hMSC interaction (flow cytometry with FITC-loaded nanoparticles)",
+      "evidence_span_ids": [
+        "span_77"
+      ]
+    },
+    {
+      "measurement_id": "M28",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "increase in fluorescence signal",
+      "unit_text": "",
+      "ambiguity_note": "hMSC interaction (flow cytometry with FITC-loaded nanoparticles)",
+      "evidence_span_ids": [
+        "span_77"
+      ]
+    },
+    {
+      "measurement_id": "M29",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "other",
+      "value_text": "greater sGAG content",
+      "unit_text": "",
+      "ambiguity_note": "hMSC chondrogenesis (sGAG content)",
+      "evidence_span_ids": [
+        "span_18",
+        "span_78"
+      ]
+    },
+    {
+      "measurement_id": "M30",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "other",
+      "value_text": "greater sGAG content",
+      "unit_text": "",
+      "ambiguity_note": "hMSC chondrogenesis (sGAG content)",
+      "evidence_span_ids": [
+        "span_18",
+        "span_78"
+      ]
+    },
+    {
+      "measurement_id": "M31",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "greater sGAG content",
+      "unit_text": "",
+      "ambiguity_note": "hMSC chondrogenesis (sGAG content)",
+      "evidence_span_ids": [
+        "span_18",
+        "span_78"
+      ]
+    },
+    {
+      "measurement_id": "M32",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "other",
+      "value_text": "varied over a narrow range",
+      "unit_text": "",
+      "ambiguity_note": "Total DNA content (for hMSC differentiation)",
+      "evidence_span_ids": [
+        "span_78"
+      ]
+    },
+    {
+      "measurement_id": "M33",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "other",
+      "value_text": "varied over a narrow range",
+      "unit_text": "",
+      "ambiguity_note": "Total DNA content (for hMSC differentiation)",
+      "evidence_span_ids": [
+        "span_78"
+      ]
+    },
+    {
+      "measurement_id": "M34",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "other",
+      "value_text": "varied over a narrow range",
+      "unit_text": "",
+      "ambiguity_note": "Total DNA content (for hMSC differentiation)",
+      "evidence_span_ids": [
+        "span_78"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "R1",
+      "source_candidate_id": "F1",
+      "target_candidate_id": "F2",
+      "relation_type": "varies_by",
+      "note": "PLGA-PEG nanoparticles are a modification of PLGA nanoparticles with PEG surface functionalization.",
+      "evidence_span_ids": [
+        "span_01",
+        "span_15"
+      ]
+    },
+    {
+      "relation_id": "R2",
+      "source_candidate_id": "F2",
+      "target_candidate_id": "F3",
+      "relation_type": "varies_by",
+      "note": "PLGA-PEG-HA nanoparticles are a modification of PLGA-PEG nanoparticles with HA surface functionalization.",
+      "evidence_span_ids": [
+        "span_01",
+        "span_09",
+        "span_15",
+        "span_19"
+      ]
+    },
+    {
+      "relation_id": "R3",
+      "source_candidate_id": "F1",
+      "target_candidate_id": "F4",
+      "relation_type": "varies_by",
+      "note": "F4 is a control version of F1 without KGN.",
+      "evidence_span_ids": [
+        "span_17",
+        "span_18",
+        "span_23",
+        "span_68",
+        "span_69"
+      ]
+    },
+    {
+      "relation_id": "R4",
+      "source_candidate_id": "F2",
+      "target_candidate_id": "F5",
+      "relation_type": "varies_by",
+      "note": "F5 is a control version of F2 without KGN.",
+      "evidence_span_ids": [
+        "span_17",
+        "span_18",
+        "span_23",
+        "span_68",
+        "span_69"
+      ]
+    },
+    {
+      "relation_id": "R5",
+      "source_candidate_id": "F3",
+      "target_candidate_id": "F6",
+      "relation_type": "varies_by",
+      "note": "F6 is a control version of F3 without KGN.",
+      "evidence_span_ids": [
+        "span_17",
+        "span_18",
+        "span_23",
+        "span_68",
+        "span_69"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_01",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "here we fabricated three nanoparticle formulations that vary in hydrophobicity, size, and surface charge using nanoprecipitation: KGN-loaded poly(lactic acid-co-glycolic acid) (PLGA) nanoparticles (hydrophobic surface, negative charge, ~ 167 nm), PLGA–poly(ethylene glycol) (PEG) nanoparticles (hydrophilic surface, positive charge, ~ 297 nm), and PLGA–PEG–hyaluronic acid (HA) nanoparticles (hydrophilic surface, negative charge, ~ 507 nm)."
+    },
+    {
+      "span_id": "span_02",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1 Summary of reported kartogenin containing nanoparticle formulations."
+    },
+    {
+      "span_id": "span_03",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2 KGN-loaded nanoparticle properties."
+    },
+    {
+      "span_id": "span_04",
+      "source_region_type": "text_span",
+      "source_locator_text": "Introduction",
+      "supporting_text": "Specifically, we developed KGN-loaded PLGA, PLGA–poly(ethylene glycol) (PLGA–PEG), and PLGA–PEG–hyaluronic acid (PLGA–PEG–HA) nanoparticles."
+    },
+    {
+      "span_id": "span_05",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials and Methods",
+      "supporting_text": "PLGA was selected as a nanoparticle polymer commonly used in delivery of hydrophobic drugs, including KGN."
+    },
+    {
+      "span_id": "span_06",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials and Methods",
+      "supporting_text": "HA was selected as a potential targeting moiety for human (hMSCs) through the CD44 cell surface glycoprotein."
+    },
+    {
+      "span_id": "span_07",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "The PLGA–PEG copolymer was synthesized as previously reported. All nanoparticles were prepared using nanoprecipitation."
+    },
+    {
+      "span_id": "span_08",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "PLGA or PLGA–PEG (50 mg) was dissolved in ACN (10 mL) and added to 0.2% w/v PVA in water (100 mL) at 0.5 mL/min. KGN or FITC (5 mg) were included in the polymer solution prior to precipitation for KGN- or FITC-loaded formulations."
+    },
+    {
+      "span_id": "span_09",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "For PLGA–PEG–HA nanoparticles, HA was de-salted by dialyzing against 0.1 M HCl. De-salted HA was solubilized in 0.01 M MES buffer (5 mg/mL, pH 5.5) and activated using EDC and sulfo-NHS (1:5:5 molar ratio) for 2 h at RT under N2. Blank or KGN-loaded PLGA–PEG nanoparticles in MES buffer were added to the activated HA solution (3:1 w/w HA:nanoparticle), and stirred for 24 h at RT under N2."
+    },
+    {
+      "span_id": "span_10",
+      "source_region_type": "text_span",
+      "source_locator_text": "Characterization of Nanoparticle Size and Charge",
+      "supporting_text": "Hydrodynamic diameter, polydispersity index (PDI), and ζ potential were measured at 25 °C at a scattering angle of 90° using dynamic light scattering (DLS) (Zetasizer Nano ZS90, Malvern Instruments, UK)."
+    },
+    {
+      "span_id": "span_11",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "The encapsulation efficiencies of KGN-loaded PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles were ~ 62, 71, and 55%, respectively."
+    },
+    {
+      "span_id": "span_12",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "The hydrophobic PLGA particles had the highest drug loading, with approximately 47% of the particle mass attributed to KGN while the hydrophilic formulations exhibited similar KGN loading of approximately 13–16% of particle mass."
+    },
+    {
+      "span_id": "span_13",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "An HA content of ~ 36% of particle mass was observed for PLGA–PEG–HA particles."
+    },
+    {
+      "span_id": "span_14",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "PLGA and PLGA–PEG–HA nanoparticles exhibited negative ζ potentials, indicative of a negative surface charge, as both HA and PLGA are anionic. PLGA–PEG nanoparticles exhibited positive ζ potential, due to the presence of free amines at the surface."
+    },
+    {
+      "span_id": "span_15",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "Functionalizing the PLGA nanoparticle surface with hydrophilic PEG and HA resulted in a significant increase in the hydrodynamic diameter."
+    },
+    {
+      "span_id": "span_16",
+      "source_region_type": "text_span",
+      "source_locator_text": "hMSC Differentiation",
+      "supporting_text": "Nanoparticle concentrations were selected for each formulation by calculating the amount of nanoparticles necessary to ensure release 100 nM KGN over 3 days based on the in vitro release data."
+    },
+    {
+      "span_id": "span_17",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "compared with non-KGN loaded formulations."
+    },
+    {
+      "span_id": "span_18",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "all KGN-loaded formulations exhibited a greater sGAG content compared with non KGN-loaded formulations (Fig. 5)."
+    },
+    {
+      "span_id": "span_19",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "Blank or KGN-loaded PLGA–PEG nanoparticles in MES buffer were added to the activated HA solution (3:1 w/w HA:nanoparticle), and stirred for 24 h at RT under N2."
+    },
+    {
+      "span_id": "span_20",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "KGN-loaded poly(lactic acid-co-glycolic acid) (PLGA) nanoparticles"
+    },
+    {
+      "span_id": "span_21",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "PLGA–poly(ethylene glycol) (PEG) nanoparticles"
+    },
+    {
+      "span_id": "span_22",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "PLGA–PEG–hyaluronic acid (HA) nanoparticles"
+    },
+    {
+      "span_id": "span_23",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "non-KGN loaded formulations"
+    },
+    {
+      "span_id": "span_24",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Header",
+      "supporting_text": "KGN-loaded PLGA nanoparticles"
+    },
+    {
+      "span_id": "span_25",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Header",
+      "supporting_text": "KGN-loaded PLGA–PEG nanoparticles"
+    },
+    {
+      "span_id": "span_26",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Header",
+      "supporting_text": "KGN-loaded PLGA–PEG–HA nanoparticles"
+    },
+    {
+      "span_id": "span_27",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 1",
+      "supporting_text": "PLGA"
+    },
+    {
+      "span_id": "span_28",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 1",
+      "supporting_text": "PLGA–PEG"
+    },
+    {
+      "span_id": "span_29",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 1",
+      "supporting_text": "PLGA–PEG–HA"
+    },
+    {
+      "span_id": "span_30",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Col 2 Header",
+      "supporting_text": "Hydrodynamic diameter (nm)"
+    },
+    {
+      "span_id": "span_31",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Col 3 Header",
+      "supporting_text": "PDI"
+    },
+    {
+      "span_id": "span_32",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Col 4 Header",
+      "supporting_text": "ζ potential (mV)"
+    },
+    {
+      "span_id": "span_33",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Col 5 Header",
+      "supporting_text": "EE (%)"
+    },
+    {
+      "span_id": "span_34",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Col 6 Header",
+      "supporting_text": "DL (%)"
+    },
+    {
+      "span_id": "span_35",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Col 7 Header",
+      "supporting_text": "HA content (% w/w)"
+    },
+    {
+      "span_id": "span_36",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 2",
+      "supporting_text": "167 ± 1"
+    },
+    {
+      "span_id": "span_37",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 3",
+      "supporting_text": "0.12 ± 0.01"
+    },
+    {
+      "span_id": "span_38",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 4",
+      "supporting_text": "− 33.1 ± 0.7"
+    },
+    {
+      "span_id": "span_39",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 5",
+      "supporting_text": "62 ± 1"
+    },
+    {
+      "span_id": "span_40",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 6",
+      "supporting_text": "47 ± 1"
+    },
+    {
+      "span_id": "span_41",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 1, Col 7",
+      "supporting_text": "N/A"
+    },
+    {
+      "span_id": "span_42",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 2",
+      "supporting_text": "297 ± 1"
+    },
+    {
+      "span_id": "span_43",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 3",
+      "supporting_text": "0.13 ± 0.01"
+    },
+    {
+      "span_id": "span_44",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 4",
+      "supporting_text": "11.2 ± 0.4"
+    },
+    {
+      "span_id": "span_45",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 5",
+      "supporting_text": "71 ± 1"
+    },
+    {
+      "span_id": "span_46",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 6",
+      "supporting_text": "16 ± 1"
+    },
+    {
+      "span_id": "span_47",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 2, Col 7",
+      "supporting_text": "N/A"
+    },
+    {
+      "span_id": "span_48",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 2",
+      "supporting_text": "507 ± 1"
+    },
+    {
+      "span_id": "span_49",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 3",
+      "supporting_text": "0.14 ± 0.01"
+    },
+    {
+      "span_id": "span_50",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 4",
+      "supporting_text": "− 28.5 ± 0.6"
+    },
+    {
+      "span_id": "span_51",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 5",
+      "supporting_text": "55 ± 1"
+    },
+    {
+      "span_id": "span_52",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 6",
+      "supporting_text": "13 ± 1"
+    },
+    {
+      "span_id": "span_53",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 2, Row 3, Col 7",
+      "supporting_text": "36 ± 1"
+    },
+    {
+      "span_id": "span_54",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials",
+      "supporting_text": "PLGA (1:1 d,l-lactic to glycolic acid, MW 15.1 kDa)"
+    },
+    {
+      "span_id": "span_55",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials",
+      "supporting_text": "PEG-bis-amine (PEG-bis-NH2 MW 2 kDa)"
+    },
+    {
+      "span_id": "span_56",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials",
+      "supporting_text": "HA sodium salt (molecular weight (MW) 39 kDa)"
+    },
+    {
+      "span_id": "span_57",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials",
+      "supporting_text": "KGN was purchased from Abcam (Cambridge, MA)."
+    },
+    {
+      "span_id": "span_58",
+      "source_region_type": "text_span",
+      "source_locator_text": "Materials",
+      "supporting_text": "poly(vinyl alcohol) (PVA, MW 89–98 kDa)"
+    },
+    {
+      "span_id": "span_59",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "ACN (10 mL)"
+    },
+    {
+      "span_id": "span_60",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "0.2% w/v PVA in water (100 mL)"
+    },
+    {
+      "span_id": "span_61",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "0.5 mL/min"
+    },
+    {
+      "span_id": "span_62",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "KGN or FITC (5 mg)"
+    },
+    {
+      "span_id": "span_63",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "HA was de-salted by dialyzing against 0.1 M HCl."
+    },
+    {
+      "span_id": "span_64",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "De-salted HA was solubilized in 0.01 M MES buffer (5 mg/mL, pH 5.5)"
+    },
+    {
+      "span_id": "span_65",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "activated using EDC and sulfo-NHS (1:5:5 molar ratio) for 2 h at RT under N2."
+    },
+    {
+      "span_id": "span_66",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "activated HA solution (3:1 w/w HA:nanoparticle)"
+    },
+    {
+      "span_id": "span_67",
+      "source_region_type": "text_span",
+      "source_locator_text": "Fabrication of PLGA, PLGA–PEG, and PLGA–PEG–HA Nanoparticles",
+      "supporting_text": "stirred for 24 h at RT under N2."
+    },
+    {
+      "span_id": "span_68",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "non-KGN loaded formulations"
+    },
+    {
+      "span_id": "span_69",
+      "source_region_type": "text_span",
+      "source_locator_text": "hMSC Differentiation",
+      "supporting_text": "blank nanoparticle formulations"
+    },
+    {
+      "span_id": "span_70",
+      "source_region_type": "text_span",
+      "source_locator_text": "hMSC Differentiation",
+      "supporting_text": "KGN-loaded nanoparticle formulations"
+    },
+    {
+      "span_id": "span_71",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results",
+      "supporting_text": "We synthesized three KGN-loaded nanoparticle formulations: PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles"
+    },
+    {
+      "span_id": "span_72",
+      "source_region_type": "text_span",
+      "source_locator_text": "hMSC Differentiation",
+      "supporting_text": "Nanoparticle concentrations were selected for each formulation by calculating the amount of nanoparticles necessary to ensure release 100 nM KGN over 3 days"
+    },
+    {
+      "span_id": "span_73",
+      "source_region_type": "text_span",
+      "source_locator_text": "hMSC Differentiation",
+      "supporting_text": "42.4, 18.4, and 11.28 µg/mL for PLGA, PLGA–PEG, and PLGA–PEG–HA nanoparticles supplemented within the media, respectively"
+    },
+    {
+      "span_id": "span_74",
+      "source_region_type": "text_span",
+      "source_locator_text": "Assessing KGN Release and Suspension Stability In Vitro",
+      "supporting_text": "To determine KGN release in vitro, KGN-loaded nanoparticle formulations were suspended in PBS (~ 40 mg/mL) and incubated at 37 °C with shaking. Every 3 days for 21 days, the nanoparticle suspensions were centrifuged (14,000 rpm, 10 min) to collect the supernatant, and an equal volume of fresh PBS was added. KGN concentration in the supernatant was quantified using HPLC."
+    },
+    {
+      "span_id": "span_75",
+      "source_region_type": "text_span",
+      "source_locator_text": "Assessing KGN Release and Suspension Stability In Vitro",
+      "supporting_text": "The suspension stability of nanoparticle suspensions (1 mg/mL) at these conditions was examined by measuring the hydrodynamic diameter and PDI by DLS."
+    },
+    {
+      "span_id": "span_76",
+      "source_region_type": "text_span",
+      "source_locator_text": "Cytocompatibility",
+      "supporting_text": "hMSCs (passage 6) were plated at 10,000 cells/cm2 into a 96-well plate and then treated with growth media only or growth media supplemented with 0.5 mg/mL of nanoparticles with and without KGN loaded. Following a 24-h incubation, CCK-8 solution was added for 2 h at 37 °C and absorbance of the wells was measured at 450 nm using a Cytation3 Plate Reader (BioTek, Winooski, VT). Normalized cell viability was calculated using Eq. (4)."
+    },
+    {
+      "span_id": "span_77",
+      "source_region_type": "text_span",
+      "source_locator_text": "Nanoparticle Interactions with hMSCs",
+      "supporting_text": "hMSCs (passage 6) were plated at 10,000 cells/cm2 into 6-well plates. Following equilibration in serum-free media for 1 h, FITC-loaded nanoparticles were added to the cells at 0.1 mg/mL and incubated for varying time or incubated for 4 h at varying concentration. Following incubation, the cells were passaged, fixed, and measured using a 488 nm (FITC) laser on a 4-laser, 19-parameter BD FACSAria Illu flow cytometer (Franklin Lakes, NJ)."
+    },
+    {
+      "span_id": "span_78",
+      "source_region_type": "text_span",
+      "source_locator_text": "hMSC Differentiation",
+      "supporting_text": "The sGAG content, indicative of chondrogenesis, was assessed using a Blyscan sGAG assay kit. Briefly, pellets were digested using papain extraction reagent and mixed with Blyscan dye. The dye-sGAG complex was pelleted, dissociated, and solubilized prior to measuring absorbance at 656 nm against chondroitin sulfate standards. The sGAG content was normalized against total wet weight of the pellets. Total DNA was quantified using a PicoGreen assay."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 1 Summary of reported kartogenin containing nanoparticle formulations."
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 2 KGN-loaded nanoparticle properties."
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "nanoparticle type"
+      ],
+      "constant_variables": [
+        "Kartogenin loaded"
+      ],
+      "new_variables_introduced": [
+        "Hydrodynamic diameter",
+        "PDI",
+        "ζ potential",
+        "EE (%)",
+        "DL (%)",
+        "HA content (% w/w)"
+      ]
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 2",
+      "inherits_from_preparation": true,
+      "evidence_span": "All nanoparticles were prepared using nanoprecipitation."
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": false
+    }
+  ]
+}

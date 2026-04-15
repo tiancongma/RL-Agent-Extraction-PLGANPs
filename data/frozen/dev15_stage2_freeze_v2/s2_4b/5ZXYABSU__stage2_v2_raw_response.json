@@ -1,0 +1,1295 @@
+{
+  "document_key": "5ZXYABSU",
+  "doi": "10.2147/IJN.S130908",
+  "formulation_candidates": [
+    {
+      "candidate_id": "NPR1",
+      "raw_label": "NPR1",
+      "normalized_label": "Rhodamine-loaded PLGA nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "baseline",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPR2",
+      "raw_label": "NPR2",
+      "normalized_label": "Rhodamine-loaded PLGA-polysorbate 80 nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "NPR1",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Polysorbate 80 added as surface modifier"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr2_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPR3",
+      "raw_label": "NPR3",
+      "normalized_label": "Rhodamine-loaded PLGA-Labrafil nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "NPR1",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Labrafil added as surface modifier"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr3_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPB1",
+      "raw_label": "NPB1",
+      "normalized_label": "Blank PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "NPR1",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Prepared without active drug (Rhodamine or Gatifloxacin)"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [
+        "control"
+      ],
+      "ambiguity_note": "Blank version of the base PLGA nanoparticle formulation.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPB2",
+      "raw_label": "NPB2",
+      "normalized_label": "Blank PLGA-polysorbate 80 nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "NPR2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Prepared without active drug (Rhodamine or Gatifloxacin)"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [
+        "control"
+      ],
+      "ambiguity_note": "Blank version of the polysorbate 80-modified PLGA nanoparticle formulation.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPB3",
+      "raw_label": "NPB3",
+      "normalized_label": "Blank PLGA-Labrafil nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "NPR3",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Prepared without active drug (Rhodamine or Gatifloxacin)"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [
+        "control"
+      ],
+      "ambiguity_note": "Blank version of the Labrafil-modified PLGA nanoparticle formulation.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPG1",
+      "raw_label": "NPG1",
+      "normalized_label": "Gatifloxacin-loaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "NPR1",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Rhodamine replaced with Gatifloxacin"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPG2",
+      "raw_label": "NPG2",
+      "normalized_label": "Gatifloxacin-loaded PLGA-polysorbate 80 nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "NPR2",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Rhodamine replaced with Gatifloxacin"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "NPG3",
+      "raw_label": "NPG3",
+      "normalized_label": "Gatifloxacin-loaded PLGA-Labrafil nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "NPR3",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Rhodamine replaced with Gatifloxacin"
+      ],
+      "instance_context_tags": [
+        "sweep"
+      ],
+      "change_context_tags": [
+        "sweep"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "Rh_solution",
+      "raw_label": "Rhodamine solution",
+      "normalized_label": "Rhodamine solution",
+      "instance_kind": "candidate_non_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "control",
+        "measurement_context"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "Used as a control for biodistribution studies, not a nanoparticle formulation.",
+      "evidence_span_ids": [
+        "span_results_rh_biodistribution"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "PLGA_502_NPR1",
+      "formulation_candidate_id": "NPR1",
+      "component_name": "PLGA 502",
+      "component_role": "polymer",
+      "amount_text": "50 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "Shared across all PLGA nanoparticle formulations.",
+      "evidence_span_ids": [
+        "span_materials_plga",
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "component_id": "Rhodamine_NPR1",
+      "formulation_candidate_id": "NPR1",
+      "component_name": "Rhodamine",
+      "component_role": "drug",
+      "amount_text": "2.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_rh",
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "component_id": "PVA_NPR1",
+      "formulation_candidate_id": "NPR1",
+      "component_name": "PVA",
+      "component_role": "additive",
+      "amount_text": "1%",
+      "amount_kind": "concentration",
+      "phase_hint": "external phase",
+      "ambiguity_note": "PVA is a process aid, removed after preparation. This concentration is specific to NPR1.",
+      "evidence_span_ids": [
+        "span_materials_pva",
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "component_id": "Sucrose_cryoprotectant",
+      "formulation_candidate_id": "NPR1",
+      "component_name": "sucrose",
+      "component_role": "additive",
+      "amount_text": "as cryoprotectant",
+      "amount_kind": "unknown",
+      "phase_hint": "post-processing",
+      "ambiguity_note": "Used for freeze-drying, no specific amount given. Assumed for all freeze-dried NPs.",
+      "evidence_span_ids": [
+        "span_prep_npr1_postproc"
+      ]
+    },
+    {
+      "component_id": "Rhodamine_NPR2",
+      "formulation_candidate_id": "NPR2",
+      "component_name": "Rhodamine",
+      "component_role": "drug",
+      "amount_text": "2.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr2_method"
+      ]
+    },
+    {
+      "component_id": "Polysorbate_80_NPR2",
+      "formulation_candidate_id": "NPR2",
+      "component_name": "polysorbate 80",
+      "component_role": "surfactant",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "external phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_polysorbate",
+        "span_prep_npr2_method"
+      ]
+    },
+    {
+      "component_id": "PVA_NPR2",
+      "formulation_candidate_id": "NPR2",
+      "component_name": "PVA",
+      "component_role": "additive",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "external phase",
+      "ambiguity_note": "PVA is a process aid, removed after preparation. This concentration is specific to NPR2 and NPR3, and by extension NPG/NPB series.",
+      "evidence_span_ids": [
+        "span_materials_pva",
+        "span_prep_npr2_method"
+      ]
+    },
+    {
+      "component_id": "Rhodamine_NPR3",
+      "formulation_candidate_id": "NPR3",
+      "component_name": "Rhodamine",
+      "component_role": "drug",
+      "amount_text": "2.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr3_method"
+      ]
+    },
+    {
+      "component_id": "Labrafil_NPR3",
+      "formulation_candidate_id": "NPR3",
+      "component_name": "Labrafil",
+      "component_role": "surfactant",
+      "amount_text": "3.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_labrafil",
+        "span_prep_npr3_method"
+      ]
+    },
+    {
+      "component_id": "Gatifloxacin_NPG1",
+      "formulation_candidate_id": "NPG1",
+      "component_name": "Gatifloxacin",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_gat",
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "component_id": "Gatifloxacin_NPG2",
+      "formulation_candidate_id": "NPG2",
+      "component_name": "Gatifloxacin",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_gat",
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "component_id": "Polysorbate_80_NPG2",
+      "formulation_candidate_id": "NPG2",
+      "component_name": "polysorbate 80",
+      "component_role": "surfactant",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "external phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_polysorbate",
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "component_id": "Gatifloxacin_NPG3",
+      "formulation_candidate_id": "NPG3",
+      "component_name": "Gatifloxacin",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_gat",
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "component_id": "Labrafil_NPG3",
+      "formulation_candidate_id": "NPG3",
+      "component_name": "Labrafil",
+      "component_role": "surfactant",
+      "amount_text": "3.5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "inner phase",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_labrafil",
+        "span_prep_gat_nps_method"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "PLGA_ratio",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA ratio",
+      "value_text": "50:50",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_plga"
+      ]
+    },
+    {
+      "variable_id": "PLGA_type",
+      "formulation_candidate_id": "",
+      "variable_name": "PLGA type",
+      "value_text": "Resomer® RG 502",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_materials_plga"
+      ]
+    },
+    {
+      "variable_id": "prep_method",
+      "formulation_candidate_id": "",
+      "variable_name": "preparation method",
+      "value_text": "nanoprecipitation",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "variable_id": "acetone_volume",
+      "formulation_candidate_id": "",
+      "variable_name": "acetone volume",
+      "value_text": "4 mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "variable_id": "external_phase_volume",
+      "formulation_candidate_id": "",
+      "variable_name": "external phase volume",
+      "value_text": "12 mL",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "variable_id": "drug_type_NPR1",
+      "formulation_candidate_id": "NPR1",
+      "variable_name": "drug type",
+      "value_text": "Rhodamine",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "variable_id": "surfactant_type_NPR1",
+      "formulation_candidate_id": "NPR1",
+      "variable_name": "surfactant type",
+      "value_text": "none",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "variable_id": "PVA_conc_NPR1",
+      "formulation_candidate_id": "NPR1",
+      "variable_name": "PVA concentration",
+      "value_text": "1%",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr1_method"
+      ]
+    },
+    {
+      "variable_id": "surfactant_type_NPR2",
+      "formulation_candidate_id": "NPR2",
+      "variable_name": "surfactant type",
+      "value_text": "polysorbate 80",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr2_method"
+      ]
+    },
+    {
+      "variable_id": "PVA_conc_NPR2",
+      "formulation_candidate_id": "NPR2",
+      "variable_name": "PVA concentration",
+      "value_text": "0.5%",
+      "variable_role": "process_setting",
+      "ambiguity_note": "Also applies to NPR3, NPG1, NPG2, NPG3, NPB1, NPB2, NPB3.",
+      "evidence_span_ids": [
+        "span_prep_npr2_method"
+      ]
+    },
+    {
+      "variable_id": "surfactant_type_NPR3",
+      "formulation_candidate_id": "NPR3",
+      "variable_name": "surfactant type",
+      "value_text": "Labrafil",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_npr3_method"
+      ]
+    },
+    {
+      "variable_id": "drug_type_NPG1",
+      "formulation_candidate_id": "NPG1",
+      "variable_name": "drug type",
+      "value_text": "Gatifloxacin",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "variable_id": "drug_type_NPB1",
+      "formulation_candidate_id": "NPB1",
+      "variable_name": "drug type",
+      "value_text": "none",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "NPR1_size",
+      "formulation_candidate_id": "NPR1",
+      "measurement_name": "size",
+      "value_text": "234.8±4.3",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_rh_nps_size_ee"
+      ]
+    },
+    {
+      "measurement_id": "NPR1_ee",
+      "formulation_candidate_id": "NPR1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "55.3±0.4",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_rh_nps_size_ee"
+      ]
+    },
+    {
+      "measurement_id": "NPR2_size",
+      "formulation_candidate_id": "NPR2",
+      "measurement_name": "size",
+      "value_text": "194.9±5.7",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_rh_nps_size_ee"
+      ]
+    },
+    {
+      "measurement_id": "NPR2_ee",
+      "formulation_candidate_id": "NPR2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "51.3±0.3",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_rh_nps_size_ee"
+      ]
+    },
+    {
+      "measurement_id": "NPR3_size",
+      "formulation_candidate_id": "NPR3",
+      "measurement_name": "size",
+      "value_text": "237.8±11",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_rh_nps_size_ee"
+      ]
+    },
+    {
+      "measurement_id": "NPR3_ee",
+      "formulation_candidate_id": "NPR3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "60.9±0.4",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_rh_nps_size_ee"
+      ]
+    },
+    {
+      "measurement_id": "NPB1_size",
+      "formulation_candidate_id": "NPB1",
+      "measurement_name": "size",
+      "value_text": "150.5±5.1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPB1_zeta",
+      "formulation_candidate_id": "NPB1",
+      "measurement_name": "zeta_potential",
+      "value_text": "-23±1.3",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPB2_size",
+      "formulation_candidate_id": "NPB2",
+      "measurement_name": "size",
+      "value_text": "98.9±9.6",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPB2_zeta",
+      "formulation_candidate_id": "NPB2",
+      "measurement_name": "zeta_potential",
+      "value_text": "-19.1±1.1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPB3_size",
+      "formulation_candidate_id": "NPB3",
+      "measurement_name": "size",
+      "value_text": "156.3±6.1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPB3_zeta",
+      "formulation_candidate_id": "NPB3",
+      "measurement_name": "zeta_potential",
+      "value_text": "-17.3±1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG1_size",
+      "formulation_candidate_id": "NPG1",
+      "measurement_name": "size",
+      "value_text": "176.6±11.6",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG1_zeta",
+      "formulation_candidate_id": "NPG1",
+      "measurement_name": "zeta_potential",
+      "value_text": "-18.6±0.4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG1_ee",
+      "formulation_candidate_id": "NPG1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "34.1±0.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG2_size",
+      "formulation_candidate_id": "NPG2",
+      "measurement_name": "size",
+      "value_text": "176.5±2.9",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG2_zeta",
+      "formulation_candidate_id": "NPG2",
+      "measurement_name": "zeta_potential",
+      "value_text": "-20.1±1.1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG2_ee",
+      "formulation_candidate_id": "NPG2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "28.2±0.2",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG3_size",
+      "formulation_candidate_id": "NPG3",
+      "measurement_name": "size",
+      "value_text": "182.9±2.5",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG3_zeta",
+      "formulation_candidate_id": "NPG3",
+      "measurement_name": "zeta_potential",
+      "value_text": "-19.3±0.8",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "NPG3_ee",
+      "formulation_candidate_id": "NPG3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "10.4±1.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_gat_nps_size_ee_zeta"
+      ]
+    },
+    {
+      "measurement_id": "Rh_solution_fluorescence_30min_hippocampus",
+      "formulation_candidate_id": "Rh_solution",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "13.77±1.39",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "Rh_solution_fluorescence_30min_cortex",
+      "formulation_candidate_id": "Rh_solution",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "10.78±1.11",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "Rh_solution_fluorescence_60min_hippocampus",
+      "formulation_candidate_id": "Rh_solution",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "9.79±1.57",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "Rh_solution_fluorescence_60min_cortex",
+      "formulation_candidate_id": "Rh_solution",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "3.13±1.53",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR1_fluorescence_30min_hippocampus",
+      "formulation_candidate_id": "NPR1",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "19.95±1.69",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR1_fluorescence_30min_cortex",
+      "formulation_candidate_id": "NPR1",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "16.99±3.48",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR1_fluorescence_60min_hippocampus",
+      "formulation_candidate_id": "NPR1",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "10.31±1.83",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR1_fluorescence_60min_cortex",
+      "formulation_candidate_id": "NPR1",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "9.22±2.05",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR2_fluorescence_30min_hippocampus",
+      "formulation_candidate_id": "NPR2",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "29.72±1.05",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR2_fluorescence_30min_cortex",
+      "formulation_candidate_id": "NPR2",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "17.56±3.42",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR2_fluorescence_60min_hippocampus",
+      "formulation_candidate_id": "NPR2",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "30.26±2.13",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR2_fluorescence_60min_cortex",
+      "formulation_candidate_id": "NPR2",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "31.36±1.95",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR3_fluorescence_30min_hippocampus",
+      "formulation_candidate_id": "NPR3",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "29.61±2.45",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR3_fluorescence_30min_cortex",
+      "formulation_candidate_id": "NPR3",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "18.09±2.11",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 30 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR3_fluorescence_60min_hippocampus",
+      "formulation_candidate_id": "NPR3",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "21.35±1.71",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in hippocampus.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    },
+    {
+      "measurement_id": "NPR3_fluorescence_60min_cortex",
+      "formulation_candidate_id": "NPR3",
+      "measurement_name": "fluorescence intensity",
+      "value_text": "26.25±2.83",
+      "unit_text": "",
+      "ambiguity_note": "Measurement at 60 minutes in cortex.",
+      "evidence_span_ids": [
+        "span_table3_caption",
+        "span_results_rh_biodistribution_table3_data"
+      ]
+    }
+  ],
+  "relation_hints": [
+    {
+      "relation_id": "rel_NPR1_NPR2_varies_surfactant",
+      "source_candidate_id": "NPR1",
+      "target_candidate_id": "NPR2",
+      "relation_type": "varies_by",
+      "note": "NPR2 varies from NPR1 by the addition of polysorbate 80 as a surface modifier.",
+      "evidence_span_ids": [
+        "span_prep_npr2_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR1_NPR3_varies_surfactant",
+      "source_candidate_id": "NPR1",
+      "target_candidate_id": "NPR3",
+      "relation_type": "varies_by",
+      "note": "NPR3 varies from NPR1 by the incorporation of Labrafil as a surface modifier.",
+      "evidence_span_ids": [
+        "span_prep_npr3_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR1_NPG1_varies_drug",
+      "source_candidate_id": "NPR1",
+      "target_candidate_id": "NPG1",
+      "relation_type": "varies_by",
+      "note": "NPG1 varies from NPR1 by replacing Rhodamine with Gatifloxacin.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR2_NPG2_varies_drug",
+      "source_candidate_id": "NPR2",
+      "target_candidate_id": "NPG2",
+      "relation_type": "varies_by",
+      "note": "NPG2 varies from NPR2 by replacing Rhodamine with Gatifloxacin.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR3_NPG3_varies_drug",
+      "source_candidate_id": "NPR3",
+      "target_candidate_id": "NPG3",
+      "relation_type": "varies_by",
+      "note": "NPG3 varies from NPR3 by replacing Rhodamine with Gatifloxacin.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR1_NPB1_varies_drug_presence",
+      "source_candidate_id": "NPR1",
+      "target_candidate_id": "NPB1",
+      "relation_type": "varies_by",
+      "note": "NPB1 is a blank version of NPR1, lacking the active drug.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR2_NPB2_varies_drug_presence",
+      "source_candidate_id": "NPR2",
+      "target_candidate_id": "NPB2",
+      "relation_type": "varies_by",
+      "note": "NPB2 is a blank version of NPR2, lacking the active drug.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    },
+    {
+      "relation_id": "rel_NPR3_NPB3_varies_drug_presence",
+      "source_candidate_id": "NPR3",
+      "target_candidate_id": "NPB3",
+      "relation_type": "varies_by",
+      "note": "NPB3 is a blank version of NPR3, lacking the active drug.",
+      "evidence_span_ids": [
+        "span_prep_gat_nps_method"
+      ]
+    }
+  ],
+  "evidence_spans": [
+    {
+      "span_id": "span_abstract_nanocarrier",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "A new nanocarrier is developed for the passage of gatifloxacin through the blood–brain barrier to treat central nervous system tuberculosis. Gatifloxacin nanoparticles were prepared by nanoprecipitation using poly(lactic-co-glycolic acid) (PLGA) 502 and polysorbate 80 or Labrafil as surface modifiers."
+    },
+    {
+      "span_id": "span_abstract_rh_eval",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "The evaluation of in vivo blood–brain barrier transport was carried out in male Wistar rats using rhodamine-loaded PLGA nanoparticles prepared with and without the surface modifiers."
+    },
+    {
+      "span_id": "span_abstract_best_formulation",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "The best results corresponded to the formulation prepared with polysorbate 80 with regard to encapsulation efficiency (28.2%), particle size (176.5 nm), and ζ-potential (-20.1 mV), thereby resulting in a promising drug delivery system to treat cerebral tuberculosis."
+    },
+    {
+      "span_id": "span_intro_developed_nps",
+      "source_region_type": "text_span",
+      "source_locator_text": "Introduction",
+      "supporting_text": "Taking all these into consideration, we developed Gat-loaded PLGA NPs able to cross the BBB for the treatment of CNS TB. Moreover, we prepared and evaluated in vivo PLGA NPs functionalized with two different surfactants (polysorbate 80 and Labrafil M1944CS) as surface modifiers, in order to evaluate their passage through the BBB."
+    },
+    {
+      "span_id": "span_materials_plga",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Materials and methods",
+      "supporting_text": "PLGA with a ratio of 50:50 PLGA (Resomer® RG 502) was purchased from Evonik (Essen, Germany)."
+    },
+    {
+      "span_id": "span_materials_polysorbate",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Materials and methods",
+      "supporting_text": "Polysorbate 80 was obtained from PanReac (Barcelona, Spain)."
+    },
+    {
+      "span_id": "span_materials_labrafil",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Materials and methods",
+      "supporting_text": "Labrafil® M 1944 CS (PEG-5 oleate FDA IIG), was supplied by Gattefossé (Lyon, France)."
+    },
+    {
+      "span_id": "span_materials_pva",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Materials and methods",
+      "supporting_text": "Polyvinyl alcohol (PVA; molecular weight 30,000–70,000 Da) was obtained from Sigma-Aldrich."
+    },
+    {
+      "span_id": "span_materials_rh",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Materials and methods",
+      "supporting_text": "Rhodamine (Rh)-123 was supplied by Sigma-Aldrich (St Louis, MO, USA)"
+    },
+    {
+      "span_id": "span_materials_gat",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Materials and methods",
+      "supporting_text": "Gat sesquihydrate (1-cyclopropyl-6-fluoro-8-methoxy-7-[3-methylpiperazin-1-yl]-4-oxo-1,4-dihydroquinoline-3-carboxylic acid sesquihydrate) by Santa Cruz Biotechnology (Dallas, TX, USA)."
+    },
+    {
+      "span_id": "span_prep_npr1_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Preparation and characterization of NPs",
+      "supporting_text": "Rh-loaded PLGA NPs (NPR1; Table 1) were prepared by nanoprecipitation using an acetone–water system. Briefly, 50 mg of PLGA and 2.5 mg Rh were dissolved in 4 mL acetone and mixed by vortexing. This mixture was added dropwise into 12 mL of 1% PVA under continuous stirring for 15 minutes."
+    },
+    {
+      "span_id": "span_prep_npr1_postproc",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Preparation and characterization of NPs",
+      "supporting_text": "The NP suspension obtained was then washed with distilled water three times and centrifuged (Avanti J-301; Beckman Coulter, Brea, CA, USA) at 15,000 rpm for 30 minutes to remove PVA. Finally, the dispersed solution was freeze-dried for 24 hours with sucrose as cryoprotectant (Flexi-Dry MP™; FTS Systems, Stone Ridge, NY, USA)."
+    },
+    {
+      "span_id": "span_prep_npr2_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Preparation and characterization of NPs",
+      "supporting_text": "Rh-loaded PLGA–polysorbate 80 NPs were prepared by the nanoprecipitation method indicated previously using 12 mL of 0.5% PVA and 0.5% polysorbate 80 as the external phase (NPR2; Table 1)."
+    },
+    {
+      "span_id": "span_prep_npr3_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Preparation and characterization of NPs",
+      "supporting_text": "Rh-loaded PLGA–Labrafil NPs were prepared using the same protocol, but incorporating 3.5 mg Labrafil into the inner phase of the emulsion (NPR3). When Labrafil was incorporated, the desiccation process was performed under vacuum."
+    },
+    {
+      "span_id": "span_prep_gat_nps_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "Preparation and characterization of NPs",
+      "supporting_text": "Gat-loaded PLGA NPs, Gat-loaded PLGA–polysorbate 80 NPs, and Gat-loaded PLGA–Labrafil NPs were prepared using the same procedure but incorporating 5 mg of Gat into the inner phase. Table 1 shows the different formulations prepared. In all cases, blank NPs were prepared."
+    },
+    {
+      "span_id": "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1 Nanoparticle formulations developed"
+    },
+    {
+      "span_id": "span_table2_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2 Characteristics of the nanoparticle formulations prepared"
+    },
+    {
+      "span_id": "span_table3_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 3",
+      "supporting_text": "Table 3 Brain biodistribution of rhodamine solution and rhodamine-loaded nanoparticles"
+    },
+    {
+      "span_id": "span_results_rh_nps_size_ee",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results and discussion",
+      "supporting_text": "Mean particle sizes of Rh NPs were 234.8±4.3 nm, 194.9±5.7 nm, and 237.8±11 nm for formulations NPR1, NPR2, and NPR3, respectively (Table 2). Lower particle sizes were obtained for formulations prepared with polysorbate 80. ... With regard to EE, mean values were 55.3%±0.4% (formulation NPR1), 51.3%±0.3% (formulation NPR2), and 60.9%±0.4% (formulation NPR3) (Table 2), which corresponded to drug payloads of 2.63±0.04 mg, 2.42±0.02 mg, and 2.72±0.02 mg/100 mg NPs, respectively."
+    },
+    {
+      "span_id": "span_results_gat_nps_size_ee_zeta",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results and discussion",
+      "supporting_text": "Mean particle sizes for formulations NPG1, NPG2, and NPG3 were 176.6±11.6 nm, 176.5±2.9 nm, and 182.9±2.5 nm, respectively. ... For all formulations, ζ-potential was negative, probably due to the presence of ionized carboxyl groups on the surface of NPs. For blank NPs (NPB1), a value of -23±1.3 mV was measured... This value decreased significantly when NPs were functionalized with either polysorbate 80 (NPB2, -19.1±1.1 mV) or Labrafil (NPB3, -17.3±1 mV). ... EE values were 34.1%±0.12%, 28.2%±0.2%, and 10.4%±1.1% for formulations NPG1, NPG2, and NPG3, respectively (Table 2)."
+    },
+    {
+      "span_id": "span_results_npg2_best",
+      "source_region_type": "text_span",
+      "source_locator_text": "Conclusion",
+      "supporting_text": "However, Gat-loaded PLGA NPs functionalized with polysorbate 80 presented higher EE and adequate size distribution, being thus a promising drug-delivery system to treat CNS TB."
+    },
+    {
+      "span_id": "span_results_rh_biodistribution",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results and discussion",
+      "supporting_text": "Brain biodistribution studies of Rh-loaded NPs (formulations NPR1, NPR2, and NPR3) and Rh in solution were performed in male Wistar rats. For this, analysis of brain slices (cortex and hippocamppus) was carried out by confocal microscopy at 30 and 60 min with the intensity of fluorescence being measured (Table 3)."
+    },
+    {
+      "span_id": "span_results_rh_biodistribution_table3_data",
+      "source_region_type": "text_span",
+      "source_locator_text": "Results and discussion",
+      "supporting_text": "Increased fluorescence intensity of NPR1, NPR2, and NPR3 was observed in both cortex and hippocamppus (Table 3), thereby confirming their access to the CNS. ... At 60 minutes, the highest fluorescence intensity values in both hippocampus and cortex were obtained with functionalized NPs (NPR2 and NPR3) when compared to nonfunctionalized NPs (NPR1), indicating that both formulations increased their passage through the BBB (Table 3)."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 1 Nanoparticle formulations developed"
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 2 Characteristics of the nanoparticle formulations prepared"
+    },
+    {
+      "table_id": "Table 3",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 3 Brain biodistribution of rhodamine solution and rhodamine-loaded nanoparticles"
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Rhodamine (mg)",
+        "Gatifloxacin (mg)",
+        "Polysorbate 80 (%)",
+        "Labrafil (mg)"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": []
+    },
+    {
+      "table_id": "Table 2",
+      "varying_variables": [],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Mean particle size",
+        "ζ-Potential",
+        "Encapsulation efficiency"
+      ]
+    },
+    {
+      "table_id": "Table 3",
+      "varying_variables": [],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Fluorescence intensity (30 minutes, Hippocampus)",
+        "Fluorescence intensity (30 minutes, Cortex)",
+        "Fluorescence intensity (60 minutes, Hippocampus)",
+        "Fluorescence intensity (60 minutes, Cortex)"
+      ]
+    }
+  ],
+  "selection_markers": [],
+  "inheritance_markers": [],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 1",
+      "inherits_from_preparation": true,
+      "evidence_span": "Rh-loaded PLGA NPs (NPR1; Table 1) were prepared by nanoprecipitation... Rh-loaded PLGA–polysorbate 80 NPs were prepared by the nanoprecipitation method indicated previously... Rh-loaded PLGA–Labrafil NPs were prepared using the same protocol... Gat-loaded PLGA NPs, Gat-loaded PLGA–polysorbate 80 NPs, and Gat-loaded PLGA–Labrafil NPs were prepared using the same procedure..."
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 3",
+      "is_doe": false
+    }
+  ]
+}

@@ -1,0 +1,2166 @@
+{
+  "document_key": "INMUTV7L",
+  "doi": "10.3390/nano10040720",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F1",
+      "raw_label": "1 PLGA 503 H PVA",
+      "normalized_label": "PLGA 503 H nanoparticles with PVA",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F2",
+      "raw_label": "2 PLGA 503 H Tween80®",
+      "normalized_label": "PLGA 503 H nanoparticles with Tween 80",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F3",
+      "raw_label": "3 PLGA 503 H Lutrol",
+      "normalized_label": "PLGA 503 H nanoparticles with Lutrol",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F4",
+      "raw_label": "4 PLGA-5% PVA",
+      "normalized_label": "PLGA-PEG 5% nanoparticles with PVA",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F5",
+      "raw_label": "5 PLGA-5% Tween80®",
+      "normalized_label": "PLGA-PEG 5% nanoparticles with Tween 80",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F6",
+      "raw_label": "6 PLGA-5% Lutrol",
+      "normalized_label": "PLGA-PEG 5% nanoparticles with Lutrol",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row6"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F7",
+      "raw_label": "7 PLGA 10% PVA",
+      "normalized_label": "PLGA-PEG 10% nanoparticles with PVA",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row7"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F8",
+      "raw_label": "8 PLGA 10% Tween80®",
+      "normalized_label": "PLGA-PEG 10% nanoparticles with Tween 80",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row8"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F9",
+      "raw_label": "9 PLGA 10% Lutrol",
+      "normalized_label": "PLGA-PEG 10% nanoparticles with Lutrol",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row9"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F10",
+      "raw_label": "10 PLGA 15% PVA",
+      "normalized_label": "PLGA-PEG 15% nanoparticles with PVA",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row10"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F11",
+      "raw_label": "11 PLGA 15% Tween80®",
+      "normalized_label": "PLGA-PEG 15% nanoparticles with Tween 80",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row11"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F12",
+      "raw_label": "12 PLGA 15% Lutrol",
+      "normalized_label": "PLGA-PEG 15% nanoparticles with Lutrol",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row12"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_empty_PLGA",
+      "raw_label": "Empty PLGA NPs",
+      "normalized_label": "Empty PLGA nanoparticles",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [
+        "prepared without dexibuprofen"
+      ],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "comp_PLGA_shared",
+      "formulation_candidate_id": "",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "This is the total polymer amount, including PEG for PLGA-PEG formulations.",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "component_id": "comp_DXI_shared",
+      "formulation_candidate_id": "",
+      "component_name": "dexibuprofen",
+      "component_role": "drug",
+      "amount_text": "5 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_shared",
+      "formulation_candidate_id": "",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "5 mL",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_surfactant_solution_shared",
+      "formulation_candidate_id": "",
+      "component_name": "aqueous surfactant solution",
+      "component_role": "solvent",
+      "amount_text": "10 mL",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "component_id": "comp_PVA_F1",
+      "formulation_candidate_id": "F1",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row1"
+      ]
+    },
+    {
+      "component_id": "comp_Tween80_F2",
+      "formulation_candidate_id": "F2",
+      "component_name": "Tween 80",
+      "component_role": "surfactant",
+      "amount_text": "0.3%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row2"
+      ]
+    },
+    {
+      "component_id": "comp_Lutrol_F3",
+      "formulation_candidate_id": "F3",
+      "component_name": "Lutrol F68",
+      "component_role": "surfactant",
+      "amount_text": "1%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row3"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG5_F4",
+      "formulation_candidate_id": "F4",
+      "component_name": "PLGA-PEG 5%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 5% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row4"
+      ]
+    },
+    {
+      "component_id": "comp_PVA_F4",
+      "formulation_candidate_id": "F4",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row4"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG5_F5",
+      "formulation_candidate_id": "F5",
+      "component_name": "PLGA-PEG 5%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 5% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row5"
+      ]
+    },
+    {
+      "component_id": "comp_Tween80_F5",
+      "formulation_candidate_id": "F5",
+      "component_name": "Tween 80",
+      "component_role": "surfactant",
+      "amount_text": "0.3%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row5"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG5_F6",
+      "formulation_candidate_id": "F6",
+      "component_name": "PLGA-PEG 5%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 5% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row6"
+      ]
+    },
+    {
+      "component_id": "comp_Lutrol_F6",
+      "formulation_candidate_id": "F6",
+      "component_name": "Lutrol F68",
+      "component_role": "surfactant",
+      "amount_text": "1%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row6"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG10_F7",
+      "formulation_candidate_id": "F7",
+      "component_name": "PLGA 10%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 10% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row7"
+      ]
+    },
+    {
+      "component_id": "comp_PVA_F7",
+      "formulation_candidate_id": "F7",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row7"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG10_F8",
+      "formulation_candidate_id": "F8",
+      "component_name": "PLGA 10%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 10% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row8"
+      ]
+    },
+    {
+      "component_id": "comp_Tween80_F8",
+      "formulation_candidate_id": "F8",
+      "component_name": "Tween 80",
+      "component_role": "surfactant",
+      "amount_text": "0.3%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row8"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG10_F9",
+      "formulation_candidate_id": "F9",
+      "component_name": "PLGA 10%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 10% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row9"
+      ]
+    },
+    {
+      "component_id": "comp_Lutrol_F9",
+      "formulation_candidate_id": "F9",
+      "component_name": "Lutrol F68",
+      "component_role": "surfactant",
+      "amount_text": "1%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row9"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG15_F10",
+      "formulation_candidate_id": "F10",
+      "component_name": "PLGA 15%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 15% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row10"
+      ]
+    },
+    {
+      "component_id": "comp_PVA_F10",
+      "formulation_candidate_id": "F10",
+      "component_name": "PVA",
+      "component_role": "surfactant",
+      "amount_text": "0.5%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row10"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG15_F11",
+      "formulation_candidate_id": "F11",
+      "component_name": "PLGA 15%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 15% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row11"
+      ]
+    },
+    {
+      "component_id": "comp_Tween80_F11",
+      "formulation_candidate_id": "F11",
+      "component_name": "Tween 80",
+      "component_role": "surfactant",
+      "amount_text": "0.3%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row11"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_PEG15_F12",
+      "formulation_candidate_id": "F12",
+      "component_name": "PLGA 15%",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Total polymer amount, including 15% PEG.",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row12"
+      ]
+    },
+    {
+      "component_id": "comp_Lutrol_F12",
+      "formulation_candidate_id": "F12",
+      "component_name": "Lutrol F68",
+      "component_role": "surfactant",
+      "amount_text": "1%",
+      "amount_kind": "concentration",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep",
+        "span_table1_row12"
+      ]
+    },
+    {
+      "component_id": "comp_PLGA_F_empty_PLGA",
+      "formulation_candidate_id": "F_empty_PLGA",
+      "component_name": "PLGA",
+      "component_role": "polymer",
+      "amount_text": "90 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "component_id": "comp_acetone_F_empty_PLGA",
+      "formulation_candidate_id": "F_empty_PLGA",
+      "component_name": "acetone",
+      "component_role": "solvent",
+      "amount_text": "5 mL",
+      "amount_kind": "volume",
+      "phase_hint": "organic solution",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "component_id": "comp_aqueous_surfactant_solution_F_empty_PLGA",
+      "formulation_candidate_id": "F_empty_PLGA",
+      "component_name": "aqueous surfactant solution",
+      "component_role": "solvent",
+      "amount_text": "10 mL",
+      "amount_kind": "volume",
+      "phase_hint": "aqueous solution",
+      "ambiguity_note": "The specific surfactant type and concentration for empty NPs are not explicitly stated, but it follows the 'same protocol'.",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "var_prep_method",
+      "formulation_candidate_id": "",
+      "variable_name": "preparation method",
+      "value_text": "solvent displacement method",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "variable_id": "var_pH_aqueous_solution",
+      "formulation_candidate_id": "",
+      "variable_name": "pH of aqueous surfactant solution",
+      "value_text": "3.5",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "variable_id": "var_DLS_temp",
+      "formulation_candidate_id": "",
+      "variable_name": "DLS measurement temperature",
+      "value_text": "25 °C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_char"
+      ]
+    },
+    {
+      "variable_id": "var_release_temp",
+      "formulation_candidate_id": "",
+      "variable_name": "in vitro release temperature",
+      "value_text": "32 °C",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_methods_release"
+      ]
+    },
+    {
+      "variable_id": "var_sterilization_dose",
+      "formulation_candidate_id": "",
+      "variable_name": "gamma irradiation dose",
+      "value_text": "25 kGy",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_sterilization_method"
+      ]
+    },
+    {
+      "variable_id": "var_polymer_type",
+      "formulation_candidate_id": "",
+      "variable_name": "Polymer Used",
+      "value_text": "PLGA 503 H, PLGA-5%, PLGA 10%, PLGA 15%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "Represents PLGA with 0%, 5%, 10%, 15% PEG respectively.",
+      "evidence_span_ids": [
+        "span_results_table1_context",
+        "span_table1_caption"
+      ]
+    },
+    {
+      "variable_id": "var_surfactant_type",
+      "formulation_candidate_id": "",
+      "variable_name": "Surfactant",
+      "value_text": "PVA, Tween80®, Lutrol",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_results_table1_context",
+        "span_table1_caption"
+      ]
+    },
+    {
+      "variable_id": "var_PVA_conc",
+      "formulation_candidate_id": "",
+      "variable_name": "PVA concentration",
+      "value_text": "0.5%",
+      "variable_role": "shared_context",
+      "ambiguity_note": "This is the optimized concentration used for all PVA formulations.",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "variable_id": "var_Tween80_conc",
+      "formulation_candidate_id": "",
+      "variable_name": "Tween 80 concentration",
+      "value_text": "0.3%",
+      "variable_role": "shared_context",
+      "ambiguity_note": "This is the optimized concentration used for all Tween 80 formulations.",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    },
+    {
+      "variable_id": "var_Lutrol_conc",
+      "formulation_candidate_id": "",
+      "variable_name": "Lutrol F68 concentration",
+      "value_text": "1%",
+      "variable_role": "shared_context",
+      "ambiguity_note": "This is the optimized concentration used for all Lutrol F68 formulations.",
+      "evidence_span_ids": [
+        "span_methods_prep"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "meas_F1_size",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "size",
+      "value_text": "234.1 ± 0.5",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F1_pdi",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "pdi",
+      "value_text": "0.081 ± 0.009",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F1_zeta",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "zeta_potential",
+      "value_text": "-12.2 ± 1.3",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F1_ee",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "93.4",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F2_size",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "size",
+      "value_text": "146.0 ± 0.6",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F2_pdi",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "pdi",
+      "value_text": "0.054 ± 0.008",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F2_zeta",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "zeta_potential",
+      "value_text": "-25.2 ± 0.6",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F2_ee",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "87.5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_size",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "size",
+      "value_text": "159.5 ± 0.8",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_pdi",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "pdi",
+      "value_text": "0.058 ± 0.021",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_zeta",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "zeta_potential",
+      "value_text": "-26.0 ± 0.1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_ee",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "85.1",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F4_size",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "size",
+      "value_text": "167.1 ± 1.1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F4_pdi",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "pdi",
+      "value_text": "0.080 ± 0.012",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F4_zeta",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "zeta_potential",
+      "value_text": "-11.8 ± 0.9",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F4_ee",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "95.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F5_size",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "size",
+      "value_text": "138.4 ± 1.3",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F5_pdi",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "pdi",
+      "value_text": "0.072 ± 0.015",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F5_zeta",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "zeta_potential",
+      "value_text": "-14.1 ± 1.1",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F5_ee",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "91.5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_size",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "size",
+      "value_text": "154.2 ± 1.9",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_pdi",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "pdi",
+      "value_text": "0.063 ± 0.015",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_zeta",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "zeta_potential",
+      "value_text": "-18.7 ± 1.4",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_ee",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "93.8",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F7_size",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "size",
+      "value_text": "140.9 ± 1.0",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F7_pdi",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "pdi",
+      "value_text": "0.055 ± 0.023",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F7_zeta",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "zeta_potential",
+      "value_text": "-16.7 ± 0.7",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F7_ee",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "99.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_size",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "size",
+      "value_text": "119.2 ± 1.0",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_pdi",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "pdi",
+      "value_text": "0.074 ± 0.008",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_zeta",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "zeta_potential",
+      "value_text": "-21.2 ± 0.6",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_ee",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "99.2",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F9_size",
+      "formulation_candidate_id": "F9",
+      "measurement_name": "size",
+      "value_text": "120.7 ± 0.8",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row9"
+      ]
+    },
+    {
+      "measurement_id": "meas_F9_pdi",
+      "formulation_candidate_id": "F9",
+      "measurement_name": "pdi",
+      "value_text": "0.071 ± 0.008",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row9"
+      ]
+    },
+    {
+      "measurement_id": "meas_F9_zeta",
+      "formulation_candidate_id": "F9",
+      "measurement_name": "zeta_potential",
+      "value_text": "-23.1 ± 1.8",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row9"
+      ]
+    },
+    {
+      "measurement_id": "meas_F9_ee",
+      "formulation_candidate_id": "F9",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "91.5",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row9"
+      ]
+    },
+    {
+      "measurement_id": "meas_F10_size",
+      "formulation_candidate_id": "F10",
+      "measurement_name": "size",
+      "value_text": "156.4 ± 0.8",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row10"
+      ]
+    },
+    {
+      "measurement_id": "meas_F10_pdi",
+      "formulation_candidate_id": "F10",
+      "measurement_name": "pdi",
+      "value_text": "0.078 ± 0.008",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row10"
+      ]
+    },
+    {
+      "measurement_id": "meas_F10_zeta",
+      "formulation_candidate_id": "F10",
+      "measurement_name": "zeta_potential",
+      "value_text": "-16.2 ± 0.7",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row10"
+      ]
+    },
+    {
+      "measurement_id": "meas_F10_ee",
+      "formulation_candidate_id": "F10",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "92.2",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row10"
+      ]
+    },
+    {
+      "measurement_id": "meas_F11_size",
+      "formulation_candidate_id": "F11",
+      "measurement_name": "size",
+      "value_text": "143.0 ± 0.5",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row11"
+      ]
+    },
+    {
+      "measurement_id": "meas_F11_pdi",
+      "formulation_candidate_id": "F11",
+      "measurement_name": "pdi",
+      "value_text": "0.062 ± 0.006",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row11"
+      ]
+    },
+    {
+      "measurement_id": "meas_F11_zeta",
+      "formulation_candidate_id": "F11",
+      "measurement_name": "zeta_potential",
+      "value_text": "-21.4 ± 0.8",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row11"
+      ]
+    },
+    {
+      "measurement_id": "meas_F11_ee",
+      "formulation_candidate_id": "F11",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "93.4",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row11"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_size",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "size",
+      "value_text": "155.2 ± 1.1",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row12"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_pdi",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "pdi",
+      "value_text": "0.076 ± 0.012",
+      "unit_text": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row12"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_zeta",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "zeta_potential",
+      "value_text": "-22.5 ± 0.5",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row12"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_ee",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "94.0",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table1_row12"
+      ]
+    },
+    {
+      "measurement_id": "meas_F1_Bmax",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "Bmax",
+      "value_text": "50.6 ± 2.3",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F1_Kd",
+      "formulation_candidate_id": "F1",
+      "measurement_name": "Kd",
+      "value_text": "210.6 ± 24.3",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F2_Bmax",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "Bmax",
+      "value_text": "46.9 ± 1.6",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F2_Kd",
+      "formulation_candidate_id": "F2",
+      "measurement_name": "Kd",
+      "value_text": "89.6 ± 10.1",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_Bmax",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Bmax",
+      "value_text": "48.7 ± 1.4",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_Kd",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Kd",
+      "value_text": "79.7 ± 7.9",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F4_Bmax",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "Bmax",
+      "value_text": "33.5 ± 2.8",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F4_Kd",
+      "formulation_candidate_id": "F4",
+      "measurement_name": "Kd",
+      "value_text": "149.2 ± 35.2",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F5_Bmax",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "Bmax",
+      "value_text": "40.4 ± 1.1",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F5_Kd",
+      "formulation_candidate_id": "F5",
+      "measurement_name": "Kd",
+      "value_text": "84.5 ± 7.6",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_Bmax",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Bmax",
+      "value_text": "41.6 ± 0.5",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_Kd",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Kd",
+      "value_text": "79.9 ± 3.4",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F7_Bmax",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "Bmax",
+      "value_text": "38.5 ± 0.5",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F7_Kd",
+      "formulation_candidate_id": "F7",
+      "measurement_name": "Kd",
+      "value_text": "78.1 ± 3.9",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_Bmax",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "Bmax",
+      "value_text": "43.0 ± 1.8",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_Kd",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "Kd",
+      "value_text": "72.1 ± 10.9",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F9_Bmax",
+      "formulation_candidate_id": "F9",
+      "measurement_name": "Bmax",
+      "value_text": "45.1 ± 1.4",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row9"
+      ]
+    },
+    {
+      "measurement_id": "meas_F9_Kd",
+      "formulation_candidate_id": "F9",
+      "measurement_name": "Kd",
+      "value_text": "77.1 ± 8.5",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row9"
+      ]
+    },
+    {
+      "measurement_id": "meas_F10_Bmax",
+      "formulation_candidate_id": "F10",
+      "measurement_name": "Bmax",
+      "value_text": "41.4 ± 1.1",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row10"
+      ]
+    },
+    {
+      "measurement_id": "meas_F10_Kd",
+      "formulation_candidate_id": "F10",
+      "measurement_name": "Kd",
+      "value_text": "59.8 ± 6.0",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row10"
+      ]
+    },
+    {
+      "measurement_id": "meas_F11_Bmax",
+      "formulation_candidate_id": "F11",
+      "measurement_name": "Bmax",
+      "value_text": "44.6 ± 1.0",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row11"
+      ]
+    },
+    {
+      "measurement_id": "meas_F11_Kd",
+      "formulation_candidate_id": "F11",
+      "measurement_name": "Kd",
+      "value_text": "79.4 ± 6.3",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row11"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_Bmax",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "Bmax",
+      "value_text": "58.3 ± 1.5",
+      "unit_text": "%",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row12"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_Kd",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "Kd",
+      "value_text": "113.6 ± 9.2",
+      "unit_text": "min",
+      "ambiguity_note": "Pharmacokinetic parameter from in vitro drug release.",
+      "evidence_span_ids": [
+        "span_table3_row12"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_corneal_K",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Corneal Permeation K",
+      "value_text": "0.814 ± 0.075",
+      "unit_text": "",
+      "ambiguity_note": "Korsmeyer-Peppas model parameter.",
+      "evidence_span_ids": [
+        "span_table6_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_corneal_n",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Corneal Permeation n",
+      "value_text": "0.33 ± 0.02",
+      "unit_text": "",
+      "ambiguity_note": "Korsmeyer-Peppas model parameter.",
+      "evidence_span_ids": [
+        "span_table6_row1"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_corneal_K",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Corneal Permeation K",
+      "value_text": "1.45 ± 0.34",
+      "unit_text": "",
+      "ambiguity_note": "Korsmeyer-Peppas model parameter.",
+      "evidence_span_ids": [
+        "span_table6_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_corneal_n",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Corneal Permeation n",
+      "value_text": "0.40 ± 0.04",
+      "unit_text": "",
+      "ambiguity_note": "Korsmeyer-Peppas model parameter.",
+      "evidence_span_ids": [
+        "span_table6_row2"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_corneal_Kd",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "Corneal Permeation Kd",
+      "value_text": "38.01 ± 3.64",
+      "unit_text": "min",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_corneal_Bmax",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "Corneal Permeation Bmax",
+      "value_text": "19.8% ± 0.4904%",
+      "unit_text": "%",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row3"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_corneal_Kd",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "Corneal Permeation Kd",
+      "value_text": "46.02 ± 4.15",
+      "unit_text": "min",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_corneal_Bmax",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "Corneal Permeation Bmax",
+      "value_text": "27.98% ± 0.7002%",
+      "unit_text": "%",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row4"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_scleral_K",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Scleral Permeation K",
+      "value_text": "7.29 ± 0.58",
+      "unit_text": "",
+      "ambiguity_note": "Korsmeyer-Peppas model parameter.",
+      "evidence_span_ids": [
+        "span_table6_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F3_scleral_n",
+      "formulation_candidate_id": "F3",
+      "measurement_name": "Scleral Permeation n",
+      "value_text": "0.14 ± 0.16",
+      "unit_text": "",
+      "ambiguity_note": "Korsmeyer-Peppas model parameter.",
+      "evidence_span_ids": [
+        "span_table6_row5"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_scleral_Kd",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Scleral Permeation Kd",
+      "value_text": "90.92 ± 8.80",
+      "unit_text": "min",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F6_scleral_Bmax",
+      "formulation_candidate_id": "F6",
+      "measurement_name": "Scleral Permeation Bmax",
+      "value_text": "24.64% ± 0.85%",
+      "unit_text": "%",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row6"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_scleral_Kd",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "Scleral Permeation Kd",
+      "value_text": "24.26 ± 3.90",
+      "unit_text": "min",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F8_scleral_Bmax",
+      "formulation_candidate_id": "F8",
+      "measurement_name": "Scleral Permeation Bmax",
+      "value_text": "21.57% ± 0.75%",
+      "unit_text": "%",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row7"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_scleral_Kd",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "Scleral Permeation Kd",
+      "value_text": "19.23 ± 2.59",
+      "unit_text": "min",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row8"
+      ]
+    },
+    {
+      "measurement_id": "meas_F12_scleral_Bmax",
+      "formulation_candidate_id": "F12",
+      "measurement_name": "Scleral Permeation Bmax",
+      "value_text": "23.05% ± 0.61%",
+      "unit_text": "%",
+      "ambiguity_note": "Hyperbola equation parameter.",
+      "evidence_span_ids": [
+        "span_table6_row8"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "span_abstract_formulations",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "several formulations of PLGA based nanoparticles encapsulating dexibuprofen (active enantiomer of Ibuprofen) were prepared using the solvent displacement method employing different surfactants."
+    },
+    {
+      "span_intro_variables",
+      "source_region_type": "text_span",
+      "source_locator_text": "Introduction",
+      "supporting_text": "For this reason, several % of PEG have been studied and compared with PLGA NPs. Additionally, the role of various surfactants commonly used for ocular drug delivery in the formation, characterization and efficacy of PLGA and PLGA PEG NPs have been studied. In this sense, widely used non-ionic surfactants such as Lutrol F68 (Poloxamer 188), Tween 80® and polyvinyl alcohol (PVA) have been studied [9]."
+    },
+    {
+      "span_methods_prep",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "2.1. Preparation of Polymeric Nanoparticles",
+      "supporting_text": "PLGA nanoparticles (NPs) containing DXI were prepared by using the solvent displacement method [10,11]. In summary, 90 mg of PLGA (Boehringuer Ingelheim®, Ingelheim am Rhein, Germany) and 5 mg of dexibuprofen (Amadis Chemical®, Hangzhou, Zhejiang, China) were weighed and dissolved in 5 mL of acetone. The organic solution was added dropwise into 10 mL of an aqueous surfactant solution at pH 3.5 under magnetic stirring. Following this, the acetone was evaporated under reduced pressure. Various optimized concentrations of surfactants were used (PVA 0.5%, Tween 80® 0.3% and Lutrol F68 (1%). NPs prepared using PVA were centrifuged at 15,000 rpm for 30 min in order to remove excess of PVA. Empty PLGA NPs were prepared using the same protocol but without dexibuprofen."
+    },
+    {
+      "span_methods_char",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "2.2.1. Particle Size, Zeta Potential and Polydispersity (PI)",
+      "supporting_text": "Particle size and polydispersity index (PI) were determined by dynamic light scattering using a Zetasizer nano ZS (Malvern instruments, IESMAT, Alcobendas, Madrid, Spain) at 25 ◦C and scattering"
+    },
+    {
+      "span_methods_release",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "2.3. In Vitro Release Study",
+      "supporting_text": "Release kinetic experiments were performed at a ﬁxed temperature of 32 ◦C (ocular surface temperature) under constant magnetic stirring (n = 6/group)."
+    },
+    {
+      "span_results_table1_context",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.1. Characterization of the Nanocarriers",
+      "supporting_text": "The formulations were characterized as seen in Table 1. The formulations were optimized using PLGA-PEG 5% for each surfactant used (Lutrol, PVA and Tween80®). Therefore, four different polymers and three of the most commonly used surfactants were assessed. Different PLGA-PEG triblocks were used."
+    },
+    {
+      "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1. Characterization of the different formulations developed."
+    },
+    {
+      "span_table1_row1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 1",
+      "supporting_text": "1 PLGA 503 H PVA 234.1 ± 0.5 0.081 ± 0.009 −12.2 ± 1.3 93.4"
+    },
+    {
+      "span_table1_row2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 2",
+      "supporting_text": "2 PLGA 503 H Tween80® 146.0 ± 0.6 0.054 ± 0.008 −25.2 ± 0.6 87.5"
+    },
+    {
+      "span_table1_row3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 3",
+      "supporting_text": "3 PLGA 503 H Lutrol 159.5 ± 0.8 0.058 ± 0.021 −26.0 ± 0.1 85.1"
+    },
+    {
+      "span_table1_row4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 4",
+      "supporting_text": "4 PLGA-5% PVA 167.1 ± 1.1 0.080 ± 0.012 −11.8 ± 0.9 95.0"
+    },
+    {
+      "span_table1_row5",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 5",
+      "supporting_text": "5 PLGA-5% Tween80® 138.4 ± 1.3 0.072 ± 0.015 −14.1 ± 1.1 91.5"
+    },
+    {
+      "span_table1_row6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 6",
+      "supporting_text": "6 PLGA-5% Lutrol 154.2 ± 1.9 0.063 ± 0.015 −18.7 ± 1.4 93.8"
+    },
+    {
+      "span_table1_row7",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 7",
+      "supporting_text": "7 PLGA 10% PVA 140.9 ± 1.0 0.055 ± 0.023 −16.7 ± 0.7 99.0"
+    },
+    {
+      "span_table1_row8",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 8",
+      "supporting_text": "8 PLGA 10% Tween80® 119.2 ± 1.0 0.074 ± 0.008 −21.2 ± 0.6 99.2"
+    },
+    {
+      "span_table1_row9",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 9",
+      "supporting_text": "9 PLGA 10% Lutrol 120.7 ± 0.8 0.071 ± 0.008 −23.1 ± 1.8 91.5"
+    },
+    {
+      "span_table1_row10",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 10",
+      "supporting_text": "10 PLGA 15% PVA 156.4 ± 0.8 0.078 ± 0.008 −16.2 ± 0.7 92.2"
+    },
+    {
+      "span_table1_row11",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 11",
+      "supporting_text": "11 PLGA 15% Tween80® 143.0 ± 0.5 0.062 ± 0.006 −21.4 ± 0.8 93.4"
+    },
+    {
+      "span_table1_row12",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 1, row 12",
+      "supporting_text": "12 PLGA 15% Lutrol 155.2 ± 1.1 0.076 ± 0.012 −22.5 ± 0.5 94.0"
+    },
+    {
+      "span_sterilization_method",
+      "source_region_type": "methods_sentence",
+      "source_locator_text": "2.4. Sterilization Using Gamma Radiation",
+      "supporting_text": "DXI NPs were sterilized using gamma irradiation using 60Co at a dose of 25 kGy (Aragogamma, Barcelona, Spain) [15]."
+    },
+    {
+      "span_sterilization_effect",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.3. Sterilization Using Gamma Radiation",
+      "supporting_text": "As shown in Table 2, the majority of the formulations were not affected by the irradiation and only PI was slightly increased in F1, which was the only formulation with more than 200 nm of average size. However, the ratio before and after was close to 1 in all cases."
+    },
+    {
+      "span_table2_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2. Sterilization using gamma radiation (ratio between before and after sterilization)."
+    },
+    {
+      "span_table3_context",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.4. In Vitro Drug Release",
+      "supporting_text": "The in vitro release profile of DXI from the NPs demonstrates that all the formulations have a kinetic profile that is characteristic of prolonged drug release formulations (Table 3) [37]."
+    },
+    {
+      "span_table3_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 3",
+      "supporting_text": "Table 3. Pharmacokinetic parameters of PLGA nanoparticles applied to a hyperbola equation."
+    },
+    {
+      "span_table3_row1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 1",
+      "supporting_text": "1 PLGA 503 H PVA 50.6 ± 2.3 210.6 ± 24.3"
+    },
+    {
+      "span_table3_row2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 2",
+      "supporting_text": "2 Tween80® 46.9 ± 1.6 89.6 ± 10.1"
+    },
+    {
+      "span_table3_row3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 3",
+      "supporting_text": "3 Lutrol 48.7 ± 1.4 79.7 ± 7.9"
+    },
+    {
+      "span_table3_row4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 4",
+      "supporting_text": "4 PLGA-5% PVA 33.5 ± 2.8 149.2 ± 35.2"
+    },
+    {
+      "span_table3_row5",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 5",
+      "supporting_text": "5 Tween80® 40.4 ± 1.1 84.5 ± 7.6"
+    },
+    {
+      "span_table3_row6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 6",
+      "supporting_text": "6 Lutrol 41.6 ± 0.5 79.9 ± 3.4"
+    },
+    {
+      "span_table3_row7",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 7",
+      "supporting_text": "7 PLGA 10% PVA 38.5 ± 0.5 78.1 ± 3.9"
+    },
+    {
+      "span_table3_row8",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 8",
+      "supporting_text": "8 Tween80® 43.0 ± 1.8 72.1 ± 10.9"
+    },
+    {
+      "span_table3_row9",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 9",
+      "supporting_text": "9 Lutrol 45.1 ± 1.4 77.1 ± 8.5"
+    },
+    {
+      "span_table3_row10",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 10",
+      "supporting_text": "10 PLGA 15% PVA 41.4 ± 1.1 59.8 ± 6.0"
+    },
+    {
+      "span_table3_row11",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 11",
+      "supporting_text": "11 Tween80® 44.6 ± 1.0 79.4 ± 6.3"
+    },
+    {
+      "span_table3_row12",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 3, row 12",
+      "supporting_text": "12 Lutrol 58.3 ± 1.5 113.6 ± 9.2"
+    },
+    {
+      "span_table4_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 4",
+      "supporting_text": "Table 4. Surface properties of ACMM only and mixed ACMM–DXI NPs monolayers containing different PEG concentrations; and PVA, Tween and Lutrol as surfactants."
+    },
+    {
+      "span_table5_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 5",
+      "supporting_text": "Table 5. Binding parameters of PLGA DXI NPs using the fluorescence of the potential sensitive probe di-8-ANEPPS. Kd is the apparent dissociation constant for binding NPs to ACMM and Bmax the maximum NPs capacity to link to the membrane."
+    },
+    {
+      "span_best_antiinflam",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.7. Ocular Inflammation",
+      "supporting_text": "Therefore, the best anti-inflammatory results were obtained with PLGA Lutrol, PLGA 5% PEG Lutrol, PLGA 10% PEG Tween and PLGA 15% PEG using Lutrol."
+    },
+    {
+      "span_exvivo_selection",
+      "source_region_type": "text_span",
+      "source_locator_text": "3.8. Ex Vivo Permeation Assay",
+      "supporting_text": "To reduce the number of animals, an ex vivo permeation assay was carried out using the most effective formulations. Therefore, four formulations were assessed (DXI PLGA Lutrol NPs, DXI PLGA 5% PEG Lutrol NPs, DXI PLGA 10% Tween NPs and DXI PLGA 15% PEG Lutrol NPs)."
+    },
+    {
+      "span_table6_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 6",
+      "supporting_text": "Table 6. Ex vivo permeation pharmacokinetic parameters (n: release exponent)."
+    },
+    {
+      "span_table6_row1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 1",
+      "supporting_text": "PLGA Lutrol Korsmeyer-Peppas K: 0.814 ± 0.075 n: 0.33 ± 0.02"
+    },
+    {
+      "span_table6_row2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 2",
+      "supporting_text": "PLGA 5% Lutrol Korsmeyer-Peppas K: 1.45 ± 0.34 n: 0.40 ± 0.04"
+    },
+    {
+      "span_table6_row3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 3",
+      "supporting_text": "PLGA 10% Tween Hyperbola Kd: 38.01 ± 3.64 min B max: 19.8% ± 0.4904%"
+    },
+    {
+      "span_table6_row4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 4",
+      "supporting_text": "PLGA 15% Lutrol Hyperbola Kd: 46.02 ± 4.15 min B max 27.98% ± 0.7002%"
+    },
+    {
+      "span_table6_row5",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 5",
+      "supporting_text": "PLGA Lutrol Korsmeyer-Peppas K: 7.29 ± 0.58 N: 0.14 ± 0.16"
+    },
+    {
+      "span_table6_row6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 6",
+      "supporting_text": "PLGA 5% Lutrol Hyperbola Kd: 90.92 ± 8.80 min Bmax: 24.64% ± 0.85%"
+    },
+    {
+      "span_table6_row7",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 7",
+      "supporting_text": "PLGA 10% Tween Hyperbola Kd: 24.26 ± 3.90 min Bmax: 21.57% ± 0.75%"
+    },
+    {
+      "span_table6_row8",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 6, row 8",
+      "supporting_text": "PLGA 15% Lutrol Hyperbola Kd: 19.23 ± 2.59 min Bmax: 23.05% ± 0.61%"
+    },
+    {
+      "span_conclusion_best",
+      "source_region_type": "text_span",
+      "source_locator_text": "4. Conclusions",
+      "supporting_text": "In conclusion, the formulations containing DXI PLGA 15% PEG prepared using Lutrol as a surfactant were able to release DXI more effectively for the treatment of ocular inflammation."
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 1. Characterization of the different formulations developed. The formulations were optimized using PLGA-PEG 5% for each surfactant used (Lutrol, PVA and Tween80®). Therefore, four different polymers and three of the most commonly used surfactants were assessed."
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": false,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 2. Sterilization using gamma radiation (ratio between before and after sterilization)."
+    },
+    {
+      "table_id": "Table 3",
+      "is_formulation_table": false,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 3. Pharmacokinetic parameters of PLGA nanoparticles applied to a hyperbola equation."
+    },
+    {
+      "table_id": "Table 4",
+      "is_formulation_table": false,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 4. Surface properties of ACMM only and mixed ACMM–DXI NPs monolayers containing different PEG concentrations; and PVA, Tween and Lutrol as surfactants."
+    },
+    {
+      "table_id": "Table 5",
+      "is_formulation_table": false,
+      "table_type": "non_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 5. Binding parameters of PLGA DXI NPs using the fluorescence of the potential sensitive probe di-8-ANEPPS. Kd is the apparent dissociation constant for binding NPs to ACMM and Bmax the maximum NPs capacity to link to the membrane."
+    },
+    {
+      "table_id": "Table 6",
+      "is_formulation_table": true,
+      "table_type": "sequential_child",
+      "confidence": "high",
+      "evidence_span": "Table 6. Ex vivo permeation pharmacokinetic parameters (n: release exponent). To reduce the number of animals, an ex vivo permeation assay was carried out using the most effective formulations. Therefore, four formulations were assessed (DXI PLGA Lutrol NPs, DXI PLGA 5% PEG Lutrol NPs, DXI PLGA 10% Tween NPs and DXI PLGA 15% PEG Lutrol NPs)."
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Polymer Used",
+        "Surfactant"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "Average Size",
+        "Polydispersity Index (PI)",
+        "Zeta Potential (ZP)",
+        "EE (%)"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "partial_semantic",
+      "source_table_id": "Table 1",
+      "selected_variable": "formulation",
+      "selected_value": "PLGA Lutrol, PLGA 5% PEG Lutrol, PLGA 10% PEG Tween, PLGA 15% PEG Lutrol",
+      "explicit": true,
+      "evidence_span": "Therefore, the best anti-inflammatory results were obtained with PLGA Lutrol, PLGA 5% PEG Lutrol, PLGA 10% PEG Tween and PLGA 15% PEG using Lutrol."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 1",
+      "selected_variable": "formulation",
+      "selected_value": "F3, F6, F8, F12",
+      "explicit": true,
+      "evidence_span": "To reduce the number of animals, an ex vivo permeation assay was carried out using the most effective formulations. Therefore, four formulations were assessed (DXI PLGA Lutrol NPs, DXI PLGA 5% PEG Lutrol NPs, DXI PLGA 10% Tween NPs and DXI PLGA 15% PEG Lutrol NPs)."
+    },
+    {
+      "marker_readiness": "partial_semantic",
+      "source_table_id": "Table 1",
+      "selected_variable": "formulation",
+      "selected_value": "PLGA 15% PEG Lutrol",
+      "explicit": true,
+      "evidence_span": "In conclusion, the formulations containing DXI PLGA 15% PEG prepared using Lutrol as a surfactant were able to release DXI more effectively for the treatment of ocular inflammation."
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 1",
+      "to_table": "Table 6",
+      "inherit_type": "selected_condition",
+      "variable": "formulation",
+      "value": "F3, F6, F8, F12",
+      "evidence_span": "To reduce the number of animals, an ex vivo permeation assay was carried out using the most effective formulations. Therefore, four formulations were assessed (DXI PLGA Lutrol NPs, DXI PLGA 5% PEG Lutrol NPs, DXI PLGA 10% Tween NPs and DXI PLGA 15% PEG Lutrol NPs)."
+    }
+  ],
+  "preparation_inheritance_markers": [],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 3",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 4",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 5",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 6",
+      "is_doe": false
+    }
+  ]
+}

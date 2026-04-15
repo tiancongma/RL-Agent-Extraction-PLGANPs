@@ -1,0 +1,11 @@
+stage_metric	lineage_a_value	lineage_b_value	difference	interpretation
+raw_response_present	yes	yes	no difference	Both lineages have a WFDTQ4VX raw-response artifact.
+raw_response_formulation_candidate_count	3	34	+31 in lineage B	The row universe is already much larger in Lineage B at the raw-response layer.
+s2_5_semantic_formulation_count	3	34	+31 in lineage B	S2-5 preserves the raw-response divergence rather than creating it later.
+s2_6_validation_status	pass	pass	no difference	S2-6 contract validation passes in both lineages and does not prove suppression for WFDTQ4VX.
+s2_6_wf_specific_errors_or_warnings	none	none	no difference	No WFDTQ4VX-specific contract-validation failure is recorded in either lineage.
+s2_7_projected_weak_label_row_count	3	34	+31 in lineage B	S2-7 keeps the Stage2 row-universe split; the missing rows are not generated in Lineage A.
+stage3_relation_record_count	28	218	+190 in lineage B	Stage3 relation volume scales with the upstream row-universe difference.
+stage3_resolved_relation_field_count	7	7	no difference	Both lineages resolve a small similar descriptive field set; relation resolution is not the main divergence source.
+stage5_final_row_count	2	33	+31 in lineage B	Stage5 output difference is downstream of the Stage2 row-universe split.
+stage5_wf_decision_trace_row_count	3	34	+31 in lineage B	Stage5 sees many more WFDTQ4VX source candidates in Lineage B because they already exist upstream.

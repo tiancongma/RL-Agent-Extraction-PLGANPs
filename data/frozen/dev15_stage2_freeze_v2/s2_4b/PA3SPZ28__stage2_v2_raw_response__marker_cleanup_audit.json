@@ -1,0 +1,42 @@
+{
+  "artifact_version": "v1",
+  "source_raw_response_path": "data/frozen/dev15_stage2_freeze_v2/s2_4b/PA3SPZ28__stage2_v2_raw_response.json",
+  "cleanup_scope": "inheritance_markers",
+  "dropped_marker_count": 2,
+  "dropped_markers": [
+    {
+      "index": 2,
+      "reason": [
+        "partial_missing_review_risk_label",
+        "partial_invalid_risk_reason"
+      ],
+      "marker": {
+        "marker_readiness": "partial_semantic",
+        "from_table": "Table 1",
+        "to_table": "",
+        "inherit_type": "selected_condition",
+        "variable": "Drug:Polymer ratio",
+        "value": "1:10",
+        "evidence_span": "Fluorescent nanoparticles were prepared by replacing GAR with FITC (5 mg).",
+        "ambiguity_note": "Inferred that the optimal formulation (1:10 Drug:Polymer ratio) was used as the base for FITC labeling, as is common practice."
+      }
+    },
+    {
+      "index": 3,
+      "reason": [
+        "partial_missing_review_risk_label",
+        "partial_invalid_risk_reason"
+      ],
+      "marker": {
+        "marker_readiness": "partial_semantic",
+        "from_table": "Table 1",
+        "to_table": "",
+        "inherit_type": "selected_condition",
+        "variable": "Drug:Polymer ratio",
+        "value": "1:10",
+        "evidence_span": "GAR loaded NPs were radiolabeled with technetium-99m with >95% labeling efficiency",
+        "ambiguity_note": "Inferred that the optimal formulation (1:10 Drug:Polymer ratio) was used as the base for 99mTc labeling, as is common practice."
+      }
+    }
+  ]
+}

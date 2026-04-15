@@ -1,0 +1,3605 @@
+{
+  "document_key": "WFDTQ4VX",
+  "doi": "10.1080/10717544.2016.1199605",
+  "formulation_candidates": [
+    {
+      "candidate_id": "F_Shared_NP_Preparation",
+      "raw_label": "lopinavir-loaded PLGA NPs preparation method",
+      "normalized_label": "lopinavir-loaded PLGA nanoparticles preparation method",
+      "instance_kind": "candidate_non_formulation",
+      "formulation_role": "unclear",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "shared_context"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "Describes the general preparation method for all lopinavir-loaded PLGA nanoparticles, serving as a shared context for the DOE and subsequent studies.",
+      "evidence_span_ids": [
+        "span_prep_method_full"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B1",
+      "raw_label": "Batch 1",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 1",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B2",
+      "raw_label": "Batch 2",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 2",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B3",
+      "raw_label": "Batch 3",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 3",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B4",
+      "raw_label": "Batch 4",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 4",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_4"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B5",
+      "raw_label": "Batch 5",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 5",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_5"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B6",
+      "raw_label": "Batch 6",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 6",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_6"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B7",
+      "raw_label": "Batch 7",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 7",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_7"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B8",
+      "raw_label": "Batch 8",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 8",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_8"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B9",
+      "raw_label": "Batch 9",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 9",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_9"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B10",
+      "raw_label": "Batch 10",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 10",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_10"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B11",
+      "raw_label": "Batch 11",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 11",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_11"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B12",
+      "raw_label": "Batch 12",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 12",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_12"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B13",
+      "raw_label": "Batch 13",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 13",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_13"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B14",
+      "raw_label": "Batch 14",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 14",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_14"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B15",
+      "raw_label": "Batch 15",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 15",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_15"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B16",
+      "raw_label": "Batch 16",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 16",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_16"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B17",
+      "raw_label": "Batch 17",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 17",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_17"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B18",
+      "raw_label": "Batch 18",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 18",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_18"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B19",
+      "raw_label": "Batch 19",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 19",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_19"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B20",
+      "raw_label": "Batch 20",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 20",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_20"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B21",
+      "raw_label": "Batch 21",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 21",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_21"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B22",
+      "raw_label": "Batch 22",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 22",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_22"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B23",
+      "raw_label": "Batch 23",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 23",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_23"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B24",
+      "raw_label": "Batch 24",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 24",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_24"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B25",
+      "raw_label": "Batch 25",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 25",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_25"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B26",
+      "raw_label": "Batch 26",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 26",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_26"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T2_B27",
+      "raw_label": "Batch 27",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle batch 27",
+      "instance_kind": "new_formulation",
+      "formulation_role": "variant",
+      "parent_candidate_id": "",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Varying drug concentration (X1), polymer concentration (X2), and surfactant concentration (X3) as per 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "doe",
+        "sweep"
+      ],
+      "change_context_tags": [
+        "doe"
+      ],
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_27"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_Optimized_NP",
+      "raw_label": "optimum formulation",
+      "normalized_label": "optimized lopinavir-loaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "optimized",
+      "parent_candidate_id": "F_T2_B19",
+      "change_role": "unclear",
+      "change_descriptions": [
+        "Selected as optimal based on maximum entrapment and minimum particle size criteria from the 3^3 factorial design."
+      ],
+      "instance_context_tags": [
+        "optimized"
+      ],
+      "change_context_tags": [
+        "optimized"
+      ],
+      "ambiguity_note": "This formulation corresponds to Batch 19 from Table 2, identified as optimal.",
+      "evidence_span_ids": [
+        "span_optimized_selection",
+        "span_table2_row_19"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T7_CP1",
+      "raw_label": "Batch 1",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle checkpoint batch 1",
+      "instance_kind": "new_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "test_condition"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "These are specific formulations used for checkpoint analysis, likely representing specific points within or near the DOE space.",
+      "evidence_span_ids": [
+        "span_table7_row_1"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T7_CP2",
+      "raw_label": "Batch 2",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle checkpoint batch 2",
+      "instance_kind": "new_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "test_condition"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "These are specific formulations used for checkpoint analysis, likely representing specific points within or near the DOE space.",
+      "evidence_span_ids": [
+        "span_table7_row_2"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_T7_CP3",
+      "raw_label": "Batch 3",
+      "normalized_label": "Lopinavir-loaded PLGA nanoparticle checkpoint batch 3",
+      "instance_kind": "new_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "test_condition"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "These are specific formulations used for checkpoint analysis, likely representing specific points within or near the DOE space.",
+      "evidence_span_ids": [
+        "span_table7_row_3"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_Coumarin_NPs",
+      "raw_label": "6-coumarin-loaded PLGA NPs",
+      "normalized_label": "6-Coumarin-loaded PLGA nanoparticles",
+      "instance_kind": "variant_formulation",
+      "formulation_role": "characterization_only",
+      "parent_candidate_id": "F_Shared_NP_Preparation",
+      "change_role": "synthesis_defining",
+      "change_descriptions": [
+        "Lopinavir replaced by 6-coumarin (half of the drug with 6-coumarin) as a model fluorescent marker."
+      ],
+      "instance_context_tags": [
+        "test_condition"
+      ],
+      "change_context_tags": [
+        "synthesis_change"
+      ],
+      "ambiguity_note": "A variant of the PLGA NPs where lopinavir is replaced by 6-coumarin for fluorescence studies.",
+      "evidence_span_ids": [
+        "span_coumarin_prep"
+      ],
+      "status": "reported"
+    },
+    {
+      "candidate_id": "F_Plain_Lopinavir",
+      "raw_label": "plain lopinavir suspension/solution",
+      "normalized_label": "plain lopinavir suspension/solution",
+      "instance_kind": "new_formulation",
+      "formulation_role": "control",
+      "parent_candidate_id": "",
+      "change_role": "unclear",
+      "change_descriptions": [],
+      "instance_context_tags": [
+        "control"
+      ],
+      "change_context_tags": [],
+      "ambiguity_note": "Refers to the non-nanoparticle form of lopinavir used as a control or comparator in various studies.",
+      "evidence_span_ids": [
+        "span_plain_lopinavir_cytotoxicity",
+        "span_plain_lopinavir_transport",
+        "span_plain_drug_pk"
+      ],
+      "status": "reported"
+    }
+  ],
+  "component_candidates": [
+    {
+      "component_id": "C_Lopinavir_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "component_name": "Lopinavir",
+      "component_role": "drug",
+      "amount_text": "15 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_drug"
+      ]
+    },
+    {
+      "component_id": "C_PLGA_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "component_name": "PLGA (50:50)",
+      "component_role": "polymer",
+      "amount_text": "25 mg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_plga"
+      ]
+    },
+    {
+      "component_id": "C_PluronicF68_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "component_name": "Pluronic F68",
+      "component_role": "surfactant",
+      "amount_text": "0.25% w/v",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_pluronic"
+      ]
+    },
+    {
+      "component_id": "C_Acetone_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "component_name": "Acetone",
+      "component_role": "solvent",
+      "amount_text": "2.5 ml",
+      "amount_kind": "volume",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_acetone"
+      ]
+    },
+    {
+      "component_id": "C_Sucrose_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "component_name": "Sucrose",
+      "component_role": "additive",
+      "amount_text": "1:1",
+      "amount_kind": "ratio",
+      "phase_hint": "cryoprotectant",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_sucrose"
+      ]
+    },
+    {
+      "component_id": "C_6Coumarin_CoumarinNPs",
+      "formulation_candidate_id": "F_Coumarin_NPs",
+      "component_name": "6-Coumarin",
+      "component_role": "drug",
+      "amount_text": "half of the drug",
+      "amount_kind": "ratio",
+      "phase_hint": "",
+      "ambiguity_note": "Replaces lopinavir as a model fluorescent marker.",
+      "evidence_span_ids": [
+        "span_coumarin_prep"
+      ]
+    },
+    {
+      "component_id": "C_Lopinavir_Plain",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "component_name": "Lopinavir",
+      "component_role": "drug",
+      "amount_text": "10 mg/kg",
+      "amount_kind": "mass",
+      "phase_hint": "",
+      "ambiguity_note": "Dose for in vivo studies.",
+      "evidence_span_ids": [
+        "span_pk_dose"
+      ]
+    },
+    {
+      "component_id": "C_Methylcellulose_Plain",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "component_name": "Methylcellulose",
+      "component_role": "additive",
+      "amount_text": "5%",
+      "amount_kind": "concentration",
+      "phase_hint": "",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_methylcellulose"
+      ]
+    }
+  ],
+  "variable_candidates": [
+    {
+      "variable_id": "V_OrganicPhaseVolume_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "variable_name": "Organic phase volume",
+      "value_text": "2.5 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_acetone"
+      ]
+    },
+    {
+      "variable_id": "V_AqueousPhaseVolume_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "variable_name": "Aqueous phase volume",
+      "value_text": "5 ml",
+      "variable_role": "shared_context",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_aqueous"
+      ]
+    },
+    {
+      "variable_id": "V_OrganicPhaseAdditionRate_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "variable_name": "Organic phase addition rate",
+      "value_text": "0.5 ml/min",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_rate"
+      ]
+    },
+    {
+      "variable_id": "V_StirringCondition_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "variable_name": "Stirring condition",
+      "value_text": "continuous stirring on magnetic stirrer at room temperature",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_stirring"
+      ]
+    },
+    {
+      "variable_id": "V_Centrifugation_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "variable_name": "Centrifugation conditions",
+      "value_text": "25000 g for 30 min at 4 C",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_centrifuge"
+      ]
+    },
+    {
+      "variable_id": "V_Lyophilization_Shared",
+      "formulation_candidate_id": "F_Shared_NP_Preparation",
+      "variable_name": "Lyophilization conditions",
+      "value_text": "using sucrose as cryoprotectant (1:1)",
+      "variable_role": "process_setting",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_prep_method_lyophilization"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B1",
+      "formulation_candidate_id": "F_T2_B1",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_1"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B1",
+      "formulation_candidate_id": "F_T2_B1",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_1"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B1",
+      "formulation_candidate_id": "F_T2_B1",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_1"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B2",
+      "formulation_candidate_id": "F_T2_B2",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_2"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B2",
+      "formulation_candidate_id": "F_T2_B2",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_2"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B2",
+      "formulation_candidate_id": "F_T2_B2",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_2"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B3",
+      "formulation_candidate_id": "F_T2_B3",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B3",
+      "formulation_candidate_id": "F_T2_B3",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B3",
+      "formulation_candidate_id": "F_T2_B3",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B4",
+      "formulation_candidate_id": "F_T2_B4",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_4"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B4",
+      "formulation_candidate_id": "F_T2_B4",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_4"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B4",
+      "formulation_candidate_id": "F_T2_B4",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_4"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B5",
+      "formulation_candidate_id": "F_T2_B5",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_5"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B5",
+      "formulation_candidate_id": "F_T2_B5",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_5"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B5",
+      "formulation_candidate_id": "F_T2_B5",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_5"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B6",
+      "formulation_candidate_id": "F_T2_B6",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_6"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B6",
+      "formulation_candidate_id": "F_T2_B6",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_6"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B6",
+      "formulation_candidate_id": "F_T2_B6",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_6"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B7",
+      "formulation_candidate_id": "F_T2_B7",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_7"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B7",
+      "formulation_candidate_id": "F_T2_B7",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_7"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B7",
+      "formulation_candidate_id": "F_T2_B7",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_7"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B8",
+      "formulation_candidate_id": "F_T2_B8",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_8"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B8",
+      "formulation_candidate_id": "F_T2_B8",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_8"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B8",
+      "formulation_candidate_id": "F_T2_B8",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_8"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B9",
+      "formulation_candidate_id": "F_T2_B9",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_9"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B9",
+      "formulation_candidate_id": "F_T2_B9",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_9"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B9",
+      "formulation_candidate_id": "F_T2_B9",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_9"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B10",
+      "formulation_candidate_id": "F_T2_B10",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_10"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B10",
+      "formulation_candidate_id": "F_T2_B10",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_10"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B10",
+      "formulation_candidate_id": "F_T2_B10",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_10"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B11",
+      "formulation_candidate_id": "F_T2_B11",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_11"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B11",
+      "formulation_candidate_id": "F_T2_B11",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_11"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B11",
+      "formulation_candidate_id": "F_T2_B11",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_11"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B12",
+      "formulation_candidate_id": "F_T2_B12",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_12"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B12",
+      "formulation_candidate_id": "F_T2_B12",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_12"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B12",
+      "formulation_candidate_id": "F_T2_B12",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_12"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B13",
+      "formulation_candidate_id": "F_T2_B13",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_13"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B13",
+      "formulation_candidate_id": "F_T2_B13",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_13"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B13",
+      "formulation_candidate_id": "F_T2_B13",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_13"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B14",
+      "formulation_candidate_id": "F_T2_B14",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_14"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B14",
+      "formulation_candidate_id": "F_T2_B14",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_14"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B14",
+      "formulation_candidate_id": "F_T2_B14",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_14"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B15",
+      "formulation_candidate_id": "F_T2_B15",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_15"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B15",
+      "formulation_candidate_id": "F_T2_B15",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_15"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B15",
+      "formulation_candidate_id": "F_T2_B15",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_15"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B16",
+      "formulation_candidate_id": "F_T2_B16",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_16"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B16",
+      "formulation_candidate_id": "F_T2_B16",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_16"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B16",
+      "formulation_candidate_id": "F_T2_B16",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_16"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B17",
+      "formulation_candidate_id": "F_T2_B17",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_17"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B17",
+      "formulation_candidate_id": "F_T2_B17",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_17"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B17",
+      "formulation_candidate_id": "F_T2_B17",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_17"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B18",
+      "formulation_candidate_id": "F_T2_B18",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_18"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B18",
+      "formulation_candidate_id": "F_T2_B18",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_18"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B18",
+      "formulation_candidate_id": "F_T2_B18",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_18"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B19",
+      "formulation_candidate_id": "F_T2_B19",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_19"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B19",
+      "formulation_candidate_id": "F_T2_B19",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_19"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B19",
+      "formulation_candidate_id": "F_T2_B19",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_19"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B20",
+      "formulation_candidate_id": "F_T2_B20",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_20"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B20",
+      "formulation_candidate_id": "F_T2_B20",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_20"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B20",
+      "formulation_candidate_id": "F_T2_B20",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_20"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B21",
+      "formulation_candidate_id": "F_T2_B21",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_21"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B21",
+      "formulation_candidate_id": "F_T2_B21",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_21"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B21",
+      "formulation_candidate_id": "F_T2_B21",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_21"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B22",
+      "formulation_candidate_id": "F_T2_B22",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_22"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B22",
+      "formulation_candidate_id": "F_T2_B22",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_22"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B22",
+      "formulation_candidate_id": "F_T2_B22",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_22"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B23",
+      "formulation_candidate_id": "F_T2_B23",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_23"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B23",
+      "formulation_candidate_id": "F_T2_B23",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_23"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B23",
+      "formulation_candidate_id": "F_T2_B23",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_23"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B24",
+      "formulation_candidate_id": "F_T2_B24",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_24"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B24",
+      "formulation_candidate_id": "F_T2_B24",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_24"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B24",
+      "formulation_candidate_id": "F_T2_B24",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_24"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B25",
+      "formulation_candidate_id": "F_T2_B25",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_25"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B25",
+      "formulation_candidate_id": "F_T2_B25",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_25"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B25",
+      "formulation_candidate_id": "F_T2_B25",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_25"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B26",
+      "formulation_candidate_id": "F_T2_B26",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_26"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B26",
+      "formulation_candidate_id": "F_T2_B26",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_26"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B26",
+      "formulation_candidate_id": "F_T2_B26",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_26"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T2_B27",
+      "formulation_candidate_id": "F_T2_B27",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_27"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T2_B27",
+      "formulation_candidate_id": "F_T2_B27",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_27"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T2_B27",
+      "formulation_candidate_id": "F_T2_B27",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "1.0%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_27"
+      ]
+    },
+    {
+      "variable_id": "V_X1_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4 %w/v",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_optimized_selection",
+        "span_table1_row_X1_high"
+      ]
+    },
+    {
+      "variable_id": "V_X2_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1 %w/v",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_optimized_selection",
+        "span_table1_row_X2_low"
+      ]
+    },
+    {
+      "variable_id": "V_X3_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.50%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_optimized_selection",
+        "span_table1_row_X3_low"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T7_CP1",
+      "formulation_candidate_id": "F_T7_CP1",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_1"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T7_CP1",
+      "formulation_candidate_id": "F_T7_CP1",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_1"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T7_CP1",
+      "formulation_candidate_id": "F_T7_CP1",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_1"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T7_CP2",
+      "formulation_candidate_id": "F_T7_CP2",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.3",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_2"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T7_CP2",
+      "formulation_candidate_id": "F_T7_CP2",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "2",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_2"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T7_CP2",
+      "formulation_candidate_id": "F_T7_CP2",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_2"
+      ]
+    },
+    {
+      "variable_id": "V_X1_T7_CP3",
+      "formulation_candidate_id": "F_T7_CP3",
+      "variable_name": "Drug Concentration in organic phase (%w/v) (X1)",
+      "value_text": "0.4",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_3"
+      ]
+    },
+    {
+      "variable_id": "V_X2_T7_CP3",
+      "formulation_candidate_id": "F_T7_CP3",
+      "variable_name": "Polymer concentration in organic phase (%w/v) (X2)",
+      "value_text": "1",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_3"
+      ]
+    },
+    {
+      "variable_id": "V_X3_T7_CP3",
+      "formulation_candidate_id": "F_T7_CP3",
+      "variable_name": "Surfactant concentration (X3)",
+      "value_text": "0.75%",
+      "variable_role": "doe_factor",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_3"
+      ]
+    }
+  ],
+  "measurement_candidates": [
+    {
+      "measurement_id": "M_PS_T2_B1",
+      "formulation_candidate_id": "F_T2_B1",
+      "measurement_name": "size",
+      "value_text": "126.6 ± 4.16",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_1"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B1",
+      "formulation_candidate_id": "F_T2_B1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "36.5 ± 2.21",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_1"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B2",
+      "formulation_candidate_id": "F_T2_B2",
+      "measurement_name": "size",
+      "value_text": "131.3 ± 6.13",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_2"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B2",
+      "formulation_candidate_id": "F_T2_B2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "29.4 ± 1.05",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_2"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B3",
+      "formulation_candidate_id": "F_T2_B3",
+      "measurement_name": "size",
+      "value_text": "140.8 ± 1.41",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B3",
+      "formulation_candidate_id": "F_T2_B3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "21.3 ± 2.28",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_3"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B4",
+      "formulation_candidate_id": "F_T2_B4",
+      "measurement_name": "size",
+      "value_text": "127.3 ± 2.68",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_4"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B4",
+      "formulation_candidate_id": "F_T2_B4",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "50.9 ± 1.86",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_4"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B5",
+      "formulation_candidate_id": "F_T2_B5",
+      "measurement_name": "size",
+      "value_text": "136.3 ± 4.53",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_5"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B5",
+      "formulation_candidate_id": "F_T2_B5",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "48.7 ± 2.34",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_5"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B6",
+      "formulation_candidate_id": "F_T2_B6",
+      "measurement_name": "size",
+      "value_text": "139.7 ± 2.68",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_6"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B6",
+      "formulation_candidate_id": "F_T2_B6",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "38.2 ± 2.43",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_6"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B7",
+      "formulation_candidate_id": "F_T2_B7",
+      "measurement_name": "size",
+      "value_text": "159.7 ± 3.72",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_7"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B7",
+      "formulation_candidate_id": "F_T2_B7",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "51.1 ± 1.49",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_7"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B8",
+      "formulation_candidate_id": "F_T2_B8",
+      "measurement_name": "size",
+      "value_text": "163.5 ± 3.91",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_8"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B8",
+      "formulation_candidate_id": "F_T2_B8",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "57.3 ± 1.19",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_8"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B9",
+      "formulation_candidate_id": "F_T2_B9",
+      "measurement_name": "size",
+      "value_text": "176.9 ± 1.69",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_9"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B9",
+      "formulation_candidate_id": "F_T2_B9",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "40.3 ± 0.71",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_9"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B10",
+      "formulation_candidate_id": "F_T2_B10",
+      "measurement_name": "size",
+      "value_text": "144.1 ± 2.13",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_10"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B10",
+      "formulation_candidate_id": "F_T2_B10",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "61.6 ± 2.56",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_10"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B11",
+      "formulation_candidate_id": "F_T2_B11",
+      "measurement_name": "size",
+      "value_text": "148.2 ± 1.98",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_11"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B11",
+      "formulation_candidate_id": "F_T2_B11",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "55.4 ± 1.34",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_11"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B12",
+      "formulation_candidate_id": "F_T2_B12",
+      "measurement_name": "size",
+      "value_text": "152.6 ± 6.23",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_12"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B12",
+      "formulation_candidate_id": "F_T2_B12",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "47.4 ± 1.04",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_12"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B13",
+      "formulation_candidate_id": "F_T2_B13",
+      "measurement_name": "size",
+      "value_text": "155.6 ± 4.61",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_13"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B13",
+      "formulation_candidate_id": "F_T2_B13",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "83.3 ± 1.42",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_13"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B14",
+      "formulation_candidate_id": "F_T2_B14",
+      "measurement_name": "size",
+      "value_text": "159.6 ± 3.73",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_14"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B14",
+      "formulation_candidate_id": "F_T2_B14",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "73.2 ± 1.35",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_14"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B15",
+      "formulation_candidate_id": "F_T2_B15",
+      "measurement_name": "size",
+      "value_text": "165.2 ± 7.26",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_15"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B15",
+      "formulation_candidate_id": "F_T2_B15",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "63.1 ± 2.17",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_15"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B16",
+      "formulation_candidate_id": "F_T2_B16",
+      "measurement_name": "size",
+      "value_text": "162.6 ± 2.34",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_16"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B16",
+      "formulation_candidate_id": "F_T2_B16",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "91.4 ± 2.43",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_16"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B17",
+      "formulation_candidate_id": "F_T2_B17",
+      "measurement_name": "size",
+      "value_text": "169.7 ± 3.87",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_17"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B17",
+      "formulation_candidate_id": "F_T2_B17",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "84.6 ± 2.57",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_17"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B18",
+      "formulation_candidate_id": "F_T2_B18",
+      "measurement_name": "size",
+      "value_text": "173.8 ± 4.23",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_18"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B18",
+      "formulation_candidate_id": "F_T2_B18",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "77.5 ± 1.93",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_18"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B19",
+      "formulation_candidate_id": "F_T2_B19",
+      "measurement_name": "size",
+      "value_text": "142.1 ± 2.13",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_19"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B19",
+      "formulation_candidate_id": "F_T2_B19",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "93.3 ± 1.27",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_19"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B20",
+      "formulation_candidate_id": "F_T2_B20",
+      "measurement_name": "size",
+      "value_text": "163.3 ± 2.43",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_20"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B20",
+      "formulation_candidate_id": "F_T2_B20",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "91.4 ± 1.86",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_20"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B21",
+      "formulation_candidate_id": "F_T2_B21",
+      "measurement_name": "size",
+      "value_text": "175.5 ± 3.57",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_21"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B21",
+      "formulation_candidate_id": "F_T2_B21",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "87.6 ± 1.76",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_21"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B22",
+      "formulation_candidate_id": "F_T2_B22",
+      "measurement_name": "size",
+      "value_text": "214.8 ± 3.89",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_22"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B22",
+      "formulation_candidate_id": "F_T2_B22",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "95.7 ± 2.43",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_22"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B23",
+      "formulation_candidate_id": "F_T2_B23",
+      "measurement_name": "size",
+      "value_text": "231.3 ± 2.59",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_23"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B23",
+      "formulation_candidate_id": "F_T2_B23",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "91.4 ± 1.67",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_23"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B24",
+      "formulation_candidate_id": "F_T2_B24",
+      "measurement_name": "size",
+      "value_text": "233.6 ± 1.73",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_24"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B24",
+      "formulation_candidate_id": "F_T2_B24",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "75.3 ± 2.38",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_24"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B25",
+      "formulation_candidate_id": "F_T2_B25",
+      "measurement_name": "size",
+      "value_text": "207.4 ± 2.75",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_25"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B25",
+      "formulation_candidate_id": "F_T2_B25",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "93.8 ± 1.26",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_25"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B26",
+      "formulation_candidate_id": "F_T2_B26",
+      "measurement_name": "size",
+      "value_text": "237.1 ± 1.37",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_26"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B26",
+      "formulation_candidate_id": "F_T2_B26",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "85.1 ± 2.76",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_26"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T2_B27",
+      "formulation_candidate_id": "F_T2_B27",
+      "measurement_name": "size",
+      "value_text": "236.1 ± 3.26",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_27"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T2_B27",
+      "formulation_candidate_id": "F_T2_B27",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "71.1 ± 1.43",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table2_row_27"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "size",
+      "value_text": "142.1 ± 2.13",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_optimized_selection"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "93.03 ± 1.27",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_optimized_selection"
+      ]
+    },
+    {
+      "measurement_id": "M_ZetaPotential_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "zeta_potential",
+      "value_text": "-27.2 ± 2.423",
+      "unit_text": "mV",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_zeta_potential"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T7_CP1",
+      "formulation_candidate_id": "F_T7_CP1",
+      "measurement_name": "size",
+      "value_text": "152.63",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_1"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T7_CP1",
+      "formulation_candidate_id": "F_T7_CP1",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "44.86",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_1"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T7_CP2",
+      "formulation_candidate_id": "F_T7_CP2",
+      "measurement_name": "size",
+      "value_text": "167.96",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_2"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T7_CP2",
+      "formulation_candidate_id": "F_T7_CP2",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "66.86",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_2"
+      ]
+    },
+    {
+      "measurement_id": "M_PS_T7_CP3",
+      "formulation_candidate_id": "F_T7_CP3",
+      "measurement_name": "size",
+      "value_text": "189.24",
+      "unit_text": "nm",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_3"
+      ]
+    },
+    {
+      "measurement_id": "M_EE_T7_CP3",
+      "formulation_candidate_id": "F_T7_CP3",
+      "measurement_name": "encapsulation_efficiency",
+      "value_text": "88.43",
+      "unit_text": "%",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_table7_row_3"
+      ]
+    },
+    {
+      "measurement_id": "M_MFI_CoumarinNPs",
+      "formulation_candidate_id": "F_Coumarin_NPs",
+      "measurement_name": "other",
+      "value_text": "2.1-fold higher MFI at 1 h, increased to 3.6- to 6.4-fold higher MFI than plain dye solution at 4 h",
+      "unit_text": "fold",
+      "ambiguity_note": "Relative uptake compared to plain dye solution.",
+      "evidence_span_ids": [
+        "span_mfi_coumarin"
+      ]
+    },
+    {
+      "measurement_id": "M_Papp_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "8.84 * 10^-5",
+      "unit_text": "cm/s",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_papp_np"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Optimized_30min",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "0.0725",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 30 min.",
+      "evidence_span_ids": [
+        "span_table9_row_30min_np"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Optimized_60min",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "0.103",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 60 min.",
+      "evidence_span_ids": [
+        "span_table9_row_60min_np"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Optimized_120min",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "0.204",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 120 min.",
+      "evidence_span_ids": [
+        "span_table9_row_120min_np"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Optimized_180min",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "0.274",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 180 min.",
+      "evidence_span_ids": [
+        "span_table9_row_180min_np"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Optimized_240min",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "0.324",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 240 min.",
+      "evidence_span_ids": [
+        "span_table9_row_240min_np"
+      ]
+    },
+    {
+      "measurement_id": "M_Papp_Plain",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "2.9 * 10^-5",
+      "unit_text": "cm/s",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_papp_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Plain_30min",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "0.0158",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 30 min.",
+      "evidence_span_ids": [
+        "span_table9_row_30min_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Plain_60min",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "0.0336",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 60 min.",
+      "evidence_span_ids": [
+        "span_table9_row_60min_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Plain_120min",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "0.0576",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 120 min.",
+      "evidence_span_ids": [
+        "span_table9_row_120min_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Plain_180min",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "0.0702",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 180 min.",
+      "evidence_span_ids": [
+        "span_table9_row_180min_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_DrugTransfer_Plain_240min",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "0.103",
+      "unit_text": "mg",
+      "ambiguity_note": "Drug transfer at 240 min.",
+      "evidence_span_ids": [
+        "span_table9_row_240min_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_AUClast_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "22335.3 ± 2310",
+      "unit_text": "ng.h/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_auclast_np"
+      ]
+    },
+    {
+      "measurement_id": "M_Cmax_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "834.62 ± 86.8",
+      "unit_text": "ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_cmax_np"
+      ]
+    },
+    {
+      "measurement_id": "M_Tmax_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "increase in Tmax",
+      "unit_text": "",
+      "ambiguity_note": "Specific value not given, only qualitative increase compared to plain drug suspension.",
+      "evidence_span_ids": [
+        "span_pk_tmax_np"
+      ]
+    },
+    {
+      "measurement_id": "M_t12_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "17.93",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_t12_np"
+      ]
+    },
+    {
+      "measurement_id": "M_MRT_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "increase in MRT",
+      "unit_text": "",
+      "ambiguity_note": "Specific value not given, only qualitative increase compared to plain drug suspension.",
+      "evidence_span_ids": [
+        "span_pk_mrt_np"
+      ]
+    },
+    {
+      "measurement_id": "M_Bioavailability_Optimized",
+      "formulation_candidate_id": "F_Optimized_NP",
+      "measurement_name": "other",
+      "value_text": "13.9 times increase",
+      "unit_text": "fold",
+      "ambiguity_note": "Relative increase compared to plain drug suspension.",
+      "evidence_span_ids": [
+        "span_pk_bioavailability_np"
+      ]
+    },
+    {
+      "measurement_id": "M_AUClast_Plain",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "1596.5 ± 216.5",
+      "unit_text": "ng.h/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_auclast_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_Cmax_Plain",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "143.42 ± 22.43",
+      "unit_text": "ng/ml",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_cmax_plain"
+      ]
+    },
+    {
+      "measurement_id": "M_t12_Plain",
+      "formulation_candidate_id": "F_Plain_Lopinavir",
+      "measurement_name": "other",
+      "value_text": "8.45",
+      "unit_text": "h",
+      "ambiguity_note": "",
+      "evidence_span_ids": [
+        "span_pk_t12_plain"
+      ]
+    }
+  ],
+  "relation_hints": [],
+  "evidence_spans": [
+    {
+      "span_id": "span_prep_method_full",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "NPs were prepared using solvent diffusion (nanoprecipitation) method (Fessi et al., 1989). The NPs were prepared by dissolving PLGA (25 mg) and drug (15 mg) in 2.5 ml of acetone. The organic phase was added at the rate of 0.5 ml/min into 5 ml of aqueous phase containing 0.25% w/v Pluronic F68 with continuous stirring on magnetic stirrer at room temperature (Shah et al., 2014). Stirring was continued until the complete evaporation of organic solvent. The NPs suspension was centrifuged at 25 000 g for 30 min at 4 C (3K30, Sigma Centrifuge, Osterode, Germany), supernatant was alienated and NPs were collected. Nanoparticle suspension was lyophilized using sucrose as cryoprotectant (1:1)."
+    },
+    {
+      "span_prep_method_drug",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "drug (15 mg)"
+    },
+    {
+      "span_prep_method_plga",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "PLGA (25 mg)"
+    },
+    {
+      "span_prep_method_acetone",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "2.5 ml of acetone"
+    },
+    {
+      "span_prep_method_aqueous",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "5 ml of aqueous phase"
+    },
+    {
+      "span_prep_method_pluronic",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "0.25% w/v Pluronic F68"
+    },
+    {
+      "span_prep_method_rate",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "added at the rate of 0.5 ml/min"
+    },
+    {
+      "span_prep_method_stirring",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "continuous stirring on magnetic stirrer at room temperature"
+    },
+    {
+      "span_prep_method_centrifuge",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "centrifuged at 25 000 g for 30 min at 4 C"
+    },
+    {
+      "span_prep_method_lyophilization",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "lyophilized using sucrose as cryoprotectant (1:1)"
+    },
+    {
+      "span_prep_method_sucrose",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "sucrose as cryoprotectant (1:1)"
+    },
+    {
+      "span_27batches_intro",
+      "source_region_type": "text_span",
+      "source_locator_text": "Optimization and characterization of NPs",
+      "supporting_text": "Twenty seven batches of lopinavir-loaded PLGA NPs were prepared by 33 factorial design."
+    },
+    {
+      "span_table2_row_1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 1",
+      "supporting_text": "1 | -1 | -1 | -1 | 36.5 ± 2.21 | 126.6 ± 4.16"
+    },
+    {
+      "span_table2_row_2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 2",
+      "supporting_text": "2 | -1 | -1 | 0 | 29.4 ± 1.05 | 131.3 ± 6.13"
+    },
+    {
+      "span_table2_row_3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 3",
+      "supporting_text": "3 | -1 | -1 | 1 | 21.3 ± 2.28 | 140.8 ± 1.41"
+    },
+    {
+      "span_table2_row_4",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 4",
+      "supporting_text": "4 | -1 | 0 | -1 | 50.9 ± 1.86 | 127.3 ± 2.68"
+    },
+    {
+      "span_table2_row_5",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 5",
+      "supporting_text": "5 | -1 | 0 | 0 | 48.7 ± 2.34 | 136.3 ± 4.53"
+    },
+    {
+      "span_table2_row_6",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 6",
+      "supporting_text": "6 | -1 | 0 | 1 | 38.2 ± 2.43 | 139.7 ± 2.68"
+    },
+    {
+      "span_table2_row_7",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 7",
+      "supporting_text": "7 | -1 | 1 | -1 | 51.1 ± 1.49 | 159.7 ± 3.72"
+    },
+    {
+      "span_table2_row_8",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 8",
+      "supporting_text": "8 | -1 | 1 | 0 | 57.3 ± 1.19 | 163.5 ± 3.91"
+    },
+    {
+      "span_table2_row_9",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 9",
+      "supporting_text": "9 | -1 | 1 | 1 | 40.3 ± 0.71 | 176.9 ± 1.69"
+    },
+    {
+      "span_table2_row_10",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 10",
+      "supporting_text": "10 | 0 | -1 | -1 | 61.6 ± 2.56 | 144.1 ± 2.13"
+    },
+    {
+      "span_table2_row_11",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 11",
+      "supporting_text": "11 | 0 | -1 | 0 | 55.4 ± 1.34 | 148.2 ± 1.98"
+    },
+    {
+      "span_table2_row_12",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 12",
+      "supporting_text": "12 | 0 | -1 | 1 | 47.4 ± 1.04 | 152.6 ± 6.23"
+    },
+    {
+      "span_table2_row_13",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 13",
+      "supporting_text": "13 | 0 | 0 | -1 | 83.3 ± 1.42 | 155.6 ± 4.61"
+    },
+    {
+      "span_table2_row_14",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 14",
+      "supporting_text": "14 | 0 | 0 | 0 | 73.2 ± 1.35 | 159.6 ± 3.73"
+    },
+    {
+      "span_table2_row_15",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 15",
+      "supporting_text": "15 | 0 | 0 | 1 | 63.1 ± 2.17 | 165.2 ± 7.26"
+    },
+    {
+      "span_table2_row_16",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 16",
+      "supporting_text": "16 | 0 | 1 | -1 | 91.4 ± 2.43 | 162.6 ± 2.34"
+    },
+    {
+      "span_table2_row_17",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 17",
+      "supporting_text": "17 | 0 | 1 | 0 | 84.6 ± 2.57 | 169.7 ± 3.87"
+    },
+    {
+      "span_table2_row_18",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 18",
+      "supporting_text": "18 | 0 | 1 | 1 | 77.5 ± 1.93 | 173.8 ± 4.23"
+    },
+    {
+      "span_table2_row_19",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 19",
+      "supporting_text": "19 | 1 | -1 | -1 | 93.3 ± 1.27 | 142.1 ± 2.13"
+    },
+    {
+      "span_table2_row_20",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 20",
+      "supporting_text": "20 | 1 | -1 | 0 | 91.4 ± 1.86 | 163.3 ± 2.43"
+    },
+    {
+      "span_table2_row_21",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 21",
+      "supporting_text": "21 | 1 | -1 | 1 | 87.6 ± 1.76 | 175.5 ± 3.57"
+    },
+    {
+      "span_table2_row_22",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 22",
+      "supporting_text": "22 | 1 | 0 | -1 | 95.7 ± 2.43 | 214.8 ± 3.89"
+    },
+    {
+      "span_table2_row_23",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 23",
+      "supporting_text": "23 | 1 | 0 | 0 | 91.4 ± 1.67 | 231.3 ± 2.59"
+    },
+    {
+      "span_table2_row_24",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 24",
+      "supporting_text": "24 | 1 | 0 | 1 | 75.3 ± 2.38 | 233.6 ± 1.73"
+    },
+    {
+      "span_table2_row_25",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 25",
+      "supporting_text": "25 | 1 | 1 | -1 | 93.8 ± 1.26 | 207.4 ± 2.75"
+    },
+    {
+      "span_table2_row_26",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 26",
+      "supporting_text": "26 | 1 | 1 | 0 | 85.1 ± 2.76 | 237.1 ± 1.37"
+    },
+    {
+      "span_table2_row_27",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 2, Row 27",
+      "supporting_text": "27 | 1 | 1 | 1 | 71.1 ± 1.43 | 236.1 ± 3.26"
+    },
+    {
+      "span_optimized_selection",
+      "source_region_type": "text_span",
+      "source_locator_text": "Optimized NPs with desirability criteria",
+      "supporting_text": "Hence, the optimum formulation with EE 93.03 ± 1.27% and particle size 142.1 ± 2.13 nm (Figure 3) found at 1.0, -1, and -1 levels of X1, X2 and X3, respectively, was selected."
+    },
+    {
+      "span_table1_row_X1_high",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row X1, Column High (+1)",
+      "supporting_text": "0.4"
+    },
+    {
+      "span_table1_row_X2_low",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row X2, Column Low (-1)",
+      "supporting_text": "1"
+    },
+    {
+      "span_table1_row_X3_low",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 1, Row X3, Column Low (-1)",
+      "supporting_text": "0.50%"
+    },
+    {
+      "span_zeta_potential",
+      "source_region_type": "text_span",
+      "source_locator_text": "Optimization and characterization of NPs",
+      "supporting_text": "The zeta potential of optimized batch was found to be -27.2 ± 2.423 mV"
+    },
+    {
+      "span_checkpoint_intro",
+      "source_region_type": "text_span",
+      "source_locator_text": "Check point analysis",
+      "supporting_text": "Three check points were selected as shown in Table 7."
+    },
+    {
+      "span_table7_row_1",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 7, Row 1",
+      "supporting_text": "1 | -1 (0.2%) | 0.0 (2%) | 0.5 (62.5mg) | 152.63 | 148.94 | 44.86 | 45.72"
+    },
+    {
+      "span_table7_row_2",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 7, Row 2",
+      "supporting_text": "2 | 0 (0.4%) | 0.0 (2%) | 0.5 (62.5 mg) | 167.96 | 163.23 | 66.86 | 67.10"
+    },
+    {
+      "span_table7_row_3",
+      "source_region_type": "table_row",
+      "source_locator_text": "Table 7, Row 3",
+      "supporting_text": "3 | 1 (0.6%) | -1 (1%) | 0.0 (50 mg) | 189.24 | 184.4 | 88.43 | 87.03"
+    },
+    {
+      "span_coumarin_prep",
+      "source_region_type": "text_span",
+      "source_locator_text": "In vitro cell line studies",
+      "supporting_text": "6-Coumarin-loaded PLGA NPs were prepared by nanoprecipitation method mentioned earlier for the formulation of lopinavir-loaded NPs by replacing half of the drug with 6-coumarin"
+    },
+    {
+      "span_plain_lopinavir_cytotoxicity",
+      "source_region_type": "text_span",
+      "source_locator_text": "Cytotoxicity studies (MTT assay)",
+      "supporting_text": "lopinavir-loaded NPs and plain lopinavir suspension"
+    },
+    {
+      "span_plain_lopinavir_transport",
+      "source_region_type": "text_span",
+      "source_locator_text": "Transport studies of lopinavir-loaded NPs",
+      "supporting_text": "lopinavir solution"
+    },
+    {
+      "span_plain_drug_pk",
+      "source_region_type": "text_span",
+      "source_locator_text": "In vivo pharmacokinetic studies",
+      "supporting_text": "plain drug suspension"
+    },
+    {
+      "span_pk_methylcellulose",
+      "source_region_type": "text_span",
+      "source_locator_text": "In vivo pharmacokinetic studies",
+      "supporting_text": "a suspension of lopinavir in 5% methylcellulose"
+    },
+    {
+      "span_pk_dose",
+      "source_region_type": "text_span",
+      "source_locator_text": "In vivo pharmacokinetic studies",
+      "supporting_text": "lopinavir was administered at a dose of 10 mg/kg"
+    },
+    {
+      "span_mfi_coumarin",
+      "source_region_type": "text_span",
+      "source_locator_text": "Quantitative cellular uptake by flow cytometry.",
+      "supporting_text": "Mean fluorescence intensity (MFI) for NPs was doubled from 1 to 4 h. Coumarin-loaded NPs had 2.1-fold higher MFI at 1 h, which increased to 3.6- to 6.4-fold higher MFI than plain dye solution at the end of 4 h."
+    },
+    {
+      "span_papp_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Transport studies of lopinavir-loaded NPs",
+      "supporting_text": "The permeability coefficient of lopinavir-loaded NPs across the Caco-2 cells was found to be 8.84 * 10^-5"
+    },
+    {
+      "span_table9_row_30min_np",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 1, Column 4",
+      "supporting_text": "0.0725"
+    },
+    {
+      "span_table9_row_60min_np",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 2, Column 4",
+      "supporting_text": "0.103"
+    },
+    {
+      "span_table9_row_120min_np",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 3, Column 4",
+      "supporting_text": "0.204"
+    },
+    {
+      "span_table9_row_180min_np",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 4, Column 4",
+      "supporting_text": "0.274"
+    },
+    {
+      "span_table9_row_240min_np",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 5, Column 4",
+      "supporting_text": "0.324"
+    },
+    {
+      "span_papp_plain",
+      "source_region_type": "text_span",
+      "source_locator_text": "Transport studies of lopinavir-loaded NPs",
+      "supporting_text": "whereas for lopinavir solution it was found to be 2.9 * 10^-5"
+    },
+    {
+      "span_table9_row_30min_plain",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 1, Column 2",
+      "supporting_text": "0.0158"
+    },
+    {
+      "span_table9_row_60min_plain",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 2, Column 2",
+      "supporting_text": "0.0336"
+    },
+    {
+      "span_table9_row_120min_plain",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 3, Column 2",
+      "supporting_text": "0.0576"
+    },
+    {
+      "span_table9_row_180min_plain",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 4, Column 2",
+      "supporting_text": "0.0702"
+    },
+    {
+      "span_table9_row_240min_plain",
+      "source_region_type": "table_cell",
+      "source_locator_text": "Table 9, Row 5, Column 2",
+      "supporting_text": "0.103"
+    },
+    {
+      "span_pk_auclast_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "The AUClast for NPs was found to be 22335.3 ± 2310 ng.h/ml"
+    },
+    {
+      "span_pk_cmax_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "The Cmax for lopinavir-loaded NPs was found to be 834.62 ± 86.8 ng/ml"
+    },
+    {
+      "span_pk_tmax_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "an increase in Tmax was observed in case of NPs."
+    },
+    {
+      "span_pk_t12_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "t1/2 (17.93 h)"
+    },
+    {
+      "span_pk_mrt_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "there was increase in MRT observed"
+    },
+    {
+      "span_pk_bioavailability_np",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "There was about 13.9 times increase in bioavailability (F) of lopinavir-loaded NPs"
+    },
+    {
+      "span_pk_auclast_plain",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "plain drug suspension which showed AUClast of 1596.5.± 216.5 ng.h/ml"
+    },
+    {
+      "span_pk_cmax_plain",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "for plain drug suspension, it was 143.42 ± 22.43 ng/ml"
+    },
+    {
+      "span_pk_t12_plain",
+      "source_region_type": "text_span",
+      "source_locator_text": "Pharmacokinetic studies",
+      "supporting_text": "plain drug suspension (8.45 h)"
+    },
+    {
+      "span_table1_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 1",
+      "supporting_text": "Table 1. Factorial design parameters and experimental conditions."
+    },
+    {
+      "span_table2_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 2",
+      "supporting_text": "Table 2. Full factorial design layout of lopinavir loaded NPs showing the effect of independent variables X1 (Drug concentration), X2 (Polymer concentration) and X3 (surfactant concentration) on responses PS (Particle size) and EE (entrapment efficiency)."
+    },
+    {
+      "span_table7_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 7",
+      "supporting_text": "Table 7. Check point analysis, t-test analysis and NE determination for lopinavir-loaded NPs."
+    },
+    {
+      "span_table8_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 8",
+      "supporting_text": "Table 8. In vitro cytotoxicity of lopinavir-loaded NPs and plain drug suspension on Caco-2 cells."
+    },
+    {
+      "span_table9_caption",
+      "source_region_type": "table_caption",
+      "source_locator_text": "Table 9",
+      "supporting_text": "Table 9. Drug transfer across the Caco-2 cell lines for lopinavir-loaded NPs and plain drug solution."
+    },
+    {
+      "span_prep_method_start",
+      "source_region_type": "text_span",
+      "source_locator_text": "Formulation of lopinavir-loaded PLGA NPs",
+      "supporting_text": "NPs were prepared using solvent diffusion (nanoprecipitation) method (Fessi et al., 1989)."
+    },
+    {
+      "span_abstract_optimized_use",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "The NPs were prepared by nanoprecipitation, optimized by 33 factorial design and characterized by TEM, DSC, FTIR studies and safety was assessed by MTT assay. In vivo pharmacokinetic studies were performed in rats."
+    },
+    {
+      "span_abstract_optimized_char",
+      "source_region_type": "text_span",
+      "source_locator_text": "Abstract",
+      "supporting_text": "The NPs were discrete spherical structures having particle size of 142.1 ± 2.13 nm and entrapment of 93.03 ± 1.27%."
+    },
+    {
+      "span_cytotoxicity_intro",
+      "source_region_type": "text_span",
+      "source_locator_text": "Cytotoxicity studies of lopinavir-loaded NPs and lopinavir suspension",
+      "supporting_text": "Tolerability of lopinavir-loaded NPs as well as lopinavir was assessed in Caco-2 cells by MTT assay to check the safety of NPs"
+    }
+  ],
+  "unassigned_observations": [],
+  "table_formulation_scopes": [
+    {
+      "table_id": "Table 1",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 1. Factorial design parameters and experimental conditions."
+    },
+    {
+      "table_id": "Table 2",
+      "is_formulation_table": true,
+      "table_type": "doe_table",
+      "confidence": "high",
+      "evidence_span": "Table 2. Full factorial design layout of lopinavir loaded NPs showing the effect of independent variables X1 (Drug concentration), X2 (Polymer concentration) and X3 (surfactant concentration) on responses PS (Particle size) and EE (entrapment efficiency)."
+    },
+    {
+      "table_id": "Table 7",
+      "is_formulation_table": true,
+      "table_type": "full_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 7. Check point analysis, t-test analysis and NE determination for lopinavir-loaded NPs."
+    },
+    {
+      "table_id": "Table 8",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 8. In vitro cytotoxicity of lopinavir-loaded NPs and plain drug suspension on Caco-2 cells."
+    },
+    {
+      "table_id": "Table 9",
+      "is_formulation_table": true,
+      "table_type": "partial_formulation",
+      "confidence": "high",
+      "evidence_span": "Table 9. Drug transfer across the Caco-2 cell lines for lopinavir-loaded NPs and plain drug solution."
+    }
+  ],
+  "table_variable_roles": [
+    {
+      "table_id": "Table 1",
+      "varying_variables": [
+        "Drug Concentration in organic phase (%w/v)",
+        "Polymer concentration in organic phase (%w/v)",
+        "Surfactant concentration"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": []
+    },
+    {
+      "table_id": "Table 2",
+      "varying_variables": [
+        "Drug Concentration in organic phase (%w/v) (X1)",
+        "Polymer concentration in organic phase (%w/v) (X2)",
+        "Surfactant concentration (X3)"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "PS (Particle size)",
+        "EE (entrapment efficiency)"
+      ]
+    },
+    {
+      "table_id": "Table 7",
+      "varying_variables": [
+        "Drug Concentration in organic phase (%w/v) (X1)",
+        "Polymer concentration in organic phase (%w/v) (X2)",
+        "Surfactant concentration (X3)"
+      ],
+      "constant_variables": [],
+      "new_variables_introduced": [
+        "PS (nm)",
+        "EE (%)"
+      ]
+    }
+  ],
+  "selection_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 2",
+      "selected_variable": "Drug Concentration in organic phase (%w/v) (X1)",
+      "selected_value": "0.4 %w/v",
+      "explicit": true,
+      "evidence_span": "Hence, the optimum formulation with EE 93.03 ± 1.27% and particle size 142.1 ± 2.13 nm (Figure 3) found at 1.0, -1, and -1 levels of X1, X2 and X3, respectively, was selected."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 2",
+      "selected_variable": "Polymer concentration in organic phase (%w/v) (X2)",
+      "selected_value": "1 %w/v",
+      "explicit": true,
+      "evidence_span": "Hence, the optimum formulation with EE 93.03 ± 1.27% and particle size 142.1 ± 2.13 nm (Figure 3) found at 1.0, -1, and -1 levels of X1, X2 and X3, respectively, was selected."
+    },
+    {
+      "marker_readiness": "execution_ready",
+      "source_table_id": "Table 2",
+      "selected_variable": "Surfactant concentration (X3)",
+      "selected_value": "0.50%",
+      "explicit": true,
+      "evidence_span": "Hence, the optimum formulation with EE 93.03 ± 1.27% and particle size 142.1 ± 2.13 nm (Figure 3) found at 1.0, -1, and -1 levels of X1, X2 and X3, respectively, was selected."
+    }
+  ],
+  "inheritance_markers": [
+    {
+      "marker_readiness": "execution_ready",
+      "from_table": "Table 2",
+      "to_table": "",
+      "inherit_type": "selected_condition",
+      "variable": "formulation_identity",
+      "value": "optimized lopinavir-loaded PLGA nanoparticles",
+      "evidence_span": "The NPs were prepared by nanoprecipitation, optimized by 33 factorial design and characterized by TEM, DSC, FTIR studies and safety was assessed by MTT assay. In vivo pharmacokinetic studies were performed in rats. Hence, the optimum formulation with EE 93.03 ± 1.27% and particle size 142.1 ± 2.13 nm (Figure 3) found at 1.0, -1, and -1 levels of X1, X2 and X3, respectively, was selected."
+    }
+  ],
+  "preparation_inheritance_markers": [
+    {
+      "table_id": "Table 2",
+      "inherits_from_preparation": true,
+      "evidence_span": "NPs were prepared using solvent diffusion (nanoprecipitation) method (Fessi et al., 1989)."
+    },
+    {
+      "table_id": "Table 7",
+      "inherits_from_preparation": true,
+      "evidence_span": "NPs were prepared using solvent diffusion (nanoprecipitation) method (Fessi et al., 1989)."
+    },
+    {
+      "table_id": "Table 8",
+      "inherits_from_preparation": true,
+      "evidence_span": "NPs were prepared using solvent diffusion (nanoprecipitation) method (Fessi et al., 1989)."
+    },
+    {
+      "table_id": "Table 9",
+      "inherits_from_preparation": true,
+      "evidence_span": "NPs were prepared using solvent diffusion (nanoprecipitation) method (Fessi et al., 1989)."
+    }
+  ],
+  "boundary_markers": [
+    {
+      "table_id": "Table 1",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 2",
+      "is_doe": true
+    },
+    {
+      "table_id": "Table 7",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 8",
+      "is_doe": false
+    },
+    {
+      "table_id": "Table 9",
+      "is_doe": false
+    }
+  ]
+}
