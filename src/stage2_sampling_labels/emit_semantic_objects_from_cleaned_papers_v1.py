@@ -266,6 +266,30 @@ def component_spec(
     }
 
 
+def property_spec(name: str, value: str = "", raw_value: str = "") -> dict[str, str]:
+    return {
+        "name": name,
+        "value": value,
+        "raw_value": raw_value,
+    }
+
+
+def target_resomer_ratio_property(code: str, ratio: str) -> dict[str, str]:
+    return property_spec(
+        "la_ga_ratio",
+        ratio,
+        f"{code} article-native PLGA grade carried through the target-scoped deterministic Resomer ratio rule",
+    )
+
+
+def target_resomer_grade_property(code: str) -> dict[str, str]:
+    return property_spec(
+        "molecular_weight",
+        f"{code} (PLGA grade)",
+        f"{code} article-native PLGA grade",
+    )
+
+
 def measurement_spec(name: str, value: str, unit: str = "", context: str = "") -> dict[str, str]:
     return {"name": name, "value": value, "unit": unit, "context": context}
 
@@ -1214,7 +1238,18 @@ def build_wivucmyg_document(record: dict[str, str], text_path: Path, tables_dir:
             measurements=measurements,
             relations=relations,
             handoffs=handoffs,
-            components_spec=[component_spec("PLGA", "polymer"), component_spec("Pranoprofen", "drug"), component_spec("PVA", "surfactant")],
+            components_spec=[
+                component_spec(
+                    "PLGA",
+                    "polymer",
+                    properties=[
+                        target_resomer_ratio_property("Resomer 753S", "75:25"),
+                        target_resomer_grade_property("Resomer 753S"),
+                    ],
+                ),
+                component_spec("Pranoprofen", "drug"),
+                component_spec("PVA", "surfactant"),
+            ],
             factors_spec=[
                 factor_spec("cPF", normalize_text(row[1]) if len(row) > 1 else ""),
                 factor_spec("cPVA", normalize_text(row[2]) if len(row) > 2 else ""),
@@ -1253,6 +1288,13 @@ def build_yga8vqku_document(record: dict[str, str], text_path: Path, tables_dir:
         raise FileNotFoundError("YGA8VQKU tables directory missing.")
     table_path = tables_dir / "YGA8VQKU__table_01__html_table.csv"
     rows = table_rows_with_prefix(table_path, r"F\d+")
+    low_viscosity_properties = [
+        property_spec(
+            "molecular_weight",
+            "Low viscosity PLGA (0.32-0.44 dL/g)",
+            "Paper-local low-viscosity PLGA family carried through the deterministic DOE emitter for the retained F-row family.",
+        )
+    ]
     identities, components, phases, processes, factors, measurements, relations, handoffs = empty_object_lists()
     locator = table_locator(tables_dir, table_path.name)
     for label, row in rows:
@@ -1275,7 +1317,11 @@ def build_yga8vqku_document(record: dict[str, str], text_path: Path, tables_dir:
             measurements=measurements,
             relations=relations,
             handoffs=handoffs,
-            components_spec=[component_spec("PLGA", "polymer"), component_spec("Flurbiprofen", "drug"), component_spec("Poloxamer 188", "surfactant")],
+            components_spec=[
+                component_spec("PLGA", "polymer", properties=low_viscosity_properties),
+                component_spec("Flurbiprofen", "drug"),
+                component_spec("Poloxamer 188", "surfactant"),
+            ],
             factors_spec=[
                 factor_spec("cFB", normalize_text(row[1]) if len(row) > 1 else ""),
                 factor_spec("cP188", normalize_text(row[2]) if len(row) > 2 else ""),
@@ -1294,7 +1340,10 @@ def build_yga8vqku_document(record: dict[str, str], text_path: Path, tables_dir:
         doi=doi,
         text_path=text_path,
         tables_dir=tables_dir,
-        source_notes=["YGA8VQKU emitted from explicit F-row DOE table in cleaned assets."],
+        source_notes=[
+            "YGA8VQKU emitted from explicit F-row DOE table in cleaned assets.",
+            "The retained F-row DOE family carries the explicit low-viscosity PLGA descriptor reported in the paper-local summary tables.",
+        ],
         identities=identities,
         components=components,
         phases=phases,
@@ -1364,7 +1413,20 @@ def build_bb3juvw7_document(record: dict[str, str], text_path: Path, tables_dir:
             measurements=measurements,
             relations=relations,
             handoffs=handoffs,
-            components_spec=[component_spec("Artemether", "drug"), component_spec("PLGA", "polymer")],
+            components_spec=[
+                component_spec("Artemether", "drug"),
+                component_spec(
+                    "PLGA",
+                    "polymer",
+                    properties=[
+                        property_spec(
+                            "la_ga_ratio",
+                            normalize_text(row[1]),
+                            f"PLGA type (lactide:glycolide) {normalize_text(row[1])}",
+                        )
+                    ],
+                ),
+            ],
             factors_spec=[
                 factor_spec("film thickness", normalize_text(row[0])),
                 factor_spec("PLGA type", normalize_text(row[1])),
@@ -1707,6 +1769,13 @@ def build_v99gkzei_document(record: dict[str, str], text_path: Path, tables_dir:
         if not label or "NPs composition" in label or label.startswith("a "):
             continue
         component_specs = [component_spec("PLGA", "polymer", "20 mg"), component_spec("Methylene Blue", "drug", "0.5 mg")]
+        component_specs[0]["component_properties_raw"] = json.dumps(
+            [
+                target_resomer_ratio_property("RG502H", "50:50"),
+                property_spec("molecular_weight", "RG502H MW range 7000-17000 Da", "PLGA (RG502H) MW range was 7000-17000 Da"),
+            ],
+            ensure_ascii=False,
+        )
         if "/SC6OH" in label:
             component_specs.append(component_spec("SC6OH", "additive", f"{label.split('SC6OH', 1)[1]} mg"))
         elif "(W/O/W)" in label:

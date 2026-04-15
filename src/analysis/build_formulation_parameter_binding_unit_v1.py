@@ -41,6 +41,7 @@ class FieldSpec:
 
 
 FIELD_SPECS = [
+    FieldSpec("drug_name", ("drug_name",), "tier1"),
     FieldSpec("polymer_mw_kDa", ("polymer_mw_kDa",), "tier1"),
     FieldSpec("la_ga_ratio", ("la_ga_ratio",), "tier1"),
     FieldSpec("polymer_amount", ("plga_mass_mg",), "tier1"),

@@ -13,28 +13,172 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse import (
-    CORE_FIELDS,
-    build_output_columns,
-)
-from src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1 import (
-    FUNCTION_UNIT_ID,
-    build_governed_numbered_doe_guard_row,
-    doe_enumeration_mode,
-    is_governed_doe_recovery_candidate_source,
-    numbered_doe_recovery_enabled,
-    numbered_doe_recovery_min_rows,
-    prefer_governed_doe_rows_over_llm_numeric_rows,
-    resolve_llm_declared_doe_scope,
-    run_doe_row_expansion_function_unit,
-    write_numbered_doe_guard_artifact,
-)
-from src.stage2_sampling_labels.function_units.sequential_optimization_interpreter_v1 import (
-    FUNCTION_UNIT_ID as SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
-    RECOVERY_CANDIDATE_SOURCE as SEQUENTIAL_OPTIMIZATION_CANDIDATE_SOURCE,
-    prefer_resolved_sequential_rows,
-    run_sequential_optimization_interpreter,
-)
+from src.utils.preparation_method_fields_v1 import PREPARATION_METHOD_FIELDNAMES
+
+try:
+    from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse import (
+        CORE_FIELDS,
+        build_output_columns,
+    )
+except ModuleNotFoundError as exc:
+    if exc.name != "pandas":
+        raise
+    CORE_FIELDS = [
+        "emul_type",
+        "emul_method",
+        "la_ga_ratio",
+        "polymer_mw_kDa",
+        "plga_mass_mg",
+        "surfactant_name",
+        "surfactant_concentration_text",
+        "pva_conc_percent",
+        "organic_solvent",
+        "drug_name",
+        "drug_feed_amount_text",
+        "size_nm",
+        "pdi",
+        "zeta_mV",
+        "encapsulation_efficiency_percent",
+        "loading_content_percent",
+    ]
+
+    def build_output_columns() -> list[str]:
+        cols = [
+            "key",
+            "doi",
+            "model",
+            "local_instance_id",
+            "formulation_id",
+            "raw_formulation_label",
+            "polymer_identity",
+            "polymer_name_raw",
+            "instance_kind",
+            "parent_instance_id",
+            "change_descriptions",
+            "change_role",
+            "instance_context_tags",
+            "change_context_tags",
+            "supporting_evidence_refs",
+            "formulation_role",
+            "instance_confidence",
+            "candidate_source",
+            "stage2_semantic_source_mode",
+            "semantic_universe_authority",
+            "row_materialization_mode",
+            "semantic_scope_authority",
+            "semantic_scope_ref",
+            "instance_evidence_region_type",
+            "evidence_section",
+            "evidence_span_text",
+            "evidence_span_start",
+            "evidence_span_end",
+            "instance_kind_raw",
+            "instance_kind_inferred",
+            "instance_kind_reconciliation_note",
+        ]
+        for field_name in CORE_FIELDS:
+            cols.extend(
+                [
+                    f"{field_name}_value",
+                    f"{field_name}_value_text",
+                    f"{field_name}_scope",
+                    f"{field_name}_membership_confidence",
+                    f"{field_name}_evidence_region_type",
+                    f"{field_name}_missing_reason",
+                ]
+            )
+        cols.extend(PREPARATION_METHOD_FIELDNAMES)
+        return cols
+try:
+    from src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1 import (
+        FUNCTION_UNIT_ID,
+        build_governed_numbered_doe_guard_row,
+        doe_enumeration_mode,
+        is_governed_doe_recovery_candidate_source,
+        numbered_doe_recovery_enabled,
+        numbered_doe_recovery_min_rows,
+        prefer_governed_doe_rows_over_llm_numeric_rows,
+        resolve_llm_declared_doe_scope,
+        run_doe_row_expansion_function_unit,
+        write_numbered_doe_guard_artifact,
+    )
+except ModuleNotFoundError as exc:
+    if exc.name != "pandas":
+        raise
+    FUNCTION_UNIT_ID = "doe_row_expansion_function_unit_v1"
+
+    def build_governed_numbered_doe_guard_row(*, document_key: str, **_: Any) -> dict[str, Any]:
+        return {
+            "document_key": document_key,
+            "status": "skipped_missing_optional_dependency",
+            "skip_reason": "pandas_not_available",
+        }
+
+    def doe_enumeration_mode() -> str:
+        return "disabled_missing_optional_dependency"
+
+    def is_governed_doe_recovery_candidate_source(candidate_source: str) -> bool:
+        return False
+
+    def numbered_doe_recovery_enabled() -> bool:
+        return False
+
+    def numbered_doe_recovery_min_rows() -> int:
+        return 0
+
+    def prefer_governed_doe_rows_over_llm_numeric_rows(rows: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+        return rows, []
+
+    def resolve_llm_declared_doe_scope(document: dict[str, Any]) -> dict[str, Any]:
+        return {}
+
+    def run_doe_row_expansion_function_unit(*, document: dict[str, Any], model_name: str, semantic_scope: dict[str, Any]) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any]]:
+        return [], [], [], {
+            "function_unit": FUNCTION_UNIT_ID,
+            "document_key": normalize_text(document.get("document_key")),
+            "considered": True,
+            "authorized": False,
+            "called": False,
+            "candidate_count": 0,
+            "retained_row_count": 0,
+            "skip_reason": "pandas_not_available",
+            "status": "skipped_missing_optional_dependency",
+        }
+
+    def write_numbered_doe_guard_artifact(output_dir: Path, guard_rows: list[dict[str, Any]]) -> dict[str, Any]:
+        guard_path = output_dir / "numbered_doe_guard_v1.tsv"
+        write_tsv(guard_path, guard_rows, sorted({key for row in guard_rows for key in row.keys()}) or ["document_key", "status", "skip_reason"])
+        return {"guard_path": str(guard_path.resolve()), "fail_count": 0, "warn_count": 0}
+
+try:
+    from src.stage2_sampling_labels.function_units.sequential_optimization_interpreter_v1 import (
+        FUNCTION_UNIT_ID as SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
+        RECOVERY_CANDIDATE_SOURCE as SEQUENTIAL_OPTIMIZATION_CANDIDATE_SOURCE,
+        prefer_resolved_sequential_rows,
+        run_sequential_optimization_interpreter,
+    )
+except ModuleNotFoundError as exc:
+    if exc.name != "pandas":
+        raise
+    SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID = "sequential_optimization_interpreter_v1"
+    SEQUENTIAL_OPTIMIZATION_CANDIDATE_SOURCE = "sequential_optimization_interpreter_disabled_missing_optional_dependency"
+
+    def prefer_resolved_sequential_rows(rows: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+        return rows, []
+
+    def run_sequential_optimization_interpreter(*, document: dict[str, Any], existing_rows: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any]]:
+        return [], [], [], {
+            "function_unit": SEQUENTIAL_OPTIMIZATION_FUNCTION_UNIT_ID,
+            "document_key": normalize_text(document.get("document_key")),
+            "considered": True,
+            "authorized": False,
+            "called": False,
+            "emitted_row_count": 0,
+            "retained_row_count": 0,
+            "skip_reason": "pandas_not_available",
+            "status": "skipped_missing_optional_dependency",
+            "replaced_row_count": 0,
+        }
 from src.stage2_sampling_labels.table_row_expansion_v1 import (
     BOUNDARY_MARKER_FIELD,
     execution_ready_markers,
@@ -620,6 +764,37 @@ def find_property(component: dict[str, Any], *needles: str) -> str:
     return ""
 
 
+def polymer_mw_projection_text(component: dict[str, Any]) -> str:
+    return find_property(component, "molecular weight", "mw", "kda")
+
+
+def polymer_mw_projection_value(component: dict[str, Any]) -> str:
+    text = polymer_mw_projection_text(component)
+    if not text:
+        return ""
+    token_text = normalize_token(text)
+    if "viscosity" in token_text or "dl g" in token_text:
+        return ""
+    range_match = re.search(r"(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)\s*(?:kda|da)\b", text, flags=re.IGNORECASE)
+    if range_match:
+        first = range_match.group(1)
+        second = range_match.group(2)
+        if "da" in text.lower() and "kda" not in text.lower():
+            return f"{float(first) / 1000:.6g}-{float(second) / 1000:.6g}"
+        return f"{first}-{second}"
+    single_match = re.search(r"(\d+(?:\.\d+)?)\s*(kda|da)\b", text, flags=re.IGNORECASE)
+    if single_match:
+        value = float(single_match.group(1))
+        if single_match.group(2).lower() == "da":
+            value /= 1000.0
+        return f"{value:.6g}"
+    # Preserve article-native polymer grade strings as text-only support
+    # rather than incorrectly reading grade digits as a numeric MW value.
+    if any(marker in token_text for marker in ["resomer", "rg502", "rg503", "rg504", "rg505", "rg506", "rg750", "rg752", "rg753", "rg756"]):
+        return ""
+    return first_number(text)
+
+
 def measurement_target_name(item: dict[str, Any]) -> str:
     return normalize_token(item.get("measurement_name_raw"))
 
@@ -836,8 +1011,8 @@ def project_document(
 
         value, value_text, status = project_choice(
             polymer_components,
-            lambda item: first_number(find_property(item, "molecular weight", "mw", "kda")),
-            lambda item: find_property(item, "molecular weight", "mw", "kda"),
+            polymer_mw_projection_value,
+            polymer_mw_projection_text,
         )
         assign_bundle("polymer_mw_kDa", value, value_text, status, polymer_refs, "Projected from polymer component molecular-weight properties.")
 

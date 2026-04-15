@@ -348,6 +348,16 @@ Current implementation-status note:
   - `S2-4a` prompt construction freeze
   - `S2-4b` live LLM call freeze
   - `S2-5` semantic parsing freeze
+- Additional supporting diagnostics may exist adjacent to these maintained surfaces.
+- Current local-only diagnostic addition:
+  - `src/stage2_sampling_labels/run_stage2_s2_4b_ollama_local_diagnostic_v1.py`
+  - `src/stage2_sampling_labels/check_ollama_local_connectivity_v1.py`
+  - scope:
+    consume frozen S2-4a prompt artifacts or perform connectivity checks only
+  - boundary role:
+    `S2-4b-style diagnostic boundary`, not a maintained benchmark default
+  - hard rule:
+    this local Ollama path is non-mainline, diagnostic-only, and must not be described as a contract change to the frozen Gemini S2-4b path
 - The governed Stage2 wrapper refreshes run-level feature activation observability after writing `RUN_CONTEXT.md`.
 - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py` is the
   internal LLM semantic-discovery substep used by the governed Stage2 entrypoint.

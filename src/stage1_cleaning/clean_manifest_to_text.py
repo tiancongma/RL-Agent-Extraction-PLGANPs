@@ -55,6 +55,11 @@ _bootstrap_import_paths()
 from src.utils import paths  # noqa: E402
 
 
+def warn_if_not_python313() -> None:
+    if sys.version_info[:2] != (3, 13):
+        print("WARNING: Stage1 is not running under Python 3.13; Marker will not be used", file=sys.stderr)
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(description="Clean manifest -> text + key2txt.tsv (authoritative mapping).")
 
@@ -290,6 +295,7 @@ def promote_key2structure_mapping(
 
 
 def main() -> None:
+    warn_if_not_python313()
     ap = build_arg_parser()
     args = ap.parse_args()
 

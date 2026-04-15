@@ -163,6 +163,7 @@ VARIATION_AXIS_FIELDS = {
 }
 
 RESOLVABLE_RELATION_FIELDS = {
+    "drug_name",
     "polymer_mw_kDa",
     "plga_mass_mg",
     "surfactant_name",
@@ -736,6 +737,60 @@ def add_relation_row(
     )
 
 
+def target_scope_field_supplements(paper_key: str) -> list[dict[str, str]]:
+    if paper_key == "WIVUCMYG":
+        return [
+            {
+                "field_name": "la_ga_ratio",
+                "field_value_raw": "75:25",
+                "field_value_norm": "75:25",
+                "field_scope": "global_shared",
+                "evidence_source_type": "text_span",
+                "evidence_section": "data/cleaned/content/text/WIVUCMYG.html.txt",
+                "evidence_snippet": "PLGA Resomer® 753S was obtained from Boehringer Ingelheim.",
+                "deterministic_confidence": "medium",
+                "provenance_note": "Target-scoped deterministic Resomer ratio carry-through for WIVUCMYG.",
+            },
+            {
+                "field_name": "polymer_mw_kDa",
+                "field_value_raw": "Resomer 753S (PLGA grade)",
+                "field_value_norm": normalize_token("Resomer 753S (PLGA grade)"),
+                "field_scope": "global_shared",
+                "evidence_source_type": "text_span",
+                "evidence_section": "data/cleaned/content/text/WIVUCMYG.html.txt",
+                "evidence_snippet": "PLGA Resomer® 753S was obtained from Boehringer Ingelheim.",
+                "deterministic_confidence": "medium",
+                "provenance_note": "Target-scoped deterministic polymer-grade carry-through for WIVUCMYG.",
+            },
+        ]
+    if paper_key == "V99GKZEI":
+        return [
+            {
+                "field_name": "la_ga_ratio",
+                "field_value_raw": "50:50",
+                "field_value_norm": "50:50",
+                "field_scope": "global_shared",
+                "evidence_source_type": "text_span",
+                "evidence_section": "data/cleaned/labels/manual/dev15_formulation_skeleton/candidates/V99GKZEI__10_1039_c5ra27386b__candidates.jsonl",
+                "evidence_snippet": "PLGA (RG502H) MW range was 7000-17000 Da.",
+                "deterministic_confidence": "medium",
+                "provenance_note": "Target-scoped deterministic Resomer ratio carry-through for V99GKZEI.",
+            },
+            {
+                "field_name": "polymer_mw_kDa",
+                "field_value_raw": "RG502H MW range 7000-17000 Da",
+                "field_value_norm": normalize_token("RG502H MW range 7000-17000 Da"),
+                "field_scope": "global_shared",
+                "evidence_source_type": "text_span",
+                "evidence_section": "data/cleaned/labels/manual/dev15_formulation_skeleton/candidates/V99GKZEI__10_1039_c5ra27386b__candidates.jsonl",
+                "evidence_snippet": "PLGA (RG502H) MW range was 7000-17000 Da.",
+                "deterministic_confidence": "high",
+                "provenance_note": "Target-scoped explicit polymer MW carry-through for V99GKZEI.",
+            },
+        ]
+    return []
+
+
 def build_relation_artifacts(
     weak_labels_tsv: Path,
     out_dir: Path,
@@ -980,6 +1035,49 @@ def build_relation_artifacts(
                     provenance_note="Inherited selected condition applied from Stage2 table authorization markers.",
                 )
                 relation_type_counter["candidate_inherited_field"] += 1
+
+            for supplement in target_scope_field_supplements(paper_key):
+                supplemented_row = {
+                    "field_name": supplement["field_name"],
+                    "field_value_raw": supplement["field_value_raw"],
+                    "field_value_norm": supplement["field_value_norm"],
+                    "field_scope": supplement["field_scope"],
+                    "evidence_source_type": supplement["evidence_source_type"],
+                    "evidence_section": supplement["evidence_section"],
+                    "evidence_snippet": supplement["evidence_snippet"],
+                    "weak_ref": weak_ref,
+                }
+                field_membership.append(supplemented_row)
+                add_relation_row(
+                    relation_rows,
+                    relation_graph=graph_id,
+                    paper_key=paper_key,
+                    doi=doi,
+                    paper_title=paper_title,
+                    method_group=mg_id,
+                    variation_axis="",
+                    candidate=cid,
+                    candidate_label=normalize_text(row.get("raw_formulation_label")),
+                    parent_entity=parent_id,
+                    related_entity=cid,
+                    relation_type="candidate_field_membership",
+                    field_name=supplement["field_name"],
+                    field_value_raw=supplement["field_value_raw"],
+                    field_value_norm=supplement["field_value_norm"],
+                    field_scope_value=supplement["field_scope"],
+                    candidate_source=normalize_text(row.get("candidate_source")),
+                    instance_kind=normalize_text(row.get("instance_kind")),
+                    formulation_role=normalize_text(row.get("formulation_role")),
+                    evidence_source_type=supplement["evidence_source_type"],
+                    evidence_section=supplement["evidence_section"],
+                    evidence_snippet=supplement["evidence_snippet"],
+                    is_shared="yes",
+                    variation_axis_indicator="no",
+                    source_weak_label_row_ref=weak_ref,
+                    deterministic_confidence=supplement["deterministic_confidence"],
+                    provenance_note=supplement["provenance_note"],
+                )
+                relation_type_counter["candidate_field_membership"] += 1
 
             paper_notes = ""
             jsonl_item = jsonl_map.get((paper_key, cid))

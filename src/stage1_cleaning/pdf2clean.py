@@ -55,6 +55,8 @@ FORBIDDEN_SEMANTIC_KEYS = {
     "inferred_label",
     "inferred_labels",
 }
+LOCAL_STAGE1_PATHS_CONFIG = Path(__file__).resolve().parents[2] / ".local_stage1_paths.json"
+_LOCAL_STAGE1_PATHS_CACHE: Optional[Dict[str, str]] = None
 
 
 def pick_col(df: pd.DataFrame, candidates: List[str]) -> Optional[str]:
@@ -74,6 +76,79 @@ def normalize_whitespace(text: str) -> str:
 
 def normalize_inline_whitespace(text: str) -> str:
     return re.sub(r"\s+", " ", str(text or "")).strip()
+
+
+def load_local_stage1_path_remap_config() -> Dict[str, str]:
+    """
+    Optional local-machine compatibility config for Stage1 source paths only.
+
+    This does not change the governed manifest contract. It only allows a local
+    workstation to resolve legacy absolute Zotero storage paths when the
+    authoritative manifest still points at an older machine's storage root.
+    """
+    global _LOCAL_STAGE1_PATHS_CACHE
+    if _LOCAL_STAGE1_PATHS_CACHE is not None:
+        return _LOCAL_STAGE1_PATHS_CACHE
+
+    if not LOCAL_STAGE1_PATHS_CONFIG.exists():
+        _LOCAL_STAGE1_PATHS_CACHE = {}
+        return _LOCAL_STAGE1_PATHS_CACHE
+
+    try:
+        raw = json.loads(LOCAL_STAGE1_PATHS_CONFIG.read_text(encoding="utf-8", errors="replace"))
+    except Exception:
+        _LOCAL_STAGE1_PATHS_CACHE = {}
+        return _LOCAL_STAGE1_PATHS_CACHE
+
+    old_root = str(raw.get("old_zotero_storage_root", "") or "").strip()
+    new_root = str(raw.get("new_zotero_storage_root", "") or "").strip()
+    if not old_root or not new_root:
+        _LOCAL_STAGE1_PATHS_CACHE = {}
+        return _LOCAL_STAGE1_PATHS_CACHE
+
+    _LOCAL_STAGE1_PATHS_CACHE = {
+        "old_zotero_storage_root": old_root,
+        "new_zotero_storage_root": new_root,
+    }
+    return _LOCAL_STAGE1_PATHS_CACHE
+
+
+def resolve_stage1_source_path(path_value: str) -> Optional[Path]:
+    """
+    Resolve one manifest-backed Stage1 source path with old-path-first behavior.
+
+    Resolution order:
+    1. Use the manifest path unchanged if it already exists.
+    2. If it does not exist, and a local remap config is present, remap only
+       when the path is under the configured old Zotero storage root.
+    3. If the remapped path exists, use it. Otherwise keep the original path.
+
+    This is a local-machine compatibility layer only. It does not rewrite or
+    reinterpret the manifest contract.
+    """
+    raw_value = str(path_value or "").strip()
+    if not raw_value:
+        return None
+
+    original_path = Path(raw_value)
+    if original_path.exists():
+        return original_path
+
+    cfg = load_local_stage1_path_remap_config()
+    if not cfg:
+        return original_path
+
+    old_root = Path(cfg["old_zotero_storage_root"])
+    new_root = Path(cfg["new_zotero_storage_root"])
+    try:
+        relative_tail = original_path.relative_to(old_root)
+    except ValueError:
+        return original_path
+
+    remapped_path = new_root / relative_tail
+    if remapped_path.exists():
+        return remapped_path
+    return original_path
 
 
 def sha1_text(text: str) -> str:
@@ -633,8 +708,8 @@ def process_row(
             html_col = str(row[candidate]).strip()
             break
 
-    pdf_path = Path(pdf_col) if pdf_col else None
-    html_path = Path(html_col) if html_col else None
+    pdf_path = resolve_stage1_source_path(pdf_col) if pdf_col else None
+    html_path = resolve_stage1_source_path(html_col) if html_col else None
 
     if not key:
         return [{
