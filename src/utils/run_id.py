@@ -9,6 +9,8 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+from src.utils.run_context_v1 import create_minimal_run_context, require_run_context_for_write
+
 
 LEGACY_RUN_ID_REGEX = r"^run_\d{8}_\d{4}_[0-9a-f]{7}_.+$"
 RUN_ID_REGEX = LEGACY_RUN_ID_REGEX
@@ -363,6 +365,124 @@ def is_within_directory(candidate: str | Path, root_dir: str | Path) -> bool:
         return True
     except ValueError:
         return False
+
+
+def resolve_governed_results_artifact_path(
+    path: str | Path,
+    *,
+    results_root: str | Path,
+    require_existing_governed_root: bool = False,
+    require_run_context: bool = False,
+    allow_create_governed_root: bool = False,
+    new_run_context_metadata: dict[str, str] | None = None,
+) -> dict[str, str]:
+    """
+    Validate that an artifact write path stays under a governed results scope.
+
+    Allowed governed scopes:
+    - historical legacy run roots: data/results/run_.../<artifact>
+    - future v2 child execution roots: data/results/YYYYMMDD_<hash>/NN_<cue>/<artifact>
+
+    Forbidden:
+    - uncontrolled top-level results roots such as data/results/dev15_review
+    - writes directly under a v2 bucket without a child execution folder
+    - any path outside the governed results root
+    """
+    results_root_path = Path(results_root).resolve(strict=False)
+    candidate = Path(path).resolve(strict=False)
+    if not is_within_directory(candidate, results_root_path):
+        raise ValueError(
+            f"Results write path must stay under results root {results_root_path}: {candidate}"
+        )
+
+    relative_parts = candidate.relative_to(results_root_path).parts
+    if not relative_parts:
+        raise ValueError("Results write path must not target the results root directly.")
+
+    top_level_name = relative_parts[0]
+    top_level_kind = classify_results_basename(top_level_name)
+    governed_run_dir: Path
+    governed_run_kind: str
+
+    if top_level_kind == "legacy_run_root":
+        governed_run_dir = (results_root_path / top_level_name).resolve(strict=False)
+        governed_run_kind = "legacy_run_root"
+    elif top_level_kind == "v2_bucket":
+        if len(relative_parts) < 2:
+            raise ValueError(
+                "Writes under a governed v2 bucket must target an explicit child execution path, "
+                f"not the bucket root: {candidate}"
+            )
+        child_name = relative_parts[1]
+        child_kind = classify_results_basename(child_name)
+        if child_kind != "v2_child":
+            raise ValueError(
+                "Writes under a governed v2 bucket must target an explicit child execution path. "
+                f"Got top-level child {child_name!r} for {candidate}."
+            )
+        governed_run_dir = (results_root_path / top_level_name / child_name).resolve(strict=False)
+        governed_run_kind = "v2_child_execution"
+    else:
+        raise ValueError(
+            "Refusing uncontrolled top-level results path. Writes must stay under an existing "
+            "legacy run root or a governed v2 bucket/child execution path. "
+            f"Got: {candidate}"
+        )
+
+    if require_existing_governed_root and not governed_run_dir.exists():
+        raise FileNotFoundError(
+            "Governed results root does not exist. This writer cannot silently mint a new top-level "
+            f"results root: {governed_run_dir}"
+        )
+
+    run_context_path = governed_run_dir / "RUN_CONTEXT.md"
+    if allow_create_governed_root:
+        if governed_run_dir.exists():
+            if require_run_context:
+                require_run_context_for_write(governed_run_dir)
+        else:
+            if not new_run_context_metadata:
+                raise ValueError(
+                    "Creating a new governed results root requires explicit RUN_CONTEXT metadata. "
+                    f"Refusing to create {governed_run_dir} without it."
+                )
+            create_minimal_run_context(governed_run_dir, new_run_context_metadata)
+    elif require_run_context:
+        require_run_context_for_write(governed_run_dir)
+
+    return {
+        "artifact_path": str(candidate),
+        "governed_run_dir": str(governed_run_dir),
+        "governed_run_kind": governed_run_kind,
+        "run_context_path": str(run_context_path),
+    }
+
+
+def build_governed_results_artifact_path(
+    *,
+    run_dir: str | Path,
+    artifact_subdir: str = "",
+    filename: str = "",
+    results_root: str | Path | None = None,
+) -> Path:
+    """
+    Build a governed artifact path under an existing run root or v2 child execution root.
+    """
+    run_path = Path(run_dir).resolve(strict=False)
+    if results_root is not None:
+        classification = classify_results_path(run_path, results_dir=Path(results_root).resolve(strict=False))
+        if classification["path_kind"] not in {"legacy_run_root", "v2_child_execution"}:
+            raise ValueError(
+                "Governed artifact writes require a legacy run root or v2 child execution path. "
+                f"Got {run_path} classified as {classification['path_kind']}."
+            )
+    relative_subdir = validate_artifact_subdir(artifact_subdir, param_name="artifact_subdir") if artifact_subdir else ""
+    target = run_path
+    if relative_subdir:
+        target = target / relative_subdir
+    if filename:
+        target = target / filename
+    return target.resolve(strict=False)
 
 
 def resolve_results_write_target(

@@ -38,11 +38,13 @@ try:
         enumerate_numbered_doe_candidates_for_paper,
         write_candidate_artifacts,
     )
+    from src.utils.paths import DATA_RESULTS_DIR
     from src.utils.preparation_method_fields_v1 import (
         PREPARATION_METHOD_FIELDNAMES,
         enrich_preparation_method_fields_v1,
     )
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.run_id import resolve_governed_results_artifact_path
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
@@ -51,11 +53,13 @@ except ModuleNotFoundError:
         enumerate_numbered_doe_candidates_for_paper,
         write_candidate_artifacts,
     )
+    from src.utils.paths import DATA_RESULTS_DIR
     from src.utils.preparation_method_fields_v1 import (
         PREPARATION_METHOD_FIELDNAMES,
         enrich_preparation_method_fields_v1,
     )
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.run_id import resolve_governed_results_artifact_path
 
 HAS_GENAI = False
 try:
@@ -3232,7 +3236,15 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     p.add_argument("--max-items", type=int, default=3)
     p.add_argument("--sleep", type=float, default=0.4)
     p.add_argument("--retries", type=int, default=1)
-    p.add_argument("--out-dir", default="")
+    p.add_argument(
+        "--out-dir",
+        default="",
+        help=(
+            "Required explicit output directory under an existing governed legacy run root or "
+            "governed v2 child execution path. This deprecated extractor no longer creates a "
+            "new top-level data/results root by default."
+        ),
+    )
     p.add_argument(
         "--replay-raw-responses-dir",
         default="",
@@ -3265,9 +3277,18 @@ def main(argv: Optional[List[str]] = None) -> None:
     if len(papers) == 0:
         die("No pilot papers loaded from manifest.")
 
-    ts = datetime.now().strftime("%Y%m%d_%H%M")
-    default_out = Path(f"data/results/run_{ts}_v7pilot3r3fixparse_dev/weak_labels_v7pilot_r3_fixparse")
-    out_dir = Path(args.out_dir) if args.out_dir else default_out
+    if not str(args.out_dir).strip():
+        raise ValueError(
+            "This deprecated legacy extractor will not mint a new top-level results root. "
+            "Pass --out-dir under an existing governed legacy run root or governed v2 child "
+            "execution path, or use the maintained Stage2 entrypoint instead."
+        )
+    out_dir = Path(args.out_dir).resolve()
+    resolve_governed_results_artifact_path(
+        out_dir,
+        results_root=DATA_RESULTS_DIR,
+        require_existing_governed_root=True,
+    )
     out_dir.mkdir(parents=True, exist_ok=True)
     out_jsonl = out_dir / "weak_labels__v7pilot_r3_fixparse.jsonl"
     out_tsv = out_dir / "weak_labels__v7pilot_r3_fixparse.tsv"

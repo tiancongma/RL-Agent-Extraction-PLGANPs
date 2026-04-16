@@ -2,34 +2,52 @@
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, List
 
 import pandas as pd
 from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 
 try:
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
     from src.utils.paths import (
         DATA_CLEANED_DIR,
         DATA_RESULTS_DIR,
-        DEV15_LAYER1_GT_COUNTS_TSV,
         DOCS_DIR,
     )
+    from src.utils.run_id import (
+        build_governed_results_artifact_path,
+        resolve_governed_results_artifact_path,
+    )
+    from src.utils.run_context_v1 import require_run_context_for_write
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.active_data_source import (
+        build_artifact_metadata,
+        resolve_artifact_path,
+        resolve_run_context,
+        write_artifact_metadata_json,
+    )
     from src.utils.paths import (
         DATA_CLEANED_DIR,
         DATA_RESULTS_DIR,
-        DEV15_LAYER1_GT_COUNTS_TSV,
         DOCS_DIR,
     )
+    from src.utils.run_id import (
+        build_governed_results_artifact_path,
+        resolve_governed_results_artifact_path,
+    )
+    from src.utils.run_context_v1 import require_run_context_for_write
 
 
-DEFAULT_GT_COUNTS_TSV = DEV15_LAYER1_GT_COUNTS_TSV
 DEFAULT_COMBINED_EVAL_TSV = (
     DATA_CLEANED_DIR
     / "labels"
@@ -50,8 +68,8 @@ DEFAULT_TUNED3_EVAL_TSV = (
     / "formulation_instance_pilot3_eval_synthmethod_2026-03-10"
     / "per_doi_formulation_instance_summary.tsv"
 )
-DEFAULT_OUT_DIR = DATA_RESULTS_DIR / "dev15_review"
-DEFAULT_OUT_XLSX = DEFAULT_OUT_DIR / "dev15_instance_review_v1.xlsx"
+DEFAULT_OUTPUT_SUBDIR = "analysis/dev15_review_workbook_v1"
+DEFAULT_OUT_XLSX_NAME = "dev15_instance_review_v1.xlsx"
 
 
 PAPER_SUMMARY_COLUMNS = [
@@ -107,25 +125,6 @@ def read_gt_counts(gt_counts_tsv: Path) -> pd.DataFrame:
     source_summary["doi"] = source_summary["doi"].map(norm_doi)
     source_summary["GT_count"] = pd.to_numeric(source_summary["gt_count"], errors="coerce").fillna(0).astype(int)
     return source_summary[["paper_key", "doi", "paper_title", "GT_count"]].copy()
-
-
-def discover_latest_weak_label_tsv(expected_keys: Iterable[str]) -> Path:
-    expected = set(expected_keys)
-    candidates: List[Tuple[float, Path]] = []
-    for path in DATA_RESULTS_DIR.rglob("weak_labels__v7pilot_r3_fixparse.tsv"):
-        try:
-            df = read_tsv(path)
-        except Exception:
-            continue
-        if "key" not in df.columns:
-            continue
-        keys = {norm_text(v) for v in df["key"].tolist() if norm_text(v)}
-        if keys == expected:
-            candidates.append((path.stat().st_mtime, path.resolve()))
-    if not candidates:
-        raise FileNotFoundError(f"No weak-label TSV found for key set: {sorted(expected)}")
-    candidates.sort(key=lambda item: (item[0], str(item[1])))
-    return candidates[-1][1]
 
 
 def infer_notes(row: pd.Series) -> str:
@@ -303,43 +302,72 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Build a DEV15 reviewer workbook from evaluation outputs and the frozen Layer1 GT counts TSV."
     )
-    parser.add_argument("--gt-counts-tsv", type=Path, default=DEFAULT_GT_COUNTS_TSV)
+    parser.add_argument("--run-dir", type=Path, default=None)
+    parser.add_argument("--run-id", default="")
+    parser.add_argument("--weak-labels-tsv", type=Path, default=None)
+    parser.add_argument("--gt-counts-tsv", type=Path, default=None)
     parser.add_argument("--combined-eval-tsv", type=Path, default=DEFAULT_COMBINED_EVAL_TSV)
     parser.add_argument("--remaining12-eval-tsv", type=Path, default=DEFAULT_REMAINING12_EVAL_TSV)
     parser.add_argument("--tuned3-eval-tsv", type=Path, default=DEFAULT_TUNED3_EVAL_TSV)
-    parser.add_argument("--out-xlsx", type=Path, default=DEFAULT_OUT_XLSX)
+    parser.add_argument("--out-xlsx", type=Path, default=None)
     return parser
 
 
 def main() -> int:
     args = build_arg_parser().parse_args()
+    source_run_context = resolve_run_context(
+        explicit_run_dir=args.run_dir.resolve() if args.run_dir else None,
+        explicit_run_id=args.run_id,
+    )
 
-    gt_counts_path = args.gt_counts_tsv.resolve()
-    if gt_counts_path != DEFAULT_GT_COUNTS_TSV.resolve():
-        raise ValueError(
-            "GT authority lock violation: build_dev15_review_workbook_v1.py must use "
-            f"{DEFAULT_GT_COUNTS_TSV.resolve()}, not {gt_counts_path}."
+    weak_labels_path = resolve_artifact_path(
+        explicit_path=args.weak_labels_tsv.resolve() if args.weak_labels_tsv else None,
+        run_context=source_run_context,
+        pointer_key="stage2_compatibility_tsv",
+        canonical_relative="semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    )
+    gt_counts_path = resolve_artifact_path(
+        explicit_path=args.gt_counts_tsv.resolve() if args.gt_counts_tsv else None,
+        run_context=source_run_context,
+        pointer_key="layer1_gt_path",
+    )
+
+    combined_eval_path = args.combined_eval_tsv.resolve()
+    remaining12_eval_path = args.remaining12_eval_tsv.resolve()
+    tuned3_eval_path = args.tuned3_eval_tsv.resolve()
+    for required_path in [combined_eval_path, remaining12_eval_path, tuned3_eval_path]:
+        if not required_path.exists():
+            raise FileNotFoundError(f"Required Stage4 evaluation input not found: {required_path}")
+
+    if args.out_xlsx:
+        out_xlsx = args.out_xlsx.resolve()
+    else:
+        out_xlsx = build_governed_results_artifact_path(
+            run_dir=source_run_context["run_dir"],
+            artifact_subdir=DEFAULT_OUTPUT_SUBDIR,
+            filename=DEFAULT_OUT_XLSX_NAME,
+            results_root=DATA_RESULTS_DIR,
         )
+    write_target = resolve_governed_results_artifact_path(
+        out_xlsx,
+        results_root=DATA_RESULTS_DIR,
+        require_existing_governed_root=True,
+        require_run_context=True,
+    )
+    require_run_context_for_write(write_target["governed_run_dir"])
 
     gt_counts = read_gt_counts(gt_counts_path)
-    combined_eval = read_tsv(args.combined_eval_tsv)
-    remaining12_eval = read_tsv(args.remaining12_eval_tsv)
-    tuned3_eval = read_tsv(args.tuned3_eval_tsv)
-
-    tuned3_keys = sorted(combined_eval.loc[combined_eval["source_group"] == "tuned_3paper", "paper_key"].map(norm_text).tolist())
-    remaining12_keys = sorted(
-        combined_eval.loc[combined_eval["source_group"] == "remaining_12paper", "paper_key"].map(norm_text).tolist()
-    )
-    tuned3_weak_labels = discover_latest_weak_label_tsv(tuned3_keys)
-    remaining12_weak_labels = discover_latest_weak_label_tsv(remaining12_keys)
+    combined_eval = read_tsv(combined_eval_path)
+    remaining12_eval = read_tsv(remaining12_eval_path)
+    tuned3_eval = read_tsv(tuned3_eval_path)
 
     paper_summary = build_paper_summary(gt_counts, combined_eval)
-    predicted_instances = build_predicted_instances([tuned3_weak_labels, remaining12_weak_labels], paper_summary)
+    predicted_instances = build_predicted_instances([weak_labels_path], paper_summary)
     review_queue = build_review_queue(paper_summary)
 
-    out_dir = args.out_xlsx.parent
+    out_dir = out_xlsx.parent
     out_dir.mkdir(parents=True, exist_ok=True)
-    with pd.ExcelWriter(args.out_xlsx, engine="openpyxl") as writer:
+    with pd.ExcelWriter(out_xlsx, engine="openpyxl") as writer:
         paper_summary.to_excel(writer, sheet_name="paper_summary", index=False)
         predicted_instances.to_excel(writer, sheet_name="predicted_instances", index=False)
         review_queue.to_excel(writer, sheet_name="review_queue", index=False)
@@ -348,21 +376,44 @@ def main() -> int:
         for sheet_name in ["paper_summary", "predicted_instances", "review_queue"]:
             style_worksheet(wb[sheet_name])
 
+    metadata = build_artifact_metadata(
+        source_run_context=source_run_context,
+        source_files={
+            "weak_labels_tsv": str(weak_labels_path),
+            "gt_counts_tsv": str(gt_counts_path),
+            "combined_eval_tsv": str(combined_eval_path),
+            "remaining12_eval_tsv": str(remaining12_eval_path),
+            "tuned3_eval_tsv": str(tuned3_eval_path),
+        },
+        generated_by="src/stage4_eval/build_dev15_review_workbook_v1.py",
+        note="Reviewer-facing Stage4 workbook built from explicit governed sources without recency-based discovery.",
+        extra={
+            "output_xlsx": str(out_xlsx),
+            "output_governed_run_dir": write_target["governed_run_dir"],
+            "output_governed_run_kind": write_target["governed_run_kind"],
+            "output_run_context_path": write_target["run_context_path"],
+        },
+    )
+    metadata_path = write_artifact_metadata_json(out_xlsx, metadata)
+
     exact = int((paper_summary["error_type"] == "exact").sum())
     under = int((paper_summary["error_type"] == "under_segmentation").sum())
     over = int((paper_summary["error_type"] == "over_segmentation").sum())
 
+    print(f"resolved_source_run_dir={source_run_context['run_dir']}")
+    print(f"resolved_source_run_id={source_run_context['run_id']}")
+    print(f"resolved_source_run_resolution={source_run_context['resolution_source']}")
     print(f"number_of_papers={len(paper_summary)}")
     print(f"exact={exact}")
     print(f"under_segmentation={under}")
     print(f"over_segmentation={over}")
-    print(f"generated_excel={args.out_xlsx}")
+    print(f"generated_excel={out_xlsx}")
+    print(f"generated_excel_metadata={metadata_path}")
     print(f"input_gt_counts_tsv={gt_counts_path}")
-    print(f"input_combined_eval={args.combined_eval_tsv}")
-    print(f"input_remaining12_eval={args.remaining12_eval_tsv}")
-    print(f"input_tuned3_eval={args.tuned3_eval_tsv}")
-    print(f"input_tuned3_weak_labels={tuned3_weak_labels}")
-    print(f"input_remaining12_weak_labels={remaining12_weak_labels}")
+    print(f"input_combined_eval={combined_eval_path}")
+    print(f"input_remaining12_eval={remaining12_eval_path}")
+    print(f"input_tuned3_eval={tuned3_eval_path}")
+    print(f"input_weak_labels={weak_labels_path}")
 
     print_preview("paper_summary", paper_summary)
     print_preview("predicted_instances", predicted_instances)

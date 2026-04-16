@@ -4,10 +4,19 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
+
+try:
+    from src.utils.paths import DATA_RESULTS_DIR
+    from src.utils.run_id import resolve_governed_results_artifact_path
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.utils.paths import DATA_RESULTS_DIR
+    from src.utils.run_id import resolve_governed_results_artifact_path
 
 
 DEFAULT_RUN_ID = "run_20260219_1623_780eb83_goren18_weaklabels_v1"
@@ -316,6 +325,11 @@ def main() -> None:
     args = parse_args()
     run_id = args.run_id
     out_dir = Path(args.out_dir) if args.out_dir else Path(f"data/results/{run_id}/benchmark_goren_2025")
+    resolve_governed_results_artifact_path(
+        out_dir,
+        results_root=DATA_RESULTS_DIR,
+        require_existing_governed_root=True,
+    )
     projected_tsv = Path(args.projected_tsv) if args.projected_tsv else out_dir / "projected_to_curated.tsv"
     curated_tsv = Path(args.curated_tsv)
     modes = [m.strip() for m in str(args.modes).split(",") if m.strip()]
