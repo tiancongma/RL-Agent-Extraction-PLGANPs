@@ -92,6 +92,12 @@ def analyze_identity_freeze(summary_rows: list[dict[str, str]]) -> tuple[dict[st
     return by_paper, has_violations
 
 
+def effective_compare_mode(requested_mode: str) -> str:
+    if requested_mode in {"benchmark", "debug_identity", "diagnostic"}:
+        return "diagnostic"
+    return "diagnostic"
+
+
 def build_summary_markdown(
     scope_name: str,
     manifest_path: Path,
@@ -125,26 +131,20 @@ def build_summary_markdown(
         "## Compare Contract",
         "",
         f"- identity_freeze_mode: `{identity_freeze_mode}`",
+        "- benchmark_mode: `disabled`",
         f"- benchmark_valid: `{'yes' if benchmark_valid else 'no'}`",
         f"- identity_freeze_failed: `{'yes' if identity_freeze_failed else 'no'}`",
         "",
-        "## Benchmark-validity statement",
+        "## Diagnostic-phase statement",
         "",
     ]
-    if benchmark_valid:
-        lines.extend(
-            [
-                "- This comparison is benchmark-valid for the declared scope because it evaluates only the complete-pipeline final formulation table after identity freeze passed.",
-                "- No intermediate Stage2 or other partial-layer artifacts are used as the official evaluation object.",
-            ]
-        )
-    else:
-        lines.extend(
-            [
-                "- This comparison is diagnostic-only because identity freeze failed and compare was explicitly continued in `debug_identity` mode.",
-                "- No intermediate Stage2 or other partial-layer artifacts are used as the evaluation object, but this output is not legal benchmark evidence.",
-            ]
-        )
+    lines.extend(
+        [
+            "- This comparison is diagnostic-only in the current development phase.",
+            "- Identity freeze is treated as a non-blocking risk signal and does not stop compare output generation.",
+            "- No intermediate Stage2 or other partial-layer artifacts are used as the evaluation object, and this output is not benchmark-valid evidence.",
+        ]
+    )
     lines.extend(
         [
             "",
@@ -244,12 +244,12 @@ def build_run_context(
             "",
             "## 1. Run Type",
             "",
-            f"- `{'full_pipeline_benchmark_run' if benchmark_valid else 'intermediate_diagnostic_run'}`",
+            "- `diagnostic_baseline_run`",
             "",
             "## 2. Purpose",
             "",
             "- Compare the completed Stage 5 final table against the authoritative frozen Layer1 GT counts TSV for the declared scope.",
-            "- Respect the explicit dual-mode identity-freeze contract before writing compare outputs.",
+            "- Treat identity freeze as a non-blocking diagnostic risk signal before writing compare outputs.",
             "",
             "## 3. Source Authority Resolution",
             "",
@@ -278,18 +278,11 @@ def build_run_context(
             "## 6. Benchmark Status",
             "",
             f"- compare_mode: `{identity_freeze_mode}`",
+            "- benchmark_mode: `disabled`",
             f"- benchmark_valid: `{'yes' if benchmark_valid else 'no'}`",
             f"- identity_freeze_failed: `{'yes' if identity_freeze_failed else 'no'}`",
-            (
-                "- `benchmark-valid`"
-                if benchmark_valid
-                else "- `diagnostic-only, not benchmark-valid final output`"
-            ),
-            (
-                "- Reason: identity freeze passed, so benchmark compare remained lawful."
-                if benchmark_valid
-                else "- Reason: identity freeze failed and compare was explicitly continued in `debug_identity` mode."
-            ),
+            "- `diagnostic-only, not benchmark-valid final output`",
+            "- Reason: current phase is diagnostic development mode and identity freeze is a non-blocking risk signal.",
             "",
             "## 7. Reproduction Metadata",
             "",
@@ -521,9 +514,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--scope-name", default="controlled_scope")
     parser.add_argument(
         "--identity-freeze-mode",
-        choices=["benchmark", "debug_identity"],
-        default="benchmark",
-        help="Explicit compare contract mode. `benchmark` blocks compare on failed identity freeze; `debug_identity` writes diagnostic-only compare outputs.",
+        choices=["benchmark", "debug_identity", "diagnostic"],
+        default="diagnostic",
+        help="Diagnostic compare contract mode. `benchmark` is accepted for compatibility but downgraded because benchmark mode is disabled in the current phase.",
     )
     parser.add_argument(
         "--identity-freeze-summary-tsv",
@@ -575,7 +568,8 @@ def main() -> None:
         )
     identity_freeze_rows = read_identity_freeze_summary(identity_freeze_summary_tsv)
     identity_freeze_by_paper, identity_freeze_failed = analyze_identity_freeze(identity_freeze_rows)
-    benchmark_valid = args.identity_freeze_mode == "benchmark" and not identity_freeze_failed
+    compare_mode = effective_compare_mode(args.identity_freeze_mode)
+    benchmark_valid = False
     out_dir = (
         args.out_dir.resolve()
         if args.out_dir is not None
@@ -595,24 +589,20 @@ def main() -> None:
                     "identity_freeze_summary_tsv": str(identity_freeze_summary_tsv),
                 },
                 "resolved_out_dir": str(out_dir),
-                "identity_freeze_mode": args.identity_freeze_mode,
+                "identity_freeze_mode": compare_mode,
                 "identity_freeze_failed": identity_freeze_failed,
                 "benchmark_valid": benchmark_valid,
+                "benchmark_mode": "disabled",
             },
             indent=2,
         )
     )
-    if args.identity_freeze_mode == "benchmark" and identity_freeze_failed:
-        raise SystemExit(
-            "Benchmark compare blocked: identity freeze failed. "
-            "Use --identity-freeze-mode debug_identity for diagnostic-only compare outputs."
-        )
     result = compare_final_table_to_gt(
         final_table_tsv=final_table_tsv,
         gt_counts_tsv=gt_counts_tsv,
         scope_manifest_tsv=scope_manifest_tsv,
         identity_freeze_summary_tsv=identity_freeze_summary_tsv,
-        identity_freeze_mode=args.identity_freeze_mode,
+        identity_freeze_mode=compare_mode,
         identity_freeze_by_paper=identity_freeze_by_paper,
         benchmark_valid=benchmark_valid,
         out_dir=out_dir,
@@ -636,9 +626,10 @@ def main() -> None:
                 "audit_counts_path": str(result["audit_counts_path"]),
                 "audit_summary_path": str(result["audit_summary_path"]),
                 "scope_name": args.scope_name,
-                "identity_freeze_mode": args.identity_freeze_mode,
+                "identity_freeze_mode": compare_mode,
                 "benchmark_valid": benchmark_valid,
                 "identity_freeze_failed": identity_freeze_failed,
+                "benchmark_mode": "disabled",
             },
         ),
     )

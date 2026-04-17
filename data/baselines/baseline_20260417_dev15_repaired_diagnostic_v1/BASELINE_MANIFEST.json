@@ -1,0 +1,125 @@
+{
+  "baseline_id": "baseline_20260417_dev15_repaired_diagnostic_v1",
+  "baseline_type": "full_pipeline_baseline",
+  "date": "2026-04-17",
+  "purpose": "Register the repaired 2026-04-17 DEV15 no-marker lineage as the current governed diagnostic baseline for ongoing debugging, after preserving the WFDTQ4VX recovery path and narrowly fixing the 5GIF3D8W Stage2 semantic-scope contract blocker.",
+  "authority_root": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1",
+  "source_run_dir": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1",
+  "source_type": "governed_run_lineage",
+  "reproducibility_status": "materialized_run_with_governed_diagnostic_compare",
+  "llm_usage": "reused_stage2_raw_responses_then_deterministic_downstream_completion",
+  "pipeline_variant": "full_pipeline_no_marker_repaired_stage2_replay_plus_deterministic_stage3_stage5",
+  "intended_use": "current_dev15_development_diagnostic_baseline",
+  "source_artifacts": {
+    "run_context": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/RUN_CONTEXT.md",
+    "stage2_run_metadata": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/stage2_run_metadata_v1.json",
+    "scope_manifest": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/dev15_scope.tsv",
+    "targeted_manifest": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/targeted_manifest.tsv",
+    "completed_stage2_tsv": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "relation_records": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/formulation_relation_v1/formulation_relation_records_v1.tsv",
+    "resolved_relation_fields": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/formulation_relation_v1/resolved_relation_fields_v1.tsv",
+    "final_formulation_table": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/final_formulation_table_v1.tsv",
+    "final_output_decision_trace": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/final_output_decision_trace_v1.tsv",
+    "identity_freeze_summary": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/audit/identity_freeze_guardrail_v1/identity_freeze_summary_v1.tsv",
+    "diagnostic_compare_counts": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/gt_authority_v2_variantaware/final_table_vs_gt_counts.tsv",
+    "diagnostic_compare_summary": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/gt_authority_v2_variantaware/final_table_vs_gt_summary.md",
+    "baseline_registration": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/audit/baseline_registration_v1.json",
+    "baseline_summary": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/audit/baseline_summary_2026-04-17_dev15_repaired_diagnostic_baseline.md",
+    "superseded_baseline_manifest": "data/baselines/baseline_20260417_dev15_no_marker_live_v1/BASELINE_MANIFEST.json"
+  },
+  "artifact_chain": [
+    {
+      "boundary": "Stage1_reused_clean_text",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/dev15_scope.tsv",
+      "artifact_role": "declared DEV15 scope manifest over existing maintained clean-text assets"
+    },
+    {
+      "boundary": "Stage2_repaired_replay",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+      "artifact_role": "completed maintained Stage2 compatibility surface after preserving WFDTQ4VX recovery and fixing the 5GIF3D8W contract blocker"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/formulation_relation_v1/formulation_relation_records_v1.tsv",
+      "artifact_role": "relation materialization records"
+    },
+    {
+      "boundary": "Stage3",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/formulation_relation_v1/resolved_relation_fields_v1.tsv",
+      "artifact_role": "resolved relation carry-through fields"
+    },
+    {
+      "boundary": "Stage5",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/final_formulation_table_v1.tsv",
+      "artifact_role": "final table for current diagnostic baseline debugging work"
+    },
+    {
+      "boundary": "identity_freeze",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/audit/identity_freeze_guardrail_v1/identity_freeze_summary_v1.tsv",
+      "artifact_role": "downstream blocker status for this diagnostic baseline"
+    },
+    {
+      "boundary": "diagnostic_compare",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/gt_authority_v2_variantaware/final_table_vs_gt_counts.tsv",
+      "artifact_role": "governed debug_identity final-table count comparison"
+    }
+  ],
+  "lineage_chain": [
+    {
+      "label": "bucket_root",
+      "path": "data/results/20260417_385b6e1",
+      "coverage": "governed 2026-04-17 work bucket",
+      "authority_status": "bucket_container"
+    },
+    {
+      "label": "superseded_diagnostic_baseline",
+      "path": "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live",
+      "coverage": "original 2026-04-17 no-marker full live diagnostic baseline",
+      "authority_status": "superseded_for_current_debugging"
+    },
+    {
+      "label": "current_diagnostic_baseline",
+      "path": "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1",
+      "coverage": "repaired no-marker DEV15 diagnostic baseline preserving WFDTQ4VX recovery and fixing the 5GIF3D8W Stage2 contract blocker",
+      "authority_status": "baseline_authority_root"
+    }
+  ],
+  "stage_coverage": [
+    "Stage1_reused_clean_text",
+    "Stage2_repaired_replay",
+    "Stage3",
+    "Stage5",
+    "identity_freeze",
+    "diagnostic_compare"
+  ],
+  "boundary_classification": {
+    "lawful_resume_boundary": "Stage5_final_formulation_table",
+    "boundary_classes": {
+      "Stage1_reused_clean_text": "mainline_input_surface",
+      "Stage2_repaired_replay": "mainline_resume_boundary",
+      "Stage3": "internal_intermediate",
+      "Stage5": "mainline_resume_boundary",
+      "identity_freeze": "diagnostic_boundary",
+      "diagnostic_compare": "diagnostic_terminal_surface"
+    }
+  },
+  "benchmark_validity": "diagnostic_only",
+  "limitations": [
+    "Identity freeze still fails downstream, so this baseline is not benchmark-valid.",
+    "The governed compare surface is diagnostic-only because it was run in debug_identity mode.",
+    "The baseline reuses existing maintained clean-text assets and existing Stage2 raw responses rather than a fresh live Stage2 call.",
+    "The baseline is no-marker and must not be described as marker-backed or benchmark-valid.",
+    "This baseline supersedes baseline_20260417_dev15_no_marker_live_v1 for ongoing DEV15 debugging use only."
+  ],
+  "linked_audits": [
+    "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/audit/baseline_summary_2026-04-17_dev15_no_marker_live.md",
+    "data/results/20260417_385b6e1/06_dev15_full_baseline_no_marker_live/analysis/wfdtq4vx_baseline_vs_recovery_stage2_comparison.md",
+    "data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1/audit/baseline_summary_2026-04-17_dev15_repaired_diagnostic_baseline.md"
+  ],
+  "baseline_lookup_aliases": [
+    "baseline_20260417_dev15_repaired_diagnostic_v1",
+    "2026-04-17 DEV15 repaired diagnostic baseline",
+    "current DEV15 diagnostic baseline",
+    "current baseline for debugging"
+  ]
+}

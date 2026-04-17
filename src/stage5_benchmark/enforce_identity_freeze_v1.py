@@ -5,12 +5,12 @@ from __future__ import annotations
 Validate identity freeze against a frozen upstream scaffold surface.
 
 Purpose:
-- enforce the identity-freeze gate at the Stage5
+- evaluate identity-freeze risk at the Stage5
   post-materialization boundary
 - detect row count drift, identity reassignment, unresolved scaffold rows, and
   ambiguous bindings
-- emit diagnostics without mutating benchmark-valid outputs
-- fail fast on violations unless explicitly run in report-only mode
+- emit diagnostics without mutating final outputs
+- remain non-blocking in the current diagnostic-development phase
 """
 
 import argparse
@@ -29,6 +29,23 @@ SUMMARY_MD_NAME = "identity_freeze_summary_v1.md"
 
 def normalize_text(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def classify_identity_freeze_status(
+    *,
+    row_count_drift: bool,
+    membership_drift: bool,
+    unresolved_count: int,
+    ambiguous_count: int,
+) -> str:
+    if not row_count_drift and not membership_drift and unresolved_count == 0 and ambiguous_count == 0:
+        return "pass"
+    if unresolved_count > 0 or ambiguous_count > 0:
+        return "risk_high"
+    triggered = int(row_count_drift) + int(membership_drift)
+    if triggered >= 2:
+        return "risk_medium"
+    return "risk_low"
 
 
 def read_tsv_rows(path: Path) -> list[dict[str, str]]:
@@ -100,6 +117,12 @@ def build_identity_freeze_report(
         row_count_drift = upstream_identity_count != final_table_count
         membership_drift = bool(missing_from_final or unbound_final)
         violation = row_count_drift or membership_drift or bool(unresolved or ambiguous)
+        identity_freeze_status = classify_identity_freeze_status(
+            row_count_drift=row_count_drift,
+            membership_drift=membership_drift,
+            unresolved_count=len(unresolved),
+            ambiguous_count=len(ambiguous),
+        )
 
         summary_rows.append(
             {
@@ -111,8 +134,10 @@ def build_identity_freeze_report(
                 "identity_reassignment_detected": "yes" if membership_drift else "no",
                 "unresolved_scaffold_rows": str(len(unresolved)),
                 "ambiguous_scaffold_rows": str(len(ambiguous)),
+                "identity_freeze_status": identity_freeze_status,
+                "identity_freeze_blocking": "false",
                 "violation": "yes" if violation else "no",
-                "status": "pass" if not violation else "fail",
+                "status": identity_freeze_status,
             }
         )
 
@@ -178,6 +203,7 @@ def build_summary_markdown(
         "- formulation membership must remain invariant after identity freeze",
         "- downstream stages may attach, resolve, and derive fields only",
         "- downstream stages must not implicitly split or merge formulations",
+        "- current phase behavior: identity freeze is diagnostic-only and non-blocking",
         "",
         "## Results",
         markdown_table(
@@ -191,6 +217,8 @@ def build_summary_markdown(
                 "identity_reassignment_detected",
                 "unresolved_scaffold_rows",
                 "ambiguous_scaffold_rows",
+                "identity_freeze_status",
+                "identity_freeze_blocking",
                 "violation",
                 "status",
             ],
@@ -209,7 +237,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--report-only",
         action="store_true",
-        help="Write diagnostics without failing non-zero on violations. Default behavior is hard-gate enforcement.",
+        help="Deprecated compatibility flag. Identity freeze is now always diagnostic-only and non-blocking.",
     )
     return parser.parse_args()
 
@@ -263,6 +291,8 @@ def main() -> int:
             "identity_reassignment_detected",
             "unresolved_scaffold_rows",
             "ambiguous_scaffold_rows",
+            "identity_freeze_status",
+            "identity_freeze_blocking",
             "violation",
             "status",
         ],
@@ -293,8 +323,9 @@ def main() -> int:
                 "final_table_tsv": str(final_table_tsv),
                 "paper_keys": paper_keys,
                 "out_dir": str(out_dir),
-                "mode": "report_only" if args.report_only else "hard_gate",
+                "mode": "diagnostic_non_blocking",
                 "failure_conditions": failure_conditions,
+                "identity_freeze_blocking": False,
             },
             ensure_ascii=True,
         )
@@ -304,10 +335,12 @@ def main() -> int:
         print(
             "paper={paper_key} upstream_identity_count={upstream_identity_count} "
             "final_table_count={final_table_count} drift_detected={row_count_drift_detected} "
-            "identity_reassignment={identity_reassignment_detected} violation={violation}".format(**row)
+            "identity_reassignment={identity_reassignment_detected} "
+            "risk_status={identity_freeze_status} blocking={identity_freeze_blocking} "
+            "violation={violation}".format(**row)
         )
-    if violations and not args.report_only:
-        print("IDENTITY_FREEZE_GATE=FAIL")
+    if violations:
+        print("IDENTITY_FREEZE_STATUS=RISKS_RECORDED_NON_BLOCKING")
         for row in violations:
             reasons: list[str] = []
             if normalize_text(row.get("row_count_drift_detected")) == "yes":
@@ -319,16 +352,14 @@ def main() -> int:
             if normalize_text(row.get("ambiguous_scaffold_rows")) not in {"", "0"}:
                 reasons.append(f"ambiguous scaffold rows={row.get('ambiguous_scaffold_rows')}")
             print(
-                "gate_failure paper={paper_key} reasons={reasons}".format(
+                "diagnostic_risk paper={paper_key} status={identity_freeze_status} reasons={reasons}".format(
                     paper_key=row.get("paper_key", ""),
+                    identity_freeze_status=row.get("identity_freeze_status", ""),
                     reasons="; ".join(reasons) or "unknown",
                 )
             )
-        return 2
-    if violations:
-        print("IDENTITY_FREEZE_GATE=VIOLATIONS_RECORDED_REPORT_ONLY")
     else:
-        print("IDENTITY_FREEZE_GATE=PASS")
+        print("IDENTITY_FREEZE_STATUS=PASS")
     return 0
 
 

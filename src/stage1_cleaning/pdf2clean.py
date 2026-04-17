@@ -113,6 +113,44 @@ def load_local_stage1_path_remap_config() -> Dict[str, str]:
     return _LOCAL_STAGE1_PATHS_CACHE
 
 
+def remap_stage1_source_path(raw_value: str, cfg: Dict[str, str]) -> Optional[Path]:
+    """
+    Remap a manifest source path across machines while preserving the
+    manifest-backed relative tail under the Zotero storage root.
+
+    The authoritative manifest may carry Windows-style absolute paths even when
+    Stage1 runs on macOS/Linux. In those cases we cannot rely on pathlib's
+    native `.relative_to()` semantics alone, because POSIX Path objects treat
+    `C:\\...` strings as regular relative path text. We therefore do a narrow
+    storage-root prefix remap using normalized separators, then return a local
+    Path for existence checks and downstream reads.
+    """
+    old_root = str(cfg.get("old_zotero_storage_root", "") or "").strip()
+    new_root = str(cfg.get("new_zotero_storage_root", "") or "").strip()
+    if not old_root or not new_root:
+        return None
+
+    raw_norm = raw_value.replace("\\", "/").strip()
+    old_norm = old_root.replace("\\", "/").strip().rstrip("/")
+    if not raw_norm or not old_norm:
+        return None
+
+    raw_cmp = raw_norm.lower()
+    old_cmp = old_norm.lower()
+    if raw_cmp == old_cmp:
+        relative_tail = ""
+    elif raw_cmp.startswith(old_cmp + "/"):
+        relative_tail = raw_norm[len(old_norm):].lstrip("/")
+    else:
+        return None
+
+    remapped_path = Path(new_root)
+    if relative_tail:
+        for part in [segment for segment in relative_tail.split("/") if segment]:
+            remapped_path = remapped_path / part
+    return remapped_path
+
+
 def resolve_stage1_source_path(path_value: str) -> Optional[Path]:
     """
     Resolve one manifest-backed Stage1 source path with old-path-first behavior.
@@ -138,14 +176,9 @@ def resolve_stage1_source_path(path_value: str) -> Optional[Path]:
     if not cfg:
         return original_path
 
-    old_root = Path(cfg["old_zotero_storage_root"])
-    new_root = Path(cfg["new_zotero_storage_root"])
-    try:
-        relative_tail = original_path.relative_to(old_root)
-    except ValueError:
+    remapped_path = remap_stage1_source_path(raw_value, cfg)
+    if remapped_path is None:
         return original_path
-
-    remapped_path = new_root / relative_tail
     if remapped_path.exists():
         return remapped_path
     return original_path

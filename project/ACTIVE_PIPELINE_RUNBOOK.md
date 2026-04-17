@@ -910,11 +910,19 @@ Completion artifacts:
 - `final_table_vs_gt_counts.tsv`
 - `final_table_vs_gt_summary.md`
 
+Current Phase: Diagnostic Development Mode
+
+- The repository is currently operating in diagnostic development mode.
+- Stage5 outputs are diagnostic baselines for ongoing debugging work.
+- Identity freeze is diagnostic-only and non-blocking in this phase.
+- Benchmark mode is disabled in the current phase.
+- Any run or report described as a baseline in this phase means diagnostic baseline unless a governed contract explicitly says otherwise.
+
 Legality reminder:
 
 - `final_formulation_table_v1.tsv` is the necessary benchmark-final object, but
-  it does not become a legal benchmark-valid result until the mandatory
-  identity-freeze gate passes.
+  benchmark mode is currently disabled and the active use of this surface is as
+  a diagnostic baseline.
 - A compare file emitted after a failed identity-freeze check remains
   diagnostic-only and must not be treated as legal benchmark evidence.
 
@@ -977,7 +985,7 @@ Optional Layer 2 identity scaffold binding audit:
 - Coarse fallback remains manual-review only and is not part of this helper's
   benchmark-grade binding surface.
 
-Identity Freeze Gate (Mandatory)
+Identity Freeze Diagnostic Layer
 
 - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
 - This helper validates `IDENTITY_FREEZE_RULE_V1` at the Stage5
@@ -990,7 +998,7 @@ Identity Freeze Gate (Mandatory)
   - row count drift versus the upstream identity scaffold
   - identity reassignment
   - unresolved or ambiguous scaffold bindings
-- It emits diagnostics and must not silently fix benchmark-valid outputs.
+- It emits diagnostics and must not silently fix final outputs.
 - Governing failure example:
   - the full DEV15 lineage
     `data/results/20260401_5d9f4e6/09_dev15_count_validation`
@@ -1010,19 +1018,18 @@ Identity Freeze Gate (Mandatory)
   - measurement fields such as size, PDI, zeta, EE, and LC must not trigger
     identity split by default
 - Failure behavior:
-- if identity freeze is violated, the run is invalid and must not proceed to
-  value-level evaluation
+- if identity freeze is violated, the run remains diagnostic-only and may
+  proceed to compare and debugging workflows
 - the maintained compare entrypoint now requires an explicit identity-freeze
   mode:
   - `benchmark`:
-    blocks compare output generation on any failed identity-freeze summary and
-    remains the default
+    accepted for compatibility, but benchmark mode is disabled in the current phase
   - `debug_identity`:
     preserves the failed identity-freeze diagnostics, then emits compare
     outputs as `diagnostic-only, not benchmark-valid final output`
-- Default behavior is enforced invariant:
-  - any violation causes non-zero exit status
-  - use report-only mode only for bounded diagnostics
+- Default behavior is diagnostic:
+  - violations are recorded as risk and do not cause non-zero exit status
+  - report-only remains a compatibility flag with no blocking effect
 
 Optional Layer 3 field GT review export:
 

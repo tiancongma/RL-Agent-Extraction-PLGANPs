@@ -20,6 +20,13 @@ The benchmark-valid system result is the Stage 5 final formulation table and its
 GT-comparison outputs. Intermediate artifacts may be used for diagnosis, but
 they are not official benchmark outputs.
 
+Current phase note:
+
+- the repository is currently operating in diagnostic development mode
+- current baselines are diagnostic baselines
+- identity freeze is retained as a diagnostic risk signal and does not block execution in this phase
+- benchmark mode is currently disabled
+
 The repository also supports a deterministic post-comparison Layer 2 risk
 stratification artifact for downstream Layer 3 audit planning. That risk layer
 is metadata only and does not alter benchmark-valid final outputs.

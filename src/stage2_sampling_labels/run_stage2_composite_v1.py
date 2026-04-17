@@ -13,11 +13,21 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 try:
-    from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
+    from src.utils.paths import (
+        DATA_CLEANED_INDEX_DIR,
+        DATA_RESULTS_DIR,
+        PROJECT_ROOT,
+        dataset_tables_root,
+    )
     from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
+    from src.utils.paths import (
+        DATA_CLEANED_INDEX_DIR,
+        DATA_RESULTS_DIR,
+        PROJECT_ROOT,
+        dataset_tables_root,
+    )
     from src.utils.run_id import resolve_results_write_target
 
 
@@ -54,6 +64,105 @@ def run_command(command: list[str]) -> None:
 def repo_path(value: str) -> Path:
     path = Path(value)
     return path if path.is_absolute() else (PROJECT_ROOT / path).resolve()
+
+
+def normalize_text(value: str) -> str:
+    return str(value or "").strip()
+
+
+def normalize_key(row: dict[str, str]) -> str:
+    return normalize_text(row.get("key") or row.get("paper_key") or row.get("zotero_key"))
+
+
+def infer_text_source_type(text_path: str) -> str:
+    lower = normalize_text(text_path).lower()
+    if lower.endswith(".html.txt"):
+        return "html"
+    if lower.endswith(".pdf.txt"):
+        return "pdf"
+    return ""
+
+
+def load_key2txt_map(path: Path) -> dict[str, str]:
+    if not path.exists():
+        raise FileNotFoundError(f"Authoritative key2txt surface not found: {path}")
+    out: dict[str, str] = {}
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle, delimiter="\t")
+        for row in reader:
+            if len(row) < 2:
+                continue
+            key = normalize_text(row[0])
+            text_path = normalize_text(row[1])
+            if key and text_path:
+                out[key] = text_path
+    return out
+
+
+def resolve_project_file(path_value: str) -> Path:
+    path = Path(path_value)
+    return path if path.is_absolute() else (PROJECT_ROOT / path).resolve()
+
+
+def to_repo_rel(path_value: Path) -> str:
+    return str(path_value.resolve().relative_to(PROJECT_ROOT)).replace("\\", "/")
+
+
+def refresh_stage2_text_bindings(selected_rows: list[dict[str, str]], key2txt_path: Path) -> list[dict[str, str]]:
+    key2txt_map = load_key2txt_map(key2txt_path)
+    refreshed_rows: list[dict[str, str]] = []
+    missing_bindings: list[str] = []
+    missing_files: list[str] = []
+
+    for row in selected_rows:
+        refreshed = dict(row)
+        key = normalize_key(row)
+        text_path = key2txt_map.get(key, "")
+        if not key or not text_path:
+            missing_bindings.append(key or "<missing_key>")
+            refreshed_rows.append(refreshed)
+            continue
+        resolved_text_path = resolve_project_file(text_path)
+        if not resolved_text_path.exists():
+            missing_files.append(f"{key}: {resolved_text_path}")
+        refreshed["text_path"] = text_path
+        refreshed["text_source_type"] = infer_text_source_type(text_path)
+        refreshed["text_available"] = "yes"
+        refreshed_rows.append(refreshed)
+
+    if missing_bindings:
+        raise FileNotFoundError(
+            "Selected Stage2 scope is missing authoritative key2txt bindings for: "
+            + ", ".join(sorted(missing_bindings))
+        )
+    if missing_files:
+        raise FileNotFoundError(
+            "Selected Stage2 scope resolved to missing clean-text files: "
+            + "; ".join(sorted(missing_files))
+        )
+    return refreshed_rows
+
+
+def refresh_stage2_table_bindings(selected_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    refreshed_rows: list[dict[str, str]] = []
+    for row in selected_rows:
+        refreshed = dict(row)
+        key = normalize_key(row)
+        dataset_id = normalize_text(row.get("dataset_id"))
+        if not dataset_id or not key:
+            refreshed["table_dir"] = ""
+            refreshed["table_available"] = "no"
+            refreshed_rows.append(refreshed)
+            continue
+        table_dir = dataset_tables_root(dataset_id) / key
+        if table_dir.exists():
+            refreshed["table_dir"] = to_repo_rel(table_dir)
+            refreshed["table_available"] = "yes"
+        else:
+            refreshed["table_dir"] = ""
+            refreshed["table_available"] = "no"
+        refreshed_rows.append(refreshed)
+    return refreshed_rows
 
 
 def parse_args() -> argparse.Namespace:
@@ -276,6 +385,10 @@ def main() -> None:
     if run_dir_kind == "v2_child_execution":
         bucket_dir.mkdir(parents=True, exist_ok=True)
     run_dir.mkdir(parents=True, exist_ok=False)
+
+    key2txt_tsv = (DATA_CLEANED_INDEX_DIR / "key2txt.tsv").resolve()
+    selected_rows = refresh_stage2_text_bindings(selected_rows, key2txt_tsv)
+    selected_rows = refresh_stage2_table_bindings(selected_rows)
 
     selected_manifest_tsv = run_dir / "targeted_manifest.tsv"
     if selected_rows:

@@ -252,9 +252,14 @@ def inheritance_marker_risk_reason(marker: dict[str, Any]) -> str:
 
 
 def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) -> dict[str, Any]:
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    table_id = normalize_text(scope.get("table_id"))
+    scope_id = normalize_text(scope.get("scope_id"))
+    if not scope_id and document_key and table_id:
+        scope_id = f"{document_key}__table_formulation_scope__{normalize_token(table_id)}"
     normalized = {
-        "scope_id": normalize_text(scope.get("scope_id")),
-        "table_id": normalize_text(scope.get("table_id")),
+        "scope_id": scope_id,
+        "table_id": table_id,
         "table_path": normalize_text(scope.get("table_path")),
         "table_asset_id": normalize_text(scope.get("table_asset_id")),
         "variable_name": normalize_text(scope.get("variable_name")),

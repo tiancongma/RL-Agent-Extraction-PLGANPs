@@ -69,14 +69,23 @@ Current clarification (`2026-04-08`):
 The canonical benchmark object is the Stage 5 final formulation table. No
 intermediate artifact may be reported as the system result against GT.
 
+Current Phase: Diagnostic Development Mode
+
+- The pipeline is currently in diagnostic development mode.
+- Stage5 outputs are diagnostic baselines for debugging work.
+- Identity freeze is diagnostic-only and non-blocking in this phase.
+- Benchmark mode is disabled in the current phase.
+- Any reference to a baseline in this phase means diagnostic baseline unless a governed contract explicitly narrows it further.
+
 Benchmark-legality clarification:
 
 - Stage5 final-table materialization is necessary but not sufficient for a
   benchmark-valid run.
-- The hard legality boundary is the mandatory identity-freeze gate plus the
-  separate GT compare node.
+- The GT compare node remains separate.
+- In the current diagnostic-development phase, identity freeze remains a
+  visible risk layer but does not hard-block execution.
 - A full DEV15 lineage can therefore reach Stage5 final-table materialization
-  and still remain diagnostic-only if the identity-freeze contract fails.
+  and remain diagnostic-only if identity-freeze risk is present.
 
 Fine-grained governance mapping:
 
@@ -989,29 +998,28 @@ Stage completion artifact:
 
 Consumed by downstream stage:
 
-- the mandatory identity freeze gate
+- the identity freeze diagnostic risk layer
 
-Mandatory post-Stage5 gate:
+Post-Stage5 diagnostic layer:
 
 - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
 - required inputs:
   - upstream identity scaffold surface
   - `final_formulation_table_v1.tsv`
 - required behavior:
-  - fail the run on any:
+  - record diagnostic risk on any:
     - row count drift
     - identity reassignment
     - unresolved scaffold binding
     - ambiguous scaffold binding
-- if the gate fails, the run is invalid for downstream value-level evaluation
-  and reviewer-facing export
-- only after the gate passes may the pipeline continue to:
+- if identity risk is present, the run remains diagnostic-only but may
+  continue to:
   - comparison
   - audit-ready export
   - Layer 3 review/evaluation surfaces
 - maintained compare-mode clarification:
   - `benchmark` mode:
-    hard-block compare outputs when identity freeze fails
+    accepted for compatibility, but benchmark mode is disabled in the current phase
   - `debug_identity` mode:
     allows diagnostic-only compare continuation from the same Stage5 final
     table while preserving the failed identity-freeze status explicitly
@@ -1057,9 +1065,8 @@ Comparison outputs:
 
 Compare contract:
 
-- benchmark mode is the default and remains benchmark-valid only when identity
-  freeze passes
-- explicit `debug_identity` mode may continue after failed identity freeze for
+- diagnostic mode is the active compare mode in the current phase
+- explicit `debug_identity` mode may continue after identity-freeze risk for
   diagnostic-only count comparison
 - diagnostic compare continuation must never be reported as benchmark-valid
 

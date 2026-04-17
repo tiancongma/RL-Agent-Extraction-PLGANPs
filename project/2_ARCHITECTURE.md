@@ -676,6 +676,14 @@ Provide partial, human-curated labels for comparison and review.
 
 ## Stage 5 - Final Formulation Closure And Benchmark Comparison
 
+### Current Phase: Diagnostic Development Mode
+
+- The repository is currently operating in diagnostic development mode.
+- In this phase, Stage5 outputs are diagnostic baselines for debugging work.
+- Identity freeze is a diagnostic-only, non-blocking risk signal.
+- Benchmark mode is disabled in the current phase.
+- Any repository reference to a baseline in this phase means diagnostic baseline unless a governed contract explicitly states otherwise.
+
 ### Purpose
 Convert candidate formulation-instance outputs into final one-row-per-
 formulation records and compare only those final records to GT.
@@ -688,9 +696,9 @@ Benchmark-validity clarification:
 
 - Stage5 final-table generation is necessary but not sufficient for
   benchmark-valid reporting.
-- Benchmark legality additionally requires:
-  - identity-freeze pass
-  - the separate GT compare node
+- Benchmark legality additionally requires the separate GT compare node.
+- In the current diagnostic-development phase, identity freeze remains visible
+  as a risk signal but does not block execution.
 - The full DEV15 run
   `data/results/20260401_5d9f4e6/09_dev15_count_validation`
   reached Stage5 final-table materialization but failed the mandatory
@@ -719,12 +727,11 @@ Benchmark-validity clarification:
     source-faithful final closure, identity-preserving filtering, explicit
     Stage3-resolved field carry-through, preservation of excluded
     downstream/post-processing descendant records in a linked lower-level
-    surface, hard identity freeze, and GT compare
+    surface, diagnostic identity-freeze risk reporting, and GT compare
   - legality rule:
-    `final_formulation_table_v1.tsv` becomes benchmark-valid only after the
-    mandatory identity-freeze contract passes; final-table materialization
-    alone does not legalize downstream compare, reviewer export, or
-    modeling-ready surfaces
+    `final_formulation_table_v1.tsv` is currently managed as a diagnostic
+    baseline surface; final-table materialization legalizes diagnostic compare
+    in the current phase, while benchmark mode remains disabled
   - primary identity rule:
     benchmark-facing formulation identity is one row per independently
     reported formulation identity; downstream/post-processing descendants do

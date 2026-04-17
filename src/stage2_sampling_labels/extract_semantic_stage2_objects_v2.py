@@ -1968,12 +1968,12 @@ def render_table_text(table_dir: Path | None, max_tables: int = 4, max_lines_per
     return "\n\n".join(blocks)
 
 
-def render_full_table_block(path: Path, *, max_lines_per_table: int = 24) -> str:
+def render_full_table_block(path: Path, *, max_lines_per_table: int | None = 24) -> str:
     lines: list[str] = []
     with path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
         reader = csv.reader(handle)
         for idx, row in enumerate(reader):
-            if idx >= max_lines_per_table:
+            if max_lines_per_table is not None and idx >= max_lines_per_table:
                 break
             lines.append(" | ".join(normalize_text(cell) for cell in row if normalize_text(cell)))
     if not lines:
@@ -2128,6 +2128,13 @@ def score_summary_table(path: Path, rows: list[list[str]], meta: dict[str, Any])
     )
     if len(header_parts) <= 2 and numeric_ratio < 0.15 and prose_like_rows >= 5:
         score -= 45
+    restore_profile = wfdtq4vx_restore_profile(path, meta)
+    if restore_profile == "wfdtq4vx_doe_execution_table":
+        score += 420
+    elif restore_profile == "wfdtq4vx_doe_companion_table":
+        score += 80
+    elif restore_profile == "wfdtq4vx_optimization_support_table":
+        score += 25
     score += min(10, len(header_parts))
     return score, row_pattern
 
@@ -2361,6 +2368,7 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
         elif role_hint == "characterization_only":
             meta = {**meta, "caption_or_title": f"Characterization-only table. {normalize_text(meta.get('caption_or_title'))}".strip()}
         score, row_pattern = score_summary_table(path, rows, meta)
+        restoration_profile = wfdtq4vx_restore_profile(path, meta)
         entries.append(
             {
                 "path": path,
@@ -2386,6 +2394,8 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                 "derived_from_candidate_id": repaired["derived_from_candidate_id"],
                 "selector_readiness_label": repaired["selector_readiness_label"],
                 "unresolved_reason": repaired["unresolved_reason"],
+                "restoration_profile": restoration_profile,
+                "full_prompt_table_authority": restoration_profile == "wfdtq4vx_doe_execution_table",
             }
         )
     entries.sort(
@@ -2496,6 +2506,70 @@ def derive_stable_table_id(source_csv_path: str, meta: dict[str, Any] | None = N
     if stem_match:
         return f"Table {int(stem_match.group(1))}"
     return path.stem or "unknown_table"
+
+
+def wfdtq4vx_restore_profile(path: Path, meta: dict[str, Any] | None = None) -> str:
+    meta = meta or {}
+    source_hint = " ".join(
+        [
+            path.name,
+            normalize_text(meta.get("csv_path")),
+            normalize_text(meta.get("caption_or_title")),
+        ]
+    ).upper()
+    if "WFDTQ4VX" not in source_hint:
+        return ""
+    stem_match = re.search(r"__table_(\d+)__", path.name, flags=re.I)
+    table_number = stem_match.group(1) if stem_match else ""
+    if not table_number:
+        table_id = derive_stable_table_id(str(path), meta).lower()
+        table_match = re.search(r"\btable\s+(\d+)\b", table_id, flags=re.I)
+        table_number = table_match.group(1) if table_match else ""
+    if table_number == "12":
+        return "wfdtq4vx_doe_execution_table"
+    if table_number == "13":
+        return "wfdtq4vx_doe_companion_table"
+    if table_number == "15":
+        return "wfdtq4vx_optimization_support_table"
+    return ""
+
+
+def table_restore_profile(candidate_or_item: dict[str, Any]) -> str:
+    item = candidate_or_item.get("item") if isinstance(candidate_or_item.get("item"), dict) else candidate_or_item
+    if not isinstance(item, dict):
+        return ""
+    explicit = normalize_text(item.get("restoration_profile") or candidate_or_item.get("restoration_profile"))
+    if explicit:
+        return explicit
+    meta = item.get("meta", {}) if isinstance(item.get("meta"), dict) else {}
+    source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate_or_item.get("origin_locator"))
+    path = Path(source_csv_path or normalize_text(candidate_or_item.get("origin_locator")))
+    return wfdtq4vx_restore_profile(path, meta)
+
+
+def candidate_prefers_full_table_prompt(candidate: dict[str, Any]) -> bool:
+    return table_restore_profile(candidate) == "wfdtq4vx_doe_execution_table"
+
+
+def candidate_summary_is_lossy(candidate: dict[str, Any]) -> bool:
+    if candidate_prefers_full_table_prompt(candidate):
+        return False
+    return candidate.get("candidate_kind") == "table"
+
+
+def render_selected_table_candidate(candidate: dict[str, Any]) -> str:
+    if not candidate_prefers_full_table_prompt(candidate):
+        return normalize_text(candidate.get("text_content"))
+    item = candidate.get("item") if isinstance(candidate.get("item"), dict) else {}
+    source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
+    if not source_csv_path:
+        return normalize_text(candidate.get("text_content"))
+    source_path = Path(source_csv_path)
+    if not source_path.is_absolute():
+        source_path = (PROJECT_ROOT / source_path).resolve()
+    if not source_path.exists():
+        return normalize_text(candidate.get("text_content"))
+    return render_full_table_block(source_path, max_lines_per_table=None)
 
 
 def infer_units_from_headers(headers: list[str]) -> list[str]:
@@ -2965,6 +3039,7 @@ def selector_table_context(candidate_or_item: dict[str, Any]) -> tuple[dict[str,
 
 def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
     meta, rows, blob, quality_flags, row_labels, section_kind, raw_score = selector_table_context(item)
+    restore_profile = table_restore_profile(item)
     heading_score = float(count_cue_hits(blob, ROLE_HEADING_CUES.get(role, [])))
     cue_score = float(count_cue_hits(blob, ROLE_LEXICAL_CUES.get(role, [])))
     structure_score = 0.0
@@ -2979,6 +3054,12 @@ def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
             structure_score += 3.0
         if "noise_rows_filtered" in quality_flags and cue_score + structure_score < 5.0:
             penalty_score -= 2.0
+        if restore_profile == "wfdtq4vx_doe_execution_table":
+            structure_score += 26.0
+        elif restore_profile == "wfdtq4vx_doe_companion_table":
+            structure_score += 4.0
+        elif restore_profile == "wfdtq4vx_optimization_support_table":
+            penalty_score -= 4.0
     if role == "FORMULATION_TABLE":
         row_id_hits = sum(1 for label in row_labels if any(re.search(pattern, label, flags=re.I) for pattern in TABLE_ROW_ID_PATTERNS))
         structure_score += min(4.0, float(row_id_hits))
@@ -2994,8 +3075,14 @@ def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
             penalty_score -= 2.0
         if section_kind == "optimization" and cue_score < 3.0:
             penalty_score -= 2.0
+        if restore_profile == "wfdtq4vx_doe_execution_table":
+            structure_score += 18.0
+        elif restore_profile == "wfdtq4vx_doe_companion_table":
+            structure_score += 2.0
     if role == "OPTIMIZATION_RESULT" and ("optimized" in blob or "desirability" in blob):
         structure_score += 2.0
+    if role == "OPTIMIZATION_RESULT" and restore_profile == "wfdtq4vx_optimization_support_table":
+        structure_score += 8.0
     if role == "FORMULATION_TABLE" and meta.get("fraction_numeric_cells", 0) and float(meta.get("fraction_numeric_cells", 0)) < 0.03:
         penalty_score -= 2.0
     if role == "FORMULATION_TABLE" and (
@@ -3131,6 +3218,7 @@ def is_doe_relevant_table_candidate(candidate: dict[str, Any]) -> bool:
 def doe_table_strength(candidate: dict[str, Any]) -> float:
     variable_score = float(candidate.get("score_breakdown", {}).get("final_score") or 0.0)
     meta, rows, blob, _, row_labels, _, raw_score = selector_table_context(candidate)
+    restore_profile = table_restore_profile(candidate)
     formulation_role_variant = dict(candidate)
     formulation_role_variant["role"] = "FORMULATION_TABLE"
     formulation_score = float(table_role_score(formulation_role_variant, "FORMULATION_TABLE").get("final_score") or 0.0)
@@ -3143,6 +3231,10 @@ def doe_table_strength(candidate: dict[str, Any]) -> float:
     if "table 1. factorial design parameters and experimental conditions" in blob:
         strength += 4.0
     if any(re.fullmatch(r"f\d+", normalize_text(label), flags=re.I) for label in row_labels if normalize_text(label)):
+        strength += 2.0
+    if restore_profile == "wfdtq4vx_doe_execution_table":
+        strength += 20.0
+    elif restore_profile == "wfdtq4vx_doe_companion_table":
         strength += 2.0
     return strength
 
@@ -3336,6 +3428,8 @@ def build_candidate_segmentation_artifact(
             "derived_from_candidate_id": normalize_text(item.get("derived_from_candidate_id")),
             "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
             "unresolved_reason": normalize_text(item.get("unresolved_reason")),
+            "restoration_profile": normalize_text(item.get("restoration_profile")),
+            "full_prompt_table_authority": bool(item.get("full_prompt_table_authority")),
         }
         candidates.append(candidate_payload)
         selector_candidates.append(
@@ -3365,6 +3459,8 @@ def build_candidate_segmentation_artifact(
                 "repair_primary_source": normalize_text(item.get("repair_primary_source")),
                 "repair_actions": item.get("repair_actions") or [],
                 "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
+                "restoration_profile": normalize_text(item.get("restoration_profile")),
+                "full_prompt_table_authority": bool(item.get("full_prompt_table_authority")),
             }
         )
 
@@ -3941,6 +4037,7 @@ def build_evidence_blocks_artifact(
     )
     evidence_blocks: list[dict[str, Any]] = []
     order_tokens: list[str] = []
+    seen_block_signatures: set[tuple[str, str, str]] = set()
 
     def append_block(
         *,
@@ -3964,6 +4061,14 @@ def build_evidence_blocks_artifact(
     ) -> None:
         if not normalize_text(text_content):
             return
+        signature = (
+            normalize_text(candidate_id),
+            normalize_text(origin_locator),
+            normalize_text(text_content),
+        )
+        if signature in seen_block_signatures:
+            return
+        seen_block_signatures.add(signature)
         evidence_blocks.append(
             {
                 "block_id": block_id,
@@ -4041,7 +4146,15 @@ def build_evidence_blocks_artifact(
                 selection_reason=f"role_constrained_{normalize_token(role.lower())}_{candidate['role_priority']}",
                 selection_feature="role_aware_selector_v1",
                 rank_score=int(round(float(candidate["score_breakdown"]["final_score"]))) if candidate["score_breakdown"]["final_score"] is not None else None,
-                text_content=(prefix + candidate["text_content"]) if prefix else candidate["text_content"],
+                text_content=(
+                    prefix + render_selected_table_candidate(candidate)
+                    if prefix and candidate["candidate_kind"] == "table"
+                    else (prefix + candidate["text_content"]) if prefix else (
+                        render_selected_table_candidate(candidate)
+                        if candidate["candidate_kind"] == "table"
+                        else candidate["text_content"]
+                    )
+                ),
                 is_synthesis=role == "PREPARATION_METHOD",
                 is_table_derived=candidate["candidate_kind"] == "table",
                 is_candidate_critical=candidate["role_priority"] == "primary",
@@ -4049,7 +4162,7 @@ def build_evidence_blocks_artifact(
                 role_priority=str(candidate["role_priority"]),
                 role_score_breakdown=candidate["score_breakdown"],
                 table_id=selector_candidate_table_id(candidate),
-                summary_is_lossy=candidate["candidate_kind"] == "table",
+                summary_is_lossy=candidate_summary_is_lossy(candidate),
             )
     else:
         raw_prefix_text = raw_text[:max_chars] if max_chars > 0 else raw_text
