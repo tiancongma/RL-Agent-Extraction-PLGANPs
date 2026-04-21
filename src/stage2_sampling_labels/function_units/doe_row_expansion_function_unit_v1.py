@@ -151,54 +151,121 @@ def _variable_role_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return roles
 
 
-def _resolve_semantic_stage2_root(document: dict[str, Any]) -> Path | None:
+def _resolve_authority_payload_root(document: dict[str, Any]) -> Path | None:
+    authority_payload_root = normalize_text(document.get("authority_payload_root"))
+    if not authority_payload_root:
+        return None
+    path = Path(authority_payload_root)
+    if not path.is_absolute():
+        path = (REPO_ROOT / path).resolve()
+    return path
+
+
+def _resolve_legacy_payload_root(document: dict[str, Any]) -> Path | None:
     raw_response_path = normalize_text(document.get("source_raw_response_path"))
-    if raw_response_path:
-        candidate = Path(raw_response_path)
-        if not candidate.is_absolute():
-            candidate = (REPO_ROOT / candidate).resolve()
-        parent = candidate.parent
-        if parent.name == "raw_responses":
-            return parent.parent
+    if not raw_response_path:
+        return None
+    candidate = Path(raw_response_path)
+    if not candidate.is_absolute():
+        candidate = (REPO_ROOT / candidate).resolve()
+    parent = candidate.parent
+    if parent.name == "raw_responses":
+        return parent.parent / NORMALIZED_TABLE_PAYLOADS_SUBDIR
     return None
 
 
-def _load_normalized_table_payloads(document: dict[str, Any]) -> list[dict[str, Any]]:
+def _load_normalized_table_payloads(document: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     if not document_key:
-        return []
-    semantic_root = _resolve_semantic_stage2_root(document)
-    if semantic_root is None:
-        return []
-    manifest_path = semantic_root / NORMALIZED_TABLE_PAYLOADS_SUBDIR / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+        return [], {
+            "reopen_source_type": "",
+            "reopen_resolution_status": "failed",
+            "reopen_failure_reason": "payload_locator_missing",
+            "normalized_payload_used": "no",
+        }
+    explicit_root = _resolve_authority_payload_root(document)
+    reopen_source_type = ""
+    if explicit_root is not None:
+        reopen_source_type = "normalized_table_payloads_explicit"
+        manifest_path = explicit_root / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+        if not manifest_path.exists():
+            return [], {
+                "reopen_source_type": reopen_source_type,
+                "reopen_resolution_status": "failed",
+                "reopen_failure_reason": "authority_root_missing",
+                "normalized_payload_used": "no",
+            }
+    else:
+        legacy_root = _resolve_legacy_payload_root(document)
+        if legacy_root is None:
+            return [], {
+                "reopen_source_type": "",
+                "reopen_resolution_status": "failed",
+                "reopen_failure_reason": "authority_root_missing",
+                "normalized_payload_used": "no",
+            }
+        reopen_source_type = "legacy_raw_response_derived"
+        manifest_path = legacy_root / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
     if not manifest_path.exists():
-        return []
+        return [], {
+            "reopen_source_type": reopen_source_type,
+            "reopen_resolution_status": "failed",
+            "reopen_failure_reason": "authority_root_missing",
+            "normalized_payload_used": "no",
+        }
     try:
         payload = json.loads(manifest_path.read_text(encoding="utf-8"))
     except Exception:
-        return []
-    return [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
+        return [], {
+            "reopen_source_type": reopen_source_type,
+            "reopen_resolution_status": "failed",
+            "reopen_failure_reason": "authority_root_missing",
+            "normalized_payload_used": "no",
+        }
+    items = [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
+    return items, {
+        "reopen_source_type": reopen_source_type,
+        "reopen_resolution_status": "resolved",
+        "reopen_failure_reason": "",
+        "normalized_payload_used": "yes" if items else "no",
+    }
 
 
 def _resolve_normalized_payload_for_scope(
     *,
     matching_scope: dict[str, Any],
     normalized_payloads: list[dict[str, Any]],
-) -> dict[str, Any] | None:
-    wanted_table_path = normalize_text(matching_scope.get("table_path")).replace("\\", "/").lower()
-    wanted_asset_id = normalize_text(matching_scope.get("table_asset_id")).lower()
+) -> tuple[dict[str, Any] | None, str]:
+    table_scope_locators = matching_scope.get("table_scope_locators") if isinstance(matching_scope.get("table_scope_locators"), dict) else {}
+    wanted_table_path = normalize_text(
+        table_scope_locators.get("source_table_reference") or matching_scope.get("source_table_reference") or matching_scope.get("table_path")
+    ).replace("\\", "/").lower()
+    wanted_asset_id = normalize_text(
+        table_scope_locators.get("source_table_asset_id") or matching_scope.get("source_table_asset_id") or matching_scope.get("table_asset_id")
+    ).lower()
     wanted_table_id = _normalize_table_label(matching_scope.get("table_id"))
+    candidate_matches: list[dict[str, Any]] = []
     for item in normalized_payloads:
         source_csv_path = normalize_text(item.get("source_csv_path")).replace("\\", "/").lower()
+        source_table_reference = normalize_text(item.get("source_table_reference")).replace("\\", "/").lower()
         source_table_id = _normalize_table_label(item.get("source_table_id"))
         source_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
-        if wanted_table_path and source_csv_path == wanted_table_path:
-            return item
+        if wanted_table_path and wanted_table_path in {source_csv_path, source_table_reference}:
+            candidate_matches.append(item)
+            continue
         if wanted_asset_id and source_asset_id == wanted_asset_id:
-            return item
+            candidate_matches.append(item)
+            continue
         if wanted_table_id and source_table_id == wanted_table_id:
-            return item
-    return None
+            candidate_matches.append(item)
+            continue
+    if len(candidate_matches) > 1:
+        return None, "multiple_candidate_payloads"
+    if len(candidate_matches) == 1:
+        return candidate_matches[0], ""
+    if not any([wanted_table_path, wanted_asset_id, wanted_table_id]):
+        return None, "payload_locator_missing"
+    return None, "authorized_target_unresolved"
 
 
 def resolve_authorized_doe_targets(
@@ -209,9 +276,10 @@ def resolve_authorized_doe_targets(
     boundary_map = _boundary_marker_map(document)
     variable_role_map = _variable_role_map(document)
     normalized_scopes = _table_scope_records(document)
-    normalized_payloads = _load_normalized_table_payloads(document)
+    normalized_payloads, reopen_binding = _load_normalized_table_payloads(document)
     targets: list[dict[str, Any]] = []
     unresolved_refs: list[str] = []
+    failure_reasons: list[str] = []
     for ref in carrier_refs:
         wanted = _normalize_table_label(ref)
         matching_scope = None
@@ -230,13 +298,15 @@ def resolve_authorized_doe_targets(
         if not table_asset_id and not normalize_text(matching_scope.get("table_id")):
             unresolved_refs.append(ref)
             continue
-        normalized_payload = _resolve_normalized_payload_for_scope(
+        normalized_payload, payload_failure_reason = _resolve_normalized_payload_for_scope(
             matching_scope=matching_scope,
             normalized_payloads=normalized_payloads,
         )
         normalized_csv_path = normalize_text(normalized_payload.get("normalized_csv_path")) if normalized_payload else ""
         if not normalized_payload or not normalized_csv_path:
             unresolved_refs.append(ref)
+            if payload_failure_reason:
+                failure_reasons.append(payload_failure_reason)
             continue
         execution_table_path = normalized_csv_path
         targets.append(
@@ -250,7 +320,10 @@ def resolve_authorized_doe_targets(
                 "scope_id": normalize_text(matching_scope.get("scope_id")),
                 "variable_role_present": "yes" if wanted in variable_role_map else "no",
                 "normalized_payload_path": normalized_csv_path,
-                "normalized_payload_used": "yes" if normalized_csv_path else "no",
+                "normalized_payload_used": reopen_binding.get("normalized_payload_used", "no"),
+                "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+                "reopen_resolution_status": reopen_binding.get("reopen_resolution_status", ""),
+                "reopen_failure_reason": "",
             }
         )
     binding = {
@@ -261,7 +334,10 @@ def resolve_authorized_doe_targets(
         ),
         "binding_success": bool(targets),
         "unresolved_authorized_target_refs": "|".join(unresolved_refs),
-        "normalized_payload_used": "yes" if any(normalize_text(item.get("normalized_payload_used")) == "yes" for item in targets) else "no",
+        "normalized_payload_used": "yes" if any(normalize_text(item.get("normalized_payload_used")) == "yes" for item in targets) else reopen_binding.get("normalized_payload_used", "no"),
+        "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+        "reopen_resolution_status": "resolved" if targets else reopen_binding.get("reopen_resolution_status", "failed"),
+        "reopen_failure_reason": "|".join(reason for reason in failure_reasons if reason) or reopen_binding.get("reopen_failure_reason", ""),
     }
     return targets, binding
 
@@ -299,10 +375,12 @@ def is_governed_doe_recovery_candidate_source(value: str) -> bool:
 
 
 def _parse_numeric_label(raw_label: str) -> str:
-    match = re.fullmatch(r"(\d{1,3})\s*\.?", normalize_text(raw_label))
-    if not match:
-        return ""
-    return str(int(match.group(1)))
+    normalized = normalize_text(raw_label).replace("−", "-").replace("–", "-")
+    for pattern in [r"(\d{1,3})\s*[\.\):]?", r"[Ff]\s*[- ]?(\d{1,3})\s*[\.\):]?"]:
+        match = re.fullmatch(pattern, normalized)
+        if match:
+            return str(int(match.group(1)))
+    return ""
 
 
 def prefer_governed_doe_rows_over_llm_numeric_rows(
@@ -451,7 +529,10 @@ def run_doe_row_expansion_function_unit(
             "resolved_execution_target": "",
             "binding_success": "no",
             "doe_expansion_attempted": "no",
-            "normalized_payload_used": "no",
+            "normalized_payload_used": binding["normalized_payload_used"],
+            "reopen_source_type": binding["reopen_source_type"],
+            "reopen_resolution_status": binding["reopen_resolution_status"],
+            "reopen_failure_reason": binding["reopen_failure_reason"] or "authorized_target_unresolved",
             "notes": notes,
         }
 
@@ -470,12 +551,14 @@ def run_doe_row_expansion_function_unit(
         title=normalize_text(document.get("title")),
         text_path=text_path,
     )
+    normalized_payloads, _ = _load_normalized_table_payloads(document)
     emitted_forms, artifact_rows, summary = enumerate_numbered_doe_candidates_for_explicit_tables(
         paper=paper,
         raw_text=raw_text,
         explicit_targets=authorized_targets,
         existing_forms=build_existing_forms_for_recovery(document),
         min_numbered_rows=numbered_doe_recovery_min_rows(),
+        normalized_payloads=normalized_payloads,
     )
 
     scope_ref = normalize_text(semantic_scope.get("scope_id")) or f"{document_key}__llm_declared_doe_scope__01"
@@ -541,7 +624,16 @@ def run_doe_row_expansion_function_unit(
             "resolved_execution_target": binding["resolved_execution_target"],
             "binding_success": "yes" if binding["binding_success"] else "no",
             "doe_expansion_attempted": "yes",
+            "doe_path_attempted": "yes",
+            "doe_rows_emitted": len(rows),
             "normalized_payload_used": binding["normalized_payload_used"],
+            "reopen_source_type": binding["reopen_source_type"],
+            "reopen_resolution_status": binding["reopen_resolution_status"],
+            "reopen_failure_reason": binding["reopen_failure_reason"],
+            "coding_table_used": normalize_text(summary.get("coding_table_used")),
+            "run_table_used": normalize_text(summary.get("run_table_used")),
+            "decode_status": normalize_text(summary.get("decode_status")) or "not_attempted",
+            "decode_failure_reason": normalize_text(summary.get("decode_failure_reason")),
             "text_mode": text_mode,
         }
     )

@@ -298,6 +298,8 @@ def main() -> None:
                 "doi": record["doi"],
                 "title": record["title"],
                 "source_evidence_artifact_path": to_repo_rel(evidence_path),
+                "authority_run_dir": str(artifact.get("authority_run_dir", "")).strip(),
+                "authority_payload_root": str(artifact.get("authority_payload_root", "")).strip(),
                 "prompt_sha256": prompt_sha256,
                 "ordered_block_order": ordered_block_order,
                 "prompt_text": prompt_text,
@@ -327,6 +329,8 @@ def main() -> None:
             {
                 "paper_key": record["key"],
                 "source_evidence_artifact_path": to_repo_rel(evidence_path),
+                "authority_run_dir": str(artifact.get("authority_run_dir", "")).strip(),
+                "authority_payload_root": str(artifact.get("authority_payload_root", "")).strip(),
                 "evidence_block_count": len(evidence_blocks),
                 "ordered_block_order": " > ".join(str(value) for value in ordered_block_order if str(value).strip()),
                 "prompt_length": len(prompt_text),
@@ -355,6 +359,8 @@ def main() -> None:
         [
             "paper_key",
             "source_evidence_artifact_path",
+            "authority_run_dir",
+            "authority_payload_root",
             "evidence_block_count",
             "ordered_block_order",
             "prompt_length",

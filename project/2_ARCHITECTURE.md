@@ -108,17 +108,23 @@ inside those coarse stages; it does not introduce new runtime namespaces.
     candidate blocks and preserved table authority.
   - selector authority is limited to conservative denoising, minimum evidence
     coverage, and bounded packing.
-  - candidate tables are classified only as `must_include`,
-    `optional_context`, or `hard_drop`.
-  - `must_include` table summaries must survive in neutral stable order and
-    must not be semantically reranked into one true table by deterministic
-    rules.
+  - irreversible table preservation is governed by a strict two-class rule:
+    `CONFIRMED_NOISE` or `PRESERVE`.
+  - rules must not decide whether a table is important and must not downrank,
+    suppress, or remove a table based on guessed semantic value.
+  - any non-noise table must remain preserved in the pre-LLM authority
+    surface, even if additional bounded summary-view labels are still carried
+    for observability.
 - `S2-3 Prompt assembly`
   - assemble prompt inputs from `evidence_blocks_v1.json` only.
   - must not reread clean text, rescore candidates, or perform new selection or
     ranking.
   - all LLM-facing table evidence at `S2-3` / `S2-4a` is summary-only; full
     tables must not be placed into the prompt surface.
+  - the maintained summary path is neutral across preserved tables; the main
+    residual risk is lossy compression, not primary-table reranking.
+  - header / column schema and first-column row-identity surfaces are the
+    primary summary contract; sample rows are optional aids only.
   - the LLM may see a lossy or compact summary of a table here, but this
     surface must never become the sole execution source of truth.
 - `S2-4a Prompt construction freeze boundary`
@@ -346,6 +352,11 @@ boundary:
   semantic target -> stable `table_id` -> preserved S2-2 full-table authority
   surface; Stage1 table assets may remain a reconstruction fallback inside
   S2-2a only and must not remain the downstream execution source of truth
+- authority-metadata boundary rule:
+  deterministic handles such as `authority_run_dir`,
+  `authority_payload_root`, and table-scope locators are execution-side
+  metadata, not LLM semantic content; replay compatibility should reattach
+  them through governed sidecars or reattachment surfaces
 - table-surface principle:
   the LLM sees a semantic-facing summary of a table, while deterministic
   execution operates on the preserved table entity bound to the same stable
@@ -357,13 +368,19 @@ boundary:
   `analysis/candidate_segmentation_debug_v1.tsv` is the maintained run-level
   surface for inspecting candidates before selector prioritization
 - selector rule:
-  the maintained S2-2 path now uses deterministic evidence-driven evidence
-  selection with conservative noise filtering, weak importance ordering, and
-  authoritative-table preference over proxy or fallback text
+  the maintained S2-2 path uses deterministic evidence-driven evidence
+  selection with conservative denoising, but irreversible table removal is
+  governed by a confirmed-noise-only rule
 - selection policy rule:
-  the selector is evidence-priority based rather than role-constrained and the
-  canonical artifact records compact per-block evidence metadata plus
-  suppression-aware selector debug state
+  the selector must not decide whether a table is important; if a table is not
+  confirmed pure noise, preserve it in the pre-LLM authority surface
+- summary-neutrality rule:
+  the maintained `S2-3` / `S2-4a` summary path is neutral across preserved
+  tables; the main residual risk is lossy compression rather than
+  cross-table importance bias
+- summary-structure rule:
+  header / column schema and first-column row-identity surfaces are the
+  primary summary contract; sample rows are optional aids only
 - success rule:
   the S2-2 artifact must distinguish `technical_status` from `design_status`
   so artifact emission is not mistaken for input-contract conformance

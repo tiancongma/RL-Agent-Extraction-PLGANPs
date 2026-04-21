@@ -11,6 +11,7 @@ from pathlib import Path
 
 try:
     from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
+        AUTHORITY_REATTACHMENT_SIDECAR_NAME,
         CONTRACT_TSV_NAME,
         EXECUTION_LEDGER_NAME,
         FUNCTION_UNIT_ACTIVATION_NAME,
@@ -27,6 +28,7 @@ try:
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
+        AUTHORITY_REATTACHMENT_SIDECAR_NAME,
         CONTRACT_TSV_NAME,
         EXECUTION_LEDGER_NAME,
         FUNCTION_UNIT_ACTIVATION_NAME,
@@ -110,6 +112,7 @@ def build_run_context(
     source_validation_status: str,
     source_s2_5_run_dir: Path,
     semantic_jsonl_path: Path,
+    authority_sidecar_path: Path,
     compat_dir: Path,
     projection_summary_path: Path,
     function_unit_activation_report_path: Path,
@@ -161,9 +164,11 @@ Benchmark reporting rule:
 - source_validation_status: `{source_validation_status}`
 - source_s2_5_run_dir: `{source_s2_5_run_dir}`
 - semantic_jsonl: `{semantic_jsonl_path}`
+- authority_reattachment_sidecar: `{authority_sidecar_path}`
 - input_contract_note:
   - this runner requires a passing `S2-6` validation report before projection
   - the semantic JSONL path is resolved from the `S2-6` validation surface
+  - authority reopen metadata is reattached from the deterministic S2-5 sidecar, not from LLM semantic content
   - this runner does not consume raw `S2-4b` responses
   - this runner does not perform semantic parsing or contract validation
   - this runner does not invoke any live model call
@@ -245,10 +250,13 @@ def main() -> None:
 
     source_s2_5_run_dir = repo_path(source_s2_5_run_dir_text)
     semantic_jsonl_path = repo_path(semantic_jsonl_text)
+    authority_sidecar_path = source_s2_5_run_dir / "semantic_stage2_objects" / AUTHORITY_REATTACHMENT_SIDECAR_NAME
     if not source_s2_5_run_dir.exists():
         raise FileNotFoundError(f"Upstream S2-5 run directory not found: {source_s2_5_run_dir}")
     if not semantic_jsonl_path.exists():
         raise FileNotFoundError(f"Upstream semantic JSONL not found: {semantic_jsonl_path}")
+    if not authority_sidecar_path.exists():
+        raise FileNotFoundError(f"Upstream authority reattachment sidecar not found: {authority_sidecar_path}")
 
     target = resolve_results_write_target(
         results_root=DATA_RESULTS_DIR,
@@ -274,6 +282,7 @@ def main() -> None:
         input_path=semantic_jsonl_path,
         output_dir=compat_dir,
         contract_path=contract_path,
+        authority_sidecar_path=authority_sidecar_path,
     )
     analysis_dir = run_dir / "analysis"
     function_unit_activation_report_path = analysis_dir / FUNCTION_UNIT_ACTIVATION_NAME
@@ -327,6 +336,7 @@ def main() -> None:
         source_validation_status=source_validation_status,
         source_s2_5_run_dir=source_s2_5_run_dir,
         semantic_jsonl_path=semantic_jsonl_path,
+        authority_sidecar_path=authority_sidecar_path,
         compat_dir=compat_dir,
         projection_summary_path=projection_summary_path,
         function_unit_activation_report_path=function_unit_activation_report_path,
@@ -356,6 +366,7 @@ def main() -> None:
             "source_validation_status": source_validation_status,
             "source_s2_5_run_dir": to_repo_rel(source_s2_5_run_dir),
             "semantic_jsonl": to_repo_rel(semantic_jsonl_path),
+            "authority_reattachment_sidecar": to_repo_rel(authority_sidecar_path),
         },
         "outputs": {
             "compat_dir": to_repo_rel(compat_dir),
@@ -401,6 +412,7 @@ def main() -> None:
     print(f"source_validation_report={source_validation_report_path}")
     print(f"source_s2_5_run_dir={source_s2_5_run_dir}")
     print(f"semantic_jsonl={semantic_jsonl_path}")
+    print(f"authority_reattachment_sidecar={authority_sidecar_path}")
     print(f"run_id={run_id}")
     print(f"run_dir={run_dir}")
     print(f"compat_dir={compat_dir}")

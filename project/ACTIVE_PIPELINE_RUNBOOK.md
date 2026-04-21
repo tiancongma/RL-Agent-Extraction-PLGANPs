@@ -407,6 +407,10 @@ Current implementation-status note:
 - The same maintained Stage2 path may replay saved raw responses without new
   LLM calls and rehydrate current live-v2 raw-response freezes back into the
   authoritative completed Stage2 artifact.
+- If the LLM-facing contract is unchanged, downstream deterministic contract
+  changes should prefer replay from frozen raw responses over fresh live
+  calls, provided the maintained replay path can lawfully reattach required
+  execution-side metadata.
 - `S2-6` contract validation now also has a dedicated maintained runner.
 - `S2-7` compatibility projection now also has a dedicated maintained runner.
 - The maintained Stage2 path should be read through the following internal
@@ -505,14 +509,17 @@ Current implementation-status note:
     - `must_include`
     - `optional_context`
     - `hard_drop`
+  - irreversible table-preservation policy is confirmed-noise-only:
+    - only confirmed pure noise may be hard-dropped
+    - if a table is not confirmed noise, it must remain preserved in the
+      pre-LLM authority surface
   - `must_include` table summaries survive into the evidence pack in neutral
     stable order and must not be semantically reranked into one true table by
     deterministic rules
-  - `hard_drop` is reserved for high-confidence noise only and must not be used
-    as a semantic veto on ambiguous tables
-  - selection is evidence-priority based rather than role-constrained, and
-    semantically overlapping proxy or fallback blocks may be suppressed when
-    authoritative evidence already exists
+  - `hard_drop` is reserved for confirmed pure noise only and must not be used
+    as an importance veto on ambiguous tables
+  - exact duplicate removal may remain, but semantic-importance suppression is
+    not a lawful reason to remove a preserved table
   - the canonical artifact records `selection_mode`, compact per-block
     evidence metadata, and selector-debug suppression summaries
   - the artifact records separate `technical_status` and `design_status`
@@ -524,6 +531,11 @@ Current implementation-status note:
   - it must not perform new selection or ranking
   - all table evidence passed into the LLM-facing prompt contract remains
     summary-only
+  - the maintained summary path is neutral across preserved tables; the main
+    residual risk is lossy summary compression rather than cross-table
+    importance bias
+  - header / column schema and first-column row identity surfaces are the
+    primary summary contract; sample rows are optional aids only
 - fine-grained frozen-substep ownership for current-cycle discoverability:
   - `S2-2a`
     - owner surface:
@@ -846,6 +858,11 @@ Maintained replay/rehydration rule:
 - The replayable raw-response directory is not itself authoritative; the
   authoritative downstream boundary is still the completed Stage2 artifact
   emitted by the same maintained composite Stage2 path.
+- Authority reopen handles such as `authority_run_dir`,
+  `authority_payload_root`, and table-scope locators are deterministic
+  execution-side metadata. They must not be treated as LLM semantic content
+  and should be recovered through governed sidecar or reattachment surfaces
+  during replay.
 
 Internal Stage2 intermediate:
 

@@ -35,7 +35,7 @@ What this tool does:
 
 What this tool does not do:
 - It does not call any LLM or external API.
-- It does not perform full DOE coded-level decoding.
+- It does not perform free-form DOE design-space expansion.
 - It does not replace the active Stage2 extractor.
 - It does not claim benchmark-valid final output.
 """
@@ -163,17 +163,46 @@ def read_table_rows(csv_path: Path) -> list[list[str]]:
     return rows
 
 
+def normalize_minus_signs(text: Any) -> str:
+    return normalize_text(text).replace("−", "-").replace("–", "-").replace("—", "-")
+
+
+def parse_formulation_label_info(cell_text: str) -> dict[str, Any] | None:
+    normalized = normalize_minus_signs(cell_text)
+    numeric_match = re.fullmatch(r"(\d{1,3})\s*[\.\):]?", normalized)
+    if numeric_match:
+        return {
+            "number": int(numeric_match.group(1)),
+            "label": normalize_text(cell_text),
+            "label_style": "numeric",
+        }
+    f_match = re.fullmatch(r"([Ff])\s*[- ]?(\d{1,3})\s*[\.\):]?", normalized)
+    if f_match:
+        return {
+            "number": int(f_match.group(2)),
+            "label": f"{f_match.group(1).upper()}{int(f_match.group(2))}",
+            "label_style": "f_numeric",
+        }
+    return None
+
+
 def parse_formulation_number(cell_text: str) -> int | None:
-    match = re.fullmatch(r"(\d{1,3})\s*\.?", normalize_text(cell_text))
-    if not match:
+    info = parse_formulation_label_info(cell_text)
+    if info is None:
         return None
-    return int(match.group(1))
+    return int(info["number"])
 
 
 def row_is_numbered(row: list[str]) -> int | None:
     if not row:
         return None
     return parse_formulation_number(row[0])
+
+
+def row_label_info(row: list[str]) -> dict[str, Any] | None:
+    if not row:
+        return None
+    return parse_formulation_label_info(row[0])
 
 
 def count_numeric_like_cells(row: list[str]) -> int:
@@ -237,6 +266,232 @@ def table_keyword_score(header_row: list[str], prelude_rows: list[list[str]]) ->
         if re.search(pattern, text):
             score += 1
     return score
+
+
+MEASUREMENT_HEADER_PATTERNS = [
+    r"\bmean size\b",
+    r"\bsize\b",
+    r"\bz-average\b",
+    r"\bpdi\b",
+    r"\bpolydispersity\b",
+    r"\bzeta\b",
+    r"\bentrapp?ment\b",
+    r"\bencapsulation\b",
+    r"\bloading\b",
+    r"\brecovery\b",
+    r"\bdrug content\b",
+    r"\bmeasured responses\b",
+    r"\bresponse\b",
+]
+
+
+def is_measurement_header(header: str) -> bool:
+    low = normalize_text(header).lower()
+    return any(re.search(pattern, low) for pattern in MEASUREMENT_HEADER_PATTERNS)
+
+
+def normalize_factor_key(text: str) -> str:
+    normalized = normalize_minus_signs(text).lower()
+    quoted_parts = re.findall(r"'([^']+)'", normalized)
+    if quoted_parts:
+        normalized = quoted_parts[-1]
+    normalized = re.sub(r"\([^)]*\)", " ", normalized)
+    normalized = normalized.replace("aqueous phase", "")
+    normalized = re.sub(r"\bc(?=[a-z])", "", normalized)
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    return re.sub(r"\s+", " ", normalized).strip()
+
+
+def factor_names_match(run_header: str, coding_factor: str) -> bool:
+    left = normalize_factor_key(run_header)
+    right = normalize_factor_key(coding_factor)
+    if not left or not right:
+        return False
+    if left == right:
+        return True
+    left_tokens = {token for token in left.split() if token}
+    right_tokens = {token for token in right.split() if token}
+    if left_tokens and right_tokens and (left_tokens <= right_tokens or right_tokens <= left_tokens):
+        return True
+    if len(left) >= 2 and left in right:
+        return True
+    if len(right) >= 2 and right in left:
+        return True
+    return False
+
+
+CODED_LEVEL_KEYS = {"-2", "-1", "0", "1", "2"}
+
+
+def normalize_coded_level(value: Any) -> str:
+    normalized = normalize_minus_signs(value)
+    match = re.fullmatch(r"([+-]?\d(?:\.0+)?)", normalized)
+    if not match:
+        return ""
+    return str(int(float(match.group(1))))
+
+
+def detect_coded_factor_columns(header_row: list[str], numbered_rows: list[list[str]]) -> list[dict[str, Any]]:
+    coded_columns: list[dict[str, Any]] = []
+    if not numbered_rows:
+        return coded_columns
+    width = max(len(row) for row in numbered_rows)
+    for col_idx in range(1, width):
+        header = header_row[col_idx] if col_idx < len(header_row) else ""
+        if is_measurement_header(header):
+            break
+        coded_values = [
+            normalize_coded_level(row[col_idx])
+            for row in numbered_rows
+            if col_idx < len(row) and normalize_text(row[col_idx])
+        ]
+        if len(coded_values) < max(3, min(6, len(numbered_rows))):
+            continue
+        if all(value in CODED_LEVEL_KEYS for value in coded_values):
+            coded_columns.append({"column_index": col_idx, "header": normalize_text(header)})
+    return coded_columns
+
+
+def extract_coding_table_map(payload: dict[str, Any]) -> dict[str, dict[str, str]] | None:
+    rows = [item for item in payload.get("normalized_rows", []) if isinstance(item, dict)]
+    if not rows:
+        return None
+    coding_map: dict[str, dict[str, str]] = {}
+    for row in rows:
+        cell_map = row.get("cell_map")
+        if not isinstance(cell_map, dict):
+            continue
+        factor_name = normalize_text(cell_map.get("Factor"))
+        if not factor_name:
+            continue
+        level_map: dict[str, str] = {}
+        for level_key in ["−2", "-2", "−1", "-1", "0", "+1", "1", "+2", "2"]:
+            if level_key not in cell_map:
+                continue
+            normalized_key = normalize_coded_level(level_key)
+            if not normalized_key:
+                continue
+            level_value = normalize_text(cell_map.get(level_key))
+            if level_value:
+                level_map[normalized_key] = level_value
+        if len(level_map) >= 3:
+            coding_map[factor_name] = level_map
+    return coding_map or None
+
+
+def resolve_coding_table_for_run_table(
+    *,
+    header_row: list[str],
+    numbered_rows: list[list[str]],
+    normalized_payloads: list[dict[str, Any]] | None,
+    run_csv_path: Path,
+) -> tuple[dict[str, Any] | None, list[dict[str, Any]], str]:
+    effective_header_row = list(header_row)
+    run_csv_token = str(run_csv_path).replace("\\", "/").lower()
+    if normalized_payloads:
+        for payload in normalized_payloads:
+            payload_csv = normalize_text(payload.get("normalized_csv_path")).replace("\\", "/").lower()
+            if payload_csv != run_csv_token:
+                continue
+            header_structure = payload.get("header_structure") if isinstance(payload.get("header_structure"), dict) else {}
+            payload_headers = [
+                normalize_text(item)
+                for item in header_structure.get("flattened_headers", [])
+                if normalize_text(item)
+            ]
+            if payload_headers:
+                effective_header_row = payload_headers
+            break
+    coded_columns = detect_coded_factor_columns(effective_header_row, numbered_rows)
+    if not coded_columns:
+        return None, [], "not_needed"
+    if not normalized_payloads:
+        return None, coded_columns, "payload_locator_missing"
+    best_payload: dict[str, Any] | None = None
+    best_score = 0
+    for payload in normalized_payloads:
+        payload_csv = normalize_text(payload.get("normalized_csv_path")).replace("\\", "/").lower()
+        if payload_csv == run_csv_token:
+            continue
+        coding_map = extract_coding_table_map(payload)
+        if not coding_map:
+            continue
+        score = 0
+        for column in coded_columns:
+            header = column["header"]
+            if any(factor_names_match(header, factor_name) for factor_name in coding_map):
+                score += 1
+        if score > best_score:
+            best_payload = payload
+            best_score = score
+    if best_payload is None or best_score < len(coded_columns):
+        return None, coded_columns, "coding_table_unresolved"
+    return best_payload, coded_columns, ""
+
+
+def decode_row_assignments(
+    *,
+    row: list[str],
+    coded_columns: list[dict[str, Any]],
+    coding_payload: dict[str, Any],
+) -> tuple[dict[str, str], str]:
+    coding_map = extract_coding_table_map(coding_payload) or {}
+    decoded: dict[str, str] = {}
+    for column in coded_columns:
+        header = normalize_text(column["header"])
+        col_idx = int(column["column_index"])
+        coded_value = normalize_coded_level(row[col_idx] if col_idx < len(row) else "")
+        if not coded_value:
+            return {}, "coded_value_missing"
+        matching_factor = next(
+            (factor_name for factor_name in coding_map if factor_names_match(header, factor_name)),
+            "",
+        )
+        if not matching_factor:
+            return {}, "coding_factor_unresolved"
+        actual_value = normalize_text(coding_map.get(matching_factor, {}).get(coded_value))
+        if not actual_value:
+            return {}, "coding_value_unresolved"
+        decoded[matching_factor] = actual_value
+    return decoded, ""
+
+
+def apply_decoded_assignments_to_fields(
+    *,
+    fields: dict[str, dict[str, Any]],
+    extras: dict[str, str],
+    decoded_assignments: dict[str, str],
+) -> None:
+    for factor_name, factor_value in decoded_assignments.items():
+        extras[factor_name] = factor_value
+        low = factor_name.lower()
+        if "plga" in low or "polymer" in low:
+            fields["plga_mass_mg"] = {
+                "value": maybe_number_text(factor_value) or factor_value,
+                "value_text": factor_value,
+                "scope": "instance_specific",
+                "membership_confidence": "high",
+                "evidence_region_type": "table_cell",
+                "missing_reason": "",
+            }
+        elif "pva" in low or "surfactant" in low or "stabilizer" in low:
+            fields["surfactant_concentration_text"] = {
+                "value": maybe_number_text(factor_value) or factor_value,
+                "value_text": factor_value,
+                "scope": "instance_specific",
+                "membership_confidence": "high",
+                "evidence_region_type": "table_cell",
+                "missing_reason": "",
+            }
+        elif "pf" in low or "drug" in low:
+            fields["drug_feed_amount_text"] = {
+                "value": maybe_number_text(factor_value) or factor_value,
+                "value_text": factor_value,
+                "scope": "instance_specific",
+                "membership_confidence": "high",
+                "evidence_region_type": "table_cell",
+                "missing_reason": "",
+            }
 
 
 def select_candidate_tables(tables_dir: Path, min_numbered_rows: int) -> list[dict[str, Any]]:
@@ -486,16 +741,24 @@ def build_stage2_candidate_form(
     table_id: str,
     csv_path: Path,
     formulation_number: int,
+    formulation_label: str,
     row: list[str],
     header_row: list[str],
     raw_text: str,
+    decoded_assignments: dict[str, str] | None = None,
 ) -> tuple[dict[str, Any], dict[str, str]]:
     row_text = " | ".join(cell for cell in row if cell)
     fields, extras = parse_row_fields(header_row=header_row, row=row, title=paper.title, raw_text=raw_text)
+    apply_decoded_assignments_to_fields(
+        fields=fields,
+        extras=extras,
+        decoded_assignments=decoded_assignments or {},
+    )
     change_descriptions = [f"{key}={value}" for key, value in sorted(extras.items()) if key not in {"polymer_identity", "polymer_name_raw"}]
+    label_token = re.sub(r"[^A-Za-z0-9]+", "_", formulation_label).strip("_") or f"row_{formulation_number:02d}"
     candidate = {
-        "formulation_id": f"{paper.key}_DOE_Row_{formulation_number:02d}",
-        "raw_formulation_label": f"{formulation_number}.",
+        "formulation_id": f"{paper.key}_DOE_Row_{label_token}",
+        "raw_formulation_label": formulation_label,
         "polymer_identity": extras.get("polymer_identity", "unknown"),
         "polymer_name_raw": extras.get("polymer_name_raw", ""),
         "instance_kind": "new_formulation",
@@ -637,6 +900,7 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
     explicit_targets: list[dict[str, Any]],
     existing_forms: list[dict[str, Any]] | None = None,
     min_numbered_rows: int = 8,
+    normalized_payloads: list[dict[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, str]], dict[str, str]]:
     forms = existing_forms or []
     existing_map = existing_numeric_label_map(forms)
@@ -664,31 +928,69 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
     numbered_rows_found = 0
     selected_table_ids: list[str] = []
     selected_table_paths: list[str] = []
+    coding_tables_used: list[str] = []
+    run_tables_used: list[str] = []
+    decode_status = "not_attempted"
+    decode_failure_reason = ""
     for idx, table in enumerate(selected_tables, start=1):
         table_id = normalize_text(table.get("semantic_table_id")) or f"{paper.key}__numbered_doe_table_{idx:02d}"
         selected_table_ids.append(table_id)
         selected_table_paths.append(str(Path(table["csv_path"])).replace("\\", "/"))
-        for row in table["numbered_rows"]:
-            formulation_number = row_is_numbered(row)
-            if formulation_number is None:
+        run_tables_used.append(table_id)
+        coding_payload, coded_columns, coding_failure_reason = resolve_coding_table_for_run_table(
+            header_row=table["header_row"],
+            numbered_rows=table["numbered_rows"],
+            normalized_payloads=normalized_payloads,
+            run_csv_path=Path(table["csv_path"]),
+        )
+        if coded_columns:
+            if coding_payload is None:
+                decode_status = "failed"
+                decode_failure_reason = coding_failure_reason or "coding_table_unresolved"
                 continue
+            decode_status = "decoded"
+            coding_tables_used.append(
+                normalize_text(coding_payload.get("table_id") or coding_payload.get("source_table_id"))
+            )
+        for row in table["numbered_rows"]:
+            label_info = row_label_info(row)
+            if label_info is None:
+                continue
+            formulation_number = int(label_info["number"])
             numbered_rows_found += 1
             existing_match = existing_map.get(str(formulation_number))
             if existing_match and existing_match.get("candidate_source") != "llm_extracted":
                 continue
+            decoded_assignments: dict[str, str] = {}
+            if coded_columns and coding_payload is not None:
+                decoded_assignments, row_decode_failure_reason = decode_row_assignments(
+                    row=row,
+                    coded_columns=coded_columns,
+                    coding_payload=coding_payload,
+                )
+                if row_decode_failure_reason:
+                    decode_status = "failed"
+                    decode_failure_reason = row_decode_failure_reason
+                    emitted_forms = []
+                    artifact_rows = []
+                    break
             candidate, artifact_row = build_stage2_candidate_form(
                 paper=paper,
                 table_id=table_id,
                 csv_path=table["csv_path"],
                 formulation_number=formulation_number,
+                formulation_label=normalize_text(label_info["label"]),
                 row=row,
                 header_row=table["header_row"],
                 raw_text=raw_text,
+                decoded_assignments=decoded_assignments,
             )
             if existing_match:
                 artifact_row["existing_stage2_match"] = existing_match.get("formulation_id", "")
             emitted_forms.append(candidate)
             artifact_rows.append(artifact_row)
+        if decode_status == "failed":
+            break
 
     notes = (
         "Explicit numbered DOE table rows were enumerated deterministically from authorized semantic table targets."
@@ -710,6 +1012,10 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
         "numbered_rows_found": str(numbered_rows_found),
         "existing_stage2_numeric_rows": str(len(existing_map)),
         "new_candidates_emitted": str(len(emitted_forms)),
+        "coding_table_used": "|".join(item for item in coding_tables_used if item),
+        "run_table_used": "|".join(item for item in run_tables_used if item),
+        "decode_status": decode_status,
+        "decode_failure_reason": decode_failure_reason,
         "regression_status": "ok" if emitted_forms else "no_new_candidates",
         "notes": notes,
     }

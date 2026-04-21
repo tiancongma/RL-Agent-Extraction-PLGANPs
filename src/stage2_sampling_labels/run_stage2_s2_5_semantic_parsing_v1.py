@@ -13,6 +13,9 @@ try:
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
         OUTPUT_JSONL_NAME,
         OUTPUT_SUMMARY_NAME,
+        NORMALIZED_TABLE_PAYLOADS_FILENAME,
+        REQUEST_METADATA_FILENAME_TEMPLATE,
+        build_stage2_authority_metadata,
         convert_legacy_raw_response_to_v2,
         read_tsv,
         summary_row,
@@ -25,6 +28,9 @@ except ModuleNotFoundError:  # pragma: no cover
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
         OUTPUT_JSONL_NAME,
         OUTPUT_SUMMARY_NAME,
+        NORMALIZED_TABLE_PAYLOADS_FILENAME,
+        REQUEST_METADATA_FILENAME_TEMPLATE,
+        build_stage2_authority_metadata,
         convert_legacy_raw_response_to_v2,
         read_tsv,
         summary_row,
@@ -38,6 +44,7 @@ RAW_RESPONSE_FILENAME_TEMPLATE = "{paper_key}__stage2_v2_raw_response.json"
 RUN_METADATA_NAME = "stage2_s2_5_run_metadata_v1.json"
 TARGETED_MANIFEST_NAME = "targeted_manifest.tsv"
 SEMANTIC_SUBDIR = "semantic_stage2_objects"
+AUTHORITY_REATTACHMENT_SIDECAR_NAME = "authority_reattachment_sidecar_v1.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -95,6 +102,143 @@ def raw_response_path(raw_responses_dir: Path, paper_key: str) -> Path:
     return raw_responses_dir / RAW_RESPONSE_FILENAME_TEMPLATE.format(paper_key=paper_key)
 
 
+def request_metadata_path(raw_responses_dir: Path, paper_key: str) -> Path:
+    return raw_responses_dir.parent / "request_metadata" / REQUEST_METADATA_FILENAME_TEMPLATE.format(paper_key=paper_key)
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_prompt_rows(prompt_jsonl_path: Path) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    with prompt_jsonl_path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            text = line.strip()
+            if not text:
+                continue
+            try:
+                row = json.loads(text)
+            except json.JSONDecodeError:
+                continue
+            key = str(row.get("paper_key", "")).strip()
+            if key:
+                rows[key] = row
+    return rows
+
+
+def build_locator_index(authority_payload_root: Path, paper_key: str) -> dict[str, Any]:
+    manifest_path = authority_payload_root / paper_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+    if not manifest_path.exists():
+        return {
+            "locator_manifest_path": "",
+            "table_scope_locators": [],
+            "locator_count": 0,
+        }
+    payload = read_json(manifest_path)
+    table_scope_locators = []
+    for item in payload.get("normalized_table_payloads", []):
+        if not isinstance(item, dict):
+            continue
+        locator = {
+            "table_id": str(item.get("table_id") or item.get("source_table_id") or "").strip(),
+            "source_table_asset_id": str(item.get("source_table_asset_id") or "").strip(),
+            "source_table_reference": str(item.get("source_table_reference") or item.get("source_csv_path") or "").strip(),
+        }
+        if locator["table_id"] or locator["source_table_asset_id"] or locator["source_table_reference"]:
+            table_scope_locators.append(locator)
+    return {
+        "locator_manifest_path": to_repo_rel(manifest_path),
+        "table_scope_locators": table_scope_locators,
+        "locator_count": len(table_scope_locators),
+    }
+
+
+def resolve_authority_reattachment_entry(
+    *,
+    raw_responses_dir: Path,
+    paper_key: str,
+    prompt_cache: dict[Path, dict[str, dict[str, Any]]],
+) -> dict[str, Any]:
+    path = request_metadata_path(raw_responses_dir, paper_key)
+    payload: dict[str, Any] = {}
+    if path.exists():
+        try:
+            payload = read_json(path)
+        except Exception:
+            payload = {}
+    authority_run_dir = str(payload.get("authority_run_dir", "")).strip()
+    authority_payload_root = str(payload.get("authority_payload_root", "")).strip()
+    source_evidence_artifact_path = ""
+    resolution_source = ""
+    failure_reason = ""
+    if authority_run_dir and authority_payload_root:
+        resolution_source = "request_metadata_explicit"
+    else:
+        prompt_jsonl_text = str(payload.get("source_prompts_jsonl_path", "")).strip()
+        if not prompt_jsonl_text:
+            failure_reason = "source_prompts_jsonl_missing"
+        else:
+            prompt_jsonl_path = repo_path(prompt_jsonl_text)
+            if not prompt_jsonl_path.exists():
+                failure_reason = "source_prompts_jsonl_not_found"
+            else:
+                prompt_rows = prompt_cache.setdefault(prompt_jsonl_path, load_prompt_rows(prompt_jsonl_path))
+                prompt_row = prompt_rows.get(paper_key)
+                if not isinstance(prompt_row, dict):
+                    failure_reason = "paper_key_missing_in_source_prompts_jsonl"
+                else:
+                    source_evidence_artifact_path = str(prompt_row.get("source_evidence_artifact_path", "")).strip()
+                    if not source_evidence_artifact_path:
+                        failure_reason = "source_evidence_artifact_path_missing"
+                    else:
+                        authority_metadata = build_stage2_authority_metadata(
+                            stage2_artifact_path=repo_path(source_evidence_artifact_path)
+                        )
+                        authority_run_dir = str(authority_metadata.get("authority_run_dir", "")).strip()
+                        authority_payload_root = str(authority_metadata.get("authority_payload_root", "")).strip()
+                        resolution_source = "source_prompts_jsonl_evidence_artifact"
+    locator_payload = {
+        "locator_manifest_path": "",
+        "table_scope_locators": [],
+        "locator_count": 0,
+    }
+    if authority_payload_root:
+        authority_payload_root_path = repo_path(authority_payload_root)
+        if authority_payload_root_path.exists():
+            locator_payload = build_locator_index(authority_payload_root_path, paper_key)
+        elif not failure_reason:
+            failure_reason = "authority_payload_root_missing"
+    resolution_status = "resolved" if authority_run_dir and authority_payload_root else "unresolved"
+    if resolution_status == "unresolved" and not failure_reason:
+        failure_reason = "authority_metadata_unresolved"
+    return {
+        "paper_key": paper_key,
+        "authority_run_dir": authority_run_dir,
+        "authority_payload_root": authority_payload_root,
+        "source_evidence_artifact_path": source_evidence_artifact_path,
+        "resolution_status": resolution_status,
+        "resolution_source": resolution_source,
+        "failure_reason": failure_reason,
+        **locator_payload,
+    }
+
+
+def read_authority_metadata(raw_responses_dir: Path, paper_key: str, prompt_cache: dict[Path, dict[str, dict[str, Any]]]) -> dict[str, Any]:
+    entry = resolve_authority_reattachment_entry(
+        raw_responses_dir=raw_responses_dir,
+        paper_key=paper_key,
+        prompt_cache=prompt_cache,
+    )
+    try:
+        return {
+            "authority_run_dir": str(entry.get("authority_run_dir", "")).strip(),
+            "authority_payload_root": str(entry.get("authority_payload_root", "")).strip(),
+        }
+    except Exception:
+        return {}
+
+
 def write_manifest_subset(path: Path, rows: list[dict[str, str]]) -> None:
     if not rows:
         raise ValueError("No manifest rows selected for S2-5 semantic parsing.")
@@ -121,6 +265,7 @@ def build_run_context(
     semantic_dir: Path,
     semantic_jsonl_path: Path,
     semantic_summary_path: Path,
+    authority_sidecar_path: Path,
     success_count: int,
     failure_count: int,
 ) -> str:
@@ -190,6 +335,8 @@ Benchmark reporting rule:
   - `{semantic_jsonl_path}`
 - semantic-intermediate summary TSV:
   - `{semantic_summary_path}`
+- authority reattachment sidecar:
+  - `{authority_sidecar_path}`
 - run context:
   - `{run_dir / 'RUN_CONTEXT.md'}`
 - machine-readable run metadata:
@@ -279,15 +426,24 @@ def main() -> None:
 
     summary_rows: list[dict[str, Any]] = []
     failures: list[dict[str, str]] = []
+    prompt_cache: dict[Path, dict[str, dict[str, Any]]] = {}
+    authority_sidecar_entries: dict[str, dict[str, Any]] = {}
     with semantic_jsonl_path.open("w", encoding="utf-8") as handle:
         for record in selected_rows:
             key = str(record.get("key", "")).strip()
             current_raw_path = raw_response_path(raw_responses_dir, key)
             try:
+                authority_entry = resolve_authority_reattachment_entry(
+                    raw_responses_dir=raw_responses_dir,
+                    paper_key=key,
+                    prompt_cache=prompt_cache,
+                )
+                authority_sidecar_entries[key] = authority_entry
                 document = convert_legacy_raw_response_to_v2(
                     record=record,
                     raw_response_path=current_raw_path,
                     raw_response_text=current_raw_path.read_text(encoding="utf-8", errors="replace"),
+                    authority_metadata=read_authority_metadata(raw_responses_dir, key, prompt_cache),
                 )
                 handle.write(json.dumps(document, ensure_ascii=False) + "\n")
                 summary_rows.append(summary_row(document))
@@ -322,6 +478,17 @@ def main() -> None:
             "selected_condition_hint_count",
         ],
     )
+    authority_sidecar_path = semantic_dir / AUTHORITY_REATTACHMENT_SIDECAR_NAME
+    authority_sidecar_payload = {
+        "schema": "authority_reattachment_sidecar_v1",
+        "source_stage_boundary": "S2-5",
+        "source_raw_responses_dir": to_repo_rel(raw_responses_dir),
+        "entries_by_paper_key": authority_sidecar_entries,
+    }
+    authority_sidecar_path.write_text(
+        json.dumps(authority_sidecar_payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
 
     run_context = build_run_context(
         run_id=run_id,
@@ -337,6 +504,7 @@ def main() -> None:
         semantic_dir=semantic_dir,
         semantic_jsonl_path=semantic_jsonl_path,
         semantic_summary_path=semantic_summary_path,
+        authority_sidecar_path=authority_sidecar_path,
         success_count=len(summary_rows),
         failure_count=len(failures),
     )
@@ -368,6 +536,7 @@ def main() -> None:
             "semantic_dir": to_repo_rel(semantic_dir),
             "semantic_jsonl": to_repo_rel(semantic_jsonl_path),
             "semantic_summary_tsv": to_repo_rel(semantic_summary_path),
+            "authority_reattachment_sidecar": to_repo_rel(authority_sidecar_path),
             "run_context": to_repo_rel(run_dir / "RUN_CONTEXT.md"),
         },
         "stop_boundary": "semantic_intermediate_artifacts_written",
@@ -389,6 +558,7 @@ def main() -> None:
     print(f"run_dir={run_dir}")
     print(f"semantic_jsonl={semantic_jsonl_path}")
     print(f"semantic_summary={semantic_summary_path}")
+    print(f"authority_reattachment_sidecar={authority_sidecar_path}")
     print(f"parsed_document_count={len(summary_rows)}")
     print(f"failure_count={len(failures)}")
 

@@ -541,13 +541,14 @@ S2-2 contract note:
   - `must_include`
   - `optional_context`
   - `hard_drop`
-- inclusion-class meaning:
-  - `must_include` preserves any structurally plausible formulation-bearing
-    table summary even when noisy coarse labels say characterization or results
-  - `optional_context` allows bounded supportive result or downstream table
-    summaries after `must_include` coverage is satisfied
-  - `hard_drop` is limited to high-confidence noise such as references,
-    front-matter spillover, figure-caption residue, or corrupt fragments
+- irreversible table-preservation contract:
+  - only confirmed pure noise may be hard-dropped
+  - if a table is not confirmed noise, it must remain preserved in the
+    pre-LLM authority surface
+  - rules must not downrank, suppress, or remove a table because another table
+    seems more important or more formulation-bearing
+- bounded summary-view labels may still exist for observability, but they must
+  not act as importance-based table vetoes
 - candidate-level observability is maintained through
   `analysis/candidate_segmentation_debug_v1.tsv`
 - selection is evidence-priority based rather than role-constrained, and
@@ -556,6 +557,11 @@ S2-2 contract note:
 - `must_include` table summaries must be packed in neutral stable order, such
   as source or table-number order, and must not be semantically promoted to
   one true primary table before the LLM
+- the maintained `S2-3` / `S2-4a` summary path is neutral across preserved
+  tables; the main residual risk is lossy summary compression rather than
+  cross-table importance bias
+- summary blocks should preserve header / column schema and first-column row
+  identity surfaces as the primary structure; sample rows are optional aids
 - prompt assembly must consume the persisted S2-2 artifact rather than
   silently recomputing evidence from clean text
 - this prompt-assembly boundary is S2-3:
@@ -566,6 +572,12 @@ S2-2 contract note:
   - downstream deterministic execution must resolve back to the S2-2
     full-table authority surface by stable table identity when row
     materialization is authorized
+  - deterministic authority handles such as `authority_run_dir`,
+    `authority_payload_root`, and table-scope locators belong to the
+    execution-side contract and must not be treated as LLM semantic content
+  - replay compatibility should reattach them through governed deterministic
+    sidecars or reattachment surfaces, not by relying on the LLM to transmit
+    them
 - unified execution-input rule:
   - DOE and non-DOE row materialization must use the preserved S2-2
     full-table authority surface as the execution source of truth

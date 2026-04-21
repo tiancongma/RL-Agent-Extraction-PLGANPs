@@ -94,33 +94,84 @@ def is_llm_first_document(document: dict[str, Any]) -> bool:
     return normalize_text(document.get("stage2_semantic_source_mode")) == "llm_first_composite"
 
 
-def _resolve_semantic_stage2_root(document: dict[str, Any]) -> Path | None:
+def _resolve_authority_payload_root(document: dict[str, Any]) -> Path | None:
+    authority_payload_root = normalize_text(document.get("authority_payload_root"))
+    if not authority_payload_root:
+        return None
+    path = Path(authority_payload_root)
+    if not path.is_absolute():
+        path = (REPO_ROOT / path).resolve()
+    return path
+
+
+def _resolve_legacy_payload_root(document: dict[str, Any]) -> Path | None:
     raw_response_path = normalize_text(document.get("source_raw_response_path"))
-    if raw_response_path:
-        candidate = Path(raw_response_path)
-        if not candidate.is_absolute():
-            candidate = (REPO_ROOT / candidate).resolve()
-        parent = candidate.parent
-        if parent.name == "raw_responses":
-            return parent.parent
+    if not raw_response_path:
+        return None
+    candidate = Path(raw_response_path)
+    if not candidate.is_absolute():
+        candidate = (REPO_ROOT / candidate).resolve()
+    parent = candidate.parent
+    if parent.name == "raw_responses":
+        return parent.parent / NORMALIZED_TABLE_PAYLOADS_SUBDIR
     return None
 
 
-def _load_normalized_table_payloads(document: dict[str, Any]) -> list[dict[str, Any]]:
+def _load_normalized_table_payloads(document: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     if not document_key:
-        return []
-    semantic_root = _resolve_semantic_stage2_root(document)
-    if semantic_root is None:
-        return []
-    manifest_path = semantic_root / NORMALIZED_TABLE_PAYLOADS_SUBDIR / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+        return [], {
+            "reopen_source_type": "",
+            "reopen_resolution_status": "failed",
+            "reopen_failure_reason": "payload_locator_missing",
+            "normalized_payload_used": "no",
+        }
+    explicit_root = _resolve_authority_payload_root(document)
+    reopen_source_type = ""
+    if explicit_root is not None:
+        reopen_source_type = "normalized_table_payloads_explicit"
+        manifest_path = explicit_root / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+        if not manifest_path.exists():
+            return [], {
+                "reopen_source_type": reopen_source_type,
+                "reopen_resolution_status": "failed",
+                "reopen_failure_reason": "authority_root_missing",
+                "normalized_payload_used": "no",
+            }
+    else:
+        legacy_root = _resolve_legacy_payload_root(document)
+        if legacy_root is None:
+            return [], {
+                "reopen_source_type": "",
+                "reopen_resolution_status": "failed",
+                "reopen_failure_reason": "authority_root_missing",
+                "normalized_payload_used": "no",
+            }
+        reopen_source_type = "legacy_raw_response_derived"
+        manifest_path = legacy_root / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
     if not manifest_path.exists():
-        return []
+        return [], {
+            "reopen_source_type": reopen_source_type,
+            "reopen_resolution_status": "failed",
+            "reopen_failure_reason": "authority_root_missing",
+            "normalized_payload_used": "no",
+        }
     try:
         payload = json.loads(manifest_path.read_text(encoding="utf-8"))
     except Exception:
-        return []
-    return [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
+        return [], {
+            "reopen_source_type": reopen_source_type,
+            "reopen_resolution_status": "failed",
+            "reopen_failure_reason": "authority_root_missing",
+            "normalized_payload_used": "no",
+        }
+    items = [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
+    return items, {
+        "reopen_source_type": reopen_source_type,
+        "reopen_resolution_status": "resolved",
+        "reopen_failure_reason": "",
+        "normalized_payload_used": "yes" if items else "no",
+    }
 
 
 def source_table_paths(document: dict[str, Any]) -> list[Path]:
@@ -262,6 +313,9 @@ def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) ->
         "table_id": table_id,
         "table_path": normalize_text(scope.get("table_path")),
         "table_asset_id": normalize_text(scope.get("table_asset_id")),
+        "source_table_asset_id": normalize_text(scope.get("source_table_asset_id")),
+        "source_table_reference": normalize_text(scope.get("source_table_reference")),
+        "table_scope_locators": parse_json_maybe(scope.get("table_scope_locators")) if normalize_text(scope.get("table_scope_locators")) else scope.get("table_scope_locators"),
         "variable_name": normalize_text(scope.get("variable_name")),
         "candidate_values": [
             normalize_text(item)
@@ -275,15 +329,22 @@ def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) ->
         "marker_provenance": marker_provenance(scope, document=document),
     }
     if not normalized["table_path"]:
-        payload = resolve_table_authority_payload_for_scope(
-            normalized,
-            normalized_payloads=_load_normalized_table_payloads(document),
-        )
+        normalized_payloads, _ = _load_normalized_table_payloads(document)
+        payload, _ = resolve_table_authority_payload_for_scope(normalized, normalized_payloads=normalized_payloads)
         if payload is not None:
             normalized["table_path"] = normalize_text(payload.get("normalized_csv_path"))
             normalized["table_asset_id"] = normalize_text(normalized["table_asset_id"]) or normalize_text(
                 payload.get("source_table_asset_id")
             )
+            normalized["source_table_asset_id"] = normalize_text(payload.get("source_table_asset_id"))
+            normalized["source_table_reference"] = normalize_text(
+                payload.get("source_table_reference") or payload.get("source_csv_path")
+            )
+            normalized["table_scope_locators"] = {
+                "table_id": normalize_text(payload.get("table_id") or payload.get("source_table_id")),
+                "source_table_asset_id": normalize_text(payload.get("source_table_asset_id")),
+                "source_table_reference": normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path")),
+            }
     return normalized
 
 
@@ -373,10 +434,16 @@ def resolve_table_authority_payload_for_scope(
     scope: dict[str, Any],
     *,
     normalized_payloads: list[dict[str, Any]],
-) -> dict[str, Any] | None:
+) -> tuple[dict[str, Any] | None, str]:
     wanted_table_id = _normalize_table_label(scope.get("table_id"))
-    wanted_table_path = normalize_text(scope.get("table_path")).replace("\\", "/").lower()
-    wanted_asset_id = normalize_text(scope.get("table_asset_id")).lower()
+    scope_locators = scope.get("table_scope_locators") if isinstance(scope.get("table_scope_locators"), dict) else {}
+    wanted_table_path = normalize_text(
+        scope_locators.get("source_table_reference") or scope.get("source_table_reference") or scope.get("table_path")
+    ).replace("\\", "/").lower()
+    wanted_asset_id = normalize_text(
+        scope_locators.get("source_table_asset_id") or scope.get("source_table_asset_id") or scope.get("table_asset_id")
+    ).lower()
+    matches: list[dict[str, Any]] = []
     for item in normalized_payloads:
         payload_table_id = _normalize_table_label(item.get("table_id") or item.get("source_table_id"))
         payload_source_ref = normalize_text(
@@ -384,12 +451,21 @@ def resolve_table_authority_payload_for_scope(
         ).replace("\\", "/").lower()
         payload_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
         if wanted_table_id and payload_table_id == wanted_table_id:
-            return item
+            matches.append(item)
+            continue
         if wanted_table_path and payload_source_ref == wanted_table_path:
-            return item
+            matches.append(item)
+            continue
         if wanted_asset_id and payload_asset_id == wanted_asset_id:
-            return item
-    return None
+            matches.append(item)
+            continue
+    if len(matches) > 1:
+        return None, "multiple_candidate_payloads"
+    if len(matches) == 1:
+        return matches[0], ""
+    if not any([wanted_table_id, wanted_table_path, wanted_asset_id]):
+        return None, "payload_locator_missing"
+    return None, "authorized_target_unresolved"
 
 
 def authority_row_entries(payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -604,6 +680,686 @@ def text_matches_value(text: str, value: str) -> bool:
     )
 
 
+def normalize_minus_signs(text: Any) -> str:
+    return normalize_text(text).replace("−", "-").replace("–", "-").replace("—", "-")
+
+
+def parse_formulation_row_label_info(value: Any) -> dict[str, Any] | None:
+    normalized = normalize_minus_signs(value)
+    numeric_match = re.fullmatch(r"(\d{1,3})\s*[\.\):]?", normalized)
+    if numeric_match:
+        return {
+            "label": normalize_text(value),
+            "number": int(numeric_match.group(1)),
+            "label_style": "numeric",
+        }
+    f_match = re.fullmatch(r"([Ff])\s*[- ]?(\d{1,3})\s*[\.\):]?", normalized)
+    if f_match:
+        return {
+            "label": f"{f_match.group(1).upper()}{int(f_match.group(2))}",
+            "number": int(f_match.group(2)),
+            "label_style": "f_numeric",
+        }
+    return None
+
+
+MEASUREMENT_HEADER_PATTERNS = [
+    r"\bmean size\b",
+    r"\bsize\b",
+    r"\bdiameter\b",
+    r"\bz-average\b",
+    r"\bpdi\b",
+    r"\bpi[a-z]?\b",
+    r"\bpolydispersity\b",
+    r"\bzeta\b",
+    r"\bentrapp?ment\b",
+    r"\bencapsulation\b",
+    r"\bloading\b",
+    r"\brecovery\b",
+    r"\bdrug content\b",
+    r"\bafter freeze-drying\b",
+    r"\bbefore freeze-drying\b",
+    r"\bmeasured responses\b",
+    r"\bresponse\b",
+]
+
+
+def is_measurement_header(header: str) -> bool:
+    low = normalize_text(header).lower()
+    return any(re.search(pattern, low) for pattern in MEASUREMENT_HEADER_PATTERNS)
+
+
+def normalize_assignment_name(name: str) -> str:
+    return normalize_text(name)
+
+
+def compatibility_field_for_assignment(name: str) -> str:
+    low = normalize_assignment_name(name).lower()
+    if "plga" in low or "polymer" in low:
+        return "plga_mass_mg"
+    if "pva" in low or "surfactant" in low or "stabilizer" in low:
+        return "surfactant_concentration_text"
+    if "drug" in low or "pf" in low:
+        return "drug_feed_amount_text"
+    return ""
+
+
+def maybe_number_text(value: str) -> str:
+    match = re.search(r"[-+]?\d+(?:[.,]\d+)?", normalize_text(value))
+    return match.group(0).replace(",", ".") if match else ""
+
+
+SINGLE_VARIABLE_STOPWORDS = {
+    "amount",
+    "concentration",
+    "content",
+    "value",
+    "values",
+    "variable",
+    "variables",
+    "phase",
+    "levels",
+    "level",
+    "of",
+    "the",
+    "and",
+}
+
+SINGLE_VARIABLE_CONTRACT_PATTERNS = [
+    r"only one parameter was changed in each series of experiments",
+    r"only one parameter was changed",
+    r"only one variable was changed",
+    r"only one parameter was varied",
+    r"one parameter was changed in each series",
+]
+
+FORMULATION_HEADER_NOISE_PATTERNS = [
+    r"\bformulation characters?\b",
+    r"\boptimized nanoparticle formulations?\b",
+]
+
+
+def unique_nonempty(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    output: list[str] = []
+    for value in values:
+        text = normalize_text(value)
+        if not text:
+            continue
+        key = normalize_token(text)
+        if key in seen:
+            continue
+        seen.add(key)
+        output.append(text)
+    return output
+
+
+def content_tokens(text: str) -> list[str]:
+    return [
+        token
+        for token in re.findall(r"[a-z0-9%]+", normalize_text(text).lower())
+        if token and token not in SINGLE_VARIABLE_STOPWORDS
+    ]
+
+
+def phrase_pattern(phrase: str) -> str:
+    tokens = [re.escape(token) for token in re.findall(r"[A-Za-z0-9%]+", normalize_text(phrase))]
+    if not tokens:
+        return ""
+    return r"[\s\-/–—]*".join(tokens)
+
+
+def load_document_source_text(document: dict[str, Any]) -> str:
+    text_path = normalize_text(document.get("source_text_path"))
+    candidate_paths: list[Path] = []
+    if text_path:
+        path = Path(text_path)
+        if not path.is_absolute():
+            path = (REPO_ROOT / path).resolve()
+        candidate_paths.append(path)
+        if "content_goren_2025/text" in text_path:
+            fallback = text_path.replace("content_goren_2025/text", "content/text")
+            fallback_path = Path(fallback)
+            if not fallback_path.is_absolute():
+                fallback_path = (REPO_ROOT / fallback_path).resolve()
+            candidate_paths.append(fallback_path)
+    for path in candidate_paths:
+        if not path.exists():
+            continue
+        try:
+            return path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+    return ""
+
+
+def is_generic_formulation_title(text: str) -> bool:
+    low = normalize_text(text).lower()
+    return any(re.search(pattern, low) for pattern in FORMULATION_HEADER_NOISE_PATTERNS)
+
+
+def clean_formulation_header_part(text: str) -> str:
+    cleaned = normalize_text(text)
+    cleaned = re.sub(r"\(\s*mean\s*[±\+\-\/]*\s*sd\s*\)", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\bmean\s*[±\+\-\/]*\s*sd\b", "", cleaned, flags=re.IGNORECASE)
+    return normalize_text(cleaned)
+
+
+def formulation_role_from_label(label: str) -> str:
+    low = normalize_text(label).lower()
+    if "empty" in low or "drug free" in low or "drug-free" in low:
+        return "control"
+    return "reported"
+
+
+def horizontal_forward_fill(cells: list[str], *, width: int) -> list[str]:
+    padded = [normalize_text(cells[idx]) if idx < len(cells) else "" for idx in range(width)]
+    current = ""
+    output = padded[:]
+    for idx in range(1, width):
+        if output[idx]:
+            current = output[idx]
+            continue
+        if current:
+            output[idx] = current
+    return output
+
+
+def is_pure_enumerator_row(cells: list[str]) -> bool:
+    normalized = [normalize_text(cell) for cell in cells if normalize_text(cell)]
+    return bool(normalized) and all(re.fullmatch(r"\d{1,3}", cell) for cell in normalized)
+
+
+def expand_header_row_for_formulation_columns(cells: list[str], *, width: int) -> list[str]:
+    normalized = [normalize_text(cell) for cell in cells if normalize_text(cell)]
+    if not normalized or is_pure_enumerator_row(normalized):
+        return [""] * width
+    if len(normalized) == width:
+        return normalized[:]
+    if len(normalized) == width - 1:
+        return [""] + normalized
+    formulation_slots = max(0, width - 1)
+    if formulation_slots == 0:
+        return normalized[:width]
+    if len(normalized) == 1:
+        return [""] + [""] * formulation_slots
+    if formulation_slots % len(normalized) == 0:
+        span = formulation_slots // len(normalized)
+        expanded = [""]
+        for cell in normalized:
+            expanded.extend([cell] * span)
+        return (expanded + [""] * width)[:width]
+    return ([""] + normalized + [""] * width)[:width]
+
+
+def measurement_rows_start_index(row_entries: list[dict[str, Any]]) -> int | None:
+    for idx, entry in enumerate(row_entries):
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        if not cells:
+            continue
+        if not is_measurement_header(cells[0]):
+            continue
+        value_count = sum(1 for cell in cells[1:] if normalize_text(cell))
+        if value_count >= 2:
+            return idx
+    return None
+
+
+def infer_column_assignment_name(part: str, ordinal: int) -> str:
+    low = normalize_text(part).lower()
+    if "empty" in low or "drug loaded" in low or "drug-free" in low or "drug free" in low:
+        return "loading_status"
+    if "plga" in low or "pcl" in low or "polymer" in low:
+        return "polymer_variant"
+    return f"formulation_header_part_{ordinal}"
+
+
+def extract_column_anchor_rows_from_authority(
+    *,
+    authority_payload: dict[str, Any],
+    row_entries: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], str]:
+    start_index = measurement_rows_start_index(row_entries)
+    if start_index is None:
+        return [], "no_measurement_axis_detected"
+    if start_index < 2:
+        return [], "insufficient_column_header_rows"
+    width = max(len(ensure_list(entry.get("cells"))) for entry in row_entries)
+    header_rows = [
+        horizontal_forward_fill(
+            expand_header_row_for_formulation_columns(
+                [normalize_text(cell) for cell in ensure_list(entry.get("cells"))],
+                width=width,
+            ),
+            width=width,
+        )
+        for entry in row_entries[:start_index]
+    ]
+    measurement_rows = [
+        [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        for entry in row_entries[start_index:]
+        if ensure_list(entry.get("cells"))
+    ]
+    formulation_columns: list[dict[str, Any]] = []
+    for col_idx in range(1, width):
+        header_parts = unique_nonempty(
+            [
+                clean_formulation_header_part(header_rows[row_idx][col_idx])
+                for row_idx in range(len(header_rows))
+                if col_idx < len(header_rows[row_idx])
+                and not is_generic_formulation_title(header_rows[row_idx][col_idx])
+                and clean_formulation_header_part(header_rows[row_idx][col_idx])
+            ]
+        )
+        if not header_parts:
+            continue
+        measurements: list[dict[str, str]] = []
+        for row in measurement_rows:
+            if col_idx >= len(row):
+                continue
+            measure_name = normalize_text(row[0])
+            measure_value = normalize_text(row[col_idx])
+            if not measure_name or not measure_value:
+                continue
+            measurements.append({"name": measure_name, "value": measure_value})
+        if len(measurements) < 2:
+            continue
+        formulation_columns.append(
+            {
+                "column_index": col_idx,
+                "header_parts": header_parts,
+                "measurements": measurements,
+            }
+        )
+    if len(formulation_columns) < 2:
+        return [], "insufficient_formulation_columns"
+    extracted_rows: list[dict[str, Any]] = []
+    for column in formulation_columns:
+        header_parts = column["header_parts"]
+        label = " / ".join(header_parts)
+        assignments = [
+            {
+                "name": infer_column_assignment_name(part, idx + 1),
+                "value": part,
+            }
+            for idx, part in enumerate(header_parts)
+        ]
+        measurement_text = " | ".join(
+            f"{item['name']}={item['value']}" for item in column["measurements"]
+        )
+        extracted_rows.append(
+            {
+                "label": label,
+                "label_number": "",
+                "row_text": measurement_text,
+                "assignments": assignments,
+                "instance_role": formulation_role_from_label(label),
+                "measurement_summary": column["measurements"],
+            }
+        )
+    return extracted_rows, ""
+
+
+def source_text_context_window(text: str, pattern_match: re.Match[str], *, chars_before: int = 1400, chars_after: int = 250) -> str:
+    start = max(0, pattern_match.start() - chars_before)
+    end = min(len(text), pattern_match.end() + chars_after)
+    return text[start:end]
+
+
+def extract_single_variable_level_list(text: str, variable_name: str) -> list[str]:
+    pattern = phrase_pattern(variable_name)
+    if not pattern:
+        return []
+    match = re.search(pattern + r"\s*\(([^)]{3,120})\)", text, flags=re.IGNORECASE)
+    if not match:
+        return []
+    return parse_candidate_values(match.group(1))
+
+
+def extract_baseline_assignment_from_text(text: str, variable_name: str) -> str:
+    tokens = content_tokens(variable_name)
+    if not tokens:
+        return ""
+    compact_tokens = [token.replace("%", "") for token in tokens]
+    best_score = -1
+    best_value = ""
+    for match in re.finditer(r"([A-Za-z0-9%/\- ]{0,80})\(([^)]{1,40})\)", text):
+        prefix = normalize_minus_signs(match.group(1)).lower()
+        prefix_compact = re.sub(r"\s+", "", prefix)
+        score = 0
+        for token in compact_tokens:
+            if not token:
+                continue
+            if token in prefix_compact or re.search(rf"\b{re.escape(token)}\b", prefix):
+                score += 1
+        if score > best_score:
+            best_score = score
+            best_value = normalize_text(match.group(2))
+    return best_value if best_score > 0 else ""
+
+
+def build_single_variable_recovery_contract(
+    *,
+    document: dict[str, Any],
+    require_anchor_rows: bool,
+) -> dict[str, Any]:
+    semantic_signals = document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {}
+    primary_variable_names = [
+        normalize_text(item)
+        for item in ensure_list(semantic_signals.get("primary_variable_names"))
+        if normalize_text(item)
+    ]
+    if not bool(semantic_signals.get("has_variable_sweep")):
+        return {
+            "detected": False,
+            "failure_reason": "semantic_signal_missing_variable_sweep",
+        }
+    if not require_anchor_rows:
+        return {
+            "detected": False,
+            "failure_reason": "missing_explicit_anchor_rows",
+        }
+    if not primary_variable_names:
+        return {
+            "detected": False,
+            "failure_reason": "missing_primary_variable_names",
+        }
+    source_text = load_document_source_text(document)
+    if not source_text:
+        return {
+            "detected": False,
+            "failure_reason": "source_text_missing",
+        }
+    contract_match = None
+    for pattern in SINGLE_VARIABLE_CONTRACT_PATTERNS:
+        contract_match = re.search(pattern, source_text, flags=re.IGNORECASE)
+        if contract_match:
+            break
+    if contract_match is None:
+        return {
+            "detected": False,
+            "failure_reason": "single_variable_contract_not_found",
+        }
+    context = source_text_context_window(source_text, contract_match)
+    groups: list[dict[str, Any]] = []
+    baseline_assignments: dict[str, str] = {}
+    for variable_name in primary_variable_names:
+        levels = extract_single_variable_level_list(context, variable_name)
+        baseline_value = extract_baseline_assignment_from_text(context, variable_name)
+        if baseline_value:
+            baseline_assignments[variable_name] = baseline_value
+        if len(levels) >= 2:
+            groups.append(
+                {
+                    "variable_name": variable_name,
+                    "levels": levels,
+                    "baseline_value": baseline_value,
+                }
+            )
+    if not groups:
+        return {
+            "detected": False,
+            "failure_reason": "single_variable_levels_not_found",
+        }
+    missing_baseline = [group["variable_name"] for group in groups if not group.get("baseline_value")]
+    if missing_baseline:
+        return {
+            "detected": False,
+            "failure_reason": "held_constant_context_incomplete",
+            "variable_axes": missing_baseline,
+        }
+    return {
+        "detected": True,
+        "source_type": "explicit_narrative_single_variable_contract",
+        "groups": groups,
+        "baseline_assignments": baseline_assignments,
+        "held_constant_context_source": "source_text_baseline_clause",
+        "evidence_span": normalize_text(context),
+    }
+
+
+def emit_single_variable_recovery_rows(
+    *,
+    document: dict[str, Any],
+    compatibility_columns: list[str],
+    contract: dict[str, Any],
+    scope: dict[str, Any],
+    scope_id: str,
+    table_id: str,
+    group_hint_prefix: str,
+) -> tuple[list[dict[str, str]], list[dict[str, Any]], list[dict[str, str]], int]:
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    doi = normalize_text(document.get("doi"))
+    model_name = normalize_text(document.get("model_name") or document.get("source_mode")) or "stage2_v2_semantic_objects"
+    rows: list[dict[str, str]] = []
+    jsonl_rows: list[dict[str, Any]] = []
+    traces: list[dict[str, str]] = []
+    emitted = 0
+    def equivalent_level_value(left: str, right: str) -> bool:
+        return re.sub(r"\s+", "", normalize_minus_signs(left).lower()) == re.sub(
+            r"\s+", "", normalize_minus_signs(right).lower()
+        )
+
+    baseline_assignments = {
+        normalize_text(name): normalize_text(value)
+        for name, value in (contract.get("baseline_assignments") or {}).items()
+        if normalize_text(name) and normalize_text(value)
+    }
+    evidence_span = normalize_text(contract.get("evidence_span"))
+    for group in ensure_list(contract.get("groups")):
+        if not isinstance(group, dict):
+            continue
+        variable_name = normalize_text(group.get("variable_name"))
+        baseline_value = normalize_text(group.get("baseline_value"))
+        if not variable_name or not baseline_value:
+            continue
+        group_hint = f"{group_hint_prefix}__{normalize_token(variable_name)}"
+        for value in ensure_list(group.get("levels")):
+            value_text = normalize_text(value)
+            if not value_text:
+                continue
+            if equivalent_level_value(value_text, baseline_value):
+                continue
+            assignment_map = dict(baseline_assignments)
+            assignment_map[variable_name] = value_text
+            identity_variables = [
+                {
+                    "name": normalize_token(name),
+                    "name_raw": name,
+                    "value": assignment_map[name],
+                    "value_raw": assignment_map[name],
+                }
+                for name in assignment_map
+            ]
+            row = {column: "" for column in compatibility_columns}
+            row_label = f"{variable_name}={value_text}"
+            row_id = f"{document_key}__single_variable__{normalize_token(variable_name)}__{normalize_token(value_text)}"
+            row.update(
+                {
+                    "key": document_key,
+                    "doi": doi,
+                    "model": model_name,
+                    "local_instance_id": row_id,
+                    "formulation_id": row_id,
+                    "raw_formulation_label": row_label,
+                    "instance_kind": "new_formulation",
+                    "instance_kind_raw": "new_formulation",
+                    "instance_kind_inferred": "new_formulation",
+                    "instance_confidence": "reported",
+                    "candidate_source": RECOVERY_CANDIDATE_SOURCE,
+                    "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+                    "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+                    "row_materialization_mode": ROW_MATERIALIZATION_MODE,
+                    "semantic_scope_authority": "llm_declared_scope",
+                    "semantic_scope_ref": scope_id,
+                    "instance_evidence_region_type": "narrative_text",
+                    "evidence_section": table_id or "single_variable_context",
+                    "evidence_span_text": evidence_span,
+                    "formulation_role": "reported",
+                    "instance_context_tags": stringify_json(["single_variable_recovery"]),
+                    "change_context_tags": stringify_json(["single_variable_family"]),
+                    "change_descriptions": stringify_json(
+                        [f"{name}={assignment_map[name]}" for name in assignment_map]
+                    ),
+                    "change_role": "single_variable_variation",
+                    IDENTITY_VARIABLES_FIELD: stringify_json(identity_variables),
+                    METHOD_GROUP_SIGNATURE_HINT_FIELD: group_hint,
+                    TABLE_ID_FIELD: table_id,
+                    TABLE_ROW_ID_FIELD: f"{table_id}::{normalize_token(row_label)}" if table_id else "",
+                    TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
+                    TABLE_SCOPE_FIELD: stringify_json(scope),
+                    "supporting_evidence_refs": stringify_json(
+                        [
+                            {
+                                "source_region_type": "narrative_text",
+                                "source_locator_text": f"{table_id or 'document'}::single_variable_contract::{variable_name}",
+                                "supporting_snippet": evidence_span,
+                                "target_field_name": variable_name,
+                            }
+                        ]
+                    ),
+                }
+            )
+            for name, assignment_value in assignment_map.items():
+                compat_field = compatibility_field_for_assignment(name)
+                if not compat_field:
+                    continue
+                row[f"{compat_field}_value"] = maybe_number_text(assignment_value) or assignment_value
+                row[f"{compat_field}_value_text"] = assignment_value
+                row[f"{compat_field}_membership_confidence"] = "reported"
+                row[f"{compat_field}_evidence_region_type"] = "narrative_text"
+            rows.append(row)
+            jsonl_rows.append(dict(row))
+            traces.append(
+                {
+                    "key": document_key,
+                    "local_instance_id": row_id,
+                    "projection_step": FUNCTION_UNIT_ID,
+                    "projection_status": "added_row",
+                    "detail": f"single_variable::{variable_name}={value_text}",
+                }
+            )
+            emitted += 1
+    return rows, jsonl_rows, traces, emitted
+
+
+def first_cell_value(entry: dict[str, Any]) -> str:
+    cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+    return cells[0] if cells else ""
+
+
+def explicit_formulation_row_entries(row_entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    explicit: list[dict[str, Any]] = []
+    for entry in row_entries:
+        if not isinstance(entry, dict):
+            continue
+        label_info = parse_formulation_row_label_info(first_cell_value(entry))
+        if label_info is None:
+            continue
+        copied = dict(entry)
+        copied["row_label_info"] = label_info
+        explicit.append(copied)
+    return explicit
+
+
+def combined_prelude_headers(
+    row_entries: list[dict[str, Any]],
+    *,
+    first_explicit_row_index: int,
+    width: int,
+) -> list[str]:
+    combined = [""] * width
+    primary_cells: list[str] = []
+    widest = -1
+    for entry in row_entries:
+        if int(entry.get("row_index") or 0) >= first_explicit_row_index:
+            continue
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        if len(cells) > widest:
+            widest = len(cells)
+            primary_cells = cells[:]
+        for idx in range(min(width, len(cells))):
+            if not cells[idx]:
+                continue
+            combined[idx] = f"{combined[idx]} {cells[idx]}".strip()
+    resolved: list[str] = []
+    for idx in range(width):
+        primary = normalize_text(primary_cells[idx]) if idx < len(primary_cells) else ""
+        resolved.append(primary or normalize_text(combined[idx]))
+    return resolved
+
+
+def infer_variable_columns_from_authority(
+    row_entries: list[dict[str, Any]],
+    explicit_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    if not explicit_rows:
+        return []
+    width = max(len(ensure_list(row.get("cells"))) for row in explicit_rows)
+    first_explicit_row_index = min(int(row.get("row_index") or 0) for row in explicit_rows)
+    headers = combined_prelude_headers(
+        row_entries,
+        first_explicit_row_index=first_explicit_row_index,
+        width=width,
+    )
+    if headers:
+        first_header = normalize_text(headers[0]).lower()
+        if first_header and not re.search(r"\b(formulation|factorial|run|sample)\b", first_header):
+            headers = [""] + headers[:-1]
+    variable_columns: list[dict[str, Any]] = []
+    for col_idx in range(1, width):
+        header = headers[col_idx] if col_idx < len(headers) else ""
+        if is_measurement_header(header):
+            break
+        if not header:
+            continue
+        variable_columns.append({"column_index": col_idx, "header": header})
+    return variable_columns
+
+
+def extract_direct_formulation_rows_from_authority(
+    *,
+    authority_payload: dict[str, Any],
+    row_entries: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], str]:
+    explicit_rows = explicit_formulation_row_entries(row_entries)
+    if len(explicit_rows) < 2:
+        return [], "insufficient_explicit_row_labels"
+    variable_columns = infer_variable_columns_from_authority(row_entries, explicit_rows)
+    if not variable_columns:
+        return [], "no_formulation_variable_columns"
+    extracted_rows: list[dict[str, Any]] = []
+    for entry in explicit_rows:
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        assignments: list[dict[str, str]] = []
+        for column in variable_columns:
+            col_idx = int(column["column_index"])
+            if col_idx >= len(cells):
+                continue
+            value = normalize_text(cells[col_idx])
+            if not value:
+                continue
+            assignments.append(
+                {
+                    "name": normalize_assignment_name(column["header"]),
+                    "value": value,
+                }
+            )
+        if not assignments:
+            continue
+        extracted_rows.append(
+            {
+                "label": entry["row_label_info"]["label"],
+                "label_number": entry["row_label_info"]["number"],
+                "row_text": normalize_text(entry.get("row_text")) or " | ".join(value for value in cells if value),
+                "assignments": assignments,
+            }
+        )
+    if not extracted_rows:
+        return [], "no_assignment_rows_matched"
+    return extracted_rows, ""
+
+
 def _extract_row_assignments(table_path: Path, candidate_values: list[str]) -> list[dict[str, str]]:
     rows = read_csv_rows(table_path)
     assignments: list[dict[str, str]] = []
@@ -703,6 +1459,7 @@ def run_table_row_expansion(
     *,
     document: dict[str, Any],
     compatibility_columns: list[str],
+    doe_summary: dict[str, Any] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any]]:
     augment_document_with_table_markers(document)
     document_key = normalize_text(document.get("document_key") or document.get("key"))
@@ -725,13 +1482,24 @@ def run_table_row_expansion(
     inheritance_markers = execution_ready_markers(
         [item for item in ensure_list(document.get("inheritance_markers")) if isinstance(item, dict)]
     )
-    normalized_payloads = _load_normalized_table_payloads(document)
+    normalized_payloads, reopen_binding = _load_normalized_table_payloads(document)
     rows: list[dict[str, str]] = []
     traces: list[dict[str, str]] = []
     jsonl_rows: list[dict[str, Any]] = []
     table_row_count = 0
     group_hint = f"{document_key}__table_formulation_group__01"
     table_activation_rows: list[dict[str, str]] = []
+    explicit_table_rows_emitted = 0
+    single_variable_recovery_attempted = "no"
+    single_variable_rows_emitted = 0
+    non_doe_single_variable_groups_detected = 0
+    single_variable_recovery_source_type = ""
+    single_variable_recovery_failure_reason = ""
+    held_constant_context_source = ""
+    variable_axes_detected: list[str] = []
+    single_variable_recovery_consumed = False
+    doe_path_attempted = "yes" if isinstance(doe_summary, dict) and normalize_text(doe_summary.get("doe_path_attempted") or doe_summary.get("doe_expansion_attempted")) == "yes" else "no"
+    doe_rows_emitted = int((doe_summary or {}).get("doe_rows_emitted") or (doe_summary or {}).get("emitted_row_count") or 0)
     if not scopes and normalized_payloads:
         table_activation_rows.append(
             {
@@ -750,6 +1518,22 @@ def run_table_row_expansion(
                 "table_path": "",
                 "varying_variable_count": "0",
                 "varying_variables": "",
+                "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+                "reopen_resolution_status": reopen_binding.get("reopen_resolution_status", ""),
+                "reopen_failure_reason": reopen_binding.get("reopen_failure_reason", ""),
+                "normalized_payload_used": reopen_binding.get("normalized_payload_used", "no"),
+                "doe_path_attempted": doe_path_attempted,
+                "doe_rows_emitted": str(doe_rows_emitted),
+                "fell_back_to_table_expansion": "no",
+                "fallback_reason": "",
+                "explicit_table_rows_emitted": "0",
+                "non_doe_single_variable_groups_detected": "0",
+                "single_variable_recovery_attempted": "no",
+                "single_variable_rows_emitted": "0",
+                "single_variable_recovery_source_type": "",
+                "single_variable_recovery_failure_reason": "",
+                "held_constant_context_source": "",
+                "variable_axis_detected": "",
             }
         )
 
@@ -771,6 +1555,22 @@ def run_table_row_expansion(
             "table_path": normalize_text(scope.get("table_path")),
             "varying_variable_count": "0",
             "varying_variables": "",
+            "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+            "reopen_resolution_status": reopen_binding.get("reopen_resolution_status", ""),
+            "reopen_failure_reason": "",
+            "normalized_payload_used": reopen_binding.get("normalized_payload_used", "no"),
+            "doe_path_attempted": doe_path_attempted,
+            "doe_rows_emitted": str(doe_rows_emitted),
+            "fell_back_to_table_expansion": "no",
+            "fallback_reason": "",
+            "explicit_table_rows_emitted": "0",
+            "non_doe_single_variable_groups_detected": "0",
+            "single_variable_recovery_attempted": "no",
+            "single_variable_rows_emitted": "0",
+            "single_variable_recovery_source_type": "",
+            "single_variable_recovery_failure_reason": "",
+            "held_constant_context_source": "",
+            "variable_axis_detected": "",
         }
         if not table_id:
             activation_row["skip_reason"] = "missing_table_id"
@@ -786,16 +1586,21 @@ def run_table_row_expansion(
             continue
         boundary = boundary_markers.get(table_id, {})
         if bool(boundary.get("is_doe")):
-            activation_row["skip_reason"] = "blocked_by_doe_boundary"
-            table_activation_rows.append(activation_row)
-            continue
-        authority_payload = resolve_table_authority_payload_for_scope(
+            if doe_rows_emitted > 0:
+                activation_row["skip_reason"] = "blocked_by_successful_doe_emission"
+                table_activation_rows.append(activation_row)
+                continue
+            activation_row["fell_back_to_table_expansion"] = "yes"
+            activation_row["fallback_reason"] = "doe_emitted_zero_rows"
+        authority_payload, payload_failure_reason = resolve_table_authority_payload_for_scope(
             scope,
             normalized_payloads=normalized_payloads,
         )
         if authority_payload is None:
             activation_row["authorized"] = "yes"
             activation_row["skip_reason"] = "missing_table_authority_payload"
+            activation_row["reopen_resolution_status"] = "failed"
+            activation_row["reopen_failure_reason"] = payload_failure_reason or reopen_binding.get("reopen_failure_reason", "")
             table_activation_rows.append(activation_row)
             continue
         authority_table_id = normalize_text(authority_payload.get("table_id") or authority_payload.get("source_table_id"))
@@ -806,6 +1611,8 @@ def run_table_row_expansion(
             table_id = authority_table_id
             activation_row["table_id"] = authority_table_id
         activation_row["table_path"] = authority_table_path
+        activation_row["reopen_resolution_status"] = "resolved"
+        activation_row["normalized_payload_used"] = reopen_binding.get("normalized_payload_used", "yes")
         role_info = variable_roles.get(table_id, {})
         if marker_provenance(role_info) not in LLM_MARKER_SOURCES:
             activation_row["authorized"] = "yes"
@@ -817,19 +1624,10 @@ def run_table_row_expansion(
         activation_row["called"] = "yes"
         activation_row["varying_variable_count"] = str(len(varying_variables))
         activation_row["varying_variables"] = "|".join(varying_variables)
-        if len(varying_variables) != 1:
-            activation_row["skip_reason"] = f"unsupported_varying_variable_count:{len(varying_variables)}"
-            table_activation_rows.append(activation_row)
-            continue
-        varying_variable = varying_variables[0]
-        candidate_values = candidate_values_for_variable(document, varying_variable, scope=scope)
-        if not candidate_values:
-            activation_row["skip_reason"] = "missing_candidate_values"
-            table_activation_rows.append(activation_row)
-            continue
-        assignment_rows = _extract_row_assignments_from_authority(
-            authority_row_entries(authority_payload),
-            candidate_values,
+        authority_entries = authority_row_entries(authority_payload)
+        direct_rows, direct_failure_reason = extract_direct_formulation_rows_from_authority(
+            authority_payload=authority_payload,
+            row_entries=authority_entries,
         )
         scope_id = normalize_text(scope.get("scope_id"))
         if not scope_id:
@@ -850,90 +1648,367 @@ def run_table_row_expansion(
             )
             and marker_provenance(marker) in LLM_MARKER_SOURCES
         ]
-        for assignment in assignment_rows:
-            row = {column: "" for column in compatibility_columns}
-            row_id = f"{document_key}__{normalize_token(table_id)}__row_{int(assignment['row_ordinal']):02d}"
-            value = normalize_text(assignment.get("variable_value"))
-            row.update(
-                {
-                    "key": document_key,
-                    "doi": doi,
-                    "model": model_name,
-                    "local_instance_id": row_id,
-                    "formulation_id": row_id,
-                    "raw_formulation_label": f"{table_id} row {int(assignment['row_ordinal'])} ({varying_variable}={value})",
-                    "instance_kind": "new_formulation",
-                    "instance_kind_raw": "new_formulation",
-                    "instance_kind_inferred": "new_formulation",
-                    "instance_confidence": "reported",
-                    "candidate_source": RECOVERY_CANDIDATE_SOURCE,
-                    "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
-                    "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
-                    "row_materialization_mode": ROW_MATERIALIZATION_MODE,
-                    "semantic_scope_authority": "llm_declared_scope",
-                    "semantic_scope_ref": scope_id,
-                    "instance_evidence_region_type": "table_row",
-                    "evidence_section": table_id,
-                    "evidence_span_text": normalize_text(assignment.get("row_text")),
-                    "formulation_role": "reported",
-                    "instance_context_tags": stringify_json(["table_row_expansion"]),
-                    "change_context_tags": stringify_json(["table_authorized_variation"]),
-                    "change_descriptions": stringify_json([f"{varying_variable}={value}"]),
-                    "change_role": "table_row_variation",
-                    IDENTITY_VARIABLES_FIELD: stringify_json(
-                        [
-                            {
-                                "name": normalize_token(varying_variable),
-                                "name_raw": varying_variable,
-                                "value": value,
-                                "value_raw": value,
-                            }
-                        ]
-                    ),
-                    METHOD_GROUP_SIGNATURE_HINT_FIELD: group_hint,
-                    TABLE_ID_FIELD: table_id,
-                    TABLE_ROW_ID_FIELD: f"{table_id}::row_{int(assignment['row_ordinal']):02d}",
-                    TABLE_ASSIGNMENTS_FIELD: stringify_json([{varying_variable: value}]),
-                    TABLE_SCOPE_FIELD: stringify_json(scope),
-                    TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
-                    SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
-                    INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
-                    BOUNDARY_MARKER_FIELD: stringify_json(boundary),
-                    PREPARATION_INHERITANCE_FIELD: stringify_json(
-                        [
-                            marker
-                            for marker in table_inheritance_markers
-                            if bool(marker.get("inherits_from_preparation"))
-                        ]
-                    ),
-                    "supporting_evidence_refs": stringify_json(
-                        [
-                            {
-                                "source_region_type": "table_row",
-                                "source_locator_text": f"{table_id}::row_{int(assignment['row_ordinal']):02d}",
-                                "supporting_snippet": normalize_text(assignment.get("row_text")),
-                                "target_field_name": varying_variable,
-                            }
-                        ]
-                    ),
+        emitted_rows_for_scope = 0
+        explicit_rows_for_scope = 0
+        if direct_rows:
+            for direct_row in direct_rows:
+                row = {column: "" for column in compatibility_columns}
+                label = normalize_text(direct_row.get("label")) or f"row_{len(rows) + 1}"
+                row_id = f"{document_key}__{normalize_token(table_id)}__{normalize_token(label)}"
+                assignment_map = {
+                    normalize_assignment_name(item["name"]): normalize_text(item["value"])
+                    for item in direct_row.get("assignments", [])
+                    if normalize_assignment_name(item.get("name")) and normalize_text(item.get("value"))
                 }
+                identity_variables = [
+                    {
+                        "name": normalize_token(name),
+                        "name_raw": name,
+                        "value": value,
+                        "value_raw": value,
+                    }
+                    for name, value in assignment_map.items()
+                ]
+                change_descriptions = [f"{name}={value}" for name, value in assignment_map.items()]
+                row.update(
+                    {
+                        "key": document_key,
+                        "doi": doi,
+                        "model": model_name,
+                        "local_instance_id": row_id,
+                        "formulation_id": row_id,
+                        "raw_formulation_label": label,
+                        "instance_kind": "new_formulation",
+                        "instance_kind_raw": "new_formulation",
+                        "instance_kind_inferred": "new_formulation",
+                        "instance_confidence": "reported",
+                        "candidate_source": RECOVERY_CANDIDATE_SOURCE,
+                        "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+                        "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+                        "row_materialization_mode": ROW_MATERIALIZATION_MODE,
+                        "semantic_scope_authority": "llm_declared_scope",
+                        "semantic_scope_ref": scope_id,
+                        "instance_evidence_region_type": "table_row",
+                        "evidence_section": table_id,
+                        "evidence_span_text": normalize_text(direct_row.get("row_text")),
+                        "formulation_role": normalize_text(direct_row.get("instance_role")) or "reported",
+                        "instance_context_tags": stringify_json(["table_row_expansion", "explicit_table_anchor"]),
+                        "change_context_tags": stringify_json(["table_authorized_variation"]),
+                        "change_descriptions": stringify_json(change_descriptions),
+                        "change_role": "table_row_variation",
+                        IDENTITY_VARIABLES_FIELD: stringify_json(identity_variables),
+                        METHOD_GROUP_SIGNATURE_HINT_FIELD: group_hint,
+                        TABLE_ID_FIELD: table_id,
+                        TABLE_ROW_ID_FIELD: f"{table_id}::{label}",
+                        TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
+                        TABLE_SCOPE_FIELD: stringify_json(scope),
+                        TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
+                        SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
+                        INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
+                        BOUNDARY_MARKER_FIELD: stringify_json(boundary),
+                        PREPARATION_INHERITANCE_FIELD: stringify_json(
+                            [
+                                marker
+                                for marker in table_inheritance_markers
+                                if bool(marker.get("inherits_from_preparation"))
+                            ]
+                        ),
+                        "supporting_evidence_refs": stringify_json(
+                            [
+                                {
+                                    "source_region_type": "table_row",
+                                    "source_locator_text": f"{table_id}::{label}",
+                                    "supporting_snippet": normalize_text(direct_row.get("row_text")),
+                                    "target_field_name": "|".join(assignment_map.keys()),
+                                }
+                            ]
+                        ),
+                    }
+                )
+                for name, value in assignment_map.items():
+                    compat_field = compatibility_field_for_assignment(name)
+                    if not compat_field:
+                        continue
+                    row[f"{compat_field}_value"] = maybe_number_text(value) or value
+                    row[f"{compat_field}_value_text"] = value
+                    row[f"{compat_field}_membership_confidence"] = "reported"
+                    row[f"{compat_field}_evidence_region_type"] = "table_cell"
+                rows.append(row)
+                jsonl_rows.append(dict(row))
+                traces.append(
+                    {
+                        "key": document_key,
+                        "local_instance_id": row_id,
+                        "projection_step": FUNCTION_UNIT_ID,
+                        "projection_status": "added_row",
+                        "detail": f"{table_id}::{label}",
+                    }
+                )
+                table_row_count += 1
+                emitted_rows_for_scope += 1
+                explicit_table_rows_emitted += 1
+                explicit_rows_for_scope += 1
+        else:
+            column_rows, column_failure_reason = extract_column_anchor_rows_from_authority(
+                authority_payload=authority_payload,
+                row_entries=authority_entries,
             )
-            rows.append(row)
-            jsonl_rows.append(dict(row))
-            traces.append(
-                {
-                    "key": document_key,
-                    "local_instance_id": row_id,
-                    "projection_step": FUNCTION_UNIT_ID,
-                    "projection_status": "added_row",
-                    "detail": f"{table_id}::{varying_variable}={value}",
-                }
+            if column_rows:
+                for column_row in column_rows:
+                    row = {column: "" for column in compatibility_columns}
+                    label = normalize_text(column_row.get("label")) or f"column_{len(rows) + 1}"
+                    row_id = f"{document_key}__{normalize_token(table_id)}__{normalize_token(label)}"
+                    assignment_map = {
+                        normalize_assignment_name(item["name"]): normalize_text(item["value"])
+                        for item in column_row.get("assignments", [])
+                        if normalize_assignment_name(item.get("name")) and normalize_text(item.get("value"))
+                    }
+                    identity_variables = [
+                        {
+                            "name": normalize_token(name),
+                            "name_raw": name,
+                            "value": value,
+                            "value_raw": value,
+                        }
+                        for name, value in assignment_map.items()
+                    ]
+                    measurement_summary = ensure_list(column_row.get("measurement_summary"))
+                    row.update(
+                        {
+                            "key": document_key,
+                            "doi": doi,
+                            "model": model_name,
+                            "local_instance_id": row_id,
+                            "formulation_id": row_id,
+                            "raw_formulation_label": label,
+                            "instance_kind": "new_formulation",
+                            "instance_kind_raw": "new_formulation",
+                            "instance_kind_inferred": "new_formulation",
+                            "instance_confidence": "reported",
+                            "candidate_source": RECOVERY_CANDIDATE_SOURCE,
+                            "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+                            "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+                            "row_materialization_mode": ROW_MATERIALIZATION_MODE,
+                            "semantic_scope_authority": "llm_declared_scope",
+                            "semantic_scope_ref": scope_id,
+                            "instance_evidence_region_type": "table_column",
+                            "evidence_section": table_id,
+                            "evidence_span_text": normalize_text(column_row.get("row_text")),
+                            "formulation_role": normalize_text(column_row.get("instance_role")) or "reported",
+                            "instance_context_tags": stringify_json(["table_row_expansion", "explicit_table_anchor"]),
+                            "change_context_tags": stringify_json(["column_oriented_formulation_table"]),
+                            "change_descriptions": stringify_json(
+                                [f"{name}={value}" for name, value in assignment_map.items()]
+                            ),
+                            "change_role": "table_column_variation",
+                            IDENTITY_VARIABLES_FIELD: stringify_json(identity_variables),
+                            METHOD_GROUP_SIGNATURE_HINT_FIELD: group_hint,
+                            TABLE_ID_FIELD: table_id,
+                            TABLE_ROW_ID_FIELD: f"{table_id}::{normalize_token(label)}",
+                            TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
+                            TABLE_SCOPE_FIELD: stringify_json(scope),
+                            TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
+                            SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
+                            INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
+                            BOUNDARY_MARKER_FIELD: stringify_json(boundary),
+                            PREPARATION_INHERITANCE_FIELD: stringify_json(
+                                [
+                                    marker
+                                    for marker in table_inheritance_markers
+                                    if bool(marker.get("inherits_from_preparation"))
+                                ]
+                            ),
+                            "supporting_evidence_refs": stringify_json(
+                                [
+                                    {
+                                        "source_region_type": "table_column",
+                                        "source_locator_text": f"{table_id}::{label}",
+                                        "supporting_snippet": normalize_text(column_row.get("row_text")),
+                                        "target_field_name": "|".join(assignment_map.keys()),
+                                    }
+                                ]
+                            ),
+                        }
+                    )
+                    rows.append(row)
+                    jsonl_rows.append(dict(row))
+                    traces.append(
+                        {
+                            "key": document_key,
+                            "local_instance_id": row_id,
+                            "projection_step": FUNCTION_UNIT_ID,
+                            "projection_status": "added_row",
+                            "detail": f"{table_id}::{label}",
+                        }
+                    )
+                    table_row_count += 1
+                    emitted_rows_for_scope += 1
+                    explicit_table_rows_emitted += 1
+                    explicit_rows_for_scope += 1
+                direct_failure_reason = ""
+            else:
+                direct_failure_reason = column_failure_reason or direct_failure_reason
+            if len(varying_variables) != 1:
+                if emitted_rows_for_scope == 0:
+                    activation_row["skip_reason"] = direct_failure_reason or f"unsupported_varying_variable_count:{len(varying_variables)}"
+                    table_activation_rows.append(activation_row)
+                    continue
+            elif emitted_rows_for_scope == 0:
+                varying_variable = varying_variables[0]
+                candidate_values = candidate_values_for_variable(document, varying_variable, scope=scope)
+                if not candidate_values:
+                    activation_row["skip_reason"] = "missing_candidate_values"
+                    table_activation_rows.append(activation_row)
+                    continue
+                assignment_rows = _extract_row_assignments_from_authority(
+                    authority_entries,
+                    candidate_values,
+                )
+                for assignment in assignment_rows:
+                    row = {column: "" for column in compatibility_columns}
+                    row_id = f"{document_key}__{normalize_token(table_id)}__row_{int(assignment['row_ordinal']):02d}"
+                    value = normalize_text(assignment.get("variable_value"))
+                    row.update(
+                        {
+                            "key": document_key,
+                            "doi": doi,
+                            "model": model_name,
+                            "local_instance_id": row_id,
+                            "formulation_id": row_id,
+                            "raw_formulation_label": f"{table_id} row {int(assignment['row_ordinal']):02d} ({varying_variable}={value})",
+                            "instance_kind": "new_formulation",
+                            "instance_kind_raw": "new_formulation",
+                            "instance_kind_inferred": "new_formulation",
+                            "instance_confidence": "reported",
+                            "candidate_source": RECOVERY_CANDIDATE_SOURCE,
+                            "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+                            "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+                            "row_materialization_mode": ROW_MATERIALIZATION_MODE,
+                            "semantic_scope_authority": "llm_declared_scope",
+                            "semantic_scope_ref": scope_id,
+                            "instance_evidence_region_type": "table_row",
+                            "evidence_section": table_id,
+                            "evidence_span_text": normalize_text(assignment.get("row_text")),
+                            "formulation_role": "reported",
+                            "instance_context_tags": stringify_json(["table_row_expansion"]),
+                            "change_context_tags": stringify_json(["table_authorized_variation"]),
+                            "change_descriptions": stringify_json([f"{varying_variable}={value}"]),
+                            "change_role": "table_row_variation",
+                            IDENTITY_VARIABLES_FIELD: stringify_json(
+                                [
+                                    {
+                                        "name": normalize_token(varying_variable),
+                                        "name_raw": varying_variable,
+                                        "value": value,
+                                        "value_raw": value,
+                                    }
+                                ]
+                            ),
+                            METHOD_GROUP_SIGNATURE_HINT_FIELD: group_hint,
+                            TABLE_ID_FIELD: table_id,
+                            TABLE_ROW_ID_FIELD: f"{table_id}::row_{int(assignment['row_ordinal']):02d}",
+                            TABLE_ASSIGNMENTS_FIELD: stringify_json([{varying_variable: value}]),
+                            TABLE_SCOPE_FIELD: stringify_json(scope),
+                            TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
+                            SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),
+                            INHERITANCE_MARKER_FIELD: stringify_json(table_inheritance_markers),
+                            BOUNDARY_MARKER_FIELD: stringify_json(boundary),
+                            PREPARATION_INHERITANCE_FIELD: stringify_json(
+                                [
+                                    marker
+                                    for marker in table_inheritance_markers
+                                    if bool(marker.get("inherits_from_preparation"))
+                                ]
+                            ),
+                            "supporting_evidence_refs": stringify_json(
+                                [
+                                    {
+                                        "source_region_type": "table_row",
+                                        "source_locator_text": f"{table_id}::row_{int(assignment['row_ordinal']):02d}",
+                                        "supporting_snippet": normalize_text(assignment.get("row_text")),
+                                        "target_field_name": varying_variable,
+                                    }
+                                ]
+                            ),
+                        }
+                    )
+                    rows.append(row)
+                    jsonl_rows.append(dict(row))
+                    traces.append(
+                        {
+                            "key": document_key,
+                            "local_instance_id": row_id,
+                            "projection_step": FUNCTION_UNIT_ID,
+                            "projection_status": "added_row",
+                            "detail": f"{table_id}::{varying_variable}={value}",
+                        }
+                    )
+                    table_row_count += 1
+                    emitted_rows_for_scope += 1
+                    explicit_table_rows_emitted += 1
+                    explicit_rows_for_scope += 1
+        if (
+            emitted_rows_for_scope > 0
+            and not single_variable_recovery_consumed
+            and doe_rows_emitted == 0
+        ):
+            single_variable_recovery_attempted = "yes"
+            single_variable_contract = build_single_variable_recovery_contract(
+                document=document,
+                require_anchor_rows=explicit_rows_for_scope > 0,
             )
-            table_row_count += 1
+            if bool(single_variable_contract.get("detected")):
+                single_variable_recovery_source_type = normalize_text(single_variable_contract.get("source_type"))
+                held_constant_context_source = normalize_text(single_variable_contract.get("held_constant_context_source"))
+                groups = [
+                    item for item in ensure_list(single_variable_contract.get("groups")) if isinstance(item, dict)
+                ]
+                non_doe_single_variable_groups_detected = len(groups)
+                variable_axes_detected = [
+                    normalize_text(item.get("variable_name"))
+                    for item in groups
+                    if normalize_text(item.get("variable_name"))
+                ]
+                recovered_rows, recovered_jsonl, recovered_traces, recovered_count = emit_single_variable_recovery_rows(
+                    document=document,
+                    compatibility_columns=compatibility_columns,
+                    contract=single_variable_contract,
+                    scope=scope,
+                    scope_id=scope_id,
+                    table_id=table_id,
+                    group_hint_prefix=f"{document_key}__single_variable_group",
+                )
+                rows.extend(recovered_rows)
+                jsonl_rows.extend(recovered_jsonl)
+                traces.extend(recovered_traces)
+                table_row_count += recovered_count
+                emitted_rows_for_scope += recovered_count
+                single_variable_rows_emitted = recovered_count
+                if recovered_count == 0:
+                    single_variable_recovery_failure_reason = "no_nonbaseline_levels_emitted"
+                single_variable_recovery_consumed = True
+            else:
+                single_variable_recovery_failure_reason = normalize_text(
+                    single_variable_contract.get("failure_reason")
+                )
+                variable_axes_detected = [
+                    normalize_text(item)
+                    for item in ensure_list(single_variable_contract.get("variable_axes"))
+                    if normalize_text(item)
+                ]
+                single_variable_recovery_consumed = True
         activation_row["called"] = "yes"
-        activation_row["rows_emitted"] = str(len(assignment_rows))
-        activation_row["rows_retained_after_projection"] = str(len(assignment_rows))
-        activation_row["skip_reason"] = "" if assignment_rows else "no_assignment_rows_matched"
+        activation_row["rows_emitted"] = str(emitted_rows_for_scope)
+        activation_row["rows_retained_after_projection"] = str(emitted_rows_for_scope)
+        activation_row["skip_reason"] = "" if emitted_rows_for_scope else (direct_failure_reason or "no_assignment_rows_matched")
+        activation_row["explicit_table_rows_emitted"] = str(explicit_rows_for_scope)
+        activation_row["non_doe_single_variable_groups_detected"] = str(non_doe_single_variable_groups_detected)
+        activation_row["single_variable_recovery_attempted"] = single_variable_recovery_attempted
+        activation_row["single_variable_rows_emitted"] = str(single_variable_rows_emitted)
+        activation_row["single_variable_recovery_source_type"] = single_variable_recovery_source_type
+        activation_row["single_variable_recovery_failure_reason"] = single_variable_recovery_failure_reason
+        activation_row["held_constant_context_source"] = held_constant_context_source
+        activation_row["variable_axis_detected"] = "|".join(variable_axes_detected)
         table_activation_rows.append(activation_row)
     summary = {
         "function_unit": FUNCTION_UNIT_ID,
@@ -958,6 +2033,40 @@ def run_table_row_expansion(
         "table_count": sum(1 for item in scopes if bool(item.get("is_formulation_table"))),
         "group_hint": group_hint if table_row_count else "",
         "status": "emitted_rows" if table_row_count else "no_rows_emitted",
+        "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+        "reopen_resolution_status": (
+            "resolved"
+            if any(row.get("reopen_resolution_status") == "resolved" for row in table_activation_rows)
+            else reopen_binding.get("reopen_resolution_status", "")
+        ),
+        "reopen_failure_reason": (
+            next((row.get("reopen_failure_reason", "") for row in table_activation_rows if row.get("reopen_failure_reason")), "")
+            or reopen_binding.get("reopen_failure_reason", "")
+        ),
+        "normalized_payload_used": (
+            "yes"
+            if any(row.get("normalized_payload_used") == "yes" for row in table_activation_rows)
+            else reopen_binding.get("normalized_payload_used", "no")
+        ),
+        "doe_path_attempted": doe_path_attempted,
+        "doe_rows_emitted": doe_rows_emitted,
+        "fell_back_to_table_expansion": (
+            "yes"
+            if any(row.get("fell_back_to_table_expansion") == "yes" for row in table_activation_rows)
+            else "no"
+        ),
+        "fallback_reason": next(
+            (row.get("fallback_reason", "") for row in table_activation_rows if row.get("fallback_reason")),
+            "",
+        ),
+        "explicit_table_rows_emitted": explicit_table_rows_emitted,
+        "non_doe_single_variable_groups_detected": non_doe_single_variable_groups_detected,
+        "single_variable_recovery_attempted": single_variable_recovery_attempted,
+        "single_variable_rows_emitted": single_variable_rows_emitted,
+        "single_variable_recovery_source_type": single_variable_recovery_source_type,
+        "single_variable_recovery_failure_reason": single_variable_recovery_failure_reason,
+        "held_constant_context_source": held_constant_context_source,
+        "variable_axis_detected": "|".join(variable_axes_detected),
         "table_activation_rows": table_activation_rows,
     }
     return rows, traces, jsonl_rows, summary

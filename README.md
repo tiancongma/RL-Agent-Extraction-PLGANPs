@@ -182,12 +182,27 @@ Stage2 authority reminder:
 - The pre-LLM selector no longer owns semantic table truth. Its maintained
   contract is conservative denoising, minimum evidence coverage, and bounded
   packing only.
+- Irreversible pre-LLM table removal is governed by a confirmed-noise-only
+  rule: if a table is not confirmed pure noise, it must remain preserved in
+  the pre-LLM authority surface.
 - All `S2-4a` table evidence remains summary-only. Full tables are preserved in
   `S2-2` authority artifacts for deterministic execution, but they are not
   allowed back into the LLM-facing prompt surface.
 - When multiple plausible table summaries are present, the LLM owns semantic
   table scoping and must decide which surfaces are formulation-bearing or
   downstream/result-only.
+- The maintained summary contract is neutral across preserved tables. The main
+  residual risk is lossy summary compression, not primary-table promotion.
+- Within summary-only table evidence, header / column schema plus first-column
+  row identity surfaces are the primary structural contract. Sample rows are
+  optional aids only.
+- Authority reopen handles such as `authority_run_dir`,
+  `authority_payload_root`, and table-scope locators are deterministic
+  execution-side metadata. They must not depend on the LLM to generate or
+  transmit them and may be reattached by governed sidecar logic during replay.
+- If the LLM-facing input is unchanged, downstream deterministic contract
+  changes should prefer replay from frozen raw responses over fresh live calls,
+  provided execution-side metadata can be lawfully reattached.
 - The governed `S2-4a` audit is split into three layers:
   - Hard Gate for pre-LLM legality/readiness only
   - Feature Activation Audit for artifact-backed repaired-feature activation

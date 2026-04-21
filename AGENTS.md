@@ -322,6 +322,16 @@ Current architecture direction:
 
 - LLM performs **semantic formulation identification**
 - rules perform **validation, audit, and evidence checking**
+- pre-LLM table handling may irreversibly remove only **confirmed pure noise**
+  tables; if a table is not confirmed noise, preserve it into the pre-LLM
+  authority surface
+- table summary remains a semantic-facing surface only; deterministic authority
+  handles such as authority roots or payload locators are execution-side
+  metadata and must not be treated as LLM semantic content
+- when LLM task, prompt content, evidence content, model, and generation
+  settings are unchanged, prefer replay from frozen raw responses over fresh
+  live calls if the deterministic replay path can lawfully reattach required
+  execution-side metadata
 
 Older rule-heavy reconstruction paths and multimodel comparison pipelines
 are considered **historical methods** unless explicitly reactivated.

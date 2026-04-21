@@ -204,6 +204,7 @@ SUMMARY_JSON_NAME = "compatibility_projection_summary_v1.json"
 CONTRACT_TSV_NAME = "stage2_replacement_compatibility_projection_contract.tsv"
 FUNCTION_UNIT_ACTIVATION_NAME = "feature_activation_report_v2.tsv"
 EXECUTION_LEDGER_NAME = "execution_ledger_v2.tsv"
+AUTHORITY_REATTACHMENT_SIDECAR_NAME = "authority_reattachment_sidecar_v1.json"
 IDENTITY_VARIABLES_FIELD = "identity_variables_json"
 LLM_FIRST_COMPOSITE_MODE = "llm_first_composite"
 FALLBACK_SEMANTIC_SOURCE_MODE = "governed_fallback_semantic_source"
@@ -527,6 +528,9 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
             "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
             "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
             "semantic_scope_declarations": ensure_list(document.get("semantic_scope_declarations")),
+            "semantic_signals": semantic_signals,
+            "authority_run_dir": normalize_text(document.get("authority_run_dir")),
+            "authority_payload_root": normalize_text(document.get("authority_payload_root")),
             "source_text_path": normalize_text(document.get("source_text_path")),
             "source_raw_response_path": normalize_text(document.get("source_raw_response_path")),
             "source_table_files": ensure_list(document.get("source_table_files")),
@@ -538,6 +542,9 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
                 "table_id": normalize_text(item.get("table_id")),
                 "table_path": "",
                 "table_asset_id": "",
+                "source_table_asset_id": normalize_text(item.get("source_table_asset_id")),
+                "source_table_reference": normalize_text(item.get("source_table_reference")),
+                "table_scope_locators": item.get("table_scope_locators") if isinstance(item.get("table_scope_locators"), dict) else {},
                 "variable_name": "",
                 "candidate_values": [],
                 "is_formulation_table": scope_kind_is_formulation_bearing(item.get("scope_kind"), item.get("is_formulation_bearing")),
@@ -671,11 +678,14 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
         "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
         "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
         "semantic_scope_declarations": ensure_list(document.get("semantic_scope_declarations")),
+        "semantic_signals": document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {},
         "table_formulation_scopes": ensure_list(document.get("table_formulation_scopes")),
         "table_variable_roles": ensure_list(document.get("table_variable_roles")),
         "selection_markers": ensure_list(document.get("selection_markers")),
         "inheritance_markers": ensure_list(document.get("inheritance_markers")),
         "boundary_markers": ensure_list(document.get("boundary_markers")),
+        "authority_run_dir": normalize_text(document.get("authority_run_dir")),
+        "authority_payload_root": normalize_text(document.get("authority_payload_root")),
         # Preserve source-path metadata so bounded deterministic recovery can
         # still resolve the explicit Stage1 table anchors from the semantic
         # intermediate, even after the semantic payload is normalized into the
@@ -880,6 +890,109 @@ def load_jsonl_documents(path: Path) -> list[dict[str, Any]]:
     return documents
 
 
+def load_authority_sidecar(path: Path | None) -> dict[str, dict[str, Any]]:
+    if path is None or not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    entries = payload.get("entries_by_paper_key")
+    if not isinstance(entries, dict):
+        return {}
+    return {
+        normalize_text(key): value
+        for key, value in entries.items()
+        if normalize_text(key) and isinstance(value, dict)
+    }
+
+
+def merge_table_scope_locators(document: dict[str, Any], locator_entries: list[dict[str, Any]]) -> None:
+    if not locator_entries:
+        return
+    locator_by_ref: dict[str, dict[str, str]] = {}
+    for entry in locator_entries:
+        locator = {
+            "table_id": normalize_text(entry.get("table_id")),
+            "source_table_asset_id": normalize_text(entry.get("source_table_asset_id")),
+            "source_table_reference": normalize_text(entry.get("source_table_reference")),
+        }
+        if not any(locator.values()):
+            continue
+        for candidate in locator.values():
+            normalized = normalize_token(candidate)
+            if normalized and normalized not in locator_by_ref:
+                locator_by_ref[normalized] = dict(locator)
+
+    def resolve_locator(value: Any) -> dict[str, str] | None:
+        normalized = normalize_token(value)
+        if not normalized:
+            return None
+        return locator_by_ref.get(normalized)
+
+    for scope in ensure_list(document.get("table_scopes")):
+        if not isinstance(scope, dict):
+            continue
+        locator = resolve_locator(scope.get("table_id"))
+        if locator is None:
+            continue
+        scope["table_scope_locators"] = dict(locator)
+        if locator.get("source_table_asset_id"):
+            scope["source_table_asset_id"] = locator["source_table_asset_id"]
+        if locator.get("source_table_reference"):
+            scope["source_table_reference"] = locator["source_table_reference"]
+
+    for scope in ensure_list(document.get("table_formulation_scopes")):
+        if not isinstance(scope, dict):
+            continue
+        locator = resolve_locator(scope.get("table_id"))
+        if locator is None:
+            continue
+        scope["table_scope_locators"] = dict(locator)
+        if locator.get("source_table_asset_id"):
+            scope["table_asset_id"] = locator["source_table_asset_id"]
+            scope["source_table_asset_id"] = locator["source_table_asset_id"]
+        if locator.get("source_table_reference"):
+            scope["source_table_reference"] = locator["source_table_reference"]
+
+    for declaration in ensure_list(document.get("semantic_scope_declarations")):
+        if not isinstance(declaration, dict):
+            continue
+        refs = [item for item in ensure_list(declaration.get("table_scope_refs")) if normalize_text(item)]
+        locators = []
+        for ref in refs:
+            locator = resolve_locator(ref)
+            if locator is not None:
+                locators.append(dict(locator))
+        if locators:
+            declaration["table_scope_locators"] = locators
+
+
+def merge_authority_sidecar(document: dict[str, Any], sidecar_entry: dict[str, Any] | None) -> dict[str, str]:
+    if not isinstance(sidecar_entry, dict):
+        return {
+            "reattachment_status": "missing",
+            "reattachment_source": "",
+            "reattachment_failure_reason": "sidecar_entry_missing",
+        }
+    authority_run_dir = normalize_text(sidecar_entry.get("authority_run_dir"))
+    authority_payload_root = normalize_text(sidecar_entry.get("authority_payload_root"))
+    if authority_run_dir:
+        document["authority_run_dir"] = authority_run_dir
+    if authority_payload_root:
+        document["authority_payload_root"] = authority_payload_root
+    merge_table_scope_locators(
+        document,
+        [item for item in ensure_list(sidecar_entry.get("table_scope_locators")) if isinstance(item, dict)],
+    )
+    return {
+        "reattachment_status": normalize_text(sidecar_entry.get("resolution_status"))
+        or ("resolved" if authority_payload_root else "unresolved"),
+        "reattachment_source": normalize_text(sidecar_entry.get("resolution_source")),
+        "reattachment_failure_reason": normalize_text(sidecar_entry.get("failure_reason")),
+    }
+
+
 def object_rows(document: dict[str, Any], object_type: str) -> list[dict[str, Any]]:
     value = document.get(LEGACY_OBJECT_KEYS[object_type], [])
     return [item for item in ensure_list(value) if isinstance(item, dict)]
@@ -1077,7 +1190,10 @@ def base_row(identity: dict[str, Any], document_key: str, doi: str, model_name: 
 
 def project_document(
     document: dict[str, Any],
+    *,
+    authority_sidecar_entry: dict[str, Any] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, Any]], dict[str, Any], dict[str, str] | None]:
+    reattachment_summary = merge_authority_sidecar(document, authority_sidecar_entry)
     augment_document_with_table_markers(document)
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     doi = normalize_text(document.get("doi"))
@@ -1346,6 +1462,7 @@ def project_document(
     table_rows, table_traces, table_jsonl_rows, table_summary = run_table_row_expansion(
         document=document,
         compatibility_columns=compatibility_output_columns(),
+        doe_summary=recovery_summary,
     )
     if table_rows:
         rows.extend(table_rows)
@@ -1476,6 +1593,7 @@ def project_document(
 
     summary = {
         "document_key": document_key,
+        "authority_reattachment_summary": reattachment_summary,
         "doe_recovery_summary": recovery_summary,
         "sequential_optimization_summary": sequential_summary,
         "table_row_expansion_summary": table_summary,
@@ -1545,6 +1663,18 @@ def build_execution_ledger_rows(projection_summaries: list[dict[str, Any]]) -> l
                     "varying_variable_count": normalize_text(activation_row.get("varying_variable_count")),
                     "varying_variables": normalize_text(activation_row.get("varying_variables")),
                     "table_path": normalize_text(activation_row.get("table_path")),
+                    "doe_path_attempted": normalize_text(activation_row.get("doe_path_attempted")),
+                    "doe_rows_emitted": normalize_text(activation_row.get("doe_rows_emitted")),
+                    "fell_back_to_table_expansion": normalize_text(activation_row.get("fell_back_to_table_expansion")),
+                    "fallback_reason": normalize_text(activation_row.get("fallback_reason")),
+                    "explicit_table_rows_emitted": normalize_text(activation_row.get("explicit_table_rows_emitted")),
+                    "non_doe_single_variable_groups_detected": normalize_text(activation_row.get("non_doe_single_variable_groups_detected")),
+                    "single_variable_recovery_attempted": normalize_text(activation_row.get("single_variable_recovery_attempted")),
+                    "single_variable_rows_emitted": normalize_text(activation_row.get("single_variable_rows_emitted")),
+                    "single_variable_recovery_source_type": normalize_text(activation_row.get("single_variable_recovery_source_type")),
+                    "single_variable_recovery_failure_reason": normalize_text(activation_row.get("single_variable_recovery_failure_reason")),
+                    "held_constant_context_source": normalize_text(activation_row.get("held_constant_context_source")),
+                    "variable_axis_detected": normalize_text(activation_row.get("variable_axis_detected")),
                     "skip_reason": normalize_text(activation_row.get("skip_reason")),
                 }
             )
@@ -1614,15 +1744,21 @@ def run_projection(
     input_path: Path,
     output_dir: Path,
     contract_path: Path,
+    authority_sidecar_path: Path | None = None,
 ) -> dict[str, Any]:
     documents = load_jsonl_documents(input_path)
+    authority_sidecar = load_authority_sidecar(authority_sidecar_path)
     all_rows: list[dict[str, str]] = []
     all_traces: list[dict[str, str]] = []
     all_jsonl_rows: list[dict[str, Any]] = []
     projection_summaries: list[dict[str, Any]] = []
     guard_rows: list[dict[str, str]] = []
     for document in documents:
-        rows, traces, jsonl_rows, projection_summary, guard_row = project_document(document)
+        document_key = normalize_text(document.get("document_key") or document.get("key"))
+        rows, traces, jsonl_rows, projection_summary, guard_row = project_document(
+            document,
+            authority_sidecar_entry=authority_sidecar.get(document_key),
+        )
         all_rows.extend(rows)
         all_traces.extend(traces)
         all_jsonl_rows.extend(jsonl_rows)
@@ -1685,6 +1821,18 @@ def run_projection(
             "varying_variable_count",
             "varying_variables",
             "table_path",
+            "doe_path_attempted",
+            "doe_rows_emitted",
+            "fell_back_to_table_expansion",
+            "fallback_reason",
+            "explicit_table_rows_emitted",
+            "non_doe_single_variable_groups_detected",
+            "single_variable_recovery_attempted",
+            "single_variable_rows_emitted",
+            "single_variable_recovery_source_type",
+            "single_variable_recovery_failure_reason",
+            "held_constant_context_source",
+            "variable_axis_detected",
             "skip_reason",
         ],
     )
@@ -1716,6 +1864,8 @@ def run_projection(
         "table_row_expansion_function_unit": "table_row_expansion_v1",
         "function_unit_activation_rows": function_unit_activation_rows,
         "execution_ledger_rows": execution_ledger_rows,
+        "authority_sidecar_path": str(authority_sidecar_path.resolve()) if authority_sidecar_path is not None and authority_sidecar_path.exists() else "",
+        "authority_sidecar_entries": len(authority_sidecar),
         "numbered_doe_guard_tsv": str(Path(guard_stats["guard_path"]).resolve()),
         "numbered_doe_guard_fail_count": int(guard_stats["fail_count"]),
         "numbered_doe_guard_warn_count": int(guard_stats["warn_count"]),

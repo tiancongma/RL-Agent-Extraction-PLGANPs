@@ -4611,3 +4611,110 @@ Validation note
 - full DEV15 rerun:
   `data/results/20260421_3579206/16_inline_table_contract_fix_dev15`
   plus the updated Layer A check raised readiness from `14/15` to `15/15`
+
+## 2026-04-21 - Lock confirmed-noise-only S2-2b preservation, summary neutrality, deterministic authority metadata, and replay preference
+
+### Decision: Rewrite the S2-2b table policy around confirmed-noise-only irreversible removal
+
+Decision
+- `S2-2b` may irreversibly remove a table only when it is confirmed pure noise.
+- If a table is not confirmed noise, it must remain preserved in the pre-LLM
+  authority surface.
+- Rules must not decide whether a table is important and must not downrank,
+  suppress, or remove a table because another table appears more useful or
+  more formulation-bearing.
+
+Why
+- `5ZXYABSU` showed a concrete preservation failure family: formulation-bearing
+  `Table 1` and `Table 2` survived `S2-2a` but were hard-dropped at `S2-2b`,
+  leaving only `Table 14`.
+- Because the LLM sees summary-only table surfaces rather than full tables,
+  any rule-based pre-LLM importance veto creates irreversible downstream loss.
+
+Impact
+- table handling policy is now governed as:
+  - `CONFIRMED_NOISE`
+  - `PRESERVE`
+- audit/debug labels may still exist for observability, but they must not act
+  as importance-based vetoes on preserved tables.
+
+### Decision: Clarify that the maintained S2-3 / S2-4a summary path is neutral across preserved tables
+
+Decision
+- the normal maintained `S2-3` / `S2-4a` path remains neutral across
+  preserved tables and must not reintroduce primary-table bias
+- the main residual risk at this boundary is lossy summary compression, not
+  cross-table importance reranking
+- summary blocks must preserve header / column schema and first-column row
+  identity surfaces as the primary structural contract
+- sample rows are optional aids only and must not become the main information
+  source
+- deterministic rules should not pre-explain cross-table semantic
+  relationships; the LLM remains responsible for semantic interpretation
+
+Why
+- the maintained prompt path already uses neutral stable ordering for selected
+  table summaries, but debugging showed that lossy compression can still hide
+  important table structure
+- preserving schema and row-identity surfaces is more important than relying
+  on a few sample rows
+
+Impact
+- future summary work should focus on structural preservation rather than
+  semantic table prioritization
+- primary-table bias should not be reintroduced through summary formatting or
+  prompt packing
+
+### Decision: Treat authority reopen handles as deterministic execution-side metadata rather than LLM semantic content
+
+Decision
+- `authority_run_dir`, `authority_payload_root`, table-scope locators, and
+  related reopen handles are deterministic execution-side metadata
+- they must not be treated as LLM semantic content
+- they must not depend on the LLM to generate or transmit them
+- replay compatibility should use deterministic sidecar or reattachment
+  surfaces to recover them
+
+Why
+- replay from frozen raw responses remained semantically reusable, but failed
+  when authority metadata was missing from replayed semantic docs
+- the correct architectural fix was deterministic sidecar / reattachment,
+  not a requirement that the LLM carry execution metadata
+
+Impact
+- semantic understanding and deterministic authority reopen remain cleanly
+  separated
+- frozen raw responses stay reusable for lawful replay when execution-side
+  metadata can be deterministically reattached
+
+### Decision: Prefer replay from frozen raw responses when the LLM-facing contract is unchanged
+
+Decision
+- if LLM task, prompt content, evidence content, model, and generation
+  settings are unchanged, downstream deterministic contract changes should
+  prefer replay from frozen raw responses over fresh live calls
+- this preference applies only when the replay path can lawfully reattach the
+  required execution-side metadata and preserve boundary legality
+
+Why
+- recent Stage2 debugging confirmed that several important fixes were entirely
+  downstream of the frozen `S2-4b` raw-response boundary
+- replay avoids unnecessary live nondeterminism and keeps validation scoped to
+  the changed deterministic contract
+
+Impact
+- replay becomes the default validation path for downstream deterministic
+  repairs when the LLM-facing contract is unchanged
+- fresh live calls remain necessary only when the LLM-facing contract itself
+  changes or replay cannot lawfully reattach required metadata
+
+### Failure-family anchors
+
+- `5ZXYABSU` is the maintained anchor for the selector/preservation failure
+  family where formulation-bearing tables survive `S2-2a` but are wrongly
+  hard-dropped at `S2-2b`
+- `5GIF3D8W` is the maintained anchor for the non-DOE single-variable recovery
+  failure family with:
+  - an explicit baseline or optimized formulation table
+  - later single-variable exploration groups
+  - no lawful Cartesian expansion

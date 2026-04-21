@@ -1,0 +1,31 @@
+conclusion	repo_file	status_before	status_after	memory_updated_yes_no	notes
+S2-2b confirmed-noise-only irreversible table removal	AGENTS.md	missing	explicit contract added	no	Added high-level architecture reminder for future agents
+S2-2b confirmed-noise-only irreversible table removal	README.md	weak	explicit contract added	no	README now states confirmed-noise-only pre-LLM table removal rule
+S2-2b confirmed-noise-only irreversible table removal	project/2_ARCHITECTURE.md	weak	explicit contract added	no	Architecture now states strict two-class preservation rule and no guessed semantic-value suppression
+S2-2b confirmed-noise-only irreversible table removal	project/ACTIVE_PIPELINE_FLOW.md	partial	explicit contract added	no	Flow now states only confirmed pure noise may be hard-dropped
+S2-2b confirmed-noise-only irreversible table removal	project/ACTIVE_PIPELINE_RUNBOOK.md	partial	explicit contract added	no	Runbook now states confirmed-noise-only irreversible table policy
+S2-2b confirmed-noise-only irreversible table removal	project/4_DECISIONS_LOG.md	missing	decision logged	yes	Logged in new 2026-04-21 decision block and memory row MDEC094
+S2-3/S2-4a summary neutrality	project/2_ARCHITECTURE.md	partial	explicit clarification added	no	Added that residual risk is lossy compression rather than cross-table primary bias
+S2-3/S2-4a summary neutrality	project/ACTIVE_PIPELINE_FLOW.md	partial	explicit clarification added	no	Neutrality now stated alongside neutral stable order wording
+S2-3/S2-4a summary neutrality	project/ACTIVE_PIPELINE_RUNBOOK.md	partial	explicit clarification added	no	Runbook now names lossy compression as the main residual risk
+S2-3/S2-4a summary neutrality	README.md	weak	explicit clarification added	no	README now states neutral preserved-table summary path
+S2-3/S2-4a summary neutrality	project/4_DECISIONS_LOG.md	missing	decision logged	yes	Logged in new 2026-04-21 decision block and memory row MDEC095
+Summary contract: schema and first-column row identity over sample rows	README.md	missing	explicit contract added	no	Added concise summary-contract wording
+Summary contract: schema and first-column row identity over sample rows	project/2_ARCHITECTURE.md	missing	explicit contract added	no	Added summary-structure rule
+Summary contract: schema and first-column row identity over sample rows	project/ACTIVE_PIPELINE_FLOW.md	missing	explicit contract added	no	Added neutral organization + structure wording
+Summary contract: schema and first-column row identity over sample rows	project/ACTIVE_PIPELINE_RUNBOOK.md	missing	explicit contract added	no	Runbook now states sample rows are optional aids only
+Summary contract: schema and first-column row identity over sample rows	project/4_DECISIONS_LOG.md	missing	decision logged	yes	Included in MDEC095
+Authority metadata is deterministic execution-side metadata	AGENTS.md	missing	explicit contract added	no	Agents now reminded not to treat authority handles as semantic content
+Authority metadata is deterministic execution-side metadata	README.md	partial	explicit contract added	no	README now states authority handles are deterministic execution metadata
+Authority metadata is deterministic execution-side metadata	project/2_ARCHITECTURE.md	partial	explicit contract added	no	Added authority-metadata boundary rule
+Authority metadata is deterministic execution-side metadata	project/ACTIVE_PIPELINE_FLOW.md	partial	explicit contract added	no	Flow now states sidecar/reattachment expectation
+Authority metadata is deterministic execution-side metadata	project/ACTIVE_PIPELINE_RUNBOOK.md	partial	explicit contract added	no	Runbook now states replay should recover authority metadata through sidecars/reattachment
+Authority metadata is deterministic execution-side metadata	project/4_DECISIONS_LOG.md	missing	decision logged	yes	Logged in new 2026-04-21 decision block and memory row MDEC096
+Replay preference when LLM-facing contract is unchanged	AGENTS.md	missing	explicit contract added	no	Added replay preference to agent-level architecture reminder
+Replay preference when LLM-facing contract is unchanged	README.md	partial	explicit contract added	no	README now states replay-first validation principle
+Replay preference when LLM-facing contract is unchanged	project/ACTIVE_PIPELINE_RUNBOOK.md	partial	explicit contract added	no	Runbook now explicitly prefers replay over fresh live calls when lawful
+Replay preference when LLM-facing contract is unchanged	project/4_DECISIONS_LOG.md	partial	decision strengthened	yes	Logged in new 2026-04-21 decision block and memory row MDEC097
+Failure-family anchor: 5ZXYABSU selector/preservation family	data/mem/v1/err.tsv	missing	added	yes	Added MERR1133 with source analysis/5zxyabsu_table_loss_boundary_audit.md
+Failure-family anchor: 5GIF3D8W non-DOE single-variable recovery family	data/mem/v1/err.tsv	missing	added	yes	Added MERR1134 with source analysis/non_doe_single_variable_recovery_repair_report.md
+Failure-family anchors indexed	data/mem/v1/idx.tsv	missing	added	yes	Added MIDX2005 and MIDX2006 for the two new error anchors
+Decision memory indexed	data/mem/v1/idx.tsv	missing	added	yes	Added MIDX2001-MIDX2004 for the four new decisions

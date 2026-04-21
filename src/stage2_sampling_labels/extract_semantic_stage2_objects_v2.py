@@ -598,6 +598,119 @@ def to_repo_rel(path: Path) -> str:
     return str(path.resolve().relative_to(PROJECT_ROOT)).replace("\\", "/")
 
 
+def stage2_authority_run_dir_for_artifact(path: Path) -> Path:
+    resolved = path.resolve()
+    for candidate in [resolved, *resolved.parents]:
+        if candidate.name == "semantic_stage2_objects":
+            return candidate.parent
+    return resolved.parent
+
+
+def build_stage2_authority_metadata(*, stage2_artifact_path: Path) -> dict[str, str]:
+    authority_run_dir = stage2_authority_run_dir_for_artifact(stage2_artifact_path)
+    authority_payload_root = authority_run_dir / "semantic_stage2_objects" / NORMALIZED_TABLE_PAYLOADS_SUBDIR
+    return {
+        "authority_run_dir": to_repo_rel(authority_run_dir),
+        "authority_payload_root": to_repo_rel(authority_payload_root),
+    }
+
+
+def authority_payload_manifest_path(document: dict[str, Any]) -> Path | None:
+    authority_payload_root = normalize_text(document.get("authority_payload_root"))
+    document_key = normalize_text(document.get("document_key") or document.get("paper_key") or document.get("key"))
+    if not authority_payload_root or not document_key:
+        return None
+    root = Path(authority_payload_root)
+    if not root.is_absolute():
+        root = (PROJECT_ROOT / root).resolve()
+    return root / document_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+
+
+def load_authority_normalized_payloads(document: dict[str, Any]) -> list[dict[str, Any]]:
+    manifest_path = authority_payload_manifest_path(document)
+    if manifest_path is None or not manifest_path.exists():
+        return []
+    try:
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    return [item for item in ensure_list(payload.get("normalized_table_payloads")) if isinstance(item, dict)]
+
+
+def build_table_scope_locator_from_payload(payload: dict[str, Any]) -> dict[str, str]:
+    return {
+        "table_id": normalize_text(payload.get("table_id") or payload.get("source_table_id")),
+        "source_table_asset_id": normalize_text(payload.get("source_table_asset_id")),
+        "source_table_reference": normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path")),
+    }
+
+
+def resolve_payload_for_table_ref(table_ref: Any, normalized_payloads: list[dict[str, Any]]) -> dict[str, Any] | None:
+    wanted = normalize_text(table_ref)
+    wanted_norm = normalize_token(wanted)
+    if not wanted_norm:
+        return None
+    matches: list[dict[str, Any]] = []
+    for item in normalized_payloads:
+        for candidate in [
+            item.get("table_id"),
+            item.get("source_table_id"),
+            item.get("source_table_asset_id"),
+            item.get("source_table_reference"),
+            item.get("source_csv_path"),
+        ]:
+            candidate_norm = normalize_token(candidate)
+            if candidate_norm and candidate_norm == wanted_norm:
+                matches.append(item)
+                break
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
+def attach_table_scope_locators(document: dict[str, Any]) -> None:
+    normalized_payloads = load_authority_normalized_payloads(document)
+    if not normalized_payloads:
+        return
+    for scope in ensure_list(document.get("table_scopes")):
+        if not isinstance(scope, dict):
+            continue
+        payload = resolve_payload_for_table_ref(scope.get("table_id"), normalized_payloads)
+        if payload is None:
+            continue
+        scope["table_scope_locators"] = build_table_scope_locator_from_payload(payload)
+        scope.setdefault("source_table_asset_id", normalize_text(payload.get("source_table_asset_id")))
+        scope.setdefault(
+            "source_table_reference",
+            normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path")),
+        )
+    for scope in ensure_list(document.get("table_formulation_scopes")):
+        if not isinstance(scope, dict):
+            continue
+        payload = resolve_payload_for_table_ref(scope.get("table_id"), normalized_payloads)
+        if payload is None:
+            continue
+        scope["table_scope_locators"] = build_table_scope_locator_from_payload(payload)
+        scope.setdefault("table_asset_id", normalize_text(payload.get("source_table_asset_id")))
+        scope.setdefault("source_table_asset_id", normalize_text(payload.get("source_table_asset_id")))
+        scope.setdefault(
+            "source_table_reference",
+            normalize_text(payload.get("source_table_reference") or payload.get("source_csv_path")),
+        )
+    for declaration in ensure_list(document.get("semantic_scope_declarations")):
+        if not isinstance(declaration, dict):
+            continue
+        refs = [normalize_text(item) for item in ensure_list(declaration.get("table_scope_refs")) if normalize_text(item)]
+        locators = []
+        for ref in refs:
+            payload = resolve_payload_for_table_ref(ref, normalized_payloads)
+            if payload is None:
+                continue
+            locators.append(build_table_scope_locator_from_payload(payload))
+        if locators:
+            declaration["table_scope_locators"] = locators
+
+
 def evidence_blocks_path(out_dir: Path, key: str) -> Path:
     return out_dir / EVIDENCE_BLOCKS_SUBDIR / key / EVIDENCE_BLOCKS_FILENAME
 
@@ -5168,6 +5281,7 @@ def build_evidence_blocks_artifact(
     candidate_artifact_path: Path,
     segmentation_bundle: dict[str, Any],
 ) -> tuple[dict[str, Any], dict[str, Any] | None]:
+    authority_metadata = build_stage2_authority_metadata(stage2_artifact_path=candidate_artifact_path)
     current_table_mode = table_mode()
     summary_enhanced = summary_first_column_enhancement_enabled()
     current_input_packing_mode = input_packing_mode()
@@ -5483,6 +5597,8 @@ def build_evidence_blocks_artifact(
         "source_manifest_path": to_repo_rel(manifest_path),
         "source_scope_manifest_path": to_repo_rel(manifest_path),
         "source_candidate_artifact_path": to_repo_rel(candidate_artifact_path),
+        "authority_run_dir": authority_metadata["authority_run_dir"],
+        "authority_payload_root": authority_metadata["authority_payload_root"],
         "input_contract": {
             "input_packing_mode": current_input_packing_mode,
             "table_mode": current_table_mode,
@@ -6320,6 +6436,8 @@ def build_normalized_table_payload_artifact(
         "producer_script": producer_script,
         "contract_version": "s2_2_normalized_table_payloads_v1",
         "source_evidence_artifact_path": to_repo_rel(evidence_artifact_path),
+        "authority_run_dir": to_repo_rel(out_dir.parent),
+        "authority_payload_root": to_repo_rel(out_dir / NORMALIZED_TABLE_PAYLOADS_SUBDIR),
         "full_table_authority_role": "execution_grade_table_authority",
         "normalized_table_payloads": selected_entries,
     }, validation_rows
@@ -6800,13 +6918,19 @@ def convert_legacy_raw_response_to_v2(
     record: dict[str, str],
     raw_response_path: Path,
     raw_response_text: str,
+    authority_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     sanitized_text, sanitization_audit = sanitize_stage2_json_text(raw_response_text)
     if json_sanitization_applied(sanitization_audit):
         write_json_sanitization_audit(raw_response_path, sanitization_audit)
     parsed = json.loads(sanitized_text)
     if is_live_v2_raw_response_shape(parsed):
-        return normalize_replayed_live_document(record, parsed, raw_response_path)
+        return normalize_replayed_live_document(
+            record,
+            parsed,
+            raw_response_path,
+            authority_metadata=authority_metadata,
+        )
     formulations = parsed.get("formulations") or []
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
@@ -6922,27 +7046,42 @@ def convert_legacy_raw_response_to_v2(
         "relation_hints": relation_hints,
         "evidence_spans": evidence_spans,
         "unassigned_observations": unassigned_observations,
-        }
+        },
+        authority_metadata=authority_metadata,
     )
 
 
-def normalize_live_document(record: dict[str, str], parsed: dict[str, Any], raw_response_path: Path) -> dict[str, Any]:
+def normalize_live_document(
+    record: dict[str, str],
+    parsed: dict[str, Any],
+    raw_response_path: Path,
+    *,
+    authority_metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     return build_live_v2_document(
         record=record,
         parsed=parsed,
         raw_response_path=raw_response_path,
         source_mode="live_llm_stage2_v2",
         replay_mode="none",
+        authority_metadata=authority_metadata,
     )
 
 
-def normalize_replayed_live_document(record: dict[str, str], parsed: dict[str, Any], raw_response_path: Path) -> dict[str, Any]:
+def normalize_replayed_live_document(
+    record: dict[str, str],
+    parsed: dict[str, Any],
+    raw_response_path: Path,
+    *,
+    authority_metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     return build_live_v2_document(
         record=record,
         parsed=parsed,
         raw_response_path=raw_response_path,
         source_mode="saved_raw_live_v2_replay_to_stage2_v2",
         replay_mode="saved_raw_response_replay",
+        authority_metadata=authority_metadata,
     )
 
 
@@ -6953,6 +7092,7 @@ def build_live_v2_document(
     raw_response_path: Path,
     source_mode: str,
     replay_mode: str,
+    authority_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
@@ -6977,7 +7117,8 @@ def build_live_v2_document(
                 "table_scopes": normalize_shrunken_table_scopes(parsed.get("table_scopes")),
                 "semantic_signals": normalize_shrunken_semantic_signals(parsed.get("semantic_signals")),
                 "formulation_candidates": normalize_shrunken_formulation_candidates(parsed.get("formulation_candidates")),
-            }
+            },
+            authority_metadata=authority_metadata,
         )
     parsed = prune_invalid_live_inheritance_markers(parsed, raw_response_path)
     return finalize_llm_first_document(
@@ -7004,7 +7145,8 @@ def build_live_v2_document(
         "inheritance_markers": normalize_marker_list(parsed.get("inheritance_markers")),
         "preparation_inheritance_markers": normalize_marker_list(parsed.get("preparation_inheritance_markers")),
         "boundary_markers": normalize_marker_list(parsed.get("boundary_markers")),
-        }
+        },
+        authority_metadata=authority_metadata,
     )
 
 
@@ -7230,7 +7372,11 @@ def default_llm_scope_ref(document: dict[str, Any], candidate_id: str) -> str:
     return f"{default_scope}|candidate:{candidate_id}" if candidate_id else default_scope
 
 
-def finalize_llm_first_document(document: dict[str, Any]) -> dict[str, Any]:
+def finalize_llm_first_document(
+    document: dict[str, Any],
+    *,
+    authority_metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     if "table_scopes" in document and "semantic_signals" in document:
         document["paper_key"] = normalize_text(document.get("paper_key") or document.get("document_key") or document.get("key"))
         document["document_key"] = normalize_text(document.get("document_key") or document.get("paper_key"))
@@ -7241,8 +7387,12 @@ def finalize_llm_first_document(document: dict[str, Any]) -> dict[str, Any]:
         augment_document_with_table_markers(document)
     document["stage2_semantic_source_mode"] = STAGE2_SEMANTIC_SOURCE_MODE
     document["semantic_universe_authority"] = LLM_SEMANTIC_DISCOVERY
+    authority_metadata = authority_metadata or {}
+    document["authority_run_dir"] = normalize_text(authority_metadata.get("authority_run_dir"))
+    document["authority_payload_root"] = normalize_text(authority_metadata.get("authority_payload_root"))
     declarations = infer_semantic_scope_declarations(document)
     document["semantic_scope_declarations"] = declarations
+    attach_table_scope_locators(document)
     for item in document.get("formulation_candidates", []):
         if not isinstance(item, dict):
             continue
@@ -7392,6 +7542,8 @@ def build_request_metadata_payload(
     evidence_artifact_path: Path,
     raw_response_path: Path,
     prompt_text: str,
+    authority_run_dir: str = "",
+    authority_payload_root: str = "",
 ) -> dict[str, Any]:
     return {
         "stage_boundary": "Stage2 composite live call",
@@ -7405,6 +7557,8 @@ def build_request_metadata_payload(
         "retry_sleep_sec": retry_sleep_sec,
         "source_manifest_path": to_repo_rel(manifest_path),
         "source_evidence_artifact_path": to_repo_rel(evidence_artifact_path),
+        "authority_run_dir": normalize_text(authority_run_dir),
+        "authority_payload_root": normalize_text(authority_payload_root),
         "request_started_at_utc": datetime.now(timezone.utc).isoformat(),
         "status": "",
         "raw_response_path": to_repo_rel(raw_response_path),
@@ -7603,6 +7757,10 @@ def main() -> None:
                             record=record,
                             raw_response_path=raw_copy_path,
                             raw_response_text=raw_copy_path.read_text(encoding="utf-8", errors="replace"),
+                            authority_metadata={
+                                "authority_run_dir": normalize_text(evidence_artifact.get("authority_run_dir")),
+                                "authority_payload_root": normalize_text(evidence_artifact.get("authority_payload_root")),
+                            },
                         )
                         request_summary_rows.append(
                             {
@@ -7635,6 +7793,8 @@ def main() -> None:
                             evidence_artifact_path=artifact_path,
                             raw_response_path=raw_copy_path,
                             prompt_text=prompt,
+                            authority_run_dir=normalize_text(evidence_artifact.get("authority_run_dir")),
+                            authority_payload_root=normalize_text(evidence_artifact.get("authority_payload_root")),
                         )
                         request_metadata_path.write_text(
                             json.dumps(metadata_payload, ensure_ascii=False, indent=2) + "\n",
@@ -7671,7 +7831,15 @@ def main() -> None:
                                 flush=True,
                             )
                         parsed = json.loads(sanitized_text)
-                        document = normalize_live_document(record, parsed, raw_copy_path)
+                        document = normalize_live_document(
+                            record,
+                            parsed,
+                            raw_copy_path,
+                            authority_metadata={
+                                "authority_run_dir": normalize_text(evidence_artifact.get("authority_run_dir")),
+                                "authority_payload_root": normalize_text(evidence_artifact.get("authority_payload_root")),
+                            },
+                        )
                         metadata_payload["status"] = "success"
                         metadata_payload["request_finished_at_utc"] = datetime.now(timezone.utc).isoformat()
                         request_metadata_path.write_text(
