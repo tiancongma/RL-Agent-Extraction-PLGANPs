@@ -1,0 +1,84 @@
+path	status_class	reason	recommended_action	size_or_scope_note
+.gitignore	TRACK_AND_COMMIT	Small governed ignore update to suppress machine-local observer noise without changing results-policy behavior.	stage_and_commit	single-line repo hygiene edit
+AGENTS.md	TRACK_AND_COMMIT	Governance instructions changed and are repository-authoritative.	stage_and_commit	governance document
+README.md	TRACK_AND_COMMIT	Maintained top-level usage/governance context changed and should stay synced with current pipeline practice.	stage_and_commit	top-level maintained doc
+docs/maintained_script_surface.tsv	TRACK_AND_COMMIT	Maintained script surface registry changed and is reproducibility-critical governance metadata.	stage_and_commit	small registry file
+docs/src_script_registry.tsv	TRACK_AND_COMMIT	Maintained source registry changed and should remain aligned with active scripts.	stage_and_commit	small registry file
+docs/selector_calibration/5ZXYABSU.json	TRACK_AND_COMMIT	Tracked calibration asset updated under an already governed tracked path.	stage_and_commit	small calibration JSON
+docs/selector_calibration/INMUTV7L.json	TRACK_AND_COMMIT	New calibration asset under an already governed tracked path.	stage_and_commit	small calibration JSON
+docs/selector_calibration/L3H2RS2H.json	TRACK_AND_COMMIT	Tracked calibration asset updated under an already governed tracked path.	stage_and_commit	small calibration JSON
+docs/selector_calibration/QLYKLPKT.json	TRACK_AND_COMMIT	Tracked calibration asset updated under an already governed tracked path.	stage_and_commit	small calibration JSON
+docs/selector_calibration/UFXX9WXE.json	TRACK_AND_COMMIT	Tracked calibration asset updated under an already governed tracked path.	stage_and_commit	small calibration JSON
+docs/selector_calibration/V99GKZEI.json	TRACK_AND_COMMIT	New calibration asset under an already governed tracked path.	stage_and_commit	small calibration JSON
+docs/selector_calibration/readme.md	TRACK_AND_COMMIT	Calibration documentation changed alongside tracked calibration assets.	stage_and_commit	small maintained doc
+docs/repair_index/success_pattern_index_v1.md	TRACK_AND_COMMIT	New governed repair index documentation created as part of accepted repair governance.	stage_and_commit	small maintained doc
+docs/repair_index/success_pattern_index_v1.tsv	TRACK_AND_COMMIT	New governed repair index table created as part of accepted repair governance.	stage_and_commit	small maintained TSV
+project/S2_4A_AUDIT_STANDARD.md	TRACK_AND_COMMIT	New maintained governance standard for S2-4a audit layering and hard-gate policy.	stage_and_commit	governance document
+project/2_ARCHITECTURE.md	TRACK_AND_COMMIT	Architecture governance updated and must stay in sync with maintained pipeline behavior.	stage_and_commit	governance document
+project/4_DECISIONS_LOG.md	TRACK_AND_COMMIT	Decision log updated with accepted baseline-relevant governance decisions.	stage_and_commit	governance document
+project/ACTIVE_PIPELINE_FLOW.md	TRACK_AND_COMMIT	Active pipeline flow changed and is authoritative governance.	stage_and_commit	governance document
+project/ACTIVE_PIPELINE_RUNBOOK.md	TRACK_AND_COMMIT	Active execution runbook changed and is authoritative governance.	stage_and_commit	governance document
+project/PIPELINE_SCRIPT_MAP.md	TRACK_AND_COMMIT	Pipeline script map changed and is authoritative for maintained entrypoint mapping.	stage_and_commit	governance document
+project/feature_units/FEATURE_UNIT_GOVERNANCE.md	TRACK_AND_COMMIT	Feature-unit governance changed and supports maintained activation auditing.	stage_and_commit	governance/maintained doc
+project/feature_units/feature_intervention_matrix.tsv	TRACK_AND_COMMIT	Maintained feature matrix changed and is part of governed feature inventory.	stage_and_commit	small maintained TSV
+project/feature_units/feature_unit_registry.json	TRACK_AND_COMMIT	Maintained feature registry changed and is reproducibility-critical governance metadata.	stage_and_commit	small maintained JSON
+src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py	TRACK_AND_COMMIT	Maintained Stage2 implementation changed and belongs in source sync.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/evaluate_s2_4a_hard_gate_v1.py	TRACK_AND_COMMIT	New maintained audit utility implementing accepted Layer A behavior.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py	TRACK_AND_COMMIT	Core maintained Stage2 source changed as part of accepted contract enforcement fixes.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/run_stage2_composite_v1.py	TRACK_AND_COMMIT	Maintained Stage2 entrypoint changed and should remain synced with runbook.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py	TRACK_AND_COMMIT	Maintained S2-4a entrypoint changed and is part of accepted prompt-boundary governance.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py	TRACK_AND_COMMIT	Maintained Stage2 entrypoint changed and belongs in source sync.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py	TRACK_AND_COMMIT	Maintained Stage2 entrypoint changed and belongs in source sync.	stage_and_commit	maintained source file
+src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py	TRACK_AND_COMMIT	Maintained validation utility changed and is part of governed Stage2 contract enforcement.	stage_and_commit	maintained source file
+src/utils/build_feature_activation_report_v1.py	TRACK_AND_COMMIT	Maintained audit utility changed and supports governed feature-activation reporting.	stage_and_commit	maintained source file
+src/utils/build_mem_v1.py	TRACK_AND_COMMIT	Maintained memory builder changed; code should sync even though regenerated mem outputs stay local.	stage_and_commit	maintained source file
+src/utils/run_repair_intake_v1.py	TRACK_AND_COMMIT	New maintained repair intake utility belongs in tracked source.	stage_and_commit	maintained source file
+analysis/repo_sync_audit_2026-04-21_baseline.md	TRACK_AND_COMMIT	This audit report is the governed justification for the local-to-remote sync decision.	stage_and_commit	small audit note
+analysis/repo_sync_audit_2026-04-21_baseline.tsv	TRACK_AND_COMMIT	Machine-readable companion to the governed sync audit report.	stage_and_commit	small audit table
+.codex_supervisor/candidate_change.txt	KEEP_LOCAL_UNTRACKED	Local assistant bookkeeping file; not scientific, not governance, already tracked but should stay unstaged for this sync.	leave_unstaged	local helper text file
+data/mem/v1/dec.tsv	KEEP_LOCAL_UNTRACKED	Regenerated machine-local memory surface not needed for this governed sync.	leave_unstaged	memory TSV churn
+data/mem/v1/err.tsv	KEEP_LOCAL_UNTRACKED	Regenerated machine-local memory surface not needed for this governed sync.	leave_unstaged	memory TSV churn
+data/mem/v1/idx.tsv	KEEP_LOCAL_UNTRACKED	Regenerated machine-local memory surface not needed for this governed sync.	leave_unstaged	memory TSV churn
+data/mem/v1/lin.tsv	KEEP_LOCAL_UNTRACKED	Regenerated machine-local memory surface not needed for this governed sync.	leave_unstaged	memory TSV churn
+data/mem/v1/prm.tsv	KEEP_LOCAL_UNTRACKED	Regenerated machine-local memory surface not needed for this governed sync.	leave_unstaged	memory TSV churn
+data/mem/v1/run.tsv	KEEP_LOCAL_UNTRACKED	Regenerated machine-local memory surface not needed for this governed sync.	leave_unstaged	memory TSV churn
+analysis/active_run_update_log.md	KEEP_LOCAL_UNTRACKED	Ad hoc local analysis note not part of the approved sync scope.	leave_untracked	ad hoc analysis note
+analysis/auto_update_contract_for_repair_patterns_v1.md	KEEP_LOCAL_UNTRACKED	Ad hoc local analysis note not part of the approved sync scope.	leave_untracked	ad hoc analysis note
+analysis/diagnosis_baseline_before_after.tsv	KEEP_LOCAL_UNTRACKED	Diagnostic analysis artifact not required for governed source sync.	leave_untracked	diagnostic TSV
+analysis/diagnosis_baseline_rebuild_report.md	KEEP_LOCAL_UNTRACKED	Diagnostic analysis artifact not required for governed source sync.	leave_untracked	diagnostic markdown
+analysis/fresh_llm_rerun_verification.md	KEEP_LOCAL_UNTRACKED	Diagnostic verification note not required for governed source sync.	leave_untracked	diagnostic markdown
+analysis/fresh_llm_rerun_verification.tsv	KEEP_LOCAL_UNTRACKED	Diagnostic verification table not required for governed source sync.	leave_untracked	diagnostic TSV
+analysis/gemini_live_call_path_audit.md	KEEP_LOCAL_UNTRACKED	Diagnostic path audit not required for governed source sync.	leave_untracked	diagnostic markdown
+analysis/gemini_live_call_path_audit.tsv	KEEP_LOCAL_UNTRACKED	Diagnostic path audit not required for governed source sync.	leave_untracked	diagnostic TSV
+analysis/historical_capability_regression_inventory.md	KEEP_LOCAL_UNTRACKED	Ad hoc investigation artifact outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/historical_capability_regression_inventory.tsv	KEEP_LOCAL_UNTRACKED	Ad hoc investigation artifact outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/inline_table_contract_fix_targeted_hard_gate.tsv	KEEP_LOCAL_UNTRACKED	Targeted validation artifact is reproducible from code and not needed in this sync.	leave_untracked	targeted validation TSV
+analysis/integrated_capability_preservation_check.md	KEEP_LOCAL_UNTRACKED	Ad hoc audit note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/lawful_rerun_boundary_decision.md	KEEP_LOCAL_UNTRACKED	Ad hoc decision note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/lawful_rerun_boundary_decision.tsv	KEEP_LOCAL_UNTRACKED	Ad hoc decision table outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/mem_autoupdate_readiness_v1.md	KEEP_LOCAL_UNTRACKED	Local memory-maintenance note not part of the governed sync package.	leave_untracked	diagnostic markdown
+analysis/mem_failure_trace_v2.md	KEEP_LOCAL_UNTRACKED	Local memory-maintenance note not part of the governed sync package.	leave_untracked	diagnostic markdown
+analysis/mem_failure_trace_v2.tsv	KEEP_LOCAL_UNTRACKED	Local memory-maintenance table not part of the governed sync package.	leave_untracked	diagnostic TSV
+analysis/mem_validation_report_v2.md	KEEP_LOCAL_UNTRACKED	Local memory-maintenance note not part of the governed sync package.	leave_untracked	diagnostic markdown
+analysis/mem_validation_report_v2.tsv	KEEP_LOCAL_UNTRACKED	Local memory-maintenance table not part of the governed sync package.	leave_untracked	diagnostic TSV
+analysis/phase1_regression_guard_catalog.tsv	KEEP_LOCAL_UNTRACKED	Ad hoc repair-planning artifact not part of the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/phase1_regression_guard_plan.md	KEEP_LOCAL_UNTRACKED	Ad hoc repair-planning artifact not part of the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/post_09_repair_preservation_audit.md	KEEP_LOCAL_UNTRACKED	Targeted repair audit artifact outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/post_09_repair_preservation_audit.tsv	KEEP_LOCAL_UNTRACKED	Targeted repair audit artifact outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/post_09_repair_retention_set.md	KEEP_LOCAL_UNTRACKED	Targeted repair audit artifact outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/post_09_repair_retention_set.tsv	KEEP_LOCAL_UNTRACKED	Targeted repair audit artifact outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/post_baseline_artifact_diff.md	KEEP_LOCAL_UNTRACKED	Ad hoc baseline diff note not part of the governed sync package.	leave_untracked	diagnostic markdown
+analysis/post_baseline_capability_audit.md	KEEP_LOCAL_UNTRACKED	Ad hoc capability audit note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/post_baseline_code_change_audit.md	KEEP_LOCAL_UNTRACKED	Ad hoc code-change audit note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/post_baseline_repair_audit_20260417.md	KEEP_LOCAL_UNTRACKED	Ad hoc repair audit note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/post_baseline_repair_audit_20260417.tsv	KEEP_LOCAL_UNTRACKED	Ad hoc repair audit table outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/post_baseline_root_cause_summary.md	KEEP_LOCAL_UNTRACKED	Ad hoc root-cause note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/qlyk_table_loss_audit.md	KEEP_LOCAL_UNTRACKED	Targeted calibration audit artifact outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/qlyk_table_loss_audit.tsv	KEEP_LOCAL_UNTRACKED	Targeted calibration audit artifact outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/repair_index_acceptance_patch_report_v1.md	KEEP_LOCAL_UNTRACKED	Ad hoc acceptance-patch note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/repair_index_acceptance_patch_report_v1.tsv	KEEP_LOCAL_UNTRACKED	Ad hoc acceptance-patch table outside the approved sync scope.	leave_untracked	diagnostic TSV
+analysis/s2_2_evidence_quality_audit.md	KEEP_LOCAL_UNTRACKED	Ad hoc analysis note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/s2_3_prompt_input_audit.md	KEEP_LOCAL_UNTRACKED	Ad hoc analysis note outside the approved sync scope.	leave_untracked	diagnostic markdown
+analysis/s2_4a_hard_gate_targeted_validation.tsv	KEEP_LOCAL_UNTRACKED	Targeted validation artifact outside the approved sync scope.	leave_untracked	diagnostic TSV
+.codex_observer/	IGNORE_VIA_GITIGNORE	Machine-local observer directory should remain ignored and never enter a governed repo sync.	keep_ignored	directory ignore
+data/results/20260421_43ed145/	IGNORE_VIA_GITIGNORE	Diagnostic-only baseline lineage is intentionally ignored by results policy and must not be tracked or promoted.	keep_ignored	lineage root about 1.8M with child stage artifacts
