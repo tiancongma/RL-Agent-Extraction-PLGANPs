@@ -148,7 +148,7 @@ Benchmark reporting rule:
 ## 3. Purpose
 - Consume frozen `S2-4b` raw-response payloads only.
 - Parse those payloads into governed Stage2 semantic-intermediate object artifacts.
-- Preserve object families, raw expressions, marker readiness, evidence handoff, and provenance-carrying intermediate structure.
+- Preserve the shrunken live semantic-understanding contract plus governed provenance metadata needed by downstream maintained steps.
 - Stop before `S2-6` contract validation and before `S2-7` compatibility projection.
 
 ## 4. Stage Boundary
@@ -310,19 +310,16 @@ def main() -> None:
             "doi",
             "source_mode",
             "stage2_semantic_source_mode",
-            "formulation_count",
-            "component_count",
-            "variable_count",
-            "measurement_count",
-            "relation_hint_count",
-            "evidence_span_count",
-            "unassigned_observation_count",
-            "ph_variable_count",
-            "doe_factor_count",
-            "doe_scope_declared",
-            "pdi_measurement_present",
-            "zeta_measurement_present",
-            "multi_component_formulation_count",
+            "table_scope_count",
+            "formulation_candidate_count",
+            "has_variable_sweep",
+            "has_sequential_optimization",
+            "has_parent_child_table_relation",
+            "has_downstream_non_synthesis_variants",
+            "has_measurement_only_variants",
+            "primary_preparation_method_hint",
+            "primary_variable_count",
+            "selected_condition_hint_count",
         ],
     )
 

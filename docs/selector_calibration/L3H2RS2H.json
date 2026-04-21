@@ -1,93 +1,24 @@
 {
-  "document_key": "L3H2RS2H",
-
-  "materials_block": {
-    "section": "2.1 Materials",
-    "role": "MATERIALS",
-    "text": "Xanthone (XAN), PLGA (50:50) MW 50,000–75,000, Pluronic F-68, phosphate buffered saline tablets and soybean lecithin (40% purity) were purchased from Sigma-Aldrich. Threalose dihydrate from Fluka. 3-MeOXAN synthesized in-house. Myritol 318 supplied by Henkel. Methanol/acetonitrile from Merck. Water purified by Milli-Q."
-  },
-
-  "preparation_blocks": [
-    {
-      "section": "2.2 Preparation of nanospheres",
-      "role": "PREPARATION_METHOD",
-      "formulation_type": "nanospheres",
-      "method": "solvent displacement (Fessi)",
-      "text": "PLGA (63 mg) and XAN or 3-MeOXAN dissolved in acetone (10 mL) → added to aqueous Pluronic F-68 0.25% → stirred → solvent removed → centrifugation → redispersion. Empty nanospheres prepared without drug."
-    },
-    {
-      "section": "2.4 Preparation of nanocapsules",
-      "role": "PREPARATION_METHOD",
-      "formulation_type": "nanocapsules",
-      "method": "interfacial polymer deposition (Fessi)",
-      "text": "PLGA (~50 mg) + lecithin (100 mg) in acetone → drug dissolved in Myritol 318 → mixed → poured into Pluronic F-68 0.5% → solvent removal → ultrafiltration. Empty nanocapsules without drug."
-    }
-  ],
-
-  "formulation_tables": [
-    {
-      "table_id": "Table 1",
-      "role": "FORMULATION_TABLE",
-      "content_type": "encapsulation_parameters",
-      "description": "Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres"
-    },
-    {
-      "table_id": "Table 3",
-      "role": "FORMULATION_TABLE",
-      "content_type": "encapsulation_parameters",
-      "description": "Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules"
-    },
-    {
-      "table_id": "Table 5",
-      "role": "FORMULATION_TABLE",
-      "content_type": "formulation + properties",
-      "description": "Formulations of nanocapsules including composition and properties"
-    }
-  ],
-
-  "property_tables": [
-    {
-      "table_id": "Table 2",
-      "role": "FORMULATION_RESULT",
-      "content_type": "size_pdi_zeta",
-      "description": "Mean diameter, PDI and zeta potential of nanospheres"
-    },
-    {
-      "table_id": "Table 4",
-      "role": "FORMULATION_RESULT",
-      "content_type": "size_pdi_zeta",
-      "description": "Mean diameter, PDI and zeta potential of nanocapsules"
-    }
-  ],
-
-  "optimization_blocks": [
-    {
-      "section": "3.1 Characteristics of nanospheres",
-      "role": "OPTIMIZATION_RESULT",
-      "text": "Loading capacity evaluated with varying drug amounts. Maximum efficiency at 60 μg/mL. Above 70 μg/mL precipitation occurs. Indicates saturation and low affinity to polymer."
-    },
-    {
-      "section": "3.2 Characteristics of nanocapsules",
-      "role": "OPTIMIZATION_RESULT",
-      "text": "Drug concentration varied (200–800 μg/mL for XAN, 1000–1600 μg/mL for 3-MeOXAN). Efficiency ~90% and ~80%. Saturation observed at higher concentrations. Solubility in oil core governs loading."
-    }
-  ],
-
-  "experimental_design_signal": {
-    "role": "EXPERIMENTAL_DESIGN",
-    "present": true,
-    "pattern": "fixed polymer + varying drug concentration",
-    "text": "fixed polymer/surfactant + varying XAN or 3-MeOXAN concentration across batches"
-  },
-
-  "key_structure_summary": {
-    "multi_preparation": true,
-    "two_formulation_systems": [
-      "nanospheres",
-      "nanocapsules"
+  "paper_key": "L3H2RS2H",
+  "selector_calibration_version": "v2",
+  "archetype": "multiple_formulation_tables_with_shared_context",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph",
+      "primary preparation-method paragraph",
+      "multiple distinct authoritative tables if each contributes non-overlapping formulation information"
     ],
-    "multiple_tables": true,
-    "doe_pattern": true,
-    "optimization_present": true
-  }
+    "should_drop": [
+      "table-adjacent proxy paragraphs duplicated by selected tables",
+      "fallback text that does not add distinct formulation context"
+    ],
+    "minimal_evidence_set": [
+      "1 materials block",
+      "1 preparation block",
+      "1-2 authoritative table blocks"
+    ]
+  },
+  "selection_notes": [
+    "Multiple tables are acceptable when they are genuinely distinct evidence surfaces rather than proxy echoes."
+  ]
 }

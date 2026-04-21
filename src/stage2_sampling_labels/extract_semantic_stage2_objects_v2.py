@@ -5,12 +5,15 @@ import argparse
 from collections import Counter
 import ast
 import csv
+from functools import lru_cache
+import hashlib
 import json
 import os
 import re
 import shutil
 import sys
 import time
+from datetime import datetime, timezone
 from threading import Event, Thread
 from pathlib import Path
 from typing import Any
@@ -54,8 +57,13 @@ NORMALIZED_TABLE_PAYLOADS_FILENAME = "normalized_table_payloads_v1.json"
 NORMALIZED_TABLE_PAYLOADS_SUBDIR = "normalized_table_payloads"
 TABLE_AUTHORITY_VALIDATION_NAME = "table_authority_validation_v1.tsv"
 PROMPT_PREVIEW_NAME = "stage2_prompt_preview_v1.tsv"
+S2_2_BOUNDARY_VALIDATION_NAME = "s2_2_boundary_validation.tsv"
+S2_3_BOUNDARY_VALIDATION_NAME = "s2_3_boundary_validation.tsv"
 TABLE_SELECTION_DEBUG_NAME = "table_selection_debug_v1.json"
 CANDIDATE_SEGMENTATION_DEBUG_NAME = "candidate_segmentation_debug_v1.tsv"
+REQUEST_SUMMARY_NAME = "request_summary.tsv"
+REQUEST_METADATA_SUBDIR = "request_metadata"
+REQUEST_METADATA_FILENAME_TEMPLATE = "{paper_key}__stage2_v2_request_metadata.json"
 MARKER_CLEANUP_AUDIT_SUFFIX = "__marker_cleanup_audit.json"
 NVIDIA_HOSTED_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 LEGACY_FIELD_ALIASES = {"plga_mw_kDa": "polymer_mw_kDa"}
@@ -106,38 +114,13 @@ LLM_EXPLICIT = "llm_explicit"
 LLM_PARSED = "llm_parsed"
 DOE_SCOPE_KIND = "doe_table_row_enumeration_scope"
 DOCUMENT_SCOPE_KIND = "document_semantic_scope"
-GENERAL_SELECTOR_PROFILE = "role_aware_general_v1"
-DOE_SELECTOR_OVERLAY = "doe_optimization_v1"
-GENERAL_REQUIRED_ROLES = [
-    "PREPARATION_METHOD",
-    "MATERIALS",
-    "FORMULATION_TABLE",
-    "FORMULATION_RESULT",
-    "OPTIMIZATION_RESULT",
-    "CONTEXT_FALLBACK",
-]
-DOE_REQUIRED_ROLES = [
-    "PREPARATION_METHOD",
-    "MATERIALS",
-    "EXPERIMENTAL_DESIGN",
-    "VARIABLE_TABLE",
-    "FORMULATION_TABLE",
-    "OPTIMIZATION_RESULT",
-    "CONTEXT_FALLBACK",
-]
-SECONDARY_ELIGIBLE_ROLES: set[str] = set()
-ROLE_THRESHOLD_BY_ROLE = {
-    "PREPARATION_METHOD": 6.0,
-    "MATERIALS": 6.0,
-    "EXPERIMENTAL_DESIGN": 5.0,
-    "VARIABLE_TABLE": 5.0,
-    "FORMULATION_TABLE": 5.0,
-    "FORMULATION_RESULT": 4.0,
-    "OPTIMIZATION_RESULT": 4.0,
-    "CONTEXT_FALLBACK": 1.0,
-}
-SECONDARY_THRESHOLD_BONUS_BY_ROLE = {
-    "FORMULATION_TABLE": 4.0,
+EVIDENCE_SELECTION_MODE = "evidence_priority_v1"
+PROMPT_HEALTHY_CHAR_LIMIT = 30000
+EVIDENCE_KIND_ORDER = {
+    "method": 0,
+    "materials": 1,
+    "table": 2,
+    "supporting": 3,
 }
 PROCUREMENT_CUES = [
     "purchased from",
@@ -184,136 +167,6 @@ OPTIMIZATION_DECISION_CUES = [
     "utilized for the formulation of all the following studies",
     "selected as optimal",
 ]
-ROLE_HEADING_CUES = {
-    "PREPARATION_METHOD": [
-        "preparation",
-        "nanoparticles preparation",
-        "formulation",
-        "method",
-        "synthesis",
-        "nanoprecipitation",
-        "emulsion solvent evaporation",
-    ],
-    "MATERIALS": [
-        "materials",
-        "chemicals",
-        "reagents",
-        "materials and methods",
-    ],
-    "EXPERIMENTAL_DESIGN": [
-        "experimental design",
-        "box-behnken",
-        "response surface",
-        "rsm",
-        "design expert",
-    ],
-    "FORMULATION_RESULT": [
-        "results and discussion",
-        "effect of independent variables",
-        "characterization",
-    ],
-    "OPTIMIZATION_RESULT": [
-        "optimized formulation",
-        "optimization",
-        "point prediction",
-        "validity of model",
-    ],
-}
-ROLE_LEXICAL_CUES = {
-    "PREPARATION_METHOD": [
-        "dissolved",
-        "organic phase",
-        "aqueous phase",
-        "added dropwise",
-        "stirring",
-        "stirred",
-        "evaporation",
-        "evaporated",
-        "centrifuged",
-        "washed",
-        "redispersed",
-        "nanoprecipitation",
-        "emulsion solvent evaporation",
-        "prepared by",
-        "formulations were prepared",
-    ],
-    "MATERIALS": [
-        "purchased from",
-        "obtained from",
-        "sigma",
-        "aldrich",
-        "fisher",
-        "hplc grade",
-        "molecular weight",
-        "plga",
-        "poloxamer",
-        "acetone",
-        "water",
-        "resomer",
-    ],
-    "EXPERIMENTAL_DESIGN": [
-        "experimental design",
-        "box-behnken",
-        "response surface",
-        "rsm",
-        "design expert",
-        "polynomial model",
-        "independent variables",
-        "dependent variables",
-        "coded value",
-        "desirability",
-    ],
-    "VARIABLE_TABLE": [
-        "independent variables",
-        "dependent variables",
-        "levels",
-        "factors",
-        "responses",
-        "coded levels",
-        "box-behnken",
-        "design",
-        "different concentrations",
-        "different ratio",
-        "different ratios",
-        "initial ratios",
-    ],
-    "FORMULATION_TABLE": [
-        "formulation",
-        "runs",
-        "process variables",
-        "dependent variable",
-        "particle size",
-        "entrapment",
-        "pdi",
-        "zeta potential",
-        "drug entrapment",
-    ],
-    "FORMULATION_RESULT": [
-        "particle size",
-        "zeta potential",
-        "drug entrapment",
-        "formulation",
-        "results and discussion",
-    ],
-    "OPTIMIZATION_RESULT": [
-        "optimized formulation",
-        "optimization",
-        "point prediction",
-        "desirability",
-        "predicted values",
-        "experimental values",
-        "validity of model",
-        "drug loading",
-        "selected by applying constraints",
-    ],
-    "CONTEXT_FALLBACK": [
-        "nanoparticles",
-        "plga",
-        "formulation",
-        "drug entrapment",
-        "particle size",
-    ],
-}
 PREPARATION_NEGATIVE_CUES = [
     "cell viability",
     "biodistribution",
@@ -334,6 +187,12 @@ TABLE_ROW_ID_PATTERNS = [
     r"\brun\s*\d{1,3}\b",
     r"\bnp[a-z]{1,3}\d{1,3}\b",
 ]
+EVIDENCE_PRIORITY_THRESHOLDS = {
+    "method": 5.0,
+    "materials": 4.0,
+    "table": 6.0,
+    "supporting": 5.5,
+}
 
 
 def normalize_text(value: Any) -> str:
@@ -366,6 +225,141 @@ def normalize_marker_list(value: Any, *, default_provenance: str = LLM_EXPLICIT)
         marker["marker_provenance"] = provenance
         markers.append(marker)
     return markers
+
+
+def normalize_bool(value: Any, default: bool = False) -> bool:
+    if isinstance(value, bool):
+        return value
+    text = normalize_text(value).lower()
+    if text in {"true", "yes", "1"}:
+        return True
+    if text in {"false", "no", "0"}:
+        return False
+    return default
+
+
+def normalize_confidence(value: Any) -> str:
+    text = normalize_text(value).lower()
+    return text if text in {"high", "medium", "low"} else "low"
+
+
+def is_shrunken_live_contract(parsed: Any) -> bool:
+    if not isinstance(parsed, dict):
+        return False
+    keys = set(parsed.keys())
+    required = {"paper_key", "table_scopes", "semantic_signals", "formulation_candidates"}
+    return required.issubset(keys)
+
+
+def normalize_scope_kind(value: Any) -> str:
+    text = normalize_text(value).lower()
+    allowed = {
+        "doe_table",
+        "formulation_table",
+        "optimization_table",
+        "sequential_child",
+        "downstream_variant_table",
+        "non_formulation",
+        "unclear",
+    }
+    return text if text in allowed else "unclear"
+
+
+def normalize_candidate_kind(value: Any) -> str:
+    text = normalize_text(value).lower()
+    allowed = {
+        "single_formulation",
+        "formulation_family",
+        "variant_formulation",
+        "unclear",
+    }
+    return text if text in allowed else "unclear"
+
+
+def normalize_instance_role(value: Any) -> str:
+    text = normalize_text(value).lower()
+    allowed = {
+        "synthesis_core",
+        "downstream_variant",
+        "control",
+        "comparative",
+        "characterization_only",
+        "unclear",
+    }
+    return text if text in allowed else "unclear"
+
+
+def normalize_candidate_status(value: Any) -> str:
+    text = normalize_text(value).lower()
+    return text if text in {"reported", "partial", "ambiguous"} else "ambiguous"
+
+
+def normalize_shrunken_table_scopes(value: Any) -> list[dict[str, Any]]:
+    scopes: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        table_id = normalize_text(item.get("table_id"))
+        if not table_id:
+            continue
+        scopes.append(
+            {
+                "table_id": table_id,
+                "scope_kind": normalize_scope_kind(item.get("scope_kind")),
+                "is_formulation_bearing": normalize_bool(item.get("is_formulation_bearing"), True),
+                "is_doe": normalize_bool(item.get("is_doe"), False),
+                "parent_table_hint": normalize_text(item.get("parent_table_hint")),
+                "confidence": normalize_confidence(item.get("confidence")),
+            }
+        )
+    return scopes
+
+
+def normalize_shrunken_semantic_signals(value: Any) -> dict[str, Any]:
+    payload = value if isinstance(value, dict) else {}
+    return {
+        "has_variable_sweep": normalize_bool(payload.get("has_variable_sweep"), False),
+        "has_sequential_optimization": normalize_bool(payload.get("has_sequential_optimization"), False),
+        "has_parent_child_table_relation": normalize_bool(payload.get("has_parent_child_table_relation"), False),
+        "has_downstream_non_synthesis_variants": normalize_bool(payload.get("has_downstream_non_synthesis_variants"), False),
+        "has_measurement_only_variants": normalize_bool(payload.get("has_measurement_only_variants"), False),
+        "primary_preparation_method_hint": normalize_text(payload.get("primary_preparation_method_hint")),
+        "primary_variable_names": [
+            normalize_text(item)
+            for item in ensure_list(payload.get("primary_variable_names"))
+            if normalize_text(item)
+        ],
+        "selected_condition_hints": [
+            normalize_text(item)
+            for item in ensure_list(payload.get("selected_condition_hints"))
+            if normalize_text(item)
+        ],
+    }
+
+
+def normalize_shrunken_formulation_candidates(value: Any) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    for item in ensure_list(value):
+        if not isinstance(item, dict):
+            continue
+        candidate_id = normalize_text(item.get("candidate_id"))
+        if not candidate_id:
+            continue
+        candidates.append(
+            {
+                "candidate_id": candidate_id,
+                "candidate_kind": normalize_candidate_kind(item.get("candidate_kind")),
+                "source_table_id": normalize_text(item.get("source_table_id")),
+                "label_hint": normalize_text(item.get("label_hint")),
+                "instance_role": normalize_instance_role(item.get("instance_role")),
+                "parent_candidate_hint": normalize_text(item.get("parent_candidate_hint")),
+                "core_change_hint": normalize_text(item.get("core_change_hint")),
+                "shared_context_hint": normalize_text(item.get("shared_context_hint")),
+                "status": normalize_candidate_status(item.get("status")),
+                "confidence": normalize_confidence(item.get("confidence")),
+            }
+        )
+    return candidates
 
 
 def inheritance_marker_contract_issues(marker: dict[str, Any]) -> list[str]:
@@ -1122,6 +1116,89 @@ TABLE_CHARACTERIZATION_DEMOTION_CUES = [
     "image",
     "images",
 ]
+TABLE_AUTHORITY_FORMULATION_TOKENS = [
+    "formulation",
+    "drug:polymer ratio",
+    "plga:itz",
+    "polymer",
+    "drug",
+    "surfactant",
+    "concentration",
+    "ratio",
+    "entrapment",
+    "encapsulation",
+    "loading",
+    "particle size",
+    "pdi",
+    "zeta potential",
+]
+TABLE_AUTHORITY_DESIGN_TOKENS = [
+    "independent variables",
+    "dependent variables",
+    "levels",
+    "coded levels",
+    "factorial points",
+    "factors",
+    "design matrix",
+    "box-behnken",
+    "response surface",
+    "run order",
+]
+TABLE_AUTHORITY_DOWNSTREAM_DEMOTION_TOKENS = [
+    "pharmacokinetic",
+    "pharmacokinetics",
+    "plasma concentration-time",
+    "concentration-time profile",
+    "concentration-time profiles",
+    "distribution of",
+    "organ/tissue",
+    "brain compartments",
+    "blood and brain compartments",
+    "tissue distribution",
+    "time points",
+    "auc",
+    "mrt",
+    "cmax",
+    "tmax",
+    "rats",
+    "mice",
+    "brain",
+    "limit of detection",
+    "limit of quantification",
+    "calibration curve",
+    "noncompartmental",
+    "systemic clearance",
+    "volume of distribution",
+]
+TABLE_AUTHORITY_STABILITY_DEMOTION_TOKENS = [
+    "storage time",
+    "day 1",
+    "day 7",
+    "day 15",
+    "day 75",
+    "stability",
+    "release profile",
+    "release profiles",
+    "in-vitro release",
+    "in vitro release",
+]
+TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS = [
+    "dovepress",
+    "publish your work in this journal",
+    "journal citation reports",
+    "journal name",
+    "article designation",
+    "original research",
+    "running head",
+    "purpose:",
+    "author information",
+    "reviewed journal focusing",
+    "downloaded from",
+    "wiley online library",
+]
+TABLE_AUTHORITY_TIER_PRIMARY = "primary"
+TABLE_AUTHORITY_TIER_SECONDARY = "secondary"
+TABLE_AUTHORITY_TIER_WEAK_SECONDARY = "weak_secondary"
 REFERENCE_TAIL_CUES = [
     "crossref",
     "pubmed",
@@ -1326,34 +1403,6 @@ def is_obvious_figure_or_front_matter_table(signal_text: str) -> bool:
         token in lower
         for token in ["dsc", "thermogram", "micrograph", "microscopy", "image", "profile", "concentration-time"]
     )
-
-
-def paragraph_formulation_table_score(candidate: dict[str, Any]) -> dict[str, Any]:
-    text = normalize_text(candidate.get("text_content"))
-    lower = text.lower()
-    split_trigger = normalize_text(candidate.get("split_trigger")).lower()
-    quality_flags = {normalize_text(flag).lower() for flag in ensure_list(candidate.get("quality_flags"))}
-    cue_score = 0.0
-    structure_score = 0.0
-    penalty_score = 0.0
-    if "table " in lower:
-        structure_score += 2.0
-    if split_trigger in {"table_inline_split", "post_table_split", "inline_table_recovery"}:
-        structure_score += 2.0
-    if has_strong_formulation_table_signal(lower):
-        cue_score += 5.0
-    if "inline_formulation_table_recovered" in quality_flags:
-        structure_score += 4.0
-    if is_obvious_figure_or_front_matter_table(lower):
-        penalty_score -= 6.0
-    final_score = cue_score + structure_score + penalty_score
-    return {
-        "heading_score": 0.0,
-        "cue_score": cue_score,
-        "structure_score": structure_score,
-        "penalty_score": penalty_score,
-        "final_score": final_score,
-    }
 
 
 def looks_like_short_heading(line: str) -> bool:
@@ -1814,6 +1863,37 @@ def split_inline_table_result_entries(entries: list[dict[str, Any]]) -> list[dic
     return expanded
 
 
+def build_sparse_sentence_window_entries(text: str) -> list[dict[str, Any]]:
+    sentences = split_sentences_for_segmentation(text)
+    if not sentences:
+        return []
+    entries: list[dict[str, Any]] = []
+    seen_chunks: set[str] = set()
+    for idx, sentence in enumerate(sentences):
+        if sentence_profile(sentence) not in {"preparation", "materials"}:
+            continue
+        start = max(0, idx - 1)
+        end = min(len(sentences), idx + 3)
+        chunk = normalize_text(" ".join(sentences[start:end]))
+        if len(chunk) < 80 or chunk in seen_chunks:
+            continue
+        section_label = extract_section_label(chunk)
+        section_kind = infer_section_kind(chunk, section_label)
+        if should_drop_segment(chunk, section_kind, section_label):
+            continue
+        seen_chunks.add(chunk)
+        entries.append(
+            {
+                "paragraph_index": 100000 + idx,
+                "segment_index": 0,
+                "text": chunk,
+                "noise_flags": [],
+                "split_trigger": "sparse_sentence_window",
+            }
+        )
+    return entries
+
+
 def build_segmented_paragraph_entries(text: str) -> list[dict[str, Any]]:
     entries = split_paragraph_entries(text)
     entries = split_section_scoped_entries(entries)
@@ -1851,6 +1931,11 @@ def has_variable_sweep_design_signal(text: str) -> bool:
         r"\b\w*xed amounts of surfactant[s]?\b",
         r"\b\w*xed amounts of polymer and surfactant[s]?\b",
         r"\bprepared using \w*xed amounts\b",
+        r"\balways maintained at\b",
+        r"\bmaintained at\b",
+        r"\bkept constant\b",
+        r"\bheld constant\b",
+        r"\bwhile .*? was changed\b",
     ]
     varying_patterns = [
         r"\bvariable quantities\b",
@@ -1863,10 +1948,63 @@ def has_variable_sweep_design_signal(text: str) -> bool:
         r"\bconcentrations ranging\b",
         r"\bincreasing the volume\b",
         r"\branging from\s+\d",
+        r"\bchanged from\s+\d",
+        r"\bdifferent ratios?\b",
+        r"\binitial ratios?\b",
+        r"\bamount of [a-z0-9/\-() ]+ was changed from\b",
     ]
     has_fixed = any(re.search(pattern, lower) for pattern in fixed_patterns)
     has_varying = any(re.search(pattern, lower) for pattern in varying_patterns)
-    return has_fixed and has_varying
+    if has_fixed and has_varying:
+        return True
+    explicit_series_patterns = [
+        r"\(\s*\d+(?:\.\d+)?(?:\s*,\s*\d+(?:\.\d+)?){2,}(?:\s*(?:and|or)\s*\d+(?:\.\d+)?)?\s*(?:mg|%|ml|mL|ratio)?\s*\)",
+        r"\b\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*(?:and|or)\s*\d+(?:\.\d+)?\b",
+    ]
+    has_explicit_series = any(re.search(pattern, lower) for pattern in explicit_series_patterns)
+    if has_varying and has_explicit_series:
+        return True
+    return False
+
+
+def row_labels_show_variable_series(row_labels: list[str]) -> bool:
+    groups: dict[str, set[str]] = {}
+    for raw_label in row_labels:
+        label = normalize_text(raw_label)
+        if not label:
+            continue
+        match = re.match(r"^(.*?)(\d+(?:\.\d+)?)(?:[A-Za-z])?$", label)
+        if not match:
+            continue
+        prefix = normalize_text(match.group(1)).lower()
+        value = normalize_text(match.group(2))
+        if len(prefix) < 4:
+            continue
+        groups.setdefault(prefix, set()).add(value)
+    return any(len(values) >= 3 for values in groups.values())
+
+
+def has_variable_sweep_structure(
+    text: str,
+    *,
+    row_labels: list[str] | None = None,
+) -> bool:
+    if has_variable_sweep_design_signal(text):
+        return True
+    lower = normalize_text(text).lower()
+    direct_patterns = [
+        r"\bdifferent amounts\b",
+        r"\bdifferent ratios?\b",
+        r"\binitial ratios?\b",
+        r"\bvar(?:y|ied|ying)\b.{0,40}\b(?:concentration|ratio|amount|level)s?\b",
+        r"\bchanged from\s+\d+(?:\.\d+)?\s+to\s+\d+(?:\.\d+)?\b",
+        r"\bamount of [a-z0-9/\-() ]+ was changed from\b",
+    ]
+    if any(re.search(pattern, lower) for pattern in direct_patterns):
+        return True
+    if row_labels and row_labels_show_variable_series(row_labels):
+        return True
+    return False
 
 
 def build_inline_formulation_table_item(
@@ -1969,21 +2107,29 @@ def render_table_text(table_dir: Path | None, max_tables: int = 4, max_lines_per
 
 
 def render_full_table_block(path: Path, *, max_lines_per_table: int | None = 24) -> str:
-    lines: list[str] = []
+    raw_rows: list[list[str]] = []
     with path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
         reader = csv.reader(handle)
-        for idx, row in enumerate(reader):
-            if max_lines_per_table is not None and idx >= max_lines_per_table:
-                break
-            lines.append(" | ".join(normalize_text(cell) for cell in row if normalize_text(cell)))
+        for row in reader:
+            raw_rows.append(list(row))
+    cleaned_rows, _, _ = clean_table_rows(raw_rows)
+    cleaned_rows, _ = compact_table_rows_for_evidence(cleaned_rows)
+    lines: list[str] = []
+    for idx, row in enumerate(cleaned_rows):
+        if max_lines_per_table is not None and idx >= max_lines_per_table:
+            break
+        compact = " | ".join(normalize_text(cell) for cell in row if normalize_text(cell))
+        if compact:
+            lines.append(compact)
     if not lines:
         return ""
     return f"[TABLE {to_repo_rel(path)}]\n" + "\n".join(lines)
 
 
 def table_mode() -> str:
-    mode = normalize_text(os.getenv("STAGE2_TABLE_MODE", "full")).lower()
-    return mode if mode in {"full", "summary"} else "full"
+    # Locked S2-4a contract: all LLM-facing table evidence remains summary-only.
+    mode = normalize_text(os.getenv("STAGE2_TABLE_MODE", "summary")).lower()
+    return "summary" if mode in {"", "summary", "full"} else "summary"
 
 
 def summary_first_column_enhancement_enabled() -> bool:
@@ -2185,6 +2331,58 @@ def clean_table_rows(rows: list[list[str]], meta: dict[str, Any] | None = None) 
     if len(cleaned_rows) < 2:
         quality_flags.append("corrupted_or_sparse_table")
     return cleaned_rows, quality_flags, filtered_noise_rows
+
+
+def is_placeholder_header(cell: str) -> bool:
+    lower = normalize_text(cell).lower()
+    return not lower or lower.startswith("unnamed:")
+
+
+def compact_table_rows_for_evidence(rows: list[list[str]]) -> tuple[list[list[str]], list[str]]:
+    if not rows:
+        return rows, []
+    actions: list[str] = []
+    max_width = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    if max_width <= 0:
+        return rows, actions
+
+    normalized_rows = [list(row) + [""] * (max_width - len(row)) for row in rows]
+    keep_indices: list[int] = []
+    for col_index in range(max_width):
+        column = [normalize_text(row[col_index]) for row in normalized_rows]
+        header = column[0]
+        body = column[1:]
+        informative_body = any(value for value in body)
+        if not is_placeholder_header(header):
+            keep_indices.append(col_index)
+            continue
+        if informative_body:
+            unique_body = {value for value in body if value}
+            if len(unique_body) > 1:
+                keep_indices.append(col_index)
+    if keep_indices and len(keep_indices) < max_width:
+        normalized_rows = [[row[index] for index in keep_indices] for row in normalized_rows]
+        actions.append("drop_sparse_placeholder_columns")
+
+    compacted_rows: list[list[str]] = []
+    for row in normalized_rows:
+        cleaned = [normalize_text(cell) for cell in row]
+        non_empty = [cell for cell in cleaned if cell]
+        if not non_empty:
+            continue
+        unique_non_empty = list(dict.fromkeys(non_empty))
+        repeated_long_note = (
+            len(non_empty) >= 3
+            and len(unique_non_empty) == 1
+            and len(unique_non_empty[0].split()) >= 12
+        )
+        if repeated_long_note:
+            compacted_rows.append([unique_non_empty[0]])
+            if "collapse_repeated_note_row" not in actions:
+                actions.append("collapse_repeated_note_row")
+            continue
+        compacted_rows.append(non_empty)
+    return compacted_rows, actions
 
 
 def table_manifest_path(table_dir: Path | None) -> str:
@@ -2398,13 +2596,7 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                 "full_prompt_table_authority": restoration_profile == "wfdtq4vx_doe_execution_table",
             }
         )
-    entries.sort(
-        key=lambda item: (
-            -int(item["score"]),
-            str(item["path"].name).lower(),
-        )
-    )
-    return entries
+    return rank_table_authority_payloads(entries)
 
 
 def select_summary_tables(
@@ -2548,28 +2740,17 @@ def table_restore_profile(candidate_or_item: dict[str, Any]) -> str:
 
 
 def candidate_prefers_full_table_prompt(candidate: dict[str, Any]) -> bool:
-    return table_restore_profile(candidate) == "wfdtq4vx_doe_execution_table"
+    del candidate
+    return False
 
 
 def candidate_summary_is_lossy(candidate: dict[str, Any]) -> bool:
-    if candidate_prefers_full_table_prompt(candidate):
-        return False
     return candidate.get("candidate_kind") == "table"
 
 
 def render_selected_table_candidate(candidate: dict[str, Any]) -> str:
-    if not candidate_prefers_full_table_prompt(candidate):
-        return normalize_text(candidate.get("text_content"))
-    item = candidate.get("item") if isinstance(candidate.get("item"), dict) else {}
-    source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
-    if not source_csv_path:
-        return normalize_text(candidate.get("text_content"))
-    source_path = Path(source_csv_path)
-    if not source_path.is_absolute():
-        source_path = (PROJECT_ROOT / source_path).resolve()
-    if not source_path.exists():
-        return normalize_text(candidate.get("text_content"))
-    return render_full_table_block(source_path, max_lines_per_table=None)
+    # Locked S2-4a contract: selected table evidence stays summary-only.
+    return normalize_text(candidate.get("text_content"))
 
 
 def infer_units_from_headers(headers: list[str]) -> list[str]:
@@ -2622,6 +2803,422 @@ def infer_table_role_hint(headers: list[str], meta: dict[str, Any]) -> str:
     if any(token in signals for token in ["release", "stability", "yield", "response"]):
         return "results"
     return "unknown"
+
+
+def table_authority_signal_text(item: dict[str, Any]) -> str:
+    rows = item.get("rows") or []
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    header_parts = extract_informative_header_parts(rows)
+    return build_summary_table_signal_text(rows[:10], meta, header_parts)
+
+
+def table_authority_row_anchor_count(item: dict[str, Any]) -> int:
+    rows = item.get("rows") or []
+    if len(rows) <= 1:
+        return 0
+    return sum(
+        1
+        for row in rows[1:]
+        if isinstance(row, list) and row and normalize_text(row[0])
+    )
+
+
+def table_prose_like_row_count(rows: list[list[str]]) -> int:
+    prose_like = 0
+    for row in rows[:8]:
+        if not isinstance(row, list):
+            continue
+        compact_cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact_cells:
+            continue
+        char_count = sum(len(cell) for cell in compact_cells)
+        numeric_like = sum(1 for cell in compact_cells if re.search(r"\d", cell))
+        if char_count >= 80 and numeric_like <= 2:
+            prose_like += 1
+    return prose_like
+
+
+def table_compact_anchor_count(item: dict[str, Any]) -> int:
+    compact_count = 0
+    for label in table_row_label_preview(item, limit=20):
+        normalized = normalize_text(label)
+        if not normalized:
+            continue
+        if len(normalized) <= 32 and (
+            re.search(r"\d", normalized)
+            or ":" in normalized
+            or normalized.lower().startswith(("f", "run", "sample", "formulation"))
+        ):
+            compact_count += 1
+    return compact_count
+
+
+def clamp_float(value: float, lower: float, upper: float) -> float:
+    return max(lower, min(upper, value))
+
+
+def build_table_authority_score_breakdown(item: dict[str, Any]) -> dict[str, float]:
+    rows = item.get("rows") or []
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    signal_text = table_authority_signal_text(item)
+    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": signal_text})
+    row_pattern = infer_row_pattern(table_row_label_preview(item, limit=20))
+    selector_readiness = normalize_text(item.get("selector_readiness_label")).lower()
+    representation_status = normalize_text(item.get("representation_status")).lower()
+    repair_primary_source = normalize_text(item.get("repair_primary_source")).lower()
+    repair_confidence = float(item.get("repair_confidence") or 0.0)
+    filtered_noise_rows = int(item.get("filtered_noise_rows") or 0)
+    data_row_count = max(0, len(rows) - 1)
+    row_anchor_count = table_authority_row_anchor_count(item)
+    prose_like_rows = table_prose_like_row_count(rows)
+    compact_anchor_count = table_compact_anchor_count(item)
+    formulation_hits = count_cue_hits(signal_text, TABLE_AUTHORITY_FORMULATION_TOKENS)
+    design_hits = count_cue_hits(signal_text, TABLE_AUTHORITY_DESIGN_TOKENS)
+    downstream_hits = count_cue_hits(signal_text, TABLE_AUTHORITY_DOWNSTREAM_DEMOTION_TOKENS)
+    stability_hits = count_cue_hits(signal_text, TABLE_AUTHORITY_STABILITY_DEMOTION_TOKENS)
+    frontmatter_hits = count_cue_hits(signal_text, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS)
+    figure_spillover = is_obvious_figure_or_front_matter_table(signal_text)
+    front_matter_like = is_front_matter_like_text(signal_text)
+
+    breakdown: dict[str, float] = {
+        "legacy_recovery_score": round(clamp_float(float(item.get("score") or 0.0) / 40.0, -10.0, 12.0), 2),
+        "selector_readiness": 12.0 if selector_readiness == "ready" else (-16.0 if selector_readiness == "unresolved" else -10.0),
+        "representation_quality": (
+            8.0
+            if representation_status in {"repaired_summary", "raw_summary"}
+            else (-18.0 if representation_status == "unrepaired_corrupted" else -12.0)
+        ),
+        "repair_confidence": round(repair_confidence * 10.0, 2),
+        "authoritative_source": 5.0 if repair_primary_source == "stage1_selected_table_asset" else 0.0,
+        "row_anchor_density": 10.0 if row_pattern in {"numeric runs", "F-numbered rows"} else (4.0 if row_anchor_count >= 4 else 0.0),
+        "row_count_density": 6.0 if data_row_count >= 8 else (3.0 if data_row_count >= 3 else -2.0),
+        "formulation_density": min(18.0, formulation_hits * 2.5),
+        "design_density": min(16.0, design_hits * 3.0),
+        "characterization_demotion": -20.0 if role_hint == "characterization_only" else (-4.0 if role_hint == "characterization" else 0.0),
+        "downstream_demotion": max(-60.0, -10.0 * downstream_hits),
+        "stability_demotion": max(-24.0, -8.0 * stability_hits),
+        "frontmatter_demotion": max(-28.0, -7.0 * frontmatter_hits),
+        "front_matter_like_demotion": -35.0 if front_matter_like else 0.0,
+        "figure_spillover_demotion": -35.0 if figure_spillover else 0.0,
+        "noise_row_demotion": max(-10.0, -1.5 * float(filtered_noise_rows)),
+        "prose_row_demotion": max(-20.0, -5.0 * float(prose_like_rows)),
+        "anchor_legibility_demotion": -18.0 if compact_anchor_count < 3 and prose_like_rows >= 3 else 0.0,
+    }
+    if role_hint == "design matrix":
+        breakdown["role_hint_bonus"] = 10.0
+    elif role_hint == "formulation":
+        breakdown["role_hint_bonus"] = 12.0
+    elif role_hint == "optimization":
+        breakdown["role_hint_bonus"] = 2.0
+    else:
+        breakdown["role_hint_bonus"] = 0.0
+    if any(token in signal_text for token in ["table 1", "table 2", "table 3"]):
+        breakdown["early_table_bonus"] = 2.0
+    else:
+        breakdown["early_table_bonus"] = 0.0
+    return breakdown
+
+
+PRIMARY_EXCLUDED_ROLE_HINTS = {
+    "characterization",
+    "characterization_only",
+    "results",
+}
+
+
+PRIMARY_EXCLUDED_PATTERN_TOKENS = {
+    "release",
+    "diffusion",
+    "stability",
+    "storage",
+    "dialysis",
+    "pharmacokinetic",
+    "pharmacokinetics",
+    "biodistribution",
+    "cell viability",
+    "assay",
+    "figure",
+}
+
+
+PRIMARY_ELIGIBLE_HEADER_TOKENS = {
+    "concentration",
+    "ratio",
+    "loading",
+    "efficiency",
+    "entrapment",
+    "size",
+    "zeta",
+    "pdi",
+    "diameter",
+}
+
+
+PRIMARY_LABEL_ONLY_REASONS = {
+    "table_type_non_formulation_table",
+    "table_role_hint_characterization",
+    "table_role_hint_characterization_only",
+    "table_role_hint_results",
+}
+
+TABLE_INCLUSION_MUST_INCLUDE = "must_include"
+TABLE_INCLUSION_OPTIONAL_CONTEXT = "optional_context"
+TABLE_INCLUSION_HARD_DROP = "hard_drop"
+
+HARD_DROP_SIGNAL_TOKENS = {
+    "for peer review",
+    "received:",
+    "accepted:",
+    "published:",
+    "correspondence:",
+    "keywords:",
+    "references",
+}
+
+
+def table_fraction_numeric_cells(item: dict[str, Any]) -> float:
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    explicit = meta.get("fraction_numeric_cells")
+    if explicit not in {None, ""}:
+        try:
+            return float(explicit)
+        except (TypeError, ValueError):
+            pass
+    rows = item.get("rows") or []
+    nonempty_cells = 0
+    numeric_cells = 0
+    for row in rows[:12]:
+        if not isinstance(row, list):
+            continue
+        for cell in row:
+            normalized = normalize_text(cell)
+            if not normalized:
+                continue
+            nonempty_cells += 1
+            if re.search(r"\d", normalized):
+                numeric_cells += 1
+    if nonempty_cells <= 0:
+        return 0.0
+    return round(float(numeric_cells) / float(nonempty_cells), 4)
+
+
+def infer_authority_table_type(item: dict[str, Any], *, role_hint: str, breakdown: dict[str, float]) -> str:
+    if role_hint in {"design matrix", "formulation", "optimization"}:
+        return "formulation_table"
+    formulation_density = float(breakdown.get("formulation_density", 0.0) or 0.0)
+    design_density = float(breakdown.get("design_density", 0.0) or 0.0)
+    if max(formulation_density, design_density) >= 6.0:
+        return "formulation_table"
+    return "non_formulation_table"
+
+
+def table_primary_guardrail_reasons(item: dict[str, Any], *, breakdown: dict[str, float]) -> list[str]:
+    rows = item.get("rows") or []
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    signal_text = table_authority_signal_text(item)
+    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": signal_text})
+    table_type = infer_authority_table_type(item, role_hint=role_hint, breakdown=breakdown)
+    fraction_numeric_cells = table_fraction_numeric_cells(item)
+    header_keywords_hit = [
+        normalize_text(value)
+        for value in ensure_list(meta.get("header_keywords_hit"))
+        if normalize_text(value)
+    ]
+    prose_like_rows = table_prose_like_row_count(rows)
+    row_anchor_count = table_authority_row_anchor_count(item)
+    reasons: list[str] = []
+    if table_type == "non_formulation_table":
+        reasons.append("table_type_non_formulation_table")
+    if role_hint in PRIMARY_EXCLUDED_ROLE_HINTS:
+        reasons.append(f"table_role_hint_{normalize_token(role_hint)}")
+    if fraction_numeric_cells < 0.08 and not header_keywords_hit:
+        reasons.append("very_low_numeric_density_without_header_keywords")
+    if prose_like_rows >= 3 and row_anchor_count < 3:
+        reasons.append("narrative_or_figure_caption_dominated")
+    lower_signal = signal_text.lower()
+    if any(token in lower_signal for token in PRIMARY_EXCLUDED_PATTERN_TOKENS):
+        reasons.append("non_formulation_pattern_surface")
+    return reasons
+
+
+def primary_structural_guardrail_reasons(reasons: list[str]) -> list[str]:
+    return [reason for reason in reasons if reason not in PRIMARY_LABEL_ONLY_REASONS]
+
+
+def table_hard_drop_reasons(item: dict[str, Any], *, breakdown: dict[str, float]) -> list[str]:
+    rows = item.get("rows") or []
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    signal_text = table_authority_signal_text(item)
+    fraction_numeric_cells = table_fraction_numeric_cells(item)
+    first_labels = [normalize_text(label) for label in table_row_label_preview(item, limit=12) if normalize_text(label)]
+    prose_label_count = sum(1 for label in first_labels if len(re.findall(r"[A-Za-z]+", label)) >= 8)
+    header_keywords_hit = [
+        normalize_text(value)
+        for value in ensure_list(meta.get("header_keywords_hit"))
+        if normalize_text(value)
+    ]
+    prose_like_rows = table_prose_like_row_count(rows)
+    row_anchor_count = table_authority_row_anchor_count(item)
+    representation_status = normalize_text(item.get("representation_status")).lower()
+    lower_signal = signal_text.lower()
+    reasons: list[str] = []
+    if representation_status == "unrepaired_corrupted":
+        reasons.append("unrepaired_corrupted_representation")
+    if prose_like_rows >= 3 and row_anchor_count < 3:
+        reasons.append("narrative_or_figure_caption_dominated")
+    if prose_label_count >= 3 and fraction_numeric_cells < 0.2:
+        reasons.append("prose_row_label_surface")
+    if fraction_numeric_cells < 0.08 and not header_keywords_hit and row_anchor_count < 3:
+        reasons.append("very_low_numeric_density_without_header_keywords")
+    if count_cue_hits(lower_signal, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS) >= 2:
+        reasons.append("front_matter_or_bibliographic_surface")
+    if re.search(r"\b\d+\s+of\s+\d+\b", lower_signal):
+        reasons.append("journal_page_or_review_surface")
+    if any(token in lower_signal for token in HARD_DROP_SIGNAL_TOKENS):
+        reasons.append("high_confidence_non_content_fragment")
+    if (
+        float(breakdown.get("formulation_density", 0.0) or 0.0) < 2.0
+        and float(breakdown.get("design_density", 0.0) or 0.0) < 2.0
+        and prose_like_rows >= 4
+        and row_anchor_count < 2
+    ):
+        reasons.append("no_structured_formulation_surface")
+    return list(dict.fromkeys(reasons))
+
+
+def table_primary_eligibility_signals(item: dict[str, Any], *, breakdown: dict[str, float]) -> list[str]:
+    rows = item.get("rows") or []
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    signal_text = table_authority_signal_text(item)
+    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": signal_text})
+    representation_status = normalize_text(item.get("representation_status")).lower()
+    quality_flags = {normalize_text(flag).lower() for flag in ensure_list(item.get("quality_flags"))}
+    row_pattern = infer_row_pattern(table_row_label_preview(item, limit=20))
+    row_anchor_count = table_authority_row_anchor_count(item)
+    data_row_count = max(0, len(rows) - 1)
+    header_signal_hits = sum(1 for token in PRIMARY_ELIGIBLE_HEADER_TOKENS if token in signal_text.lower())
+    signals: list[str] = []
+    if representation_status not in {"repair_insufficient", "unrepaired_corrupted"} and "weak_legibility" not in quality_flags:
+        signals.append("representation_not_repair_insufficient")
+    if row_pattern in {"numeric runs", "F-numbered rows"} or row_anchor_count >= 4:
+        signals.append("stable_row_anchors")
+    if data_row_count >= 3 and (float(breakdown.get("formulation_density", 0.0) or 0.0) >= 6.0 or float(breakdown.get("design_density", 0.0) or 0.0) >= 6.0):
+        signals.append("multiple_condition_rows")
+    if header_signal_hits >= 2 and data_row_count >= 3:
+        signals.append("formulation_numeric_header_surface")
+    if role_hint == "design matrix":
+        signals.append("design_matrix_surface")
+    return signals
+
+
+def table_inclusion_class(item: dict[str, Any], *, breakdown: dict[str, float]) -> str:
+    if table_hard_drop_reasons(item, breakdown=breakdown):
+        return TABLE_INCLUSION_HARD_DROP
+    signals = set(table_primary_eligibility_signals(item, breakdown=breakdown))
+    if "formulation_numeric_header_surface" in signals:
+        return TABLE_INCLUSION_MUST_INCLUDE
+    if {"stable_row_anchors", "multiple_condition_rows"}.issubset(signals):
+        return TABLE_INCLUSION_MUST_INCLUDE
+    if {"stable_row_anchors", "design_matrix_surface"}.issubset(signals):
+        return TABLE_INCLUSION_MUST_INCLUDE
+    return TABLE_INCLUSION_OPTIONAL_CONTEXT
+
+
+def table_authority_duplicate_like(item: dict[str, Any], prior_items: list[dict[str, Any]]) -> bool:
+    current_signature = table_duplicate_signature(item)
+    current_text = table_authority_signal_text(item)
+    for prior in prior_items:
+        if current_signature == table_duplicate_signature(prior):
+            return True
+        if is_semantic_near_duplicate(current_text, table_authority_signal_text(prior), threshold=0.68):
+            return True
+    return False
+
+
+def rank_table_authority_payloads(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    ranked: list[dict[str, Any]] = []
+    for item in entries:
+        enriched = dict(item)
+        breakdown = build_table_authority_score_breakdown(enriched)
+        authority_score = round(sum(breakdown.values()), 2)
+        enriched["authority_score_breakdown"] = breakdown
+        enriched["authority_score"] = authority_score
+        ranked.append(enriched)
+    ranked.sort(
+        key=lambda item: (
+            -float(item.get("authority_score") or 0.0),
+            -int(item.get("score") or 0),
+            str(item.get("path", "")).lower(),
+        )
+    )
+    preferred_items: list[dict[str, Any]] = []
+    top_score = float(ranked[0].get("authority_score") or 0.0) if ranked else 0.0
+    primary_assigned = False
+    for index, item in enumerate(ranked, start=1):
+        authority_score = float(item.get("authority_score") or 0.0)
+        readiness = normalize_text(item.get("selector_readiness_label")).lower()
+        representation_status = normalize_text(item.get("representation_status")).lower()
+        signal_text = table_authority_signal_text(item)
+        breakdown = item.get("authority_score_breakdown") or {}
+        strong_structural_table = float(breakdown.get("design_density", 0.0) or 0.0) >= 6.0 or float(breakdown.get("formulation_density", 0.0) or 0.0) >= 10.0
+        primary_guardrail_reason = table_primary_guardrail_reasons(item, breakdown=breakdown)
+        structural_guardrail_reason = primary_structural_guardrail_reasons(primary_guardrail_reason)
+        primary_eligibility_signals = table_primary_eligibility_signals(item, breakdown=breakdown)
+        inclusion_class = table_inclusion_class(item, breakdown=breakdown)
+        hard_drop_reasons = table_hard_drop_reasons(item, breakdown=breakdown)
+        weak_table = (
+            authority_score < 18.0
+            or readiness == "unresolved"
+            or representation_status == "unrepaired_corrupted"
+            or count_cue_hits(signal_text, TABLE_AUTHORITY_DOWNSTREAM_DEMOTION_TOKENS) >= 2
+            or count_cue_hits(signal_text, TABLE_AUTHORITY_STABILITY_DEMOTION_TOKENS) >= 2
+            or count_cue_hits(signal_text, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS) >= 2
+        )
+        primary_guardrail_applied = False
+        primary_eligible = (
+            inclusion_class == TABLE_INCLUSION_MUST_INCLUDE
+            and not weak_table
+            and not structural_guardrail_reason
+            and bool(primary_eligibility_signals)
+        )
+        if not primary_assigned and primary_eligible:
+            authority_tier = TABLE_AUTHORITY_TIER_PRIMARY
+            primary_assigned = True
+            preferred_items.append(item)
+        elif inclusion_class == TABLE_INCLUSION_HARD_DROP:
+            primary_guardrail_applied = True
+            authority_tier = TABLE_AUTHORITY_TIER_WEAK_SECONDARY
+        elif not primary_assigned and (structural_guardrail_reason or not primary_eligibility_signals):
+            primary_guardrail_applied = bool(structural_guardrail_reason or not primary_eligibility_signals)
+            if weak_table or table_authority_duplicate_like(item, preferred_items):
+                authority_tier = TABLE_AUTHORITY_TIER_WEAK_SECONDARY
+            elif strong_structural_table and authority_score >= 35.0:
+                authority_tier = TABLE_AUTHORITY_TIER_SECONDARY
+                preferred_items.append(item)
+            elif authority_score >= max(22.0, top_score - 18.0):
+                authority_tier = TABLE_AUTHORITY_TIER_SECONDARY
+                preferred_items.append(item)
+            else:
+                authority_tier = TABLE_AUTHORITY_TIER_WEAK_SECONDARY
+        elif weak_table or table_authority_duplicate_like(item, preferred_items):
+            authority_tier = TABLE_AUTHORITY_TIER_WEAK_SECONDARY
+        elif strong_structural_table and authority_score >= 35.0:
+            authority_tier = TABLE_AUTHORITY_TIER_SECONDARY
+            preferred_items.append(item)
+        elif authority_score >= max(22.0, top_score - 18.0):
+            authority_tier = TABLE_AUTHORITY_TIER_SECONDARY
+            preferred_items.append(item)
+        else:
+            authority_tier = TABLE_AUTHORITY_TIER_WEAK_SECONDARY
+        item["authority_rank"] = index
+        item["authority_tier"] = authority_tier
+        item["table_inclusion_class"] = inclusion_class
+        item["hard_drop_reason"] = list(hard_drop_reasons)
+        item["preserved_by_authority_ranking"] = inclusion_class != TABLE_INCLUSION_HARD_DROP
+        item["primary_guardrail_applied"] = "yes" if primary_guardrail_applied else "no"
+        item["primary_guardrail_reason"] = list(primary_guardrail_reason)
+        item["primary_eligibility_signals"] = list(primary_eligibility_signals)
+    return ranked
 
 
 def select_sample_rows(rows: list[list[str]]) -> list[list[str]]:
@@ -2681,73 +3278,128 @@ def render_table_summary_text(table_dir: Path | None, max_tables: int = 4) -> st
     )
     blocks: list[str] = []
     for item in selected_tables:
-        path = item["path"]
-        rows = item["rows"]
-        meta = item["meta"]
-        header_row = rows[0]
-        data_rows = rows[1:] if len(rows) > 1 else []
-        header_parts: list[str] = []
-        for cell in header_row:
-            header_parts.extend(parse_header_cell(cell))
-        header_parts = [part for part in header_parts if part]
-        units = infer_units_from_headers(header_parts)
-        row_ids = [row[0] for row in data_rows if row and normalize_text(row[0])]
-        samples = select_sample_rows(data_rows)
-        sample_lines = []
-        for idx, row in enumerate(samples, start=1):
-            sample_lines.append(f"- sample_row_{idx}: " + " | ".join(cell for cell in row if cell))
-        rel = path.resolve().relative_to(PROJECT_ROOT).as_posix()
-        table_match = re.search(r"__table_(\d+)__", path.name)
-        table_id = f"Table {int(table_match.group(1))}" if table_match else path.stem
-        caption = normalize_text(meta.get("caption_or_title"))
-        footnotes = normalize_text(meta.get("footnotes") or meta.get("notes"))
-        row_anchor_preview = summarize_row_anchor_preview(row_ids) if enhancement_enabled else ""
-        block_lines = [
-            f"[TABLE_SUMMARY {rel}]",
-            f"- table_id: {table_id}",
-            f"- title_or_caption: {caption or '(not available)'}",
-            f"- column_headers: {' || '.join(header_parts) if header_parts else '(not available)'}",
-            f"- header_units: {', '.join(units) if units else '(none inferred)'}",
-            f"- row_identifier_pattern: {infer_row_pattern(row_ids)}",
-            f"- table_role_hint: {infer_table_role_hint(header_parts, meta)}",
-            f"- table_shape_hint: rows={meta.get('n_rows', len(rows))}, cols={meta.get('n_cols', max((len(r) for r in rows), default=0))}",
-        ]
-        if enhancement_enabled and row_anchor_preview:
-            block_lines.append(f"- first_column_row_labels_preview: {row_anchor_preview}")
-        if sample_lines:
-            block_lines.append("- sample_rows:")
-            block_lines.extend(sample_lines)
-        block_lines.append(f"- footnotes_or_notes: {footnotes or '(not available)'}")
-        blocks.append("\n".join(block_lines))
+        blocks.append(render_summary_table_block(item, enhancement_enabled=enhancement_enabled))
     return "\n\n".join(blocks)
 
 
-def render_summary_table_block(item: dict[str, Any], *, enhancement_enabled: bool) -> str:
+def truncate_summary_cell(text: str, *, max_chars: int = 72) -> str:
+    compact = normalize_text(text)
+    if len(compact) <= max_chars:
+        return compact
+    return compact[: max_chars - 3].rstrip() + "..."
+
+
+def flatten_table_headers_for_summary(rows: list[list[str]]) -> list[str]:
+    if not rows:
+        return []
+    width = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    return flatten_header_rows([rows[0]], width)
+
+
+def summary_column_score(header: str, values: list[str], *, index: int) -> float:
+    compact_header = normalize_text(header)
+    lower_header = compact_header.lower()
+    compact_values = [normalize_text(value) for value in values if normalize_text(value)]
+    lower_values = " ".join(value.lower() for value in compact_values[:8])
+    score = 0.0
+    if index == 0:
+        score += 100.0
+    if not compact_header or lower_header.startswith("unnamed"):
+        score -= 40.0
+    if any(
+        token in lower_header
+        for token in [
+            "formulation",
+            "sample",
+            "batch",
+            "run",
+            "drug",
+            "polymer",
+            "surfactant",
+            "concentration",
+            "ratio",
+            "size",
+            "pdi",
+            "zeta",
+            "encapsulation",
+            "loading",
+            "yield",
+            "efficiency",
+            "desirability",
+        ]
+    ):
+        score += 15.0
+    if any(token in lower_values for token in ["mg/ml", "%", "ratio", "particle size", "ee", "dl"]):
+        score += 6.0
+    unique_values = {value.lower() for value in compact_values}
+    if compact_values and len(unique_values) <= 1:
+        score -= 12.0
+    if compact_values and sum(len(value) for value in compact_values[:4]) > 320:
+        score -= 10.0
+    return score
+
+
+def select_summary_column_indices(rows: list[list[str]], *, max_columns: int = 6) -> list[int]:
+    if not rows:
+        return []
+    width = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    headers = flatten_table_headers_for_summary(rows)
+    data_rows = rows[1:] if len(rows) > 1 else []
+    ranked: list[tuple[float, int]] = []
+    for index in range(width):
+        header = headers[index] if index < len(headers) else ""
+        values = [row[index] for row in data_rows[:8] if index < len(row)]
+        score = summary_column_score(header, values, index=index)
+        if score > 0:
+            ranked.append((-score, index))
+    ranked.sort()
+    chosen = [index for _, index in ranked[:max_columns]]
+    if 0 not in chosen and width > 0:
+        chosen.append(0)
+    return sorted(dict.fromkeys(chosen))
+
+
+def build_summary_sample_lines(rows: list[list[str]], column_indices: list[int], *, max_rows: int = 3) -> list[str]:
+    if not rows:
+        return []
+    data_rows = rows[1:] if len(rows) > 1 else rows
+    samples = select_sample_rows(data_rows)[:max_rows]
+    sample_lines: list[str] = []
+    for idx, row in enumerate(samples, start=1):
+        selected_cells = [
+            truncate_summary_cell(row[col_index], max_chars=72)
+            for col_index in column_indices
+            if col_index < len(row) and normalize_text(row[col_index])
+        ]
+        if selected_cells:
+            sample_lines.append(f"- sample_row_{idx}: " + " | ".join(selected_cells))
+    return sample_lines
+
+
+def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool) -> list[str]:
     path = item["path"]
     rows = item["rows"]
     meta = item["meta"]
-    header_row = rows[0]
+    header_parts = [part for part in flatten_table_headers_for_summary(rows) if normalize_text(part)]
     data_rows = rows[1:] if len(rows) > 1 else []
-    header_parts: list[str] = []
-    for cell in header_row:
-        header_parts.extend(parse_header_cell(cell))
-    header_parts = [part for part in header_parts if part]
-    units = infer_units_from_headers(header_parts)
     row_ids = [row[0] for row in data_rows if row and normalize_text(row[0])]
-    samples = select_sample_rows(data_rows)
-    sample_lines = []
-    for idx, row in enumerate(samples, start=1):
-        sample_lines.append(f"- sample_row_{idx}: " + " | ".join(cell for cell in row if cell))
+    column_indices = select_summary_column_indices(rows)
+    column_headers = [
+        truncate_summary_cell(header_parts[index] if index < len(header_parts) else f"column_{index + 1}", max_chars=52)
+        for index in column_indices
+    ]
+    units = infer_units_from_headers(column_headers)
+    sample_lines = build_summary_sample_lines(rows, column_indices)
     table_match = re.search(r"__table_(\d+)__", path.name)
     table_id = f"Table {int(table_match.group(1))}" if table_match else path.stem
     caption = normalize_text(meta.get("caption_or_title"))
-    footnotes = normalize_text(meta.get("footnotes") or meta.get("notes"))
+    footnotes = truncate_summary_cell(normalize_text(meta.get("footnotes") or meta.get("notes")), max_chars=220)
     row_anchor_preview = summarize_row_anchor_preview(row_ids) if enhancement_enabled else ""
     block_lines = [
         f"[TABLE_SUMMARY {to_repo_rel(path)}]",
         f"- table_id: {table_id}",
         f"- title_or_caption: {caption or '(not available)'}",
-        f"- column_headers: {' || '.join(header_parts) if header_parts else '(not available)'}",
+        f"- key_columns: {' || '.join(column_headers) if column_headers else '(not available)'}",
         f"- header_units: {', '.join(units) if units else '(none inferred)'}",
         f"- row_identifier_pattern: {infer_row_pattern(row_ids)}",
         f"- table_role_hint: {infer_table_role_hint(header_parts, meta)}",
@@ -2771,17 +3423,386 @@ def render_summary_table_block(item: dict[str, Any], *, enhancement_enabled: boo
         block_lines.append("- sample_rows:")
         block_lines.extend(sample_lines)
     block_lines.append(f"- footnotes_or_notes: {footnotes or '(not available)'}")
-    return "\n".join(block_lines)
+    return block_lines
+
+
+def render_summary_table_block(item: dict[str, Any], *, enhancement_enabled: bool) -> str:
+    return "\n".join(build_table_summary_lines(item, enhancement_enabled=enhancement_enabled))
+
+
+@lru_cache(maxsize=256)
+def cached_summary_table_candidates(table_dir_str: str) -> tuple[dict[str, Any], ...]:
+    table_dir = Path(table_dir_str)
+    if not table_dir.exists():
+        return tuple()
+    return tuple(collect_summary_table_candidates(table_dir))
+
+
+def resolve_prompt_summary_table_item(origin_locator: str) -> dict[str, Any] | None:
+    locator = normalize_text(origin_locator)
+    if not locator:
+        return None
+    table_path = Path(locator)
+    if not table_path.is_absolute():
+        table_path = (PROJECT_ROOT / table_path).resolve()
+    if not table_path.exists() or table_path.suffix.lower() != ".csv":
+        return None
+    for item in cached_summary_table_candidates(str(table_path.parent.resolve())):
+        candidate_path = item.get("path")
+        if isinstance(candidate_path, Path) and candidate_path.resolve() == table_path.resolve():
+            return dict(item)
+    return None
+
+
+def summary_preserves_variable_structure(item: dict[str, Any]) -> bool:
+    rows = item.get("rows") or []
+    meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    header_parts = extract_informative_header_parts(rows)
+    signal_text = build_summary_table_signal_text(rows[:8], meta, header_parts)
+    role_hint = infer_table_role_hint(header_parts, {**meta, "_signal_text": signal_text})
+    row_labels = table_row_label_preview(item, limit=12)
+    if role_hint == "design matrix":
+        return True
+    if has_variable_sweep_structure(signal_text, row_labels=row_labels):
+        return True
+    if any(
+        token in signal_text
+        for token in [
+            "independent variables",
+            "dependent variables",
+            "factors",
+            "levels",
+            "concentration",
+            "ratio",
+            "run order",
+            "experimental design",
+            "factorial design",
+            "box-behnken",
+        ]
+    ):
+        return True
+    if infer_row_pattern(row_labels) in {"numeric runs", "F-numbered rows"} and len(row_labels) >= 4:
+        return True
+    return False
+
+
+def should_force_full_table_prompt(
+    block: dict[str, Any],
+    *,
+    summary_item: dict[str, Any] | None,
+) -> tuple[bool, str]:
+    if not bool(block.get("requires_variable_structure")):
+        return False, ""
+    if summary_item is None:
+        return True, "summary_table_unavailable"
+    if not summary_preserves_variable_structure(summary_item):
+        return True, "summary_table_preservation_failed"
+    return False, ""
+
+
+def render_prompt_block(
+    block: dict[str, Any],
+    *,
+    summary_enhanced: bool,
+) -> dict[str, Any]:
+    text_content = normalize_text(block.get("text_content"))
+    block_type = normalize_text(block.get("block_type"))
+    evidence_kind = normalize_text(block.get("evidence_kind")).lower()
+    label = {
+        "method": "[METHOD]\n",
+        "materials": "[MATERIALS]\n",
+        "supporting": "[SUPPORTING]\n",
+    }.get(evidence_kind, "")
+    if block_type != "table":
+        return {
+            "block_id": normalize_text(block.get("block_id")),
+            "rendered_text": (label + text_content).strip(),
+            "table_mode_used": "",
+            "summary_applied": "no",
+            "reason_for_full_table": "",
+        }
+    summary_item = resolve_prompt_summary_table_item(normalize_text(block.get("origin_locator")))
+    if summary_item is not None:
+        return {
+            "block_id": normalize_text(block.get("block_id")),
+            "rendered_text": "[TABLE]\n" + render_summary_table_block(summary_item, enhancement_enabled=summary_enhanced),
+            "table_mode_used": "summary",
+            "summary_applied": "yes",
+            "reason_for_full_table": "",
+        }
+    if bool(block.get("is_table_derived")) and normalize_text(block.get("source_type")) == "inline_table_text":
+        # Summary-only S2-4a contract: inline table text is allowed as an
+        # intermediate diagnostic / selector surface, but it is never lawful
+        # as LLM-facing table evidence unless it has been converted into a
+        # governed summary-backed table surface first.
+        return {
+            "block_id": normalize_text(block.get("block_id")),
+            "rendered_text": "",
+            "table_mode_used": "",
+            "summary_applied": "no",
+            "reason_for_full_table": "inline_table_text_blocked_by_summary_only_contract",
+        }
+    return {
+        "block_id": normalize_text(block.get("block_id")),
+        "rendered_text": "[TABLE]\n" + text_content,
+        "table_mode_used": "summary",
+        "summary_applied": "yes",
+        "reason_for_full_table": "",
+    }
+
+
+def build_prompt_render_bundle(evidence_artifact: dict[str, Any]) -> dict[str, Any]:
+    input_contract = evidence_artifact.get("input_contract", {})
+    summary_enhanced = bool(input_contract.get("summary_first_column_enhancement"))
+    rendered_blocks: list[dict[str, Any]] = []
+    rendered_payloads: list[str] = []
+    normalized_rendered_payloads: list[str] = []
+    for block in ensure_list(evidence_artifact.get("evidence_blocks")):
+        if not isinstance(block, dict):
+            continue
+        rendered = render_prompt_block(block, summary_enhanced=summary_enhanced)
+        rendered_text = str(rendered.get("rendered_text") or "")
+        normalized_rendered_text = normalize_text(rendered_text)
+        if not normalized_rendered_text:
+            continue
+        rendered["rendered_text"] = rendered_text
+        if not rendered_text:
+            continue
+        rendered_blocks.append(rendered)
+        rendered_payloads.append(rendered_text)
+        normalized_rendered_payloads.append(normalized_rendered_text)
+    table_modes = [rendered.get("table_mode_used") for rendered in rendered_blocks if normalize_text(rendered.get("table_mode_used"))]
+    overall_table_mode_used = "summary" if "summary" in table_modes else ""
+    return {
+        "rendered_blocks": rendered_blocks,
+        "rendered_payloads": rendered_payloads,
+        "normalized_rendered_payloads": normalized_rendered_payloads,
+        "evidence_text": "\n\n".join(rendered_payloads).strip(),
+        "table_mode_used": overall_table_mode_used,
+        "summary_applied": "yes" if "summary" in table_modes else "no",
+        "reason_for_full_table": "",
+    }
 
 
 def resolved_selector_strategy(current_table_mode: str) -> str:
-    if current_table_mode == "summary":
-        return "score_ranked_top_k"
-    return "sorted_csv_first_4"
+    del current_table_mode
+    return "summary_only_coverage_first_v1"
+
+
+def selector_strategy_uses_evidence_pack_layout(selector_strategy: str) -> bool:
+    strategy = normalize_text(selector_strategy).lower()
+    return bool(strategy)
+
+
+def build_prompt_runtime_metadata(evidence_artifact: dict[str, Any]) -> dict[str, Any]:
+    input_contract = evidence_artifact.get("input_contract", {})
+    current_table_mode = normalize_text(input_contract.get("table_mode")).lower() or table_mode()
+    summary_enhanced = bool(input_contract.get("summary_first_column_enhancement"))
+    current_input_packing_mode = normalize_text(input_contract.get("input_packing_mode")).lower() or input_packing_mode()
+    ordered_block_order = [str(value) for value in ensure_list(input_contract.get("ordered_block_order")) if str(value).strip()]
+    prompt_render_bundle = build_prompt_render_bundle(evidence_artifact)
+    runtime_notes: list[str] = [f"Table mode: {current_table_mode}"]
+    if prompt_render_bundle["table_mode_used"] == "summary":
+        runtime_notes.append("Table evidence is provided in summary-first mode by default.")
+        runtime_notes.append("All LLM-facing table evidence remains summary-only under the governed S2-4a contract.")
+        if summary_enhanced:
+            runtime_notes.append("Summary selection prioritizes DOE-like tables with explicit numbered row anchors.")
+            runtime_notes.append("First-column row labels / numbering previews are exposed for explicit row-anchor tables.")
+    if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE:
+        runtime_notes.append("Controlled evidence packing is enabled.")
+        runtime_notes.append(
+            "Prompt order prioritizes synthesis/preparation blocks, then materials/procurement blocks, then table evidence, then narrative fallback."
+        )
+        if ordered_block_order:
+            runtime_notes.append(f"Resolved evidence block order: {' > '.join(ordered_block_order)}.")
+        runtime_notes.append("Treat the evidence pack as the governed live input ordering for this run.")
+    return {
+        "table_mode": current_table_mode,
+        "summary_enhanced": summary_enhanced,
+        "input_packing_mode": current_input_packing_mode,
+        "ordered_block_order": ordered_block_order,
+        "prompt_render_bundle": prompt_render_bundle,
+        "runtime_notes": runtime_notes,
+    }
+
+
+def prompt_size_policy_status(prompt_length: int) -> str:
+    return "healthy" if prompt_length <= PROMPT_HEALTHY_CHAR_LIMIT else "oversized"
+
+
+def semantic_token_set(text: str) -> set[str]:
+    return {
+        token
+        for token in re.findall(r"[a-z0-9][a-z0-9%./:-]{2,}", normalize_text(text).lower())
+        if not token.isdigit()
+    }
+
+
+def is_semantic_near_duplicate(text_a: str, text_b: str, *, threshold: float = 0.72) -> bool:
+    tokens_a = semantic_token_set(text_a)
+    tokens_b = semantic_token_set(text_b)
+    if len(tokens_a) < 12 or len(tokens_b) < 12:
+        return False
+    overlap = len(tokens_a & tokens_b)
+    smaller = min(len(tokens_a), len(tokens_b))
+    if smaller <= 0:
+        return False
+    return (overlap / smaller) >= threshold
+
+
+def evidence_text_has_noise(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    if not lower:
+        return False
+    noisy_tokens = [
+        "creative commons attribution",
+        "submit your manuscript",
+        "powered by tcpdf",
+        "downloaded from",
+        "for personal use only",
+        "dovepress",
+        "wiley online library",
+        "references",
+    ]
+    return any(token in lower for token in noisy_tokens)
+
+
+def select_bounded_role_aware_table_candidates(
+    selected_candidates: list[dict[str, Any]],
+    *,
+    max_tables: int = 4,
+) -> list[dict[str, Any]]:
+    bounded: list[dict[str, Any]] = []
+    seen_origins: set[str] = set()
+    for candidate in selected_candidates:
+        if candidate.get("candidate_kind") != "table":
+            continue
+        origin_locator = normalize_text(candidate.get("origin_locator"))
+        if not origin_locator or origin_locator in seen_origins:
+            continue
+        candidate_path = (PROJECT_ROOT / origin_locator).resolve()
+        if not candidate_path.exists():
+            continue
+        seen_origins.add(origin_locator)
+        bounded.append(candidate)
+        if len(bounded) >= max_tables:
+            break
+    return bounded
+
+
+def supplement_sequential_table_candidates(
+    selected_candidates: list[dict[str, Any]],
+    *,
+    segmented_candidates: list[dict[str, Any]],
+    signals: dict[str, bool],
+    max_tables: int = 4,
+    min_distinct_tables: int = 2,
+) -> list[dict[str, Any]]:
+    bounded = select_bounded_role_aware_table_candidates(
+        selected_candidates,
+        max_tables=max_tables,
+    )
+    if not signals.get("has_sequential_signal"):
+        return bounded
+
+    seen_origins = {
+        normalize_text(candidate.get("origin_locator"))
+        for candidate in bounded
+        if normalize_text(candidate.get("origin_locator"))
+    }
+    if len(seen_origins) >= min_distinct_tables:
+        return bounded
+
+    ranked_candidates: list[tuple[float, float, str, dict[str, Any]]] = []
+    sequential_support_tokens = [
+        "different concentrations",
+        "different ratios",
+        "different ratio",
+        "initial ratios",
+        "remaining studies",
+        "remaining experiments",
+        "whole study",
+        "chosen as optimal",
+        "selected as optimal",
+        "optimal surfactant concentration",
+        "optimal formulation",
+    ]
+    for candidate in segmented_candidates:
+        if candidate.get("candidate_kind") != "table":
+            continue
+        origin_locator = normalize_text(candidate.get("origin_locator"))
+        if not origin_locator or origin_locator in seen_origins:
+            continue
+        candidate_path = (PROJECT_ROOT / origin_locator).resolve()
+        if not candidate_path.exists():
+            continue
+        candidate_text = normalize_text(candidate.get("text_content")).lower()
+        section_kind = normalize_text(candidate.get("section_kind")).lower()
+        support_score = 0.0
+        if section_kind == "optimization":
+            support_score += 3.0
+        elif section_kind == "experimental_design":
+            support_score += 2.0
+        support_score += float(
+            sum(1 for token in sequential_support_tokens if token in candidate_text)
+        )
+        if support_score <= 0.0:
+            continue
+        ranked_candidates.append(
+            (
+                -support_score,
+                -float(candidate.get("table_score", 0.0) or 0.0),
+                origin_locator,
+                candidate,
+            )
+        )
+
+    ranked_candidates.sort()
+    for _, _, origin_locator, candidate in ranked_candidates:
+        bounded.append(candidate)
+        seen_origins.add(origin_locator)
+        if len(bounded) >= max_tables or len(seen_origins) >= min_distinct_tables:
+            break
+    return bounded
+
+
+def select_scored_full_mode_fallback_tables(
+    summary_candidates: list[dict[str, Any]],
+    *,
+    max_tables: int = 4,
+) -> list[dict[str, Any]]:
+    fallback: list[dict[str, Any]] = []
+    seen_origins: set[str] = set()
+    for item in summary_candidates:
+        path = item.get("path")
+        if not isinstance(path, Path):
+            continue
+        origin_locator = to_repo_rel(path)
+        if not origin_locator or origin_locator in seen_origins:
+            continue
+        seen_origins.add(origin_locator)
+        fallback.append(
+            {
+                "candidate_kind": "table",
+                "candidate_id": normalize_text(item.get("repair_source_candidate_id")) or None,
+                "origin_locator": origin_locator,
+                "source_type": "table_excerpt",
+                "evidence_kind": "table",
+                "priority_score": float(item.get("authority_score", item.get("score")) or 0.0),
+                "authority_rank": item.get("authority_rank"),
+                "authority_score": item.get("authority_score"),
+                "authority_tier": normalize_text(item.get("authority_tier")),
+                "item": item,
+            }
+        )
+        if len(fallback) >= max_tables:
+            break
+    return fallback
 
 
 def detect_pre_llm_signals(raw_text: str, table_candidates: list[dict[str, Any]]) -> dict[str, bool]:
     combined = normalize_text(raw_text).lower()
+    table_row_labels: list[str] = []
     if table_candidates:
         table_blob_parts: list[str] = []
         for item in table_candidates:
@@ -2796,6 +3817,12 @@ def detect_pre_llm_signals(raw_text: str, table_candidates: list[dict[str, Any]]
                 for cell in row
                 if normalize_text(cell)
             )
+            if item.get("rows"):
+                table_row_labels.extend(
+                    normalize_text(row[0])
+                    for row in item["rows"][1:]
+                    if isinstance(row, list) and row and normalize_text(row[0])
+                )
         combined = f"{combined} {' '.join(part for part in table_blob_parts if part)}"
     has_doe_signal = any(
         token in combined
@@ -2833,43 +3860,21 @@ def detect_pre_llm_signals(raw_text: str, table_candidates: list[dict[str, Any]]
             "chosen condition",
         ]
     )
+    has_variable_sweep_signal = has_variable_sweep_structure(
+        combined,
+        row_labels=table_row_labels,
+    )
     return {
         "has_doe_signal": has_doe_signal,
         "has_sequential_signal": has_sequential_signal,
         "has_optimization_signal": has_optimization_signal,
+        "has_variable_sweep_signal": has_variable_sweep_signal,
     }
 
 
 def count_cue_hits(text: str, cues: list[str]) -> int:
     lower = normalize_text(text).lower()
     return sum(1 for cue in cues if cue in lower)
-
-
-def document_position_score(index: int, total: int) -> float:
-    if total <= 1:
-        return 1.0
-    ratio = index / max(total - 1, 1)
-    if ratio <= 0.2:
-        return 2.0
-    if ratio <= 0.5:
-        return 1.0
-    return 0.0
-
-
-def looks_like_section_heading(text: str, role: str) -> bool:
-    compact = normalize_text(text).lower()
-    if role == "PREPARATION_METHOD":
-        return bool(
-            re.search(r"\b\d+(?:\.\d+)*\.?\s*(nanoparticles preparation|preparation|formulation|method|synthesis)\b", compact)
-            or compact.startswith("materials and methods")
-        )
-    if role == "MATERIALS":
-        return bool(re.search(r"\b\d+(?:\.\d+)*\.?\s*materials\b", compact) or compact.startswith("materials"))
-    if role == "EXPERIMENTAL_DESIGN":
-        return bool(re.search(r"\bexperimental design\b|\bbox-behnken\b|\bdesign expert\b", compact))
-    if role == "OPTIMIZATION_RESULT":
-        return bool(re.search(r"\boptimized formulation\b|\boptimization\b", compact))
-    return False
 
 
 def count_any_cues(text: str, cues: list[str]) -> int:
@@ -2916,55 +3921,6 @@ def optimization_decision_signature(text: str) -> str:
     if "selected as optimal" in lower or "optimal lyoprotectant" in lower:
         return "selected_auxiliary_condition"
     return ""
-
-
-def paragraph_role_score(entry: dict[str, Any], role: str, *, total_paragraphs: int) -> dict[str, Any]:
-    text = entry["text"]
-    lower = normalize_text(text).lower()
-    heading_score = 4.0 if looks_like_section_heading(text, role) else float(count_cue_hits(lower, ROLE_HEADING_CUES.get(role, [])))
-    cue_score = float(count_cue_hits(lower, ROLE_LEXICAL_CUES.get(role, [])))
-    structure_score = document_position_score(int(entry.get("paragraph_index", 0)), total_paragraphs)
-    penalty_score = 0.0
-    if role == "PREPARATION_METHOD":
-        penalty_score -= 2.0 * count_cue_hits(lower, PREPARATION_NEGATIVE_CUES)
-        cue_score += 1.5 * procedure_signal_count(lower)
-        if has_preparation_procedure_signal(lower):
-            structure_score += 4.0
-        penalty_score -= 2.5 * assay_comparator_signal_count(lower)
-        if is_assay_comparator_dominated(lower):
-            penalty_score -= 8.0
-    if role == "MATERIALS":
-        penalty_score -= 1.5 * count_cue_hits(lower, MATERIALS_NEGATIVE_CUES)
-        cue_score += 2.0 * count_any_cues(lower, PROCUREMENT_CUES)
-        if is_materials_inventory_candidate(lower):
-            structure_score += 4.0
-    if "references" in lower or "copyright" in lower or "correspondence" in lower:
-        penalty_score -= 4.0
-    if role == "FORMULATION_RESULT" and "results and discussion" in lower:
-        structure_score += 1.0
-    if role == "EXPERIMENTAL_DESIGN":
-        if "results and discussion" in lower or "zeta potential analysis" in lower:
-            penalty_score -= 2.0
-    if role == "OPTIMIZATION_RESULT":
-        if "optimized" in lower or "desirability" in lower:
-            structure_score += 2.0
-        if "predicted" in lower and "experimental" in lower:
-            cue_score += 1.0
-        if optimization_decision_signature(lower):
-            structure_score += 4.0
-        cue_score += 1.0 * count_any_cues(lower, OPTIMIZATION_DECISION_CUES)
-    if role == "CONTEXT_FALLBACK":
-        cue_score = max(cue_score, 1.0 if len(lower.split()) >= 40 else 0.0)
-        if "references" in lower or "journal of" in lower or re.search(r"\[\d+\]", text):
-            penalty_score -= 6.0
-    final_score = heading_score + cue_score + structure_score + penalty_score
-    return {
-        "heading_score": heading_score,
-        "cue_score": cue_score,
-        "structure_score": structure_score,
-        "penalty_score": penalty_score,
-        "final_score": final_score,
-    }
 
 
 def table_blob(item: dict[str, Any]) -> str:
@@ -3037,81 +3993,6 @@ def selector_table_context(candidate_or_item: dict[str, Any]) -> tuple[dict[str,
     return meta, rows, blob, quality_flags, row_labels, section_kind, raw_score
 
 
-def table_role_score(item: dict[str, Any], role: str) -> dict[str, Any]:
-    meta, rows, blob, quality_flags, row_labels, section_kind, raw_score = selector_table_context(item)
-    restore_profile = table_restore_profile(item)
-    heading_score = float(count_cue_hits(blob, ROLE_HEADING_CUES.get(role, [])))
-    cue_score = float(count_cue_hits(blob, ROLE_LEXICAL_CUES.get(role, [])))
-    structure_score = 0.0
-    penalty_score = 0.0
-    preview_starts_figure = "first_column_row_labels_preview: figure " in blob.lower()
-    if role == "VARIABLE_TABLE":
-        if any("levels" in label or "independent variables" in label for label in row_labels):
-            structure_score += 3.0
-        if any("dependent variables" in blob for _ in [0]):
-            structure_score += 2.0
-        if any(token in blob for token in ["different concentrations", "different ratios", "initial ratios"]):
-            structure_score += 3.0
-        if "noise_rows_filtered" in quality_flags and cue_score + structure_score < 5.0:
-            penalty_score -= 2.0
-        if restore_profile == "wfdtq4vx_doe_execution_table":
-            structure_score += 26.0
-        elif restore_profile == "wfdtq4vx_doe_companion_table":
-            structure_score += 4.0
-        elif restore_profile == "wfdtq4vx_optimization_support_table":
-            penalty_score -= 4.0
-    if role == "FORMULATION_TABLE":
-        row_id_hits = sum(1 for label in row_labels if any(re.search(pattern, label, flags=re.I) for pattern in TABLE_ROW_ID_PATTERNS))
-        structure_score += min(4.0, float(row_id_hits))
-        if infer_row_pattern([label for label in row_labels if label]) in {"numeric runs", "F-numbered rows"}:
-            structure_score += 2.0
-        if "inline_formulation_table_recovered" in quality_flags:
-            structure_score += 4.0
-        if has_strong_formulation_table_signal(blob):
-            structure_score += 2.0
-        if any(token in blob for token in ["theoretical concentration", "final concentration", "formulation characters"]):
-            structure_score += 3.0
-        if "noise_rows_filtered" in quality_flags and cue_score + structure_score < 6.0:
-            penalty_score -= 2.0
-        if section_kind == "optimization" and cue_score < 3.0:
-            penalty_score -= 2.0
-        if restore_profile == "wfdtq4vx_doe_execution_table":
-            structure_score += 18.0
-        elif restore_profile == "wfdtq4vx_doe_companion_table":
-            structure_score += 2.0
-    if role == "OPTIMIZATION_RESULT" and ("optimized" in blob or "desirability" in blob):
-        structure_score += 2.0
-    if role == "OPTIMIZATION_RESULT" and restore_profile == "wfdtq4vx_optimization_support_table":
-        structure_score += 8.0
-    if role == "FORMULATION_TABLE" and meta.get("fraction_numeric_cells", 0) and float(meta.get("fraction_numeric_cells", 0)) < 0.03:
-        penalty_score -= 2.0
-    if role == "FORMULATION_TABLE" and (
-        "figure_like_caption" in quality_flags
-        or (preview_starts_figure and row_id_hits == 0)
-        or (
-            is_obvious_figure_or_front_matter_table(blob)
-            and row_id_hits == 0
-            and "table " not in blob.lower()
-        )
-    ):
-        penalty_score -= 8.0
-    if role == "VARIABLE_TABLE" and len(rows) < 6:
-        penalty_score -= 1.0
-    raw_score_component = raw_score / 25.0
-    if role == "VARIABLE_TABLE" and cue_score + structure_score < 5.0:
-        raw_score_component = min(raw_score_component, 1.0)
-    if role == "FORMULATION_TABLE" and cue_score + structure_score < 4.0:
-        raw_score_component = min(raw_score_component, 4.0)
-    final_score = heading_score + cue_score + structure_score + penalty_score + raw_score_component
-    return {
-        "heading_score": heading_score,
-        "cue_score": cue_score,
-        "structure_score": structure_score,
-        "penalty_score": penalty_score,
-        "final_score": final_score,
-    }
-
-
 def selector_candidates_from_candidate_artifact(candidate_artifact: dict[str, Any]) -> list[dict[str, Any]]:
     selector_candidates: list[dict[str, Any]] = []
     for candidate in ensure_list(candidate_artifact.get("candidate_blocks")):
@@ -3141,132 +4022,15 @@ def selector_candidates_from_candidate_artifact(candidate_artifact: dict[str, An
     return selector_candidates
 
 
-def choose_required_roles(signals: dict[str, bool]) -> tuple[str, str | None, list[str]]:
-    if signals.get("has_doe_signal"):
-        return GENERAL_SELECTOR_PROFILE, DOE_SELECTOR_OVERLAY, list(DOE_REQUIRED_ROLES)
-    return GENERAL_SELECTOR_PROFILE, None, list(GENERAL_REQUIRED_ROLES)
-
-
-FORMULATION_BEARING_ROLES = {"FORMULATION_TABLE", "FORMULATION_RESULT", "OPTIMIZATION_RESULT"}
-
-
-def selector_candidate_title(candidate: dict[str, Any]) -> str:
-    if candidate.get("candidate_kind") == "table":
-        item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
-        meta = item.get("meta", {}) if isinstance(item, dict) else {}
-        return normalize_text(meta.get("caption_or_title"))
-    return normalize_text(candidate.get("section_label"))
-
-
-def selector_candidate_table_id(candidate: dict[str, Any]) -> str:
-    if candidate.get("candidate_kind") != "table":
-        return ""
-    item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
-    meta = item.get("meta", {}) if isinstance(item, dict) else {}
-    source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
-    return derive_stable_table_id(source_csv_path, meta)
-
-
-def selector_candidate_summary(candidate: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "candidate_id": normalize_text(candidate.get("candidate_id")),
-        "role": normalize_text(candidate.get("role")),
-        "origin_locator": normalize_text(candidate.get("origin_locator")),
-        "source_filename": Path(normalize_text(candidate.get("origin_locator"))).name if normalize_text(candidate.get("origin_locator")) else "",
-        "table_id": selector_candidate_table_id(candidate),
-        "title_or_caption": selector_candidate_title(candidate),
-        "role_priority": normalize_text(candidate.get("role_priority")),
-    }
-
-
-def selector_formulation_bearing_summaries(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [
-        selector_candidate_summary(candidate)
-        for candidate in candidates
-        if normalize_text(candidate.get("role")) in FORMULATION_BEARING_ROLES
-    ]
-
-
-def is_doe_relevant_table_candidate(candidate: dict[str, Any]) -> bool:
-    if candidate.get("candidate_kind") != "table":
-        return False
-    meta, rows, blob, _, row_labels, _, _ = selector_table_context(candidate)
-    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": blob})
-    if role_hint == "design matrix":
-        return True
-    lowered_labels = [normalize_text(label).lower() for label in row_labels if normalize_text(label)]
-    if any(
-        token in blob
-        for token in [
-            "experimental design",
-            "factorial design",
-            "factorial",
-            "design matrix",
-            "box-behnken",
-            "response surface",
-            "check point",
-            "checkpoint",
-            "coded levels",
-            "independent variables",
-            "full factorial design layout",
-        ]
-    ):
-        return True
-    return any(re.fullmatch(r"f\d+", label, flags=re.I) for label in lowered_labels)
-
-
-def doe_table_strength(candidate: dict[str, Any]) -> float:
-    variable_score = float(candidate.get("score_breakdown", {}).get("final_score") or 0.0)
-    meta, rows, blob, _, row_labels, _, raw_score = selector_table_context(candidate)
-    restore_profile = table_restore_profile(candidate)
-    formulation_role_variant = dict(candidate)
-    formulation_role_variant["role"] = "FORMULATION_TABLE"
-    formulation_score = float(table_role_score(formulation_role_variant, "FORMULATION_TABLE").get("final_score") or 0.0)
-    role_hint = infer_table_role_hint(extract_informative_header_parts(rows), {**meta, "_signal_text": blob})
-    strength = variable_score + max(formulation_score, 0.0) + (raw_score / 50.0)
-    if role_hint == "design matrix":
-        strength += 8.0
-    if "full factorial design layout" in blob:
-        strength += 6.0
-    if "table 1. factorial design parameters and experimental conditions" in blob:
-        strength += 4.0
-    if any(re.fullmatch(r"f\d+", normalize_text(label), flags=re.I) for label in row_labels if normalize_text(label)):
-        strength += 2.0
-    if restore_profile == "wfdtq4vx_doe_execution_table":
-        strength += 20.0
-    elif restore_profile == "wfdtq4vx_doe_companion_table":
-        strength += 2.0
-    return strength
-
-
 def build_selector_surface_text(
     text_content: str,
     *,
     section_kind: str,
-    role_candidate: str | None,
     split_trigger: str,
     table_role_hint: str | None = None,
 ) -> str:
-    prefixes: list[str] = []
-    if role_candidate == "PREPARATION_METHOD" or section_kind in {"preparation", "variant_preparation"}:
-        prefixes.append("Preparation method:")
-    if role_candidate == "MATERIALS" or section_kind == "materials":
-        prefixes.append("Materials:")
-    if section_kind == "experimental_design":
-        prefixes.append("Experimental design: varying concentrations or batches.")
-    if section_kind == "optimization":
-        prefixes.append("Optimization result: best/highest/efficiency/loading outcome.")
-    if table_role_hint == "design matrix":
-        prefixes.append("Variable table: formulation factors and concentrations.")
-    elif table_role_hint == "formulation":
-        prefixes.append("Formulation table: drug/polymer ratio, loading, EE, DL.")
-    elif table_role_hint == "optimization":
-        prefixes.append("Optimization result table.")
-    if split_trigger in {"table_inline_split", "post_table_split"} and "table " in text_content.lower():
-        prefixes.append("Inline table/result split candidate.")
-    if not prefixes:
-        return text_content
-    return " ".join(prefixes + [text_content]).strip()
+    del section_kind, split_trigger, table_role_hint
+    return normalize_text(text_content)
 
 
 def build_candidate_segmentation_artifact(
@@ -3279,6 +4043,8 @@ def build_candidate_segmentation_artifact(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     raw_text = text_path.read_text(encoding="utf-8", errors="replace")
     paragraph_entries = build_segmented_paragraph_entries(raw_text)
+    if not paragraph_entries:
+        paragraph_entries = build_sparse_sentence_window_entries(raw_text)
     summary_candidates = collect_summary_table_candidates(table_dir) if table_dir is not None and table_dir.exists() else []
     signals = detect_pre_llm_signals(raw_text, summary_candidates)
     candidates: list[dict[str, Any]] = []
@@ -3302,12 +4068,11 @@ def build_candidate_segmentation_artifact(
         is_inline_table_candidate = inline_table_item is not None and split_trigger == "table_inline_split"
         table_role_hint = "formulation" if is_inline_table_candidate else None
         block_type = "table" if is_inline_table_candidate else "paragraph"
-        role_candidate = None
         method_cue_count = count_segmentation_cues(text_content, SEGMENT_METHOD_CUES)
         explicit_preparation_label = "preparation" in normalize_text(section_label).lower()
         classified_block_type, _, _ = classify_ordered_paragraph_block(text_content)
         if is_inline_table_candidate:
-            role_candidate = "FORMULATION_TABLE"
+            pass
         elif section_kind in {"preparation", "variant_preparation"} and (
             explicit_preparation_label
             or text_content.lower().startswith("empty nanospheres were prepared")
@@ -3315,16 +4080,13 @@ def build_candidate_segmentation_artifact(
             or (method_cue_count >= 2 and classified_block_type == "synthesis_method")
         ):
             block_type = "synthesis_method"
-            role_candidate = "PREPARATION_METHOD"
         elif section_kind == "materials":
             block_type = "materials_procurement"
-            role_candidate = "MATERIALS"
         candidate_id = f"{record['key']}__candidate_paragraph__{idx:02d}"
         origin_locator = f"{to_repo_rel(text_path)}#paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}"
         selector_text_content = build_selector_surface_text(
             text_content,
             section_kind="table_related" if is_inline_table_candidate else section_kind,
-            role_candidate=role_candidate,
             split_trigger="inline_table_recovery" if is_inline_table_candidate else split_trigger,
             table_role_hint=table_role_hint,
         )
@@ -3332,7 +4094,6 @@ def build_candidate_segmentation_artifact(
             "candidate_id": candidate_id,
             "candidate_type": "table" if is_inline_table_candidate else "prose",
             "block_type": block_type,
-            "role_candidate": role_candidate,
             "is_table_derived": is_inline_table_candidate,
             "source_type": "inline_table_text" if is_inline_table_candidate else "clean_text_paragraph",
             "origin_locator": origin_locator,
@@ -3397,7 +4158,6 @@ def build_candidate_segmentation_artifact(
             "candidate_id": candidate_id,
             "candidate_type": "table",
             "block_type": "table",
-            "role_candidate": "FORMULATION_TABLE",
             "is_table_derived": True,
             "source_type": "table_summary",
             "origin_locator": to_repo_rel(item["path"]),
@@ -3430,6 +4190,15 @@ def build_candidate_segmentation_artifact(
             "unresolved_reason": normalize_text(item.get("unresolved_reason")),
             "restoration_profile": normalize_text(item.get("restoration_profile")),
             "full_prompt_table_authority": bool(item.get("full_prompt_table_authority")),
+            "authority_rank": item.get("authority_rank"),
+            "authority_score": item.get("authority_score"),
+            "authority_tier": normalize_text(item.get("authority_tier")),
+            "table_inclusion_class": normalize_text(item.get("table_inclusion_class")),
+            "hard_drop_reason": item.get("hard_drop_reason") or [],
+            "authority_score_breakdown": item.get("authority_score_breakdown") or {},
+            "preserved_by_authority_ranking": bool(item.get("preserved_by_authority_ranking")),
+            "primary_guardrail_applied": normalize_text(item.get("primary_guardrail_applied")),
+            "primary_guardrail_reason": item.get("primary_guardrail_reason") or [],
         }
         candidates.append(candidate_payload)
         selector_candidates.append(
@@ -3442,7 +4211,6 @@ def build_candidate_segmentation_artifact(
                 "text_content": build_selector_surface_text(
                     text_content,
                     section_kind=section_kind,
-                    role_candidate="FORMULATION_TABLE",
                     split_trigger="table_isolation",
                     table_role_hint=table_role_hint,
                 ),
@@ -3461,6 +4229,15 @@ def build_candidate_segmentation_artifact(
                 "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
                 "restoration_profile": normalize_text(item.get("restoration_profile")),
                 "full_prompt_table_authority": bool(item.get("full_prompt_table_authority")),
+                "authority_rank": item.get("authority_rank"),
+                "authority_score": item.get("authority_score"),
+                "authority_tier": normalize_text(item.get("authority_tier")),
+                "table_inclusion_class": normalize_text(item.get("table_inclusion_class")),
+                "hard_drop_reason": item.get("hard_drop_reason") or [],
+                "authority_score_breakdown": item.get("authority_score_breakdown") or {},
+                "preserved_by_authority_ranking": bool(item.get("preserved_by_authority_ranking")),
+                "primary_guardrail_applied": normalize_text(item.get("primary_guardrail_applied")),
+                "primary_guardrail_reason": item.get("primary_guardrail_reason") or [],
             }
         )
 
@@ -3476,6 +4253,7 @@ def build_candidate_segmentation_artifact(
             "section_aware_split": True,
             "table_isolation": table_dir is not None and table_dir.exists(),
             "table_representation_repair": table_dir is not None and table_dir.exists(),
+            "table_authority_ranking": table_dir is not None and table_dir.exists(),
             "noise_filtering": True,
         },
         "coverage_summary": {
@@ -3484,6 +4262,8 @@ def build_candidate_segmentation_artifact(
             "table_candidates": sum(1 for item in candidates if item["candidate_type"] == "table"),
             "repaired_table_candidates": sum(1 for item in candidates if normalize_text(item.get("representation_status")) in {"repaired_summary", "repair_insufficient"}),
             "authoritative_stage1_table_repairs": sum(1 for item in candidates if normalize_text(item.get("repair_primary_source")) == "stage1_selected_table_asset"),
+            "primary_authority_tables": sum(1 for item in candidates if normalize_text(item.get("authority_tier")) == TABLE_AUTHORITY_TIER_PRIMARY),
+            "secondary_authority_tables": sum(1 for item in candidates if normalize_text(item.get("authority_tier")) == TABLE_AUTHORITY_TIER_SECONDARY),
             "candidates_with_noise_flags": sum(1 for item in candidates if item.get("noise_flags")),
             "candidates_with_quality_flags": sum(1 for item in candidates if item.get("quality_flags")),
             "has_doe_signal": signals["has_doe_signal"],
@@ -3494,365 +4274,641 @@ def build_candidate_segmentation_artifact(
     }
     return artifact, {"selector_candidates": selector_candidates, "signals": signals}
 
+def selector_candidate_title(candidate: dict[str, Any]) -> str:
+    if candidate.get("candidate_kind") == "table":
+        item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
+        meta = item.get("meta", {}) if isinstance(item, dict) else {}
+        return normalize_text(meta.get("caption_or_title"))
+    return normalize_text(candidate.get("section_label"))
 
-def build_role_aware_selection(
+
+def selector_candidate_table_id(candidate: dict[str, Any]) -> str:
+    if candidate.get("candidate_kind") != "table":
+        return ""
+    item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
+    meta = item.get("meta", {}) if isinstance(item, dict) else {}
+    source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
+    return derive_stable_table_id(source_csv_path, meta)
+
+
+def selector_candidate_table_inclusion_class(candidate: dict[str, Any]) -> str:
+    if normalize_text(candidate.get("candidate_kind")) != "table":
+        return ""
+    item = candidate.get("item") if isinstance(candidate.get("item"), dict) else candidate
+    inclusion_class = normalize_text(item.get("table_inclusion_class") or candidate.get("table_inclusion_class"))
+    return inclusion_class or TABLE_INCLUSION_OPTIONAL_CONTEXT
+
+
+def selector_candidate_summary(candidate: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "candidate_id": normalize_text(candidate.get("candidate_id")),
+        "origin_locator": normalize_text(candidate.get("origin_locator")),
+        "source_filename": Path(normalize_text(candidate.get("origin_locator"))).name if normalize_text(candidate.get("origin_locator")) else "",
+        "table_id": selector_candidate_table_id(candidate),
+        "title_or_caption": selector_candidate_title(candidate),
+        "evidence_kind": normalize_text(candidate.get("evidence_kind")),
+        "table_inclusion_class": selector_candidate_table_inclusion_class(candidate),
+        "authority_rank": candidate.get("authority_rank", ""),
+        "authority_score": candidate.get("authority_score", ""),
+        "authority_tier": normalize_text(candidate.get("authority_tier")),
+    }
+
+
+def candidate_evidence_kind(candidate: dict[str, Any]) -> str:
+    if normalize_text(candidate.get("candidate_kind")) == "table":
+        return "table"
+    section_kind = normalize_text(candidate.get("section_kind")).lower()
+    block_type = normalize_text(candidate.get("block_type")).lower()
+    text = normalize_text(candidate.get("text_content"))
+    if (
+        has_preparation_procedure_signal(text)
+        or (
+            section_kind in {"preparation", "variant_preparation"}
+            and procedure_signal_count(text) >= 3
+        )
+        or (
+            block_type == "synthesis_method"
+            and len(text) >= 80
+        )
+    ):
+        return "method"
+    if block_type == "materials_procurement" or section_kind == "materials" or is_materials_inventory_candidate(text):
+        return "materials"
+    return "supporting"
+
+
+def candidate_signal_strength(candidate: dict[str, Any]) -> float:
+    text = normalize_text(candidate.get("text_content"))
+    lower = text.lower()
+    kind = candidate_evidence_kind(candidate)
+    if kind == "table":
+        authority_score = float(candidate.get("authority_score", candidate.get("table_score", 0.0)) or 0.0)
+        selector_readiness = normalize_text(candidate.get("selector_readiness_label")).lower()
+        representation_status = normalize_text(candidate.get("representation_status")).lower()
+        inclusion_class = selector_candidate_table_inclusion_class(candidate)
+        base = authority_score / 6.0
+        if has_variable_sweep_structure(text):
+            base += 2.0
+        if has_strong_formulation_table_signal(text):
+            base += 2.0
+        if inclusion_class == TABLE_INCLUSION_MUST_INCLUDE:
+            base += 4.0
+        elif inclusion_class == TABLE_INCLUSION_HARD_DROP:
+            base -= 10.0
+        if selector_readiness == "ready":
+            base += 1.0
+        elif selector_readiness == "weak":
+            base -= 1.5
+        elif selector_readiness == "unresolved":
+            base -= 3.0
+        if representation_status in {"repair_insufficient", "unrepaired_corrupted"}:
+            base -= 3.0
+        return base + 4.0
+    if kind == "method":
+        return 2.0 + 1.5 * procedure_signal_count(lower) + (2.5 if has_preparation_procedure_signal(lower) else 0.0)
+    if kind == "materials":
+        return 1.5 + 1.5 * count_any_cues(lower, PROCUREMENT_CUES) + 2.5 * float(is_materials_inventory_candidate(lower))
+    score = 0.5 * count_segmentation_cues(lower, SEGMENT_RESULT_CUES + SEGMENT_OPTIMIZATION_CUES)
+    if has_experimental_design_text_signal(lower):
+        score += 1.5
+    if has_optimization_text_signal(lower):
+        score += 1.5
+    if "table " in lower:
+        score += 1.0
+    return score
+
+
+def candidate_noise_penalty(candidate: dict[str, Any]) -> float:
+    text = normalize_text(candidate.get("text_content"))
+    lower = text.lower()
+    quality_flags = {normalize_text(flag).lower() for flag in ensure_list(candidate.get("quality_flags"))}
+    penalty = 0.0
+    if candidate_evidence_kind(candidate) == "table" and selector_candidate_table_inclusion_class(candidate) == TABLE_INCLUSION_HARD_DROP:
+        penalty += 12.0
+    if should_drop_segment(text, normalize_text(candidate.get("section_kind")), normalize_text(candidate.get("section_label"))):
+        penalty += 8.0
+    if "residual_noise" in quality_flags or "reference_like_content" in quality_flags:
+        penalty += 4.0
+    if is_assay_comparator_dominated(lower):
+        penalty += 5.0
+    if normalize_text(candidate.get("section_kind")).lower() == "context":
+        penalty += 2.0
+    return penalty
+
+
+def candidate_structure_quality(candidate: dict[str, Any]) -> float:
+    kind = candidate_evidence_kind(candidate)
+    quality_flags = {normalize_text(flag).lower() for flag in ensure_list(candidate.get("quality_flags"))}
+    if kind == "table":
+        quality = 6.0
+        inclusion_class = selector_candidate_table_inclusion_class(candidate)
+        if normalize_text(candidate.get("source_type")) == "inline_table_text":
+            quality -= 3.0
+        if "inline_formulation_table_recovered" in quality_flags:
+            quality -= 1.0
+        if inclusion_class == TABLE_INCLUSION_MUST_INCLUDE:
+            quality += 2.5
+        elif inclusion_class == TABLE_INCLUSION_HARD_DROP:
+            quality -= 6.0
+        return quality
+    if kind == "method":
+        return 3.5
+    if kind == "materials":
+        return 3.0
+    return 1.0
+
+
+def candidate_locality_score(candidate: dict[str, Any]) -> float:
+    split_trigger = normalize_text(candidate.get("split_trigger")).lower()
+    section_kind = normalize_text(candidate.get("section_kind")).lower()
+    score = 0.0
+    if split_trigger in {"table_isolation", "inline_table_recovery", "table_inline_split", "post_table_split"}:
+        score += 1.5
+    if section_kind in {"preparation", "variant_preparation", "materials", "optimization"}:
+        score += 1.0
+    if int(candidate.get("paragraph_index", 0) or 0) <= 25:
+        score += 0.5
+    return score
+
+
+def candidate_priority_bonus(candidate: dict[str, Any]) -> float:
+    kind = candidate_evidence_kind(candidate)
+    if kind == "method":
+        return 1.4
+    if kind == "materials":
+        return 1.1
+    if kind == "table":
+        return 1.8
+    if normalize_text(candidate.get("source_type")) == "inline_table_text":
+        return -2.5
+    return -0.5
+
+
+def candidate_priority_score(candidate: dict[str, Any]) -> float:
+    return (
+        candidate_signal_strength(candidate)
+        + candidate_structure_quality(candidate)
+        + candidate_locality_score(candidate)
+        + candidate_priority_bonus(candidate)
+        - candidate_noise_penalty(candidate)
+    )
+
+
+def candidate_table_reference_hints(candidate: dict[str, Any]) -> set[str]:
+    hints: set[str] = set()
+    table_id = selector_candidate_table_id(candidate)
+    if table_id:
+        hints.add(table_id.lower())
+    for match in re.findall(r"\btable\s+\d+\b", normalize_text(candidate.get("text_content")), flags=re.I):
+        hints.add(normalize_text(match).lower())
+    origin_locator = normalize_text(candidate.get("origin_locator"))
+    if origin_locator:
+        hints.add(origin_locator.lower())
+    return hints
+
+
+def candidate_numeric_signature(candidate: dict[str, Any]) -> set[str]:
+    return {
+        token
+        for token in re.findall(r"\b\d+(?:\.\d+)?%?\b", normalize_text(candidate.get("text_content")))
+        if token
+    }
+
+
+def candidate_is_proxy_like(candidate: dict[str, Any]) -> bool:
+    if candidate_evidence_kind(candidate) == "table":
+        return normalize_text(candidate.get("source_type")) == "inline_table_text"
+    return normalize_text(candidate.get("split_trigger")).lower() in {"table_inline_split", "post_table_split", "inline_table_recovery"} or "table " in normalize_text(candidate.get("text_content")).lower()
+
+
+def method_family_signature(candidate: dict[str, Any]) -> str:
+    lower = normalize_text(candidate.get("text_content")).lower()
+    if "w/o/w" in lower or "emulsion/solvent evaporation" in lower or "double emulsion" in lower:
+        return "w_o_w"
+    if "nanoprecipitation" in lower or "solvent displacement" in lower:
+        return "nanoprecipitation"
+    if "emulsion solvent evaporation" in lower:
+        return "emulsion_solvent_evaporation"
+    return normalize_text(candidate.get("origin_locator")) or normalize_text(candidate.get("candidate_id"))
+
+
+def is_semantic_duplicate(block_a: dict[str, Any], block_b: dict[str, Any]) -> bool:
+    if normalize_text(block_a.get("origin_locator")) and normalize_text(block_a.get("origin_locator")) == normalize_text(block_b.get("origin_locator")):
+        return True
+    if candidate_evidence_kind(block_a) == "table" and candidate_evidence_kind(block_b) == "table":
+        item_a = block_a.get("item") if isinstance(block_a.get("item"), dict) else block_a
+        item_b = block_b.get("item") if isinstance(block_b.get("item"), dict) else block_b
+        if table_duplicate_signature(item_a) == table_duplicate_signature(item_b):
+            return True
+    if candidate_table_reference_hints(block_a) & candidate_table_reference_hints(block_b):
+        if is_semantic_near_duplicate(normalize_text(block_a.get("text_content")), normalize_text(block_b.get("text_content")), threshold=0.55):
+            return True
+    shared_numbers = candidate_numeric_signature(block_a) & candidate_numeric_signature(block_b)
+    if len(shared_numbers) >= 4 and is_semantic_near_duplicate(normalize_text(block_a.get("text_content")), normalize_text(block_b.get("text_content")), threshold=0.45):
+        return True
+    return is_semantic_near_duplicate(normalize_text(block_a.get("text_content")), normalize_text(block_b.get("text_content")))
+
+
+def is_exact_table_duplicate(block_a: dict[str, Any], block_b: dict[str, Any]) -> bool:
+    if candidate_evidence_kind(block_a) != "table" or candidate_evidence_kind(block_b) != "table":
+        return False
+    if normalize_text(block_a.get("origin_locator")) and normalize_text(block_a.get("origin_locator")) == normalize_text(block_b.get("origin_locator")):
+        return True
+    item_a = block_a.get("item") if isinstance(block_a.get("item"), dict) else block_a
+    item_b = block_b.get("item") if isinstance(block_b.get("item"), dict) else block_b
+    return table_duplicate_signature(item_a) == table_duplicate_signature(item_b)
+
+
+def candidate_table_neutral_order_key(candidate: dict[str, Any]) -> tuple[int, str, str]:
+    table_id = selector_candidate_table_id(candidate)
+    match = re.search(r"\btable\s+(\d+)\b", table_id, flags=re.I)
+    if match:
+        return (0, f"{int(match.group(1)):04d}", normalize_text(candidate.get("origin_locator")))
+    return (1, normalize_text(candidate.get("origin_locator")), normalize_text(candidate.get("candidate_id")))
+
+
+def selected_candidate_output_order(candidate: dict[str, Any]) -> tuple[Any, ...]:
+    """
+    IMPORTANT:
+    Selector authority ranking is preserved for audit/debug only.
+    It MUST NOT influence:
+    - table selection
+    - table ordering
+    - LLM prompt construction
+
+    LLM is the sole authority for semantic table interpretation.
+    """
+    kind = normalize_text(candidate.get("evidence_kind") or candidate_evidence_kind(candidate))
+    if kind == "table":
+        inclusion_class = selector_candidate_table_inclusion_class(candidate)
+        inclusion_rank = {
+            TABLE_INCLUSION_MUST_INCLUDE: 0,
+            TABLE_INCLUSION_OPTIONAL_CONTEXT: 1,
+            TABLE_INCLUSION_HARD_DROP: 2,
+        }.get(inclusion_class, 1)
+        return (
+            EVIDENCE_KIND_ORDER.get(kind, 9),
+            inclusion_rank,
+            *candidate_table_neutral_order_key(candidate),
+        )
+    return (
+        EVIDENCE_KIND_ORDER.get(kind, 9),
+        normalize_text(candidate.get("origin_locator")),
+        normalize_text(candidate.get("candidate_id")),
+    )
+
+
+def supporting_context_is_distinct(candidate: dict[str, Any], selected_tables: list[dict[str, Any]]) -> bool:
+    section_kind = normalize_text(candidate.get("section_kind")).lower()
+    if section_kind == "context":
+        return False
+    if candidate_is_proxy_like(candidate) and selected_tables:
+        return False
+    if section_kind == "experimental_design" and selected_tables:
+        candidate_tables = candidate_table_reference_hints(candidate)
+        for table_candidate in selected_tables:
+            if candidate_tables & candidate_table_reference_hints(table_candidate):
+                return False
+            if candidate_numeric_signature(candidate) & candidate_numeric_signature(table_candidate):
+                return False
+    return True
+
+
+def method_candidate_is_floor_eligible(candidate: dict[str, Any]) -> bool:
+    if candidate_evidence_kind(candidate) == "table":
+        return False
+    text = normalize_text(candidate.get("text_content"))
+    if len(text) < 80:
+        return False
+    if normalize_text(candidate.get("section_kind")).lower() == "context":
+        return False
+    if should_drop_segment(text, normalize_text(candidate.get("section_kind")), normalize_text(candidate.get("section_label"))):
+        return False
+    return (
+        has_preparation_procedure_signal(text)
+        or procedure_signal_count(text) >= 4
+        or (
+            normalize_text(candidate.get("section_kind")).lower() in {"preparation", "variant_preparation"}
+            and procedure_signal_count(text) >= 3
+        )
+    )
+
+
+def materials_candidate_is_floor_eligible(candidate: dict[str, Any]) -> bool:
+    if candidate_evidence_kind(candidate) == "table":
+        return False
+    text = normalize_text(candidate.get("text_content"))
+    if len(text) < 80:
+        return False
+    if should_drop_segment(text, normalize_text(candidate.get("section_kind")), normalize_text(candidate.get("section_label"))):
+        return False
+    lower = text.lower()
+    procurement_hits = count_any_cues(lower, PROCUREMENT_CUES)
+    chemical_hits = count_any_cues(lower, SEGMENT_MATERIALS_CUES)
+    return is_materials_inventory_candidate(text) or (procurement_hits >= 1 and chemical_hits >= 2)
+
+
+def supporting_candidate_is_floor_eligible(candidate: dict[str, Any], *, selected_tables: list[dict[str, Any]], selected: list[dict[str, Any]]) -> bool:
+    if candidate_evidence_kind(candidate) != "supporting":
+        return False
+    text = normalize_text(candidate.get("text_content"))
+    lower = text.lower()
+    if len(text) < 80 or len(text) > 700:
+        return False
+    if normalize_text(candidate.get("section_kind")).lower() == "context":
+        return False
+    if candidate_is_proxy_like(candidate):
+        return False
+    if not supporting_context_is_distinct(candidate, selected_tables):
+        return False
+    if should_drop_segment(text, normalize_text(candidate.get("section_kind")), normalize_text(candidate.get("section_label"))):
+        return False
+    if any(is_semantic_duplicate(candidate, prior) for prior in selected):
+        return False
+    if not selected_tables:
+        return False
+    lexical_support = any(
+        token in lower
+        for token in [
+            "selected",
+            "chosen",
+            "optimal",
+            "subsequent experiments",
+            "remaining studies",
+            "used for the",
+            "used in the following",
+            "higher than",
+            "lower than",
+            "compared with",
+            "increased",
+            "decreased",
+            "plateau",
+            "highest",
+            "lowest",
+        ]
+    )
+    if not lexical_support:
+        return False
+    return candidate_locality_score(candidate) >= 1.0
+
+
+def best_floor_candidate(
+    ranked_candidates: list[dict[str, Any]],
+    *,
+    selected: list[dict[str, Any]],
+    predicate,
+    selected_filter=None,
+) -> dict[str, Any] | None:
+    already_selected = {
+        normalize_text(item.get("candidate_id"))
+        for item in selected
+        if normalize_text(item.get("candidate_id"))
+    }
+    comparison_selected = selected_filter(selected) if selected_filter is not None else selected
+    for candidate in ranked_candidates:
+        candidate_id = normalize_text(candidate.get("candidate_id"))
+        if candidate_id and candidate_id in already_selected:
+            continue
+        if not predicate(candidate):
+            continue
+        if any(is_semantic_duplicate(candidate, prior) for prior in comparison_selected):
+            continue
+        return candidate
+    return None
+
+
+def apply_minimal_evidence_floor(
+    *,
+    selected_candidates: list[dict[str, Any]],
+    ranked_candidates: list[dict[str, Any]],
+    suppression_events: list[dict[str, str]],
+) -> dict[str, Any]:
+    selected = list(selected_candidates)
+    floor_rationale: list[str] = []
+    floor_added_method = False
+    floor_added_materials = False
+    floor_added_supporting = False
+    floor_added_formulation_surface = False
+
+    def append_floor_candidate(candidate: dict[str, Any], *, reason: str) -> None:
+        selected.append(candidate)
+        suppression_events.append(
+            {
+                "candidate_id": normalize_text(candidate.get("candidate_id")),
+                "reason": reason,
+            }
+        )
+
+    selected_tables = [candidate for candidate in selected if candidate_evidence_kind(candidate) == "table"]
+    if not selected_tables:
+        best_table = best_floor_candidate(
+            ranked_candidates,
+            selected=selected,
+            predicate=lambda c: candidate_evidence_kind(c) == "table" and selector_candidate_table_inclusion_class(c) != TABLE_INCLUSION_HARD_DROP,
+        )
+        if best_table is not None:
+            append_floor_candidate(best_table, reason="minimal_evidence_floor_added_formulation_surface")
+            floor_added_formulation_surface = True
+            floor_rationale.append("added_authoritative_formulation_surface")
+            selected_tables = [candidate for candidate in selected if candidate_evidence_kind(candidate) == "table"]
+
+    selected_methods = [candidate for candidate in selected if method_candidate_is_floor_eligible(candidate)]
+    if not selected_methods:
+        best_method = best_floor_candidate(
+            ranked_candidates,
+            selected=selected,
+            predicate=method_candidate_is_floor_eligible,
+            selected_filter=lambda items: [item for item in items if candidate_evidence_kind(item) == "method"],
+        )
+        if best_method is not None:
+            append_floor_candidate(best_method, reason="minimal_evidence_floor_added_method")
+            floor_added_method = True
+            floor_rationale.append("added_single_best_method")
+
+    selected_materials = [candidate for candidate in selected if materials_candidate_is_floor_eligible(candidate)]
+    if not selected_materials:
+        best_materials = best_floor_candidate(
+            ranked_candidates,
+            selected=selected,
+            predicate=materials_candidate_is_floor_eligible,
+            selected_filter=lambda items: [item for item in items if candidate_evidence_kind(item) == "materials"],
+        )
+        if best_materials is not None:
+            append_floor_candidate(best_materials, reason="minimal_evidence_floor_added_materials")
+            floor_added_materials = True
+            floor_rationale.append("added_single_best_materials")
+
+    selected_supporting = [candidate for candidate in selected if candidate_evidence_kind(candidate) == "supporting"]
+    evidence_body_count = sum(1 for candidate in selected if candidate_evidence_kind(candidate) != "metadata")
+    support_floor_needed = (
+        bool(selected_tables)
+        and not selected_supporting
+        and evidence_body_count <= 3
+        and not (selected_methods and selected_materials)
+    )
+    if support_floor_needed:
+        best_supporting = best_floor_candidate(
+            ranked_candidates,
+            selected=selected,
+            predicate=lambda c: supporting_candidate_is_floor_eligible(c, selected_tables=selected_tables, selected=selected),
+            selected_filter=lambda items: items,
+        )
+        if best_supporting is not None:
+            append_floor_candidate(best_supporting, reason="minimal_evidence_floor_added_supporting")
+            floor_added_supporting = True
+            floor_rationale.append("added_single_distinct_supporting")
+
+    selected.sort(
+        key=selected_candidate_output_order
+    )
+    return {
+        "selected_candidates": selected,
+        "minimal_evidence_floor_applied": "yes" if any([floor_added_method, floor_added_materials, floor_added_supporting, floor_added_formulation_surface]) else "no",
+        "floor_added_method": "yes" if floor_added_method else "no",
+        "floor_added_materials": "yes" if floor_added_materials else "no",
+        "floor_added_supporting": "yes" if floor_added_supporting else "no",
+        "floor_added_formulation_surface": "yes" if floor_added_formulation_surface else "no",
+        "floor_rationale": "|".join(floor_rationale),
+    }
+
+
+def build_evidence_priority_selection(
     *,
     segmented_candidates: list[dict[str, Any]],
     signals: dict[str, bool],
 ) -> dict[str, Any]:
-    selector_profile, archetype_overlay, required_roles = choose_required_roles(signals)
-    paragraph_roles = ["PREPARATION_METHOD", "MATERIALS", "EXPERIMENTAL_DESIGN", "FORMULATION_RESULT", "OPTIMIZATION_RESULT", "CONTEXT_FALLBACK"]
-    table_roles = ["VARIABLE_TABLE", "FORMULATION_TABLE", "OPTIMIZATION_RESULT"]
-    candidates_by_role: dict[str, list[dict[str, Any]]] = {role: [] for role in set(required_roles + paragraph_roles + table_roles)}
-    all_candidates: list[dict[str, Any]] = []
-    paragraph_candidates = [item for item in segmented_candidates if item["candidate_kind"] == "paragraph"]
-    total_paragraphs = max(1, len(paragraph_candidates))
-
-    for candidate in paragraph_candidates:
-        entry = {
-            "text": candidate["text_content"],
-            "paragraph_index": candidate.get("paragraph_index", 0),
-            "segment_index": candidate.get("segment_index", 0),
-        }
-        for role in paragraph_roles:
-            score = paragraph_role_score(entry, role, total_paragraphs=total_paragraphs)
-            candidates_by_role.setdefault(role, []).append(
-                {
-                    "candidate_kind": candidate["candidate_kind"],
-                    "candidate_id": candidate["candidate_id"],
-                    "role": role,
-                    "origin_key": candidate["origin_key"],
-                    "source_type": candidate["source_type"],
-                    "origin_locator": candidate["origin_locator"],
-                    "entry": entry,
-                    "score_breakdown": score,
-                    "text_content": candidate["text_content"],
-                    "duplicate_signature": "",
-                    "section_label": candidate.get("section_label", ""),
-                    "section_kind": candidate.get("section_kind", ""),
-                    "noise_flags": list(candidate.get("noise_flags") or []),
-                    "quality_flags": list(candidate.get("quality_flags") or []),
-                }
-            )
-        formulation_table_score = paragraph_formulation_table_score(candidate)
-        if float(formulation_table_score["final_score"]) > 0:
-            candidates_by_role.setdefault("FORMULATION_TABLE", []).append(
-                {
-                    "candidate_kind": candidate["candidate_kind"],
-                    "candidate_id": candidate["candidate_id"],
-                    "role": "FORMULATION_TABLE",
-                    "origin_key": candidate["origin_key"],
-                    "source_type": candidate["source_type"],
-                    "origin_locator": candidate["origin_locator"],
-                    "entry": entry,
-                    "score_breakdown": formulation_table_score,
-                    "text_content": candidate["text_content"],
-                    "duplicate_signature": "",
-                    "section_label": candidate.get("section_label", ""),
-                    "section_kind": candidate.get("section_kind", ""),
-                    "noise_flags": list(candidate.get("noise_flags") or []),
-                    "quality_flags": list(candidate.get("quality_flags") or []),
-                }
-            )
-
-    for candidate in [item for item in segmented_candidates if item["candidate_kind"] == "table"]:
-        item = candidate.get("item")
-        signature = table_duplicate_signature(item) if isinstance(item, dict) else normalize_text(candidate.get("origin_locator"))
-        for role in table_roles:
-            score = table_role_score(candidate, role)
-            candidates_by_role.setdefault(role, []).append(
-                {
-                    "candidate_kind": candidate["candidate_kind"],
-                    "candidate_id": candidate["candidate_id"],
-                    "role": role,
-                    "origin_key": candidate["origin_key"],
-                    "source_type": candidate["source_type"],
-                    "origin_locator": candidate["origin_locator"],
-                    "item": item,
-                    "score_breakdown": score,
-                    "text_content": candidate["text_content"],
-                    "duplicate_signature": signature,
-                    "section_label": candidate.get("section_label", ""),
-                    "section_kind": candidate.get("section_kind", ""),
-                    "noise_flags": list(candidate.get("noise_flags") or []),
-                    "quality_flags": list(candidate.get("quality_flags") or []),
-                }
-            )
-
-    for role, items in candidates_by_role.items():
-        items.sort(
-            key=lambda item: (
-                -float(item["score_breakdown"]["final_score"]),
-                item["origin_key"],
-            )
-        )
-        all_candidates.extend(items)
-
-    selected: list[dict[str, Any]] = []
-    used_origins: set[str] = set()
-    used_table_signatures: set[str] = set()
-    missing_or_weak_roles: list[str] = []
-    duplicate_suppression_events: list[dict[str, str]] = []
-    selected_by_role: dict[str, list[dict[str, Any]]] = {}
-    doe_formulation_coverage_audit: dict[str, Any] = {
-        "reason_code": "no_doe_case",
-        "before_formulation_bearing_blocks": [],
-        "after_formulation_bearing_blocks": [],
-        "doe_candidate_considered": {},
-        "doe_added_or_upgraded": {},
-        "preserved_existing_blocks": [],
-    }
-
-    def maybe_add_candidate(candidate: dict[str, Any], priority: str) -> bool:
-        origin_key = candidate["origin_key"]
-        signature = candidate.get("duplicate_signature") or ""
-        if origin_key in used_origins:
-            return False
-        if candidate["candidate_kind"] == "table" and signature and signature in used_table_signatures:
-            duplicate_suppression_events.append(
-                {
-                    "role": candidate["role"],
-                    "origin_locator": candidate["origin_locator"],
-                    "reason": "duplicate_table_signature",
-                }
-            )
-            return False
-        used_origins.add(origin_key)
-        if candidate["candidate_kind"] == "table" and signature:
-            used_table_signatures.add(signature)
-        chosen = dict(candidate)
-        chosen["role_priority"] = priority
-        selected.append(chosen)
-        selected_by_role.setdefault(str(candidate["role"]), []).append(chosen)
-        return True
-
-    def add_role_alias_candidate(candidate: dict[str, Any], priority: str) -> bool:
-        chosen = dict(candidate)
-        chosen["role_priority"] = priority
-        selected.append(chosen)
-        selected_by_role.setdefault(str(candidate["role"]), []).append(chosen)
-        return True
-
-    def remove_selected_candidate(candidate_id: str) -> None:
-        nonlocal selected
-        removed = [item for item in selected if normalize_text(item.get("candidate_id")) == candidate_id]
-        if not removed:
-            return
-        selected = [item for item in selected if normalize_text(item.get("candidate_id")) != candidate_id]
-        used_origins.clear()
-        used_table_signatures.clear()
-        selected_by_role.clear()
-        for item in selected:
-            used_origins.add(item["origin_key"])
-            signature = item.get("duplicate_signature") or ""
-            if item["candidate_kind"] == "table" and signature:
-                used_table_signatures.add(signature)
-            selected_by_role.setdefault(str(item["role"]), []).append(item)
-
-    def materials_candidate_complete(candidate: dict[str, Any]) -> bool:
-        return is_materials_inventory_candidate(candidate.get("text_content", ""))
-
-    def preparation_candidate_complete(candidate: dict[str, Any]) -> bool:
-        text = candidate.get("text_content", "")
-        return has_preparation_procedure_signal(text) and not is_assay_comparator_dominated(text)
-
-    def optimization_candidate_complete(candidate: dict[str, Any]) -> bool:
-        return bool(optimization_decision_signature(candidate.get("text_content", "")))
-
-    def add_best_materials_complement() -> bool:
-        for candidate in candidates_by_role.get("MATERIALS", []):
-            if materials_candidate_complete(candidate) and maybe_add_candidate(candidate, "coverage"):
-                return True
-        return False
-
-    def correct_preparation_selection() -> bool:
-        current = selected_by_role.get("PREPARATION_METHOD", [])
-        current_primary = current[0] if current else None
-        if current_primary and preparation_candidate_complete(current_primary):
-            return False
-        replacement = None
-        for candidate in candidates_by_role.get("PREPARATION_METHOD", []):
-            if preparation_candidate_complete(candidate):
-                replacement = candidate
-                break
-        if replacement is None:
-            return False
-        if current_primary is not None:
-            remove_selected_candidate(normalize_text(current_primary.get("candidate_id")))
-        return maybe_add_candidate(replacement, "primary")
-
-    def add_preparation_complement() -> bool:
-        current = selected_by_role.get("PREPARATION_METHOD", [])
-        if not current:
-            return False
-        combined_text = " ".join(item.get("text_content", "") for item in current)
-        if all(token in normalize_text(combined_text).lower() for token in ["added", "evaporation", "centrifuged"]):
-            return False
-        for candidate in candidates_by_role.get("PREPARATION_METHOD", []):
-            if normalize_text(candidate.get("candidate_id")) in {
-                normalize_text(item.get("candidate_id")) for item in current
-            }:
-                continue
-            text = candidate.get("text_content", "")
-            if not preparation_candidate_complete(candidate):
-                continue
-            if not any(token in normalize_text(text).lower() for token in ["evaporation", "filtered", "centrifuged"]):
-                continue
-            if maybe_add_candidate(candidate, "coverage"):
-                return True
-        return False
-
-    def add_optimization_complements() -> int:
-        required_signatures = {"selected_condition", "optimal_formulation"}
-        decision_signatures = {
-            optimization_decision_signature(item.get("text_content", ""))
-            for item in selected_by_role.get("OPTIMIZATION_RESULT", [])
-            if optimization_decision_signature(item.get("text_content", "")) in required_signatures
-        }
-        added = 0
-        for candidate in candidates_by_role.get("OPTIMIZATION_RESULT", []):
-            signature = optimization_decision_signature(candidate.get("text_content", ""))
-            if signature not in required_signatures or signature in decision_signatures:
-                continue
-            if maybe_add_candidate(candidate, "coverage"):
-                decision_signatures.add(signature)
-                added += 1
-            if added >= 1:
-                break
-        return added
-
-    for role in required_roles:
-        role_candidates = candidates_by_role.get(role, [])
-        threshold = ROLE_THRESHOLD_BY_ROLE.get(role, 1.0)
-        chosen = None
-        for candidate in role_candidates:
-            if float(candidate["score_breakdown"]["final_score"]) < threshold:
-                continue
-            if maybe_add_candidate(candidate, "primary"):
-                chosen = candidate
-                break
-        if chosen is None:
-            missing_or_weak_roles.append(role)
-
-    for role in SECONDARY_ELIGIBLE_ROLES:
-        role_candidates = candidates_by_role.get(role, [])
-        threshold = ROLE_THRESHOLD_BY_ROLE.get(role, 1.0) + SECONDARY_THRESHOLD_BONUS_BY_ROLE.get(role, 1.0)
-        for candidate in role_candidates:
-            if float(candidate["score_breakdown"]["final_score"]) < threshold:
-                continue
-            if maybe_add_candidate(candidate, "secondary"):
-                break
-
-    if "CONTEXT_FALLBACK" not in {item["role"] for item in selected}:
-        for candidate in candidates_by_role.get("CONTEXT_FALLBACK", []):
-            if maybe_add_candidate(candidate, "fallback"):
-                break
-
-    if "MATERIALS" in missing_or_weak_roles and add_best_materials_complement():
-        missing_or_weak_roles = [role for role in missing_or_weak_roles if role != "MATERIALS"]
-
-    correct_preparation_selection()
-    add_preparation_complement()
-
-    if signals.get("has_sequential_signal") or signals.get("has_optimization_signal"):
-        add_optimization_complements()
-
-    def add_doe_formulation_coverage() -> None:
-        before_blocks = selector_formulation_bearing_summaries(selected)
-        doe_formulation_coverage_audit["before_formulation_bearing_blocks"] = before_blocks
-        doe_formulation_coverage_audit["preserved_existing_blocks"] = before_blocks
-        if not signals.get("has_doe_signal"):
-            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = before_blocks
-            doe_formulation_coverage_audit["reason_code"] = "no_doe_case"
-            return
-
-        already_covered = [
-            candidate
-            for candidate in selected
-            if candidate.get("candidate_kind") == "table"
-            and normalize_text(candidate.get("role")) == "FORMULATION_TABLE"
-            and is_doe_relevant_table_candidate(candidate)
-        ]
-        if already_covered:
-            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = selector_formulation_bearing_summaries(selected)
-            doe_formulation_coverage_audit["reason_code"] = "doe_not_added_already_covered"
-            doe_formulation_coverage_audit["doe_candidate_considered"] = selector_candidate_summary(already_covered[0])
-            return
-
-        formulation_variant_by_candidate_id = {
-            normalize_text(candidate.get("candidate_id")): candidate
-            for candidate in candidates_by_role.get("FORMULATION_TABLE", [])
-            if candidate.get("candidate_kind") == "table"
-        }
-        doe_candidates = [
-            candidate
-            for candidate in candidates_by_role.get("VARIABLE_TABLE", [])
-            if is_doe_relevant_table_candidate(candidate)
-        ]
-        doe_candidates.sort(
-            key=lambda candidate: (
-                -doe_table_strength(candidate),
-                candidate.get("origin_key", ""),
-            )
-        )
-        if not doe_candidates:
-            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = before_blocks
-            doe_formulation_coverage_audit["reason_code"] = "no_doe_case"
-            return
-
-        strongest_doe_candidate = doe_candidates[0]
-        doe_formulation_coverage_audit["doe_candidate_considered"] = selector_candidate_summary(strongest_doe_candidate)
-        formulation_variant = formulation_variant_by_candidate_id.get(normalize_text(strongest_doe_candidate.get("candidate_id")))
-        if formulation_variant is None:
-            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = before_blocks
-            doe_formulation_coverage_audit["reason_code"] = "no_doe_case"
-            return
-
-        existing_same_origin_formulation = next(
-            (
-                candidate
-                for candidate in selected_by_role.get("FORMULATION_TABLE", [])
-                if normalize_text(candidate.get("origin_locator")) == normalize_text(formulation_variant.get("origin_locator"))
-            ),
-            None,
-        )
-        if existing_same_origin_formulation is not None:
-            doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = selector_formulation_bearing_summaries(selected)
-            doe_formulation_coverage_audit["reason_code"] = "doe_not_added_already_covered"
-            doe_formulation_coverage_audit["doe_candidate_considered"] = selector_candidate_summary(existing_same_origin_formulation)
-            return
-
-        added = False
-        if normalize_text(formulation_variant.get("origin_key")) in used_origins:
-            added = add_role_alias_candidate(formulation_variant, "coverage")
-        else:
-            added = maybe_add_candidate(formulation_variant, "coverage")
-        doe_formulation_coverage_audit["after_formulation_bearing_blocks"] = selector_formulation_bearing_summaries(selected)
-        if added:
-            doe_formulation_coverage_audit["reason_code"] = "doe_added_to_formulation_set"
-            doe_formulation_coverage_audit["doe_added_or_upgraded"] = selector_candidate_summary(formulation_variant)
-        else:
-            doe_formulation_coverage_audit["reason_code"] = "doe_not_added_already_covered"
-
-    add_doe_formulation_coverage()
-
-    selected.sort(
+    ranked_candidates: list[dict[str, Any]] = []
+    for candidate in segmented_candidates:
+        enriched = dict(candidate)
+        kind = candidate_evidence_kind(candidate)
+        enriched["evidence_kind"] = kind
+        enriched["priority_score"] = candidate_priority_score(candidate)
+        enriched["signal_strength"] = candidate_signal_strength(candidate)
+        enriched["noise_penalty"] = candidate_noise_penalty(candidate)
+        enriched["structure_quality"] = candidate_structure_quality(candidate)
+        enriched["locality_score"] = candidate_locality_score(candidate)
+        enriched["priority_rank"] = EVIDENCE_KIND_ORDER.get(kind, 9)
+        ranked_candidates.append(enriched)
+    ranked_candidates.sort(
         key=lambda item: (
-            {"primary": 0, "secondary": 1, "coverage": 2, "fallback": 3}.get(item["role_priority"], 4),
-            required_roles.index(item["role"]) if item["role"] in required_roles else 99,
-            item["origin_key"],
+            item["priority_rank"],
+            -float(item["priority_score"]),
+            normalize_text(item.get("origin_locator")),
         )
     )
+
+    selected: list[dict[str, Any]] = []
+    suppression_events: list[dict[str, str]] = []
+    selected_tables: list[dict[str, Any]] = []
+    selected_method_families: set[str] = set()
+    selected_materials = 0
+    selected_supporting = 0
+
+    def add_candidate(candidate: dict[str, Any]) -> None:
+        selected.append(candidate)
+        if candidate["evidence_kind"] == "table":
+            selected_tables.append(candidate)
+        elif candidate["evidence_kind"] == "materials":
+            nonlocal_selected_materials[0] += 1
+        elif candidate["evidence_kind"] == "supporting":
+            nonlocal_selected_supporting[0] += 1
+
+    nonlocal_selected_materials = [selected_materials]
+    nonlocal_selected_supporting = [selected_supporting]
+
+    for candidate in ranked_candidates:
+        if candidate["evidence_kind"] != "table":
+            continue
+        if selector_candidate_table_inclusion_class(candidate) != TABLE_INCLUSION_MUST_INCLUDE:
+            continue
+        if any(is_exact_table_duplicate(candidate, prior) for prior in selected_tables):
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_must_include_table"})
+            continue
+        selected.append(candidate)
+        selected_tables.append(candidate)
+
+    for candidate in ranked_candidates:
+        kind = candidate["evidence_kind"]
+        if kind == "table" and selector_candidate_table_inclusion_class(candidate) == TABLE_INCLUSION_HARD_DROP:
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "hard_drop_table_noise"})
+            continue
+        if kind == "table" and selector_candidate_table_inclusion_class(candidate) == TABLE_INCLUSION_MUST_INCLUDE:
+            continue
+        score = float(candidate["priority_score"])
+        if score < EVIDENCE_PRIORITY_THRESHOLDS.get(kind, 5.0):
+            continue
+        if kind == "table":
+            if any(is_semantic_duplicate(candidate, prior) for prior in selected_tables):
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_table"})
+                continue
+            selected.append(candidate)
+            selected_tables.append(candidate)
+            continue
+        if kind == "materials":
+            if nonlocal_selected_materials[0] >= 1:
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "materials_already_selected"})
+                continue
+            if any(is_semantic_duplicate(candidate, prior) for prior in selected):
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_materials"})
+                continue
+            selected.append(candidate)
+            nonlocal_selected_materials[0] += 1
+            continue
+        if kind == "method":
+            family = method_family_signature(candidate)
+            if len(normalize_text(candidate.get("text_content"))) < 80:
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "method_too_short"})
+                continue
+            if len(selected_method_families) >= 2:
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "method_budget_reached"})
+                continue
+            if family in selected_method_families:
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "duplicate_method_family"})
+                continue
+            if any(is_semantic_duplicate(candidate, prior) for prior in selected if prior["evidence_kind"] == "method"):
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_method"})
+                continue
+            selected.append(candidate)
+            selected_method_families.add(family)
+            continue
+        if not supporting_context_is_distinct(candidate, selected_tables):
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "supporting_not_distinct"})
+            continue
+        if any(is_semantic_duplicate(candidate, prior) for prior in selected):
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_supporting"})
+            continue
+        if selected_tables and candidate_is_proxy_like(candidate):
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "proxy_suppressed_by_authoritative_table"})
+            continue
+        if normalize_text(candidate.get("section_kind")).lower() == "context":
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "low_value_context"})
+            continue
+        if nonlocal_selected_supporting[0] >= 1 and selected_tables:
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "supporting_budget_reached"})
+            continue
+        if not selected_tables and nonlocal_selected_supporting[0] >= 2:
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "supporting_budget_reached"})
+            continue
+        selected.append(candidate)
+        nonlocal_selected_supporting[0] += 1
+
+    floor_result = apply_minimal_evidence_floor(
+        selected_candidates=selected,
+        ranked_candidates=ranked_candidates,
+        suppression_events=suppression_events,
+    )
     return {
-        "selector_profile": selector_profile,
-        "archetype_overlay": archetype_overlay,
-        "required_roles": required_roles,
-        "selected_roles": [item["role"] for item in selected],
-        "missing_or_weak_roles": missing_or_weak_roles,
-        "selected_candidates": selected,
-        "duplicate_suppression_events": duplicate_suppression_events,
-        "duplicate_table_suppression_active": bool(duplicate_suppression_events),
-        "doe_formulation_coverage_audit": doe_formulation_coverage_audit,
+        "selection_mode": EVIDENCE_SELECTION_MODE,
+        "selected_candidates": list(floor_result["selected_candidates"]),
+        "suppression_events": suppression_events,
+        "signals": dict(signals),
+        "selected_candidate_summaries": [selector_candidate_summary(candidate) for candidate in floor_result["selected_candidates"]],
+        "minimal_evidence_floor_applied": floor_result["minimal_evidence_floor_applied"],
+        "floor_added_method": floor_result["floor_added_method"],
+        "floor_added_materials": floor_result["floor_added_materials"],
+        "floor_added_supporting": floor_result["floor_added_supporting"],
+        "floor_added_formulation_surface": floor_result["floor_added_formulation_surface"],
+        "floor_rationale": floor_result["floor_rationale"],
     }
 
 
@@ -3985,6 +5041,93 @@ def select_ordered_packing_paragraphs(raw_text: str, *, limit_per_kind: int = 1)
     }
 
 
+def build_trimmed_context_fallback(
+    raw_text: str,
+    *,
+    max_chars: int,
+    excluded_texts: list[str] | None = None,
+) -> tuple[str, dict[str, int]]:
+    excluded = {
+        normalize_text(text).lower()
+        for text in ensure_list(excluded_texts)
+        if normalize_text(text)
+    }
+    segments = split_inline_heading_entries(split_section_scoped_entries(split_paragraph_entries(raw_text)))
+    kept_segments: list[str] = []
+    seen_segments: set[str] = set()
+    stats = {
+        "kept_segments": 0,
+        "dropped_front_matter": 0,
+        "dropped_assay_noise": 0,
+        "dropped_duplicate_or_excluded": 0,
+        "dropped_low_value_context": 0,
+    }
+    target_chars = max_chars if max_chars > 0 else len(raw_text)
+    for entry in segments:
+        text = normalize_text(entry.get("text"))
+        if not text:
+            continue
+        normalized = text.lower()
+        if normalized in seen_segments or normalized in excluded:
+            stats["dropped_duplicate_or_excluded"] += 1
+            continue
+        section_label = extract_section_label(text)
+        section_kind = infer_section_kind(text, section_label)
+        if should_drop_segment(text, section_kind, section_label):
+            stats["dropped_front_matter"] += 1
+            continue
+        is_bridge_like = any(
+            token in normalized
+            for token in [
+                "selected",
+                "chosen",
+                "optimal",
+                "remaining studies",
+                "all the following studies",
+                "after the optimal",
+                "had been determined",
+            ]
+        )
+        is_local_formulation_context = (
+            has_experimental_design_text_signal(text)
+            or has_optimization_text_signal(text)
+            or has_strong_formulation_table_signal(text)
+            or ("table " in normalized and any(token in normalized for token in ["formulation", "ratio", "surfactant", "concentration"]))
+        )
+        if section_kind == "downstream_assay" and not is_bridge_like and not is_local_formulation_context:
+            stats["dropped_assay_noise"] += 1
+            continue
+        if section_kind == "context" and not is_bridge_like and not is_local_formulation_context:
+            stats["dropped_low_value_context"] += 1
+            continue
+        if any(
+            token in normalized
+            for token in [
+                "pharmacokinetic",
+                "lc-ms",
+                "lc-ms/ms",
+                "biodistribution",
+                "cell viability",
+                "animal study",
+                "animals were",
+                "mice were",
+                "rats were",
+            ]
+        ) and not is_bridge_like and not is_local_formulation_context:
+            stats["dropped_assay_noise"] += 1
+            continue
+        projected_len = len("\n\n".join(kept_segments + [text]))
+        if kept_segments and projected_len > target_chars:
+            break
+        kept_segments.append(text)
+        seen_segments.add(normalized)
+    fallback_text = "\n\n".join(kept_segments)
+    if target_chars > 0:
+        fallback_text = fallback_text[:target_chars]
+    stats["kept_segments"] = len(kept_segments)
+    return fallback_text.strip(), stats
+
+
 def build_controlled_evidence_pack(
     *,
     record: dict[str, str],
@@ -4031,18 +5174,31 @@ def build_evidence_blocks_artifact(
     raw_text = text_path.read_text(encoding="utf-8", errors="replace")
     summary_candidates = collect_summary_table_candidates(table_dir) if table_dir is not None and table_dir.exists() else []
     signals = dict(segmentation_bundle.get("signals") or detect_pre_llm_signals(raw_text, summary_candidates if current_table_mode == "summary" else []))
-    role_selection = build_role_aware_selection(
+    evidence_selection = build_evidence_priority_selection(
         segmented_candidates=list(segmentation_bundle.get("selector_candidates") or []),
         signals=signals,
     )
+    selected_candidates = list(evidence_selection.get("selected_candidates") or [])
+    active_table_candidates = [
+        candidate
+        for candidate in selected_candidates
+        if candidate.get("candidate_kind") == "table"
+    ]
+    scored_full_mode_fallback_tables = select_scored_full_mode_fallback_tables(summary_candidates)
+    explicit_table_fallback_used = False
     evidence_blocks: list[dict[str, Any]] = []
     order_tokens: list[str] = []
-    seen_block_signatures: set[tuple[str, str, str]] = set()
+    selected_table_ids = {
+        normalize_text(candidate.get("candidate_id"))
+        for candidate in active_table_candidates
+        if normalize_text(candidate.get("candidate_id"))
+    }
 
     def append_block(
         *,
         block_id: str,
         block_type: str,
+        evidence_kind: str,
         source_type: str,
         candidate_id: str | None,
         origin_locator: str,
@@ -4050,29 +5206,23 @@ def build_evidence_blocks_artifact(
         selection_feature: str,
         rank_score: int | None,
         text_content: str,
-        is_synthesis: bool | None,
         is_table_derived: bool | None,
-        is_candidate_critical: bool | None,
-        role_assignment: str | None,
-        role_priority: str | None,
-        role_score_breakdown: dict[str, Any] | None,
         table_id: str | None,
         summary_is_lossy: bool,
+        requires_variable_structure: bool,
+        authority_rank: Any = "",
+        authority_score: Any = "",
+        authority_tier: str = "",
+        primary_guardrail_applied: str = "",
+        primary_guardrail_reason: list[str] | None = None,
     ) -> None:
         if not normalize_text(text_content):
             return
-        signature = (
-            normalize_text(candidate_id),
-            normalize_text(origin_locator),
-            normalize_text(text_content),
-        )
-        if signature in seen_block_signatures:
-            return
-        seen_block_signatures.add(signature)
         evidence_blocks.append(
             {
                 "block_id": block_id,
                 "block_type": block_type,
+                "evidence_kind": evidence_kind,
                 "source_type": source_type,
                 "candidate_id": candidate_id,
                 "origin_locator": origin_locator,
@@ -4080,15 +5230,17 @@ def build_evidence_blocks_artifact(
                 "selection_feature": selection_feature,
                 "rank_score": rank_score,
                 "order_index": len(evidence_blocks),
+                "char_count": len(text_content),
                 "text_content": text_content,
-                "is_synthesis": is_synthesis,
                 "is_table_derived": is_table_derived,
-                "is_candidate_critical": is_candidate_critical,
-                "role_assignment": role_assignment,
-                "role_priority": role_priority,
-                "role_score_breakdown": role_score_breakdown,
                 "table_id": normalize_text(table_id),
                 "summary_is_lossy": bool(summary_is_lossy),
+                "requires_variable_structure": bool(requires_variable_structure),
+                "authority_rank": authority_rank,
+                "authority_score": authority_score,
+                "authority_tier": authority_tier,
+                "primary_guardrail_applied": normalize_text(primary_guardrail_applied),
+                "primary_guardrail_reason": list(primary_guardrail_reason or []),
             }
         )
         order_tokens.append(block_type)
@@ -4103,156 +5255,163 @@ def build_evidence_blocks_artifact(
         selection_feature="build_metadata_block",
         rank_score=None,
         text_content=build_metadata_block(record["key"], record["doi"], record["title"]),
-        is_synthesis=False,
         is_table_derived=False,
-        is_candidate_critical=None,
-        role_assignment=None,
-        role_priority="primary",
-        role_score_breakdown=None,
         table_id="",
         summary_is_lossy=False,
+        evidence_kind="metadata",
+        requires_variable_structure=False,
     )
-
-    if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE:
-        role_counts: dict[str, int] = {}
-        for candidate in role_selection["selected_candidates"]:
-            role = str(candidate["role"])
-            role_counts[role] = role_counts.get(role, 0) + 1
-            block_suffix = role_counts[role]
-            block_type = {
-                "PREPARATION_METHOD": "synthesis_method",
-                "MATERIALS": "materials_procurement",
-                "EXPERIMENTAL_DESIGN": "experimental_design",
-                "VARIABLE_TABLE": "table",
-                "FORMULATION_TABLE": "table",
-                "FORMULATION_RESULT": "paragraph",
-                "OPTIMIZATION_RESULT": "table" if candidate["candidate_kind"] == "table" else "paragraph",
-                "CONTEXT_FALLBACK": "paragraph",
-            }.get(role, "paragraph")
-            prefix = {
-                "PREPARATION_METHOD": "[SYNTHESIS_METHOD_BLOCK]\n",
-                "MATERIALS": "[MATERIALS_PROCUREMENT_BLOCK]\n",
-                "EXPERIMENTAL_DESIGN": "[EXPERIMENTAL_DESIGN_BLOCK]\n",
-                "FORMULATION_RESULT": "[FORMULATION_RESULT_BLOCK]\n",
-                "OPTIMIZATION_RESULT": "[OPTIMIZATION_RESULT_BLOCK]\n" if candidate["candidate_kind"] == "paragraph" else "",
-                "CONTEXT_FALLBACK": "[PARAGRAPH_BLOCK]\n",
-            }.get(role, "")
+    for candidate in selected_candidates:
+        evidence_kind = normalize_text(candidate.get("evidence_kind")) or candidate_evidence_kind(candidate)
+        block_type = {
+            "method": "method",
+            "materials": "materials",
+            "table": "table",
+            "supporting": "supporting",
+        }.get(evidence_kind, "supporting")
+        if candidate.get("candidate_kind") == "table":
             append_block(
-                block_id=f"{record['key']}__{normalize_token(role.lower())}__{block_suffix:02d}",
-                block_type=block_type,
+                block_id=f"{record['key']}__table__{len([block for block in evidence_blocks if block.get('block_type') == 'table']) + 1:02d}",
+                block_type="table",
+                evidence_kind="table",
                 source_type=str(candidate["source_type"]),
-                candidate_id=str(candidate["candidate_id"]),
-                origin_locator=str(candidate["origin_locator"]),
-                selection_reason=f"role_constrained_{normalize_token(role.lower())}_{candidate['role_priority']}",
-                selection_feature="role_aware_selector_v1",
-                rank_score=int(round(float(candidate["score_breakdown"]["final_score"]))) if candidate["score_breakdown"]["final_score"] is not None else None,
-                text_content=(
-                    prefix + render_selected_table_candidate(candidate)
-                    if prefix and candidate["candidate_kind"] == "table"
-                    else (prefix + candidate["text_content"]) if prefix else (
-                        render_selected_table_candidate(candidate)
-                        if candidate["candidate_kind"] == "table"
-                        else candidate["text_content"]
-                    )
-                ),
-                is_synthesis=role == "PREPARATION_METHOD",
-                is_table_derived=candidate["candidate_kind"] == "table",
-                is_candidate_critical=candidate["role_priority"] == "primary",
-                role_assignment=role,
-                role_priority=str(candidate["role_priority"]),
-                role_score_breakdown=candidate["score_breakdown"],
+                candidate_id=normalize_text(candidate.get("candidate_id")) or None,
+                origin_locator=normalize_text(candidate.get("origin_locator")),
+                selection_reason="selected_high_signal_table",
+                selection_feature=EVIDENCE_SELECTION_MODE,
+                rank_score=int(round(float(candidate.get("priority_score", 0.0) or 0.0))),
+                text_content=render_selected_table_candidate(candidate),
+                is_table_derived=True,
                 table_id=selector_candidate_table_id(candidate),
                 summary_is_lossy=candidate_summary_is_lossy(candidate),
+                requires_variable_structure=bool(
+                    normalize_text(candidate.get("table_role_hint")) == "design matrix"
+                    or has_variable_sweep_structure(normalize_text(candidate.get("text_content")))
+                ),
+                authority_rank=candidate.get("authority_rank", ""),
+                authority_score=candidate.get("authority_score", ""),
+                authority_tier=normalize_text(candidate.get("authority_tier")),
+                primary_guardrail_applied=normalize_text(candidate.get("primary_guardrail_applied")),
+                primary_guardrail_reason=candidate.get("primary_guardrail_reason") or [],
             )
-    else:
-        raw_prefix_text = raw_text[:max_chars] if max_chars > 0 else raw_text
+            continue
         append_block(
-            block_id=f"{record['key']}__raw_prefix__01",
-            block_type="raw_prefix",
-            source_type="clean_text",
-            candidate_id=None,
-            origin_locator=f"{to_repo_rel(text_path)}#chars:0:{len(raw_prefix_text)}",
-            selection_reason="default_raw_prefix_fallback",
-            selection_feature="max_text_chars_prefix",
-            rank_score=None,
-            text_content=raw_prefix_text,
-            is_synthesis=None,
+            block_id=f"{record['key']}__{normalize_token(evidence_kind)}__{len([block for block in evidence_blocks if block.get('evidence_kind') == evidence_kind]) + 1:02d}",
+            block_type=block_type,
+            evidence_kind=evidence_kind,
+            source_type=str(candidate["source_type"]),
+            candidate_id=normalize_text(candidate.get("candidate_id")) or None,
+            origin_locator=normalize_text(candidate.get("origin_locator")),
+            selection_reason=f"selected_{normalize_token(evidence_kind)}_evidence",
+            selection_feature=EVIDENCE_SELECTION_MODE,
+            rank_score=int(round(float(candidate.get("priority_score", 0.0) or 0.0))),
+            text_content=normalize_text(candidate.get("text_content")),
             is_table_derived=False,
-            is_candidate_critical=None,
-            role_assignment="CONTEXT_FALLBACK",
-            role_priority="fallback",
-            role_score_breakdown=None,
             table_id="",
             summary_is_lossy=False,
+            requires_variable_structure=False,
         )
-        if current_table_mode == "summary":
-            for idx, item in enumerate(summary_candidates[:4], start=1):
-                table_id = derive_stable_table_id(str(item["path"]), item.get("meta") if isinstance(item.get("meta"), dict) else {})
-                append_block(
-                    block_id=f"{record['key']}__table_summary__{idx:02d}",
-                    block_type="table",
-                    source_type="table_summary",
-                    candidate_id=None,
-                    origin_locator=to_repo_rel(item["path"]),
-                    selection_reason="summary_mode_selected_table",
-                    selection_feature="score_summary_table",
-                    rank_score=int(item["score"]),
-                    text_content=render_summary_table_block(item, enhancement_enabled=summary_enhanced),
-                    is_synthesis=False,
-                    is_table_derived=True,
-                    is_candidate_critical=None,
-                    role_assignment="FORMULATION_TABLE",
-                    role_priority="fallback",
-                    role_score_breakdown=table_role_score(item, "FORMULATION_TABLE"),
-                    table_id=table_id,
-                    summary_is_lossy=True,
-                )
-        elif table_dir is not None and table_dir.exists():
-            for idx, path in enumerate(sorted(table_dir.glob("*.csv"))[:4], start=1):
-                append_block(
-                    block_id=f"{record['key']}__table_excerpt__{idx:02d}",
-                    block_type="table",
-                    source_type="table_excerpt",
-                    candidate_id=None,
-                    origin_locator=to_repo_rel(path),
-                    selection_reason="full_mode_first_four_sorted_csv",
-                    selection_feature="sorted_csv_first_4",
-                    rank_score=None,
-                    text_content=render_full_table_block(path),
-                    is_synthesis=False,
-                    is_table_derived=True,
-                    is_candidate_critical=None,
-                    role_assignment="FORMULATION_TABLE",
-                    role_priority="fallback",
-                    role_score_breakdown=None,
-                    table_id=derive_stable_table_id(str(path)),
-                    summary_is_lossy=True,
-                )
 
+    if not active_table_candidates and table_dir is not None and table_dir.exists():
+        fallback_tables = scored_full_mode_fallback_tables or [
+            {
+                "candidate_kind": "table",
+                "candidate_id": "",
+                "origin_locator": to_repo_rel(path),
+                "source_type": "table_excerpt",
+                "evidence_kind": "table",
+                "priority_score": 0.0,
+            }
+            for path in sorted(table_dir.glob("*.csv"))[:4]
+        ]
+        explicit_table_fallback_used = bool(fallback_tables)
+        for idx, candidate in enumerate(fallback_tables, start=1):
+            origin_locator = normalize_text(candidate.get("origin_locator"))
+            summary_item = next(
+                (
+                    item
+                    for item in summary_candidates
+                    if to_repo_rel(item["path"]) == origin_locator
+                ),
+                None,
+            )
+            text_content = (
+                render_summary_table_block(summary_item, enhancement_enabled=summary_first_column_enhancement_enabled())
+                if summary_item is not None
+                else normalize_text(candidate.get("text_content"))
+            )
+            append_block(
+                block_id=f"{record['key']}__table__{idx:02d}",
+                block_type="table",
+                evidence_kind="table",
+                source_type="table_excerpt",
+                candidate_id=normalize_text(candidate.get("candidate_id")) or None,
+                origin_locator=origin_locator,
+                selection_reason="explicit_table_fallback",
+                selection_feature=resolved_selector_strategy(current_table_mode),
+                rank_score=int(round(float(candidate.get("priority_score", 0.0) or 0.0))) if candidate.get("priority_score") is not None else None,
+                text_content=text_content,
+                is_table_derived=True,
+                table_id=normalize_text(candidate.get("table_id")) or selector_candidate_table_id(candidate),
+                summary_is_lossy=True,
+                requires_variable_structure=False,
+                authority_rank=candidate.get("authority_rank", ""),
+                authority_score=candidate.get("authority_score", ""),
+                authority_tier=normalize_text(candidate.get("authority_tier")),
+                primary_guardrail_applied=normalize_text(candidate.get("primary_guardrail_applied")),
+                primary_guardrail_reason=candidate.get("primary_guardrail_reason") or [],
+            )
+
+    selector_strategy = EVIDENCE_SELECTION_MODE if selected_candidates else resolved_selector_strategy(current_table_mode)
+    selector_debug = {
+        "selection_mode": EVIDENCE_SELECTION_MODE,
+        "selected_candidate_count": len(selected_candidates),
+        "selected_candidate_ids": [normalize_text(candidate.get("candidate_id")) for candidate in selected_candidates if normalize_text(candidate.get("candidate_id"))],
+        "selected_table_count": len(active_table_candidates),
+        "selected_primary_table_count": sum(1 for candidate in active_table_candidates if normalize_text(candidate.get("authority_tier")) == TABLE_AUTHORITY_TIER_PRIMARY),
+        "selected_secondary_table_count": sum(1 for candidate in active_table_candidates if normalize_text(candidate.get("authority_tier")) == TABLE_AUTHORITY_TIER_SECONDARY),
+        "explicit_table_fallback_used": explicit_table_fallback_used,
+        "suppression_events": list(evidence_selection.get("suppression_events") or []),
+        "minimal_evidence_floor_applied": normalize_text(evidence_selection.get("minimal_evidence_floor_applied")),
+        "floor_added_method": normalize_text(evidence_selection.get("floor_added_method")),
+        "floor_added_materials": normalize_text(evidence_selection.get("floor_added_materials")),
+        "floor_added_supporting": normalize_text(evidence_selection.get("floor_added_supporting")),
+        "floor_added_formulation_surface": normalize_text(evidence_selection.get("floor_added_formulation_surface")),
+        "floor_rationale": normalize_text(evidence_selection.get("floor_rationale")),
+    }
     feature_activation_snapshot = {
         "ordered_evidence_packing": current_input_packing_mode == ORDERED_INPUT_PACKING_MODE,
         "summary_table_mode": current_table_mode == "summary",
-        "table_selection_scoring": current_table_mode == "summary" and bool(summary_candidates),
-        "selector_debug_available": current_table_mode == "summary" and table_dir is not None and table_dir.exists(),
+        "table_selection_scoring": bool(summary_candidates),
+        "selector_debug_available": bool(selected_candidates) or explicit_table_fallback_used,
         "candidate_segmentation_profile": SEGMENTATION_PROFILE,
         "section_aware_candidate_split": True,
         "candidate_table_isolation": table_dir is not None and table_dir.exists(),
         "candidate_noise_filtering": True,
+        "table_authority_ranking": bool(summary_candidates),
         "doe_pre_llm_detection": signals["has_doe_signal"],
         "sequential_optimization_detection": signals["has_sequential_signal"],
-        "role_aware_evidence_selection": current_input_packing_mode == ORDERED_INPUT_PACKING_MODE,
-        "doe_overlay_selection": role_selection["archetype_overlay"] == DOE_SELECTOR_OVERLAY,
-        "duplicate_table_suppression": role_selection["duplicate_table_suppression_active"],
+        "variable_sweep_detection": signals.get("has_variable_sweep_signal", False),
+        "evidence_priority_selection": bool(selected_candidates),
+        "weak_importance_ordering": False,
+        "semantic_overlap_suppression": True,
+        "proxy_suppression_when_authoritative_table_exists": True,
+        "minimal_evidence_floor": normalize_text(evidence_selection.get("minimal_evidence_floor_applied")) == "yes",
+        "explicit_table_fallback": explicit_table_fallback_used,
+        "archetype_detection_metadata_only": True,
     }
     coverage_summary = {
         "total_blocks": len(evidence_blocks),
-        "synthesis_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "synthesis_method"),
+        "method_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "method"),
         "table_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "table"),
-        "caption_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "caption"),
-        "paragraph_blocks": sum(1 for block in evidence_blocks if block["block_type"] in {"paragraph", "raw_prefix", "experimental_design", "materials_procurement"}),
+        "primary_table_blocks": sum(1 for block in evidence_blocks if normalize_text(block.get("authority_tier")) == TABLE_AUTHORITY_TIER_PRIMARY),
+        "secondary_table_blocks": sum(1 for block in evidence_blocks if normalize_text(block.get("authority_tier")) == TABLE_AUTHORITY_TIER_SECONDARY),
+        "materials_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "materials"),
+        "supporting_blocks": sum(1 for block in evidence_blocks if block["block_type"] == "supporting"),
         "has_optimization_signal": signals["has_optimization_signal"],
         "has_doe_signal": signals["has_doe_signal"],
         "has_sequential_signal": signals["has_sequential_signal"],
+        "has_variable_sweep_signal": signals.get("has_variable_sweep_signal", False),
     }
     required_top_level_fields_present = all(
         [
@@ -4276,12 +5435,12 @@ def build_evidence_blocks_artifact(
                 "selection_feature",
                 "rank_score",
                 "order_index",
+                "char_count",
                 "text_content",
-                "role_assignment",
-                "role_priority",
-                "role_score_breakdown",
+                "evidence_kind",
                 "table_id",
                 "summary_is_lossy",
+                "requires_variable_structure",
             ]
         )
         for block in evidence_blocks
@@ -4295,33 +5454,27 @@ def build_evidence_blocks_artifact(
         if required_top_level_fields_present and required_block_fields_present and bool(evidence_blocks)
         else "fail",
     }
-    input_contract_satisfied = (
-        current_input_packing_mode == ORDERED_INPUT_PACKING_MODE
-        and current_table_mode == "summary"
-        and feature_activation_snapshot["table_selection_scoring"]
-        and feature_activation_snapshot["selector_debug_available"]
-        and feature_activation_snapshot["role_aware_evidence_selection"]
+    noise_nonconformance = any(
+        evidence_text_has_noise(str(block.get("text_content", "")))
+        for block in evidence_blocks
+        if normalize_text(block.get("block_type")) != "metadata"
     )
-    required_roles_present = sorted({role for role in role_selection["required_roles"] if role in role_selection["selected_roles"]})
-    required_features_active = input_contract_satisfied and not role_selection["missing_or_weak_roles"]
+    input_contract_satisfied = bool(evidence_blocks) and feature_activation_snapshot["selector_debug_available"]
+    required_features_active = input_contract_satisfied and not noise_nonconformance
     design_status = {
         "input_contract_satisfied": input_contract_satisfied,
         "required_features_active": required_features_active,
-        "required_roles_present": required_roles_present,
-        "missing_or_weak_roles": list(role_selection["missing_or_weak_roles"]),
         "overall": "pass" if input_contract_satisfied and required_features_active else "fail",
         "nonconformance_reasons": [
             reason
             for reason, active in [
-                ("ordered_evidence_packing_inactive", feature_activation_snapshot["ordered_evidence_packing"]),
-                ("summary_table_mode_inactive", feature_activation_snapshot["summary_table_mode"]),
-                ("table_selection_scoring_inactive", feature_activation_snapshot["table_selection_scoring"]),
+                ("evidence_priority_selection_not_executed", feature_activation_snapshot["evidence_priority_selection"]),
                 ("selector_debug_unavailable", feature_activation_snapshot["selector_debug_available"]),
-                ("role_aware_selector_inactive", feature_activation_snapshot["role_aware_evidence_selection"]),
             ]
             if not active
         ]
-        + [f"missing_or_weak_role:{role}" for role in role_selection["missing_or_weak_roles"]],
+        + (["explicit_table_fallback_used"] if explicit_table_fallback_used else [])
+        + (["canonical_evidence_noise_present"] if noise_nonconformance else [])
     }
     ordered_block_order = order_tokens if order_tokens else ["none"]
     artifact = {
@@ -4336,80 +5489,115 @@ def build_evidence_blocks_artifact(
             "summary_first_column_enhancement": summary_enhanced,
             "summary_view_is_lossy": True,
             "ordered_block_order": ordered_block_order,
-            "selector_strategy": "role_aware_selector_v1" if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else resolved_selector_strategy(current_table_mode),
+            "selector_strategy": selector_strategy,
         },
         "producer_script": producer_script,
         "contract_version": "s2_2_evidence_blocks_v1",
         "segmentation_profile": SEGMENTATION_PROFILE,
-        "selector_profile": role_selection["selector_profile"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else None,
-        "archetype_overlay": role_selection["archetype_overlay"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else None,
+        "selection_mode": EVIDENCE_SELECTION_MODE,
         "evidence_blocks": evidence_blocks,
         "coverage_summary": coverage_summary,
-        "required_roles": role_selection["required_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
-        "selected_roles": role_selection["selected_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
-        "missing_or_weak_roles": role_selection["missing_or_weak_roles"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
-        "duplicate_table_suppression_events": role_selection["duplicate_suppression_events"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else [],
-        "doe_formulation_coverage_audit": role_selection["doe_formulation_coverage_audit"] if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else {},
+        "selector_debug": selector_debug,
+        "floor_debug": {
+            "minimal_evidence_floor_applied": normalize_text(evidence_selection.get("minimal_evidence_floor_applied")),
+            "floor_added_method": normalize_text(evidence_selection.get("floor_added_method")),
+            "floor_added_materials": normalize_text(evidence_selection.get("floor_added_materials")),
+            "floor_added_supporting": normalize_text(evidence_selection.get("floor_added_supporting")),
+            "floor_added_formulation_surface": normalize_text(evidence_selection.get("floor_added_formulation_surface")),
+            "floor_rationale": normalize_text(evidence_selection.get("floor_rationale")),
+        },
         "feature_activation_snapshot": feature_activation_snapshot,
         "technical_status": technical_status,
         "design_status": design_status,
     }
     debug_payload = None
-    if current_table_mode == "summary" and table_dir is not None and table_dir.exists():
+    if table_dir is not None and table_dir.exists():
         selected_summary_names = {
             Path(candidate["origin_locator"]).name
-            for candidate in role_selection["selected_candidates"]
+            for candidate in selected_candidates
             if candidate["candidate_kind"] == "table"
         }
         payload_candidates: list[dict[str, Any]] = []
-        for item in summary_candidates:
-            rows = item["rows"]
-            first_data_row = rows[1] if len(rows) > 1 else rows[0]
-            selected_candidate = next(
-                (
+        if current_table_mode == "summary":
+            for item in summary_candidates:
+                rows = item["rows"]
+                first_data_row = rows[1] if len(rows) > 1 else rows[0]
+                selected_candidate = next(
+                    (
+                        candidate
+                        for candidate in selected_candidates
+                        if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
+                    ),
+                    None,
+                )
+                selected_candidates_for_table = [
                     candidate
-                    for candidate in role_selection["selected_candidates"]
+                    for candidate in selected_candidates
                     if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
-                ),
-                None,
-            )
-            selected_candidates_for_table = [
+                ]
+                payload_candidates.append(
+                    {
+                        "file": item["path"].name,
+                        "score": item["score"],
+                        "authority_score": item.get("authority_score"),
+                        "authority_rank": item.get("authority_rank"),
+                        "authority_tier": normalize_text(item.get("authority_tier")),
+                        "selected": item["path"].name in selected_summary_names,
+                        "selected_candidate_id": normalize_text(selected_candidate.get("candidate_id")) if selected_candidate is not None else "",
+                        "selected_count": len(selected_candidates_for_table),
+                        "row_pattern": item["row_pattern"],
+                        "quality_flags": item.get("quality_flags") or [],
+                        "page_number": normalize_text(item["meta"].get("page_number")),
+                        "n_rows": item["meta"].get("n_rows", len(rows)),
+                        "n_cols": item["meta"].get("n_cols", max((len(r) for r in rows), default=0)),
+                        "caption_or_title": normalize_text(item["meta"].get("caption_or_title")),
+                        "header_keywords_hit": item["meta"].get("header_keywords_hit") or [],
+                        "first_data_row_preview": " | ".join(cell for cell in first_data_row if cell),
+                    }
+                )
+        else:
+            table_candidates = [
                 candidate
-                for candidate in role_selection["selected_candidates"]
-                if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
+                for candidate in ensure_list(segmentation_bundle.get("selector_candidates"))
+                if candidate.get("candidate_kind") == "table"
             ]
-            payload_candidates.append(
-                {
-                    "file": item["path"].name,
-                    "score": item["score"],
-                    "selected": item["path"].name in selected_summary_names,
-                    "selected_role": selected_candidate["role"] if selected_candidate is not None else "",
-                    "selected_role_priority": selected_candidate["role_priority"] if selected_candidate is not None else "",
-                    "selected_roles": [candidate["role"] for candidate in selected_candidates_for_table],
-                    "row_pattern": item["row_pattern"],
-                    "quality_flags": item.get("quality_flags") or [],
-                    "page_number": normalize_text(item["meta"].get("page_number")),
-                    "n_rows": item["meta"].get("n_rows", len(rows)),
-                    "n_cols": item["meta"].get("n_cols", max((len(r) for r in rows), default=0)),
-                    "caption_or_title": normalize_text(item["meta"].get("caption_or_title")),
-                    "header_keywords_hit": item["meta"].get("header_keywords_hit") or [],
-                    "first_data_row_preview": " | ".join(cell for cell in first_data_row if cell),
-                }
-            )
+            for candidate in table_candidates:
+                origin_locator = normalize_text(candidate.get("origin_locator"))
+                selected_candidates_for_table = [
+                    selected_candidate
+                    for selected_candidate in selected_candidates
+                    if selected_candidate["candidate_kind"] == "table" and normalize_text(selected_candidate.get("origin_locator")) == origin_locator
+                ]
+                selected_candidate = selected_candidates_for_table[0] if selected_candidates_for_table else None
+                payload_candidates.append(
+                    {
+                        "file": Path(origin_locator).name,
+                        "score": candidate.get("table_score", 0),
+                        "authority_score": candidate.get("authority_score", ""),
+                        "authority_rank": candidate.get("authority_rank", ""),
+                        "authority_tier": normalize_text(candidate.get("authority_tier")),
+                        "selected": Path(origin_locator).name in selected_summary_names,
+                        "selected_candidate_id": normalize_text(selected_candidate.get("candidate_id")) if selected_candidate is not None else "",
+                        "selected_count": len(selected_candidates_for_table),
+                        "row_pattern": normalize_text(candidate.get("table_row_pattern")),
+                        "quality_flags": candidate.get("quality_flags") or [],
+                        "page_number": "",
+                        "n_rows": "",
+                        "n_cols": "",
+                        "caption_or_title": normalize_text(candidate.get("section_label")),
+                        "header_keywords_hit": [],
+                        "first_data_row_preview": normalize_text(candidate.get("text_content")).splitlines()[0][:200] if normalize_text(candidate.get("text_content")) else "",
+                    }
+                )
         debug_payload = {
             "document_key": record["key"],
             "table_mode": current_table_mode,
-            "selection_ranking_mode": "role_aware_selector_v1" if current_input_packing_mode == ORDERED_INPUT_PACKING_MODE else resolved_selector_strategy(current_table_mode),
+            "selection_ranking_mode": selector_strategy,
             "summary_first_column_enhancement": "yes" if summary_enhanced else "no",
             "candidate_artifact_path": to_repo_rel(candidate_artifact_path),
             "max_tables": 4,
-            "selector_profile": artifact.get("selector_profile") or "",
-            "archetype_overlay": artifact.get("archetype_overlay") or "",
-            "required_roles": artifact.get("required_roles") or [],
-            "missing_or_weak_roles": artifact.get("missing_or_weak_roles") or [],
             "selected_tables": sorted(selected_summary_names),
-            "duplicate_table_suppression_events": artifact.get("duplicate_table_suppression_events") or [],
-            "doe_formulation_coverage_audit": artifact.get("doe_formulation_coverage_audit") or {},
+            "suppression_events": selector_debug.get("suppression_events") or [],
             "candidates": payload_candidates,
         }
     return artifact, debug_payload
@@ -4440,6 +5628,8 @@ def normalize_selected_table_rows(
             if first == expected:
                 normalized_rows = normalized_rows[1:]
                 actions.append("drop_enumerator_index_row")
+    normalized_rows, compaction_actions = compact_table_rows_for_evidence(normalized_rows)
+    actions.extend(compaction_actions)
     matrix_view = detect_shifted_numbered_matrix_view(normalized_rows)
     if matrix_view is not None:
         normalized_rows = matrix_view["normalized_rows"]
@@ -4693,6 +5883,153 @@ def compute_reconstruction_confidence(
     return max(0.0, min(1.0, round(confidence, 2)))
 
 
+def payload_fraction_numeric_cells(payload: dict[str, Any]) -> float:
+    raw_cells = payload.get("raw_cells") or []
+    nonempty_cells = 0
+    numeric_cells = 0
+    for row in raw_cells[:12]:
+        if not isinstance(row, list):
+            continue
+        for cell in row:
+            normalized = normalize_text(cell)
+            if not normalized:
+                continue
+            nonempty_cells += 1
+            if re.search(r"\d", normalized):
+                numeric_cells += 1
+    if nonempty_cells <= 0:
+        return 0.0
+    return round(float(numeric_cells) / float(nonempty_cells), 4)
+
+
+def payload_primary_guardrail_reasons(payload: dict[str, Any]) -> list[str]:
+    table_type = normalize_text(payload.get("table_type")).lower()
+    table_role_hint = normalize_text(payload.get("table_role_hint")).lower()
+    raw_cells = payload.get("raw_cells") or []
+    first_labels = ensure_list((payload.get("row_identity_signals") or {}).get("first_column_labels"))
+    header_structure = payload.get("header_structure") if isinstance(payload.get("header_structure"), dict) else {}
+    headers = " ".join(normalize_text(cell) for row in ensure_list(header_structure.get("header_rows")) for cell in ensure_list(row)).lower()
+    source_caption = normalize_text(payload.get("source_caption_or_title")).lower()
+    signal_text = " ".join([headers, source_caption]).strip()
+    fraction_numeric_cells = payload_fraction_numeric_cells(payload)
+    prose_like_rows = table_prose_like_row_count(raw_cells)
+    reasons: list[str] = []
+    if table_type == "non_formulation_table":
+        reasons.append("table_type_non_formulation_table")
+    if table_role_hint in PRIMARY_EXCLUDED_ROLE_HINTS:
+        reasons.append(f"table_role_hint_{normalize_token(table_role_hint)}")
+    if fraction_numeric_cells < 0.08 and not normalize_text(headers):
+        reasons.append("very_low_numeric_density_without_header_keywords")
+    if prose_like_rows >= 3 and len([label for label in first_labels if normalize_text(label)]) < 3:
+        reasons.append("narrative_or_figure_caption_dominated")
+    if any(token in signal_text for token in PRIMARY_EXCLUDED_PATTERN_TOKENS):
+        reasons.append("non_formulation_pattern_surface")
+    return reasons
+
+
+def payload_primary_eligibility_signals(payload: dict[str, Any]) -> list[str]:
+    table_type = normalize_text(payload.get("table_type")).lower()
+    representation_status = normalize_text(payload.get("representation_status")).lower()
+    row_identity_signals = payload.get("row_identity_signals") if isinstance(payload.get("row_identity_signals"), dict) else {}
+    row_pattern = normalize_text(row_identity_signals.get("row_pattern")).lower()
+    first_labels = [normalize_text(label) for label in ensure_list(row_identity_signals.get("first_column_labels")) if normalize_text(label)]
+    header_structure = payload.get("header_structure") if isinstance(payload.get("header_structure"), dict) else {}
+    headers = " ".join(normalize_text(cell) for row in ensure_list(header_structure.get("header_rows")) for cell in ensure_list(row)).lower()
+    data_row_count = int(payload.get("data_row_count") or 0)
+    header_signal_hits = sum(1 for token in PRIMARY_ELIGIBLE_HEADER_TOKENS if token in headers)
+    signals: list[str] = []
+    if representation_status not in {"repair_insufficient", "unrepaired_corrupted"}:
+        signals.append("representation_not_repair_insufficient")
+    if row_pattern in {"numeric runs", "f-numbered rows"} or len(first_labels) >= 3:
+        signals.append("stable_row_anchors")
+    if data_row_count >= 3:
+        signals.append("multiple_condition_rows")
+    if table_type in {"formulation_table", "doe_table", "optimization_table", "mixed_table"} and header_signal_hits >= 2:
+        signals.append("formulation_numeric_header_surface")
+    return signals
+
+
+def payload_hard_drop_reasons(payload: dict[str, Any]) -> list[str]:
+    raw_cells = payload.get("raw_cells") or []
+    first_labels = ensure_list((payload.get("row_identity_signals") or {}).get("first_column_labels"))
+    prose_label_count = sum(1 for label in first_labels if len(re.findall(r"[A-Za-z]+", normalize_text(label))) >= 8)
+    header_structure = payload.get("header_structure") if isinstance(payload.get("header_structure"), dict) else {}
+    headers = " ".join(normalize_text(cell) for row in ensure_list(header_structure.get("header_rows")) for cell in ensure_list(row)).lower()
+    source_caption = normalize_text(payload.get("source_caption_or_title")).lower()
+    signal_text = " ".join([headers, source_caption]).strip()
+    fraction_numeric_cells = payload_fraction_numeric_cells(payload)
+    prose_like_rows = table_prose_like_row_count(raw_cells)
+    representation_status = normalize_text(payload.get("representation_status")).lower()
+    reasons: list[str] = []
+    if representation_status == "unrepaired_corrupted":
+        reasons.append("unrepaired_corrupted_representation")
+    if prose_like_rows >= 3 and len([label for label in first_labels if normalize_text(label)]) < 3:
+        reasons.append("narrative_or_figure_caption_dominated")
+    if prose_label_count >= 3 and fraction_numeric_cells < 0.2:
+        reasons.append("prose_row_label_surface")
+    if fraction_numeric_cells < 0.08 and not normalize_text(headers) and len([label for label in first_labels if normalize_text(label)]) < 3:
+        reasons.append("very_low_numeric_density_without_header_keywords")
+    if count_cue_hits(signal_text, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS) >= 2:
+        reasons.append("front_matter_or_bibliographic_surface")
+    if re.search(r"\b\d+\s+of\s+\d+\b", signal_text):
+        reasons.append("journal_page_or_review_surface")
+    if any(token in signal_text for token in HARD_DROP_SIGNAL_TOKENS):
+        reasons.append("high_confidence_non_content_fragment")
+    return list(dict.fromkeys(reasons))
+
+
+def payload_inclusion_class(payload: dict[str, Any]) -> str:
+    if payload_hard_drop_reasons(payload):
+        return TABLE_INCLUSION_HARD_DROP
+    signals = set(payload_primary_eligibility_signals(payload))
+    if "formulation_numeric_header_surface" in signals:
+        return TABLE_INCLUSION_MUST_INCLUDE
+    if {"stable_row_anchors", "multiple_condition_rows"}.issubset(signals):
+        return TABLE_INCLUSION_MUST_INCLUDE
+    return TABLE_INCLUSION_OPTIONAL_CONTEXT
+
+
+def payload_guardrail_priority(payload: dict[str, Any]) -> float:
+    priority = float(payload.get("authority_score") or 0.0)
+    table_type = normalize_text(payload.get("table_type")).lower()
+    if table_type == "formulation_table":
+        priority += 40.0
+    elif table_type == "doe_table":
+        priority += 36.0
+    elif table_type == "mixed_table":
+        priority += 32.0
+    elif table_type == "optimization_table":
+        priority += 28.0
+    priority += min(10.0, float(int(payload.get("data_row_count") or 0)))
+    priority += 3.0 * float(len(payload_primary_eligibility_signals(payload)))
+    return priority
+
+
+def apply_primary_table_guardrail_to_preserved_payloads(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not entries:
+        return entries
+    for index, entry in enumerate(entries, start=1):
+        reasons = payload_primary_guardrail_reasons(entry)
+        structural_reasons = primary_structural_guardrail_reasons(reasons)
+        signals = payload_primary_eligibility_signals(entry)
+        inclusion_class = payload_inclusion_class(entry)
+        hard_drop_reasons = payload_hard_drop_reasons(entry)
+        primary_guardrail_applied = False
+        if normalize_text(entry.get("authority_tier")) == TABLE_AUTHORITY_TIER_PRIMARY and (
+            inclusion_class == TABLE_INCLUSION_HARD_DROP or structural_reasons or not signals
+        ):
+            primary_guardrail_applied = True
+            entry["authority_tier"] = TABLE_AUTHORITY_TIER_SECONDARY if bool(entry.get("preserved_by_authority_ranking")) else TABLE_AUTHORITY_TIER_WEAK_SECONDARY
+        entry["primary_guardrail_applied"] = "yes" if primary_guardrail_applied else "no"
+        entry["primary_guardrail_reason"] = list(reasons)
+        entry["primary_eligibility_signals"] = list(signals)
+        entry["table_inclusion_class"] = inclusion_class
+        entry["hard_drop_reason"] = list(hard_drop_reasons)
+        if entry.get("authority_rank") in {None, ""}:
+            entry["authority_rank"] = index
+    return entries
+
+
 def build_table_authority_validation_row(
     *,
     paper_key: str,
@@ -4703,6 +6040,9 @@ def build_table_authority_validation_row(
     normalized_matrix: list[list[str]],
     normalization_actions: list[str],
     selector_readiness_label: str,
+    authority_rank: Any,
+    authority_score: Any,
+    authority_tier: str,
 ) -> dict[str, Any]:
     raw_row_count = len(raw_cells)
     normalized_row_count = len(normalized_matrix)
@@ -4732,6 +6072,9 @@ def build_table_authority_validation_row(
         "column_count_after": normalized_width,
         "column_collapse_detected": "yes" if normalized_width < raw_width else "no",
         "selector_readiness_label": selector_readiness_label,
+        "authority_rank": authority_rank,
+        "authority_score": authority_score,
+        "authority_tier": authority_tier,
         "normalization_actions": "|".join(normalization_actions),
     }
 
@@ -4745,14 +6088,6 @@ def build_normalized_table_payload_artifact(
     evidence_artifact: dict[str, Any],
     segmentation_bundle: dict[str, Any],
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    selected_table_roles: dict[str, set[str]] = {}
-    for block in ensure_list(evidence_artifact.get("evidence_blocks")):
-        if not isinstance(block, dict):
-            continue
-        candidate_id = normalize_text(block.get("candidate_id"))
-        if not candidate_id or not bool(block.get("is_table_derived")):
-            continue
-        selected_table_roles.setdefault(candidate_id, set()).add(normalize_text(block.get("role_assignment")))
     selected_table_ids = {
         normalize_text(block.get("candidate_id"))
         for block in ensure_list(evidence_artifact.get("evidence_blocks"))
@@ -4810,10 +6145,8 @@ def build_normalized_table_payload_artifact(
             and int(normalization_metadata.get("numbered_row_count") or 0) < 8
         ):
             best_companion: dict[str, Any] | None = None
-            for companion_id, roles in selected_table_roles.items():
+            for companion_id in selected_table_ids:
                 if companion_id == normalize_text(candidate.get("candidate_id")):
-                    continue
-                if "FORMULATION_TABLE" not in roles:
                     continue
                 companion = candidate_lookup.get(companion_id)
                 if not isinstance(companion, dict):
@@ -4919,6 +6252,15 @@ def build_normalized_table_payload_artifact(
                 "table_type": table_type,
                 "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
                 "representation_status": normalize_text(item.get("representation_status")),
+                "authority_rank": item.get("authority_rank"),
+                "authority_score": item.get("authority_score"),
+                "authority_tier": normalize_text(item.get("authority_tier")),
+                "table_inclusion_class": normalize_text(item.get("table_inclusion_class")),
+                "hard_drop_reason": item.get("hard_drop_reason") or [],
+                "authority_score_breakdown": item.get("authority_score_breakdown") or {},
+                "preserved_by_authority_ranking": bool(item.get("preserved_by_authority_ranking")),
+                "primary_guardrail_applied": normalize_text(item.get("primary_guardrail_applied")),
+                "primary_guardrail_reason": item.get("primary_guardrail_reason") or [],
                 "repair_actions": ensure_list(item.get("repair_actions")),
                 "normalization_actions": normalization_actions,
                 "same_source_table_asset": payload_basis_same_source and bool(item.get("same_source_table_asset", True)),
@@ -4955,8 +6297,24 @@ def build_normalized_table_payload_artifact(
                 normalized_matrix=normalized_rows,
                 normalization_actions=normalization_actions,
                 selector_readiness_label=normalize_text(item.get("selector_readiness_label")),
+                authority_rank=item.get("authority_rank"),
+                authority_score=item.get("authority_score"),
+                authority_tier=normalize_text(item.get("authority_tier")),
             )
         )
+    selected_entries = apply_primary_table_guardrail_to_preserved_payloads(selected_entries)
+    selected_entries.sort(
+        key=lambda item: (
+            *candidate_table_neutral_order_key(
+                {
+                    "source_table_id": normalize_text(item.get("source_table_id")),
+                    "table_id": normalize_text(item.get("table_id")),
+                    "origin_locator": normalize_text(item.get("source_table_reference")),
+                    "candidate_id": normalize_text(item.get("candidate_id")),
+                }
+            ),
+        )
+    )
     return {
         "paper_key": record["key"],
         "producer_script": producer_script,
@@ -4980,6 +6338,7 @@ def build_prompt_preview_row(
     technical_status_overall: str,
     design_status_overall: str,
 ) -> dict[str, Any]:
+    runtime_metadata = build_prompt_runtime_metadata(evidence_artifact)
     paper_text_index = prompt_text.find("Paper text:\n")
     evidence_pack_index = prompt_text.find("Evidence pack:\n")
     table_excerpts_index = prompt_text.find("Table excerpts:\n")
@@ -4988,11 +6347,12 @@ def build_prompt_preview_row(
         for block in ensure_list(evidence_artifact.get("evidence_blocks"))
         if isinstance(block, dict) and normalize_text(block.get("text_content"))
     ]
+    prompt_render_bundle = build_prompt_render_bundle(evidence_artifact)
     normalized_prompt_text = normalize_text(prompt_text)
-    exact_payload_counts = Counter(normalize_text(block.get("text_content")) for block in evidence_blocks)
+    exact_payload_counts = Counter(prompt_render_bundle["normalized_rendered_payloads"])
     exact_duplicate_block_count = sum(count - 1 for count in exact_payload_counts.values() if count > 1)
     all_selected_blocks_included = all(
-        normalize_text(block.get("text_content")) in normalized_prompt_text for block in evidence_blocks
+        payload in normalized_prompt_text for payload in prompt_render_bundle["normalized_rendered_payloads"]
     )
     uses_evidence_pack_only = (
         evidence_pack_index >= 0
@@ -5009,6 +6369,11 @@ def build_prompt_preview_row(
         readiness_reasons.append("selected_block_missing_from_prompt")
     if exact_duplicate_block_count > 0:
         readiness_reasons.append("exact_duplicate_evidence_block_payloads")
+    if normalize_text(design_status_overall) != "pass":
+        readiness_reasons.append("upstream_evidence_nonconformant")
+    prompt_size_status = prompt_size_policy_status(len(prompt_text))
+    if prompt_size_status != "healthy":
+        readiness_reasons.append("prompt_exceeds_healthy_size_policy")
     s2_3_ready_overall = "pass" if not readiness_reasons else "fail"
     layout_class = "unknown"
     if evidence_pack_index >= 0:
@@ -5020,12 +6385,16 @@ def build_prompt_preview_row(
             layout_class = "unexpected_table_before_text"
     prompt_head_preview = normalize_text(prompt_text[:260])
     prompt_tail_preview = normalize_text(prompt_text[-260:]) if len(prompt_text) > 260 else normalize_text(prompt_text)
+    live_prompt_contains_runtime_metadata = any(note in prompt_text for note in runtime_metadata["runtime_notes"])
     return {
         "document_key": document["document_key"],
         "doi": document["doi"],
         "source_mode": document["source_mode"],
         "table_mode": table_mode_value,
         "summary_first_column_enhancement": "yes" if summary_enhanced else "no",
+        "table_mode_used": runtime_metadata["prompt_render_bundle"]["table_mode_used"],
+        "summary_applied": runtime_metadata["prompt_render_bundle"]["summary_applied"],
+        "reason_for_full_table": runtime_metadata["prompt_render_bundle"]["reason_for_full_table"],
         "input_packing_mode": input_packing_mode_value,
         "prompt_layout_class": layout_class,
         "paper_text_marker_index": paper_text_index,
@@ -5042,9 +6411,77 @@ def build_prompt_preview_row(
         "uses_evidence_pack_only": "yes" if uses_evidence_pack_only else "no",
         "truncation_detected": "yes" if truncation_detected else "no",
         "exact_duplicate_block_count": exact_duplicate_block_count,
+        "prompt_size_policy_status": prompt_size_status,
         "prompt_length": len(prompt_text),
+        "live_prompt_header_mode": "semantic_only",
+        "runtime_metadata_removed_from_live_prompt": "yes" if not live_prompt_contains_runtime_metadata else "no",
+        "live_prompt_contains_runtime_metadata": "yes" if live_prompt_contains_runtime_metadata else "no",
         "prompt_head_preview": prompt_head_preview,
         "prompt_tail_preview": prompt_tail_preview,
+    }
+
+
+def build_s2_2_boundary_validation_row(
+    *,
+    candidate_artifact: dict[str, Any],
+    evidence_artifact: dict[str, Any],
+    normalized_payload_artifact: dict[str, Any],
+) -> dict[str, Any]:
+    evidence_blocks = [
+        block for block in ensure_list(evidence_artifact.get("evidence_blocks")) if isinstance(block, dict)
+    ]
+    selector_debug = evidence_artifact.get("selector_debug") or {}
+    design_status = evidence_artifact.get("design_status") or {}
+    feature_snapshot = evidence_artifact.get("feature_activation_snapshot") or {}
+    noise_detected = any(
+        evidence_text_has_noise(str(block.get("text_content", "")))
+        for block in evidence_blocks
+        if normalize_text(block.get("block_type")) != "metadata"
+    )
+    selector_truth_mismatch = (
+        bool(selector_debug.get("selected_candidate_count"))
+        and not bool(feature_snapshot.get("evidence_priority_selection"))
+    )
+    status = "pass"
+    if normalize_text(design_status.get("overall")) != "pass":
+        status = "fail"
+    if noise_detected or selector_truth_mismatch:
+        status = "fail"
+    return {
+        "paper_key": normalize_text(evidence_artifact.get("paper_key")),
+        "candidate_count": len(ensure_list(candidate_artifact.get("candidate_blocks"))),
+        "evidence_block_count": len(evidence_blocks),
+        "table_block_count": sum(1 for block in evidence_blocks if normalize_text(block.get("block_type")) == "table"),
+        "selected_table_payload_count": len(ensure_list(normalized_payload_artifact.get("normalized_table_payloads"))),
+        "selector_strategy": normalize_text(evidence_artifact.get("input_contract", {}).get("selector_strategy")),
+        "evidence_priority_selection_executed": "yes" if selector_debug.get("selected_candidate_count") else "no",
+        "explicit_table_fallback_used": "yes" if selector_debug.get("explicit_table_fallback_used") else "no",
+        "selector_truth_mismatch": "yes" if selector_truth_mismatch else "no",
+        "design_status_overall": normalize_text(design_status.get("overall")),
+        "suppression_event_count": len(ensure_list(selector_debug.get("suppression_events"))),
+        "noise_detected": "yes" if noise_detected else "no",
+        "status": status,
+    }
+
+
+def build_s2_3_boundary_validation_row(
+    *,
+    prompt_preview_row: dict[str, Any],
+) -> dict[str, Any]:
+    status = "pass"
+    if normalize_text(prompt_preview_row.get("s2_3_ready_overall")) != "pass":
+        status = "fail"
+    return {
+        "paper_key": normalize_text(prompt_preview_row.get("document_key")),
+        "s2_3_ready_overall": normalize_text(prompt_preview_row.get("s2_3_ready_overall")),
+        "uses_evidence_pack_only": normalize_text(prompt_preview_row.get("uses_evidence_pack_only")),
+        "all_selected_blocks_included": normalize_text(prompt_preview_row.get("all_selected_blocks_included")),
+        "selected_evidence_block_count": prompt_preview_row.get("selected_evidence_block_count", ""),
+        "truncation_detected": normalize_text(prompt_preview_row.get("truncation_detected")),
+        "exact_duplicate_block_count": prompt_preview_row.get("exact_duplicate_block_count", ""),
+        "prompt_size_policy_status": normalize_text(prompt_preview_row.get("prompt_size_policy_status")),
+        "prompt_layout_class": normalize_text(prompt_preview_row.get("prompt_layout_class")),
+        "status": status,
     }
 
 
@@ -5073,6 +6510,12 @@ def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], 
                 "repair_actions": "|".join(str(item) for item in ensure_list(candidate.get("repair_actions")) if str(item).strip()),
                 "material_difference_from_raw": str(bool(candidate.get("material_difference_from_raw"))).lower() if candidate.get("candidate_type") == "table" else "",
                 "selector_readiness_label": normalize_text(candidate.get("selector_readiness_label")),
+                "authority_rank": candidate.get("authority_rank", ""),
+                "authority_score": candidate.get("authority_score", ""),
+                "authority_tier": normalize_text(candidate.get("authority_tier")),
+                "preserved_by_authority_ranking": "yes" if bool(candidate.get("preserved_by_authority_ranking")) else "no" if candidate.get("candidate_type") == "table" else "",
+                "primary_guardrail_applied": normalize_text(candidate.get("primary_guardrail_applied")),
+                "primary_guardrail_reason": "|".join(str(item) for item in ensure_list(candidate.get("primary_guardrail_reason")) if str(item).strip()),
                 "unresolved_reason": normalize_text(candidate.get("unresolved_reason")),
                 "raw_table_preview": normalize_text(candidate.get("raw_table_preview"))[:260],
                 "repaired_table_preview": normalize_text(candidate.get("repaired_table_preview"))[:260],
@@ -5083,278 +6526,76 @@ def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], 
 
 
 def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any]) -> str:
-    input_contract = evidence_artifact.get("input_contract", {})
-    current_table_mode = normalize_text(input_contract.get("table_mode")).lower() or table_mode()
-    summary_enhanced = bool(input_contract.get("summary_first_column_enhancement"))
-    current_input_packing_mode = normalize_text(input_contract.get("input_packing_mode")).lower() or input_packing_mode()
-    ordered_block_order = [str(value) for value in ensure_list(input_contract.get("ordered_block_order")) if str(value).strip()]
-    ordered_input_enabled = current_input_packing_mode == ORDERED_INPUT_PACKING_MODE
-    ordered_blocks = [
-        block.get("text_content", "")
-        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
-        if isinstance(block, dict) and normalize_text(block.get("text_content"))
-    ]
-    paper_text = "\n\n".join(
-        block.get("text_content", "")
-        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
-        if isinstance(block, dict)
-        and normalize_text(block.get("block_type")) not in {"metadata", "table"}
-        and normalize_text(block.get("text_content"))
-    ).strip()
-    table_text = "\n\n".join(
-        block.get("text_content", "")
-        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
-        if isinstance(block, dict)
-        and normalize_text(block.get("block_type")) == "table"
-        and normalize_text(block.get("text_content"))
-    ).strip()
+    runtime_metadata = build_prompt_runtime_metadata(evidence_artifact)
+    ordered_blocks = list(runtime_metadata["prompt_render_bundle"]["rendered_payloads"])
     schema = {
-        "document_key": record["key"],
-        "doi": record["doi"],
+        "paper_key": record["key"],
+        "table_scopes": [
+            {
+                "table_id": "string",
+                "scope_kind": "doe_table | formulation_table | optimization_table | sequential_child | downstream_variant_table | non_formulation | unclear",
+                "is_formulation_bearing": True,
+                "is_doe": False,
+                "parent_table_hint": "string",
+                "confidence": "high | medium | low",
+            }
+        ],
+        "semantic_signals": {
+            "has_variable_sweep": True,
+            "has_sequential_optimization": False,
+            "has_parent_child_table_relation": False,
+            "has_downstream_non_synthesis_variants": False,
+            "has_measurement_only_variants": False,
+            "primary_preparation_method_hint": "string",
+            "primary_variable_names": ["string"],
+            "selected_condition_hints": ["string"],
+        },
         "formulation_candidates": [
             {
                 "candidate_id": "string",
-                "raw_label": "string",
-                "normalized_label": "string",
-                "instance_kind": "new_formulation|variant_formulation|candidate_non_formulation|unclear",
-                "formulation_role": "variant|baseline|optimized|control|characterization_only|comparative|unclear",
-                "parent_candidate_id": "string or empty",
-                "change_role": "synthesis_defining|non_synthesis|unclear",
-                "change_descriptions": ["strings describing the grounded change from the parent or empty list"],
-                "instance_context_tags": ["doe|sweep|post_processing|test_condition|measurement_context|optimized|control|empty"],
-                "change_context_tags": ["doe|sweep|post_processing|test_condition|measurement_context|optimized|control|empty"],
-                "ambiguity_note": "string or empty",
-                "evidence_span_ids": ["span ids"],
-                "status": "reported|ambiguous|derived_from_shared_context",
-            }
-        ],
-        "component_candidates": [
-            {
-                "component_id": "string",
-                "formulation_candidate_id": "string",
-                "component_name": "string",
-                "component_role": "polymer|drug|surfactant|solvent|additive|unknown",
-                "amount_text": "string or empty",
-                "amount_kind": "concentration|mass|ratio|unknown",
-                "phase_hint": "string or empty",
-                "ambiguity_note": "string or empty",
-                "evidence_span_ids": ["span ids"],
-            }
-        ],
-        "variable_candidates": [
-            {
-                "variable_id": "string",
-                "formulation_candidate_id": "string or empty for shared",
-                "variable_name": "string",
-                "value_text": "string",
-                "variable_role": "identity_signal|process_setting|doe_factor|shared_context|unclear",
-                "ambiguity_note": "string or empty",
-                "evidence_span_ids": ["span ids"],
-            }
-        ],
-        "measurement_candidates": [
-            {
-                "measurement_id": "string",
-                "formulation_candidate_id": "string",
-                "measurement_name": "size|pdi|zeta_potential|encapsulation_efficiency|loading_content|other",
-                "value_text": "string",
-                "unit_text": "string or empty",
-                "ambiguity_note": "string or empty",
-                "evidence_span_ids": ["span ids"],
-            }
-        ],
-        "relation_hints": [
-            {
-                "relation_id": "string",
-                "source_candidate_id": "string",
-                "target_candidate_id": "string",
-                "relation_type": "inherits_from|shares_context_with|varies_by|other",
-                "note": "string",
-                "evidence_span_ids": ["span ids"],
-            }
-        ],
-        "evidence_spans": [
-            {
-                "span_id": "string",
-                "source_region_type": "text_span|table_row|table_cell|table_caption|methods_sentence|paper_notes",
-                "source_locator_text": "string",
-                "supporting_text": "string",
-            }
-        ],
-        "unassigned_observations": [
-            {
-                "observation_id": "string",
-                "category": "reported_but_unassigned|measurement_without_boundary|shared_context|other",
-                "note": "string",
-                "evidence_span_ids": ["span ids"],
-            }
-        ],
-        "table_formulation_scopes": [
-            {
-                "table_id": "string",
-                "is_formulation_table": True,
-                "table_type": "full_formulation|partial_formulation|sequential_child|doe_table|non_formulation",
-                "confidence": "high|medium|low",
-                "evidence_span": "string",
-            }
-        ],
-        "table_variable_roles": [
-            {
-                "table_id": "string",
-                "varying_variables": ["variable names"],
-                "constant_variables": ["variable names"],
-                "new_variables_introduced": ["variable names"],
-            }
-        ],
-        "selection_markers": [
-            {
-                "marker_readiness": "execution_ready|partial_semantic",
+                "candidate_kind": "single_formulation | formulation_family | variant_formulation | unclear",
                 "source_table_id": "string",
-                "selected_variable": "string",
-                "selected_value": "string",
-                "explicit": True,
-                "evidence_span": "string",
-            }
-        ],
-        "inheritance_markers": [
-            {
-                "marker_readiness": "execution_ready|partial_semantic",
-                "from_table": "string",
-                "to_table": "string",
-                "inherit_type": "selected_condition",
-                "variable": "string",
-                "value": "string",
-                "evidence_span": "string",
-            }
-        ],
-        "preparation_inheritance_markers": [
-            {
-                "table_id": "string",
-                "inherits_from_preparation": True,
-                "evidence_span": "string",
-            }
-        ],
-        "boundary_markers": [
-            {
-                "table_id": "string",
-                "is_doe": False,
+                "label_hint": "string",
+                "instance_role": "synthesis_core | downstream_variant | control | comparative | characterization_only | unclear",
+                "parent_candidate_hint": "string",
+                "core_change_hint": "string",
+                "shared_context_hint": "string",
+                "status": "reported | partial | ambiguous",
+                "confidence": "high | medium | low",
             }
         ],
     }
-    table_mode_note = ""
-    if current_table_mode == "summary":
-        table_mode_note = (
-            "- Table excerpts are provided in summary mode only.\n"
-            + (
-                "- Summary selection prioritizes DOE-like tables with explicit numbered row anchors.\n"
-                if summary_enhanced
-                else ""
-            )
-            + (
-                "- First-column row labels / numbering previews are exposed for explicit row-anchor tables.\n"
-                if summary_enhanced
-                else ""
-            )
-            + "- Use them to understand table semantics, variable structure, header units, and row-identifier patterns.\n"
-            + "- Do not infer that unsampled rows are fully enumerated in the prompt.\n"
-            + "- Do not expand every table row into separate objects unless the paper text itself clearly defines stable formulation boundaries.\n"
-        )
-    controlled_input_note = ""
-    if ordered_input_enabled:
-        resolved_order_note = (
-            f"- Resolved evidence block order: {' > '.join(ordered_block_order)}.\n"
-            if ordered_block_order
-            else ""
-        )
-        controlled_input_note = (
-            "- Controlled evidence packing is enabled.\n"
-            "- Prompt order prioritizes synthesis/preparation blocks, then materials/procurement blocks, then table evidence, then narrative fallback.\n"
-            + resolved_order_note
-            + "- Treat the evidence pack as the governed live input ordering for this run.\n"
-        )
-    if ordered_input_enabled:
-        evidence_text = "\n\n".join(ordered_blocks).strip()
-        input_block = "Evidence pack:\n" + f"{evidence_text}\n"
-    else:
-        input_block = "Paper text:\n" + f"{paper_text}\n\nTable excerpts:\n{table_text}\n"
+    evidence_text = "\n\n".join(ordered_blocks).strip()
+    input_block = "Evidence pack:\n" + f"{evidence_text}\n"
     return (
-        "You are extracting Stage2 v2 semantic objects for a governed comparator slice.\n"
+        "You are extracting Stage2 semantic understanding objects for a governed comparator slice.\n"
         "Rules:\n"
         "- Preserve ambiguity explicitly.\n"
-        "- Emit object-first outputs only.\n"
+        "- Emit understanding-level structure only.\n"
+        "- Do not emit provenance payloads, quoted supporting-text objects, or any other evidence-reporting fields.\n"
         "- Do not perform relation resolution, inheritance closure, or final-row materialization.\n"
-        "- Do not force DOE rows if the paper only reports factors but not clear formulation boundaries.\n"
-        "- Do not enumerate table rows.\n"
-        "- Every top-level key in the schema is required; if a family is absent, return an empty list for that family.\n"
-        "- Emit table-level markers when a table is formulation-bearing, including sweep tables whose rows represent explicit formulation variants under fixed context.\n"
-        "- Use literal paper table labels such as 'Table 1' or 'Table 2' for every marker table_id field; do not use file names or asset names.\n"
-        "- Prefer true paper caption lines and nearby narrative references over noisy PDF extractor fragments when deciding which paper table a marker belongs to.\n"
-        "- Do not mark a table as non_formulation just because some extracted PDF table fragments contain abstract text, references, or assay traces; use the paper's caption and surrounding formulation narrative to identify the real formulation tables.\n"
-        "- Mark a later sweep table as sequential_child when it is performed under a selected condition from an earlier table.\n"
-        "- When the paper reports parent-linked downstream treatment, storage, freeze-drying, reconstitution, assay-condition, or measurement-condition variants of an already defined formulation, keep those rows visible but mark them as non-independent descendants rather than new synthesis-defining cores.\n"
-        "- For those descendant cases, keep instance_kind='variant_formulation', keep the explicit parent_candidate_id, set change_role='non_synthesis', and populate change_descriptions plus grounded context tags.\n"
-        "- If the paper explicitly names individual downstream variants or explicitly lists concrete downstream levels tied to the parent formulation, preserve those individual variants as separate formulation_candidates instead of collapsing them into one family placeholder.\n"
-        "- Use change_context_tags=['post_processing'] for downstream processing or handling changes applied after preparation, such as freeze-drying, cryoprotectants, storage, or reconstitution, when that interpretation is supported by the paper evidence.\n"
-        "- Use change_context_tags=['measurement_context'] for assay, release-condition, or characterization-condition variants when the paper changes the evaluation context rather than the formulation synthesis/design core.\n"
-        "- instance_context_tags may describe the broader row context and change_context_tags may describe the specific grounded difference from the parent; at least one of them should carry the grounded descendant cue when the paper makes it explicit.\n"
-        "- If the paper makes clear that a parent-linked row is only a characterization/control/comparator helper, use formulation_role='characterization_only', 'control', or 'comparative' when the evidence supports that specific role.\n"
-        "- Emit selection_markers and inheritance_markers only from explicit text or explicit table notes/captions; do not guess beyond the paper evidence.\n"
-        f"- Use marker_readiness='{EXECUTION_READY_MARKER}' only when the marker is fully grounded for current execution use.\n"
-        f"- Use marker_readiness='{PARTIAL_SEMANTIC_MARKER}' when the paper clearly supports the semantic cue but some non-execution-critical grounding is still incomplete.\n"
-        "- For selection_markers, source_table_id, selected_variable, and selected_value may remain empty only when marker_readiness is partial_semantic, except for the explicit sequential-optimization literal-value pattern described below.\n"
-        "- For inheritance_markers, from_table and to_table may remain empty only when marker_readiness is partial_semantic, except for the explicit sequential-optimization literal-value pattern described below.\n"
-        "- For inheritance_markers, inherit_type, variable, and value remain strict and must stay concrete whenever you emit the marker.\n"
-        "- When the paper gives a concrete selected value such as '3 mg/mL' or '10:1', selected_value must be that literal value, not a placeholder such as 'optimal concentration' or 'optimal ratio'.\n"
-        "- Mandatory sequential-optimization literal-value rule: when a variable is explicitly explored over multiple concrete values, the paper explicitly states that one concrete value was selected or chosen as optimal, and nearby later text explicitly says that this chosen optimal setting was reused or carried forward in following experiments, you MUST extract that literal chosen value and keep it literal.\n"
-        "- For that rule, you MUST emit an execution_ready selection_marker with the literal selected_value and an execution_ready inheritance_marker with inherit_type='selected_condition' and the same literal value.\n"
-        "- For that rule, the selection sentence and the reuse sentence may appear in the same paragraph, the adjacent paragraph, or the nearby discussion immediately following the relevant optimization table.\n"
-        "- For that rule, the optimal value MUST be explicitly stated as a concrete literal such as '3 mg/mL' or '10:1', and reuse MUST be explicitly stated with wording such as 'selected', 'chosen', 'used for the remaining studies', or 'after ... had been determined'.\n"
-        "- For that explicit sequential-optimization literal-value rule only, selection_markers may be execution_ready with empty source_table_id if selected_variable and literal selected_value are explicit, and inheritance_markers may be execution_ready with empty from_table and to_table if inherit_type, variable, and literal value are explicit.\n"
-        "- Anti-placeholder rule: you MUST NOT output abstract placeholders such as 'optimal concentration', 'optimal ratio', or 'optimal formulation' when a concrete literal value is explicitly stated in that nearby local evidence window. If a nearby explicit literal value exists, using the abstract placeholder instead of that literal is incorrect.\n"
-        "- If no explicit literal value is present in that nearby local evidence window, abstract wording alone must stay partial_semantic and must NOT become execution_ready.\n"
-        "- Do not guess values and do not infer them from unrelated tables, distant sections, or full-document fallback.\n"
-        "- For partial markers, keep every grounded field that the paper supports and leave only the still-unresolved non-critical fields empty.\n"
-        "- Do not use vague placeholders to simulate grounding.\n"
-        "- Emit preparation_inheritance_markers only when the paper makes clear that a formulation-bearing table inherits the shared preparation context.\n"
-        "- boundary_markers must explicitly label each marked table as DOE or non-DOE.\n"
-        "- boundary_markers must use the same literal table_id as the corresponding table_formulation_scope; do not emit blank, global, or paper-level boundary markers when the evidence refers to a specific paper table.\n"
-        "- Mixed-table rule: if the evidence pack contains both a DOE-style variable/design table and a separate formulation-bearing non-DOE table, preserve both boundaries separately. Mark only the DOE table as is_doe=true and keep the non-DOE formulation table explicitly labeled with is_doe=false.\n"
-        "- Non-DOE formulation-table rule: when a table caption, nearby narrative, or summary block indicates that the table lists named formulations, samples, batches, or compositions together with formulation outcomes, treat that table as formulation-bearing even if the prompt provides only summary-mode rows and noisy repaired text. In that case, emit a table_formulation_scope for the literal table_id and emit a matching non-DOE boundary_marker for that same table.\n"
-        "- Downstream-descendant table rule: a later table that reports downstream handling, storage, freeze-drying, reconstitution, assay conditions, or characterization conditions for an already defined parent formulation universe is still a non-DOE boundary unless the paper explicitly frames it as a DOE/factor-design table.\n"
-        "- Example sequential-optimization pattern: if Table 1 varies one formulation variable across explicit levels and the paper says one level was selected as optimal, and Table 2 then varies a different formulation variable under that selected condition, emit both Table 1 and Table 2 in table_formulation_scopes, emit the Table 1 selection in selection_markers, and emit a Table 1 -> Table 2 selected_condition inheritance marker.\n"
-        "- Minimal example for that pattern:\n"
-        "  table_formulation_scopes = [{\"table_id\": \"Table 1\", \"is_formulation_table\": true, \"table_type\": \"partial_formulation\", \"confidence\": \"high\", \"evidence_span\": \"...\"}, {\"table_id\": \"Table 2\", \"is_formulation_table\": true, \"table_type\": \"sequential_child\", \"confidence\": \"high\", \"evidence_span\": \"...\"}]\n"
-        f"  selection_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"source_table_id\": \"Table 1\", \"selected_variable\": \"poloxamer 188 concentration\", \"selected_value\": \"3 mg/mL\", \"explicit\": true, \"evidence_span\": \"...selected as optimal...\"}}]\n"
-        f"  inheritance_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"from_table\": \"Table 1\", \"to_table\": \"Table 2\", \"inherit_type\": \"selected_condition\", \"variable\": \"poloxamer 188 concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"...after the optimal surfactant concentration had been determined...\"}}]\n"
-        "- Non-DOE mixed-table example:\n"
-        "  nearby evidence = 'Table 7 reports DOE factor levels. Table 9 reports named formulations F1-F6 with polymer/drug ratio, surfactant concentration, particle size, and encapsulation efficiency.'\n"
-        "  table_formulation_scopes = [{\"table_id\": \"Table 7\", \"is_formulation_table\": true, \"table_type\": \"doe_table\", \"confidence\": \"high\", \"evidence_span\": \"...DOE factor levels...\"}, {\"table_id\": \"Table 9\", \"is_formulation_table\": true, \"table_type\": \"full_formulation\", \"confidence\": \"high\", \"evidence_span\": \"...named formulations F1-F6...\"}]\n"
-        "  boundary_markers = [{\"table_id\": \"Table 7\", \"is_doe\": true}, {\"table_id\": \"Table 9\", \"is_doe\": false}]\n"
-        "  table_variable_roles = [{\"table_id\": \"Table 9\", \"varying_variables\": [\"polymer/drug ratio\", \"surfactant concentration\"], \"constant_variables\": [], \"new_variables_introduced\": [\"particle size\", \"encapsulation efficiency\"]}]\n"
-        "- For that non-DOE mixed-table pattern, do not collapse the non-DOE table into the DOE boundary and do not replace a literal table_id with an empty table_id.\n"
-        "- Downstream-descendant example:\n"
-        "  nearby evidence = 'The baseline nanoparticles were then freeze-dried using mannitol or sucrose at different concentrations before DLS characterization.'\n"
-        "  table_formulation_scopes = [{\"table_id\": \"Table 2\", \"is_formulation_table\": true, \"table_type\": \"sequential_child\", \"confidence\": \"high\", \"evidence_span\": \"...freeze-dried using mannitol or sucrose...\"}]\n"
-        "  boundary_markers = [{\"table_id\": \"Table 2\", \"is_doe\": false}]\n"
-        "  formulation_candidates = [{\"candidate_id\": \"F1\", \"raw_label\": \"baseline nanoparticles\", \"normalized_label\": \"baseline nanoparticles\", \"instance_kind\": \"new_formulation\", \"formulation_role\": \"baseline\", \"parent_candidate_id\": \"\", \"change_role\": \"unclear\", \"change_descriptions\": [], \"instance_context_tags\": [], \"change_context_tags\": [], \"ambiguity_note\": \"\", \"evidence_span_ids\": [\"span_1\"], \"status\": \"reported\"}, {\"candidate_id\": \"F2\", \"raw_label\": \"baseline nanoparticles with mannitol 4%\", \"normalized_label\": \"baseline nanoparticles with mannitol 4%\", \"instance_kind\": \"variant_formulation\", \"formulation_role\": \"variant\", \"parent_candidate_id\": \"F1\", \"change_role\": \"non_synthesis\", \"change_descriptions\": [\"freeze-dried with mannitol 4% as cryoprotectant\"], \"instance_context_tags\": [\"post_processing\"], \"change_context_tags\": [\"post_processing\"], \"ambiguity_note\": \"Downstream freeze-drying variant of the baseline nanoparticles.\", \"evidence_span_ids\": [\"span_2\"], \"status\": \"reported\"}, {\"candidate_id\": \"F3\", \"raw_label\": \"baseline nanoparticles with sucrose 4%\", \"normalized_label\": \"baseline nanoparticles with sucrose 4%\", \"instance_kind\": \"variant_formulation\", \"formulation_role\": \"variant\", \"parent_candidate_id\": \"F1\", \"change_role\": \"non_synthesis\", \"change_descriptions\": [\"freeze-dried with sucrose 4% as cryoprotectant\"], \"instance_context_tags\": [\"post_processing\"], \"change_context_tags\": [\"post_processing\"], \"ambiguity_note\": \"Downstream freeze-drying variant of the baseline nanoparticles.\", \"evidence_span_ids\": [\"span_3\"], \"status\": \"reported\"}]\n"
-        "- For that descendant pattern, do not silently discard the descendant row and do not upgrade the downstream handling difference into a new synthesis-defining formulation core unless the paper explicitly treats it as a new formulation identity.\n"
-        "- Positive example for the mandatory sequential-optimization literal-value rule:\n"
-        "  nearby evidence = 'Poloxamer 188 concentration was studied at 2.5, 3, 4, and 10 mg/mL. 3 mg/mL was selected as the optimal surfactant concentration. After the optimal surfactant concentration had been determined, the remaining studies used that condition.'\n"
-        f"  selection_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"poloxamer 188 concentration\", \"selected_value\": \"3 mg/mL\", \"explicit\": true, \"evidence_span\": \"3 mg/mL was selected as the optimal surfactant concentration.\"}}]\n"
-        f"  inheritance_markers = [{{\"marker_readiness\": \"{EXECUTION_READY_MARKER}\", \"from_table\": \"\", \"to_table\": \"\", \"inherit_type\": \"selected_condition\", \"variable\": \"poloxamer 188 concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"After the optimal surfactant concentration had been determined, the remaining studies used that condition.\"}}]\n"
-        "- Negative example for the same rule:\n"
-        "  nearby evidence = 'After the optimal surfactant concentration had been determined, the remaining studies used that condition.'\n"
-        f"  selection_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"surfactant concentration\", \"selected_value\": \"\", \"explicit\": true, \"evidence_span\": \"After the optimal surfactant concentration had been determined, the remaining studies used that condition.\"}}]\n"
-        f"  inheritance_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"from_table\": \"\", \"to_table\": \"\", \"inherit_type\": \"selected_condition\", \"variable\": \"surfactant concentration\", \"value\": \"\", \"evidence_span\": \"After the optimal surfactant concentration had been determined, the remaining studies used that condition.\"}}]\n"
-        "- Partial example when the semantic cue is explicit but grounding is incomplete:\n"
-        f"  selection_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"source_table_id\": \"\", \"selected_variable\": \"surfactant concentration\", \"selected_value\": \"\", \"explicit\": true, \"evidence_span\": \"...the optimal surfactant concentration was then used...\"}}]\n"
-        f"  inheritance_markers = [{{\"marker_readiness\": \"{PARTIAL_SEMANTIC_MARKER}\", \"from_table\": \"\", \"to_table\": \"\", \"inherit_type\": \"selected_condition\", \"variable\": \"surfactant concentration\", \"value\": \"3 mg/mL\", \"evidence_span\": \"...after the optimal surfactant concentration had been determined...\"}}]\n"
+        "- Do not emit execution-ready markers, boundary markers, or Stage3-like relation structures.\n"
+        "- Do not emit component families, process-context families, response-signal families, or near-final row payloads.\n"
+        "- Every top-level key in the schema is required.\n"
+        "- If a family is absent, return an empty list or an empty understanding object as appropriate.\n"
+        "- Use literal paper table labels such as 'Table 1' or 'Table 2' when a table is identifiable.\n"
+        "- Multiple candidate tables may be provided; some may be formulation-bearing and others may be downstream/result-only or non-formulation.\n"
+        "- Deterministic pre-filtering did not decide the one true formulation table for you; make the semantic table judgment from the evidence pack.\n"
+        "- `table_scopes` should answer what each included table means at a high level, including whether it is formulation-bearing, DOE-like, downstream-only, or non-formulation.\n"
+        "- `semantic_signals` should capture paper-level semantic cues only.\n"
+        "- `formulation_candidates` should describe likely formulation units only, using concise hints rather than materialized rows.\n"
+        "- Mark downstream handling, storage, measurement-only, or characterization-only variants at the understanding level only.\n"
+        "- Keep parent-child hints only when they are explicit enough to support a high-level hint.\n"
+        "- If a table is clearly DOE-like, set `is_doe=true` and use `scope_kind='doe_table'`.\n"
+        "- Use `scope_kind='formulation_table'` only when the table semantically represents formulation instances or formulation families rather than measurement-only outputs.\n"
+        "- If an included table is supportive but not formulation-bearing, keep it in `table_scopes` with `is_formulation_bearing=false` instead of pretending it is irrelevant.\n"
+        "- If a later table seems to continue a selected earlier condition, use `scope_kind='sequential_child'` and set `parent_table_hint` when possible.\n"
+        "- If the paper reports downstream non-synthesis variants, keep them visible through `semantic_signals` and `formulation_candidates` but do not resolve them into execution logic.\n"
+        "- Keep outputs compact and interpretation-focused.\n"
         "- Return valid JSON only.\n\n"
-        f"Table mode: {current_table_mode}\n"
-        f"{table_mode_note}\n"
-        f"{controlled_input_note}\n"
+        "- Treat the evidence pack as the complete semantic input for this paper.\n"
+        "- Use table summaries and method/materials blocks as semantic context, not as instructions to reproduce runtime settings.\n\n"
         f"Paper key: {record['key']}\n"
-        f"DOI: {record['doi']}\n"
         f"Title: {record['title']}\n\n"
         "Return JSON with exactly these top-level keys:\n"
         f"{json.dumps(schema, ensure_ascii=True, indent=2)}\n\n"
@@ -5378,6 +6619,8 @@ def find_legacy_raw_response(raw_dir: Path, key: str) -> Path:
 def is_live_v2_raw_response_shape(parsed: Any) -> bool:
     if not isinstance(parsed, dict):
         return False
+    if is_shrunken_live_contract(parsed):
+        return True
     return any(
         key in parsed
         for key in [
@@ -5711,7 +6954,6 @@ def build_live_v2_document(
     source_mode: str,
     replay_mode: str,
 ) -> dict[str, Any]:
-    parsed = prune_invalid_live_inheritance_markers(parsed, raw_response_path)
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
         text_path = (PROJECT_ROOT / text_path).resolve()
@@ -5719,6 +6961,25 @@ def build_live_v2_document(
     source_table_files = []
     if table_dir and table_dir.exists():
         source_table_files = [str(path.relative_to(PROJECT_ROOT)).replace("\\", "/") for path in sorted(table_dir.glob("*.csv"))]
+    if is_shrunken_live_contract(parsed):
+        return finalize_llm_first_document(
+            {
+                "document_key": record["key"],
+                "paper_key": record["key"],
+                "doi": record["doi"],
+                "title": record["title"],
+                "source_mode": source_mode,
+                "replay_mode": replay_mode,
+                "source_raw_response_schema": "stage2_live_v2_raw_response_minimal_contract",
+                "source_raw_response_path": str(raw_response_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+                "source_text_path": str(text_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+                "source_table_files": source_table_files,
+                "table_scopes": normalize_shrunken_table_scopes(parsed.get("table_scopes")),
+                "semantic_signals": normalize_shrunken_semantic_signals(parsed.get("semantic_signals")),
+                "formulation_candidates": normalize_shrunken_formulation_candidates(parsed.get("formulation_candidates")),
+            }
+        )
+    parsed = prune_invalid_live_inheritance_markers(parsed, raw_response_path)
     return finalize_llm_first_document(
         {
         "document_key": record["key"],
@@ -5748,6 +7009,62 @@ def build_live_v2_document(
 
 
 def infer_semantic_scope_declarations(document: dict[str, Any]) -> list[dict[str, Any]]:
+    if "table_scopes" in document and "semantic_signals" in document:
+        document_key = normalize_text(document.get("document_key") or document.get("paper_key") or document.get("key"))
+        signals = normalize_shrunken_semantic_signals(document.get("semantic_signals"))
+        scopes = normalize_shrunken_table_scopes(document.get("table_scopes"))
+        declarations: list[dict[str, Any]] = [
+            {
+                "scope_id": f"{document_key}__llm_document_scope__01",
+                "scope_kind": DOCUMENT_SCOPE_KIND,
+                "declared_by": LLM_PARSED,
+                "authorizes_row_materialization_modes": [LLM_SEMANTIC_DISCOVERY],
+                "row_enumeration_required": "no",
+                "table_scope_refs": [],
+                "declaration_basis": "default_llm_semantic_document_scope",
+            }
+        ]
+        if signals["has_variable_sweep"] and any(scope.get("is_doe") for scope in scopes):
+            declarations.append(
+                {
+                    "scope_id": f"{document_key}__llm_declared_doe_scope__01",
+                    "scope_kind": DOE_SCOPE_KIND,
+                    "declared_by": LLM_PARSED,
+                    "authorizes_row_materialization_modes": [
+                        LLM_SEMANTIC_DISCOVERY,
+                        "deterministic_row_expansion_within_llm_scope",
+                    ],
+                    "row_enumeration_required": "yes",
+                    "table_scope_refs": [
+                        normalize_text(scope.get("table_id"))
+                        for scope in scopes
+                        if scope.get("is_doe") and normalize_text(scope.get("table_id"))
+                    ],
+                    "declared_doe_factors": list(signals.get("primary_variable_names") or []),
+                    "declaration_basis": "llm_understanding_level_doe_scope",
+                }
+            )
+        for index, scope in enumerate(scopes, start=1):
+            if not scope.get("is_formulation_bearing") or scope.get("is_doe"):
+                continue
+            table_id = normalize_text(scope.get("table_id"))
+            if not table_id:
+                continue
+            declarations.append(
+                {
+                    "scope_id": f"{document_key}__table_formulation_scope__{index:02d}",
+                    "scope_kind": TABLE_FORMULATION_SCOPE_KIND,
+                    "declared_by": LLM_PARSED,
+                    "authorizes_row_materialization_modes": [
+                        LLM_SEMANTIC_DISCOVERY,
+                        "table_row_expansion_v1",
+                    ],
+                    "row_enumeration_required": "yes",
+                    "table_scope_refs": [table_id],
+                    "declaration_basis": f"llm_understanding_level_table_scope::{normalize_text(scope.get('scope_kind'))}",
+                }
+            )
+        return declarations
     augment_document_with_table_markers(document)
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     declarations: list[dict[str, Any]] = [
@@ -5914,7 +7231,14 @@ def default_llm_scope_ref(document: dict[str, Any], candidate_id: str) -> str:
 
 
 def finalize_llm_first_document(document: dict[str, Any]) -> dict[str, Any]:
-    augment_document_with_table_markers(document)
+    if "table_scopes" in document and "semantic_signals" in document:
+        document["paper_key"] = normalize_text(document.get("paper_key") or document.get("document_key") or document.get("key"))
+        document["document_key"] = normalize_text(document.get("document_key") or document.get("paper_key"))
+        document["table_scopes"] = normalize_shrunken_table_scopes(document.get("table_scopes"))
+        document["semantic_signals"] = normalize_shrunken_semantic_signals(document.get("semantic_signals"))
+        document["formulation_candidates"] = normalize_shrunken_formulation_candidates(document.get("formulation_candidates"))
+    else:
+        augment_document_with_table_markers(document)
     document["stage2_semantic_source_mode"] = STAGE2_SEMANTIC_SOURCE_MODE
     document["semantic_universe_authority"] = LLM_SEMANTIC_DISCOVERY
     declarations = infer_semantic_scope_declarations(document)
@@ -5922,7 +7246,7 @@ def finalize_llm_first_document(document: dict[str, Any]) -> dict[str, Any]:
     for item in document.get("formulation_candidates", []):
         if not isinstance(item, dict):
             continue
-        candidate_id = normalize_text(item.get("candidate_id"))
+        candidate_id = normalize_text(item.get("candidate_id") or item.get("formulation_candidate_id"))
         item["stage2_semantic_source_mode"] = normalize_text(item.get("stage2_semantic_source_mode")) or STAGE2_SEMANTIC_SOURCE_MODE
         item["semantic_universe_authority"] = normalize_text(item.get("semantic_universe_authority")) or LLM_SEMANTIC_DISCOVERY
         item["row_materialization_mode"] = normalize_text(item.get("row_materialization_mode")) or LLM_SEMANTIC_DISCOVERY
@@ -5932,6 +7256,26 @@ def finalize_llm_first_document(document: dict[str, Any]) -> dict[str, Any]:
 
 
 def summary_row(document: dict[str, Any]) -> dict[str, Any]:
+    if "table_scopes" in document and "semantic_signals" in document:
+        signals = normalize_shrunken_semantic_signals(document.get("semantic_signals"))
+        return {
+            "document_key": document["document_key"],
+            "doi": document.get("doi", ""),
+            "source_mode": document["source_mode"],
+            "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")) or STAGE2_SEMANTIC_SOURCE_MODE,
+            "table_scope_count": len(normalize_shrunken_table_scopes(document.get("table_scopes"))),
+            "formulation_candidate_count": len(
+                [item for item in ensure_list(document.get("formulation_candidates")) if isinstance(item, dict)]
+            ),
+            "has_variable_sweep": "yes" if signals["has_variable_sweep"] else "no",
+            "has_sequential_optimization": "yes" if signals["has_sequential_optimization"] else "no",
+            "has_parent_child_table_relation": "yes" if signals["has_parent_child_table_relation"] else "no",
+            "has_downstream_non_synthesis_variants": "yes" if signals["has_downstream_non_synthesis_variants"] else "no",
+            "has_measurement_only_variants": "yes" if signals["has_measurement_only_variants"] else "no",
+            "primary_preparation_method_hint": signals["primary_preparation_method_hint"],
+            "primary_variable_count": len(signals["primary_variable_names"]),
+            "selected_condition_hint_count": len(signals["selected_condition_hints"]),
+        }
     variable_names = {
         normalize_token(item.get("variable_name"))
         for item in document.get("variable_candidates", [])
@@ -6023,14 +7367,60 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model", default=PRIMARY_DEFAULT)
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
     parser.add_argument("--max-text-chars", type=int, default=30000)
-    parser.add_argument("--request-retries", type=int, default=2)
+    parser.add_argument("--request-timeout-seconds", type=int, default=180)
+    parser.add_argument("--request-retries", type=int, default=1)
     parser.add_argument("--retry-sleep-sec", type=float, default=3.0)
+    parser.add_argument(
+        "--stop-before-live-call",
+        action="store_true",
+        help="Materialize pre-LLM S2-2/S2-3 artifacts only and stop before any live or replay raw-response handling.",
+    )
     return parser.parse_args()
+
+
+def build_request_metadata_payload(
+    *,
+    paper_key: str,
+    doi: str,
+    source_mode: str,
+    llm_backend: str,
+    model: str,
+    request_timeout_seconds: int,
+    request_retries: int,
+    retry_sleep_sec: float,
+    manifest_path: Path,
+    evidence_artifact_path: Path,
+    raw_response_path: Path,
+    prompt_text: str,
+) -> dict[str, Any]:
+    return {
+        "stage_boundary": "Stage2 composite live call",
+        "paper_key": paper_key,
+        "doi": doi,
+        "source_mode": source_mode,
+        "llm_backend": llm_backend,
+        "model": model,
+        "request_timeout_seconds": request_timeout_seconds,
+        "request_retries": request_retries,
+        "retry_sleep_sec": retry_sleep_sec,
+        "source_manifest_path": to_repo_rel(manifest_path),
+        "source_evidence_artifact_path": to_repo_rel(evidence_artifact_path),
+        "request_started_at_utc": datetime.now(timezone.utc).isoformat(),
+        "status": "",
+        "raw_response_path": to_repo_rel(raw_response_path),
+        "raw_payload_persisted": False,
+        "raw_payload_character_count": 0,
+        "raw_payload_sha256": "",
+        "prompt_character_count": len(prompt_text),
+        "api_failure": "",
+    }
 
 
 def main() -> None:
     args = parse_args()
     validate_models_or_raise([args.model], context="stage2_objects_v2 extractor model check")
+    request_timeout_seconds = max(1, min(int(args.request_timeout_seconds), 180))
+    request_retries = max(0, min(int(args.request_retries), 1))
 
     manifest_path = Path(args.manifest_tsv)
     if not manifest_path.is_absolute():
@@ -6041,6 +7431,8 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     raw_dir = out_dir / "raw_responses"
     raw_dir.mkdir(parents=True, exist_ok=True)
+    metadata_dir = out_dir / REQUEST_METADATA_SUBDIR
+    metadata_dir.mkdir(parents=True, exist_ok=True)
 
     records = read_tsv(manifest_path)
     selected_keys = [normalize_text(key) for key in args.paper_keys if normalize_text(key)]
@@ -6066,13 +7458,19 @@ def main() -> None:
     jsonl_path = out_dir / OUTPUT_JSONL_NAME
     summary_path = out_dir / OUTPUT_SUMMARY_NAME
     prompt_preview_rows: list[dict[str, Any]] = []
+    s2_2_boundary_validation_rows: list[dict[str, Any]] = []
+    s2_3_boundary_validation_rows: list[dict[str, Any]] = []
     table_selection_debug_rows: list[dict[str, Any]] = []
     candidate_segmentation_debug_rows: list[dict[str, Any]] = []
     table_authority_validation_rows: list[dict[str, Any]] = []
+    request_summary_rows: list[dict[str, Any]] = []
     prompt_preview_path = out_dir.parent / "analysis" / PROMPT_PREVIEW_NAME
+    s2_2_boundary_validation_path = out_dir.parent / "analysis" / S2_2_BOUNDARY_VALIDATION_NAME
+    s2_3_boundary_validation_path = out_dir.parent / "analysis" / S2_3_BOUNDARY_VALIDATION_NAME
     table_selection_debug_path = out_dir.parent / "analysis" / TABLE_SELECTION_DEBUG_NAME
     candidate_segmentation_debug_path = out_dir.parent / "analysis" / CANDIDATE_SEGMENTATION_DEBUG_NAME
     table_authority_validation_path = out_dir.parent / "analysis" / TABLE_AUTHORITY_VALIDATION_NAME
+    request_summary_path = out_dir.parent / "analysis" / REQUEST_SUMMARY_NAME
     current_table_mode = table_mode()
     summary_enhanced = summary_first_column_enhancement_enabled()
     current_input_packing_mode = input_packing_mode()
@@ -6096,6 +7494,8 @@ def main() -> None:
 
                 progress_label = progress.begin_task(index, key)
                 try:
+                    raw_copy_path = raw_dir / f"{key}__stage2_v2_raw_response.json"
+                    request_metadata_path = metadata_dir / REQUEST_METADATA_FILENAME_TEMPLATE.format(paper_key=key)
                     text_path = Path(record["text_path"])
                     if not text_path.is_absolute():
                         text_path = (PROJECT_ROOT / text_path).resolve()
@@ -6138,31 +7538,62 @@ def main() -> None:
                     write_json(normalized_payload_path, normalized_payload_artifact)
                     table_authority_validation_rows.extend(table_authority_rows)
                     prompt = build_live_prompt(record, evidence_artifact)
-                    prompt_preview_rows.append(
-                        build_prompt_preview_row(
-                            document={
-                                "document_key": key,
-                                "doi": record["doi"],
-                                "source_mode": "live_llm_stage2_v2" if args.source_mode == "live_llm" else "legacy_llm_replay",
-                            },
-                            prompt_text=prompt,
-                            table_mode_value=current_table_mode,
-                            summary_enhanced=summary_enhanced,
-                            input_packing_mode_value=current_input_packing_mode,
-                            ordered_block_order=" > ".join(
-                                str(value)
-                                for value in ensure_list(evidence_artifact.get("input_contract", {}).get("ordered_block_order"))
-                                if str(value).strip()
-                            ),
-                            evidence_artifact_path=to_repo_rel(artifact_path),
+                    prompt_preview_row = build_prompt_preview_row(
+                        document={
+                            "document_key": key,
+                            "doi": record["doi"],
+                            "source_mode": "live_llm_stage2_v2" if args.source_mode == "live_llm" else "legacy_llm_replay",
+                        },
+                        prompt_text=prompt,
+                        table_mode_value=current_table_mode,
+                        summary_enhanced=summary_enhanced,
+                        input_packing_mode_value=current_input_packing_mode,
+                        ordered_block_order=" > ".join(
+                            str(value)
+                            for value in ensure_list(evidence_artifact.get("input_contract", {}).get("ordered_block_order"))
+                            if str(value).strip()
+                        ),
+                        evidence_artifact_path=to_repo_rel(artifact_path),
+                        evidence_artifact=evidence_artifact,
+                        technical_status_overall=normalize_text(evidence_artifact.get("technical_status", {}).get("overall")),
+                        design_status_overall=normalize_text(evidence_artifact.get("design_status", {}).get("overall")),
+                    )
+                    prompt_preview_rows.append(prompt_preview_row)
+                    s2_2_boundary_validation_rows.append(
+                        build_s2_2_boundary_validation_row(
+                            candidate_artifact=candidate_artifact,
                             evidence_artifact=evidence_artifact,
-                            technical_status_overall=normalize_text(evidence_artifact.get("technical_status", {}).get("overall")),
-                            design_status_overall=normalize_text(evidence_artifact.get("design_status", {}).get("overall")),
+                            normalized_payload_artifact=normalized_payload_artifact,
+                        )
+                    )
+                    s2_3_boundary_validation_rows.append(
+                        build_s2_3_boundary_validation_row(
+                            prompt_preview_row=prompt_preview_row,
                         )
                     )
                     if debug_payload is not None:
                         debug_payload["evidence_artifact_path"] = to_repo_rel(artifact_path)
                         table_selection_debug_rows.append(debug_payload)
+                    if args.stop_before_live_call:
+                        request_summary_rows.append(
+                            {
+                                "paper_key": key,
+                                "doi": normalize_text(record.get("doi")),
+                                "status": "skipped_pre_llm_boundary",
+                                "llm_backend": "",
+                                "model": "",
+                                "request_timeout_seconds": "",
+                                "request_retries": "",
+                                "raw_response_path": "",
+                                "raw_payload_persisted": "no",
+                                "request_metadata_path": "",
+                                "semantic_object_written": "no",
+                                "failure_type": "",
+                                "failure_message": "",
+                            }
+                        )
+                        progress.complete_task()
+                        continue
                     if args.source_mode == "legacy_llm_replay":
                         assert legacy_raw_dir is not None
                         legacy_raw_path = find_legacy_raw_response(legacy_raw_dir, key)
@@ -6173,25 +7604,63 @@ def main() -> None:
                             raw_response_path=raw_copy_path,
                             raw_response_text=raw_copy_path.read_text(encoding="utf-8", errors="replace"),
                         )
+                        request_summary_rows.append(
+                            {
+                                "paper_key": key,
+                                "doi": normalize_text(record.get("doi")),
+                                "status": "success",
+                                "llm_backend": "replay",
+                                "model": "",
+                                "request_timeout_seconds": "",
+                                "request_retries": "",
+                                "raw_response_path": to_repo_rel(raw_copy_path),
+                                "raw_payload_persisted": "yes",
+                                "request_metadata_path": "",
+                                "semantic_object_written": "yes",
+                                "failure_type": "",
+                                "failure_message": "",
+                            }
+                        )
                     else:
+                        metadata_payload = build_request_metadata_payload(
+                            paper_key=key,
+                            doi=normalize_text(record.get("doi")),
+                            source_mode=args.source_mode,
+                            llm_backend=args.llm_backend,
+                            model=args.model,
+                            request_timeout_seconds=request_timeout_seconds,
+                            request_retries=request_retries,
+                            retry_sleep_sec=args.retry_sleep_sec,
+                            manifest_path=manifest_path,
+                            evidence_artifact_path=artifact_path,
+                            raw_response_path=raw_copy_path,
+                            prompt_text=prompt,
+                        )
+                        request_metadata_path.write_text(
+                            json.dumps(metadata_payload, ensure_ascii=False, indent=2) + "\n",
+                            encoding="utf-8",
+                        )
                         if args.llm_backend == "gemini":
                             raw_text = call_gemini(
                                 args.model,
                                 prompt,
-                                args.request_retries,
+                                request_retries,
                                 args.retry_sleep_sec,
                                 progress_label=progress_label,
+                                timeout_seconds=request_timeout_seconds,
                             )
                         else:
                             raw_text = call_nvidia_hosted(
                                 args.model,
                                 prompt,
-                                args.request_retries,
+                                request_retries,
                                 args.retry_sleep_sec,
                                 progress_label=progress_label,
-                        )
-                        raw_copy_path = raw_dir / f"{key}__stage2_v2_raw_response.json"
+                            )
                         raw_copy_path.write_text(raw_text, encoding="utf-8")
+                        metadata_payload["raw_payload_persisted"] = bool(raw_text and raw_copy_path.exists())
+                        metadata_payload["raw_payload_character_count"] = len(raw_text)
+                        metadata_payload["raw_payload_sha256"] = hashlib.sha256(raw_text.encode("utf-8")).hexdigest() if raw_text else ""
                         sanitized_text, sanitization_audit = sanitize_stage2_json_text(raw_text)
                         if json_sanitization_applied(sanitization_audit):
                             write_json_sanitization_audit(raw_copy_path, sanitization_audit)
@@ -6203,13 +7672,89 @@ def main() -> None:
                             )
                         parsed = json.loads(sanitized_text)
                         document = normalize_live_document(record, parsed, raw_copy_path)
+                        metadata_payload["status"] = "success"
+                        metadata_payload["request_finished_at_utc"] = datetime.now(timezone.utc).isoformat()
+                        request_metadata_path.write_text(
+                            json.dumps(metadata_payload, ensure_ascii=False, indent=2) + "\n",
+                            encoding="utf-8",
+                        )
+                        request_summary_rows.append(
+                            {
+                                "paper_key": key,
+                                "doi": normalize_text(record.get("doi")),
+                                "status": "success",
+                                "llm_backend": args.llm_backend,
+                                "model": args.model,
+                                "request_timeout_seconds": str(request_timeout_seconds),
+                                "request_retries": str(request_retries),
+                                "raw_response_path": to_repo_rel(raw_copy_path),
+                                "raw_payload_persisted": "yes" if metadata_payload["raw_payload_persisted"] else "no",
+                                "request_metadata_path": to_repo_rel(request_metadata_path),
+                                "semantic_object_written": "yes",
+                                "failure_type": "",
+                                "failure_message": "",
+                            }
+                        )
 
                     handle.write(json.dumps(document, ensure_ascii=False) + "\n")
                     summary_rows.append(summary_row(document))
                     progress.complete_task()
                 except Exception as exc:
                     progress.fail_task(exc)
-                    raise
+                    if args.source_mode == "live_llm":
+                        failure_type = type(exc).__name__
+                        failure_message = str(exc)
+                        raw_payload_text = raw_copy_path.read_text(encoding="utf-8", errors="replace") if raw_copy_path.exists() else ""
+                        metadata_payload = {}
+                        if request_metadata_path.exists():
+                            try:
+                                metadata_payload = json.loads(request_metadata_path.read_text(encoding="utf-8"))
+                            except Exception:
+                                metadata_payload = {}
+                        metadata_payload.update(
+                            {
+                                "paper_key": key,
+                                "doi": normalize_text(record.get("doi")),
+                                "source_mode": args.source_mode,
+                                "llm_backend": args.llm_backend,
+                                "model": args.model,
+                                "request_timeout_seconds": request_timeout_seconds,
+                                "request_retries": request_retries,
+                                "retry_sleep_sec": args.retry_sleep_sec,
+                                "request_finished_at_utc": datetime.now(timezone.utc).isoformat(),
+                                "status": "request_failure",
+                                "raw_response_path": to_repo_rel(raw_copy_path),
+                                "raw_payload_persisted": raw_copy_path.exists(),
+                                "raw_payload_character_count": len(raw_payload_text),
+                                "raw_payload_sha256": hashlib.sha256(raw_payload_text.encode("utf-8")).hexdigest() if raw_payload_text else "",
+                                "api_failure": {
+                                    "error_type": failure_type,
+                                    "error_message": failure_message,
+                                },
+                            }
+                        )
+                        request_metadata_path.write_text(
+                            json.dumps(metadata_payload, ensure_ascii=False, indent=2) + "\n",
+                            encoding="utf-8",
+                        )
+                        request_summary_rows.append(
+                            {
+                                "paper_key": key,
+                                "doi": normalize_text(record.get("doi")),
+                                "status": "request_failure",
+                                "llm_backend": args.llm_backend,
+                                "model": args.model,
+                                "request_timeout_seconds": str(request_timeout_seconds),
+                                "request_retries": str(request_retries),
+                                "raw_response_path": to_repo_rel(raw_copy_path) if raw_copy_path.exists() else "",
+                                "raw_payload_persisted": "yes" if raw_copy_path.exists() else "no",
+                                "request_metadata_path": to_repo_rel(request_metadata_path),
+                                "semantic_object_written": "no",
+                                "failure_type": failure_type,
+                                "failure_message": failure_message,
+                            }
+                        )
+                    continue
     finally:
         progress.stop()
         progress.finish()
@@ -6247,6 +7792,9 @@ def main() -> None:
                 "source_mode",
                 "table_mode",
                 "summary_first_column_enhancement",
+                "table_mode_used",
+                "summary_applied",
+                "reason_for_full_table",
                 "input_packing_mode",
                 "prompt_layout_class",
                 "paper_text_marker_index",
@@ -6263,9 +7811,50 @@ def main() -> None:
                 "uses_evidence_pack_only",
                 "truncation_detected",
                 "exact_duplicate_block_count",
+                "prompt_size_policy_status",
                 "prompt_length",
+                "live_prompt_header_mode",
+                "runtime_metadata_removed_from_live_prompt",
+                "live_prompt_contains_runtime_metadata",
                 "prompt_head_preview",
                 "prompt_tail_preview",
+            ],
+        )
+    if s2_2_boundary_validation_rows:
+        write_tsv(
+            s2_2_boundary_validation_path,
+            s2_2_boundary_validation_rows,
+            [
+                "paper_key",
+                "candidate_count",
+                "evidence_block_count",
+                "table_block_count",
+                "selected_table_payload_count",
+                "selector_strategy",
+                "evidence_priority_selection_executed",
+                "explicit_table_fallback_used",
+                "selector_truth_mismatch",
+                "design_status_overall",
+                "suppression_event_count",
+                "noise_detected",
+                "status",
+            ],
+        )
+    if s2_3_boundary_validation_rows:
+        write_tsv(
+            s2_3_boundary_validation_path,
+            s2_3_boundary_validation_rows,
+            [
+                "paper_key",
+                "s2_3_ready_overall",
+                "uses_evidence_pack_only",
+                "all_selected_blocks_included",
+                "selected_evidence_block_count",
+                "truncation_detected",
+                "exact_duplicate_block_count",
+                "prompt_size_policy_status",
+                "prompt_layout_class",
+                "status",
             ],
         )
     if table_selection_debug_rows:
@@ -6296,6 +7885,10 @@ def main() -> None:
                 "repair_actions",
                 "material_difference_from_raw",
                 "selector_readiness_label",
+                "authority_rank",
+                "authority_score",
+                "authority_tier",
+                "preserved_by_authority_ranking",
                 "unresolved_reason",
                 "raw_table_preview",
                 "repaired_table_preview",
@@ -6319,7 +7912,30 @@ def main() -> None:
                 "column_count_after",
                 "column_collapse_detected",
                 "selector_readiness_label",
+                "authority_rank",
+                "authority_score",
+                "authority_tier",
                 "normalization_actions",
+            ],
+        )
+    if request_summary_rows:
+        write_tsv(
+            request_summary_path,
+            request_summary_rows,
+            [
+                "paper_key",
+                "doi",
+                "status",
+                "llm_backend",
+                "model",
+                "request_timeout_seconds",
+                "request_retries",
+                "raw_response_path",
+                "raw_payload_persisted",
+                "request_metadata_path",
+                "semantic_object_written",
+                "failure_type",
+                "failure_message",
             ],
         )
     print(f"wrote_jsonl={jsonl_path}")
@@ -6334,6 +7950,13 @@ def main() -> None:
     if candidate_segmentation_debug_rows:
         print(f"wrote_candidate_segmentation_debug={candidate_segmentation_debug_path}")
     print(f"wrote_raw_responses_dir={raw_dir}")
+    print(f"wrote_request_metadata_dir={metadata_dir}")
+    if request_summary_rows:
+        success_count = sum(1 for row in request_summary_rows if row.get("status") == "success")
+        failure_count = sum(1 for row in request_summary_rows if row.get("status") != "success")
+        print(f"wrote_request_summary={request_summary_path}")
+        print(f"success_count={success_count}")
+        print(f"failure_count={failure_count}")
 
 
 if __name__ == "__main__":

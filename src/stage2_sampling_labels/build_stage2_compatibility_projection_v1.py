@@ -282,6 +282,17 @@ def normalize_text(value: Any) -> str:
     return "" if value is None else str(value).strip()
 
 
+def normalize_bool(value: Any, default: bool = False) -> bool:
+    if isinstance(value, bool):
+        return value
+    text = normalize_text(value).lower()
+    if text in {"true", "yes", "1"}:
+        return True
+    if text in {"false", "no", "0"}:
+        return False
+    return default
+
+
 def normalize_token(value: Any) -> str:
     text = normalize_text(value).lower()
     return re.sub(r"[^a-z0-9]+", " ", text).strip()
@@ -437,6 +448,49 @@ def build_target_object_ref(prefix: str, item_id: str, formulation_id: str) -> s
     return prefix
 
 
+def is_shrunken_stage2_document(document: dict[str, Any]) -> bool:
+    return all(key in document for key in ["table_scopes", "semantic_signals", "formulation_candidates"])
+
+
+def scope_kind_to_table_type(scope_kind: str) -> str:
+    normalized = normalize_text(scope_kind)
+    mapping = {
+        "doe_table": "doe_table",
+        "formulation_table": "full_formulation",
+        "optimization_table": "partial_formulation",
+        "sequential_child": "sequential_child",
+        "downstream_variant_table": "sequential_child",
+        "non_formulation": "non_formulation",
+        "unclear": "partial_formulation",
+    }
+    return mapping.get(normalized, "partial_formulation")
+
+
+def scope_kind_is_formulation_bearing(scope_kind: str, explicit_flag: Any) -> bool:
+    if explicit_flag is not None:
+        return bool(explicit_flag)
+    return normalize_text(scope_kind) not in {"non_formulation", "unclear"}
+
+
+def role_to_legacy_formulation_role(instance_role: str) -> str:
+    normalized = normalize_text(instance_role)
+    mapping = {
+        "downstream_variant": "variant",
+        "control": "control",
+        "comparative": "comparative",
+        "characterization_only": "characterization_only",
+        "synthesis_core": "unclear",
+        "unclear": "unclear",
+    }
+    return mapping.get(normalized, "unclear")
+
+
+def kind_to_change_role(candidate_kind: str, instance_role: str) -> str:
+    if normalize_text(instance_role) == "downstream_variant" or normalize_text(candidate_kind) == "variant_formulation":
+        return "non_synthesis"
+    return "unclear"
+
+
 def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[str, Any]:
     """
     Normalize the Stage2 semantic-intermediate payload into the legacy-shaped
@@ -449,8 +503,155 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
     families such as `formulation_identity_candidates`.
     """
 
-    canonical_identity_key = CANONICAL_STAGE2_V2_KEYS["formulation_identity_candidate"]
     legacy_identity_key = LEGACY_OBJECT_KEYS["formulation_identity_candidate"]
+    if is_shrunken_stage2_document(document):
+        document_key = normalize_text(document.get("document_key") or document.get("paper_key") or document.get("key"))
+        model_name = normalize_text(document.get("model_name") or document.get("source_mode")) or "stage2_v2_semantic_objects"
+        source_mode = normalize_text(document.get("source_mode"))
+        semantic_signals = document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {}
+        primary_variable_names = [
+            normalize_text(item)
+            for item in ensure_list(semantic_signals.get("primary_variable_names"))
+            if normalize_text(item)
+        ]
+        selected_condition_hints = [
+            normalize_text(item)
+            for item in ensure_list(semantic_signals.get("selected_condition_hints"))
+            if normalize_text(item)
+        ]
+        normalized: dict[str, Any] = {
+            "document_key": document_key,
+            "doi": normalize_text(document.get("doi")),
+            "model_name": model_name,
+            "source_mode": source_mode,
+            "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+            "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+            "semantic_scope_declarations": ensure_list(document.get("semantic_scope_declarations")),
+            "source_text_path": normalize_text(document.get("source_text_path")),
+            "source_raw_response_path": normalize_text(document.get("source_raw_response_path")),
+            "source_table_files": ensure_list(document.get("source_table_files")),
+            "title": normalize_text(document.get("title")),
+        }
+        normalized["table_formulation_scopes"] = [
+            {
+                "scope_id": f"{document_key}__table_formulation_scope__{index:02d}",
+                "table_id": normalize_text(item.get("table_id")),
+                "table_path": "",
+                "table_asset_id": "",
+                "variable_name": "",
+                "candidate_values": [],
+                "is_formulation_table": scope_kind_is_formulation_bearing(item.get("scope_kind"), item.get("is_formulation_bearing")),
+                "table_type": scope_kind_to_table_type(normalize_text(item.get("scope_kind"))),
+                "confidence": normalize_text(item.get("confidence")) or "low",
+                "evidence_span": "",
+                "marker_provenance": "llm_parsed",
+            }
+            for index, item in enumerate(ensure_list(document.get("table_scopes")), start=1)
+            if isinstance(item, dict) and normalize_text(item.get("table_id"))
+        ]
+        normalized["table_variable_roles"] = [
+            {
+                "table_id": normalize_text(item.get("table_id")),
+                "varying_variables": primary_variable_names,
+                "constant_variables": [],
+                "new_variables_introduced": [],
+                "marker_provenance": "llm_parsed",
+            }
+            for item in ensure_list(document.get("table_scopes"))
+            if isinstance(item, dict)
+            and normalize_text(item.get("table_id"))
+            and scope_kind_is_formulation_bearing(item.get("scope_kind"), item.get("is_formulation_bearing"))
+            and normalize_text(item.get("scope_kind")) != "non_formulation"
+            and primary_variable_names
+        ]
+        normalized["selection_markers"] = []
+        normalized["inheritance_markers"] = []
+        normalized["boundary_markers"] = [
+            {
+                "table_id": normalize_text(item.get("table_id")),
+                "is_doe": bool(item.get("is_doe")),
+                "marker_provenance": "llm_parsed",
+            }
+            for item in ensure_list(document.get("table_scopes"))
+            if isinstance(item, dict) and normalize_text(item.get("table_id"))
+        ]
+        normalized_identities: list[dict[str, Any]] = []
+        normalized_relation_cues: list[dict[str, Any]] = []
+        normalized_processes: list[dict[str, Any]] = []
+        normalized_factors: list[dict[str, Any]] = []
+        method_hint = normalize_text(semantic_signals.get("primary_preparation_method_hint"))
+        for index, item in enumerate(ensure_list(document.get("formulation_candidates")), start=1):
+            if not isinstance(item, dict):
+                continue
+            formulation_id = normalize_text(item.get("candidate_id"))
+            if not formulation_id:
+                continue
+            raw_label = normalize_text(item.get("label_hint")) or formulation_id
+            instance_role = normalize_text(item.get("instance_role"))
+            candidate_kind = normalize_text(item.get("candidate_kind"))
+            normalized_identities.append(
+                {
+                    "formulation_candidate_id": formulation_id,
+                    "raw_formulation_label": raw_label,
+                    "parent_candidate_id": normalize_text(item.get("parent_candidate_hint")),
+                    "instance_kind": candidate_kind or "unclear",
+                    "formulation_role": role_to_legacy_formulation_role(instance_role),
+                    "identity_confidence": normalize_text(item.get("confidence")) or normalize_text(item.get("status")) or "reported",
+                    "candidate_source": normalize_text(document.get("source_mode")) or "stage2_v2_semantic_objects",
+                    "stage2_semantic_source_mode": normalize_text(item.get("stage2_semantic_source_mode") or document.get("stage2_semantic_source_mode")),
+                    "semantic_universe_authority": normalize_text(item.get("semantic_universe_authority") or document.get("semantic_universe_authority")),
+                    "row_materialization_mode": normalize_text(item.get("row_materialization_mode")),
+                    "semantic_scope_authority": normalize_text(item.get("semantic_scope_authority")),
+                    "semantic_scope_ref": normalize_text(item.get("semantic_scope_ref")),
+                    "change_role": kind_to_change_role(candidate_kind, instance_role),
+                    "change_descriptions": [normalize_text(item.get("core_change_hint"))] if normalize_text(item.get("core_change_hint")) else [],
+                    "instance_context_tags": [instance_role] if instance_role and instance_role != "unclear" else [],
+                    "change_context_tags": [],
+                }
+            )
+            if method_hint:
+                normalized_processes.append(
+                    {
+                        "process_step_id": f"{document_key}__{formulation_id}__process_01",
+                        "formulation_candidate_id": formulation_id,
+                        "process_name_raw": method_hint,
+                        "process_step_order_hint": "1",
+                    }
+                )
+            parent_hint = normalize_text(item.get("parent_candidate_hint"))
+            if parent_hint:
+                normalized_relation_cues.append(
+                    {
+                        "relation_id": f"{document_key}__relation_{len(normalized_relation_cues) + 1:02d}",
+                        "source_object_ref": build_target_object_ref("formulation_identity_candidate", formulation_id, formulation_id),
+                        "target_object_ref": build_target_object_ref("formulation_identity_candidate", parent_hint, parent_hint),
+                        "relation_type_raw": "inherits_from",
+                        "relation_note_raw": normalize_text(item.get("shared_context_hint") or item.get("core_change_hint") or "Derived from parent_candidate_hint."),
+                    }
+                )
+        factor_expression = " | ".join(selected_condition_hints)
+        for index, variable_name in enumerate(primary_variable_names, start=1):
+            normalized_factors.append(
+                {
+                    "factor_id": f"{document_key}__signal_factor_{index:02d}",
+                    "formulation_candidate_id": "",
+                    "factor_name_raw": variable_name,
+                    "factor_expression_raw": factor_expression,
+                    "factor_kind": "doe_factor" if normalize_bool(semantic_signals.get("has_variable_sweep"), False) else "identity_signal",
+                    "identity_defining_signal": "yes",
+                }
+            )
+        normalized[legacy_identity_key] = normalized_identities
+        normalized[LEGACY_OBJECT_KEYS["component_candidate"]] = []
+        normalized[LEGACY_OBJECT_KEYS["phase_candidate"]] = []
+        normalized[LEGACY_OBJECT_KEYS["process_step_candidate"]] = normalized_processes
+        normalized[LEGACY_OBJECT_KEYS["variable_or_factor_candidate"]] = normalized_factors
+        normalized[LEGACY_OBJECT_KEYS["measurement_candidate"]] = []
+        normalized[LEGACY_OBJECT_KEYS["relation_cue"]] = normalized_relation_cues
+        normalized[LEGACY_OBJECT_KEYS["evidence_handoff"]] = []
+        return normalized
+
+    canonical_identity_key = CANONICAL_STAGE2_V2_KEYS["formulation_identity_candidate"]
     has_canonical = any(key in document for key in CANONICAL_STAGE2_V2_KEYS.values())
     has_legacy = any(key in document for key in LEGACY_OBJECT_KEYS.values())
     has_canonical_identity = canonical_identity_key in document

@@ -147,10 +147,9 @@ Benchmark reporting rule:
 - stage_local_owner_script: `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
 - stage_local_owner_function_surface:
   - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_semantic_documents`
-  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_selection_marker`
-  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_inheritance_marker`
-  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::has_llm_declared_doe_scope`
-  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::has_table_formulation_scope_marker`
+  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_table_scope`
+  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_semantic_signals`
+  - `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py::validate_formulation_candidate`
 - stop_boundary: `semantic_contract_validation_artifacts_written`
 - next_lawful_step: `S2-7 compatibility projection`
 

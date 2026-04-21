@@ -496,7 +496,7 @@ S2-2 contract note:
   - `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
 - the maintained Stage2 path now also formalizes an explicit internal boundary
   inside S2-2:
-  - clean text / extracted tables -> candidate segmentation -> role-aware
+  - clean text / extracted tables -> candidate segmentation -> evidence-driven
     selector -> governed evidence package
 - `candidate_blocks_v1.json` is the maintained pre-selector truth surface for
   candidate segmentation, table isolation, and conservative noise filtering
@@ -512,30 +512,57 @@ S2-2 contract note:
   `summary_is_lossy=true`
 - candidate segmentation is responsible for candidate discovery plus
   execution-grade table preservation; selector semantics remain downstream
+- S2-2a may apply conservative table-authority ranking over recovered table
+  payloads so the preserved authority set marks stronger tables as primary and
+  weaker but still distinct tables as secondary
+- this ranking is structure and authority formation only:
+  - it may use repair quality, row-anchor density, formulation-like row
+    structure, and obvious downstream-result demotions
+  - coarse labels such as `non_formulation_table` or
+    `characterization/results` are noisy priors only and may demote but do not
+    veto primary authority by themselves
+  - only structural failure such as repair-insufficient payloads or narrative
+    / figure spillover may block primary authority
+  - it must not infer semantic roles, optimization meaning, or pre-LLM paper
+    interpretation
 - S2-2a owns the full-table authority surface and must preserve row numbering,
   row order, column structure, header hierarchy when available, and
   table-local identifiers when available
 - S2-2b owns the semantic-facing summary or evidence view for selector and LLM
   packaging; it does not own lossless table preservation
-- the maintained S2-2 selector is deterministic and role-aware:
-  - default profile: `PREPARATION_METHOD`, `MATERIALS`,
-    `FORMULATION_TABLE`, `FORMULATION_RESULT`, `OPTIMIZATION_RESULT`,
-    `CONTEXT_FALLBACK`
-  - DOE overlay: `PREPARATION_METHOD`, `MATERIALS`,
-    `EXPERIMENTAL_DESIGN`, `VARIABLE_TABLE`, `FORMULATION_TABLE`,
-    `OPTIMIZATION_RESULT`, `CONTEXT_FALLBACK`
+- the maintained S2-2 selector is deterministic and evidence-driven:
+  - conservative noise filtering
+  - minimum evidence coverage
+  - bounded packing
+  - no required-role coverage contract
+  - no archetype overlay in selection
   - no second LLM is used for this pre-LLM selection boundary
+- the maintained selector may classify candidate tables only as:
+  - `must_include`
+  - `optional_context`
+  - `hard_drop`
+- inclusion-class meaning:
+  - `must_include` preserves any structurally plausible formulation-bearing
+    table summary even when noisy coarse labels say characterization or results
+  - `optional_context` allows bounded supportive result or downstream table
+    summaries after `must_include` coverage is satisfied
+  - `hard_drop` is limited to high-confidence noise such as references,
+    front-matter spillover, figure-caption residue, or corrupt fragments
 - candidate-level observability is maintained through
   `analysis/candidate_segmentation_debug_v1.tsv`
-- selection is role-constrained rather than pure global top-K, and duplicate
-  near-identical tables may be suppressed to preserve role coverage
+- selection is evidence-priority based rather than role-constrained, and
+  semantically overlapping proxy or fallback blocks may be suppressed when
+  authoritative evidence already exists
+- `must_include` table summaries must be packed in neutral stable order, such
+  as source or table-number order, and must not be semantically promoted to
+  one true primary table before the LLM
 - prompt assembly must consume the persisted S2-2 artifact rather than
   silently recomputing evidence from clean text
 - this prompt-assembly boundary is S2-3:
   - it may assemble prompts from `evidence_blocks_v1.json` only
   - it must not reread clean text or perform new evidence selection or ranking
 - semantic and execution split rule:
-  - the LLM may see a lossy or role-shaped summary view
+  - the LLM may see a lossy or compact summary view
   - downstream deterministic execution must resolve back to the S2-2
     full-table authority surface by stable table identity when row
     materialization is authorized
@@ -559,19 +586,22 @@ S2-2 contract note:
       `analysis/candidate_segmentation_debug_v1.tsv`
       and `analysis/table_authority_validation_v1.tsv`
     - stop boundary:
-      candidate segmentation and execution-grade table preservation only
+      candidate segmentation, conservative table-authority ranking, and
+      execution-grade table preservation only
     - next lawful step:
       `S2-2b`
   - `S2-2b`
     - owner:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
-      plus `build_role_aware_selection`
+      plus `build_evidence_priority_selection`
     - outputs:
       `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
       and `analysis/table_selection_debug_v1.json`
     - stop boundary:
       canonical semantic-facing evidence handoff written; full-table authority
       remains preserved from S2-2a
+    - governed note:
+      the maintained selector may enforce a minimal evidence sufficiency floor after evidence-priority ranking, but that floor remains evidence-only and must not emit semantic signals or semantic-role contracts before the LLM
     - next lawful step:
       `S2-3`
   - `S2-3`
@@ -579,10 +609,11 @@ S2-2 contract note:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
       plus `build_prompt_preview_row`
     - outputs:
-      in-memory prompt payload and maintained observability
+      in-memory semantic-only prompt payload and maintained observability
       `analysis/stage2_prompt_preview_v1.tsv`
     - stop boundary:
       prompt assembled from canonical evidence only
+      and runtime packing metadata recorded in audit surfaces rather than narrated to the LLM
     - next lawful step:
       `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when that frozen boundary is being audited
   - `S2-4a`
@@ -595,6 +626,10 @@ S2-2 contract note:
       and stage-local `RUN_CONTEXT.md`
     - stop boundary:
       prompt artifacts written, no live LLM call
+    - governed note:
+      all table evidence remains summary-only at this frozen boundary, and the
+      prompt must explicitly assign semantic table scoping to the LLM rather
+      than assuming deterministic pre-resolution
     - next lawful step:
       `S2-4b live LLM call`
   - `S2-4b`
@@ -677,9 +712,8 @@ S2-2 contract note:
   it is derived from the same evidence artifact and is not the canonical source
 - the S2-2 artifact records:
   - the resolved input contract
-  - `selector_profile` and `archetype_overlay`
-  - role assignments, role priorities, and role score breakdowns
-  - `required_roles`, `selected_roles`, and `missing_or_weak_roles`
+  - `selection_mode`
+  - compact per-block evidence metadata
   - coverage summary
   - feature activation snapshot
   - `technical_status`

@@ -280,6 +280,40 @@ Rules:
 - use targeted memory updates only for small manual corrections or additions;
   do not create alternative memory trees
 
+### Repair-Pattern-Guided Regression Workflow (MANDATORY)
+
+Trigger on baseline regression, capability restoration, missing formulations or
+missing rows, post-baseline audit, "historical success not in mainline", or
+single-paper failure analysis.
+
+Step 1 - Repair Index Lookup
+- Read `docs/repair_index/success_pattern_index_v1.tsv`
+- Identify matching pattern rows
+- Do not assume mainline capability unless `activation_evidence_strength =
+  explicit_governed_activation`
+
+Step 2 - Memory Query
+- Query `data/mem/v1/`
+- Retrieve prior runs, lineage, decisions, and error traces
+- Do not skip memory
+
+Step 3 - Baseline + Run Evidence Check
+- Resolve baseline from explicit `--run-dir` or `data/results/ACTIVE_RUN.json`
+- Inspect `RUN_CONTEXT.md`, Feature Unit Activation, and Boundary Governance
+- Confirm capability status as active, partially restored, or historical only
+
+Step 4 - Minimal Repair + Replay
+- Propose the minimal patch only
+- Run a single-paper or otherwise bounded replay
+- Do not modify unrelated stages
+- Do not introduce new semantics
+
+Hard prohibitions
+- no skipping repair index
+- no skipping memory
+- no assuming code presence = capability
+- no promoting pattern without governed activation evidence
+
 ---
 
 # 10. Design intent reminder
@@ -291,3 +325,159 @@ Current architecture direction:
 
 Older rule-heavy reconstruction paths and multimodel comparison pipelines
 are considered **historical methods** unless explicitly reactivated.
+
+---
+
+# 11. Boundary and comparison legality (hard enforcement)
+
+This section defines **non-negotiable failure conditions** for pipeline
+execution, debugging, and benchmark interpretation.
+
+These rules are **not guidance**.  
+They define conditions under which results are invalid.
+
+---
+
+## 11.1 Diagnostic boundary misuse
+
+Artifacts classified as diagnostic-only must not be used as downstream
+execution inputs or benchmark evidence.
+
+Diagnostic-only artifacts include (non-exhaustive):
+
+- Stage2 raw responses
+- Stage2 semantic-intermediate objects
+- Stage4 evaluation outputs
+- reviewer workbooks and audit exports
+
+Hard rule:
+
+- Diagnostic artifacts must not be treated as:
+  - lawful Stage3 inputs
+  - lawful Stage5 inputs
+  - benchmark-valid outputs
+
+If a diagnostic artifact is used as if it were a valid pipeline boundary,
+the result is **invalid**.
+
+---
+
+## 11.2 Lawful resume boundary rule
+
+Not every replayable artifact is a valid resume point.
+
+Only the following are lawful downstream inputs:
+
+- completed Stage2 artifact → Stage3 input
+- Stage3 relation artifacts → Stage5 input
+- Stage5 final table → benchmark comparison input
+
+Hard rule:
+
+- If an artifact does not preserve the full upstream contract required by the
+  next stage, it must not be used as a resume boundary.
+
+Agents must explicitly verify boundary legality before resuming execution.
+
+---
+
+## 11.3 Stage2 authority drift
+
+Stage2 semantic authority belongs to the LLM semantic discovery layer.
+
+Deterministic components inside Stage2 may:
+
+- expand
+- normalize
+- project
+- repair within declared semantic scope
+
+They must not:
+
+- define the candidate universe
+- replace LLM semantic discovery as mainline authority
+
+Deterministic semantic emitters, semantic lifts, and reconstruction paths:
+
+- are allowed only as:
+  - fallback
+  - comparator
+  - migration-support
+  - diagnostic infrastructure
+
+Hard rule:
+
+- If a deterministic path is used or described as active Stage2 mainline
+  authority without explicit governed fallback declaration,
+  this is a **Stage2 authority violation**.
+
+---
+
+## 11.4 Comparison lineage consistency
+
+Any claim about:
+
+- "fix works"
+- "regression resolved"
+- "performance improved"
+- "benchmark unchanged"
+
+requires strict lineage alignment.
+
+Agents must explicitly identify:
+
+- modified artifact lineage
+- evaluation artifact lineage
+- GT authority source
+
+Hard rule:
+
+- If these are not identical or not explicitly aligned,
+  the comparison is **invalid**.
+
+Agents must:
+
+- print resolved run directories
+- print exact source file paths
+- confirm GT authority source
+
+before making any conclusion.
+
+---
+
+## 11.5 Layer1 GT counting enforcement
+
+Layer1 GT counts formulation instances, not design space.
+
+Hard rule:
+
+The following must NOT be counted as GT unless explicitly reported as
+independent formulation instances:
+
+- design-space combinations without result-level evidence
+- assay-only derivatives (e.g., FITC, blank control)
+- helper/control particles used only for experiments
+- commercial comparators without internal preparation identity
+
+If any of the above are included without explicit evidence,
+this is a **GT counting violation**.
+
+---
+
+## 11.6 Failure handling rule
+
+If any rule in Section 11 is violated:
+
+- the result must be marked as **invalid**
+- the agent must not proceed to:
+  - benchmark reporting
+  - performance claims
+  - downstream evaluation
+
+The agent must instead:
+
+1. identify the violated rule
+2. explain the violation
+3. stop further interpretation
+
+No silent fallback is allowed.

@@ -64,13 +64,31 @@ The maintained S2-2 contract extends that same governance layer:
 
 - `s2_candidate_section_aware_split`
   - the maintained Stage2 path must persist `candidate_blocks_v1.json` before
-    role-aware selection resolves the canonical evidence package
+    evidence-driven selection resolves the canonical evidence package
   - this candidate surface exists to make structure recovery inspectable before
     selector prioritization, not to create a second pipeline
 - `s2_candidate_table_isolation`
   - the maintained candidate layer must expose isolated table candidates before
     selector scoring, with any quality warnings recorded at candidate level
   - downstream table-selection debug stays derived observability only
+- `s2_2a_table_authority_ranking`
+  - the maintained S2-2a layer may rank recovered table payloads before the
+    preserved authority set is finalized
+  - the ranking may use only conservative artifact-level signals such as
+    repair quality, row-anchor stability, formulation-like structure density,
+    and obvious downstream-result demotions
+  - activation must be evidenced from candidate or normalized table-payload
+    artifacts; code support alone does not count
+- `s2_2a_primary_table_guardrail`
+  - the maintained S2-2a layer may apply a structure-first preservation guardrail
+    after ranking and before the preserved authority set is frozen
+  - coarse labels such as `non_formulation_table` or
+    `characterization/results` remain noisy priors only and may demote but do
+    not veto preserved authority by themselves
+  - preserved-table exclusion must be evidenced by structural failure visible in the
+    preserved table payload or candidate artifact, not by paper semantics
+  - this guardrail must not semantically choose the one true formulation table
+    among multiple preserved candidates
 - `s2_candidate_noise_filtering`
   - obvious publisher or page-furniture noise should be filtered at candidate
     generation time using conservative high-confidence rules
@@ -89,11 +107,21 @@ The maintained S2-2 contract extends that same governance layer:
     observability
   - the prompt preview must point back to the canonical evidence artifact and
     must not become a second primary truth surface
-- `s2_2_role_aware_evidence_selection`
-  - the maintained selector must assign explicit evidence roles before prompt
-    assembly rather than relying on pure global top-K ranking
-  - the canonical evidence artifact must record role assignments,
-    `selector_profile`, and any weak or missing roles
+  - runtime packing metadata may remain visible in preview or prompt-audit
+    surfaces even when the default LLM-facing prompt header is semantic-only
+- `s2_2_evidence_priority_selection`
+  - the maintained selector must stay evidence-driven and may enforce a narrow
+    minimal evidence sufficiency floor after ranking
+  - it may classify tables only as `must_include`, `optional_context`, or
+    `hard_drop`
+  - `must_include` table summaries must remain in neutral stable order and must
+    not be semantically reranked by deterministic rules
+  - the floor may add one best method block, one best materials block, or one
+    bounded supporting block when clearly available, but it must not emit
+    semantic roles or semantic signals
+  - the canonical evidence artifact must record `selection_mode`, compact
+    evidence metadata, selector-debug suppression state, and floor-debug
+    observability when the floor intervenes
 - `s2_2_doe_overlay_selection`
   - DOE or optimization papers may activate a deterministic overlay on top of
     the general selector profile
@@ -102,6 +130,8 @@ The maintained S2-2 contract extends that same governance layer:
 - `s2_2_duplicate_table_suppression`
   - duplicate table suppression is governed only when a run-local evidence
     artifact records an actual suppression event
+  - distinct `must_include` tables must not be collapsed by fuzzy semantic
+    similarity alone
   - support in code is not enough; activation is run-evidence based
 
 The same governance layer also tracks post-raw-output parse-repair units for
@@ -118,6 +148,17 @@ These parse-repair units are audited through dedicated parse-repair comparison
 artifacts rather than by reusing the mainline Stage2 prompt-preview contract.
 
 The activation report is intentionally evidence-based. A feature must not be marked `active` only because code for it exists in the repository.
+
+For `S2-4a` specifically, this governance layer is consumed by Layer B of the
+governed audit split defined in `project/S2_4A_AUDIT_STANDARD.md`.
+
+- Layer B is a Feature Activation Audit, not a semantic hard gate.
+- It should use the registry, intervention matrix, run-local activation report,
+  and primary Stage2 artifacts to verify whether repaired capabilities are
+  actually active.
+- It must not infer activation from code presence alone.
+- It must not convert feature activation checks into semantic judgments such as
+  which table is the true formulation core.
 
 For numbered DOE row activation specifically, governed recovery rows are accepted when they preserve the explicit numbered table-row anchor pattern and the run-level report can prove the same downstream evidence structure.
 

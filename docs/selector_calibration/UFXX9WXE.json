@@ -1,127 +1,31 @@
 {
   "paper_key": "UFXX9WXE",
+  "selector_calibration_version": "v2",
   "archetype": "formal_doe_optimization",
-  "selector_calibration_version": "v1",
-  "paper_notes": "Canonical formal DOE paper with explicit sections and separated variable/result tables.",
-  "roles": {
-    "PREPARATION_METHOD": {
-      "priority_tier": "frontload",
-      "selection_intent": "Frontload the canonical synthesis workflow that anchors formulation construction steps.",
-      "expected_sources": [
-        {
-          "section_label": "2.3",
-          "section_title": "Nanoparticles Preparation",
-          "source_type": "section",
-          "raw_text_excerpt": "prepared using emulsion solvent evaporation... added drop wise... stirring... centrifuged... washed... redispersed"
-        }
-      ],
-      "semantic_signals": ["prepared using", "dissolving", "added dropwise", "stirring", "evaporation", "centrifuged", "washed", "redispersed"],
-      "negative_signals": ["review-style background", "no procedural verbs", "citation-heavy paragraph", "discussion of results without process"],
-      "inclusion_notes": "Must be placed early because it is the main procedural anchor.",
-      "exclusion_notes": "Background or characterization sections should not compete with this role.",
-      "notes": "Strong procedural sequence."
-    },
-    "MATERIALS": {
-      "priority_tier": "frontload",
-      "selection_intent": "Expose polymer, surfactant, drug, solvent and supplier context needed for formulation understanding.",
-      "expected_sources": [
-        {
-          "section_label": "2.1",
-          "section_title": "Materials",
-          "source_type": "section",
-          "raw_text_excerpt": "PLGA... poloxamer 407... purchased from... HPLC grade acetone and water"
-        }
-      ],
-      "semantic_signals": ["purchased from", "supplier names", "chemical names", "HPLC grade", "solvent listing"],
-      "negative_signals": ["method steps", "process verbs", "result description"],
-      "inclusion_notes": "Should appear near the preparation block.",
-      "exclusion_notes": "Do not replace with downstream assay reagent lists.",
-      "notes": "Clean inventory block."
-    },
-    "EXPERIMENTAL_DESIGN": {
-      "priority_tier": "frontload",
-      "selection_intent": "Frontload the explicit DOE design section with modeled factors and responses.",
-      "expected_sources": [
-        {
-          "section_label": "2.2",
-          "section_title": "Experimental Design",
-          "source_type": "section",
-          "raw_text_excerpt": "Box-Behnken design... independent variables... polynomial model... Design Expert"
-        }
-      ],
-      "semantic_signals": ["Box-Behnken design", "independent variables", "dependent variables", "polynomial model", "Design Expert", "regression coefficients"],
-      "negative_signals": ["pure material listing", "step-by-step synthesis", "final optimization results"],
-      "inclusion_notes": "This should be retained because it changes how the downstream tables and optimization result are interpreted.",
-      "exclusion_notes": "Should not be replaced by general discussion of model validity.",
-      "notes": "Formal DOE signal."
-    },
-    "VARIABLE_TABLE": {
-      "priority_tier": "frontload",
-      "selection_intent": "Frontload the factor space and variable levels.",
-      "expected_sources": [
-        {
-          "section_label": "Table 1",
-          "section_title": "Independent and dependent variables levels",
-          "source_type": "table",
-          "raw_text_excerpt": "variables and levels in Box-Behnken design"
-        }
-      ],
-      "semantic_signals": ["variable names", "levels", "coded values", "independent variables", "dependent variables"],
-      "negative_signals": ["measured outcomes per formulation", "run-wise experimental results"],
-      "inclusion_notes": "Must be included before or together with the formulation table.",
-      "exclusion_notes": "Do not swap with result tables.",
-      "notes": "Pure factor-definition table."
-    },
-    "FORMULATION_TABLE": {
-      "priority_tier": "frontload",
-      "selection_intent": "Provide run-wise formulation and response evidence.",
-      "expected_sources": [
-        {
-          "section_label": "Table 2",
-          "section_title": "Effect of independent process variables",
-          "source_type": "table",
-          "raw_text_excerpt": "process variables vs responses"
-        }
-      ],
-      "semantic_signals": ["run-wise data", "process variables", "response values", "multiple formulations"],
-      "negative_signals": ["variable definitions only", "no measured outputs"],
-      "inclusion_notes": "This is the core run-wise evidence table for the DOE surface.",
-      "exclusion_notes": "Avoid duplicate or polluted table variants.",
-      "notes": "DOE run table."
-    },
-    "OPTIMIZATION_RESULT": {
-      "priority_tier": "frontload",
-      "selection_intent": "Show the final optimized condition and predicted-versus-experimental validation.",
-      "expected_sources": [
-        {
-          "section_label": "3.4",
-          "section_title": "Data Analysis and Optimization",
-          "source_type": "section",
-          "raw_text_excerpt": "optimum formulation... predicted values... experimental validation... desirability factor"
-        }
-      ],
-      "semantic_signals": ["optimum formulation", "predicted values", "experimental validation", "desirability", "agreement with model"],
-      "negative_signals": ["initial DOE setup", "raw table data without interpretation"],
-      "inclusion_notes": "Important because it links modeled design to selected formulation.",
-      "exclusion_notes": "Do not replace with generic discussion.",
-      "notes": "Explicit optimization closure."
-    },
-    "CONTEXT_FALLBACK": {
-      "priority_tier": "retain_supporting",
-      "selection_intent": "Retain limited supporting context only when it clarifies how the DOE setup connects to the optimized formulation and validation.",
-      "expected_sources": [
-        {
-          "section_label": null,
-          "section_title": "Results and discussion",
-          "source_type": "paragraph",
-          "raw_text_excerpt": "supporting interpretation of model fit, response trends, or validation around the optimized formulation"
-        }
-      ],
-      "semantic_signals": ["model fit", "response trend", "supporting interpretation", "validation context"],
-      "negative_signals": ["background only", "duplicate discussion of already selected primary evidence", "generic discussion without formulation consequence"],
-      "inclusion_notes": "Fallback context should remain secondary to the explicit DOE design, variable table, formulation table, and optimization result surfaces.",
-      "exclusion_notes": "Do not use fallback to replace any missing primary DOE role.",
-      "notes": "The primary DOE evidence is already structurally explicit, so fallback should remain narrow."
-    }
-  }
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph",
+      "primary preparation-method paragraph",
+      "explicit DOE design paragraph if it is the only clear factor-definition narrative",
+      "variable-definition table",
+      "run-wise formulation table",
+      "optimization-result paragraph"
+    ],
+    "should_drop": [
+      "redundant discussion paragraphs that restate the same DOE result surface",
+      "proxy table text when the real table summaries are already present",
+      "background-only fallback text"
+    ],
+    "minimal_evidence_set": [
+      "1 materials block",
+      "1 preparation block",
+      "1 DOE design block if distinct",
+      "2 authoritative table blocks",
+      "1 optimization block"
+    ]
+  },
+  "selection_notes": [
+    "Evidence should stay distinct by information gain rather than role coverage.",
+    "A real DOE design paragraph may be kept when it adds factor semantics not recoverable from the selected tables alone."
+  ]
 }

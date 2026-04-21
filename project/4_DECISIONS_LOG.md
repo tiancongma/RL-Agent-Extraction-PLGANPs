@@ -3687,3 +3687,927 @@ Impact
   - S2-2 preserved authority is execution-grade and self-describing
   - downstream DOE and non-DOE executors no longer rely on summary-only or
     direct Stage1 table inputs when authority is available
+
+## 2026-04-18
+
+### Decision: Accept Step 1 prompt front-matter trimming for blocked S2-4b papers inside lineage `20260418_9538ec2`
+
+Step id
+- `prompt_optimization_step_1`
+
+Change description
+- removed duplicated metadata-heavy prompt front matter for:
+  - `UFXX9WXE`
+  - `QLYKLPKT`
+  - `WFDTQ4VX`
+- the accepted trim removed repeated journal headers, title blocks, author lists, and abstract-heavy opening text from the prompt evidence body while preserving the maintained instruction/schema prefix and the formulation-bearing table evidence
+
+Observed effect
+- `UFXX9WXE` changed from no-first-token timeout to successful fresh streaming with a persisted raw response
+- `WFDTQ4VX` changed from no-first-token timeout to successful fresh streaming with a persisted raw response
+- `QLYKLPKT` remained blocked at no-first-token timeout
+- no prompt-side regression was observed in the preserved selection-marker, inheritance-marker, or formulation-table evidence checks
+
+Risk
+- front-matter trimming can accidentally remove early narrative cues if it is expanded beyond duplicated headers and abstracts
+- `QLYKLPKT` still failing means prompt overload is not fully explained by duplicated metadata alone
+
+Lineage reference
+- lineage root:
+  - `data/results/20260418_9538ec2`
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/prompt_optimization_step_1_report.md`
+
+### Decision: Reject Step 2 prompt background-removal pass for lineage `20260418_9538ec2`
+
+Step id
+- `prompt_optimization_step_2`
+
+Reason for the change
+- test whether removing non-formulation background sections could unblock `QLYKLPKT` while keeping the Step 1 recovered sentinels stable
+
+Observed effect
+- `QLYKLPKT` did not improve and still failed at no-first-token timeout
+- `UFXX9WXE` remained successful under maintained fresh `S2-4b`
+- `WFDTQ4VX` regressed from Step 1 success back to no-first-token timeout
+- the prompt-side evidence checks still showed formulation tables, selection signals, inheritance signals, and capability cues present, so the regression came from the changed prompt composition rather than an obvious cue deletion detected by the simple preservation audit
+
+Regression risk
+- removing broader background can destabilize prompt behavior even when local optimization and table cues appear preserved
+- `WFDTQ4VX` should remain a required regression sentinel for later prompt work
+
+Lineage reference
+- lineage root:
+  - `data/results/20260418_9538ec2`
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/prompt_optimization_step_2_report.md`
+
+### Decision: Accept schema-slimming experiment for blocked maintained `S2-4b` papers inside lineage `20260418_9538ec2`
+
+Step id
+- `schema_slimming_experiment`
+
+Why schema complexity was targeted
+- prompt-content trimming alone did not fully resolve the blocked papers
+- Step 1 improved two papers without fixing `QLYKLPKT`
+- Step 2 and Step 2 refined showed that aggressive content trimming can remove or destabilize semantic bridge text
+- the remaining hypothesis was that output-schema planning burden itself was contributing to prefill / time-to-first-token overload
+
+What keys were removed or deferred
+- deferred top-level keys:
+  - `component_candidates`
+  - `variable_candidates`
+  - `measurement_candidates`
+  - `relation_hints`
+  - `evidence_spans`
+  - `unassigned_observations`
+  - `preparation_inheritance_markers`
+- retained top-level keys:
+  - `document_key`
+  - `doi`
+  - `formulation_candidates`
+  - `table_formulation_scopes`
+  - `table_variable_roles`
+  - `selection_markers`
+  - `inheritance_markers`
+  - `boundary_markers`
+
+Observed effect
+- `UFXX9WXE` received a first token and wrote a fresh raw response
+- `WFDTQ4VX` received a first token and wrote a fresh raw response
+- `QLYKLPKT` remained blocked with `DeadlineExceeded`
+- no previously recovered sentinel regressed relative to the Step 1 prompt surface
+
+Regression risk
+- slimming the schema helps only if the retained marker-and-table core is enough for the paper class
+- `QLYKLPKT` remaining blocked means schema burden is not the only driver for the sequential-optimization failure case
+- future slimming should not remove the retained marker families or the table boundary surface
+
+Lineage reference
+- lineage root:
+  - `data/results/20260418_9538ec2`
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/schema_slimming_experiment_report.md`
+
+### Decision: Accept QLYKLPKT local selector experiment for lineage `20260418_9538ec2`
+
+Experiment name
+- `qlyk_selector_experiment`
+
+Rules used
+- select formulation-bearing optimization tables
+- include explicit local carry-forward sentences containing `selected`, `chosen`, `optimal`, `remaining studies`, or `all the following studies`
+- keep only minimal nanoprecipitation / variable-setup context
+- exclude raw-prefix background, PK / LC-MS detail, animal-study detail, and noisy auxiliary tables
+
+Result
+- `QLYKLPKT` recovered on the maintained fresh `S2-4b` path
+- the local selector pack reduced the slim-schema prompt from `49653` to `20480` characters
+- the maintained live call produced first token at `34.978` seconds and persisted a fresh raw response
+
+Implication for S2-2
+- selector overinclusion is a real failure mode for blocked sequential-optimization papers
+- a generalizable `S2-2b` rule family should prioritize formulation-bearing optimization tables plus local explicit carry-forward sentences before falling back to broad raw-prefix context
+
+Lineage reference
+- lineage root:
+  - `data/results/20260418_9538ec2`
+- experiment run:
+  - `data/results/20260418_9538ec2/22_qlyk_selector_experiment/RUN_CONTEXT.md`
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/qlyk_selector_experiment_report.md`
+  - `data/results/20260418_9538ec2/analysis/qlyk_selector_rules.md`
+
+### Decision: Promote local optimization-pack selector into maintained `S2-2b`
+
+Step id
+- `s2_2b_selector_promotion`
+
+Reason for the change
+- the successful `QLYKLPKT` local selector experiment showed that selector overinclusion, not missing paper capability, was the blocking factor
+- the maintained selector needed a governed rule to prefer local optimization evidence over whole-document fallback when the local pack is already sufficient
+
+Promoted rule
+- prioritize formulation-bearing optimization tables for strong sequential-optimization papers
+- prioritize explicit local carry-forward bridge text containing:
+  - `selected`
+  - `chosen`
+  - `optimal`
+  - `remaining studies`
+  - `after ... had been determined`
+- keep minimal nanoprecipitation / variable-setup context
+- suppress whole-document raw-prefix fallback only when the local optimization pack is already strong
+
+Observed effect
+- `QLYKLPKT` recovered under maintained `S2-2b` + maintained fresh `S2-4b`
+- `UFXX9WXE` remained successful and did not regress
+- `WFDTQ4VX` remained successful and did not regress
+
+Regression risk
+- the promoted path must stay gated to explicit sequential-optimization cases only
+- DOE and sweep cases should continue to use their existing selector routes unless the same local-pack sufficiency conditions are met
+
+Lineage reference
+- lineage root:
+  - `data/results/20260418_9538ec2`
+- validation run:
+  - `data/results/20260418_9538ec2/23_s2_2b_selector_promotion_validation/RUN_CONTEXT.md`
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/s2_2b_selector_promotion_report.md`
+  - `data/results/20260418_9538ec2/analysis/s2_2b_selector_rule_diff.md`
+
+### Event: Prebaseline prompt freeze audit for repaired mainline
+
+Maintained generation surface used
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+
+No-live confirmation
+- no `S2-4b` live calls were made
+- the audit stopped at the maintained pre-LLM prompt freeze boundary
+
+Child run path
+- `data/results/20260418_9538ec2/24_prebaseline_prompt_freeze_audit`
+
+Observed prompt-readiness state
+- `QLYKLPKT` no longer looks overloaded under the repaired maintained selector path
+- the full repaired mainline still contains several borderline-large prompts, especially:
+  - `V99GKZEI`
+  - `L3H2RS2H`
+  - `PA3SPZ28`
+  - `WFDTQ4VX`
+  - `5GIF3D8W`
+- overall audit recommendation:
+  - `borderline_needs_review`
+
+Lineage reference
+- analysis:
+  - `data/results/20260418_9538ec2/24_prebaseline_prompt_freeze_audit/analysis/prompt_diagnostics_report.md`
+  - `data/results/20260418_9538ec2/24_prebaseline_prompt_freeze_audit/analysis/prompt_suspicious_cases.md`
+
+### Event: Maintained selector generalization + second prompt freeze audit
+
+Maintained surfaces used
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_candidate_segmentation_artifact`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+
+Maintained capability decision
+- rule family `A-F` is now treated as maintained mainline prompt-generation behavior
+- newly generalized in this task:
+  - de-duplicate metadata / front matter in the fallback context pack
+- already maintained before this task:
+  - formulation-bearing optimization-table preference
+  - explicit local carry-forward bridge preference
+  - minimal preparation / variable-setup retention
+  - local-pack suppression of whole-document fallback
+  - local table-adjacent evidence preference
+
+Observed effect
+- second no-live DEV15 prompt freeze reduced duplicated metadata / front matter from `14/15` to `1/15`
+- PK / LC-MS detail dropped from `12/15` to `7/15`
+- animal / cell detail dropped from `9/15` to `8/15`
+- prompt-size median dropped from `55332` to `30450`
+- `UFXX9WXE` improved from `borderline` to `safe`
+- `QLYKLPKT` remained `safe`
+- `WFDTQ4VX` remained `borderline` but did not regress
+
+Readiness decision
+- overall second-audit recommendation:
+  - `borderline_needs_review`
+- main remaining blockers are a small set of large or noisy full-schema prompts, not the earlier duplicated-front-matter fallback behavior
+
+Child run path
+- `data/results/20260418_9538ec2/25_second_prebaseline_prompt_freeze_audit`
+
+Lineage reference
+- lineage root:
+  - `data/results/20260418_9538ec2`
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/maintained_selector_capability_audit.md`
+  - `data/results/20260418_9538ec2/25_second_prebaseline_prompt_freeze_audit/analysis/prompt_diagnostics_report.md`
+  - `data/results/20260418_9538ec2/25_second_prebaseline_prompt_freeze_audit/analysis/prompt_audit_vs_previous.md`
+
+### Event: Top-risk selector convergence audit
+
+Maintained surface changed
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+
+Target papers
+- `V99GKZEI`
+- `WIVUCMYG`
+- `WFDTQ4VX`
+- `L3H2RS2H`
+- `7ZS858NS`
+
+No-live confirmation
+- no `S2-4b` live calls were made
+- the audit stopped at the maintained pre-LLM prompt freeze boundary
+
+Maintained convergence change
+- preserve maintained role-aware table candidates before falling back to `sorted_csv_first_4`
+- suppress redundant selector-chosen `CONTEXT_FALLBACK` paragraphs when stronger local narrative evidence is already present
+- clean full selected tables before prompt rendering so PDF journal headers, figure carryover, and similar noisy rows do not leak into the live prompt surface
+
+Observed effect
+- target-set aggregate prompt size dropped from `271959` to `172463` chars
+- `WIVUCMYG`, `WFDTQ4VX`, `L3H2RS2H`, and `7ZS858NS` are now `safe`
+- `V99GKZEI` remains `borderline` but dropped from `101694` to `71782` chars
+- sentinels:
+  - `QLYKLPKT` remained `safe`
+  - `UFXX9WXE` remained `safe`
+  - `WFDTQ4VX` improved from `borderline` to `safe`
+
+Readiness decision
+- overall recommendation:
+  - `safe_to_restart_baseline`
+
+Child run path
+- `data/results/20260418_9538ec2/26_top_risk_selector_convergence_audit`
+
+Lineage reference
+- analysis:
+  - `data/results/20260418_9538ec2/26_top_risk_selector_convergence_audit/analysis/top_risk_selector_gap_audit.md`
+  - `data/results/20260418_9538ec2/26_top_risk_selector_convergence_audit/analysis/top_risk_prompt_diagnostics_report.md`
+  - `data/results/20260418_9538ec2/26_top_risk_selector_convergence_audit/analysis/top_risk_vs_previous.md`
+
+---
+
+## 2026-04-18 - Diagnosis baseline restart
+
+Event
+- diagnosis baseline restart
+
+Maintained mainline used
+- fresh bounded `S2-4b` live-call surface:
+  - `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+- downstream maintained stepwise Stage2 completion:
+  - `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+  - `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+- maintained downstream relation and final-output surfaces:
+  - `src/stage3_relation/build_formulation_relation_artifacts_v1.py`
+  - `src/stage5_benchmark/build_minimal_final_output_v1.py`
+  - `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py`
+  - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+  - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
+
+Child run path
+- `data/results/20260418_9538ec2/28_diagnosis_baseline_restart_stepwise_v1`
+
+Result
+- `diagnosis_baseline_partial`
+- fresh live coverage:
+  - `9` success payloads
+  - `1` partial persisted payload
+  - `5` no-payload deadline failures
+- downstream completed through:
+  - `S2-5`
+  - `S2-6`
+  - `S2-7`
+  - `Stage3`
+  - `Stage5`
+  - GT compare
+
+Sentinel outcome
+- `QLYKLPKT`
+  - preserved partially
+  - final output improved from `3` to `4`
+- `UFXX9WXE`
+  - preserved partially
+  - final output improved from `1` to `17`
+- `WFDTQ4VX`
+  - regressed
+  - final output fell from `27` to `2`
+- `V99GKZEI`
+  - preserved
+  - final output reached `6`, matching GT
+
+Whether ACTIVE_RUN should be updated
+- no
+- reason:
+  - the run is not yet a usable managed diagnosis baseline candidate because five papers never reached a persisted fresh payload and `WFDTQ4VX` regressed sharply at final output
+
+Lineage reference
+- analysis:
+  - `data/results/20260418_9538ec2/28_diagnosis_baseline_restart_stepwise_v1/analysis/diagnosis_baseline_restart_report.md`
+  - `data/results/20260418_9538ec2/28_diagnosis_baseline_restart_stepwise_v1/analysis/diagnosis_baseline_preservation_check.md`
+  - `data/results/20260418_9538ec2/28_diagnosis_baseline_restart_stepwise_v1/analysis/live_call_coverage_summary.md`
+
+---
+
+## 2026-04-19 - Governance integration for Stage2 class-level repair
+
+Event
+- promote the validated Stage2 class-level repair into the existing governed repository surfaces only
+
+Repair name
+- `stage2_variable_sweep_and_table_compaction_v1`
+
+Failure classes
+- `missing_variable_table`
+- `table_flattening`
+- `false_role_coverage`
+- `evidence_budget_overflow`
+- `near_duplicate_evidence`
+
+Affected maintained functional units
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::has_variable_sweep_structure`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::compact_table_rows_for_evidence`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_role_aware_selection`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_normalized_table_payload_artifact`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_prompt_preview_row`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_s2_2_boundary_validation_row`
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_s2_3_boundary_validation_row`
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+- `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+
+Observed governance action
+- appended a new repair-index row for the class-level repair
+- updated the maintained script registry notes for the Stage2 composite wrapper and internal extractor
+- left `project/ACTIVE_PIPELINE_RUNBOOK.md` and `project/2_ARCHITECTURE.md` unchanged because the repair changes maintained implementation behavior and observability, not the Stage2 contract boundary itself
+
+Validation basis
+- validated no-live governed audits inside lineage `data/results/20260418_9538ec2`
+- validation scope:
+  - `QLYKLPKT`
+  - `UFXX9WXE`
+  - `WFDTQ4VX`
+  - `V99GKZEI`
+  - `WIVUCMYG`
+  - `L3H2RS2H`
+  - `7ZS858NS`
+- regression status:
+  - `no_regression_on_sentinels`
+
+Lineage reference
+- analysis:
+  - `data/results/20260418_9538ec2/analysis/maintained_selector_capability_audit.md`
+  - `data/results/20260418_9538ec2/analysis/top_risk_selector_convergence_summary.md`
+  - `data/results/20260418_9538ec2/26_top_risk_selector_convergence_audit/analysis/top_risk_prompt_diagnostics_report.md`
+
+---
+
+## 2026-04-19 - Full pipeline benchmark restart attempt blocked in maintained Stage2 composite live-call path
+
+Event
+- full pipeline benchmark restart attempt using the repaired maintained Stage2 mainline
+
+Execution target
+- new governed child run:
+  - `data/results/20260419_3579206/01_stage2`
+- source authority resolved from:
+  - `data/results/ACTIVE_RUN.json`
+- explicit scope manifest:
+  - `data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv`
+
+Observed blocker
+- the maintained coarse-grained Stage2 entrypoint `src/stage2_sampling_labels/run_stage2_composite_v1.py` entered a fresh Gemini live call for `L3H2RS2H` and did not reach a governed timeout, governed failure artifact, or Stage2 completion surface
+- the underlying blocking call was:
+  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini`
+- the request remained inside `google.generativeai` `generate_content(...)` until manually interrupted after repeated heartbeats beyond seven minutes
+
+Partial artifacts written before interruption
+- `data/results/20260419_3579206/01_stage2/targeted_manifest.tsv`
+- `data/results/20260419_3579206/01_stage2/semantic_stage2_objects/raw_responses/5ZXYABSU__stage2_v2_raw_response.json`
+- `data/results/20260419_3579206/01_stage2/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl`
+
+Consequence
+- the benchmark lineage did not reach:
+  - completed Stage2
+  - Stage3
+  - Stage5
+  - identity freeze
+  - GT compare
+- no benchmark-valid result can be claimed from this attempt
+
+Follow-up implication
+- the current maintained benchmark blocker is not the promoted S2-2 class-level repair itself
+- the blocker is the maintained composite live-call path lacking a governed per-request timeout or recoverable failure surface comparable to the frozen `S2-4b` runner
+
+---
+
+## 2026-04-20 - Stage2 selector redesign from role-aware coverage to evidence-driven prioritization
+
+Decision
+- replace the maintained Stage2 S2-2b selector with an evidence-driven selector
+- remove required-role coverage, archetype-driven selector overlays, and role-shaped evidence inflation from the maintained pre-LLM path
+
+Why
+- the role-aware selector was inflating prompts by retaining proxy, fallback, and coverage blocks even when one authoritative table already existed
+- the maintained live LLM contract had already been reduced to understanding-only output, so the selector no longer needed to pre-structure evidence around a hard semantic role ontology
+
+Mainline rules
+- selector responsibilities:
+  - conservative noise filtering
+  - weak importance ordering
+  - high-signal evidence preservation
+  - semantic-overlap suppression
+- selector prohibitions:
+  - no semantic role assignment
+  - no required-role enforcement
+  - no archetype overlay influencing selection
+  - no coverage-based expansion
+  - no table-plus-proxy-plus-fallback parallel evidence packaging
+- LLM responsibilities:
+  - semantic interpretation only
+  - table meaning, formulation structure, and relationship inference
+
+Artifact-contract effect
+- `evidence_blocks_v1.json` no longer records selector roles, role priorities, role score breakdowns, required roles, selected roles, or weak-role summaries
+- the maintained evidence artifact now records compact evidence metadata plus evidence-priority suppression/debug state
+
+Scope
+- this decision changes the maintained S2-2b selector contract and the maintained S2-3 prompt-assembly contract
+- it does not create a new pipeline stage and does not move Stage3 relation-resolution work into Stage2
+
+---
+
+## 2026-04-20 - Keep Stage2 live prompt semantic-only while retaining runtime metadata in audit surfaces
+
+Decision
+- remove runtime and audit scaffolding narration from the default LLM-facing Stage2 live prompt header
+- retain the same runtime metadata in governed preview, prompt-audit, and run-context surfaces
+
+Why
+- after selector de-inflation, the remaining prompt overhead came from runtime narration such as table mode, summary-first wording, controlled evidence packing wording, and resolved block-order narration
+- those lines are useful for human audit and reproducibility, but they do not improve the LLM semantic task and unnecessarily expand the live prompt
+
+Change
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
+  now emits semantic instructions, schema, paper identity, and the governed evidence pack only
+- runtime metadata remains recorded through:
+  - `analysis/stage2_prompt_preview_v1.tsv`
+  - `analysis/s2_4a_prompt_audit_v1.tsv`
+  - run-local `RUN_CONTEXT.md`
+
+Removed from default live prompt header
+- `Table mode: ...`
+- summary-first narration
+- controlled evidence packing narration
+- resolved evidence block order narration
+
+Unchanged
+- selector behavior
+- evidence block selection
+- S2-4a boundary semantics
+- S2-5 / S2-6 / S2-7 contracts
+
+---
+
+## 2026-04-20 - Add a minimal evidence sufficiency floor to the evidence-driven Stage2 selector
+
+Decision
+- keep the evidence-driven Stage2 selector
+- add a narrow post-selection minimal evidence floor inside `S2-2b`
+
+Why
+- the evidence-driven redesign solved prompt inflation and removed role-driven evidence packing
+- a later full DEV15 pre-LLM audit showed systematic underselection on table-led papers, especially packs that retained only tables and dropped clearly available method or materials context
+
+What the floor guarantees
+- after evidence-priority ranking, the maintained selector may add:
+  - one best method-like block when none survived and a strong procedural paragraph clearly exists
+  - one best materials block when none survived and a strong inventory paragraph clearly exists
+  - at most one short distinct supporting paragraph near a retained table when it adds bounded interpretive support without acting as a proxy
+- the selector still retains at least one authoritative formulation-bearing surface
+
+What remains forbidden
+- no semantic role ontology
+- no required-role coverage
+- no archetype overlay shaping evidence selection
+- no pre-LLM semantic signals or semantic extraction layer
+- no Stage3-like interpretation in `S2-2` or `S2-3`
+
+Unchanged boundaries
+- `S2-2a` stays structure recovery only
+- `S2-2b` stays evidence selection and packing only
+- `S2-3` stays prompt assembly only
+- semantic signals remain LLM-owned at `S2-4b/S2-5`
+
+---
+
+## 2026-04-20 - Add narrow S2-2a table authority ranking to preserved table-set formation
+
+Decision
+- keep S2-2a as the owner of table recovery and preserved authority formation
+
+---
+
+## 2026-04-21 - Lock the summary-only coverage-first S2-2 / S2-4a selector contract
+
+Decision
+- keep all `S2-4a` table evidence summary-only
+- reduce deterministic selector authority to conservative denoising, minimum
+  evidence coverage, and bounded packing only
+- move semantic table judgment, table scoping, and semantic primary-table
+  interpretation back to the LLM
+
+Why
+- coarse table labels such as `characterization`, `results`, or
+  `non_formulation_table` were still exerting too much practical authority over
+  which plausible formulation-bearing tables survived into the prompt-ready
+  evidence pack
+- accepted prompt-budget controls must not reintroduce full-table prompt
+  surfaces at `S2-4a`
+
+Mainline rules
+- selector responsibilities:
+  - conservative denoising
+  - minimum evidence coverage
+  - bounded packing
+- selector prohibitions:
+  - no semantic veto over ambiguous table summaries
+  - no deterministic choice of the one true formulation table among
+    `must_include` candidates
+  - no full-table prompt fallback at `S2-4a`
+- table inclusion classes:
+  - `must_include`
+  - `optional_context`
+  - `hard_drop`
+- governed table-packing rule:
+  - `must_include` table summaries remain in neutral stable order
+  - `optional_context` follows only after `must_include` coverage is satisfied
+  - `hard_drop` is limited to high-confidence noise only
+- LLM responsibilities:
+  - determine semantic table scope
+  - decide formulation-bearing versus downstream/result-only table meaning
+  - interpret primary semantic relevance from the bundled summary-only evidence
+
+Artifact-contract effect
+- `evidence_blocks_v1.json` remains the canonical pre-LLM evidence artifact,
+  but all LLM-facing table surfaces inside it are summary-only
+- `analysis/s2_4a_prompt_audit_v1.tsv` and the frozen `S2-4a` prompts must be
+  treated as invalid if any full-table prompt surface reappears
+
+Validation note
+- bounded targeted replay improved or stabilized `INMUTV7L`, `V99GKZEI`,
+  `L3H2RS2H`, and `QLYKLPKT` without a full-table prompt regression
+- residual failures after this decision should now be classified as remaining
+  evidence-underselection or upstream candidate quality issues, not selector
+  semantic-overreach by default
+- add a narrow conservative authority-ranking pass inside `S2-2a` after
+  normalized table payloads are built and before the preserved authority set is
+  finalized
+
+Why
+- later audits showed that current lineages still executed table recovery and
+  downstream consumption, but some papers preserved the wrong mix of tables
+  relative to earlier successful traces
+- the failure mode was preserved authority set divergence rather than loss of
+  table visibility
+
+What changed
+- recovered table payloads are now ranked with conservative artifact-level
+  signals only:
+  - representation quality and repair sufficiency
+  - row-anchor stability and table legibility
+  - formulation-structure density
+  - obvious down-ranking for weak residue or clearly downstream result tables
+- the preserved authority set now marks stronger tables as primary and keeps
+  bounded distinct secondary tables only when still plausibly useful
+- audit fields such as `authority_rank`, `authority_score`, `authority_tier`,
+  and `authority_score_breakdown` are now carried on the maintained S2-2a
+  authority surface
+
+What explicitly did not change
+- no semantic role inference in `S2-2a`
+- no selector ontology, required-role, or archetype-overlay return
+- no `S2-3` responsibility change
+- no transfer of semantic understanding away from `S2-4b/S2-5`
+
+Unchanged boundaries
+- `S2-2a` remains structure recovery and table-authority formation only
+- `S2-2b` still consumes the preserved authority set and remains evidence-only
+- `S2-3` still serializes the evidence package only
+- semantic understanding remains LLM-owned downstream
+
+---
+
+## 2026-04-20 - Record S2-2a Table Authority Ranking (Selector V2.1 refinement) as the maintained preserved-authority repair
+
+Decision
+- record the current S2-2a table authority ranking refinement under the
+  canonical change name:
+  `S2-2a Table Authority Ranking (Selector V2.1 refinement)`
+- treat it as a maintained structural refinement inside `S2-2a` only
+
+Motivation
+- the active audit showed that current lineages still executed S2-2a table
+  recovery and downstream consumption correctly
+- the remaining failure mode was preserved authority set divergence:
+  source tables existed, recovered tables existed, and downstream prompt
+  construction still consumed tables, but the preserved authority set
+  sometimes favored weaker or less formulation-bearing tables than earlier
+  successful traces
+
+Evidence
+- before-change validation lineage:
+  - `data/results/20260419_3579206/41_dev15_evidence_driven_v21_prellm_baseline_r4`
+  - `data/results/20260419_3579206/42_dev15_evidence_driven_v21_s2_4a_baseline_r4`
+- after-change validation lineage:
+  - `data/results/20260419_3579206/45_dev15_evidence_driven_v21_table_authority_rank_prellm_r2`
+  - `data/results/20260419_3579206/46_dev15_evidence_driven_v21_table_authority_rank_s2_4a_r2`
+- the maintained before/after audit
+  `analysis/table_authority_before_after_validation.tsv` shows narrower,
+  stronger preserved table sets on the target papers and reduced prompt size
+  without reintroducing prompt inflation
+
+Exact scope
+- S2-2a only
+- after normalized table payload construction
+- before final preserved authority set formation
+- ranking uses conservative artifact-level signals only
+
+What was not changed
+- no Stage1 redesign
+- no selector ontology redesign
+- no semantic role inference before the LLM
+- no prompt redesign
+- no change to `S2-3` ownership
+- no change to `S2-4b` or `S2-5` semantic ownership
+
+Impact summary
+- bounded DEV15 pre-LLM readiness improved from `10` to `14`
+  `ready_for_s2_4b`
+- primary problem papers improved:
+  - `QLYKLPKT`
+  - `UFXX9WXE`
+  - `YGA8VQKU`
+- context papers improved without inflation regression:
+  - `5ZXYABSU`
+  - `RHMJWZX8`
+- `V99GKZEI` remained clean
+
+---
+
+## 2026-04-20 - Refine S2-2a primary-table eligibility so coarse labels demote but do not veto
+
+Decision
+- keep the S2-2a primary-table guardrail inside preserved-authority formation
+- change the guardrail from coarse-label veto logic to structure-first primary
+  eligibility
+
+Why
+- the first narrow primary guardrail fixed `L3H2RS2H` but regressed
+  `V99GKZEI`
+- the regression showed that coarse labels such as
+  `table_type=non_formulation_table` and
+  `table_role_hint=characterization/results` are noisy priors, not safe
+  hard-exclusion signals
+
+What changed
+- coarse labels remain visible on the preserved authority surface and still act
+  as negative evidence through scoring and audit fields
+- coarse labels no longer make a table ineligible for primary authority by
+  themselves
+- primary exclusion is now limited to structural failure such as:
+  - repair-insufficient or unrepaired payloads
+  - narrative or figure-caption dominated tables
+  - obvious non-tabular spillover
+- audit fields remain explicit:
+  - `primary_guardrail_applied`
+  - `primary_guardrail_reason`
+  - `primary_eligibility_signals`
+
+What explicitly did not change
+- no Stage1 change
+- no selector ontology redesign
+- no semantic role inference in `S2-2a`
+- no `S2-3` prompt-responsibility change
+- no `S2-4b` or `S2-5` ownership change
+- no paper-specific allowlists or denylists
+
+Two-paper validation
+- before baseline:
+  - `data/results/20260419_3579206/41_dev15_evidence_driven_v21_prellm_baseline_r4`
+  - `data/results/20260419_3579206/42_dev15_evidence_driven_v21_s2_4a_baseline_r4`
+- bounded after validation:
+  - `data/results/20260420_9e6a1cf/07_two_paper_structure_first_s2_2`
+  - `data/results/20260420_9e6a1cf/08_two_paper_structure_first_s2_4a`
+- observed outcomes:
+  - `L3H2RS2H`
+    - `Table 5` remained `primary`
+    - `Table 9` remained non-primary
+    - prompt length stayed non-inflated at `6841`
+  - `V99GKZEI`
+    - `Table 1` regained `primary`
+    - method / materials / table evidence remained present
+    - prompt length stayed non-inflated at `6934`
+
+DEV15 validation
+- explicit maintained execution source:
+  `data/results/20260419_3579206/41_dev15_evidence_driven_v21_prellm_baseline_r4/targeted_manifest.tsv`
+- accepted comparison surface:
+  `data/results/20260419_3579206/46_dev15_evidence_driven_v21_table_authority_rank_s2_4a_r2/analysis/dev15_post_rank_readiness.tsv`
+- updated run:
+  - `data/results/20260420_9e6a1cf/09_dev15_structure_first_primary_rank_s2_2`
+  - `data/results/20260420_9e6a1cf/10_dev15_structure_first_primary_rank_s2_4a`
+- run-scoped audit surfaces:
+  - `analysis/dev15_post_structure_first_readiness.tsv`
+  - `analysis/dev15_post_structure_first_evidence_audit.tsv`
+- result:
+  - bounded DEV15 `ready_for_s2_4b` remained `14/15`
+  - residual mix remained unchanged relative to the accepted ranked baseline:
+    - `clean_multi_method = 8`
+    - `mixed_minor_residual = 6`
+    - `fallback_residual = 1`
+  - prompt-size distribution did not inflate
+  - only `QLYKLPKT` prompt text changed, and it became shorter
+
+Governance note
+- this refinement is part of maintained `S2-2a` table-authority formation
+- governing principle:
+  structure evidence outranks noisy coarse labels for primary eligibility
+
+## 2026-04-21 - Split the S2-4a audit standard into Hard Gate, Feature Activation Audit, and Calibration Review
+
+Decision
+- refactor the governed `S2-4a` audit standard into three layers instead of a
+  single mixed checklist
+- keep legality/readiness checks separate from semantic correctness review
+- make feature activation artifact-backed rather than assumed from code
+  presence
+
+Why
+- the previous `S2-4a` audit surface mixed three different questions:
+  - is the pre-LLM prompt-ready evidence pack legal and bounded
+  - did repaired maintained capabilities actually activate in this run
+  - is the semantic interpretation correct on known-answer papers
+- mixing those questions created hidden checklist overreach and made it too
+  easy for a hard gate to smuggle in semantic truth claims such as which table
+  is the real primary surface
+- the repository already has a governed feature-unit layer and run-local
+  activation reporting; the `S2-4a` audit should consume that layer explicitly
+  rather than duplicating it informally
+
+What changed
+- `project/S2_4A_AUDIT_STANDARD.md` is now split into:
+  - Layer A:
+    Hard Gate
+  - Layer B:
+    Feature Activation Audit
+  - Layer C:
+    Calibration Review Only
+- Layer A now judges only legality/readiness and may emit labels such as
+  `table_missing`, `evidence_underselected`, `summary_contract_violation`,
+  `prompt_inflation`, `hard_drop_overreach`,
+  `selector_boundary_violation`, or `candidate_table_quality_failure`
+- Layer B now verifies artifact-backed activation of maintained repaired
+  features such as:
+  - table recovery and repair activation
+  - summary-first prompt behavior
+  - ordered evidence packing behavior
+  - raw-prefix removal
+  - duplicate suppression
+  - selector-contract activation
+- Layer C is now explicitly calibration-only and may use known-answer papers
+  such as `INMUTV7L`, `V99GKZEI`, `L3H2RS2H`, and `QLYKLPKT`
+
+Governance consequences
+- ordinary DEV15 readiness runs should use Layer A plus Layer B
+- Layer C should be invoked for targeted regression review, repair validation,
+  or known-paper calibration only
+- Hard Gate must not adjudicate true primary-table semantics
+- feature activation must be evidenced from run artifacts such as
+  `candidate_blocks_v1.json`, `normalized_table_payloads_v1.json`,
+  `evidence_blocks_v1.json`, `stage2_prompt_preview_v1.tsv`,
+  `s2_4a_prompt_audit_v1.tsv`, `feature_activation_report_v1.tsv`, and
+  `RUN_CONTEXT.md`
+- semantic table truth remains LLM-owned in the active pipeline and may be
+  reviewed through calibration, but it is not part of the universal hard gate
+
+## 2026-04-21 - Redefine the S2-4a Hard Gate minimum evidence contract around formulation sufficiency
+
+Decision
+- redefine Layer A minimum evidence from evidence richness to minimum
+  formulation sufficiency
+- keep Hard Gate limited to legality, minimal sufficiency, summary-only
+  compliance, selector-boundary compliance, and prompt legality
+
+Why
+- the previous Layer A wording was still too easy to interpret as requiring
+  richer evidence bundles than the frozen pre-LLM boundary actually needs
+- simple but valid formulation papers such as `INMUTV7L` already had a method
+  block and formulation-bearing table summaries, yet still failed as
+  `evidence_underselected`
+- Hard Gate should not fail a paper merely because materials evidence or extra
+  supporting context is absent when a minimally sufficient formulation surface
+  is already present
+
+What changed
+- Layer A minimum evidence is now satisfied by any one of three governed paths:
+  - Path 1:
+    at least one formulation-bearing table summary survives
+  - Path 2:
+    method evidence plus strong table-adjacent formulation description survives
+  - Path 3:
+    method evidence plus explicit formulation definition in text survives
+- materials evidence is now explicitly optional soft-support for Layer A
+- supporting context is now explicitly optional soft-support for Layer A
+- Layer A no longer requires multiple evidence families or evidence-rich
+  coverage once one minimum sufficiency path is satisfied
+
+Implementation note
+- add a read-only helper,
+  `src/stage2_sampling_labels/evaluate_s2_4a_hard_gate_v1.py`,
+  to evaluate the governed Layer A contract directly from frozen
+  `evidence_blocks_v1.json`, `normalized_table_payloads_v1.json`, and
+  `s2_4a_prompt_audit_v1.tsv` artifacts without changing selector or
+  prompt-construction behavior
+
+Validation note
+- on the accepted `20260421_3579206` DEV15 S2-4a lineage, Layer A readiness
+  moved from `12/15` to `14/15`
+- `INMUTV7L` and `YGA8VQKU` now pass under Path 1
+- `L3H2RS2H` remains blocked for a real summary-only contract violation
+
+## 2026-04-21 - Enforce the summary-only contract on table-derived inline table text at S2-4a
+
+Decision
+- keep `inline_table_text` available as an upstream diagnostic or selector
+  surface
+- block it from final prompt rendering at `S2-4a` unless it resolves to a
+  governed summary-backed table surface
+
+Why
+- `L3H2RS2H` still carried a table-derived `inline_table_text` block into the
+  final `S2-4a` prompt even though the maintained contract already said that
+  all LLM-facing table evidence must be summary-only
+- the trace showed that candidate creation and evidence preservation were not
+  the direct contract violation; the violation occurred because prompt
+  rendering fell back to raw `[TABLE]` emission whenever a selected table block
+  lacked a resolved summary item
+
+Root cause
+- `build_inline_formulation_table_item` and candidate segmentation lawfully
+  create `inline_table_text` candidates as intermediate table-derived recovery
+  surfaces
+- `build_evidence_blocks_artifact` lawfully preserves a selected
+  `inline_table_text` block into `evidence_blocks_v1.json`
+- `render_prompt_block` previously emitted that block into the final prompt
+  using raw fallback text when `resolve_prompt_summary_table_item(...)`
+  returned `None`
+- therefore the missing enforcement point was the final prompt-level
+  summary-only contract filter
+
+What changed
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::render_prompt_block`
+  now returns an empty rendered payload for table-derived
+  `source_type=inline_table_text` blocks that do not resolve to a governed
+  summary surface
+- this change is intentionally narrow:
+  - it does not change selector semantics
+  - it does not redesign evidence packing
+  - it does not remove ordinary supporting prose that merely mentions a table
+
+Validation note
+- targeted `S2-4a` rerun:
+  `data/results/20260421_3579206/15_inline_table_contract_fix_targeted`
+  removed the `L3H2RS2H__table__03` inline-table prompt payload while leaving
+  `INMUTV7L` and `V99GKZEI` unchanged
+- full DEV15 rerun:
+  `data/results/20260421_3579206/16_inline_table_contract_fix_dev15`
+  plus the updated Layer A check raised readiness from `14/15` to `15/15`

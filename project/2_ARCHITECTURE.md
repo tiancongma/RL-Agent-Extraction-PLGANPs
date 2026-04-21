@@ -104,17 +104,29 @@ inside those coarse stages; it does not introduce new runtime namespaces.
   - candidate discovery, structure recovery, and execution-grade full-table
     authority preservation only.
 - `S2-2b Selector evidence prioritization`
-  - deterministic role-aware semantic-facing evidence selection over frozen
+  - deterministic evidence-driven semantic-facing evidence selection over frozen
     candidate blocks and preserved table authority.
+  - selector authority is limited to conservative denoising, minimum evidence
+    coverage, and bounded packing.
+  - candidate tables are classified only as `must_include`,
+    `optional_context`, or `hard_drop`.
+  - `must_include` table summaries must survive in neutral stable order and
+    must not be semantically reranked into one true table by deterministic
+    rules.
 - `S2-3 Prompt assembly`
   - assemble prompt inputs from `evidence_blocks_v1.json` only.
   - must not reread clean text, rescore candidates, or perform new selection or
     ranking.
-  - the LLM may see a lossy or role-shaped summary of a table here, but this
+  - all LLM-facing table evidence at `S2-3` / `S2-4a` is summary-only; full
+    tables must not be placed into the prompt surface.
+  - the LLM may see a lossy or compact summary of a table here, but this
     surface must never become the sole execution source of truth.
 - `S2-4a Prompt construction freeze boundary`
   - optional frozen local boundary that materializes prompt artifacts from the
     canonical S2-3 evidence handoff and stops before the live LLM call.
+  - this boundary preserves the summary-only table contract and explicitly
+    tells the LLM to determine semantic table scope itself when multiple
+    candidate table summaries are present.
 - `S2-4b Live LLM call freeze boundary`
   - the only nondeterministic Stage2 substep.
   - output: raw LLM response payloads under the run-scoped raw-response
@@ -258,7 +270,7 @@ boundary:
 
 - S2-2: clean text -> governed evidence package
 - explicit internal sub-boundary inside S2-2:
-  - clean text / extracted tables -> candidate segmentation -> role-aware
+  - clean text / extracted tables -> candidate segmentation -> evidence-driven
     selector -> governed evidence package
 - candidate-segmentation artifact:
   `data/results/run_<run_id>/semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
@@ -273,7 +285,7 @@ boundary:
 - producer:
   `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
 - consumer:
-  the same maintained extractor's role-aware selector consumes the persisted
+  the same maintained extractor's evidence-driven selector consumes the persisted
   candidate surface and then the prompt-assembly path consumes the canonical
   evidence artifact before live LLM calls or replay normalization; downstream
   deterministic execution may resolve back to the preserved S2-2 full-table
@@ -299,6 +311,23 @@ boundary:
   `source_table_reference`, deterministic `table_type`, `row_count`,
   `has_row_numbering`, `header_structure`, `raw_cells`, execution-facing
   `normalized_rows`, `row_identity_signals`, and `reconstruction_confidence`
+- table-authority ranking rule:
+  S2-2a may rank recovered table payloads into primary versus secondary
+  preserved authority using conservative artifact-level signals such as repair
+  quality, row-anchor stability, formulation-structure density, and obvious
+  downstream-result demotions; it must not emit semantic roles, semantic
+  signals, or pre-LLM paper interpretation
+- structure-first primary rule:
+  coarse labels such as `table_type=non_formulation_table` or
+  `table_role_hint=characterization/results` are noisy priors only
+- primary-eligibility rule:
+  those coarse labels may demote a recovered table inside S2-2a ranking, but
+  they must not by themselves make a structurally strong table ineligible for
+  primary authority
+- hard-guardrail rule:
+  only structural failure such as repair-insufficient payloads, narrative /
+  figure-caption domination, or obvious non-tabular spillover may block
+  primary authority
 - selector responsibility rule:
   selector prioritizes and retains semantic-facing evidence from candidate
   blocks; it does not own lossless table preservation anymore
@@ -328,13 +357,13 @@ boundary:
   `analysis/candidate_segmentation_debug_v1.tsv` is the maintained run-level
   surface for inspecting candidates before selector prioritization
 - selector rule:
-  the maintained S2-2 path now uses deterministic role-aware evidence
-  selection with a general selector profile plus a DOE optimization overlay
-  when pre-LLM signals indicate a DOE paper
+  the maintained S2-2 path now uses deterministic evidence-driven evidence
+  selection with conservative noise filtering, weak importance ordering, and
+  authoritative-table preference over proxy or fallback text
 - selection policy rule:
-  the selector is role-constrained rather than pure global top-K and the
-  canonical artifact records role assignments, role score breakdowns, and weak
-  or missing roles
+  the selector is evidence-priority based rather than role-constrained and the
+  canonical artifact records compact per-block evidence metadata plus
+  suppression-aware selector debug state
 - success rule:
   the S2-2 artifact must distinguish `technical_status` from `design_status`
   so artifact emission is not mistaken for input-contract conformance
@@ -374,17 +403,22 @@ boundary:
       `analysis/candidate_segmentation_debug_v1.tsv`
       and `analysis/table_authority_validation_v1.tsv`
     - stop boundary:
-      candidate segmentation and execution-grade table preservation only; no
-      semantic role packaging and no row materialization
+      candidate segmentation, conservative table-authority ranking, and
+      execution-grade table preservation only; no semantic role packaging and
+      no row materialization
     - next lawful step:
       `S2-2b`
   - `S2-2b`
     - owner:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
-      plus `build_role_aware_selection`
+      plus `build_evidence_priority_selection`
     - outputs:
       `semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json`
       and `analysis/table_selection_debug_v1.json`
+    - selection contract:
+      deterministic evidence selection remains evidence-level only and now enforces a minimal evidence sufficiency floor after ranking
+      the floor may add one best method block, one best materials block, or one bounded supporting block when clearly available
+      the floor must not assign semantic roles, infer semantic signals, or perform pre-LLM semantic extraction
     - stop boundary:
       semantic-facing evidence handoff written; execution-facing full-table
       authority remains preserved from S2-2a
@@ -395,8 +429,10 @@ boundary:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_live_prompt`
       plus `build_prompt_preview_row`
     - outputs:
-      in-memory prompt payload and maintained observability
+      in-memory semantic-only prompt payload and maintained observability
       `analysis/stage2_prompt_preview_v1.tsv`
+    - prompt contract:
+      LLM-facing prompt text contains semantic task instructions, schema, paper identity, and the governed evidence pack only; runtime packing metadata remains in preview/audit surfaces rather than the default live prompt header
     - next lawful step:
       `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when prompt freezing is active
   - `S2-4a`
@@ -409,6 +445,10 @@ boundary:
       and stage-local `RUN_CONTEXT.md`
     - next lawful step:
       `S2-4b live LLM call`
+    - governance note:
+      `S2-4a` audit is a governance layer with three separated questions:
+      Hard Gate legality/readiness, Feature Activation Audit, and
+      Calibration Review only
   - `S2-4b`
     - owner:
       `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
@@ -482,6 +522,18 @@ boundary:
   provable from run artifacts rather than inferred from code presence or
   registry presence alone
 - silent non-activation of governed deterministic execution units is an
+  auditable failure state
+- `S2-4a` audit architecture is intentionally split:
+  - Hard Gate evaluates whether the frozen pre-LLM input is legal and ready
+    for `S2-4b`
+  - Feature Activation Audit evaluates whether maintained repaired capabilities
+    are actually active in run artifacts
+  - Calibration Review evaluates semantic correctness on known-answer papers
+    only
+- Hard Gate must not decide the true semantic primary table
+- semantic table truth remains LLM-owned in the active pipeline and may be
+  reviewed post hoc through calibration, but it is not hard-gated by selector
+  rules
   architecture failure when the semantic authorization signal is present
 
 ### Current Functional-Unit Execution Status

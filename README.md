@@ -179,6 +179,19 @@ Stage2 authority reminder:
   fallback semantic source.
 - Deterministic DOE row expansion is preserved, but in normal
   `llm_first_composite` mode it is lawful only within LLM-declared DOE scope.
+- The pre-LLM selector no longer owns semantic table truth. Its maintained
+  contract is conservative denoising, minimum evidence coverage, and bounded
+  packing only.
+- All `S2-4a` table evidence remains summary-only. Full tables are preserved in
+  `S2-2` authority artifacts for deterministic execution, but they are not
+  allowed back into the LLM-facing prompt surface.
+- When multiple plausible table summaries are present, the LLM owns semantic
+  table scoping and must decide which surfaces are formulation-bearing or
+  downstream/result-only.
+- The governed `S2-4a` audit is split into three layers:
+  - Hard Gate for pre-LLM legality/readiness only
+  - Feature Activation Audit for artifact-backed repaired-feature activation
+  - Calibration Review only for known-answer semantic checks
 - Only the completed Stage2 artifact is authoritative for downstream Stage3
   consumption and Stage2 structural evaluation.
 - The completed Stage2 artifact remains authoritative for downstream Stage3

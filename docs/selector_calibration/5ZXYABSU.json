@@ -1,116 +1,26 @@
 {
   "paper_key": "5ZXYABSU",
-  "archetype": "multi_formulation_comparison",
-  "selector_calibration_version": "v1",
-  "paper_notes": "Multi-formulation comparison paper with formulation-defining preparation and measured formulation results, but weaker explicit materials and optimization closure surfaces.",
-  "roles": {
-    "PREPARATION_METHOD": {
-      "priority_tier": "frontload",
-      "selection_intent": "Frontload the canonical nanoparticle preparation sequence that defines how the compared formulations are produced.",
-      "expected_sources": [
-        {
-          "section_label": null,
-          "section_title": "Preparation and characterization of NPs",
-          "source_type": "section",
-          "raw_text_excerpt": "prepared by nanoprecipitation using an acetone-water system... added dropwise... continuous stirring... evaporated... washed... centrifuged"
-        }
-      ],
-      "semantic_signals": ["prepared by nanoprecipitation", "acetone-water system", "added dropwise", "continuous stirring", "evaporated", "washed", "centrifuged"],
-      "negative_signals": ["disease background", "biodistribution discussion", "release-study details without formulation construction"],
-      "inclusion_notes": "This role should carry the main formulation-construction procedure rather than broad introductory context.",
-      "exclusion_notes": "Do not substitute with downstream assay or biodistribution paragraphs.",
-      "notes": "The paper mixes procedural and background material, so clean procedural anchoring matters."
-    },
-    "MATERIALS": {
-      "priority_tier": "retain_supporting",
-      "selection_intent": "Retain a clean materials inventory when it is structurally distinct enough to support interpretation of the formulations.",
-      "expected_sources": [
-        {
-          "section_label": null,
-          "section_title": "Materials and methods",
-          "source_type": "section",
-          "raw_text_excerpt": "Rhodamine... gatifloxacin sesquihydrate... PLGA... polysorbate 80... Labrafil... obtained from suppliers"
-        }
-      ],
-      "semantic_signals": ["supplied by", "purchased from", "obtained from", "PLGA", "polysorbate 80", "Labrafil", "analytical grade"],
-      "negative_signals": ["stepwise preparation verbs", "result interpretation", "downstream release or biodistribution procedure"],
-      "inclusion_notes": "Useful supporting context when the inventory is cleanly separated from preparation text.",
-      "exclusion_notes": "Do not frontload if the candidate is heavily merged with introduction or procedure.",
-      "notes": "Materials are present, but may be structurally fused with nearby method text."
-    },
-    "FORMULATION_TABLE": {
-      "priority_tier": "frontload",
-      "selection_intent": "Frontload the table that defines the compared nanoparticle formulations and their composition-level differences.",
-      "expected_sources": [
-        {
-          "section_label": "Table 1",
-          "section_title": "Nanoparticle formulations developed",
-          "source_type": "table",
-          "raw_text_excerpt": "formulation identifiers with rhodamine, gatifloxacin, polysorbate 80, and Labrafil entries"
-        }
-      ],
-      "semantic_signals": ["formulation identifiers", "composition columns", "gatifloxacin", "polysorbate 80", "Labrafil", "multiple formulations"],
-      "negative_signals": ["single-formulation narrative", "result-only table without formulation identity"],
-      "inclusion_notes": "This is the preferred composition-defining table if the extraction is readable enough.",
-      "exclusion_notes": "Do not replace with noisy partial table fragments or downstream assay tables.",
-      "notes": "Formulation identity is table-centered rather than fully restated in prose."
-    },
-    "FORMULATION_RESULT": {
-      "priority_tier": "frontload",
-      "selection_intent": "Frontload the measured formulation-result evidence that compares the candidate formulations and supports selection among them.",
-      "expected_sources": [
-        {
-          "section_label": "Table 2",
-          "section_title": "Characteristics of the nanoparticle formulations prepared",
-          "source_type": "table",
-          "raw_text_excerpt": "mean particle size, zeta potential, and encapsulation efficiency across formulations"
-        },
-        {
-          "section_label": null,
-          "section_title": "Results and discussion",
-          "source_type": "paragraph",
-          "raw_text_excerpt": "mean particle sizes... encapsulation efficiency... lower particle sizes were obtained for formulations prepared with polysorbate 80"
-        }
-      ],
-      "semantic_signals": ["particle size", "zeta potential", "encapsulation efficiency", "across formulations", "lower particle sizes were obtained"],
-      "negative_signals": ["general disease motivation", "pure materials listing", "downstream organ-distribution emphasis"],
-      "inclusion_notes": "Use the measured comparison surface, not broad narrative interpretation, as the main result evidence.",
-      "exclusion_notes": "Do not let biodistribution or release-study paragraphs displace formulation-result evidence.",
-      "notes": "Result evidence is spread across a summary table and nearby narrative."
-    },
-    "OPTIMIZATION_RESULT": {
-      "priority_tier": "retain_supporting",
-      "selection_intent": "Retain only explicit comparative selection or best-formulation statements if they are clearly stated.",
-      "expected_sources": [
-        {
-          "section_label": null,
-          "section_title": "Results and discussion",
-          "source_type": "paragraph",
-          "raw_text_excerpt": "the most appropriate formulation from this point of view... formulations prepared with polysorbate 80 increased passage through the BBB"
-        }
-      ],
-      "semantic_signals": ["most appropriate formulation", "selected formulation", "best performance", "increased passage"],
-      "negative_signals": ["raw descriptive results without selection", "general interpretation", "assay detail without comparative closure"],
-      "inclusion_notes": "Use only when the paper makes a real comparative selection statement.",
-      "exclusion_notes": "Do not force a formal optimization reading where the paper is mainly comparative.",
-      "notes": "This paper is not a canonical optimization archetype, so this role should stay conservative."
-    },
-    "CONTEXT_FALLBACK": {
-      "priority_tier": "retain_supporting",
-      "selection_intent": "Retain a small amount of supporting context only when it helps connect preparation, formulation identity, and measured outcomes.",
-      "expected_sources": [
-        {
-          "section_label": null,
-          "section_title": "Results and discussion",
-          "source_type": "paragraph",
-          "raw_text_excerpt": "comparison of functionalized and nonfunctionalized nanoparticles in the context of BBB passage"
-        }
-      ],
-      "semantic_signals": ["comparison context", "selected for further study", "supporting interpretation"],
-      "negative_signals": ["background only", "reference-heavy motivation", "downstream biology unrelated to formulation selection"],
-      "inclusion_notes": "Fallback context should remain secondary to preparation and formulation evidence.",
-      "exclusion_notes": "Do not use fallback to hide missing primary formulation evidence.",
-      "notes": "Supporting context is acceptable, but should not become the main evidence surface."
-    }
-  }
+  "selector_calibration_version": "v2",
+  "archetype": "single_main_formulation_table_with_supporting_method_text",
+  "evidence_priority_examples": {
+    "should_keep": [
+      "materials inventory paragraph if present",
+      "primary preparation-method paragraph",
+      "authoritative formulation table",
+      "compact supporting result paragraph only if it adds explicit table interpretation"
+    ],
+    "should_drop": [
+      "duplicate result prose mirroring the selected table",
+      "broad fallback context"
+    ],
+    "minimal_evidence_set": [
+      "0-1 materials block",
+      "1 preparation block",
+      "1 authoritative table block",
+      "0-1 supporting paragraph"
+    ]
+  },
+  "selection_notes": [
+    "Keep the pack compact when one authoritative formulation table is already available."
+  ]
 }

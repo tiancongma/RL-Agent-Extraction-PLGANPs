@@ -90,6 +90,10 @@ def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def normalize_text(value: Any) -> str:
+    return str(value or "").strip().lower()
+
+
 def to_repo_rel(path: Path) -> str:
     try:
         return str(path.relative_to(PROJECT_DIR.parent)).replace("\\", "/")
@@ -121,6 +125,7 @@ def detect_surfaces(run_dir: Path) -> dict[str, Any]:
     prompt_preview_path = first_run_file(run_dir, "stage2_prompt_preview_v1.tsv")
     candidate_segmentation_debug_path = first_run_file(run_dir, "candidate_segmentation_debug_v1.tsv")
     candidate_blocks_paths = find_run_files(run_dir, "candidate_blocks_v1.json")
+    normalized_table_payload_paths = find_run_files(run_dir, "normalized_table_payloads_v1.json")
     evidence_blocks_paths = find_run_files(run_dir, "evidence_blocks_v1.json")
     run_context_path = run_dir / "RUN_CONTEXT.md"
     surfaces = {
@@ -131,6 +136,7 @@ def detect_surfaces(run_dir: Path) -> dict[str, Any]:
         "prompt_preview_path": prompt_preview_path,
         "candidate_segmentation_debug_path": candidate_segmentation_debug_path,
         "candidate_blocks_paths": candidate_blocks_paths,
+        "normalized_table_payload_paths": normalized_table_payload_paths,
         "evidence_blocks_paths": evidence_blocks_paths,
         "run_context_path": run_context_path if run_context_path.exists() else None,
         "stage2_active": weak_labels_path is not None,
@@ -187,10 +193,14 @@ def expected_for_run(feature_id: str, matrix_row: dict[str, str], surfaces: dict
         "s2_2_evidence_artifact_contract",
         "s2_2_design_success_split",
         "s2_2_prompt_preview_derived_from_evidence_artifact",
-        "s2_2_role_aware_evidence_selection",
+        "s2_2_evidence_priority_selection",
         "s2_2_duplicate_table_suppression",
     }:
         return "yes" if surfaces.get("stage2_active") else "no"
+    if feature_id == "s2_2a_table_authority_ranking":
+        if surfaces.get("candidate_blocks_paths") or surfaces.get("normalized_table_payload_paths"):
+            return "yes"
+        return "no"
     if feature_id in {"s2_candidate_section_aware_split", "s2_candidate_noise_filtering"}:
         return "yes" if surfaces.get("stage2_active") else "no"
     if feature_id == "s2_candidate_table_isolation":
@@ -600,6 +610,97 @@ def observe_s2_candidate_table_isolation(run_dir: Path, surfaces: dict[str, Any]
     }
 
 
+def observe_s2_2a_table_authority_ranking(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+    candidate_paths = surfaces.get("candidate_blocks_paths") or []
+    normalized_paths = surfaces.get("normalized_table_payload_paths") or []
+    if not candidate_paths or not normalized_paths:
+        status = "missing" if surfaces.get("stage2_active") else "not_expected"
+        return {
+            "observed_activation": status,
+            "activation_status": status,
+            "evidence_path": "",
+            "evidence_detail": "Candidate or normalized table payload artifacts are missing for table-authority ranking inspection.",
+            "notes": "The S2-2a ranking feature is only auditable when both the candidate and execution-facing authority surfaces exist.",
+        }
+    readable_candidates = 0
+    ranked_candidates = 0
+    for path in candidate_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        readable_candidates += 1
+        blocks = payload.get("candidate_blocks") or []
+        table_blocks = [
+            block for block in blocks
+            if isinstance(block, dict) and block.get("candidate_type") == "table"
+        ]
+        if not table_blocks:
+            continue
+        snapshot = payload.get("feature_activation_snapshot", {})
+        if not snapshot.get("table_authority_ranking"):
+            continue
+        if all(
+            "authority_rank" in block and "authority_score" in block and "authority_tier" in block
+            for block in table_blocks
+        ):
+            ranked_candidates += 1
+
+    readable_normalized = 0
+    ranked_normalized = 0
+    for path in normalized_paths:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        readable_normalized += 1
+        records = payload.get("normalized_table_payloads") or []
+        if not isinstance(records, list) or not records:
+            continue
+        if all(
+            isinstance(record, dict)
+            and "authority_rank" in record
+            and "authority_score" in record
+            and "authority_tier" in record
+            for record in records
+        ):
+            ranked_normalized += 1
+
+    if readable_candidates == 0 or readable_normalized == 0:
+        return {
+            "observed_activation": "unclear",
+            "activation_status": "unclear",
+            "evidence_path": "",
+            "evidence_detail": "No readable candidate or normalized table payload artifacts were available for authority-ranking inspection.",
+            "notes": "Could not inspect the maintained S2-2a table-authority ranking surface.",
+        }
+    if ranked_candidates > 0 and ranked_normalized > 0:
+        return {
+            "observed_activation": "active",
+            "activation_status": "active",
+            "evidence_path": to_repo_rel(normalized_paths[0]),
+            "evidence_detail": (
+                f"ranked_candidate_artifacts={ranked_candidates}/{readable_candidates} "
+                f"ranked_normalized_payloads={ranked_normalized}/{readable_normalized}"
+            ),
+            "notes": "Active because the run-local S2-2a artifacts expose ranked table authority metadata on both the candidate surface and the preserved normalized table payload surface.",
+        }
+    return {
+        "observed_activation": "unclear",
+        "activation_status": "unclear",
+        "evidence_path": to_repo_rel(normalized_paths[0]),
+        "evidence_detail": (
+            f"ranked_candidate_artifacts={ranked_candidates}/{readable_candidates} "
+            f"ranked_normalized_payloads={ranked_normalized}/{readable_normalized}"
+        ),
+        "notes": "At least one maintained S2-2a artifact exists without the required authority-ranking metadata.",
+    }
+
+
 def observe_s2_candidate_noise_filtering(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
     candidate_paths = surfaces.get("candidate_blocks_paths") or []
     debug_path = surfaces.get("candidate_segmentation_debug_path")
@@ -742,15 +843,15 @@ def observe_s2_2_prompt_preview_derived_from_evidence_artifact(run_dir: Path, su
     }
 
 
-def observe_s2_2_role_aware_evidence_selection(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
+def observe_s2_2_evidence_priority_selection(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
     evidence_paths = surfaces.get("evidence_blocks_paths") or []
     if not evidence_paths:
         return {
             "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
             "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
             "evidence_path": "",
-            "evidence_detail": "No evidence_blocks_v1.json artifacts found for role-aware selector inspection.",
-            "notes": "Role-aware S2-2 activation is only auditable when the canonical evidence artifact exists.",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found for evidence-priority selector inspection.",
+            "notes": "Evidence-driven S2-2 activation is only auditable when the canonical evidence artifact exists.",
         }
     valid_count = 0
     for path in evidence_paths:
@@ -760,14 +861,14 @@ def observe_s2_2_role_aware_evidence_selection(run_dir: Path, surfaces: dict[str
             continue
         if not isinstance(payload, dict):
             continue
-        if not payload.get("selector_profile"):
+        if normalize_text(payload.get("selection_mode")) != "evidence_priority_v1":
             continue
         blocks = payload.get("evidence_blocks") or []
         if not isinstance(blocks, list) or not blocks:
             continue
-        if not any(isinstance(block, dict) and block.get("role_assignment") for block in blocks):
+        if not any(isinstance(block, dict) and block.get("evidence_kind") for block in blocks):
             continue
-        if not {"required_roles", "selected_roles", "missing_or_weak_roles"}.issubset(payload.keys()):
+        if not any(isinstance(block, dict) and block.get("char_count") for block in blocks):
             continue
         valid_count += 1
     if valid_count == len(evidence_paths):
@@ -775,15 +876,15 @@ def observe_s2_2_role_aware_evidence_selection(run_dir: Path, surfaces: dict[str
             "observed_activation": "active",
             "activation_status": "active",
             "evidence_path": to_repo_rel(evidence_paths[0]),
-            "evidence_detail": f"evidence_artifacts={len(evidence_paths)} role_aware_contracts={valid_count}",
-            "notes": "Active because the canonical evidence artifacts record selector profile, role assignments, and role-level coverage summaries.",
+            "evidence_detail": f"evidence_artifacts={len(evidence_paths)} evidence_priority_contracts={valid_count}",
+            "notes": "Active because the canonical evidence artifacts record evidence-driven selection mode, compact block contracts, and suppression-aware selection summaries.",
         }
     return {
         "observed_activation": "unclear",
         "activation_status": "unclear",
         "evidence_path": to_repo_rel(evidence_paths[0]),
-        "evidence_detail": f"evidence_artifacts={len(evidence_paths)} role_aware_contracts={valid_count}",
-        "notes": "At least one evidence artifact exists without the required role-aware selector fields.",
+        "evidence_detail": f"evidence_artifacts={len(evidence_paths)} evidence_priority_contracts={valid_count}",
+        "notes": "At least one evidence artifact exists without the required evidence-priority selector fields.",
     }
 
 
@@ -794,8 +895,8 @@ def observe_s2_2_doe_overlay_selection(run_dir: Path, surfaces: dict[str, Any]) 
             "observed_activation": "missing" if surfaces.get("stage2_active") else "not_expected",
             "activation_status": "missing" if surfaces.get("stage2_active") else "not_expected",
             "evidence_path": "",
-            "evidence_detail": "No evidence_blocks_v1.json artifacts found for DOE overlay inspection.",
-            "notes": "DOE overlay activation is only auditable when the canonical evidence artifact exists.",
+            "evidence_detail": "No evidence_blocks_v1.json artifacts found for archetype-metadata inspection.",
+            "notes": "Archetype detection is only auditable when the canonical evidence artifact exists.",
         }
     doe_candidates = 0
     doe_active = 0
@@ -810,7 +911,7 @@ def observe_s2_2_doe_overlay_selection(run_dir: Path, surfaces: dict[str, Any]) 
         snapshot = payload.get("feature_activation_snapshot", {})
         if snapshot.get("doe_pre_llm_detection"):
             doe_candidates += 1
-            if payload.get("archetype_overlay") == "doe_optimization_v1":
+            if snapshot.get("archetype_detection_metadata_only"):
                 doe_active += 1
                 evidence_path = to_repo_rel(path)
     if doe_candidates == 0:
@@ -819,22 +920,22 @@ def observe_s2_2_doe_overlay_selection(run_dir: Path, surfaces: dict[str, Any]) 
             "activation_status": "not_expected",
             "evidence_path": evidence_path,
             "evidence_detail": "No DOE-like papers were detected in this run's S2-2 evidence artifacts.",
-            "notes": "The DOE overlay is only expected when the maintained pre-LLM signals indicate a DOE or optimization paper.",
+            "notes": "DOE-like signals are only expected when the maintained pre-LLM signals indicate a DOE or optimization paper.",
         }
     if doe_active == doe_candidates:
         return {
             "observed_activation": "active",
             "activation_status": "active",
             "evidence_path": evidence_path,
-            "evidence_detail": f"doe_detected_artifacts={doe_candidates} doe_overlay_artifacts={doe_active}",
-            "notes": "Active because every DOE-detected evidence artifact records the DOE optimization overlay.",
+            "evidence_detail": f"doe_detected_artifacts={doe_candidates} metadata_only_archetype_artifacts={doe_active}",
+            "notes": "Active because every DOE-detected evidence artifact records metadata-only archetype detection rather than a selector overlay.",
         }
     return {
         "observed_activation": "unclear",
         "activation_status": "unclear",
         "evidence_path": evidence_path,
-        "evidence_detail": f"doe_detected_artifacts={doe_candidates} doe_overlay_artifacts={doe_active}",
-        "notes": "At least one DOE-detected artifact did not record the DOE optimization overlay cleanly.",
+        "evidence_detail": f"doe_detected_artifacts={doe_candidates} metadata_only_archetype_artifacts={doe_active}",
+        "notes": "At least one DOE-detected artifact did not record metadata-only archetype detection cleanly.",
     }
 
 
@@ -1006,11 +1107,12 @@ OBSERVERS = {
     "stage2_input_evidence_packing": observe_stage2_input_evidence_packing,
     "s2_candidate_section_aware_split": observe_s2_candidate_section_aware_split,
     "s2_candidate_table_isolation": observe_s2_candidate_table_isolation,
+    "s2_2a_table_authority_ranking": observe_s2_2a_table_authority_ranking,
     "s2_candidate_noise_filtering": observe_s2_candidate_noise_filtering,
     "s2_2_evidence_artifact_contract": observe_s2_2_evidence_artifact_contract,
     "s2_2_design_success_split": observe_s2_2_design_success_split,
     "s2_2_prompt_preview_derived_from_evidence_artifact": observe_s2_2_prompt_preview_derived_from_evidence_artifact,
-    "s2_2_role_aware_evidence_selection": observe_s2_2_role_aware_evidence_selection,
+    "s2_2_evidence_priority_selection": observe_s2_2_evidence_priority_selection,
     "s2_2_doe_overlay_selection": observe_s2_2_doe_overlay_selection,
     "s2_2_duplicate_table_suppression": observe_s2_2_duplicate_table_suppression,
     "family_variant_retention_governance": observe_family_variant_retention_governance,

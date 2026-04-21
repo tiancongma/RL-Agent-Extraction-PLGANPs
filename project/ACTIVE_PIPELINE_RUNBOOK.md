@@ -202,6 +202,49 @@ Daily baseline audit support:
 - It may freeze a baseline snapshot from explicit run authority and an explicit maintained chain, record a declared modification scope from `docs/feature_governance/daily_audit_scope_contract_v1.tsv`, and build count-level plus fingerprint-level layered deltas between a baseline snapshot and an explicit rerun surface.
 - It must not execute pipeline stages, invent a chain, infer current sources by recency, or stand in for manual Stage0-Stage5 reproduction.
 
+## Repair-Pattern-Guided Regression Workflow
+
+This workflow is required for regression debugging, baseline-after fixes, and
+capability recovery. It is not optional guidance.
+
+1. Repair index lookup
+- Read `docs/repair_index/success_pattern_index_v1.tsv`
+- Match rows by paper key, failure phrase, or repair signature
+- Record the repair-index hit and keep any row with
+  `activation_evidence_strength != explicit_governed_activation` in
+  historical-or-partial status only
+
+2. Memory query
+- Query `data/mem/v1/` with `src/utils/mem_bootstrap_v1.py` or
+  `src/utils/query_mem_v1.py`
+- Retrieve prior runs, lineage, decisions, and error traces before reading
+  local implementation files
+- Record the memory hit set that will anchor the repair intake
+
+3. Baseline + run evidence check
+- Resolve the baseline from explicit `--run-dir` or
+  `data/results/ACTIVE_RUN.json`
+- Print the resolved run directory and exact source files before
+  interpretation
+- Inspect `<run_dir>/RUN_CONTEXT.md`,
+  `<run_dir>/analysis/feature_activation_report_v1.tsv`, and the run-local
+  Boundary Governance fields recorded in `RUN_CONTEXT.md`
+- Classify the capability as active, partially restored, or historical only
+- Record the run evidence used for that classification
+
+4. Minimal repair + bounded replay
+- Propose the smallest patch that matches the governed repair evidence
+- Replay only a single paper or another explicitly bounded scope
+- Do not modify unrelated stages and do not introduce new semantics
+- Record the replay result separately from the repair-index hit, memory hit,
+  and baseline evidence
+
+Expected artifacts:
+- repair index hit
+- memory hit
+- run evidence
+- replay result
+
 Maintained-surface update rule:
 
 - when a maintained execution entrypoint changes, update both this runbook and
@@ -381,7 +424,7 @@ Current implementation-status note:
 - The maintained Stage2 path now formalizes an internal S2-2 boundary:
   - clean text -> governed evidence package
   - explicit internal sub-boundary:
-    `clean text / extracted tables -> candidate segmentation -> role-aware selector -> governed evidence package`
+    `clean text / extracted tables -> candidate segmentation -> evidence-driven selector -> governed evidence package`
   - candidate artifact:
     `semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json`
   - execution-grade full-table authority artifact:
@@ -394,7 +437,7 @@ Current implementation-status note:
   - producer:
     `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
   - consumer:
-    the same maintained extractor's role-aware selector consumes candidate
+    the same maintained extractor's evidence-driven selector consumes candidate
     blocks and its prompt-assembly path consumes the canonical evidence
     artifact, while downstream authorized deterministic execution may resolve
     back to the preserved S2-2 full-table authority surface by stable table
@@ -439,19 +482,39 @@ Current implementation-status note:
     primary truth surface
   - `analysis/candidate_segmentation_debug_v1.tsv` is the maintained
     candidate-level observability surface before selector prioritization
-  - the maintained selector for this boundary is deterministic and role-aware:
-    - default general profile:
-      `PREPARATION_METHOD`, `MATERIALS`, `FORMULATION_TABLE`,
-      `FORMULATION_RESULT`, `OPTIMIZATION_RESULT`, `CONTEXT_FALLBACK`
-    - DOE optimization overlay:
-      `PREPARATION_METHOD`, `MATERIALS`, `EXPERIMENTAL_DESIGN`,
-      `VARIABLE_TABLE`, `FORMULATION_TABLE`, `OPTIMIZATION_RESULT`,
-      `CONTEXT_FALLBACK`
+  - S2-2a may apply conservative table-authority ranking over recovered table
+    payloads before the preserved authority set is finalized
+  - this ranking is limited to structure and authority formation:
+    - repaired and structurally stable formulation-bearing tables may outrank
+      weak or clearly downstream-result tables
+    - coarse labels such as `non_formulation_table` or
+      `characterization/results` are noisy priors only and may demote but do
+      not veto primary authority by themselves
+    - only structural failure such as repair-insufficient payloads or
+      narrative / figure spillover may block primary authority
+    - it must not emit semantic roles, semantic signals, or pre-LLM semantic
+      interpretation
+  - the maintained selector for this boundary is deterministic and evidence-driven:
+    - conservative noise filtering
+    - minimum evidence coverage
+    - bounded packing
+    - no required-role coverage contract
+    - no archetype overlay in selection
     - no second LLM is used for pre-LLM evidence selection
-  - role selection is constrained by role coverage rather than pure global
-    top-K ranking, and duplicate near-identical tables may be suppressed
-  - the canonical artifact records `selector_profile`,
-    `archetype_overlay`, per-block role fields, and any weak or missing roles
+  - candidate tables are governed through three inclusion classes only:
+    - `must_include`
+    - `optional_context`
+    - `hard_drop`
+  - `must_include` table summaries survive into the evidence pack in neutral
+    stable order and must not be semantically reranked into one true table by
+    deterministic rules
+  - `hard_drop` is reserved for high-confidence noise only and must not be used
+    as a semantic veto on ambiguous tables
+  - selection is evidence-priority based rather than role-constrained, and
+    semantically overlapping proxy or fallback blocks may be suppressed when
+    authoritative evidence already exists
+  - the canonical artifact records `selection_mode`, compact per-block
+    evidence metadata, and selector-debug suppression summaries
   - the artifact records separate `technical_status` and `design_status`
   - if the artifact is readable but the intended input-contract path was not
     satisfied, that must remain visible as design nonconformance rather than
@@ -459,6 +522,8 @@ Current implementation-status note:
 - S2-3 prompt assembly may consume `evidence_blocks_v1.json` only:
   - it must not reread clean text
   - it must not perform new selection or ranking
+  - all table evidence passed into the LLM-facing prompt contract remains
+    summary-only
 - fine-grained frozen-substep ownership for current-cycle discoverability:
   - `S2-2a`
     - owner surface:
@@ -472,14 +537,15 @@ Current implementation-status note:
       `analysis/candidate_segmentation_debug_v1.tsv`
       and `analysis/table_authority_validation_v1.tsv`
     - stop boundary:
-      candidate segmentation plus execution-grade full-table preservation only;
-      no semantic role packaging and no row materialization
+      candidate segmentation, conservative table-authority ranking, and
+      execution-grade full-table preservation only; no semantic role
+      packaging and no row materialization
     - next lawful step:
       `S2-2b`
   - `S2-2b`
     - owner surface:
       `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::build_evidence_blocks_artifact`
-      plus `build_role_aware_selection`
+      plus `build_evidence_priority_selection`
     - inputs:
       frozen `candidate_blocks_v1.json`, preserved
       `normalized_table_payloads_v1.json`, same manifest row, same governed
@@ -490,6 +556,8 @@ Current implementation-status note:
     - stop boundary:
       canonical semantic-facing evidence handoff written; execution-facing
       full-table authority remains unchanged from S2-2a
+    - governed note:
+      the maintained selector may apply a minimal evidence sufficiency floor after ranking to avoid table-only underselection, but the floor remains evidence-only and must not emit semantic signals, semantic roles, or pre-LLM interpretation
     - next lawful step:
       `S2-3`
   - `S2-3`
@@ -499,10 +567,10 @@ Current implementation-status note:
     - inputs:
       `evidence_blocks_v1.json` only
     - outputs:
-      in-memory prompt payload and maintained observability
+      in-memory semantic-only prompt payload and maintained observability
       `analysis/stage2_prompt_preview_v1.tsv`
     - stop boundary:
-      prompt assembled from canonical evidence only
+      prompt assembled from canonical evidence only, with runtime packing metadata retained in preview/audit surfaces rather than the default live prompt header
     - next lawful step:
       `S2-4b live LLM call`, or explicit `S2-4a` prompt materialization when prompt freezing is being audited
   - `S2-4a`
@@ -517,8 +585,19 @@ Current implementation-status note:
       and stage-local `RUN_CONTEXT.md`
     - stop boundary:
       prompt artifacts written, no live LLM call
+    - governed prompt contract:
+      multiple candidate table summaries may coexist, all table evidence
+      remains summary-only, and the prompt must explicitly tell the LLM to
+      determine semantic table scope itself
     - next lawful step:
       `S2-4b live LLM call`
+    - governed audit split:
+      - Layer A:
+        Hard Gate only
+      - Layer B:
+        Feature Activation Audit only
+      - Layer C:
+        Calibration Review only
   - `S2-4b`
     - owner surface:
       `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
@@ -603,6 +682,22 @@ Current implementation-status note:
 - S2-4b is the only nondeterministic Stage2 substep and emits raw LLM response
   payloads for live or replay-backed processing
 - S2-5 parses raw LLM responses into Stage2 semantic-object artifacts
+- `S2-4a` audit usage is split and must stay split:
+  - ordinary DEV15 readiness runs:
+    Layer A plus Layer B
+  - targeted contract-change validation:
+    Layer A plus Layer B, and add Layer C only for the calibration subset
+  - calibration review:
+    Layer C only or Layer A plus Layer B plus Layer C when a repair needs both
+    legality review and semantic regression review
+- Layer A Hard Gate must not adjudicate true primary-table semantics
+- Layer B must verify repaired capability activation from run artifacts rather
+  than from code presence, repo configuration, or assumptions
+- Layer C may use known-answer papers and may state semantic truth such as
+  which bundled summary is the real formulation-bearing table, but only as
+  calibration and not as universal gating
+- the governing standard for this split is:
+  `project/S2_4A_AUDIT_STANDARD.md`
 - Stage2 segmentation closure freeze rule:
   once S2-2a segmentation closure is declared for the current cycle,
   candidate-segmentation logic is frozen by default

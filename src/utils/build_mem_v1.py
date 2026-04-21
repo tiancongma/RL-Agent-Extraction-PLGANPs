@@ -17,7 +17,9 @@ except ModuleNotFoundError:
     from src.utils.paths import DATA_MEM_V1_DIR, DATA_RESULTS_DIR, DOCS_DIR, PROJECT_DIR, PROJECT_ROOT
 
 
-RUN_ID_RE = re.compile(r"(run_\d{8}_\d{4}_[0-9a-f]{7}_[A-Za-z0-9_]+)")
+LEGACY_RUN_ID_RE = re.compile(r"(run_\d{8}_\d{4,6}_[0-9a-f]{7}_[A-Za-z0-9_]+)")
+V2_BUCKET_RE = re.compile(r"(\d{8}_[0-9a-f]{7})")
+V2_CHILD_RE = re.compile(r"(\d{2,3}_[a-z0-9][a-z0-9_]*)")
 STAGE_RE = re.compile(r"\b(stage\s*[0-5]|layer\s*[1-3])\b", re.IGNORECASE)
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*\S)\s*$")
 DECISION_LINE_RE = re.compile(r"^\s*Decision\b\s*:?\s*(.+?)\s*$", re.IGNORECASE)
@@ -240,8 +242,55 @@ def infer_stage(*values: str) -> str:
 
 def find_run_id(*values: str) -> str:
     blob = " ".join(str(value or "") for value in values)
-    match = RUN_ID_RE.search(blob)
+    match = LEGACY_RUN_ID_RE.search(blob)
     return match.group(1) if match else ""
+
+
+def is_supported_run_id(value: str) -> bool:
+    text = clean_text(value).lower()
+    return bool(
+        LEGACY_RUN_ID_RE.fullmatch(text)
+        or V2_BUCKET_RE.fullmatch(text)
+        or V2_CHILD_RE.fullmatch(text)
+    )
+
+
+def extract_supported_run_id(value: str) -> str:
+    text = clean_text(value)
+    if not text:
+        return ""
+    for candidate in re.findall(r"`([^`]+)`", text):
+        if is_supported_run_id(candidate):
+            return clean_text(candidate).lower()
+    if is_supported_run_id(text):
+        return text.lower()
+    return ""
+
+
+def parse_run_id_from_context(text: str, path: Path) -> str:
+    lines = text.splitlines()
+    for line in lines:
+        match = RUN_FIELD_RE.match(line)
+        if match and clean_text(match.group(1)).lower() == "run_id":
+            run_id = extract_supported_run_id(match.group(2))
+            if run_id:
+                return run_id
+    in_run_id_section = False
+    for line in lines:
+        if line.strip().startswith("## "):
+            heading = clean_text(line.lstrip("# ")).lower()
+            in_run_id_section = heading.endswith("run id") or heading == "run id"
+            continue
+        if not in_run_id_section:
+            continue
+        if not clean_text(line):
+            continue
+        run_id = extract_supported_run_id(line.lstrip("-* "))
+        if run_id:
+            return run_id
+    if is_supported_run_id(path.parent.name):
+        return path.parent.name.lower()
+    return ""
 
 
 def split_sections(text: str) -> list[Section]:
@@ -325,10 +374,28 @@ def parse_purpose(text: str) -> str:
     return " | ".join(bullets[:3])
 
 
-def parent_run_from_path(path: Path) -> str:
-    for ancestor in path.parents[1:]:
-        if RUN_ID_RE.fullmatch(ancestor.name):
-            return ancestor.name
+def parent_run_from_path(path: Path, current_run_id: str) -> str:
+    ancestors = list(path.parents)[1:]
+    ancestor_contexts: list[Path] = []
+    for ancestor in ancestors:
+        candidate = ancestor / "RUN_CONTEXT.md"
+        if candidate.exists():
+            ancestor_contexts.append(candidate)
+    for ancestor_context in ancestor_contexts:
+        ancestor_run_id = parse_run_id_from_context(ancestor_context.read_text(encoding="utf-8", errors="replace"), ancestor_context)
+        if not ancestor_run_id:
+            raise ValueError(f"Ancestor RUN_CONTEXT lacks explicit run_id: {repo_rel(ancestor_context)}")
+        if ancestor_run_id != current_run_id:
+            return ancestor_run_id
+    for ancestor in ancestors:
+        ancestor_name = clean_text(ancestor.name).lower()
+        if is_supported_run_id(ancestor_name) and ancestor_name != current_run_id:
+            return ancestor_name
+    rel_parts = path.resolve().relative_to(DATA_RESULTS_DIR.resolve()).parts
+    if len(rel_parts) >= 3 and V2_BUCKET_RE.fullmatch(rel_parts[0]) and V2_CHILD_RE.fullmatch(rel_parts[1]):
+        raise ValueError(f"Missing explicit bucket parent RUN_CONTEXT: {repo_rel(path)}")
+    if "lineage" in rel_parts and "children" in rel_parts:
+        raise ValueError(f"Missing explicit lineage parent RUN_CONTEXT: {repo_rel(path)}")
     return ""
 
 
@@ -339,13 +406,13 @@ def build_run_rows(sources: list[tuple[str, Path]]) -> tuple[list[dict[str, str]
         if source_kind != "run_context":
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
-        run_id = path.parent.name if RUN_ID_RE.fullmatch(path.parent.name) else find_run_id(text, str(path))
+        run_id = parse_run_id_from_context(text, path)
         if not run_id:
             continue
         run_type = parse_run_type(text)
         purpose = parse_purpose(text)
         summary = purpose or first_meaningful_text(text.splitlines()) or first_text(text.splitlines())
-        parent_run = parent_run_from_path(path)
+        parent_run = parent_run_from_path(path, run_id)
         run_rows.append(
             {
                 "run_mem_id": "",
@@ -371,6 +438,30 @@ def build_run_rows(sources: list[tuple[str, Path]]) -> tuple[list[dict[str, str]
                     "note": "derived_from_run_context_path",
                 }
             )
+    known_run_ids = {row["run_id"] for row in run_rows if row.get("run_id")}
+    synthetic_parent_rows: list[dict[str, str]] = []
+    for lin_row in lin_rows:
+        parent_run = lin_row["parent_run"]
+        if parent_run in known_run_ids:
+            continue
+        if not V2_BUCKET_RE.fullmatch(parent_run):
+            raise ValueError(f"Lineage parent missing explicit run row: {parent_run}")
+        synthetic_parent_rows.append(
+            {
+                "run_mem_id": "",
+                "run_id": parent_run,
+                "run_type": "v2_bucket_parent",
+                "stage": "",
+                "parent_run": "",
+                "purpose": "",
+                "summary": "Synthetic bucket parent reconstructed from explicit v2 bucket/child lineage path because bucket root RUN_CONTEXT.md is absent.",
+                "source_file": lin_row["source_file"],
+                "source_kind": "path_contract",
+                "status": "active",
+            }
+        )
+        known_run_ids.add(parent_run)
+    run_rows.extend(synthetic_parent_rows)
     return run_rows, lin_rows
 
 

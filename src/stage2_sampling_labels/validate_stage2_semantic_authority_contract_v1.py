@@ -31,14 +31,6 @@ INHERITANCE_RISK_REASONS = {
     "missing_target_table",
     "cross_table_link_unresolved",
 }
-TABLE_MARKER_FAMILIES = [
-    "table_formulation_scopes",
-    "table_variable_roles",
-    "selection_markers",
-    "inheritance_markers",
-    "preparation_inheritance_markers",
-    "boundary_markers",
-]
 ALLOWED_MODES = {
     LLM_FIRST_COMPOSITE_MODE,
     FALLBACK_SEMANTIC_SOURCE_MODE,
@@ -97,6 +89,82 @@ def has_llm_declared_doe_scope(document: dict[str, Any]) -> bool:
 
 def has_valid_marker_provenance(marker: dict[str, Any]) -> bool:
     return normalize_text(marker.get("marker_provenance")) in VALID_DECLARED_BY
+
+
+def validate_table_scope(key: str, scope: dict[str, Any], errors: list[str]) -> None:
+    if not normalize_text(scope.get("table_id")):
+        errors.append(f"{key}: table_scopes entry missing table_id")
+    scope_kind = normalize_text(scope.get("scope_kind"))
+    if scope_kind not in {
+        "doe_table",
+        "formulation_table",
+        "optimization_table",
+        "sequential_child",
+        "downstream_variant_table",
+        "non_formulation",
+        "unclear",
+    }:
+        errors.append(f"{key}: table_scopes entry has invalid scope_kind={scope_kind or '<blank>'}")
+    confidence = normalize_text(scope.get("confidence"))
+    if confidence not in {"high", "medium", "low"}:
+        errors.append(f"{key}: table_scopes entry has invalid confidence={confidence or '<blank>'}")
+
+
+def validate_semantic_signals(key: str, payload: dict[str, Any], errors: list[str]) -> None:
+    required = [
+        "has_variable_sweep",
+        "has_sequential_optimization",
+        "has_parent_child_table_relation",
+        "has_downstream_non_synthesis_variants",
+        "has_measurement_only_variants",
+        "primary_preparation_method_hint",
+        "primary_variable_names",
+        "selected_condition_hints",
+    ]
+    for field in required:
+        if field not in payload:
+            errors.append(f"{key}: semantic_signals missing required field {field}")
+    for field in [
+        "has_variable_sweep",
+        "has_sequential_optimization",
+        "has_parent_child_table_relation",
+        "has_downstream_non_synthesis_variants",
+        "has_measurement_only_variants",
+    ]:
+        if field in payload and not isinstance(payload.get(field), bool):
+            errors.append(f"{key}: semantic_signals field {field} must be boolean")
+    for field in ["primary_variable_names", "selected_condition_hints"]:
+        if field in payload and not isinstance(payload.get(field), list):
+            errors.append(f"{key}: semantic_signals field {field} must be a list")
+
+
+def validate_formulation_candidate(key: str, candidate: dict[str, Any], errors: list[str]) -> None:
+    if not normalize_text(candidate.get("candidate_id")):
+        errors.append(f"{key}: formulation_candidates entry missing candidate_id")
+    candidate_kind = normalize_text(candidate.get("candidate_kind"))
+    if candidate_kind not in {
+        "single_formulation",
+        "formulation_family",
+        "variant_formulation",
+        "unclear",
+    }:
+        errors.append(f"{key}: formulation_candidates entry has invalid candidate_kind={candidate_kind or '<blank>'}")
+    instance_role = normalize_text(candidate.get("instance_role"))
+    if instance_role not in {
+        "synthesis_core",
+        "downstream_variant",
+        "control",
+        "comparative",
+        "characterization_only",
+        "unclear",
+    }:
+        errors.append(f"{key}: formulation_candidates entry has invalid instance_role={instance_role or '<blank>'}")
+    status = normalize_text(candidate.get("status"))
+    if status not in {"reported", "partial", "ambiguous"}:
+        errors.append(f"{key}: formulation_candidates entry has invalid status={status or '<blank>'}")
+    confidence = normalize_text(candidate.get("confidence"))
+    if confidence not in {"high", "medium", "low"}:
+        errors.append(f"{key}: formulation_candidates entry has invalid confidence={confidence or '<blank>'}")
 
 
 def validate_selection_marker(key: str, marker: dict[str, Any], errors: list[str]) -> None:
@@ -222,38 +290,48 @@ def validate_semantic_documents(
     if declared_mode and declared_mode not in ALLOWED_MODES:
         errors.append(f"Unsupported stage2_semantic_source_mode: {declared_mode}")
 
-    document_keys_with_doe_scope = {
-        normalize_text(document.get("document_key") or document.get("key"))
-        for document in documents
-        if has_llm_declared_doe_scope(document)
-    }
-    document_scope_ids: dict[str, set[str]] = {}
     for document in documents:
-        key = normalize_text(document.get("document_key") or document.get("key"))
-        for family in TABLE_MARKER_FAMILIES:
-            for marker in document.get(family, []) or []:
-                if not isinstance(marker, dict):
-                    errors.append(f"{key}: {family} contains a non-dict marker payload")
+        key = normalize_text(document.get("document_key") or document.get("paper_key") or document.get("key"))
+        if not key:
+            errors.append("semantic document missing document_key/paper_key")
+            continue
+        paper_key = normalize_text(document.get("paper_key"))
+        if paper_key and paper_key != key:
+            errors.append(f"{key}: paper_key does not match document_key")
+        table_scopes = document.get("table_scopes")
+        if not isinstance(table_scopes, list):
+            errors.append(f"{key}: table_scopes must be a list")
+        else:
+            for scope in table_scopes:
+                if not isinstance(scope, dict):
+                    errors.append(f"{key}: table_scopes contains a non-dict entry")
                     continue
-                if not has_valid_marker_provenance(marker):
-                    errors.append(f"{key}: {family} contains a marker without llm_explicit/llm_parsed provenance")
+                validate_table_scope(key, scope, errors)
+        semantic_signals = document.get("semantic_signals")
+        if not isinstance(semantic_signals, dict):
+            errors.append(f"{key}: semantic_signals must be an object")
+        else:
+            validate_semantic_signals(key, semantic_signals, errors)
+        formulation_candidates = document.get("formulation_candidates")
+        if not isinstance(formulation_candidates, list):
+            errors.append(f"{key}: formulation_candidates must be a list")
+        else:
+            for candidate in formulation_candidates:
+                if not isinstance(candidate, dict):
+                    errors.append(f"{key}: formulation_candidates contains a non-dict entry")
                     continue
-                if family == "selection_markers":
-                    validate_selection_marker(key, marker, errors)
-                elif family == "inheritance_markers":
-                    validate_inheritance_marker(key, marker, errors)
-        for declaration in document.get("semantic_scope_declarations", []) or []:
-            if not isinstance(declaration, dict):
-                errors.append(f"{key}: semantic_scope_declarations contains a non-dict declaration")
-                continue
-            declared_by = normalize_text(declaration.get("declared_by"))
-            if declared_by not in VALID_DECLARED_BY:
-                errors.append(f"{key}: semantic scope declaration has invalid declared_by={declared_by or '<blank>'}")
-            if normalize_text(declaration.get("scope_kind")) == "table_formulation_authorization_scope":
-                scope_id = normalize_text(declaration.get("scope_id"))
-                if not has_table_formulation_scope_marker(document, scope_id):
-                    errors.append(f"{key}: table formulation scope declaration lacks an LLM-provenance table_formulation_scopes marker")
-        document_scope_ids[key] = declared_scope_ids(document)
+                validate_formulation_candidate(key, candidate, errors)
+        for forbidden_field in [
+            "selection_markers",
+            "inheritance_markers",
+            "preparation_inheritance_markers",
+            "boundary_markers",
+            "table_variable_roles",
+            "notes",
+            "evidence_spans",
+        ]:
+            if forbidden_field in document:
+                warnings.append(f"{key}: internal semantic document still carries compatibility-only field {forbidden_field}")
 
     return {
         "declared_mode": declared_mode,
@@ -262,8 +340,8 @@ def validate_semantic_documents(
         "observed_modes": observed_modes,
         "errors": errors,
         "warnings": warnings,
-        "document_scope_ids": document_scope_ids,
-        "document_keys_with_doe_scope": document_keys_with_doe_scope,
+        "document_scope_ids": {},
+        "document_keys_with_doe_scope": set(),
     }
 
 

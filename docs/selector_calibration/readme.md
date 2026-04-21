@@ -1,6 +1,6 @@
 Purpose:
 - Provide long-term selector calibration cases for the S2-2 evidence-selection boundary
-- Keep paper archetypes and role expectations comparable across representative papers
+- Keep paper archetypes and evidence-priority expectations comparable across representative papers
 
 Not:
 - Not GT
@@ -13,4 +13,4 @@ Used for:
 - selector debugging
 - scoring calibration
 - failure analysis
-- conservative review of evidence-priority expectations by role
+- conservative review of keep/drop expectations and minimal evidence sets

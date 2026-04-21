@@ -101,11 +101,12 @@
     "problem_class": "Stage2 live prompt assembly can over-weight raw-prefix text when a governed ordered evidence pack would ground the model better",
     "status": "active_mainline_with_validation_history",
     "primary_stage": "stage2_active",
-    "description": "Governed Stage2 live prompt assembly may switch from raw-prefix text to an ordered evidence pack that prioritizes synthesis/preparation, materials/procurement, table evidence, and narrative fallback for stronger semantic grounding through the canonical S2-2 evidence artifact contract.",
+    "description": "Governed Stage2 live prompt assembly may switch from raw-prefix text to an ordered evidence pack that prioritizes synthesis/preparation, materials/procurement, summary-only table evidence, and bounded narrative fallback for stronger semantic grounding through the canonical S2-2 evidence artifact contract.",
     "expected_intervention_points": [
       "Stage2 live execution persists evidence_blocks_v1.json before prompt assembly.",
       "Prompt assembly reads the resolved evidence artifact instead of silently recomputing pre-LLM evidence selection from clean text.",
-      "The prompt preview records the prompt layout class, the packing mode, the ordered block sequence, and the canonical evidence artifact path."
+      "The prompt preview records the prompt layout class, the packing mode, the ordered block sequence, and the canonical evidence artifact path.",
+      "All LLM-facing table evidence remains summary-only even when multiple candidate tables are bundled."
     ],
     "activation_signals": [
       "evidence_blocks_v1.json exists under semantic_stage2_objects/evidence_blocks/<paper_key>/ for the run-local Stage2 output",
@@ -132,10 +133,10 @@
   {
     "feature_id": "s2_candidate_section_aware_split",
     "title": "S2 candidate section-aware split",
-    "problem_class": "Role-aware selection becomes unstable when maintained Stage2 candidate generation leaves recoverable structural regions hidden inside coarse prose blocks",
+    "problem_class": "Selector prioritization becomes unstable when maintained Stage2 candidate generation leaves recoverable structural regions hidden inside coarse prose blocks",
     "status": "active_mainline_governance",
     "primary_stage": "stage2_active",
-    "description": "The maintained Stage2 pre-LLM path now persists candidate_blocks_v1.json as an explicit candidate-segmentation surface and records section-aware prose candidates before role-aware evidence selection begins.",
+    "description": "The maintained Stage2 pre-LLM path now persists candidate_blocks_v1.json as an explicit candidate-segmentation surface and records section-aware prose candidates before evidence-driven evidence selection begins.",
     "expected_intervention_points": [
       "extract_semantic_stage2_objects_v2.py persists candidate_blocks_v1.json before evidence_blocks_v1.json is resolved.",
       "Prose candidates record a segmentation_method plus section_kind metadata so the boundary is inspectable before selector prioritization.",
@@ -170,7 +171,7 @@
     "problem_class": "Table-derived selector candidates become unreliable when adjacent body text, page furniture, or sparse fragments leak into the maintained pre-selector table surface",
     "status": "active_mainline_governance",
     "primary_stage": "stage2_active",
-    "description": "The maintained candidate-segmentation layer isolates table candidates before role-aware selection and records them in candidate_blocks_v1.json so table quality can be inspected independently of selector scoring.",
+    "description": "The maintained candidate-segmentation layer isolates table candidates before evidence-driven selection and records them in candidate_blocks_v1.json so table quality can be inspected independently of selector scoring.",
     "expected_intervention_points": [
       "The candidate artifact records table candidates separately from prose candidates.",
       "Table candidates preserve caption or title context where available and carry quality flags when rows were filtered or the table looks sparse or corrupted.",
@@ -179,7 +180,7 @@
     "activation_signals": [
       "candidate_blocks_v1.json contains candidate_type=table rows",
       "feature_activation_snapshot.table_isolation is true for artifacts with table assets",
-      "Candidate table rows record table quality metadata before selector role assignment"
+      "Candidate table rows record table quality metadata before selector prioritization"
     ],
     "regression_checks": [
       "Run-local candidate_blocks_v1.json table-isolation check",
@@ -196,6 +197,78 @@
     ],
     "introduced_on": "2026-04-10",
     "notes": "This feature governs the pre-selector table surface only; it does not change downstream Stage3 semantics."
+  },
+  {
+    "feature_id": "s2_2a_table_authority_ranking",
+    "title": "S2-2a table authority ranking",
+    "problem_class": "Recovered table payloads can preserve the wrong authority mix when structurally stronger formulation-bearing tables are not ranked ahead of weak residue or downstream-result tables",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained S2-2a layer may rank recovered table payloads before finalizing the preserved authority set so primary versus secondary tables are formed from conservative artifact-level signals rather than semantic-role inference.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py ranks recovered table payloads after normalized table construction and before the preserved authority set is finalized.",
+      "Candidate and normalized-table artifacts record authority_rank, authority_score, authority_tier, and preserved_by_authority_ranking fields when table authority is present.",
+      "The ranking remains structure-only and must not emit semantic roles, semantic signals, or pre-LLM interpretation."
+    ],
+    "activation_signals": [
+      "candidate_blocks_v1.json records feature_activation_snapshot.table_authority_ranking=true for papers with table candidates",
+      "Candidate table entries record authority_rank, authority_score, and authority_tier before selector prioritization",
+      "normalized_table_payloads_v1.json records the same authority-ranking fields on preserved table payloads"
+    ],
+    "regression_checks": [
+      "Run-local candidate_blocks_v1.json table-authority ranking check",
+      "Run-local normalized_table_payloads_v1.json authority metadata check",
+      "Feature activation report evidence check on S2-2a table authority ranking"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/PIPELINE_SCRIPT_MAP.md"
+    ],
+    "introduced_on": "2026-04-20",
+    "notes": "Canonical change name: S2-2a Table Authority Ranking (Selector V2.1 refinement). This feature narrows preserved table authority formation without moving semantic understanding into S2-2a or changing selector ontology."
+  },
+  {
+    "feature_id": "s2_2a_primary_table_guardrail",
+    "title": "S2-2a structure-first table preservation guardrail",
+    "problem_class": "Noisy coarse labels can wrongly exclude a structurally strong recovered table from the preserved authority set even when the table surface is still a plausible formulation-bearing candidate",
+    "status": "active_mainline_governance",
+    "primary_stage": "stage2_active",
+    "description": "The maintained S2-2a layer may apply a structure-first preservation guardrail after table-authority ranking and before finalizing the preserved authority set so coarse labels remain demotions only, while only structural failure can exclude a plausible table from preserved authority. This guardrail does not decide final semantic primary-table truth.",
+    "expected_intervention_points": [
+      "extract_semantic_stage2_objects_v2.py evaluates preserved-table eligibility after normalized table construction and before the preserved authority set is frozen.",
+      "Coarse labels such as non_formulation_table or characterization/results remain visible in audit fields but do not by themselves make a table ineligible for preserved authority.",
+      "Exclusion is tied to structural failure signals such as repair insufficiency, narrative domination, or figure-spillover surfaces.",
+      "The guardrail must not semantically choose the one true formulation table among multiple preserved candidates."
+    ],
+    "activation_signals": [
+      "normalized_table_payloads_v1.json records primary_guardrail_applied, primary_guardrail_reason, and primary_eligibility_signals on preserved table payloads",
+      "A structurally strong table may remain preserved even when coarse negative labels remain present in audit fields",
+      "Narrative or figure-spillover tables remain demoted through structural guardrail reasons rather than label-only veto"
+    ],
+    "regression_checks": [
+      "Run-local normalized_table_payloads_v1.json primary-guardrail metadata check",
+      "L3H2RS2H bounded validation keeps useful formulation-bearing tables preserved without noisy spillover domination",
+      "V99GKZEI bounded validation keeps Table 1 preserved without prompt inflation"
+    ],
+    "related_scripts": [
+      "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+      "src/stage2_sampling_labels/run_stage2_composite_v1.py",
+      "src/utils/build_feature_activation_report_v1.py"
+    ],
+    "related_docs": [
+      "project/2_ARCHITECTURE.md",
+      "project/ACTIVE_PIPELINE_FLOW.md",
+      "project/ACTIVE_PIPELINE_RUNBOOK.md",
+      "project/4_DECISIONS_LOG.md"
+    ],
+    "introduced_on": "2026-04-20",
+    "notes": "Canonical change name: S2-2a structure-first table preservation guardrail. This feature refines preserved-authority eligibility only; it does not redesign selector ontology, add semantic-role inference, or move ownership away from S2-2a."
   },
   {
     "feature_id": "s2_candidate_noise_filtering",
@@ -304,7 +377,7 @@
     "problem_class": "Prompt-preview observability can drift away from the real pre-LLM evidence body when the preview is generated independently of the maintained evidence artifact",
     "status": "active_mainline_observability",
     "primary_stage": "stage2_active",
-    "description": "The maintained Stage2 prompt preview is a derived observability surface only. It must point to and summarize the same evidence_blocks_v1.json artifact used for prompt assembly.",
+    "description": "The maintained Stage2 prompt preview is a derived observability surface only. It must point to and summarize the same evidence_blocks_v1.json artifact used for prompt assembly, including runtime packing metadata that may be intentionally omitted from the default LLM-facing prompt header.",
     "expected_intervention_points": [
       "Prompt preview rows include evidence_artifact_path plus summarized technical and design statuses.",
       "Prompt assembly uses the canonical evidence artifact so the preview is generated from the same resolved evidence body.",
@@ -332,25 +405,29 @@
     "notes": "This feature does not create a second evidence surface. It ensures the prompt-preview artifact remains derived observability only."
   },
   {
-    "feature_id": "s2_2_role_aware_evidence_selection",
-    "title": "S2-2 role-aware evidence selection",
-    "problem_class": "Pure global block ranking can crowd out required pre-LLM evidence roles, leaving the maintained Stage2 evidence artifact technically complete but poorly structured for formulation discovery",
+    "feature_id": "s2_2_evidence_priority_selection",
+    "title": "S2-2 evidence-priority selection",
+    "problem_class": "Pre-LLM evidence selection can become noisy or inflated when authoritative tables are not allowed to outrank proxy and fallback text cleanly",
     "status": "active_mainline_governance",
     "primary_stage": "stage2_active",
-    "description": "The maintained S2-2 selector deterministically assigns candidate evidence into explicit roles, scores within role, and persists the chosen role assignments plus weak or missing roles in evidence_blocks_v1.json.",
+    "description": "The maintained S2-2 selector deterministically prioritizes candidate evidence by signal, structure quality, locality, and noise suppression, persists the chosen compact evidence blocks in evidence_blocks_v1.json, and may apply a narrow minimal evidence sufficiency floor when ranking alone underselects clearly available context. Its authority is limited to denoising, coverage, and bounded packing rather than semantic table judgment.",
     "expected_intervention_points": [
-      "extract_semantic_stage2_objects_v2.py uses a deterministic role-aware selector profile before prompt assembly.",
-      "evidence_blocks_v1.json records selector_profile, required_roles, selected_roles, missing_or_weak_roles, and per-block role_assignment fields.",
-      "The maintained prompt preview remains derived from the same evidence artifact rather than running an independent selector."
+      "extract_semantic_stage2_objects_v2.py uses deterministic evidence-priority selection before prompt assembly.",
+      "Candidate tables are classified only as must_include, optional_context, or hard_drop.",
+      "A post-selection minimal evidence floor may add at most one best method block, one best materials block, or one bounded supporting paragraph when clearly justified by the candidate pool.",
+      "evidence_blocks_v1.json records selection_mode, compact per-block evidence metadata, selector-debug suppression summaries, and floor-debug metadata when the floor intervenes.",
+      "The maintained prompt preview remains derived from the same evidence artifact rather than running an independent selector.",
+      "Must-include table summaries remain in neutral stable order and are not semantically reranked into one true table by deterministic rules."
     ],
     "activation_signals": [
-      "The evidence artifact contains selector_profile",
-      "Evidence blocks record role_assignment, role_priority, and role_score_breakdown",
-      "The evidence artifact records required_roles, selected_roles, and missing_or_weak_roles"
+      "The evidence artifact contains selection_mode=evidence_priority_v1",
+      "Evidence blocks record evidence_kind, char_count, and compact source metadata",
+      "The evidence artifact records selector_debug suppression summaries",
+      "When the floor is triggered, the evidence artifact records minimal_evidence_floor_applied=true plus floor_debug details"
     ],
     "regression_checks": [
-      "Run-local evidence_blocks_v1.json role-aware selector check",
-      "Feature activation report evidence check on S2-2 role-aware selection"
+      "Run-local evidence_blocks_v1.json evidence-priority selector check",
+      "Feature activation report evidence check on S2-2 evidence-priority selection"
     ],
     "related_scripts": [
       "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
@@ -363,28 +440,28 @@
       "project/PIPELINE_SCRIPT_MAP.md"
     ],
     "introduced_on": "2026-04-10",
-    "notes": "This feature upgrades the maintained S2-2 selector quality without introducing a second LLM or a parallel Stage2 route."
+    "notes": "This feature upgrades the maintained S2-2 selector quality without introducing a second LLM, a parallel Stage2 route, semantic role contracts, or pre-LLM semantic signal extraction."
   },
   {
     "feature_id": "s2_2_doe_overlay_selection",
-    "title": "S2-2 DOE overlay selection",
-    "problem_class": "DOE or optimization papers need different evidence-role priorities than general formulation papers, but the maintained selector can miss design and variable surfaces if it does not activate a governed overlay",
+    "title": "S2-2 archetype metadata only",
+    "problem_class": "DOE or optimization papers still need governed observability, but pre-LLM archetype hints must not distort selector behavior or inflate evidence packs",
     "status": "active_mainline_governance",
     "primary_stage": "stage2_active",
-    "description": "When deterministic pre-LLM signals indicate a DOE or optimization paper, the maintained S2-2 selector activates a DOE overlay that adds experimental-design and variable-table priorities on top of the general selector profile.",
+    "description": "When deterministic pre-LLM signals indicate a DOE or optimization paper, the maintained S2-2 path records those signals as metadata only and does not alter evidence selection rules.",
     "expected_intervention_points": [
       "DOE-like papers are detected from maintained structural and lexical signals only.",
-      "evidence_blocks_v1.json records archetype_overlay=doe_optimization_v1 when the overlay is active.",
-      "The role summary for a DOE paper can expose weak or missing design-related roles directly in the canonical artifact."
+      "feature_activation_snapshot records the detected DOE or variable-sweep signals.",
+      "The evidence artifact does not change selection policy or required evidence classes because of those signals."
     ],
     "activation_signals": [
       "feature_activation_snapshot.doe_pre_llm_detection is true for a paper",
-      "The evidence artifact records archetype_overlay=doe_optimization_v1",
-      "DOE overlay roles appear in required_roles for the affected evidence artifact"
+      "feature_activation_snapshot.archetype_detection_metadata_only is true",
+      "The evidence artifact does not record a selector overlay field"
     ],
     "regression_checks": [
-      "Run-local evidence_blocks_v1.json DOE-overlay check",
-      "Feature activation report evidence check on DOE overlay activation"
+      "Run-local evidence_blocks_v1.json archetype-metadata check",
+      "Feature activation report evidence check on archetype metadata-only detection"
     ],
     "related_scripts": [
       "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
@@ -396,17 +473,18 @@
       "project/ACTIVE_PIPELINE_RUNBOOK.md"
     ],
     "introduced_on": "2026-04-10",
-    "notes": "This is an overlay on the maintained selector, not a separate pipeline or a second LLM call."
+    "notes": "This feature is metadata-only observability on the maintained selector, not a selection overlay, a separate pipeline, or a second LLM call."
   },
   {
     "feature_id": "s2_2_duplicate_table_suppression",
     "title": "S2-2 duplicate table suppression",
-    "problem_class": "Near-duplicate extracted tables can consume the limited S2-2 evidence budget and crowd out more informative roles when the maintained selector treats them as independent wins",
+    "problem_class": "Near-duplicate extracted tables can consume the limited S2-2 evidence budget and crowd out more informative evidence when the maintained selector treats them as independent wins",
     "status": "active_mainline_governance",
     "primary_stage": "stage2_active",
-    "description": "The maintained S2-2 selector suppresses duplicate tables using deterministic shape, row-label preview, and sampled-content signatures, and records any suppression events in the canonical evidence artifact.",
+    "description": "The maintained S2-2 selector suppresses duplicate tables using deterministic shape, row-label preview, and sampled-content signatures, and records any suppression events in the canonical evidence artifact. Duplicate suppression must not collapse distinct must-include tables on fuzzy semantic overlap alone.",
     "expected_intervention_points": [
-      "Role-aware table selection checks duplicate signatures before final inclusion.",
+      "Evidence-driven table selection checks duplicate signatures before final inclusion.",
+      "Must-include tables may be deduplicated only when they are exact or near-exact extraction duplicates rather than merely semantically similar.",
       "Suppressed duplicates are recorded in duplicate_table_suppression_events inside evidence_blocks_v1.json.",
       "Table-selection debug remains derived observability and can show which tables were selected versus suppressed."
     ],

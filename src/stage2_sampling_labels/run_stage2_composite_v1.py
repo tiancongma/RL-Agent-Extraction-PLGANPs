@@ -40,6 +40,7 @@ FINAL_STAGE2_JSONL = "weak_labels__v7pilot_r3_fixparse.jsonl"
 STAGE2_RUN_METADATA_JSON = "stage2_run_metadata_v1.json"
 STAGE2_CONTRACT_REPORT_JSON = "stage2_semantic_authority_contract_report_v1.json"
 STAGE2_SEMANTIC_SOURCE_MODE = "llm_first_composite"
+REQUEST_SUMMARY_NAME = "request_summary.tsv"
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -108,6 +109,55 @@ def to_repo_rel(path_value: Path) -> str:
     return str(path_value.resolve().relative_to(PROJECT_ROOT)).replace("\\", "/")
 
 
+def infer_dataset_id_from_table_dir(table_dir: Path) -> str:
+    try:
+        return table_dir.resolve().parent.parent.name
+    except Exception:
+        return ""
+
+
+def iter_stage2_table_dir_candidates(*, key: str, text_path: Path | None) -> list[Path]:
+    candidates: list[Path] = []
+    if text_path is not None:
+        candidates.append(text_path.parent.parent / "tables" / key)
+    cleaned_root = PROJECT_ROOT / "data" / "cleaned"
+    if cleaned_root.exists():
+        for dataset_root in sorted(path for path in cleaned_root.iterdir() if path.is_dir()):
+            candidates.append(dataset_root / "tables" / key)
+    deduped: list[Path] = []
+    seen: set[Path] = set()
+    for candidate in candidates:
+        resolved = candidate.resolve(strict=False)
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        deduped.append(resolved)
+    return deduped
+
+
+def resolve_stage2_table_binding(row: dict[str, str]) -> tuple[str, Path | None]:
+    key = normalize_key(row)
+    dataset_id = normalize_text(row.get("dataset_id"))
+    text_path_value = normalize_text(row.get("text_path"))
+    text_path: Path | None = None
+    if text_path_value:
+        text_path = resolve_project_file(text_path_value)
+
+    if dataset_id and key:
+        explicit_dir = dataset_tables_root(dataset_id) / key
+        if explicit_dir.exists():
+            return dataset_id, explicit_dir.resolve()
+
+    if not key:
+        return dataset_id, None
+
+    for candidate in iter_stage2_table_dir_candidates(key=key, text_path=text_path):
+        if candidate.exists():
+            inferred_dataset_id = infer_dataset_id_from_table_dir(candidate)
+            return inferred_dataset_id or dataset_id, candidate
+    return dataset_id, None
+
+
 def refresh_stage2_text_bindings(selected_rows: list[dict[str, str]], key2txt_path: Path) -> list[dict[str, str]]:
     key2txt_map = load_key2txt_map(key2txt_path)
     refreshed_rows: list[dict[str, str]] = []
@@ -147,15 +197,10 @@ def refresh_stage2_table_bindings(selected_rows: list[dict[str, str]]) -> list[d
     refreshed_rows: list[dict[str, str]] = []
     for row in selected_rows:
         refreshed = dict(row)
-        key = normalize_key(row)
-        dataset_id = normalize_text(row.get("dataset_id"))
-        if not dataset_id or not key:
-            refreshed["table_dir"] = ""
-            refreshed["table_available"] = "no"
-            refreshed_rows.append(refreshed)
-            continue
-        table_dir = dataset_tables_root(dataset_id) / key
-        if table_dir.exists():
+        resolved_dataset_id, table_dir = resolve_stage2_table_binding(refreshed)
+        if resolved_dataset_id:
+            refreshed["dataset_id"] = resolved_dataset_id
+        if table_dir is not None and table_dir.exists():
             refreshed["table_dir"] = to_repo_rel(table_dir)
             refreshed["table_available"] = "yes"
         else:
@@ -196,8 +241,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
     parser.add_argument("--model", default="gemini-2.5-flash")
     parser.add_argument("--max-text-chars", type=int, default=18000)
-    parser.add_argument("--request-retries", type=int, default=2)
+    parser.add_argument("--request-timeout-seconds", type=int, default=180)
+    parser.add_argument("--request-retries", type=int, default=1)
     parser.add_argument("--retry-sleep-sec", type=float, default=3.0)
+    parser.add_argument(
+        "--stop-before-live-call",
+        action="store_true",
+        help="Materialize maintained pre-LLM Stage2 artifacts only and stop before any S2-4b live or replay raw-response handling.",
+    )
     return parser.parse_args()
 
 
@@ -257,7 +308,7 @@ Benchmark reporting rule:
   - formal S2-2 boundary:
     - `clean text -> governed evidence package (pre-LLM)`
   - explicit internal candidate-segmentation boundary inside S2-2:
-    - `clean text / extracted tables -> candidate segmentation -> role-aware selector -> governed evidence package`
+    - `clean text / extracted tables -> candidate segmentation -> evidence-driven selector -> governed evidence package`
   - canonical candidate-segmentation artifact:
     - `{semantic_dir / 'candidate_blocks'} / <paper_key> / candidate_blocks_v1.json`
   - canonical S2-2 artifact:
@@ -268,8 +319,9 @@ Benchmark reporting rule:
     - table isolation active when table assets exist
     - conservative candidate-level noise filtering active
   - maintained S2-2 selector:
-    - deterministic role-aware evidence selection
-    - default profile plus DOE optimization overlay when pre-LLM signals justify it
+    - deterministic evidence-driven evidence selection
+    - conservative noise filtering plus weak importance ordering
+    - pre-LLM archetype detection is metadata only and does not drive selection
     - no second LLM at this boundary
   - Stage2 internal intermediate:
     - LLM semantic discovery objects under `{semantic_dir}`
@@ -424,40 +476,83 @@ def main() -> None:
         args.llm_backend,
         "--max-text-chars",
         str(args.max_text_chars),
+        "--request-timeout-seconds",
+        str(max(1, min(int(args.request_timeout_seconds), 180))),
         "--request-retries",
-        str(args.request_retries),
+        str(max(0, min(int(args.request_retries), 1))),
         "--retry-sleep-sec",
         str(args.retry_sleep_sec),
     ]
+    if args.stop_before_live_call:
+        extractor_cmd.append("--stop-before-live-call")
     for key in selected_keys:
         extractor_cmd.extend(["--paper-key", key])
     if legacy_raw_responses_dir is not None:
         extractor_cmd.extend(["--legacy-raw-responses-dir", str(legacy_raw_responses_dir)])
+    run_context = build_run_context(
+        run_id=run_id,
+        run_dir_kind=run_dir_kind,
+        run_selection_mode=run_selection_mode,
+        bucket_dir=bucket_dir,
+        run_dir=run_dir,
+        manifest_tsv=manifest_tsv,
+        selected_keys=selected_keys,
+        source_mode=args.source_mode,
+        llm_backend=args.llm_backend,
+        model=args.model,
+        max_text_chars=args.max_text_chars,
+        legacy_raw_responses_dir=legacy_raw_responses_dir,
+        semantic_dir=semantic_dir,
+        compat_dir=compat_dir,
+    )
+    (run_dir / "RUN_CONTEXT.md").write_text(run_context, encoding="utf-8")
     run_command(extractor_cmd)
 
-    compat_cmd = [
-        sys.executable,
-        str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "build_stage2_compatibility_projection_v1.py"),
-        "--input-jsonl",
-        str(semantic_dir / SEMANTIC_JSONL),
-        "--output-dir",
-        str(compat_dir),
-    ]
-    run_command(compat_cmd)
+    request_summary_path = run_dir / "analysis" / REQUEST_SUMMARY_NAME
+    success_count = 0
+    failure_count = 0
+    if request_summary_path.exists():
+        request_rows = read_tsv(request_summary_path)
+        success_count = sum(1 for row in request_rows if normalize_text(row.get("status")) == "success")
+        failure_count = sum(1 for row in request_rows if normalize_text(row.get("status")) != "success")
 
     contract_report_path = run_dir / "analysis" / STAGE2_CONTRACT_REPORT_JSON
-    run_command(
-        [
+    compatibility_projection_executed = False
+    compatibility_projection_status = "not_run"
+    contract_validation_status = "not_run"
+    if not args.stop_before_live_call and success_count > 0:
+        compat_cmd = [
             sys.executable,
-            str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "validate_stage2_semantic_authority_contract_v1.py"),
-            "--semantic-jsonl",
+            str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "build_stage2_compatibility_projection_v1.py"),
+            "--input-jsonl",
             str(semantic_dir / SEMANTIC_JSONL),
-            "--stage2-tsv",
-            str(compat_dir / FINAL_STAGE2_TSV),
-            "--report-out",
-            str(contract_report_path),
+            "--output-dir",
+            str(compat_dir),
         ]
-    )
+        try:
+            run_command(compat_cmd)
+            compatibility_projection_executed = True
+            compatibility_projection_status = "success"
+        except subprocess.CalledProcessError:
+            compatibility_projection_status = "failed"
+
+        if compatibility_projection_executed:
+            try:
+                run_command(
+                    [
+                        sys.executable,
+                        str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "validate_stage2_semantic_authority_contract_v1.py"),
+                        "--semantic-jsonl",
+                        str(semantic_dir / SEMANTIC_JSONL),
+                        "--stage2-tsv",
+                        str(compat_dir / FINAL_STAGE2_TSV),
+                        "--report-out",
+                        str(contract_report_path),
+                    ]
+                )
+                contract_validation_status = "success"
+            except subprocess.CalledProcessError:
+                contract_validation_status = "failed"
 
     run_context = build_run_context(
         run_id=run_id,
@@ -490,13 +585,22 @@ def main() -> None:
         "stage2_internal_candidate_table_isolation": "active_when_table_assets_exist",
         "stage2_internal_candidate_noise_filtering": "conservative_high_confidence",
         "stage2_internal_pre_llm_evidence_artifact_pattern": "semantic_stage2_objects/evidence_blocks/<paper_key>/evidence_blocks_v1.json",
-        "stage2_internal_pre_llm_selector_profile": "role_aware_general_v1",
-        "stage2_internal_pre_llm_selector_overlay": "doe_optimization_v1_when_signaled",
+        "stage2_internal_pre_llm_selection_mode": "evidence_priority_v1",
+        "stage2_internal_pre_llm_archetype_policy": "metadata_only_no_selection_overlay",
         "stage2_prompt_preview_relationship": "derived_from_evidence_blocks_v1_json",
         "stage2_internal_completion": "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py",
         "stage2_internal_doe_function_unit": "src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py",
         "stage2_internal_sequential_optimization_function_unit": "src/stage2_sampling_labels/function_units/sequential_optimization_interpreter_v1.py",
         "stage2_contract_validation_report": str(contract_report_path),
+        "request_timeout_seconds": max(1, min(int(args.request_timeout_seconds), 180)),
+        "request_retries": max(0, min(int(args.request_retries), 1)),
+        "request_summary_path": str(request_summary_path),
+        "success_count": success_count,
+        "failure_count": failure_count,
+        "compatibility_projection_executed": compatibility_projection_executed,
+        "compatibility_projection_status": compatibility_projection_status,
+        "contract_validation_status": contract_validation_status,
+        "stop_before_live_call": args.stop_before_live_call,
         "source_mode": args.source_mode,
         "llm_backend": args.llm_backend,
         "model": args.model,
@@ -519,6 +623,10 @@ def main() -> None:
     print(f"run_dir={run_dir}")
     print(f"semantic_dir={semantic_dir}")
     print(f"compat_dir={compat_dir}")
+    print(f"success_count={success_count}")
+    print(f"failure_count={failure_count}")
+    print(f"compatibility_projection_status={compatibility_projection_status}")
+    print(f"contract_validation_status={contract_validation_status}")
     print(f"completed_at={datetime.now().isoformat(timespec='seconds')}")
 
 

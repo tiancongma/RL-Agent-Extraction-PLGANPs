@@ -12,12 +12,18 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import build_live_prompt
+    from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
+        build_live_prompt,
+        build_prompt_preview_row,
+    )
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
     from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import build_live_prompt
+    from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
+        build_live_prompt,
+        build_prompt_preview_row,
+    )
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
     from src.utils.run_id import resolve_results_write_target
 
@@ -297,6 +303,26 @@ def main() -> None:
                 "prompt_text": prompt_text,
             }
         )
+        preview_row = build_prompt_preview_row(
+            document={
+                "document_key": record["key"],
+                "doi": record["doi"],
+                "source_mode": "frozen_s2_4a",
+            },
+            prompt_text=prompt_text,
+            table_mode_value=str(artifact.get("input_contract", {}).get("table_mode") or ""),
+            summary_enhanced=bool(artifact.get("input_contract", {}).get("summary_first_column_enhancement")),
+            input_packing_mode_value=str(artifact.get("input_contract", {}).get("input_packing_mode") or ""),
+            ordered_block_order=" > ".join(str(value) for value in ordered_block_order if str(value).strip()),
+            evidence_artifact_path=to_repo_rel(evidence_path),
+            evidence_artifact=artifact,
+            technical_status_overall=str(artifact.get("technical_status", {}).get("overall") or ""),
+            design_status_overall=str(artifact.get("design_status", {}).get("overall") or ""),
+        )
+        issues = []
+        if str(preview_row.get("s2_3_ready_overall")) != "pass":
+            issues.append(str(preview_row.get("s2_3_readiness_reasons") or "upstream_prompt_nonconformant"))
+        status = "pass" if not issues else "fail"
         audit_rows.append(
             {
                 "paper_key": record["key"],
@@ -305,8 +331,17 @@ def main() -> None:
                 "ordered_block_order": " > ".join(str(value) for value in ordered_block_order if str(value).strip()),
                 "prompt_length": len(prompt_text),
                 "prompt_sha256": prompt_sha256,
-                "status": "pass",
-                "issues": "",
+                "live_prompt_header_mode": preview_row.get("live_prompt_header_mode", ""),
+                "runtime_metadata_removed_from_live_prompt": preview_row.get("runtime_metadata_removed_from_live_prompt", ""),
+                "live_prompt_contains_runtime_metadata": preview_row.get("live_prompt_contains_runtime_metadata", ""),
+                "uses_evidence_pack_only": preview_row.get("uses_evidence_pack_only", ""),
+                "all_selected_blocks_included": preview_row.get("all_selected_blocks_included", ""),
+                "truncation_detected": preview_row.get("truncation_detected", ""),
+                "exact_duplicate_block_count": preview_row.get("exact_duplicate_block_count", ""),
+                "prompt_size_policy_status": preview_row.get("prompt_size_policy_status", ""),
+                "upstream_design_status_overall": str(artifact.get("design_status", {}).get("overall") or ""),
+                "status": status,
+                "issues": "|".join(issue for issue in issues if issue),
             }
         )
 
@@ -324,6 +359,15 @@ def main() -> None:
             "ordered_block_order",
             "prompt_length",
             "prompt_sha256",
+            "live_prompt_header_mode",
+            "runtime_metadata_removed_from_live_prompt",
+            "live_prompt_contains_runtime_metadata",
+            "uses_evidence_pack_only",
+            "all_selected_blocks_included",
+            "truncation_detected",
+            "exact_duplicate_block_count",
+            "prompt_size_policy_status",
+            "upstream_design_status_overall",
             "status",
             "issues",
         ],
