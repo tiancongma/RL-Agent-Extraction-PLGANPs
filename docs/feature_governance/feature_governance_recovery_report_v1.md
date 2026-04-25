@@ -57,7 +57,7 @@ Memory and historical design traces:
 - `docs/methods/v7pilot_r3_fixparse_block_packing_2026-03-10.md`
 - `docs/methods/v7pilot_r3_fixparse_synthesis_method_block_2026-03-10.md`
 - `docs/methods/l3h2rs2h_formulation_instance_regression_audit_2026-03-10.md`
-- `docs/sequential_optimization_fu_validation.md`
+- `docs/audits/sequential_optimization_fu_validation.md`
 
 Maintained code paths:
 

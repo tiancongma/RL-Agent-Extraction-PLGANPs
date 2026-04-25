@@ -1,0 +1,7 @@
+paper_key	prompt_size	table_count	structure_ok_yes_no	row_identity_present_yes_no	redundancy_level	classification	notes
+WFDTQ4VX	20261	16	no	yes	medium	PROMPT_BLOAT	Largest prompt in the bounded lineage; key DOE tables survive but many additional weak tables inflate the prompt.
+UFXX9WXE	19458	17	no	yes	medium	NEEDS_COMPACTION	Highest table-count paper in the bounded lineage; field-complete but overly broad with several weak tables.
+5ZXYABSU	16790	14	no	yes	medium	STRUCTURE_LOSS	Anchor tables now survive, but many preserved tables remain repair-insufficient or weak and lower structural clarity.
+5GIF3D8W	15291	7	no	yes	low	LARGE_BUT_SAFE	Moderate table pack with mostly readable summaries; some degraded tables remain but prompt is still usable.
+INMUTV7L	13036	11	no	yes	medium	NEEDS_COMPACTION	Simple-paper prompt is now broader than needed; structure fields remain present but many extra low-signal tables are included.
+WIVUCMYG	9805	6	yes	yes	low	LARGE_BUT_SAFE	Best-balanced prompt in the bounded lineage: compact enough, structurally clear, and no obvious prompt-level duplication.

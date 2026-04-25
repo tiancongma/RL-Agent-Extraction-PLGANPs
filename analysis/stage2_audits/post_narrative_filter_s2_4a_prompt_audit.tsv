@@ -1,0 +1,7 @@
+paper_key	before_prompt_size	after_prompt_size	before_table_count	after_table_count	real_tables_preserved	narrative_removed	classification	notes
+WFDTQ4VX	19288	19288	15	15	yes	no	NEEDS_COMPACTION	prompt_status=pass; truncation_detected=no
+5ZXYABSU	14909	14909	12	12	yes	no	LARGE_BUT_SAFE	prompt_status=pass; truncation_detected=no
+UFXX9WXE	19458	18683	17	16	yes	yes	NEEDS_COMPACTION	Removed: UFXX9WXE__table_01__pdf_table.csv Narrative drops: UFXX9WXE__table_01__pdf_table.csv (author_affiliation_metadata_surface) prompt_status=pass; truncation_detected=no
+INMUTV7L	13036	13036	11	11	yes	no	LARGE_BUT_SAFE	Narrative drops: INMUTV7L__table_04__pdf_table.csv (author_affiliation_metadata_surface) prompt_status=pass; truncation_detected=no
+WIVUCMYG	9805	9805	6	6	yes	no	OK	prompt_status=pass; truncation_detected=no
+5GIF3D8W	15291	15291	7	7	yes	no	LARGE_BUT_SAFE	prompt_status=pass; truncation_detected=no

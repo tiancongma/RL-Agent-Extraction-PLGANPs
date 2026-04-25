@@ -532,6 +532,16 @@ boundary:
 - deterministic non-DOE table row enumeration is allowed only when the LLM
   declares the table formulation-bearing and non-DOE through the table
   authorization contract
+- a bounded simple-table deterministic enumeration path is allowed inside the
+  non-DOE table-row executor when:
+  - the table is already LLM-authorized as formulation-bearing
+  - the table is not on the DOE path
+  - preserved `S2-2` normalized payload authority is available
+  - the table is a low-ambiguity `full_formulation` surface with stable
+    first-column row identity
+  - base formulation rows can be instantiated from the preserved table alone
+- this simple-table path does not require LLM row-level candidates and does
+  not cover DOE matrices, non-DOE sweep recovery, or cross-table decoding
 - direct comparison of raw semantic objects to formulation-level GT is
   diagnostic only when the deterministic completion substep has not been
   applied
@@ -573,6 +583,14 @@ boundary:
     already-authorized cases
   - broader DEV15 coverage remains upstream-blocked when
     `table_formulation_scopes` are missing from the Stage2 evidence handoff
+- a bounded simple formulation-table deterministic enumeration rule is now
+  validated for low-ambiguity `full_formulation` tables:
+  - `INMUTV7L` is the anchor case
+  - deterministic replay emits `12` preserved table rows after semantic table
+    authorization without requiring LLM row-level output
+  - `WIVUCMYG` remains on the DOE path
+  - `5GIF3D8W` remains on the non-DOE single-variable recovery path
+  - `UFXX9WXE` remains stable with no regression
 - This means the dominant remaining limitation is now upstream Stage2
   extraction, selector, or evidence-handoff completeness rather than a claim
   that deterministic execution no longer matters.

@@ -347,6 +347,324 @@ Recommended decision enums:
   - `yes`
   - `no`
 
+## Current DEV15 Layer 3 Schema Freeze
+
+The current governed DEV15 Layer 3 authority file is:
+
+- `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`
+
+This surface is treated as a formulation-row-aligned wide GT table derived from
+Layer 2 row authority plus manually calibrated value backfill.
+
+Interpretation rules:
+
+- Layer 3 GT inherits its formulation universe from Layer 2 and must not reopen
+  row-boundary decisions.
+- Layer 3 GT stores only values explicitly reported in paper text or tables.
+- Values obtained only by calculation, algebraic derivation, or unsupported
+  inference must remain blank in GT.
+- Manual calibration may correct extraction-facing representation, alignment, or
+  normalization issues, but it must not promote unreported values into GT.
+
+### Layer 3 Numeric Backfill And Compare Responsibility Freeze
+
+Layer 3 value work must follow the repository-wide semantic-versus-deterministic
+boundary.
+
+Hard role split:
+
+- LLM-side extraction and semantic discovery remain responsible for:
+  - formulation instance boundaries
+  - field-role assignment
+  - shared-vs-instance-specific interpretation
+  - relation and inheritance cues
+  - semantic table scope and formulation-bearing value hints
+- deterministic downstream layers remain responsible for:
+  - numeric evidence binding
+  - current-row identity alignment
+  - relation-resolved carry-through
+  - canonicalization and unit normalization
+  - explicit derivation rules
+  - compare, QC, and reviewer-facing audit surfaces
+
+Therefore Layer 3 numeric backfill must not operate as a second semantic
+extractor.
+
+Allowed Layer 3/backfill behavior:
+
+- bind values onto already frozen formulation identities
+- use canonical current-system identity surfaces plus advisory scaffold or bridge
+  artifacts to align GT rows to current rows
+- normalize directly reported values into auditable canonical forms
+- preserve provenance for relation-resolved or derived values
+- emit alignment-resolution and evidence-status audit surfaces when identity or
+  support remains uncertain
+
+Prohibited behavior:
+
+- using Layer 3 compare/backfill rules to create new formulation rows or redefine
+  the formulation universe
+- treating heuristic compare-side matching as new semantic discovery authority
+- freely inferring missing values without explicit deterministic evidence-binding
+  support
+- presenting derived or relation-resolved values as if they were directly
+  reported paper values
+- allowing compare-side bridge logic to grow into an unbounded semantic repair
+  system
+
+Current architectural interpretation:
+
+- numeric backfill should rely primarily on deterministic evidence binding,
+  normalization, and audit over frozen formulation identities
+- LLM outputs may provide semantic anchors and candidate ownership hints, but
+  they are not the final benchmark-facing numeric authority by themselves
+- if recurring Layer 3 failures require increasingly semantic downstream repair,
+  treat that pattern as upstream extraction-schema backlog rather than licensing
+  indefinite compare-side rule growth
+
+### Frozen Field Groups
+
+For current-system comparison and debugging, fields are frozen into three
+classes.
+
+#### 1. Core fixed fields
+
+These are named schema fields whose compare behavior should remain stable across
+papers.
+
+Identity / alignment anchor fields:
+
+- `paper_key`
+- `doi`
+- `gt_formulation_id`
+- `family_id`
+- `parent_core`
+- `variant_role`
+- `benchmark_default_include`
+- `formulation_label`
+- `seed_pred_representative_source_formulation_id`
+- `gt_row_decision`
+
+Core composition and condition fields:
+
+- `polymer_name`
+- `polymer_grade`
+- `polymer_mw_raw`
+- `polymer_mw_kDa`
+- `la_ga_ratio_raw`
+- `la_ga_ratio_normalized`
+- `polymer_mass_mg`
+- `polymer_concentration_value`
+- `polymer_concentration_unit`
+- `polymer_concentration_phase`
+- `polymer_to_solvent_ratio_raw`
+- `polymer_to_drug_ratio_raw`
+- `drug_name`
+- `drug_mass_mg`
+- `drug_concentration_value`
+- `drug_concentration_unit`
+- `drug_to_polymer_ratio_raw`
+- `surfactant_name`
+- `surfactant_mass_mg`
+- `surfactant_concentration_value`
+- `surfactant_concentration_unit`
+- `stabilizer_name`
+- `helper_material_name`
+
+Core process fields:
+
+- `method_type`
+- `solvent_name`
+- `co_solvent_name`
+- `W1_volume_mL`
+- `O_volume_mL`
+- `W2_volume_mL`
+- `external_aqueous_phase_volume_mL`
+- `internal_aqueous_phase_volume_mL`
+- `phase_ratio_raw`
+- `sonication_time_s`
+- `homogenization_time_min`
+- `stirring_time_h`
+- `evaporation_time_h`
+- `centrifugation_g`
+- `centrifugation_time_min`
+
+Core measured output fields:
+
+- `ee_percent`
+- `lc_percent`
+- `dl_percent`
+- `particle_size_nm`
+- `pdi`
+- `zeta_mV`
+
+#### 2. Named extensible variable fields
+
+These are semantically named, paper-class-dependent variables that must not be
+collapsed into anonymous slots such as `new_variable_1`.
+
+Current governed member:
+
+- `pH_raw`
+
+Current decision for `pH_raw`:
+
+- retain it as a named extensible variable field
+- do not rename it to an anonymous variable slot
+- do not yet elevate it to the same benchmark-first status as globally common
+  fixed fields such as `particle_size_nm`, `ee_percent`, or `zeta_mV`
+- compare it separately from the core fixed field group
+
+Reason:
+
+- current DEV15 coverage is limited and paper-class-specific rather than global
+- `pH` already has stable semantic meaning and should remain explicitly named
+- in some papers it behaves like an identity-bearing or DOE variable rather
+  than a universally expected PLGA core field
+
+#### 3. Provenance / reviewer-only fields
+
+These must remain available for audit and debugging but should not be counted as
+field-value benchmark targets.
+
+- `value_source_type`
+- `candidate_notes`
+
+### Fields explicitly not benchmark-ready as current fixed targets
+
+The following current columns exist in the wide Layer 3 GT but should not be
+framed as current-system benchmark priorities until coverage and extraction
+contracts are clarified:
+
+- `helper_material_name`
+- `co_solvent_name`
+- `W1_volume_mL`
+- `internal_aqueous_phase_volume_mL`
+- `evaporation_time_h`
+- `homogenization_time_min`
+- any future sparse paper-local variable added only for one or two papers
+
+These fields may still be reviewed manually and may remain part of the GT row
+surface, but they should not drive the first round of recall/accuracy tuning.
+
+## Frozen Layer 3 Compare Contract
+
+### Compare unit
+
+The atomic compare unit is one field cell:
+
+- `(paper_key, gt_formulation_id, field_name)`
+
+Layer 3 compare must not use paper-level or row-summary-only scoring as the
+primary benchmark surface.
+
+### Alignment rule
+
+Layer 3 compare inherits formulation alignment from the frozen Layer 2 / Stage5
+row universe.
+
+Rules:
+
+- do not reopen formulation-boundary review at Layer 3
+- compare only after a stable formulation-row mapping exists
+- if row alignment is uncertain, mark the value comparison blocked rather than
+  silently comparing against a guessed row
+
+### Value-source rule
+
+For GT:
+
+- only explicitly reported values belong in GT
+- calculated or inferred values must remain blank
+
+For system-side compare:
+
+- compare against the system's extracted or source-backed resolved value surface
+- track provenance for any relation-resolved value
+- do not silently score derivation-only convenience fills as reported-value
+  successes
+
+### Required compare statuses
+
+Each compare cell must resolve to exactly one primary status:
+
+- `missing_in_system`
+- `present_and_match`
+- `present_but_mismatch`
+- `extra_in_system`
+- `blocked_alignment`
+- `not_reported_in_gt`
+
+Recommended interpretation:
+
+- `missing_in_system`
+  - GT cell is non-empty and system cell is empty
+- `present_and_match`
+  - GT cell is non-empty, system cell is non-empty, and the selected compare
+    mode says they match
+- `present_but_mismatch`
+  - GT cell is non-empty, system cell is non-empty, and compare says mismatch
+- `extra_in_system`
+  - GT cell is empty and system cell is non-empty
+- `blocked_alignment`
+  - row mapping or prerequisite alignment legality failed
+- `not_reported_in_gt`
+  - GT cell is empty by design and should not be counted as a missed recall item
+
+### Frozen compare groups
+
+All compare outputs must report metrics separately for:
+
+- `core_fixed_fields`
+- `named_extensible_variables`
+
+Current contract:
+
+- `pH_raw` belongs only to `named_extensible_variables`
+- it must not be merged into core fixed field summaries
+- it must not be hidden inside anonymous variable buckets
+
+### Minimum compare outputs
+
+A governed Layer 3 compare run should emit at least:
+
+- one cell-level TSV
+- one summary TSV
+- one error-bucket TSV
+
+Recommended names:
+
+- `layer3_value_compare_cells_v1.tsv`
+- `layer3_value_compare_summary_v1.tsv`
+- `layer3_value_error_buckets_v1.tsv`
+
+Minimum cell-level columns:
+
+- `paper_key`
+- `gt_formulation_id`
+- `matched_system_formulation_id`
+- `field_name`
+- `field_group`
+- `gt_value_raw`
+- `system_value_raw`
+- `compare_status`
+- `strict_match`
+- `relaxed_match`
+- `canonicalized_match`
+- `error_bucket`
+- `system_value_source_type`
+- `evidence_status_detail`
+
+Minimum summary outputs:
+
+- overall value recall
+- overall conditional accuracy
+- overall extra-value rate
+- per-field recall
+- per-field strict / relaxed / canonicalized accuracy
+- separate summaries for `core_fixed_fields` and `named_extensible_variables`
+- per-paper breakdown for high-risk debugging
+
 ## Proposed Evaluation Protocol
 
 ### 1. Exact-Match Fields
@@ -443,6 +761,60 @@ Keep these separate:
   - evidence exists but is ambiguous or insufficient
 
 These statuses must not be collapsed into an empty string.
+
+## Frozen Layer 3 Metric Definitions
+
+### 1. Value recall
+
+Definition:
+
+- denominator: GT cells with non-empty reported values
+- numerator: those cells whose aligned system cell is non-empty
+
+This metric answers:
+
+- did the system recover a reported value at all?
+
+### 2. Conditional accuracy
+
+Definition:
+
+- denominator: aligned cells where both GT and system are non-empty
+- numerator: cells judged matching under the selected compare mode
+
+All governed compare outputs should report at least:
+
+- `strict`
+- `relaxed`
+- `canonicalized`
+
+### 3. Extra-value rate
+
+Definition:
+
+- cells where GT is empty but system is non-empty
+
+This metric is required because Layer 3 GT excludes calculation-only or
+unsupported inferred values.
+
+### 4. Error buckets
+
+Every mismatch or miss should be assigned an error bucket.
+
+Recommended minimum buckets:
+
+- `missing_value`
+- `unsupported_text`
+- `unresolved_table`
+- `normalization_mismatch`
+- `numeric_extraction_mismatch`
+- `field_mapping_mismatch`
+- `derived_value_leakage`
+- `blocked_alignment`
+
+These buckets are the primary debugging surface for deciding whether the next
+repair belongs in Stage2 extraction, Stage3 relation resolution, Stage5 field
+materialization, evidence binding, or normalization.
 
 ## Unit Normalization Policy
 

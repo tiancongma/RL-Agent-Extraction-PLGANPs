@@ -1,0 +1,5 @@
+paper_key	anchor_final_count	anchor_gt_count	expected_repaired_behavior	new_run_status	new_final_count	preservation_result	notes
+UFXX9WXE	1	27	DOE table preserved and DOE expansion triggered	s2_2_rebuilt_s2_4b_blocked		partial	S2-2 evidence preserved Table 1 and Table 2; no fresh downstream output
+5GIF3D8W	3	26	table plus sweep preserved, not collapsed	s2_2_rebuilt_s2_4b_blocked		partial	S2-2 evidence preserved optimized formulation table excerpt; no fresh downstream output
+QLYKLPKT	3	7	both tables present, sequential structure preserved, move toward 7	s2_2_rebuilt_s2_4b_blocked		partial	S2-2 evidence preserved multiple table excerpts; no fresh downstream output
+WFDTQ4VX	27	30	no regression	s2_2_rebuilt_s2_4b_blocked		partial	No pre-LLM regression observed; no fresh downstream output

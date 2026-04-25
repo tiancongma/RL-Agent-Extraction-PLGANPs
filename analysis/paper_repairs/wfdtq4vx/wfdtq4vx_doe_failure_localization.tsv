@@ -1,0 +1,9 @@
+paper_key	boundary	table_present	doe_signal_present	doe_attempted	rows_emitted	first_failure	blocking_condition	notes
+WFDTQ4VX	upstream_table_assets	yes	yes	no	27_candidate_rows_visible_by_inspection	no		WFDTQ4VX__table_12__pdf_table.csv contains Table 1 and Table 2 DOE design material with Sr. No. rows 1..27
+WFDTQ4VX	S2_2A_candidate_segmentation	yes	yes	no	0	no		DOE-like candidates survive as candidate_table__02, __06, and __08 with design-matrix role hints
+WFDTQ4VX	S2_2B_evidence_preservation	no	no	no	0	yes	hard_drop_table_noise on all DOE-like table candidates; no formulation-surface floor added	First practical failing boundary; only candidate_table__07 survives as downstream Table 8
+WFDTQ4VX	S2_4A_prompt	yes	no	no	0	no	DOE table absent from evidence pack	Prompt contains only malformed Table 8/9 summary plus method/supporting DOE narrative
+WFDTQ4VX	S2_4B_raw_response	yes	partial	no	0	no	LLM sees DOE family semantics but not DOE table scope	Raw response emits DOE family candidate yet scopes only Table 8 and Table 9 as downstream_variant_table
+WFDTQ4VX	S2_5_semantic_objects	yes	partial	no	0	no	mis-scoped table family inherited from raw response	Semantic object preserves only Table 8 and Table 9 as non-DOE downstream tables
+WFDTQ4VX	S2_7_execution	yes	no	no	0	no	not_formulation_table	No DOE path is routed because no DOE table scope survives; execution ledger only shows Table 8 and Table 9
+WFDTQ4VX	Stage5	yes	no	no	3	no	upstream family-level undercount already fixed in place	Final table keeps only three family/control rows; this is downstream consequence, not first failure

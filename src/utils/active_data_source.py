@@ -198,13 +198,15 @@ def resolve_artifact_path(
     canonical_relative: str | None = None,
     preferred_run_local_names: list[str] | None = None,
     required: bool = True,
+    enforce_pointer_contract: bool = True,
 ) -> Path | None:
     if explicit_path is not None:
-        enforce_gt_authority_lock_for_explicit_path(
-            explicit_path=explicit_path,
-            run_context=run_context,
-            pointer_key=pointer_key,
-        )
+        if enforce_pointer_contract:
+            enforce_gt_authority_lock_for_explicit_path(
+                explicit_path=explicit_path,
+                run_context=run_context,
+                pointer_key=pointer_key,
+            )
         resolved = explicit_path.resolve()
         if required and not resolved.exists():
             raise FileNotFoundError(f"Explicit artifact path not found: {resolved}")

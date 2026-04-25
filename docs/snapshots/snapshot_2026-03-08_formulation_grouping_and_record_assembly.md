@@ -39,7 +39,7 @@ A second model may later be used as a selective verifier for high-risk formulati
 
 # Practical instruction for future AI sessions
 Read these files first, in order:
-1. `project_specification.txt`
+1. `docs/archive_project/project_specification_legacy.txt`
 2. `project/2_ARCHITECTURE.md`
 3. `project/4_DECISIONS_LOG.md`
 4. `project/PIPELINE_SCRIPT_MAP.md`

@@ -533,11 +533,14 @@ def main() -> None:
         explicit_run_dir=args.run_dir,
         explicit_run_id=str(args.run_id or "").strip(),
     )
+    compare_mode = effective_compare_mode(args.identity_freeze_mode)
+    allow_explicit_diagnostic_final_table = args.final_table_tsv is not None and compare_mode == "diagnostic"
     final_table_tsv = resolve_artifact_path(
         explicit_path=args.final_table_tsv,
         run_context=run_context,
         pointer_key="stage5_final_table_tsv",
         canonical_relative="final_formulation_table_v1.tsv",
+        enforce_pointer_contract=not allow_explicit_diagnostic_final_table,
     )
     gt_counts_tsv = resolve_artifact_path(
         explicit_path=args.gt_counts_tsv,
@@ -568,7 +571,6 @@ def main() -> None:
         )
     identity_freeze_rows = read_identity_freeze_summary(identity_freeze_summary_tsv)
     identity_freeze_by_paper, identity_freeze_failed = analyze_identity_freeze(identity_freeze_rows)
-    compare_mode = effective_compare_mode(args.identity_freeze_mode)
     benchmark_valid = False
     out_dir = (
         args.out_dir.resolve()

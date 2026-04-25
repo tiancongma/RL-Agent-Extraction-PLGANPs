@@ -34,20 +34,20 @@ There is no code path here that:
 
 Primary evidence:
 
-- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L778)
+- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L778)
   `load_manifest(...)` requires `text_path`; no table asset path is loaded.
-- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L950)
+- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L950)
   `txt = paper.text_path.read_text(...)`
-- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L951)
+- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L951)
   `txt = txt[: args.max_chars]`
-- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L326)
+- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L326)
   `build_prompt(text)` starts with `LLM_PROMPT_TEMPLATE`, optionally appends `ENUMERATION_HEAVY_TABLE_HINT`, then appends `text`
-- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L334)
+- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L334)
   `is_table_heavy_sweep_candidate(text)` is a detector over the already assembled raw text, not an evidence packer
 
 Prompt-side behavior:
 
-- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L276)
+- [auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py#L276)
   `ENUMERATION_HEAVY_TABLE_HINT` forces row-level enumeration before abstraction
 
 ## Current prompt-side behavior vs current evidence-packing behavior

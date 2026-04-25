@@ -97,6 +97,14 @@ __pypackages__/
 .codex_observer/
 
 ################################################################################
+# Local scratch / operator-only outputs
+# Local scratch / operator-only outputs
+.local/
+.hermes/
+HANDOFF.md
+execution_output.txt
+
+################################################################################
 # Static analysis / type checking
 ################################################################################
 .mypy_cache/

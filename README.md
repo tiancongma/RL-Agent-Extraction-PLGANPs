@@ -35,7 +35,7 @@ is metadata only and does not alter benchmark-valid final outputs.
 
 The authoritative manual reproduction document is:
 
-- [ACTIVE_PIPELINE_FLOW.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_PIPELINE_FLOW.md)
+- [ACTIVE_PIPELINE_FLOW.md](project/ACTIVE_PIPELINE_FLOW.md)
 
 That file defines the canonical Stage 0 to Stage 5 path, the exact stage
 completion artifacts, the active scripts for each stage, and the allowed
@@ -46,7 +46,7 @@ incremental-reuse rules.
 Current `data/results` workflows must resolve their source artifacts through the
 repository authority contract:
 
-- [ACTIVE_DATA_SOURCE_CONTRACT.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_DATA_SOURCE_CONTRACT.md)
+- [ACTIVE_DATA_SOURCE_CONTRACT.md](project/ACTIVE_DATA_SOURCE_CONTRACT.md)
 - machine-readable pointer:
   - `data/results/ACTIVE_RUN.json`
 
@@ -188,6 +188,9 @@ Stage2 authority reminder:
 - All `S2-4a` table evidence remains summary-only. Full tables are preserved in
   `S2-2` authority artifacts for deterministic execution, but they are not
   allowed back into the LLM-facing prompt surface.
+- For low-ambiguity non-DOE `full_formulation` tables, deterministic row
+  enumeration may happen after LLM table authorization from preserved `S2-2`
+  normalized payload authority; it does not require LLM row-level output.
 - When multiple plausible table summaries are present, the LLM owns semantic
   table scoping and must decide which surfaces are formulation-bearing or
   downstream/result-only.
@@ -244,11 +247,11 @@ outputs.
 
 Before changing code or pipeline documentation, read:
 
-- [AGENTS.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/AGENTS.md)
-- [2_ARCHITECTURE.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/2_ARCHITECTURE.md)
-- [PIPELINE_SCRIPT_MAP.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/PIPELINE_SCRIPT_MAP.md)
-- [ACTIVE_PIPELINE_FLOW.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_PIPELINE_FLOW.md)
-- [ACTIVE_PIPELINE_RUNBOOK.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/ACTIVE_PIPELINE_RUNBOOK.md)
+- [AGENTS.md](AGENTS.md)
+- [2_ARCHITECTURE.md](project/2_ARCHITECTURE.md)
+- [PIPELINE_SCRIPT_MAP.md](project/PIPELINE_SCRIPT_MAP.md)
+- [ACTIVE_PIPELINE_FLOW.md](project/ACTIVE_PIPELINE_FLOW.md)
+- [ACTIVE_PIPELINE_RUNBOOK.md](project/ACTIVE_PIPELINE_RUNBOOK.md)
 
 ## Reproducibility
 

@@ -11,7 +11,7 @@
     "portable_stage2_freeze_manifest": "data/frozen/dev15_stage2_freeze_v1/FREEZE_MANIFEST.md",
     "portable_stage2_resume_surface": "data/frozen/dev15_stage2_freeze_v1/s2_7/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
     "promotion_source_run": "data/results/20260412_8517d36/18_full_pipeline_benchmark_dev15_v1",
-    "baseline_membership_audit": "analysis/baseline_membership_audit_2026-04-15.md"
+    "baseline_membership_audit": "analysis/baseline_regressions/baseline_membership_audit_2026-04-15.md"
   },
   "artifact_chain": [
     {
@@ -110,7 +110,7 @@
     "Observed Stage5 exclusion behavior is stage-local evidence only and does not legalize benchmark reporting."
   ],
   "linked_audits": [
-    "analysis/baseline_membership_audit_2026-04-15.md",
+    "analysis/baseline_regressions/baseline_membership_audit_2026-04-15.md",
     "docs/audits/dev15_s2_2_replay_validation_2026-04-10.md",
     "docs/audits/deterministic_two_step_baseline_audit_2026-04-15.md"
   ],

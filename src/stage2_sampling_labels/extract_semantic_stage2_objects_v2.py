@@ -362,6 +362,19 @@ def normalize_shrunken_formulation_candidates(value: Any) -> list[dict[str, Any]
     return candidates
 
 
+def normalize_shrunken_shared_semantics(value: Any) -> dict[str, str]:
+    payload = value if isinstance(value, dict) else {}
+    return {
+        "polymer_name_raw": normalize_text(payload.get("polymer_name_raw")),
+        "drug_name": normalize_text(payload.get("drug_name")),
+        "surfactant_name": normalize_text(payload.get("surfactant_name")),
+        "stabilizer_name": normalize_text(payload.get("stabilizer_name")),
+        "organic_solvent": normalize_text(payload.get("organic_solvent")),
+        "preparation_method": normalize_text(payload.get("preparation_method")),
+        "emul_type": normalize_text(payload.get("emul_type")),
+    }
+
+
 def inheritance_marker_contract_issues(marker: dict[str, Any]) -> list[str]:
     issues: list[str] = []
     readiness = normalize_text(marker.get("marker_readiness")) or EXECUTION_READY_MARKER
@@ -645,26 +658,71 @@ def build_table_scope_locator_from_payload(payload: dict[str, Any]) -> dict[str,
     }
 
 
+def table_number_aliases(*values: Any) -> list[str]:
+    aliases: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        text = normalize_text(value)
+        if not text:
+            continue
+        normalized = normalize_token(text)
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            aliases.append(normalized)
+        for match in re.finditer(r"(?:^|[^a-z0-9])table[_\s\-]*(\d{1,3})(?:[^a-z0-9]|$)", text, flags=re.IGNORECASE):
+            alias = normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
+        for match in re.finditer(r"__table_(\d{1,3})__", text, flags=re.IGNORECASE):
+            alias = normalize_token(f"Table {int(match.group(1))}")
+            if alias and alias not in seen:
+                seen.add(alias)
+                aliases.append(alias)
+    return aliases
+
+
+def payload_locator_candidates(item: dict[str, Any]) -> list[str]:
+    return table_number_aliases(
+        item.get("table_id"),
+        item.get("source_table_id"),
+        item.get("source_table_asset_id"),
+        item.get("source_table_reference"),
+        item.get("source_csv_path"),
+        item.get("source_caption_or_title"),
+    )
+
+
 def resolve_payload_for_table_ref(table_ref: Any, normalized_payloads: list[dict[str, Any]]) -> dict[str, Any] | None:
     wanted = normalize_text(table_ref)
-    wanted_norm = normalize_token(wanted)
-    if not wanted_norm:
+    wanted_aliases = {alias for alias in table_number_aliases(wanted) if alias}
+    if not wanted_aliases:
         return None
     matches: list[dict[str, Any]] = []
     for item in normalized_payloads:
-        for candidate in [
-            item.get("table_id"),
-            item.get("source_table_id"),
-            item.get("source_table_asset_id"),
-            item.get("source_table_reference"),
-            item.get("source_csv_path"),
-        ]:
-            candidate_norm = normalize_token(candidate)
-            if candidate_norm and candidate_norm == wanted_norm:
-                matches.append(item)
-                break
+        candidate_aliases = set(payload_locator_candidates(item))
+        if wanted_aliases & candidate_aliases:
+            matches.append(item)
     if len(matches) == 1:
         return matches[0]
+    if not matches:
+        return None
+    matches.sort(
+        key=lambda item: (
+            0 if bool(item.get("preserved_by_authority_ranking")) else 1,
+            int(item.get("authority_rank") or 10_000),
+            -float(item.get("authority_score") or 0.0),
+        )
+    )
+    top = matches[0]
+    top_rank = int(top.get("authority_rank") or 10_000)
+    same_top_rank = [item for item in matches if int(item.get("authority_rank") or 10_000) == top_rank]
+    if len(same_top_rank) == 1:
+        return top
+    top_score = float(top.get("authority_score") or 0.0)
+    same_top_score = [item for item in same_top_rank if float(item.get("authority_score") or 0.0) == top_score]
+    if len(same_top_score) == 1:
+        return top
     return None
 
 
@@ -1330,6 +1388,54 @@ FRONT_MATTER_CUES = [
     "academic editor",
     "correspondence:",
 ]
+
+NARRATIVE_METADATA_SECTION_TOKENS = {
+    "abstract",
+    "introduction",
+    "materials and methods",
+    "materials & methods",
+    "methods",
+    "results and discussion",
+    "discussion",
+    "summary and conclusion",
+    "conclusion",
+    "acknowledgment",
+    "acknowledgement",
+    "references",
+}
+
+NARRATIVE_METADATA_TOKEN_HINTS = {
+    "doi:",
+    "copyright",
+    "correspondence",
+    "received",
+    "accepted",
+    "published",
+    "academic editor",
+    "department of",
+    "university",
+    "institute",
+    "email:",
+    "figure ",
+    "fig. ",
+}
+
+NARRATIVE_VARIABLE_STRUCTURE_TOKENS = {
+    "x1",
+    "x2",
+    "x3",
+    "x4",
+    "factor",
+    "factors",
+    "level",
+    "levels",
+    "concentration",
+    "ratio",
+    "formulation",
+    "formulations",
+    "batch",
+    "run",
+}
 
 
 def is_obvious_noise_line(text: str) -> bool:
@@ -2799,17 +2905,23 @@ def parse_header_cell(cell: str) -> list[str]:
 
 def derive_stable_table_id(source_csv_path: str, meta: dict[str, Any] | None = None) -> str:
     meta = meta or {}
-    explicit = normalize_text(meta.get("table_id"))
-    if explicit:
-        return explicit
-    caption = normalize_text(meta.get("caption_or_title"))
-    match = re.search(r"\btable\s+(\d+)\b", caption, flags=re.IGNORECASE)
-    if match:
-        return f"Table {int(match.group(1))}"
     path = Path(normalize_text(source_csv_path))
     stem_match = re.search(r"__table_(\d+)__", path.name, flags=re.IGNORECASE)
-    if stem_match:
-        return f"Table {int(stem_match.group(1))}"
+    path_table_id = f"Table {int(stem_match.group(1))}" if stem_match else ""
+    explicit = normalize_text(meta.get("table_id"))
+    if explicit and (not path_table_id or normalize_token(explicit) == normalize_token(path_table_id)):
+        return explicit
+    if explicit:
+        return path_table_id or explicit
+    caption = normalize_text(meta.get("caption_or_title"))
+    match = re.search(r"\btable\s+(\d+)\b", caption, flags=re.IGNORECASE)
+    caption_table_id = f"Table {int(match.group(1))}" if match else ""
+    if path_table_id and caption_table_id and normalize_token(path_table_id) != normalize_token(caption_table_id):
+        return path_table_id
+    if match:
+        return caption_table_id
+    if path_table_id:
+        return path_table_id
     return path.stem or "unknown_table"
 
 
@@ -2964,6 +3076,336 @@ def table_compact_anchor_count(item: dict[str, Any]) -> int:
         ):
             compact_count += 1
     return compact_count
+
+
+def compact_anchor_count_from_labels(labels: list[str]) -> int:
+    compact_count = 0
+    for label in labels:
+        normalized = normalize_text(label)
+        if not normalized:
+            continue
+        if len(normalized) <= 32 and (
+            re.search(r"\d", normalized)
+            or ":" in normalized
+            or normalized.lower().startswith(("f", "run", "sample", "formulation"))
+        ):
+            compact_count += 1
+    return compact_count
+
+
+def citation_like_row_count(rows: list[list[str]]) -> int:
+    citation_like = 0
+    for row in rows[:12]:
+        if not isinstance(row, list):
+            continue
+        compact_cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact_cells:
+            continue
+        row_text = " ".join(compact_cells)
+        lower = row_text.lower()
+        numbered_reference = bool(re.match(r'^\s*["\']?\[?\d{1,3}[\].)]\s+[A-Z]', row_text))
+        year_signal = bool(re.search(r"\b(19|20)\d{2}\b", row_text))
+        pages_signal = bool(re.search(r"\bpp?\.\s*\d", lower) or re.search(r"\b\d+\(\d+\):\d", row_text))
+        journal_signal = any(
+            token in lower
+            for token in [
+                "journal",
+                "int j",
+                "eur j",
+                "drug deliv",
+                "pharm",
+                "biomaterials",
+                "release",
+                "nanomedicine",
+            ]
+        )
+        bibliography_inline_signal = bool(re.search(r"\[\d{1,3}\]", row_text)) and ("vol." in lower or "pp." in lower or "et al." in lower)
+        if (numbered_reference or bibliography_inline_signal) and (year_signal or journal_signal) and (pages_signal or journal_signal):
+            citation_like += 1
+    return citation_like
+
+
+def figure_caption_like_row_count(rows: list[list[str]]) -> int:
+    figure_rows = 0
+    for row in rows[:12]:
+        if not isinstance(row, list):
+            continue
+        compact_cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact_cells:
+            continue
+        row_text = " ".join(compact_cells).lower()
+        if row_text.startswith("figure ") or row_text.startswith("fig. ") or row_text.startswith("fig ") or row_text.startswith("figure:"):
+            figure_rows += 1
+    return figure_rows
+
+
+def cid_garbage_row_count(rows: list[list[str]]) -> int:
+    cid_rows = 0
+    for row in rows[:12]:
+        if not isinstance(row, list):
+            continue
+        compact_cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact_cells:
+            continue
+        row_text = " ".join(compact_cells)
+        if len(re.findall(r"\(cid:\d+\)", row_text)) >= 2:
+            cid_rows += 1
+    return cid_rows
+
+
+def continuous_sentence_like_row_count(rows: list[list[str]]) -> int:
+    sentence_rows = 0
+    for row in rows[:12]:
+        if not isinstance(row, list):
+            continue
+        compact_cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact_cells:
+            continue
+        row_text = " ".join(compact_cells)
+        alpha_words = re.findall(r"[A-Za-z]{3,}", row_text)
+        punctuation_count = len(re.findall(r"[,:;.]|\b(and|with|that|were|was|using|showed|study)\b", row_text.lower()))
+        numeric_like = sum(1 for cell in compact_cells if re.search(r"\d", cell))
+        if len(alpha_words) >= 12 and len(row_text) >= 90 and punctuation_count >= 3 and numeric_like <= 3:
+            sentence_rows += 1
+    return sentence_rows
+
+
+def metadata_like_row_count(rows: list[list[str]]) -> int:
+    metadata_rows = 0
+    metadata_tokens = NARRATIVE_METADATA_TOKEN_HINTS | NARRATIVE_METADATA_SECTION_TOKENS
+    for row in rows[:12]:
+        if not isinstance(row, list):
+            continue
+        compact_cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not compact_cells:
+            continue
+        row_text = " ".join(compact_cells).lower()
+        if any(token in row_text for token in metadata_tokens):
+            metadata_rows += 1
+    return metadata_rows
+
+
+def structured_row_identifier_count(labels: list[str]) -> int:
+    identifier_count = 0
+    for label in labels:
+        normalized = normalize_text(label)
+        if not normalized:
+            continue
+        lower = normalized.lower()
+        if len(normalized) <= 32 and (
+            re.fullmatch(r"f\d+", normalized, flags=re.IGNORECASE)
+            or re.fullmatch(r"\d+(?:\.\d+)?", normalized)
+            or re.fullmatch(r"[A-Za-z]+\d+", normalized)
+            or lower.startswith(("run ", "batch ", "sample ", "formulation "))
+        ):
+            identifier_count += 1
+    return identifier_count
+
+
+def has_variable_structure_signal(lower_signal: str, first_labels: list[str]) -> bool:
+    if any(token in lower_signal for token in NARRATIVE_VARIABLE_STRUCTURE_TOKENS):
+        return True
+    for label in first_labels:
+        normalized = normalize_text(label).lower()
+        if re.fullmatch(r"x\d+", normalized):
+            return True
+        if normalized.startswith(("run ", "batch ", "sample ", "formulation ")):
+            return True
+    return False
+
+
+def evaluate_high_confidence_narrative_metadata_surface(
+    *,
+    rows: list[list[str]],
+    signal_text: str,
+    first_labels: list[str],
+    compact_anchor_count: int,
+    header_keywords_present: bool,
+    fraction_numeric_cells: float,
+) -> tuple[list[str], list[str]]:
+    """
+    Strict structural narrative/metadata removal layer.
+
+    Drop only when the surface is strongly narrative/metadata dominated and
+    lacks repeated row pattern, stable column/header structure, row identifiers,
+    variable structure signals, and compact numeric-column patterns.
+    """
+    lower_signal = signal_text.lower()
+    prose_like_rows = table_prose_like_row_count(rows)
+    sentence_like_rows = continuous_sentence_like_row_count(rows)
+    citation_rows = citation_like_row_count(rows)
+    figure_rows = figure_caption_like_row_count(rows)
+    metadata_rows = metadata_like_row_count(rows)
+    row_pattern = infer_row_pattern(first_labels)
+    row_identifier_hits = structured_row_identifier_count(first_labels)
+    repeated_row_pattern = row_pattern in {"F-numbered rows", "numeric runs", "letter-number identifiers"} and len(first_labels) >= 3
+    stable_column_structure = header_keywords_present or fraction_numeric_cells >= 0.18
+    compact_numeric_pattern = compact_anchor_count >= 2 or fraction_numeric_cells >= 0.16
+    variable_structure_present = has_variable_structure_signal(lower_signal, first_labels)
+    section_heading_signal = count_cue_hits(lower_signal, NARRATIVE_METADATA_SECTION_TOKENS) >= 1
+    strong_positive_signal = (
+        section_heading_signal
+        or metadata_rows >= 2
+        or citation_rows >= 2
+        or figure_rows >= 1
+    )
+
+    weak_signals: list[str] = []
+    reasons: list[str] = []
+    if sentence_like_rows >= 2 or prose_like_rows >= 3:
+        weak_signals.append("continuous_narrative_flow_present")
+    if metadata_rows >= 2:
+        weak_signals.append("metadata_tokens_present")
+    if citation_rows >= 2:
+        weak_signals.append("reference_list_rows_present")
+    if figure_rows >= 1:
+        weak_signals.append("figure_caption_rows_present")
+
+    if (
+        strong_positive_signal
+        and sentence_like_rows >= 3
+        and prose_like_rows >= 4
+        and not repeated_row_pattern
+        and not stable_column_structure
+        and row_identifier_hits == 0
+        and not variable_structure_present
+        and not compact_numeric_pattern
+    ):
+        if citation_rows >= 3 or "references" in lower_signal:
+            reasons.append("reference_list_narrative_surface")
+        elif any(token in lower_signal for token in ["correspondence", "department of", "academic editor", "email:", "university", "institute"]):
+            reasons.append("author_affiliation_metadata_surface")
+        elif figure_rows >= 1:
+            reasons.append("figure_caption_narrative_surface")
+        elif any(token in lower_signal for token in ["doi:", "copyright", "received", "accepted", "published"]):
+            reasons.append("journal_header_footer_metadata_surface")
+        else:
+            reasons.append("section_narrative_metadata_surface")
+    elif (
+        section_heading_signal
+        and sentence_like_rows >= 2
+        and prose_like_rows >= 3
+        and not repeated_row_pattern
+        and not stable_column_structure
+        and row_identifier_hits == 0
+        and not variable_structure_present
+        and compact_anchor_count <= 3
+        and fraction_numeric_cells < 0.08
+    ):
+        reasons.append("section_narrative_metadata_surface")
+    elif (
+        metadata_rows >= 4
+        and not repeated_row_pattern
+        and not stable_column_structure
+        and row_identifier_hits == 0
+        and not variable_structure_present
+        and compact_anchor_count <= 1
+        and fraction_numeric_cells < 0.05
+    ):
+        reasons.append("author_affiliation_metadata_surface")
+    elif (
+        citation_rows >= 2
+        and not repeated_row_pattern
+        and not stable_column_structure
+        and row_identifier_hits == 0
+        and not variable_structure_present
+        and compact_anchor_count <= 2
+        and fraction_numeric_cells < 0.05
+    ):
+        reasons.append("reference_list_narrative_surface")
+    elif (
+        figure_rows >= 1
+        and prose_like_rows >= 2
+        and not repeated_row_pattern
+        and not stable_column_structure
+        and row_identifier_hits == 0
+        and not variable_structure_present
+        and compact_anchor_count <= 2
+        and fraction_numeric_cells < 0.08
+    ):
+        reasons.append("figure_caption_narrative_surface")
+    return list(dict.fromkeys(reasons)), list(dict.fromkeys(weak_signals))
+
+
+def evaluate_high_confidence_not_table_surface(
+    *,
+    rows: list[list[str]],
+    signal_text: str,
+    first_labels: list[str],
+    compact_anchor_count: int,
+    header_keywords_present: bool,
+    fraction_numeric_cells: float,
+    representation_status: str,
+) -> tuple[list[str], list[str]]:
+    lower_signal = signal_text.lower()
+    prose_like_rows = table_prose_like_row_count(rows)
+    prose_label_count = sum(1 for label in first_labels if len(re.findall(r"[A-Za-z]+", normalize_text(label))) >= 8)
+    citation_rows = citation_like_row_count(rows)
+    figure_rows = figure_caption_like_row_count(rows)
+    cid_rows = cid_garbage_row_count(rows)
+    weak_signals: list[str] = []
+    reasons: list[str] = []
+
+    if count_cue_hits(lower_signal, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS) >= 2:
+        reasons.append("front_matter_or_bibliographic_surface")
+    if re.search(r"\b\d+\s+of\s+\d+\b", lower_signal):
+        reasons.append("journal_page_or_review_surface")
+    if citation_rows >= 2:
+        weak_signals.append("reference_like_rows_present")
+    if figure_rows >= 1:
+        weak_signals.append("figure_caption_like_rows_present")
+    if cid_rows >= 2:
+        weak_signals.append("cid_garbage_rows_present")
+    if prose_like_rows >= 4:
+        weak_signals.append("prose_like_rows_present")
+
+    if (
+        citation_rows >= 3
+        and prose_like_rows >= 3
+        and compact_anchor_count < 2
+        and not header_keywords_present
+        and fraction_numeric_cells < 0.18
+    ):
+        reasons.append("reference_bibliography_fragment_surface")
+    if (
+        figure_rows >= 1
+        and prose_like_rows >= 4
+        and compact_anchor_count < 2
+        and not header_keywords_present
+        and fraction_numeric_cells < 0.12
+    ):
+        reasons.append("figure_caption_fragment_surface")
+    if (
+        cid_rows >= 4
+        and compact_anchor_count < 2
+        and not header_keywords_present
+        and fraction_numeric_cells < 0.12
+    ):
+        reasons.append("ocr_cid_garbage_fragment_surface")
+    if (
+        any(token in lower_signal for token in HARD_DROP_SIGNAL_TOKENS)
+        and compact_anchor_count < 2
+        and not header_keywords_present
+        and fraction_numeric_cells < 0.15
+    ):
+        reasons.append("high_confidence_non_content_fragment")
+    if (
+        representation_status == "unrepaired_corrupted"
+        and prose_like_rows >= 4
+        and compact_anchor_count < 2
+        and not header_keywords_present
+        and fraction_numeric_cells < 0.05
+    ):
+        reasons.append("unrepaired_non_content_fragment")
+    if (
+        prose_like_rows >= 6
+        and compact_anchor_count < 2
+        and prose_label_count >= 3
+        and fraction_numeric_cells < 0.05
+        and not header_keywords_present
+    ):
+        reasons.append("caption_or_narrative_fragment_surface")
+    return list(dict.fromkeys(reasons)), list(dict.fromkeys(weak_signals))
 
 
 def clamp_float(value: float, lower: float, upper: float) -> float:
@@ -3159,44 +3601,41 @@ def primary_structural_guardrail_reasons(reasons: list[str]) -> list[str]:
 
 
 def table_hard_drop_reasons(item: dict[str, Any], *, breakdown: dict[str, float]) -> list[str]:
+    """
+    Confirmed-noise-only policy:
+    A table may be irreversibly hard-dropped only when the surface is clearly
+    pure noise or a non-content fragment. Weak, sparse, partially repaired,
+    or lower-priority scientific tables must remain preserved.
+    """
     rows = item.get("rows") or []
     meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
     signal_text = table_authority_signal_text(item)
     fraction_numeric_cells = table_fraction_numeric_cells(item)
     first_labels = [normalize_text(label) for label in table_row_label_preview(item, limit=12) if normalize_text(label)]
-    prose_label_count = sum(1 for label in first_labels if len(re.findall(r"[A-Za-z]+", label)) >= 8)
     header_keywords_hit = [
         normalize_text(value)
         for value in ensure_list(meta.get("header_keywords_hit"))
         if normalize_text(value)
     ]
-    prose_like_rows = table_prose_like_row_count(rows)
-    row_anchor_count = table_authority_row_anchor_count(item)
     representation_status = normalize_text(item.get("representation_status")).lower()
-    lower_signal = signal_text.lower()
-    reasons: list[str] = []
-    if representation_status == "unrepaired_corrupted":
-        reasons.append("unrepaired_corrupted_representation")
-    if prose_like_rows >= 3 and row_anchor_count < 3:
-        reasons.append("narrative_or_figure_caption_dominated")
-    if prose_label_count >= 3 and fraction_numeric_cells < 0.2:
-        reasons.append("prose_row_label_surface")
-    if fraction_numeric_cells < 0.08 and not header_keywords_hit and row_anchor_count < 3:
-        reasons.append("very_low_numeric_density_without_header_keywords")
-    if count_cue_hits(lower_signal, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS) >= 2:
-        reasons.append("front_matter_or_bibliographic_surface")
-    if re.search(r"\b\d+\s+of\s+\d+\b", lower_signal):
-        reasons.append("journal_page_or_review_surface")
-    if any(token in lower_signal for token in HARD_DROP_SIGNAL_TOKENS):
-        reasons.append("high_confidence_non_content_fragment")
-    if (
-        float(breakdown.get("formulation_density", 0.0) or 0.0) < 2.0
-        and float(breakdown.get("design_density", 0.0) or 0.0) < 2.0
-        and prose_like_rows >= 4
-        and row_anchor_count < 2
-    ):
-        reasons.append("no_structured_formulation_surface")
-    return list(dict.fromkeys(reasons))
+    narrative_reasons, _narrative_weak_signals = evaluate_high_confidence_narrative_metadata_surface(
+        rows=rows,
+        signal_text=signal_text,
+        first_labels=first_labels,
+        compact_anchor_count=table_compact_anchor_count(item),
+        header_keywords_present=bool(header_keywords_hit),
+        fraction_numeric_cells=fraction_numeric_cells,
+    )
+    reasons, _weak_signals = evaluate_high_confidence_not_table_surface(
+        rows=rows,
+        signal_text=signal_text,
+        first_labels=first_labels,
+        compact_anchor_count=table_compact_anchor_count(item),
+        header_keywords_present=bool(header_keywords_hit),
+        fraction_numeric_cells=fraction_numeric_cells,
+        representation_status=representation_status,
+    )
+    return list(dict.fromkeys(narrative_reasons + reasons))
 
 
 def table_primary_eligibility_signals(item: dict[str, Any], *, breakdown: dict[str, float]) -> list[str]:
@@ -3268,6 +3707,9 @@ def rank_table_authority_payloads(entries: list[dict[str, Any]]) -> list[dict[st
     top_score = float(ranked[0].get("authority_score") or 0.0) if ranked else 0.0
     primary_assigned = False
     for index, item in enumerate(ranked, start=1):
+        rows = item.get("rows") or []
+        meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+        compact_anchor_count = table_compact_anchor_count(item)
         authority_score = float(item.get("authority_score") or 0.0)
         readiness = normalize_text(item.get("selector_readiness_label")).lower()
         representation_status = normalize_text(item.get("representation_status")).lower()
@@ -3279,6 +3721,35 @@ def rank_table_authority_payloads(entries: list[dict[str, Any]]) -> list[dict[st
         primary_eligibility_signals = table_primary_eligibility_signals(item, breakdown=breakdown)
         inclusion_class = table_inclusion_class(item, breakdown=breakdown)
         hard_drop_reasons = table_hard_drop_reasons(item, breakdown=breakdown)
+        confirmed_narrative_reasons, weak_narrative_signals = evaluate_high_confidence_narrative_metadata_surface(
+            rows=rows,
+            signal_text=signal_text,
+            first_labels=table_row_label_preview(item, limit=12),
+            compact_anchor_count=compact_anchor_count,
+            header_keywords_present=bool(
+                [
+                    normalize_text(value)
+                    for value in ensure_list(meta.get("header_keywords_hit"))
+                    if normalize_text(value)
+                ]
+            ),
+            fraction_numeric_cells=table_fraction_numeric_cells(item),
+        )
+        _confirmed_not_table_reasons, weak_not_table_signals = evaluate_high_confidence_not_table_surface(
+            rows=rows,
+            signal_text=signal_text,
+            first_labels=table_row_label_preview(item, limit=12),
+            compact_anchor_count=compact_anchor_count,
+            header_keywords_present=bool(
+                [
+                    normalize_text(value)
+                    for value in ensure_list(meta.get("header_keywords_hit"))
+                    if normalize_text(value)
+                ]
+            ),
+            fraction_numeric_cells=table_fraction_numeric_cells(item),
+            representation_status=representation_status,
+        )
         weak_table = (
             authority_score < 18.0
             or readiness == "unresolved"
@@ -3328,6 +3799,28 @@ def rank_table_authority_payloads(entries: list[dict[str, Any]]) -> list[dict[st
         item["table_inclusion_class"] = inclusion_class
         item["hard_drop_reason"] = list(hard_drop_reasons)
         item["preserved_by_authority_ranking"] = inclusion_class != TABLE_INCLUSION_HARD_DROP
+        item["table_preservation_status"] = (
+            "confirmed_noise"
+            if inclusion_class == TABLE_INCLUSION_HARD_DROP
+            else "preserved_non_noise"
+        )
+        item["narrative_filter_applied"] = "yes" if confirmed_narrative_reasons else "no"
+        item["narrative_filter_reason"] = list(confirmed_narrative_reasons)
+        item["preserved_due_to_structure"] = (
+            "yes"
+            if not confirmed_narrative_reasons and bool(weak_narrative_signals)
+            else "no"
+        )
+        item["confirmed_narrative_yes_no"] = "yes" if confirmed_narrative_reasons else "no"
+        item["not_table_filter_applied"] = "yes" if hard_drop_reasons else "no"
+        item["not_table_reason"] = list(hard_drop_reasons)
+        item["preserved_due_to_ambiguity"] = (
+            "yes"
+            if not hard_drop_reasons and bool(weak_not_table_signals)
+            else "no"
+        )
+        item["confirmed_noise_yes_no"] = "yes" if inclusion_class == TABLE_INCLUSION_HARD_DROP else "no"
+        item["not_table_weak_signals"] = list(weak_not_table_signals)
         item["primary_guardrail_applied"] = "yes" if primary_guardrail_applied else "no"
         item["primary_guardrail_reason"] = list(primary_guardrail_reason)
         item["primary_eligibility_signals"] = list(primary_eligibility_signals)
@@ -4308,6 +4801,15 @@ def build_candidate_segmentation_artifact(
             "authority_tier": normalize_text(item.get("authority_tier")),
             "table_inclusion_class": normalize_text(item.get("table_inclusion_class")),
             "hard_drop_reason": item.get("hard_drop_reason") or [],
+            "narrative_filter_applied": normalize_text(item.get("narrative_filter_applied")),
+            "narrative_filter_reason": item.get("narrative_filter_reason") or [],
+            "preserved_due_to_structure": normalize_text(item.get("preserved_due_to_structure")),
+            "confirmed_narrative_yes_no": normalize_text(item.get("confirmed_narrative_yes_no")),
+            "not_table_filter_applied": normalize_text(item.get("not_table_filter_applied")),
+            "not_table_reason": item.get("not_table_reason") or [],
+            "preserved_due_to_ambiguity": normalize_text(item.get("preserved_due_to_ambiguity")),
+            "confirmed_noise_yes_no": normalize_text(item.get("confirmed_noise_yes_no")),
+            "not_table_weak_signals": item.get("not_table_weak_signals") or [],
             "authority_score_breakdown": item.get("authority_score_breakdown") or {},
             "preserved_by_authority_ranking": bool(item.get("preserved_by_authority_ranking")),
             "primary_guardrail_applied": normalize_text(item.get("primary_guardrail_applied")),
@@ -4347,6 +4849,15 @@ def build_candidate_segmentation_artifact(
                 "authority_tier": normalize_text(item.get("authority_tier")),
                 "table_inclusion_class": normalize_text(item.get("table_inclusion_class")),
                 "hard_drop_reason": item.get("hard_drop_reason") or [],
+                "narrative_filter_applied": normalize_text(item.get("narrative_filter_applied")),
+                "narrative_filter_reason": item.get("narrative_filter_reason") or [],
+                "preserved_due_to_structure": normalize_text(item.get("preserved_due_to_structure")),
+                "confirmed_narrative_yes_no": normalize_text(item.get("confirmed_narrative_yes_no")),
+                "not_table_filter_applied": normalize_text(item.get("not_table_filter_applied")),
+                "not_table_reason": item.get("not_table_reason") or [],
+                "preserved_due_to_ambiguity": normalize_text(item.get("preserved_due_to_ambiguity")),
+                "confirmed_noise_yes_no": normalize_text(item.get("confirmed_noise_yes_no")),
+                "not_table_weak_signals": item.get("not_table_weak_signals") or [],
                 "authority_score_breakdown": item.get("authority_score_breakdown") or {},
                 "preserved_by_authority_ranking": bool(item.get("preserved_by_authority_ranking")),
                 "primary_guardrail_applied": normalize_text(item.get("primary_guardrail_applied")),
@@ -4935,7 +5446,7 @@ def build_evidence_priority_selection(
         if selector_candidate_table_inclusion_class(candidate) != TABLE_INCLUSION_MUST_INCLUDE:
             continue
         if any(is_exact_table_duplicate(candidate, prior) for prior in selected_tables):
-            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_must_include_table"})
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "exact_duplicate_removed"})
             continue
         selected.append(candidate)
         selected_tables.append(candidate)
@@ -4947,15 +5458,19 @@ def build_evidence_priority_selection(
             continue
         if kind == "table" and selector_candidate_table_inclusion_class(candidate) == TABLE_INCLUSION_MUST_INCLUDE:
             continue
-        score = float(candidate["priority_score"])
-        if score < EVIDENCE_PRIORITY_THRESHOLDS.get(kind, 5.0):
-            continue
         if kind == "table":
-            if any(is_semantic_duplicate(candidate, prior) for prior in selected_tables):
-                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "semantic_duplicate_table"})
+            # Confirmed-noise-only preservation contract:
+            # every non-hard-drop table remains preserved in the pre-LLM
+            # authority surface. Table ranking may still exist for audit, but
+            # it must not decide semantic importance or survival.
+            if any(is_exact_table_duplicate(candidate, prior) for prior in selected_tables):
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "exact_duplicate_removed"})
                 continue
             selected.append(candidate)
             selected_tables.append(candidate)
+            continue
+        score = float(candidate["priority_score"])
+        if score < EVIDENCE_PRIORITY_THRESHOLDS.get(kind, 5.0):
             continue
         if kind == "materials":
             if nonlocal_selected_materials[0] >= 1:
@@ -5775,7 +6290,7 @@ def detect_shifted_numbered_matrix_view(
             if not isinstance(row, list) or anchor_col >= len(row):
                 continue
             anchor = normalize_text(row[anchor_col])
-            if not re.fullmatch(r"\d{1,3}\.?", anchor):
+            if not re.fullmatch(r"\d{1,3}\s*\.?", anchor):
                 continue
             anchor_number = int(re.sub(r"\D", "", anchor) or "0")
             trailing = [normalize_text(cell) for cell in row[anchor_col + 1 :] if normalize_text(cell)]
@@ -6066,6 +6581,11 @@ def payload_primary_eligibility_signals(payload: dict[str, Any]) -> list[str]:
 
 
 def payload_hard_drop_reasons(payload: dict[str, Any]) -> list[str]:
+    """
+    Payload-side confirmed-noise-only policy:
+    payload hard-drop remains reserved for clearly non-content table surfaces.
+    Weak or partially repaired scientific tables must stay preserved.
+    """
     raw_cells = payload.get("raw_cells") or []
     first_labels = ensure_list((payload.get("row_identity_signals") or {}).get("first_column_labels"))
     prose_label_count = sum(1 for label in first_labels if len(re.findall(r"[A-Za-z]+", normalize_text(label))) >= 8)
@@ -6074,24 +6594,25 @@ def payload_hard_drop_reasons(payload: dict[str, Any]) -> list[str]:
     source_caption = normalize_text(payload.get("source_caption_or_title")).lower()
     signal_text = " ".join([headers, source_caption]).strip()
     fraction_numeric_cells = payload_fraction_numeric_cells(payload)
-    prose_like_rows = table_prose_like_row_count(raw_cells)
     representation_status = normalize_text(payload.get("representation_status")).lower()
-    reasons: list[str] = []
-    if representation_status == "unrepaired_corrupted":
-        reasons.append("unrepaired_corrupted_representation")
-    if prose_like_rows >= 3 and len([label for label in first_labels if normalize_text(label)]) < 3:
-        reasons.append("narrative_or_figure_caption_dominated")
-    if prose_label_count >= 3 and fraction_numeric_cells < 0.2:
-        reasons.append("prose_row_label_surface")
-    if fraction_numeric_cells < 0.08 and not normalize_text(headers) and len([label for label in first_labels if normalize_text(label)]) < 3:
-        reasons.append("very_low_numeric_density_without_header_keywords")
-    if count_cue_hits(signal_text, TABLE_AUTHORITY_FRONTMATTER_DEMOTION_TOKENS) >= 2:
-        reasons.append("front_matter_or_bibliographic_surface")
-    if re.search(r"\b\d+\s+of\s+\d+\b", signal_text):
-        reasons.append("journal_page_or_review_surface")
-    if any(token in signal_text for token in HARD_DROP_SIGNAL_TOKENS):
-        reasons.append("high_confidence_non_content_fragment")
-    return list(dict.fromkeys(reasons))
+    narrative_reasons, _narrative_weak_signals = evaluate_high_confidence_narrative_metadata_surface(
+        rows=raw_cells,
+        signal_text=signal_text,
+        first_labels=first_labels,
+        compact_anchor_count=compact_anchor_count_from_labels(first_labels),
+        header_keywords_present=bool(normalize_text(headers)),
+        fraction_numeric_cells=fraction_numeric_cells,
+    )
+    reasons, _weak_signals = evaluate_high_confidence_not_table_surface(
+        rows=raw_cells,
+        signal_text=signal_text,
+        first_labels=first_labels,
+        compact_anchor_count=compact_anchor_count_from_labels(first_labels),
+        header_keywords_present=bool(normalize_text(headers)),
+        fraction_numeric_cells=fraction_numeric_cells,
+        representation_status=representation_status,
+    )
+    return list(dict.fromkeys(narrative_reasons + reasons))
 
 
 def payload_inclusion_class(payload: dict[str, Any]) -> str:
@@ -6130,6 +6651,43 @@ def apply_primary_table_guardrail_to_preserved_payloads(entries: list[dict[str, 
         signals = payload_primary_eligibility_signals(entry)
         inclusion_class = payload_inclusion_class(entry)
         hard_drop_reasons = payload_hard_drop_reasons(entry)
+        header_structure = entry.get("header_structure") if isinstance(entry.get("header_structure"), dict) else {}
+        headers = " ".join(
+            normalize_text(cell)
+            for row in ensure_list(header_structure.get("header_rows"))
+            for cell in ensure_list(row)
+        )
+        confirmed_narrative_reasons, weak_narrative_signals = evaluate_high_confidence_narrative_metadata_surface(
+            rows=ensure_list(entry.get("raw_cells")),
+            signal_text=" ".join(
+                [
+                    headers,
+                    normalize_text(entry.get("source_caption_or_title")),
+                ]
+            ).strip(),
+            first_labels=ensure_list((entry.get("row_identity_signals") or {}).get("first_column_labels")),
+            compact_anchor_count=compact_anchor_count_from_labels(
+                ensure_list((entry.get("row_identity_signals") or {}).get("first_column_labels"))
+            ),
+            header_keywords_present=bool(normalize_text(headers)),
+            fraction_numeric_cells=payload_fraction_numeric_cells(entry),
+        )
+        weak_not_table_reasons, weak_not_table_signals = evaluate_high_confidence_not_table_surface(
+            rows=ensure_list(entry.get("raw_cells")),
+            signal_text=" ".join(
+                [
+                    headers,
+                    normalize_text(entry.get("source_caption_or_title")),
+                ]
+            ).strip(),
+            first_labels=ensure_list((entry.get("row_identity_signals") or {}).get("first_column_labels")),
+            compact_anchor_count=compact_anchor_count_from_labels(
+                ensure_list((entry.get("row_identity_signals") or {}).get("first_column_labels"))
+            ),
+            header_keywords_present=bool(normalize_text(headers)),
+            fraction_numeric_cells=payload_fraction_numeric_cells(entry),
+            representation_status=normalize_text(entry.get("representation_status")).lower(),
+        )
         primary_guardrail_applied = False
         if normalize_text(entry.get("authority_tier")) == TABLE_AUTHORITY_TIER_PRIMARY and (
             inclusion_class == TABLE_INCLUSION_HARD_DROP or structural_reasons or not signals
@@ -6141,6 +6699,28 @@ def apply_primary_table_guardrail_to_preserved_payloads(entries: list[dict[str, 
         entry["primary_eligibility_signals"] = list(signals)
         entry["table_inclusion_class"] = inclusion_class
         entry["hard_drop_reason"] = list(hard_drop_reasons)
+        entry["table_preservation_status"] = (
+            "confirmed_noise"
+            if inclusion_class == TABLE_INCLUSION_HARD_DROP
+            else "preserved_non_noise"
+        )
+        entry["narrative_filter_applied"] = "yes" if confirmed_narrative_reasons else "no"
+        entry["narrative_filter_reason"] = list(confirmed_narrative_reasons)
+        entry["preserved_due_to_structure"] = (
+            "yes"
+            if not confirmed_narrative_reasons and bool(weak_narrative_signals)
+            else "no"
+        )
+        entry["confirmed_narrative_yes_no"] = "yes" if confirmed_narrative_reasons else "no"
+        entry["not_table_filter_applied"] = "yes" if hard_drop_reasons else "no"
+        entry["not_table_reason"] = list(hard_drop_reasons or weak_not_table_reasons)
+        entry["preserved_due_to_ambiguity"] = (
+            "yes"
+            if not hard_drop_reasons and bool(weak_not_table_signals)
+            else "no"
+        )
+        entry["confirmed_noise_yes_no"] = "yes" if inclusion_class == TABLE_INCLUSION_HARD_DROP else "no"
+        entry["not_table_weak_signals"] = list(weak_not_table_signals)
         if entry.get("authority_rank") in {None, ""}:
             entry["authority_rank"] = index
     return entries
@@ -6159,6 +6739,14 @@ def build_table_authority_validation_row(
     authority_rank: Any,
     authority_score: Any,
     authority_tier: str,
+    narrative_filter_applied: str,
+    narrative_filter_reason: list[str],
+    preserved_due_to_structure: str,
+    confirmed_narrative_yes_no: str,
+    not_table_filter_applied: str,
+    not_table_reason: list[str],
+    preserved_due_to_ambiguity: str,
+    confirmed_noise_yes_no: str,
 ) -> dict[str, Any]:
     raw_row_count = len(raw_cells)
     normalized_row_count = len(normalized_matrix)
@@ -6191,6 +6779,14 @@ def build_table_authority_validation_row(
         "authority_rank": authority_rank,
         "authority_score": authority_score,
         "authority_tier": authority_tier,
+        "narrative_filter_applied": narrative_filter_applied,
+        "narrative_filter_reason": "|".join(str(item) for item in ensure_list(narrative_filter_reason) if str(item).strip()),
+        "preserved_due_to_structure": preserved_due_to_structure,
+        "confirmed_narrative_yes_no": confirmed_narrative_yes_no,
+        "not_table_filter_applied": not_table_filter_applied,
+        "not_table_reason": "|".join(str(item) for item in ensure_list(not_table_reason) if str(item).strip()),
+        "preserved_due_to_ambiguity": preserved_due_to_ambiguity,
+        "confirmed_noise_yes_no": confirmed_noise_yes_no,
         "normalization_actions": "|".join(normalization_actions),
     }
 
@@ -6416,6 +7012,14 @@ def build_normalized_table_payload_artifact(
                 authority_rank=item.get("authority_rank"),
                 authority_score=item.get("authority_score"),
                 authority_tier=normalize_text(item.get("authority_tier")),
+                narrative_filter_applied=normalize_text(item.get("narrative_filter_applied")),
+                narrative_filter_reason=ensure_list(item.get("narrative_filter_reason")),
+                preserved_due_to_structure=normalize_text(item.get("preserved_due_to_structure")),
+                confirmed_narrative_yes_no=normalize_text(item.get("confirmed_narrative_yes_no")),
+                not_table_filter_applied=normalize_text(item.get("not_table_filter_applied")),
+                not_table_reason=ensure_list(item.get("not_table_reason")),
+                preserved_due_to_ambiguity=normalize_text(item.get("preserved_due_to_ambiguity")),
+                confirmed_noise_yes_no=normalize_text(item.get("confirmed_noise_yes_no")),
             )
         )
     selected_entries = apply_primary_table_guardrail_to_preserved_payloads(selected_entries)
@@ -6632,6 +7236,14 @@ def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], 
                 "authority_score": candidate.get("authority_score", ""),
                 "authority_tier": normalize_text(candidate.get("authority_tier")),
                 "preserved_by_authority_ranking": "yes" if bool(candidate.get("preserved_by_authority_ranking")) else "no" if candidate.get("candidate_type") == "table" else "",
+                "narrative_filter_applied": normalize_text(candidate.get("narrative_filter_applied")),
+                "narrative_filter_reason": "|".join(str(item) for item in ensure_list(candidate.get("narrative_filter_reason")) if str(item).strip()),
+                "preserved_due_to_structure": normalize_text(candidate.get("preserved_due_to_structure")),
+                "confirmed_narrative_yes_no": normalize_text(candidate.get("confirmed_narrative_yes_no")),
+                "not_table_filter_applied": normalize_text(candidate.get("not_table_filter_applied")),
+                "not_table_reason": "|".join(str(item) for item in ensure_list(candidate.get("not_table_reason")) if str(item).strip()),
+                "preserved_due_to_ambiguity": normalize_text(candidate.get("preserved_due_to_ambiguity")),
+                "confirmed_noise_yes_no": normalize_text(candidate.get("confirmed_noise_yes_no")),
                 "primary_guardrail_applied": normalize_text(candidate.get("primary_guardrail_applied")),
                 "primary_guardrail_reason": "|".join(str(item) for item in ensure_list(candidate.get("primary_guardrail_reason")) if str(item).strip()),
                 "unresolved_reason": normalize_text(candidate.get("unresolved_reason")),
@@ -6682,6 +7294,15 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any])
                 "confidence": "high | medium | low",
             }
         ],
+        "shared_semantics": {
+            "polymer_name_raw": "string",
+            "drug_name": "string",
+            "surfactant_name": "string",
+            "stabilizer_name": "string",
+            "organic_solvent": "string",
+            "preparation_method": "string",
+            "emul_type": "string",
+        },
     }
     evidence_text = "\n\n".join(ordered_blocks).strip()
     input_block = "Evidence pack:\n" + f"{evidence_text}\n"
@@ -6702,9 +7323,14 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any])
         "- `table_scopes` should answer what each included table means at a high level, including whether it is formulation-bearing, DOE-like, downstream-only, or non-formulation.\n"
         "- `semantic_signals` should capture paper-level semantic cues only.\n"
         "- `formulation_candidates` should describe likely formulation units only, using concise hints rather than materialized rows.\n"
+        "- `shared_semantics` should capture only globally shared synthesis or materials semantics that are explicit at the paper or method level.\n"
+        "- Prefer `shared_semantics` for concise shared fields such as polymer identity, drug identity, surfactant or stabilizer identity, organic solvent, and preparation method when these are explicit and unambiguous.\n"
+        "- Leave `shared_semantics` fields empty rather than guessing when the shared value is unclear.\n"
         "- Mark downstream handling, storage, measurement-only, or characterization-only variants at the understanding level only.\n"
         "- Keep parent-child hints only when they are explicit enough to support a high-level hint.\n"
         "- If a table is clearly DOE-like, set `is_doe=true` and use `scope_kind='doe_table'`.\n"
+        "- For variable-sweep or sweep-table papers, enumerate explicit formulation rows or formulation instances before collapsing anything into families.\n"
+        "- Do not replace explicit rowwise sweep participation with only family-level summaries when distinct tested rows are semantically present.\n"
         "- Use `scope_kind='formulation_table'` only when the table semantically represents formulation instances or formulation families rather than measurement-only outputs.\n"
         "- If an included table is supportive but not formulation-bearing, keep it in `table_scopes` with `is_formulation_bearing=false` instead of pretending it is irrelevant.\n"
         "- If a later table seems to continue a selected earlier condition, use `scope_kind='sequential_child'` and set `parent_table_hint` when possible.\n"
@@ -7117,6 +7743,7 @@ def build_live_v2_document(
                 "table_scopes": normalize_shrunken_table_scopes(parsed.get("table_scopes")),
                 "semantic_signals": normalize_shrunken_semantic_signals(parsed.get("semantic_signals")),
                 "formulation_candidates": normalize_shrunken_formulation_candidates(parsed.get("formulation_candidates")),
+                "shared_semantics": normalize_shrunken_shared_semantics(parsed.get("shared_semantics")),
             },
             authority_metadata=authority_metadata,
         )
@@ -7383,6 +8010,7 @@ def finalize_llm_first_document(
         document["table_scopes"] = normalize_shrunken_table_scopes(document.get("table_scopes"))
         document["semantic_signals"] = normalize_shrunken_semantic_signals(document.get("semantic_signals"))
         document["formulation_candidates"] = normalize_shrunken_formulation_candidates(document.get("formulation_candidates"))
+        document["shared_semantics"] = normalize_shrunken_shared_semantics(document.get("shared_semantics"))
     else:
         augment_document_with_table_markers(document)
     document["stage2_semantic_source_mode"] = STAGE2_SEMANTIC_SOURCE_MODE
@@ -8057,6 +8685,14 @@ def main() -> None:
                 "authority_score",
                 "authority_tier",
                 "preserved_by_authority_ranking",
+                "narrative_filter_applied",
+                "narrative_filter_reason",
+                "preserved_due_to_structure",
+                "confirmed_narrative_yes_no",
+                "not_table_filter_applied",
+                "not_table_reason",
+                "preserved_due_to_ambiguity",
+                "confirmed_noise_yes_no",
                 "unresolved_reason",
                 "raw_table_preview",
                 "repaired_table_preview",
@@ -8083,6 +8719,14 @@ def main() -> None:
                 "authority_rank",
                 "authority_score",
                 "authority_tier",
+                "narrative_filter_applied",
+                "narrative_filter_reason",
+                "preserved_due_to_structure",
+                "confirmed_narrative_yes_no",
+                "not_table_filter_applied",
+                "not_table_reason",
+                "preserved_due_to_ambiguity",
+                "confirmed_noise_yes_no",
                 "normalization_actions",
             ],
         )

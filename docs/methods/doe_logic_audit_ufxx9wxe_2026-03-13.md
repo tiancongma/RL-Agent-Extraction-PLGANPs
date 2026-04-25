@@ -23,9 +23,9 @@ Engineering interpretation:
 
 Primary evidence:
 
-- [paper_diagnostic_summary.tsv](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_diagnostic_summary.tsv)
-- [paper_audit_pack.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_audit_pack.md)
-- [project/4_DECISIONS_LOG.md](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/project/4_DECISIONS_LOG.md)
+- [paper_diagnostic_summary.tsv](../../data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_diagnostic_summary.tsv)
+- [paper_audit_pack.md](../../data/results/run_20260313_0950_f4912f3_dev15_current_merged_benchmark_v1/analysis/paper_audit_pack.md)
+- [project/4_DECISIONS_LOG.md](../../project/4_DECISIONS_LOG.md)
 
 # Existing DOE-related logic found
 
@@ -33,7 +33,7 @@ Primary evidence:
 
 File:
 
-- [src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py)
+- [src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py)
 
 What exists:
 
@@ -58,8 +58,8 @@ Conclusion:
 
 Files:
 
-- [src/stage1_cleaning/find_html_table_candidates_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage1_cleaning/find_html_table_candidates_v1.py)
-- [src/stage1_cleaning/extract_tables_for_keys_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage1_cleaning/extract_tables_for_keys_v1.py)
+- [src/stage1_cleaning/find_html_table_candidates_v1.py](../../src/stage1_cleaning/find_html_table_candidates_v1.py)
+- [src/stage1_cleaning/extract_tables_for_keys_v1.py](../../src/stage1_cleaning/extract_tables_for_keys_v1.py)
 
 What exists:
 
@@ -79,8 +79,8 @@ Conclusion:
 
 Files:
 
-- [src/stage3_relation/build_formulation_relation_artifacts_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage3_relation/build_formulation_relation_artifacts_v1.py)
-- [src/stage3_relation/run_formulation_relation_artifacts_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage3_relation/run_formulation_relation_artifacts_v1.py)
+- [src/stage3_relation/build_formulation_relation_artifacts_v1.py](../../src/stage3_relation/build_formulation_relation_artifacts_v1.py)
+- [src/stage3_relation/run_formulation_relation_artifacts_v1.py](../../src/stage3_relation/run_formulation_relation_artifacts_v1.py)
 
 What exists:
 
@@ -99,7 +99,7 @@ Conclusion:
 
 File:
 
-- [src/stage4_eval/eval_weak_labels_v7pilot3.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage4_eval/eval_weak_labels_v7pilot3.py)
+- [src/stage4_eval/eval_weak_labels_v7pilot3.py](../../src/stage4_eval/eval_weak_labels_v7pilot3.py)
 
 What exists:
 
@@ -119,11 +119,11 @@ Conclusion:
 
 Files:
 
-- [src/stage5_benchmark/derive_doe_coded_factors_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage5_benchmark/derive_doe_coded_factors_v1.py)
-- [src/stage5_benchmark/run_derivation_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage5_benchmark/run_derivation_v1.py)
-- [src/stage5_benchmark/build_two_table_schema_v3.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage5_benchmark/build_two_table_schema_v3.py)
-- [src/stage5_benchmark/formulation_core_signature_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage5_benchmark/formulation_core_signature_v1.py)
-- [src/stage5_benchmark/export_full_database_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage5_benchmark/export_full_database_v1.py)
+- [src/stage5_benchmark/derive_doe_coded_factors_v1.py](../../src/stage5_benchmark/derive_doe_coded_factors_v1.py)
+- [src/stage5_benchmark/run_derivation_v1.py](../../src/stage5_benchmark/run_derivation_v1.py)
+- [src/stage5_benchmark/build_two_table_schema_v3.py](../../src/stage5_benchmark/build_two_table_schema_v3.py)
+- [src/stage5_benchmark/formulation_core_signature_v1.py](../../src/stage5_benchmark/formulation_core_signature_v1.py)
+- [src/stage5_benchmark/export_full_database_v1.py](../../src/stage5_benchmark/export_full_database_v1.py)
 
 What exists:
 
@@ -145,7 +145,7 @@ Conclusion:
 
 Files:
 
-- [archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py)
+- [archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py](../../archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py)
 
 What exists:
 
@@ -179,7 +179,7 @@ Historical / archive:
 
 Confirmed overlap:
 
-- `WFDTQ4VX` DOE coordinate reconciliation exists both as active logic in [src/stage4_eval/eval_weak_labels_v7pilot3.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage4_eval/eval_weak_labels_v7pilot3.py) and as historical experimental reference in [archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py).
+- `WFDTQ4VX` DOE coordinate reconciliation exists both as active logic in [src/stage4_eval/eval_weak_labels_v7pilot3.py](../../src/stage4_eval/eval_weak_labels_v7pilot3.py) and as historical experimental reference in [archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py](../../archive/code/benchmark_specific_audit_report/test_doe_coordinate_reconciliation_v1.py).
 - Stage5 has multiple DOE-adjacent supporting tools that partially overlap around decoded factors, DOE signatures, and audit reporting.
 
 Interpretation:
@@ -256,8 +256,8 @@ Why existing scripts cannot already do it:
 
 As of 2026-03-13, the smallest justified upstream fix is now implemented:
 
-- [src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py)
-- additive integration inside [src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py](/c:/Users/tianc/Downloads/GitHub/RL-Agent-Extraction-PLGANPs/src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py)
+- [src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py](../../src/stage2_sampling_labels/build_numbered_doe_row_candidates_v1.py)
+- additive integration inside [src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py](../../src/stage2_sampling_labels/auto_extract_weak_labels_v7pilot_r3_fixparse.py)
 
 Implemented scope:
 

@@ -80,6 +80,12 @@ Benchmark-legality clarification:
   is the governing example:
   it reached Stage5 final-table materialization but remained diagnostic-only
   because the identity-freeze contract failed.
+- Diagnostic-only compare workflows may compare an explicit new Stage5 final
+  table or explicit `--run-dir` against the locked GT authority without first
+  promoting that lineage into `ACTIVE_RUN.json`.
+- Under this diagnostic exception, GT authority remains locked, but the
+  compared final table may vary so diagnosis baselines can be evaluated against
+  the same frozen GT.
 
 Complete pipeline does not mean forced full recomputation.
 
@@ -325,6 +331,16 @@ Frozen authority contract:
   project, and bridge only within the authorized semantic scope for the run.
 - In `llm_first_composite` mode, deterministic DOE row expansion is lawful only
   within an LLM-declared DOE scope.
+- In `llm_first_composite` mode, bounded simple-table deterministic
+  enumeration is lawful only inside the non-DOE table-row execution unit and
+  only after LLM formulation-table authorization.
+- This bounded simple-table path:
+  - reads preserved `S2-2` normalized payload authority
+  - does not require LLM row-level output
+  - applies only to low-ambiguity `full_formulation` tables with stable
+    first-column row identity
+  - must not take over DOE matrices, non-DOE sweep recovery, or cross-table
+    decode cases
 
 Current governed repair note:
 
@@ -337,7 +353,10 @@ Current governed repair note:
   - DOE execution path repaired on-path for `UFXX9WXE`, with `26`
     deterministic rows emitted in
     `data/results/20260406_ced19d6/07_doe_fu_ufxx_scopefix`
-  - non-DOE table-row execution partially repaired only
+  - non-DOE table-row execution now includes a bounded simple-table
+    deterministic enumeration rule validated on `INMUTV7L`
+  - that rule is deterministic, post-authorization, and replay-compatible
+    from frozen raw responses
   - the dominant remaining blocker for broader coverage is upstream missing
     `table_formulation_scopes` in Stage2 extraction or selector or
     evidence-handoff artifacts

@@ -1,0 +1,4 @@
+paper_key	hard_gate_pass	failure_labels	satisfied_paths	has_method_evidence	has_materials_evidence	has_supporting_evidence	minimum_sufficiency_pass	path1_formulation_table_summary	path1_table_ids	path2_method_plus_table_adjacent_text	path3_method_plus_explicit_formulation_text	summary_only_pass	selector_boundary_pass	prompt_legality_pass	table_summary_count	must_include_payload_count	must_include_preserved_count	missing_must_include_table_ids	non_summary_table_block_ids	prompt_legality_failures	prompt_length	ordered_block_order
+L3H2RS2H	yes		path1	yes	yes	yes	yes	yes	Table 1|Table 3	no	no	yes	yes	yes	2	3	3				7929	metadata > method > method > materials > table > table > table > supporting
+INMUTV7L	yes		path1	yes	no	no	yes	yes	Table 1|Table 2|Table 3|Table 4	no	no	yes	yes	yes	4	4	4				8109	metadata > method > table > table > table > table
+V99GKZEI	yes		path1	yes	yes	no	yes	yes	Table 1	no	no	yes	yes	yes	1	1	1				7627	metadata > method > method > materials > table

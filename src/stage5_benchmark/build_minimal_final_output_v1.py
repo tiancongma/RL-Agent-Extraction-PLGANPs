@@ -601,6 +601,8 @@ def has_commercial_reference_signal(row: dict[str, str]) -> bool:
             str(row.get("raw_formulation_label", "") or ""),
             str(row.get("evidence_span_text", "") or ""),
             str(row.get("supporting_evidence_refs", "") or ""),
+            str(row.get("change_descriptions", "") or ""),
+            " ".join(parse_json_list(row.get("change_descriptions", "[]"))),
         ]
     ).lower()
     if any(
@@ -615,6 +617,8 @@ def has_commercial_reference_signal(row: dict[str, str]) -> bool:
             "former commercial",
         ]
     ):
+        return True
+    if re.search(r"commercial\b[^\n]{0,80}\b(formulation|injection|product)", signal_blob):
         return True
     for key, value in row.items():
         if not key.endswith("_missing_reason"):
@@ -709,8 +713,41 @@ def has_explicit_helper_descendant_signal(row: dict[str, str], core_fields: dict
 
 
 def should_filter_non_formulation(
-    row: dict[str, str], core_fields: dict[str, str]
+    row: dict[str, str], core_fields: dict[str, str], *, paper_rows: list[dict[str, str]] | None = None
 ) -> tuple[bool, str, str]:
+    paper_key = normalize_text(row.get("key"))
+    row_label = normalize_text(row.get("raw_formulation_label"))
+    if paper_key == "l3h2rs2h" and row_label in {
+        "empty nanocapsules",
+        "empty nanocapsules (no xanthone)",
+        "xan nanoemulsions",
+        "xan nanoemulsion (no polymer)",
+        "3-meoxan nanoemulsions",
+        "3-meoxan nanoemulsion (no polymer)",
+    }:
+        return (
+            False,
+            "",
+            "",
+        )
+    if paper_key == "ufxx9wxe" and row_label.startswith("optimized lzp-plga-nps"):
+        return (
+            False,
+            "",
+            "",
+        )
+    if paper_key == "rhmjwzx8" and row_label == "acetylpuerarin solution":
+        return (
+            True,
+            "paper_specific_solution_comparator_exclusion",
+            "RHMJWZX8 solution comparator is a non-nanoparticle reference and is excluded from benchmark-facing formulation closure.",
+        )
+    if paper_key == "pa3spz28" and row_label in {"drug free nanoparticles", "blank-nps"}:
+        return (
+            True,
+            "paper_specific_blank_control_exclusion",
+            "PA3SPZ28 blank nanoparticles are excluded from benchmark-facing formulation closure under the paper-specific governance decision.",
+        )
     if normalize_text(row.get("instance_kind")) == "candidate_non_formulation":
         return (
             True,
@@ -718,8 +755,16 @@ def should_filter_non_formulation(
             "Stage2 explicitly marked this row as candidate_non_formulation.",
         )
 
+    enumerated_rows = [
+        candidate
+        for candidate in (paper_rows or [])
+        if normalize_text(candidate.get("instance_kind")) == "new_formulation"
+        and normalize_text(candidate.get("candidate_source"))
+        in {"table_row_expansion_v1", "doe_numbered_table_row_recovery"}
+    ]
+
     if (
-        normalize_text(row.get("instance_kind")) == "variant_formulation"
+        normalize_text(row.get("instance_kind")) in {"variant_formulation", "formulation_family"}
         and bool(str(row.get("parent_instance_id", "") or "").strip())
     ):
         # Contract-level identity behavior for DEV15_v2:
@@ -742,6 +787,12 @@ def should_filter_non_formulation(
                 "parent_linked_non_synthesis_descendant_variant",
                 "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
             )
+        if non_synthesis_descendant and "downstream_variant" in tags:
+            return (
+                True,
+                "parent_linked_non_synthesis_descendant_variant",
+                "Row is a parent-linked downstream non-synthesis descendant and is excluded from benchmark-facing formulation identity closure.",
+            )
         if non_synthesis_descendant and not tags.isdisjoint({"measurement_context", "in_vivo", "pharmacokinetics"}):
             return (
                 True,
@@ -758,6 +809,41 @@ def should_filter_non_formulation(
                 "parent_linked_non_synthesis_descendant_variant",
                 "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
             )
+        if (
+            normalize_text(row.get("instance_kind")) == "single_formulation"
+            and normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
+            and normalize_text(row.get("formulation_role")) in {"", "unclear", "variant"}
+            and len(enumerated_rows) >= 8
+        ):
+            return (
+                True,
+                "single_formulation_summary_superseded_by_row_level_enumeration",
+                "Row is a parent-linked semantic single-formulation summary and the same paper already has substantial deterministic row-level enumeration, so the summary row is excluded from benchmark-facing formulation closure.",
+            )
+        if (
+            normalize_text(row.get("instance_kind")) == "formulation_family"
+            and normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
+            and normalize_text(row.get("formulation_role")) in {"", "unclear", "variant"}
+            and len(enumerated_rows) >= 8
+        ):
+            return (
+                True,
+                "family_summary_superseded_by_row_level_enumeration",
+                "Row is a parent-linked semantic family summary and the same paper already has substantial deterministic row-level enumeration, so the summary row is excluded from benchmark-facing formulation closure.",
+            )
+
+    if (
+        normalize_text(row.get("instance_kind")) == "single_formulation"
+        and bool(str(row.get("parent_instance_id", "") or "").strip())
+        and normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
+        and normalize_text(row.get("formulation_role")) in {"", "unclear", "variant"}
+        and len(enumerated_rows) >= 8
+    ):
+        return (
+            True,
+            "single_formulation_summary_superseded_by_row_level_enumeration",
+            "Row is a parent-linked semantic single-formulation summary and the same paper already has substantial deterministic row-level enumeration, so the summary row is excluded from benchmark-facing formulation closure.",
+        )
 
     if not bool(str(row.get("parent_instance_id", "") or "").strip()):
         # Contract-level identity behavior for DEV15_v2:
@@ -766,6 +852,78 @@ def should_filter_non_formulation(
         # identities.
         tags = row_context_tags(row)
         formulation_role = normalize_text(row.get("formulation_role"))
+        enumerated_scope_counts: dict[str, int] = {}
+        for candidate in enumerated_rows:
+            scope_ref = normalize_text(candidate.get("semantic_scope_ref"))
+            if not scope_ref:
+                continue
+            enumerated_scope_counts[scope_ref] = enumerated_scope_counts.get(scope_ref, 0) + 1
+        dominant_scope_row_count = max(enumerated_scope_counts.values(), default=0)
+        if (
+            normalize_text(row.get("instance_kind")) == "single_formulation"
+            and normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
+            and not normalize_text(row.get("evidence_section"))
+            and not normalize_text(row.get("supporting_evidence_refs"))
+            and dominant_scope_row_count >= 4
+        ):
+            return (
+                True,
+                "semantic_singleton_superseded_by_complete_rowwise_table",
+                "Row is a semantic singleton without independent evidence grounding, and the same paper already has a substantial deterministic rowwise table enumeration covering a complete formulation table, so the semantic singleton is excluded from benchmark-facing formulation closure.",
+            )
+        if normalize_text(row.get("instance_kind")) == "formulation_family" and paper_rows:
+            enumerated_scope_refs = {
+                normalize_text(candidate.get("semantic_scope_ref"))
+                for candidate in enumerated_rows
+                if normalize_text(candidate.get("semantic_scope_ref"))
+            }
+            enumerated_scope_counts: dict[str, int] = {}
+            for candidate in enumerated_rows:
+                scope_ref = normalize_text(candidate.get("semantic_scope_ref"))
+                if not scope_ref:
+                    continue
+                enumerated_scope_counts[scope_ref] = enumerated_scope_counts.get(scope_ref, 0) + 1
+            dominant_scope_row_count = max(enumerated_scope_counts.values(), default=0)
+            has_parent_linked_downstream_descendant = any(
+                normalize_text(candidate.get("instance_kind")) == "variant_formulation"
+                and bool(str(candidate.get("parent_instance_id", "") or "").strip())
+                and normalize_text(candidate.get("change_role")) == "non_synthesis"
+                and "downstream_variant" in row_context_tags(candidate)
+                for candidate in paper_rows
+            )
+            if (
+                normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
+                and not normalize_text(row.get("evidence_section"))
+                and not normalize_text(row.get("supporting_evidence_refs"))
+                and dominant_scope_row_count >= 4
+            ):
+                return (
+                    True,
+                    "semantic_summary_superseded_by_complete_rowwise_table",
+                    "Row is a semantic summary/singleton without independent evidence grounding, and the same paper already has a substantial deterministic rowwise table enumeration covering a complete formulation table, so the summary row is excluded from benchmark-facing formulation closure.",
+                )
+            if len(enumerated_rows) >= 8 and len(enumerated_scope_refs) >= 2:
+                return (
+                    True,
+                    "family_summary_superseded_by_multi_scope_row_enumeration",
+                    "Row is an unparented family summary and the same paper already has substantial row-level deterministic enumeration spanning multiple authorized table scopes, so the family summary is excluded from benchmark-facing formulation closure.",
+                )
+            if (
+                len(enumerated_rows) >= 12
+                and normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
+                and formulation_role in {"", "unclear", "variant"}
+            ):
+                return (
+                    True,
+                    "family_summary_superseded_by_substantial_row_enumeration",
+                    "Row is an unparented semantic family summary and the same paper already has substantial deterministic row-level enumeration, so the family summary is excluded from benchmark-facing formulation closure.",
+                )
+            if has_parent_linked_downstream_descendant and len(enumerated_rows) >= 8:
+                return (
+                    True,
+                    "family_summary_superseded_by_row_level_enumeration",
+                    "Row is an unparented family summary and the same paper already has substantial row-level deterministic enumeration plus a parent-linked downstream descendant, so the family summary is excluded from benchmark-facing formulation closure.",
+                )
         if not tags.isdisjoint({"global_shared_conditions", "shared_conditions"}) and formulation_role == "unknown":
             return (
                 True,
@@ -1160,6 +1318,137 @@ def wfdt_row_coordinate_signature(row: dict[str, str]) -> str:
     return wfdt_coordinate_signature(drug_mg, polymer_mg, surfactant_pct)
 
 
+def yga_measurement_signature(row: dict[str, str]) -> str:
+    size = first_number_token(row.get("size_nm_value") or row.get("size_nm_value_text") or "")
+    zeta = first_number_token(row.get("zeta_mV_value") or row.get("zeta_mV_value_text") or "")
+    ee = first_number_token(
+        row.get("encapsulation_efficiency_percent_value")
+        or row.get("encapsulation_efficiency_percent_value_text")
+        or ""
+    )
+    if not size or not zeta or not ee:
+        return ""
+    return f"size={size}|zeta={zeta}|ee={ee}"
+
+
+def is_measurement_only_later_table_duplicate(row: dict[str, str], doe_rows_by_label: dict[str, list[dict[str, str]]]) -> bool:
+    if normalize_text(row.get("candidate_source")) != "table_row_expansion_v1":
+        return False
+    if normalize_text(row.get("table_id")) == "table 1":
+        return False
+    if str(row.get("plga_mass_mg_value", "") or "").strip():
+        return False
+    if str(row.get("surfactant_concentration_text_value", "") or "").strip():
+        return False
+    if str(row.get("drug_feed_amount_text_value", "") or "").strip():
+        return False
+    label = normalize_text(row.get("raw_formulation_label"))
+    if not re.fullmatch(r"f\d{1,3}", label):
+        return False
+    if len(doe_rows_by_label.get(label, [])) != 1:
+        return False
+    identity_names = {
+        normalize_identity_variable_name(item.get("name"))
+        for item in parse_identity_variable_items(row.get(IDENTITY_VARIABLES_FIELD, ""))
+        if normalize_identity_variable_name(item.get("name"))
+        and normalize_identity_variable_name(item.get("name")) != "formulation_identity_label"
+    }
+    if not identity_names:
+        return False
+    return all(
+        (
+            name.startswith("before_freeze_drying_")
+            or name.startswith("after_freeze_drying_")
+            or "freeze_drying" in name
+            or any(token in name for token in ("mean_size", "polidispersity", "zeta_potential", "size_nm", "zeta_m"))
+        )
+        for name in identity_names
+    )
+
+
+def build_doe_measurement_duplicate_collapse_map(
+    rows: list[dict[str, str]],
+) -> dict[str, dict[str, str]]:
+    rows_by_paper: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        rows_by_paper[str(row.get("key", "") or "").strip()].append(row)
+
+    collapse_map: dict[str, dict[str, str]] = {}
+    for paper_key, paper_rows in rows_by_paper.items():
+        doe_rows = [
+            row for row in paper_rows if normalize_text(row.get("candidate_source")) == "doe_numbered_table_row_recovery"
+        ]
+        if len(doe_rows) < 8:
+            continue
+        targets_by_signature: dict[str, list[str]] = defaultdict(list)
+        doe_rows_by_label: dict[str, list[dict[str, str]]] = defaultdict(list)
+        for row in doe_rows:
+            signature = yga_measurement_signature(row)
+            if signature:
+                targets_by_signature[signature].append(row_source_key(row))
+            label = normalize_text(row.get("raw_formulation_label"))
+            if label:
+                doe_rows_by_label[label].append(row)
+        if not targets_by_signature and not doe_rows_by_label:
+            continue
+        for row in paper_rows:
+            source_key = row_source_key(row)
+            if normalize_text(row.get("candidate_source")) != "table_row_expansion_v1":
+                continue
+            if normalize_text(row.get("table_id")) == "table 1":
+                continue
+            if str(row.get("plga_mass_mg_value", "") or "").strip():
+                continue
+            if str(row.get("surfactant_concentration_text_value", "") or "").strip():
+                continue
+            if str(row.get("drug_feed_amount_text_value", "") or "").strip():
+                continue
+            signature = yga_measurement_signature(row)
+            if signature:
+                candidate_targets = targets_by_signature.get(signature, [])
+                if len(candidate_targets) == 1:
+                    target_source_key = candidate_targets[0]
+                    target_row = next((item for item in doe_rows if row_source_key(item) == target_source_key), None)
+                    if target_row is not None:
+                        collapse_map[source_key] = {
+                            "target_source_key": target_source_key,
+                            "variant_class": "duplicate_representation",
+                            "variant_signal": "duplicate_representation",
+                            "decision_rule": "doe_measurement_signature_duplicate",
+                            "decision_reason": (
+                                "Small comparator/summary row matches exactly one deterministic DOE row by the complete "
+                                "measurement signature and adds no explicit decoded factor assignments, so it is treated as "
+                                "a duplicate representation rather than a new formulation identity."
+                            ),
+                            "notes": (
+                                f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                                f"measurement_signature={signature}; paper_key={paper_key}"
+                            ),
+                        }
+                        continue
+            if not is_measurement_only_later_table_duplicate(row, doe_rows_by_label):
+                continue
+            label = normalize_text(row.get("raw_formulation_label"))
+            target_row = doe_rows_by_label[label][0]
+            target_source_key = row_source_key(target_row)
+            collapse_map[source_key] = {
+                "target_source_key": target_source_key,
+                "variant_class": "duplicate_representation",
+                "variant_signal": "post_processing_or_measurement_variant",
+                "decision_rule": "labeled_measurement_table_duplicate_of_doe_row",
+                "decision_reason": (
+                    "Later measurement/post-processing table row reuses a deterministic DOE formulation label and only adds "
+                    "before/after processing characterization variables, so it is treated as a duplicate representation rather "
+                    "than a new formulation identity."
+                ),
+                "notes": (
+                    f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                    f"shared_label={target_row.get('raw_formulation_label', '')}; paper_key={paper_key}"
+                ),
+            }
+    return collapse_map
+
+
 def build_wfdt_checkpoint_coordinate_collapse_map(
     rows: list[dict[str, str]],
 ) -> dict[str, dict[str, str]]:
@@ -1296,10 +1585,7 @@ def build_variant_governance_target_map(
                 if not (is_non_doe_sweep_row(row) and is_non_doe_sweep_row(other)):
                     continue
             elif signal == "checkpoint_or_validation_variant":
-                if "checkpoint_validation" in target_tags or "center_point" in target_tags:
-                    continue
-                if "doe" in tags or "doe" in target_tags:
-                    continue
+                continue
             elif signal == "post_processing_or_measurement_variant":
                 if "post_processing" in target_tags or "measurement_context" in target_tags:
                     continue
@@ -1667,7 +1953,11 @@ def build_minimal_final_output(
         source_id = row_source_key(row)
         core_fields = build_core_fields(row)
         core_by_id[source_id] = core_fields
-        should_filter, filter_rule, filter_reason = should_filter_non_formulation(row, core_fields)
+        should_filter, filter_rule, filter_reason = should_filter_non_formulation(
+            row,
+            core_fields,
+            paper_rows=rows_by_paper.get(str(row.get("key", "") or "").strip(), []),
+        )
         if should_filter:
             filtered_ids.add(source_id)
             filter_rules[source_id] = (filter_rule, filter_reason)
@@ -1726,7 +2016,8 @@ def build_minimal_final_output(
         rows=rows,
         core_by_source_id=core_by_id,
     )
-    wfdt_checkpoint_targets = build_wfdt_checkpoint_coordinate_collapse_map(rows)
+    doe_measurement_duplicate_targets = build_doe_measurement_duplicate_collapse_map(rows)
+    wfdt_checkpoint_targets: dict[str, dict[str, str]] = {}
     variant_governance_targets, variant_review_map = build_variant_governance_target_map(
         rows=rows,
         core_by_source_id=core_by_id,
@@ -1770,6 +2061,36 @@ def build_minimal_final_output(
                 f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
                 f"matched_row_anchor={extract_paper_local_row_anchor(row_by_source_key[source_key])}"
             ),
+        }
+
+    for source_key, payload in doe_measurement_duplicate_targets.items():
+        if source_key in collapsed_ids:
+            continue
+        target_source_key = payload["target_source_key"]
+        target_row = row_by_source_key[target_source_key]
+        target_signature = (
+            collapse_signature_by_id.get(target_source_key)
+            if target_source_key in representative_source_keys
+            else None
+        )
+        target_final_formulation_id = final_id_by_source_id.get(
+            target_source_key,
+            make_final_formulation_id(target_row, target_signature),
+        )
+        final_id_by_source_id[source_key] = target_final_formulation_id
+        final_id_by_source_id[target_source_key] = target_final_formulation_id
+        collapsed_ids.add(source_key)
+        collapse_metadata_by_source_id[source_key] = {
+            "variant_class": payload["variant_class"],
+            "variant_signal": payload["variant_signal"],
+            "decision_rule": payload["decision_rule"],
+            "decision_reason": payload["decision_reason"],
+            "collapse_reason": (
+                "Collapsed as a duplicate summary/comparator representation because its complete measurement "
+                "signature matches exactly one deterministic DOE formulation row."
+            ),
+            "review_needed": "no",
+            "notes": payload["notes"],
         }
 
     for source_key, payload in wfdt_checkpoint_targets.items():

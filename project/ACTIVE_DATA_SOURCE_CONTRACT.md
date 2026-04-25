@@ -156,6 +156,34 @@ Hard rules under GT authority lock:
   historical memory
 - if an explicit GT path differs from the contracted path, the script must fail
 
+## Diagnostic Compare Exception
+
+The GT authority lock does not require diagnostic-only compare workflows to
+reuse the contracted Stage5 final table from `ACTIVE_RUN.json`.
+
+For diagnostic compare workflows:
+
+- GT artifacts remain locked to the contracted GT authority files
+- the compared Stage5 final table may be supplied explicitly by CLI path or
+  explicit `--run-dir`
+- the compare output must record:
+  - `source_run_dir`
+  - `source_run_id`
+  - `source_files.final_table_tsv`
+  - `compare_mode=diagnostic`
+  - `benchmark_valid=no`
+- explicit diagnostic final-table paths must not silently update or replace
+  `ACTIVE_RUN.json`
+
+Hard rules for this exception:
+
+- the exception applies only to the compared Stage5 final table or explicit
+  diagnostic source run
+- it does not relax GT locking for `layer1_gt_path`, `layer2_gt_path`, or
+  `layer3_gt_path`
+- it does not promote the compared diagnostic lineage to authority merely
+  because compare outputs were written
+
 DEV15 frozen GT authority v1 currently lives under:
 
 - `data/cleaned/gt_authority/v1/`

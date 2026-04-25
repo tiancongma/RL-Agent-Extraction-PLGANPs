@@ -1,0 +1,6 @@
+check	result(pass/fail)	notes
+build_mem_v1 execution	pass	status=pass; sources=112; runs=46; lineage=39; decisions=16; errors=462; prompts=35; index=598
+check_mem_v1 execution	pass	status=pass; idx.tsv=598; run.tsv=46; lin.tsv=39; dec.tsv=16; err.tsv=462; prm.tsv=35
+number of historical_missing_source entries	pass	0 in the rebuilt memory surface
+number of stale entries	pass	1332 stale_memory_entry references were present in the pre-rebuild HEAD memory tables and were removed by rebuild
+number of fixed path bugs	pass	3 tooling bugs fixed: Path.parents slice crash; legacy-only run-id parsing; missing v2 bucket parent run rows

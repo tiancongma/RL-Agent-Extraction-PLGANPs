@@ -1,0 +1,7 @@
+paper_key	before_prompt_size	after_prompt_size	before_table_count	after_table_count	real_key_tables_preserved_yes_no	pseudo_tables_removed_yes_no	classification	notes
+WFDTQ4VX	20261	19288	16	15	yes	yes	NEEDS_COMPACTION	Prompt shrank slightly; real DOE tables remained, but several pseudo-table-like surfaces still remain. Removed: WFDTQ4VX__table_16__pdf_table.csv, WFDTQ4VX__table_17__pdf_table.csv. Added: WFDTQ4VX__table_08__pdf_table.csv.
+5ZXYABSU	16790	14909	14	12	yes	yes	LARGE_BUT_SAFE	Prompt shrank materially; key formulation tables remained and obvious pseudo-tables were removed. Removed: 5ZXYABSU__table_09__pdf_table.csv, 5ZXYABSU__table_10__pdf_table.csv.
+UFXX9WXE	19458	19458	17	17	yes	no	NEEDS_COMPACTION	Key Box-Behnken tables remained, but this narrow NOT_TABLE filter did not shrink the prompt pack.
+INMUTV7L	13036	13036	11	11	yes	no	LARGE_BUT_SAFE	Guard stayed stable with no prompt change.
+WIVUCMYG	9805	9805	6	6	yes	no	OK	DOE guard stayed unchanged and compact.
+5GIF3D8W	15291	15291	7	7	yes	no	LARGE_BUT_SAFE	Guard stayed stable with no prompt change.

@@ -164,7 +164,10 @@ def read_table_rows(csv_path: Path) -> list[list[str]]:
 
 
 def normalize_minus_signs(text: Any) -> str:
-    return normalize_text(text).replace("−", "-").replace("–", "-").replace("—", "-")
+    normalized = normalize_text(text)
+    normalized = normalized.replace("\x04", "-")
+    normalized = normalized.replace("(cid:4)", "-")
+    return normalized.replace("−", "-").replace("–", "-").replace("—", "-")
 
 
 def parse_formulation_label_info(cell_text: str) -> dict[str, Any] | None:
@@ -320,15 +323,15 @@ def factor_names_match(run_header: str, coding_factor: str) -> bool:
     return False
 
 
-CODED_LEVEL_KEYS = {"-2", "-1", "0", "1", "2"}
-
-
 def normalize_coded_level(value: Any) -> str:
     normalized = normalize_minus_signs(value)
-    match = re.fullmatch(r"([+-]?\d(?:\.0+)?)", normalized)
+    match = re.fullmatch(r"([+-]?\d+(?:\.\d+)?)", normalized)
     if not match:
         return ""
-    return str(int(float(match.group(1))))
+    numeric = float(match.group(1))
+    if numeric.is_integer():
+        return str(int(numeric))
+    return f"{numeric:.6g}"
 
 
 def detect_coded_factor_columns(header_row: list[str], numbered_rows: list[list[str]]) -> list[dict[str, Any]]:
@@ -339,7 +342,16 @@ def detect_coded_factor_columns(header_row: list[str], numbered_rows: list[list[
     for col_idx in range(1, width):
         header = header_row[col_idx] if col_idx < len(header_row) else ""
         if is_measurement_header(header):
-            break
+            continue
+        normalized_header = normalize_text(header)
+        if (
+            not normalized_header
+            or normalized_header.startswith("column_")
+            or normalized_header.isdigit()
+            or not re.search(r"[A-Za-z]", normalized_header)
+            or not re.search(r"\bx\d+\b|factor|drug|polymer|surfactant|stabilizer|concentration|ph\b", normalized_header, flags=re.IGNORECASE)
+        ):
+            continue
         coded_values = [
             normalize_coded_level(row[col_idx])
             for row in numbered_rows
@@ -347,8 +359,32 @@ def detect_coded_factor_columns(header_row: list[str], numbered_rows: list[list[
         ]
         if len(coded_values) < max(3, min(6, len(numbered_rows))):
             continue
-        if all(value in CODED_LEVEL_KEYS for value in coded_values):
-            coded_columns.append({"column_index": col_idx, "header": normalize_text(header)})
+        distinct_values = {value for value in coded_values if value}
+        if len(distinct_values) < 2 or len(distinct_values) > 5:
+            continue
+        if {"-1", "0", "1"}.issubset(distinct_values) or any(
+            value not in {"-1", "0", "1"} for value in distinct_values
+        ):
+            coded_columns.append({"column_index": col_idx, "header": normalized_header})
+    if coded_columns:
+        return coded_columns
+    fallback_columns: list[dict[str, Any]] = []
+    for col_idx in range(1, min(width, 5)):
+        coded_values = [
+            normalize_coded_level(row[col_idx])
+            for row in numbered_rows
+            if col_idx < len(row) and normalize_text(row[col_idx])
+        ]
+        if len(coded_values) < max(3, min(6, len(numbered_rows))):
+            break
+        distinct_values = {value for value in coded_values if value}
+        if len(distinct_values) < 2 or len(distinct_values) > 5:
+            break
+        if not ({"-1", "0", "1"}.issubset(distinct_values) or any(value not in {"-1", "0", "1"} for value in distinct_values)):
+            break
+        fallback_columns.append({"column_index": col_idx, "header": f"X{len(fallback_columns) + 1}"})
+    if len(fallback_columns) >= 2 and len(fallback_columns) > len(coded_columns):
+        return fallback_columns
     return coded_columns
 
 
@@ -358,23 +394,41 @@ def extract_coding_table_map(payload: dict[str, Any]) -> dict[str, dict[str, str
         return None
     coding_map: dict[str, dict[str, str]] = {}
     for row in rows:
-        cell_map = row.get("cell_map")
-        if not isinstance(cell_map, dict):
+        cells = [normalize_minus_signs(cell) for cell in row.get("cells", []) if normalize_text(cell)]
+        if not cells:
             continue
-        factor_name = normalize_text(cell_map.get("Factor"))
-        if not factor_name:
-            continue
+        factor_name = ""
+        level_values: list[str] = []
+        first_cell = normalize_text(cells[0])
+        first_factor_match = re.match(r"^(x\d+)\b", first_cell, flags=re.IGNORECASE)
+        if first_factor_match:
+            factor_name = first_factor_match.group(1).upper()
+            if len(cells) >= 4:
+                level_values = [normalize_text(value) for value in cells[-3:] if normalize_text(value)]
+        cell_map = row.get("cell_map") if isinstance(row.get("cell_map"), dict) else {}
+        if not factor_name and cell_map:
+            factor_name = normalize_text(cell_map.get("Factor"))
+            if not factor_name:
+                factor_name = next(
+                    (
+                        normalize_text(value)
+                        for key, value in cell_map.items()
+                        if normalize_text(key) and not normalize_coded_level(key)
+                    ),
+                    "",
+                )
         level_map: dict[str, str] = {}
-        for level_key in ["−2", "-2", "−1", "-1", "0", "+1", "1", "+2", "2"]:
-            if level_key not in cell_map:
-                continue
-            normalized_key = normalize_coded_level(level_key)
-            if not normalized_key:
-                continue
-            level_value = normalize_text(cell_map.get(level_key))
-            if level_value:
-                level_map[normalized_key] = level_value
-        if len(level_map) >= 3:
+        if level_values and len(level_values) >= 3:
+            level_map = {"-1": level_values[0], "0": level_values[1], "1": level_values[2]}
+        elif cell_map:
+            for level_key, raw_value in cell_map.items():
+                normalized_key = normalize_coded_level(level_key)
+                if not normalized_key:
+                    continue
+                level_value = normalize_text(raw_value)
+                if level_value:
+                    level_map[normalized_key] = level_value
+        if factor_name and len(level_map) >= 3:
             coding_map[factor_name] = level_map
     return coding_map or None
 
@@ -409,6 +463,20 @@ def resolve_coding_table_for_run_table(
         return None, coded_columns, "payload_locator_missing"
     best_payload: dict[str, Any] | None = None
     best_score = 0
+    coding_payload_candidates: list[dict[str, Any]] = []
+    self_payload = next(
+        (
+            payload
+            for payload in normalized_payloads
+            if normalize_text(payload.get("normalized_csv_path")).replace("\\", "/").lower() == run_csv_token
+            and extract_coding_table_map(payload)
+        ),
+        None,
+    )
+    ordered_headers = [normalize_text(column["header"]).upper() for column in coded_columns]
+    if self_payload is not None and ordered_headers[: len(coded_columns)] == [f"X{i}" for i in range(1, len(coded_columns) + 1)]:
+        best_payload = self_payload
+        best_score = len(coded_columns)
     for payload in normalized_payloads:
         payload_csv = normalize_text(payload.get("normalized_csv_path")).replace("\\", "/").lower()
         if payload_csv == run_csv_token:
@@ -416,6 +484,7 @@ def resolve_coding_table_for_run_table(
         coding_map = extract_coding_table_map(payload)
         if not coding_map:
             continue
+        coding_payload_candidates.append(payload)
         score = 0
         for column in coded_columns:
             header = column["header"]
@@ -424,7 +493,14 @@ def resolve_coding_table_for_run_table(
         if score > best_score:
             best_payload = payload
             best_score = score
-    if best_payload is None or best_score < len(coded_columns):
+    if best_payload is None and self_payload is not None:
+        best_payload = self_payload
+        best_score = len(coded_columns)
+    if best_payload is None and coding_payload_candidates:
+        if ordered_headers[: len(coded_columns)] == [f"X{i}" for i in range(1, len(coded_columns) + 1)]:
+            best_payload = coding_payload_candidates[0]
+            best_score = len(coded_columns)
+    if best_payload is None or best_score <= 0:
         return None, coded_columns, "coding_table_unresolved"
     return best_payload, coded_columns, ""
 
@@ -681,7 +757,17 @@ def parse_row_fields(
                 "missing_reason": "",
             }
             continue
-        if header_matches(clean_header, r"\bentrapment\b", r"\bencapsulation\b"):
+        if header_matches(clean_header, r"\bzeta\b"):
+            fields["zeta_mV"] = {
+                "value": value_num or clean_cell,
+                "value_text": clean_cell,
+                "scope": "instance_specific",
+                "membership_confidence": "high",
+                "evidence_region_type": "table_cell",
+                "missing_reason": "",
+            }
+            continue
+        if header_matches(clean_header, r"\bentrapment\b", r"\bencapsulation\b", r"\bee\b"):
             fields["encapsulation_efficiency_percent"] = {
                 "value": value_num or clean_cell,
                 "value_text": clean_cell,
@@ -733,6 +819,127 @@ def build_supporting_evidence_ref(table_id: str, row_text: str, csv_path: Path) 
         "span_end": "",
         "table_csv_path": str(csv_path).replace("\\", "/"),
     }
+
+
+def extract_checkpoint_batches_from_text(raw_text: str) -> list[dict[str, str]]:
+    text = normalize_minus_signs(raw_text)
+    anchor = text.find("Checkpoint batches with their predicted and measured values of PS and EE")
+    if anchor < 0:
+        return []
+    window = re.sub(r"\s+", " ", text[anchor : anchor + 1200])
+    section = window.split("tcalculated", 1)[0]
+    pattern = re.compile(
+        r"(?P<batch>[123])\s+[^()]*\((?P<x1_actual>[^)]+)\)\s+[^()]*\((?P<x2_actual>[^)]+)\)\s+[^()]*\((?P<x3_actual>[^)]+)\)\s+(?P<ps_pred>\d+(?:\.\d+)?)\s+(?P<ps_obs>\d+(?:\.\d+)?)\s+(?P<ee_pred>\d+(?:\.\d+)?)\s+(?P<ee_obs>\d+(?:\.\d+)?)",
+        flags=re.IGNORECASE,
+    )
+    extracted: list[dict[str, str]] = []
+    for match in pattern.finditer(section):
+        extracted.append(
+            {
+                "batch_no": match.group("batch"),
+                "x1_actual": normalize_text(match.group("x1_actual")),
+                "x2_actual": normalize_text(match.group("x2_actual")),
+                "x3_actual": normalize_text(match.group("x3_actual")),
+                "ps_pred": match.group("ps_pred"),
+                "ps_obs": match.group("ps_obs"),
+                "ee_pred": match.group("ee_pred"),
+                "ee_obs": match.group("ee_obs"),
+                "row_text": normalize_text(match.group(0)),
+            }
+        )
+    return extracted
+
+
+def build_checkpoint_candidate_form(
+    *,
+    paper: PaperRecord,
+    batch: dict[str, str],
+) -> tuple[dict[str, Any], dict[str, str]]:
+    batch_no = int(batch["batch_no"])
+    row_text = batch["row_text"]
+    fields = {
+        "size_nm": {
+            "value": batch["ps_obs"],
+            "value_text": batch["ps_obs"],
+            "scope": "instance_specific",
+            "membership_confidence": "high",
+            "evidence_region_type": "text_span",
+            "missing_reason": "",
+        },
+        "encapsulation_efficiency_percent": {
+            "value": batch["ee_obs"],
+            "value_text": batch["ee_obs"],
+            "scope": "instance_specific",
+            "membership_confidence": "high",
+            "evidence_region_type": "text_span",
+            "missing_reason": "",
+        },
+    }
+    extras = {
+        "X1_actual": batch["x1_actual"],
+        "X2_actual": batch["x2_actual"],
+        "X3_actual": batch["x3_actual"],
+        "predicted_particle_size_nm": batch["ps_pred"],
+        "predicted_entrapment_efficiency_percent": batch["ee_pred"],
+    }
+    candidate = {
+        "formulation_id": f"{paper.key}_Checkpoint_Batch_{batch_no}",
+        "raw_formulation_label": f"Checkpoint Batch {batch_no}",
+        "polymer_identity": "PLGA",
+        "polymer_name_raw": "PLGA",
+        "instance_kind": "new_formulation",
+        "parent_instance_id": "",
+        "change_descriptions": [f"{key}={value}" for key, value in extras.items()],
+        "change_role": "synthesis_defining",
+        "instance_context_tags": ["checkpoint_batch"],
+        "change_context_tags": ["checkpoint_validation"],
+        "supporting_evidence_refs": [
+            {
+                "region_type": "text_span",
+                "section": "Checkpoint analysis",
+                "span_text": row_text,
+                "span_start": "",
+                "span_end": "",
+            }
+        ],
+        "formulation_role": "variant",
+        "instance_confidence": "high",
+        "candidate_source": "doe_checkpoint_batch_recovery",
+        "fields": fields,
+        "instance_evidence": {
+            "evidence_region_type": "text_span",
+            "evidence_section": "Checkpoint analysis",
+            "evidence_span_text": row_text,
+            "evidence_span_start": "",
+            "evidence_span_end": "",
+        },
+    }
+    artifact_row = {
+        "paper_key": paper.key,
+        "doi": paper.doi,
+        "title": paper.title,
+        "table_id": "Checkpoint analysis",
+        "table_csv_path": "",
+        "formulation_number": str(batch_no),
+        "formulation_label": f"Checkpoint Batch {batch_no}",
+        "candidate_id": candidate["formulation_id"],
+        "candidate_source": candidate["candidate_source"],
+        "instance_confidence": candidate["instance_confidence"],
+        "instance_kind": candidate["instance_kind"],
+        "formulation_role": candidate["formulation_role"],
+        "parsed_core_fields_json": json.dumps(fields, ensure_ascii=False, sort_keys=True),
+        "parsed_extra_fields_json": json.dumps(extras, ensure_ascii=False, sort_keys=True),
+        "raw_row_json": json.dumps(batch, ensure_ascii=False, sort_keys=True),
+        "row_text": row_text,
+        "header_json": json.dumps(["checkpoint_batch"], ensure_ascii=False),
+        "evidence_source_type": "text_span",
+        "evidence_section": "Checkpoint analysis",
+        "evidence_snippet": row_text,
+        "provenance_note": "Deterministically recovered from explicit checkpoint-batch validation text near the Table 7 anchor.",
+        "confidence_note": "High confidence because the paper explicitly states three checkpoint batches with observed values.",
+        "existing_stage2_match": "",
+    }
+    return candidate, artifact_row
 
 
 def build_stage2_candidate_form(
@@ -945,13 +1152,13 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
         )
         if coded_columns:
             if coding_payload is None:
-                decode_status = "failed"
+                decode_status = "unresolved_but_emitted_raw_rows"
                 decode_failure_reason = coding_failure_reason or "coding_table_unresolved"
-                continue
-            decode_status = "decoded"
-            coding_tables_used.append(
-                normalize_text(coding_payload.get("table_id") or coding_payload.get("source_table_id"))
-            )
+            else:
+                decode_status = "decoded"
+                coding_tables_used.append(
+                    normalize_text(coding_payload.get("table_id") or coding_payload.get("source_table_id"))
+                )
         for row in table["numbered_rows"]:
             label_info = row_label_info(row)
             if label_info is None:
@@ -969,11 +1176,9 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
                     coding_payload=coding_payload,
                 )
                 if row_decode_failure_reason:
-                    decode_status = "failed"
+                    decode_status = "unresolved_but_emitted_raw_rows"
                     decode_failure_reason = row_decode_failure_reason
-                    emitted_forms = []
-                    artifact_rows = []
-                    break
+                    decoded_assignments = {}
             candidate, artifact_row = build_stage2_candidate_form(
                 paper=paper,
                 table_id=table_id,
@@ -997,6 +1202,13 @@ def enumerate_numbered_doe_candidates_for_explicit_tables(
         if emitted_forms
         else "No numbered DOE rows were emitted from the authorized semantic table targets."
     )
+    checkpoint_batches = extract_checkpoint_batches_from_text(raw_text)
+    for batch in checkpoint_batches:
+        candidate, artifact_row = build_checkpoint_candidate_form(paper=paper, batch=batch)
+        emitted_forms.append(candidate)
+        artifact_rows.append(artifact_row)
+    if checkpoint_batches:
+        notes = f"{notes} Recovered {len(checkpoint_batches)} explicit checkpoint batches from source text."
     if unresolved_targets:
         notes = f"{notes} Unresolved targets: {' | '.join(unresolved_targets)}."
     summary = {

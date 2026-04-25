@@ -21,8 +21,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-url", default="", help="Local Ollama base URL. Default: OLLAMA_BASE_URL or http://127.0.0.1:11434.")
     parser.add_argument("--model", default="", help="Optional model name to verify locally.")
     parser.add_argument("--timeout-seconds", type=int, default=10, help="HTTP timeout in seconds.")
-    parser.add_argument("--json-out", default="analysis/ollama_connectivity_check_v1.json", help="Output path for the JSON report.")
-    parser.add_argument("--md-out", default="analysis/ollama_connectivity_check_v1.md", help="Output path for the Markdown report.")
+    parser.add_argument("--json-out", default="analysis/stage2_audits/ollama_connectivity_check_v1.json", help="Output path for the JSON report.")
+    parser.add_argument("--md-out", default="analysis/stage2_audits/ollama_connectivity_check_v1.md", help="Output path for the Markdown report.")
     return parser.parse_args()
 
 

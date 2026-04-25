@@ -1,14 +1,21 @@
 {
-  "active_run_id": "run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1",
-  "active_run_dir": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1",
+  "active_run_id": "20260423_9c4a03f",
+  "active_run_dir": "data/results/20260423_9c4a03f",
   "authoritative_terminal_files": {
     "scope_manifest_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv",
-    "stage2_semantic_objects_jsonl": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_stage2_objects/semantic_stage2_objects_v1.jsonl",
-    "stage2_compatibility_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
-    "stage2_compatibility_jsonl": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
-    "stage5_final_table_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_formulation_table_v1.tsv",
-    "stage5_decision_trace_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/final_output_decision_trace_v1.tsv",
-    "resolved_relation_fields_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/formulation_relation_v1/resolved_relation_fields_v1.tsv",
+    "stage2_semantic_objects_jsonl": "data/results/20260423_9c4a03f/56_stage2_full_replay/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+    "stage2_compatibility_tsv": "data/results/20260423_9c4a03f/56_stage2_full_replay/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "stage2_compatibility_jsonl": "data/results/20260423_9c4a03f/56_stage2_full_replay/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
+    "resolved_relation_fields_tsv": "data/results/20260423_9c4a03f/57_stage3/resolved_relation_fields_v1.tsv",
+    "stage5_final_table_tsv": "data/results/20260423_9c4a03f/58_stage5/final_formulation_table_v1.tsv",
+    "stage5_decision_trace_tsv": "data/results/20260423_9c4a03f/58_stage5/final_output_decision_trace_v1.tsv",
+    "identity_scaffold_rows_tsv": "data/results/20260423_9c4a03f/46_identity_scaffold/layer2_identity_scaffold_rows_v1.tsv",
+    "identity_scaffold_summary_tsv": "data/results/20260423_9c4a03f/46_identity_scaffold/layer2_identity_scaffold_summary_v1.tsv",
+    "identity_freeze_summary_tsv": "data/results/20260423_9c4a03f/47_identity_freeze/identity_freeze_summary_v1.tsv",
+    "identity_freeze_report_tsv": "data/results/20260423_9c4a03f/47_identity_freeze/identity_freeze_report_v1.tsv",
+    "compare_counts_tsv": "data/results/20260423_9c4a03f/60_compare_gtfix/final_table_vs_gt_counts.tsv",
+    "compare_summary_md": "data/results/20260423_9c4a03f/60_compare_gtfix/final_table_vs_gt_summary.md",
+    "compare_counts_by_doi_tsv": "data/results/20260423_9c4a03f/60_compare_gtfix/final_table_vs_gt_counts_by_doi.tsv",
     "gt_workbook_xlsx": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx",
     "layer1_gt_path": "data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv",
     "layer2_gt_path": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
@@ -18,6 +25,6 @@
   },
   "gt_authority_lock": true,
   "lineage_policy": "The parent lineage run is the human-facing entrypoint. Child terminal artifacts must be pinned explicitly here and must not be inferred by recency, sort order, or parent fallback.",
-  "updated_at": "2026-04-09T00:00:00Z",
-  "note": "Authority promotion: the active DEV15 lineage now points to the semantic Stage2 emitter -> compatibility adapter -> Stage3 -> Stage5 run validated on 2026-03-29. DEV15 GT authority is now frozen under data/cleaned/gt_authority/v1 with hard contract locking for Layer1 counts, Layer2 identity rows, and Layer3 value rows."
+  "updated_at": "2026-04-23T11:24:00Z",
+  "note": "Authority promotion: active DEV15 diagnostic baseline now points to the replay-only maintained Stage2 -> Stage3 -> Stage5 -> compare lineage that adds bounded narrative characterization-pair recovery for RHMJWZX8 (2/2 restored) and the BXCV5XWB GT correction removing six non-result FITC/blank helper rows from GT. Current diagnostic compare is 15/15 match with GT authority still locked under data/cleaned/gt_authority/v1 and the existing identity-freeze summary."
 }

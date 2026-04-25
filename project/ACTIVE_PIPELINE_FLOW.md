@@ -416,6 +416,13 @@ Comparator / fallback note:
 - In `llm_first_composite` mode, deterministic non-DOE table row enumeration
   may materialize row-level candidates only when the LLM declares a
   formulation-bearing non-DOE table through the table authorization contract.
+- within that non-DOE path, a bounded simple-table enumerator may materialize
+  rows directly from preserved `S2-2` normalized payload authority when the
+  authorized table is a low-ambiguity `full_formulation` surface with stable
+  first-column row identity
+- this bounded simple-table enumerator does not require LLM row-level output
+  and must not take over DOE matrices, sweep-family recovery, or cross-table
+  decoding
 - `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py`
   is a compatibility shim only and must not be treated as the Stage2 definition.
 
@@ -431,6 +438,12 @@ Stage2 -> deterministic -> Stage3 handshake:
   expansion paths:
   - DOE enumerator for `is_doe == true`
   - table row expansion for `is_formulation_table == true` and `is_doe == false`
+- the table-row expansion path may then choose among bounded internal
+  strategies:
+  - simple-table deterministic enumeration for low-ambiguity
+    `full_formulation` tables
+  - existing non-DOE table-row recovery logic for more complex preserved
+    table surfaces
 - both expansion paths must emit compatible candidate-row schemas for Stage3
   relation binding.
 

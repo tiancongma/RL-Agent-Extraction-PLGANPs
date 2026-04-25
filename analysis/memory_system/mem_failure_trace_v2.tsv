@@ -1,0 +1,5 @@
+failure_id	command	error_type	root_cause	file	line	fix_required(yes/no)
+MF001	python3 src/utils/build_mem_v1.py	path parsing bug	Path.parents was sliced in parent_run_from_path, which raises TypeError on Python 3.9.	src/utils/build_mem_v1.py	377	yes
+MF002	python3 src/utils/build_mem_v1.py	legacy run path mismatch	Run-id parsing only covered legacy run_* shapes before repair, so v2 bucket/child RUN_CONTEXT files and some 6-digit legacy run IDs could not be normalized correctly.	src/utils/build_mem_v1.py	270	yes
+MF003	python3 src/utils/check_mem_v1.py	missing source file	Pre-rebuild mem_v1 tables referenced 1332 RUN_CONTEXT paths that are absent in the current checkout; all classified as stale_memory_entry.	data/mem/v1/*.tsv	multiple	yes
+MF004	python3 src/utils/check_mem_v1.py	schema inconsistency	V2 child lineage rows referenced bucket parents that lacked corresponding run.tsv rows when the bucket had no root RUN_CONTEXT.md.	src/utils/build_mem_v1.py	441	yes

@@ -31,12 +31,13 @@
 | `PAT_STAGE5_DIAGNOSTIC_BASELINE_GOVERNANCE_V1` | `candidate_historical_pattern` | `benchmark_governance_repair` | `downgraded_due_to_missing_evidence` | `AUD003;AUD004;AUD005;AUD011;AUD012` | `data/results/20260417_385b6e1/11_5gif3d8w_capability_restoration_validation_v2/gt_authority_v2_variantaware` | `partial_indirect_activation` | `reproducible_governed_run` |
 | `PAT_BXCV5XWB_HELPER_DESCENDANT_GOVERNANCE_V1` | `candidate_historical_pattern` | `paper_specific_repair` | `requires_followup` | `AUD022;AUD024` | `data/results/20260417_385b6e1/09_dev15_stage2_baseline_repaired_contractfix_v1` | `partial_indirect_activation` | `reproducible_governed_run` |
 | `PAT_SORTED_CSV_FIRST4_MULTI_TABLE_FALLBACK_V1` | `rejected_or_obsolete_pattern` | `paper_specific_repair` | `passes_current_audit` | `AUD017;AUD020` | `data/results/20260417_385b6e1/12_qlyk_capability_restoration_replay_v1` | `explicit_governed_activation` | `replay_only_governed_run` |
+| `PAT_SIMPLE_FORMULATION_TABLE_ENUMERATION_V1` | `validated_replay_pattern` | `cross_paper_feature_repair` | `passes_current_audit` | `AUD_SIMPLE_TABLE_001` | `data/results/20260421_f4b9d62/01_s2_7_simple_table_enumeration_validation_v2` | `explicit_governed_activation` | `replay_only_governed_run` |
 
 ## Pattern Details
 
 ### `PAT_STAGE2_SCOPE_BINDING_REFRESH_V1`
 - Title: Refresh Stage2 `targeted_manifest.tsv` from maintained text and table authority before execution.
-- Covered changes: `src/stage1_cleaning/pdf2clean.py`, `src/stage2_sampling_labels/run_stage2_composite_v1.py`, `analysis/dev15_clean_text_completeness.tsv`, `analysis/dev15_local_source_mapping_validation.md`, `analysis/dev15_local_zotero_dual_source_audit.tsv`, and governed replay runs that executed after the overlay refresh.
+- Covered changes: `src/stage1_cleaning/pdf2clean.py`, `src/stage2_sampling_labels/run_stage2_composite_v1.py`, `analysis/stage1_validation/dev15_clean_text_completeness.tsv`, `analysis/stage1_validation/dev15_local_source_mapping_validation.md`, `analysis/stage1_validation/dev15_local_zotero_dual_source_audit.tsv`, and governed replay runs that executed after the overlay refresh.
 - Evidence run: `data/results/20260417_385b6e1/11_5gif3d8w_capability_restoration_validation_v2`
 - Evidence run context: `data/results/20260417_385b6e1/11_5gif3d8w_capability_restoration_validation_v2/RUN_CONTEXT.md`
 - Feature activation: `data/results/20260417_385b6e1/11_5gif3d8w_capability_restoration_validation_v2/analysis/feature_activation_report_v1.tsv`
@@ -123,3 +124,13 @@
 - Boundary governance: `data/results/20260417_385b6e1/12_qlyk_capability_restoration_replay_v1/RUN_CONTEXT.md`
 - Linked governance changes: none
 - Notes: This row remains a negative guard so the legacy fallback is not reintroduced as a repair strategy.
+
+### `PAT_SIMPLE_FORMULATION_TABLE_ENUMERATION_V1`
+- Title: Deterministically enumerate bounded simple formulation tables after LLM table authorization.
+- Covered changes: `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`; `src/stage2_sampling_labels/table_row_expansion_v1.py`
+- Evidence run: `data/results/20260421_f4b9d62/01_s2_7_simple_table_enumeration_validation_v2`
+- Evidence run context: `data/results/20260421_f4b9d62/01_s2_7_simple_table_enumeration_validation_v2/RUN_CONTEXT.md`
+- Feature activation: `data/results/20260421_f4b9d62/01_s2_7_simple_table_enumeration_validation_v2/analysis/feature_activation_report_v2.tsv`
+- Boundary governance: `data/results/20260421_f4b9d62/01_s2_7_simple_table_enumeration_validation_v2/RUN_CONTEXT.md`
+- Linked governance changes: `project/2_ARCHITECTURE.md`; `project/ACTIVE_PIPELINE_FLOW.md`; `project/ACTIVE_PIPELINE_RUNBOOK.md`; `project/4_DECISIONS_LOG.md`
+- Notes: This bounded repair activates only for low-ambiguity non-DOE `full_formulation` tables with stable first-column row identity and preserved normalized payload authority. `INMUTV7L` is the anchor case and emits `12` deterministic base rows without LLM row-level output. Guard validation kept `WIVUCMYG` on the DOE path, preserved `5GIF3D8W` non-DOE single-variable behavior, and preserved `UFXX9WXE` with no regression.

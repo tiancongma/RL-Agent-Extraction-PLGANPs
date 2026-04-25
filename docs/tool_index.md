@@ -415,3 +415,202 @@ Note:
 | `src/utils/run_id.py` | 02/19/2026 16:43:11 | True | 0 |  | Utility/helper module |
 | `src/utils/scan_ee_coverage.py` | 02/19/2026 14:40:55 | True | 0 |  | Utility/helper module |
 
+## Registration Backfill (2026-04-22)
+
+This section backfills scripts that were present in `src/` and already governed or actively used, but were missing from the human-facing tool index. It is intended to keep `docs/tool_index.md` aligned with `docs/src_script_registry.tsv`, `docs/maintained_script_surface.tsv`, and the repository governance check.
+
+### Analysis diagnostics and deterministic baseline helpers
+- `src/analysis/assess_baseline_ready_identity_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Assess whether a deterministic Step 1 run is baseline-ready for Step 2 using final-table, identity-freeze, and run evidence.
+- `src/analysis/build_dev15_go_no_go_report_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build a practical DEV15 replacement go/no-go summary with paper-level statuses and bounded regression diagnostics.
+- `src/analysis/build_doe_trigger_diagnostics_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build diagnostics-only observability for the full Stage2 DOE trigger chain from semantic objects through deterministic execution decisions.
+- `src/analysis/build_formulation_parameter_binding_unit_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build a deterministic formulation-parameter binding unit for frozen Step 1 rows.
+- `src/analysis/build_replacement_validation_report_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build a run-scoped deterministic replacement validation report across semantic, Stage3, Stage5, and GT compare surfaces.
+- `src/analysis/build_stage2_v2_threepaper_comparison_pack.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build the governed three-paper Stage2 comparison pack for `WIVUCMYG`, `UFXX9WXE`, and `5GIF3D8W`.
+- `src/analysis/build_table_row_binding_unit_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build a deterministic table-row binding surface for frozen Step 1 rows.
+- `src/analysis/compare_replacement_validation_runs_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Compare replacement-validation runs and emit per-paper delta diagnostics.
+- `src/analysis/dev15_relation_diagnostics_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Build a deterministic selected-paper diagnostic pack using Stage2, Stage3, Stage5, and GT compare artifacts.
+- `src/analysis/run_deterministic_step1_baseline_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Run the deterministic Step 1 baseline on a manifest-driven scope.
+- `src/analysis/run_deterministic_step2_baseline_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Run deterministic Step 2 baseline from an explicit Step 1 run directory.
+- `src/analysis/run_dev15_deterministic_two_step_diagnostic_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Run DEV15 deterministic two-step baseline diagnostic comparison.
+- `src/analysis/run_formulation_parameter_binding_unit_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Run deterministic formulation-parameter binding and a Step 2 before/after comparison.
+- `src/analysis/run_qlyk_prompt_strength_diagnostic_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Run a controlled prompt-strength comparison on synthetic sequential-optimization evidence for QLYKLPKT-like markers.
+- `src/analysis/run_table_row_binding_unit_v1.py`
+  - Class: Reusable analysis/diagnostic tool
+  - Role: Run deterministic table-row binding and a Step 2 before/after comparison.
+
+### Stage 1 support
+- `src/stage1_cleaning/derive_target_manifest_v1.py`
+  - Class: Stable supporting Stage1 tool
+  - Role: Derive explicit scope manifests from `manifest_current.tsv` with provenance-preserving selection metadata.
+- `src/stage1_cleaning/hydrate_manifest_v1.py`
+  - Class: Stable supporting Stage1 tool
+  - Role: Deterministically hydrate an assembled Stage1 manifest through asset hydration and scope overlays without rerunning cleaning.
+
+### Stage 2 and Stage 2.5 supporting surfaces
+- `src/stage2_5_components_shadow/build_text_evidence_packs_v0.py`
+  - Class: Archived or exploratory support tool
+  - Role: Build archived Stage2.5 shadow text evidence packs for frozen legacy rows.
+- `src/stage2_sampling_labels/build_stage2_replacement_contract_v1.py`
+  - Class: Supporting Stage2 design scaffold
+  - Role: Write non-default Stage2 replacement contract scaffold artifacts.
+- `src/stage2_sampling_labels/check_ollama_local_connectivity_v1.py`
+  - Class: Supporting Stage2 diagnostic tool
+  - Role: Check local Ollama connectivity and optional model availability without changing maintained backend selection.
+- `src/stage2_sampling_labels/enrich_preparation_method_fields_v1.py`
+  - Class: Supporting Stage2 deterministic enrichment tool
+  - Role: Append preparation-method enrichment fields to an existing Stage2-style TSV without changing row identity.
+- `src/stage2_sampling_labels/evaluate_s2_4a_hard_gate_v1.py`
+  - Class: Supporting Stage2 governance audit tool
+  - Role: Evaluate the frozen S2-4a Layer A Hard Gate from explicit frozen artifacts only.
+- `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
+  - Class: Maintained internal Stage2 semantic extractor
+  - Role: Internal LLM semantic-discovery substep for the composite Stage2 path, including S2-2a, S2-2b, and S2-3 internals.
+- `src/stage2_sampling_labels/extract_semantic_stage2_v2_threepaper.py`
+  - Class: Supporting compatibility shim
+  - Role: Preserve the historical three-paper extractor filename while delegating to the generic semantic extractor.
+- `src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py`
+  - Class: Stage2 deterministic function unit
+  - Role: Deterministically recover or expand governed DOE rows within semantically authorized scope.
+- `src/stage2_sampling_labels/function_units/sequential_optimization_interpreter_v1.py`
+  - Class: Stage2 deterministic function unit
+  - Role: Resolve optimized formulations from explicit sequential optimization evidence while forbidding DOE conflicts and cross-table Cartesian reconstruction.
+- `src/stage2_sampling_labels/lift_legacy_stage2_to_semantic_objects_v1.py`
+  - Class: Supporting Stage2 transition tool
+  - Role: Lift legacy wide-row Stage2 outputs into semantic-object payloads for validation and migration work.
+- `src/stage2_sampling_labels/ollama_local_backend_v1.py`
+  - Class: Supporting local backend helper
+  - Role: Provide a narrow local-only Ollama HTTP adapter for diagnostic S2-4b-style execution and connectivity checks.
+- `src/stage2_sampling_labels/run_stage2_composite_v1.py`
+  - Class: Maintained Stage2 entrypoint
+  - Role: Run the governed coarse-grained composite Stage2 path and replay/rehydration flow.
+- `src/stage2_sampling_labels/run_stage2_s2_4a_prompt_construction_v1.py`
+  - Class: Maintained Stage2 frozen-boundary entrypoint
+  - Role: Materialize the frozen S2-4a prompt-construction boundary.
+- `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
+  - Class: Maintained Stage2 frozen-boundary entrypoint
+  - Role: Execute the frozen S2-4b live Gemini call boundary.
+- `src/stage2_sampling_labels/run_stage2_s2_4b_ollama_local_diagnostic_v1.py`
+  - Class: Supporting Stage2 local diagnostic runner
+  - Role: Execute a local-only diagnostic S2-4b-style Ollama call boundary.
+- `src/stage2_sampling_labels/run_stage2_s2_5_semantic_parsing_v1.py`
+  - Class: Maintained Stage2 frozen-boundary entrypoint
+  - Role: Materialize the frozen S2-5 semantic parsing boundary.
+- `src/stage2_sampling_labels/run_stage2_s2_6_contract_validation_v1.py`
+  - Class: Maintained Stage2 frozen-boundary entrypoint
+  - Role: Materialize the frozen S2-6 contract validation boundary.
+- `src/stage2_sampling_labels/run_stage2_s2_7_compatibility_projection_v1.py`
+  - Class: Maintained Stage2 frozen-boundary entrypoint
+  - Role: Materialize the frozen S2-7 compatibility projection boundary.
+- `src/stage2_sampling_labels/table_row_expansion_v1.py`
+  - Class: Stage2 deterministic function unit
+  - Role: Deterministically enumerate explicit non-DOE formulation-table rows after LLM table authorization from preserved S2-2 authority.
+- `src/stage2_sampling_labels/validate_stage2_semantic_authority_contract_v1.py`
+  - Class: Supporting Stage2 validator
+  - Role: Validate that governed Stage2 outputs preserve the semantic-authority contract.
+
+### Stage 5 downstream audit and validation tools
+- `src/stage5_benchmark/build_deterministic_step2_value_backfill_v1.py`
+  - Class: Supporting Stage5 downstream audit tool
+  - Role: Build a deterministic value backfill surface for Step 2 or reviewer-side downstream analysis without redefining benchmark-final semantics.
+- `src/stage5_benchmark/build_field_gt_review_workbook_v3.py`
+  - Class: Supporting Stage5 reviewer workflow tool
+  - Role: Build the relation-first Layer 3 field GT review workbook variant.
+- `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
+  - Class: Supporting Stage5 audit planning tool
+  - Role: Build deterministic paper-level Layer 2 risk labels from an existing identity-comparison TSV.
+- `src/stage5_benchmark/build_modeling_ready_sidecar_v1.py`
+  - Class: Supporting downstream Stage5 modeling helper
+  - Role: Build the first maintained modeling-ready sidecar from the frozen benchmark-final table.
+- `src/stage5_benchmark/build_modeling_ready_table_v1.py`
+  - Class: Supporting downstream Stage5 modeling helper
+  - Role: Build the first row-wise modeling-ready table from the frozen benchmark-final table and modeling-ready sidecar.
+- `src/stage5_benchmark/build_value_gt_annotation_representation_repair_v2.py`
+  - Class: Supporting Stage5 reviewer workflow tool
+  - Role: Refresh compact Layer 3 workbooks with human-edit preservation and representation-aware field repair.
+- `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py`
+  - Class: Supporting Stage5 reviewer workflow tool
+  - Role: Build a formulation-level value GT annotation workbook from frozen Stage5 artifacts.
+- `src/stage5_benchmark/run_layer3_cross_audit_v1.py`
+  - Class: Supporting Stage5 reviewer workflow tool
+  - Role: Build report-only Layer 3 cell-risk audit outputs and optional bounded auditor tasks/results.
+- `src/stage5_benchmark/run_value_workbook_for_explicit_run_v1.py`
+  - Class: Supporting Stage5 explicit-run wrapper
+  - Role: Build a value GT workbook for one explicit frozen run while preserving the shared builder defaults.
+- `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py`
+  - Class: Supporting Stage5 validation utility
+  - Role: Validate Layer 3 evidence handoff behavior against governed golden cases.
+- `src/stage5_benchmark/validate_stage5_descendant_filter_regression_v1.py`
+  - Class: Supporting Stage5 regression utility
+  - Role: Deterministically check descendant-filter regressions and known control cases.
+
+### Cross-cutting utilities and authority helpers
+- `src/utils/active_data_source.py`
+  - Class: Cross-cutting authority utility
+  - Role: Resolve active `data/results` workflow sources from explicit inputs or `ACTIVE_RUN.json`.
+- `src/utils/baseline_registry_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Resolve and validate governed baseline registry rows and manifests.
+- `src/utils/build_feature_activation_report_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Build run-scoped feature activation reports from deterministic artifact evidence.
+- `src/utils/build_feature_execution_ledger_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Build run-scoped feature execution ledgers, upstream traces, and human-readable reports.
+- `src/utils/build_feature_governance_signal_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Build concise run-level governance signals from existing feature ledgers and mismatch tiers.
+- `src/utils/daily_baseline_audit_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Freeze a governed daily baseline snapshot and build layered deltas without executing the pipeline.
+- `src/utils/evaluate_nvidia_full_pipeline_against_dev15_gt.py`
+  - Class: Cross-cutting diagnostic utility
+  - Role: Run a diagnostic-only DEV15 evaluation on completed NVIDIA full-pipeline outputs.
+- `src/utils/preparation_method_fields_v1.py`
+  - Class: Cross-cutting support utility
+  - Role: Shared helper logic for governed preparation-method field normalization and emission.
+- `src/utils/run_context_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Validate governed `RUN_CONTEXT.md` contracts.
+- `src/utils/run_dev15_nvidia_full_pipeline_v1.py`
+  - Class: Cross-cutting diagnostic runner
+  - Role: Run a diagnostic-only DEV15 full pipeline with NVIDIA as the Stage2 backend.
+- `src/utils/run_repair_intake_v1.py`
+  - Class: Cross-cutting repair utility
+  - Role: Read-only repair intake helper for governed regression investigation.
+- `src/utils/run_threepaper_stage2_v2_comparison.py`
+  - Class: Cross-cutting comparison wrapper
+  - Role: Run the governed three-paper Stage2 v2 comparison slice without redefining Stage2 itself.
+- `src/utils/update_run_context_with_feature_activation_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Refresh `RUN_CONTEXT.md` with deterministic feature activation metadata.
+- `src/utils/validate_active_data_source_contract_v1.py`
+  - Class: Cross-cutting governance utility
+  - Role: Validate active-data-source contract compliance for current workflow resolution.
