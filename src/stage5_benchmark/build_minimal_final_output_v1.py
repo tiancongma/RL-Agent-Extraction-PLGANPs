@@ -279,6 +279,8 @@ def resolve_source_text_path_for_row(row: dict[str, str]) -> Path:
     if key:
         candidates.append(dataset_text_root("goren_2025") / key / f"{key}.pdf.txt")
         candidates.append(dataset_text_root("goren_2025") / key / f"{key}.html.txt")
+        candidates.append(PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{key}.pdf.txt")
+        candidates.append(PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{key}.html.txt")
         candidates.append(PROJECT_ROOT / "data" / "cleaned" / "content_goren_2025" / "text" / f"{key}.pdf.txt")
         candidates.append(PROJECT_ROOT / "data" / "cleaned" / "content_goren_2025" / "text" / f"{key}.html.txt")
     for candidate in candidates:
@@ -327,6 +329,378 @@ def normalize_ratio(value: Any) -> str:
     if match:
         return f"{int(match.group(1))}:{int(match.group(2))}"
     return compact
+
+
+def row_has_plga_polymer_identity(row: dict[str, str]) -> bool:
+    identity_text = " ".join(
+        str(row.get(field, "") or "")
+        for field in [
+            "polymer_identity_final",
+            "polymer_identity",
+            "polymer_name_raw",
+            "polymer_name_value",
+            "polymer_name_value_text",
+            "raw_formulation_label",
+            "representative_source_raw_formulation_label",
+        ]
+    )
+    normalized = normalize_text(identity_text)
+    return bool(
+        re.search(r"\bplga\b", normalized)
+        or "poly(lactide-co-glycolide" in normalized
+        or "poly(lactic-co-glycolic" in normalized
+        or "poly (lactide-co-glycolide" in normalized
+        or "poly (lactic-co-glycolic" in normalized
+    )
+
+
+def row_has_explicit_non_plga_polymer_exclusion(row: dict[str, str]) -> bool:
+    identity_text = " ".join(
+        str(row.get(field, "") or "")
+        for field in [
+            "polymer_identity_final",
+            "polymer_identity",
+            "polymer_name_raw",
+            "polymer_name_value",
+            "polymer_name_value_text",
+            "raw_formulation_label",
+            "representative_source_raw_formulation_label",
+            "evidence_span_text",
+        ]
+    )
+    normalized = normalize_text(identity_text)
+    if "nanoemulsion" in normalized and "plga" not in normalized:
+        return True
+    return bool(
+        "omitting the polymer" in normalized
+        or "without polymer" in normalized
+        or re.search(r"\b(?:pcl|pla|peg|chitosan|alginate|liposome|solution)\b", normalized)
+        and "plga" not in normalized
+    )
+
+
+def extract_global_polymer_material_la_ga_ratio(source_text: str) -> str:
+    """Return a unique PLGA material-level LA:GA ratio from source text, if present.
+
+    This is intentionally narrow: the ratio must be in the same local snippet as
+    a PLGA/poly(lactide-co-glycolide) material mention. Equation/model response
+    ratios such as `YEE = 75:25 + ...` are ignored because they do not describe
+    polymer composition.
+    """
+    text = str(source_text or "")
+    if not text:
+        return ""
+    candidates: set[str] = set()
+    ratio_pattern = re.compile(r"(?<!\d)(\d{1,3})\s*[:/]\s*(\d{1,3})(?!\d)")
+    polymer_pattern = re.compile(
+        r"\bplga\b|poly\s*\(\s*(?:d[,\-\s]*l[-\s]*)?(?:lactide|lactic)\s*-?\s*co\s*-?\s*(?:glycolide|glycolic)",
+        re.IGNORECASE,
+    )
+    material_context_pattern = re.compile(
+        r"\bmaterials?\b|\bpurchased\b|\bgift sample\b|\bkindly donated\b|\bwith a ratio of\b|\binherent viscosity\b|\bMW\b|\bResomer\b|\bPurasorb\b",
+        re.IGNORECASE,
+    )
+    non_material_context_pattern = re.compile(
+        r"physical mixture|thermogram|\bDSC\b|\bFTIR\b|\bDOI\b|\bAdv Drug Deliv Rev\b|\bEur J Pharm Sci\b|\bFigure\b|\bFig\.\b|\bTo cite this article\b|\bReferences\b",
+        re.IGNORECASE,
+    )
+    equation_pattern = re.compile(r"\bY[A-Z]{1,4}\s*[=¼]|\bX\d\b|\+|\bEquation\b", re.IGNORECASE)
+    for match in ratio_pattern.finditer(text):
+        start = max(0, match.start() - 140)
+        end = min(len(text), match.end() + 140)
+        snippet = text[start:end]
+        if not polymer_pattern.search(snippet):
+            continue
+        if non_material_context_pattern.search(snippet):
+            continue
+        if not material_context_pattern.search(snippet):
+            continue
+        line_start = text.rfind("\n", 0, match.start()) + 1
+        line_end = text.find("\n", match.end())
+        if line_end == -1:
+            line_end = len(text)
+        line = text[line_start:line_end]
+        line_before_ratio = text[line_start:match.start()]
+        if equation_pattern.search(line_before_ratio):
+            continue
+        candidates.add(f"{int(match.group(1))}:{int(match.group(2))}")
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
+def apply_global_polymer_material_carrythrough(
+    *,
+    final_row: dict[str, str],
+    source_text: str,
+) -> tuple[dict[str, str], set[str]]:
+    materialized = dict(final_row)
+    applied_fields: set[str] = set()
+    if field_bundle_value(materialized, "la_ga_ratio"):
+        return materialized, applied_fields
+    ratio = extract_global_polymer_material_la_ga_ratio(source_text)
+    if not ratio:
+        return materialized, applied_fields
+    if not row_has_plga_polymer_identity(materialized) and row_has_explicit_non_plga_polymer_exclusion(materialized):
+        return materialized, applied_fields
+    materialized["la_ga_ratio_value"] = ratio
+    if "la_ga_ratio_value_text" in materialized:
+        materialized["la_ga_ratio_value_text"] = ratio
+    if "la_ga_ratio_scope" in materialized:
+        materialized["la_ga_ratio_scope"] = "global_shared"
+    if "la_ga_ratio_membership_confidence" in materialized:
+        materialized["la_ga_ratio_membership_confidence"] = "medium"
+    if "la_ga_ratio_evidence_region_type" in materialized:
+        materialized["la_ga_ratio_evidence_region_type"] = "global_material_evidence"
+    if "la_ga_ratio_missing_reason" in materialized:
+        materialized["la_ga_ratio_missing_reason"] = ""
+    applied_fields.add("la_ga_ratio")
+    return materialized, applied_fields
+
+
+PREPARATION_SOLVENT_CANONICALS = {
+    "acetone": "acetone",
+    "acetonitrile": "acetonitrile",
+    "acn": "acetonitrile",
+    "dichloromethane": "dichloromethane",
+    "methylene chloride": "dichloromethane",
+    "dcm": "dichloromethane",
+    "ethyl acetate": "ethyl acetate",
+    "ethanol": "ethanol",
+    "methanol": "methanol",
+    "chloroform": "chloroform",
+    "dmso": "DMSO",
+}
+
+
+def extract_unique_global_preparation_solvent(source_text: str) -> str:
+    """Return a unique organic solvent used in the nanoparticle preparation text.
+
+    This is a source-backed Stage5 carrythrough helper for DOE/table rows whose
+    row-local evidence keeps only coded variables/results. It is intentionally
+    conservative: material lists, chromatography/mobile phase, extraction, and
+    other assay contexts are ignored, and ambiguous multi-solvent preparation
+    contexts remain blank.
+    """
+    text = str(source_text or "")
+    if not text:
+        return ""
+    solvent_pattern = re.compile(
+        r"\b(?:acetone|acetonitrile|ACN|dichloromethane|methylene chloride|DCM|ethyl acetate|ethanol|methanol|chloroform|DMSO)\b",
+        re.IGNORECASE,
+    )
+    prep_context_pattern = re.compile(
+        r"prepar|nanoparticle|nanosphere|nanocapsule|formulation|organic\s+(?:phase|solution)|dissolv|solvent\s+(?:displacement|diffusion|evaporation)|nanoprecipitation|emulsion",
+        re.IGNORECASE,
+    )
+    synthesis_actor_pattern = re.compile(
+        r"\bPLGA\b|poly\s*\(.*?glycol|\bdrug\b|loaded|polymer",
+        re.IGNORECASE,
+    )
+    non_prep_context_pattern = re.compile(
+        r"HPLC|LC[-\s]?MS|chromatograph|mobile phase|extraction|extract|assay|calibration|analysis|materials?\s+(?:listed|included|were purchased|was purchased|obtained)",
+        re.IGNORECASE,
+    )
+    candidates: set[str] = set()
+    for match in solvent_pattern.finditer(text):
+        start = max(0, match.start() - 170)
+        end = min(len(text), match.end() + 170)
+        snippet = text[start:end]
+        if non_prep_context_pattern.search(snippet):
+            continue
+        if not prep_context_pattern.search(snippet):
+            continue
+        if not synthesis_actor_pattern.search(snippet):
+            continue
+        raw = match.group(0).lower()
+        candidates.add(PREPARATION_SOLVENT_CANONICALS.get(raw, raw))
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
+DRUG_NAME_STOPWORDS = {
+    "drug",
+    "polymer",
+    "nanoparticle",
+    "nanoparticles",
+    "nanosphere",
+    "nanospheres",
+    "plga",
+    "pva",
+    "fitc",
+    "fluorescein",
+    "dexamethasone",
+    "water",
+    "acetone",
+    "acetonitrile",
+    "methanol",
+    "ethanol",
+}
+
+
+def normalize_global_drug_candidate(value: str) -> str:
+    text = re.sub(r"\s+", " ", str(value or "").strip(" .,;:()[]{}\"'“”‘’"))
+    if not text:
+        return ""
+    lowered = text.lower()
+    if lowered in DRUG_NAME_STOPWORDS:
+        return ""
+    if len(text) <= 1:
+        return ""
+    return text
+
+
+def extract_drug_abbreviation_map(source_text: str) -> dict[str, str]:
+    text = str(source_text or "")
+    abbrev_map: dict[str, str] = {}
+    for match in re.finditer(
+        r"\b([A-Z][A-Za-z][A-Za-z0-9\-]{2,40})\s*\(([A-Z]{2,6})\)\s+is\s+a[^.]{0,140}\bdrug\b",
+        text,
+        re.IGNORECASE,
+    ):
+        name = normalize_global_drug_candidate(match.group(1))
+        abbr = match.group(2).upper()
+        if name:
+            abbrev_map[abbr] = name
+    for match in re.finditer(
+        r"\b(?:c([A-Z]{2,6})|([A-Z]{2,6}))\b[^.;]{0,80}\b[Cc]oncentration\s+of\s+([A-Za-z][A-Za-z0-9\-]{2,40})\b",
+        text,
+    ):
+        abbr = (match.group(1) or match.group(2) or "").upper()
+        name = normalize_global_drug_candidate(match.group(3))
+        if name and abbr:
+            abbrev_map[abbr] = name
+    for match in re.finditer(
+        r"\bconcentration\s+of\s+([A-Za-z][A-Za-z0-9\-]{2,40})\b[^.;]{0,80}\(([A-Z]{2,6})\)",
+        text,
+        re.IGNORECASE,
+    ):
+        name = normalize_global_drug_candidate(match.group(1))
+        abbr = match.group(2).upper()
+        if name:
+            abbrev_map[abbr] = name
+    return abbrev_map
+
+
+def extract_unique_global_loaded_drug_name(source_text: str) -> str:
+    """Return a unique article-global drug identity for loaded PLGA rows.
+
+    This helper is intentionally conservative and source-backed. It accepts
+    title/preparation/table-factor surfaces that bind a drug or drug
+    abbreviation to PLGA-loaded nanoparticles, and rejects ambiguous helper or
+    assay-only contexts.
+    """
+    text = str(source_text or "")
+    if not text:
+        return ""
+    abbrev_map = extract_drug_abbreviation_map(text)
+    candidates: set[str] = set()
+
+    def add_candidate(raw: str) -> None:
+        token = normalize_global_drug_candidate(raw)
+        if not token:
+            return
+        if token.upper() in abbrev_map:
+            token = abbrev_map[token.upper()]
+        token = normalize_global_drug_candidate(token)
+        if token:
+            candidates.add(token)
+
+    loaded_patterns = [
+        r"\b([A-Za-z][A-Za-z0-9\-]{1,40})-loaded\s+PLGA\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\b",
+        r"\bPLGA\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\s+(?:loaded\s+with|containing)\s+([A-Za-z][A-Za-z0-9\-]{1,40})\b",
+        r"\bformulate\s+PLGA\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\s+of\s+([A-Za-z][A-Za-z0-9\-]{2,40})\b",
+    ]
+    # Use the title/abstract/methods lead as the strongest article-global drug
+    # identity surface. Later reference lists and related-article blocks often
+    # contain unrelated "X-loaded PLGA nanoparticles" strings.
+    lead_text = text[:6000]
+    loaded_counts: dict[str, int] = defaultdict(int)
+    for pattern in loaded_patterns:
+        for match in re.finditer(pattern, lead_text, re.IGNORECASE):
+            snippet = lead_text[max(0, match.start() - 120) : min(len(lead_text), match.end() + 160)]
+            if re.search(r"\b(?:FITC|fluorescein|solution control)\b", snippet, re.IGNORECASE):
+                continue
+            token = normalize_global_drug_candidate(match.group(1))
+            if normalize_text(token) in {"coumarin", "6-coumarin", "fitc", "fluorescein"}:
+                continue
+            if token and token.upper() in abbrev_map:
+                token = abbrev_map[token.upper()]
+            token = normalize_global_drug_candidate(token)
+            if token:
+                loaded_counts[token.lower()] += 1
+                candidates.add(token)
+    if loaded_counts:
+        if len(loaded_counts) == 1:
+            dominant = next(iter(loaded_counts))
+            for candidate in candidates:
+                if candidate.lower() == dominant:
+                    return candidate
+        return ""
+
+    for match in re.finditer(
+        r"\b([A-Z][A-Za-z][A-Za-z0-9\-]{2,40})\s*\(([A-Z]{2,6})\)\s+is\s+a[^.]{0,140}\bdrug\b",
+        lead_text,
+        re.IGNORECASE,
+    ):
+        add_candidate(match.group(1))
+
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
+def row_allows_global_drug_carrythrough(row: dict[str, str]) -> bool:
+    if field_bundle_value(row, "drug_name"):
+        return False
+    label = normalize_text(" ".join([
+        str(row.get("raw_formulation_label", "") or ""),
+        str(row.get("formulation_id", "") or ""),
+        str(row.get("source_formulation_id", "") or ""),
+    ]))
+    loaded_state = normalize_text(row.get("loaded_state_final") or row.get("loaded_state") or "")
+    if loaded_state == "empty":
+        return False
+    if re.search(r"\b(?:blank|empty|drug free|drug-free|unloaded|without drug|no drug|fitc)\b", label):
+        return False
+    if re.search(r"\bnp[a-z]\d+\b", label):
+        return False
+    return True
+
+
+def apply_global_preparation_material_carrythrough(
+    *,
+    final_row: dict[str, str],
+    source_text: str,
+) -> tuple[dict[str, str], set[str]]:
+    materialized = dict(final_row)
+    applied_fields: set[str] = set()
+    if row_allows_global_drug_carrythrough(materialized):
+        drug_name = extract_unique_global_loaded_drug_name(source_text)
+        if drug_name:
+            materialized["drug_name_value"] = drug_name
+            if "drug_name_value_text" in materialized:
+                materialized["drug_name_value_text"] = drug_name
+            if "drug_name_scope" in materialized:
+                materialized["drug_name_scope"] = "global_shared"
+            if "drug_name_membership_confidence" in materialized:
+                materialized["drug_name_membership_confidence"] = "medium"
+            if "drug_name_evidence_region_type" in materialized:
+                materialized["drug_name_evidence_region_type"] = "global_drug_identity_evidence"
+            if "drug_name_missing_reason" in materialized:
+                materialized["drug_name_missing_reason"] = ""
+            applied_fields.add("drug_name")
+    if not field_bundle_value(materialized, "organic_solvent"):
+        solvent = extract_unique_global_preparation_solvent(source_text)
+        if solvent:
+            materialized["organic_solvent_value"] = solvent
+            if "organic_solvent_value_text" in materialized:
+                materialized["organic_solvent_value_text"] = solvent
+            if "organic_solvent_scope" in materialized:
+                materialized["organic_solvent_scope"] = "global_shared"
+            if "organic_solvent_membership_confidence" in materialized:
+                materialized["organic_solvent_membership_confidence"] = "medium"
+            if "organic_solvent_evidence_region_type" in materialized:
+                materialized["organic_solvent_evidence_region_type"] = "global_preparation_evidence"
+            if "organic_solvent_missing_reason" in materialized:
+                materialized["organic_solvent_missing_reason"] = ""
+            applied_fields.add("organic_solvent")
+    return materialized, applied_fields
 
 
 def parse_json_list(value: Any) -> list[str]:
@@ -1936,6 +2310,7 @@ def build_minimal_final_output(
         raise ValueError("Stage5 requires --resolved-relation-fields-tsv; silent bypass is not allowed.")
     relation_metadata = load_relation_metadata(relation_records_tsv)
     resolved_relation_field_map = load_resolved_relation_fields(resolved_relation_fields_tsv)
+    source_text_by_paper: dict[str, str] = {}
     rows_by_paper: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in rows:
         rows_by_paper[str(row.get("key", "") or "").strip()].append(row)
@@ -2438,9 +2813,29 @@ def build_minimal_final_output(
             representative=representative,
             resolved_field_map=resolved_relation_field_map,
         )
+        paper_key = str(final_row.get("key", "") or "").strip()
+        if paper_key and paper_key not in source_text_by_paper:
+            try:
+                source_text_by_paper[paper_key] = resolve_source_text_path_for_row(representative).read_text(
+                    encoding="utf-8",
+                    errors="replace",
+                )
+            except FileNotFoundError:
+                source_text_by_paper[paper_key] = ""
+        final_row, applied_global_fields = apply_global_polymer_material_carrythrough(
+            final_row=final_row,
+            source_text=source_text_by_paper.get(paper_key, ""),
+        )
+        final_row, applied_preparation_fields = apply_global_preparation_material_carrythrough(
+            final_row=final_row,
+            source_text=source_text_by_paper.get(paper_key, ""),
+        )
+        applied_global_fields = set(applied_global_fields) | set(applied_preparation_fields)
         if applied_relation_fields:
             final_row["field_source_type"] = "relation_resolved"
-        elif any(
+        if applied_global_fields:
+            final_row["field_source_type"] = "global_material_evidence"
+        elif not applied_relation_fields and any(
             not field_bundle_value(final_row, field_name)
             for field_name in RESOLVED_RELATION_FIELD_NAMES
         ):

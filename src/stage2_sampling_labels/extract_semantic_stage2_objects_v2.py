@@ -29,6 +29,7 @@ except Exception:  # pragma: no cover
 try:
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
     from src.utils.paths import PROJECT_ROOT
+    from src.stage2_sampling_labels.ollama_local_backend_v1 import call_ollama_chat_nonstream, resolve_ollama_base_url
     from src.stage2_sampling_labels.table_row_expansion_v1 import (
         EXECUTION_READY_MARKER,
         PARTIAL_SEMANTIC_MARKER,
@@ -39,6 +40,7 @@ except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
     from src.utils.paths import PROJECT_ROOT
+    from src.stage2_sampling_labels.ollama_local_backend_v1 import call_ollama_chat_nonstream, resolve_ollama_base_url
     from src.stage2_sampling_labels.table_row_expansion_v1 import (
         EXECUTION_READY_MARKER,
         PARTIAL_SEMANTIC_MARKER,
@@ -373,6 +375,169 @@ def normalize_shrunken_shared_semantics(value: Any) -> dict[str, str]:
         "preparation_method": normalize_text(payload.get("preparation_method")),
         "emul_type": normalize_text(payload.get("emul_type")),
     }
+
+
+def infer_shrunken_candidate_kind_from_legacy(candidate: dict[str, Any]) -> str:
+    instance_kind = normalize_text(candidate.get("instance_kind") or candidate.get("candidate_kind")).lower()
+    if instance_kind in {"single_formulation", "formulation_family", "variant_formulation", "unclear"}:
+        return instance_kind
+    if instance_kind in {"new_formulation", "new_instance", "optimized_formulation", "formulation_instance"}:
+        return "single_formulation"
+    if instance_kind in {"family", "family_summary", "design_space", "doe_space", "optimization_space"}:
+        return "formulation_family"
+    if instance_kind in {"variant", "child_variant", "downstream_variant"}:
+        return "variant_formulation"
+    formulation_role = normalize_text(candidate.get("formulation_role")).lower()
+    if formulation_role in {"control", "optimized", "main", "core", "experimental"}:
+        return "single_formulation"
+    if formulation_role in {"variant", "downstream_variant"}:
+        return "variant_formulation"
+    return "unclear"
+
+
+def infer_shrunken_instance_role_from_legacy(candidate: dict[str, Any]) -> str:
+    formulation_role = normalize_text(candidate.get("formulation_role") or candidate.get("instance_role")).lower()
+    tags = {normalize_text(tag).lower() for tag in ensure_list(candidate.get("instance_context_tags")) if normalize_text(tag)}
+    if formulation_role in {"control", "blank_control", "empty_control"} or "control" in tags:
+        return "control"
+    if formulation_role in {"comparative", "comparator", "reference"} or "comparative" in tags:
+        return "comparative"
+    if formulation_role in {"characterization_only", "measurement_only"} or "characterization_only" in tags:
+        return "characterization_only"
+    if formulation_role in {"downstream_variant", "non_synthesis_variant"} or "downstream_variant" in tags:
+        return "downstream_variant"
+    return "synthesis_core"
+
+
+def infer_shrunken_candidate_confidence_from_legacy(candidate: dict[str, Any]) -> str:
+    explicit = normalize_confidence(candidate.get("confidence") or candidate.get("identity_confidence"))
+    if explicit != "low" or normalize_text(candidate.get("confidence") or candidate.get("identity_confidence")).lower() == "low":
+        return explicit
+    status = normalize_candidate_status(candidate.get("status"))
+    if status == "reported":
+        return "medium"
+    return "low"
+
+
+def infer_shrunken_table_scopes_from_legacy(document: dict[str, Any]) -> list[dict[str, Any]]:
+    boundary_by_table = {}
+    for marker in ensure_list(document.get("boundary_markers")):
+        if not isinstance(marker, dict):
+            continue
+        table_id = normalize_text(marker.get("table_id"))
+        if table_id:
+            boundary_by_table[table_id] = marker
+    scopes: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for item in ensure_list(document.get("table_formulation_scopes")):
+        if not isinstance(item, dict):
+            continue
+        table_id = normalize_text(item.get("table_id"))
+        if not table_id or table_id in seen:
+            continue
+        seen.add(table_id)
+        boundary = boundary_by_table.get(table_id, {})
+        table_type = normalize_text(item.get("table_type")).lower()
+        is_doe = normalize_bool(boundary.get("is_doe"), False)
+        if is_doe:
+            scope_kind = "doe_table"
+        elif "optimization" in table_type:
+            scope_kind = "optimization_table"
+        elif "sequential" in table_type:
+            scope_kind = "sequential_child"
+        elif "downstream" in table_type or "variant" in table_type:
+            scope_kind = "downstream_variant_table"
+        else:
+            scope_kind = "formulation_table"
+        scopes.append(
+            {
+                "table_id": table_id,
+                "scope_kind": scope_kind,
+                "is_formulation_bearing": normalize_bool(item.get("is_formulation_table"), True),
+                "is_doe": is_doe,
+                "parent_table_hint": "",
+                "confidence": normalize_confidence(item.get("confidence")),
+            }
+        )
+    return scopes
+
+
+def infer_shrunken_semantic_signals_from_legacy(document: dict[str, Any]) -> dict[str, Any]:
+    formulation_candidates = [item for item in ensure_list(document.get("formulation_candidates")) if isinstance(item, dict)]
+    relation_hints = [item for item in ensure_list(document.get("relation_hints")) if isinstance(item, dict)]
+    selection_markers = [item for item in ensure_list(document.get("selection_markers")) if isinstance(item, dict)]
+    inheritance_markers = [item for item in ensure_list(document.get("inheritance_markers")) if isinstance(item, dict)]
+    variable_candidates = [item for item in ensure_list(document.get("variable_candidates")) if isinstance(item, dict)]
+    method_hint = normalize_text((document.get("shared_semantics") or {}).get("preparation_method"))
+    primary_variable_names: list[str] = []
+    seen_variables: set[str] = set()
+    for item in variable_candidates:
+        name = normalize_text(item.get("variable_name") or item.get("variable_name_raw"))
+        if name and name not in seen_variables:
+            primary_variable_names.append(name)
+            seen_variables.add(name)
+    selected_condition_hints: list[str] = []
+    seen_hints: set[str] = set()
+    for marker in selection_markers:
+        hint = " ".join(
+            value for value in [normalize_text(marker.get("selected_variable")), normalize_text(marker.get("selected_value"))] if value
+        ).strip()
+        if hint and hint not in seen_hints:
+            selected_condition_hints.append(hint)
+            seen_hints.add(hint)
+    instance_roles = {
+        normalize_text(item.get("formulation_role") or item.get("instance_role")).lower()
+        for item in formulation_candidates
+        if isinstance(item, dict)
+    }
+    return {
+        "has_variable_sweep": bool(primary_variable_names or selection_markers or len(formulation_candidates) > 1),
+        "has_sequential_optimization": False,
+        "has_parent_child_table_relation": bool(relation_hints or inheritance_markers),
+        "has_downstream_non_synthesis_variants": any(role in {"downstream_variant", "variant"} for role in instance_roles),
+        "has_measurement_only_variants": any(role in {"characterization_only", "measurement_only"} for role in instance_roles),
+        "primary_preparation_method_hint": method_hint,
+        "primary_variable_names": primary_variable_names,
+        "selected_condition_hints": selected_condition_hints,
+    }
+
+
+def infer_shrunken_formulation_candidates_from_legacy(document: dict[str, Any]) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    default_source_table_id = normalize_text(
+        next(
+            (
+                item.get("table_id")
+                for item in ensure_list(document.get("table_formulation_scopes"))
+                if isinstance(item, dict) and normalize_text(item.get("table_id"))
+            ),
+            "",
+        )
+    )
+    for item in ensure_list(document.get("formulation_candidates")):
+        if not isinstance(item, dict):
+            continue
+        candidate_id = normalize_text(item.get("candidate_id") or item.get("formulation_candidate_id"))
+        if not candidate_id:
+            continue
+        raw_label = normalize_text(item.get("raw_label") or item.get("raw_formulation_label") or item.get("label_hint"))
+        ambiguity_note = normalize_text(item.get("ambiguity_note"))
+        candidates.append(
+            {
+                "candidate_id": candidate_id,
+                "candidate_kind": infer_shrunken_candidate_kind_from_legacy(item),
+                "source_table_id": normalize_text(item.get("source_table_id")) or default_source_table_id,
+                "label_hint": raw_label,
+                "raw_label": raw_label,
+                "instance_role": infer_shrunken_instance_role_from_legacy(item),
+                "parent_candidate_hint": normalize_text(item.get("parent_candidate_id") or item.get("parent_candidate_hint")),
+                "core_change_hint": normalize_text(next(iter(ensure_list(item.get("change_descriptions"))), "")),
+                "shared_context_hint": ambiguity_note,
+                "status": normalize_candidate_status(item.get("status")),
+                "confidence": infer_shrunken_candidate_confidence_from_legacy(item),
+            }
+        )
+    return candidates
 
 
 def inheritance_marker_contract_issues(marker: dict[str, Any]) -> list[str]:
@@ -1017,6 +1182,86 @@ def call_nvidia_hosted(model: str, prompt: str, retries: int, sleep_sec: float, 
                 )
             time.sleep(sleep_sec * (attempt + 1))
     raise last_err or RuntimeError("NVIDIA hosted API call failed.")
+
+
+def call_ollama_hosted(
+    model: str,
+    prompt: str,
+    retries: int,
+    sleep_sec: float,
+    *,
+    progress_label: str = "",
+    timeout_seconds: int | None = None,
+    system_prompt: str = "",
+    response_format: Any | None = None,
+) -> str:
+    result = call_ollama_chat_nonstream(
+        base_url=resolve_ollama_base_url(""),
+        model=model,
+        prompt=prompt,
+        timeout_seconds=max(1, int(timeout_seconds or 180)),
+        retries=max(0, int(retries)),
+        sleep_sec=float(sleep_sec),
+        progress_label=progress_label,
+        system_prompt=system_prompt,
+        response_format=response_format,
+    )
+    status = normalize_text(result.get("status"))
+    response_text = str(result.get("text", "") or "")
+    if status != "success":
+        raise RuntimeError(
+            f"Ollama call failed: {result.get('error_type', '')}: {result.get('error_message', '')}".strip()
+        )
+    parsed = json.loads(response_text)
+    message = parsed.get("message") if isinstance(parsed, dict) else None
+    content = message.get("content") if isinstance(message, dict) else ""
+    if isinstance(content, str) and content.strip():
+        return content
+    raise RuntimeError("Ollama returned empty content.")
+
+
+def call_live_backend(
+    llm_backend: str,
+    model: str,
+    prompt: str,
+    retries: int,
+    sleep_sec: float,
+    *,
+    progress_label: str = "",
+    timeout_seconds: int | None = None,
+    system_prompt: str = "",
+    response_format: Any | None = None,
+) -> str:
+    backend = normalize_text(llm_backend).lower() or "gemini"
+    if backend == "gemini":
+        return call_gemini(
+            model,
+            prompt,
+            retries,
+            sleep_sec,
+            progress_label=progress_label,
+            timeout_seconds=timeout_seconds,
+        )
+    if backend == "nvidia":
+        return call_nvidia_hosted(
+            model,
+            prompt,
+            retries,
+            sleep_sec,
+            progress_label=progress_label,
+        )
+    if backend == "ollama":
+        return call_ollama_hosted(
+            model,
+            prompt,
+            retries,
+            sleep_sec,
+            progress_label=progress_label,
+            timeout_seconds=timeout_seconds,
+            system_prompt=system_prompt,
+            response_format=response_format,
+        )
+    raise ValueError(f"Unsupported llm backend: {llm_backend}")
 
 
 class Stage2ProgressReporter:
@@ -7255,7 +7500,94 @@ def build_candidate_segmentation_debug_rows(candidate_artifact: dict[str, Any], 
     return rows
 
 
-def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any]) -> str:
+OLLAMA_SHRUNKEN_LIVE_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "required": ["paper_key", "table_scopes", "semantic_signals", "formulation_candidates", "shared_semantics"],
+    "properties": {
+        "paper_key": {"type": "string"},
+        "table_scopes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["table_id", "scope_kind", "is_formulation_bearing", "is_doe", "parent_table_hint", "confidence"],
+                "properties": {
+                    "table_id": {"type": "string"},
+                    "scope_kind": {"type": "string", "enum": ["doe_table", "formulation_table", "optimization_table", "sequential_child", "downstream_variant_table", "non_formulation", "unclear"]},
+                    "is_formulation_bearing": {"type": "boolean"},
+                    "is_doe": {"type": "boolean"},
+                    "parent_table_hint": {"type": "string"},
+                    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                },
+                "additionalProperties": False,
+            },
+        },
+        "semantic_signals": {
+            "type": "object",
+            "required": ["has_variable_sweep", "has_sequential_optimization", "has_parent_child_table_relation", "has_downstream_non_synthesis_variants", "has_measurement_only_variants", "primary_preparation_method_hint", "primary_variable_names", "selected_condition_hints"],
+            "properties": {
+                "has_variable_sweep": {"type": "boolean"},
+                "has_sequential_optimization": {"type": "boolean"},
+                "has_parent_child_table_relation": {"type": "boolean"},
+                "has_downstream_non_synthesis_variants": {"type": "boolean"},
+                "has_measurement_only_variants": {"type": "boolean"},
+                "primary_preparation_method_hint": {"type": "string"},
+                "primary_variable_names": {"type": "array", "items": {"type": "string"}},
+                "selected_condition_hints": {"type": "array", "items": {"type": "string"}},
+            },
+            "additionalProperties": False,
+        },
+        "formulation_candidates": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["candidate_id", "candidate_kind", "source_table_id", "label_hint", "instance_role", "parent_candidate_hint", "core_change_hint", "shared_context_hint", "status", "confidence"],
+                "properties": {
+                    "candidate_id": {"type": "string"},
+                    "candidate_kind": {"type": "string", "enum": ["single_formulation", "formulation_family", "variant_formulation", "unclear"]},
+                    "source_table_id": {"type": "string"},
+                    "label_hint": {"type": "string"},
+                    "instance_role": {"type": "string", "enum": ["synthesis_core", "downstream_variant", "control", "comparative", "characterization_only", "unclear"]},
+                    "parent_candidate_hint": {"type": "string"},
+                    "core_change_hint": {"type": "string"},
+                    "shared_context_hint": {"type": "string"},
+                    "status": {"type": "string", "enum": ["reported", "partial", "ambiguous"]},
+                    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+                },
+                "additionalProperties": False,
+            },
+        },
+        "shared_semantics": {
+            "type": "object",
+            "required": ["polymer_name_raw", "drug_name", "surfactant_name", "stabilizer_name", "organic_solvent", "preparation_method", "emul_type"],
+            "properties": {
+                "polymer_name_raw": {"type": "string"},
+                "drug_name": {"type": "string"},
+                "surfactant_name": {"type": "string"},
+                "stabilizer_name": {"type": "string"},
+                "organic_solvent": {"type": "string"},
+                "preparation_method": {"type": "string"},
+                "emul_type": {"type": "string"},
+            },
+            "additionalProperties": False,
+        },
+    },
+    "additionalProperties": False,
+}
+
+
+def should_use_compact_live_prompt(llm_backend: str = "", model: str = "") -> bool:
+    return normalize_text(llm_backend).lower() == "ollama" and "gemma" in normalize_text(model).lower()
+
+
+def ollama_live_system_prompt() -> str:
+    return (
+        "You extract structured scientific data for Stage2 semantic understanding. "
+        "Return valid JSON only. Do not include explanations, markdown fences, reasoning, or wrapper keys. "
+        "Obey the provided JSON schema exactly."
+    )
+
+
+def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any], *, llm_backend: str = "", model: str = "") -> str:
     runtime_metadata = build_prompt_runtime_metadata(evidence_artifact)
     ordered_blocks = list(runtime_metadata["prompt_render_bundle"]["rendered_payloads"])
     schema = {
@@ -7306,6 +7638,28 @@ def build_live_prompt(record: dict[str, str], evidence_artifact: dict[str, Any])
     }
     evidence_text = "\n\n".join(ordered_blocks).strip()
     input_block = "Evidence pack:\n" + f"{evidence_text}\n"
+    if should_use_compact_live_prompt(llm_backend, model):
+        compact_schema = {
+            "paper_key": record["key"],
+            "table_scopes": [{"table_id": "Table 1", "scope_kind": "doe_table", "is_formulation_bearing": True, "is_doe": True, "parent_table_hint": "", "confidence": "high"}],
+            "semantic_signals": {"has_variable_sweep": False, "has_sequential_optimization": False, "has_parent_child_table_relation": False, "has_downstream_non_synthesis_variants": False, "has_measurement_only_variants": False, "primary_preparation_method_hint": "", "primary_variable_names": [], "selected_condition_hints": []},
+            "formulation_candidates": [{"candidate_id": f"{record['key']}__cand_01", "candidate_kind": "single_formulation", "source_table_id": "Table 1", "label_hint": "F1", "instance_role": "synthesis_core", "parent_candidate_hint": "", "core_change_hint": "", "shared_context_hint": "", "status": "reported", "confidence": "high"}],
+            "shared_semantics": {"polymer_name_raw": "", "drug_name": "", "surfactant_name": "", "stabilizer_name": "", "organic_solvent": "", "preparation_method": "", "emul_type": ""},
+        }
+        return (
+            "Extract Stage2 semantic understanding only. Return exactly one JSON object and nothing else.\n"
+            "Keep only these top-level keys: paper_key, table_scopes, semantic_signals, formulation_candidates, shared_semantics.\n"
+            "Preserve ambiguity explicitly. Use empty strings, empty lists, or false instead of guessing.\n"
+            "Use literal paper table labels such as 'Table 1'.\n"
+            "For variable-sweep or sweep-table papers, enumerate explicit formulation rows or formulation instances before collapsing anything into families.\n"
+            "Do not replace explicit rowwise sweep participation with only family-level summaries when distinct tested rows are semantically present.\n"
+            "Do not emit provenance payloads, evidence reports, relation-resolution objects, Stage3 structures, explanations, or markdown.\n\n"
+            f"Paper key: {record['key']}\n"
+            f"Title: {record['title']}\n\n"
+            "Return JSON matching this compact skeleton:\n"
+            f"{json.dumps(compact_schema, ensure_ascii=True, separators=(',', ':'))}\n\n"
+            f"{input_block}"
+        )
     return (
         "You are extracting Stage2 semantic understanding objects for a governed comparator slice.\n"
         "Rules:\n"
@@ -7358,6 +7712,32 @@ def find_legacy_raw_response(raw_dir: Path, key: str) -> Path:
     if not matches:
         raise FileNotFoundError(f"Legacy raw response not found for {key} under {raw_dir}")
     return matches[0]
+
+
+def resolve_shrunken_live_contract_fallback(
+    *,
+    record: dict[str, str],
+    raw_response_path: Path,
+    fallback_legacy_raw_dir: Path | None,
+    authority_metadata: dict[str, Any] | None = None,
+) -> dict[str, Any] | None:
+    if fallback_legacy_raw_dir is None:
+        return None
+    try:
+        legacy_raw_path = find_legacy_raw_response(
+            fallback_legacy_raw_dir,
+            normalize_text(record.get("key") or record.get("paper_key")),
+        )
+    except FileNotFoundError:
+        return None
+    if legacy_raw_path.resolve() == raw_response_path.resolve():
+        return None
+    return convert_legacy_raw_response_to_v2(
+        record=record,
+        raw_response_path=legacy_raw_path,
+        raw_response_text=legacy_raw_path.read_text(encoding="utf-8", errors="replace"),
+        authority_metadata=authority_metadata,
+    )
 
 
 def is_live_v2_raw_response_shape(parsed: Any) -> bool:
@@ -7545,6 +7925,7 @@ def convert_legacy_raw_response_to_v2(
     raw_response_path: Path,
     raw_response_text: str,
     authority_metadata: dict[str, Any] | None = None,
+    fallback_legacy_raw_dir: Path | None = None,
 ) -> dict[str, Any]:
     sanitized_text, sanitization_audit = sanitize_stage2_json_text(raw_response_text)
     if json_sanitization_applied(sanitization_audit):
@@ -7556,6 +7937,7 @@ def convert_legacy_raw_response_to_v2(
             parsed,
             raw_response_path,
             authority_metadata=authority_metadata,
+            fallback_legacy_raw_dir=fallback_legacy_raw_dir,
         )
     formulations = parsed.get("formulations") or []
     text_path = Path(record["text_path"])
@@ -7683,6 +8065,7 @@ def normalize_live_document(
     raw_response_path: Path,
     *,
     authority_metadata: dict[str, Any] | None = None,
+    fallback_legacy_raw_dir: Path | None = None,
 ) -> dict[str, Any]:
     return build_live_v2_document(
         record=record,
@@ -7691,6 +8074,7 @@ def normalize_live_document(
         source_mode="live_llm_stage2_v2",
         replay_mode="none",
         authority_metadata=authority_metadata,
+        fallback_legacy_raw_dir=fallback_legacy_raw_dir,
     )
 
 
@@ -7700,6 +8084,7 @@ def normalize_replayed_live_document(
     raw_response_path: Path,
     *,
     authority_metadata: dict[str, Any] | None = None,
+    fallback_legacy_raw_dir: Path | None = None,
 ) -> dict[str, Any]:
     return build_live_v2_document(
         record=record,
@@ -7708,6 +8093,7 @@ def normalize_replayed_live_document(
         source_mode="saved_raw_live_v2_replay_to_stage2_v2",
         replay_mode="saved_raw_response_replay",
         authority_metadata=authority_metadata,
+        fallback_legacy_raw_dir=fallback_legacy_raw_dir,
     )
 
 
@@ -7719,6 +8105,7 @@ def build_live_v2_document(
     source_mode: str,
     replay_mode: str,
     authority_metadata: dict[str, Any] | None = None,
+    fallback_legacy_raw_dir: Path | None = None,
 ) -> dict[str, Any]:
     text_path = Path(record["text_path"])
     if not text_path.is_absolute():
@@ -7728,6 +8115,14 @@ def build_live_v2_document(
     if table_dir and table_dir.exists():
         source_table_files = [str(path.relative_to(PROJECT_ROOT)).replace("\\", "/") for path in sorted(table_dir.glob("*.csv"))]
     if is_shrunken_live_contract(parsed):
+        fallback_document = resolve_shrunken_live_contract_fallback(
+            record=record,
+            raw_response_path=raw_response_path,
+            fallback_legacy_raw_dir=fallback_legacy_raw_dir,
+            authority_metadata=authority_metadata,
+        )
+        if fallback_document is not None:
+            return fallback_document
         return finalize_llm_first_document(
             {
                 "document_key": record["key"],
@@ -8013,6 +8408,12 @@ def finalize_llm_first_document(
         document["shared_semantics"] = normalize_shrunken_shared_semantics(document.get("shared_semantics"))
     else:
         augment_document_with_table_markers(document)
+        document["paper_key"] = normalize_text(document.get("paper_key") or document.get("document_key") or document.get("key"))
+        document["document_key"] = normalize_text(document.get("document_key") or document.get("paper_key"))
+        document["table_scopes"] = infer_shrunken_table_scopes_from_legacy(document)
+        document["semantic_signals"] = infer_shrunken_semantic_signals_from_legacy(document)
+        document["formulation_candidates"] = infer_shrunken_formulation_candidates_from_legacy(document)
+        document["shared_semantics"] = normalize_shrunken_shared_semantics(document.get("shared_semantics"))
     document["stage2_semantic_source_mode"] = STAGE2_SEMANTIC_SOURCE_MODE
     document["semantic_universe_authority"] = LLM_SEMANTIC_DISCOVERY
     authority_metadata = authority_metadata or {}
@@ -8142,8 +8543,13 @@ def parse_args() -> argparse.Namespace:
         default="",
         help="Directory containing saved raw responses for replay/rehydration mode.",
     )
+    parser.add_argument(
+        "--fallback-legacy-raw-responses-dir",
+        default="",
+        help="Optional directory of richer legacy raw responses to use when a live Stage2 raw response collapses to the minimal shrunken contract.",
+    )
     parser.add_argument("--model", default=PRIMARY_DEFAULT)
-    parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
+    parser.add_argument("--llm-backend", choices=["gemini", "nvidia", "ollama"], default="gemini")
     parser.add_argument("--max-text-chars", type=int, default=30000)
     parser.add_argument("--request-timeout-seconds", type=int, default=180)
     parser.add_argument("--request-retries", type=int, default=1)
@@ -8237,6 +8643,14 @@ def main() -> None:
         if not legacy_raw_dir.exists():
             raise FileNotFoundError(f"Legacy raw responses directory not found: {legacy_raw_dir}")
 
+    fallback_legacy_raw_dir: Path | None = None
+    if str(args.fallback_legacy_raw_responses_dir).strip():
+        fallback_legacy_raw_dir = Path(args.fallback_legacy_raw_responses_dir)
+        if not fallback_legacy_raw_dir.is_absolute():
+            fallback_legacy_raw_dir = (PROJECT_ROOT / fallback_legacy_raw_dir).resolve()
+        if not fallback_legacy_raw_dir.exists():
+            raise FileNotFoundError(f"Fallback legacy raw responses directory not found: {fallback_legacy_raw_dir}")
+
     jsonl_path = out_dir / OUTPUT_JSONL_NAME
     summary_path = out_dir / OUTPUT_SUMMARY_NAME
     prompt_preview_rows: list[dict[str, Any]] = []
@@ -8319,7 +8733,7 @@ def main() -> None:
                     )
                     write_json(normalized_payload_path, normalized_payload_artifact)
                     table_authority_validation_rows.extend(table_authority_rows)
-                    prompt = build_live_prompt(record, evidence_artifact)
+                    prompt = build_live_prompt(record, evidence_artifact, llm_backend=args.llm_backend, model=args.model)
                     prompt_preview_row = build_prompt_preview_row(
                         document={
                             "document_key": key,
@@ -8389,6 +8803,7 @@ def main() -> None:
                                 "authority_run_dir": normalize_text(evidence_artifact.get("authority_run_dir")),
                                 "authority_payload_root": normalize_text(evidence_artifact.get("authority_payload_root")),
                             },
+                            fallback_legacy_raw_dir=fallback_legacy_raw_dir,
                         )
                         request_summary_rows.append(
                             {
@@ -8428,23 +8843,17 @@ def main() -> None:
                             json.dumps(metadata_payload, ensure_ascii=False, indent=2) + "\n",
                             encoding="utf-8",
                         )
-                        if args.llm_backend == "gemini":
-                            raw_text = call_gemini(
-                                args.model,
-                                prompt,
-                                request_retries,
-                                args.retry_sleep_sec,
-                                progress_label=progress_label,
-                                timeout_seconds=request_timeout_seconds,
-                            )
-                        else:
-                            raw_text = call_nvidia_hosted(
-                                args.model,
-                                prompt,
-                                request_retries,
-                                args.retry_sleep_sec,
-                                progress_label=progress_label,
-                            )
+                        raw_text = call_live_backend(
+                            args.llm_backend,
+                            args.model,
+                            prompt,
+                            request_retries,
+                            args.retry_sleep_sec,
+                            progress_label=progress_label,
+                            timeout_seconds=request_timeout_seconds,
+                            system_prompt=ollama_live_system_prompt() if should_use_compact_live_prompt(args.llm_backend, args.model) else "",
+                            response_format=OLLAMA_SHRUNKEN_LIVE_SCHEMA if should_use_compact_live_prompt(args.llm_backend, args.model) else None,
+                        )
                         raw_copy_path.write_text(raw_text, encoding="utf-8")
                         metadata_payload["raw_payload_persisted"] = bool(raw_text and raw_copy_path.exists())
                         metadata_payload["raw_payload_character_count"] = len(raw_text)
@@ -8467,6 +8876,7 @@ def main() -> None:
                                 "authority_run_dir": normalize_text(evidence_artifact.get("authority_run_dir")),
                                 "authority_payload_root": normalize_text(evidence_artifact.get("authority_payload_root")),
                             },
+                            fallback_legacy_raw_dir=fallback_legacy_raw_dir,
                         )
                         metadata_payload["status"] = "success"
                         metadata_payload["request_finished_at_utc"] = datetime.now(timezone.utc).isoformat()

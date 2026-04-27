@@ -75,6 +75,7 @@ Benchmark-legality clarification:
   benchmark-valid run.
 - Benchmark-valid reporting additionally requires the mandatory
   identity-freeze gate to pass before the compare node can legalize the run.
+- In the current repository phase, DEV15 should be treated as a governed diagnostic-development set, not as a promised benchmark-certified endpoint.
 - The full DEV15 lineage
   `data/results/20260401_5d9f4e6/09_dev15_count_validation`
   is the governing example:
@@ -86,6 +87,9 @@ Benchmark-legality clarification:
 - Under this diagnostic exception, GT authority remains locked, but the
   compared final table may vary so diagnosis baselines can be evaluated against
   the same frozen GT.
+- If a run scope has no explicit governed GT, do not describe it as benchmark, benchmark-valid, or benchmark-blocked; label it as diagnosis, audit, or extraction-development only.
+- Legal recovery remains LLM-first: rules may restore or normalize values only after the LLM semantic layer or governed evidence handoff has authorized the formulation meaning and candidate scope.
+- Deterministic rules must not become the semantic authority for row identity, formulation membership, or candidate-universe definition.
 
 Complete pipeline does not mean forced full recomputation.
 

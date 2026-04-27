@@ -1,10 +1,10 @@
 # Ollama Connectivity Check v1
 
-- checked_at_utc: `2026-04-15T20:02:11.484588+00:00`
+- checked_at_utc: `2026-04-27T01:44:20.389086+00:00`
 - base_url: `http://127.0.0.1:11434/`
-- requested_model: ``
+- requested_model: `gemma4:e4b`
 - reachable: `True`
-- model_available: `None`
+- model_available: `True`
 - success: `True`
 
 ## Endpoint Results
@@ -18,4 +18,6 @@
 
 ## Available Models
 
-- `qwen3:8b`
+- `gemma4:e4b`
+- `hermes3:8b`
+- `qwen2.5-coder:7b`

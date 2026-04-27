@@ -77,6 +77,11 @@ def parse_args() -> argparse.Namespace:
         help="Directory containing frozen S2-4b raw responses named <paper_key>__stage2_v2_raw_response.json.",
     )
     parser.add_argument(
+        "--fallback-legacy-raw-responses-dir",
+        default="",
+        help="Optional richer legacy raw-response directory used when a replayed live-v2 raw response collapses to the minimal shrunken contract.",
+    )
+    parser.add_argument(
         "--paper-key",
         action="append",
         dest="paper_keys",
@@ -366,6 +371,13 @@ def main() -> None:
         raise FileNotFoundError(f"Manifest not found: {manifest_tsv}")
     if not raw_responses_dir.exists():
         raise FileNotFoundError(f"Raw responses directory not found: {raw_responses_dir}")
+    fallback_legacy_raw_responses_dir: Path | None = None
+    if str(args.fallback_legacy_raw_responses_dir).strip():
+        fallback_legacy_raw_responses_dir = repo_path(args.fallback_legacy_raw_responses_dir)
+        if not fallback_legacy_raw_responses_dir.exists():
+            raise FileNotFoundError(
+                f"Fallback legacy raw responses directory not found: {fallback_legacy_raw_responses_dir}"
+            )
 
     manifest_rows = read_tsv(manifest_tsv)
     if not manifest_rows:
@@ -444,6 +456,7 @@ def main() -> None:
                     raw_response_path=current_raw_path,
                     raw_response_text=current_raw_path.read_text(encoding="utf-8", errors="replace"),
                     authority_metadata=read_authority_metadata(raw_responses_dir, key, prompt_cache),
+                    fallback_legacy_raw_dir=fallback_legacy_raw_responses_dir,
                 )
                 handle.write(json.dumps(document, ensure_ascii=False) + "\n")
                 summary_rows.append(summary_row(document))

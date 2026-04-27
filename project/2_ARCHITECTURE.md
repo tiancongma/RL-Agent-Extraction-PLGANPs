@@ -769,7 +769,11 @@ Provide partial, human-curated labels for comparison and review.
 - In this phase, Stage5 outputs are diagnostic baselines for debugging work.
 - Identity freeze is a diagnostic-only, non-blocking risk signal.
 - Benchmark mode is disabled in the current phase.
+- Legal recovery must remain LLM-first: the LLM owns semantic formulation understanding and declaration of the candidate universe, while deterministic rules may only validate, normalize, align, or refill values that are already semantically authorized by the LLM or by governed explicit evidence handoff.
+- Deterministic value restoration must not become a substitute semantic engine and must not let rules silently redefine formulation meaning, row membership, or candidate identity.
 - Any repository reference to a baseline in this phase means diagnostic baseline unless a governed contract explicitly states otherwise.
+- DEV15 is a governed diagnostic-development set used to observe whether diagnosis baselines improve as pipeline repairs land; it must not be described as if a complete benchmark-certified endpoint already exists for that set.
+- Outside explicit frozen GT scopes such as DEV15, runs may have no GT at all; those runs must be described as diagnosis, audit, or extraction-development runs rather than benchmark runs.
 
 ### Purpose
 Convert candidate formulation-instance outputs into final one-row-per-
@@ -779,6 +783,8 @@ formulation records and compare only those final records to GT.
 Stage 5 is the only benchmark-valid reporting layer. Earlier stages may produce
 diagnostic comparisons, but they are not the official system result.
 
+In the current repo phase, this benchmark-validity statement is a reserved future-state rule, not a requirement that the current DEV15 work produce benchmark-certified outputs.
+
 Benchmark-validity clarification:
 
 - Stage5 final-table generation is necessary but not sufficient for
@@ -786,6 +792,8 @@ Benchmark-validity clarification:
 - Benchmark legality additionally requires the separate GT compare node.
 - In the current diagnostic-development phase, identity freeze remains visible
   as a risk signal but does not block execution.
+- For current DEV15 work, the target artifact is a diagnosis baseline that can be compared repeatedly against the same frozen GT to measure directional improvement during development.
+- If no explicit governed GT exists for a run scope, no benchmark-valid claim should be attempted and no benchmark language should be used beyond historical/governance reference.
 - The full DEV15 run
   `data/results/20260401_5d9f4e6/09_dev15_count_validation`
   reached Stage5 final-table materialization but failed the mandatory

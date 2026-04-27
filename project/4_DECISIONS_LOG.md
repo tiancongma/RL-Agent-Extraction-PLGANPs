@@ -5414,3 +5414,108 @@ Guardrail
 - Do not silently score inferred or calculation-only system fills as Layer 3 reported-value successes.
 - Do not move named paper-local variables into anonymous slots.
 - Do not merge `named_extensible_variables` into `core_fixed_fields` summaries without a new governed decision.
+## 2026-04-26
+
+### Decision: Use role-tolerant emulsifier/stabilizer scoring for first-week Layer3 value progress
+
+Decision
+- For first-week explicit-value progress reports and modeling-readiness field summaries, `surfactant_name` and `stabilizer_name` are not separate primary score fields when the article uses these labels interchangeably for aqueous-phase emulsion/stabilization agents such as PVA, Pluronic, Tween, emulsifier, stabilizing agent, or protective colloid.
+- The primary reporting field is `emulsifier_stabilizer_name`, computed as a role-tolerant union of GT/system `surfactant_name` and `stabilizer_name`.
+- Cross-role matches such as GT `stabilizer_name=PVA` versus system `surfactant_name=PVA` count as correct role-tolerant value matches; source-role wording remains provenance/reviewer metadata.
+- Separate role scoring is reserved for downstream review when a paper explicitly reports multiple distinct surface-active excipients with distinct functions.
+
+Reason
+- PLGA nanoparticle papers often use surfactant, stabilizer, emulsifier, and protective colloid inconsistently for the same material role, especially PVA. Strict separate scoring converts terminology variation into artificial field-mapping errors.
+
+Impact
+- This changes first-week Layer3 progress reporting only. It does not alter Stage2 extraction authority, Stage3 relation semantics, Stage5 formulation membership, frozen Layer3 GT contents, or benchmark-valid row counts.
+
+### Decision: Treat coded DOE levels as raw explicit values before decode-layer derivation
+
+Decision
+- For first-week Layer3 explicit-value progress, DOE variables reported as article-native coded levels may be compared as raw values when the GT field stores the coded level.
+- Coded-level decoding to physical values belongs to the later derived/calculation layer and must preserve provenance from the coded row value and the factor-level decoding table.
+- Ratio values that are already present in row labels or identity tokens may be rebound through a generic ratio-label-token rule rather than paper-key overrides.
+- When the ratio label explicitly names both materials, left/right order remains semantic: `PLGA:ITZ 5:1` must not match `ITZ:PLGA 5:1` under compare.
+
+Reason
+- The current first-week task measures explicit extraction coverage, not numerical inference. Mixing coded-level decoding into this layer would blur extraction with derived calculation.
+- QLYKLPKT source evidence confirms the ratio direction: preparation text says PLGA:ITZ (w/w) ratios of 5:1, 10:1, and 15:1; Table 2 is `Physicochemical properties of PLGA-ITZ-NS with different PLGA:ITZ initial ratios` and reports those three ratio rows.
+
+Impact
+- Compare-side recovery may materialize raw coded pH from pipe-delimited DOE rows and raw ratio tokens from formulation labels.
+- This does not change frozen Layer3 GT, Stage2 semantic authority, Stage3 relation semantics, Stage5 row membership, or benchmark-valid final row counts.
+
+### Decision: Preserve user-supplied paper evidence for first-week Layer3 explicit measured outputs
+
+Decision
+- User-supplied source snippets for `5ZXYABSU`, `5GIF3D8W`, `BB3JUVW7`, and `BXCV5XWB` are accepted as governed debugging evidence for first-week Layer3 explicit-value compare repair and must be retained in repository documentation.
+- The shared reference location for these future paper-local uploads is `docs/methods/layer3_field_gt_protocol_v1.md` under `Paper-local explicit measured-output evidence notes`.
+- For `5ZXYABSU`, the supplied Table 1 and Table 2 surfaces establish that the paper explicitly reports `Encapsulation efficiency ± standard deviation (%)` but does not report a separate loading-content / drug-content / drug-loading percentage field in those tables.
+- For `5GIF3D8W`, the supplied optimized-formulation Table 1 surfaces establish that `Drug content (%)` is an explicit reported field distinct from `EEc (%)`, and that the optimized drug-loaded rows report `1.04 ± 0.06`, `1.14 ± 0.02`, `1.45 ± 0.11`, and `1.44 ± 0.09` for PLGA 50/50, PLGA 75/25, PLGA 85/15, and PCL respectively.
+- The supplied `5GIF3D8W` narrative text also confirms the semantic identity of that field: the paper states that `percent drug content was low for all batches with a maximum of around 1.45 for PLGA 85/15 and PCL`, which supports treating those values as explicit `lc_percent` / drug-content evidence rather than inferred values.
+- For `BB3JUVW7`, the supplied materials/methods plus Table 1/Table 2 surfaces establish two distinct formulation families in the paper: nanospheres with explicit `%EE` and `%DL` composition rows, and nanorods with explicit process-condition rows and `Drug content (µg/mg)` outputs. These surfaces should be used to prevent cross-family field conflation during debugging.
+- For `BXCV5XWB`, the supplied materials/fabrication text plus Table 2 establish that the benchmark-facing KGN-loaded rows are `PLGA`, `PLGA–PEG`, and `PLGA–PEG–HA`, with explicit `Encapsulation efficiency (%)`, `Drug loading (mg KGN/mg nanoparticles)`, and `HA content` outputs. The same fabrication paragraph also mentions optional `FITC-loaded` formulations, but that mention alone does not authorize FITC variants as independent GT formulations.
+- These paper-local source facts may justify compare-side explicit-value rebinding where the aligned Stage5 row preserves the same formulation identity and the value is directly reported in the row evidence surface.
+
+Evidence retained
+- `5ZXYABSU` user-supplied tables:
+  - `Table 1 Nanoparticle formulations developed`
+  - `Table 2 Characteristics of the nanoparticle formulations prepared`
+  - Formulations `NPR1..NPG3`; measured outputs limited to particle size, zeta potential, and encapsulation efficiency.
+- `5GIF3D8W` user-supplied optimized table:
+  - `TABLE 1 Formulation characters for the optimized nanoparticle formulations`
+  - PLGA 50/50 / 75/25 / 85/15 / PCL, each with `Empty` and `Drug loaded` columns.
+  - Explicit measured rows include `Diameter (nm)`, `PIa`, `ZPb (mV)`, `Recovery (%)`, `Drug content (%)`, and `EEc (%)`.
+- `5GIF3D8W` user-supplied narrative paragraph describing optimized formulation sizes and concluding that percent drug content peaks at around `1.45` for PLGA 85/15 and PCL.
+- `BB3JUVW7` user-supplied methods/tables:
+  - methods distinguish `artemether loaded PLGA nanospheres` from stretched `artemether loaded PLGA nanorods`
+  - `Table 1 Particle size, PDI, %EE, %DL and zeta potential of the artemether loaded nanospheres`
+  - `Table 2 Physicochemical parameters of nanorods obtained by varying the process conditions`
+  - table surfaces show nanosphere composition+EE/DL fields versus nanorod process-condition+drug-content fields.
+- `BXCV5XWB` user-supplied materials/fabrication/table:
+  - nanoprecipitation core for `PLGA` / `PLGA–PEG`; conjugation step for `PLGA–PEG–HA`
+  - optional `KGN or FITC (5 mg)` payload mention in fabrication paragraph
+  - `Table 2 KGN-loaded nanoparticle properties`
+  - explicit benchmark-facing rows `PLGA`, `PLGA–PEG`, `PLGA–PEG–HA` with DLS/TEM size, PDI, zeta, encapsulation efficiency, drug loading, and HA content.
+
+Impact
+- This records paper-local source authority for ongoing Layer3 compare debugging.
+- Future user-provided paper excerpts for this workflow should be appended to the shared protocol section named above so later analyses know where to look first.
+- It does not by itself change GT, Stage2 extraction authority, Stage3 semantics, Stage5 row membership, or benchmark-valid final reporting without a separately validated code change and bounded replay.
+
+### Decision: Hold remaining 5GIF3D8W optimized-family `lc_percent` misses as upstream evidence-materialization gaps, and do not hard-recover `5ZXYABSU` `lc_percent`
+
+Decision
+- `5GIF3D8W_G036` (`1.45 %`) and `5GIF3D8W_G038` (`1.44 %`) remain diagnostic misses after compare-side `lc_percent` rebinding because their aligned Stage5 rows (`PLGA 85/15 / Drug loaded` and `PCL / Drug loaded`) currently preserve only narrative anchor-completion evidence, not the explicit optimized-table metric tail containing `Drug content (%)`.
+- First-week explicit-value compare must not fill those two cells from manual notes or cross-row copying alone. They may be recovered only after the aligned system row itself preserves the explicit row-local drug-content surface.
+- For `5ZXYABSU`, the user-supplied tables confirm that the visible explicit measured-output surface contains `Encapsulation efficiency (%)` but no separate `Drug content (%)`, `Drug loading (%)`, or `Loading content (%)` column. Remaining `lc_percent` cells for this paper should therefore stay unrecovered in first-week explicit compare unless a separate explicit source span is found.
+
+Reason
+- Current accepted first-week policy scores only explicit reported values and forbids converting manual interpretation or inferred fills into compare-side successes.
+- The latest `5GIF3D8W` compare misses are not simple compare-binding omissions like the recovered `1.04 %` and `1.14 %` rows; they are row-evidence materialization gaps on the aligned optimized-family anchor-completion rows.
+- `5ZXYABSU` lacks a safe table-local `lc_percent` surface in the supplied evidence, so forcing a recovery would blur `ee_percent` and `lc_percent` semantics.
+
+Impact
+- Treat `5GIF3D8W_G036/G038` as upstream restoration targets: restore explicit optimized-table metric tails onto the aligned rows before claiming compare success.
+- Treat current `5ZXYABSU` `lc_percent` misses as expected first-week explicit gaps rather than compare bugs.
+- This decision does not change GT or benchmark-valid counts by itself.
+
+### Decision: Reframe current DEV15 work as diagnosis-baseline development, and keep legal recovery LLM-first
+
+Decision
+- DEV15 is the current governed diagnosis set for iterative repair work. Its purpose is to show whether diagnosis baselines improve as fixes land, not to pretend that the repository already has a complete benchmark-certified endpoint for that set.
+- In the current repo phase, any mention of baseline for DEV15 should default to `diagnostic baseline` unless a separate governed contract explicitly declares a different status.
+- Run scopes without an explicit governed GT must not be described as benchmark, benchmark-valid, or benchmark-blocked. They should be labeled diagnosis, audit, or extraction-development runs.
+- Legal recovery stays LLM-first: the LLM semantic layer defines formulation meaning and candidate scope, while deterministic rules may only validate, normalize, align, or refill values already authorized by the LLM output or by governed explicit evidence handoff.
+- Deterministic rules must not take over semantic authority, redefine row identity, or let rule-only reconstruction become the active owner of formulation meaning.
+
+Reason
+- The user clarified that DEV15 is a development-time testing group and that the desired signal is whether diagnosis baselines improve over time, not whether a benchmark certification badge can be claimed right now.
+- The user also clarified that broader expansion work may have no GT at all, so benchmark language is actively misleading for those scopes.
+- Recent Stage2 fallback debugging reinforced the architecture boundary: value restoration can be useful only if it remains subordinate to LLM semantic authorization rather than becoming a rule-led semantic substitute.
+
+Impact
+- Future repo discussion and reporting should use `diagnosis baseline`, `diagnostic compare`, or `diagnostic-only` for DEV15 unless a new governed benchmark contract is explicitly established later.
+- When GT is absent, success should be framed through diagnosis surfaces, extraction quality audits, or downstream utility checks rather than benchmark claims.
+- Repair work may continue to restore values through governed deterministic logic, but only inside the existing LLM-first semantic contract.

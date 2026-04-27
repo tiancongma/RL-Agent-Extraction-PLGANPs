@@ -238,7 +238,12 @@ def parse_args() -> argparse.Namespace:
         help="Run live Stage2 extraction or replay saved raw responses through the maintained Stage2 completion path.",
     )
     parser.add_argument("--legacy-raw-responses-dir", default="")
-    parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
+    parser.add_argument(
+        "--fallback-legacy-raw-responses-dir",
+        default="",
+        help="Optional richer legacy raw-response directory used when replayed live-v2 raw responses collapse to the minimal shrunken contract.",
+    )
+    parser.add_argument("--llm-backend", choices=["gemini", "nvidia", "ollama"], default="gemini")
     parser.add_argument("--model", default="gemini-2.5-flash")
     parser.add_argument("--max-text-chars", type=int, default=18000)
     parser.add_argument("--request-timeout-seconds", type=int, default=180)
@@ -461,6 +466,14 @@ def main() -> None:
         if not legacy_raw_responses_dir.exists():
             raise FileNotFoundError(f"Legacy raw responses directory not found: {legacy_raw_responses_dir}")
 
+    fallback_legacy_raw_responses_dir: Path | None = None
+    if str(args.fallback_legacy_raw_responses_dir).strip():
+        fallback_legacy_raw_responses_dir = repo_path(args.fallback_legacy_raw_responses_dir)
+        if not fallback_legacy_raw_responses_dir.exists():
+            raise FileNotFoundError(
+                f"Fallback legacy raw responses directory not found: {fallback_legacy_raw_responses_dir}"
+            )
+
     extractor_cmd = [
         sys.executable,
         str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "extract_semantic_stage2_objects_v2.py"),
@@ -489,6 +502,8 @@ def main() -> None:
         extractor_cmd.extend(["--paper-key", key])
     if legacy_raw_responses_dir is not None:
         extractor_cmd.extend(["--legacy-raw-responses-dir", str(legacy_raw_responses_dir)])
+    if fallback_legacy_raw_responses_dir is not None:
+        extractor_cmd.extend(["--fallback-legacy-raw-responses-dir", str(fallback_legacy_raw_responses_dir)])
     run_context = build_run_context(
         run_id=run_id,
         run_dir_kind=run_dir_kind,

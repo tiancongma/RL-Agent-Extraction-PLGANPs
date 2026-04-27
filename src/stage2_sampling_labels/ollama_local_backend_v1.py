@@ -48,14 +48,22 @@ def call_ollama_chat_nonstream(
     retries: int,
     sleep_sec: float,
     progress_label: str = "",
+    system_prompt: str = "",
+    response_format: Any | None = None,
 ) -> dict[str, Any]:
     chat_url = _build_chat_url(base_url)
+    messages = []
+    if str(system_prompt or "").strip():
+        messages.append({"role": "system", "content": str(system_prompt).strip()})
+    messages.append({"role": "user", "content": prompt})
     payload = {
         "model": resolve_ollama_model(model),
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": messages,
         "stream": False,
         "options": {"temperature": 0},
     }
+    if response_format is not None:
+        payload["format"] = response_format
     headers = {"Content-Type": "application/json"}
     last_result: dict[str, Any] | None = None
 

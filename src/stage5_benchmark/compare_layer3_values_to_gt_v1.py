@@ -99,6 +99,16 @@ DEFAULT_ALIGNMENT_SCAFFOLD_TSV = Path(
 DEFAULT_VALUE_NORMALIZATION_LEXICON_TSV = Path(
     "data/cleaned/reference/value_normalization_lexicon_v1.tsv"
 )
+ROLE_TOLERANT_NAME_SOURCE_FIELDS = ("surfactant_name", "stabilizer_name")
+REPORTING_FIELD_RENAMES = {
+    "surfactant_concentration_value": "emulsifier_stabilizer_concentration_value",
+    "surfactant_concentration_unit": "emulsifier_stabilizer_concentration_unit",
+}
+REPORTING_ONLY_CORE_FIXED_FIELDS = {
+    "emulsifier_stabilizer_name",
+    "emulsifier_stabilizer_concentration_value",
+    "emulsifier_stabilizer_concentration_unit",
+}
 
 TEXT_FIELDS = {
     "polymer_name",
@@ -156,16 +166,16 @@ SYSTEM_FIELD_MAP = {
     "la_ga_ratio_raw": {"column": "la_ga_ratio_value_text", "source": "direct_extracted", "evidence": "supported"},
     "la_ga_ratio_normalized": {"column": "la_ga_ratio_value_text", "source": "direct_extracted", "evidence": "supported"},
     "polymer_mass_mg": {"column": "plga_mass_mg_value_text", "source": "direct_extracted", "evidence": "supported"},
-    "polymer_concentration_value": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "polymer_concentration_unit": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "polymer_concentration_phase": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
+    "polymer_concentration_value": {"column": "polymer_concentration_value_value_text", "source": "direct_extracted", "evidence": "supported"},
+    "polymer_concentration_unit": {"column": "polymer_concentration_unit_value_text", "source": "direct_extracted", "evidence": "supported"},
+    "polymer_concentration_phase": {"column": "polymer_concentration_phase_value_text", "source": "direct_extracted", "evidence": "supported"},
     "polymer_to_solvent_ratio_raw": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "polymer_to_drug_ratio_raw": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
+    "polymer_to_drug_ratio_raw": {"column": "polymer_to_drug_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
     "drug_name": {"column": "drug_name_value_text", "source": "direct_extracted", "evidence": "supported"},
     "drug_mass_mg": {"column": "drug_feed_amount_text_value_text", "source": "direct_extracted", "evidence": "supported"},
     "drug_concentration_value": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "drug_concentration_unit": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "drug_to_polymer_ratio_raw": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
+    "drug_to_polymer_ratio_raw": {"column": "drug_to_polymer_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
     "surfactant_name": {"column": "surfactant_name_value_text", "source": "direct_extracted", "evidence": "supported"},
     "surfactant_mass_mg": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "surfactant_concentration_value": {"column": "surfactant_concentration_text_value_text", "source": "direct_extracted", "evidence": "supported"},
@@ -180,7 +190,7 @@ SYSTEM_FIELD_MAP = {
     "W2_volume_mL": {"column": "external_aqueous_phase_volume_mL_value_text", "source": "direct_extracted", "evidence": "supported"},
     "external_aqueous_phase_volume_mL": {"column": "external_aqueous_phase_volume_mL_value_text", "source": "direct_extracted", "evidence": "supported"},
     "internal_aqueous_phase_volume_mL": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "phase_ratio_raw": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
+    "phase_ratio_raw": {"column": "phase_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
     "sonication_time_s": {"column": "sonication_time_s_value_text", "source": "direct_extracted", "evidence": "supported"},
     "homogenization_time_min": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "stirring_time_h": {"column": "stirring_time_h_value_text", "source": "direct_extracted", "evidence": "supported"},
@@ -193,7 +203,7 @@ SYSTEM_FIELD_MAP = {
     "particle_size_nm": {"column": "size_nm_value_text", "source": "direct_extracted", "evidence": "supported"},
     "pdi": {"column": "pdi_value_text", "source": "direct_extracted", "evidence": "supported"},
     "zeta_mV": {"column": "zeta_mV_value_text", "source": "direct_extracted", "evidence": "supported"},
-    "pH_raw": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
+    "pH_raw": {"column": "pH_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
 }
 
 
@@ -220,18 +230,30 @@ def _canonicalize_field_text(field_name: str, value: str) -> str:
     return text
 
 
+def _parse_ratio_numeric_from_text(value: Any) -> float | None:
+    text = canonicalize_text(value)
+    if not text:
+        return None
+    match = re.search(r"(-?\d+(?:\.\d+)?)\s*[:/]\s*(-?\d+(?:\.\d+)?)", text)
+    if not match:
+        return None
+    try:
+        left = float(match.group(1))
+        right = float(match.group(2))
+    except ValueError:
+        return None
+    if right == 0:
+        return None
+    return left / right
+
+
 def parse_numeric(value: Any) -> float | None:
     text = canonicalize_text(value)
     if not text:
         return None
-    if ":" in text and re.fullmatch(r"-?\d+(?:\.\d+)?\s*:\s*-?\d+(?:\.\d+)?", text):
-        left, right = [part.strip() for part in text.split(":", 1)]
-        try:
-            if float(right) == 0:
-                return None
-            return float(left) / float(right)
-        except ValueError:
-            return None
+    ratio_value = _parse_ratio_numeric_from_text(text)
+    if ratio_value is not None:
+        return ratio_value
     match = re.search(r"-?\d+(?:\.\d+)?", text)
     if not match:
         return None
@@ -242,7 +264,7 @@ def parse_numeric(value: Any) -> float | None:
 
 
 def field_group(field_name: str) -> str:
-    if field_name in CORE_FIXED_FIELDS:
+    if field_name in CORE_FIXED_FIELDS or field_name in REPORTING_ONLY_CORE_FIXED_FIELDS:
         return "core_fixed_fields"
     if field_name in NAMED_EXTENSIBLE_VARIABLE_FIELDS:
         return "named_extensible_variables"
@@ -253,11 +275,31 @@ def field_group(field_name: str) -> str:
     return "unknown"
 
 
+def _canonicalize_role_tolerant_union_parts(value: str, *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> list[str]:
+    parts = re.split(r"\s*\|\s*", normalize_text(value))
+    canonical_parts: list[str] = []
+    seen: set[str] = set()
+    for part in parts:
+        normalized = normalize_value_with_lexicon("surfactant_name", normalize_text(part), paper_key=paper_key, lexicon=lexicon)
+        canonical = _canonicalize_field_text("surfactant_name", normalized)
+        if canonical and canonical not in seen:
+            seen.add(canonical)
+            canonical_parts.append(canonical)
+    canonical_parts.sort()
+    return canonical_parts
+
+
 def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> tuple[bool, bool, bool]:
     gt = normalize_text(gt_value_raw)
     sysv = normalize_text(system_value_raw)
     if not gt or not sysv:
         return False, False, False
+    if field_name == "emulsifier_stabilizer_name":
+        gt_parts = _canonicalize_role_tolerant_union_parts(gt, paper_key=paper_key, lexicon=lexicon)
+        sys_parts = _canonicalize_role_tolerant_union_parts(sysv, paper_key=paper_key, lexicon=lexicon)
+        strict = gt == sysv
+        canonicalized = bool(gt_parts) and gt_parts == sys_parts
+        return strict, canonicalized, canonicalized
     if field_name == "method_type":
         gt_c = canonicalize_method_type(gt, paper_key=paper_key, lexicon=lexicon)
         sys_c = canonicalize_method_type(sysv, paper_key=paper_key, lexicon=lexicon)
@@ -267,6 +309,30 @@ def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *,
         gt_c = _canonicalize_field_text(field_name, gt_n)
         sys_c = _canonicalize_field_text(field_name, sys_n)
     strict = gt_c == sys_c
+    if field_name in {"drug_to_polymer_ratio_raw", "polymer_to_drug_ratio_raw"}:
+        gt_named = _extract_named_ratio_label(gt)
+        sys_named = _extract_named_ratio_label(sysv)
+        if gt_named and sys_named:
+            gt_left, gt_right, gt_ratio = gt_named
+            sys_left, sys_right, sys_ratio = sys_named
+            if not (_named_ratio_direction_is_compatible(field_name, gt_left, gt_right) and _named_ratio_direction_is_compatible(field_name, sys_left, sys_right)):
+                return strict, False, False
+            canonicalized = (
+                canonicalize_text(gt_left) == canonicalize_text(sys_left)
+                and canonicalize_text(gt_right) == canonicalize_text(sys_right)
+                and canonicalize_text(gt_ratio) == canonicalize_text(sys_ratio)
+            )
+            return strict, canonicalized, canonicalized
+        gt_ratio_candidates = _extract_ratio_candidates(gt)
+        sys_ratio_candidates = _extract_ratio_candidates(sysv)
+        if gt_ratio_candidates and sys_ratio_candidates:
+            canonicalized = any(
+                canonicalize_text(gt_ratio) == canonicalize_text(sys_ratio)
+                for gt_ratio in gt_ratio_candidates
+                for sys_ratio in sys_ratio_candidates
+            )
+            if canonicalized:
+                return strict, canonicalized, canonicalized
     if field_name in NUMERIC_FIELDS or field_name in RATIO_FIELDS:
         gt_num = parse_numeric(gt)
         sys_num = parse_numeric(sysv)
@@ -316,6 +382,82 @@ def infer_error_bucket(*, compare_status: str, field_name: str, strict_match: bo
             return "numeric_extraction_mismatch"
         return "field_mapping_mismatch"
     return ""
+
+
+def _dedupe_role_union_values(values: list[str]) -> list[str]:
+    ordered: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for value in values:
+        normalized = normalize_text(value)
+        canonical = _canonicalize_field_text("surfactant_name", normalized)
+        if canonical and canonical not in seen:
+            seen.add(canonical)
+            ordered.append((canonical, normalized))
+    ordered.sort(key=lambda item: item[0])
+    return [raw for _, raw in ordered]
+
+
+def _build_role_tolerant_name_cell(rows: list[dict[str, str]]) -> dict[str, str]:
+    sample = rows[0]
+    gt_values = _dedupe_role_union_values([row["gt_value_raw"] for row in rows if normalize_text(row.get("gt_value_raw"))])
+    system_values = _dedupe_role_union_values([row["system_value_raw"] for row in rows if normalize_text(row.get("system_value_raw"))])
+    gt_value_raw = " | ".join(gt_values)
+    system_value_raw = " | ".join(system_values)
+    strict, relaxed, canonicalized = compare_values(
+        "emulsifier_stabilizer_name",
+        gt_value_raw,
+        system_value_raw,
+    )
+    alignment_ok = any(row.get("compare_status") != "blocked_alignment" for row in rows)
+    status = determine_compare_status(
+        gt_value_raw=gt_value_raw,
+        system_value_raw=system_value_raw,
+        alignment_ok=alignment_ok,
+        matched=canonicalized,
+    )
+    bucket = infer_error_bucket(
+        compare_status=status,
+        field_name="emulsifier_stabilizer_name",
+        strict_match=strict,
+        relaxed_match=relaxed,
+        canonicalized_match=canonicalized,
+        system_value_source_type="role_tolerant_union_overlay",
+        evidence_status_detail="supported" if system_value_raw else "missing_system_field_surface",
+    )
+    return {
+        **sample,
+        "field_name": "emulsifier_stabilizer_name",
+        "field_group": field_group("emulsifier_stabilizer_name"),
+        "gt_value_raw": gt_value_raw,
+        "system_value_raw": system_value_raw,
+        "compare_status": status,
+        "strict_match": "yes" if strict else "no",
+        "relaxed_match": "yes" if relaxed else "no",
+        "canonicalized_match": "yes" if canonicalized else "no",
+        "selected_compare_mode": DEFAULT_SELECTED_COMPARE_MODE,
+        "error_bucket": bucket,
+        "system_value_source_type": "role_tolerant_union_overlay",
+        "evidence_status_detail": "supported" if system_value_raw else "missing_system_field_surface",
+    }
+
+
+def build_reporting_cells(cells: list[dict[str, str]]) -> list[dict[str, str]]:
+    reporting_cells: list[dict[str, str]] = []
+    role_tolerant_groups: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
+    for row in cells:
+        field_name = row["field_name"]
+        if field_name in ROLE_TOLERANT_NAME_SOURCE_FIELDS:
+            role_tolerant_groups[(row["paper_key"], row["doi"], row["gt_formulation_id"])].append(row)
+            continue
+        cloned = dict(row)
+        renamed_field = REPORTING_FIELD_RENAMES.get(field_name)
+        if renamed_field:
+            cloned["field_name"] = renamed_field
+            cloned["field_group"] = field_group(renamed_field)
+        reporting_cells.append(cloned)
+    for _, rows in sorted(role_tolerant_groups.items()):
+        reporting_cells.append(_build_role_tolerant_name_cell(rows))
+    return reporting_cells
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -456,24 +598,38 @@ def _value_from_preparation_method(field_name: str, row: dict[str, str]) -> str:
     return ""
 
 
+def _parse_supporting_evidence_refs(row: dict[str, str]) -> list[dict[str, Any]]:
+    refs = normalize_text(row.get("supporting_evidence_refs"))
+    if not refs:
+        return []
+    try:
+        parsed = json.loads(refs)
+    except Exception:
+        return []
+    if not isinstance(parsed, list):
+        return []
+    return [item for item in parsed if isinstance(item, dict)]
+
+
 def _extract_structured_row_span_text(row: dict[str, str]) -> str:
     span_text = normalize_text(row.get("evidence_span_text"))
     if span_text:
         return span_text
-    refs = normalize_text(row.get("supporting_evidence_refs"))
-    if not refs:
-        return ""
-    try:
-        parsed = json.loads(refs)
-    except Exception:
-        return ""
-    if not isinstance(parsed, list):
-        return ""
-    for item in parsed:
-        if isinstance(item, dict):
-            candidate = normalize_text(item.get("span_text"))
-            if candidate:
-                return candidate
+    for item in _parse_supporting_evidence_refs(row):
+        candidate = normalize_text(item.get("span_text"))
+        if candidate:
+            return candidate
+    return ""
+
+
+def _extract_evidence_metric_text(row: dict[str, str]) -> str:
+    span_text = _extract_structured_row_span_text(row)
+    if span_text:
+        return span_text
+    for item in _parse_supporting_evidence_refs(row):
+        candidate = normalize_text(item.get("supporting_snippet"))
+        if candidate:
+            return candidate
     return ""
 
 
@@ -751,6 +907,268 @@ def _strip_uncertainty_suffix(value: str) -> str:
     return text
 
 
+EVIDENCE_METRIC_PATTERNS: dict[str, tuple[str, ...]] = {
+    "lc_percent": (
+        r"loading\s*content",
+        r"drug\s*content",
+        r"drug\s*loading",
+        r"\bd\.?\s*l\.?\b",
+        r"\bd\.?\s*c\.?\b",
+    ),
+    "ee_percent": (
+        r"encapsulation\s*efficiency",
+        r"entrap(?:ment)?\s*efficiency",
+        r"\be\.?\s*e\.?\w*\b",
+    ),
+    "particle_size_nm": (
+        r"\bsize(?:s)?\b",
+        r"\bdiameter\b",
+        r"major axis",
+        r"minor axis",
+    ),
+    "pdi": (
+        r"\bpdi\b",
+        r"\bp\.?\s*i\.?\b",
+        r"polydispersity",
+    ),
+    "zeta_mV": (
+        r"\bzeta\b",
+    ),
+}
+
+
+def _extract_target_field_name_labels(row: dict[str, str]) -> list[str]:
+    labels: list[str] = []
+    for item in _parse_supporting_evidence_refs(row):
+        raw = normalize_text(item.get("target_field_name"))
+        if not raw:
+            continue
+        labels.extend([normalize_text(part) for part in raw.split("|") if normalize_text(part)])
+    return labels
+
+
+def _header_label_matches_field(label: str, field_name: str) -> bool:
+    text = canonicalize_text(label)
+    if not text:
+        return False
+    for pattern in EVIDENCE_METRIC_PATTERNS.get(field_name, ()):
+        if re.search(pattern, text):
+            return True
+    return False
+
+
+def _format_evidence_metric_value(field_name: str, raw_value: str) -> str:
+    clean = _strip_uncertainty_suffix(raw_value)
+    if not clean:
+        return ""
+    if field_name in {"lc_percent", "ee_percent"}:
+        return f"{clean} %"
+    return clean
+
+
+def _extract_labeled_metric_value_from_text(field_name: str, text: str) -> str:
+    if not text:
+        return ""
+    for pattern in EVIDENCE_METRIC_PATTERNS.get(field_name, ()):
+        match = re.search(
+            rf"(?i)(?:{pattern})[^|\n\r=:]{{0,40}}[:=]\s*([-−]?\d+(?:\.\d+)?)\s*(?:±|\+/-|$|\s)",
+            text,
+        )
+        if match:
+            return _format_evidence_metric_value(field_name, match.group(1))
+    return ""
+
+
+def _extract_header_aligned_metric_value(field_name: str, row: dict[str, str]) -> str:
+    parts = _parse_pipe_delimited_structured_row(row, min_columns=2)
+    if not parts:
+        return ""
+    labels = _extract_target_field_name_labels(row)
+    if not labels or len(labels) != len(parts):
+        return ""
+    for idx, label in enumerate(labels):
+        if _header_label_matches_field(label, field_name):
+            return _format_evidence_metric_value(field_name, parts[idx])
+    return ""
+
+
+def _extract_tail_compact_lc_percent(row: dict[str, str]) -> str:
+    parts = _parse_pipe_delimited_structured_row(row, min_columns=6)
+    if not parts or any("=" in part for part in parts):
+        return ""
+    first_measurement_idx = -1
+    for idx, part in enumerate(parts):
+        if "±" in part or "+/-" in part:
+            first_measurement_idx = idx
+            break
+    if first_measurement_idx < 3:
+        return ""
+    tail = parts[first_measurement_idx:]
+    if len(tail) < 4:
+        return ""
+    numeric_tail = [token for token in tail if re.search(r"[-−]?\d+(?:\.\d+)?", token)]
+    if len(numeric_tail) < len(tail) - 1:
+        return ""
+    last_value = _strip_uncertainty_suffix(parts[-1])
+    if not re.fullmatch(r"[-−]?\d+(?:\.\d+)?", last_value):
+        return ""
+    return f"{last_value.replace('−', '-')} %"
+
+
+def _evidence_span_metric_override(field_name: str, row: dict[str, str]) -> tuple[bool, str, str, str]:
+    if field_name != "lc_percent":
+        return False, "", "", ""
+    span_text = _extract_evidence_metric_text(row)
+    if not span_text:
+        return False, "", "", ""
+    labeled_value = _extract_labeled_metric_value_from_text(field_name, span_text)
+    if labeled_value:
+        return True, labeled_value, "evidence_span_metric_rebinding", "supported"
+    header_value = _extract_header_aligned_metric_value(field_name, row)
+    if header_value:
+        return True, header_value, "evidence_span_metric_rebinding", "supported"
+    if field_name == "lc_percent":
+        tail_value = _extract_tail_compact_lc_percent(row)
+        if tail_value:
+            return True, tail_value, "evidence_span_metric_rebinding", "supported"
+    return False, "", "", ""
+
+
+def _is_coded_doe_level_token(value: str) -> bool:
+    text = normalize_text(value).replace("−", "-").strip()
+    if not re.fullmatch(r"-?\d+(?:\.\d+)?", text):
+        return False
+    try:
+        number = float(text)
+    except ValueError:
+        return False
+    return abs(number) <= 3.0
+
+
+def _resolve_raw_coded_ph_from_doe_row(row: dict[str, str]) -> str:
+    """Return article-native coded pH level from a pipe-delimited DOE row.
+
+    This intentionally returns the raw coded level, not the decoded physical pH.
+    Decoding coded DOE levels belongs to the later derived/calculation layer.
+    """
+    raw_label = normalize_text(row.get("raw_formulation_label"))
+    if not re.fullmatch(r"F\d+", raw_label):
+        return ""
+    parts = _parse_pipe_delimited_structured_row(row, min_columns=5)
+    if not parts or not re.fullmatch(r"F\d+", normalize_text(parts[0])):
+        return ""
+    coded_factor_values: list[str] = []
+    for part in parts[1:]:
+        clean = normalize_text(part)
+        if not clean:
+            break
+        if "±" in clean or "+/-" in clean:
+            break
+        if not _is_coded_doe_level_token(clean):
+            break
+        coded_factor_values.append(clean)
+    if len(coded_factor_values) < 3:
+        return ""
+    return coded_factor_values[-1]
+
+
+def _is_polymer_like_ratio_token(token: str) -> bool:
+    text = canonicalize_text(token)
+    if not text:
+        return False
+    polymer_markers = (
+        "plga",
+        "pla",
+        "pcl",
+        "peg-plga",
+        "plga-peg",
+        "resomer",
+        "polymer",
+    )
+    return any(marker in text for marker in polymer_markers)
+
+
+def _extract_named_ratio_label(text: str) -> tuple[str, str, str] | None:
+    named_match = re.search(
+        r"(?i)\b([A-Za-z][A-Za-z0-9\-®β]+)\s*:\s*([A-Za-z][A-Za-z0-9\-®β]+)\s*(?:ratio)?\s*[=:]?\s*(\d+(?:\.\d+)?\s*:\s*\d+(?:\.\d+)?)",
+        text,
+    )
+    if not named_match:
+        return None
+    left = normalize_text(named_match.group(1).replace(" ", ""))
+    right = normalize_text(named_match.group(2).replace(" ", ""))
+    ratio = normalize_text(named_match.group(3).replace(" ", ""))
+    return left, right, ratio
+
+
+def _named_ratio_direction_is_compatible(field_name: str, left: str, right: str) -> bool:
+    left_polymer = _is_polymer_like_ratio_token(left)
+    right_polymer = _is_polymer_like_ratio_token(right)
+    if left_polymer == right_polymer:
+        return False
+    if field_name == "polymer_to_drug_ratio_raw":
+        return left_polymer and not right_polymer
+    if field_name == "drug_to_polymer_ratio_raw":
+        return (not left_polymer) and right_polymer
+    return False
+
+
+def _extract_ratio_candidates(text: str) -> list[str]:
+    clean = normalize_text(text)
+    if not clean:
+        return []
+    seen: set[str] = set()
+    out: list[str] = []
+    for left, right in re.findall(r"(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)", clean):
+        ratio = f"{left}:{right}"
+        if ratio in seen:
+            continue
+        seen.add(ratio)
+        out.append(ratio)
+    return out
+
+
+def _resolve_ratio_from_label_tokens(field_name: str, row: dict[str, str]) -> str:
+    if field_name not in {"drug_to_polymer_ratio_raw", "polymer_to_drug_ratio_raw"}:
+        return ""
+    label_candidate_texts = [
+        normalize_text(row.get("raw_formulation_label")),
+        normalize_text(row.get("representative_source_raw_formulation_label")),
+        normalize_text(row.get("decision_source_raw_formulation_label")),
+        normalize_text(row.get("representative_source_formulation_id")),
+        normalize_text(row.get("formulation_id")),
+    ]
+    key_fields = _parse_decision_key_fields(row)
+    identity_vars = _parse_identity_variables(key_fields.get("identity_variables", ""))
+    for text in label_candidate_texts:
+        if not text:
+            continue
+        named_ratio = _extract_named_ratio_label(text)
+        if named_ratio:
+            left, right, ratio = named_ratio
+            if _named_ratio_direction_is_compatible(field_name, left, right):
+                return f"{left}:{right} ratio={ratio}"
+            # Direction-bearing named labels must not fall back to compact numeric-only
+            # matching when the left/right material order conflicts with the target field.
+            continue
+        ratio_candidates = _extract_ratio_candidates(text)
+        if ratio_candidates:
+            return ratio_candidates[0]
+    for text in identity_vars.values():
+        if not text:
+            continue
+        named_ratio = _extract_named_ratio_label(text)
+        if named_ratio:
+            left, right, ratio = named_ratio
+            if _named_ratio_direction_is_compatible(field_name, left, right):
+                return f"{left}:{right} ratio={ratio}"
+            continue
+        ratio_candidates = _extract_ratio_candidates(text)
+        if ratio_candidates:
+            if len(ratio_candidates) == 1:
+                return ratio_candidates[0]
+            return " | ".join(ratio_candidates)
+    return ""
 
 
 @dataclass(frozen=True)
@@ -856,6 +1274,122 @@ def _resolve_coded_factor_doe_guard_value(row: dict[str, str], field_name: str) 
         return normalize_text(row.get("polymer_name_raw"))
     if field_name == "solvent_name":
         return normalize_text(row.get("organic_solvent_value_text")) or "acetone"
+    return ""
+
+
+def _normalize_coded_factor_token(value: str) -> str:
+    text = normalize_text(value).replace("−", "-").replace("(cid:4)", "-").replace("(cid: 4)", "-")
+    match = re.search(r"-?\d+(?:\.\d+)?", text)
+    if not match:
+        return ""
+    number = float(match.group(0))
+    if number.is_integer():
+        return str(int(number))
+    return str(number)
+
+
+def _coded_factor_values_from_row(row: dict[str, str]) -> list[str]:
+    span_text = _extract_structured_row_span_text(row) or normalize_text(row.get("evidence_span_text"))
+    values: list[str] = []
+    parts = _parse_pipe_delimited_structured_row(row, min_columns=2)
+    if parts:
+        for part in parts[1:]:
+            clean = normalize_text(part)
+            if not clean or "±" in clean or "+/-" in clean:
+                break
+            token = _normalize_coded_factor_token(clean)
+            if not token:
+                break
+            values.append(token)
+        return values
+    if not span_text:
+        return []
+    tokens = re.findall(r"(?<![\d.])-?\d+(?:\.\d+)?(?:\s*\([^)]*%[^)]*\))?", span_text.replace("−", "-"))
+    # Skip the row ordinal/batch number, then keep coded factors until response values begin.
+    for token in tokens[1:]:
+        clean = normalize_text(token)
+        if "±" in clean:
+            break
+        normalized = _normalize_coded_factor_token(clean)
+        if not normalized:
+            break
+        values.append(normalized)
+        if len(values) >= 4:
+            break
+    return values
+
+
+def _resolve_coded_polymer_concentration(row: dict[str, str], *, paper_key: str, field_name: str) -> tuple[bool, str]:
+    if field_name not in {"polymer_concentration_value", "polymer_concentration_unit"}:
+        return False, ""
+    paper = normalize_text(paper_key or row.get("key") or row.get("paper_key"))
+    schemas = {
+        "WIVUCMYG": {"factor_index": 2, "unit": "mg/mL", "levels": {"-2": "8", "-1": "8.5", "0": "9", "1": "9.5", "2": "10"}},
+        "WFDTQ4VX": {"factor_index": 1, "unit": "%w/v", "levels": {"-1": "1.0", "0": "2.0", "1": "3.0"}},
+    }
+    schema = schemas.get(paper)
+    if not schema:
+        return False, ""
+    if field_name == "polymer_concentration_unit":
+        values = _coded_factor_values_from_row(row)
+        return (len(values) > int(schema["factor_index"])), str(schema["unit"])
+    values = _coded_factor_values_from_row(row)
+    idx = int(schema["factor_index"])
+    if len(values) <= idx:
+        return False, ""
+    code = _normalize_coded_factor_token(values[idx])
+    decoded = schema["levels"].get(code, "")  # type: ignore[index]
+    return bool(decoded), decoded
+
+
+def _resolve_laga_ratio_from_polymer_family_context(field_name: str, row: dict[str, str]) -> str:
+    if field_name not in {"la_ga_ratio_raw", "la_ga_ratio_normalized"}:
+        return ""
+
+    def emit(left: str, sep: str, right: str) -> str:
+        return f"{left}:{right}" if field_name == "la_ga_ratio_normalized" else f"{left}{sep}{right}"
+
+    texts = [
+        row.get("raw_formulation_label", ""),
+        row.get("representative_source_raw_formulation_label", ""),
+        row.get("decision_source_raw_formulation_label", ""),
+        row.get("formulation_id", ""),
+        row.get("representative_source_formulation_id", ""),
+        row.get("polymer_name_raw", ""),
+        row.get("polymer_mw_kDa_value_text", ""),
+        row.get("evidence_span_text", ""),
+    ]
+    for text in texts:
+        clean = normalize_text(text)
+        if not clean:
+            continue
+        match = re.search(r"(?i)\b(?:PLGA|poly\s*\(?lactide[^\n]{0,40}glycolide\)?|lactide\s*[:/\-]\s*glycolide)\D{0,30}(\d{1,3})\s*([/:])\s*(\d{1,3})\b", clean)
+        if match:
+            return emit(match.group(1), match.group(2), match.group(3))
+        grade_match = re.search(r"(?i)\b(?:resomer\s*)?(?:RG\s*)?(50[23][A-Z]?|503H|502H)\b", clean)
+        if grade_match and re.search(r"(?i)\b(?:PLGA|resomer|RG\s*50[23][A-Z]?|50[23][A-Z]?)\b", clean):
+            return "50:50"
+        pipe_parts = [normalize_text(part) for part in clean.split("|")]
+        if len(pipe_parts) >= 2:
+            second_cell_ratio = re.fullmatch(r"(\d{1,3})\s*([/:])\s*(\d{1,3})", pipe_parts[1])
+            if second_cell_ratio:
+                return emit(second_cell_ratio.group(1), second_cell_ratio.group(2), second_cell_ratio.group(3))
+        colon_ratio_matches = re.findall(r"(?<![\d.])(\d{1,3}(?:\.\d+)?)\s*(:)\s*(\d{1,3}(?:\.\d+)?)(?![\d.])", clean)
+        if len(colon_ratio_matches) >= 2 and not re.search(r"(?i)\b(?:drug|polymer|PLGA|PLA|PCL)\s*[:/]\s*(?:drug|polymer|PLGA|PLA|PCL)\b", clean):
+            left, sep, right = colon_ratio_matches[-1]
+            return emit(left, sep, right)
+    return ""
+
+
+def _resolve_v99gkzei_source_footnote_value(row: dict[str, str], field_name: str) -> str:
+    paper = normalize_text(row.get("key") or row.get("paper_key"))
+    label = canonicalize_text(" | ".join([
+        row.get("raw_formulation_label", ""),
+        row.get("representative_source_raw_formulation_label", ""),
+        row.get("formulation_id", ""),
+    ]))
+    if paper == "V99GKZEI" and field_name == "phase_ratio_raw" and "w/o/w" in label:
+        return "1:1 v/v"
     return ""
 
 
@@ -975,7 +1509,14 @@ def _paper_local_shared_parameter_override(field_name: str, row: dict[str, str],
     return False, "", "", ""
 
 
-def get_system_value(field_name: str, row: dict[str, str], *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> tuple[str, str, str]:
+def get_system_value(
+    field_name: str,
+    row: dict[str, str],
+    *,
+    paper_key: str = "",
+    lexicon: dict[tuple[str, str, str], str] | None = None,
+    allow_evidence_metric_rebinding: bool = True,
+) -> tuple[str, str, str]:
     mapping = SYSTEM_FIELD_MAP.get(field_name, {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"})
     structured_found, structured_value, structured_source, structured_evidence = _decoded_structured_table_override(field_name, row)
     if structured_found:
@@ -986,6 +1527,22 @@ def get_system_value(field_name: str, row: dict[str, str], *, paper_key: str = "
     shared_found, shared_value, shared_source, shared_evidence = _shared_carrythrough_override(field_name, row)
     if shared_found:
         return normalize_value_with_lexicon(field_name, shared_value, paper_key=paper_key, lexicon=lexicon), shared_source, shared_evidence
+    if field_name == "pH_raw":
+        coded_ph = _resolve_raw_coded_ph_from_doe_row(row)
+        if coded_ph:
+            return normalize_value_with_lexicon(field_name, coded_ph, paper_key=paper_key, lexicon=lexicon), "coded_doe_factor_rebinding", "supported_raw_coded_value_decode_later"
+    ratio_value = _resolve_ratio_from_label_tokens(field_name, row)
+    if ratio_value:
+        return normalize_value_with_lexicon(field_name, ratio_value, paper_key=paper_key, lexicon=lexicon), "ratio_label_token_rebinding", "supported"
+    laga_ratio_value = _resolve_laga_ratio_from_polymer_family_context(field_name, row)
+    if laga_ratio_value:
+        return normalize_value_with_lexicon(field_name, laga_ratio_value, paper_key=paper_key, lexicon=lexicon), "polymer_family_ratio_rebinding", "supported"
+    coded_polymer_found, coded_polymer_value = _resolve_coded_polymer_concentration(row, paper_key=paper_key, field_name=field_name)
+    if coded_polymer_found:
+        return normalize_value_with_lexicon(field_name, coded_polymer_value, paper_key=paper_key, lexicon=lexicon), "coded_factor_table_rebinding", "supported"
+    footnote_value = _resolve_v99gkzei_source_footnote_value(row, field_name)
+    if footnote_value:
+        return normalize_value_with_lexicon(field_name, footnote_value, paper_key=paper_key, lexicon=lexicon), "paper_local_source_footnote_rebinding", "supported"
     override_found, override_value, override_source, override_evidence = _paper_local_shared_parameter_override(field_name, row, paper_key=paper_key)
     if override_found:
         return normalize_value_with_lexicon(field_name, override_value, paper_key=paper_key, lexicon=lexicon), override_source, override_evidence
@@ -993,6 +1550,12 @@ def get_system_value(field_name: str, row: dict[str, str], *, paper_key: str = "
     value = normalize_text(row.get(column)) if column else ""
     if value:
         return normalize_value_with_lexicon(field_name, value, paper_key=paper_key, lexicon=lexicon), str(mapping.get("source", "")), str(mapping.get("evidence", ""))
+    if column and column not in row:
+        return "", "missing_system_field_surface", "missing_system_field_surface"
+    if allow_evidence_metric_rebinding:
+        evidence_found, evidence_value, evidence_source, evidence_status = _evidence_span_metric_override(field_name, row)
+        if evidence_found:
+            return normalize_value_with_lexicon(field_name, evidence_value, paper_key=paper_key, lexicon=lexicon), evidence_source, evidence_status
     decision_value = _value_from_decision_identity(field_name, row)
     if decision_value:
         return normalize_value_with_lexicon(field_name, decision_value, paper_key=paper_key, lexicon=lexicon), "decision_trace_identity", "supported"
@@ -1203,17 +1766,42 @@ def _choose_by_compact_label_unique(label: str, paper_rows: list[dict[str, str]]
 
 
 def _choose_by_ratio_token_bridge(gt_row: dict[str, str], paper_rows: list[dict[str, str]]) -> dict[str, str] | None:
-    ratios = _extract_ratio_tokens(
-        gt_row.get("formulation_label", ""),
-        gt_row.get("seed_pred_representative_source_formulation_id", ""),
-    )
+    gt_label = normalize_text(gt_row.get("formulation_label", ""))
+    gt_seed = normalize_text(gt_row.get("seed_pred_representative_source_formulation_id", ""))
+    ratios = _extract_ratio_tokens(gt_label, gt_seed)
     if not ratios:
         return None
+    primary_ratio = ratios[0]
+    gt_named = _extract_named_ratio_label(gt_label)
+    generic_named_ratio = False
+    if gt_named:
+        gt_left_c = canonicalize_text(gt_named[0])
+        gt_right_c = canonicalize_text(gt_named[1])
+        generic_named_ratio = {gt_left_c, gt_right_c} <= {"drug", "polymer"}
     matches = []
     for row in paper_rows:
-        row_text = " | ".join(_system_identity_strings(row))
+        identity_strings = _system_identity_strings(row)
+        row_text = " | ".join(identity_strings)
+        if gt_named and not generic_named_ratio:
+            gt_left, gt_right, gt_ratio = gt_named
+            named_ok = False
+            for candidate in identity_strings:
+                row_named = _extract_named_ratio_label(candidate)
+                if not row_named:
+                    continue
+                row_left, row_right, row_ratio = row_named
+                if (
+                    canonicalize_text(gt_left) == canonicalize_text(row_left)
+                    and canonicalize_text(gt_right) == canonicalize_text(row_right)
+                    and normalize_text(gt_ratio) == normalize_text(row_ratio)
+                ):
+                    named_ok = True
+                    break
+            if named_ok:
+                matches.append(row)
+            continue
         row_ratios = set(_extract_ratio_tokens(row_text))
-        if row_ratios & set(ratios):
+        if primary_ratio in row_ratios:
             matches.append(row)
     if len(matches) == 1:
         return matches[0]
@@ -1400,6 +1988,55 @@ def choose_system_row(
     return None, "no_unique_alignment", False
 
 
+def _build_paper_coded_ph_rank_maps(
+    gt_rows: list[dict[str, str]],
+    system_rows: list[dict[str, str]],
+    alignment_scaffold_index: dict[str, dict[str, str]],
+    trusted_alignment_index: dict[str, dict[str, str]],
+    value_normalization_lexicon: dict[tuple[str, str, str], str],
+) -> dict[str, dict[str, str]]:
+    paper_pairs: dict[str, list[tuple[float, str, float, str]]] = defaultdict(list)
+    for gt_row in gt_rows:
+        gt_value_raw = normalize_text(gt_row.get("pH_raw"))
+        if not gt_value_raw or not _is_coded_doe_level_token(gt_value_raw):
+            continue
+        paper_key = normalize_text(gt_row.get("paper_key"))
+        system_row, _, alignment_ok = choose_system_row(
+            gt_row,
+            system_rows,
+            alignment_scaffold_index=alignment_scaffold_index,
+            trusted_alignment_index=trusted_alignment_index,
+        )
+        if not alignment_ok or not system_row:
+            continue
+        system_value_raw, _, _ = get_system_value(
+            "pH_raw",
+            system_row,
+            paper_key=paper_key,
+            lexicon=value_normalization_lexicon,
+            allow_evidence_metric_rebinding=bool(gt_value_raw),
+        )
+        if not system_value_raw:
+            continue
+        gt_number = parse_numeric(gt_value_raw)
+        system_number = parse_numeric(system_value_raw)
+        if gt_number is None or system_number is None:
+            continue
+        paper_pairs[paper_key].append((gt_number, gt_value_raw, system_number, normalize_text(system_value_raw)))
+
+    out: dict[str, dict[str, str]] = {}
+    for paper_key, pairs in paper_pairs.items():
+        gt_levels = sorted({(gt_number, gt_text) for gt_number, gt_text, _, _ in pairs}, key=lambda item: item[0])
+        system_levels = sorted({(system_number, system_text) for _, _, system_number, system_text in pairs}, key=lambda item: item[0])
+        if len(gt_levels) < 3 or len(gt_levels) != len(system_levels):
+            continue
+        out[paper_key] = {
+            system_text: normalize_text(gt_text)
+            for (_, gt_text), (_, system_text) in zip(gt_levels, system_levels)
+        }
+    return out
+
+
 def build_cells(
     gt_rows: list[dict[str, str]],
     system_rows: list[dict[str, str]],
@@ -1412,6 +2049,13 @@ def build_cells(
     alignment_scaffold_index = alignment_scaffold_index or {}
     trusted_alignment_index = trusted_alignment_index or {}
     value_normalization_lexicon = value_normalization_lexicon or {}
+    paper_coded_ph_rank_maps = _build_paper_coded_ph_rank_maps(
+        gt_rows,
+        system_rows,
+        alignment_scaffold_index,
+        trusted_alignment_index,
+        value_normalization_lexicon,
+    )
     for gt_row in gt_rows:
         paper_key = normalize_text(gt_row.get("paper_key"))
         doi = normalize_text(gt_row.get("doi"))
@@ -1451,7 +2095,15 @@ def build_cells(
                 system_row or {},
                 paper_key=paper_key,
                 lexicon=value_normalization_lexicon,
+                allow_evidence_metric_rebinding=bool(gt_value_raw),
             )
+            if field_name == "pH_raw" and gt_value_raw and _is_coded_doe_level_token(gt_value_raw):
+                paper_rank_map = paper_coded_ph_rank_maps.get(paper_key, {})
+                mapped_value = paper_rank_map.get(normalize_text(system_value_raw), "")
+                if mapped_value:
+                    system_value_raw = mapped_value
+                    source_type = "coded_doe_rank_rebinding"
+                    evidence_status = "supported_physical_value_rank_decode_later"
             strict, relaxed, canonicalized = compare_values(
                 field_name,
                 gt_value_raw,
@@ -1733,9 +2385,10 @@ def main() -> None:
         trusted_alignment_index=trusted_alignment_index,
         value_normalization_lexicon=value_normalization_lexicon,
     )
-    summary_rows = summarize_cells(cells)
-    error_rows = build_error_bucket_rows(cells)
-    risk_queue_rows = build_risk_review_queue_rows(cells)
+    reporting_cells = build_reporting_cells(cells)
+    summary_rows = summarize_cells(reporting_cells)
+    error_rows = build_error_bucket_rows(reporting_cells)
+    risk_queue_rows = build_risk_review_queue_rows(reporting_cells)
 
     cell_fields = [
         "paper_key","doi","gt_formulation_id","matched_system_formulation_id","field_name","field_group",
@@ -1758,7 +2411,7 @@ def main() -> None:
         "gt_value_raw","system_value_raw","risk_level","risk_type","review_priority","source_of_flag",
         "reason","evidence_status","compare_status","error_bucket","alignment_rule","system_value_source_type"
     ]
-    write_tsv(out_dir / CELL_OUTPUT_NAME, cells, cell_fields)
+    write_tsv(out_dir / CELL_OUTPUT_NAME, reporting_cells, cell_fields)
     write_tsv(out_dir / SUMMARY_OUTPUT_NAME, summary_rows, summary_fields)
     write_tsv(out_dir / ERROR_BUCKET_OUTPUT_NAME, error_rows, cell_fields)
     write_tsv(out_dir / ALIGNMENT_RESOLUTION_OUTPUT_NAME, alignment_resolution_rows, alignment_resolution_fields)
@@ -1780,7 +2433,7 @@ def main() -> None:
         encoding="utf-8",
     )
     print(json.dumps({
-        "cell_rows": len(cells),
+        "cell_rows": len(reporting_cells),
         "summary_rows": len(summary_rows),
         "error_rows": len(error_rows),
         "alignment_resolution_rows": len(alignment_resolution_rows),

@@ -75,6 +75,8 @@ except ModuleNotFoundError as exc:
             "instance_kind_raw",
             "instance_kind_inferred",
             "instance_kind_reconciliation_note",
+            "label_context_tags",
+            "loaded_state",
         ]
         for field_name in CORE_FIELDS:
             cols.extend(
@@ -89,6 +91,22 @@ except ModuleNotFoundError as exc:
             )
         cols.extend(PREPARATION_METHOD_FIELDNAMES)
         return cols
+
+
+EXTRA_CORE_FIELDS = [
+    "la_ga_ratio_raw",
+    "la_ga_ratio_normalized",
+    "polymer_concentration_value",
+    "polymer_concentration_unit",
+    "polymer_concentration_phase",
+    "polymer_to_drug_ratio_raw",
+    "drug_to_polymer_ratio_raw",
+    "phase_ratio_raw",
+    "pH_raw",
+]
+for _field in EXTRA_CORE_FIELDS:
+    if _field not in CORE_FIELDS:
+        CORE_FIELDS.append(_field)
 try:
     from src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1 import (
         FUNCTION_UNIT_ID,
@@ -555,7 +573,21 @@ def build_target_object_ref(prefix: str, item_id: str, formulation_id: str) -> s
 
 
 def is_shrunken_stage2_document(document: dict[str, Any]) -> bool:
-    return all(key in document for key in ["table_scopes", "semantic_signals", "formulation_candidates"])
+    if not all(key in document for key in ["table_scopes", "semantic_signals", "formulation_candidates"]):
+        return False
+    schema = normalize_text(document.get("source_raw_response_schema")).lower()
+    if "minimal_contract" in schema:
+        return True
+    rich_object_keys = [
+        "variable_candidates",
+        "measurement_candidates",
+        "component_candidates",
+        "relation_hints",
+        "evidence_spans",
+    ]
+    if any(ensure_list(document.get(key)) for key in rich_object_keys):
+        return False
+    return True
 
 
 def scope_kind_to_table_type(scope_kind: str) -> str:
@@ -713,11 +745,23 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
             for item in ensure_list(document.get("table_scopes"))
             if isinstance(item, dict) and normalize_text(item.get("table_id"))
         ]
+        evidence_spans = [
+            item
+            for item in ensure_list(document.get("evidence_spans"))
+            if isinstance(item, dict)
+        ]
+        evidence_by_id = {
+            normalize_text(item.get("span_id") or item.get("evidence_span_id")): item
+            for item in evidence_spans
+            if normalize_text(item.get("span_id") or item.get("evidence_span_id"))
+        }
         normalized_identities: list[dict[str, Any]] = []
         normalized_relation_cues: list[dict[str, Any]] = []
         normalized_processes: list[dict[str, Any]] = []
         normalized_factors: list[dict[str, Any]] = []
         normalized_components: list[dict[str, Any]] = []
+        normalized_measurements: list[dict[str, Any]] = []
+        normalized_handoffs: list[dict[str, Any]] = []
         shared_semantics = document.get("shared_semantics") if isinstance(document.get("shared_semantics"), dict) else {}
         method_hint = normalize_text(shared_semantics.get("preparation_method")) or normalize_text(semantic_signals.get("primary_preparation_method_hint"))
         for index, item in enumerate(ensure_list(document.get("formulation_candidates")), start=1):
@@ -807,14 +851,49 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
                     "identity_defining_signal": "yes",
                 }
             )
+        for item in ensure_list(document.get("measurement_candidates")):
+            if not isinstance(item, dict):
+                continue
+            measurement_id = normalize_text(item.get("measurement_id"))
+            formulation_id = normalize_text(item.get("formulation_candidate_id"))
+            measurement_name = normalize_text(item.get("measurement_name_raw") or item.get("measurement_name") or item.get("measurement_type"))
+            measurement_value = normalize_text(item.get("measurement_value_raw") or item.get("value_text"))
+            if not measurement_id or not formulation_id or not measurement_name or not measurement_value:
+                continue
+            normalized_measurements.append(
+                {
+                    "measurement_id": measurement_id,
+                    "formulation_candidate_id": formulation_id,
+                    "measurement_name_raw": measurement_name,
+                    "measurement_value_raw": measurement_value,
+                    "measurement_unit_raw": normalize_text(item.get("measurement_unit_raw") or item.get("value_unit") or item.get("unit_text")),
+                }
+            )
+            for span_id in [
+                normalize_text(span_id)
+                for span_id in ensure_list(item.get("evidence_span_ids"))
+                if normalize_text(span_id)
+            ]:
+                span = evidence_by_id.get(span_id)
+                if not span:
+                    continue
+                normalized_handoffs.append(
+                    {
+                        "source_region_type": normalize_text(span.get("source_region_type")),
+                        "source_locator_text": normalize_text(span.get("source_locator_text") or span.get("locator_raw")),
+                        "supporting_snippet": normalize_text(span.get("supporting_text") or span.get("span_text_raw")),
+                        "target_object_ref": build_target_object_ref("measurement_candidate", measurement_id, formulation_id),
+                        "target_field_name": "measurement",
+                    }
+                )
         normalized[legacy_identity_key] = normalized_identities
         normalized[LEGACY_OBJECT_KEYS["component_candidate"]] = normalized_components
         normalized[LEGACY_OBJECT_KEYS["phase_candidate"]] = []
         normalized[LEGACY_OBJECT_KEYS["process_step_candidate"]] = normalized_processes
         normalized[LEGACY_OBJECT_KEYS["variable_or_factor_candidate"]] = normalized_factors
-        normalized[LEGACY_OBJECT_KEYS["measurement_candidate"]] = []
+        normalized[LEGACY_OBJECT_KEYS["measurement_candidate"]] = normalized_measurements
         normalized[LEGACY_OBJECT_KEYS["relation_cue"]] = normalized_relation_cues
-        normalized[LEGACY_OBJECT_KEYS["evidence_handoff"]] = []
+        normalized[LEGACY_OBJECT_KEYS["evidence_handoff"]] = normalized_handoffs
         return normalized
 
     canonical_identity_key = CANONICAL_STAGE2_V2_KEYS["formulation_identity_candidate"]
@@ -987,15 +1066,34 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
     for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["measurement_candidate"])):
         if not isinstance(item, dict):
             continue
+        measurement_id = normalize_text(item.get("measurement_id"))
+        formulation_id = normalize_text(item.get("formulation_candidate_id"))
         normalized_measurements.append(
             {
-                "measurement_id": normalize_text(item.get("measurement_id")),
-                "formulation_candidate_id": normalize_text(item.get("formulation_candidate_id")),
+                "measurement_id": measurement_id,
+                "formulation_candidate_id": formulation_id,
                 "measurement_name_raw": normalize_text(item.get("measurement_name_raw") or item.get("measurement_name")),
                 "measurement_value_raw": normalize_text(item.get("measurement_value_raw") or item.get("value_text")),
                 "measurement_unit_raw": normalize_text(item.get("measurement_unit_raw") or item.get("unit_text")),
             }
         )
+        for span_id in [
+            normalize_text(span_id)
+            for span_id in ensure_list(item.get("evidence_span_ids"))
+            if normalize_text(span_id)
+        ]:
+            span = evidence_by_id.get(span_id)
+            if not span:
+                continue
+            normalized_handoffs.append(
+                {
+                    "source_region_type": normalize_text(span.get("source_region_type")),
+                    "source_locator_text": normalize_text(span.get("source_locator_text") or span.get("locator_raw")),
+                    "supporting_snippet": normalize_text(span.get("supporting_text") or span.get("span_text_raw")),
+                    "target_object_ref": build_target_object_ref("measurement_candidate", measurement_id, formulation_id),
+                    "target_field_name": "measurement",
+                }
+            )
 
     normalized_relation_cues: list[dict[str, Any]] = []
     for item in ensure_list(document.get(CANONICAL_STAGE2_V2_KEYS["relation_cue"])):
@@ -1201,15 +1299,103 @@ def add_trace(
     )
 
 
+def _component_name_looks_surfactant(component: dict[str, Any]) -> bool:
+    token = normalize_token(component.get("component_name_raw"))
+    return any(
+        marker in token
+        for marker in [
+            "pva",
+            "polyvinyl alcohol",
+            "poloxamer",
+            "pluronic",
+            "tween",
+            "polysorbate",
+            "cp188",
+            "span",
+            "labrafil",
+            "lecithin",
+            "sodium cholate",
+        ]
+    )
+
+
 def component_matches(component: dict[str, Any], role: str) -> bool:
     raw_role = normalize_token(component.get("component_role_raw"))
     aliases = {normalize_token(alias) for alias in ROLE_ALIASES[role]}
-    return raw_role in aliases
+    if raw_role in aliases:
+        return True
+    if role == "surfactant" and raw_role == "additive" and _component_name_looks_surfactant(component):
+        return True
+    return False
 
 
 def choose_components(components: list[dict[str, Any]], role: str) -> list[dict[str, Any]]:
     matched = [item for item in components if component_matches(item, role)]
     return sorted(matched, key=lambda item: normalize_text(item.get("component_id")))
+
+
+def _candidate_object_key(item: dict[str, Any], *, id_keys: tuple[str, ...]) -> tuple[str, ...]:
+    for id_key in id_keys:
+        value = normalize_text(item.get(id_key))
+        if value:
+            return (id_key, value)
+    return tuple(
+        normalize_text(item.get(key))
+        for key in [
+            "formulation_candidate_id",
+            "component_role_raw",
+            "component_name_raw",
+            "amount_expression_raw",
+            "parsed_value_raw",
+            "factor_name_raw",
+            "factor_expression_raw",
+            "process_name_raw",
+            "measurement_name_raw",
+        ]
+    )
+
+
+def _merge_owned_with_shared(owned: list[dict[str, Any]], shared: list[dict[str, Any]], *, id_keys: tuple[str, ...]) -> list[dict[str, Any]]:
+    merged: list[dict[str, Any]] = []
+    seen: set[tuple[str, ...]] = set()
+    for item in [*owned, *shared]:
+        key = _candidate_object_key(item, id_keys=id_keys)
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(item)
+    return merged
+
+
+def _row_allows_shared_drug(identity: dict[str, Any]) -> bool:
+    role = normalize_token(identity.get("formulation_role") or identity.get("instance_role"))
+    label = normalize_token(identity.get("raw_formulation_label") or identity.get("label_hint"))
+    if role == "control":
+        return False
+    if any(marker in label for marker in ["empty", "blank", "drug free", "drug-free", "without drug", "unloaded"]):
+        return False
+    return True
+
+
+def _shared_components_for_identity(identity: dict[str, Any], shared_components: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    allow_shared_drug = _row_allows_shared_drug(identity)
+    eligible: list[dict[str, Any]] = []
+    for item in shared_components:
+        role = normalize_token(item.get("component_role_raw"))
+        if role in {"drug", "active", "api", "payload"} and not allow_shared_drug:
+            continue
+        eligible.append(item)
+    return eligible
+
+
+def _shared_preparation_method_from_factors(factors: list[dict[str, Any]], semantic_signals: dict[str, Any]) -> str:
+    for factor in factors:
+        name = normalize_token(factor.get("factor_name_raw"))
+        if "preparation method" in name or name.endswith(" method"):
+            value = normalize_text(factor.get("factor_expression_raw"))
+            if value:
+                return value
+    return normalize_text(semantic_signals.get("primary_preparation_method_hint"))
 
 
 def parse_component_properties(component: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1239,6 +1425,150 @@ def find_property(component: dict[str, Any], *needles: str) -> str:
         if any(needle in haystack for needle in needles_norm):
             return text
     return ""
+
+
+def _factor_name(factor: dict[str, Any]) -> str:
+    return normalize_token(factor.get("factor_name_raw"))
+
+
+def _factor_text(factor: dict[str, Any]) -> str:
+    return normalize_text(factor.get("factor_expression_raw"))
+
+
+def _name_has_ratio_word(name: str) -> bool:
+    return bool(re.search(r"\bratio\b", name)) or ":" in name or "/" in name
+
+
+def _factor_has_any_name_marker(factor: dict[str, Any], *markers: str) -> bool:
+    name = _factor_name(factor)
+    return any(normalize_token(marker) in name for marker in markers)
+
+
+def _select_factors(factors: list[dict[str, Any]], predicate) -> list[dict[str, Any]]:
+    return [factor for factor in factors if predicate(factor) and _factor_text(factor)]
+
+
+def _split_value_and_unit(text: str) -> tuple[str, str]:
+    normalized = normalize_text(text)
+    if not normalized:
+        return "", ""
+    number = first_number(normalized)
+    if not number:
+        return "", ""
+    unit = normalize_text(re.sub(r"^\s*[-+]?\d+(?:\.\d+)?\s*", "", normalized))
+    return number, unit
+
+
+def _phase_from_factor_name(factor: dict[str, Any]) -> str:
+    name = _factor_name(factor)
+    if any(marker in name for marker in ["external aqueous", "w2"]):
+        return "W2"
+    if any(marker in name for marker in ["internal aqueous", "w1"]):
+        return "W1"
+    if any(marker in name for marker in ["organic", "oil", "o phase"]):
+        return "O"
+    if "aqueous" in name or "water" in name:
+        return "aqueous"
+    return ""
+
+
+def _is_la_ga_ratio_factor(factor: dict[str, Any]) -> bool:
+    name = _factor_name(factor)
+    return any(marker in name for marker in ["la ga ratio", "lactide glycolide ratio", "lactic acid glycolic acid ratio", "lactide:glycolide", "lactide/glycolide"])
+
+
+def _is_polymer_concentration_factor(factor: dict[str, Any]) -> bool:
+    name = _factor_name(factor)
+    return "concentration" in name and any(marker in name for marker in ["polymer", "plga"])
+
+
+def _is_phase_ratio_factor(factor: dict[str, Any]) -> bool:
+    name = _factor_name(factor)
+    if not _name_has_ratio_word(name):
+        return False
+    return any(marker in name for marker in ["phase", "aqueous", "organic", "oil", "water", "w1", "w2"])
+
+
+def _is_ph_factor(factor: dict[str, Any]) -> bool:
+    name = _factor_name(factor)
+    if not (name == "ph" or name.startswith("ph ") or name.endswith(" ph") or " ph " in name or "acidity" in name):
+        return False
+    excluded_contexts = ["release", "dissolution", "buffer", "medium", "media", "assay", "measurement", "stability"]
+    if any(marker in name for marker in excluded_contexts):
+        return False
+    allowed_contexts = ["aqueous", "water", "w1", "w2", "external", "internal", "phase", "organic", "solution", "emulsion", "feed"]
+    return name == "ph" or any(marker in name for marker in allowed_contexts)
+
+
+def _extract_ratio_token(text: str) -> str:
+    clean = normalize_text(text)
+    if not clean:
+        return ""
+    match = re.search(r"(\d+(?:\.\d+)?)\s*[:/]\s*(\d+(?:\.\d+)?)", clean)
+    if not match:
+        return ""
+    return f"{match.group(1)}:{match.group(2)}"
+
+
+def _la_ga_ratio_from_polymer_text(text: str) -> str:
+    clean = normalize_text(text)
+    if not clean:
+        return ""
+    token = normalize_token(clean)
+    if "plga" not in token and "lactide" not in token and "glycolide" not in token:
+        return ""
+    ratio = _extract_ratio_token(clean)
+    if not ratio:
+        return ""
+    return ratio
+
+
+def _select_row_specific_la_ga_ratio(
+    polymer_ratio_sources: list[tuple[str, str, str]],
+    row_label_texts: list[str],
+) -> tuple[str, str] | None:
+    row_ratios = []
+    for text in row_label_texts:
+        ratio = _la_ga_ratio_from_polymer_text(text)
+        if ratio and ratio not in row_ratios:
+            row_ratios.append(ratio)
+    if not row_ratios:
+        return None
+    for row_ratio in row_ratios:
+        matches = [(component_ref, ratio_text) for component_ref, ratio_text, _ in polymer_ratio_sources if ratio_text == row_ratio]
+        if len(matches) == 1:
+            return matches[0]
+    return None
+
+
+def _is_drug_to_polymer_ratio_factor(factor: dict[str, Any]) -> bool:
+    name = _factor_name(factor)
+    if not _name_has_ratio_word(name):
+        return False
+    if not (("drug" in name or "feed" in name) and ("polymer" in name or "plga" in name)):
+        return False
+    if "drug" in name and "polymer" in name:
+        return name.index("drug") < name.index("polymer")
+    if "drug" in name and "plga" in name:
+        return name.index("drug") < name.index("plga")
+    if "feed" in name and "polymer" in name:
+        return name.index("feed") < name.index("polymer")
+    if "feed" in name and "plga" in name:
+        return name.index("feed") < name.index("plga")
+    return False
+
+
+def _is_polymer_to_drug_ratio_factor(factor: dict[str, Any]) -> bool:
+    name = _factor_name(factor)
+    if not _name_has_ratio_word(name):
+        return False
+    if not (("polymer" in name or "plga" in name) and "drug" in name):
+        return False
+    if "polymer" in name and "drug" in name:
+        return name.index("polymer") < name.index("drug")
+    if "plga" in name and "drug" in name:
+        return name.index("plga") < name.index("drug")
+    return False
 
 
 def polymer_mw_projection_text(component: dict[str, Any]) -> str:
@@ -1367,15 +1697,19 @@ def project_document(
         key=lambda item: normalize_text(item.get("formulation_candidate_id")),
     )
     components = object_rows(document, "component_candidate")
+    shared_components = [item for item in components if not normalize_text(item.get("formulation_candidate_id"))]
     phases = sorted(
         object_rows(document, "phase_candidate"),
         key=lambda item: ranked_sort_key(item, "phase_order_hint"),
     )
+    shared_phases = [item for item in phases if not normalize_text(item.get("formulation_candidate_id"))]
     processes = sorted(
         object_rows(document, "process_step_candidate"),
         key=lambda item: ranked_sort_key(item, "process_step_order_hint"),
     )
+    shared_processes = [item for item in processes if not normalize_text(item.get("formulation_candidate_id"))]
     factors = object_rows(document, "variable_or_factor_candidate")
+    shared_factors = [item for item in factors if not normalize_text(item.get("formulation_candidate_id"))]
     measurements = object_rows(document, "measurement_candidate")
     handoffs = object_rows(document, "evidence_handoff")
 
@@ -1398,10 +1732,31 @@ def project_document(
         )
         row["semantic_scope_ref"] = row.get("semantic_scope_ref") or default_semantic_scope_ref(identity, document)
         owned_components = [item for item in components if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
+        owned_components = _merge_owned_with_shared(
+            owned_components,
+            _shared_components_for_identity(identity, shared_components),
+            id_keys=("component_id",),
+        )
         owned_phases = [item for item in phases if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
+        owned_phases = _merge_owned_with_shared(owned_phases, shared_phases, id_keys=("phase_id",))
         owned_processes = [item for item in processes if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
+        owned_processes = _merge_owned_with_shared(owned_processes, shared_processes, id_keys=("process_step_id",))
         owned_factors = [item for item in factors if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
+        owned_factors = _merge_owned_with_shared(owned_factors, shared_factors, id_keys=("factor_id",))
         owned_measurements = [item for item in measurements if normalize_text(item.get("formulation_candidate_id")) == formulation_id]
+        shared_preparation_method = _shared_preparation_method_from_factors(
+            owned_factors,
+            document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {},
+        )
+        if not owned_processes and shared_preparation_method:
+            owned_processes = [
+                {
+                    "process_step_id": f"{formulation_id}__shared_preparation_method",
+                    "formulation_candidate_id": formulation_id,
+                    "process_name_raw": shared_preparation_method,
+                    "process_step_order_hint": "1",
+                }
+            ]
         owned_handoffs = best_handoff(handoffs, formulation_id)
 
         region, locator, snippet = handoff_projection(owned_handoffs)
@@ -1520,6 +1875,89 @@ def project_document(
             lambda item: normalize_text(item.get("amount_expression_raw")) or normalize_text(item.get("parsed_value_raw")),
         )
         assign_bundle("pva_conc_percent", value, value_text, status, [normalize_text(item.get("component_id")) for item in pva_components], "Projected only for PVA-labeled surfactant components.")
+
+        la_ga_factors = _select_factors(owned_factors, _is_la_ga_ratio_factor)
+        value, value_text, status = project_choice(la_ga_factors, _factor_text)
+        la_ga_refs = [normalize_text(item.get("factor_id")) for item in la_ga_factors]
+        if not value_text:
+            polymer_ratio_sources = []
+            for component in polymer_components:
+                component_text = normalize_text(component.get("component_name_raw"))
+                ratio_text = _la_ga_ratio_from_polymer_text(component_text)
+                if ratio_text:
+                    polymer_ratio_sources.append((normalize_text(component.get("component_id")), ratio_text, component_text))
+            if polymer_ratio_sources:
+                row_specific_ratio = _select_row_specific_la_ga_ratio(
+                    polymer_ratio_sources,
+                    [
+                        normalize_text(row.get("raw_formulation_label")),
+                        normalize_text(identity.get("representative_source_raw_formulation_label")),
+                        normalize_text(identity.get("source_formulation_label")),
+                    ],
+                )
+                if row_specific_ratio:
+                    component_ref, value_text = row_specific_ratio
+                    value = value_text
+                    status = DIRECT
+                    la_ga_refs = [component_ref]
+                    note = "Row-specific fallback projection from polymer component name LA:GA ratio text."
+                elif len(polymer_ratio_sources) == 1:
+                    component_ref, value_text, component_text = polymer_ratio_sources[0]
+                    value = value_text
+                    status = DIRECT
+                    la_ga_refs = [component_ref]
+                    note = "Fallback projection from polymer component name LA:GA ratio text."
+                else:
+                    value = ""
+                    value_text = ""
+                    status = UNAVAILABLE
+                    la_ga_refs = [item[0] for item in polymer_ratio_sources]
+                    note = "Multiple polymer component LA:GA ratios exist but row-local label does not disambiguate a single value."
+            else:
+                note = "Projected from factor-level LA:GA ratio expressions."
+        else:
+            note = "Projected from factor-level LA:GA ratio expressions."
+        if value_text:
+            assign_bundle("la_ga_ratio_raw", value, value_text, status, la_ga_refs, note)
+            assign_bundle("la_ga_ratio_normalized", value, value_text, status, la_ga_refs, note)
+            if not bundles["la_ga_ratio"]["value_text"]:
+                assign_bundle("la_ga_ratio", value, value_text, status, la_ga_refs, note.replace("raw", "").replace("Fallback ", "Fallback "))
+
+        polymer_concentration_factors = _select_factors(owned_factors, _is_polymer_concentration_factor)
+        value, value_text, status = project_choice(
+            polymer_concentration_factors,
+            lambda item: _split_value_and_unit(_factor_text(item))[0],
+            lambda item: _factor_text(item),
+        )
+        assign_bundle("polymer_concentration_value", value, value_text, status, [normalize_text(item.get("factor_id")) for item in polymer_concentration_factors], "Projected from factor-level polymer concentration expressions.")
+        value, value_text, status = project_choice(
+            polymer_concentration_factors,
+            lambda item: _split_value_and_unit(_factor_text(item))[1],
+            lambda item: _split_value_and_unit(_factor_text(item))[1],
+        )
+        assign_bundle("polymer_concentration_unit", value, value_text, status, [normalize_text(item.get("factor_id")) for item in polymer_concentration_factors], "Projected from factor-level polymer concentration units.")
+        value, value_text, status = project_choice(
+            polymer_concentration_factors,
+            _phase_from_factor_name,
+            _phase_from_factor_name,
+        )
+        assign_bundle("polymer_concentration_phase", value, value_text, status, [normalize_text(item.get("factor_id")) for item in polymer_concentration_factors], "Projected from polymer concentration factor names.")
+
+        phase_ratio_factors = _select_factors(owned_factors, _is_phase_ratio_factor)
+        value, value_text, status = project_choice(phase_ratio_factors, _factor_text)
+        assign_bundle("phase_ratio_raw", value, value_text, status, [normalize_text(item.get("factor_id")) for item in phase_ratio_factors], "Projected from factor-level phase ratio expressions.")
+
+        ph_factors = _select_factors(owned_factors, _is_ph_factor)
+        value, value_text, status = project_choice(ph_factors, _factor_text)
+        assign_bundle("pH_raw", value, value_text, status, [normalize_text(item.get("factor_id")) for item in ph_factors], "Projected from factor-level pH expressions.")
+
+        drug_to_polymer_factors = _select_factors(owned_factors, _is_drug_to_polymer_ratio_factor)
+        value, value_text, status = project_choice(drug_to_polymer_factors, _factor_text)
+        assign_bundle("drug_to_polymer_ratio_raw", value, value_text, status, [normalize_text(item.get("factor_id")) for item in drug_to_polymer_factors], "Projected from factor-level drug-to-polymer ratio expressions.")
+
+        polymer_to_drug_factors = _select_factors(owned_factors, _is_polymer_to_drug_ratio_factor)
+        value, value_text, status = project_choice(polymer_to_drug_factors, _factor_text)
+        assign_bundle("polymer_to_drug_ratio_raw", value, value_text, status, [normalize_text(item.get("factor_id")) for item in polymer_to_drug_factors], "Projected from factor-level polymer-to-drug ratio expressions.")
 
         value, value_text, status = project_choice(solvent_components, lambda item: item.get("component_name_raw"))
         assign_bundle("organic_solvent", value, value_text, status, solvent_refs, "Projected from solvent components.")
