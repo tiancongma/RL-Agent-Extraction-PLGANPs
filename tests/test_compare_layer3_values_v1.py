@@ -2087,6 +2087,53 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertNotIn("drug_name", applied)
         self.assertEqual(materialized["drug_name_value_text"], "")
 
+    def test_stage5_carries_doe_factor_emulsifier_name_from_source_definition(self):
+        row = {
+            "key": "SURF1",
+            "formulation_id": "SURF1_DOE_Row_F1",
+            "raw_formulation_label": "F1",
+            "change_descriptions": '["(\\\'Coded Levels of Factors\\\', \\\'cP188 (mg/mL)\\\')=15.0"]',
+            "surfactant_name_value": "",
+            "surfactant_name_value_text": "",
+            "surfactant_name_scope": "",
+            "surfactant_name_membership_confidence": "low",
+            "surfactant_name_evidence_region_type": "unknown",
+            "surfactant_name_missing_reason": "not_reported",
+            "surfactant_concentration_text_value": "15.0",
+            "surfactant_concentration_text_value_text": "15.0",
+        }
+        source_text = (
+            "Table 1. Initial full factorial design. cFB, concentration of flurbiprofen "
+            "(mg/mL); cP188, concentration of poloxamer 188 (mg/mL)."
+        )
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text=source_text,
+        )
+        self.assertIn("surfactant_name", applied)
+        self.assertEqual(materialized["surfactant_name_value_text"], "poloxamer 188")
+        self.assertEqual(materialized["surfactant_name_scope"], "global_shared")
+        self.assertEqual(materialized["surfactant_name_evidence_region_type"], "global_emulsifier_factor_evidence")
+        self.assertEqual(materialized["surfactant_name_missing_reason"], "")
+        self.assertEqual(materialized["surfactant_concentration_text_value_text"], "15.0")
+
+    def test_stage5_doe_factor_emulsifier_name_does_not_override_row_local_name(self):
+        row = {
+            "key": "SURF2",
+            "formulation_id": "SURF2_DOE_Row_F1",
+            "raw_formulation_label": "F1",
+            "change_descriptions": '["(\\\'Coded Levels of Factors\\\', \\\'cPVA (%)\\\')=1.0"]',
+            "surfactant_name_value": "Tween 80",
+            "surfactant_name_value_text": "Tween 80",
+        }
+        source_text = "The factors were cPVA, concentration of PVA (% w/v)."
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text=source_text,
+        )
+        self.assertNotIn("surfactant_name", applied)
+        self.assertEqual(materialized["surfactant_name_value_text"], "Tween 80")
+
     def test_project_document_carries_shared_context_values_into_each_row(self):
         document = {
             "document_key": "SHARED1",

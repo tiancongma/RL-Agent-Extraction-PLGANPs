@@ -1881,3 +1881,51 @@ Diagnostic effect, not benchmark-valid final evidence:
 - total diagnostic compare error rows: 2371 -> 2310
 
 Unit verification: `python3 -m unittest tests.test_compare_layer3_values_v1` passed `Ran 96 tests ... OK`.
+
+### 2026-04-27 — Stage5 DOE factor emulsifier-name carrythrough diagnostic
+
+Repair pattern: `PAT_STAGE5_DOE_FACTOR_EMULSIFIER_NAME_CARRYTHROUGH_V1`
+
+Diagnostic-only lineage:
+
+- Source run: `data/results/20260423_9c4a03f`
+- Stage5 diagnostic output: `data/results/20260423_9c4a03f/68_stage5_emulsifier_factor_name_diagnostic/`
+- Layer3 diagnostic compare: `data/results/20260423_9c4a03f/69_layer3_compare_emulsifier_factor_name_after/`
+- Locked GT authority: `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`
+
+Failure class:
+
+- After the shared loaded-drug repair, the highest G2 residual field class was `emulsifier_stabilizer_name`.
+- The first failure boundary was Stage5 final-output materialization, not GT or compare scoring: DOE/coded table rows preserved numeric concentration values such as `cPVA=...` or `cP188=...`, but `surfactant_name_value_text` remained blank even when the source text explicitly defined the coded factor.
+
+Implemented generic rule:
+
+- Parse row-local coded factor labels from `change_descriptions`, `identity_variables_json`, and `identity_variables`.
+- Parse source-backed factor definitions such as:
+  - `cPVA`, `PVA concentration`
+  - `cP188`, `concentration of poloxamer 188`
+- Fill the blank `surfactant_name` bundle only when exactly one row factor maps to exactly one supported emulsifier/stabilizer material name.
+- Do not overwrite row-local `surfactant_name`.
+- Do not infer or decode concentration values; existing row-local concentration values are preserved unchanged.
+- Ambiguous or unmapped factors remain blank.
+
+Validation:
+
+- Unit test command: `python3 -m unittest tests.test_compare_layer3_values_v1`
+- Unit test result: `Ran 98 tests ... OK`
+- Diagnostic compare impact versus `67_layer3_compare_shared_drug_identity_after`:
+  - `emulsifier_stabilizer_name missing_in_system`: `73 -> 31`
+  - `emulsifier_stabilizer_name present_and_match`: `54 -> 96`
+  - `emulsifier_stabilizer_name present_but_mismatch`: `26 -> 26`
+  - new mismatches introduced: `0`
+  - `WIVUCMYG`: `missing_in_system 26 -> 0`, `present_and_match 0 -> 26`
+  - `YGA8VQKU`: `missing_in_system 16 -> 0`, `present_and_match 0 -> 16`
+  - G2 recall: `62.26% -> 65.17%`
+  - G2 conditional accuracy: `89.88% -> 90.33%`
+  - G2 correct-value recall: `55.96% -> 58.86%`
+  - compare CLI error rows: `2310 -> 2268`
+
+Residual note:
+
+- `WFDTQ4VX` still has unresolved surfactant-name misses for `X3` coded surfactant concentration rows because the cleaned source text available to the rule does not expose an explicit `X3 -> Pluronic F68` definition. This should not be filled by a paper-local override or by guessing from a material list; it requires stronger source evidence or a separate generic table-definition recovery path.
+

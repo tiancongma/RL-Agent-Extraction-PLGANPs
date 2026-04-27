@@ -515,6 +515,107 @@ def extract_unique_global_preparation_solvent(source_text: str) -> str:
     return next(iter(candidates)) if len(candidates) == 1 else ""
 
 
+EMULSIFIER_FACTOR_STOPWORDS = {
+    "drug",
+    "polymer",
+    "plga",
+    "flurbiprofen",
+    "pranoprofen",
+    "lopinavir",
+    "ph",
+    "aqueous phase",
+}
+
+
+def normalize_emulsifier_factor_candidate(value: str) -> str:
+    text = re.sub(r"\s+", " ", str(value or "").strip(" .,;:()[]{}\"'“”‘’"))
+    if not text:
+        return ""
+    lowered = text.lower()
+    if lowered in EMULSIFIER_FACTOR_STOPWORDS:
+        return ""
+    if re.search(r"\b(?:pva|polyvinyl alcohol|p188|poloxamer 188|pluronic f\s*68|tween\s*80|lutrol|brij\s*35)\b", lowered):
+        if re.search(r"polyvinyl alcohol", lowered):
+            return "PVA"
+        if re.search(r"\bpva\b", lowered):
+            return "PVA"
+        if re.search(r"p188|poloxamer 188", lowered):
+            return "poloxamer 188"
+        if re.search(r"pluronic f\s*68", lowered):
+            return "Pluronic F68"
+        if re.search(r"tween\s*80", lowered):
+            return "Tween 80"
+        if re.search(r"lutrol", lowered):
+            return "Lutrol"
+        if re.search(r"brij\s*35", lowered):
+            return "Brij 35"
+    return ""
+
+
+def extract_row_factor_tokens(row: dict[str, str]) -> set[str]:
+    """Return coded DOE/table factor labels visible on a final row."""
+    tokens: set[str] = set()
+    haystacks = [
+        str(row.get("change_descriptions", "") or ""),
+        str(row.get(IDENTITY_VARIABLES_FIELD, "") or ""),
+        str(row.get("identity_variables", "") or ""),
+    ]
+    for text in haystacks:
+        if not text:
+            continue
+        for match in re.finditer(r"\b(c[A-Z][A-Za-z0-9]{1,12}|X\d{1,2})\b", text):
+            tokens.add(match.group(1))
+    return tokens
+
+
+def extract_emulsifier_factor_definition_map(source_text: str) -> dict[str, str]:
+    """Map coded formulation factors such as cPVA/cP188 to emulsifier names.
+
+    The mapping must be explicit in source text. This supports DOE rows whose
+    row-local extraction preserved the numeric factor value but not the material
+    identity encoded by the factor abbreviation.
+    """
+    text = str(source_text or "")
+    if not text:
+        return {}
+    mapping: dict[str, str] = {}
+    patterns = [
+        r"\b(c[A-Z0-9][A-Za-z0-9]{1,12})\b\s*,\s*concentration\s+of\s+([A-Za-z][A-Za-z0-9\-\s]{1,60}?)(?=\s*\(|\s*[;,.])",
+        r"\b(c[A-Z0-9][A-Za-z0-9]{1,12})\b\s*,\s*([A-Za-z][A-Za-z0-9\-\s]{1,60}?)\s+concentration(?=\s*\(|\s*[;,.])",
+        r"\b(c[A-Z0-9][A-Za-z0-9]{1,12})\b\s*\([^)]*\)\s*[,=:]\s*([A-Za-z][A-Za-z0-9\-\s]{1,60}?)(?=\s*\(|\s*[;,.])",
+    ]
+    for pattern in patterns:
+        for match in re.finditer(pattern, text):
+            token = match.group(1)
+            candidate = normalize_emulsifier_factor_candidate(match.group(2))
+            if candidate:
+                mapping[token.lower()] = candidate
+    for match in re.finditer(
+        r"\b([A-Za-z][A-Za-z0-9\-\s]{1,60}?)\s+concentration\s*\(\s*(c[A-Z0-9][A-Za-z0-9]{1,12})\s*\)",
+        text,
+    ):
+        candidate = normalize_emulsifier_factor_candidate(match.group(1))
+        token = match.group(2)
+        if candidate:
+            mapping[token.lower()] = candidate
+    return mapping
+
+
+def extract_row_emulsifier_from_factor_definition(row: dict[str, str], source_text: str) -> str:
+    if field_bundle_value(row, "surfactant_name"):
+        return ""
+    tokens = extract_row_factor_tokens(row)
+    if not tokens:
+        return ""
+    definition_map = extract_emulsifier_factor_definition_map(source_text)
+    candidates = {
+        definition_map[token.lower()]
+        for token in tokens
+        if token.lower() in definition_map and definition_map[token.lower()]
+    }
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
 DRUG_NAME_STOPWORDS = {
     "drug",
     "polymer",
@@ -700,6 +801,21 @@ def apply_global_preparation_material_carrythrough(
             if "organic_solvent_missing_reason" in materialized:
                 materialized["organic_solvent_missing_reason"] = ""
             applied_fields.add("organic_solvent")
+    if not field_bundle_value(materialized, "surfactant_name"):
+        surfactant_name = extract_row_emulsifier_from_factor_definition(materialized, source_text)
+        if surfactant_name:
+            materialized["surfactant_name_value"] = surfactant_name
+            if "surfactant_name_value_text" in materialized:
+                materialized["surfactant_name_value_text"] = surfactant_name
+            if "surfactant_name_scope" in materialized:
+                materialized["surfactant_name_scope"] = "global_shared"
+            if "surfactant_name_membership_confidence" in materialized:
+                materialized["surfactant_name_membership_confidence"] = "medium"
+            if "surfactant_name_evidence_region_type" in materialized:
+                materialized["surfactant_name_evidence_region_type"] = "global_emulsifier_factor_evidence"
+            if "surfactant_name_missing_reason" in materialized:
+                materialized["surfactant_name_missing_reason"] = ""
+            applied_fields.add("surfactant_name")
     return materialized, applied_fields
 
 
