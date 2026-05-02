@@ -3,12 +3,12 @@
   "active_run_dir": "data/results/20260423_9c4a03f",
   "authoritative_terminal_files": {
     "scope_manifest_tsv": "data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv",
-    "stage2_semantic_objects_jsonl": "data/results/20260423_9c4a03f/56_stage2_full_replay/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
-    "stage2_compatibility_tsv": "data/results/20260423_9c4a03f/56_stage2_full_replay/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
-    "stage2_compatibility_jsonl": "data/results/20260423_9c4a03f/56_stage2_full_replay/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
-    "resolved_relation_fields_tsv": "data/results/20260423_9c4a03f/57_stage3/resolved_relation_fields_v1.tsv",
-    "stage5_final_table_tsv": "data/results/20260423_9c4a03f/58_stage5/final_formulation_table_v1.tsv",
-    "stage5_decision_trace_tsv": "data/results/20260423_9c4a03f/58_stage5/final_output_decision_trace_v1.tsv",
+    "stage2_semantic_objects_jsonl": "data/results/20260423_9c4a03f/77_stage2_ee_percent_header_mapping_diagnostic/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
+    "stage2_compatibility_tsv": "data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
+    "stage2_compatibility_jsonl": "data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
+    "resolved_relation_fields_tsv": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/resolved_relation_fields_v1.tsv",
+    "stage5_final_table_tsv": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
+    "stage5_decision_trace_tsv": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_output_decision_trace_v1.tsv",
     "identity_scaffold_rows_tsv": "data/results/20260423_9c4a03f/46_identity_scaffold/layer2_identity_scaffold_rows_v1.tsv",
     "identity_scaffold_summary_tsv": "data/results/20260423_9c4a03f/46_identity_scaffold/layer2_identity_scaffold_summary_v1.tsv",
     "identity_freeze_summary_tsv": "data/results/20260423_9c4a03f/47_identity_freeze/identity_freeze_summary_v1.tsv",
@@ -21,10 +21,49 @@
     "layer2_gt_path": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
     "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values.tsv",
     "gt_skeleton_tsv": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
-    "alignment_scaffold_tsv": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_variant_alignment_scaffold_v1.tsv"
+    "alignment_scaffold_tsv": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_variant_alignment_scaffold_v1.tsv",
+    "stage3_relation_dir": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic",
+    "layer3_compare_cells_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
+    "layer3_compare_summary_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_summary_v1.tsv",
+    "layer3_error_buckets_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_error_buckets_v1.tsv",
+    "layer3_alignment_resolution_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_alignment_resolution_rows_v1.tsv",
+    "diagnostic_metadata_json": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/diagnostic_metadata.json",
+    "stage3_relation_records_tsv": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/formulation_relation_records_v1.tsv",
+    "stage3_logic_graph_jsonl": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/formulation_logic_graph_v1.jsonl",
+    "layer3_risk_review_queue_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_risk_review_queue_v1.tsv"
   },
   "gt_authority_lock": true,
   "lineage_policy": "The parent lineage run is the human-facing entrypoint. Child terminal artifacts must be pinned explicitly here and must not be inferred by recency, sort order, or parent fallback.",
-  "updated_at": "2026-04-23T11:24:00Z",
-  "note": "Authority promotion: active DEV15 diagnostic baseline now points to the replay-only maintained Stage2 -> Stage3 -> Stage5 -> compare lineage that adds bounded narrative characterization-pair recovery for RHMJWZX8 (2/2 restored) and the BXCV5XWB GT correction removing six non-result FITC/blank helper rows from GT. Current diagnostic compare is 15/15 match with GT authority still locked under data/cleaned/gt_authority/v1 and the existing identity-freeze summary."
+  "updated_at": "2026-05-02T20:20:20Z",
+  "note": "Authority promotion: active DEV15 diagnosis baseline now points to Layer3 diagnostic compare lineage 138 after source-backed subtype-scoped emulsifier/stabilizer concentration carrythrough. Diagnostic only; benchmark_valid remains no.",
+  "diagnosis_baseline": true,
+  "benchmark_baseline": false,
+  "benchmark_valid": "no",
+  "compare_mode": "diagnostic",
+  "active_compare_run_dir": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic",
+  "active_compare_cells_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
+  "active_compare_summary_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_summary_v1.tsv",
+  "active_stage5_run_dir": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic",
+  "active_final_table_tsv": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
+  "last_updated": "2026-05-02T16:17:04",
+  "last_update_reason": "run 138 diagnostic positive delta: subtype-scoped preparation emulsifier/stabilizer concentration carrythrough; value recall 0.574324->0.682432, overall error_rows 1773->1757, no mismatch/extra/blocked increase.",
+  "history": [
+    {
+      "updated_at": "2026-05-02T15:15:00",
+      "compare_run_dir": "data/results/20260423_9c4a03f/135_layer3_compare_polymer_mass_scoped_preparation_v2_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/134_stage5_polymer_mass_scoped_preparation_v2_diagnostic",
+      "reason": "Accepted diagnostic baseline 135 after source-backed polymer_mass_mg scoped preparation repair: recall 0.333333 -> 0.612903 vs 130, accuracy remained 1.000000, improved_to_match 26, regressed_from_match 0."
+    },
+    {
+      "updated_at": "2026-05-02T16:17:04",
+      "compare_run_dir": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic",
+      "reason": "run 138 diagnostic positive delta: subtype-scoped preparation emulsifier/stabilizer concentration carrythrough; value recall 0.574324->0.682432, overall error_rows 1773->1757, no mismatch/extra/blocked increase."
+    }
+  ],
+  "active_stage5_final_table": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
+  "active_layer3_compare_cells": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
+  "active_layer3_compare_summary": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_summary_v1.tsv",
+  "active_layer3_compare_dir": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic",
+  "diagnostic_metadata_json": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/diagnostic_metadata.json"
 }

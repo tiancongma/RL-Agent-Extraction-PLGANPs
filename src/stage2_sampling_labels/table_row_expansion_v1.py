@@ -23,6 +23,7 @@ BOUNDARY_MARKER_FIELD = "boundary_markers_json"
 TABLE_ID_FIELD = "table_id"
 TABLE_ROW_ID_FIELD = "table_row_id"
 TABLE_ASSIGNMENTS_FIELD = "table_row_variable_assignments_json"
+TABLE_CELL_BINDINGS_FIELD = "table_cell_bindings_json"
 PREPARATION_INHERITANCE_FIELD = "preparation_inheritance_json"
 IDENTITY_VARIABLES_FIELD = "identity_variables_json"
 
@@ -57,6 +58,78 @@ def normalize_token(value: Any) -> str:
     text = normalize_text(value).lower()
     text = re.sub(r"[^a-z0-9%:/.+-]+", "_", text)
     return re.sub(r"_+", "_", text).strip("_")
+
+
+FIELD_HEADER_ALIAS_LEXICON = REPO_ROOT / "data" / "cleaned" / "reference" / "value_normalization_lexicon_v1.tsv"
+_FIELD_HEADER_ALIAS_CACHE: list[dict[str, str]] | None = None
+
+
+def _canonical_header_text(value: Any) -> str:
+    text = normalize_text(value).lower()
+    text = text.replace("−", "-")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _compact_header_text(value: Any) -> str:
+    return "".join(re.findall(r"[a-z0-9%]+", _canonical_header_text(value)))
+
+
+def _load_field_header_alias_rows() -> list[dict[str, str]]:
+    global _FIELD_HEADER_ALIAS_CACHE
+    if _FIELD_HEADER_ALIAS_CACHE is not None:
+        return _FIELD_HEADER_ALIAS_CACHE
+    rows: list[dict[str, str]] = []
+    if FIELD_HEADER_ALIAS_LEXICON.exists():
+        with FIELD_HEADER_ALIAS_LEXICON.open(newline="", encoding="utf-8") as handle:
+            for row in csv.DictReader(handle, delimiter="\t"):
+                if normalize_text(row.get("field_family")) == "field_name":
+                    rows.append(row)
+    _FIELD_HEADER_ALIAS_CACHE = rows
+    return rows
+
+
+def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
+    raw = _canonical_header_text(header)
+    if not raw:
+        return ""
+    compact = _compact_header_text(header)
+    paper_key = normalize_text(paper_key)
+    best: list[str] = []
+    for row in _load_field_header_alias_rows():
+        scope = normalize_text(row.get("scope")) or "global"
+        row_paper = normalize_text(row.get("paper_key")) if scope == "paper_local" else ""
+        if row_paper and row_paper != paper_key:
+            continue
+        surface = normalize_text(row.get("surface_form"))
+        canonical = normalize_text(row.get("canonical_form"))
+        if not surface or not canonical:
+            continue
+        rule = normalize_text(row.get("normalization_rule")) or "header_compact_exact"
+        surface_raw = _canonical_header_text(surface)
+        surface_compact = _compact_header_text(surface)
+        matched = False
+        if rule in {"header_contains", "casefold_contains"}:
+            matched = bool(surface_raw and surface_raw in raw)
+        elif rule in {"header_exact", "casefold_exact", "exact"}:
+            matched = raw == surface_raw
+        else:
+            matched = compact == surface_compact
+        if matched:
+            best.append(canonical)
+    unique = sorted(set(best))
+    if len(unique) == 1:
+        return unique[0]
+    if len(unique) > 1:
+        return ""
+    mass_header = bool(re.search(r"\b(?:mg|milligram|milligrams)\b", raw))
+    if mass_header:
+        if re.search(r"\b(?:plga|polymer|pcl|pla|resomer)\b", raw):
+            return "polymer_mass_mg"
+        if re.search(r"\b(?:drug|payload|gatifloxacin|rhodamine|artemether|dexibuprofen|dxi|kgn|kartogenin|acetylpuerarin)\b", raw):
+            return "drug_mass_mg"
+    if re.search(r"\b(?:sizes?|particle\s+size|diameter)\b", raw) and re.search(r"\bnm\b", raw):
+        return "particle_size_nm"
+    return ""
 
 
 def _normalize_table_label(value: Any) -> str:
@@ -799,6 +872,7 @@ MEASUREMENT_HEADER_PATTERNS = [
     r"\bmeasured responses\b",
     r"\bresponse\b",
     r"\bzeta\b",
+    r"\bzp\b",
 ]
 
 MEASUREMENT_HEADER_EXACT_TOKENS = {
@@ -819,7 +893,19 @@ def normalize_assignment_name(name: str) -> str:
 
 
 def compatibility_field_for_assignment(name: str) -> str:
+    canonical_header = canonical_field_for_header(name)
+    if canonical_header:
+        return {
+            "ee_percent": "encapsulation_efficiency_percent",
+            "lc_percent": "loading_content_percent",
+            "dl_percent": "loading_content_percent",
+            "particle_size_nm": "size_nm",
+            "pdi": "pdi",
+            "zeta_mV": "zeta_mV",
+        }.get(canonical_header, canonical_header)
     low = normalize_assignment_name(name).lower()
+    compact_tokens = re.findall(r"[a-z0-9]+", low)
+    compact = " ".join(compact_tokens)
     if "plga" in low or "polymer" in low:
         return "plga_mass_mg"
     if "pva" in low or "surfactant" in low or "stabilizer" in low:
@@ -830,7 +916,14 @@ def compatibility_field_for_assignment(name: str) -> str:
         return "size_nm"
     if "zeta" in low:
         return "zeta_mV"
-    if "entrap" in low or "encapsulation" in low or low in {"ee", "e e"}:
+    if (
+        "entrap" in low
+        or "encapsulation" in low
+        or low in {"ee", "e e"}
+        or compact in {"e e", "ee"}
+        or compact.startswith("e e ")
+        or compact.startswith("ee ")
+    ):
         return "encapsulation_efficiency_percent"
     return ""
 
@@ -1833,8 +1926,35 @@ def combined_prelude_headers(
     resolved: list[str] = []
     for idx in range(width):
         primary = normalize_text(primary_cells[idx]) if idx < len(primary_cells) else ""
-        resolved.append(primary or normalize_text(combined[idx]))
+        combined_header = normalize_text(combined[idx])
+        primary_low = primary.lower()
+        if primary_low in {"average", "polydispersity", "zeta potential"} and combined_header and combined_header != primary:
+            resolved.append(combined_header)
+        else:
+            resolved.append(primary or combined_header)
     return resolved
+
+
+def infer_measurement_columns_from_authority(
+    row_entries: list[dict[str, Any]],
+    explicit_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    if not explicit_rows:
+        return []
+    width = max(len(ensure_list(row.get("cells"))) for row in explicit_rows)
+    first_explicit_row_index = min(int(row.get("row_index") or 0) for row in explicit_rows)
+    headers = combined_prelude_headers(
+        row_entries,
+        first_explicit_row_index=first_explicit_row_index,
+        width=width,
+    )
+    measurement_columns: list[dict[str, Any]] = []
+    for col_idx in range(1, width):
+        header = headers[col_idx] if col_idx < len(headers) else ""
+        if not header or not is_measurement_header(header):
+            continue
+        measurement_columns.append({"column_index": col_idx, "header": header})
+    return measurement_columns
 
 
 def infer_variable_columns_from_authority(
@@ -1852,7 +1972,7 @@ def infer_variable_columns_from_authority(
     )
     if headers:
         first_header = normalize_text(headers[0]).lower()
-        if first_header and not re.search(r"\b(formulation|factorial|run|sample)\b", first_header):
+        if first_header and not re.search(r"\b(formulation|factorial|run|sample|number)\b", first_header):
             headers = [""] + headers[:-1]
     variable_columns: list[dict[str, Any]] = []
     for col_idx in range(1, width):
@@ -1874,12 +1994,17 @@ def extract_direct_formulation_rows_from_authority(
     if len(explicit_rows) < 2:
         return [], "insufficient_explicit_row_labels"
     variable_columns = infer_variable_columns_from_authority(row_entries, explicit_rows)
-    if not variable_columns:
+    measurement_columns = infer_measurement_columns_from_authority(row_entries, explicit_rows)
+    if not variable_columns and not measurement_columns:
         return [], "no_formulation_variable_columns"
+    source_csv_path = normalize_text(authority_payload.get("source_csv_path"))
     extracted_rows: list[dict[str, Any]] = []
     for entry in explicit_rows:
         cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        source_row_index = normalize_text(entry.get("row_index"))
         assignments: list[dict[str, str]] = []
+        cell_bindings: list[dict[str, str]] = []
+        used_columns: set[int] = set()
         for column in variable_columns:
             col_idx = int(column["column_index"])
             if col_idx >= len(cells):
@@ -1887,12 +2012,63 @@ def extract_direct_formulation_rows_from_authority(
             value = normalize_text(cells[col_idx])
             if not value:
                 continue
+            raw_header = normalize_assignment_name(column["header"])
+            canonical_field = canonical_field_for_header(raw_header)
             assignments.append(
                 {
-                    "name": normalize_assignment_name(column["header"]),
+                    "name": raw_header,
                     "value": value,
+                    "canonical_field": canonical_field,
+                    "source_row_index": source_row_index,
+                    "source_column_index": str(col_idx),
                 }
             )
+            if canonical_field:
+                cell_bindings.append(
+                    {
+                        "source_csv_path": source_csv_path,
+                        "source_row_index": source_row_index,
+                        "source_column_index": str(col_idx),
+                        "raw_header": raw_header,
+                        "canonical_field": canonical_field,
+                        "raw_cell_value": value,
+                        "binding_rule": "stage2_header_alias_cell_binding",
+                        "ambiguity_status": "unique_header_cell",
+                    }
+                )
+            used_columns.add(col_idx)
+        for column in measurement_columns:
+            col_idx = int(column["column_index"])
+            if col_idx in used_columns or col_idx >= len(cells):
+                continue
+            value = normalize_text(cells[col_idx])
+            if not value:
+                continue
+            raw_header = normalize_assignment_name(column["header"])
+            canonical_field = canonical_field_for_header(raw_header)
+            assignments.append(
+                {
+                    "name": raw_header,
+                    "value": value,
+                    "canonical_field": canonical_field,
+                    "source_row_index": source_row_index,
+                    "source_column_index": str(col_idx),
+                }
+            )
+            if canonical_field:
+                cell_bindings.append(
+                    {
+                        "source_csv_path": source_csv_path,
+                        "source_row_index": source_row_index,
+                        "source_column_index": str(col_idx),
+                        "raw_header": raw_header,
+                        "canonical_field": canonical_field,
+                        "raw_cell_value": value,
+                        "binding_rule": "stage2_header_alias_cell_binding",
+                        "ambiguity_status": "unique_header_cell",
+                    }
+                )
+            used_columns.add(col_idx)
         if not assignments:
             continue
         extracted_rows.append(
@@ -1901,6 +2077,7 @@ def extract_direct_formulation_rows_from_authority(
                 "label_number": entry["row_label_info"]["number"],
                 "row_text": normalize_text(entry.get("row_text")) or " | ".join(value for value in cells if value),
                 "assignments": assignments,
+                "table_cell_bindings": cell_bindings,
             }
         )
     if not extracted_rows:
@@ -2831,6 +3008,7 @@ def run_table_row_expansion(
                         TABLE_ID_FIELD: table_id,
                         TABLE_ROW_ID_FIELD: f"{table_id}::{label}",
                         TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
+                        TABLE_CELL_BINDINGS_FIELD: stringify_json(ensure_list(direct_row.get("table_cell_bindings"))),
                         TABLE_SCOPE_FIELD: stringify_json(scope),
                         TABLE_VARIABLE_ROLE_FIELD: stringify_json(role_info),
                         SELECTION_MARKER_FIELD: stringify_json(table_selection_markers),

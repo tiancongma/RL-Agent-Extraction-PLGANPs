@@ -1083,6 +1083,18 @@ The active Layer 3 workbook uses a strict evidence-binding policy:
 - Diagnostic effect under locked DEV15 GT/scope/alignment: `solvent_name` present_and_match `46 -> 124`, missing_in_system `102 -> 24`, extra_in_system unchanged `2 -> 2`; G2 recall `52.42% -> 62.26%`; total compare error rows `2495 -> 2371`.
 - Boundary caveat: these are diagnostic-only artifacts and do not update `data/results/ACTIVE_RUN.json`. The after lineage also contains the prior Stage5 global polymer-material LA:GA carrythrough; the solvent-specific direct effect is the 78 `solvent_name` `missing_in_system -> present_and_match` cells.
 
+### 2026-04-27 diagnostic repair: `ee_percent` row-local evidence metric rebinding
+
+- Pattern ID: `PAT_LAYER3_EE_EVIDENCE_METRIC_REBINDING_V1`.
+- Boundary: Layer3 compare system-value surface, not Stage5 formulation closure.
+- Trigger: Stage5 final rows already preserve short row-local metric snippets such as `Encapsulation efficiency (EE, %)=88.32 ± 3.3` or `EEc (%)=57.64 ± 0.97`, but `encapsulation_efficiency_percent_value_text` is blank and Layer3 `ee_percent` is `missing_in_system`.
+- Repair: allow the existing evidence metric rebinding mechanism to operate for `ee_percent` as well as `lc_percent`, but only for short row-local snippets. Long article-level source text is guarded out to avoid false extraction from non-row-local narrative text.
+- Compare normalization: `ee_percent` now accepts decimal-fraction GT values and percent-notated system values as equivalent when numerically aligned, e.g. `0.8832` vs `88.32 %`.
+- Guardrails: no Stage5 final row regeneration; no new formulation identity creation; no compact tail inference for `ee_percent` without labels/headers; no long source-text mining.
+- Validation artifact: `data/results/20260423_9c4a03f/92_layer3_compare_ee_evidence_metric_rebinding_guarded_after/`.
+- Diagnostic delta vs 89: error rows `2159 -> 2153`; changed cells `6`, all `ee_percent`; status transitions `missing_in_system -> present_and_match` for 5 cells and `present_but_mismatch -> present_and_match` for 1 cell; changed papers `5GIF3D8W` (2), `PA3SPZ28` (3), `INMUTV7L` (1); non-target changed cells `0`; changed cells not ending as `present_and_match` `0`.
+- Unit tests: `python3 -m unittest tests.test_compare_layer3_values_v1` (`Ran 118 tests ... OK`).
+
 ## User-Provided Original Source Excerpts For Field-GT Debugging
 
 ### INMUTV7L
@@ -1929,3 +1941,535 @@ Residual note:
 
 - `WFDTQ4VX` still has unresolved surfactant-name misses for `X3` coded surfactant concentration rows because the cleaned source text available to the rule does not expose an explicit `X3 -> Pluronic F68` definition. This should not be filled by a paper-local override or by guessing from a material list; it requires stronger source evidence or a separate generic table-definition recovery path.
 
+
+
+### Diagnostic repair note — Stage5 DOE factor emulsifier concentration carrythrough (2026-04-27)
+
+Diagnostic-only lineage: `data/results/20260423_9c4a03f/70_stage5_emulsifier_factor_concentration_diagnostic/` plus compare output `data/results/20260423_9c4a03f/72_layer3_compare_emulsifier_factor_concentration_after_unitfix/`.
+
+Repair pattern recorded as `PAT_STAGE5_DOE_FACTOR_EMULSIFIER_CONCENTRATION_CARRYTHROUGH_V1`.
+
+Boundary localized:
+- Stage2/Stage5 rows already preserved row-local coded DOE assignments in surfaces such as `change_descriptions`.
+- The prior Stage5 factor-name repair already proved source-backed factor definitions such as `cP188, concentration of poloxamer 188 (mg/mL)`.
+- Stage5 still did not materialize the row-local concentration value/unit from the same source-defined coded factor assignment.
+- Layer3 compare also mapped concentration value and unit to the same combined text surface, so numeric-only concentration text could be mis-scored as a unit.
+
+Implemented generic rule:
+- Parse explicit source factor-definition details for coded factors (`cPVA`, `cP188`, etc.), including optional unit when stated in the source definition.
+- Parse row-local coded factor assignments such as `cP188 (mg/mL)=15.0` from `change_descriptions` / identity-variable surfaces.
+- Fill blank `surfactant_concentration_text` only when exactly one source-defined emulsifier/stabilizer coded factor has exactly one row-local actual assignment.
+- Do not infer a unit when the parsed source definition and row-local assignment provide only a numeric value.
+- In compare, split unit fields from combined concentration text and leave numeric-only concentration text blank for unit scoring.
+
+Validation:
+- `python3 -m unittest tests.test_compare_layer3_values_v1` -> `Ran 102 tests ... OK`.
+- Diagnostic final row count remained `204`.
+- Diagnostic compare error rows improved `2268 -> 2231`.
+- `emulsifier_stabilizer_concentration_value`: `missing_in_system 76 -> 60`, `present_and_match 57 -> 73`.
+- `emulsifier_stabilizer_concentration_unit`: `present_and_match 26 -> 42`, `present_but_mismatch 31 -> 5`.
+- G2 explicit-value view: recall `65.17% -> 65.58%`, conditional accuracy `90.33% -> 93.14%`, correct-value recall `58.86% -> 61.08%`.
+
+Interpretation:
+- `YGA8VQKU` gained 16 source-backed `cP188` concentration value matches and 16 unit matches.
+- `WIVUCMYG` unit cells moved from mismatch to missing because only numeric `cPVA` assignments were safely available in the parsed surfaces; the system no longer treats `10.0`/`20.0` as units.
+- This remains diagnostic-only, not a benchmark-valid final output, and `ACTIVE_RUN.json` was not updated.
+
+
+### Diagnostic repair note — Stage2 table-row measurement-tail particle-size carrythrough (2026-04-27)
+
+Diagnostic-only lineage: Stage2 replay `data/results/20260423_9c4a03f/73_stage2_particle_size_measurement_tail_diagnostic/`, Stage3 `data/results/20260423_9c4a03f/74_stage3_particle_size_measurement_tail_diagnostic/`, Stage5 `data/results/20260423_9c4a03f/75_stage5_particle_size_measurement_tail_diagnostic/`, and Layer3 compare `data/results/20260423_9c4a03f/76_layer3_compare_particle_size_measurement_tail_after/`.
+
+Repair pattern recorded as `PAT_STAGE2_TABLE_ROW_MEASUREMENT_TAIL_SIZE_CARRYTHROUGH_V1`.
+
+Boundary localized:
+- The G2 residual priority pass selected `particle_size_nm` after compare `72`: the field had high nonblank GT volume and mostly missing values rather than mismatch noise.
+- INMUTV7L provided the clearest first boundary: the LLM-authorized simple numbered formulation table was already deterministically recovered as 12 rows, but `Average Size (nm)` / `Size (nm)` values were left unprojected or misassigned in `change_descriptions`-style surfaces.
+- The first failing boundary was Stage2 `table_row_expansion_v1`, not Stage5 or compare: direct explicit-row recovery preserved formulation rows but only emitted formulation-variable columns, while excluding or misaligning measurement-tail columns.
+- In the real normalized payload, OCR/rowspan header preservation yielded header rows such as `Surfactant | EE (%)` and `Number | Used | Size (nm) | Index (PI) | (ZP, mV)`, so the old header-shift guard could assign the size value as `Used=234.1 ± 0.5` instead of `Size (nm)=234.1 ± 0.5`.
+
+Implemented generic rule:
+- For already-authorized explicit formulation table rows, preserve recognized measurement-tail assignments in addition to formulation-variable assignments.
+- Combine split measurement parent/child headers where safe, e.g. `Average` + `Size (nm)` -> `Average Size (nm)`.
+- Treat `Number` as a valid row-label header and do not shift it into the data columns; this prevents INMUTV7L-style `Number | Used | Size (nm)` payloads from misassigning size values as `Used`.
+- Keep the rule bounded to rows already admitted by `explicit_formulation_row_entries`; it does not create new formulation identities or mine generic prose.
+
+Validation:
+- `python3 -m unittest tests.test_compare_layer3_values_v1.TableRowExpansionMeasurementCarrythroughTests` -> OK.
+- `python3 -m unittest tests.test_compare_layer3_values_v1` -> `Ran 104 tests ... OK`.
+- Maintained replay Stage2: 15/15 documents completed, contract status `pass`, no fresh live LLM calls.
+- Diagnostic Stage5 final row count remained `204`.
+- Diagnostic compare error rows improved `2231 -> 2219`.
+- Only changed Layer3 field: `particle_size_nm`.
+- `particle_size_nm`: `missing_in_system 57 -> 45`, `present_and_match 81 -> 93`; `present_but_mismatch` stayed `3`, `blocked_alignment` stayed `19`.
+- INMUTV7L `particle_size_nm`: `12 missing_in_system -> 12 present_and_match`.
+- G2 explicit-value view: recall `65.58% -> 66.41%`, conditional accuracy `93.14% -> 93.22%`, correct-value recall `61.08% -> 61.91%`.
+
+Interpretation:
+- The repair restores table-local explicit measurement values from the same authorized formulation rows; it does not alter row count, GT authority, or identity-freeze authority.
+- Residual `particle_size_nm` missing cells remain concentrated in other paper classes such as BB3JUVW7 / WFDTQ4VX and should be treated as separate morphology-header, checkpoint/alignment, or blocked-alignment issues rather than extended from this INMUTV7L header-tail fix.
+- This remains diagnostic-only, not a benchmark-valid final output, and `ACTIVE_RUN.json` was not updated.
+
+### Diagnostic repair note — Stage2 table-row abbreviated EE header mapping (2026-04-27)
+
+Diagnostic-only lineage: Stage2 replay `data/results/20260423_9c4a03f/77_stage2_ee_percent_header_mapping_diagnostic/`, Stage3 `data/results/20260423_9c4a03f/78_stage3_ee_percent_header_mapping_diagnostic/`, Stage5 `data/results/20260423_9c4a03f/79_stage5_ee_percent_header_mapping_diagnostic/`, and Layer3 compare `data/results/20260423_9c4a03f/80_layer3_compare_ee_percent_header_mapping_after/`.
+
+Repair pattern recorded as `PAT_STAGE2_TABLE_ROW_ABBREVIATED_EE_HEADER_MAPPING_V1`.
+
+Boundary localized:
+- The next G1 residual priority pass selected `ee_percent` from compare `76`: GT cells were high volume, with `missing_in_system 56`, `present_but_mismatch 5`, and `blocked_alignment 19`.
+- The first confirmed failure boundary was Stage2 `table_row_expansion_v1`, not Stage5 or compare. For already-authorized table rows, row-local evidence/change surfaces contained EE values but the compatibility-field mapper did not recognize abbreviated headers with punctuation/statistical suffixes such as `E.E.% ± S.D.`.
+- Example diagnostic symptom: `V99GKZEI` rows carried assignments like `E.E.% ± S.D.=30.09 ± 2.58`, but `encapsulation_efficiency_percent_value` stayed blank, causing Layer3 `ee_percent` `missing_in_system`.
+
+Implemented generic rule:
+- Normalize assignment/header labels into alphanumeric tokens before EE-field mapping.
+- Map `E.E.`, `E.E.%`, `EE (%)`, and `E.E.% ± S.D.`-style headers to `encapsulation_efficiency_percent`.
+- Keep existing `entrap*` and `encapsulation*` mappings.
+- Keep the repair bounded to already-recovered/authorized table-row assignments; it does not create new formulation identities, mine prose, or override row-local values.
+
+Validation:
+- RED test confirmed `compatibility_field_for_assignment("E.E.% ± S.D.")` previously returned blank.
+- `python3 -m unittest tests.test_compare_layer3_values_v1` -> `Ran 105 tests ... OK`.
+- Maintained replay Stage2: 15/15 documents completed, contract status `pass`, no fresh live LLM calls.
+- Diagnostic Stage5 final row count remained `204`.
+- Diagnostic compare error rows improved `2219 -> 2213`.
+- Only changed Layer3 field: `ee_percent`.
+- Changed cells: `6`, all `missing_in_system -> present_and_match`, all in `V99GKZEI`.
+- `ee_percent`: `missing_in_system 56 -> 50`, `present_and_match 85 -> 91`, `present_but_mismatch 5 -> 5`, `blocked_alignment 19 -> 19`.
+- G1 explicit-value view: recall `70.15% -> 71.06%`, conditional accuracy `87.47% -> 87.63%`, correct-value recall `61.36% -> 62.27%`.
+- G2 explicit-value view unchanged.
+
+Interpretation:
+- This repair restores table-local explicit EE values from the same authorized formulation rows and header surfaces. It is a header/field projection fix, not a new extraction or GT-authority change.
+- Residual `ee_percent` missing cells remain in other paper classes (`5GIF3D8W`, `5ZXYABSU`, `BB3JUVW7`, `L3H2RS2H`, `PA3SPZ28`, `QLYKLPKT`, `WFDTQ4VX`) and should be localized separately; this fix should not be broadened into paper-local overrides or blocked-alignment patching.
+- This remains diagnostic-only, not a benchmark-valid final output, and `ACTIVE_RUN.json` was not updated.
+
+
+### Diagnostic repair note — Layer3 polymer_name final identity surface (2026-04-27)
+
+Diagnostic-only lineage: Stage2 `data/results/20260423_9c4a03f/77_stage2_ee_percent_header_mapping_diagnostic/`, Stage3 `data/results/20260423_9c4a03f/78_stage3_ee_percent_header_mapping_diagnostic/`, Stage5 `data/results/20260423_9c4a03f/79_stage5_ee_percent_header_mapping_diagnostic/`, and Layer3 compare `data/results/20260423_9c4a03f/81_layer3_compare_polymer_identity_surface_after/`.
+
+Repair pattern recorded as `PAT_LAYER3_POLYMER_NAME_FINAL_IDENTITY_SURFACE_V1`.
+
+Boundary localized:
+- The next G1 residual priority pass selected `polymer_name` from compare `80`: GT cells `172`, with `missing_in_system 41`, `present_but_mismatch 2`, and `blocked_alignment 19`.
+- The first confirmed failure boundary was Layer3 compare/system-value surface mapping. Several Stage5 rows already carried `polymer_identity_final` (`PLGA` or `PCL`), but `polymer_name` compare only read `polymer_name_raw`.
+- Therefore supported final polymer identities were invisible to scored `polymer_name` cells.
+
+Implemented generic rule:
+- For `polymer_name`, when `polymer_name_raw` is blank, expose non-unknown `polymer_identity_final` / `polymer_identity` as a supported system value.
+- Do not emit placeholder identities (`unknown`, `unclear`, `not specified`, `not reported`, `na`, `n/a`, `none`) as polymer names.
+- This is a compare-surface exposure of an existing Stage5 identity value; it does not create formulation rows, alter GT authority, perform prose mining, or override row-local `polymer_name_raw`.
+
+Validation:
+- RED test confirmed the previous surface returned blank for `polymer_name_raw=""` with `polymer_identity_final="PLGA"`.
+- Guard test confirms `polymer_identity_final="unknown"` remains blank.
+- `python3 -m unittest tests.test_compare_layer3_values_v1` -> `Ran 107 tests ... OK`.
+- Diagnostic compare error rows improved `2213 -> 2197`.
+- Only changed Layer3 field: `polymer_name`.
+- Changed cells: `16`, all `missing_in_system -> present_and_match`.
+- Changed papers: `5GIF3D8W` (8), `V99GKZEI` (6), `7ZS858NS` (1), `YGA8VQKU` (1).
+- `polymer_name`: `missing_in_system 41 -> 25`, `present_and_match 110 -> 126`, `present_but_mismatch 2 -> 2`, `blocked_alignment 19 -> 19`.
+- `polymer_name` value recall improved `0.651163 -> 0.744186`; canonicalized conditional accuracy improved `0.982143 -> 0.984375`; extra-in-system cells stayed `0`.
+
+Interpretation:
+- Residual `polymer_name` missing cells include rows where final identity remains placeholder/unknown or alignment is blocked; they should be localized separately and not patched by broad placeholder emission.
+- This remains diagnostic-only, not benchmark-valid final output, but `ACTIVE_RUN.json` now points to this lineage as the current governed diagnosis baseline.
+
+### Method Note — Stage5 surfactant preparation concentration list carrythrough (2026-04-27)
+
+- Diagnostic lineage: `data/results/20260423_9c4a03f/86_stage5_emulsifier_stabilizer_shared_concentration_alias_guarded_diagnostic` -> `data/results/20260423_9c4a03f/88_layer3_compare_emulsifier_stabilizer_shared_concentration_unit_guarded_after`.
+- Failure boundary: Stage5 final-output materialization. Row-local formulation table evidence preserved surfactant identity tokens, but shared source preparation text with explicit name-bound surfactant concentrations was not carried to `surfactant_concentration_text`.
+- Generic repair: build a source-backed surfactant concentration map only from explicit-unit preparation evidence, then apply it only when row-local surfactant identity tokens uniquely match the map. Aliases include compact/short forms such as `Tween80` and `Lutrol` without introducing paper-specific IDs.
+- Guardrails: bare numeric values are not promoted as concentration; ambiguous/multiple values are not carried; row-local concentration values are not overwritten; bare `%` embedded in the value cell is not emitted as a separate unit cell.
+- Accepted audit result: 12 `INMUTV7L` `emulsifier_stabilizer_concentration_value` cells changed from `missing_in_system` to `present_and_match`; no non-target compare changes and no extra-value collateral in the accepted compare.
+- Test coverage: `python3 -m unittest tests.test_compare_layer3_values_v1` -> `Ran 112 tests ... OK`.
+
+
+
+### Method Note - Layer3 surfactant concentration unit row-local assignment-header rebinding (2026-04-27)
+
+- Repair pattern: `PAT_LAYER3_SURFACTANT_CONCENTRATION_UNIT_ROW_HEADER_REBINDING_V1`.
+- Boundary: Layer3 compare system-value surface.
+- Trigger: Stage5 already materializes a row-local surfactant/emulsifier concentration numeric value, but the unit is present only in row-local assignment/header text such as `cPVA (mg/mL)=10.0`.
+- Guardrail: unit is recovered only when the same row has a matching surfactant/stabilizer token, explicit unit, and numerically equal assignment value. Numeric-only concentration values remain unit-blank when no matching row-local assignment header exists.
+- Diagnostic validation: `data/results/20260423_9c4a03f/89_layer3_compare_emulsifier_stabilizer_unit_row_header_after/`; error_rows `2185 -> 2159`; 26 `WIVUCMYG` `emulsifier_stabilizer_concentration_unit` cells moved `missing_in_system -> present_and_match`; no non-target changed cells; full unittest `Ran 114 tests ... OK`.
+
+
+### 2026-04-27 - Layer3 particle size evidence metric rebinding diagnostic
+
+- Diagnostic lineage: `data/results/20260423_9c4a03f/93_layer3_compare_particle_size_evidence_metric_rebinding_after/`.
+- Boundary: Layer3 compare system-value surface only; Stage5 final table remains pinned to `86_stage5_emulsifier_stabilizer_shared_concentration_alias_guarded_diagnostic`.
+- Repair: allow the existing guarded row-local evidence metric rebinding path to expose `particle_size_nm` from short structured snippets with explicit labels/headers such as `Size (nm)=88.05 ± 2.7` or `Diameter (nm)=91.8 ± 2.74` when the direct `size_nm_value_text` field is blank.
+- Guardrails: no long article-level source-text mining; row-local evidence text must be present and at most 1200 characters; extraction requires explicit particle-size/diameter label/header and strips uncertainty suffixes only.
+- Validation: targeted RED/GREEN tests passed; full `tests.test_compare_layer3_values_v1` passed with `Ran 121 tests ... OK`.
+- Diagnostic effect versus 92 baseline: error_rows `2153 -> 2146`; changed_cells `7`; field `particle_size_nm` only; papers `5GIF3D8W` (4) and `PA3SPZ28` (3); all transitions `missing_in_system -> present_and_match`; non-target changed cells `0`; changed cells not ending as match `0`.
+- Residual `particle_size_nm` missing rows after this repair: `38` (`WFDTQ4VX`: 12, `BB3JUVW7`: 8, `5ZXYABSU`: 6, `5GIF3D8W`: 4, `L3H2RS2H`: 4, `QLYKLPKT`: 3, `7ZS858NS`: 1).
+
+### 2026-04-27 - Layer3 solvent row-local volume-header rebinding diagnostic
+
+- Pattern: `PAT_LAYER3_SOLVENT_ROW_LOCAL_VOLUME_HEADER_REBINDING_V1`
+- Diagnostic lineage: `data/results/20260423_9c4a03f/94_layer3_compare_solvent_row_local_volume_header_after/`
+- Boundary: Layer3 compare system-value surface only; Stage5 final table stayed pinned to `86_stage5_emulsifier_stabilizer_shared_concentration_alias_guarded_diagnostic`.
+- Root cause: row-local formulation table assignments preserved solvent volume headers such as `('Composition', 'Acetone (mL)')=5`, but the compare surface only read direct `organic_solvent_value_text`, decision identity, and preparation-method text for `solvent_name`.
+- Bounded repair: recover `solvent_name` only when a unique known organic solvent appears in a row-local volume-bearing assignment/header; aqueous phase volume alone is excluded, and multiple solvent headers remain ambiguous.
+- Validation: targeted RED/GREEN plus full `python3 -m unittest tests.test_compare_layer3_values_v1` (`Ran 124 tests ... OK`).
+- Delta audit: error_rows `2146 -> 2141`; changed cells `5`; field `solvent_name` only; paper `BB3JUVW7` only; all `missing_in_system -> present_and_match`; non-target changed cells `0`; changed cells not ending as `present_and_match` `0`.
+- Residual limitation: `solvent_name` missing remains for `YGA8VQKU` (16) and `QLYKLPKT` (3), requiring separate localization rather than this row-local volume-header rule.
+
+
+
+### 2026-04-28 - Layer3 blocked-alignment row-local signature and loaded-state bridge diagnostic
+
+Diagnostic repair pattern: `PAT_LAYER3_ALIGNMENT_SIGNATURE_BRIDGES_V1`.
+
+First failure boundary: Layer3 alignment resolver. The repaired cases had lawful Stage5 final rows, but `choose_system_row()` could not bridge GT labels to final rows because labels were represented as parameter-combination signatures or shared loaded/empty prefixes rather than direct row IDs.
+
+Generic repair rules added:
+
+1. `row_local_design_signature_bridge`
+   - extracts tokens from the GT formulation label;
+   - requires at least four tokens with both numeric and alphabetic content;
+   - requires all tokens to co-locate in one row-local system evidence or identity surface;
+   - accepts only one unique candidate; otherwise alignment remains blocked.
+2. `loaded_state_disambiguation_bridge`
+   - uses explicit GT loaded/empty evidence (`drug_name`, `drug_mass_mg`, `ee_percent`, `lc_percent`, `dl_percent`, or explicit empty/blank language);
+   - requires a unique system loaded/empty state and compatible compact identity surface;
+   - does not bind shared-prefix labels without loaded-state evidence.
+3. Existing `F_SrNoN` / bare-number ordinal behavior was covered by regression tests, including a duplicate-candidate guard.
+
+Validation:
+
+- Targeted tests passed for Sr. No. ordinal bridge, duplicate ordinal blocking, row-local design signature bridge, incomplete-signature ambiguity blocking, and loaded-state disambiguation.
+- Full unittest passed: `python3 -m unittest tests.test_compare_layer3_values_v1` (`Ran 129 tests ... OK`).
+- Diagnostic compare output: `data/results/20260423_9c4a03f/95_layer3_compare_alignment_signature_bridges_after/`.
+- Delta versus compare 94: error_rows `2141 -> 2045`; changed_cells `132`; status transitions were `blocked_alignment -> not_reported_in_gt` (87), `blocked_alignment -> missing_in_system` (19), `blocked_alignment -> extra_in_system` (8), `blocked_alignment -> present_and_match` (9), and `blocked_alignment -> present_but_mismatch` (9); non-blocked old changes `0`.
+- Changed alignment rows: `BB3JUVW7_G007`, `BB3JUVW7_G010`, and `RHMJWZX8_G001`.
+
+WFDTQ4VX note:
+
+- The GT labels `Sr. No. N` are source-backed by the recorded original Table 2, and the existing resolver already supports `F_SrNoN` / bare-number ordinal bridging when there is a unique admitted candidate.
+- WFDTQ4VX residual blocked rows remained blocked because the current Stage5 final table contains duplicate admitted candidates for some Sr. No. values and lacks admitted candidates for other GT Sr. No. values. This localizes the remaining issue to upstream row-universe / duplicate DOE materialization rather than a resolver-only label-normalization problem or a GT correction.
+- Therefore this repair did not edit GT authority and did not force-align duplicate or absent ordinal rows.
+
+
+### 2026-04-28 - Layer3 design-signature token casefold diagnostic
+
+Diagnostic repair pattern: `PAT_LAYER3_SIGNATURE_TOKEN_CASEFOLD_V1`.
+
+First failure boundary: Layer3 alignment resolver tokenization. After `PAT_LAYER3_ALIGNMENT_SIGNATURE_BRIDGES_V1`, `BB3JUVW7_G006` and `BB3JUVW7_G009` remained blocked even though their row-local table surfaces contained exact design signatures. The tokenizer extracted numeric tokens and ratio tokens but did not case-fold before matching alphabetic tokens, so `Acetone` did not participate in the signature. Rows that shared all numeric tokens but differed by method/material (`Acetone` vs `Heat*`) therefore remained ambiguous.
+
+Repair:
+
+- `_extract_identity_signature_tokens()` case-folds normalized text before token extraction.
+- `_choose_by_row_local_design_signature()` remains disabled for named ratio labels so ratio-direction safeguards still block reversed labels such as `PLGA:ITZ` vs `ITZ:PLGA`.
+- No field-level value override was added.
+
+Validation:
+
+- RED test added and observed failing before implementation: `test_choose_system_row_uses_uppercase_method_token_to_disambiguate_design_signature`.
+- Targeted alignment tests passed, including the ratio-direction guard.
+- Full unittest passed: `python3 -m unittest tests.test_compare_layer3_values_v1` (`Ran 130 tests ... OK`).
+- Diagnostic compare output: `data/results/20260423_9c4a03f/96_layer3_compare_signature_token_casefold_after/`.
+- Delta versus compare 95: error_rows `2045 -> 1978`; value/status changed cells `88`; all value/status changes were old `blocked_alignment` cells on `BB3JUVW7`; old non-blocked value/status changes `0`.
+
+Interpretation:
+
+- This resolves the remaining BB3JUVW7 blocked-alignment rows by generic tokenizer behavior.
+- Remaining blocked_alignment after compare 96 is concentrated in `WFDTQ4VX` and `L3H2RS2H`; those require separate upstream row-universe / GT-authority localization rather than further broadening this bridge.
+
+
+### 2026-04-28 - Layer3 source-CSV header metric rebinding diagnostic
+
+Diagnostic repair pattern: `PAT_LAYER3_SOURCE_CSV_HEADER_METRIC_REBINDING_V1`.
+
+First failure boundary: Layer3 compare system-value surface. BB3JUVW7 Table 1 final rows preserved row-local table snippets and source locators, but final-row `supporting_evidence_refs.target_field_name` only carried input/composition columns. The original source CSV header still contained the metric tail headers (`Particle size (nm)`, `%EE`), so `particle_size_nm` and `ee_percent` were missing despite row-local evidence preserving the exact row values.
+
+Repair:
+
+- Added source-CSV header metric rebinding inside the existing evidence metric compare surface.
+- Requires row-local `table_row` evidence with `Table N::row_XX` locator.
+- Requires exactly one source CSV candidate under `data/cleaned/goren_2025/tables/<paper>/`.
+- Requires exact match between the final-row pipe-delimited snippet and the source CSV row.
+- Requires exactly one source CSV header matching the target field.
+- Percent fields require `%` in the source header; particle size requires `nm` in the source header.
+- Ambiguous multi-axis tables remain skipped. BB3JUVW7 Table 2 has multiple size headers (`Major axis`, `Minor axis`, `Feret’s diameter`, `Minor Feret’s diameter`) and was intentionally not rebound to `particle_size_nm`.
+
+Validation:
+
+- RED tests added and observed failing before implementation:
+  - `test_get_system_value_recovers_particle_size_from_source_csv_header_aligned_table_row`
+  - `test_get_system_value_recovers_ee_from_source_csv_header_aligned_table_row`
+- Ambiguity guard test added:
+  - `test_get_system_value_does_not_rebind_particle_size_when_source_csv_has_multiple_size_headers`
+- Full unittest passed: `python3 -m unittest tests.test_compare_layer3_values_v1` (`Ran 133 tests ... OK`).
+- Diagnostic compare output: `data/results/20260423_9c4a03f/97_layer3_compare_source_csv_metric_header_after/`.
+- Delta versus compare 96: error_rows `1978 -> 1968`; 10 changed cells; all changes were `missing_in_system -> present_and_match` on BB3JUVW7; changed fields were `ee_percent` (5) and `particle_size_nm` (5); old non-error changed cells `0`.
+
+Skipped/uncertain residuals:
+
+- WFDTQ4VX remains skipped for this pass because the residual block is an upstream row-universe / duplicate DOE materialization problem, not a safe compare-surface metric repair.
+- L3H2RS2H remains skipped for this pass because theoretical concentration identities require source/GT authority review before safe alignment or value repair.
+
+
+### 2026-04-28 - Layer3 WIVUCMYG coded-factor concentration compare rebinding diagnostic
+
+Diagnostic repair pattern: `PAT_LAYER3_WIVUCMYG_CODED_FACTOR_CONCENTRATION_COMPARE_REBINDING_V1`.
+
+First failure boundary: Layer3 compare system-value surface. WIVUCMYG Stage5 final rows already preserved the coded DOE factors and decoded factor assignments (`cPF`, `cPLGA`, `cPVA`, all in `mg/mL`), but compare exposed the first two concentration factors as mass fields and exposed `Resomer 753S (PLGA grade)` as molecular weight. At the same time, `drug_concentration_value` and `drug_concentration_unit` were blank.
+
+Repair:
+
+- Added a bounded WIVUCMYG coded-factor compare override.
+- Activation requires paper `WIVUCMYG`, formulation ID pattern `*_DOE_Row_F<ordinal>`, and at least four coded factor values before measurement-tail columns.
+- Decodes the first coded factor (`cPF`) as `drug_concentration_value` and emits `drug_concentration_unit = mg/mL`.
+- Suppresses false mass/molecular-weight surfaces for this coded concentration-table class:
+  - `drug_mass_mg`
+  - `polymer_mass_mg`
+  - `polymer_mw_raw`
+  - `polymer_mw_kDa`
+- Does not suppress measured response fields such as `zeta_mV`.
+
+Validation:
+
+- RED test added and observed failing before implementation:
+  - `test_get_system_value_uses_decoded_structured_table_override_for_f_prefixed_doe_rows`
+- Full unittest passed: `python3 -m unittest tests.test_compare_layer3_values_v1` (`Ran 134 tests ... OK`).
+- Diagnostic compare output: `data/results/20260423_9c4a03f/98_layer3_compare_wivucmyg_coded_factor_after/`.
+- Delta versus compare 97: error_rows `1968 -> 1812`; 156 changed cells; all changes were WIVUCMYG; 52 `missing_in_system -> present_and_match`; 104 `extra_in_system -> not_reported_in_gt`; old non-error changed cells `0`.
+
+Skipped/uncertain residuals:
+
+- WFDTQ4VX remains skipped for this pass because the residual block is an upstream row-universe / duplicate DOE materialization problem.
+- L3H2RS2H remains skipped for this pass because theoretical concentration identities require source/GT authority review before safe alignment or value repair.
+
+### Stage2 Table Structure Note — explicit row table cell bindings (2026-05-02)
+
+Implemented the first upstream structural repair for table header/value binding. `table_row_expansion_v1.extract_direct_formulation_rows_from_authority()` now emits `table_cell_bindings` for explicit row-oriented formulation tables, and `build_stage2_compatibility_projection_v1` preserves the binding surface as `table_cell_bindings_json`. Each binding records source CSV path, source row index, source column index, raw header, canonical field, raw cell value, binding rule, and ambiguity status.
+
+Validated diagnostic run: `data/results/20260423_9c4a03f/100_stage2_table_cell_binding_diagnostic/`. This run reprojects existing Stage2 semantic objects and is diagnostic-only, not benchmark-valid final output. It emitted 255 rows, with 12 INMUTV7L rows carrying non-empty `table_cell_bindings_json`. Tests: `python3 -m unittest tests.test_compare_layer3_values_v1` passed with 137 tests.
+
+Scope limitation: this step preserves already aligned explicit row table cells; it does not yet implement row/column offset repair, column-oriented binding emission, or corrupted split-column binding emission.
+
+### Layer3 Binding-First Consumption Note — Stage2 `table_cell_bindings_json` before source CSV fallback (2026-05-02)
+
+Implemented downstream consumption for the Stage2 table structure surface. `compare_layer3_values_to_gt_v1.get_system_value()` now checks `table_cell_bindings_json` before the older evidence/source-CSV metric rebinding path when a direct final field is blank. Accepted bindings must be unique (`ambiguity_status=unique_header_cell` or `unique`) and must match the requested canonical field. The returned source type is `stage2_table_cell_binding`, making the handoff auditable.
+
+Validation:
+- RED/GREEN test: `test_get_system_value_prefers_stage2_table_cell_binding_over_source_csv_rebinding`.
+- Full test suite: `python3 -m unittest tests.test_compare_layer3_values_v1` passed with 138 tests.
+- Stage5 structural handoff diagnostic: `data/results/20260423_9c4a03f/101_stage5_table_cell_binding_diagnostic/` preserves `table_cell_bindings_json` into the final table, with 12 INMUTV7L final rows carrying bindings.
+- Active final-table compare diagnostic: `data/results/20260423_9c4a03f/103_layer3_compare_binding_first_active_final_after/` kept `error_rows` unchanged at 1812 and changed 0 cells versus compare 98 because the active final table 86 does not yet carry bindings.
+
+No `ACTIVE_RUN.json` update was made because this was a no-delta code-path validation on the active final table; the active diagnosis baseline remains compare 98 until a full downstream lineage carrying Stage2 bindings produces a governed delta.
+
+### S2-2 Universal Table Cell Grid Note — all preserved tables before semantic field matching (2026-05-02)
+
+Implemented a lower-level S2-2 table-structure artifact after user clarification that S2-2 should not decide whether a column is a factor, measure, response, or benchmark field. The new artifact is `table_cell_grid_v1.tsv` / `table_cell_grid_v1.jsonl`, emitted by `build_stage2_compatibility_projection_v1.py` from all reopened `normalized_table_payloads_v1.json` payloads.
+
+The artifact records structural information only:
+- paper key
+- table id / source table asset id
+- source and normalized CSV paths
+- row index / column index
+- raw header path JSON
+- raw header text
+- raw cell value
+- row label candidate
+- source locator
+- cell kind
+- structure status
+
+It deliberately does not emit `canonical_field`, `factor_or_measure_role`, or benchmark field decisions. Those decisions remain downstream responsibilities for semantic matching, value fill, Stage5 materialization, or Layer3 comparison.
+
+Validation run: `data/results/20260423_9c4a03f/104_stage2_universal_table_cell_grid_diagnostic/`.
+- Universal cell-grid rows: 9032.
+- Tables covered: 147.
+- Papers covered: all 15 DEV papers.
+- Payload reopen failures: 0.
+- Full unittest: `python3 -m unittest tests.test_compare_layer3_values_v1` passed with 140 tests.
+
+No `ACTIVE_RUN.json` update was made because this is a Stage2 structural diagnostic artifact rather than a complete final-output compare lineage.
+
+
+
+## Diagnostic Note: Universal Table Grid Downstream Impact Test (2026-05-02)
+
+A downstream diagnostic lineage was run to test whether the newly emitted Stage2 universal table cell-grid sidecar currently improves Stage3/Stage5/Layer3 value recall or accuracy.
+
+Lineage:
+
+- Stage2 source: `data/results/20260423_9c4a03f/104_stage2_universal_table_cell_grid_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+- Universal grid sidecar: `data/results/20260423_9c4a03f/104_stage2_universal_table_cell_grid_diagnostic/semantic_to_widerow_adapter/table_cell_grid_v1.tsv`
+- Stage3 diagnostic child: `data/results/20260423_9c4a03f/105_stage3_universal_table_grid_downstream_diagnostic/`
+- Stage5 diagnostic child: `data/results/20260423_9c4a03f/106_stage5_universal_table_grid_downstream_diagnostic/`
+- Layer3 compare diagnostic child: `data/results/20260423_9c4a03f/107_layer3_compare_universal_table_grid_downstream_diagnostic/`
+- Audit artifact: `data/results/20260423_9c4a03f/107_layer3_compare_universal_table_grid_downstream_diagnostic/downstream_impact_audit_v1.json`
+
+Result versus active compare 98:
+
+- final rows: `204 -> 204`
+- diagnostic error rows: `1812 -> 1824`
+- `present_and_match`: `1608 -> 1608`
+- `missing_in_system`: `838 -> 838`
+- `present_but_mismatch`: `156 -> 156`
+- `blocked_alignment`: `616 -> 616`
+- `extra_in_system`: `202 -> 214`
+- exact-match recall proxy: `0.499689 -> 0.499689`
+- value-presence recall proxy: `0.548167 -> 0.548167`
+- conditional accuracy proxy: `0.911565 -> 0.911565`
+
+Interpretation:
+
+- The universal grid sidecar is being emitted, but current maintained Stage3/Stage5/Layer3 consumers do not yet use `table_cell_grid_v1.tsv/jsonl` for semantic value backfill.
+- Source-type counts are unchanged; no current compare source type is grid-derived.
+- The only status regression in this diagnostic lineage is 12 `INMUTV7L` `zeta_mV` cells changing from `not_reported_in_gt` to `extra_in_system`, caused by the older row-local `table_cell_bindings_json` surface being preserved through this lineage, not by direct universal-grid consumption.
+- Therefore this run does not justify removing source-CSV or paper/field fallback repairs yet. The next repair must add a lawful downstream consumer that joins semantic candidates to `table_cell_grid_v1` and emits derived row-local value bindings with uniqueness/ambiguity guards.
+- `ACTIVE_RUN.json` was not updated.
+
+
+## 2026-05-02 diagnostic note — grid-derived table-cell binding consumer replay 108-111
+
+A Stage2 compatibility-projection consumer was added for the universal `table_cell_grid_v1.tsv/jsonl` artifact. The consumer attaches row-local `table_cell_bindings_json` only to already admitted Stage2 rows, using row label plus table identity and field/header alias lookup. It does not create formulation candidates and does not assign semantic roles inside the S2-2 grid itself. Ambiguous row matches, ambiguous canonical metric headers, and rows without canonical metric bindings are skipped.
+
+Diagnostic lineage:
+
+- Stage2: `data/results/20260423_9c4a03f/108_stage2_grid_binding_consumer_diagnostic/semantic_to_widerow_adapter/`
+- Stage3: `data/results/20260423_9c4a03f/109_stage3_grid_binding_consumer_diagnostic/`
+- Stage5: `data/results/20260423_9c4a03f/110_stage5_grid_binding_consumer_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/111_layer3_compare_grid_binding_consumer_diagnostic/`
+- Audit: `data/results/20260423_9c4a03f/111_layer3_compare_grid_binding_consumer_diagnostic/downstream_impact_audit_v1.json`
+
+Validation:
+
+- `python3 -m unittest tests.test_compare_layer3_values_v1.UniversalTableCellGridTests` => `Ran 4 tests ... OK`
+- `python3 -m unittest tests.test_compare_layer3_values_v1` => `Ran 142 tests ... OK`
+- `python3 -m py_compile src/stage2_sampling_labels/table_cell_grid_v1.py src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py tests/test_compare_layer3_values_v1.py` => OK
+
+Stage2 consumer activation in run 108:
+
+- universal grid rows: 9032
+- universal grid tables: 147
+- universal grid papers: 15
+- rows considered for row-local grid binding: 204
+- rows with grid-derived bindings: 76
+- bindings added: 148
+
+Layer3 impact versus active compare 98:
+
+- diagnostic error rows: `1812 -> 1824`
+- `missing_in_system`: `838 -> 838`
+- `present_and_match`: `1608 -> 1608`
+- `present_but_mismatch`: `156 -> 156`
+- `blocked_alignment`: `616 -> 616`
+- `extra_in_system`: `202 -> 214`
+- exact-match recall proxy: `0.55911 -> 0.55911`
+- value-presence recall proxy: `0.613352 -> 0.613352`
+- conditional accuracy proxy: `0.911565 -> 0.911565`
+
+Decision: do not promote to `ACTIVE_RUN.json`. The consumer is structurally active but the complete downstream lineage has no positive recall/accuracy delta and preserves the 12-cell INMUTV7L `zeta_mV` extra-value collateral previously seen in the universal-grid downstream diagnostic. Further work should distinguish modeling-target/GT-scored metric bindings from source-table-only measurements before enabling broad binding materialization.
+
+
+## Value authority and typed direct-value contract (2026-05-02 diagnostic 112-115)
+
+Decision recorded for Layer3 value backfill and comparison debugging:
+
+- Row-local table-cell binding is the highest numeric value authority for benchmark-facing direct fields when the binding is unique, source-backed, and typed-valid. This includes `table_cell_bindings_json` projected from preserved table-grid structure.
+- Row-local table assignment surfaces such as `table_row_variable_assignments_json` are authority immediately below explicit cell bindings when their header is field-typed (`Artemether (mg)`, `Gatifloxacin (mg)`, `PLGA (mg)`, etc.) and the value passes the typed validator.
+- Shared carrythrough remains allowed only when source-backed, scoped, and not conflicting with row-local authority.
+- LLM semantic output authorizes candidate identity/scope and evidence routing; it is not the final authority for numeric value typing.
+- Stage5/Layer3/source-CSV/compare rebinding paths are diagnostic, migration, or fallback paths and must not override row-local typed cell/assignment authority.
+- Direct extraction benchmark fields must distinguish directly reported values from derived values. Values requiring `%w/v × volume`, `mg/mL × volume`, or ratio × known mass belong in a separate derived-provenance layer and must not be silently mixed into direct recall/accuracy.
+- Typed mass fields (`drug_mass_mg`, `polymer_mass_mg`) accept numeric mass values with mass headers/units; identity tokens (`PLGA`, drug names), ratio-like tokens (`75:25`), concentration units (`mg/mL`, `% w/v`), and volume units (`mL`) are rejected as mass.
+- Field/header/drug alias lexicon updates added direct mass headers and drug aliases, including `Drug (mg)`, `Payload (mg)`, `Gatifloxacin (mg)`, `Rhodamine (mg)`, `Artemether (mg)`, `Dexibuprofen (mg)`, `DXI (mg)`, `PLGA (mg)`, `Polymer (mg)`, and `PLGA amount (mg)`.
+
+Diagnostic lineage:
+
+- Stage2: `data/results/20260423_9c4a03f/112_stage2_value_authority_typed_validator_diagnostic/semantic_to_widerow_adapter`
+- Stage3: `data/results/20260423_9c4a03f/113_stage3_value_authority_typed_validator_diagnostic`
+- Stage5: `data/results/20260423_9c4a03f/114_stage5_value_authority_typed_validator_diagnostic`
+- Layer3 compare: `data/results/20260423_9c4a03f/115_layer3_compare_value_authority_typed_validator_diagnostic`
+- GT direct-vs-derived mass audit: `data/results/20260423_9c4a03f/115_layer3_compare_value_authority_typed_validator_diagnostic/gt_direct_vs_derived_mass_audit_v1.tsv`
+
+Impact versus active compare 98:
+
+- Layer3 risk rows: `1812 -> 1806`
+- improved error-to-match cells: `11`
+- regressed match-to-error cells: `0`
+- `drug_mass_mg` value_recall `0.395349 -> 0.627907`; conditional_accuracy_canonicalized `0.941176 -> 1.000000`; extra `10 -> 10`
+- `polymer_mass_mg` value_recall `0.516129 -> 0.376344`; conditional_accuracy_canonicalized `0.500000 -> 0.685714`; extra `7 -> 0`
+- `particle_size_nm`, `ee_percent`, and emulsifier/stabilizer concentration metrics were unchanged in summary.
+
+Interpretation: diagnostic 115 is directionally positive overall and prevents several mass-field type errors, but polymer-mass recall falls because previously wrong values are now withheld. The run remains diagnostic-only; `ACTIVE_RUN.json` was not updated in this step.
+
+## Diagnostic 116-123: guarded shared preparation mass carrythrough and derived mass provenance
+
+Boundary and lineage:
+- Stage2: `data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/`
+- Stage3: `data/results/20260423_9c4a03f/117_stage3_mass_carrythrough_derived_provenance_diagnostic/`
+- Stage5: `data/results/20260423_9c4a03f/122_stage5_mass_carrythrough_guarded_v2_derived_provenance_diagnostic/`
+- Layer3 compare: `data/results/20260423_9c4a03f/123_layer3_compare_mass_carrythrough_guarded_v2_derived_provenance_diagnostic/`
+- GT authority: `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`
+- Baseline: active diagnostic compare 98; prior value-authority diagnostic 115.
+- Benchmark validity: diagnostic-only; `ACTIVE_RUN.json` intentionally unchanged.
+
+Implemented generic behavior:
+- Drug-specific mg header projection remains lexicon/header-semantics based and source-backed; no paper-specific override.
+- Shared preparation mass carrythrough is source-backed from unique preparation-sentence mass mentions, fills only row-local blank mass slots, and records `global_preparation_direct_mass_evidence`.
+- Shared carrythrough guard excludes blank/control/helper rows, DOE/factor/design rows, assay/release/helper contexts without local formulation evidence, and drug-mass propagation when the row has only a globally shared drug name without local drug/loaded signal.
+- Derived mass provenance is emitted to `derived_mass_provenance_json`; derived values are not written into direct mass fields and are not counted as `direct_extracted` Layer3 benchmark values.
+
+Diagnostic results:
+- Compare 123 risk rows: `1802` vs active 98 `1812`, and vs value-authority 115 `1806`.
+- Value-authority/drug-specific header gains retained: `drug_mass_mg` recall/accuracy active 98 `0.372093 / 0.941176` -> 123 `0.627907 / 1.000000`.
+- Shared preparation carrythrough adds 4 `polymer_mass_mg` matches vs 115, all `5GIF3D8W` rows with `50 mg`: `5GIF3D8W_G010`, `5GIF3D8W_G011`, `5GIF3D8W_G032`, `5GIF3D8W_G034`.
+- `polymer_mass_mg` active 98 `0.258065 / 0.500000` -> 123 `0.301075 / 0.717949`; vs 115 `0.258065 / 0.685714` -> 123 `0.301075 / 0.717949`.
+- `particle_size_nm`, `ee_percent`, `drug_name`, `polymer_name`, `emulsifier_stabilizer_*`, and `solvent_name` metrics unchanged vs 115.
+- Derived provenance audit emitted `0` rows on this DEV15 replay, confirming no derived value entered direct benchmark fields.
+- Known collateral retained from universal table binding lineage: `INMUTV7L zeta_mV` has 12 GT-empty `extra_in_system` cells; this is outside the current mass repair and still blocks active promotion.
+
+Validation:
+- `python3 -m unittest tests.test_compare_layer3_values_v1` -> `Ran 152 tests ... OK`.
+- `python3 -m py_compile src/stage5_benchmark/build_minimal_final_output_v1.py tests/test_compare_layer3_values_v1.py` -> OK.
+- Audit artifacts: `field_delta_audit_v1.tsv`, `changed_cells_vs_115_v1.tsv`, `derived_mass_provenance_audit_v1.tsv`, `diagnostic_metadata.json`.
+
+
+## 2026-05-02 polymer_mass_mg scope guard and shared preparation mass repair
+
+Lineage promoted for diagnosis baseline only: Stage2 compatibility `data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv` -> Stage3 `128_stage3_polymer_mass_scope_guard_from116_diagnostic` -> Stage5 `129_stage5_polymer_mass_scope_guard_from116_diagnostic` -> Layer3 compare `130_layer3_compare_polymer_mass_scope_guard_from116_diagnostic`. GT authority remains `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`; scope manifest remains `data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv`.
+
+Repair contract:
+- `polymer_mass_mg` does not accept compare-level paper-specific values or field hard-fill overrides.
+- Scoped shared preparation mass may fill only when the source text has a unique, source-backed preparation-context polymer mass mention, including generalized forms such as `PLGA (50 mg)`, `polymer (50 mg)`, `50 mg PLGA`, and `50 mg of PLGA/polymer`.
+- Shared carrythrough remains blocked for row-local overrides, blank/control/helper rows, DOE/factor/coded rows, and non-PLGA-family rows unless paper-level source context explicitly establishes PLGA-family applicability.
+- `ordinal_grid_semantics` is scoped to its validated INMUTV7L EE-only small-grid schema. It may not populate `polymer_mass_mg`; this suppresses the prior L3H2RS2H/PA3SPZ28 `90 mg` pollution without inventing replacement values.
+- `blocked_alignment` remains an alignment/row-universe failure class. It is not repaired by mass parser, compare override, or field-level substitution.
+
+Artifacts:
+- Boundary audit: `data/results/20260423_9c4a03f/130_layer3_compare_polymer_mass_scope_guard_from116_diagnostic/polymer_mass_boundary_audit_v1.tsv`
+- Field delta audit: `data/results/20260423_9c4a03f/130_layer3_compare_polymer_mass_scope_guard_from116_diagnostic/field_delta_audit_v1.tsv`
+- Changed cells: `data/results/20260423_9c4a03f/130_layer3_compare_polymer_mass_scope_guard_from116_diagnostic/changed_cells_vs_98_v1.tsv`
+- Metadata: `data/results/20260423_9c4a03f/130_layer3_compare_polymer_mass_scope_guard_from116_diagnostic/diagnostic_metadata.json`
+
+Diagnostic effect versus active compare 98: Layer3 error queue rows `1812 -> 1799`; `polymer_mass_mg` extra cells `7 -> 0`; `polymer_mass_mg` canonicalized conditional accuracy `0.500000 -> 1.000000`; `polymer_mass_mg` value recall `0.516129 -> 0.333333` because previous nonempty values included ratio/concentration/identity and ordinal pollution that are now removed instead of counted as system presence. The correct interpretation is pollution removal plus bounded direct shared-mass recovery, not final polymer-mass recall closure.
+
+
+### 2026-05-02 polymer_mass_mg scoped preparation carrythrough v2 diagnostic (runs 131/134/135)
+
+- Run lineage: Stage2 compatibility `data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv` -> Stage3 `131_stage3_polymer_mass_scoped_preparation_repair_diagnostic` -> Stage5 `134_stage5_polymer_mass_scoped_preparation_v2_diagnostic` -> Layer3 compare `135_layer3_compare_polymer_mass_scoped_preparation_v2_diagnostic`.
+- GT authority: `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`; scope manifest: `data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv`; alignment scaffold: `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_variant_alignment_scaffold_v1.tsv`.
+- Boundary diagnosis: low `polymer_mass_mg` recall after run 130 was no longer mainly value-type pollution; it was direct preparation mass not safely propagated when (a) parenthetical material labels crossed neighboring drug/excipient mentions, (b) concentration tokens such as `mg/mL` appeared in source-preparation/assay text, and (c) one paper contained multiple direct PLGA preparation masses scoped by nanocarrier subtype rather than article-global uniqueness.
+- Generic repair: `_mass_mentions_in_text` now excludes concentration-style `mg/mL` mentions from direct mass carrythrough; parenthetical material classification stops at the explicit material label and does not fall through to wider neighboring context; `extract_row_scoped_preparation_polymer_mass` permits direct polymer mass carrythrough only when a row names exactly one nanocarrier subtype and the source has a unique subtype-scoped PLGA/polymer preparation mass. This is source-backed and does not derive from ratio, concentration, or volume.
+- Diagnostic result vs run 130: `polymer_mass_mg` recall `0.333333 -> 0.612903`; conditional accuracy stayed `1.000000`; `present_and_match` `31 -> 57`; missing `48 -> 22`; blocked alignment unchanged `14`; field extra unchanged `0`; improved-to-match cells `26`; regressed-from-match cells `0`.
+- Diagnostic result vs active 98: `polymer_mass_mg` recall `0.258065 -> 0.612903`; conditional accuracy `0.500000 -> 1.000000`; this accepts fewer polluted nonempty values and more source-backed direct masses.
+- Remaining boundary: `WFDTQ4VX` row-universe/alignment residuals and `blocked_alignment` remain unresolved by design; they require lawful row identity/materialization repair, not field-level mass override.
+- Status: diagnostic-only active baseline; not benchmark-valid final evidence.
+
+
+### 2026-05-02 run 138 subtype-scoped emulsifier/stabilizer concentration repair
+
+- Selected target: `emulsifier_stabilizer_concentration_value`, because ACTIVE_RUN 135 residual audit showed a large missing bucket with perfect conditional accuracy where direct source-backed carrythrough could improve recall without changing row universe.
+- Generic repair: Stage5 now reuses the nanosphere/nanocapsule subtype-scoping contract previously used for direct polymer mass, but applies it only to preparation sentences with explicit surfactant/stabilizer names and concentration units. It does not infer surfactant names, does not use paper-specific IDs, and does not derive values.
+- Compare governance repair: if GT stores a complete concentration such as `0.25% (w/v)` in the value field and leaves the paired unit field empty, the compare layer suppresses a duplicate unit extra only when the extracted unit is exactly the unit already contained in the GT value.
+- Lineage: Stage2 compatibility run 116 -> Stage3 run 131 -> Stage5 run 136 -> Layer3 compare run 138. Diagnostic-only, not benchmark-valid final evidence.
+- Validation: `python3 -m unittest tests.test_compare_layer3_values_v1` passed with 158 tests; py_compile passed for modified Stage5/compare/tests. Run 138 vs run 135: overall error_rows 1773 -> 1757; present_and_match 1631 -> 1647; missing_in_system 886 -> 870; mismatch 85 unchanged; blocked_alignment 616 unchanged; extra_in_system 186 unchanged. Target field `emulsifier_stabilizer_concentration_value` recall 0.574324 -> 0.682432, match 85 -> 101, missing 49 -> 33, accuracy 1.000000 unchanged.

@@ -84,6 +84,12 @@ Benchmark-legality clarification:
 - Diagnostic-only compare workflows may compare an explicit new Stage5 final
   table or explicit `--run-dir` against the locked GT authority without first
   promoting that lineage into `ACTIVE_RUN.json`.
+- Once a diagnostic lineage has been validated and selected as the current
+  diagnosis baseline, `ACTIVE_RUN.json` should be advanced to that lineage's
+  exact terminal diagnostic artifacts so subsequent workflows do not fall back
+  to stale authority files.
+- This `ACTIVE_RUN.json` advancement is a diagnosis-baseline pointer update,
+  not a benchmark-baseline or benchmark-valid promotion.
 - Under this diagnostic exception, GT authority remains locked, but the
   compared final table may vary so diagnosis baselines can be evaluated against
   the same frozen GT.

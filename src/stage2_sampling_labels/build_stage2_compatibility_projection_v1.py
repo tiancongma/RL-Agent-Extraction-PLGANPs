@@ -197,14 +197,21 @@ except ModuleNotFoundError as exc:
             "status": "skipped_missing_optional_dependency",
             "replaced_row_count": 0,
         }
+from src.stage2_sampling_labels.table_cell_grid_v1 import (
+    build_grid_cell_bindings_for_row,
+    build_table_cell_grid_from_payloads,
+    write_table_cell_grid,
+)
 from src.stage2_sampling_labels.table_row_expansion_v1 import (
     BOUNDARY_MARKER_FIELD,
+    _load_normalized_table_payloads,
     execution_ready_markers,
     INHERITANCE_MARKER_FIELD,
     METHOD_GROUP_SIGNATURE_HINT_FIELD,
     PREPARATION_INHERITANCE_FIELD,
     SELECTION_MARKER_FIELD,
     TABLE_ASSIGNMENTS_FIELD,
+    TABLE_CELL_BINDINGS_FIELD,
     TABLE_ID_FIELD,
     TABLE_ROW_ID_FIELD,
     TABLE_SCOPE_FIELD,
@@ -401,6 +408,7 @@ def compatibility_output_columns() -> list[str]:
         TABLE_ID_FIELD,
         TABLE_ROW_ID_FIELD,
         TABLE_ASSIGNMENTS_FIELD,
+        TABLE_CELL_BINDINGS_FIELD,
         TABLE_SCOPE_FIELD,
         TABLE_VARIABLE_ROLE_FIELD,
         SELECTION_MARKER_FIELD,
@@ -493,6 +501,76 @@ def default_semantic_scope_ref(identity: dict[str, Any], document: dict[str, Any
     formulation_id = normalize_text(identity.get("formulation_candidate_id") or identity.get("candidate_id"))
     document_key = normalize_text(document.get("document_key") or document.get("key"))
     return f"{document_key}__llm_document_scope__01|candidate:{formulation_id}" if formulation_id else f"{document_key}__llm_document_scope__01"
+
+
+def _row_label_for_grid_binding(row: dict[str, str]) -> str:
+    table_row_id = normalize_text(row.get(TABLE_ROW_ID_FIELD))
+    if "::" in table_row_id:
+        tail = normalize_text(table_row_id.rsplit("::", 1)[-1])
+        if tail:
+            return tail
+    return normalize_text(row.get("raw_formulation_label"))
+
+
+def _merge_grid_cell_bindings(existing_value: Any, grid_bindings: list[dict[str, str]]) -> tuple[str, int]:
+    parsed = parse_json_maybe(existing_value)
+    existing = [item for item in parsed if isinstance(item, dict)] if isinstance(parsed, list) else []
+    existing_fields = {normalize_text(item.get("canonical_field")) for item in existing if normalize_text(item.get("canonical_field"))}
+    additions = [item for item in grid_bindings if normalize_text(item.get("canonical_field")) not in existing_fields]
+    if not additions:
+        return stringify_json(existing), 0
+    return stringify_json(existing + additions), len(additions)
+
+
+def apply_table_cell_grid_bindings_to_rows(
+    rows: list[dict[str, str]],
+    jsonl_rows: list[dict[str, Any]],
+    *,
+    document_key: str,
+    grid_rows: list[dict[str, str]],
+) -> dict[str, Any]:
+    """Attach grid-derived row-local value bindings to already admitted Stage2 rows.
+
+    This is a deterministic consumer of S2-2 structure. It does not create rows
+    and does not overwrite existing table_cell_bindings_json entries.
+    """
+    stats = {
+        "rows_considered": 0,
+        "rows_with_grid_bindings": 0,
+        "bindings_added": 0,
+        "status_counts": {},
+    }
+    jsonl_by_id = {
+        normalize_text(item.get("local_instance_id") or item.get("formulation_id")): item
+        for item in jsonl_rows
+        if isinstance(item, dict)
+    }
+    for row in rows:
+        table_id = normalize_text(row.get(TABLE_ID_FIELD) or row.get("evidence_section"))
+        row_label = _row_label_for_grid_binding(row)
+        if not table_id or not row_label:
+            continue
+        stats["rows_considered"] += 1
+        bindings, status = build_grid_cell_bindings_for_row(
+            grid_rows,
+            paper_key=document_key,
+            table_id=table_id,
+            row_label=row_label,
+        )
+        status_counts = stats["status_counts"]
+        status_counts[status] = int(status_counts.get(status, 0)) + 1
+        if not bindings:
+            continue
+        merged, added = _merge_grid_cell_bindings(row.get(TABLE_CELL_BINDINGS_FIELD), bindings)
+        if added <= 0:
+            continue
+        row[TABLE_CELL_BINDINGS_FIELD] = merged
+        stats["rows_with_grid_bindings"] += 1
+        stats["bindings_added"] += added
+        row_id = normalize_text(row.get("local_instance_id") or row.get("formulation_id"))
+        if row_id in jsonl_by_id:
+            jsonl_by_id[row_id][TABLE_CELL_BINDINGS_FIELD] = merged
+    return stats
 
 
 def choose_first(items: list[dict[str, Any]], *keys: str) -> str:
@@ -2390,12 +2468,37 @@ def run_projection(
     all_jsonl_rows: list[dict[str, Any]] = []
     projection_summaries: list[dict[str, Any]] = []
     guard_rows: list[dict[str, str]] = []
+    table_cell_grid_rows: list[dict[str, str]] = []
+    table_cell_grid_payload_failures: list[dict[str, str]] = []
+    table_cell_grid_binding_summaries: list[dict[str, Any]] = []
     for document in documents:
         document_key = normalize_text(document.get("document_key") or document.get("key"))
         rows, traces, jsonl_rows, projection_summary, guard_row = project_document(
             document,
             authority_sidecar_entry=authority_sidecar.get(document_key),
         )
+        normalized_payloads, payload_status = _load_normalized_table_payloads(document)
+        document_grid_rows: list[dict[str, str]] = []
+        if normalized_payloads:
+            document_grid_rows = build_table_cell_grid_from_payloads(document_key, normalized_payloads)
+            table_cell_grid_rows.extend(document_grid_rows)
+        elif normalize_text(payload_status.get("reopen_resolution_status")) != "resolved":
+            table_cell_grid_payload_failures.append(
+                {
+                    "document_key": document_key,
+                    "reopen_source_type": normalize_text(payload_status.get("reopen_source_type")),
+                    "reopen_failure_reason": normalize_text(payload_status.get("reopen_failure_reason")),
+                }
+            )
+        binding_summary = apply_table_cell_grid_bindings_to_rows(
+            rows,
+            jsonl_rows,
+            document_key=document_key,
+            grid_rows=document_grid_rows,
+        )
+        binding_summary["document_key"] = document_key
+        table_cell_grid_binding_summaries.append(binding_summary)
+        projection_summary["table_cell_grid_binding_consumer"] = binding_summary
         all_rows.extend(rows)
         all_traces.extend(traces)
         all_jsonl_rows.extend(jsonl_rows)
@@ -2422,6 +2525,7 @@ def run_projection(
         ],
     )
     write_projection_contract(contract_path)
+    table_cell_grid_stats = write_table_cell_grid(output_dir, table_cell_grid_rows)
     guard_stats = write_numbered_doe_guard_artifact(output_dir, guard_rows)
     function_unit_activation_rows = build_function_unit_activation_rows(projection_summaries)
     execution_ledger_rows = build_execution_ledger_rows(projection_summaries)
@@ -2508,6 +2612,14 @@ def run_projection(
         "numbered_doe_guard_warn_count": int(guard_stats["warn_count"]),
         "projection_summaries": projection_summaries,
         "trace_rows": len(all_traces),
+        "table_cell_grid": table_cell_grid_stats,
+        "table_cell_grid_binding_consumer": {
+            "rows_considered": sum(int(item.get("rows_considered", 0)) for item in table_cell_grid_binding_summaries),
+            "rows_with_grid_bindings": sum(int(item.get("rows_with_grid_bindings", 0)) for item in table_cell_grid_binding_summaries),
+            "bindings_added": sum(int(item.get("bindings_added", 0)) for item in table_cell_grid_binding_summaries),
+            "document_summaries": table_cell_grid_binding_summaries,
+        },
+        "table_cell_grid_payload_failures": table_cell_grid_payload_failures,
         "legacy_surface_columns": len(compatibility_output_columns()),
         "output_files": [
             str(output_dir / LEGACY_TSV_NAME),
@@ -2515,6 +2627,8 @@ def run_projection(
             str(output_dir / TRACE_TSV_NAME),
             str(output_dir / FUNCTION_UNIT_ACTIVATION_NAME),
             str(output_dir / EXECUTION_LEDGER_NAME),
+            str(output_dir / "table_cell_grid_v1.tsv"),
+            str(output_dir / "table_cell_grid_v1.jsonl"),
             str(Path(guard_stats["guard_path"]).resolve()),
             str(contract_path),
         ],

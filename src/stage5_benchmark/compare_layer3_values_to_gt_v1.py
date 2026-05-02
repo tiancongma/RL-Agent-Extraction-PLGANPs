@@ -19,9 +19,11 @@ from pathlib import Path
 from typing import Any, Callable
 
 try:
+    from src.stage2_sampling_labels.table_row_expansion_v1 import canonical_field_for_header
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from src.stage2_sampling_labels.table_row_expansion_v1 import canonical_field_for_header
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
 
 CORE_FIXED_FIELDS = {
@@ -263,6 +265,31 @@ def parse_numeric(value: Any) -> float | None:
         return None
 
 
+def parse_percent_aware_numeric(value: Any) -> tuple[float, bool] | None:
+    text = canonicalize_text(value)
+    parsed = parse_numeric(text)
+    if parsed is None:
+        return None
+    return parsed, "%" in text
+
+
+def percent_equivalent_numeric_match(gt_value: Any, system_value: Any) -> bool:
+    gt = parse_percent_aware_numeric(gt_value)
+    sysv = parse_percent_aware_numeric(system_value)
+    if gt is None or sysv is None:
+        return False
+    gt_num, gt_has_percent = gt
+    sys_num, sys_has_percent = sysv
+    candidates = [(gt_num, sys_num)]
+    if gt_has_percent and not sys_has_percent:
+        candidates.append((gt_num / 100.0, sys_num))
+    if sys_has_percent and not gt_has_percent:
+        candidates.append((gt_num, sys_num / 100.0))
+    if gt_has_percent and sys_has_percent:
+        candidates.append((gt_num / 100.0, sys_num / 100.0))
+    return any(abs(left - right) <= max(0.1 * max(abs(left), abs(right), 1.0), 1e-9) for left, right in candidates)
+
+
 def field_group(field_name: str) -> str:
     if field_name in CORE_FIXED_FIELDS or field_name in REPORTING_ONLY_CORE_FIXED_FIELDS:
         return "core_fixed_fields"
@@ -333,6 +360,8 @@ def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *,
             )
             if canonicalized:
                 return strict, canonicalized, canonicalized
+    if field_name in {"surfactant_concentration_value", "emulsifier_stabilizer_concentration_value", "ee_percent"} and percent_equivalent_numeric_match(gt, sysv):
+        return strict, True, True
     if field_name in NUMERIC_FIELDS or field_name in RATIO_FIELDS:
         gt_num = parse_numeric(gt)
         sys_num = parse_numeric(sysv)
@@ -344,6 +373,32 @@ def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *,
     relaxed = strict
     canonicalized = strict or sorted(set(gt_c.split())) == sorted(set(sys_c.split()))
     return strict, relaxed, canonicalized
+
+
+def should_suppress_duplicate_concentration_unit_cell(field_name: str, gt_row: dict[str, str], system_value_raw: str) -> bool:
+    """Avoid double-counting a unit when GT stores the full concentration in the value field.
+
+    Some Layer3 GT rows record surfactant concentration as a single direct value
+    such as `0.25% (w/v)` and intentionally leave the paired unit field empty.
+    If the system value surface decomposes that same raw value into a unit cell,
+    the unit is not an independent extra fact; it is already benchmarked by the
+    concentration-value field.
+    """
+    if field_name not in {"emulsifier_stabilizer_concentration_unit", "surfactant_concentration_unit"}:
+        return False
+    system_unit = normalize_text(system_value_raw)
+    if not system_unit:
+        return False
+    paired_value = normalize_text(
+        gt_row.get("emulsifier_stabilizer_concentration_value")
+        or gt_row.get("surfactant_concentration_value")
+    )
+    if not paired_value:
+        return False
+    paired_unit = extract_unit_from_combined_concentration_text(paired_value)
+    if not paired_unit:
+        return False
+    return normalize_value_with_lexicon(field_name, paired_unit) == normalize_value_with_lexicon(field_name, system_unit)
 
 
 def determine_compare_status(*, gt_value_raw: str, system_value_raw: str, alignment_ok: bool, matched: bool) -> str:
@@ -598,6 +653,48 @@ def _value_from_preparation_method(field_name: str, row: dict[str, str]) -> str:
     return ""
 
 
+def _value_from_row_local_solvent_volume_header(row: dict[str, str]) -> str:
+    """Recover solvent identity from row-local composition headers like Acetone (mL).
+
+    This is intentionally bounded to a unique known organic-solvent token appearing
+    as a volume-bearing assignment/header. It must not treat aqueous-phase volume
+    columns as solvent identity and must not choose among multiple solvent headers.
+    """
+    text_parts: list[str] = []
+    for column in ("change_descriptions", "supporting_evidence_refs"):
+        raw = normalize_text(row.get(column))
+        if raw:
+            text_parts.append(raw)
+    text = " | ".join(text_parts)
+    if not text:
+        return ""
+    lower = text.lower()
+    if "aqueous phase" in lower and not any(solvent in lower for solvent in ("acetone", "dichloromethane", "ethyl acetate", "acetonitrile", "chloroform", "dmso", "ethanol", "methanol")):
+        return ""
+    solvent_tokens = [
+        ("dichloromethane", "dichloromethane"),
+        ("ethyl acetate", "ethyl acetate"),
+        ("acetonitrile", "acetonitrile"),
+        ("chloroform", "chloroform"),
+        ("acetone", "acetone"),
+        ("dmso", "DMSO"),
+        ("ethanol", "ethanol"),
+        ("methanol", "methanol"),
+    ]
+    hits: set[str] = set()
+    for token, value in solvent_tokens:
+        token_re = re.escape(token)
+        patterns = [
+            rf"[('\"\s,]({token_re})\s*\((?:m?l|ml|µl|ul|volume)\)",
+            rf"[('\"\s,]({token_re})(?:\s+volume)?\s*=\s*[-+]?\d",
+        ]
+        if any(re.search(pattern, lower) for pattern in patterns):
+            hits.add(value)
+    if len(hits) == 1:
+        return next(iter(hits))
+    return ""
+
+
 def _parse_supporting_evidence_refs(row: dict[str, str]) -> list[dict[str, Any]]:
     refs = normalize_text(row.get("supporting_evidence_refs"))
     if not refs:
@@ -792,6 +889,11 @@ class OrdinalGridSemanticsSchema:
     ordinal_metadata: dict[str, dict[str, str]] = field(default_factory=dict)
     shared_constant_fields: dict[str, str] = field(default_factory=dict)
     field_extractors: dict[str, Callable[[dict[str, str], str], str]] = field(default_factory=dict)
+    scope_paper_keys: frozenset[str] = frozenset()
+
+
+def _row_paper_key(row: dict[str, str]) -> str:
+    return normalize_text(row.get("key") or row.get("paper_key") or row.get("document_key"))
 
 
 def _extract_row_ordinal(row: dict[str, str]) -> str:
@@ -856,12 +958,16 @@ ORDINAL_GRID_SEMANTICS_SCHEMAS: tuple[OrdinalGridSemanticsSchema, ...] = (
         field_extractors={
             "ee_percent": _small_grid_ee_percent,
         },
+        scope_paper_keys=frozenset({"INMUTV7L"}),
     ),
 )
 
 
 def _ordinal_grid_semantics_override(field_name: str, row: dict[str, str]) -> tuple[bool, str, str, str]:
+    row_scope = _row_paper_key(row)
     for schema in ORDINAL_GRID_SEMANTICS_SCHEMAS:
+        if schema.scope_paper_keys and row_scope not in schema.scope_paper_keys:
+            continue
         if not schema.eligibility_fn(row):
             continue
         if field_name in schema.shared_constant_fields:
@@ -936,6 +1042,101 @@ EVIDENCE_METRIC_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
 }
 
+ROW_LOCAL_BINDING_AUTHORITY_FIELDS = {
+    "drug_mass_mg",
+    "polymer_mass_mg",
+    "polymer_concentration_value",
+    "polymer_concentration_unit",
+    "drug_concentration_value",
+    "drug_concentration_unit",
+    "emulsifier_stabilizer_concentration_value",
+    "emulsifier_stabilizer_concentration_unit",
+    "surfactant_concentration_value",
+    "surfactant_concentration_unit",
+    "particle_size_nm",
+    "ee_percent",
+    "lc_percent",
+    "dl_percent",
+    "pdi",
+}
+
+MASS_FIELDS = {"drug_mass_mg", "polymer_mass_mg", "surfactant_mass_mg"}
+CONCENTRATION_FIELDS = {
+    "polymer_concentration_value",
+    "polymer_concentration_unit",
+    "drug_concentration_value",
+    "drug_concentration_unit",
+    "surfactant_concentration_value",
+    "surfactant_concentration_unit",
+    "emulsifier_stabilizer_concentration_value",
+    "emulsifier_stabilizer_concentration_unit",
+}
+
+
+def _value_has_concentration_unit(value: str) -> bool:
+    text = canonicalize_text(value)
+    return bool(re.search(r"\b(?:mg|g|ug|µg|mcg|ng)\s*/\s*m[lL]\b|%\s*w\s*/\s*v|w\s*/\s*v\s*%", text))
+
+
+def _value_has_volume_unit(value: str) -> bool:
+    text = canonicalize_text(value)
+    return bool(re.search(r"\b(?:m[lL]|u[lL]|µ[lL]|l)\b", text)) and not _value_has_concentration_unit(text)
+
+
+def _value_has_mass_unit(value: str) -> bool:
+    text = canonicalize_text(value)
+    return bool(re.search(r"\b(?:mg|g|ug|µg|mcg|ng)\b", text)) and not _value_has_concentration_unit(text)
+
+
+def _value_is_ratio_like(value: str) -> bool:
+    text = canonicalize_text(value)
+    return bool(re.search(r"\b\d+(?:\.\d+)?\s*[:/]\s*\d+(?:\.\d+)?\b", text))
+
+
+def validate_value_for_field(field_name: str, value: str, *, raw_header: str = "", source_type: str = "") -> tuple[bool, str]:
+    """Typed value-authority gate for benchmark-facing field projection.
+
+    The validator is deliberately type/shape based, not a blacklist of observed
+    bad values. It separates directly reported values from future derivations:
+    derived quantities must use a separate derived provenance path, not this
+    direct source-value surface.
+    """
+    clean = normalize_text(value)
+    header = canonicalize_text(raw_header)
+    if not clean:
+        return False, "empty_value"
+    if field_name in MASS_FIELDS:
+        if parse_numeric(clean) is None:
+            return False, "invalid_mass_no_numeric_value"
+        if _value_is_ratio_like(clean):
+            return False, "invalid_mass_ratio_like_value"
+        if _value_has_concentration_unit(clean):
+            return False, "invalid_mass_concentration_unit"
+        if _value_has_volume_unit(clean):
+            return False, "invalid_mass_volume_unit"
+        if raw_header and not re.search(r"\b(?:mg|mass|amount|feed|drug|polymer|plga|pcl|pla|gatifloxacin|rhodamine|artemether|dexibuprofen|kgn|kartogenin)\b", header):
+            return False, "invalid_mass_header_semantics"
+        return True, "typed_direct_mass_value"
+    if field_name in CONCENTRATION_FIELDS:
+        if field_name.endswith("_unit"):
+            if clean in {"%", "%w/v", "% w/v", "mg/mL", "mg/ml"} or _value_has_concentration_unit(clean):
+                return True, "typed_direct_concentration_unit"
+            return False, "invalid_concentration_unit_value"
+        if parse_numeric(clean) is None:
+            return False, "invalid_concentration_no_numeric_value"
+        if _value_is_ratio_like(clean):
+            return False, "invalid_concentration_ratio_like_value"
+        return True, "typed_direct_concentration_value"
+    if field_name in {"ee_percent", "lc_percent", "dl_percent"}:
+        if parse_numeric(clean) is None:
+            return False, "invalid_percent_no_numeric_value"
+        return True, "typed_direct_percent_value"
+    if field_name == "particle_size_nm":
+        if parse_numeric(clean) is None:
+            return False, "invalid_size_no_numeric_value"
+        return True, "typed_direct_size_value"
+    return True, "typed_contract_not_restrictive"
+
 
 def _extract_target_field_name_labels(row: dict[str, str]) -> list[str]:
     labels: list[str] = []
@@ -947,7 +1148,10 @@ def _extract_target_field_name_labels(row: dict[str, str]) -> list[str]:
     return labels
 
 
-def _header_label_matches_field(label: str, field_name: str) -> bool:
+def _header_label_matches_field(label: str, field_name: str, *, paper_key: str = "") -> bool:
+    canonical_field = canonical_field_for_header(label, paper_key=paper_key)
+    if canonical_field:
+        return canonical_field == field_name
     text = canonicalize_text(label)
     if not text:
         return False
@@ -957,12 +1161,34 @@ def _header_label_matches_field(label: str, field_name: str) -> bool:
     return False
 
 
-def _format_evidence_metric_value(field_name: str, raw_value: str) -> str:
+def _format_evidence_metric_value(field_name: str, raw_value: str, raw_header: str = "") -> str:
     clean = _strip_uncertainty_suffix(raw_value)
     if not clean:
         return ""
-    if field_name in {"lc_percent", "ee_percent"}:
+    if field_name in {"lc_percent", "ee_percent", "dl_percent"}:
         return f"{clean} %"
+    if field_name in MASS_FIELDS:
+        if parse_numeric(clean) is None:
+            return ""
+        if _value_has_mass_unit(clean):
+            return clean
+        if re.search(r"\bmg\b", canonicalize_text(raw_header)):
+            return f"{clean} mg"
+        return clean
+    if field_name.endswith("_unit") and field_name in CONCENTRATION_FIELDS:
+        unit_value = extract_unit_from_combined_concentration_text(clean) or extract_unit_from_combined_concentration_text(raw_header)
+        if unit_value:
+            return unit_value
+        if "%" in clean or "%" in raw_header:
+            return "%"
+        return clean
+    if field_name.endswith("_value") and field_name in CONCENTRATION_FIELDS:
+        number = parse_numeric(clean)
+        if number is None:
+            return ""
+        stripped = _strip_uncertainty_suffix(clean).replace("−", "-")
+        match = re.search(r"-?\d+(?:\.\d+)?", stripped)
+        return match.group(0) if match else ""
     return clean
 
 
@@ -992,6 +1218,177 @@ def _extract_header_aligned_metric_value(field_name: str, row: dict[str, str]) -
     return ""
 
 
+def _parse_table_cell_bindings(row: dict[str, str]) -> list[dict[str, str]]:
+    raw = normalize_text(row.get("table_cell_bindings_json"))
+    if not raw:
+        return []
+    try:
+        payload = json.loads(raw)
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(payload, list):
+        return []
+    bindings: list[dict[str, str]] = []
+    for item in payload:
+        if not isinstance(item, dict):
+            continue
+        bindings.append({str(key): normalize_text(value) for key, value in item.items()})
+    return bindings
+
+
+def _extract_row_local_assignment_metric_value(field_name: str, row: dict[str, str], *, paper_key: str = "") -> str:
+    if field_name not in ROW_LOCAL_BINDING_AUTHORITY_FIELDS:
+        return ""
+    raw = row.get("table_row_variable_assignments_json") or ""
+    if not raw:
+        return ""
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError:
+        return ""
+    candidates: list[tuple[str, str]] = []
+    entries = parsed if isinstance(parsed, list) else [parsed]
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        for header, value in entry.items():
+            if canonical_field_for_header(str(header), paper_key=paper_key) != field_name:
+                continue
+            if not str(value).strip():
+                continue
+            ok, _ = validate_value_for_field(field_name, str(value), raw_header=str(header))
+            if ok:
+                candidates.append((str(header), str(value)))
+    unique_values = sorted({value for _, value in candidates})
+    return unique_values[0] if len(unique_values) == 1 else ""
+
+
+def _extract_table_cell_binding_metric_value(field_name: str, row: dict[str, str], *, paper_key: str = "") -> str:
+    if field_name not in ROW_LOCAL_BINDING_AUTHORITY_FIELDS:
+        return ""
+    matches: list[tuple[str, str]] = []
+    for binding in _parse_table_cell_bindings(row):
+        if normalize_text(binding.get("ambiguity_status")) not in {"unique_header_cell", "unique", "unique_grid_header_cell"}:
+            continue
+        canonical_field = normalize_text(binding.get("canonical_field"))
+        raw_header = normalize_text(binding.get("raw_header"))
+        if canonical_field:
+            if canonical_field != field_name:
+                continue
+        elif not _header_label_matches_field(raw_header, field_name, paper_key=paper_key):
+            continue
+        raw_value = normalize_text(binding.get("raw_cell_value"))
+        if not raw_value:
+            continue
+        formatted = _format_evidence_metric_value(field_name, raw_value, raw_header)
+        if not formatted:
+            continue
+        valid, detail = validate_value_for_field(field_name, formatted, raw_header=raw_header, source_type="stage2_table_cell_binding")
+        if valid:
+            matches.append((formatted, detail))
+    unique = sorted({value for value, _detail in matches})
+    if len(unique) == 1:
+        return unique[0]
+    return ""
+
+
+_SOURCE_CSV_HEADER_CACHE: dict[Path, tuple[list[str], list[list[str]]]] = {}
+
+
+def _source_csv_header_label_matches_field(label: str, field_name: str) -> bool:
+    raw = normalize_text(label).lower()
+    if field_name in {"lc_percent", "ee_percent"} and "%" not in raw:
+        return False
+    if field_name == "particle_size_nm" and "nm" not in raw:
+        return False
+    return _header_label_matches_field(label, field_name)
+
+
+def _source_csv_candidates_for_locator(paper_key: str, table_number: str) -> list[Path]:
+    if not paper_key or not table_number:
+        return []
+    root = Path(__file__).resolve().parents[2] / "data" / "cleaned" / "goren_2025" / "tables" / paper_key
+    try:
+        table_index = int(table_number)
+    except ValueError:
+        return []
+    if not root.exists():
+        return []
+    return sorted(root.glob(f"{paper_key}__table_{table_index:02d}__*_table.csv"))
+
+
+def _read_source_csv_header_and_rows(path: Path) -> tuple[list[str], list[list[str]]]:
+    cached = _SOURCE_CSV_HEADER_CACHE.get(path)
+    if cached is not None:
+        return cached
+    with path.open(newline="") as handle:
+        parsed = list(csv.reader(handle))
+    if not parsed:
+        result = ([], [])
+    else:
+        result = ([normalize_text(item) for item in parsed[0]], [[normalize_text(item) for item in row] for row in parsed[1:]])
+    _SOURCE_CSV_HEADER_CACHE[path] = result
+    return result
+
+
+def _pipe_parts_match_source_row(parts: list[str], source_row: list[str]) -> bool:
+    if len(parts) != len(source_row):
+        return False
+    return all(normalize_text(left) == normalize_text(right) for left, right in zip(parts, source_row))
+
+
+def _extract_source_csv_header_aligned_metric_value(field_name: str, row: dict[str, str]) -> str:
+    if field_name not in {"lc_percent", "ee_percent", "particle_size_nm"}:
+        return ""
+    paper_key = normalize_text(row.get("key") or row.get("paper_key"))
+    if not paper_key:
+        return ""
+    parts = _parse_pipe_delimited_structured_row(row, min_columns=2)
+    if not parts:
+        return ""
+    matches: list[str] = []
+    for item in _parse_supporting_evidence_refs(row):
+        if normalize_text(item.get("source_region_type")) and normalize_text(item.get("source_region_type")) != "table_row":
+            continue
+        locator = normalize_text(item.get("source_locator_text"))
+        locator_match = re.search(r"Table\s*(\d+)::row_(\d+)", locator, flags=re.I)
+        if not locator_match:
+            continue
+        table_number, source_row_ordinal = locator_match.groups()
+        candidates = _source_csv_candidates_for_locator(paper_key, table_number)
+        if len(candidates) != 1:
+            continue
+        headers, source_rows = _read_source_csv_header_and_rows(candidates[0])
+        try:
+            row_index = int(source_row_ordinal) - 1
+        except ValueError:
+            continue
+        if row_index < 0 or row_index >= len(source_rows):
+            continue
+        source_row = source_rows[row_index]
+        if len(headers) != len(source_row):
+            continue
+        if not _pipe_parts_match_source_row(parts, source_row):
+            continue
+        matching_indices = [
+            idx
+            for idx, label in enumerate(headers)
+            if _source_csv_header_label_matches_field(label, field_name)
+        ]
+        if len(matching_indices) != 1:
+            continue
+        idx = matching_indices[0]
+        if idx >= len(source_row):
+            continue
+        formatted = _format_evidence_metric_value(field_name, source_row[idx])
+        if formatted:
+            matches.append(formatted)
+    unique = sorted(set(matches))
+    if len(unique) == 1:
+        return unique[0]
+    return ""
+
+
 def _extract_tail_compact_lc_percent(row: dict[str, str]) -> str:
     parts = _parse_pipe_delimited_structured_row(row, min_columns=6)
     if not parts or any("=" in part for part in parts):
@@ -1016,10 +1413,12 @@ def _extract_tail_compact_lc_percent(row: dict[str, str]) -> str:
 
 
 def _evidence_span_metric_override(field_name: str, row: dict[str, str]) -> tuple[bool, str, str, str]:
-    if field_name != "lc_percent":
+    if field_name not in {"lc_percent", "ee_percent", "particle_size_nm"}:
         return False, "", "", ""
     span_text = _extract_evidence_metric_text(row)
     if not span_text:
+        return False, "", "", ""
+    if len(span_text) > 1200:
         return False, "", "", ""
     labeled_value = _extract_labeled_metric_value_from_text(field_name, span_text)
     if labeled_value:
@@ -1027,6 +1426,9 @@ def _evidence_span_metric_override(field_name: str, row: dict[str, str]) -> tupl
     header_value = _extract_header_aligned_metric_value(field_name, row)
     if header_value:
         return True, header_value, "evidence_span_metric_rebinding", "supported"
+    source_csv_value = _extract_source_csv_header_aligned_metric_value(field_name, row)
+    if source_csv_value:
+        return True, source_csv_value, "source_csv_header_metric_rebinding", "supported"
     if field_name == "lc_percent":
         tail_value = _extract_tail_compact_lc_percent(row)
         if tail_value:
@@ -1342,6 +1744,29 @@ def _resolve_coded_polymer_concentration(row: dict[str, str], *, paper_key: str,
     return bool(decoded), decoded
 
 
+def _wivucmyg_coded_factor_compare_override(field_name: str, row: dict[str, str]) -> tuple[bool, str, str, str]:
+    paper = normalize_text(row.get("key") or row.get("paper_key"))
+    if paper != "WIVUCMYG":
+        return False, "", "", ""
+    formulation_id = normalize_text(row.get("formulation_id") or row.get("representative_source_formulation_id"))
+    if not re.search(r"(?:^|_)DOE_Row_F\d+$", formulation_id):
+        return False, "", "", ""
+    values = _coded_factor_values_from_row(row)
+    if len(values) < 4:
+        return False, "", "", ""
+    if field_name in {"drug_mass_mg", "polymer_mass_mg", "polymer_mw_raw", "polymer_mw_kDa"}:
+        return True, "", "structured_table_rebinding", "missing_system_field_surface"
+    if field_name == "drug_concentration_unit":
+        return True, "mg/mL", "structured_table_rebinding", "supported"
+    if field_name == "drug_concentration_value":
+        levels = {"-2": "0", "-1": "0.5", "0": "1", "1": "1.5", "2": "2"}
+        code = _normalize_coded_factor_token(values[0])
+        decoded = levels.get(code, "")
+        if decoded:
+            return True, decoded, "structured_table_rebinding", "supported"
+    return False, "", "", ""
+
+
 def _resolve_laga_ratio_from_polymer_family_context(field_name: str, row: dict[str, str]) -> str:
     if field_name not in {"la_ga_ratio_raw", "la_ga_ratio_normalized"}:
         return ""
@@ -1509,6 +1934,83 @@ def _paper_local_shared_parameter_override(field_name: str, row: dict[str, str],
     return False, "", "", ""
 
 
+def extract_unit_from_combined_concentration_text(value: Any) -> str:
+    text = normalize_text(value)
+    if not text:
+        return ""
+    lowered = text.lower()
+    if re.search(r"mg\s*/\s*ml", lowered):
+        return "mg/mL"
+    if re.search(r"%\s*w\s*/\s*v|%\s*\(\s*w\s*/\s*v\s*\)|w\s*/\s*v\s*%", lowered):
+        return "% w/v"
+    if re.search(r"%", text):
+        return ""
+    return ""
+
+
+def _numeric_strings_equivalent(left: str, right: str) -> bool:
+    left_num = parse_numeric(left)
+    right_num = parse_numeric(right)
+    return left_num is not None and right_num is not None and abs(left_num - right_num) <= 1e-9
+
+
+def _surfactant_unit_token_patterns(material_name: str) -> tuple[str, ...]:
+    canonical = canonicalize_text(material_name)
+    if canonical in {"pva", "polyvinyl alcohol"}:
+        return (r"c\s*pva", r"\bpva\b", r"polyvinyl\s+alcohol")
+    if canonical in {"poloxamer 188", "poloxamer188", "p188", "pluronic f68", "pluronic f 68"}:
+        return (r"c\s*p188", r"\bp188\b", r"poloxamer\s*188", r"pluronic\s*f\s*68")
+    if canonical in {"polysorbate 80", "tween 80", "tween80"}:
+        return (r"polysorbate\s*80", r"tween\s*80")
+    return ()
+
+
+def resolve_row_local_concentration_unit_from_assignment_header(row: dict[str, str]) -> str:
+    concentration_value = normalize_text(row.get("surfactant_concentration_text_value_text"))
+    material_name = normalize_text(row.get("surfactant_name_value_text"))
+    assignment_text = normalize_text(row.get("change_descriptions"))
+    if not concentration_value or not material_name or not assignment_text:
+        return ""
+    if extract_unit_from_combined_concentration_text(concentration_value):
+        return ""
+    token_patterns = _surfactant_unit_token_patterns(material_name)
+    if not token_patterns:
+        return ""
+    unit_pattern = r"(mg\s*/\s*mL|%\s*w\s*/\s*v|%\s*\(\s*w\s*/\s*v\s*\)|w\s*/\s*v\s*%|%)"
+    for token_pattern in token_patterns:
+        pattern = re.compile(
+            rf"(?:{token_pattern})[^=;\],]{{0,80}}\(\s*{unit_pattern}\s*\)[^=;\],]{{0,40}}=\s*([-−]?\d+(?:\.\d+)?)",
+            re.I,
+        )
+        for match in pattern.finditer(assignment_text):
+            raw_unit = match.group(1)
+            raw_value = match.group(2).replace("−", "-")
+            if not _numeric_strings_equivalent(concentration_value, raw_value):
+                continue
+            unit_text = extract_unit_from_combined_concentration_text(raw_unit)
+            if unit_text:
+                return unit_text
+            if "%" in raw_unit:
+                return "%"
+    return ""
+
+
+def _normalize_validated_system_value(
+    field_name: str,
+    value: str,
+    *,
+    paper_key: str,
+    lexicon: dict[tuple[str, str, str], str] | None,
+    source_type: str,
+    raw_header: str = "",
+) -> tuple[str, str]:
+    normalized = normalize_value_with_lexicon(field_name, value, paper_key=paper_key, lexicon=lexicon)
+    valid, detail = validate_value_for_field(field_name, normalized, raw_header=raw_header, source_type=source_type)
+    if not valid:
+        return "", detail
+    return normalized, detail
+
+
 def get_system_value(
     field_name: str,
     row: dict[str, str],
@@ -1518,6 +2020,38 @@ def get_system_value(
     allow_evidence_metric_rebinding: bool = True,
 ) -> tuple[str, str, str]:
     mapping = SYSTEM_FIELD_MAP.get(field_name, {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"})
+    if allow_evidence_metric_rebinding:
+        binding_value = _extract_table_cell_binding_metric_value(field_name, row, paper_key=paper_key)
+        if binding_value:
+            normalized, detail = _normalize_validated_system_value(
+                field_name,
+                binding_value,
+                paper_key=paper_key,
+                lexicon=lexicon,
+                source_type="stage2_table_cell_binding_authority",
+            )
+            if normalized:
+                return normalized, "stage2_table_cell_binding_authority", detail
+    assignment_value = _extract_row_local_assignment_metric_value(field_name, row, paper_key=paper_key)
+    if assignment_value:
+        assignment_value = _format_evidence_metric_value(field_name, assignment_value, f"{field_name} (mg)")
+        normalized, detail = _normalize_validated_system_value(
+            field_name,
+            assignment_value,
+            paper_key=paper_key,
+            lexicon=lexicon,
+            source_type="row_local_table_assignment_authority",
+            raw_header=f"{field_name} (mg)",
+        )
+        if normalized:
+            return normalized, "row_local_table_assignment_authority", detail
+    if allow_evidence_metric_rebinding:
+        evidence_found, evidence_value, evidence_source, evidence_status = _evidence_span_metric_override(field_name, row)
+        if evidence_found:
+            return normalize_value_with_lexicon(field_name, evidence_value, paper_key=paper_key, lexicon=lexicon), evidence_source, evidence_status
+    wivu_found, wivu_value, wivu_source, wivu_evidence = _wivucmyg_coded_factor_compare_override(field_name, row)
+    if wivu_found:
+        return normalize_value_with_lexicon(field_name, wivu_value, paper_key=paper_key, lexicon=lexicon), wivu_source, wivu_evidence
     structured_found, structured_value, structured_source, structured_evidence = _decoded_structured_table_override(field_name, row)
     if structured_found:
         return normalize_value_with_lexicon(field_name, structured_value, paper_key=paper_key, lexicon=lexicon), structured_source, structured_evidence
@@ -1549,13 +2083,38 @@ def get_system_value(
     column = mapping.get("column", "")
     value = normalize_text(row.get(column)) if column else ""
     if value:
-        return normalize_value_with_lexicon(field_name, value, paper_key=paper_key, lexicon=lexicon), str(mapping.get("source", "")), str(mapping.get("evidence", ""))
+        if field_name in {"polymer_concentration_unit", "surfactant_concentration_unit", "drug_concentration_unit"}:
+            unit_value = extract_unit_from_combined_concentration_text(value)
+            if not unit_value and field_name == "surfactant_concentration_unit":
+                unit_value = resolve_row_local_concentration_unit_from_assignment_header(row)
+                if unit_value:
+                    normalized, detail = _normalize_validated_system_value(field_name, unit_value, paper_key=paper_key, lexicon=lexicon, source_type="row_local_assignment_header")
+                    if normalized:
+                        return normalized, "row_local_assignment_header", detail
+            normalized, detail = _normalize_validated_system_value(field_name, unit_value, paper_key=paper_key, lexicon=lexicon, source_type=str(mapping.get("source", "")))
+            if normalized:
+                return normalized, str(mapping.get("source", "")), detail
+            return "", str(mapping.get("source", "")), detail
+        normalized, detail = _normalize_validated_system_value(field_name, value, paper_key=paper_key, lexicon=lexicon, source_type=str(mapping.get("source", "")))
+        if normalized:
+            return normalized, str(mapping.get("source", "")), detail
+        return "", str(mapping.get("source", "")), detail
+    if field_name == "polymer_name":
+        non_identity_values = {"unknown", "unclear", "not specified", "not reported", "na", "n/a", "none"}
+        for identity_column in ("polymer_identity_final", "polymer_identity"):
+            identity_value = normalize_text(row.get(identity_column))
+            if identity_value and identity_value.lower() not in non_identity_values:
+                return normalize_value_with_lexicon(field_name, identity_value, paper_key=paper_key, lexicon=lexicon), "final_polymer_identity", "supported"
     if column and column not in row:
         return "", "missing_system_field_surface", "missing_system_field_surface"
     if allow_evidence_metric_rebinding:
         evidence_found, evidence_value, evidence_source, evidence_status = _evidence_span_metric_override(field_name, row)
         if evidence_found:
             return normalize_value_with_lexicon(field_name, evidence_value, paper_key=paper_key, lexicon=lexicon), evidence_source, evidence_status
+    if field_name == "solvent_name":
+        row_local_solvent = _value_from_row_local_solvent_volume_header(row)
+        if row_local_solvent:
+            return normalize_value_with_lexicon(field_name, row_local_solvent, paper_key=paper_key, lexicon=lexicon), "row_local_solvent_volume_header", "supported"
     decision_value = _value_from_decision_identity(field_name, row)
     if decision_value:
         return normalize_value_with_lexicon(field_name, decision_value, paper_key=paper_key, lexicon=lexicon), "decision_trace_identity", "supported"
@@ -1744,7 +2303,7 @@ def _extract_ratio_tokens(*values: str) -> list[str]:
 
 
 def _extract_identity_signature_tokens(value: str) -> list[str]:
-    text = normalize_text(value)
+    text = normalize_text(value).lower()
     if not text:
         return []
     tokens = re.findall(r"\b\d+(?:\.\d+)?:\d+(?:\.\d+)?\b|\b\d+(?:\.\d+)?x\b|\b[a-z]+\*?\b|\b\d+(?:\.\d+)?\b", text)
@@ -1818,6 +2377,116 @@ def _choose_by_decision_identity_signature(gt_row: dict[str, str], paper_rows: l
         row_signature = _extract_identity_signature_tokens(" ".join(_extract_decision_identity_values(row.get("decision_key_fields_used", ""))))
         if row_signature and Counter(row_signature) == gt_counter:
             matches.append(row)
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
+def _row_local_identity_strings(row: dict[str, str]) -> list[str]:
+    values = [
+        normalize_text(row.get("evidence_span_text")),
+        normalize_text(row.get("supporting_evidence_refs")),
+        normalize_text(row.get("change_descriptions")),
+        normalize_text(row.get("decision_key_fields_used")),
+    ]
+    values.extend(_parse_jsonish_list(row.get("source_candidate_labels", "")))
+    return [value for value in values if value]
+
+
+def _signature_token_present(token: str, text: str) -> bool:
+    token = normalize_text(token).lower()
+    text = normalize_text(text).lower()
+    if not token or not text:
+        return False
+    if re.fullmatch(r"\d+(?:\.\d+)?:\d+(?:\.\d+)?", token):
+        return re.search(rf"(?<![0-9.]){re.escape(token)}(?![0-9.])", text) is not None
+    if re.fullmatch(r"\d+(?:\.\d+)?x", token):
+        return re.search(rf"(?<![a-z0-9.]){re.escape(token)}(?![a-z0-9])", text) is not None
+    if re.fullmatch(r"\d+(?:\.\d+)?", token):
+        return re.search(rf"(?<![0-9.]){re.escape(token)}(?![0-9.])", text) is not None
+    return re.search(rf"(?<![a-z0-9]){re.escape(token)}(?![a-z0-9])", text) is not None
+
+
+def _choose_by_row_local_design_signature(gt_row: dict[str, str], paper_rows: list[dict[str, str]]) -> dict[str, str] | None:
+    gt_label = gt_row.get("formulation_label", "")
+    if _extract_named_ratio_label(normalize_text(gt_label)):
+        return None
+    gt_tokens = _extract_identity_signature_tokens(gt_label)
+    if len(gt_tokens) < 4:
+        return None
+    if not any(re.search(r"[a-z]", token) for token in gt_tokens):
+        return None
+    if not any(re.search(r"\d", token) for token in gt_tokens):
+        return None
+    matches = []
+    for row in paper_rows:
+        for surface in _row_local_identity_strings(row):
+            if all(_signature_token_present(token, surface) for token in gt_tokens):
+                matches.append(row)
+                break
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
+def _decision_payload(row: dict[str, str]) -> dict:
+    text = normalize_text(row.get("decision_key_fields_used"))
+    if not text:
+        return {}
+    try:
+        parsed = json.loads(text)
+    except Exception:
+        return {}
+    return parsed if isinstance(parsed, dict) else {}
+
+
+def _row_loaded_state(row: dict[str, str]) -> str:
+    direct = canonicalize_text(row.get("loaded_state") or row.get("payload_state") or row.get("variant_role"))
+    payload = _decision_payload(row)
+    decision_state = canonicalize_text(str(payload.get("loaded_state", "")))
+    text = canonicalize_text(" | ".join([
+        direct,
+        decision_state,
+        row.get("raw_formulation_label", ""),
+        row.get("decision_key_fields_used", ""),
+    ]))
+    if re.search(r"\b(empty|blank|no drug|unloaded)\b", text):
+        return "empty"
+    if re.search(r"\b(drug loaded|loaded|drugloaded|encapsulated)\b", text):
+        return "drug_loaded"
+    return ""
+
+
+def _choose_by_loaded_state_disambiguation(gt_row: dict[str, str], paper_rows: list[dict[str, str]]) -> dict[str, str] | None:
+    gt_text = canonicalize_text(" | ".join([
+        gt_row.get("formulation_label", ""),
+        gt_row.get("variant_role", ""),
+        gt_row.get("drug_name", ""),
+        gt_row.get("drug_mass_mg", ""),
+        gt_row.get("ee_percent", ""),
+        gt_row.get("lc_percent", ""),
+        gt_row.get("dl_percent", ""),
+    ]))
+    if re.search(r"\b(empty|blank|no drug|unloaded)\b", gt_text) and not normalize_text(gt_row.get("drug_name")):
+        target_state = "empty"
+    elif normalize_text(gt_row.get("drug_name")) or normalize_text(gt_row.get("drug_mass_mg")) or normalize_text(gt_row.get("ee_percent")) or normalize_text(gt_row.get("lc_percent")) or normalize_text(gt_row.get("dl_percent")):
+        target_state = "drug_loaded"
+    else:
+        return None
+    gt_label_compact = _compact_identity_text(gt_row.get("formulation_label", ""))
+    matches = []
+    for row in paper_rows:
+        if _row_loaded_state(row) != target_state:
+            continue
+        if gt_label_compact:
+            row_compacts = [_compact_identity_text(value) for value in _system_identity_strings(row)]
+            if not any(gt_label_compact and (gt_label_compact in compact or compact in gt_label_compact) for compact in row_compacts if compact):
+                continue
+        drug_gt = canonicalize_text(gt_row.get("drug_name"))
+        row_text = canonicalize_text(" | ".join(_system_identity_strings(row) + _row_local_identity_strings(row)))
+        if target_state == "drug_loaded" and drug_gt and drug_gt not in row_text:
+            continue
+        matches.append(row)
     if len(matches) == 1:
         return matches[0]
     return None
@@ -1970,6 +2639,8 @@ def choose_system_row(
         ("compact_label_unique", _choose_by_compact_label_unique(label or scaffold_anchor, paper_rows)),
         ("ratio_token_bridge", _choose_by_ratio_token_bridge(gt_row, paper_rows)),
         ("decision_identity_signature_bridge", _choose_by_decision_identity_signature(gt_row, paper_rows)),
+        ("row_local_design_signature_bridge", _choose_by_row_local_design_signature(gt_row, paper_rows)),
+        ("loaded_state_disambiguation_bridge", _choose_by_loaded_state_disambiguation(gt_row, paper_rows)),
         ("scaffold_parent_ordinal_bridge", _choose_by_scaffold_parent_ordinal(scaffold_parent_core, seed_id, paper_rows)),
         ("gt_label_ordinal_bridge", _choose_by_gt_label_ordinal(label, paper_rows)),
     ]:
@@ -2097,6 +2768,14 @@ def build_cells(
                 lexicon=value_normalization_lexicon,
                 allow_evidence_metric_rebinding=bool(gt_value_raw),
             )
+            if (
+                not gt_value_raw
+                and system_value_raw
+                and should_suppress_duplicate_concentration_unit_cell(field_name, gt_row, system_value_raw)
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_duplicate_unit_from_combined_gt_value"
+                evidence_status = "unit_already_scored_in_combined_concentration_value"
             if field_name == "pH_raw" and gt_value_raw and _is_coded_doe_level_token(gt_value_raw):
                 paper_rank_map = paper_coded_ph_rank_maps.get(paper_key, {})
                 mapped_value = paper_rank_map.get(normalize_text(system_value_raw), "")

@@ -21,12 +21,14 @@ This repository must not infer the active source from:
 - `active run`
   - the currently declared results lineage root for repository-level
     data/results-based workflows
+  - in the current DEV15 testing phase, this means the latest governed
+    diagnosis baseline lineage, not a benchmark baseline
 - `authoritative data source`
   - the exact run directory and exact source artifact paths declared by the
     current contract
 - `terminal surface`
-  - the reviewer-facing or benchmark-facing artifact set currently treated as
-    the output-layer source of truth for a workflow
+  - the reviewer-facing, diagnostic, or benchmark-facing artifact set currently
+    treated as the output-layer source of truth for a workflow
 - `lineage child`
   - a child execution nested under one parent run root at
     `data/results/<parent_run_id>/lineage/children/...`
@@ -175,6 +177,12 @@ For diagnostic compare workflows:
 - explicit diagnostic final-table paths must not silently update or replace
   `ACTIVE_RUN.json`
 
+After a diagnostic lineage is validated and selected as the current diagnosis
+baseline, `ACTIVE_RUN.json` should be advanced to pin that lineage's exact
+terminal diagnostic artifacts. This promotion is an authority-pointer update
+for diagnostic work only; it must not be described as a benchmark-baseline or
+benchmark-valid promotion.
+
 Hard rules for this exception:
 
 - the exception applies only to the compared Stage5 final table or explicit
@@ -182,7 +190,8 @@ Hard rules for this exception:
 - it does not relax GT locking for `layer1_gt_path`, `layer2_gt_path`, or
   `layer3_gt_path`
 - it does not promote the compared diagnostic lineage to authority merely
-  because compare outputs were written
+  because compare outputs were written; authority promotion requires an explicit
+  `ACTIVE_RUN.json` update after validation
 
 DEV15 frozen GT authority v1 currently lives under:
 
