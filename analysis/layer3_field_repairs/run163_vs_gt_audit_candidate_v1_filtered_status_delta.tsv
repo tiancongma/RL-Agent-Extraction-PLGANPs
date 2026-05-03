@@ -1,0 +1,13 @@
+scope	compare_status	count
+run163_original	blocked_alignment	588
+run163_original	extra_in_system	165
+run163_original	missing_in_system	583
+run163_original	not_reported_in_gt	3972
+run163_original	present_and_match	1835
+run163_original	present_but_mismatch	81
+candidate_filtered	blocked_alignment	588
+candidate_filtered	extra_in_system	165
+candidate_filtered	missing_in_system	583
+candidate_filtered	not_reported_in_gt	3972
+candidate_filtered	present_and_match	1835
+candidate_filtered	present_but_mismatch	81

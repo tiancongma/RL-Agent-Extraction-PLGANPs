@@ -479,12 +479,24 @@ def build_resolved_relation_fields_for_paper(
 
     for row in relation_rows:
         relation_type = str(row.get("relation_type", "") or "").strip()
-        field_name = str(row.get("field_name", "") or "").strip()
-        if field_name not in RESOLVABLE_RELATION_FIELDS:
+        field_name = canonical_field_name(row.get("field_name", ""))
+        # Do not restrict Stage3 relation resolution to a fixed benchmark field
+        # whitelist.  The relation layer is the generic inheritance contract: it
+        # should carry any source-backed shared field name emitted upstream, with
+        # Stage5 deciding whether the value can be projected into a typed column
+        # or must remain in the generic shared-parameter bundle.
+        if not field_name:
             continue
         if relation_type in {"candidate_field_membership", "candidate_inherited_field"}:
             candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
             if not candidate_id:
+                continue
+            field_scope_value = str(row.get("field_scope_value", "") or "").strip()
+            if (
+                relation_type == "candidate_field_membership"
+                and field_name not in RESOLVABLE_RELATION_FIELDS
+                and field_scope_value != "global_shared"
+            ):
                 continue
             candidate_field_rows[(candidate_id, field_name)].append(row)
             branch_key = candidate_branch_key.get(candidate_id, "")
@@ -540,7 +552,11 @@ def build_resolved_relation_fields_for_paper(
         candidate_id = str(item.get("formulation_candidate_id", "") or "").strip()
         method_group_id = candidate_method_group.get(candidate_id, "")
         branch_key = candidate_branch_key.get(candidate_id, "")
-        for field_name in sorted(RESOLVABLE_RELATION_FIELDS):
+        candidate_fields = {field for cand, field in candidate_field_rows if cand == candidate_id}
+        method_group_fields = {field for mg, field in method_group_shared_rows if mg == method_group_id}
+        branch_fields = {field for branch, field in branch_field_rows if branch == branch_key}
+        fields_to_resolve = sorted(candidate_fields | method_group_fields | branch_fields)
+        for field_name in fields_to_resolve:
             direct_rows = candidate_field_rows.get((candidate_id, field_name), [])
             direct_values = {
                 str(row.get("field_value_norm", "") or "").strip(): row
@@ -1123,7 +1139,7 @@ def build_relation_artifacts(
                     continue
 
                 any_global_shared = any(item["field_scope"] == "global_shared" for item in values)
-                if any_global_shared or len(distinct_values) == 1 and len(values) >= 2:
+                if any_global_shared or (field_name in RESOLVABLE_RELATION_FIELDS and len(distinct_values) == 1 and len(values) >= 2):
                     shared_field = values[0]
                     group["shared_fields"].append(
                         {

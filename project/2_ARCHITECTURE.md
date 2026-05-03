@@ -159,31 +159,52 @@ inside those coarse stages; it does not introduce new runtime namespaces.
 
 ### Stage5
 
-- `S5-1 Final candidate materialization`
-  - materialize final formulation-row candidates from Stage2 plus Stage3
-    outputs.
-- `S5-2 Filtering / normalization`
-  - apply deterministic benchmark-facing filtering and identity guardrails for
-    the benchmark-final family only.
-  - allowed benchmark-final work at this boundary is limited to
-    source-faithful closure, identity-preserving filtering, duplicate or
-    variant collapse under explicit conservative rules, and explicit Stage3
-    resolved-relation carry-through when the final row is otherwise blank for a
-    governed Stage3-resolved field.
-  - convenience normalization, unit harmonization, canonical label cleanup,
-    donor-fill, assumption-based inference, and modeling-target-specific
-    projection do not belong to the benchmark-final family.
-- `S5-3 Final table`
-  - emit the primary benchmark-facing final formulation table and its decision
-    trace.
+- `S5-1 Fixed-row candidate intake`
+  - materialize the fixed formulation-row universe from the completed Stage2
+    candidate surface plus required Stage3 relation artifacts.
+  - this substep may consume Stage3 resolved fields, but downstream S5 value
+    layers must not create or remove formulation rows.
+- `S5-2 Deterministic direct materialization`
+  - apply source-faithful deterministic rules over the fixed row universe:
+    DOE/table row materialization already authorized upstream, row-local direct
+    table-cell binding, unique source-backed shared carry-through, value/unit
+    split from direct source cells, filtering, normalization, and identity
+    guardrails.
+  - it must not perform donor-fill, assumption-based inference, modeling-target
+    projection, or derived arithmetic.
+- `S5-3 LLM-assisted direct value candidate extraction`
+  - optional Stage5-local LLM value layer after formulation boundaries are fixed.
+  - the LLM may propose direct value candidates only for existing Stage5 rows,
+    with exact source evidence, scope, direct/derived classification, prompt
+    hash, model identity, and input artifact hashes.
+  - this substep must not change formulation membership, rediscover row
+    boundaries, calculate values, or treat system final-table values as source
+    authority.
+- `S5-4 Value authority validation and merge`
+  - validate and merge S5-2 deterministic values and S5-3 LLM candidates under
+    the same authority ladder: row-local direct evidence, typed row-local
+    assignments, unique table-scoped direct evidence, unique paper/global direct
+    constants, and only then accepted LLM direct candidates satisfying the same
+    evidence and scope rules.
+  - derived, ambiguous, conflict-bearing, or quote-less candidates are rejected
+    from the direct layer or moved to a review queue.
+- `S5-5 Derived reasoning / calculated value materialization`
+  - compute separately-provenanced derived values such as `%w/v × mL -> mg`,
+    `mg/mL × mL -> mg`, concentration × volume, ratio-derived mass, and unit
+    conversions only from accepted direct inputs.
+  - derived outputs must live in sidecars with formula IDs, input provenance,
+    and `eligible_for_direct_compare=no`; they must not contaminate current
+    direct-evidence GT comparison.
+- `S5-6 Final table closure and audit export`
+  - emit the primary benchmark-facing final formulation table, linked lower-level
+    descendant records, decision trace, and value-layer sidecars.
   - when Stage5 excludes or collapses downstream/post-processing descendants
     that do not define independent benchmark-facing formulation identity,
     preserve them in a governed linked lower-level record surface rather than
     silently dropping them.
-  - this benchmark-final object is the only GT-compared Stage5 artifact.
-  - downstream Stage5 helpers may derive modeling-ready or reviewer-facing
-    surfaces from the frozen final table, but they must not redefine the
-    benchmark-final table or change formulation membership.
+  - the final table remains the Stage5 benchmark-facing object. Direct-value and
+    derived-value sidecars must remain distinguishable in downstream compare,
+    audit, and modeling-ready outputs.
 
 ### Benchmark
 

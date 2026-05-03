@@ -5519,3 +5519,47 @@ Impact
 - Future repo discussion and reporting should use `diagnosis baseline`, `diagnostic compare`, or `diagnostic-only` for DEV15 unless a new governed benchmark contract is explicitly established later.
 - When GT is absent, success should be framed through diagnosis surfaces, extraction quality audits, or downstream utility checks rather than benchmark claims.
 - Repair work may continue to restore values through governed deterministic logic, but only inside the existing LLM-first semantic contract.
+
+## 2026-05-03
+
+### Decision: Keep LLM-assisted value backfill inside Stage5 after fixed formulation boundaries
+
+Decision
+- Do not add a new coarse Stage6/Stage7 or a second Stage5 namespace for numeric
+  value backfill.
+- Keep formulation-boundary semantic discovery in Stage2 and deterministic
+  relation materialization in Stage3.
+- Decompose Stage5 internally into:
+  - `S5-1 Fixed-row candidate intake`
+  - `S5-2 Deterministic direct materialization`
+  - `S5-3 LLM-assisted direct value candidate extraction`
+  - `S5-4 Value authority validation and merge`
+  - `S5-5 Derived reasoning / calculated value materialization`
+  - `S5-6 Final table closure and audit export`
+- S5-3 may use an LLM only after formulation rows are fixed, only to propose
+  direct value candidates with source evidence and scope metadata, and never to
+  create/delete rows or calculate values.
+- S5-4 is the authority gate that accepts or rejects direct candidates.
+- S5-5 is the derived-reasoning layer for `%w/v × mL -> mg`, `mg/mL × mL -> mg`,
+  concentration × volume, ratio-derived mass, and unit conversions; these values
+  remain separate sidecars and are not eligible for current direct-evidence
+  compare.
+
+Reason
+- The original Stage2 formulation-boundary prompt is already semantically
+  complex. Adding full Layer3 value extraction to that prompt would overload the
+  LLM and make boundary errors and value errors difficult to separate.
+- The current pipeline can already fix the formulation row universe well enough
+  to support a downstream, row-fixed value extraction task.
+- LLMs are useful at reading local text/tables for values, while deterministic
+  rules remain necessary for row authority, direct-vs-derived separation, scope,
+  provenance, conflict handling, and reproducibility.
+
+Impact
+- Stage5 remains the final-output layer, but its internal value-layer design is
+  now explicit.
+- Future implementation should add S5-3/S5-4/S5-5 helpers under
+  `src/stage5_benchmark/` only after tests and fixed-input contracts are in
+  place.
+- Direct GT comparison remains restricted to directly reported source evidence;
+  derived values require a separate derived-aware reporting mode.

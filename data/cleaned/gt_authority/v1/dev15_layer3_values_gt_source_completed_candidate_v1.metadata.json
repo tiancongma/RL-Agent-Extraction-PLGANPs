@@ -1,0 +1,20 @@
+{
+  "artifact_type": "source_completed_layer3_gt_candidate_package",
+  "base_gt": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv",
+  "candidate_tsv": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_candidate_v1.tsv",
+  "change_log_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_change_log_v1.tsv",
+  "review_queue_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_review_queue_v1.tsv",
+  "source_inventory_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_source_inventory_v1.tsv",
+  "created_at_utc": "2026-05-03T20:22:48Z",
+  "row_count": 204,
+  "schema_columns": 57,
+  "auto_source_backed_cell_updates": 162,
+  "review_queue_rows": 369,
+  "authority_rules": [
+    "Original GT is not overwritten.",
+    "Only direct source-backed material-property updates are auto-applied in this package build.",
+    "Derived values such as concentration x volume -> mass are placed in review queue, not auto-filled as direct GT.",
+    "System outputs are triage hints only and are not used as value authority."
+  ],
+  "workbook_xlsx": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_package_v1.xlsx"
+}

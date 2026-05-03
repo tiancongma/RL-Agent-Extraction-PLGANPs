@@ -40,11 +40,56 @@ SUMMARY_NAME = "final_output_summary_v1.md"
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
 RESOLVED_RELATION_FIELD_NAMES = {
+    "drug_feed_amount_text",
+    "drug_name",
+    "organic_solvent",
+    "plga_mass_mg",
     "polymer_mw_kDa",
+    "preparation_method",
+    "pva_conc_percent",
+    "surfactant_concentration_text",
     "surfactant_name",
+}
+RESOLVED_RELATION_TEXT_FIELDS = {
+    "drug_name",
     "organic_solvent",
     "preparation_method",
+    "surfactant_name",
 }
+RESOLVED_RELATION_MASS_FIELDS = {"drug_feed_amount_text", "plga_mass_mg"}
+RESOLVED_RELATION_NUMERIC_FIELDS = {
+    "polymer_mw_kDa",
+    "pva_conc_percent",
+    "surfactant_concentration_text",
+}
+RESOLVED_RELATION_RATIO_FIELDS: set[str] = set()
+STAGE5_GLOBAL_PREPARATION_FIELDNAMES = [
+    "organic_phase_volume_mL_value",
+    "organic_phase_volume_mL_value_text",
+    "organic_phase_volume_mL_scope",
+    "organic_phase_volume_mL_membership_confidence",
+    "organic_phase_volume_mL_evidence_region_type",
+    "organic_phase_volume_mL_missing_reason",
+    "external_aqueous_phase_volume_mL_value",
+    "external_aqueous_phase_volume_mL_value_text",
+    "external_aqueous_phase_volume_mL_scope",
+    "external_aqueous_phase_volume_mL_membership_confidence",
+    "external_aqueous_phase_volume_mL_evidence_region_type",
+    "external_aqueous_phase_volume_mL_missing_reason",
+    "drug_concentration_value_value",
+    "drug_concentration_value_value_text",
+    "drug_concentration_value_scope",
+    "drug_concentration_value_membership_confidence",
+    "drug_concentration_value_evidence_region_type",
+    "drug_concentration_value_missing_reason",
+    "drug_concentration_unit_value",
+    "drug_concentration_unit_value_text",
+    "drug_concentration_unit_scope",
+    "drug_concentration_unit_membership_confidence",
+    "drug_concentration_unit_evidence_region_type",
+    "drug_concentration_unit_missing_reason",
+    "shared_parameters_json",
+]
 
 LEGACY_FIELD_ALIASES = {
     "plga_mw_kDa": "polymer_mw_kDa",
@@ -854,6 +899,135 @@ def extract_unique_global_preparation_solvent(source_text: str) -> str:
     return next(iter(candidates)) if len(candidates) == 1 else ""
 
 
+def _canonical_preparation_solvent(value: str) -> str:
+    raw = normalize_text(value).lower().replace("®", "")
+    raw = re.sub(r"\s+", " ", raw).strip()
+    if not raw:
+        return ""
+    return PREPARATION_SOLVENT_CANONICALS.get(raw, raw)
+
+
+def _format_volume_ml_value(value: str) -> str:
+    numeric = str(value or "").strip()
+    if not numeric:
+        return ""
+    try:
+        number = float(numeric)
+    except ValueError:
+        return ""
+    if number.is_integer():
+        return f"{int(number)} mL"
+    return f"{number:g} mL"
+
+
+def _preparation_volume_snippet_allowed(snippet: str) -> bool:
+    if re.search(
+        r"HPLC|LC[-\s]?MS|chromatograph|mobile phase|extraction|extract|assay|calibration|analysis|release|dissolution|medium",
+        snippet,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    if not re.search(
+        r"prepar|nanoparticle|nanosphere|nanocapsule|formulation|organic\s+(?:phase|solution)|oil\s+phase|dissolv|solvent\s+(?:displacement|diffusion|evaporation)|nanoprecipitation|emulsion|dropwise|poured?",
+        snippet,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    if not re.search(r"\bPLGA\b|poly\s*\(.*?glycol|\bdrug\b|loaded|polymer|organic\s+(?:phase|solution)|oil\s+phase", snippet, flags=re.IGNORECASE):
+        return False
+    return True
+
+
+def extract_unique_global_preparation_organic_phase_volume(source_text: str, *, solvent_name: str) -> str:
+    """Return the unique direct organic/oil phase volume bound to a known solvent.
+
+    The solvent identity may come from row-local, Stage3, or prior global solvent
+    carrythrough.  This helper does not infer from GT, concentration, ratios, or
+    paper identity; it only accepts direct preparation-context phrases such as
+    `5 mL of acetone`, `acetone (10 mL)`, or `organic phase ... in 1 mL acetone`.
+    """
+    text = str(source_text or "")
+    solvent = _canonical_preparation_solvent(solvent_name)
+    if not text or not solvent:
+        return ""
+    aliases = [alias for alias, canonical in PREPARATION_SOLVENT_CANONICALS.items() if canonical == solvent]
+    aliases.append(solvent)
+    alias_pattern = "|".join(sorted((re.escape(alias) for alias in set(aliases) if alias), key=len, reverse=True))
+    if not alias_pattern:
+        return ""
+    volume_unit = r"(\d+(?:\.\d+)?)\s*(?:mL|ml)"
+    patterns = [
+        re.compile(rf"{volume_unit}\s*(?:of\s+)?(?:{alias_pattern})\b", re.IGNORECASE),
+        re.compile(rf"\b(?:{alias_pattern})\b\s*\(\s*{volume_unit}\s*\)", re.IGNORECASE),
+        re.compile(rf"\b(?:{alias_pattern})\b[^.;]{{0,35}}?{volume_unit}", re.IGNORECASE),
+    ]
+    candidates: set[str] = set()
+    for pattern in patterns:
+        for match in pattern.finditer(text):
+            snippet = text[max(0, match.start() - 180) : min(len(text), match.end() + 180)]
+            if not _preparation_volume_snippet_allowed(snippet):
+                continue
+            raw_value = match.group(1)
+            formatted = _format_volume_ml_value(raw_value)
+            if formatted:
+                candidates.add(formatted)
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
+def _preparation_external_aqueous_volume_snippet_allowed(snippet: str) -> bool:
+    if re.search(
+        r"HPLC|LC[-\s]?MS|chromatograph|mobile phase|extraction|extract|assay|calibration|analysis|release|dissolution|medium",
+        snippet,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    if not re.search(
+        r"prepar|nanoparticle|nanosphere|nanocapsule|formulation|external\s+aqueous|aqueous\s+(?:phase|solution)|surfactant\s+solution|water\s+phase|solvent\s+(?:displacement|diffusion|evaporation)|nanoprecipitation|emulsion|dropwise|poured?|added",
+        snippet,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    if not re.search(
+        r"\bPLGA\b|poly\s*\(.*?glycol|\bdrug\b|loaded|polymer|organic\s+(?:phase|solution)|oil\s+phase|surfactant\s+solution|aqueous\s+(?:phase|solution)",
+        snippet,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    return True
+
+
+def extract_unique_global_preparation_external_aqueous_phase_volume(source_text: str) -> str:
+    """Return the unique direct external-aqueous phase volume from preparation text.
+
+    This is the aqueous-phase counterpart to organic-phase solvent volume
+    carrythrough. It accepts only source-backed preparation phrases such as
+    `added dropwise into 10 mL of an aqueous surfactant solution` or
+    `external aqueous phase (15 mL)`, rejects assay/mobile-phase contexts, and
+    remains blank when multiple preparation aqueous volumes are present.
+    """
+    text = str(source_text or "")
+    if not text:
+        return ""
+    volume_unit = r"(\d+(?:\.\d+)?)\s*(?:mL|ml)"
+    aqueous_alias = r"(?:external\s+)?aqueous\s+(?:phase|solution|surfactant\s+solution)|water\s+phase|water|aqueous"
+    patterns = [
+        re.compile(rf"{volume_unit}\s*(?:of\s+)?(?:an?\s+)?(?:{aqueous_alias})\b", re.IGNORECASE),
+        re.compile(rf"\b(?:{aqueous_alias})\b\s*\(\s*{volume_unit}\s*\)", re.IGNORECASE),
+        re.compile(rf"\b(?:{aqueous_alias})\b[^.;]{{0,35}}?{volume_unit}", re.IGNORECASE),
+    ]
+    candidates: set[str] = set()
+    for pattern in patterns:
+        for match in pattern.finditer(text):
+            snippet = text[max(0, match.start() - 180) : min(len(text), match.end() + 180)]
+            if not _preparation_external_aqueous_volume_snippet_allowed(snippet):
+                continue
+            raw_value = match.group(1)
+            formatted = _format_volume_ml_value(raw_value)
+            if formatted:
+                candidates.add(formatted)
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
 EMULSIFIER_FACTOR_STOPWORDS = {
     "drug",
     "polymer",
@@ -919,6 +1093,106 @@ def normalize_factor_unit(value: str) -> str:
     return text
 
 
+def infer_unique_factor_material_name(source_text: str, role: str) -> str:
+    """Infer a unique material name for a source-defined factor role.
+
+    This is intentionally conservative: it is used only after the source has
+    already defined a coded factor role such as `X3 surfactant concentration`.
+    The inferred material must be unique in preparation/design context, otherwise
+    no material identity is returned.
+    """
+    text = str(source_text or "")
+    if not text:
+        return ""
+    role = normalize_text(role)
+    prep_context = re.compile(r"prepar|formulat|nanoparticle|nanosphere|nanocapsule|factor|design|organic phase|aqueous phase", re.I)
+    patterns: list[tuple[str, str]] = []
+    if role == "surfactant":
+        patterns = [
+            (r"\b(?:Pluronic\s*F\s*68|Pluronic\s*F68)\b", "Pluronic F68"),
+            (r"\b(?:poloxamer\s*188|P188)\b", "poloxamer 188"),
+            (r"\b(?:PVA|polyvinyl alcohol)\b", "PVA"),
+            (r"\b(?:Tween\s*80|Polysorbate\s*80)\b", "Tween 80"),
+            (r"\bLutrol(?:\s*F?\s*68)?\b", "Lutrol"),
+        ]
+    elif role == "polymer":
+        patterns = [(r"\bPLGA\b", "PLGA"), (r"\bPLA\b", "PLA"), (r"\bPCL\b", "PCL")]
+    if not patterns:
+        return ""
+    candidates: set[str] = set()
+    for pattern, canonical in patterns:
+        for match in re.finditer(pattern, text, re.I):
+            snippet = text[max(0, match.start() - 180) : min(len(text), match.end() + 180)]
+            if prep_context.search(snippet):
+                candidates.add(canonical)
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
+def extract_generic_concentration_factor_definition_details(source_text: str) -> dict[str, dict[str, str]]:
+    """Map coded DOE factor labels to source-defined concentration roles.
+
+    Generic examples:
+    - `X1 – Drug concentration in organic phase (%w/v)`
+    - `X2 – Polymer concentration in organic phase (%w/v)`
+    - `X3 – Surfactant concentration (%)`
+    - `cFB, concentration of flurbiprofen (mg/mL)`
+    - `cP188, concentration of poloxamer 188 (mg/mL)`
+
+    The function does not create formulation rows or invent semantic scope; it
+    only decodes a row-local factor assignment that is already present on an
+    admitted final row.
+    """
+    text = str(source_text or "")
+    if not text:
+        return {}
+    mapping: dict[str, dict[str, str]] = {}
+
+    def role_from_phrase(phrase: str, token: str = "") -> str:
+        clean = normalize_text(phrase)
+        token_clean = normalize_text(token)
+        if re.search(r"\b(?:drug|active|api|fb|flurbiprofen|lopinavir|xan|3\s*-?\s*meoxan)\b", clean) or token_clean in {"cfb"}:
+            return "drug"
+        if re.search(r"\b(?:polymer|plga|pla|pcl)\b", clean):
+            return "polymer"
+        if re.search(r"\b(?:surfactant|stabilizer|emulsifier|pva|p188|poloxamer|pluronic|tween|lutrol)\b", clean) or token_clean in {"cp188", "cpva"}:
+            return "surfactant"
+        return ""
+
+    def add(token: str, phrase: str, unit_raw: str = "", material_raw: str = "") -> None:
+        role = role_from_phrase(phrase, token)
+        if not token or not role:
+            return
+        material = ""
+        if material_raw:
+            if role == "surfactant":
+                material = normalize_emulsifier_factor_candidate(material_raw)
+            elif role == "polymer" and re.search(r"\b(?:PLGA|PLA|PCL)\b", material_raw, re.I):
+                material = re.search(r"\b(PLGA|PLA|PCL)\b", material_raw, re.I).group(1).upper()
+            elif role == "drug":
+                material = normalize_global_drug_candidate(material_raw)
+        if not material:
+            material = infer_unique_factor_material_name(text, role)
+        mapping[token.lower()] = {"role": role, "unit": normalize_factor_unit(unit_raw), "material_name": material}
+
+    for match in re.finditer(
+        r"\b(X\d{1,2})\b\s*[–—\-:]*\s*([^\n.;]{0,120}?\b(?:drug|polymer|surfactant|stabilizer|emulsifier)\s+concentration(?:[^\n.;()]*)?)(?:\s*\(([^)]*)\))?",
+        text,
+        flags=re.I,
+    ):
+        add(match.group(1), match.group(2), match.group(3) or "")
+    for match in re.finditer(
+        r"\b(c[A-Z0-9][A-Za-z0-9]{1,12})\b\s*,\s*concentration\s+of\s+([A-Za-z][A-Za-z0-9\-\s]{1,60}?)(?:\s*\(([^)]*)\))?(?=\s*[;,.])",
+        text,
+    ):
+        add(match.group(1), f"concentration of {match.group(2)}", match.group(3) or "", match.group(2))
+    for match in re.finditer(
+        r"\b(c[A-Z0-9][A-Za-z0-9]{1,12})\b\s*,\s*([A-Za-z][A-Za-z0-9\-\s]{1,60}?)\s+concentration(?:\s*\(([^)]*)\))?(?=\s*[;,.])",
+        text,
+    ):
+        add(match.group(1), f"{match.group(2)} concentration", match.group(3) or "", match.group(2))
+    return mapping
+
+
 def extract_emulsifier_factor_definition_details(source_text: str) -> dict[str, dict[str, str]]:
     """Map coded factors such as cPVA/cP188 to source-defined material details.
 
@@ -950,6 +1224,18 @@ def extract_emulsifier_factor_definition_details(source_text: str) -> dict[str, 
         text,
     ):
         add(match.group(2), match.group(1), "")
+    # Generic DOE-factor form: `X3 surfactant/stabilizer/emulsifier concentration (%w/v)`.
+    # This binds the row-local numeric assignment to a concentration unit without
+    # inventing a material identity when the source defines only a generic factor.
+    for match in re.finditer(
+        r"\b(X\d{1,2})\b(?:(?!\bX\d{1,2}\b).){0,80}\b(?:surfactant|stabilizer|emulsifier)\s+concentration\s*\(([^)]*)\)",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        token = match.group(1)
+        unit = normalize_factor_unit(match.group(2) or "")
+        if token and unit:
+            mapping[token.lower()] = {"name": "", "unit": unit}
     return mapping
 
 
@@ -1105,7 +1391,7 @@ def extract_row_emulsifier_concentration_from_factor_definition(row: dict[str, s
     candidates: set[str] = set()
     for token, assignment in assignments.items():
         details = definition_details.get(token)
-        if not details or not details.get("name"):
+        if not details:
             continue
         value = assignment.get("value", "")
         unit = assignment.get("unit") or details.get("unit", "")
@@ -1160,6 +1446,16 @@ def normalize_global_drug_candidate(value: str) -> str:
         return ""
     if len(text) <= 1:
         return ""
+    # Drug-name abbreviation binding must stay sentence/local-material scoped.
+    # Reject heading/background fragments produced by broad parenthetical scans
+    # such as "Introduction Since the 1930s Methylene Blue (MB)".
+    tokens = text.split()
+    if len(tokens) > 5:
+        return ""
+    if tokens and tokens[0].lower() in {"introduction", "background", "abstract", "results", "discussion", "conclusion", "since"}:
+        return ""
+    if any(tok.lower() in {"introduction", "background", "abstract"} for tok in tokens):
+        return ""
     return text
 
 
@@ -1174,6 +1470,15 @@ def extract_drug_abbreviation_map(source_text: str) -> dict[str, str]:
         name = normalize_global_drug_candidate(match.group(1))
         abbr = match.group(2).upper()
         if name:
+            abbrev_map[abbr] = name
+    for match in re.finditer(
+        r"\b([A-Z][A-Za-z][A-Za-z0-9\-\s]{2,80}?)\s*\(([A-Z]{2,6})\)",
+        text[:8000],
+    ):
+        name = normalize_global_drug_candidate(match.group(1))
+        abbr = match.group(2).upper()
+        snippet = text[max(0, match.start() - 160) : min(len(text), match.end() + 240)]
+        if name and abbr and re.search(r"\b(?:loaded|drug|purchased|encapsulat|nanoparticle|NPs|steroid|active)\b", snippet, re.IGNORECASE):
             abbrev_map[abbr] = name
     for match in re.finditer(
         r"\b(?:c([A-Z]{2,6})|([A-Z]{2,6}))\b[^.;]{0,80}\b[Cc]oncentration\s+of\s+([A-Za-z][A-Za-z0-9\-]{2,40})\b",
@@ -1220,9 +1525,9 @@ def extract_unique_global_loaded_drug_name(source_text: str) -> str:
             candidates.add(token)
 
     loaded_patterns = [
-        r"\b([A-Za-z][A-Za-z0-9\-]{1,40})-loaded\s+PLGA\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\b",
-        r"\bPLGA\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\s+(?:loaded\s+with|containing)\s+([A-Za-z][A-Za-z0-9\-]{1,40})\b",
-        r"\bformulate\s+PLGA\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\s+of\s+([A-Za-z][A-Za-z0-9\-]{2,40})\b",
+        r"\b([A-Za-z][A-Za-z0-9\-]{1,40})-loaded\s+(?:PLGA|PCL|PLA|polymeric|polymer)\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\b",
+        r"\b(?:PLGA|PCL|PLA|polymeric|polymer)\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\s+(?:loaded\s+with|containing)\s+([A-Za-z][A-Za-z0-9\-]{1,40})\b",
+        r"\bformulate\s+(?:PLGA|PCL|PLA|polymeric|polymer)\s+(?:nanoparticles|NPs|nanospheres|nanocapsules)\s+of\s+([A-Za-z][A-Za-z0-9\-]{2,40})\b",
     ]
     # Use the title/abstract/methods lead as the strongest article-global drug
     # identity surface. Later reference lists and related-article blocks often
@@ -1261,6 +1566,223 @@ def extract_unique_global_loaded_drug_name(source_text: str) -> str:
     return next(iter(candidates)) if len(candidates) == 1 else ""
 
 
+def _canonical_material_registry_key(value: str) -> str:
+    text = normalize_text(value).replace("®", "")
+    text = re.sub(r"\s+", " ", text).strip(" .,;:()[]{}\"'“”‘’")
+    lowered = text.lower()
+    lowered = re.sub(r"poly\s*\(\s*lactide\s*-\s*co\s*-\s*glycolide\s*\)", "plga", lowered)
+    lowered = re.sub(r"poly\s*\(\s*lactic\s*-\s*co\s*-\s*glycolic\s+acid\s*\)", "plga", lowered)
+    lowered = lowered.replace("poly(lactic-co-glycolic acid)", "plga")
+    lowered = lowered.replace("poly(lactide-co-glycolide)", "plga")
+    lowered = re.sub(r"[^a-z0-9/]+", " ", lowered)
+    lowered = re.sub(r"\s+", " ", lowered).strip()
+    return lowered
+
+
+def _format_material_mw_kda(value: str) -> str:
+    num = parse_numeric(value)
+    if num is None:
+        return ""
+    if float(num).is_integer():
+        return f"{int(num)} kDa"
+    return f"{num:g} kDa"
+
+
+def extract_source_material_property_registry(source_text: str) -> dict[str, dict[str, str]]:
+    """Return source-backed material identity/property registry entries.
+
+    Registry entries are descriptive only: they do not create formulation rows.
+    Downstream use still requires a row-local material token that uniquely maps
+    to one source registry entry.
+    """
+    text = str(source_text or "")
+    registry: dict[str, dict[str, str]] = {}
+    if not text:
+        return registry
+    material_pattern = r"PLGA(?:\s*[-_/]?\s*PEG)?(?:\s*\d{1,3}\s*[/:-]\s*\d{1,3})?|PCL|PLA|poly\s*\([^)]*(?:lactide|lactic|glycolic|caprolactone)[^)]*\)"
+    patterns = [
+        re.compile(rf"\b({material_pattern})\b\s*\([^)]*?(?:Mw|MW|Mn|molecular\s+weight)[^)]*?(\d+(?:\.\d+)?)\s*kDa[^)]*\)", re.IGNORECASE),
+        re.compile(rf"\b({material_pattern})\b[^.;]{{0,80}}?\b(?:Mw|MW|Mn|molecular\s+weight)\b[^.;]{{0,30}}?(\d+(?:\.\d+)?)\s*kDa", re.IGNORECASE),
+    ]
+    for pattern in patterns:
+        for match in pattern.finditer(text):
+            display = re.sub(r"\s+", " ", match.group(1).strip())
+            key = _canonical_material_registry_key(display)
+            mw = _format_material_mw_kda(match.group(2))
+            if key and mw:
+                registry.setdefault(key, {"display_name": display, "mw_kDa": mw})
+    return registry
+
+
+def extract_row_polymer_registry_keys(row: dict[str, str]) -> set[str]:
+    fragments = []
+    for field in (
+        "polymer_identity_final",
+        "polymer_identity",
+        "polymer_name_raw",
+        "polymer_name_value",
+        "polymer_name_value_text",
+        "representative_source_raw_formulation_label",
+        "raw_formulation_label",
+        "change_descriptions",
+        IDENTITY_VARIABLES_FIELD,
+        "identity_variables",
+    ):
+        raw = str(row.get(field, "") or "")
+        if not raw:
+            continue
+        try:
+            parsed = json.loads(raw)
+        except json.JSONDecodeError:
+            parsed = None
+        if isinstance(parsed, list):
+            for item in parsed:
+                if isinstance(item, dict):
+                    fragments.append(str(item.get("value_raw") or item.get("value") or ""))
+                    fragments.append(str(item.get("name_raw") or item.get("name") or ""))
+                else:
+                    fragments.append(str(item))
+        else:
+            fragments.append(raw)
+    joined = " ; ".join(fragments)
+    keys: set[str] = set()
+    material_pattern = re.compile(r"\b(PLGA(?:\s*[-_/]?\s*PEG)?(?:\s*\d{1,3}\s*[/:-]\s*\d{1,3})?|PCL|PLA)\b", re.IGNORECASE)
+    for match in material_pattern.finditer(joined):
+        key = _canonical_material_registry_key(match.group(1))
+        if key:
+            keys.add(key)
+    return keys
+
+
+def extract_unique_row_bound_polymer_registry_entry(row: dict[str, str], source_text: str) -> dict[str, str]:
+    registry = extract_source_material_property_registry(source_text)
+    if not registry:
+        return {}
+    row_keys = extract_row_polymer_registry_keys(row)
+    matches = {key: registry[key] for key in row_keys if key in registry}
+    if len(matches) == 1:
+        return next(iter(matches.values()))
+    return {}
+
+
+def extract_row_local_surfactant_assignment(row: dict[str, str]) -> dict[str, str]:
+    fragments: list[tuple[str, str]] = []
+    for field in ("change_descriptions", IDENTITY_VARIABLES_FIELD, "identity_variables"):
+        raw = str(row.get(field, "") or "")
+        if not raw:
+            continue
+        try:
+            parsed = json.loads(raw)
+        except json.JSONDecodeError:
+            parsed = None
+        if isinstance(parsed, list):
+            for item in parsed:
+                if isinstance(item, dict):
+                    fragments.append((str(item.get("name_raw") or item.get("name") or ""), str(item.get("value_raw") or item.get("value") or "")))
+                else:
+                    text = str(item)
+                    if "=" in text:
+                        name, value = text.split("=", 1)
+                        fragments.append((name, value))
+        elif "=" in raw:
+            for piece in re.split(r"[,;|]\s*", raw):
+                if "=" in piece:
+                    name, value = piece.split("=", 1)
+                    fragments.append((name, value))
+    name_pattern = re.compile(r"\b(PVA|polyvinyl alcohol|Tween\s*80®?|Polysorbate\s*80|Lutrol(?:\s*F?\s*68)?|Pluronic®?\s*F\s*68|poloxamer\s*188|P188|Span®?\s*80|Solutol\s*HS\s*15)\b", re.IGNORECASE)
+    candidates: list[dict[str, str]] = []
+    for name_raw, value_raw in fragments:
+        header = normalize_text(name_raw)
+        value = normalize_text(value_raw).strip(" .")
+        if not header or not value:
+            continue
+        match = name_pattern.search(header)
+        if not match:
+            continue
+        if not re.search(r"\b(?:surfactant|stabilizer|emulsifier|pva|polyvinyl|tween|polysorbate|lutrol|pluronic|poloxamer|p188|span|solutol)\b", header, re.IGNORECASE):
+            continue
+        unit_match = re.search(r"\(([^)]*(?:%|w\s*/\s*v|mg\s*/\s*mL|mg/ml)[^)]*)\)", header, re.IGNORECASE)
+        unit = normalize_factor_unit(unit_match.group(1) if unit_match else "")
+        if not unit and re.search(r"%\s*$", header):
+            unit = "%"
+        display_raw = re.sub(r"\s+", " ", match.group(1).replace("®", "").strip())
+        display_aliases = {
+            "pva": "PVA",
+            "polyvinyl alcohol": "PVA",
+            "tween 80": "Tween 80",
+            "polysorbate 80": "Polysorbate 80",
+            "p188": "P188",
+            "poloxamer 188": "poloxamer 188",
+            "lutrol": "Lutrol",
+            "lutrol f68": "Lutrol F68",
+            "span 80": "Span 80",
+            "solutol hs 15": "Solutol HS 15",
+        }
+        display = display_aliases.get(display_raw.lower(), display_raw)
+        header_has_generic_role = bool(re.search(r"\b(?:surfactant|stabilizer|emulsifier)\b", header, re.IGNORECASE))
+        header_is_encoded_factor = bool(re.search(r"\bc[A-Z0-9]{2,8}\b", header))
+        if (header_has_generic_role or header_is_encoded_factor) and re.fullmatch(r"\d+(?:\.\d+)?", value) and unit:
+            concentration = f"{value}{unit}" if unit == "%" else f"{value} {unit}"
+        elif (header_has_generic_role or header_is_encoded_factor) and re.fullmatch(r"\d+(?:\.\d+)?\s*%", value):
+            concentration = value
+        elif (header_has_generic_role or header_is_encoded_factor) and re.search(r"\d", value) and unit and unit.lower() not in value.lower():
+            concentration = f"{value}{unit}" if unit == "%" else f"{value} {unit}"
+        elif (header_has_generic_role or header_is_encoded_factor) and re.search(r"\d", value):
+            concentration = value
+        else:
+            concentration = ""
+        candidates.append({"name": display, "concentration": concentration})
+    name_values = {item["name"] for item in candidates if item.get("name")}
+    concentration_values = {item["concentration"] for item in candidates if item.get("concentration")}
+    result: dict[str, str] = {}
+    if len(name_values) == 1:
+        result["name"] = next(iter(name_values))
+    if len(concentration_values) == 1:
+        result["concentration"] = next(iter(concentration_values))
+    return result
+
+
+def extract_unique_row_local_polymer_name(row: dict[str, str]) -> str:
+    keys = extract_row_polymer_registry_keys(row)
+    if len(keys) != 1:
+        return ""
+    key = next(iter(keys))
+    displays = {
+        "plga": "PLGA",
+        "pcl": "PCL",
+        "pla": "PLA",
+    }
+    if key in displays:
+        return displays[key]
+    if key.startswith("plga"):
+        return "PLGA"
+    return key.upper() if key in {"pcl", "pla"} else ""
+
+
+def extract_row_bound_drug_name(row: dict[str, str], source_text: str) -> str:
+    if not row_allows_global_drug_carrythrough(row):
+        return ""
+    labels = " ".join([
+        str(row.get("representative_source_raw_formulation_label", "") or ""),
+        str(row.get("raw_formulation_label", "") or ""),
+        str(row.get("formulation_id", "") or ""),
+    ])
+    abbrev_map = extract_drug_abbreviation_map(source_text)
+    candidates: set[str] = set()
+    for match in re.finditer(r"\b([A-Z]{2,6})\s*[- ]\s*loaded\b", labels):
+        mapped = abbrev_map.get(match.group(1).upper(), "")
+        if mapped:
+            candidates.add(mapped)
+    for match in re.finditer(r"\b([A-Za-z][A-Za-z0-9\-]{2,40})\s*[- ]\s*loaded\b", labels, re.IGNORECASE):
+        token = match.group(1)
+        if token.upper() in abbrev_map:
+            token = abbrev_map[token.upper()]
+        token = normalize_global_drug_candidate(token)
+        if token:
+            candidates.add(token)
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
 def row_allows_global_drug_carrythrough(row: dict[str, str]) -> bool:
     if field_bundle_value(row, "drug_name"):
         return False
@@ -1279,6 +1801,87 @@ def row_allows_global_drug_carrythrough(row: dict[str, str]) -> bool:
     return True
 
 
+def set_materialized_field_bundle(
+    materialized: dict[str, str],
+    field_name: str,
+    value: str,
+    *,
+    scope: str,
+    evidence_region_type: str,
+    applied_fields: set[str],
+) -> bool:
+    value = str(value or "").strip()
+    if not value or field_bundle_value(materialized, field_name):
+        return False
+    materialized[f"{field_name}_value"] = value
+    materialized[f"{field_name}_value_text"] = value
+    if f"{field_name}_scope" in materialized:
+        materialized[f"{field_name}_scope"] = scope
+    if f"{field_name}_membership_confidence" in materialized:
+        materialized[f"{field_name}_membership_confidence"] = "medium"
+    if f"{field_name}_evidence_region_type" in materialized:
+        materialized[f"{field_name}_evidence_region_type"] = evidence_region_type
+    if f"{field_name}_missing_reason" in materialized:
+        materialized[f"{field_name}_missing_reason"] = ""
+    applied_fields.add(field_name)
+    return True
+
+
+def split_factor_assignment_value_unit(value: str, fallback_unit: str) -> tuple[str, str]:
+    clean = normalize_text(value).strip(" .")
+    if not clean:
+        return "", ""
+    match = re.match(r"^([-+]?\d+(?:\.\d+)?)\s*(%\s*(?:w\s*/\s*v)?|mg\s*/\s*ml|mg/ml)?$", clean, re.I)
+    if not match:
+        return "", ""
+    numeric = match.group(1)
+    unit = normalize_factor_unit(match.group(2) or fallback_unit)
+    if unit not in {"", "%", "%w/v", "mg/mL"}:
+        unit = ""
+    return numeric, unit
+
+
+def apply_row_local_concentration_factor_materialization(
+    materialized: dict[str, str],
+    source_text: str,
+    applied_fields: set[str],
+) -> None:
+    definitions = extract_generic_concentration_factor_definition_details(source_text)
+    assignments = extract_row_factor_assignments(materialized)
+    if not definitions or not assignments:
+        return
+    for token, assignment in assignments.items():
+        details = definitions.get(token)
+        if not details:
+            continue
+        value, unit = split_factor_assignment_value_unit(assignment.get("value", ""), assignment.get("unit") or details.get("unit", ""))
+        if not value:
+            continue
+        role = details.get("role", "")
+        evidence = "row_local_generic_concentration_factor_assignment"
+        if role == "drug":
+            set_materialized_field_bundle(materialized, "drug_concentration_value", value, scope="row_local", evidence_region_type=evidence, applied_fields=applied_fields)
+            if unit:
+                set_materialized_field_bundle(materialized, "drug_concentration_unit", unit, scope="row_local", evidence_region_type=evidence, applied_fields=applied_fields)
+            material_name = details.get("material_name", "")
+            if material_name and not field_bundle_value(materialized, "drug_name") and row_allows_global_drug_carrythrough(materialized):
+                set_materialized_field_bundle(materialized, "drug_name", material_name, scope="row_local_factor_definition", evidence_region_type="source_factor_material_identity_evidence", applied_fields=applied_fields)
+        elif role == "polymer":
+            set_materialized_field_bundle(materialized, "polymer_concentration_value", value, scope="row_local", evidence_region_type=evidence, applied_fields=applied_fields)
+            if unit:
+                set_materialized_field_bundle(materialized, "polymer_concentration_unit", unit, scope="row_local", evidence_region_type=evidence, applied_fields=applied_fields)
+            material_name = details.get("material_name", "")
+            if material_name and not field_bundle_value(materialized, "polymer_name") and not normalize_text(materialized.get("polymer_name_raw", "")):
+                materialized["polymer_name_raw"] = material_name
+                set_materialized_field_bundle(materialized, "polymer_name", material_name, scope="row_local_factor_definition", evidence_region_type="source_factor_material_identity_evidence", applied_fields=applied_fields)
+        elif role == "surfactant":
+            concentration = f"{value}{unit}" if unit == "%" else f"{value} {unit}" if unit else value
+            set_materialized_field_bundle(materialized, "surfactant_concentration_text", concentration, scope="row_local", evidence_region_type="row_emulsifier_factor_assignment", applied_fields=applied_fields)
+            material_name = details.get("material_name", "")
+            if material_name:
+                set_materialized_field_bundle(materialized, "surfactant_name", material_name, scope="row_local_factor_definition", evidence_region_type="source_factor_material_identity_evidence", applied_fields=applied_fields)
+
+
 def apply_global_preparation_material_carrythrough(
     *,
     final_row: dict[str, str],
@@ -1287,7 +1890,7 @@ def apply_global_preparation_material_carrythrough(
     materialized = dict(final_row)
     applied_fields: set[str] = set()
     if row_allows_global_drug_carrythrough(materialized):
-        drug_name = extract_unique_global_loaded_drug_name(source_text)
+        drug_name = extract_row_bound_drug_name(materialized, source_text) or extract_unique_global_loaded_drug_name(source_text)
         if drug_name:
             materialized["drug_name_value"] = drug_name
             if "drug_name_value_text" in materialized:
@@ -1301,6 +1904,50 @@ def apply_global_preparation_material_carrythrough(
             if "drug_name_missing_reason" in materialized:
                 materialized["drug_name_missing_reason"] = ""
             applied_fields.add("drug_name")
+    polymer_registry_entry = extract_unique_row_bound_polymer_registry_entry(materialized, source_text)
+    row_local_polymer_name = extract_unique_row_local_polymer_name(materialized)
+    if row_local_polymer_name and not field_bundle_value(materialized, "polymer_name") and not normalize_text(materialized.get("polymer_name_raw", "")):
+        materialized["polymer_name_raw"] = row_local_polymer_name
+        if "polymer_name_value" in materialized:
+            materialized["polymer_name_value"] = row_local_polymer_name
+        if "polymer_name_value_text" in materialized:
+            materialized["polymer_name_value_text"] = row_local_polymer_name
+        if "polymer_name_scope" in materialized:
+            materialized["polymer_name_scope"] = "row_local_material_identity"
+        if "polymer_name_membership_confidence" in materialized:
+            materialized["polymer_name_membership_confidence"] = "medium"
+        if "polymer_name_evidence_region_type" in materialized:
+            materialized["polymer_name_evidence_region_type"] = "row_local_material_identity_evidence"
+        applied_fields.add("polymer_name")
+    if polymer_registry_entry:
+        polymer_display = polymer_registry_entry.get("display_name", "")
+        polymer_mw = polymer_registry_entry.get("mw_kDa", "")
+        if polymer_display and not field_bundle_value(materialized, "polymer_name") and not normalize_text(materialized.get("polymer_name_raw", "")):
+            materialized["polymer_name_raw"] = polymer_display
+            if "polymer_name_value" in materialized:
+                materialized["polymer_name_value"] = polymer_display
+            if "polymer_name_value_text" in materialized:
+                materialized["polymer_name_value_text"] = polymer_display
+            if "polymer_name_scope" in materialized:
+                materialized["polymer_name_scope"] = "row_bound_material_registry"
+            if "polymer_name_membership_confidence" in materialized:
+                materialized["polymer_name_membership_confidence"] = "medium"
+            if "polymer_name_evidence_region_type" in materialized:
+                materialized["polymer_name_evidence_region_type"] = "source_material_registry_evidence"
+            applied_fields.add("polymer_name")
+        if polymer_mw and not field_bundle_value(materialized, "polymer_mw_kDa"):
+            materialized["polymer_mw_kDa_value"] = polymer_mw
+            if "polymer_mw_kDa_value_text" in materialized:
+                materialized["polymer_mw_kDa_value_text"] = polymer_mw
+            if "polymer_mw_kDa_scope" in materialized:
+                materialized["polymer_mw_kDa_scope"] = "row_bound_material_registry"
+            if "polymer_mw_kDa_membership_confidence" in materialized:
+                materialized["polymer_mw_kDa_membership_confidence"] = "medium"
+            if "polymer_mw_kDa_evidence_region_type" in materialized:
+                materialized["polymer_mw_kDa_evidence_region_type"] = "source_material_registry_evidence"
+            if "polymer_mw_kDa_missing_reason" in materialized:
+                materialized["polymer_mw_kDa_missing_reason"] = ""
+            applied_fields.add("polymer_mw_kDa")
     if not field_bundle_value(materialized, "organic_solvent"):
         solvent = extract_unique_global_preparation_solvent(source_text)
         if solvent:
@@ -1316,8 +1963,33 @@ def apply_global_preparation_material_carrythrough(
             if "organic_solvent_missing_reason" in materialized:
                 materialized["organic_solvent_missing_reason"] = ""
             applied_fields.add("organic_solvent")
+    if not field_bundle_value(materialized, "organic_phase_volume_mL"):
+        organic_phase_volume = extract_unique_global_preparation_organic_phase_volume(
+            source_text,
+            solvent_name=field_bundle_value(materialized, "organic_solvent"),
+        )
+        if organic_phase_volume:
+            materialized["organic_phase_volume_mL_value"] = organic_phase_volume
+            materialized["organic_phase_volume_mL_value_text"] = organic_phase_volume
+            materialized["organic_phase_volume_mL_scope"] = "global_shared"
+            materialized["organic_phase_volume_mL_membership_confidence"] = "medium"
+            materialized["organic_phase_volume_mL_evidence_region_type"] = "global_preparation_organic_phase_volume_evidence"
+            materialized["organic_phase_volume_mL_missing_reason"] = ""
+            applied_fields.add("organic_phase_volume_mL")
+    if not field_bundle_value(materialized, "external_aqueous_phase_volume_mL"):
+        external_aqueous_phase_volume = extract_unique_global_preparation_external_aqueous_phase_volume(source_text)
+        if external_aqueous_phase_volume:
+            materialized["external_aqueous_phase_volume_mL_value"] = external_aqueous_phase_volume
+            materialized["external_aqueous_phase_volume_mL_value_text"] = external_aqueous_phase_volume
+            materialized["external_aqueous_phase_volume_mL_scope"] = "global_shared"
+            materialized["external_aqueous_phase_volume_mL_membership_confidence"] = "medium"
+            materialized["external_aqueous_phase_volume_mL_evidence_region_type"] = "global_preparation_external_aqueous_phase_volume_evidence"
+            materialized["external_aqueous_phase_volume_mL_missing_reason"] = ""
+            applied_fields.add("external_aqueous_phase_volume_mL")
+    apply_row_local_concentration_factor_materialization(materialized, source_text, applied_fields)
+    row_local_surfactant_assignment = extract_row_local_surfactant_assignment(materialized)
     if not field_bundle_value(materialized, "surfactant_name"):
-        surfactant_name = extract_row_emulsifier_from_factor_definition(materialized, source_text)
+        surfactant_name = row_local_surfactant_assignment.get("name", "") or extract_row_emulsifier_from_factor_definition(materialized, source_text)
         if surfactant_name:
             materialized["surfactant_name_value"] = surfactant_name
             if "surfactant_name_value_text" in materialized:
@@ -1332,17 +2004,23 @@ def apply_global_preparation_material_carrythrough(
                 materialized["surfactant_name_missing_reason"] = ""
             applied_fields.add("surfactant_name")
     if not field_bundle_value(materialized, "surfactant_concentration_text"):
-        surfactant_concentration = extract_row_emulsifier_concentration_from_factor_definition(
+        surfactant_concentration = row_local_surfactant_assignment.get("concentration", "") or extract_row_emulsifier_concentration_from_factor_definition(
             materialized,
             source_text,
         )
         concentration_scope = "row_local"
-        concentration_evidence = "row_emulsifier_factor_assignment"
+        concentration_evidence = "row_local_emulsifier_assignment" if row_local_surfactant_assignment.get("concentration", "") else "row_emulsifier_factor_assignment"
         if not surfactant_concentration:
-            surfactant_concentration = extract_row_emulsifier_concentration_from_preparation_list(
-                materialized,
-                source_text,
-            )
+            surfactant_name_surface = field_bundle_value(materialized, "surfactant_name")
+            # A preparation list may contain multiple surfactants with distinct
+            # concentrations (e.g. PVA + Polysorbate 80). If the row surface is
+            # a role-tolerant union, name-level identity is safe but a single
+            # numeric concentration is not uniquely targetable.
+            if "|" not in surfactant_name_surface:
+                surfactant_concentration = extract_row_emulsifier_concentration_from_preparation_list(
+                    materialized,
+                    source_text,
+                )
             concentration_scope = "global_shared"
             concentration_evidence = "global_preparation_surfactant_concentration_evidence"
         if not surfactant_concentration:
@@ -1370,10 +2048,7 @@ def apply_global_preparation_material_carrythrough(
             source_text,
             drug_name=field_bundle_value(materialized, "drug_name"),
         )
-        row_has_local_drug_signal = (
-            bool(field_bundle_value(materialized, "drug_name"))
-            and normalize_text(materialized.get("drug_name_scope", "")).lower() != "global_shared"
-        ) or bool(re.search(r"\b(drug|loaded|active|api)\b", row_text_bundle(materialized)))
+        row_has_local_drug_signal = bool(field_bundle_value(materialized, "drug_name")) or bool(re.search(r"\b(drug|loaded|active|api)\b", row_text_bundle(materialized)))
         if not field_bundle_value(materialized, "drug_feed_amount_text") and row_has_local_drug_signal:
             drug_mass = shared_masses.get("drug_mass_mg", "")
             if drug_mass:
@@ -2274,7 +2949,7 @@ def load_resolved_relation_fields(
         for row in reader:
             candidate_id = str(row.get("formulation_candidate_id", "") or "").strip()
             field_name = canonical_field_name(row.get("field_name", ""))
-            if not candidate_id or field_name not in RESOLVED_RELATION_FIELD_NAMES:
+            if not candidate_id or not field_name:
                 continue
             resolved_map[candidate_id][field_name] = {
                 "field_value": str(row.get("field_value", "") or "").strip(),
@@ -2285,6 +2960,53 @@ def load_resolved_relation_fields(
                 "deterministic_confidence": str(row.get("deterministic_confidence", "") or "").strip(),
             }
     return resolved_map
+
+
+def _value_is_ratio_like(value: Any) -> bool:
+    return bool(re.search(r"\b\d+(?:\.\d+)?\s*[:/]\s*\d+(?:\.\d+)?\b", normalize_text(value)))
+
+
+def _value_has_concentration_unit(value: Any) -> bool:
+    text = normalize_text(value).lower()
+    return bool(re.search(r"%|mg\s*/\s*ml|w\s*/\s*v", text))
+
+
+def _value_has_volume_unit(value: Any) -> bool:
+    return bool(re.search(r"\b(?:mL|ml|µL|uL|L)\b", normalize_text(value)))
+
+
+def resolved_relation_field_value_is_compatible(field_name: str, field_value: str) -> bool:
+    """Typed guard for Stage3-resolved inheritance before final-table materialization.
+
+    Stage3 can resolve broad shared semantics, but Stage5 must not turn role/name
+    tokens into benchmark-facing numeric values. Row-local table bindings remain
+    the highest numeric authority; this gate only permits source-backed shared
+    relation fields whose value shape matches the target field contract.
+    """
+    clean = str(field_value or "").strip()
+    if not clean or normalize_token(clean) in {"unknown", "unclear", "not_reported", "not_specified", "na", "n/a", "none"}:
+        return False
+    if field_name in RESOLVED_RELATION_TEXT_FIELDS:
+        return True
+    if field_name in RESOLVED_RELATION_MASS_FIELDS:
+        if parse_numeric(clean) is None:
+            return False
+        if _value_is_ratio_like(clean) or _value_has_concentration_unit(clean) or _value_has_volume_unit(clean):
+            return False
+        return True
+    if field_name in RESOLVED_RELATION_NUMERIC_FIELDS:
+        if parse_numeric(clean) is None:
+            return False
+        if _value_is_ratio_like(clean):
+            return False
+        return True
+    if field_name in RESOLVED_RELATION_RATIO_FIELDS:
+        return bool(re.search(r"\d", clean))
+    # Unknown shared relation fields are still lawful Stage3 output.  Stage5
+    # does not invent a benchmark-specific typed interpretation for them; it
+    # either fills an already-declared typed bundle column or preserves the item
+    # in shared_parameters_json for downstream/audit consumers.
+    return True
 
 
 def apply_resolved_relation_fields(
@@ -2301,17 +3023,69 @@ def apply_resolved_relation_fields(
     applied_fields: set[str] = set()
     candidate_id = str(representative.get("formulation_id", "") or "").strip()
     candidate_resolved = resolved_field_map.get(candidate_id, {})
+
+    def append_shared_parameter(field_name: str, payload: dict[str, str], field_value: str) -> None:
+        existing = materialized.get("shared_parameters_json", "")
+        try:
+            items = json.loads(existing) if existing else []
+        except Exception:
+            items = []
+        if not isinstance(items, list):
+            items = []
+        key = (field_name, field_value, str(payload.get("scope_type", "") or ""))
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            if (
+                str(item.get("field_name", "") or ""),
+                str(item.get("field_value", "") or ""),
+                str(item.get("scope_type", "") or ""),
+            ) == key:
+                return
+        items.append(
+            {
+                "field_name": field_name,
+                "field_value": field_value,
+                "field_value_norm": str(payload.get("field_value_norm", "") or "").strip(),
+                "scope_type": str(payload.get("scope_type", "") or "").strip(),
+                "resolution_rule": str(payload.get("resolution_rule", "") or "").strip(),
+                "source_relation_row_ids": str(payload.get("source_relation_row_ids", "") or "").strip(),
+                "deterministic_confidence": str(payload.get("deterministic_confidence", "") or "").strip(),
+                "evidence_region_type": "relation_resolved",
+            }
+        )
+        materialized["shared_parameters_json"] = json.dumps(items, ensure_ascii=False)
+
     for field_name, payload in candidate_resolved.items():
         field_value = str(payload.get("field_value", "") or "").strip()
         if not field_value:
+            continue
+        if not resolved_relation_field_value_is_compatible(field_name, field_value):
             continue
         if field_name == "preparation_method":
             if field_bundle_value(materialized, field_name):
                 continue
             materialized["preparation_method"] = field_value
+            append_shared_parameter(field_name, payload, field_value)
+            applied_fields.add(field_name)
+            continue
+        has_typed_bundle = field_name in RESOLVED_RELATION_FIELD_NAMES and any(
+            name in materialized
+            for name in (
+                f"{field_name}_value",
+                f"{field_name}_value_text",
+                f"{field_name}_scope",
+                f"{field_name}_membership_confidence",
+                f"{field_name}_evidence_region_type",
+                f"{field_name}_missing_reason",
+            )
+        )
+        if not has_typed_bundle:
+            append_shared_parameter(field_name, payload, field_value)
             applied_fields.add(field_name)
             continue
         if field_bundle_value(materialized, field_name):
+            append_shared_parameter(field_name, payload, field_value)
             continue
         materialized[f"{field_name}_value"] = field_value
         if f"{field_name}_value_text" in materialized:
@@ -2330,6 +3104,7 @@ def apply_resolved_relation_fields(
             materialized[f"{field_name}_evidence_region_type"] = "relation_resolved"
         if f"{field_name}_missing_reason" in materialized:
             materialized[f"{field_name}_missing_reason"] = ""
+        append_shared_parameter(field_name, payload, field_value)
         applied_fields.add(field_name)
     return materialized, applied_fields
 
@@ -3640,7 +4415,8 @@ def build_minimal_final_output(
             "field_source_type",
             "derived_mass_provenance_json",
             *original_fieldnames,
-            *[name for name in PREPARATION_METHOD_FIELDNAMES if name not in original_fieldnames],
+            *[name for name in STAGE5_GLOBAL_PREPARATION_FIELDNAMES if name not in original_fieldnames],
+            *[name for name in PREPARATION_METHOD_FIELDNAMES if name not in original_fieldnames and name not in STAGE5_GLOBAL_PREPARATION_FIELDNAMES],
         ],
         final_rows,
     )

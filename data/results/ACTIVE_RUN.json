@@ -6,9 +6,9 @@
     "stage2_semantic_objects_jsonl": "data/results/20260423_9c4a03f/77_stage2_ee_percent_header_mapping_diagnostic/semantic_stage2_objects/semantic_stage2_v2_objects.jsonl",
     "stage2_compatibility_tsv": "data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv",
     "stage2_compatibility_jsonl": "data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.jsonl",
-    "resolved_relation_fields_tsv": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/resolved_relation_fields_v1.tsv",
-    "stage5_final_table_tsv": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
-    "stage5_decision_trace_tsv": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_output_decision_trace_v1.tsv",
+    "resolved_relation_fields_tsv": "data/results/20260423_9c4a03f/146_stage3_generic_shared_parameter_bundle_diagnostic/resolved_relation_fields_v1.tsv",
+    "stage5_final_table_tsv": "data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic/final_formulation_table_v1.tsv",
+    "stage5_decision_trace_tsv": "data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic/final_output_decision_trace_v1.tsv",
     "identity_scaffold_rows_tsv": "data/results/20260423_9c4a03f/46_identity_scaffold/layer2_identity_scaffold_rows_v1.tsv",
     "identity_scaffold_summary_tsv": "data/results/20260423_9c4a03f/46_identity_scaffold/layer2_identity_scaffold_summary_v1.tsv",
     "identity_freeze_summary_tsv": "data/results/20260423_9c4a03f/47_identity_freeze/identity_freeze_summary_v1.tsv",
@@ -19,34 +19,51 @@
     "gt_workbook_xlsx": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_formulation_skeleton_review_v2_variantaware.xlsx",
     "layer1_gt_path": "data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv",
     "layer2_gt_path": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
-    "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values.tsv",
+    "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_authority_v1.tsv",
     "gt_skeleton_tsv": "data/cleaned/gt_authority/v1/dev15_layer2_identity.tsv",
     "alignment_scaffold_tsv": "data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_variant_alignment_scaffold_v1.tsv",
-    "stage3_relation_dir": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic",
-    "layer3_compare_cells_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
-    "layer3_compare_summary_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_summary_v1.tsv",
-    "layer3_error_buckets_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_error_buckets_v1.tsv",
-    "layer3_alignment_resolution_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_alignment_resolution_rows_v1.tsv",
-    "diagnostic_metadata_json": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/diagnostic_metadata.json",
-    "stage3_relation_records_tsv": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/formulation_relation_records_v1.tsv",
+    "stage3_relation_dir": "data/results/20260423_9c4a03f/146_stage3_generic_shared_parameter_bundle_diagnostic",
+    "layer3_compare_cells_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_compare_cells_v1.tsv",
+    "layer3_compare_summary_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_compare_summary_v1.tsv",
+    "layer3_error_buckets_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_error_buckets_v1.tsv",
+    "layer3_alignment_resolution_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_alignment_resolution_rows_v1.tsv",
+    "diagnostic_metadata_json": "data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic/diagnostic_metadata.json",
+    "stage3_relation_records_tsv": "data/results/20260423_9c4a03f/146_stage3_generic_shared_parameter_bundle_diagnostic/formulation_relation_records_v1.tsv",
     "stage3_logic_graph_jsonl": "data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/formulation_logic_graph_v1.jsonl",
-    "layer3_risk_review_queue_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_risk_review_queue_v1.tsv"
+    "layer3_risk_review_queue_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_risk_review_queue_v1.tsv",
+    "layer3_shared_parameter_residual_audit_tsv": "analysis/layer3_field_repairs/run148_shared_parameter_materialization_residual_audit_v1.tsv",
+    "layer3_phase_solvent_volume_delta_audit_tsv": "analysis/layer3_field_repairs/run148_vs_run150_phase_solvent_volume_delta_audit_v1.tsv",
+    "layer3_emulsifier_material_registry_delta_audit_tsv": "analysis/layer3_field_repairs/run150_vs_run163_emulsifier_material_registry_delta_audit_v1.tsv",
+    "layer3_gt_metadata_json": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_authority_v1.metadata.json",
+    "layer3_gt_raw_sidecar_tsv": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_raw_sidecar_v1.tsv",
+    "layer3_gt_transform_log_tsv": "analysis/layer3_field_repairs/dev15_gt_reviewed_split_units_transform_log_v1.tsv",
+    "layer3_reviewed_split_gt_delta_audit_tsv": "analysis/layer3_field_repairs/run163_vs_run165_reviewed_split_gt_ratio_surfactant_delta_audit_v1.tsv",
+    "stage5_final_table": "data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic/final_formulation_table_v1.tsv",
+    "stage5_decision_trace": "data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic/final_output_decision_trace_v1.tsv",
+    "layer3_compare_cells": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_compare_cells_v1.tsv",
+    "layer3_compare_summary": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_compare_summary_v1.tsv",
+    "layer3_error_buckets": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_error_buckets_v1.tsv",
+    "layer3_alignment_resolution": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_alignment_resolution_rows_v1.tsv",
+    "layer3_risk_review_queue": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_risk_review_queue_v1.tsv",
+    "layer3_gt_review_queue_resolved_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_review_queue_resolved_v1.tsv",
+    "layer3_gt_change_log_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_change_log_v3.tsv",
+    "layer3_gt_source_inventory_tsv": "analysis/layer3_field_repairs/dev15_layer3_values_gt_source_completed_source_inventory_v1.tsv"
   },
   "gt_authority_lock": true,
   "lineage_policy": "The parent lineage run is the human-facing entrypoint. Child terminal artifacts must be pinned explicitly here and must not be inferred by recency, sort order, or parent fallback.",
-  "updated_at": "2026-05-02T20:20:20Z",
-  "note": "Authority promotion: active DEV15 diagnosis baseline now points to Layer3 diagnostic compare lineage 138 after source-backed subtype-scoped emulsifier/stabilizer concentration carrythrough. Diagnostic only; benchmark_valid remains no.",
+  "updated_at": "2026-05-03T21:11:48Z",
+  "note": "Layer3 GT authority update: source-completed direct-evidence authority v1 is now the locked Layer3 GT for diagnostic comparison. Derived candidates remain excluded; L3H2RS2H size/PDI/zeta scope resolved by user as exact-case only, no propagation.",
   "diagnosis_baseline": true,
   "benchmark_baseline": false,
   "benchmark_valid": "no",
   "compare_mode": "diagnostic",
-  "active_compare_run_dir": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic",
-  "active_compare_cells_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
-  "active_compare_summary_tsv": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_summary_v1.tsv",
-  "active_stage5_run_dir": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic",
-  "active_final_table_tsv": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
-  "last_updated": "2026-05-02T16:17:04",
-  "last_update_reason": "run 138 diagnostic positive delta: subtype-scoped preparation emulsifier/stabilizer concentration carrythrough; value recall 0.574324->0.682432, overall error_rows 1773->1757, no mismatch/extra/blocked increase.",
+  "active_compare_run_dir": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic",
+  "active_compare_cells_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_compare_cells_v1.tsv",
+  "active_compare_summary_tsv": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic/layer3_value_compare_summary_v1.tsv",
+  "active_stage5_run_dir": "data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic",
+  "active_final_table_tsv": "data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic/final_formulation_table_v1.tsv",
+  "last_updated": "2026-05-03T21:11:48Z",
+  "last_update_reason": "Accepted diagnostic compare 174 using source-completed Layer3 GT authority v1; this is a GT authority update diagnostic, not benchmark-valid performance evidence.",
   "history": [
     {
       "updated_at": "2026-05-02T15:15:00",
@@ -59,11 +76,95 @@
       "compare_run_dir": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic",
       "stage5_run_dir": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic",
       "reason": "run 138 diagnostic positive delta: subtype-scoped preparation emulsifier/stabilizer concentration carrythrough; value recall 0.574324->0.682432, overall error_rows 1773->1757, no mismatch/extra/blocked increase."
+    },
+    {
+      "updated_at": "2026-05-02T21:10:00Z",
+      "compare_run_dir": "data/results/20260423_9c4a03f/140_layer3_compare_stage3_shared_numeric_relation_fields_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/139_stage5_stage3_shared_numeric_relation_fields_diagnostic",
+      "reason": "run 140 diagnostic governance update: Stage3 shared numeric relation-field consumption restored with typed guard; centrifugation collection fields removed from core compare surface; error_rows 1757->1638, mismatch and extra unchanged."
+    },
+    {
+      "updated_at": "2026-05-02T21:36:26Z",
+      "compare_run_dir": "data/results/20260423_9c4a03f/142_layer3_compare_gt_concentration_split_binding_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/139_stage5_stage3_shared_numeric_relation_fields_diagnostic",
+      "reason": "run 142 diagnostic positive delta: drug concentration row-identity direct recovery plus emulsifier/stabilizer name-concentration binding/value-unit split; error_rows 1638->1598, extra/blocked unchanged, mismatch net reduced."
+    },
+    {
+      "updated_at": "2026-05-03T01:04:20Z",
+      "compare_run_dir": "data/results/20260423_9c4a03f/145_layer3_compare_shared_entity_parameter_carrythrough_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/144_stage5_shared_entity_parameter_carrythrough_diagnostic",
+      "reason": "run145 diagnostic positive delta: generic source-backed Stage5 shared entity-bound preparation parameter carrythrough for organic solvent volume; error_rows 1585->1515, O_volume_mL missing 104->34, no mismatch/extra/blocked increase."
+    },
+    {
+      "updated_at": "2026-05-03T01:43:58Z",
+      "previous_active_compare_run_dir": "data/results/20260423_9c4a03f/145_layer3_compare_shared_entity_parameter_carrythrough_diagnostic",
+      "new_active_compare_run_dir": "data/results/20260423_9c4a03f/148_layer3_compare_generic_shared_parameter_bundle_diagnostic",
+      "reason": "generic shared-parameter relation bundle diagnostic with no compare regression vs run145"
+    },
+    {
+      "updated_at": "2026-05-03T02:30:08Z",
+      "previous_active_compare_run_dir": "data/results/20260423_9c4a03f/148_layer3_compare_generic_shared_parameter_bundle_diagnostic",
+      "new_active_compare_run_dir": "data/results/20260423_9c4a03f/150_layer3_compare_phase_solvent_volume_materializer_diagnostic",
+      "previous_active_stage5_run_dir": "data/results/20260423_9c4a03f/147_stage5_generic_shared_parameter_bundle_diagnostic",
+      "new_active_stage5_run_dir": "data/results/20260423_9c4a03f/149_stage5_phase_solvent_volume_materializer_diagnostic",
+      "reason": "run150 diagnostic positive delta after 447-row residual audit and source-backed preparation external-aqueous phase volume materializer; error_rows 1515->1456; no mismatch/extra/blocked increase"
+    },
+    {
+      "updated_at": "2026-05-03T14:03:39Z",
+      "previous_active_compare_run_dir": "data/results/20260423_9c4a03f/150_layer3_compare_phase_solvent_volume_materializer_diagnostic",
+      "new_active_compare_run_dir": "data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic",
+      "previous_active_stage5_run_dir": "data/results/20260423_9c4a03f/149_stage5_phase_solvent_volume_materializer_diagnostic",
+      "new_active_stage5_run_dir": "data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic",
+      "reason": "run163 diagnostic positive delta after bounded row-local surfactant identity, guarded concentration, material identity registry, polymer-grade compare-surface suppression; error_rows 1456->1417; no match/blocked regression; benchmark_valid remains no."
+    },
+    {
+      "updated_at": "2026-05-03T17:38:58Z",
+      "previous_layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values.tsv",
+      "new_layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv",
+      "reason": "User requested reviewed GT corrections, duplicate unit cleanup, numeric/unit split, and promotion as authority comparison source. This is a GT authority update for diagnostic Layer3 compare, not a Stage5 system-output promotion."
+    },
+    {
+      "updated_at": "2026-05-03T17:48:27Z",
+      "compare_run_dir": "data/results/20260423_9c4a03f/165_layer3_compare_reviewed_split_gt_ratio_surfactant_guard_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic",
+      "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv",
+      "reason": "Current diagnostic compare surface uses reviewed+split-units Layer3 GT authority. Numeric/unit split cleaned duplicated zeta units and moved raw mean±SD cells to sidecar; compare code now reverses ratios when table/header declares opposite direction and stops inventing Pluronic F68 stabilizer from generic PLGA/PCL family labels. Status deltas vs run163 are GT-change diagnostic, not benchmark performance delta."
+    },
+    {
+      "updated_at": "2026-05-03T18:10:50Z",
+      "previous_active_compare_run_dir": "data/results/20260423_9c4a03f/165_layer3_compare_reviewed_split_gt_ratio_surfactant_guard_diagnostic",
+      "new_active_compare_run_dir": "data/results/20260423_9c4a03f/166_layer3_compare_generic_ratio_direction_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic",
+      "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv",
+      "reason": "Accepted diagnostic compare 166 after generic endpoint-aware ratio direction parser/comparator covering all ratio fields; error_rows 1607->1603 vs run165, total extra 34->30, missing/mismatch/blocked unchanged; benchmark_valid remains no."
+    },
+    {
+      "updated_at": "2026-05-03T19:10:32Z",
+      "previous_active_compare_run_dir": "data/results/20260423_9c4a03f/172_layer3_compare_generic_concentration_factor_materialization_projected_diagnostic",
+      "new_active_compare_run_dir": "data/results/20260423_9c4a03f/173_layer3_compare_row_identity_drug_name_rebinding_diagnostic",
+      "stage5_run_dir": "data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic",
+      "reason": "run173 diagnostic positive delta: bounded generic row-local formulation identity label drug-name rebinding; error_rows 1559->1543, present_and_match +16, missing_in_system -16, mismatch/extra/blocked unchanged."
+    },
+    {
+      "updated_at": "2026-05-03T21:10:47Z",
+      "previous_layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv",
+      "new_layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_authority_v1.tsv",
+      "reason": "User promoted source-completed direct-evidence Layer3 GT authority v1 after resolving L3H2RS2H scope: size/PDI/zeta only for exact legend-specified cases; no propagation to other rows; derived values excluded from current direct compare."
+    },
+    {
+      "updated_at": "2026-05-03T21:11:48Z",
+      "previous_active_compare_run_dir": "data/results/20260423_9c4a03f/173_layer3_compare_row_identity_drug_name_rebinding_diagnostic",
+      "new_active_compare_run_dir": "data/results/20260423_9c4a03f/174_layer3_compare_source_completed_gt_authority_v1_diagnostic",
+      "layer3_gt_path": "data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_authority_v1.tsv",
+      "reason": "Ran diagnostic compare after source-completed GT authority v1 promotion; benchmark_valid remains no."
     }
   ],
-  "active_stage5_final_table": "data/results/20260423_9c4a03f/136_stage5_subtype_surfactant_concentration_diagnostic/final_formulation_table_v1.tsv",
-  "active_layer3_compare_cells": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_cells_v1.tsv",
-  "active_layer3_compare_summary": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/layer3_value_compare_summary_v1.tsv",
-  "active_layer3_compare_dir": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic",
-  "diagnostic_metadata_json": "data/results/20260423_9c4a03f/138_layer3_compare_subtype_surfactant_concentration_unit_suppressed_diagnostic/diagnostic_metadata.json"
+  "active_stage5_final_table": "data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic/final_formulation_table_v1.tsv",
+  "active_layer3_compare_cells": "data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic/layer3_value_compare_cells_v1.tsv",
+  "active_layer3_compare_summary": "data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic/layer3_value_compare_summary_v1.tsv",
+  "active_layer3_compare_dir": "data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic",
+  "diagnostic_metadata_json": "data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic/diagnostic_metadata.json",
+  "last_diagnostic_update_utc": "2026-05-03T17:48:27Z",
+  "active_stage5_dir": "data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic",
+  "active_compare_dir": "data/results/20260423_9c4a03f/172_layer3_compare_generic_concentration_factor_materialization_projected_diagnostic"
 }

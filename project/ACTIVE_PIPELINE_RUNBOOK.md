@@ -1029,6 +1029,34 @@ Core scripts:
 The compare entrypoint also refreshes run-level feature activation observability
 after writing `RUN_CONTEXT.md`.
 
+Stage5 internal value-layer contract:
+
+- Stage5 remains the only final-output namespace. Do not introduce Stage6 or a
+  second Stage5 namespace for value backfill.
+- Current production final-table materialization is still anchored by
+  `src/stage5_benchmark/build_minimal_final_output_v1.py` until future S5-3/S5-4/S5-5
+  helper scripts are implemented and registered.
+- The governed internal substeps are:
+  - `S5-1 Fixed-row candidate intake`
+  - `S5-2 Deterministic direct materialization`
+  - `S5-3 LLM-assisted direct value candidate extraction`
+  - `S5-4 Value authority validation and merge`
+  - `S5-5 Derived reasoning / calculated value materialization`
+  - `S5-6 Final table closure and audit export`
+- S5-3 may call an LLM only after row identity is fixed. It must consume exact
+  input paths for the Stage5 row surface, decision trace, scope manifest, and
+  governed text/table evidence; it must write candidate TSV, evidence sidecar,
+  prompt audit, raw-response payloads, and `RUN_CONTEXT.md` before any merge.
+- S5-4 is the only layer allowed to accept LLM candidates into direct Stage5
+  values. It must reject derived, ambiguous-scope, conflict-bearing, or
+  quote-less candidates from the direct layer.
+- S5-5 computes derived values such as `%w/v × mL -> mg`, `mg/mL × mL -> mg`,
+  concentration × volume, ratio-derived mass, and unit conversions from accepted
+  direct inputs only. Its outputs are sidecars with `eligible_for_direct_compare=no`.
+- Every S5-3/S5-4/S5-5 workflow must resolve inputs by explicit CLI paths or
+  `data/results/ACTIVE_RUN.json`; no latest-by-sort, parent fallback, or
+  glob-first matching is allowed.
+
 Supporting stage-local helper:
 
 - `src/stage5_benchmark/run_minimal_final_output_v1.py`

@@ -2473,3 +2473,235 @@ Diagnostic effect versus active compare 98: Layer3 error queue rows `1812 -> 179
 - Compare governance repair: if GT stores a complete concentration such as `0.25% (w/v)` in the value field and leaves the paired unit field empty, the compare layer suppresses a duplicate unit extra only when the extracted unit is exactly the unit already contained in the GT value.
 - Lineage: Stage2 compatibility run 116 -> Stage3 run 131 -> Stage5 run 136 -> Layer3 compare run 138. Diagnostic-only, not benchmark-valid final evidence.
 - Validation: `python3 -m unittest tests.test_compare_layer3_values_v1` passed with 158 tests; py_compile passed for modified Stage5/compare/tests. Run 138 vs run 135: overall error_rows 1773 -> 1757; present_and_match 1631 -> 1647; missing_in_system 886 -> 870; mismatch 85 unchanged; blocked_alignment 616 unchanged; extra_in_system 186 unchanged. Target field `emulsifier_stabilizer_concentration_value` recall 0.574324 -> 0.682432, match 85 -> 101, missing 49 -> 33, accuracy 1.000000 unchanged.
+
+
+## 2026-05-02 — Stage3 shared numeric relation-field inheritance and core-field governance
+
+- Diagnostic lineage: Stage2 compatibility `data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv` -> Stage3 relation artifacts `data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/` -> Stage5 `data/results/20260423_9c4a03f/139_stage5_stage3_shared_numeric_relation_fields_diagnostic/` -> compare `data/results/20260423_9c4a03f/140_layer3_compare_stage3_shared_numeric_relation_fields_diagnostic/`.
+- Root cause found: Stage3 already emitted shared fields such as `plga_mass_mg`, `drug_feed_amount_text`, `surfactant_concentration_text`, `pva_conc_percent`, and `drug_name`, but Stage5 `RESOLVED_RELATION_FIELD_NAMES` only consumed a narrow text whitelist (`polymer_mw_kDa`, `surfactant_name`, `organic_solvent`, `preparation_method`). Therefore material/preparation paragraph shared numeric parameters could exist in Stage3 artifacts yet never reach the final table.
+- Generic repair: Stage5 now consumes the broader Stage3-resolved field surface and applies a typed compatibility gate before materialization. Numeric fields require numeric shape; direct mass fields reject ratio/concentration/volume units; text fields still materialize as text. This keeps row-local table bindings as highest numeric authority and prevents Stage3 role/name tokens from becoming benchmark-facing numeric values.
+- Core-field governance: `centrifugation_time_min` and `centrifugation_g` were removed from the core Layer3 compare field set because centrifugation is post-formation product collection/processing rather than a formulation-forming parameter.
+- Drug concentration direct/derived handling: no GT cells were edited in this run. A review audit was written to `analysis/layer3_field_repairs/drug_concentration_direct_source_audit_v1.tsv` to separate source-surface direct concentration candidates from values likely requiring derivation or user review.
+- Validation: `python3 -m unittest tests.test_compare_layer3_values_v1` passed (`Ran 160 tests ... OK`); py_compile passed for modified Stage5, compare, and test files.
+- Diagnostic delta vs run 138: error_rows `1757 -> 1638`; `missing_in_system 870 -> 779`; `blocked_alignment 616 -> 588`; `present_but_mismatch 85 -> 85`; `extra_in_system 186 -> 186`. Visible compare delta comes from the centrifugation core-surface governance change; the Stage3 numeric inheritance path is activated with typed guards and no mismatch/extra increase in this diagnostic run.
+
+### Run 142 — drug concentration direct identity recovery and emulsifier/stabilizer binding split diagnostic (2026-05-02)
+
+- Scope: Layer3 compare diagnostic only; Stage5 final table lineage unchanged from run 139.
+- Inputs: `data/results/20260423_9c4a03f/139_stage5_stage3_shared_numeric_relation_fields_diagnostic/final_formulation_table_v1.tsv`, `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`, `data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv`.
+- Change: `drug_concentration_value/unit` can be recovered only from explicit row-identity surfaces containing `theoretical/drug concentration + numeric value + unit`; no derived concentration is invented.
+- Change: row-identity surfactant/stabilizer concentration labels such as `poloxamer_188_concentration__2.5_mg/ml` are split into bound material name, numeric value, and unit for compare.
+- Change: concentration unit compare normalizes spacing-only variants such as `%w/v` and `% w/v`.
+- Result vs run 140: error_rows `1638 -> 1598`; present_and_match `1635 -> 1675`; missing_in_system `779 -> 741`; present_but_mismatch `85 -> 83`; extra_in_system `186 -> 186`; blocked_alignment `588 -> 588`.
+- Audit artifacts: `data/results/20260423_9c4a03f/142_layer3_compare_gt_concentration_split_binding_diagnostic/changed_cells_vs_140_v1.tsv`, `field_delta_audit_vs_140_v1.tsv`, `diagnostic_metadata.json`, and `analysis/layer3_field_repairs/run142_gt_concentration_split_binding_audit_v1.tsv`.
+- GT authority note: this diagnostic did not mutate `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`; remaining QLYKLPKT value conflicts and WFDTQ4VX/YGA8VQKU drug-concentration residuals are preserved for source/GT adjudication rather than silently removed.
+
+
+## 2026-05-02 — O_volume_mL row-local direct volume authority
+
+Run 143 (`data/results/20260423_9c4a03f/143_layer3_compare_o_volume_row_local_binding_diagnostic/`) fixes a direct-system-projection boundary for `O_volume_mL` and `external_aqueous_phase_volume_mL`. Row-local table/method evidence such as `Acetone (mL)=5`, `Aqueous phase (mL)=15`, and direct solvent-volume method snippets such as `ACN (10 mL)` may be projected to the Layer3 compare surface only when the numeric value is explicitly bound to a solvent/phase volume header or direct solvent-volume phrase. The typed validator rejects concentration, ratio, and mass-shaped values for volume fields.
+
+This repair does not infer organic volume from GT values, ratios, concentration fields, paper identity, or formulation family alone. Remaining `O_volume_mL` residuals are upstream evidence/carrythrough or alignment residuals and are recorded in `o_volume_residual_audit_v1.tsv`. Diagnostic delta vs run 142: error rows `1598 -> 1585`; `O_volume_mL` present-and-match `12 -> 20`; `O_volume_mL` missing `112 -> 104`; mismatch/extra/blocked unchanged.
+
+
+## 2026-05-03 — shared entity-bound preparation parameter carrythrough (runs 144/145)
+
+- Diagnostic lineage: Stage2 compatibility `data/results/20260423_9c4a03f/116_stage2_mass_carrythrough_derived_provenance_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv` -> Stage3 relation artifacts `data/results/20260423_9c4a03f/131_stage3_polymer_mass_scoped_preparation_repair_diagnostic/` -> Stage5 `data/results/20260423_9c4a03f/144_stage5_shared_entity_parameter_carrythrough_diagnostic/` -> Layer3 compare `data/results/20260423_9c4a03f/145_layer3_compare_shared_entity_parameter_carrythrough_diagnostic/`.
+- GT authority: `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`; scope manifest: `data/results/run_20260329_1753_63b0c8d_dev15_identity_variable_preservation_exp_v1/dev15_scope.tsv`; alignment scaffold: `data/cleaned/labels/manual/dev15_formulation_skeleton/dev15_variant_alignment_scaffold_v1.tsv`.
+- Root cause: run143 fixed compare projection for row-local direct volume evidence, but Stage5 final rows often carried the organic solvent identity (`organic_solvent`) without materializing the direct preparation-context solvent volume into `organic_phase_volume_mL_*`. This was a final-table shared-parameter carrythrough boundary, not a GT or compare-field problem.
+- Generic repair: Stage5 now adds a source-backed `extract_unique_global_preparation_organic_phase_volume(source_text, solvent_name=...)` helper. It accepts only direct preparation-context solvent-volume phrases bound to the already-known organic solvent, e.g. `5 mL of acetone`, `acetone (10 mL)`, or `organic phase ... in 1 mL acetone`; it rejects assay/mobile-phase/extraction/release contexts and ambiguous multiple direct volumes. The value is written to `organic_phase_volume_mL_value` and `organic_phase_volume_mL_value_text` only when row-local values are blank.
+- Generic entity-binding repair: shared preparation drug mass carrythrough now treats an already materialized `drug_name_value` as a legitimate entity binding signal even when the drug name came from global shared scope; blank/control/helper rows remain blocked and row-local direct values still win.
+- Validation: targeted shared-carrythrough tests passed; `python3 -m unittest tests.test_compare_layer3_values_v1` passed with `Ran 170 tests ... OK`; py_compile passed for modified Stage5, compare, Stage2 table expansion, and tests.
+- Diagnostic delta vs run143: error_rows `1585 -> 1515`; present_and_match `1688 -> 1758`; missing_in_system `728 -> 658`; present_but_mismatch `83 -> 83`; extra_in_system `186 -> 186`; blocked_alignment `588 -> 588`.
+- Target field effect: `O_volume_mL` present-and-match `20 -> 90`; missing `104 -> 34`; blocked `14 -> 14`; all 70 changed cells were `missing_in_system -> present_and_match`, with 0 match regressions and 0 new mismatches.
+- Positive changed papers: `5ZXYABSU` 6 cells, `L3H2RS2H` 16 cells, `PA3SPZ28` 3 cells, `RHMJWZX8` 1 cell, `WFDTQ4VX` 18 cells, `WIVUCMYG` 26 cells.
+- Status: diagnostic-only active baseline candidate; not benchmark-valid final evidence.
+
+
+## Generic shared-parameter relation bundle diagnostic — runs 146/147/148
+
+- Date: `2026-05-03T01:43:58Z`
+- Trigger: user rejected per-field shared-parameter carrythrough as non-general architecture.
+- Code entrypoints: `src/stage3_relation/build_formulation_relation_artifacts_v1.py`; `src/stage5_benchmark/build_minimal_final_output_v1.py`; tests in `tests/test_compare_layer3_values_v1.py`.
+- Design: Stage3 relation resolution no longer uses a fixed resolved-field whitelist as the authority boundary. Arbitrary source-backed shared fields can be resolved. Stage5 loads arbitrary resolved fields and preserves all of them in `shared_parameters_json`; only governed existing core fields are additionally projected to typed benchmark-facing bundles.
+- Safety guard: arbitrary direct candidate fields are not auto-promoted unless explicitly `global_shared`; same-value group inference remains limited to governed core fields to avoid inheriting measurement/result cells.
+- Validation: Stage3 resolved rows `567 -> 788` vs run131, adding `emul_method` 196 and `emul_type` 25 with no removals; Stage5 bundle contains 651 items across 200 final rows; Layer3 compare run145 -> run148 has 0 changed cells and unchanged status counts (`error_rows 1515 -> 1515`).
+- Boundary: diagnostic-only, not benchmark-valid; no GT authority TSV modified.
+
+
+## Run149/150 diagnostic: phase solvent volume residual materializer
+
+- recorded_at: `2026-05-03T02:30:08Z`
+- baseline_compare_run_dir: `data/results/20260423_9c4a03f/148_layer3_compare_generic_shared_parameter_bundle_diagnostic`
+- candidate_stage5_run_dir: `data/results/20260423_9c4a03f/149_stage5_phase_solvent_volume_materializer_diagnostic`
+- candidate_compare_run_dir: `data/results/20260423_9c4a03f/150_layer3_compare_phase_solvent_volume_materializer_diagnostic`
+- residual_audit_tsv: `analysis/layer3_field_repairs/run148_shared_parameter_materialization_residual_audit_v1.tsv`
+- benchmark_valid: `no`
+
+### Residual-intake rule used
+
+Before accepting the repair, the run148 shared-parameter materialization residuals were frozen into a 447-row audit table. The audit excludes the 12 `WFDTQ4VX polymer_mass_mg` rows where a target payload reached final output but the compare validator correctly rejected a concentration-shaped mass value (`invalid_mass_concentration_unit`); those are validator-authority cases, not missing-materializer residuals.
+
+The first repair group is `phase_solvent_volume_preparation_materializer`, covering `external_aqueous_phase_volume_mL`, `O_volume_mL`, and `solvent_name`. The implemented positive delta is on `external_aqueous_phase_volume_mL` and the GT-surface-compatible `W2_volume_mL` alias; `O_volume_mL` and `solvent_name` remain unchanged in run150.
+
+### Repair method
+
+Stage5 now materializes a unique source-backed preparation external-aqueous phase volume onto already-admitted final rows when preparation text contains a direct aqueous/water phase volume. The materializer rejects non-preparation contexts such as assay, HPLC/mobile phase, release, or extraction contexts; it also rejects ambiguous multi-value evidence and does not overwrite row-local direct values.
+
+Layer3 compare now treats `W2_volume_mL` as a GT-surface alias for a source-backed `external_aqueous_phase_volume_mL` payload only when GT `W2_volume_mL` is nonempty and system `W2_volume_mL` is blank. The paired external-aqueous empty-GT cell is suppressed to avoid double-counting the same source-backed value as an extra. This is a bounded compare-surface compatibility normalization, not a paper-local override.
+
+### Validation
+
+- `python3 -m unittest tests.test_compare_layer3_values_v1`: `175 tests OK`
+- `python3 -m py_compile` on touched Stage5/compare/test files: passed
+- Diagnostic compare status delta: present_and_match `1758 -> 1817`; missing_in_system `658 -> 599`; present_but_mismatch `83 -> 83`; extra_in_system `186 -> 186`; blocked_alignment `588 -> 588`.
+- Error rows: `1515 -> 1456`.
+- No GT authority file was modified.
+
+
+## Run157/163 diagnostic: emulsifier/material registry guarded materialization
+
+- recorded_at: `2026-05-03T14:03:39Z`
+- baseline_compare_run_dir: `data/results/20260423_9c4a03f/150_layer3_compare_phase_solvent_volume_materializer_diagnostic`
+- candidate_stage5_run_dir: `data/results/20260423_9c4a03f/157_stage5_emulsifier_material_registry_guarded2_diagnostic`
+- candidate_compare_run_dir: `data/results/20260423_9c4a03f/163_layer3_compare_emulsifier_material_registry_guarded2_diagnostic`
+- delta_audit_tsv: `analysis/layer3_field_repairs/run150_vs_run163_emulsifier_material_registry_delta_audit_v1.tsv`
+- benchmark_valid: `no`
+
+### Repair method
+
+Stage5 now adds bounded generic row-local surfactant identity recovery and guarded concentration recovery. Concentration values from named material percentage headers are not projected unless the header has a generic surfactant/stabilizer/emulsifier role signal or encoded factor signal; this prevents a single named helper/surfactant percentage from being treated as the aggregate emulsifier/stabilizer concentration when the benchmark GT surface is a union.
+
+Stage5 material registry recovery now uses row-bound polymer evidence and bounded source-backed drug abbreviation evidence. The drug abbreviation detector rejects long/heading-like parenthetical captures so introduction/background text cannot create a `drug_name` payload.
+
+Layer3 compare now prevents polymer identity surfaces from being scored as `polymer_grade` extras when GT grade is blank, and suppresses generic identity-as-grade mismatches when the payload is only a generic polymer identity rather than a grade. Mismatched shared-carrythrough surfactant concentration values are suppressed unless they are row-local numeric authority.
+
+### Validation
+
+- `python3 -m unittest tests.test_compare_layer3_values_v1`: `181 tests OK`
+- `python3 -m py_compile` on touched Stage5/compare/test files: passed
+- Diagnostic compare status delta vs run150: present_and_match `1817 -> 1835`; missing_in_system `599 -> 583`; present_but_mismatch `83 -> 81`; extra_in_system `186 -> 165`; blocked_alignment `588 -> 588`.
+- Error rows: `1456 -> 1417`.
+- Priority-field delta: present_and_match `544 -> 561`; missing_in_system `231 -> 216`; present_but_mismatch `22 -> 20`; extra_in_system `15 -> 15`; blocked_alignment `98 -> 98`.
+- No GT authority file was modified.
+
+
+## Run165 diagnostic: reviewed split-unit GT authority and ratio/stabilizer compare guards
+
+- recorded_at: `2026-05-03T17:49:38Z`
+- source_original_gt: `data/cleaned/gt_authority/v1/dev15_layer3_values.tsv`
+- source_audited_candidate_gt: `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_audit_candidate_v1.tsv`
+- source_user_reviewed_xlsx: `analysis/layer3_field_repairs/dev15_gt_audit_review_workbook_v1.xlsx`
+- source_reviewed_gt: `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_from_xlsx_v1.tsv`
+- promoted_layer3_gt_authority: `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv`
+- raw_cell_sidecar: `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_raw_sidecar_v1.tsv`
+- transform_log_tsv: `analysis/layer3_field_repairs/dev15_gt_reviewed_split_units_transform_log_v1.tsv`
+- compare_run_dir: `data/results/20260423_9c4a03f/165_layer3_compare_reviewed_split_gt_ratio_surfactant_guard_diagnostic`
+- delta_audit_tsv: `analysis/layer3_field_repairs/run163_vs_run165_reviewed_split_gt_ratio_surfactant_delta_audit_v1.tsv`
+- benchmark_valid: `no`
+
+### GT authority derivation
+
+The promoted Layer3 GT authority is not derived from system final-table values. It is derived from the frozen DEV15 Layer3 GT, the source-audited candidate GT, and user-reviewed workbook rows where `candidate_gt_decision=reviewed` and `USER_VALUE`/`USER_NOTE` supplied corrected authority. The prior GT files are preserved and were not overwritten.
+
+The split-unit authority table keeps the original 57-column Layer3 schema for compare compatibility, but normalizes unit-bearing numeric fields so compare cells contain the numeric value where the field name already declares the unit. Examples include `polymer_mw_kDa`, mass fields ending in `_mg`, volume fields ending in `_mL`, `particle_size_nm`, `zeta_mV`, and percentage fields. Embedded units are moved out of value/unit pairs such as concentration value/unit columns. Duplicate unit surfaces such as `~-33.1 mV mV` are cleaned to numeric `-33.1` in `zeta_mV`; the original reviewed/raw cell is preserved in the sidecar.
+
+Mean ± SD measurement cells are represented in the compare authority table by the primary mean value and preserved verbatim in the raw sidecar. This avoids making `±` spacing/uncertainty formatting a false mismatch while retaining the raw cell for audit or future modeling. Current recommendation: benchmark direct extraction on the central value and keep SD/uncertainty as an optional future field family, not as part of the core value compare unless the downstream modeling task demonstrates value from uncertainty features.
+
+Non-PLGA polymers use blank LA/GA ratio fields as not-applicable. Literal `N/A` is not written to the compare authority table.
+
+### Generic compare/parser repairs included
+
+Layer3 compare now reads direction-bearing ratio headers from table-scope variables such as `Drug:Polymer ratio`. If a compact row label stores `1:10` but the target field is `polymer_to_drug_ratio_raw`, the compare surface reverses it to `10:1`; the same direction-normalization pattern is intended for other future ratio fields with explicit left/right labels.
+
+Layer3 compare no longer invents `Pluronic F68` as a stabilizer solely from generic `PLGA`/`PCL` family labels. This removes PF68 contamination in papers where source evidence says `PVA` or `Solutol HS 15`. If a row genuinely needs F68, it must come from row-local extraction, a source-backed relation/shared-parameter record, or another explicit source-bearing surface, not from polymer-family identity alone.
+
+### Scoped selected/chosen carrythrough policy
+
+If source text explicitly states a condition was selected/chosen/optimized for the whole study or for subsequent formulations, Stage3 is the right layer to represent it as a scoped relation/shared-parameter record. It must not be written as row-local table-cell evidence. Inheritance must be governed by source order and scope metadata (`evidence_span_start/end`, section/table ids, method-group ids, and relation scope), not by arbitrary prompt chunk order. If the upstream evidence block order is unavailable or unreliable, the carrythrough should remain unresolved or be queued for review rather than inferred by LLM prompt order.
+
+### Validation
+
+- `python3 -m unittest tests.test_compare_layer3_values_v1`: `183 tests OK`
+- `python3 -m py_compile src/stage5_benchmark/compare_layer3_values_to_gt_v1.py tests/test_compare_layer3_values_v1.py`: passed
+- Diagnostic compare run165 completed against the locked reviewed+split Layer3 GT authority.
+- Run165 status counts: present_and_match `1869`; missing_in_system `836`; present_but_mismatch `149`; extra_in_system `34`; blocked_alignment `588`; not_reported_in_gt `3748`; error_rows `1607`.
+- Run163→run165 deltas are not benchmark performance deltas because the Layer3 GT authority changed. They are diagnostic counts for the new authority surface.
+
+
+## Generic endpoint-aware ratio direction rule — 2026-05-03 run166
+
+The ratio direction repair is field-family generic rather than paper-specific or single-field-specific. Ratio handling now parses endpoint variables from labels/headers/text such as `Drug:Polymer`, `polymer to solvent`, `LA:GA`, `water/oil`, `organic:aqueous`, and related synonyms. It canonicalizes the left/right endpoints, compares them with the target ratio field direction, and reverses compact ratio values only when the source-declared endpoint order is the inverse of the target field. Direction-bearing ratio labels that conflict with the target ratio family are not allowed to fall back to bare numeric ratio matching.
+
+Covered ratio field family includes `la_ga_ratio_raw`, `la_ga_ratio_normalized`, `polymer_to_solvent_ratio_raw`, `polymer_to_drug_ratio_raw`, `drug_to_polymer_ratio_raw`, and `phase_ratio_raw`. Direction-neutral phase ratios require explicit endpoint labels/headers such as water/oil or organic/aqueous; bare compact ratios are not treated as phase ratios.
+
+Diagnostic validation: run166 (`data/results/20260423_9c4a03f/166_layer3_compare_generic_ratio_direction_diagnostic`) used the locked reviewed+split Layer3 GT authority and the accepted Stage5 final table. Relative to run165, `error_rows` changed `1607 -> 1603`; total `extra_in_system` changed `34 -> 30`; `missing_in_system`, `present_but_mismatch`, and `blocked_alignment` were unchanged. Benchmark status remains diagnostic-only (`benchmark_valid=no`).
+
+
+## Diagnostic note: generic source-defined concentration-factor materialization (run172)
+
+Date: 2026-05-03
+
+Diagnostic lineage only (`benchmark_valid=no`):
+
+- Stage5: `data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic`
+- Layer3 compare: `data/results/20260423_9c4a03f/172_layer3_compare_generic_concentration_factor_materialization_projected_diagnostic`
+- GT authority used for compare: `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv`
+
+Rule recorded:
+
+- Source-defined coded concentration factors may be materialized generically when a row already has a row-local factor assignment and the source defines the factor role/material, e.g. `X1`/`X2`/`X3` definitions or `cMaterial, concentration of material (unit)` definitions.
+- This is not a row-generation rule and not design-space expansion. It only projects admitted row-local assignments into direct fields such as `drug_concentration_value/unit`, `polymer_concentration_value/unit`, and `surfactant_concentration_text`, with source-defined material identity when uniquely bound.
+- Ambiguous or non-numeric factor-assignment values are not materialized as concentration values.
+
+Diagnostic result vs run166:
+
+- `error_rows`: `1603 -> 1559`
+- `missing_in_system`: `836 -> 780`
+- `present_and_match`: `1869 -> 1913`
+- `present_but_mismatch`: `149 -> 161`
+- `extra_in_system`: `30 -> 30`
+- `blocked_alignment`: `588 -> 588`
+
+Audit files:
+
+- `analysis/layer3_field_repairs/run166_to_run172_generic_concentration_factor_delta_audit_v1.tsv`
+- `analysis/layer3_field_repairs/run172_top3_paper_missing_boundary_audit_v1.tsv`
+
+## Diagnostic note: row-local formulation identity drug-name rebinding (run173)
+
+- Trigger: `L3H2RS2H` Table 3/7-style rows preserve a row-local `formulation_identity_label` / `table_row_id` such as `3-MeOXAN nanocapsules (Theoretical concentration 1000 mg/mL)` or `XAN nanocapsules (Theoretical concentration 200 mg/mL)`, while `drug_name_value_text` remains blank and Layer3 `drug_name` is `missing_in_system`.
+- Repair: add a bounded generic compare-surface rebinding that extracts a drug/material name only from direct row-local identity labels of the form `<material> [loaded] PLGA/nano*`, with blank/control/placebo/physical-mixture labels and ambiguous multi-label rows rejected.
+- Guardrails: no paper-key hardcode; no prose mining; no GT backfill; no row creation; existing direct `drug_name_value_text` remains higher authority; ambiguous candidate sets return blank.
+- Validation: `python3 -m unittest tests.test_compare_layer3_values_v1` passed with 191 tests; `python3 -m py_compile src/stage5_benchmark/compare_layer3_values_to_gt_v1.py tests/test_compare_layer3_values_v1.py` passed.
+- Diagnostic replay: `data/results/20260423_9c4a03f/173_layer3_compare_row_identity_drug_name_rebinding_diagnostic/` using Stage5 final table `data/results/20260423_9c4a03f/171_stage5_generic_concentration_factor_materialization_projected_diagnostic/final_formulation_table_v1.tsv` and locked Layer3 GT `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_reviewed_split_units_v1.tsv`.
+- Delta vs run172: `error_rows 1559 -> 1543`; `present_and_match 1913 -> 1929`; `missing_in_system 780 -> 764`; `present_but_mismatch 161 -> 161`; `extra_in_system 30 -> 30`; `blocked_alignment 588 -> 588`. Changed cells: 16, all `L3H2RS2H drug_name`, all `missing_in_system -> present_and_match`; non-target changed cells: 0.
+- Delta audit: `analysis/layer3_field_repairs/run172_to_run173_row_identity_drug_name_delta_audit_v1.tsv`.
+- Residual audit context: `analysis/layer3_field_repairs/run172_l3h2rs2h_missing_boundary_audit_v1.tsv` remains the working boundary audit for unresolved L3H2RS2H shared-material, shared-volume, surfactant-name, and table-metric tails.
+
+## Source-completed Layer3 GT authority promotion (v1)
+
+Date: 2026-05-03.
+
+Promoted authority table:
+
+- `data/cleaned/gt_authority/v1/dev15_layer3_values_gt_source_completed_authority_v1.tsv`
+
+Basis:
+
+- source-completed candidate v3;
+- direct source-backed updates only;
+- derived candidates excluded from current direct-compare GT authority;
+- user review of `L3H2RS2H` scope ambiguity.
+
+User-confirmed `L3H2RS2H` scope decision:
+
+> For the size/PDI/zeta rows, the original PDF figure/table legend indicates exact cases only: “a XAN nanocapsules with theoretical concentration of 600 mg/mL. b 3-MeOXAN nanocapsules with theoretical concentration of 1400 mg/mL.” These size/PDI/zeta values are one situation and are not shared with other particle/concentration rows. Other concentration rows keep EE only when directly reported.
+
+Consequence:
+
+- unresolved manual confirmation rows: 0;
+- non-selected `L3H2RS2H` `particle_size_nm`, `pdi`, and `zeta_mV` cells remain blank;
+- exact legend-specified rows retain direct size/PDI/zeta values;
+- no formula-derived values are introduced into current direct GT authority.
+

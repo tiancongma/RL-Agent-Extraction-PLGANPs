@@ -110,9 +110,12 @@ Fine-grained governance mapping:
   - `S3-1 Relation materialization`
   - `S3-2 Relation resolution`
 - Stage5:
-  - `S5-1 Final candidate materialization`
-  - `S5-2 Filtering / normalization`
-  - `S5-3 Final table`
+  - `S5-1 Fixed-row candidate intake`
+  - `S5-2 Deterministic direct materialization`
+  - `S5-3 LLM-assisted direct value candidate extraction`
+  - `S5-4 Value authority validation and merge`
+  - `S5-5 Derived reasoning / calculated value materialization`
+  - `S5-6 Final table closure and audit export`
 - Benchmark:
   - `B-1 GT compare`
 - Cross-cutting layers:
@@ -166,7 +169,9 @@ The system canonical production path is:
 5. Stage 4: optionally generate candidate-level diagnostic and reviewer-facing
    artifacts
 6. Stage 5: close candidate rows into final formulation rows with optional
-   Stage 3 relation provenance
+   Stage 3 relation provenance, deterministic direct value materialization,
+   optional LLM-assisted direct value candidates, authority validation, and
+   separately-provenanced derived value sidecars
 
 Active-transition note:
 
@@ -878,10 +883,14 @@ Consumed by downstream stage:
 
 Purpose:
 Convert candidate formulation-instance rows into final one-row-per-formulation
-records.
+records and auditable value-layer sidecars without changing the formulation
+universe authorized upstream.
 
-Stage 5 is a materialization layer. It must not perform semantic inference or
-same-paper donor search.
+Stage 5 is a materialization, validation, and final-table closure layer. It must
+not perform semantic inference for formulation membership or same-paper donor
+search. Optional LLM use inside Stage5 is allowed only after the row universe is
+fixed and only as direct value candidate extraction with evidence, scope, and
+validator review.
 
 Benchmark-validity rule:
 

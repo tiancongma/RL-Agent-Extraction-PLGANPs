@@ -63,8 +63,6 @@ CORE_FIXED_FIELDS = {
     "homogenization_time_min",
     "stirring_time_h",
     "evaporation_time_h",
-    "centrifugation_g",
-    "centrifugation_time_min",
     "ee_percent",
     "lc_percent",
     "dl_percent",
@@ -141,8 +139,6 @@ NUMERIC_FIELDS = {
     "homogenization_time_min",
     "stirring_time_h",
     "evaporation_time_h",
-    "centrifugation_g",
-    "centrifugation_time_min",
     "ee_percent",
     "lc_percent",
     "dl_percent",
@@ -160,6 +156,19 @@ RATIO_FIELDS = {
     "phase_ratio_raw",
 }
 
+# Canonical endpoint order for ratio fields whose schema encodes direction.
+# `phase_ratio_raw` is intentionally left direction-neutral: when source labels
+# name endpoints such as water:oil or organic:aqueous, compare keeps the named
+# endpoints and canonicalizes reversed named ratios rather than imposing one
+# global phase direction.
+RATIO_FIELD_ENDPOINTS = {
+    "la_ga_ratio_raw": ("la", "ga"),
+    "la_ga_ratio_normalized": ("la", "ga"),
+    "polymer_to_solvent_ratio_raw": ("polymer", "solvent"),
+    "polymer_to_drug_ratio_raw": ("polymer", "drug"),
+    "drug_to_polymer_ratio_raw": ("drug", "polymer"),
+}
+
 SYSTEM_FIELD_MAP = {
     "polymer_name": {"column": "polymer_name_raw", "source": "direct_extracted", "evidence": "supported"},
     "polymer_grade": {"column": "polymer_name_raw", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
@@ -175,8 +184,8 @@ SYSTEM_FIELD_MAP = {
     "polymer_to_drug_ratio_raw": {"column": "polymer_to_drug_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
     "drug_name": {"column": "drug_name_value_text", "source": "direct_extracted", "evidence": "supported"},
     "drug_mass_mg": {"column": "drug_feed_amount_text_value_text", "source": "direct_extracted", "evidence": "supported"},
-    "drug_concentration_value": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
-    "drug_concentration_unit": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
+    "drug_concentration_value": {"column": "drug_concentration_value_value_text", "source": "direct_extracted", "evidence": "supported"},
+    "drug_concentration_unit": {"column": "drug_concentration_unit_value_text", "source": "direct_extracted", "evidence": "supported"},
     "drug_to_polymer_ratio_raw": {"column": "drug_to_polymer_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
     "surfactant_name": {"column": "surfactant_name_value_text", "source": "direct_extracted", "evidence": "supported"},
     "surfactant_mass_mg": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
@@ -189,7 +198,7 @@ SYSTEM_FIELD_MAP = {
     "co_solvent_name": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "W1_volume_mL": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "O_volume_mL": {"column": "organic_phase_volume_mL_value_text", "source": "direct_extracted", "evidence": "supported"},
-    "W2_volume_mL": {"column": "external_aqueous_phase_volume_mL_value_text", "source": "direct_extracted", "evidence": "supported"},
+    "W2_volume_mL": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "external_aqueous_phase_volume_mL": {"column": "external_aqueous_phase_volume_mL_value_text", "source": "direct_extracted", "evidence": "supported"},
     "internal_aqueous_phase_volume_mL": {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"},
     "phase_ratio_raw": {"column": "phase_ratio_raw_value_text", "source": "direct_extracted", "evidence": "supported"},
@@ -327,6 +336,21 @@ def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *,
         strict = gt == sysv
         canonicalized = bool(gt_parts) and gt_parts == sys_parts
         return strict, canonicalized, canonicalized
+    if field_name.endswith("_concentration_unit"):
+        gt_unit = normalize_value_with_lexicon(field_name, gt, paper_key=paper_key, lexicon=lexicon)
+        sys_unit = normalize_value_with_lexicon(field_name, sysv, paper_key=paper_key, lexicon=lexicon)
+        def _canonical_concentration_unit_surface(value: str) -> str:
+            unit = normalize_text(value).lower()
+            unit = re.sub(r"\s*/\s*", "/", unit)
+            unit = re.sub(r"%\s+", "%", unit)
+            unit = unit.replace("% w/v", "%w/v").replace("% w/w", "%w/w")
+            unit = unit.replace("%w/v", "%w/v").replace("%w/w", "%w/w")
+            return unit
+        gt_unit = _canonical_concentration_unit_surface(gt_unit)
+        sys_unit = _canonical_concentration_unit_surface(sys_unit)
+        strict = gt == sysv
+        canonicalized = bool(gt_unit) and gt_unit == sys_unit
+        return strict, canonicalized, canonicalized
     if field_name == "method_type":
         gt_c = canonicalize_method_type(gt, paper_key=paper_key, lexicon=lexicon)
         sys_c = canonicalize_method_type(sysv, paper_key=paper_key, lexicon=lexicon)
@@ -336,19 +360,26 @@ def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *,
         gt_c = _canonicalize_field_text(field_name, gt_n)
         sys_c = _canonicalize_field_text(field_name, sys_n)
     strict = gt_c == sys_c
-    if field_name in {"drug_to_polymer_ratio_raw", "polymer_to_drug_ratio_raw"}:
+    if field_name in RATIO_FIELDS:
         gt_named = _extract_named_ratio_label(gt)
         sys_named = _extract_named_ratio_label(sysv)
         if gt_named and sys_named:
             gt_left, gt_right, gt_ratio = gt_named
             sys_left, sys_right, sys_ratio = sys_named
-            if not (_named_ratio_direction_is_compatible(field_name, gt_left, gt_right) and _named_ratio_direction_is_compatible(field_name, sys_left, sys_right)):
-                return strict, False, False
-            canonicalized = (
-                canonicalize_text(gt_left) == canonicalize_text(sys_left)
-                and canonicalize_text(gt_right) == canonicalize_text(sys_right)
-                and canonicalize_text(gt_ratio) == canonicalize_text(sys_ratio)
-            )
+            gt_endpoints = _ratio_endpoints_for_named_label(gt_left, gt_right)
+            sys_endpoints = _ratio_endpoints_for_named_label(sys_left, sys_right)
+            sys_ratio_for_compare = sys_ratio
+            if gt_endpoints == (sys_endpoints[1], sys_endpoints[0]):
+                sys_ratio_for_compare = _reverse_ratio_text(sys_ratio)
+                sys_endpoints = gt_endpoints
+            target_endpoints = _ratio_target_endpoints(field_name)
+            if target_endpoints and gt_endpoints != target_endpoints:
+                if gt_endpoints == (target_endpoints[1], target_endpoints[0]):
+                    gt_ratio = _reverse_ratio_text(gt_ratio)
+                    gt_endpoints = target_endpoints
+                else:
+                    return strict, False, False
+            canonicalized = gt_endpoints == sys_endpoints and canonicalize_text(gt_ratio) == canonicalize_text(sys_ratio_for_compare)
             return strict, canonicalized, canonicalized
         gt_ratio_candidates = _extract_ratio_candidates(gt)
         sys_ratio_candidates = _extract_ratio_candidates(sysv)
@@ -693,6 +724,40 @@ def _value_from_row_local_solvent_volume_header(row: dict[str, str]) -> str:
     if len(hits) == 1:
         return next(iter(hits))
     return ""
+
+
+def _row_local_phase_volume_value(field_name: str, row: dict[str, str]) -> str:
+    if field_name not in VOLUME_FIELDS:
+        return ""
+    text_parts: list[str] = []
+    for column in ("change_descriptions", "supporting_evidence_refs", "evidence_span_text"):
+        raw = normalize_text(row.get(column))
+        if raw:
+            text_parts.append(raw)
+    text = " | ".join(text_parts)
+    if not text:
+        return ""
+    if field_name == "O_volume_mL":
+        solvent_pattern = r"(?:acetone|acn|dichloromethane|dcm|ethyl\s+acetate|acetonitrile|chloroform|dmso|ethanol|methanol|organic\s+phase|organic\s+solvent)"
+        patterns = [
+            rf"(?i)(?:{solvent_pattern})\s*\((?:m?l|ml|µl|ul|volume)\)\s*['\")]*\s*[=:]\s*([-+]?\d+(?:\.\d+)?)",
+            rf"(?i)(?:{solvent_pattern})(?:\s+volume)?\s*[=:]\s*([-+]?\d+(?:\.\d+)?)\s*(?:m[lL]|µ[lL]|u[lL])",
+            rf"(?i)(?:{solvent_pattern})\s*\(\s*([-+]?\d+(?:\.\d+)?)\s*(?:m[lL]|µ[lL]|u[lL])\s*\)",
+            rf"(?i)(?:dissolved|dispersed|solution|polymer\s+solution|drug\s+solution)[^.\n]{{0,90}}?\b([-+]?\d+(?:\.\d+)?)\s*(?:m[lL]|µ[lL]|u[lL])\s+(?:of\s+)?(?:{solvent_pattern})\b",
+            rf"(?i)(?:dissolved|dispersed|solution|polymer\s+solution|drug\s+solution)[^.\n]{{0,90}}?(?:{solvent_pattern})\s*\(\s*([-+]?\d+(?:\.\d+)?)\s*(?:m[lL]|µ[lL]|u[lL])\s*\)",
+        ]
+    elif field_name == "external_aqueous_phase_volume_mL":
+        patterns = [
+            r"(?i)(?:aqueous\s+phase|external\s+aqueous\s+phase|water|aqueous)\s*\((?:m?l|ml|µl|ul|volume)\)\s*['\")]*\s*[=:]\s*([-+]?\d+(?:\.\d+)?)",
+            r"(?i)(?:aqueous\s+phase|external\s+aqueous\s+phase|water|aqueous)(?:\s+volume)?\s*[=:]\s*([-+]?\d+(?:\.\d+)?)\s*(?:m[lL]|µ[lL]|u[lL])",
+        ]
+    else:
+        return ""
+    hits = {m.group(1) for pattern in patterns for m in re.finditer(pattern, text)}
+    if len(hits) != 1:
+        return ""
+    raw_header = "aqueous phase (mL)" if field_name in {"W2_volume_mL", "external_aqueous_phase_volume_mL"} else "organic phase (mL)"
+    return _format_evidence_metric_value(field_name, next(iter(hits)), raw_header)
 
 
 def _parse_supporting_evidence_refs(row: dict[str, str]) -> list[dict[str, Any]]:
@@ -1045,6 +1110,9 @@ EVIDENCE_METRIC_PATTERNS: dict[str, tuple[str, ...]] = {
 ROW_LOCAL_BINDING_AUTHORITY_FIELDS = {
     "drug_mass_mg",
     "polymer_mass_mg",
+    "O_volume_mL",
+    "W2_volume_mL",
+    "external_aqueous_phase_volume_mL",
     "polymer_concentration_value",
     "polymer_concentration_unit",
     "drug_concentration_value",
@@ -1061,6 +1129,7 @@ ROW_LOCAL_BINDING_AUTHORITY_FIELDS = {
 }
 
 MASS_FIELDS = {"drug_mass_mg", "polymer_mass_mg", "surfactant_mass_mg"}
+VOLUME_FIELDS = {"O_volume_mL", "W1_volume_mL", "W2_volume_mL", "external_aqueous_phase_volume_mL"}
 CONCENTRATION_FIELDS = {
     "polymer_concentration_value",
     "polymer_concentration_unit",
@@ -1117,6 +1186,18 @@ def validate_value_for_field(field_name: str, value: str, *, raw_header: str = "
         if raw_header and not re.search(r"\b(?:mg|mass|amount|feed|drug|polymer|plga|pcl|pla|gatifloxacin|rhodamine|artemether|dexibuprofen|kgn|kartogenin)\b", header):
             return False, "invalid_mass_header_semantics"
         return True, "typed_direct_mass_value"
+    if field_name in VOLUME_FIELDS:
+        if parse_numeric(clean) is None:
+            return False, "invalid_volume_no_numeric_value"
+        if _value_is_ratio_like(clean):
+            return False, "invalid_volume_ratio_like_value"
+        if _value_has_concentration_unit(clean):
+            return False, "invalid_volume_concentration_unit"
+        if _value_has_mass_unit(clean):
+            return False, "invalid_volume_mass_unit"
+        if raw_header and not re.search(r"\b(?:ml|milliliter|millilitre|volume|phase|aqueous|water|acetone|dichloromethane|ethyl\s+acetate|acetonitrile|chloroform|dmso|ethanol|methanol)\b", header):
+            return False, "invalid_volume_header_semantics"
+        return True, "typed_direct_volume_value"
     if field_name in CONCENTRATION_FIELDS:
         if field_name.endswith("_unit"):
             if clean in {"%", "%w/v", "% w/v", "mg/mL", "mg/ml"} or _value_has_concentration_unit(clean):
@@ -1174,6 +1255,14 @@ def _format_evidence_metric_value(field_name: str, raw_value: str, raw_header: s
             return clean
         if re.search(r"\bmg\b", canonicalize_text(raw_header)):
             return f"{clean} mg"
+        return clean
+    if field_name in VOLUME_FIELDS:
+        if parse_numeric(clean) is None:
+            return ""
+        if _value_has_volume_unit(clean):
+            return clean
+        if re.search(r"\b(?:ml|milliliter|millilitre)\b", canonicalize_text(raw_header)):
+            return f"{clean} mL"
         return clean
     if field_name.endswith("_unit") and field_name in CONCENTRATION_FIELDS:
         unit_value = extract_unit_from_combined_concentration_text(clean) or extract_unit_from_combined_concentration_text(raw_header)
@@ -1234,6 +1323,69 @@ def _parse_table_cell_bindings(row: dict[str, str]) -> list[dict[str, str]]:
             continue
         bindings.append({str(key): normalize_text(value) for key, value in item.items()})
     return bindings
+
+
+def _parse_table_row_variable_assignments(row: dict[str, str]) -> list[dict[str, str]]:
+    raw = row.get("table_row_variable_assignments_json") or ""
+    if not raw:
+        return []
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError:
+        return []
+    entries = parsed if isinstance(parsed, list) else [parsed]
+    results: list[dict[str, str]] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        results.append({str(key): normalize_text(value) for key, value in entry.items()})
+    return results
+
+
+def _extract_row_identity_drug_name_from_label(label: str) -> str:
+    text = normalize_text(label)
+    if not text:
+        return ""
+    clean = text.replace("−", "-").strip()
+    lower = clean.lower()
+    if re.search(r"\b(?:empty|blank|placebo|control|physical\s+mixture)\b", lower):
+        return ""
+    match = re.match(
+        r"^\s*([A-Za-z0-9][A-Za-z0-9+./\-–—\s]{0,80}?)\s*(?:-?\s*loaded)?\s+(?:plga\s+)?(?:nano(?:capsules|spheres|particles)|ncs?|nps?)\b",
+        clean,
+        flags=re.I,
+    )
+    if not match:
+        return ""
+    candidate = normalize_text(match.group(1))
+    candidate = re.sub(r"\s+", " ", candidate).strip(" -–—,;")
+    if not candidate or len(candidate) > 80:
+        return ""
+    if re.search(r"\b(?:plga|polymer|nanocapsules?|nanospheres?|nanoparticles?|formulations?)\b", candidate, flags=re.I):
+        return ""
+    if not re.search(r"[A-Za-z]", candidate):
+        return ""
+    return candidate
+
+
+def _row_identity_drug_name_value(row: dict[str, str], field_name: str) -> str:
+    if field_name != "drug_name":
+        return ""
+    if normalize_text(row.get("drug_name_value_text")):
+        return ""
+    labels: list[str] = []
+    for entry in _parse_table_row_variable_assignments(row):
+        label = normalize_text(entry.get("formulation_identity_label"))
+        if label:
+            labels.append(label)
+    table_row_id = normalize_text(row.get("table_row_id"))
+    if "::" in table_row_id:
+        labels.append(table_row_id.split("::", 1)[1])
+    candidates = {_extract_row_identity_drug_name_from_label(label) for label in labels}
+    candidates.discard("")
+    if len(candidates) == 1:
+        return next(iter(candidates))
+    return ""
 
 
 def _extract_row_local_assignment_metric_value(field_name: str, row: dict[str, str], *, paper_key: str = "") -> str:
@@ -1490,29 +1642,73 @@ def _is_polymer_like_ratio_token(token: str) -> bool:
     return any(marker in text for marker in polymer_markers)
 
 
+def _canonical_ratio_endpoint_token(value: str) -> str:
+    token = canonicalize_text(value)
+    token = token.replace("poly lactic co glycolic acid", "plga")
+    token = token.replace("poly lactide co glycolide", "plga")
+    token = token.replace("poly lactide glycolide", "plga")
+    token = token.replace("poly lactic acid", "pla")
+    token = token.replace("poly caprolactone", "pcl")
+    if token in {"la", "lactide", "lactic", "lacticacid", "lactate"} or "lactide" in token or "lactic" in token:
+        return "la"
+    if token in {"ga", "glycolide", "glycolic", "glycolicacid"} or "glycolide" in token or "glycolic" in token:
+        return "ga"
+    if token in {"drug", "api", "payload", "active", "dxi", "kgf", "kgn", "itz", "dox", "kg"}:
+        return "drug"
+    if _is_polymer_like_ratio_token(token) or token in {"plga", "pla", "pcl", "polymer"}:
+        return "polymer"
+    if token in {"solvent", "organic_solvent", "organic", "acetone", "dcm", "dichloromethane", "ethyl_acetate", "chloroform", "acetonitrile"}:
+        return "solvent"
+    if token in {"water", "aqueous", "external_aqueous", "internal_aqueous", "w", "w1", "w2"}:
+        return "water"
+    if token in {"oil", "o", "organic_phase", "organic"}:
+        return "oil"
+    if token in {"aqueous_phase", "water_phase"}:
+        return "water"
+    return token
+
+
+def _extract_named_ratio_labels(text: str) -> list[tuple[str, str, str]]:
+    labels: list[tuple[str, str, str]] = []
+    for match in re.finditer(
+        r"(?i)\b([A-Za-z][A-Za-z0-9\-®β ]{0,40}?)\s*[:/]\s*([A-Za-z][A-Za-z0-9\-®β ]{0,40}?)\s*(?:ratio)?\s*(?:[=:]|is|of)?\s*(\d+(?:\.\d+)?\s*[:/]\s*\d+(?:\.\d+)?)",
+        normalize_text(text),
+    ):
+        left = normalize_text(match.group(1).replace(" ", ""))
+        right = normalize_text(match.group(2).replace(" ", ""))
+        ratio = normalize_text(match.group(3).replace(" ", "").replace("/", ":"))
+        labels.append((left, right, ratio))
+    return labels
+
+
 def _extract_named_ratio_label(text: str) -> tuple[str, str, str] | None:
-    named_match = re.search(
-        r"(?i)\b([A-Za-z][A-Za-z0-9\-®β]+)\s*:\s*([A-Za-z][A-Za-z0-9\-®β]+)\s*(?:ratio)?\s*[=:]?\s*(\d+(?:\.\d+)?\s*:\s*\d+(?:\.\d+)?)",
-        text,
-    )
-    if not named_match:
-        return None
-    left = normalize_text(named_match.group(1).replace(" ", ""))
-    right = normalize_text(named_match.group(2).replace(" ", ""))
-    ratio = normalize_text(named_match.group(3).replace(" ", ""))
-    return left, right, ratio
+    labels = _extract_named_ratio_labels(text)
+    return labels[0] if labels else None
+
+
+def _ratio_endpoints_for_named_label(left: str, right: str) -> tuple[str, str]:
+    return (_canonical_ratio_endpoint_token(left), _canonical_ratio_endpoint_token(right))
+
+
+def _ratio_target_endpoints(field_name: str) -> tuple[str, str] | None:
+    return RATIO_FIELD_ENDPOINTS.get(field_name)
 
 
 def _named_ratio_direction_is_compatible(field_name: str, left: str, right: str) -> bool:
-    left_polymer = _is_polymer_like_ratio_token(left)
-    right_polymer = _is_polymer_like_ratio_token(right)
-    if left_polymer == right_polymer:
+    target = _ratio_target_endpoints(field_name)
+    if not target:
         return False
-    if field_name == "polymer_to_drug_ratio_raw":
-        return left_polymer and not right_polymer
-    if field_name == "drug_to_polymer_ratio_raw":
-        return (not left_polymer) and right_polymer
-    return False
+    return _ratio_endpoints_for_named_label(left, right) == target
+
+
+def _field_for_ratio_endpoints(left: str, right: str) -> str:
+    endpoints = (_canonical_ratio_endpoint_token(left), _canonical_ratio_endpoint_token(right))
+    for field_name, target in RATIO_FIELD_ENDPOINTS.items():
+        if endpoints == target:
+            return field_name
+    if endpoints[0] != endpoints[1] and endpoints[0] and endpoints[1]:
+        return f"{endpoints[0]}:{endpoints[1]}"
+    return ""
 
 
 def _extract_ratio_candidates(text: str) -> list[str]:
@@ -1530,9 +1726,96 @@ def _extract_ratio_candidates(text: str) -> list[str]:
     return out
 
 
-def _resolve_ratio_from_label_tokens(field_name: str, row: dict[str, str]) -> str:
-    if field_name not in {"drug_to_polymer_ratio_raw", "polymer_to_drug_ratio_raw"}:
+def _reverse_ratio_text(ratio: str) -> str:
+    match = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)\s*", normalize_text(ratio))
+    if not match:
+        return ratio
+    return f"{match.group(2)}:{match.group(1)}"
+
+
+def _ratio_label_directions_from_text(text: str) -> list[str]:
+    clean = canonicalize_text(text)
+    if not clean:
+        return []
+    directions: list[str] = []
+    # Generic `<left>:<right> ratio` / `<left> to <right> ratio` discovery.
+    endpoint_pattern = r"(drug|polymer|plga|poly\w*|solvent|organic(?: phase)?|aqueous(?: phase)?|water|oil|la|lactide|lactic|ga|glycolide|glycolic)"
+    for match in re.finditer(endpoint_pattern + r"\s*(?::|/|\bto\b|-)\s*" + endpoint_pattern + r"(?:\s+ratio)?", clean):
+        left = match.group(1)
+        right = match.group(2)
+        if _canonical_ratio_endpoint_token(left) == _canonical_ratio_endpoint_token(right):
+            continue
+        field = _field_for_ratio_endpoints(left, right)
+        if field:
+            directions.append(field)
+        else:
+            # Direction-neutral ratio such as water:oil / oil:water.
+            directions.append(f"{_canonical_ratio_endpoint_token(left)}:{_canonical_ratio_endpoint_token(right)}")
+    # Backward-compatible explicit phrases not always caught by the endpoint regex.
+    if re.search(r"\bdrug\b\s*[:/\-]\s*\bpolymer\b|\bdrug\s+to\s+polymer\b", clean):
+        directions.append("drug_to_polymer_ratio_raw")
+    if re.search(r"\bpolymer\b\s*[:/\-]\s*\bdrug\b|\bpolymer\s+to\s+drug\b", clean):
+        directions.append("polymer_to_drug_ratio_raw")
+    seen: set[str] = set()
+    out: list[str] = []
+    for direction in directions:
+        if direction and direction not in seen:
+            seen.add(direction)
+            out.append(direction)
+    return out
+
+
+def _ratio_label_direction_from_text(text: str) -> str:
+    directions = _ratio_label_directions_from_text(text)
+    return directions[0] if len(directions) == 1 else ""
+
+
+def _table_ratio_header_directions(row: dict[str, str]) -> list[str]:
+    """Return ordered ratio directions declared by table-scope variable headers."""
+    header_texts: list[str] = []
+    for field in ("table_variable_roles_json", "table_formulation_scopes_json", "table_row_variable_assignments_json", "supporting_evidence_refs", "change_descriptions"):
+        raw = normalize_text(row.get(field))
+        if raw:
+            header_texts.append(raw)
+    directions: list[str] = []
+    for text in header_texts:
+        for direction in _ratio_label_directions_from_text(text):
+            if direction not in directions:
+                directions.append(direction)
+    return directions
+
+
+def _table_ratio_header_direction(row: dict[str, str]) -> str:
+    directions = _table_ratio_header_directions(row)
+    return directions[0] if len(directions) == 1 else ""
+
+
+def _coerce_ratio_for_target_field(ratio: str, *, declared_field: str, target_field: str) -> str:
+    if not ratio:
+        return ratio
+    declared_endpoints = RATIO_FIELD_ENDPOINTS.get(declared_field)
+    if declared_endpoints is None and ":" in normalize_text(declared_field):
+        left, right = normalize_text(declared_field).split(":", 1)
+        declared_endpoints = (_canonical_ratio_endpoint_token(left), _canonical_ratio_endpoint_token(right))
+    target_endpoints = RATIO_FIELD_ENDPOINTS.get(target_field)
+    if declared_endpoints and target_endpoints:
+        if declared_endpoints == target_endpoints:
+            return ratio
+        if declared_endpoints == (target_endpoints[1], target_endpoints[0]):
+            return _reverse_ratio_text(ratio)
         return ""
+    # Direction-neutral fields such as phase_ratio_raw keep source order unless
+    # the target field itself declares endpoints.
+    if not target_endpoints:
+        return ratio
+    return ratio if declared_field == target_field else ""
+
+
+def _resolve_ratio_from_label_tokens(field_name: str, row: dict[str, str]) -> str:
+    if field_name not in RATIO_FIELDS:
+        return ""
+    table_declared_directions = _table_ratio_header_directions(row)
+    table_declared_direction = table_declared_directions[0] if len(table_declared_directions) == 1 else ""
     label_candidate_texts = [
         normalize_text(row.get("raw_formulation_label")),
         normalize_text(row.get("representative_source_raw_formulation_label")),
@@ -1542,34 +1825,64 @@ def _resolve_ratio_from_label_tokens(field_name: str, row: dict[str, str]) -> st
     ]
     key_fields = _parse_decision_key_fields(row)
     identity_vars = _parse_identity_variables(key_fields.get("identity_variables", ""))
-    for text in label_candidate_texts:
+
+    def resolve_from_text(text: str) -> str:
         if not text:
-            continue
-        named_ratio = _extract_named_ratio_label(text)
-        if named_ratio:
-            left, right, ratio = named_ratio
-            if _named_ratio_direction_is_compatible(field_name, left, right):
-                return f"{left}:{right} ratio={ratio}"
+            return ""
+        named_labels = _extract_named_ratio_labels(text)
+        for left, right, ratio in named_labels:
+            declared_field = _field_for_ratio_endpoints(left, right)
+            if not declared_field and field_name == "phase_ratio_raw":
+                endpoints = _ratio_endpoints_for_named_label(left, right)
+                if endpoints[0] != endpoints[1] and endpoints[0] in {"water", "oil", "solvent"} | {"organic", "aqueous"}:
+                    return f"{endpoints[0]}:{endpoints[1]} ratio={ratio}"
+            if declared_field:
+                coerced = _coerce_ratio_for_target_field(ratio, declared_field=declared_field, target_field=field_name)
+                if coerced:
+                    return f"{left}:{right} ratio={coerced}" if declared_field == field_name else coerced
             # Direction-bearing named labels must not fall back to compact numeric-only
             # matching when the left/right material order conflicts with the target field.
-            continue
+        if named_labels:
+            return ""
         ratio_candidates = _extract_ratio_candidates(text)
-        if ratio_candidates:
-            return ratio_candidates[0]
+        if not ratio_candidates:
+            return ""
+        if table_declared_direction:
+            return _coerce_ratio_for_target_field(ratio_candidates[0], declared_field=table_declared_direction, target_field=field_name)
+        if table_declared_directions:
+            routed: list[str] = []
+            for idx, ratio in enumerate(ratio_candidates):
+                if idx >= len(table_declared_directions):
+                    break
+                coerced = _coerce_ratio_for_target_field(ratio, declared_field=table_declared_directions[idx], target_field=field_name)
+                if coerced:
+                    routed.append(coerced)
+            if len(routed) == 1:
+                return routed[0]
+            if routed and not _ratio_target_endpoints(field_name):
+                return " | ".join(routed)
+            return ""
+        if _ratio_target_endpoints(field_name) and len(ratio_candidates) > 1:
+            # Legacy first-token binding is allowed only for compact drug/polymer
+            # labels. Other directed ratios need named/header endpoints, otherwise
+            # a drug:polymer token can be misread as LA:GA or polymer:solvent.
+            if field_name not in {"drug_to_polymer_ratio_raw", "polymer_to_drug_ratio_raw"}:
+                return ""
+        if not _ratio_target_endpoints(field_name):
+            # Direction-neutral generic ratio fields such as phase_ratio_raw need
+            # named/header endpoints (water:oil, organic:aqueous, etc.). Do not
+            # treat any bare compact ratio in a row label as a phase ratio.
+            return ""
+        return ratio_candidates[0]
+
+    for text in label_candidate_texts:
+        resolved = resolve_from_text(text)
+        if resolved:
+            return resolved
     for text in identity_vars.values():
-        if not text:
-            continue
-        named_ratio = _extract_named_ratio_label(text)
-        if named_ratio:
-            left, right, ratio = named_ratio
-            if _named_ratio_direction_is_compatible(field_name, left, right):
-                return f"{left}:{right} ratio={ratio}"
-            continue
-        ratio_candidates = _extract_ratio_candidates(text)
-        if ratio_candidates:
-            if len(ratio_candidates) == 1:
-                return ratio_candidates[0]
-            return " | ".join(ratio_candidates)
+        resolved = resolve_from_text(text)
+        if resolved:
+            return resolved
     return ""
 
 
@@ -1846,10 +2159,6 @@ SHARED_CARRYTHROUGH_RULES: tuple[SharedCarrythroughRule, ...] = (
                 else "acetone" if _raw_label_contains_token(row, "plga")
                 else ""
             ),
-            "stabilizer_name": lambda row: (
-                "Pluronic F68" if (_raw_label_contains_token(row, "pcl") or _raw_label_contains_token(row, "plga"))
-                else ""
-            ),
         },
     ),
     SharedCarrythroughRule(
@@ -2011,6 +2320,84 @@ def _normalize_validated_system_value(
     return normalized, detail
 
 
+def _row_identity_drug_concentration_value(row: dict[str, str], field_name: str) -> str:
+    if field_name not in {"drug_concentration_value", "drug_concentration_unit"}:
+        return ""
+    surfaces = [
+        row.get("formulation_id"),
+        row.get("final_formulation_id"),
+        row.get("formulation_label"),
+        row.get("raw_formulation_label"),
+    ]
+    text = " | ".join(normalize_text(s) for s in surfaces if normalize_text(s))
+    if not text:
+        return ""
+    # Bounded direct identity recovery: only row labels/IDs that explicitly say
+    # theoretical/drug concentration can project a drug_concentration surface.
+    normalized = text.replace("_", " ").replace("/", "/")
+    match = re.search(
+        r"(?:theoretical|drug)\s+concentration\s+(?:of\s+)?([-+]?\d+(?:\.\d+)?)\s*(mg\s*/\s*ml|mg\s*/\s*mL|%\s*w\s*/\s*v|%)",
+        normalized,
+        flags=re.I,
+    )
+    if not match:
+        return ""
+    if field_name == "drug_concentration_value":
+        return match.group(1)
+    unit = match.group(2).replace(" ", "")
+    if unit.lower() == "mg/ml":
+        return "mg/mL"
+    if unit == "%w/v":
+        return "%w/v"
+    return unit
+
+
+def _row_identity_surfactant_concentration_value(row: dict[str, str], field_name: str) -> str:
+    if field_name not in {"surfactant_name", "stabilizer_name", "surfactant_concentration_value", "surfactant_concentration_unit", "stabilizer_concentration_value", "stabilizer_concentration_unit"}:
+        return ""
+    surfaces = [
+        row.get("formulation_id"),
+        row.get("final_formulation_id"),
+        row.get("formulation_label"),
+        row.get("raw_formulation_label"),
+    ]
+    text = " | ".join(normalize_text(s) for s in surfaces if normalize_text(s))
+    if not text:
+        return ""
+    normalized = text.replace("_", " ")
+    material_pattern = r"(poloxamer\s*188|pluronic\s*f\s*68|pva|polyvinyl\s+alcohol|tween\s*80|polysorbate\s*80|labrafil)"
+    match = re.search(
+        rf"{material_pattern}\s+concentration\s+([-+]?\d+(?:\.\d+)?)\s*(mg\s*/\s*ml|mg\s*/\s*mL|%\s*w\s*/\s*v|%)",
+        normalized,
+        flags=re.I,
+    )
+    if not match:
+        return ""
+    material_raw = match.group(1)
+    canonical_material = canonicalize_text(material_raw)
+    material_map = {
+        "poloxamer 188": "Poloxamer 188",
+        "pluronic f 68": "Pluronic F68",
+        "pluronic f68": "Pluronic F68",
+        "pva": "PVA",
+        "polyvinyl alcohol": "PVA",
+        "tween 80": "Tween 80",
+        "tween80": "Tween 80",
+        "polysorbate 80": "Polysorbate 80",
+        "labrafil": "Labrafil",
+    }
+    if field_name in {"surfactant_name", "stabilizer_name"}:
+        return material_map.get(canonical_material, normalize_text(material_raw))
+    if field_name.endswith("_concentration_value"):
+        return match.group(2)
+    unit = match.group(3).replace(" ", "")
+    if unit.lower() == "mg/ml":
+        return "mg/mL"
+    if unit.lower() == "%w/v":
+        return "%w/v"
+    return unit
+
+
 def get_system_value(
     field_name: str,
     row: dict[str, str],
@@ -2045,6 +2432,19 @@ def get_system_value(
         )
         if normalized:
             return normalized, "row_local_table_assignment_authority", detail
+    row_local_phase_volume = _row_local_phase_volume_value(field_name, row)
+    if row_local_phase_volume:
+        raw_header = "aqueous phase (mL)" if field_name == "external_aqueous_phase_volume_mL" else "organic phase (mL)"
+        normalized, detail = _normalize_validated_system_value(
+            field_name,
+            row_local_phase_volume,
+            paper_key=paper_key,
+            lexicon=lexicon,
+            source_type="row_local_solvent_volume_header",
+            raw_header=raw_header,
+        )
+        if normalized:
+            return normalized, "row_local_solvent_volume_header", detail
     if allow_evidence_metric_rebinding:
         evidence_found, evidence_value, evidence_source, evidence_status = _evidence_span_metric_override(field_name, row)
         if evidence_found:
@@ -2071,6 +2471,19 @@ def get_system_value(
     laga_ratio_value = _resolve_laga_ratio_from_polymer_family_context(field_name, row)
     if laga_ratio_value:
         return normalize_value_with_lexicon(field_name, laga_ratio_value, paper_key=paper_key, lexicon=lexicon), "polymer_family_ratio_rebinding", "supported"
+    row_identity_drug_concentration = _row_identity_drug_concentration_value(row, field_name)
+    if row_identity_drug_concentration:
+        source = "row_identity_drug_concentration"
+        evidence = "supported_direct_row_identity_concentration_unit" if field_name == "drug_concentration_unit" else "supported_direct_row_identity_concentration"
+        return normalize_value_with_lexicon(field_name, row_identity_drug_concentration, paper_key=paper_key, lexicon=lexicon), source, evidence
+    row_identity_drug_name = _row_identity_drug_name_value(row, field_name)
+    if row_identity_drug_name:
+        return normalize_value_with_lexicon(field_name, row_identity_drug_name, paper_key=paper_key, lexicon=lexicon), "row_identity_drug_name", "supported_direct_row_identity_drug_name"
+    row_identity_surfactant_concentration = _row_identity_surfactant_concentration_value(row, field_name)
+    if row_identity_surfactant_concentration:
+        source = "row_identity_surfactant_concentration"
+        evidence = "supported_direct_row_identity_concentration_unit" if field_name.endswith("_concentration_unit") else "supported_direct_row_identity_concentration_binding"
+        return normalize_value_with_lexicon(field_name, row_identity_surfactant_concentration, paper_key=paper_key, lexicon=lexicon), source, evidence
     coded_polymer_found, coded_polymer_value = _resolve_coded_polymer_concentration(row, paper_key=paper_key, field_name=field_name)
     if coded_polymer_found:
         return normalize_value_with_lexicon(field_name, coded_polymer_value, paper_key=paper_key, lexicon=lexicon), "coded_factor_table_rebinding", "supported"
@@ -2085,6 +2498,8 @@ def get_system_value(
     if value:
         if field_name in {"polymer_concentration_unit", "surfactant_concentration_unit", "drug_concentration_unit"}:
             unit_value = extract_unit_from_combined_concentration_text(value)
+            if not unit_value and value in {"%", "%w/v", "mg/mL", "mg/ml"}:
+                unit_value = "mg/mL" if value.lower() == "mg/ml" else value
             if not unit_value and field_name == "surfactant_concentration_unit":
                 unit_value = resolve_row_local_concentration_unit_from_assignment_header(row)
                 if unit_value:
@@ -2768,6 +3183,35 @@ def build_cells(
                 lexicon=value_normalization_lexicon,
                 allow_evidence_metric_rebinding=bool(gt_value_raw),
             )
+            if field_name == "W2_volume_mL" and gt_value_raw and not system_value_raw:
+                external_aqueous_value, _, external_aqueous_evidence = get_system_value(
+                    "external_aqueous_phase_volume_mL",
+                    system_row or {},
+                    paper_key=paper_key,
+                    lexicon=value_normalization_lexicon,
+                    allow_evidence_metric_rebinding=False,
+                )
+                if external_aqueous_value:
+                    system_value_raw = external_aqueous_value
+                    source_type = "external_aqueous_phase_alias_for_w2_gt"
+                    evidence_status = f"supported_external_aqueous_phase_alias_for_w2_gt:{external_aqueous_evidence}"
+            if (
+                not gt_value_raw
+                and system_value_raw
+                and field_name == "W2_volume_mL"
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_w2_phase_alias_without_gt_value"
+                evidence_status = "w2_alias_only_evaluated_when_w2_gt_nonempty"
+            if (
+                not gt_value_raw
+                and system_value_raw
+                and field_name == "external_aqueous_phase_volume_mL"
+                and normalize_text(gt_row.get("W2_volume_mL"))
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_external_aqueous_duplicate_of_w2_gt"
+                evidence_status = "external_aqueous_payload_scored_against_nonempty_w2_gt"
             if (
                 not gt_value_raw
                 and system_value_raw
@@ -2776,6 +3220,25 @@ def build_cells(
                 system_value_raw = ""
                 source_type = "suppressed_duplicate_unit_from_combined_gt_value"
                 evidence_status = "unit_already_scored_in_combined_concentration_value"
+            if (
+                not gt_value_raw
+                and system_value_raw
+                and field_name == "polymer_grade"
+                and source_type == "missing_system_field_surface"
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_polymer_identity_duplicate_without_grade_gt"
+                evidence_status = "polymer_name_surface_not_scored_as_grade_when_gt_blank"
+            if (
+                gt_value_raw
+                and system_value_raw
+                and field_name == "emulsifier_stabilizer_concentration_value"
+                and "|" in normalize_text(gt_row.get("emulsifier_stabilizer_name"))
+                and source_type in {"row_identity_surfactant_concentration", "shared_carrythrough"}
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_single_surfactant_value_against_union_gt"
+                evidence_status = "row_local_named_surfactant_value_not_unique_for_union_emulsifier_gt"
             if field_name == "pH_raw" and gt_value_raw and _is_coded_doe_level_token(gt_value_raw):
                 paper_rank_map = paper_coded_ph_rank_maps.get(paper_key, {})
                 mapped_value = paper_rank_map.get(normalize_text(system_value_raw), "")
@@ -2790,6 +3253,29 @@ def build_cells(
                 paper_key=paper_key,
                 lexicon=value_normalization_lexicon,
             )
+            if (
+                field_name in {"emulsifier_stabilizer_concentration_value", "surfactant_concentration_value"}
+                and gt_value_raw
+                and system_value_raw
+                and not canonicalized
+                and source_type.startswith("shared_carrythrough")
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_mismatched_shared_surfactant_concentration_value"
+                evidence_status = "shared_surfactant_concentration_not_row_local_numeric_authority"
+                strict = relaxed = canonicalized = False
+            if (
+                field_name == "polymer_grade"
+                and gt_value_raw
+                and system_value_raw
+                and not canonicalized
+                and source_type == "missing_system_field_surface"
+                and normalize_text(system_value_raw).lower() in {"plga", "pcl", "pla", "plga-peg"}
+            ):
+                system_value_raw = ""
+                source_type = "suppressed_generic_polymer_identity_as_grade_mismatch"
+                evidence_status = "generic_polymer_identity_not_specific_grade_surface"
+                strict = relaxed = canonicalized = False
             status = determine_compare_status(
                 gt_value_raw=gt_value_raw,
                 system_value_raw=system_value_raw,

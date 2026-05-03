@@ -127,6 +127,12 @@ def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
             return "polymer_mass_mg"
         if re.search(r"\b(?:drug|payload|gatifloxacin|rhodamine|artemether|dexibuprofen|dxi|kgn|kartogenin|acetylpuerarin)\b", raw):
             return "drug_mass_mg"
+    volume_header = bool(re.search(r"\b(?:ml|milliliter|millilitre)\b", raw))
+    if volume_header:
+        if re.search(r"\b(?:aqueous\s+phase|external\s+aqueous\s+phase|water|aqueous)\b", raw):
+            return "external_aqueous_phase_volume_mL"
+        if re.search(r"\b(?:organic\s+phase|organic\s+solvent|acetone|acn|dcm|dichloromethane|ethyl\s+acetate|acetonitrile|chloroform|dmso|ethanol|methanol)\b", raw):
+            return "O_volume_mL"
     if re.search(r"\b(?:sizes?|particle\s+size|diameter)\b", raw) and re.search(r"\bnm\b", raw):
         return "particle_size_nm"
     return ""
