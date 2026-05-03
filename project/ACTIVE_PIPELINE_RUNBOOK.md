@@ -1033,9 +1033,10 @@ Stage5 internal value-layer contract:
 
 - Stage5 remains the only final-output namespace. Do not introduce Stage6 or a
   second Stage5 namespace for value backfill.
-- Current production final-table materialization is still anchored by
-  `src/stage5_benchmark/build_minimal_final_output_v1.py` until future S5-3/S5-4/S5-5
-  helper scripts are implemented and registered.
+- Current production final-table materialization remains anchored by
+  `src/stage5_benchmark/build_minimal_final_output_v1.py`. The implemented
+  S5-3/S5-4/S5-5 helpers are registered as supporting, non-default value-layer
+  sidecar surfaces and must not replace the benchmark-final table entrypoint.
 - The governed internal substeps are:
   - `S5-1 Fixed-row candidate intake`
   - `S5-2 Deterministic direct materialization`
@@ -1064,6 +1065,9 @@ Supporting stage-local helper:
 - `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
 - `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`
 - `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- `src/stage5_benchmark/build_s5_3_llm_direct_value_candidates_v1.py`
+- `src/stage5_benchmark/validate_s5_value_candidates_v1.py`
+- `src/stage5_benchmark/build_s5_5_derived_values_v1.py`
 
 Wrapper status:
 

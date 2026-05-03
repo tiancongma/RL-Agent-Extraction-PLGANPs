@@ -24,6 +24,7 @@ import csv
 import hashlib
 import json
 import re
+import shutil
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -37,6 +38,10 @@ DECISION_TRACE_NAME = "final_output_decision_trace_v1.tsv"
 FINAL_TABLE_NAME = "final_formulation_table_v1.tsv"
 DOWNSTREAM_VARIANT_RECORDS_NAME = "downstream_variant_records_v1.tsv"
 SUMMARY_NAME = "final_output_summary_v1.md"
+VALUE_LAYER_SIDECAR_MANIFEST_TSV_NAME = "stage5_value_layer_sidecar_manifest_v1.tsv"
+VALUE_LAYER_SIDECAR_MANIFEST_JSON_NAME = "stage5_value_layer_sidecar_manifest_v1.json"
+VALUE_LAYER_DIRECT_COPY_NAME = "stage5_value_layer_s5_4_accepted_direct_values_v1.tsv"
+VALUE_LAYER_DERIVED_COPY_NAME = "stage5_value_layer_s5_5_derived_values_v1.tsv"
 RELATION_RECORDS_NAME = "formulation_relation_records_v1.tsv"
 RESOLVED_RELATION_FIELDS_NAME = "resolved_relation_fields_v1.tsv"
 RESOLVED_RELATION_FIELD_NAMES = {
@@ -3549,6 +3554,120 @@ def write_tsv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> 
             writer.writerow(row)
 
 
+def count_tsv_data_rows(path: Path) -> int:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        return sum(1 for _ in reader)
+
+
+def copy_value_layer_sidecar(input_path: Path, output_path: Path) -> Path:
+    resolved_input = input_path.resolve()
+    resolved_output = output_path.resolve()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if resolved_input != resolved_output:
+        shutil.copyfile(resolved_input, output_path)
+    return output_path
+
+
+def write_stage5_value_layer_sidecar_manifest(
+    *,
+    out_dir: Path,
+    s5_4_accepted_direct_values_tsv: Path | None = None,
+    s5_5_derived_values_tsv: Path | None = None,
+    final_row_count_before: int,
+    final_row_count_after: int,
+) -> dict[str, Any] | None:
+    """Pin optional S5 value-layer sidecars without merging them into the final table."""
+    sidecar_specs = [
+        {
+            "provided_path": s5_4_accepted_direct_values_tsv,
+            "sidecar_role": "accepted_direct_values",
+            "value_layer_stage": "S5-4",
+            "separation": "direct",
+            "copy_name": VALUE_LAYER_DIRECT_COPY_NAME,
+            "notes": "Accepted direct value sidecar only; values are not merged and cannot alter row membership.",
+        },
+        {
+            "provided_path": s5_5_derived_values_tsv,
+            "sidecar_role": "derived_values",
+            "value_layer_stage": "S5-5",
+            "separation": "derived",
+            "copy_name": VALUE_LAYER_DERIVED_COPY_NAME,
+            "notes": "Derived value sidecar only; values remain separate pending an explicit derived-aware schema.",
+        },
+    ]
+
+    manifest_rows: list[dict[str, Any]] = []
+    for spec in sidecar_specs:
+        provided_path = spec["provided_path"]
+        if provided_path is None:
+            continue
+        input_path = Path(provided_path)
+        if not input_path.exists() or not input_path.is_file():
+            raise FileNotFoundError(f"Optional Stage5 value-layer sidecar not found: {input_path}")
+        copied_path = copy_value_layer_sidecar(input_path, out_dir / str(spec["copy_name"]))
+        manifest_rows.append(
+            {
+                "sidecar_role": spec["sidecar_role"],
+                "value_layer_stage": spec["value_layer_stage"],
+                "separation": spec["separation"],
+                "input_path": str(input_path.resolve()),
+                "copied_output_path": str(copied_path.resolve()),
+                "row_count": count_tsv_data_rows(input_path),
+                "benchmark_valid": "no",
+                "integration_mode": "sidecar_manifest_only_no_final_table_merge",
+                "final_row_count_before": final_row_count_before,
+                "final_row_count_after": final_row_count_after,
+                "row_membership_changed": "no" if final_row_count_before == final_row_count_after else "yes",
+                "notes": spec["notes"],
+            }
+        )
+
+    if not manifest_rows:
+        return None
+
+    manifest_tsv_path = out_dir / VALUE_LAYER_SIDECAR_MANIFEST_TSV_NAME
+    manifest_json_path = out_dir / VALUE_LAYER_SIDECAR_MANIFEST_JSON_NAME
+    write_tsv(
+        manifest_tsv_path,
+        [
+            "sidecar_role",
+            "value_layer_stage",
+            "separation",
+            "input_path",
+            "copied_output_path",
+            "row_count",
+            "benchmark_valid",
+            "integration_mode",
+            "final_row_count_before",
+            "final_row_count_after",
+            "row_membership_changed",
+            "notes",
+        ],
+        manifest_rows,
+    )
+    manifest_payload = {
+        "schema_version": "stage5_value_layer_sidecar_manifest_v1",
+        "benchmark_valid": "no",
+        "integration_mode": "sidecar_manifest_only_no_final_table_merge",
+        "direct_values_merge_status": "not_merged",
+        "derived_values_merge_status": "not_merged",
+        "direct_derived_separation": "preserved",
+        "final_row_count_before": final_row_count_before,
+        "final_row_count_after": final_row_count_after,
+        "row_membership_changed": "no" if final_row_count_before == final_row_count_after else "yes",
+        "manifest_tsv_path": str(manifest_tsv_path.resolve()),
+        "sidecars": manifest_rows,
+    }
+    manifest_json_path.write_text(json.dumps(manifest_payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return {
+        "manifest_tsv_path": manifest_tsv_path,
+        "manifest_json_path": manifest_json_path,
+        "rows": manifest_rows,
+        "payload": manifest_payload,
+    }
+
+
 def build_downstream_variant_rows(
     *,
     rows: list[dict[str, str]],
@@ -3784,8 +3903,13 @@ def build_minimal_final_output(
     out_dir: Path,
     relation_records_tsv: Path,
     resolved_relation_fields_tsv: Path,
+    s5_4_accepted_direct_values_tsv: Path | None = None,
+    s5_5_derived_values_tsv: Path | None = None,
 ) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
+    for optional_sidecar in (s5_4_accepted_direct_values_tsv, s5_5_derived_values_tsv):
+        if optional_sidecar is not None and (not optional_sidecar.exists() or not optional_sidecar.is_file()):
+            raise FileNotFoundError(f"Optional Stage5 value-layer sidecar not found: {optional_sidecar}")
     rows = read_candidate_rows(input_tsv)
     if not rows:
         raise ValueError(f"No candidate rows found in {input_tsv}")
@@ -4474,6 +4598,14 @@ def build_minimal_final_output(
         resolved_relation_fields_tsv,
     )
 
+    value_layer_sidecar_manifest = write_stage5_value_layer_sidecar_manifest(
+        out_dir=out_dir,
+        s5_4_accepted_direct_values_tsv=s5_4_accepted_direct_values_tsv,
+        s5_5_derived_values_tsv=s5_5_derived_values_tsv,
+        final_row_count_before=len(final_rows),
+        final_row_count_after=len(final_rows),
+    )
+
     return {
         "input_rows": len(rows),
         "final_rows": len(final_rows),
@@ -4487,6 +4619,7 @@ def build_minimal_final_output(
         "summary_path": summary_path,
         "relation_records_tsv": relation_records_tsv,
         "resolved_relation_fields_tsv": resolved_relation_fields_tsv,
+        "value_layer_sidecar_manifest": value_layer_sidecar_manifest,
     }
 
 
@@ -4498,6 +4631,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out-dir", required=True, type=Path)
     parser.add_argument("--relation-records-tsv", required=True, type=Path)
     parser.add_argument("--resolved-relation-fields-tsv", required=True, type=Path)
+    parser.add_argument("--s5-4-accepted-direct-values-tsv", type=Path)
+    parser.add_argument("--s5-5-derived-values-tsv", type=Path)
     return parser
 
 
@@ -4508,28 +4643,28 @@ def main() -> None:
         args.out_dir,
         relation_records_tsv=args.relation_records_tsv,
         resolved_relation_fields_tsv=args.resolved_relation_fields_tsv,
+        s5_4_accepted_direct_values_tsv=args.s5_4_accepted_direct_values_tsv,
+        s5_5_derived_values_tsv=args.s5_5_derived_values_tsv,
     )
-    print(
-        json.dumps(
-            {
-                "input_rows": stats["input_rows"],
-                "final_rows": stats["final_rows"],
-                "filtered_rows": stats["filtered_rows"],
-                "collapsed_rows": stats["collapsed_rows"],
-                "kept_rows": stats["kept_rows"],
-                "downstream_variant_rows": stats["downstream_variant_rows"],
-                "relation_records_tsv": (
-                    str(stats["relation_records_tsv"]) if stats["relation_records_tsv"] else ""
-                ),
-                "resolved_relation_fields_tsv": str(stats["resolved_relation_fields_tsv"]),
-                "final_table_path": str(stats["final_table_path"]),
-                "downstream_variant_path": str(stats["downstream_variant_path"]),
-                "decision_trace_path": str(stats["decision_trace_path"]),
-                "summary_path": str(stats["summary_path"]),
-            },
-            indent=2,
+    output_payload = {
+        "input_rows": stats["input_rows"],
+        "final_rows": stats["final_rows"],
+        "filtered_rows": stats["filtered_rows"],
+        "collapsed_rows": stats["collapsed_rows"],
+        "kept_rows": stats["kept_rows"],
+        "downstream_variant_rows": stats["downstream_variant_rows"],
+        "relation_records_tsv": str(stats["relation_records_tsv"]) if stats["relation_records_tsv"] else "",
+        "resolved_relation_fields_tsv": str(stats["resolved_relation_fields_tsv"]),
+        "final_table_path": str(stats["final_table_path"]),
+        "downstream_variant_path": str(stats["downstream_variant_path"]),
+        "decision_trace_path": str(stats["decision_trace_path"]),
+        "summary_path": str(stats["summary_path"]),
+    }
+    if stats.get("value_layer_sidecar_manifest"):
+        output_payload["value_layer_sidecar_manifest_tsv"] = str(
+            stats["value_layer_sidecar_manifest"]["manifest_tsv_path"]
         )
-    )
+    print(json.dumps(output_payload, indent=2))
 
 
 if __name__ == "__main__":

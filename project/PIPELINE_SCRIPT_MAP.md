@@ -67,10 +67,11 @@ transformations.
   - `S5-4 Value authority validation and merge`
   - `S5-5 Derived reasoning / calculated value materialization`
   - `S5-6 Final table closure and audit export`
-- Planned S5-3/S5-4/S5-5 helper scripts must not be added to
-  `docs/maintained_script_surface.tsv` until they exist, have tests, write
-  run-context metadata, and accept fixed explicit input paths or
-  `ACTIVE_RUN.json` authority resolution.
+- Implemented S5-3/S5-4/S5-5 helper scripts are registered as
+  `supporting_nondefault` maintained surfaces. They are diagnostic/supporting
+  sidecars only, write run-context metadata, require fixed explicit input paths,
+  and must not replace `build_minimal_final_output_v1.py` as the benchmark-final
+  table materialization entrypoint.
 - Stage 4 remains a diagnostic branch off the production path, not the
   production endpoint.
 - The comparison node is downstream of the production path and uses the fixed
@@ -383,6 +384,9 @@ Stage 2 active contract note:
 | `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for Layer 2 boundary GT from the Stage 5 final formulation table, with prediction-reference columns separated from GT-authoritative reviewer fields. |
 | `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped XLSX review workbook for formulation-row value credibility audit from frozen Stage 5 benchmark-final rows, with compact reviewer columns, helper formulation labels, Layer 2 paper-risk metadata, dropdown GT controls, and strict evidence/value support gating. |
 | `src/stage5_benchmark/build_value_gt_annotation_workbook_v1.py` | `STABLE_TOOL` | Build a run-scoped formulation-level value annotation workbook by pivoting the Layer 3 field-review seed into one row per frozen formulation for fast manual numeric credibility review. The latest Stage5 benchmark-final table plus audit-ready export are canonical for current-system presence; historical scaffold and prior-workbook bridge artifacts are advisory mapping aids only. |
+| `src/stage5_benchmark/build_s5_3_llm_direct_value_candidates_v1.py` | `STABLE_TOOL` | Diagnostic S5-3 direct-value candidate scaffold. It consumes an explicit fixed Stage5 row surface plus exact evidence paths, writes placeholder candidate/evidence/prompt/input/RUN_CONTEXT surfaces when no backend is configured, and must not call live LLMs, merge values, or alter formulation membership by default. |
+| `src/stage5_benchmark/validate_s5_value_candidates_v1.py` | `STABLE_TOOL` | S5-4 value-authority validation helper. It consumes explicit candidate and optional rule-direct sidecar paths, rejects derived or quote-less direct candidates, routes ambiguous scope to review, and writes accepted/rejected/review/summary/RUN_CONTEXT sidecars without consulting GT or system final-table values as value authority. |
+| `src/stage5_benchmark/build_s5_5_derived_values_v1.py` | `STABLE_TOOL` | S5-5 derived-value sidecar helper. It consumes explicit accepted-direct values, currently registers `%w/v × mL -> mg`, writes derived/provenance/review/summary/RUN_CONTEXT sidecars, and marks derived rows ineligible for direct compare. |
 
 ## Stage5 Internal Family Note
 
