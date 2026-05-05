@@ -216,14 +216,36 @@ def count_numeric_like_cells(row: list[str]) -> int:
     return count
 
 
-def first_numbered_row_index(rows: list[list[str]]) -> int | None:
-    for idx, row in enumerate(rows):
-        number = row_is_numbered(row)
+def numbered_row_anchor(row: list[str], *, max_label_column: int = 12) -> tuple[int, int] | None:
+    """Return (row_number, label_column) for explicit numbered DOE rows.
+
+    Most preserved DOE tables put the row label in column 0, but PDF two-column
+    spillover can shift the real table block rightward while unrelated prose
+    occupies earlier columns.  Accept a shifted label only when enough numeric
+    evidence remains to its right, so this stays anchored to explicit table rows
+    rather than arbitrary prose numbers.
+    """
+    for col_idx, cell in enumerate(row[: min(len(row), max_label_column + 1)]):
+        number = parse_formulation_number(cell)
         if number is None:
             continue
-        if count_numeric_like_cells(row[1:]) >= 3:
-            return idx
+        if count_numeric_like_cells(row[col_idx + 1 :]) >= 3:
+            return number, col_idx
     return None
+
+
+def first_numbered_row_anchor(rows: list[list[str]]) -> tuple[int, int] | None:
+    for idx, row in enumerate(rows):
+        anchor = numbered_row_anchor(row)
+        if anchor is None:
+            continue
+        return idx, anchor[1]
+    return None
+
+
+def first_numbered_row_index(rows: list[list[str]]) -> int | None:
+    anchor = first_numbered_row_anchor(rows)
+    return anchor[0] if anchor is not None else None
 
 
 def combine_header_rows(rows: list[list[str]], numbered_idx: int) -> list[str]:
@@ -590,19 +612,24 @@ def select_candidate_tables(tables_dir: Path, min_numbered_rows: int) -> list[di
         if not csv_path.exists():
             continue
         rows = read_table_rows(csv_path)
-        numbered_idx = first_numbered_row_index(rows)
-        if numbered_idx is None:
+        anchor = first_numbered_row_anchor(rows)
+        if anchor is None:
             continue
+        numbered_idx, label_col_idx = anchor
         numbered_rows: list[list[str]] = []
         for row in rows[numbered_idx:]:
-            if row_is_numbered(row) is None:
+            row_anchor = numbered_row_anchor(row)
+            if row_anchor is None or row_anchor[1] != label_col_idx:
                 continue
-            if count_numeric_like_cells(row[1:]) < 3:
+            trimmed_row = row[label_col_idx:]
+            if row_is_numbered(trimmed_row) is None:
                 continue
-            numbered_rows.append(row)
+            if count_numeric_like_cells(trimmed_row[1:]) < 3:
+                continue
+            numbered_rows.append(trimmed_row)
         if len(numbered_rows) < min_numbered_rows:
             continue
-        header_row = combine_header_rows(rows, numbered_idx)
+        header_row = combine_header_rows(rows, numbered_idx)[label_col_idx:]
         keyword_score = table_keyword_score(header_row, rows[:numbered_idx])
         if keyword_score < 2:
             continue
@@ -638,19 +665,24 @@ def explicit_table_candidate(
     if not csv_path.exists():
         return None
     rows = read_table_rows(csv_path)
-    numbered_idx = first_numbered_row_index(rows)
-    if numbered_idx is None:
+    anchor = first_numbered_row_anchor(rows)
+    if anchor is None:
         return None
+    numbered_idx, label_col_idx = anchor
     numbered_rows: list[list[str]] = []
     for row in rows[numbered_idx:]:
-        if row_is_numbered(row) is None:
+        row_anchor = numbered_row_anchor(row)
+        if row_anchor is None or row_anchor[1] != label_col_idx:
             continue
-        if count_numeric_like_cells(row[1:]) < 3:
+        trimmed_row = row[label_col_idx:]
+        if row_is_numbered(trimmed_row) is None:
             continue
-        numbered_rows.append(row)
+        if count_numeric_like_cells(trimmed_row[1:]) < 3:
+            continue
+        numbered_rows.append(trimmed_row)
     if len(numbered_rows) < min_numbered_rows:
         return None
-    header_row = combine_header_rows(rows, numbered_idx)
+    header_row = combine_header_rows(rows, numbered_idx)[label_col_idx:]
     keyword_score = table_keyword_score(header_row, rows[:numbered_idx])
     if keyword_score < 2 and source_type != "semantic_authorized_table_target":
         return None

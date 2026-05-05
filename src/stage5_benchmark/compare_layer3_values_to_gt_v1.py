@@ -20,10 +20,12 @@ from typing import Any, Callable
 
 try:
     from src.stage2_sampling_labels.table_row_expansion_v1 import canonical_field_for_header
+    from src.stage2_sampling_labels.table_structure_dictionary_v1 import normalize_dictionary_value_from_rows
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage2_sampling_labels.table_row_expansion_v1 import canonical_field_for_header
+    from src.stage2_sampling_labels.table_structure_dictionary_v1 import normalize_dictionary_value_from_rows
     from src.utils.active_data_source import resolve_artifact_path, resolve_run_context
 
 CORE_FIXED_FIELDS = {
@@ -311,7 +313,7 @@ def field_group(field_name: str) -> str:
     return "unknown"
 
 
-def _canonicalize_role_tolerant_union_parts(value: str, *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> list[str]:
+def _canonicalize_role_tolerant_union_parts(value: str, *, paper_key: str = "", lexicon: list[dict[str, str]] | None = None) -> list[str]:
     parts = re.split(r"\s*\|\s*", normalize_text(value))
     canonical_parts: list[str] = []
     seen: set[str] = set()
@@ -325,7 +327,7 @@ def _canonicalize_role_tolerant_union_parts(value: str, *, paper_key: str = "", 
     return canonical_parts
 
 
-def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> tuple[bool, bool, bool]:
+def compare_values(field_name: str, gt_value_raw: str, system_value_raw: str, *, paper_key: str = "", lexicon: list[dict[str, str]] | None = None) -> tuple[bool, bool, bool]:
     gt = normalize_text(gt_value_raw)
     sysv = normalize_text(system_value_raw)
     if not gt or not sysv:
@@ -551,31 +553,21 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
-def build_value_normalization_lexicon(rows: list[dict[str, str]]) -> dict[tuple[str, str, str], str]:
-    lexicon: dict[tuple[str, str, str], str] = {}
-    for row in rows:
-        field_family = normalize_text(row.get("field_family"))
-        surface_form = canonicalize_text(row.get("surface_form"))
-        scope = normalize_text(row.get("scope")) or "global"
-        paper_key = normalize_text(row.get("paper_key")) if scope == "paper_local" else ""
-        canonical_form = normalize_text(row.get("canonical_form"))
-        if field_family and surface_form and canonical_form:
-            lexicon[(field_family, paper_key, surface_form)] = canonical_form
-    return lexicon
+def build_value_normalization_lexicon(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Return normalized lexicon rows for shared dictionary matching.
+
+    Kept as a Stage5-facing builder for call-site compatibility, but matching
+    authority lives in table_structure_dictionary_v1 so scope and
+    normalization_rule semantics do not fork.
+    """
+    return [dict(row) for row in rows]
 
 
-def normalize_value_with_lexicon(field_name: str, value: str, *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> str:
+def normalize_value_with_lexicon(field_name: str, value: str, *, paper_key: str = "", lexicon: list[dict[str, str]] | None = None) -> str:
     text = normalize_text(value)
     if not text:
         return ""
-    lexicon = lexicon or {}
-    key_exact = (field_name, paper_key, canonicalize_text(text))
-    key_global = (field_name, "", canonicalize_text(text))
-    if key_exact in lexicon:
-        return lexicon[key_exact]
-    if key_global in lexicon:
-        return lexicon[key_global]
-    return text
+    return normalize_dictionary_value_from_rows(lexicon or [], field_name, text, paper_key=paper_key)
 
 
 def write_tsv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
@@ -587,7 +579,7 @@ def write_tsv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
             writer.writerow({field: row.get(field, "") for field in fieldnames})
 
 
-def canonicalize_method_type(value: str, *, paper_key: str = "", lexicon: dict[tuple[str, str, str], str] | None = None) -> str:
+def canonicalize_method_type(value: str, *, paper_key: str = "", lexicon: list[dict[str, str]] | None = None) -> str:
     normalized = normalize_value_with_lexicon("method_type", value, paper_key=paper_key, lexicon=lexicon)
     text = canonicalize_text(normalized)
     if not text:
@@ -2309,7 +2301,7 @@ def _normalize_validated_system_value(
     value: str,
     *,
     paper_key: str,
-    lexicon: dict[tuple[str, str, str], str] | None,
+    lexicon: list[dict[str, str]] | None,
     source_type: str,
     raw_header: str = "",
 ) -> tuple[str, str]:
@@ -2403,7 +2395,7 @@ def get_system_value(
     row: dict[str, str],
     *,
     paper_key: str = "",
-    lexicon: dict[tuple[str, str, str], str] | None = None,
+    lexicon: list[dict[str, str]] | None = None,
     allow_evidence_metric_rebinding: bool = True,
 ) -> tuple[str, str, str]:
     mapping = SYSTEM_FIELD_MAP.get(field_name, {"column": "", "source": "missing_system_field_surface", "evidence": "missing_system_field_surface"})
@@ -3079,7 +3071,7 @@ def _build_paper_coded_ph_rank_maps(
     system_rows: list[dict[str, str]],
     alignment_scaffold_index: dict[str, dict[str, str]],
     trusted_alignment_index: dict[str, dict[str, str]],
-    value_normalization_lexicon: dict[tuple[str, str, str], str],
+    value_normalization_lexicon: list[dict[str, str]],
 ) -> dict[str, dict[str, str]]:
     paper_pairs: dict[str, list[tuple[float, str, float, str]]] = defaultdict(list)
     for gt_row in gt_rows:
@@ -3128,7 +3120,7 @@ def build_cells(
     system_rows: list[dict[str, str]],
     alignment_scaffold_index: dict[str, dict[str, str]] | None = None,
     trusted_alignment_index: dict[str, dict[str, str]] | None = None,
-    value_normalization_lexicon: dict[tuple[str, str, str], str] | None = None,
+    value_normalization_lexicon: list[dict[str, str]] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     output = []
     alignment_resolution_rows = []

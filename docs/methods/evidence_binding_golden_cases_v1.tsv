@@ -1,0 +1,3 @@
+case_id	paper_key	final_formulation_id	field_name	expected_binding_status	expected_assignment_path	forbidden_binding_status	notes
+bounded_missing_anchor_not_direct	5GIF3D8W	5GIF3D8W__fo__07c44d6a1312	source_candidate_count	missing_evidence_anchor	unresolved	direct_supported	Broad/row-local anchors must not be promoted to direct support.
+bounded_relation_supported_has_path	5GIF3D8W	5GIF3D8W__fo__1fe3feba623b	preparation_method	relation_supported	stage3_relation_resolved	relation_path_missing	Relation-supported values must expose a Stage3 relation path.

@@ -1292,7 +1292,57 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=1,
         help="Version number for workbook and companion Layer 3 review artifacts.",
     )
+    parser.add_argument(
+        "--evidence-binding-packs-jsonl",
+        type=Path,
+        default=None,
+        help="Evidence Binding Pack JSONL required by default for explicit evidence-binding workbook mode.",
+    )
+    parser.add_argument(
+        "--evidence-binding-risk-tsv",
+        type=Path,
+        default=None,
+        help="Evidence Binding risk TSV required by default for explicit evidence-binding workbook mode.",
+    )
+    parser.add_argument(
+        "--legacy-evidence-mode",
+        action="store_true",
+        help="Explicitly permit legacy workbook evidence logic when Evidence Binding packs/risk are not available.",
+    )
     return parser
+
+
+def _resolve_existing_mode_path(path: Path | None, label: str) -> str:
+    if path is None:
+        raise ValueError(f"missing required {label}; pass --legacy-evidence-mode only for explicit legacy fallback")
+    resolved = path.resolve()
+    if not resolved.exists():
+        raise ValueError(f"{label} does not exist: {resolved}")
+    return str(resolved)
+
+
+def validate_evidence_binding_workbook_mode(args: argparse.Namespace, final_table_tsv: Path | None = None) -> dict[str, str]:
+    if bool(getattr(args, "legacy_evidence_mode", False)):
+        return {
+            "evidence_mode": "legacy",
+            "evidence_binding_pack_path": "",
+            "evidence_binding_risk_path": "",
+            "authority_resolved_final_table_path": str(final_table_tsv.resolve()) if final_table_tsv else "",
+        }
+    pack_path = _resolve_existing_mode_path(
+        getattr(args, "evidence_binding_packs_jsonl", None),
+        "evidence_binding_packs_jsonl",
+    )
+    risk_path = _resolve_existing_mode_path(
+        getattr(args, "evidence_binding_risk_tsv", None),
+        "evidence_binding_risk_tsv",
+    )
+    return {
+        "evidence_mode": "evidence_binding_pack",
+        "evidence_binding_pack_path": pack_path,
+        "evidence_binding_risk_path": risk_path,
+        "authority_resolved_final_table_path": str(final_table_tsv.resolve()) if final_table_tsv else "",
+    }
 
 
 def main() -> None:
@@ -1327,6 +1377,7 @@ def main() -> None:
         canonical_relative="formulation_relation_v1/resolved_relation_fields_v1.tsv",
         required=False,
     )
+    evidence_binding_mode = validate_evidence_binding_workbook_mode(args, final_table_tsv=final_table_tsv)
 
     print(
         json.dumps(
@@ -1340,7 +1391,10 @@ def main() -> None:
                     "scope_manifest_tsv": str(scope_manifest_tsv) if scope_manifest_tsv else "",
                     "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
                     "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
+                    "evidence_binding_pack_path": evidence_binding_mode["evidence_binding_pack_path"],
+                    "evidence_binding_risk_path": evidence_binding_mode["evidence_binding_risk_path"],
                 },
+                "evidence_binding_mode": evidence_binding_mode,
             },
             indent=2,
         )
@@ -1385,12 +1439,16 @@ def main() -> None:
                 "scope_manifest_tsv": str(scope_manifest_tsv) if scope_manifest_tsv else "",
                 "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
                 "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
+                "evidence_binding_pack_path": evidence_binding_mode["evidence_binding_pack_path"],
+                "evidence_binding_risk_path": evidence_binding_mode["evidence_binding_risk_path"],
+                "authority_resolved_final_table_path": evidence_binding_mode["authority_resolved_final_table_path"],
             },
             generated_by="src/stage5_benchmark/build_field_gt_review_workbook_v1.py",
             note="Layer3 field GT workbook authority metadata.",
             extra={
                 "seed_rows_tsv": str(out_dir / seed_tsv_name),
                 "source_summary_tsv": str(out_dir / summary_tsv_name) if source_summary_rows else "",
+                "evidence_binding_mode": evidence_binding_mode,
             },
         ),
     )
@@ -1404,6 +1462,9 @@ def main() -> None:
                 "scope_manifest_tsv": str(scope_manifest_tsv) if scope_manifest_tsv else "",
                 "paper_risk_tsv": str(paper_risk_tsv) if paper_risk_tsv else "",
                 "resolved_relation_fields_tsv": str(resolved_relation_fields_tsv) if resolved_relation_fields_tsv else "",
+                "evidence_binding_pack_path": evidence_binding_mode["evidence_binding_pack_path"],
+                "evidence_binding_risk_path": evidence_binding_mode["evidence_binding_risk_path"],
+                "evidence_binding_mode": evidence_binding_mode["evidence_mode"],
                 "workbook_path": str(workbook_path),
                 "workbook_metadata_json": str(metadata_path),
                 "field_rows": len(workbook_rows),

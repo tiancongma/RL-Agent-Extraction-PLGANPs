@@ -149,6 +149,22 @@ Active data-source rule:
   - or the repository authority pointer in `data/results/ACTIVE_RUN.json`
 - If neither is available, fail loudly.
 
+
+
+Evidence Binding Pack contract audit note (`2026-05-05`):
+
+- `src/stage5_benchmark/audit_evidence_binding_contract_v1.py` is a supporting diagnostic Phase1 contract audit.
+- It must consume a Phase0 authority manifest, not independently select Stage5/Stage3/Stage2/Layer3 artifacts.
+- Its outputs classify existing surfaces as `direct_evidence`, `broad_anchor`, `stage3_relation_provenance`, `legacy_fallback`, `not_consumed`, or `source_surface_missing`.
+- The audit proves current behavior before pack-building work and remains diagnostic-only; it must not create rows, values, binding packs, risk judgments, workbook displays, or benchmark evidence.
+
+Evidence Binding Pack authority gate note (`2026-05-05`):
+
+- `src/stage5_benchmark/resolve_evidence_binding_authority_v1.py` is a supporting diagnostic authority gate for future Evidence Binding Pack work.
+- It must resolve exact Stage5/Stage3/Stage2/Layer3 source artifacts from `ACTIVE_RUN.json` or explicit overrides before any binding-pack builder runs.
+- If multiple aliases for the same semantic artifact point to different paths, the gate must fail unless an explicit `--authority-field semantic_name=pointer_key` override is provided.
+- The gate writes run-scoped diagnostic manifests and `RUN_CONTEXT.md`; it does not create rows, create values, build risk levels, render workbooks, or produce benchmark-valid evidence.
+
 ## Maintained Script Entrypoints
 
 Default execution-facing benchmark, alignment, comparison, workbook-generation,
@@ -341,6 +357,11 @@ Frozen authority contract:
   project, and bridge only within the authorized semantic scope for the run.
 - In `llm_first_composite` mode, deterministic DOE row expansion is lawful only
   within an LLM-declared DOE scope.
+- For maintained DEV15 baseline/replay runs, the DOE execution unit must be
+  explicitly active (`STAGE2_DOE_ENUMERATION_MODE=explicit_only` and
+  `STAGE2_ENABLE_NUMBERED_DOE_RECOVERY=1`). `STAGE2_DOE_ENUMERATION_MODE=off`
+  is a DOE-ablation diagnostic setting only and must not be used or reported as
+  the current baseline.
 - In `llm_first_composite` mode, bounded simple-table deterministic
   enumeration is lawful only inside the non-DOE table-row execution unit and
   only after LLM formulation-table authorization.
@@ -1048,6 +1069,15 @@ Stage5 internal value-layer contract:
   input paths for the Stage5 row surface, decision trace, scope manifest, and
   governed text/table evidence; it must write candidate TSV, evidence sidecar,
   prompt audit, raw-response payloads, and `RUN_CONTEXT.md` before any merge.
+- S5-3 scope is residual source-evidenced gap filling, not database completion.
+  Because reporting across PLGA papers is heterogeneous, prompt/scope builders
+  must not assume every row has values for every target field and must not use
+  blank final-table/schema slots alone as LLM targets. Candidate scope must be
+  gated by benchmark/GT `missing_in_system` evidence or an audited source signal
+  that the paper actually reports the value for the admitted row.
+- `not_reported_in_gt` or otherwise unresolved absence is not an S5-3 extraction
+  target. `present_but_mismatch` and `blocked_alignment` require separate
+  review/alignment workflows before value re-extraction is authorized.
 - S5-4 is the only layer allowed to accept LLM candidates into direct Stage5
   values. It must reject derived, ambiguous-scope, conflict-bearing, or
   quote-less candidates from the direct layer.
@@ -1509,3 +1539,10 @@ counts.
   instance with row-level or result-level evidence.
 - Do not count methods-only combinations or sweep conditions that were not
   reported as concrete formulation instances.
+### Evidence Binding risk, workbook mode, and validator guardrails
+
+- `src/stage5_benchmark/build_evidence_binding_risk_assessment_v1.py` is the maintained diagnostic Phase6 risk sidecar builder. It must consume frozen `evidence_binding_packs_v1.jsonl` only and must not re-resolve evidence, mutate packs, create rows, create values, or render workbooks.
+- `src/stage5_benchmark/build_field_gt_review_workbook_v1.py` now defaults to explicit Evidence Binding workbook mode. It requires `--evidence-binding-packs-jsonl` and `--evidence-binding-risk-tsv`; omission must fail loudly unless `--legacy-evidence-mode` is passed.
+- `src/stage5_benchmark/validate_evidence_binding_contract_v1.py` is the maintained diagnostic validator for this integration. It must read the existing Layer3 evidence handoff golden cases before optional Evidence Binding Pack golden cases.
+- Evidence Binding Pack/risk/workbook validation outputs are diagnostic review surfaces, not benchmark-valid final outputs.
+

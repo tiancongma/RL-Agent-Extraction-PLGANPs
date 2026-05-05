@@ -25,6 +25,7 @@ from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse imp
 from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
     PaperRecord,
     enumerate_numbered_doe_candidates_for_explicit_tables,
+    explicit_table_candidate,
 )
 
 
@@ -280,6 +281,63 @@ def resolve_authorized_doe_targets(
     targets: list[dict[str, Any]] = []
     unresolved_refs: list[str] = []
     failure_reasons: list[str] = []
+    seen_target_keys: set[str] = set()
+
+    def append_execution_target(*, ref: str, wanted: str, matching_scope: dict[str, Any], target_note: str = "") -> bool:
+        table_asset_id = normalize_text(matching_scope.get("table_asset_id") or matching_scope.get("source_table_asset_id"))
+        table_id = normalize_text(matching_scope.get("table_id")) or ref
+        if not table_asset_id and not table_id:
+            return False
+        normalized_payload, payload_failure_reason = _resolve_normalized_payload_for_scope(
+            matching_scope=matching_scope,
+            normalized_payloads=normalized_payloads,
+        )
+        normalized_csv_path = normalize_text(normalized_payload.get("normalized_csv_path")) if normalized_payload else ""
+        if not normalized_payload or not normalized_csv_path:
+            if payload_failure_reason:
+                failure_reasons.append(payload_failure_reason)
+            return False
+        target_key = f"{_normalize_table_label(table_id)}::{normalized_csv_path}"
+        if target_key in seen_target_keys:
+            return True
+        seen_target_keys.add(target_key)
+        targets.append(
+            {
+                "table_id": table_id,
+                "table_path": normalized_csv_path,
+                "source_table_path": normalize_text(matching_scope.get("table_path")),
+                "table_asset_id": table_asset_id,
+                "table_type": normalize_text(matching_scope.get("table_type")),
+                "evidence_span": normalize_text(matching_scope.get("evidence_span")) or target_note,
+                "scope_id": normalize_text(matching_scope.get("scope_id")),
+                "variable_role_present": "yes" if wanted in variable_role_map else "no",
+                "normalized_payload_path": normalized_csv_path,
+                "normalized_payload_used": reopen_binding.get("normalized_payload_used", "no"),
+                "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+                "reopen_resolution_status": reopen_binding.get("reopen_resolution_status", ""),
+                "reopen_failure_reason": "",
+            }
+        )
+        return True
+
+    def numbered_run_count_for_scope(matching_scope: dict[str, Any]) -> int:
+        normalized_payload, _payload_failure_reason = _resolve_normalized_payload_for_scope(
+            matching_scope=matching_scope,
+            normalized_payloads=normalized_payloads,
+        )
+        normalized_csv_path = normalize_text(normalized_payload.get("normalized_csv_path")) if normalized_payload else ""
+        if not normalized_csv_path:
+            return 0
+        candidate = explicit_table_candidate(
+            csv_path=Path(normalized_csv_path),
+            min_numbered_rows=1,
+            table_id=normalize_text(matching_scope.get("table_id")),
+            source_type="semantic_authorized_table_target",
+        )
+        if candidate is None:
+            return 0
+        return len(candidate.get("numbered_rows") or [])
+
     for ref in carrier_refs:
         wanted = _normalize_table_label(ref)
         matching_scope = None
@@ -294,38 +352,41 @@ def resolve_authorized_doe_targets(
         if boundary is None or not bool(boundary.get("is_doe")):
             unresolved_refs.append(ref)
             continue
-        table_asset_id = normalize_text(matching_scope.get("table_asset_id"))
-        if not table_asset_id and not normalize_text(matching_scope.get("table_id")):
+        matched_any_target = False
+        # Some LLMs correctly identify the DOE/factor table as the authorization
+        # carrier while the explicit numbered run matrix is handed off in a
+        # formulation-bearing child/companion table.  Keep semantic authority on
+        # the declared DOE carrier, but prefer such direct children as execution
+        # targets when they exist; otherwise noisy carrier/coding tables can
+        # duplicate the same run matrix.
+        carrier_numbered_count = numbered_run_count_for_scope(matching_scope)
+        min_child_numbered_rows = numbered_doe_recovery_min_rows()
+        for child_scope in normalized_scopes:
+            if child_scope is matching_scope:
+                continue
+            if _normalize_table_label(child_scope.get("parent_table_hint")) != wanted:
+                continue
+            if not bool(child_scope.get("is_formulation_table")):
+                continue
+            child_type = normalize_text(child_scope.get("table_type")).lower()
+            if child_type in {"non_formulation", "downstream_variant", "sequential_child"}:
+                continue
+            child_numbered_count = numbered_run_count_for_scope(child_scope)
+            if child_numbered_count < min_child_numbered_rows:
+                continue
+            if carrier_numbered_count and child_numbered_count < carrier_numbered_count:
+                continue
+            if append_execution_target(
+                ref=ref,
+                wanted=_normalize_table_label(child_scope.get("table_id")),
+                matching_scope=child_scope,
+                target_note=f"direct_child_of_llm_declared_doe_scope::{ref}",
+            ):
+                matched_any_target = True
+        if not matched_any_target:
+            matched_any_target = append_execution_target(ref=ref, wanted=wanted, matching_scope=matching_scope)
+        if not matched_any_target:
             unresolved_refs.append(ref)
-            continue
-        normalized_payload, payload_failure_reason = _resolve_normalized_payload_for_scope(
-            matching_scope=matching_scope,
-            normalized_payloads=normalized_payloads,
-        )
-        normalized_csv_path = normalize_text(normalized_payload.get("normalized_csv_path")) if normalized_payload else ""
-        if not normalized_payload or not normalized_csv_path:
-            unresolved_refs.append(ref)
-            if payload_failure_reason:
-                failure_reasons.append(payload_failure_reason)
-            continue
-        execution_table_path = normalized_csv_path
-        targets.append(
-            {
-                "table_id": normalize_text(matching_scope.get("table_id")) or ref,
-                "table_path": execution_table_path,
-                "source_table_path": normalize_text(matching_scope.get("table_path")),
-                "table_asset_id": table_asset_id,
-                "table_type": normalize_text(matching_scope.get("table_type")),
-                "evidence_span": normalize_text(matching_scope.get("evidence_span")),
-                "scope_id": normalize_text(matching_scope.get("scope_id")),
-                "variable_role_present": "yes" if wanted in variable_role_map else "no",
-                "normalized_payload_path": normalized_csv_path,
-                "normalized_payload_used": reopen_binding.get("normalized_payload_used", "no"),
-                "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
-                "reopen_resolution_status": reopen_binding.get("reopen_resolution_status", ""),
-                "reopen_failure_reason": "",
-            }
-        )
     binding = {
         "authorized_target_carrier": "|".join(carrier_refs),
         "resolved_execution_target": "|".join(

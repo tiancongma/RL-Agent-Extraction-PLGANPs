@@ -177,6 +177,11 @@ inside those coarse stages; it does not introduce new runtime namespaces.
   - the LLM may propose direct value candidates only for existing Stage5 rows,
     with exact source evidence, scope, direct/derived classification, prompt
     hash, model identity, and input artifact hashes.
+  - this is residual source-evidenced gap filling, not database completion:
+    S5-3 must not assume every article reports every target field, and must not
+    target blank schema slots merely because a final-table field is empty.
+    Scope must be driven by benchmark/GT gaps or audited source evidence that a
+    value exists for the admitted row.
   - this substep must not change formulation membership, rediscover row
     boundaries, calculate values, or treat system final-table values as source
     authority.
@@ -1189,3 +1194,17 @@ The following rule families are considered stable deterministic core:
 - derivation and normalized field computation
 - schema assembly and export formatting
 - benchmark-facing final-table comparison
+---
+
+## Evidence Binding audit sidecar architecture
+
+Evidence Binding Pack and risk assessment artifacts are post-Stage5 audit sidecars. They sit downstream of the frozen Stage5 final formulation table and Layer3 evidence handoff contract.
+
+Architecture rules:
+
+- Evidence Binding Packs explain the legal assignment chain for frozen rows and frozen field values. They do not create rows, create values, replace the final table, or promote value-only matches into support evidence.
+- Authority resolution must run before pack construction. If one semantic artifact has multiple ACTIVE_RUN aliases pointing at different paths, the authority gate must fail unless the caller supplies an explicit `--authority-field` override.
+- Risk assessment is a separate sidecar that consumes frozen packs. It must not re-resolve evidence or mutate binding facts.
+- Workbook generation is a display/review layer. It must record the pack path, risk path, and authority-resolved final table path; missing pack/risk inputs require explicit legacy mode rather than silent fallback.
+- These artifacts are diagnostic review/audit surfaces, not benchmark-valid final outputs.
+

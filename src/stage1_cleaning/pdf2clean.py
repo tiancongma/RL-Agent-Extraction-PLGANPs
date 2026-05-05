@@ -307,6 +307,64 @@ def classify_bs4_text_block(tag_name: str, text: str) -> str:
     return "paragraph"
 
 
+def bs4_element_is_navigation_like(elem: Any) -> bool:
+    """Generic guard for fallback HTML block recovery.
+
+    Some publisher HTML stores article paragraphs in content-bearing divs rather
+    than p tags.  When adding those divs, avoid obvious chrome/navigation zones.
+    """
+    nav_names = {"nav", "header", "footer", "aside", "script", "style", "noscript"}
+    nav_tokens = {
+        "nav",
+        "navigation",
+        "navbar",
+        "breadcrumb",
+        "menu",
+        "toolbar",
+        "footer",
+        "header",
+        "side",
+        "sidebar",
+        "advert",
+        "cookie",
+        "metrics",
+    }
+    current = elem
+    while current is not None:
+        name = str(getattr(current, "name", "") or "").lower()
+        if name in nav_names:
+            return True
+        attrs = getattr(current, "attrs", {}) or {}
+        attr_text = " ".join(
+            str(value)
+            for key, value in attrs.items()
+            if key in {"id", "class", "role", "aria-label"}
+        ).lower()
+        if any(token in attr_text for token in nav_tokens):
+            return True
+        current = getattr(current, "parent", None)
+    return False
+
+
+def bs4_is_content_bearing_fallback_block(elem: Any, text: str) -> bool:
+    if bs4_element_is_navigation_like(elem):
+        return False
+    if elem.find(["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "figcaption", "caption"]):
+        return False
+    if elem.find(["article", "main", "section", "div"]):
+        return False
+    compact = normalize_inline_whitespace(text)
+    if len(compact) < 80:
+        return False
+    words = re.findall(r"[A-Za-z0-9][A-Za-z0-9%/().,\-]*", compact)
+    if len(words) < 12:
+        return False
+    low = compact.lower()
+    if re.fullmatch(r"(?:journals? & books|help|search|view pdf|download(?: full)?(?: issue| pdf)?)(?:\s+.*)?", low):
+        return False
+    return True
+
+
 def classify_xml_text_block(tag_name: str, text: str) -> str:
     low = tag_name.lower()
     if low == "head":
@@ -485,12 +543,65 @@ def extract_bs4_blocks(html_path: Path) -> Tuple[List[Dict[str, Any]], List[str]
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
     blocks: List[Dict[str, Any]] = []
-    for elem in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "figcaption", "caption"]):
-        text = normalize_inline_whitespace(elem.get_text(separator=" ", strip=True))
-        if not text:
+    seen_texts: set[str] = set()
+    block_tags = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "figcaption", "caption", "article", "main", "section", "div"]
+    for elem in soup.find_all(block_tags):
+        if bs4_element_is_navigation_like(elem):
             continue
-        blocks.append(make_block(classify_bs4_text_block(elem.name, text), text))
+        text = normalize_inline_whitespace(elem.get_text(separator=" ", strip=True))
+        if not text or text in seen_texts:
+            continue
+        if elem.name in {"article", "main", "section", "div"}:
+            if not bs4_is_content_bearing_fallback_block(elem, text):
+                continue
+            block_type = "paragraph"
+        else:
+            block_type = classify_bs4_text_block(elem.name, text)
+        seen_texts.add(text)
+        blocks.append(make_block(block_type, text))
     return blocks, []
+
+
+def _word_count(text: str) -> int:
+    return len(re.findall(r"[A-Za-z0-9][A-Za-z0-9%/().,\-]*", text or ""))
+
+
+def html_blocks_need_bs4_supplement(blocks: List[Dict[str, Any]]) -> bool:
+    """Detect trafilatura outputs that are present but too sparse for methods prose.
+
+    This is a generic source-quality gate: it only asks whether a successful
+    trafilatura extraction contains enough paragraph/list body text near broad
+    methods/preparation headings.  If it does not, BS4 may supplement from the
+    same cleaned HTML source; no paper keys, GT, or downstream snippets are used.
+    """
+    non_table_blocks = [block for block in blocks if str(block.get("type", "")) != "table"]
+    if not non_table_blocks:
+        return True
+    body_word_count = sum(
+        _word_count(str(block.get("text", "") or ""))
+        for block in non_table_blocks
+        if str(block.get("type", "")) in {"paragraph", "list"}
+    )
+    if body_word_count >= 40:
+        return False
+    joined = "\n".join(str(block.get("text", "") or "") for block in non_table_blocks).lower()
+    method_heading_hit = re.search(
+        r"\b(preparation|prepared|fabrication|synthesis|formulation|materials? and methods|methods?|experimental)\b",
+        joined,
+    )
+    return bool(method_heading_hit)
+
+
+def merge_bs4_supplement_blocks(raw_blocks: List[Dict[str, Any]], supplement_blocks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    merged = list(raw_blocks)
+    seen = {normalize_inline_whitespace(str(block.get("text", "") or "")).lower() for block in raw_blocks}
+    for block in supplement_blocks:
+        text = normalize_inline_whitespace(str(block.get("text", "") or ""))
+        if not text or text.lower() in seen:
+            continue
+        seen.add(text.lower())
+        merged.append(block)
+    return merged
 
 
 def extract_text_detected_tables_from_html(html_path: Path) -> List[str]:
@@ -515,6 +626,15 @@ def extract_text_from_html(html_path: Path, table_dir_value: str = "") -> Dict[s
         raw_blocks, reading_order_source, parser_warnings = extract_trafilatura_blocks(html_path)
         warnings.extend(parser_warnings)
         parser_name = "trafilatura"
+        if html_blocks_need_bs4_supplement(raw_blocks):
+            supplement_blocks, supplement_warnings = extract_bs4_blocks(html_path)
+            supplemented_blocks = merge_bs4_supplement_blocks(supplement_blocks, raw_blocks)
+            if len(supplemented_blocks) > len(raw_blocks):
+                raw_blocks = supplemented_blocks
+                warnings.extend(supplement_warnings)
+                warnings.append("trafilatura_insufficient_prose_bs4_supplemented")
+                parser_name = "trafilatura_plus_beautifulsoup_supplement"
+                reading_order_source = "fallback_linear"
     except Exception as exc:
         raw_blocks, parser_warnings = extract_bs4_blocks(html_path)
         warnings.extend(parser_warnings)

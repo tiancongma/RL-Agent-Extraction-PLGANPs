@@ -117,6 +117,23 @@ def _table_matches(row: dict[str, str], table_id: str) -> bool:
     return wanted in {_match_text(row.get("table_id")), _match_text(row.get("source_table_asset_id"))}
 
 
+def _split_row_ordinal_label(row_label: str) -> tuple[str, str]:
+    """Return (body_ordinal, semantic_label) for labels like row_02__5.
+
+    Direct table-row expansion uses stable labels such as ``row_02__5`` when the
+    first-column formulation label alone is not unique.  The table-cell grid
+    preserves both the repeated semantic label (``5``) and the one-based body
+    ``data_row_index``.  Parsing the ordinal lets this consumer bind the exact
+    row without falling back to raw CSV rebinding or paper-specific matching.
+    """
+    text = normalize_text(row_label)
+    match = re.fullmatch(r"row[_\s-]*0*(\d+)__(.+)", text, flags=re.IGNORECASE)
+    if not match:
+        return "", text
+    ordinal = str(max(int(match.group(1)), 1))
+    return ordinal, normalize_text(match.group(2))
+
+
 def build_grid_cell_bindings_for_row(
     grid_rows: list[dict[str, str]],
     *,
@@ -132,7 +149,8 @@ def build_grid_cell_bindings_for_row(
     candidate matches. It does not create formulation identities.
     """
     paper_key_norm = normalize_text(paper_key)
-    label_norm = _match_text(row_label)
+    row_ordinal_norm, semantic_row_label = _split_row_ordinal_label(row_label)
+    label_norm = _match_text(semantic_row_label)
     row_index_norm = normalize_text(row_index)
     candidates = [
         row
@@ -140,7 +158,11 @@ def build_grid_cell_bindings_for_row(
         if normalize_text(row.get("paper_key")) == paper_key_norm
         and _table_matches(row, table_id)
         and (
-            (label_norm and _match_text(row.get("row_label_candidate")) == label_norm)
+            (
+                label_norm
+                and _match_text(row.get("row_label_candidate")) == label_norm
+                and (not row_ordinal_norm or normalize_text(row.get("data_row_index")) == row_ordinal_norm)
+            )
             or (row_index_norm and normalize_text(row.get("row_index")) == row_index_norm)
         )
     ]

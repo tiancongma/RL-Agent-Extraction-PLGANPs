@@ -68,6 +68,20 @@ AMBIGUOUS_SCOPE_VALUES = {
     "needs_scope_review",
 }
 
+S5_3_EXCLUDED_MECHANICAL_FIELDS = {
+    "drug_name",
+    "polymer_name",
+    "polymer_mass_mg",
+    "drug_mass_mg",
+    "O_volume_mL",
+    "external_aqueous_phase_volume_mL",
+    "surfactant_name",
+    "particle_size_nm",
+    "pdi",
+    "zeta_mV",
+    "ee_percent",
+}
+
 
 def _clean(value: Any) -> str:
     return str(value or "").strip()
@@ -135,10 +149,13 @@ def load_candidates(candidate_tsv: Path, rule_direct_values_tsv: Path | None) ->
 
 
 def evaluate_candidate(row: dict[str, str]) -> tuple[str, str, str]:
+    field_name = _clean(row.get("field_name"))
     direct_or_derived = _norm(row.get("direct_or_derived"))
     source_quote = _clean(row.get("source_quote"))
     evidence_scope = _norm(row.get("evidence_scope"))
 
+    if field_name in S5_3_EXCLUDED_MECHANICAL_FIELDS:
+        return "rejected", "s5_3_excluded_mechanical_field_not_allowed", "no"
     if direct_or_derived == "derived":
         return "rejected", "derived_value_not_allowed_in_direct_layer", "no"
     if direct_or_derived != "direct":

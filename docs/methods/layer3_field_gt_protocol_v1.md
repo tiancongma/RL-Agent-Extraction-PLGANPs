@@ -2704,4 +2704,73 @@ Consequence:
 - non-selected `L3H2RS2H` `particle_size_nm`, `pdi`, and `zeta_mV` cells remain blank;
 - exact legend-specified rows retain direct size/PDI/zeta values;
 - no formula-derived values are introduced into current direct GT authority.
+## Evidence Binding Pack Downstream Extension
+
+### Purpose
+
+Evidence Binding Pack is a downstream audit sidecar for the frozen Stage 5 final table. It explains the legal assignment chain for each frozen row and each frozen field value. It does not create rows, create values, replace `final_formulation_table_v1.tsv`, mutate benchmark-valid outputs, or upgrade value-only matches into supporting evidence.
+
+This section extends the Layer 3 Evidence Handoff Contract above. It must be interpreted together with:
+
+- `docs/methods/layer3_evidence_handoff_golden_cases_v1.tsv`
+- `src/stage5_benchmark/validate_layer3_evidence_contract_v1.py`
+- `src/stage5_benchmark/resolve_evidence_binding_authority_v1.py`
+- `src/stage5_benchmark/audit_evidence_binding_contract_v1.py`
+
+### Boundary
+
+Evidence Binding Pack is produced after authority resolution and after the frozen final table is selected. It consumes authority-resolved Stage5, Stage3, Stage2, table/text provenance, and optional S5-3/S5-4/S5-5/Layer3 compare sidecars. It remains diagnostic/audit sidecar material unless explicitly promoted by a future governed decision.
+
+### Required Separation Of Concerns
+
+- Authority resolution gate: resolves exactly which frozen inputs are legal.
+- Contract audit: proves current evidence-handoff behavior and classifies existing surfaces.
+- Binding pack builder: records factual assignment chains and status taxonomy only.
+- Risk assessment: consumes frozen packs and assigns review risk.
+- Workbook builder: renders pack/risk facts for reviewers and must not silently fall back to weak legacy evidence logic unless explicit legacy mode is requested.
+
+### Binding Status Vocabulary
+
+Binding packs must use a closed, reviewable status vocabulary including at least:
+
+- `direct_supported`
+- `relation_supported`
+- `derived_supported`
+- `identity_only_match`
+- `value_only_match`
+- `ambiguous_assignment`
+- `unresolved_table`
+- `unsupported_text`
+- `blank_value`
+- `conflict`
+- `normalization_pending`
+- `relation_path_missing`
+- `missing_evidence_anchor`
+- `derived_without_direct_text`
+- `raw_value_supported_normalization_pending`
+- `coded_value_supported_decode_pending`
+- `role_tolerant_supported`
+- `source_surface_missing`
+- `authority_alias_conflict`
+
+DOE coded factors with table/row support but unresolved physical-value decoding must use `coded_value_supported_decode_pending`, not generic `normalization_pending`.
+
+### Assignment Path Vocabulary
+
+Each non-blank field pack must expose an `assignment_path`, such as:
+
+- `direct_same_table_row`
+- `stage3_relation_resolved`
+- `parent_inheritance`
+- `shared_method_context`
+- `selection_marker`
+- `doe_factor_decode`
+- `sequential_optimization_link`
+- `derived_from_row_values`
+
+If a value came from Stage3 resolved relation fields but the builder cannot return a relation path, the pack status must be `relation_path_missing`, not `relation_supported`.
+
+### Golden Case Continuity
+
+Evidence Binding Pack work must preserve existing hardening from `layer3_evidence_handoff_golden_cases_v1.tsv`, including broad row anchor suppression, polymer grade not being treated as molecular weight, generic numeric mismatch rejection, and relation provenance visibility when direct evidence is absent.
 

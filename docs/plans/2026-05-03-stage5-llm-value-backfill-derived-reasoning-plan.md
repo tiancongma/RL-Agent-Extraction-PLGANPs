@@ -44,12 +44,37 @@
 
 ### S5-2 Deterministic direct materialization
 
-**Purpose:** Apply rules that are source-faithful and direct-evidence-only over fixed rows.
+**Purpose:** Apply rules that are source-faithful and direct-evidence-only over fixed rows. Current working principle after boundaryfix14: S5-2 is the main deterministic value-materialization layer, and S5-3 LLM is only a post-S5-2 gap-filler. S5-3 must not repeat whole-table or mechanical row-local value extraction when S5-2 can bind the value from preserved table structure, row-local assignments, or unique scoped source text.
+
+**Accepted diagnostic baseline for S5-2 work:**
+- baseline lineage: boundaryfix14
+- Stage2: `data/results/20260423_9c4a03f/273_stage2_full_replay_tabledict_boundaryfix14_diagnostic/semantic_to_widerow_adapter/weak_labels__v7pilot_r3_fixparse.tsv`
+- Stage3 relation records: `data/results/20260423_9c4a03f/274_stage3_tabledict_boundaryfix14_diagnostic/relation_artifacts/formulation_relation_records_v1.tsv`
+- Stage3 resolved fields: `data/results/20260423_9c4a03f/274_stage3_tabledict_boundaryfix14_diagnostic/relation_artifacts/resolved_relation_fields_v1.tsv`
+- Stage5 no-S5-3 final table: `data/results/20260423_9c4a03f/275_stage5_tabledict_boundaryfix14_no_s53_diagnostic/final_formulation_table_v1.tsv`
+- final count compare: `data/results/20260423_9c4a03f/277_compare_final_tabledict_boundaryfix14_diagnostic/final_table_vs_gt_counts.tsv`
+- Layer3 compare: `data/results/20260423_9c4a03f/278_layer3_compare_tabledict_boundaryfix14_diagnostic/layer3_value_compare_summary_v1.tsv`
+
+Boundaryfix14 baseline metrics:
+- DEV15 final counts all match current Layer1 GT.
+- Key preserved counts: `PA3SPZ28 = 3/3`, `5GIF3D8W = 26/26`, `INMUTV7L = 12/12`, `QLYKLPKT = 7/7`, `WFDTQ4VX = 30/30`, `WIVUCMYG = 26/26`, `YGA8VQKU = 17/17`.
+- Layer3 core baseline: `system_nonempty_on_gt_cells = 2086`, `value_recall = 0.668804`, `conditional_accuracy_strict = 0.610259`, `conditional_accuracy_relaxed = 0.933845`, `extra_in_system_cells = 30`, `risk_review_queue_rows = 1599`.
 
 **Allowed work:**
 - DOE/table row materialization already authorized upstream.
 - Row-local table cell binding.
+- Full-table recovery is coordinate-preserving execution authority, not a visual
+  cleanup surface. It must preserve blank placeholder columns/cells whenever they
+  carry header/value geometry, and S5-2 should consume this preserved table/grid
+  contract for mechanical values.
+- Summary table rendering is separate from full-table authority. Summary views
+  may compress rows/columns, select only the first row/first columns, or otherwise
+  reduce prompt burden for the LLM, but they are semantic-facing only and must
+  not feed numeric materialization, table-row expansion, or header/value binding.
+- Row-local table source-CSV/header rebinding when the final row preserves a unique table-row locator/snippet and the source CSV header has exactly one unambiguous target metric column. This is compatibility fallback debt, not the preferred long-term source once the preserved full-table/grid contract is fully consumed downstream.
+- Group/continuation label carry-down already preserved in Stage2/table structure, surfaced in Stage5 without inventing new rows.
 - Source-backed shared direct carrythrough when scope is unique.
+- Method paragraph scoped carrythrough for direct preparation constants such as drug identity, polymer mass, organic solvent volume, external aqueous volume, and pH only when uniqueness and row eligibility are proven.
 - Value/unit split when the source cell directly contains both.
 - Filtering/normalization/identity guardrails already governed by Stage5.
 
@@ -59,6 +84,15 @@
 - Assumption-based inference.
 - Derived arithmetic.
 - LLM calls.
+- Using GT values, S5-3 candidates, or system-output agreement as value authority.
+- Letting helper/control/sequential-child tables create or alter the fixed row universe.
+
+**Immediate S5-2 mechanical-value repair queue:**
+1. Row-local table-column binding for fields that are visibly mechanical table cells: `pdi`, `ee_percent`, `particle_size_nm`, `zeta_mV`, `surfactant_name`, `emulsifier_stabilizer_name`.
+2. Group label carry-down into final row surfaces for structured table groups such as `PLGA 503 H`, `PLGA-5%`, `PLGA 10%`, and `PLGA 15%`.
+3. Source-scoped preparation carrythrough for direct constants such as `drug_name`, `polymer_mass_mg`, `O_volume_mL`, `external_aqueous_phase_volume_mL`, and `pH_raw`, respecting row-local authority above scoped carrythrough.
+4. After each S5-2 patch, rebuild Stage5 from the exact boundaryfix14 Stage2/Stage3 inputs and compare against the boundaryfix14 metrics above. `final_count_nonmatches` must remain `0`; the key preserved counts must remain unchanged; Layer3 coverage should improve or at minimum not regress.
+5. Only after this queue is exhausted should S5-3a `target_mode=missing_system` be regenerated; remaining targets are the true LLM gap-fill surface.
 
 **Outputs:**
 - `s5_2_rule_direct_values_v1.tsv` when split out of the current builder, or equivalent columns in `final_output_decision_trace_v1.tsv` until decomposition occurs.

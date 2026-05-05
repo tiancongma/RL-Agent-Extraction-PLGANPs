@@ -90,6 +90,39 @@ current terminal surface, for example:
 - active workbook path
 - GT workbook path
 
+## Table Structure Authority Surfaces
+
+Stage2 table recovery has two different artifact roles that must not be
+collapsed:
+
+- full / execution-grade table authority
+  - examples: `normalized_table_payloads_v1.json`, payload normalized CSVs,
+    `table_cell_grid_v1.tsv`, and `table_cell_grid_v1.jsonl`
+  - must preserve the source table's two-dimensional coordinate geometry,
+    including blank placeholder columns when those columns carry header/value
+    alignment, colspan, or multi-row-header structure
+  - may drop only confirmed non-table spillover rows such as PDF page-column
+    enumerator rows or prose fragments before the actual table header
+  - is the lawful Stage2 table-structure source for downstream mechanical
+    table materialization and row-local header/value binding
+- summary / prompt / evidence view
+  - may be compacted to reduce LLM prompt size
+  - is prompt-only and diagnostic/evidence-facing
+  - must not be consumed as benchmark-facing numeric materialization authority,
+    formulation-row expansion authority, or Stage5 value-backfill authority
+
+Raw cleaned CSV files remain legitimate inputs to Stage2 table recovery and may
+be used for bounded diagnostic fallback when an execution-grade artifact is
+known to be missing or corrupt. They must not become the long-term Stage5/S5-2
+authority surface for mechanical backfill. When Stage5 needs row-local table
+values, the preferred authority path is:
+
+`Stage2 coordinate-preserving full table payload/grid -> Stage3/compatibility
+projection row-local bindings -> Stage5 deterministic materialization`.
+
+Any workflow that consumes table-derived values must print or record the exact
+full-table/grid artifacts used, not just the raw source CSV path.
+
 ## Metadata Requirements
 
 Workbook, alignment, comparison, and audit artifacts must record:

@@ -1,0 +1,69 @@
+{
+  "baseline_032_core_total": {
+    "conditional_accuracy_canonicalized": "0.872532",
+    "conditional_accuracy_relaxed": "0.872532",
+    "conditional_accuracy_strict": "0.563090",
+    "extra_in_system_cells": "34",
+    "field_name": "__group_total__",
+    "group_name": "core_fixed_fields",
+    "gt_nonempty_cells": "3119",
+    "system_nonempty_on_gt_cells": "2330",
+    "value_recall": "0.747034"
+  },
+  "baseline_032_status_counts": {
+    "blocked_alignment": 252,
+    "extra_in_system": 34,
+    "missing_in_system": 694,
+    "not_reported_in_gt": 3872,
+    "present_and_match": 2033,
+    "present_but_mismatch": 339
+  },
+  "final_050_core_total": {
+    "conditional_accuracy_canonicalized": "0.872860",
+    "conditional_accuracy_relaxed": "0.872860",
+    "conditional_accuracy_strict": "0.561644",
+    "extra_in_system_cells": "34",
+    "field_name": "__group_total__",
+    "group_name": "core_fixed_fields",
+    "gt_nonempty_cells": "3119",
+    "system_nonempty_on_gt_cells": "2336",
+    "value_recall": "0.748958"
+  },
+  "final_050_status_counts": {
+    "blocked_alignment": 252,
+    "extra_in_system": 34,
+    "missing_in_system": 688,
+    "not_reported_in_gt": 3872,
+    "present_and_match": 2039,
+    "present_but_mismatch": 339
+  },
+  "final_byfield_transitions_vs_032": {
+    "drug_mass_mg:missing_in_system->present_and_match": 6
+  },
+  "final_new_extra_vs_032": {},
+  "final_transitions_vs_032": {
+    "missing_in_system->present_and_match": 6
+  },
+  "initial_041_core_total": {
+    "conditional_accuracy_canonicalized": "0.872860",
+    "conditional_accuracy_relaxed": "0.872860",
+    "conditional_accuracy_strict": "0.561644",
+    "extra_in_system_cells": "60",
+    "field_name": "__group_total__",
+    "group_name": "core_fixed_fields",
+    "gt_nonempty_cells": "3119",
+    "system_nonempty_on_gt_cells": "2336",
+    "value_recall": "0.748958"
+  },
+  "initial_041_status_counts": {
+    "blocked_alignment": 252,
+    "extra_in_system": 60,
+    "missing_in_system": 688,
+    "not_reported_in_gt": 3846,
+    "present_and_match": 2039,
+    "present_but_mismatch": 339
+  },
+  "initial_new_extra_vs_032": {
+    "polymer_mass_mg": 26
+  }
+}

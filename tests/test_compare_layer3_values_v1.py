@@ -4,9 +4,15 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from src.stage2_sampling_labels.build_numbered_doe_row_candidates_v1 import (
+    first_numbered_row_anchor,
+)
 from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
     normalize_stage2_document_for_projection,
     project_document,
+)
+from src.stage2_sampling_labels.function_units.doe_row_expansion_function_unit_v1 import (
+    resolve_authorized_doe_targets,
 )
 from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     OLLAMA_SHRUNKEN_LIVE_SCHEMA,
@@ -23,7 +29,9 @@ from src.stage2_sampling_labels.table_cell_grid_v1 import (
 from src.stage2_sampling_labels.table_row_expansion_v1 import (
     canonical_field_for_header,
     compatibility_field_for_assignment,
+    extract_column_anchor_rows_from_authority,
     extract_direct_formulation_rows_from_authority,
+    is_auxiliary_measurement_column_header,
 )
 from src.stage3_relation.build_formulation_relation_artifacts_v1 import (
     build_resolved_relation_fields_for_paper,
@@ -39,10 +47,13 @@ from src.stage5_benchmark.build_minimal_final_output_v1 import (
     should_filter_non_formulation,
 )
 from src.stage5_benchmark import build_minimal_final_output_v1 as final_output
+from src.stage5_benchmark import build_s5_3a_llm_value_prompts_v1 as s5_3a
+from src.stage5_benchmark import validate_s5_value_candidates_v1 as s5_4
 from src.stage5_benchmark.compare_layer3_values_to_gt_v1 import (
     CORE_FIXED_FIELDS,
     NAMED_EXTENSIBLE_VARIABLE_FIELDS,
     PROVENANCE_ONLY_FIELDS,
+    SYSTEM_FIELD_MAP,
     build_alignment_index,
     build_cells,
     build_reporting_cells,
@@ -62,6 +73,280 @@ from src.stage5_benchmark.compare_layer3_values_to_gt_v1 import (
     should_suppress_duplicate_concentration_unit_cell,
     validate_value_for_field,
 )
+
+
+class Stage2DoeGenericRepairTests(unittest.TestCase):
+    def test_shifted_numbered_row_anchor_accepts_right_shifted_run_matrix(self):
+        rows = [
+            ["spill", "", "", "", "", "", "", "", "Sr. No.", "X1", "X2", "X3", "EE", "PS"],
+            ["left narrative", "", "", "", "", "", "", "", "1", "-1", "0", "1", "85.0", "126.6"],
+            ["left narrative", "", "", "", "", "", "", "", "2", "0", "1", "-1", "82.0", "150.0"],
+        ]
+
+        self.assertEqual(first_numbered_row_anchor(rows), (1, 8))
+
+    def test_shifted_numbered_row_anchor_rejects_prose_number_without_table_tail(self):
+        rows = [
+            ["section", "", "", "", "", "", "", "", "1", "one value", "text only"],
+            ["another", "", "", "", "", "", "", "", "2", "not a matrix", "more text"],
+        ]
+
+        self.assertIsNone(first_numbered_row_anchor(rows))
+
+    def test_doe_target_resolution_prefers_formulation_child_over_noisy_carrier(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paper_dir = root / "TESTDOE"
+            paper_dir.mkdir(parents=True)
+            carrier_csv = root / "carrier.normalized.csv"
+            child_csv = root / "child.normalized.csv"
+            carrier_csv.write_text("Factor,Low,High\nX1,-1,1\n", encoding="utf-8")
+            child_csv.write_text(
+                "Sr. No.,X1,X2,X3,EE,PS\n"
+                + "\n".join(f"{idx},-1,0,1,85.{idx},12{idx}.0" for idx in range(1, 9))
+                + "\n",
+                encoding="utf-8",
+            )
+            (paper_dir / "normalized_table_payloads_v1.json").write_text(
+                json.dumps(
+                    {
+                        "normalized_table_payloads": [
+                            {
+                                "source_table_id": "Table 12",
+                                "source_table_asset_id": "TESTDOE__table_12__html_table",
+                                "source_csv_path": str(carrier_csv),
+                                "normalized_csv_path": str(carrier_csv),
+                            },
+                            {
+                                "source_table_id": "Table 13",
+                                "source_table_asset_id": "TESTDOE__table_13__html_table",
+                                "source_csv_path": str(child_csv),
+                                "normalized_csv_path": str(child_csv),
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            document = {
+                "document_key": "TESTDOE",
+                "authority_payload_root": str(root),
+                "boundary_markers": [{"table_id": "Table 12", "is_doe": True}],
+                "table_formulation_scopes": [
+                    {
+                        "table_id": "Table 12",
+                        "table_type": "doe",
+                        "is_formulation_table": True,
+                        "source_table_asset_id": "TESTDOE__table_12__html_table",
+                    },
+                    {
+                        "table_id": "Table 13",
+                        "table_type": "full_formulation",
+                        "parent_table_hint": "Table 12",
+                        "is_formulation_table": True,
+                        "source_table_asset_id": "TESTDOE__table_13__html_table",
+                    },
+                ],
+            }
+            semantic_scope = {"table_scope_refs": ["Table 12"]}
+
+            targets, binding = resolve_authorized_doe_targets(document, semantic_scope)
+
+        self.assertEqual([target["table_id"] for target in targets], ["Table 13"])
+        self.assertEqual(targets[0]["table_path"], str(child_csv))
+        self.assertTrue(binding["binding_success"])
+        self.assertIn(f"Table 13:{child_csv}", binding["resolved_execution_target"])
+        self.assertNotIn(f"Table 12:{carrier_csv}", binding["resolved_execution_target"])
+
+    def test_doe_target_resolution_falls_back_to_carrier_when_child_has_too_few_numbered_rows(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paper_dir = root / "TESTDOE"
+            paper_dir.mkdir(parents=True)
+            carrier_csv = root / "carrier.normalized.csv"
+            child_csv = root / "child.normalized.csv"
+            carrier_csv.write_text(
+                "Run,X1,X2,X3,EE,PS\n"
+                + "\n".join(f"{idx},-1,0,1,85.{idx},12{idx}.0" for idx in range(1, 10))
+                + "\n",
+                encoding="utf-8",
+            )
+            child_csv.write_text(
+                "Run,Size,PDI,Zeta\n1,120,0.1,-10\n2,121,0.2,-11\n3,122,0.3,-12\n",
+                encoding="utf-8",
+            )
+            (paper_dir / "normalized_table_payloads_v1.json").write_text(
+                json.dumps(
+                    {
+                        "normalized_table_payloads": [
+                            {
+                                "source_table_id": "Table 1",
+                                "source_table_asset_id": "TESTDOE__table_01__html_table",
+                                "source_csv_path": str(carrier_csv),
+                                "normalized_csv_path": str(carrier_csv),
+                            },
+                            {
+                                "source_table_id": "Table 6",
+                                "source_table_asset_id": "TESTDOE__table_06__html_table",
+                                "source_csv_path": str(child_csv),
+                                "normalized_csv_path": str(child_csv),
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            document = {
+                "document_key": "TESTDOE",
+                "authority_payload_root": str(root),
+                "boundary_markers": [{"table_id": "Table 1", "is_doe": True}],
+                "table_formulation_scopes": [
+                    {
+                        "table_id": "Table 1",
+                        "table_type": "doe_table",
+                        "is_formulation_table": True,
+                        "source_table_asset_id": "TESTDOE__table_01__html_table",
+                    },
+                    {
+                        "table_id": "Table 6",
+                        "table_type": "full_formulation",
+                        "parent_table_hint": "Table 1",
+                        "is_formulation_table": True,
+                        "source_table_asset_id": "TESTDOE__table_06__html_table",
+                    },
+                ],
+            }
+            semantic_scope = {"table_scope_refs": ["Table 1"]}
+
+            targets, binding = resolve_authorized_doe_targets(document, semantic_scope)
+
+        self.assertEqual([target["table_id"] for target in targets], ["Table 1"])
+        self.assertEqual(targets[0]["table_path"], str(carrier_csv))
+        self.assertTrue(binding["binding_success"])
+        self.assertIn(f"Table 1:{carrier_csv}", binding["resolved_execution_target"])
+        self.assertNotIn(f"Table 6:{child_csv}", binding["resolved_execution_target"])
+
+    def test_doe_target_resolution_falls_back_when_child_has_fewer_numbered_rows_than_carrier(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paper_dir = root / "TESTDOE"
+            paper_dir.mkdir(parents=True)
+            carrier_csv = root / "carrier.normalized.csv"
+            child_csv = root / "child.normalized.csv"
+            carrier_csv.write_text(
+                "Run,X1,X2,X3,EE,PS\n"
+                + "\n".join(f"{idx},-1,0,1,85.{idx},12{idx}.0" for idx in range(1, 10))
+                + "\n",
+                encoding="utf-8",
+            )
+            child_csv.write_text(
+                "Run,X1,X2,X3,EE,PS\n"
+                + "\n".join(f"{idx},-1,0,1,85.{idx},12{idx}.0" for idx in range(1, 9))
+                + "\n",
+                encoding="utf-8",
+            )
+            (paper_dir / "normalized_table_payloads_v1.json").write_text(
+                json.dumps(
+                    {
+                        "normalized_table_payloads": [
+                            {
+                                "source_table_id": "Table 1",
+                                "source_table_asset_id": "TESTDOE__table_01__html_table",
+                                "source_csv_path": str(carrier_csv),
+                                "normalized_csv_path": str(carrier_csv),
+                            },
+                            {
+                                "source_table_id": "Table 6",
+                                "source_table_asset_id": "TESTDOE__table_06__html_table",
+                                "source_csv_path": str(child_csv),
+                                "normalized_csv_path": str(child_csv),
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            document = {
+                "document_key": "TESTDOE",
+                "authority_payload_root": str(root),
+                "boundary_markers": [{"table_id": "Table 1", "is_doe": True}],
+                "table_formulation_scopes": [
+                    {
+                        "table_id": "Table 1",
+                        "table_type": "doe_table",
+                        "is_formulation_table": True,
+                        "source_table_asset_id": "TESTDOE__table_01__html_table",
+                    },
+                    {
+                        "table_id": "Table 6",
+                        "table_type": "full_formulation",
+                        "parent_table_hint": "Table 1",
+                        "is_formulation_table": True,
+                        "source_table_asset_id": "TESTDOE__table_06__html_table",
+                    },
+                ],
+            }
+            semantic_scope = {"table_scope_refs": ["Table 1"]}
+
+            targets, binding = resolve_authorized_doe_targets(document, semantic_scope)
+
+        self.assertEqual([target["table_id"] for target in targets], ["Table 1"])
+        self.assertEqual(targets[0]["table_path"], str(carrier_csv))
+        self.assertTrue(binding["binding_success"])
+        self.assertIn(f"Table 1:{carrier_csv}", binding["resolved_execution_target"])
+        self.assertNotIn(f"Table 6:{child_csv}", binding["resolved_execution_target"])
+
+    def test_projection_normalization_preserves_parent_table_hint_for_child_handoff(self):
+        document = {
+            "document_key": "TESTDOE",
+            "formulation_candidates": [],
+            "table_formulation_scopes": [
+                {
+                    "scope_id": "TESTDOE__table_formulation_scope__01",
+                    "scope_kind": "full_formulation",
+                    "table_id": "Table 13",
+                    "parent_table_hint": "Table 12",
+                    "is_formulation_table": True,
+                }
+            ],
+        }
+
+        normalized = normalize_stage2_document_for_projection(document)
+
+        scopes = normalized.get("table_formulation_scopes") or []
+        self.assertEqual(scopes[0]["table_id"], "Table 13")
+        self.assertEqual(scopes[0]["parent_table_hint"], "Table 12")
+
+    def test_column_anchor_expansion_drops_after_storage_measurement_column(self):
+        matrix = [
+            ["Parameters", "Nanoprecipitation method", "", "", "After storage at 4 °C for 3 months"],
+            ["Drug:Polymer ratio", "1:20", "1:10", "1:6.66", "1:10"],
+            ["Size (nm)", "90.21 ± 2.2", "88.05 ± 2.7", "95.45 ± 2.4", "100 ± 4.2"],
+            ["PDI", "0.212 ± 0.07", "0.170 ± 0.05", "0.237 ± 0.09", "0.295 ± 0.08"],
+            ["Encapsulation efficiency (EE, %)", "53.43 ± 2.8", "88.32 ± 3.3", "60.61 ± 3.5", ""],
+        ]
+
+        rows, reason = extract_column_anchor_rows_from_authority(
+            authority_payload={"normalized_matrix": matrix},
+            row_entries=[],
+        )
+
+        self.assertEqual(reason, "")
+        self.assertEqual(
+            [row["label"] for row in rows],
+            [
+                "Nanoprecipitation method / 1:20",
+                "Nanoprecipitation method / 1:10",
+                "Nanoprecipitation method / 1:6.66",
+            ],
+        )
+        self.assertFalse(any("After storage" in row["label"] for row in rows))
+
+    def test_auxiliary_measurement_column_detection_is_storage_specific(self):
+        self.assertTrue(is_auxiliary_measurement_column_header(["After storage at 4 °C for 3 months", "1:10"]))
+        self.assertTrue(is_auxiliary_measurement_column_header(["Stability", "1 month", "F1"]))
+        self.assertFalse(is_auxiliary_measurement_column_header(["Nanoprecipitation method", "1:10"]))
+        self.assertFalse(is_auxiliary_measurement_column_header(["Drug loaded", "PLGA 50:50"]))
 
 
 class UniversalTableCellGridTests(unittest.TestCase):
@@ -203,6 +488,30 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(by_field["drug_mass_mg"]["raw_header"], "Gatifloxacin (mg)")
         self.assertEqual(by_field["polymer_mass_mg"]["raw_cell_value"], "90")
 
+    def test_grid_row_ordinal_label_disambiguates_repeated_formulation_labels_for_preparation_bindings(self):
+        payload = {
+            "table_id": "Table 1",
+            "header_structure": {
+                "header_row_count": 1,
+                "header_rows": [["Formulation", "Acetone (mL)", "Aqueous phase (mL)", "Artemether (mg)", "PLGA (mg)"]],
+                "flattened_headers": ["Formulation", "Acetone (mL)", "Aqueous phase (mL)", "Artemether (mg)", "PLGA (mg)"],
+            },
+            "normalized_rows": [
+                {"row_index": 2, "row_number": "5", "cells": ["5", "5", "15", "5", "75"]},
+                {"row_index": 3, "row_number": "5", "cells": ["5", "6", "16", "6", "76"]},
+            ],
+        }
+        grid = build_table_cell_grid_from_payload("TEST", payload)
+
+        bindings, status = build_grid_cell_bindings_for_row(grid, paper_key="TEST", table_id="Table 1", row_label="row_02__5")
+
+        self.assertEqual(status, "unique_grid_row_binding")
+        by_field = {item["canonical_field"]: item for item in bindings}
+        self.assertEqual(by_field["O_volume_mL"]["raw_cell_value"], "6")
+        self.assertEqual(by_field["external_aqueous_phase_volume_mL"]["raw_cell_value"], "16")
+        self.assertEqual(by_field["drug_mass_mg"]["raw_cell_value"], "6")
+        self.assertEqual(by_field["polymer_mass_mg"]["raw_cell_value"], "76")
+
     def test_row_local_binding_is_highest_authority_and_formats_direct_mass(self):
         row = {
             "key": "TEST",
@@ -277,9 +586,69 @@ class UniversalTableCellGridTests(unittest.TestCase):
             "S5-2 should expose a generic direct mass validator before material-value carrythrough",
         )
         self.assertFalse(mass_validator("acetylpuerarin"))
-        self.assertFalse(mass_validator("AP"))
-        self.assertTrue(mass_validator("7 mg"))
-        self.assertTrue(mass_validator("7 mg AP"))
+        self.assertFalse(mass_validator("Dexibuprofen"))
+        self.assertFalse(mass_validator("20 mg | PLGA"))
+        self.assertTrue(mass_validator("5 mg acetylpuerarin"))
+
+    def test_stage5_final_mass_boundary_blanks_invalid_identity_and_allows_lawful_carrythrough(self):
+        source_text = "PLGA nanoparticles were prepared from 20 mg PLGA and 0.5 mg curcumin in acetone."
+        row = {
+            "raw_formulation_label": "F1 loaded nanoparticles",
+            "drug_name_value": "curcumin",
+            "drug_feed_amount_text_value": "curcumin",
+            "drug_feed_amount_text_missing_reason": "",
+            "plga_mass_mg_value": "PLGA",
+            "plga_mass_mg_missing_reason": "",
+            "polymer_name_raw": "PLGA",
+        }
+
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text=source_text,
+        )
+
+        self.assertIn("drug_feed_amount_text", applied)
+        self.assertIn("plga_mass_mg", applied)
+        self.assertEqual(materialized["drug_feed_amount_text_value"], "0.5 mg")
+        self.assertEqual(materialized["plga_mass_mg_value"], "20 mg")
+        self.assertEqual(materialized["drug_feed_amount_text_missing_reason"], "")
+        self.assertEqual(materialized["plga_mass_mg_missing_reason"], "")
+
+    def test_stage5_final_mass_boundary_rejects_invalid_row_local_binding_before_carrythrough(self):
+        source_text = "PLGA nanoparticles were prepared from 20 mg PLGA and 0.5 mg curcumin in acetone."
+        row = {
+            "raw_formulation_label": "F1 loaded nanoparticles",
+            "drug_name_value": "curcumin",
+            "drug_feed_amount_text_value": "",
+            "drug_feed_amount_text_missing_reason": "",
+            "plga_mass_mg_value": "",
+            "plga_mass_mg_missing_reason": "",
+            "polymer_name_raw": "PLGA",
+            "table_cell_bindings_json": json.dumps([
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "drug_mass_mg",
+                    "raw_header": "Drug (mg)",
+                    "raw_cell_value": "curcumin",
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "polymer_mass_mg",
+                    "raw_header": "PLGA (mg)",
+                    "raw_cell_value": "75",
+                },
+            ]),
+        }
+
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text=source_text,
+        )
+
+        self.assertIn("drug_feed_amount_text", applied)
+        self.assertEqual(materialized["drug_feed_amount_text_value"], "0.5 mg")
+        self.assertEqual(materialized["plga_mass_mg_value"], "75")
+        self.assertNotEqual(materialized["drug_feed_amount_text_value"], "curcumin")
 
     def test_typed_validator_rejects_ratio_identity_and_concentration_as_mass(self):
         for bad_value in ["75:25", "PLGA", "mg/mL", "1 mg/mL", "10 mL"]:
@@ -819,6 +1188,28 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(provenance[0]["derived_field"], "drug_mass_mg")
         self.assertEqual(provenance[0]["derivation_rule"], "ratio_times_known_polymer_mass")
         self.assertEqual(provenance[0]["derived_value"], "2 mg")
+        self.assertEqual(provenance[0]["direct_or_derived"], "derived")
+        self.assertEqual(provenance[0]["direct_field_write_allowed"], "no")
+        self.assertEqual(provenance[0]["evidence_binding_status"], "derived_without_direct_text")
+
+    def test_concentration_times_volume_stays_in_derived_sidecar_not_direct_mass(self):
+        row = {
+            "drug_feed_amount_text_value": "",
+            "drug_concentration_value_value": "2",
+            "drug_concentration_unit_value": "mg/mL",
+            "evidence_span_text": "The drug solution concentration was 2 mg/mL in 5 mL before nanoparticle preparation.",
+        }
+
+        provenance = build_derived_mass_provenance_for_row(row, source_text="")
+
+        self.assertEqual(row["drug_feed_amount_text_value"], "")
+        self.assertEqual(len(provenance), 1)
+        self.assertEqual(provenance[0]["derived_field"], "drug_mass_mg")
+        self.assertEqual(provenance[0]["derived_value"], "10 mg")
+        self.assertEqual(provenance[0]["derivation_rule"], "mg_per_ml_times_volume_ml")
+        self.assertEqual(provenance[0]["direct_or_derived"], "derived")
+        self.assertEqual(provenance[0]["direct_field_write_allowed"], "no")
+        self.assertEqual(provenance[0]["evidence_binding_status"], "derived_without_direct_text")
 
     def test_direct_formulation_rows_preserve_measurement_tail_size_values(self):
         row_entries = [
@@ -899,13 +1290,39 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(canonical_field_for_header("%EE"), "ee_percent")
         self.assertEqual(canonical_field_for_header("E.E.% ± S.D."), "ee_percent")
         self.assertEqual(canonical_field_for_header("P.I."), "pdi")
+        self.assertEqual(canonical_field_for_header("P. I. ± S.D."), "pdi")
+        self.assertEqual(canonical_field_for_header("Polidispersity Index ± SD"), "pdi")
         self.assertEqual(canonical_field_for_header("ZP (mV)"), "zeta_mV")
         self.assertEqual(canonical_field_for_header("D.L. (%)"), "dl_percent")
+        self.assertEqual(canonical_field_for_header("PLGA mg/mL"), "polymer_concentration_value")
+        self.assertEqual(canonical_field_for_header("Drug conc. Mg/mL"), "drug_concentration_value")
+        self.assertEqual(canonical_field_for_header("PLGA (mg)"), "polymer_mass_mg")
 
     def test_field_header_alias_lexicon_guards_contextual_non_measurement_headers(self):
         self.assertEqual(canonical_field_for_header("HPLC method"), "")
         self.assertEqual(canonical_field_for_header("LC-MS assay"), "")
         self.assertEqual(canonical_field_for_header("Recovery (%)"), "")
+
+    def test_table_cell_grid_rejects_mg_per_ml_polymer_header_as_direct_mass(self):
+        bindings = [
+            {
+                "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                "canonical_field": "polymer_mass_mg",
+                "raw_header": "PLGA mg/mL",
+                "raw_cell_value": "60",
+            },
+            {
+                "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                "canonical_field": "drug_mass_mg",
+                "raw_header": "Drug conc. Mg/mL",
+                "raw_cell_value": "3",
+            },
+        ]
+        direct = final_output.direct_values_from_table_cell_grid_bindings(bindings)
+        self.assertNotIn("plga_mass_mg", direct)
+        self.assertEqual(direct["drug_feed_amount_text"], "3")
+        self.assertNotIn("polymer_concentration_value", direct)
+        self.assertNotIn("drug_concentration_value", direct)
 
     def test_measurement_assignment_maps_abbreviated_ee_header_to_encapsulation_efficiency(self):
         self.assertEqual(
@@ -1351,12 +1768,18 @@ class Layer3CompareContractTests(unittest.TestCase):
 
     def test_normalize_value_with_lexicon_supports_global_and_paper_local(self):
         lexicon = build_value_normalization_lexicon([
-            {"field_family": "drug_name", "surface_form": "KGN", "canonical_form": "Kartogenin", "scope": "global", "paper_key": ""},
-            {"field_family": "surfactant_name", "surface_form": "Poloxamer", "canonical_form": "Poloxamer 407", "scope": "paper_local", "paper_key": "UFXX9WXE"},
+            {"field_family": "drug_name", "surface_form": "KGN", "canonical_form": "Kartogenin", "scope": "global", "paper_key": "", "normalization_rule": "exact"},
+            {"field_family": "surfactant_name", "surface_form": "Poloxamer", "canonical_form": "Poloxamer", "scope": "global", "paper_key": "", "normalization_rule": "exact"},
+            {"field_family": "surfactant_name", "surface_form": "Poloxamer", "canonical_form": "Poloxamer 407", "scope": "paper_local", "paper_key": "UFXX9WXE", "normalization_rule": "exact"},
+            {"field_family": "method_type", "surface_form": "solvent displacement method", "canonical_form": "single_emulsion_o_w", "scope": "global", "paper_key": "", "normalization_rule": "casefold_contains"},
         ])
         self.assertEqual(normalize_value_with_lexicon("drug_name", "KGN", lexicon=lexicon), "Kartogenin")
         self.assertEqual(normalize_value_with_lexicon("surfactant_name", "Poloxamer", paper_key="UFXX9WXE", lexicon=lexicon), "Poloxamer 407")
         self.assertEqual(normalize_value_with_lexicon("surfactant_name", "Poloxamer", paper_key="OTHER", lexicon=lexicon), "Poloxamer")
+        self.assertEqual(
+            normalize_value_with_lexicon("method_type", "prepared by solvent displacement method under stirring", lexicon=lexicon),
+            "single_emulsion_o_w",
+        )
 
     def test_get_system_value_falls_back_to_decision_identity_for_drug_name(self):
         value, source, evidence = get_system_value(
@@ -3010,6 +3433,169 @@ class Layer3CompareContractTests(unittest.TestCase):
         self.assertEqual(row["formulation_id"], "P1__single_variable__etoposide_amount__10_mg")
 
 
+class S53PromptContractTests(unittest.TestCase):
+    def test_s5_3_prompt_targets_gap_fill_surface_by_default(self):
+        self.assertEqual(s5_3a.DEFAULT_TARGET_MODE, "missing_system")
+        self.assertEqual(s5_3a.TARGET_FIELDS, s5_3a.S5_3_RESPONSIBLE_FIELDS)
+        self.assertTrue(set(s5_3a.TARGET_FIELDS).issubset(set(SYSTEM_FIELD_MAP)))
+
+    def test_s5_3_default_excludes_s5_2_mechanical_table_cell_fields(self):
+        s5_2_mechanical_fields = {
+            "drug_name",
+            "polymer_name",
+            "polymer_mass_mg",
+            "drug_mass_mg",
+            "O_volume_mL",
+            "external_aqueous_phase_volume_mL",
+            "surfactant_name",
+            "particle_size_nm",
+            "pdi",
+            "zeta_mV",
+            "ee_percent",
+        }
+        self.assertFalse(s5_2_mechanical_fields & set(s5_3a.TARGET_FIELDS))
+        self.assertIn("method_type", s5_3a.TARGET_FIELDS)
+        self.assertIn("polymer_mw_raw", s5_3a.TARGET_FIELDS)
+        self.assertIn("solvent_name", s5_3a.TARGET_FIELDS)
+
+    def test_s5_3_default_missing_system_mode_omits_already_filled_values(self):
+        rows = [{"final_formulation_id": "P__F1", "method_type_value_text": "nanoprecipitation", "polymer_mw_raw_value_text": "10 kDa", "loading_content_percent_value_text": "7.5", "organic_solvent_value_text": ""}]
+        selected = s5_3a.select_target_fields_for_rows(rows, [], s5_3a.DEFAULT_TARGET_MODE)
+        by_row = s5_3a.select_target_fields_by_formulation_id(rows, [], s5_3a.DEFAULT_TARGET_MODE)
+        self.assertNotIn("method_type", selected)
+        self.assertNotIn("polymer_mw_raw", selected)
+        self.assertNotIn("lc_percent", selected)
+        self.assertIn("solvent_name", selected)
+        self.assertNotIn("method_type", by_row["P__F1"])
+        self.assertNotIn("lc_percent", by_row["P__F1"])
+        self.assertIn("solvent_name", by_row["P__F1"])
+
+    def test_s5_3_missing_system_targets_are_row_specific_not_chunk_wide_duplicates(self):
+        rows = [
+            {"final_formulation_id": "P__F1", "method_type_value_text": "nanoprecipitation"},
+            {"final_formulation_id": "P__F2", "method_type_value_text": ""},
+        ]
+        selected = s5_3a.select_target_fields_for_rows(rows, ["method_type"], s5_3a.DEFAULT_TARGET_MODE)
+        by_row = s5_3a.select_target_fields_by_formulation_id(rows, ["method_type"], s5_3a.DEFAULT_TARGET_MODE)
+        self.assertEqual(selected, ["method_type"])
+        self.assertEqual(by_row["P__F1"], [])
+        self.assertEqual(by_row["P__F2"], ["method_type"])
+
+    def test_s5_3_missing_system_treats_resolved_not_reported_as_not_a_gap(self):
+        rows = [{"final_formulation_id": "P__F1", "polymer_concentration_unit_missing_reason": "not_reported"}]
+        selected = s5_3a.select_target_fields_for_rows(rows, ["polymer_concentration_unit"], s5_3a.DEFAULT_TARGET_MODE)
+        by_row = s5_3a.select_target_fields_by_formulation_id(rows, ["polymer_concentration_unit"], s5_3a.DEFAULT_TARGET_MODE)
+        self.assertEqual(selected, [])
+        self.assertEqual(by_row["P__F1"], [])
+
+    def test_s5_3_missing_system_does_not_target_fields_without_final_table_surface(self):
+        rows = [{"final_formulation_id": "P__F1"}]
+        selected = s5_3a.select_target_fields_for_rows(rows, ["sonication_time_s"], s5_3a.DEFAULT_TARGET_MODE)
+        by_row = s5_3a.select_target_fields_by_formulation_id(rows, ["sonication_time_s"], s5_3a.DEFAULT_TARGET_MODE)
+        self.assertEqual(selected, [])
+        self.assertEqual(by_row["P__F1"], [])
+
+    def test_s5_3_missing_system_targets_unresolved_not_projectable_reason(self):
+        rows = [{"final_formulation_id": "P__F1", "polymer_concentration_unit_missing_reason": "not_projectable_from_current_replacement_objects"}]
+        selected = s5_3a.select_target_fields_for_rows(rows, ["polymer_concentration_unit"], s5_3a.DEFAULT_TARGET_MODE)
+        by_row = s5_3a.select_target_fields_by_formulation_id(rows, ["polymer_concentration_unit"], s5_3a.DEFAULT_TARGET_MODE)
+        self.assertEqual(selected, ["polymer_concentration_unit"])
+        self.assertEqual(by_row["P__F1"], ["polymer_concentration_unit"])
+
+    def test_s5_3_all_mode_does_not_reinclude_s5_2_filled_mechanical_values(self):
+        rows = [{"drug_name_value_text": "paclitaxel", "size_nm_value_text": "100"}]
+        selected = s5_3a.select_target_fields_for_rows(rows, [], "all")
+        self.assertNotIn("drug_name", selected)
+        self.assertNotIn("particle_size_nm", selected)
+        self.assertIn("method_type", selected)
+
+    def test_s5_3_row_offset_chunks_fixed_rows_without_field_selection(self):
+        rows = [
+            {"paper_key": "P", "final_formulation_id": "P__F1"},
+            {"paper_key": "P", "final_formulation_id": "P__F2"},
+            {"paper_key": "P", "final_formulation_id": "P__F3"},
+        ]
+        selected = s5_3a.select_final_rows(rows, "P", max_rows=1, row_offset=1)
+        self.assertEqual([row["final_formulation_id"] for row in selected], ["P__F2"])
+
+
+    def test_s5_3_uses_stage2_clean_evidence_blocks_before_raw_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            evidence_dir = root / "evidence_blocks" / "P"
+            evidence_dir.mkdir(parents=True)
+            evidence_path = evidence_dir / "evidence_blocks_v1.json"
+            evidence_path.write_text(
+                json.dumps(
+                    {
+                        "contract_version": "s2_2_evidence_blocks_v1",
+                        "segmentation_profile": "section_aware_candidate_segmentation_v1",
+                        "selection_mode": "evidence_priority_v1",
+                        "evidence_blocks": [
+                            {
+                                "block_id": "P__method__01",
+                                "block_type": "method",
+                                "evidence_kind": "method",
+                                "source_type": "clean_text_paragraph",
+                                "origin_locator": "clean#method",
+                                "text_content": "Downloaded from https://academic.oup.com/jpp/article/67/12/1650/6127230 by University user\nNanoparticles were prepared by nanoprecipitation using acetone.",
+                                "is_table_derived": False,
+                                "noise_flags": [],
+                                "quality_flags": [],
+                            },
+                            {
+                                "block_id": "P__front__01",
+                                "block_type": "front_matter",
+                                "evidence_kind": "metadata",
+                                "source_type": "clean_text_paragraph",
+                                "origin_locator": "clean#front",
+                                "text_content": "Department of Noise University",
+                                "is_table_derived": False,
+                                "noise_flags": [],
+                                "quality_flags": ["front_matter"],
+                            },
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            raw_text = root / "raw.txt"
+            raw_text.write_text("Journals & Books\nDownload full issue\nRAW NAVIGATION NOISE", encoding="utf-8")
+            evidence, audit_rows, metadata = s5_3a.build_source_evidence(
+                "P",
+                raw_text,
+                None,
+                max_text_chars=10000,
+                max_table_chars=10000,
+                evidence_blocks_path=evidence_path,
+            )
+        self.assertIn("SOURCE_TEXT_AUTHORITY: stage2_clean_evidence_blocks", evidence)
+        self.assertIn("BEGIN_STAGE2_EVIDENCE_BLOCK: P__method__01", evidence)
+        self.assertIn("Nanoparticles were prepared by nanoprecipitation", evidence)
+        self.assertNotIn("RAW NAVIGATION NOISE", evidence)
+        self.assertNotIn("Department of Noise University", evidence)
+        self.assertNotIn("Downloaded from", evidence)
+        self.assertNotIn("academic.oup.com", evidence)
+        self.assertEqual(metadata["evidence_source_mode"], "stage2_clean_evidence_blocks")
+        self.assertEqual(metadata["stage2_prompt_noise_lines_removed"], 1)
+        self.assertEqual(len(audit_rows), 1)
+        self.assertEqual(audit_rows[0]["removed_prompt_noise_lines"], 1)
+
+    def test_s5_4_rejects_s5_3_excluded_mechanical_fields_even_when_quoted_direct(self):
+        decision, reason, review = s5_4.evaluate_candidate(
+            {
+                "field_name": "surfactant_name",
+                "direct_or_derived": "direct",
+                "source_quote": "aqueous phase containing surfactant (poloxamer 407)",
+                "evidence_scope": "paper_global_unique",
+            }
+        )
+        self.assertEqual(decision, "rejected")
+        self.assertEqual(reason, "s5_3_excluded_mechanical_field_not_allowed")
+        self.assertEqual(review, "no")
+
+
 class MinimalPlusSharedSemanticsTests(unittest.TestCase):
     def test_stage3_resolves_arbitrary_shared_parameter_without_field_whitelist(self):
         relation_rows = [
@@ -3105,6 +3691,43 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertEqual(materialized["drug_name_value_text"], "Dexibuprofen")
         self.assertEqual(materialized["plga_mass_mg_value_text"], "")
         self.assertEqual(materialized["drug_feed_amount_text_value_text"], "")
+
+    def test_stage5_uses_material_alias_binding_for_method_shared_direct_masses(self):
+        row = {
+            "key": "MVBIND1",
+            "formulation_id": "MVBIND1_Row_1",
+            "raw_formulation_label": "F1",
+            "loaded_state_final": "loaded",
+            "drug_name_value": "curcumin",
+            "drug_name_value_text": "curcumin",
+            "plga_mass_mg_value": "",
+            "plga_mass_mg_value_text": "",
+            "plga_mass_mg_scope": "",
+            "plga_mass_mg_membership_confidence": "",
+            "plga_mass_mg_evidence_region_type": "",
+            "plga_mass_mg_missing_reason": "not_reported",
+            "drug_feed_amount_text_value": "",
+            "drug_feed_amount_text_value_text": "",
+            "drug_feed_amount_text_scope": "",
+            "drug_feed_amount_text_membership_confidence": "",
+            "drug_feed_amount_text_evidence_region_type": "",
+            "drug_feed_amount_text_missing_reason": "not_reported",
+        }
+        source_text = (
+            "The drug curcumin (CUR) was used for all formulations. "
+            "Nanoparticles were prepared by dissolving 100 mg of PLGA and 10 mg of CUR "
+            "in acetone before addition to the aqueous phase."
+        )
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text=source_text,
+        )
+        self.assertIn("plga_mass_mg", applied)
+        self.assertIn("drug_feed_amount_text", applied)
+        self.assertEqual(materialized["plga_mass_mg_value_text"], "100 mg")
+        self.assertEqual(materialized["drug_feed_amount_text_value_text"], "10 mg")
+        self.assertEqual(materialized["plga_mass_mg_evidence_region_type"], "material_value_binding_direct_text")
+        self.assertEqual(materialized["drug_feed_amount_text_evidence_region_type"], "material_value_binding_direct_text")
 
     def test_centrifugation_collection_fields_are_not_core_compare_fields(self):
         self.assertNotIn("centrifugation_time_min", CORE_FIXED_FIELDS)
@@ -4027,6 +4650,210 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertNotIn("surfactant_concentration_text", applied)
         self.assertEqual(materialized["surfactant_concentration_text_value_text"], "")
 
+    def test_stage5_prefers_stage2_table_cell_grid_bindings_without_raw_csv_reopen(self):
+        row = {
+            "key": "INMUTV7L",
+            "formulation_id": "INMUTV7L__table_15__1",
+            "raw_formulation_label": "1",
+            "table_cell_bindings_json": json.dumps([
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "particle_size_nm",
+                    "raw_cell_value": "234.1 ± 0.5",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "pdi",
+                    "raw_cell_value": "0.081 ± 0.009",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "zeta_mV",
+                    "raw_cell_value": "−12.2 ± 1.3",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "ee_percent",
+                    "raw_cell_value": "93.4",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "surfactant_name",
+                    "raw_cell_value": "PVA",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "drug_mass_mg",
+                    "raw_cell_value": "5",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "polymer_mass_mg",
+                    "raw_cell_value": "75",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "O_volume_mL",
+                    "raw_cell_value": "5",
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/DO_NOT_REOPEN.csv",
+                    "source_row_index": 4,
+                },
+            ]),
+            "surfactant_name_value": "",
+            "surfactant_name_value_text": "",
+            "size_nm_value": "",
+            "size_nm_value_text": "",
+            "pdi_value": "",
+            "pdi_value_text": "",
+            "zeta_mV_value": "",
+            "zeta_mV_value_text": "",
+            "zeta_mV_scope": "",
+            "zeta_mV_membership_confidence": "",
+            "zeta_mV_evidence_region_type": "",
+            "zeta_mV_missing_reason": "",
+            "encapsulation_efficiency_percent_value": "Lutrol %",
+            "encapsulation_efficiency_percent_value_text": "Lutrol %",
+            "encapsulation_efficiency_percent_scope": "row_local_table_cell",
+            "encapsulation_efficiency_percent_membership_confidence": "medium",
+            "encapsulation_efficiency_percent_evidence_region_type": "row_local_table_cell",
+            "encapsulation_efficiency_percent_missing_reason": "",
+            "drug_feed_amount_text_value": "",
+            "drug_feed_amount_text_value_text": "",
+            "drug_feed_amount_text_scope": "",
+            "drug_feed_amount_text_evidence_region_type": "",
+            "plga_mass_mg_value": "",
+            "plga_mass_mg_value_text": "",
+            "plga_mass_mg_scope": "",
+            "plga_mass_mg_evidence_region_type": "",
+            "organic_phase_volume_mL_value": "",
+            "organic_phase_volume_mL_value_text": "",
+            "organic_phase_volume_mL_scope": "",
+            "organic_phase_volume_mL_evidence_region_type": "",
+            "polymer_name_raw": "",
+        }
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text="",
+        )
+        self.assertEqual(materialized["size_nm_value"], "234.1")
+        self.assertEqual(materialized["size_nm_value_text"], "234.1 ± 0.5")
+        self.assertEqual(materialized["pdi_value"], "0.081")
+        self.assertEqual(materialized["zeta_mV_value"], "-12.2")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_value"], "93.4")
+        self.assertEqual(materialized["surfactant_name_value"], "PVA")
+        self.assertEqual(materialized["drug_feed_amount_text_value"], "5")
+        self.assertEqual(materialized["plga_mass_mg_value"], "75")
+        self.assertEqual(materialized["organic_phase_volume_mL_value"], "5")
+        self.assertEqual(materialized["organic_phase_volume_mL_scope"], "row_local_table_cell_grid")
+        self.assertEqual(materialized["zeta_mV_scope"], "row_local_table_cell_grid")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_scope"], "row_local_table_cell_grid")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_evidence_region_type"], "row_local_table_cell_grid_binding")
+        self.assertIn("size_nm", applied)
+        self.assertIn("encapsulation_efficiency_percent", applied)
+
+    def test_stage5_row_local_grid_binding_creates_metadata_bundle_for_late_added_preparation_fields(self):
+        row = {
+            "key": "BB3JUVW7",
+            "formulation_id": "BB3JUVW7__table_1__row_02_5",
+            "raw_formulation_label": "row_02__5",
+            "table_cell_bindings_json": json.dumps([
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "O_volume_mL",
+                    "raw_cell_value": "5",
+                    "source_csv_path": "DO_NOT_REOPEN.csv",
+                    "source_row_index": 2,
+                },
+                {
+                    "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                    "canonical_field": "external_aqueous_phase_volume_mL",
+                    "raw_cell_value": "15",
+                    "source_csv_path": "DO_NOT_REOPEN.csv",
+                    "source_row_index": 2,
+                },
+            ]),
+            # Simulate legacy Stage2 rows where Stage5 adds these output columns later.
+            "organic_phase_volume_mL_value": "",
+            "organic_phase_volume_mL_value_text": "",
+            "external_aqueous_phase_volume_mL_value": "",
+            "external_aqueous_phase_volume_mL_value_text": "",
+            "polymer_name_raw": "",
+        }
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text="",
+        )
+        self.assertIn("organic_phase_volume_mL", applied)
+        self.assertEqual(materialized["organic_phase_volume_mL_value"], "5")
+        self.assertEqual(materialized["organic_phase_volume_mL_scope"], "row_local_table_cell_grid")
+        self.assertEqual(materialized["organic_phase_volume_mL_membership_confidence"], "medium")
+        self.assertEqual(materialized["organic_phase_volume_mL_evidence_region_type"], "row_local_table_cell_grid_binding")
+        self.assertEqual(materialized["organic_phase_volume_mL_missing_reason"], "")
+        self.assertIn("external_aqueous_phase_volume_mL", applied)
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_value"], "15")
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_scope"], "row_local_table_cell_grid")
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_membership_confidence"], "medium")
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_evidence_region_type"], "row_local_table_cell_grid_binding")
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_missing_reason"], "")
+
+    def test_stage5_rebinds_row_local_source_csv_characterization_cells_after_split_header_shift(self):
+        row = {
+            "key": "INMUTV7L",
+            "formulation_id": "INMUTV7L__table_15__3",
+            "raw_formulation_label": "3",
+            "table_cell_bindings_json": json.dumps([
+                {
+                    "source_csv_path": "data/cleaned/goren_2025/tables/INMUTV7L/INMUTV7L__table_15__pdf_table.csv",
+                    "source_row_index": 9,
+                }
+            ]),
+            "surfactant_name_value": "",
+            "surfactant_name_value_text": "",
+            "size_nm_value": "",
+            "size_nm_value_text": "",
+            "pdi_value": "",
+            "pdi_value_text": "",
+            "zeta_mV_value": "",
+            "zeta_mV_value_text": "",
+            "encapsulation_efficiency_percent_value": "Lutrol %",
+            "encapsulation_efficiency_percent_value_text": "Lutrol %",
+            "encapsulation_efficiency_percent_scope": "row_local_table_cell",
+            "encapsulation_efficiency_percent_membership_confidence": "medium",
+            "encapsulation_efficiency_percent_evidence_region_type": "row_local_table_cell",
+            "encapsulation_efficiency_percent_missing_reason": "",
+            "polymer_name_raw": "",
+        }
+        materialized, applied = apply_global_preparation_material_carrythrough(
+            final_row=row,
+            source_text="",
+        )
+        self.assertIn("size_nm", applied)
+        self.assertIn("pdi", applied)
+        self.assertIn("zeta_mV", applied)
+        self.assertIn("encapsulation_efficiency_percent", applied)
+        self.assertIn("surfactant_name", applied)
+        self.assertIn("polymer_name", applied)
+        self.assertEqual(materialized["size_nm_value"], "159.5")
+        self.assertEqual(materialized["pdi_value"], "0.058")
+        self.assertEqual(materialized["zeta_mV_value"], "-26.0")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_value"], "85.1")
+        self.assertEqual(materialized["surfactant_name_value"], "Lutrol")
+        self.assertEqual(materialized["polymer_name_raw"], "PLGA 503 H")
+
     def test_stage5_doe_factor_emulsifier_name_does_not_override_row_local_name(self):
         row = {
             "key": "SURF2",
@@ -4111,6 +4938,137 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertEqual(row["preparation_method"], "single emulsion")
         self.assertIn("aqueous phase pH", row["identity_variables_json"])
         self.assertIn("7.4", row["identity_variables_json"])
+
+    def test_stage2_projection_blanks_invalid_direct_mass_values_with_diagnostics(self):
+        document = {
+            "document_key": "TYPEGUARD1",
+            "paper_key": "TYPEGUARD1",
+            "doi": "10.1/typeguard1",
+            "model_name": "test-model",
+            "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+            "semantic_signals": {},
+            "formulation_identity_candidates": [
+                {
+                    "formulation_candidate_id": "F1",
+                    "raw_formulation_label": "Loaded nanoparticles",
+                    "formulation_role": "reported",
+                    "instance_kind": "single_formulation",
+                }
+            ],
+            "component_candidates": [
+                {
+                    "component_id": "c_poly",
+                    "formulation_candidate_id": "",
+                    "component_role_raw": "polymer",
+                    "component_name_raw": "PLGA",
+                    "amount_expression_raw": "PLGA",
+                    "parsed_value_raw": "",
+                },
+                {
+                    "component_id": "c_drug",
+                    "formulation_candidate_id": "",
+                    "component_role_raw": "drug",
+                    "component_name_raw": "Curcumin",
+                    "amount_expression_raw": "1 mg/mL",
+                    "parsed_value_raw": "1",
+                },
+            ],
+            "variable_or_factor_candidates": [],
+            "measurement_candidates": [],
+            "evidence_handoffs": [],
+            "table_formulation_scopes": [],
+            "table_variable_roles": [],
+            "selection_markers": [],
+            "inheritance_markers": [],
+            "boundary_markers": [],
+        }
+        rows, traces, _, _, _ = project_document(document)
+        row = rows[0]
+        self.assertEqual(row["plga_mass_mg_value"], "")
+        self.assertEqual(row["plga_mass_mg_value_text"], "")
+        self.assertEqual(row["plga_mass_mg_missing_reason"], "invalid_mass_no_numeric_value")
+        self.assertEqual(row["drug_feed_amount_text_value"], "")
+        self.assertEqual(row["drug_feed_amount_text_value_text"], "")
+        self.assertEqual(row["drug_feed_amount_text_missing_reason"], "invalid_mass_concentration_only")
+        invalid_traces = [trace for trace in traces if trace["mapping_status"] == "invalid_type_rejected"]
+        self.assertTrue(any(trace["legacy_field"] == "plga_mass_mg" for trace in invalid_traces))
+        self.assertTrue(any(trace["legacy_field"] == "drug_feed_amount_text" for trace in invalid_traces))
+
+    def test_stage5_final_boundary_blanks_invalid_volume_before_lawful_carrythrough(self):
+        source_text = (
+            "PLGA nanoparticles were prepared by dissolving PLGA in acetone (2 mL) "
+            "and added dropwise into 10 mL aqueous phase."
+        )
+        row = {
+            "raw_formulation_label": "Loaded PLGA nanoparticles",
+            "drug_name_value": "curcumin",
+            "polymer_name_raw": "PLGA",
+            "organic_solvent_value": "acetone",
+            "organic_phase_volume_mL_value": "acetone",
+            "organic_phase_volume_mL_value_text": "acetone",
+            "organic_phase_volume_mL_missing_reason": "",
+            "external_aqueous_phase_volume_mL_value": "water",
+            "external_aqueous_phase_volume_mL_value_text": "water",
+            "external_aqueous_phase_volume_mL_missing_reason": "",
+        }
+
+        materialized, applied = apply_global_preparation_material_carrythrough(final_row=row, source_text=source_text)
+
+        self.assertIn("organic_phase_volume_mL", applied)
+        self.assertIn("external_aqueous_phase_volume_mL", applied)
+        self.assertEqual(materialized["organic_phase_volume_mL_value"], "2 mL")
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_value"], "10 mL")
+        self.assertEqual(materialized["organic_phase_volume_mL_missing_reason"], "")
+        self.assertEqual(materialized["external_aqueous_phase_volume_mL_missing_reason"], "")
+
+    def test_stage2_projection_rejects_compressed_direct_mass_with_invalid_segment(self):
+        document = {
+            "document_key": "TYPEGUARD2",
+            "paper_key": "TYPEGUARD2",
+            "doi": "10.1/typeguard2",
+            "model_name": "test-model",
+            "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+            "semantic_signals": {},
+            "formulation_identity_candidates": [
+                {
+                    "formulation_candidate_id": "F1",
+                    "raw_formulation_label": "Loaded nanoparticles",
+                    "formulation_role": "reported",
+                    "instance_kind": "single_formulation",
+                }
+            ],
+            "component_candidates": [
+                {
+                    "component_id": "c_poly_1",
+                    "formulation_candidate_id": "",
+                    "component_role_raw": "polymer",
+                    "component_name_raw": "PLGA",
+                    "amount_expression_raw": "20 mg",
+                    "parsed_value_raw": "20",
+                },
+                {
+                    "component_id": "c_poly_2",
+                    "formulation_candidate_id": "",
+                    "component_role_raw": "polymer",
+                    "component_name_raw": "PLGA",
+                    "amount_expression_raw": "PLGA",
+                    "parsed_value_raw": "",
+                },
+            ],
+            "variable_or_factor_candidates": [],
+            "measurement_candidates": [],
+            "evidence_handoffs": [],
+            "table_formulation_scopes": [],
+            "table_variable_roles": [],
+            "selection_markers": [],
+            "inheritance_markers": [],
+            "boundary_markers": [],
+        }
+        rows, _, _, _, _ = project_document(document)
+        row = rows[0]
+        self.assertEqual(row["plga_mass_mg_value"], "")
+        self.assertEqual(row["plga_mass_mg_value_text"], "")
+        self.assertEqual(row["plga_mass_mg_missing_reason"], "invalid_mass_no_numeric_value")
 
     def test_project_document_does_not_apply_shared_drug_to_control_rows(self):
         document = {

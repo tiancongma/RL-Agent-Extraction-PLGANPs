@@ -274,3 +274,15 @@ Accepted run types are:
 
 Only `full_pipeline_benchmark_run` may report official GT results, and only
 when the evaluation object is the Stage 5 final formulation table.
+## Evidence Binding audit sidecars
+
+The repository includes diagnostic Evidence Binding sidecars downstream of the Stage 5 frozen final table. These sidecars are for audit and review planning only:
+
+- `resolve_evidence_binding_authority_v1.py` locks the authority-resolved final table and related provenance surfaces.
+- `audit_evidence_binding_contract_v1.py` audits which current surfaces expose direct evidence, broad anchors, Stage3 relation provenance, or legacy fallback metadata.
+- `build_evidence_binding_packs_v1.py` emits frozen row/field binding packs without creating rows or values.
+- `build_evidence_binding_risk_assessment_v1.py` consumes frozen packs and emits field/formulation/paper risk sidecars.
+- `build_field_gt_review_workbook_v1.py` requires pack/risk inputs by default; `--legacy-evidence-mode` is required for explicit fallback.
+
+Evidence Binding outputs are diagnostic-only and must not be reported as benchmark-valid final outputs.
+

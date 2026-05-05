@@ -116,6 +116,9 @@ Fine-grained governance mapping:
   - `S5-4 Value authority validation and merge`
   - `S5-5 Derived reasoning / calculated value materialization`
   - `S5-6 Final table closure and audit export`
+  - S5-3 is residual source-evidenced gap filling, not database completion;
+    heterogeneous literature reporting must not be coerced into dense
+    row-by-field extraction merely because schema fields are blank.
 - Benchmark:
   - `B-1 GT compare`
 - Cross-cutting layers:

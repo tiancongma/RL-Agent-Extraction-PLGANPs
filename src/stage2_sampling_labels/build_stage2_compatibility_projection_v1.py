@@ -791,6 +791,7 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
                     "candidate_values": [],
                     "is_formulation_table": scope_kind_is_formulation_bearing(item.get("scope_kind"), item.get("is_formulation_bearing")),
                     "table_type": scope_kind_to_table_type(normalize_text(item.get("scope_kind"))),
+                    "parent_table_hint": normalize_text(item.get("parent_table_hint")),
                     "confidence": normalize_text(item.get("confidence")) or "low",
                     "evidence_span": "",
                     "marker_provenance": normalize_text(declaration.get("declared_by")) or "llm_parsed",
@@ -1354,6 +1355,70 @@ def field_bundle_empty() -> dict[str, str]:
     }
 
 
+_STAGE2_DIRECT_VALUE_TYPES = {
+    "plga_mass_mg": "mass",
+    "drug_feed_amount_text": "mass",
+    "surfactant_concentration_text": "concentration",
+    "pva_conc_percent": "concentration",
+    "polymer_concentration_value": "concentration",
+}
+_STAGE2_MASS_UNIT_PATTERN = r"(?:mg|g|ug|µg|μg|mcg|ng)"
+_STAGE2_VOLUME_UNIT_PATTERN = r"(?:mL|ml|uL|µL|μL|L|l)"
+_STAGE2_CONCENTRATION_PATTERN = re.compile(
+    rf"(?:\b\d+(?:\.\d+)?\s*(?:{_STAGE2_MASS_UNIT_PATTERN})\s*/\s*(?:{_STAGE2_VOLUME_UNIT_PATTERN})\b)|(?:\b\d+(?:\.\d+)?\s*%(?:\s*\(?\s*w\s*/\s*v\s*\)?)?)",
+    re.I,
+)
+
+
+def _invalid_stage2_direct_value_reason(field: str, value: Any, value_text: Any) -> str:
+    """Return a type-validation reason for direct Stage2 numeric bundles, or blank if valid/not typed.
+
+    The check is intentionally shape-based and source-local: it prevents identities,
+    ratios, concentrations, and volume-only values from entering direct mass bundles
+    while preserving correctly typed concentration bundles.
+    """
+    value_type = _STAGE2_DIRECT_VALUE_TYPES.get(field)
+    if not value_type:
+        return ""
+    expr = normalize_text(value_text) or normalize_text(value)
+    if not expr:
+        return ""
+    if "|" in expr:
+        for segment in [part.strip() for part in expr.split("|") if part.strip()]:
+            segment_reason = _invalid_stage2_direct_value_reason(field, "", segment)
+            if segment_reason:
+                return segment_reason
+        return ""
+    if value_type == "mass":
+        numeric_mass = re.search(rf"\b\d+(?:\.\d+)?\s*{_STAGE2_MASS_UNIT_PATTERN}\b", expr, re.I)
+        if numeric_mass:
+            if re.search(rf"\b\d+(?:\.\d+)?\s*{_STAGE2_MASS_UNIT_PATTERN}\s*/\s*{_STAGE2_VOLUME_UNIT_PATTERN}\b", expr, re.I):
+                return "invalid_mass_concentration_only"
+            return ""
+        if re.search(r"\b\d+(?:\.\d+)?\s*[:/]\s*\d+(?:\.\d+)?\b", expr):
+            return "invalid_mass_ratio_only"
+        if _STAGE2_CONCENTRATION_PATTERN.search(expr):
+            return "invalid_mass_concentration_only"
+        if re.search(rf"\b\d+(?:\.\d+)?\s*{_STAGE2_VOLUME_UNIT_PATTERN}\b", expr, re.I):
+            return "invalid_mass_volume_only"
+        if not re.search(r"\d", expr):
+            return "invalid_mass_no_numeric_value"
+        return "invalid_mass_missing_mass_unit"
+    if value_type == "concentration":
+        if _STAGE2_CONCENTRATION_PATTERN.search(expr):
+            return ""
+        if not re.search(r"\d", expr):
+            return "invalid_concentration_no_numeric_value"
+        return "invalid_concentration_missing_concentration_unit"
+    if value_type == "volume":
+        if re.search(rf"\b\d+(?:\.\d+)?\s*{_STAGE2_VOLUME_UNIT_PATTERN}\b", expr, re.I):
+            return ""
+        if not re.search(r"\d", expr):
+            return "invalid_volume_no_numeric_value"
+        return "invalid_volume_missing_volume_unit"
+    return ""
+
+
 def add_trace(
     traces: list[dict[str, str]],
     document_key: str,
@@ -1899,10 +1964,28 @@ def project_document(
 
         bundles = {field: field_bundle_empty() for field in CORE_FIELDS}
 
-        def assign_bundle(field: str, value: str, value_text: str, status: str, refs: list[str], note: str) -> None:
+        def assign_bundle(field: str, value: Any, value_text: Any, status: str, refs: list[str], note: str) -> None:
+            invalid_reason = _invalid_stage2_direct_value_reason(field, value, value_text)
             bundle = bundles[field]
-            bundle["value"] = value
-            bundle["value_text"] = value_text
+            if invalid_reason:
+                bundle["value"] = ""
+                bundle["value_text"] = ""
+                bundle["membership_confidence"] = ""
+                bundle["evidence_region_type"] = region
+                bundle["missing_reason"] = invalid_reason
+                add_trace(
+                    traces,
+                    document_key,
+                    formulation_id,
+                    field,
+                    refs,
+                    "invalid_type_rejected",
+                    status,
+                    f"{note} Rejected by Stage2 direct type validator: {invalid_reason}.",
+                )
+                return
+            bundle["value"] = normalize_text(value)
+            bundle["value_text"] = normalize_text(value_text) or normalize_text(value)
             bundle["membership_confidence"] = (
                 "projected_direct"
                 if status == DIRECT

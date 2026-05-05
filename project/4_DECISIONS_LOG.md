@@ -5563,3 +5563,243 @@ Impact
   place.
 - Direct GT comparison remains restricted to directly reported source evidence;
   derived values require a separate derived-aware reporting mode.
+
+## 2026-05-04
+
+### Decision: Full table recovery is coordinate-preserving execution authority, not a visual summary
+
+Decision
+- Stage2 full-table recovery is an execution-grade table-structure contract, not a
+  readability transform.
+- The purpose of full-table recovery is to preserve the two-dimensional
+  correspondence between headers and values so downstream table expansion and
+  S5-2 deterministic value materialization can bind mechanical values without
+  returning to ad hoc raw-CSV parsing.
+- Blank columns and blank cells must be preserved in the full-table authority
+  surface when they carry colspan, multi-row header, continuation-label, or
+  visual-alignment geometry.
+- Summary tables are a separate semantic-facing surface. They may be compressed,
+  limited, or rendered as first-row/first-column summaries to reduce LLM burden,
+  but summary tables must not be used as downstream authority for numeric
+  materialization, table-row expansion, or header/value binding.
+- Downstream consumers should prefer the preserved full-table authority surface
+  and its `table_cell_grid_v1`-style coordinate payloads. Direct consumption of
+  Stage1/raw CSV files is compatibility or bounded fallback only until the full
+  table contract is fully wired through.
+
+Reason
+- `INMUTV7L` exposed a structural failure where lossy normalization compressed
+  blank placeholder columns and shifted multi-row headers away from values:
+  `Surfactant` and `EE (%)` no longer aligned with their source columns, so
+  simple mechanical fields were either missed or required Stage5 source-CSV
+  fallbacks.
+- Making normalized/full tables visually compact is harmful when it destroys
+  execution geometry. The correct optimization boundary is: compact only the
+  LLM summary/evidence view; preserve coordinates in the full authority view.
+
+Impact
+- The Stage2 normalized/full-table path must not call lossy row/column
+  compaction intended for summaries.
+- S5-2 should progressively consume the preserved full-table/grid contract for
+  row-local table cells, group-label carry-down, and direct scoped constants.
+- Existing raw-CSV fallback repairs remain audit-visible compatibility debt and
+  should be retired only after a governed downstream grid consumer is validated
+  without extra-value collateral.
+
+### Decision: S5-3 must exhaustively extract remaining responsible fields after S5-2, not re-extract S5-2 mechanical values
+
+Decision
+- S5-3 extraction scope starts from the fixed Stage5 row universe after S5-2 deterministic materialization has run.
+- Within the field subset that remains S5-3-responsible after S5-2, S5-3 must attempt exhaustive source-backed extraction; it must not choose only the highest-yield, safest, or easiest shared/prose/table-context fields.
+- This is not a mandate to duplicate S5-2 table-cell mechanical backfill. Fields already lawfully materialized by S5-2 row-local table-cell authority should remain S5-2 outputs and should not be reintroduced as S5-3 targets merely because S5-3 uses LLM/source-text evidence.
+- S5-3 is responsible for remaining direct source-backed values requiring prose, shared context, global preparation conditions, table context not reducible to S5-2 mechanical binding, or formulation-to-context interpretation.
+- S5-4/S5-5 remain responsible for validation, direct-vs-derived separation, normalization, derivation, and derived value outputs. S5-3 may surface candidate evidence, but derived/normalized values must not be accepted into the direct layer without the downstream authority gate.
+
+Reason
+- S5-3 is the final original-source extraction step for values not already resolved by S5-2. Treating it as a selective high-yield patch would leave known S5-3-responsible fields unattempted and would bias residual evaluation.
+- Conversely, expanding S5-3 back over fields already handled by S5-2 would blur stage responsibility and risk conflicting duplicate evidence for deterministic table-cell values.
+
+Impact
+- Future S5-3 prompt generation, candidate extraction, and audits should define target scope as: all remaining S5-3-responsible fields after S5-2, across all fixed rows.
+- S5-3 repair work should not rank fields for inclusion/exclusion within that responsible subset; prioritization may affect implementation order or batching only, not final extraction coverage.
+- Reports must distinguish: S5-2 already-filled mechanical table-cell fields, S5-3 remaining direct source-backed fields, and S5-4/S5-5 derived or normalized fields.
+
+### Decision: Downstream value extraction must consume Stage1/Stage2 cleaned evidence surfaces, not raw source files
+
+Decision
+- Stage1/Stage2 are responsible for document cleaning, section-aware evidence segmentation, table isolation, and table-structure reconstruction before downstream value-layer tasks consume source evidence.
+- Stage5/S5-3 and later value-layer helpers should consume the maintained cleaned text, governed evidence blocks, normalized table payloads, preserved table-cell grids, repaired table authority surfaces, and audited table/evidence manifests produced by Stage1/Stage2 whenever those surfaces exist.
+- Directly rereading raw PDF/HTML text dumps or raw Stage1 table CSVs inside Stage5 is compatibility debt or a bounded diagnostic fallback only. It must be explicit in `RUN_CONTEXT.md`, audit-visible, and should not be treated as the preferred mainline evidence path.
+- S5-3 prompt construction must not bypass upstream cleaning by injecting page headers/footers, navigation text, references, introductions without formulation/protocol signal, author affiliations, journal metadata, or unrelated downstream assay text merely because those strings remain in a raw text file.
+- Table evidence passed to S5-3 should prefer Stage2 table authority surfaces that preserve execution geometry and table-role audit metadata. Prompt-facing table summaries may be compacted, but execution-facing table geometry must come from the reconstructed/normalized authority surface, not lossy visual summaries or ad hoc raw CSV parsing.
+- If a required Stage1/Stage2 cleaned/authority surface is missing for a bounded diagnostic run, the fallback must apply conservative prompt-local cleaning, source delimiters, and cleaning/table-inclusion audit rows before any live S5-3b call.
+
+Reason
+- The system architecture assigns early stages the job of cleaning source documents and reconstructing table structure so later stages can operate on stable, audited evidence contracts rather than re-solving PDF/HTML extraction noise.
+- Earlier S2/S2-4 work already encountered pollution from page headers/footers, references, introductions, author affiliations, and journal/navigation metadata; allowing S5-3 to read broad raw text/table files reintroduces the same failure mode downstream.
+- Row-fixed value extraction should evaluate value reasoning and evidence binding, not model tolerance for avoidable document-noise artifacts.
+
+Impact
+- S5-3 prompt-freeze artifacts should record the exact cleaned/evidence authority surfaces consumed and flag any raw-text/raw-CSV fallback.
+- Future S5-3 repairs should first wire to maintained Stage1/Stage2 evidence surfaces or add a bounded prompt-local cleaner as a temporary fallback; they should not expand live LLM calls over uncleaned raw source dumps.
+- Validation of S5-3 readiness must include input-cleanliness checks in addition to field-scope and row-universe checks.
+
+## 2026-05-05
+
+### Decision: Paper-local abbreviation overlays are part of the shared dictionary system, while global promotion remains governed review
+
+Decision
+- The curated dictionary authority remains `data/cleaned/reference/value_normalization_lexicon_v1.tsv` for approved global and approved paper-local value/header aliases.
+- Stage2 may additionally produce run-scoped paper-local abbreviation registry rows from explicit in-paper definitions such as `Full Term (ABBR)` or `ABBR (Full Term)`.
+- These registry rows use the same lexicon-compatible columns (`field_family`, `surface_form`, `canonical_form`, `alias_type`, `scope`, `paper_key`, `normalization_rule`, and status/promotion metadata) and default to `scope=paper_local`.
+- The shared dictionary matcher may consume explicitly declared overlay TSVs through `PLGA_VALUE_NORMALIZATION_OVERLAY_TSV`; paper-local rows require a matching `paper_key` and never leak into global scope.
+- S5-2/S2 deterministic table-header binding may use a paper-local drug abbreviation overlay to bind headers such as `SND (mg)` to `drug_mass_mg` for the same paper after the in-paper drug abbreviation has been discovered.
+- Global dictionary promotion is not automatic. The promotion-review utility may emit `promote_to_global_candidate`, but curated global lexicon mutation requires separate governed approval.
+
+Reason
+- Stage2 already relies on article-local semantic equivalence: if a drug full name and abbreviation are defined in the paper, later abbreviation-bearing drug-mass headers should be recoverable without hard-coding every abbreviation globally.
+- Treating all new abbreviations as global would create collision risk for formulation labels, factor codes, short ambiguous surfaces, and paper-specific material codes.
+- A shared overlay mechanism lets Stage2/S5-2 benefit from paper-local evidence immediately while preserving auditability and preventing cross-paper contamination.
+
+Impact
+- `src/stage2_sampling_labels/build_paper_local_abbreviation_registry_v1.py` is the supporting utility for producing paper-local abbreviation candidate TSVs from declared text inputs.
+- `src/stage2_sampling_labels/build_dictionary_promotion_review_v1.py` is the supporting utility for grouping paper-local rows, detecting conflicts, and preparing promotion review surfaces.
+- `src/stage2_sampling_labels/table_structure_dictionary_v1.py` is the shared matcher for curated lexicon plus explicit overlays; duplicate dictionary consumers should route through it instead of maintaining parallel alias maps.
+- Future pipeline runs that use abbreviation overlays must record the overlay TSV paths in the run-local `RUN_CONTEXT.md` and must label the resulting registry/promotion artifacts as dictionary-governance or diagnostic surfaces, not benchmark-terminal outputs.
+
+### Decision: S5-3 is residual source-evidenced gap filling, not database completion
+
+Decision
+- The earlier S5-3 wording about "exhaustively extract remaining responsible fields" is superseded by this narrower scope rule.
+- S5-3 must not be framed as database completion or all-schema-field completion.
+- Scientific PLGA literature has highly heterogeneous reporting structure; absence of a value in a paper for one of our target fields is often a true non-reporting condition, not an extraction failure.
+- Therefore, S5-3 must not assume that every fixed formulation row has values for every S5-3 target field, and prompt/scope builders must not target blank schema slots merely because a final-table field is empty.
+- Lawful S5-3 targets are residual, source-evidenced gaps after S5-2, such as benchmark/GT `missing_in_system` cells or explicitly audited omissions where the paper source indicates the value exists and belongs to an admitted row.
+- `not_reported_in_gt`, unresolved absence, and fields with no source signal must not be promoted into LLM extraction scope as database-fill work.
+- `present_but_mismatch` and `blocked_alignment` require separate review/alignment workflows before any value re-extraction is treated as appropriate.
+
+Reason
+- Database-completion assumes uniform reporting across heterogeneous papers and would create false positives, hallucinated values, and misleading workload counts.
+- The correct S5-3 role is to catch residual omissions that survived S5-2, not to force every paper into a dense database schema.
+
+Impact
+- Reports must distinguish old all-field slot counts, corrected blank-slot/database-fill audits, and benchmark-gap repair scope.
+- S5-3 planning should start from compare/evidence-authority gaps, not from row-count × field-count products.
+- Any future S5-3 prompt generation or audit artifact that uses blank final-table fields as candidates must include source/GT/evidence gating before live LLM calls.
+## 2026-05-05
+
+Decision: Maintained DEV15 Stage2 replay baselines must keep governed DOE enumeration explicitly active.
+
+Rationale:
+- A diagnostic current replay (`022_stage2_current_baseline_replay_diagnostic`) was run with `STAGE2_DOE_ENUMERATION_MODE=off`, which disabled `doe_row_expansion_function_unit_v1` and removed all `doe_numbered_table_row_recovery` rows.
+- The resulting row-count drop was configuration-induced DOE ablation, not evidence that dictionary/structure cleanup changed the formulation universe.
+- Corrected replay `029_stage2_current_baseline_replay_doe_explicit_only_diagnostic` used `STAGE2_DOE_ENUMERATION_MODE=explicit_only` and `STAGE2_ENABLE_NUMBERED_DOE_RECOVERY=1`, restoring Stage2 projected rows to 252 and DOE rows to 98, matching accepted lineage `348`.
+- Downstream `031` Stage5 restored final rows to 202; `032` Layer3 compare restored core recall to 0.747034 with 2330/3119 system-on-GT cells.
+
+Policy:
+- For maintained DEV15 baseline/replay runs, set `STAGE2_DOE_ENUMERATION_MODE=explicit_only` and `STAGE2_ENABLE_NUMBERED_DOE_RECOVERY=1`.
+- `STAGE2_DOE_ENUMERATION_MODE=off` is legal only for explicitly named DOE-ablation diagnostics and must not be reported as the current baseline.
+
+Evidence:
+- `data/results/20260504_ab9f61e/033_doe_mode_regression_resolution_audit_diagnostic/RUN_CONTEXT.md`
+- `data/results/20260504_ab9f61e/033_doe_mode_regression_resolution_audit_diagnostic/doe_mode_regression_resolution_metrics.json`
+- `data/results/20260504_ab9f61e/033_doe_mode_regression_resolution_audit_diagnostic/per_paper_rowcount_delta.tsv`
+## 2026-05-05
+
+Decision: Evidence Binding Pack integration is a post-Stage5 diagnostic audit sidecar with an explicit authority-resolution gate.
+
+Rationale:
+- Evidence Binding Packs explain frozen final-table row and value assignment chains; they must not create rows, create values, replace the final table, or promote value-only matches into supporting evidence.
+- The first implementation slice is a Phase0 authority gate because current `ACTIVE_RUN.json` carries multiple legacy/top-level aliases for the same semantic artifacts, and conflicting aliases can silently bind evidence to the wrong frozen table or compare surface.
+- The gate writes run-scoped diagnostic outputs and fails on alias conflicts unless the operator supplies an explicit `--authority-field semantic_name=pointer_key` override.
+
+Implementation anchor:
+- Plan: `docs/plans/2026-05-05-evidence-binding-pack-risk-integration-plan.md`
+- Phase0 script: `src/stage5_benchmark/resolve_evidence_binding_authority_v1.py`
+- Phase0 diagnostic run: `data/results/20260504_ab9f61e/034_evidence_binding_authority_gate_diagnostic/`
+
+Boundary:
+- This is diagnostic-only and not benchmark-valid final output.
+- Risk assessment and workbook rendering remain separate later phases and must consume frozen packs rather than re-resolve evidence ad hoc.
+## 2026-05-05
+
+Decision: Evidence Binding Pack Phase1 contract audit records current evidence-handoff behavior before pack construction.
+
+Rationale:
+- The current repo has multiple evidence-adjacent surfaces with different semantics: direct workbook evidence text, broad anchors/supporting refs, Stage3 relation provenance, and flattened legacy fallback evidence snippets/statuses.
+- Pack-building must not proceed by assuming these are equivalent. The Phase1 audit classifies existing surfaces and writes run-scoped diagnostic outputs from the Phase0 authority manifest.
+
+Implementation anchor:
+- Script: `src/stage5_benchmark/audit_evidence_binding_contract_v1.py`
+- Diagnostic run: `data/results/20260504_ab9f61e/035_evidence_binding_contract_audit_diagnostic/`
+
+Boundary:
+- The contract audit is diagnostic-only and not benchmark-valid final output.
+- It does not build Evidence Binding Packs, assign risk levels, render workbooks, create rows, or create values.
+## 2026-05-05
+
+Decision: Evidence Binding Pack contract is a downstream extension of the existing Layer3 evidence handoff protocol, not a competing contract.
+
+Rationale:
+- The repo already has Layer3 evidence handoff semantics, golden cases, and validator behavior that protect against broad-anchor promotion and generic numeric mismatches.
+- Evidence Binding Pack must preserve and extend those semantics while adding row/field assignment-chain sidecars.
+
+Implementation anchor:
+- Extended method document: `docs/methods/layer3_field_gt_protocol_v1.md` section `Evidence Binding Pack Downstream Extension`.
+
+Boundary:
+- No new governance document was created under `project/`.
+- Risk assessment and workbook rendering remain separate later phases.
+## 2026-05-05
+
+Decision: Initial Evidence Binding Pack builder records factual binding status and assignment path but remains diagnostic-only.
+
+Rationale:
+- The builder must make relation-visible assignment chains explicit before any risk rules or workbook rendering consume them.
+- The first implementation is conservative: it marks blank values, identity-only fields, Stage3 relation-supported fields with source relation ids, and unresolved non-blank fields as missing evidence anchors rather than over-claiming direct support from broad supporting refs.
+
+Implementation anchor:
+- Script: `src/stage5_benchmark/build_evidence_binding_packs_v1.py`
+- Tests: `tests/test_evidence_binding_packs_v1.py`
+- Bounded diagnostic run: `data/results/20260504_ab9f61e/036_evidence_binding_packs_bounded_diagnostic/`
+
+Boundary:
+- The builder does not create rows, create values, replace final table, assign risk levels, or render workbooks.
+- Broad row-level `supporting_evidence_refs` are preserved as anchors only and not promoted to direct support.
+## 2026-05-05
+
+Decision: Evidence Binding risk assessment and workbook integration must remain explicit sidecar layers.
+
+Rationale:
+- Risk assessment consumes frozen Evidence Binding Packs and must not re-parse source evidence or mutate binding facts.
+- Workbook generation must fail loudly when pack/risk inputs are missing unless the caller explicitly selects legacy evidence mode.
+- Evidence Binding validation must continue to execute the existing Layer3 evidence handoff golden cases before any pack-specific cases, preserving broad-anchor suppression and prior hardening behavior.
+
+Implementation anchor:
+- Risk script: `src/stage5_benchmark/build_evidence_binding_risk_assessment_v1.py`
+- Workbook mode update: `src/stage5_benchmark/build_field_gt_review_workbook_v1.py`
+- Validator: `src/stage5_benchmark/validate_evidence_binding_contract_v1.py`
+- Binding golden cases: `docs/methods/evidence_binding_golden_cases_v1.tsv`
+- Bounded risk run: `data/results/20260504_ab9f61e/037_evidence_binding_risk_assessment_bounded_diagnostic/`
+
+Boundary:
+- All outputs remain diagnostic-only review/audit sidecars and are not benchmark-valid final output.
+
+## 2026-05-05
+
+Decision: Value-materialization repairs must restore generic capabilities, not patch specific papers or isolated fields.
+
+Rationale:
+- Recent `drug_mass_mg` failure analysis used concrete papers only as validation examples; the durable repair target is the missing function class: paper-local material alias resolution, entity-value binding, scope-aware shared preparation carrythrough, canonical field promotion, and field-type validation.
+- Paper-specific string rules such as hard-coded drug abbreviations or per-paper mass assignments are not acceptable because future articles will use different abbreviations, table structures, method paragraphs, footnotes, and formulation families.
+- Deterministic downstream layers may transmit source-backed values after Stage2 has authorized formulation meaning and row scope, but must not become semantic authority for row identity or invent values.
+
+Policy:
+- Repair proposals for missing direct values must state the generic capability being restored and the authority/scope guards that make it safe across papers.
+- Concrete papers, fields, and GT misses may be used as bounded validation cases only; they must not become paper-specific runtime branches or one-off hard-coded dictionaries.
+- Acceptable abstractions include paper-local material alias graphs, abbreviation/full-name/entity-role resolution, entity-bound value extraction, row/table/method/footnote scope inference, admitted-row carrythrough, canonical field promotion, and type validators.
+- S5-3 remains residual source-evidenced gap fill; it must not compensate for missing S5-2/S3 generic materialization capability by redoing simple table columns or shared preparation constants.
+
+Implementation anchor:
+- Plan: `docs/plans/2026-05-05-generic-material-value-binding-and-scoped-carrythrough-plan.md`
+

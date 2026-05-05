@@ -72,6 +72,10 @@ transformations.
   sidecars only, write run-context metadata, require fixed explicit input paths,
   and must not replace `build_minimal_final_output_v1.py` as the benchmark-final
   table materialization entrypoint.
+- S5-3 helper scope must be residual source-evidenced gap filling only, not
+  database completion. It must not infer that every paper reports every target
+  field and must not use empty final-table schema slots alone as extraction
+  targets; scope requires benchmark/GT gap evidence or audited source evidence.
 - Stage 4 remains a diagnostic branch off the production path, not the
   production endpoint.
 - The comparison node is downstream of the production path and uses the fixed

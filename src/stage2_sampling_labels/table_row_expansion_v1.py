@@ -7,6 +7,13 @@ import re
 from pathlib import Path
 from typing import Any
 
+from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
+    canonical_field_for_header as shared_canonical_field_for_header,
+    extract_continuation_group_context,
+    is_numeric_index_row,
+    recover_row_entry_headers,
+)
+
 
 FUNCTION_UNIT_ID = "table_row_expansion_v1"
 ROW_MATERIALIZATION_MODE = "table_row_expansion_v1"
@@ -60,82 +67,8 @@ def normalize_token(value: Any) -> str:
     return re.sub(r"_+", "_", text).strip("_")
 
 
-FIELD_HEADER_ALIAS_LEXICON = REPO_ROOT / "data" / "cleaned" / "reference" / "value_normalization_lexicon_v1.tsv"
-_FIELD_HEADER_ALIAS_CACHE: list[dict[str, str]] | None = None
-
-
-def _canonical_header_text(value: Any) -> str:
-    text = normalize_text(value).lower()
-    text = text.replace("−", "-")
-    return re.sub(r"\s+", " ", text).strip()
-
-
-def _compact_header_text(value: Any) -> str:
-    return "".join(re.findall(r"[a-z0-9%]+", _canonical_header_text(value)))
-
-
-def _load_field_header_alias_rows() -> list[dict[str, str]]:
-    global _FIELD_HEADER_ALIAS_CACHE
-    if _FIELD_HEADER_ALIAS_CACHE is not None:
-        return _FIELD_HEADER_ALIAS_CACHE
-    rows: list[dict[str, str]] = []
-    if FIELD_HEADER_ALIAS_LEXICON.exists():
-        with FIELD_HEADER_ALIAS_LEXICON.open(newline="", encoding="utf-8") as handle:
-            for row in csv.DictReader(handle, delimiter="\t"):
-                if normalize_text(row.get("field_family")) == "field_name":
-                    rows.append(row)
-    _FIELD_HEADER_ALIAS_CACHE = rows
-    return rows
-
-
 def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
-    raw = _canonical_header_text(header)
-    if not raw:
-        return ""
-    compact = _compact_header_text(header)
-    paper_key = normalize_text(paper_key)
-    best: list[str] = []
-    for row in _load_field_header_alias_rows():
-        scope = normalize_text(row.get("scope")) or "global"
-        row_paper = normalize_text(row.get("paper_key")) if scope == "paper_local" else ""
-        if row_paper and row_paper != paper_key:
-            continue
-        surface = normalize_text(row.get("surface_form"))
-        canonical = normalize_text(row.get("canonical_form"))
-        if not surface or not canonical:
-            continue
-        rule = normalize_text(row.get("normalization_rule")) or "header_compact_exact"
-        surface_raw = _canonical_header_text(surface)
-        surface_compact = _compact_header_text(surface)
-        matched = False
-        if rule in {"header_contains", "casefold_contains"}:
-            matched = bool(surface_raw and surface_raw in raw)
-        elif rule in {"header_exact", "casefold_exact", "exact"}:
-            matched = raw == surface_raw
-        else:
-            matched = compact == surface_compact
-        if matched:
-            best.append(canonical)
-    unique = sorted(set(best))
-    if len(unique) == 1:
-        return unique[0]
-    if len(unique) > 1:
-        return ""
-    mass_header = bool(re.search(r"\b(?:mg|milligram|milligrams)\b", raw))
-    if mass_header:
-        if re.search(r"\b(?:plga|polymer|pcl|pla|resomer)\b", raw):
-            return "polymer_mass_mg"
-        if re.search(r"\b(?:drug|payload|gatifloxacin|rhodamine|artemether|dexibuprofen|dxi|kgn|kartogenin|acetylpuerarin)\b", raw):
-            return "drug_mass_mg"
-    volume_header = bool(re.search(r"\b(?:ml|milliliter|millilitre)\b", raw))
-    if volume_header:
-        if re.search(r"\b(?:aqueous\s+phase|external\s+aqueous\s+phase|water|aqueous)\b", raw):
-            return "external_aqueous_phase_volume_mL"
-        if re.search(r"\b(?:organic\s+phase|organic\s+solvent|acetone|acn|dcm|dichloromethane|ethyl\s+acetate|acetonitrile|chloroform|dmso|ethanol|methanol)\b", raw):
-            return "O_volume_mL"
-    if re.search(r"\b(?:sizes?|particle\s+size|diameter)\b", raw) and re.search(r"\bnm\b", raw):
-        return "particle_size_nm"
-    return ""
+    return shared_canonical_field_for_header(header, paper_key=paper_key)
 
 
 def _normalize_table_label(value: Any) -> str:
@@ -403,6 +336,7 @@ def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) ->
         ],
         "is_formulation_table": bool(scope.get("is_formulation_table")),
         "table_type": normalize_text(scope.get("table_type")),
+        "parent_table_hint": normalize_text(scope.get("parent_table_hint")),
         "confidence": normalize_text(scope.get("confidence")),
         "evidence_span": normalize_text(scope.get("evidence_span")),
         "marker_provenance": marker_provenance(scope, document=document),
@@ -979,6 +913,39 @@ FORMULATION_HEADER_NOISE_PATTERNS = [
 ]
 
 
+def formulation_identity_label_looks_primary(value: Any) -> bool:
+    text = normalize_text(value)
+    if not text:
+        return False
+    lowered = text.lower()
+    if re.fullmatch(r"[0-9]+(?:\.[0-9]+)?%", lowered):
+        return False
+    primary_cues = (
+        "plga",
+        "pcl",
+        "peg",
+        "nanocaps",
+        "nanospher",
+        "nanoparticle",
+        "loaded",
+        "theoretical concentration",
+        "mg/ml",
+        "mg mL",
+        "drug",
+        "polymer",
+        "sc6oh",
+        "xan",
+        "meoxan",
+        "mb ",
+    )
+    if any(cue in lowered for cue in primary_cues):
+        return True
+    token_count = len(re.findall(r"[a-z0-9]+", lowered))
+    if token_count >= 3 and any(symbol in text for symbol in ("/", "(", ")", ":", "-")):
+        return True
+    return False
+
+
 def unique_nonempty(values: list[str]) -> list[str]:
     seen: set[str] = set()
     output: list[str] = []
@@ -1220,6 +1187,13 @@ def is_pure_enumerator_row(cells: list[str]) -> bool:
 
 
 def expand_header_row_for_formulation_columns(cells: list[str], *, width: int) -> list[str]:
+    padded = [normalize_text(cells[idx]) if idx < len(cells) else "" for idx in range(width)]
+    # If the recovered/normalized matrix preserved blank placeholder cells, keep
+    # the two-dimensional column positions.  Collapsing to non-empty cells shifts
+    # grouped headers left and can turn auxiliary columns (for example a later
+    # after-storage timepoint) into apparent formulation headers.
+    if len(cells) >= width and any(not cell for cell in padded) and any(cell for cell in padded):
+        return padded
     normalized = [normalize_text(cell) for cell in cells if normalize_text(cell)]
     if not normalized or is_pure_enumerator_row(normalized):
         return [""] * width
@@ -1263,90 +1237,145 @@ def infer_column_assignment_name(part: str, ordinal: int) -> str:
     return f"formulation_header_part_{ordinal}"
 
 
+AUXILIARY_MEASUREMENT_COLUMN_PATTERNS = [
+    r"\bafter\s+storage\b",
+    r"\bstor(?:age|ed)\b",
+    r"\bstability\b",
+]
+
+
+def is_auxiliary_measurement_column_header(header_parts: list[str]) -> bool:
+    """Return True for column groups that are follow-up measurements, not new formulations.
+
+    Column-oriented formulation tables sometimes append a stability/storage
+    timepoint column beside true preparation columns.  The lower header level may
+    repeat a real formulation coordinate (for example a drug:polymer ratio), but
+    the top-level group is an after-storage characterization condition.  Such a
+    column should feed value evidence for the base formulation only; it must not
+    instantiate a separate formulation row.
+    """
+    header_text = " ".join(normalize_text(part) for part in header_parts if normalize_text(part)).lower()
+    if not header_text:
+        return False
+    return any(re.search(pattern, header_text) for pattern in AUXILIARY_MEASUREMENT_COLUMN_PATTERNS)
+
+
 def extract_column_anchor_rows_from_authority(
     *,
     authority_payload: dict[str, Any],
     row_entries: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], str]:
-    start_index = measurement_rows_start_index(row_entries)
-    if start_index is None:
-        return [], "no_measurement_axis_detected"
-    if start_index < 2:
-        return [], "insufficient_column_header_rows"
-    width = max(len(ensure_list(entry.get("cells"))) for entry in row_entries)
-    header_rows = [
-        horizontal_forward_fill(
-            expand_header_row_for_formulation_columns(
-                [normalize_text(cell) for cell in ensure_list(entry.get("cells"))],
-                width=width,
-            ),
-            width=width,
-        )
-        for entry in row_entries[:start_index]
-    ]
-    measurement_rows = [
-        [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
-        for entry in row_entries[start_index:]
-        if ensure_list(entry.get("cells"))
-    ]
-    formulation_columns: list[dict[str, Any]] = []
-    for col_idx in range(1, width):
-        header_parts = unique_nonempty(
-            [
-                clean_formulation_header_part(header_rows[row_idx][col_idx])
-                for row_idx in range(len(header_rows))
-                if col_idx < len(header_rows[row_idx])
-                and not is_generic_formulation_title(header_rows[row_idx][col_idx])
-                and clean_formulation_header_part(header_rows[row_idx][col_idx])
-            ]
-        )
-        if not header_parts:
-            continue
-        measurements: list[dict[str, str]] = []
-        for row in measurement_rows:
-            if col_idx >= len(row):
-                continue
-            measure_name = normalize_text(row[0])
-            measure_value = normalize_text(row[col_idx])
-            if not measure_name or not measure_value:
-                continue
-            measurements.append({"name": measure_name, "value": measure_value})
-        if len(measurements) < 2:
-            continue
-        formulation_columns.append(
+    candidate_entry_sets: list[list[dict[str, Any]]] = []
+    if row_entries:
+        candidate_entry_sets.append(row_entries)
+    matrix = [row for row in ensure_list(authority_payload.get("normalized_matrix")) if isinstance(row, list)]
+    if not matrix:
+        normalized_csv_path = normalize_text(authority_payload.get("normalized_csv_path"))
+        if normalized_csv_path:
+            csv_path = Path(normalized_csv_path)
+            if not csv_path.is_absolute():
+                csv_path = (REPO_ROOT / csv_path).resolve()
+            if csv_path.exists():
+                matrix = read_csv_rows(csv_path)
+    if matrix:
+        raw_entries = [
             {
-                "column_index": col_idx,
-                "header_parts": header_parts,
-                "measurements": measurements,
+                "row_index": index,
+                "row_number": "",
+                "cells": [normalize_text(cell) for cell in row],
+                "row_text": " | ".join(normalize_text(cell) for cell in row if normalize_text(cell)),
             }
-        )
-    if len(formulation_columns) < 2:
-        return [], "insufficient_formulation_columns"
-    extracted_rows: list[dict[str, Any]] = []
-    for column in formulation_columns:
-        header_parts = column["header_parts"]
-        label = " / ".join(header_parts)
-        assignments = [
-            {
-                "name": infer_column_assignment_name(part, idx + 1),
-                "value": part,
-            }
-            for idx, part in enumerate(header_parts)
+            for index, row in enumerate(matrix, start=1)
         ]
-        measurement_text = " | ".join(
-            f"{item['name']}={item['value']}" for item in column["measurements"]
-        )
-        extracted_rows.append(
-            {
-                "label": label,
-                "label_number": "",
-                "row_text": measurement_text,
-                "assignments": assignments,
-                "instance_role": formulation_role_from_label(label),
-                "measurement_summary": column["measurements"],
-            }
-        )
-    return extracted_rows, ""
+        if not candidate_entry_sets or raw_entries != candidate_entry_sets[0]:
+            candidate_entry_sets.append(raw_entries)
+    best_reason = "no_measurement_axis_detected"
+    for candidate_rows in candidate_entry_sets:
+        start_index = measurement_rows_start_index(candidate_rows)
+        if start_index is None:
+            best_reason = "no_measurement_axis_detected"
+            continue
+        if start_index < 2:
+            best_reason = "insufficient_column_header_rows"
+            continue
+        width = max(len(ensure_list(entry.get("cells"))) for entry in candidate_rows)
+        header_rows = [
+            horizontal_forward_fill(
+                expand_header_row_for_formulation_columns(
+                    [normalize_text(cell) for cell in ensure_list(entry.get("cells"))],
+                    width=width,
+                ),
+                width=width,
+            )
+            for entry in candidate_rows[:start_index]
+        ]
+        measurement_rows = [
+            [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+            for entry in candidate_rows[start_index:]
+            if ensure_list(entry.get("cells"))
+        ]
+        formulation_columns: list[dict[str, Any]] = []
+        for col_idx in range(1, width):
+            header_parts = unique_nonempty(
+                [
+                    clean_formulation_header_part(header_rows[row_idx][col_idx])
+                    for row_idx in range(len(header_rows))
+                    if col_idx < len(header_rows[row_idx])
+                    and not is_generic_formulation_title(header_rows[row_idx][col_idx])
+                    and clean_formulation_header_part(header_rows[row_idx][col_idx])
+                ]
+            )
+            if not header_parts:
+                continue
+            if is_auxiliary_measurement_column_header(header_parts):
+                continue
+            measurements: list[dict[str, str]] = []
+            for row in measurement_rows:
+                if col_idx >= len(row):
+                    continue
+                measure_name = normalize_text(row[0])
+                measure_value = normalize_text(row[col_idx])
+                if not measure_name or not measure_value:
+                    continue
+                measurements.append({"name": measure_name, "value": measure_value})
+            if len(measurements) < 2:
+                continue
+            formulation_columns.append(
+                {
+                    "column_index": col_idx,
+                    "header_parts": header_parts,
+                    "measurements": measurements,
+                }
+            )
+        if len(formulation_columns) < 2:
+            best_reason = "insufficient_formulation_columns"
+            continue
+        extracted_rows: list[dict[str, Any]] = []
+        for column in formulation_columns:
+            header_parts = column["header_parts"]
+            label = " / ".join(header_parts)
+            assignments = [
+                {
+                    "name": infer_column_assignment_name(part, idx + 1),
+                    "value": part,
+                }
+                for idx, part in enumerate(header_parts)
+            ]
+            measurement_text = " | ".join(
+                f"{item['name']}={item['value']}" for item in column["measurements"]
+            )
+            extracted_rows.append(
+                {
+                    "label": label,
+                    "label_number": "",
+                    "row_text": measurement_text,
+                    "assignments": assignments,
+                    "instance_role": formulation_role_from_label(label),
+                    "measurement_summary": column["measurements"],
+                }
+            )
+        return extracted_rows, ""
+    return [], best_reason
 
 
 def source_text_context_window(text: str, pattern_match: re.Match[str], *, chars_before: int = 1400, chars_after: int = 250) -> str:
@@ -1900,6 +1929,9 @@ def explicit_formulation_row_entries(row_entries: list[dict[str, Any]]) -> list[
     for entry in row_entries:
         if not isinstance(entry, dict):
             continue
+        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
+        if is_numeric_index_row(cells):
+            continue
         label_info = parse_formulation_row_label_info(first_cell_value(entry))
         if label_info is None:
             continue
@@ -1915,30 +1947,11 @@ def combined_prelude_headers(
     first_explicit_row_index: int,
     width: int,
 ) -> list[str]:
-    combined = [""] * width
-    primary_cells: list[str] = []
-    widest = -1
-    for entry in row_entries:
-        if int(entry.get("row_index") or 0) >= first_explicit_row_index:
-            continue
-        cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
-        if len(cells) > widest:
-            widest = len(cells)
-            primary_cells = cells[:]
-        for idx in range(min(width, len(cells))):
-            if not cells[idx]:
-                continue
-            combined[idx] = f"{combined[idx]} {cells[idx]}".strip()
-    resolved: list[str] = []
-    for idx in range(width):
-        primary = normalize_text(primary_cells[idx]) if idx < len(primary_cells) else ""
-        combined_header = normalize_text(combined[idx])
-        primary_low = primary.lower()
-        if primary_low in {"average", "polydispersity", "zeta potential"} and combined_header and combined_header != primary:
-            resolved.append(combined_header)
-        else:
-            resolved.append(primary or combined_header)
-    return resolved
+    return recover_row_entry_headers(
+        row_entries,
+        first_explicit_row_index=first_explicit_row_index,
+        width=width,
+    )
 
 
 def infer_measurement_columns_from_authority(
@@ -1987,7 +2000,13 @@ def infer_variable_columns_from_authority(
             break
         if not header:
             continue
-        variable_columns.append({"column_index": col_idx, "header": header})
+        variable_columns.append(
+            {
+                "column_index": col_idx,
+                "header": header,
+                "canonical_field": canonical_field_for_header(header),
+            }
+        )
     return variable_columns
 
 
@@ -2005,6 +2024,21 @@ def extract_direct_formulation_rows_from_authority(
         return [], "no_formulation_variable_columns"
     source_csv_path = normalize_text(authority_payload.get("source_csv_path"))
     extracted_rows: list[dict[str, Any]] = []
+    current_group_context: dict[str, str] = {}
+    row_entries_by_index = {int(entry.get("row_index") or 0): entry for entry in row_entries if isinstance(entry, dict)}
+    ordered_row_indices = [int(entry.get("row_index") or 0) for entry in row_entries if isinstance(entry, dict)]
+
+    def _append_assignment(assignments: list[dict[str, str]], *, raw_header: str, canonical_field: str, value: str, source_row_index: str, source_column_index: str) -> None:
+        assignments.append(
+            {
+                "name": raw_header,
+                "value": value,
+                "canonical_field": canonical_field,
+                "source_row_index": source_row_index,
+                "source_column_index": source_column_index,
+            }
+        )
+
     for entry in explicit_rows:
         cells = [normalize_text(cell) for cell in ensure_list(entry.get("cells"))]
         source_row_index = normalize_text(entry.get("row_index"))
@@ -2019,16 +2053,8 @@ def extract_direct_formulation_rows_from_authority(
             if not value:
                 continue
             raw_header = normalize_assignment_name(column["header"])
-            canonical_field = canonical_field_for_header(raw_header)
-            assignments.append(
-                {
-                    "name": raw_header,
-                    "value": value,
-                    "canonical_field": canonical_field,
-                    "source_row_index": source_row_index,
-                    "source_column_index": str(col_idx),
-                }
-            )
+            canonical_field = normalize_text(column.get("canonical_field")) or canonical_field_for_header(raw_header)
+            _append_assignment(assignments, raw_header=raw_header, canonical_field=canonical_field, value=value, source_row_index=source_row_index, source_column_index=str(col_idx))
             if canonical_field:
                 cell_bindings.append(
                     {
@@ -2043,6 +2069,12 @@ def extract_direct_formulation_rows_from_authority(
                     }
                 )
             used_columns.add(col_idx)
+        for carried_field, carried_value in current_group_context.items():
+            if not carried_value:
+                continue
+            if any(item.get("canonical_field") == carried_field for item in assignments):
+                continue
+            _append_assignment(assignments, raw_header=carried_field, canonical_field=carried_field, value=carried_value, source_row_index=source_row_index, source_column_index="")
         for column in measurement_columns:
             col_idx = int(column["column_index"])
             if col_idx in used_columns or col_idx >= len(cells):
@@ -2052,15 +2084,7 @@ def extract_direct_formulation_rows_from_authority(
                 continue
             raw_header = normalize_assignment_name(column["header"])
             canonical_field = canonical_field_for_header(raw_header)
-            assignments.append(
-                {
-                    "name": raw_header,
-                    "value": value,
-                    "canonical_field": canonical_field,
-                    "source_row_index": source_row_index,
-                    "source_column_index": str(col_idx),
-                }
-            )
+            _append_assignment(assignments, raw_header=raw_header, canonical_field=canonical_field, value=value, source_row_index=source_row_index, source_column_index=str(col_idx))
             if canonical_field:
                 cell_bindings.append(
                     {
@@ -2086,6 +2110,35 @@ def extract_direct_formulation_rows_from_authority(
                 "table_cell_bindings": cell_bindings,
             }
         )
+        explicit_row_index = int(entry.get("row_index") or 0)
+        try:
+            ordered_pos = ordered_row_indices.index(explicit_row_index)
+        except ValueError:
+            ordered_pos = -1
+        if ordered_pos >= 0:
+            for next_row_index in ordered_row_indices[ordered_pos + 1 :]:
+                next_entry = row_entries_by_index.get(next_row_index)
+                if not isinstance(next_entry, dict):
+                    continue
+                next_cells = [normalize_text(cell) for cell in ensure_list(next_entry.get("cells"))]
+                if next_cells and parse_formulation_row_label_info(next_cells[0]) is not None:
+                    break
+                group_context = extract_continuation_group_context(next_entry, variable_columns=variable_columns)
+                if not group_context:
+                    continue
+                current_group_context.update(group_context)
+                for carried_field, carried_value in group_context.items():
+                    if not carried_value:
+                        continue
+                    replaced = False
+                    for item in extracted_rows[-1]["assignments"]:
+                        if item.get("canonical_field") == carried_field:
+                            item["value"] = carried_value
+                            replaced = True
+                            break
+                    if not replaced:
+                        _append_assignment(extracted_rows[-1]["assignments"], raw_header=carried_field, canonical_field=carried_field, value=carried_value, source_row_index=source_row_index, source_column_index="")
+                break
     if not extracted_rows:
         return [], "no_assignment_rows_matched"
     return extracted_rows, ""
@@ -2545,6 +2598,296 @@ def evaluate_simple_table_enumeration_contract(
     return True, "", identity_surface
 
 
+def direct_rows_look_like_aggregate_variant_list(direct_rows: list[dict[str, Any]]) -> bool:
+    if len(direct_rows) != 1:
+        return False
+    row = direct_rows[0]
+    values = [
+        normalize_text(item.get("value"))
+        for item in ensure_list(row.get("assignments"))
+        if isinstance(item, dict) and normalize_text(item.get("value"))
+    ]
+    values.append(normalize_text(row.get("label")))
+    values.append(normalize_text(row.get("row_text")))
+    values.append(normalize_text(row.get("evidence_span_text")))
+    for value in values:
+        value_low = value.lower()
+        if " | " in value and sum(1 for marker in ("nanoparticle", "nanoparticles", "np", "nps") if marker in value_low) >= 2:
+            return True
+        if " | " in value and sum(1 for marker in ("blank", "fitc", "99mtc", "drug-free", "drug free") if marker in value_low) >= 2:
+            return True
+    return False
+
+
+def weak_ratio_coordinate_text(value: Any) -> bool:
+    text = normalize_text(value)
+    if not text:
+        return False
+    low = text.lower()
+    if not re.search(r"\d\s*[:/]\s*\d", low):
+        return False
+    alpha_tokens = re.findall(r"[a-z]+", low)
+    allowed_alpha = {"plga", "pla", "pcl", "peg", "np", "nps", "w", "o", "ow", "wo"}
+    return all(token in allowed_alpha for token in alpha_tokens)
+
+
+def row_values_look_like_aggregate_variant_list(values: list[Any]) -> bool:
+    for raw_value in values:
+        value = normalize_text(raw_value)
+        value_low = value.lower()
+        if " | " in value and sum(1 for marker in ("nanoparticle", "nanoparticles", "np", "nps") if marker in value_low) >= 2:
+            return True
+        if " | " in value and sum(1 for marker in ("blank", "fitc", "99mtc", "drug-free", "drug free") if marker in value_low) >= 2:
+            return True
+    return False
+
+
+def direct_rows_look_like_weak_ratio_coordinate_surface(direct_rows: list[dict[str, Any]]) -> bool:
+    if len(direct_rows) < 2:
+        return False
+    labels = [normalize_text(row.get("label")) for row in direct_rows if isinstance(row, dict)]
+    if labels and len(labels) == len(direct_rows) and all(weak_ratio_coordinate_text(label) for label in labels):
+        return True
+    ratio_like_rows = 0
+    for row in direct_rows:
+        if not isinstance(row, dict):
+            continue
+        assignments = [item for item in ensure_list(row.get("assignments")) if isinstance(item, dict)]
+        if not assignments:
+            continue
+        names = [normalize_assignment_name(item.get("name")) for item in assignments]
+        values = [normalize_text(item.get("value")) for item in assignments]
+        if all(name.startswith("formulation_header_part") for name in names if name) and any(weak_ratio_coordinate_text(value) for value in values):
+            ratio_like_rows += 1
+    return ratio_like_rows == len(direct_rows)
+
+
+def assignment_rows_look_like_aggregate_variant_list(assignment_rows: list[dict[str, Any]]) -> bool:
+    values = [
+        assignment.get("variable_value")
+        for assignment in assignment_rows
+        if isinstance(assignment, dict) and normalize_text(assignment.get("variable_value"))
+    ]
+    return row_values_look_like_aggregate_variant_list(values)
+
+
+def should_block_explicit_table_row_universe_surface(
+    *,
+    scope: dict[str, Any],
+    boundary: dict[str, Any],
+    role_info: dict[str, Any],
+    direct_rows: list[dict[str, Any]] | None = None,
+    assignment_rows: list[dict[str, Any]] | None = None,
+) -> tuple[bool, str]:
+    table_type = normalize_text(scope.get("table_type")).lower()
+    direct_rows = direct_rows or []
+    assignment_rows = assignment_rows or []
+    if direct_rows_look_like_aggregate_variant_list(direct_rows):
+        return True, "aggregate_variant_list_table_row"
+    if assignment_rows_look_like_aggregate_variant_list(assignment_rows):
+        return True, "aggregate_variant_list_assignment_row"
+    auxiliary_surface = bool(table_type and table_type not in {"full_formulation", "doe_table"} and not bool(boundary.get("is_doe")))
+    if not auxiliary_surface:
+        return False, ""
+    if direct_rows_look_like_weak_ratio_coordinate_surface(direct_rows):
+        return True, f"weak_ratio_coordinate_auxiliary_table:{table_type or 'doe'}"
+    varying_variables = [
+        normalize_text(item).lower()
+        for item in ensure_list(role_info.get("varying_variables"))
+        if normalize_text(item)
+    ]
+    scope_variable = normalize_text(scope.get("variable_name") or scope.get("declared_variable_name"))
+    if scope_variable:
+        varying_variables.append(scope_variable.lower())
+    ratio_axis = any("ratio" in item or ":" in item for item in varying_variables)
+    if ratio_axis and assignment_rows:
+        values = [normalize_text(item.get("variable_value")) for item in assignment_rows if isinstance(item, dict)]
+        if values and all(weak_ratio_coordinate_text(value) for value in values):
+            return True, f"weak_ratio_assignment_auxiliary_table:{table_type or 'doe'}"
+    return False, ""
+
+
+def non_primary_direct_rows_look_measurement_only(
+    *,
+    scope: dict[str, Any],
+    role_info: dict[str, Any],
+    direct_rows: list[dict[str, Any]],
+) -> tuple[bool, str]:
+    table_type = normalize_text(scope.get("table_type")).lower()
+    if not table_type or table_type == "full_formulation":
+        return False, ""
+    assignment_names: list[str] = []
+    canonical_fields: set[str] = set()
+    synthesis_like_assignments = 0
+    measurement_or_output_assignments = 0
+    generic_identity_or_unknown_assignments = 0
+    formulation_identity_values: list[str] = []
+    for direct_row in direct_rows:
+        if not isinstance(direct_row, dict):
+            continue
+        row_label_text = normalize_text(direct_row.get("label") or direct_row.get("formulation_identity_label"))
+        if row_label_text:
+            formulation_identity_values.append(row_label_text)
+        for item in ensure_list(direct_row.get("assignments")):
+            if not isinstance(item, dict):
+                continue
+            name = normalize_assignment_name(item.get("name"))
+            if not name:
+                continue
+            assignment_names.append(name)
+            canonical_field = canonical_field_for_header(name)
+            if canonical_field:
+                canonical_fields.add(canonical_field)
+            compat_field = compatibility_field_for_assignment(name)
+            if compat_field in {
+                "particle_size_nm",
+                "size_nm",
+                "pdi",
+                "zeta_mV",
+                "encapsulation_efficiency_percent",
+                "loading_content_percent",
+                "drug_loading_percent",
+                "drug_loading_pct",
+                "drug_content_percent",
+                "yield_percent",
+            } or is_measurement_header(name):
+                measurement_or_output_assignments += 1
+                continue
+            if compat_field in {
+                "polymer_name",
+                "drug_name",
+                "surfactant_name",
+                "plga_mass_mg",
+                "drug_feed_amount_text",
+                "surfactant_concentration_text",
+                "organic_phase_volume_ml",
+                "external_aqueous_phase_volume_mL",
+                "o_w_ratio",
+                "drug_polymer_ratio",
+                "polymer_ratio",
+            }:
+                synthesis_like_assignments += 1
+                continue
+            normalized_name = normalize_token(name)
+            if normalized_name in {
+                "formulationidentitylabel",
+                "formulation_identity_label",
+                "identitylabel",
+                "identity_label",
+                "label",
+                "rowlabel",
+                "row_label",
+                "used",
+            }:
+                if normalized_name in {
+                    "formulationidentitylabel",
+                    "formulation_identity_label",
+                    "identitylabel",
+                    "identity_label",
+                    "label",
+                    "rowlabel",
+                    "row_label",
+                }:
+                    formulation_identity_values.append(normalize_text(item.get("value")))
+                generic_identity_or_unknown_assignments += 1
+                continue
+            if not compat_field:
+                generic_identity_or_unknown_assignments += 1
+    varying_variables = [
+        normalize_text(item) for item in ensure_list(role_info.get("varying_variables")) if normalize_text(item)
+    ]
+    if varying_variables:
+        assignment_blob = " | ".join(assignment_names).lower()
+        varying_hits = 0
+        for variable in varying_variables:
+            low = variable.lower()
+            tokens = [token for token in re.findall(r"[a-z0-9]+", low) if token not in SINGLE_VARIABLE_STOPWORDS]
+            if low and low in assignment_blob:
+                varying_hits += 1
+                continue
+            if tokens and all(token in assignment_blob for token in tokens):
+                varying_hits += 1
+        if varying_hits > 0:
+            return False, ""
+    aggregate_assignment_values = [
+        normalize_text(item.get("value"))
+        for direct_row in direct_rows
+        for item in ensure_list(direct_row.get("assignments"))
+        if isinstance(item, dict) and normalize_text(item.get("value"))
+    ]
+    for value in aggregate_assignment_values:
+        value_low = value.lower()
+        if " | " in value and sum(1 for marker in ("nanoparticle", "nanoparticles", "np", "nps") if marker in value_low) >= 2:
+            return True, f"aggregate_variant_list_nonprimary_table:{table_type}"
+        if " | " in value and sum(1 for marker in ("blank", "fitc", "99mtc", "drug-free", "drug free") if marker in value_low) >= 2:
+            return True, f"aggregate_variant_list_nonprimary_table:{table_type}"
+    if synthesis_like_assignments > 0:
+        return False, ""
+    identity_label_is_primary = any(
+        formulation_identity_label_looks_primary(value) for value in formulation_identity_values if normalize_text(value)
+    )
+    if assignment_names and measurement_or_output_assignments + generic_identity_or_unknown_assignments >= len(assignment_names):
+        if identity_label_is_primary:
+            return False, ""
+        return True, f"measurement_only_nonprimary_table:{table_type}"
+    if assignment_names and not varying_variables and not canonical_fields:
+        return True, f"nonprimary_table_without_synthesis_contract:{table_type}"
+    if assignment_names and not varying_variables and measurement_or_output_assignments > 0:
+        return True, f"measurement_only_nonprimary_table:{table_type}"
+    return False, ""
+
+
+def weak_duplicate_label_surface_labels(labels: list[str]) -> bool:
+    if not labels:
+        return False
+    weak_count = 0
+    for label in labels:
+        text = normalize_text(label)
+        low = text.lower()
+        alpha_tokens = re.findall(r"[a-z]+", low)
+        has_ratio_or_number = bool(re.search(r"\d\s*[:/]\s*\d|\d", low))
+        allowed_alpha = all(token in {"plga", "pcl", "peg", "pla", "np", "nps"} for token in alpha_tokens)
+        if has_ratio_or_number and (not alpha_tokens or allowed_alpha):
+            weak_count += 1
+    return weak_count == len(labels)
+
+
+def should_block_nonprimary_duplicate_label_surface(
+    *,
+    scope: dict[str, Any],
+    direct_rows: list[dict[str, Any]],
+    existing_rows: list[dict[str, Any]],
+) -> bool:
+    table_type = normalize_text(scope.get("table_type")).lower()
+    if not direct_rows or not existing_rows:
+        return False
+    direct_labels = [normalize_token(row.get("label")) for row in direct_rows if normalize_token(row.get("label"))]
+    if len(direct_labels) < 2:
+        return False
+    direct_label_set = set(direct_labels)
+    if len(direct_label_set) < 2:
+        return False
+    auxiliary_surface = bool(table_type and table_type != "full_formulation") or weak_duplicate_label_surface_labels(direct_labels)
+    if not auxiliary_surface:
+        return False
+    existing_label_set = set()
+    for row in existing_rows:
+        raw_label = normalize_token(row.get("raw_formulation_label"))
+        if raw_label:
+            existing_label_set.add(raw_label)
+            continue
+        local_instance_id = normalize_text(row.get("local_instance_id"))
+        if "__table_" in local_instance_id and "__" in local_instance_id:
+            suffix = local_instance_id.split("__", 2)[-1]
+            suffix = suffix.replace("_/_", "/").replace("_", " ")
+            derived_label = normalize_token(suffix)
+            if derived_label:
+                existing_label_set.add(derived_label)
+    if len(existing_label_set) < 2:
+        return False
+    return direct_label_set.issubset(existing_label_set)
+
+
 def should_block_as_doe_companion_duplicate(
     *,
     document: dict[str, Any],
@@ -2913,6 +3256,17 @@ def run_table_row_expansion(
                 document=document,
                 scope=scope,
             )
+        if direct_rows:
+            blocked_surface, blocked_reason = should_block_explicit_table_row_universe_surface(
+                scope=scope,
+                boundary=boundary,
+                role_info=role_info,
+                direct_rows=direct_rows,
+            )
+            if blocked_surface:
+                activation_row["skip_reason"] = blocked_reason
+                table_activation_rows.append(activation_row)
+                continue
         if should_block_as_doe_companion_duplicate(
             document=document,
             scope=scope,
@@ -2921,6 +3275,36 @@ def run_table_row_expansion(
             doe_rows_emitted=doe_rows_emitted,
         ):
             activation_row["skip_reason"] = "blocked_by_successful_doe_companion_duplicate"
+            table_activation_rows.append(activation_row)
+            continue
+        anchor_direct_rows = list(direct_rows)
+        blocked_nonprimary_direct_rows = False
+        blocked_nonprimary_reason = ""
+        if direct_rows and normalize_text(scope.get("table_type")).lower() != "full_formulation":
+            filtered_direct_rows: list[dict[str, Any]] = []
+            blocked_row_reasons: list[str] = []
+            for candidate_row in direct_rows:
+                blocked_row, blocked_reason = non_primary_direct_rows_look_measurement_only(
+                    scope=scope,
+                    role_info=role_info,
+                    direct_rows=[candidate_row],
+                )
+                if blocked_row:
+                    blocked_nonprimary_direct_rows = True
+                    if blocked_reason:
+                        blocked_row_reasons.append(blocked_reason)
+                    continue
+                filtered_direct_rows.append(candidate_row)
+            if blocked_row_reasons and not filtered_direct_rows:
+                blocked_nonprimary_reason = blocked_row_reasons[0]
+                direct_failure_reason = blocked_nonprimary_reason
+            direct_rows = filtered_direct_rows
+        if direct_rows and should_block_nonprimary_duplicate_label_surface(
+            scope=scope,
+            direct_rows=direct_rows,
+            existing_rows=[candidate for candidate in rows if normalize_text(candidate.get("key")) == document_key],
+        ):
+            activation_row["skip_reason"] = "duplicate_nonprimary_label_surface"
             table_activation_rows.append(activation_row)
             continue
         simple_table_enumeration_attempted = "yes"
@@ -3080,6 +3464,16 @@ def run_table_row_expansion(
                 row_entries=authority_entries,
             )
             if column_rows:
+                blocked_surface, blocked_reason = should_block_explicit_table_row_universe_surface(
+                    scope=scope,
+                    boundary=boundary,
+                    role_info=role_info,
+                    direct_rows=column_rows,
+                )
+                if blocked_surface:
+                    activation_row["skip_reason"] = blocked_reason
+                    table_activation_rows.append(activation_row)
+                    continue
                 for column_row in column_rows:
                     row = {column: "" for column in compatibility_columns}
                     label = normalize_text(column_row.get("label")) or f"column_{len(rows) + 1}"
@@ -3181,7 +3575,7 @@ def run_table_row_expansion(
                 and not document_has_explicit_anchor_scope
             )
             if len(varying_variables) != 1:
-                if emitted_rows_for_scope == 0 and not allow_anchorless_single_variable_recovery:
+                if emitted_rows_for_scope == 0 and not allow_anchorless_single_variable_recovery and not anchor_direct_rows:
                     activation_row["skip_reason"] = direct_failure_reason or f"unsupported_varying_variable_count:{len(varying_variables)}"
                     table_activation_rows.append(activation_row)
                     continue
@@ -3196,6 +3590,16 @@ def run_table_row_expansion(
                     authority_entries,
                     candidate_values,
                 )
+                blocked_surface, blocked_reason = should_block_explicit_table_row_universe_surface(
+                    scope=scope,
+                    boundary=boundary,
+                    role_info=role_info,
+                    assignment_rows=assignment_rows,
+                )
+                if blocked_surface:
+                    activation_row["skip_reason"] = blocked_reason
+                    table_activation_rows.append(activation_row)
+                    continue
                 for assignment in assignment_rows:
                     row = {column: "" for column in compatibility_columns}
                     row_id = f"{document_key}__{normalize_token(table_id)}__row_{int(assignment['row_ordinal']):02d}"
@@ -3293,7 +3697,7 @@ def run_table_row_expansion(
             single_variable_recovery_attempted = "yes"
             single_variable_contract = build_single_variable_recovery_contract(
                 document=document,
-                require_anchor_rows=explicit_rows_for_scope > 0,
+                require_anchor_rows=explicit_rows_for_scope > 0 or bool(anchor_direct_rows),
             )
             if bool(single_variable_contract.get("detected")):
                 existing_rows_for_scope = [
