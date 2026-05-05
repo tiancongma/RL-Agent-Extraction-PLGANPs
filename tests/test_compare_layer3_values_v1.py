@@ -38,6 +38,7 @@ from src.stage5_benchmark.build_minimal_final_output_v1 import (
     load_resolved_relation_fields,
     should_filter_non_formulation,
 )
+from src.stage5_benchmark import build_minimal_final_output_v1 as final_output
 from src.stage5_benchmark.compare_layer3_values_to_gt_v1 import (
     CORE_FIXED_FIELDS,
     NAMED_EXTENSIBLE_VARIABLE_FIELDS,
@@ -268,6 +269,17 @@ class UniversalTableCellGridTests(unittest.TestCase):
 
         self.assertEqual(get_system_value("drug_name", blank_row, paper_key="TEST")[0], "")
         self.assertEqual(get_system_value("drug_name", ambiguous_row, paper_key="TEST")[0], "")
+
+    def test_drug_feed_amount_rejects_identity_only_text(self):
+        mass_validator = getattr(final_output, "is_valid_direct_mass_text", None)
+        self.assertIsNotNone(
+            mass_validator,
+            "S5-2 should expose a generic direct mass validator before material-value carrythrough",
+        )
+        self.assertFalse(mass_validator("acetylpuerarin"))
+        self.assertFalse(mass_validator("AP"))
+        self.assertTrue(mass_validator("7 mg"))
+        self.assertTrue(mass_validator("7 mg AP"))
 
     def test_typed_validator_rejects_ratio_identity_and_concentration_as_mass(self):
         for bad_value in ["75:25", "PLGA", "mg/mL", "1 mg/mL", "10 mL"]:

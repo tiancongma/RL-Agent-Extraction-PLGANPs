@@ -192,6 +192,32 @@ def parse_mass_mg(value: Any) -> float | None:
     return amount
 
 
+def is_valid_direct_mass_text(value: Any) -> bool:
+    """Return True only for direct source text containing numeric mass units.
+
+    This S5-2 guard is intentionally shape/type based.  It accepts direct mass
+    mentions, optionally followed by a material identity, but rejects identities,
+    ratios, volumes, and concentration-only expressions so those values are not
+    silently materialized into direct mass fields.
+    """
+    text = str(value or "").strip()
+    if not text:
+        return False
+    normalized = re.sub(r"\s+", " ", text).strip()
+    if re.search(r"\b\d+(?:\.\d+)?\s*[:/]\s*\d+(?:\.\d+)?\b", normalized):
+        return False
+    mass_unit = r"(?:mg|g|ug|µg|μg|mcg|ng)"
+    if re.search(rf"\b{mass_unit}\s*/\s*(?:m[lL]|l|L)\b|%\s*w\s*/\s*v|w\s*/\s*v\s*%", normalized, flags=re.IGNORECASE):
+        return False
+    if re.search(r"\b\d+(?:\.\d+)?\s*(?:m[lL]|µ[lL]|u[lL]|l|L)\b", normalized) and not re.search(
+        rf"\b\d+(?:\.\d+)?\s*{mass_unit}\b",
+        normalized,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    return bool(re.search(rf"\b\d+(?:\.\d+)?\s*{mass_unit}\b", normalized, flags=re.IGNORECASE))
+
+
 def format_numeric_signature(value: float | None) -> str:
     if value is None:
         return ""
