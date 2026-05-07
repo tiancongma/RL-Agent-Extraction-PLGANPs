@@ -285,10 +285,167 @@ def finalize_blocks(raw_blocks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         }
         if block.get("bbox") is not None:
             clean_block["bbox"] = block.get("bbox")
+        if block_type == "heading" and block.get("heading_level") is not None:
+            clean_block["heading_level"] = block.get("heading_level")
         if block_type == "table" and block.get("table_id"):
             clean_block["table_id"] = str(block["table_id"])
         finalized.append(clean_block)
     return finalized
+
+
+def _normalize_heading_label(text: str) -> str:
+    compact = normalize_inline_whitespace(text)
+    compact = re.sub(r"^#{1,6}\s+", "", compact)
+    compact = re.sub(r"^\d+(?:\.\d+)*\.?\s+", lambda m: m.group(0).strip().rstrip(".") + " ", compact).strip()
+    return compact
+
+
+def _markdown_heading_level(line: str) -> Optional[int]:
+    match = re.match(r"^(#{1,6})\s+\S", str(line or "").strip())
+    if not match:
+        return None
+    return len(match.group(1))
+
+
+def _looks_like_stage1_heading(text: str) -> bool:
+    compact = normalize_inline_whitespace(text)
+    lower = compact.lower()
+    if not compact or len(compact) > 140 or compact.endswith("."):
+        return False
+    if re.match(r"^\d+(?:\.\d+)*\.?\s+[A-Z]", compact):
+        return True
+    if re.match(
+        r"^(abstract|introduction|materials(?: and methods)?|methods?|experimental|results(?: and discussion)?|discussion|conclusions?|references|acknowledgements?|acknowledgments|supporting information|supplementary material)\b",
+        lower,
+    ):
+        return True
+    return False
+
+
+def infer_stage1_section_kind(label: str) -> str:
+    lower = normalize_inline_whitespace(label).lower().strip(":")
+    lower = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", lower).strip()
+    if not lower:
+        return "unscoped"
+    if lower.startswith("abstract") or lower.startswith("keywords"):
+        return "front_matter"
+    if lower.startswith("introduction"):
+        return "introduction"
+    if lower.startswith("materials") or lower in {"methods", "experimental"} or lower.startswith("experimental"):
+        return "methods"
+    if lower.startswith("results and discussion"):
+        return "results_discussion"
+    if lower.startswith("results"):
+        return "results"
+    if lower.startswith("discussion"):
+        return "discussion"
+    if lower.startswith("conclusion") or lower.startswith("summary and conclusion"):
+        return "conclusion"
+    if lower.startswith("reference"):
+        return "references"
+    if lower.startswith("acknowledg"):
+        return "acknowledgements"
+    if lower.startswith("supporting") or lower.startswith("supplementary"):
+        return "supplementary"
+    return "body"
+
+
+def classify_stage1_noise(section_kind: str, text: str) -> Tuple[str, List[str]]:
+    reasons: List[str] = []
+    lower = normalize_inline_whitespace(text).lower()
+    if section_kind in {"references"}:
+        reasons.append("reference_section")
+        return "terminal_noise", reasons
+    if section_kind in {"acknowledgements", "front_matter"}:
+        reasons.append(f"{section_kind}_section")
+        return "suppressible_noise", reasons
+    if any(token in lower for token in ["downloaded from", "wiley online library", "creative commons attribution", "submit your manuscript"]):
+        reasons.append("publisher_chrome")
+        return "suppressible_noise", reasons
+    if section_kind in {"introduction", "conclusion"}:
+        reasons.append(f"{section_kind}_context_section")
+        return "soft_noise", reasons
+    return "keep", reasons
+
+
+def annotate_blocks_with_sections(blocks: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Attach parser-provenance-preserving section/noise metadata to Stage1 blocks.
+
+    This is a structural clean-text model only: it carries headings and broad
+    section/noise classes for downstream denoising. It must not infer PLGA
+    formulation semantics or delete evidence from the clean text surface.
+    """
+    annotated: List[Dict[str, Any]] = []
+    sections: List[Dict[str, Any]] = []
+    current_section: Optional[Dict[str, Any]] = None
+    section_stack: List[Dict[str, Any]] = []
+
+    def close_section(end_block_id: str) -> None:
+        if current_section is not None:
+            current_section["end_block_id"] = end_block_id
+            current_section["block_count"] = sum(
+                1 for block in annotated if block.get("section_id") == current_section["section_id"]
+            )
+
+    def start_section(label: str, level: int, start_block_id: str, text: str) -> Dict[str, Any]:
+        nonlocal current_section, section_stack
+        if annotated:
+            close_section(str(annotated[-1].get("block_id", "")))
+        while section_stack and int(section_stack[-1].get("section_level", 1)) >= level:
+            section_stack.pop()
+        section_id = f"sec{len(sections) + 1:04d}"
+        section_kind = infer_stage1_section_kind(label)
+        noise_class, noise_reason = classify_stage1_noise(section_kind, text)
+        section = {
+            "section_id": section_id,
+            "section_label": label,
+            "section_level": level,
+            "section_kind": section_kind,
+            "section_path_json": json.dumps([s["section_label"] for s in section_stack] + [label], ensure_ascii=False),
+            "start_block_id": start_block_id,
+            "end_block_id": start_block_id,
+            "block_count": 0,
+            "noise_class": noise_class,
+            "noise_reason": noise_reason,
+        }
+        sections.append(section)
+        section_stack.append(section)
+        current_section = section
+        return section
+
+    for raw_block in blocks:
+        block = dict(raw_block)
+        block_type = str(block.get("type", "paragraph"))
+        text = normalize_inline_whitespace(block.get("text", "")) if block_type != "table" else normalize_whitespace(str(block.get("text", "") or ""))
+        block_id = str(block.get("block_id") or f"b{len(annotated) + 1:04d}")
+        heading_level = block.get("heading_level")
+        if block_type == "heading" or _looks_like_stage1_heading(text):
+            try:
+                level = int(heading_level) if heading_level else 2
+            except Exception:
+                level = 2
+            label = _normalize_heading_label(text)
+            section = start_section(label=label, level=max(1, min(level, 6)), start_block_id=block_id, text=text)
+        elif current_section is None:
+            section = start_section(label="Unscoped", level=1, start_block_id=block_id, text=text)
+        else:
+            section = current_section
+        noise_class, noise_reason = classify_stage1_noise(str(section.get("section_kind", "")), text)
+        block.update(
+            {
+                "section_id": section["section_id"],
+                "section_label": section["section_label"],
+                "section_level": section["section_level"],
+                "section_kind": section["section_kind"],
+                "section_path_json": section["section_path_json"],
+                "noise_class": noise_class,
+                "noise_reason": noise_reason,
+            }
+        )
+        annotated.append(block)
+    if annotated:
+        close_section(str(annotated[-1].get("block_id", "")))
+    return annotated, sections
 
 
 def project_text_from_blocks(blocks: List[Dict[str, Any]]) -> str:
@@ -465,6 +622,292 @@ def build_text_detected_table_entries(source_path: Path, txt_path_rel: str, tabl
     return entries
 
 
+def _is_markdown_table_separator(cells: List[str]) -> bool:
+    nonempty = [normalize_inline_whitespace(cell) for cell in cells if normalize_inline_whitespace(cell)]
+    return bool(nonempty) and all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in nonempty)
+
+
+def _parse_markdown_pipe_row(line: str) -> List[str]:
+    stripped = str(line or "").strip()
+    if not stripped.startswith("|") or stripped.count("|") < 2:
+        return []
+    if stripped.endswith("|"):
+        stripped = stripped[:-1]
+    if stripped.startswith("|"):
+        stripped = stripped[1:]
+    return [normalize_inline_whitespace(re.sub(r"<br\s*/?>", " ", cell, flags=re.I)) for cell in stripped.split("|")]
+
+
+def extract_marker_markdown_blocks(rendered_text: str) -> List[Dict[str, Any]]:
+    """Convert Marker markdown into Stage1 structural blocks.
+
+    This preserves Markdown headings as structural headings while keeping table
+    markdown available as table blocks. It does not remove reference/noise text;
+    downstream consumers receive section/noise tags from the sidecar instead.
+    """
+    blocks: List[Dict[str, Any]] = []
+    paragraph_lines: List[str] = []
+    lines = str(rendered_text or "").splitlines()
+
+    def flush_paragraph() -> None:
+        nonlocal paragraph_lines
+        text = normalize_whitespace("\n".join(paragraph_lines))
+        if text:
+            blocks.append(make_block("paragraph", normalize_inline_whitespace(text)))
+        paragraph_lines = []
+
+    i = 0
+    while i < len(lines):
+        stripped = lines[i].strip()
+        if not stripped:
+            flush_paragraph()
+            i += 1
+            continue
+        level = _markdown_heading_level(stripped)
+        if level is not None:
+            flush_paragraph()
+            heading = make_block("heading", _normalize_heading_label(stripped))
+            heading["heading_level"] = level
+            blocks.append(heading)
+            i += 1
+            continue
+        if stripped.startswith("|") and stripped.count("|") >= 2:
+            flush_paragraph()
+            table_lines: List[str] = []
+            while i < len(lines) and lines[i].strip().startswith("|") and lines[i].count("|") >= 2:
+                table_lines.append(lines[i].strip())
+                i += 1
+            table_text = normalize_whitespace("\n".join(table_lines))
+            if table_text:
+                blocks.append(make_block("table", table_text))
+            continue
+        if _looks_like_stage1_heading(stripped):
+            flush_paragraph()
+            heading = make_block("heading", _normalize_heading_label(stripped))
+            heading["heading_level"] = 2
+            blocks.append(heading)
+            i += 1
+            continue
+        paragraph_lines.append(stripped)
+        i += 1
+    flush_paragraph()
+    return blocks
+
+
+def normalize_marker_cell_text_with_provenance(raw_text: str) -> tuple[str, List[str]]:
+    normalized = normalize_inline_whitespace(raw_text)
+    warnings: List[str] = []
+    replacements = [
+        ("±", "+/-", "plus_minus_to_ascii"),
+        ("μ", "u", "micro_to_u"),
+        ("µ", "u", "micro_to_u"),
+        ("−", "-", "unicode_minus_to_ascii"),
+        ("ζ", "zeta", "zeta_to_text"),
+        ("Ζ", "Zeta", "zeta_to_text"),
+    ]
+    for source, target, warning in replacements:
+        if source in normalized:
+            normalized = normalized.replace(source, target)
+            if warning not in warnings:
+                warnings.append(warning)
+    return normalize_inline_whitespace(normalized), warnings
+
+
+def classify_marker_markdown_table_noise(caption: str, raw_table_lines: List[str]) -> tuple[str, str]:
+    text = normalize_inline_whitespace(" ".join([caption] + list(raw_table_lines))).lower()
+    article_metadata_cues = [
+        "article type",
+        "submitted",
+        "received",
+        "accepted",
+        "published",
+        "corresponding author",
+        "copyright",
+        "permissions",
+        "download pdf",
+    ]
+    cue_count = sum(1 for cue in article_metadata_cues if cue in text)
+    scientific_cues = [
+        "formulation",
+        "plga",
+        "nanoparticle",
+        "nanosphere",
+        "particle size",
+        "zeta",
+        "encapsulation",
+        "drug loading",
+        "polymer",
+    ]
+    has_scientific_cue = any(cue in text for cue in scientific_cues)
+    if cue_count >= 2 and not has_scientific_cue:
+        return "confirmed_noise", "article_metadata_table"
+    return "keep", ""
+
+
+def extract_marker_table_caption_line(line: str) -> str:
+    text = normalize_inline_whitespace(re.sub(r"<[^>]+>", " ", str(line or "")))
+    match = re.search(r"\b(?:Table|Tab\.)\s*\d+\b.*", text, flags=re.I)
+    if not match:
+        return ""
+    return normalize_inline_whitespace(match.group(0))
+
+
+def extract_marker_markdown_tables(
+    rendered_text: str,
+    paper_key: str,
+    source_path: Path,
+    parser: str = "marker",
+    parser_variant: str = "diagnostic_bakeoff_v1",
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Extract source-faithful cells from Marker PDF markdown tables.
+
+    Marker is a PDF candidate only. This adapter does not infer PLGA semantics;
+    it preserves markdown table geometry, captions, row/column labels, and
+    lineage for later diagnostic scoring or Stage1 sidecar experiments.
+    """
+    tables: List[Dict[str, Any]] = []
+    cells: List[Dict[str, Any]] = []
+    lines = str(rendered_text or "").splitlines()
+    pending_caption = ""
+    pending_caption_binding_rule = ""
+    previous_table_header_signature = ""
+    previous_table_id = ""
+    previous_continuation_group_id = ""
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        caption_line = extract_marker_table_caption_line(line)
+        if caption_line:
+            pending_caption = caption_line
+            pending_caption_binding_rule = "nearest_preceding_table_caption_line"
+            i += 1
+            continue
+        if not line.startswith("|") or line.count("|") < 2:
+            i += 1
+            continue
+        raw_table_lines: List[str] = []
+        while i < len(lines) and lines[i].strip().startswith("|") and lines[i].count("|") >= 2:
+            raw_table_lines.append(lines[i].strip())
+            i += 1
+        parsed_rows = [_parse_markdown_pipe_row(row) for row in raw_table_lines]
+        parsed_rows = [row for row in parsed_rows if row]
+        if len(parsed_rows) < 2:
+            pending_caption = ""
+            continue
+        separator_idx = next((idx for idx, row in enumerate(parsed_rows) if _is_markdown_table_separator(row)), -1)
+        if separator_idx < 0:
+            pending_caption = ""
+            continue
+        header_rows = parsed_rows[:separator_idx] or [parsed_rows[0]]
+        body_rows = parsed_rows[separator_idx + 1 :]
+        header_signature = " || ".join(
+            " | ".join(normalize_inline_whitespace(cell).lower() for cell in row)
+            for row in header_rows
+        )
+        continuation_group_id = ""
+        continuation_binding_rule = ""
+        if (
+            previous_table_id
+            and previous_table_header_signature
+            and header_signature == previous_table_header_signature
+            and not pending_caption
+        ):
+            continuation_group_id = previous_continuation_group_id or f"cg{len(tables):03d}"
+            continuation_binding_rule = "adjacent_compatible_marker_markdown_table"
+            for table in tables:
+                if table.get("table_id") == previous_table_id:
+                    table["continuation_group_id"] = continuation_group_id
+                    table.setdefault("continuation_binding_rule", "continuation_group_start")
+            for cell in cells:
+                if cell.get("table_id") == previous_table_id:
+                    cell["continuation_group_id"] = continuation_group_id
+                    cell.setdefault("continuation_binding_rule", "continuation_group_start")
+        table_id = f"t{len(tables) + 1:03d}"
+        table_text = normalize_whitespace("\n".join(raw_table_lines))
+        source_file = to_repo_rel(source_path) if source_path.exists() else str(source_path)
+        table_hash = sha1_text(f"{paper_key}\n{source_file}\n{pending_caption}\n{table_text}")
+        noise_class, noise_reason = classify_marker_markdown_table_noise(pending_caption, raw_table_lines)
+        max_cols = max(len(row) for row in header_rows + body_rows)
+        table_rec = {
+            "paper_key": paper_key,
+            "parser": parser,
+            "parser_variant": parser_variant,
+            "source_type": "PDF",
+            "source_path": source_file,
+            "table_id": table_id,
+            "format": "marker_markdown_table",
+            "source_file": source_file,
+            "caption": pending_caption,
+            "caption_binding_rule": pending_caption_binding_rule,
+            "block_text": table_text,
+            "source_priority": "marker_pdf_markdown_table",
+            "column_count": max_cols,
+            "row_count": len(header_rows) + len(body_rows),
+            "continuation_group_id": continuation_group_id,
+            "continuation_binding_rule": continuation_binding_rule,
+            "noise_class": noise_class,
+            "noise_reason": noise_reason,
+        }
+        tables.append(table_rec)
+        column_header_paths: List[List[str]] = []
+        for col_idx in range(max_cols):
+            path = []
+            for header_row in header_rows:
+                value = header_row[col_idx] if col_idx < len(header_row) else ""
+                if value:
+                    path.append(value)
+            column_header_paths.append(path)
+        for row_number, row in enumerate(header_rows + body_rows, start=1):
+            is_header = row_number <= len(header_rows)
+            row_label = ""
+            if not is_header:
+                row_label = next((cell for cell in row if cell), "")
+            for col_number in range(1, max_cols + 1):
+                raw_cell = row[col_number - 1] if col_number - 1 < len(row) else ""
+                normalized_cell, cell_warnings = normalize_marker_cell_text_with_provenance(raw_cell)
+                header_path = column_header_paths[col_number - 1] if col_number - 1 < len(column_header_paths) else []
+                column_label = header_path[-1] if header_path else ""
+                cells.append(
+                    {
+                        "paper_key": paper_key,
+                        "source_type": "PDF",
+                        "source_path": source_file,
+                        "parser": parser,
+                        "parser_variant": parser_variant,
+                        "table_id": table_id,
+                        "table_source_kind": "marker_markdown_table",
+                        "page": None,
+                        "bbox_json": "",
+                        "caption": pending_caption,
+                        "caption_binding_rule": pending_caption_binding_rule,
+                        "row_index": row_number,
+                        "col_index": col_number,
+                        "rowspan": 1,
+                        "colspan": 1,
+                        "raw_cell_text": raw_cell,
+                        "normalized_cell_text": normalized_cell,
+                        "is_header_cell": "yes" if is_header else "no",
+                        "header_scope": "col" if is_header else "",
+                        "header_path_json": json.dumps(header_path, ensure_ascii=False),
+                        "row_label_text": "" if is_header else row_label,
+                        "column_label_text": column_label,
+                        "source_block_id": table_id,
+                        "source_hash": table_hash,
+                        "warnings_json": json.dumps(cell_warnings, ensure_ascii=False),
+                        "continuation_group_id": continuation_group_id,
+                        "continuation_binding_rule": continuation_binding_rule,
+                        "noise_class": noise_class,
+                        "noise_reason": noise_reason,
+                    }
+                )
+        pending_caption = ""
+        pending_caption_binding_rule = ""
+        previous_table_header_signature = header_signature
+        previous_table_id = table_id
+        previous_continuation_group_id = continuation_group_id
+    return tables, cells
+
+
 def select_table_entries(
     doc_key: str,
     table_dir_value: str,
@@ -492,6 +935,10 @@ def validate_sidecar_payload(payload: Dict[str, Any]) -> None:
     block_types = [block.get("type") for block in payload.get("blocks", [])]
     if any(block_type not in ALLOWED_BLOCK_TYPES for block_type in block_types):
         raise ValueError("Unsupported block type emitted in sidecar")
+    section_ids = {str(section.get("section_id", "")) for section in payload.get("sections", []) if section.get("section_id")}
+    block_section_ids = {str(block.get("section_id", "")) for block in payload.get("blocks", []) if block.get("section_id")}
+    if block_section_ids and not block_section_ids.issubset(section_ids):
+        raise ValueError("Block emitted with section_id missing from sections[]")
     table_ids = [str(table["table_id"]) for table in payload.get("tables", [])]
     if len(table_ids) != len(set(table_ids)):
         raise ValueError("Duplicate table_id emitted in tables[]")
@@ -602,6 +1049,128 @@ def merge_bs4_supplement_blocks(raw_blocks: List[Dict[str, Any]], supplement_blo
         seen.add(text.lower())
         merged.append(block)
     return merged
+
+
+def _positive_int_attr(tag: Any, attr_name: str, default: int = 1) -> int:
+    raw_value = str(tag.get(attr_name, str(default)) or str(default)).strip()
+    try:
+        value = int(raw_value)
+    except Exception:
+        return default
+    return value if value > 0 else default
+
+
+def _find_next_open_html_col(row_index: int, col_index: int, occupied_until_by_col: Dict[int, int]) -> int:
+    while occupied_until_by_col.get(col_index, 0) >= row_index:
+        col_index += 1
+    return col_index
+
+
+def _caption_or_nearby_label_for_table(table: Any) -> str:
+    caption_tag = table.find("caption")
+    if caption_tag is not None:
+        caption = normalize_inline_whitespace(caption_tag.get_text(" ", strip=True))
+        if caption:
+            return caption
+    previous = table.find_previous(["p", "div", "span", "strong", "b"])
+    if previous is not None:
+        text = normalize_inline_whitespace(previous.get_text(" ", strip=True))
+        if re.match(r"^(table|tab\.?|supplementary table)\b", text, flags=re.IGNORECASE):
+            return text
+    return ""
+
+
+def extract_html_native_table_cells(html_path: Path, doc_key: str) -> List[Dict[str, Any]]:
+    """Extract source-faithful DOM table cells from publisher HTML.
+
+    This is a Stage1 structure-preservation helper only. It emits one row per
+    physical ``th``/``td`` source cell, preserving DOM order, section, source
+    row/column position, rowspan/colspan, raw text, header scope/path, caption,
+    and file lineage. It must not emit formulation semantics or benchmark fields.
+    """
+    html = html_path.read_text(encoding="utf-8", errors="ignore")
+    source_hash = f"sha1:{hashlib.sha1(html.encode('utf-8')).hexdigest()}"
+    soup = BeautifulSoup(html, "lxml")
+    cell_rows: List[Dict[str, Any]] = []
+    source_path = to_repo_rel(html_path) if html_path.exists() else str(html_path)
+
+    for table_index, table in enumerate(soup.find_all("table"), start=1):
+        table_id = f"t{table_index:03d}"
+        caption = _caption_or_nearby_label_for_table(table)
+        occupied_until_by_col: Dict[int, int] = {}
+        header_paths_by_col: Dict[int, List[str]] = {}
+        row_index = 0
+
+        for section_name in ["thead", "tbody", "tfoot"]:
+            sections = table.find_all(section_name, recursive=False)
+            if not sections and section_name == "tbody":
+                sections = [table]
+            for section in sections:
+                for tr in section.find_all("tr", recursive=False):
+                    row_index += 1
+                    row_header_text = ""
+                    col_index = 1
+                    cells = tr.find_all(["th", "td"], recursive=False)
+                    for cell in cells:
+                        col_index = _find_next_open_html_col(row_index, col_index, occupied_until_by_col)
+                        raw_cell_text = cell.get_text(" ", strip=True)
+                        normalized_cell_text = normalize_inline_whitespace(raw_cell_text)
+                        rowspan = _positive_int_attr(cell, "rowspan", 1)
+                        colspan = _positive_int_attr(cell, "colspan", 1)
+                        is_header_cell = cell.name == "th" or section_name == "thead"
+                        header_scope = normalize_inline_whitespace(str(cell.get("scope", "") or ""))
+                        if not header_scope and is_header_cell:
+                            header_scope = "col" if section_name == "thead" else "row"
+                        covered_cols = range(col_index, col_index + max(1, colspan))
+
+                        if is_header_cell and normalized_cell_text:
+                            if header_scope == "row" or (cell.name == "th" and section_name in {"tbody", "tfoot"}):
+                                row_header_text = normalized_cell_text
+                            else:
+                                for covered_col in covered_cols:
+                                    path = list(header_paths_by_col.get(covered_col, []))
+                                    if not path or path[-1] != normalized_cell_text:
+                                        path.append(normalized_cell_text)
+                                    header_paths_by_col[covered_col] = path
+
+                        header_path = list(header_paths_by_col.get(col_index, []))
+                        column_label_text = header_path[-1] if header_path else ""
+                        cell_rows.append(
+                            {
+                                "paper_key": doc_key,
+                                "source_type": "HTML",
+                                "source_path": source_path,
+                                "parser": "beautifulsoup_dom_table",
+                                "parser_variant": "html_native_table_cells_v1",
+                                "table_id": table_id,
+                                "table_source_kind": "html_dom_table",
+                                "page": None,
+                                "bbox_json": "",
+                                "caption": caption,
+                                "row_index": row_index,
+                                "col_index": col_index,
+                                "rowspan": rowspan,
+                                "colspan": colspan,
+                                "raw_cell_text": raw_cell_text,
+                                "normalized_cell_text": normalized_cell_text,
+                                "is_header_cell": "yes" if is_header_cell else "no",
+                                "header_scope": header_scope,
+                                "header_path_json": json.dumps(header_path, ensure_ascii=False),
+                                "row_label_text": row_header_text,
+                                "column_label_text": column_label_text,
+                                "source_block_id": table_id,
+                                "source_hash": source_hash,
+                                "warnings_json": "[]",
+                            }
+                        )
+                        if rowspan > 1:
+                            for covered_col in covered_cols:
+                                occupied_until_by_col[covered_col] = max(
+                                    occupied_until_by_col.get(covered_col, 0),
+                                    row_index + rowspan - 1,
+                                )
+                        col_index += max(1, colspan)
+    return cell_rows
 
 
 def extract_text_detected_tables_from_html(html_path: Path) -> List[str]:
@@ -716,15 +1285,19 @@ def extract_marker_pdf_blocks(pdf_path: Path) -> Tuple[List[Dict[str, Any]], int
         rendered_text = str(getattr(rendered, "text", "") or getattr(rendered, "markdown", "") or "")
     if not rendered_text.strip():
         raise RuntimeError("marker_empty_output")
+    marker_table_records, _marker_table_cells = extract_marker_markdown_tables(
+        rendered_text=rendered_text,
+        paper_key=pdf_path.stem,
+        source_path=pdf_path,
+        parser="marker",
+        parser_variant="stage1_pdf2clean_v1",
+    )
+    marker_tables = [str(table.get("block_text", "")) for table in marker_table_records if str(table.get("block_text", "")).strip()]
     page_count = int(getattr(converter, "page_count", 0) or getattr(rendered, "page_count", 0) or 0)
-    blocks: List[Dict[str, Any]] = []
-    for chunk in re.split(r"\n{2,}", normalize_whitespace(rendered_text)):
-        clean = normalize_inline_whitespace(chunk)
-        if clean:
-            blocks.append(make_block("paragraph", clean))
+    blocks = extract_marker_markdown_blocks(rendered_text)
     if not blocks:
         raise RuntimeError("marker_no_blocks")
-    return blocks, page_count, [], []
+    return blocks, page_count, [], marker_tables
 
 
 def extract_pymupdf_blocks(pdf_path: Path, max_pages: int = 0) -> Tuple[List[Dict[str, Any]], int]:
@@ -812,6 +1385,9 @@ def build_sidecar_payload(
     text: str,
     parse_payload: Dict[str, Any],
 ) -> Dict[str, Any]:
+    annotated_blocks, sections = annotate_blocks_with_sections(parse_payload["blocks"])
+    metadata = dict(parse_payload["metadata"])
+    metadata["section_model_version"] = "stage1_section_model_v1"
     payload = {
         "doc_key": key,
         "source_type": source_type,
@@ -819,9 +1395,10 @@ def build_sidecar_payload(
         "txt_hash": sha1_text(text),
         "reading_order_source": parse_payload["reading_order_source"],
         "table_source_priority": list(TABLE_SOURCE_PRIORITY),
-        "blocks": parse_payload["blocks"],
+        "blocks": annotated_blocks,
+        "sections": sections,
         "tables": parse_payload["tables"],
-        "metadata": parse_payload["metadata"],
+        "metadata": metadata,
     }
     validate_sidecar_payload(payload)
     return payload

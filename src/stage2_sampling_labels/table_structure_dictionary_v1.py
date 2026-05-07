@@ -183,14 +183,18 @@ def _match_lexicon_value(*, field_family: str, value: str, paper_key: str = "") 
 
 
 def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
+    raw = _canonical_text(header)
+    if not raw:
+        return ""
+    if re.search(r"\b(?:recovery|release|viability|cytotoxicity|cell\s+uptake|yield)\b", raw):
+        return ""
+    if re.search(r"\bminor\s+axis\b", raw) or "feret" in raw:
+        return ""
+
     matches = _match_lexicon_value(field_family="field_name", value=header, paper_key=paper_key)
     if len(matches) == 1:
         return matches[0]
     if len(matches) > 1:
-        return ""
-
-    raw = _canonical_text(header)
-    if not raw:
         return ""
     concentration_header = bool(re.search(r"\b(?:mg\s*/\s*ml|mg\s+ml|milligrams?\s*/\s*ml|mg\s+per\s+ml)\b", raw))
     if concentration_header:
@@ -220,20 +224,36 @@ def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
             return "external_aqueous_phase_volume_mL"
         if re.search(r"\b(?:organic\s+phase|organic\s+solvent|acetone|acn|dcm|dichloromethane|ethyl\s+acetate|acetonitrile|chloroform|dmso|ethanol|methanol)\b", raw):
             return "O_volume_mL"
-    if re.search(r"\b(?:sizes?|particle\s+size|diameter)\b", raw) and re.search(r"\bnm\b", raw):
+    if re.search(r"\b(?:recovery|release|viability|cytotoxicity|cell\s+uptake|yield)\b", raw):
+        return ""
+    if re.search(r"\bminor\s+axis\b", raw) or "feret" in raw:
+        return ""
+    if re.search(r"\bmajor\s+axis\b", raw) and re.search(r"\bnm\b", raw):
+        return "particle_size_nm"
+    if re.search(r"\b(?:sizes?|particle\s+size|diameter|ps|z\s*[- ]?(?:average|ave)|zaverage|zave)\b", raw) and re.search(r"\bnm\b", raw):
         return "particle_size_nm"
     compact_header = _compact_text(header)
     if (
         re.search(r"\bp\.?\s*i\.?\b", raw)
         or compact_header in {"pi", "pisd", "pisdsd"}
+        or re.fullmatch(r"pi[a-z]?", compact_header)
         or compact_header.startswith("pi±")
     ):
         return "pdi"
     if re.search(r"\bindex\b", raw) and re.search(r"\bpol[yi]dispersity\b", raw):
         return "pdi"
-    if re.search(r"\bee\b", raw) or _compact_text(header) in {"ee", "ee%", "%ee", "eepercent"}:
+    if re.search(r"\bee\b", raw) or re.fullmatch(r"ee[a-z]?%?", _compact_text(header)) or _compact_text(header) in {"ee", "ee%", "%ee", "eepercent"}:
         return "ee_percent"
-    if re.search(r"\bzeta\b", raw) or "zpmv" in _compact_text(header):
+    if re.search(r"\b(?:d\.?\s*l\.?|drug\s+loading)\b", raw) and ("%" in raw or "percent" in raw or "loading" in raw):
+        return "dl_percent"
+    if re.search(r"\b(?:l\.?\s*c\.?|loading\s+content|drug\s+content)\b", raw) and ("%" in raw or "percent" in raw or "content" in raw):
+        return "lc_percent"
+    if (
+        re.search(r"\bzeta\b", raw)
+        or "ζ" in str(header or "")
+        or re.search(r"\bzp\w*\b", raw)
+        or "zpmv" in _compact_text(header)
+    ):
         return "zeta_mV"
     return ""
 

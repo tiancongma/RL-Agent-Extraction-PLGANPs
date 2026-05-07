@@ -66,6 +66,95 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
     return documents
 
 
+def _read_json_safely(path: Path) -> dict[str, Any] | None:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def _iter_authority_reattachment_payloads(path: Path | None) -> list[dict[str, Any]]:
+    """Load diagnostic S2-5b authority-reattachment payloads.
+
+    Supports both the T05 per-paper directory layout and older aggregate
+    sidecar JSON. This is diagnostic visibility only: it counts existing
+    sidecar resolutions and does not create semantic authorization.
+    """
+    if path is None or not path.exists():
+        return []
+    if path.is_file():
+        payload = _read_json_safely(path)
+        return [payload] if payload is not None else []
+    candidates: list[Path] = []
+    direct_root = path
+    nested_root = path / "semantic_stage2_objects" / "authority_reattachment"
+    for root in [direct_root, nested_root]:
+        if root.exists():
+            candidates.extend(root.glob("*/semantic_authority_reattachment_v1.json"))
+    payloads: list[dict[str, Any]] = []
+    seen: set[Path] = set()
+    for candidate in candidates:
+        resolved = candidate.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        payload = _read_json_safely(candidate)
+        if payload is not None:
+            payloads.append(payload)
+    return payloads
+
+
+def summarize_authority_reattachment_sidecar(path: Path | str | None) -> dict[str, Any]:
+    sidecar_path = Path(path) if path else None
+    payloads = _iter_authority_reattachment_payloads(sidecar_path)
+    summary = {
+        "schema": "stage2_authority_reattachment_diagnostic_summary_v1",
+        "diagnostic_only": True,
+        "benchmark_valid": False,
+        "sidecar_path": str(sidecar_path) if sidecar_path is not None else "",
+        "paper_count": len(payloads),
+        "semantic_signal_count": 0,
+        "reattached_target_count": 0,
+        "unresolved_target_count": 0,
+        "ambiguous_target_count": 0,
+        "status": "missing" if not payloads else "diagnostic_complete",
+    }
+    for payload in payloads:
+        entries = payload.get("entries_by_paper_key")
+        if isinstance(entries, dict):
+            for entry in entries.values():
+                if not isinstance(entry, dict):
+                    continue
+                summary["semantic_signal_count"] += int(entry.get("semantic_signal_count") or 0)
+                status = normalize_text(entry.get("resolution_status"))
+                if status == "resolved":
+                    summary["reattached_target_count"] += int(entry.get("reattached_target_count") or 1)
+                elif status == "ambiguous":
+                    summary["ambiguous_target_count"] += int(entry.get("ambiguous_target_count") or 1)
+                elif status == "unresolved":
+                    summary["unresolved_target_count"] += int(entry.get("unresolved_target_count") or 1)
+            continue
+        reattachments = [item for item in (payload.get("reattachments") or []) if isinstance(item, dict)]
+        if reattachments:
+            summary["semantic_signal_count"] += len(reattachments)
+            for item in reattachments:
+                status = normalize_text(item.get("resolution_status"))
+                if status == "resolved":
+                    summary["reattached_target_count"] += 1
+                elif status == "ambiguous":
+                    summary["ambiguous_target_count"] += 1
+                else:
+                    summary["unresolved_target_count"] += 1
+        else:
+            payload_summary = payload.get("summary") if isinstance(payload.get("summary"), dict) else {}
+            summary["semantic_signal_count"] += int(payload_summary.get("semantic_signal_count") or 0)
+            summary["reattached_target_count"] += int(payload_summary.get("resolved_signal_count") or 0)
+            summary["ambiguous_target_count"] += int(payload_summary.get("ambiguous_signal_count") or 0)
+            summary["unresolved_target_count"] += int(payload_summary.get("unresolved_signal_count") or 0)
+    return summary
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Validate that Stage2 authoritative outputs preserve the governed semantic-authority contract."

@@ -1,0 +1,14 @@
+# Characterization Measurement Metric Binding Progress Ledger
+
+Plan: `docs/plans/2026-05-05-characterization-measurement-metric-binding-plan.md`
+
+| Phase | Status | Scope | Artifacts / Notes |
+|---|---|---|---|
+| Pre | completed-uncommitted | Run before-plan field-level summary | `data/results/20260504_ab9f61e/051_characterization_metric_pre_plan_baseline_summary_diagnostic/`; accepted pre-measurement baseline is `032 -> 050`; diagnostic-only. |
+| P1 | completed-uncommitted | Diagnostic residual boundary audit | Added `src/stage5_benchmark/audit_characterization_metric_residuals_v1.py` and `tests/test_characterization_metric_residual_audit_v1.py`; ran `052_characterization_metric_residual_boundary_audit_diagnostic/` on accepted baseline `050`; boundary counts: missing_system_field_surface=10, measurement_projection_gap=101, present_but_mismatch_endpoint_or_value_policy=23, alignment_blocked_before_metric_projection=36, ok_present_and_match=379, not_reported_in_gt=483. |
+| P2 | completed-uncommitted | Measurement endpoint/header dictionary guards | Added TDD coverage for PS/Z-average/D.L./L.C./P.I./ZP aliases plus negative guards for recovery/release/viability/HPLC/LC-MS and morphology endpoint policy. `Feret` and `minor axis` are blocked from primary size projection; `major axis` can project to `particle_size_nm`. Targeted alias tests green. |
+| P3 | completed-uncommitted | Generic measurement metric binding helper | Extended Stage5 direct metric mapping for `lc_percent`/`loading_content_percent` and `dl_percent`/`drug_loading_percent`; added final column bundle for `dl_percent`. Targeted row-local table-cell tests green. |
+| P4 | completed-uncommitted | Stage5 row-local table-cell integration | Fixed source CSV row-index semantics to align Stage2 `source_row_index` with physical CSV rows after header row; added regression test showing first data row maps to physical row 2. |
+| P5 | completed-uncommitted | S2-7 projection review / minimal repair | No Stage2 projection patch required for this bounded repair; Stage5 consumed already-authorized row-local table/grid surfaces. |
+| P6 | completed-uncommitted | Morphology/process-state endpoint policy | Minimal generic policy applied: `major axis (nm)` accepted as primary size, `minor axis`/`Feret` rejected to avoid endpoint overfill. Validated on BB3JUVW7 as bounded evidence sample without paper-specific runtime branch. |
+| P7 | completed-uncommitted | Bounded diagnostic replay and comparison | Rebuilt `053_stage5_characterization_metric_binding_bounded_diagnostic/` and `054_layer3_compare_characterization_metric_binding_bounded_diagnostic/`; final_rows=202; `050 -> 054`: missing 688->676 (-12), match 2039->2051 (+12), mismatch 339->339 (+0), blocked 252->252 (+0), extra 34->34 (+0). Diagnostic-only, benchmark_valid=no. |

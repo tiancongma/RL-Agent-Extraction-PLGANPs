@@ -117,6 +117,40 @@ def _table_matches(row: dict[str, str], table_id: str) -> bool:
     return wanted in {_match_text(row.get("table_id")), _match_text(row.get("source_table_asset_id"))}
 
 
+def _semantic_tokens(value: Any) -> list[str]:
+    text = normalize_text(value).lower()
+    tokens = [token for token in re.findall(r"[a-z0-9]+", text) if token]
+    return [token for token in tokens if token not in {"table", "row", "formulation", "mean", "sd"}]
+
+
+def _column_header_matches_row_label(header: str, row_label: str) -> bool:
+    header_norm = _match_text(header)
+    if not header_norm:
+        return False
+    tokens = _semantic_tokens(row_label)
+    if not tokens:
+        return False
+    if all(token in header_norm for token in tokens):
+        return True
+    status_tokens = [token for token in tokens if token in {"drug", "loaded", "empty", "blank", "control"}]
+    return bool(status_tokens) and all(token in header_norm for token in status_tokens)
+
+
+def _binding_from_grid_row(row: dict[str, str], canonical_field: str, *, rule: str) -> dict[str, str]:
+    return {
+        "source_csv_path": normalize_text(row.get("source_csv_path")),
+        "source_table_asset_id": normalize_text(row.get("source_table_asset_id")),
+        "source_row_index": normalize_text(row.get("row_index")),
+        "source_column_index": normalize_text(row.get("column_index")),
+        "raw_header": normalize_text(row.get("raw_header_text") or row.get("column_label_candidate")),
+        "canonical_field": canonical_field,
+        "raw_cell_value": normalize_text(row.get("raw_cell_value")),
+        "source_locator": normalize_text(row.get("source_locator")),
+        "binding_rule": rule,
+        "ambiguity_status": "unique_grid_header_cell",
+    }
+
+
 def _split_row_ordinal_label(row_label: str) -> tuple[str, str]:
     """Return (body_ordinal, semantic_label) for labels like row_02__5.
 
@@ -167,7 +201,36 @@ def build_grid_cell_bindings_for_row(
         )
     ]
     if not candidates:
-        return [], "no_grid_row_candidate"
+        transposed_candidates = [
+            row
+            for row in grid_rows
+            if normalize_text(row.get("paper_key")) == paper_key_norm
+            and _table_matches(row, table_id)
+            and _column_header_matches_row_label(row.get("raw_header_text") or row.get("column_label_candidate"), semantic_row_label)
+            and canonical_field_for_header(row.get("row_label_candidate"), paper_key=paper_key_norm)
+            and normalize_text(row.get("raw_cell_value"))
+        ]
+        if not transposed_candidates:
+            return [], "no_grid_row_candidate"
+        by_field: dict[str, list[dict[str, str]]] = {}
+        for row in transposed_candidates:
+            canonical_field = canonical_field_for_header(row.get("row_label_candidate"), paper_key=paper_key_norm)
+            by_field.setdefault(canonical_field, []).append(row)
+        bindings = []
+        for canonical_field, field_rows in sorted(by_field.items()):
+            nonempty_values = {normalize_text(row.get("raw_cell_value")) for row in field_rows if normalize_text(row.get("raw_cell_value"))}
+            if len(field_rows) != 1 or len(nonempty_values) != 1:
+                continue
+            bindings.append(
+                _binding_from_grid_row(
+                    field_rows[0],
+                    canonical_field,
+                    rule="table_cell_grid_v1_transposed_row_metric_binding",
+                )
+            )
+        if not bindings:
+            return [], "ambiguous_grid_transposed_metric_candidates"
+        return bindings, "unique_grid_transposed_metric_binding"
     candidate_row_keys = {
         (
             normalize_text(row.get("table_id")),
@@ -198,18 +261,11 @@ def build_grid_cell_bindings_for_row(
             continue
         row = field_rows[0]
         bindings.append(
-            {
-                "source_csv_path": normalize_text(row.get("source_csv_path")),
-                "source_table_asset_id": normalize_text(row.get("source_table_asset_id")),
-                "source_row_index": normalize_text(row.get("row_index")),
-                "source_column_index": normalize_text(row.get("column_index")),
-                "raw_header": normalize_text(row.get("raw_header_text") or row.get("column_label_candidate")),
-                "canonical_field": canonical_field,
-                "raw_cell_value": normalize_text(row.get("raw_cell_value")),
-                "source_locator": normalize_text(row.get("source_locator")),
-                "binding_rule": "table_cell_grid_v1_row_local_header_binding",
-                "ambiguity_status": "unique_grid_header_cell",
-            }
+            _binding_from_grid_row(
+                row,
+                canonical_field,
+                rule="table_cell_grid_v1_row_local_header_binding",
+            )
         )
     if not bindings:
         return [], "no_canonical_grid_metric_bindings"

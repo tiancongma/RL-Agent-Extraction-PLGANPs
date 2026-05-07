@@ -30,7 +30,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from src.stage2_sampling_labels.table_structure_dictionary_v1 import lexicon_rows_for_family, normalize_dictionary_value
+from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
+    canonical_field_for_header,
+    lexicon_rows_for_family,
+    normalize_dictionary_value,
+)
 from src.stage5_benchmark.material_value_binding_v1 import (
     build_material_alias_graph,
     evaluate_canonical_promotions,
@@ -2073,6 +2077,23 @@ def normalize_table_surfactant_name(value: Any) -> str:
     return aliases.get(key, aliases.get(key_compact, text))
 
 
+def _metric_direct_field_for_canonical_header(canonical: str) -> str:
+    canonical = normalize_text(canonical)
+    return {
+        "particle_size_nm": "size_nm",
+        "size_nm": "size_nm",
+        "pdi": "pdi",
+        "zeta_mV": "zeta_mV",
+        "zeta_mv": "zeta_mV",
+        "ee_percent": "encapsulation_efficiency_percent",
+        "encapsulation_efficiency_percent": "encapsulation_efficiency_percent",
+        "lc_percent": "loading_content_percent",
+        "loading_content_percent": "loading_content_percent",
+        "dl_percent": "dl_percent",
+        "drug_loading_percent": "dl_percent",
+    }.get(canonical, "")
+
+
 def load_row_local_characterization_table_map(source_csv_path: str) -> dict[int, dict[str, str]]:
     """Return row-index keyed direct cells for simple formulation characterization tables.
 
@@ -2090,10 +2111,29 @@ def load_row_local_characterization_table_map(source_csv_path: str) -> dict[int,
         rows = list(csv.reader(handle))
     if not rows:
         return {}
+    row_map: dict[int, dict[str, str]] = {}
+    header = rows[0]
+    header_fields = [_metric_direct_field_for_canonical_header(canonical_field_for_header(cell)) for cell in header]
+    if any(header_fields):
+        for idx, cells in enumerate(rows[1:], start=2):
+            direct: dict[str, str] = {}
+            for col_idx, cell in enumerate(cells):
+                field = header_fields[col_idx] if col_idx < len(header_fields) else ""
+                if not field:
+                    continue
+                raw_value = normalize_text(cell)
+                if not raw_value:
+                    continue
+                numeric = numeric_prefix(raw_value).lstrip("+")
+                if not numeric:
+                    continue
+                direct[field] = direct.get(field, "") or numeric
+                direct[f"{field}_text"] = direct.get(f"{field}_text", "") or raw_value
+            if direct:
+                row_map[idx] = direct
     text = "\n".join(",".join(row) for row in rows[:8]).lower()
     if not ("formulation" in text and "surfactant" in text and "size" in text and ("ee" in text or "encapsulation" in text)):
-        return {}
-    row_map: dict[int, dict[str, str]] = {}
+        return row_map
     current_polymer = ""
     for idx, cells in enumerate(rows):
         padded = list(cells) + [""] * 8
@@ -2145,6 +2185,10 @@ def direct_values_from_table_cell_grid_bindings(bindings: list[dict[str, Any]]) 
         "zeta_mv": "zeta_mV",
         "ee_percent": "encapsulation_efficiency_percent",
         "encapsulation_efficiency_percent": "encapsulation_efficiency_percent",
+        "lc_percent": "loading_content_percent",
+        "loading_content_percent": "loading_content_percent",
+        "dl_percent": "dl_percent",
+        "drug_loading_percent": "dl_percent",
         "drug_mass_mg": "drug_feed_amount_text",
         "drug_feed_amount_text": "drug_feed_amount_text",
         "polymer_mass_mg": "plga_mass_mg",
@@ -2172,7 +2216,7 @@ def direct_values_from_table_cell_grid_bindings(bindings: list[dict[str, Any]]) 
         raw_value = normalize_text(binding.get("raw_cell_value"))
         if not raw_value:
             continue
-        if field in {"size_nm", "pdi", "zeta_mV", "encapsulation_efficiency_percent", "plga_mass_mg", "organic_phase_volume_mL", "external_aqueous_phase_volume_mL"}:
+        if field in {"size_nm", "pdi", "zeta_mV", "encapsulation_efficiency_percent", "loading_content_percent", "dl_percent", "plga_mass_mg", "organic_phase_volume_mL", "external_aqueous_phase_volume_mL"}:
             direct[field] = direct.get(field, "") or numeric_prefix(raw_value).lstrip("+")
             direct[f"{field}_text"] = direct.get(f"{field}_text", "") or raw_value
         elif field == "drug_feed_amount_text":
@@ -2193,7 +2237,7 @@ def apply_row_local_table_cell_binding_values(materialized: dict[str, str], appl
     if not direct:
         return False
     applied_any = False
-    for field in ("size_nm", "pdi", "zeta_mV"):
+    for field in ("size_nm", "pdi", "zeta_mV", "loading_content_percent", "dl_percent"):
         value = direct.get(field, "")
         if value:
             set_materialized_field_bundle(materialized, field, value, scope="row_local_table_cell_grid", evidence_region_type="row_local_table_cell_grid_binding", applied_fields=applied_fields)
@@ -2257,7 +2301,7 @@ def apply_row_local_source_csv_table_rebinding(materialized: dict[str, str], app
     direct = row_map.get(source_row_index, {})
     if not direct:
         return
-    for field in ("size_nm", "pdi", "zeta_mV"):
+    for field in ("size_nm", "pdi", "zeta_mV", "loading_content_percent", "dl_percent"):
         value = direct.get(field, "")
         if value and not field_bundle_value(materialized, field):
             set_materialized_field_bundle(materialized, field, value, scope="row_local_source_csv_diagnostic_fallback", evidence_region_type="row_local_source_csv_diagnostic_fallback", applied_fields=applied_fields)
@@ -2267,7 +2311,7 @@ def apply_row_local_source_csv_table_rebinding(materialized: dict[str, str], app
     ee_value = direct.get("encapsulation_efficiency_percent", "")
     current_ee = field_bundle_value(materialized, "encapsulation_efficiency_percent")
     current_ee_looks_numeric = bool(re.fullmatch(r"[-+]?\d+(?:\.\d+)?", current_ee or ""))
-    if ee_value and (not current_ee or not current_ee_looks_numeric or current_ee != ee_value):
+    if ee_value and (not current_ee or not current_ee_looks_numeric):
         materialized["encapsulation_efficiency_percent_value"] = ee_value
         if "encapsulation_efficiency_percent_value_text" in materialized:
             materialized["encapsulation_efficiency_percent_value_text"] = direct.get("encapsulation_efficiency_percent_text", "") or ee_value
@@ -4340,6 +4384,11 @@ def build_minimal_final_output(
         rows_by_paper[str(row.get("key", "") or "").strip()].append(row)
 
     original_fieldnames = list(rows[0].keys())
+    for metric_field in ("dl_percent",):
+        for suffix in ("value", "value_text", "scope", "membership_confidence", "evidence_region_type", "missing_reason"):
+            column = f"{metric_field}_{suffix}"
+            if column not in original_fieldnames:
+                original_fieldnames.append(column)
     row_by_source_key = {row_source_key(row): row for row in rows}
     core_by_id: dict[str, dict[str, str]] = {}
     filtered_ids: set[str] = set()

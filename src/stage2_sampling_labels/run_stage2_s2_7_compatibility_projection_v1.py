@@ -250,13 +250,14 @@ def main() -> None:
 
     source_s2_5_run_dir = repo_path(source_s2_5_run_dir_text)
     semantic_jsonl_path = repo_path(semantic_jsonl_text)
-    authority_sidecar_path = source_s2_5_run_dir / "semantic_stage2_objects" / AUTHORITY_REATTACHMENT_SIDECAR_NAME
+    authority_sidecar_text = str(source_validation_report.get("inputs", {}).get("authority_reattachment_sidecar", "")).strip()
+    authority_sidecar_path = repo_path(authority_sidecar_text) if authority_sidecar_text else source_s2_5_run_dir / "semantic_stage2_objects" / AUTHORITY_REATTACHMENT_SIDECAR_NAME
     if not source_s2_5_run_dir.exists():
         raise FileNotFoundError(f"Upstream S2-5 run directory not found: {source_s2_5_run_dir}")
     if not semantic_jsonl_path.exists():
         raise FileNotFoundError(f"Upstream semantic JSONL not found: {semantic_jsonl_path}")
-    if not authority_sidecar_path.exists():
-        raise FileNotFoundError(f"Upstream authority reattachment sidecar not found: {authority_sidecar_path}")
+    # S2-5b is diagnostic visibility, not semantic authority; a missing sidecar
+    # must be visible in S2-7 traces/summary rather than blocking projection.
 
     target = resolve_results_write_target(
         results_root=DATA_RESULTS_DIR,

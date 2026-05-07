@@ -14,6 +14,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils.preparation_method_fields_v1 import PREPARATION_METHOD_FIELDNAMES
+from src.stage2_sampling_labels.validate_stage2_semantic_authority_contract_v1 import summarize_authority_reattachment_sidecar
 
 try:
     from src.stage2_sampling_labels.auto_extract_weak_labels_v7pilot_r3_fixparse import (
@@ -217,6 +218,7 @@ from src.stage2_sampling_labels.table_row_expansion_v1 import (
     TABLE_SCOPE_FIELD,
     TABLE_VARIABLE_ROLE_FIELD,
     augment_document_with_table_markers,
+    canonical_field_for_header,
     mark_llm_summary_rows_as_helpers,
     run_table_row_expansion,
 )
@@ -522,6 +524,97 @@ def _merge_grid_cell_bindings(existing_value: Any, grid_bindings: list[dict[str,
     return stringify_json(existing + additions), len(additions)
 
 
+_GRID_BINDING_COMPATIBILITY_FIELDS = {
+    "particle_size_nm": "size_nm",
+    "size_nm": "size_nm",
+    "pdi": "pdi",
+    "zeta_mV": "zeta_mV",
+    "zeta_mv": "zeta_mV",
+    "ee_percent": "encapsulation_efficiency_percent",
+    "encapsulation_efficiency_percent": "encapsulation_efficiency_percent",
+    "lc_percent": "loading_content_percent",
+    "loading_content_percent": "loading_content_percent",
+    "dl_percent": "dl_percent",
+    "drug_loading_percent": "dl_percent",
+}
+
+
+def _numeric_prefix_from_cell(value: Any) -> str:
+    text = normalize_text(value).replace("−", "-")
+    match = re.search(r"[-+]?\d+(?:[.,]\d+)?", text)
+    return match.group(0).replace(",", ".") if match else ""
+
+
+def _project_grid_bindings_into_blank_fields(row: dict[str, str], bindings: list[dict[str, str]]) -> int:
+    projected = 0
+    for binding in bindings:
+        canonical = normalize_text(binding.get("canonical_field"))
+        field = _GRID_BINDING_COMPATIBILITY_FIELDS.get(canonical)
+        if not field:
+            continue
+        value_key = f"{field}_value"
+        if normalize_text(row.get(value_key)):
+            continue
+        raw_value = normalize_text(binding.get("raw_cell_value"))
+        numeric_value = _numeric_prefix_from_cell(raw_value)
+        if not numeric_value:
+            continue
+        row[value_key] = numeric_value
+        row[f"{field}_value_text"] = raw_value
+        row[f"{field}_membership_confidence"] = "projected_direct"
+        row[f"{field}_evidence_region_type"] = "row_local_table_cell_grid_binding"
+        row[f"{field}_missing_reason"] = ""
+        projected += 1
+    return projected
+
+
+def _metric_tail_text_for_row(row: dict[str, str]) -> str:
+    parts = [normalize_text(row.get("evidence_span_text"))]
+    refs = parse_json_maybe(row.get("supporting_evidence_refs"))
+    if isinstance(refs, list):
+        for item in refs:
+            if isinstance(item, dict):
+                parts.append(normalize_text(item.get("supporting_snippet")))
+    return " | ".join(part for part in parts if part)
+
+
+def _metric_tail_bindings(row: dict[str, str]) -> list[dict[str, str]]:
+    text = _metric_tail_text_for_row(row)
+    if not text or "=" not in text:
+        return []
+    bindings: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for segment in re.split(r"\s*\|\s*", text):
+        if "=" not in segment:
+            continue
+        header, value = segment.split("=", 1)
+        canonical = canonical_field_for_header(header)
+        field = _GRID_BINDING_COMPATIBILITY_FIELDS.get(canonical)
+        if not field or field in seen:
+            continue
+        raw_value = normalize_text(value)
+        if not _numeric_prefix_from_cell(raw_value):
+            continue
+        seen.add(field)
+        bindings.append(
+            {
+                "canonical_field": canonical,
+                "raw_header": normalize_text(header),
+                "raw_cell_value": raw_value,
+                "source_locator": normalize_text(row.get(TABLE_ROW_ID_FIELD)) or normalize_text(row.get("formulation_id")),
+                "binding_rule": "stage2_metric_tail_assignment_binding_v1",
+                "ambiguity_status": "row_local_metric_tail_assignment",
+            }
+        )
+    return bindings
+
+
+def _sync_projected_row_fields(jsonl_row: dict[str, Any], row: dict[str, str]) -> None:
+    for key, value in row.items():
+        if key.endswith(("_value", "_value_text", "_membership_confidence", "_evidence_region_type", "_missing_reason")):
+            jsonl_row[key] = value
+
+
 def apply_table_cell_grid_bindings_to_rows(
     rows: list[dict[str, str]],
     jsonl_rows: list[dict[str, Any]],
@@ -538,6 +631,8 @@ def apply_table_cell_grid_bindings_to_rows(
         "rows_considered": 0,
         "rows_with_grid_bindings": 0,
         "bindings_added": 0,
+        "fields_projected_from_bindings": 0,
+        "fields_projected_from_metric_tail": 0,
         "status_counts": {},
     }
     jsonl_by_id = {
@@ -551,6 +646,12 @@ def apply_table_cell_grid_bindings_to_rows(
         if not table_id or not row_label:
             continue
         stats["rows_considered"] += 1
+        row_id = normalize_text(row.get("local_instance_id") or row.get("formulation_id"))
+        metric_tail_bindings = _metric_tail_bindings(row)
+        if metric_tail_bindings:
+            stats["fields_projected_from_metric_tail"] += _project_grid_bindings_into_blank_fields(row, metric_tail_bindings)
+            if row_id in jsonl_by_id:
+                _sync_projected_row_fields(jsonl_by_id[row_id], row)
         bindings, status = build_grid_cell_bindings_for_row(
             grid_rows,
             paper_key=document_key,
@@ -567,9 +668,10 @@ def apply_table_cell_grid_bindings_to_rows(
         row[TABLE_CELL_BINDINGS_FIELD] = merged
         stats["rows_with_grid_bindings"] += 1
         stats["bindings_added"] += added
-        row_id = normalize_text(row.get("local_instance_id") or row.get("formulation_id"))
+        stats["fields_projected_from_bindings"] += _project_grid_bindings_into_blank_fields(row, bindings)
         if row_id in jsonl_by_id:
             jsonl_by_id[row_id][TABLE_CELL_BINDINGS_FIELD] = merged
+            _sync_projected_row_fields(jsonl_by_id[row_id], row)
     return stats
 
 
@@ -1226,9 +1328,90 @@ def load_jsonl_documents(path: Path) -> list[dict[str, Any]]:
     return documents
 
 
+def _authority_record_locator(record: dict[str, Any]) -> dict[str, str]:
+    return {
+        "table_id": normalize_text(record.get("table_id")),
+        "source_table_asset_id": normalize_text(record.get("source_table_asset_id")),
+        "source_table_reference": normalize_text(record.get("source_table_reference") or record.get("source_csv_path")),
+        "payload_artifact_path": normalize_text(record.get("payload_artifact_path")),
+        "normalized_csv_path": normalize_text(record.get("normalized_csv_path")),
+    }
+
+
+def _load_t05_authority_sidecar_directory(path: Path) -> dict[str, dict[str, Any]]:
+    roots = [path, path / "semantic_stage2_objects" / "authority_reattachment"]
+    entries: dict[str, dict[str, Any]] = {}
+    seen: set[Path] = set()
+    for root in roots:
+        if not root.exists():
+            continue
+        for sidecar_path in root.glob("*/semantic_authority_reattachment_v1.json"):
+            resolved = sidecar_path.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+            try:
+                payload = json.loads(sidecar_path.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if not isinstance(payload, dict):
+                continue
+            paper_key = normalize_text(payload.get("paper_key") or sidecar_path.parent.name)
+            if not paper_key:
+                continue
+            reattachments = [item for item in (payload.get("reattachments") or []) if isinstance(item, dict)]
+            locators = []
+            diagnostic_entries = []
+            for item in reattachments:
+                status = normalize_text(item.get("resolution_status")) or "unresolved"
+                record = item.get("selected_authority_record") if isinstance(item.get("selected_authority_record"), dict) else {}
+                locator = _authority_record_locator(record)
+                grid_path = normalize_text(item.get("grid_path") or payload.get("grid_path"))
+                if grid_path:
+                    locator["table_cell_grid_ref"] = grid_path
+                target_id = normalize_text(
+                    locator.get("source_table_reference")
+                    or locator.get("source_table_asset_id")
+                    or locator.get("table_id")
+                    or item.get("scope_id")
+                    or item.get("signal_family")
+                )
+                diagnostic_entries.append(
+                    {
+                        "resolution_status": status,
+                        "scope_id": normalize_text(item.get("scope_id")),
+                        "signal_family": normalize_text(item.get("signal_family")),
+                        "authority_target_id": target_id,
+                        "authority_payload_path": normalize_text(
+                            locator.get("payload_artifact_path") or locator.get("normalized_csv_path")
+                        ),
+                        "table_cell_grid_ref": grid_path,
+                        "notes": "Diagnostic-only S2-5b authority reattachment visibility; no semantic authorization created.",
+                    }
+                )
+                if status == "resolved" and any(locator.values()):
+                    locators.append(locator)
+            payload_summary = payload.get("summary") if isinstance(payload.get("summary"), dict) else {}
+            entries[paper_key] = {
+                "resolution_status": "resolved" if reattachments and len(locators) == len(reattachments) else "partial" if locators else "unresolved",
+                "resolution_source": "s2_5b_semantic_authority_reattachment_v1",
+                "failure_reason": "" if locators else "no_resolved_reattachment_targets",
+                "authority_payload_root": normalize_text(payload.get("payload_root")),
+                "table_scope_locators": locators,
+                "reattachment_diagnostics": diagnostic_entries,
+                "semantic_signal_count": str(int(payload_summary.get("semantic_signal_count") or len(reattachments))),
+                "reattached_target_count": str(len(locators)),
+                "unresolved_target_count": str(sum(1 for item in reattachments if normalize_text(item.get("resolution_status")) == "unresolved")),
+                "ambiguous_target_count": str(sum(1 for item in reattachments if normalize_text(item.get("resolution_status")) == "ambiguous")),
+            }
+    return entries
+
+
 def load_authority_sidecar(path: Path | None) -> dict[str, dict[str, Any]]:
     if path is None or not path.exists():
         return {}
+    if path.is_dir():
+        return _load_t05_authority_sidecar_directory(path)
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except Exception:
@@ -1330,7 +1513,82 @@ def merge_authority_sidecar(document: dict[str, Any], sidecar_entry: dict[str, A
         or ("resolved" if authority_payload_root else "unresolved"),
         "reattachment_source": normalize_text(sidecar_entry.get("resolution_source")),
         "reattachment_failure_reason": normalize_text(sidecar_entry.get("failure_reason")),
+        "semantic_signal_count": normalize_text(sidecar_entry.get("semantic_signal_count")),
+        "reattached_target_count": normalize_text(sidecar_entry.get("reattached_target_count")),
+        "unresolved_target_count": normalize_text(sidecar_entry.get("unresolved_target_count")),
+        "ambiguous_target_count": normalize_text(sidecar_entry.get("ambiguous_target_count")),
     }
+
+
+def authority_reattachment_trace_entries(
+    document_key: str,
+    authority_sidecar_entry: dict[str, Any] | None,
+    reattachment_summary: dict[str, str],
+) -> list[dict[str, str]]:
+    """Return diagnostic-only S2-5b trace rows for S2-7 visibility.
+
+    These rows expose resolved, unresolved, ambiguous, and missing
+    reattachment status before Stage3 without creating semantic authorization
+    or completed formulation/value rows.
+    """
+    status = normalize_text(reattachment_summary.get("reattachment_status")) or "missing"
+    diagnostics: list[dict[str, Any]] = []
+    if isinstance(authority_sidecar_entry, dict):
+        diagnostics = [
+            item
+            for item in ensure_list(authority_sidecar_entry.get("reattachment_diagnostics"))
+            if isinstance(item, dict)
+        ]
+    if not diagnostics and isinstance(authority_sidecar_entry, dict):
+        for locator_entry in ensure_list(authority_sidecar_entry.get("table_scope_locators")):
+            if not isinstance(locator_entry, dict):
+                continue
+            target_id = normalize_text(
+                locator_entry.get("source_table_reference")
+                or locator_entry.get("source_table_asset_id")
+                or locator_entry.get("table_id")
+            )
+            diagnostics.append(
+                {
+                    "resolution_status": status,
+                    "authority_target_id": target_id,
+                    "authority_payload_path": normalize_text(
+                        locator_entry.get("payload_artifact_path") or locator_entry.get("normalized_csv_path")
+                    ),
+                    "table_cell_grid_ref": normalize_text(locator_entry.get("table_cell_grid_ref")),
+                    "notes": "Diagnostic-only S2-5b authority target locator visibility; no semantic authorization created.",
+                }
+            )
+    if not diagnostics:
+        diagnostics = [
+            {
+                "resolution_status": status,
+                "authority_target_id": document_key,
+                "authority_payload_path": "",
+                "table_cell_grid_ref": "",
+                "notes": "Diagnostic-only S2-5b authority reattachment sidecar missing or empty; no semantic authorization created.",
+            }
+        ]
+    rows: list[dict[str, str]] = []
+    for item in diagnostics:
+        item_status = normalize_text(item.get("resolution_status")) or status
+        target_id = normalize_text(item.get("authority_target_id") or item.get("scope_id") or item.get("signal_family") or document_key)
+        rows.append(
+            {
+                "document_key": document_key,
+                "formulation_id": "__authority_reattachment__",
+                "legacy_field": "authority_reattachment_diagnostic",
+                "source_replacement_objects": target_id,
+                "mapping_status": item_status,
+                "direct_or_derived": "diagnostic",
+                "notes": normalize_text(item.get("notes")) or "Diagnostic-only S2-5b authority reattachment visibility; no semantic authorization created.",
+                "authority_target_id": target_id,
+                "authority_payload_path": normalize_text(item.get("authority_payload_path")),
+                "table_cell_grid_ref": normalize_text(item.get("table_cell_grid_ref")),
+                "reattachment_status": item_status,
+            }
+        )
+    return rows
 
 
 def object_rows(document: dict[str, Any], object_type: str) -> list[dict[str, Any]]:
@@ -1428,6 +1686,10 @@ def add_trace(
     mapping_status: str,
     direct_or_derived: str,
     notes: str,
+    authority_target_id: str = "",
+    authority_payload_path: str = "",
+    table_cell_grid_ref: str = "",
+    reattachment_status: str = "",
 ) -> None:
     traces.append(
         {
@@ -1438,6 +1700,10 @@ def add_trace(
             "mapping_status": mapping_status,
             "direct_or_derived": direct_or_derived,
             "notes": notes,
+            "authority_target_id": authority_target_id,
+            "authority_payload_path": authority_payload_path,
+            "table_cell_grid_ref": table_cell_grid_ref,
+            "reattachment_status": reattachment_status,
         }
     )
 
@@ -1859,6 +2125,7 @@ def project_document(
     rows: list[dict[str, str]] = []
     traces: list[dict[str, str]] = []
     jsonl_rows: list[dict[str, Any]] = []
+    traces.extend(authority_reattachment_trace_entries(document_key, authority_sidecar_entry, reattachment_summary))
 
     for identity in identities:
         formulation_id = normalize_text(identity.get("formulation_candidate_id"))
@@ -2299,6 +2566,7 @@ def project_document(
         }
         fallback_document = finalize_fallback_document(build_fallback_semantic_document(fallback_record))
         fallback_rows, fallback_traces, fallback_jsonl_rows, _, _ = project_document(fallback_document)
+        fallback_traces = [*traces, *fallback_traces]
         add_trace(
             fallback_traces,
             document_key,
@@ -2546,6 +2814,7 @@ def run_projection(
 ) -> dict[str, Any]:
     documents = load_jsonl_documents(input_path)
     authority_sidecar = load_authority_sidecar(authority_sidecar_path)
+    authority_reattachment_diagnostics = summarize_authority_reattachment_sidecar(authority_sidecar_path)
     all_rows: list[dict[str, str]] = []
     all_traces: list[dict[str, str]] = []
     all_jsonl_rows: list[dict[str, Any]] = []
@@ -2605,6 +2874,10 @@ def run_projection(
             "mapping_status",
             "direct_or_derived",
             "notes",
+            "authority_target_id",
+            "authority_payload_path",
+            "table_cell_grid_ref",
+            "reattachment_status",
         ],
     )
     write_projection_contract(contract_path)
@@ -2690,6 +2963,7 @@ def run_projection(
         "execution_ledger_rows": execution_ledger_rows,
         "authority_sidecar_path": str(authority_sidecar_path.resolve()) if authority_sidecar_path is not None and authority_sidecar_path.exists() else "",
         "authority_sidecar_entries": len(authority_sidecar),
+        "authority_reattachment_diagnostics": authority_reattachment_diagnostics,
         "numbered_doe_guard_tsv": str(Path(guard_stats["guard_path"]).resolve()),
         "numbered_doe_guard_fail_count": int(guard_stats["fail_count"]),
         "numbered_doe_guard_warn_count": int(guard_stats["warn_count"]),

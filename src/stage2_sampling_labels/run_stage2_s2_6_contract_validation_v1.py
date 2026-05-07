@@ -18,6 +18,7 @@ try:
         collect_mode_values,
         normalize_text,
         read_jsonl,
+        summarize_authority_reattachment_sidecar,
         validate_semantic_documents,
     )
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
@@ -34,6 +35,7 @@ except ModuleNotFoundError:  # pragma: no cover
         collect_mode_values,
         normalize_text,
         read_jsonl,
+        summarize_authority_reattachment_sidecar,
         validate_semantic_documents,
     )
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
@@ -71,6 +73,11 @@ def parse_args() -> argparse.Namespace:
         required=True,
         help="Run directory produced by the maintained S2-5 semantic-parsing runner.",
     )
+    parser.add_argument(
+        "--authority-reattachment-sidecar",
+        default="",
+        help="Optional diagnostic S2-5b authority reattachment sidecar file or run/root directory. Diagnostic-only; does not create semantic authorization.",
+    )
     return parser.parse_args()
 
 
@@ -98,6 +105,8 @@ def build_run_context(
     semantic_summary_path: Path | None,
     source_targeted_manifest_path: Path | None,
     source_s2_5_metadata_path: Path | None,
+    authority_reattachment_sidecar_path: Path | None,
+    authority_reattachment_diagnostics: dict[str, object],
     report_path: Path,
     declared_mode: str,
     document_count: int,
@@ -114,6 +123,8 @@ def build_run_context(
         source_items.append(f"- targeted_manifest_tsv: `{source_targeted_manifest_path}`")
     if source_s2_5_metadata_path is not None:
         source_items.append(f"- source_s2_5_metadata: `{source_s2_5_metadata_path}`")
+    if authority_reattachment_sidecar_path is not None:
+        source_items.append(f"- authority_reattachment_sidecar: `{authority_reattachment_sidecar_path}`")
     source_block = "\n".join(source_items)
     return f"""# RUN_CONTEXT
 
@@ -187,6 +198,10 @@ Benchmark reporting rule:
 - document_count: `{document_count}`
 - warning_count: `{warning_count}`
 - error_count: `{error_count}`
+- authority_reattachment_semantic_signal_count: `{authority_reattachment_diagnostics.get('semantic_signal_count', 0)}`
+- authority_reattachment_reattached_target_count: `{authority_reattachment_diagnostics.get('reattached_target_count', 0)}`
+- authority_reattachment_unresolved_target_count: `{authority_reattachment_diagnostics.get('unresolved_target_count', 0)}`
+- authority_reattachment_ambiguous_target_count: `{authority_reattachment_diagnostics.get('ambiguous_target_count', 0)}`
 - allowed_modes:
   - `{sorted(ALLOWED_MODES)}`
 - success_status: `{"pass" if error_count == 0 else "fail"}`
@@ -211,6 +226,12 @@ def main() -> None:
     source_s2_5_metadata_path = source_s2_5_run_dir / S2_5_RUN_METADATA_NAME
     if not source_s2_5_metadata_path.exists():
         source_s2_5_metadata_path = None
+    authority_reattachment_sidecar_path = repo_path(args.authority_reattachment_sidecar) if normalize_text(args.authority_reattachment_sidecar) else None
+    if authority_reattachment_sidecar_path is None:
+        inferred = source_s2_5_run_dir / "semantic_stage2_objects" / "authority_reattachment"
+        if inferred.exists():
+            authority_reattachment_sidecar_path = inferred
+    authority_reattachment_diagnostics = summarize_authority_reattachment_sidecar(authority_reattachment_sidecar_path)
 
     documents = read_jsonl(semantic_jsonl_path)
     semantic_validation = validate_semantic_documents(documents)
@@ -236,7 +257,9 @@ def main() -> None:
             "semantic_summary_tsv": to_repo_rel(semantic_summary_path) if semantic_summary_path is not None else "",
             "targeted_manifest_tsv": to_repo_rel(source_targeted_manifest_path) if source_targeted_manifest_path is not None else "",
             "source_s2_5_metadata": to_repo_rel(source_s2_5_metadata_path) if source_s2_5_metadata_path is not None else "",
+            "authority_reattachment_sidecar": to_repo_rel(authority_reattachment_sidecar_path) if authority_reattachment_sidecar_path is not None else "",
         },
+        "authority_reattachment_diagnostics": authority_reattachment_diagnostics,
         "observed_modes": observed_modes,
     }
 
@@ -273,6 +296,8 @@ def main() -> None:
         semantic_summary_path=semantic_summary_path,
         source_targeted_manifest_path=source_targeted_manifest_path,
         source_s2_5_metadata_path=source_s2_5_metadata_path,
+        authority_reattachment_sidecar_path=authority_reattachment_sidecar_path,
+        authority_reattachment_diagnostics=authority_reattachment_diagnostics,
         report_path=report_path,
         declared_mode=declared_mode,
         document_count=len(documents),

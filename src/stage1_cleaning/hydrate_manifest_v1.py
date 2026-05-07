@@ -79,14 +79,61 @@ def load_key2txt_map(path: Path) -> dict[str, str]:
         raise FileNotFoundError(f"key2txt surface not found: {path}")
     out: dict[str, str] = {}
     with path.open("r", encoding="utf-8", newline="") as handle:
-        reader = csv.reader(handle, delimiter="\t")
-        for row in reader:
-            if len(row) < 2:
-                continue
-            key = normalize_key(row[0])
-            text_path = normalize_text(row[1])
-            if key and text_path:
-                out[key] = text_path.replace("/", "\\")
+        sample = handle.readline()
+        handle.seek(0)
+        first_cells = sample.rstrip("\n\r").split("\t")
+        if first_cells and first_cells[0] in {"key", "paper_key", "zotero_key"}:
+            reader = csv.DictReader(handle, delimiter="\t")
+            for row in reader:
+                key = normalize_key(row.get("key") or row.get("paper_key") or row.get("zotero_key"))
+                text_path = normalize_text(row.get("txt_path") or row.get("text_path") or row.get("path"))
+                if key and text_path:
+                    out[key] = text_path.replace("/", "\\")
+        else:
+            reader = csv.reader(handle, delimiter="\t")
+            for row in reader:
+                if len(row) < 2:
+                    continue
+                key = normalize_key(row[0])
+                text_path = normalize_text(row[1])
+                if key and text_path:
+                    out[key] = text_path.replace("/", "\\")
+    return out
+
+
+def load_key2structure_map(path: Path | None) -> dict[str, str]:
+    if path is None:
+        return {}
+    if not path.exists():
+        raise FileNotFoundError(f"key2structure surface not found: {path}")
+    _, rows = read_tsv(path)
+    out: dict[str, str] = {}
+    for row in rows:
+        key = normalize_key(row.get("key") or row.get("paper_key") or row.get("zotero_key"))
+        structure_path = normalize_text(row.get("structure_path") or row.get("stage1_structure_path"))
+        if key and structure_path:
+            out[key] = structure_path.replace("\\", "/")
+    return out
+
+
+def load_stage1_table_cell_sidecar_map(path: Path | None) -> dict[str, tuple[str, str]]:
+    if path is None:
+        return {}
+    if not path.exists():
+        raise FileNotFoundError(f"Stage1 table-cell sidecar manifest not found: {path}")
+    _, rows = read_tsv(path)
+    out: dict[str, tuple[str, str]] = {}
+    for row in rows:
+        key = normalize_key(row.get("key") or row.get("paper_key") or row.get("zotero_key"))
+        sidecar_path = normalize_text(
+            row.get("stage1_table_cell_sidecar_path")
+            or row.get("table_cell_sidecar_path")
+            or row.get("sidecar_path")
+            or row.get("stage1_cells_path")
+        )
+        available = normalize_text(row.get("stage1_table_cell_sidecar_available") or row.get("available"))
+        if key and sidecar_path:
+            out[key] = (sidecar_path.replace("\\", "/"), available or "yes")
     return out
 
 
@@ -130,6 +177,18 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=paths.DATA_CLEANED_INDEX_DIR / "key2txt.tsv",
         help="Authoritative key2txt mapping used for text hydration.",
+    )
+    parser.add_argument(
+        "--key2structure-tsv",
+        type=Path,
+        default=paths.DATA_CLEANED_INDEX_DIR / "key2structure.tsv",
+        help="Optional authoritative key2structure mapping used for structure sidecar hydration.",
+    )
+    parser.add_argument(
+        "--table-cell-sidecar-manifest-tsv",
+        type=Path,
+        default=None,
+        help="Optional Stage1 table-cell sidecar manifest used to hydrate per-paper sidecar paths.",
     )
     parser.add_argument(
         "--dataset-manifest-tsv",
@@ -201,38 +260,53 @@ def validate_aligned_args(values: list[str], arg_name: str, expected_len: int) -
     return [normalize_text(value) for value in values]
 
 
-def main() -> None:
-    args = parse_args()
+def hydrate_manifest(
+    *,
+    manifest_tsv: Path,
+    out_tsv: Path,
+    key2txt_tsv: Path,
+    key2structure_tsv: Path | None = None,
+    table_cell_sidecar_manifest_tsv: Path | None = None,
+    dataset_manifests: list[Path] | None = None,
+    dataset_ids: list[str] | None = None,
+    dataset_tables_roots: list[str] | None = None,
+    split_manifests: list[Path] | None = None,
+    split_tags: list[str] | None = None,
+    benchmark_tags: list[str] | None = None,
+    metadata_json: Path | None = None,
+    strict_overlays: bool = False,
+    overwrite: bool = False,
+) -> dict[str, Any]:
+    manifest_tsv = resolve_project_path(manifest_tsv)
+    out_tsv = resolve_project_path(out_tsv)
+    key2txt_tsv = resolve_project_path(key2txt_tsv)
+    key2structure_resolved = resolve_project_path(key2structure_tsv) if key2structure_tsv is not None else None
+    table_cell_sidecar_manifest_resolved = (
+        resolve_project_path(table_cell_sidecar_manifest_tsv) if table_cell_sidecar_manifest_tsv is not None else None
+    )
 
-    manifest_tsv = resolve_project_path(args.manifest_tsv)
-    out_tsv = resolve_project_path(args.out_tsv)
-    key2txt_tsv = resolve_project_path(args.key2txt_tsv)
-
-    if out_tsv.exists() and not args.overwrite:
+    if out_tsv.exists() and not overwrite:
         raise FileExistsError(f"output exists (use --overwrite): {out_tsv}")
     if not manifest_tsv.exists():
         raise FileNotFoundError(f"assembled manifest not found: {manifest_tsv}")
 
-    dataset_manifests = [resolve_project_path(path) for path in args.dataset_manifests]
-    dataset_ids = validate_aligned_args(args.dataset_ids, "--dataset-id", len(dataset_manifests))
-    dataset_tables_roots = args.dataset_tables_roots
+    dataset_manifests = [resolve_project_path(path) for path in (dataset_manifests or [])]
+    dataset_ids = validate_aligned_args(dataset_ids or [], "--dataset-id", len(dataset_manifests))
+    dataset_tables_roots = dataset_tables_roots or []
     if dataset_tables_roots and len(dataset_tables_roots) != len(dataset_manifests):
         raise ValueError(
             "--dataset-tables-root must be supplied zero times or exactly once per --dataset-manifest-tsv"
         )
 
-    split_manifests = [resolve_project_path(path) for path in args.split_manifests]
-    split_tags = validate_aligned_args(args.split_tags, "--split-tag", len(split_manifests))
-    benchmark_tags = validate_aligned_args(args.benchmark_tags, "--benchmark-tag", len(split_manifests))
+    split_manifests = [resolve_project_path(path) for path in (split_manifests or [])]
+    split_tags = validate_aligned_args(split_tags or [], "--split-tag", len(split_manifests))
+    benchmark_tags = validate_aligned_args(benchmark_tags or [], "--benchmark-tag", len(split_manifests))
 
     fieldnames, rows = read_tsv(manifest_tsv)
-    manifest_by_key = {
-        normalize_key(row.get("key") or row.get("paper_key") or row.get("zotero_key")): row
-        for row in rows
-        if normalize_key(row.get("key") or row.get("paper_key") or row.get("zotero_key"))
-    }
 
     key2txt_map = load_key2txt_map(key2txt_tsv)
+    key2structure_map = load_key2structure_map(key2structure_resolved)
+    table_cell_sidecar_map = load_stage1_table_cell_sidecar_map(table_cell_sidecar_manifest_resolved)
 
     dataset_membership: dict[str, str] = {}
     dataset_tables_map: dict[str, Path] = {}
@@ -276,16 +350,19 @@ def main() -> None:
                 )
             split_overlay[key] = current
 
-    if args.strict_overlays and (dataset_conflicts or split_conflicts):
+    if strict_overlays and (dataset_conflicts or split_conflicts):
         raise RuntimeError(
             f"overlay conflicts detected: dataset_conflicts={len(dataset_conflicts)} split_conflicts={len(split_conflicts)}"
         )
 
     hydrated_rows: list[dict[str, str]] = []
-    hydration_summary = {
+    hydration_summary: dict[str, Any] = {
         "input_manifest_path": str(manifest_tsv),
         "output_manifest_path": str(out_tsv),
         "key2txt_tsv": str(key2txt_tsv),
+        "key2structure_tsv": str(key2structure_resolved) if key2structure_resolved else "",
+        "table_cell_sidecar_manifest_tsv": str(table_cell_sidecar_manifest_resolved) if table_cell_sidecar_manifest_resolved else "",
+        "mainline_integration_status": "maintained_code_only_not_hydrated",
         "dataset_sources": [
             {
                 "dataset_manifest_tsv": str(dataset_manifests[idx]),
@@ -305,6 +382,8 @@ def main() -> None:
         "row_count": len(rows),
         "text_available_yes_count": 0,
         "table_available_yes_count": 0,
+        "structure_available_yes_count": 0,
+        "stage1_table_cell_sidecar_available_yes_count": 0,
         "dataset_overlay_count": 0,
         "split_overlay_count": 0,
         "benchmark_overlay_count": 0,
@@ -322,6 +401,18 @@ def main() -> None:
         hydrated["text_available"] = "yes" if text_path else "no"
         if hydrated["text_available"] == "yes":
             hydration_summary["text_available_yes_count"] += 1
+
+        structure_path = key2structure_map.get(key, "")
+        hydrated["structure_path"] = structure_path
+        hydrated["structure_available"] = "yes" if structure_path else "no"
+        if hydrated["structure_available"] == "yes":
+            hydration_summary["structure_available_yes_count"] += 1
+
+        sidecar_path, sidecar_available = table_cell_sidecar_map.get(key, ("", "no"))
+        hydrated["stage1_table_cell_sidecar_path"] = sidecar_path
+        hydrated["stage1_table_cell_sidecar_available"] = sidecar_available if sidecar_path else "no"
+        if hydrated["stage1_table_cell_sidecar_available"].lower() == "yes":
+            hydration_summary["stage1_table_cell_sidecar_available_yes_count"] += 1
 
         dataset_id = dataset_membership.get(key, "")
         hydrated["dataset_id"] = dataset_id
@@ -356,6 +447,10 @@ def main() -> None:
         "text_available",
         "table_dir",
         "table_available",
+        "structure_path",
+        "structure_available",
+        "stage1_table_cell_sidecar_path",
+        "stage1_table_cell_sidecar_available",
         "dataset_id",
         "split_tag",
         "benchmark_tag",
@@ -365,20 +460,45 @@ def main() -> None:
 
     write_tsv(out_tsv, out_fieldnames, hydrated_rows)
 
-    metadata_path = args.metadata_json
+    metadata_path = metadata_json
     if metadata_path is None:
         metadata_path = out_tsv.with_name(f"{out_tsv.stem}__hydration_metadata_v1.json")
     elif not metadata_path.is_absolute():
         metadata_path = (paths.PROJECT_ROOT / metadata_path).resolve()
+    metadata_path.parent.mkdir(parents=True, exist_ok=True)
     metadata_path.write_text(json.dumps(hydration_summary, indent=2), encoding="utf-8")
+    return hydration_summary
 
-    print(f"input_manifest={manifest_tsv}")
-    print(f"hydrated_manifest={out_tsv}")
-    print(f"hydration_metadata={metadata_path}")
-    print(f"row_count={len(hydrated_rows)}")
+
+def main() -> None:
+    args = parse_args()
+    hydration_summary = hydrate_manifest(
+        manifest_tsv=args.manifest_tsv,
+        out_tsv=args.out_tsv,
+        key2txt_tsv=args.key2txt_tsv,
+        key2structure_tsv=args.key2structure_tsv,
+        table_cell_sidecar_manifest_tsv=args.table_cell_sidecar_manifest_tsv,
+        dataset_manifests=args.dataset_manifests,
+        dataset_ids=args.dataset_ids,
+        dataset_tables_roots=args.dataset_tables_roots,
+        split_manifests=args.split_manifests,
+        split_tags=args.split_tags,
+        benchmark_tags=args.benchmark_tags,
+        metadata_json=args.metadata_json,
+        strict_overlays=args.strict_overlays,
+        overwrite=args.overwrite,
+    )
+
+    print(f"input_manifest={hydration_summary['input_manifest_path']}")
+    print(f"hydrated_manifest={hydration_summary['output_manifest_path']}")
+    print(f"row_count={hydration_summary['row_count']}")
     print(f"text_available_yes_count={hydration_summary['text_available_yes_count']}")
     print(f"table_available_yes_count={hydration_summary['table_available_yes_count']}")
-
+    print(f"structure_available_yes_count={hydration_summary['structure_available_yes_count']}")
+    print(
+        "stage1_table_cell_sidecar_available_yes_count="
+        f"{hydration_summary['stage1_table_cell_sidecar_available_yes_count']}"
+    )
 
 if __name__ == "__main__":
     main()

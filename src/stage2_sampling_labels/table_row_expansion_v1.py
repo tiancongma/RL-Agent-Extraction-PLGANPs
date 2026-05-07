@@ -838,7 +838,7 @@ def compatibility_field_for_assignment(name: str) -> str:
         return {
             "ee_percent": "encapsulation_efficiency_percent",
             "lc_percent": "loading_content_percent",
-            "dl_percent": "loading_content_percent",
+            "dl_percent": "dl_percent",
             "particle_size_nm": "size_nm",
             "pdi": "pdi",
             "zeta_mV": "zeta_mV",
@@ -2323,7 +2323,18 @@ def extract_split_column_concentration_sweep_rows_from_source_csv(
     if not bool(semantic_signals.get("has_variable_sweep")):
         return [], "semantic_signal_missing_variable_sweep"
     representation_status = normalize_text(authority_payload.get("representation_status")).lower()
-    if representation_status not in {"repair_insufficient", "unrepaired_corrupted"}:
+    normalization_actions = {
+        normalize_text(action).lower()
+        for action in ensure_list(authority_payload.get("normalization_actions"))
+        if normalize_text(action)
+    }
+    # Some preserved PDF coordinate-grid assets are only summary-repaired enough for
+    # prompt visibility but still retain a lawful split-column sweep in the original
+    # CSV.  Do not let the newer representation label suppress an LLM-authorized
+    # variable-sweep scope before the source CSV has been inspected.
+    if representation_status not in {"repair_insufficient", "unrepaired_corrupted"} and not (
+        representation_status == "repaired_summary" and "preserve_coordinate_grid" in normalization_actions
+    ):
         return [], "representation_not_corrupted_sweep_source"
     source_csv = _authority_source_csv_path(authority_payload)
     if source_csv is None:

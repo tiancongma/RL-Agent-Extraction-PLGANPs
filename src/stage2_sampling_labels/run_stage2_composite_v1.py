@@ -100,6 +100,19 @@ def load_key2txt_map(path: Path) -> dict[str, str]:
     return out
 
 
+def load_key2structure_map(path: Path) -> dict[str, dict[str, str]]:
+    if not path.exists():
+        return {}
+    out: dict[str, dict[str, str]] = {}
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        for row in reader:
+            key = normalize_text(row.get("key"))
+            if key:
+                out[key] = {field: normalize_text(value).replace("\\\\", "/") for field, value in row.items()}
+    return out
+
+
 def resolve_project_file(path_value: str) -> Path:
     path = Path(path_value)
     return path if path.is_absolute() else (PROJECT_ROOT / path).resolve()
@@ -193,6 +206,26 @@ def refresh_stage2_text_bindings(selected_rows: list[dict[str, str]], key2txt_pa
     return refreshed_rows
 
 
+def refresh_stage2_structure_bindings(selected_rows: list[dict[str, str]], key2structure_path: Path) -> list[dict[str, str]]:
+    key2structure_map = load_key2structure_map(key2structure_path)
+    refreshed_rows: list[dict[str, str]] = []
+    for row in selected_rows:
+        refreshed = dict(row)
+        key = normalize_key(row)
+        binding = key2structure_map.get(key, {})
+        structure_path = normalize_text(refreshed.get("structure_path")) or normalize_text(binding.get("structure_path"))
+        if structure_path:
+            refreshed["structure_path"] = structure_path.replace("\\", "/")
+            refreshed["structure_available"] = "yes" if resolve_project_file(refreshed["structure_path"]).exists() else "missing_file"
+        else:
+            refreshed["structure_path"] = ""
+            refreshed["structure_available"] = "no"
+        if not normalize_text(refreshed.get("table_dir")) and normalize_text(binding.get("tables_dir")):
+            refreshed["table_dir"] = normalize_text(binding.get("tables_dir")).replace("\\", "/")
+        refreshed_rows.append(refreshed)
+    return refreshed_rows
+
+
 def refresh_stage2_table_bindings(selected_rows: list[dict[str, str]]) -> list[dict[str, str]]:
     refreshed_rows: list[dict[str, str]] = []
     for row in selected_rows:
@@ -253,6 +286,11 @@ def parse_args() -> argparse.Namespace:
         "--stop-before-live-call",
         action="store_true",
         help="Materialize maintained pre-LLM Stage2 artifacts only and stop before any S2-4b live or replay raw-response handling.",
+    )
+    parser.add_argument(
+        "--stage1-table-cell-sidecar-root",
+        default="",
+        help="Optional explicit Stage1 table-cell sidecar root passed to S2-2 table authority reconstruction.",
     )
     return parser.parse_args()
 
@@ -444,7 +482,9 @@ def main() -> None:
     run_dir.mkdir(parents=True, exist_ok=False)
 
     key2txt_tsv = (DATA_CLEANED_INDEX_DIR / "key2txt.tsv").resolve()
+    key2structure_tsv = (DATA_CLEANED_INDEX_DIR / "key2structure.tsv").resolve()
     selected_rows = refresh_stage2_text_bindings(selected_rows, key2txt_tsv)
+    selected_rows = refresh_stage2_structure_bindings(selected_rows, key2structure_tsv)
     selected_rows = refresh_stage2_table_bindings(selected_rows)
 
     selected_manifest_tsv = run_dir / "targeted_manifest.tsv"
@@ -498,6 +538,8 @@ def main() -> None:
     ]
     if args.stop_before_live_call:
         extractor_cmd.append("--stop-before-live-call")
+    if str(args.stage1_table_cell_sidecar_root).strip():
+        extractor_cmd.extend(["--stage1-table-cell-sidecar-root", str(repo_path(args.stage1_table_cell_sidecar_root))])
     for key in selected_keys:
         extractor_cmd.extend(["--paper-key", key])
     if legacy_raw_responses_dir is not None:
@@ -620,6 +662,7 @@ def main() -> None:
         "llm_backend": args.llm_backend,
         "model": args.model,
         "legacy_raw_responses_dir": str(legacy_raw_responses_dir) if legacy_raw_responses_dir is not None else "",
+        "stage1_table_cell_sidecar_root": str(repo_path(args.stage1_table_cell_sidecar_root)) if str(args.stage1_table_cell_sidecar_root).strip() else "",
     }
     (run_dir / STAGE2_RUN_METADATA_JSON).write_text(
         json.dumps(run_metadata, indent=2),

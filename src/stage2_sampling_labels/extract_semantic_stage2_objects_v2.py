@@ -41,6 +41,10 @@ try:
         SCOPE_KIND as TABLE_FORMULATION_SCOPE_KIND,
         augment_document_with_table_markers,
     )
+    from src.stage2_sampling_labels.table_cell_grid_v1 import (
+        build_table_cell_grid_from_payloads,
+        write_table_cell_grid,
+    )
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
@@ -56,6 +60,10 @@ except ModuleNotFoundError:  # pragma: no cover
         PARTIAL_SEMANTIC_MARKER,
         SCOPE_KIND as TABLE_FORMULATION_SCOPE_KIND,
         augment_document_with_table_markers,
+    )
+    from src.stage2_sampling_labels.table_cell_grid_v1 import (
+        build_table_cell_grid_from_payloads,
+        write_table_cell_grid,
     )
 
 
@@ -3150,22 +3158,52 @@ def parse_header_cell(cell: str) -> list[str]:
     return [text]
 
 
+def table_id_from_text(value: str) -> str:
+    text = normalize_text(value)
+    match = re.search(r"\btable\s+(\d+)\b", text, flags=re.IGNORECASE)
+    return f"Table {int(match.group(1))}" if match else ""
+
+
+def file_derived_table_id(source_csv_path: str) -> str:
+    path = Path(normalize_text(source_csv_path))
+    stem_match = re.search(r"__table_(\d+)__", path.name, flags=re.IGNORECASE)
+    return f"Table {int(stem_match.group(1))}" if stem_match else ""
+
+
+def derive_table_identity_aliases(source_csv_path: str, meta: dict[str, Any] | None = None) -> list[str]:
+    """Return bounded table-label aliases for S2-2a authority reattachment.
+
+    The stable execution table id remains file-first when a Stage1 asset name and
+    lossy metadata/caption disagree.  This side list preserves the weaker logical
+    labels without letting them override the source asset identity, so downstream
+    diagnostic/reattachment code can resolve semantic references without mining
+    Stage5 raw sources or treating prompt summaries as numeric authority.
+    """
+    meta = meta or {}
+    aliases: list[str] = []
+    for value in [
+        normalize_text(meta.get("table_id")),
+        table_id_from_text(normalize_text(meta.get("caption_or_title"))),
+        file_derived_table_id(source_csv_path),
+    ]:
+        if value and normalize_token(value) not in {normalize_token(item) for item in aliases}:
+            aliases.append(value)
+    return aliases
+
+
 def derive_stable_table_id(source_csv_path: str, meta: dict[str, Any] | None = None) -> str:
     meta = meta or {}
     path = Path(normalize_text(source_csv_path))
-    stem_match = re.search(r"__table_(\d+)__", path.name, flags=re.IGNORECASE)
-    path_table_id = f"Table {int(stem_match.group(1))}" if stem_match else ""
+    path_table_id = file_derived_table_id(source_csv_path)
     explicit = normalize_text(meta.get("table_id"))
     if explicit and (not path_table_id or normalize_token(explicit) == normalize_token(path_table_id)):
         return explicit
     if explicit:
         return path_table_id or explicit
-    caption = normalize_text(meta.get("caption_or_title"))
-    match = re.search(r"\btable\s+(\d+)\b", caption, flags=re.IGNORECASE)
-    caption_table_id = f"Table {int(match.group(1))}" if match else ""
+    caption_table_id = table_id_from_text(normalize_text(meta.get("caption_or_title")))
     if path_table_id and caption_table_id and normalize_token(path_table_id) != normalize_token(caption_table_id):
         return path_table_id
-    if match:
+    if caption_table_id:
         return caption_table_id
     if path_table_id:
         return path_table_id
@@ -4276,6 +4314,8 @@ def summary_column_score(header: str, values: list[str], *, index: int) -> float
             "pdi",
             "zeta",
             "encapsulation",
+            "entrapment",
+            "ee",
             "loading",
             "yield",
             "efficiency",
@@ -4330,6 +4370,231 @@ def build_summary_sample_lines(rows: list[list[str]], column_indices: list[int],
     return sample_lines
 
 
+CHARACTERIZATION_METRIC_TERMS = [
+    "size",
+    "diameter",
+    "z-average",
+    "z average",
+    "pdi",
+    "polydispersity",
+    "zeta",
+    "ζ",
+    "encapsulation",
+    "entrapment",
+    "ee",
+    "drug loading",
+    "loading content",
+    "drug content",
+    "payload",
+]
+
+
+def table_has_characterization_metric_columns(header_parts: list[str]) -> bool:
+    signal = " ".join(normalize_text(value).lower() for value in header_parts if normalize_text(value))
+    return any(term in signal for term in CHARACTERIZATION_METRIC_TERMS)
+
+
+def numeric_cell_fraction(values: list[str]) -> float:
+    compact_values = [normalize_text(value) for value in values if normalize_text(value)]
+    if not compact_values:
+        return 0.0
+    numeric_count = sum(1 for value in compact_values if re.search(r"[-+]?\d+(?:\.\d+)?", value))
+    return numeric_count / max(1, len(compact_values))
+
+
+def select_metric_value_column_indices(
+    rows: list[list[str]],
+    header_parts: list[str],
+    *,
+    table_role_hint: str = "",
+    max_columns: int = 12,
+) -> list[int]:
+    """Select columns for value-evidence matrix summaries.
+
+    Generic summary columns are optimized for compact readability.  Row-local
+    characterization/result extraction needs a wider numeric matrix while still
+    keeping formulation-universe authority separate.  This selector always keeps
+    the first identifier-like column, metric-header columns, and dense numeric
+    columns for characterization/result-like tables.
+    """
+    if not rows:
+        return []
+    width = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    if width <= 0:
+        return []
+    headers = flatten_table_headers_for_summary(rows)
+    data_rows = rows[1:] if len(rows) > 1 else []
+    role = normalize_text(table_role_hint).lower()
+    metric_table = role in {"characterization", "characterization_only", "optimization", "formulation", "results"} or table_has_characterization_metric_columns(header_parts)
+    ranked: list[tuple[float, int]] = []
+    for index in range(width):
+        header = headers[index] if index < len(headers) else ""
+        lower_header = normalize_text(header).lower()
+        values = [row[index] for row in data_rows[:20] if index < len(row)]
+        numeric_fraction = numeric_cell_fraction(values)
+        score = 0.0
+        if index == 0:
+            score += 100.0
+        if any(term in lower_header for term in CHARACTERIZATION_METRIC_TERMS):
+            score += 90.0
+        if metric_table and numeric_fraction >= 0.5:
+            score += 55.0 * numeric_fraction
+        if metric_table and any(unit in lower_header for unit in ["%", "nm", "mv"]):
+            score += 20.0
+        if not normalize_text(header) and numeric_fraction < 0.5 and index != 0:
+            score -= 20.0
+        if score > 0:
+            ranked.append((-score, index))
+    ranked.sort()
+    chosen = [index for _, index in ranked[:max_columns]]
+    if 0 not in chosen and width > 0:
+        chosen.append(0)
+    return sorted(dict.fromkeys(chosen))
+
+
+def build_metric_value_summary_lines(
+    rows: list[list[str]],
+    column_indices: list[int],
+    *,
+    table_role_hint: str,
+    header_parts: list[str],
+    max_rows: int = 12,
+) -> list[str]:
+    if not rows or len(rows) < 2:
+        return []
+    if not column_indices:
+        return []
+    role = normalize_text(table_role_hint).lower()
+    if role not in {"characterization", "characterization_only", "optimization", "formulation", "results"} and not table_has_characterization_metric_columns(header_parts):
+        return []
+    if not table_has_characterization_metric_columns(header_parts):
+        return []
+    data_rows = rows[1:]
+    lines = [
+        "- metric_value_rows: value_evidence_only; row-local characterization/result numeric cells are exposed for extraction but do not define the formulation universe."
+    ]
+    emitted = 0
+    for physical_row_index, row in enumerate(data_rows, start=2):
+        selected_cells = [
+            truncate_summary_cell(row[col_index], max_chars=72)
+            for col_index in column_indices
+            if col_index < len(row) and normalize_text(row[col_index])
+        ]
+        if len(selected_cells) < 2:
+            continue
+        lines.append(f"  - physical_row_{physical_row_index}: " + " | ".join(selected_cells))
+        emitted += 1
+        if emitted >= max_rows:
+            break
+    return lines if emitted else []
+
+
+def row_text_has_compact_metric_value_pattern(row_text: str) -> bool:
+    text = normalize_text(row_text)
+    if not text:
+        return False
+    lower = text.lower()
+    numeric_tokens = re.findall(r"[-+−]?\d+(?:\.\d+)?", text)
+    if len(numeric_tokens) < 2:
+        return False
+    has_uncertainty_marker = bool(
+        any(marker in text for marker in ["±", "+/-", "%", " nm", " mV", "mv", "−", "-"])
+        or re.search(r"\d+(?:\.\d+)?G\d+(?:\.\d+)?", text)
+    )
+    if not has_uncertainty_marker:
+        return False
+    if any(term in lower for term in CHARACTERIZATION_METRIC_TERMS) or re.search(r"\b(?:pi|p\.i\.?|zp|z-average)\b", lower):
+        return True
+    if re.search(r"\b(?:np|nps|npr|npg|npb|f)\s*[-_]?\w*\d+\b", lower):
+        return True
+    plusminus_count = len(re.findall(r"±|\+/-|\d+(?:\.\d+)?G\d+(?:\.\d+)?", text))
+    separator_count = text.count("|")
+    if plusminus_count >= 2 and len(numeric_tokens) >= 5 and separator_count >= 1:
+        return True
+    if plusminus_count >= 3 and len(numeric_tokens) >= 6:
+        return True
+    return False
+
+
+def raw_metric_value_row_score(row_text: str) -> tuple[int, int]:
+    text = normalize_text(row_text)
+    lower = text.lower()
+    plusminus_count = len(re.findall(r"±|\+/-|\d+(?:\.\d+)?G\d+(?:\.\d+)?", text))
+    numeric_count = len(re.findall(r"[-+−]?\d+(?:\.\d+)?", text))
+    score = 0
+    if any(term in lower for term in CHARACTERIZATION_METRIC_TERMS) or re.search(r"\b(?:pi|p\.i\.?|zp|z-average)\b", lower):
+        score += 6
+    if re.search(r"\b(?:np|nps|npr|npg|npb|f)\s*[-_]?\w*\d+\b", lower):
+        score += 6
+    if plusminus_count >= 2:
+        score += 5
+    if text.count("|") >= 3 and numeric_count >= 5:
+        score += 3
+    alpha_chars = len(re.findall(r"[A-Za-z]", text))
+    if alpha_chars > 140 and plusminus_count < 2:
+        score -= 4
+    return (score, plusminus_count)
+
+
+def build_raw_metric_value_evidence_lines(
+    rows: list[list[str]],
+    *,
+    table_role_hint: str,
+    table_source_role: str = "",
+    max_rows: int = 32,
+) -> list[str]:
+    """Fallback for compact result matrices flattened into prose-like rows.
+
+    This exposes raw value evidence only; it is never formulation-universe
+    authority and excludes known downstream/release/PK/toxicity table roles.
+    """
+    role = normalize_text(table_role_hint).lower()
+    source_role = normalize_text(table_source_role).lower()
+    if source_role in {"release_profile_table", "pharmacokinetic_table", "toxicity_or_viability_table", "assay_protocol_table"}:
+        return []
+    if role not in {"characterization", "characterization_only", "results", "optimization"} and source_role not in {"characterization_result_table", "noise_or_nonformulation_table", "formulation_composition_table"}:
+        return []
+    lines = [
+        "- raw_metric_value_rows: value_evidence_only; compact/flattened row-local numeric measurement evidence from normalized payload."
+    ]
+    emitted = 0
+    candidates: list[tuple[int, int, int, str]] = []
+    for physical_row_index, row in enumerate(rows[1:] if len(rows) > 1 else rows, start=2 if len(rows) > 1 else 1):
+        row_text = " | ".join(normalize_text(cell) for cell in row if normalize_text(cell))
+        if not row_text_has_compact_metric_value_pattern(row_text):
+            continue
+        score, plusminus_count = raw_metric_value_row_score(row_text)
+        candidates.append((score, plusminus_count, physical_row_index, row_text))
+    if not candidates:
+        return []
+    if len(candidates) > max_rows:
+        chosen = sorted(candidates, key=lambda item: (-item[0], -item[1], item[2]))[:max_rows]
+        candidates = sorted(chosen, key=lambda item: item[2])
+    for _score, _plusminus_count, physical_row_index, row_text in candidates:
+        lines.append(f"  - physical_row_{physical_row_index}: {truncate_summary_cell(row_text, max_chars=220)}")
+        emitted += 1
+    return lines if emitted else []
+
+
+def prompt_semantic_summary_line(table_role_hint: str) -> str:
+    """Return bounded LLM-facing semantic-use guidance for summary-only table evidence.
+
+    This line improves prompt semantic adequacy for formulation-bearing table
+    summaries without exposing full numeric rows.  It is intentionally role-based
+    and never promotes prompt summaries to row/value authority.
+    """
+    role = normalize_text(table_role_hint).lower()
+    if role == "formulation":
+        return "- semantic_summary: formulation composition/identity cues for nanoparticle preparation; use for semantic discovery only, not full numeric/table authority."
+    if role == "design matrix":
+        return "- semantic_summary: formulation design/process variables for nanoparticle preparation; row/value authority remains in the S2-2 payload/grid, not this prompt summary."
+    if role == "optimization":
+        return "- semantic_summary: optimization/selected-formulation process context for nanoparticle preparation; use for semantic discovery only, not full numeric/table authority."
+    if role in {"characterization", "characterization_only", "results"}:
+        return "- semantic_summary: row-local measurement/context evidence only; not formulation-universe or full numeric/table authority."
+    return "- semantic_summary: table context only; not formulation-universe or full numeric/table authority."
+
+
 def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool) -> list[str]:
     path = item["path"]
     rows = item["rows"]
@@ -4344,6 +4609,18 @@ def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool
     ]
     units = infer_units_from_headers(column_headers)
     sample_lines = build_summary_sample_lines(rows, column_indices)
+    table_role_hint = infer_table_role_hint(header_parts, meta)
+    metric_column_indices = select_metric_value_column_indices(
+        rows,
+        header_parts,
+        table_role_hint=table_role_hint,
+    )
+    metric_value_lines = build_metric_value_summary_lines(
+        rows,
+        metric_column_indices,
+        table_role_hint=table_role_hint,
+        header_parts=header_parts,
+    )
     table_match = re.search(r"__table_(\d+)__", path.name)
     table_id = f"Table {int(table_match.group(1))}" if table_match else path.stem
     caption = normalize_text(meta.get("caption_or_title"))
@@ -4356,7 +4633,8 @@ def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool
         f"- key_columns: {' || '.join(column_headers) if column_headers else '(not available)'}",
         f"- header_units: {', '.join(units) if units else '(none inferred)'}",
         f"- row_identifier_pattern: {infer_row_pattern(row_ids)}",
-        f"- table_role_hint: {infer_table_role_hint(header_parts, meta)}",
+        f"- table_role_hint: {table_role_hint}",
+        prompt_semantic_summary_line(table_role_hint),
         f"- table_shape_hint: rows={meta.get('n_rows', len(rows))}, cols={meta.get('n_cols', max((len(r) for r in rows), default=0))}",
     ]
     if enhancement_enabled and row_anchor_preview:
@@ -4376,12 +4654,104 @@ def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool
     if sample_lines:
         block_lines.append("- sample_rows:")
         block_lines.extend(sample_lines)
+    if metric_value_lines:
+        block_lines.extend(metric_value_lines)
     block_lines.append(f"- footnotes_or_notes: {footnotes or '(not available)'}")
     return block_lines
 
 
 def render_summary_table_block(item: dict[str, Any], *, enhancement_enabled: bool) -> str:
     return "\n".join(build_table_summary_lines(item, enhancement_enabled=enhancement_enabled))
+
+
+def compact_value_evidence_lines_from_payload(payload: dict[str, Any], *, max_rows: int = 32) -> list[str]:
+    """Render compact row-local measurement evidence from execution payloads.
+
+    This is prompt/evidence-pack visibility only.  `row_local_value_evidence`
+    payloads may expose characterization/result numeric matrices to the LLM, but
+    they are explicitly not formulation-universe authority.
+    """
+    source_role = normalize_text(payload.get("table_source_role")).lower()
+    usage_role = normalize_text(payload.get("payload_usage_role"))
+    allow_authority_metric_echo = source_role == "formulation_composition_table"
+    if usage_role != "row_local_value_evidence" and not allow_authority_metric_echo:
+        return []
+    if not bool(payload.get("value_evidence_only")) and not allow_authority_metric_echo:
+        return []
+    matrix = ensure_list(payload.get("normalized_matrix"))
+    rows = [ensure_list(row) for row in matrix if isinstance(row, list)]
+    if len(rows) < 2:
+        raw_cells = ensure_list(payload.get("raw_cells"))
+        rows = [ensure_list(row) for row in raw_cells if isinstance(row, list)]
+    if len(rows) < 2:
+        return []
+    header_parts = [part for part in flatten_table_headers_for_summary(rows) if normalize_text(part)]
+    table_role_hint = normalize_text(payload.get("table_role_hint")) or normalize_text(payload.get("table_source_role"))
+    column_indices = select_metric_value_column_indices(
+        rows,
+        header_parts,
+        table_role_hint=table_role_hint,
+    )
+    metric_lines = build_metric_value_summary_lines(
+        rows,
+        column_indices,
+        table_role_hint=table_role_hint,
+        header_parts=header_parts,
+        max_rows=max_rows,
+    )
+    raw_metric_lines = build_raw_metric_value_evidence_lines(
+        rows,
+        table_role_hint=table_role_hint,
+        table_source_role=normalize_text(payload.get("table_source_role")),
+        max_rows=max_rows,
+    )
+    if not metric_lines and not raw_metric_lines:
+        return []
+    source_ref = normalize_text(payload.get("source_table_reference")) or normalize_text(payload.get("source_csv_path"))
+    table_id = normalize_text(payload.get("table_id")) or normalize_text(payload.get("source_table_id")) or "table"
+    caption = truncate_summary_cell(normalize_text(payload.get("source_caption_or_title")), max_chars=180)
+    lines = [
+        f"[VALUE_EVIDENCE_TABLE {source_ref or table_id}]",
+        f"- table_id: {table_id}",
+        f"- payload_usage_role: row_local_value_evidence",
+        "- value_evidence_only: yes; row-local numeric cells may support metric extraction but do not define formulation rows.",
+    ]
+    if caption:
+        lines.append(f"- title_or_caption: {caption}")
+    lines.extend(metric_lines)
+    lines.extend(raw_metric_lines)
+    return lines
+
+
+def load_value_evidence_payloads_for_prompt(evidence_artifact: dict[str, Any]) -> list[dict[str, Any]]:
+    paper_key = normalize_text(evidence_artifact.get("paper_key"))
+    payload_root = normalize_text(evidence_artifact.get("authority_payload_root"))
+    if not paper_key or not payload_root:
+        return []
+    root = Path(payload_root)
+    if not root.is_absolute():
+        root = (PROJECT_ROOT / root).resolve()
+    payload_path = root / paper_key / NORMALIZED_TABLE_PAYLOADS_FILENAME
+    if not payload_path.exists():
+        return []
+    try:
+        artifact = json.loads(payload_path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    payloads = [payload for payload in ensure_list(artifact.get("normalized_table_payloads")) if isinstance(payload, dict)]
+    return payloads
+
+
+def render_value_evidence_payload_blocks(evidence_artifact: dict[str, Any], *, max_blocks: int = 16) -> list[str]:
+    rendered: list[str] = []
+    for payload in load_value_evidence_payloads_for_prompt(evidence_artifact):
+        lines = compact_value_evidence_lines_from_payload(payload)
+        if not lines:
+            continue
+        rendered.append("\n".join(lines))
+        if len(rendered) >= max_blocks:
+            break
+    return rendered
 
 
 @lru_cache(maxsize=256)
@@ -4525,8 +4895,23 @@ def build_prompt_render_bundle(evidence_artifact: dict[str, Any]) -> dict[str, A
         rendered_blocks.append(rendered)
         rendered_payloads.append(rendered_text)
         normalized_rendered_payloads.append(normalized_rendered_text)
+    for value_evidence_text in render_value_evidence_payload_blocks(evidence_artifact):
+        normalized_value_evidence_text = normalize_text(value_evidence_text)
+        if not normalized_value_evidence_text:
+            continue
+        rendered_blocks.append(
+            {
+                "block_id": "value_evidence_payload_matrix",
+                "rendered_text": value_evidence_text,
+                "table_mode_used": "value_evidence_payload",
+                "summary_applied": "yes",
+                "reason_for_full_table": "",
+            }
+        )
+        rendered_payloads.append(value_evidence_text)
+        normalized_rendered_payloads.append(normalized_value_evidence_text)
     table_modes = [rendered.get("table_mode_used") for rendered in rendered_blocks if normalize_text(rendered.get("table_mode_used"))]
-    overall_table_mode_used = "summary" if "summary" in table_modes else ""
+    overall_table_mode_used = "summary" if "summary" in table_modes else ("value_evidence_payload" if "value_evidence_payload" in table_modes else "")
     return {
         "rendered_blocks": rendered_blocks,
         "rendered_payloads": rendered_payloads,
@@ -4987,6 +5372,138 @@ def build_selector_surface_text(
     return normalize_text(text_content)
 
 
+def load_stage1_structure_sidecar(path: Path | None) -> tuple[dict[str, Any] | None, str, str]:
+    if path is None:
+        return None, "missing", ""
+    if not path.exists():
+        return None, "missing", to_repo_rel(path)
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8", errors="replace"))
+    except Exception:
+        return None, "invalid", to_repo_rel(path)
+    if not isinstance(payload, dict):
+        return None, "invalid", to_repo_rel(path)
+    return payload, "loaded", to_repo_rel(path)
+
+
+def _stage1_structure_block_text(block: dict[str, Any]) -> str:
+    for field in ("block_text", "text", "text_content", "raw_text"):
+        value = normalize_text(block.get(field))
+        if value:
+            return value
+    return ""
+
+
+def build_stage1_structure_block_index(sidecar: dict[str, Any] | None) -> dict[str, Any]:
+    exact: dict[str, dict[str, Any]] = {}
+    blocks: list[dict[str, Any]] = []
+    for block in ensure_list((sidecar or {}).get("blocks")):
+        if not isinstance(block, dict):
+            continue
+        block_text = _stage1_structure_block_text(block)
+        normalized = normalize_text(block_text)
+        if not normalized:
+            continue
+        metadata = {
+            "stage1_section_id": normalize_text(block.get("section_id")),
+            "stage1_section_label": normalize_text(block.get("section_label")),
+            "stage1_section_kind": normalize_text(block.get("section_kind")),
+            "stage1_noise_class": normalize_text(block.get("noise_class")),
+            "stage1_noise_reason": normalize_text(block.get("noise_reason")),
+            "stage1_source_block_id": normalize_text(block.get("block_id")),
+            "stage1_structure_match_rule": "exact_normalized_block_text",
+        }
+        if normalized not in exact:
+            exact[normalized] = metadata
+        blocks.append({"normalized_text": normalized, "metadata": metadata})
+    return {"exact": exact, "blocks": blocks}
+
+
+def match_stage1_structure_metadata(text: str, index: dict[str, Any]) -> dict[str, Any]:
+    normalized = normalize_text(text)
+    if not normalized:
+        return {}
+    exact = index.get("exact") if isinstance(index, dict) else {}
+    if isinstance(exact, dict) and normalized in exact:
+        return dict(exact[normalized])
+    contained_matches: list[dict[str, Any]] = []
+    for item in ensure_list(index.get("blocks") if isinstance(index, dict) else []):
+        if not isinstance(item, dict):
+            continue
+        block_text = normalize_text(item.get("normalized_text"))
+        if len(block_text) < 40:
+            continue
+        if block_text in normalized or normalized in block_text:
+            metadata = dict(item.get("metadata") or {})
+            metadata["stage1_structure_match_rule"] = "unique_contained_block_text"
+            contained_matches.append(metadata)
+    if len(contained_matches) == 1:
+        return contained_matches[0]
+    return {}
+
+
+def attach_stage1_structure_metadata(
+    payload: dict[str, Any],
+    stage1_metadata: dict[str, Any],
+    *,
+    include_quality_flags: bool = True,
+) -> None:
+    if not stage1_metadata:
+        return
+    for key, value in stage1_metadata.items():
+        if normalize_text(value):
+            payload[key] = value
+    if include_quality_flags:
+        noise_class = normalize_text(stage1_metadata.get("stage1_noise_class"))
+        if noise_class and noise_class != "keep":
+            quality_flags = list(payload.get("quality_flags") or [])
+            flag = f"stage1_noise:{noise_class}"
+            if flag not in quality_flags:
+                quality_flags.append(flag)
+            payload["quality_flags"] = quality_flags
+        section_kind = normalize_text(stage1_metadata.get("stage1_section_kind"))
+        if section_kind:
+            quality_flags = list(payload.get("quality_flags") or [])
+            flag = f"stage1_section_kind:{section_kind}"
+            if flag not in quality_flags:
+                quality_flags.append(flag)
+            payload["quality_flags"] = quality_flags
+
+
+def resolve_stage1_structure_sidecar_path(
+    record: dict[str, str],
+    text_path: Path,
+    root: Path | None = None,
+) -> Path | None:
+    explicit = normalize_text(record.get("structure_path"))
+    if explicit:
+        path = Path(explicit)
+        if path.is_absolute():
+            return path
+        project_relative = (PROJECT_ROOT / path).resolve()
+        if project_relative.exists():
+            return project_relative
+        text_root_relative = (text_path.parent.parent / path).resolve() if text_path.parent.parent else project_relative
+        if text_root_relative.exists():
+            return text_root_relative
+        return project_relative
+    if root is None:
+        return None
+    key = normalize_text(record.get("key") or record.get("paper_key"))
+    if not key:
+        return None
+    candidates = [
+        root / f"{key}.PDF.json",
+        root / f"{key}.HTML.json",
+        root / f"{key}.json",
+        root / key / "stage1_structure_v1.json",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
 def build_candidate_segmentation_artifact(
     *,
     record: dict[str, str],
@@ -4994,8 +5511,11 @@ def build_candidate_segmentation_artifact(
     text_path: Path,
     table_dir: Path | None,
     producer_script: str,
+    stage1_structure_sidecar_path: Path | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     raw_text = text_path.read_text(encoding="utf-8", errors="replace")
+    stage1_structure_sidecar, stage1_structure_status, source_stage1_structure_path = load_stage1_structure_sidecar(stage1_structure_sidecar_path)
+    stage1_structure_index = build_stage1_structure_block_index(stage1_structure_sidecar)
     paragraph_entries = build_segmented_paragraph_entries(raw_text)
     if not paragraph_entries:
         paragraph_entries = build_sparse_sentence_window_entries(raw_text)
@@ -5044,6 +5564,7 @@ def build_candidate_segmentation_artifact(
             split_trigger="inline_table_recovery" if is_inline_table_candidate else split_trigger,
             table_role_hint=table_role_hint,
         )
+        stage1_metadata = match_stage1_structure_metadata(text_content, stage1_structure_index)
         candidate_payload = {
             "candidate_id": candidate_id,
             "candidate_type": "table" if is_inline_table_candidate else "prose",
@@ -5070,28 +5591,29 @@ def build_candidate_segmentation_artifact(
             candidate_payload["table_role_hint"] = table_role_hint
             candidate_payload["table_row_pattern"] = inline_table_item.get("row_pattern", "")
             candidate_payload["table_score"] = inline_table_item.get("score")
+        attach_stage1_structure_metadata(candidate_payload, stage1_metadata)
         candidates.append(candidate_payload)
-        selector_candidates.append(
-            {
-                "candidate_id": candidate_id,
-                "candidate_kind": "table" if is_inline_table_candidate else "paragraph",
-                "source_type": "inline_table_text" if is_inline_table_candidate else "clean_text_paragraph",
-                "origin_key": f"paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}",
-                "origin_locator": origin_locator,
-                "text_content": selector_text_content,
-                "paragraph_index": int(entry.get("paragraph_index", 0)),
-                "segment_index": int(entry.get("segment_index", 0)),
-                "section_label": section_label,
-                "section_kind": "table_related" if is_inline_table_candidate else section_kind,
-                "split_trigger": "inline_table_recovery" if is_inline_table_candidate else split_trigger,
-                "noise_flags": noise_flags,
-                "quality_flags": (
-                    quality_flags + list(inline_table_item.get("quality_flags") or [])
-                    if is_inline_table_candidate
-                    else quality_flags
-                ),
-            }
-        )
+        selector_payload = {
+            "candidate_id": candidate_id,
+            "candidate_kind": "table" if is_inline_table_candidate else "paragraph",
+            "source_type": "inline_table_text" if is_inline_table_candidate else "clean_text_paragraph",
+            "origin_key": f"paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}",
+            "origin_locator": origin_locator,
+            "text_content": selector_text_content,
+            "paragraph_index": int(entry.get("paragraph_index", 0)),
+            "segment_index": int(entry.get("segment_index", 0)),
+            "section_label": section_label,
+            "section_kind": "table_related" if is_inline_table_candidate else section_kind,
+            "split_trigger": "inline_table_recovery" if is_inline_table_candidate else split_trigger,
+            "noise_flags": noise_flags,
+            "quality_flags": (
+                quality_flags + list(inline_table_item.get("quality_flags") or [])
+                if is_inline_table_candidate
+                else quality_flags
+            ),
+        }
+        attach_stage1_structure_metadata(selector_payload, stage1_metadata)
+        selector_candidates.append(selector_payload)
         if is_inline_table_candidate:
             selector_candidates[-1]["item"] = inline_table_item
 
@@ -5217,6 +5739,8 @@ def build_candidate_segmentation_artifact(
         "paper_key": record["key"],
         "source_clean_text_path": to_repo_rel(text_path),
         "source_manifest_path": to_repo_rel(manifest_path),
+        "source_stage1_structure_path": source_stage1_structure_path,
+        "stage1_structure_sidecar_status": stage1_structure_status,
         "producer_script": producer_script,
         "contract_version": "s2_candidate_blocks_v1",
         "segmentation_profile": SEGMENTATION_PROFILE,
@@ -5227,6 +5751,7 @@ def build_candidate_segmentation_artifact(
             "table_representation_repair": table_dir is not None and table_dir.exists(),
             "table_authority_ranking": table_dir is not None and table_dir.exists(),
             "noise_filtering": True,
+            "stage1_structure_sidecar_metadata": stage1_structure_status == "loaded",
         },
         "coverage_summary": {
             "total_candidates": len(candidates),
@@ -5544,6 +6069,52 @@ def supporting_context_is_distinct(candidate: dict[str, Any], selected_tables: l
             if candidate_numeric_signature(candidate) & candidate_numeric_signature(table_candidate):
                 return False
     return True
+
+
+def table_candidate_is_prompt_summary_eligible(candidate: dict[str, Any]) -> bool:
+    """Return whether a preserved table should be compact prompt evidence.
+
+    Non-hard-drop tables stay preserved in S2-2 table authority surfaces, but the
+    LLM prompt should only receive table summaries with semantic identity,
+    process, formulation, or design signal. Numeric-only optional tables remain
+    authority-visible without becoming noisy prompt blocks.
+    """
+    if candidate_evidence_kind(candidate) != "table":
+        return True
+    inclusion_class = selector_candidate_table_inclusion_class(candidate)
+    if inclusion_class == TABLE_INCLUSION_HARD_DROP:
+        return False
+    if inclusion_class == TABLE_INCLUSION_MUST_INCLUDE:
+        return True
+
+    title = selector_candidate_title(candidate)
+    role_hint = normalize_text(candidate.get("table_role_hint")).lower()
+    source_role = normalize_text(candidate.get("table_source_role")).lower()
+    text = normalize_text(candidate.get("text_content"))
+    combined = f"{title} {role_hint} {source_role} {text}".lower()
+    if role_hint in {"formulation", "design matrix", "optimization"}:
+        return True
+    if source_role in {"formulation_composition_table", "optimization_table", "parameter_sweep_table"}:
+        return True
+    if has_strong_formulation_table_signal(combined):
+        return True
+    if has_experimental_design_text_signal(combined) or has_optimization_text_signal(combined):
+        return True
+    has_identity = bool(
+        re.search(
+            r"\b(?:plga|pcl|pla|peg-plga|polymer|nanoparticles?|nanospheres?|nanocapsules?)\b",
+            combined,
+            flags=re.I,
+        )
+    )
+    has_formulation_or_process = bool(
+        re.search(
+            r"\b(?:formulations?|composition|prepared|preparation|fabricated|pva|surfactant|drug|loading|ratio|concentration)\b",
+            combined,
+            flags=re.I,
+        )
+    )
+    return has_identity and has_formulation_or_process
 
 
 def method_candidate_is_floor_eligible(candidate: dict[str, Any]) -> bool:
@@ -6009,9 +6580,17 @@ def build_evidence_priority_selection(
         ranked_candidates=ranked_candidates,
         suppression_events=suppression_events,
     )
+    selected_after_floor = list(floor_result["selected_candidates"])
+    prompt_selected_candidates: list[dict[str, Any]] = []
+    for candidate in selected_after_floor:
+        if candidate_evidence_kind(candidate) == "table" and not table_candidate_is_prompt_summary_eligible(candidate):
+            suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "optional_table_preserved_not_prompt_selected"})
+            continue
+        prompt_selected_candidates.append(candidate)
     return {
         "selection_mode": EVIDENCE_SELECTION_MODE,
-        "selected_candidates": list(floor_result["selected_candidates"]),
+        "selected_candidates": selected_after_floor,
+        "prompt_selected_candidates": prompt_selected_candidates,
         "suppression_events": suppression_events,
         "signals": dict(signals),
         "selected_candidate_summaries": [selector_candidate_summary(candidate) for candidate in floor_result["selected_candidates"]],
@@ -6292,9 +6871,10 @@ def build_evidence_blocks_artifact(
         signals=signals,
     )
     selected_candidates = list(evidence_selection.get("selected_candidates") or [])
+    prompt_selected_candidates = list(evidence_selection.get("prompt_selected_candidates") or selected_candidates)
     active_table_candidates = [
         candidate
-        for candidate in selected_candidates
+        for candidate in prompt_selected_candidates
         if candidate.get("candidate_kind") == "table"
     ]
     scored_full_mode_fallback_tables = select_scored_full_mode_fallback_tables(summary_candidates)
@@ -6374,7 +6954,7 @@ def build_evidence_blocks_artifact(
         evidence_kind="metadata",
         requires_variable_structure=False,
     )
-    for candidate in selected_candidates:
+    for candidate in prompt_selected_candidates:
         evidence_kind = normalize_text(candidate.get("evidence_kind")) or candidate_evidence_kind(candidate)
         block_type = {
             "method": "method",
@@ -6478,8 +7058,10 @@ def build_evidence_blocks_artifact(
     selector_strategy = EVIDENCE_SELECTION_MODE if selected_candidates else resolved_selector_strategy(current_table_mode)
     selector_debug = {
         "selection_mode": EVIDENCE_SELECTION_MODE,
-        "selected_candidate_count": len(selected_candidates),
-        "selected_candidate_ids": [normalize_text(candidate.get("candidate_id")) for candidate in selected_candidates if normalize_text(candidate.get("candidate_id"))],
+        "selected_candidate_count": len(prompt_selected_candidates),
+        "selected_candidate_ids": [normalize_text(candidate.get("candidate_id")) for candidate in prompt_selected_candidates if normalize_text(candidate.get("candidate_id"))],
+        "authority_preserved_candidate_count": len(selected_candidates),
+        "authority_preserved_candidate_ids": [normalize_text(candidate.get("candidate_id")) for candidate in selected_candidates if normalize_text(candidate.get("candidate_id"))],
         "selected_table_count": len(active_table_candidates),
         "selected_primary_table_count": sum(1 for candidate in active_table_candidates if normalize_text(candidate.get("authority_tier")) == TABLE_AUTHORITY_TIER_PRIMARY),
         "selected_secondary_table_count": sum(1 for candidate in active_table_candidates if normalize_text(candidate.get("authority_tier")) == TABLE_AUTHORITY_TIER_SECONDARY),
@@ -6629,7 +7211,7 @@ def build_evidence_blocks_artifact(
     if table_dir is not None and table_dir.exists():
         selected_summary_names = {
             Path(candidate["origin_locator"]).name
-            for candidate in selected_candidates
+            for candidate in prompt_selected_candidates
             if candidate["candidate_kind"] == "table"
         }
         payload_candidates: list[dict[str, Any]] = []
@@ -6640,14 +7222,14 @@ def build_evidence_blocks_artifact(
                 selected_candidate = next(
                     (
                         candidate
-                        for candidate in selected_candidates
+                        for candidate in prompt_selected_candidates
                         if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
                     ),
                     None,
                 )
                 selected_candidates_for_table = [
                     candidate
-                    for candidate in selected_candidates
+                    for candidate in prompt_selected_candidates
                     if candidate["candidate_kind"] == "table" and candidate["origin_locator"] == to_repo_rel(item["path"])
                 ]
                 payload_candidates.append(
@@ -6680,7 +7262,7 @@ def build_evidence_blocks_artifact(
                 origin_locator = normalize_text(candidate.get("origin_locator"))
                 selected_candidates_for_table = [
                     selected_candidate
-                    for selected_candidate in selected_candidates
+                    for selected_candidate in prompt_selected_candidates
                     if selected_candidate["candidate_kind"] == "table" and normalize_text(selected_candidate.get("origin_locator")) == origin_locator
                 ]
                 selected_candidate = selected_candidates_for_table[0] if selected_candidates_for_table else None
@@ -6894,6 +7476,165 @@ def load_table_cells(source_csv_path: str, fallback_rows: list[list[str]] | None
     return [[normalize_text(cell) for cell in row] for row in ensure_list(fallback_rows)]
 
 
+def resolve_stage1_table_cell_sidecar_path(root: Path | None, paper_key: str) -> Path | None:
+    if root is None:
+        return None
+    paper_key_norm = normalize_text(paper_key)
+    if not paper_key_norm:
+        return None
+    root_path = Path(root)
+    if not root_path.is_absolute():
+        root_path = (PROJECT_ROOT / root_path).resolve()
+    if root_path.is_file():
+        return root_path
+    direct = root_path / paper_key_norm / "stage1_table_cells_v1.jsonl"
+    if direct.exists():
+        return direct
+    nested = root_path / "tables_cell_sidecar" / paper_key_norm / "stage1_table_cells_v1.jsonl"
+    if nested.exists():
+        return nested
+    return None
+
+
+def resolve_stage1_table_cell_sidecar_root_for_record(record: dict[str, str], configured_root: Path | None) -> Path | None:
+    explicit = normalize_text(
+        record.get("stage1_table_cell_sidecar_path")
+        or record.get("table_cell_sidecar_path")
+        or record.get("tables_cell_sidecar_path")
+        or record.get("stage1_cells_path")
+    )
+    if explicit:
+        path = Path(explicit)
+        return path if path.is_absolute() else (PROJECT_ROOT / path).resolve()
+    return configured_root
+
+
+def load_stage1_table_cell_sidecar_rows(root: Path | None, paper_key: str) -> list[dict[str, Any]]:
+    path = resolve_stage1_table_cell_sidecar_path(root, paper_key)
+    if path is None:
+        return []
+    rows: list[dict[str, Any]] = []
+    with path.open("r", encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if not isinstance(row, dict):
+                continue
+            if normalize_text(row.get("paper_key")) != normalize_text(paper_key):
+                continue
+            rows.append(row)
+    return rows
+
+
+def group_stage1_sidecar_cells_by_table(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        table_id = normalize_text(row.get("table_id"))
+        if not table_id:
+            continue
+        grouped.setdefault(table_id, []).append(row)
+    return dict(sorted(grouped.items(), key=lambda item: stage1_sidecar_table_sort_key(item[0])))
+
+
+def stage1_sidecar_table_sort_key(table_id: str) -> tuple[int, str]:
+    text = normalize_text(table_id).lower()
+    match = re.search(r"(\d+)", text)
+    return (int(match.group(1)) if match else 10**9, text)
+
+
+def stage1_sidecar_candidate_ordinal(candidate_id: str) -> int | None:
+    text = normalize_text(candidate_id)
+    match = re.search(r"candidate_table__0*(\d+)\b", text)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def stage1_sidecar_cells_to_matrix(cells: list[dict[str, Any]]) -> tuple[list[list[str]], dict[str, Any]]:
+    coordinates: dict[tuple[int, int], str] = {}
+    table_ids = sorted({normalize_text(cell.get("table_id")) for cell in cells if normalize_text(cell.get("table_id"))})
+    source_hashes = sorted({normalize_text(cell.get("source_hash")) for cell in cells if normalize_text(cell.get("source_hash"))})
+    captions = sorted({normalize_text(cell.get("caption")) for cell in cells if normalize_text(cell.get("caption"))})
+    caption_binding_rules = sorted({normalize_text(cell.get("caption_binding_rule")) for cell in cells if normalize_text(cell.get("caption_binding_rule"))})
+    continuation_group_ids = sorted({normalize_text(cell.get("continuation_group_id")) for cell in cells if normalize_text(cell.get("continuation_group_id"))})
+    noise_classes = sorted({normalize_text(cell.get("noise_class")) for cell in cells if normalize_text(cell.get("noise_class"))})
+    noise_reasons = sorted({normalize_text(cell.get("noise_reason")) for cell in cells if normalize_text(cell.get("noise_reason"))})
+    for cell in cells:
+        row_text = normalize_text(cell.get("row_index"))
+        col_text = normalize_text(cell.get("col_index"))
+        if not row_text.isdigit() or not col_text.isdigit():
+            continue
+        row_index = int(row_text)
+        col_index = int(col_text)
+        if row_index <= 0 or col_index <= 0:
+            continue
+        value = normalize_text(cell.get("normalized_cell_text")) or normalize_text(cell.get("raw_cell_text"))
+        coordinates[(row_index, col_index)] = value
+        rowspan_text = normalize_text(cell.get("rowspan"))
+        colspan_text = normalize_text(cell.get("colspan"))
+        rowspan = int(rowspan_text) if rowspan_text.isdigit() and int(rowspan_text) > 0 else 1
+        colspan = int(colspan_text) if colspan_text.isdigit() and int(colspan_text) > 0 else 1
+        for row_offset in range(rowspan):
+            for col_offset in range(colspan):
+                coordinates.setdefault((row_index + row_offset, col_index + col_offset), "")
+    max_row = max((row for row, _col in coordinates), default=0)
+    max_col = max((col for _row, col in coordinates), default=0)
+    matrix: list[list[str]] = []
+    for row_index in range(1, max_row + 1):
+        matrix.append([coordinates.get((row_index, col_index), "") for col_index in range(1, max_col + 1)])
+    metadata = {
+        "stage1_cell_sidecar_status": "consumed" if matrix else "empty",
+        "stage1_cell_sidecar_table_id": table_ids[0] if len(table_ids) == 1 else "|".join(table_ids),
+        "stage1_cell_sidecar_cell_count": len(cells),
+        "stage1_cell_sidecar_source_hash": source_hashes[0] if len(source_hashes) == 1 else "|".join(source_hashes),
+        "stage1_cell_sidecar_caption": captions[0] if len(captions) == 1 else "|".join(captions),
+        "stage1_cell_sidecar_caption_binding_rule": caption_binding_rules[0] if len(caption_binding_rules) == 1 else "|".join(caption_binding_rules),
+        "stage1_cell_sidecar_continuation_group_id": continuation_group_ids[0] if len(continuation_group_ids) == 1 else "|".join(continuation_group_ids),
+        "stage1_cell_sidecar_noise_class": noise_classes[0] if len(noise_classes) == 1 else "|".join(noise_classes),
+        "stage1_cell_sidecar_noise_reason": noise_reasons[0] if len(noise_reasons) == 1 else "|".join(noise_reasons),
+    }
+    return matrix, metadata
+
+
+def stage1_sidecar_table_noise_class(cells: list[dict[str, Any]]) -> str:
+    classes = {normalize_text(cell.get("noise_class")) for cell in cells if normalize_text(cell.get("noise_class"))}
+    if "confirmed_noise" in classes:
+        return "confirmed_noise"
+    if "suppressible_noise" in classes:
+        return "suppressible_noise"
+    if classes:
+        return sorted(classes)[0]
+    return ""
+
+
+def select_stage1_sidecar_matrix_for_candidate(
+    grouped_sidecar_cells: dict[str, list[dict[str, Any]]],
+    *,
+    candidate_id: str,
+) -> tuple[list[list[str]], dict[str, Any]] | None:
+    ordinal = stage1_sidecar_candidate_ordinal(candidate_id)
+    if ordinal is None:
+        return None
+    table_ids = [
+        table_id
+        for table_id in sorted(grouped_sidecar_cells, key=stage1_sidecar_table_sort_key)
+        if stage1_sidecar_table_noise_class(grouped_sidecar_cells.get(table_id, [])) != "confirmed_noise"
+    ]
+    if ordinal < 1 or ordinal > len(table_ids):
+        return None
+    table_id = table_ids[ordinal - 1]
+    matrix, metadata = stage1_sidecar_cells_to_matrix(grouped_sidecar_cells[table_id])
+    if not matrix:
+        return None
+    metadata["stage1_cell_sidecar_match_rule"] = "selected_candidate_ordinal_to_sidecar_table_ordinal"
+    return matrix, metadata
+
+
 def flatten_header_rows(header_rows: list[list[str]], column_count: int) -> list[str]:
     return shared_flatten_header_rows(header_rows, column_count)
 
@@ -7014,6 +7755,26 @@ def compute_reconstruction_confidence(
     if "derive_matrix_from_selected_companion_table" in normalization_actions:
         confidence += 0.05
     return max(0.0, min(1.0, round(confidence, 2)))
+
+
+def classify_payload_authority_status(
+    *,
+    normalized_rows: list[list[str]],
+    header_structure: dict[str, Any],
+    reconstruction_confidence: float,
+) -> tuple[str, list[str]]:
+    status = "authority_visible"
+    reasons: list[str] = []
+    if len(normalized_rows) < 2:
+        status = "unusable_broken_payload"
+        reasons.append("normalized_matrix_too_small")
+    if int(header_structure.get("header_row_count") or 0) <= 0:
+        status = "unusable_broken_payload"
+        reasons.append("missing_header_structure")
+    if reconstruction_confidence < 0.55:
+        status = "unusable_broken_payload"
+        reasons.append("low_reconstruction_confidence")
+    return status, reasons
 
 
 def payload_fraction_numeric_cells(payload: dict[str, Any]) -> float:
@@ -7155,6 +7916,18 @@ def payload_inclusion_class(payload: dict[str, Any]) -> str:
     if {"stable_row_anchors", "multiple_condition_rows"}.issubset(signals):
         return TABLE_INCLUSION_MUST_INCLUDE
     return TABLE_INCLUSION_OPTIONAL_CONTEXT
+
+
+def payload_usage_role(payload: dict[str, Any]) -> str:
+    """Separate formulation-universe authority from row-local value evidence."""
+    source_role = payload_table_source_role(payload)
+    table_type = normalize_text(payload.get("table_type"))
+    inclusion_class = normalize_text(payload.get("table_inclusion_class")) or payload_inclusion_class(payload)
+    if source_role in TABLE_SOURCE_ROLE_NEGATIVE_FAMILIES:
+        return "row_local_value_evidence"
+    if table_type in {"formulation_table", "DOE_table", "mixed_table", "optimization_table", "parameter_sweep_table"} and inclusion_class == TABLE_INCLUSION_MUST_INCLUDE:
+        return "formulation_universe_authority"
+    return "row_local_value_evidence"
 
 
 def payload_guardrail_priority(payload: dict[str, Any]) -> float:
@@ -7330,7 +8103,15 @@ def build_normalized_table_payload_artifact(
     evidence_artifact_path: Path,
     evidence_artifact: dict[str, Any],
     segmentation_bundle: dict[str, Any],
+    stage1_table_cell_sidecar_root: Path | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    paper_key = normalize_text(record.get("key") or record.get("paper_key"))
+    effective_stage1_table_cell_sidecar_root = resolve_stage1_table_cell_sidecar_root_for_record(
+        record,
+        stage1_table_cell_sidecar_root,
+    )
+    stage1_sidecar_rows = load_stage1_table_cell_sidecar_rows(effective_stage1_table_cell_sidecar_root, paper_key)
+    grouped_stage1_sidecar_cells = group_stage1_sidecar_cells_by_table(stage1_sidecar_rows)
     selected_table_ids = {
         normalize_text(block.get("candidate_id"))
         for block in ensure_list(evidence_artifact.get("evidence_blocks"))
@@ -7358,11 +8139,32 @@ def build_normalized_table_payload_artifact(
         if not isinstance(rows, list) or not rows:
             continue
         meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+        sidecar_metadata: dict[str, Any] = {
+            "stage1_cell_sidecar_status": "not_configured" if effective_stage1_table_cell_sidecar_root is None else "not_available",
+            "stage1_cell_sidecar_match_rule": "",
+            "stage1_cell_sidecar_table_id": "",
+            "stage1_cell_sidecar_cell_count": 0,
+            "stage1_cell_sidecar_source_hash": "",
+            "stage1_cell_sidecar_caption": "",
+            "stage1_cell_sidecar_caption_binding_rule": "",
+            "stage1_cell_sidecar_continuation_group_id": "",
+            "stage1_cell_sidecar_noise_class": "",
+            "stage1_cell_sidecar_noise_reason": "",
+        }
         raw_cells = load_table_cells(source_csv_path, rows)
+        sidecar_selection = select_stage1_sidecar_matrix_for_candidate(
+            grouped_stage1_sidecar_cells,
+            candidate_id=normalize_text(candidate.get("candidate_id")),
+        )
+        if sidecar_selection is not None:
+            raw_cells, selected_sidecar_metadata = sidecar_selection
+            sidecar_metadata.update(selected_sidecar_metadata)
         normalized_rows, normalization_actions, normalization_metadata = normalize_selected_table_rows(
             raw_cells,
             table_role_hint=normalize_text(candidate.get("table_role_hint")),
         )
+        if sidecar_metadata.get("stage1_cell_sidecar_status") == "consumed":
+            normalization_actions = list(dict.fromkeys(list(normalization_actions) + ["consume_stage1_table_cell_sidecar"]))
         raw_source_path = Path(source_csv_path)
         if not raw_source_path.is_absolute():
             raw_source_path = (PROJECT_ROOT / raw_source_path).resolve()
@@ -7450,6 +8252,12 @@ def build_normalized_table_payload_artifact(
             writer = csv.writer(handle)
             writer.writerows(normalized_rows)
         table_id = derive_stable_table_id(source_csv_path, meta)
+        table_identity_aliases = derive_table_identity_aliases(source_csv_path, meta)
+        table_identity_conflict_status = (
+            "conflicting_aliases_preserved"
+            if len({normalize_token(value) for value in table_identity_aliases if value}) > 1
+            else "no_conflict"
+        )
         header_structure = infer_header_structure(normalized_rows)
         normalized_row_entries = build_normalized_row_entries(
             normalized_rows,
@@ -7478,6 +8286,11 @@ def build_normalized_table_payload_artifact(
             normalized_row_count=len(normalized_rows),
             raw_row_count=len(raw_cells),
         )
+        payload_authority_status, payload_authority_status_reason = classify_payload_authority_status(
+            normalized_rows=normalized_rows,
+            header_structure=header_structure,
+            reconstruction_confidence=reconstruction_confidence,
+        )
         first_column_labels = [
             normalize_text(row[0])
             for row in normalized_rows[1:]
@@ -7485,19 +8298,44 @@ def build_normalized_table_payload_artifact(
         ]
         source_table_reference = source_csv_path
         source_table_asset_id = Path(source_csv_path).stem
+        inclusion_class = normalize_text(item.get("table_inclusion_class"))
+        entry_payload_usage_role = payload_usage_role(
+            {
+                "table_type": table_type,
+                "table_inclusion_class": inclusion_class,
+                "table_source_role": source_role,
+                "raw_cells": normalized_rows,
+                "header_structure": header_structure,
+                "source_caption_or_title": normalize_text(meta.get("caption_or_title")),
+            }
+        )
         selected_entries.append(
             {
                 "table_id": table_id,
+                "table_identity_aliases": table_identity_aliases,
+                "table_identity_conflict_status": table_identity_conflict_status,
                 "candidate_id": normalize_text(candidate.get("candidate_id")),
                 "source_csv_path": source_csv_path,
                 "source_table_reference": source_table_reference,
                 "source_table_asset_id": source_table_asset_id,
                 "source_filename": Path(source_csv_path).name,
+                "stage1_cell_sidecar_status": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_status")),
+                "stage1_cell_sidecar_match_rule": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_match_rule")),
+                "stage1_cell_sidecar_table_id": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_table_id")),
+                "stage1_cell_sidecar_cell_count": int(sidecar_metadata.get("stage1_cell_sidecar_cell_count") or 0),
+                "stage1_cell_sidecar_source_hash": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_source_hash")),
+                "stage1_cell_sidecar_caption": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_caption")),
+                "stage1_cell_sidecar_caption_binding_rule": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_caption_binding_rule")),
+                "stage1_cell_sidecar_continuation_group_id": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_continuation_group_id")),
+                "stage1_cell_sidecar_noise_class": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_noise_class")),
+                "stage1_cell_sidecar_noise_reason": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_noise_reason")),
                 "source_table_id": table_id,
                 "source_caption_or_title": normalize_text(meta.get("caption_or_title")),
                 "table_role_hint": normalize_text(candidate.get("table_role_hint")),
                 "table_source_role": source_role,
                 "table_type": table_type,
+                "payload_usage_role": entry_payload_usage_role,
+                "value_evidence_only": entry_payload_usage_role == "row_local_value_evidence",
                 "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
                 "representation_status": normalize_text(item.get("representation_status")),
                 "authority_rank": item.get("authority_rank"),
@@ -7529,6 +8367,8 @@ def build_normalized_table_payload_artifact(
                 "normalized_matrix": normalized_rows,
                 "row_identity_signals": row_identity_signals,
                 "reconstruction_confidence": reconstruction_confidence,
+                "payload_authority_status": payload_authority_status,
+                "payload_authority_status_reason": payload_authority_status_reason,
                 "first_column_labels": first_column_labels[:25],
                 "numbered_row_column_index": normalize_text(normalization_metadata.get("numbered_row_column_index")),
                 "numbered_row_count": int(normalization_metadata.get("numbered_row_count") or 0),
@@ -8850,6 +9690,16 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Materialize pre-LLM S2-2/S2-3 artifacts only and stop before any live or replay raw-response handling.",
     )
+    parser.add_argument(
+        "--stage1-table-cell-sidecar-root",
+        default="",
+        help="Optional explicit Stage1 table-cell sidecar root for diagnostic S2-2 table authority reconstruction.",
+    )
+    parser.add_argument(
+        "--stage1-structure-sidecar-root",
+        default="",
+        help="Optional Stage1 structure sidecar root; manifest structure_path is preferred when present.",
+    )
     return parser.parse_args()
 
 
@@ -8942,6 +9792,22 @@ def main() -> None:
         if not fallback_legacy_raw_dir.exists():
             raise FileNotFoundError(f"Fallback legacy raw responses directory not found: {fallback_legacy_raw_dir}")
 
+    stage1_table_cell_sidecar_root: Path | None = None
+    if str(args.stage1_table_cell_sidecar_root).strip():
+        stage1_table_cell_sidecar_root = Path(args.stage1_table_cell_sidecar_root)
+        if not stage1_table_cell_sidecar_root.is_absolute():
+            stage1_table_cell_sidecar_root = (PROJECT_ROOT / stage1_table_cell_sidecar_root).resolve()
+        if not stage1_table_cell_sidecar_root.exists():
+            raise FileNotFoundError(f"Stage1 table-cell sidecar root not found: {stage1_table_cell_sidecar_root}")
+
+    stage1_structure_sidecar_root: Path | None = None
+    if str(args.stage1_structure_sidecar_root).strip():
+        stage1_structure_sidecar_root = Path(args.stage1_structure_sidecar_root)
+        if not stage1_structure_sidecar_root.is_absolute():
+            stage1_structure_sidecar_root = (PROJECT_ROOT / stage1_structure_sidecar_root).resolve()
+        if not stage1_structure_sidecar_root.exists():
+            raise FileNotFoundError(f"Stage1 structure sidecar root not found: {stage1_structure_sidecar_root}")
+
     jsonl_path = out_dir / OUTPUT_JSONL_NAME
     summary_path = out_dir / OUTPUT_SUMMARY_NAME
     prompt_preview_rows: list[dict[str, Any]] = []
@@ -8950,6 +9816,7 @@ def main() -> None:
     table_selection_debug_rows: list[dict[str, Any]] = []
     candidate_segmentation_debug_rows: list[dict[str, Any]] = []
     table_authority_validation_rows: list[dict[str, Any]] = []
+    table_cell_grid_rows: list[dict[str, str]] = []
     request_summary_rows: list[dict[str, Any]] = []
     prompt_preview_path = out_dir.parent / "analysis" / PROMPT_PREVIEW_NAME
     s2_2_boundary_validation_path = out_dir.parent / "analysis" / S2_2_BOUNDARY_VALIDATION_NAME
@@ -8989,6 +9856,11 @@ def main() -> None:
                     if not text_path.exists():
                         raise FileNotFoundError(f"Missing paper text for {key}: {text_path}")
                     table_dir = resolve_tables_dir_for_record(record, text_path, key)
+                    stage1_structure_sidecar_path = resolve_stage1_structure_sidecar_path(
+                        record,
+                        text_path,
+                        stage1_structure_sidecar_root,
+                    )
                     candidate_artifact_path = candidate_blocks_path(out_dir, key)
                     candidate_artifact, segmentation_bundle = build_candidate_segmentation_artifact(
                         record=record,
@@ -8996,6 +9868,7 @@ def main() -> None:
                         text_path=text_path,
                         table_dir=table_dir,
                         producer_script="src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+                        stage1_structure_sidecar_path=stage1_structure_sidecar_path,
                     )
                     write_json(candidate_artifact_path, candidate_artifact)
                     candidate_segmentation_debug_rows.extend(
@@ -9021,9 +9894,20 @@ def main() -> None:
                         evidence_artifact_path=artifact_path,
                         evidence_artifact=evidence_artifact,
                         segmentation_bundle=segmentation_bundle,
+                        stage1_table_cell_sidecar_root=stage1_table_cell_sidecar_root,
                     )
                     write_json(normalized_payload_path, normalized_payload_artifact)
                     table_authority_validation_rows.extend(table_authority_rows)
+                    table_cell_grid_rows.extend(
+                        build_table_cell_grid_from_payloads(
+                            key,
+                            [
+                                payload
+                                for payload in ensure_list(normalized_payload_artifact.get("normalized_table_payloads"))
+                                if isinstance(payload, dict)
+                            ],
+                        )
+                    )
                     prompt = build_live_prompt(record, evidence_artifact, llm_backend=args.llm_backend, model=args.model)
                     prompt_preview_row = build_prompt_preview_row(
                         document={
@@ -9400,6 +10284,8 @@ def main() -> None:
                 "text_preview",
             ],
         )
+    if table_cell_grid_rows:
+        write_table_cell_grid(out_dir / "table_cell_grid", table_cell_grid_rows)
     if table_authority_validation_rows:
         write_tsv(
             table_authority_validation_path,
@@ -9456,6 +10342,8 @@ def main() -> None:
     print(f"wrote_candidate_blocks_dir={out_dir / CANDIDATE_BLOCKS_SUBDIR}")
     print(f"wrote_evidence_blocks_dir={out_dir / EVIDENCE_BLOCKS_SUBDIR}")
     print(f"wrote_normalized_table_payloads_dir={out_dir / NORMALIZED_TABLE_PAYLOADS_SUBDIR}")
+    if table_cell_grid_rows:
+        print(f"wrote_table_cell_grid_dir={out_dir / 'table_cell_grid'}")
     if prompt_preview_rows:
         print(f"wrote_prompt_preview={prompt_preview_path}")
     if table_selection_debug_rows:

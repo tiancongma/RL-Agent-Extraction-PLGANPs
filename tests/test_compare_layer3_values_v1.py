@@ -1,3 +1,4 @@
+import csv
 import json
 import tempfile
 import unittest
@@ -22,6 +23,7 @@ from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     ollama_live_system_prompt,
     should_use_compact_live_prompt,
 )
+from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import apply_table_cell_grid_bindings_to_rows
 from src.stage2_sampling_labels.table_cell_grid_v1 import (
     build_grid_cell_bindings_for_row,
     build_table_cell_grid_from_payload,
@@ -31,6 +33,7 @@ from src.stage2_sampling_labels.table_row_expansion_v1 import (
     compatibility_field_for_assignment,
     extract_column_anchor_rows_from_authority,
     extract_direct_formulation_rows_from_authority,
+    extract_split_column_concentration_sweep_rows_from_source_csv,
     is_auxiliary_measurement_column_header,
 )
 from src.stage3_relation.build_formulation_relation_artifacts_v1 import (
@@ -348,6 +351,32 @@ class Stage2DoeGenericRepairTests(unittest.TestCase):
         self.assertFalse(is_auxiliary_measurement_column_header(["Nanoprecipitation method", "1:10"]))
         self.assertFalse(is_auxiliary_measurement_column_header(["Drug loaded", "PLGA 50:50"]))
 
+    def test_repaired_summary_coordinate_grid_can_recover_split_column_sweep(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            source_csv = Path(tmpdir) / "TEST__table_05__pdf_table.csv"
+            source_csv.write_text(
+                "XAN nanospheres 3-MeOXAN nanospheres Theoretical,header\n"
+                "50 13.0 26.1 19.0 38.1,noise\n"
+                "60 20.0 33.0 24.9 41.5,noise\n"
+                "70 Crystals ND,noise\n"
+                "80 Crystals ND,noise\n",
+                encoding="utf-8",
+            )
+            rows, reason = extract_split_column_concentration_sweep_rows_from_source_csv(
+                authority_payload={
+                    "representation_status": "repaired_summary",
+                    "normalization_actions": ["preserve_coordinate_grid"],
+                    "source_csv_path": str(source_csv),
+                },
+                document={"semantic_signals": {"has_variable_sweep": True}},
+                scope={"table_id": "Table 5", "is_formulation_table": True},
+            )
+
+        self.assertEqual(reason, "")
+        self.assertEqual(len(rows), 8)
+        self.assertEqual(rows[0]["label"], "XAN nanospheres (Theoretical concentration 50 mg/mL)")
+        self.assertEqual(rows[1]["label"], "3-MeOXAN nanospheres (Theoretical concentration 50 mg/mL)")
+
 
 class UniversalTableCellGridTests(unittest.TestCase):
     def test_build_table_cell_grid_from_payload_preserves_every_body_cell_without_semantic_roles(self):
@@ -465,6 +494,77 @@ class UniversalTableCellGridTests(unittest.TestCase):
 
         self.assertEqual(bindings, [])
         self.assertEqual(status, "ambiguous_grid_row_candidates")
+
+    def test_grid_consumer_binds_transposed_metric_rows_to_formulation_column(self):
+        payload = {
+            "table_id": "Table 4",
+            "header_structure": {
+                "header_row_count": 1,
+                "header_rows": [["", "Drug loaded 91.8 ± 2.74"]],
+                "flattened_headers": ["", "Drug loaded 91.8 ± 2.74"],
+            },
+            "normalized_rows": [
+                {"row_index": 2, "cells": ["Diameter (nm)", "91.8 ± 2.74"]},
+                {"row_index": 3, "cells": ["PIa", "0.13 ± 0.01"]},
+                {"row_index": 4, "cells": ["ZPb (mV)", "−21.23 ± 1.04"]},
+            ],
+        }
+        grid = build_table_cell_grid_from_payload("TEST", payload)
+
+        bindings, status = build_grid_cell_bindings_for_row(
+            grid,
+            paper_key="TEST",
+            table_id="Table 4",
+            row_label="plga_50/50_/_drug_loaded",
+        )
+
+        self.assertEqual(status, "unique_grid_transposed_metric_binding")
+        by_field = {item["canonical_field"]: item for item in bindings}
+        self.assertEqual(by_field["particle_size_nm"]["raw_cell_value"], "91.8 ± 2.74")
+        self.assertEqual(by_field["pdi"]["raw_cell_value"], "0.13 ± 0.01")
+        self.assertEqual(by_field["zeta_mV"]["raw_cell_value"], "−21.23 ± 1.04")
+        self.assertEqual(by_field["zeta_mV"]["binding_rule"], "table_cell_grid_v1_transposed_row_metric_binding")
+
+    def test_grid_bindings_project_into_blank_stage2_compatibility_fields_only(self):
+        rows = [
+            {
+                "key": "TEST",
+                "local_instance_id": "TEST__table_4__plga_50/50_/_drug_loaded",
+                "formulation_id": "TEST__table_4__plga_50/50_/_drug_loaded",
+                "raw_formulation_label": "PLGA 50/50 / Drug loaded",
+                "table_id": "Table 4",
+                "table_row_id": "Table 4::plga_50/50_/_drug_loaded",
+                "size_nm_value": "",
+                "pdi_value": "0.99",
+                "zeta_mV_value": "",
+            }
+        ]
+        jsonl_rows = [{"local_instance_id": "TEST__table_4__plga_50/50_/_drug_loaded"}]
+        payload = {
+            "table_id": "Table 4",
+            "header_structure": {
+                "header_row_count": 1,
+                "header_rows": [["", "Drug loaded 91.8 ± 2.74"]],
+                "flattened_headers": ["", "Drug loaded 91.8 ± 2.74"],
+            },
+            "normalized_rows": [
+                {"row_index": 2, "cells": ["Diameter (nm)", "91.8 ± 2.74"]},
+                {"row_index": 3, "cells": ["PIa", "0.13 ± 0.01"]},
+                {"row_index": 4, "cells": ["ZPb (mV)", "−21.23 ± 1.04"]},
+            ],
+        }
+        grid = build_table_cell_grid_from_payload("TEST", payload)
+
+        stats = apply_table_cell_grid_bindings_to_rows(rows, jsonl_rows, document_key="TEST", grid_rows=grid)
+
+        self.assertEqual(stats["rows_with_grid_bindings"], 1)
+        self.assertEqual(rows[0]["size_nm_value"], "91.8")
+        self.assertEqual(rows[0]["size_nm_value_text"], "91.8 ± 2.74")
+        self.assertEqual(rows[0]["size_nm_membership_confidence"], "projected_direct")
+        self.assertEqual(rows[0]["size_nm_evidence_region_type"], "row_local_table_cell_grid_binding")
+        self.assertEqual(rows[0]["pdi_value"], "0.99")
+        self.assertEqual(rows[0]["zeta_mV_value"], "-21.23")
+        self.assertIn("table_cell_bindings_json", jsonl_rows[0])
 
     def test_drug_specific_mg_headers_project_to_drug_mass_binding(self):
         payload = {
@@ -1293,7 +1393,21 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(canonical_field_for_header("P. I. ± S.D."), "pdi")
         self.assertEqual(canonical_field_for_header("Polidispersity Index ± SD"), "pdi")
         self.assertEqual(canonical_field_for_header("ZP (mV)"), "zeta_mV")
+        self.assertEqual(canonical_field_for_header("ZPb (mV)"), "zeta_mV")
+        self.assertEqual(canonical_field_for_header("ζ-potential (mV)"), "zeta_mV")
+        self.assertEqual(canonical_field_for_header("EEc (%)"), "ee_percent")
+        self.assertEqual(canonical_field_for_header("Drug content (%)"), "lc_percent")
         self.assertEqual(canonical_field_for_header("D.L. (%)"), "dl_percent")
+        self.assertEqual(compatibility_field_for_assignment("D.L. (%)"), "dl_percent")
+        self.assertEqual(canonical_field_for_header("Y2 (PS, nm)"), "particle_size_nm")
+        self.assertEqual(canonical_field_for_header("Z-average (nm)"), "particle_size_nm")
+        self.assertEqual(canonical_field_for_header("Z-Ave (nm)"), "particle_size_nm")
+        self.assertEqual(canonical_field_for_header("Z ave ± SD (nm)"), "particle_size_nm")
+        self.assertEqual(canonical_field_for_header("Major axis (nm)"), "particle_size_nm")
+        self.assertEqual(canonical_field_for_header("Minor axis (nm)"), "")
+        self.assertEqual(canonical_field_for_header("Feret’s diameter (nm)"), "")
+        self.assertEqual(canonical_field_for_header("L.C. (%)"), "lc_percent")
+        self.assertEqual(canonical_field_for_header("LC (%)"), "lc_percent")
         self.assertEqual(canonical_field_for_header("PLGA mg/mL"), "polymer_concentration_value")
         self.assertEqual(canonical_field_for_header("Drug conc. Mg/mL"), "drug_concentration_value")
         self.assertEqual(canonical_field_for_header("PLGA (mg)"), "polymer_mass_mg")
@@ -1324,6 +1438,45 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertNotIn("polymer_concentration_value", direct)
         self.assertNotIn("drug_concentration_value", direct)
 
+    def test_table_cell_grid_maps_lc_and_dl_percent_headers_to_row_local_metrics(self):
+        bindings = [
+            {
+                "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                "canonical_field": "lc_percent",
+                "raw_header": "LC (%)",
+                "raw_cell_value": "7.5 ± 0.2",
+            },
+            {
+                "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                "canonical_field": "dl_percent",
+                "raw_header": "D.L. (%)",
+                "raw_cell_value": "3.1",
+            },
+        ]
+        direct = final_output.direct_values_from_table_cell_grid_bindings(bindings)
+        self.assertEqual(direct["loading_content_percent"], "7.5")
+        self.assertEqual(direct["loading_content_percent_text"], "7.5 ± 0.2")
+        self.assertEqual(direct["dl_percent"], "3.1")
+        materialized = {"table_cell_bindings_json": json.dumps(bindings)}
+        applied_fields = set()
+        self.assertTrue(final_output.apply_row_local_table_cell_binding_values(materialized, applied_fields))
+        self.assertEqual(materialized["loading_content_percent_value"], "7.5")
+        self.assertEqual(materialized["loading_content_percent_value_text"], "7.5 ± 0.2")
+        self.assertEqual(materialized["dl_percent_value"], "3.1")
+
+    def test_source_csv_rebinding_maps_percent_dl_header_to_dl_percent(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / "characterization.csv"
+            with csv_path.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.writer(handle)
+                writer.writerow(["('Particle size (nm)', 'Particle size (nm)')", "('% DL', '% DL')"])
+                writer.writerow(["190.2 ± 18.0", "4.9 ± 0.1"])
+            row_map = final_output.load_row_local_characterization_table_map(str(csv_path))
+        self.assertEqual(row_map[2]["size_nm"], "190.2")
+        self.assertEqual(row_map[2]["dl_percent"], "4.9")
+        self.assertNotIn(1, row_map)
+        self.assertEqual(row_map[2]["dl_percent_text"], "4.9 ± 0.1")
+
     def test_measurement_assignment_maps_abbreviated_ee_header_to_encapsulation_efficiency(self):
         self.assertEqual(
             compatibility_field_for_assignment("E.E.% ± S.D."),
@@ -1335,7 +1488,7 @@ class UniversalTableCellGridTests(unittest.TestCase):
         )
         self.assertEqual(compatibility_field_for_assignment("P.I."), "pdi")
         self.assertEqual(compatibility_field_for_assignment("ZP (mV)"), "zeta_mV")
-        self.assertEqual(compatibility_field_for_assignment("D.L. (%)"), "loading_content_percent")
+        self.assertEqual(compatibility_field_for_assignment("D.L. (%)"), "dl_percent")
 
 
 class Layer3CompareContractTests(unittest.TestCase):
@@ -4809,6 +4962,47 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertEqual(materialized["external_aqueous_phase_volume_mL_membership_confidence"], "medium")
         self.assertEqual(materialized["external_aqueous_phase_volume_mL_evidence_region_type"], "row_local_table_cell_grid_binding")
         self.assertEqual(materialized["external_aqueous_phase_volume_mL_missing_reason"], "")
+
+    def test_stage5_raw_csv_fallback_does_not_override_numeric_grid_bound_ee(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / "shifted.csv"
+            with csv_path.open("w", newline="") as handle:
+                writer = csv.writer(handle)
+                writer.writerow(["formulation", "%EE"])
+                writer.writerow(["row_01", "78.5 ± 1.8"])
+                writer.writerow(["row_02", "80.0 ± 0.1"])
+            row = {
+                "key": "BB3JUVW7",
+                "formulation_id": "BB3JUVW7__table_1__row_01_5",
+                "raw_formulation_label": "row_01__5",
+                "table_cell_bindings_json": json.dumps([
+                    {
+                        "binding_rule": "table_cell_grid_v1_row_local_header_binding",
+                        "canonical_field": "ee_percent",
+                        "raw_cell_value": "78.5 ± 1.8",
+                        "source_csv_path": str(csv_path),
+                        # Simulate a sidecar/raw-CSV row-index disagreement: the
+                        # Stage2 grid binding is already row-local authority, so
+                        # the diagnostic raw-CSV fallback must not overwrite it.
+                        "source_row_index": 3,
+                    }
+                ]),
+                "encapsulation_efficiency_percent_value": "",
+                "encapsulation_efficiency_percent_value_text": "",
+                "encapsulation_efficiency_percent_scope": "",
+                "encapsulation_efficiency_percent_membership_confidence": "",
+                "encapsulation_efficiency_percent_evidence_region_type": "",
+                "encapsulation_efficiency_percent_missing_reason": "",
+                "polymer_name_raw": "",
+            }
+
+            materialized, applied = apply_global_preparation_material_carrythrough(final_row=row, source_text="")
+
+        self.assertIn("encapsulation_efficiency_percent", applied)
+        self.assertEqual(materialized["encapsulation_efficiency_percent_value"], "78.5")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_value_text"], "78.5 ± 1.8")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_scope"], "row_local_table_cell_grid")
+        self.assertEqual(materialized["encapsulation_efficiency_percent_evidence_region_type"], "row_local_table_cell_grid_binding")
 
     def test_stage5_rebinds_row_local_source_csv_characterization_cells_after_split_header_shift(self):
         row = {

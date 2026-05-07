@@ -4,12 +4,18 @@ from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     TABLE_INCLUSION_MUST_INCLUDE,
     TABLE_INCLUSION_OPTIONAL_CONTEXT,
     apply_minimal_evidence_floor,
+    build_evidence_priority_selection,
     build_table_authority_score_breakdown,
+    classify_payload_authority_status,
+    compute_reconstruction_confidence,
+    derive_stable_table_id,
+    derive_table_identity_aliases,
     classify_execution_table_type,
     classify_table_source_role,
     infer_authority_table_type,
     infer_table_role_hint,
     payload_inclusion_class,
+    payload_usage_role,
     table_inclusion_class,
 )
 
@@ -180,6 +186,89 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
         self.assertNotIn("toc-caption-noise", selected_ids)
         self.assertEqual(result.get("floor_added_preparation_core", "no"), "no")
         self.assertNotIn("minimal_evidence_floor_added_preparation_core", {event["reason"] for event in events})
+    def _table_candidate(
+        self,
+        candidate_id: str,
+        text: str,
+        *,
+        inclusion_class: str,
+        table_role_hint: str = "results",
+        source_role: str = "characterization_result_table",
+        score: float = 100.0,
+    ) -> dict:
+        return {
+            "candidate_id": candidate_id,
+            "candidate_kind": "table",
+            "source_type": "table_excerpt",
+            "origin_locator": f"data/cleaned/dev/tables/PAPER/{candidate_id}.csv",
+            "text_content": text,
+            "table_inclusion_class": inclusion_class,
+            "table_role_hint": table_role_hint,
+            "table_source_role": source_role,
+            "authority_score": score,
+            "selector_readiness_label": "ready",
+            "representation_status": "raw_summary",
+            "rows": [["Formulation", "Signal"], [candidate_id, text]],
+            "meta": {"caption_or_title": text[:120]},
+        }
+
+    def test_optional_numeric_only_table_is_preserved_but_not_prompt_selected(self):
+        must_table = self._table_candidate(
+            "must_formulation",
+            "Table 1. Formulation composition of PLGA nanoparticles prepared with PVA: F1 PLGA 100 mg drug 10 mg.",
+            inclusion_class=TABLE_INCLUSION_MUST_INCLUDE,
+            table_role_hint="formulation",
+            source_role="formulation_composition_table",
+        )
+        numeric_only_optional = self._table_candidate(
+            "optional_numeric_only",
+            "1 2 3 4 5 6 7 8 9 10",
+            inclusion_class=TABLE_INCLUSION_OPTIONAL_CONTEXT,
+        )
+
+        result = build_evidence_priority_selection(segmented_candidates=[must_table, numeric_only_optional], signals={})
+
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+        prompt_ids = {candidate["candidate_id"] for candidate in result["prompt_selected_candidates"]}
+        self.assertIn("optional_numeric_only", selected_ids)
+        self.assertIn("must_formulation", prompt_ids)
+        self.assertNotIn("optional_numeric_only", prompt_ids)
+        self.assertNotIn(
+            {"candidate_id": "optional_numeric_only", "reason": "hard_drop_table_noise"},
+            result["suppression_events"],
+        )
+
+    def test_optional_rowlocal_result_summary_is_preserved_but_not_prompt_selected(self):
+        rowlocal_table = self._table_candidate(
+            "optional_rowlocal",
+            "[TABLE_SUMMARY] key_columns: Cytotoxicity studies of drug-loaded NPs; semantic_summary: row-local measurement/context evidence only; not formulation-universe or full numeric/table authority.",
+            inclusion_class=TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            table_role_hint="results",
+        )
+
+        result = build_evidence_priority_selection(segmented_candidates=[rowlocal_table], signals={})
+
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+        prompt_ids = {candidate["candidate_id"] for candidate in result["prompt_selected_candidates"]}
+        self.assertIn("optional_rowlocal", selected_ids)
+        self.assertNotIn("optional_rowlocal", prompt_ids)
+
+    def test_optional_semantic_design_table_can_be_prompt_selected(self):
+        design_table = self._table_candidate(
+            "optional_design",
+            "Table 2. Optimization design matrix for PLGA nanoparticles prepared with different PVA concentrations and drug/polymer ratios.",
+            inclusion_class=TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            table_role_hint="design matrix",
+            source_role="formulation_composition_table",
+        )
+
+        result = build_evidence_priority_selection(segmented_candidates=[design_table], signals={})
+
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+        prompt_ids = {candidate["candidate_id"] for candidate in result["prompt_selected_candidates"]}
+        self.assertIn("optional_design", selected_ids)
+        self.assertIn("optional_design", prompt_ids)
+
     def test_table_authority_keeps_pharmacokinetic_result_table_out_of_formulation_authority(self):
         item = {
             "path": "synthetic__table_7__.csv",
@@ -322,6 +411,40 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
 
         self.assertEqual(table_type, "non_formulation_table")
         self.assertEqual(payload_inclusion_class(payload), TABLE_INCLUSION_OPTIONAL_CONTEXT)
+        self.assertEqual(payload_usage_role(payload), "row_local_value_evidence")
+
+    def test_execution_payload_primary_formulation_table_is_universe_authority(self):
+        payload = {
+            "table_type": "formulation_table",
+            "table_role_hint": "formulation",
+            "table_source_role": "formulation_composition_table",
+            "table_inclusion_class": TABLE_INCLUSION_MUST_INCLUDE,
+            "raw_cells": [
+                ["Formulation", "Drug", "Polymer"],
+                ["F1", "Drug A", "PLGA"],
+                ["F2", "Drug A", "PLGA"],
+            ],
+            "header_structure": {"header_rows": [["Formulation", "Drug", "Polymer"]]},
+        }
+
+        self.assertEqual(payload_usage_role(payload), "formulation_universe_authority")
+
+    def test_characterization_payload_is_value_evidence_even_with_formulation_labels(self):
+        payload = {
+            "table_type": "non_formulation_table",
+            "table_role_hint": "characterization",
+            "table_source_role": "characterization_result_table",
+            "table_inclusion_class": TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            "raw_cells": [
+                ["Formulation", "Size (nm)", "PDI", "Zeta potential (mV)", "EE (%)"],
+                ["F1", "180.2", "0.14", "-21.1", "78.5"],
+                ["F2", "192.4", "0.18", "-18.6", "81.2"],
+            ],
+            "header_structure": {"header_rows": [["Formulation", "Size (nm)", "PDI", "Zeta potential (mV)", "EE (%)"]]},
+        }
+
+        self.assertEqual(payload_inclusion_class(payload), TABLE_INCLUSION_OPTIONAL_CONTEXT)
+        self.assertEqual(payload_usage_role(payload), "row_local_value_evidence")
 
     def test_table_authority_negative_taxonomy_blocks_targeting_and_intravenous_result_tables(self):
         rows = [
@@ -337,6 +460,54 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
         )
 
         self.assertEqual(source_role, "noise_or_nonformulation_table")
+
+    def test_table_identity_aliases_preserve_conflicting_caption_and_file_ids(self):
+        source_csv_path = "data/cleaned/dev/tables/PAPER/PAPER__table_2__.csv"
+        meta = {
+            "table_id": "Table 1",
+            "caption_or_title": "Table 3 Composition of PLGA nanoparticle formulations",
+        }
+
+        self.assertEqual(derive_stable_table_id(source_csv_path, meta), "Table 2")
+        self.assertEqual(
+            derive_table_identity_aliases(source_csv_path, meta),
+            ["Table 1", "Table 3", "Table 2"],
+        )
+
+    def test_payload_reconstruction_confidence_marks_unresolved_representations_below_visible_floor(self):
+        confidence = compute_reconstruction_confidence(
+            representation_status="unrepaired_corrupted",
+            selector_readiness_label="unresolved",
+            normalization_actions=[],
+            normalized_row_count=1,
+            raw_row_count=6,
+        )
+        status, reasons = classify_payload_authority_status(
+            normalized_rows=[["orphan value"]],
+            header_structure={"header_row_count": 0},
+            reconstruction_confidence=confidence,
+        )
+
+        self.assertEqual(status, "unusable_broken_payload")
+        self.assertIn("normalized_matrix_too_small", reasons)
+        self.assertIn("missing_header_structure", reasons)
+
+    def test_payload_authority_status_keeps_healthy_grid_visible_and_aliases_deduped(self):
+        status, reasons = classify_payload_authority_status(
+            normalized_rows=[["Formulation", "Drug", "Polymer"], ["F1", "Curcumin", "PLGA"]],
+            header_structure={"header_row_count": 1},
+            reconstruction_confidence=0.95,
+        )
+
+        self.assertEqual(status, "authority_visible")
+        self.assertEqual(reasons, [])
+        self.assertEqual(
+            derive_table_identity_aliases(
+                "data/cleaned/dev/tables/PAPER/PAPER__table_2__.csv",
+                {"table_id": "Table 2", "caption_or_title": "Table 2 Formulation composition"},
+            ),
+            ["Table 2"],
+        )
 
 
 if __name__ == "__main__":
