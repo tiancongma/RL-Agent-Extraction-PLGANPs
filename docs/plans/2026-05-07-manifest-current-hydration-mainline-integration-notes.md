@@ -104,9 +104,95 @@ Do not manually edit `manifest_current.tsv` for this operation. Regenerate via `
 
 ## Promotion checklist
 
-- [ ] TDD test proves hydration of structure/table-cell fields.
-- [ ] `hydrate_manifest_v1.py` accepts explicit governed sidecar index paths.
-- [ ] Dryrun hydration writes a candidate manifest and metadata without touching `manifest_current.tsv`.
-- [ ] If promoted, backup current `manifest_current.tsv` before overwrite.
-- [ ] No-live Stage2 smoke derives from the hydrated manifest, not a synthetic run-local manifest.
-- [ ] Progress ledger records status as one of `mainline_integrated`, `maintained_code_only_not_hydrated`, or `diagnostic_only_not_mainline`.
+- [x] TDD test proves hydration of structure/table-cell fields.
+- [x] `hydrate_manifest_v1.py` accepts explicit governed sidecar index paths.
+- [x] Dryrun hydration writes a candidate manifest and metadata without touching `manifest_current.tsv`.
+- [x] If promoted, backup current `manifest_current.tsv` before overwrite.
+- [x] No-live Stage2 smoke derives from the hydrated manifest, not a synthetic run-local manifest.
+- [x] Progress ledger records status as one of `mainline_integrated`, `maintained_code_only_not_hydrated`, or `diagnostic_only_not_mainline`.
+
+## Promotion executed — 2026-05-07
+
+Status:
+
+```text
+mainline_integrated
+```
+
+Promoted authority surface:
+
+```text
+data/cleaned/index/manifest_current.tsv
+```
+
+Backup created before overwrite:
+
+```text
+data/cleaned/index/legacy/manifest_current.pre_stage1_sidecar_hydration_20260507_140743.tsv
+```
+
+Rollback command:
+
+```bash
+cp data/cleaned/index/legacy/manifest_current.pre_stage1_sidecar_hydration_20260507_140743.tsv \
+   data/cleaned/index/manifest_current.tsv
+```
+
+Hydration metadata:
+
+```text
+data/cleaned/index/manifest_current__hydration_metadata_v1.json
+```
+
+Stage1 table-cell sidecar inventory promoted into the manifest:
+
+```text
+data/cleaned/index/stage1_table_cells_manifest_v1.tsv
+```
+
+Promoted sidecar artifact root:
+
+```text
+data/cleaned/content/stage1_table_cell_sidecars_current_v1/
+```
+
+Manifest count summary after promotion:
+
+```text
+row_count: 949
+text_available_yes_count: 384
+structure_available_yes_count: 18
+stage1_table_cell_sidecar_available_yes_count: 40
+table_available_yes_count: 58
+```
+
+No-live downstream verification from the real promoted `manifest_current.tsv`:
+
+```text
+data/results/20260507_acfda5f/03_manifest_current_html_table_cell_promotion_smoke_yga/
+```
+
+Key verification values:
+
+```text
+paper_key: YGA8VQKU
+stage1_structure_sidecar_status: loaded
+stage1_cell_sidecar_status: consumed
+normalization_actions includes: consume_stage1_table_cell_sidecar
+```
+
+Diagnostic acceptance-gate smoke:
+
+```text
+data/results/20260507_acfda5f/04_manifest_current_mainline_sidecar_acceptance_gate_yga/
+paper_count: 1
+pass_for_live_llm: 1
+hold_for_selector_or_cleantext_review: 0
+```
+
+Important limitation:
+
+```text
+HTML-native table-cell enhancement is now mainline-consumable for the 40 HTML papers in stage1_table_cells_manifest_v1.tsv.
+No verified frozen Marker/PDF table-cell sidecar inventory was found in the repository during this promotion, so Marker/PDF sidecar consumption remains code-ready/contract-ready but not asset-hydrated beyond existing structure_path rows. Do not claim Marker/PDF table-cell optimization as fully mainline-integrated until frozen Marker/PDF stage1_table_cells_v1.jsonl assets are generated once, indexed, hydrated, and verified by the same no-live smoke pattern.
+```

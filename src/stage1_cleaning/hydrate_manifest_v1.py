@@ -414,25 +414,41 @@ def hydrate_manifest(
         if hydrated["stage1_table_cell_sidecar_available"].lower() == "yes":
             hydration_summary["stage1_table_cell_sidecar_available_yes_count"] += 1
 
-        dataset_id = dataset_membership.get(key, "")
-        hydrated["dataset_id"] = dataset_id
-        if dataset_id:
-            hydration_summary["dataset_overlay_count"] += 1
-            table_dir_path = dataset_tables_map[dataset_id] / key
-            if table_dir_path.exists():
-                hydrated["table_dir"] = to_repo_rel_windows(table_dir_path)
-                hydrated["table_available"] = "yes"
-                hydration_summary["table_available_yes_count"] += 1
+        if dataset_manifests:
+            dataset_id = dataset_membership.get(key, "")
+            hydrated["dataset_id"] = dataset_id
+            if dataset_id:
+                hydration_summary["dataset_overlay_count"] += 1
+                table_dir_path = dataset_tables_map[dataset_id] / key
+                if table_dir_path.exists():
+                    hydrated["table_dir"] = to_repo_rel_windows(table_dir_path)
+                    hydrated["table_available"] = "yes"
+                    hydration_summary["table_available_yes_count"] += 1
+                else:
+                    hydrated["table_dir"] = ""
+                    hydrated["table_available"] = "no"
             else:
                 hydrated["table_dir"] = ""
                 hydrated["table_available"] = "no"
         else:
-            hydrated["table_dir"] = ""
-            hydrated["table_available"] = "no"
+            dataset_id = normalize_text(hydrated.get("dataset_id"))
+            hydrated["dataset_id"] = dataset_id
+            hydrated["table_dir"] = normalize_text(hydrated.get("table_dir"))
+            hydrated["table_available"] = normalize_text(hydrated.get("table_available")) or ("yes" if hydrated["table_dir"] else "no")
+            if dataset_id:
+                hydration_summary["dataset_overlay_count"] += 1
+            if hydrated["table_available"].lower() == "yes":
+                hydration_summary["table_available_yes_count"] += 1
 
-        split_tag, benchmark_tag = split_overlay.get(key, ("", ""))
-        hydrated["split_tag"] = split_tag
-        hydrated["benchmark_tag"] = benchmark_tag
+        if split_manifests:
+            split_tag, benchmark_tag = split_overlay.get(key, ("", ""))
+            hydrated["split_tag"] = split_tag
+            hydrated["benchmark_tag"] = benchmark_tag
+        else:
+            split_tag = normalize_text(hydrated.get("split_tag"))
+            benchmark_tag = normalize_text(hydrated.get("benchmark_tag"))
+            hydrated["split_tag"] = split_tag
+            hydrated["benchmark_tag"] = benchmark_tag
         if split_tag:
             hydration_summary["split_overlay_count"] += 1
         if benchmark_tag:

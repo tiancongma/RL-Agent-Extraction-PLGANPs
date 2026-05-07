@@ -124,6 +124,56 @@ class TestHydrateManifestV1(unittest.TestCase):
             self.assertEqual(metadata_obj["stage1_table_cell_sidecar_available_yes_count"], 2)
             self.assertEqual(metadata_obj["mainline_integration_status"], "maintained_code_only_not_hydrated")
 
+    def test_preserves_existing_dataset_table_and_split_fields_without_overlay_inputs(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            manifest = root / "manifest_current.tsv"
+            key2txt = root / "key2txt.tsv"
+            out = root / "hydrated.tsv"
+
+            self._write_tsv(
+                manifest,
+                [
+                    "key",
+                    "dataset_id",
+                    "table_dir",
+                    "table_available",
+                    "split_tag",
+                    "benchmark_tag",
+                ],
+                [
+                    {
+                        "key": "KEEP001",
+                        "dataset_id": "goren_2025",
+                        "table_dir": "data\\cleaned\\goren_2025\\tables\\KEEP001",
+                        "table_available": "yes",
+                        "split_tag": "dev_manifest_remaining12_2026-03-10",
+                        "benchmark_tag": "DEV15",
+                    }
+                ],
+            )
+            self._write_tsv(
+                key2txt,
+                ["key", "txt_path"],
+                [{"key": "KEEP001", "txt_path": "data/cleaned/content/text/KEEP001.html.txt"}],
+            )
+
+            hydrate.hydrate_manifest(
+                manifest_tsv=manifest,
+                out_tsv=out,
+                key2txt_tsv=key2txt,
+                key2structure_tsv=None,
+                table_cell_sidecar_manifest_tsv=None,
+            )
+
+            with out.open("r", encoding="utf-8", newline="") as handle:
+                row = next(csv.DictReader(handle, delimiter="\t"))
+            self.assertEqual(row["dataset_id"], "goren_2025")
+            self.assertEqual(row["table_dir"], "data\\cleaned\\goren_2025\\tables\\KEEP001")
+            self.assertEqual(row["table_available"], "yes")
+            self.assertEqual(row["split_tag"], "dev_manifest_remaining12_2026-03-10")
+            self.assertEqual(row["benchmark_tag"], "DEV15")
+
 
 if __name__ == "__main__":
     unittest.main()
