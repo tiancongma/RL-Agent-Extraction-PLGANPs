@@ -2881,7 +2881,70 @@ def selected_table_files(table_dir: Path | None) -> set[str]:
         for value in ensure_list(payload.get("selected_table_files"))
         if normalize_text(value)
     }
+    for asset in manifest_table_asset_records(payload):
+        if not manifest_asset_is_selected(asset):
+            continue
+        asset_path = manifest_asset_local_path(asset, table_dir)
+        for value in [asset_path.name if asset_path is not None else "", normalize_text(asset.get("local_path")), normalize_text(asset.get("path")), normalize_text(asset.get("csv_path"))]:
+            if value:
+                selected.add(value)
     return selected
+
+
+def manifest_asset_is_selected(asset: dict[str, Any]) -> bool:
+    selected = normalize_text(asset.get("selected")).lower()
+    if selected in {"false", "0", "no"}:
+        return False
+    return True
+
+
+def manifest_table_asset_records(payload: dict[str, Any] | None) -> list[dict[str, Any]]:
+    if not isinstance(payload, dict):
+        return []
+    records: list[dict[str, Any]] = []
+    for key in ["selected_table_assets", "table_assets", "html_table_asset_links", "html_table_assets"]:
+        for item in ensure_list(payload.get(key)):
+            if isinstance(item, dict):
+                record = dict(item)
+                record.setdefault("manifest_asset_collection", key)
+                records.append(record)
+    return records
+
+
+def manifest_asset_local_path(asset: dict[str, Any], table_dir: Path | None) -> Path | None:
+    for key in ["local_path", "csv_path", "path", "asset_path"]:
+        value = normalize_text(asset.get(key))
+        if not value:
+            continue
+        path = Path(value)
+        if path.is_absolute():
+            return path
+        if table_dir is not None:
+            candidate = (table_dir / path).resolve()
+            if candidate.exists():
+                return candidate
+        return (PROJECT_ROOT / path).resolve()
+    return None
+
+
+def manifest_selected_table_asset_paths(table_dir: Path | None) -> list[Path]:
+    payload = load_table_manifest_payload(table_dir)
+    paths: list[Path] = []
+    seen: set[str] = set()
+    for asset in manifest_table_asset_records(payload):
+        if not manifest_asset_is_selected(asset):
+            continue
+        path = manifest_asset_local_path(asset, table_dir)
+        if path is None:
+            continue
+        if path.suffix.lower() not in {".csv", ".tsv"}:
+            continue
+        key = str(path.resolve()) if path.exists() else str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        paths.append(path)
+    return paths
 
 
 def candidate_surface_preview(rows: list[list[str]], *, max_rows: int = 4, max_cells: int = 5) -> str:
@@ -3000,8 +3063,8 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
     selected_files = selected_table_files(table_dir)
     table_paths = sorted(
         path
-        for path in table_dir.glob("*.csv")
-        if not selected_files or path.name in selected_files
+        for path in list(table_dir.glob("*.csv")) + manifest_selected_table_asset_paths(table_dir)
+        if not selected_files or path.name in selected_files or str(path) in selected_files
     )
     entries: list[dict[str, Any]] = []
     for path in table_paths:
@@ -3141,6 +3204,18 @@ def load_table_manifest(table_dir: Path | None) -> dict[str, dict[str, Any]]:
         if not csv_path:
             continue
         manifest[Path(csv_path).name] = item
+    for asset in manifest_table_asset_records(payload):
+        path = manifest_asset_local_path(asset, table_dir)
+        if path is None:
+            continue
+        meta = dict(asset)
+        source_reference = normalize_text(asset.get("source_table_reference")) or normalize_text(asset.get("href_raw")) or normalize_text(asset.get("href_resolved")) or normalize_text(asset.get("url")) or str(path)
+        meta.setdefault("csv_path", str(path))
+        meta.setdefault("source_table_reference", source_reference)
+        meta.setdefault("source_table_asset_local_path", str(path))
+        meta.setdefault("table_source_kind", normalize_text(asset.get("table_source_kind")) or "html_full_size_table_asset")
+        meta.setdefault("caption_or_title", normalize_text(asset.get("caption_or_title")) or normalize_text(asset.get("caption")) or normalize_text(asset.get("title")))
+        manifest[path.name] = meta
     return manifest
 
 
@@ -7616,7 +7691,17 @@ def select_stage1_sidecar_matrix_for_candidate(
     grouped_sidecar_cells: dict[str, list[dict[str, Any]]],
     *,
     candidate_id: str,
+    candidate_table_id: str = "",
 ) -> tuple[list[list[str]], dict[str, Any]] | None:
+    normalized_candidate_table_id = normalize_text(candidate_table_id)
+    if normalized_candidate_table_id and normalized_candidate_table_id in grouped_sidecar_cells:
+        cells = grouped_sidecar_cells.get(normalized_candidate_table_id, [])
+        if stage1_sidecar_table_noise_class(cells) != "confirmed_noise":
+            matrix, metadata = stage1_sidecar_cells_to_matrix(cells)
+            if matrix:
+                metadata["stage1_cell_sidecar_match_rule"] = "stable_table_id_to_sidecar_table_id"
+                return matrix, metadata
+
     ordinal = stage1_sidecar_candidate_ordinal(candidate_id)
     if ordinal is None:
         return None
@@ -8117,6 +8202,11 @@ def build_normalized_table_payload_artifact(
         for block in ensure_list(evidence_artifact.get("evidence_blocks"))
         if normalize_text(block.get("candidate_id")) and bool(block.get("is_table_derived"))
     }
+    selected_table_origin_locators = {
+        normalize_text(block.get("origin_locator"))
+        for block in ensure_list(evidence_artifact.get("evidence_blocks"))
+        if bool(block.get("is_table_derived")) and normalize_text(block.get("origin_locator"))
+    }
     selected_entries: list[dict[str, Any]] = []
     candidate_rows = ensure_list(segmentation_bundle.get("selector_candidates"))
     candidate_lookup = {
@@ -8127,14 +8217,23 @@ def build_normalized_table_payload_artifact(
     payload_dir = normalized_table_payloads_path(out_dir, record["key"]).parent / "payloads"
     validation_rows: list[dict[str, Any]] = []
     for candidate in candidate_rows:
-        if normalize_text(candidate.get("candidate_id")) not in selected_table_ids:
+        candidate_id = normalize_text(candidate.get("candidate_id"))
+        item = candidate.get("item")
+        candidate_origin_locator = normalize_text(candidate.get("origin_locator"))
+        candidate_source_csv_path = ""
+        if isinstance(item, dict):
+            candidate_source_csv_path = normalize_text(item.get("repair_source_csv_path"))
+        table_was_selected = candidate_id in selected_table_ids or candidate_origin_locator in selected_table_origin_locators
+        if not table_was_selected and candidate_source_csv_path:
+            table_was_selected = candidate_source_csv_path in selected_table_origin_locators
+        if not table_was_selected:
             continue
         if normalize_text(candidate.get("candidate_kind")) != "table":
             continue
-        item = candidate.get("item")
         if not isinstance(item, dict):
             continue
-        source_csv_path = normalize_text(item.get("repair_source_csv_path")) or normalize_text(candidate.get("origin_locator"))
+        source_csv_path = candidate_source_csv_path or normalize_text(candidate.get("origin_locator"))
+
         rows = item.get("rows") or []
         if not isinstance(rows, list) or not rows:
             continue
@@ -8155,6 +8254,7 @@ def build_normalized_table_payload_artifact(
         sidecar_selection = select_stage1_sidecar_matrix_for_candidate(
             grouped_stage1_sidecar_cells,
             candidate_id=normalize_text(candidate.get("candidate_id")),
+            candidate_table_id=derive_stable_table_id(source_csv_path, meta),
         )
         if sidecar_selection is not None:
             raw_cells, selected_sidecar_metadata = sidecar_selection
@@ -8296,8 +8396,11 @@ def build_normalized_table_payload_artifact(
             for row in normalized_rows[1:]
             if isinstance(row, list) and row and normalize_text(row[0])
         ]
-        source_table_reference = source_csv_path
-        source_table_asset_id = Path(source_csv_path).stem
+        source_table_reference = normalize_text(meta.get("source_table_reference")) or normalize_text(meta.get("href_raw")) or normalize_text(meta.get("href_resolved")) or source_csv_path
+        source_table_asset_id = normalize_text(meta.get("source_table_asset_id")) or Path(source_csv_path).stem
+        source_table_asset_local_path = normalize_text(meta.get("source_table_asset_local_path")) or normalize_text(meta.get("local_path")) or source_csv_path
+        source_table_asset_href = normalize_text(meta.get("href_raw")) or normalize_text(meta.get("href_resolved")) or (source_table_reference if re.match(r"^https?://", source_table_reference) else "")
+        source_table_asset_origin = normalize_text(meta.get("table_source_kind")) or normalize_text(meta.get("asset_origin"))
         inclusion_class = normalize_text(item.get("table_inclusion_class"))
         entry_payload_usage_role = payload_usage_role(
             {
@@ -8318,6 +8421,9 @@ def build_normalized_table_payload_artifact(
                 "source_csv_path": source_csv_path,
                 "source_table_reference": source_table_reference,
                 "source_table_asset_id": source_table_asset_id,
+                "source_table_asset_local_path": source_table_asset_local_path,
+                "source_table_asset_href": source_table_asset_href,
+                "source_table_asset_origin": source_table_asset_origin,
                 "source_filename": Path(source_csv_path).name,
                 "stage1_cell_sidecar_status": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_status")),
                 "stage1_cell_sidecar_match_rule": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_match_rule")),

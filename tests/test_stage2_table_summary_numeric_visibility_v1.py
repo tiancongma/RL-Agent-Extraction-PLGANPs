@@ -6,6 +6,7 @@ from pathlib import Path
 from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     build_raw_metric_value_evidence_lines,
     build_table_summary_lines,
+    collect_summary_table_candidates,
     compact_value_evidence_lines_from_payload,
     prompt_semantic_summary_line,
     render_value_evidence_payload_blocks,
@@ -259,6 +260,51 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
             )
         self.assertIn("late_metric_matrix.csv", rendered)
         self.assertIn("144.1", rendered)
+    def test_collect_summary_table_candidates_reads_manifest_selected_full_size_csv_asset(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmpdir:
+            root = Path(tmpdir)
+            table_dir = root / "tables" / "PAPER1"
+            asset_dir = root / "publisher_assets"
+            table_dir.mkdir(parents=True)
+            asset_dir.mkdir(parents=True)
+            asset_csv = asset_dir / "full_size_table_2.csv"
+            asset_csv.write_text(
+                "Formulation,Drug loading (mg KGN/mg nanoparticles),Particle diameter (nm)\n"
+                "NP-HA,0.467 ± 0.192,166.6 ± 34.48\n",
+                encoding="utf-8",
+            )
+            (table_dir / "tables_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "paper_key": "PAPER1",
+                        "tables": [],
+                        "selected_table_assets": [
+                            {
+                                "local_path": str(asset_csv),
+                                "href_raw": "https://example.org/article/tables/2",
+                                "table_id": "Table 2",
+                                "caption_or_title": "KGN-loaded nanoparticle properties",
+                                "table_source_kind": "html_full_size_table_asset",
+                                "asset_kind": "csv",
+                                "selected": True,
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            candidates = collect_summary_table_candidates(table_dir)
+
+        self.assertEqual(len(candidates), 1)
+        candidate = candidates[0]
+        self.assertEqual(candidate["path"], asset_csv)
+        flattened = " | ".join(" | ".join(row) for row in candidate["rows"])
+        self.assertIn("0.467", flattened)
+        self.assertIn("166.6", flattened)
+        self.assertEqual(candidate["repair_primary_source"], "stage1_selected_table_asset")
+        self.assertEqual(candidate["meta"]["table_source_kind"], "html_full_size_table_asset")
+        self.assertEqual(candidate["meta"]["source_table_reference"], "https://example.org/article/tables/2")
 
 
 if __name__ == "__main__":

@@ -326,6 +326,58 @@ class TestStage2Stage1SidecarConsumptionV1(unittest.TestCase):
             self.assertIn("FallbackHeader", flattened_raw_cells)
             self.assertNotIn("MUST_NOT_DEFINE_CANDIDATE", flattened_raw_cells)
             self.assertEqual(payload["stage1_cell_sidecar_status"], "not_available")
+    def test_normalized_payload_preserves_full_size_table_asset_reference(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            out_dir = tmp / "semantic_stage2_objects"
+            evidence_path = tmp / "evidence_blocks" / "PAPER1" / "evidence_blocks_v1.json"
+            source_csv = tmp / "publisher_assets" / "full_size_table_2.csv"
+            source_csv.parent.mkdir(parents=True)
+            source_csv.write_text(
+                "Formulation,Drug loading (mg KGN/mg nanoparticles),Particle diameter (nm)\n"
+                "NP-HA,0.467 ± 0.192,166.6 ± 34.48\n",
+                encoding="utf-8",
+            )
+            evidence_artifact = {
+                "evidence_blocks": [
+                    {"candidate_id": "PAPER1__candidate_table__01", "is_table_derived": True}
+                ]
+            }
+            segmentation_bundle = {
+                "selector_candidates": [
+                    {
+                        "candidate_id": "PAPER1__candidate_table__01",
+                        "candidate_kind": "table",
+                        "table_role_hint": "formulation",
+                        "origin_locator": str(source_csv),
+                        "item": {
+                            "rows": [["Formulation", "Drug loading"], ["NP-HA", "0.467 ± 0.192"]],
+                            "meta": {
+                                "caption_or_title": "KGN-loaded nanoparticle properties",
+                                "source_table_reference": "https://example.org/article/tables/2",
+                                "source_table_asset_local_path": str(source_csv),
+                                "table_source_kind": "html_full_size_table_asset",
+                            },
+                            "representation_status": "raw_summary",
+                            "selector_readiness_label": "ready",
+                        },
+                    }
+                ]
+            }
+
+            artifact, _validation_rows = extractor.build_normalized_table_payload_artifact(
+                record={"key": "PAPER1"},
+                out_dir=out_dir,
+                producer_script="test",
+                evidence_artifact_path=evidence_path,
+                evidence_artifact=evidence_artifact,
+                segmentation_bundle=segmentation_bundle,
+            )
+
+            payload = artifact["normalized_table_payloads"][0]
+            self.assertEqual(payload["source_table_reference"], "https://example.org/article/tables/2")
+            self.assertEqual(payload["source_table_asset_local_path"], str(source_csv))
+            self.assertEqual(payload["source_table_asset_origin"], "html_full_size_table_asset")
 
 
 if __name__ == "__main__":

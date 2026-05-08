@@ -2,15 +2,19 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import os
 import re
 import subprocess
 import sys
+import hashlib
 from dataclasses import dataclass
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin, urlparse
+from urllib.request import Request, urlopen
 
 import pandas as pd
 
@@ -72,6 +76,40 @@ def find_related_pdf_near_html(html_path: Path) -> Path | None:
         return None
 
 
+def _extract_zotero_storage_suffix(path_text: str) -> tuple[str, str]:
+    """Return (attachment_key, filename) from a Windows/macOS Zotero storage path."""
+    s = str(path_text or "").strip().replace("\\", "/")
+    if not s:
+        return "", ""
+    parts = [p for p in s.split("/") if p]
+    lowered = [p.lower() for p in parts]
+    if "storage" in lowered:
+        idx = len(lowered) - 1 - lowered[::-1].index("storage")
+        if idx + 2 < len(parts):
+            return parts[idx + 1], parts[-1]
+    return "", parts[-1] if parts else ""
+
+
+def _append_attachment_record(out: dict[str, list[dict[str, str]]], key: str, attachment_key: str, filename: str, local_path: str, content_type: str = "") -> None:
+    key = str(key or "").strip()
+    if not key:
+        return
+    rec = {
+        "attachment_key": str(attachment_key or "").strip(),
+        "filename": str(filename or "").strip(),
+        "local_path": str(local_path or "").strip(),
+        "content_type": str(content_type or "").strip(),
+    }
+    if not rec["attachment_key"] and rec["local_path"]:
+        rec["attachment_key"], inferred_filename = _extract_zotero_storage_suffix(rec["local_path"])
+        if not rec["filename"]:
+            rec["filename"] = inferred_filename
+    if not rec["filename"] and rec["local_path"]:
+        rec["filename"] = Path(rec["local_path"].replace("\\", "/")).name
+    if rec not in out.setdefault(key, []):
+        out[key].append(rec)
+
+
 def load_zotero_attachment_registry() -> dict[str, list[dict[str, str]]]:
     files = [
         paths.DATA_RAW_DIR / "zotero" / "zotero_collection__goren_2025.jsonl",
@@ -90,7 +128,7 @@ def load_zotero_attachment_registry() -> dict[str, list[dict[str, str]]]:
                 obj = json.loads(s)
             except Exception:
                 continue
-            key = str(obj.get("zotero_key", "")).strip()
+            key = str(obj.get("zotero_key", "") or obj.get("key", "") or obj.get("paper_key", "")).strip()
             if not key:
                 continue
             attachments = obj.get("attachments", [])
@@ -99,14 +137,25 @@ def load_zotero_attachment_registry() -> dict[str, list[dict[str, str]]]:
             for a in attachments:
                 if not isinstance(a, dict):
                     continue
-                out.setdefault(key, []).append(
-                    {
-                        "attachment_key": str(a.get("attachment_key", "")).strip(),
-                        "filename": str(a.get("filename", "")).strip(),
-                        "local_path": str(a.get("local_path", "")).strip(),
-                        "content_type": str(a.get("content_type", "")).strip(),
-                    }
+                _append_attachment_record(
+                    out,
+                    key,
+                    attachment_key=str(a.get("attachment_key", "")).strip(),
+                    filename=str(a.get("filename", "")).strip(),
+                    local_path=str(a.get("local_path", "")).strip(),
+                    content_type=str(a.get("content_type", "")).strip(),
                 )
+    manifest_path = paths.DATA_CLEANED_INDEX_DIR / "manifest_current.tsv"
+    if manifest_path.exists():
+        with manifest_path.open("r", encoding="utf-8", errors="replace", newline="") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                key = str(row.get("paper_key") or row.get("key") or row.get("zotero_key") or "").strip()
+                for field, content_type in [("html", "text/html"), ("pdf", "application/pdf")]:
+                    local_path = str(row.get(field, "") or "").strip()
+                    if not local_path:
+                        continue
+                    attachment_key, filename = _extract_zotero_storage_suffix(local_path)
+                    _append_attachment_record(out, key, attachment_key, filename, local_path, content_type=content_type)
     return out
 
 
@@ -137,6 +186,15 @@ def parse_args() -> argparse.Namespace:
         "--skip-post-check",
         action="store_true",
         help="Skip stage5 debug post-check invocation.",
+    )
+    p.add_argument(
+        "--no-fetch-remote-table-assets",
+        action="store_true",
+        help=(
+            "Do not resolve source-linked http(s) full-size/download table pages. "
+            "By default Stage1 fetches only directly linked source table assets, "
+            "without credentials, into the paper-local tables directory and parses them."
+        ),
     )
     return p.parse_args()
 
@@ -262,6 +320,214 @@ def clean_cell(v: Any) -> str:
     s = "" if v is None else str(v)
     s = re.sub(r"\s+", " ", s).strip()
     return s
+
+
+def _table_asset_kind_from_href(href: str) -> str:
+    suffix = Path(urlparse(href).path).suffix.lower().lstrip(".")
+    if suffix in {"csv", "tsv", "xls", "xlsx", "html", "htm", "xml", "json"}:
+        return suffix
+    return "html"
+
+
+def _resolve_local_href(html_path: Path, href: str) -> str:
+    parsed = urlparse(href)
+    if parsed.scheme in {"http", "https"}:
+        return ""
+    # Fragment-only anchors (for example '#t0010') point back into the current
+    # source document, not to a separate source-readable table asset. Returning
+    # the parent directory here causes noisy directory parse failures downstream.
+    if not parsed.path:
+        return ""
+    if parsed.scheme == "file":
+        return str(Path(parsed.path).resolve()) if parsed.path else ""
+    candidate = (html_path.parent / parsed.path).resolve()
+    return str(candidate) if candidate.exists() else ""
+
+
+def _remote_asset_cache_path(cache_dir: Path, href: str, asset_kind: str) -> Path:
+    suffix = Path(urlparse(href).path).suffix.lower()
+    if suffix not in {".csv", ".tsv", ".xls", ".xlsx", ".html", ".htm"}:
+        suffix = ".html" if (asset_kind or "").lower() in {"html", "htm", ""} else f".{asset_kind.lower()}"
+    digest = hashlib.sha256(href.encode("utf-8")).hexdigest()[:16]
+    return cache_dir / f"linked_table_asset__{digest}{suffix}"
+
+
+def _fetch_remote_table_asset(href: str, asset_kind: str, cache_dir: Path, timeout_seconds: int = 30) -> tuple[str, str]:
+    """Fetch a directly linked source table asset into a deterministic local cache.
+
+    This is deliberately narrow: it only resolves http(s) links that the source
+    HTML itself exposes as table/full-size/download table assets, uses no
+    credentials, and stores the exact fetched page/file next to the paper's
+    governed table outputs so repeated Stage1 runs can reuse the cached asset.
+    """
+    parsed = urlparse(href)
+    if parsed.scheme not in {"http", "https"}:
+        return "", "not_remote_http_asset"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    out_path = _remote_asset_cache_path(cache_dir, href, asset_kind)
+    if out_path.exists() and out_path.stat().st_size > 0:
+        return str(out_path.resolve()), "remote_cache_reused"
+    try:
+        req = Request(
+            href,
+            headers={
+                "User-Agent": "Mozilla/5.0 (compatible; PLGA-Stage1-TableAssetResolver/1.0)",
+                "Accept": "text/html,application/xhtml+xml,text/csv,text/tab-separated-values,application/vnd.ms-excel,*/*;q=0.8",
+            },
+        )
+        with urlopen(req, timeout=timeout_seconds) as response:
+            body = response.read()
+        if not body:
+            return "", "remote_fetch_empty_response"
+        out_path.write_bytes(body)
+        return str(out_path.resolve()), "remote_fetched"
+    except Exception as e:
+        return "", f"remote_fetch_failed:{type(e).__name__}"
+
+
+def discover_html_table_asset_links(html_path: Path) -> list[dict[str, Any]]:
+    """Discover publisher full-size/download table assets linked from source HTML.
+
+    Stage1 owns source-readable table asset extraction: when a publisher page
+    exposes a local or resolvable full-size/download table resource, Stage1 must
+    preserve the locator/provenance and attempt to parse the linked resource into
+    the same governed table CSV/manifest surface as inline HTML/PDF tables. S2-2
+    then consumes those Stage1 table authorities for structure normalization,
+    evidence construction, and drift repair; it should not be the first layer to
+    open source-table links that Stage1 could read.
+    """
+    if html_path is None or not html_path.exists():
+        return []
+    html_text = html_path.read_text(encoding="utf-8", errors="replace")
+    try:
+        from bs4 import BeautifulSoup  # type: ignore
+    except Exception:
+        BeautifulSoup = None  # type: ignore
+    records: list[dict[str, Any]] = []
+    if BeautifulSoup is None:
+        return records
+    soup = BeautifulSoup(html_text, "lxml")
+    for anchor in soup.find_all("a"):
+        href = clean_cell(anchor.get("href", ""))
+        if not href:
+            continue
+        link_text = clean_cell(anchor.get_text(separator=" ", strip=True))
+        parsed_href = urlparse(href)
+        href_path = parsed_href.path or ""
+        href_suffix = Path(href_path).suffix.lower()
+        is_fragment_only = not href_path and bool(parsed_href.fragment)
+        explicit_table_asset_signal = any(
+            token in f"{link_text} {href}".lower()
+            for token in ["full size table", "download table", "view table"]
+        ) or href_suffix in {".csv", ".tsv", ".xls", ".xlsx"}
+        if is_fragment_only or not explicit_table_asset_signal:
+            continue
+        signal = f"{link_text} {href}".lower()
+        caption = ""
+        previous = anchor.find_previous(string=re.compile(r"\btable\s+\d+\b", re.I))
+        if previous:
+            parent = getattr(previous, "parent", None)
+            caption = clean_cell(parent.get_text(separator=" ", strip=True) if parent is not None else str(previous))
+        table_id = ""
+        match = re.search(r"\btable\s+(\d+)\b", caption or link_text or href, flags=re.I)
+        if match:
+            table_id = f"Table {int(match.group(1))}"
+        records.append(
+            {
+                "href_raw": href,
+                "href_resolved": urljoin(html_path.as_uri(), href) if not urlparse(href).scheme else href,
+                "local_path": _resolve_local_href(html_path, href),
+                "link_text": link_text,
+                "caption_or_title": caption,
+                "table_id": table_id,
+                "asset_kind": _table_asset_kind_from_href(href),
+                "table_source_kind": "html_full_size_table_asset",
+                "source_html_path": str(html_path.resolve()),
+                "provenance_parser": "extract_tables_for_keys_v1.discover_html_table_asset_links",
+            }
+        )
+    return records
+
+
+def _read_linked_table_asset_frames(asset_path: Path, asset_kind: str) -> list[pd.DataFrame]:
+    suffix = asset_path.suffix.lower().lstrip(".")
+    kind = (asset_kind or suffix).lower()
+    frames: list[pd.DataFrame] = []
+    if kind == "tsv" or suffix == "tsv":
+        frames.append(pd.read_csv(asset_path, sep="\t", dtype=str).fillna(""))
+    elif kind == "csv" or suffix == "csv":
+        frames.append(pd.read_csv(asset_path, dtype=str).fillna(""))
+    elif kind in {"xls", "xlsx"} or suffix in {"xls", "xlsx"}:
+        sheets = pd.read_excel(asset_path, sheet_name=None, dtype=str)  # type: ignore[arg-type]
+        frames.extend([df.fillna("") for df in sheets.values()])
+    elif kind in {"html", "htm"} or suffix in {"html", "htm"}:
+        try:
+            frames.extend([df.fillna("") for df in pd.read_html(str(asset_path))])
+        except Exception:
+            parsed, _reason = extract_tables_from_html(asset_path)
+            frames.extend([rec["df"] for rec in parsed if isinstance(rec.get("df"), pd.DataFrame)])
+    return frames
+
+
+def extract_tables_from_html_table_asset_links(
+    html_path: Path,
+    *,
+    asset_cache_dir: Path | None = None,
+    fetch_remote_assets: bool = True,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Parse locally available publisher-linked table assets into Stage1 tables."""
+    links = discover_html_table_asset_links(html_path)
+    out: list[dict[str, Any]] = []
+    for link in links:
+        local_path_text = str(link.get("local_path", "")).strip()
+        if not local_path_text:
+            href = str(link.get("href_resolved", "") or link.get("href_raw", "")).strip()
+            if fetch_remote_assets and asset_cache_dir is not None:
+                fetched_path, fetch_status = _fetch_remote_table_asset(href, str(link.get("asset_kind", "")), asset_cache_dir)
+                link["remote_resolution_status"] = fetch_status
+                if fetched_path:
+                    local_path_text = fetched_path
+                    link["local_path"] = fetched_path
+                else:
+                    link["local_extraction_status"] = "not_available_local_or_remote_fetch_failed"
+                    continue
+            else:
+                link["local_extraction_status"] = "not_available_local_or_network_fetch_not_configured"
+                continue
+        asset_path = Path(local_path_text)
+        if not asset_path.exists():
+            link["local_extraction_status"] = "local_path_missing"
+            continue
+        try:
+            frames = _read_linked_table_asset_frames(asset_path, str(link.get("asset_kind", "")))
+        except Exception as e:
+            link["local_extraction_status"] = f"parse_failed:{type(e).__name__}"
+            continue
+        accepted = 0
+        for idx, df in enumerate(frames, start=1):
+            df = df.fillna("").astype(str).apply(lambda col: col.map(clean_cell))
+            if df.empty or df.shape[0] < 1 or df.shape[1] < 2:
+                continue
+            quality, frac_numeric, hit = compute_table_quality(df)
+            rec = {
+                "df": df,
+                "source_type": "html_table_asset",
+                "extraction_method": f"linked_{str(link.get('asset_kind', 'table_asset'))}",
+                "page_number": "",
+                "caption_or_title": str(link.get("caption_or_title", "")),
+                "n_rows": int(df.shape[0]),
+                "n_cols": int(df.shape[1]),
+                "fraction_numeric_cells": round(frac_numeric, 4),
+                "header_keywords_hit": hit,
+                "table_quality": round(quality, 4),
+                "source_table_asset_link": dict(link),
+                "linked_asset_table_index": idx,
+            }
+            out.append(rec)
+            accepted += 1
+        link["local_extraction_status"] = "parsed" if accepted else "parsed_no_usable_table"
+        link["local_extracted_table_count"] = accepted
+    return out, links
 
 
 def compute_table_quality(df: pd.DataFrame) -> tuple[float, float, list[str]]:
@@ -581,13 +847,25 @@ def write_tables_for_key(
     n_tables_html_extracted: int,
     n_tables_pdf_extracted: int,
     tables_root: Path,
+    fetch_remote_table_assets: bool = True,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     out_dir = tables_root / zotero_key
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    html_table_asset_links: list[dict[str, Any]] = []
+    linked_asset_tables: list[dict[str, Any]] = []
+    if chosen.html_path is not None:
+        linked_asset_tables, html_table_asset_links = extract_tables_from_html_table_asset_links(
+            chosen.html_path,
+            asset_cache_dir=out_dir / "html_table_assets",
+            fetch_remote_assets=fetch_remote_table_assets,
+        )
+
+    extracted_with_assets = list(extracted) + linked_asset_tables
+
     # Stable ordering for reproducibility.
     extracted_sorted = sorted(
-        extracted,
+        extracted_with_assets,
         key=lambda x: (
             x.get("source_type", ""),
             x.get("extraction_method", ""),
@@ -622,6 +900,8 @@ def write_tables_for_key(
                 "html": str(chosen.html_path) if chosen.html_path is not None else "",
                 "pdf": str(chosen.pdf_path) if chosen.pdf_path is not None else "",
             },
+            "source_table_asset_link": dict(rec.get("source_table_asset_link", {})),
+            "linked_asset_table_index": str(rec.get("linked_asset_table_index", "")),
         }
         manifest_rows.append(row)
         written_files.append(
@@ -641,7 +921,7 @@ def write_tables_for_key(
         )
 
     html_files = sorted(
-        [x["filename"] for x in written_files if x.get("source_type") == "html_table"]
+        [x["filename"] for x in written_files if x.get("source_type") in {"html_table", "html_table_asset"}]
     )
     pdf_files = sorted(
         [x["filename"] for x in written_files if x.get("source_type") == "pdf_table"]
@@ -650,7 +930,8 @@ def write_tables_for_key(
     preferred_table_source = "none"
     selected_table_files: list[str] = []
     fallback_table_files: list[str] = []
-    if n_tables_html_extracted > 0:
+    n_tables_html_asset_extracted = len(linked_asset_tables)
+    if n_tables_html_extracted > 0 or n_tables_html_asset_extracted > 0:
         preferred_table_source = "html"
         selected_table_files = html_files
         fallback_table_files = pdf_files
@@ -658,6 +939,19 @@ def write_tables_for_key(
         preferred_table_source = "pdf"
         selected_table_files = pdf_files
         fallback_table_files = []
+
+    selected_table_assets = [
+        dict(asset)
+        for asset in html_table_asset_links
+        if str(asset.get("local_path", "")).strip()
+    ]
+    effective_html_reason = html_reason if chosen.html_found and n_tables_html_extracted == 0 else ""
+    if effective_html_reason == "no_html_table_tags" and html_table_asset_links:
+        effective_html_reason = (
+            "html_table_assets_extracted_no_dom_table"
+            if n_tables_html_asset_extracted > 0
+            else "html_table_assets_preserved_no_dom_table"
+        )
 
     manifest_path = out_dir / "tables_manifest.json"
     manifest_payload = {
@@ -669,9 +963,10 @@ def write_tables_for_key(
             "pdf": str(chosen.pdf_path) if chosen.pdf_path is not None else "",
         },
         "n_tables_html_extracted": int(n_tables_html_extracted),
+        "n_tables_html_asset_extracted": int(n_tables_html_asset_extracted),
         "n_tables_pdf_extracted": int(n_tables_pdf_extracted),
         "total_tables": int(len(manifest_rows)),
-        "html_table_reason": html_reason if chosen.html_found and n_tables_html_extracted == 0 else "",
+        "html_table_reason": effective_html_reason,
         "pdf_table_reason": _normalize_pdf_reason(
             pdf_found=bool(chosen.pdf_found),
             n_tables_pdf_extracted=int(n_tables_pdf_extracted),
@@ -680,6 +975,8 @@ def write_tables_for_key(
         "preferred_table_source": preferred_table_source,
         "selected_table_files": selected_table_files,
         "fallback_table_files": fallback_table_files,
+        "html_table_asset_links": html_table_asset_links,
+        "selected_table_assets": selected_table_assets,
         "selection_rule": "html_first_if_nonempty_else_pdf",
         "tables": manifest_rows,
     }
@@ -735,7 +1032,6 @@ def main() -> None:
             pdf_tables, pdf_reason = extract_tables_from_pdf(chosen.pdf_path)
 
         all_tables = html_tables + pdf_tables
-        total_tables += len(all_tables)
         _, idx_rows = write_tables_for_key(
             k,
             all_tables,
@@ -745,13 +1041,19 @@ def main() -> None:
             n_tables_html_extracted=len(html_tables),
             n_tables_pdf_extracted=len(pdf_tables),
             tables_root=tables_root,
+            fetch_remote_table_assets=not args.no_fetch_remote_table_assets,
         )
         global_index_rows.extend(idx_rows)
+        total_tables += len(idx_rows)
 
         print(f"[key={k}] html_found={chosen.html_found} pdf_found={chosen.pdf_found}")
         print(f"[key={k}] chosen_html_path={str(chosen.html_path) if chosen.html_path else ''}")
         print(f"[key={k}] chosen_pdf_path={str(chosen.pdf_path) if chosen.pdf_path else ''}")
-        print(f"[key={k}] n_tables_html_extracted={len(html_tables)} n_tables_pdf_extracted={len(pdf_tables)} total_tables={len(all_tables)}")
+        print(
+            f"[key={k}] n_tables_html_extracted={len(html_tables)} "
+            f"n_tables_pdf_extracted={len(pdf_tables)} "
+            f"total_tables_written={len(idx_rows)}"
+        )
         ranked = sorted(all_tables, key=lambda x: float(x.get("table_quality", 0.0)), reverse=True)[:2]
         if ranked:
             for rec in ranked:

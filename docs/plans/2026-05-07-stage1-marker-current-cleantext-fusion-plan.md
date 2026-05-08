@@ -153,11 +153,127 @@ python3 -m py_compile src/stage1_cleaning/pdf2clean.py
 
 Expected: tests pass; compile exits 0.
 
+## Marker PDF freeze/update contract added on 2026-05-07
+
+A governed Marker extraction surface now exists before current+Marker fusion:
+
+```bash
+python3.11 -m venv .venv_marker
+.venv_marker/bin/python -m pip install -r requirements-marker.txt
+PYTHONPATH=. python3 src/stage1_cleaning/run_stage1_marker_pdf_extraction_v1.py \
+  --manifest data/cleaned/index/manifest_current.tsv \
+  --scope-keys <optional_scope.tsv>
+```
+
+Outputs are frozen/reused under:
+
+```text
+data/cleaned/content/marker_pdf/<paper_key>/marker_raw_v1.json
+data/cleaned/content/marker_pdf/<paper_key>/marker_meta_v1.json
+data/cleaned/content/marker_pdf/<paper_key>/marker_clean_text_v1.md
+data/cleaned/content/marker_pdf/<paper_key>/marker_structure_v1.json
+data/cleaned/index/key2marker_pdf_v1.tsv
+data/cleaned/index/stage1_marker_pdf_extraction_summary_v1.tsv
+```
+
+Reuse rule:
+
+```text
+Do not rerun Marker when `marker_structure_v1.json.metadata.source_sha256` and
+`config_sha256` match the current PDF/config. Regenerate only for missing outputs,
+changed source PDF, changed Marker/runtime config, or explicit `--overwrite`.
+```
+
+This surface is registered in:
+
+```text
+docs/maintained_script_surface.tsv
+project/PIPELINE_SCRIPT_MAP.md
+```
+
+It remains Stage1-only and does not make Stage2/Stage5/benchmark claims.
+
+## Unified Stage1 current+Marker surface added on 2026-05-07
+
+A second Stage1-only projection now exposes a single PDF/HTML-compatible manifest surface for downstream diagnostic use without replacing `manifest_current.tsv` or `key2txt.tsv`:
+
+```bash
+PYTHONPATH=. python3 src/stage1_cleaning/build_stage1_unified_current_marker_v1.py \
+  --scope-keys data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv
+```
+
+Outputs:
+
+```text
+data/cleaned/content/stage1_unified_current_marker_v1/<paper_key>/unified_clean_text_v1.md
+data/cleaned/content/stage1_unified_current_marker_v1/<paper_key>/unified_structure_v1.json
+data/cleaned/index/key2stage1_unified_current_marker_v1.tsv
+data/cleaned/index/stage1_unified_current_marker_manifest_v1.tsv
+data/cleaned/index/stage1_unified_current_marker_summary_v1.tsv
+```
+
+Contract:
+
+```text
+- current Stage1 clean text remains the compatibility base
+- frozen Marker PDF text/structure are appended/projected only when already present
+- HTML/current table-cell sidecars are bound through the manifest, not regenerated
+- no Marker/parser rerun is triggered by this helper
+- no Stage2, Stage3, Stage5, compare, ACTIVE_RUN update, or benchmark claim is performed
+```
+
+DEV15 validation on 2026-05-07:
+
+```text
+unified=15
+pdf_with_marker=10
+html_with_table_cells=4
+summary counts: PDF+Marker=10, HTML+sidecar=4, HTML without sidecar=1
+Stage2 S2-2 smoke import/build_candidate_segmentation_artifact loaded unified structures for BB3JUVW7 and UFXX9WXE.
+```
+
+Registration updated in:
+
+```text
+docs/maintained_script_surface.tsv
+docs/src_script_registry.tsv
+project/PIPELINE_SCRIPT_MAP.md
+```
+
+## Source-read and Stage-boundary correction added on 2026-05-07
+
+Before any further repair in this family, the agent must directly inspect the original PDF/HTML/source-table page as GPT and confirm the target information exists in the source. The user-provided source-anchor section remains diagnostic authority for debugging expected evidence, but repair design must not skip original-source verification.
+
+Observed source-read checks already completed:
+
+```text
+BB3JUVW7 HTML source: local ScienceDirect snapshot contains materials, nanoprecipitation preparation, Table 1 nanosphere rows, and Table 2 nanorod process rows.
+YGA8VQKU HTML source: local ScienceDirect snapshot contains materials, solvent-displacement preparation, DOE Table 2 rows, and Table 6 low/high-viscosity comparison.
+BXCV5XWB HTML source: local Springer article snapshot contains preparation prose; Table 2 numeric body is not inline in that local article snapshot but is present in the publisher full-size table page /tables/2.
+```
+
+Boundary correction:
+
+```text
+Stage1 owns source-readable text/table extraction, source anchors, captions, full-size/download table link resolution when locally/resolvably available, parser provenance, and additive structure/table-cell sidecars.
+If a table body is absent from flattened clean text but present in the original PDF/HTML/full-size table page or a linked/downloaded table asset, Stage1 should read that source table resource into governed table CSV/sidecar authority when possible. S2-2 then consumes the Stage1 table authority for structure normalization, row/column/header drift repair, evidence construction, and selector packaging; S2-2 should not be the first layer that opens source-table links that Stage1 could read.
+```
+
+Immediate repair direction:
+
+```text
+1. Add a no-live original-source visibility and Stage1/S2-2 boundary audit surface for representative papers.
+2. Identify whether missing table bodies are source-unavailable, Stage1 source-table-link extraction loss, Stage1 locator/caption/link loss, S2-2 table-structure normalization loss, or Stage2 consumption loss.
+3. Repair the first failing maintained boundary with TDD and bounded no-live replay.
+```
+
 ## Stop conditions
 
 - If section tags require paper-specific text, stop and record blocker.
 - If Stage2 needs live LLM or benchmark comparison, stop; that is outside this clean-text step.
 - If a test failure suggests broad table-authority behavior changed, stop and inspect before further edits.
+- If a target value/table cannot be verified in original PDF/HTML/source page, do not repair as pipeline extraction failure; record source-unavailable/needs-human-source status instead.
+- If a table exists in original source via a full-size/download table endpoint or linked local table asset, Stage1 should attempt to read the linked source table into governed table authority rather than preserving only a locator. If the table exists only as difficult PDF geometry or requires table-coordinate repair after extraction, keep that structure drift in S2-2.
 
 ## Promotion criteria
 

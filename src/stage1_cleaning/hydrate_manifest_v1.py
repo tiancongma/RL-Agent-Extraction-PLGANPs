@@ -239,6 +239,12 @@ def parse_args() -> argparse.Namespace:
         help="Optional hydration metadata sidecar path.",
     )
     parser.add_argument(
+        "--mainline-integration-status",
+        default="maintained_code_only_not_hydrated",
+        choices=["maintained_code_only_not_hydrated", "mainline_integrated", "diagnostic_only_not_mainline"],
+        help="Recorded hydration status for the metadata sidecar.",
+    )
+    parser.add_argument(
         "--strict-overlays",
         action="store_true",
         help="Fail if dataset or split overlays conflict for any key.",
@@ -274,6 +280,7 @@ def hydrate_manifest(
     split_tags: list[str] | None = None,
     benchmark_tags: list[str] | None = None,
     metadata_json: Path | None = None,
+    mainline_integration_status: str = "maintained_code_only_not_hydrated",
     strict_overlays: bool = False,
     overwrite: bool = False,
 ) -> dict[str, Any]:
@@ -362,7 +369,7 @@ def hydrate_manifest(
         "key2txt_tsv": str(key2txt_tsv),
         "key2structure_tsv": str(key2structure_resolved) if key2structure_resolved else "",
         "table_cell_sidecar_manifest_tsv": str(table_cell_sidecar_manifest_resolved) if table_cell_sidecar_manifest_resolved else "",
-        "mainline_integration_status": "maintained_code_only_not_hydrated",
+        "mainline_integration_status": mainline_integration_status,
         "dataset_sources": [
             {
                 "dataset_manifest_tsv": str(dataset_manifests[idx]),
@@ -501,6 +508,7 @@ def main() -> None:
         split_tags=args.split_tags,
         benchmark_tags=args.benchmark_tags,
         metadata_json=args.metadata_json,
+        mainline_integration_status=args.mainline_integration_status,
         strict_overlays=args.strict_overlays,
         overwrite=args.overwrite,
     )

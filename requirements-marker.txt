@@ -1,0 +1,10 @@
+# Optional local Stage1 Marker PDF extraction runtime.
+# Install with:
+#   python3.11 -m venv .venv_marker
+#   .venv_marker/bin/python -m pip install -r requirements-marker.txt
+# The governed entrypoint is src/stage1_cleaning/run_stage1_marker_pdf_extraction_v1.py.
+marker-pdf==1.10.2
+pandas
+beautifulsoup4
+PyMuPDF
+pypdf
