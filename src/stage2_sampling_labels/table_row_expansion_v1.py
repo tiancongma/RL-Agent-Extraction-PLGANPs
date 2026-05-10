@@ -1888,6 +1888,16 @@ def _is_downstream_only_variable_axis(variable_name: str) -> bool:
     return any(token in low for token in ["lyoprotectant", "freeze", "resuspend", "sf/si", "reconstit", "post-processing"])
 
 
+def canonical_variable_axis_key(variable_name: str) -> str:
+    """Canonical key for comparing variable axes across LLM wording variants."""
+    text = normalize_text(variable_name).lower()
+    text = re.sub(r"^optimal\s+", "", text)
+    text = re.sub(r"\s+selected\b.*$", "", text)
+    text = re.sub(r"\s+determined\b.*$", "", text)
+    text = text.rstrip("s") if text.endswith(" ratios") else text
+    return normalize_token(text)
+
+
 def infer_selected_optimized_variable_axes(
     *,
     selected_condition_hints: list[str],
@@ -1898,10 +1908,11 @@ def infer_selected_optimized_variable_axes(
 
     This is intentionally source-gated: a hint such as "surfactant concentration
     optimized" is promoted only when the source text yields at least two concrete
-    levels for the inferred axis.
+    levels for the inferred axis.  Hints that simply restate an existing axis with
+    an "optimal" qualifier are aliases, not new formulation dimensions.
     """
     variables = list(existing_variable_names)
-    seen = {normalize_token(item) for item in variables if normalize_text(item)}
+    seen = {canonical_variable_axis_key(item) for item in variables if normalize_text(item)}
     for hint in selected_condition_hints:
         hint_text = normalize_text(hint)
         if not hint_text:
@@ -1916,7 +1927,7 @@ def infer_selected_optimized_variable_axes(
         for candidate in candidates:
             if not candidate:
                 continue
-            key = normalize_token(candidate)
+            key = canonical_variable_axis_key(candidate)
             if key in seen:
                 continue
             if len(extract_single_variable_level_list(source_text, candidate)) < 2:
@@ -2403,7 +2414,11 @@ def existing_assignment_values_for_axis(
     expansion has already emitted the same axis/value, the narrative axis must
     not duplicate those formulation identities.
     """
-    axis_keys = {normalize_token(variable_name), normalize_text(variable_name).lower()}
+    axis_keys = {
+        normalize_token(variable_name),
+        normalize_text(variable_name).lower(),
+        canonical_variable_axis_key(variable_name),
+    }
     values: set[str] = set()
     for row in existing_rows:
         if not isinstance(row, dict):
@@ -2415,13 +2430,23 @@ def existing_assignment_values_for_axis(
                     continue
                 if "name" in item and "value" in item:
                     name = item.get("name_raw") or item.get("name")
-                    if normalize_token(name) in axis_keys or normalize_text(name).lower() in axis_keys:
+                    item_axis_keys = {
+                        normalize_token(name),
+                        normalize_text(name).lower(),
+                        canonical_variable_axis_key(name),
+                    }
+                    if item_axis_keys & axis_keys:
                         value_key = _assignment_value_key(item.get("value_raw") or item.get("value"))
                         if value_key:
                             values.add(value_key)
                 else:
                     for name, value in item.items():
-                        if normalize_token(name) in axis_keys or normalize_text(name).lower() in axis_keys:
+                        item_axis_keys = {
+                            normalize_token(name),
+                            normalize_text(name).lower(),
+                            canonical_variable_axis_key(name),
+                        }
+                        if item_axis_keys & axis_keys:
                             value_key = _assignment_value_key(value)
                             if value_key:
                                 values.add(value_key)

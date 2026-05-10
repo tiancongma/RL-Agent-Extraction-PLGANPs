@@ -3023,7 +3023,7 @@ def should_filter_non_formulation(
     ]
 
     if (
-        normalize_text(row.get("instance_kind")) in {"variant_formulation", "formulation_family"}
+        normalize_text(row.get("instance_kind")) in {"variant_formulation", "formulation_family", "single_formulation", "unclear"}
         and bool(str(row.get("parent_instance_id", "") or "").strip())
     ):
         # Contract-level identity behavior for DEV15_v2:
@@ -3069,6 +3069,25 @@ def should_filter_non_formulation(
                 "Row is a parent-linked non-synthesis descendant in control, characterization, post-processing, or downstream evaluation context and is excluded from benchmark-facing formulation identity closure.",
             )
         if (
+            len(enumerated_rows) >= 12
+            and normalize_text(row.get("candidate_source")) not in {
+                "table_row_expansion_v1",
+                "doe_numbered_table_row_recovery",
+            }
+            and not normalize_text(row.get("supporting_evidence_refs"))
+            and not normalize_text(row.get("evidence_section"))
+            and (
+                normalize_text(row.get("change_role")) == "non_synthesis"
+                or normalize_text(row.get("formulation_role")) in {"characterization_only", "comparative"}
+                or not tags.isdisjoint({"characterization_only", "comparative", "measurement_context"})
+            )
+        ):
+            return (
+                True,
+                "semantic_context_summary_superseded_by_complete_table_enumeration",
+                "Parent-linked semantic/context row has no independent evidence grounding while the same paper already has complete row-level table enumeration, so it is excluded from benchmark-facing formulation closure.",
+            )
+        if (
             normalize_text(row.get("instance_kind")) == "single_formulation"
             and normalize_text(row.get("candidate_source")) != "table_row_expansion_v1"
             and normalize_text(row.get("formulation_role")) in {"", "unclear", "variant"}
@@ -3111,6 +3130,23 @@ def should_filter_non_formulation(
         # identities.
         tags = row_context_tags(row)
         formulation_role = normalize_text(row.get("formulation_role"))
+        if (
+            len(enumerated_rows) >= 12
+            and normalize_text(row.get("candidate_source")) not in {
+                "table_row_expansion_v1",
+                "doe_numbered_table_row_recovery",
+            }
+            and (
+                normalize_text(row.get("change_role")) == "non_synthesis"
+                or formulation_role in {"", "unclear", "variant", "comparative", "characterization_only"}
+                or not tags.isdisjoint({"characterization_only", "comparative", "measurement_context"})
+            )
+        ):
+            return (
+                True,
+                "semantic_context_summary_superseded_by_complete_table_enumeration",
+                "Row is a semantic/context summary or non-synthesis context row while the same paper already has complete row-level table enumeration, so it is excluded from benchmark-facing formulation closure.",
+            )
         enumerated_scope_counts: dict[str, int] = {}
         for candidate in enumerated_rows:
             scope_ref = normalize_text(candidate.get("semantic_scope_ref"))
@@ -3725,6 +3761,62 @@ def is_measurement_only_later_table_duplicate(row: dict[str, str], doe_rows_by_l
     )
 
 
+def parse_table_number(value: Any) -> int | None:
+    match = re.search(r"table\s*(\d+)", normalize_text(value))
+    if not match:
+        return None
+    try:
+        return int(match.group(1))
+    except ValueError:
+        return None
+
+
+def table_row_identity_coordinate_signature(row: dict[str, str]) -> str:
+    values: list[str] = []
+    for item in parse_identity_variable_items(row.get(IDENTITY_VARIABLES_FIELD, "")):
+        value = normalize_text(item.get("value") or item.get("value_raw"))
+        if not value:
+            continue
+        # Column-oriented formulation tables often encode the synthesis identity
+        # as method / drug:polymer ratio / lactide:glycolide ratio. Later
+        # stability or storage tables may replace the method header with a time
+        # descriptor while keeping the same ratio coordinates; only the ratio
+        # coordinates are identity-bearing for duplicate detection.
+        if re.fullmatch(r"\d+(?:\.\d+)?\s*:\s*\d+(?:\.\d+)?", value):
+            values.append(re.sub(r"\s+", "", value))
+    if len(values) < 2:
+        return ""
+    return "|".join(values)
+
+
+def row_has_only_measurement_or_storage_support(row: dict[str, str]) -> bool:
+    if any(
+        str(row.get(field, "") or "").strip()
+        for field in (
+            "plga_mass_mg_value",
+            "surfactant_concentration_text_value",
+            "drug_feed_amount_text_value",
+            "polymer_mass_mg_value",
+            "drug_mass_mg_value",
+        )
+    ):
+        return False
+    blob = normalize_text(
+        " ".join(
+            str(row.get(field, "") or "")
+            for field in (
+                "raw_formulation_label",
+                "table_id",
+                "evidence_section",
+                "supporting_evidence_refs",
+                "change_descriptions",
+            )
+        )
+    )
+    metric_tokens = ("size", "pdi", "zeta", "drug loading", "encapsulation", "ee", "dl", "storage", "month", "stability")
+    return any(token in blob for token in metric_tokens)
+
+
 def build_doe_measurement_duplicate_collapse_map(
     rows: list[dict[str, str]],
 ) -> dict[str, dict[str, str]]:
@@ -3737,7 +3829,10 @@ def build_doe_measurement_duplicate_collapse_map(
         doe_rows = [
             row for row in paper_rows if normalize_text(row.get("candidate_source")) == "doe_numbered_table_row_recovery"
         ]
-        if len(doe_rows) < 8:
+        table_rows = [
+            row for row in paper_rows if normalize_text(row.get("candidate_source")) == "table_row_expansion_v1"
+        ]
+        if len(doe_rows) < 8 and not table_rows:
             continue
         targets_by_signature: dict[str, list[str]] = defaultdict(list)
         doe_rows_by_label: dict[str, list[dict[str, str]]] = defaultdict(list)
@@ -3748,10 +3843,59 @@ def build_doe_measurement_duplicate_collapse_map(
             label = normalize_text(row.get("raw_formulation_label"))
             if label:
                 doe_rows_by_label[label].append(row)
-        if not targets_by_signature and not doe_rows_by_label:
-            continue
-        for row in paper_rows:
+        primary_by_coordinate: dict[str, list[dict[str, str]]] = defaultdict(list)
+        for row in table_rows:
+            table_number = parse_table_number(row.get("table_id") or row.get("evidence_section"))
+            if table_number is None:
+                continue
+            signature = table_row_identity_coordinate_signature(row)
+            if signature:
+                primary_by_coordinate[signature].append(row)
+        earliest_by_coordinate: dict[str, list[dict[str, str]]] = defaultdict(list)
+        for signature, candidates in primary_by_coordinate.items():
+            earliest = min(
+                parse_table_number(row.get("table_id") or row.get("evidence_section")) or 10**9
+                for row in candidates
+            )
+            earliest_by_coordinate[signature] = [
+                row
+                for row in candidates
+                if (parse_table_number(row.get("table_id") or row.get("evidence_section")) or 10**9) == earliest
+            ]
+
+        for row in table_rows:
             source_key = row_source_key(row)
+            table_number = parse_table_number(row.get("table_id") or row.get("evidence_section"))
+            coordinate_signature = table_row_identity_coordinate_signature(row)
+            if table_number is not None and coordinate_signature:
+                candidate_targets = earliest_by_coordinate.get(coordinate_signature, [])
+                if len(candidate_targets) == 1:
+                    target_row = candidate_targets[0]
+                    target_number = parse_table_number(target_row.get("table_id") or target_row.get("evidence_section"))
+                    if (
+                        target_number is not None
+                        and table_number > target_number
+                        and row_has_only_measurement_or_storage_support(row)
+                    ):
+                        target_source_key = row_source_key(target_row)
+                        collapse_map[source_key] = {
+                            "target_source_key": target_source_key,
+                            "variant_class": "duplicate_representation",
+                            "variant_signal": "post_processing_or_measurement_variant",
+                            "decision_rule": "later_measurement_table_duplicate_of_primary_formulation_identity",
+                            "decision_reason": (
+                                "Later measurement/storage table row reuses the same formulation identity coordinates as an "
+                                "earlier formulation table row and only adds characterization or storage measurements, so it is "
+                                "treated as a duplicate representation rather than a new formulation identity."
+                            ),
+                            "notes": (
+                                f"matched_source_formulation_id={target_row.get('formulation_id', '')}; "
+                                f"identity_coordinate_signature={coordinate_signature}; paper_key={paper_key}"
+                            ),
+                        }
+                        continue
+            if not targets_by_signature and not doe_rows_by_label:
+                continue
             if normalize_text(row.get("candidate_source")) != "table_row_expansion_v1":
                 continue
             if normalize_text(row.get("table_id")) == "table 1":

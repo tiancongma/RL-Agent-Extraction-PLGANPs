@@ -273,6 +273,40 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         self.assertEqual({"polymer amount=100 mg", "polymer amount=200 mg"}, labels)
         self.assertFalse(any("25 mg" in label for label in labels))
 
+    def test_optimal_axis_hint_does_not_duplicate_existing_primary_axis(self):
+        source_text = """
+        5 mL of PLGA (1% w/v) solution was slowly added to four aqueous solutions
+        containing 2.5, 3, 4, and 10 mg/mL of nonionic surfactant (poloxamer 188)
+        with stirring. After the optimal surfactant concentration had been determined,
+        various amounts of ITZ were dissolved into three solutions of 1% PLGA in acetone
+        to obtain PLGA:ITZ ratios of 5:1, 10:1, and 15:1, respectively.
+        Table 2 Physicochemical properties of PLGA-ITZ-NS with different PLGA:ITZ initial ratios.
+        Note: Ratio of 10:1 was then selected to prepare PLGA-ITZ-NS for the remaining studies.
+        """
+        document = {
+            "document_key": "QLYKLPKT",
+            "doi": "10.2147/IJN.S54040",
+            "semantic_signals": {
+                "has_variable_sweep": True,
+                "has_sequential_optimization": True,
+                "primary_variable_names": ["surfactant concentration", "PLGA:ITZ ratio"],
+                "selected_condition_hints": [
+                    "optimal surfactant concentration determined first",
+                    "PLGA:ITZ ratios 5:1, 10:1, 15:1 tested",
+                    "optimal PLGA:ITZ ratio selected for further studies",
+                ],
+            },
+        }
+
+        with patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value=source_text):
+            contract = build_single_variable_recovery_contract(document=document, require_anchor_rows=False)
+
+        self.assertTrue(contract["detected"])
+        groups = {group["variable_name"]: group["levels"] for group in contract["groups"]}
+        self.assertIn("PLGA:ITZ ratio", groups)
+        self.assertNotIn("optimal PLGA:ITZ ratio", groups)
+        self.assertEqual(["5:1", "10:1", "15:1"], groups["PLGA:ITZ ratio"])
+
     def test_single_variable_recovery_does_not_duplicate_explicit_table_row_axis(self):
         """Axis-level recovery must not duplicate row-level table materialization for the same variable/value identity."""
         document = {

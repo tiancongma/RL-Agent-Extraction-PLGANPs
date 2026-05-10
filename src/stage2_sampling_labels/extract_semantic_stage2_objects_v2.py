@@ -4958,16 +4958,21 @@ def build_summary_sample_lines(rows: list[list[str]], column_indices: list[int],
         return []
     header_count = summary_header_row_count(rows)
     data_rows = rows[header_count:] if len(rows) > header_count else []
-    samples = data_rows[:max_rows]
     sample_lines: list[str] = []
-    for idx, row in enumerate(samples, start=1):
+    for row in data_rows:
         selected_cells = [
             truncate_summary_cell(row[col_index], max_chars=72)
             for col_index in column_indices
             if col_index < len(row) and normalize_text(row[col_index])
         ]
-        if selected_cells:
-            sample_lines.append(f"- sample_row_{idx}: " + " | ".join(selected_cells))
+        if not selected_cells:
+            continue
+        row_text = " | ".join(selected_cells)
+        if evidence_text_has_noise(row_text):
+            continue
+        sample_lines.append(f"- sample_row_{len(sample_lines) + 1}: " + row_text)
+        if len(sample_lines) >= max_rows:
+            break
     return sample_lines
 
 

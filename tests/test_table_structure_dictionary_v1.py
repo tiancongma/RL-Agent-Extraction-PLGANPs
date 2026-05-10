@@ -129,6 +129,85 @@ class TableStructureDictionaryV1Tests(unittest.TestCase):
         self.assertEqual(first_data["cell_map"].get("Surfactant"), "PVA")
         self.assertEqual(first_data["cell_map"].get("EE (%)"), "65.2 ± 1.3")
 
+    def test_transposed_metric_table_keeps_metric_rows_out_of_header_block(self) -> None:
+        rows = [
+            ["0", "1", "2", "3", "4"],
+            ["", "Formulation characters for the optimized nanoparticle formulations", "", "", ""],
+            ["", "PLGA 50/50 (Mean ± SD)", "", "PLGA 75/25 (Mean ± SD)", ""],
+            ["", "Empty", "Drug loaded", "Empty", "Drug loaded"],
+            ["Diameter (nm)", "87.2 ± 0.25", "91.8 ± 2.74", "96.9 ± 1.06", "103.7 ± 2.98"],
+            ["PIa", "0.14 ± 0.01", "0.13 ± 0.01", "0.12 ± 0.01", "0.14 ± 0.01"],
+            ["ZPb (mV)", "−18.3 ± 0.52", "−21.23 ± 1.04", "−17.2 ± 0.51", "−28.06 ± 0.39"],
+            ["Drug content (%)", "—", "1.04 ± 0.06", "—", "1.14 ± 0.02"],
+            ["EEc (%)", "—", "57.64 ± 0.97", "—", "66.11 ± 0.72"],
+        ]
+        normalized_rows, actions, metadata = stage2_objects.normalize_selected_table_rows(
+            rows,
+            table_role_hint="formulation",
+        )
+        self.assertIn("drop_enumerator_index_row", actions)
+        self.assertIn("preserve_coordinate_grid", actions)
+        self.assertNotIn("drop_sparse_placeholder_columns", actions)
+        self.assertEqual(len({len(row) for row in normalized_rows}), 1)
+        inferred = structure_dictionary.infer_header_structure(normalized_rows)
+        self.assertEqual(inferred["header_row_count"], 3)
+        self.assertEqual(inferred["flattened_headers"][1], "Formulation characters for the optimized nanoparticle formulations PLGA 50/50 (Mean ± SD) Empty")
+        self.assertEqual(inferred["flattened_headers"][2], "PLGA 50/50 (Mean ± SD) Drug loaded")
+        self.assertEqual(inferred["flattened_headers"][4], "PLGA 75/25 (Mean ± SD) Drug loaded")
+        row_entries = stage2_objects.build_normalized_row_entries(
+            normalized_rows,
+            header_structure=inferred,
+            numbered_row_column_index=metadata["numbered_row_column_index"],
+        )
+        diameter = row_entries[0]
+        self.assertEqual(diameter["cells"][0], "Diameter (nm)")
+        self.assertEqual(
+            diameter["cell_map"].get("Formulation characters for the optimized nanoparticle formulations PLGA 50/50 (Mean ± SD) Empty"),
+            "87.2 ± 0.25",
+        )
+        self.assertEqual(diameter["cell_map"].get("PLGA 50/50 (Mean ± SD) Drug loaded"), "91.8 ± 2.74")
+        self.assertEqual(diameter["cell_map"].get("PLGA 75/25 (Mean ± SD) Drug loaded"), "103.7 ± 2.98")
+        self.assertNotIn("Drug loaded 91.8 ± 2.74", diameter["cell_map"])
+
+    def test_transposed_metric_table_boundary_generalizes_across_known_metric_labels(self) -> None:
+        metric_examples = [
+            "Mean size (nm)",
+            "Particle size (nm)",
+            "PDI",
+            "Zeta potential (mV)",
+            "EE (%)",
+            "Entrapment efficiency (%)",
+            "Drug loading (%)",
+        ]
+        for metric_label in metric_examples:
+            with self.subTest(metric_label=metric_label):
+                rows = [
+                    ["0", "1", "2", "3", "4"],
+                    ["", "Optimized formulation characterization", "", "", ""],
+                    ["", "PLGA low MW (Mean ± SD)", "", "PLGA high MW (Mean ± SD)", ""],
+                    ["", "Blank", "Drug loaded", "Blank", "Drug loaded"],
+                    [metric_label, "11.1 ± 0.1", "22.2 ± 0.2", "33.3 ± 0.3", "44.4 ± 0.4"],
+                    ["PDI", "0.10 ± 0.01", "0.20 ± 0.02", "0.30 ± 0.03", "0.40 ± 0.04"],
+                ]
+                normalized_rows, actions, metadata = stage2_objects.normalize_selected_table_rows(
+                    rows,
+                    table_role_hint="formulation",
+                )
+                self.assertIn("preserve_coordinate_grid", actions)
+                inferred = structure_dictionary.infer_header_structure(normalized_rows)
+                self.assertEqual(inferred["header_row_count"], 2)
+                self.assertFalse(any("11.1 ± 0.1" in header for header in inferred["flattened_headers"]))
+                row_entries = stage2_objects.build_normalized_row_entries(
+                    normalized_rows,
+                    header_structure=inferred,
+                    numbered_row_column_index=metadata["numbered_row_column_index"],
+                )
+                first_data = row_entries[0]
+                self.assertEqual(first_data["cells"][0], metric_label)
+                self.assertEqual(first_data["cell_map"].get("PLGA low MW (Mean ± SD) Blank"), "11.1 ± 0.1")
+                self.assertEqual(first_data["cell_map"].get("PLGA low MW (Mean ± SD) Drug loaded"), "22.2 ± 0.2")
+                self.assertEqual(first_data["cell_map"].get("PLGA high MW (Mean ± SD) Drug loaded"), "44.4 ± 0.4")
+
     def test_extract_direct_rows_uses_recovered_headers_and_group_carrydown(self) -> None:
         extracted_rows, reason = row_expansion.extract_direct_formulation_rows_from_authority(
             authority_payload={"source_csv_path": "INMUTV7L__table_15__pdf_table.csv"},

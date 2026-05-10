@@ -4883,6 +4883,102 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertTrue(should_filter)
         self.assertIn("summary", rule)
 
+    def test_inmutv7l_unparented_context_summaries_filtered_when_complete_table_enumeration_exists(self):
+        paper_rows = [
+            {"instance_kind": "new_formulation", "candidate_source": "doe_numbered_table_row_recovery", "semantic_scope_ref": "table15"}
+            for _ in range(12)
+        ]
+        for label, instance_kind, role, change_role, tags in [
+            ("PLGA 503 H with Tween 80", "variant_formulation", "unclear", "non_synthesis", '["synthesis_core"]'),
+            ("PVA formulation binding study", "single_formulation", "characterization_only", "unclear", '["characterization_only"]'),
+            ("Other polymer variants (e.g., PLGA 502 H)", "unclear", "comparative", "unclear", '["comparative"]'),
+        ]:
+            with self.subTest(label=label):
+                should_filter, rule, reason = should_filter_non_formulation(
+                    {
+                        "key": "INMUTV7L",
+                        "raw_formulation_label": label,
+                        "instance_kind": instance_kind,
+                        "parent_instance_id": "",
+                        "formulation_role": role,
+                        "change_role": change_role,
+                        "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                        "instance_context_tags": tags,
+                        "change_context_tags": '[]',
+                        "evidence_section": "",
+                        "supporting_evidence_refs": "",
+                    },
+                    {"loaded_state": "drug_loaded", "drug_name": "Dexibuprofen", "polymer_identity": "PLGA"},
+                    paper_rows=paper_rows,
+                )
+                self.assertTrue(should_filter)
+                self.assertEqual(rule, "semantic_context_summary_superseded_by_complete_table_enumeration")
+
+    def test_inmutv7l_parented_context_summaries_filtered_when_complete_table_enumeration_exists(self):
+        paper_rows = [
+            {"instance_kind": "new_formulation", "candidate_source": "doe_numbered_table_row_recovery", "semantic_scope_ref": "table15"}
+            for _ in range(12)
+        ]
+        for label, instance_kind, role, change_role, tags in [
+            ("PLGA 503 H with Tween 80", "variant_formulation", "unclear", "non_synthesis", '["synthesis_core"]'),
+            ("PLGA 503 H with Lutrol F68", "variant_formulation", "unclear", "non_synthesis", '["synthesis_core"]'),
+            ("PVA formulation binding study", "single_formulation", "characterization_only", "unclear", '["characterization_only"]'),
+            ("Lutrol formulation permeation study", "unclear", "characterization_only", "unclear", '["characterization_only"]'),
+        ]:
+            with self.subTest(label=label):
+                should_filter, rule, reason = should_filter_non_formulation(
+                    {
+                        "key": "INMUTV7L",
+                        "raw_formulation_label": label,
+                        "instance_kind": instance_kind,
+                        "parent_instance_id": "F1",
+                        "formulation_role": role,
+                        "change_role": change_role,
+                        "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                        "instance_context_tags": tags,
+                        "change_context_tags": '[]',
+                        "evidence_section": "",
+                        "supporting_evidence_refs": "",
+                    },
+                    {"loaded_state": "drug_loaded", "drug_name": "Dexibuprofen", "polymer_identity": "PLGA"},
+                    paper_rows=paper_rows,
+                )
+                self.assertTrue(should_filter)
+                self.assertIn(rule, {
+                    "semantic_context_summary_superseded_by_complete_table_enumeration",
+                    "parent_linked_non_synthesis_descendant_variant",
+                })
+
+    def test_later_measurement_table_duplicate_collapses_to_primary_formulation_identity(self):
+        def row(formulation_id, table_id, label, values, snippet):
+            return {
+                "key": "PA3SPZ28",
+                "formulation_id": formulation_id,
+                "raw_formulation_label": label,
+                "candidate_source": "table_row_expansion_v1",
+                "table_id": table_id,
+                "evidence_section": table_id,
+                "identity_variables_json": json.dumps([
+                    {"name": f"formulation_header_part_{idx}", "value": value}
+                    for idx, value in enumerate(values, start=1)
+                ]),
+                "supporting_evidence_refs": json.dumps([{"supporting_snippet": snippet}]),
+            }
+
+        rows = [
+            row("T1_20", "Table 1", "Nanoprecipitation method / 1:20 / 50:50", ["Nanoprecipitation method", "1:20", "50:50"], "Size (nm)=90 | Drug loading (DL, %)=4"),
+            row("T1_10", "Table 1", "Nanoprecipitation method / 1:10 / 50:50", ["Nanoprecipitation method", "1:10", "50:50"], "Size (nm)=88 | Encapsulation efficiency (EE, %)=88"),
+            row("T8_20", "Table 8", "Nanoprecipitation method / 1:20 / 50:50", ["Nanoprecipitation method", "1:20", "50:50"], "Size (nm)=90 | Drug loading (DL, %)=4"),
+            row("T8_storage", "Table 8", "for 3 months / 1:10 / 50:50", ["for 3 months", "1:10", "50:50"], "Size (nm)=100 | PDI=0.295 | Zeta potential (mV)=-27"),
+        ]
+        collapse_map = final_output.build_doe_measurement_duplicate_collapse_map(rows)
+        self.assertEqual(collapse_map["PA3SPZ28::T8_20"]["target_source_key"], "PA3SPZ28::T1_20")
+        self.assertEqual(collapse_map["PA3SPZ28::T8_storage"]["target_source_key"], "PA3SPZ28::T1_10")
+        self.assertEqual(
+            collapse_map["PA3SPZ28::T8_storage"]["decision_rule"],
+            "later_measurement_table_duplicate_of_primary_formulation_identity",
+        )
+
     def test_rhmjwzx8_solution_control_filtered_at_stage5(self):
         should_filter, rule, reason = should_filter_non_formulation(
             {

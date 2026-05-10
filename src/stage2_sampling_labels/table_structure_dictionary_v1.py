@@ -335,6 +335,30 @@ def looks_like_header_row(row: list[str]) -> bool:
     return alpha_cells >= max(2, numeric_cells)
 
 
+def looks_like_transposed_metric_data_row(row: list[str]) -> bool:
+    """Detect metric-as-row bodies so value rows do not extend a header block.
+
+    Characterization tables often have formulation/status columns and metric
+    labels in the first column (e.g. ``Diameter (nm)`` then numeric values). The
+    metric label contains header-like words, but once header rows have started it
+    is body data, not another header row.  This keeps execution payload geometry
+    intact while preventing numeric values from being folded into flattened
+    headers.
+    """
+    cells = [normalize_text(cell) for cell in row]
+    if len(cells) < 3:
+        return False
+    first = cells[0]
+    if not first or not canonical_field_for_header(first):
+        return False
+    trailing = [cell for cell in cells[1:] if cell]
+    if len(trailing) < 2:
+        return False
+    numeric_like = sum(1 for cell in trailing if re.search(r"\d", cell) or cell in {"—", "-", "--", "–"})
+    alpha_like = sum(1 for cell in trailing if re.search(r"[A-Za-z]", cell) and not re.search(r"\d", cell))
+    return numeric_like >= 2 and numeric_like >= max(2, alpha_like)
+
+
 def is_explicit_formulation_label(value: Any) -> bool:
     label = normalize_text(value)
     return bool(re.fullmatch(r"\d{1,3}\s*[\.\):]?", label) or re.fullmatch(r"[Ff]\s*[- ]?\d{1,3}\s*[\.\):]?", label))
@@ -358,6 +382,8 @@ def infer_header_structure(rows: list[list[str]]) -> dict[str, Any]:
             continue
         if is_numeric_index_row(row) or is_caption_or_metadata_row(row):
             continue
+        if header_rows and looks_like_transposed_metric_data_row(row):
+            break
         if looks_like_header_row(row):
             header_rows.append(row)
             continue
@@ -390,6 +416,29 @@ def flatten_header_rows(header_rows: list[list[str]], column_count: int) -> list
             if cell and cell.lower() not in {item.lower() for item in values}:
                 values.append(cell)
         flattened.append(normalize_text(" ".join(values)))
+
+    duplicate_headers = {
+        value.lower()
+        for value in flattened
+        if value and sum(1 for item in flattened if item.lower() == value.lower()) > 1
+    }
+    if duplicate_headers:
+        for column_index, value in enumerate(list(flattened)):
+            if not value or value.lower() not in duplicate_headers:
+                continue
+            inherited_parts: list[str] = []
+            for row in header_rows[:-1]:
+                if column_index >= len(row) or normalize_text(row[column_index]):
+                    continue
+                for left_index in range(column_index - 1, -1, -1):
+                    left = normalize_text(row[left_index]) if left_index < len(row) else ""
+                    if left:
+                        inherited_parts.append(left)
+                        break
+            if inherited_parts:
+                prefix = normalize_text(inherited_parts[-1])
+                if prefix and prefix.lower() not in value.lower():
+                    flattened[column_index] = normalize_text(f"{prefix} {value}")
     return flattened
 
 

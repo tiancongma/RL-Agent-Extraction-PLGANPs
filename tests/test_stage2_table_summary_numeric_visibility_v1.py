@@ -102,6 +102,29 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
         self.assertNotIn("metric_value_rows", rendered)
         self.assertNotIn("value_evidence_only", rendered)
 
+    def test_table_summary_sample_rows_skip_publisher_chrome_without_losing_source_rows(self):
+        rows = [
+            ["0", "1"],
+            ["Dovepress", "Gatifloxacin NPs for CNS tuberculosis"],
+            [
+                "for formulations NPG1, NPG2, and NPG3, respectively",
+                "2. Abbott NJ, Patabendige AA, Dolman DE, Yusof SR, Begley DJ.",
+            ],
+            ["International Journal of Nanomedicine 2017:12", "submit your manuscript | www.dovepress.com"],
+            ["PLGA NPs prepared with two surfactants", "showed improved passage across the BBB"],
+        ]
+        item = {
+            "path": Path("data/cleaned/goren_2025/tables/5ZXYABSU/5ZXYABSU__table_16__pdf_table.csv"),
+            "rows": rows,
+            "meta": {"caption_or_title": "", "n_rows": len(rows), "n_cols": len(rows[0])},
+        }
+        rendered = "\n".join(build_table_summary_lines(item, enhancement_enabled=False))
+        self.assertIn("sample_row_1: for formulations NPG1, NPG2, and NPG3, respectively", rendered)
+        self.assertIn("sample_row_2: PLGA NPs prepared with two surfactants", rendered)
+        self.assertNotIn("sample_row_1: Dovepress", rendered)
+        self.assertNotIn("submit your manuscript", rendered)
+        self.assertNotIn("www.dovepress.com", rendered)
+
     def test_multirow_summary_preserves_full_header_schema_and_two_complete_rows(self):
         rows = [
             ["", "Composition", "Composition", "Process", "Process", "Results"],
