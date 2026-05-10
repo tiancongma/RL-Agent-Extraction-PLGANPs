@@ -8,6 +8,8 @@ from src.stage2_sampling_labels.table_row_expansion_v1 import (
     _extract_row_assignments_from_authority,
     build_single_variable_recovery_contract,
     emit_single_variable_recovery_rows,
+    extract_empty_control_characterization_pair_rows_from_source_text,
+    mark_llm_summary_rows_as_helpers,
     run_table_row_expansion,
 )
 from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
@@ -596,6 +598,132 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         self.assertEqual([], rows)
         activation = summary["table_activation_rows"][0]
         self.assertEqual("downstream_cryoprotectant_measurement_table", activation["skip_reason"])
+
+    def test_source_measured_empty_control_pair_recovers_only_blank_control(self):
+        document = {
+            "document_key": "EMPTYPAIR",
+            "doi": "10.0000/emptypair",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "formulation_identity_candidates": [
+                {
+                    "raw_formulation_label": "AP-PLGA-NPs",
+                    "instance_kind": "formulation_family",
+                }
+            ],
+            "table_formulation_scopes": [],
+            "table_variable_roles": [],
+            "boundary_markers": [],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        source_text = (
+            "The zeta potential of AP-PLGA-NPs was found to be −14.81 ± 1.39 mV, "
+            "whereas that of empty NPs was −36.13 ± 3.35 mV."
+        )
+        with patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value=source_text):
+            recovered, reason = extract_empty_control_characterization_pair_rows_from_source_text(document=document)
+        self.assertEqual("", reason)
+        self.assertEqual(1, len(recovered))
+        self.assertEqual("AP-PLGA-NPs / Empty", recovered[0]["label"])
+        self.assertEqual("control", recovered[0]["instance_role"])
+        assignment_map = {item["name"]: item["value"] for item in recovered[0]["assignments"]}
+        self.assertEqual("−36.13 ± 3.35 mV", assignment_map["zeta potential"])
+
+    def test_anchorless_empty_control_pair_materializes_without_loaded_duplicate(self):
+        document = {
+            "document_key": "EMPTYPAIR",
+            "doi": "10.0000/emptypair",
+            "model_name": "unit",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "formulation_identity_candidates": [
+                {
+                    "raw_formulation_label": "AP-PLGA-NPs",
+                    "instance_kind": "formulation_family",
+                }
+            ],
+            "table_formulation_scopes": [],
+            "table_variable_roles": [],
+            "boundary_markers": [],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        source_text = (
+            "The zeta potential of AP-PLGA-NPs was found to be −14.81 ± 1.39 mV, "
+            "whereas that of empty NPs was −36.13 ± 3.35 mV."
+        )
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([], {"reopen_resolution_status": "", "normalized_payload_used": "no"}),
+        ), patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value=source_text):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=[
+                    "key",
+                    "doi",
+                    "model",
+                    "local_instance_id",
+                    "formulation_id",
+                    "raw_formulation_label",
+                    "instance_kind",
+                    "instance_kind_raw",
+                    "instance_kind_inferred",
+                    "instance_confidence",
+                    "candidate_source",
+                    "polymer_identity",
+                    "zeta_mV_value",
+                    "zeta_mV_value_text",
+                    "zeta_mV_membership_confidence",
+                    "zeta_mV_evidence_region_type",
+                ],
+                doe_summary={"doe_rows_emitted": 0},
+            )
+        self.assertEqual(1, len(rows))
+        self.assertEqual("AP-PLGA-NPs / Empty", rows[0]["raw_formulation_label"])
+        self.assertEqual("control", rows[0]["formulation_role"])
+        self.assertEqual("PLGA", rows[0]["polymer_identity"])
+        self.assertEqual("−36.13 ± 3.35 mV", rows[0]["zeta_mV_value_text"])
+        self.assertEqual(1, summary["emitted_row_count"])
+    def test_loaded_family_summary_survives_empty_control_pair_recovery(self):
+        rows = [
+            {
+                "key": "RHMJWZX8",
+                "formulation_id": "form_1",
+                "raw_formulation_label": "AP-PLGA-NPs",
+                "instance_kind": "formulation_family",
+                "instance_kind_raw": "formulation_family",
+                "instance_kind_inferred": "formulation_family",
+                "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                "formulation_role": "unclear",
+                "instance_context_tags": json.dumps(["synthesis_core"]),
+                "identity_variables_json": json.dumps(
+                    [
+                        {"name": "PLGA amount", "value": "optimized formulation"},
+                        {"name": "AP amount", "value": "optimized formulation"},
+                        {"name": "polysorbate 80 concentration", "value": "optimized formulation"},
+                    ]
+                ),
+                "drug_name_value_text": "acetylpuerarin (AP)",
+            },
+            {
+                "key": "RHMJWZX8",
+                "formulation_id": "RHMJWZX8__source_text_characterization_pair__ap-plga-nps_/_empty",
+                "raw_formulation_label": "AP-PLGA-NPs / Empty",
+                "instance_kind": "new_formulation",
+                "candidate_source": "table_row_expansion_v1",
+                "formulation_role": "control",
+                "instance_context_tags": json.dumps(
+                    ["table_row_expansion", "empty_control_characterization_pair_recovery"]
+                ),
+                "change_context_tags": json.dumps(["empty_control_characterization_pair_recovery"]),
+            },
+        ]
+        jsonl_rows = [dict(row) for row in rows]
+        mark_llm_summary_rows_as_helpers(rows, jsonl_rows, "RHMJWZX8__table_formulation_group__01")
+        self.assertEqual("formulation_family", rows[0]["instance_kind"])
+        self.assertEqual("formulation_family", jsonl_rows[0]["instance_kind"])
+        self.assertEqual("new_formulation", rows[1]["instance_kind"])
 
 
 if __name__ == "__main__":

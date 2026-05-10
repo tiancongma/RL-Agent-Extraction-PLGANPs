@@ -5020,7 +5020,7 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
         self.assertTrue(should_filter)
 
     def test_ufxx9wxe_optimized_result_row_not_filtered_as_non_formulation(self):
-        should_filter, rule, reason = should_filter_non_formulation(
+        for row in [
             {
                 "key": "UFXX9WXE",
                 "raw_formulation_label": "Optimized Lzp-PLGA-NPs",
@@ -5035,13 +5035,35 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
                 "evidence_section": 'Figure 8; Figure 10; Figure 12',
                 "supporting_evidence_refs": '[{"source_region_type":"text_span"}]',
             },
-            {"loaded_state": "drug_loaded", "drug_name": "Lorazepam", "polymer_identity": "PLGA"},
-            paper_rows=[
-                {"instance_kind": "new_formulation", "candidate_source": "doe_numbered_table_row_recovery", "semantic_scope_ref": "scope1"}
-                for _ in range(26)
-            ],
-        )
-        self.assertFalse(should_filter, msg=f"unexpected filter: {rule} {reason}")
+            {
+                "key": "UFXX9WXE",
+                "raw_formulation_label": "optimized formulation",
+                "instance_kind": "single_formulation",
+                "parent_instance_id": "F1",
+                "formulation_role": "unclear",
+                "change_role": "unclear",
+                "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                "instance_context_tags": '["synthesis_core"]',
+                "change_context_tags": '[]',
+                "change_descriptions": '["Selected based on desirability"]',
+                "drug_name_value_text": "lorazepam",
+                "polymer_identity": "PLGA",
+                "identity_variables_json": json.dumps([
+                    {"name": "drug_concentration", "value": "optimized formulation via box-behnken design"},
+                    {"name": "plga_concentration", "value": "optimized formulation via box-behnken design"},
+                ]),
+            },
+        ]:
+            with self.subTest(label=row["raw_formulation_label"]):
+                should_filter, rule, reason = should_filter_non_formulation(
+                    row,
+                    {"loaded_state": "drug_loaded", "drug_name": "Lorazepam", "polymer_identity": "PLGA"},
+                    paper_rows=[
+                        {"instance_kind": "new_formulation", "candidate_source": "doe_numbered_table_row_recovery", "semantic_scope_ref": "scope1"}
+                        for _ in range(26)
+                    ],
+                )
+                self.assertFalse(should_filter, msg=f"unexpected filter: {rule} {reason}")
 
 
     def test_stage5_carries_unique_global_preparation_solvent_to_blank_doe_rows(self):

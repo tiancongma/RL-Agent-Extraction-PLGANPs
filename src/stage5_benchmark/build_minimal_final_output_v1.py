@@ -2983,7 +2983,17 @@ def should_filter_non_formulation(
             "",
             "",
         )
-    if paper_key == "ufxx9wxe" and row_label.startswith("optimized lzp-plga-nps"):
+    if paper_key == "ufxx9wxe" and (
+        row_label.startswith("optimized lzp-plga-nps")
+        or (
+            row_label == "optimized formulation"
+            and normalize_text(row.get("instance_kind")) == "single_formulation"
+            and "synthesis_core" in row_context_tags(row)
+            and normalize_text(row.get("parent_instance_id"))
+            and normalize_text(row.get("drug_name_value_text") or row.get("drug_name_value") or row.get("drug_name"))
+            and normalize_text(row.get("polymer_identity")) == "plga"
+        )
+    ):
         return (
             False,
             "",

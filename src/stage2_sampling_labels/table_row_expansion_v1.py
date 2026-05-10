@@ -1449,6 +1449,72 @@ def extract_characterization_pair_rows_from_source_text(
     )
 
 
+def extract_empty_control_characterization_pair_rows_from_source_text(
+    *,
+    document: dict[str, Any],
+) -> tuple[list[dict[str, Any]], str]:
+    """Recover source-measured blank/empty controls paired with an LLM-authorized formulation.
+
+    This is a narrow post-LLM completion guard for papers where the LLM has
+    already authorized the loaded nanoparticle family, but did not materialize a
+    separately measured empty/blank nanoparticle control because the evidence is
+    in narrative characterization prose rather than an LLM-declared formulation
+    table.  It emits only the empty control; the loaded formulation remains the
+    LLM-authorized candidate row, preventing loaded-row duplication.
+    """
+    source_text = load_document_source_text(document)
+    if not source_text:
+        return [], "source_text_missing"
+    candidate_surfaces = ensure_list(document.get("formulation_candidates")) or ensure_list(
+        document.get("formulation_identity_candidates")
+    )
+    candidate_labels = [
+        normalize_text(item.get("label_hint") or item.get("raw_formulation_label") or item.get("label"))
+        for item in candidate_surfaces
+        if isinstance(item, dict)
+        and normalize_text(item.get("candidate_kind") or item.get("instance_kind"))
+        in {"formulation_family", "single_formulation", "new_formulation"}
+    ]
+    candidate_labels = [label for label in candidate_labels if label]
+    if len(candidate_labels) != 1:
+        return [], "not_single_authorized_loaded_family"
+    comparator_match = re.search(
+        r"zeta\s+potential\s+of\s+(?P<loaded_label>[A-Za-z0-9\-]+NPs?)\s+was\s+found\s+to\s+be\s+(?P<loaded_zeta>[−\-]?\d+(?:\.\d+)?\s*±\s*\d+(?:\.\d+)?\s*mV),\s*whereas\s+that\s+of\s+(?P<blank_state>empty|blank|drug\s*free|drug-free)\s+NPs\s+was\s+(?P<blank_zeta>[−\-]?\d+(?:\.\d+)?\s*±\s*\d+(?:\.\d+)?\s*mV)",
+        source_text,
+        flags=re.IGNORECASE,
+    )
+    if not comparator_match:
+        return [], "no_explicit_loaded_blank_characterization_pair"
+    loaded_label = normalize_text(comparator_match.group("loaded_label"))
+    if normalize_token(loaded_label) != normalize_token(candidate_labels[0]):
+        return [], "loaded_pair_not_matching_single_authorized_family"
+    polymer_identity = "PLGA" if "plga" in loaded_label.lower() else ""
+    if not polymer_identity:
+        family_labels = detect_polymer_family_labels(source_text)
+        polymer_identity = normalize_text(family_labels[0]) if family_labels else ""
+    if not polymer_identity:
+        return [], "polymer_identity_missing"
+    blank_state = normalize_text(comparator_match.group("blank_state")) or "empty"
+    loaded_sentence = normalize_text(comparator_match.group(0))
+    return (
+        [
+            {
+                "label": f"{loaded_label} / {blank_state.title()}",
+                "assignments": [
+                    {"name": "polymer_identity", "value": polymer_identity},
+                    {"name": "zeta potential", "value": normalize_text(comparator_match.group("blank_zeta"))},
+                ],
+                "row_text": loaded_sentence,
+                "instance_role": "control",
+                "source_region_type": "narrative_text",
+                "evidence_span_text": loaded_sentence,
+                "change_context_tag": "empty_control_characterization_pair_recovery",
+            }
+        ],
+        "",
+    )
+
+
 def horizontal_forward_fill(cells: list[str], *, width: int) -> list[str]:
     padded = [normalize_text(cells[idx]) if idx < len(cells) else "" for idx in range(width)]
     current = ""
@@ -4191,6 +4257,8 @@ def run_table_row_expansion(
                     }
                 )
                 for name, value in assignment_map.items():
+                    if normalize_assignment_name(name) == "polymer_identity" and "polymer_identity" in row:
+                        row["polymer_identity"] = value
                     compat_field = compatibility_field_for_assignment(name)
                     if not compat_field:
                         continue
@@ -4550,6 +4618,156 @@ def run_table_row_expansion(
         activation_row["variable_axis_detected"] = "|".join(variable_axes_detected)
         table_activation_rows.append(activation_row)
 
+    if table_row_count == 0 and doe_rows_emitted == 0:
+        text_direct_rows, text_direct_failure_reason = extract_empty_control_characterization_pair_rows_from_source_text(
+            document=document,
+        )
+        text_activation_row = {
+            "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "table_id": "source_text_characterization_pair",
+            "scope_id": f"{document_key}__source_text_characterization_pair_scope__01",
+            "table_type": "source_text_characterization_pair",
+            "marker_provenance": "llm_parsed",
+            "considered": "yes",
+            "authorized": "yes" if text_direct_rows else "no",
+            "called": "no",
+            "rows_emitted": "0",
+            "rows_retained_after_projection": "0",
+            "skip_reason": text_direct_failure_reason,
+            "table_path": "source_text",
+            "varying_variable_count": "0",
+            "varying_variables": "",
+            "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+            "reopen_resolution_status": "source_text_characterization_pair" if text_direct_rows else reopen_binding.get("reopen_resolution_status", ""),
+            "reopen_failure_reason": "",
+            "normalized_payload_used": "no",
+            "doe_path_attempted": doe_path_attempted,
+            "doe_rows_emitted": str(doe_rows_emitted),
+            "fell_back_to_table_expansion": "no",
+            "fallback_reason": "",
+            "explicit_table_rows_emitted": "0",
+            "simple_table_enumeration_attempted": "no",
+            "simple_table_enumeration_activated": "no",
+            "simple_table_rows_emitted": "0",
+            "simple_table_block_reason": "",
+            "row_identity_surface_used": "source_text_characterization_pair",
+            "non_doe_single_variable_groups_detected": "0",
+            "single_variable_recovery_attempted": "no",
+            "single_variable_rows_emitted": "0",
+            "single_variable_recovery_source_type": "",
+            "single_variable_recovery_failure_reason": "",
+            "held_constant_context_source": "",
+            "variable_axis_detected": "",
+        }
+        if text_direct_rows:
+            text_scope_id = text_activation_row["scope_id"]
+            text_scope = {
+                "scope_id": text_scope_id,
+                "table_id": "source_text_characterization_pair",
+                "is_formulation_table": True,
+                "table_type": "source_text_characterization_pair",
+                "marker_provenance": "llm_parsed",
+                "declaration_basis": "llm_authorized_single_family_plus_source_measured_empty_control_pair",
+            }
+            for direct_row in text_direct_rows:
+                row = {column: "" for column in compatibility_columns}
+                label = normalize_text(direct_row.get("label")) or f"row_{len(rows) + 1}"
+                row_id = f"{document_key}__source_text_characterization_pair__{normalize_token(label)}"
+                assignment_map = {
+                    normalize_assignment_name(item["name"]): normalize_text(item["value"])
+                    for item in direct_row.get("assignments", [])
+                    if normalize_assignment_name(item.get("name")) and normalize_text(item.get("value"))
+                }
+                identity_variables = [
+                    {
+                        "name": normalize_token(name),
+                        "name_raw": name,
+                        "value": value,
+                        "value_raw": value,
+                    }
+                    for name, value in assignment_map.items()
+                ]
+                change_descriptions = [f"{name}={value}" for name, value in assignment_map.items()]
+                row.update(
+                    {
+                        "key": document_key,
+                        "doi": doi,
+                        "model": model_name,
+                        "local_instance_id": row_id,
+                        "formulation_id": row_id,
+                        "raw_formulation_label": label,
+                        "instance_kind": "new_formulation",
+                        "instance_kind_raw": "new_formulation",
+                        "instance_kind_inferred": "new_formulation",
+                        "instance_confidence": "reported",
+                        "candidate_source": RECOVERY_CANDIDATE_SOURCE,
+                        "stage2_semantic_source_mode": normalize_text(document.get("stage2_semantic_source_mode")),
+                        "semantic_universe_authority": normalize_text(document.get("semantic_universe_authority")),
+                        "row_materialization_mode": ROW_MATERIALIZATION_MODE,
+                        "semantic_scope_authority": "llm_declared_scope",
+                        "semantic_scope_ref": text_scope_id,
+                        "instance_evidence_region_type": normalize_text(direct_row.get("source_region_type")) or "narrative_text",
+                        "evidence_section": "source_text_characterization_pair",
+                        "evidence_span_text": normalize_text(direct_row.get("evidence_span_text") or direct_row.get("row_text")),
+                        "formulation_role": normalize_text(direct_row.get("instance_role")) or "control",
+                        "instance_context_tags": stringify_json(["table_row_expansion", "empty_control_characterization_pair_recovery"]),
+                        "change_context_tags": stringify_json([normalize_text(direct_row.get("change_context_tag")) or "empty_control_characterization_pair_recovery"]),
+                        "change_descriptions": stringify_json(change_descriptions),
+                        "change_role": "table_row_variation",
+                        IDENTITY_VARIABLES_FIELD: stringify_json(identity_variables),
+                        METHOD_GROUP_SIGNATURE_HINT_FIELD: group_hint,
+                        TABLE_ID_FIELD: "source_text_characterization_pair",
+                        TABLE_ROW_ID_FIELD: f"source_text_characterization_pair::{label}",
+                        TABLE_ASSIGNMENTS_FIELD: stringify_json([assignment_map]),
+                        TABLE_CELL_BINDINGS_FIELD: stringify_json([]),
+                        TABLE_SCOPE_FIELD: stringify_json(text_scope),
+                        TABLE_VARIABLE_ROLE_FIELD: stringify_json({}),
+                        SELECTION_MARKER_FIELD: stringify_json([]),
+                        INHERITANCE_MARKER_FIELD: stringify_json([]),
+                        BOUNDARY_MARKER_FIELD: stringify_json({}),
+                        PREPARATION_INHERITANCE_FIELD: stringify_json([]),
+                        "supporting_evidence_refs": stringify_json(
+                            [
+                                {
+                                    "source_region_type": normalize_text(direct_row.get("source_region_type")) or "narrative_text",
+                                    "source_locator_text": "source_text_characterization_pair",
+                                    "supporting_snippet": normalize_text(direct_row.get("evidence_span_text") or direct_row.get("row_text")),
+                                    "target_field_name": "|".join(assignment_map.keys()),
+                                }
+                            ]
+                        ),
+                    }
+                )
+                for name, value in assignment_map.items():
+                    if normalize_assignment_name(name) == "polymer_identity" and "polymer_identity" in row:
+                        row["polymer_identity"] = value
+                    compat_field = compatibility_field_for_assignment(name)
+                    if not compat_field:
+                        continue
+                    row[f"{compat_field}_value"] = maybe_number_text(value) or value
+                    row[f"{compat_field}_value_text"] = value
+                    row[f"{compat_field}_membership_confidence"] = "reported"
+                    row[f"{compat_field}_evidence_region_type"] = "narrative_text"
+                rows.append(row)
+                jsonl_rows.append(dict(row))
+                traces.append(
+                    {
+                        "key": document_key,
+                        "local_instance_id": row_id,
+                        "projection_step": FUNCTION_UNIT_ID,
+                        "projection_status": "added_row",
+                        "detail": f"source_text_characterization_pair::{label}",
+                    }
+                )
+                table_row_count += 1
+            text_activation_row["called"] = "yes"
+            text_activation_row["rows_emitted"] = str(len(text_direct_rows))
+            text_activation_row["rows_retained_after_projection"] = str(len(text_direct_rows))
+            text_activation_row["explicit_table_rows_emitted"] = str(len(text_direct_rows))
+            text_activation_row["skip_reason"] = ""
+        table_activation_rows.append(text_activation_row)
+
     if table_row_count == 0 and not single_variable_recovery_consumed and doe_rows_emitted == 0:
         anchorless_contract = build_single_variable_recovery_contract(
             document=document,
@@ -4648,7 +4866,7 @@ def run_table_row_expansion(
     summary = {
         "function_unit": FUNCTION_UNIT_ID,
         "document_key": document_key,
-        "considered": bool(scopes or source_table_paths(document)),
+        "considered": bool(scopes or source_table_paths(document) or table_activation_rows),
         "authorized": any(row.get("authorized") == "yes" for row in table_activation_rows),
         "called": any(row.get("called") == "yes" for row in table_activation_rows),
         "emitted_row_count": table_row_count,
@@ -4731,11 +4949,46 @@ def mark_llm_summary_rows_as_helpers(rows: list[dict[str, str]], jsonl_rows: lis
         for item in jsonl_rows
         if isinstance(item, dict) and normalize_text(item.get("formulation_id"))
     }
+    has_empty_control_pair_recovery = any(
+        normalize_text(row.get("candidate_source")) == RECOVERY_CANDIDATE_SOURCE
+        and "empty_control_characterization_pair_recovery" in normalize_text(
+            " ".join(
+                [
+                    row.get("instance_context_tags", ""),
+                    row.get("change_context_tags", ""),
+                    row.get("semantic_scope_ref", ""),
+                    row.get("evidence_section", ""),
+                ]
+            )
+        )
+        for row in rows
+    )
+    loaded_family_rows = [
+        row
+        for row in rows
+        if normalize_text(row.get("candidate_source")) != RECOVERY_CANDIDATE_SOURCE
+        and normalize_text(row.get("instance_kind")) in {"formulation_family", "single_formulation", "new_formulation"}
+        and (
+            "synthesis_core" in normalize_text(row.get("instance_context_tags"))
+            or normalize_text(row.get("formulation_role")) in {"", "unclear", "reported", "optimized"}
+        )
+        and (
+            normalize_text(row.get("drug_name_value_text"))
+            or normalize_text(row.get("drug_name_value"))
+            or normalize_text(row.get("drug_name"))
+            or normalize_text(row.get("payload_state")) == "drug_loaded"
+        )
+    ]
+    preserve_single_loaded_family_with_empty_control_pair = (
+        has_empty_control_pair_recovery and len(loaded_family_rows) == 1
+    )
     for row in rows:
         row[METHOD_GROUP_SIGNATURE_HINT_FIELD] = normalize_text(row.get(METHOD_GROUP_SIGNATURE_HINT_FIELD)) or group_hint
         if normalize_text(row.get("candidate_source")) == RECOVERY_CANDIDATE_SOURCE:
             continue
         if not is_summary_row(row):
+            continue
+        if preserve_single_loaded_family_with_empty_control_pair and row is loaded_family_rows[0]:
             continue
         row["instance_kind_raw"] = "candidate_non_formulation"
         row["instance_kind_inferred"] = "candidate_non_formulation"
