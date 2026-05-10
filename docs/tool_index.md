@@ -221,7 +221,6 @@ Note:
 - `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py`
   - Class: Reusable evaluation/diagnostic tool
   - Role: Build a diagnostic-only scaffold-binding surface from a reviewed Layer2-style GT workbook and selected Stage5 final tables using article-native-first identity binding and normalized namespaced-id recovery before any strict identity-equivalent fallback.
-- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
   - Class: Reusable evaluation/diagnostic tool
   - Role: Mandatory Stage5 post-materialization identity gate for downstream compare/export/review workflows. It validates IDENTITY_FREEZE_RULE_V1 against an upstream identity scaffold and a Stage5 final table, emits row-count drift, identity reassignment, and violation diagnostics, and fails non-zero on any violation unless explicitly run in report-only mode.
 - `src/stage5_benchmark/export_final_formulation_audit_ready_v1.py`

@@ -152,7 +152,13 @@ def _lexicon_row_matches(row: dict[str, str], value: str) -> bool:
     return raw == surface_raw or compact == surface_compact
 
 
-def _match_lexicon_value(*, field_family: str, value: str, paper_key: str = "") -> list[str]:
+def _match_lexicon_value(
+    *,
+    field_family: str,
+    value: str,
+    paper_key: str = "",
+    include_global: bool = True,
+) -> list[str]:
     if not _canonical_text(value):
         return []
     paper_key = normalize_text(paper_key)
@@ -165,6 +171,9 @@ def _match_lexicon_value(*, field_family: str, value: str, paper_key: str = "") 
         if not canonical or not normalize_text(row.get("surface_form")):
             continue
         scope = normalize_text(row.get("scope")) or "global"
+        alias_type = normalize_text(row.get("alias_type"))
+        if field_family == "field_name" and alias_type == "drug_specific_mass_header" and scope != "paper_local":
+            continue
         if scope == "paper_local":
             row_paper = normalize_text(row.get("paper_key"))
             # Paper-local rows are unsafe without an explicit paper key on both
@@ -175,7 +184,8 @@ def _match_lexicon_value(*, field_family: str, value: str, paper_key: str = "") 
                 scoped_matches.append(canonical)
             continue
         if _lexicon_row_matches(row, value):
-            global_matches.append(canonical)
+            if include_global:
+                global_matches.append(canonical)
     # Paper-local definitions override global definitions for the same surface;
     # multiple scoped matches remain ambiguous and are handled by callers.
     matches = scoped_matches if scoped_matches else global_matches
@@ -200,7 +210,7 @@ def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
     if concentration_header:
         if re.search(r"\b(?:plga|polymer|pcl|pla|resomer)\b", raw):
             return "polymer_concentration_value"
-        if re.search(r"\b(?:drug|payload|gatifloxacin|rhodamine|artemether|dexibuprofen|dxi|kgn|kartogenin|acetylpuerarin)\b", raw):
+        if re.search(r"\b(?:drug|payload)\b", raw):
             return "drug_concentration_value"
     mass_header = bool(re.search(r"\b(?:mg|milligram|milligrams)\b", raw))
     if mass_header:
@@ -213,10 +223,11 @@ def canonical_field_for_header(header: str, *, paper_key: str = "") -> str:
                 field_family="drug_name",
                 value=header_without_mass_unit,
                 paper_key=paper_key,
+                include_global=False,
             )
             if len(drug_matches) == 1:
                 return "drug_mass_mg"
-        if re.search(r"\b(?:drug|payload|gatifloxacin|rhodamine|artemether|dexibuprofen|dxi|kgn|kartogenin|acetylpuerarin)\b", raw):
+        if re.search(r"\b(?:drug|payload)\b", raw):
             return "drug_mass_mg"
     volume_header = bool(re.search(r"\b(?:ml|milliliter|millilitre)\b", raw))
     if volume_header:

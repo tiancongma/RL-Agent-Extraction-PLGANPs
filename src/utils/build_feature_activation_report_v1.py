@@ -184,7 +184,48 @@ def derive_activation_state(expected_for_run: str, observed_activation: str, act
     return "not_invoked"
 
 
+def evidence_artifacts_record_duplicate_suppression(surfaces: dict[str, Any]) -> bool:
+    for path in surfaces.get("evidence_blocks_paths") or []:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        if isinstance(payload, dict) and isinstance(payload.get("duplicate_table_suppression_events"), list) and payload.get("duplicate_table_suppression_events"):
+            return True
+    return False
+
+
+def evidence_artifacts_record_primary_table_guardrail(surfaces: dict[str, Any]) -> bool:
+    for path in surfaces.get("normalized_table_payload_paths") or []:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        for table_payload in payload.get("normalized_table_payloads") or [] if isinstance(payload, dict) else []:
+            if not isinstance(table_payload, dict):
+                continue
+            if normalize_text(table_payload.get("primary_table_guardrail_status")) or normalize_text(table_payload.get("structure_first_guardrail_status")):
+                return True
+    for path in surfaces.get("candidate_blocks_paths") or []:
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        snapshot = payload.get("feature_activation_snapshot", {}) if isinstance(payload, dict) else {}
+        if isinstance(snapshot, dict) and snapshot.get("s2_2a_primary_table_guardrail"):
+            return True
+    return False
+
+
 def expected_for_run(feature_id: str, matrix_row: dict[str, str], surfaces: dict[str, Any]) -> str:
+    if feature_id in {"variant_aware_gt_authority_switch", "benchmark_doi_level_gt_count_audit"}:
+        return "yes" if surfaces.get("benchmark_compare") else "no"
+    if feature_id == "family_variant_retention_governance":
+        return "yes" if surfaces.get("stage5_final") else "no"
+    if feature_id == "s2_2_duplicate_table_suppression":
+        return "yes" if surfaces.get("stage2_active") and evidence_artifacts_record_duplicate_suppression(surfaces) else "no"
+    if feature_id == "s2_2a_primary_table_guardrail":
+        return "yes" if surfaces.get("stage2_active") and evidence_artifacts_record_primary_table_guardrail(surfaces) else "no"
     if feature_id == "stage2_input_evidence_packing":
         if surfaces.get("stage2_input_packing_mode") == "ordered_blocks":
             return "yes"
@@ -293,21 +334,35 @@ def observe_numbered_doe_regression_guard(run_dir: Path, surfaces: dict[str, Any
 
 def observe_variant_aware_gt_authority_switch(run_dir: Path, surfaces: dict[str, Any]) -> dict[str, str]:
     counts_files = find_run_files(run_dir, "final_table_vs_gt_counts_by_doi.tsv")
+    accepted_authority_tokens = (
+        "dev15_formulation_skeleton_review_v2_variantaware.xlsx",
+        "data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv",
+        "dev15_layer1_gt_counts.tsv",
+    )
     for path in counts_files:
         rows = read_tsv(path)
-        if any("dev15_formulation_skeleton_review_v2_variantaware.xlsx" in row.get("gt_authority_file", "") for row in rows):
+        authority_values = [row.get("gt_authority_file", "") for row in rows]
+        if any(
+            any(token in authority_value for token in accepted_authority_tokens)
+            for authority_value in authority_values
+        ):
+            observed = next(
+                authority_value
+                for authority_value in authority_values
+                if any(token in authority_value for token in accepted_authority_tokens)
+            )
             return {
                 "observed_activation": "active",
                 "activation_status": "active",
                 "evidence_path": to_repo_rel(path),
-                "evidence_detail": "Compare artifact records the v2 variant-aware GT workbook path.",
-                "notes": "The feature is active only because the run-local compare artifact proves the v2 authority was used.",
+                "evidence_detail": f"Compare artifact records accepted DEV15 GT authority: {observed}",
+                "notes": "The feature is active only because the run-local compare artifact proves the accepted DEV15 GT authority was used.",
             }
     return {
         "observed_activation": "missing",
         "activation_status": "missing",
         "evidence_path": "",
-        "evidence_detail": "No run-local compare artifact proved use of dev15_formulation_skeleton_review_v2_variantaware.xlsx.",
+        "evidence_detail": "No run-local compare artifact proved use of the accepted DEV15 variant-aware/frozen Layer1 GT authority.",
         "notes": "Code existence alone is not enough for activation.",
     }
 

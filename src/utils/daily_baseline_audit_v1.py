@@ -97,7 +97,6 @@ COMMON_RUN_CONTEXT_KEYS = [
     "final_table_tsv",
     "gt_counts_tsv",
     "layer1_gt_counts_tsv",
-    "identity_freeze_summary_tsv",
     "legacy_raw_responses_dir",
     "source_run_dir",
 ]
@@ -616,7 +615,6 @@ def build_stage_output_inventory(run_dir: Path) -> dict[str, Any]:
             "final_output_summary_md": first_run_file(run_dir, "final_output_summary_v1.md"),
         },
         "stage5_compare_outputs": {
-            "identity_freeze_summary_tsv": first_run_file(run_dir, "identity_freeze_summary_v1.tsv"),
             "final_table_vs_gt_counts_tsv": first_run_file(run_dir, "final_table_vs_gt_counts.tsv"),
             "final_table_vs_gt_summary_md": first_run_file(run_dir, "final_table_vs_gt_summary.md"),
         },

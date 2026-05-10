@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from src.stage2_sampling_labels import auto_extract_weak_labels_v7pilot_r3_fixparse as weak_labels
 from src.stage2_sampling_labels import build_dictionary_promotion_review_v1 as promotion_review
 from src.stage2_sampling_labels import build_paper_local_abbreviation_registry_v1 as abbrev_registry
 from src.stage2_sampling_labels import extract_semantic_stage2_objects_v2 as stage2_objects
@@ -189,6 +190,8 @@ class TableStructureDictionaryV1Tests(unittest.TestCase):
             self.assertEqual(s5_final.normalize_emulsifier_factor_candidate("LocalF68", paper_key="OTHER"), "")
 
     def test_paper_local_drug_abbreviation_overlay_enables_drug_mass_header_binding(self) -> None:
+        self.assertEqual(structure_dictionary.canonical_field_for_header("Rhodamine (mg)"), "")
+        self.assertEqual(structure_dictionary.canonical_field_for_header("Gatifloxacin mg/mL"), "")
         rows = [
             {
                 "field_family": "drug_name",
@@ -217,6 +220,32 @@ class TableStructureDictionaryV1Tests(unittest.TestCase):
                 self.assertEqual(structure_dictionary.normalize_dictionary_value("drug_name", "SND", paper_key="PAPER1"), "some new drug")
                 self.assertEqual(structure_dictionary.canonical_field_for_header("SND (mg)", paper_key="PAPER1"), "drug_mass_mg")
                 self.assertEqual(structure_dictionary.normalize_dictionary_value("drug_name", "SND", paper_key="OTHER"), "SND")
+
+    def test_role_normalization_uses_generic_material_classes_not_paper_local_names(self) -> None:
+        self.assertEqual(
+            weak_labels.normalize_component_name_and_role("PLGA 50:50", "unknown"),
+            ("PLGA", "polymer", "name_normalized"),
+        )
+        self.assertEqual(
+            weak_labels.normalize_component_name_and_role("PVA", "unknown"),
+            ("PVA", "surfactant", "name_normalized"),
+        )
+        self.assertEqual(
+            weak_labels.normalize_component_name_and_role("Gatifloxacin", "excipient"),
+            ("Gatifloxacin", "excipient", "field_mapped"),
+        )
+        self.assertEqual(
+            weak_labels.normalize_component_name_and_role("Rhodamine", "polymer"),
+            ("Rhodamine", "polymer", "field_mapped"),
+        )
+        self.assertEqual(
+            weak_labels.normalize_component_name_and_role("Labrafil", "solvent"),
+            ("Labrafil", "solvent", "field_mapped"),
+        )
+        self.assertEqual(
+            weak_labels.normalize_component_name_and_role("Polysorbate 80", "excipient"),
+            ("Polysorbate 80", "excipient", "field_mapped"),
+        )
 
     def test_abbreviation_registry_extracts_paper_local_drug_candidate_from_text(self) -> None:
         rows = abbrev_registry.extract_abbreviation_candidates_from_text(

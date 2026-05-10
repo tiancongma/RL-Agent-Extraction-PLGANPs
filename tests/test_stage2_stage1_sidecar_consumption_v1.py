@@ -209,6 +209,58 @@ class TestStage2Stage1SidecarConsumptionV1(unittest.TestCase):
             self.assertFalse(artifact["feature_activation_snapshot"]["stage1_structure_sidecar_metadata"])
             self.assertEqual(artifact["stage1_structure_sidecar_status"], "missing")
 
+    def test_s2_1b_denoised_projection_is_consumed_while_raw_text_remains_audit_authority(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            raw_text_path = tmp / "PAPER1_raw.txt"
+            denoised_text_path = tmp / "PAPER1_s2_1b.txt"
+            raw_text_path.write_text(
+                "Journals & Books\nPLGA nanoparticles were prepared by solvent evaporation with PVA stabilizer.",
+                encoding="utf-8",
+            )
+            denoised_text_path.write_text(
+                "PLGA nanoparticles were prepared by solvent evaporation with PVA stabilizer.",
+                encoding="utf-8",
+            )
+            record = {
+                "key": "PAPER1",
+                "source_s2_1b_denoised_text_path": str(denoised_text_path),
+                "s2_1b_denoise_audit_path": str(tmp / "PAPER1_s2_1b_audit.json"),
+                "s2_1b_denoise_summary_path": str(tmp / "s2_1b_summary.tsv"),
+            }
+
+            candidate_artifact, bundle = extractor.build_candidate_segmentation_artifact(
+                record=record,
+                manifest_path=tmp / "manifest.tsv",
+                text_path=raw_text_path,
+                table_dir=None,
+                producer_script="test",
+            )
+            evidence_artifact, _debug = extractor.build_evidence_blocks_artifact(
+                record={**record, "doi": "", "title": "Synthetic"},
+                manifest_path=tmp / "manifest.tsv",
+                text_path=raw_text_path,
+                table_dir=None,
+                max_chars=2000,
+                producer_script="test",
+                candidate_artifact_path=tmp / "candidate_blocks_v1.json",
+                segmentation_bundle=bundle,
+            )
+
+            self.assertEqual(candidate_artifact["source_clean_text_path"], extractor.to_repo_rel(raw_text_path))
+            self.assertEqual(candidate_artifact["source_text_projection"], "s2_1b_denoised")
+            self.assertEqual(candidate_artifact["source_s2_1b_denoised_text_path"], extractor.to_repo_rel(denoised_text_path))
+            self.assertEqual(candidate_artifact["s2_1b_denoise_summary_path"], extractor.to_repo_rel(tmp / "s2_1b_summary.tsv"))
+            self.assertTrue(candidate_artifact["feature_activation_snapshot"]["s2_1b_source_denoise_projection"])
+            candidate_text = "\n".join(candidate["text_content"] for candidate in candidate_artifact["candidate_blocks"])
+            self.assertNotIn("Journals & Books", candidate_text)
+            self.assertIn("solvent evaporation", candidate_text)
+            self.assertEqual(evidence_artifact["source_clean_text_path"], extractor.to_repo_rel(raw_text_path))
+            self.assertEqual(evidence_artifact["source_text_projection"], "s2_1b_denoised")
+            self.assertEqual(evidence_artifact["s2_1b_denoise_summary_path"], extractor.to_repo_rel(tmp / "s2_1b_summary.tsv"))
+            self.assertEqual(evidence_artifact["input_contract"]["source_text_projection"], "s2_1b_denoised")
+            self.assertTrue(evidence_artifact["feature_activation_snapshot"]["s2_1b_source_denoise_projection"])
+
     def test_build_normalized_payload_uses_sidecar_only_for_already_selected_candidate(self):
         with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
             tmp = Path(td)
@@ -276,6 +328,59 @@ class TestStage2Stage1SidecarConsumptionV1(unittest.TestCase):
             self.assertEqual(payload["stage1_cell_sidecar_table_id"], "t001")
             self.assertEqual(payload["stage1_cell_sidecar_noise_class"], "keep")
             self.assertEqual(payload["stage1_cell_sidecar_caption_binding_rule"], "synthetic_test_caption")
+            self.assertEqual(payload["source_caption_binding_status"], "unbound")
+            self.assertEqual(payload["source_caption_or_title"], "")
+
+    def test_normalized_payload_uses_exact_sidecar_caption_over_polluted_candidate_caption(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            sidecar_root = tmp / "tables_cell_sidecar"
+            self._write_sidecar(sidecar_root, "PAPER1")
+            out_dir = tmp / "semantic_stage2_objects"
+            evidence_path = tmp / "evidence_blocks" / "PAPER1" / "evidence_blocks_v1.json"
+            evidence_artifact = {
+                "evidence_blocks": [
+                    {"candidate_id": "PAPER1__candidate_table__01", "is_table_derived": True}
+                ]
+            }
+            segmentation_bundle = {
+                "selector_candidates": [
+                    {
+                        "candidate_id": "PAPER1__candidate_table__01",
+                        "candidate_kind": "table",
+                        "table_role_hint": "formulation",
+                        "origin_locator": "synthetic_table_01.csv",
+                        "item": {
+                            "rows": [["FallbackHeader"], ["fallback_value"]],
+                            "meta": {
+                                "table_id": "t001",
+                                "caption_or_title": "Table 2 Wrong adjacent caption with publisher prose",
+                                "caption_binding_source": "csv_body_untrusted",
+                                "caption_binding_status": "untrusted",
+                            },
+                            "representation_status": "raw_summary",
+                            "selector_readiness_label": "ready",
+                        },
+                    }
+                ]
+            }
+
+            artifact, _validation_rows = extractor.build_normalized_table_payload_artifact(
+                record={"key": "PAPER1"},
+                out_dir=out_dir,
+                producer_script="test",
+                evidence_artifact_path=evidence_path,
+                evidence_artifact=evidence_artifact,
+                segmentation_bundle=segmentation_bundle,
+                stage1_table_cell_sidecar_root=sidecar_root,
+            )
+
+            payload = artifact["normalized_table_payloads"][0]
+            self.assertEqual(payload["stage1_cell_sidecar_match_rule"], "stable_table_id_to_sidecar_table_id")
+            self.assertEqual(payload["source_caption_or_title"], "Table 1")
+            self.assertEqual(payload["source_caption_binding_source"], "stage1_cell_sidecar")
+            self.assertEqual(payload["source_caption_binding_status"], "trusted_exact_table_id")
+            self.assertNotIn("Wrong adjacent", payload["source_caption_or_title"])
 
     def test_confirmed_noise_stage1_sidecar_table_is_not_promoted_to_selected_payload(self):
         with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:

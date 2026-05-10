@@ -784,8 +784,80 @@ def scope_kind_to_table_type(scope_kind: str) -> str:
     return mapping.get(normalized, "partial_formulation")
 
 
-def scope_kind_is_formulation_bearing(scope_kind: str, explicit_flag: Any) -> bool:
+SEQUENTIAL_RESULT_BEARING_SCOPE_KINDS = {"sequential_child", "downstream_variant_table"}
+SEQUENTIAL_RESULT_HEADER_TOKENS = {
+    "particle size",
+    "pdi",
+    "zeta",
+    "%ee",
+    "ee",
+    "% dl",
+    "dl",
+    "drug content",
+    "major axis",
+    "minor axis",
+    "feret",
+    "aspect ratio",
+    "ar",
+}
+
+
+def table_scope_locator_dicts(value: Any) -> list[dict[str, Any]]:
+    if isinstance(value, dict):
+        return [value]
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+    return []
+
+
+def source_table_reference_for_scope(table_scope: dict[str, Any]) -> str:
+    direct = normalize_text(table_scope.get("source_table_reference"))
+    if direct:
+        return direct
+    for locator in table_scope_locator_dicts(table_scope.get("table_scope_locators")):
+        ref = normalize_text(locator.get("source_table_reference"))
+        if ref:
+            return ref
+    return ""
+
+
+def sequential_scope_has_result_bearing_table_authority(table_scope: dict[str, Any] | None) -> bool:
+    if not isinstance(table_scope, dict):
+        return False
+    if normalize_text(table_scope.get("scope_kind")) not in SEQUENTIAL_RESULT_BEARING_SCOPE_KINDS:
+        return False
+    if not normalize_text(table_scope.get("parent_table_hint")):
+        return False
+    source_ref = source_table_reference_for_scope(table_scope)
+    if not source_ref:
+        return False
+    path = Path(source_ref)
+    if not path.is_absolute():
+        path = REPO_ROOT / path
+    if not path.exists():
+        return False
+    try:
+        with path.open(newline="") as handle:
+            rows = list(csv.reader(handle))
+    except OSError:
+        return False
+    if len(rows) < 2:
+        return False
+    header_text = normalize_text(" ".join(rows[0])).lower()
+    if not any(token in header_text for token in SEQUENTIAL_RESULT_HEADER_TOKENS):
+        return False
+    return any(any(normalize_text(cell) for cell in row) for row in rows[1:])
+
+
+def scope_kind_is_formulation_bearing(
+    scope_kind: str,
+    explicit_flag: Any,
+    *,
+    table_scope: dict[str, Any] | None = None,
+) -> bool:
     if explicit_flag is not None:
+        if not bool(explicit_flag) and sequential_scope_has_result_bearing_table_authority(table_scope):
+            return True
         return bool(explicit_flag)
     return normalize_text(scope_kind) not in {"non_formulation", "unclear"}
 
@@ -880,6 +952,12 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
             declaration = declaration_scope_map.get(table_id, {})
             locator_rows = declaration.get("table_scope_locators") if isinstance(declaration.get("table_scope_locators"), list) else []
             primary_locator = locator_rows[0] if locator_rows and isinstance(locator_rows[0], dict) else {}
+            item_locator = item.get("table_scope_locators")
+            preserved_locators = (
+                locator_rows
+                if locator_rows
+                else ([item_locator] if isinstance(item_locator, dict) else item_locator if isinstance(item_locator, list) else [])
+            )
             normalized["table_formulation_scopes"].append(
                 {
                     "scope_id": normalize_text(declaration.get("scope_id")) or f"{document_key}__table_formulation_scope__{index:02d}",
@@ -888,10 +966,14 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
                     "table_asset_id": normalize_text(primary_locator.get("source_table_asset_id") or item.get("source_table_asset_id")),
                     "source_table_asset_id": normalize_text(primary_locator.get("source_table_asset_id") or item.get("source_table_asset_id")),
                     "source_table_reference": normalize_text(primary_locator.get("source_table_reference") or item.get("source_table_reference")),
-                    "table_scope_locators": primary_locator if primary_locator else (item.get("table_scope_locators") if isinstance(item.get("table_scope_locators"), dict) else {}),
+                    "table_scope_locators": preserved_locators,
                     "variable_name": "",
                     "candidate_values": [],
-                    "is_formulation_table": scope_kind_is_formulation_bearing(item.get("scope_kind"), item.get("is_formulation_bearing")),
+                    "is_formulation_table": scope_kind_is_formulation_bearing(
+                        item.get("scope_kind"),
+                        item.get("is_formulation_bearing"),
+                        table_scope=item,
+                    ),
                     "table_type": scope_kind_to_table_type(normalize_text(item.get("scope_kind"))),
                     "parent_table_hint": normalize_text(item.get("parent_table_hint")),
                     "confidence": normalize_text(item.get("confidence")) or "low",
@@ -911,7 +993,11 @@ def normalize_stage2_document_for_projection(document: dict[str, Any]) -> dict[s
             for item in ensure_list(document.get("table_scopes"))
             if isinstance(item, dict)
             and normalize_text(item.get("table_id"))
-            and scope_kind_is_formulation_bearing(item.get("scope_kind"), item.get("is_formulation_bearing"))
+            and scope_kind_is_formulation_bearing(
+                item.get("scope_kind"),
+                item.get("is_formulation_bearing"),
+                table_scope=item,
+            )
             and normalize_text(item.get("scope_kind")) != "non_formulation"
             and primary_variable_names
         ]
@@ -1453,13 +1539,28 @@ def merge_table_scope_locators(document: dict[str, Any], locator_entries: list[d
             return None
         return locator_by_ref.get(normalized)
 
+    def existing_locator_is_specific(scope: dict[str, Any]) -> bool:
+        locators = scope.get("table_scope_locators")
+        if isinstance(locators, dict):
+            locators = [locators]
+        if not isinstance(locators, list):
+            locators = []
+        for locator in locators:
+            if not isinstance(locator, dict):
+                continue
+            if normalize_text(locator.get("source_table_asset_id")) or normalize_text(locator.get("source_table_reference")):
+                return True
+        return bool(normalize_text(scope.get("source_table_asset_id")) or normalize_text(scope.get("source_table_reference")))
+
     for scope in ensure_list(document.get("table_scopes")):
         if not isinstance(scope, dict):
+            continue
+        if existing_locator_is_specific(scope):
             continue
         locator = resolve_locator(scope.get("table_id"))
         if locator is None:
             continue
-        scope["table_scope_locators"] = dict(locator)
+        scope["table_scope_locators"] = [dict(locator)]
         if locator.get("source_table_asset_id"):
             scope["source_table_asset_id"] = locator["source_table_asset_id"]
         if locator.get("source_table_reference"):
@@ -1468,10 +1569,12 @@ def merge_table_scope_locators(document: dict[str, Any], locator_entries: list[d
     for scope in ensure_list(document.get("table_formulation_scopes")):
         if not isinstance(scope, dict):
             continue
+        if existing_locator_is_specific(scope):
+            continue
         locator = resolve_locator(scope.get("table_id"))
         if locator is None:
             continue
-        scope["table_scope_locators"] = dict(locator)
+        scope["table_scope_locators"] = [dict(locator)]
         if locator.get("source_table_asset_id"):
             scope["table_asset_id"] = locator["source_table_asset_id"]
             scope["source_table_asset_id"] = locator["source_table_asset_id"]
@@ -1480,6 +1583,8 @@ def merge_table_scope_locators(document: dict[str, Any], locator_entries: list[d
 
     for declaration in ensure_list(document.get("semantic_scope_declarations")):
         if not isinstance(declaration, dict):
+            continue
+        if existing_locator_is_specific(declaration):
             continue
         refs = [item for item in ensure_list(declaration.get("table_scope_refs")) if normalize_text(item)]
         locators = []
@@ -2521,42 +2626,41 @@ def project_document(
         "called": False,
         "emitted_row_count": 0,
         "retained_row_count": 0,
-        "skip_reason": "blocked_by_table_row_expansion" if table_rows else "not_invoked",
-        "status": "skipped_due_to_table_row_expansion" if table_rows else "not_invoked",
+        "skip_reason": "not_invoked",
+        "status": "not_invoked",
         "replaced_row_count": 0,
     }
-    if not table_rows:
-        sequential_rows, sequential_traces, sequential_jsonl_rows, sequential_summary = run_sequential_optimization_interpreter(
-            document=document,
-            existing_rows=rows,
-        )
-        if sequential_rows:
-            rows.extend(sequential_rows)
-            traces.extend(sequential_traces)
-            jsonl_rows.extend(sequential_jsonl_rows)
-            rows, suppressed_rows = prefer_resolved_sequential_rows(rows)
-            if suppressed_rows:
-                suppressed_ids = [
-                    normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
-                    for row in suppressed_rows
-                    if normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
-                ]
-                add_trace(
-                    traces,
-                    document_key,
-                    "__recovery__",
-                    "sequential_optimization_overlap_suppression",
-                    suppressed_ids,
-                    DIRECT,
-                    DIRECT,
-                    f"Suppressed {len(suppressed_ids)} overlapping LLM rows in favor of governed sequential optimization resolution.",
-                )
-                kept = {normalize_text(row.get("formulation_id")) for row in rows if normalize_text(row.get("formulation_id"))}
-                jsonl_rows = [
-                    item
-                    for item in jsonl_rows
-                    if normalize_text(item.get("formulation_id")) in kept
-                ]
+    sequential_rows, sequential_traces, sequential_jsonl_rows, sequential_summary = run_sequential_optimization_interpreter(
+        document=document,
+        existing_rows=rows,
+    )
+    if sequential_rows:
+        rows.extend(sequential_rows)
+        traces.extend(sequential_traces)
+        jsonl_rows.extend(sequential_jsonl_rows)
+        rows, suppressed_rows = prefer_resolved_sequential_rows(rows)
+        if suppressed_rows:
+            suppressed_ids = [
+                normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+                for row in suppressed_rows
+                if normalize_text(row.get("formulation_id") or row.get("local_instance_id"))
+            ]
+            add_trace(
+                traces,
+                document_key,
+                "__recovery__",
+                "sequential_optimization_overlap_suppression",
+                suppressed_ids,
+                DIRECT,
+                DIRECT,
+                f"Suppressed {len(suppressed_ids)} overlapping LLM rows in favor of governed sequential optimization resolution.",
+            )
+            kept = {normalize_text(row.get("formulation_id")) for row in rows if normalize_text(row.get("formulation_id"))}
+            jsonl_rows = [
+                item
+                for item in jsonl_rows
+                if normalize_text(item.get("formulation_id")) in kept
+            ]
 
     if should_replace_with_governed_fallback(document, rows, recovery_summary, table_summary):
         fallback_record = {
@@ -2802,6 +2906,15 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-dir", default="", help="Directory for projected compatibility outputs.")
     parser.add_argument("--write-contract-only", action="store_true", help="Write the projection contract TSV and exit.")
     parser.add_argument("--contract-out", default="", help="Optional explicit path for the projection contract TSV.")
+    parser.add_argument(
+        "--authority-sidecar",
+        default="",
+        help=(
+            "Optional S2-5b semantic-authority reattachment sidecar root or JSON. "
+            "Used only to reattach existing LLM-declared table semantics to S2-2 full-table "
+            "authority locators; it does not create semantic authorization."
+        ),
+    )
     return parser
 
 
@@ -3008,10 +3121,12 @@ def main() -> None:
 
     input_path = Path(args.input_jsonl)
     output_dir = Path(args.output_dir)
+    authority_sidecar_path = Path(args.authority_sidecar) if str(args.authority_sidecar).strip() else None
     summary = run_projection(
         input_path=input_path,
         output_dir=output_dir,
         contract_path=contract_path,
+        authority_sidecar_path=authority_sidecar_path,
     )
     print(f"[ok] projected {summary['projected_rows']} rows from {summary['documents']} document payload(s) -> {output_dir}")
 

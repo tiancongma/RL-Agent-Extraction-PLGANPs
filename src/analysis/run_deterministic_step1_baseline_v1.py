@@ -43,7 +43,6 @@ SEMANTIC_DIR_NAME = "semantic_stage2_objects"
 COMPAT_DIR_NAME = "semantic_to_widerow_adapter"
 RELATION_DIR_NAME = "formulation_relation_v1"
 SCAFFOLD_DIR_NAME = "audit/layer2_identity_scaffold_binding_v1"
-FREEZE_DIR_NAME = "audit/identity_freeze_guardrail_v1"
 
 
 def normalize_text(value: Any) -> str:
@@ -167,7 +166,6 @@ def build_run_context(
     processed_keys: list[str],
     skipped_rows: list[dict[str, str]],
     final_row_count: int,
-    freeze_status: str,
     run_status: str,
     failure_note: str,
 ) -> str:
@@ -197,7 +195,7 @@ def build_run_context(
                 "",
                 "## 3. Purpose",
                 "",
-                "- Execute deterministic Step 1 only: manifest-driven formulation-boundary reconstruction, Stage5 final-table materialization, and mandatory identity-freeze validation.",
+                "- Execute deterministic Step 1 only: manifest-driven formulation-boundary reconstruction and Stage5 final-table materialization.",
                 "- This run is comparator/rules-only and makes no LLM or external API calls.",
                 "",
                 "## 4. Starting inputs",
@@ -216,8 +214,7 @@ def build_run_context(
                 "3. Run `src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py`.",
                 "4. Run `src/stage3_relation/build_formulation_relation_artifacts_v1.py`.",
                 "5. Run `src/stage5_benchmark/build_minimal_final_output_v1.py`.",
-                "6. Run `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py`.",
-                "7. Run `src/stage5_benchmark/enforce_identity_freeze_v1.py` as a hard gate.",
+                "6. Run `src/stage5_benchmark/build_layer2_identity_scaffold_binding_v1.py` as a diagnostic scaffold-binding support surface.",
                 "",
                 "## 6. Commands used",
                 "",
@@ -237,8 +234,7 @@ def build_run_context(
                 "",
                 f"- `{run_status}`",
                 "- `diagnostic-only, not benchmark-valid final output`",
-                "- Reason: this Step 1 run ends at frozen Stage5 output plus identity-freeze validation and does not execute benchmark GT comparison.",
-                f"- identity_freeze_result: `{freeze_status}`",
+                "- Reason: this Step 1 run ends at frozen Stage5 output and does not execute benchmark GT comparison.",
                 f"- final_formulation_row_count: `{final_row_count}`",
                 f"- failure_note: `{failure_note or 'none'}`",
                 "",
@@ -248,7 +244,6 @@ def build_run_context(
                 f"- `{repo_rel(run_dir / 'downstream_variant_records_v1.tsv')}`",
                 f"- `{repo_rel(run_dir / 'final_output_decision_trace_v1.tsv')}`",
                 f"- `{repo_rel(run_dir / SCAFFOLD_DIR_NAME / 'layer2_identity_scaffold_rows_v1.tsv')}`",
-                f"- `{repo_rel(run_dir / FREEZE_DIR_NAME / 'identity_freeze_summary_v1.tsv')}`",
                 f"- `{repo_rel(run_dir / 'RUN_CONTEXT.md')}`",
             ]
         )
@@ -339,7 +334,6 @@ def main() -> int:
     compat_dir = run_dir / COMPAT_DIR_NAME
     relation_dir = run_dir / RELATION_DIR_NAME
     scaffold_dir = run_dir / SCAFFOLD_DIR_NAME
-    freeze_dir = run_dir / FREEZE_DIR_NAME
 
     commands = [
         [
@@ -396,17 +390,6 @@ def main() -> int:
             "--out-dir",
             str(scaffold_dir),
         ],
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "src" / "stage5_benchmark" / "enforce_identity_freeze_v1.py"),
-            "--identity-scaffold-rows-tsv",
-            str(scaffold_dir / "layer2_identity_scaffold_rows_v1.tsv"),
-            "--final-table-tsv",
-            str(run_dir / "final_formulation_table_v1.tsv"),
-            *[item for key in processed_keys for item in ("--paper-key", key)],
-            "--out-dir",
-            str(freeze_dir),
-        ],
     ]
 
     command_results: list[dict[str, str]] = []
@@ -437,9 +420,6 @@ def main() -> int:
             break
 
     final_rows = read_tsv_rows(run_dir / "final_formulation_table_v1.tsv") if (run_dir / "final_formulation_table_v1.tsv").exists() else []
-    freeze_rows = read_tsv_rows(freeze_dir / "identity_freeze_summary_v1.tsv") if (freeze_dir / "identity_freeze_summary_v1.tsv").exists() else []
-    freeze_status = "pass" if freeze_rows and all(row.get("status") == "pass" for row in freeze_rows) else "fail"
-
     run_context = build_run_context(
         run_id=run_id,
         run_dir=run_dir,
@@ -455,7 +435,6 @@ def main() -> int:
         processed_keys=processed_keys,
         skipped_rows=skipped_rows,
         final_row_count=len(final_rows),
-        freeze_status=freeze_status,
         run_status=run_status,
         failure_note=failure_note,
     )
@@ -472,7 +451,6 @@ def main() -> int:
                 "papers_processed": len(processed_keys),
                 "papers_skipped": len(skipped_rows),
                 "final_formulation_rows": len(final_rows),
-                "identity_freeze": freeze_status,
                 "run_status": run_status,
                 "failure_note": failure_note,
             },

@@ -90,6 +90,19 @@ inside those coarse stages; it does not introduce new runtime namespaces.
 - `S2-1 Scope resolution`
   - resolve the declared manifest scope, cleaned assets, and table assets for
     the current Stage2 execution.
+- `S2-1b High-confidence source denoise projection`
+  - deterministic pre-selector projection that emits the Stage2-consumable text
+    surface after deleting only high-confidence source boilerplate/noise such as
+    publisher chrome, downloaded markers, page/header/footer lines, author/page
+    running lines, reference tails, isolated reference lines, copyright/license
+    boilerplate, and related-article metadata.
+  - preserves the raw/current cleaned text path as audit authority and records a
+    per-paper denoise audit plus run summary before `S2-2` consumes the
+    denoised projection.
+  - must not perform formulation semantic discovery, table-importance judgment,
+    row-universe construction, GT/source-anchor completion, or removal of
+    materials, preparation, formulation/design/result table captions, table
+    bodies, DOE matrices, row-identity cells, or carrythrough sentences.
 - `S2-2 Evidence construction`
   - the first engineering freeze point in Stage2.
   - outputs:
@@ -113,26 +126,31 @@ inside those coarse stages; it does not introduce new runtime namespaces.
   - rules must not decide whether a table is important and must not downrank,
     suppress, or remove a table based on guessed semantic value.
   - any non-noise table must remain preserved in the pre-LLM authority
-    surface, even if additional bounded summary-view labels are still carried
-    for observability.
+    surface.
+  - pre-LLM selectors may emit structural packing/observability metadata, but
+    must not emit semantic table-role labels or paper/table-specific repairs
+    that decide formulation relevance before the LLM.
 - `S2-3 Prompt assembly`
   - assemble prompt inputs from `evidence_blocks_v1.json` only.
   - must not reread clean text, rescore candidates, or perform new selection or
     ranking.
   - all LLM-facing table evidence at `S2-3` / `S2-4a` is summary-only; full
     tables must not be placed into the prompt surface.
-  - the maintained summary path is neutral across preserved tables; the main
-    residual risk is lossy compression, not primary-table reranking.
-  - header / column schema and first-column row-identity surfaces are the
-    primary summary contract; sample rows are optional aids only.
-  - the LLM may see a lossy or compact summary of a table here, but this
-    surface must never become the sole execution source of truth.
+  - the maintained summary path is neutral across preserved tables: it exposes
+    structural table evidence only (caption/title as source text, complete
+    column schema, row-identifier pattern, table shape, and at most bounded
+    complete sample rows) and must not pre-label a table as formulation, design,
+    optimization, result, or characterization evidence.
+  - first-column row-identity surfaces are structural cues only; sample rows are
+    compact visibility aids only.
+  - the LLM may see a lossy or compact structural summary of a table here, but
+    this surface must never become the sole execution source of truth.
 - `S2-4a Prompt construction freeze boundary`
   - optional frozen local boundary that materializes prompt artifacts from the
     canonical S2-3 evidence handoff and stops before the live LLM call.
-  - this boundary preserves the summary-only table contract and explicitly
-    tells the LLM to determine semantic table scope itself when multiple
-    candidate table summaries are present.
+  - this boundary preserves the structural summary-only table contract and
+    explicitly tells the LLM to determine semantic table scope itself when
+    multiple candidate table summaries are present.
 - `S2-4b Live LLM call freeze boundary`
   - the only nondeterministic Stage2 substep.
   - output: raw LLM response payloads under the run-scoped raw-response
@@ -793,7 +811,6 @@ Provide partial, human-curated labels for comparison and review.
 
 - The repository is currently operating in diagnostic development mode.
 - In this phase, Stage5 outputs are diagnostic baselines for debugging work.
-- Identity freeze is a diagnostic-only, non-blocking risk signal.
 - Benchmark mode is disabled in the current phase.
 - Legal recovery must remain LLM-first: the LLM owns semantic formulation understanding and declaration of the candidate universe, while deterministic rules may only validate, normalize, align, or refill values that are already semantically authorized by the LLM or by governed explicit evidence handoff.
 - Deterministic value restoration must not become a substitute semantic engine and must not let rules silently redefine formulation meaning, row membership, or candidate identity.
@@ -816,22 +833,9 @@ Benchmark-validity clarification:
 - Stage5 final-table generation is necessary but not sufficient for
   benchmark-valid reporting.
 - Benchmark legality additionally requires the separate GT compare node.
-- In the current diagnostic-development phase, identity freeze remains visible
-  as a risk signal but does not block execution.
 - For current DEV15 work, the target artifact is a diagnosis baseline that can be compared repeatedly against the same frozen GT to measure directional improvement during development.
 - If no explicit governed GT exists for a run scope, no benchmark-valid claim should be attempted and no benchmark language should be used beyond historical/governance reference.
-- The full DEV15 run
-  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
-  reached Stage5 final-table materialization but failed the mandatory
-  identity-freeze gate and therefore did not produce legal benchmark-valid GT
-  compare or modeling-ready continuation outputs.
-- The governed repair lineage has localized the failure classes as:
-  - row count drift
-  - identity reassignment
-  - unresolved scaffold binding
-- Scaffold-binding and representation repair work are part of the governed
-  follow-on repair lineage, but they do not by themselves prove that a lawful
-  full-pipeline benchmark run now passes the hard identity-freeze gate.
+- Benchmark mode remains disabled until a governed benchmark contract is explicitly re-enabled.
 
 ### Internal Stage5 Families
 
@@ -842,13 +846,12 @@ Benchmark-validity clarification:
     `downstream_variant_records_v1.tsv`
   - maintained entrypoints:
     `src/stage5_benchmark/build_minimal_final_output_v1.py`
-    `src/stage5_benchmark/enforce_identity_freeze_v1.py`
     `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
   - role:
     source-faithful final closure, identity-preserving filtering, explicit
     Stage3-resolved field carry-through, preservation of excluded
     downstream/post-processing descendant records in a linked lower-level
-    surface, diagnostic identity-freeze risk reporting, and GT compare
+    surface and GT compare
   - legality rule:
     `final_formulation_table_v1.tsv` is currently managed as a diagnostic
     baseline surface; final-table materialization legalizes diagnostic compare
@@ -866,7 +869,7 @@ Benchmark-validity clarification:
   - benchmark-final must not:
     replace paper-reported values with convenience-normalized values, perform
     donor-fill, perform assumption-based inference, or change formulation
-    membership after identity freeze
+    membership after Stage5 final-table closure
 
 - Downstream modeling-ready family
   - role:

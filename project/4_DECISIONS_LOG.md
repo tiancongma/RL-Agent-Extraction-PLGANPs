@@ -2529,7 +2529,7 @@ Non-goals
 - No hidden value-level matching or semantic inference inside Stage5
   materialization.
 
-### Decision: Identity Freeze Rule Introduced
+### Decision: Identity-Freeze Rule Introduced
 
 Status
 - ACTIVE
@@ -2590,7 +2590,7 @@ Non-goals
 - Not refactoring core Stage3 relation logic.
 - Not changing benchmark-valid Stage5 outputs in place.
 
-### Decision: Identity Freeze Rule Elevated to Hard Gate
+### Decision: Identity-Freeze Rule Elevated to Hard Gate
 
 Status
 - ACTIVE
@@ -3372,9 +3372,9 @@ Impact
 ### Decision: Freeze the successful S2-4b live-call settings for the current cycle (MDEC091)
 
 Decision
-- Freeze the successful current-cycle `S2-4b` live-call policy at:
+- Historical freeze of the successful current-cycle `S2-4b` live-call policy at:
   - model:
-    `gemini-2.5-flash`
+    `gemini-2.5-flash` (historical validation model; superseded by the 2026-05-08 explicit `--model` boundary policy for future live calls)
   - request mode:
     `stream_collect`
   - request timeout seconds:
@@ -3456,7 +3456,7 @@ Impact
 
 ## 2026-04-14
 
-### Decision: Record identity freeze as the hard Stage5 benchmark-validity boundary (MDEC093)
+### Decision: Record identity-freeze as the hard Stage5 benchmark-validity boundary (MDEC093)
 
 Decision
 - Stage5 final-table generation is necessary but not sufficient for
@@ -3637,12 +3637,12 @@ Decision
 - `benchmark` remains the default and blocks compare output generation when the
   identity-freeze summary records any violation.
 - `debug_identity` may continue from the same frozen Stage5 final table after a
-  failed identity freeze, but the resulting compare outputs must be labeled
+  failed identity-freeze, but the resulting compare outputs must be labeled
   diagnostic-only and must not be reported as benchmark-valid.
 
 Reason
 - Current debugging needs count-compare visibility from patched downstream
-  lineages even when identity freeze remains unresolved.
+  lineages even when identity-freeze remains unresolved.
 - The old hard stop suppressed useful diagnostic comparison surfaces and
   encouraged ad hoc workarounds outside the maintained compare entrypoint.
 - Benchmark legality must still remain strict and explicit.
@@ -4234,7 +4234,7 @@ Consequence
   - completed Stage2
   - Stage3
   - Stage5
-  - identity freeze
+  - identity-freeze
   - GT compare
 - no benchmark-valid result can be claimed from this attempt
 
@@ -5802,4 +5802,78 @@ Policy:
 
 Implementation anchor:
 - Plan: `docs/plans/2026-05-05-generic-material-value-binding-and-scoped-carrythrough-plan.md`
+
+
+## 2026-05-07
+
+### Decision: Add S2-1b high-confidence source denoise projection before Stage2 evidence construction
+
+Decision
+- Add an internal Stage2 substep, `S2-1b High-confidence source denoise projection`, between `S2-1 Scope resolution` and `S2-2 Evidence construction`.
+- S2-1b emits the text surface consumed by S2-2 while preserving raw/current cleaned text as audit authority.
+- S2-1b may hard-delete only high-confidence source boilerplate/noise: publisher chrome, downloaded markers, page/header/footer lines, author/page running lines, reference tails, isolated reference lines, copyright/license boilerplate, and related-article metadata.
+- S2-1b must not perform formulation semantic discovery, table-importance selection, row-universe construction, GT/source-anchor completion, or removal of materials, preparation, formulation/design/result table captions, table bodies, DOE matrices, row-identity cells, or carrythrough sentences.
+
+Reason
+- DEV15 full-cleantext diagnostics showed that obvious source noise can pollute candidate segmentation and evidence selection before acceptance gates see it.
+- Existing Stage2 cleanup is too late and too weak when it acts mainly as candidate-level flags, penalties, or blocks after noisy text has already entered selection.
+- Moving only non-semantic high-confidence source hygiene into S2-1b reduces selector burden without changing the LLM-owned semantic-authority contract.
+
+Impact
+- Full-original-source extraction should wait for no-live S2-1b -> S2-2 acceptance before live LLM expansion.
+- Stage1 raw/clean source authority remains unchanged; S2-1b is a Stage2 projection with audit trails.
+
+## 2026-05-08
+
+### Decision: Make S2-4b model selection explicit at the live-call boundary
+
+Decision
+- Remove repository-wide live model defaults from maintained active/supporting code.
+- Require `--model` on the dedicated `S2-4b` live-call runner.
+- Keep `S2-4a` prompt freezing, `S2-5+` parsing/validation/projection, and frozen replay behavior independent from live model selection.
+- Retain the global guard that rejects deprecated `gemini-2.0-*` models, but make the chosen replacement model an explicit caller decision at the owning live-call boundary.
+
+Reason
+- Model switching should be a scoped call-layer operation, not an implicit repository-wide behavior change.
+- A hard-coded default made it too easy for wrappers, diagnostics, and non-S2 code to inherit an unintended model change.
+- The lawful S2 split already isolates `S2-4b` as raw-response persistence only, so model changes can be governed as changes to that boundary alone when prompt artifacts and downstream code remain unchanged.
+
+Impact
+- `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py` now requires explicit `--model`.
+- `src/utils/model_policy.py` validates disallowed model families only and does not export default model identities.
+- Maintained governance surfaces describe S2-4b as explicit-model call-layer configuration rather than a repository-wide frozen model default.
+- Future benchmark/performance claims must still align raw-response lineage, Stage2 completion lineage, and GT authority before interpretation; changing `--model` creates a new S2-4b raw-response lineage.
+- Governance, plan, and memory surfaces now refer to `docs/plans/2026-05-07-s2-1b-high-confidence-denoise-projection-plan.md` as the implementation plan.
+
+## 2026-05-09
+
+Decision: Freeze the S2 table-summary boundary as neutral structural prompt visibility.
+Reason: Pre-LLM stages preserve and pack evidence; they must not decide table semantic role, formulation relevance, or paper/table-specific repairs before S2-4b.
+Policy:
+- S2-2 full-table payload/grid remains execution authority for table reconstruction and downstream deterministic materialization.
+- S2-3/S2-4a table summaries are LLM-facing structural views only: source caption/title, complete column schema, row-identifier pattern, table shape, and bounded complete sample rows.
+- Generated summary labels must not pre-label tables as formulation, design, optimization, result, or characterization evidence.
+- DEV15 repairs must generalize as stage capability fixes with regression tests, not as paper/table-specific semantic exceptions.
+Impact: Model changes can be isolated to S2-4b frozen raw-response generation when S2-4a prompts and S2-5+ parsing/validation/projection are unchanged.
+
+
+### Decision: Guard S2-4a against stale cached table-summary semantics during prompt freeze rebuilds
+
+Decision:
+- S2-4a prompt rendering must prefer source-table rehydration for table summaries and must reject cached `table_summary` text unless it already satisfies the structural prompt contract.
+- A cached table summary is reusable only when it contains `summary_contract: structural_prompt_view_only` and `column_schema`, and contains no `table_role_hint`, `semantic_summary`, or legacy `key_columns` surface.
+- If a table summary cannot be rehydrated from source CSV geometry and the cached text is stale, S2-4a must not fall back to the stale pre-LLM semantic surface.
+
+Reason:
+- Frozen evidence artifacts can outlive renderer fixes; rebuilding S2-4a from those artifacts can otherwise re-promote old generated semantic role hints even when current source code emits neutral structural summaries.
+- This is a generic prompt-surface legality repair, not a paper/table-specific correction.
+
+Validation:
+- Run: `data/results/20260423_9c4a03f/394_stage2_dev15_structural_s2_4a_prompt_freeze_rebuild_diagnostic/RUN_CONTEXT.md`
+- Audit: `data/results/20260423_9c4a03f/394_stage2_dev15_structural_s2_4a_prompt_freeze_rebuild_diagnostic/analysis/s2_4a_structural_prompt_contract_audit_v1.json`
+- Result: 15 prompts, 92 table summaries, 0 `table_role_hint` / `semantic_summary` / `key_columns`, and 92 `summary_contract: structural_prompt_view_only` plus 92 `column_schema` markers.
+
+Impact:
+- `data/results/ACTIVE_RUN.json` now points S2-4a prompt authority to run 394.
+- This remains diagnostic-only S2-4a prompt construction; no S2-4b live call, Stage3/Stage5 output, or benchmark claim is created by this update.
 

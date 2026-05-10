@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
         help="Future-facing child cue used only when auto-allocating a new v2 child execution path.",
     )
     parser.add_argument("--source-mode", choices=["legacy_llm_replay", "live_llm"], default="legacy_llm_replay")
-    parser.add_argument("--model", default="gemini-2.5-flash")
+    parser.add_argument("--model", default="")
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
     parser.add_argument("--max-text-chars", type=int, default=18000)
     parser.add_argument("--historical-raw-responses-dir", default=DEFAULT_HISTORICAL_RAW_RESPONSES_DIR)

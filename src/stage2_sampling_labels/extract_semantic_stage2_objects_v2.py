@@ -27,13 +27,14 @@ except Exception:  # pragma: no cover
     genai = None
 
 try:
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
     from src.utils.paths import PROJECT_ROOT
     from src.stage2_sampling_labels.ollama_local_backend_v1 import call_ollama_chat_nonstream, resolve_ollama_base_url
     from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
         infer_header_structure as recover_table_header_structure,
         looks_like_header_row as shared_looks_like_header_row,
         flatten_header_rows as shared_flatten_header_rows,
+        is_numeric_index_row as shared_is_numeric_index_row,
     )
     from src.stage2_sampling_labels.table_row_expansion_v1 import (
         EXECUTION_READY_MARKER,
@@ -47,13 +48,14 @@ try:
     )
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
     from src.utils.paths import PROJECT_ROOT
     from src.stage2_sampling_labels.ollama_local_backend_v1 import call_ollama_chat_nonstream, resolve_ollama_base_url
     from src.stage2_sampling_labels.table_structure_dictionary_v1 import (
         infer_header_structure as recover_table_header_structure,
         looks_like_header_row as shared_looks_like_header_row,
         flatten_header_rows as shared_flatten_header_rows,
+        is_numeric_index_row as shared_is_numeric_index_row,
     )
     from src.stage2_sampling_labels.table_row_expansion_v1 import (
         EXECUTION_READY_MARKER,
@@ -152,12 +154,15 @@ PROCUREMENT_CUES = [
 ]
 PREPARATION_PROCEDURE_CUES = [
     "nanoprecipitation",
+    "solvent diffusion",
+    "solvent displacement",
     "dissolved",
     "acetone",
     "organic phase",
     "aqueous phase",
     "added",
     "added dropwise",
+    "poured",
     "stirring",
     "evaporation",
     "under vacuum",
@@ -1412,16 +1417,20 @@ SEGMENT_MATERIALS_CUES = [
     "resomer",
     "plga",
     "poloxamer",
-    "labrafil",
-    "polysorbate",
+    "surfactant",
+    "emulsifier",
+    "stabilizer",
 ]
 SEGMENT_METHOD_CUES = [
     "prepared by",
     "prepared using",
     "nanoprecipitation",
+    "solvent diffusion",
+    "solvent displacement",
     "emulsion solvent evaporation",
     "dissolved",
     "added dropwise",
+    "poured",
     "aqueous phase",
     "organic phase",
     "stirring",
@@ -1496,8 +1505,8 @@ SEGMENT_VARIANT_CUES = [
     "same protocol",
     "same method",
     "incorporating",
-    "with polysorbate 80",
-    "with labrafil",
+    "with surfactant",
+    "with surface modifier",
     "blank nps were prepared",
 ]
 SEGMENT_ABSTRACT_CUES = [
@@ -1918,7 +1927,7 @@ def classify_heading_line(line: str) -> str | None:
     if re.match(r"^\d+(?:\.\d+)+\.?\s+[A-Z]", compact):
         return "numbered_heading"
     if re.match(
-        r"^(materials(?: and methods)?|preparation(?: and characterization of nps)?|experimental design|results(?: and discussion)?|discussion|conclusion|introduction|morphology and size of nps|process yield and encapsulation efficiency|gatifloxacin-loaded plga nps|rhodamine-loaded plga nps|lyophilization|analytical methods|assay|pharmacokinetic study|process variables|data analysis and optimization)\b",
+        r"^(materials(?: and methods)?|preparation(?: and characterization of nps)?|experimental design|results(?: and discussion)?|discussion|conclusion|introduction|morphology and size of nps|process yield and encapsulation efficiency|lyophilization|analytical methods|assay|pharmacokinetic study|process variables|data analysis and optimization)\b",
         lower,
     ):
         return "heading"
@@ -2508,10 +2517,6 @@ def build_inline_formulation_table_item(
         (r"\bdrug:polymer ratio\b", "Drug:Polymer ratio"),
         (r"\bpolymer used\b", "Polymer Used"),
         (r"\bsurfactant\b", "Surfactant"),
-        (r"\brhodamine\b", "Rhodamine"),
-        (r"\bgatifloxacin\b", "Gatifloxacin"),
-        (r"\bpolysorbate\s*80\b", "Polysorbate 80"),
-        (r"\blabrafil\b", "Labrafil"),
         (r"\bparticle size\b", "Particle size"),
         (r"\bpdi\b", "PDI"),
         (r"\bzeta(?:\s|-)?potential\b", "Zeta potential"),
@@ -2661,12 +2666,24 @@ def build_summary_table_signal_text(
 
 def extract_informative_header_parts(rows: list[list[str]]) -> list[str]:
     header_parts: list[str] = []
-    for row in rows[:6]:
+    for row in rows[:8]:
         row_text = " ".join(normalize_text(cell) for cell in row if normalize_text(cell))
         if not row_text:
             continue
+        # PDF table CSVs often start with a synthetic 0,1,2... column-index row
+        # and then a caption row before the actual multi-level header.  Those
+        # rows are structural/caption context, not header schema.  Skipping them
+        # keeps S2-2 authority classification aligned with the same complete
+        # column schema that S2-4a renders structurally.
+        if shared_is_numeric_index_row(row):
+            continue
+        if re.fullmatch(r"Table\s+\d+\s*[:.]?.*", row_text, flags=re.I):
+            continue
         if is_reference_like_text(row_text) or is_front_matter_like_text(row_text):
             continue
+        first_cell = normalize_text(row[0] if row else "")
+        if header_parts and re.fullmatch(r"(?:\d+(?:\.\d+)?|[Ff]\s*[-_]?\s*\d{1,4}|[A-Za-z]+\d{1,4})\.?", first_cell):
+            break
         for cell in row:
             header_parts.extend(parse_header_cell(cell))
         if re.search(r"\b(?:\d+|f\d+|run\s+\d+)\b", row_text.lower()) and header_parts:
@@ -2968,6 +2985,168 @@ def recover_caption_from_rows(rows: list[list[str]]) -> tuple[str, int]:
     return "", -1
 
 
+GENERATED_TABLE_CAPTION_PREFIXES = [
+    "experimental design variable table.",
+    "formulation table with drug/polymer/loading variables.",
+    "optimization result table.",
+    "characterization-only table.",
+]
+
+
+def generated_table_caption_prefix(caption: str) -> str:
+    lower = normalize_text(caption).lower()
+    for prefix in GENERATED_TABLE_CAPTION_PREFIXES:
+        if lower == prefix or lower.startswith(prefix + " "):
+            return prefix
+    return ""
+
+
+def csv_row_table_ids(rows: list[list[str]]) -> list[str]:
+    ids: list[str] = []
+    seen: set[str] = set()
+    for row in rows:
+        row_text = normalize_text(" ".join(cell for cell in row if normalize_text(cell)))
+        for match in re.finditer(r"\btable\s+(\d+)\b", row_text, flags=re.I):
+            table_id = f"Table {int(match.group(1))}"
+            token = normalize_token(table_id)
+            if token not in seen:
+                seen.add(token)
+                ids.append(table_id)
+    return ids
+
+
+def clean_text_paths_for_table_dir(table_dir: Path | None, path: Path) -> list[Path]:
+    paper_key = normalize_text(path.parent.name if path.parent else "")
+    if table_dir is not None:
+        paper_key = normalize_text(table_dir.name) or paper_key
+    if not paper_key:
+        return []
+    candidates = [
+        PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.pdf.txt",
+        PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.html.txt",
+        PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.txt",
+    ]
+    return [candidate for candidate in candidates if candidate.exists()]
+
+
+def canonicalize_caption_text(text: str) -> str:
+    caption = normalize_text(text)
+    caption = re.sub(r"(?<=\w)-\s+(?=\w)", "-", caption)
+    caption = re.sub(r"\bPlga\b", "PLGA", caption)
+    caption = re.sub(r"\bNs\b", "NS", caption)
+    caption = re.sub(r"\bNPs\b", "NPs", caption)
+    return normalize_text(caption)
+
+
+def clean_text_caption_candidate_is_trusted(caption: str, table_number: int) -> bool:
+    """Reject clean-text matches that are prose mentions or table-body spillover."""
+    caption = normalize_text(caption)
+    if table_id_from_text(caption) != f"Table {table_number}":
+        return False
+    words = caption.split()
+    if len(words) < 4:
+        return False
+    if len(caption) > 240:
+        return False
+    # Prose references like "Table 1) were...", "Table 2, which...", or
+    # "Table 5 shows..." are not source captions and must not become prompt
+    # titles.  Keep them unavailable rather than binding paragraph semantics to
+    # a table asset.
+    after_id = re.sub(rf"^\s*Table\s+{table_number}\s*[:.]?\s*", "", caption, flags=re.I)
+    first_word = normalize_text(after_id).split(" ", 1)[0].lower() if normalize_text(after_id) else ""
+    if first_word in {"shows", "show", "summarizes", "summarises", "were", "was", "which", "the", "these", "this", "around"}:
+        return False
+    if re.search(r"\b(?:suggested|suggests|whereas|while|except)\b", caption, flags=re.I):
+        return False
+    numeric_tokens = re.findall(r"(?<![A-Za-z])[-+]?\d+(?:[.,]\d+)?(?:±\d+(?:[.,]\d+)?)?%?", caption)
+    if len(numeric_tokens) >= 6:
+        return False
+    metric_tokens = re.findall(
+        r"\b(?:AUC|MRT|Tmax|Cmax|t1/2|PDI|zeta|potential|size|diameter|EE|drug\s+content|recovery|parameter)\b",
+        caption,
+        flags=re.I,
+    )
+    if len(metric_tokens) >= 5:
+        return False
+    return True
+
+
+def extract_table_caption_from_clean_text(clean_text: str, table_id: str) -> str:
+    table_match = re.search(r"\btable\s+(\d+)\b", table_id, flags=re.I)
+    if not table_match:
+        return ""
+    table_number = int(table_match.group(1))
+    pattern = re.compile(rf"\bTable\s+{table_number}(?!\s*[),])\s*[:.]?\s+", flags=re.I)
+    for match in pattern.finditer(clean_text):
+        start = match.start()
+        window = normalize_text(clean_text[start : start + 500])
+        next_boundary = re.search(r"\b(?:Table|Figure)\s+\d+\b", window[len(match.group(0)) :], flags=re.I)
+        if next_boundary:
+            window = window[: len(match.group(0)) + next_boundary.start()].rstrip()
+        period_match = re.search(r"\.\s+(?=[A-Z0-9])", window)
+        if period_match:
+            window = window[: period_match.start() + 1]
+        caption = canonicalize_caption_text(window)
+        if clean_text_caption_candidate_is_trusted(caption, table_number):
+            return caption
+    return ""
+
+
+def recover_source_caption_binding_from_rows(
+    *,
+    path: Path,
+    rows: list[list[str]],
+    table_dir: Path | None,
+) -> dict[str, str]:
+    """Recover only unambiguous source captions; otherwise keep CSV captions diagnostic.
+
+    PDF CSV bodies often merge a caption, adjacent-column prose, and sometimes
+    multiple logical tables.  Such row text must not be promoted to S2-2 source
+    caption authority unless it has a single table label and can be matched back
+    to the clean-text source caption.
+    """
+    recovered_caption, caption_row_index = recover_caption_from_rows(rows)
+    ids = csv_row_table_ids(rows)
+    result = {
+        "caption": "",
+        "caption_binding_source": "",
+        "caption_binding_status": "unbound",
+        "caption_binding_rule": "",
+        "untrusted_recovered_caption_or_title": recovered_caption,
+        "caption_row_index": str(caption_row_index),
+        "caption_warning": "",
+    }
+    if not recovered_caption and not ids:
+        return result
+    if len(ids) != 1:
+        result["caption_binding_status"] = "untrusted_ambiguous_csv_body"
+        result["caption_binding_source"] = "csv_body_untrusted"
+        result["caption_warning"] = "csv_body_caption_ambiguous"
+        return result
+    table_id = ids[0]
+    for text_path in clean_text_paths_for_table_dir(table_dir, path):
+        try:
+            clean_text = text_path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        caption = extract_table_caption_from_clean_text(clean_text, table_id)
+        if caption:
+            result.update(
+                {
+                    "caption": caption,
+                    "caption_binding_source": "source_clean_text_table_caption",
+                    "caption_binding_status": "trusted_unambiguous",
+                    "caption_binding_rule": "single_csv_table_label_matched_clean_text_caption",
+                    "caption_warning": "",
+                }
+            )
+            return result
+    result["caption_binding_status"] = "untrusted_csv_body_no_clean_text_match"
+    result["caption_binding_source"] = "csv_body_untrusted"
+    result["caption_warning"] = "csv_body_caption_unmatched"
+    return result
+
+
 def repair_table_representation(
     *,
     path: Path,
@@ -2992,12 +3171,28 @@ def repair_table_representation(
 
     caption = normalize_text(repaired_meta.get("caption_or_title"))
     if not caption:
-        recovered_caption, caption_row_index = recover_caption_from_rows(repaired_rows)
-        if recovered_caption:
-            repaired_meta["caption_or_title"] = recovered_caption
-            repair_actions.append("caption_recovery")
-            if caption_row_index == 0 and len(repaired_rows) > 1:
-                repaired_rows = repaired_rows[1:]
+        caption_binding = recover_source_caption_binding_from_rows(
+            path=path,
+            rows=repaired_rows,
+            table_dir=table_dir,
+        )
+        if normalize_text(caption_binding.get("caption")):
+            repaired_meta["caption_or_title"] = normalize_text(caption_binding.get("caption"))
+            repaired_meta["caption_binding_source"] = normalize_text(caption_binding.get("caption_binding_source"))
+            repaired_meta["caption_binding_status"] = normalize_text(caption_binding.get("caption_binding_status"))
+            repaired_meta["caption_binding_rule"] = normalize_text(caption_binding.get("caption_binding_rule"))
+            repair_actions.append("source_caption_binding")
+        elif normalize_text(caption_binding.get("untrusted_recovered_caption_or_title")):
+            repaired_meta["untrusted_recovered_caption_or_title"] = normalize_text(caption_binding.get("untrusted_recovered_caption_or_title"))
+            repaired_meta["caption_binding_source"] = normalize_text(caption_binding.get("caption_binding_source"))
+            repaired_meta["caption_binding_status"] = normalize_text(caption_binding.get("caption_binding_status"))
+            repair_actions.append("csv_body_caption_untrusted")
+            warning = normalize_text(caption_binding.get("caption_warning"))
+            if warning:
+                repair_warnings.append(warning)
+        caption_row_index = normalize_text(caption_binding.get("caption_row_index"))
+        if caption_row_index == "0" and len(repaired_rows) > 1:
+            repaired_rows = repaired_rows[1:]
 
     if repaired_rows and not looks_like_header_row(repaired_rows[0]) and len(repaired_rows) > 1 and looks_like_header_row(repaired_rows[1]):
         repaired_rows = [repaired_rows[1]] + repaired_rows[:1] + repaired_rows[2:]
@@ -3094,14 +3289,17 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
         header_parts = extract_informative_header_parts(rows)
         signal_text = build_summary_table_signal_text(rows[:6], meta, header_parts)
         role_hint = infer_table_role_hint(header_parts, {**meta, "_signal_text": signal_text})
+        generated_role_caption = ""
         if role_hint == "design matrix":
-            meta = {**meta, "caption_or_title": f"Experimental design variable table. {normalize_text(meta.get('caption_or_title'))}".strip()}
+            generated_role_caption = "Experimental design variable table."
         elif role_hint == "formulation":
-            meta = {**meta, "caption_or_title": f"Formulation table with drug/polymer/loading variables. {normalize_text(meta.get('caption_or_title'))}".strip()}
+            generated_role_caption = "Formulation table with drug/polymer/loading variables."
         elif role_hint == "optimization":
-            meta = {**meta, "caption_or_title": f"Optimization result table. {normalize_text(meta.get('caption_or_title'))}".strip()}
+            generated_role_caption = "Optimization result table."
         elif role_hint == "characterization_only":
-            meta = {**meta, "caption_or_title": f"Characterization-only table. {normalize_text(meta.get('caption_or_title'))}".strip()}
+            generated_role_caption = "Characterization-only table."
+        if generated_role_caption:
+            meta = {**meta, "generated_table_role_caption": generated_role_caption}
         score, row_pattern = score_summary_table(path, rows, meta)
         restoration_profile = wfdtq4vx_restore_profile(path, meta)
         entries.append(
@@ -3203,7 +3401,12 @@ def load_table_manifest(table_dir: Path | None) -> dict[str, dict[str, Any]]:
         csv_path = normalize_text(item.get("csv_path"))
         if not csv_path:
             continue
-        manifest[Path(csv_path).name] = item
+        meta = dict(item)
+        if normalize_text(meta.get("caption_or_title")):
+            meta.setdefault("caption_binding_source", "tables_manifest")
+            meta.setdefault("caption_binding_status", "trusted_manifest")
+            meta.setdefault("caption_binding_rule", "manifest_csv_path_name_match")
+        manifest[Path(csv_path).name] = meta
     for asset in manifest_table_asset_records(payload):
         path = manifest_asset_local_path(asset, table_dir)
         if path is None:
@@ -3215,6 +3418,10 @@ def load_table_manifest(table_dir: Path | None) -> dict[str, dict[str, Any]]:
         meta.setdefault("source_table_asset_local_path", str(path))
         meta.setdefault("table_source_kind", normalize_text(asset.get("table_source_kind")) or "html_full_size_table_asset")
         meta.setdefault("caption_or_title", normalize_text(asset.get("caption_or_title")) or normalize_text(asset.get("caption")) or normalize_text(asset.get("title")))
+        if normalize_text(meta.get("caption_or_title")):
+            meta.setdefault("caption_binding_source", "selected_table_asset")
+            meta.setdefault("caption_binding_status", "trusted_manifest")
+            meta.setdefault("caption_binding_rule", "selected_asset_local_path_match")
         manifest[path.name] = meta
     return manifest
 
@@ -3333,9 +3540,112 @@ def candidate_summary_is_lossy(candidate: dict[str, Any]) -> bool:
     return candidate.get("candidate_kind") == "table"
 
 
+def extract_title_from_legacy_table_summary(text: str) -> str:
+    match = re.search(r"(?:^|\s)-\s*title_or_caption:\s*(.*?)(?=\s+-\s*(?:key_columns|column_schema|header_units|row_identifier_pattern):|$)", normalize_text(text))
+    if not match:
+        return ""
+    value = normalize_text(match.group(1))
+    return "" if value == "(not available)" else value
+
+
+def trusted_manifest_caption_for_table(table_path: Path) -> str:
+    """Return only governed table-manifest captions for prompt titles.
+
+    S2-4a must not infer titles from PDF table CSV body rows.  In many PDF
+    extractions the top CSV rows mix captions with neighboring column text, body
+    prose, or adjacent table captions.  If Stage1/S2-2 did not capture a trusted
+    caption in `tables_manifest.json`, keep the LLM-facing title empty rather
+    than binding a polluted or mismatched title to the table.
+    """
+    manifest_path = table_path.parent / "tables_manifest.json"
+    if not manifest_path.exists():
+        return ""
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return ""
+    try:
+        rel_path = str(table_path.resolve().relative_to(PROJECT_ROOT)).replace("\\", "/")
+    except ValueError:
+        rel_path = str(table_path).replace("\\", "/")
+    table_name = table_path.name
+    for table in ensure_list(manifest.get("tables")):
+        if not isinstance(table, dict):
+            continue
+        csv_path = normalize_text(table.get("csv_path"))
+        if csv_path == rel_path or Path(csv_path).name == table_name:
+            return normalize_text(table.get("caption_or_title"))
+    return ""
+
+
+def table_summary_text_is_structural_prompt_safe(text: str) -> bool:
+    """Return true only for cached table summaries that already satisfy S2-4a.
+
+    A frozen S2-4a rebuild may read older evidence blocks whose cached
+    `text_content` predates the structural-only contract.  If the source table
+    cannot be rehydrated from `origin_locator`, stale cached text must not become
+    a fallback prompt surface.  It is only reusable when it already carries the
+    neutral structural summary contract and no pre-LLM semantic labels.
+    """
+    normalized = normalize_text(text)
+    if not normalized:
+        return False
+    forbidden_patterns = [
+        r"\bkey_columns\s*:",
+        r"\btable_role_hint\s*:",
+        r"\bsemantic_summary\s*:",
+    ]
+    if any(re.search(pattern, normalized, flags=re.I) for pattern in forbidden_patterns):
+        return False
+    required_patterns = [
+        r"\bcolumn_schema\s*:",
+        r"\bsummary_contract\s*:\s*structural_prompt_view_only\b",
+    ]
+    return all(re.search(pattern, normalized, flags=re.I) for pattern in required_patterns)
+
+
 def render_selected_table_candidate(candidate: dict[str, Any]) -> str:
-    # Locked S2-4a contract: selected table evidence stays summary-only.
-    return normalize_text(candidate.get("text_content"))
+    # Locked S2-4a contract: selected table evidence stays summary-only and is
+    # reconstructed from source table geometry when the evidence block points to
+    # a table asset.  This prevents stale S2-2/S2-3 text_content from carrying
+    # old `key_columns`, `table_role_hint`, or generated `semantic_summary` lines
+    # into a fresh S2-4a prompt freeze.
+    origin_locator = normalize_text(candidate.get("origin_locator"))
+    source_type = normalize_text(candidate.get("source_type")).lower()
+    cached_text = normalize_text(candidate.get("text_content"))
+    if source_type == "table_summary" and origin_locator:
+        table_path = Path(origin_locator)
+        if not table_path.is_absolute():
+            table_path = (PROJECT_ROOT / table_path).resolve()
+        if table_path.exists():
+            try:
+                with table_path.open("r", encoding="utf-8", newline="") as handle:
+                    rows = [row for row in csv.reader(handle)]
+            except UnicodeDecodeError:
+                with table_path.open("r", encoding="latin-1", newline="") as handle:
+                    rows = [row for row in csv.reader(handle)]
+            if rows:
+                caption_binding = recover_source_caption_binding_from_rows(
+                    path=table_path,
+                    rows=rows,
+                    table_dir=table_path.parent,
+                )
+                trusted_caption = normalize_text(caption_binding.get("caption")) or trusted_manifest_caption_for_table(table_path)
+                item = {
+                    "path": table_path,
+                    "rows": rows,
+                    "meta": {
+                        "caption_or_title": trusted_caption,
+                        "caption_binding_source": normalize_text(caption_binding.get("caption_binding_source")),
+                        "caption_binding_status": normalize_text(caption_binding.get("caption_binding_status")),
+                        "n_rows": len(rows),
+                        "n_cols": max((len(row) for row in rows), default=0),
+                    },
+                }
+                return render_summary_table_block(item, enhancement_enabled=summary_first_column_enhancement_enabled())
+    if source_type == "table_summary":
+        return cached_text if table_summary_text_is_structural_prompt_safe(cached_text) else ""
+    return cached_text
 
 
 def infer_units_from_headers(headers: list[str]) -> list[str]:
@@ -3407,12 +3717,39 @@ def table_has_strong_composition_override_signal(signals: str) -> bool:
     )
     compact_material_unit_columns += len(
         re.findall(
-            r"\b(?:plga|pla|pcl|peg-plga|polymer|drug|pva|surfactant|stabilizer|organic phase|aqueous phase)\s+(?:amount|mass|concentration|volume)\b",
+            r"\b(?:plga|pla|pcl|peg-plga|polymer|drug|pva|surfactant|stabilizer|organic phase|aqueous phase)\s+(?:amount|mass|concentration|volume|type)\b",
+            lower,
+        )
+    )
+    compact_material_unit_columns += len(
+        re.findall(
+            r"\b(?:plga|poloxamer|pva|polymer|drug\s+conc\.?|drug\s+concentration|w/o\s+phase|organic\s+phase|aqueous\s+phase|acetone)\b",
             lower,
         )
     )
     unit_columns = len(re.findall(r"\b(?:mg|ml|%\s*w/v|%\s*\(w/v\)|mg/ml|w/v)\b|%", lower))
-    return row_identity and (composition_columns + compact_material_unit_columns) >= 2 and unit_columns >= 2
+    material_unit_columns = composition_columns + compact_material_unit_columns
+    if any(token in lower for token in ["release profile", "cumulative release", "in vitro release", "drug release", "release (%)", "release percent"]):
+        # Release/result tables often mention formulation labels plus PLGA/drug in
+        # the caption; do not let those contextual terms override the negative
+        # result-table taxonomy unless the table itself has multiple concrete
+        # composition/material-unit columns.
+        distinct_material_terms = len({
+            token
+            for token in ["plga", "polymer", "drug conc", "drug concentration", "pva", "surfactant", "stabilizer", "organic phase", "aqueous phase", "acetone"]
+            if token in lower
+        })
+        if distinct_material_terms < 3 or unit_columns < 3:
+            return False
+    # Some genuine formulation matrices use compact numeric row anchors and
+    # material/unit column headers without an explicit first-column label such as
+    # "formulation" or "run".  Do not require row-identity words when the
+    # structural column evidence itself is strong enough.
+    return (
+        row_identity and material_unit_columns >= 2 and unit_columns >= 2
+    ) or (
+        material_unit_columns >= 3 and unit_columns >= 3
+    )
 
 
 def classify_table_source_role(headers: list[str], meta: dict[str, Any]) -> str:
@@ -3436,6 +3773,10 @@ def classify_table_source_role(headers: list[str], meta: dict[str, Any]) -> str:
         return "noise_or_nonformulation_table"
     if table_has_strong_composition_override_signal(signals):
         return "formulation_composition_table"
+    if any(token in signals for token in ["independent process variables", "dependent variable", "independent variables", "dependent variables", "box-behnken", "factorial design", "design matrix"]):
+        return "preparation_parameter_table"
+    if any(token in signals for token in ["process conditions", "plga type", "film thickness", "extent of stretching", "liquefaction method", "incubation period", "w/o phase", "drug conc", "poloxamer"]):
+        return "preparation_parameter_table"
     if any(token in signals for token in ["auc", "cmax", "tmax", "mrt", "t1/2", "half-life", "pharmacokinetic", "pharmacokinetics", "plasma concentration-time"]):
         return "pharmacokinetic_table"
     if any(token in signals for token in ["tissue", "organ distribution", "biodistribution", "liver", "spleen", "kidney", "heart", "lung"]):
@@ -4356,11 +4697,96 @@ def truncate_summary_cell(text: str, *, max_chars: int = 72) -> str:
     return compact[: max_chars - 3].rstrip() + "..."
 
 
+def summary_header_row_count(rows: list[list[str]]) -> int:
+    """Return the physical leading-row span used as table header context.
+
+    Prompt summaries are structural visibility surfaces.  Some extracted CSVs
+    begin with a pure numeric column-index row before the actual multi-level
+    table header.  That row should be skipped for column-name construction but
+    still counted in the leading header span so sample rows begin at real data.
+    """
+    return summary_header_context(rows)[1]
+
+
+def summary_header_context(rows: list[list[str]]) -> tuple[list[list[str]], int]:
+    if not rows:
+        return [], 0
+    header_rows: list[list[str]] = []
+    span = 0
+    for row_index, row in enumerate(rows[:8]):
+        if not isinstance(row, list):
+            continue
+        cells = [normalize_text(cell) for cell in row if normalize_text(cell)]
+        if not cells:
+            if header_rows:
+                span = row_index + 1
+            continue
+        if shared_is_numeric_index_row(row):
+            if not header_rows:
+                span = row_index + 1
+                continue
+            break
+        row_text = " ".join(cells)
+        if re.fullmatch(r"Table\s+\d+\s*[:.]?.*", row_text, flags=re.I):
+            # Count caption rows in the leading span so samples begin at data,
+            # but do not use captions as column schema.
+            span = row_index + 1
+            continue
+        first_cell = normalize_text(row[0] if row else "")
+        if header_rows and re.fullmatch(r"(?:[A-Za-z]*\s*[-_]?\s*)?\d{1,4}|[Ff]\s*[-_]?\s*\d{1,4}", first_cell):
+            break
+        numeric_cells = sum(1 for cell in cells if re.search(r"[-+−]?\d+(?:\.\d+)?", cell))
+        alpha_cells = sum(1 for cell in cells if re.search(r"[A-Za-z]", cell))
+        if header_rows and alpha_cells == 0 and numeric_cells >= max(1, len(cells) // 2):
+            break
+        if header_rows and first_cell and numeric_cells >= max(2, len(cells) // 2):
+            break
+        if shared_looks_like_header_row(row):
+            header_rows.append(row)
+            span = row_index + 1
+            continue
+        next_row = rows[row_index + 1] if row_index + 1 < len(rows) else []
+        if not header_rows and alpha_cells > 0 and len(cells) <= 2 and isinstance(next_row, list) and shared_looks_like_header_row(next_row):
+            header_rows.append(row)
+            span = row_index + 1
+            continue
+        if header_rows:
+            break
+        header_rows.append(row)
+        span = row_index + 1
+        break
+    if not header_rows:
+        header_rows = [rows[0]]
+        span = max(1, span)
+    return header_rows, max(1, min(span, len(rows)))
+
+
+def carry_forward_group_header_cells(header_rows: list[list[str]], width: int) -> list[list[str]]:
+    carried_rows: list[list[str]] = []
+    for row in header_rows:
+        padded = [normalize_text(row[index]) if index < len(row) else "" for index in range(width)]
+        nonempty_positions = [index for index, cell in enumerate(padded) if cell]
+        if not nonempty_positions:
+            carried_rows.append(padded)
+            continue
+        carried = padded[:]
+        active = ""
+        for index, cell in enumerate(padded):
+            if cell:
+                active = cell
+            elif active and index > nonempty_positions[0]:
+                carried[index] = active
+        carried_rows.append(carried)
+    return carried_rows
+
+
 def flatten_table_headers_for_summary(rows: list[list[str]]) -> list[str]:
     if not rows:
         return []
     width = max((len(row) for row in rows if isinstance(row, list)), default=0)
-    return flatten_header_rows([rows[0]], width)
+    header_rows, _span = summary_header_context(rows)
+    carried_rows = carry_forward_group_header_cells(header_rows, width)
+    return flatten_header_rows(carried_rows, width)
 
 
 def summary_column_score(header: str, values: list[str], *, index: int) -> float:
@@ -4412,27 +4838,18 @@ def select_summary_column_indices(rows: list[list[str]], *, max_columns: int = 6
     if not rows:
         return []
     width = max((len(row) for row in rows if isinstance(row, list)), default=0)
-    headers = flatten_table_headers_for_summary(rows)
-    data_rows = rows[1:] if len(rows) > 1 else []
-    ranked: list[tuple[float, int]] = []
-    for index in range(width):
-        header = headers[index] if index < len(headers) else ""
-        values = [row[index] for row in data_rows[:8] if index < len(row)]
-        score = summary_column_score(header, values, index=index)
-        if score > 0:
-            ranked.append((-score, index))
-    ranked.sort()
-    chosen = [index for _, index in ranked[:max_columns]]
-    if 0 not in chosen and width > 0:
-        chosen.append(0)
-    return sorted(dict.fromkeys(chosen))
+    # Prompt table summaries are structural visibility surfaces.  Preserve the
+    # complete column schema so S2-4b can make the semantic judgment itself;
+    # do not pre-select columns by inferred formulation/result importance.
+    return list(range(width))
 
 
-def build_summary_sample_lines(rows: list[list[str]], column_indices: list[int], *, max_rows: int = 3) -> list[str]:
+def build_summary_sample_lines(rows: list[list[str]], column_indices: list[int], *, max_rows: int = 2) -> list[str]:
     if not rows:
         return []
-    data_rows = rows[1:] if len(rows) > 1 else rows
-    samples = select_sample_rows(data_rows)[:max_rows]
+    header_count = summary_header_row_count(rows)
+    data_rows = rows[header_count:] if len(rows) > header_count else []
+    samples = data_rows[:max_rows]
     sample_lines: list[str] = []
     for idx, row in enumerate(samples, start=1):
         selected_cells = [
@@ -4652,63 +5069,63 @@ def build_raw_metric_value_evidence_lines(
 
 
 def prompt_semantic_summary_line(table_role_hint: str) -> str:
-    """Return bounded LLM-facing semantic-use guidance for summary-only table evidence.
+    """Return neutral LLM-facing contract for summary-only table evidence.
 
-    This line improves prompt semantic adequacy for formulation-bearing table
-    summaries without exposing full numeric rows.  It is intentionally role-based
-    and never promotes prompt summaries to row/value authority.
+    Pre-LLM table summaries must expose structure and bounded examples only.
+    They must not label the table as formulation/design/optimization/results or
+    otherwise make semantic inclusion decisions before S2-4b.
     """
-    role = normalize_text(table_role_hint).lower()
-    if role == "formulation":
-        return "- semantic_summary: formulation composition/identity cues for nanoparticle preparation; use for semantic discovery only, not full numeric/table authority."
-    if role == "design matrix":
-        return "- semantic_summary: formulation design/process variables for nanoparticle preparation; row/value authority remains in the S2-2 payload/grid, not this prompt summary."
-    if role == "optimization":
-        return "- semantic_summary: optimization/selected-formulation process context for nanoparticle preparation; use for semantic discovery only, not full numeric/table authority."
-    if role in {"characterization", "characterization_only", "results"}:
-        return "- semantic_summary: row-local measurement/context evidence only; not formulation-universe or full numeric/table authority."
-    return "- semantic_summary: table context only; not formulation-universe or full numeric/table authority."
+    return "- summary_contract: structural_prompt_view_only; LLM must decide semantic role and record relevance from source text/table evidence."
+
+
+def prompt_source_caption_or_empty(meta: dict[str, Any]) -> str:
+    """Return source-like captions only; suppress generated role summaries.
+
+    Older pre-LLM evidence packages sometimes carried synthetic captions such as
+    "Formulation table ..." or "Experimental design variable table."  Rendering
+    those strings in S2-4a reintroduces a deterministic semantic role label even
+    when `table_role_hint` and `semantic_summary` are absent.
+    """
+    caption = normalize_text(meta.get("caption_or_title"))
+    lower = caption.lower()
+    generated_role_captions = {
+        "experimental design variable table.",
+        "formulation table with drug/polymer/loading variables.",
+    }
+    if lower in generated_role_captions:
+        return ""
+    return caption
 
 
 def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool) -> list[str]:
     path = item["path"]
     rows = item["rows"]
     meta = item["meta"]
-    header_parts = [part for part in flatten_table_headers_for_summary(rows) if normalize_text(part)]
+    header_parts = flatten_table_headers_for_summary(rows)
     data_rows = rows[1:] if len(rows) > 1 else []
     row_ids = [row[0] for row in data_rows if row and normalize_text(row[0])]
     column_indices = select_summary_column_indices(rows)
     column_headers = [
-        truncate_summary_cell(header_parts[index] if index < len(header_parts) else f"column_{index + 1}", max_chars=52)
+        normalize_text(header_parts[index] if index < len(header_parts) else "") or f"[blank header column {index + 1}]"
         for index in column_indices
     ]
     units = infer_units_from_headers(column_headers)
     sample_lines = build_summary_sample_lines(rows, column_indices)
     table_role_hint = infer_table_role_hint(header_parts, meta)
-    metric_column_indices = select_metric_value_column_indices(
-        rows,
-        header_parts,
-        table_role_hint=table_role_hint,
-    )
-    metric_value_lines = build_metric_value_summary_lines(
-        rows,
-        metric_column_indices,
-        table_role_hint=table_role_hint,
-        header_parts=header_parts,
-    )
+
     table_match = re.search(r"__table_(\d+)__", path.name)
     table_id = f"Table {int(table_match.group(1))}" if table_match else path.stem
-    caption = normalize_text(meta.get("caption_or_title"))
+    manifest_caption = trusted_manifest_caption_for_table(path) if (path.parent / "tables_manifest.json").exists() else ""
+    caption = manifest_caption or prompt_source_caption_or_empty(meta)
     footnotes = truncate_summary_cell(normalize_text(meta.get("footnotes") or meta.get("notes")), max_chars=220)
     row_anchor_preview = summarize_row_anchor_preview(row_ids) if enhancement_enabled else ""
     block_lines = [
         f"[TABLE_SUMMARY {to_repo_rel(path)}]",
         f"- table_id: {table_id}",
         f"- title_or_caption: {caption or '(not available)'}",
-        f"- key_columns: {' || '.join(column_headers) if column_headers else '(not available)'}",
+        f"- column_schema: {' || '.join(column_headers) if column_headers else '(not available)'}",
         f"- header_units: {', '.join(units) if units else '(none inferred)'}",
         f"- row_identifier_pattern: {infer_row_pattern(row_ids)}",
-        f"- table_role_hint: {table_role_hint}",
         prompt_semantic_summary_line(table_role_hint),
         f"- table_shape_hint: rows={meta.get('n_rows', len(rows))}, cols={meta.get('n_cols', max((len(r) for r in rows), default=0))}",
     ]
@@ -4729,8 +5146,6 @@ def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool
     if sample_lines:
         block_lines.append("- sample_rows:")
         block_lines.extend(sample_lines)
-    if metric_value_lines:
-        block_lines.extend(metric_value_lines)
     block_lines.append(f"- footnotes_or_notes: {footnotes or '(not available)'}")
     return block_lines
 
@@ -4760,7 +5175,7 @@ def compact_value_evidence_lines_from_payload(payload: dict[str, Any], *, max_ro
         rows = [ensure_list(row) for row in raw_cells if isinstance(row, list)]
     if len(rows) < 2:
         return []
-    header_parts = [part for part in flatten_table_headers_for_summary(rows) if normalize_text(part)]
+    header_parts = flatten_table_headers_for_summary(rows)
     table_role_hint = normalize_text(payload.get("table_role_hint")) or normalize_text(payload.get("table_source_role"))
     column_indices = select_metric_value_column_indices(
         rows,
@@ -4793,6 +5208,10 @@ def compact_value_evidence_lines_from_payload(payload: dict[str, Any], *, max_ro
     ]
     if caption:
         lines.append(f"- title_or_caption: {caption}")
+    if header_parts:
+        header_summary = truncate_summary_cell(" | ".join(header_parts), max_chars=240)
+        if header_summary:
+            lines.append(f"- header_summary: {header_summary}")
     lines.extend(metric_lines)
     lines.extend(raw_metric_lines)
     return lines
@@ -4817,9 +5236,64 @@ def load_value_evidence_payloads_for_prompt(evidence_artifact: dict[str, Any]) -
     return payloads
 
 
-def render_value_evidence_payload_blocks(evidence_artifact: dict[str, Any], *, max_blocks: int = 16) -> list[str]:
+def value_evidence_payload_prompt_priority(payload: dict[str, Any]) -> tuple[int, int, str]:
+    """Rank row-local value payloads for S2-4a prompt budget.
+
+    Row-local payloads are execution-visible value evidence, not formulation
+    universe authority.  S2-4a should only echo the compact subset that carries
+    formulation/DOE/design semantics or a top-ranked design/result matrix;
+    unrelated downstream/reference spillover remains preserved in payload files
+    without bloating the live prompt.
+    """
+    caption = normalize_text(payload.get("source_caption_or_title"))
+    table_id = normalize_text(payload.get("table_id") or payload.get("source_table_id"))
+    source_role = normalize_text(payload.get("table_source_role")).lower()
+    usage_role = normalize_text(payload.get("payload_usage_role"))
+    inclusion_class = normalize_text(payload.get("table_inclusion_class")).lower()
+    try:
+        authority_rank = int(payload.get("authority_rank") or 9999)
+    except (TypeError, ValueError):
+        authority_rank = 9999
+    matrix = [ensure_list(row) for row in ensure_list(payload.get("normalized_matrix")) if isinstance(row, list)]
+    header_blob = " ".join(normalize_text(cell) for row in matrix[:3] for cell in row[:12] if normalize_text(cell))
+    combined = f"{caption} {table_id} {source_role} {header_blob}".lower()
+    caption_lower = caption.lower()
+    header_lower = header_blob.lower()
+    row_blob = " ".join(normalize_text(cell) for row in matrix[1:12] for cell in row[:4] if normalize_text(cell)).lower()
+    structured_metric_matrix_signal = " | " in row_blob or "(cid:" in row_blob
+    design_signal = (
+        "box-behnken" in combined
+        or "independent and dependent variables" in combined
+        or "effect of independent process variables" in combined
+        or "design matrix" in combined
+        or "experimental design variable" in caption_lower
+        or (
+            "plga" in header_lower
+            and "poloxamer" in header_lower
+            and "drug conc" in header_lower
+            and ("w/o" in header_lower or "phase" in header_lower)
+        )
+    )
+    if design_signal:
+        return (0, authority_rank, table_id)
+    if structured_metric_matrix_signal and usage_role == "row_local_value_evidence":
+        return (2, authority_rank, table_id)
+    if source_role in {"formulation_composition_table", "optimization_table", "parameter_sweep_table"} and inclusion_class != TABLE_INCLUSION_HARD_DROP and authority_rank <= 4:
+        return (1, authority_rank, table_id)
+    if usage_role == "row_local_value_evidence" and authority_rank <= 2:
+        return (2, authority_rank, table_id)
+    return (9, authority_rank, table_id)
+
+
+def render_value_evidence_payload_blocks(evidence_artifact: dict[str, Any], *, max_blocks: int = 4) -> list[str]:
     rendered: list[str] = []
-    for payload in load_value_evidence_payloads_for_prompt(evidence_artifact):
+    payloads = [
+        payload
+        for payload in load_value_evidence_payloads_for_prompt(evidence_artifact)
+        if value_evidence_payload_prompt_priority(payload)[0] < 9
+    ]
+    payloads.sort(key=value_evidence_payload_prompt_priority)
+    for payload in payloads:
         lines = compact_value_evidence_lines_from_payload(payload)
         if not lines:
             continue
@@ -4906,20 +5380,24 @@ def render_prompt_block(
 ) -> dict[str, Any]:
     text_content = normalize_text(block.get("text_content"))
     block_type = normalize_text(block.get("block_type"))
-    evidence_kind = normalize_text(block.get("evidence_kind")).lower()
-    label = {
-        "method": "[METHOD]\n",
-        "materials": "[MATERIALS]\n",
-        "supporting": "[SUPPORTING]\n",
-    }.get(evidence_kind, "")
     if block_type != "table":
         return {
             "block_id": normalize_text(block.get("block_id")),
-            "rendered_text": (label + text_content).strip(),
+            "rendered_text": ("[TEXT_BLOCK]\n" + text_content).strip() if text_content else "",
             "table_mode_used": "",
             "summary_applied": "no",
             "reason_for_full_table": "",
         }
+    if normalize_text(block.get("source_type")) == "table_summary":
+        rendered_summary = render_selected_table_candidate(block)
+        if normalize_text(rendered_summary):
+            return {
+                "block_id": normalize_text(block.get("block_id")),
+                "rendered_text": "[TABLE]\n" + rendered_summary,
+                "table_mode_used": "summary",
+                "summary_applied": "yes",
+                "reason_for_full_table": "",
+            }
     summary_item = resolve_prompt_summary_table_item(normalize_text(block.get("origin_locator")))
     if summary_item is not None:
         return {
@@ -4943,10 +5421,10 @@ def render_prompt_block(
         }
     return {
         "block_id": normalize_text(block.get("block_id")),
-        "rendered_text": "[TABLE]\n" + text_content,
-        "table_mode_used": "summary",
-        "summary_applied": "yes",
-        "reason_for_full_table": "",
+        "rendered_text": "",
+        "table_mode_used": "",
+        "summary_applied": "no",
+        "reason_for_full_table": "summary_table_unavailable_blocked_by_summary_only_contract",
     }
 
 
@@ -4970,21 +5448,6 @@ def build_prompt_render_bundle(evidence_artifact: dict[str, Any]) -> dict[str, A
         rendered_blocks.append(rendered)
         rendered_payloads.append(rendered_text)
         normalized_rendered_payloads.append(normalized_rendered_text)
-    for value_evidence_text in render_value_evidence_payload_blocks(evidence_artifact):
-        normalized_value_evidence_text = normalize_text(value_evidence_text)
-        if not normalized_value_evidence_text:
-            continue
-        rendered_blocks.append(
-            {
-                "block_id": "value_evidence_payload_matrix",
-                "rendered_text": value_evidence_text,
-                "table_mode_used": "value_evidence_payload",
-                "summary_applied": "yes",
-                "reason_for_full_table": "",
-            }
-        )
-        rendered_payloads.append(value_evidence_text)
-        normalized_rendered_payloads.append(normalized_value_evidence_text)
     table_modes = [rendered.get("table_mode_used") for rendered in rendered_blocks if normalize_text(rendered.get("table_mode_used"))]
     overall_table_mode_used = "summary" if "summary" in table_modes else ("value_evidence_payload" if "value_evidence_payload" in table_modes else "")
     return {
@@ -5326,6 +5789,47 @@ def has_preparation_procedure_signal(text: str) -> bool:
     return "nanoprecipitation" in lower or procedure_signal_count(lower) >= 4
 
 
+def has_same_procedure_variant_preparation_signal(text: str) -> bool:
+    """Return True for source-local variant-preparation blocks that inherit a core method.
+
+    These blocks often omit repeated solvent/action details because the paper says the
+    variants were prepared by the same protocol/procedure while incorporating a changed
+    payload/surfactant. Treat them as method evidence only when they still bind variant
+    identity to preparation action, not for downstream assay prose.
+    """
+    lower = normalize_text(text).lower()
+    has_inheritance = bool(re.search(r"\b(?:same procedure|same protocol|same method|prepared similarly)\b", lower))
+    has_prepared_variant = bool(re.search(r"\b(?:prepared|formulations? prepared|nps were prepared|nanoparticles were prepared)\b", lower))
+    has_change_verb = bool(re.search(r"\b(?:incorporating|loaded|loading|with|without|but|containing|addition of)\b", lower))
+    # Keep this generic: inherited-procedure variant prose is useful when the
+    # change is bound to formulation identity and to a material/value/payload
+    # slot.  Do not require paper-specific drug or excipient names; those belong
+    # to LLM semantic discovery, not selector rules.
+    has_material_change = has_change_verb and bool(
+        re.search(
+            r"\b(?:drug|payload|compound|agent|active|dye|polymer|copolymer|lipid|oil|surfactant|emulsifier|stabilizer|modifier|surface modifier|inner phase|organic phase|aqueous phase)\b",
+            lower,
+        )
+        or re.search(r"\b\d+(?:\.\d+)?\s*(?:mg|g|µg|ug|ml|µl|ul|%|w/v|v/v)\b", lower)
+        or re.search(r"\b[a-z]{1,4}\d{1,3}\b", lower)
+    )
+    has_formulation_anchor = bool(re.search(r"\b(?:formulations?|nps?|nanoparticles?|table\s+\d+|np[a-z]{1,3}\d{1,3})\b", lower))
+    return has_inheritance and has_prepared_variant and has_material_change and has_formulation_anchor
+
+
+def is_analytical_measurement_extraction_candidate(text: str) -> bool:
+    lower = normalize_text(text).lower()
+    assay_signal = bool(
+        re.search(
+            r"\b(?:encapsulation efficiency|ee%|drug content|loading content|hplc|high-performance liquid chromatography|quantified|extract(?:ed|ion)?|filtered through)\b",
+            lower,
+        )
+    )
+    sample_handling_signal = bool(re.search(r"\b(?:weighing|dissolved|ethanol|centrifuged|filtered|samples?)\b", lower))
+    synthesis_signal = bool(re.search(r"\b(?:were prepared by|nps were prepared by|nanoparticles were prepared by|added dropwise into|organic phase was added|aqueous phase containing)\b", lower))
+    return assay_signal and sample_handling_signal and not synthesis_signal
+
+
 def optimization_decision_signature(text: str) -> str:
     lower = normalize_text(text).lower()
     if "during the whole study" in lower or "chosen for the preparation" in lower:
@@ -5579,6 +6083,57 @@ def resolve_stage1_structure_sidecar_path(
     return None
 
 
+def _resolve_optional_project_path(path_text: str) -> Path:
+    path = Path(path_text)
+    if not path.is_absolute():
+        path = (PROJECT_ROOT / path).resolve()
+    return path
+
+
+def resolve_s2_1b_text_projection(record: dict[str, Any], raw_text_path: Path) -> dict[str, Any]:
+    """Resolve the Stage2 text surface consumed by S2-2.
+
+    Raw/current clean text remains the audit authority. When a manifest row carries
+    an explicit S2-1b denoised projection path, candidate segmentation and
+    evidence construction consume that projection and preserve both raw and
+    denoised paths in artifact metadata.
+    """
+    raw_text_path = raw_text_path.resolve()
+    denoised_path_text = normalize_text(
+        record.get("source_s2_1b_denoised_text_path")
+        or record.get("s2_1b_denoised_text_path")
+        or record.get("denoised_text_path")
+    )
+    audit_path_text = normalize_text(record.get("s2_1b_denoise_audit_path") or record.get("source_s2_1b_denoise_audit_path"))
+    summary_path_text = normalize_text(record.get("s2_1b_denoise_summary_path") or record.get("source_s2_1b_denoise_summary_path"))
+    if not denoised_path_text:
+        return {
+            "source_text_projection": "raw_clean_text",
+            "source_clean_text_path": to_repo_rel(raw_text_path),
+            "source_raw_clean_text_path": to_repo_rel(raw_text_path),
+            "source_s2_1b_denoised_text_path": "",
+            "s2_1b_denoise_audit_path": to_repo_rel(_resolve_optional_project_path(audit_path_text)) if audit_path_text else "",
+            "s2_1b_denoise_summary_path": to_repo_rel(_resolve_optional_project_path(summary_path_text)) if summary_path_text else "",
+            "effective_text_path": raw_text_path,
+            "s2_1b_source_denoise_projection": False,
+        }
+    denoised_path = _resolve_optional_project_path(denoised_path_text)
+    if not denoised_path.exists():
+        raise FileNotFoundError(f"S2-1b denoised text projection not found: {denoised_path}")
+    audit_path = _resolve_optional_project_path(audit_path_text) if audit_path_text else None
+    summary_path = _resolve_optional_project_path(summary_path_text) if summary_path_text else None
+    return {
+        "source_text_projection": "s2_1b_denoised",
+        "source_clean_text_path": to_repo_rel(raw_text_path),
+        "source_raw_clean_text_path": to_repo_rel(raw_text_path),
+        "source_s2_1b_denoised_text_path": to_repo_rel(denoised_path),
+        "s2_1b_denoise_audit_path": to_repo_rel(audit_path) if audit_path is not None else "",
+        "s2_1b_denoise_summary_path": to_repo_rel(summary_path) if summary_path is not None else "",
+        "effective_text_path": denoised_path,
+        "s2_1b_source_denoise_projection": True,
+    }
+
+
 def build_candidate_segmentation_artifact(
     *,
     record: dict[str, str],
@@ -5588,7 +6143,9 @@ def build_candidate_segmentation_artifact(
     producer_script: str,
     stage1_structure_sidecar_path: Path | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    raw_text = text_path.read_text(encoding="utf-8", errors="replace")
+    text_projection = resolve_s2_1b_text_projection(record, text_path)
+    effective_text_path = text_projection["effective_text_path"]
+    raw_text = effective_text_path.read_text(encoding="utf-8", errors="replace")
     stage1_structure_sidecar, stage1_structure_status, source_stage1_structure_path = load_stage1_structure_sidecar(stage1_structure_sidecar_path)
     stage1_structure_index = build_stage1_structure_block_index(stage1_structure_sidecar)
     paragraph_entries = build_segmented_paragraph_entries(raw_text)
@@ -5610,7 +6167,7 @@ def build_candidate_segmentation_artifact(
         noise_flags = list(entry.get("noise_flags") or [])
         inline_table_item = build_inline_formulation_table_item(
             text_content,
-            text_path=text_path,
+            text_path=effective_text_path,
             paragraph_index=int(entry.get("paragraph_index", 0)),
             segment_index=int(entry.get("segment_index", 0)),
         )
@@ -5632,7 +6189,7 @@ def build_candidate_segmentation_artifact(
         elif section_kind == "materials":
             block_type = "materials_procurement"
         candidate_id = f"{record['key']}__candidate_paragraph__{idx:02d}"
-        origin_locator = f"{to_repo_rel(text_path)}#paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}"
+        origin_locator = f"{to_repo_rel(effective_text_path)}#paragraph:{entry['paragraph_index']}#segment:{entry.get('segment_index', 0)}"
         selector_text_content = build_selector_surface_text(
             text_content,
             section_kind="table_related" if is_inline_table_candidate else section_kind,
@@ -5812,7 +6369,12 @@ def build_candidate_segmentation_artifact(
 
     artifact = {
         "paper_key": record["key"],
-        "source_clean_text_path": to_repo_rel(text_path),
+        "source_clean_text_path": text_projection["source_clean_text_path"],
+        "source_raw_clean_text_path": text_projection["source_raw_clean_text_path"],
+        "source_text_projection": text_projection["source_text_projection"],
+        "source_s2_1b_denoised_text_path": text_projection["source_s2_1b_denoised_text_path"],
+        "s2_1b_denoise_audit_path": text_projection["s2_1b_denoise_audit_path"],
+        "s2_1b_denoise_summary_path": text_projection["s2_1b_denoise_summary_path"],
         "source_manifest_path": to_repo_rel(manifest_path),
         "source_stage1_structure_path": source_stage1_structure_path,
         "stage1_structure_sidecar_status": stage1_structure_status,
@@ -5827,6 +6389,7 @@ def build_candidate_segmentation_artifact(
             "table_authority_ranking": table_dir is not None and table_dir.exists(),
             "noise_filtering": True,
             "stage1_structure_sidecar_metadata": stage1_structure_status == "loaded",
+            "s2_1b_source_denoise_projection": bool(text_projection["s2_1b_source_denoise_projection"]),
         },
         "coverage_summary": {
             "total_candidates": len(candidates),
@@ -5892,11 +6455,17 @@ def candidate_evidence_kind(candidate: dict[str, Any]) -> str:
     section_kind = normalize_text(candidate.get("section_kind")).lower()
     block_type = normalize_text(candidate.get("block_type")).lower()
     text = normalize_text(candidate.get("text_content"))
+    if is_analytical_measurement_extraction_candidate(text):
+        return "supporting"
     if (
         has_preparation_procedure_signal(text)
         or (
             section_kind in {"preparation", "variant_preparation"}
             and procedure_signal_count(text) >= 3
+        )
+        or (
+            section_kind == "variant_preparation"
+            and has_same_procedure_variant_preparation_signal(text)
         )
         or (
             block_type == "synthesis_method"
@@ -5937,7 +6506,13 @@ def candidate_signal_strength(candidate: dict[str, Any]) -> float:
             base -= 3.0
         return base + 4.0
     if kind == "method":
-        return 2.0 + 1.5 * procedure_signal_count(lower) + (2.5 if has_preparation_procedure_signal(lower) else 0.0)
+        inherited_variant_bonus = 5.0 if has_same_procedure_variant_preparation_signal(lower) else 0.0
+        return (
+            2.0
+            + 1.5 * procedure_signal_count(lower)
+            + (2.5 if has_preparation_procedure_signal(lower) else 0.0)
+            + inherited_variant_bonus
+        )
     if kind == "materials":
         return 1.5 + 1.5 * count_any_cues(lower, PROCUREMENT_CUES) + 2.5 * float(is_materials_inventory_candidate(lower))
     score = 0.5 * count_segmentation_cues(lower, SEGMENT_RESULT_CUES + SEGMENT_OPTIMIZATION_CUES)
@@ -5961,6 +6536,10 @@ def candidate_noise_penalty(candidate: dict[str, Any]) -> float:
         penalty += 8.0
     if "residual_noise" in quality_flags or "reference_like_content" in quality_flags:
         penalty += 4.0
+    if any(token in lower for token in ["figure ", "fig. ", "schematic diagram", "release profile", "release profiles"]):
+        penalty += 4.0
+    if any(token in lower for token in ["downloaded from", "journal of pharmacy", "©", "copyright"]):
+        penalty += 3.0
     if is_assay_comparator_dominated(lower):
         penalty += 5.0
     if normalize_text(candidate.get("section_kind")).lower() == "context":
@@ -5996,7 +6575,7 @@ def candidate_locality_score(candidate: dict[str, Any]) -> float:
     score = 0.0
     if split_trigger in {"table_isolation", "inline_table_recovery", "table_inline_split", "post_table_split"}:
         score += 1.5
-    if section_kind in {"preparation", "variant_preparation", "materials", "optimization"}:
+    if section_kind in {"preparation", "variant_preparation", "materials", "optimization", "experimental_design"}:
         score += 1.0
     if int(candidate.get("paragraph_index", 0) or 0) <= 25:
         score += 0.5
@@ -6206,7 +6785,7 @@ def method_candidate_is_floor_eligible(candidate: dict[str, Any]) -> bool:
         has_preparation_procedure_signal(text)
         or procedure_signal_count(text) >= 4
         or (
-            normalize_text(candidate.get("section_kind")).lower() in {"preparation", "variant_preparation"}
+            normalize_text(candidate.get("section_kind")).lower() in {"preparation", "variant_preparation", "experimental_design"}
             and procedure_signal_count(text) >= 3
         )
     )
@@ -6260,6 +6839,8 @@ PREPARATION_CORE_EXCLUDED_TEXT_PREFIXES = [
     "caption:",
     "figure caption:",
     "fig caption:",
+    "figure ",
+    "fig. ",
     "table of contents:",
     "contents:",
     "toc:",
@@ -6617,6 +7198,10 @@ def build_evidence_priority_selection(
             if len(normalize_text(candidate.get("text_content"))) < 80:
                 suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "method_too_short"})
                 continue
+            quality_flags = set(ensure_list(candidate.get("quality_flags")))
+            if selected_method_families and "residual_noise" in quality_flags and not preparation_core_candidate_is_floor_eligible(candidate):
+                suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "noisy_method_spillover_after_core_method"})
+                continue
             if len(selected_method_families) >= 2:
                 suppression_events.append({"candidate_id": normalize_text(candidate.get("candidate_id")), "reason": "method_budget_reached"})
                 continue
@@ -6938,7 +7523,9 @@ def build_evidence_blocks_artifact(
     current_table_mode = table_mode()
     summary_enhanced = summary_first_column_enhancement_enabled()
     current_input_packing_mode = input_packing_mode()
-    raw_text = text_path.read_text(encoding="utf-8", errors="replace")
+    text_projection = resolve_s2_1b_text_projection(record, text_path)
+    effective_text_path = text_projection["effective_text_path"]
+    raw_text = effective_text_path.read_text(encoding="utf-8", errors="replace")
     summary_candidates = collect_summary_table_candidates(table_dir) if table_dir is not None and table_dir.exists() else []
     signals = dict(segmentation_bundle.get("signals") or detect_pre_llm_signals(raw_text, summary_candidates if current_table_mode == "summary" else []))
     evidence_selection = build_evidence_priority_selection(
@@ -7168,6 +7755,7 @@ def build_evidence_blocks_artifact(
         "proxy_suppression_when_authoritative_table_exists": True,
         "minimal_evidence_floor": normalize_text(evidence_selection.get("minimal_evidence_floor_applied")) == "yes",
         "explicit_table_fallback": explicit_table_fallback_used,
+        "s2_1b_source_denoise_projection": bool(text_projection["s2_1b_source_denoise_projection"]),
         "archetype_detection_metadata_only": True,
     }
     coverage_summary = {
@@ -7249,7 +7837,12 @@ def build_evidence_blocks_artifact(
     ordered_block_order = order_tokens if order_tokens else ["none"]
     artifact = {
         "paper_key": record["key"],
-        "source_clean_text_path": to_repo_rel(text_path),
+        "source_clean_text_path": text_projection["source_clean_text_path"],
+        "source_raw_clean_text_path": text_projection["source_raw_clean_text_path"],
+        "source_text_projection": text_projection["source_text_projection"],
+        "source_s2_1b_denoised_text_path": text_projection["source_s2_1b_denoised_text_path"],
+        "s2_1b_denoise_audit_path": text_projection["s2_1b_denoise_audit_path"],
+        "s2_1b_denoise_summary_path": text_projection["s2_1b_denoise_summary_path"],
         "source_manifest_path": to_repo_rel(manifest_path),
         "source_scope_manifest_path": to_repo_rel(manifest_path),
         "source_candidate_artifact_path": to_repo_rel(candidate_artifact_path),
@@ -7262,6 +7855,7 @@ def build_evidence_blocks_artifact(
             "summary_view_is_lossy": True,
             "ordered_block_order": ordered_block_order,
             "selector_strategy": selector_strategy,
+            "source_text_projection": text_projection["source_text_projection"],
         },
         "producer_script": producer_script,
         "contract_version": "s2_2_evidence_blocks_v1",
@@ -7792,8 +8386,12 @@ def classify_execution_table_type(
         return "non_formulation_table"
     base_hint = infer_table_role_hint(header_parts, {**meta, "_signal_text": signal_text})
     numbered_row_count = int(normalization_metadata.get("numbered_row_count") or 0)
-    row_ids = [normalize_text(row[0]) for row in normalized_matrix[1:] if isinstance(row, list) and row and normalize_text(row[0])]
+    header_span = summary_header_row_count(normalized_matrix)
+    data_matrix = normalized_matrix[header_span:] if len(normalized_matrix) > header_span else normalized_matrix[1:]
+    row_ids = [normalize_text(row[0]) for row in data_matrix if isinstance(row, list) and row and normalize_text(row[0])]
     row_pattern = infer_row_pattern(row_ids)
+    if numbered_row_count <= 0:
+        numbered_row_count = sum(1 for value in row_ids if re.fullmatch(r"\d+(?:\.\d+)?", value))
     has_formulation = has_strong_formulation_table_signal(signal_text) or any(
         token in signal_text for token in ["formulation", "drug", "polymer", "surfactant", "loading", "ratio"]
     )
@@ -7919,7 +8517,8 @@ def payload_primary_eligibility_signals(payload: dict[str, Any]) -> list[str]:
     signals: list[str] = []
     if representation_status not in {"repair_insufficient", "unrepaired_corrupted"}:
         signals.append("representation_not_repair_insufficient")
-    if row_pattern in {"numeric runs", "f-numbered rows"} or len(first_labels) >= 3:
+    structured_anchor_count = structured_row_identifier_count(first_labels)
+    if row_pattern in {"numeric runs", "f-numbered rows", "letter-number identifiers"} or structured_anchor_count >= 3:
         signals.append("stable_row_anchors")
     if data_row_count >= 3:
         signals.append("multiple_condition_rows")
@@ -8180,6 +8779,68 @@ def build_table_authority_validation_row(
     }
 
 
+TRUSTED_CAPTION_BINDING_STATUSES = {
+    "trusted_manifest",
+    "trusted_unambiguous",
+    "trusted_exact_table_id",
+}
+
+
+def resolve_s2_2_source_caption_binding(
+    *,
+    meta: dict[str, Any],
+    sidecar_metadata: dict[str, Any],
+) -> dict[str, str]:
+    """Choose the S2-2 source caption/title from bound source channels only."""
+    sidecar_caption = normalize_text(sidecar_metadata.get("stage1_cell_sidecar_caption"))
+    sidecar_match_rule = normalize_text(sidecar_metadata.get("stage1_cell_sidecar_match_rule"))
+    if sidecar_caption and sidecar_match_rule == "stable_table_id_to_sidecar_table_id":
+        return {
+            "source_caption_or_title": sidecar_caption,
+            "source_caption_binding_source": "stage1_cell_sidecar",
+            "source_caption_binding_rule": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_caption_binding_rule")) or sidecar_match_rule,
+            "source_caption_binding_status": "trusted_exact_table_id",
+            "untrusted_recovered_caption_or_title": normalize_text(meta.get("untrusted_recovered_caption_or_title")),
+        }
+
+    caption = normalize_text(meta.get("caption_or_title"))
+    binding_source = normalize_text(meta.get("caption_binding_source"))
+    binding_status = normalize_text(meta.get("caption_binding_status"))
+    binding_rule = normalize_text(meta.get("caption_binding_rule"))
+    source_kind = normalize_text(meta.get("table_source_kind") or meta.get("asset_origin"))
+    if caption and generated_table_caption_prefix(caption):
+        return {
+            "source_caption_or_title": "",
+            "source_caption_binding_source": "generated_role_caption_suppressed",
+            "source_caption_binding_rule": "generated_caption_not_source_title",
+            "source_caption_binding_status": "unbound",
+            "untrusted_recovered_caption_or_title": normalize_text(meta.get("untrusted_recovered_caption_or_title")) or caption,
+        }
+    if caption and binding_status in TRUSTED_CAPTION_BINDING_STATUSES:
+        return {
+            "source_caption_or_title": caption,
+            "source_caption_binding_source": binding_source or "trusted_metadata",
+            "source_caption_binding_rule": binding_rule,
+            "source_caption_binding_status": binding_status,
+            "untrusted_recovered_caption_or_title": normalize_text(meta.get("untrusted_recovered_caption_or_title")),
+        }
+    if caption and source_kind == "html_full_size_table_asset":
+        return {
+            "source_caption_or_title": caption,
+            "source_caption_binding_source": binding_source or "selected_table_asset",
+            "source_caption_binding_rule": binding_rule or "html_full_size_asset_metadata",
+            "source_caption_binding_status": "trusted_manifest",
+            "untrusted_recovered_caption_or_title": normalize_text(meta.get("untrusted_recovered_caption_or_title")),
+        }
+    return {
+        "source_caption_or_title": "",
+        "source_caption_binding_source": binding_source,
+        "source_caption_binding_rule": binding_rule,
+        "source_caption_binding_status": "unbound",
+        "untrusted_recovered_caption_or_title": normalize_text(meta.get("untrusted_recovered_caption_or_title")) or caption,
+    }
+
+
 def build_normalized_table_payload_artifact(
     *,
     record: dict[str, str],
@@ -8352,7 +9013,13 @@ def build_normalized_table_payload_artifact(
             writer = csv.writer(handle)
             writer.writerows(normalized_rows)
         table_id = derive_stable_table_id(source_csv_path, meta)
-        table_identity_aliases = derive_table_identity_aliases(source_csv_path, meta)
+        source_caption_binding = resolve_s2_2_source_caption_binding(
+            meta=meta,
+            sidecar_metadata=sidecar_metadata,
+        )
+        trusted_caption = normalize_text(source_caption_binding.get("source_caption_or_title"))
+        caption_meta_for_identity = {**meta, "caption_or_title": trusted_caption}
+        table_identity_aliases = derive_table_identity_aliases(source_csv_path, caption_meta_for_identity)
         table_identity_conflict_status = (
             "conflicting_aliases_preserved"
             if len({normalize_token(value) for value in table_identity_aliases if value}) > 1
@@ -8409,7 +9076,7 @@ def build_normalized_table_payload_artifact(
                 "table_source_role": source_role,
                 "raw_cells": normalized_rows,
                 "header_structure": header_structure,
-                "source_caption_or_title": normalize_text(meta.get("caption_or_title")),
+                "source_caption_or_title": trusted_caption,
             }
         )
         selected_entries.append(
@@ -8436,7 +9103,11 @@ def build_normalized_table_payload_artifact(
                 "stage1_cell_sidecar_noise_class": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_noise_class")),
                 "stage1_cell_sidecar_noise_reason": normalize_text(sidecar_metadata.get("stage1_cell_sidecar_noise_reason")),
                 "source_table_id": table_id,
-                "source_caption_or_title": normalize_text(meta.get("caption_or_title")),
+                "source_caption_or_title": trusted_caption,
+                "source_caption_binding_source": normalize_text(source_caption_binding.get("source_caption_binding_source")),
+                "source_caption_binding_rule": normalize_text(source_caption_binding.get("source_caption_binding_rule")),
+                "source_caption_binding_status": normalize_text(source_caption_binding.get("source_caption_binding_status")),
+                "untrusted_recovered_caption_or_title": normalize_text(source_caption_binding.get("untrusted_recovered_caption_or_title")),
                 "table_role_hint": normalize_text(candidate.get("table_role_hint")),
                 "table_source_role": source_role,
                 "table_type": table_type,
@@ -9785,7 +10456,7 @@ def parse_args() -> argparse.Namespace:
         default="",
         help="Optional directory of richer legacy raw responses to use when a live Stage2 raw response collapses to the minimal shrunken contract.",
     )
-    parser.add_argument("--model", default=PRIMARY_DEFAULT)
+    parser.add_argument("--model", default="", help="Live-call model. Required only when --source-mode live_llm executes the S2-4b call.")
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia", "ollama"], default="gemini")
     parser.add_argument("--max-text-chars", type=int, default=30000)
     parser.add_argument("--request-timeout-seconds", type=int, default=180)
@@ -9853,7 +10524,10 @@ def build_request_metadata_payload(
 
 def main() -> None:
     args = parse_args()
-    validate_models_or_raise([args.model], context="stage2_objects_v2 extractor model check")
+    if args.source_mode == "live_llm" and not args.stop_before_live_call and not str(args.model).strip():
+        raise ValueError("--model is required when --source-mode live_llm executes the S2-4b live call.")
+    if str(args.model).strip():
+        validate_models_or_raise([args.model], context="stage2_objects_v2 extractor model check")
     request_timeout_seconds = max(1, min(int(args.request_timeout_seconds), 180))
     request_retries = max(0, min(int(args.request_retries), 1))
 

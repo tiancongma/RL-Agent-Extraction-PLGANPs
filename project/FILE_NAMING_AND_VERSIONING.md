@@ -306,3 +306,22 @@ Manifest and artifact-level outputs must preserve:
 
 - Legacy layouts such as `data/cleaned/content_goren_2025/...` are compatibility structures, not preferred dataset roots.
 - New outputs should not expand legacy layouts when a dataset-scoped root is available.
+
+## S2-1b Source Denoise Projection Artifacts
+
+S2-1b outputs are run-scoped Stage2 internal artifacts. They must stay under the governed Stage2 run child, not under `data/cleaned/`, because they are a Stage2 consumption projection rather than source authority.
+
+Canonical planned artifact names:
+
+```text
+semantic_stage2_objects/s2_1b_denoised_text/<paper_key>.txt
+semantic_stage2_objects/s2_1b_denoise_audit/<paper_key>_s2_1b_denoise_audit_v1.json
+analysis/s2_1b_denoise_summary_v1.tsv
+```
+
+Required naming rules:
+
+- do not name these outputs `clean_text`, `final_text`, or `source_text`
+- always distinguish `raw/current cleaned text` from `s2_1b_denoised` projection
+- downstream S2 artifacts must record both raw source and denoised projection paths
+- S2-1b artifacts are diagnostic/internal until implemented, tested, and wired into maintained Stage2 execution

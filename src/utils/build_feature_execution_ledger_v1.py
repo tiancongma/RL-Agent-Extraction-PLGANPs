@@ -191,7 +191,6 @@ def infer_run_profile(run_dir: Path) -> tuple[RunProfile, dict[str, str], dict[s
         "resolved_fields": find_run_file(run_dir, "resolved_relation_fields_v1.tsv"),
         "final_table": find_run_file(run_dir, "final_formulation_table_v1.tsv"),
         "decision_trace": find_run_file(run_dir, "final_output_decision_trace_v1.tsv"),
-        "identity_freeze": find_run_file(run_dir, "identity_freeze_report_v1.tsv"),
         "compare_counts": find_run_file(run_dir, "final_table_vs_gt_counts_by_doi.tsv"),
         "audit_ready": find_run_file(run_dir, "final_formulation_table_audit_ready_v1.tsv"),
         "risk_assessment": find_run_file(run_dir, "paper_risk_assessment.tsv"),
@@ -235,7 +234,7 @@ def feature_category(feature_key: str) -> str:
         return "run_metadata"
     if feature_key in {"active_data_source_authority_resolution", "benchmark_doi_level_gt_count_audit", "variant_aware_gt_authority_switch"}:
         return "compare"
-    if feature_key in {"stage5_identity_freeze_gate", "family_variant_retention_governance"}:
+    if feature_key in {"family_variant_retention_governance"}:
         return "stage5_final"
     if feature_key in {"stage5_audit_ready_export", "stage5_layer2_risk_assessment"}:
         return "stage5_review"
@@ -252,8 +251,8 @@ def derive_schema_row(feature: dict[str, str], existing: dict[str, str] | None =
     expected_scopes = {"stage2_live_visibility": "stage2_live,stage2_replay,full_pipeline_local", "stage2_completed": "stage2_live,stage2_replay,full_pipeline_local", "stage2_replay": "stage2_replay", "run_metadata": "all_runs", "compare": "compare_local,benchmark_terminal,full_pipeline_local", "stage5_final": "stage5_final_local,full_pipeline_local,compare_local", "stage5_review": "stage5_review_local", "governance_support": "governance_debug_only", "historical_or_fallback": "historical_only", "review_or_gap": "review_needed_only"}[category]
     resume_behavior = {"stage2_live_visibility": "not_reachable_after_stage2_boundary", "stage2_completed": "inferred_from_completed_stage2_input_when_resumed_downstream", "stage2_replay": "replay_only_then_inferred_from_completed_stage2_input", "run_metadata": "re-emitted_per_run", "compare": "compare_local_only_or_terminal_resume", "stage5_final": "inferred_from_upstream_final_table_or_trace_after_resume", "stage5_review": "review_workflow_only", "governance_support": "manual_debugging_only", "historical_or_fallback": "not_expected_in_current_mainline_resume", "review_or_gap": "review_needed"}[category]
     persistence = {"stage2_live_visibility": "prompt_build_visibility_does_not_persist_downstream", "stage2_completed": "completed_stage2_outputs_persist", "stage2_replay": "completed_stage2_outputs_persist_but_prompt_visibility_may_not", "run_metadata": "run_local_only", "compare": "compare_artifacts_persist", "stage5_final": "final_table_and_trace_persist", "stage5_review": "review_exports_persist", "governance_support": "manual_only", "historical_or_fallback": "historical_only", "review_or_gap": "varies_review_needed"}[category]
-    observability = {"stage2_live_visibility": "RUN_CONTEXT stage2 settings plus prompt preview or parse audit", "stage2_completed": "completed Stage2 artifacts and compatibility summary", "stage2_replay": "RUN_CONTEXT source_mode=legacy_llm_replay and legacy_raw_responses_dir", "run_metadata": "RUN_CONTEXT and feature activation report", "compare": "compare outputs and GT authority paths", "stage5_final": "final table, decision trace, identity-freeze artifacts", "stage5_review": "review export artifacts", "governance_support": "explicit memory-query or audit evidence", "historical_or_fallback": "historical docs or explicit legacy execution", "review_or_gap": "manual audit evidence"}[category]
-    active_artifacts = {"stage2_live_visibility": "analysis/stage2_prompt_preview_v1.tsv; RUN_CONTEXT.md", "stage2_completed": "semantic_to_widerow_adapter/compatibility_projection_summary_v1.json; weak_labels__v7pilot_r3_fixparse.tsv", "stage2_replay": "RUN_CONTEXT.md; semantic_to_widerow_adapter/*", "run_metadata": "RUN_CONTEXT.md; analysis/feature_activation_report_v1.tsv", "compare": "final_table_vs_gt_counts_by_doi.tsv; RUN_CONTEXT.md", "stage5_final": "final_formulation_table_v1.tsv; final_output_decision_trace_v1.tsv; identity_freeze_report_v1.tsv", "stage5_review": "final_formulation_table_audit_ready_v1.tsv; paper_risk_assessment.tsv", "governance_support": "memory query transcript or audit notes", "historical_or_fallback": "explicit legacy/fallback run artifacts", "review_or_gap": "manual audit artifacts"}[category]
+    observability = {"stage2_live_visibility": "RUN_CONTEXT stage2 settings plus prompt preview or parse audit", "stage2_completed": "completed Stage2 artifacts and compatibility summary", "stage2_replay": "RUN_CONTEXT source_mode=legacy_llm_replay and legacy_raw_responses_dir", "run_metadata": "RUN_CONTEXT and feature activation report", "compare": "compare outputs and GT authority paths", "stage5_final": "final table and decision trace", "stage5_review": "review export artifacts", "governance_support": "explicit memory-query or audit evidence", "historical_or_fallback": "historical docs or explicit legacy execution", "review_or_gap": "manual audit evidence"}[category]
+    active_artifacts = {"stage2_live_visibility": "analysis/stage2_prompt_preview_v1.tsv; RUN_CONTEXT.md", "stage2_completed": "semantic_to_widerow_adapter/compatibility_projection_summary_v1.json; weak_labels__v7pilot_r3_fixparse.tsv", "stage2_replay": "RUN_CONTEXT.md; semantic_to_widerow_adapter/*", "run_metadata": "RUN_CONTEXT.md; analysis/feature_activation_report_v1.tsv", "compare": "final_table_vs_gt_counts_by_doi.tsv; RUN_CONTEXT.md", "stage5_final": "final_formulation_table_v1.tsv; final_output_decision_trace_v1.tsv", "stage5_review": "final_formulation_table_audit_ready_v1.tsv; paper_risk_assessment.tsv", "governance_support": "memory query transcript or audit notes", "historical_or_fallback": "explicit legacy/fallback run artifacts", "review_or_gap": "manual audit artifacts"}[category]
     upstream_artifacts = {"stage2_live_visibility": "parent live stage2_prompt_preview_v1.tsv only if traced", "stage2_completed": "upstream weak_labels__v7pilot_r3_fixparse.tsv or compatibility summary", "stage2_replay": "upstream raw responses and parent live prompt preview", "run_metadata": "none", "compare": "upstream final_formulation_table_v1.tsv and compare outputs", "stage5_final": "upstream final_formulation_table_v1.tsv and final_output_decision_trace_v1.tsv", "stage5_review": "upstream review exports", "governance_support": "none", "historical_or_fallback": "historical docs", "review_or_gap": "manual audit notes"}[category]
     row = {key: feature[key] for key in ["feature_key", "feature_name", "architecture_layer", "stage_scope", "feature_type", "current_status", "default_expectation", "activation_mode"]}
     row.update({"expected_run_scopes": expected_scopes, "lawful_resume_behavior": resume_behavior, "upstream_persistence_behavior": persistence, "observability_requirements": observability, "expected_artifacts_if_active": active_artifacts, "expected_artifacts_if_upstream_applied": upstream_artifacts, "cannot_be_reobserved_after_resume": "true" if category in {"stage2_live_visibility", "stage2_replay"} else "false", "notes": feature.get("notes", "")})
@@ -311,7 +310,7 @@ def build_upstream_trace(profile: RunProfile, values: dict[str, str], artifacts:
         tags.append("stage3_relation_materialization")
         items.append({"stage": "stage3", "status": "already_applied_upstream", "reason": "Run starts from Stage3 relation artifacts.", "evidence_path": values["relation_records_tsv"]})
     if not profile.stage5_final_local and values.get("final_table_tsv"):
-        tags.extend(["family_variant_retention_governance", "stage5_identity_freeze_gate"])
+        tags.extend(["family_variant_retention_governance"])
         items.append({"stage": "stage5_final", "status": "already_applied_upstream", "reason": "Run starts from a completed Stage5 final table.", "evidence_path": values["final_table_tsv"]})
     if profile.stage2_replay:
         parent_preview = find_parent_live_prompt_preview(artifacts.get("raw_responses_dir"))
@@ -441,11 +440,6 @@ def actual_state(feature: dict[str, str], profile: RunProfile, values: dict[str,
         return STATE_ACTIVE_OBSERVED, "RUN_CONTEXT contains boundary-governance metadata.", [artifacts["run_context"]]
     if key == "active_data_source_authority_resolution" and profile.compare_local and (values.get("source_resolution") or values.get("source_run_dir")):
         return STATE_ACTIVE_OBSERVED, "Compare run records explicit source authority resolution.", [artifacts["run_context"], artifacts.get("compare_counts")]
-    if key == "stage5_identity_freeze_gate":
-        if artifacts.get("identity_freeze") is not None and (profile.stage5_final_local or profile.full_pipeline_local):
-            return STATE_ACTIVE_OBSERVED, "Run emitted identity-freeze diagnostics.", [artifacts["identity_freeze"]]
-        if profile.compare_local and values.get("final_table_tsv"):
-            return STATE_ACTIVE_INFERRED, "Compare node consumes a final table that should already have passed identity-freeze upstream.", [artifacts["run_context"]]
     if key == "family_variant_retention_governance":
         if artifacts.get("decision_trace") is not None:
             state = STATE_ACTIVE_OBSERVED if profile.stage5_final_local or profile.full_pipeline_local else STATE_ACTIVE_INFERRED

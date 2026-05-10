@@ -7,6 +7,7 @@ from src.stage2_sampling_labels.validate_stage2_semantic_authority_contract_v1 i
     summarize_authority_reattachment_sidecar,
 )
 from src.stage2_sampling_labels.build_stage2_compatibility_projection_v1 import (
+    build_arg_parser,
     load_authority_sidecar,
     run_projection,
     LEGACY_TSV_NAME,
@@ -138,6 +139,19 @@ class Stage2AuthorityReattachmentDiagnosticsTest(unittest.TestCase):
             self.assertIn("paper1_table_1.csv", trace_text)
             self.assertIn(str(root / "grid" / "table_cell_grid_v1.tsv"), trace_text)
             self.assertIn("resolved", trace_text)
+
+    def test_projection_cli_accepts_authority_sidecar_root_for_s2_7_reattachment(self) -> None:
+        args = build_arg_parser().parse_args(
+            [
+                "--input-jsonl",
+                "semantic.jsonl",
+                "--output-dir",
+                "out",
+                "--authority-sidecar",
+                "run_root",
+            ]
+        )
+        self.assertEqual(args.authority_sidecar, "run_root")
 
     def test_projection_trace_exposes_missing_sidecar_status_without_blocking(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

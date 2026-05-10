@@ -12,7 +12,7 @@ try:
         call_nvidia_hosted,
         sanitize_stage2_json_text,
     )
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
 except ModuleNotFoundError:  # pragma: no cover
     import sys
 
@@ -22,7 +22,7 @@ except ModuleNotFoundError:  # pragma: no cover
         call_nvidia_hosted,
         sanitize_stage2_json_text,
     )
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
 
 
 SCHEMA = {
@@ -101,7 +101,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia"], default="gemini")
-    parser.add_argument("--model", default=PRIMARY_DEFAULT)
+    parser.add_argument("--model", default="")
     parser.add_argument("--request-retries", type=int, default=2)
     parser.add_argument("--retry-sleep-sec", type=float, default=3.0)
     return parser.parse_args()

@@ -37,7 +37,9 @@ from typing import List, Dict, Any
 import pandas as pd
 from dotenv import load_dotenv
 from google import generativeai as genai
-from src.utils.model_policy import PRIMARY_DEFAULT, SECONDARY_DEFAULT, validate_models_or_raise
+from src.utils.model_policy import validate_models_or_raise
+PRIMARY_DEFAULT = ""
+SECONDARY_DEFAULT = ""
 
 # ---- Project root & .env ----
 PROJECT_ROOT = Path(__file__).resolve().parents[1]

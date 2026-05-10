@@ -164,18 +164,18 @@ For numbered DOE row activation specifically, governed recovery rows are accepte
 
 ## Current governed lessons
 
-### Stage5 legality lesson
+### Stage5 diagnostic-baseline lesson
 
 - Stage5 final-table generation is necessary but not sufficient for benchmark
   legality.
-- The hard legality boundary is the mandatory identity-freeze gate, not
-  final-table materialization alone.
-- The governing example is the failed DEV15 full-pipeline lineage:
-  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
-- That lineage reached Stage5 final-table materialization but remained
-  diagnostic-only because identity freeze failed.
-- Therefore compare outputs, reviewer exports, and modeling-ready continuations
-  derived from a failed identity-freeze run are not benchmark-valid.
+- In the current diagnostic-development phase, benchmark mode is disabled; the
+  maintained compare surface is a diagnostic final-table-vs-GT count comparison.
+- The compare node must consume the completed Stage5 final table, declared scope
+  manifest, and frozen GT authority directly; it must not require a separate
+  identity-freeze diagnostic artifact as a default input.
+- Therefore current DEV15 compare outputs, reviewer exports, and modeling-ready
+  continuations are diagnostic-only unless a governed benchmark contract is
+  explicitly re-enabled.
 
 ### Stage2 decomposition lesson
 

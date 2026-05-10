@@ -94,7 +94,7 @@ PAPER_SPECS: List[PaperSpec] = [
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Run a targeted 5-paper regression for the active Stage2 extractor.")
-    p.add_argument("--model", default="gemini-2.5-flash")
+    p.add_argument("--model", default="")
     p.add_argument("--max-chars", type=int, default=50000)
     p.add_argument("--sleep", type=float, default=0.4)
     p.add_argument("--retries", type=int, default=1)

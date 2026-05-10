@@ -6,22 +6,25 @@ import concurrent.futures
 import csv
 import hashlib
 import json
+import os
 import sys
 import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+import urllib.error
+import urllib.request
 
 try:
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import call_gemini_stream_collect
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
     from src.utils.run_id import resolve_results_write_target
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import call_gemini_stream_collect
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
     from src.utils.run_id import resolve_results_write_target
 
@@ -34,7 +37,7 @@ REQUEST_METADATA_FILENAME_TEMPLATE = "{paper_key}__stage2_v2_request_metadata.js
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Execute the frozen S2-4b live Gemini call boundary from immutable S2-4a prompt artifacts and stop after raw-response persistence."
+        description="Execute the frozen S2-4b live LLM call boundary from immutable S2-4a prompt artifacts and explicit backend/model parameters, then stop after raw-response persistence."
     )
     parser.add_argument(
         "--run-id",
@@ -79,9 +82,44 @@ def parse_args() -> argparse.Namespace:
         help="Repeatable paper key filter. Default: all prompt rows in --prompts-jsonl.",
     )
     parser.add_argument(
+        "--llm-backend",
+        choices=["gemini", "deepseek"],
+        default="gemini",
+        help="Explicit S2-4b live-call backend. Default preserves the existing Gemini path; DeepSeek uses the OpenAI-compatible chat/completions API.",
+    )
+    parser.add_argument(
         "--model",
-        default=PRIMARY_DEFAULT,
-        help="Gemini model name. Current frozen cycle default: gemini-2.5-flash.",
+        required=True,
+        help="Model name for this explicit S2-4b live-call boundary. No repository-wide model default is applied.",
+    )
+    parser.add_argument(
+        "--deepseek-base-url",
+        default="https://api.deepseek.com",
+        help="DeepSeek OpenAI-compatible base URL. Used only with --llm-backend deepseek.",
+    )
+    parser.add_argument(
+        "--deepseek-thinking",
+        choices=["enabled", "disabled"],
+        default="disabled",
+        help="DeepSeek thinking mode for the S2-4b request. Initial trial default: disabled.",
+    )
+    parser.add_argument(
+        "--deepseek-reasoning-effort",
+        choices=["high", "max"],
+        default="high",
+        help="DeepSeek reasoning effort if thinking is enabled. Recorded for metadata; ignored when thinking is disabled.",
+    )
+    parser.add_argument(
+        "--deepseek-response-format",
+        choices=["json_object", "none"],
+        default="json_object",
+        help="DeepSeek response_format mode. Initial trial default: json_object.",
+    )
+    parser.add_argument(
+        "--max-tokens",
+        type=int,
+        default=8192,
+        help="Maximum output tokens for backends that expose max_tokens. Used by DeepSeek; default avoids truncating compact Stage2 JSON.",
     )
     parser.add_argument(
         "--request-timeout-seconds",
@@ -131,6 +169,117 @@ def to_repo_rel(path: Path | None) -> str:
         return str(path.resolve()).replace("\\", "/")
 
 
+def load_env_file() -> None:
+    env_path = PROJECT_ROOT / ".env"
+    if not env_path.exists():
+        return
+    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('\"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+def call_deepseek_chat_completion(
+    *,
+    model: str,
+    prompt_text: str,
+    base_url: str,
+    thinking: str,
+    reasoning_effort: str,
+    response_format: str,
+    max_tokens: int,
+    timeout_seconds: int,
+) -> dict[str, Any]:
+    load_env_file()
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        raise RuntimeError("DEEPSEEK_API_KEY is missing in environment.")
+    started = time.monotonic()
+    url = base_url.rstrip("/") + "/chat/completions"
+    body: dict[str, Any] = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt_text}],
+        "stream": False,
+        "max_tokens": max(1, max_tokens),
+        "thinking": {"type": thinking},
+    }
+    if thinking == "enabled":
+        body["reasoning_effort"] = reasoning_effort
+    if response_format == "json_object":
+        body["response_format"] = {"type": "json_object"}
+    request = urllib.request.Request(
+        url,
+        data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=max(1, timeout_seconds)) as response:
+            response_text = response.read().decode("utf-8")
+            status_code = int(getattr(response, "status", 0) or 0)
+    except urllib.error.HTTPError as exc:
+        error_body = exc.read().decode("utf-8", errors="replace")
+        return {
+            "status": "request_failure",
+            "error_type": "HTTPError",
+            "error_message": f"HTTP {exc.code}: {error_body[:1000]}",
+            "http_status": exc.code,
+            "error_body": error_body,
+            "elapsed_seconds": time.monotonic() - started,
+        }
+    except Exception as exc:
+        return {
+            "status": "request_failure",
+            "error_type": type(exc).__name__,
+            "error_message": str(exc),
+            "elapsed_seconds": time.monotonic() - started,
+        }
+    try:
+        payload = json.loads(response_text)
+    except json.JSONDecodeError as exc:
+        return {
+            "status": "request_failure",
+            "error_type": "JSONDecodeError",
+            "error_message": str(exc),
+            "http_status": status_code,
+            "response_text": response_text,
+            "elapsed_seconds": time.monotonic() - started,
+        }
+    choices = payload.get("choices") if isinstance(payload, dict) else None
+    message = choices[0].get("message", {}) if isinstance(choices, list) and choices and isinstance(choices[0], dict) else {}
+    content = str(message.get("content") or "") if isinstance(message, dict) else ""
+    reasoning_content = str(message.get("reasoning_content") or "") if isinstance(message, dict) else ""
+    usage = payload.get("usage", {}) if isinstance(payload, dict) else {}
+    if not content.strip():
+        return {
+            "status": "empty_content",
+            "text": "",
+            "http_status": status_code,
+            "api_payload": payload,
+            "reasoning_content": reasoning_content,
+            "usage": usage if isinstance(usage, dict) else {},
+            "elapsed_seconds": time.monotonic() - started,
+        }
+    return {
+        "status": "success",
+        "text": content,
+        "http_status": status_code,
+        "api_payload": payload,
+        "reasoning_content": reasoning_content,
+        "usage": usage if isinstance(usage, dict) else {},
+        "elapsed_seconds": time.monotonic() - started,
+    }
+
+
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     with path.open("r", encoding="utf-8") as handle:
@@ -170,10 +319,16 @@ def build_request_metadata_payload(
     *,
     paper_key: str,
     doi: str,
+    llm_backend: str,
     model: str,
     request_timeout_seconds: int,
     request_retries: int,
     retry_sleep_sec: float,
+    deepseek_base_url: str,
+    deepseek_thinking: str,
+    deepseek_reasoning_effort: str,
+    deepseek_response_format: str,
+    max_tokens: int,
     prompts_jsonl: Path,
     prompt_template: Path | None,
     prompt_audit: Path | None,
@@ -187,16 +342,23 @@ def build_request_metadata_payload(
         "paper_key": paper_key,
         "doi": doi,
         "status": "",
-        "llm_backend": "gemini",
+        "llm_backend": llm_backend,
         "model": model,
         "request_timeout_seconds": request_timeout_seconds,
         "request_retries": request_retries,
         "retry_sleep_sec": retry_sleep_sec,
-        "generation_config": {
-            "temperature": 0,
-            "response_mime_type": "application/json",
-        },
-        "request_mode": "stream_collect",
+        "generation_config": (
+            {"temperature": 0, "response_mime_type": "application/json"}
+            if llm_backend == "gemini"
+            else {
+                "response_format": {"type": "json_object"} if deepseek_response_format == "json_object" else None,
+                "thinking": {"type": deepseek_thinking},
+                "reasoning_effort": deepseek_reasoning_effort if deepseek_thinking == "enabled" else "",
+                "max_tokens": max_tokens,
+            }
+        ),
+        "deepseek_base_url": deepseek_base_url if llm_backend == "deepseek" else "",
+        "request_mode": "stream_collect" if llm_backend == "gemini" else "non_streaming_chat_completions",
         "source_prompts_jsonl_path": to_repo_rel(prompts_jsonl),
         "source_prompt_template_path": to_repo_rel(prompt_template),
         "source_prompt_audit_path": to_repo_rel(prompt_audit),
@@ -228,10 +390,16 @@ def process_prompt_row(
     index: int,
     total: int,
     row: dict[str, Any],
+    llm_backend: str,
     model: str,
     request_timeout_seconds: int,
     request_retries: int,
     retry_sleep_sec: float,
+    deepseek_base_url: str,
+    deepseek_thinking: str,
+    deepseek_reasoning_effort: str,
+    deepseek_response_format: str,
+    max_tokens: int,
     prompts_jsonl: Path,
     prompt_template: Path | None,
     prompt_audit: Path | None,
@@ -253,17 +421,23 @@ def process_prompt_row(
     request_metadata_path = metadata_dir / REQUEST_METADATA_FILENAME_TEMPLATE.format(paper_key=paper_key)
     progress_label = f"[{index}/{total}] {paper_key}"
     print(
-        f"{progress_label} sending prompt source={to_repo_rel(prompts_jsonl)} prompt_sha256={prompt_sha256} model={model}",
+        f"{progress_label} sending prompt source={to_repo_rel(prompts_jsonl)} prompt_sha256={prompt_sha256} backend={llm_backend} model={model}",
         flush=True,
     )
 
     metadata_payload = build_request_metadata_payload(
         paper_key=paper_key,
         doi=doi,
+        llm_backend=llm_backend,
         model=model,
         request_timeout_seconds=request_timeout_seconds,
         request_retries=request_retries,
         retry_sleep_sec=retry_sleep_sec,
+        deepseek_base_url=deepseek_base_url,
+        deepseek_thinking=deepseek_thinking,
+        deepseek_reasoning_effort=deepseek_reasoning_effort,
+        deepseek_response_format=deepseek_response_format,
+        max_tokens=max_tokens,
         prompts_jsonl=prompts_jsonl,
         prompt_template=prompt_template,
         prompt_audit=prompt_audit,
@@ -277,14 +451,26 @@ def process_prompt_row(
 
     raw_text = ""
     try:
-        call_result = call_gemini_stream_collect(
-            model,
-            prompt_text,
-            request_retries,
-            retry_sleep_sec,
-            progress_label=progress_label,
-            timeout_seconds=max(1, request_timeout_seconds),
-        )
+        if llm_backend == "deepseek":
+            call_result = call_deepseek_chat_completion(
+                model=model,
+                prompt_text=prompt_text,
+                base_url=deepseek_base_url,
+                thinking=deepseek_thinking,
+                reasoning_effort=deepseek_reasoning_effort,
+                response_format=deepseek_response_format,
+                max_tokens=max_tokens,
+                timeout_seconds=max(1, request_timeout_seconds),
+            )
+        else:
+            call_result = call_gemini_stream_collect(
+                model,
+                prompt_text,
+                request_retries,
+                retry_sleep_sec,
+                progress_label=progress_label,
+                timeout_seconds=max(1, request_timeout_seconds),
+            )
         raw_text = str(call_result.get("text", "") or "")
         if raw_text:
             raw_response_path.write_text(raw_text, encoding="utf-8")
@@ -298,6 +484,11 @@ def process_prompt_row(
         metadata_payload["stream_chunk_count"] = int(call_result.get("chunk_count") or 0)
         metadata_payload["first_chunk_elapsed_seconds"] = float(call_result.get("first_chunk_elapsed_seconds") or 0.0)
         metadata_payload["elapsed_seconds"] = float(call_result.get("elapsed_seconds") or 0.0)
+        metadata_payload["http_status"] = call_result.get("http_status", "")
+        metadata_payload["usage"] = call_result.get("usage", {}) if isinstance(call_result.get("usage", {}), dict) else {}
+        metadata_payload["deepseek_reasoning_content_character_count"] = len(str(call_result.get("reasoning_content", "") or ""))
+        metadata_payload["deepseek_prompt_cache_hit_tokens"] = metadata_payload["usage"].get("prompt_cache_hit_tokens", "") if isinstance(metadata_payload["usage"], dict) else ""
+        metadata_payload["deepseek_prompt_cache_miss_tokens"] = metadata_payload["usage"].get("prompt_cache_miss_tokens", "") if isinstance(metadata_payload["usage"], dict) else ""
         if metadata_payload["status"] == "success":
             metadata_payload["raw_payload_status"] = (
                 "success_payload_persisted" if metadata_payload["raw_payload_persisted"] else "success_without_payload"
@@ -378,7 +569,11 @@ def build_run_context(
     prompt_audit: Path | None,
     freeze_manifest: Path | None,
     selected_paper_keys: list[str],
+    llm_backend: str,
     model: str,
+    deepseek_thinking: str,
+    deepseek_response_format: str,
+    max_tokens: int,
     request_timeout_seconds: int,
     request_retries: int,
     retry_sleep_sec: float,
@@ -413,7 +608,7 @@ Benchmark reporting rule:
 
 ## 3. Purpose
 - Consume frozen immutable `S2-4a` prompt artifacts.
-- Perform the live Gemini call only.
+- Perform the explicit live LLM call only.
 - Persist raw returned payloads and request-level metadata sidecars.
 - Stop immediately after raw-response persistence without semantic-content judgment.
 
@@ -422,7 +617,8 @@ Benchmark reporting rule:
 - upstream_frozen_dependency: `S2-4a`
 - stage_local_owner_script: `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
 - stage_local_owner_function_surface:
-  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect`
+  - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect` for Gemini
+  - `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py::call_deepseek_chat_completion` for DeepSeek
 - stop_boundary: `raw_response_payloads_written`
 - next_lawful_step: `S2-5 semantic parsing`, but only if later rehydrated through the maintained composite Stage2 path
 
@@ -435,11 +631,11 @@ Benchmark reporting rule:
 {key_block}
 
 ## 6. Live Call Settings
-- llm_backend: `gemini`
+- llm_backend: `{llm_backend}`
 - model: `{model}`
 - generation_config:
-  - `temperature=0`
-  - `response_mime_type=application/json`
+  - gemini: `temperature=0`, `response_mime_type=application/json`
+  - deepseek: `response_format={deepseek_response_format}`, `thinking.type={deepseek_thinking}`, `max_tokens={max_tokens}`
 - request_timeout_seconds: `{request_timeout_seconds}`
 - request_retries: `{request_retries}`
 - retry_sleep_sec: `{retry_sleep_sec}`
@@ -451,7 +647,7 @@ Benchmark reporting rule:
 
 ## 7. Exact Script Execution Order
 1. `src/stage2_sampling_labels/run_stage2_s2_4b_live_llm_call_v1.py`
-2. `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect`
+2. backend-specific live call helper selected by explicit `--llm-backend`
 
 ## 8. Outputs
 - raw responses:
@@ -551,7 +747,11 @@ def main() -> None:
         prompt_audit=prompt_audit,
         freeze_manifest=freeze_manifest,
         selected_paper_keys=[str(row.get("paper_key", "")).strip() for row in prompt_rows],
+        llm_backend=args.llm_backend,
         model=args.model,
+        deepseek_thinking=args.deepseek_thinking,
+        deepseek_response_format=args.deepseek_response_format,
+        max_tokens=args.max_tokens,
         request_timeout_seconds=args.request_timeout_seconds,
         request_retries=args.request_retries,
         retry_sleep_sec=args.retry_sleep_sec,
@@ -571,10 +771,16 @@ def main() -> None:
                 index=index,
                 total=total,
                 row=row,
+                llm_backend=args.llm_backend,
                 model=args.model,
                 request_timeout_seconds=args.request_timeout_seconds,
                 request_retries=args.request_retries,
                 retry_sleep_sec=args.retry_sleep_sec,
+                deepseek_base_url=args.deepseek_base_url,
+                deepseek_thinking=args.deepseek_thinking,
+                deepseek_reasoning_effort=args.deepseek_reasoning_effort,
+                deepseek_response_format=args.deepseek_response_format,
+                max_tokens=args.max_tokens,
                 prompts_jsonl=prompts_jsonl,
                 prompt_template=prompt_template,
                 prompt_audit=prompt_audit,
@@ -655,7 +861,11 @@ def main() -> None:
         prompt_audit=prompt_audit,
         freeze_manifest=freeze_manifest,
         selected_paper_keys=[str(row.get("paper_key", "")).strip() for row in prompt_rows],
+        llm_backend=args.llm_backend,
         model=args.model,
+        deepseek_thinking=args.deepseek_thinking,
+        deepseek_response_format=args.deepseek_response_format,
+        max_tokens=args.max_tokens,
         request_timeout_seconds=args.request_timeout_seconds,
         request_retries=args.request_retries,
         retry_sleep_sec=args.retry_sleep_sec,
@@ -678,18 +888,25 @@ def main() -> None:
         "owner_function_surface": [
             "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect",
         ],
-        "llm_backend": "gemini",
+        "llm_backend": args.llm_backend,
         "model": args.model,
         "request_timeout_seconds": args.request_timeout_seconds,
         "request_retries": args.request_retries,
         "retry_sleep_sec": args.retry_sleep_sec,
         "max_parallel_requests": args.max_parallel_requests,
         "inter_request_sleep_seconds": args.inter_request_sleep_seconds,
-        "generation_config": {
-            "temperature": 0,
-            "response_mime_type": "application/json",
-        },
-        "request_mode": "stream_collect",
+        "generation_config": (
+            {"temperature": 0, "response_mime_type": "application/json"}
+            if args.llm_backend == "gemini"
+            else {
+                "response_format": {"type": "json_object"} if args.deepseek_response_format == "json_object" else None,
+                "thinking": {"type": args.deepseek_thinking},
+                "reasoning_effort": args.deepseek_reasoning_effort if args.deepseek_thinking == "enabled" else "",
+                "max_tokens": args.max_tokens,
+            }
+        ),
+        "deepseek_base_url": args.deepseek_base_url if args.llm_backend == "deepseek" else "",
+        "request_mode": "stream_collect" if args.llm_backend == "gemini" else "non_streaming_chat_completions",
         "input_artifacts": {
             "prompts_jsonl": to_repo_rel(prompts_jsonl),
             "prompt_template": to_repo_rel(prompt_template),

@@ -71,7 +71,9 @@ import sys
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
-from src.utils.model_policy import PRIMARY_DEFAULT, SECONDARY_DEFAULT, validate_models_or_raise
+from src.utils.model_policy import validate_models_or_raise
+PRIMARY_DEFAULT = ""
+SECONDARY_DEFAULT = ""
 
 
 # ---------------------------

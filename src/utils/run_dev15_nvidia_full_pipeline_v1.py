@@ -42,7 +42,6 @@ except ModuleNotFoundError:
 
 
 NVIDIA_HOSTED_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions"
-DEFAULT_MODEL = "meta/llama-3.3-70b-instruct"
 DEFAULT_SCOPE_NAME = "dev15_nvidia_full_pipeline_diagnostic"
 
 
@@ -196,7 +195,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run the DEV15 full pipeline with NVIDIA hosted API as the diagnostic Stage2 backend."
     )
-    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--model", required=True)
     parser.add_argument("--scope-name", default=DEFAULT_SCOPE_NAME)
     parser.add_argument("--max-items", type=int, default=0)
     parser.add_argument("--max-chars", type=int, default=50000)

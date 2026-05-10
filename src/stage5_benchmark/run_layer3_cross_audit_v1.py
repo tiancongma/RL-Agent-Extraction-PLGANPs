@@ -229,8 +229,6 @@ HIGH_PRIORITY_SOURCE_OF_FLAG = {
 }
 
 NVIDIA_HOSTED_CHAT_COMPLETIONS_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
-DEFAULT_NVIDIA_MODEL = "meta/llama-3.1-70b-instruct"
 DEFAULT_BATCH_SIZE = 5
 DEFAULT_REQUEST_TIMEOUT_SECONDS = 60
 DEFAULT_MAX_RETRIES = 1
@@ -815,6 +813,8 @@ def load_env_file() -> None:
 
 def ensure_gemini_backend(model: str) -> None:
     load_env_file()
+    if not str(model or "").strip():
+        raise RuntimeError("Gemini model name is empty; pass --gemini-model explicitly or skip Gemini execution.")
     if not HAS_GENAI:
         raise RuntimeError("google-generativeai is not installed in this environment.")
     key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
@@ -2112,8 +2112,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser_exec.add_argument("--candidates-tsv", type=Path, help="Filtered candidate TSV path.")
     parser_exec.add_argument("--gemini-tsv", type=Path, help="Gemini result TSV path.")
     parser_exec.add_argument("--nvidia-tsv", type=Path, help="NVIDIA result TSV path.")
-    parser_exec.add_argument("--gemini-model", default=DEFAULT_GEMINI_MODEL, help="Gemini model name.")
-    parser_exec.add_argument("--nvidia-model", default=DEFAULT_NVIDIA_MODEL, help="NVIDIA model name.")
+    parser_exec.add_argument("--gemini-model", default="", help="Gemini model name. Required unless --skip-gemini is set.")
+    parser_exec.add_argument("--nvidia-model", default="", help="NVIDIA model name. Required unless --skip-nvidia is set.")
     add_model_execution_args(parser_exec)
     parser_exec.set_defaults(func=command_execute_models)
 
@@ -2131,8 +2131,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser_run = subparsers.add_parser("run", help="Run rule audit, export model tasks, and write merged report.")
     add_common_args(parser_run)
     parser_run.add_argument("--rules-only", action="store_true", help="Run only the refined rule audit and merge a rule-only report.")
-    parser_run.add_argument("--gemini-model", default=DEFAULT_GEMINI_MODEL, help="Gemini model name.")
-    parser_run.add_argument("--nvidia-model", default=DEFAULT_NVIDIA_MODEL, help="NVIDIA model name.")
+    parser_run.add_argument("--gemini-model", default="", help="Gemini model name. Required unless --rules-only or --skip-gemini is set.")
+    parser_run.add_argument("--nvidia-model", default="", help="NVIDIA model name. Required unless --rules-only or --skip-nvidia is set.")
     add_model_execution_args(parser_run)
     parser_run.set_defaults(func=command_run)
     return parser

@@ -73,7 +73,6 @@ Current Phase: Diagnostic Development Mode
 
 - The pipeline is currently in diagnostic development mode.
 - Stage5 outputs are diagnostic baselines for debugging work.
-- Identity freeze is diagnostic-only and non-blocking in this phase.
 - Benchmark mode is disabled in the current phase.
 - Any reference to a baseline in this phase means diagnostic baseline unless a governed contract explicitly narrows it further.
 
@@ -81,11 +80,10 @@ Benchmark-legality clarification:
 
 - Stage5 final-table materialization is necessary but not sufficient for a
   benchmark-valid run.
-- The GT compare node remains separate.
-- In the current diagnostic-development phase, identity freeze remains a
-  visible risk layer but does not hard-block execution.
+- The GT compare node remains separate and consumes only the completed Stage5
+  final table, declared scope manifest, and frozen GT authority.
 - A full DEV15 lineage can therefore reach Stage5 final-table materialization
-  and remain diagnostic-only if identity-freeze risk is present.
+  and remain diagnostic-only while benchmark mode is disabled.
 
 Fine-grained governance mapping:
 
@@ -97,6 +95,7 @@ Fine-grained governance mapping:
   - `S1-3b Scope overlays`
 - Stage2:
   - `S2-1 Scope resolution`
+  - `S2-1b High-confidence source denoise projection`
   - `S2-2 Evidence construction`
   - `S2-2a Candidate segmentation`
   - `S2-2b Selector evidence prioritization`
@@ -208,10 +207,7 @@ The final comparison node is separate from production:
 - input A: `final_formulation_table_v1.tsv`
 - input B: frozen Layer1 GT counts TSV derived from the locked DEV15 GT authority
 - input C: declared scope manifest TSV
-- input D: identity-freeze summary TSV from the same Stage5 lineage
 - output: `final_table_vs_gt_counts.tsv` and `final_table_vs_gt_summary.md`
-- optional downstream comparison metadata:
-  - `analysis/paper_risk_assessment.tsv`
   - `analysis/paper_risk_assessment_summary.md`
 
 The active stage namespaces are exactly:
@@ -317,10 +313,11 @@ Consumed by downstream stage:
 
 Purpose:
 Run the governed composite Stage2 path on cleaned paper content and tables.
-Stage2 contains both:
+Stage2 contains:
 
-1. LLM semantic discovery
-2. deterministic post-LLM completion into the downstream-ready Stage2 artifact
+1. deterministic scope resolution and high-confidence source-denoise projection before evidence selection
+2. LLM semantic discovery
+3. deterministic post-LLM completion into the downstream-ready Stage2 artifact
 
 The raw semantic-object payload is an internal Stage2 intermediate, not the
 authoritative Stage2 completion artifact.
@@ -378,7 +375,8 @@ Current maintained contract note:
 Exact input files or directories:
 
 - cleaned manifest or split manifest TSVs
-- cleaned text assets
+- raw/current cleaned text assets resolved by S2-1
+- S2-1b denoised-for-Stage2 text projections when present or generated for the run
 - cleaned table assets when available
 
 Exact script path(s) and script filename(s):
@@ -405,6 +403,8 @@ Operational execution note:
 
 Internal Stage2 scripts:
 
+- planned high-confidence source-denoise projection substep:
+  - `src/stage2_sampling_labels/denoise_stage2_source_text_s2_1b_v1.py`
 - semantic extraction substep:
   - `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py`
 - deterministic post-LLM completion substep:
@@ -660,9 +660,10 @@ S2-2 contract note:
     - stop boundary:
       prompt artifacts written, no live LLM call
     - governed note:
-      all table evidence remains summary-only at this frozen boundary, and the
-      prompt must explicitly assign semantic table scoping to the LLM rather
-      than assuming deterministic pre-resolution
+      all table evidence remains structural summary-only at this frozen
+      boundary; generated summary metadata must not pre-label semantic table
+      roles, and the prompt must explicitly assign semantic table scoping to the
+      LLM rather than assuming deterministic pre-resolution
     - next lawful step:
       `S2-4b live LLM call`
   - `S2-4b`
@@ -675,9 +676,10 @@ S2-2 contract note:
       request metadata sidecars under `request_metadata/`
       `analysis/s2_4b_request_summary_v1.tsv`
       and stage-local `RUN_CONTEXT.md`
-    - frozen live-call policy for the current cycle:
+    - live-call policy for the current cycle:
       - model:
-        `gemini-2.5-flash`
+        explicit `--model` argument on the `S2-4b` live-call boundary; no
+        repository-wide default model is applied
       - request mode:
         `stream_collect`
       - timeout seconds:
@@ -899,28 +901,16 @@ Benchmark-validity rule:
 
 - Stage5 final-table generation is necessary but not sufficient for
   benchmark-valid reporting.
-- Identity freeze is a mandatory Stage5 legality gate before:
-  - GT compare
-  - modeling-ready continuation
-  - audit-ready export
-  - Layer3 field evaluation
-- The full DEV15 lineage
-  `data/results/20260401_5d9f4e6/09_dev15_count_validation`
-  reached final-table materialization and compare output generation but
-  remained diagnostic-only because the identity-freeze gate failed.
-- The governed repair lineage has localized the main failure classes as:
-  - row count drift
-  - identity reassignment
-  - unresolved scaffold binding
-- Scaffold-binding and representation work may reduce the failure surface, but
-  benchmark-valid status is not restored until a lawful full-pipeline run
-  passes the hard identity-freeze gate.
+- In the current diagnostic-development phase, the maintained GT compare node
+  consumes only the completed Stage5 final table, declared scope manifest, and
+  frozen GT authority.
+- Benchmark-valid status remains disabled until a governed benchmark contract is
+  explicitly re-enabled.
 
 Internal Stage5 family rule:
 
 - benchmark-final family:
   - `build_minimal_final_output_v1.py`
-  - `enforce_identity_freeze_v1.py`
   - `compare_final_table_to_gt_v1.py`
   - `build_minimal_final_output_v1.py` now emits two governed sibling outputs:
     - primary benchmark-facing `final_formulation_table_v1.tsv`
@@ -950,12 +940,11 @@ Stage 5 identity constraints layer:
   references when they do not define an independently reported formulation
   instance
 
-Identity freeze and attachment discipline:
+Final-row attachment discipline:
 
-- once formulation identity is frozen by the reviewed Layer2-style boundary
-  authority, downstream stages must attach values, not reconstruct
+- once the Stage5 final-row universe is closed, downstream stages must attach values, not reconstruct
   formulations
-- formulation count and membership must remain invariant after identity freeze
+- formulation count and membership must remain invariant after Stage5 final-table closure
 - downstream stages may add fields, resolve missing fields, and derive fields
 - downstream stages must not:
   - split formulations implicitly
@@ -978,7 +967,7 @@ Benchmark-final contract:
   - silently replace paper-reported values with convenience-normalized values
   - perform assumption-based inference
   - perform donor-fill
-  - change formulation membership after identity freeze
+  - change formulation membership after Stage5 final-table closure
 
 Downstream modeling-ready contract:
 
@@ -1020,8 +1009,6 @@ Exact script path(s) and script filename(s):
   - `src/stage5_benchmark/build_layer2_risk_assessment_v1.py`
 - optional Layer 2 GT review export helper:
   - `src/stage5_benchmark/build_boundary_gt_review_workbook_v1.py`
-- optional identity-freeze guardrail helper:
-  - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
 
 Exact output files or directories:
 
@@ -1031,10 +1018,6 @@ Exact output files or directories:
 - optional comparison-metadata outputs:
   - `analysis/paper_risk_assessment.tsv`
   - `analysis/paper_risk_assessment_summary.md`
-- optional identity-freeze guardrail outputs:
-  - `identity_freeze_report_v1.tsv`
-  - `identity_freeze_summary_v1.tsv`
-  - `identity_freeze_summary_v1.md`
 - optional downstream Layer 3 review-pack outputs built from the frozen final
   table plus comparison metadata:
   - `final_formulation_table_audit_ready_v1.tsv`
@@ -1069,31 +1052,19 @@ Stage completion artifact:
 
 Consumed by downstream stage:
 
-- the identity freeze diagnostic risk layer
+- the GT comparison node
+- downstream audit/review surfaces that explicitly consume the frozen Stage5 final table
 
 Post-Stage5 diagnostic layer:
 
-- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
+- `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
 - required inputs:
-  - upstream identity scaffold surface
   - `final_formulation_table_v1.tsv`
-- required behavior:
-  - record diagnostic risk on any:
-    - row count drift
-    - identity reassignment
-    - unresolved scaffold binding
-    - ambiguous scaffold binding
-- if identity risk is present, the run remains diagnostic-only but may
-  continue to:
-  - comparison
-  - audit-ready export
-  - Layer 3 review/evaluation surfaces
+  - frozen Layer1 GT counts TSV
+  - declared scope manifest TSV
 - maintained compare-mode clarification:
-  - `benchmark` mode:
-    accepted for compatibility, but benchmark mode is disabled in the current phase
-  - `debug_identity` mode:
-    allows diagnostic-only compare continuation from the same Stage5 final
-    table while preserving the failed identity-freeze status explicitly
+  - diagnostic mode is the active compare mode in the current phase
+  - benchmark mode is disabled until a governed benchmark contract is explicitly re-enabled
 
 ## Evaluation Reference Path
 
@@ -1127,7 +1098,6 @@ Comparison inputs:
 - `final_formulation_table_v1.tsv`
 - frozen Layer1 GT counts TSV
 - declared scope manifest TSV
-- identity-freeze summary TSV
 
 Comparison outputs:
 
@@ -1137,8 +1107,6 @@ Comparison outputs:
 Compare contract:
 
 - diagnostic mode is the active compare mode in the current phase
-- explicit `debug_identity` mode may continue after identity-freeze risk for
-  diagnostic-only count comparison
 - diagnostic compare continuation must never be reported as benchmark-valid
 
 Optional post-compare review surface:
@@ -1147,11 +1115,6 @@ Optional post-compare review surface:
   - consumes the Stage 5 final formulation table, optional decision trace, and optional relation records
   - writes a run-scoped XLSX boundary-GT review workbook for manual Layer 2 curation
   - is reviewer-facing and diagnostic, not a benchmark-valid endpoint by itself
-- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
-  - consumes an upstream identity scaffold surface plus the Stage 5 final
-    formulation table
-  - emits row-count drift, identity-reassignment, and violation diagnostics
-  - does not silently fix or mutate benchmark-valid outputs
 
 ## Full Chain From Raw Zotero Records To Final Outputs
 
@@ -1285,14 +1248,13 @@ bypass of the relation layer is not allowed.
 
 ```powershell
 $env:PYTHONPATH='c:\Users\tianc\Downloads\GitHub\RL-Agent-Extraction-PLGANPs'
-python src/stage5_benchmark/compare_final_table_to_gt_v1.py --final-table-tsv data/results/<final_run_id>/final_formulation_table_v1.tsv --gt-counts-tsv data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv --scope-manifest-tsv <scope_manifest.tsv> --identity-freeze-mode benchmark --out-dir data/results/<final_run_id> --scope-name <declared_scope_name>
+python src/stage5_benchmark/compare_final_table_to_gt_v1.py --final-table-tsv data/results/<final_run_id>/final_formulation_table_v1.tsv --gt-counts-tsv data/cleaned/gt_authority/v1/dev15_layer1_gt_counts.tsv --scope-manifest-tsv <scope_manifest.tsv> --out-dir data/results/<final_run_id> --scope-name <declared_scope_name>
 ```
 
 The production path ends at Step 5A.
 Benchmark-valid reporting requires:
 
 - Step 5A final-table materialization
-- mandatory identity-freeze pass
 - the separate Step 5B comparison node
 - explicit `benchmark` compare mode or another later mode that preserves the
   same legality rule

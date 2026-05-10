@@ -1,11 +1,18 @@
 import unittest
 
+from src.stage2_sampling_labels.evaluate_s2_4a_hard_gate_v1 import table_summary_satisfies_pre_live_evidence
+from pathlib import Path
+
 from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
+    SEGMENT_MATERIALS_CUES,
+    TABLE_INCLUSION_HARD_DROP,
     TABLE_INCLUSION_MUST_INCLUDE,
     TABLE_INCLUSION_OPTIONAL_CONTEXT,
     apply_minimal_evidence_floor,
     build_evidence_priority_selection,
+    build_inline_formulation_table_item,
     build_table_authority_score_breakdown,
+    classify_heading_line,
     classify_payload_authority_status,
     compute_reconstruction_confidence,
     derive_stable_table_id,
@@ -16,11 +23,47 @@ from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     infer_table_role_hint,
     payload_inclusion_class,
     payload_usage_role,
+    render_value_evidence_payload_blocks,
     table_inclusion_class,
 )
 
 
 class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
+    def test_generic_selector_cues_do_not_depend_on_paper_local_material_names(self):
+        banned = {"labrafil", "polysorbate"}
+        self.assertTrue(banned.isdisjoint({cue.lower() for cue in SEGMENT_MATERIALS_CUES}))
+
+    def test_heading_classifier_does_not_promote_paper_local_loaded_drug_headings(self):
+        self.assertIsNone(classify_heading_line("Gatifloxacin-loaded PLGA NPs"))
+        self.assertIsNone(classify_heading_line("Rhodamine-loaded PLGA NPs"))
+        self.assertEqual(classify_heading_line("Preparation and characterization of NPs"), "heading")
+
+    def test_inline_table_recovery_requires_generic_schema_not_paper_local_names_only(self):
+        paper_local_only = (
+            "Table 1 Gatifloxacin Rhodamine Labrafil Polysorbate 80 "
+            "NPG1 5 10 15 20 NPG2 6 11 16 21 NPG3 7 12 17 22"
+        )
+        self.assertIsNone(
+            build_inline_formulation_table_item(
+                paper_local_only,
+                text_path=Path("paper.txt"),
+                paragraph_index=1,
+                segment_index=1,
+            )
+        )
+        generic_schema = (
+            "Table 1 Formulation drug loading surfactant particle size "
+            "NP1 5 1 120 NP2 10 2 140 NP3 15 3 160"
+        )
+        self.assertIsNotNone(
+            build_inline_formulation_table_item(
+                generic_schema,
+                text_path=Path("paper.txt"),
+                paragraph_index=1,
+                segment_index=2,
+            )
+        )
+
     def _method_candidate(self, candidate_id: str, text: str, *, paragraph_index: int = 1) -> dict:
         return {
             "candidate_id": candidate_id,
@@ -63,6 +106,88 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
             {"candidate_id": "method-core", "reason": "minimal_evidence_floor_added_preparation_core"},
             events,
         )
+
+    def test_solvent_diffusion_experimental_design_prose_counts_as_preparation_core(self):
+        selected = [
+            self._method_candidate(
+                "figure-caption-method",
+                "Figure 2 The schematic diagram showing the preparation of AP-PLGA-NPs. Figure 3 In-vitro release profiles from PLGA-NPs in buffer at 37C.",
+                paragraph_index=28,
+            )
+        ]
+        selected[0]["section_kind"] = "preparation"
+        selected[0]["section_label"] = "Results Characterization"
+        core = self._method_candidate(
+            "solvent-diffusion-core",
+            "Preparation and characterization of AP-PLGA-NPs AP-PLGA-NPs were prepared by a solvent diffusion methodology. Briefly, 18 mg of PLGA and 7 mg of AP were dissolved in 1 ml of acetone to form an organic phase; then the organic phase was poured into 4 ml of stirred aqueous phase containing 1% polysorbate 80.",
+            paragraph_index=13,
+        )
+        core["section_kind"] = "experimental_design"
+        events = []
+
+        result = apply_minimal_evidence_floor(
+            selected_candidates=selected,
+            ranked_candidates=[selected[0], core],
+            suppression_events=events,
+        )
+
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+        self.assertIn("solvent-diffusion-core", selected_ids)
+        self.assertEqual(result.get("minimal_evidence_floor_applied", "no"), "yes")
+
+    def test_selector_suppresses_noisy_method_spillover_after_source_core_method(self):
+        core = self._method_candidate(
+            "source-core-method",
+            "Preparation and characterization of AP-PLGA-NPs AP-PLGA-NPs were prepared by a solvent diffusion methodology. Briefly, 18 mg of PLGA and 7 mg of AP were dissolved in 1 ml of acetone to form an organic phase; then the organic phase was poured into 4 ml of stirred aqueous phase containing 1% polysorbate 80.",
+            paragraph_index=13,
+        )
+        core["section_kind"] = "experimental_design"
+        noisy = self._method_candidate(
+            "figure-spillover-method",
+            "1654 PLGA-NPs improve AP permeability Deqing Sun et al. © 2015 Royal Pharmaceutical Society, Journal of Pharmacy and Pharmacology, 67, pp. 1650–1662 solvent diffusion/evaporation Encapsulated drug Polysorbate 80 Acetylpuerarin PLGA 50:50 200nm Dissolved in organic phase Dissolved in aqueous phase PLGA nanoparticle Polysorbate 80 w+x+y+z=20 Cumulative release rate (%) Time (h) AP solution AP-PLGA-NPs Downloaded from journal site. Tissue distributions in mice The standard calibrations were plotted.",
+            paragraph_index=30,
+        )
+        noisy["quality_flags"] = ["residual_noise"]
+
+        result = build_evidence_priority_selection(segmented_candidates=[core, noisy], signals={})
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+        suppression_reasons = {event["candidate_id"]: event["reason"] for event in result["suppression_events"]}
+
+        self.assertIn("source-core-method", selected_ids)
+        self.assertNotIn("figure-spillover-method", selected_ids)
+        self.assertEqual(suppression_reasons.get("figure-spillover-method"), "noisy_method_spillover_after_core_method")
+
+    def test_variant_preparation_same_procedure_block_is_selected_with_core_method(self):
+        core = self._method_candidate(
+            "same-procedure-core",
+            "Drug-loaded polymer nanoparticles (NPV1; Table 1) were prepared by nanoprecipitation using an acetone-water system. Briefly, 50 mg of polymer and 2.5 mg model drug were dissolved in 4 mL acetone and mixed by vortexing. This mixture was added dropwise into 12 mL of 1% stabilizer under continuous stirring for 15 minutes.",
+            paragraph_index=10,
+        )
+        variant = self._method_candidate(
+            "same-procedure-variant-prep",
+            "Drug-loaded polymer-modifier NPs were prepared using the same protocol, but incorporating 3.5 mg surface modifier into the inner phase of the emulsion (NPV3). When the modifier was incorporated, the desiccation process was performed under vacuum. Active-loaded polymer NPs, active-loaded polymer-surfactant NPs, and active-loaded polymer-modifier NPs were prepared using the same procedure but incorporating 5 mg of active compound into the inner phase. Table 1 shows the different formulations prepared.",
+            paragraph_index=13,
+        )
+        variant["section_kind"] = "variant_preparation"
+        variant["section_label"] = "Preparation and characterization of nanoparticles"
+        variant["block_type"] = ""
+
+        assay = self._method_candidate(
+            "analytical-extraction-assay",
+            "Drug-encapsulation efficiency (EE%) was determined by weighing 10 mg of nanoparticles, which were dissolved in 1 mL solvent. Then, ethanol (15 mL) was added and centrifuged for 5 minutes at 5,000 rpm. This procedure was repeated five times to extract the drug completely. Then, samples were filtered through 0.45 µm filters and the drug content of each formulation quantified by high-performance liquid chromatography (HPLC).",
+            paragraph_index=14,
+        )
+        assay["section_kind"] = "optimization"
+        assay["block_type"] = "paragraph"
+
+        result = build_evidence_priority_selection(segmented_candidates=[core, variant, assay], signals={})
+        selected_ids = {candidate["candidate_id"] for candidate in result["selected_candidates"]}
+        prompt_ids = {candidate["candidate_id"] for candidate in result["prompt_selected_candidates"]}
+
+        self.assertIn("same-procedure-core", selected_ids)
+        self.assertIn("same-procedure-variant-prep", selected_ids)
+        self.assertIn("same-procedure-variant-prep", prompt_ids)
+        self.assertNotIn("analytical-extraction-assay", prompt_ids)
 
     def test_preparation_core_floor_rejects_caption_locator_even_with_local_cues(self):
         selected = [
@@ -508,6 +633,85 @@ class Stage2PreparationCoreSelectorFloorTests(unittest.TestCase):
             ),
             ["Table 2"],
         )
+    def test_s2_4a_gate_path1_uses_visible_table_evidence_not_formulation_authority(self):
+        payload = {
+            "table_id": "Table 1",
+            "table_inclusion_class": TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            "payload_authority_status": "authority_visible",
+            "table_source_role": "characterization_result_table",
+            "data_row_count": 7,
+            "raw_cells": [
+                ["Formulation", "Artemether (mg)", "PLGA (mg)", "PVA (mg)"],
+                ["Batch 1", "20", "200", "50"],
+                ["Batch 2", "30", "200", "50"],
+            ],
+        }
+        block = {"table_id": "Table 1", "source_type": "table_summary", "is_table_derived": True}
+
+        self.assertTrue(table_summary_satisfies_pre_live_evidence(block, payload))
+
+    def test_s2_4a_gate_path1_rejects_hard_dropped_or_unusable_tables(self):
+        block = {"table_id": "Table 1", "source_type": "table_summary", "is_table_derived": True}
+        hard_drop_payload = {
+            "table_id": "Table 1",
+            "table_inclusion_class": TABLE_INCLUSION_HARD_DROP,
+            "payload_authority_status": "authority_visible",
+            "data_row_count": 3,
+        }
+        unusable_payload = {
+            "table_id": "Table 1",
+            "table_inclusion_class": TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            "payload_authority_status": "unusable_broken_payload",
+            "data_row_count": 3,
+        }
+
+        self.assertFalse(table_summary_satisfies_pre_live_evidence(block, hard_drop_payload))
+        self.assertFalse(table_summary_satisfies_pre_live_evidence(block, unusable_payload))
+
+    def test_value_evidence_prompt_echo_is_budgeted_to_doe_design_payloads(self):
+        evidence_artifact = {
+            "paper_key": "UFXX9WXE",
+            "authority_payload_root": "unused",
+        }
+        design_payload = {
+            "table_id": "Table 13",
+            "source_table_reference": "table_13.csv",
+            "source_caption_or_title": "Table 2: Effect of independent process variables on dependent variable.",
+            "payload_usage_role": "row_local_value_evidence",
+            "value_evidence_only": True,
+            "table_source_role": "characterization_result_table",
+            "table_inclusion_class": TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            "authority_rank": 1,
+            "normalized_matrix": [
+                ["Formulation", "PLGA", "Poloxamer", "w/o phase", "Drug conc.", "z-Average", "% entrapment"],
+                ["1", "35", "2", "6", "1", "211", "70"],
+                ["2", "35", "2", "6", "5", "220", "88.48"],
+            ],
+        }
+        noise_payload = {
+            "table_id": "Table 4",
+            "source_table_reference": "table_04.csv",
+            "source_caption_or_title": "Biodistribution parameters in tissues",
+            "payload_usage_role": "row_local_value_evidence",
+            "value_evidence_only": True,
+            "table_source_role": "tissue_distribution_table",
+            "table_inclusion_class": TABLE_INCLUSION_OPTIONAL_CONTEXT,
+            "authority_rank": 14,
+            "normalized_matrix": [["Organ", "0.5 h", "1 h"], ["Blood", "2.9", "2.7"]],
+        }
+
+        original_loader = render_value_evidence_payload_blocks.__globals__["load_value_evidence_payloads_for_prompt"]
+        render_value_evidence_payload_blocks.__globals__["load_value_evidence_payloads_for_prompt"] = lambda _artifact: [noise_payload, design_payload]
+        try:
+            blocks = render_value_evidence_payload_blocks(evidence_artifact)
+        finally:
+            render_value_evidence_payload_blocks.__globals__["load_value_evidence_payloads_for_prompt"] = original_loader
+
+        rendered = "\n\n".join(blocks)
+        self.assertIn("Table 13", rendered)
+        self.assertIn("PLGA", rendered)
+        self.assertNotIn("Table 4", rendered)
+        self.assertNotIn("Biodistribution", rendered)
 
 
 if __name__ == "__main__":

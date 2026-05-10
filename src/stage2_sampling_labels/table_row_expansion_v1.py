@@ -327,6 +327,7 @@ def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) ->
         "table_asset_id": normalize_text(scope.get("table_asset_id")),
         "source_table_asset_id": normalize_text(scope.get("source_table_asset_id")),
         "source_table_reference": normalize_text(scope.get("source_table_reference")),
+        "source_text_caption_only": bool(scope.get("source_text_caption_only")),
         "table_scope_locators": parse_json_maybe(scope.get("table_scope_locators")) if normalize_text(scope.get("table_scope_locators")) else scope.get("table_scope_locators"),
         "variable_name": normalize_text(scope.get("variable_name")),
         "candidate_values": [
@@ -341,7 +342,7 @@ def normalize_table_scope(scope: dict[str, Any], *, document: dict[str, Any]) ->
         "evidence_span": normalize_text(scope.get("evidence_span")),
         "marker_provenance": marker_provenance(scope, document=document),
     }
-    if not normalized["table_path"]:
+    if not normalized["table_path"] and not normalized.get("source_text_caption_only") and normalized.get("source_table_reference") != "source_text":
         normalized_payloads, _ = _load_normalized_table_payloads(document)
         payload, _ = resolve_table_authority_payload_for_scope(normalized, normalized_payloads=normalized_payloads)
         if payload is not None:
@@ -443,6 +444,15 @@ def resolve_table_path_for_id(table_id: str, document: dict[str, Any]) -> Path |
     return None
 
 
+def iter_table_scope_locator_dicts(value: Any) -> list[dict[str, Any]]:
+    parsed = parse_json_maybe(value) if normalize_text(value) else value
+    if isinstance(parsed, dict):
+        return [parsed]
+    if isinstance(parsed, list):
+        return [item for item in parsed if isinstance(item, dict)]
+    return []
+
+
 def table_number_aliases(*values: Any) -> list[str]:
     aliases: list[str] = []
     seen: set[str] = set()
@@ -474,12 +484,66 @@ def resolve_table_authority_payload_for_scope(
 ) -> tuple[dict[str, Any] | None, str]:
     wanted_table_id = _normalize_table_label(scope.get("table_id"))
     wanted_aliases = {alias for alias in table_number_aliases(scope.get("table_id")) if alias}
-    scope_locators = scope.get("table_scope_locators") if isinstance(scope.get("table_scope_locators"), dict) else {}
+    scope_locators = iter_table_scope_locator_dicts(scope.get("table_scope_locators"))
+
+    def choose(matches: list[dict[str, Any]]) -> tuple[dict[str, Any] | None, str]:
+        if len(matches) == 1:
+            return matches[0], ""
+        if not matches:
+            return None, "authorized_target_unresolved"
+        matches.sort(
+            key=lambda item: (
+                0 if bool(item.get("preserved_by_authority_ranking")) else 1,
+                int(item.get("authority_rank") or 10_000),
+                -float(item.get("authority_score") or 0.0),
+            )
+        )
+        top = matches[0]
+        top_rank = int(top.get("authority_rank") or 10_000)
+        same_top_rank = [item for item in matches if int(item.get("authority_rank") or 10_000) == top_rank]
+        if len(same_top_rank) == 1:
+            return top, ""
+        top_score = float(top.get("authority_score") or 0.0)
+        same_top_score = [item for item in same_top_rank if float(item.get("authority_score") or 0.0) == top_score]
+        if len(same_top_score) == 1:
+            return top, ""
+        return None, "multiple_candidate_payloads"
+
+    def payload_matches_locator(item: dict[str, Any], locator: dict[str, Any]) -> bool:
+        payload_table_id = _normalize_table_label(item.get("table_id") or item.get("source_table_id"))
+        payload_source_ref = normalize_text(
+            item.get("source_table_reference") or item.get("source_csv_path")
+        ).replace("\\", "/").lower()
+        payload_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
+        locator_path = normalize_text(locator.get("source_table_reference") or locator.get("source_csv_path") or locator.get("table_path")).replace("\\", "/").lower()
+        locator_asset_id = normalize_text(locator.get("source_table_asset_id") or locator.get("table_asset_id")).lower()
+        locator_table_id = _normalize_table_label(locator.get("table_id") or locator.get("source_table_id"))
+        # When the LLM/source repair provides an execution locator, prefer exact
+        # source asset/path identity over caption table number.  Some parser
+        # readthroughs duplicate captions across adjacent assets (for example a
+        # real table plus page-continuation text both labelled "Table 3"); an OR
+        # on table_id alone can bind the scope to the wrong payload and silently
+        # drop source-backed rows.
+        if locator_path or locator_asset_id:
+            return bool(
+                (locator_path and payload_source_ref == locator_path)
+                or (locator_asset_id and payload_asset_id == locator_asset_id)
+            )
+        return bool(locator_table_id and payload_table_id == locator_table_id)
+
+    locator_matches: list[dict[str, Any]] = []
+    if scope_locators:
+        for item in normalized_payloads:
+            if any(payload_matches_locator(item, locator) for locator in scope_locators):
+                locator_matches.append(item)
+        if locator_matches:
+            return choose(locator_matches)
+
     wanted_table_path = normalize_text(
-        scope_locators.get("source_table_reference") or scope.get("source_table_reference") or scope.get("table_path")
+        scope.get("source_table_reference") or scope.get("table_path")
     ).replace("\\", "/").lower()
     wanted_asset_id = normalize_text(
-        scope_locators.get("source_table_asset_id") or scope.get("source_table_asset_id") or scope.get("table_asset_id")
+        scope.get("source_table_asset_id") or scope.get("table_asset_id")
     ).lower()
     matches: list[dict[str, Any]] = []
     for item in normalized_payloads:
@@ -510,29 +574,11 @@ def resolve_table_authority_payload_for_scope(
         if wanted_aliases and payload_aliases and wanted_aliases & payload_aliases:
             matches.append(item)
             continue
-    if len(matches) == 1:
-        return matches[0], ""
     if not matches:
-        if not any([wanted_table_id, wanted_table_path, wanted_asset_id]):
+        if not any([wanted_table_id, wanted_table_path, wanted_asset_id]) and not scope_locators:
             return None, "payload_locator_missing"
         return None, "authorized_target_unresolved"
-    matches.sort(
-        key=lambda item: (
-            0 if bool(item.get("preserved_by_authority_ranking")) else 1,
-            int(item.get("authority_rank") or 10_000),
-            -float(item.get("authority_score") or 0.0),
-        )
-    )
-    top = matches[0]
-    top_rank = int(top.get("authority_rank") or 10_000)
-    same_top_rank = [item for item in matches if int(item.get("authority_rank") or 10_000) == top_rank]
-    if len(same_top_rank) == 1:
-        return top, ""
-    top_score = float(top.get("authority_score") or 0.0)
-    same_top_score = [item for item in same_top_rank if float(item.get("authority_score") or 0.0) == top_score]
-    if len(same_top_score) == 1:
-        return top, ""
-    return None, "multiple_candidate_payloads"
+    return choose(matches)
 
 
 def authority_row_entries(payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -564,11 +610,156 @@ def authority_row_entries(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return entries
 
 
+def infer_table_scopes_from_source_sweep_tables(document: dict[str, Any]) -> list[dict[str, Any]]:
+    """Infer execution-ready table scopes from LLM-declared variable-sweep papers.
+
+    This is a post-LLM repair path: it does not decide semantic relevance before
+    the LLM.  It only activates after the LLM has declared a formulation variable
+    sweep / formulation candidates, then reopens source table files that contain
+    row-level concentration-sweep evidence.  The goal is to recover rows when the
+    LLM collapses a source-backed sweep into family-level candidates.
+    """
+    if not is_llm_first_document(document):
+        return []
+    semantic_signals = document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {}
+    if not bool(semantic_signals.get("has_variable_sweep")):
+        return []
+    formulation_candidates = [
+        item
+        for item in ensure_list(document.get("formulation_candidates"))
+        if isinstance(item, dict)
+    ]
+    if not formulation_candidates:
+        formulation_candidates = [
+            item
+            for item in ensure_list(document.get("formulation_identity_candidates"))
+            if isinstance(item, dict)
+        ]
+    if not formulation_candidates:
+        return []
+    document_key = normalize_text(document.get("document_key") or document.get("key"))
+    inferred: list[dict[str, Any]] = []
+    seen_table_ids: set[str] = set()
+    for path in source_table_paths(document):
+        rows = read_csv_rows(path)
+        table_id = extract_table_label(path, rows)
+        table_key = normalize_token(table_id)
+        if not table_id or table_key in seen_table_ids:
+            continue
+        raw_text = path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
+        payload = {
+            "representation_status": "repaired_summary",
+            "normalization_actions": ["preserve_coordinate_grid"],
+            "source_csv_path": str(path),
+        }
+        split_rows, _ = extract_split_column_concentration_sweep_rows_from_source_csv(
+            authority_payload=payload,
+            document=document,
+            scope={"table_id": table_id, "is_formulation_table": True},
+        )
+        sample_hits = re.findall(
+            r"(?:Empty|[A-Za-z0-9\-]+-loaded)\s+nanocapsules?\s*\([^)]*\)",
+            raw_text,
+            flags=re.IGNORECASE,
+        )
+        has_caption_sample_surface = len(unique_nonempty(sample_hits)) >= 2 and re.search(
+            r"\b(?:diameter|zeta|incorporation|efficien|PI|polydispersity)\b",
+            raw_text,
+            flags=re.IGNORECASE,
+        )
+        if len(split_rows) < 4 and not has_caption_sample_surface:
+            continue
+        inferred.append(
+            {
+                "scope_id": f"{document_key}__source_sweep_table_scope__{len(inferred) + 1:02d}",
+                "table_id": table_id,
+                "table_path": str(path),
+                "table_asset_id": path.stem,
+                "source_table_asset_id": path.stem,
+                "source_table_reference": str(path),
+                "table_scope_locators": {
+                    "table_id": table_id,
+                    "source_table_asset_id": path.stem,
+                    "source_table_reference": str(path),
+                },
+                "variable_name": "",
+                "candidate_values": [],
+                "is_formulation_table": True,
+                "table_type": "full_formulation",
+                "confidence": "medium",
+                "evidence_span": table_id,
+                "marker_provenance": "llm_parsed",
+                "declaration_basis": "llm_variable_sweep_plus_source_table_row_evidence",
+            }
+        )
+        seen_table_ids.add(table_key)
+
+    # Some PDF text extractors preserve compact characterization/caption tables in
+    # the clean text even when the coordinate CSV asset was split across pages or
+    # assigned an asset-local label.  After the LLM has already authorized this as
+    # a variable-sweep formulation paper, reopen only source-text table captions
+    # that expose explicit formulation sample labels plus measured-result columns.
+    source_text = load_document_source_text(document)
+    if source_text:
+        for match in re.finditer(r"\bTable\s+(\d{1,3})\b", source_text, flags=re.IGNORECASE):
+            table_id = f"Table {int(match.group(1))}"
+            table_key = normalize_token(table_id)
+            if table_key in seen_table_ids:
+                continue
+            window = normalize_text(source_text[match.start(): match.start() + 1800])
+            has_measured_result_surface = bool(
+                re.search(r"\b(?:diameter|zeta|incorporation|efficien|PI|polydispersity|final\s+concentration)\b", window, flags=re.IGNORECASE)
+            )
+            sample_hits = re.findall(
+                r"(?:Empty|[A-Za-z0-9\-]+-loaded)\s+nano(?:sphere|capsule)s?\s*(?:\([^)]*\))?",
+                window,
+                flags=re.IGNORECASE,
+            )
+            has_empty_loaded_characterization_surface = bool(
+                re.search(r"\bempty\s+and\s+loaded\b", window, flags=re.IGNORECASE)
+                and re.search(r"\bEmpty\s+nano(?:sphere|capsule)s?\s+XAN\s+nano(?:sphere|capsule)s?", window, flags=re.IGNORECASE)
+                and re.search(r"\b3-?MeOXAN\s+nano(?:sphere|capsule)s?", window, flags=re.IGNORECASE)
+            )
+            if not has_measured_result_surface or (len(unique_nonempty(sample_hits)) < 2 and not has_empty_loaded_characterization_surface):
+                continue
+            inferred.append(
+                {
+                    "scope_id": f"{document_key}__source_text_table_scope__{len(inferred) + 1:02d}",
+                    "table_id": table_id,
+                    "table_path": "",
+                    "table_asset_id": "",
+                    "source_table_asset_id": "",
+                    "source_table_reference": "source_text",
+                    "source_text_caption_only": True,
+                    "table_scope_locators": {"table_id": table_id, "source_table_reference": "source_text"},
+                    "variable_name": "",
+                    "candidate_values": [],
+                    "is_formulation_table": True,
+                    "table_type": "full_formulation",
+                    "confidence": "medium",
+                    "evidence_span": table_id,
+                    "marker_provenance": "llm_parsed",
+                    "declaration_basis": "llm_variable_sweep_plus_source_text_table_evidence",
+                }
+            )
+            seen_table_ids.add(table_key)
+    return inferred
+
+
 def infer_table_scopes_from_table_anchored_formulations(document: dict[str, Any]) -> list[dict[str, Any]]:
     if not is_llm_first_document(document):
         return []
-    if any(isinstance(item, dict) for item in ensure_list(document.get("table_formulation_scopes"))):
+    existing_scopes = [
+        item
+        for item in ensure_list(document.get("table_formulation_scopes"))
+        if isinstance(item, dict)
+    ]
+    if any(bool(item.get("is_formulation_table")) for item in existing_scopes):
         return []
+
+    source_sweep_scopes = infer_table_scopes_from_source_sweep_tables(document)
+    if source_sweep_scopes:
+        return source_sweep_scopes
 
     evidence_by_id = {
         normalize_text(item.get("span_id") or item.get("evidence_span_id")): item
@@ -699,13 +890,28 @@ def augment_document_with_table_markers(document: dict[str, Any]) -> dict[str, A
         for item in ensure_list(document.get("boundary_markers"))
         if isinstance(item, dict)
     ]
-    if not table_scopes:
+    has_formulation_bearing_scope = any(
+        bool(scope.get("is_formulation_table"))
+        for scope in table_scopes
+        if isinstance(scope, dict)
+    )
+    if not has_formulation_bearing_scope:
         inferred_scopes = [
             normalize_table_scope(item, document=document)
             for item in infer_table_scopes_from_table_anchored_formulations(document)
         ]
         if inferred_scopes:
-            table_scopes = inferred_scopes
+            existing_scope_keys = {
+                (normalize_text(scope.get("table_id")), normalize_text(scope.get("source_table_reference")))
+                for scope in table_scopes
+                if isinstance(scope, dict)
+            }
+            table_scopes.extend(
+                scope
+                for scope in inferred_scopes
+                if (normalize_text(scope.get("table_id")), normalize_text(scope.get("source_table_reference")))
+                not in existing_scope_keys
+            )
             known_boundaries = {
                 normalize_text(item.get("table_id"))
                 for item in boundary_markers
@@ -1392,9 +1598,9 @@ def extract_single_variable_level_list(text: str, variable_name: str) -> list[st
             if match:
                 return parse_candidate_values(match.group(1))
     variable_low = normalize_text(variable_name).lower()
-    if "poloxamer 188" in variable_low:
+    if "poloxamer 188" in variable_low or ("surfactant" in variable_low and "concentration" in variable_low):
         match = re.search(
-            r"containing\s+([0-9][0-9\.,\sand]{1,80})\s*mg/mL\s+of[^.]{0,80}?poloxamer\s+188",
+            r"containing\s+([0-9][0-9\.,\sand]{1,80})\s*mg/mL\s+of[^.]{0,80}?(?:poloxamer\s+188|surfactant)",
             text,
             flags=re.IGNORECASE,
         )
@@ -1470,6 +1676,95 @@ def variable_supports_blank_control_family_recovery(variable_name: str) -> bool:
     return "drug" not in low and "etoposide" not in low
 
 
+def _numeric_value(text: str) -> float | None:
+    match = re.search(r"\d+(?:\.\d+)?", normalize_text(text))
+    if not match:
+        return None
+    try:
+        return float(match.group(0))
+    except ValueError:
+        return None
+
+
+def _format_mg_level(value: str) -> str:
+    value_text = normalize_text(value)
+    if re.search(r"\bmg\b", value_text, flags=re.IGNORECASE):
+        return value_text
+    return f"{value_text} mg" if value_text else ""
+
+
+def _optimized_baseline_for_axis(source_text: str, variable_name: str) -> str:
+    low_axis = normalize_text(variable_name).lower()
+    text = normalize_text(source_text)
+    match = re.search(
+        r"amount\s+of\s+drug\s*,\s*amount\s+of\s+polymer\s*,\s*and\s*concentration\s+of\s+stabilizer\s+were\s+optimized\s+to\s+"
+        r"(\d+(?:\.\d+)?\s*mg)\s*,\s*(\d+(?:\.\d+)?\s*mg)\s*,\s*and\s*(\d+(?:\.\d+)?\s*%\s*w/v)",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return ""
+    if "drug" in low_axis or "etoposide" in low_axis:
+        return normalize_text(match.group(1))
+    if "polymer" in low_axis and "amount" in low_axis:
+        return normalize_text(match.group(2))
+    if "stabilizer" in low_axis or "surfactant" in low_axis:
+        return normalize_text(match.group(3))
+    return ""
+
+
+def _drug_amount_observed_endpoint_levels(source_text: str, variable_name: str) -> list[str]:
+    low_axis = normalize_text(variable_name).lower()
+    if "drug" not in low_axis and "etoposide" not in low_axis:
+        return []
+    text = normalize_text(source_text)
+    match = re.search(
+        r"(?:increase\s+in\s+the\s+)?amount\s+of\s+etoposide\s+from\s+(\d+(?:\.\d+)?)\s+to\s+(\d+(?:\.\d+)?)\s*mg\s+increased\s+.{0,320}?\bPLGA\s*50\s*/\s*50\b.{0,320}?\bPCL\b",
+        text,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        return []
+    return [_format_mg_level(match.group(1)), _format_mg_level(match.group(2))]
+
+
+def source_supported_single_variable_levels(
+    *,
+    source_text: str,
+    variable_name: str,
+    levels: list[str],
+    baseline_value: str,
+) -> list[str]:
+    """Prune broad single-variable sweep ranges to source-supported formulation rows.
+
+    This stays evidence-gated: it activates only for observed endpoint language that
+    binds levels to measured formulation outcomes, or for above-baseline polymer
+    amount language where lower-bound rows are under-anchored.
+    """
+    low_axis = normalize_text(variable_name).lower()
+    normalized_levels = [normalize_text(level) for level in levels if normalize_text(level)]
+    if not normalized_levels:
+        return []
+    observed_drug_levels = _drug_amount_observed_endpoint_levels(source_text, variable_name)
+    if observed_drug_levels:
+        observed_keys = {re.sub(r"\s+", "", item.lower()) for item in observed_drug_levels}
+        return [level for level in normalized_levels if re.sub(r"\s+", "", level.lower()) in observed_keys]
+    if "polymer" in low_axis and "amount" in low_axis:
+        text_low = normalize_text(source_text).lower()
+        if "polymer amount was increased from" in text_low and "above 50 mg" in text_low:
+            baseline = _optimized_baseline_for_axis(source_text, variable_name) or baseline_value
+            baseline_number = _numeric_value(baseline)
+            if baseline_number is not None:
+                kept = [
+                    level
+                    for level in normalized_levels
+                    if (_numeric_value(level) is not None and _numeric_value(level) > baseline_number)
+                ]
+                if kept:
+                    return kept
+    return normalized_levels
+
+
 def family_contexts_for_variable_group(*, source_text: str, variable_name: str) -> tuple[list[str], list[str], bool]:
     low = normalize_text(source_text).lower()
     family_labels = detect_polymer_family_labels(source_text)
@@ -1482,6 +1777,10 @@ def family_contexts_for_variable_group(*, source_text: str, variable_name: str) 
         and "all the polymers in the study" in low
     ):
         return family_labels, ["blank_control"], False
+    if _drug_amount_observed_endpoint_levels(source_text, variable_name):
+        observed_families = [family for family in ["PLGA 50/50", "PCL"] if family in family_labels]
+        if observed_families:
+            return observed_families, ["drug_loaded"], False
     return [], [], True
 
 
@@ -1514,12 +1813,71 @@ def _is_downstream_only_variable_axis(variable_name: str) -> bool:
     return any(token in low for token in ["lyoprotectant", "freeze", "resuspend", "sf/si", "reconstit", "post-processing"])
 
 
+def infer_selected_optimized_variable_axes(
+    *,
+    selected_condition_hints: list[str],
+    source_text: str,
+    existing_variable_names: list[str],
+) -> list[str]:
+    """Recover source-supported sequential-optimization axes from neutral S2 hints.
+
+    This is intentionally source-gated: a hint such as "surfactant concentration
+    optimized" is promoted only when the source text yields at least two concrete
+    levels for the inferred axis.
+    """
+    variables = list(existing_variable_names)
+    seen = {normalize_token(item) for item in variables if normalize_text(item)}
+    for hint in selected_condition_hints:
+        hint_text = normalize_text(hint)
+        if not hint_text:
+            continue
+        candidates: list[str] = []
+        optimized_match = re.search(r"(.+?)\s+(?:was\s+)?optimized\b", hint_text, flags=re.IGNORECASE)
+        if optimized_match:
+            candidates.append(normalize_text(optimized_match.group(1)))
+        ratio_match = re.search(r"([A-Za-z0-9: /\-]+?\s+ratios?)\b", hint_text, flags=re.IGNORECASE)
+        if ratio_match:
+            candidates.append(normalize_text(ratio_match.group(1)).rstrip("s"))
+        for candidate in candidates:
+            if not candidate:
+                continue
+            key = normalize_token(candidate)
+            if key in seen:
+                continue
+            if len(extract_single_variable_level_list(source_text, candidate)) < 2:
+                continue
+            seen.add(key)
+            variables.append(candidate)
+    return variables
+
+
+def source_indicates_anchorless_sequential_optimization(
+    *,
+    source_text: str,
+    selected_condition_hints: list[str],
+    primary_variable_names: list[str],
+) -> bool:
+    if len(primary_variable_names) < 2:
+        return False
+    low = normalize_text(source_text).lower()
+    if "after the optimal" in low or "after optimal" in low:
+        return True
+    if re.search(r"optimized\s+by\s+modifying", low) and any("optimized" in hint.lower() for hint in selected_condition_hints):
+        return True
+    return False
+
+
 def build_single_variable_recovery_contract(
     *,
     document: dict[str, Any],
     require_anchor_rows: bool,
 ) -> dict[str, Any]:
     semantic_signals = document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {}
+    selected_condition_hints = [
+        normalize_text(item)
+        for item in ensure_list(semantic_signals.get("selected_condition_hints"))
+        if normalize_text(item)
+    ]
     primary_variable_names = [
         normalize_text(item)
         for item in ensure_list(semantic_signals.get("primary_variable_names"))
@@ -1530,9 +1888,9 @@ def build_single_variable_recovery_contract(
             "detected": False,
             "failure_reason": "semantic_signal_missing_variable_sweep",
         }
-    allow_anchorless_sequential = (
-        bool(semantic_signals.get("has_sequential_optimization"))
-        and bool(ensure_list(semantic_signals.get("selected_condition_hints")))
+    allow_anchorless_sequential = bool(
+        selected_condition_hints
+        and (semantic_signals.get("has_sequential_optimization") or semantic_signals.get("has_variable_sweep"))
     )
     if not require_anchor_rows and not allow_anchorless_sequential:
         return {
@@ -1559,15 +1917,27 @@ def build_single_variable_recovery_contract(
             "detected": False,
             "failure_reason": "source_text_missing",
         }
+    primary_variable_names = infer_selected_optimized_variable_axes(
+        selected_condition_hints=selected_condition_hints,
+        source_text=source_text,
+        existing_variable_names=primary_variable_names,
+    )
+    allow_anchorless_sequential = bool(
+        selected_condition_hints
+        and (
+            semantic_signals.get("has_sequential_optimization")
+            or source_indicates_anchorless_sequential_optimization(
+                source_text=source_text,
+                selected_condition_hints=selected_condition_hints,
+                primary_variable_names=primary_variable_names,
+            )
+        )
+    )
     contract_match = None
     for pattern in SINGLE_VARIABLE_CONTRACT_PATTERNS:
         contract_match = re.search(pattern, source_text, flags=re.IGNORECASE)
         if contract_match:
             break
-    allow_anchorless_sequential = (
-        bool(semantic_signals.get("has_sequential_optimization"))
-        and bool(ensure_list(semantic_signals.get("selected_condition_hints")))
-    )
     if contract_match is None and not allow_anchorless_sequential:
         return {
             "detected": False,
@@ -1578,13 +1948,32 @@ def build_single_variable_recovery_contract(
     baseline_assignments: dict[str, str] = {}
     for variable_name in primary_variable_names:
         levels = extract_single_variable_level_list(context, variable_name)
-        if not levels and allow_anchorless_sequential and contract_match is None:
+        if not levels and selected_condition_hints:
             levels = extract_single_variable_level_list(source_text, variable_name)
+        if not levels and ("drug" in normalize_text(variable_name).lower() or "etoposide" in normalize_text(variable_name).lower()):
+            for drug_axis_alias in ("etoposide amount", "amount of etoposide"):
+                levels = extract_single_variable_level_list(source_text, drug_axis_alias)
+                if levels:
+                    break
         baseline_value = extract_baseline_assignment_from_text(context, variable_name)
-        if not baseline_value and allow_anchorless_sequential and contract_match is None:
+        if not baseline_value and selected_condition_hints:
             baseline_value = extract_baseline_assignment_from_text(source_text, variable_name)
+        optimized_axis_baseline = _optimized_baseline_for_axis(source_text, variable_name)
+        if optimized_axis_baseline and (
+            not baseline_value
+            or not re.search(r"\d+(?:\.\d+)?\s*mg\b", baseline_value, flags=re.IGNORECASE)
+            and ("drug" in normalize_text(variable_name).lower() or "etoposide" in normalize_text(variable_name).lower())
+        ):
+            baseline_value = optimized_axis_baseline
         if baseline_value:
             baseline_assignments[variable_name] = baseline_value
+        if len(levels) >= 2:
+            levels = source_supported_single_variable_levels(
+                source_text=source_text,
+                variable_name=variable_name,
+                levels=levels,
+                baseline_value=baseline_value,
+            )
         if len(levels) >= 2:
             family_contexts, payload_states, emit_generic_row = family_contexts_for_variable_group(
                 source_text=source_text,
@@ -1917,6 +2306,89 @@ def emit_single_variable_recovery_rows(
                 )
                 emitted += 1
     return rows, jsonl_rows, traces, emitted
+
+
+def _assignment_value_key(value: str) -> str:
+    return re.sub(r"\s+", "", normalize_minus_signs(normalize_text(value)).lower())
+
+
+def _existing_axis_value_supports_level(existing_value_key: str, level: str) -> bool:
+    level_key = _assignment_value_key(level)
+    return bool(level_key and (existing_value_key == level_key or level_key in existing_value_key))
+
+
+def existing_assignment_values_for_axis(
+    *,
+    existing_rows: list[dict[str, Any]],
+    variable_name: str,
+) -> set[str]:
+    """Return values already materialized for a variable axis in this scope.
+
+    Single-variable narrative recovery is supplemental. When row-level table
+    expansion has already emitted the same axis/value, the narrative axis must
+    not duplicate those formulation identities.
+    """
+    axis_keys = {normalize_token(variable_name), normalize_text(variable_name).lower()}
+    values: set[str] = set()
+    for row in existing_rows:
+        if not isinstance(row, dict):
+            continue
+        for blob_field in (TABLE_ASSIGNMENTS_FIELD, IDENTITY_VARIABLES_FIELD):
+            parsed = parse_json_maybe(row.get(blob_field))
+            for item in ensure_list(parsed):
+                if not isinstance(item, dict):
+                    continue
+                if "name" in item and "value" in item:
+                    name = item.get("name_raw") or item.get("name")
+                    if normalize_token(name) in axis_keys or normalize_text(name).lower() in axis_keys:
+                        value_key = _assignment_value_key(item.get("value_raw") or item.get("value"))
+                        if value_key:
+                            values.add(value_key)
+                else:
+                    for name, value in item.items():
+                        if normalize_token(name) in axis_keys or normalize_text(name).lower() in axis_keys:
+                            value_key = _assignment_value_key(value)
+                            if value_key:
+                                values.add(value_key)
+    return values
+
+
+def suppress_single_variable_levels_already_materialized(
+    *,
+    contract: dict[str, Any],
+    existing_rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    if not existing_rows or not isinstance(contract, dict):
+        return contract
+    filtered_groups: list[dict[str, Any]] = []
+    changed = False
+    for group in ensure_list(contract.get("groups")):
+        if not isinstance(group, dict):
+            continue
+        levels = [normalize_text(item) for item in ensure_list(group.get("levels")) if normalize_text(item)]
+        existing_values = existing_assignment_values_for_axis(
+            existing_rows=existing_rows,
+            variable_name=normalize_text(group.get("variable_name")),
+        )
+        if not levels or not existing_values:
+            filtered_groups.append(group)
+            continue
+        retained_levels = [
+            level
+            for level in levels
+            if not any(_existing_axis_value_supports_level(existing_value, level) for existing_value in existing_values)
+        ]
+        if retained_levels != levels:
+            changed = True
+        if retained_levels:
+            updated = dict(group)
+            updated["levels"] = retained_levels
+            filtered_groups.append(updated)
+    if not changed:
+        return contract
+    updated_contract = dict(contract)
+    updated_contract["groups"] = filtered_groups
+    return updated_contract
 
 
 def first_cell_value(entry: dict[str, Any]) -> str:
@@ -2332,15 +2804,19 @@ def extract_split_column_concentration_sweep_rows_from_source_csv(
     # prompt visibility but still retain a lawful split-column sweep in the original
     # CSV.  Do not let the newer representation label suppress an LLM-authorized
     # variable-sweep scope before the source CSV has been inspected.
-    if representation_status not in {"repair_insufficient", "unrepaired_corrupted"} and not (
-        representation_status == "repaired_summary" and "preserve_coordinate_grid" in normalization_actions
-    ):
-        return [], "representation_not_corrupted_sweep_source"
     source_csv = _authority_source_csv_path(authority_payload)
     if source_csv is None:
         return [], "source_csv_missing"
     raw_text = source_csv.read_text(encoding="utf-8", errors="replace")
     family_labels = _corrupted_table_family_labels("\n".join(raw_text.splitlines()[:14]))
+    source_has_split_sweep_surface = len(family_labels) >= 2 and any(
+        _leading_theoretical_concentration(line) and _segment_looks_like_sweep_row(line)
+        for line in raw_text.splitlines()
+    )
+    if representation_status not in {"repair_insufficient", "unrepaired_corrupted"} and not (
+        representation_status == "repaired_summary" and "preserve_coordinate_grid" in normalization_actions
+    ) and not source_has_split_sweep_surface:
+        return [], "representation_not_corrupted_sweep_source"
     if len(family_labels) < 2:
         return [], "insufficient_family_labels"
     extracted_rows: list[dict[str, Any]] = []
@@ -2359,7 +2835,23 @@ def extract_split_column_concentration_sweep_rows_from_source_csv(
         if left_conc and right_conc and len(family_labels) >= 2 and _segment_looks_like_sweep_row(left) and _segment_looks_like_sweep_row(right):
             paired = [(family_labels[0], left_conc, left), (family_labels[1], right_conc, right)]
         elif left_conc and len(family_labels) >= 2 and _segment_looks_like_sweep_row(left):
-            paired = [(family_label, left_conc, left) for family_label in family_labels[:2]]
+            # In two-family split tables, a damaged coordinate row may either be
+            # a shared same-concentration row whose right-side cells were folded
+            # into the left segment (for example two ND/crystal outcomes), or a
+            # genuinely left-only tail row.  Replicating every left-only segment
+            # to both families invents a false right-family formulation.
+            replicate_to_both = (
+                len(re.findall(r"\bND\b", left, flags=re.IGNORECASE)) >= 2
+                or len(re.findall(r"\d+(?:\.\d+)?", left)) >= 5
+                or all(label.lower() in left.lower() for label in family_labels[:2])
+            )
+            if not replicate_to_both and re.search(r"\bND\b", left, flags=re.IGNORECASE) and "crystals" in left.lower():
+                continue
+            paired = (
+                [(family_label, left_conc, left) for family_label in family_labels[:2]]
+                if replicate_to_both
+                else [(family_labels[0], left_conc, left)]
+            )
         else:
             continue
         for family_label, conc, segment_text in paired:
@@ -2432,6 +2924,74 @@ def extract_caption_sample_rows_from_source_text(
     if len(extracted_rows) < 2:
         return [], "caption_sample_row_parse_failed"
     return extracted_rows, ""
+
+
+def extract_empty_control_characterization_row_from_source_text(
+    *,
+    document: dict[str, Any],
+    scope: dict[str, Any],
+) -> tuple[list[dict[str, Any]], str]:
+    """Recover measured blank-control rows from compact characterization tables.
+
+    This post-LLM path is intentionally narrow: it only emits the empty/control
+    row from a table whose caption states it characterizes empty and loaded
+    nanospheres/nanocapsules.  Loaded rows in these characterization tables often
+    duplicate already-enumerated concentration-sweep formulation rows.
+    """
+    source_text = load_document_source_text(document)
+    table_id = normalize_text(scope.get("table_id"))
+    table_number_match = re.search(r"table\s*(\d{1,3})", table_id, flags=re.IGNORECASE)
+    if not source_text or table_number_match is None:
+        return [], "source_text_or_table_number_missing"
+    table_number = table_number_match.group(1)
+    anchor_match = re.search(
+        rf"\bTable\s*{re.escape(table_number)}\s+Mean\s+diameter\b",
+        source_text,
+        flags=re.IGNORECASE,
+    )
+    if anchor_match is None:
+        return [], "table_anchor_not_found_in_source_text"
+    window = normalize_text(source_text[anchor_match.start(): anchor_match.start() + 1600])
+    if not re.search(r"\bMean\s+diameter\b", window, flags=re.IGNORECASE):
+        return [], "not_characterization_table"
+    if not re.search(r"\bempty\s+and\s+loaded\b", window, flags=re.IGNORECASE):
+        return [], "not_empty_loaded_characterization_table"
+    if not (
+        re.search(r"\bEmpty\s+nano(?:sphere|capsule)s?\s+XAN\s+nano(?:sphere|capsule)s?", window, flags=re.IGNORECASE)
+        and re.search(r"\b3-?MeOXAN\s+nano(?:sphere|capsule)s?", window, flags=re.IGNORECASE)
+    ):
+        return [], "empty_loaded_header_missing"
+    family_match = re.search(r"\b(nanospheres|nanocapsules)\b", window, flags=re.IGNORECASE)
+    if family_match is None:
+        return [], "nanoparticle_family_missing"
+    family = family_match.group(1).lower()
+    label = f"Empty {family}"
+    assignments = [{"name": "formulation_identity_label", "value": label}, {"name": "payload_state", "value": "empty"}]
+    metric_match = re.search(
+        r"Diameter\s*\(nm\)\s+(?P<diameter>\d+G\d+).*?PI\s+(?P<pi>\d+\.\d+G\d+\.\d+).*?z\s*\(mV\)\s+(?P<zeta>[K−-]?\d+\.\d+G\d+\.\d+)",
+        window,
+        flags=re.IGNORECASE,
+    )
+    if metric_match:
+        assignments.extend(
+            [
+                {"name": "particle size", "value": normalize_text(metric_match.group("diameter"))},
+                {"name": "polydispersity index", "value": normalize_text(metric_match.group("pi"))},
+                {"name": "zeta potential", "value": normalize_text(metric_match.group("zeta"))},
+            ]
+        )
+    return [
+        {
+            "label": label,
+            "label_number": "1",
+            "row_text": window,
+            "assignments": assignments,
+            "instance_role": "control",
+            "source_region_type": "source_text_table",
+            "evidence_span_text": window,
+            "change_context_tag": "empty_control_characterization_recovery",
+        }
+    ], ""
 
 
 def extract_first_column_identity_rows_from_authority(
@@ -2610,22 +3170,18 @@ def evaluate_simple_table_enumeration_contract(
 
 
 def direct_rows_look_like_aggregate_variant_list(direct_rows: list[dict[str, Any]]) -> bool:
-    if len(direct_rows) != 1:
-        return False
-    row = direct_rows[0]
-    values = [
-        normalize_text(item.get("value"))
-        for item in ensure_list(row.get("assignments"))
-        if isinstance(item, dict) and normalize_text(item.get("value"))
-    ]
-    values.append(normalize_text(row.get("label")))
-    values.append(normalize_text(row.get("row_text")))
-    values.append(normalize_text(row.get("evidence_span_text")))
-    for value in values:
-        value_low = value.lower()
-        if " | " in value and sum(1 for marker in ("nanoparticle", "nanoparticles", "np", "nps") if marker in value_low) >= 2:
-            return True
-        if " | " in value and sum(1 for marker in ("blank", "fitc", "99mtc", "drug-free", "drug free") if marker in value_low) >= 2:
+    for row in direct_rows:
+        if not isinstance(row, dict):
+            continue
+        values = [
+            normalize_text(item.get("value"))
+            for item in ensure_list(row.get("assignments"))
+            if isinstance(item, dict) and normalize_text(item.get("value"))
+        ]
+        values.append(normalize_text(row.get("label")))
+        values.append(normalize_text(row.get("row_text")))
+        values.append(normalize_text(row.get("evidence_span_text")))
+        if row_values_look_like_aggregate_variant_list(values):
             return True
     return False
 
@@ -2972,6 +3528,11 @@ def _extract_row_assignments_from_authority(
         normalized_row_text = normalize_token(row_text)
         if not normalized_row_text or "note:" in row_text.lower():
             continue
+        row_text_low = row_text.lower()
+        if re.search(r"\boptimized\s+by\s+(?:modifying|varying|changing|adjusting)\b", row_text_low):
+            continue
+        if re.search(r"\b(?:modified|varied|changed|adjusted)\s+.*\b(?:ratio|concentration|amount|level)s?\b", row_text_low) and "their" in row_text_low:
+            continue
         matched_value = ""
         for value in candidate_values:
             if text_matches_value(row_text, value):
@@ -3147,7 +3708,8 @@ def run_table_row_expansion(
         )
 
     for scope in scopes:
-        table_id = normalize_text(scope.get("table_id"))
+        semantic_table_id = normalize_text(scope.get("table_id"))
+        table_id = semantic_table_id
         activation_row = {
             "function_unit": FUNCTION_UNIT_ID,
             "document_key": document_key,
@@ -3206,10 +3768,22 @@ def run_table_row_expansion(
                 continue
             activation_row["fell_back_to_table_expansion"] = "yes"
             activation_row["fallback_reason"] = "doe_emitted_zero_rows"
-        authority_payload, payload_failure_reason = resolve_table_authority_payload_for_scope(
-            scope,
-            normalized_payloads=normalized_payloads,
-        )
+        if bool(scope.get("source_text_caption_only")):
+            authority_payload = {
+                "table_id": table_id,
+                "source_table_id": table_id,
+                "normalized_csv_path": "",
+                "source_csv_path": "",
+                "row_entries": [],
+            }
+            payload_failure_reason = ""
+            activation_row["reopen_resolution_status"] = "source_text_only"
+            activation_row["normalized_payload_used"] = "no"
+        else:
+            authority_payload, payload_failure_reason = resolve_table_authority_payload_for_scope(
+                scope,
+                normalized_payloads=normalized_payloads,
+            )
         if authority_payload is None:
             activation_row["authorized"] = "yes"
             activation_row["skip_reason"] = "missing_table_authority_payload"
@@ -3219,6 +3793,10 @@ def run_table_row_expansion(
             continue
         authority_table_id = normalize_text(authority_payload.get("table_id") or authority_payload.get("source_table_id"))
         authority_table_path = normalize_text(authority_payload.get("normalized_csv_path"))
+        original_scope_table_id = semantic_table_id
+        if original_scope_table_id:
+            scope.setdefault("original_scope_table_id", original_scope_table_id)
+            scope.setdefault("semantic_table_id", original_scope_table_id)
         scope["table_path"] = authority_table_path
         if authority_table_id:
             scope["table_id"] = authority_table_id
@@ -3229,7 +3807,7 @@ def run_table_row_expansion(
         activation_row["normalized_payload_used"] = reopen_binding.get("normalized_payload_used", "yes")
         activation_row["authorized"] = "yes"
         activation_row["called"] = "yes"
-        role_info = variable_roles.get(table_id, {})
+        role_info = variable_roles.get(table_id) or variable_roles.get(original_scope_table_id, {})
         authority_entries = authority_row_entries(authority_payload)
         explicit_rows = explicit_formulation_row_entries(authority_entries)
         direct_rows, direct_failure_reason = extract_direct_formulation_rows_from_authority(
@@ -3259,6 +3837,11 @@ def run_table_row_expansion(
             )
         if not direct_rows:
             direct_rows, direct_failure_reason = extract_caption_sample_rows_from_source_text(
+                document=document,
+                scope=scope,
+            )
+        if not direct_rows:
+            direct_rows, direct_failure_reason = extract_empty_control_characterization_row_from_source_text(
                 document=document,
                 scope=scope,
             )
@@ -3461,7 +4044,7 @@ def run_table_row_expansion(
                     simple_table_rows_emitted += 1
                     simple_rows_for_scope += 1
         else:
-            role_info = variable_roles.get(table_id, {})
+            role_info = variable_roles.get(table_id) or variable_roles.get(original_scope_table_id, {})
             if marker_provenance(role_info) not in LLM_MARKER_SOURCES:
                 activation_row["authorized"] = "yes"
                 activation_row["skip_reason"] = "missing_llm_variable_roles"
@@ -3581,9 +4164,8 @@ def run_table_row_expansion(
                 direct_failure_reason = column_failure_reason or direct_failure_reason
             allow_anchorless_single_variable_recovery = bool(
                 isinstance(document.get("semantic_signals"), dict)
-                and document.get("semantic_signals", {}).get("has_sequential_optimization")
+                and document.get("semantic_signals", {}).get("has_variable_sweep")
                 and bool(ensure_list(document.get("semantic_signals", {}).get("selected_condition_hints")))
-                and not document_has_explicit_anchor_scope
             )
             if len(varying_variables) != 1:
                 if emitted_rows_for_scope == 0 and not allow_anchorless_single_variable_recovery and not anchor_direct_rows:
@@ -3699,6 +4281,7 @@ def run_table_row_expansion(
             and doe_rows_emitted == 0
             and (
                 emitted_rows_for_scope > 0
+                or allow_anchorless_single_variable_recovery
                 or bool(
                     isinstance(document.get("semantic_signals"), dict)
                     and document.get("semantic_signals", {}).get("has_sequential_optimization")
@@ -3735,6 +4318,11 @@ def run_table_row_expansion(
                     emitted_rows_for_scope += supplemental_anchor_count
                     explicit_table_rows_emitted += supplemental_anchor_count
                     explicit_rows_for_scope += supplemental_anchor_count
+                    existing_rows_for_scope.extend(supplemental_anchor_rows)
+                single_variable_contract = suppress_single_variable_levels_already_materialized(
+                    contract=single_variable_contract,
+                    existing_rows=existing_rows_for_scope,
+                )
                 single_variable_recovery_source_type = normalize_text(single_variable_contract.get("source_type"))
                 held_constant_context_source = normalize_text(single_variable_contract.get("held_constant_context_source"))
                 groups = [

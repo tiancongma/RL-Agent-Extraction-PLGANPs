@@ -38,8 +38,6 @@ import google.generativeai as genai
 
 # ---------------------------- Defaults ---------------------------- #
 
-DEFAULT_MODEL = "gemini-2.5-flash-lite"
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_IN_PATH = BASE_DIR / "Data" / "wos_prefiltered.csv"
 DEFAULT_OUT_PATH = BASE_DIR / "Data" / "wos_llm_tagged.csv"
@@ -249,7 +247,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--in", dest="in_path", help="Input CSV (prefiltered).")
     ap.add_argument("--out", dest="out_path", help="Output CSV path.")
-    ap.add_argument("--model", default=DEFAULT_MODEL, help="Gemini model name.")
+    ap.add_argument("--model", required=True, help="Gemini model name. No repository-wide model default is applied.")
     ap.add_argument("--group", type=int, default=6, help="Papers per request.")
     ap.add_argument("--max_retries", type=int, default=3, help="Retries per request.")
     ap.add_argument("--sleep", type=float, default=0.0, help="Sleep after each request (seconds).")

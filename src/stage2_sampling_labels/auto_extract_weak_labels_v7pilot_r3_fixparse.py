@@ -43,7 +43,7 @@ try:
         PREPARATION_METHOD_FIELDNAMES,
         enrich_preparation_method_fields_v1,
     )
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
     from src.utils.run_id import resolve_governed_results_artifact_path
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -58,7 +58,7 @@ except ModuleNotFoundError:
         PREPARATION_METHOD_FIELDNAMES,
         enrich_preparation_method_fields_v1,
     )
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
     from src.utils.run_id import resolve_governed_results_artifact_path
 
 HAS_GENAI = False
@@ -2977,14 +2977,6 @@ def normalize_component_name_and_role(raw_name: str, fallback_role: str) -> Tupl
         normalized_name = "PLGA-PEG"
         normalized_role = "polymer"
         role_mode = "name_normalized"
-    elif "rhodamine" in lowered:
-        normalized_name = "Rhodamine"
-        normalized_role = "drug"
-        role_mode = "name_normalized"
-    elif "gatifloxacin" in lowered:
-        normalized_name = "Gatifloxacin"
-        normalized_role = "drug"
-        role_mode = "name_normalized"
     elif "methylene blue" in lowered or lowered == "mb":
         normalized_name = "Methylene Blue"
         normalized_role = "drug"
@@ -3009,8 +3001,8 @@ def normalize_component_name_and_role(raw_name: str, fallback_role: str) -> Tupl
         normalized_name = "Poloxamer 188"
         normalized_role = "surfactant"
         role_mode = "name_normalized"
-    elif "tween 80" in lowered or "polysorbate 80" in lowered:
-        normalized_name = "Polysorbate 80"
+    elif "tween 80" in lowered:
+        normalized_name = "Tween 80"
         normalized_role = "surfactant"
         role_mode = "name_normalized"
     elif lowered == "pva":
@@ -3020,10 +3012,6 @@ def normalize_component_name_and_role(raw_name: str, fallback_role: str) -> Tupl
     elif "sc6oh" in lowered:
         normalized_name = "SC6OH"
         normalized_role = "surfactant"
-        role_mode = "name_normalized"
-    elif "labrafil" in lowered:
-        normalized_name = "Labrafil"
-        normalized_role = "excipient"
         role_mode = "name_normalized"
     elif any(token in lowered for token in ("acetone", "dichloromethane", "ethyl acetate", "chloroform", "methanol", "ethanol", "water")):
         normalized_role = "solvent" if fallback_role in {"solvent", "co_solvent"} else fallback_role
@@ -3222,7 +3210,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         "--manifest-tsv",
         default="data/cleaned/goren_2025/index/splits/dev_manifest_v7pilot3_2026-03-06.tsv",
     )
-    p.add_argument("--model", default=PRIMARY_DEFAULT)
+    p.add_argument("--model", default="")
     p.add_argument(
         "--llm-backend",
         default="auto",

@@ -6,15 +6,32 @@ from pathlib import Path
 from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
     build_raw_metric_value_evidence_lines,
     build_table_summary_lines,
+    classify_execution_table_type,
+    classify_table_source_role,
     collect_summary_table_candidates,
     compact_value_evidence_lines_from_payload,
+    extract_informative_header_parts,
+    payload_inclusion_class,
+    payload_usage_role,
     prompt_semantic_summary_line,
+    render_prompt_block,
+    render_selected_table_candidate,
     render_value_evidence_payload_blocks,
+    summary_header_context,
+    summary_header_row_count,
 )
 
 
+FORBIDDEN_PRE_LLM_SEMANTIC_LABELS = [
+    "table_role_hint",
+    "semantic_summary: formulation",
+    "semantic_summary: optimization",
+    "semantic_summary: row-local measurement",
+]
+
+
 class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
-    def test_formulation_summary_exposes_semantic_cues_without_full_numeric_authority(self):
+    def test_table_summary_is_structural_and_has_no_pre_llm_semantic_labels(self):
         rows = [
             ["Formulation", "Polymer", "Surfactant", "Organic solvent"],
             ["F1", "PLGA", "PVA", "acetone"],
@@ -23,25 +40,25 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
         item = {
             "path": Path("data/cleaned/goren_2025/tables/TEST/TEST__table_00__pdf_table.csv"),
             "rows": rows,
-            "meta": {"caption_or_title": "Formulation composition of PLGA nanoparticles", "n_rows": len(rows), "n_cols": len(rows[0])},
+            "meta": {"caption_or_title": "Source Table 1", "n_rows": len(rows), "n_cols": len(rows[0])},
         }
         rendered = "\n".join(build_table_summary_lines(item, enhancement_enabled=False))
-        self.assertIn("semantic_summary", rendered)
-        self.assertIn("nanoparticle preparation", rendered)
-        self.assertIn("row/value authority remains in the S2-2 payload/grid", rendered)
+        self.assertIn("summary_contract: structural_prompt_view_only", rendered)
+        self.assertIn("column_schema", rendered)
+        self.assertIn("sample_row_1", rendered)
+        self.assertIn("sample_row_2", rendered)
+        for forbidden in FORBIDDEN_PRE_LLM_SEMANTIC_LABELS:
+            self.assertNotIn(forbidden, rendered)
         self.assertNotIn("full_numeric_rows", rendered)
 
-    def test_design_summary_points_to_s2_2_payload_grid_for_value_authority(self):
-        line = prompt_semantic_summary_line("design matrix")
-        self.assertIn("formulation design/process variables", line)
-        self.assertIn("S2-2 payload/grid", line)
+    def test_prompt_semantic_summary_line_is_neutral_for_all_pre_llm_tables(self):
+        for role in ["design matrix", "characterization", "formulation", "optimization", "results", ""]:
+            line = prompt_semantic_summary_line(role)
+            self.assertIn("structural_prompt_view_only", line)
+            self.assertIn("LLM must decide", line)
+            self.assertNotIn(role if role else "__never__", line.replace("LLM", ""))
 
-    def test_characterization_summary_not_promoted_to_formulation_universe_authority(self):
-        line = prompt_semantic_summary_line("characterization")
-        self.assertIn("measurement/context evidence only", line)
-        self.assertIn("not formulation-universe", line)
-
-    def test_characterization_table_summary_exposes_row_local_metric_values_beyond_three_samples(self):
+    def test_characterization_table_summary_stays_semantic_only_without_row_local_metric_values(self):
         rows = [
             ["Formulation", "Size (nm)", "PDI", "Zeta potential (mV)", "EE (%)", "DL (%)", "LC (%)", "Yield (%)", "Release (%)"],
             ["NP1", "101.1", "0.11", "-12.1", "45.1", "5.1", "6.1", "80.1", "10.1"],
@@ -59,13 +76,16 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
             "selector_readiness_label": "ready",
         }
         rendered = "\n".join(build_table_summary_lines(item, enhancement_enabled=False))
-        self.assertIn("metric_value_rows", rendered)
-        self.assertIn("NP4", rendered)
-        self.assertIn("104.4", rendered)
-        self.assertIn("45.4", rendered)
-        self.assertIn("6.4", rendered)
-        self.assertIn("80.4", rendered)
-        self.assertIn("value_evidence_only", rendered)
+        self.assertIn("summary_contract: structural_prompt_view_only", rendered)
+        self.assertIn("sample_row_1", rendered)
+        self.assertIn("sample_row_2", rendered)
+        self.assertNotIn("sample_row_3", rendered)
+        self.assertNotIn("metric_value_rows", rendered)
+        self.assertNotIn("physical_row_", rendered)
+        self.assertNotIn("value_evidence_only", rendered)
+        self.assertNotIn("NP4", rendered)
+        for forbidden in FORBIDDEN_PRE_LLM_SEMANTIC_LABELS:
+            self.assertNotIn(forbidden, rendered)
 
     def test_non_metric_table_summary_does_not_emit_metric_value_rows(self):
         rows = [
@@ -81,6 +101,155 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
         rendered = "\n".join(build_table_summary_lines(item, enhancement_enabled=False))
         self.assertNotIn("metric_value_rows", rendered)
         self.assertNotIn("value_evidence_only", rendered)
+
+    def test_multirow_summary_preserves_full_header_schema_and_two_complete_rows(self):
+        rows = [
+            ["", "Composition", "Composition", "Process", "Process", "Results"],
+            ["Formulation", "PLGA (mg)", "Drug (mg)", "PVA (%)", "Sonication (s)", "Size (nm)"],
+            ["F1", "10", "1", "1.0", "30", "101"],
+            ["F2", "20", "2", "1.5", "45", "112"],
+            ["F3", "30", "3", "2.0", "60", "123"],
+        ]
+        item = {
+            "path": Path("data/cleaned/goren_2025/tables/TEST/TEST__table_03__pdf_table.csv"),
+            "rows": rows,
+            "meta": {"caption_or_title": "Source Table 3", "n_rows": len(rows), "n_cols": len(rows[0])},
+        }
+        rendered = "\n".join(build_table_summary_lines(item, enhancement_enabled=False))
+        self.assertIn("column_schema", rendered)
+        self.assertIn("Composition PLGA (mg)", rendered)
+        self.assertIn("Process Sonication (s)", rendered)
+        self.assertIn("Results Size (nm)", rendered)
+        self.assertIn("sample_row_1: F1 | 10 | 1 | 1.0 | 30 | 101", rendered)
+        self.assertIn("sample_row_2: F2 | 20 | 2 | 1.5 | 45 | 112", rendered)
+        self.assertNotIn("sample_row_3", rendered)
+        for forbidden in FORBIDDEN_PRE_LLM_SEMANTIC_LABELS:
+            self.assertNotIn(forbidden, rendered)
+
+    def test_numeric_index_prelude_multilevel_header_expands_column_schema(self):
+        rows = [
+            ["0", "1", "2", "3", "4"],
+            ["", "Formulation characters for the optimized nanoparticle formulations", "", "", ""],
+            ["", "PLGA 50/50 (Mean ± SD)", "", "PLGA 75/25 (Mean ± SD)", ""],
+            ["", "Empty", "Drug loaded", "Empty", "Drug loaded"],
+            ["0", "PIa", "PIb", "PIIa", "PIIb"],
+            ["1", "88.1 ± 2.1", "91.2 ± 1.9", "102.4 ± 3.1", "107.5 ± 2.8"],
+        ]
+        item = {
+            "path": Path("data/cleaned/goren_2025/tables/TEST/TEST__table_04__pdf_table.csv"),
+            "rows": rows,
+            "meta": {
+                "caption_or_title": "Formulation table with drug/polymer/loading variables.",
+                "n_rows": len(rows),
+                "n_cols": len(rows[0]),
+            },
+        }
+        rendered = "\n".join(build_table_summary_lines(item, enhancement_enabled=False))
+        self.assertIn(
+            "Formulation characters for the optimized nanoparticle formulations PLGA 50/50 (Mean ± SD) Empty",
+            rendered,
+        )
+        self.assertIn(
+            "Formulation characters for the optimized nanoparticle formulations PLGA 75/25 (Mean ± SD) Drug loaded",
+            rendered,
+        )
+        self.assertIn("sample_row_1: 0 | PIa | PIb | PIIa | PIIb", rendered)
+        self.assertIn("sample_row_2: 1 | 88.1 ± 2.1 | 91.2 ± 1.9 | 102.4 ± 3.1 | 107.5 ± 2.8", rendered)
+        self.assertIn("title_or_caption: (not available)", rendered)
+        self.assertNotIn("key_columns", rendered)
+        for forbidden in FORBIDDEN_PRE_LLM_SEMANTIC_LABELS:
+            self.assertNotIn(forbidden, rendered)
+
+    def test_render_prompt_block_uses_neutral_text_block_label_not_pre_llm_paragraph_roles(self):
+        rendered = render_prompt_block(
+            {
+                "block_id": "PAPER__method__001",
+                "block_type": "text",
+                "evidence_kind": "method",
+                "text_content": "The particles were prepared by nanoprecipitation.",
+            },
+            summary_enhanced=False,
+        )["rendered_text"]
+        self.assertTrue(rendered.startswith("[TEXT_BLOCK]\n"))
+        self.assertNotIn("[METHOD]", rendered)
+        self.assertNotIn("[MATERIALS]", rendered)
+        self.assertNotIn("[SUPPORTING]", rendered)
+
+    def test_selected_table_candidate_does_not_rebind_polluted_csv_caption_as_title(self):
+        rendered = render_selected_table_candidate(
+            {
+                "source_type": "table_summary",
+                "origin_locator": "data/cleaned/goren_2025/tables/QLYKLPKT/QLYKLPKT__table_09__pdf_table.csv",
+                "text_content": "- title_or_caption: Table 2 Physicochemical properties of Plga-ITZ-Ns with The morphology of lyophilized PLGA-ITZ-NS was - key_columns: stale",
+            }
+        )
+        title_line = next(line for line in rendered.splitlines() if line.startswith("- title_or_caption:"))
+        self.assertEqual("- title_or_caption: (not available)", title_line)
+        self.assertNotIn("The morphology of lyophilized PLGA-ITZ-NS was", title_line)
+        self.assertNotIn("key_columns", rendered)
+
+    def test_selected_table_candidate_uses_trusted_cleantext_caption_when_unambiguous(self):
+        rendered = render_selected_table_candidate(
+            {
+                "source_type": "table_summary",
+                "origin_locator": "data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_10__pdf_table.csv",
+                "text_content": "- title_or_caption: stale",
+            }
+        )
+        title_line = next(line for line in rendered.splitlines() if line.startswith("- title_or_caption:"))
+        self.assertEqual(
+            "- title_or_caption: Table 1: Independent and dependent variables levels in Box-Behnken design.",
+            title_line,
+        )
+        self.assertNotIn("drug entrapment and drug loading", title_line)
+        self.assertNotIn("key_columns", rendered)
+
+    def test_selected_table_candidate_rejects_prose_mentions_and_body_spillover_as_titles(self):
+        cases = [
+            "data/cleaned/goren_2025/tables/5ZXYABSU/5ZXYABSU__table_08__pdf_table.csv",
+            "data/cleaned/goren_2025/tables/5GIF3D8W/5GIF3D8W__table_03__pdf_table.csv",
+            "data/cleaned/goren_2025/tables/PA3SPZ28/PA3SPZ28__table_07__pdf_table.csv",
+            "data/cleaned/goren_2025/tables/RHMJWZX8/RHMJWZX8__table_10__pdf_table.csv",
+        ]
+        for origin_locator in cases:
+            with self.subTest(origin_locator=origin_locator):
+                rendered = render_selected_table_candidate(
+                    {
+                        "source_type": "table_summary",
+                        "origin_locator": origin_locator,
+                        "text_content": "- title_or_caption: stale - key_columns: stale",
+                    }
+                )
+                title_line = next(line for line in rendered.splitlines() if line.startswith("- title_or_caption:"))
+                self.assertEqual("- title_or_caption: (not available)", title_line)
+                self.assertNotIn("key_columns", rendered)
+
+    def test_collect_summary_table_candidates_keeps_csv_body_caption_untrusted_when_ambiguous(self):
+        candidates = collect_summary_table_candidates(
+            Path("data/cleaned/goren_2025/tables/QLYKLPKT")
+        )
+        candidate = next(item for item in candidates if item["path"].name == "QLYKLPKT__table_09__pdf_table.csv")
+
+        caption = candidate["meta"].get("caption_or_title", "")
+        self.assertEqual(caption, "")
+        self.assertIn("csv_body_caption_ambiguous", candidate["repair_warnings"])
+        self.assertIn("csv_body_caption_untrusted", candidate["repair_actions"])
+        self.assertIn("The morphology of lyophilized PLGA-ITZ-NS was", candidate["meta"].get("untrusted_recovered_caption_or_title", ""))
+        self.assertNotIn("Formulation table with drug/polymer/loading variables", json.dumps(candidate["meta"]))
+
+    def test_collect_summary_table_candidates_binds_unambiguous_cleantext_caption(self):
+        candidates = collect_summary_table_candidates(
+            Path("data/cleaned/goren_2025/tables/UFXX9WXE")
+        )
+        candidate = next(item for item in candidates if item["path"].name == "UFXX9WXE__table_10__pdf_table.csv")
+
+        self.assertEqual(
+            candidate["meta"].get("caption_or_title"),
+            "Table 1: Independent and dependent variables levels in Box-Behnken design.",
+        )
+        self.assertEqual(candidate["meta"].get("caption_binding_source"), "source_clean_text_table_caption")
+        self.assertEqual(candidate["meta"].get("caption_binding_status"), "trusted_unambiguous")
+        self.assertNotIn("drug entrapment and drug loading", candidate["meta"].get("caption_or_title", ""))
 
     def test_value_evidence_payload_renders_compact_metric_matrix(self):
         payload = {
@@ -305,6 +474,138 @@ class Stage2TableSummaryNumericVisibilityTests(unittest.TestCase):
         self.assertEqual(candidate["repair_primary_source"], "stage1_selected_table_asset")
         self.assertEqual(candidate["meta"]["table_source_kind"], "html_full_size_table_asset")
         self.assertEqual(candidate["meta"]["source_table_reference"], "https://example.org/article/tables/2")
+    def _payload_contract_for_rows(self, rows, *, caption=""):
+        header_parts = extract_informative_header_parts(rows)
+        meta = {"caption_or_title": caption} if caption else {}
+        signal_text = " ".join(header_parts + [caption]).strip()
+        source_role = classify_table_source_role(header_parts, {**meta, "_signal_text": signal_text})
+        header_span = summary_header_row_count(rows)
+        normalization_metadata = {
+            "numbered_row_count": sum(
+                1 for row in rows[header_span:] if row and str(row[0]).strip().rstrip(".").isdigit()
+            )
+        }
+        table_type = classify_execution_table_type(
+            rows,
+            meta=meta,
+            table_role_hint="",
+            normalization_metadata=normalization_metadata,
+        )
+        payload = {
+            "raw_cells": rows,
+            "row_identity_signals": {"first_column_labels": [row[0] for row in rows[header_span:] if row]},
+            "header_structure": {"header_rows": summary_header_context(rows)[0]},
+            "source_caption_or_title": caption,
+            "table_source_role": source_role,
+            "table_type": table_type,
+            "data_row_count": max(0, len(rows) - header_span),
+            "representation_status": "raw_summary",
+        }
+        inclusion = payload_inclusion_class(payload)
+        usage = payload_usage_role({**payload, "table_inclusion_class": inclusion})
+        return source_role, table_type, inclusion, usage
+
+    def test_ufxx9wxe_numbered_doe_matrix_is_payload_universe_authority_not_prompt_full_table(self):
+        rows = [
+            ["0", "1", "2", "3", "4", "5", "6", "7"],
+            ["", "", "", "Table 2: Effect of independent process variables on dependent variable.", "", "", "", ""],
+            ["", "", "", "", "", "", "% Drug", ""],
+            ["", "PLGA", "Poloxamer", "w/o phase", "Drug conc.", "z-Average d.nm", "", "PDI"],
+            ["Formulation", "", "", "", "", "", "entrapment", ""],
+            ["", "mg/mL", "mg/mL", "volume ratio", "mg/mL", "(±SD)", "", "(±SD)"],
+            ["1.", "35", "2", "6", "1", "211 ± 0.11", "70 ± 1.3", "0.183 ± 0.002"],
+            ["2.", "35", "2", "6", "5", "220 ± 0.8", "88.48 ± 0.8", "0.150 ± 0.003"],
+            ["3.", "10", "8.50", "10", "3", "176 ± 0.5", "83 ± 0.5", "0.048 ± 0.001"],
+        ]
+        source_role, table_type, inclusion, usage = self._payload_contract_for_rows(rows)
+        self.assertIn(source_role, {"formulation_composition_table", "preparation_parameter_table"})
+        self.assertIn(table_type, {"DOE_table", "mixed_table", "formulation_table"})
+        self.assertEqual(inclusion, "must_include")
+        self.assertEqual(usage, "formulation_universe_authority")
+        rendered = "\n".join(build_table_summary_lines({"path": Path("data/cleaned/goren_2025/tables/UFXX9WXE/UFXX9WXE__table_13__pdf_table.csv"), "rows": rows, "meta": {}}, enhancement_enabled=False))
+        self.assertIn("column_schema", rendered)
+        self.assertIn("PLGA", rendered)
+        self.assertIn("Poloxamer", rendered)
+        self.assertNotIn("table_role_hint", rendered)
+        self.assertNotIn("semantic_summary", rendered)
+
+    def test_prose_spillover_numeric_labels_do_not_become_universe_authority(self):
+        rows = [
+            ["0", "1"],
+            ["4", "BioMed Research International"],
+            ["NPs pellet was redispersed in 2 mL methanolic PBS buffer", "than the control cells indicate a reduction in the rate of cell"],
+            ["solution (pH 6.4, 30% v/v methanol). Methanolic PBS was", "proliferation. Conversely, a higher absorbance rate indicates"],
+            ["used, as lorazepam being poorly water soluble requires", "another prose continuation"],
+        ]
+        _source_role, _table_type, inclusion, usage = self._payload_contract_for_rows(rows)
+        self.assertNotEqual(inclusion, "must_include")
+        self.assertEqual(usage, "row_local_value_evidence")
+
+    def test_bb3juvw7_numeric_row_composition_tables_are_internal_payload_authority(self):
+        composition_rows = [
+            ["Composition Artemether (mg)", "Composition PLGA (mg)", "Composition PVA (mg)", "Composition Acetone (mL)", "Composition Aqueous phase (mL)", "Particle size (nm)"],
+            ["5", "75", "75", "5", "15", "190.2 ± 18.0"],
+            ["5", "75", "150", "5", "15", "214.3 ± 6.2"],
+            ["10", "75", "300", "10", "30", "196.8 ± 1.1"],
+        ]
+        process_rows = [
+            ["Process conditions Film thickness (µm)", "Process conditions PLGA type (lactide: glycolide)", "Process conditions Extent of stretching", "Process conditions Liquefaction method", "Process conditions Incubation period (min)", "Major axis (nm)"],
+            ["100", "75:25", "4x", "Acetone", "15", "234.1 ± 61.7"],
+            ["150", "75:25", "4x", "Acetone", "15", "295.1 ± 64.9"],
+            ["100", "50:50", "4x", "Acetone", "15", "211.3 ± 44.1"],
+        ]
+        for rows in [composition_rows, process_rows]:
+            with self.subTest(rows=rows[0][0]):
+                _source_role, table_type, inclusion, usage = self._payload_contract_for_rows(rows)
+                self.assertIn(table_type, {"DOE_table", "mixed_table", "formulation_table", "parameter_sweep_table"})
+                self.assertEqual(inclusion, "must_include")
+                self.assertEqual(usage, "formulation_universe_authority")
+
+    def test_s2_4a_summary_contract_blocks_raw_table_text_when_summary_unavailable(self):
+        rendered = render_prompt_block(
+            {
+                "block_id": "raw_table_block",
+                "block_type": "table",
+                "evidence_kind": "supporting",
+                "origin_locator": "data/cleaned/goren_2025/tables/TEST/MISSING__table_00__pdf_table.csv#row:1",
+                "text_content": "Formulation | Size (nm)\nF1 | 123.4\nF2 | 456.7",
+            },
+            summary_enhanced=False,
+        )
+
+        self.assertEqual(rendered["rendered_text"], "")
+        self.assertNotIn("123.4", rendered["rendered_text"])
+        self.assertEqual(rendered["summary_applied"], "no")
+        self.assertEqual(
+            rendered["reason_for_full_table"],
+            "summary_table_unavailable_blocked_by_summary_only_contract",
+        )
+
+    def test_s2_4a_blocks_stale_table_summary_text_when_source_summary_unavailable(self):
+        rendered = render_prompt_block(
+            {
+                "block_id": "stale_summary_block",
+                "block_type": "table",
+                "source_type": "table_summary",
+                "origin_locator": "data/cleaned/goren_2025/tables/TEST/MISSING__table_99__pdf_table.csv",
+                "text_content": (
+                    "[TABLE_SUMMARY missing] - key_columns: Formulation | Size "
+                    "- table_role_hint: formulation "
+                    "- semantic_summary: formulation composition/identity cues"
+                ),
+            },
+            summary_enhanced=False,
+        )
+
+        self.assertEqual(rendered["rendered_text"], "")
+        self.assertEqual(rendered["summary_applied"], "no")
+        self.assertEqual(
+            rendered["reason_for_full_table"],
+            "summary_table_unavailable_blocked_by_summary_only_contract",
+        )
+        self.assertNotIn("table_role_hint", rendered["rendered_text"])
+        self.assertNotIn("semantic_summary", rendered["rendered_text"])
+        self.assertNotIn("key_columns", rendered["rendered_text"])
 
 
 if __name__ == "__main__":

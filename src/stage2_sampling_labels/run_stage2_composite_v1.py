@@ -20,6 +20,7 @@ try:
         dataset_tables_root,
     )
     from src.utils.run_id import resolve_results_write_target
+    from src.stage2_sampling_labels.denoise_stage2_source_text_s2_1b_v1 import run_denoise_projection
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.utils.paths import (
@@ -29,6 +30,7 @@ except ModuleNotFoundError:  # pragma: no cover
         dataset_tables_root,
     )
     from src.utils.run_id import resolve_results_write_target
+    from src.stage2_sampling_labels.denoise_stage2_source_text_s2_1b_v1 import run_denoise_projection
 
 
 SEMANTIC_SUBDIR = "semantic_stage2_objects"
@@ -180,6 +182,17 @@ def refresh_stage2_text_bindings(selected_rows: list[dict[str, str]], key2txt_pa
     for row in selected_rows:
         refreshed = dict(row)
         key = normalize_key(row)
+        explicit_text_path = normalize_text(row.get("text_path"))
+        if explicit_text_path:
+            text_path = explicit_text_path.replace("\\", "/")
+            resolved_text_path = resolve_project_file(text_path)
+            if not resolved_text_path.exists():
+                missing_files.append(f"{key or '<missing_key>'}: {resolved_text_path}")
+            refreshed["text_path"] = text_path
+            refreshed["text_source_type"] = normalize_text(row.get("text_source_type")) or infer_text_source_type(text_path)
+            refreshed["text_available"] = "yes" if resolved_text_path.exists() else "missing_file"
+            refreshed_rows.append(refreshed)
+            continue
         text_path = key2txt_map.get(key, "")
         if not key or not text_path:
             missing_bindings.append(key or "<missing_key>")
@@ -190,7 +203,7 @@ def refresh_stage2_text_bindings(selected_rows: list[dict[str, str]], key2txt_pa
             missing_files.append(f"{key}: {resolved_text_path}")
         refreshed["text_path"] = text_path
         refreshed["text_source_type"] = infer_text_source_type(text_path)
-        refreshed["text_available"] = "yes"
+        refreshed["text_available"] = "yes" if resolved_text_path.exists() else "missing_file"
         refreshed_rows.append(refreshed)
 
     if missing_bindings:
@@ -230,6 +243,13 @@ def refresh_stage2_table_bindings(selected_rows: list[dict[str, str]]) -> list[d
     refreshed_rows: list[dict[str, str]] = []
     for row in selected_rows:
         refreshed = dict(row)
+        explicit_table_dir = normalize_text(refreshed.get("table_dir"))
+        if explicit_table_dir:
+            explicit_table_dir = explicit_table_dir.replace("\\", "/")
+            refreshed["table_dir"] = explicit_table_dir
+            refreshed["table_available"] = "yes" if resolve_project_file(explicit_table_dir).exists() else "missing_file"
+            refreshed_rows.append(refreshed)
+            continue
         resolved_dataset_id, table_dir = resolve_stage2_table_binding(refreshed)
         if resolved_dataset_id:
             refreshed["dataset_id"] = resolved_dataset_id
@@ -241,6 +261,48 @@ def refresh_stage2_table_bindings(selected_rows: list[dict[str, str]]) -> list[d
             refreshed["table_available"] = "no"
         refreshed_rows.append(refreshed)
     return refreshed_rows
+
+
+def apply_s2_1b_denoise_projection_to_manifest_rows(
+    selected_rows: list[dict[str, str]],
+    *,
+    run_dir: Path,
+) -> list[dict[str, str]]:
+    """Materialize S2-1b projections without overwriting raw clean-text authority.
+
+    ``text_path`` remains the raw/current clean-text audit authority. Downstream
+    S2-2 consumes ``source_s2_1b_denoised_text_path`` when present and records
+    both surfaces in provenance.
+    """
+    inputs: list[tuple[str, Path]] = []
+    for row in selected_rows:
+        key = normalize_key(row)
+        text_path_value = normalize_text(row.get("text_path"))
+        if not key or not text_path_value:
+            continue
+        text_path = resolve_project_file(text_path_value)
+        if not text_path.exists():
+            raise FileNotFoundError(f"Missing source text for S2-1b denoise projection: {key}: {text_path}")
+        inputs.append((key, text_path))
+    if not inputs:
+        return [dict(row) for row in selected_rows]
+
+    summary_path = run_denoise_projection(inputs=inputs, run_dir=run_dir)
+    hydrated_rows: list[dict[str, str]] = []
+    for row in selected_rows:
+        hydrated = dict(row)
+        key = normalize_key(row)
+        if key:
+            denoised_path = run_dir / SEMANTIC_SUBDIR / "s2_1b_denoised_text" / f"{key}.txt"
+            audit_path = run_dir / SEMANTIC_SUBDIR / "s2_1b_denoise_audit" / f"{key}_s2_1b_denoise_audit_v1.json"
+            if denoised_path.exists():
+                hydrated["source_text_projection"] = "s2_1b_denoised"
+                hydrated["source_raw_clean_text_path"] = normalize_text(row.get("text_path"))
+                hydrated["source_s2_1b_denoised_text_path"] = str(denoised_path)
+                hydrated["s2_1b_denoise_audit_path"] = str(audit_path)
+                hydrated["s2_1b_denoise_summary_path"] = str(summary_path)
+        hydrated_rows.append(hydrated)
+    return hydrated_rows
 
 
 def parse_args() -> argparse.Namespace:
@@ -277,7 +339,7 @@ def parse_args() -> argparse.Namespace:
         help="Optional richer legacy raw-response directory used when replayed live-v2 raw responses collapse to the minimal shrunken contract.",
     )
     parser.add_argument("--llm-backend", choices=["gemini", "nvidia", "ollama"], default="gemini")
-    parser.add_argument("--model", default="gemini-2.5-flash")
+    parser.add_argument("--model", default="", help="Live-call model. Required only with --source-mode live_llm unless --stop-before-live-call is set.")
     parser.add_argument("--max-text-chars", type=int, default=18000)
     parser.add_argument("--request-timeout-seconds", type=int, default=180)
     parser.add_argument("--request-retries", type=int, default=1)
@@ -486,6 +548,7 @@ def main() -> None:
     selected_rows = refresh_stage2_text_bindings(selected_rows, key2txt_tsv)
     selected_rows = refresh_stage2_structure_bindings(selected_rows, key2structure_tsv)
     selected_rows = refresh_stage2_table_bindings(selected_rows)
+    selected_rows = apply_s2_1b_denoise_projection_to_manifest_rows(selected_rows, run_dir=run_dir)
 
     selected_manifest_tsv = run_dir / "targeted_manifest.tsv"
     if selected_rows:
@@ -495,7 +558,9 @@ def main() -> None:
 
     semantic_dir = run_dir / SEMANTIC_SUBDIR
     compat_dir = run_dir / COMPAT_SUBDIR
-    semantic_dir.mkdir(parents=True, exist_ok=False)
+    # S2-1b materializes pre-LLM text-projection artifacts under semantic_dir
+    # before S2-2 creates candidate/evidence artifacts.
+    semantic_dir.mkdir(parents=True, exist_ok=True)
     compat_dir.mkdir(parents=True, exist_ok=False)
 
     legacy_raw_responses_dir: Path | None = None
@@ -577,7 +642,25 @@ def main() -> None:
     compatibility_projection_executed = False
     compatibility_projection_status = "not_run"
     contract_validation_status = "not_run"
+    authority_reattachment_status = "not_run"
+    authority_reattachment_sidecar_root = run_dir / "semantic_stage2_objects" / "authority_reattachment"
     if not args.stop_before_live_call and success_count > 0:
+        authority_reattachment_cmd = [
+            sys.executable,
+            str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "build_semantic_authority_reattachment_v1.py"),
+            "--semantic-jsonl",
+            str(semantic_dir / SEMANTIC_JSONL),
+            "--payload-root",
+            str(semantic_dir / "normalized_table_payloads"),
+            "--out-dir",
+            str(run_dir),
+        ]
+        try:
+            run_command(authority_reattachment_cmd)
+            authority_reattachment_status = "success"
+        except subprocess.CalledProcessError:
+            authority_reattachment_status = "failed"
+
         compat_cmd = [
             sys.executable,
             str(PROJECT_ROOT / "src" / "stage2_sampling_labels" / "build_stage2_compatibility_projection_v1.py"),
@@ -585,6 +668,8 @@ def main() -> None:
             str(semantic_dir / SEMANTIC_JSONL),
             "--output-dir",
             str(compat_dir),
+            "--authority-sidecar",
+            str(run_dir),
         ]
         try:
             run_command(compat_cmd)
@@ -635,6 +720,11 @@ def main() -> None:
         "stage2_semantic_source_mode": STAGE2_SEMANTIC_SOURCE_MODE,
         "stage2_entrypoint": "src/stage2_sampling_labels/run_stage2_composite_v1.py",
         "stage2_internal_semantic_extractor": "src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py",
+        "stage2_internal_source_denoise_projection": "src/stage2_sampling_labels/denoise_stage2_source_text_s2_1b_v1.py",
+        "stage2_internal_source_denoise_boundary": "s2_1b_high_confidence_source_denoise_projection",
+        "stage2_internal_source_denoise_artifact_pattern": "semantic_stage2_objects/s2_1b_denoised_text/<paper_key>.txt",
+        "stage2_internal_source_denoise_audit_pattern": "semantic_stage2_objects/s2_1b_denoise_audit/<paper_key>_s2_1b_denoise_audit_v1.json",
+        "stage2_internal_source_denoise_summary": str(run_dir / "analysis" / "s2_1b_denoise_summary_v1.tsv"),
         "stage2_internal_pre_llm_boundary": "s2_2_clean_text_to_governed_evidence_package",
         "stage2_internal_candidate_segmentation_boundary": "clean_text_and_extracted_tables_to_candidate_blocks",
         "stage2_internal_candidate_artifact_pattern": "semantic_stage2_objects/candidate_blocks/<paper_key>/candidate_blocks_v1.json",
@@ -646,6 +736,9 @@ def main() -> None:
         "stage2_internal_pre_llm_archetype_policy": "metadata_only_no_selection_overlay",
         "stage2_prompt_preview_relationship": "derived_from_evidence_blocks_v1_json",
         "stage2_internal_completion": "src/stage2_sampling_labels/build_stage2_compatibility_projection_v1.py",
+        "stage2_internal_semantic_authority_reattachment": "src/stage2_sampling_labels/build_semantic_authority_reattachment_v1.py",
+        "stage2_internal_semantic_authority_reattachment_status": authority_reattachment_status,
+        "stage2_internal_semantic_authority_reattachment_sidecar_root": str(authority_reattachment_sidecar_root),
         "stage2_internal_doe_function_unit": "src/stage2_sampling_labels/function_units/doe_row_expansion_function_unit_v1.py",
         "stage2_internal_sequential_optimization_function_unit": "src/stage2_sampling_labels/function_units/sequential_optimization_interpreter_v1.py",
         "stage2_contract_validation_report": str(contract_report_path),

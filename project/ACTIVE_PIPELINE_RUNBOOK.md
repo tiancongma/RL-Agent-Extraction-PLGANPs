@@ -24,6 +24,15 @@ This runbook distinguishes:
 5. `project/ACTIVE_DATA_SOURCE_CONTRACT.md` when resolving current
    `data/results` workflow sources
 
+## Recent Changes (2026-05-07)
+
+- Stage2 pre-selector source hygiene:
+  - Add planned internal substep `S2-1b High-confidence source denoise projection` between `S2-1 Scope resolution` and `S2-2 Evidence construction`.
+  - S2-1b emits the Stage2-consumable denoised text surface while preserving raw/current cleaned text as audit authority.
+  - S2-1b may hard-delete only high-confidence boilerplate/noise such as publisher chrome, downloaded markers, page/header/footer lines, author/page running lines, reference tails, isolated reference lines, copyright/license boilerplate, and related-article metadata.
+  - S2-1b must not perform semantic formulation discovery, table-importance judgment, row-universe construction, GT/source-anchor completion, or deletion of methods/materials/formulation table authority.
+  - No full-source live LLM expansion should run from this design until a no-live S2-1b -> S2-2 acceptance pass is recorded and explicitly authorized.
+
 ## Recent Changes (2026-03-19)
 
 - Canonical polymer MW field:
@@ -73,14 +82,14 @@ Benchmark-legality clarification:
 
 - Stage5 final-table materialization is necessary but not sufficient for a
   benchmark-valid run.
-- Benchmark-valid reporting additionally requires the mandatory
-  identity-freeze gate to pass before the compare node can legalize the run.
+- Benchmark-valid reporting additionally requires an explicit governed
+  benchmark contract; current DEV15 compare outputs are diagnostic-only.
 - In the current repository phase, DEV15 should be treated as a governed diagnostic-development set, not as a promised benchmark-certified endpoint.
 - The full DEV15 lineage
   `data/results/20260401_5d9f4e6/09_dev15_count_validation`
   is the governing example:
   it reached Stage5 final-table materialization but remained diagnostic-only
-  because the identity-freeze contract failed.
+  because benchmark mode is disabled for the current diagnostic-development phase.
 - Diagnostic-only compare workflows may compare an explicit new Stage5 final
   table or explicit `--run-dir` against the locked GT authority without first
   promoting that lineage into `ACTIVE_RUN.json`.
@@ -219,7 +228,7 @@ Recommended task-to-query pattern:
   - `run lineage`
   - both run themes or run IDs
 - pipeline modification:
-  - intended behavior phrase such as `family variant` or `table-first`
+  - intended behavior phrase such as `family variant`, `table-first`, or `S2-1b source denoise`
   - affected stage name
 - GT mismatch analysis:
   - paper key or mismatch phrase such as `identity mismatch`
@@ -580,12 +589,14 @@ Current implementation-status note:
   - it must not reread clean text
   - it must not perform new selection or ranking
   - all table evidence passed into the LLM-facing prompt contract remains
-    summary-only
-  - the maintained summary path is neutral across preserved tables; the main
-    residual risk is lossy summary compression rather than cross-table
-    importance bias
-  - header / column schema and first-column row identity surfaces are the
-    primary summary contract; sample rows are optional aids only
+    structural summary-only
+  - the maintained summary path is neutral across preserved tables: source
+    caption/title is preserved as source text, generated summary metadata is
+    structural only, complete column schema is exposed, and bounded complete
+    sample rows may be included as compact visibility aids
+  - generated summary metadata must not pre-label a table as formulation,
+    design, optimization, result, or characterization evidence; S2-4b owns that
+    semantic judgment
 - fine-grained frozen-substep ownership for current-cycle discoverability:
   - `S2-2a`
     - owner surface:
@@ -629,7 +640,7 @@ Current implementation-status note:
     - inputs:
       `evidence_blocks_v1.json` only
     - outputs:
-      in-memory semantic-only prompt payload and maintained observability
+      in-memory structural-summary-only prompt payload and maintained observability
       `analysis/stage2_prompt_preview_v1.tsv`
     - stop boundary:
       prompt assembled from canonical evidence only, with runtime packing metadata retained in preview/audit surfaces rather than the default live prompt header
@@ -649,8 +660,9 @@ Current implementation-status note:
       prompt artifacts written, no live LLM call
     - governed prompt contract:
       multiple candidate table summaries may coexist, all table evidence
-      remains summary-only, and the prompt must explicitly tell the LLM to
-      determine semantic table scope itself
+      remains structural summary-only, generated summary metadata must not
+      pre-label semantic table roles, and the prompt must explicitly tell the
+      LLM to determine semantic table scope itself
     - next lawful step:
       `S2-4b live LLM call`
     - governed audit split:
@@ -670,9 +682,12 @@ Current implementation-status note:
       request metadata sidecars under `request_metadata/`
       `analysis/s2_4b_request_summary_v1.tsv`
       and stage-local `RUN_CONTEXT.md`
-    - frozen call policy for the current cycle:
+    - call policy for the current cycle:
       - model:
-        `gemini-2.5-flash`
+        explicit `--model` argument at `S2-4b`; changing this argument changes
+        only the S2-4b live-call boundary and must not rewrite `S2-4a` prompts,
+        `S2-5+` parsing/validation/projection logic, or any repository-wide
+        model default
       - request mode:
         `stream_collect` via
         `src/stage2_sampling_labels/extract_semantic_stage2_objects_v2.py::call_gemini_stream_collect`
@@ -1117,7 +1132,6 @@ Current Phase: Diagnostic Development Mode
 
 - The repository is currently operating in diagnostic development mode.
 - Stage5 outputs are diagnostic baselines for ongoing debugging work.
-- Identity freeze is diagnostic-only and non-blocking in this phase.
 - Benchmark mode is disabled in the current phase.
 - Any run or report described as a baseline in this phase means diagnostic baseline unless a governed contract explicitly says otherwise.
 
@@ -1126,14 +1140,12 @@ Legality reminder:
 - `final_formulation_table_v1.tsv` is the necessary benchmark-final object, but
   benchmark mode is currently disabled and the active use of this surface is as
   a diagnostic baseline.
-- A compare file emitted after a failed identity-freeze check remains
-  diagnostic-only and must not be treated as legal benchmark evidence.
+- Compare outputs in this phase are diagnostic-only and must not be treated as legal benchmark evidence.
 
 Stage5 internal family rule:
 
 - benchmark-final family:
   - `src/stage5_benchmark/build_minimal_final_output_v1.py`
-  - `src/stage5_benchmark/enforce_identity_freeze_v1.py`
   - `src/stage5_benchmark/compare_final_table_to_gt_v1.py`
   - `src/stage5_benchmark/build_minimal_final_output_v1.py` emits two governed sibling outputs from the same decision pass:
     - primary benchmark-facing `final_formulation_table_v1.tsv`
@@ -1187,52 +1199,6 @@ Optional Layer 2 identity scaffold binding audit:
   benchmark-valid final tables or comparison outputs.
 - Coarse fallback remains manual-review only and is not part of this helper's
   benchmark-grade binding surface.
-
-Identity Freeze Diagnostic Layer
-
-- `src/stage5_benchmark/enforce_identity_freeze_v1.py`
-- This helper validates `IDENTITY_FREEZE_RULE_V1` at the Stage5
-  post-materialization boundary.
-- It runs after Stage5 final-table materialization and before any:
-  - value comparison
-  - audit-ready export
-  - Layer3 field GT evaluation
-- It checks:
-  - row count drift versus the upstream identity scaffold
-  - identity reassignment
-  - unresolved or ambiguous scaffold bindings
-- It emits diagnostics and must not silently fix final outputs.
-- Governing failure example:
-  - the full DEV15 lineage
-    `data/results/20260401_5d9f4e6/09_dev15_count_validation`
-    reached Stage5 final-table materialization and compare output generation
-    but remained invalid because identity freeze failed
-  - the governed repair lineage later localized the failure classes as:
-    - row count drift
-    - identity reassignment
-    - unresolved scaffold binding
-  - scaffold-binding and representation repair work are governed follow-on
-    repair lineage, not proof that a lawful full-pipeline rerun has now passed
-    the gate
-- Hard rule:
-  - after identity freeze, downstream stages may attach, resolve, and derive
-    fields only
-  - downstream stages must not implicitly split or merge formulations
-  - measurement fields such as size, PDI, zeta, EE, and LC must not trigger
-    identity split by default
-- Failure behavior:
-- if identity freeze is violated, the run remains diagnostic-only and may
-  proceed to compare and debugging workflows
-- the maintained compare entrypoint now requires an explicit identity-freeze
-  mode:
-  - `benchmark`:
-    accepted for compatibility, but benchmark mode is disabled in the current phase
-  - `debug_identity`:
-    preserves the failed identity-freeze diagnostics, then emits compare
-    outputs as `diagnostic-only, not benchmark-valid final output`
-- Default behavior is diagnostic:
-  - violations are recorded as risk and do not cause non-zero exit status
-  - report-only remains a compatibility flag with no blocking effect
 
 Optional Layer 3 field GT review export:
 
@@ -1344,8 +1310,6 @@ Comparison-node inputs:
 - `final_formulation_table_v1.tsv`
 - frozen Layer1 GT counts TSV
 - declared scope manifest TSV
-- identity-freeze summary TSV from
-  `audit/identity_freeze_guardrail_v1/identity_freeze_summary_v1.tsv`
 
 Optional post-comparison audit-risk input:
 
@@ -1510,18 +1474,12 @@ Comparison-node outputs:
 
 Compare-mode rule:
 
-- `benchmark` is the default compare mode and remains strict:
-  - failed identity freeze blocks compare output generation
-- explicit `debug_identity` compare mode may continue from the same frozen
-  Stage5 final table after failed identity freeze
-- `debug_identity` outputs are diagnostic-only and must never be reported as
-  benchmark-valid
+- diagnostic mode is the active compare mode in the current phase
+- compare outputs are diagnostic-only and must never be reported as benchmark-valid unless a governed benchmark contract is explicitly re-enabled
 
-The production path yields the final formulation table. The benchmark-valid
-result is obtained only when the comparison node reads that table together with
-the frozen Layer1 GT counts TSV, declared scope manifest, and a passing
-identity-freeze summary as separate inputs. Explicit `debug_identity` compare
-continuation is diagnostic-only and must never be reported as benchmark-valid.
+The production path yields the final formulation table. The diagnostic comparison
+node reads that table together with the frozen Layer1 GT counts TSV and declared
+scope manifest as separate inputs.
 
 ## What This Runbook Does Not Allow
 

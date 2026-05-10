@@ -29,12 +29,19 @@ from src.stage2_sampling_labels.table_cell_grid_v1 import (
     build_table_cell_grid_from_payload,
 )
 from src.stage2_sampling_labels.table_row_expansion_v1 import (
+    augment_document_with_table_markers,
     canonical_field_for_header,
     compatibility_field_for_assignment,
+    direct_rows_look_like_aggregate_variant_list,
     extract_column_anchor_rows_from_authority,
     extract_direct_formulation_rows_from_authority,
+    extract_empty_control_characterization_row_from_source_text,
+    extract_caption_sample_rows_from_source_text,
     extract_split_column_concentration_sweep_rows_from_source_csv,
+    infer_table_scopes_from_source_sweep_tables,
     is_auxiliary_measurement_column_header,
+    normalize_table_scope,
+    resolve_table_authority_payload_for_scope,
 )
 from src.stage3_relation.build_formulation_relation_artifacts_v1 import (
     build_resolved_relation_fields_for_paper,
@@ -320,6 +327,125 @@ class Stage2DoeGenericRepairTests(unittest.TestCase):
         self.assertEqual(scopes[0]["table_id"], "Table 13")
         self.assertEqual(scopes[0]["parent_table_hint"], "Table 12")
 
+    def test_table_authority_locator_list_wins_over_conflicting_display_table_id(self):
+        payloads = [
+            {
+                "table_id": "Table 2",
+                "source_table_id": "Table 2",
+                "source_table_asset_id": "TEST__table_02__pdf_table",
+                "source_table_reference": "TEST__table_02__pdf_table.csv",
+                "authority_rank": 1,
+            },
+            {
+                "table_id": "Table 9",
+                "source_table_id": "Table 9",
+                "source_table_asset_id": "TEST__table_09__pdf_table",
+                "source_table_reference": "TEST__table_09__pdf_table.csv",
+                "authority_rank": 2,
+            },
+        ]
+        scope = {
+            "table_id": "Table 2",
+            "table_scope_locators": [
+                {
+                    "table_id": "Table 9",
+                    "source_table_asset_id": "TEST__table_09__pdf_table",
+                    "source_table_reference": "TEST__table_09__pdf_table.csv",
+                }
+            ],
+        }
+
+        payload, reason = resolve_table_authority_payload_for_scope(scope, normalized_payloads=payloads)
+
+        self.assertEqual(reason, "")
+        self.assertEqual(payload["source_table_asset_id"], "TEST__table_09__pdf_table")
+
+    def test_doe_target_resolution_uses_locator_list_numbered_payload_within_llm_scope(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paper_dir = root / "TESTDOE"
+            paper_dir.mkdir(parents=True)
+            numbered_csv = root / "numbered.normalized.csv"
+            numbered_csv.write_text(
+                "Run,X1,X2,X3,EE,PS\n"
+                + "\n".join(f"{idx},-1,0,1,85.{idx},12{idx}.0" for idx in range(1, 10))
+                + "\n",
+                encoding="utf-8",
+            )
+            (paper_dir / "normalized_table_payloads_v1.json").write_text(
+                json.dumps(
+                    {
+                        "normalized_table_payloads": [
+                            {
+                                "source_table_id": "Table 13",
+                                "source_table_asset_id": "TESTDOE__table_13__html_table",
+                                "source_csv_path": str(numbered_csv),
+                                "normalized_csv_path": str(numbered_csv),
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            document = {
+                "document_key": "TESTDOE",
+                "authority_payload_root": str(root),
+                "boundary_markers": [{"table_id": "Table 12", "is_doe": True}],
+                "table_formulation_scopes": [
+                    {
+                        "table_id": "Table 12",
+                        "table_type": "doe_table",
+                        "is_formulation_table": True,
+                        "table_scope_locators": [
+                            {
+                                "table_id": "Table 13",
+                                "source_table_asset_id": "TESTDOE__table_13__html_table",
+                            }
+                        ],
+                    }
+                ],
+            }
+            semantic_scope = {"table_scope_refs": ["Table 12"]}
+
+            targets, binding = resolve_authorized_doe_targets(document, semantic_scope)
+
+        self.assertEqual([target["table_id"] for target in targets], ["Table 12"])
+        self.assertEqual(targets[0]["table_path"], str(numbered_csv))
+        self.assertTrue(binding["binding_success"])
+
+    def test_projection_runs_sequential_interpreter_after_unrelated_table_expansion(self):
+        table_row = {
+            "key": "SEQDOC",
+            "formulation_id": "SEQDOC_Table1_Row1",
+            "raw_formulation_label": "Table 1 row",
+            "candidate_source": "table_row_expansion_v1",
+        }
+        sequential_row = {
+            "key": "SEQDOC",
+            "formulation_id": "SEQDOC_Table2_Row1",
+            "raw_formulation_label": "Table 2 row",
+            "candidate_source": "sequential_optimization_interpreter_v1",
+        }
+        with patch(
+            "src.stage2_sampling_labels.build_stage2_compatibility_projection_v1.run_doe_row_expansion_function_unit",
+            return_value=([], [], [], {"enabled": False, "candidate_count": 0}),
+        ), patch(
+            "src.stage2_sampling_labels.build_stage2_compatibility_projection_v1.run_table_row_expansion",
+            return_value=([table_row], [], [], {"function_unit": "table_row_expansion_v1"}),
+        ), patch(
+            "src.stage2_sampling_labels.build_stage2_compatibility_projection_v1.run_sequential_optimization_interpreter",
+            return_value=([sequential_row], [], [], {"function_unit": "sequential_optimization_interpreter_v1", "called": True, "emitted_row_count": 1}),
+        ) as sequential_mock:
+            rows, _traces, _jsonl_rows, _recovery_summary, _guard_row = project_document(
+                {"document_key": "SEQDOC", "formulation_candidates": []}
+            )
+
+        self.assertTrue(sequential_mock.called)
+        self.assertEqual(
+            {row["formulation_id"] for row in rows},
+            {"SEQDOC_Table1_Row1", "SEQDOC_Table2_Row1"},
+        )
+
     def test_column_anchor_expansion_drops_after_storage_measurement_column(self):
         matrix = [
             ["Parameters", "Nanoprecipitation method", "", "", "After storage at 4 °C for 3 months"],
@@ -358,8 +484,8 @@ class Stage2DoeGenericRepairTests(unittest.TestCase):
                 "XAN nanospheres 3-MeOXAN nanospheres Theoretical,header\n"
                 "50 13.0 26.1 19.0 38.1,noise\n"
                 "60 20.0 33.0 24.9 41.5,noise\n"
-                "70 Crystals ND,noise\n"
-                "80 Crystals ND,noise\n",
+                "70 Crystals of ND Crystals of ND,noise\n"
+                "80 Crystals of ND Crystals of ND,noise\n",
                 encoding="utf-8",
             )
             rows, reason = extract_split_column_concentration_sweep_rows_from_source_csv(
@@ -376,6 +502,272 @@ class Stage2DoeGenericRepairTests(unittest.TestCase):
         self.assertEqual(len(rows), 8)
         self.assertEqual(rows[0]["label"], "XAN nanospheres (Theoretical concentration 50 mg/mL)")
         self.assertEqual(rows[1]["label"], "3-MeOXAN nanospheres (Theoretical concentration 50 mg/mL)")
+
+    def test_split_column_sweep_does_not_replicate_left_only_tail_to_right_family(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            source_csv = Path(tmpdir) / "TEST__table_03__pdf_table.csv"
+            source_csv.write_text(
+                "Table 3,\n"
+                "XAN nanocapsules,3-MeOXAN nanocapsules\n"
+                "200 0.4 178 89,1000 2.0 887 89\n"
+                "700 1.4 Crystals of XAN ND,1600 3.2 Crystals of 3-MeOXAN ND\n"
+                "800 1.6 Crystals of XAN ND,\n",
+                encoding="utf-8",
+            )
+            rows, reason = extract_split_column_concentration_sweep_rows_from_source_csv(
+                authority_payload={"source_csv_path": str(source_csv)},
+                document={
+                    "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+                    "semantic_signals": {"has_variable_sweep": True},
+                },
+                scope={"table_id": "Table 3", "is_formulation_table": True},
+            )
+
+        labels = [row["label"] for row in rows]
+        self.assertEqual(reason, "")
+        self.assertNotIn("XAN nanocapsules (Theoretical concentration 800 mg/mL)", labels)
+        self.assertNotIn("3-MeOXAN nanocapsules (Theoretical concentration 800 mg/mL)", labels)
+
+    def test_llm_variable_sweep_can_infer_source_table_scopes_after_family_collapse(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            table1 = Path(tmpdir) / "TEST__table_01__pdf_table.csv"
+            table1.write_text(
+                "Table 1,\n"
+                "Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres,\n"
+                "XAN nanospheres 3-MeOXAN nanospheres Theoretical,header\n"
+                "50 13.0 26.1 19.0 38.1,noise\n"
+                "60 20.0 33.0 24.9 41.5,noise\n",
+                encoding="utf-8",
+            )
+            table2 = Path(tmpdir) / "TEST__table_02__pdf_table.csv"
+            table2.write_text(
+                "Table 2,\n"
+                "Mean diameter of PLGA nanospheres,\n"
+                "Empty nanospheres,XAN nanospheres,3-MeOXAN nanospheres\n"
+                "Diameter (nm),154,164,164\n",
+                encoding="utf-8",
+            )
+            document = {
+                "document_key": "TEST",
+                "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+                "stage2_semantic_source_mode": "llm_first_composite",
+                "semantic_signals": {"has_variable_sweep": True},
+                "formulation_candidates": [{"candidate_id": "F1"}],
+                "source_table_files": [str(table1), str(table2)],
+            }
+
+            scopes = infer_table_scopes_from_source_sweep_tables(document)
+
+        self.assertEqual([scope["table_id"] for scope in scopes], ["Table 1"])
+        self.assertEqual(scopes[0]["marker_provenance"], "llm_parsed")
+
+    def test_llm_variable_sweep_recovers_source_text_caption_tables_with_measured_results(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            table1 = Path(tmpdir) / "TEST__table_01__pdf_table.csv"
+            table1.write_text(
+                "Table 1,\n"
+                "Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres,\n"
+                "XAN nanospheres 3-MeOXAN nanospheres Theoretical,header\n"
+                "50 13.0 26.1 19.0 38.1,noise\n"
+                "60 20.0 33.0 24.9 41.5,noise\n",
+                encoding="utf-8",
+            )
+            source_text = Path(tmpdir) / "TEST.txt"
+            source_text.write_text(
+                "Table 5 Mean diameter, polydispersity index (PI), zeta potential (z) and "
+                "incorporation parameters of various nanocapsule formulations: empty nanocapsules "
+                "(0.6 mL Myritol 318 and without xanthones), XAN-loaded nanocapsules "
+                "(0.6 mL Myritol 318, XAN theoretical concentration of 1440 mg/mL) and "
+                "3-MeOXAN-loaded nanocapsules (0.6 mL Myritol 318, 3-MeOXAN theoretical "
+                "concentration of 3360 mg/mL) Sample Theoretical concentration (mg/mL) "
+                "Final concentration (mg/mL) Encapsulation efficiency (%) Diameter (nm) PI z (mV) "
+                "Empty nanocapsules – – – 261G17 0.48G0.06 K36.3G4.3 "
+                "XAN nanocapsules 1440 1173G100 82G7 273G18 0.48G0.05 K36.4G9.3 "
+                "3-MeOXAN nanocapsules 3360 2780G238 83G7 271G16 0.43G0.03 K41.8G5.4",
+                encoding="utf-8",
+            )
+            document = {
+                "document_key": "TEST",
+                "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+                "stage2_semantic_source_mode": "llm_first_composite",
+                "semantic_signals": {"has_variable_sweep": True},
+                "formulation_candidates": [{"candidate_id": "F1"}],
+                "source_table_files": [str(table1)],
+                "source_text_path": str(source_text),
+            }
+
+            scopes = infer_table_scopes_from_source_sweep_tables(document)
+            labels, reason = extract_caption_sample_rows_from_source_text(document=document, scope={"table_id": "Table 5"})
+
+        self.assertIn("Table 5", [scope["table_id"] for scope in scopes])
+        self.assertTrue(any(scope.get("source_text_caption_only") for scope in scopes if scope["table_id"] == "Table 5"))
+        self.assertEqual(reason, "")
+        self.assertEqual(
+            [row["label"] for row in labels],
+            [
+                "empty nanocapsules (0.6 mL Myritol 318 and without xanthones)",
+                "XAN-loaded nanocapsules (0.6 mL Myritol 318, XAN theoretical concentration of 1440 mg/mL)",
+                "3-MeOXAN-loaded nanocapsules (0.6 mL Myritol 318, 3-MeOXAN theoretical concentration of 3360 mg/mL)",
+            ],
+        )
+
+    def test_source_text_caption_scope_normalization_does_not_reattach_same_number_csv_payload(self):
+        payload = {
+            "table_id": "Table 5",
+            "source_table_id": "Table 5",
+            "source_table_asset_id": "TEST__table_05__pdf_table",
+            "source_table_reference": "data/cleaned/goren_2025/tables/TEST/TEST__table_05__pdf_table.csv",
+            "source_csv_path": "data/cleaned/goren_2025/tables/TEST/TEST__table_05__pdf_table.csv",
+            "normalized_csv_path": "data/results/example/normalized_table_payloads/TEST__table_05__pdf_table__normalized.csv",
+        }
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([payload], ""),
+        ):
+            normalized = normalize_table_scope(
+                {
+                    "scope_id": "TEST__source_text_table_scope__05",
+                    "table_id": "Table 5",
+                    "source_table_reference": "source_text",
+                    "source_text_caption_only": True,
+                    "table_scope_locators": {"table_id": "Table 5", "source_table_reference": "source_text"},
+                    "is_formulation_table": True,
+                    "table_type": "full_formulation",
+                    "marker_provenance": "llm_parsed",
+                },
+                document={"document_key": "TEST"},
+            )
+
+        self.assertTrue(normalized["source_text_caption_only"])
+        self.assertEqual(normalized["source_table_reference"], "source_text")
+        self.assertEqual(normalized["table_path"], "")
+        self.assertEqual(normalized["source_table_asset_id"], "")
+
+    def test_left_only_nd_crystal_tail_in_split_sweep_does_not_invent_extra_formulation(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            table1 = Path(tmpdir) / "TEST__table_01__pdf_table.csv"
+            table1.write_text(
+                "Table 1,\n"
+                "Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanocapsules,\n"
+                "XAN nanocapsules 3-MeOXAN nanocapsules Theoretical,header\n"
+                "200 0.4 196G2 98G1,1000 2.0 870G30 87G3\n"
+                "400 0.8 356G10 89G2,1200 2.4 1010G50 84G4\n"
+                "700 1.4 Crystals of XAN ND,1600 3.2 Crystals of ND\n"
+                "800 1.6 Crystals of XAN ND,\n"
+                "Values express the mean resultsGSD values of three different batches. ND, not determined.\n",
+                encoding="utf-8",
+            )
+            payload = {"source_csv_path": str(table1), "representation_status": "repair_insufficient"}
+            document = {"semantic_signals": {"has_variable_sweep": True}}
+
+            rows, reason = extract_split_column_concentration_sweep_rows_from_source_csv(
+                authority_payload=payload,
+                document=document,
+                scope={"table_id": "Table 1"},
+            )
+
+        self.assertEqual(reason, "")
+        self.assertEqual(
+            [row["label"] for row in rows],
+            [
+                "XAN nanocapsules (Theoretical concentration 200 mg/mL)",
+                "3-MeOXAN nanocapsules (Theoretical concentration 1000 mg/mL)",
+                "XAN nanocapsules (Theoretical concentration 400 mg/mL)",
+                "3-MeOXAN nanocapsules (Theoretical concentration 1200 mg/mL)",
+                "XAN nanocapsules (Theoretical concentration 700 mg/mL)",
+                "3-MeOXAN nanocapsules (Theoretical concentration 1600 mg/mL)",
+            ],
+        )
+
+    def test_empty_loaded_characterization_table_recovers_only_measured_empty_control(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            source_text = Path(tmpdir) / "TEST.txt"
+            source_text.write_text(
+                "Table 2 Mean diameter, polydispersity index (PI) and zeta potential (z) of PLGA "
+                "empty and loaded nanospheres Empty nanospheres XAN nanospheres 3-MeOXAN nanospheres Diameter (nm) "
+                "154G6 164G8 164G9 PI 0.06G0.03 0.06G0.03 0.06G0.01 z (mV) "
+                "K36.2G5.2 K38.9G1.3 K36.0G3.0 Values express mean results.",
+                encoding="utf-8",
+            )
+            document = {"document_key": "TEST", "source_text_path": str(source_text)}
+
+            rows, reason = extract_empty_control_characterization_row_from_source_text(document=document, scope={"table_id": "Table 2"})
+
+        self.assertEqual(reason, "")
+        self.assertEqual([row["label"] for row in rows], ["Empty nanospheres"])
+        self.assertEqual(rows[0]["instance_role"], "control")
+
+    def test_scope_locator_prefers_source_asset_over_duplicate_table_caption(self):
+        payloads = [
+            {
+                "table_id": "Table 3",
+                "source_csv_path": "/tmp/TEST__table_07__pdf_table.csv",
+                "source_table_reference": "/tmp/TEST__table_07__pdf_table.csv",
+                "source_table_asset_id": "TEST__table_07__pdf_table",
+                "authority_rank": "2",
+            },
+            {
+                "table_id": "Table 3",
+                "source_csv_path": "/tmp/TEST__table_08__pdf_table.csv",
+                "source_table_reference": "/tmp/TEST__table_08__pdf_table.csv",
+                "source_table_asset_id": "TEST__table_08__pdf_table",
+                "authority_rank": "1",
+            },
+        ]
+        scope = {
+            "table_id": "Table 3",
+            "table_scope_locators": {
+                "table_id": "Table 3",
+                "source_table_asset_id": "TEST__table_07__pdf_table",
+                "source_table_reference": "/tmp/TEST__table_07__pdf_table.csv",
+            },
+        }
+
+        payload, reason = resolve_table_authority_payload_for_scope(scope, normalized_payloads=payloads)
+
+        self.assertEqual(reason, "")
+        self.assertEqual(payload["source_table_asset_id"], "TEST__table_07__pdf_table")
+
+    def test_non_formulation_existing_table_scope_does_not_block_source_sweep_inference(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            table1 = Path(tmpdir) / "TEST__table_01__pdf_table.csv"
+            table1.write_text(
+                "Table 1,\n"
+                "Encapsulation parameters of XAN and 3-MeOXAN in PLGA nanospheres,\n"
+                "XAN nanospheres 3-MeOXAN nanospheres Theoretical,header\n"
+                "50 13.0 26.1 19.0 38.1,noise\n"
+                "60 20.0 33.0 24.9 41.5,noise\n",
+                encoding="utf-8",
+            )
+            table8 = Path(tmpdir) / "TEST__table_08__pdf_table.csv"
+            table8.write_text("Table 8,\nNon-formulation cytotoxicity table,\n", encoding="utf-8")
+            document = {
+                "document_key": "TEST",
+                "source_mode": "saved_raw_live_v2_replay_to_stage2_v2",
+                "stage2_semantic_source_mode": "llm_first_composite",
+                "semantic_signals": {"has_variable_sweep": True},
+                "source_table_files": [str(table1), str(table8)],
+                "formulation_identity_candidates": [
+                    {"formulation_candidate_id": "F1", "raw_formulation_label": "Nanospheres with variable amount", "instance_kind": "formulation_family"}
+                ],
+                "table_formulation_scopes": [
+                    {
+                        "table_id": "Table 8",
+                        "is_formulation_table": False,
+                        "table_type": "non_formulation",
+                        "marker_provenance": "llm_parsed",
+                    }
+                ],
+            }
+
+            augmented = augment_document_with_table_markers(document)
+
+        table_ids = [scope["table_id"] for scope in augmented["table_formulation_scopes"]]
+        self.assertIn("Table 8", table_ids)
+        self.assertIn("Table 1", table_ids)
+        self.assertTrue(
+            any(scope["table_id"] == "Table 1" and scope["is_formulation_table"] for scope in augmented["table_formulation_scopes"])
+        )
 
 
 class UniversalTableCellGridTests(unittest.TestCase):
@@ -566,13 +958,13 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(rows[0]["zeta_mV_value"], "-21.23")
         self.assertIn("table_cell_bindings_json", jsonl_rows[0])
 
-    def test_drug_specific_mg_headers_project_to_drug_mass_binding(self):
+    def test_generic_drug_mg_headers_project_to_drug_mass_binding(self):
         payload = {
             "table_id": "Table 2",
             "header_structure": {
                 "header_row_count": 1,
-                "header_rows": [["Formulation", "Gatifloxacin (mg)", "Rhodamine (mg)", "PLGA (mg)"]],
-                "flattened_headers": ["Formulation", "Gatifloxacin (mg)", "Rhodamine (mg)", "PLGA (mg)"],
+                "header_rows": [["Formulation", "Drug (mg)", "Payload dye (mg)", "PLGA (mg)"]],
+                "flattened_headers": ["Formulation", "Drug (mg)", "Payload dye (mg)", "PLGA (mg)"],
             },
             "normalized_rows": [
                 {"row_index": 2, "row_number": "F1", "cells": ["F1", "5", "", "90"]},
@@ -585,7 +977,7 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(status, "unique_grid_row_binding")
         by_field = {item["canonical_field"]: item for item in bindings}
         self.assertEqual(by_field["drug_mass_mg"]["raw_cell_value"], "5")
-        self.assertEqual(by_field["drug_mass_mg"]["raw_header"], "Gatifloxacin (mg)")
+        self.assertEqual(by_field["drug_mass_mg"]["raw_header"], "Drug (mg)")
         self.assertEqual(by_field["polymer_mass_mg"]["raw_cell_value"], "90")
 
     def test_grid_row_ordinal_label_disambiguates_repeated_formulation_labels_for_preparation_bindings(self):
@@ -593,8 +985,8 @@ class UniversalTableCellGridTests(unittest.TestCase):
             "table_id": "Table 1",
             "header_structure": {
                 "header_row_count": 1,
-                "header_rows": [["Formulation", "Acetone (mL)", "Aqueous phase (mL)", "Artemether (mg)", "PLGA (mg)"]],
-                "flattened_headers": ["Formulation", "Acetone (mL)", "Aqueous phase (mL)", "Artemether (mg)", "PLGA (mg)"],
+                "header_rows": [["Formulation", "Acetone (mL)", "Aqueous phase (mL)", "Drug (mg)", "PLGA (mg)"]],
+                "flattened_headers": ["Formulation", "Acetone (mL)", "Aqueous phase (mL)", "Drug (mg)", "PLGA (mg)"],
             },
             "normalized_rows": [
                 {"row_index": 2, "row_number": "5", "cells": ["5", "5", "15", "5", "75"]},
@@ -619,7 +1011,7 @@ class UniversalTableCellGridTests(unittest.TestCase):
             "table_cell_bindings_json": json.dumps([
                 {
                     "canonical_field": "drug_mass_mg",
-                    "raw_header": "Artemether (mg)",
+                    "raw_header": "Drug (mg)",
                     "raw_cell_value": "5",
                     "ambiguity_status": "unique_grid_header_cell",
                 }
@@ -637,7 +1029,7 @@ class UniversalTableCellGridTests(unittest.TestCase):
             "key": "TEST",
             "drug_feed_amount_text_value_text": "acetylpuerarin",
             "table_row_variable_assignments_json": json.dumps([
-                {"('Composition', 'Artemether (mg)')": "5", "('Composition', 'PLGA (mg)')": "75"}
+                {"('Composition', 'Drug (mg)')": "5", "('Composition', 'PLGA (mg)')": "75"}
             ]),
         }
 
@@ -867,6 +1259,30 @@ class UniversalTableCellGridTests(unittest.TestCase):
         self.assertEqual(materialized["surfactant_concentration_text_value"], "10 mg/mL")
         self.assertIn("drug_concentration_value", applied)
         self.assertIn("surfactant_concentration_text", applied)
+
+    def test_table_row_expansion_blocks_aggregate_variant_list_in_multirow_surface(self):
+        direct_rows = [
+            {
+                "label": "Garcinol loaded PLGA nanoparticles (GAR-NPs) | Blank PLGA nanoparticles (Blank NPs)",
+                "assignments": [
+                    {
+                        "name": "formulation_identity_label",
+                        "value": "Garcinol loaded PLGA nanoparticles (GAR-NPs) | Blank PLGA nanoparticles (Blank NPs)",
+                    }
+                ],
+            },
+            {
+                "label": "FITC loaded PLGA nanoparticles (FITC-NPs) | 99mTc-labeled Garcinol loaded PLGA nanoparticles (99mTc-GAR-NPs)",
+                "assignments": [
+                    {
+                        "name": "formulation_identity_label",
+                        "value": "FITC loaded PLGA nanoparticles (FITC-NPs) | 99mTc-labeled Garcinol loaded PLGA nanoparticles (99mTc-GAR-NPs)",
+                    }
+                ],
+            },
+        ]
+
+        self.assertTrue(direct_rows_look_like_aggregate_variant_list(direct_rows))
 
     def test_shared_preparation_drug_mass_uses_global_drug_identity_when_row_is_loaded_and_eligible(self):
         source_text = "Nanospheres were prepared from 100 mg PLGA and 15 mg flurbiprofen in acetone."
@@ -4355,6 +4771,69 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
                 paper_rows=[],
             )
             self.assertFalse(should_filter, msg=f"unexpected filter for {label}: {rule} {reason}")
+
+    def test_l3h2rs2h_result_bearing_candidate_non_formulation_helpers_not_filtered(self):
+        for formulation_id, label in [
+            ("FC1", "XAN and 3-MeOXAN nanospheres at various concentrations"),
+            ("FC2", "XAN nanospheres at concentration 60 mg/mL"),
+            ("FC3", "XAN and 3-MeOXAN nanocapsules at various concentrations"),
+        ]:
+            should_filter, rule, reason = should_filter_non_formulation(
+                {
+                    "key": "L3H2RS2H",
+                    "formulation_id": formulation_id,
+                    "raw_formulation_label": label,
+                    "instance_kind": "candidate_non_formulation",
+                    "candidate_source": "live_llm_stage2_v2",
+                    "formulation_role": "unclear",
+                    "change_role": "unclear",
+                    "change_context_tags": '["table_summary_helper", "result_reported"]',
+                    "evidence_section": "Table 2 characterization results",
+                    "supporting_evidence_refs": '[{"source_region_type":"table_row","target_field":"particle_size_nm"}]',
+                    "particle_size_nm_value": "220",
+                },
+                {"loaded_state": "drug_loaded", "drug_name": "XAN", "polymer_identity": "PLGA"},
+                paper_rows=[],
+            )
+            self.assertFalse(should_filter, msg=f"unexpected filter for {formulation_id}: {rule} {reason}")
+
+    def test_candidate_non_formulation_helper_without_measured_result_still_filtered(self):
+        should_filter, rule, reason = should_filter_non_formulation(
+            {
+                "key": "GENERIC",
+                "formulation_id": "FC1",
+                "raw_formulation_label": "PLGA nanoparticles summary",
+                "instance_kind": "candidate_non_formulation",
+                "candidate_source": "live_llm_stage2_v2",
+                "change_context_tags": '["table_summary_helper"]',
+                "drug_name_value": "Drug A",
+                "polymer_identity": "PLGA",
+                "supporting_evidence_refs": "[]",
+            },
+            {"loaded_state": "drug_loaded", "drug_name": "Drug A", "polymer_identity": "PLGA"},
+            paper_rows=[],
+        )
+        self.assertTrue(should_filter)
+        self.assertEqual(rule, "explicit_candidate_non_formulation")
+
+    def test_candidate_non_formulation_blank_control_without_measured_result_still_filtered(self):
+        should_filter, rule, reason = should_filter_non_formulation(
+            {
+                "key": "GENERIC",
+                "formulation_id": "BLANK1",
+                "raw_formulation_label": "Blank nanoparticles",
+                "instance_kind": "candidate_non_formulation",
+                "candidate_source": "live_llm_stage2_v2",
+                "formulation_role": "control",
+                "change_role": "non_synthesis",
+                "change_context_tags": '["table_summary_helper"]',
+                "supporting_evidence_refs": "[]",
+            },
+            {"loaded_state": "blank_control", "drug_name": "", "polymer_identity": "PLGA"},
+            paper_rows=[],
+        )
+        self.assertTrue(should_filter)
+        self.assertEqual(rule, "explicit_candidate_non_formulation")
 
     def test_inmutv7l_parent_linked_family_summary_filtered_when_row_enumeration_exists(self):
         should_filter, rule, reason = should_filter_non_formulation(

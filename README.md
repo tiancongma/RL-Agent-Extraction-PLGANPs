@@ -24,7 +24,6 @@ Current phase note:
 
 - the repository is currently operating in diagnostic development mode
 - current baselines are diagnostic baselines
-- identity freeze is retained as a diagnostic risk signal and does not block execution in this phase
 - benchmark mode is currently disabled
 
 The repository also supports a deterministic post-comparison Layer 2 risk

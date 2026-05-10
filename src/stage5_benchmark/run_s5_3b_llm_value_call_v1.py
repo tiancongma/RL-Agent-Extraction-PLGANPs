@@ -22,11 +22,11 @@ from typing import Any
 
 try:
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import call_gemini_stream_collect
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
 except ModuleNotFoundError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import call_gemini_stream_collect
-    from src.utils.model_policy import PRIMARY_DEFAULT, validate_models_or_raise
+    from src.utils.model_policy import validate_models_or_raise
 
 ENTRYPOINT = "src/stage5_benchmark/run_s5_3b_llm_value_call_v1.py"
 STAGE_BOUNDARY = "S5-3b"
@@ -179,7 +179,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run frozen S5-3b live LLM submission from S5-3a prompt JSONL.")
     parser.add_argument("--prompts-jsonl", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--model", default=PRIMARY_DEFAULT)
+    parser.add_argument("--model", default="")
     parser.add_argument("--request-timeout-seconds", type=int, default=180)
     parser.add_argument("--request-retries", type=int, default=0)
     parser.add_argument("--retry-sleep-sec", type=float, default=3.0)

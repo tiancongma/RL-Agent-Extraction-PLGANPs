@@ -81,3 +81,14 @@ python src/utils/check_mem_v1.py
   - `python src/utils/mem_bootstrap_v1.py --query "identity mismatch for BB3JUVW7"`
 - Lineage tracing:
   - `python src/utils/mem_bootstrap_v1.py --query "trace run lineage for targeted5 stage2 regression"`
+
+
+## 2026-05-07 S2-1b source denoise memory note
+
+For Stage2 noise/selector regressions or full-source extraction expansion, query memory with terms such as:
+
+```text
+S2-1b source denoise; stage2; selector noise; publisher chrome; reference tail; full original source extraction
+```
+
+The governed design is that S2-1b is a Stage2 projection, not Stage1 source authority and not semantic discovery. It hard-deletes only high-confidence boilerplate/noise before S2-2 evidence construction and preserves raw/current cleaned text paths for audit. Do not use S2-1b to decide formulation importance, table importance, row membership, or GT/source-anchor completion.

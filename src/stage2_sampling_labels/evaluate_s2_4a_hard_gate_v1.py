@@ -116,6 +116,28 @@ def matches_path3_text(text: str) -> bool:
     return matched_terms >= 3
 
 
+def table_summary_satisfies_pre_live_evidence(block: dict, payload: dict) -> bool:
+    """Return whether a rendered table summary is enough for pre-live sufficiency.
+
+    This gate is deliberately not a formulation-authority classifier. Stage2
+    semantic authority remains with the LLM; S2-4a may only check that the
+    prompt has a compact, source-backed table evidence surface. Optional
+    row-local/characterization payloads can satisfy pre-live evidence readiness
+    when the full table authority is visible and non-hard-dropped.
+    """
+    if block.get("source_type") not in ALLOWED_SUMMARY_TABLE_SOURCES:
+        return False
+    if not payload:
+        return False
+    if payload.get("table_inclusion_class") == "hard_drop":
+        return False
+    if normalize_text(str(payload.get("payload_authority_status", ""))) == "unusable_broken_payload":
+        return False
+    if int(payload.get("data_row_count") or 0) < 2:
+        return False
+    return True
+
+
 def iter_target_papers(
     evidence_blocks_root: Path,
     normalized_root: Path,
@@ -207,10 +229,7 @@ def evaluate_paper(
     for block in table_summary_blocks:
         table_id = block.get("table_id")
         payload = payload_by_table_id.get(table_id, {})
-        if (
-            payload.get("table_inclusion_class") == "must_include"
-            and int(payload.get("data_row_count") or 0) >= 2
-        ):
+        if table_summary_satisfies_pre_live_evidence(block, payload):
             path1_matches.append(table_id)
     path1 = bool(path1_matches)
 
@@ -293,7 +312,7 @@ def evaluate_paper(
         "has_materials_evidence": "yes" if has_materials_evidence else "no",
         "has_supporting_evidence": "yes" if has_supporting_evidence else "no",
         "minimum_sufficiency_pass": "yes" if minimum_sufficiency_pass else "no",
-        "path1_formulation_table_summary": "yes" if path1 else "no",
+        "path1_table_evidence_summary": "yes" if path1 else "no",
         "path1_table_ids": "|".join(path1_matches),
         "path2_method_plus_table_adjacent_text": "yes" if path2 else "no",
         "path3_method_plus_explicit_formulation_text": "yes" if path3 else "no",
@@ -324,7 +343,7 @@ def write_tsv(path: Path, rows: Sequence[dict]) -> None:
         "has_materials_evidence",
         "has_supporting_evidence",
         "minimum_sufficiency_pass",
-        "path1_formulation_table_summary",
+        "path1_table_evidence_summary",
         "path1_table_ids",
         "path2_method_plus_table_adjacent_text",
         "path3_method_plus_explicit_formulation_text",

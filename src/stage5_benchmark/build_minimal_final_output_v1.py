@@ -2878,6 +2878,36 @@ def is_ambiguous_sweep_style_variant(row: dict[str, str]) -> bool:
     )
 
 
+def has_result_bearing_formulation_evidence(row: dict[str, str]) -> bool:
+    tags = row_context_tags(row)
+    evidence_items = [item for item in parse_json_array(row.get("supporting_evidence_refs", "[]")) if isinstance(item, dict)]
+    has_result_tag = not tags.isdisjoint({"result_reported", "measured_result", "characterization_result", "table_result"})
+    has_result_evidence = any(
+        normalize_text(item.get("source_region_type")) in {"table_row", "table_cell", "table_column", "figure_panel"}
+        and bool(normalize_text(item.get("target_field") or item.get("field") or item.get("measurement_type")))
+        for item in evidence_items
+    )
+    measured_value_fields = {
+        "particle_size_nm_value",
+        "particle_size_nm_value_text",
+        "zeta_mV_value",
+        "zeta_mV_value_text",
+        "pdi_value",
+        "pdi_value_text",
+        "encapsulation_efficiency_percent_value",
+        "encapsulation_efficiency_percent_value_text",
+        "drug_loading_percent_value",
+        "drug_loading_percent_value_text",
+        "release_percent_value",
+        "release_percent_value_text",
+    }
+    has_measured_value = any(
+        normalize_text(row.get(field_name)) and normalize_text(row.get(field_name)).lower() not in {"not reported", "nr", "n/a", "na", "unknown"}
+        for field_name in measured_value_fields
+    )
+    return has_result_tag and (has_result_evidence or has_measured_value)
+
+
 def has_explicit_helper_descendant_signal(row: dict[str, str], core_fields: dict[str, str]) -> bool:
     tags = row_context_tags(row)
     payload_state = infer_payload_state(row, core_fields)
@@ -2972,6 +3002,12 @@ def should_filter_non_formulation(
             "PA3SPZ28 blank nanoparticles are excluded from benchmark-facing formulation closure under the paper-specific governance decision.",
         )
     if normalize_text(row.get("instance_kind")) == "candidate_non_formulation":
+        if has_result_bearing_formulation_evidence(row):
+            return (
+                False,
+                "",
+                "",
+            )
         return (
             True,
             "explicit_candidate_non_formulation",

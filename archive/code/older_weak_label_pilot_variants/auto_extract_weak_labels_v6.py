@@ -40,11 +40,9 @@ import pandas as pd
 from dotenv import load_dotenv
 from src.utils.run_id import is_valid_run_id
 from src.utils.run_latest import inputs_fingerprint, write_latest
-from src.utils.model_policy import (
-    PRIMARY_DEFAULT,
-    SECONDARY_DEFAULT,
-    validate_models_or_raise,
-)
+from src.utils.model_policy import validate_models_or_raise
+PRIMARY_DEFAULT = ""
+SECONDARY_DEFAULT = ""
 
 # Optional Gemini dependency
 HAS_GENAI = False

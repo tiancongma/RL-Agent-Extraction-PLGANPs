@@ -56,6 +56,27 @@ def ensure_list(value: Any) -> list[Any]:
     return [value]
 
 
+def parse_json_maybe(value: Any) -> Any:
+    if not isinstance(value, str):
+        return value
+    text = value.strip()
+    if not text:
+        return value
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        return value
+
+
+def iter_table_scope_locator_dicts(value: Any) -> list[dict[str, Any]]:
+    parsed = parse_json_maybe(value)
+    if isinstance(parsed, dict):
+        return [parsed]
+    if isinstance(parsed, list):
+        return [item for item in parsed if isinstance(item, dict)]
+    return []
+
+
 def env_flag(name: str, default: bool = False) -> bool:
     value = normalize_text(os.getenv(name, "")).lower()
     if not value:
@@ -237,12 +258,37 @@ def _resolve_normalized_payload_for_scope(
     matching_scope: dict[str, Any],
     normalized_payloads: list[dict[str, Any]],
 ) -> tuple[dict[str, Any] | None, str]:
-    table_scope_locators = matching_scope.get("table_scope_locators") if isinstance(matching_scope.get("table_scope_locators"), dict) else {}
+    table_scope_locators = iter_table_scope_locator_dicts(matching_scope.get("table_scope_locators"))
+
+    def payload_matches_locator(item: dict[str, Any], locator: dict[str, Any]) -> bool:
+        source_csv_path = normalize_text(item.get("source_csv_path")).replace("\\", "/").lower()
+        source_table_reference = normalize_text(item.get("source_table_reference")).replace("\\", "/").lower()
+        source_table_id = _normalize_table_label(item.get("source_table_id") or item.get("table_id"))
+        source_asset_id = normalize_text(item.get("source_table_asset_id") or item.get("table_asset_id")).lower()
+        locator_path = normalize_text(locator.get("source_table_reference") or locator.get("source_csv_path") or locator.get("table_path")).replace("\\", "/").lower()
+        locator_asset_id = normalize_text(locator.get("source_table_asset_id") or locator.get("table_asset_id")).lower()
+        locator_table_id = _normalize_table_label(locator.get("table_id") or locator.get("source_table_id"))
+        return bool(
+            (locator_path and locator_path in {source_csv_path, source_table_reference})
+            or (locator_asset_id and source_asset_id == locator_asset_id)
+            or (locator_table_id and source_table_id == locator_table_id)
+        )
+
+    locator_matches: list[dict[str, Any]] = []
+    if table_scope_locators:
+        for item in normalized_payloads:
+            if any(payload_matches_locator(item, locator) for locator in table_scope_locators):
+                locator_matches.append(item)
+        if len(locator_matches) > 1:
+            return None, "multiple_candidate_payloads"
+        if len(locator_matches) == 1:
+            return locator_matches[0], ""
+
     wanted_table_path = normalize_text(
-        table_scope_locators.get("source_table_reference") or matching_scope.get("source_table_reference") or matching_scope.get("table_path")
+        matching_scope.get("source_table_reference") or matching_scope.get("table_path")
     ).replace("\\", "/").lower()
     wanted_asset_id = normalize_text(
-        table_scope_locators.get("source_table_asset_id") or matching_scope.get("source_table_asset_id") or matching_scope.get("table_asset_id")
+        matching_scope.get("source_table_asset_id") or matching_scope.get("table_asset_id")
     ).lower()
     wanted_table_id = _normalize_table_label(matching_scope.get("table_id"))
     candidate_matches: list[dict[str, Any]] = []
@@ -264,7 +310,7 @@ def _resolve_normalized_payload_for_scope(
         return None, "multiple_candidate_payloads"
     if len(candidate_matches) == 1:
         return candidate_matches[0], ""
-    if not any([wanted_table_path, wanted_asset_id, wanted_table_id]):
+    if not any([wanted_table_path, wanted_asset_id, wanted_table_id]) and not table_scope_locators:
         return None, "payload_locator_missing"
     return None, "authorized_target_unresolved"
 

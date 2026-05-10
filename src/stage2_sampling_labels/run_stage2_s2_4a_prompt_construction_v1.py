@@ -15,6 +15,7 @@ try:
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
         build_live_prompt,
         build_prompt_preview_row,
+        render_selected_table_candidate,
     )
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
     from src.utils.run_id import resolve_results_write_target
@@ -23,6 +24,7 @@ except ModuleNotFoundError:  # pragma: no cover
     from src.stage2_sampling_labels.extract_semantic_stage2_objects_v2 import (
         build_live_prompt,
         build_prompt_preview_row,
+        render_selected_table_candidate,
     )
     from src.utils.paths import DATA_RESULTS_DIR, PROJECT_ROOT
     from src.utils.run_id import resolve_results_write_target
@@ -128,8 +130,29 @@ def extract_record_from_evidence_artifact(artifact: dict[str, Any]) -> dict[str,
     return {"key": key, "doi": doi, "title": title}
 
 
+def rehydrate_table_summary_blocks(artifact: dict[str, Any]) -> dict[str, Any]:
+    """Rebuild selected table-summary block text from source table assets.
+
+    S2-4a prompt freezes may be regenerated from frozen S2-2/S2-3 evidence roots.
+    Those older evidence roots can legally identify selected table assets while
+    their cached `text_content` still contains stale prompt-rendering lines such
+    as `key_columns`, `table_role_hint`, or `semantic_summary`.  The S2-4a
+    materialization boundary owns the final prompt text, so rebuild table-summary
+    text from `origin_locator` whenever possible and preserve all non-table
+    blocks unchanged.
+    """
+    rehydrated = copy.deepcopy(artifact)
+    blocks = []
+    for block in rehydrated.get("evidence_blocks") or []:
+        if isinstance(block, dict) and str(block.get("source_type", "")).strip() == "table_summary":
+            block["text_content"] = render_selected_table_candidate(block)
+        blocks.append(block)
+    rehydrated["evidence_blocks"] = blocks
+    return rehydrated
+
+
 def build_template_from_artifact(artifact: dict[str, Any]) -> str:
-    placeholder_artifact = copy.deepcopy(artifact)
+    placeholder_artifact = copy.deepcopy(rehydrate_table_summary_blocks(artifact))
     placeholder_artifact["input_contract"] = dict(placeholder_artifact.get("input_contract") or {})
     placeholder_artifact["input_contract"]["ordered_block_order"] = ["{ordered_block_order}"]
     placeholder_artifact["evidence_blocks"] = [
@@ -176,12 +199,12 @@ def build_run_context(
 - bucket_dir: `{bucket_dir}`
 
 ## 2. Run Type
-`intermediate_diagnostic_run`
+`S2-4a_prompt_freeze_only`
 
-Benchmark reporting rule:
-- This run is `diagnostic-only, not benchmark-valid final output`.
-- It materializes the frozen S2-4a prompt-construction surface only.
-- No S2-4 live LLM call, S2-5 semantic parsing, S2-6 contract validation, S2-7 compatibility projection, Stage3, Stage4, or Stage5 execution is included in this run.
+Scope note:
+- This run materializes the frozen S2-4a prompt-construction surface only.
+- It does not run S2-4b live LLM inference or any downstream stage.
+- No benchmark comparison is part of this S2-4a-only artifact.
 
 ## 3. Purpose
 - Materialize the frozen S2-4a prompt-construction surface from canonical S2-2 evidence artifacts.
@@ -281,10 +304,11 @@ def main() -> None:
         if not evidence_path.exists():
             failures.append({"paper_key": key, "reason": "missing_evidence_artifact"})
             continue
-        artifact = read_json(evidence_path)
-        if str(artifact.get("contract_version", "")).strip() != "s2_2_evidence_blocks_v1":
+        source_artifact = read_json(evidence_path)
+        if str(source_artifact.get("contract_version", "")).strip() != "s2_2_evidence_blocks_v1":
             failures.append({"paper_key": key, "reason": "unexpected_evidence_contract"})
             continue
+        artifact = rehydrate_table_summary_blocks(source_artifact)
         record = extract_record_from_evidence_artifact(artifact)
         prompt_text = build_live_prompt(record, artifact)
         prompt_sha256 = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()

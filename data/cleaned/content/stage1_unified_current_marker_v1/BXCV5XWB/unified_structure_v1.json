@@ -26,10 +26,10 @@
       "reuse_contract": "frozen Marker output consumed only when key2marker_pdf_v1.tsv already binds it"
     },
     "table_cells": {
-      "available": false,
-      "sidecar_path": "",
-      "cell_count": "",
-      "table_count": ""
+      "available": true,
+      "sidecar_path": "data/cleaned/content/stage1_table_cell_sidecars_current_v1/tables_cell_sidecar/BXCV5XWB/stage1_table_cells_v1.jsonl",
+      "cell_count": "110",
+      "table_count": "2"
     }
   },
   "blocks": [
@@ -5131,8 +5131,8 @@
     }
   ],
   "tables": [],
-  "stage1_table_cell_sidecar_path": "",
-  "stage1_table_cell_sidecar_available": "no",
+  "stage1_table_cell_sidecar_path": "data/cleaned/content/stage1_table_cell_sidecars_current_v1/tables_cell_sidecar/BXCV5XWB/stage1_table_cells_v1.jsonl",
+  "stage1_table_cell_sidecar_available": "yes",
   "metadata": {
     "policy": "single additive Stage1 interface for current HTML/PDF plus frozen Marker PDF where available",
     "current_text_is_compatibility_base": true,
