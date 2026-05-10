@@ -483,7 +483,18 @@ def resolve_table_authority_payload_for_scope(
     normalized_payloads: list[dict[str, Any]],
 ) -> tuple[dict[str, Any] | None, str]:
     wanted_table_id = _normalize_table_label(scope.get("table_id"))
-    wanted_aliases = {alias for alias in table_number_aliases(scope.get("table_id")) if alias}
+    wanted_aliases = {
+        alias
+        for alias in table_number_aliases(
+            scope.get("table_id"),
+            scope.get("parent_table_hint"),
+            scope.get("evidence_span"),
+            scope.get("source_snippet"),
+            scope.get("table_caption"),
+            scope.get("caption_or_title"),
+        )
+        if alias
+    }
     scope_locators = iter_table_scope_locator_dicts(scope.get("table_scope_locators"))
 
     def choose(matches: list[dict[str, Any]]) -> tuple[dict[str, Any] | None, str]:

@@ -3092,6 +3092,115 @@ def extract_table_caption_from_clean_text(clean_text: str, table_id: str) -> str
     return ""
 
 
+def _resolve_clean_text_path_for_payload_record(record: dict[str, Any], paper_key: str) -> Path | None:
+    for field in [
+        "source_s2_1b_denoised_text_path",
+        "text_path",
+        "source_clean_text_path",
+        "clean_text_path",
+    ]:
+        value = normalize_text(record.get(field))
+        if not value:
+            continue
+        path = Path(value)
+        if not path.is_absolute():
+            path = (PROJECT_ROOT / path).resolve()
+        if path.exists():
+            return path
+    for suffix in ["pdf.txt", "html.txt", "txt"]:
+        path = PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.{suffix}"
+        if path.exists():
+            return path
+    return None
+
+
+def _compact_inline_table_tokens(text: str) -> list[str]:
+    return [normalize_text(token).rstrip(".;,") for token in re.findall(r"[A-Za-z][A-Za-z0-9_/%().:+-]*|[-+]?\d+(?:\.\d+)?(?:±\d+(?:\.\d+)?)?%?", text) if normalize_text(token).rstrip(".;,")]
+
+
+def recover_compact_inline_table_matrix_from_clean_text(
+    *,
+    record: dict[str, Any],
+    table_id: str,
+) -> tuple[list[list[str]], dict[str, str]]:
+    """Recover compact inline table rows only as a fallback for bad CSV authority.
+
+    This is an S2-2 authority reattachment repair, not semantic discovery: it is
+    called only for an already selected table candidate and only for the table id
+    attached to that candidate.  It prevents a blank/corrupt Stage1 CSV from
+    becoming negative authority when the Stage1 clean-text surface still carries
+    the same row/column table compactly.
+    """
+    table_id = normalize_text(table_id)
+    table_match = re.search(r"\btable\s+(\d+)\b", table_id, flags=re.I)
+    if not table_match:
+        return [], {}
+    table_number = int(table_match.group(1))
+    text_path = _resolve_clean_text_path_for_payload_record(record, normalize_text(record.get("key") or record.get("paper_key")))
+    if text_path is None:
+        return [], {}
+    try:
+        clean_text = text_path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return [], {}
+    anchor_match = re.search(rf"\bTable\s+{table_number}\b", clean_text, flags=re.I)
+    if not anchor_match:
+        return [], {}
+    window = clean_text[anchor_match.start() : anchor_match.start() + 2400]
+    next_boundary = re.search(rf"\b(?:Table\s+(?!{table_number}\b)\d+|Figure\s+\d+)\b", window[20:], flags=re.I)
+    if next_boundary:
+        window = window[: 20 + next_boundary.start()]
+    tokens = _compact_inline_table_tokens(window)
+    if not tokens:
+        return [], {}
+    row_start = None
+    for idx, token in enumerate(tokens):
+        if re.fullmatch(r"(?:F\d{1,3}|[A-Za-z]{2,8}\d{1,3})", token, flags=re.I):
+            # Require numeric cells after the putative row label so prose table
+            # mentions do not become reconstructed table authority.
+            if len(tokens[idx + 1 : idx + 4]) >= 2 and sum(1 for value in tokens[idx + 1 : idx + 4] if re.search(r"\d", value)) >= 2:
+                row_start = idx
+                break
+    if row_start is None or row_start < 2:
+        return [], {}
+    header_tokens = tokens[:row_start]
+    # Keep the header after the table label/caption words; prefer the last
+    # formulation/sample-like anchor before the first row label.
+    header_anchor = 0
+    for idx, token in enumerate(header_tokens):
+        if normalize_text(token).lower() in {"formulation", "sample", "batch", "run"}:
+            header_anchor = idx
+    headers = header_tokens[header_anchor:]
+    if len(headers) < 2 or normalize_text(headers[0]).lower() not in {"formulation", "sample", "batch", "run"}:
+        return [], {}
+    data_tokens = tokens[row_start:]
+    row_label_indexes = [
+        idx
+        for idx, token in enumerate(data_tokens)
+        if re.fullmatch(r"(?:F\d{1,3}|[A-Za-z]{2,8}\d{1,3})", token, flags=re.I)
+    ]
+    if len(row_label_indexes) < 2:
+        return [], {}
+    rows: list[list[str]] = [headers]
+    for offset, start in enumerate(row_label_indexes):
+        end = row_label_indexes[offset + 1] if offset + 1 < len(row_label_indexes) else min(len(data_tokens), start + len(headers))
+        row = data_tokens[start:end]
+        if len(row) < len(headers):
+            row = row + [""] * (len(headers) - len(row))
+        rows.append(row[: len(headers)])
+    if len(rows) < 3:
+        return [], {}
+    numeric_cells = sum(1 for row in rows[1:] for cell in row[1:] if re.search(r"\d", normalize_text(cell)))
+    if numeric_cells < max(2, len(rows) - 1):
+        return [], {}
+    return rows, {
+        "source_text_path": to_repo_rel(text_path),
+        "source_table_reference": f"{to_repo_rel(text_path)}#{table_id}",
+        "source_table_asset_id": f"source_text_{normalize_token(table_id)}",
+        "caption_or_title": extract_table_caption_from_clean_text(clean_text, table_id) or table_id,
+    }
+
+
 def recover_source_caption_binding_from_rows(
     *,
     path: Path,
@@ -8898,7 +9007,9 @@ def build_normalized_table_payload_artifact(
         rows = item.get("rows") or []
         if not isinstance(rows, list) or not rows:
             continue
-        meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+        meta = dict(item.get("meta")) if isinstance(item.get("meta"), dict) else {}
+        effective_representation_status = normalize_text(item.get("representation_status"))
+        effective_selector_readiness_label = normalize_text(item.get("selector_readiness_label"))
         sidecar_metadata: dict[str, Any] = {
             "stage1_cell_sidecar_status": "not_configured" if effective_stage1_table_cell_sidecar_root is None else "not_available",
             "stage1_cell_sidecar_match_rule": "",
@@ -8943,6 +9054,31 @@ def build_normalized_table_payload_artifact(
                 normalized_rows = raw_normalized_rows
                 normalization_actions = list(dict.fromkeys(list(normalization_actions) + ["reload_from_source_table_asset"] + raw_actions))
                 normalization_metadata = raw_metadata
+        table_id_for_recovery = derive_stable_table_id(source_csv_path, meta)
+        if len(normalized_rows) < 2 or normalize_text(effective_representation_status) in {"unrepaired_corrupted", "repair_insufficient"}:
+            compact_rows, compact_meta = recover_compact_inline_table_matrix_from_clean_text(
+                record=record,
+                table_id=table_id_for_recovery,
+            )
+            if compact_rows and len(compact_rows) > len(normalized_rows):
+                compact_normalized_rows, compact_actions, compact_metadata = normalize_selected_table_rows(
+                    compact_rows,
+                    table_role_hint=normalize_text(candidate.get("table_role_hint")),
+                )
+                if len(compact_normalized_rows) >= len(compact_rows):
+                    raw_cells = compact_rows
+                    normalized_rows = compact_normalized_rows
+                    normalization_actions = list(
+                        dict.fromkeys(
+                            list(normalization_actions)
+                            + ["recover_clean_text_compact_inline_table"]
+                            + compact_actions
+                        )
+                    )
+                    normalization_metadata = compact_metadata
+                    meta.update({key: value for key, value in compact_meta.items() if normalize_text(value)})
+                    effective_representation_status = "clean_text_compact_table_recovered"
+                    effective_selector_readiness_label = "ready"
         payload_basis_csv_path = source_csv_path
         payload_basis_candidate_id = normalize_text(candidate.get("candidate_id"))
         payload_basis_same_source = True
@@ -9047,8 +9183,8 @@ def build_normalized_table_payload_artifact(
             normalization_metadata=normalization_metadata,
         )
         reconstruction_confidence = compute_reconstruction_confidence(
-            representation_status=normalize_text(item.get("representation_status")),
-            selector_readiness_label=normalize_text(item.get("selector_readiness_label")),
+            representation_status=effective_representation_status,
+            selector_readiness_label=effective_selector_readiness_label,
             normalization_actions=normalization_actions,
             normalized_row_count=len(normalized_rows),
             raw_row_count=len(raw_cells),
@@ -9113,8 +9249,8 @@ def build_normalized_table_payload_artifact(
                 "table_type": table_type,
                 "payload_usage_role": entry_payload_usage_role,
                 "value_evidence_only": entry_payload_usage_role == "row_local_value_evidence",
-                "selector_readiness_label": normalize_text(item.get("selector_readiness_label")),
-                "representation_status": normalize_text(item.get("representation_status")),
+                "selector_readiness_label": effective_selector_readiness_label,
+                "representation_status": effective_representation_status,
                 "authority_rank": item.get("authority_rank"),
                 "authority_score": item.get("authority_score"),
                 "authority_tier": normalize_text(item.get("authority_tier")),
@@ -9161,7 +9297,7 @@ def build_normalized_table_payload_artifact(
                 raw_cells=raw_cells,
                 normalized_matrix=normalized_rows,
                 normalization_actions=normalization_actions,
-                selector_readiness_label=normalize_text(item.get("selector_readiness_label")),
+                selector_readiness_label=effective_selector_readiness_label,
                 authority_rank=item.get("authority_rank"),
                 authority_score=item.get("authority_score"),
                 authority_tier=normalize_text(item.get("authority_tier")),

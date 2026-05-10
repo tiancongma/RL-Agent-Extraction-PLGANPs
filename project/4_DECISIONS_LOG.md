@@ -5877,3 +5877,32 @@ Impact:
 - `data/results/ACTIVE_RUN.json` now points S2-4a prompt authority to run 394.
 - This remains diagnostic-only S2-4a prompt construction; no S2-4b live call, Stage3/Stage5 output, or benchmark claim is created by this update.
 
+
+## 2026-05-10
+
+### Decision: Promote p9 generic Stage2 authority-reattachment and single-variable sweep guards as diagnostic-lineage repairs
+
+Decision:
+- Record the p9 generic repair bundle as a maintained diagnostic repair pattern, not a paper-specific patch.
+- S2-5 may reattach execution-side table authority from governed clean text only when a recovered table payload is malformed/bad-CSV and compact inline rows in the source preserve table-local structure. This reattachment remains deterministic authority recovery, not LLM semantic discovery.
+- S2-7 single-variable table expansion may evidence-gate broad sweep levels against source-observed endpoint/result support and optimized-baseline context; drug/etoposide aliasing and family-context-limited emission are allowed only within LLM-authorized formulation scope.
+
+Rationale:
+- The repair closes the 5GIF3D8W count residual without retaining under-anchored polymer 25 mg rows, keeps QLYKLPKT from over-counting, and preserves the existing table-recovery closure target set.
+- The implementation restores generic function classes: bad-CSV clean-text fallback/authority reattachment, compact-inline table row recovery, and source-supported single-variable endpoint pruning.
+- Runtime code must continue to avoid paper-specific lexical patches; concrete paper keys are validation probes only.
+
+Validation:
+- Tests: `PYTHONPATH=. python3 -m unittest tests.test_stage2_stage1_sidecar_consumption_v1 tests.test_compare_layer3_values_v1 tests.test_stage2_table_row_expansion_scope_alias_roles_v1 tests.test_stage2_table_summary_numeric_visibility_v1 -v` (run separately in this repair window).
+- Explicit diagnostic lineage from current working tree:
+  - S2-5: `data/results/20260423_9c4a03f/429_stage2_s2_5_p9_generic_repair_lineage_diagnostic`
+  - S2-6: `data/results/20260423_9c4a03f/430_stage2_s2_6_p9_generic_repair_lineage_diagnostic`
+  - S2-7: `data/results/20260423_9c4a03f/431_stage2_s2_7_p9_generic_repair_lineage_diagnostic`
+  - Stage3: `data/results/20260423_9c4a03f/432_stage3_p9_generic_repair_lineage_diagnostic`
+  - Stage5: `data/results/20260423_9c4a03f/433_stage5_p9_generic_repair_lineage_diagnostic`
+  - Compare: `data/results/20260423_9c4a03f/434_compare_p9_generic_repair_lineage_diagnostic`
+- Count outcome: 13/15 DEV15 papers match in diagnostic compare; target set `L3H2RS2H`, `QLYKLPKT`, `5ZXYABSU`, `7ZS858NS` matches; `5GIF3D8W` matches; `QLYKLPKT` is 7/7 and not over-counted; no count regression versus the current 428 diagnosis baseline.
+
+Boundary:
+- This is a diagnosis-baseline repair candidate only. Compare mode remains `diagnostic`; `benchmark_valid=no`.
+- `ACTIVE_RUN.json` may be advanced only as a diagnosis-baseline pointer after validation; no benchmark-valid promotion is implied.

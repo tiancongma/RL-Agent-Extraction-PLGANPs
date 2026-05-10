@@ -431,6 +431,60 @@ class TestStage2Stage1SidecarConsumptionV1(unittest.TestCase):
             self.assertIn("FallbackHeader", flattened_raw_cells)
             self.assertNotIn("MUST_NOT_DEFINE_CANDIDATE", flattened_raw_cells)
             self.assertEqual(payload["stage1_cell_sidecar_status"], "not_available")
+    def test_corrupted_csv_does_not_downgrade_clean_text_compact_table_payload(self):
+        with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
+            tmp = Path(td)
+            out_dir = tmp / "semantic_stage2_objects"
+            evidence_path = tmp / "evidence_blocks" / "PAPER1" / "evidence_blocks_v1.json"
+            text_path = tmp / "PAPER1.pdf.txt"
+            text_path.write_text(
+                "Methods before table.\n"
+                "Table 1. Composition of nanoparticle formulations. "
+                "Formulation PLGA_mg Drug_mg Size_nm "
+                "F1 50 5 123 F2 75 7.5 145 F3 100 10 166.\n"
+                "Following text after the compact table.",
+                encoding="utf-8",
+            )
+            evidence_artifact = {
+                "evidence_blocks": [
+                    {"candidate_id": "PAPER1__candidate_table__01", "is_table_derived": True}
+                ]
+            }
+            segmentation_bundle = {
+                "selector_candidates": [
+                    {
+                        "candidate_id": "PAPER1__candidate_table__01",
+                        "candidate_kind": "table",
+                        "table_role_hint": "formulation",
+                        "origin_locator": "bad_blank_table_1.csv",
+                        "item": {
+                            "rows": [[""]],
+                            "meta": {"table_id": "Table 1", "caption_or_title": "Table 1"},
+                            "representation_status": "unrepaired_corrupted",
+                            "selector_readiness_label": "weak",
+                        },
+                    }
+                ]
+            }
+
+            artifact, _validation_rows = extractor.build_normalized_table_payload_artifact(
+                record={"key": "PAPER1", "text_path": str(text_path)},
+                out_dir=out_dir,
+                producer_script="test",
+                evidence_artifact_path=evidence_path,
+                evidence_artifact=evidence_artifact,
+                segmentation_bundle=segmentation_bundle,
+            )
+
+            payload = artifact["normalized_table_payloads"][0]
+            self.assertIn("recover_clean_text_compact_inline_table", payload["normalization_actions"])
+            self.assertEqual(payload["source_table_reference"], f"{extractor.to_repo_rel(text_path)}#Table 1")
+            self.assertEqual(payload["normalized_matrix"][0], ["Formulation", "PLGA_mg", "Drug_mg", "Size_nm"])
+            self.assertEqual(payload["normalized_matrix"][1], ["F1", "50", "5", "123"])
+            self.assertEqual(payload["normalized_matrix"][3], ["F3", "100", "10", "166"])
+            self.assertEqual(payload["data_row_count"], 3)
+            self.assertEqual(payload["representation_status"], "clean_text_compact_table_recovered")
+
     def test_normalized_payload_preserves_full_size_table_asset_reference(self):
         with tempfile.TemporaryDirectory(dir=extractor.PROJECT_ROOT) as td:
             tmp = Path(td)

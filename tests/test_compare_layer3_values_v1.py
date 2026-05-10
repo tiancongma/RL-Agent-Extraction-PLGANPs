@@ -360,6 +360,30 @@ class Stage2DoeGenericRepairTests(unittest.TestCase):
         self.assertEqual(reason, "")
         self.assertEqual(payload["source_table_asset_id"], "TEST__table_09__pdf_table")
 
+    def test_locatorless_llm_table_scope_reattaches_by_caption_alias(self):
+        payloads = [
+            {
+                "table_id": "PAPER1__source_text_table_1",
+                "source_table_id": "PAPER1__source_text_table_1",
+                "source_caption_or_title": "Table 1. Composition of nanoparticle formulations",
+                "source_table_reference": "data/cleaned/content/text/PAPER1.pdf.txt#Table 1",
+                "row_identity_signals": {"first_column_labels": ["F1", "F2", "F3"]},
+                "authority_rank": 1,
+            }
+        ]
+        scope = {
+            "table_id": "",
+            "source_table_reference": "",
+            "source_table_asset_id": "",
+            "parent_table_hint": "Table 1 composition of nanoparticle formulations",
+            "evidence_span": "The LLM authorized Table 1 as the formulation composition table but omitted the locator.",
+        }
+
+        payload, reason = resolve_table_authority_payload_for_scope(scope, normalized_payloads=payloads)
+
+        self.assertEqual(reason, "")
+        self.assertEqual(payload["source_caption_or_title"], "Table 1. Composition of nanoparticle formulations")
+
     def test_doe_target_resolution_uses_locator_list_numbered_payload_within_llm_scope(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
