@@ -581,6 +581,70 @@ def resolve_table_authority_payload_for_scope(
     return choose(matches)
 
 
+def source_csv_authority_payload_from_scope(scope: dict[str, Any]) -> dict[str, Any] | None:
+    """Build a bounded execution payload from an explicit LLM/source table locator.
+
+    This is a post-authorization fallback for cases where S2-2 preserved a
+    source CSV/table locator in the semantic scope, but no normalized payload was
+    reattached under that exact locator.  It does not discover new semantic
+    tables: callers only invoke it after an LLM-authorized formulation scope has
+    failed ordinary payload resolution.
+    """
+    source_ref = normalize_text(
+        scope.get("source_table_reference")
+        or scope.get("source_csv_path")
+        or scope.get("table_path")
+    )
+    if not source_ref or source_ref == "source_text":
+        return None
+    source_path = Path(source_ref)
+    if not source_path.is_absolute():
+        source_path = (REPO_ROOT / source_path).resolve()
+    if not source_path.exists() or source_path.suffix.lower() != ".csv":
+        return None
+    rows = read_csv_rows(source_path)
+    table_id = extract_table_label(source_path, rows) or normalize_text(scope.get("table_id"))
+    return {
+        "table_id": table_id,
+        "source_table_id": table_id,
+        "source_csv_path": str(source_path),
+        "normalized_csv_path": str(source_path),
+        "source_table_reference": source_ref,
+        "source_table_asset_id": normalize_text(scope.get("source_table_asset_id") or scope.get("table_asset_id")) or source_path.stem,
+        "representation_status": "source_csv_locator_fallback",
+        "normalization_actions": ["preserve_coordinate_grid"],
+    }
+
+
+def source_text_authority_payload_from_scope(
+    *,
+    document: dict[str, Any],
+    scope: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Create an empty authority shell for LLM-authorized source-text tables.
+
+    Used only when normalized payload resolution fails but the clean source text
+    still contains the LLM-authorized table anchor.  Row extraction remains
+    constrained to existing source-text table extractors.
+    """
+    table_id = normalize_text(scope.get("table_id"))
+    table_type = normalize_text(scope.get("table_type")).lower()
+    if not table_id or table_type not in {"full_formulation", "doe_table"}:
+        return None
+    source_text = load_document_source_text(document)
+    if not source_text or not re.search(rf"\b{re.escape(table_id)}\b", source_text, flags=re.IGNORECASE):
+        return None
+    return {
+        "table_id": table_id,
+        "source_table_id": table_id,
+        "normalized_csv_path": "",
+        "source_csv_path": "",
+        "source_table_reference": "source_text",
+        "row_entries": [],
+        "representation_status": "source_text_locator_fallback",
+    }
+
+
 def authority_row_entries(payload: dict[str, Any]) -> list[dict[str, Any]]:
     rows = [item for item in ensure_list(payload.get("normalized_rows")) if isinstance(item, dict)]
     if rows:
@@ -3238,6 +3302,57 @@ def assignment_rows_look_like_aggregate_variant_list(assignment_rows: list[dict[
     return row_values_look_like_aggregate_variant_list(values)
 
 
+def should_block_downstream_measurement_only_table(
+    *,
+    document: dict[str, Any],
+    scope: dict[str, Any],
+    authority_payload: dict[str, Any],
+    direct_rows: list[dict[str, Any]],
+) -> tuple[bool, str]:
+    """Block post-synthesis measurement/process-condition tables from row-universe expansion.
+
+    This guard is intentionally narrow: it requires the LLM/document to flag
+    downstream or measurement-only variants and the table surface to be a
+    cryoprotectant / freeze-drying characterization surface.  Such rows describe
+    processing/characterization conditions applied to an already selected NP, not
+    independent synthesized formulation instances.
+    """
+    semantic_signals = document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {}
+    if not (
+        semantic_signals.get("has_downstream_non_synthesis_variants")
+        or semantic_signals.get("has_measurement_only_variants")
+    ):
+        return False, ""
+    primary_axes = " ".join(
+        normalize_text(item).lower()
+        for item in ensure_list(semantic_signals.get("primary_variable_names"))
+        if normalize_text(item)
+    )
+    scope_blob = " ".join(
+        [
+            normalize_text(scope.get("table_id")),
+            normalize_text(scope.get("table_type")),
+            normalize_text(scope.get("variable_name")),
+            normalize_text(authority_payload.get("source_caption_or_title")),
+            normalize_text(authority_payload.get("source_csv_path")),
+            normalize_text(authority_payload.get("normalized_csv_path")),
+            " ".join(normalize_text(row.get("row_text")) for row in direct_rows if isinstance(row, dict)),
+            " ".join(
+                normalize_text(item.get("name"))
+                for row in direct_rows
+                if isinstance(row, dict)
+                for item in ensure_list(row.get("assignments"))
+                if isinstance(item, dict)
+            ),
+        ]
+    ).lower()
+    if "cryoprotect" not in (primary_axes + " " + scope_blob):
+        return False, ""
+    if not re.search(r"\b(?:freeze[-\s]?dry|lyophili[sz])", scope_blob + " " + load_document_source_text(document).lower()[:20000]):
+        return False, ""
+    return True, "downstream_cryoprotectant_measurement_table"
+
+
 def should_block_explicit_table_row_universe_surface(
     *,
     scope: dict[str, Any],
@@ -3785,6 +3900,18 @@ def run_table_row_expansion(
                 normalized_payloads=normalized_payloads,
             )
         if authority_payload is None:
+            authority_payload = source_csv_authority_payload_from_scope(scope)
+            if authority_payload is not None:
+                payload_failure_reason = ""
+                activation_row["reopen_resolution_status"] = "resolved_source_csv_locator_fallback"
+                activation_row["normalized_payload_used"] = "no"
+            else:
+                authority_payload = source_text_authority_payload_from_scope(document=document, scope=scope)
+                if authority_payload is not None:
+                    payload_failure_reason = ""
+                    activation_row["reopen_resolution_status"] = "resolved_source_text_locator_fallback"
+                    activation_row["normalized_payload_used"] = "no"
+        if authority_payload is None:
             activation_row["authorized"] = "yes"
             activation_row["skip_reason"] = "missing_table_authority_payload"
             activation_row["reopen_resolution_status"] = "failed"
@@ -3851,6 +3978,16 @@ def run_table_row_expansion(
                 scope=scope,
             )
         if direct_rows:
+            blocked_downstream_table, downstream_block_reason = should_block_downstream_measurement_only_table(
+                document=document,
+                scope=scope,
+                authority_payload=authority_payload,
+                direct_rows=direct_rows,
+            )
+            if blocked_downstream_table:
+                activation_row["skip_reason"] = downstream_block_reason
+                table_activation_rows.append(activation_row)
+                continue
             blocked_surface, blocked_reason = should_block_explicit_table_row_universe_surface(
                 scope=scope,
                 boundary=boundary,
@@ -4376,6 +4513,102 @@ def run_table_row_expansion(
         activation_row["held_constant_context_source"] = held_constant_context_source
         activation_row["variable_axis_detected"] = "|".join(variable_axes_detected)
         table_activation_rows.append(activation_row)
+
+    if table_row_count == 0 and not single_variable_recovery_consumed and doe_rows_emitted == 0:
+        anchorless_contract = build_single_variable_recovery_contract(
+            document=document,
+            require_anchor_rows=False,
+        )
+        anchorless_activation_row = {
+            "function_unit": FUNCTION_UNIT_ID,
+            "document_key": document_key,
+            "table_id": "single_variable_context",
+            "scope_id": f"{document_key}__anchorless_single_variable_scope__01",
+            "table_type": "anchorless_single_variable_context",
+            "marker_provenance": "llm_parsed",
+            "considered": "yes",
+            "authorized": "yes" if bool(anchorless_contract.get("detected")) else "no",
+            "called": "no",
+            "rows_emitted": "0",
+            "rows_retained_after_projection": "0",
+            "skip_reason": "",
+            "table_path": "source_text",
+            "varying_variable_count": "0",
+            "varying_variables": "",
+            "reopen_source_type": reopen_binding.get("reopen_source_type", ""),
+            "reopen_resolution_status": "source_text_anchorless" if bool(anchorless_contract.get("detected")) else reopen_binding.get("reopen_resolution_status", ""),
+            "reopen_failure_reason": "",
+            "normalized_payload_used": "no",
+            "doe_path_attempted": doe_path_attempted,
+            "doe_rows_emitted": str(doe_rows_emitted),
+            "fell_back_to_table_expansion": "no",
+            "fallback_reason": "",
+            "explicit_table_rows_emitted": "0",
+            "simple_table_enumeration_attempted": "no",
+            "simple_table_enumeration_activated": "no",
+            "simple_table_rows_emitted": "0",
+            "simple_table_block_reason": "",
+            "row_identity_surface_used": "",
+            "non_doe_single_variable_groups_detected": "0",
+            "single_variable_recovery_attempted": "yes",
+            "single_variable_rows_emitted": "0",
+            "single_variable_recovery_source_type": normalize_text(anchorless_contract.get("source_type")),
+            "single_variable_recovery_failure_reason": normalize_text(anchorless_contract.get("failure_reason")),
+            "held_constant_context_source": normalize_text(anchorless_contract.get("held_constant_context_source")),
+            "variable_axis_detected": "|".join(
+                normalize_text(item.get("variable_name"))
+                for item in ensure_list(anchorless_contract.get("groups"))
+                if isinstance(item, dict) and normalize_text(item.get("variable_name"))
+            ),
+        }
+        single_variable_recovery_attempted = "yes"
+        if bool(anchorless_contract.get("detected")):
+            anchorless_scope_id = anchorless_activation_row["scope_id"]
+            anchorless_scope = {
+                "scope_id": anchorless_scope_id,
+                "table_id": "single_variable_context",
+                "is_formulation_table": True,
+                "table_type": "anchorless_single_variable_context",
+                "marker_provenance": "llm_parsed",
+                "declaration_basis": "llm_variable_sweep_plus_source_text_anchorless_contract",
+            }
+            recovered_rows, recovered_jsonl, recovered_traces, recovered_count = emit_single_variable_recovery_rows(
+                document=document,
+                compatibility_columns=compatibility_columns,
+                contract=anchorless_contract,
+                scope=anchorless_scope,
+                scope_id=anchorless_scope_id,
+                table_id="single_variable_context",
+                group_hint_prefix=f"{document_key}__single_variable_group",
+            )
+            rows.extend(recovered_rows)
+            jsonl_rows.extend(recovered_jsonl)
+            traces.extend(recovered_traces)
+            table_row_count += recovered_count
+            single_variable_rows_emitted = recovered_count
+            non_doe_single_variable_groups_detected = len(
+                [item for item in ensure_list(anchorless_contract.get("groups")) if isinstance(item, dict)]
+            )
+            variable_axes_detected = [
+                normalize_text(item.get("variable_name"))
+                for item in ensure_list(anchorless_contract.get("groups"))
+                if isinstance(item, dict) and normalize_text(item.get("variable_name"))
+            ]
+            single_variable_recovery_source_type = normalize_text(anchorless_contract.get("source_type"))
+            held_constant_context_source = normalize_text(anchorless_contract.get("held_constant_context_source"))
+            single_variable_recovery_failure_reason = "" if recovered_count else "no_nonbaseline_levels_emitted"
+            anchorless_activation_row["called"] = "yes"
+            anchorless_activation_row["rows_emitted"] = str(recovered_count)
+            anchorless_activation_row["rows_retained_after_projection"] = str(recovered_count)
+            anchorless_activation_row["single_variable_rows_emitted"] = str(recovered_count)
+            anchorless_activation_row["single_variable_recovery_failure_reason"] = single_variable_recovery_failure_reason
+            anchorless_activation_row["non_doe_single_variable_groups_detected"] = str(non_doe_single_variable_groups_detected)
+            anchorless_activation_row["skip_reason"] = "" if recovered_count else single_variable_recovery_failure_reason
+        else:
+            single_variable_recovery_failure_reason = normalize_text(anchorless_contract.get("failure_reason"))
+            anchorless_activation_row["skip_reason"] = single_variable_recovery_failure_reason or "anchorless_single_variable_contract_not_found"
+        table_activation_rows.append(anchorless_activation_row)
+
     summary = {
         "function_unit": FUNCTION_UNIT_ID,
         "document_key": document_key,

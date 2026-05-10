@@ -1,0 +1,46 @@
+document_key	function_unit	was_unit_considered	was_unit_authorized	was_unit_called	rows_emitted	rows_retained_after_projection	skip_reason	status
+5ZXYABSU	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+5ZXYABSU	table_row_expansion_v1	yes	yes	yes	9	9		emitted_rows
+5ZXYABSU	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_optimization_language	no_rows_emitted
+L3H2RS2H	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+L3H2RS2H	table_row_expansion_v1	yes	yes	yes	21	21		emitted_rows
+L3H2RS2H	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_stagewise_selected_values	no_rows_emitted
+WIVUCMYG	doe_row_expansion_function_unit_v1	yes	yes	yes	26	26		
+WIVUCMYG	table_row_expansion_v1	yes	yes	yes	0	0	blocked_by_successful_doe_emission	no_rows_emitted
+WIVUCMYG	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted
+5GIF3D8W	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+5GIF3D8W	table_row_expansion_v1	yes	yes	yes	26	26		emitted_rows
+5GIF3D8W	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_stagewise_selected_values	no_rows_emitted
+7ZS858NS	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+7ZS858NS	table_row_expansion_v1	yes	yes	yes	0	0	not_formulation_table	no_rows_emitted
+7ZS858NS	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_optimization_language	no_rows_emitted
+BB3JUVW7	doe_row_expansion_function_unit_v1	yes	yes	yes	0	0	no_rows_emitted	
+BB3JUVW7	table_row_expansion_v1	yes	yes	yes	12	12		emitted_rows
+BB3JUVW7	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted
+BXCV5XWB	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+BXCV5XWB	table_row_expansion_v1	yes	yes	yes	3	3		emitted_rows
+BXCV5XWB	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_stagewise_selected_values	no_rows_emitted
+INMUTV7L	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+INMUTV7L	table_row_expansion_v1	yes	yes	yes	12	12		emitted_rows
+INMUTV7L	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_stagewise_selected_values	no_rows_emitted
+PA3SPZ28	doe_row_expansion_function_unit_v1	yes	yes	yes	0	0	no_rows_emitted	
+PA3SPZ28	table_row_expansion_v1	yes	yes	yes	3	3		emitted_rows
+PA3SPZ28	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted
+QLYKLPKT	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+QLYKLPKT	table_row_expansion_v1	yes	yes	yes	7	7		emitted_rows
+QLYKLPKT	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_final_selection_candidate	no_rows_emitted
+RHMJWZX8	doe_row_expansion_function_unit_v1	yes	no	no	0	0	missing_llm_declared_doe_scope	
+RHMJWZX8	table_row_expansion_v1	yes	no	no	0	0	not_formulation_table	no_rows_emitted
+RHMJWZX8	sequential_optimization_interpreter_v1	yes	no	no	0	0	missing_stagewise_selected_values	no_rows_emitted
+UFXX9WXE	doe_row_expansion_function_unit_v1	yes	yes	yes	26	26		
+UFXX9WXE	table_row_expansion_v1	yes	yes	yes	0	0	blocked_by_successful_doe_emission	no_rows_emitted
+UFXX9WXE	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted
+V99GKZEI	doe_row_expansion_function_unit_v1	yes	yes	yes	0	0	no_rows_emitted	
+V99GKZEI	table_row_expansion_v1	yes	yes	yes	6	6		emitted_rows
+V99GKZEI	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted
+WFDTQ4VX	doe_row_expansion_function_unit_v1	yes	yes	yes	30	30		
+WFDTQ4VX	table_row_expansion_v1	yes	no	no	0	0	not_formulation_table	no_rows_emitted
+WFDTQ4VX	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted
+YGA8VQKU	doe_row_expansion_function_unit_v1	yes	yes	yes	16	16		
+YGA8VQKU	table_row_expansion_v1	yes	yes	yes	2	2		emitted_rows
+YGA8VQKU	sequential_optimization_interpreter_v1	yes	no	no	0	0	blocked_by_doe_scope	no_rows_emitted

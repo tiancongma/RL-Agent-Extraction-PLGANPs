@@ -418,6 +418,150 @@ class Stage2TableRowExpansionScopeAliasRolesTest(unittest.TestCase):
         self.assertEqual("Table 2", scopes[0]["table_id"])
         self.assertTrue(scopes[0]["is_formulation_table"])
         self.assertEqual("sequential_child", scopes[0]["table_type"])
+    def test_missing_payload_llm_authorized_table_falls_back_to_source_text_compact_rows(self):
+        source_text = """
+        Table 1 Nanoparticle formulations developed Formulation Rhodamine (mg) Gatifloxacin (mg)
+        Polysorbate 80 (%) Labrafil (mg) NPR1 2.5 – – – NPR2 2.5 – 1 – NPB1 – – – –
+        NPG1 – 5 – –
+        """
+        document = {
+            "document_key": "INLINEAUTH",
+            "doi": "10.0000/inlineauth",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "table_formulation_scopes": [
+                {
+                    "scope_id": "INLINEAUTH__table_formulation_scope__01",
+                    "table_id": "Table 1",
+                    "is_formulation_table": True,
+                    "table_type": "full_formulation",
+                    "marker_provenance": "llm_parsed",
+                }
+            ],
+            "table_variable_roles": [],
+            "boundary_markers": [{"table_id": "Table 1", "is_doe": False, "marker_provenance": "llm_parsed"}],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([], {"reopen_resolution_status": "resolved", "normalized_payload_used": "yes"}),
+        ), patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value=source_text):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=["key", "doi", "model", "local_instance_id", "formulation_id", "raw_formulation_label", "instance_kind", "instance_kind_raw", "instance_kind_inferred", "instance_confidence", "candidate_source"],
+                doe_summary={"doe_rows_emitted": 0},
+            )
+
+        self.assertEqual(4, len(rows))
+        self.assertEqual("", summary["skip_reason"])
+        self.assertEqual({"NPR1", "NPR2", "NPB1", "NPG1"}, {row["raw_formulation_label"] for row in rows})
+
+    def test_anchorless_selected_sweep_runs_even_when_llm_marks_tables_non_formulation(self):
+        source_text = """
+        5 mL of PLGA (1% w/v) solution was slowly added to four aqueous solutions
+        containing 2.5, 3, 4, and 10 mg/mL of nonionic surfactant (poloxamer 188)
+        with stirring. After the optimal surfactant concentration had been determined,
+        various amounts of ITZ were dissolved.
+        Table 2 Physicochemical properties of PLGA-ITZ-NS with different PLGA:ITZ initial ratios
+        PLGA:ITZ (w/w) Particle size (nm) PDI Zeta potential (mV) EE%
+        5:1 175±5 0.41±0.03 -17±1 61±4
+        10:1 178±6 0.19±0.03 -20±1 72±1
+        15:1 191±2 0.14±0.02 -30±1 73±1
+        Note: Ratio of 10:1 was then selected to prepare PLGA-ITZ-NS for the remaining studies.
+        """
+        document = {
+            "document_key": "ANCHORLESSSEQ",
+            "doi": "10.0000/anchorlessseq",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "semantic_signals": {
+                "has_variable_sweep": True,
+                "has_sequential_optimization": False,
+                "primary_variable_names": ["PLGA:ITZ ratio", "surfactant concentration"],
+                "selected_condition_hints": ["PLGA:ITZ ratios of 5:1, 10:1, 15:1", "optimal surfactant concentration determined earlier"],
+            },
+            "table_formulation_scopes": [
+                {"scope_id": "ANCHORLESSSEQ__scope__t2", "table_id": "Table 2", "is_formulation_table": False, "table_type": "non_formulation", "marker_provenance": "llm_parsed"}
+            ],
+            "table_variable_roles": [],
+            "boundary_markers": [],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([], {"reopen_resolution_status": "resolved", "normalized_payload_used": "yes"}),
+        ), patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value=source_text):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=["key", "doi", "model", "local_instance_id", "formulation_id", "raw_formulation_label", "instance_kind", "instance_kind_raw", "instance_kind_inferred", "instance_confidence", "candidate_source"],
+                doe_summary={"doe_rows_emitted": 0},
+            )
+
+        labels = {row["raw_formulation_label"] for row in rows}
+        self.assertEqual(4, len(rows))
+        self.assertIn("surfactant concentration=2.5 mg/mL", labels)
+        self.assertIn("surfactant concentration=10 mg/mL", labels)
+        self.assertEqual(4, summary["single_variable_rows_emitted"])
+
+    def test_downstream_cryoprotectant_measurement_table_is_not_materialized_as_formulation_rows(self):
+        document = {
+            "document_key": "CRYODOWN",
+            "doi": "10.0000/cryodown",
+            "stage2_semantic_source_mode": "llm_first_composite",
+            "semantic_universe_authority": "llm_semantic_discovery",
+            "semantic_signals": {
+                "has_variable_sweep": False,
+                "has_measurement_only_variants": True,
+                "primary_variable_names": ["cryoprotectant concentration"],
+            },
+            "table_formulation_scopes": [
+                {"scope_id": "CRYODOWN__scope__t7", "table_id": "Table 7", "is_formulation_table": True, "table_type": "full_formulation", "marker_provenance": "llm_parsed"}
+            ],
+            "table_variable_roles": [],
+            "boundary_markers": [{"table_id": "Table 7", "is_doe": False, "marker_provenance": "llm_parsed"}],
+            "selection_markers": [],
+            "inheritance_markers": [],
+        }
+        authority_payload = {
+            "table_id": "Table 7",
+            "normalized_rows": [
+                {"row_index": "1", "row_number": "", "cells": ["cryoprotectant", "concentration (% w/v)", "mean diameter (nm)"], "row_text": "cryoprotectant concentration mean diameter"},
+                {"row_index": "2", "row_number": "", "cells": ["sucrose", "4%", "162 ± 12"], "row_text": "sucrose 4% 162 ± 12"},
+                {"row_index": "3", "row_number": "", "cells": ["mannitol", "4%", "210 ± 31"], "row_text": "mannitol 4% 210 ± 31"},
+                {"row_index": "4", "row_number": "", "cells": ["is the ratio of particle size after", "freeze-drying", ""], "row_text": "is the ratio of particle size after freeze-drying"},
+            ],
+        }
+        with patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1._load_normalized_table_payloads",
+            return_value=([authority_payload], {"reopen_resolution_status": "resolved", "normalized_payload_used": "yes"}),
+        ), patch(
+            "src.stage2_sampling_labels.table_row_expansion_v1.extract_direct_formulation_rows_from_authority",
+            return_value=(
+                [
+                    {
+                        "label": "sucrose 4%",
+                        "row_text": "sucrose 4% 162 ± 12 after freeze-drying",
+                        "assignments": [
+                            {"name": "cryoprotectant", "value": "sucrose"},
+                            {"name": "concentration", "value": "4%"},
+                            {"name": "mean diameter", "value": "162 nm"},
+                        ],
+                    }
+                ],
+                "",
+            ),
+        ), patch("src.stage2_sampling_labels.table_row_expansion_v1.load_document_source_text", return_value="MF NPs were lyophilized with cryoprotectants before characterization."):
+            rows, _traces, _jsonl_rows, summary = run_table_row_expansion(
+                document=document,
+                compatibility_columns=["key", "doi", "model", "local_instance_id", "formulation_id", "raw_formulation_label", "instance_kind", "instance_kind_raw", "instance_kind_inferred", "instance_confidence", "candidate_source"],
+                doe_summary={"doe_rows_emitted": 0},
+            )
+
+        self.assertEqual([], rows)
+        activation = summary["table_activation_rows"][0]
+        self.assertEqual("downstream_cryoprotectant_measurement_table", activation["skip_reason"])
 
 
 if __name__ == "__main__":
