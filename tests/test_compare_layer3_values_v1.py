@@ -5033,6 +5033,80 @@ class MinimalPlusSharedSemanticsTests(unittest.TestCase):
                 self.assertTrue(should_filter)
                 self.assertEqual(rule, "semantic_context_summary_superseded_by_complete_table_enumeration")
 
+    def test_l3h2rs2h_partial_compact_sweep_does_not_erase_llm_result_surfaces(self):
+        paper_rows = [
+            {
+                "instance_kind": "new_formulation",
+                "candidate_source": "table_row_expansion_v1",
+                "raw_formulation_label": "XAN nanospheres (Theoretical concentration 60 mg/mL)",
+                "semantic_scope_ref": "table1",
+            }
+            for _ in range(8)
+        ]
+        for label, instance_kind, role, parent, tags in [
+            (
+                "PLGA nanospheres with XAN or 3-MeOXAN at varying concentrations",
+                "formulation_family",
+                "unclear",
+                "",
+                '["synthesis_core"]',
+            ),
+            (
+                "Characterization of nanocapsule formulations (size, PI, zeta) at selected condition (600 μg/mL XAN)",
+                "unclear",
+                "characterization_only",
+                "F2",
+                '["characterization_only"]',
+            ),
+        ]:
+            with self.subTest(label=label):
+                should_filter, rule, reason = should_filter_non_formulation(
+                    {
+                        "key": "L3H2RS2H",
+                        "raw_formulation_label": label,
+                        "instance_kind": instance_kind,
+                        "parent_instance_id": parent,
+                        "formulation_role": role,
+                        "change_role": "unclear",
+                        "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+                        "instance_context_tags": tags,
+                        "change_context_tags": '[]',
+                        "evidence_section": "",
+                        "supporting_evidence_refs": "",
+                    },
+                    {"loaded_state": "drug_loaded", "drug_name": "XAN", "polymer_identity": "PLGA"},
+                    paper_rows=paper_rows,
+                )
+                self.assertFalse(should_filter)
+
+    def test_doe_optimum_summary_survives_numbered_row_enumeration(self):
+        paper_rows = [
+            {"instance_kind": "new_formulation", "candidate_source": "table_row_expansion_v1", "semantic_scope_ref": "doe"}
+            for _ in range(26)
+        ]
+        row = {
+            "key": "UFXX9WXE",
+            "raw_formulation_label": "Box-Behnken design runs varying PLGA, poloxamer, and phase ratio",
+            "instance_kind": "formulation_family",
+            "parent_instance_id": "",
+            "formulation_role": "unclear",
+            "change_role": "unclear",
+            "candidate_source": "saved_raw_live_v2_replay_to_stage2_v2",
+            "instance_context_tags": '["synthesis_core"]',
+            "change_context_tags": '[]',
+            "identity_variables_json": json.dumps([
+                {"name": "PLGA concentration", "value": "optimal formulation based on Box-Behnken design"}
+            ]),
+            "evidence_section": "",
+            "supporting_evidence_refs": "",
+        }
+        should_filter, rule, reason = should_filter_non_formulation(
+            row,
+            {"loaded_state": "drug_loaded", "drug_name": "LZP", "polymer_identity": "PLGA"},
+            paper_rows=paper_rows,
+        )
+        self.assertFalse(should_filter)
+
     def test_inmutv7l_parented_context_summaries_filtered_when_complete_table_enumeration_exists(self):
         paper_rows = [
             {"instance_kind": "new_formulation", "candidate_source": "doe_numbered_table_row_recovery", "semantic_scope_ref": "table15"}

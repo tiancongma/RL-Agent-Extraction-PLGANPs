@@ -11,6 +11,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+csv.field_size_limit(sys.maxsize)
+
 try:
     from src.utils.active_data_source import (
         build_artifact_metadata,

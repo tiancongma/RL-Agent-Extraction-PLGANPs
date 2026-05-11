@@ -684,7 +684,11 @@ def explicit_table_candidate(
         return None
     header_row = combine_header_rows(rows, numbered_idx)[label_col_idx:]
     keyword_score = table_keyword_score(header_row, rows[:numbered_idx])
-    if keyword_score < 2 and source_type != "semantic_authorized_table_target":
+    semantic_authorized_sources = {
+        "semantic_authorized_table_target",
+        "semantic_authorized_companion_table_target",
+    }
+    if keyword_score < 2 and source_type not in semantic_authorized_sources:
         return None
     return {
         "csv_path": csv_path,

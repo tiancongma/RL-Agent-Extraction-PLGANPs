@@ -540,6 +540,87 @@ def normalize_shrunken_context_inheritance_markers(value: Any) -> list[dict[str,
     return markers
 
 
+def materialize_execution_markers_from_shrunken_scopes(document: dict[str, Any]) -> None:
+    """Bridge shrunken LLM table scopes into execution markers.
+
+    The shrunken live/replay schema deliberately asks the LLM for semantic
+    `table_scopes` rather than the older execution-ready marker families. S2-7
+    function units still consume those marker families, so project the LLM-owned
+    table-scope judgement into the legacy marker surface without adding any new
+    semantic authority.
+    """
+    scopes = normalize_shrunken_table_scopes(document.get("table_scopes"))
+    if not scopes:
+        return
+    existing_scope_ids = {
+        normalize_text(item.get("table_id"))
+        for item in ensure_list(document.get("table_formulation_scopes"))
+        if isinstance(item, dict) and normalize_text(item.get("table_id"))
+    }
+    existing_boundary_ids = {
+        normalize_text(item.get("table_id"))
+        for item in ensure_list(document.get("boundary_markers"))
+        if isinstance(item, dict) and normalize_text(item.get("table_id"))
+    }
+    marker_scopes = [item for item in ensure_list(document.get("table_formulation_scopes")) if isinstance(item, dict)]
+    boundary_markers = [item for item in ensure_list(document.get("boundary_markers")) if isinstance(item, dict)]
+    table_roles = [item for item in ensure_list(document.get("table_variable_roles")) if isinstance(item, dict)]
+    semantic_signals = document.get("semantic_signals") if isinstance(document.get("semantic_signals"), dict) else {}
+    primary_variables = [
+        normalize_text(item)
+        for item in ensure_list(semantic_signals.get("primary_variable_names"))
+        if normalize_text(item)
+    ]
+    document_key = normalize_text(document.get("document_key") or document.get("paper_key"))
+    for index, scope in enumerate(scopes, start=1):
+        table_id = normalize_text(scope.get("table_id"))
+        if not table_id:
+            continue
+        if table_id not in existing_boundary_ids:
+            boundary_markers.append(
+                {
+                    "table_id": table_id,
+                    "is_doe": bool(scope.get("is_doe")),
+                    "marker_provenance": LLM_PARSED,
+                }
+            )
+            existing_boundary_ids.add(table_id)
+        if not bool(scope.get("is_formulation_bearing")) or table_id in existing_scope_ids:
+            continue
+        scope_kind = normalize_text(scope.get("scope_kind"))
+        if bool(scope.get("is_doe")):
+            table_type = "doe_table"
+        elif scope_kind == "sequential_child":
+            table_type = "sequential_child"
+        elif scope_kind == "downstream_variant_table":
+            table_type = "downstream_variant"
+        else:
+            table_type = "full_formulation"
+        marker_scopes.append(
+            {
+                "scope_id": f"{document_key}__shrunken_table_scope__{index:02d}",
+                "table_id": table_id,
+                "is_formulation_table": True,
+                "table_type": table_type,
+                "marker_provenance": LLM_PARSED,
+                "parent_table_hint": normalize_text(scope.get("parent_table_hint")),
+            }
+        )
+        existing_scope_ids.add(table_id)
+        if primary_variables and bool(scope.get("is_doe")):
+            table_roles.append(
+                {
+                    "table_id": table_id,
+                    "varying_variables": primary_variables,
+                    "marker_provenance": LLM_PARSED,
+                }
+            )
+    document["table_formulation_scopes"] = marker_scopes
+    document["boundary_markers"] = boundary_markers
+    if table_roles:
+        document["table_variable_roles"] = table_roles
+
+
 def infer_shrunken_candidate_kind_from_legacy(candidate: dict[str, Any]) -> str:
     instance_kind = normalize_text(candidate.get("instance_kind") or candidate.get("candidate_kind")).lower()
     if instance_kind in {"single_formulation", "formulation_family", "variant_formulation", "unclear"}:
@@ -3162,11 +3243,22 @@ def clean_text_paths_for_table_dir(table_dir: Path | None, path: Path) -> list[P
     if not paper_key:
         return []
     candidates = [
+        PROJECT_ROOT / "data" / "cleaned" / "content" / "stage1_unified_current_marker_v1" / paper_key / "unified_clean_text_v1.md",
         PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.pdf.txt",
         PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.html.txt",
         PROJECT_ROOT / "data" / "cleaned" / "content" / "text" / f"{paper_key}.txt",
     ]
-    return [candidate for candidate in candidates if candidate.exists()]
+    seen: set[str] = set()
+    existing: list[Path] = []
+    for candidate in candidates:
+        if not candidate.exists():
+            continue
+        resolved = str(candidate.resolve())
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        existing.append(candidate)
+    return existing
 
 
 def canonicalize_caption_text(text: str) -> str:
@@ -3186,27 +3278,29 @@ def clean_text_caption_candidate_is_trusted(caption: str, table_number: int) -> 
     words = caption.split()
     if len(words) < 4:
         return False
-    if len(caption) > 240:
+    # Some article-native captions are long but still valid table titles (for
+    # example full DOE layout captions that enumerate X1/X2/X3 and response
+    # variables).  Keep the spillover/prose guards below, but do not reject a
+    # source caption solely because it slightly exceeds the former 240-character
+    # limit.
+    if len(caption) > 380:
         return False
     # Prose references like "Table 1) were...", "Table 2, which...", or
     # "Table 5 shows..." are not source captions and must not become prompt
     # titles.  Keep them unavailable rather than binding paragraph semantics to
     # a table asset.
+    if re.match(rf"^\s*Table\s+{table_number}\s*,", caption, flags=re.I):
+        return False
     after_id = re.sub(rf"^\s*Table\s+{table_number}\s*[:.]?\s*", "", caption, flags=re.I)
     first_word = normalize_text(after_id).split(" ", 1)[0].lower() if normalize_text(after_id) else ""
     if first_word in {"shows", "show", "summarizes", "summarises", "were", "was", "which", "the", "these", "this", "around"}:
         return False
     if re.search(r"\b(?:suggested|suggests|whereas|while|except)\b", caption, flags=re.I):
         return False
+    if re.search(r"\b(?:pharmacokinetic|biodistribution|tissue distribution)\b", caption, flags=re.I):
+        return False
     numeric_tokens = re.findall(r"(?<![A-Za-z])[-+]?\d+(?:[.,]\d+)?(?:±\d+(?:[.,]\d+)?)?%?", caption)
     if len(numeric_tokens) >= 6:
-        return False
-    metric_tokens = re.findall(
-        r"\b(?:AUC|MRT|Tmax|Cmax|t1/2|PDI|zeta|potential|size|diameter|EE|drug\s+content|recovery|parameter)\b",
-        caption,
-        flags=re.I,
-    )
-    if len(metric_tokens) >= 5:
         return False
     return True
 
@@ -3341,6 +3435,267 @@ def recover_compact_inline_table_matrix_from_clean_text(
     }
 
 
+def source_caption_table_candidates(clean_text: str) -> list[dict[str, Any]]:
+    """Extract source-native table caption candidates and following text windows."""
+    candidates: list[dict[str, Any]] = []
+    for match in re.finditer(r"\bTable\s+(\d+)\b", clean_text, flags=re.I):
+        table_number = int(match.group(1))
+        segment = clean_text[match.start() : match.start() + 1800]
+        next_boundary = re.search(r"\b(?:Table|Figure)\s+\d+\b", segment[20:], flags=re.I)
+        if next_boundary:
+            segment = segment[: 20 + next_boundary.start()]
+        lines = [normalize_text(line) for line in segment.splitlines()]
+        lines = [line for line in lines if line]
+        if not lines:
+            continue
+        caption_line = lines[0]
+        # Marker often emits a standalone "TABLE 1" line followed by the title.
+        if re.fullmatch(r"Table\s+\d+\.?", caption_line, flags=re.I) and len(lines) > 1:
+            caption_line = f"{caption_line} {lines[1]}"
+        if len(caption_line) > 260:
+            period_match = re.search(r"\.\s+(?=[A-Z0-9])", caption_line)
+            if period_match:
+                caption_line = caption_line[: period_match.start() + 1]
+        caption = canonicalize_caption_text(caption_line)
+        if not clean_text_caption_candidate_is_trusted(caption, table_number):
+            continue
+        candidates.append(
+            {
+                "table_id": f"Table {table_number}",
+                "caption": caption,
+                "window": normalize_text(segment),
+                "lines": lines,
+            }
+        )
+    return candidates
+
+
+def table_content_signature_tokens(rows: list[list[str]], *, max_tokens: int = 80) -> list[str]:
+    blob = " ".join(
+        normalize_text(cell)
+        for row in rows[:10]
+        for cell in row[:12]
+        if normalize_text(cell)
+    )
+    tokens: list[str] = []
+    seen: set[str] = set()
+    for token in re.findall(r"[A-Za-z][A-Za-z0-9/%().+-]*|[-+−]?\d+(?:\.\d+)?(?:±\d+(?:\.\d+)?)?%?", blob):
+        value = normalize_text(token).strip(".,;:()[]{}").lower()
+        if len(value) < 2 or value in {"table", "empty", "cell", "mean", "sd"}:
+            continue
+        if value not in seen:
+            seen.add(value)
+            tokens.append(value)
+        if len(tokens) >= max_tokens:
+            break
+    return tokens
+
+
+def user_provided_source_excerpt_text_for_table_dir(table_dir: Path | None, path: Path) -> tuple[str, Path] | tuple[str, None]:
+    paper_key = normalize_text(table_dir.name if table_dir is not None else path.parent.name)
+    if not paper_key:
+        return "", None
+    protocol_path = PROJECT_ROOT / "docs" / "methods" / "layer3_field_gt_protocol_v1.md"
+    if not protocol_path.exists():
+        return "", None
+    try:
+        text = protocol_path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return "", None
+    match = re.search(rf"(?ims)^###\s+{re.escape(paper_key)}\s*$([\s\S]*?)(?=^###\s+\S+\s*$|\Z)", text)
+    if not match:
+        return "", None
+    return match.group(1), protocol_path
+
+
+def source_caption_priority_eligible(caption: str, status: str = "") -> bool:
+    caption_l = normalize_text(caption).lower()
+    if not caption_l:
+        return False
+    if status and normalize_text(status).lower() != "trusted_content_match":
+        return False
+    positive = re.search(
+        r"\b(formulation|formulations|design|factorial|doe|checkpoint|check\s*point|optimization|optimisation|independent\s+variables?|experimental\s+conditions?)\b",
+        caption_l,
+    )
+    if not positive:
+        return False
+    negative = re.search(
+        r"\b(pharmacokinetic|pharmacokinetics|biodistribution|tissue\s+distribution|caco-?2|cell\s+lines?|drug\s+transfer|transport|permeability|release|stability|cytotoxicity)\b",
+        caption_l,
+    )
+    return negative is None
+
+
+def parse_source_inline_table_rows(candidate: dict[str, Any], *, max_rows: int = 8) -> list[list[str]]:
+    """Recover a summary-only table surface from a source/excerpt Table N block.
+
+    This is used only for prompt TABLE_SUMMARY visibility when the article-native
+    table is present in source text/excerpts but the Stage1 CSV assets did not
+    yield a matching table payload.  It is not numeric/grid authority.
+    """
+    lines = [normalize_text(line) for line in ensure_list(candidate.get("lines")) if normalize_text(line)]
+    caption = normalize_text(candidate.get("caption"))
+    data_lines: list[str] = []
+    for line in lines[1:]:
+        if table_id_from_text(line) and line != caption:
+            break
+        if re.match(r"^(?:段落|表格)[:：]?$", line, flags=re.I):
+            continue
+        if re.search(r"[\t|]", line) or (re.search(r"\d", line) and len(line.split()) >= 3):
+            data_lines.append(line)
+        elif data_lines:
+            # Ignore prose/note lines inside a source table block rather than
+            # ending the table immediately; checkpoint/result tables often have
+            # a short explanatory line between headers and data rows.
+            continue
+        if len(data_lines) >= max_rows:
+            break
+    rows: list[list[str]] = []
+    for line in data_lines:
+        clean_line = re.sub(r"^[>\s\"'“”‘’]+", "", line).strip()
+        if "\t" in clean_line:
+            cells = [normalize_text(cell) for cell in clean_line.split("\t")]
+        elif "|" in clean_line:
+            cells = [normalize_text(cell) for cell in clean_line.split("|")]
+        else:
+            tokens = clean_line.split()
+            if len(tokens) >= 4:
+                if len(tokens) >= 2 and re.match(r"^[A-Za-z][A-Za-z0-9/-]*$", tokens[0]) and tokens[1].lower() in {"nps", "np", "nanoparticles", "micelles"}:
+                    cells = [" ".join(tokens[:2]), " ".join(tokens[2:])]
+                else:
+                    cells = [tokens[0], " ".join(tokens[1:])]
+            else:
+                cells = [normalize_text(clean_line)]
+        cells = [cell for cell in cells if cell]
+        if cells:
+            rows.append(cells)
+    if len(rows) < 2:
+        return []
+    has_headerish = any(re.search(r"[A-Za-z]", cell) for cell in rows[0])
+    has_dataish = any(any(re.search(r"\d", cell) for cell in row) for row in rows[1:])
+    if not has_headerish or not has_dataish:
+        return []
+    width = max(len(row) for row in rows)
+    if width < 2:
+        # A one-cell prose line is not a table summary candidate.
+        return []
+    return rows
+
+
+def source_excerpt_inline_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
+    excerpt_text, excerpt_path = user_provided_source_excerpt_text_for_table_dir(table_dir, table_dir)
+    if not excerpt_text:
+        return []
+    entries: list[dict[str, Any]] = []
+    paper_key = normalize_text(table_dir.name)
+    for candidate in source_caption_table_candidates(excerpt_text):
+        rows = parse_source_inline_table_rows(candidate)
+        if not rows:
+            continue
+        table_id = normalize_text(candidate.get("table_id"))
+        caption = normalize_text(candidate.get("caption"))
+        caption_l = caption.lower()
+        if re.search(r"\b(residual|resolver|diagnostic|repair\s+pattern|stage5|blocked\s+rows?|current\s+stage)\b", caption_l):
+            continue
+        if not re.search(r"\b(formulation|characterization|characterisation|physicochemical|encapsulation|drug\s+loading|particle\s+size|pdi|zeta|factorial|design|checkpoint|check\s*point|optimization|optimisation|experimental\s+conditions?)\b", caption_l):
+            continue
+        table_number = re.sub(r"\D+", "", table_id) or str(len(entries) + 1)
+        pseudo_path = table_dir / f"{paper_key}__source_excerpt_table_{int(table_number):02d}__inline_table.csv"
+        meta = {
+            "caption_or_title": caption,
+            "source_native_table_id": table_id,
+            "table_id": table_id,
+            "n_rows": len(rows),
+            "n_cols": max((len(row) for row in rows), default=0),
+            "caption_binding_source": "source_excerpt_inline_table",
+            "caption_binding_status": "trusted_content_match",
+            "caption_binding_rule": "source_excerpt_table_block_recovered_summary_only",
+            "caption_source_text_path": to_repo_rel(excerpt_path) if excerpt_path is not None else "",
+            "source_excerpt_inline_table": "yes",
+            "summary_only_no_grid_authority": "yes",
+        }
+        entries.append(
+            {
+                "path": pseudo_path,
+                "rows": rows,
+                "meta": meta,
+                "score": 0,
+                "row_pattern": infer_row_pattern([row[0] for row in rows[1:] if row]),
+                "quality_flags": [],
+                "filtered_noise_rows": 0,
+                "representation_status": "recovered_source_excerpt_summary",
+                "repair_actions": ["source_excerpt_inline_table_summary_recovery"],
+                "repair_warnings": ["summary_only_no_grid_authority"],
+                "repair_confidence": 0.72,
+                "raw_table_preview": "\n".join(" | ".join(row) for row in rows[:3]),
+                "repaired_table_preview": "\n".join(" | ".join(row) for row in rows[:3]),
+                "material_difference_from_raw": "source_excerpt_inline_table_summary_only",
+                "repair_primary_source": "source_excerpt_inline_table",
+                "repair_source_csv_path": "",
+                "repair_source_manifest_path": "",
+                "repair_source_candidate_id": table_id,
+                "candidate_variant_role": "source_excerpt_inline_table",
+                "same_source_table_asset": "no",
+                "derived_from_candidate_id": "",
+                "selector_readiness_label": "ready",
+                "unresolved_reason": "",
+                "restoration_profile": "",
+                "full_prompt_table_authority": False,
+            }
+        )
+    return entries
+
+
+def recover_source_caption_binding_by_content(
+    *,
+    rows: list[list[str]],
+    table_dir: Path | None,
+    path: Path,
+) -> dict[str, str]:
+    max_width = max((len(row) for row in rows if isinstance(row, list)), default=0)
+    if max_width < 3:
+        return {}
+    signature_tokens = table_content_signature_tokens(rows)
+    if len(signature_tokens) < 4:
+        return {}
+    best: tuple[float, int, dict[str, Any], Path | None] | None = None
+    source_texts: list[tuple[str, Path | None]] = []
+    for text_path in clean_text_paths_for_table_dir(table_dir, path):
+        try:
+            source_texts.append((text_path.read_text(encoding="utf-8", errors="replace"), text_path))
+        except OSError:
+            continue
+    excerpt_text, excerpt_path = user_provided_source_excerpt_text_for_table_dir(table_dir, path)
+    if excerpt_text:
+        source_texts.append((excerpt_text, excerpt_path))
+    for clean_text, text_path in source_texts:
+        for candidate in source_caption_table_candidates(clean_text):
+            window = normalize_text(candidate.get("window")).lower()
+            hits = sum(1 for token in signature_tokens if token in window)
+            denominator = max(1, min(len(signature_tokens), 40))
+            score = hits / denominator
+            if hits < 4 or score < 0.28:
+                continue
+            current = (score, hits, candidate, text_path)
+            if best is None or current[:2] > best[:2]:
+                best = current
+    if best is None:
+        return {}
+    score, hits, candidate, text_path = best
+    return {
+        "caption": normalize_text(candidate.get("caption")),
+        "table_id": normalize_text(candidate.get("table_id")),
+        "caption_binding_source": "source_clean_text_table_caption",
+        "caption_binding_status": "trusted_content_match",
+        "caption_binding_rule": "table_content_signature_matched_clean_text_caption",
+        "caption_warning": "",
+        "caption_match_score": f"{score:.3f}",
+        "caption_match_token_hits": str(hits),
+        "caption_source_text_path": to_repo_rel(text_path) if text_path is not None else "",
+    }
+
+
 def recover_source_caption_binding_from_rows(
     *,
     path: Path,
@@ -3365,19 +3720,44 @@ def recover_source_caption_binding_from_rows(
         "caption_row_index": str(caption_row_index),
         "caption_warning": "",
     }
-    if not recovered_caption and not ids:
+    if not recovered_caption:
+        content_binding = recover_source_caption_binding_by_content(
+            rows=rows,
+            table_dir=table_dir,
+            path=path,
+        )
+        if normalize_text(content_binding.get("caption")):
+            result.update(content_binding)
+            return result
+        if ids:
+            result["caption_binding_status"] = "untrusted_csv_body_no_caption_row"
+            result["caption_binding_source"] = "csv_body_untrusted"
+            result["caption_warning"] = "csv_body_table_mention_without_caption_row"
         return result
     if len(ids) != 1:
+        content_binding = recover_source_caption_binding_by_content(
+            rows=rows,
+            table_dir=table_dir,
+            path=path,
+        )
+        if normalize_text(content_binding.get("caption")):
+            result.update(content_binding)
+            return result
         result["caption_binding_status"] = "untrusted_ambiguous_csv_body"
         result["caption_binding_source"] = "csv_body_untrusted"
         result["caption_warning"] = "csv_body_caption_ambiguous"
         return result
     table_id = ids[0]
+    source_texts: list[tuple[str, Path | None]] = []
     for text_path in clean_text_paths_for_table_dir(table_dir, path):
         try:
-            clean_text = text_path.read_text(encoding="utf-8", errors="replace")
+            source_texts.append((text_path.read_text(encoding="utf-8", errors="replace"), text_path))
         except OSError:
             continue
+    excerpt_text, excerpt_path = user_provided_source_excerpt_text_for_table_dir(table_dir, path)
+    if excerpt_text:
+        source_texts.append((excerpt_text, excerpt_path))
+    for clean_text, text_path in source_texts:
         caption = extract_table_caption_from_clean_text(clean_text, table_id)
         if caption:
             result.update(
@@ -3387,9 +3767,18 @@ def recover_source_caption_binding_from_rows(
                     "caption_binding_status": "trusted_unambiguous",
                     "caption_binding_rule": "single_csv_table_label_matched_clean_text_caption",
                     "caption_warning": "",
+                    "caption_source_text_path": to_repo_rel(text_path) if text_path is not None else "",
                 }
             )
             return result
+    content_binding = recover_source_caption_binding_by_content(
+        rows=rows,
+        table_dir=table_dir,
+        path=path,
+    )
+    if normalize_text(content_binding.get("caption")):
+        result.update(content_binding)
+        return result
     result["caption_binding_status"] = "untrusted_csv_body_no_clean_text_match"
     result["caption_binding_source"] = "csv_body_untrusted"
     result["caption_warning"] = "csv_body_caption_unmatched"
@@ -3427,9 +3816,19 @@ def repair_table_representation(
         )
         if normalize_text(caption_binding.get("caption")):
             repaired_meta["caption_or_title"] = normalize_text(caption_binding.get("caption"))
+            recovered_table_id = normalize_text(caption_binding.get("table_id"))
+            if recovered_table_id:
+                repaired_meta["table_id"] = recovered_table_id
+                repaired_meta["source_native_table_id"] = recovered_table_id
             repaired_meta["caption_binding_source"] = normalize_text(caption_binding.get("caption_binding_source"))
             repaired_meta["caption_binding_status"] = normalize_text(caption_binding.get("caption_binding_status"))
             repaired_meta["caption_binding_rule"] = normalize_text(caption_binding.get("caption_binding_rule"))
+            if normalize_text(caption_binding.get("caption_match_score")):
+                repaired_meta["caption_match_score"] = normalize_text(caption_binding.get("caption_match_score"))
+            if normalize_text(caption_binding.get("caption_match_token_hits")):
+                repaired_meta["caption_match_token_hits"] = normalize_text(caption_binding.get("caption_match_token_hits"))
+            if normalize_text(caption_binding.get("caption_source_text_path")):
+                repaired_meta["caption_source_text_path"] = normalize_text(caption_binding.get("caption_source_text_path"))
             repair_actions.append("source_caption_binding")
         elif normalize_text(caption_binding.get("untrusted_recovered_caption_or_title")):
             repaired_meta["untrusted_recovered_caption_or_title"] = normalize_text(caption_binding.get("untrusted_recovered_caption_or_title"))
@@ -3580,7 +3979,34 @@ def collect_summary_table_candidates(table_dir: Path) -> list[dict[str, Any]]:
                 "full_prompt_table_authority": restoration_profile == "wfdtq4vx_doe_execution_table",
             }
         )
+    existing_source_captions = {
+        (normalize_text(item.get("meta", {}).get("source_native_table_id") or item.get("meta", {}).get("table_id")), normalize_text(item.get("meta", {}).get("caption_or_title")).lower())
+        for item in entries
+        if isinstance(item.get("meta"), dict) and normalize_text(item.get("meta", {}).get("caption_or_title"))
+    }
+    for inline_item in source_excerpt_inline_table_candidates(table_dir):
+        meta = inline_item.get("meta") if isinstance(inline_item.get("meta"), dict) else {}
+        key = (normalize_text(meta.get("source_native_table_id") or meta.get("table_id")), normalize_text(meta.get("caption_or_title")).lower())
+        if key in existing_source_captions:
+            continue
+        entries.append(inline_item)
+        existing_source_captions.add(key)
     return rank_table_authority_payloads(entries)
+
+
+def select_ranked_summary_tables(candidates: list[dict[str, Any]], *, max_tables: int) -> list[dict[str, Any]]:
+    selected: list[dict[str, Any]] = list(candidates[:max_tables])
+    selected_names = {item["path"].name for item in selected}
+    for item in candidates[max_tables:]:
+        if item.get("table_inclusion_class") != TABLE_INCLUSION_MUST_INCLUDE:
+            continue
+        if item["path"].name in selected_names:
+            continue
+        selected.append(item)
+        selected_names.add(item["path"].name)
+        if len(selected) >= max_tables + 3:
+            break
+    return selected
 
 
 def select_summary_tables(
@@ -3588,7 +4014,7 @@ def select_summary_tables(
     *,
     max_tables: int,
 ) -> list[dict[str, Any]]:
-    return collect_summary_table_candidates(table_dir)[:max_tables]
+    return select_ranked_summary_tables(collect_summary_table_candidates(table_dir), max_tables=max_tables)
 
 
 def build_table_selection_debug_payload(
@@ -3601,7 +4027,8 @@ def build_table_selection_debug_payload(
     if table_dir is None or not table_dir.exists():
         return None
     candidates = collect_summary_table_candidates(table_dir)
-    selected_names = {item["path"].name for item in candidates[:max_tables]}
+    selected_items = select_ranked_summary_tables(candidates, max_tables=max_tables)
+    selected_names = {item["path"].name for item in selected_items}
     payload_candidates: list[dict[str, Any]] = []
     for item in candidates:
         rows = item["rows"]
@@ -3629,10 +4056,10 @@ def build_table_selection_debug_payload(
     return {
         "document_key": document_key,
         "table_mode": table_mode(),
-        "selection_ranking_mode": "score_ranked_top_k",
+        "selection_ranking_mode": "score_ranked_top_k_plus_gated_must_include",
         "summary_first_column_enhancement": "yes" if summary_enhanced else "no",
         "max_tables": max_tables,
-        "selected_tables": [item["path"].name for item in candidates[:max_tables]],
+        "selected_tables": [item["path"].name for item in selected_items],
         "candidates": payload_candidates,
     }
 
@@ -3862,6 +4289,8 @@ def render_selected_table_candidate(candidate: dict[str, Any]) -> str:
     origin_locator = normalize_text(candidate.get("origin_locator"))
     source_type = normalize_text(candidate.get("source_type")).lower()
     cached_text = normalize_text(candidate.get("text_content"))
+    if source_type == "table_summary" and table_summary_text_is_structural_prompt_safe(cached_text):
+        return cached_text
     if source_type == "table_summary" and origin_locator:
         table_path = Path(origin_locator)
         if not table_path.is_absolute():
@@ -3880,11 +4309,14 @@ def render_selected_table_candidate(candidate: dict[str, Any]) -> str:
                     table_dir=table_path.parent,
                 )
                 trusted_caption = normalize_text(caption_binding.get("caption")) or trusted_manifest_caption_for_table(table_path)
+                source_native_table_id = normalize_text(caption_binding.get("table_id"))
                 item = {
                     "path": table_path,
                     "rows": rows,
                     "meta": {
                         "caption_or_title": trusted_caption,
+                        "table_id": source_native_table_id,
+                        "source_native_table_id": source_native_table_id,
                         "caption_binding_source": normalize_text(caption_binding.get("caption_binding_source")),
                         "caption_binding_status": normalize_text(caption_binding.get("caption_binding_status")),
                         "n_rows": len(rows),
@@ -4502,6 +4934,19 @@ def build_table_authority_score_breakdown(item: dict[str, Any]) -> dict[str, flo
         "prose_row_demotion": max(-20.0, -5.0 * float(prose_like_rows)),
         "anchor_legibility_demotion": -18.0 if compact_anchor_count < 3 and prose_like_rows >= 3 else 0.0,
     }
+    caption = normalize_text(meta.get("caption_or_title"))
+    caption_status = normalize_text(meta.get("caption_binding_status"))
+    if source_caption_priority_eligible(caption, caption_status):
+        # Gated recovery boost: a source-native caption that is content-matched
+        # and explicitly formulation/design/DOE/checkpoint/optimization-bearing
+        # should not be pushed out of the compact S2-4a evidence surface by
+        # unrelated front-matter/figure-spillover noise in the same extracted
+        # CSV.  Downstream PK/cell-transfer/release/stability captions remain
+        # excluded by source_caption_priority_eligible().
+        breakdown["source_caption_design_match_bonus"] = 80.0
+    else:
+        breakdown["source_caption_design_match_bonus"] = 0.0
+    breakdown["source_excerpt_inline_summary_bonus"] = 60.0 if normalize_text(meta.get("source_excerpt_inline_table")).lower() == "yes" else 0.0
     if role_hint == "design matrix":
         breakdown["role_hint_bonus"] = 10.0
     elif role_hint == "formulation":
@@ -4711,6 +5156,10 @@ def table_inclusion_class(item: dict[str, Any], *, breakdown: dict[str, float]) 
         return TABLE_INCLUSION_HARD_DROP
     rows = item.get("rows") or []
     meta = item.get("meta") if isinstance(item.get("meta"), dict) else {}
+    if source_caption_priority_eligible(meta.get("caption_or_title", ""), meta.get("caption_binding_status", "")):
+        return TABLE_INCLUSION_MUST_INCLUDE
+    if normalize_text(meta.get("source_excerpt_inline_table")).lower() == "yes":
+        return TABLE_INCLUSION_MUST_INCLUDE
     source_role = classify_table_source_role(
         extract_informative_header_parts(rows),
         {**meta, "_signal_text": table_authority_signal_text(item)},
@@ -5367,8 +5816,9 @@ def build_table_summary_lines(item: dict[str, Any], *, enhancement_enabled: bool
     sample_lines = build_summary_sample_lines(rows, column_indices)
     table_role_hint = infer_table_role_hint(header_parts, meta)
 
+    source_native_table_id = normalize_text(meta.get("source_native_table_id") or meta.get("table_id"))
     table_match = re.search(r"__table_(\d+)__", path.name)
-    table_id = f"Table {int(table_match.group(1))}" if table_match else path.stem
+    table_id = source_native_table_id or (f"Table {int(table_match.group(1))}" if table_match else path.stem)
     manifest_caption = trusted_manifest_caption_for_table(path) if (path.parent / "tables_manifest.json").exists() else ""
     caption = manifest_caption or prompt_source_caption_or_empty(meta)
     footnotes = truncate_summary_cell(normalize_text(meta.get("footnotes") or meta.get("notes")), max_chars=220)
@@ -9037,6 +9487,7 @@ TRUSTED_CAPTION_BINDING_STATUSES = {
     "trusted_manifest",
     "trusted_unambiguous",
     "trusted_exact_table_id",
+    "trusted_content_match",
 }
 
 
@@ -10729,6 +11180,7 @@ def finalize_llm_first_document(
         document["shared_semantics"] = normalize_shrunken_shared_semantics(document.get("shared_semantics"))
         document["selection_markers"] = normalize_shrunken_selection_markers(document.get("selection_markers"))
         document["context_inheritance_markers"] = normalize_shrunken_context_inheritance_markers(document.get("context_inheritance_markers"))
+        materialize_execution_markers_from_shrunken_scopes(document)
     else:
         augment_document_with_table_markers(document)
         document["paper_key"] = normalize_text(document.get("paper_key") or document.get("document_key") or document.get("key"))

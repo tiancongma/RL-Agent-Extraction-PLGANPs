@@ -22,6 +22,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+csv.field_size_limit(sys.maxsize)
+
 try:
     from src.utils.paths import PROJECT_DIR
 except ModuleNotFoundError:  # pragma: no cover

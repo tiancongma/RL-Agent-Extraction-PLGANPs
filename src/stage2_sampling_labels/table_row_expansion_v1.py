@@ -1513,7 +1513,9 @@ def extract_empty_control_characterization_pair_rows_from_source_text(
     if not comparator_match:
         return [], "no_explicit_loaded_blank_characterization_pair"
     loaded_label = normalize_text(comparator_match.group("loaded_label"))
-    if normalize_token(loaded_label) != normalize_token(candidate_labels[0]):
+    loaded_token = normalize_token(loaded_label)
+    candidate_token = normalize_token(candidate_labels[0])
+    if loaded_token != candidate_token and loaded_token not in candidate_token:
         return [], "loaded_pair_not_matching_single_authorized_family"
     polymer_identity = "PLGA" if "plga" in loaded_label.lower() else ""
     if not polymer_identity:
@@ -2923,13 +2925,25 @@ def extract_compact_inline_table_rows_from_source_text(
 
 
 def _authority_source_csv_path(authority_payload: dict[str, Any]) -> Path | None:
+    candidate_values = [normalize_text(authority_payload.get("source_csv_path"))]
+    representation_status = normalize_text(authority_payload.get("representation_status")).lower()
     source_csv_path = normalize_text(authority_payload.get("source_csv_path"))
-    if not source_csv_path or "#" in source_csv_path:
-        return None
-    candidate = Path(source_csv_path)
-    if not candidate.is_absolute():
-        candidate = REPO_ROOT / candidate
-    return candidate if candidate.exists() else None
+    source_asset_id = normalize_text(authority_payload.get("source_table_asset_id") or authority_payload.get("table_asset_id")).lower()
+    if (
+        "source_excerpt" in representation_status
+        or "source_excerpt" in source_csv_path.lower()
+        or "source_excerpt" in source_asset_id
+    ):
+        candidate_values.append(normalize_text(authority_payload.get("normalized_csv_path")))
+    for path_value in candidate_values:
+        if not path_value or "#" in path_value:
+            continue
+        candidate = Path(path_value)
+        if not candidate.is_absolute():
+            candidate = REPO_ROOT / candidate
+        if candidate.exists():
+            return candidate
+    return None
 
 
 def _corrupted_table_family_labels(text: str) -> list[str]:
@@ -2967,6 +2981,65 @@ def _segment_looks_like_sweep_row(segment: str) -> bool:
 def _leading_theoretical_concentration(segment: str) -> str:
     match = re.match(r"\s*(\d+(?:\.\d+)?)\b", normalize_text(segment))
     return match.group(1) if match else ""
+
+
+def _extract_source_excerpt_summary_sweep_rows(raw_text: str) -> list[dict[str, Any]]:
+    family_labels = _corrupted_table_family_labels(raw_text)
+    if len(family_labels) < 2:
+        return []
+    family_blob = " ".join(family_labels).lower()
+    is_nanocapsule_split = "nanocapsule" in family_blob
+    extracted_rows: list[dict[str, Any]] = []
+    seen_labels: set[str] = set()
+    for parts in csv.reader(raw_text.splitlines()):
+        if len(parts) < 2:
+            continue
+        left_conc = _leading_theoretical_concentration(parts[0])
+        if not left_conc:
+            continue
+        payload = normalize_text(" ".join(parts[1:]))
+        if not _segment_looks_like_sweep_row(f"{left_conc} {payload}"):
+            continue
+        paired: list[tuple[str, str]] = [(family_labels[0], left_conc)]
+        right_conc = ""
+        if is_nanocapsule_split:
+            # Source-excerpt summaries for split nanocapsule tables preserve the
+            # left family concentration in column 0 and pack the right family
+            # theoretical concentration into the payload cell after the left
+            # family metric triplet/oil percentage.  Treat only a later large
+            # concentration token as the right-family anchor; do not invent a
+            # 3-MeOXAN row for a left-only crystal tail.
+            numeric_tokens = re.findall(r"\d+(?:\.\d+)?", payload)
+            for token in numeric_tokens:
+                try:
+                    value = float(token)
+                    left_value = float(left_conc)
+                except ValueError:
+                    continue
+                if value >= 900 or value >= max(left_value * 1.5, left_value + 100):
+                    right_conc = token
+                    break
+        else:
+            right_conc = left_conc
+        if right_conc:
+            paired.append((family_labels[1], right_conc))
+        elif "crystals" in payload.lower() and "nanocapsule" in family_blob:
+            paired = []
+        for family_label, concentration_value in paired:
+            label = f"{family_label} (Theoretical concentration {concentration_value} mg/mL)"
+            label_key = normalize_token(label)
+            if not label_key or label_key in seen_labels:
+                continue
+            seen_labels.add(label_key)
+            extracted_rows.append(
+                _build_sweep_direct_row(
+                    label=label,
+                    concentration_value=concentration_value,
+                    row_text=f"{parts[0]} | {payload}",
+                    crystals="crystals" in payload.lower(),
+                )
+            )
+    return extracted_rows
 
 
 def _build_sweep_direct_row(*, label: str, concentration_value: str, row_text: str, crystals: bool = False) -> dict[str, Any]:
@@ -3008,6 +3081,17 @@ def extract_split_column_concentration_sweep_rows_from_source_csv(
     if source_csv is None:
         return [], "source_csv_missing"
     raw_text = source_csv.read_text(encoding="utf-8", errors="replace")
+    representation_status = normalize_text(authority_payload.get("representation_status")).lower()
+    source_csv_path_text = normalize_text(authority_payload.get("source_csv_path")).lower()
+    source_asset_id = normalize_text(authority_payload.get("source_table_asset_id") or authority_payload.get("table_asset_id")).lower()
+    if (
+        "source_excerpt" in representation_status
+        or "source_excerpt" in source_csv_path_text
+        or "source_excerpt" in source_asset_id
+    ):
+        excerpt_rows = _extract_source_excerpt_summary_sweep_rows(raw_text)
+        if len(excerpt_rows) >= 4:
+            return excerpt_rows, ""
     family_labels = _corrupted_table_family_labels("\n".join(raw_text.splitlines()[:14]))
     source_has_split_sweep_surface = len(family_labels) >= 2 and any(
         _leading_theoretical_concentration(line) and _segment_looks_like_sweep_row(line)
@@ -4071,6 +4155,13 @@ def run_table_row_expansion(
         activation_row["table_path"] = authority_table_path
         activation_row["reopen_resolution_status"] = "resolved"
         activation_row["normalized_payload_used"] = reopen_binding.get("normalized_payload_used", "yes")
+        resolved_boundary = boundary_markers.get(table_id) or boundary_markers.get(original_scope_table_id, {})
+        if bool(resolved_boundary.get("is_doe")) and doe_rows_emitted > 0:
+            activation_row["authorized"] = "yes"
+            activation_row["called"] = "no"
+            activation_row["skip_reason"] = "blocked_by_successful_doe_emission"
+            table_activation_rows.append(activation_row)
+            continue
         activation_row["authorized"] = "yes"
         activation_row["called"] = "yes"
         role_info = variable_roles.get(table_id) or variable_roles.get(original_scope_table_id, {})
